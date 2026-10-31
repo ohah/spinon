@@ -1,0 +1,2376 @@
+{
+  "sourceHead": "93aba4eff3998c54c595b661578b339aeda89d87",
+  "sourceTree": "b33e805255e4370d84de59a61663276241c8cfd6",
+  "trackedDiffSha256": "c74e1a917e3a9c0853fb6d47f2bdf1795d0baa49608aea05f9be31b734cf8393",
+  "tailscaleBackendState": "Running",
+  "previewServerVerified": true,
+  "previewPid": 28040,
+  "previewListen": "127.0.0.1:8768",
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 450362,
+  "localRoadmapSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+  "previewRoot": "~/Library/Application Support/SpinonPreview",
+  "backupRoot": "~/Library/Application Support/SpinonPreviewBackups/c11-4-word-spacing-post-merge-2026-10-31/pass04",
+  "routeCount": 235,
+  "targetBytes": 17129645,
+  "counts": {
+    "create": 31,
+    "replace": 30,
+    "same": 174
+  },
+  "openHandleCount": 0,
+  "openHandles": [],
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sourceBytes": 401810,
+      "sourceSha256": "daeb50ae6be3b979b23b77f510eee71ecf09a3c218c071ba6bfcc289624fc293",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 401810,
+      "targetSha256": "0c546d660bf54899221ef600a705b8df72e8fd9d8b867ebeff5e27ccfdc4612e",
+      "action": "replace"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "sourceBytes": 272768,
+      "sourceSha256": "8a6257aa9d7b60a05a99fd231388b97efc3190a76f119faffbf972a4b157d526",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 272768,
+      "targetSha256": "8a6257aa9d7b60a05a99fd231388b97efc3190a76f119faffbf972a4b157d526",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+      "sourceBytes": 88866,
+      "sourceSha256": "1bb2551c7fb40b1a76af3485ffce16cb5075242d443bc51db129550d5189894d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 88866,
+      "targetSha256": "1bb2551c7fb40b1a76af3485ffce16cb5075242d443bc51db129550d5189894d",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-observation.json",
+      "sourceBytes": 8741,
+      "sourceSha256": "177da3c6fe21f4c9e5f07035fc31d17995005acdd2cb5f86184400b0f7ab800a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 8741,
+      "targetSha256": "177da3c6fe21f4c9e5f07035fc31d17995005acdd2cb5f86184400b0f7ab800a",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+      "sourceBytes": 37794,
+      "sourceSha256": "08f2fbc6469281648bf193191b2585abc247083cf8aca7060c03f10b38de687f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37794,
+      "targetSha256": "7a7168054a50cfc9cabd65608846f339203558f36b467ee5250372c904e14aaa",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md",
+      "sourceBytes": 3217,
+      "sourceSha256": "c6085c524d4a6c9b2a5a67dfc531e0cc86aa812e7d198539b4e911a22ae0b048",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3217,
+      "targetSha256": "c6085c524d4a6c9b2a5a67dfc531e0cc86aa812e7d198539b4e911a22ae0b048",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+      "sourceBytes": 6307,
+      "sourceSha256": "241333d0f5b05890794ef726f96abd36149e30f12f846bb9b0274f913843c2b8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 6307,
+      "targetSha256": "241333d0f5b05890794ef726f96abd36149e30f12f846bb9b0274f913843c2b8",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/validate-precomparison.mjs",
+      "sourceBytes": 4149,
+      "sourceSha256": "941ac96f489fcffeb879f69c31bf0d8a5342f3f332bf311557c6930398da3364",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4149,
+      "targetSha256": "941ac96f489fcffeb879f69c31bf0d8a5342f3f332bf311557c6930398da3364",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+      "sourceBytes": 1884,
+      "sourceSha256": "7bc08036426bc6e6b4421ddda57818a8e967893dd33e1432e7a594c7bb61c4fc",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1884,
+      "targetSha256": "7bc08036426bc6e6b4421ddda57818a8e967893dd33e1432e7a594c7bb61c4fc",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+      "sourceBytes": 76059,
+      "sourceSha256": "0847a3e2e2646b17469f7a3fb363e0edd851a14c4616b71485ede5c428b8e9d1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 76059,
+      "targetSha256": "0847a3e2e2646b17469f7a3fb363e0edd851a14c4616b71485ede5c428b8e9d1",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/simulator.json",
+      "sourceBytes": 598,
+      "sourceSha256": "aa59a48215f1644a8e74126cd843e41a8dbf13468b6089047eb7102a9d5530d8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 598,
+      "targetSha256": "aa59a48215f1644a8e74126cd843e41a8dbf13468b6089047eb7102a9d5530d8",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 24947,
+      "sourceSha256": "6c0106119d66abd396b0b0aae577a2292e089019d8df50efb4d23df978bb9757",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24947,
+      "targetSha256": "6c0106119d66abd396b0b0aae577a2292e089019d8df50efb4d23df978bb9757",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 24522,
+      "sourceSha256": "14efb75769ca9255ef31aba1a340fdbd7b61f7e7df60cec7b3ef6f3897e92f03",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24522,
+      "targetSha256": "14efb75769ca9255ef31aba1a340fdbd7b61f7e7df60cec7b3ef6f3897e92f03",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-max-content.log",
+      "sourceBytes": 24456,
+      "sourceSha256": "f07f74fbf65402f343fb7c0812d8cfbcbe3720bc11c2d568e8ac9a2328a1f107",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24456,
+      "targetSha256": "f07f74fbf65402f343fb7c0812d8cfbcbe3720bc11c2d568e8ac9a2328a1f107",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-min-content.log",
+      "sourceBytes": 23683,
+      "sourceSha256": "5bb2fd91d8c8da40b7393da5aef3426edebe55cac2edb54bdcec1f06a98229e6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23683,
+      "targetSha256": "5bb2fd91d8c8da40b7393da5aef3426edebe55cac2edb54bdcec1f06a98229e6",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-max-content.log",
+      "sourceBytes": 24393,
+      "sourceSha256": "2f8491eacbed3490dbbce3f061a067699a90d4578b79e15a6b2b5a258fdd3764",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24393,
+      "targetSha256": "2f8491eacbed3490dbbce3f061a067699a90d4578b79e15a6b2b5a258fdd3764",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-min-content.log",
+      "sourceBytes": 23880,
+      "sourceSha256": "9dccba553f3a0c3419252ba45bcf72b9d9aa7f2b9102cfb80c41f834a3696e88",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23880,
+      "targetSha256": "9dccba553f3a0c3419252ba45bcf72b9d9aa7f2b9102cfb80c41f834a3696e88",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-max-content.log",
+      "sourceBytes": 30203,
+      "sourceSha256": "7615f23dda562b919919d19d2523842e394aaf54a1ffdaaac25207377c0df5a1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 30203,
+      "targetSha256": "7615f23dda562b919919d19d2523842e394aaf54a1ffdaaac25207377c0df5a1",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-min-content.log",
+      "sourceBytes": 24514,
+      "sourceSha256": "2768b6d8141cd570b0d947acbc0ea60def0dd8e2f45a1a7d0b437f292c779c33",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24514,
+      "targetSha256": "2768b6d8141cd570b0d947acbc0ea60def0dd8e2f45a1a7d0b437f292c779c33",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-max-content.log",
+      "sourceBytes": 29149,
+      "sourceSha256": "e41f692e7ac84a111dfbd651f85e83ae4e625340830915ce6363494a135b1214",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 29149,
+      "targetSha256": "e41f692e7ac84a111dfbd651f85e83ae4e625340830915ce6363494a135b1214",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-min-content.log",
+      "sourceBytes": 23578,
+      "sourceSha256": "86cd75e87a5c80635c1aa986b0f371658a05dc6facbd8bd5a9cb1f71723fbfbb",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23578,
+      "targetSha256": "86cd75e87a5c80635c1aa986b0f371658a05dc6facbd8bd5a9cb1f71723fbfbb",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-max-content.log",
+      "sourceBytes": 24671,
+      "sourceSha256": "e2930e9b207b07ee106dfe1c374bc2e6eb6d2f600f37c4a26f669a1ebbbe8c2f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24671,
+      "targetSha256": "e2930e9b207b07ee106dfe1c374bc2e6eb6d2f600f37c4a26f669a1ebbbe8c2f",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-min-content.log",
+      "sourceBytes": 23870,
+      "sourceSha256": "cc70e458058a0f439a44f8309f3b29d2e92ad05a61c93600b3855ff7de3d7a51",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23870,
+      "targetSha256": "cc70e458058a0f439a44f8309f3b29d2e92ad05a61c93600b3855ff7de3d7a51",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 24943,
+      "sourceSha256": "55d3b73ae8507f432847a9ae74d6a4624ae4fe5acb1955dd5209e82e5099c6e8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24943,
+      "targetSha256": "55d3b73ae8507f432847a9ae74d6a4624ae4fe5acb1955dd5209e82e5099c6e8",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 29786,
+      "sourceSha256": "fc9bb5c407afa2d6a7cbd313954cd41a7469de7e89106c8278b2cc11fd085bb5",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 29786,
+      "targetSha256": "fc9bb5c407afa2d6a7cbd313954cd41a7469de7e89106c8278b2cc11fd085bb5",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-max-content.log",
+      "sourceBytes": 24453,
+      "sourceSha256": "b164b08d63d5f03d236c21bb3c8c37974a9688ba2583bdca79f3ca9f63ec4f4b",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24453,
+      "targetSha256": "b164b08d63d5f03d236c21bb3c8c37974a9688ba2583bdca79f3ca9f63ec4f4b",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-min-content.log",
+      "sourceBytes": 23679,
+      "sourceSha256": "ce2eca8d1a83d7ddefd63ca0160bebace0d631d4af4f67f63f450080dc4e05c8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23679,
+      "targetSha256": "ce2eca8d1a83d7ddefd63ca0160bebace0d631d4af4f67f63f450080dc4e05c8",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-max-content.log",
+      "sourceBytes": 24298,
+      "sourceSha256": "1468947cfbe7350c353a1e7a39479a0d5d2a8e2e09e874469a6c52503f243420",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24298,
+      "targetSha256": "1468947cfbe7350c353a1e7a39479a0d5d2a8e2e09e874469a6c52503f243420",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-min-content.log",
+      "sourceBytes": 23969,
+      "sourceSha256": "aeacfb5afce1bbe15ab65e56e9ded052cfd9de5fbd954c51a7c3064c378d41a7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23969,
+      "targetSha256": "aeacfb5afce1bbe15ab65e56e9ded052cfd9de5fbd954c51a7c3064c378d41a7",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-max-content.log",
+      "sourceBytes": 24928,
+      "sourceSha256": "57352058c28c4ce5d12f1fc22669cb147c560e38483fdf2582af22a20f26bd0c",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24928,
+      "targetSha256": "57352058c28c4ce5d12f1fc22669cb147c560e38483fdf2582af22a20f26bd0c",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-min-content.log",
+      "sourceBytes": 24601,
+      "sourceSha256": "955de5996683d413b5c5d95fb298ba5c1795fd3d2ff1ad2f7b4f8cf6417bb7c6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24601,
+      "targetSha256": "955de5996683d413b5c5d95fb298ba5c1795fd3d2ff1ad2f7b4f8cf6417bb7c6",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-max-content.log",
+      "sourceBytes": 24441,
+      "sourceSha256": "cf43dbea1313c61bc96992a09d4166a226bbecdf483fc7533c9454825a544268",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24441,
+      "targetSha256": "cf43dbea1313c61bc96992a09d4166a226bbecdf483fc7533c9454825a544268",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-min-content.log",
+      "sourceBytes": 23572,
+      "sourceSha256": "4a4896e4c7fbd0aa60449d94dbb18c572fdfac26c52f8b47ef9dfadcf012fdd3",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23572,
+      "targetSha256": "4a4896e4c7fbd0aa60449d94dbb18c572fdfac26c52f8b47ef9dfadcf012fdd3",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-max-content.log",
+      "sourceBytes": 24287,
+      "sourceSha256": "dc7c765c4e6aea536ae4ce3256ef8b6fa61c9912891bd39193c39711f8fcdaed",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24287,
+      "targetSha256": "dc7c765c4e6aea536ae4ce3256ef8b6fa61c9912891bd39193c39711f8fcdaed",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-min-content.log",
+      "sourceBytes": 23957,
+      "sourceSha256": "c895f039ef71e3ae1d88b9218a066536d183e34c66b2ba79235e99aa91034441",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23957,
+      "targetSha256": "c895f039ef71e3ae1d88b9218a066536d183e34c66b2ba79235e99aa91034441",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-build.log",
+      "sourceBytes": 4554,
+      "sourceSha256": "a232bf24a844a4f5b57a9e972a93f4d767be7b1b4a1ba23be16a709276cfd2ee",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4554,
+      "targetSha256": "a232bf24a844a4f5b57a9e972a93f4d767be7b1b4a1ba23be16a709276cfd2ee",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+      "sourceBytes": 37821,
+      "sourceSha256": "04a4322cc825baf427ad180c59c59d1601819020e80fd33f84944b9ac58aa219",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37821,
+      "targetSha256": "735505fe6f84f95f671de958376ef4f422b9634323177ce1ff81451657b97f06",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.md",
+      "sourceBytes": 1365,
+      "sourceSha256": "d1a797e5daa296a8d8e09e940eae9b7d46c69275856b3ff1f747647f52d1476a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1365,
+      "targetSha256": "d1a797e5daa296a8d8e09e940eae9b7d46c69275856b3ff1f747647f52d1476a",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+      "sourceBytes": 39745,
+      "sourceSha256": "37de2b817cf3df2f15ef4e6ff3423ef67cdef03b6f8d517d382fc48b43f1a1ab",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 39745,
+      "targetSha256": "085b6dc82739468244dae6a6be782c03af761d770b81b71b89f35716813d619f",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.md",
+      "sourceBytes": 5452,
+      "sourceSha256": "a2e1c647a9142d890415b61dfa656bd2b0100864c2c6ee1846be431b3a2449e2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 5452,
+      "targetSha256": "a2e1c647a9142d890415b61dfa656bd2b0100864c2c6ee1846be431b3a2449e2",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-build.log",
+      "sourceBytes": 64970,
+      "sourceSha256": "1cfacd80b9bc6e5934d4d98cfff7bb1a1cfbbce65fa3915050b25486c6dddff1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 64970,
+      "targetSha256": "1cfacd80b9bc6e5934d4d98cfff7bb1a1cfbbce65fa3915050b25486c6dddff1",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-capture.log",
+      "sourceBytes": 1513,
+      "sourceSha256": "59f24d45832def899ce5670b99011636ee513721c55140056d0e3707d2cf4f0f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1513,
+      "targetSha256": "59f24d45832def899ce5670b99011636ee513721c55140056d0e3707d2cf4f0f",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+      "sourceBytes": 1908,
+      "sourceSha256": "991aca60c561545f3e518acad894bf22f42cce1244425e886aa43a2fe8c42af9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1908,
+      "targetSha256": "991aca60c561545f3e518acad894bf22f42cce1244425e886aa43a2fe8c42af9",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+      "sourceBytes": 143525,
+      "sourceSha256": "b2eb0bc0183bf2162b18d2f7c9ed55b12a014acb3951ff645b39f093fd3f7aef",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 143525,
+      "targetSha256": "b2eb0bc0183bf2162b18d2f7c9ed55b12a014acb3951ff645b39f093fd3f7aef",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/simulator.json",
+      "sourceBytes": 676,
+      "sourceSha256": "7fb16cb3f9521a6e060ff6de2d0e51dd01943df45e1b6f24c3eb272a7c141764",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 676,
+      "targetSha256": "7fb16cb3f9521a6e060ff6de2d0e51dd01943df45e1b6f24c3eb272a7c141764",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 14951,
+      "sourceSha256": "6609c8bf3e57ad166c3f37fd90de90075dde0a0947108c611523c5f65ffbc1bc",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14951,
+      "targetSha256": "6609c8bf3e57ad166c3f37fd90de90075dde0a0947108c611523c5f65ffbc1bc",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 14503,
+      "sourceSha256": "0a4d598157d5f9fc61f80e292662922b368b65fb72f0002cec8adb53b8de3aa2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14503,
+      "targetSha256": "0a4d598157d5f9fc61f80e292662922b368b65fb72f0002cec8adb53b8de3aa2",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-max-content.log",
+      "sourceBytes": 13974,
+      "sourceSha256": "1e643f53be04866f9026d63f3db804693259616bc511a41ade8adc97d09724ca",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13974,
+      "targetSha256": "1e643f53be04866f9026d63f3db804693259616bc511a41ade8adc97d09724ca",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-min-content.log",
+      "sourceBytes": 13394,
+      "sourceSha256": "35f9c95637479e9aa711ca1b61e13cd05aa58f9741cf7e7c3af5b4195166bb58",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13394,
+      "targetSha256": "35f9c95637479e9aa711ca1b61e13cd05aa58f9741cf7e7c3af5b4195166bb58",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-max-content.log",
+      "sourceBytes": 14200,
+      "sourceSha256": "4011fd861c8aa342cc82b2262ed6b8fa400b8bb5827c4bb136e87d9d4f6a498a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14200,
+      "targetSha256": "4011fd861c8aa342cc82b2262ed6b8fa400b8bb5827c4bb136e87d9d4f6a498a",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-min-content.log",
+      "sourceBytes": 13687,
+      "sourceSha256": "45165c3c6a32e8f6b8e10a3911cb7f2e2847a42c782bb48a12f34f6f6e1cbf21",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13687,
+      "targetSha256": "45165c3c6a32e8f6b8e10a3911cb7f2e2847a42c782bb48a12f34f6f6e1cbf21",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-max-content.log",
+      "sourceBytes": 14944,
+      "sourceSha256": "ededb1ac609cb543227053180ce9dbdd24b8312acd56301ee4e893c7906f8747",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14944,
+      "targetSha256": "ededb1ac609cb543227053180ce9dbdd24b8312acd56301ee4e893c7906f8747",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-min-content.log",
+      "sourceBytes": 14496,
+      "sourceSha256": "18a2c696efe3e3d21210f5941251d72235a6ea62c9472778f1ebabe64ce57145",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14496,
+      "targetSha256": "18a2c696efe3e3d21210f5941251d72235a6ea62c9472778f1ebabe64ce57145",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-max-content.log",
+      "sourceBytes": 13967,
+      "sourceSha256": "73e7a4f6b0be1e63cafa1b9a0800fdd7e240155746480085a9a8b774f2e90f7d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13967,
+      "targetSha256": "73e7a4f6b0be1e63cafa1b9a0800fdd7e240155746480085a9a8b774f2e90f7d",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-min-content.log",
+      "sourceBytes": 13387,
+      "sourceSha256": "750a4a60209f55827e58bf305dc3c38c1a0fd8248d5634262ed5444e71d1957d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13387,
+      "targetSha256": "750a4a60209f55827e58bf305dc3c38c1a0fd8248d5634262ed5444e71d1957d",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-max-content.log",
+      "sourceBytes": 14194,
+      "sourceSha256": "798603e8683f70663a9be09a11a635a286221da3c9e80a7f380f235fa728aefd",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14194,
+      "targetSha256": "798603e8683f70663a9be09a11a635a286221da3c9e80a7f380f235fa728aefd",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-min-content.log",
+      "sourceBytes": 13680,
+      "sourceSha256": "da5bb1d74ee12d21ac04d8dadfedd5b18b4ed43542d769398f69d5c1e42d7a21",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13680,
+      "targetSha256": "da5bb1d74ee12d21ac04d8dadfedd5b18b4ed43542d769398f69d5c1e42d7a21",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 14948,
+      "sourceSha256": "f663bb5787770169fb3aa05e3bff5ced44196ca2b45b931bd8f1eb3d377a4a03",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14948,
+      "targetSha256": "f663bb5787770169fb3aa05e3bff5ced44196ca2b45b931bd8f1eb3d377a4a03",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 14500,
+      "sourceSha256": "86f0cea70978adf82341ea74d39e1027f5d3547c08cd9acc5eb5ebf65d704cd7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14500,
+      "targetSha256": "86f0cea70978adf82341ea74d39e1027f5d3547c08cd9acc5eb5ebf65d704cd7",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-max-content.log",
+      "sourceBytes": 13971,
+      "sourceSha256": "65faad75a71495c71499905fb5f41fe922fdd9ab5bf7b1c428d509ed1eefd910",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13971,
+      "targetSha256": "65faad75a71495c71499905fb5f41fe922fdd9ab5bf7b1c428d509ed1eefd910",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-min-content.log",
+      "sourceBytes": 13391,
+      "sourceSha256": "39ed59e868c59f40d3f7e10116f2f08c7efb254596b5d45b6b09293e3705e29f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13391,
+      "targetSha256": "39ed59e868c59f40d3f7e10116f2f08c7efb254596b5d45b6b09293e3705e29f",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-max-content.log",
+      "sourceBytes": 14198,
+      "sourceSha256": "fb8cdc9e71439ad2cd29b96a6074d6be53de3912b42dc26dde7792fde8ebba25",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14198,
+      "targetSha256": "fb8cdc9e71439ad2cd29b96a6074d6be53de3912b42dc26dde7792fde8ebba25",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-min-content.log",
+      "sourceBytes": 13684,
+      "sourceSha256": "79c5ca23ab8c7f32d3ea47f8030819b4f30e991c388c03c22c2f8e432db0d7d7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13684,
+      "targetSha256": "79c5ca23ab8c7f32d3ea47f8030819b4f30e991c388c03c22c2f8e432db0d7d7",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-max-content.log",
+      "sourceBytes": 14940,
+      "sourceSha256": "9c1fd15a589e50ab51e1951418be81fbae926c3a503860dce810c1264f0777c2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14940,
+      "targetSha256": "9c1fd15a589e50ab51e1951418be81fbae926c3a503860dce810c1264f0777c2",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-min-content.log",
+      "sourceBytes": 14492,
+      "sourceSha256": "e4a55d3ae6849a6ea7e960080606e411a68799800a51babac0aa3a0ee1168b9d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14492,
+      "targetSha256": "e4a55d3ae6849a6ea7e960080606e411a68799800a51babac0aa3a0ee1168b9d",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-max-content.log",
+      "sourceBytes": 13963,
+      "sourceSha256": "44a61e8a19d41853816d17fe483d08d068d9c59997015d3b1ed793cc15f8b249",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13963,
+      "targetSha256": "44a61e8a19d41853816d17fe483d08d068d9c59997015d3b1ed793cc15f8b249",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-min-content.log",
+      "sourceBytes": 13383,
+      "sourceSha256": "e433938b25301eb59d14427913c818439c747f381ef2a8be6b8e3044e4a8bc2f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13383,
+      "targetSha256": "e433938b25301eb59d14427913c818439c747f381ef2a8be6b8e3044e4a8bc2f",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-max-content.log",
+      "sourceBytes": 14190,
+      "sourceSha256": "5169cf72f089b06ed8532220b5a6b128032366d5b0ad48974c383ca7d43c4c18",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14190,
+      "targetSha256": "5169cf72f089b06ed8532220b5a6b128032366d5b0ad48974c383ca7d43c4c18",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-min-content.log",
+      "sourceBytes": 13676,
+      "sourceSha256": "5603da5d2af452641ef64d6fdec7fdf8b76c25700ed3d80373499d404776d63e",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13676,
+      "targetSha256": "5603da5d2af452641ef64d6fdec7fdf8b76c25700ed3d80373499d404776d63e",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+      "sourceBytes": 41012,
+      "sourceSha256": "cd2058ee93f76b86d4e2d6d2073d9e40c3310740e37dab9307370661a5f246b6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 41012,
+      "targetSha256": "b8410e4c45dbc983669e7e0406664cc9dd7279e0a2d18d084714ab523951c9f7",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.md",
+      "sourceBytes": 6533,
+      "sourceSha256": "8a9ed34e1b670dd95ce6f275de514db7c7919db3c83c5065f15113a290b0dfdc",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 6533,
+      "targetSha256": "8a9ed34e1b670dd95ce6f275de514db7c7919db3c83c5065f15113a290b0dfdc",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+      "sourceBytes": 39165,
+      "sourceSha256": "5692957a6bc37ecb2508e33b8c3778d6656b395acbe1cf9fc8631370c2011b7a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 39165,
+      "targetSha256": "6685e23e7753dba89dd71ea10f486152ea9f0303eb6507ee2408b34e2cb3d20a",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md",
+      "sourceBytes": 4210,
+      "sourceSha256": "f6b8de6f32cb6b694dcb6d7d8ebbc04f0d5c55af05eabdf32d6ec5a03f8528f2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4210,
+      "targetSha256": "f6b8de6f32cb6b694dcb6d7d8ebbc04f0d5c55af05eabdf32d6ec5a03f8528f2",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/source-revision.json",
+      "sourceBytes": 7716,
+      "sourceSha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 7716,
+      "targetSha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+      "sourceBytes": 39247,
+      "sourceSha256": "ed91dd33c33b123e36393a450a647cd24f3cd847356a434d666abcdc521cf0a7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 39247,
+      "targetSha256": "e1f380a4d59c20550c974ead9e7d70fead6e082fc3c7eec567a64d892fee9ee0",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.md",
+      "sourceBytes": 4172,
+      "sourceSha256": "1a0028c3c5ee6a2130c77636978c3f6192e9c5b40412941a0b54caeb754af066",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4172,
+      "targetSha256": "1a0028c3c5ee6a2130c77636978c3f6192e9c5b40412941a0b54caeb754af066",
+      "action": "same"
+    },
+    {
+      "route": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+      "sourceBytes": 37113,
+      "sourceSha256": "461f3eab8b335e4db842f0536b3b4521c3fc047b083bce4004cb0a2341b69a75",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37165,
+      "targetSha256": "20ea5029823fc76f0b456d0f7c66dcf8271aa6a3b4126a1683d9b58f43dee1b3",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.md",
+      "sourceBytes": 2967,
+      "sourceSha256": "c7bb629baee7e577d8fe6eadffc1b369b540708d7bcd9d12a60e60d1013e71c0",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3004,
+      "targetSha256": "8adbb5355c60a2959e9888fc663902375460b7118511a129f2d37f09983060f1",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png",
+      "sourceBytes": 434964,
+      "sourceSha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 434964,
+      "targetSha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664",
+      "action": "same"
+    },
+    {
+      "route": "logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+      "sourceBytes": 37383,
+      "sourceSha256": "38a689f64af4e3f86e3e364587d8b0384f7a3918c88d32c28c0c8d6ecf154852",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37383,
+      "targetSha256": "f5bae0b34934b9b7961217546ca90b260ecbc4c80cfbd64cb16a26b8386e0d69",
+      "action": "replace"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md",
+      "sourceBytes": 3021,
+      "sourceSha256": "9fcb2343ef625a62493abfd4534cb4e61119ad55042c1c705a6346e92d150899",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3021,
+      "targetSha256": "9fcb2343ef625a62493abfd4534cb4e61119ad55042c1c705a6346e92d150899",
+      "action": "same"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+      "sourceBytes": 37686,
+      "sourceSha256": "95940e3e0d1005ba1a89245198a919f16534cbb98b0b829d1e4ffb62ada1b8a3",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37686,
+      "targetSha256": "e0310ab207057b05738d5ea56132a283d3e758712b9cb65b07ad4e6162c1bb1a",
+      "action": "replace"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md",
+      "sourceBytes": 3300,
+      "sourceSha256": "004e83b812bc3855a2c344b9b35dfad905b009126b1da69985b69e7b8b9c5bc9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3300,
+      "targetSha256": "004e83b812bc3855a2c344b9b35dfad905b009126b1da69985b69e7b8b9c5bc9",
+      "action": "same"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+      "sourceBytes": 46022,
+      "sourceSha256": "f4f807dc083fc02574610915357add4be10df7197b430bd86973f5e5f7a25890",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 46022,
+      "targetSha256": "cf429f6e9e2942c032a2225f30a727cc42d16102392c24cc81da1a39b5384363",
+      "action": "replace"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-word-spacing.md",
+      "sourceBytes": 9199,
+      "sourceSha256": "297a35d0a60f2e778e261f92af8ce1ac7ca6122322b7551104b5be6fb078f06e",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 9199,
+      "targetSha256": "297a35d0a60f2e778e261f92af8ce1ac7ca6122322b7551104b5be6fb078f06e",
+      "action": "same"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "sourceBytes": 336068,
+      "sourceSha256": "13f8a793077840657287c097ae2d652e421cca1a54562292ea8b1132ba762751",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 336068,
+      "targetSha256": "dacb7b8d05423eeacc5de7bf075401a8cb772270e688b262907eed8883b39e6c",
+      "action": "replace"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "sourceBytes": 201562,
+      "sourceSha256": "afd85be31d9787b786cdba939f55c010a59251f4732f6a063af9f11f7a38fdd4",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 201562,
+      "targetSha256": "afd85be31d9787b786cdba939f55c010a59251f4732f6a063af9f11f7a38fdd4",
+      "action": "same"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "sourceBytes": 71237,
+      "sourceSha256": "a89f3941951a2e8d463915f5bcd3b1988fe08599a0a6c588ffa16d2a8e642958",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 71237,
+      "targetSha256": "a30a33b37c3b00e02c31009275a1e14bf129cbeb662c817b5181544ff84245d7",
+      "action": "replace"
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "sourceBytes": 29304,
+      "sourceSha256": "aa6f0ba897c56cf15caf5fb47e623b72154be2d894dae42d1b611c4485084c95",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 29304,
+      "targetSha256": "aa6f0ba897c56cf15caf5fb47e623b72154be2d894dae42d1b611c4485084c95",
+      "action": "same"
+    },
+    {
+      "route": "public/icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same"
+    },
+    {
+      "route": "public/logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same"
+    },
+    {
+      "route": "public/roadmap.html",
+      "sourceBytes": 450362,
+      "sourceSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 450362,
+      "targetSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+      "action": "same"
+    },
+    {
+      "route": "public/roadmap.svg",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same"
+    },
+    {
+      "route": "roadmap.html",
+      "sourceBytes": 450362,
+      "sourceSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 450362,
+      "targetSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+      "action": "same"
+    },
+    {
+      "route": "roadmap.svg",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sourceBytes": 401889,
+      "sourceSha256": "c875e2e5eb627895c3780b5bcc7ca6409e9c05744884859f3896c556699c78bb",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 401889,
+      "targetSha256": "3fea776d81f9df48efc425852513a4976aecc03220704d55a8cba8e2dacd1ed4",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "sourceBytes": 272768,
+      "sourceSha256": "8a6257aa9d7b60a05a99fd231388b97efc3190a76f119faffbf972a4b157d526",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 272768,
+      "targetSha256": "8a6257aa9d7b60a05a99fd231388b97efc3190a76f119faffbf972a4b157d526",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+      "sourceBytes": 88866,
+      "sourceSha256": "1bb2551c7fb40b1a76af3485ffce16cb5075242d443bc51db129550d5189894d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 88866,
+      "targetSha256": "1bb2551c7fb40b1a76af3485ffce16cb5075242d443bc51db129550d5189894d",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-observation.json",
+      "sourceBytes": 8741,
+      "sourceSha256": "177da3c6fe21f4c9e5f07035fc31d17995005acdd2cb5f86184400b0f7ab800a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 8741,
+      "targetSha256": "177da3c6fe21f4c9e5f07035fc31d17995005acdd2cb5f86184400b0f7ab800a",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+      "sourceBytes": 37804,
+      "sourceSha256": "bb3cf700f44a142b2f8ad27be4ea805375a4f135f6cfa8ea587b988ebde8f132",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37804,
+      "targetSha256": "5603d88259fa79c1c795b5827e352e92dc530ded8245ccf173d69dfb05dd1966",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md",
+      "sourceBytes": 3217,
+      "sourceSha256": "c6085c524d4a6c9b2a5a67dfc531e0cc86aa812e7d198539b4e911a22ae0b048",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3217,
+      "targetSha256": "c6085c524d4a6c9b2a5a67dfc531e0cc86aa812e7d198539b4e911a22ae0b048",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+      "sourceBytes": 6307,
+      "sourceSha256": "241333d0f5b05890794ef726f96abd36149e30f12f846bb9b0274f913843c2b8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 6307,
+      "targetSha256": "241333d0f5b05890794ef726f96abd36149e30f12f846bb9b0274f913843c2b8",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/validate-precomparison.mjs",
+      "sourceBytes": 4149,
+      "sourceSha256": "941ac96f489fcffeb879f69c31bf0d8a5342f3f332bf311557c6930398da3364",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4149,
+      "targetSha256": "941ac96f489fcffeb879f69c31bf0d8a5342f3f332bf311557c6930398da3364",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+      "sourceBytes": 1884,
+      "sourceSha256": "7bc08036426bc6e6b4421ddda57818a8e967893dd33e1432e7a594c7bb61c4fc",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1884,
+      "targetSha256": "7bc08036426bc6e6b4421ddda57818a8e967893dd33e1432e7a594c7bb61c4fc",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+      "sourceBytes": 76059,
+      "sourceSha256": "0847a3e2e2646b17469f7a3fb363e0edd851a14c4616b71485ede5c428b8e9d1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 76059,
+      "targetSha256": "0847a3e2e2646b17469f7a3fb363e0edd851a14c4616b71485ede5c428b8e9d1",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/simulator.json",
+      "sourceBytes": 598,
+      "sourceSha256": "aa59a48215f1644a8e74126cd843e41a8dbf13468b6089047eb7102a9d5530d8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 598,
+      "targetSha256": "aa59a48215f1644a8e74126cd843e41a8dbf13468b6089047eb7102a9d5530d8",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 24947,
+      "sourceSha256": "6c0106119d66abd396b0b0aae577a2292e089019d8df50efb4d23df978bb9757",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24947,
+      "targetSha256": "6c0106119d66abd396b0b0aae577a2292e089019d8df50efb4d23df978bb9757",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 24522,
+      "sourceSha256": "14efb75769ca9255ef31aba1a340fdbd7b61f7e7df60cec7b3ef6f3897e92f03",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24522,
+      "targetSha256": "14efb75769ca9255ef31aba1a340fdbd7b61f7e7df60cec7b3ef6f3897e92f03",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-max-content.log",
+      "sourceBytes": 24456,
+      "sourceSha256": "f07f74fbf65402f343fb7c0812d8cfbcbe3720bc11c2d568e8ac9a2328a1f107",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24456,
+      "targetSha256": "f07f74fbf65402f343fb7c0812d8cfbcbe3720bc11c2d568e8ac9a2328a1f107",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-min-content.log",
+      "sourceBytes": 23683,
+      "sourceSha256": "5bb2fd91d8c8da40b7393da5aef3426edebe55cac2edb54bdcec1f06a98229e6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23683,
+      "targetSha256": "5bb2fd91d8c8da40b7393da5aef3426edebe55cac2edb54bdcec1f06a98229e6",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-max-content.log",
+      "sourceBytes": 24393,
+      "sourceSha256": "2f8491eacbed3490dbbce3f061a067699a90d4578b79e15a6b2b5a258fdd3764",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24393,
+      "targetSha256": "2f8491eacbed3490dbbce3f061a067699a90d4578b79e15a6b2b5a258fdd3764",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-min-content.log",
+      "sourceBytes": 23880,
+      "sourceSha256": "9dccba553f3a0c3419252ba45bcf72b9d9aa7f2b9102cfb80c41f834a3696e88",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23880,
+      "targetSha256": "9dccba553f3a0c3419252ba45bcf72b9d9aa7f2b9102cfb80c41f834a3696e88",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-max-content.log",
+      "sourceBytes": 30203,
+      "sourceSha256": "7615f23dda562b919919d19d2523842e394aaf54a1ffdaaac25207377c0df5a1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 30203,
+      "targetSha256": "7615f23dda562b919919d19d2523842e394aaf54a1ffdaaac25207377c0df5a1",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-min-content.log",
+      "sourceBytes": 24514,
+      "sourceSha256": "2768b6d8141cd570b0d947acbc0ea60def0dd8e2f45a1a7d0b437f292c779c33",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24514,
+      "targetSha256": "2768b6d8141cd570b0d947acbc0ea60def0dd8e2f45a1a7d0b437f292c779c33",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-max-content.log",
+      "sourceBytes": 29149,
+      "sourceSha256": "e41f692e7ac84a111dfbd651f85e83ae4e625340830915ce6363494a135b1214",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 29149,
+      "targetSha256": "e41f692e7ac84a111dfbd651f85e83ae4e625340830915ce6363494a135b1214",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-min-content.log",
+      "sourceBytes": 23578,
+      "sourceSha256": "86cd75e87a5c80635c1aa986b0f371658a05dc6facbd8bd5a9cb1f71723fbfbb",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23578,
+      "targetSha256": "86cd75e87a5c80635c1aa986b0f371658a05dc6facbd8bd5a9cb1f71723fbfbb",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-max-content.log",
+      "sourceBytes": 24671,
+      "sourceSha256": "e2930e9b207b07ee106dfe1c374bc2e6eb6d2f600f37c4a26f669a1ebbbe8c2f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24671,
+      "targetSha256": "e2930e9b207b07ee106dfe1c374bc2e6eb6d2f600f37c4a26f669a1ebbbe8c2f",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-min-content.log",
+      "sourceBytes": 23870,
+      "sourceSha256": "cc70e458058a0f439a44f8309f3b29d2e92ad05a61c93600b3855ff7de3d7a51",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23870,
+      "targetSha256": "cc70e458058a0f439a44f8309f3b29d2e92ad05a61c93600b3855ff7de3d7a51",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 24943,
+      "sourceSha256": "55d3b73ae8507f432847a9ae74d6a4624ae4fe5acb1955dd5209e82e5099c6e8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24943,
+      "targetSha256": "55d3b73ae8507f432847a9ae74d6a4624ae4fe5acb1955dd5209e82e5099c6e8",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 29786,
+      "sourceSha256": "fc9bb5c407afa2d6a7cbd313954cd41a7469de7e89106c8278b2cc11fd085bb5",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 29786,
+      "targetSha256": "fc9bb5c407afa2d6a7cbd313954cd41a7469de7e89106c8278b2cc11fd085bb5",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-max-content.log",
+      "sourceBytes": 24453,
+      "sourceSha256": "b164b08d63d5f03d236c21bb3c8c37974a9688ba2583bdca79f3ca9f63ec4f4b",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24453,
+      "targetSha256": "b164b08d63d5f03d236c21bb3c8c37974a9688ba2583bdca79f3ca9f63ec4f4b",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-min-content.log",
+      "sourceBytes": 23679,
+      "sourceSha256": "ce2eca8d1a83d7ddefd63ca0160bebace0d631d4af4f67f63f450080dc4e05c8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23679,
+      "targetSha256": "ce2eca8d1a83d7ddefd63ca0160bebace0d631d4af4f67f63f450080dc4e05c8",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-max-content.log",
+      "sourceBytes": 24298,
+      "sourceSha256": "1468947cfbe7350c353a1e7a39479a0d5d2a8e2e09e874469a6c52503f243420",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24298,
+      "targetSha256": "1468947cfbe7350c353a1e7a39479a0d5d2a8e2e09e874469a6c52503f243420",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-min-content.log",
+      "sourceBytes": 23969,
+      "sourceSha256": "aeacfb5afce1bbe15ab65e56e9ded052cfd9de5fbd954c51a7c3064c378d41a7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23969,
+      "targetSha256": "aeacfb5afce1bbe15ab65e56e9ded052cfd9de5fbd954c51a7c3064c378d41a7",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-max-content.log",
+      "sourceBytes": 24928,
+      "sourceSha256": "57352058c28c4ce5d12f1fc22669cb147c560e38483fdf2582af22a20f26bd0c",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24928,
+      "targetSha256": "57352058c28c4ce5d12f1fc22669cb147c560e38483fdf2582af22a20f26bd0c",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-min-content.log",
+      "sourceBytes": 24601,
+      "sourceSha256": "955de5996683d413b5c5d95fb298ba5c1795fd3d2ff1ad2f7b4f8cf6417bb7c6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24601,
+      "targetSha256": "955de5996683d413b5c5d95fb298ba5c1795fd3d2ff1ad2f7b4f8cf6417bb7c6",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-max-content.log",
+      "sourceBytes": 24441,
+      "sourceSha256": "cf43dbea1313c61bc96992a09d4166a226bbecdf483fc7533c9454825a544268",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24441,
+      "targetSha256": "cf43dbea1313c61bc96992a09d4166a226bbecdf483fc7533c9454825a544268",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-min-content.log",
+      "sourceBytes": 23572,
+      "sourceSha256": "4a4896e4c7fbd0aa60449d94dbb18c572fdfac26c52f8b47ef9dfadcf012fdd3",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23572,
+      "targetSha256": "4a4896e4c7fbd0aa60449d94dbb18c572fdfac26c52f8b47ef9dfadcf012fdd3",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-max-content.log",
+      "sourceBytes": 24287,
+      "sourceSha256": "dc7c765c4e6aea536ae4ce3256ef8b6fa61c9912891bd39193c39711f8fcdaed",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 24287,
+      "targetSha256": "dc7c765c4e6aea536ae4ce3256ef8b6fa61c9912891bd39193c39711f8fcdaed",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-min-content.log",
+      "sourceBytes": 23957,
+      "sourceSha256": "c895f039ef71e3ae1d88b9218a066536d183e34c66b2ba79235e99aa91034441",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 23957,
+      "targetSha256": "c895f039ef71e3ae1d88b9218a066536d183e34c66b2ba79235e99aa91034441",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-build.log",
+      "sourceBytes": 4554,
+      "sourceSha256": "a232bf24a844a4f5b57a9e972a93f4d767be7b1b4a1ba23be16a709276cfd2ee",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4554,
+      "targetSha256": "a232bf24a844a4f5b57a9e972a93f4d767be7b1b4a1ba23be16a709276cfd2ee",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+      "sourceBytes": 37831,
+      "sourceSha256": "819f469cfeeae347e7e444163b0dde445b2834902242bab4d68e85e772f5ba53",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37831,
+      "targetSha256": "8029be97de92afe45f06b4b1f6acae3707158e0ab67a8c068de63e71aa6efffd",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.md",
+      "sourceBytes": 1365,
+      "sourceSha256": "d1a797e5daa296a8d8e09e940eae9b7d46c69275856b3ff1f747647f52d1476a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1365,
+      "targetSha256": "d1a797e5daa296a8d8e09e940eae9b7d46c69275856b3ff1f747647f52d1476a",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+      "sourceBytes": 39755,
+      "sourceSha256": "58538e6fb3ee24dc36867d53422c5ff2091edae588d2996b7ea16cc9e57d84a1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 39755,
+      "targetSha256": "8cc544f8808d1641fd809b11cd7ef680f9f61dc7a47744d659a0482edbd94e78",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.md",
+      "sourceBytes": 5452,
+      "sourceSha256": "a2e1c647a9142d890415b61dfa656bd2b0100864c2c6ee1846be431b3a2449e2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 5452,
+      "targetSha256": "a2e1c647a9142d890415b61dfa656bd2b0100864c2c6ee1846be431b3a2449e2",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-build.log",
+      "sourceBytes": 64970,
+      "sourceSha256": "1cfacd80b9bc6e5934d4d98cfff7bb1a1cfbbce65fa3915050b25486c6dddff1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 64970,
+      "targetSha256": "1cfacd80b9bc6e5934d4d98cfff7bb1a1cfbbce65fa3915050b25486c6dddff1",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-capture.log",
+      "sourceBytes": 1513,
+      "sourceSha256": "59f24d45832def899ce5670b99011636ee513721c55140056d0e3707d2cf4f0f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1513,
+      "targetSha256": "59f24d45832def899ce5670b99011636ee513721c55140056d0e3707d2cf4f0f",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+      "sourceBytes": 1908,
+      "sourceSha256": "991aca60c561545f3e518acad894bf22f42cce1244425e886aa43a2fe8c42af9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1908,
+      "targetSha256": "991aca60c561545f3e518acad894bf22f42cce1244425e886aa43a2fe8c42af9",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+      "sourceBytes": 143525,
+      "sourceSha256": "b2eb0bc0183bf2162b18d2f7c9ed55b12a014acb3951ff645b39f093fd3f7aef",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 143525,
+      "targetSha256": "b2eb0bc0183bf2162b18d2f7c9ed55b12a014acb3951ff645b39f093fd3f7aef",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/simulator.json",
+      "sourceBytes": 676,
+      "sourceSha256": "7fb16cb3f9521a6e060ff6de2d0e51dd01943df45e1b6f24c3eb272a7c141764",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 676,
+      "targetSha256": "7fb16cb3f9521a6e060ff6de2d0e51dd01943df45e1b6f24c3eb272a7c141764",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 14951,
+      "sourceSha256": "6609c8bf3e57ad166c3f37fd90de90075dde0a0947108c611523c5f65ffbc1bc",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14951,
+      "targetSha256": "6609c8bf3e57ad166c3f37fd90de90075dde0a0947108c611523c5f65ffbc1bc",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 14503,
+      "sourceSha256": "0a4d598157d5f9fc61f80e292662922b368b65fb72f0002cec8adb53b8de3aa2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14503,
+      "targetSha256": "0a4d598157d5f9fc61f80e292662922b368b65fb72f0002cec8adb53b8de3aa2",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-max-content.log",
+      "sourceBytes": 13974,
+      "sourceSha256": "1e643f53be04866f9026d63f3db804693259616bc511a41ade8adc97d09724ca",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13974,
+      "targetSha256": "1e643f53be04866f9026d63f3db804693259616bc511a41ade8adc97d09724ca",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-min-content.log",
+      "sourceBytes": 13394,
+      "sourceSha256": "35f9c95637479e9aa711ca1b61e13cd05aa58f9741cf7e7c3af5b4195166bb58",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13394,
+      "targetSha256": "35f9c95637479e9aa711ca1b61e13cd05aa58f9741cf7e7c3af5b4195166bb58",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-max-content.log",
+      "sourceBytes": 14200,
+      "sourceSha256": "4011fd861c8aa342cc82b2262ed6b8fa400b8bb5827c4bb136e87d9d4f6a498a",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14200,
+      "targetSha256": "4011fd861c8aa342cc82b2262ed6b8fa400b8bb5827c4bb136e87d9d4f6a498a",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-min-content.log",
+      "sourceBytes": 13687,
+      "sourceSha256": "45165c3c6a32e8f6b8e10a3911cb7f2e2847a42c782bb48a12f34f6f6e1cbf21",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13687,
+      "targetSha256": "45165c3c6a32e8f6b8e10a3911cb7f2e2847a42c782bb48a12f34f6f6e1cbf21",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-max-content.log",
+      "sourceBytes": 14944,
+      "sourceSha256": "ededb1ac609cb543227053180ce9dbdd24b8312acd56301ee4e893c7906f8747",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14944,
+      "targetSha256": "ededb1ac609cb543227053180ce9dbdd24b8312acd56301ee4e893c7906f8747",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-min-content.log",
+      "sourceBytes": 14496,
+      "sourceSha256": "18a2c696efe3e3d21210f5941251d72235a6ea62c9472778f1ebabe64ce57145",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14496,
+      "targetSha256": "18a2c696efe3e3d21210f5941251d72235a6ea62c9472778f1ebabe64ce57145",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-max-content.log",
+      "sourceBytes": 13967,
+      "sourceSha256": "73e7a4f6b0be1e63cafa1b9a0800fdd7e240155746480085a9a8b774f2e90f7d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13967,
+      "targetSha256": "73e7a4f6b0be1e63cafa1b9a0800fdd7e240155746480085a9a8b774f2e90f7d",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-min-content.log",
+      "sourceBytes": 13387,
+      "sourceSha256": "750a4a60209f55827e58bf305dc3c38c1a0fd8248d5634262ed5444e71d1957d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13387,
+      "targetSha256": "750a4a60209f55827e58bf305dc3c38c1a0fd8248d5634262ed5444e71d1957d",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-max-content.log",
+      "sourceBytes": 14194,
+      "sourceSha256": "798603e8683f70663a9be09a11a635a286221da3c9e80a7f380f235fa728aefd",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14194,
+      "targetSha256": "798603e8683f70663a9be09a11a635a286221da3c9e80a7f380f235fa728aefd",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-min-content.log",
+      "sourceBytes": 13680,
+      "sourceSha256": "da5bb1d74ee12d21ac04d8dadfedd5b18b4ed43542d769398f69d5c1e42d7a21",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13680,
+      "targetSha256": "da5bb1d74ee12d21ac04d8dadfedd5b18b4ed43542d769398f69d5c1e42d7a21",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "sourceBytes": 14948,
+      "sourceSha256": "f663bb5787770169fb3aa05e3bff5ced44196ca2b45b931bd8f1eb3d377a4a03",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14948,
+      "targetSha256": "f663bb5787770169fb3aa05e3bff5ced44196ca2b45b931bd8f1eb3d377a4a03",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "sourceBytes": 14500,
+      "sourceSha256": "86f0cea70978adf82341ea74d39e1027f5d3547c08cd9acc5eb5ebf65d704cd7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14500,
+      "targetSha256": "86f0cea70978adf82341ea74d39e1027f5d3547c08cd9acc5eb5ebf65d704cd7",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-max-content.log",
+      "sourceBytes": 13971,
+      "sourceSha256": "65faad75a71495c71499905fb5f41fe922fdd9ab5bf7b1c428d509ed1eefd910",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13971,
+      "targetSha256": "65faad75a71495c71499905fb5f41fe922fdd9ab5bf7b1c428d509ed1eefd910",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-min-content.log",
+      "sourceBytes": 13391,
+      "sourceSha256": "39ed59e868c59f40d3f7e10116f2f08c7efb254596b5d45b6b09293e3705e29f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13391,
+      "targetSha256": "39ed59e868c59f40d3f7e10116f2f08c7efb254596b5d45b6b09293e3705e29f",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-max-content.log",
+      "sourceBytes": 14198,
+      "sourceSha256": "fb8cdc9e71439ad2cd29b96a6074d6be53de3912b42dc26dde7792fde8ebba25",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14198,
+      "targetSha256": "fb8cdc9e71439ad2cd29b96a6074d6be53de3912b42dc26dde7792fde8ebba25",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-min-content.log",
+      "sourceBytes": 13684,
+      "sourceSha256": "79c5ca23ab8c7f32d3ea47f8030819b4f30e991c388c03c22c2f8e432db0d7d7",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13684,
+      "targetSha256": "79c5ca23ab8c7f32d3ea47f8030819b4f30e991c388c03c22c2f8e432db0d7d7",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-max-content.log",
+      "sourceBytes": 14940,
+      "sourceSha256": "9c1fd15a589e50ab51e1951418be81fbae926c3a503860dce810c1264f0777c2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14940,
+      "targetSha256": "9c1fd15a589e50ab51e1951418be81fbae926c3a503860dce810c1264f0777c2",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-min-content.log",
+      "sourceBytes": 14492,
+      "sourceSha256": "e4a55d3ae6849a6ea7e960080606e411a68799800a51babac0aa3a0ee1168b9d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14492,
+      "targetSha256": "e4a55d3ae6849a6ea7e960080606e411a68799800a51babac0aa3a0ee1168b9d",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-max-content.log",
+      "sourceBytes": 13963,
+      "sourceSha256": "44a61e8a19d41853816d17fe483d08d068d9c59997015d3b1ed793cc15f8b249",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13963,
+      "targetSha256": "44a61e8a19d41853816d17fe483d08d068d9c59997015d3b1ed793cc15f8b249",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-min-content.log",
+      "sourceBytes": 13383,
+      "sourceSha256": "e433938b25301eb59d14427913c818439c747f381ef2a8be6b8e3044e4a8bc2f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13383,
+      "targetSha256": "e433938b25301eb59d14427913c818439c747f381ef2a8be6b8e3044e4a8bc2f",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-max-content.log",
+      "sourceBytes": 14190,
+      "sourceSha256": "5169cf72f089b06ed8532220b5a6b128032366d5b0ad48974c383ca7d43c4c18",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 14190,
+      "targetSha256": "5169cf72f089b06ed8532220b5a6b128032366d5b0ad48974c383ca7d43c4c18",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-min-content.log",
+      "sourceBytes": 13676,
+      "sourceSha256": "5603da5d2af452641ef64d6fdec7fdf8b76c25700ed3d80373499d404776d63e",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 13676,
+      "targetSha256": "5603da5d2af452641ef64d6fdec7fdf8b76c25700ed3d80373499d404776d63e",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+      "sourceBytes": 41022,
+      "sourceSha256": "fb7a49fdef3e6887821755481bd191d498f31cd0e2dff51d8126e74ff0300e06",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 41022,
+      "targetSha256": "8621d907762ea01d01e8d87195bc7828d53b22be576daa3b66923765a176c3ba",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.md",
+      "sourceBytes": 6533,
+      "sourceSha256": "8a9ed34e1b670dd95ce6f275de514db7c7919db3c83c5065f15113a290b0dfdc",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 6533,
+      "targetSha256": "8a9ed34e1b670dd95ce6f275de514db7c7919db3c83c5065f15113a290b0dfdc",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+      "sourceBytes": 39185,
+      "sourceSha256": "ae17e9f2e1e1b7c75b2a97eea9d3c40d2ace960aeee33776beeff1d14af28f21",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 39185,
+      "targetSha256": "a3376c4f3840a0efd41187487550738facbdd670a98402b68445944d1967ac70",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md",
+      "sourceBytes": 4210,
+      "sourceSha256": "f6b8de6f32cb6b694dcb6d7d8ebbc04f0d5c55af05eabdf32d6ec5a03f8528f2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4210,
+      "targetSha256": "f6b8de6f32cb6b694dcb6d7d8ebbc04f0d5c55af05eabdf32d6ec5a03f8528f2",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/source-revision.json",
+      "sourceBytes": 7716,
+      "sourceSha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 7716,
+      "targetSha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+      "sourceBytes": 39257,
+      "sourceSha256": "9ceba2972def3bf2fa6a27506ae308daddf283259adf9064023995bc2c4728e9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 39257,
+      "targetSha256": "78309fc55b8565d5b308df12f1a26d1001e5bb5a8390bcfa59bbaef5aeb38710",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.md",
+      "sourceBytes": 4172,
+      "sourceSha256": "1a0028c3c5ee6a2130c77636978c3f6192e9c5b40412941a0b54caeb754af066",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4172,
+      "targetSha256": "1a0028c3c5ee6a2130c77636978c3f6192e9c5b40412941a0b54caeb754af066",
+      "action": "same"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+      "sourceBytes": 37133,
+      "sourceSha256": "a3d2e5909dbd3202db28dc15841076bc139b818c448c00b8407aeb0249c2ef94",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37185,
+      "targetSha256": "7773c9d11a2c53a6265b272ba8942e22954b927b985199132f4893e738c1ef21",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.md",
+      "sourceBytes": 2967,
+      "sourceSha256": "c7bb629baee7e577d8fe6eadffc1b369b540708d7bcd9d12a60e60d1013e71c0",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3004,
+      "targetSha256": "8adbb5355c60a2959e9888fc663902375460b7118511a129f2d37f09983060f1",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png",
+      "sourceBytes": 434964,
+      "sourceSha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 434964,
+      "targetSha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664",
+      "action": "same"
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+      "sourceBytes": 37393,
+      "sourceSha256": "d12d7d00f9ee4fca4b16929766ec4943ce8454ec572e3de3f1026be149220fd8",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37393,
+      "targetSha256": "0359d02a061d9571ad2857d85e0c4efa51a8d3350f7b880dcac5aaad3b192641",
+      "action": "replace"
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md",
+      "sourceBytes": 3021,
+      "sourceSha256": "9fcb2343ef625a62493abfd4534cb4e61119ad55042c1c705a6346e92d150899",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3021,
+      "targetSha256": "9fcb2343ef625a62493abfd4534cb4e61119ad55042c1c705a6346e92d150899",
+      "action": "same"
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+      "sourceBytes": 37694,
+      "sourceSha256": "83970e6208a8c9038d9a10d5aa0eb262852e3cbb2222d7c4f69ee91c753cfce6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 37694,
+      "targetSha256": "1e120fdf3224de733395d661b1dee57d55c6e2276b67c04c1416b6766f54056f",
+      "action": "replace"
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md",
+      "sourceBytes": 3300,
+      "sourceSha256": "004e83b812bc3855a2c344b9b35dfad905b009126b1da69985b69e7b8b9c5bc9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 3300,
+      "targetSha256": "004e83b812bc3855a2c344b9b35dfad905b009126b1da69985b69e7b8b9c5bc9",
+      "action": "same"
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+      "sourceBytes": 46024,
+      "sourceSha256": "5b06fd72458cfadfc668d15a4bfa60427cab21b2ca076229e168db818ed8037c",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 46024,
+      "targetSha256": "4f28b5a67e1a1bba4150406ee7d9be19eaec8f3981bda0a5fbb06f20f73266e2",
+      "action": "replace"
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing.md",
+      "sourceBytes": 9199,
+      "sourceSha256": "297a35d0a60f2e778e261f92af8ce1ac7ca6122322b7551104b5be6fb078f06e",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 9199,
+      "targetSha256": "297a35d0a60f2e778e261f92af8ce1ac7ca6122322b7551104b5be6fb078f06e",
+      "action": "same"
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.html",
+      "sourceBytes": 336074,
+      "sourceSha256": "84263ed72d2761c7fc92a076192d3bcfc771ffad378fc7c2b001cc6bb7054b36",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 336074,
+      "targetSha256": "d44e43c559ecc4e5efbe3e6ae9249b874bbf3e5a88754f859cd30aebf116b9e9",
+      "action": "replace"
+    },
+    {
+      "route": "spec/plan/c11-4-grid-track-sizing.md",
+      "sourceBytes": 201562,
+      "sourceSha256": "afd85be31d9787b786cdba939f55c010a59251f4732f6a063af9f11f7a38fdd4",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 201562,
+      "targetSha256": "afd85be31d9787b786cdba939f55c010a59251f4732f6a063af9f11f7a38fdd4",
+      "action": "same"
+    },
+    {
+      "route": "spec/plan/c11-css-grid.html",
+      "sourceBytes": 71197,
+      "sourceSha256": "d954b915febe5b67fa6cf484c0d04138b9038fd9849c75cb28db8494e8386df2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 71197,
+      "targetSha256": "0f2950765eee474f49e0528b189a3b4fd1c37828f469a820558cbbff6b04af89",
+      "action": "replace"
+    },
+    {
+      "route": "spec/plan/c11-css-grid.md",
+      "sourceBytes": 29304,
+      "sourceSha256": "aa6f0ba897c56cf15caf5fb47e623b72154be2d894dae42d1b611c4485084c95",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 29304,
+      "targetSha256": "aa6f0ba897c56cf15caf5fb47e623b72154be2d894dae42d1b611c4485084c95",
+      "action": "same"
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "action": "same"
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "action": "same"
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "sourceBytes": 450362,
+      "sourceSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 450362,
+      "targetSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+      "action": "same"
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "action": "same"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sourceBytes": 709182,
+      "sourceSha256": "69eef63adec2b08db95d86addebaff5aae36acf90b0be65ea24c35f339d3c5d1",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 709182,
+      "targetSha256": "e481ae5fe1bb8d512d6fa6f4370f26ded6d84fba7617514fcab3e3985d686a3d",
+      "action": "replace"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "sourceBytes": 565802,
+      "sourceSha256": "8bf476b1ec13a10df42e818275e634f43fbc96ade1dbd38feacd9d465c273aad",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 565802,
+      "targetSha256": "8bf476b1ec13a10df42e818275e634f43fbc96ade1dbd38feacd9d465c273aad",
+      "action": "same"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "action": "same"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser.1ca81d309b.png",
+      "sourceBytes": 434964,
+      "sourceSha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 434964,
+      "targetSha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664",
+      "action": "same"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "sourceBytes": 217061,
+      "sourceSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 217061,
+      "targetSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "action": "same"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "action": "same"
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "sourceBytes": 98,
+      "sourceSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 98,
+      "targetSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "action": "same"
+    },
+    {
+      "route": "static/js/async/route-03c77d4b9aa3.24fcd129cd.js",
+      "sourceBytes": 9669,
+      "sourceSha256": "693759ee7786478053b4189969951a6b2fdbfb5f5db09b4f9a161af3b7a955ce",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.7be9864405.js",
+      "sourceBytes": 316705,
+      "sourceSha256": "11cbb74b3a8b60b7b3a906dda1f8e1b3d15a874bc2b30fe493d8bf6c16a6b8b0",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-085de15858ee.8d299a3ffe.js",
+      "sourceBytes": 7685,
+      "sourceSha256": "a65d51e4f0839f936c3444e0b893f70f952e4a6fe38171397e067bc949fbe44d",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-20ad0bd6b751.bc3dbd44e4.js",
+      "sourceBytes": 8482,
+      "sourceSha256": "b1c165ab95802067f2f729df6eaf508528139ecfe362270b04cbd648e897800f",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-566e0f2ab4cc.81099a06ba.js",
+      "sourceBytes": 7309,
+      "sourceSha256": "a013b24e4051f62921fa2a9f5ba6aa0c6584b15aac1e9321cfe745ce8b60dfbf",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-58c20a556b5e.874710bfe6.js",
+      "sourceBytes": 7301,
+      "sourceSha256": "2bcd3c55940cafa8086121898bb3f301fe080989cbdc3b136ed8e4f433fc3cb6",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-590a3875de57.1618f82144.js",
+      "sourceBytes": 10792,
+      "sourceSha256": "2bcb96e8600724066baf41844d781418df96f247dd8b292149476f9f28ddac9e",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-5910e1943969.949c42e848.js",
+      "sourceBytes": 11234,
+      "sourceSha256": "ec036846a86da0d21f1d8313ddffc73eea9a9bd5bde93c10ce3e4066c9e453fc",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.794e719cec.js",
+      "sourceBytes": 748562,
+      "sourceSha256": "cc98893b32d7dd44739a832490034de813499d2cf350cd01dd797eac2950c8f9",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.d126281dbf.js",
+      "sourceBytes": 396608,
+      "sourceSha256": "5d0dcb084bc5df0d0f5e16e66c5ab5136786517b284c036889058d8101535990",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.6ff60c826f.js",
+      "sourceBytes": 748685,
+      "sourceSha256": "cbfd690a449a7143fd6baf973adc583b76ea0a6da66b9150e401bd44fc6c24f1",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.e6f13f7cbd.js",
+      "sourceBytes": 1006,
+      "sourceSha256": "1b5622e77e0b528269849df2da1b2377ec5bc7c4a019291f27a829745f25d0d7",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-a78ac562c0b9.30aa1814ab.js",
+      "sourceBytes": 14779,
+      "sourceSha256": "eb51eaa63a2801ac26ebb0207f58016097d31dbef29bab9cece1f73b8941a243",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-a804827ab1db.fd228631c2.js",
+      "sourceBytes": 9676,
+      "sourceSha256": "3f4f1983a6aa75d0e0b3e24b6608e52db0cdf797f4657782a61333d6a35ce4b5",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-a86a1c9fb291.63b30def5c.js",
+      "sourceBytes": 5859,
+      "sourceSha256": "f1084b96529773df88b9d351147625b90a117f68678d8f3d3f077ffd3b31d606",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-aa86ee6c2ade.c9553c37db.js",
+      "sourceBytes": 5679,
+      "sourceSha256": "73bb08d6b505b8d319c2a06dfdcde05ff8f375f6e48671923cb9bac381c3d0ad",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-b7ce154f07b0.c3962b064a.js",
+      "sourceBytes": 316723,
+      "sourceSha256": "658ce6c2ddb4681599aab38b18cbea621aa4a8a1367bc846ae80cd121f287411",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-bd1dd7aa02c1.d5c12c0f4c.js",
+      "sourceBytes": 11242,
+      "sourceSha256": "5a361cf90d3e8ec472ffeddc8d446ac204cae4dae730e564b333bb12c0dc21e4",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.5ab0acecbd.js",
+      "sourceBytes": 42410,
+      "sourceSha256": "5732333a9dbe57f2bfd6522056e8a7e5036914f1b0ce3007026e8790533b8865",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.384512e8dd.js",
+      "sourceBytes": 396584,
+      "sourceSha256": "d1c7271b60d7b7f9bccf2fb3ffe8d1296dba342695eccff67227b9b3761d580d",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c8c83a48538c.b56f979a7a.js",
+      "sourceBytes": 5845,
+      "sourceSha256": "591bd4725cbda4946e2da35661be3af84f800405d0d2df27d2a1ca9d1ac69839",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c99bc7ff4e5b.7b13f791d6.js",
+      "sourceBytes": 7680,
+      "sourceSha256": "e9e2e35d00018827b260ac2739446c49808451b568fab87feeef7b03879eaa44",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-cbbd5935b3d7.a7133d25d9.js",
+      "sourceBytes": 8498,
+      "sourceSha256": "252683996a70703b96ae7347f9bc17b42ba8281682a15e8a11ad198f90f9541d",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-d40b7bff1d9c.2b840a0926.js",
+      "sourceBytes": 8165,
+      "sourceSha256": "7c5dda3ca1edd93bb28967d1180c69531c21947e90767899ed3b38bdeee7123c",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-d4b02f34c38e.3aab4bcebb.js",
+      "sourceBytes": 42424,
+      "sourceSha256": "e269100516ebb8fb8d620fde4ad6cac95b0476332247ff38c37c2e5b7d8bc27d",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-d59731cf960f.2139c77c9b.js",
+      "sourceBytes": 5674,
+      "sourceSha256": "693aad84549898a01158c7ed06786243dbd3ecee48ad9b842dcf7b8014dfa7e9",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-d7627a2d178f.0a28678b6e.js",
+      "sourceBytes": 10799,
+      "sourceSha256": "14c1027e9966e70de716f2315cd388f51871a914a0b2817e25bd0be3c5c4e011",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-d976dd647955.d208564b87.js",
+      "sourceBytes": 14807,
+      "sourceSha256": "0bf550c340546a28b5e005702e10fb906dbb6d6c1c24ca5e659cad45a0aaef11",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-fe8dbc91cbf1.c815d27526.js",
+      "sourceBytes": 8150,
+      "sourceSha256": "4b34194d4fe4397efeba90a8fc6ccd98553be3defdd469aea28a64784dd6ea87",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/index.f8082733a4.js",
+      "sourceBytes": 129250,
+      "sourceSha256": "cc88aed414514ea2f12352c3107c428fe5b614d0a5fd56972cc70ff230c830c0",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "sourceBytes": 218366,
+      "sourceSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 218366,
+      "targetSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "action": "same"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "action": "same"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "sourceBytes": 35366,
+      "sourceSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 35366,
+      "targetSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "action": "same"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "action": "same"
+    },
+    {
+      "route": "static/js/styles.aba03c5c90.js",
+      "sourceBytes": 472,
+      "sourceSha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 472,
+      "targetSha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "action": "same"
+    },
+    {
+      "route": "static/search_index.ko.30525d58.json",
+      "sourceBytes": 1844295,
+      "sourceSha256": "30525d584611fa9f779574f37e7db7d9571486ecfd9f3d37c36430d9f25376dc",
+      "target": "missing",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "action": "create"
+    },
+    {
+      "route": "STATUS.html",
+      "sourceBytes": 708632,
+      "sourceSha256": "e69e0536479112848d5f30a13cb482040d6b3a880b329d250afccaab2c1f18c6",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 708632,
+      "targetSha256": "120316456234f284a804a100e749782a54842c5505b83cb159f53221dce0cd98",
+      "action": "replace"
+    },
+    {
+      "route": "STATUS.md",
+      "sourceBytes": 565802,
+      "sourceSha256": "8bf476b1ec13a10df42e818275e634f43fbc96ade1dbd38feacd9d465c273aad",
+      "target": "exists",
+      "targetExists": true,
+      "targetBytes": 565802,
+      "targetSha256": "8bf476b1ec13a10df42e818275e634f43fbc96ade1dbd38feacd9d465c273aad",
+      "action": "same"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
-# C11.4 anonymous Grid text computed `word-spacing` 계획
+# C11.4 anonymous Grid text computed `word-spacing` 계획·구현 결과
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**다음 후보 근거:** computed `font-size`·`line-height`·`letter-spacing`을 연결한 기존 anonymous direct-text fixture는 아직 computed `word-spacing`을 `ParagraphStyle`과 intrinsic 측정에 전달하지 않는다. pinned Parley `0.12.0`은 `StyleProperty::WordSpacing(f32)`를 제공한다. 이 계획은 기존 opt-in `RuntimeBlockFlexGridTrackSizingV1` fixture 경로에만 값을 전달하고, 일반 CSS admission이나 C11.4 완료를 선언하지 않는다.
+**구현 결과:** 구현 PR [#924](https://github.com/ohah/spinon/pull/924)은 2026-10-31T12:30:41Z Rebase and merge됐고 merge SHA는 `93aba4eff3998c54c595b661578b339aeda89d87`이다. 이 문서는 기존 opt-in `RuntimeBlockFlexGridTrackSizingV1` fixture에서 computed 값을 `ParagraphStyle`과 intrinsic 측정에 전달한 고정 24-scene slice의 범위·근거를 보존한다. 일반 CSS admission이나 C11.4 완료를 선언하지 않는다.
 
-**사전 비교:** [CSS 규범·Ahem 독립 계산·Chrome 156 관측 24/24](../spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md) · [fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-word-spacing.html). · [계획 실패 관점 검토 20개](./c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md) · [계획 PR diff 검토 20개](./c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md)
+**사전 비교:** [CSS 규범·Ahem 독립 계산·Chrome 156 관측 24/24](../spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md) · [fixture](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-word-spacing.html) · [계획 실패 관점 검토 20개](./c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md) · [계획 PR diff 검토 20개](./c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md)
 
 ## 목표와 범위
 
@@ -39,7 +39,13 @@ Ahem의 `X`와 U+0020 advance는 각각 1000/1000 units per em이다. Ahem 10px�
 8. 관련 Rust unit/integration tests, CSS fixture boundary 검사, Android/iOS builds, `cargo fmt --all -- --check`와 scoped Clippy를 실행한다. workspace baseline failure는 수정 전 기준과 변경 결과를 분리한다.
 9. 구현과 runtime 결과를 계획 검토에서 재사용하지 않은 새로운 실패 관점 20개로 검토한다. implementation PR diff도 별도의 20개 관점으로 검토하며 결함 수정 뒤 영향을 받은 항목을 다시 확인한다. PR마다 20개 관점을 채우기 위해 동의어 반복을 하지 않는다.
 10. PR 본문에 Android/iOS simulator 화면을 가능한 경우 각각 첨부하고, black renderer 등 화면이 증명하지 못하는 범위를 명시한다. 병합 전에 현재 required checks·CI rollup·merge 상태를 다시 조회하고 `Rebase and merge`한다. check 부재는 CI 통과로 기록하지 않는다.
-11. 구현 PR 병합 뒤 내부 계약 0059, 공식 상태 대장, C11.4 상위 계획과 공개 로드맵을 결과 및 남은 한계와 동기화한다. 공식 C11.4/C11 check와 `72/213`은 그대로 둔다.
+11. 구현 PR #924 병합 뒤 내부 계약 0059, 공식 상태 대장, C11.4 상위 계획과 공개 로드맵에 결과 및 남은 한계를 기록한다. 이 문서 갱신으로 공식 C11.4/C11 check와 `72/213`은 그대로 둔다.
+
+## 구현 및 병합 결과
+
+Chrome 156/Ahem 독립 기대값과 fixed fixture 24/24가 일치했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 각각 24/24를 통과했다. 관련 Rust suites는 text-layout 74, runtime fixture 352 passed·3 ignored, FFI fixture 175 passed·2 ignored였고 CSS fixture boundary 1/1, formatting, scoped Clippy 및 기본/fixture-test static archive 경계도 확인했다. 실행 로그와 실제 한계는 [runtime evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md)에 둔다.
+
+PR #924의 check 결과는 보고되지 않았고 `main` required status checks도 설정되어 있지 않았다. 따라서 CI 통과로 기록하지 않는다. Simulator 캡처의 WGPU 영역은 검게 나와 glyph paint 증거가 아니다. 일반 CSS author admission, 임의 길이·글꼴, WPT, 실기기·hardware GPU, glyph/surface pixel equality와 전체 C11.4/C11은 확인하지 않았다. 공식 C11.4/C11 check는 미완료, 전체 집계는 `72/213` 그대로다.
 
 ## 완료 판정과 제외 범위
 

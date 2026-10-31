@@ -1,0 +1,1689 @@
+{
+  "sourceHead": "93aba4eff3998c54c595b661578b339aeda89d87",
+  "sourceTree": "b33e805255e4370d84de59a61663276241c8cfd6",
+  "trackedDiffSha256": "c74e1a917e3a9c0853fb6d47f2bdf1795d0baa49608aea05f9be31b734cf8393",
+  "publicationRoot": "build/spinon/c11-4-word-spacing-post-merge-20261031/pass06/publication-pass05",
+  "selectedRootFileCount": 167,
+  "routeCount": 235,
+  "totalBytes": 17129645,
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+    "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+    "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+    "internal/0059-c11-grid-layout.html",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+    "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+    "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+    "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png"
+  ],
+  "roadmapMarkers": [
+    "PR #924",
+    "93aba4eff3998c54c595b661578b339aeda89d87",
+    "24/24",
+    "72/213"
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 401810,
+      "sha256": "daeb50ae6be3b979b23b77f510eee71ecf09a3c218c071ba6bfcc289624fc293"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 272768,
+      "sha256": "8a6257aa9d7b60a05a99fd231388b97efc3190a76f119faffbf972a4b157d526"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 88866,
+      "sha256": "1bb2551c7fb40b1a76af3485ffce16cb5075242d443bc51db129550d5189894d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-observation.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-observation.json",
+      "kind": "source-page-or-asset",
+      "bytes": 8741,
+      "sha256": "177da3c6fe21f4c9e5f07035fc31d17995005acdd2cb5f86184400b0f7ab800a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37794,
+      "sha256": "08f2fbc6469281648bf193191b2585abc247083cf8aca7060c03f10b38de687f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3217,
+      "sha256": "c6085c524d4a6c9b2a5a67dfc531e0cc86aa812e7d198539b4e911a22ae0b048"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+      "kind": "source-page-or-asset",
+      "bytes": 6307,
+      "sha256": "241333d0f5b05890794ef726f96abd36149e30f12f846bb9b0274f913843c2b8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/validate-precomparison.mjs",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/validate-precomparison.mjs",
+      "kind": "source-page-or-asset",
+      "bytes": 4149,
+      "sha256": "941ac96f489fcffeb879f69c31bf0d8a5342f3f332bf311557c6930398da3364"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1884,
+      "sha256": "7bc08036426bc6e6b4421ddda57818a8e967893dd33e1432e7a594c7bb61c4fc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 76059,
+      "sha256": "0847a3e2e2646b17469f7a3fb363e0edd851a14c4616b71485ede5c428b8e9d1"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 598,
+      "sha256": "aa59a48215f1644a8e74126cd843e41a8dbf13468b6089047eb7102a9d5530d8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24947,
+      "sha256": "6c0106119d66abd396b0b0aae577a2292e089019d8df50efb4d23df978bb9757"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24522,
+      "sha256": "14efb75769ca9255ef31aba1a340fdbd7b61f7e7df60cec7b3ef6f3897e92f03"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24456,
+      "sha256": "f07f74fbf65402f343fb7c0812d8cfbcbe3720bc11c2d568e8ac9a2328a1f107"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23683,
+      "sha256": "5bb2fd91d8c8da40b7393da5aef3426edebe55cac2edb54bdcec1f06a98229e6"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24393,
+      "sha256": "2f8491eacbed3490dbbce3f061a067699a90d4578b79e15a6b2b5a258fdd3764"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23880,
+      "sha256": "9dccba553f3a0c3419252ba45bcf72b9d9aa7f2b9102cfb80c41f834a3696e88"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 30203,
+      "sha256": "7615f23dda562b919919d19d2523842e394aaf54a1ffdaaac25207377c0df5a1"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24514,
+      "sha256": "2768b6d8141cd570b0d947acbc0ea60def0dd8e2f45a1a7d0b437f292c779c33"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 29149,
+      "sha256": "e41f692e7ac84a111dfbd651f85e83ae4e625340830915ce6363494a135b1214"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23578,
+      "sha256": "86cd75e87a5c80635c1aa986b0f371658a05dc6facbd8bd5a9cb1f71723fbfbb"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24671,
+      "sha256": "e2930e9b207b07ee106dfe1c374bc2e6eb6d2f600f37c4a26f669a1ebbbe8c2f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23870,
+      "sha256": "cc70e458058a0f439a44f8309f3b29d2e92ad05a61c93600b3855ff7de3d7a51"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24943,
+      "sha256": "55d3b73ae8507f432847a9ae74d6a4624ae4fe5acb1955dd5209e82e5099c6e8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 29786,
+      "sha256": "fc9bb5c407afa2d6a7cbd313954cd41a7469de7e89106c8278b2cc11fd085bb5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24453,
+      "sha256": "b164b08d63d5f03d236c21bb3c8c37974a9688ba2583bdca79f3ca9f63ec4f4b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23679,
+      "sha256": "ce2eca8d1a83d7ddefd63ca0160bebace0d631d4af4f67f63f450080dc4e05c8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24298,
+      "sha256": "1468947cfbe7350c353a1e7a39479a0d5d2a8e2e09e874469a6c52503f243420"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23969,
+      "sha256": "aeacfb5afce1bbe15ab65e56e9ded052cfd9de5fbd954c51a7c3064c378d41a7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24928,
+      "sha256": "57352058c28c4ce5d12f1fc22669cb147c560e38483fdf2582af22a20f26bd0c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24601,
+      "sha256": "955de5996683d413b5c5d95fb298ba5c1795fd3d2ff1ad2f7b4f8cf6417bb7c6"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24441,
+      "sha256": "cf43dbea1313c61bc96992a09d4166a226bbecdf483fc7533c9454825a544268"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23572,
+      "sha256": "4a4896e4c7fbd0aa60449d94dbb18c572fdfac26c52f8b47ef9dfadcf012fdd3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24287,
+      "sha256": "dc7c765c4e6aea536ae4ce3256ef8b6fa61c9912891bd39193c39711f8fcdaed"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23957,
+      "sha256": "c895f039ef71e3ae1d88b9218a066536d183e34c66b2ba79235e99aa91034441"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4554,
+      "sha256": "a232bf24a844a4f5b57a9e972a93f4d767be7b1b4a1ba23be16a709276cfd2ee"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37821,
+      "sha256": "04a4322cc825baf427ad180c59c59d1601819020e80fd33f84944b9ac58aa219"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1365,
+      "sha256": "d1a797e5daa296a8d8e09e940eae9b7d46c69275856b3ff1f747647f52d1476a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39745,
+      "sha256": "37de2b817cf3df2f15ef4e6ff3423ef67cdef03b6f8d517d382fc48b43f1a1ab"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5452,
+      "sha256": "a2e1c647a9142d890415b61dfa656bd2b0100864c2c6ee1846be431b3a2449e2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 64970,
+      "sha256": "1cfacd80b9bc6e5934d4d98cfff7bb1a1cfbbce65fa3915050b25486c6dddff1"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-capture.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-capture.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1513,
+      "sha256": "59f24d45832def899ce5670b99011636ee513721c55140056d0e3707d2cf4f0f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1908,
+      "sha256": "991aca60c561545f3e518acad894bf22f42cce1244425e886aa43a2fe8c42af9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 143525,
+      "sha256": "b2eb0bc0183bf2162b18d2f7c9ed55b12a014acb3951ff645b39f093fd3f7aef"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 676,
+      "sha256": "7fb16cb3f9521a6e060ff6de2d0e51dd01943df45e1b6f24c3eb272a7c141764"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14951,
+      "sha256": "6609c8bf3e57ad166c3f37fd90de90075dde0a0947108c611523c5f65ffbc1bc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14503,
+      "sha256": "0a4d598157d5f9fc61f80e292662922b368b65fb72f0002cec8adb53b8de3aa2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13974,
+      "sha256": "1e643f53be04866f9026d63f3db804693259616bc511a41ade8adc97d09724ca"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13394,
+      "sha256": "35f9c95637479e9aa711ca1b61e13cd05aa58f9741cf7e7c3af5b4195166bb58"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14200,
+      "sha256": "4011fd861c8aa342cc82b2262ed6b8fa400b8bb5827c4bb136e87d9d4f6a498a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13687,
+      "sha256": "45165c3c6a32e8f6b8e10a3911cb7f2e2847a42c782bb48a12f34f6f6e1cbf21"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14944,
+      "sha256": "ededb1ac609cb543227053180ce9dbdd24b8312acd56301ee4e893c7906f8747"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14496,
+      "sha256": "18a2c696efe3e3d21210f5941251d72235a6ea62c9472778f1ebabe64ce57145"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13967,
+      "sha256": "73e7a4f6b0be1e63cafa1b9a0800fdd7e240155746480085a9a8b774f2e90f7d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13387,
+      "sha256": "750a4a60209f55827e58bf305dc3c38c1a0fd8248d5634262ed5444e71d1957d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14194,
+      "sha256": "798603e8683f70663a9be09a11a635a286221da3c9e80a7f380f235fa728aefd"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13680,
+      "sha256": "da5bb1d74ee12d21ac04d8dadfedd5b18b4ed43542d769398f69d5c1e42d7a21"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14948,
+      "sha256": "f663bb5787770169fb3aa05e3bff5ced44196ca2b45b931bd8f1eb3d377a4a03"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14500,
+      "sha256": "86f0cea70978adf82341ea74d39e1027f5d3547c08cd9acc5eb5ebf65d704cd7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13971,
+      "sha256": "65faad75a71495c71499905fb5f41fe922fdd9ab5bf7b1c428d509ed1eefd910"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13391,
+      "sha256": "39ed59e868c59f40d3f7e10116f2f08c7efb254596b5d45b6b09293e3705e29f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14198,
+      "sha256": "fb8cdc9e71439ad2cd29b96a6074d6be53de3912b42dc26dde7792fde8ebba25"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13684,
+      "sha256": "79c5ca23ab8c7f32d3ea47f8030819b4f30e991c388c03c22c2f8e432db0d7d7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14940,
+      "sha256": "9c1fd15a589e50ab51e1951418be81fbae926c3a503860dce810c1264f0777c2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14492,
+      "sha256": "e4a55d3ae6849a6ea7e960080606e411a68799800a51babac0aa3a0ee1168b9d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13963,
+      "sha256": "44a61e8a19d41853816d17fe483d08d068d9c59997015d3b1ed793cc15f8b249"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13383,
+      "sha256": "e433938b25301eb59d14427913c818439c747f381ef2a8be6b8e3044e4a8bc2f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14190,
+      "sha256": "5169cf72f089b06ed8532220b5a6b128032366d5b0ad48974c383ca7d43c4c18"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13676,
+      "sha256": "5603da5d2af452641ef64d6fdec7fdf8b76c25700ed3d80373499d404776d63e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41012,
+      "sha256": "cd2058ee93f76b86d4e2d6d2073d9e40c3310740e37dab9307370661a5f246b6"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6533,
+      "sha256": "8a9ed34e1b670dd95ce6f275de514db7c7919db3c83c5065f15113a290b0dfdc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39165,
+      "sha256": "5692957a6bc37ecb2508e33b8c3778d6656b395acbe1cf9fc8631370c2011b7a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4210,
+      "sha256": "f6b8de6f32cb6b694dcb6d7d8ebbc04f0d5c55af05eabdf32d6ec5a03f8528f2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/source-revision.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/source-revision.json",
+      "kind": "source-page-or-asset",
+      "bytes": 7716,
+      "sha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d"
+    },
+    {
+      "path": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39247,
+      "sha256": "ed91dd33c33b123e36393a450a647cd24f3cd847356a434d666abcdc521cf0a7"
+    },
+    {
+      "path": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4172,
+      "sha256": "1a0028c3c5ee6a2130c77636978c3f6192e9c5b40412941a0b54caeb754af066"
+    },
+    {
+      "path": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+      "source": "rspress:internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37113,
+      "sha256": "461f3eab8b335e4db842f0536b3b4521c3fc047b083bce4004cb0a2341b69a75"
+    },
+    {
+      "path": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 2967,
+      "sha256": "c7bb629baee7e577d8fe6eadffc1b369b540708d7bcd9d12a60e60d1013e71c0"
+    },
+    {
+      "path": "internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 434964,
+      "sha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37383,
+      "sha256": "38a689f64af4e3f86e3e364587d8b0384f7a3918c88d32c28c0c8d6ecf154852"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3021,
+      "sha256": "9fcb2343ef625a62493abfd4534cb4e61119ad55042c1c705a6346e92d150899"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37686,
+      "sha256": "95940e3e0d1005ba1a89245198a919f16534cbb98b0b829d1e4ffb62ada1b8a3"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3300,
+      "sha256": "004e83b812bc3855a2c344b9b35dfad905b009126b1da69985b69e7b8b9c5bc9"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 46022,
+      "sha256": "f4f807dc083fc02574610915357add4be10df7197b430bd86973f5e5f7a25890"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-word-spacing.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-word-spacing.md",
+      "kind": "source-page-or-asset",
+      "bytes": 9199,
+      "sha256": "297a35d0a60f2e778e261f92af8ce1ac7ca6122322b7551104b5be6fb078f06e"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "source": "rspress:plan/c11-4-grid-track-sizing.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 336068,
+      "sha256": "13f8a793077840657287c097ae2d652e421cca1a54562292ea8b1132ba762751"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "source": "selected-root:plan/c11-4-grid-track-sizing.md",
+      "kind": "source-page-or-asset",
+      "bytes": 201562,
+      "sha256": "afd85be31d9787b786cdba939f55c010a59251f4732f6a063af9f11f7a38fdd4"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "source": "rspress:plan/c11-css-grid.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 71237,
+      "sha256": "a89f3941951a2e8d463915f5bcd3b1988fe08599a0a6c588ffa16d2a8e642958"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "source": "selected-root:plan/c11-css-grid.md",
+      "kind": "source-page-or-asset",
+      "bytes": 29304,
+      "sha256": "aa6f0ba897c56cf15caf5fb47e623b72154be2d894dae42d1b611c4485084c95"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 450362,
+      "sha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 450362,
+      "sha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 401889,
+      "sha256": "c875e2e5eb627895c3780b5bcc7ca6409e9c05744884859f3896c556699c78bb"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 272768,
+      "sha256": "8a6257aa9d7b60a05a99fd231388b97efc3190a76f119faffbf972a4b157d526"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 88866,
+      "sha256": "1bb2551c7fb40b1a76af3485ffce16cb5075242d443bc51db129550d5189894d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-observation.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/chrome156-observation.json",
+      "kind": "source-page-or-asset",
+      "bytes": 8741,
+      "sha256": "177da3c6fe21f4c9e5f07035fc31d17995005acdd2cb5f86184400b0f7ab800a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37804,
+      "sha256": "bb3cf700f44a142b2f8ad27be4ea805375a4f135f6cfa8ea587b988ebde8f132"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3217,
+      "sha256": "c6085c524d4a6c9b2a5a67dfc531e0cc86aa812e7d198539b4e911a22ae0b048"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/spec-derived-expectations.json",
+      "kind": "source-page-or-asset",
+      "bytes": 6307,
+      "sha256": "241333d0f5b05890794ef726f96abd36149e30f12f846bb9b0274f913843c2b8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/validate-precomparison.mjs",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-precomparison-2026-10-31/validate-precomparison.mjs",
+      "kind": "source-page-or-asset",
+      "bytes": 4149,
+      "sha256": "941ac96f489fcffeb879f69c31bf0d8a5342f3f332bf311557c6930398da3364"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1884,
+      "sha256": "7bc08036426bc6e6b4421ddda57818a8e967893dd33e1432e7a594c7bb61c4fc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/representative-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 76059,
+      "sha256": "0847a3e2e2646b17469f7a3fb363e0edd851a14c4616b71485ede5c428b8e9d1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 598,
+      "sha256": "aa59a48215f1644a8e74126cd843e41a8dbf13468b6089047eb7102a9d5530d8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24947,
+      "sha256": "6c0106119d66abd396b0b0aae577a2292e089019d8df50efb4d23df978bb9757"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24522,
+      "sha256": "14efb75769ca9255ef31aba1a340fdbd7b61f7e7df60cec7b3ef6f3897e92f03"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24456,
+      "sha256": "f07f74fbf65402f343fb7c0812d8cfbcbe3720bc11c2d568e8ac9a2328a1f107"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23683,
+      "sha256": "5bb2fd91d8c8da40b7393da5aef3426edebe55cac2edb54bdcec1f06a98229e6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24393,
+      "sha256": "2f8491eacbed3490dbbce3f061a067699a90d4578b79e15a6b2b5a258fdd3764"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-minus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23880,
+      "sha256": "9dccba553f3a0c3419252ba45bcf72b9d9aa7f2b9102cfb80c41f834a3696e88"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 30203,
+      "sha256": "7615f23dda562b919919d19d2523842e394aaf54a1ffdaaac25207377c0df5a1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24514,
+      "sha256": "2768b6d8141cd570b0d947acbc0ea60def0dd8e2f45a1a7d0b437f292c779c33"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 29149,
+      "sha256": "e41f692e7ac84a111dfbd651f85e83ae4e625340830915ce6363494a135b1214"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23578,
+      "sha256": "86cd75e87a5c80635c1aa986b0f371658a05dc6facbd8bd5a9cb1f71723fbfbb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24671,
+      "sha256": "e2930e9b207b07ee106dfe1c374bc2e6eb6d2f600f37c4a26f669a1ebbbe8c2f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-normal-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23870,
+      "sha256": "cc70e458058a0f439a44f8309f3b29d2e92ad05a61c93600b3855ff7de3d7a51"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24943,
+      "sha256": "55d3b73ae8507f432847a9ae74d6a4624ae4fe5acb1955dd5209e82e5099c6e8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 29786,
+      "sha256": "fc9bb5c407afa2d6a7cbd313954cd41a7469de7e89106c8278b2cc11fd085bb5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24453,
+      "sha256": "b164b08d63d5f03d236c21bb3c8c37974a9688ba2583bdca79f3ca9f63ec4f4b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23679,
+      "sha256": "ce2eca8d1a83d7ddefd63ca0160bebace0d631d4af4f67f63f450080dc4e05c8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24298,
+      "sha256": "1468947cfbe7350c353a1e7a39479a0d5d2a8e2e09e874469a6c52503f243420"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-plus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23969,
+      "sha256": "aeacfb5afce1bbe15ab65e56e9ded052cfd9de5fbd954c51a7c3064c378d41a7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24928,
+      "sha256": "57352058c28c4ce5d12f1fc22669cb147c560e38483fdf2582af22a20f26bd0c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24601,
+      "sha256": "955de5996683d413b5c5d95fb298ba5c1795fd3d2ff1ad2f7b4f8cf6417bb7c6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24441,
+      "sha256": "cf43dbea1313c61bc96992a09d4166a226bbecdf483fc7533c9454825a544268"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23572,
+      "sha256": "4a4896e4c7fbd0aa60449d94dbb18c572fdfac26c52f8b47ef9dfadcf012fdd3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24287,
+      "sha256": "dc7c765c4e6aea536ae4ce3256ef8b6fa61c9912891bd39193c39711f8fcdaed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-avd/word-spacing-zero-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 23957,
+      "sha256": "c895f039ef71e3ae1d88b9218a066536d183e34c66b2ba79235e99aa91034441"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/android-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4554,
+      "sha256": "a232bf24a844a4f5b57a9e972a93f4d767be7b1b4a1ba23be16a709276cfd2ee"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37831,
+      "sha256": "819f469cfeeae347e7e444163b0dde445b2834902242bab4d68e85e772f5ba53"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/artifact-boundary/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1365,
+      "sha256": "d1a797e5daa296a8d8e09e940eae9b7d46c69275856b3ff1f747647f52d1476a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39755,
+      "sha256": "58538e6fb3ee24dc36867d53422c5ff2091edae588d2996b7ea16cc9e57d84a1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5452,
+      "sha256": "a2e1c647a9142d890415b61dfa656bd2b0100864c2c6ee1846be431b3a2449e2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 64970,
+      "sha256": "1cfacd80b9bc6e5934d4d98cfff7bb1a1cfbbce65fa3915050b25486c6dddff1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-capture.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-capture.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1513,
+      "sha256": "59f24d45832def899ce5670b99011636ee513721c55140056d0e3707d2cf4f0f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1908,
+      "sha256": "991aca60c561545f3e518acad894bf22f42cce1244425e886aa43a2fe8c42af9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/representative-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 143525,
+      "sha256": "b2eb0bc0183bf2162b18d2f7c9ed55b12a014acb3951ff645b39f093fd3f7aef"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 676,
+      "sha256": "7fb16cb3f9521a6e060ff6de2d0e51dd01943df45e1b6f24c3eb272a7c141764"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14951,
+      "sha256": "6609c8bf3e57ad166c3f37fd90de90075dde0a0947108c611523c5f65ffbc1bc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14503,
+      "sha256": "0a4d598157d5f9fc61f80e292662922b368b65fb72f0002cec8adb53b8de3aa2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13974,
+      "sha256": "1e643f53be04866f9026d63f3db804693259616bc511a41ade8adc97d09724ca"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13394,
+      "sha256": "35f9c95637479e9aa711ca1b61e13cd05aa58f9741cf7e7c3af5b4195166bb58"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14200,
+      "sha256": "4011fd861c8aa342cc82b2262ed6b8fa400b8bb5827c4bb136e87d9d4f6a498a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-minus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13687,
+      "sha256": "45165c3c6a32e8f6b8e10a3911cb7f2e2847a42c782bb48a12f34f6f6e1cbf21"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14944,
+      "sha256": "ededb1ac609cb543227053180ce9dbdd24b8312acd56301ee4e893c7906f8747"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14496,
+      "sha256": "18a2c696efe3e3d21210f5941251d72235a6ea62c9472778f1ebabe64ce57145"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13967,
+      "sha256": "73e7a4f6b0be1e63cafa1b9a0800fdd7e240155746480085a9a8b774f2e90f7d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13387,
+      "sha256": "750a4a60209f55827e58bf305dc3c38c1a0fd8248d5634262ed5444e71d1957d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14194,
+      "sha256": "798603e8683f70663a9be09a11a635a286221da3c9e80a7f380f235fa728aefd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-normal-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13680,
+      "sha256": "da5bb1d74ee12d21ac04d8dadfedd5b18b4ed43542d769398f69d5c1e42d7a21"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14948,
+      "sha256": "f663bb5787770169fb3aa05e3bff5ced44196ca2b45b931bd8f1eb3d377a4a03"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14500,
+      "sha256": "86f0cea70978adf82341ea74d39e1027f5d3547c08cd9acc5eb5ebf65d704cd7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13971,
+      "sha256": "65faad75a71495c71499905fb5f41fe922fdd9ab5bf7b1c428d509ed1eefd910"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13391,
+      "sha256": "39ed59e868c59f40d3f7e10116f2f08c7efb254596b5d45b6b09293e3705e29f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14198,
+      "sha256": "fb8cdc9e71439ad2cd29b96a6074d6be53de3912b42dc26dde7792fde8ebba25"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-plus-one-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13684,
+      "sha256": "79c5ca23ab8c7f32d3ea47f8030819b4f30e991c388c03c22c2f8e432db0d7d7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14940,
+      "sha256": "9c1fd15a589e50ab51e1951418be81fbae926c3a503860dce810c1264f0777c2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-collapsed-three-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14492,
+      "sha256": "e4a55d3ae6849a6ea7e960080606e411a68799800a51babac0aa3a0ee1168b9d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13963,
+      "sha256": "44a61e8a19d41853816d17fe483d08d068d9c59997015d3b1ed793cc15f8b249"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-single-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13383,
+      "sha256": "e433938b25301eb59d14427913c818439c747f381ef2a8be6b8e3044e4a8bc2f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14190,
+      "sha256": "5169cf72f089b06ed8532220b5a6b128032366d5b0ad48974c383ca7d43c4c18"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/ios-simulator/word-spacing-zero-two-words-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13676,
+      "sha256": "5603da5d2af452641ef64d6fdec7fdf8b76c25700ed3d80373499d404776d63e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41022,
+      "sha256": "fb7a49fdef3e6887821755481bd191d498f31cd0e2dff51d8126e74ff0300e06"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6533,
+      "sha256": "8a9ed34e1b670dd95ce6f275de514db7c7919db3c83c5065f15113a290b0dfdc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39185,
+      "sha256": "ae17e9f2e1e1b7c75b2a97eea9d3c40d2ace960aeee33776beeff1d14af28f21"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4210,
+      "sha256": "f6b8de6f32cb6b694dcb6d7d8ebbc04f0d5c55af05eabdf32d6ec5a03f8528f2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/source-revision.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/source-revision.json",
+      "kind": "source-page-or-asset",
+      "bytes": 7716,
+      "sha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39257,
+      "sha256": "9ceba2972def3bf2fa6a27506ae308daddf283259adf9064023995bc2c4728e9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4172,
+      "sha256": "1a0028c3c5ee6a2130c77636978c3f6192e9c5b40412941a0b54caeb754af066"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37133,
+      "sha256": "a3d2e5909dbd3202db28dc15841076bc139b818c448c00b8407aeb0249c2ef94"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 2967,
+      "sha256": "c7bb629baee7e577d8fe6eadffc1b369b540708d7bcd9d12a60e60d1013e71c0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/tailnet-roadmap-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 434964,
+      "sha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37393,
+      "sha256": "d12d7d00f9ee4fca4b16929766ec4943ce8454ec572e3de3f1026be149220fd8"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3021,
+      "sha256": "9fcb2343ef625a62493abfd4534cb4e61119ad55042c1c705a6346e92d150899"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37694,
+      "sha256": "83970e6208a8c9038d9a10d5aa0eb262852e3cbb2222d7c4f69ee91c753cfce6"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-word-spacing-plan-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3300,
+      "sha256": "004e83b812bc3855a2c344b9b35dfad905b009126b1da69985b69e7b8b9c5bc9"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-computed-word-spacing.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 46024,
+      "sha256": "5b06fd72458cfadfc668d15a4bfa60427cab21b2ca076229e168db818ed8037c"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-computed-word-spacing.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-word-spacing.md",
+      "kind": "source-page-or-asset",
+      "bytes": 9199,
+      "sha256": "297a35d0a60f2e778e261f92af8ce1ac7ca6122322b7551104b5be6fb078f06e"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "source": "rspress:spec/plan/c11-4-grid-track-sizing.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 336074,
+      "sha256": "84263ed72d2761c7fc92a076192d3bcfc771ffad378fc7c2b001cc6bb7054b36"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "source": "selected-root:plan/c11-4-grid-track-sizing.md",
+      "kind": "source-page-or-asset",
+      "bytes": 201562,
+      "sha256": "afd85be31d9787b786cdba939f55c010a59251f4732f6a063af9f11f7a38fdd4"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "source": "rspress:spec/plan/c11-css-grid.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 71197,
+      "sha256": "d954b915febe5b67fa6cf484c0d04138b9038fd9849c75cb28db8494e8386df2"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.md",
+      "source": "selected-root:plan/c11-css-grid.md",
+      "kind": "source-page-or-asset",
+      "bytes": 29304,
+      "sha256": "aa6f0ba897c56cf15caf5fb47e623b72154be2d894dae42d1b611c4485084c95"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 450362,
+      "sha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 709182,
+      "sha256": "69eef63adec2b08db95d86addebaff5aae36acf90b0be65ea24c35f339d3c5d1"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 565802,
+      "sha256": "8bf476b1ec13a10df42e818275e634f43fbc96ade1dbd38feacd9d465c273aad"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser.1ca81d309b.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser.1ca81d309b.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 434964,
+      "sha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "source": "rspress:static/js/3.d8b550a68d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "source": "rspress:static/js/3.d8b550a68d.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "source": "rspress:static/js/async/l.76b60f2b87.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-03c77d4b9aa3.24fcd129cd.js",
+      "source": "rspress:static/js/async/route-03c77d4b9aa3.24fcd129cd.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9669,
+      "sha256": "693759ee7786478053b4189969951a6b2fdbfb5f5db09b4f9a161af3b7a955ce"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.7be9864405.js",
+      "source": "rspress:static/js/async/route-04cbcabea10a.7be9864405.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 316705,
+      "sha256": "11cbb74b3a8b60b7b3a906dda1f8e1b3d15a874bc2b30fe493d8bf6c16a6b8b0"
+    },
+    {
+      "path": "static/js/async/route-085de15858ee.8d299a3ffe.js",
+      "source": "rspress:static/js/async/route-085de15858ee.8d299a3ffe.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 7685,
+      "sha256": "a65d51e4f0839f936c3444e0b893f70f952e4a6fe38171397e067bc949fbe44d"
+    },
+    {
+      "path": "static/js/async/route-20ad0bd6b751.bc3dbd44e4.js",
+      "source": "rspress:static/js/async/route-20ad0bd6b751.bc3dbd44e4.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8482,
+      "sha256": "b1c165ab95802067f2f729df6eaf508528139ecfe362270b04cbd648e897800f"
+    },
+    {
+      "path": "static/js/async/route-566e0f2ab4cc.81099a06ba.js",
+      "source": "rspress:static/js/async/route-566e0f2ab4cc.81099a06ba.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 7309,
+      "sha256": "a013b24e4051f62921fa2a9f5ba6aa0c6584b15aac1e9321cfe745ce8b60dfbf"
+    },
+    {
+      "path": "static/js/async/route-58c20a556b5e.874710bfe6.js",
+      "source": "rspress:static/js/async/route-58c20a556b5e.874710bfe6.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 7301,
+      "sha256": "2bcd3c55940cafa8086121898bb3f301fe080989cbdc3b136ed8e4f433fc3cb6"
+    },
+    {
+      "path": "static/js/async/route-590a3875de57.1618f82144.js",
+      "source": "rspress:static/js/async/route-590a3875de57.1618f82144.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10792,
+      "sha256": "2bcb96e8600724066baf41844d781418df96f247dd8b292149476f9f28ddac9e"
+    },
+    {
+      "path": "static/js/async/route-5910e1943969.949c42e848.js",
+      "source": "rspress:static/js/async/route-5910e1943969.949c42e848.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11234,
+      "sha256": "ec036846a86da0d21f1d8313ddffc73eea9a9bd5bde93c10ce3e4066c9e453fc"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.794e719cec.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.794e719cec.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 748562,
+      "sha256": "cc98893b32d7dd44739a832490034de813499d2cf350cd01dd797eac2950c8f9"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.d126281dbf.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.d126281dbf.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 396608,
+      "sha256": "5d0dcb084bc5df0d0f5e16e66c5ab5136786517b284c036889058d8101535990"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.6ff60c826f.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.6ff60c826f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 748685,
+      "sha256": "cbfd690a449a7143fd6baf973adc583b76ea0a6da66b9150e401bd44fc6c24f1"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.e6f13f7cbd.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.e6f13f7cbd.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1006,
+      "sha256": "1b5622e77e0b528269849df2da1b2377ec5bc7c4a019291f27a829745f25d0d7"
+    },
+    {
+      "path": "static/js/async/route-a78ac562c0b9.30aa1814ab.js",
+      "source": "rspress:static/js/async/route-a78ac562c0b9.30aa1814ab.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14779,
+      "sha256": "eb51eaa63a2801ac26ebb0207f58016097d31dbef29bab9cece1f73b8941a243"
+    },
+    {
+      "path": "static/js/async/route-a804827ab1db.fd228631c2.js",
+      "source": "rspress:static/js/async/route-a804827ab1db.fd228631c2.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9676,
+      "sha256": "3f4f1983a6aa75d0e0b3e24b6608e52db0cdf797f4657782a61333d6a35ce4b5"
+    },
+    {
+      "path": "static/js/async/route-a86a1c9fb291.63b30def5c.js",
+      "source": "rspress:static/js/async/route-a86a1c9fb291.63b30def5c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5859,
+      "sha256": "f1084b96529773df88b9d351147625b90a117f68678d8f3d3f077ffd3b31d606"
+    },
+    {
+      "path": "static/js/async/route-aa86ee6c2ade.c9553c37db.js",
+      "source": "rspress:static/js/async/route-aa86ee6c2ade.c9553c37db.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5679,
+      "sha256": "73bb08d6b505b8d319c2a06dfdcde05ff8f375f6e48671923cb9bac381c3d0ad"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.c3962b064a.js",
+      "source": "rspress:static/js/async/route-b7ce154f07b0.c3962b064a.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 316723,
+      "sha256": "658ce6c2ddb4681599aab38b18cbea621aa4a8a1367bc846ae80cd121f287411"
+    },
+    {
+      "path": "static/js/async/route-bd1dd7aa02c1.d5c12c0f4c.js",
+      "source": "rspress:static/js/async/route-bd1dd7aa02c1.d5c12c0f4c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11242,
+      "sha256": "5a361cf90d3e8ec472ffeddc8d446ac204cae4dae730e564b333bb12c0dc21e4"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.5ab0acecbd.js",
+      "source": "rspress:static/js/async/route-c2801b21f038.5ab0acecbd.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 42410,
+      "sha256": "5732333a9dbe57f2bfd6522056e8a7e5036914f1b0ce3007026e8790533b8865"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.384512e8dd.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.384512e8dd.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 396584,
+      "sha256": "d1c7271b60d7b7f9bccf2fb3ffe8d1296dba342695eccff67227b9b3761d580d"
+    },
+    {
+      "path": "static/js/async/route-c8c83a48538c.b56f979a7a.js",
+      "source": "rspress:static/js/async/route-c8c83a48538c.b56f979a7a.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5845,
+      "sha256": "591bd4725cbda4946e2da35661be3af84f800405d0d2df27d2a1ca9d1ac69839"
+    },
+    {
+      "path": "static/js/async/route-c99bc7ff4e5b.7b13f791d6.js",
+      "source": "rspress:static/js/async/route-c99bc7ff4e5b.7b13f791d6.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 7680,
+      "sha256": "e9e2e35d00018827b260ac2739446c49808451b568fab87feeef7b03879eaa44"
+    },
+    {
+      "path": "static/js/async/route-cbbd5935b3d7.a7133d25d9.js",
+      "source": "rspress:static/js/async/route-cbbd5935b3d7.a7133d25d9.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8498,
+      "sha256": "252683996a70703b96ae7347f9bc17b42ba8281682a15e8a11ad198f90f9541d"
+    },
+    {
+      "path": "static/js/async/route-d40b7bff1d9c.2b840a0926.js",
+      "source": "rspress:static/js/async/route-d40b7bff1d9c.2b840a0926.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8165,
+      "sha256": "7c5dda3ca1edd93bb28967d1180c69531c21947e90767899ed3b38bdeee7123c"
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.3aab4bcebb.js",
+      "source": "rspress:static/js/async/route-d4b02f34c38e.3aab4bcebb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 42424,
+      "sha256": "e269100516ebb8fb8d620fde4ad6cac95b0476332247ff38c37c2e5b7d8bc27d"
+    },
+    {
+      "path": "static/js/async/route-d59731cf960f.2139c77c9b.js",
+      "source": "rspress:static/js/async/route-d59731cf960f.2139c77c9b.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5674,
+      "sha256": "693aad84549898a01158c7ed06786243dbd3ecee48ad9b842dcf7b8014dfa7e9"
+    },
+    {
+      "path": "static/js/async/route-d7627a2d178f.0a28678b6e.js",
+      "source": "rspress:static/js/async/route-d7627a2d178f.0a28678b6e.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10799,
+      "sha256": "14c1027e9966e70de716f2315cd388f51871a914a0b2817e25bd0be3c5c4e011"
+    },
+    {
+      "path": "static/js/async/route-d976dd647955.d208564b87.js",
+      "source": "rspress:static/js/async/route-d976dd647955.d208564b87.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14807,
+      "sha256": "0bf550c340546a28b5e005702e10fb906dbb6d6c1c24ca5e659cad45a0aaef11"
+    },
+    {
+      "path": "static/js/async/route-fe8dbc91cbf1.c815d27526.js",
+      "source": "rspress:static/js/async/route-fe8dbc91cbf1.c815d27526.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8150,
+      "sha256": "4b34194d4fe4397efeba90a8fc6ccd98553be3defdd469aea28a64784dd6ea87"
+    },
+    {
+      "path": "static/js/index.f8082733a4.js",
+      "source": "rspress:static/js/index.f8082733a4.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 129250,
+      "sha256": "cc88aed414514ea2f12352c3107c428fe5b614d0a5fd56972cc70ff230c830c0"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "rspress:static/js/lib-react.801d719c4f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "source": "rspress:static/js/styles.aba03c5c90.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5"
+    },
+    {
+      "path": "static/search_index.ko.30525d58.json",
+      "source": "rspress:static/search_index.ko.30525d58.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 1844295,
+      "sha256": "30525d584611fa9f779574f37e7db7d9571486ecfd9f3d37c36430d9f25376dc"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 708632,
+      "sha256": "e69e0536479112848d5f30a13cb482040d6b3a880b329d250afccaab2c1f18c6"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 565802,
+      "sha256": "8bf476b1ec13a10df42e818275e634f43fbc96ade1dbd38feacd9d465c273aad"
+    }
+  ]
+}

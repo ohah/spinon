@@ -1,0 +1,32 @@
+{
+  "roadmapUrl": "<redacted Tailnet base>/roadmap.html",
+  "statusUrl": "<redacted Tailnet base>/STATUS.html",
+  "evidenceReadmeUrl": "<redacted Tailnet base>/internal/evidence/c11-4-word-spacing-post-merge-2026-10-31/README.html",
+  "roadmapTitle": "스피논 구현 로드맵",
+  "firstVisibleC11Card": "C11.4 anonymous Grid text computed word-spacing",
+  "implementationPr": "#924",
+  "mergeSha": "93aba4eff3998c54c595b661578b339aeda89d87",
+  "sceneMatrix": "Chrome 156 24/24; Android API 37 ARM64 AVD 24/24; iPhone 17 Pro/iOS 26.2 Simulator 24/24",
+  "officialCount": "72/213",
+  "statusCheckboxes": {
+    "C11": {
+      "checked": false,
+      "disabled": true
+    },
+    "C11.4": {
+      "checked": false,
+      "disabled": true
+    }
+  },
+  "evidenceReadmeImage": {
+    "loaded": true,
+    "alt": "Agent Browser에서 확인한 C11.4 word-spacing 로드맵 카드",
+    "width": 1440,
+    "height": 1000
+  },
+  "httpsRouteCount": 235,
+  "httpsAll200AndHashesMatch": true,
+  "closedWith": "agent-browser close --all",
+  "agentBrowserProcessesAfterClose": 0,
+  "terminalBrowserUsed": false
+}
