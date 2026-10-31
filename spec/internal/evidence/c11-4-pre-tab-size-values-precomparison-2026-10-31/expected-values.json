@@ -1,0 +1,1858 @@
+{
+  "schema": "spinon-c11-4-tab-size-values-expected-v1",
+  "independent_basis": {
+    "spec": "CSS Text Level 3 §4.1.2 and §4.2",
+    "font": "저장 Ahem 10px. 이 fixture에서 U+0020과 U+0030 advance는 각각 10 CSS px다.",
+    "threshold_px": "5",
+    "number_interval": "계산된 number × U+0020 advance (10 CSS px)",
+    "length_interval": "computed absolute length를 CSS px로 사용하며 1.5em은 요소의 10px 글꼴 크기를 기준으로 계산한다.",
+    "segment_break": "LF와 CRLF는 tab 위치를 다음 줄의 content 시작점으로 초기화한다.",
+    "browser_geometry_quantization": "CSS 기대 line/frame 폭은 이상적인 값으로 유지한다. Blink geometry는 1/64px LayoutUnit 및 text-bound 외곽 반올림을 사용하므로 raw Chrome 폭은 ceil(ideal × 64) / 64로 비교한다. 이는 CSS tab-size 의미 규칙이 아니다.",
+    "scope": "기대값은 Chrome CSSOM이나 geometry를 복사하지 않고 고정 Ahem metrics와 tab-stop 산술로 계산한다. 연속 tab 규칙은 별도로 기록한 Blink 소스로 대조한다.",
+    "consecutive_tabs": "끊기지 않은 tab run에서 첫 tab은 현재 줄 위치와 0.5ch fallback으로 계산하고 나머지 tab에는 base interval을 더한다. 이는 Blink ShapeResult::CreateForTabulationCharacters의 동작과 일치한다.",
+    "tab_only_grid_child": "공백 문자만 포함한 direct child text sequence는 CSS Grid에서 anonymous item으로 생성되지 않는다. tab-only 행은 Grid 경계 대조군이며 text-layout 입력이 아니다."
+  },
+  "cases_per_value": 11,
+  "value_count": 14,
+  "values": [
+    {
+      "id": "number-zero",
+      "specified": "0",
+      "kind": "number",
+      "expected_computed": "0",
+      "tab_interval_px": "0",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-zero-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-zero-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "10"
+          ],
+          "max_content_width_px": "10",
+          "expected_frame_width_px": "10",
+          "min_content_width_px": "10"
+        },
+        {
+          "id": "number-zero-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "number-zero-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "number-zero-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "50"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "50",
+          "min_content_width_px": "50"
+        },
+        {
+          "id": "number-zero-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "number-zero-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "number-zero-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40",
+            "20"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "number-zero-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "10",
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "number-zero-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "number-zero-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "40"
+        }
+      ]
+    },
+    {
+      "id": "number-quarter",
+      "specified": "0.25",
+      "kind": "number",
+      "expected_computed": "0.25",
+      "tab_interval_px": "2.5",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-quarter-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-quarter-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15.0"
+          ],
+          "max_content_width_px": "15.0",
+          "expected_frame_width_px": "15.0",
+          "min_content_width_px": "15.0"
+        },
+        {
+          "id": "number-quarter-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25.0"
+          ],
+          "max_content_width_px": "25.0",
+          "expected_frame_width_px": "25.0",
+          "min_content_width_px": "25.0"
+        },
+        {
+          "id": "number-quarter-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35.0"
+          ],
+          "max_content_width_px": "35.0",
+          "expected_frame_width_px": "35.0",
+          "min_content_width_px": "35.0"
+        },
+        {
+          "id": "number-quarter-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55.0"
+          ],
+          "max_content_width_px": "55.0",
+          "expected_frame_width_px": "55.0",
+          "min_content_width_px": "55.0"
+        },
+        {
+          "id": "number-quarter-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "27.5"
+          ],
+          "max_content_width_px": "27.5",
+          "expected_frame_width_px": "27.5",
+          "min_content_width_px": "27.5"
+        },
+        {
+          "id": "number-quarter-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25.0"
+          ],
+          "max_content_width_px": "25.0",
+          "expected_frame_width_px": "25.0",
+          "min_content_width_px": "25.0"
+        },
+        {
+          "id": "number-quarter-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "45.0",
+            "25.0"
+          ],
+          "max_content_width_px": "45.0",
+          "expected_frame_width_px": "45.0",
+          "min_content_width_px": "45.0"
+        },
+        {
+          "id": "number-quarter-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15.0",
+            "25.0"
+          ],
+          "max_content_width_px": "25.0",
+          "expected_frame_width_px": "25.0",
+          "min_content_width_px": "25.0"
+        },
+        {
+          "id": "number-quarter-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "45.0"
+          ],
+          "max_content_width_px": "45.0",
+          "expected_frame_width_px": "45.0",
+          "min_content_width_px": "45.0"
+        },
+        {
+          "id": "number-quarter-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "45.0"
+          ],
+          "max_content_width_px": "45.0",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "45.0"
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths",
+      "specified": "0.3",
+      "kind": "number",
+      "expected_computed": "0.3",
+      "tab_interval_px": "3",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-three-tenths-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-three-tenths-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "16"
+          ],
+          "max_content_width_px": "16",
+          "expected_frame_width_px": "16",
+          "min_content_width_px": "16"
+        },
+        {
+          "id": "number-three-tenths-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-three-tenths-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "34"
+          ],
+          "max_content_width_px": "34",
+          "expected_frame_width_px": "34",
+          "min_content_width_px": "34"
+        },
+        {
+          "id": "number-three-tenths-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55"
+          ],
+          "max_content_width_px": "55",
+          "expected_frame_width_px": "55",
+          "min_content_width_px": "55"
+        },
+        {
+          "id": "number-three-tenths-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "28"
+          ],
+          "max_content_width_px": "28",
+          "expected_frame_width_px": "28",
+          "min_content_width_px": "28"
+        },
+        {
+          "id": "number-three-tenths-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "24"
+          ],
+          "max_content_width_px": "24",
+          "expected_frame_width_px": "24",
+          "min_content_width_px": "24"
+        },
+        {
+          "id": "number-three-tenths-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "44",
+            "25"
+          ],
+          "max_content_width_px": "44",
+          "expected_frame_width_px": "44",
+          "min_content_width_px": "44"
+        },
+        {
+          "id": "number-three-tenths-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15",
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-three-tenths-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "44"
+          ],
+          "max_content_width_px": "44",
+          "expected_frame_width_px": "44",
+          "min_content_width_px": "44"
+        },
+        {
+          "id": "number-three-tenths-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "44"
+          ],
+          "max_content_width_px": "44",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "44"
+        }
+      ]
+    },
+    {
+      "id": "number-half",
+      "specified": "0.5",
+      "kind": "number",
+      "expected_computed": "0.5",
+      "tab_interval_px": "5",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-half-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-half-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15"
+          ],
+          "max_content_width_px": "15",
+          "expected_frame_width_px": "15",
+          "min_content_width_px": "15"
+        },
+        {
+          "id": "number-half-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-half-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "number-half-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55"
+          ],
+          "max_content_width_px": "55",
+          "expected_frame_width_px": "55",
+          "min_content_width_px": "55"
+        },
+        {
+          "id": "number-half-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "number-half-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-half-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "45",
+            "25"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "number-half-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15",
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-half-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "number-half-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "45"
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half",
+      "specified": "1.5",
+      "kind": "number",
+      "expected_computed": "1.5",
+      "tab_interval_px": "15",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-one-and-half-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-one-and-half-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-one-and-half-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-one-and-half-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "number-one-and-half-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55"
+          ],
+          "max_content_width_px": "55",
+          "expected_frame_width_px": "55",
+          "min_content_width_px": "55"
+        },
+        {
+          "id": "number-one-and-half-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "number-one-and-half-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "number-one-and-half-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "50",
+            "25"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "50",
+          "min_content_width_px": "50"
+        },
+        {
+          "id": "number-one-and-half-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15",
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-one-and-half-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "50"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "50",
+          "min_content_width_px": "50"
+        },
+        {
+          "id": "number-one-and-half-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "50"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "50"
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half",
+      "specified": "2.5",
+      "kind": "number",
+      "expected_computed": "2.5",
+      "tab_interval_px": "25",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-two-and-half-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-two-and-half-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "number-two-and-half-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "number-two-and-half-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "number-two-and-half-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "60"
+          ],
+          "max_content_width_px": "60",
+          "expected_frame_width_px": "60",
+          "min_content_width_px": "60"
+        },
+        {
+          "id": "number-two-and-half-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "60"
+          ],
+          "max_content_width_px": "60",
+          "expected_frame_width_px": "60",
+          "min_content_width_px": "60"
+        },
+        {
+          "id": "number-two-and-half-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "number-two-and-half-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "45",
+            "35"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "number-two-and-half-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25",
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "number-two-and-half-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "number-two-and-half-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "45"
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter",
+      "specified": "3.25",
+      "kind": "number",
+      "expected_computed": "3.25",
+      "tab_interval_px": "32.5",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "number-three-and-quarter-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "number-three-and-quarter-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "42.5"
+          ],
+          "max_content_width_px": "42.5",
+          "expected_frame_width_px": "42.5",
+          "min_content_width_px": "42.5"
+        },
+        {
+          "id": "number-three-and-quarter-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "42.5"
+          ],
+          "max_content_width_px": "42.5",
+          "expected_frame_width_px": "42.5",
+          "min_content_width_px": "42.5"
+        },
+        {
+          "id": "number-three-and-quarter-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "42.5"
+          ],
+          "max_content_width_px": "42.5",
+          "expected_frame_width_px": "42.5",
+          "min_content_width_px": "42.5"
+        },
+        {
+          "id": "number-three-and-quarter-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "75.0"
+          ],
+          "max_content_width_px": "75.0",
+          "expected_frame_width_px": "75.0",
+          "min_content_width_px": "75.0"
+        },
+        {
+          "id": "number-three-and-quarter-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "75.0"
+          ],
+          "max_content_width_px": "75.0",
+          "expected_frame_width_px": "75.0",
+          "min_content_width_px": "75.0"
+        },
+        {
+          "id": "number-three-and-quarter-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "32.5"
+          ],
+          "max_content_width_px": "32.5",
+          "expected_frame_width_px": "32.5",
+          "min_content_width_px": "32.5"
+        },
+        {
+          "id": "number-three-and-quarter-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "52.5",
+            "42.5"
+          ],
+          "max_content_width_px": "52.5",
+          "expected_frame_width_px": "52.5",
+          "min_content_width_px": "52.5"
+        },
+        {
+          "id": "number-three-and-quarter-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "32.5",
+            "42.5"
+          ],
+          "max_content_width_px": "42.5",
+          "expected_frame_width_px": "42.5",
+          "min_content_width_px": "42.5"
+        },
+        {
+          "id": "number-three-and-quarter-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "52.5"
+          ],
+          "max_content_width_px": "52.5",
+          "expected_frame_width_px": "52.5",
+          "min_content_width_px": "52.5"
+        },
+        {
+          "id": "number-three-and-quarter-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "52.5"
+          ],
+          "max_content_width_px": "52.5",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "52.5"
+        }
+      ]
+    },
+    {
+      "id": "length-zero",
+      "specified": "0px",
+      "kind": "length",
+      "expected_computed": "0px",
+      "tab_interval_px": "0",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-zero-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-zero-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "10"
+          ],
+          "max_content_width_px": "10",
+          "expected_frame_width_px": "10",
+          "min_content_width_px": "10"
+        },
+        {
+          "id": "length-zero-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "length-zero-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "length-zero-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "50"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "50",
+          "min_content_width_px": "50"
+        },
+        {
+          "id": "length-zero-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "length-zero-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "length-zero-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40",
+            "20"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "length-zero-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "10",
+            "20"
+          ],
+          "max_content_width_px": "20",
+          "expected_frame_width_px": "20",
+          "min_content_width_px": "20"
+        },
+        {
+          "id": "length-zero-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "length-zero-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "40"
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths",
+      "specified": "0.3px",
+      "kind": "length",
+      "expected_computed": "0.3px",
+      "tab_interval_px": "0.3",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-three-tenths-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-three-tenths-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "10.6"
+          ],
+          "max_content_width_px": "10.6",
+          "expected_frame_width_px": "10.6",
+          "min_content_width_px": "10.6"
+        },
+        {
+          "id": "length-three-tenths-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20.5"
+          ],
+          "max_content_width_px": "20.5",
+          "expected_frame_width_px": "20.5",
+          "min_content_width_px": "20.5"
+        },
+        {
+          "id": "length-three-tenths-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30.4"
+          ],
+          "max_content_width_px": "30.4",
+          "expected_frame_width_px": "30.4",
+          "min_content_width_px": "30.4"
+        },
+        {
+          "id": "length-three-tenths-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "50.5"
+          ],
+          "max_content_width_px": "50.5",
+          "expected_frame_width_px": "50.5",
+          "min_content_width_px": "50.5"
+        },
+        {
+          "id": "length-three-tenths-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20.8"
+          ],
+          "max_content_width_px": "20.8",
+          "expected_frame_width_px": "20.8",
+          "min_content_width_px": "20.8"
+        },
+        {
+          "id": "length-three-tenths-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "20.4"
+          ],
+          "max_content_width_px": "20.4",
+          "expected_frame_width_px": "20.4",
+          "min_content_width_px": "20.4"
+        },
+        {
+          "id": "length-three-tenths-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40.4",
+            "20.5"
+          ],
+          "max_content_width_px": "40.4",
+          "expected_frame_width_px": "40.4",
+          "min_content_width_px": "40.4"
+        },
+        {
+          "id": "length-three-tenths-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "10.5",
+            "20.5"
+          ],
+          "max_content_width_px": "20.5",
+          "expected_frame_width_px": "20.5",
+          "min_content_width_px": "20.5"
+        },
+        {
+          "id": "length-three-tenths-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "40.4"
+          ],
+          "max_content_width_px": "40.4",
+          "expected_frame_width_px": "40.4",
+          "min_content_width_px": "40.4"
+        },
+        {
+          "id": "length-three-tenths-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "40.4"
+          ],
+          "max_content_width_px": "40.4",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "40.4"
+        }
+      ]
+    },
+    {
+      "id": "length-two",
+      "specified": "2px",
+      "kind": "length",
+      "expected_computed": "2px",
+      "tab_interval_px": "2",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-two-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-two-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "14"
+          ],
+          "max_content_width_px": "14",
+          "expected_frame_width_px": "14",
+          "min_content_width_px": "14"
+        },
+        {
+          "id": "length-two-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "24"
+          ],
+          "max_content_width_px": "24",
+          "expected_frame_width_px": "24",
+          "min_content_width_px": "24"
+        },
+        {
+          "id": "length-two-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "34"
+          ],
+          "max_content_width_px": "34",
+          "expected_frame_width_px": "34",
+          "min_content_width_px": "34"
+        },
+        {
+          "id": "length-two-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "54"
+          ],
+          "max_content_width_px": "54",
+          "expected_frame_width_px": "54",
+          "min_content_width_px": "54"
+        },
+        {
+          "id": "length-two-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "26"
+          ],
+          "max_content_width_px": "26",
+          "expected_frame_width_px": "26",
+          "min_content_width_px": "26"
+        },
+        {
+          "id": "length-two-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "24"
+          ],
+          "max_content_width_px": "24",
+          "expected_frame_width_px": "24",
+          "min_content_width_px": "24"
+        },
+        {
+          "id": "length-two-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "44",
+            "24"
+          ],
+          "max_content_width_px": "44",
+          "expected_frame_width_px": "44",
+          "min_content_width_px": "44"
+        },
+        {
+          "id": "length-two-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "14",
+            "24"
+          ],
+          "max_content_width_px": "24",
+          "expected_frame_width_px": "24",
+          "min_content_width_px": "24"
+        },
+        {
+          "id": "length-two-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "44"
+          ],
+          "max_content_width_px": "44",
+          "expected_frame_width_px": "44",
+          "min_content_width_px": "44"
+        },
+        {
+          "id": "length-two-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "44"
+          ],
+          "max_content_width_px": "44",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "44"
+        }
+      ]
+    },
+    {
+      "id": "length-five",
+      "specified": "5px",
+      "kind": "length",
+      "expected_computed": "5px",
+      "tab_interval_px": "5",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-five-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-five-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15"
+          ],
+          "max_content_width_px": "15",
+          "expected_frame_width_px": "15",
+          "min_content_width_px": "15"
+        },
+        {
+          "id": "length-five-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-five-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "length-five-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55"
+          ],
+          "max_content_width_px": "55",
+          "expected_frame_width_px": "55",
+          "min_content_width_px": "55"
+        },
+        {
+          "id": "length-five-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "length-five-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-five-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "45",
+            "25"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "length-five-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15",
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-five-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "length-five-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "45"
+        }
+      ]
+    },
+    {
+      "id": "length-twelve",
+      "specified": "12px",
+      "kind": "length",
+      "expected_computed": "12px",
+      "tab_interval_px": "12",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-twelve-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-twelve-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "22"
+          ],
+          "max_content_width_px": "22",
+          "expected_frame_width_px": "22",
+          "min_content_width_px": "22"
+        },
+        {
+          "id": "length-twelve-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "34"
+          ],
+          "max_content_width_px": "34",
+          "expected_frame_width_px": "34",
+          "min_content_width_px": "34"
+        },
+        {
+          "id": "length-twelve-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "46"
+          ],
+          "max_content_width_px": "46",
+          "expected_frame_width_px": "46",
+          "min_content_width_px": "46"
+        },
+        {
+          "id": "length-twelve-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "58"
+          ],
+          "max_content_width_px": "58",
+          "expected_frame_width_px": "58",
+          "min_content_width_px": "58"
+        },
+        {
+          "id": "length-twelve-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "46"
+          ],
+          "max_content_width_px": "46",
+          "expected_frame_width_px": "46",
+          "min_content_width_px": "46"
+        },
+        {
+          "id": "length-twelve-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "36"
+          ],
+          "max_content_width_px": "36",
+          "expected_frame_width_px": "36",
+          "min_content_width_px": "36"
+        },
+        {
+          "id": "length-twelve-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "56",
+            "34"
+          ],
+          "max_content_width_px": "56",
+          "expected_frame_width_px": "56",
+          "min_content_width_px": "56"
+        },
+        {
+          "id": "length-twelve-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "24",
+            "34"
+          ],
+          "max_content_width_px": "34",
+          "expected_frame_width_px": "34",
+          "min_content_width_px": "34"
+        },
+        {
+          "id": "length-twelve-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "56"
+          ],
+          "max_content_width_px": "56",
+          "expected_frame_width_px": "56",
+          "min_content_width_px": "56"
+        },
+        {
+          "id": "length-twelve-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "56"
+          ],
+          "max_content_width_px": "56",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "56"
+        }
+      ]
+    },
+    {
+      "id": "length-em",
+      "specified": "1.5em",
+      "kind": "length",
+      "expected_computed": "15px",
+      "tab_interval_px": "15",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-em-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-em-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-em-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-em-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "length-em-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55"
+          ],
+          "max_content_width_px": "55",
+          "expected_frame_width_px": "55",
+          "min_content_width_px": "55"
+        },
+        {
+          "id": "length-em-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "40"
+          ],
+          "max_content_width_px": "40",
+          "expected_frame_width_px": "40",
+          "min_content_width_px": "40"
+        },
+        {
+          "id": "length-em-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "length-em-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "50",
+            "25"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "50",
+          "min_content_width_px": "50"
+        },
+        {
+          "id": "length-em-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15",
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-em-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "50"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "50",
+          "min_content_width_px": "50"
+        },
+        {
+          "id": "length-em-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "50"
+          ],
+          "max_content_width_px": "50",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "50"
+        }
+      ]
+    },
+    {
+      "id": "length-calc",
+      "specified": "calc(2px + 3px)",
+      "kind": "length",
+      "expected_computed": "5px",
+      "tab_interval_px": "5",
+      "stop_rule": "줄 content 시작점을 기준으로 다음 배수 stop으로 이동한다. 다음 stop까지 거리가 5px보다 짧으면 그 다음 stop을 사용한다.",
+      "cases": [
+        {
+          "id": "length-calc-tab-only",
+          "text": "\t",
+          "layout": "ignored-whitespace-only-anonymous-grid-text",
+          "line_advances_px": [],
+          "max_content_width_px": "0",
+          "expected_frame_width_px": "0",
+          "min_content_width_px": "0"
+        },
+        {
+          "id": "length-calc-leading",
+          "text": "\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15"
+          ],
+          "max_content_width_px": "15",
+          "expected_frame_width_px": "15",
+          "min_content_width_px": "15"
+        },
+        {
+          "id": "length-calc-after-one",
+          "text": "X\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-calc-after-two",
+          "text": "XX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "35"
+          ],
+          "max_content_width_px": "35",
+          "expected_frame_width_px": "35",
+          "min_content_width_px": "35"
+        },
+        {
+          "id": "length-calc-exact-stop",
+          "text": "XXXX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "55"
+          ],
+          "max_content_width_px": "55",
+          "expected_frame_width_px": "55",
+          "min_content_width_px": "55"
+        },
+        {
+          "id": "length-calc-consecutive",
+          "text": "X\t\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "30"
+          ],
+          "max_content_width_px": "30",
+          "expected_frame_width_px": "30",
+          "min_content_width_px": "30"
+        },
+        {
+          "id": "length-calc-trailing",
+          "text": "XX\t",
+          "layout": "max-content",
+          "line_advances_px": [
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-calc-lf-reset",
+          "text": "XX\tXX\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "45",
+            "25"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "length-calc-crlf-reset",
+          "text": "X\t\r\nX\tX",
+          "layout": "max-content",
+          "line_advances_px": [
+            "15",
+            "25"
+          ],
+          "max_content_width_px": "25",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "25"
+        },
+        {
+          "id": "length-calc-min-content",
+          "text": "XX\tXX",
+          "layout": "min-content",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "45",
+          "min_content_width_px": "45"
+        },
+        {
+          "id": "length-calc-fixed-overflow",
+          "text": "XX\tXX",
+          "layout": "fixed-overflow",
+          "line_advances_px": [
+            "45"
+          ],
+          "max_content_width_px": "45",
+          "expected_frame_width_px": "25",
+          "min_content_width_px": "45"
+        }
+      ]
+    }
+  ],
+  "chromium_source": {
+    "shape_result": "https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/renderer/platform/fonts/shaping/shape_result.cc#1844",
+    "tab_width": "https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/renderer/platform/fonts/font.cc#307",
+    "note": "Source observation is recorded separately from CSS Text Level 3 prose. The browser observation remains the runtime oracle."
+  }
+}
