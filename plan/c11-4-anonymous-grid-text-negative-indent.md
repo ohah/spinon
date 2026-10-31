@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [직전 nonnegative `text-indent` slice](./c11-4-anonymous-grid-text-computed-text-indent.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 12개 음수 장면 구현·simulator 검증·구현 diff 30관점 검토를 마쳤다. 이전 구현 PR #930의 18개 `0px`/`5px`/`10px` scene과 합쳐 30개 matrix를 확인했으며 구현 PR 생성 전 상태다. 이 제한 opt-in slice는 C11.4/C11 완료나 일반 CSS 지원을 뜻하지 않는다.
+**상태:** 12개 음수 장면 구현·simulator 검증·구현 diff 30관점 검토를 마쳤다. 이전 구현 PR #930의 18개 `0px`/`5px`/`10px` scene과 합쳐 30개 matrix를 확인했으며 구현 PR [#938](https://github.com/ohah/spinon/pull/938) 검증 및 병합 대기 상태다. 이 제한 opt-in slice는 C11.4/C11 완료나 일반 CSS 지원을 뜻하지 않는다.
 
 **사전 비교:** [CSS Text 3·CSS Sizing·Grid 규범 및 독립 기대값, Chrome 156 Agent Browser 관측](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md) · [Chrome 156 observation JSON](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-observation.json) · [화면](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-agent-browser.png)
 
