@@ -583,6 +583,7 @@ fn rasterize_fixture_text(
             line_height: fixture.line_height,
             white_space: WhiteSpaceMode::NoWrap,
             word_break: WordBreakMode::Normal,
+            locale: None,
             direction: TextDirection::Auto,
             line_break: LineBreakMode::Strict,
             ligatures: LigatureMode::Normal,

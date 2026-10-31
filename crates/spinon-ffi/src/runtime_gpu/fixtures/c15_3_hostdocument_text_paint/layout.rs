@@ -129,6 +129,7 @@ pub(super) fn layout_fixture(
             line_height: FONT_SIZE,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            locale: None,
             direction: TextDirection::Ltr,
             line_break: LineBreakMode::Strict,
             ligatures: LigatureMode::Normal,

@@ -26,6 +26,7 @@ pub(super) fn paragraph_style(
         line_height_is_normal: false,
         white_space: WhiteSpaceMode::Normal,
         word_break: WordBreakMode::Normal,
+        locale: None,
         direction: ParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,

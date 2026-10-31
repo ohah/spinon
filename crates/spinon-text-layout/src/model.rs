@@ -109,6 +109,7 @@ impl Default for TabSize {
 pub enum WordBreakMode {
     Normal,
     BreakAll,
+    KeepAll,
 }
 
 /// C15.3의 고정 paragraph base direction입니다.
@@ -171,6 +172,8 @@ pub struct ParagraphStyle {
     pub text_indent: f32,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
+    /// Parley에 줄바꿈 언어를 전달할 제한된 BCP 47 태그입니다.
+    pub locale: Option<String>,
     pub direction: TextDirection,
     /// Paragraph의 computed writing mode입니다. Glyph rotation/painting은 담당하지 않습니다.
     pub writing_mode: WritingMode,
@@ -212,6 +215,11 @@ impl ParagraphStyle {
         {
             return Err("tab-size");
         }
+        if self.locale.as_ref().is_some_and(|locale| {
+            locale.trim() != locale || locale.parse::<parley::style::Language>().is_err()
+        }) {
+            return Err("locale");
+        }
         Ok(())
     }
 }
@@ -230,6 +238,7 @@ impl Default for ParagraphStyle {
             text_indent: 0.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            locale: None,
             direction: TextDirection::Auto,
             writing_mode: WritingMode::HorizontalTb,
             text_orientation: TextOrientation::Mixed,

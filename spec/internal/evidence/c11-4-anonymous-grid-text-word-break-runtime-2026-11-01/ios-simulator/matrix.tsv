@@ -1,0 +1,13 @@
+scene	result	word_break	language	font_family	track	line_count	grid_column_px	grid_row_px	trace_parts
+word-break-normal-unbroken-min-content	PASS	normal	en	Ahem	min	1	40	10	13
+word-break-normal-unbroken-max-content	PASS	normal	en	Ahem	max	1	40	10	14
+word-break-break-all-unbroken-min-content	PASS	break-all	en	Ahem	min	4	10	40	14
+word-break-break-all-unbroken-max-content	PASS	break-all	en	Ahem	max	1	40	10	14
+word-break-normal-two-words-min-content	PASS	normal	en	Ahem	min	2	20	20	13
+word-break-normal-two-words-max-content	PASS	normal	en	Ahem	max	1	50	10	14
+word-break-break-all-two-words-min-content	PASS	break-all	en	Ahem	min	4	10	40	14
+word-break-break-all-two-words-max-content	PASS	break-all	en	Ahem	max	1	50	10	14
+word-break-normal-hangul-min-content	PASS	normal	ko	Noto Sans KR	min	4	9.2	40	14
+word-break-normal-hangul-max-content	PASS	normal	ko	Noto Sans KR	max	1	36.8	10	14
+word-break-keep-all-hangul-min-content	PASS	keep-all	ko	Noto Sans KR	min	1	36.8	10	14
+word-break-keep-all-hangul-max-content	PASS	keep-all	ko	Noto Sans KR	max	1	36.8	10	14

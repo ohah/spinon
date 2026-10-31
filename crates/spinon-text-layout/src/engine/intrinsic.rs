@@ -203,7 +203,14 @@ impl TextLayoutEngine {
         builder.push_default(StyleProperty::WordBreak(match input.style.word_break {
             WordBreakMode::Normal => WordBreak::Normal,
             WordBreakMode::BreakAll => WordBreak::BreakAll,
+            WordBreakMode::KeepAll => WordBreak::KeepAll,
         }));
+        if let Some(locale) = input.style.locale.as_deref() {
+            let locale = locale
+                .parse::<parley::style::Language>()
+                .map_err(|_| TextLayoutError::InvalidStyle("locale"))?;
+            builder.push_default(StyleProperty::Locale(Some(locale)));
+        }
         builder.push_default(StyleProperty::LineBreak(match input.style.line_break {
             LineBreakMode::Normal => parley::style::LineBreak::Normal,
             LineBreakMode::Strict => parley::style::LineBreak::Strict,

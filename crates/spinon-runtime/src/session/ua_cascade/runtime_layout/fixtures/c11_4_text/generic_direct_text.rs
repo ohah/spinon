@@ -879,6 +879,7 @@ fn paragraph_style_for_with_baseline_alias(
         font_style: FontStyleMode::Normal,
         white_space,
         word_break,
+        locale: None,
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,

@@ -138,6 +138,7 @@ pub(super) fn prepare(
                 font_style: FontStyleMode::Normal,
                 white_space: WhiteSpaceMode::NoWrap,
                 word_break: WordBreakMode::Normal,
+                locale: None,
                 direction: TextParagraphDirection::Ltr,
                 line_break: LineBreakMode::Strict,
                 ligatures: LigatureMode::Normal,

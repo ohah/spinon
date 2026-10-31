@@ -965,3 +965,13 @@ Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 18/18 sce
 
 
 구현 PR [#938](https://github.com/ohah/spinon/pull/938)은 2026-10-31T18:34:54Z Rebase and merge됐다(merge SHA 8c5ca0c62ed030642455f53122928b25bba80fda). PR diff 검토에서 Android max-content line advance 기대값이 첫 단어 폭으로 설정된 것을 발견해 전체 unindented line advance로 고쳤다. 수정 후 CSS reference static tests 26/26, fixture Android app build, Android API 37 ARM64 AVD 30/30을 다시 통과했고 APK/install SHA-256은 일치한다. [구현 diff 실패 관점 30개](evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.md) · [수정 후 AVD 결과](evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/matrix.tsv) · [static test 결과](evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/node-tests-review-fix.log).
+
+## C11.4 anonymous Grid text computed `word-break` · 제한 opt-in fixture slice
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 opt-in anonymous direct-text Grid fixture에서 computed `word-break`를 `ParagraphStyle.word_break`에 연결하며 `WordBreakMode::Normal`, `BreakAll`, `KeepAll`을 제공한다. `ParagraphStyle.locale`은 optional BCP 47 language metadata로서 기본값 `None`을 유지하고, scene의 Grid style owner에 직접 설정한 HTML `lang`만 읽어 Parley Locale로 전달한다. 부모 요소 언어 상속이나 `xml:lang` 대체는 이 fixture에서 제공하지 않는다.
+
+고정 allowlist는 총 12 scene이다. Ahem 10px/400의 `XXXX`, `XX XX`를 `normal`·`break-all` 및 min-/max-content track으로 조합한 8 scene과 고정 Noto Sans KR 2.004 10px/400의 `가나다라`를 `lang=ko`, `normal`·`keep-all` 및 min-/max-content track으로 조합한 4 scene이다. Scene ID, 독립 글꼴 advance 기대값, Chrome 156 observation은 [사전 비교](evidence/c11-4-anonymous-grid-text-word-break-precomparison-2026-11-01/README.md)에 고정한다. Korean `normal`의 min-content는 9.2px·4행, `keep-all`은 36.8px·1행이며 양 mode의 max-content는 36.8px·1행이다.
+
+이 입력의 `line-break:auto`는 Parley 0.12.0 strict segmenter로 변환된다. pinned segmenter에서는 `ko` locale이 줄 분할을 바꾸지 않으며 locale 유무 대조의 `normal` intrinsic geometry는 같다. 이 제한 구현은 `lang=ko` metadata 전달과 `word-break:keep-all` 동작만 검증한다. 모든 언어의 locale별 줄 분할 지원을 선언하지 않는다. `break-word`, 미등록 scene/value, computed property 누락, Grid owner의 locale 누락·불일치, `xml:lang`, stale revision 또는 다른 style owner는 publication 전에 거부한다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 12/12 scene의 computed keyword, locale trace, line metrics, intrinsic min/max 및 최종 track을 확인한다. [실행 evidence](evidence/c11-4-anonymous-grid-text-word-break-runtime-2026-11-01/README.md). 화면 캡처의 renderer text surface는 검게 표시되어 glyph rasterization이나 compositor 이후 pixels를 증명하지 않는다. 일반 author CSS admission, arbitrary font/script/line-break combinations, WPT, 실기기/hardware GPU 및 전체 C11.4/C11 완료는 범위 밖이며 공식 `72/213`과 C11.4/C11 미완료 상태를 유지한다.

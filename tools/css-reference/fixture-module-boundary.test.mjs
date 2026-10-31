@@ -2253,3 +2253,61 @@ test('C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulat
   assert.ok(capture.includes("finalTrackSizes('Columns')"));
   assert.ok(capture.includes("finalTrackSizes('Rows')"));
 });
+
+test('C11.4 anonymous Grid computed word-break matrix stays opt-in and reaches both simulators', async () => {
+  const sceneIDs = [
+    'word-break-normal-unbroken-min-content', 'word-break-normal-unbroken-max-content',
+    'word-break-break-all-unbroken-min-content', 'word-break-break-all-unbroken-max-content',
+    'word-break-normal-two-words-min-content', 'word-break-normal-two-words-max-content',
+    'word-break-break-all-two-words-min-content', 'word-break-break-all-two-words-max-content',
+    'word-break-normal-hangul-min-content', 'word-break-normal-hangul-max-content',
+    'word-break-keep-all-hangul-min-content', 'word-break-keep-all-hangul-max-content',
+  ];
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_word_break.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/word_break.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_word_break.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-anonymous-grid-text-word-break-simulators.mjs',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-word-break-precomparison-2026-11-01/spec-derived-expectations.json',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-word-break-runtime-2026-11-01/README.md',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [runtimeGpu, ffiRoute, ffiSource, runtimeRoute, runtimeSource,
+    runtimeTests, runtimeTestSource, android, ios, capture, expected, evidence] = contents;
+  assert.match(runtimeGpu,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(ffiRoute,
+    /#\[path = "anonymous_text_items\/computed_word_break\.rs"\]\s*mod computed_word_break;/);
+  assert.match(runtimeTests,
+    /#\[cfg\(feature = "c11-4-grid-track-sizing-fixture-test"\)\][\s\S]*anonymous_text_word_break;/);
+  for (const sceneID of sceneIDs) {
+    assert.ok(ffiSource.includes(sceneID), `FFI source catalog is missing ${sceneID}`);
+    assert.ok(runtimeSource.includes(sceneID), `runtime scene catalog is missing ${sceneID}`);
+    assert.ok(runtimeTestSource.includes(sceneID), `runtime verifier is missing ${sceneID}`);
+    assert.ok(android.includes(sceneID), `Android scene validator is missing ${sceneID}`);
+    assert.ok(ios.includes(sceneID), `iOS scene validator is missing ${sceneID}`);
+    assert.ok(expected.includes(sceneID), `independent expected values are missing ${sceneID}`);
+  }
+  assert.ok(capture.includes('expectedValues.cases'), 'simulator capture does not read the fixed case list');
+  assert.match(runtimeRoute,
+    /validate_owner_language\(snapshot, root, scene_id\)/);
+  assert.ok(runtimeSource.includes('xml:lang is outside the fixture profile'));
+  assert.ok(runtimeRoute.includes('register_font("Noto Sans KR"'));
+  assert.ok(runtimeTestSource.includes(
+    'anonymous_grid_word_break_rejects_missing_or_xml_language_and_mismatched_style'));
+  assert.ok(android.includes('BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST'));
+  assert.ok(ios.includes('#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1'));
+  assert.ok(capture.includes('installedApkSha256'));
+  assert.ok(capture.includes('installedExecutableSha256'));
+  assert.ok(capture.includes('finalTrackSizes(\'Columns\')'));
+  assert.ok(capture.includes('finalTrackSizes(\'Rows\')'));
+  assert.ok(evidence.includes('12/12'));
+  assert.ok(evidence.includes('rasterization'));
+});
