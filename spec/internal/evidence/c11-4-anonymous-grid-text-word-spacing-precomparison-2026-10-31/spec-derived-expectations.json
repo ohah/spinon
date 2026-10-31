@@ -1,0 +1,235 @@
+{
+  "method": "CSS Text word separator rules + Ahem hmtx units/em; no Chrome geometry copied into expectations",
+  "ahem": {
+    "unitsPerEm": 1000,
+    "xAdvanceUnits": 1000,
+    "spaceAdvanceUnits": 1000,
+    "fontSizeCssPx": 10
+  },
+  "whiteSpace": "normal (collapse runs; discard line-edge spaces)",
+  "formula": {
+    "minContentWidth": "10px * longest unbreakable word length",
+    "maxContentWidth": "10px * total X count + (10px + computed word-spacing) * collapsed separator count",
+    "minContentHeight": "10px * word count",
+    "maxContentHeight": "10px"
+  },
+  "cases": [
+    {
+      "id": "word-spacing-normal-two-words-min-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 20
+    },
+    {
+      "id": "word-spacing-normal-two-words-max-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "max",
+      "columnsPx": 50,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-normal-collapsed-three-words-min-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 30
+    },
+    {
+      "id": "word-spacing-normal-collapsed-three-words-max-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columnsPx": 80,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-normal-single-word-min-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-normal-single-word-max-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "max",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-zero-two-words-min-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 20
+    },
+    {
+      "id": "word-spacing-zero-two-words-max-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "max",
+      "columnsPx": 50,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-zero-collapsed-three-words-min-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 30
+    },
+    {
+      "id": "word-spacing-zero-collapsed-three-words-max-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columnsPx": 80,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-zero-single-word-min-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-zero-single-word-max-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "max",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-minus-one-two-words-min-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 20
+    },
+    {
+      "id": "word-spacing-minus-one-two-words-max-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX XX",
+      "track": "max",
+      "columnsPx": 49,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-minus-one-collapsed-three-words-min-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 30
+    },
+    {
+      "id": "word-spacing-minus-one-collapsed-three-words-max-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columnsPx": 78,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-minus-one-single-word-min-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-minus-one-single-word-max-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX",
+      "track": "max",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-plus-one-two-words-min-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 20
+    },
+    {
+      "id": "word-spacing-plus-one-two-words-max-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX XX",
+      "track": "max",
+      "columnsPx": 51,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-plus-one-collapsed-three-words-min-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 30
+    },
+    {
+      "id": "word-spacing-plus-one-collapsed-three-words-max-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columnsPx": 82,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-plus-one-single-word-min-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX",
+      "track": "min",
+      "columnsPx": 20,
+      "rowsPx": 10
+    },
+    {
+      "id": "word-spacing-plus-one-single-word-max-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX",
+      "track": "max",
+      "columnsPx": 20,
+      "rowsPx": 10
+    }
+  ],
+  "chromeExactMatches": 24
+}

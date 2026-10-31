@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-31 anonymous Grid text computed `word-spacing` 다음 계획
+
+computed `letter-spacing` 제한 fixture PR [#920](https://github.com/ohah/spinon/pull/920)은 16-scene Chrome/CSS Text 기대값과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 16/16으로 병합됐지만 일반 CSS admission이나 glyph paint를 입증하지 않는다. 다음 독립 text-intrinsic candidate는 [computed `word-spacing` 계획](./c11-4-anonymous-grid-text-computed-word-spacing.md)이다. Chrome 156/Ahem 24-scene 사전 비교는 고정됐고, 이 문서는 계획 단계라 구현/runtime은 시작하지 않았다. C11.4/C11 및 공식 `72/213`은 미완료다.
+
 ## 2026-10-31 anonymous Grid `white-space:pre` author `tab-size` 제한 구현 · PR #889 병합
 
 고정 Ahem 익명 Grid `white-space:pre` fixture에서 computed unitless `tab-size:1`, `2`, `4`를 입력으로 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 회귀를 포함한 55/55 scene을 각각 확인했으며 positive draw/present는 52/52, 기대 거부는 3/3이다. 구현 PR [#889](https://github.com/ohah/spinon/pull/889)은 2026-10-31T01:12:37Z에 Rebase and merge됐고 merge SHA는 `97938de7703aa69eccb9cbe301c4c90bcc0029d2`다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. 이 fixture 확장은 일반 CSS admission, 전체 WPT 또는 C11.4/C11 완료가 아니며 공식 `72/213`은 유지한다. [계획과 범위](./c11-4-anonymous-grid-text-pre-author-tab-size.md) · [Chrome 사전 비교와 구현·simulator 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/numeric-author-tab-size.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-pre-author-tab-size-plan-review-20.md) · [PR #889 구현/runtime 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/implementation-runtime-review-20.md) · [구현 PR diff 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/pr-diff-review-30.md) · [이번 상태 동기화 PR 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/parent-roadmap-status-pr-review-20.md).
