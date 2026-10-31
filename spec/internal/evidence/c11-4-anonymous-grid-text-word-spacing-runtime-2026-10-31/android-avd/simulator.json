@@ -1,0 +1,14 @@
+{
+  "target": "Android API 37 ARM64 AVD",
+  "serial": "emulator-5554",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "apkSha256": "18a004b615f812a4c4e371759cd952028cc77d9e2c1d5cd04f11345fded04d74",
+  "installedApkSha256": "18a004b615f812a4c4e371759cd952028cc77d9e2c1d5cd04f11345fded04d74",
+  "baselineHead": "ca0627b89c2a76b82347627dceccbc6e0bd84872",
+  "branch": "feat/c11-4-anonymous-grid-text-word-spacing",
+  "sourceManifest": "../source-revision.json",
+  "sourceManifestSha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d"
+}

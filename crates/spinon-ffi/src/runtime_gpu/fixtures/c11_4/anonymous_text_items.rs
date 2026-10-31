@@ -4,6 +4,8 @@ mod computed_font_size;
 mod computed_letter_spacing;
 #[path = "anonymous_text_items/computed_line_height.rs"]
 mod computed_line_height;
+#[path = "anonymous_text_items/computed_word_spacing.rs"]
+mod computed_word_spacing;
 
 const SCENE_IDS: [&str; 55] = [
     "anonymous-min-content-wrap",
@@ -118,6 +120,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         return Some(source);
     }
     if let Some(source) = computed_letter_spacing::runtime_source(scene_id) {
+        return Some(source);
+    }
+    if let Some(source) = computed_word_spacing::runtime_source(scene_id) {
         return Some(source);
     }
     if let Some((value_index, case_index)) = full_tab_scene(scene_id) {

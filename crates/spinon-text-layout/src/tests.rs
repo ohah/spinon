@@ -249,6 +249,69 @@ fn ahem_letter_spacing_uses_adjacent_units_and_suppresses_line_edges() {
 }
 
 #[test]
+fn ahem_word_spacing_changes_collapsed_separators_but_not_min_content_words() {
+    let mut engine = engine();
+    let cases = [(-1.0, 49.0, 78.0), (0.0, 50.0, 80.0), (1.0, 51.0, 82.0)];
+
+    for (spacing, two_word_max, three_word_max) in cases {
+        let mut two_words = paragraph(
+            "XX XX",
+            "Ahem",
+            10.0,
+            10.0,
+            WhiteSpaceMode::Normal,
+            WordBreakMode::Normal,
+        );
+        two_words.style.word_spacing = spacing;
+        let sizes = engine.intrinsic_inline_sizes(&two_words).unwrap();
+        close_to(sizes.min_content(), 20.0);
+        close_to(sizes.max_content(), two_word_max);
+        close_to(sizes.min_content_height(), 20.0);
+        close_to(sizes.max_content_height(), 10.0);
+
+        let min_layout = engine.layout_paragraph(&two_words, 20.0).unwrap();
+        assert_eq!(min_layout.lines.len(), 2, "word-spacing {spacing}");
+        assert!(
+            min_layout
+                .lines
+                .iter()
+                .all(|line| (line.advance - 20.0).abs() < 0.02)
+        );
+        let max_layout = engine.layout_paragraph(&two_words, two_word_max).unwrap();
+        assert_eq!(max_layout.lines.len(), 1, "word-spacing {spacing}");
+        close_to(max_layout.width, two_word_max);
+
+        let mut repeated_spaces = paragraph(
+            "XX   XX XX  ",
+            "Ahem",
+            10.0,
+            10.0,
+            WhiteSpaceMode::Normal,
+            WordBreakMode::Normal,
+        );
+        repeated_spaces.style.word_spacing = spacing;
+        let repeated_sizes = engine.intrinsic_inline_sizes(&repeated_spaces).unwrap();
+        close_to(repeated_sizes.min_content(), 20.0);
+        close_to(repeated_sizes.max_content(), three_word_max);
+        close_to(repeated_sizes.min_content_height(), 30.0);
+        close_to(repeated_sizes.max_content_height(), 10.0);
+
+        let mut single_word = paragraph(
+            "XX",
+            "Ahem",
+            10.0,
+            10.0,
+            WhiteSpaceMode::Normal,
+            WordBreakMode::Normal,
+        );
+        single_word.style.word_spacing = spacing;
+        let single_sizes = engine.intrinsic_inline_sizes(&single_word).unwrap();
+        close_to(single_sizes.min_content(), 20.0);
+        close_to(single_sizes.max_content(), 20.0);
+    }
+}
+
+#[test]
 fn ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances() {
     let mut engine = engine();
     let cases = [

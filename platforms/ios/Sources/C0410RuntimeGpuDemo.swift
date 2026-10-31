@@ -255,6 +255,7 @@ private struct C114GenericDirectTextItemExpectation {
     let whiteSpace: String
     let wordBreak: String
     let letterSpacing: Double
+    let wordSpacing: Double
     let lineAdvances: [Double]
 }
 
@@ -388,7 +389,7 @@ private func c114GenericTextItem(
     rawText: String, layoutText: String, whiteSpace: String, wordBreak: String,
     availableWidth: Double? = nil, textWidth: Double? = nil,
     paddingInline: Double = 0, paddingBlock: Double = 0, borderWidth: Double = 0,
-    letterSpacing: Double = 0,
+    letterSpacing: Double = 0, wordSpacing: Double = 0,
     lineAdvances: [Double]
 ) -> C114GenericDirectTextItemExpectation {
     C114GenericDirectTextItemExpectation(
@@ -398,7 +399,8 @@ private func c114GenericTextItem(
         minContent: minContent, maxContent: maxContent,
         minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
         rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
-        wordBreak: wordBreak, letterSpacing: letterSpacing, lineAdvances: lineAdvances
+        wordBreak: wordBreak, letterSpacing: letterSpacing,
+        wordSpacing: wordSpacing, lineAdvances: lineAdvances
     )
 }
 
@@ -418,6 +420,25 @@ private func c114GenericDirectTextExpectation(
         return C114GenericDirectTextSceneExpectation(
             rootWidth: 120, rootHeight: letterSpacing.rowHeight,
             columns: [letterSpacing.trackWidth], items: [item]
+        )
+    }
+    if let wordSpacing = c114ComputedWordSpacingScene(sceneID) {
+        let singleWord = sceneID.contains("-single-word-")
+        let collapsed = sceneID.contains("-collapsed-three-words-")
+        let rawText = singleWord ? "XX" : (collapsed ? "XX   XX XX  " : "XX XX")
+        let layoutText = singleWord ? "XX" : (collapsed ? "XX XX XX" : "XX XX")
+        let minContentHeight = singleWord ? 10.0 : (collapsed ? 30.0 : 20.0)
+        let item = c114GenericTextItem(
+            node: 2, x: 0, width: wordSpacing.trackWidth, height: wordSpacing.rowHeight,
+            minContent: wordSpacing.minContent, maxContent: wordSpacing.maxContent,
+            minContentHeight: minContentHeight, maxContentHeight: 10,
+            rawText: rawText, layoutText: layoutText, whiteSpace: "Normal", wordBreak: "Normal",
+            wordSpacing: wordSpacing.wordSpacing,
+            lineAdvances: Array(repeating: wordSpacing.trackWidth, count: wordSpacing.lineCount)
+        )
+        return C114GenericDirectTextSceneExpectation(
+            rootWidth: 120, rootHeight: wordSpacing.rowHeight,
+            columns: [wordSpacing.trackWidth], items: [item]
         )
     }
     if let definiteAxis = c114GenericDirectTextDefiniteAxisExpectation(sceneID) {
@@ -1263,6 +1284,7 @@ private func c114SingleTrackOverflowAutoMinimumState(
 }
 
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    if c114ComputedWordSpacingScene(sceneID) != nil { return true }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return true }
     if c114IsComputedFontSizeScene(sceneID) { return true }
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
@@ -3087,6 +3109,9 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if c114ComputedLetterSpacingScene(sceneID) != nil {
         return c114ComputedLetterSpacingTextIntrinsicInputsMatch(sceneID, report: report)
+    }
+    if c114ComputedWordSpacingScene(sceneID) != nil {
+        return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114IsComputedFontSizeScene(sceneID) {
         return c114ComputedFontSizeTextIntrinsicInputsMatch(sceneID, report: report)
@@ -6641,6 +6666,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
 ) -> Bool {
     let isMinmaxScene = c114AspectRatioMinmaxSceneExpectation(sceneID) != nil
     let isMultispanScene = c114DirectTextMultispanSceneExpectation(sceneID) != nil
+    let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
     guard let scene = c114GenericDirectTextExpectation(sceneID),
           let diagnostics = c114GridTrackSizingDiagnostics(report),
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
@@ -6666,7 +6692,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
               c114GenericJSONInteger(input["node"]) == expectedNodes[index],
               c114GenericJSONInteger(input["sourceOrder"]) == index,
               let textSources = input["textSources"] as? [[String: Any]],
-              textSources.isEmpty,
+              textSources.count == (anonymousTextScene ? 1 : 0),
               let source = input["source"] as? [String: Any],
               c114GenericJSONString(source["kind"]) == "text",
               c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
@@ -6693,6 +6719,13 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
                 NSLog("SPINON_C114_MINMAX_TEXT_CHECK stage=input scene=\(sceneID) index=\(index)")
             }
             return false
+        }
+        if anonymousTextScene {
+            guard let textSource = textSources.first,
+                  c114GenericJSONInteger(textSource["node"]) == expected.node,
+                  c114GenericJSONString(textSource["text"]) == expected.rawText else {
+                return false
+            }
         }
     }
     guard let measurements = diagnostics["intrinsicMeasurements"] as? [[String: Any]],
@@ -6741,7 +6774,15 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
             maxContentHeightNodes.insert(node)
         }
     }
-    if sceneID.hasPrefix("grid-text-aspect-ratio-definite-") {
+    if anonymousTextScene {
+        let minContentTrack = sceneID.hasSuffix("-min-content")
+        let expectedMaxContentWidthNodes = minContentTrack ? Set<Int>() : Set(expectedNodes)
+        guard measuredNodes == Set(expectedNodes),
+              minContentWidthNodes == Set(expectedNodes),
+              maxContentWidthNodes == expectedMaxContentWidthNodes,
+              minContentHeightNodes == Set(expectedNodes),
+              maxContentHeightNodes == Set(expectedNodes) else { return false }
+    } else if sceneID.hasPrefix("grid-text-aspect-ratio-definite-") {
         let shortNode = expectedNodes[0]
         guard measuredNodes == Set(expectedNodes), definiteAxisDimensionMeasured,
               minContentWidthNodes.contains(shortNode),
@@ -6960,7 +7001,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONInteger(revision["intrinsicSize"]) == c114GenericJSONInteger(layoutRevision["intrinsicSize"]),
               let sources = layout["sources"] as? [[String: Any]], sources.count == 1,
               let sourceNode = c114GenericJSONInteger(sources[0]["node"]),
-              sourceNode == expected.node + 1,
+              sourceNode == expected.node + (c114IsAnonymousTextScene(sceneID) ? 0 : 1),
               c114GenericJSONString(sources[0]["text"]) == expected.rawText,
               let inlineAncestors = sources[0]["inlineAncestors"] as? [Any],
               inlineAncestors.isEmpty,
@@ -6980,6 +7021,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONString(style["wordBreak"]) == expected.wordBreak,
               c114GenericJSONString(style["direction"]) == "Ltr",
               c114GenericJSONNear(style["letterSpacing"], expected: expected.letterSpacing, tolerance: 0),
+              c114GenericJSONNear(style["wordSpacing"], expected: expected.wordSpacing, tolerance: 0),
               c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
               c114GenericJSONString(style["textOrientation"]) == "Mixed",
               c114GenericJSONString(style["lineBreak"]) == "Strict",
@@ -7231,6 +7273,7 @@ private func c114GenericDirectTextTraceMatches(
           c114GenericJSONString(passes[1]["axis"]) == "Rows" else {
         return false
     }
+    let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
     let rowTracksMatch = c114IsGridTextAspectRatioColumnScene(sceneID)
         ? c114GenericFixedTrackSizesMatch(passes[1], expected: [scene.rootHeight])
         : c114GenericTrackSizesMatch(
@@ -7243,7 +7286,7 @@ private func c114GenericDirectTextTraceMatches(
     guard
           c114GenericTrackSizesMatch(
             passes[0], expected: scene.columns,
-            gap: c114IsGridTextAspectRatioScene(sceneID) ? 0 : 10
+            gap: c114IsGridTextAspectRatioScene(sceneID) || anonymousTextScene ? 0 : 10
           ),
           rowTracksMatch else {
         return false
@@ -7278,6 +7321,27 @@ private func c114GenericDirectTextTraceMatches(
                   initialIntrinsicSizes: [initialRowStageBase],
                   fixed: fixedRows, stretchApplied: !fixedRows
               ) else { return false }
+    }
+    if anonymousTextScene {
+        let item = scene.items[0]
+        let minContentTrack = sceneID.hasSuffix("-min-content")
+        let expectedColumns: [(item: Int, kind: String, value: Double)] = minContentTrack
+            ? [(item.node, "MinContent", item.minContent)]
+            : [
+                (item.node, "MinContent", item.minContent),
+                (item.node, "MaxContent", item.maxContent),
+            ]
+        let rowHeight = scene.rootHeight
+        let expectedRows: [(item: Int, kind: String, value: Double)] = [
+            (item.node, "Minimum", rowHeight),
+            (item.node, "MinContent", rowHeight),
+            (item.node, "MaxContent", rowHeight),
+        ]
+        return c114GenericDirectTextContributionsMatch(
+            passes[0], expected: expectedColumns, allowIdenticalDuplicates: true
+        ) && c114GenericDirectTextContributionsMatch(
+            passes[1], expected: expectedRows, allowIdenticalDuplicates: true
+        )
     }
     let first = scene.items[0]
     let second = scene.items[1]
@@ -8466,6 +8530,10 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if let letterSpacing = c114ComputedLetterSpacingScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
             + "height=\(c114GenericFrameNumber(letterSpacing.rowHeight))]"
+    }
+    if let wordSpacing = c114ComputedWordSpacingScene(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
+            + "height=\(c114GenericFrameNumber(wordSpacing.rowHeight))]"
     }
     if let fontSize = c114ComputedFontSizeScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=\(c114GenericFrameNumber(fontSize.rowHeight))]"
@@ -10199,6 +10267,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114ComputedWordSpacingScene(sceneID) != nil { return 1 }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return 1 }
     if c114IsComputedFontSizeScene(sceneID) { return 1 }
     if let height = c114ComputedLineHeightTrackHeight(sceneID) {
@@ -10411,7 +10480,8 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
-    c114ComputedLetterSpacingScene(sceneID) != nil
+    c114ComputedWordSpacingScene(sceneID) != nil
+        || c114ComputedLetterSpacingScene(sceneID) != nil
         || c114IsComputedFontSizeScene(sceneID)
         || c114ComputedLineHeightTrackHeight(sceneID) != nil
         || ["anonymous-min-content-wrap", "anonymous-normal-min-content",
@@ -10504,6 +10574,41 @@ private func c114ComputedLetterSpacingScene(
         letterSpacing: letterSpacing, minContent: minContent, maxContent: maxContent,
         trackWidth: trackWidth, rowHeight: rowHeight,
         lineCount: rowHeight == 20 ? 2 : 1, singleWord: singleWord
+    )
+    #else
+    return nil
+    #endif
+}
+
+private func c114ComputedWordSpacingScene(
+    _ sceneID: String
+) -> (wordSpacing: Double, minContent: Double, maxContent: Double,
+    trackWidth: Double, rowHeight: Double, lineCount: Int)? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    let wordSpacing: Double
+    if sceneID.hasPrefix("word-spacing-normal-") || sceneID.hasPrefix("word-spacing-zero-") {
+        wordSpacing = 0
+    } else if sceneID.hasPrefix("word-spacing-minus-one-") {
+        wordSpacing = -1
+    } else if sceneID.hasPrefix("word-spacing-plus-one-") {
+        wordSpacing = 1
+    } else {
+        return nil
+    }
+    let singleWord = sceneID.contains("-single-word-")
+    let collapsedThreeWords = sceneID.contains("-collapsed-three-words-")
+    guard singleWord || collapsedThreeWords || sceneID.contains("-two-words-") else { return nil }
+    let minContentTrack = sceneID.hasSuffix("-min-content")
+    guard minContentTrack || sceneID.hasSuffix("-max-content") else { return nil }
+    let minContent = 20.0
+    let maxContent = singleWord ? 20.0 : (collapsedThreeWords ? 80 + 2 * wordSpacing : 50 + wordSpacing)
+    let trackWidth = minContentTrack ? minContent : maxContent
+    let minContentHeight = singleWord ? 10.0 : (collapsedThreeWords ? 30.0 : 20.0)
+    let rowHeight = minContentTrack ? minContentHeight : 10.0
+    return (
+        wordSpacing: wordSpacing, minContent: minContent, maxContent: maxContent,
+        trackWidth: trackWidth, rowHeight: rowHeight,
+        lineCount: rowHeight == 10 ? 1 : Int(rowHeight / 10)
     )
     #else
     return nil

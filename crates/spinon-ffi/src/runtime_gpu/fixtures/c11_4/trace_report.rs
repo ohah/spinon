@@ -550,6 +550,7 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
             "fontFamily": style.font_family,
             "fontSize": style.font_size,
             "letterSpacing": style.letter_spacing,
+            "wordSpacing": style.word_spacing,
             "lineHeight": style.line_height,
             "lineHeightIsNormal": style.line_height_is_normal,
             "fontWeight": style.font_weight,

@@ -180,6 +180,7 @@ impl TextLayoutEngine {
         ));
         builder.push_default(StyleProperty::FontSize(input.style.font_size));
         builder.push_default(StyleProperty::LetterSpacing(input.style.letter_spacing));
+        builder.push_default(StyleProperty::WordSpacing(input.style.word_spacing));
         builder.push_default(StyleProperty::FontWeight(ParleyFontWeight::new(
             input.style.font_weight,
         )));
