@@ -994,6 +994,8 @@ mod paragraph_style;
 
 #[path = "tests/c11_4_break_spaces.rs"]
 mod c11_4_break_spaces;
+#[path = "tests/c11_4_line_break.rs"]
+mod c11_4_line_break;
 #[path = "tests/c11_4_pre.rs"]
 mod c11_4_pre;
 #[path = "tests/c11_4_pre_wrap.rs"]

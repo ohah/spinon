@@ -2311,3 +2311,55 @@ test('C11.4 anonymous Grid computed word-break matrix stays opt-in and reaches b
   assert.ok(evidence.includes('12/12'));
   assert.ok(evidence.includes('rasterization'));
 });
+
+test('C11.4 anonymous Grid computed line-break matrix stays opt-in and reaches both simulators', async () => {
+  const sceneIDs = [
+    'line-break-ja-normal-min-content', 'line-break-ja-normal-max-content',
+    'line-break-ja-strict-min-content', 'line-break-ja-strict-max-content',
+    'line-break-en-normal-min-content',
+  ];
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_line_break.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/line_break.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_line_break.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-anonymous-grid-text-line-break-simulators.mjs',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [runtimeGpu, ffiRoute, ffiSource, runtimeRoute, runtimeSource,
+    runtimeTests, runtimeTestSource, android, ios, capture, expected, evidence] = contents;
+  assert.match(runtimeGpu,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(ffiRoute,
+    /#\[path = "anonymous_text_items\/computed_line_break\.rs"\]\s*mod computed_line_break;/);
+  assert.match(runtimeTests,
+    /#\[cfg\(feature = "c11-4-grid-track-sizing-fixture-test"\)\][\s\S]*anonymous_text_line_break;/);
+  for (const sceneID of sceneIDs) {
+    assert.ok(ffiSource.includes(sceneID), `FFI source catalog is missing ${sceneID}`);
+    assert.ok(runtimeSource.includes(sceneID), `runtime scene catalog is missing ${sceneID}`);
+    assert.ok(runtimeTestSource.includes(sceneID), `runtime verifier is missing ${sceneID}`);
+    assert.ok(android.includes(sceneID), `Android scene validator is missing ${sceneID}`);
+    assert.ok(ios.includes(sceneID), `iOS scene validator is missing ${sceneID}`);
+    assert.ok(expected.includes(sceneID), `independent expected values are missing ${sceneID}`);
+  }
+  assert.ok(capture.includes('expectedValues.cases'));
+  assert.ok(capture.includes("layout.paragraphStyle.lineBreak"));
+  assert.ok(capture.includes("installedApkSha256"));
+  assert.ok(capture.includes("installedExecutableSha256"));
+  assert.ok(capture.includes("finalTrackSizes('Columns')"));
+  assert.ok(capture.includes("finalTrackSizes('Rows')"));
+  assert.ok(runtimeRoute.includes('line_break::validate_owner_language'));
+  assert.ok(runtimeRoute.includes('expected_line_break(scene_id)'));
+  assert.ok(runtimeTestSource.includes('computed_line_break_scenes_require_their_exact_intrinsic_track'));
+  assert.ok(runtimeTestSource.includes('anonymous_grid_line_break_rejects_unlisted_scenes_and_stale_revisions'));
+  assert.ok(evidence.includes('5/5'));
+  assert.ok(evidence.includes('renderer'));
+});

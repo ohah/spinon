@@ -2,6 +2,8 @@
 mod computed_font_size;
 #[path = "anonymous_text_items/computed_letter_spacing.rs"]
 mod computed_letter_spacing;
+#[path = "anonymous_text_items/computed_line_break.rs"]
+mod computed_line_break;
 #[path = "anonymous_text_items/computed_line_height.rs"]
 mod computed_line_height;
 #[path = "anonymous_text_items/computed_text_indent.rs"]
@@ -117,6 +119,9 @@ const FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
+    if let Some(source) = computed_line_break::runtime_source(scene_id) {
+        return Some(source);
+    }
     if let Some(source) = computed_word_break::runtime_source(scene_id) {
         return Some(source);
     }

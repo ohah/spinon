@@ -18,6 +18,8 @@ use super::super::{RuntimeLayoutFailure, layout_failure};
 mod font_size;
 #[path = "c11_4_anonymous_text/letter_spacing.rs"]
 mod letter_spacing;
+#[path = "c11_4_anonymous_text/line_break.rs"]
+mod line_break;
 #[path = "c11_4_anonymous_text/line_height.rs"]
 mod line_height;
 #[path = "c11_4_anonymous_text/text_indent.rs"]
@@ -30,6 +32,9 @@ use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
 use letter_spacing::{
     LETTER_SPACING_SCENE_IDS, find_scene as letter_spacing_scene, validate_computed_letter_spacing,
 };
+#[cfg(test)]
+use line_break::SCENES as LINE_BREAK_SCENES;
+use line_break::find_scene as line_break_scene;
 use line_height::{
     ComputedLineHeight, LINE_HEIGHT_SCENE_IDS, line_height_text, validate_computed_line_height,
 };
@@ -195,10 +200,12 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         && !LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         && !WORD_SPACING_SCENE_IDS.contains(&scene_id)
         && !TEXT_INDENT_SCENE_IDS.contains(&scene_id)
+        && line_break_scene(scene_id).is_none()
         && full_tab_scene(scene_id).is_none()
     {
         return if scene_id.starts_with("anonymous-")
             || scene_id.starts_with("word-break-")
+            || scene_id.starts_with("line-break-")
             || scene_id == "whitespace-does-not-create-item"
         {
             Err(unsupported(root.id(), "unknown anonymous text scene"))
@@ -212,6 +219,8 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
 
     let word_break_scene = word_break_scene(scene_id);
     let locale = word_break::validate_owner_language(snapshot, root, scene_id)?;
+    let line_break_scene = line_break_scene(scene_id);
+    let line_break_locale = line_break::validate_owner_language(snapshot, root, scene_id)?;
     let grid_style = style_for(styles, root.id())?;
     let font_size = validate_computed_font_size(grid_style, scene_id)?;
     let (tab_size, line_height, letter_spacing, word_spacing, text_indent) =
@@ -228,7 +237,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
                 Some(error.to_string()),
             )
         })?;
-    if word_break_scene.is_some_and(|scene| scene.font_family == "Noto Sans KR") {
+    if word_break_scene.is_some_and(|scene| scene.font_family == "Noto Sans KR")
+        || line_break_scene.is_some_and(|scene| scene.font_family == "Noto Sans KR")
+    {
         engine
             .register_font("Noto Sans KR", word_break::NOTO_SANS_KR)
             .map_err(|error| {
@@ -252,6 +263,11 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_style.font_family = scene.font_family.to_owned();
         paragraph_style.word_break = scene.word_break;
         paragraph_style.locale = locale;
+    }
+    if let Some(scene) = line_break_scene {
+        paragraph_style.font_family = scene.font_family.to_owned();
+        paragraph_style.line_break = scene.line_break;
+        paragraph_style.locale = line_break_locale;
     }
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(root.id(), paragraph_style)]),
@@ -349,6 +365,9 @@ fn validate_direct_children(
         )],
         scene_id if word_break_scene(scene_id).is_some() => &[ExpectedChild::Text(
             word_break_scene(scene_id).unwrap().text,
+        )],
+        scene_id if line_break_scene(scene_id).is_some() => &[ExpectedChild::Text(
+            line_break_scene(scene_id).unwrap().text,
         )],
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
@@ -567,6 +586,7 @@ fn validate_grid_style(
                 (120.0, ComputedCssDimension::Auto)
             }
             scene_id if word_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
+            scene_id if line_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 (20.0, ComputedCssDimension::Auto)
             }
@@ -797,6 +817,13 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
                     ComputedCssGridTrackSize::MaxContent
                 }]
             }
+            scene_id if line_break_scene(scene_id).is_some() => {
+                vec![if line_break_scene(scene_id).unwrap().is_min_content {
+                    ComputedCssGridTrackSize::MinContent
+                } else {
+                    ComputedCssGridTrackSize::MaxContent
+                }]
+            }
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 vec![ComputedCssGridTrackSize::LengthPx(20.0)]
             }
@@ -933,6 +960,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         || WORD_SPACING_SCENE_IDS.contains(&scene_id)
         || TEXT_INDENT_SCENE_IDS.contains(&scene_id)
         || word_break_scene(scene_id).is_some()
+        || line_break_scene(scene_id).is_some()
         || matches!(
             scene_id,
             "anonymous-min-content-wrap"
@@ -1018,7 +1046,7 @@ fn validate_text_profile_properties(
         ("font-style", "normal"),
         ("word-break", expected_word_break),
         ("direction", "ltr"),
-        ("line-break", "auto"),
+        ("line-break", expected_line_break(scene_id)),
         ("text-align", "start"),
         ("overflow-wrap", "normal"),
         ("text-transform", "none"),
@@ -1068,17 +1096,24 @@ fn validate_text_profile_properties(
 }
 
 fn expected_font_family(scene_id: &str) -> &'static str {
-    word_break_scene(scene_id).map_or("Ahem", |scene| {
-        if scene.font_family == "Noto Sans KR" {
+    let family = word_break_scene(scene_id)
+        .map(|scene| scene.font_family)
+        .or_else(|| line_break_scene(scene_id).map(|scene| scene.font_family));
+    family.map_or("Ahem", |family| {
+        if family == "Noto Sans KR" {
             "\"Noto Sans KR\""
         } else {
-            scene.font_family
+            family
         }
     })
 }
 
 fn expected_word_break(scene_id: &str) -> &'static str {
     word_break_scene(scene_id).map_or("normal", |scene| scene.computed_word_break)
+}
+
+fn expected_line_break(scene_id: &str) -> &'static str {
+    line_break_scene(scene_id).map_or("auto", |scene| scene.computed_line_break)
 }
 
 fn style_for(
@@ -1214,10 +1249,10 @@ mod tests {
     use super::{
         ComputedLineHeight, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES,
         FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS,
-        FULL_TAB_VALUE_IDS, SCENE_IDS, WORD_BREAK_SCENES, anonymous_paragraph_style,
-        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
-        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
-        validate_text_profile_properties,
+        FULL_TAB_VALUE_IDS, LINE_BREAK_SCENES, SCENE_IDS, WORD_BREAK_SCENES,
+        anonymous_paragraph_style, full_tab_expected_width, full_tab_scene, full_tab_scene_id,
+        grid_item_placement_is_auto, grid_tracks_match, parse_computed_tab_size, pre_tab_text,
+        validate_computed_tab_size, validate_text_profile_properties,
     };
     use spinon_core::NodeId;
     use spinon_core::{TextOrientation, WritingMode};
@@ -1250,6 +1285,37 @@ mod tests {
             };
             assert!(grid_tracks_match(
                 &grid(vec![column], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+            assert!(!grid_tracks_match(
+                &grid(
+                    vec![ComputedCssGridTrackSize::LengthPx(120.0)],
+                    vec![ComputedCssGridTrackSize::Auto]
+                ),
+                scene.id,
+            ));
+        }
+    }
+
+    #[test]
+    fn computed_line_break_scenes_require_their_exact_intrinsic_track() {
+        for scene in LINE_BREAK_SCENES {
+            let column = if scene.is_min_content {
+                ComputedCssGridTrackSize::MinContent
+            } else {
+                ComputedCssGridTrackSize::MaxContent
+            };
+            let opposite_column = if scene.is_min_content {
+                ComputedCssGridTrackSize::MaxContent
+            } else {
+                ComputedCssGridTrackSize::MinContent
+            };
+            assert!(grid_tracks_match(
+                &grid(vec![column], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+            assert!(!grid_tracks_match(
+                &grid(vec![opposite_column], vec![ComputedCssGridTrackSize::Auto]),
                 scene.id,
             ));
             assert!(!grid_tracks_match(
@@ -1784,6 +1850,45 @@ mod tests {
                 )
                 .is_err(),
                 "the fixture must reject a changed {name}"
+            );
+        }
+
+        let mut line_break = properties.clone();
+        line_break.insert("font-family".to_owned(), "\"Noto Sans KR\"".to_owned());
+        line_break.insert("line-break".to_owned(), "normal".to_owned());
+        assert!(
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &line_break,
+                "collapse",
+                "wrap",
+                10.0,
+                "0px",
+                "line-break-ja-normal-min-content",
+            )
+            .is_ok()
+        );
+        for (name, changed) in [
+            ("font-family", "Ahem"),
+            ("line-break", "strict"),
+            ("line-break", "auto"),
+            ("line-break", "loose"),
+            ("line-break", "anywhere"),
+        ] {
+            let mut mutated = line_break.clone();
+            mutated.insert(name.to_owned(), changed.to_owned());
+            assert!(
+                validate_text_profile_properties(
+                    NodeId::new(1).unwrap(),
+                    &mutated,
+                    "collapse",
+                    "wrap",
+                    10.0,
+                    "0px",
+                    "line-break-ja-normal-min-content",
+                )
+                .is_err(),
+                "the computed line-break fixture must reject a changed {name}"
             );
         }
 
