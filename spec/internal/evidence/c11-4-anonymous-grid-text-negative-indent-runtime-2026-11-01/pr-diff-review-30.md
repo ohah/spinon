@@ -35,4 +35,4 @@
 | 29 | 이전 앱 hash나 실패 실행이 최종 녹색 결과에 섞이는가 | 최종 Android APK/install hash 일치와 새 capture log를 확인했다. 앞선 Android run은 최종 결과에서 제외하고 iOS 근거는 별도 기록한다. |
 | 30 | 문서가 제한 fixture 결과를 C11 지원/완료나 공식 집계 증가로 부풀리는가 | plan·내부 계약·`spec/STATUS.md`는 opt-in slice로 기록하며 C11/C11.4 checkbox와 72/213을 그대로 둔다. glyph pixels/WPT/실기기/hardware GPU 한계도 명시한다. |
 
-최종 diff 검사는 통과했다. 발견된 Android expectation 오류를 수정하고 영향받는 CSS reference static test, fixture app build, Android API 37 AVD 30-scene capture를 다시 수행했다. 이 문서는 bounded fixture PR diff 검토이며 전체 C11 완료나 GitHub CI 결과를 뜻하지 않는다.
+최종 diff 검사는 통과했다. 발견된 Android expectation 오류를 수정하고 영향받는 CSS reference static test, fixture app build, Android API 37 AVD 30-scene capture를 다시 수행했다. 이 문서는 bounded fixture PR diff 검토이며 전체 C11 완료나 GitHub CI 결과를 뜻하지 않는다. 구현 PR #938은 아직 병합 전이다.
