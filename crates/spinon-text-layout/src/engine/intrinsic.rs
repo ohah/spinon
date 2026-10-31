@@ -79,7 +79,11 @@ impl TextLayoutEngine {
                 0.0,
             ));
         }
-        layout.break_all_lines(Some(0.0));
+        if matches!(input.style.white_space, WhiteSpaceMode::PreWithTabSize(_)) {
+            layout.break_all_lines(None);
+        } else {
+            layout.break_all_lines(Some(0.0));
+        }
         let min_content_inline =
             min_content_inline_advance(&layout, &inline_boundaries, input.node)?;
         let min_content_block = if input.style.white_space == WhiteSpaceMode::BreakSpaces {

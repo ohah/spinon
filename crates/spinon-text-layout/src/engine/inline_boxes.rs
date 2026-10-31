@@ -131,6 +131,41 @@ pub(super) fn prepare_inline_boxes(
             })
     });
 
+    for tab in &normalized.tab_advances {
+        if tab.width == 0.0 {
+            continue;
+        }
+        let edge = if tab.text_index == normalized.text.len()
+            || normalized.text.as_bytes().get(tab.text_index) == Some(&b'\n')
+        {
+            InlineEdge::End
+        } else {
+            InlineEdge::Start
+        };
+        events.push(InlineBoxEvent {
+            index: tab.text_index,
+            edge,
+            depth: 0,
+            order: usize::MAX,
+            owners: Vec::new(),
+            width: tab.width,
+        });
+    }
+    events.sort_by(|left, right| {
+        left.index
+            .cmp(&right.index)
+            .then_with(|| match (left.edge, right.edge) {
+                (InlineEdge::End, InlineEdge::Start) => std::cmp::Ordering::Less,
+                (InlineEdge::Start, InlineEdge::End) => std::cmp::Ordering::Greater,
+                (InlineEdge::Start, InlineEdge::Start) => left.depth.cmp(&right.depth),
+                (InlineEdge::End, InlineEdge::End) => right.depth.cmp(&left.depth),
+            })
+            .then_with(|| match (left.edge, right.edge) {
+                (InlineEdge::End, InlineEdge::End) => right.order.cmp(&left.order),
+                _ => left.order.cmp(&right.order),
+            })
+    });
+
     let mut boxes = Vec::with_capacity(events.len());
     let mut boundaries = BTreeMap::new();
     for (index, event) in events.into_iter().enumerate() {

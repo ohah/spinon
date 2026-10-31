@@ -64,7 +64,7 @@ impl InlineEdges {
 }
 
 /// C15.1에서 고정하는 공백 처리 profile입니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WhiteSpaceMode {
     Normal,
     NoWrap,
@@ -76,24 +76,31 @@ pub enum WhiteSpaceMode {
     BreakSpaces,
 }
 
-/// C11.4 익명 Grid `pre` fixture에서 허용하는 숫자 tab stop 배수입니다.
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+/// C11.4 익명 Grid `pre` fixture에서 허용하는 computed CSS `tab-size` 값입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TabSize {
-    One,
-    Two,
-    Four,
-    #[default]
-    Eight,
+    Number(f32),
+    LengthPx(f32),
 }
 
 impl TabSize {
-    pub(crate) fn spaces(self) -> usize {
+    pub(crate) fn is_valid(self) -> bool {
         match self {
-            Self::One => 1,
-            Self::Two => 2,
-            Self::Four => 4,
-            Self::Eight => 8,
+            Self::Number(value) | Self::LengthPx(value) => value.is_finite() && value >= 0.0,
         }
+    }
+
+    pub(crate) fn interval_px(self, space_advance: f32) -> f32 {
+        match self {
+            Self::Number(value) => value * space_advance,
+            Self::LengthPx(value) => value,
+        }
+    }
+}
+
+impl Default for TabSize {
+    fn default() -> Self {
+        Self::Number(8.0)
     }
 }
 
@@ -184,6 +191,11 @@ impl ParagraphStyle {
         }
         if !self.font_style.is_valid() {
             return Err("font-style");
+        }
+        if let WhiteSpaceMode::PreWithTabSize(tab_size) = self.white_space
+            && !tab_size.is_valid()
+        {
+            return Err("tab-size");
         }
         Ok(())
     }

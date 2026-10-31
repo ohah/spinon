@@ -594,7 +594,7 @@ fn anonymous_pre_preserves_repeated_spaces_in_max_content_contribution() {
 #[test]
 fn anonymous_pre_tab_size_applies_to_grid_text_intrinsics() {
     let mut style = paragraph_style_with_white_space(crate::WhiteSpaceMode::PreWithTabSize(
-        crate::TabSize::Two,
+        crate::TabSize::Number(2.0),
     ));
     style.line_height_is_normal = false;
     style.direction = crate::TextParagraphDirection::Ltr;

@@ -1424,6 +1424,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsGenericDirectTextScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
+        if (c114FullTabSizeSceneExpectation(sceneId) != null) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (c114IsGridTextBaselineScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -4762,6 +4765,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        C114FullTabSizeSceneExpectation tabSize = c114FullTabSizeSceneExpectation(sceneId);
+        if (tabSize != null) {
+            return "width=" + c114GenericFrameNumber(tabSize.rootWidth)
+                    + ",height=" + c114GenericFrameNumber(tabSize.height);
+        }
         if (c114IsGridTextLastBaselineScene(sceneId)) {
             return sceneId.endsWith("-multiline") ? "width=73,height=22" : "width=73,height=20";
         }
@@ -5795,6 +5803,127 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static final class C114FullTabSizeSceneExpectation {
+        final String sourceText;
+        final String normalizedText;
+        final double[] lineAdvances;
+        final double contentWidth;
+        final double rootWidth;
+        final double height;
+        final String caseId;
+
+        C114FullTabSizeSceneExpectation(
+                String sourceText,
+                String normalizedText,
+                double[] lineAdvances,
+                double contentWidth,
+                double rootWidth,
+                double height,
+                String caseId
+        ) {
+            this.sourceText = sourceText;
+            this.normalizedText = normalizedText;
+            this.lineAdvances = lineAdvances;
+            this.contentWidth = contentWidth;
+            this.rootWidth = rootWidth;
+            this.height = height;
+            this.caseId = caseId;
+        }
+
+        boolean hasColumnContribution() {
+            return !"fixed-overflow".equals(caseId);
+        }
+
+        String columnKind() {
+            if ("min-content".equals(caseId)) return "MinContent";
+            if ("fixed-overflow".equals(caseId)) return null;
+            return "MaxContent";
+        }
+    }
+
+    private static C114FullTabSizeSceneExpectation c114FullTabSizeSceneExpectation(
+            String sceneId
+    ) {
+        final String prefix = "anonymous-pre-tab-value-";
+        if (!sceneId.startsWith(prefix)) return null;
+        String valueAndCase = sceneId.substring(prefix.length());
+        String[] valueIds = {
+            "number-zero", "number-quarter", "number-three-tenths", "number-half",
+            "number-one-and-half", "number-two-and-half", "number-three-and-quarter",
+            "length-zero", "length-three-tenths", "length-two", "length-five",
+            "length-twelve", "length-em", "length-calc",
+        };
+        double[] intervals = {
+            0.0, 2.5, 3.0, 5.0, 15.0, 25.0, 32.5, 0.0, 0.3, 2.0, 5.0, 12.0, 15.0, 5.0,
+        };
+        int valueIndex = -1;
+        String caseId = null;
+        for (int index = 0; index < valueIds.length; index++) {
+            String valuePrefix = valueIds[index] + "-";
+            if (valueAndCase.startsWith(valuePrefix)) {
+                valueIndex = index;
+                caseId = valueAndCase.substring(valuePrefix.length());
+                break;
+            }
+        }
+        if (valueIndex < 0 || caseId == null) return null;
+        String sourceText;
+        switch (caseId) {
+            case "leading": sourceText = "\tX"; break;
+            case "after-one": sourceText = "X\tX"; break;
+            case "after-two": sourceText = "XX\tX"; break;
+            case "exact-stop": sourceText = "XXXX\tX"; break;
+            case "consecutive": sourceText = "X\t\tX"; break;
+            case "trailing": sourceText = "XX\t"; break;
+            case "lf-reset": sourceText = "XX\tXX\nX\tX"; break;
+            case "crlf-reset": sourceText = "X\t\r\nX\tX"; break;
+            case "min-content":
+            case "fixed-overflow": sourceText = "XX\tXX"; break;
+            default: return null;
+        }
+        String normalizedText = sourceText.replace("\t", "").replace("\r\n", "\n");
+        String[] lines = sourceText.replace("\r\n", "\n").split("\n", -1);
+        double[] lineAdvances = new double[lines.length];
+        double contentWidth = 0.0;
+        for (int index = 0; index < lines.length; index++) {
+            Double lineAdvance = c114FullTabSizeLineAdvance(lines[index], intervals[valueIndex]);
+            if (lineAdvance == null) return null;
+            lineAdvances[index] = lineAdvance;
+            contentWidth = Math.max(contentWidth, lineAdvance);
+        }
+        double height = lineAdvances.length * 10.0;
+        double rootWidth = "fixed-overflow".equals(caseId) ? 25.0 : 120.0;
+        return new C114FullTabSizeSceneExpectation(
+                sourceText, normalizedText, lineAdvances, contentWidth, rootWidth, height, caseId);
+    }
+
+    private static Double c114FullTabSizeLineAdvance(String line, double interval) {
+        double advance = 0.0;
+        boolean inTabRun = false;
+        for (int index = 0; index < line.length(); index++) {
+            char character = line.charAt(index);
+            if (character == 'X') {
+                advance += 10.0;
+                inTabRun = false;
+            } else if (character == '\t') {
+                if (interval > 0.0) {
+                    if (inTabRun) {
+                        advance += interval;
+                    } else {
+                        double nextStop = (Math.floor(advance / interval) + 1.0) * interval;
+                        double tabAdvance = nextStop - advance;
+                        if (tabAdvance < 5.0) tabAdvance += interval;
+                        advance += tabAdvance;
+                    }
+                }
+                inTabRun = true;
+            } else {
+                return null;
+            }
+        }
+        return advance;
+    }
+
     private static boolean c114AnonymousNewlineTextIntrinsicInputsMatch(
             String sceneId, String report
     ) {
@@ -5819,6 +5948,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || sceneId.equals("anonymous-break-spaces-whitespace-only")
                     || sceneId.equals("anonymous-break-spaces-whitespace-before-block")) {
                 return inputs.length() == 0 && frames.length() == 0 && textLayouts.length() == 0;
+            }
+            C114FullTabSizeSceneExpectation tabSize =
+                    c114FullTabSizeSceneExpectation(sceneId);
+            if (tabSize != null) {
+                return c114FullTabIntrinsicInputsMatch(tabSize, inputs, frames, textLayouts);
             }
             if (inputs.length() != 1 || frames.length() != 1 || textLayouts.length() != 1) {
                 return false;
@@ -6248,6 +6382,96 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static boolean c114FullTabIntrinsicInputsMatch(
+            C114FullTabSizeSceneExpectation expected,
+            org.json.JSONArray inputs,
+            org.json.JSONArray frames,
+            org.json.JSONArray textLayouts
+    ) throws org.json.JSONException {
+        if (inputs.length() != 1 || frames.length() != 1 || textLayouts.length() != 1) {
+            return false;
+        }
+        org.json.JSONObject input = inputs.optJSONObject(0);
+        org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+        if (input == null || input.optInt("grid", -1) != 1 || input.optInt("node", -1) != 2
+                || input.optInt("sourceOrder", -1) != 0 || source == null
+                || !"text".equals(source.optString("kind"))
+                || source.optInt("fontRegistryRevision", -1) != 1
+                || !c114AnonymousTextNumberNear(source, "minContent", expected.contentWidth)
+                || !c114AnonymousTextNumberNear(source, "maxContent", expected.contentWidth)
+                || !c114AnonymousTextNumberNear(
+                        source, "minContentHeight", expected.height)
+                || !c114AnonymousTextNumberNear(
+                        source, "maxContentHeight", expected.height)) return false;
+        org.json.JSONArray textSources = input.optJSONArray("textSources");
+        if (textSources == null || textSources.length() != 1) return false;
+        org.json.JSONObject textSource = textSources.optJSONObject(0);
+        if (textSource == null || textSource.optInt("node", -1) != 2
+                || !expected.sourceText.equals(textSource.optString("text"))) return false;
+        org.json.JSONObject frame = frames.optJSONObject(0);
+        double expectedItemWidth = "fixed-overflow".equals(expected.caseId)
+                ? expected.rootWidth : expected.contentWidth;
+        if (frame == null || frame.optInt("node", -1) != 2
+                || !c114AnonymousTextNumberNear(frame, "x", 0.0)
+                || !c114AnonymousTextNumberNear(frame, "y", 0.0)
+                || !c114AnonymousTextNumberNear(frame, "width", expectedItemWidth)
+                || !c114AnonymousTextNumberNear(frame, "height", expected.height)) return false;
+        org.json.JSONObject textLayout = textLayouts.optJSONObject(0);
+        org.json.JSONObject paragraphStyle = textLayout == null
+                ? null : textLayout.optJSONObject("paragraphStyle");
+        org.json.JSONArray lines = textLayout == null ? null : textLayout.optJSONArray("lines");
+        if (textLayout == null || textLayout.optInt("node", -1) != 2
+                || !expected.normalizedText.equals(textLayout.optString("text"))
+                || paragraphStyle == null
+                || !paragraphStyle.optString("whiteSpace", "").startsWith("PreWithTabSize(")
+                || lines == null || lines.length() != expected.lineAdvances.length) return false;
+        for (int index = 0; index < lines.length(); index++) {
+            org.json.JSONObject line = lines.optJSONObject(index);
+            if (line == null || !c114AnonymousTextNumberNear(
+                    line, "advance", expected.lineAdvances[index])) return false;
+        }
+        return c114AnonymousFullTabNormalizationMatches(expected, textLayout);
+    }
+
+    private static boolean c114AnonymousFullTabNormalizationMatches(
+            C114FullTabSizeSceneExpectation expected,
+            org.json.JSONObject textLayout
+    ) throws org.json.JSONException {
+        org.json.JSONArray ranges = textLayout.optJSONArray("normalizedSources");
+        if (ranges == null || ranges.length() != expected.sourceText.length()) return false;
+        int outputOffset = 0;
+        for (int index = 0; index < expected.sourceText.length(); index++) {
+            char unit = expected.sourceText.charAt(index);
+            int outputStart = outputOffset;
+            int outputLength;
+            if (unit == '\n' && index > 0 && expected.sourceText.charAt(index - 1) == '\r') {
+                outputStart--;
+                outputLength = 1;
+            } else if (unit == '\t') {
+                outputLength = 0;
+            } else {
+                outputLength = 1;
+            }
+            org.json.JSONObject range = ranges.optJSONObject(index);
+            org.json.JSONArray sourceRange = range == null ? null : range.optJSONArray("sourceUtf16");
+            org.json.JSONArray paragraphRange = range == null
+                    ? null : range.optJSONArray("paragraphUtf8");
+            org.json.JSONArray ancestors = range == null
+                    ? null : range.optJSONArray("inlineAncestors");
+            if (range == null || range.optInt("node", -1) != 2
+                    || sourceRange == null || sourceRange.length() != 2
+                    || sourceRange.optInt(0, -1) != index || sourceRange.optInt(1, -1) != index + 1
+                    || paragraphRange == null || paragraphRange.length() != 2
+                    || paragraphRange.optInt(0, -1) != outputStart
+                    || paragraphRange.optInt(1, -1) != outputStart + outputLength
+                    || ancestors == null || ancestors.length() != 0) return false;
+            if (!(unit == '\n' && index > 0 && expected.sourceText.charAt(index - 1) == '\r')) {
+                outputOffset += outputLength;
+            }
+        }
+        return outputOffset == expected.normalizedText.length();
+    }
+
     private static boolean c114AnonymousTabNormalizationMatches(
             String sceneId, org.json.JSONObject textLayout
     ) throws org.json.JSONException {
@@ -6398,6 +6622,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (!sceneId.equals("anonymous-normal-newline-max-content")
                 && !sceneId.equals("anonymous-pre-line-max-content")
                 && !c114IsAnonymousWhitespaceMatrixScene(sceneId)) return true;
+        C114FullTabSizeSceneExpectation tabSize = c114FullTabSizeSceneExpectation(sceneId);
+        if (tabSize != null) return c114FullTabGridTraceMatches(tabSize, report);
         int marker = report.indexOf("grid_track_sizing_diagnostics=");
         if (marker < 0) return false;
         double[] expectedColumns;
@@ -6734,6 +6960,80 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                 }
                 if (!contributionMatches) return false;
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114FullTabGridTraceMatches(
+            C114FullTabSizeSceneExpectation expected, String report
+    ) {
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONArray traces = ((org.json.JSONObject) value)
+                    .optJSONArray("trackSizingTraces");
+            if (traces == null || traces.length() != 1) return false;
+            org.json.JSONObject trace = traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            if (trace == null || trace.optInt("grid", -1) != 1
+                    || passes == null || passes.length() != 2) return false;
+            for (int index = 0; index < 2; index++) {
+                org.json.JSONObject pass = passes.optJSONObject(index);
+                String axis = index == 0 ? "Columns" : "Rows";
+                if (pass == null || !axis.equals(pass.optString("axis"))) return false;
+                org.json.JSONArray stages = pass.optJSONArray("stages");
+                org.json.JSONObject finalStage = stages == null || stages.length() == 0
+                        ? null : stages.optJSONObject(stages.length() - 1);
+                org.json.JSONArray tracks = finalStage == null
+                        ? null : finalStage.optJSONArray("tracks");
+                java.util.ArrayList<Double> sizes = new java.util.ArrayList<>();
+                if (tracks == null) return false;
+                for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
+                    org.json.JSONObject track = tracks.optJSONObject(trackIndex);
+                    if (track == null) return false;
+                    if (!track.optBoolean("gutter", false)
+                            && !track.optBoolean("collapsed", false)) {
+                        sizes.add(track.optDouble("baseSize", Double.NaN));
+                    }
+                }
+                double expectedTrack = "Columns".equals(axis)
+                        ? ("fixed-overflow".equals(expected.caseId)
+                                ? expected.rootWidth : expected.contentWidth)
+                        : expected.height;
+                if (sizes.size() != 1 || !Double.isFinite(sizes.get(0))
+                        || Math.abs(sizes.get(0) - expectedTrack) > 1.0 / 64.0) return false;
+                org.json.JSONArray contributions = pass.optJSONArray("contributions");
+                if (contributions == null) return false;
+                boolean shouldContribute = "Columns".equals(axis)
+                        ? expected.hasColumnContribution() : true;
+                if (!shouldContribute) {
+                    if (contributions.length() != 0) return false;
+                    continue;
+                }
+                double expectedValue = "Columns".equals(axis)
+                        ? expected.contentWidth : expected.height;
+                boolean matches = false;
+                for (int contributionIndex = 0;
+                        contributionIndex < contributions.length(); contributionIndex++) {
+                    org.json.JSONObject contribution = contributions.optJSONObject(contributionIndex);
+                    if (contribution == null || contribution.optInt("item", -1) != 2
+                            || contribution.optInt("span", -1) != 1
+                            || !c114AnonymousTextNumberNear(
+                                    contribution, "value", expectedValue)) continue;
+                    String expectedKind = expected.columnKind();
+                    if (!"Columns".equals(axis) || expectedKind == null
+                            || expectedKind.equals(contribution.optString("kind"))) {
+                        matches = true;
+                        break;
+                    }
+                }
+                if (!matches) return false;
             }
             return true;
         } catch (org.json.JSONException | ClassCastException error) {
@@ -16997,6 +17297,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + c114CrossAxisSpanGroupFramesMatch
                         + " multi_span_frames_match=" + c114MultiSpanFramesMatch
                         + " text_intrinsic_inputs_match=" + c114TextIntrinsicInputsMatch
+                        + " anonymous_newline_trace_matches=" + anonymousNewlineTraceMatches
                         + " image_intrinsic_inputs_match=" + c114ImageIntrinsicInputsMatch
                         + " node_frames_match=" + expectedNodeFramesMatch
                         + " row_axis_span_stage_trace_matches=" + rowAxisSpanStageTraceMatches

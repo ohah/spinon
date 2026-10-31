@@ -56,7 +56,57 @@ const SCENE_IDS: [&str; 55] = [
     "anonymous-pre-tab-size-length-negative",
 ];
 
+const FULL_TAB_VALUE_IDS: [&str; 14] = [
+    "number-zero",
+    "number-quarter",
+    "number-three-tenths",
+    "number-half",
+    "number-one-and-half",
+    "number-two-and-half",
+    "number-three-and-quarter",
+    "length-zero",
+    "length-three-tenths",
+    "length-two",
+    "length-five",
+    "length-twelve",
+    "length-em",
+    "length-calc",
+];
+
+const FULL_TAB_CASE_IDS: [&str; 10] = [
+    "leading",
+    "after-one",
+    "after-two",
+    "exact-stop",
+    "consecutive",
+    "trailing",
+    "lf-reset",
+    "crlf-reset",
+    "min-content",
+    "fixed-overflow",
+];
+
+const FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [
+    "0",
+    "0.25",
+    "0.3",
+    "0.5",
+    "1.5",
+    "2.5",
+    "3.25",
+    "0px",
+    "0.3px",
+    "2px",
+    "5px",
+    "12px",
+    "1.5em",
+    "calc(2px + 3px)",
+];
+
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
+    if let Some((value_index, case_index)) = full_tab_scene(scene_id) {
+        return Some(full_tab_runtime_source(scene_id, value_index, case_index));
+    }
     if !SCENE_IDS.contains(&scene_id) {
         return None;
     }
@@ -383,9 +433,68 @@ nodeIds.push('c114-anonymous-break-spaces-whitespace-before-block-item');
     Some(source)
 }
 
+fn full_tab_scene(scene_id: &str) -> Option<(usize, usize)> {
+    let scene_id = scene_id.strip_prefix("anonymous-pre-tab-value-")?;
+    for (value_index, value_id) in FULL_TAB_VALUE_IDS.iter().enumerate() {
+        let Some(case_id) = scene_id
+            .strip_prefix(value_id)
+            .and_then(|value| value.strip_prefix('-'))
+        else {
+            continue;
+        };
+        if let Some(case_index) = FULL_TAB_CASE_IDS.iter().position(|case| *case == case_id) {
+            return Some((value_index, case_index));
+        }
+    }
+    None
+}
+
+#[cfg(test)]
+fn full_tab_scene_id(value_id: &str, case_id: &str) -> String {
+    format!("anonymous-pre-tab-value-{value_id}-{case_id}")
+}
+
+fn full_tab_runtime_source(scene_id: &str, value_index: usize, case_index: usize) -> String {
+    let root_id = format!("c114-{scene_id}-grid");
+    let width = if case_index == 9 { 25 } else { 120 };
+    let columns = match case_index {
+        8 => "min-content",
+        9 => "25px",
+        _ => "max-content",
+    };
+    let text = match case_index {
+        0 => "\tX",
+        1 => "X\tX",
+        2 => "XX\tX",
+        3 => "XXXX\tX",
+        4 => "X\t\tX",
+        5 => "XX\t",
+        6 => "XX\tXX\nX\tX",
+        7 => "X\t\r\nX\tX",
+        8 | 9 => "XX\tXX",
+        _ => "XX\tXX",
+    };
+    format!(
+        r#"(() => {{
+const root = document.createElement('div');
+root.setAttribute('id', {root_id:?});
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:auto;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{columns};grid-template-rows:auto;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;tab-size:{tab_size};white-space-collapse:preserve;text-wrap-mode:nowrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#101820');
+document.appendChild(root);
+const nodeIds = [{root_id:?}];
+root.appendChild(document.createTextNode({text:?}));
+return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds }};
+}})()"#,
+        tab_size = FULL_TAB_SPECIFIED_VALUES[value_index],
+    )
+}
+
 #[cfg(test)]
 mod tests {
-    use super::{SCENE_IDS, runtime_source};
+    use super::{
+        FULL_TAB_CASE_IDS, FULL_TAB_SPECIFIED_VALUES, FULL_TAB_VALUE_IDS, SCENE_IDS,
+        full_tab_scene_id, runtime_source,
+    };
     use std::collections::BTreeSet;
 
     #[test]
@@ -928,5 +1037,36 @@ mod tests {
             }
         }
         assert!(runtime_source("unknown-anonymous-scene").is_none());
+    }
+
+    #[test]
+    fn anonymous_grid_full_tab_size_values_generate_all_140_runtime_scenes() {
+        let mut unique = BTreeSet::new();
+        for (value_index, value_id) in FULL_TAB_VALUE_IDS.iter().enumerate() {
+            for (case_index, case_id) in FULL_TAB_CASE_IDS.iter().enumerate() {
+                let scene_id = full_tab_scene_id(value_id, case_id);
+                assert!(unique.insert(scene_id.clone()));
+                let source = runtime_source(&scene_id).expect("full tab-size scene");
+                assert!(source.len() < 4 * 1024, "{scene_id}");
+                assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+                assert!(source.contains(&format!(
+                    "tab-size:{};",
+                    FULL_TAB_SPECIFIED_VALUES[value_index]
+                )));
+                assert!(source.contains("white-space-collapse:preserve;text-wrap-mode:nowrap"));
+                assert_eq!(source.matches("document.createTextNode(").count(), 1);
+                assert_eq!(source.matches("document.createElement('div')").count(), 1);
+                if case_index == 8 {
+                    assert!(source.contains("grid-template-columns:min-content"));
+                } else if case_index == 9 {
+                    assert!(source.contains("grid-template-columns:25px"));
+                    assert!(source.contains("width:25px;height:auto"));
+                } else {
+                    assert!(source.contains("grid-template-columns:max-content"));
+                }
+            }
+        }
+        assert_eq!(unique.len(), 140);
+        assert!(runtime_source("anonymous-pre-tab-value-number-zero-unknown").is_none());
     }
 }

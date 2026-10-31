@@ -2,9 +2,22 @@ use super::*;
 
 #[test]
 fn track_sizing_profile_exposes_computed_tab_size() {
-    for (declaration, expected) in [("", "8"), ("tab-size:8;", "8"), ("tab-size:2;", "2")] {
+    for (declaration, expected) in [
+        ("", "8"),
+        ("tab-size:8;", "8"),
+        ("tab-size:2;", "2"),
+        ("tab-size:0;", "0"),
+        ("tab-size:0.25;", "0.25"),
+        ("tab-size:0.3;", "0.3"),
+        ("tab-size:0.3px;", "0.3px"),
+        ("tab-size:1.5em;", "15px"),
+        ("tab-size:calc(2px + 3px);", "5px"),
+        ("tab-size:-1;", "8"),
+        ("tab-size:-2px;", "8"),
+        ("tab-size:calc(2px - 5px);", "0px"),
+    ] {
         let fixture = fixture(&format!(
-            "display:grid;box-sizing:border-box;width:40px;height:20px;grid-template-columns:1fr;{declaration}"
+            "display:grid;box-sizing:border-box;width:40px;height:20px;font-size:10px;grid-template-columns:1fr;{declaration}"
         ));
         let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
             &fixture.view,

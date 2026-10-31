@@ -124,7 +124,14 @@ impl TextLayoutEngine {
         } else {
             available_width
         };
-        layout.break_all_lines(Some(line_break_width));
+        if matches!(
+            input.style.white_space,
+            crate::WhiteSpaceMode::PreWithTabSize(_)
+        ) {
+            layout.break_all_lines(None);
+        } else {
+            layout.break_all_lines(Some(line_break_width));
+        }
         layout.align(Alignment::Start, AlignmentOptions::default());
         let layout_height = layout.height();
         if !layout_height.is_finite() || layout_height < 0.0 {

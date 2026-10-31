@@ -1,0 +1,11 @@
+# Fixture artifact boundary check
+
+Source revision: `e3ec8a24b2ff463519dc79968f4cbba35d1226e3`
+
+Commands and observed results:
+
+1. `mise exec -- bun test tools/css-reference/fixture-module-boundary.test.mjs` — 24 passed, 0 failed.
+2. `mise exec -- cargo build --locked -p spinon-ffi --lib` — passed. `strings target/debug/libspinon_ffi.a | rg 'anonymous-pre-tab-value|anonymous_text_items::|spinon_runtime_gpu_host_new_c11_4'` returned no match in the default archive.
+3. `mise exec -- cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test` — passed. The resulting archive contains `_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture`, `anonymous_text_items::full_tab_scene`, and the fixed full-tab scene IDs.
+
+The Xcode `nm` executable could not read this Rust 1.96/LLVM 22 archive (`Unknown attribute kind`), so its symbol output was not used as evidence. The default and fixture-opt-in archive marker scans above provide the recorded boundary check. The opt-in build overwrote `target/debug/libspinon_ffi.a`; no build artifacts were deleted.

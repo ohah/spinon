@@ -1,0 +1,21 @@
+{
+  "target": "android-avd",
+  "runPrefix": "c114-tab-values-20261031024357017-869b04d0",
+  "sceneCount": 1,
+  "positiveScenes": 1,
+  "rejectedScenes": 0,
+  "retryCount": 0,
+  "observations": [
+    {
+      "id": "anonymous-pre-tab-value-number-three-and-quarter-after-two",
+      "traceParts": 7,
+      "lineAdvances": [
+        42.5
+      ],
+      "itemWidth": 42.5,
+      "rootWidth": 120,
+      "height": 10,
+      "pid": 13629
+    }
+  ]
+}

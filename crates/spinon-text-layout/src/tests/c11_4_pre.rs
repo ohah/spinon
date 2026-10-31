@@ -186,27 +186,29 @@ fn pre_numeric_tab_sizes_advance_to_the_next_stop() {
     let mut engine = engine();
     for (tab_size, cases) in [
         (
-            TabSize::One,
-            vec![("\tX", " X", 20.0), ("X\tX", "X X", 30.0)],
+            TabSize::Number(1.0),
+            vec![("\tX", "X", 20.0), ("X\tX", "XX", 30.0)],
         ),
         (
-            TabSize::Two,
+            TabSize::Number(2.0),
             vec![
-                ("XX\tXX", "XX  XX", 60.0),
-                ("\tX", "  X", 30.0),
-                ("XXXX\tX", "XXXX  X", 70.0),
-                ("XX\t\tX", "XX    X", 70.0),
-                ("XX\t", "XX  ", 40.0),
+                ("XX\tXX", "XXXX", 60.0),
+                ("\tX", "X", 30.0),
+                ("XXXX\tX", "XXXXX", 70.0),
+                ("XX\t\tX", "XXX", 70.0),
+                ("XX\t", "XX", 40.0),
             ],
         ),
         (
-            TabSize::Four,
-            vec![("\tX", "    X", 50.0), ("XXXX\tX", "XXXX    X", 90.0)],
+            TabSize::Number(4.0),
+            vec![("\tX", "X", 50.0), ("XXXX\tX", "XXXXX", 90.0)],
         ),
     ] {
         for (text, normalized, advance) in cases {
             let input = pre_with_tab_size(text, tab_size);
-            let layout = engine.layout_paragraph(&input, 25.0).unwrap();
+            let layout = engine
+                .layout_paragraph(&input, 25.0)
+                .unwrap_or_else(|error| panic!("tab size {tab_size:?}, input {text:?}: {error:?}"));
 
             assert_eq!(
                 layout.text, normalized,
@@ -227,46 +229,49 @@ fn pre_numeric_tab_sizes_advance_to_the_next_stop() {
 fn pre_numeric_tab_sizes_reset_after_crlf_and_keep_tab_provenance() {
     let mut engine = engine();
     let lf = engine
-        .layout_paragraph(&pre_with_tab_size("XX\tXX\nX\tX", TabSize::Two), 25.0)
+        .layout_paragraph(
+            &pre_with_tab_size("XX\tXX\nX\tX", TabSize::Number(2.0)),
+            25.0,
+        )
         .unwrap();
-    assert_eq!(lf.text, "XX  XX\nX X");
+    assert_eq!(lf.text, "XXXX\nXX");
     assert_eq!(lf.lines.len(), 2);
     close_to(lf.lines[0].advance, 60.0);
     close_to(lf.lines[1].advance, 30.0);
 
-    let input = pre_with_tab_size("X\t\r\nX\tX", TabSize::Two);
+    let input = pre_with_tab_size("X\t\r\nX\tX", TabSize::Number(2.0));
     let layout = engine.layout_paragraph(&input, 25.0).unwrap();
 
-    assert_eq!(layout.text, "X \nX X");
+    assert_eq!(layout.text, "X\nXX");
     assert_eq!(layout.lines.len(), 2);
     close_to(layout.lines[0].advance, 20.0);
     close_to(layout.lines[1].advance, 30.0);
     close_to(layout.width, 30.0);
     assert_eq!(layout.sources[1].source_utf16, 1..2);
-    assert_eq!(layout.sources[1].paragraph_utf8, 1..2);
+    assert_eq!(layout.sources[1].paragraph_utf8, 1..1);
     assert_eq!(layout.sources[2].source_utf16, 2..3);
     assert_eq!(layout.sources[3].source_utf16, 3..4);
-    assert_eq!(layout.sources[2].paragraph_utf8, 2..3);
-    assert_eq!(layout.sources[3].paragraph_utf8, 2..3);
+    assert_eq!(layout.sources[2].paragraph_utf8, 1..2);
+    assert_eq!(layout.sources[3].paragraph_utf8, 1..2);
     assert_eq!(layout.sources[5].source_utf16, 5..6);
-    assert_eq!(layout.sources[5].paragraph_utf8, 4..5);
+    assert_eq!(layout.sources[5].paragraph_utf8, 3..3);
 }
 
 #[test]
 fn pre_numeric_tabs_keep_min_content_unwrapped_and_joined_source_ownership() {
     let mut engine = engine();
-    let input = pre_with_tab_size("XX\tXX", TabSize::Two);
+    let input = pre_with_tab_size("XX\tXX", TabSize::Number(2.0));
     let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
     close_to(sizes.min_content(), 60.0);
     close_to(sizes.max_content(), 60.0);
     let layout = engine.layout_paragraph(&input, 25.0).unwrap();
-    assert_eq!(layout.text, "XX  XX");
+    assert_eq!(layout.text, "XXXX");
     assert_eq!(layout.lines.len(), 1);
     close_to(layout.lines[0].advance, 60.0);
     close_to(layout.width, 60.0);
 
     let first = input.sources[0].clone();
-    let mut joined = pre_with_tab_size("XX\tXX", TabSize::Two);
+    let mut joined = pre_with_tab_size("XX\tXX", TabSize::Number(2.0));
     joined.sources = vec![
         TextSource {
             node: first.node,
@@ -280,21 +285,21 @@ fn pre_numeric_tabs_keep_min_content_unwrapped_and_joined_source_ownership() {
         },
     ];
     let joined_layout = engine.layout_paragraph(&joined, 100.0).unwrap();
-    assert_eq!(joined_layout.text, "XX  XX");
+    assert_eq!(joined_layout.text, "XXXX");
     assert_eq!(
         joined_layout.sources[2].node,
         spinon_core::NodeId::new(3).unwrap()
     );
     assert_eq!(joined_layout.sources[2].source_utf16, 0..1);
-    assert_eq!(joined_layout.sources[2].paragraph_utf8, 2..4);
+    assert_eq!(joined_layout.sources[2].paragraph_utf8, 2..2);
 }
 
 #[test]
 fn pre_numeric_tab_sizes_reject_text_outside_the_fixed_profile() {
     let mut engine = engine();
-    let mut non_ahem = pre_with_tab_size("X\tX", TabSize::Two);
+    let mut non_ahem = pre_with_tab_size("X\tX", TabSize::Number(2.0));
     non_ahem.style.font_family = "Roboto".to_owned();
-    let unsupported_character = pre_with_tab_size("Y\tX", TabSize::Four);
+    let unsupported_character = pre_with_tab_size("Y\tX", TabSize::Number(4.0));
 
     for input in [non_ahem, unsupported_character] {
         assert!(matches!(
@@ -306,4 +311,95 @@ fn pre_numeric_tab_sizes_reject_text_outside_the_fixed_profile() {
             Err(TextLayoutError::UnsupportedPreTabProfile(node)) if node == input.node
         ));
     }
+}
+
+#[test]
+fn pre_tab_size_keeps_zero_fractional_and_absolute_px_advances() {
+    let mut engine = engine();
+    for (tab_size, text, normalized, expected_advance) in [
+        (TabSize::Number(0.0), "\tX", "X", 10.0),
+        (TabSize::Number(0.25), "\tX", "X", 15.0),
+        (TabSize::Number(0.3), "\tX", "X", 16.0),
+        (TabSize::Number(0.5), "\tX", "X", 15.0),
+        (TabSize::Number(1.5), "X\tX", "XX", 25.0),
+        (TabSize::Number(2.5), "XX\tX", "XXX", 35.0),
+        (TabSize::Number(3.25), "\tX", "X", 42.5),
+        (TabSize::LengthPx(0.0), "XX\tXX", "XXXX", 40.0),
+        (TabSize::LengthPx(0.3), "\tX", "X", 10.6),
+        (TabSize::LengthPx(2.0), "X\tX", "XX", 24.0),
+        (TabSize::LengthPx(5.0), "XX\t", "XX", 25.0),
+        (TabSize::LengthPx(12.0), "\tX", "X", 22.0),
+    ] {
+        let input = pre_with_tab_size(text, tab_size);
+        let layout = engine.layout_paragraph(&input, 25.0).unwrap();
+        assert_eq!(layout.text, normalized, "{tab_size:?}, {text:?}");
+        assert_eq!(layout.lines.len(), 1, "{tab_size:?}, {text:?}");
+        close_to(layout.lines[0].advance, expected_advance);
+        close_to(layout.width, expected_advance);
+        close_to(layout.height, 10.0);
+
+        let intrinsic = engine.intrinsic_inline_sizes(&input).unwrap();
+        close_to(intrinsic.min_content(), expected_advance);
+        close_to(intrinsic.max_content(), expected_advance);
+    }
+}
+
+#[test]
+fn pre_tab_size_resets_lines_and_applies_small_stop_fallback_once_per_run() {
+    let mut engine = engine();
+    let consecutive = pre_with_tab_size("\t\tX", TabSize::Number(0.25));
+    let consecutive_layout = engine.layout_paragraph(&consecutive, 25.0).unwrap();
+    assert_eq!(consecutive_layout.text, "X");
+    close_to(consecutive_layout.lines[0].advance, 17.5);
+    close_to(
+        engine
+            .intrinsic_inline_sizes(&consecutive)
+            .unwrap()
+            .min_content(),
+        17.5,
+    );
+
+    let interrupted = pre_with_tab_size("X\t\tX", TabSize::Number(0.3));
+    close_to(
+        engine.layout_paragraph(&interrupted, 25.0).unwrap().lines[0].advance,
+        28.0,
+    );
+
+    let lf = pre_with_tab_size("XX\tXX\nX\tX", TabSize::Number(2.5));
+    let lf_layout = engine.layout_paragraph(&lf, 25.0).unwrap();
+    assert_eq!(lf_layout.lines.len(), 2);
+    close_to(lf_layout.lines[0].advance, 45.0);
+    close_to(lf_layout.lines[1].advance, 35.0);
+    close_to(
+        engine.intrinsic_inline_sizes(&lf).unwrap().min_content(),
+        45.0,
+    );
+
+    let crlf = pre_with_tab_size("X\t\r\nX\tX", TabSize::LengthPx(25.0));
+    let crlf_layout = engine.layout_paragraph(&crlf, 25.0).unwrap();
+    assert_eq!(crlf_layout.lines.len(), 2);
+    close_to(crlf_layout.lines[0].advance, 25.0);
+    close_to(crlf_layout.lines[1].advance, 35.0);
+}
+
+#[test]
+fn pre_tab_size_rejects_invalid_values_and_layout_overflow() {
+    let mut engine = engine();
+    for tab_size in [
+        TabSize::Number(-1.0),
+        TabSize::Number(f32::NAN),
+        TabSize::LengthPx(f32::INFINITY),
+    ] {
+        let input = pre_with_tab_size("X\tX", tab_size);
+        assert!(matches!(
+            engine.layout_paragraph(&input, 100.0),
+            Err(TextLayoutError::InvalidStyle("tab-size"))
+        ));
+    }
+
+    let overflow = pre_with_tab_size("\tX", TabSize::Number(f32::MAX));
+    assert!(matches!(
+        engine.layout_paragraph(&overflow, 100.0),
+        Err(TextLayoutError::InvalidGlyphLayout(node)) if node == overflow.node
+    ));
 }

@@ -2,7 +2,7 @@
 
 **Parent:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [internal Grid contract 0059](../spec/internal/0059-c11-grid-layout.md) · [inline text contract 0070](../spec/internal/0070-c15-1-inline-text-layout.md) · [CSS Text Level 3 §4.1.2/§4.2](https://www.w3.org/TR/css-text-3/#tab-size-property)
 
-**Status:** 계획 자체 실패 관점 20/20과 별도 계획 PR diff 20/20 검토 완료. 계획 PR이 main에 병합되기 전까지 구현은 시작하지 않는다. [계획 검토](./c11-4-anonymous-grid-text-pre-tab-size-values-plan-review-20.md) · [계획 PR diff 검토](../spec/internal/evidence/c11-4-pre-tab-size-values-precomparison-2026-10-31/plan-pr-diff-review-20.md) · [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-pre-tab-size-values-precomparison-2026-10-31/README.md)
+**Status:** 계획 자체 실패 관점 20/20과 별도 계획 PR diff 20/20 검토를 마쳤고 계획 PR #892는 main에 병합됐다. 구현 후보는 14 computed values × 10 positive scenes의 Android/iOS Simulator 행렬을 각각 140/140 통과했다. 구현/runtime 실패 관점 20개 검토, PR diff 30개 검토와 기본/fixture opt-in artifact 경계 확인도 마쳤다. 근거 문서와 구현 PR은 준비됐으며, PR 생성·GitHub CI·merge-state 확인이 남았다. C11.4/C11 완료 및 공식 `72/213` 집계는 바꾸지 않는다. [계획 검토](./c11-4-anonymous-grid-text-pre-tab-size-values-plan-review-20.md) · [계획 PR diff 검토](../spec/internal/evidence/c11-4-pre-tab-size-values-precomparison-2026-10-31/plan-pr-diff-review-20.md) · [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-pre-tab-size-values-precomparison-2026-10-31/README.md) · [현재 simulator 근거](../spec/internal/evidence/c11-4-tab-size-full-values-runtime-2026-10-31/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-tab-size-full-values-runtime-2026-10-31/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-tab-size-full-values-runtime-2026-10-31/pr-diff-review-30.md)
 
 ## 문제와 목표
 

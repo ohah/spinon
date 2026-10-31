@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-tab-values-20261031023840124-e14b164c",
+  "sourceHead": "e3ec8a24b2ff463519dc79968f4cbba35d1226e3",
+  "target": "ios",
+  "expectedSceneCount": 1,
+  "results": [
+    {
+      "target": "ios-simulator",
+      "runPrefix": "c114-tab-values-20261031023840124-e14b164c",
+      "sceneCount": 1,
+      "positiveScenes": 1,
+      "rejectedScenes": 0,
+      "retryCount": 0,
+      "observations": [
+        {
+          "id": "anonymous-pre-tab-value-number-zero-leading",
+          "traceParts": 14,
+          "lineAdvances": [
+            10
+          ],
+          "itemWidth": 10,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 61127
+        }
+      ]
+    }
+  ]
+}
