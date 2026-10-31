@@ -4,6 +4,8 @@
     "text": "AA AA AA AA",
     "explicitColumns": [20],
     "gridTemplateAreas": "fixed fit",
+    "explicitGridColumnCount": 2,
+    "areaCreatedUnsizedColumnCount": 1,
     "gridAutoColumns": "fit-content(40px)",
     "root": [200, 60],
     "gap": 0,
@@ -14,7 +16,9 @@
     "maxContentWidth": 110
   },
   "expected": {
-    "generatedAreaColumn": 40,
+    "explicitGridColumns": [20, 40],
+    "areaCreatedExplicitColumn": 40,
+    "positiveImplicitColumnCount": 0,
     "columns": [20, 40],
     "rootFrame": [0, 0, 200, 60],
     "itemFrameRootRelative": [20, 0, 40, 60],
@@ -24,7 +28,7 @@
       "afterCapAt60x30": [16, 24, 32, 255]
     }
   },
-  "calculation": "Each Ahem letter and space advances 10px. The longest unbreakable word has two letters (20px) and the one-line text is 4*20px + 3*10px = 110px. CSS Grid fit-content() uses max(auto minimum, min(limit, max-content)); with a 40px limit and a 20px minimum, the generated column is 40px.",
+  "calculation": "Each Ahem letter and space advances 10px. The longest unbreakable word has two letters (20px) and the one-line text is 4*20px + 3*10px = 110px. grid-template-areas defines a two-column explicit grid; the second area-created explicit track is sized by grid-auto-columns because grid-template-columns sizes only the first track. CSS Grid fit-content() uses max(auto minimum, min(limit, max-content)); with a 40px limit and a 20px minimum, that track is 40px.",
   "limits": [
     "Chrome oracle only; not Spinon runtime or WPT conformance.",
     "Tests one area-generated column axis only.",

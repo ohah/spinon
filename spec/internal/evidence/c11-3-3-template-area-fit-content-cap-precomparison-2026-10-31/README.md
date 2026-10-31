@@ -1,6 +1,6 @@
 # C11.3.3 area-backed fit-content cap 사전 비교
 
-이 디렉터리는 `grid-auto-columns: fit-content(40px)`가 area로 생성한 implicit column에서 limit을 실제로 자르는지를 확인하기 위한 Chrome 기준 입력과 관찰을 보관한다. 구현·Spinon runtime·시뮬레이터 결과는 아직 없다.
+이 디렉터리는 `grid-auto-columns: fit-content(40px)`가 `grid-template-areas`가 만든 explicit grid column에서 limit을 실제로 자르는지를 확인하기 위한 Chrome 기준 입력과 관찰을 보관한다. 구현·Spinon runtime·시뮬레이터 결과는 아직 없다.
 
 - 고정 HTML: [grid-template-area-fit-content-cap.html](grid-template-area-fit-content-cap.html)
 - 독립 기대값: [expected-values.json](expected-values.json)

@@ -1,0 +1,161 @@
+{
+  "schema": "spinon-c11-3-3-grid-template-areas-runtime-result/v1",
+  "status": "matched",
+  "runID": "c1133-fitcap-ios-simulator-20261031T094545391Z-17a7f5d0",
+  "target": "ios-simulator",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-area-fit-content-cap-mobile-v1.json",
+    "sha256": "cce54571e332e53b1ab18f12a0b6a13e244782f0d552fe67307a3c7296daa121"
+  },
+  "oracle": {
+    "product": "Google Chrome 156.0.8078.76",
+    "referenceId": "c1133-template-area-fit-content-cap-chrome-156-20261031",
+    "referenceSha256": "dc6a2ecea4dabde6a85235de4e87aef72ff8de8413aab7705512dfe4623e1da9",
+    "screenshotSha256": "dfe52f261926d2961693e3822d9bf50fcad0be89711721ad807c4a0046dd8d52",
+    "sampleCount": 3,
+    "maximumChannelError": 0,
+    "oracleComparison": {
+      "referenceId": "c1133-template-area-fit-content-cap-chrome-156-20261031",
+      "screenshot": [
+        1280,
+        633
+      ],
+      "sampleCount": 3
+    }
+  },
+  "platform": {
+    "metadata": {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "appSha256": "dd756edd60f0ce2eb47f965d6218398ed4b05a7ac8cd712e6fdf5f2858021ddb",
+    "frames": [
+      {
+        "index": 0,
+        "nodeId": 1,
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 60
+      },
+      {
+        "index": 1,
+        "nodeId": 2,
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 60
+      },
+      {
+        "index": 2,
+        "nodeId": 3,
+        "x": 20,
+        "y": 0,
+        "width": 40,
+        "height": 60
+      }
+    ],
+    "pixelComparison": {
+      "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1133-fitcap-ios-simulator-20261031T094545391Z-17a7f5d0",
+      "processId": 5441,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 17,
+        "renderTree": 4,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 3,
+      "matchedSamples": 3,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "fixed-area",
+          "css": [
+            10,
+            30
+          ],
+          "drawable": [
+            31,
+            91
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "inside-fit-content-cap",
+          "css": [
+            59,
+            30
+          ],
+          "drawable": [
+            178,
+            91
+          ],
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "after-fit-content-cap",
+          "css": [
+            60,
+            30
+          ],
+          "drawable": [
+            181,
+            91
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    },
+    "screenSha256": "e31cff15221b25a0c139710fe2af7274407ac609cd32e7e6105ec5f798fb8968",
+    "negative": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-fitcap-ios-simulator-20261031T094545391Z-17a7f5d0-bad-samples",
+      "readbackStarted": false
+    }
+  },
+  "interpretation": "Metal drawable 표면을 OS compositor 제출 전에 읽어 고정 Chrome RGBA와 비교했다. 별도 화면 캡처는 UI 확인 자료다.",
+  "source": {
+    "commit": "b815f483a253072cbbca1c0cd473d519fc95a220",
+    "tree": "8e74b832259990dc6cc3513a0a119efea9fafe8d",
+    "sourcePathsCleanAgainstCommit": true,
+    "captureScriptPath": "tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs",
+    "captureScriptSha256": "fd4f43faf22bebb5c78dd32fa35cf5f11c9b63f1ec6e7554b99e83d3912bb9e4",
+    "fixtureSha256": "cce54571e332e53b1ab18f12a0b6a13e244782f0d552fe67307a3c7296daa121",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-template-area-fit-content-cap-v1.json",
+    "referenceSha256": "dc6a2ecea4dabde6a85235de4e87aef72ff8de8413aab7705512dfe4623e1da9",
+    "appSha256": "dd756edd60f0ce2eb47f965d6218398ed4b05a7ac8cd712e6fdf5f2858021ddb"
+  }
+}

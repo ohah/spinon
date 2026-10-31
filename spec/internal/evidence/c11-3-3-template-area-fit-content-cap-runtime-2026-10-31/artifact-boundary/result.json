@@ -1,0 +1,36 @@
+{
+  "schema": "spinon-c11-3-3-fit-content-cap-artifact-boundary/v1",
+  "target": "macOS Rust staticlib",
+  "commands": {
+    "featureOff": "cargo build --locked -p spinon-ffi --lib --release",
+    "optIn": "cargo build --locked -p spinon-ffi --lib --release --features c04-runtime-gpu-fixture-test"
+  },
+  "markers": [
+    "fit-content-area-cap",
+    "c1133-fit-content-area-cap-grid",
+    "c11_3_3_fit_content_area_cap"
+  ],
+  "featureOff": {
+    "sha256": "9d099e820a2e66a08acfb7177139d28977a856e7cb4ccd026f1131d46b4564bf",
+    "bytes": 60299504,
+    "matchedMarkers": []
+  },
+  "optIn": {
+    "sha256": "f93fc742a90402e17b2d4deb6d5f53e11b91f610258ce2f4ebbc2d5a6f883b22",
+    "bytes": 81221080,
+    "matchedMarkers": [
+      "fit-content-area-cap",
+      "c1133-fit-content-area-cap-grid",
+      "c11_3_3_fit_content_area_cap"
+    ]
+  },
+  "scope": "Static archive only; does not prove Android APK or iOS IPA exclusion.",
+  "source": {
+    "commit": "b815f483a253072cbbca1c0cd473d519fc95a220",
+    "tree": "8e74b832259990dc6cc3513a0a119efea9fafe8d",
+    "logs": [
+      "default-source-bound-build.log",
+      "opt-in-source-bound-build.log"
+    ]
+  }
+}

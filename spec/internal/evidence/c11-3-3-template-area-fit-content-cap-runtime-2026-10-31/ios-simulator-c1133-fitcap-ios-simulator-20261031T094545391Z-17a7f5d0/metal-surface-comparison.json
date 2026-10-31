@@ -1,0 +1,83 @@
+{
+  "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1133-fitcap-ios-simulator-20261031T094545391Z-17a7f5d0",
+  "processId": 5441,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 17,
+    "renderTree": 4,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "fixed-area",
+      "css": [
+        10,
+        30
+      ],
+      "drawable": [
+        31,
+        91
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "inside-fit-content-cap",
+      "css": [
+        59,
+        30
+      ],
+      "drawable": [
+        178,
+        91
+      ],
+      "rgba": [
+        48,
+        164,
+        108,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "after-fit-content-cap",
+      "css": [
+        60,
+        30
+      ],
+      "drawable": [
+        181,
+        91
+      ],
+      "rgba": [
+        16,
+        24,
+        32,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
