@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** 5 computed sizes × min/max-content의 10-scene opt-in candidate를 구현했다. Rust intrinsic sizing, 기본/fixture-test static archive boundary, Android API 37 ARM64 AVD 10/10 및 iPhone 17 Pro/iOS 26.2 Simulator 10/10을 검증했다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-precomparison-2026-10-31/README.md)와 [구현/runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-runtime-2026-10-31/README.md). 구현/runtime 실패 관점 검토 20개와 local PR diff 실패 관점 검토 30개를 마쳤다. PR 생성 뒤 remote head diff/hash 대조와 PR 절차가 남아 있다. C11.4/C11 체크와 공식 `72/213`은 유지한다.
+**상태:** 5 computed sizes × min/max-content의 10-scene opt-in fixture를 구현했다. Rust intrinsic sizing, 기본/fixture-test static archive boundary, Android API 37 ARM64 AVD 10/10 및 iPhone 17 Pro/iOS 26.2 Simulator 10/10을 검증했다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-precomparison-2026-10-31/README.md)와 [구현/runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-runtime-2026-10-31/README.md). 구현/runtime 실패 관점 검토 20개와 PR diff 실패 관점 검토 30개를 마쳤다. 구현 PR [#909](https://github.com/ohah/spinon/pull/909)은 2026-10-31T06:42:47Z Rebase and merge로 병합됐고 merge SHA는 `6fc3c04871904c5c1a0c8a279b85785f382bb739`다. 병합 후 focused runtime 5/5와 FFI scene 1/1을 다시 통과했다. PR check rollup은 비어 있어 CI 통과로 세지 않는다. [병합 상태 문서 diff 적대 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-runtime-2026-10-31/post-merge-status-pr-diff-review-30.md). C11.4/C11 체크와 공식 `72/213`은 유지한다.
 
 ## 목적과 경계
 
