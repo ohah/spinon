@@ -10,7 +10,7 @@
 | 4 | min-content와 max-content가 같은 값이라 cap이 구분되지 않음 | 독립 probe를 각각 고정해 20px와 110px가 40px limit 양쪽에 놓이는지 검사한다. |
 | 5 | probe 측정만 통과하고 Grid item contribution은 text를 사용하지 않음 | Spinon intrinsic contribution trace의 min/max source와 값도 직접 확인한다. |
 | 6 | text source가 matrix generator에서 생략됨 | 생성된 runtime JS에 `AA AA AA AA`가 남는지 source contract test를 둔다. |
-| 7 | fixture가 area 크기와 explicit track 수를 같게 지정해 implicit track을 만들지 않음 | explicit columns 1개, area columns 2개, typed auto column 1개를 고정하고 track trace를 확인한다. |
+| 7 | area matrix가 만든 두 번째 explicit grid track이 `grid-auto-columns` sizing을 잃음 | explicit area dimensions 2 columns, authored `grid-template-columns` size 1개, area-created explicit track 1개를 고정한다. trace는 explicit 2 / positive implicit 0이어야 한다. |
 | 8 | `grid-area:fit`이 계산되지 않아 item이 다른 column에 놓임 | CSS named-area placement와 expected root-relative x=20을 함께 assertion한다. |
 | 9 | track 40px이 cap이 아니라 item의 explicit width에서 유래함 | item width를 auto로 유지하고 `fit-content(40px)` 외 별도 width constraint를 두지 않는다. |
 | 10 | auto minimum floor가 40px 이상이라 cap 경로를 시험하지 않음 | min-content 20px의 contribution과 final 40px track을 분리해 비교한다. |
@@ -25,4 +25,4 @@
 | 19 | Android/iOS 화면이 Chrome oracle를 대체하거나 iOS compositor 증거로 오해됨 | geometry, PixelCopy, Metal drawable을 분리 기록하고 Chrome-only·SwiftShader·pre-compositor 한계를 표기한다. |
 | 20 | 한 scene의 pass가 C11.3.3/C11.4/C11 전체 완료로 집계됨 | STATUS.md 체크와 공식 72/213을 변경하지 않고 제한 fixture 근거로만 기록한다. |
 
-계획 단계에서 차단 결함을 찾지 못했다. 구현 전에 위 각 경계를 소스와 runtime fixture에서 다시 확인하고, 새 발견은 구현 계획 또는 범위를 수정한다.
+후속 규범 검토에서 7번의 track 분류를 바로잡았다. 원래 계획이 area-created track을 implicit이라고 불렀지만, [CSS Grid §§7.1, 7.5–7.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)에 따르면 `grid-template-areas`가 explicit grid 크기를 정하며, 그 안에서 template property로 size를 주지 않은 track은 `grid-auto-columns`로 sizing한다. 이 fixture에는 grid 밖 placement가 없어 positive implicit track이 없다. [구현 전 비교 README](README.md)와 [20관점 correction review](plan-correction-review-20.md)를 확인한다. 원 계획의 다른 경계는 구현/runtime에서 다시 검증한다.
