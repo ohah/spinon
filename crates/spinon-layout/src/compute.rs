@@ -220,6 +220,7 @@ fn validate_text_paragraphs(
                         crate::WhiteSpaceMode::Normal
                             | crate::WhiteSpaceMode::NoWrap
                             | crate::WhiteSpaceMode::Pre
+                            | crate::WhiteSpaceMode::PreWithTabSize(_)
                             | crate::WhiteSpaceMode::PreLine
                             | crate::WhiteSpaceMode::PreWrap
                             | crate::WhiteSpaceMode::BreakSpaces

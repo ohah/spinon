@@ -2,7 +2,7 @@
 
 **Parent:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [internal Grid contract 0059](../spec/internal/0059-c11-grid-layout.md) · [inline text contract 0070](../spec/internal/0070-c15-1-inline-text-layout.md) · [CSS Text Level 3](https://www.w3.org/TR/css-text-3/#tab-size-property)
 
-**Status:** Plan failure review 20/20 complete; implementation has not started. The preceding [default tab-size slice](./c11-4-anonymous-grid-text-pre-tabs.md) implements only the inherited initial value 8 and rejects computed `tab-size:2`. This plan considers a bounded numeric author-value extension for that same opt-in anonymous Grid `pre` fixture. It does not change the C11.4 checkbox or official `72/213` count. [Plan review](./c11-4-anonymous-grid-text-pre-author-tab-size-plan-review-20.md).
+**Status:** Plan failure review 20/20 and its PR diff review 30/30 are complete. The bounded numeric author-value extension is implemented and passed the 55-scene Android API 37 ARM64 AVD and iPhone 17 Pro/iOS 26.2 Simulator matrices. The implementation/runtime review 20/20 and separate implementation PR diff review 30/30 are complete; required CI checks and merge are pending. This slice does not change the C11.4 checkbox or official `72/213` count. [Plan review](./c11-4-anonymous-grid-text-pre-author-tab-size-plan-review-20.md) · [implementation and simulator evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/numeric-author-tab-size.md) · [implementation/runtime review](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/implementation-runtime-review-20.md) · [PR diff review](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/pr-diff-review-30.md).
 
 ## Problem and goal
 

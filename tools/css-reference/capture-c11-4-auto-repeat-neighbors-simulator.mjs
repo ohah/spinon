@@ -166,7 +166,16 @@ const anonymousTextSceneIDs = new Set([
   'anonymous-pre-tab-exact-stop', 'anonymous-pre-tab-consecutive',
   'anonymous-pre-tab-forced-break', 'anonymous-pre-tab-trailing',
   'anonymous-pre-tab-min-content', 'anonymous-pre-tab-fixed-width-nowrap',
-  'anonymous-pre-tab-size-2-negative',
+  'anonymous-pre-tab-size-2-two-columns', 'anonymous-pre-tab-size-2-leading',
+  'anonymous-pre-tab-size-2-exact-stop', 'anonymous-pre-tab-size-2-consecutive',
+  'anonymous-pre-tab-size-2-reset', 'anonymous-pre-tab-size-2-crlf-reset',
+  'anonymous-pre-tab-size-2-trailing', 'anonymous-pre-tab-size-2-min-content',
+  'anonymous-pre-tab-size-2-fixed-overflow',
+  'anonymous-pre-tab-size-1-leading', 'anonymous-pre-tab-size-1-exact-stop',
+  'anonymous-pre-tab-size-4-leading', 'anonymous-pre-tab-size-4-exact-stop',
+  'anonymous-pre-tab-size-0-negative',
+  'anonymous-pre-tab-size-fractional-negative',
+  'anonymous-pre-tab-size-length-negative',
 ]);
 const anonymousTextImageSceneIDs = new Set([
   'anonymous-text-image-text', 'image-before-comment-group',
@@ -1077,6 +1086,84 @@ scenes.push({
 assert.equal(scenes.length, 155, 'C11.4 auto-minimum flexible span 후속은 155 scene이어야 합니다.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 auto-minimum flexible span scene ID는 중복되지 않아야 합니다.');
+function anonymousPreTabTraceScenes() {
+  const positiveCases = [
+    { id: 'anonymous-pre-tab-size-2-two-columns', text: 'XX\tXX', width: 60, lineAdvances: [60] },
+    { id: 'anonymous-pre-tab-size-2-leading', text: '\tX', width: 30, lineAdvances: [30] },
+    { id: 'anonymous-pre-tab-size-2-exact-stop', text: 'XXXX\tX', width: 70, lineAdvances: [70] },
+    { id: 'anonymous-pre-tab-size-2-consecutive', text: 'XX\t\tX', width: 70, lineAdvances: [70] },
+    {
+      id: 'anonymous-pre-tab-size-2-reset', text: 'XX\tXX\nX\tX', width: 60, height: 20,
+      lineAdvances: [60, 30],
+    },
+    {
+      id: 'anonymous-pre-tab-size-2-crlf-reset', text: 'X\t\r\nX\tX', width: 30, height: 20,
+      lineAdvances: [20, 30],
+    },
+    { id: 'anonymous-pre-tab-size-2-trailing', text: 'XX\t', width: 40, lineAdvances: [40] },
+    { id: 'anonymous-pre-tab-size-2-min-content', text: 'XX\tXX', width: 60, lineAdvances: [60] },
+    {
+      id: 'anonymous-pre-tab-size-2-fixed-overflow', text: 'XX\tXX',
+      width: 25, intrinsicWidth: 60, lineAdvances: [60],
+    },
+    { id: 'anonymous-pre-tab-size-1-leading', text: '\tX', width: 20, lineAdvances: [20] },
+    { id: 'anonymous-pre-tab-size-1-exact-stop', text: 'X\tX', width: 30, lineAdvances: [30] },
+    { id: 'anonymous-pre-tab-size-4-leading', text: '\tX', width: 50, lineAdvances: [50] },
+    { id: 'anonymous-pre-tab-size-4-exact-stop', text: 'XXXX\tX', width: 90, lineAdvances: [90] },
+  ];
+  const acceptedScenes = positiveCases.map((testCase) => {
+    const height = testCase.height ?? 10;
+    const intrinsicWidth = testCase.intrinsicWidth ?? testCase.width;
+    return {
+      id: testCase.id,
+      axis: 'Columns',
+      boxCount: 1,
+      rootFrame: `width=${testCase.width},height=${height}`,
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${testCase.width},height=${height}]`,
+      tracks: [testCase.width],
+      collapsed: [false],
+      axes: {
+        Columns: { tracks: [testCase.width], collapsed: [false] },
+        Rows: { tracks: [height], collapsed: [false] },
+      },
+      gaps: { Columns: 0, Rows: 0 },
+      anonymousTextItems: [{
+        grid: 1,
+        node: 2,
+        sourceOrder: 0,
+        source: {
+          minContent: intrinsicWidth,
+          minContentHeight: height,
+          maxContent: intrinsicWidth,
+          maxContentHeight: height,
+        },
+        textSources: [{ node: 2, text: testCase.text }],
+        frame: { node: 2, x: 0, y: 0, width: testCase.width, height },
+      }],
+      expectedLineAdvances: testCase.lineAdvances,
+    };
+  });
+  const rejectedScenes = [
+    'anonymous-pre-tab-size-0-negative',
+    'anonymous-pre-tab-size-fractional-negative',
+    'anonymous-pre-tab-size-length-negative',
+  ].map((id) => ({
+    id,
+    axis: 'Columns',
+    expectedRejection: {
+      status: -11,
+      code: 'unsupported_c114_anonymous_text_style',
+      property: 'tab-size',
+      nodeId: 1,
+    },
+    boxCount: null,
+    rootFrame: null,
+    itemFrame: null,
+    nodeFrames: null,
+  }));
+  return [...acceptedScenes, ...rejectedScenes];
+}
 scenes.push(
   {
     id: 'anonymous-normal-min-content', axis: 'Columns', boxCount: 1,
@@ -1681,18 +1768,9 @@ scenes.push(
       frame: { node: 2, x: 0, y: 0, width: 25, height: 10 },
     }],
   },
-  {
-    id: 'anonymous-pre-tab-size-2-negative', axis: 'Columns',
-    expectedRejection: {
-      status: -11,
-      code: 'unsupported_c114_anonymous_text_style',
-      property: 'tab-size',
-      nodeId: 1,
-    },
-    boxCount: null, rootFrame: null, itemFrame: null, nodeFrames: null,
-  },
+  ...anonymousPreTabTraceScenes(),
 );
-assert.equal(scenes.length, 195, 'C11.4 anonymous Grid text slice includes forty scenes.');
+assert.equal(scenes.length, 210, 'C11.4 anonymous Grid text slice includes fifty-five scenes.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
 scenes.push(
@@ -6506,7 +6584,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 657, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 672, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -8729,14 +8807,26 @@ function verifyRuntimeLog(log, scene, runID) {
       assert.equal(textLayouts.length, scene.anonymousTextItems.length,
         `${scene.id}: anonymous text layout count differs`);
       if (scene.anonymousTextItems.length === 1) {
-        const expectedWhiteSpace = scene.id === 'anonymous-pre-line-max-content' ? 'PreLine'
-          : scene.id.startsWith('anonymous-pre-wrap-') ? 'PreWrap'
-            : scene.id.startsWith('anonymous-pre-') ? 'Pre'
-              : scene.id.startsWith('anonymous-break-spaces-') ? 'BreakSpaces' : 'Normal';
+        const tabSizeVariant = scene.id.startsWith('anonymous-pre-tab-size-1-') ? 'One'
+          : scene.id.startsWith('anonymous-pre-tab-size-2-') ? 'Two'
+            : scene.id.startsWith('anonymous-pre-tab-size-4-') ? 'Four' : 'Eight';
+        const expectedWhiteSpace = scene.id.startsWith('anonymous-pre-tab-')
+          ? `PreWithTabSize(${tabSizeVariant})`
+          : scene.id === 'anonymous-pre-line-max-content' ? 'PreLine'
+            : scene.id.startsWith('anonymous-pre-wrap-') ? 'PreWrap'
+              : scene.id.startsWith('anonymous-pre-') ? 'Pre'
+                : scene.id.startsWith('anonymous-break-spaces-') ? 'BreakSpaces' : 'Normal';
         assert.equal(textLayouts[0].node, scene.anonymousTextItems[0].node,
           `${scene.id}: text layout node differs`);
         assert.equal(textLayouts[0].paragraphStyle?.whiteSpace, expectedWhiteSpace,
           `${scene.id}: white-space profile differs`);
+        if (scene.expectedLineAdvances) {
+          const lineAdvances = textLayouts[0].lines.map(({ advance }) => advance);
+          assert.deepEqual(lineAdvances, scene.expectedLineAdvances,
+            `${scene.id}: per-line text advance differs`);
+          assert.equal(textLayouts[0].width, Math.max(...scene.expectedLineAdvances),
+            `${scene.id}: paragraph width differs from its longest line`);
+        }
         if (scene.id.startsWith('anonymous-pre-tab-')) {
           const { source, normalized, tabAdvances } = (() => {
             switch (scene.id) {
@@ -8754,6 +8844,30 @@ function verifyRuntimeLog(log, scene, runID) {
                 return { source: 'XX\tXX\nX\tX', normalized: 'XX      XX\nX       X', tabAdvances: [6, 7] };
               case 'anonymous-pre-tab-trailing':
                 return { source: 'XX\t', normalized: 'XX      ', tabAdvances: [6] };
+              case 'anonymous-pre-tab-size-2-two-columns':
+              case 'anonymous-pre-tab-size-2-min-content':
+              case 'anonymous-pre-tab-size-2-fixed-overflow':
+                return { source: 'XX\tXX', normalized: 'XX  XX', tabAdvances: [2] };
+              case 'anonymous-pre-tab-size-2-leading':
+                return { source: '\tX', normalized: '  X', tabAdvances: [2] };
+              case 'anonymous-pre-tab-size-2-exact-stop':
+                return { source: 'XXXX\tX', normalized: 'XXXX  X', tabAdvances: [2] };
+              case 'anonymous-pre-tab-size-2-consecutive':
+                return { source: 'XX\t\tX', normalized: 'XX    X', tabAdvances: [2, 2] };
+              case 'anonymous-pre-tab-size-2-reset':
+                return { source: 'XX\tXX\nX\tX', normalized: 'XX  XX\nX X', tabAdvances: [2, 1] };
+              case 'anonymous-pre-tab-size-2-crlf-reset':
+                return { source: 'X\t\r\nX\tX', normalized: 'X \nX X', tabAdvances: [1, 1] };
+              case 'anonymous-pre-tab-size-2-trailing':
+                return { source: 'XX\t', normalized: 'XX  ', tabAdvances: [2] };
+              case 'anonymous-pre-tab-size-1-leading':
+                return { source: '\tX', normalized: ' X', tabAdvances: [1] };
+              case 'anonymous-pre-tab-size-1-exact-stop':
+                return { source: 'X\tX', normalized: 'X X', tabAdvances: [1] };
+              case 'anonymous-pre-tab-size-4-leading':
+                return { source: '\tX', normalized: '    X', tabAdvances: [4] };
+              case 'anonymous-pre-tab-size-4-exact-stop':
+                return { source: 'XXXX\tX', normalized: 'XXXX    X', tabAdvances: [4] };
               default:
                 assert.fail(`${scene.id}: missing tab normalization oracle`);
             }
@@ -8762,17 +8876,37 @@ function verifyRuntimeLog(log, scene, runID) {
             `${scene.id}: normalized tab text differs`);
           let paragraphOffset = 0;
           let tabIndex = 0;
-          const expectedRanges = [...source].map((character, index) => {
+          const expectedRanges = [];
+          for (let index = 0; index < source.length;) {
+            const character = source[index];
+            if (character === '\r' && source[index + 1] === '\n') {
+              const range = [paragraphOffset, paragraphOffset + 1];
+              expectedRanges.push({
+                node: 2,
+                sourceUtf16: [index, index + 1],
+                paragraphUtf8: range,
+                inlineAncestors: [],
+              });
+              expectedRanges.push({
+                node: 2,
+                sourceUtf16: [index + 1, index + 2],
+                paragraphUtf8: range,
+                inlineAncestors: [],
+              });
+              paragraphOffset += 1;
+              index += 2;
+              continue;
+            }
             const outputLength = character === '\t' ? tabAdvances[tabIndex++] : 1;
-            const range = {
+            expectedRanges.push({
               node: 2,
               sourceUtf16: [index, index + 1],
               paragraphUtf8: [paragraphOffset, paragraphOffset + outputLength],
               inlineAncestors: [],
-            };
+            });
             paragraphOffset += outputLength;
-            return range;
-          });
+            index += 1;
+          }
           assert.equal(tabIndex, tabAdvances.length,
             `${scene.id}: expected tab provenance entries are incomplete`);
           assert.deepEqual(textLayouts[0].normalizedSources, expectedRanges,
@@ -8802,6 +8936,7 @@ function verifyRuntimeLog(log, scene, runID) {
             'anonymous-normal-fixed-width-control',
             'anonymous-pre-fixed-width-nowrap',
             'anonymous-pre-tab-fixed-width-nowrap',
+            'anonymous-pre-tab-size-2-fixed-overflow',
           ].includes(scene.id));
         if (!expectsContribution) {
           assert.equal(pass.contributions.length, 0,
@@ -8814,6 +8949,7 @@ function verifyRuntimeLog(log, scene, runID) {
           'anonymous-pre-wrap-min-content-spaces',
           'anonymous-pre-min-content-spaces',
           'anonymous-pre-tab-min-content',
+          'anonymous-pre-tab-size-2-min-content',
           'anonymous-break-spaces-min-content',
           'anonymous-break-spaces-forced-break-min-content',
         ].includes(scene.id)

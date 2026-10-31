@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::{
-    FontStyleMode, LigatureMode, LineBreakMode, ParagraphStyle, TextLayoutEngine,
+    FontStyleMode, LigatureMode, LineBreakMode, ParagraphStyle, TabSize, TextLayoutEngine,
     TextParagraphDirection, WhiteSpaceMode, WordBreakMode,
 };
 use spinon_style::{
@@ -14,7 +14,7 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const SCENE_IDS: [&str; 40] = [
+const SCENE_IDS: [&str; 55] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -54,7 +54,22 @@ const SCENE_IDS: [&str; 40] = [
     "anonymous-pre-tab-trailing",
     "anonymous-pre-tab-min-content",
     "anonymous-pre-tab-fixed-width-nowrap",
-    "anonymous-pre-tab-size-2-negative",
+    "anonymous-pre-tab-size-2-two-columns",
+    "anonymous-pre-tab-size-2-leading",
+    "anonymous-pre-tab-size-2-exact-stop",
+    "anonymous-pre-tab-size-2-consecutive",
+    "anonymous-pre-tab-size-2-reset",
+    "anonymous-pre-tab-size-2-crlf-reset",
+    "anonymous-pre-tab-size-2-trailing",
+    "anonymous-pre-tab-size-2-min-content",
+    "anonymous-pre-tab-size-2-fixed-overflow",
+    "anonymous-pre-tab-size-1-leading",
+    "anonymous-pre-tab-size-1-exact-stop",
+    "anonymous-pre-tab-size-4-leading",
+    "anonymous-pre-tab-size-4-exact-stop",
+    "anonymous-pre-tab-size-0-negative",
+    "anonymous-pre-tab-size-fractional-negative",
+    "anonymous-pre-tab-size-length-negative",
 ];
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -83,7 +98,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }
 
     let grid_style = style_for(styles, root.id())?;
-    validate_grid_style(grid_style, scene_id)?;
+    let tab_size = validate_grid_style(grid_style, scene_id)?;
     validate_direct_children(snapshot, root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -97,7 +112,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             )
         })?;
     Ok(Some(super::C11_4TextInput {
-        paragraph_styles: BTreeMap::from([(root.id(), anonymous_paragraph_style(scene_id))]),
+        paragraph_styles: BTreeMap::from([(
+            root.id(),
+            anonymous_paragraph_style(scene_id, tab_size),
+        )]),
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
@@ -127,22 +145,7 @@ fn validate_direct_children(
         | "anonymous-pre-wrap-max-content-spaces"
         | "anonymous-pre-wrap-min-content-spaces" => &[ExpectedChild::Text("XX  XX")],
         "anonymous-pre-max-content-spaces" => &[ExpectedChild::Text("XX  XX")],
-        "anonymous-pre-tab-max-content"
-        | "anonymous-pre-tab-leading"
-        | "anonymous-pre-tab-exact-stop"
-        | "anonymous-pre-tab-consecutive"
-        | "anonymous-pre-tab-forced-break"
-        | "anonymous-pre-tab-trailing"
-        | "anonymous-pre-tab-min-content"
-        | "anonymous-pre-tab-fixed-width-nowrap"
-        | "anonymous-pre-tab-size-2-negative" => &[ExpectedChild::Text(match scene_id {
-            "anonymous-pre-tab-leading" => "\tX",
-            "anonymous-pre-tab-exact-stop" => "XXXXXXXX\tX",
-            "anonymous-pre-tab-consecutive" => "XX\t\tX",
-            "anonymous-pre-tab-forced-break" => "XX\tXX\nX\tX",
-            "anonymous-pre-tab-trailing" => "XX\t",
-            _ => "XX\tXX",
-        })],
+        scene_id if is_pre_tab_scene(scene_id) => &[ExpectedChild::Text(pre_tab_text(scene_id))],
         "anonymous-pre-min-content-spaces"
         | "anonymous-normal-fixed-width-control"
         | "anonymous-pre-fixed-width-nowrap" => &[ExpectedChild::Text("XX XX")],
@@ -280,24 +283,16 @@ fn validate_direct_children(
 fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
-) -> Result<(), RuntimeLayoutFailure> {
-    let expected_wrap_mode = if matches!(
-        scene_id,
-        "anonymous-nowrap-min-content"
-            | "anonymous-pre-max-content-spaces"
-            | "anonymous-pre-min-content-spaces"
-            | "anonymous-pre-forced-break"
-            | "anonymous-pre-fixed-width-nowrap"
-            | "anonymous-pre-tab-max-content"
-            | "anonymous-pre-tab-leading"
-            | "anonymous-pre-tab-exact-stop"
-            | "anonymous-pre-tab-consecutive"
-            | "anonymous-pre-tab-forced-break"
-            | "anonymous-pre-tab-trailing"
-            | "anonymous-pre-tab-min-content"
-            | "anonymous-pre-tab-fixed-width-nowrap"
-            | "anonymous-pre-tab-size-2-negative"
-    ) {
+) -> Result<TabSize, RuntimeLayoutFailure> {
+    let expected_wrap_mode = if is_pre_tab_scene(scene_id)
+        || matches!(
+            scene_id,
+            "anonymous-nowrap-min-content"
+                | "anonymous-pre-max-content-spaces"
+                | "anonymous-pre-min-content-spaces"
+                | "anonymous-pre-forced-break"
+                | "anonymous-pre-fixed-width-nowrap"
+        ) {
         "nowrap"
     } else {
         "wrap"
@@ -313,16 +308,8 @@ fn validate_grid_style(
         | "anonymous-pre-max-content-spaces"
         | "anonymous-pre-min-content-spaces"
         | "anonymous-pre-forced-break"
-        | "anonymous-pre-fixed-width-nowrap"
-        | "anonymous-pre-tab-max-content"
-        | "anonymous-pre-tab-leading"
-        | "anonymous-pre-tab-exact-stop"
-        | "anonymous-pre-tab-consecutive"
-        | "anonymous-pre-tab-forced-break"
-        | "anonymous-pre-tab-trailing"
-        | "anonymous-pre-tab-min-content"
-        | "anonymous-pre-tab-fixed-width-nowrap"
-        | "anonymous-pre-tab-size-2-negative" => "preserve",
+        | "anonymous-pre-fixed-width-nowrap" => "preserve",
+        scene_id if is_pre_tab_scene(scene_id) => "preserve",
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-min-content"
@@ -359,11 +346,25 @@ fn validate_grid_style(
         }
         "anonymous-pre-tab-trailing" => (80.0, ComputedCssDimension::Auto),
         "anonymous-pre-tab-min-content" => (100.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-2-two-columns" | "anonymous-pre-tab-size-2-reset" => {
+            (60.0, ComputedCssDimension::Auto)
+        }
+        "anonymous-pre-tab-size-2-leading" => (30.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-2-exact-stop" | "anonymous-pre-tab-size-2-consecutive" => {
+            (70.0, ComputedCssDimension::Auto)
+        }
+        "anonymous-pre-tab-size-2-crlf-reset" => (30.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-2-trailing" => (40.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-2-min-content" => (60.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-2-fixed-overflow" => (25.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-1-leading" => (20.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-1-exact-stop" => (30.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-4-leading" => (50.0, ComputedCssDimension::Auto),
+        "anonymous-pre-tab-size-4-exact-stop" => (90.0, ComputedCssDimension::Auto),
         "anonymous-normal-fixed-width-control" | "anonymous-pre-fixed-width-nowrap" => {
             (25.0, ComputedCssDimension::Auto)
         }
         "anonymous-pre-tab-fixed-width-nowrap" => (25.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-2-negative" => (60.0, ComputedCssDimension::Auto),
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content" => (60.0, ComputedCssDimension::Auto),
         "anonymous-break-spaces-min-content"
@@ -384,6 +385,7 @@ fn validate_grid_style(
         "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
         _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
     };
+    let tab_size = validate_computed_tab_size(style.node_id, &style.properties, scene_id)?;
     validate_text_profile_properties(
         style.node_id,
         &style.properties,
@@ -432,7 +434,72 @@ fn validate_grid_style(
             "Grid track functions or auto-placement defaults",
         ));
     }
-    Ok(())
+    Ok(tab_size)
+}
+
+fn validate_computed_tab_size(
+    node_id: NodeId,
+    properties: &BTreeMap<String, String>,
+    scene_id: &str,
+) -> Result<TabSize, RuntimeLayoutFailure> {
+    let unsupported_tab_size = || {
+        layout_failure(
+            "unsupported_c114_anonymous_text_style",
+            Some(node_id.get()),
+            Some("tab-size".to_owned()),
+        )
+    };
+    let tab_size = match properties.get("tab-size").map(String::as_str) {
+        Some("1") => TabSize::One,
+        Some("2") => TabSize::Two,
+        Some("4") => TabSize::Four,
+        Some("8") => TabSize::Eight,
+        _ => return Err(unsupported_tab_size()),
+    };
+    if tab_size != expected_tab_size_for_scene(scene_id) {
+        return Err(unsupported_tab_size());
+    }
+    Ok(tab_size)
+}
+
+fn expected_tab_size_for_scene(scene_id: &str) -> TabSize {
+    match scene_id {
+        "anonymous-pre-tab-size-1-leading" | "anonymous-pre-tab-size-1-exact-stop" => TabSize::One,
+        "anonymous-pre-tab-size-2-two-columns"
+        | "anonymous-pre-tab-size-2-leading"
+        | "anonymous-pre-tab-size-2-exact-stop"
+        | "anonymous-pre-tab-size-2-consecutive"
+        | "anonymous-pre-tab-size-2-reset"
+        | "anonymous-pre-tab-size-2-crlf-reset"
+        | "anonymous-pre-tab-size-2-trailing"
+        | "anonymous-pre-tab-size-2-min-content"
+        | "anonymous-pre-tab-size-2-fixed-overflow" => TabSize::Two,
+        "anonymous-pre-tab-size-4-leading" | "anonymous-pre-tab-size-4-exact-stop" => TabSize::Four,
+        _ => TabSize::Eight,
+    }
+}
+
+fn is_pre_tab_scene(scene_id: &str) -> bool {
+    scene_id.starts_with("anonymous-pre-tab-")
+}
+
+fn pre_tab_text(scene_id: &str) -> &'static str {
+    match scene_id {
+        "anonymous-pre-tab-leading"
+        | "anonymous-pre-tab-size-2-leading"
+        | "anonymous-pre-tab-size-1-leading"
+        | "anonymous-pre-tab-size-4-leading" => "\tX",
+        "anonymous-pre-tab-exact-stop" => "XXXXXXXX\tX",
+        "anonymous-pre-tab-size-4-exact-stop" => "XXXX\tX",
+        "anonymous-pre-tab-size-2-exact-stop" => "XXXX\tX",
+        "anonymous-pre-tab-size-1-exact-stop" => "X\tX",
+        "anonymous-pre-tab-consecutive" | "anonymous-pre-tab-size-2-consecutive" => "XX\t\tX",
+        "anonymous-pre-tab-forced-break" => "XX\tXX\nX\tX",
+        "anonymous-pre-tab-trailing" | "anonymous-pre-tab-size-2-trailing" => "XX\t",
+        "anonymous-pre-tab-size-2-reset" => "XX\tXX\nX\tX",
+        "anonymous-pre-tab-size-2-crlf-reset" => "X\t\r\nX\tX",
+        _ => "XX\tXX",
+    }
 }
 
 fn grid_item_placement_is_auto(placement: Option<&ComputedCssGridItemPlacement>) -> bool {
@@ -469,7 +536,17 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         | "anonymous-pre-tab-consecutive"
         | "anonymous-pre-tab-forced-break"
         | "anonymous-pre-tab-trailing"
-        | "anonymous-pre-tab-size-2-negative" => {
+        | "anonymous-pre-tab-size-2-two-columns"
+        | "anonymous-pre-tab-size-2-leading"
+        | "anonymous-pre-tab-size-2-exact-stop"
+        | "anonymous-pre-tab-size-2-consecutive"
+        | "anonymous-pre-tab-size-2-reset"
+        | "anonymous-pre-tab-size-2-crlf-reset"
+        | "anonymous-pre-tab-size-2-trailing"
+        | "anonymous-pre-tab-size-1-leading"
+        | "anonymous-pre-tab-size-1-exact-stop"
+        | "anonymous-pre-tab-size-4-leading"
+        | "anonymous-pre-tab-size-4-exact-stop" => {
             vec![ComputedCssGridTrackSize::MaxContent]
         }
         "anonymous-break-spaces-max-content"
@@ -479,7 +556,9 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             vec![ComputedCssGridTrackSize::MaxContent]
         }
         "anonymous-pre-wrap-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
-        "anonymous-pre-min-content-spaces" | "anonymous-pre-tab-min-content" => {
+        "anonymous-pre-min-content-spaces"
+        | "anonymous-pre-tab-min-content"
+        | "anonymous-pre-tab-size-2-min-content" => {
             vec![ComputedCssGridTrackSize::MinContent]
         }
         "anonymous-break-spaces-min-content"
@@ -489,7 +568,8 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         "anonymous-pre-wrap-soft-wrap" => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
         "anonymous-normal-fixed-width-control"
         | "anonymous-pre-fixed-width-nowrap"
-        | "anonymous-pre-tab-fixed-width-nowrap" => {
+        | "anonymous-pre-tab-fixed-width-nowrap"
+        | "anonymous-pre-tab-size-2-fixed-overflow" => {
             vec![ComputedCssGridTrackSize::LengthPx(25.0)]
         }
         "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
@@ -550,7 +630,19 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             | "anonymous-pre-tab-trailing"
             | "anonymous-pre-tab-min-content"
             | "anonymous-pre-tab-fixed-width-nowrap"
-            | "anonymous-pre-tab-size-2-negative"
+            | "anonymous-pre-tab-size-2-two-columns"
+            | "anonymous-pre-tab-size-2-leading"
+            | "anonymous-pre-tab-size-2-exact-stop"
+            | "anonymous-pre-tab-size-2-consecutive"
+            | "anonymous-pre-tab-size-2-reset"
+            | "anonymous-pre-tab-size-2-crlf-reset"
+            | "anonymous-pre-tab-size-2-trailing"
+            | "anonymous-pre-tab-size-2-min-content"
+            | "anonymous-pre-tab-size-2-fixed-overflow"
+            | "anonymous-pre-tab-size-1-leading"
+            | "anonymous-pre-tab-size-1-exact-stop"
+            | "anonymous-pre-tab-size-4-leading"
+            | "anonymous-pre-tab-size-4-exact-stop"
             | "anonymous-break-spaces-max-content"
             | "anonymous-break-spaces-comment-split-max-content"
             | "anonymous-break-spaces-min-content"
@@ -591,7 +683,6 @@ fn validate_text_profile_properties(
         ("font-weight", "400"),
         ("font-style", "normal"),
         ("line-height", "10px"),
-        ("tab-size", "8"),
         ("word-break", "normal"),
         ("direction", "ltr"),
         ("line-break", "auto"),
@@ -605,15 +696,10 @@ fn validate_text_profile_properties(
     ] {
         let value = properties.get(name).map(String::as_str);
         if value != Some(expected) {
-            let property = if name == "tab-size" {
-                name.to_owned()
-            } else {
-                format!("{name}: expected {expected}, got {value:?}")
-            };
             return Err(layout_failure(
                 "unsupported_c114_anonymous_text_style",
                 Some(node_id.get()),
-                Some(property),
+                Some(format!("{name}: expected {expected}, got {value:?}")),
             ));
         }
     }
@@ -672,7 +758,7 @@ fn element_identity(
     Ok((element.local_name().to_owned(), id))
 }
 
-fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
+fn anonymous_paragraph_style(scene_id: &str, tab_size: TabSize) -> ParagraphStyle {
     ParagraphStyle {
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
@@ -695,15 +781,7 @@ fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
             | "anonymous-pre-min-content-spaces"
             | "anonymous-pre-forced-break"
             | "anonymous-pre-fixed-width-nowrap" => WhiteSpaceMode::Pre,
-            "anonymous-pre-tab-max-content"
-            | "anonymous-pre-tab-leading"
-            | "anonymous-pre-tab-exact-stop"
-            | "anonymous-pre-tab-consecutive"
-            | "anonymous-pre-tab-forced-break"
-            | "anonymous-pre-tab-trailing"
-            | "anonymous-pre-tab-min-content"
-            | "anonymous-pre-tab-fixed-width-nowrap"
-            | "anonymous-pre-tab-size-2-negative" => WhiteSpaceMode::Pre,
+            scene_id if is_pre_tab_scene(scene_id) => WhiteSpaceMode::PreWithTabSize(tab_size),
             "anonymous-break-spaces-max-content"
             | "anonymous-break-spaces-comment-split-max-content"
             | "anonymous-break-spaces-min-content"
@@ -756,9 +834,11 @@ enum ExpectedChild<'a> {
 #[cfg(test)]
 mod tests {
     use super::{
-        SCENE_IDS, grid_item_placement_is_auto, grid_tracks_match, validate_text_profile_properties,
+        SCENE_IDS, grid_item_placement_is_auto, grid_tracks_match, validate_computed_tab_size,
+        validate_text_profile_properties,
     };
     use spinon_core::NodeId;
+    use spinon_layout::TabSize;
     use spinon_style::{
         ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
         ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
@@ -770,8 +850,47 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 40);
+        assert_eq!(SCENE_IDS.len(), 55);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
+    }
+
+    #[test]
+    fn anonymous_text_tab_size_comes_from_computed_style_and_rejects_other_values() {
+        let node_id = NodeId::new(1).unwrap();
+        for (scene_id, value, expected) in [
+            ("anonymous-pre-tab-size-1-leading", "1", TabSize::One),
+            ("anonymous-pre-tab-size-2-two-columns", "2", TabSize::Two),
+            ("anonymous-pre-tab-size-4-leading", "4", TabSize::Four),
+            ("anonymous-pre-tab-max-content", "8", TabSize::Eight),
+        ] {
+            let properties = BTreeMap::from([("tab-size".to_owned(), value.to_owned())]);
+            assert_eq!(
+                validate_computed_tab_size(node_id, &properties, scene_id).unwrap(),
+                expected
+            );
+        }
+
+        let mismatched = BTreeMap::from([("tab-size".to_owned(), "2".to_owned())]);
+        assert!(
+            validate_computed_tab_size(node_id, &mismatched, "anonymous-pre-tab-size-4-leading")
+                .is_err()
+        );
+        for (scene_id, value) in [
+            ("anonymous-pre-tab-size-0-negative", "0"),
+            ("anonymous-pre-tab-size-fractional-negative", "1.5"),
+            ("anonymous-pre-tab-size-length-negative", "20px"),
+        ] {
+            let properties = BTreeMap::from([("tab-size".to_owned(), value.to_owned())]);
+            assert!(validate_computed_tab_size(node_id, &properties, scene_id).is_err());
+        }
+        assert!(
+            validate_computed_tab_size(
+                node_id,
+                &BTreeMap::new(),
+                "anonymous-pre-tab-size-2-two-columns"
+            )
+            .is_err()
+        );
     }
 
     #[test]
@@ -908,7 +1027,6 @@ mod tests {
             ("letter-spacing", "1px"),
             ("word-spacing", "1px"),
             ("text-indent", "1px"),
-            ("tab-size", "2"),
         ] {
             let mut mutated = properties.clone();
             mutated.insert(name.to_owned(), changed.to_owned());
@@ -983,13 +1101,27 @@ mod tests {
             "anonymous-pre-tab-consecutive",
             "anonymous-pre-tab-forced-break",
             "anonymous-pre-tab-trailing",
-            "anonymous-pre-tab-size-2-negative",
+            "anonymous-pre-tab-size-2-two-columns",
+            "anonymous-pre-tab-size-2-leading",
+            "anonymous-pre-tab-size-2-exact-stop",
+            "anonymous-pre-tab-size-2-consecutive",
+            "anonymous-pre-tab-size-2-reset",
+            "anonymous-pre-tab-size-2-crlf-reset",
+            "anonymous-pre-tab-size-2-trailing",
+            "anonymous-pre-tab-size-1-leading",
+            "anonymous-pre-tab-size-1-exact-stop",
+            "anonymous-pre-tab-size-4-leading",
+            "anonymous-pre-tab-size-4-exact-stop",
         ] {
             assert!(grid_tracks_match(&max_content_single_track, scene_id));
         }
         assert!(grid_tracks_match(
             &min_content_single_track,
             "anonymous-pre-tab-min-content"
+        ));
+        assert!(grid_tracks_match(
+            &min_content_single_track,
+            "anonymous-pre-tab-size-2-min-content"
         ));
         assert!(grid_tracks_match(
             &min_content_single_track,
@@ -1001,6 +1133,13 @@ mod tests {
                 vec![ComputedCssGridTrackSize::Auto],
             ),
             "anonymous-normal-fixed-width-control"
+        ));
+        assert!(grid_tracks_match(
+            &grid(
+                vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+                vec![ComputedCssGridTrackSize::Auto],
+            ),
+            "anonymous-pre-tab-size-2-fixed-overflow"
         ));
         assert!(grid_tracks_match(
             &grid(

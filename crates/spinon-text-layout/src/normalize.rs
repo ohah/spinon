@@ -35,8 +35,16 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     }
 
     let has_tabs = characters.iter().any(|source| source.character == '\t');
-    let preserve_pre_tabs = input.style.white_space == WhiteSpaceMode::Pre && has_tabs;
+    let preserve_pre_tabs = matches!(
+        input.style.white_space,
+        WhiteSpaceMode::Pre | WhiteSpaceMode::PreWithTabSize(_)
+    ) && has_tabs;
     let preserve_pre_wrap_tabs = input.style.white_space == WhiteSpaceMode::PreWrap && has_tabs;
+    let pre_tab_size = match input.style.white_space {
+        WhiteSpaceMode::Pre => crate::TabSize::Eight,
+        WhiteSpaceMode::PreWithTabSize(tab_size) => tab_size,
+        _ => crate::TabSize::Eight,
+    };
     if preserve_pre_tabs && !supports_pre_tab_profile(input, &characters) {
         return Err(TextLayoutError::UnsupportedPreTabProfile(input.node));
     }
@@ -77,7 +85,8 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
             push_character_sources(&mut result, &line_break_sources, '\n');
             pre_wrap_column = 0;
         } else if preserve_tabs && source.character == '\t' {
-            let spaces = 8 - pre_wrap_column % 8;
+            let tab_stop = pre_tab_size.spaces();
+            let spaces = tab_stop - pre_wrap_column % tab_stop;
             push_expanded_tab(&mut result, source, spaces);
             pre_wrap_column += spaces;
         } else if preserves_spaces_and_breaks(input.style.white_space) {
@@ -124,7 +133,10 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
 fn preserves_spaces_and_breaks(mode: WhiteSpaceMode) -> bool {
     matches!(
         mode,
-        WhiteSpaceMode::Pre | WhiteSpaceMode::PreWrap | WhiteSpaceMode::BreakSpaces
+        WhiteSpaceMode::Pre
+            | WhiteSpaceMode::PreWithTabSize(_)
+            | WhiteSpaceMode::PreWrap
+            | WhiteSpaceMode::BreakSpaces
     )
 }
 

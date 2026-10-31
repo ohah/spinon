@@ -1,4 +1,4 @@
-const SCENE_IDS: [&str; 40] = [
+const SCENE_IDS: [&str; 55] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -38,7 +38,22 @@ const SCENE_IDS: [&str; 40] = [
     "anonymous-pre-tab-trailing",
     "anonymous-pre-tab-min-content",
     "anonymous-pre-tab-fixed-width-nowrap",
-    "anonymous-pre-tab-size-2-negative",
+    "anonymous-pre-tab-size-2-two-columns",
+    "anonymous-pre-tab-size-2-leading",
+    "anonymous-pre-tab-size-2-exact-stop",
+    "anonymous-pre-tab-size-2-consecutive",
+    "anonymous-pre-tab-size-2-reset",
+    "anonymous-pre-tab-size-2-crlf-reset",
+    "anonymous-pre-tab-size-2-trailing",
+    "anonymous-pre-tab-size-2-min-content",
+    "anonymous-pre-tab-size-2-fixed-overflow",
+    "anonymous-pre-tab-size-1-leading",
+    "anonymous-pre-tab-size-1-exact-stop",
+    "anonymous-pre-tab-size-4-leading",
+    "anonymous-pre-tab-size-4-exact-stop",
+    "anonymous-pre-tab-size-0-negative",
+    "anonymous-pre-tab-size-fractional-negative",
+    "anonymous-pre-tab-size-length-negative",
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -75,7 +90,24 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         }
         "anonymous-pre-tab-trailing" => (80, "auto", "max-content", "auto", "nowrap"),
         "anonymous-pre-tab-min-content" => (100, "auto", "min-content", "auto", "nowrap"),
-        "anonymous-pre-tab-size-2-negative" => (60, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-2-two-columns" | "anonymous-pre-tab-size-2-reset" => {
+            (60, "auto", "max-content", "auto", "nowrap")
+        }
+        "anonymous-pre-tab-size-2-leading" => (30, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-2-exact-stop" | "anonymous-pre-tab-size-2-consecutive" => {
+            (70, "auto", "max-content", "auto", "nowrap")
+        }
+        "anonymous-pre-tab-size-2-crlf-reset" => (30, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-2-trailing" => (40, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-2-min-content" => (60, "auto", "min-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-2-fixed-overflow" => (25, "auto", "25px", "auto", "nowrap"),
+        "anonymous-pre-tab-size-1-leading" => (20, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-1-exact-stop" => (30, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-4-leading" => (50, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-4-exact-stop" => (90, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-0-negative"
+        | "anonymous-pre-tab-size-fractional-negative"
+        | "anonymous-pre-tab-size-length-negative" => (60, "auto", "max-content", "auto", "nowrap"),
         "anonymous-pre-wrap-soft-wrap" => (25, "auto", "25px", "auto", "wrap"),
         "anonymous-pre-wrap-whitespace-before-block" => (40, "10px", "20px 20px", "10px", "wrap"),
         "anonymous-break-spaces-max-content"
@@ -131,7 +163,22 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         | "anonymous-pre-tab-trailing"
         | "anonymous-pre-tab-min-content"
         | "anonymous-pre-tab-fixed-width-nowrap"
-        | "anonymous-pre-tab-size-2-negative" => "preserve",
+        | "anonymous-pre-tab-size-2-two-columns"
+        | "anonymous-pre-tab-size-2-leading"
+        | "anonymous-pre-tab-size-2-exact-stop"
+        | "anonymous-pre-tab-size-2-consecutive"
+        | "anonymous-pre-tab-size-2-reset"
+        | "anonymous-pre-tab-size-2-crlf-reset"
+        | "anonymous-pre-tab-size-2-trailing"
+        | "anonymous-pre-tab-size-2-min-content"
+        | "anonymous-pre-tab-size-2-fixed-overflow"
+        | "anonymous-pre-tab-size-1-leading"
+        | "anonymous-pre-tab-size-1-exact-stop"
+        | "anonymous-pre-tab-size-4-leading"
+        | "anonymous-pre-tab-size-4-exact-stop"
+        | "anonymous-pre-tab-size-0-negative"
+        | "anonymous-pre-tab-size-fractional-negative"
+        | "anonymous-pre-tab-size-length-negative" => "preserve",
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-min-content"
@@ -144,10 +191,22 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         | "anonymous-break-spaces-whitespace-before-block" => "break-spaces",
         _ => "collapse",
     };
-    let tab_size = if scene_id == "anonymous-pre-tab-size-2-negative" {
-        "2"
-    } else {
-        "8"
+    let tab_size = match scene_id {
+        "anonymous-pre-tab-size-1-leading" | "anonymous-pre-tab-size-1-exact-stop" => "1",
+        "anonymous-pre-tab-size-2-two-columns"
+        | "anonymous-pre-tab-size-2-leading"
+        | "anonymous-pre-tab-size-2-exact-stop"
+        | "anonymous-pre-tab-size-2-consecutive"
+        | "anonymous-pre-tab-size-2-reset"
+        | "anonymous-pre-tab-size-2-crlf-reset"
+        | "anonymous-pre-tab-size-2-trailing"
+        | "anonymous-pre-tab-size-2-min-content"
+        | "anonymous-pre-tab-size-2-fixed-overflow" => "2",
+        "anonymous-pre-tab-size-4-leading" | "anonymous-pre-tab-size-4-exact-stop" => "4",
+        "anonymous-pre-tab-size-0-negative" => "0",
+        "anonymous-pre-tab-size-fractional-negative" => "1.5",
+        "anonymous-pre-tab-size-length-negative" => "20px",
+        _ => "8",
     };
     let mut source = format!(
         r#"(() => {{
@@ -246,23 +305,46 @@ nodeIds.push('c114-anonymous-pre-wrap-whitespace-before-block-item');
         "anonymous-pre-tab-max-content"
         | "anonymous-pre-tab-min-content"
         | "anonymous-pre-tab-fixed-width-nowrap"
-        | "anonymous-pre-tab-size-2-negative" => {
+        | "anonymous-pre-tab-size-2-two-columns"
+        | "anonymous-pre-tab-size-2-min-content"
+        | "anonymous-pre-tab-size-2-fixed-overflow"
+        | "anonymous-pre-tab-size-0-negative"
+        | "anonymous-pre-tab-size-fractional-negative"
+        | "anonymous-pre-tab-size-length-negative" => {
             source.push_str("root.appendChild(document.createTextNode('XX\\tXX'));\n")
         }
-        "anonymous-pre-tab-leading" => {
+        "anonymous-pre-tab-leading"
+        | "anonymous-pre-tab-size-2-leading"
+        | "anonymous-pre-tab-size-1-leading"
+        | "anonymous-pre-tab-size-4-leading" => {
             source.push_str("root.appendChild(document.createTextNode('\\tX'));\n")
         }
         "anonymous-pre-tab-exact-stop" => {
             source.push_str("root.appendChild(document.createTextNode('XXXXXXXX\\tX'));\n")
         }
-        "anonymous-pre-tab-consecutive" => {
+        "anonymous-pre-tab-size-4-exact-stop" => {
+            source.push_str("root.appendChild(document.createTextNode('XXXX\\tX'));\n")
+        }
+        "anonymous-pre-tab-size-2-exact-stop" => {
+            source.push_str("root.appendChild(document.createTextNode('XXXX\\tX'));\n")
+        }
+        "anonymous-pre-tab-size-1-exact-stop" => {
+            source.push_str("root.appendChild(document.createTextNode('X\\tX'));\n")
+        }
+        "anonymous-pre-tab-consecutive" | "anonymous-pre-tab-size-2-consecutive" => {
             source.push_str("root.appendChild(document.createTextNode('XX\\t\\tX'));\n")
         }
         "anonymous-pre-tab-forced-break" => {
             source.push_str("root.appendChild(document.createTextNode('XX\\tXX\\nX\\tX'));\n")
         }
-        "anonymous-pre-tab-trailing" => {
+        "anonymous-pre-tab-trailing" | "anonymous-pre-tab-size-2-trailing" => {
             source.push_str("root.appendChild(document.createTextNode('XX\\t'));\n")
+        }
+        "anonymous-pre-tab-size-2-reset" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\tXX\\nX\\tX'));\n")
+        }
+        "anonymous-pre-tab-size-2-crlf-reset" => {
+            source.push_str("root.appendChild(document.createTextNode('X\\t\\r\\nX\\tX'));\n")
         }
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-min-content"
@@ -307,9 +389,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_forty_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_fifty_five_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 40);
+        assert_eq!(SCENE_IDS.len(), 55);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
             (
@@ -664,7 +746,142 @@ mod tests {
                 "preserve",
             ),
             (
-                "anonymous-pre-tab-size-2-negative",
+                "anonymous-pre-tab-size-2-two-columns",
+                1,
+                0,
+                60,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-leading",
+                1,
+                0,
+                30,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-exact-stop",
+                1,
+                0,
+                70,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-consecutive",
+                1,
+                0,
+                70,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-reset",
+                1,
+                0,
+                60,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-crlf-reset",
+                1,
+                0,
+                30,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-trailing",
+                1,
+                0,
+                40,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-min-content",
+                1,
+                0,
+                60,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-fixed-overflow",
+                1,
+                0,
+                25,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-1-leading",
+                1,
+                0,
+                20,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-1-exact-stop",
+                1,
+                0,
+                30,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-4-leading",
+                1,
+                0,
+                50,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-4-exact-stop",
+                1,
+                0,
+                90,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-0-negative",
+                1,
+                0,
+                60,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-fractional-negative",
+                1,
+                0,
+                60,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-length-negative",
                 1,
                 0,
                 60,
@@ -679,10 +896,22 @@ mod tests {
             assert!(source.contains(&format!("display:grid;width:{width}px;height:{height};")));
             assert!(source.contains(&format!("text-wrap-mode:{wrap_mode}")));
             assert!(source.contains(&format!("white-space-collapse:{white_space_collapse}")));
-            let expected_tab_size = if scene_id == "anonymous-pre-tab-size-2-negative" {
-                "2"
-            } else {
-                "8"
+            let expected_tab_size = match scene_id {
+                "anonymous-pre-tab-size-1-leading" | "anonymous-pre-tab-size-1-exact-stop" => "1",
+                "anonymous-pre-tab-size-2-two-columns"
+                | "anonymous-pre-tab-size-2-leading"
+                | "anonymous-pre-tab-size-2-exact-stop"
+                | "anonymous-pre-tab-size-2-consecutive"
+                | "anonymous-pre-tab-size-2-reset"
+                | "anonymous-pre-tab-size-2-crlf-reset"
+                | "anonymous-pre-tab-size-2-trailing"
+                | "anonymous-pre-tab-size-2-min-content"
+                | "anonymous-pre-tab-size-2-fixed-overflow" => "2",
+                "anonymous-pre-tab-size-4-leading" | "anonymous-pre-tab-size-4-exact-stop" => "4",
+                "anonymous-pre-tab-size-0-negative" => "0",
+                "anonymous-pre-tab-size-fractional-negative" => "1.5",
+                "anonymous-pre-tab-size-length-negative" => "20px",
+                _ => "8",
             };
             assert!(source.contains(&format!("tab-size:{expected_tab_size};")));
             assert_eq!(

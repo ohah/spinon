@@ -1,0 +1,64 @@
+{
+  "host": "aarch64-apple-darwin",
+  "rustc": "1.96.1",
+  "fixture": "c04-runtime-gpu-fixture-test",
+  "tabSizeSceneIDs": [
+    "anonymous-pre-tab-size-2-two-columns",
+    "anonymous-pre-tab-size-2-leading",
+    "anonymous-pre-tab-size-2-exact-stop",
+    "anonymous-pre-tab-size-2-consecutive",
+    "anonymous-pre-tab-size-2-reset",
+    "anonymous-pre-tab-size-2-crlf-reset",
+    "anonymous-pre-tab-size-2-trailing",
+    "anonymous-pre-tab-size-2-min-content",
+    "anonymous-pre-tab-size-2-fixed-overflow",
+    "anonymous-pre-tab-size-1-leading",
+    "anonymous-pre-tab-size-1-exact-stop",
+    "anonymous-pre-tab-size-4-leading",
+    "anonymous-pre-tab-size-4-exact-stop",
+    "anonymous-pre-tab-size-0-negative",
+    "anonymous-pre-tab-size-fractional-negative",
+    "anonymous-pre-tab-size-length-negative"
+  ],
+  "definitions": [
+    "_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+    "_spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture"
+  ],
+  "default": {
+    "archive": "target/debug/deps/libspinon_ffi-0098a99528f2b0e6.a",
+    "bytes": 516128376,
+    "sha256": "8b415e6635529eda5d38a821106e1c2ad5edc77e6993182aa75bc96a57613a44",
+    "tabSizeSceneIDsFound": [],
+    "tabSizeSceneCountFound": 0,
+    "fixtureSymbolsFound": []
+  },
+  "fixture-test": {
+    "archive": "target/debug/deps/libspinon_ffi-2f4562df41e0918f.a",
+    "bytes": 730168472,
+    "sha256": "40308eaf8cbbd91f6f17125f8644f23aaf6afc08778539ffdd803b52c0f85405",
+    "tabSizeSceneIDsFound": [
+      "anonymous-pre-tab-size-0-negative",
+      "anonymous-pre-tab-size-1-exact-stop",
+      "anonymous-pre-tab-size-1-leading",
+      "anonymous-pre-tab-size-2-consecutive",
+      "anonymous-pre-tab-size-2-crlf-reset",
+      "anonymous-pre-tab-size-2-exact-stop",
+      "anonymous-pre-tab-size-2-fixed-overflow",
+      "anonymous-pre-tab-size-2-leading",
+      "anonymous-pre-tab-size-2-min-content",
+      "anonymous-pre-tab-size-2-reset",
+      "anonymous-pre-tab-size-2-trailing",
+      "anonymous-pre-tab-size-2-two-columns",
+      "anonymous-pre-tab-size-4-exact-stop",
+      "anonymous-pre-tab-size-4-leading",
+      "anonymous-pre-tab-size-fractional-negative",
+      "anonymous-pre-tab-size-length-negative"
+    ],
+    "tabSizeSceneCountFound": 16,
+    "fixtureSymbolsFound": [
+      "_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+      "_spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture"
+    ]
+  },
+  "verified": true
+}

@@ -1,0 +1,44 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "eee937030c7d3d2e624ba446be78098f3ededc6ea572b7b9070678ed7bcb0a95",
+  "installedAppSha256": "eee937030c7d3d2e624ba446be78098f3ededc6ea572b7b9070678ed7bcb0a95",
+  "sourceRevision": {
+    "commit": "15e9d642a3ed5217f73225ee72ea0c45611119ef",
+    "tree": "93e66d81b11731244b748431927b99ee24328893",
+    "trackedDiffSha256": "be7ef6701d6a9efcfc8a52bf6153c6bf19ba37004ab664c63e905ad57662d908",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs",
+      "crates/spinon-layout/src/compute.rs",
+      "crates/spinon-layout/src/host_document/text_paragraphs.rs",
+      "crates/spinon-layout/src/host_document_tests/c11_4_anonymous_text/white_space.rs",
+      "crates/spinon-layout/src/lib.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "crates/spinon-text-layout/src/engine/intrinsic.rs",
+      "crates/spinon-text-layout/src/lib.rs",
+      "crates/spinon-text-layout/src/model.rs",
+      "crates/spinon-text-layout/src/normalize.rs",
+      "crates/spinon-text-layout/src/tests/c11_4_pre.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/0059-c11-grid-layout.md",
+      "spec/internal/0070-c15-1-inline-text-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "d27004c0a1e0cdd31a231e52da001df152a69d55f5c305b5f752085a08eda3fe"
+  }
+}
