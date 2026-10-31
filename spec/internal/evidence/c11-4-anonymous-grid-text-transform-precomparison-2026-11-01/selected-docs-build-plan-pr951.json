@@ -1,0 +1,43 @@
+{
+  "rspressVersion": "2.0.22",
+  "buildTarget": "build/spinon/c11-4-anonymous-grid-text-transform-plan-pr951",
+  "selectedRootFileCount": 15,
+  "selectedRootBytes": 1667404,
+  "fullRepositoryDeadLinkCheck": false,
+  "result": "success",
+  "routes": [
+    "roadmap.html",
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+    "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html"
+  ],
+  "agentBrowser": {
+    "version": "0.31.1",
+    "chrome": "HeadlessChrome 156.0.0.0",
+    "localRoadmap": {
+      "desktop": {
+        "viewport": [1280, 633],
+        "documentWidth": 1280,
+        "bodyWidth": 1280,
+        "candidateCard": { "x": 20, "width": 908, "height": 61.171875 }
+      },
+      "mobile": {
+        "viewport": [390, 844],
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "horizontalOverflow": false,
+        "candidateCard": { "x": 14, "width": 362, "height": 163.125 }
+      }
+    },
+    "sessionClosed": true,
+    "remainingAgentBrowserProcesses": 0
+  },
+  "limits": [
+    "This is a selected documentation route build, not a full repository dead-link audit.",
+    "The local roadmap preview is not a Tailnet deployment.",
+    "No Spinon Android or iOS runtime was exercised by this plan-only PR."
+  ]
+}

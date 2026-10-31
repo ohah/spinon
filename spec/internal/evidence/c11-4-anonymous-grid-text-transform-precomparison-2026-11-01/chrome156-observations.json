@@ -1,0 +1,168 @@
+{
+  "dpr": 1,
+  "fontLoaded": true,
+  "fontStatus": "loaded",
+  "rows": [
+    {
+      "column": "11.7344px",
+      "fontFamily": "\"Noto Sans KR\"",
+      "fontSize": "10px",
+      "id": "transform-none-min",
+      "rangeRects": [
+        {
+          "height": 12,
+          "width": 11.734375,
+          "x": 26,
+          "y": 50.59375
+        },
+        {
+          "height": 12,
+          "width": 5.5,
+          "x": 26,
+          "y": 60.59375
+        }
+      ],
+      "rootRect": {
+        "height": 20,
+        "width": 120,
+        "x": 26,
+        "y": 51.59375
+      },
+      "row": "20px",
+      "text": "IIII ii",
+      "transform": "none"
+    },
+    {
+      "column": "19.4688px",
+      "fontFamily": "\"Noto Sans KR\"",
+      "fontSize": "10px",
+      "id": "transform-none-max",
+      "rangeRects": [
+        {
+          "height": 12,
+          "width": 19.46875,
+          "x": 209.9375,
+          "y": 50.59375
+        }
+      ],
+      "rootRect": {
+        "height": 10,
+        "width": 120,
+        "x": 209.9375,
+        "y": 51.59375
+      },
+      "row": "10px",
+      "text": "IIII ii",
+      "transform": "none"
+    },
+    {
+      "column": "11.7344px",
+      "fontFamily": "\"Noto Sans KR\"",
+      "fontSize": "10px",
+      "id": "transform-uppercase-min",
+      "rangeRects": [
+        {
+          "height": 12,
+          "width": 11.734375,
+          "x": 390,
+          "y": 50.59375
+        },
+        {
+          "height": 12,
+          "width": 5.875,
+          "x": 390,
+          "y": 60.59375
+        }
+      ],
+      "rootRect": {
+        "height": 20,
+        "width": 120,
+        "x": 390,
+        "y": 51.59375
+      },
+      "row": "20px",
+      "text": "IIII ii",
+      "transform": "uppercase"
+    },
+    {
+      "column": "19.8438px",
+      "fontFamily": "\"Noto Sans KR\"",
+      "fontSize": "10px",
+      "id": "transform-uppercase-max",
+      "rangeRects": [
+        {
+          "height": 12,
+          "width": 19.84375,
+          "x": 26,
+          "y": 132.1875
+        }
+      ],
+      "rootRect": {
+        "height": 10,
+        "width": 120,
+        "x": 26,
+        "y": 133.1875
+      },
+      "row": "10px",
+      "text": "IIII ii",
+      "transform": "uppercase"
+    },
+    {
+      "column": "11px",
+      "fontFamily": "\"Noto Sans KR\"",
+      "fontSize": "10px",
+      "id": "transform-lowercase-min",
+      "rangeRects": [
+        {
+          "height": 12,
+          "width": 11,
+          "x": 209.9375,
+          "y": 132.1875
+        },
+        {
+          "height": 12,
+          "width": 5.5,
+          "x": 209.9375,
+          "y": 142.1875
+        }
+      ],
+      "rootRect": {
+        "height": 20,
+        "width": 120,
+        "x": 209.9375,
+        "y": 133.1875
+      },
+      "row": "20px",
+      "text": "IIII ii",
+      "transform": "lowercase"
+    },
+    {
+      "column": "18.7188px",
+      "fontFamily": "\"Noto Sans KR\"",
+      "fontSize": "10px",
+      "id": "transform-lowercase-max",
+      "rangeRects": [
+        {
+          "height": 12,
+          "width": 18.71875,
+          "x": 390,
+          "y": 132.1875
+        }
+      ],
+      "rootRect": {
+        "height": 10,
+        "width": 120,
+        "x": 390,
+        "y": 133.1875
+      },
+      "row": "10px",
+      "text": "IIII ii",
+      "transform": "lowercase"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  }
+}

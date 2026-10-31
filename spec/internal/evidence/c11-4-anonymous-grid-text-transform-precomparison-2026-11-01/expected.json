@@ -1,0 +1,80 @@
+{
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform.html",
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "font": {
+    "family": "Noto Sans KR",
+    "source": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+    "variation": "wght=400",
+    "unitsPerEm": 1000,
+    "language": "en",
+    "glyphAdvances": {
+      "I": 293,
+      "i": 275,
+      "space": 224
+    }
+  },
+  "toleranceCssPx": 0.03125,
+  "scenes": [
+    {
+      "id": "transform-none-min",
+      "sourceText": "IIII ii",
+      "textTransform": "none",
+      "shapedText": "IIII ii",
+      "track": "min-content",
+      "columnsPx": 11.734375,
+      "rowsPx": 20
+    },
+    {
+      "id": "transform-none-max",
+      "sourceText": "IIII ii",
+      "textTransform": "none",
+      "shapedText": "IIII ii",
+      "track": "max-content",
+      "columnsPx": 19.46875,
+      "rowsPx": 10
+    },
+    {
+      "id": "transform-uppercase-min",
+      "sourceText": "IIII ii",
+      "textTransform": "uppercase",
+      "shapedText": "IIII II",
+      "track": "min-content",
+      "columnsPx": 11.734375,
+      "rowsPx": 20
+    },
+    {
+      "id": "transform-uppercase-max",
+      "sourceText": "IIII ii",
+      "textTransform": "uppercase",
+      "shapedText": "IIII II",
+      "track": "max-content",
+      "columnsPx": 19.84375,
+      "rowsPx": 10
+    },
+    {
+      "id": "transform-lowercase-min",
+      "sourceText": "IIII ii",
+      "textTransform": "lowercase",
+      "shapedText": "iiii ii",
+      "track": "min-content",
+      "columnsPx": 11,
+      "rowsPx": 20
+    },
+    {
+      "id": "transform-lowercase-max",
+      "sourceText": "IIII ii",
+      "textTransform": "lowercase",
+      "shapedText": "iiii ii",
+      "track": "max-content",
+      "columnsPx": 18.71875,
+      "rowsPx": 10
+    }
+  ],
+  "independentAdvanceSums": {
+    "minContentNoneAndUppercase": "4*293*10/1000 = 11.72 CSS px",
+    "minContentLowercase": "4*275*10/1000 = 11 CSS px",
+    "maxContentNone": "(4*293 + 224 + 2*275)*10/1000 = 19.46 CSS px",
+    "maxContentUppercase": "(6*293 + 224)*10/1000 = 19.82 CSS px",
+    "maxContentLowercase": "(6*275 + 224)*10/1000 = 18.74 CSS px"
+  }
+}
