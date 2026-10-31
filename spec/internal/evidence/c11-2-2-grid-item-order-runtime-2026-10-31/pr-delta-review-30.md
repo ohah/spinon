@@ -31,6 +31,6 @@ Date: 2026-10-31. Review covers the implementation, versioned fixture tooling, p
 27. **Default artifact boundary — PASS.** The core `c04-runtime-gpu` archive lacks both new C11 fixture symbols; the opt-in fixture archive contains both. [Inspection evidence](./artifact-symbol-boundary.md).
 28. **Lint/format — PASS.** Workspace Clippy, rustfmt, and `git diff --check` passed after correcting the reported conditional style.
 29. **Workspace test accounting — PASS WITH EXISTING FAILURE DISCLOSED.** One C07.3 pinned computed-string mismatch reproduced in isolation; it is outside the diff. The other 1,431 workspace tests pass with 4 ignored when only that exact mismatch is filtered. [Failure and rerun log](./workspace-test-c07-3-baseline-failure.md).
-30. **Screenshot links in PR — PENDING PR CREATION.** PR body will use branch-hosted Android/iOS screenshots; verify the rendered image links in Agent Browser before merge.
+30. **Screenshot links in PR — PASS.** PR #899 renders both branch-hosted captures in the conversation; Agent Browser verified image load at 1080×2400 (Android AVD) and 1206×2622 (iPhone Simulator). The browser session was closed and no Agent Browser/Chromium process remained.
 
-Items 27, 29, and 30 must be updated with final artifact, test, and rendered PR evidence before merge. This review is not merge approval while any item remains pending.
+All reviewed delta items have a recorded result. The review records the existing unrelated C07.3 test mismatch and the repository's empty check rollup separately from the passing filtered workspace run.
