@@ -1,0 +1,458 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "cases": [
+    {
+      "frame": {
+        "height": 10,
+        "width": 60,
+        "x": 0,
+        "y": 0
+      },
+      "gridColumns": "60px",
+      "gridRows": "10px",
+      "id": "size2-two-columns",
+      "tabSize": "2",
+      "text": "XX\tXX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 40,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 30,
+        "x": 0,
+        "y": 20
+      },
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "id": "size2-leading",
+      "tabSize": "2",
+      "text": "\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 20
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 20,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 70,
+        "x": 0,
+        "y": 40
+      },
+      "gridColumns": "70px",
+      "gridRows": "10px",
+      "id": "size2-exact-stop",
+      "tabSize": "2",
+      "text": "XXXX\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 0,
+          "y": 40
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 40,
+          "y": 40
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 60,
+          "y": 40
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 70,
+        "x": 0,
+        "y": 60
+      },
+      "gridColumns": "70px",
+      "gridRows": "10px",
+      "id": "size2-consecutive",
+      "tabSize": "2",
+      "text": "XX\t\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 60
+        },
+        {
+          "height": 10,
+          "width": 40,
+          "x": 20,
+          "y": 60
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 60,
+          "y": 60
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 20,
+        "width": 60,
+        "x": 0,
+        "y": 80
+      },
+      "gridColumns": "60px",
+      "gridRows": "20px",
+      "id": "size2-reset",
+      "tabSize": "2",
+      "text": "XX\tXX\nX\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 80
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 20,
+          "y": 80
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 40,
+          "y": 80
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 60,
+          "y": 80
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 90
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 90
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 20,
+          "y": 90
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 20,
+        "width": 30,
+        "x": 0,
+        "y": 110
+      },
+      "gridColumns": "30px",
+      "gridRows": "20px",
+      "id": "size2-crlf-reset",
+      "tabSize": "2",
+      "text": "X\t\r\nX\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 110
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 110
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 20,
+          "y": 110
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 120
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 120
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 20,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 40,
+        "x": 0,
+        "y": 140
+      },
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "id": "size2-trailing",
+      "tabSize": "2",
+      "text": "XX\t",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 140
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 20,
+          "y": 140
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 60,
+        "x": 0,
+        "y": 160
+      },
+      "gridColumns": "60px",
+      "gridRows": "10px",
+      "id": "size2-min-content",
+      "tabSize": "2",
+      "text": "XX\tXX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 160
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 20,
+          "y": 160
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 40,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 25,
+        "x": 0,
+        "y": 180
+      },
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "id": "size2-fixed-overflow",
+      "tabSize": "2",
+      "text": "XX\tXX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 20,
+          "x": 0,
+          "y": 180
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 20,
+          "y": 180
+        },
+        {
+          "height": 10,
+          "width": 20,
+          "x": 40,
+          "y": 180
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 20,
+        "x": 0,
+        "y": 200
+      },
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "id": "size1-leading",
+      "tabSize": "1",
+      "text": "\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 200
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 200
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 30,
+        "x": 0,
+        "y": 220
+      },
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "id": "size1-exact-stop",
+      "tabSize": "1",
+      "text": "X\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 220
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 220
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 20,
+          "y": 220
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 50,
+        "x": 0,
+        "y": 240
+      },
+      "gridColumns": "50px",
+      "gridRows": "10px",
+      "id": "size4-leading",
+      "tabSize": "4",
+      "text": "\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 0,
+          "y": 240
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 40,
+          "y": 240
+        }
+      ]
+    },
+    {
+      "frame": {
+        "height": 10,
+        "width": 90,
+        "x": 0,
+        "y": 260
+      },
+      "gridColumns": "90px",
+      "gridRows": "10px",
+      "id": "size4-exact-stop",
+      "tabSize": "4",
+      "text": "XXXX\tX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 0,
+          "y": 260
+        },
+        {
+          "height": 10,
+          "width": 40,
+          "x": 40,
+          "y": 260
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 80,
+          "y": 260
+        }
+      ]
+    }
+  ],
+  "fontLoaded": true,
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

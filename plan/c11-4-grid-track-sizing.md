@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-31 anonymous Grid `white-space:pre` author `tab-size` candidate
+
+The default-tab implementation keeps the computed initial value 8 and rejects other values. The proposed follow-up is limited to numeric values 1, 2, and 4 in the same opt-in anonymous Grid text route. Its CSS Text 3 basis, independent arithmetic, and 13-scene Chrome 156 Agent Browser observation are in the [candidate plan](./c11-4-anonymous-grid-text-pre-author-tab-size.md) and [precomparison](../spec/internal/evidence/c11-4-anonymous-pre-author-tab-size-precomparison-2026-10-31/README.md). The plan failure review is complete at 20/20. Implementation has not started; C11.4/C11 and official `72/213` remain unchanged.
+
 ## 2026-10-31 anonymous Grid text `white-space:pre` 제한 slice · PR #880 병합
 
 `WhiteSpaceMode::Pre`를 Ahem ASCII 기반 opt-in anonymous Grid text fixture에 연결했다. 신규 5 scene과 기존 normal/nowrap/pre-line/pre-wrap/break-spaces 26 scene을 합친 고정 31-scene 행렬이 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 통과했다. 구현 PR [#880](https://github.com/ohah/spinon/pull/880)은 2026-10-30T23:06:20Z Rebase and merge됐으며 merge SHA는 `c592212bbf858cda0f310bb5885e864687960d06`이다. PR checks는 보고되지 않았고 main required status checks도 설정돼 있지 않았다. 상세한 scene geometry, test 결과, source snapshot, 검증 한계는 [작업 계획](./c11-4-anonymous-grid-text-pre.md)과 [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-runtime-2026-10-31-2026-10-31/README.md)에 있다. 이 slice는 일반 author CSS admission, WPT, glyph pixels 또는 C11.4/C11 완료가 아니며 공식 `72/213` 집계를 바꾸지 않는다.

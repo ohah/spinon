@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "basis": {
+    "fontFamily": "Ahem",
+    "fontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "fontSizePx": 10,
+    "spaceAdvancePx": 10,
+    "lineHeightPx": 10,
+    "supportedNumericTabSizes": [
+      1,
+      2,
+      4
+    ],
+    "algorithm": "At each preserved tab, advance to the first tab stop strictly after the current inline advance. A forced segment break resets the inline advance to zero."
+  },
+  "cases": [
+    {
+      "id": "size2-two-columns",
+      "tabSize": 2,
+      "input": "XX\tXX",
+      "normalizedText": "XX  XX",
+      "rootPx": [
+        60,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        60
+      ]
+    },
+    {
+      "id": "size2-leading",
+      "tabSize": 2,
+      "input": "\tX",
+      "normalizedText": "  X",
+      "rootPx": [
+        30,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          30
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        30
+      ]
+    },
+    {
+      "id": "size2-exact-stop",
+      "tabSize": 2,
+      "input": "XXXX\tX",
+      "normalizedText": "XXXX  X",
+      "rootPx": [
+        70,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          70
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        70
+      ]
+    },
+    {
+      "id": "size2-consecutive",
+      "tabSize": 2,
+      "input": "XX\t\tX",
+      "normalizedText": "XX    X",
+      "rootPx": [
+        70,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          70
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        70
+      ]
+    },
+    {
+      "id": "size2-reset",
+      "tabSize": 2,
+      "input": "XX\tXX\nX\tX",
+      "normalizedText": "XX  XX\nX X",
+      "rootPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "lineAdvancesPx": [
+        60,
+        30
+      ]
+    },
+    {
+      "id": "size2-crlf-reset",
+      "tabSize": 2,
+      "input": "X\t\r\nX\tX",
+      "normalizedText": "X \nX X",
+      "rootPx": [
+        30,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          30
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "lineAdvancesPx": [
+        20,
+        30
+      ]
+    },
+    {
+      "id": "size2-trailing",
+      "tabSize": 2,
+      "input": "XX\t",
+      "normalizedText": "XX  ",
+      "rootPx": [
+        40,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          40
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        40
+      ]
+    },
+    {
+      "id": "size2-min-content",
+      "tabSize": 2,
+      "input": "XX\tXX",
+      "normalizedText": "XX  XX",
+      "rootPx": [
+        60,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "minContentPx": 60,
+      "maxContentPx": 60,
+      "lineAdvancesPx": [
+        60
+      ]
+    },
+    {
+      "id": "size2-fixed-overflow",
+      "tabSize": 2,
+      "input": "XX\tXX",
+      "normalizedText": "XX  XX",
+      "rootPx": [
+        25,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          25
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        60
+      ]
+    },
+    {
+      "id": "size1-leading",
+      "tabSize": 1,
+      "input": "\tX",
+      "normalizedText": " X",
+      "rootPx": [
+        20,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        20
+      ]
+    },
+    {
+      "id": "size1-exact-stop",
+      "tabSize": 1,
+      "input": "X\tX",
+      "normalizedText": "X X",
+      "rootPx": [
+        30,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          30
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        30
+      ]
+    },
+    {
+      "id": "size4-leading",
+      "tabSize": 4,
+      "input": "\tX",
+      "normalizedText": "    X",
+      "rootPx": [
+        50,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          50
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        50
+      ]
+    },
+    {
+      "id": "size4-exact-stop",
+      "tabSize": 4,
+      "input": "XXXX\tX",
+      "normalizedText": "XXXX    X",
+      "rootPx": [
+        90,
+        10
+      ],
+      "tracksPx": {
+        "columns": [
+          90
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "lineAdvancesPx": [
+        90
+      ]
+    }
+  ]
+}

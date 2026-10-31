@@ -1,0 +1,89 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text pre author tab-size precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { color: #111; background: #fff; font: 10px/10px Ahem, sans-serif; }
+.case { margin: 0 0 10px; }
+.grid {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  width: max-content;
+  align-items: start;
+  justify-items: start;
+  white-space: pre;
+  tab-size: 8;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+  font-family: Ahem;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 10px;
+  direction: ltr;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+#size2-two-columns, #size2-leading, #size2-exact-stop, #size2-consecutive,
+#size2-reset, #size2-crlf-reset, #size2-trailing, #size2-min-content, #size2-fixed-overflow {
+  tab-size: 2;
+}
+#size2-min-content { grid-template-columns: min-content; }
+#size2-fixed-overflow { width: 25px; grid-template-columns: minmax(0, 1fr); }
+#size1-leading, #size1-exact-stop { tab-size: 1; }
+#size4-leading, #size4-exact-stop { tab-size: 4; }
+</style>
+<section class="case"><div id="size2-two-columns" class="grid">XX	XX</div></section>
+<section class="case"><div id="size2-leading" class="grid">	X</div></section>
+<section class="case"><div id="size2-exact-stop" class="grid">XXXX	X</div></section>
+<section class="case"><div id="size2-consecutive" class="grid">XX		X</div></section>
+<section class="case"><div id="size2-reset" class="grid">XX	XX
+X	X</div></section>
+<section class="case"><div id="size2-crlf-reset" class="grid">X	&#13;&#10;X	X</div></section>
+<section class="case"><div id="size2-trailing" class="grid">XX	</div></section>
+<section class="case"><div id="size2-min-content" class="grid">XX	XX</div></section>
+<section class="case"><div id="size2-fixed-overflow" class="grid">XX	XX</div></section>
+<section class="case"><div id="size1-leading" class="grid">	X</div></section>
+<section class="case"><div id="size1-exact-stop" class="grid">X	X</div></section>
+<section class="case"><div id="size4-leading" class="grid">	X</div></section>
+<section class="case"><div id="size4-exact-stop" class="grid">XXXX	X</div></section>
+<script>
+(async () => {
+  await document.fonts.ready;
+  const ids = [
+    'size2-two-columns', 'size2-leading', 'size2-exact-stop', 'size2-consecutive',
+    'size2-reset', 'size2-crlf-reset', 'size2-trailing', 'size2-min-content', 'size2-fixed-overflow',
+    'size1-leading', 'size1-exact-stop', 'size4-leading', 'size4-exact-stop'
+  ];
+  window.__spinonOracle = {
+    fontLoaded: document.fonts.check('10px Ahem'),
+    cases: ids.map(id => {
+      const element = document.getElementById(id);
+      const style = getComputedStyle(element);
+      const box = element.getBoundingClientRect();
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return {
+        id,
+        text: element.textContent,
+        tabSize: style.tabSize,
+        gridColumns: style.gridTemplateColumns,
+        gridRows: style.gridTemplateRows,
+        frame: { x: box.x, y: box.y, width: box.width, height: box.height },
+        textRects: [...range.getClientRects()].map(rect => ({
+          x: rect.x, y: rect.y, width: rect.width, height: rect.height
+        }))
+      };
+    })
+  };
+})();
+</script>
