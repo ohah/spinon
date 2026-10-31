@@ -1,0 +1,2 @@
+PASS: cargo fmt --all -- --check
+PASS: node --check tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs
