@@ -841,6 +841,16 @@ Style-to-layout adapter는 computed snapshot의 exact owner `NodeId`, typed aspe
 
 이 제한 fixture는 전체 WPT, 일반 CSS author admission, 임의 Grid tree, replaced/image/anonymous/rich text, multiline/wrapping, percentage/calc, vertical writing 또는 전체 C11.4/C11 완료를 주장하지 않는다. C11.4 및 상위 C11 checkbox는 미완료이며 공식 완료 `72/213`을 유지한다.
 
+## C11.4 direct text definite-axis preferred aspect-ratio transfer · 제한 opt-in fixture 구현
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 구현 PR [#878](https://github.com/ohah/spinon/pull/878)은 2026-10-30T21:47:44Z Rebase and merge됐고 merge SHA는 `b1b7356e2e2afe397c2d41ebf111863a7f25ccd9`다. 이 profile은 `c04-runtime-gpu-fixture-test` opt-in `RuntimeBlockFlexGridTrackSizingV1` route의 HTML block direct-text Grid item `AAAA`에 한정한다. Root는 width 100px, height auto, `max-content max-content` columns, `auto` rows, 0 gap이며 direct-text item `A`와 `AAAA`는 Ahem 10px/10px, nowrap, LTR, horizontal-tb 및 zero box edges를 사용한다.
+
+정확히 네 장면만 허용한다. Numeric typed preferred ratio와 computed `aspect-ratio:2 / 1`을 가진 `AAAA` item은 `(width:60px,height:auto)` 또는 `(width:auto,height:30px)`이어야 한다. 대응 control은 typed ratio가 없고 computed 값이 정확히 `auto`여야 한다. Ratio 장면은 item frame 60×30px, control은 definite width에서 60×10px·definite height에서 40×30px를 만든다. Width pair의 root columns는 [10,60]px, rows는 ratio [30]px/control [10]px이고 height pair는 columns ratio [10,60]px/control [10,40]px, 두 rows 모두 [30]px다. 모든 장면의 `AAAA` text Range는 40×10px다. Validator는 computed serialization·typed ratio·실제 owner NodeId·revision, columns/rows trace, item frame과 text Range를 함께 확인한다.
+
+불일치 root/style, 다른 ratio·dimension, both-definite, min/max, percentage/calc, nonzero box edges, wrong/multiple owner, anonymous/nested/replaced/extra text, alternate font/wrapping/writing mode 및 stale/missing input은 fail-closed한다. 일반 author CSS admission, public API/FFI, 임의 Grid tree, WPT나 전체 aspect-ratio 지원으로 확장하지 않는다. 상세 입력표와 실행 재현 절차는 [계획](../../plan/c11-4-direct-text-aspect-ratio-definite-axis.md)에 둔다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 51개와 신규 네 scene을 각 55/55 통과했다. 전체 PixelCopy·제출 전 Metal drawable 표본은 각 177/177 exact이며 신규 장면은 각 12/12다. Swift validator의 one-item multispan 인덱스 오류 수정 후 iOS matrix 전체를 다시 실행했다. Android AVD는 software renderer이고 iOS 표본은 OS compositor 제출 전이다. PR check rollup은 비어 있어 CI 통과로 주장하지 않는다. [Chrome 사전 비교](evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/README.md) · [runtime·screenshots·archive·한계](evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/README.md). C11.4/C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다.
+
 ## C11.4 anonymous Grid text `white-space:pre-line` · 제한 opt-in fixture 후보
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. 이 확장은 기존 `c04-runtime-gpu-fixture-test` 앱 경로와 `c11-4-grid-track-sizing-fixture-test` layout/runtime gate 아래의 anonymous Grid text 고정 장면 두 개만 허용한다. 일반 author CSS admission, 사용자 API/ABI, 전체 C11.4 지원을 추가하지 않는다. 기준 동작은 [Chrome 156 사전 비교](evidence/c11-4-anonymous-text-pre-line-precomparison-2026-10-31/README.md), 범위 계획은 [pre-line 계획](../../plan/c11-4-anonymous-grid-text-pre-line.md)을 따른다.

@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio definite-axis transfer
 
-**상태:** 계획 검토 완료, 제한 fixture 구현 후보 확인. 이 slice는 C11.4 또는 C11 전체 완료를 뜻하지 않으며 공식 `72/213`을 올리지 않는다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 51개와 신규 네 장면을 각 55/55 통과했다. [구현·실행 근거](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/README.md)
+**상태:** 제한 opt-in fixture 구현 완료. 구현 PR [#878](https://github.com/ohah/spinon/pull/878)은 2026-10-30T21:47:44Z Rebase and merge됐고 merge SHA는 `b1b7356e2e2afe397c2d41ebf111863a7f25ccd9`다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 51개와 신규 네 장면을 각 55/55 통과했다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. 이 slice는 C11.4 또는 C11 전체 완료를 뜻하지 않으며 공식 `72/213`을 올리지 않는다. [구현·실행 근거](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/README.md) · [병합 후 문서 검토 30개](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-post-merge-2026-11-01/post-merge-doc-review-30.md)
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [finite-positive ratio](./c11-4-direct-text-aspect-ratio-finite.md) · [`auto <ratio>` sizing basis](./c11-4-direct-text-aspect-ratio-auto.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md)
 
@@ -42,8 +42,8 @@
 3. 네 신규 scene의 computed snapshot, ratio owner, columns/rows, root/item frame, overflow, text Range 및 revision을 검증한다. Negative controls는 wrong/multiple ratio owner, ratio mismatch/degenerate/non-finite, both-definite/other dimensions, min/max, percentage/calc, nonzero edges, wrong root track/gap/alignment/font/writing mode, anonymous/nested/replaced/extra text item, stale style revision, missing paragraph owner, allocation/layout failure를 다룬다.
 4. 기존 finite ratio·`auto <ratio>`·min/max·multispan matrix와 intrinsic/no-ratio fixtures를 영향 범위에 따라 재실행한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 신규 및 회귀 matrix를 확인하고, track/frame trace와 Android PixelCopy 및 iOS compositor 제출 전 Metal sample을 각각 기록한다. Screenshot은 가능한 경우 PR 본문에 올린다. Simulator 근거를 실기기·hardware GPU·compositor 이후 화면이라고 부르지 않는다.
 5. fixture-test opt-in route에 대해 default/product archive absence 및 fixture positive-control presence를 확인한다. Focused Rust/layout/runtime checks, 관련 crate Clippy, `cargo fmt --all -- --check`와 두 simulator build를 기록한다. 실행하지 않은 gate는 통과로 쓰지 않는다.
-6. 내부 계약 0059에 이 제한 profile, 실패 동작과 제외 범위를 추가할 필요가 있는지 구현 결과를 대조한다. 인터페이스/API 의미가 바뀌지 않는다면 계약 숫자 `0.1.0`을 유지한다. 공식 `spec/STATUS.md` checkbox와 `72/213`은 변경하지 않는다.
-7. 구현/runtime 동작을 새 실패 관점 20개로, 해당 구현 PR diff를 독립된 20 관점으로 검토한다. 계획 검토와 같은 항목을 재사용하거나 완료로 합산하지 않는다. 계획 PR 및 구현 PR은 사용자의 20 관점 요구에 맞춰 각각 별도 diff 검토 20개를 남긴다.
+6. 구현 결과에 맞춰 내부 계약 0059에 제한 profile·오류 경계·제외 범위를 기록했다. 공개 API나 내부 인터페이스 의미는 바뀌지 않아 계약 숫자 `0.1.0`을 유지한다. 공식 `spec/STATUS.md` checkbox와 `72/213`은 미완료 상태로 유지한다.
+7. 구현/runtime 실패 관점 20개와 구현 PR #878 diff 실패 관점 30개를 별도로 검토했다. 병합 후 상태 동기화는 이 계획과 구별되는 30개 문서 diff 검토를 추가로 기록한다.
 
 ## 제외 범위
 
