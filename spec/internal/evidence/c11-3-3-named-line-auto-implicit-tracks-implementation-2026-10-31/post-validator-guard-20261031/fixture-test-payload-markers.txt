@@ -1,0 +1,6 @@
+fit-content-area-caprevision-reuseunknown-area-fixed-implicit-tracksnamed-line-auto-columns(() => {
+return { sceneId:'named-line-auto-columns', rootId:'auto-columns-grid', nodeIds:['auto-columns-grid','auto-columns-item'] };
+})()named-line-fixed-columns-control(() => {
+return { sceneId:'named-line-fixed-columns-control', rootId:'auto-columns-grid', nodeIds:['auto-columns-grid','auto-columns-item'] };
+})()named-line-auto-rows(() => {
+return { sceneId:'named-line-auto-rows', rootId:'auto-rows-grid', nodeIds:['auto-rows-grid','auto-rows-item'] };

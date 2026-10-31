@@ -2246,7 +2246,7 @@ test('C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulat
   assert.match(ffi,
     /#\[path = "anonymous_text_items\/computed_font_size\.rs"\]\s*mod computed_font_size;/);
   assert.match(runtime,
-    /validate_computed_font_size\(grid_style, scene_id\)[\s\S]*anonymous_paragraph_style\(scene_id, tab_size, line_height, font_size, letter_spacing\)/);
+    /validate_computed_font_size\(grid_style, scene_id\)[\s\S]*anonymous_paragraph_style\(\s*scene_id,\s*tab_size,\s*line_height,\s*font_size,\s*letter_spacing,\s*word_spacing,?\s*\)/);
   assert.ok(validation.includes('style.font_size_css_px'));
   assert.ok(capture.includes("target: 'Android API 37 ARM64 AVD'"));
   assert.ok(capture.includes("target: 'iPhone 17 Pro / iOS 26.2 Simulator'"));

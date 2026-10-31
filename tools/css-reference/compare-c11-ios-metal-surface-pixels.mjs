@@ -67,11 +67,15 @@ export function validateC11IOSChromeOracle({ fixture, referenceBytes, screenshot
   const image = decodeRgbaPng(screenshotBytes);
   assert.equal(image.width, fixture.oracle.viewportCssPx.width, 'Chrome PNG 너비가 viewport와 다릅니다.');
   assert.equal(image.height, fixture.oracle.viewportCssPx.height, 'Chrome PNG 높이가 viewport와 다릅니다.');
-  for (const sample of fixture.samples) {
+  for (const sample of fixture.oracle.samples ?? fixture.samples) {
     assert.deepEqual(image.getPixel(sample.xCssPx, sample.yCssPx), sample.rgba,
       `${sample.id}: fixture 색이 고정 Chrome PNG와 다릅니다.`);
   }
-  return { referenceId: reference.referenceId, screenshot: [image.width, image.height], sampleCount: fixture.samples.length };
+  return {
+    referenceId: reference.referenceId,
+    screenshot: [image.width, image.height],
+    sampleCount: (fixture.oracle.samples ?? fixture.samples).length,
+  };
 }
 
 export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix = 'C111' }) {

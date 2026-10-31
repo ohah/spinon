@@ -1,6 +1,8 @@
 use spinon_core::NodeId;
-use spinon_layout::{GridContainerInput, GridItemInput, GridPlacementMode};
-use spinon_style::{ComputedCssGridItemPlacement, ComputedCssGridTemplateAreas};
+use spinon_layout::{GridContainerInput, GridItemInput, GridPlacementInput, GridPlacementMode};
+use spinon_style::{
+    ComputedCssGridItemPlacement, ComputedCssGridPlacement, ComputedCssGridTemplateAreas,
+};
 
 use crate::StyleLayoutError;
 
@@ -29,6 +31,7 @@ pub(super) fn project_grid_item_placement(
                 named_line::ImplicitNamedLineUsage {
                     uses_implicit_tracks: used_implicit_tracks,
                     requires_signed_extent: false,
+                    allows_positive_auto_track_sizing: false,
                 },
             )
         }
@@ -66,6 +69,7 @@ pub(super) fn project_grid_item_placement(
                     named_line::ImplicitNamedLineUsage {
                         uses_implicit_tracks: used_implicit_tracks,
                         requires_signed_extent: false,
+                        allows_positive_auto_track_sizing: false,
                     },
                 )
             }
@@ -87,11 +91,29 @@ pub(super) fn project_grid_item_placement(
                 allow_implicit_named_lines,
             )?,
         };
+    let allows_positive_auto_track_sizing = template_areas.is_none()
+        && match (
+            row_implicit_usage.uses_implicit_tracks,
+            column_implicit_usage.uses_implicit_tracks,
+        ) {
+            (true, false) => {
+                has_trailing_named_start_and_auto_end(&placement.row_start, &placement.row_end)
+                    && is_definite_axis(&column_start, &column_end)
+            }
+            (false, true) => {
+                has_trailing_named_start_and_auto_end(
+                    &placement.column_start,
+                    &placement.column_end,
+                ) && is_definite_axis(&row_start, &row_end)
+            }
+            _ => false,
+        };
     let usage = named_line::ImplicitNamedLineUsage {
         uses_implicit_tracks: row_implicit_usage.uses_implicit_tracks
             || column_implicit_usage.uses_implicit_tracks,
         requires_signed_extent: row_implicit_usage.requires_signed_extent
             || column_implicit_usage.requires_signed_extent,
+        allows_positive_auto_track_sizing,
     };
     let result = GridItemInput {
         row_start,
@@ -111,6 +133,29 @@ pub(super) fn project_grid_item_placement(
     } else {
         Ok((Some(result), usage))
     }
+}
+
+fn has_trailing_named_start_and_auto_end(
+    start: &ComputedCssGridPlacement,
+    end: &ComputedCssGridPlacement,
+) -> bool {
+    matches!(
+        (start, end),
+        (
+            ComputedCssGridPlacement::NamedLine { .. },
+            ComputedCssGridPlacement::Auto
+        )
+    )
+}
+
+fn is_definite_axis(start: &GridPlacementInput, end: &GridPlacementInput) -> bool {
+    matches!(
+        (start, end),
+        (
+            GridPlacementInput::Line(_),
+            GridPlacementInput::Line(_) | GridPlacementInput::Auto
+        )
+    )
 }
 
 #[cfg(test)]

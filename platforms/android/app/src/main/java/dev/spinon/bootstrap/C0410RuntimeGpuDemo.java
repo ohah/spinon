@@ -135,6 +135,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "backward-span-partial-explicit", "forward-span-two",
             "backward-span-uses-authored-name",
     };
+    private static final String[] C1133_NAMED_LINE_AUTO_SCENE_IDS = {
+            "named-line-auto-columns", "named-line-fixed-columns-control", "named-line-auto-rows",
+    };
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
     private static final String[] C114_GENERIC_DIRECT_TEXT_SCENE_IDS = {
@@ -1475,6 +1478,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
+        for (String candidate : C1133_NAMED_LINE_AUTO_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
         return "revision-reuse".equals(sceneId) || "fit-content-area-cap".equals(sceneId);
     }
 
@@ -1503,6 +1509,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "backward-span-uses-authored-name": return 50;
             default: return -1;
         }
+    }
+
+    private static String c1133NamedLineAutoItemId(String sceneId) {
+        switch (sceneId) {
+            case "named-line-auto-columns":
+            case "named-line-fixed-columns-control": return "auto-columns-item";
+            case "named-line-auto-rows": return "auto-rows-item";
+            default: return null;
+        }
+    }
+
+    private static int c1133NamedLineAutoSampleX(String sceneId) {
+        return "named-line-fixed-columns-control".equals(sceneId) ? 115
+                : "named-line-auto-columns".equals(sceneId) ? 85
+                : "named-line-auto-rows".equals(sceneId) ? 5 : -1;
+    }
+
+    private static int c1133NamedLineAutoSampleY(String sceneId) {
+        return "named-line-auto-rows".equals(sceneId) ? 22 : 5;
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
         if (c114IsComputedWordSpacingScene(sceneId)) {
@@ -15401,6 +15426,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && sample.xCssPx == c1133LeadingNamedLineItemSampleX(sceneId)
                     && sample.yCssPx == 10;
         }
+        String namedLineAutoItemId = c1133NamedLineAutoItemId(sceneId);
+        if (namedLineAutoItemId != null) {
+            if (samples.size() != 1) return false;
+            SurfaceViewPixelCapture.Sample sample = samples.get(0);
+            return "named-auto-item".equals(sample.id)
+                    && namedLineAutoItemId.equals(sample.targetNodeId)
+                    && sample.xCssPx == c1133NamedLineAutoSampleX(sceneId)
+                    && sample.yCssPx == c1133NamedLineAutoSampleY(sceneId);
+        }
         if (!"unknown-area-fixed-implicit-tracks".equals(sceneId) || samples.size() != 3) {
             return false;
         }
@@ -16560,7 +16594,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c1133TrackListCyclePixelSamples(pixelMatrixSceneId) != null
                         || c1133TypedAutoTrackPixelSamples(pixelMatrixSceneId) != null
                         || c1133FitContentAreaCapPixelSamples(pixelMatrixSceneId) != null
-                        || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null)
+                        || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null
+                        || c1133NamedLineAutoItemId(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
                         && C1131_GRID_REPEAT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -20831,6 +20866,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "exceed-top":
                 case "known":
                 case "unknown-area-overflow":
+                case "named-auto-item":
                 case "fixed-area":
                     return new int[] {229, 72, 77};
                 case "footer":

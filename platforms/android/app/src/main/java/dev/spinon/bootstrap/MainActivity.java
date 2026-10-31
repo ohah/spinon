@@ -92,6 +92,9 @@ public final class MainActivity extends Activity {
             "backward-span-partial-explicit", "forward-span-two",
             "backward-span-uses-authored-name",
     };
+    private static final String[] C1133_NAMED_LINE_AUTO_SCENE_IDS = {
+            "named-line-auto-columns", "named-line-fixed-columns-control", "named-line-auto-rows",
+    };
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
     private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";
     private static final String C0412_ROOT_HTML_ASSET = "c04-12-root-html-asset.html";
@@ -130,6 +133,9 @@ public final class MainActivity extends Activity {
     private static boolean isC1133GridTemplateAreasScene(String sceneId) {
         if (sceneId == null) return false;
         for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
+        for (String candidate : C1133_NAMED_LINE_AUTO_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
         return "revision-reuse".equals(sceneId) || "fit-content-area-cap".equals(sceneId);

@@ -599,6 +599,108 @@ fn implicit_track_profile_requires_fixed_tracks_and_definite_item_placement() {
         })) if node == auto_track.root.id()
     ));
 
+    let auto_sized_named_item = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",
+        &[(
+            "implicit",
+            "width:auto;height:auto;grid-row:1;grid-column-start:missing-column;margin:0;padding:0;border:0",
+        )],
+    );
+    assert!(matches!(
+        auto_sized_named_item.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            ..
+        })) if node == auto_sized_named_item.root.id()
+    ));
+
+    let mixed_eligible_and_ineligible = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",
+        &[
+            (
+                "eligible-column",
+                "width:10px;height:10px;grid-row:1;grid-column-start:missing-column;margin:0;padding:0;border:0",
+            ),
+            (
+                "ineligible-row",
+                "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    assert!(matches!(
+        mixed_eligible_and_ineligible.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoRows {
+            node,
+            ..
+        })) if node == mixed_eligible_and_ineligible.root.id()
+    ));
+
+    let ineligible_before_eligible = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",
+        &[
+            (
+                "ineligible-row",
+                "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
+            ),
+            (
+                "eligible-column",
+                "width:10px;height:10px;grid-row:1;grid-column-start:missing-column;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    assert!(matches!(
+        ineligible_before_eligible.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoRows {
+            node,
+            ..
+        })) if node == ineligible_before_eligible.root.id()
+    ));
+
+    let positive_but_ineligible_before_eligible = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",
+        &[
+            (
+                "ineligible-end-line",
+                "width:10px;height:10px;grid-row:1;grid-column-start:1;grid-column-end:missing-column;margin:0;padding:0;border:0",
+            ),
+            (
+                "eligible-start-line",
+                "width:10px;height:10px;grid-row:1;grid-column-start:missing-column;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    assert!(matches!(
+        positive_but_ineligible_before_eligible.compute_with_implicit_named_lines(true),
+        Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            ..
+        })) if node == positive_but_ineligible_before_eligible.root.id()
+    ));
+
+    let auto_sized_named_sibling = Fixture::new(
+        "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",
+        &[
+            (
+                "eligible-column",
+                "width:10px;height:10px;grid-row:1;grid-column-start:missing-column;margin:0;padding:0;border:0",
+            ),
+            (
+                "auto-sized-named-item",
+                "width:auto;height:auto;grid-row:1;grid-column-start:missing-column;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    let auto_sized_sibling_result =
+        auto_sized_named_sibling.compute_with_implicit_named_lines(true);
+    assert!(
+        matches!(
+            &auto_sized_sibling_result,
+            Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoColumns { node, .. }))
+                if *node == auto_sized_named_sibling.root.id()
+        ),
+        "unexpected auto-size sibling result: {auto_sized_sibling_result:?}"
+    );
+
     let auto_item = Fixture::new(
         "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:10px;margin:0;padding:0;border:0",
         &[
@@ -666,3 +768,6 @@ fn existing_template_wrapper_still_rejects_unknown_bare_names() {
     ));
     assert!(fixture.compute_with_implicit_named_lines(true).is_ok());
 }
+
+#[path = "c11_3_3_grid_template_areas_tests/named_line_auto.rs"]
+mod named_line_auto;

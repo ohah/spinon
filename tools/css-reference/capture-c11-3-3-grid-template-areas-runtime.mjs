@@ -17,14 +17,19 @@ import {
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const fitContentAreaCapMode = process.argv.includes('--fit-content-area-cap');
-const positionalArgs = process.argv.slice(2).filter((argument) => argument !== '--fit-content-area-cap');
-const fixturePath = fitContentAreaCapMode
+const fixtureOverride = process.argv.find((argument) => argument.startsWith('--fixture='))
+  ?.slice('--fixture='.length);
+const positionalArgs = process.argv.slice(2).filter((argument) =>
+  argument !== '--fit-content-area-cap' && !argument.startsWith('--fixture='));
+const fixturePath = fixtureOverride ?? (fitContentAreaCapMode
   ? 'tests/fixtures/css/c11/grid-template-area-fit-content-cap-mobile-v1.json'
-  : 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
+  : 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json');
 const fixture = JSON.parse(await readFile(resolve(repositoryRoot, fixturePath), 'utf8'));
 const target = positionalArgs[0];
+const namedLineAutoRuntimeMode = fixture.schema
+  === 'spinon-css-c11-3-3-named-line-auto-implicit-tracks-mobile-pixels/v1';
 assert.ok(['android-avd', 'android-physical', 'ios-simulator'].includes(target),
-  '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID] [--fit-content-area-cap]');
+  '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID] [--fit-content-area-cap] [--fixture=repo-relative-path]');
 
 const packageName = 'dev.spinon.bootstrap';
 const androidComponent = `${packageName}/.MainActivity`;
@@ -384,7 +389,9 @@ const rootFrame = platform.frames[0];
 const itemFrame = platform.frames.at(-1);
 assert.ok(rootFrame && itemFrame, '성공 scene root/item frame이 없습니다.');
 const result = {
-  schema: 'spinon-c11-3-3-grid-template-areas-runtime-result/v1',
+  schema: namedLineAutoRuntimeMode
+    ? 'spinon-c11-3-3-named-line-auto-implicit-tracks-runtime-result/v1'
+    : 'spinon-c11-3-3-grid-template-areas-runtime-result/v1',
   status: 'matched', runID, target,
   fixture: { path: fixturePath, sha256: sha256(await readFile(resolve(repositoryRoot, fixturePath))) },
   oracle: {
@@ -401,7 +408,8 @@ const result = {
 };
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
 await writeFile(resolve(evidenceDirectory, 'README.md'), [
-  '# C11.3.3 Grid template area 모바일 실행', '',
+  namedLineAutoRuntimeMode
+    ? '# C11.3.3 named-line auto implicit tracks 모바일 실행' : '# C11.3.3 Grid template area 모바일 실행', '',
   `- 실행 ID: \`${runID}\``, `- 대상: \`${target}\``,
   `- Chrome 기준: ${fixture.oracle.product} · DPR ${fixture.oracle.deviceScaleFactor} · \`${fixture.sceneId}\``,
   `- runtime: 성공 scene 1개 · element frame ${platform.frames.length}개`,
@@ -422,7 +430,7 @@ await writeFile(resolve(evidenceDirectory, 'README.md'), [
   target === 'ios-simulator' ? '- `ios-screen.png`: iOS Simulator 화면' : '- `pixelcopy.png`: PixelCopy 표면 PNG',
   target === 'ios-simulator' ? '- `metal-surface-comparison.json`: Metal 표본 비교' : '- `android-screen.png`: Android 화면',
   '- `result.json`: fixture·oracle·앱 hash와 실행 결과', '',
-].join('\n') + '\n');
+].join('\n').trimEnd() + '\n');
 process.stdout.write(`${JSON.stringify({ ...result, evidenceDirectory }, null, 2)}\n`);
 } catch (error) {
   await writeFile(resolve(evidenceDirectory, 'failure.txt'), `${error.stack ?? error}\n`);
