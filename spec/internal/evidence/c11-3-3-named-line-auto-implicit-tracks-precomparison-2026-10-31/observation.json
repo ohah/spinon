@@ -1,0 +1,54 @@
+{
+  "schema": "spinon-css-reference-observation-v1",
+  "task": "C11.3.3 positive trailing named-line implicit auto tracks",
+  "observedAt": "2026-10-31",
+  "sourceRevision": "e34da9554f50653f62096e7cc8c9ffd4afea8eca",
+  "input": {
+    "path": "tests/fixtures/css/c11/c1133-named-line-auto-implicit-tracks.html",
+    "sha256": "48390f2b7875a6df63bc8f7e4e20073f7006bfeb16deea2e412c4f3a3e807c05"
+  },
+  "environment": {
+    "engine": "HeadlessChrome/156.0.0.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": { "width": 1280, "height": 633 },
+    "devicePixelRatio": 1,
+    "driver": "Agent Browser via agent-browser CLI"
+  },
+  "scenes": [
+    {
+      "id": "columns",
+      "computedGridAutoColumns": "auto",
+      "computedGridAutoRows": "auto",
+      "computedGridTemplateColumns": "40px 40px 0px 30px",
+      "computedGridTemplateRows": "20px",
+      "rootFrameCssPx": { "x": 8, "y": 8, "width": 80, "height": 20 },
+      "itemFrameCssPx": { "x": 88, "y": 8, "width": 30, "height": 10 },
+      "itemFrameRelativeToRootCssPx": { "x": 80, "y": 0, "width": 30, "height": 10 }
+    },
+    {
+      "id": "fixed-columns",
+      "computedGridAutoColumns": "30px",
+      "computedGridAutoRows": "auto",
+      "computedGridTemplateColumns": "40px 40px 30px 30px",
+      "computedGridTemplateRows": "20px",
+      "rootFrameCssPx": { "x": 120, "y": 8, "width": 80, "height": 20 },
+      "itemFrameCssPx": { "x": 230, "y": 8, "width": 30, "height": 10 },
+      "itemFrameRelativeToRootCssPx": { "x": 110, "y": 0, "width": 30, "height": 10 }
+    },
+    {
+      "id": "rows",
+      "computedGridAutoColumns": "auto",
+      "computedGridAutoRows": "auto",
+      "computedGridTemplateColumns": "40px",
+      "computedGridTemplateRows": "20px 0px 25px",
+      "rootFrameCssPx": { "x": 8, "y": 80, "width": 40, "height": 20 },
+      "itemFrameCssPx": { "x": 8, "y": 100, "width": 20, "height": 25 },
+      "itemFrameRelativeToRootCssPx": { "x": 0, "y": 20, "width": 20, "height": 25 }
+    }
+  ],
+  "screenshot": {
+    "path": "chrome-156-agent-browser.png",
+    "sha256": "aa5d78c005f186e2fc388e7922b442d6546e3d80e3b7f008a52355337b5b8bda"
+  },
+  "interpretation": "독립 Chrome 관찰값이다. Spinon runtime 동작이나 WPT 적합성을 측정하지 않았다. row item은 20px 높이 grid container 아래로 5 CSS px 더 나오고 column item은 폭 80px container의 오른쪽 경계에서 시작해 밖으로 이어진다."
+}
