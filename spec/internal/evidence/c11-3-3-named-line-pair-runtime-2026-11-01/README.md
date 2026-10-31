@@ -30,7 +30,7 @@ Android/iOS 앱 경로는 고정된 다중 track 장면 두 개를 실행한다.
 
 Android는 ANGLE/Vulkan/SwiftShader software renderer다. iOS 픽셀은 Metal drawable에서 compositor 제출 전 수집했다. 두 결과는 실기기 GPU 또는 OS compositor 이후의 화면 근거가 아니다.
 
-최종 앱 바이너리 SHA-256은 Android `529612a1635630e755445243e85bf9f384c3e531bc5b96306e77676dc74dcdae`, iOS `92e2e14a9c42ee1fcea2650acfcf37a9b1719b79ccb0fa508b4639e9773171d6`다. 초기 Android 시도에서 scene/pixel allowlist 불일치를 발견해 수정했고, 실패 artifact는 지우지 않고 이 evidence directory에 보존했다. 최종 네 실행은 성공 scene, 좌표 거부 경로, Android scene-route 거부 경로를 각각 확인했다.
+최종 앱 바이너리 SHA-256은 Android `529612a1635630e755445243e85bf9f384c3e531bc5b96306e77676dc74dcdae`, iOS `92e2e14a9c42ee1fcea2650acfcf37a9b1719b79ccb0fa508b4639e9773171d6`다. 초기 Android 시도에서 scene/pixel allowlist 불일치를 발견해 수정했다. 중간 실행 산출물은 checkout에 보존하고 PR에는 최종 실행 근거를 포함했다. 최종 네 실행은 성공 scene과 좌표 거부 경로, Android scene-route 거부 경로를 확인했다.
 
 ## 검증
 
@@ -39,7 +39,7 @@ Android는 ANGLE/Vulkan/SwiftShader software renderer다. iOS 픽셀은 Metal dr
 - `spinon-layout` 10,000-track ceiling candidate: 정확히 10,000 track 배치는 통과하고 한도 초과 배치는 error로 끝난다. trace allocation이 cap 검증을 가리지 않도록 이 한 테스트에서는 선택적 track trace를 껐다.
 - opt-in FFI scene allowlist test: 1개 통과 ([로그](./cargo-test-ffi-pair-allowlist.log)).
 - CSS reference/runtime static suite: 17개 통과 ([로그](./bun-test-c1133.log)); fixture-module boundary: 25개 통과 ([로그](./node-test-fixture-boundary.log)).
-- `cargo fmt --all -- --check`, runtime capture module `node --check`, workspace `cargo clippy --locked --workspace --all-targets -- -D warnings`: 통과 ([서식/구문 로그](./format-and-node-check-final.log), [Clippy 로그](./cargo-clippy-workspace-final.log)).
+- `cargo fmt --all -- --check`, runtime capture module `node --check`, workspace `cargo clippy --locked --workspace --all-targets -- -D warnings`: 통과 ([서식/구문 확인](./format-and-node-check-final.log), [Clippy 로그](./cargo-clippy-workspace-final.log)).
 - `spinon-ffi` default static archive에는 새 scene marker와 C11.3.3 fixture ABI가 없고, `c11-grid-metal-surface-pixels-test` opt-in archive에는 둘 다 있다 ([기본 artifact](./default-artifact-fixture-boundary.log), [opt-in artifact](./fixture-positive-artifact-boundary.log)). 이는 static archive 검사이며 최종 APK/IPA 크기 검증으로 확대하지 않는다.
 
 구현 및 runtime 실패 관점 검토 20개는 [별도 기록](./implementation-review-20.md)에 있다. PR 실제 diff는 PR 생성 뒤 별도로 검토한다.
