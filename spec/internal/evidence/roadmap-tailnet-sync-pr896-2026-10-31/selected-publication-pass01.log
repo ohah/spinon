@@ -1,0 +1,4 @@
+Temporary publication guard failure (pass01):
+AssertionError [ERR_ASSERTION]: required route missing: internal/evidence/c11-4-tab-size-full-values-runtime-2026-10-31/post-merge-status-review-30.html
+
+The status synchronization review is named status-sync-pr-diff-review-30.md in the merged source. The guard was corrected in stage-publication-pass02.mjs. This validation stopped before publication staging was promoted and before any Tailnet write.
