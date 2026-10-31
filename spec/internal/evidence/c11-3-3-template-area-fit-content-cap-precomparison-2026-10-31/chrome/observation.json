@@ -1,0 +1,60 @@
+{
+  "source": {
+    "browser": "Google Chrome 156.0.8078.76",
+    "automation": "agent-browser 0.31.1",
+    "terminalBrowserUsed": false,
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1,
+    "fontReady": true,
+    "fontStatus": "loaded"
+  },
+  "input": {
+    "gridTemplateAreas": "fixed fit",
+    "explicitColumnsCssPx": [20],
+    "gridAutoColumns": "fit-content(40px)",
+    "gridWidthCssPx": 200,
+    "gridHeightCssPx": 60,
+    "font": "Ahem 10px/10px",
+    "text": "AA AA AA AA"
+  },
+  "observation": {
+    "root": { "x": 0, "y": 0, "width": 200, "height": 60 },
+    "item": {
+      "x": 20,
+      "y": 0,
+      "width": 40,
+      "height": 60,
+      "rootRelativeX": 20,
+      "rootRelativeY": 0
+    },
+    "minContentProbe": { "x": 0, "y": 80, "width": 20, "height": 40 },
+    "maxContentProbe": { "x": 200, "y": 80, "width": 110, "height": 10 },
+    "computedColumns": "20px 40px",
+    "computedRows": "60px",
+    "computedAutoColumns": "fit-content(40px)"
+  },
+  "screenshotSamples": [
+    { "id": "fixed-area", "pointCssPx": [10, 30], "rgba": [229, 72, 77, 255] },
+    { "id": "inside-fit-content-cap", "pointCssPx": [59, 30], "rgba": [48, 164, 108, 255] },
+    { "id": "after-fit-content-cap", "pointCssPx": [60, 30], "rgba": [16, 24, 32, 255] }
+  ],
+  "expected": {
+    "areaGeneratedColumnCssPx": 40,
+    "itemRootRelativeFrameCssPx": [20, 0, 40, 60],
+    "independentMinContentWidthCssPx": 20,
+    "independentMaxContentWidthCssPx": 110,
+    "calculation": "max(auto minimum, min(limit, max-content)) = max(20, min(40, 110)) = 40 CSS px"
+  },
+  "artifacts": {
+    "fixture": "../grid-template-area-fit-content-cap.html",
+    "screenshot": "chrome-156-agent-browser.png",
+    "fixtureSha256": "fc66b357e260db090124a3999006479352f59816331b2696b999427f36aafc6e",
+    "fontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "screenshotSha256": "dfe52f261926d2961693e3822d9bf50fcad0be89711721ad807c4a0046dd8d52"
+  },
+  "limits": [
+    "Chrome oracle only; this is not Spinon runtime evidence or WPT conformance.",
+    "One area-generated column is covered; the row axis and broader Grid sizing are not.",
+    "No Android or iOS surface capture is part of this precomparison."
+  ]
+}
