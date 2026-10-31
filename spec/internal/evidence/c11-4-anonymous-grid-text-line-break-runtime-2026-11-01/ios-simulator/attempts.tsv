@@ -1,0 +1,6 @@
+scene	attempt	run_id	result	log
+line-break-ja-normal-min-content	1	c114-computed-line-break-ios-simulator-1793480356278-210e9d6d-01-a1	passed	line-break-ja-normal-min-content.log
+line-break-ja-normal-max-content	1	c114-computed-line-break-ios-simulator-1793480356278-210e9d6d-02-a1	passed	line-break-ja-normal-max-content.log
+line-break-ja-strict-min-content	1	c114-computed-line-break-ios-simulator-1793480356278-210e9d6d-03-a1	passed	line-break-ja-strict-min-content.log
+line-break-ja-strict-max-content	1	c114-computed-line-break-ios-simulator-1793480356278-210e9d6d-04-a1	passed	line-break-ja-strict-max-content.log
+line-break-en-normal-min-content	1	c114-computed-line-break-ios-simulator-1793480356278-210e9d6d-05-a1	passed	line-break-en-normal-min-content.log

@@ -229,6 +229,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final String layoutText;
         final String whiteSpace;
         final String wordBreak;
+        final String lineBreak;
         final String fontFamily;
         final String locale;
         final double letterSpacing;
@@ -321,6 +322,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 double letterSpacing, double wordSpacing, double textIndent,
                 String fontFamily, String locale, double[] lineAdvances
         ) {
+            this(node, x, width, height, availableWidth, textWidth,
+                    paddingInline, paddingBlock, borderWidth,
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    rawText, layoutText, whiteSpace, wordBreak,
+                    letterSpacing, wordSpacing, textIndent,
+                    fontFamily, locale, "Strict", lineAdvances);
+        }
+
+        C114GenericDirectTextItemExpectation(
+                int node, double x, double width, double height,
+                double availableWidth, double textWidth,
+                double paddingInline, double paddingBlock, double borderWidth,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                String rawText, String layoutText, String whiteSpace, String wordBreak,
+                double letterSpacing, double wordSpacing, double textIndent,
+                String fontFamily, String locale, String lineBreak, double[] lineAdvances
+        ) {
             this.node = node;
             this.x = x;
             this.width = width;
@@ -338,6 +357,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             this.layoutText = layoutText;
             this.whiteSpace = whiteSpace;
             this.wordBreak = wordBreak;
+            this.lineBreak = lineBreak;
             this.fontFamily = fontFamily;
             this.locale = locale;
             this.letterSpacing = letterSpacing;
@@ -484,7 +504,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             wordBreak.minContentHeight, wordBreak.maxContentHeight,
                             wordBreak.text, wordBreak.text, "Normal", wordBreak.wordBreak,
                             0, 0, 0, wordBreak.fontFamily, wordBreak.language,
-                            wordBreak.lineAdvances);
+                            c114ComputedLineBreakMode(sceneId), wordBreak.lineAdvances);
             return new C114GenericDirectTextSceneExpectation(
                     120, wordBreak.rowHeight, new double[] {wordBreak.trackWidth}, item, null);
         }
@@ -7819,7 +7839,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && c114GenericJsonNear(style, "textIndent", expected.textIndent, 0)
                 && "HorizontalTb".equals(c114GenericJsonString(style, "writingMode"))
                 && "Mixed".equals(c114GenericJsonString(style, "textOrientation"))
-                && "Strict".equals(c114GenericJsonString(style, "lineBreak"))
+                && expected.lineBreak.equals(c114GenericJsonString(style, "lineBreak"))
                 && "Normal".equals(c114GenericJsonString(style, "ligatures"));
     }
 
@@ -12688,9 +12708,29 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "word-break-keep-all-hangul-max-content":
                 return new C114ComputedWordBreakScene("가나다라", "ko", "Noto Sans KR", "KeepAll",
                         36.8, 36.8, 10, 10, false, new double[] {36.8});
+            case "line-break-ja-normal-min-content":
+                return new C114ComputedWordBreakScene("文〜文", "ja", "Noto Sans KR", "Normal",
+                        10, 30, 30, 10, true, new double[] {10, 10, 10});
+            case "line-break-ja-normal-max-content":
+                return new C114ComputedWordBreakScene("文〜文", "ja", "Noto Sans KR", "Normal",
+                        10, 30, 30, 10, false, new double[] {30});
+            case "line-break-ja-strict-min-content":
+                return new C114ComputedWordBreakScene("文〜文", "ja", "Noto Sans KR", "Normal",
+                        20, 30, 20, 10, true, new double[] {20, 10});
+            case "line-break-ja-strict-max-content":
+                return new C114ComputedWordBreakScene("文〜文", "ja", "Noto Sans KR", "Normal",
+                        20, 30, 20, 10, false, new double[] {30});
+            case "line-break-en-normal-min-content":
+                return new C114ComputedWordBreakScene("文〜文", "en", "Noto Sans KR", "Normal",
+                        20, 30, 20, 10, true, new double[] {20, 10});
             default:
                 return null;
         }
+    }
+
+    private static String c114ComputedLineBreakMode(String sceneId) {
+        if (sceneId == null || !sceneId.startsWith("line-break-")) return "Strict";
+        return sceneId.contains("-normal-") ? "Normal" : "Strict";
     }
 
     // [word spacing px, min-content px, max-content px, track width px, row height px, line count, min-content row height]

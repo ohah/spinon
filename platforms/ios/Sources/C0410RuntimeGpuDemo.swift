@@ -263,6 +263,7 @@ private struct C114GenericDirectTextItemExpectation {
     let layoutText: String
     let whiteSpace: String
     let wordBreak: String
+    let lineBreak: String
     let fontFamily: String
     let locale: String?
     let letterSpacing: Double
@@ -402,7 +403,7 @@ private func c114GenericTextItem(
     availableWidth: Double? = nil, textWidth: Double? = nil,
     paddingInline: Double = 0, paddingBlock: Double = 0, borderWidth: Double = 0,
     letterSpacing: Double = 0, wordSpacing: Double = 0, textIndent: Double = 0,
-    fontFamily: String = "Ahem", locale: String? = nil,
+    fontFamily: String = "Ahem", locale: String? = nil, lineBreak: String = "Strict",
     lineAdvances: [Double]
 ) -> C114GenericDirectTextItemExpectation {
     C114GenericDirectTextItemExpectation(
@@ -412,7 +413,7 @@ private func c114GenericTextItem(
         minContent: minContent, maxContent: maxContent,
         minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
         rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
-        wordBreak: wordBreak, fontFamily: fontFamily, locale: locale,
+        wordBreak: wordBreak, lineBreak: lineBreak, fontFamily: fontFamily, locale: locale,
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing, textIndent: textIndent, lineAdvances: lineAdvances
     )
@@ -464,6 +465,7 @@ private func c114GenericDirectTextExpectation(
             rawText: wordBreak.text, layoutText: wordBreak.text,
             whiteSpace: "Normal", wordBreak: wordBreak.wordBreak,
             fontFamily: wordBreak.fontFamily, locale: wordBreak.language,
+            lineBreak: c114ComputedLineBreakMode(sceneID) ?? "Strict",
             lineAdvances: wordBreak.lineAdvances
         )
         return C114GenericDirectTextSceneExpectation(
@@ -7086,7 +7088,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONNear(style["textIndent"], expected: expected.textIndent, tolerance: 0),
               c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
               c114GenericJSONString(style["textOrientation"]) == "Mixed",
-              c114GenericJSONString(style["lineBreak"]) == "Strict",
+              c114GenericJSONString(style["lineBreak"]) == expected.lineBreak,
               c114GenericJSONString(style["ligatures"]) == "Normal",
               let lines = layout["lines"] as? [[String: Any]],
               lines.count == expected.lineAdvances.count else { return false }
@@ -10690,12 +10692,32 @@ private func c114ComputedWordBreakScene(
     case "word-break-keep-all-hangul-max-content":
         return ("가나다라", "ko", "Noto Sans KR", "KeepAll", 36.8, 36.8, 10, 10,
             36.8, 10, [36.8])
+    case "line-break-ja-normal-min-content":
+        return ("文〜文", "ja", "Noto Sans KR", "Normal", 10, 30, 30, 10,
+            10, 30, [10, 10, 10])
+    case "line-break-ja-normal-max-content":
+        return ("文〜文", "ja", "Noto Sans KR", "Normal", 10, 30, 30, 10,
+            30, 10, [30])
+    case "line-break-ja-strict-min-content":
+        return ("文〜文", "ja", "Noto Sans KR", "Normal", 20, 30, 20, 10,
+            20, 20, [20, 10])
+    case "line-break-ja-strict-max-content":
+        return ("文〜文", "ja", "Noto Sans KR", "Normal", 20, 30, 20, 10,
+            30, 10, [30])
+    case "line-break-en-normal-min-content":
+        return ("文〜文", "en", "Noto Sans KR", "Normal", 20, 30, 20, 10,
+            20, 20, [20, 10])
     default:
         return nil
     }
     #else
     return nil
     #endif
+}
+
+private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
+    guard sceneID.hasPrefix("line-break-") else { return nil }
+    return sceneID.contains("-normal-") ? "Normal" : "Strict"
 }
 
 private func c114ComputedWordSpacingScene(

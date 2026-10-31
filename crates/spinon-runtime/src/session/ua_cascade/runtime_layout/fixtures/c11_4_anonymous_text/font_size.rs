@@ -76,6 +76,7 @@ fn expected_font_size(scene_id: &str) -> Option<f32> {
             || super::LETTER_SPACING_SCENE_IDS.contains(&scene_id)
             || super::WORD_SPACING_SCENE_IDS.contains(&scene_id)
             || super::TEXT_INDENT_SCENE_IDS.contains(&scene_id)
+            || super::line_break_scene(scene_id).is_some()
             || super::full_tab_scene(scene_id).is_some() =>
         {
             Some(10.0)
