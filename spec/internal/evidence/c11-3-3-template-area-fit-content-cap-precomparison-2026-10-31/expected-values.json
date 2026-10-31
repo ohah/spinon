@@ -1,0 +1,33 @@
+{
+  "input": {
+    "font": "Ahem 10px/10px",
+    "text": "AA AA AA AA",
+    "explicitColumns": [20],
+    "gridTemplateAreas": "fixed fit",
+    "gridAutoColumns": "fit-content(40px)",
+    "root": [200, 60],
+    "gap": 0,
+    "alignment": "start"
+  },
+  "independentIntrinsicValues": {
+    "minContentWidth": 20,
+    "maxContentWidth": 110
+  },
+  "expected": {
+    "generatedAreaColumn": 40,
+    "columns": [20, 40],
+    "rootFrame": [0, 0, 200, 60],
+    "itemFrameRootRelative": [20, 0, 40, 60],
+    "screenshotSamplesRgba": {
+      "fixedAreaAt10x30": [229, 72, 77, 255],
+      "fitAreaAt59x30": [48, 164, 108, 255],
+      "afterCapAt60x30": [16, 24, 32, 255]
+    }
+  },
+  "calculation": "Each Ahem letter and space advances 10px. The longest unbreakable word has two letters (20px) and the one-line text is 4*20px + 3*10px = 110px. CSS Grid fit-content() uses max(auto minimum, min(limit, max-content)); with a 40px limit and a 20px minimum, the generated column is 40px.",
+  "limits": [
+    "Chrome oracle only; not Spinon runtime or WPT conformance.",
+    "Tests one area-generated column axis only.",
+    "No Android or iOS surface capture in this precomparison."
+  ]
+}

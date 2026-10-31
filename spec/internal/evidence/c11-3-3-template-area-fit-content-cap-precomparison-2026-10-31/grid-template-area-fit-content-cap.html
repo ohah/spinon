@@ -1,0 +1,82 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.3.3 area-backed fit-content cap precomparison</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 10px/10px Ahem, sans-serif; }
+  .grid {
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .fit-grid {
+    width: 200px;
+    height: 60px;
+    grid-template-columns: 20px;
+    grid-template-rows: 60px;
+    grid-template-areas: "fixed fit";
+    grid-auto-columns: fit-content(40px);
+    background: #101820;
+  }
+  .item { margin: 0; padding: 0; border: 0; }
+  #fixed-area { grid-area: fixed; background: #e5484d; }
+  #fit-content-item { grid-area: fit; background: #30a46c; }
+  .probe {
+    position: absolute;
+    top: 80px;
+    visibility: hidden;
+    font: 10px/10px Ahem, sans-serif;
+    white-space: normal;
+  }
+  #min-probe { left: 0; width: min-content; }
+  #max-probe { left: 200px; width: max-content; }
+</style>
+
+<div id="fit-content-area-cap" data-scene="fit-content-area-cap" data-node class="grid fit-grid">
+  <div id="fixed-area" data-node class="item" style="width:20px;height:60px"></div>
+  <div id="fit-content-item" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="min-probe" class="probe">AA AA AA AA</div>
+<div id="max-probe" class="probe">AA AA AA AA</div>
+
+<pre id="result"></pre>
+<script>
+  const observe = () => {
+    const grid = document.querySelector("#fit-content-area-cap");
+    const item = document.querySelector("#fit-content-item");
+    const root = grid.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+    const rect = (element) => {
+      const value = element.getBoundingClientRect();
+      return { x: value.x, y: value.y, width: value.width, height: value.height };
+    };
+    return {
+      fontReady: document.fonts.check("10px Ahem"),
+      fontStatus: document.fonts.status,
+      viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+      root: rect(grid),
+      item: { ...rect(item), rootRelativeX: itemRect.x - root.x, rootRelativeY: itemRect.y - root.y },
+      minContentProbe: rect(document.querySelector("#min-probe")),
+      maxContentProbe: rect(document.querySelector("#max-probe")),
+      computedColumns: getComputedStyle(grid).gridTemplateColumns,
+      computedRows: getComputedStyle(grid).gridTemplateRows,
+      computedAutoColumns: getComputedStyle(grid).gridAutoColumns,
+    };
+  };
+  window.fitContentAreaCapObservation = null;
+  document.fonts.ready.then(() => {
+    window.fitContentAreaCapObservation = observe();
+    document.querySelector("#result").textContent = JSON.stringify(window.fitContentAreaCapObservation, null, 2);
+  });
+</script>
