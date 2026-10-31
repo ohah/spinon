@@ -1,0 +1,68 @@
+{
+  "schema": "spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1",
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-both-implicit-named-line-pairs-2026-11-01",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-positive-named-line-pairs-reference-v1.json",
+    "referenceSha256": "049247f72ee6f53522fdb2b3096741ce1ed4942e568e5739aaba9013252f5d07",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": {
+      "width": 720,
+      "height": 400
+    },
+    "screenshotPath": "spec/internal/evidence/c11-3-3-both-implicit-named-lines-precomparison-2026-11-01/chrome-156.png",
+    "screenshotSha256": "5c6fddcb06a2eb20069abd135bd0d59d33d0351a7f911986a6988ba35cd784e1",
+    "samples": [
+      {
+        "id": "pair-columns-red",
+        "nodeId": "columns-multi-track-item",
+        "xCssPx": 653,
+        "yCssPx": 13,
+        "rgba": [
+          229,
+          72,
+          77,
+          255
+        ]
+      }
+    ]
+  },
+  "sceneId": "named-line-pair-columns-multi-track",
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactor": 1,
+    "expectedNodeCount": 2,
+    "expectedFrames": [
+      [
+        0,
+        0,
+        80,
+        20
+      ],
+      [
+        80,
+        0,
+        30,
+        10
+      ]
+    ]
+  },
+  "samples": [
+    {
+      "id": "pair-columns-red",
+      "nodeId": "named-pair-columns-item",
+      "xCssPx": 85,
+      "yCssPx": 5,
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    }
+  ]
+}

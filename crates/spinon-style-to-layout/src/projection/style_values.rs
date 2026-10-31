@@ -938,6 +938,8 @@ pub(super) fn project_styles(
             });
             let allows_positive_named_line_auto_tracks =
                 implicit_usage.allows_positive_auto_track_sizing && fixed_size_item;
+            let allows_positive_named_line_pair_auto_tracks =
+                implicit_usage.allows_positive_named_line_pair_auto_track_sizing && fixed_size_item;
             if implicit_usage.requires_signed_extent {
                 let container = grid_containers
                     .get_mut(&owner)
@@ -951,13 +953,28 @@ pub(super) fn project_styles(
                 use spinon_layout::GridPlacementMode;
                 match container.placement_mode {
                     GridPlacementMode::TemplateGridSignedImplicitTracks => {}
+                    GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
+                        if !allows_positive_named_line_pair_auto_tracks =>
+                    {
+                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+                    }
+                    GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks => {}
                     GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                         if !allows_positive_named_line_auto_tracks =>
                     {
                         container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
                     }
                     GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
-                    | GridPlacementMode::TemplateGridImplicitTracks => {}
+                        if allows_positive_named_line_pair_auto_tracks =>
+                    {
+                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+                    }
+                    GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {}
+                    GridPlacementMode::TemplateGridImplicitTracks => {}
+                    _ if allows_positive_named_line_pair_auto_tracks => {
+                        container.placement_mode =
+                            GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks;
+                    }
                     _ if allows_positive_named_line_auto_tracks => {
                         container.placement_mode =
                             GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks;

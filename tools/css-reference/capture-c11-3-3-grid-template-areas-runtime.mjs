@@ -28,6 +28,8 @@ const fixture = JSON.parse(await readFile(resolve(repositoryRoot, fixturePath), 
 const target = positionalArgs[0];
 const namedLineAutoRuntimeMode = fixture.schema
   === 'spinon-css-c11-3-3-named-line-auto-implicit-tracks-mobile-pixels/v1';
+const namedLinePairRuntimeMode = fixture.schema
+  === 'spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1';
 assert.ok(['android-avd', 'android-physical', 'ios-simulator'].includes(target),
   '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID] [--fit-content-area-cap] [--fixture=repo-relative-path]');
 
@@ -41,9 +43,11 @@ const serialOrUDID = positionalArgs[1]
 const runID = `${fitContentAreaCapMode ? 'c1133-fitcap' : 'c1133'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/${fitContentAreaCapMode
-    ? `c11-3-3-template-area-fit-content-cap-runtime-${date}`
-    : `c11-3-3-grid-template-areas-runtime-${date}`}`, `${target}-${runID}`);
+  `spec/internal/evidence/${namedLinePairRuntimeMode
+    ? `c11-3-3-named-line-pair-runtime-${date}`
+    : fitContentAreaCapMode
+      ? `c11-3-3-template-area-fit-content-cap-runtime-${date}`
+      : `c11-3-3-grid-template-areas-runtime-${date}`}`, `${target}-${runID}`);
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosAppPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
@@ -72,7 +76,7 @@ function samplePayload(encoding, samples = fixture.samples) {
   return Buffer.from(JSON.stringify(samples)).toString(encoding);
 }
 
-function assertTemplateAreaGeometry(log, runID) {
+function assertC1133RuntimeGeometry(log, runID) {
   const expectedNodeCount = fixture.runtime.expectedNodeCount ?? 4;
   const expectedFrames = fixture.runtime.expectedFrames ?? [
     [0, 0, 160, 120], [0, 0, 100, 40], [40, 40, 120, 40], [0, 80, 160, 40],
@@ -80,7 +84,7 @@ function assertTemplateAreaGeometry(log, runID) {
   const summary = log.split(/\r?\n/).find((line) =>
     line.includes(`SPINON_C1133_GRID_SUMMARY run_id=${runID} scene_id=${fixture.sceneId} `));
   assert.ok(summary?.includes(`status=0 layout=ready boxes=${expectedNodeCount}`),
-    'template area success summary가 없거나 기대 node 수가 아닙니다.');
+    'C11.3.3 성공 summary가 없거나 기대 node 수가 아닙니다.');
   const frameLines = log.split(/\r?\n/).filter((line) =>
     line.includes('SPINON_C1133_GRID_NODE_FRAME'));
   const frames = frameLines.map((line) => {
@@ -221,7 +225,7 @@ async function runAndroid() {
   await writeFile(resolve(evidenceDirectory, 'runtime.log'), `${log}\n`);
   assert.ok(!log.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
     'Android MainActivity가 허용한 C11.3.3 scene을 거부했습니다.');
-  const frames = assertTemplateAreaGeometry(log, runID);
+  const frames = assertC1133RuntimeGeometry(log, runID);
   const capture = log.split(/\r?\n/).find((line) =>
     line.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${runID}`));
   assert.ok(capture, 'Android PixelCopy capture marker가 없습니다.');
@@ -330,7 +334,7 @@ async function runIOS() {
     await writeFile(resolve(evidenceDirectory, 'runtime.log'), `${log}\n`);
     assert.ok(!log.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
       'iOS host가 허용한 C11.3.3 scene을 거부했습니다.');
-    const frames = assertTemplateAreaGeometry(log, runID);
+    const frames = assertC1133RuntimeGeometry(log, runID);
     const pixelComparison = compareC11IOSMetalPixelLogs(log, {
       fixture, runID, markerPrefix: 'C1133',
     });
@@ -389,8 +393,10 @@ const rootFrame = platform.frames[0];
 const itemFrame = platform.frames.at(-1);
 assert.ok(rootFrame && itemFrame, '성공 scene root/item frame이 없습니다.');
 const result = {
-  schema: namedLineAutoRuntimeMode
-    ? 'spinon-c11-3-3-named-line-auto-implicit-tracks-runtime-result/v1'
+  schema: namedLinePairRuntimeMode
+    ? 'spinon-c11-3-3-named-line-pair-auto-implicit-tracks-runtime-result/v1'
+    : namedLineAutoRuntimeMode
+      ? 'spinon-c11-3-3-named-line-auto-implicit-tracks-runtime-result/v1'
     : 'spinon-c11-3-3-grid-template-areas-runtime-result/v1',
   status: 'matched', runID, target,
   fixture: { path: fixturePath, sha256: sha256(await readFile(resolve(repositoryRoot, fixturePath))) },
@@ -408,8 +414,10 @@ const result = {
 };
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
 await writeFile(resolve(evidenceDirectory, 'README.md'), [
-  namedLineAutoRuntimeMode
-    ? '# C11.3.3 named-line auto implicit tracks 모바일 실행' : '# C11.3.3 Grid template area 모바일 실행', '',
+  namedLinePairRuntimeMode
+    ? '# C11.3.3 양 끝 implicit named-line pair 모바일 실행'
+    : namedLineAutoRuntimeMode
+      ? '# C11.3.3 named-line auto implicit tracks 모바일 실행' : '# C11.3.3 Grid template area 모바일 실행', '',
   `- 실행 ID: \`${runID}\``, `- 대상: \`${target}\``,
   `- Chrome 기준: ${fixture.oracle.product} · DPR ${fixture.oracle.deviceScaleFactor} · \`${fixture.sceneId}\``,
   `- runtime: 성공 scene 1개 · element frame ${platform.frames.length}개`,

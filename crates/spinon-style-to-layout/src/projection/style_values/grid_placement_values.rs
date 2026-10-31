@@ -32,6 +32,7 @@ pub(super) fn project_grid_item_placement(
                     uses_implicit_tracks: used_implicit_tracks,
                     requires_signed_extent: false,
                     allows_positive_auto_track_sizing: false,
+                    allows_positive_named_line_pair_auto_track_sizing: false,
                 },
             )
         }
@@ -70,6 +71,7 @@ pub(super) fn project_grid_item_placement(
                         uses_implicit_tracks: used_implicit_tracks,
                         requires_signed_extent: false,
                         allows_positive_auto_track_sizing: false,
+                        allows_positive_named_line_pair_auto_track_sizing: false,
                     },
                 )
             }
@@ -108,12 +110,28 @@ pub(super) fn project_grid_item_placement(
             }
             _ => false,
         };
+    let allows_positive_named_line_pair_auto_track_sizing = template_areas.is_none()
+        && match (
+            row_implicit_usage.uses_implicit_tracks,
+            column_implicit_usage.uses_implicit_tracks,
+        ) {
+            (true, false) => {
+                row_implicit_usage.allows_positive_named_line_pair_auto_track_sizing
+                    && is_definite_axis(&column_start, &column_end)
+            }
+            (false, true) => {
+                column_implicit_usage.allows_positive_named_line_pair_auto_track_sizing
+                    && is_definite_axis(&row_start, &row_end)
+            }
+            _ => false,
+        };
     let usage = named_line::ImplicitNamedLineUsage {
         uses_implicit_tracks: row_implicit_usage.uses_implicit_tracks
             || column_implicit_usage.uses_implicit_tracks,
         requires_signed_extent: row_implicit_usage.requires_signed_extent
             || column_implicit_usage.requires_signed_extent,
         allows_positive_auto_track_sizing,
+        allows_positive_named_line_pair_auto_track_sizing,
     };
     let result = GridItemInput {
         row_start,

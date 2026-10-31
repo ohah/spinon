@@ -1,0 +1,29 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 22 tests
+test c11_3_3_grid_template_areas_tests::opt_in_does_not_accept_unmarked_leading_span_extent ... ok
+test c11_3_3_grid_template_areas_tests::opt_in_does_not_accept_unmarked_last_line_auto_extent ... ok
+test c11_3_3_grid_template_areas_tests::explicit_line_pairs_form_implicit_areas_on_both_axes ... ok
+test c11_3_3_grid_template_areas_tests::backward_named_span_creates_leading_implicit_lines ... ok
+test c11_3_3_grid_template_areas_tests::opt_in_does_not_accept_unmarked_numeric_implicit_lines ... ok
+test c11_3_3_grid_template_areas_tests::auto_sized_area_item_stretches_to_its_named_area ... ok
+test c11_3_3_grid_template_areas_tests::explicit_areas_place_items_at_their_sparse_rectangles ... ok
+test c11_3_3_grid_template_areas_tests::forward_named_span_counts_explicit_matches_before_adding_trailing_tracks ... ok
+test c11_3_3_grid_template_areas_tests::bare_ident_without_template_area_falls_back_to_first_named_line ... ok
+test c11_3_3_grid_template_areas_tests::existing_template_wrapper_still_rejects_unknown_bare_names ... ok
+test c11_3_3_grid_template_areas_tests::bare_area_name_uses_first_area_alias_while_numeric_ident_uses_named_line ... ok
+test c11_3_3_grid_template_areas_tests::shorter_explicit_column_list_places_area_item_on_created_track ... ok
+test c11_3_3_grid_template_areas_tests::unknown_area_bare_ident_uses_default_auto_implicit_tracks ... ok
+test c11_3_3_grid_template_areas_tests::unknown_template_area_preserves_known_area_sibling_and_overflows_root ... ok
+test c11_3_3_grid_template_areas_tests::opt_in_does_not_accept_unmarked_numeric_span_extent_in_a_sibling ... ok
+test c11_3_3_grid_template_areas_tests::named_line_auto::positive_no_area_named_lines_use_auto_implicit_tracks_on_both_axes ... ok
+test c11_3_3_grid_template_areas_tests::named_line_auto::positive_no_area_named_line_pair_auto_sizing_fails_closed_outside_the_slice ... ok
+test c11_3_3_grid_template_areas_tests::unknown_bare_names_and_forward_named_spans_extend_fixed_tracks ... ok
+test c11_3_3_grid_template_areas_tests::implicit_track_profile_requires_fixed_tracks_and_definite_item_placement ... ok
+test c11_3_3_grid_template_areas_tests::named_line_auto::positive_no_area_named_line_pair_sizes_auto_implicit_tracks ... ok
+test c11_3_3_grid_template_areas_tests::signed_named_line_implicit_matrix_matches_frozen_chrome_frames ... ok
+test c11_3_3_grid_template_areas_tests::area_dimensions_generate_implicit_tracks_and_preserve_authored_tracks ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 249 filtered out; finished in 0.01s
+

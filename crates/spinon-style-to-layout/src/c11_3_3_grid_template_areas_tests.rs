@@ -591,13 +591,17 @@ fn implicit_track_profile_requires_fixed_tracks_and_definite_item_placement() {
             "width:10px;height:10px;grid-row:missing / missing;grid-column:1;margin:0;padding:0;border:0",
         )],
     );
-    assert!(matches!(
-        auto_track.compute_with_implicit_named_lines(true),
-        Err(StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoRows {
-            node,
-            ..
-        })) if node == auto_track.root.id()
-    ));
+    let auto_track_output = auto_track.compute_with_implicit_named_lines(true).unwrap();
+    let implicit_item = auto_track_output.layout.frames[&auto_track.nodes["implicit"].id()];
+    assert_eq!(
+        (
+            implicit_item.x,
+            implicit_item.y,
+            implicit_item.width,
+            implicit_item.height
+        ),
+        (0.0, 30.0, 10.0, 10.0)
+    );
 
     let auto_sized_named_item = Fixture::new(
         "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",

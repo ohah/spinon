@@ -1,0 +1,47 @@
+{
+  "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1133-ios-simulator-20261031T171941587Z-3d6b1b59",
+  "processId": 13330,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 10,
+    "renderTree": 2,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 1,
+  "matchedSamples": 1,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "pair-rows-red",
+      "css": [
+        5,
+        45
+      ],
+      "drawable": [
+        16,
+        136
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

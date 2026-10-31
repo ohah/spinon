@@ -98,6 +98,40 @@ return { sceneId:'named-line-auto-rows', rootId:'auto-rows-grid', nodeIds:['auto
 })()"#,
     ),
 ];
+const C11_3_3_POSITIVE_NAMED_LINE_PAIR_SOURCES: [(&str, &str); 2] = [
+    (
+        "named-line-pair-columns-multi-track",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'named-pair-columns-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:80px;height:20px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:40px 40px;grid-template-rows:20px;grid-auto-rows:auto;grid-auto-columns:auto;grid-auto-flow:row');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'named-pair-columns-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:30px;height:10px;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:1 alpha / 3 omega;grid-row:1');
+root.appendChild(item);
+return { sceneId:'named-line-pair-columns-multi-track', rootId:'named-pair-columns-grid', nodeIds:['named-pair-columns-grid','named-pair-columns-item'] };
+})()"#,
+    ),
+    (
+        "named-line-pair-rows-multi-track",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'named-pair-rows-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:40px;height:40px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:40px;grid-template-rows:20px 20px;grid-auto-rows:auto;grid-auto-columns:auto;grid-auto-flow:row');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'named-pair-rows-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:20px;height:30px;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:1;grid-row:1 alpha / 3 omega');
+root.appendChild(item);
+return { sceneId:'named-line-pair-rows-multi-track', rootId:'named-pair-rows-grid', nodeIds:['named-pair-rows-grid','named-pair-rows-item'] };
+})()"#,
+    ),
+];
 const C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES: [(&str, &str); 7] = [
     (
         "positive-missing-occurrences",
@@ -265,6 +299,12 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
     }
     if scene_id == "unknown-area-fixed-implicit-tracks" {
         return Ok(C11_3_3_UNKNOWN_AREA_FIXED_IMPLICIT_TRACKS_SOURCE);
+    }
+    if let Some((_, source)) = C11_3_3_POSITIVE_NAMED_LINE_PAIR_SOURCES
+        .iter()
+        .find(|(id, _)| *id == scene_id)
+    {
+        return Ok(source);
     }
     if let Some((_, source)) = C11_3_3_NAMED_LINE_AUTO_IMPLICIT_TRACKS_SOURCES
         .iter()
@@ -522,6 +562,40 @@ mod tests {
         }
         assert!(
             c11_3_3_grid_template_areas_runtime_source("named-line-auto-columns;throw 1").is_err()
+        );
+    }
+
+    #[test]
+    fn positive_named_line_pair_scenes_are_allowlisted_for_both_axes() {
+        let expected = [
+            (
+                "named-line-pair-columns-multi-track",
+                "named-pair-columns-grid",
+                "named-pair-columns-item",
+                "grid-column:1 alpha / 3 omega",
+            ),
+            (
+                "named-line-pair-rows-multi-track",
+                "named-pair-rows-grid",
+                "named-pair-rows-item",
+                "grid-row:1 alpha / 3 omega",
+            ),
+        ];
+
+        for (scene_id, root_id, item_id, placement) in expected {
+            let source = c11_3_3_grid_template_areas_runtime_source(scene_id).unwrap();
+            assert!(source.contains(&format!("sceneId:'{scene_id}'")));
+            assert!(source.contains(&format!("rootId:'{root_id}'")));
+            assert!(source.contains(&format!("'{root_id}','{item_id}'")));
+            assert!(source.contains(placement));
+            assert!(source.contains("grid-auto-rows:auto;grid-auto-columns:auto"));
+            assert!(source.contains("background-color:#e5484d"));
+        }
+        assert!(
+            c11_3_3_grid_template_areas_runtime_source(
+                "named-line-pair-columns-multi-track;throw 1"
+            )
+            .is_err()
         );
     }
 

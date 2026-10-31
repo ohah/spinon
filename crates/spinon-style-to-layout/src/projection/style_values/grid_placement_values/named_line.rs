@@ -44,6 +44,7 @@ pub(in crate::projection::style_values) struct ImplicitNamedLineUsage {
     pub(in crate::projection::style_values) uses_implicit_tracks: bool,
     pub(in crate::projection::style_values) requires_signed_extent: bool,
     pub(in crate::projection::style_values) allows_positive_auto_track_sizing: bool,
+    pub(in crate::projection::style_values) allows_positive_named_line_pair_auto_track_sizing: bool,
 }
 
 impl ImplicitNamedLineUsage {
