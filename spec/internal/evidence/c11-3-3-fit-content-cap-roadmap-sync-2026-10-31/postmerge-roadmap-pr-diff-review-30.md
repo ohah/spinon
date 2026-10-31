@@ -33,6 +33,6 @@
 | 27 | 일반 CSS author admission을 완료로 넓히지 않는가 | PASS |
 | 28 | 전체 WPT 적합성을 완료로 넓히지 않는가 | PASS |
 | 29 | #911의 기존 공개 roadmap 근거가 제거되지 않는가 | PASS |
-| 30 | 새 계획 및 runtime evidence 링크가 저장소 경로와 일치하는가 | PASS |
+| 30 | 모바일 overflow와 새 내부 링크를 확인했는가 | PASS — Agent Browser 390px에서 document width 390px/card 362px, 새 계획·실행 근거 HTTP 200; [측정·hash](postmerge-browser-verification-pass01.json) |
 
 GitHub에서 병합 상태와 SHA를 다시 조회했다. 이 표는 문서 주장 검토이며 실행 테스트나 CI 결과를 대신하지 않는다.

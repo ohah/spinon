@@ -1,0 +1,60 @@
+{
+  "sourceHead": "4db168ca4dabe2adcb7838d0fbfae5a8a569598b",
+  "sourceTree": "033b132de96e1a28b513292ff2abd384bb8e9436",
+  "publicationRouteCount": 159,
+  "generatedHtmlCount": 33,
+  "fullDocsLinkValidation": false,
+  "browser": "Agent Browser 0.31.1 / Chrome 156",
+  "desktop": {
+    "viewport": [
+      1280,
+      900
+    ],
+    "documentWidth": 1280,
+    "card": {
+      "x": 20,
+      "width": 908
+    }
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "card": {
+      "x": 14,
+      "width": 362,
+      "right": 376
+    }
+  },
+  "localCardLinks": [
+    {
+      "path": "/spinon/plan/c11-3-3-template-area-fit-content-cap.html",
+      "status": 200
+    },
+    {
+      "path": "/spinon/spec/internal/evidence/c11-3-3-template-area-fit-content-cap-runtime-2026-10-31/README.html",
+      "status": 200
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "roadmap-postmerge-cap-card-desktop-agent-browser.png",
+      "pixelSize": [
+        1280,
+        900
+      ],
+      "sha256": "4b1a8d7347757446c3bcd643232b6b998b88d99f38e191efeebcf968d1024837"
+    },
+    {
+      "path": "roadmap-postmerge-cap-card-mobile-agent-browser.png",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "sha256": "4ba1ae10cf2ad91e85a4a0308dbe5cce8a3253f49ccdc6a912072095f5e1f5b1"
+    }
+  ]
+}
