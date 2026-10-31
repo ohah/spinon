@@ -8,6 +8,7 @@ import {
   selectAndroidAVDSerial,
   selectAndroidPhysicalSerial,
 } from './c11-3-3-grid-template-areas-runtime-device.mjs';
+import { validateC11IOSChromeOracle } from './compare-c11-ios-metal-surface-pixels.mjs';
 import { decodeRgbaPng } from './read-png-rgba.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
@@ -537,7 +538,8 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
     ), `Android pixel oracle color ${sample.id}`);
   }
   const capture = captureBytes.toString('utf8');
-  assert.ok(capture.includes('frames.length, 4'));
+  assert.ok(capture.includes('fixture.runtime.expectedNodeCount ?? 4'));
+  assert.ok(capture.includes('frames.length, expectedNodeCount'));
   assert.ok(capture.includes('android-physical [serial]'));
   assert.ok(capture.includes('android-avd'));
   assert.ok(capture.includes('SM-S731N'));
@@ -822,4 +824,38 @@ test('area가 없는 bare ident 기준은 pinned Chrome 154 첫 named line에 �
   const scripts = JSON.parse((await read('package.json')).toString('utf8')).scripts;
   assert.equal(scripts['css:reference:c11-3-3-bare-ident-no-area'],
     'node tools/css-reference/capture-c11-3-3-bare-ident-no-area-precomparison.mjs');
+});
+
+test('area-created fit-content cap fixture는 별도 scene·고정 oracle·두 플랫폼 표면 allowlist를 쓴다', async () => {
+  const [fixtureBytes, referenceBytes, screenshotBytes, captureBytes, rustBytes, androidBytes, iosBytes,
+    androidActivityBytes] = await Promise.all([
+    read('tests/fixtures/css/c11/grid-template-area-fit-content-cap-mobile-v1.json'),
+    read('tests/fixtures/css/references/c11-3-3-template-area-fit-content-cap-v1.json'),
+    read('spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/chrome-156-agent-browser.png'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs'),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_3.rs'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    read('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
+  ]);
+  const fixture = JSON.parse(fixtureBytes.toString('utf8'));
+  const reference = JSON.parse(referenceBytes.toString('utf8'));
+  const capture = captureBytes.toString('utf8');
+  assert.deepEqual(validateC11IOSChromeOracle({ fixture, referenceBytes, screenshotBytes }).screenshot,
+    [1280, 633]);
+  assert.equal(fixture.sceneId, 'fit-content-area-cap');
+  assert.equal(fixture.oracle.referenceId, reference.referenceId);
+  assert.equal(fixture.samples.length, 3);
+  assert.deepEqual(fixture.runtime.expectedFrames, [[0, 0, 200, 60], [0, 0, 20, 60], [20, 0, 40, 60]]);
+  assert.ok(capture.includes("process.argv.includes('--fit-content-area-cap')"));
+  assert.ok(capture.includes('--spinon-c1133-grid-scene=${fixture.sceneId}'));
+  assert.ok(capture.includes('SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}'));
+  assert.ok(capture.includes('SPINON_C1133_METAL_PIXEL_SUMMARY status=matched run_id=${runID}'));
+  assert.ok(capture.includes('const rootFrame = platform.frames[0]'));
+  assert.ok(capture.includes('element frame ${platform.frames.length}개'));
+  assert.equal(capture.includes('root 160×120 CSS px, item 120×40 CSS px'), false);
+  assert.ok(rustBytes.toString('utf8').includes('fit-content-area-cap'));
+  assert.ok(androidBytes.toString('utf8').includes('c1133FitContentAreaCapPixelSamples'));
+  assert.ok(iosBytes.toString('utf8').includes('c1133FitContentAreaCapPixelSamples'));
+  assert.ok(androidActivityBytes.toString('utf8').includes('"fit-content-area-cap".equals(sceneId)'));
 });

@@ -1,6 +1,9 @@
 use serde_json::Value;
 use std::sync::OnceLock;
 
+#[path = "c11_3_3_fit_content_area_cap.rs"]
+mod fit_content_area_cap;
+
 const C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json"
 );
@@ -204,6 +207,9 @@ const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 39] = [
 pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
     scene_id: &str,
 ) -> Result<&'static str, String> {
+    if scene_id == "fit-content-area-cap" {
+        return Ok(fit_content_area_cap::SOURCE);
+    }
     if scene_id == "revision-reuse" {
         return Ok(C11_3_3_GRID_TEMPLATE_AREAS_REVISION_REUSE_SOURCE);
     }
@@ -379,6 +385,27 @@ mod tests {
         assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"sceneCount\": 39"));
         assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"nodeCount\": 126"));
         assert!(c11_3_3_grid_template_areas_runtime_source("unknown-area-implicit-tracks").is_ok());
+    }
+
+    #[test]
+    fn area_fit_content_cap_uses_a_separate_fixed_source() {
+        let source = c11_3_3_grid_template_areas_runtime_source("fit-content-area-cap")
+            .expect("isolated area fit-content cap scene");
+        for expected in [
+            "c1133-fit-content-area-cap-grid",
+            "grid-template-areas:\"fixed fit\"",
+            "grid-auto-columns:fit-content(40px)",
+            "document.createTextNode('AA AA AA AA')",
+        ] {
+            assert!(
+                source.contains(expected),
+                "missing fixed source token: {expected}"
+            );
+        }
+        assert!(!C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS.contains(&"fit-content-area-cap"));
+        assert!(
+            c11_3_3_grid_template_areas_runtime_source("fit-content-area-cap;throw 1").is_err()
+        );
     }
 
     #[test]

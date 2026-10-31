@@ -6,6 +6,11 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle};
 use spinon_layout::LayoutTextSnapshot;
 use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
+#[cfg(all(
+    feature = "c11-4-grid-track-sizing-fixture-test",
+    feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+))]
+use spinon_render::RuntimeSrgbColor;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use spinon_style::first_unsupported_runtime_block_flex_scroll_gesture_inline_property;
 use spinon_style::{
@@ -500,7 +505,28 @@ where
         }
         #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines => {
-            spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(&view)
+            #[cfg(all(
+                feature = "c11-4-grid-track-sizing-fixture-test",
+                feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+            ))]
+            {
+                if fixtures::is_c11_3_3_fit_content_area_cap_root(&request.snapshot, root) {
+                    spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(&view)
+                } else {
+                    spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(
+                        &view,
+                    )
+                }
+            }
+            #[cfg(not(all(
+                feature = "c11-4-grid-track-sizing-fixture-test",
+                feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+            )))]
+            {
+                spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(
+                    &view,
+                )
+            }
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -824,6 +850,59 @@ where
             Some("text와 image contribution 동시 입력은 아직 지원하지 않습니다".to_owned()),
         ));
     }
+    #[cfg(all(
+        feature = "c11-4-grid-track-sizing-fixture-test",
+        feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+    ))]
+    let c11_3_3_fit_content_area_cap_input = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTemplateImplicitNamedLines
+    {
+        fixtures::prepare_c11_3_3_fit_content_area_cap(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(all(
+        feature = "c11-4-grid-track-sizing-fixture-test",
+        feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+    ))]
+    let c11_3_3_fit_content_area_cap_render_input = if runtime_paint_enabled {
+        if let Some(input) = &c11_3_3_fit_content_area_cap_input {
+            let mut owners = input.paragraph_styles.keys().copied();
+            let owner = owners.next().ok_or_else(|| {
+                layout_failure(
+                    "c1133_fit_content_area_cap_text_owner_missing",
+                    Some(root.id().get()),
+                    None,
+                )
+            })?;
+            if owners.next().is_some() {
+                return Err(layout_failure(
+                    "c1133_fit_content_area_cap_text_owner_count",
+                    Some(root.id().get()),
+                    None,
+                ));
+            }
+            let color = RuntimeSrgbColor::new(0.0, 0.0, 0.0, 1.0).map_err(|error| {
+                layout_failure(
+                    "c1133_fit_content_area_cap_text_color_invalid",
+                    Some(owner.get()),
+                    Some(error.to_string()),
+                )
+            })?;
+            Some(root_html_default_render::prepare_fixture_text_owner(
+                &request.snapshot,
+                root,
+                &styles,
+                owner,
+                &input.engine,
+                color,
+            )?)
+        } else {
+            None
+        }
+    } else {
+        None
+    };
     let projection_started = Instant::now();
     if runtime_paint_enabled && let Some(diagnostic) = styles.diagnostics.first() {
         return Err(layout_failure(
@@ -850,6 +929,35 @@ where
         )
     } else {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        {
+        #[cfg(all(
+            feature = "c11-4-grid-track-sizing-fixture-test",
+            feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+        ))]
+        let c11_3_3_area_cap_output = if let Some(input) = &c11_3_3_fit_content_area_cap_input {
+            Some(
+                spinon_style_to_layout::compute_runtime_block_flex_grid_template_area_fit_content_cap_style_layout_with_text_paragraphs(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &input.paragraph_styles,
+                    &input.engine,
+                )
+                .map_err(layout_failure_from_error)?,
+            )
+        } else {
+            None
+        };
+        #[cfg(not(all(
+            feature = "c11-4-grid-track-sizing-fixture-test",
+            feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+        )))]
+        let c11_3_3_area_cap_output: Option<StyleLayoutOutput> = None;
+
+        if let Some(output) = c11_3_3_area_cap_output {
+            Ok(output)
+        } else
         if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
             if let Some(intrinsic_sizes) = &input.intrinsic_sizes {
                 spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture_and_intrinsic_sizes(
@@ -1059,6 +1167,7 @@ where
                 )
             }
         }
+        }
         #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
         #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
         if let Some(text_input) = &root_html_text_input {
@@ -1092,6 +1201,13 @@ where
         }
     }
     .map_err(layout_failure_from_error)?;
+    #[cfg(all(
+        feature = "c11-4-grid-track-sizing-fixture-test",
+        feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+    ))]
+    if let Some(input) = &c11_3_3_fit_content_area_cap_input {
+        fixtures::validate_c11_3_3_fit_content_area_cap_layout(input, &output)?;
+    }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let fit_content_auto_neighbor_observation =
         if let Some(node_ids) = c11_4_fit_content_auto_neighbor_node_ids {
@@ -1319,6 +1435,15 @@ where
         } else {
             scene
         };
+        #[cfg(all(
+            feature = "c11-4-grid-track-sizing-fixture-test",
+            feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+        ))]
+        let scene = if let Some(text_input) = &c11_3_3_fit_content_area_cap_render_input {
+            root_html_default_render::attach(&request.snapshot, root, &output, text_input, scene)?
+        } else {
+            scene
+        };
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let scene = if let Some(text_input) = &c11_4_fit_content_calc_render_input {
             root_html_default_render::attach(&request.snapshot, root, &output, text_input, scene)?
@@ -1392,6 +1517,13 @@ where
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         grid_track_sizing_diagnostics,
     };
+    #[cfg(all(
+        feature = "c11-4-grid-track-sizing-fixture-test",
+        feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+    ))]
+    if let Some(input) = &c11_3_3_fit_content_area_cap_input {
+        fixtures::validate_c11_3_3_fit_content_area_cap_completed(input, &completed)?;
+    }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if let Some(scene) = c11_4_visibility_collapse_scene {
         fixtures::validate_c11_4_visibility_collapse_output(scene, &output.layout, &completed)?;

@@ -233,6 +233,18 @@ fn runtime_document_order(
     let root_html_text_profile = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
     let c11_4_text_measurement_profile = cfg!(feature = "c11-4-grid-track-sizing-fixture-test")
         && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1;
+    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+    let c11_3_3_fit_content_area_cap_text_profile = profile
+        == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        && document.node(root).is_some_and(|node| {
+            matches!(node.kind(), spinon_core::HostNodeKind::Element(element)
+            if element.local_name() == "div"
+                && element.attributes().iter().any(|(name, value)| {
+                    name.namespace().is_none()
+                        && name.local_name() == "id"
+                        && value.to_string_lossy() == "c1133-fit-content-area-cap-grid"
+                }))
+        });
     while let Some((handle, ancestor_hidden)) = pending.pop() {
         if !visited.insert(handle.id()) {
             return Err(StyleRenderError::DuplicateDocumentNode(handle.id()));
@@ -247,6 +259,16 @@ fn runtime_document_order(
                 ) && text.is_only_collapsible_html_whitespace())
                 || profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 || c11_4_text_measurement_profile
+                || {
+                    #[cfg(feature = "c11-3-3-grid-implicit-named-lines-fixture-test")]
+                    {
+                        c11_3_3_fit_content_area_cap_text_profile
+                    }
+                    #[cfg(not(feature = "c11-3-3-grid-implicit-named-lines-fixture-test"))]
+                    {
+                        false
+                    }
+                }
             {
                 continue;
             }

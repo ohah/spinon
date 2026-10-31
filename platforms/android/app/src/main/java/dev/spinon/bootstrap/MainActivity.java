@@ -132,7 +132,7 @@ public final class MainActivity extends Activity {
         for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
-        return "revision-reuse".equals(sceneId);
+        return "revision-reuse".equals(sceneId) || "fit-content-area-cap".equals(sceneId);
     }
 
     private static boolean hasSpinonLaunchOverride(Bundle extras) {

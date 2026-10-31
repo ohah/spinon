@@ -1,0 +1,25 @@
+{
+  "schema": "spinon-css-c11-3-3-template-area-fit-content-cap-reference/v1",
+  "referenceId": "c1133-template-area-fit-content-cap-chrome-156-20261031",
+  "source": {
+    "path": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/observation.json",
+    "sha256": "3c00e09996e7be28e8dd4e02d544086fe5a3d8cb3ab07dd260a9407a4792a500"
+  },
+  "oracle": {
+    "product": "Google Chrome 156.0.8078.76"
+  },
+  "environment": {
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    }
+  },
+  "observations": [
+    {
+      "deviceScaleFactor": 1,
+      "computedColumns": "20px 40px",
+      "root": [0, 0, 200, 60],
+      "fitItem": [20, 0, 40, 60]
+    }
+  ]
+}

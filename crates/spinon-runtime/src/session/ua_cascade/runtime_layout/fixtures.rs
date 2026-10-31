@@ -17,6 +17,13 @@ pub(super) use c11_4_visibility_collapse::{
 #[path = "fixtures/c11_4_text.rs"]
 mod c11_4_text;
 
+#[cfg(all(
+    feature = "c11-4-grid-track-sizing-fixture-test",
+    feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+))]
+#[path = "fixtures/c11_3_3_fit_content_area_cap.rs"]
+mod c11_3_3_fit_content_area_cap;
+
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_implicit_intrinsic_text.rs"]
 mod c11_4_implicit_intrinsic_text;
@@ -127,6 +134,30 @@ pub(super) struct C11_4TextInput {
     pub(super) aspect_ratio_minmax_node: Option<NodeId>,
     pub(super) definite_axis_ratio_node: Option<NodeId>,
 }
+
+#[cfg(all(
+    feature = "c11-4-grid-track-sizing-fixture-test",
+    feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+))]
+pub(super) struct C11_3_3FitContentAreaCapInput {
+    pub(super) paragraph_styles: BTreeMap<NodeId, ParagraphStyle>,
+    pub(super) engine: TextLayoutEngine,
+    pub(super) node_ids: [NodeId; 3],
+    pub(super) text_node: NodeId,
+    pub(super) min_content: f32,
+    pub(super) max_content: f32,
+}
+
+#[cfg(all(
+    feature = "c11-4-grid-track-sizing-fixture-test",
+    feature = "c11-3-3-grid-implicit-named-lines-fixture-test"
+))]
+pub(super) use c11_3_3_fit_content_area_cap::{
+    is_root as is_c11_3_3_fit_content_area_cap_root,
+    prepare as prepare_c11_3_3_fit_content_area_cap,
+    validate_completed as validate_c11_3_3_fit_content_area_cap_completed,
+    validate_layout as validate_c11_3_3_fit_content_area_cap_layout,
+};
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_text::is_grid_text_baseline_fixture_root;

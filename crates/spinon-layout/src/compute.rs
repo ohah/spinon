@@ -335,7 +335,8 @@ fn validate_intrinsic_sizes(
     }
     let mut track_sizing_grid_items = BTreeSet::new();
     for (&container, grid) in &input.grid_containers {
-        if grid.placement_mode == GridPlacementMode::TrackSizing
+        if (grid.placement_mode == GridPlacementMode::TrackSizing
+            || grid.track_sizing_trace_enabled)
             && let Some(&container_index) = index.get(&container)
         {
             track_sizing_grid_items.extend(input.nodes()[container_index].children.iter().copied());
