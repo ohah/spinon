@@ -1,0 +1,28 @@
+{
+  "browser": {
+    "agentBrowserCli": "0.31.1",
+    "chromeBinary": "Google Chrome 156.0.8078.76",
+    "brands": [
+      { "brand": "Not:A-Brand", "version": "8" },
+      { "brand": "Chromium", "version": "156" },
+      { "brand": "Google Chrome", "version": "156" }
+    ],
+    "fullVersionList": [],
+    "language": "ko-KR",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+  },
+  "viewport": { "width": 1280, "height": 633, "dpr": 1 },
+  "fontLoaded": true,
+  "cases": [
+    { "id": "font-size-5-min-content", "inputFontSizePx": 5, "inputTrack": "min-content", "computedFontSize": "5px", "gridTemplateColumns": "10px", "gridTemplateRows": "20px", "rootFrame": { "width": 20, "height": 20 } },
+    { "id": "font-size-5-max-content", "inputFontSizePx": 5, "inputTrack": "max-content", "computedFontSize": "5px", "gridTemplateColumns": "25px", "gridTemplateRows": "10px", "rootFrame": { "width": 20, "height": 10 } },
+    { "id": "font-size-7-5-min-content", "inputFontSizePx": 7.5, "inputTrack": "min-content", "computedFontSize": "7.5px", "gridTemplateColumns": "15px", "gridTemplateRows": "20px", "rootFrame": { "width": 20, "height": 20 } },
+    { "id": "font-size-7-5-max-content", "inputFontSizePx": 7.5, "inputTrack": "max-content", "computedFontSize": "7.5px", "gridTemplateColumns": "37.5px", "gridTemplateRows": "10px", "rootFrame": { "width": 20, "height": 10 } },
+    { "id": "font-size-10-min-content", "inputFontSizePx": 10, "inputTrack": "min-content", "computedFontSize": "10px", "gridTemplateColumns": "20px", "gridTemplateRows": "20px", "rootFrame": { "width": 20, "height": 20 } },
+    { "id": "font-size-10-max-content", "inputFontSizePx": 10, "inputTrack": "max-content", "computedFontSize": "10px", "gridTemplateColumns": "50px", "gridTemplateRows": "10px", "rootFrame": { "width": 20, "height": 10 } },
+    { "id": "font-size-12-5-min-content", "inputFontSizePx": 12.5, "inputTrack": "min-content", "computedFontSize": "12.5px", "gridTemplateColumns": "25px", "gridTemplateRows": "20px", "rootFrame": { "width": 20, "height": 20 } },
+    { "id": "font-size-12-5-max-content", "inputFontSizePx": 12.5, "inputTrack": "max-content", "computedFontSize": "12.5px", "gridTemplateColumns": "62.5px", "gridTemplateRows": "10px", "rootFrame": { "width": 20, "height": 10 } },
+    { "id": "font-size-20-min-content", "inputFontSizePx": 20, "inputTrack": "min-content", "computedFontSize": "20px", "gridTemplateColumns": "40px", "gridTemplateRows": "20px", "rootFrame": { "width": 20, "height": 20 } },
+    { "id": "font-size-20-max-content", "inputFontSizePx": 20, "inputTrack": "max-content", "computedFontSize": "20px", "gridTemplateColumns": "100px", "gridTemplateRows": "10px", "rootFrame": { "width": 20, "height": 10 } }
+  ]
+}
