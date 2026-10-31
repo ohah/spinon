@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid text computed word-break precomparison</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "Noto Sans KR";
+      src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 16px; color: #162333; font: 14px/1.4 system-ui, sans-serif; }
+    h1 { margin: 0 0 12px; font-size: 20px; }
+    #summary { margin: 0 0 12px; white-space: pre-wrap; }
+    #cases { display: grid; gap: 4px; }
+    .case { display: grid; grid-template-columns: 320px 120px; align-items: start; gap: 12px; }
+    .label { font: 12px/14px ui-monospace, monospace; }
+    .grid {
+      box-sizing: border-box;
+      display: grid;
+      width: 120px;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      align-items: start;
+      align-content: start;
+      justify-content: start;
+      grid-template-rows: auto;
+      font-family: Ahem;
+      font-size: 10px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 10px;
+      white-space-collapse: collapse;
+      text-wrap-mode: wrap;
+      word-break: normal;
+      line-break: auto;
+      overflow-wrap: normal;
+      direction: ltr;
+      writing-mode: horizontal-tb;
+      color: #e5484d;
+      background: #101820;
+    }
+    .grid[data-track="min-content"] { grid-template-columns: min-content; }
+    .grid[data-track="max-content"] { grid-template-columns: max-content; }
+    .grid[data-word-break="break-all"] { word-break: break-all; }
+    .grid[data-word-break="keep-all"] { word-break: keep-all; }
+    .grid[data-font="noto"] { font-family: "Noto Sans KR"; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>C11.4 anonymous Grid text: computed <code>word-break</code></h1>
+    <pre id="summary">Loading pinned Ahem font…</pre>
+    <section id="cases"></section>
+  </main>
+  <script>
+    (() => {
+      const suites = [
+        {
+          font: "Ahem",
+          language: "en",
+          values: ["normal", "break-all"],
+          content: [
+            { id: "unbroken", text: "XXXX" },
+            { id: "two-words", text: "XX XX" },
+          ],
+        },
+        {
+          font: "Noto Sans KR",
+          language: "ko",
+          values: ["normal", "keep-all"],
+          content: [{ id: "hangul", text: "가나다라" }],
+        },
+      ];
+      const cases = [];
+      for (const suite of suites) {
+        for (const wordBreak of suite.values) {
+          for (const textCase of suite.content) {
+            for (const track of ["min-content", "max-content"]) {
+              const id = `word-break-${wordBreak}-${textCase.id}-${track}`;
+              const row = document.createElement("div");
+              row.className = "case";
+              row.dataset.caseId = id;
+              const label = document.createElement("span");
+              label.className = "label";
+              label.textContent = `${id} · ${JSON.stringify(textCase.text)} · ${suite.font}`;
+              const grid = document.createElement("div");
+              grid.className = "grid";
+              grid.id = id;
+              grid.dataset.track = track;
+              grid.dataset.wordBreak = wordBreak;
+              grid.dataset.font = suite.font === "Noto Sans KR" ? "noto" : "ahem";
+              grid.lang = suite.language;
+              grid.appendChild(document.createTextNode(textCase.text));
+              row.append(label, grid);
+              document.querySelector("#cases").append(row);
+              cases.push({ id, wordBreak, text: textCase.text, track, font: suite.font, language: suite.language, grid });
+            }
+          }
+        }
+      }
+      window.__C114_WORD_BREAK_PRECOMPARISON__ = Promise.all([
+        document.fonts.load("10px Ahem"),
+        document.fonts.load("400 10px 'Noto Sans KR'"),
+      ]).then(() => {
+        const fontsLoaded = {
+          ahem: document.fonts.check("10px Ahem"),
+          notoSansKr: document.fonts.check("400 10px 'Noto Sans KR'"),
+        };
+        const observations = cases.map(({ id, wordBreak, text, track, font, language, grid }) => {
+          const style = getComputedStyle(grid);
+          const rect = grid.getBoundingClientRect();
+          return {
+            id,
+            authoredWordBreak: wordBreak,
+            computedWordBreak: style.wordBreak,
+            computedFontFamily: style.fontFamily,
+            computedFontWeight: style.fontWeight,
+            computedLineBreak: style.lineBreak,
+            computedLanguage: grid.getAttribute("lang"),
+            language,
+            text,
+            track,
+            columns: style.gridTemplateColumns,
+            rows: style.gridTemplateRows,
+            rootBox: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+            lineHeight: style.lineHeight,
+            overflowWrap: style.overflowWrap,
+          };
+        });
+        const result = {
+          fontsLoaded,
+          userAgent: navigator.userAgent,
+          dpr: devicePixelRatio,
+          wordBreakSupported: CSS.supports("word-break", "break-all"),
+          observations,
+        };
+        document.querySelector("#summary").textContent =
+          `Ahem loaded: ${fontsLoaded.ahem} · Noto Sans KR loaded: ${fontsLoaded.notoSansKr} · ${observations.length} scenes · ${navigator.userAgent}`;
+        return result;
+      });
+    })();
+  </script>
+</body>
+</html>
