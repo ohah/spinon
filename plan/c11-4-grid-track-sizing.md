@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-31 anonymous Grid `white-space:pre` author `tab-size` candidate
+## 2026-10-31 anonymous Grid `white-space:pre` author `tab-size` 제한 구현 · PR #889 병합
 
-The default-tab implementation keeps the computed initial value 8 and rejects other values. The proposed follow-up is limited to numeric values 1, 2, and 4 in the same opt-in anonymous Grid text route. Its CSS Text 3 basis, independent arithmetic, and 13-scene Chrome 156 Agent Browser observation are in the [candidate plan](./c11-4-anonymous-grid-text-pre-author-tab-size.md) and [precomparison](../spec/internal/evidence/c11-4-anonymous-pre-author-tab-size-precomparison-2026-10-31/README.md). The plan failure review is complete at 20/20. Implementation has not started; C11.4/C11 and official `72/213` remain unchanged.
+고정 Ahem 익명 Grid `white-space:pre` fixture에서 computed unitless `tab-size:1`, `2`, `4`를 입력으로 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 회귀를 포함한 55/55 scene을 각각 확인했으며 positive draw/present는 52/52, 기대 거부는 3/3이다. 구현 PR [#889](https://github.com/ohah/spinon/pull/889)은 2026-10-31T01:12:37Z에 Rebase and merge됐고 merge SHA는 `97938de7703aa69eccb9cbe301c4c90bcc0029d2`다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. 이 fixture 확장은 일반 CSS admission, 전체 WPT 또는 C11.4/C11 완료가 아니며 공식 `72/213`은 유지한다. [계획과 범위](./c11-4-anonymous-grid-text-pre-author-tab-size.md) · [Chrome 사전 비교와 구현·simulator 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/numeric-author-tab-size.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-pre-author-tab-size-plan-review-20.md) · [PR #889 구현/runtime 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/implementation-runtime-review-20.md) · [구현 PR diff 검토](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/pr-diff-review-30.md) · [이번 상태 동기화 PR 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-2026-10-31/parent-roadmap-status-pr-review-20.md).
 
 ## 2026-10-31 anonymous Grid text `white-space:pre` 제한 slice · PR #880 병합
 
