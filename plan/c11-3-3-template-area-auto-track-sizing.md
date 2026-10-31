@@ -1,10 +1,10 @@
 # C11.3.3 template-area implicit track의 typed `grid-auto-*` 크기
 
-**상태:** 구현·Chrome 비교·Android API 37 AVD/iPhone 17 Pro iOS 26.2 Simulator 행렬·static FFI archive 경계·구현/runtime 검토 20개·PR diff 적대 검토 30개를 마쳤다. area 생성 typed track은 양 플랫폼에서 각 7/7 surface sample exact다. trailing positive named-line typed phase는 Rust layout test로 확인했다. PR 생성·필수 check 확인·병합은 아직 남았다. 이 후보는 제한 후속이며 C11.3.3 전체, C11, 공개 CSS 지원 및 공식 완료 수 `72/213`을 완료로 바꾸지 않는다.
+**상태:** 구현·Chrome 비교·Android API 37 AVD/iPhone 17 Pro iOS 26.2 Simulator 행렬·static FFI archive 경계·구현/runtime 검토 20개·PR diff 적대 검토 30개를 마쳤다. area 생성 typed track은 양 플랫폼에서 각 7/7 surface sample exact다. trailing positive named-line typed phase는 Rust layout test로 확인했다. 구현 PR [#911](https://github.com/ohah/spinon/pull/911)은 Rebase and merge로 병합됐다. required status checks는 설정되어 있지 않고 보고된 check도 없다. [병합 후 상태 문서 검토 30개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-post-merge-status-review-30.md). 이 제한 slice는 C11.3.3 전체, C11, 공개 CSS 지원 및 공식 완료 수 `72/213`을 완료로 바꾸지 않는다.
 
 ## 결손과 목표
 
-현재 `RuntimeBlockFlexGridTemplateV1`의 area 경로는 `grid-auto-rows`·`grid-auto-columns` 목록을 px만 허용한다. 제한 layout 입력도 `TemplateGrid`/`TemplateGridImplicitTracks`의 area-backed track list에서 `LengthPx`만 허용하고, positive implicit expansion의 `TemplateAreaImplicit` 모드도 같은 제약을 다시 검사한다. 그 결과 이미 C11.4 `TrackSizing`에서 처리하는 `minmax()`, percentage, `fr`, intrinsic keyword, `fit-content()` 및 `calc()`가 template area가 부족한 explicit track을 채우거나 그 뒤의 positive implicit named line을 확장할 때 거부된다.
+병합 전 `RuntimeBlockFlexGridTemplateV1`의 area 경로는 `grid-auto-rows`·`grid-auto-columns` 목록에서 px만 허용했다. PR #911은 기존 C11.4 `TrackSizing`이 이미 처리하는 typed subset을 area가 부족한 explicit track과 positive trailing named-line implicit expansion에 재사용하도록 연결했다. 새 track grammar나 sizing algorithm은 추가하지 않았다.
 
 기존 기능을 조합해 다음만 허용한다.
 
@@ -31,7 +31,7 @@
 5. Negative controls는 area 없는 TemplateGrid/TemplateGridImplicitTracks, signed/leading mode, 빈 목록, unsupported/malformed 값, 음수·NaN·infinite component, track quota 초과, allocation 오류를 확인한다. 실패 시 partial frame/track output이 없어야 한다.
 6. C11.3.3 fixture matrix는 typed row/column area scenes를 더해 39 scene·126 node가 됐다. 최종 Rust 수정 뒤 앱을 다시 빌드해 Android API 37 ARM64 AVD/SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 전체 geometry를 비교했다. typed area visible controls도 PixelCopy/Metal drawable에서 각 7/7 exact다. iOS 표본은 compositor 제출 전이다.
 7. `cargo fmt --all -- --check`, layout 9/9, style cascade 1/1, style-to-layout 1/1, opt-in FFI 1/1, Node C11.3.3/fixture-boundary 50/50, workspace all-target Clippy를 통과했다. 기본 `spinon-ffi` Release archive에서 신규 scene marker와 C11.3.3 fixture export가 없고, opt-in positive control에는 두 scene ID·source marker·`new`/`eval` export가 있음을 확인했다. [실행·한계](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/README.md).
-8. 이 계획의 [사전 실패 관점 검토 20개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-plan-review-20.md), 구현 뒤의 [별도 구현/runtime 검토 20개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/implementation-runtime-review-20.md), 실제 변경의 [PR diff 검토 30개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/pr-diff-review-30.md)를 마쳤다. 다음은 Rebase and merge 전 필수 check/merge state 확인이다.
+8. 이 계획의 [사전 실패 관점 검토 20개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-plan-review-20.md), 구현 뒤의 [별도 구현/runtime 검토 20개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/implementation-runtime-review-20.md), 실제 변경의 [PR diff 검토 30개](../spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/pr-diff-review-30.md)를 마쳤다. PR #911의 merge commit은 `eeba00fa9faf05ffcc8160f8adbb220fe90204db`다. required status checks와 보고된 check은 없었다.
 
 ## 완료 조건
 
