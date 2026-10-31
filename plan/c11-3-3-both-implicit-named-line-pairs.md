@@ -1,6 +1,6 @@
 # C11.3.3 양 끝 positive implicit named-line placement
 
-**상태:** 계획 PR 전 검토 완료 · 구현 전 · 공식 C11/C11.3 체크와 `72/213`은 유지한다.
+**상태:** 계획 PR [#932](https://github.com/ohah/spinon/pull/932)와 제한 구현 PR [#933](https://github.com/ohah/spinon/pull/933)을 Rebase and merge했다. 구현은 양 끝 positive implicit named-line에 대한 고정 fixture slice이며 공식 C11/C11.3 체크와 `72/213`은 유지한다. [구현·실행 근거](../spec/internal/evidence/c11-3-3-named-line-pair-runtime-2026-11-01/README.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
