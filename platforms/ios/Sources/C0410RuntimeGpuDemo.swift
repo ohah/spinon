@@ -10580,6 +10580,7 @@ private struct C111MetalPixelRun {
         "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",
         "sparse-hole-not-backfilled", "implicit-track-size-and-gap",
         "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",
+        "order-mixed", "order-ties",
     ]
     private static let c1123PixelSceneIDs: Set<String> = [
         "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",
@@ -12810,6 +12811,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         "hidden-child-excluded", "nested-independent-placement", "reject-implicit-column",
         "reject-auto-sized-implicit-row", "reject-repeated-auto-row-pattern",
         "reject-dense-flow", "reject-column-flow", "column-cursor-wrap",
+        "order-mixed", "order-ties",
     ]
     private let c1122GridAutoPlacementProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1122-grid-auto-placement")

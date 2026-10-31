@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.2.2 행 우선 sparse 자동 배치](./c11-2-2-sparse-row-placement.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** Chrome 156 사전 비교와 독립 기대값을 고정했다. 계획 자체를 별도 실패 관점 20개로 검토한다. 계획 PR의 변경 검토는 구현/runtime 검토와 별도로 30개 관점으로 수행한다. 이 제한 후속은 C11.2.2 또는 C11 상위 checkbox를 완료로 승격하지 않는다.
+**상태:** 2026-10-31 제한 구현과 고정 Android/iOS simulator matrix가 통과했다. PR 및 병합 상태는 이 문서가 갱신될 때 기록한다. 기존 C11.2.2 또는 C11 상위 checkbox와 공식 완료 집계는 승격하지 않는다.
 
 ## 목표와 지원 경계
 
@@ -33,6 +33,14 @@ order가 0이 아닌 경우 visible direct child가 모두 `auto/auto` placement
 ## 계획 실패 관점 검토
 
 [계획 실패 관점 20개](./c11-2-2-sparse-row-order-plan-review-20.md)를 구현 전에 별도로 기록한다. 기존 C11.2.2/C11.2.3 계획 검토는 이 계획의 검토 수에 포함하지 않는다.
+
+## 구현 및 실행 결과 (2026-10-31)
+
+- computed `order`를 `i32`로 fail-closed 투영하고, `SparseRow`에서만 visible direct child가 모두 완전 자동 배치일 때 nonzero order를 허용한다. 희소 배치는 `(order, source_order)`로 정렬하며 HostDocument의 DOM 자식 배열은 유지한다. definite/mixed placement 및 다른 Grid mode는 계속 거부한다.
+- 기존 C11.2.2 16-scene matrix는 손대지 않고 별도 versioned runtime/pixel matrix의 두 scene을 추가했다. Chrome 156 기준 좌표와 HTML·computed style 입력은 [사전 비교 근거](../spec/internal/evidence/c11-2-2-grid-item-order-precomparison-2026-10-31/README.md)에 있다.
+- Android 17/API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 2/2 scene, 11 frame, 최대 geometry 오차 0 CSS px를 확인했다. PixelCopy/Metal drawable 표본은 각 7/7 exact다. Android renderer는 ANGLE/SwiftShader이며 iOS 표본은 compositor 제출 전이다. [Android 실행](../spec/internal/evidence/c11-2-2-grid-item-order-runtime-2026-10-31/android-avd/c1122-order-a-mvvuthqz-298dcdbd/README.md) · [iOS 실행](../spec/internal/evidence/c11-2-2-grid-item-order-runtime-2026-10-31/ios-simulator/c1122-order-i-mvvutu0t-0faf4978/README.md).
+- 이 구현은 두 비겹침 scene의 배치 좌표만 검증한다. CSS `order`의 overlapping paint/stacking, 접근성·keyboard 순서, 일반 author CSS admission, 전체 WPT/Spinon 적합성, 실기기 및 전체 C11은 범위 밖이다.
+- 실패 관점 구현 검토는 [20개 검토](../spec/internal/evidence/c11-2-2-grid-item-order-runtime-2026-10-31/implementation-review-20.md), 실제 PR delta 검토는 [30개 검토](../spec/internal/evidence/c11-2-2-grid-item-order-runtime-2026-10-31/pr-delta-review-30.md)에 기록한다.
 
 ## 실패 기준과 잔여 한계
 

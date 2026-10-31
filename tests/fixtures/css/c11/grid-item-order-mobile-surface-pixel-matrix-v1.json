@@ -1,0 +1,149 @@
+{
+  "schema": "spinon-css-c11-2-2-grid-item-order-mobile-surface-pixel-matrix/v1",
+  "fixtureId": "c11-2-2-grid-item-order-mobile-surface-pixels",
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "surface": "Android SurfaceView PixelCopy 또는 iOS WGPU Metal drawable, compositor 제출 전",
+    "devicePixelFormula": "floor((cssPx + 0.5) * drawablePixels / runtimeViewportCssPx)",
+    "maximumChannelError": 0
+  },
+  "inputs": {
+    "runtimeMatrix": {
+      "path": "tests/fixtures/css/c11/grid-item-order-runtime-matrix-v1.json",
+      "sha256": "369781c736eaffcf651f104b78ee28ca4742fa42b6be0c0a002033d55d69aa0c"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-2-2-grid-item-order-pixel-matrix.mjs",
+      "sha256": "85bcd833e9d276beda46bccc1ee7458bac9e3386d0a006f38d6a13d07fa8059f"
+    }
+  },
+  "cases": [
+    {
+      "id": "order-mixed",
+      "index": 0,
+      "runtimeMatrixSourceSha256": "a842c3e46c6c825bebb9d691ed86cedf5d56f51eeab6e27cd576f562ccecedef",
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1122-order-mixed-grid",
+        "c1122-order-mixed-a",
+        "c1122-order-mixed-b",
+        "c1122-order-mixed-c"
+      ],
+      "samples": [
+        {
+          "id": "item-c1122-order-mixed-a",
+          "nodeId": "c1122-order-mixed-a",
+          "kind": "item",
+          "xCssPx": 25,
+          "yCssPx": 5,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-mixed-b",
+          "nodeId": "c1122-order-mixed-b",
+          "kind": "item",
+          "xCssPx": 5,
+          "yCssPx": 5,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-mixed-c",
+          "nodeId": "c1122-order-mixed-c",
+          "kind": "item",
+          "xCssPx": 15,
+          "yCssPx": 5,
+          "rgba": [
+            43,
+            154,
+            102,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "id": "order-ties",
+      "index": 1,
+      "runtimeMatrixSourceSha256": "553ffcd68d2fd5875f0cceeb7521ccd5f9cef109ad1b2490b7829e945495cbbb",
+      "outcome": "surface-pixel-compare",
+      "nodeIds": [
+        "c1122-order-ties-grid",
+        "c1122-order-ties-a",
+        "c1122-order-ties-b",
+        "c1122-order-ties-c",
+        "c1122-order-ties-d"
+      ],
+      "samples": [
+        {
+          "id": "item-c1122-order-ties-a",
+          "nodeId": "c1122-order-ties-a",
+          "kind": "item",
+          "xCssPx": 25,
+          "yCssPx": 25,
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-ties-b",
+          "nodeId": "c1122-order-ties-b",
+          "kind": "item",
+          "xCssPx": 5,
+          "yCssPx": 25,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-ties-c",
+          "nodeId": "c1122-order-ties-c",
+          "kind": "item",
+          "xCssPx": 15,
+          "yCssPx": 25,
+          "rgba": [
+            43,
+            154,
+            102,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-ties-d",
+          "nodeId": "c1122-order-ties-d",
+          "kind": "item",
+          "xCssPx": 5,
+          "yCssPx": 35,
+          "rgba": [
+            240,
+            174,
+            0,
+            255
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "sceneCount": 2,
+    "sampleCount": 7
+  }
+}

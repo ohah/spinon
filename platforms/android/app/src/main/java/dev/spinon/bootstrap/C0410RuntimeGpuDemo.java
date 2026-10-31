@@ -77,6 +77,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "hidden-child-excluded", "nested-independent-placement", "reject-implicit-column",
             "reject-auto-sized-implicit-row", "reject-repeated-auto-row-pattern",
             "reject-dense-flow", "reject-column-flow", "column-cursor-wrap",
+            "order-mixed", "order-ties",
     };
     private static final String[] C1123_GRID_AUTO_PLACEMENT_SCENE_IDS = {
             "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",
@@ -95,6 +96,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",
             "sparse-hole-not-backfilled", "implicit-track-size-and-gap",
             "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",
+            "order-mixed", "order-ties",
     };
     private static final String[] C1123_GRID_PIXEL_SCENE_IDS = {
             "row-sparse-baseline", "row-dense-hole-fill", "row-dense-span-collision",

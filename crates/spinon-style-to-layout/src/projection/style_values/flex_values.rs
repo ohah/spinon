@@ -239,3 +239,34 @@ pub(super) fn parse_order(node: NodeId, value: &str) -> Result<i32, StyleLayoutE
         .parse::<i32>()
         .map_err(|_| unsupported_value(node, "order", value))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::parse_order;
+    use crate::StyleLayoutError;
+    use spinon_core::NodeId;
+
+    #[test]
+    fn order_values_outside_the_typed_i32_range_fail_closed() {
+        let node = NodeId::new(42).unwrap();
+
+        assert_eq!(parse_order(node, "-2147483648").unwrap(), i32::MIN);
+        assert_eq!(parse_order(node, "2147483647").unwrap(), i32::MAX);
+        assert!(matches!(
+            parse_order(node, "2147483648"),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "order",
+                value,
+            }) if error_node == node && value == "2147483648"
+        ));
+        assert!(matches!(
+            parse_order(node, "-2147483649"),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "order",
+                value,
+            }) if error_node == node && value == "-2147483649"
+        ));
+    }
+}

@@ -27,23 +27,48 @@ pub(super) fn normalize_grid_layout(
         let Some(container) = input.grid_containers.get(&container_node.id) else {
             continue;
         };
-        if container_node.style.display != LayoutDisplay::Grid
-            || hidden[&container_node.id]
-            || !matches!(
-                container.placement_mode,
-                GridPlacementMode::SparseRow
-                    | GridPlacementMode::DenseAutoPlacement
-                    | GridPlacementMode::TemplateGrid
-                    | GridPlacementMode::TemplateGridImplicitTracks
-                    | GridPlacementMode::TemplateGridSignedImplicitTracks
-                    | GridPlacementMode::TrackSizing
-            )
-        {
+        if container_node.style.display != LayoutDisplay::Grid || hidden[&container_node.id] {
+            continue;
+        }
+        let has_ordered_visible_child = container_node
+            .children
+            .iter()
+            .any(|child| !hidden[child] && input.nodes[index[child]].style.order != 0);
+        if has_ordered_visible_child {
+            let supports_ordered_sparse_auto_items = container.placement_mode
+                == GridPlacementMode::SparseRow
+                && container_node.children.iter().all(|child| {
+                    hidden[child]
+                        || input
+                            .grid_items
+                            .get(child)
+                            .is_none_or(GridItemInput::is_auto)
+                });
+            if !supports_ordered_sparse_auto_items
+                && let Some(child) = container_node
+                    .children
+                    .iter()
+                    .copied()
+                    .find(|child| !hidden[child] && input.nodes[index[child]].style.order != 0)
+            {
+                return Err(LayoutError::UnsupportedGridOrder(child));
+            }
+        }
+        if !matches!(
+            container.placement_mode,
+            GridPlacementMode::SparseRow
+                | GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks
+                | GridPlacementMode::TrackSizing
+        ) {
             continue;
         }
         if container.placement_mode == GridPlacementMode::SparseRow {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,
+                index,
                 &hidden,
                 container_node,
                 container,

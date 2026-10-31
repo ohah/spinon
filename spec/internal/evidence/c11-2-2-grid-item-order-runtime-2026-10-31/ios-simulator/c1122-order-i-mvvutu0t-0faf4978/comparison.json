@@ -1,0 +1,464 @@
+{
+  "schema": "spinon-c11-2-2-grid-item-order-mobile-runtime/v1",
+  "status": "matched",
+  "platform": "iOS 26.2 iPhone 17 Pro Simulator",
+  "runID": "c1122-order-i-mvvutu0t-0faf4978",
+  "target": "iPhone 17 Pro · com.apple.CoreSimulator.SimRuntime.iOS-26-2 · ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "device": {
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "lastBootedAt": "2026-10-28T15:53:15Z",
+    "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data",
+    "dataPathSize": 11056271360,
+    "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "isAvailable": true,
+    "logPathSize": 1613824,
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "state": "Booted",
+    "name": "iPhone 17 Pro",
+    "renderer": "WGPU Metal drawable; 표본은 compositor 제출 전 drawable readback"
+  },
+  "appSha256": "615a2d17185759fdd64ce4db556b4bf76391ffaf255d715f81a47d2e0d8dd11c",
+  "inputs": {
+    "runtimeMatrixSha256": "369781c736eaffcf651f104b78ee28ca4742fa42b6be0c0a002033d55d69aa0c",
+    "pixelMatrixSha256": "8d460ab34abc767acafdfffb49e10d6aed868f83916552478e6da17567e4d3a9"
+  },
+  "summary": {
+    "scenes": 2,
+    "frameComparisons": 11,
+    "surfacePixelSamples": 7,
+    "maximumGeometryErrorCssPx": 0,
+    "maximumChannelError": 0,
+    "freshProcessPerScene": true,
+    "screenshotsArePixelParity": false
+  },
+  "observations": [
+    {
+      "sceneId": "order-mixed",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "revisions": {
+        "generation": 1,
+        "document": 25,
+        "environment": 0
+      },
+      "screenshot": "order-mixed-ios-simulator.png",
+      "screenshotSha256": "bb7ac403b4a045f512df287f4eb203ebf448d7c506577cb82841ea1e8b79237e",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1122-order-i-mvvutu0t-0faf4978-order-mixed",
+        "processId": 51003,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 25,
+          "renderTree": 5,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1122-order-mixed-a",
+            "css": [
+              25,
+              5
+            ],
+            "drawable": [
+              76,
+              16
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1122-order-mixed-b",
+            "css": [
+              5,
+              5
+            ],
+            "drawable": [
+              16,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1122-order-mixed-c",
+            "css": [
+              15,
+              5
+            ],
+            "drawable": [
+              46,
+              16
+            ],
+            "rgba": [
+              43,
+              154,
+              102,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1122-order-i-mvvutu0t-0faf4978-order-mixed",
+      "processId": 51003
+    },
+    {
+      "sceneId": "order-ties",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 1,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "revisions": {
+        "generation": 1,
+        "document": 30,
+        "environment": 0
+      },
+      "screenshot": "order-ties-ios-simulator.png",
+      "screenshotSha256": "f27ed90dbb71f5607c837f95e3d33bbd3cc0e249de46509b098dfc8722d74070",
+      "surfacePixelComparison": {
+        "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1122-order-i-mvvutu0t-0faf4978-order-ties",
+        "processId": 51083,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 30,
+          "renderTree": 6,
+          "environment": 1
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "item-c1122-order-ties-a",
+            "css": [
+              25,
+              25
+            ],
+            "drawable": [
+              76,
+              76
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1122-order-ties-b",
+            "css": [
+              5,
+              25
+            ],
+            "drawable": [
+              16,
+              76
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1122-order-ties-c",
+            "css": [
+              15,
+              25
+            ],
+            "drawable": [
+              46,
+              76
+            ],
+            "rgba": [
+              43,
+              154,
+              102,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-c1122-order-ties-d",
+            "css": [
+              5,
+              35
+            ],
+            "drawable": [
+              16,
+              106
+            ],
+            "rgba": [
+              240,
+              174,
+              0,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "runID": "c1122-order-i-mvvutu0t-0faf4978-order-ties",
+      "processId": 51083
+    }
+  ],
+  "pixelObservations": [
+    {
+      "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1122-order-i-mvvutu0t-0faf4978-order-mixed",
+      "processId": 51003,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 25,
+        "renderTree": 5,
+        "environment": 1
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 3,
+      "matchedSamples": 3,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c1122-order-mixed-a",
+          "css": [
+            25,
+            5
+          ],
+          "drawable": [
+            76,
+            16
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c1122-order-mixed-b",
+          "css": [
+            5,
+            5
+          ],
+          "drawable": [
+            16,
+            16
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c1122-order-mixed-c",
+          "css": [
+            15,
+            5
+          ],
+          "drawable": [
+            46,
+            16
+          ],
+          "rgba": [
+            43,
+            154,
+            102,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    },
+    {
+      "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1122-order-i-mvvutu0t-0faf4978-order-ties",
+      "processId": 51083,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 30,
+        "renderTree": 6,
+        "environment": 1
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 4,
+      "matchedSamples": 4,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "item-c1122-order-ties-a",
+          "css": [
+            25,
+            25
+          ],
+          "drawable": [
+            76,
+            76
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c1122-order-ties-b",
+          "css": [
+            5,
+            25
+          ],
+          "drawable": [
+            16,
+            76
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c1122-order-ties-c",
+          "css": [
+            15,
+            25
+          ],
+          "drawable": [
+            46,
+            76
+          ],
+          "rgba": [
+            43,
+            154,
+            102,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-c1122-order-ties-d",
+          "css": [
+            5,
+            35
+          ],
+          "drawable": [
+            16,
+            106
+          ],
+          "rgba": [
+            240,
+            174,
+            0,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "두 fixed row-sparse auto-placement scene만 검증했으며 일반 CSS Grid 또는 C11 완료를 뜻하지 않는다.",
+    "Chrome 156 geometry와 지정 simulator runtime을 비교했다. 두 simulator는 실기기가 아니다.",
+    "표면 픽셀은 Android PixelCopy 또는 iOS Metal drawable 내부 표본이며 OS compositor 출력은 확인하지 않았다.",
+    "비겹침 item만 사용해 painting order, overlap, stacking을 검증하지 않았다."
+  ]
+}

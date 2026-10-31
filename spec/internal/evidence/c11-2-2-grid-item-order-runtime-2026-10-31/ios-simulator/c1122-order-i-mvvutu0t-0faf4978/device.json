@@ -1,0 +1,14 @@
+{
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "lastBootedAt": "2026-10-28T15:53:15Z",
+  "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data",
+  "dataPathSize": 11056271360,
+  "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "isAvailable": true,
+  "logPathSize": 1613824,
+  "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+  "state": "Booted",
+  "name": "iPhone 17 Pro",
+  "renderer": "WGPU Metal drawable; 표본은 compositor 제출 전 drawable readback"
+}

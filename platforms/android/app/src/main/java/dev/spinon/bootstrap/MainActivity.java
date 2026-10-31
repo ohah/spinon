@@ -57,12 +57,14 @@ public final class MainActivity extends Activity {
             "hidden-child-excluded", "nested-independent-placement", "reject-implicit-column",
             "reject-auto-sized-implicit-row", "reject-repeated-auto-row-pattern",
             "reject-dense-flow", "reject-column-flow", "column-cursor-wrap",
+            "order-mixed", "order-ties",
     };
     private static final String[] C1122_GRID_PIXEL_SCENE_IDS = {
             "definite-first-mixed", "auto-only-fill", "positive-implicit-row",
             "row-locked-auto-column", "column-locked-auto-row", "auto-column-span",
             "sparse-hole-not-backfilled", "implicit-track-size-and-gap",
             "hidden-child-excluded", "nested-independent-placement", "column-cursor-wrap",
+            "order-mixed", "order-ties",
     };
     private static final String[] C11_GRID_CASE_IDS = {
             "fixed-tracks-gap", "percentage-tracks", "fractional-tracks-gap",
