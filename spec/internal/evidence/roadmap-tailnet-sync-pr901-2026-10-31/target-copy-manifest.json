@@ -1,0 +1,36 @@
+{
+  "source_head": "5292d162d4f11a50de69f4c7084707f732ec727d",
+  "source": "spec/public/roadmap.html",
+  "source_sha256": "3330422c6a7f0ca76acca6453a1243840f0abe91113021498cd4a2ef63732e7e",
+  "server_pid": "28040",
+  "server_command": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "preview_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr901-2026-10-31/pass01",
+  "no_deletes": true,
+  "files": [
+    {
+      "route": "roadmap.html",
+      "source_bytes": 437642,
+      "source_sha256": "3330422c6a7f0ca76acca6453a1243840f0abe91113021498cd4a2ef63732e7e",
+      "backup_bytes": 436783,
+      "backup_sha256": "f915c285c180257e14db51235e92dd8111ba0f837285c4ee8039f63ff52c539b",
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "source_bytes": 437642,
+      "source_sha256": "3330422c6a7f0ca76acca6453a1243840f0abe91113021498cd4a2ef63732e7e",
+      "backup_bytes": 436783,
+      "backup_sha256": "f915c285c180257e14db51235e92dd8111ba0f837285c4ee8039f63ff52c539b",
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "source_bytes": 437642,
+      "source_sha256": "3330422c6a7f0ca76acca6453a1243840f0abe91113021498cd4a2ef63732e7e",
+      "backup_bytes": 436783,
+      "backup_sha256": "f915c285c180257e14db51235e92dd8111ba0f837285c4ee8039f63ff52c539b",
+      "verified": true
+    }
+  ]
+}

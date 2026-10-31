@@ -1,0 +1,28 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "http": {
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 437642,
+    "sha256": "3330422c6a7f0ca76acca6453a1243840f0abe91113021498cd4a2ef63732e7e",
+    "matches_merged_source": true
+  },
+  "rendered_dom": {
+    "c11_2_2_order_text": "C11.2.2 computed Grid order · 제한 후속 구현 · PR #899 병합",
+    "official_completion_text": "213개 표시 · 공식 완료 72/213",
+    "checkboxes": 213,
+    "checked": 72,
+    "disabled": 213
+  },
+  "screenshot": "tailnet-roadmap-agent-browser.png",
+  "browser_closed": true,
+  "browser_process_check": "No agent-browser or Chrome browser process remained after close; only the process-list command itself matched the search pattern.",
+  "source_status_ledger": {
+    "file": "spec/STATUS.md at origin/main 5292d162d4f11a50de69f4c7084707f732ec727d",
+    "c11_parent_checkbox": "unchecked",
+    "c11_2_2_sparse_auto_placement_checkbox": "checked",
+    "c11_4_intrinsic_track_sizing_checkbox": "unchecked",
+    "c11_2_2_computed_order_followup": "tracked as bounded follow-up; does not change parent/C11.2.2 checkbox state"
+  }
+}
