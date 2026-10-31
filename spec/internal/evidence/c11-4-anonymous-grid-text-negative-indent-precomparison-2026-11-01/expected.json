@@ -1,0 +1,47 @@
+{
+  "oracle": {
+    "specification": "CSS Text Level 3 2026-08-14 CRD §8.1; CSS Sizing Level 3 §5.1; CSS Grid Level 1 2025-03-26 CRD §11",
+    "independentFontMetric": {
+      "font": "Ahem",
+      "sizePx": 10,
+      "unitsPerEm": 1000,
+      "xAdvanceUnits": 1000,
+      "spaceAdvanceUnits": 1000,
+      "xAdvancePx": 10,
+      "spaceAdvancePx": 10
+    },
+    "whiteSpace": "normal",
+    "writingMode": "horizontal-tb",
+    "direction": "ltr",
+    "indentAppliesTo": "first formatted line only",
+    "candidateValuesPx": [-5, -10]
+  },
+  "candidateMetrics": [
+    {"text": "XXX X", "indentPx": -5, "minContentPx": 25, "maxContentPx": 45, "minContentRows": 2, "maxContentRows": 1},
+    {"text": "XXX X", "indentPx": -10, "minContentPx": 20, "maxContentPx": 40, "minContentRows": 2, "maxContentRows": 1},
+    {"text": "X XXX", "indentPx": -5, "minContentPx": 30, "maxContentPx": 45, "minContentRows": 2, "maxContentRows": 1},
+    {"text": "X XXX", "indentPx": -10, "minContentPx": 30, "maxContentPx": 40, "minContentRows": 2, "maxContentRows": 1},
+    {"text": "XX", "indentPx": -5, "minContentPx": 15, "maxContentPx": 15, "minContentRows": 1, "maxContentRows": 1},
+    {"text": "XX", "indentPx": -10, "minContentPx": 10, "maxContentPx": 10, "minContentRows": 1, "maxContentRows": 1}
+  ],
+  "candidateScenes": [
+    {"sceneId": "text-indent-negative-five-first-word-long-min-content", "text": "XXX X", "indentPx": -5, "trackKind": "min-content", "trackPx": 25, "itemHeightPx": 20},
+    {"sceneId": "text-indent-negative-five-first-word-long-max-content", "text": "XXX X", "indentPx": -5, "trackKind": "max-content", "trackPx": 45, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-ten-first-word-long-min-content", "text": "XXX X", "indentPx": -10, "trackKind": "min-content", "trackPx": 20, "itemHeightPx": 20},
+    {"sceneId": "text-indent-negative-ten-first-word-long-max-content", "text": "XXX X", "indentPx": -10, "trackKind": "max-content", "trackPx": 40, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-five-first-word-short-min-content", "text": "X XXX", "indentPx": -5, "trackKind": "min-content", "trackPx": 30, "itemHeightPx": 20},
+    {"sceneId": "text-indent-negative-five-first-word-short-max-content", "text": "X XXX", "indentPx": -5, "trackKind": "max-content", "trackPx": 45, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-ten-first-word-short-min-content", "text": "X XXX", "indentPx": -10, "trackKind": "min-content", "trackPx": 30, "itemHeightPx": 20},
+    {"sceneId": "text-indent-negative-ten-first-word-short-max-content", "text": "X XXX", "indentPx": -10, "trackKind": "max-content", "trackPx": 40, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-five-single-word-min-content", "text": "XX", "indentPx": -5, "trackKind": "min-content", "trackPx": 15, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-five-single-word-max-content", "text": "XX", "indentPx": -5, "trackKind": "max-content", "trackPx": 15, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-ten-single-word-min-content", "text": "XX", "indentPx": -10, "trackKind": "min-content", "trackPx": 10, "itemHeightPx": 10},
+    {"sceneId": "text-indent-negative-ten-single-word-max-content", "text": "XX", "indentPx": -10, "trackKind": "max-content", "trackPx": 10, "itemHeightPx": 10}
+  ],
+  "oracleOnlyBoundary": [
+    {"text": "XXX X", "indentPx": -30, "minContentTrackPx": 10, "maxContentTrackPx": 20},
+    {"text": "X XXX", "indentPx": -30, "minContentTrackPx": 30, "maxContentTrackPx": 30},
+    {"text": "XX", "indentPx": -30, "minContentTrackPx": 0, "maxContentTrackPx": 0}
+  ],
+  "interpretation": "The -30px Grid cases are recorded as Chrome observations only. They are excluded from this implementation profile because negative first-line advance can interact with the intrinsic min/max ordering invariant and Grid track base floor."
+}

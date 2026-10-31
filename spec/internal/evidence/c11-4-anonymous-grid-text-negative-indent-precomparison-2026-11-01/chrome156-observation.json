@@ -1,0 +1,190 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "direction": "ltr",
+  "font": "Ahem 10px/10px, weight 400",
+  "fontLoaded": true,
+  "observations": [
+    {
+      "boxHeightPx": 20,
+      "boxWidthPx": 25,
+      "computedTextIndent": "-5px",
+      "computedTrack": "25px",
+      "id": "first-word-long-5-min-content",
+      "specifiedTextIndent": "-5px",
+      "text": "XXX X",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 45,
+      "computedTextIndent": "-5px",
+      "computedTrack": "45px",
+      "id": "first-word-long-5-max-content",
+      "specifiedTextIndent": "-5px",
+      "text": "XXX X",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 20,
+      "boxWidthPx": 20,
+      "computedTextIndent": "-10px",
+      "computedTrack": "20px",
+      "id": "first-word-long-10-min-content",
+      "specifiedTextIndent": "-10px",
+      "text": "XXX X",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 40,
+      "computedTextIndent": "-10px",
+      "computedTrack": "40px",
+      "id": "first-word-long-10-max-content",
+      "specifiedTextIndent": "-10px",
+      "text": "XXX X",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 20,
+      "boxWidthPx": 10,
+      "computedTextIndent": "-30px",
+      "computedTrack": "10px",
+      "id": "first-word-long-30-min-content",
+      "specifiedTextIndent": "-30px",
+      "text": "XXX X",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 20,
+      "computedTextIndent": "-30px",
+      "computedTrack": "20px",
+      "id": "first-word-long-30-max-content",
+      "specifiedTextIndent": "-30px",
+      "text": "XXX X",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 20,
+      "boxWidthPx": 30,
+      "computedTextIndent": "-5px",
+      "computedTrack": "30px",
+      "id": "first-word-short-5-min-content",
+      "specifiedTextIndent": "-5px",
+      "text": "X XXX",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 45,
+      "computedTextIndent": "-5px",
+      "computedTrack": "45px",
+      "id": "first-word-short-5-max-content",
+      "specifiedTextIndent": "-5px",
+      "text": "X XXX",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 20,
+      "boxWidthPx": 30,
+      "computedTextIndent": "-10px",
+      "computedTrack": "30px",
+      "id": "first-word-short-10-min-content",
+      "specifiedTextIndent": "-10px",
+      "text": "X XXX",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 40,
+      "computedTextIndent": "-10px",
+      "computedTrack": "40px",
+      "id": "first-word-short-10-max-content",
+      "specifiedTextIndent": "-10px",
+      "text": "X XXX",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 30,
+      "computedTextIndent": "-30px",
+      "computedTrack": "30px",
+      "id": "first-word-short-30-min-content",
+      "specifiedTextIndent": "-30px",
+      "text": "X XXX",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 30,
+      "computedTextIndent": "-30px",
+      "computedTrack": "30px",
+      "id": "first-word-short-30-max-content",
+      "specifiedTextIndent": "-30px",
+      "text": "X XXX",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 15,
+      "computedTextIndent": "-5px",
+      "computedTrack": "15px",
+      "id": "single-word-5-min-content",
+      "specifiedTextIndent": "-5px",
+      "text": "XX",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 15,
+      "computedTextIndent": "-5px",
+      "computedTrack": "15px",
+      "id": "single-word-5-max-content",
+      "specifiedTextIndent": "-5px",
+      "text": "XX",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 10,
+      "computedTextIndent": "-10px",
+      "computedTrack": "10px",
+      "id": "single-word-10-min-content",
+      "specifiedTextIndent": "-10px",
+      "text": "XX",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 10,
+      "computedTextIndent": "-10px",
+      "computedTrack": "10px",
+      "id": "single-word-10-max-content",
+      "specifiedTextIndent": "-10px",
+      "text": "XX",
+      "trackKind": "max-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 0,
+      "computedTextIndent": "-30px",
+      "computedTrack": "0px",
+      "id": "single-word-30-min-content",
+      "specifiedTextIndent": "-30px",
+      "text": "XX",
+      "trackKind": "min-content"
+    },
+    {
+      "boxHeightPx": 10,
+      "boxWidthPx": 0,
+      "computedTextIndent": "-30px",
+      "computedTrack": "0px",
+      "id": "single-word-30-max-content",
+      "specifiedTextIndent": "-30px",
+      "text": "XX",
+      "trackKind": "max-content"
+    }
+  ],
+  "whiteSpace": "normal",
+  "writingMode": "horizontal-tb"
+}

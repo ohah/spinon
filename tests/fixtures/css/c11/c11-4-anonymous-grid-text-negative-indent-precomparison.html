@@ -1,0 +1,92 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 negative anonymous Grid text-indent precomparison</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../resources/c15/Ahem.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 12px; font: 12px/16px system-ui, sans-serif; }
+  .case { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 12px; }
+  .label { flex: 0 0 280px; }
+  .grid {
+    display: inline-grid;
+    grid-template-rows: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: 10px/10px Ahem, sans-serif;
+    white-space: normal;
+    direction: ltr;
+    background: #d9e2f2;
+  }
+  #result { white-space: pre-wrap; font: 10px/1.2 monospace; }
+</style>
+<body>
+  <main id="cases"></main>
+  <pre id="result" hidden></pre>
+  <script>
+    const inputs = [
+      ["first-word-long", "XXX X"],
+      ["first-word-short", "X XXX"],
+      ["single-word", "XX"],
+    ];
+    const indents = ["-5px", "-10px", "-30px"];
+    const trackKinds = ["min-content", "max-content"];
+    const cases = document.querySelector("#cases");
+    for (const [textKind, text] of inputs) {
+      for (const indent of indents) {
+        for (const trackKind of trackKinds) {
+          const id = `${textKind}-${indent.slice(1, -2)}-${trackKind}`;
+          const section = document.createElement("section");
+          section.className = "case";
+          section.dataset.case = id;
+          const label = document.createElement("span");
+          label.className = "label";
+          label.textContent = `${textKind} · ${indent} · ${trackKind}`;
+          const grid = document.createElement("div");
+          grid.className = "grid";
+          grid.id = id;
+          grid.style.gridTemplateColumns = trackKind;
+          grid.style.textIndent = indent;
+          grid.textContent = text;
+          section.append(label, grid);
+          cases.append(section);
+        }
+      }
+    }
+    const collect = async () => {
+      await document.fonts.ready;
+      const observations = [...document.querySelectorAll(".grid")].map((grid) => {
+        const style = getComputedStyle(grid);
+        const rect = grid.getBoundingClientRect();
+        return {
+          id: grid.id,
+          text: grid.textContent,
+          specifiedTextIndent: grid.style.textIndent,
+          computedTextIndent: style.textIndent,
+          trackKind: grid.style.gridTemplateColumns,
+          computedTrack: style.gridTemplateColumns,
+          boxWidthPx: rect.width,
+          boxHeightPx: rect.height,
+        };
+      });
+      return {
+        browser: navigator.userAgent,
+        fontLoaded: document.fonts.check("10px Ahem"),
+        font: "Ahem 10px/10px, weight 400",
+        writingMode: getComputedStyle(document.body).writingMode,
+        direction: getComputedStyle(document.body).direction,
+        whiteSpace: getComputedStyle(document.querySelector(".grid")).whiteSpace,
+        observations,
+      };
+    };
+    collect().then((result) => {
+      document.querySelector("#result").textContent = JSON.stringify(result, null, 2);
+      window.precomparison = result;
+    });
+  </script>
+</body>

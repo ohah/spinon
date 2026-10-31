@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-01 anonymous Grid negative `text-indent` · 구현 전 계획 후보
+
+PR #930의 fixed 0/5/10px anonymous text-indent profile 다음으로, CSS Text 3 §8.1에 정의된 negative `<length>` 중 -5px·-10px만 opt-in fixture에 추가하는 [집중 계획](./c11-4-anonymous-grid-text-negative-indent.md)을 작성했다. Chrome 156 Agent Browser 18 track probe와 Ahem independent expectation은 [precomparison evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md)에 있다. [계획 실패 관점 20개](./c11-4-anonymous-grid-text-negative-indent-plan-review-20.md)와 [계획 PR diff 검토 30개](./c11-4-anonymous-grid-text-negative-indent-plan-pr-diff-review-30.md)를 통과했다. `-30px`은 min/max invariant와 Grid track floor를 더 분석해야 하므로 oracle-only이며 구현 범위에 넣지 않았다. 계획 PR diff 검토가 끝나고 계획 PR이 병합되기 전에는 제품 구현을 시작하지 않는다. C11.4/C11 checkbox와 공식 `72/213`은 유지한다.
+
 ## 2026-11-01 anonymous Grid text computed `text-indent` · PR #930 병합
 
 고정 Ahem 10px/400·LTR·`white-space:normal` profile에서 computed `text-indent` 0/5/10px를 기존 opt-in anonymous Grid text intrinsic sizing 경로에 연결한 18-scene slice를 [구현 PR #930](https://github.com/ohah/spinon/pull/930)으로 2026-10-31T16:37:17Z Rebase and merge했다(merge SHA `b1b20e30cc8d36e90d87e902668eb95339698c25`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 18/18 scene을 확인했다. 음수·percentage·`hanging`/`each-line`, glyph paint, 일반 CSS admission, WPT와 전체 C11.4/C11은 이 slice에 포함하지 않는다. [계획](./c11-4-anonymous-grid-text-computed-text-indent.md) · [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/README.md). 공식 완료 `72/213` 및 C11.4/C11 미완료 상태를 유지한다.
