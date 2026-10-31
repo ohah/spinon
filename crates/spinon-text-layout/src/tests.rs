@@ -1004,5 +1004,7 @@ mod c11_4_overflow_wrap;
 mod c11_4_pre;
 #[path = "tests/c11_4_pre_wrap.rs"]
 mod c11_4_pre_wrap;
+#[path = "tests/c11_4_text_transform.rs"]
+mod c11_4_text_transform;
 #[path = "tests/c11_4_word_break.rs"]
 mod c11_4_word_break;

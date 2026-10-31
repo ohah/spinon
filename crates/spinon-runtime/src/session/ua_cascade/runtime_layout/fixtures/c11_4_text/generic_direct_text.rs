@@ -887,6 +887,7 @@ fn paragraph_style_for_with_baseline_alias(
         letter_spacing: 0.0,
         word_spacing: 0.0,
         text_indent: 0.0,
+        text_transform: Default::default(),
     })
 }
 

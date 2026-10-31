@@ -496,6 +496,28 @@ private func c114GenericDirectTextExpectation(
             columns: [textIndent.trackWidth], items: [item]
         )
     }
+    if let textTransform = c114ComputedTextTransformScene(sceneID) {
+        let minContentTrack = sceneID.hasSuffix("-min-content")
+        let lineAdvances = minContentTrack
+            ? [textTransform.firstWordAdvance, textTransform.secondWordAdvance]
+            : [textTransform.unbrokenAdvance]
+        let item = c114GenericTextItem(
+            node: 2, x: 0, width: textTransform.trackWidth, height: textTransform.rowHeight,
+            minContent: textTransform.minContent, maxContent: textTransform.maxContent,
+            minContentHeight: textTransform.minContentHeight, maxContentHeight: 10,
+            rawText: "IIII ii", layoutText: textTransform.layoutText,
+            whiteSpace: "Normal", wordBreak: "Normal",
+            availableWidth: textTransform.trackWidth,
+            textWidth: minContentTrack
+                ? textTransform.trackWidth : textTransform.unbrokenAdvance,
+            fontFamily: "Noto Sans KR", locale: "en", lineBreak: "Strict",
+            lineAdvances: lineAdvances
+        )
+        return C114GenericDirectTextSceneExpectation(
+            rootWidth: 120, rootHeight: textTransform.rowHeight,
+            columns: [textTransform.trackWidth], items: [item]
+        )
+    }
     if let definiteAxis = c114GenericDirectTextDefiniteAxisExpectation(sceneID) {
         return definiteAxis
     }
@@ -1345,6 +1367,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     if c114IsComputedFontSizeScene(sceneID) { return true }
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     if c114ComputedTextIndentScene(sceneID) != nil { return true }
+    if c114ComputedTextTransformScene(sceneID) != nil { return true }
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
     if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil { return true }
     if c114DirectTextMultispanSceneExpectation(sceneID) != nil { return true }
@@ -7058,6 +7081,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
     let expectedFontRegistryRevision = scene.items.contains {
         $0.fontFamily == "Noto Sans KR"
     } ? 2 : 1
+    let expectedTextTransform = c114ComputedTextTransformStyle(sceneID) ?? "None"
     for (index, expected) in scene.items.enumerated() {
         let layout = layouts[index]
         let expectedTextWidth = expected.textWidth != expected.width
@@ -7098,6 +7122,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONNear(style["letterSpacing"], expected: expected.letterSpacing, tolerance: 0),
               c114GenericJSONNear(style["wordSpacing"], expected: expected.wordSpacing, tolerance: 0),
               c114GenericJSONNear(style["textIndent"], expected: expected.textIndent, tolerance: 0),
+              c114GenericJSONString(style["textTransform"]) == expectedTextTransform,
               c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
               c114GenericJSONString(style["textOrientation"]) == "Mixed",
               c114GenericJSONString(style["lineBreak"]) == expected.lineBreak,
@@ -8614,6 +8639,10 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if let textIndent = c114ComputedTextIndentScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
             + "height=\(c114GenericFrameNumber(textIndent.rowHeight))]"
+    }
+    if let textTransform = c114ComputedTextTransformScene(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
+            + "height=\(c114GenericFrameNumber(textTransform.rowHeight))]"
     }
     if let letterSpacing = c114ComputedLetterSpacingScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
@@ -10357,6 +10386,7 @@ private func c114GapNodeFrames(
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if c114ComputedWordBreakScene(sceneID) != nil { return 1 }
     if c114ComputedTextIndentScene(sceneID) != nil { return 1 }
+    if c114ComputedTextTransformScene(sceneID) != nil { return 1 }
     if c114ComputedWordSpacingScene(sceneID) != nil { return 1 }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return 1 }
     if c114IsComputedFontSizeScene(sceneID) { return 1 }
@@ -10573,6 +10603,7 @@ private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
     c114ComputedWordBreakScene(sceneID) != nil
         || c114ComputedWordSpacingScene(sceneID) != nil
         || c114ComputedTextIndentScene(sceneID) != nil
+        || c114ComputedTextTransformScene(sceneID) != nil
         || c114ComputedLetterSpacingScene(sceneID) != nil
         || c114IsComputedFontSizeScene(sceneID)
         || c114ComputedLineHeightTrackHeight(sceneID) != nil
@@ -10850,6 +10881,45 @@ private func c114ComputedTextIndentScene(
     #else
     return nil
     #endif
+}
+
+private func c114ComputedTextTransformScene(
+    _ sceneID: String
+) -> (minContent: Double, maxContent: Double, trackWidth: Double, rowHeight: Double,
+    minContentHeight: Double, firstWordAdvance: Double, secondWordAdvance: Double,
+    unbrokenAdvance: Double, layoutText: String)? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    guard let mode = c114ComputedTextTransformStyle(sceneID) else { return nil }
+    let minContentTrack = sceneID.hasSuffix("-min-content")
+    let metrics: (Double, Double, Double, Double, Double)
+    switch mode {
+    case "None": metrics = (11.734375, 19.46875, 11.72, 5.5, 19.46)
+    case "Uppercase": metrics = (11.734375, 19.84375, 11.72, 5.86, 19.82)
+    case "Lowercase": metrics = (11.0, 18.71875, 11.0, 5.5, 18.74)
+    default: return nil
+    }
+    let trackWidth = minContentTrack ? metrics.0 : metrics.1
+    return (
+        minContent: metrics.0, maxContent: metrics.1, trackWidth: trackWidth,
+        rowHeight: minContentTrack ? 20 : 10, minContentHeight: 20,
+        firstWordAdvance: metrics.2, secondWordAdvance: metrics.3,
+        unbrokenAdvance: metrics.4,
+        layoutText: mode == "Uppercase" ? "IIII II" : mode == "Lowercase" ? "iiii ii" : "IIII ii"
+    )
+    #else
+    return nil
+    #endif
+}
+
+private func c114ComputedTextTransformStyle(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "text-transform-none-min-content", "text-transform-none-max-content": return "None"
+    case "text-transform-uppercase-min-content", "text-transform-uppercase-max-content":
+        return "Uppercase"
+    case "text-transform-lowercase-min-content", "text-transform-lowercase-max-content":
+        return "Lowercase"
+    default: return nil
+    }
 }
 
 private func c114ComputedLetterSpacingTextIntrinsicInputsMatch(

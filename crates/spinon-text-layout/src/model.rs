@@ -121,6 +121,15 @@ pub enum OverflowWrapMode {
     BreakWord,
 }
 
+/// C11.4 anonymous Grid text profile의 computed CSS `text-transform` 값입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum TextTransformMode {
+    #[default]
+    None,
+    Uppercase,
+    Lowercase,
+}
+
 /// C15.3의 고정 paragraph base direction입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub enum TextDirection {
@@ -179,6 +188,8 @@ pub struct ParagraphStyle {
     pub word_spacing: f32,
     /// Paragraph의 first formatted line에 적용하는 computed CSS `text-indent` (CSS px)입니다.
     pub text_indent: f32,
+    /// 제한 text profile에서 layout용 normalized text에 적용하는 computed 변환입니다.
+    pub text_transform: TextTransformMode,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
     pub overflow_wrap: OverflowWrapMode,
@@ -246,6 +257,7 @@ impl Default for ParagraphStyle {
             letter_spacing: 0.0,
             word_spacing: 0.0,
             text_indent: 0.0,
+            text_transform: TextTransformMode::None,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
             overflow_wrap: OverflowWrapMode::Normal,

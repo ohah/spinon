@@ -2,7 +2,9 @@ use std::{ops::Range, sync::Arc};
 
 use spinon_core::{NodeId, TextOrientation, WritingMode};
 
-use crate::{FontStyleMode, LigatureMode, LineBreakMode, OverflowWrapMode, TextDirection};
+use crate::{
+    FontStyleMode, LigatureMode, LineBreakMode, OverflowWrapMode, TextDirection, TextTransformMode,
+};
 
 /// 같은 font registry 입력에서 생성한 revision입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, PartialEq)]
@@ -320,6 +322,7 @@ pub struct TextLayoutSnapshot {
     pub direction: TextDirection,
     pub line_break: LineBreakMode,
     pub overflow_wrap: OverflowWrapMode,
+    pub text_transform: TextTransformMode,
     pub ligatures: LigatureMode,
     pub width: f32,
     pub height: f32,
@@ -338,6 +341,7 @@ impl PartialEq for TextLayoutSnapshot {
             && self.direction == other.direction
             && self.line_break == other.line_break
             && self.overflow_wrap == other.overflow_wrap
+            && self.text_transform == other.text_transform
             && self.ligatures == other.ligatures
             && self.width == other.width
             && self.height == other.height

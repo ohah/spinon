@@ -1,0 +1,371 @@
+use super::*;
+
+use spinon_core::{
+    AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
+    HostParent, OwnerId,
+};
+use spinon_layout::{
+    LayoutGridItemIntrinsicSource, LayoutGridTrackSizingAxis,
+    LayoutGridTrackSizingContributionKind, TextTransformMode,
+};
+
+const HTML: &str = "http://www.w3.org/1999/xhtml";
+
+#[derive(Clone, Copy)]
+struct Case {
+    scene_id: &'static str,
+    computed_value: &'static str,
+    mode: TextTransformMode,
+    expected_text: &'static str,
+    is_min_content: bool,
+    min_content: f32,
+    max_content: f32,
+    first_line_advance: f32,
+    second_line_advance: f32,
+}
+
+const CASES: [Case; 6] = [
+    case(TextTransformMode::None, true),
+    case(TextTransformMode::None, false),
+    case(TextTransformMode::Uppercase, true),
+    case(TextTransformMode::Uppercase, false),
+    case(TextTransformMode::Lowercase, true),
+    case(TextTransformMode::Lowercase, false),
+];
+
+const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
+    let (value, min_scene_id, max_scene_id, expected_text, min_content, max_content, first, second) =
+        match mode {
+            TextTransformMode::None => (
+                "none",
+                "text-transform-none-min-content",
+                "text-transform-none-max-content",
+                "IIII ii",
+                11.734375,
+                19.46875,
+                11.72,
+                5.5,
+            ),
+            TextTransformMode::Uppercase => (
+                "uppercase",
+                "text-transform-uppercase-min-content",
+                "text-transform-uppercase-max-content",
+                "IIII II",
+                11.734375,
+                19.84375,
+                11.72,
+                5.86,
+            ),
+            TextTransformMode::Lowercase => (
+                "lowercase",
+                "text-transform-lowercase-min-content",
+                "text-transform-lowercase-max-content",
+                "iiii ii",
+                11.0,
+                18.71875,
+                11.0,
+                5.5,
+            ),
+        };
+    Case {
+        scene_id: if is_min_content {
+            min_scene_id
+        } else {
+            max_scene_id
+        },
+        computed_value: value,
+        mode,
+        expected_text,
+        is_min_content,
+        min_content,
+        max_content,
+        first_line_advance: first,
+        second_line_advance: second,
+    }
+}
+
+#[test]
+fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom_text() {
+    assert_eq!(CASES.len(), 6);
+    assert_eq!(
+        CASES
+            .iter()
+            .map(|case| case.scene_id)
+            .collect::<std::collections::BTreeSet<_>>()
+            .len(),
+        CASES.len()
+    );
+
+    for (index, case) in CASES.iter().enumerate() {
+        let (snapshot, root, text_node) = snapshot_for(case, 12_910 + index as u64, Some("en"));
+        let request = WorkRequest {
+            key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+            snapshot: snapshot.clone(),
+            viewport: CssViewport {
+                width_css_px: 120.0,
+                height_css_px: 100.0,
+                device_scale_factor: 1.0,
+                environment_revision: EnvironmentRevision::INITIAL,
+                media_environment: CssMediaEnvironment::MOBILE,
+            },
+            previous_snapshot: None,
+            force_full: true,
+            invalidation: None,
+            previous_styles: None,
+        };
+        let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
+            .unwrap_or_else(|error| panic!("{}: {error:?}", case.scene_id));
+        let computed_style = calculation
+            .roots
+            .iter()
+            .flat_map(|root| root.styles.elements.iter())
+            .find(|style| style.node_id == root.id())
+            .expect("root computed style belongs to the calculation");
+        assert_eq!(
+            computed_style
+                .properties
+                .get("text-transform")
+                .map(String::as_str),
+            Some(case.computed_value),
+            "{} computed text-transform",
+            case.scene_id
+        );
+        assert_eq!(
+            calculation.roots[0].styles.document_revision,
+            snapshot.document_revision(),
+            "{} computed style revision",
+            case.scene_id
+        );
+
+        let layout = calculation
+            .layout
+            .unwrap_or_else(|error| panic!("{} layout: {error:?}", case.scene_id));
+        let root_frame = layout
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == root.id().get())
+            .expect("Grid root frame");
+        let expected_track = if case.is_min_content {
+            case.min_content
+        } else {
+            case.max_content
+        };
+        let expected_height = if case.is_min_content { 20.0 } else { 10.0 };
+        assert_eq!(
+            (root_frame.width, root_frame.height),
+            (120.0, expected_height)
+        );
+
+        let diagnostics = layout
+            .grid_track_sizing_diagnostics
+            .as_ref()
+            .expect("opt-in C11.4 diagnostics");
+        assert!(matches!(
+            diagnostics.revision.source(),
+            spinon_layout::LayoutSourceRevision::HostDocument { document, .. }
+                if document == snapshot.document_revision()
+        ));
+        let item = diagnostics
+            .item_inputs
+            .iter()
+            .find(|input| input.node == text_node.id())
+            .expect("anonymous text intrinsic input");
+        let LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
+            panic!("{} item did not use text intrinsic sizes", case.scene_id);
+        };
+        close_to(sizes.min_content(), case.min_content, case.scene_id);
+        close_to(sizes.max_content(), case.max_content, case.scene_id);
+        close_to(sizes.min_content_height(), 20.0, case.scene_id);
+        close_to(sizes.max_content_height(), 10.0, case.scene_id);
+
+        let text_layout = diagnostics
+            .item_text_layouts
+            .iter()
+            .find(|text| text.input.node == text_node.id())
+            .expect("anonymous text layout");
+        assert_eq!(text_layout.input.style.text_transform, case.mode);
+        assert_eq!(text_layout.input.sources[0].text, "IIII ii");
+        assert_eq!(text_layout.layout.text_transform, case.mode);
+        assert_eq!(text_layout.layout.text, case.expected_text);
+        assert_eq!(text_layout.layout.sources.len(), 7);
+        for (source_index, source) in text_layout.layout.sources.iter().enumerate() {
+            assert_eq!(source.node, text_node.id());
+            assert_eq!(source.source_utf16, source_index..source_index + 1);
+            assert_eq!(source.paragraph_utf8, source_index..source_index + 1);
+        }
+        let expected_line_count = if case.is_min_content { 2 } else { 1 };
+        assert_eq!(text_layout.layout.lines.len(), expected_line_count);
+        close_to(
+            text_layout.layout.lines[0].advance,
+            if case.is_min_content {
+                case.first_line_advance
+            } else {
+                case.max_content
+            },
+            case.scene_id,
+        );
+        if case.is_min_content {
+            close_to(
+                text_layout.layout.lines[1].advance,
+                case.second_line_advance,
+                case.scene_id,
+            );
+        }
+
+        let trace = diagnostics
+            .traces
+            .iter()
+            .find(|trace| trace.node == root.id())
+            .expect("Grid sizing trace");
+        let column_pass = trace
+            .passes
+            .iter()
+            .rfind(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+            .expect("column sizing pass");
+        let track_sizes = column_pass
+            .stages
+            .last()
+            .expect("final column sizing stage")
+            .tracks
+            .iter()
+            .filter(|track| !track.is_gutter)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>();
+        assert_eq!(track_sizes.len(), 1, "{} track count", case.scene_id);
+        close_to(track_sizes[0], expected_track, case.scene_id);
+        let expected_contribution_kind = if case.is_min_content {
+            LayoutGridTrackSizingContributionKind::MinContent
+        } else {
+            LayoutGridTrackSizingContributionKind::MaxContent
+        };
+        let expected_contribution = if case.is_min_content {
+            case.first_line_advance
+        } else {
+            text_layout.layout.lines[0].advance
+        };
+        assert!(
+            column_pass.contributions.iter().any(|contribution| {
+                contribution.kind == expected_contribution_kind
+                    && (contribution.value - expected_contribution).abs() <= 1.0 / 64.0
+            }),
+            "{} expected {:?} contribution near {}, got {:?}",
+            case.scene_id,
+            expected_contribution_kind,
+            expected_contribution,
+            column_pass.contributions
+        );
+    }
+}
+
+#[test]
+fn anonymous_grid_text_transform_rejects_wrong_value_or_missing_direct_language() {
+    for (index, (value, lang)) in [("lowercase", Some("en")), ("uppercase", None)]
+        .into_iter()
+        .enumerate()
+    {
+        let mut case = CASES[2];
+        case.computed_value = value;
+        let (snapshot, _, _) = snapshot_for(&case, 12_920 + index as u64, lang);
+        let request = WorkRequest {
+            key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+            snapshot,
+            viewport: CssViewport {
+                width_css_px: 120.0,
+                height_css_px: 100.0,
+                device_scale_factor: 1.0,
+                environment_revision: EnvironmentRevision::INITIAL,
+                media_environment: CssMediaEnvironment::MOBILE,
+            },
+            previous_snapshot: None,
+            force_full: true,
+            invalidation: None,
+            previous_styles: None,
+        };
+        let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
+            .unwrap_or_else(|error| panic!("{}: {error:?}", case.scene_id));
+        let Err(error) = calculation.layout else {
+            panic!("{} invalid transform input published layout", case.scene_id);
+        };
+        assert!(
+            format!("{error:?}").contains("unsupported_c114_anonymous_text_style"),
+            "{error:?}"
+        );
+    }
+}
+
+fn snapshot_for(
+    case: &Case,
+    owner_id: u64,
+    lang: Option<&str>,
+) -> (
+    std::sync::Arc<spinon_core::HostDocumentSnapshot>,
+    HostNodeHandle,
+    HostNodeHandle,
+) {
+    let mut document = HostDocument::new().unwrap();
+    let root = document.reserve_node_handle().unwrap();
+    let text = document.reserve_node_handle().unwrap();
+    let mut batch = DocumentChangeBatch::new(
+        OwnerId::new(owner_id).unwrap(),
+        document.document_revision(),
+    );
+    batch.push(DocumentOperation::CreateElement {
+        node: root,
+        namespace: HTML.to_owned(),
+        local_name: "div".to_owned(),
+    });
+    set_attribute(
+        &mut batch,
+        root,
+        "id",
+        &format!("c114-{}-grid", case.scene_id),
+    );
+    if let Some(lang) = lang {
+        set_attribute(&mut batch, root, "lang", lang);
+    }
+    set_attribute(
+        &mut batch,
+        root,
+        "style",
+        &format!(
+            "box-sizing:border-box;display:grid;width:120px;height:auto;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:auto;font-family:\"Noto Sans KR\";font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:{};letter-spacing:normal;word-spacing:0px;text-indent:0px",
+            if case.is_min_content {
+                "min-content"
+            } else {
+                "max-content"
+            },
+            case.computed_value
+        ),
+    );
+    batch.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Root,
+        node: root,
+        before: None,
+    });
+    batch.push(DocumentOperation::CreateText {
+        node: text,
+        data: "IIII ii".into(),
+    });
+    batch.push(DocumentOperation::InsertBefore {
+        parent: HostParent::Node(root),
+        node: text,
+        before: None,
+    });
+    document.commit(batch).unwrap();
+    (std::sync::Arc::new(document.snapshot()), root, text)
+}
+
+fn set_attribute(batch: &mut DocumentChangeBatch, node: HostNodeHandle, name: &str, value: &str) {
+    batch.push(DocumentOperation::SetAttribute {
+        node,
+        name: AttributeName::new(None, name).unwrap(),
+        value: value.into(),
+    });
+}
+
+fn close_to(actual: f32, expected: f32, label: &str) {
+    assert!(
+        (actual - expected).abs() <= 0.03125,
+        "{label}: expected {expected}, got {actual} CSS px"
+    );
+}

@@ -842,6 +842,7 @@ fn typed_auto_repeat_paragraph_style() -> ParagraphStyle {
         letter_spacing: 0.0,
         word_spacing: 0.0,
         text_indent: 0.0,
+        text_transform: Default::default(),
     }
 }
 
@@ -1121,6 +1122,7 @@ fn ahem_paragraph_style(case: &TextCase) -> ParagraphStyle {
         letter_spacing: 0.0,
         word_spacing: 0.0,
         text_indent: 0.0,
+        text_transform: Default::default(),
     }
 }
 

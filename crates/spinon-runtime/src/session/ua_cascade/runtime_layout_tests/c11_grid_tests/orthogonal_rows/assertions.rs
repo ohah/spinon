@@ -361,6 +361,7 @@ fn debug_raw_runtime_output(
             letter_spacing: 0.0,
             word_spacing: 0.0,
             text_indent: 0.0,
+            text_transform: Default::default(),
         },
     )]);
     let mut engine = TextLayoutEngine::new_without_system_fonts();

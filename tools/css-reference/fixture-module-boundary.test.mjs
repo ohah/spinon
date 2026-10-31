@@ -2246,7 +2246,9 @@ test('C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulat
   assert.match(ffi,
     /#\[path = "anonymous_text_items\/computed_font_size\.rs"\]\s*mod computed_font_size;/);
   assert.match(runtime,
-    /validate_computed_font_size\(grid_style, scene_id\)[\s\S]*anonymous_paragraph_style\(\s*scene_id,\s*tab_size,\s*line_height,\s*font_size,\s*letter_spacing,\s*word_spacing,\s*text_indent,?\s*\)/);
+    /let font_size = validate_computed_font_size\(grid_style, scene_id\)\?;[\s\S]*let validated_text_style = validate_grid_style\(grid_style, scene_id, font_size\)\?;/);
+  assert.match(runtime,
+    /let mut paragraph_style = anonymous_paragraph_style\(\s*scene_id,\s*validated_text_style\.tab_size,\s*validated_text_style\.line_height,\s*font_size,\s*validated_text_style\.letter_spacing,\s*validated_text_style\.word_spacing,\s*validated_text_style\.text_indent,?\s*\);[\s\S]*paragraph_style\.text_transform = validated_text_style\.text_transform;/);
   assert.ok(validation.includes('style.font_size_css_px'));
   assert.ok(capture.includes("target: 'Android API 37 ARM64 AVD'"));
   assert.ok(capture.includes("target: 'iPhone 17 Pro / iOS 26.2 Simulator'"));
@@ -2418,4 +2420,42 @@ test('C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reache
   assert.ok(runtimeTestSource.includes('anonymous_grid_overflow_wrap_rejects_scene_value_mismatch'));
   assert.ok(evidence.includes('9/9'));
   assert.ok(evidence.includes('overflow'));
+});
+
+test('C11.4 computed text-transform scenes stay behind fixture-test gates', async () => {
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_text_transform.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [runtimeGpu, ffiRoute, ffiScenes, runtime, runtimeTests, android, ios] = contents;
+  const scenes = [
+    'text-transform-none-min-content', 'text-transform-none-max-content',
+    'text-transform-uppercase-min-content', 'text-transform-uppercase-max-content',
+    'text-transform-lowercase-min-content', 'text-transform-lowercase-max-content',
+  ];
+  assert.match(runtimeGpu,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(ffiRoute,
+    /#\[path = "anonymous_text_items\/computed_text_transform\.rs"\]\s*mod computed_text_transform;/);
+  assert.match(runtimeTests,
+    /#\[cfg\(feature = "c11-4-grid-track-sizing-fixture-test"\)\][\s\S]*anonymous_text_text_transform;/);
+  for (const scene of scenes) {
+    assert.ok(ffiScenes.includes(scene), `FFI fixture contains ${scene}`);
+    assert.ok(runtime.includes(scene), `runtime fixture contains ${scene}`);
+    assert.ok(android.includes(scene), `Android scene validator contains ${scene}`);
+    assert.ok(ios.includes(scene), `iOS scene validator contains ${scene}`);
+  }
+  assert.match(android,
+    /c114ComputedTextTransformScene\(sceneId\)[\s\S]*BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST/);
+  assert.match(android,
+    /c114ComputedTextTransformStyle\(String sceneId\)[\s\S]*!BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST/);
+  assert.match(ios,
+    /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1[\s\S]*c114ComputedTextTransformScene/);
 });

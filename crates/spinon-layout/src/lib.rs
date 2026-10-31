@@ -68,7 +68,7 @@ pub use spinon_text_layout::{
     InlineRunStyle, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, ParagraphStyle,
     TabSize, TextDirection as TextParagraphDirection, TextGlyph, TextGlyphRasterSnapshot,
     TextIntrinsicLogicalSizes, TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun,
-    TextSource, TextSourceRange, WhiteSpaceMode, WordBreakMode,
+    TextSource, TextSourceRange, TextTransformMode, WhiteSpaceMode, WordBreakMode,
 };
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,

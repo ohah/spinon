@@ -1,7 +1,7 @@
 use spinon_core::NodeId;
 use spinon_layout::{
     FontStyleMode, InlineRunStyle, LayoutFrame, LigatureMode, LineBreakMode, ParagraphStyle,
-    TextParagraphDirection, WhiteSpaceMode, WordBreakMode,
+    TextParagraphDirection, TextTransformMode, WhiteSpaceMode, WordBreakMode,
 };
 use spinon_render::RuntimeSrgbColor;
 use spinon_style::ComputedElementStyle;
@@ -32,6 +32,7 @@ pub(super) fn paragraph_style(
         letter_spacing: 0.0,
         word_spacing: 0.0,
         text_indent: 0.0,
+        text_transform: TextTransformMode::None,
     })
 }
 

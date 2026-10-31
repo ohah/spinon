@@ -1,0 +1,7 @@
+scene	result	text_transform	track	line_count	grid_column_px	grid_row_px	trace_parts
+text-transform-none-min-content	PASS	none	min-content	2	11.719999313354492	20	7
+text-transform-none-max-content	PASS	none	max-content	1	19.459999084472656	10	8
+text-transform-uppercase-min-content	PASS	uppercase	min-content	2	11.719999313354492	20	7
+text-transform-uppercase-max-content	PASS	uppercase	max-content	1	19.81999969482422	10	8
+text-transform-lowercase-min-content	PASS	lowercase	min-content	2	11	20	7
+text-transform-lowercase-max-content	PASS	lowercase	max-content	1	18.739999771118164	10	8
