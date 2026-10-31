@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid text overflow-wrap precomparison</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 16px; color: #162333; font: 14px/1.4 system-ui, sans-serif; }
+    h1 { margin: 0 0 12px; font-size: 20px; }
+    #summary { margin: 0 0 12px; white-space: pre-wrap; }
+    #cases { display: grid; gap: 4px; }
+    .case { display: grid; grid-template-columns: 300px 120px; align-items: start; gap: 12px; }
+    .label { font: 12px/14px ui-monospace, monospace; }
+    .grid {
+      box-sizing: border-box;
+      display: grid;
+      width: 120px;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      align-items: start;
+      align-content: start;
+      justify-content: start;
+      grid-template-rows: auto;
+      font-family: Ahem;
+      font-size: 10px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 10px;
+      white-space-collapse: collapse;
+      text-wrap-mode: wrap;
+      word-break: normal;
+      line-break: auto;
+      direction: ltr;
+      writing-mode: horizontal-tb;
+      color: #e5484d;
+      background: #101820;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>C11.4 anonymous Grid text: computed <code>overflow-wrap</code></h1>
+    <pre id="summary">Loading pinned Ahem font…</pre>
+    <section id="cases"></section>
+  </main>
+  <script>
+    (() => {
+      const cases = [];
+      for (const overflowWrap of ["normal", "anywhere", "break-word"]) {
+        for (const track of ["min-content", "max-content", "fixed-10px"]) {
+          const id = `overflow-wrap-${overflowWrap}-${track}`;
+          const row = document.createElement("div");
+          row.className = "case";
+          row.dataset.caseId = id;
+          const label = document.createElement("span");
+          label.className = "label";
+          label.textContent = `${id} · "XXXX" · Ahem 10px`;
+          const grid = document.createElement("div");
+          grid.className = "grid";
+          grid.id = id;
+          grid.style.overflowWrap = overflowWrap;
+          grid.style.gridTemplateColumns = track === "fixed-10px" ? "10px" : track;
+          grid.appendChild(document.createTextNode("XXXX"));
+          row.append(label, grid);
+          document.querySelector("#cases").append(row);
+          cases.push({ id, overflowWrap, track, text: "XXXX", grid });
+        }
+      }
+
+      window.__C114_OVERFLOW_WRAP_PRECOMPARISON__ = document.fonts.load("10px Ahem").then(() => {
+        const fontLoaded = document.fonts.check("10px Ahem");
+        const observations = cases.map(({ id, overflowWrap, track, text, grid }) => {
+          const style = getComputedStyle(grid);
+          const rect = grid.getBoundingClientRect();
+          return {
+            id,
+            authoredOverflowWrap: overflowWrap,
+            computedOverflowWrap: style.overflowWrap,
+            computedWordBreak: style.wordBreak,
+            computedFontFamily: style.fontFamily,
+            computedFontSize: style.fontSize,
+            computedLineHeight: style.lineHeight,
+            text,
+            track,
+            columns: style.gridTemplateColumns,
+            rows: style.gridTemplateRows,
+            textLineTops: (() => {
+              const range = document.createRange();
+              range.selectNodeContents(grid);
+              return Array.from(new Set(Array.from(range.getClientRects(), rect => rect.top)));
+            })(),
+            rootBox: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+          };
+        });
+        const result = {
+          fontLoaded,
+          userAgent: navigator.userAgent,
+          dpr: devicePixelRatio,
+          overflowWrapAnywhereSupported: CSS.supports("overflow-wrap", "anywhere"),
+          observations,
+        };
+        document.querySelector("#summary").textContent =
+          `Ahem loaded: ${fontLoaded} · ${observations.length} scenes · ${navigator.userAgent}`;
+        return result;
+      });
+    })();
+  </script>
+</body>
+</html>
