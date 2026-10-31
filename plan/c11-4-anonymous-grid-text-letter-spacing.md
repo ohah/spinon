@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** 계획 PR #919 병합 뒤 제한 구현 diff를 검토했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 16-scene runtime matrix가 각각 통과했고, 기본/fixture release static archive에서 신규 adapter·validator symbol과 16개 scene payload 경계를 확인했다. focused 회귀 검사, 구현/runtime 실패 관점 20개와 PR diff 30개 검토를 마쳤다. 구현 PR 생성·checks·merge는 남아 있으며 C11.4/C11 공식 완료 수는 올리지 않았다. 사전 비교와 구현 전 계획 검토는 각각 [비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-letter-spacing-precomparison-2026-10-31/README.md), [20개 실패 관점](./c11-4-anonymous-grid-text-letter-spacing-plan-review-20.md)에 둔다.
+**상태:** 계획 PR #919에 이은 제한 구현 PR [#920](https://github.com/ohah/spinon/pull/920)은 2026-10-31T11:22:59Z Rebase and merge됐고 merge SHA는 `15888d08fbbc171815fb77ce249d1fafa11cb9cd`다. PR check은 보고되지 않았고 main에는 required status check이 없다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 16-scene runtime matrix가 각각 통과했고, 기본/fixture release static archive 경계도 확인했다. focused 회귀 검사, 구현/runtime 실패 관점 20개와 PR diff 30개 검토를 마쳤다. C11.4/C11 공식 완료 수는 올리지 않았다. 사전 비교와 구현 전 계획 검토는 각각 [비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-letter-spacing-precomparison-2026-10-31/README.md), [20개 실패 관점](./c11-4-anonymous-grid-text-letter-spacing-plan-review-20.md)에 둔다.
 
 ## 목적과 경계
 
