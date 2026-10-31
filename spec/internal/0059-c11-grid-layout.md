@@ -90,7 +90,7 @@ PR #807에서 병합된 구현은 template area dimension과 authored `grid-temp
 
 실행과 review: [증거 요약 및 범위](./evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.md) · [Android AVD](./evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.md) · [iOS Simulator](./evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.md). 이 bounded slice는 C11.3.3/C11 완료를 뜻하지 않으며 공식 완료 `72/213`을 유지한다.
 
-## C11.3.3 area-backed typed `grid-auto-*` · 제한 구현 후보 · 2026-10-31
+## C11.3.3 area-backed typed `grid-auto-*` · 제한 구현 slice · 2026-10-31
 
 기존 `RuntimeBlockFlexGridTemplateV1`의 template-area 경로에만 C11.4가 이미 표현하는 nonempty typed `grid-auto-rows`·`grid-auto-columns` 목록을 전달한다. Area dimension이 authored explicit track보다 큰 경우 부족한 track은 기존 목록 앞에서부터 채우며, 그 뒤 positive trailing named-line implicit expansion은 area가 소비한 pattern phase부터 순환한다. Track 문법과 sizing 알고리즘을 새로 만들지 않고 기존 C11.4 `track_size`·typed projection·Taffy sizing을 재사용한다. Empty/malformed/unsupported 목록, area가 없는 profile, signed leading/negative implicit mode, auto-repeat + area 조합과 일반 author CSS admission은 계속 거부한다.
 
@@ -98,7 +98,7 @@ Chrome 156 DPR 1의 고정 typed-area scene 두 개는 row `minmax(20px, 1fr)`�
 
 Workspace `fmt`, all-target Clippy, layout/style/style-to-layout/FFI focused tests, 50 Node/C11.3.3/fixture-boundary tests, Android/iOS 최신 source matrix가 통과했다. 기본 macOS ARM64 Release `spinon-ffi` archive는 typed scene marker와 C11.3.3 fixture export가 없고, opt-in fixture-test positive control은 두 typed scene ID와 `new`/`eval` exports를 포함한다. [Chrome/실행·hash·artifact 근거](./evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/README.md) · [계획](../../plan/c11-3-3-template-area-auto-track-sizing.md) · [구현/runtime 실패 관점 검토 20개](./evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/implementation-runtime-review-20.md) · [PR diff 검토 30개](./evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/pr-diff-review-30.md).
 
-Android는 API 37 AVD/SwiftShader이며 iOS Metal readback은 OS compositor 제출 전이다. 실기기/hardware GPU, 전체 WPT, 일반 CSS author admission, 전체 C11.3.3/C11.4 sizing 범위는 검증하지 않았다. 이는 PR 전 제한 후보로 C11.3.3/C11 checkbox를 바꾸지 않고 공식 완료 `72/213`을 유지한다.
+Android는 API 37 AVD/SwiftShader이며 iOS Metal readback은 OS compositor 제출 전이다. 실기기/hardware GPU, 전체 WPT, 일반 CSS author admission, 전체 C11.3.3/C11.4 sizing 범위는 검증하지 않았다. PR #911은 2026-10-31T08:06:44Z Rebase and merge로 병합됐고 merge SHA는 `eeba00fa9faf05ffcc8160f8adbb220fe90204db`다. `gh pr checks 911 --required`는 보고된 check이 없다고 반환했고 main required status checks도 설정되어 있지 않다. [병합 후 상태 문서 검토 30개](./evidence/c11-3-3-template-area-auto-track-sizing-post-merge-status-review-30.md). 이 제한 slice는 C11.3.3/C11 checkbox를 바꾸지 않고 공식 완료 `72/213`을 유지한다.
 
 ## C11.3.3 unknown-area trailing implicit `auto` track · 제한 구현 후보 · 2026-10-30
 

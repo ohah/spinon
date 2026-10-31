@@ -1,10 +1,10 @@
-# C11.3.3 area-backed typed `grid-auto-*` 후보 실행 근거
+# C11.3.3 area-backed typed `grid-auto-*` 제한 slice 실행 근거
 
 ## 판정 범위
 
-이 변경은 `RuntimeBlockFlexGridTemplateV1`의 area-backed `grid-auto-rows`·`grid-auto-columns`에서 이미 구현된 C11.4 typed track 값을 허용하는 제한 후속 후보이다. 기준은 [CSS Grid Layout Module Level 1, 2025-03-26 CRD §§7.3, 7.5–7.6, 8.5, 11.4–11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)과 [Chrome 156 Agent Browser 사전 비교](../c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/README.md)다.
+PR #911은 `RuntimeBlockFlexGridTemplateV1`의 area-backed `grid-auto-rows`·`grid-auto-columns`에서 이미 구현된 C11.4 typed track 값을 허용하는 제한 후속 slice다. 기준은 [CSS Grid Layout Module Level 1, 2025-03-26 CRD §§7.3, 7.5–7.6, 8.5, 11.4–11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)과 [Chrome 156 Agent Browser 사전 비교](../c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/README.md)다.
 
-후보 브랜치의 기준 HEAD는 `7bcc6a6641a2d95e607a6f805578a19a5fa84f0a`이며, 아래 결과는 그 HEAD에 현재 dirty source를 적용해 만든 앱·아카이브에서 수집했다. PR/병합 전 상태다.
+실행 당시 source 기준 HEAD는 `7bcc6a6641a2d95e607a6f805578a19a5fa84f0a`이며, 그 시점의 dirty source를 적용해 앱·아카이브를 만들었다. 이 source 변경은 아래 PR #911로 병합됐다. 구현 PR [#911](https://github.com/ohah/spinon/pull/911)은 2026-10-31T08:06:44Z Rebase and merge로 병합됐고 merge SHA는 `eeba00fa9faf05ffcc8160f8adbb220fe90204db`다. required status checks와 보고된 check은 없었다.
 
 ## Android·iOS Simulator
 
