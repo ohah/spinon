@@ -23,7 +23,7 @@ The first AVD attempt is retained at [initial failure](./android-avd/c1122-order
 
 - [Implementation/runtime failure review · 20 perspectives](./implementation-review-20.md)
 - [PR diff review · 30 perspectives](./pr-delta-review-30.md)
-- [PR #899](https://github.com/ohah/spinon/pull/899) is open with merge state `CLEAN`; GitHub reports no check runs and main branch protection has no required status checks. The PR body screenshot links were opened and loaded in Agent Browser at 1080×2400 (Android AVD) and 1206×2622 (iOS Simulator). The browser session was closed and no Agent Browser/Chromium process remained.
+- [PR #899](https://github.com/ohah/spinon/pull/899) was merged with Rebase and merge at `2026-10-31T03:51:58Z`; merge SHA `0450007c3fd0b021658f45ffb6b4b413ca28a0f2`. GitHub reported no check runs and main branch protection had no required status checks. The PR body screenshot links were opened and loaded in Agent Browser at 1080×2400 (Android AVD) and 1206×2622 (iOS Simulator). The browser session was closed and no Agent Browser/Chromium process remained.
 
 ## Limits
 

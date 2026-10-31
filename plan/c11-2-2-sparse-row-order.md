@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.2.2 행 우선 sparse 자동 배치](./c11-2-2-sparse-row-placement.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 2026-10-31 제한 구현과 고정 Android/iOS simulator matrix가 통과했다. [PR #899](https://github.com/ohah/spinon/pull/899)은 open 상태이며 GitHub check rollup과 branch protection required checks는 비어 있다. 병합은 아직 완료되지 않았다. 기존 C11.2.2 또는 C11 상위 checkbox와 공식 완료 집계는 승격하지 않는다.
+**상태:** 2026-10-31 제한 구현과 고정 Android/iOS simulator matrix가 통과했다. [PR #899](https://github.com/ohah/spinon/pull/899)은 2026-10-31T03:51:58Z에 Rebase and merge됐고 merge SHA는 `0450007c3fd0b021658f45ffb6b4b413ca28a0f2`다. PR check rollup은 비어 있었고 main branch protection에는 required status checks가 없었다. 기존 C11.2.2 또는 C11 상위 checkbox와 공식 완료 집계는 승격하지 않는다.
 
 ## 목표와 지원 경계
 
