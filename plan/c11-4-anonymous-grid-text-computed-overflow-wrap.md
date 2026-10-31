@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [CSS Text 3 §5.4](https://www.w3.org/TR/2026/CRD-css-text-3-20260814/#overflow-wrap-property)
 
-**상태:** 제한 구현 후보, PR [#948](https://github.com/ohah/spinon/pull/948) open. Chrome 156 Agent Browser 관찰과 Ahem font table 기반 독립 기대값에 맞춰 구현하고 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene을 통과했다. 기본/fixture archive 경계, 구현/runtime 20관점 및 PR diff 30관점 검토를 마쳤다. PR의 required check 및 check rollup은 비어 있어 CI 성공으로 기록하지 않는다. Rebase and merge 전이며 C11.4/C11 및 공식 완료 `72/213`은 미완료 상태다.
+**상태:** 제한 opt-in 구현 slice. PR [#948](https://github.com/ohah/spinon/pull/948)은 2026-10-31T22:23:22Z Rebase and merge됐고 merge SHA는 `499dd1c7ef92362b39ed228ad900ac7c7b464948`다. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene을 통과했다. PR check rollup은 비어 있고 main에 required status check은 없어 CI 통과로 기록하지 않는다. `cargo test -p spinon-style-to-layout`의 기존 C07 aspect-ratio 문자열 assertion은 270 passed, 1 failed이며 변경 범위 밖으로 분리 기록한다. C11.4/C11 및 공식 완료 `72/213`은 미완료다.
 
 ## 문제와 목표
 
@@ -33,8 +33,8 @@ CSS Text 3 §5.4에 따라 `anywhere`의 emergency break opportunities는 min-co
 7. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 신규 9 scene 각각 9/9를 통과했다. 최종 APK/설치본 및 iOS executable/설치본 hash는 [실행 evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md)에 연결했다. AVD는 software renderer이고 iOS는 Simulator이며 glyph paint나 compositor 이후 pixels의 증거가 아니다.
 8. Android/iOS fixture app build, focused Rust/Node 검사 및 default/fixture FFI release archive 경계를 통과했다. Archive 검사의 hash와 한계는 [artifact evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md)에 기록했다. APK/IPA 전체 bundle exclusion으로 확대하지 않는다.
 9. 구현 뒤 새 실패 관점 20개와 PR #948 실제 diff 실패 관점 30개를 각각 검토했다. PR diff 검토에서 새 코드 수정 사항은 찾지 못했다.
-10. PR #948 본문에 Android/iOS 화면 이미지를 추가했고 Agent Browser에서 네 raw image가 모두 자연 크기로 로드됨을 확인했다. required check과 check rollup은 보고되지 않았다. Rebase and merge 후 source/merge SHA를 기록한다. 실행하지 않은 check은 통과로 보고하지 않는다.
-11. 병합 후 내부 계약 0059, C11.4 plan, `spec/STATUS.md`와 public roadmap을 동기화한다. C11.4/C11 checkboxes와 `72/213`은 계속 유지한다.
+10. PR #948 본문에 Android/iOS 화면 이미지를 추가하고 Agent Browser에서 네 raw image가 모두 자연 크기로 로드됨을 확인했다. PR은 2026-10-31T22:23:22Z Rebase and merge됐으며 merge SHA는 `499dd1c7ef92362b39ed228ad900ac7c7b464948`다. required check과 check rollup은 보고되지 않았다.
+11. PR #948 병합 뒤 내부 계약 0059, 이 계획, `spec/STATUS.md` 및 공개 roadmap을 이 문서 후속 변경에서 동기화했다. 병합 후 상태·로드맵 기록을 [30개 관점](../spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md)으로 따로 검토했다. C11.4/C11 checkbox와 공식 집계 `72/213`은 계속 유지한다.
 
 ## 계획 실패 판정
 
