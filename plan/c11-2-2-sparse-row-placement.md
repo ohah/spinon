@@ -96,3 +96,7 @@ C11.2.1의 explicit-only placement 다음으로 한 Grid 안에서 definite item
 `grid-auto-flow:dense`, column flow, implicit columns, negative implicit rows, explicit line으로 implicit track 생성, 복수 `grid-auto-rows` 반복 pattern, `auto`·`%`·`fr`·`minmax()` implicit sizing, named lines/areas, `repeat()`·auto-repeat, `order`, text/replaced/intrinsic content, auto min-size, baseline/alignment 확장, absolute-positioned child, scroll/overflow, writing mode·RTL, subgrid, masonry, full WPT runner 및 성능 우위는 포함하지 않는다. dense·column flow와 양의 implicit column은 별도 C11.2.3 기능 PR에서 다룬다.
 
 이 단계의 완료는 C11.2.1·C11.2·C11 상위 항목, 전체 CSS 지원 또는 웹/모바일 전체 동등성을 완료로 표시하지 않는다.
+
+## 후속 계획
+
+- [행 우선 sparse Grid auto-placement의 computed `order`](./c11-2-2-sparse-row-order.md)는 이 단계에서 제외한 기능의 별도 제한 후속이다. 계획과 Chrome 사전 비교만 기록했으며 구현·runtime 검증은 아직 끝나지 않았다. C11.2.2/C11 완료 상태에는 영향을 주지 않는다.

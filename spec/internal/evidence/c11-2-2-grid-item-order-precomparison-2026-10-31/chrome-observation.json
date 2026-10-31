@@ -1,0 +1,36 @@
+{
+  "browser": "HeadlessChrome/156.0.0.0",
+  "input": {
+    "path": "chrome-order.html",
+    "sha256": "50c0eddfd845a60b69a2ab500c55e5142ca2aed1f2d757f20077819b37275e9b"
+  },
+  "measurement": "getComputedStyle and getBoundingClientRect",
+  "cases": [
+    {
+      "id": "mixed",
+      "computedGridTemplateColumns": "10px 10px 10px",
+      "computedGridTemplateRows": "10px",
+      "computedGridAutoRows": "10px",
+      "itemsInDomOrder": [
+        { "className": "item a", "order": "2", "x": 20, "y": 0, "width": 10, "height": 10 },
+        { "className": "item b", "order": "-1", "x": 0, "y": 0, "width": 10, "height": 10 },
+        { "className": "item c", "order": "0", "x": 10, "y": 0, "width": 10, "height": 10 }
+      ],
+      "independentExpectedVisualOrder": ["b", "c", "a"]
+    },
+    {
+      "id": "ties",
+      "computedGridTemplateColumns": "10px 10px 10px",
+      "computedGridTemplateRows": "10px 10px",
+      "computedGridAutoRows": "10px",
+      "itemsInDomOrder": [
+        { "className": "item a", "order": "0", "x": 20, "y": 20, "width": 10, "height": 10 },
+        { "className": "item b", "order": "-1", "x": 0, "y": 20, "width": 10, "height": 10 },
+        { "className": "item c", "order": "-1", "x": 10, "y": 20, "width": 10, "height": 10 },
+        { "className": "item d", "order": "0", "x": 0, "y": 30, "width": 10, "height": 10 }
+      ],
+      "independentExpectedVisualOrder": ["b", "c", "a", "d"]
+    }
+  ],
+  "scope": "Chrome geometry oracle only; not Spinon or simulator evidence"
+}
