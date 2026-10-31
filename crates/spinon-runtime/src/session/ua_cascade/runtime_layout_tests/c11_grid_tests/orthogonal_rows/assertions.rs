@@ -357,6 +357,7 @@ fn debug_raw_runtime_output(
             line_break: LineBreakMode::Normal,
             ligatures: LigatureMode::Normal,
             letter_spacing: 0.0,
+            word_spacing: 0.0,
         },
     )]);
     let mut engine = TextLayoutEngine::new_without_system_fonts();

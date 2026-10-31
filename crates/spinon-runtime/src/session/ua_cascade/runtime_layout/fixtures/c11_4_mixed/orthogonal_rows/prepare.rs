@@ -171,5 +171,6 @@ fn orthogonal_paragraph_style() -> ParagraphStyle {
         line_break: LineBreakMode::Normal,
         ligatures: LigatureMode::Normal,
         letter_spacing: 0.0,
+        word_spacing: 0.0,
     }
 }

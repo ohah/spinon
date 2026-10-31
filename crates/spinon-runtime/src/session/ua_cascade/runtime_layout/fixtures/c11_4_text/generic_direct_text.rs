@@ -883,6 +883,7 @@ fn paragraph_style_for_with_baseline_alias(
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
         letter_spacing: 0.0,
+        word_spacing: 0.0,
     })
 }
 

@@ -1,0 +1,13 @@
+{
+  "target": "iPhone 17 Pro / iOS 26.2 Simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "executableSha256": "d9cd0f9d9dc0b99f545f2e4aab5bcb1dd564bdf9772696583ec4a3e1b750bfd3",
+  "installedExecutableSha256": "d9cd0f9d9dc0b99f545f2e4aab5bcb1dd564bdf9772696583ec4a3e1b750bfd3",
+  "baselineHead": "ca0627b89c2a76b82347627dceccbc6e0bd84872",
+  "branch": "feat/c11-4-anonymous-grid-text-word-spacing",
+  "sourceManifest": "../source-revision.json",
+  "sourceManifestSha256": "6c4dac55385bdb1d29b5c5de62ebecbaefdfddf571aeb38bd868bc73d4292c0d"
+}

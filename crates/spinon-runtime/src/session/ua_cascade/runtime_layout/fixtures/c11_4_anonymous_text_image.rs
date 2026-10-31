@@ -359,6 +359,7 @@ pub(super) fn anonymous_paragraph_style() -> ParagraphStyle {
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
         letter_spacing: 0.0,
+        word_spacing: 0.0,
     }
 }
 
