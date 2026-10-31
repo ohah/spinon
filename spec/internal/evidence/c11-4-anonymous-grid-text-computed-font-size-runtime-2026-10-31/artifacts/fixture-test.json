@@ -1,0 +1,21 @@
+{
+  "feature": "c04-runtime-gpu-fixture-test",
+  "artifact": "target/release/libspinon_ffi.a",
+  "sizeBytes": 81132144,
+  "sha256": "9caa2ba98a1a77a1bb5c3a1fb4ee662f688476ea2497396c50b90f0ad4e709f5",
+  "scan": "rg -a -o 'font-size-(5|7-5|10|12-5|20)-(min|max)-content'",
+  "matchedSceneCount": 10,
+  "occurrencesPerMarker": 2,
+  "markers": [
+    { "id": "font-size-5-min-content", "present": true },
+    { "id": "font-size-5-max-content", "present": true },
+    { "id": "font-size-7-5-min-content", "present": true },
+    { "id": "font-size-7-5-max-content", "present": true },
+    { "id": "font-size-10-min-content", "present": true },
+    { "id": "font-size-10-max-content", "present": true },
+    { "id": "font-size-12-5-min-content", "present": true },
+    { "id": "font-size-12-5-max-content", "present": true },
+    { "id": "font-size-20-min-content", "present": true },
+    { "id": "font-size-20-max-content", "present": true }
+  ]
+}

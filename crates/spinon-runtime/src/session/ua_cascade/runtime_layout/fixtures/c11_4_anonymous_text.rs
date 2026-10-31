@@ -14,8 +14,11 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
+#[path = "c11_4_anonymous_text/font_size.rs"]
+mod font_size;
 #[path = "c11_4_anonymous_text/line_height.rs"]
 mod line_height;
+use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
 use line_height::{
     ComputedLineHeight, LINE_HEIGHT_SCENE_IDS, line_height_text, validate_computed_line_height,
 };
@@ -156,6 +159,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     };
     if !SCENE_IDS.contains(&scene_id)
         && !LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
+        && !FONT_SIZE_SCENE_IDS.contains(&scene_id)
         && full_tab_scene(scene_id).is_none()
     {
         return if scene_id.starts_with("anonymous-")
@@ -171,7 +175,8 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }
 
     let grid_style = style_for(styles, root.id())?;
-    let (tab_size, line_height) = validate_grid_style(grid_style, scene_id)?;
+    let font_size = validate_computed_font_size(grid_style, scene_id)?;
+    let (tab_size, line_height) = validate_grid_style(grid_style, scene_id, font_size)?;
     validate_direct_children(snapshot, root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -187,7 +192,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(
             root.id(),
-            anonymous_paragraph_style(scene_id, tab_size, line_height),
+            anonymous_paragraph_style(scene_id, tab_size, line_height, font_size),
         )]),
         engine,
         two_axis_nested_grid: false,
@@ -271,6 +276,7 @@ fn validate_direct_children(
                 .ok_or_else(|| unsupported(root.id(), "line-height scene text missing"))?;
             &[ExpectedChild::Text(text)]
         }
+        scene_id if FONT_SIZE_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text("XX XX")],
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
     if children.len() != expected.len() {
@@ -361,6 +367,7 @@ fn validate_direct_children(
 fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
+    font_size: f32,
 ) -> Result<(TabSize, ComputedLineHeight), RuntimeLayoutFailure> {
     let expected_wrap_mode = if is_pre_tab_scene(scene_id)
         || matches!(
@@ -474,6 +481,9 @@ fn validate_grid_style(
                 (40.0, ComputedCssDimension::LengthPx(10.0))
             }
             "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
+            scene_id if FONT_SIZE_SCENE_IDS.contains(&scene_id) => {
+                (20.0, ComputedCssDimension::Auto)
+            }
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 (20.0, ComputedCssDimension::Auto)
             }
@@ -487,6 +497,7 @@ fn validate_grid_style(
         &style.properties,
         expected_white_space_collapse,
         expected_wrap_mode,
+        font_size,
     )?;
     if style.properties.get("display").map(String::as_str) != Some("grid")
         || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
@@ -495,7 +506,8 @@ fn validate_grid_style(
         || style.properties.get("justify-content").map(String::as_str) != Some("start")
         || style.layout_position != spinon_style::ComputedCssPosition::Static
         || style.properties.get("font-family").map(String::as_str) != Some("Ahem")
-        || style.properties.get("font-size").map(String::as_str) != Some("10px")
+        || style.properties.get("font-size").map(String::as_str)
+            != Some(font_size::font_size_css_value(scene_id))
         || style
             .properties
             .get("white-space-collapse")
@@ -683,6 +695,12 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 vec![ComputedCssGridTrackSize::LengthPx(20.0)]
             }
+            scene_id if FONT_SIZE_SCENE_IDS.contains(&scene_id) => {
+                vec![match scene_id.ends_with("-min-content") {
+                    true => ComputedCssGridTrackSize::MinContent,
+                    false => ComputedCssGridTrackSize::MaxContent,
+                }]
+            }
             "anonymous-min-content-wrap" => vec![
                 ComputedCssGridTrackSize::MinContent,
                 ComputedCssGridTrackSize::Fraction(1.0),
@@ -778,6 +796,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
     };
     let expected_rows = if full_tab_scene(scene_id).is_some()
         || LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
+        || FONT_SIZE_SCENE_IDS.contains(&scene_id)
         || matches!(
             scene_id,
             "anonymous-min-content-wrap"
@@ -850,10 +869,11 @@ fn validate_text_profile_properties(
     properties: &BTreeMap<String, String>,
     expected_white_space_collapse: &str,
     expected_wrap_mode: &str,
+    font_size: f32,
 ) -> Result<(), RuntimeLayoutFailure> {
+    let font_size_css = font_size::font_size_css_value_for_px(font_size);
     for (name, expected) in [
         ("font-family", "Ahem"),
-        ("font-size", "10px"),
         ("font-weight", "400"),
         ("font-style", "normal"),
         ("word-break", "normal"),
@@ -875,6 +895,16 @@ fn validate_text_profile_properties(
                 Some(format!("{name}: expected {expected}, got {value:?}")),
             ));
         }
+    }
+    let actual_font_size = properties.get("font-size").map(String::as_str);
+    if actual_font_size != Some(font_size_css) {
+        return Err(layout_failure(
+            "unsupported_c114_anonymous_text_style",
+            Some(node_id.get()),
+            Some(format!(
+                "font-size: expected {font_size_css}, got {actual_font_size:?}"
+            )),
+        ));
     }
     let actual_white_space_collapse = properties.get("white-space-collapse").map(String::as_str);
     if actual_white_space_collapse != Some(expected_white_space_collapse) {
@@ -935,6 +965,7 @@ fn anonymous_paragraph_style(
     scene_id: &str,
     tab_size: TabSize,
     line_height: ComputedLineHeight,
+    font_size: f32,
 ) -> ParagraphStyle {
     let (line_height, line_height_is_normal) = match line_height {
         ComputedLineHeight::Normal => (10.0, true),
@@ -944,7 +975,7 @@ fn anonymous_paragraph_style(
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
-        font_size: 10.0,
+        font_size,
         line_height,
         line_height_is_normal,
         font_weight: 400.0,
@@ -1022,10 +1053,11 @@ enum ExpectedChild<'a> {
 mod tests {
     use super::super::c11_4_text::AHEM;
     use super::{
-        FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS,
-        FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS, FULL_TAB_VALUE_IDS, SCENE_IDS,
-        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
-        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
+        ComputedLineHeight, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES,
+        FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS,
+        FULL_TAB_VALUE_IDS, SCENE_IDS, anonymous_paragraph_style, full_tab_expected_width,
+        full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto, grid_tracks_match,
+        parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
         validate_text_profile_properties,
     };
     use spinon_core::NodeId;
@@ -1047,6 +1079,155 @@ mod tests {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
         assert_eq!(SCENE_IDS.len(), 55);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
+    }
+
+    #[test]
+    fn computed_font_size_fixture_cases_keep_expected_tracks_and_paragraph_sizes() {
+        assert_eq!(FONT_SIZE_SCENE_IDS.len(), 10);
+        for (scene_id, font_size, column) in [
+            (
+                "font-size-5-min-content",
+                5.0,
+                ComputedCssGridTrackSize::MinContent,
+            ),
+            (
+                "font-size-5-max-content",
+                5.0,
+                ComputedCssGridTrackSize::MaxContent,
+            ),
+            (
+                "font-size-7-5-min-content",
+                7.5,
+                ComputedCssGridTrackSize::MinContent,
+            ),
+            (
+                "font-size-7-5-max-content",
+                7.5,
+                ComputedCssGridTrackSize::MaxContent,
+            ),
+            (
+                "font-size-10-min-content",
+                10.0,
+                ComputedCssGridTrackSize::MinContent,
+            ),
+            (
+                "font-size-10-max-content",
+                10.0,
+                ComputedCssGridTrackSize::MaxContent,
+            ),
+            (
+                "font-size-12-5-min-content",
+                12.5,
+                ComputedCssGridTrackSize::MinContent,
+            ),
+            (
+                "font-size-12-5-max-content",
+                12.5,
+                ComputedCssGridTrackSize::MaxContent,
+            ),
+            (
+                "font-size-20-min-content",
+                20.0,
+                ComputedCssGridTrackSize::MinContent,
+            ),
+            (
+                "font-size-20-max-content",
+                20.0,
+                ComputedCssGridTrackSize::MaxContent,
+            ),
+        ] {
+            let expected_grid = grid(vec![column.clone()], vec![ComputedCssGridTrackSize::Auto]);
+            assert!(
+                grid_tracks_match(&expected_grid, scene_id),
+                "{scene_id}: track mismatch"
+            );
+            let wrong_column = match &column {
+                ComputedCssGridTrackSize::MinContent => ComputedCssGridTrackSize::MaxContent,
+                ComputedCssGridTrackSize::MaxContent => ComputedCssGridTrackSize::MinContent,
+                _ => unreachable!("font-size fixture column is intrinsic"),
+            };
+            assert!(
+                !grid_tracks_match(
+                    &grid(vec![wrong_column], vec![ComputedCssGridTrackSize::Auto]),
+                    scene_id
+                ),
+                "{scene_id}: opposite intrinsic track must fail"
+            );
+            assert!(
+                !grid_tracks_match(
+                    &grid(
+                        vec![column.clone()],
+                        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+                    ),
+                    scene_id
+                ),
+                "{scene_id}: fixed row must fail"
+            );
+            let style = anonymous_paragraph_style(
+                scene_id,
+                TabSize::Number(8.0),
+                ComputedLineHeight::AbsolutePx(10.0),
+                font_size,
+            );
+            assert_eq!(
+                style.font_size, font_size,
+                "{scene_id}: paragraph font-size"
+            );
+            assert_eq!(style.line_height, 10.0, "{scene_id}: fixed line-height");
+        }
+    }
+
+    #[test]
+    fn computed_font_size_scales_anonymous_text_intrinsic_sizes_and_auto_height() {
+        let node_id = NodeId::new(1).unwrap();
+        let mut engine = TextLayoutEngine::new_without_system_fonts();
+        engine.register_font("Ahem", AHEM).unwrap();
+
+        for font_size in [5.0, 7.5, 10.0, 12.5, 20.0] {
+            let paragraph = ParagraphInput {
+                node: node_id,
+                sources: vec![TextSource {
+                    node: node_id,
+                    inline_ancestors: Vec::new(),
+                    text: "XX XX".to_owned(),
+                }],
+                style: anonymous_paragraph_style(
+                    "font-size-matrix-test",
+                    TabSize::Number(8.0),
+                    ComputedLineHeight::AbsolutePx(10.0),
+                    font_size,
+                ),
+                inline_styles: BTreeMap::new(),
+                inline_run_styles: BTreeMap::new(),
+            };
+            let intrinsic = engine.intrinsic_inline_sizes(&paragraph).unwrap();
+            assert!((intrinsic.min_content() - 2.0 * font_size).abs() < 0.02);
+            assert!((intrinsic.max_content() - 5.0 * font_size).abs() < 0.02);
+            assert!((intrinsic.min_content_height() - 20.0).abs() < 0.02);
+            assert!((intrinsic.max_content_height() - 10.0).abs() < 0.02);
+
+            let min_content = engine
+                .layout_paragraph(&paragraph, 2.0 * font_size)
+                .unwrap();
+            assert_eq!(
+                min_content.lines.len(),
+                2,
+                "font-size {font_size}px min-content"
+            );
+            assert!((min_content.width - 2.0 * font_size).abs() < 0.02);
+            assert!((min_content.height - 20.0).abs() < 0.02);
+
+            let max_content = engine
+                .layout_paragraph(&paragraph, 5.0 * font_size)
+                .unwrap();
+            assert_eq!(
+                max_content.lines.len(),
+                1,
+                "font-size {font_size}px max-content"
+            );
+            assert!((max_content.width - 5.0 * font_size).abs() < 0.02);
+            assert!((max_content.height - 10.0).abs() < 0.02);
+        }
     }
 
     #[test]
@@ -1304,6 +1485,7 @@ mod tests {
                 &properties,
                 "collapse",
                 "wrap",
+                10.0,
             )
             .is_ok()
         );
@@ -1311,8 +1493,14 @@ mod tests {
         pre.insert("white-space-collapse".to_owned(), "preserve".to_owned());
         pre.insert("text-wrap-mode".to_owned(), "nowrap".to_owned());
         assert!(
-            validate_text_profile_properties(NodeId::new(1).unwrap(), &pre, "preserve", "nowrap",)
-                .is_ok()
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &pre,
+                "preserve",
+                "nowrap",
+                10.0,
+            )
+            .is_ok()
         );
         let mut nowrap = properties.clone();
         nowrap.insert("text-wrap-mode".to_owned(), "nowrap".to_owned());
@@ -1322,6 +1510,7 @@ mod tests {
                 &nowrap,
                 "collapse",
                 "nowrap",
+                10.0,
             )
             .is_ok()
         );
@@ -1336,6 +1525,7 @@ mod tests {
                 &pre_line,
                 "preserve-breaks",
                 "wrap",
+                10.0,
             )
             .is_ok()
         );
@@ -1345,6 +1535,7 @@ mod tests {
                 &pre_line,
                 "collapse",
                 "wrap",
+                10.0,
             )
             .is_err()
         );
@@ -1356,6 +1547,7 @@ mod tests {
                 &pre_wrap,
                 "preserve",
                 "wrap",
+                10.0,
             )
             .is_ok()
         );
@@ -1385,6 +1577,7 @@ mod tests {
                     &mutated,
                     "collapse",
                     "wrap",
+                    10.0,
                 )
                 .is_err(),
                 "the fixture must reject a changed {name}"

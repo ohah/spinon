@@ -2214,3 +2214,42 @@ test('anonymous Grid white-space matrix stays opt-in and reaches both simulators
   assert.ok(capture.includes("paragraphStyle?.whiteSpace, expectedWhiteSpace"));
   assert.ok(capture.includes("trace.passes.map(({ axis }) => axis), ['Columns', 'Rows']"));
 });
+
+test('C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulator route', async () => {
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_font_size.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/font_size.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-computed-font-size-simulators.mjs',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-precomparison-2026-10-31/expected-values.json',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [ffi, source, runtime, validation, android, ios, capture, expected] = contents;
+  const sceneIDs = [
+    'font-size-5-min-content', 'font-size-5-max-content',
+    'font-size-7-5-min-content', 'font-size-7-5-max-content',
+    'font-size-10-min-content', 'font-size-10-max-content',
+    'font-size-12-5-min-content', 'font-size-12-5-max-content',
+    'font-size-20-min-content', 'font-size-20-max-content',
+  ];
+  for (const sceneID of sceneIDs) {
+    assert.ok(source.includes(sceneID), `FFI generator is missing ${sceneID}`);
+    assert.ok(validation.includes(sceneID), `runtime allowlist is missing ${sceneID}`);
+    assert.ok(android.includes(sceneID), `Android validator is missing ${sceneID}`);
+    assert.ok(ios.includes(sceneID), `iOS validator is missing ${sceneID}`);
+    assert.ok(expected.includes(sceneID), `independent expected values are missing ${sceneID}`);
+  }
+  assert.match(ffi,
+    /#\[path = "anonymous_text_items\/computed_font_size\.rs"\]\s*mod computed_font_size;/);
+  assert.match(runtime,
+    /validate_computed_font_size\(grid_style, scene_id\)[\s\S]*anonymous_paragraph_style\(scene_id, tab_size, line_height, font_size\)/);
+  assert.ok(validation.includes('style.font_size_css_px'));
+  assert.ok(capture.includes("target: 'Android API 37 ARM64 AVD'"));
+  assert.ok(capture.includes("target: 'iPhone 17 Pro / iOS 26.2 Simulator'"));
+  assert.ok(capture.includes("finalTrackSizes('Columns')"));
+  assert.ok(capture.includes("finalTrackSizes('Rows')"));
+});

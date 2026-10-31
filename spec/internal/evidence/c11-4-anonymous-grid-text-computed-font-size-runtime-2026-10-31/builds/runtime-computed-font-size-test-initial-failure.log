@@ -1,0 +1,42 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+error[E0618]: expected function, found `ComputedCssGridLayout`
+    --> crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs:1151:22
+     |
+1139 |               let grid = grid(vec![column.clone()], vec![ComputedCssGridTrackSize::Auto]);
+     |                   ---- `grid` has type `ComputedCssGridLayout`
+...
+1151 |                       &grid(vec![wrong_column], vec![ComputedCssGridTrackSize::Auto]),
+     |                        ^^^^----------------------------------------------------------
+     |                        |
+     |                        call expression requires function
+...
+1442 | /     fn grid(
+1443 | |         columns: Vec<ComputedCssGridTrackSize>,
+1444 | |         rows: Vec<ComputedCssGridTrackSize>,
+1445 | |     ) -> ComputedCssGridLayout {
+     | |______________________________- this function of the same name is available here, but it's shadowed by the local binding
+
+error[E0618]: expected function, found `ComputedCssGridLayout`
+    --> crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs:1158:22
+     |
+1139 |               let grid = grid(vec![column.clone()], vec![ComputedCssGridTrackSize::Auto]);
+     |                   ---- `grid` has type `ComputedCssGridLayout`
+...
+1158 |                       &grid(
+     |                        -^^^- help: consider using a semicolon here to finish the statement: `;`
+     |  ______________________|
+     | |
+1159 | |                         vec![column.clone()],
+1160 | |                         vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+1161 | |                     ),
+     | |_____________________- call expression requires function
+...
+1442 | /     fn grid(
+1443 | |         columns: Vec<ComputedCssGridTrackSize>,
+1444 | |         rows: Vec<ComputedCssGridTrackSize>,
+1445 | |     ) -> ComputedCssGridLayout {
+     | |______________________________- this function of the same name is available here, but it's shadowed by the local binding
+
+For more information about this error, try `rustc --explain E0618`.
+error: could not compile `spinon-runtime` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

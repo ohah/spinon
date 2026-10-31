@@ -1422,6 +1422,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (c114IsComputedFontSizeScene(sceneId)) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (C114VisibilityCollapseStage.isScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -4775,6 +4778,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        double[] fontSize = c114ComputedFontSizeScene(sceneId);
+        if (fontSize != null) {
+            return "width=20,height=" + c114GenericFrameNumber(fontSize[2]);
+        }
         int lineHeight = c114ComputedLineHeightTrackHeight(sceneId);
         if (lineHeight >= 0) return "width=20,height=" + lineHeight;
         C114FullTabSizeSceneExpectation tabSize = c114FullTabSizeSceneExpectation(sceneId);
@@ -5626,6 +5633,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsComputedFontSizeScene(sceneId)) {
+            return c114ComputedFontSizeTextIntrinsicInputsMatch(sceneId, report);
+        }
         if (c114IsComputedLineHeightScene(sceneId)) {
             return c114ComputedLineHeightTextIntrinsicInputsMatch(sceneId, report);
         }
@@ -9232,6 +9242,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        double[] fontSize = c114ComputedFontSizeScene(sceneId);
+        if (fontSize != null) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height="
+                    + c114GenericFrameNumber(fontSize[2]) + "]";
+        }
         int lineHeight = c114ComputedLineHeightTrackHeight(sceneId);
         if (lineHeight >= 0) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height="
@@ -11950,6 +11965,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114IsComputedFontSizeScene(sceneId)) return 1;
         if (c114IsComputedLineHeightScene(sceneId)) {
             return c114ComputedLineHeightTrackHeight(sceneId) == 0 ? 0 : 1;
         }
@@ -12199,7 +12215,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114IsAnonymousTextScene(String sceneId) {
-        return c114IsComputedLineHeightScene(sceneId)
+        return c114IsComputedFontSizeScene(sceneId)
+                || c114IsComputedLineHeightScene(sceneId)
                 || sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
@@ -12215,6 +12232,114 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsComputedLineHeightScene(String sceneId) {
         return c114ComputedLineHeightTrackHeight(sceneId) >= 0;
+    }
+
+    private static boolean c114IsComputedFontSizeScene(String sceneId) {
+        return c114ComputedFontSizeScene(sceneId) != null;
+    }
+
+    // [font-size px, intrinsic column width px, auto row height px, line count]
+    private static double[] c114ComputedFontSizeScene(String sceneId) {
+        if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null) return null;
+        double fontSize;
+        switch (sceneId) {
+            case "font-size-5-min-content":
+            case "font-size-5-max-content": fontSize = 5; break;
+            case "font-size-7-5-min-content":
+            case "font-size-7-5-max-content": fontSize = 7.5; break;
+            case "font-size-10-min-content":
+            case "font-size-10-max-content": fontSize = 10; break;
+            case "font-size-12-5-min-content":
+            case "font-size-12-5-max-content": fontSize = 12.5; break;
+            case "font-size-20-min-content":
+            case "font-size-20-max-content": fontSize = 20; break;
+            default: return null;
+        }
+        boolean minContent = sceneId.endsWith("-min-content");
+        return new double[] {
+                fontSize,
+                (minContent ? 2.0 : 5.0) * fontSize,
+                minContent ? 20.0 : 10.0,
+                minContent ? 2.0 : 1.0,
+        };
+    }
+
+    private static boolean c114ComputedFontSizeTextIntrinsicInputsMatch(
+            String sceneId, String report
+    ) {
+        double[] expected = c114ComputedFontSizeScene(sceneId);
+        if (expected == null) return false;
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            org.json.JSONArray frames = diagnostics.optJSONArray("gridItemFrames");
+            org.json.JSONArray layouts = diagnostics.optJSONArray("gridItemTextLayouts");
+            if (revision == null || inputs == null || frames == null || layouts == null
+                    || inputs.length() != 1 || frames.length() != 1 || layouts.length() != 1
+                    || !revision.optString("source", "").startsWith("HostDocument")
+                    || revision.optLong("style", -1) < 0
+                    || revision.optLong("environment", -1) < 0
+                    || revision.optLong("intrinsicSize", -1) < 0) return false;
+            org.json.JSONObject input = inputs.optJSONObject(0);
+            org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+            org.json.JSONObject frame = frames.optJSONObject(0);
+            org.json.JSONObject layout = layouts.optJSONObject(0);
+            org.json.JSONObject paragraph = layout == null
+                    ? null : layout.optJSONObject("paragraphStyle");
+            org.json.JSONArray textSources = layout == null
+                    ? null : layout.optJSONArray("sources");
+            org.json.JSONArray lines = layout == null ? null : layout.optJSONArray("lines");
+            if (input == null || source == null || frame == null || layout == null
+                    || paragraph == null || textSources == null || textSources.length() != 1
+                    || lines == null || lines.length() != (int) expected[3]
+                    || input.optInt("grid", -1) != 1 || input.optInt("node", -1) != 2
+                    || input.optInt("sourceOrder", -1) != 0
+                    || !"text".equals(source.optString("kind"))
+                    || source.optInt("fontRegistryRevision", -1) != 1
+                    || !c114GenericJsonNear(source, "minContent", 2 * expected[0], 1.0 / 64.0)
+                    || !c114GenericJsonNear(source, "minContentHeight", 20, 1.0 / 64.0)
+                    || !c114GenericJsonNear(source, "maxContent", 5 * expected[0], 1.0 / 64.0)
+                    || !c114GenericJsonNear(source, "maxContentHeight", 10, 1.0 / 64.0)
+                    || frame.optInt("node", -1) != 2
+                    || !c114GenericJsonNear(frame, "x", 0, 1.0 / 64.0)
+                    || !c114GenericJsonNear(frame, "y", 0, 1.0 / 64.0)
+                    || !c114GenericJsonNear(frame, "width", expected[1], 1.0 / 64.0)
+                    || !c114GenericJsonNear(frame, "height", expected[2], 1.0 / 64.0)
+                    || layout.optInt("node", -1) != 2
+                    || layout.optInt("layoutParagraph", -1) != 2
+                    || !"XX XX".equals(layout.optString("text"))
+                    || layout.optInt("fontRegistryRevision", -1) != 1
+                    || !c114GenericJsonNear(layout, "width", expected[1], 1.0 / 64.0)
+                    || !c114GenericJsonNear(layout, "height", expected[2], 1.0 / 64.0)
+                    || !"Ahem".equals(paragraph.optString("fontFamily"))
+                    || !c114GenericJsonNear(paragraph, "fontSize", expected[0], 0)
+                    || !c114GenericJsonNear(paragraph, "lineHeight", 10, 0)
+                    || !Boolean.FALSE.equals(paragraph.opt("lineHeightIsNormal"))
+                    || !c114GenericJsonNear(paragraph, "fontWeight", 400, 0)
+                    || !"Normal".equals(paragraph.optString("fontStyle"))
+                    || !"Normal".equals(paragraph.optString("whiteSpace"))
+                    || !"Normal".equals(paragraph.optString("wordBreak"))
+                    || !"Ltr".equals(paragraph.optString("direction"))) return false;
+            org.json.JSONObject textSource = textSources.optJSONObject(0);
+            if (textSource == null || textSource.optInt("node", -1) != 2
+                    || !"XX XX".equals(textSource.optString("text"))) return false;
+            double lineAdvance = expected[3] == 2 ? 2 * expected[0] : 5 * expected[0];
+            for (int index = 0; index < lines.length(); index++) {
+                org.json.JSONObject line = lines.optJSONObject(index);
+                if (line == null || !c114GenericJsonNear(line, "advance", lineAdvance, 1.0 / 64.0)
+                        || !c114GenericJsonNear(line, "lineTop", index * 10.0, 1.0 / 64.0)
+                        || !c114GenericJsonNear(line, "lineHeight", 10, 1.0 / 64.0)) return false;
+            }
+            return true;
+        } catch (org.json.JSONException | ClassCastException | NumberFormatException error) {
+            return false;
+        }
     }
 
     private static int c114ComputedLineHeightTrackHeight(String sceneId) {

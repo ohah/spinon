@@ -1,3 +1,5 @@
+#[path = "anonymous_text_items/computed_font_size.rs"]
+mod computed_font_size;
 #[path = "anonymous_text_items/computed_line_height.rs"]
 mod computed_line_height;
 
@@ -107,6 +109,9 @@ const FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
+    if let Some(source) = computed_font_size::runtime_source(scene_id) {
+        return Some(source);
+    }
     if let Some(source) = computed_line_height::runtime_source(scene_id) {
         return Some(source);
     }
