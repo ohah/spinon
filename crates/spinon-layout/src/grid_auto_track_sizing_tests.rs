@@ -75,6 +75,7 @@ fn grid_input(
                 auto_rows: GridAutoRows::Auto,
                 auto_columns: crate::GridAutoColumns::Auto,
                 placement_mode: GridPlacementMode::Existing,
+                track_sizing_trace_enabled: false,
             },
         )]),
         grid_items: Default::default(),

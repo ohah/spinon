@@ -358,6 +358,7 @@ mod tests {
             auto_rows: crate::GridAutoRows::Auto,
             auto_columns: crate::GridAutoColumns::LengthPx(20.0),
             placement_mode: crate::GridPlacementMode::TrackSizing,
+            track_sizing_trace_enabled: false,
         };
         let positioning = BTreeMap::from([
             (

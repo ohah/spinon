@@ -1,0 +1,60 @@
+{
+  "schema": "spinon-css-c11-3-3-template-area-fit-content-cap-mobile-surface-pixel-matrix/v1",
+  "fixtureId": "C11.3.3-template-area-fit-content-cap-mobile-v1",
+  "sceneId": "fit-content-area-cap",
+  "inputs": {
+    "plan": "plan/c11-3-3-template-area-fit-content-cap.md",
+    "chromeObservation": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/observation.json",
+    "expectedValues": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/expected-values.json"
+  },
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactor": 1,
+    "expectedNodeCount": 3,
+    "expectedFrames": [
+      [0, 0, 200, 60],
+      [0, 0, 20, 60],
+      [20, 0, 40, 60]
+    ]
+  },
+  "oracle": {
+    "name": "Chrome 156 template-area fit-content cap precomparison",
+    "product": "Google Chrome 156.0.8078.76",
+    "referenceId": "c1133-template-area-fit-content-cap-chrome-156-20261031",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-template-area-fit-content-cap-v1.json",
+    "referenceSha256": "dc6a2ecea4dabde6a85235de4e87aef72ff8de8413aab7705512dfe4623e1da9",
+    "screenshotPath": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/chrome-156-agent-browser.png",
+    "screenshotSha256": "dfe52f261926d2961693e3822d9bf50fcad0be89711721ad807c4a0046dd8d52",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    }
+  },
+  "samples": [
+    {
+      "id": "fixed-area",
+      "nodeId": "c1133-fit-content-area-cap-fixed",
+      "xCssPx": 10,
+      "yCssPx": 30,
+      "rgba": [229, 72, 77, 255]
+    },
+    {
+      "id": "inside-fit-content-cap",
+      "nodeId": "c1133-fit-content-area-cap-item",
+      "xCssPx": 59,
+      "yCssPx": 30,
+      "rgba": [48, 164, 108, 255]
+    },
+    {
+      "id": "after-fit-content-cap",
+      "nodeId": "c1133-fit-content-area-cap-grid",
+      "xCssPx": 60,
+      "yCssPx": 30,
+      "rgba": [16, 24, 32, 255]
+    }
+  ]
+}

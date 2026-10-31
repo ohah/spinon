@@ -648,6 +648,7 @@ fn project_grid_layout_with_reservations(
             }
             _ => GridPlacementMode::Existing,
         },
+        track_sizing_trace_enabled: false,
     })
 }
 

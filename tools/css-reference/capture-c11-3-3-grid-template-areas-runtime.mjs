@@ -16,23 +16,29 @@ import {
 } from './compare-c11-ios-metal-surface-pixels.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
-const fixturePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
+const fitContentAreaCapMode = process.argv.includes('--fit-content-area-cap');
+const positionalArgs = process.argv.slice(2).filter((argument) => argument !== '--fit-content-area-cap');
+const fixturePath = fitContentAreaCapMode
+  ? 'tests/fixtures/css/c11/grid-template-area-fit-content-cap-mobile-v1.json'
+  : 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
 const fixture = JSON.parse(await readFile(resolve(repositoryRoot, fixturePath), 'utf8'));
-const target = process.argv[2];
+const target = positionalArgs[0];
 assert.ok(['android-avd', 'android-physical', 'ios-simulator'].includes(target),
-  '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID]');
+  '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID] [--fit-content-area-cap]');
 
 const packageName = 'dev.spinon.bootstrap';
 const androidComponent = `${packageName}/.MainActivity`;
 const defaultSimulatorUDID = 'ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D';
-const serialOrUDID = process.argv[3]
+const serialOrUDID = positionalArgs[1]
   ?? (target === 'ios-simulator' ? defaultSimulatorUDID
     : target === 'android-avd' ? process.env.SPINON_ANDROID_EMULATOR_SERIAL ?? 'emulator-5554'
       : process.env.ANDROID_SERIAL);
-const runID = `c1133-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runID = `${fitContentAreaCapMode ? 'c1133-fitcap' : 'c1133'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-3-3-grid-template-areas-runtime-${date}`, `${target}-${runID}`);
+  `spec/internal/evidence/${fitContentAreaCapMode
+    ? `c11-3-3-template-area-fit-content-cap-runtime-${date}`
+    : `c11-3-3-grid-template-areas-runtime-${date}`}`, `${target}-${runID}`);
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosAppPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
@@ -62,9 +68,13 @@ function samplePayload(encoding, samples = fixture.samples) {
 }
 
 function assertTemplateAreaGeometry(log, runID) {
+  const expectedNodeCount = fixture.runtime.expectedNodeCount ?? 4;
+  const expectedFrames = fixture.runtime.expectedFrames ?? [
+    [0, 0, 160, 120], [0, 0, 100, 40], [40, 40, 120, 40], [0, 80, 160, 40],
+  ];
   const summary = log.split(/\r?\n/).find((line) =>
     line.includes(`SPINON_C1133_GRID_SUMMARY run_id=${runID} scene_id=${fixture.sceneId} `));
-  assert.ok(summary?.includes('status=0 layout=ready boxes=4'),
+  assert.ok(summary?.includes(`status=0 layout=ready boxes=${expectedNodeCount}`),
     'template area success summary가 없거나 기대 node 수가 아닙니다.');
   const frameLines = log.split(/\r?\n/).filter((line) =>
     line.includes('SPINON_C1133_GRID_NODE_FRAME'));
@@ -76,20 +86,18 @@ function assertTemplateAreaGeometry(log, runID) {
       x: Number(match[3]), y: Number(match[4]), width: Number(match[5]), height: Number(match[6]),
     };
   });
-  assert.equal(frames.length, 4, '성공 장면은 네 개의 node frame을 반환해야 합니다.');
-  assert.deepEqual(frames.map(({ index }) => index), [0, 1, 2, 3], 'node preorder가 다릅니다.');
-  assert.equal(new Set(frames.map(({ nodeId }) => nodeId)).size, 4, '중복 node ID입니다.');
-  assert.deepEqual(frames.map(({ x, y, width, height }) => ({ x, y, width, height })), [
-    { x: 0, y: 0, width: 160, height: 120 },
-    { x: 0, y: 0, width: 100, height: 40 },
-    { x: 40, y: 40, width: 120, height: 40 },
-    { x: 0, y: 80, width: 160, height: 40 },
-  ]);
+  assert.equal(frames.length, expectedNodeCount, '성공 장면의 node frame 수가 다릅니다.');
+  assert.deepEqual(frames.map(({ index }) => index), expectedFrames.map((_, index) => index),
+    'node preorder가 다릅니다.');
+  assert.equal(new Set(frames.map(({ nodeId }) => nodeId)).size, expectedNodeCount, '중복 node ID입니다.');
+  assert.deepEqual(frames.map(({ x, y, width, height }) => [x, y, width, height]), expectedFrames,
+    'Chrome 기준 geometry와 다릅니다.');
   const logLines = log.split(/\r?\n/);
   assert.equal(logLines.some((line) =>
     line.includes(`SPINON_C1133_GRID_REJECTION_SUMMARY run_id=${runID} scene_id=unknown-area-implicit-tracks `)),
   false, '기본 scene 실행에서 unknown area 거부 경로가 호출되면 안 됩니다.');
-  assert.ok(log.includes('SPINON_C0410_DRAW') && log.includes('presented boxes=4'),
+  assert.ok(log.includes('SPINON_C0410_DRAW')
+      && log.includes(`presented boxes=${expectedNodeCount}`),
     'WGPU surface draw/present가 완료되지 않았습니다.');
   return frames;
 }
@@ -199,10 +207,15 @@ async function runAndroid() {
   const log = waitForLog(() => currentAndroidProcessLog(adb, pid), (value) =>
     value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`)
       || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`)
+      || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true')
+      || value.includes(`SPINON_C1133_GRID_DIAGNOSTIC run_id=${runID}`)
+      || value.includes(`SPINON_C1133_GRID_REJECTION_SUMMARY run_id=${runID}`)
       || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=error run_id=${runID}`)
       || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=${runID}`),
   'Android C11.3.3 runtime/pixel 결과');
   await writeFile(resolve(evidenceDirectory, 'runtime.log'), `${log}\n`);
+  assert.ok(!log.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
+    'Android MainActivity가 허용한 C11.3.3 scene을 거부했습니다.');
   const frames = assertTemplateAreaGeometry(log, runID);
   const capture = log.split(/\r?\n/).find((line) =>
     line.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${runID}`));
@@ -229,7 +242,8 @@ async function runAndroid() {
 
 async function runAndroidNegative(adb) {
   const negativeRunID = `${runID}-bad-samples`;
-  const invalidSamples = fixture.samples.map((sample) => sample.id === 'item-blue'
+  const mutationIndex = Math.max(0, fixture.samples.findIndex((sample) => sample.id === 'item-blue'));
+  const invalidSamples = fixture.samples.map((sample, index) => index === mutationIndex
     ? { ...sample, xCssPx: sample.xCssPx + 1 } : sample);
   const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', androidComponent,
     '--ez', 'spinon_c1133_grid_template_areas', 'true',
@@ -293,6 +307,7 @@ async function runIOS() {
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulator.udid, iosAppPath]));
   const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', simulator.udid,
     packageName, '--spinon-c1133-grid-template-areas', `--spinon-c1133-grid-run-id=${runID}`,
+    `--spinon-c1133-grid-scene=${fixture.sceneId}`,
     `--spinon-c11-grid-metal-surface-pixels=${runID}`,
     `--spinon-c11-grid-metal-surface-samples=${samplePayload('base64')}`], { timeout: 90_000 });
   await saveLog('launch.log', launch);
@@ -302,9 +317,14 @@ async function runIOS() {
     const log = waitForLog(() => iosProcessLog(simulator.udid, pid), (value) =>
       value.includes(`SPINON_C1133_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`)
         || value.includes(`SPINON_C1133_METAL_PIXEL_SUMMARY status=mismatch run_id=${runID}`)
+        || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true')
+        || value.includes(`SPINON_C1133_GRID_DIAGNOSTIC run_id=${runID}`)
+        || value.includes(`SPINON_C1133_GRID_REJECTION_SUMMARY run_id=${runID}`)
         || value.includes(`SPINON_C1133_METAL_PIXEL_ERROR run_id=${runID}`),
     'iOS C11.3.3 runtime/Metal pixel 결과');
     await writeFile(resolve(evidenceDirectory, 'runtime.log'), `${log}\n`);
+    assert.ok(!log.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
+      'iOS host가 허용한 C11.3.3 scene을 거부했습니다.');
     const frames = assertTemplateAreaGeometry(log, runID);
     const pixelComparison = compareC11IOSMetalPixelLogs(log, {
       fixture, runID, markerPrefix: 'C1133',
@@ -328,10 +348,12 @@ async function runIOS() {
 
 async function runIOSNegative(udid) {
   const negativeRunID = `${runID}-bad-samples`;
-  const invalidSamples = fixture.samples.map((sample) => sample.id === 'item-blue'
+  const mutationIndex = Math.max(0, fixture.samples.findIndex((sample) => sample.id === 'item-blue'));
+  const invalidSamples = fixture.samples.map((sample, index) => index === mutationIndex
     ? { ...sample, xCssPx: sample.xCssPx + 1 } : sample);
   const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', udid,
     packageName, '--spinon-c1133-grid-template-areas', `--spinon-c1133-grid-run-id=${negativeRunID}`,
+    `--spinon-c1133-grid-scene=${fixture.sceneId}`,
     `--spinon-c11-grid-metal-surface-pixels=${negativeRunID}`,
     `--spinon-c11-grid-metal-surface-samples=${samplePayload('base64', invalidSamples)}`],
   { timeout: 90_000 });
@@ -358,6 +380,9 @@ const oracleComparison = validateC11IOSChromeOracle({
   fixture, referenceBytes, screenshotBytes: chromePngBytes,
 });
 const platform = target === 'ios-simulator' ? await runIOS() : await runAndroid();
+const rootFrame = platform.frames[0];
+const itemFrame = platform.frames.at(-1);
+assert.ok(rootFrame && itemFrame, '성공 scene root/item frame이 없습니다.');
 const result = {
   schema: 'spinon-c11-3-3-grid-template-areas-runtime-result/v1',
   status: 'matched', runID, target,
@@ -379,8 +404,8 @@ await writeFile(resolve(evidenceDirectory, 'README.md'), [
   '# C11.3.3 Grid template area 모바일 실행', '',
   `- 실행 ID: \`${runID}\``, `- 대상: \`${target}\``,
   `- Chrome 기준: ${fixture.oracle.product} · DPR ${fixture.oracle.deviceScaleFactor} · \`${fixture.sceneId}\``,
-  `- runtime: 성공 장면 1개 · 기대 거부 장면 1개 · node 4개`,
-  `- 성공 geometry: root 160×120 CSS px, item 120×40 CSS px at (40, 40)`,
+  `- runtime: 성공 scene 1개 · element frame ${platform.frames.length}개`,
+  `- 성공 geometry: root ${rootFrame.width}×${rootFrame.height} CSS px, item ${itemFrame.width}×${itemFrame.height} CSS px at (${itemFrame.x}, ${itemFrame.y})`,
   `- 표면 표본: ${platform.pixelComparison.matchedSamples}/${platform.pixelComparison.expectedSamples} exact · 최대 채널 오차 0`,
   `- 좌표 allowlist negative control: ${platform.negative.status}`,
   ...(target === 'ios-simulator' ? [] : [`- scene allowlist negative control: ${platform.routeNegative.status}`]),

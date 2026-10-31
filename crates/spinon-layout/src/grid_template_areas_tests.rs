@@ -34,6 +34,7 @@ fn valid_container() -> GridContainerInput {
         auto_rows: GridAutoRows::Auto,
         auto_columns: GridAutoColumns::Auto,
         placement_mode: GridPlacementMode::TrackSizing,
+        track_sizing_trace_enabled: false,
     }
 }
 

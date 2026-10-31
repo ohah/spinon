@@ -503,6 +503,73 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
     )
 }
 
+/// C11.3.3의 고정 area-created `fit-content()` cap 장면에만 Ahem text와 sizing trace를 연결합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_template_area_fit_content_cap_style_layout_with_text_paragraphs(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    let is_exact_root = snapshot
+        .node(root)
+        .and_then(|node| match node.kind() {
+            HostNodeKind::Element(element) if element.local_name() == "div" => {
+                Some(element.attributes().iter().any(|(name, value)| {
+                    name.namespace().is_none()
+                        && name.local_name() == "id"
+                        && value.to_string_lossy() == "c1133-fit-content-area-cap-grid"
+                }))
+            }
+            _ => None,
+        })
+        .unwrap_or(false);
+    let paragraph_owners = paragraph_styles.keys().copied().collect::<Vec<_>>();
+    let owner_is_direct_child = paragraph_owners.len() == 1
+        && snapshot.children(root).is_some_and(|children| {
+            children
+                .into_iter()
+                .any(|child| child.id() == paragraph_owners[0])
+        });
+    if !is_exact_root || !owner_is_direct_child {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: "C11.3.3 area fit-content cap fixture requires its exact root and one direct text owner".to_owned(),
+        });
+    }
+
+    let inline_run_styles = BTreeMap::new();
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        None,
+        Some((paragraph_styles, &inline_run_styles, text_engine)),
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: false,
+            blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: false,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
+            allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
+        },
+    )
+}
+
 /// `auto <ratio>`의 content-box 효과를 하나의 C11.4 direct-text owner에만 허용합니다.
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
@@ -1363,6 +1430,18 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         }
     }
     let mut projected = project_styles(snapshot, root, &computed_styles, options)?;
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        && text_profile.is_some()
+        && is_c11_3_3_fit_content_area_cap_root(snapshot, root)
+    {
+        let Some(container) = projected.grid_containers.get_mut(&root.id()) else {
+            return Err(StyleLayoutError::SnapshotMismatch {
+                field: "C11.3.3 fit-content cap trace container",
+            });
+        };
+        container.track_sizing_trace_enabled = true;
+    }
     validate_intrinsic_image_inputs(
         snapshot,
         root,
@@ -1587,6 +1666,26 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         css_math,
     })
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn is_c11_3_3_fit_content_area_cap_root(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> bool {
+    snapshot
+        .node(root)
+        .and_then(|node| match node.kind() {
+            HostNodeKind::Element(element) if element.local_name() == "div" => {
+                Some(element.attributes().iter().any(|(name, value)| {
+                    name.namespace().is_none()
+                        && name.local_name() == "id"
+                        && value.to_string_lossy() == "c1133-fit-content-area-cap-grid"
+                }))
+            }
+            _ => None,
+        })
+        .unwrap_or(false)
 }
 
 fn validate_intrinsic_image_inputs(

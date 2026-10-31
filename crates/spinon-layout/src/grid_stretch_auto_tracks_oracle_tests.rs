@@ -87,6 +87,7 @@ fn input(align_content: LayoutAlignContent) -> LayoutInput {
                 auto_rows: Default::default(),
                 auto_columns: Default::default(),
                 placement_mode: GridPlacementMode::TrackSizing,
+                track_sizing_trace_enabled: false,
             },
         )]),
         grid_items: Default::default(),

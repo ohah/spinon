@@ -65,10 +65,14 @@ pub(super) fn grid_item_metadata(
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                     let container_node = &input.nodes[index[&container.id]];
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-                    let is_track_sizing = input
-                        .grid_containers
-                        .get(&container.id)
-                        .is_some_and(|grid| grid.placement_mode == GridPlacementMode::TrackSizing);
+                    let is_track_sizing =
+                        input
+                            .grid_containers
+                            .get(&container.id)
+                            .is_some_and(|grid| {
+                                grid.placement_mode == GridPlacementMode::TrackSizing
+                                    || grid.track_sizing_trace_enabled
+                            });
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                     let (first_baseline_aligned, last_baseline_aligned) =
                         match child_node.style.align_self {

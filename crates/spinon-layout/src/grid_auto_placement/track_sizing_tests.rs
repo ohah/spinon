@@ -90,6 +90,7 @@ fn grid(
                 auto_rows,
                 auto_columns,
                 placement_mode: GridPlacementMode::TrackSizing,
+                track_sizing_trace_enabled: false,
             },
         )]),
         grid_items: Default::default(),

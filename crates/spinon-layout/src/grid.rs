@@ -314,6 +314,9 @@ pub struct GridContainerInput {
     pub auto_rows: GridAutoRows,
     pub auto_columns: GridAutoColumns,
     pub placement_mode: GridPlacementMode,
+    /// Fixture adapter에서 정확히 지정한 Grid root의 track-sizing trace를 수집합니다.
+    /// 기본값은 꺼져 있으며 제품 layout 경로에는 trace 비용을 추가하지 않습니다.
+    pub track_sizing_trace_enabled: bool,
 }
 
 pub(super) fn validate_grid_layout(

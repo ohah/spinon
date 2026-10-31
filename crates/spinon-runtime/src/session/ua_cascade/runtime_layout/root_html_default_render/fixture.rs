@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
+use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
 use spinon_layout::TextLayoutEngine;
 use spinon_render::RuntimeSrgbColor;
 use spinon_style::ComputedStyleSnapshot;
@@ -27,7 +27,19 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare_text_owners(
     engine: &TextLayoutEngine,
     color: RuntimeSrgbColor,
 ) -> Result<Input, RuntimeLayoutFailure> {
-    if styles.profile != spinon_style::ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+    let fit_content_area_cap_root = styles.profile
+        == spinon_style::ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        && snapshot.node(root).is_some_and(|node| {
+            matches!(node.kind(), HostNodeKind::Element(element)
+            if element.local_name() == "div"
+                && element.attributes().iter().any(|(name, value)| {
+                    name.namespace().is_none()
+                        && name.local_name() == "id"
+                        && value.to_string_lossy() == "c1133-fit-content-area-cap-grid"
+                }))
+        });
+    if (styles.profile != spinon_style::ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        && !fit_content_area_cap_root)
         || !styles.viewport.device_scale_factor.is_finite()
         || styles.viewport.device_scale_factor <= 0.0
         || root.generation() != snapshot.generation()
@@ -53,6 +65,18 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare_text_owners(
         ));
     }
     let node_handles = collect_handles(snapshot, root)?;
+    if fit_content_area_cap_root
+        && (owners.len() != 1
+            || !snapshot
+                .children(root)
+                .is_some_and(|children| children.into_iter().any(|child| child.id() == owners[0])))
+    {
+        return Err(layout_failure(
+            "invalid_fixture_text_owner",
+            Some(root.id().get()),
+            None,
+        ));
+    }
     let mut style_colors = BTreeMap::new();
     for &owner in owners {
         if !style_by_node.contains_key(&owner) {

@@ -1393,7 +1393,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (String candidate : C1133_GRID_TEMPLATE_AREAS_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
-        return "revision-reuse".equals(sceneId);
+        return "revision-reuse".equals(sceneId) || "fit-content-area-cap".equals(sceneId);
     }
 
     private static String c1133LeadingNamedLineItemId(String sceneId) {
@@ -15035,6 +15035,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             return true;
         }
+        List<SurfaceViewPixelCapture.Sample> fitContentAreaCapSamples =
+                c1133FitContentAreaCapPixelSamples(sceneId);
+        if (fitContentAreaCapSamples != null) {
+            if (samples.size() != fitContentAreaCapSamples.size()) return false;
+            for (SurfaceViewPixelCapture.Sample expected : fitContentAreaCapSamples) {
+                boolean found = false;
+                for (SurfaceViewPixelCapture.Sample sample : samples) {
+                    if (expected.id.equals(sample.id)
+                            && expected.targetNodeId.equals(sample.targetNodeId)
+                            && expected.xCssPx == sample.xCssPx
+                            && expected.yCssPx == sample.yCssPx) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return false;
+            }
+            return true;
+        }
         if (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(sceneId)) {
             if (samples.size() != 2) return false;
             boolean background = false;
@@ -15166,6 +15185,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         return null;
     }
+
+    private static List<SurfaceViewPixelCapture.Sample> c1133FitContentAreaCapPixelSamples(
+            String sceneId
+    ) {
+        if (!"fit-content-area-cap".equals(sceneId)) return null;
+        return List.of(
+                new SurfaceViewPixelCapture.Sample(
+                        "fixed-area", "c1133-fit-content-area-cap-fixed", 10, 30),
+                new SurfaceViewPixelCapture.Sample(
+                        "inside-fit-content-cap", "c1133-fit-content-area-cap-item", 59, 30),
+                new SurfaceViewPixelCapture.Sample(
+                        "after-fit-content-cap", "c1133-fit-content-area-cap-grid", 60, 30));
+    }
+
     private static boolean isC1121PixelScene(String sceneId) {
         for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
@@ -16210,6 +16243,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "unknown-area-fixed-implicit-tracks".equals(pixelMatrixSceneId)
                         || c1133TrackListCyclePixelSamples(pixelMatrixSceneId) != null
                         || c1133TypedAutoTrackPixelSamples(pixelMatrixSceneId) != null
+                        || c1133FitContentAreaCapPixelSamples(pixelMatrixSceneId) != null
                         || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
@@ -20471,6 +20505,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "area":
                 case "exceed-bottom":
                 case "known-area":
+                case "inside-fit-content-cap":
                     return new int[] {48, 164, 108};
                 case "hero":
                 case "row-a":
@@ -20480,6 +20515,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "exceed-top":
                 case "known":
                 case "unknown-area-overflow":
+                case "fixed-area":
                     return new int[] {229, 72, 77};
                 case "footer":
                 case "row-c":
@@ -20498,6 +20534,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     return new int[] {62, 99, 221};
                 default:
                     break;
+            }
+            if ("after-fit-content-cap".equals(sampleId)) {
+                return new int[] {16, 24, 32};
             }
         }
         if (c1133TemplateAreas && "grid-background".equals(sampleId)) {

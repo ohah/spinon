@@ -358,6 +358,7 @@ pub(super) fn to_taffy_style(
     let trace_enabled = !flow_only
         && grid_input.container.is_some_and(|container| {
             container.placement_mode == crate::GridPlacementMode::TrackSizing
+                || container.track_sizing_trace_enabled
         });
     compact.set_track_sizing_trace_enabled(trace_enabled);
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

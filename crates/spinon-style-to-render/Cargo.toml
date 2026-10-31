@@ -6,6 +6,7 @@ publish = false
 
 [features]
 c12-5-sticky-fixture-test = ["spinon-render/c12-5-sticky-fixture-test"]
+c11-3-3-grid-implicit-named-lines-fixture-test = []
 c11-4-grid-track-sizing-fixture-test = ["spinon-style/c11-4-grid-track-sizing-fixture-test"]
 c13-1-overflow-clip-worker-test = []
 c13-3-gesture-fixture-test = ["spinon-render/c13-3-gesture-fixture-test"]

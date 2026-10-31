@@ -25,6 +25,9 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "backward-span-two", "backward-span-partial-explicit", "forward-span-two",
     "backward-span-uses-authored-name",
 ]
+private func isC1133GridTemplateAreaScene(_ sceneID: String) -> Bool {
+    c1133GridTemplateAreasSceneIDs.contains(sceneID) || sceneID == "fit-content-area-cap"
+}
 #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
     "fixed-repeat-fill-prefix-empty",
@@ -10877,6 +10880,18 @@ private struct C111MetalPixelRun {
             return []
         }
     }
+    private static func c1133FitContentAreaCapPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        guard sceneID == "fit-content-area-cap" else { return [] }
+        return [
+            ("fixed-area", "c1133-fit-content-area-cap-fixed", 10, 30, [229, 72, 77, 255]),
+            ("inside-fit-content-cap", "c1133-fit-content-area-cap-item", 59, 30,
+             [48, 164, 108, 255]),
+            ("after-fit-content-cap", "c1133-fit-content-area-cap-grid", 60, 30,
+             [16, 24, 32, 255]),
+        ]
+    }
     private static let c1133UnknownAreaOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("grid-interior", "fixed-implicit-grid", 150, 110, [16, 24, 32, 255]),
         ("known-area", "fixed-known-area", 10, 10, [48, 164, 108, 255]),
@@ -11027,6 +11042,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c1133TrackListCyclePixelSamples(sceneID: sceneID)
         } else if !c1133TypedAutoTrackPixelSamples(sceneID: sceneID).isEmpty {
             expectedSamples = c1133TypedAutoTrackPixelSamples(sceneID: sceneID)
+        } else if !c1133FitContentAreaCapPixelSamples(sceneID: sceneID).isEmpty {
+            expectedSamples = c1133FitContentAreaCapPixelSamples(sceneID: sceneID)
         } else {
             expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
         }
@@ -12622,8 +12639,9 @@ private struct C111MetalPixelRun {
                     || sceneID == "unknown-area-fixed-implicit-tracks"
                     || !c1133TrackListCyclePixelSamples(sceneID: sceneID).isEmpty
                     || !c1133TypedAutoTrackPixelSamples(sceneID: sceneID).isEmpty
+                    || !c1133FitContentAreaCapPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
-                  c1133GridTemplateAreasSceneIDs.contains(c1133SceneID), c1133RunID == runID,
+                  isC1133GridTemplateAreaScene(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,
                   !arguments.contains("--spinon-c1123-grid-auto-placement"),
                   !arguments.contains("--spinon-c1122-grid-auto-placement"),
@@ -15623,7 +15641,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if c1133GridTemplateAreasProbeRequested
             && (c1133GridTemplateAreasRunID.range(
                 of: "^[A-Za-z0-9_-]{1,80}$", options: .regularExpression) == nil
-                || !c1133GridTemplateAreasSceneIDs.contains(c1133GridTemplateAreasSceneID)
+                || !isC1133GridTemplateAreaScene(c1133GridTemplateAreasSceneID)
                 || c1131GridRepeatProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1123GridAutoPlacementProbeRequested
                 || c1122GridAutoPlacementProbeRequested
