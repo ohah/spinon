@@ -1,0 +1,21 @@
+{
+  "buildBase": "build/spinon/roadmap-c11-4-pr938-docs-pass06",
+  "selectedRoot": "build/spinon/roadmap-c11-4-pr938-docs-pass06/root",
+  "stagedFileCount": 275,
+  "stagedBytes": 11607604,
+  "fullDocsDeadLinkCheck": false,
+  "noSymlinks": true,
+  "excludedToolingSourceExtensions": [
+    ".cjs",
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".ts",
+    ".tsx"
+  ],
+  "roadmapMarkers": [
+    "PR #938 Rebase and merge",
+    "8c5ca0c62ed030642455f53122928b25bba80fda",
+    "72/213"
+  ]
+}

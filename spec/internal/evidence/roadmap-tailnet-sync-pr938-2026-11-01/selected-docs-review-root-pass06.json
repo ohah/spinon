@@ -1,0 +1,1673 @@
+{
+  "buildBase": "build/spinon/roadmap-c11-4-pr938-docs-pass06",
+  "selectedRoot": "build/spinon/roadmap-c11-4-pr938-docs-pass06/root",
+  "stagedFileCount": 275,
+  "stagedBytes": 11607604,
+  "fullDocsDeadLinkCheck": false,
+  "noSymlinks": true,
+  "excludedToolingSourceExtensions": [
+    ".cjs",
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".ts",
+    ".tsx"
+  ],
+  "roadmapMarkers": [
+    "PR #938 Rebase and merge",
+    "8c5ca0c62ed030642455f53122928b25bba80fda",
+    "72/213"
+  ],
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 459410,
+      "sha256": "a10d5161bf634b32e706ab53a307b893fea9312bd6804537efb2f7038884d303"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 459410,
+      "sha256": "a10d5161bf634b32e706ab53a307b893fea9312bd6804537efb2f7038884d303"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 459410,
+      "sha256": "a10d5161bf634b32e706ab53a307b893fea9312bd6804537efb2f7038884d303"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 571297,
+      "sha256": "197bbeebc41a401d82f723fbefb77920382a5b10f1437fd30a238e2b94793187"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 571297,
+      "sha256": "197bbeebc41a401d82f723fbefb77920382a5b10f1437fd30a238e2b94793187"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 283572,
+      "sha256": "ca0283a7e88fe529e6dbdad813c3e1a5f0937d3180bf53b371c00be7ba12cf14"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-negative-indent.md",
+      "route": "plan/c11-4-anonymous-grid-text-negative-indent.md",
+      "bytes": 8923,
+      "sha256": "1b96fc5cfa1ff1320a5ec80a7a0f27b141f88eb4456e6f2fc7f5a4ebb2d9283d"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-text-indent.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-indent.md",
+      "bytes": 8096,
+      "sha256": "5018e2e8faac7cbd7200a25c4e5c08ce4adade61d40338d807f236f41b4374d1"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 204127,
+      "sha256": "c01536eacc4c25e6dff50fc836abcf035f26f609195d5e5c62ebc66c905a415a"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-negative-indent-plan-review-20.md",
+      "route": "plan/c11-4-anonymous-grid-text-negative-indent-plan-review-20.md",
+      "bytes": 5215,
+      "sha256": "d47f3ea495e4349c89fb3099c7cbd874585e5bc481d1e462e8343baa85e14220"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-negative-indent-plan-pr-diff-review-30.md",
+      "route": "plan/c11-4-anonymous-grid-text-negative-indent-plan-pr-diff-review-30.md",
+      "bytes": 6072,
+      "sha256": "ebc7f77a5575efb7f880cebd1e761daafa426a2a25201425b000ded64947be61"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "bytes": 51812,
+      "sha256": "9e72bac8fa41c898d0f56e207b48e539785ce27f5022479ab8665786cb19bc58"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-observation.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-observation.json",
+      "bytes": 5115,
+      "sha256": "8bb83cab45207c83cceb1a5bd504df7e2887aba7317155c29b577d239f0668cb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/expected.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/expected.json",
+      "bytes": 3890,
+      "sha256": "f1b95f19db773f195f63cba522b7651744ae9377cbbe0defc73fd47e7938bb27"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md",
+      "bytes": 4193,
+      "sha256": "8a0eb980d795aa90d0d6a9a73c670e306d9503095e42ee9f737ed7e7c849ecf0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470366379-4d279b60/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470366379-4d279b60/simulator.json",
+      "bytes": 336,
+      "sha256": "7b306a5ec72360593f901a05f6b0f8bb5000a73fc6f051419110a44c0f32c1fe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470396750-010610f6/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470396750-010610f6/simulator.json",
+      "bytes": 336,
+      "sha256": "7b306a5ec72360593f901a05f6b0f8bb5000a73fc6f051419110a44c0f32c1fe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470440563-df3e04ab/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470440563-df3e04ab/simulator.json",
+      "bytes": 336,
+      "sha256": "a16b884ba4f15430726b7b8a78a8dc81cb556be1a82eace40ed5b03cd927c1ba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470440563-df3e04ab/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470440563-df3e04ab/text-indent-zero-two-words-max-content.log",
+      "bytes": 11554,
+      "sha256": "3e4159357e884c6f79d3e809faa1bff2aa1650a63c9c154ba6125f1b087428aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470440563-df3e04ab/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470440563-df3e04ab/text-indent-zero-two-words-min-content.log",
+      "bytes": 24415,
+      "sha256": "55a3ccf4baf7c66461734d2e0d26f44855a90bdaf766817e3ce5f75b689a6d04"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/matrix.tsv",
+      "bytes": 2157,
+      "sha256": "9ecd9e9287a8b0d3c48633f0abd5f13e97e906a47016934fcb6892904fb0ced0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/representative-screen.png",
+      "bytes": 77404,
+      "sha256": "363b8e3b95d80a8298058f28b56762c1fc52ab9d20df41a22888649874c42377"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/simulator.json",
+      "bytes": 336,
+      "sha256": "ebf35af538dec6be3291bf8727b020cc7e08f697710605f7fec9c291d0161896"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-collapsed-three-words-max-content.log",
+      "bytes": 25109,
+      "sha256": "6d6ff95775c1cab8730e2fb8b9459b9493dbcc0178c255da543b91b312fb6596"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-collapsed-three-words-min-content.log",
+      "bytes": 24677,
+      "sha256": "f9725dd22fa2c2f079ffc9eb9f870033a8284278dc83e476acf2362ee72c4634"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-single-word-max-content.log",
+      "bytes": 24139,
+      "sha256": "684afe2ddc5fbbe7a7fc2c3d8db8a115dabf1b58f16ace095d70cdb5b4555ffe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-single-word-min-content.log",
+      "bytes": 23744,
+      "sha256": "38672fb77addc9a329245c77ea2cff4409b25618b5281bac40522d0503b7c36f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-two-words-max-content.log",
+      "bytes": 24271,
+      "sha256": "042411c3b1644a88b345841fab1f200232c06fc78569235706f7eb15874cd925"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-five-two-words-min-content.log",
+      "bytes": 24035,
+      "sha256": "6315d2276548c6cb5dd0ecbc1b69f8b9e808cb25aa4f58bc938c785f995f37f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-long-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-long-max-content.log",
+      "bytes": 24409,
+      "sha256": "bc40d3517b5d82a5b5972132e90fd0d2e15cf3b36751bab3442d638a0c1a8ca6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-long-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-long-min-content.log",
+      "bytes": 29258,
+      "sha256": "3094a7d0622e1e006dc2dada472f5fa1429067c9784f7ab4cc491fdc647430dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-short-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-short-max-content.log",
+      "bytes": 24412,
+      "sha256": "62ed303a1678cb69fdbeeabcbdf8707a95c626d21ed9ce275e2847319df7dffa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-short-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-first-word-short-min-content.log",
+      "bytes": 24085,
+      "sha256": "83ed6458fcf76a8c783737f90718b2b695bfe3f20e919d72e868479ba9dfbe46"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-single-word-max-content.log",
+      "bytes": 24166,
+      "sha256": "4e5921ed72239c2c838478be0ddc984366b0516becbed22cbc1fa5c2d2827afa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-five-single-word-min-content.log",
+      "bytes": 24149,
+      "sha256": "96cbf07c2ca2af90b161b9a3d7053c05663d9cdfecf3677c30c4a522d788b13f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-long-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-long-max-content.log",
+      "bytes": 24408,
+      "sha256": "7eb3a4470a624b75bdc5370765f65f197f82c4e0bcbf7f3e997b50404447ef68"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-long-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-long-min-content.log",
+      "bytes": 29255,
+      "sha256": "54809380bd7c1ca16aa1e28d252e2656599650d3fe598a0ff9fb4dbb68c08cd2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-short-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-short-max-content.log",
+      "bytes": 29587,
+      "sha256": "6494360df68989f56f86fd4c6d65d95df08456721d0f7538272b9baae5ae5b41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-short-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-first-word-short-min-content.log",
+      "bytes": 23990,
+      "sha256": "638ff00b765c2cc9a474ac1d6c1ee0d29f68911b97c26538e1341b0dd8922fa5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-single-word-max-content.log",
+      "bytes": 24166,
+      "sha256": "b6b8f17637ab4a2b3c42d7d9a8d3fa762059ff76471e1de96c3dac6e2a74190e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-negative-ten-single-word-min-content.log",
+      "bytes": 24148,
+      "sha256": "d043c73e537985c6d550971a099a41980aee9760e40a630d2222107e0121f9ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-collapsed-three-words-max-content.log",
+      "bytes": 25106,
+      "sha256": "6cfcb613ed9b8cc4f90d7d79f1daf814cfe913e1300dffc9acc704f227ef0f08"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-collapsed-three-words-min-content.log",
+      "bytes": 24675,
+      "sha256": "34fc514dda9cded817e1411e6d946b0531e722905f3ba9142cea8ddd737ad535"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-single-word-max-content.log",
+      "bytes": 24136,
+      "sha256": "bf991c660b8dc36c18181ca16d1a31421b26cda139243f281fe9b0ca1f086d43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-single-word-min-content.log",
+      "bytes": 24118,
+      "sha256": "c302e92d4e76dc1e23639b0af237e9e5c641107d090aa99ceff94b83f0dadf34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-two-words-max-content.log",
+      "bytes": 24362,
+      "sha256": "67a88969e4af9797b54637e11a3c6292cd0feb01a6f6ba099b9db1215ae7b40f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-ten-two-words-min-content.log",
+      "bytes": 24032,
+      "sha256": "8d41f2407024c574de5ceaeb7773c3237b2082c6012a37358df15833d951e656"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 25109,
+      "sha256": "cc77f8b91c9093510461c3f30e42c81fb0ae61b6fa688241e15d0dd01939b8ba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 29854,
+      "sha256": "93868bceb0fb92d2c16741fcb42210e2b0c65af9de03f692c0e7c8f24c4c2fbf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-single-word-max-content.log",
+      "bytes": 24046,
+      "sha256": "6117dfdfb5f2031cff236a9172ec8e61fcf8b8a6bbfa8e9c19911f63e7cf67ad"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-single-word-min-content.log",
+      "bytes": 24121,
+      "sha256": "3ae033acb99423384a9087df0d120d6617b8bb67ea93f1e7649da3e21c008595"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-two-words-max-content.log",
+      "bytes": 24740,
+      "sha256": "39ac9b5fa06a121956e88055afbfd8666a8a050c50df007b103f8fab41529621"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793470541038-79907250/text-indent-zero-two-words-min-content.log",
+      "bytes": 24035,
+      "sha256": "7f9d88d1c28b9b37bdd262a07eb956ca3908bb09cf84a6384577384f4bf294c2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/matrix.tsv",
+      "bytes": 2157,
+      "sha256": "9ecd9e9287a8b0d3c48633f0abd5f13e97e906a47016934fcb6892904fb0ced0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/representative-screen.png",
+      "bytes": 78202,
+      "sha256": "7f1f9d573339061262a81d7656173c05557aaa27c6f0a558e9f86fee4ab0d2fa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/simulator.json",
+      "bytes": 336,
+      "sha256": "0fbf80418a9142e2d80dbd6192cc8b820d7bacd314a964f4105cd9b7e1409dd5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-collapsed-three-words-max-content.log",
+      "bytes": 25486,
+      "sha256": "72fd3f190cf386cca246e72f02b4b2739c58a18f024dc6af898f09097fc3d522"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-collapsed-three-words-min-content.log",
+      "bytes": 24678,
+      "sha256": "57ae16cd57d3c36587ed922d3ac352ee79ebd246a839c75ba3725f512a84d967"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-single-word-max-content.log",
+      "bytes": 24516,
+      "sha256": "794e184089f5bd8fbd52b74c207f4dee9285d2e7fe1dda69c0212f592d4c5ccb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-single-word-min-content.log",
+      "bytes": 28921,
+      "sha256": "8179abd459755fee534c7191d4ac33b4ebb605571d4a6f034beb659d985949fb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-two-words-max-content.log",
+      "bytes": 24362,
+      "sha256": "9adb2ed668cd688dacb90c91f7010199d8507deb1f8767f03d2431baf76352f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-five-two-words-min-content.log",
+      "bytes": 24414,
+      "sha256": "06a0d5049c89b8da96cd7a60396dff7dd5f6e436d86e6bbee8353032e03134d7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-long-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-long-max-content.log",
+      "bytes": 24786,
+      "sha256": "06bf24267206c592161e5aaa073340585bdd79dc726b9dfd69345a48ca27ca36"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-long-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-long-min-content.log",
+      "bytes": 24081,
+      "sha256": "5f9bc02d23527ca43e319bac6c60021cc4f225fdb5ded77de99e607b8449ab8b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-short-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-short-max-content.log",
+      "bytes": 24319,
+      "sha256": "1d67bbb89d358f0aeb00f4135eb8fe0ee0c574e19b2140601ef89780bb1f061b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-short-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-first-word-short-min-content.log",
+      "bytes": 24086,
+      "sha256": "2814209f2c57a9160db217d6508c883e83ae00f18d551d5af720e9d81a01d124"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-single-word-max-content.log",
+      "bytes": 24167,
+      "sha256": "968baf1523694b4ad15c5a3403ce2e16700dbbd892a8e0285a447211bf09d200"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-five-single-word-min-content.log",
+      "bytes": 23772,
+      "sha256": "e46d22438857cec3a1f0a97a6787ceb36bdaa391cc3ba14e1fdceb18219dd87a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-long-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-long-max-content.log",
+      "bytes": 24316,
+      "sha256": "c129b07ddfdc710a884cd08a8ac6a6aad7ce35c110de41ec4d15980b551f704d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-long-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-long-min-content.log",
+      "bytes": 23986,
+      "sha256": "cea704b450388f64118d6926bbae04a1b598ccae097e8633efce2ae56ad90580"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-short-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-short-max-content.log",
+      "bytes": 24505,
+      "sha256": "f65cad6d295ce091fafecf81e6f48f0355e9d3b07a47f2942efcb9d8c7f90195"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-short-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-first-word-short-min-content.log",
+      "bytes": 24083,
+      "sha256": "d39f319fce03f2e2d98ac3b717adf77f4524c4b836b5e9adb18a93203183bc28"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-single-word-max-content.log",
+      "bytes": 24073,
+      "sha256": "f0d7b453a329561ac950b11b6ccaefd0d14b31392b42983efb629637ebd3a44d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-negative-ten-single-word-min-content.log",
+      "bytes": 23771,
+      "sha256": "e2a782433ae3d2c09e2786d19b97a7195f1c5892ffc80aa00cf506c280153df8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-collapsed-three-words-max-content.log",
+      "bytes": 25107,
+      "sha256": "ec307c3458926d1d1c86b3f9d9d232410e8e5c5d3249b18ef8802b5feeccde6a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-collapsed-three-words-min-content.log",
+      "bytes": 24582,
+      "sha256": "04244cd7e14a34e61c7f06a915977ae042c2377515c2a736620f92cd07bda77e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-single-word-max-content.log",
+      "bytes": 24044,
+      "sha256": "fe74b4b01b741196c4fed8860a625a20bf3de6204b08a952bf962bfb236cca68"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-single-word-min-content.log",
+      "bytes": 23742,
+      "sha256": "e306dadd43475beebd2838ce0bf642857f367c5b0a4eba4ced9ca36c6bce9cf6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-two-words-max-content.log",
+      "bytes": 24363,
+      "sha256": "ce00cb57a077c7b8fc29cda810748dc930d90935267ad64efcb106681d97f7eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-ten-two-words-min-content.log",
+      "bytes": 23942,
+      "sha256": "21a1f64efd0ab157fcd14528151b8b0de89100f9deb10e053882eba72c73892b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 25017,
+      "sha256": "b5f0ddfbad4c1c63996c2aadbfe673fec726de3a4ad65627be33ca1e0bf55c6d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 24678,
+      "sha256": "634a733bbced2ff2f0d6301714678c9606960fd67eaba4bc7975e655d846cb4f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-single-word-max-content.log",
+      "bytes": 24140,
+      "sha256": "fdbcbab24f4ea8a45c1b41294f20ad8c7f32fec9c740d1783a61b597613828a4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-single-word-min-content.log",
+      "bytes": 23745,
+      "sha256": "49d33f9013f8183b23473f54dfd5e08137e133534f9578c9739033a8191448e0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-two-words-max-content.log",
+      "bytes": 24740,
+      "sha256": "ec669e4670e70ab9180a00b489e51052ce61277b3465b0dfe5f2327c6da75a9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/text-indent-zero-two-words-min-content.log",
+      "bytes": 23943,
+      "sha256": "43826879f5b1d858826083e8891636b4523b944e0f131dbd714cfbbf3427131a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-build-review-fix.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-build-review-fix.log",
+      "bytes": 4770,
+      "sha256": "e3676f871fab17c1edf83235dbb99c8cb481059c30dace2e77170099670a3d27"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-build.log",
+      "bytes": 4427,
+      "sha256": "f34313cdde1c20fbea037093002fcefbe43b395f0b2c38844edbfc672920ca99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-capture-review-fix.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-capture-review-fix.log",
+      "bytes": 2001,
+      "sha256": "91aa2492e125a08f3661cc94a7571cb5e671344e7d2efeb4468c3fb7328a1e3a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-archive.sha256",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-archive.sha256",
+      "bytes": 97,
+      "sha256": "62f1fcbbaf88f1595c85b87bfb8d97645f3f7b9286da37ec0965d9b1eb4061b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-build.log",
+      "bytes": 62,
+      "sha256": "3997fc6790b8063b86c119e91f87ac7395ac6cf26135da637dcb229006bc32dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-scene-matches.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-scene-matches.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-symbol-matches.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/default-symbol-matches.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-archive.sha256",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-archive.sha256",
+      "bytes": 97,
+      "sha256": "347ae308480124c6bd66defa1dbe958fdbeff43aaa67311247a7573e1c4e012d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-build.log",
+      "bytes": 789,
+      "sha256": "0fbfcb64cda8407e83c9a315c2f333ccf64784258f4b7b3dcc5fa2117aa92ef4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-scene-matches.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-scene-matches.txt",
+      "bytes": 1410,
+      "sha256": "1d16dbf2a0171b3d2ea0145e14c73d37dbec89cded13f8aec14dd668e31b6476"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-symbol-matches.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-symbol-matches.txt",
+      "bytes": 51,
+      "sha256": "525f239bf0a432b7e05124feeeda9fdf65910a4a1cdfa79d6bf5f64efbd43ed5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/README.md",
+      "bytes": 733,
+      "sha256": "1759e014d0206fc25df26be2b3c15d651121afd83a1e4246db106846ad631966"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ffi-clippy.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ffi-clippy.log",
+      "bytes": 690,
+      "sha256": "b8827df6352134dbc6bcdd2c723d176f8c1f297e1e268b468efc8d5fdac8cb50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ffi-text-indent-tests.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ffi-text-indent-tests.log",
+      "bytes": 623,
+      "sha256": "3dbdac98302b9ff70c30ee9293bbc90daa8a58330916b2e492690be465a435ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 4699,
+      "sha256": "16b482959921260d0d785f1d45cf050ead5e3b679177fff58c3cb1865ccaabdd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-build.log",
+      "bytes": 65037,
+      "sha256": "50483f26a6f5f8b8ed8a3ad834535b7c99b54c632c7f5c3b0ddb697dcfc30ca6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/matrix.tsv",
+      "bytes": 2187,
+      "sha256": "0091d5028e585ed83ccd8328f1896094777e7115f9b541a18ce3f96f62552aea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/representative-screen.png",
+      "bytes": 142783,
+      "sha256": "be623158ae6b1cfaa3ec68807b0323b31b083de3a1ab85cf683f95d844e0dfc4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/simulator.json",
+      "bytes": 414,
+      "sha256": "e3d8c1c9c67d9c3b81944f265885f4315087abf36d5989a52fcf6bb040ab3e25"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-collapsed-three-words-max-content.log",
+      "bytes": 15099,
+      "sha256": "f2834a6d7759af7d482ee25406fdfbce44e711575201ac1bd78a8a7f553b2749"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-collapsed-three-words-min-content.log",
+      "bytes": 14643,
+      "sha256": "4d9e68f1a93970f910e367b9a4292fdfb42d81118b03f0d5a9bfa20695bd50d0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-single-word-max-content.log",
+      "bytes": 14114,
+      "sha256": "0acf48e110084e28b7c45eda4d93bc27061fb6d9fde22d30a514df3649a8cf73"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-single-word-min-content.log",
+      "bytes": 13526,
+      "sha256": "12c9bd41f962b6a4f2fab38f6067fa3e6c02706b75be272bdf44980fd8a99051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-two-words-max-content.log",
+      "bytes": 14341,
+      "sha256": "f301c827f9003acfef17bd42f704042d17f8a0df07b41a81ed4895dc40867868"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-five-two-words-min-content.log",
+      "bytes": 13819,
+      "sha256": "9119568aad9cff5237c7ca41c31ca6fd6ac833d3f445129471086dac035e6e5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-long-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-long-max-content.log",
+      "bytes": 14372,
+      "sha256": "7f02727f5695e4a913251560f84e9e1add57e6e3decf53c022ca25a284a5adae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-long-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-long-min-content.log",
+      "bytes": 13850,
+      "sha256": "45c2a971ffc40cb346febad4a8d8b4ce2463a6aba86eff7e39e00267651da199"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-short-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-short-max-content.log",
+      "bytes": 14374,
+      "sha256": "e8727404b3761655fee057e383497e6eb0eefe4745101e0b72104452213cde76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-short-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-first-word-short-min-content.log",
+      "bytes": 13852,
+      "sha256": "689a4724e4890ee788d161cc2165ac17720c35e5370dda9fe8732d4347e4aefb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-single-word-max-content.log",
+      "bytes": 14133,
+      "sha256": "86fdb4d72d81099f29b33ed3ec4d4cfba4ef61413cd33a6783373f0efcad03c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-five-single-word-min-content.log",
+      "bytes": 13545,
+      "sha256": "3929d43202520d671f419972b3ab9f6a82b8c98f12a30bf31cb55a5aa00c15cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-long-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-long-max-content.log",
+      "bytes": 14370,
+      "sha256": "ca0e114ba9fa53217ad9076a6f42990ea7e5a87bc4eca0aad25313d0151825c1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-long-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-long-min-content.log",
+      "bytes": 13849,
+      "sha256": "c80cee02b6759ad6225526dd0d9f8315a7c3da7be20051d74ad75f84dfb5b011"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-short-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-short-max-content.log",
+      "bytes": 14372,
+      "sha256": "1853922b50b2fdfe7a0358a9c84921ce52bb30bdc142f9d93432410740bb27f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-short-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-first-word-short-min-content.log",
+      "bytes": 13851,
+      "sha256": "d93137a1e5aa725ac836eeda8a456df3c16f3c4958eb9a393f85a08757d7ca4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-single-word-max-content.log",
+      "bytes": 14132,
+      "sha256": "800782493cd62f79c0e25aee20eac19700174ad283fab30e02821b06bbc3f291"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-negative-ten-single-word-min-content.log",
+      "bytes": 13544,
+      "sha256": "a587a9ac6198d8187107370df3863ad5d1894be685867e53be499e2e6a9c3ea8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-collapsed-three-words-max-content.log",
+      "bytes": 15098,
+      "sha256": "a1cb30936045122f1dfcbf5d44b8455d4e000281c1d5fda3f03e4b8ad13c9c11"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-collapsed-three-words-min-content.log",
+      "bytes": 14642,
+      "sha256": "0faa8859999fed3e824d3efb947534d3f9a8da9e4f8ec3caafee269103dfbfc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-single-word-max-content.log",
+      "bytes": 14113,
+      "sha256": "c4ff94f1442133ad3f4a0339e73ee3b94f55830da58a396f98d219f878e430ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-single-word-min-content.log",
+      "bytes": 13525,
+      "sha256": "b0fb2f7d71c294031682339098d90d43ea6a8133cf3cc40346390e315c22ad3e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-two-words-max-content.log",
+      "bytes": 14340,
+      "sha256": "db4c8aabc83c0f4aa0e9632d43617d583b9152022acfd174d2e9ec62b4e4b11f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-ten-two-words-min-content.log",
+      "bytes": 13818,
+      "sha256": "72094b673e3fc77ffabe2c792d03f495b115bb547bd31edd068325569ab8ea95"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 15099,
+      "sha256": "1a3ab3c7ca8993bc3bc4bcea85d944439a3c4f7b811cbea22545a4b4d4e54cda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 14643,
+      "sha256": "d38dc06fb7191af2df22db0dcc0a847ba5004878a95f4b87707ba419585eaf69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-single-word-max-content.log",
+      "bytes": 14114,
+      "sha256": "0792c80fb224aeef88b19bbf2e7722e930c9332725b20080f183370eceddd73c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-single-word-min-content.log",
+      "bytes": 13526,
+      "sha256": "aeff6f3311e574b02bbf5b6d9576a1a477fb45b940a9d75a977329f2ea42cb7a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-two-words-max-content.log",
+      "bytes": 14341,
+      "sha256": "004d83e43afe7e160261e0d96ecfbeb5b8fbd7ca8e977f7debee428761e9ba44"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/text-indent-zero-two-words-min-content.log",
+      "bytes": 13819,
+      "sha256": "43d0af7c5338467fe32fe5783795b5fe507738915f556d27051fe3d8f7bbe927"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/node-tests-review-fix.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/node-tests-review-fix.log",
+      "bytes": 2830,
+      "sha256": "2503610bcb5bb8434b6b174112631b66c689df2d3adca486d86949b1007736a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/node-tests.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/node-tests.log",
+      "bytes": 2830,
+      "sha256": "63fa254fc214341b4ba5b3d8cce0cf382214544f671ed48ea726d7e8f7dd20b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/post-merge-status-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/post-merge-status-review-20.md",
+      "bytes": 3550,
+      "sha256": "bc9a8e41bb2b9e5a5fcfd0970b124900cdfc34b38edc6298860e1cc1e40c10b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 7421,
+      "sha256": "f839fec1de0b2976b85ba767f5d925e3fcfc8270917c0cc9f7a939f77d4936b8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.md",
+      "bytes": 5899,
+      "sha256": "28448f22b8d1b086c2f810f8a08c549051749e7395b447dc24cb6900865260e6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/runtime-clippy.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/runtime-clippy.log",
+      "bytes": 172,
+      "sha256": "3e713118cedf61a19de79677cd9b83fa75171ee34dc44710f1a9e7fdbe4e118f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/runtime-text-indent-tests.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/runtime-text-indent-tests.log",
+      "bytes": 1257,
+      "sha256": "64ebaad9e0296dc99c38290dc2d53e6c7431e15281578d88f52f7a53237b9122"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/rustfmt-check.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/rustfmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/text-layout-tests.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/text-layout-tests.log",
+      "bytes": 7987,
+      "sha256": "457ce728245d799aaabd35274c656e4a52ef30eb7c0de6736bdbd5a0b8bed25f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/chrome156-observation.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/chrome156-observation.json",
+      "bytes": 1612,
+      "sha256": "3e44bd77b6355526a602a4a8148f651d7a46f497e48ecedc539229b6df8b18fb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/README.md",
+      "bytes": 3260,
+      "sha256": "cc157a5a2ab5ecaa6d208aed32f38d2895f62dc3a20c5875ffcbe49758d47db3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 336,
+      "sha256": "919f9eb4b902b8a4720eaa380d7b6bb7ff9656e48f79813457038bc14baf8dba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-five-two-words-min-content.log",
+      "bytes": 23963,
+      "sha256": "9821a8b819e1861656e6eb20a0f0493aeca5a74e27bed2e57679c5749295e996"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 25027,
+      "sha256": "16bbe2eefc0bfb5bc19d9eb23835174ad10ba4354e65ffd4effb5abcbcdc0732"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 24700,
+      "sha256": "d258c6e9222abff0fdad6fa5611aa16c9a615b705d2e14b152b672065e19c367"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-single-word-max-content.log",
+      "bytes": 24447,
+      "sha256": "937e52bdc6eb550f5b929f107fb0ef0e56b726b2e89069d3d361b026cb7aa1b3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-single-word-min-content.log",
+      "bytes": 23672,
+      "sha256": "8ee680a007eb2cb12ba3b69598e664f3b9cf7017497aaa9516c7f22c73f7d823"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-two-words-max-content.log",
+      "bytes": 24669,
+      "sha256": "20606b48906b06f71e051309d0c4dd491dd3cd75c5e68a06212ea00fe49a3e52"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd/text-indent-zero-two-words-min-content.log",
+      "bytes": 25220,
+      "sha256": "c23012c7322b13520e041253d3b4fca5a0e2d42d494b4ea178a74ed01ba07bef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/matrix.tsv",
+      "bytes": 1257,
+      "sha256": "7f55ccfded1efb07b06e1c540df52e00b7c9509e53dfe088f81452fd1c229c85"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/representative-screen.png",
+      "bytes": 76811,
+      "sha256": "845aee107be47007ade2752d13d5178256d787e1f75831d7f134157ab1b48823"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/simulator.json",
+      "bytes": 336,
+      "sha256": "919f9eb4b902b8a4720eaa380d7b6bb7ff9656e48f79813457038bc14baf8dba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-collapsed-three-words-max-content.log",
+      "bytes": 25122,
+      "sha256": "c469a6f421ba1aab05e83880737cdfeba9824bc02d38122278215ca986f90692"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-collapsed-three-words-min-content.log",
+      "bytes": 24606,
+      "sha256": "bcc0ffd2161d628a6652bf26b1d1d8c17e521f7c85f34e5b115e471683af79ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-single-word-max-content.log",
+      "bytes": 24067,
+      "sha256": "a503198094d4523941a1d5517aa207baa8021312a6d795f640b8a6b9396cac6b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-single-word-min-content.log",
+      "bytes": 24145,
+      "sha256": "e7e02ae7063bd81b50f3c60687912403e5e07f13af07adea83a570f051bc795a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-two-words-max-content.log",
+      "bytes": 24200,
+      "sha256": "f554078a6bce3551e069b1cf44896c34178717101885bf720aa95cad4bfc828c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-five-two-words-min-content.log",
+      "bytes": 24342,
+      "sha256": "7083e7b21eadf3ad2463aaad7c54324049ccaa370f66658b12afa11b24100da9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-collapsed-three-words-max-content.log",
+      "bytes": 24933,
+      "sha256": "e7757dca5f814a47039438e3b78d0aef178c41ea52ddfdbb9555db359d1883b5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-collapsed-three-words-min-content.log",
+      "bytes": 24604,
+      "sha256": "0c8dccb37559b2fcc5988aa088e9e2060483cf0d054057f9ac96f75a997f9da5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-single-word-max-content.log",
+      "bytes": 24065,
+      "sha256": "afe654eadc194a78b78ba9e91e5d21b486a93471d9b9915a51d905be162ae910"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-single-word-min-content.log",
+      "bytes": 23579,
+      "sha256": "c898dbf3cfbbf905168bbdb92b0eba3005009b9a6579dcd63d6fa6f4e1e2bcc7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-two-words-max-content.log",
+      "bytes": 24288,
+      "sha256": "d73bbffed6d4fbfe7976d4a1e4276d5e585210d85ab1cd0468e75b197d9cc06a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-ten-two-words-min-content.log",
+      "bytes": 23961,
+      "sha256": "f90f1445fa63c2698d1607d087faf2d4d1a22df36114e8e74d7a82563d4989dd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 25120,
+      "sha256": "669f80bff2fcbb04ebce721bfb7d40abb328e13e266626c6cc9863877c644012"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 24605,
+      "sha256": "1c1ced8e4864c9ed2a4db57419d2bff37343d9f97f408672f4e203e2024a1949"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-single-word-max-content.log",
+      "bytes": 29241,
+      "sha256": "12803af9b26e912448ddf46110acebcca843b57ee8317a1e4ad01186dc0dea9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-single-word-min-content.log",
+      "bytes": 23673,
+      "sha256": "c0365ea9e7d69d4015c70aa695a111fd0fbb9decb0b0563acd2c5f0d0e9792c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-two-words-max-content.log",
+      "bytes": 24293,
+      "sha256": "1439a83e4d9bd89eddbe8227de2aa72981908f70ef312f84e4f239f24d79d85f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793462960963-dcee9e06/text-indent-zero-two-words-min-content.log",
+      "bytes": 25035,
+      "sha256": "5d6967c4e3d8e7f73281d1e7b9472b560d42db4c5554f9e881ccbe7aecf8b231"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/matrix.tsv",
+      "bytes": 1257,
+      "sha256": "7f55ccfded1efb07b06e1c540df52e00b7c9509e53dfe088f81452fd1c229c85"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/representative-screen.png",
+      "bytes": 76794,
+      "sha256": "b2e32d642e9786bde96fa6a1ebca8cc4911bb02de70a1d9a3ed928c07dfb546d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/simulator.json",
+      "bytes": 336,
+      "sha256": "d0fca940f6a1e756bca1855e26e261dbd4179bd51215e2ef8a95589ae0ea1b5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-collapsed-three-words-max-content.log",
+      "bytes": 25028,
+      "sha256": "89f45fbcdae502d03ce229474fe2bdd5406bd1fa720631818bafc8e64a6feffd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-collapsed-three-words-min-content.log",
+      "bytes": 24986,
+      "sha256": "572d9c6ca424f34c18bc4b972c48186c693aeaf83baa375568c4c3a32336d43e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-single-word-max-content.log",
+      "bytes": 24445,
+      "sha256": "ca8a2489b17a91a7931da159342e86dd5d66f53606595165cf5bc383e92d4e01"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-single-word-min-content.log",
+      "bytes": 23671,
+      "sha256": "0e009b0f561a173653ec0e019df03bcbb43eb45b8bea1afa91494d41adf76250"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-two-words-max-content.log",
+      "bytes": 24670,
+      "sha256": "5cc250ecff2f58c05874f4053be36b27a61da33b43c93e29f7f5875db30c923b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-five-two-words-min-content.log",
+      "bytes": 23872,
+      "sha256": "9575f3da83860fd1d56f6dccf22a57d25f71ed0362984cf7d8c376005ca65e19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-collapsed-three-words-max-content.log",
+      "bytes": 24932,
+      "sha256": "4ffc36b7fe728e53cc2c6e87ac9ed437a1322ae914685570ee0b55f70866e06e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-collapsed-three-words-min-content.log",
+      "bytes": 24981,
+      "sha256": "725f65f5103461abd22721c65e77ef33502ee455ff45569ae1a99378d7f37488"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-single-word-max-content.log",
+      "bytes": 24443,
+      "sha256": "4b1018c52ab40eaedf1bf0d50bf7b0229b0dfa386909fea3a0422d48ae427bfa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-single-word-min-content.log",
+      "bytes": 23578,
+      "sha256": "5c4da4a8423135bdf88279686204258a1d800de7947d432bcb53774b3dbc21ef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-two-words-max-content.log",
+      "bytes": 24669,
+      "sha256": "4a7ddc6e60b9877a248c14b1106fc0d1490058ab0095018d42b6d3e9d69a1e0f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-ten-two-words-min-content.log",
+      "bytes": 24053,
+      "sha256": "8cdaaa6fb7efb7d15e55d1343bb2efb86033faee6bdc68f3701b6d1c4788370e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 25407,
+      "sha256": "3a41ed8a3532ee6ca77b3f6e709f7fde4e12656272025b8bf5333276395db7cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 24984,
+      "sha256": "e51469659d80e5dbabbf5d021ba505ebffd05d790ca087a49169329dbda3eeb3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-single-word-max-content.log",
+      "bytes": 23975,
+      "sha256": "26380d69eb8746276439657551b220e8ce76a4f7e7eaef1dfcb1832b7eaaac11"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-single-word-min-content.log",
+      "bytes": 24051,
+      "sha256": "d226f42ca58655dcb5ef23d3548d955e82ca0ee818c4fbfab6cc6c31def63c52"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-two-words-max-content.log",
+      "bytes": 24292,
+      "sha256": "a625611c909d992deaa003063940a1fb037d23e55eff71eab756b1c78ed2e962"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-android-avd-1793463802457-25e59203/text-indent-zero-two-words-min-content.log",
+      "bytes": 24342,
+      "sha256": "77796a08ae5e1f37c6d76137d7b37a2aaf51f772ba7bad64839219d4ee0d87fd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-build-pass02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-build-pass02.log",
+      "bytes": 4608,
+      "sha256": "b0fcc401e17e8933cdf63f3981e7a28009c826fc7876e7f26f91e2c12e474381"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/android-build.log",
+      "bytes": 5303,
+      "sha256": "6302fd1e78642b18512cb6a98ffbf428c1613d084c080e9eacf6a5517a0970e1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/default-archive.sha256",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/default-archive.sha256",
+      "bytes": 97,
+      "sha256": "eef055a1780dac3e7f3cc9c863a198f79bf5d49a71e88ff89d3e1603ebb2a67f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/default-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/default-build.log",
+      "bytes": 692,
+      "sha256": "7418f72ea552aacff2dc38794356b8f50d0989260311a4e19041545d9e4ed069"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/default-matches.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/default-matches.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-archive.sha256",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-archive.sha256",
+      "bytes": 97,
+      "sha256": "942019e06c4dfe6c10e1a12f9ba5188742355530fa8bc3b35aea78299dc3cc9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-build.log",
+      "bytes": 789,
+      "sha256": "b4429dc945b62aad298c83c88449a9982717b3ef9b0f71588c55df32c74bdc43"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-matches.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/opt-in-matches.txt",
+      "bytes": 16165,
+      "sha256": "aa7c69bc17774b82beab5da9365b3c2e5caf25673828b841dc125de47c8e3785"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/README.md",
+      "bytes": 867,
+      "sha256": "76d3edbe8385e5967b62b881fbfa64d0b09de928e7156971838ede2678320a1f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass01/ffi.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass01/ffi.log",
+      "bytes": 798,
+      "sha256": "aa42da995a33bfbcd560e30148f2e43aeddd68559a364cccc14da0b2305a6bc7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass01/runtime.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass01/runtime.log",
+      "bytes": 1888,
+      "sha256": "a78a10d864ffc69d59d227769cd55e8e79488a1145a0785a15b924aa1753ed04"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass01/text-layout.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass01/text-layout.log",
+      "bytes": 1154,
+      "sha256": "105f88d3763e765444cc916c5418d67db7c83a71c3ac1f2c404f10ce7779ea0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass02/text-layout.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/clippy-pass02/text-layout.log",
+      "bytes": 180,
+      "sha256": "87ad2ffb6895bee46749491e2a3e74a9e001f75fa5d058983336e309f1e4a51e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ffi-pass02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ffi-pass02.log",
+      "bytes": 22326,
+      "sha256": "184b8eb7fcfe8ed8e038e24511fd8dcbfe6dd9cddd9d3f89e8624614656bcc0d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/implementation-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/implementation-review-20.md",
+      "bytes": 6392,
+      "sha256": "69d142b294f70a4efe6ac50e18bd8babc0b2d0235e5828cee6abdc7226621633"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build-pass02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build-pass02.log",
+      "bytes": 91951,
+      "sha256": "f09db44c1755547f9f0f189e6f8c56df89e7b9ea8ccd599fdfa9824661dfba48"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build-pass03.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build-pass03.log",
+      "bytes": 80896,
+      "sha256": "14656613a6f6ceaf79872d956262389452343c2171e2665bec1355f7251bbce3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build-pass04.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build-pass04.log",
+      "bytes": 91951,
+      "sha256": "11533a738de4487c2bfa75aea78e770ab6255635b520e778817d5311732604e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-build.log",
+      "bytes": 120939,
+      "sha256": "3cb87b5186bdae39b4798ae3cfd0cd0e66e8a1785667e45152888395add06489"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793462982679-19c24117/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793462982679-19c24117/simulator.json",
+      "bytes": 414,
+      "sha256": "a4f599a05e93ad015fe3a018189bad290375266189501082f0c74c904ea2616b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793462982679-19c24117/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793462982679-19c24117/text-indent-zero-two-words-min-content.log",
+      "bytes": 44,
+      "sha256": "9f56fca152030dba9e8ee76dee4fc8967ab667507b5878f0f9ab819d55b6b9a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/simulator.json",
+      "bytes": 414,
+      "sha256": "5eb02d760910b3ca10cbe0d0a9801c223ce8d5fe1aa17959a1f681b9a6804138"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-five-two-words-min-content.log",
+      "bytes": 15496,
+      "sha256": "a252a65e8a91e3965855b34784e0945263873ed7f36df979f3139cf8e67fc3d5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 14937,
+      "sha256": "2b49577ca33d007b12d235356e08617592cfe8f2b7b97beb889b3186b1201834"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 14490,
+      "sha256": "06a3f22466753ec33cb2b7790339b1853c5487d88d16a5f99b70cf812548a0ef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-single-word-max-content.log",
+      "bytes": 13961,
+      "sha256": "293e043f7d7cb497fc32aee11c29b239b28e649a599d7e8e63cdf2628291b623"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-single-word-min-content.log",
+      "bytes": 13382,
+      "sha256": "f927be17ded282193e6ce4b75b0aeeb9efc5d400430bc7e72272e67721843c42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-two-words-max-content.log",
+      "bytes": 14188,
+      "sha256": "caf60d05187fde0f51ac245dc9e9d0f994ac9e23e766b5fe8302b0a4ee5adcd2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463231573-00fa7c67/text-indent-zero-two-words-min-content.log",
+      "bytes": 13675,
+      "sha256": "0e747d4cfeb32614bf89fdff20a64d39fc6bb0ac88eefec6b624bbd9bc93c818"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/matrix.tsv",
+      "bytes": 1275,
+      "sha256": "9f65c07542c1a2032732031475abe2787e0c3b593f451770c364544861ac5698"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/representative-screen.png",
+      "bytes": 141046,
+      "sha256": "3cfc6b2b55dc768f5f9a04c2bac64160b5cc9c6b029b3bd56ca4815b0370be1e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/simulator.json",
+      "bytes": 414,
+      "sha256": "330127d4c353d6b596cc2b6b64198413797da89571e996a1a0da61285f1ef2c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-collapsed-three-words-max-content.log",
+      "bytes": 14937,
+      "sha256": "f72989cc426465ce3673fca16dc0ad7a487c6c7cea88fbfad0505dc53cb11646"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-collapsed-three-words-min-content.log",
+      "bytes": 14490,
+      "sha256": "004e86779112f3575da407718a3c18a670a96c7d597c859ca5b3fe9d0ef9bd76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-single-word-max-content.log",
+      "bytes": 13961,
+      "sha256": "0edb3250d6fe182c35fba95608cb3da91eb87f1a03b373fde69a7f5d935a4893"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-single-word-min-content.log",
+      "bytes": 13382,
+      "sha256": "c29a899141e1355d1a8a8bf233647c916d936d0130d037b8d59cfbc907ebfed0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-two-words-max-content.log",
+      "bytes": 14188,
+      "sha256": "9801f989e8e152eacc8c018fbe1106e9878f03ab7f25bbd3558d7d3c18447e2f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-five-two-words-min-content.log",
+      "bytes": 13675,
+      "sha256": "3e24f8f398d7d6c7fd6db2bfec36db9a41df4d55e44649d3824bb02ee1877823"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-collapsed-three-words-max-content.log",
+      "bytes": 14900,
+      "sha256": "e224760c02745fed30f7d4da4286dc14a08f71101778bc85b2fd156e0b51f00c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-collapsed-three-words-min-content.log",
+      "bytes": 14489,
+      "sha256": "dd50fd00a61e0e006e67b71861f6294786276c7b515e3756e1a60f111360864e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-single-word-max-content.log",
+      "bytes": 13943,
+      "sha256": "ad5960546276d723d4199c060fe4cf16fe21aa8c4b42852c026a5937757ab0a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-single-word-min-content.log",
+      "bytes": 13349,
+      "sha256": "d6ee5f7527132fcb6c768b5b62469cc428f510070b7ac3a0b6075bdb48bc5c68"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-two-words-max-content.log",
+      "bytes": 14187,
+      "sha256": "5bc47a01c0bde763e156dd560add633599cf7921600eac48f48c32f6d4deec50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-ten-two-words-min-content.log",
+      "bytes": 13674,
+      "sha256": "10b8d491b2f9fe6e3f38a7a44d9fc0d76d05a2bc8a7c45917790d200b6306b0d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-collapsed-three-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-collapsed-three-words-max-content.log",
+      "bytes": 14937,
+      "sha256": "c6785176e516922c1026b3933381614b36c52c08b9353e99f1e186c53e1d935e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-collapsed-three-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-collapsed-three-words-min-content.log",
+      "bytes": 14490,
+      "sha256": "2e0677958d9e6c60585a3578841509e2b4bbaa353913305702bdee9810284cae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-single-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-single-word-max-content.log",
+      "bytes": 13961,
+      "sha256": "9871331aeda140c40f774fae00206a8603e6d5192c1d5e14eef231297cdfc86d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-single-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-single-word-min-content.log",
+      "bytes": 13382,
+      "sha256": "00319d11ea471ef1d2da5c77b36451a9d0c52ae3b782c496170cccde107528c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-two-words-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-two-words-max-content.log",
+      "bytes": 14188,
+      "sha256": "cd32ed2f6b4f728da63bc814a7489ee45ccc2dcfbd52c6b3eb7100e805cbe0b9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-two-words-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-ios-simulator-1793463450444-9a3928d9/text-indent-zero-two-words-min-content.log",
+      "bytes": 13675,
+      "sha256": "772d8d90c6ef1ac3588f4bd257493d2888ee5dbd81da2394b547932e724470cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/node-tests-pass02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/node-tests-pass02.log",
+      "bytes": 2789,
+      "sha256": "bee9da2ed96143546df702c15c92d6bc461bd223f349a158948e409c1cec91be"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/pr-delta-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/pr-delta-review-30.md",
+      "bytes": 7361,
+      "sha256": "1205b704595b487d26f32c29ab0fb005c647afd389876b535a8403b4987098f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/README.md",
+      "bytes": 4171,
+      "sha256": "7e7e70be6d92721dd35cd7a1e720e7f362bd4b03a323b4a3d80658b28382e50e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/runtime-pass02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/runtime-pass02.log",
+      "bytes": 51791,
+      "sha256": "615684532af584b5e26ad3a094ebc94b1eb19f23c40ccd085276ea062cb7c0a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/spec-derived-expectations.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/spec-derived-expectations.json",
+      "bytes": 7912,
+      "sha256": "2ac0a4ec311df3c395f9e065986515a979b79e4887375a4a4026c0f916df1b97"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/style-to-layout-pass01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/style-to-layout-pass01.log",
+      "bytes": 31834,
+      "sha256": "01830170995eaf8714b05ed8a63c13baf8ec579ddee40f2ad40171445fab11f8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/text-layout-pass02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/text-layout-pass02.log",
+      "bytes": 7988,
+      "sha256": "567acc45ae188cce9e70994bc5a200c3bd9ae38039baced55f11e1c3514c3989"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/build-log-whitespace-normalization.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/build-log-whitespace-normalization.json",
+      "bytes": 971,
+      "sha256": "9f9c9168d3109926d5e20cfce44bf8779cb3bbe3b976a6c58e37e1507eecc835"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/docs-build-prreview.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/docs-build-prreview.log",
+      "bytes": 3421750,
+      "sha256": "f0d6a6e5bcd03d7f8da0ef0816cdef366be1822fa19a87ed24a494fa042442d0"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-20.md",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-20.md",
+      "bytes": 4968,
+      "sha256": "282933e1fa2110a2c2ee0635acb4989ce3e71e19dbd8e7c5a196dbfd54ed65ea"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-30.md",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-30.md",
+      "bytes": 5622,
+      "sha256": "58328edca56703644f635eee36c96cdd71f8a23779c18a5b89888d5404fa498b"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-build.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-build.log",
+      "bytes": 768,
+      "sha256": "e99bc772059fd4ffca06af9994ab2988d319c455bcf27f520042bf48c9de7602"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass03.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass03.log",
+      "bytes": 366,
+      "sha256": "7f46e8c14f50c27a61a217d1f244905c0e40c04da8634671f4368d12915de841"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass04.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass04.json",
+      "bytes": 129342,
+      "sha256": "ba38be8b4e1460148cf15e919d7aa6122d372539f087724d4020463681495c7a"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass04.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass04.log",
+      "bytes": 479,
+      "sha256": "a9964d2e8e74bd4d522642bd8976382cc87f74c038b99d20a2f79a2b11b9775f"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass05.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass05.json",
+      "bytes": 130711,
+      "sha256": "f5f403c7f902934400d4a0082dfeb8ae3323c271179d86a74292cf4b51254f8c"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass05.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass05.log",
+      "bytes": 479,
+      "sha256": "93c1994ad816b2629001492ef467e58fe10b1d6707a0331deb1e1b623864623f"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass06.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root-pass06.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-docs-review-root.json",
+      "bytes": 128870,
+      "sha256": "c2de88109b17ffd6b4f94b4f876e64fb91fce1e80d129a021c280eb47817f96f"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-route-audit-pass04.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-route-audit-pass04.json",
+      "bytes": 4732,
+      "sha256": "3f6158811d0253d5543ab087c07d52379aa0810ad89bff4d9355a46d342b58ca"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-route-audit-pass05-redirect-created-empty-file.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-route-audit-pass05-redirect-created-empty-file.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-route-audit-pass05.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-route-audit-pass05.json",
+      "bytes": 4732,
+      "sha256": "4f968333043e398e3808e2af5add7d21b91a77d878863f8c5c206dda886b0fb8"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-rspress-build-pass03.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-rspress-build-pass03.log",
+      "bytes": 5651,
+      "sha256": "2e52a5ad72c94daae11ec12c44a8323c92e0df766f7ddcaee9f67cab73ef434e"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-rspress-build-pass04.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-rspress-build-pass04.log",
+      "bytes": 8766,
+      "sha256": "253ff89cf848146aa73c765cd235e52310acdbf49084b61f51e830739a9a5481"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-rspress-build-pass05.log",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/selected-rspress-build-pass05.log",
+      "bytes": 8752,
+      "sha256": "d41e086e7948b6860b3d6698a0612ae10138cf6424f82f7acd82be8209fedf29"
+    }
+  ]
+}

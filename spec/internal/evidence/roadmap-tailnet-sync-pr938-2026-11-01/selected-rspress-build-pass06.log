@@ -1,0 +1,68 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config "/Users/yoonhb/Documents/workspace/spinon/tools/tailnet-preview/roadmap-c11-4-pr938-docs-pass04/rspress-docs-review-pass06.config.ts"
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 166 ms.
+ready   built in 1.31s (node)
+ready   built in 1.31s (web)
+
+File (web)                                                                                                 Size        Gzip
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/styles.d2a6dfa6a0.js                     0.47 kB     0.23 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/icon.svg                                           0.64 kB     0.41 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-d080e0e3dfb9.b837f57437.js   2.0 kB      1.1 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-d0f24b641f47.21f41074f6.js   2.3 kB      1.0 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-4a95cafd33ba.8ce6308971.js   7.9 kB      2.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-4ae542c38713.a28f86bc58.js   8.1 kB      2.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-b2da315282df.e63b384c19.js   8.5 kB      2.6 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-614094b1cf7e.081651bb29.js   9.7 kB      3.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-550e007d2d4a.13987fae0d.js   9.9 kB      3.3 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-3fce81cd52ee.e961e07eaf.js   9.9 kB      3.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-c27cc52aa730.07b95f4f39.js   10.6 kB     3.3 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-dc30d55b37fe.7780ad3b54.js   10.9 kB     3.1 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-30aa0ac6c45a.54ba413f27.js   11.2 kB     3.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-5048f225dcb9.8fb06abef3.js   12.2 kB     3.5 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-bad4b03699db.4d7c406e52.js   12.8 kB     3.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-637bbd88b5a5.fedb6d6689.js   13.5 kB     4.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-7898a9bf002d.4e889640d3.js   14.0 kB     4.4 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-bfd363345035.a3d358ce35.js   14.2 kB     4.4 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-382990387889.bf893585e3.js   15.7 kB     4.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/index.4f2adb7912.js                      90.1 kB     24.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/a.877e354479.js                          217.1 kB    71.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.9 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-04cbcabea10a.268e2cacf5.js   321.0 kB    65.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-c4dae6800800.9a67ada165.js   412.0 kB    91.3 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-7ce2535ac56d.48ea63d9c9.js   755.4 kB    159.5 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/js/async/route-6c33a3943990.72c5dee3ae.js   755.5 kB    159.5 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/static/search_index.ko.cece4066.json               1389.7 kB   405.9 kB
+
+                                                                                                  Total:   4443.0 kB   1129.8 kB
+
+File (node)                                                                                                                                                                    Size        Gzip
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/404.html                                                                                                               8.5 kB      2.5 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/README.html      28.9 kB     4.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/binary-boundary-pass01/README.html               29.4 kB     4.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/post-merge-status-review-20.html        32.8 kB     6.0 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/README.html                                32.9 kB     6.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/README.html                                      33.1 kB     6.3 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.html   34.5 kB     6.6 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.html                       34.6 kB     6.5 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/plan/c11-4-anonymous-grid-text-negative-indent-plan-review-20.html                                                     34.7 kB     6.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-30.html                                 35.6 kB     6.9 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-20.html                                 35.7 kB     6.7 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/plan/c11-4-anonymous-grid-text-negative-indent-plan-pr-diff-review-30.html                                             35.8 kB     7.1 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.html                             36.7 kB     7.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/pr-delta-review-30.html                          37.3 kB     7.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.html                  38.3 kB     7.9 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/plan/c11-4-anonymous-grid-text-computed-text-indent.html                                                               39.3 kB     8.1 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/plan/c11-4-anonymous-grid-text-negative-indent.html                                                                    41.5 kB     8.2 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/implementation-review-20.html                    46.1 kB     7.8 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/plan/c11-4-grid-track-sizing.html                                                                                      334.9 kB    68.4 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/0059-c11-grid-layout.html                                                                                     410.3 kB    93.3 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/STATUS.html                                                                                                            709.6 kB    160.5 kB
+../../build/spinon/roadmap-c11-4-pr938-docs-pass06/site/spec/STATUS.html                                                                                                       709.7 kB    160.5 kB
+
+                                                                                                                                                                      Total:   2780.0 kB   600.8 kB

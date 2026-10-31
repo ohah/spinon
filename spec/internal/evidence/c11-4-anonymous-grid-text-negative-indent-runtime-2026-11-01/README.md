@@ -1,5 +1,11 @@
 # C11.4 anonymous Grid text negative `text-indent` runtime evidence
 
+## Implementation PR
+
+Implementation PR [#938](https://github.com/ohah/spinon/pull/938) was Rebase and merged at `2026-10-31T18:34:54Z` with merge SHA `8c5ca0c62ed030642455f53122928b25bba80fda`. GitHub reported an empty check rollup, so this record does not claim CI passed. C11/C11.4 remain incomplete and the official count remains `72/213`.
+
+[병합 후 상태 검토 20개](post-merge-status-review-20.md)도 공식 checkbox, 72/213 집계, PR metadata, 실행 범위와 artifact 표현을 다시 확인했다.
+
 ## 범위
 
 기존 fixture 전용 computed `text-indent` profile에 `-5px`와 `-10px`를 추가한 12개 고정 장면이다. 기존 `0px`·`5px`·`10px` 장면 18개를 회귀로 유지해 전체 30개다. Ahem 10px/400, horizontal-tb/LTR, normal whitespace, line-height 10px, anonymous direct text 하나, edge/gap 없는 Grid의 단일 min-content 또는 max-content column만 다룬다. 기대값은 [CSS 규범·Chrome 156 Agent Browser 관찰·독립 Ahem 계산](../c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md)에 연결한다. `-30px`는 oracle-only 경계다.

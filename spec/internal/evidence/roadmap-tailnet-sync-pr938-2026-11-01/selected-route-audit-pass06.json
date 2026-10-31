@@ -1,0 +1,83 @@
+{
+  "rspressVersion": "2.0.22",
+  "selectedBuildLog": "selected-rspress-build-pass06.log",
+  "fullSiteDeadLinkCheck": false,
+  "rawRoadmapSource": "spec/public/roadmap.html",
+  "rawRoadmapMarker": "PR #938 Rebase and merge",
+  "mergeSha": "8c5ca0c62ed030642455f53122928b25bba80fda",
+  "officialCount": "72/213",
+  "checkedLocalLinks": 10,
+  "checkedPrReview30Route": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-30.html",
+  "checks": [
+    {
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-negative-indent.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/plan/c11-4-anonymous-grid-text-negative-indent.html",
+      "bytes": 41465,
+      "sha256": "0f53179812bad5be68c249fee38894fa9647c7f13750249f0ec094fbb29d2cd8"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/0059-c11-grid-layout.html",
+      "bytes": 410279,
+      "sha256": "a474f94f1409c7778386b94564e0ea8f228c50f07ac26347decea2f34693910a"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.html",
+      "bytes": 36681,
+      "sha256": "d510c013c043520685548e01c8e35e30299a242304fc64ebcbfcd813e86de401"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 34465,
+      "sha256": "46f0b8f78b8b85ad7f122edda00e96c3aa39005d6ff685d21a6db1f580ecf64d"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 38254,
+      "sha256": "14c64cd5c7be760bc747afd9d43934cad7c91c16aae72b02eab873facfdfaf8a"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/representative-screen.png",
+      "kind": "source-static-asset",
+      "file": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/representative-screen.png",
+      "bytes": 78202,
+      "sha256": "7f1f9d573339061262a81d7656173c05557aaa27c6f0a558e9f86fee4ab0d2fa"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/representative-screen.png",
+      "kind": "source-static-asset",
+      "file": "spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/representative-screen.png",
+      "bytes": 142783,
+      "sha256": "be623158ae6b1cfaa3ec68807b0323b31b083de3a1ab85cf683f95d844e0dfc4"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/post-merge-status-review-20.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/post-merge-status-review-20.html",
+      "bytes": 32763,
+      "sha256": "e194261a485b0dda98b2ed24e09b177624a84399980b1785e3b1d114c9403b76"
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-20.html",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-20.html",
+      "bytes": 35679,
+      "sha256": "ba26640fe90c91793740e0193479af47e4ada6d196d7f58caaa970a9d13325e7"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "kind": "rspress-html-route",
+      "file": "build/spinon/roadmap-c11-4-pr938-docs-pass06/site/STATUS.html",
+      "bytes": 709580,
+      "sha256": "57098fba182c36159beb0580357dc13ac492ea3b86eb100c3501f9ed3c5253a1"
+    }
+  ]
+}
