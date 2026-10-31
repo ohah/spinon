@@ -1,0 +1,36 @@
+{
+  "verifiedAt": "2026-10-31T19:01:23Z",
+  "environment": "Agent Browser with Chrome",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "pageTitle": "스피논 구현 로드맵",
+  "visualInspection": "C11.4 anonymous Grid negative computed text-indent card is rendered below the site header; PR #938, 30-scene/30-of-30 simulator evidence, limitations, and 72/213 status are visible.",
+  "cardTextMarker": "2026-11-01 C11.4 anonymous Grid text negative computed text-indent",
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "screenLinks": [
+    {
+      "label": "Android AVD 화면",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/representative-screen.png",
+      "httpStatus": 200,
+      "sha256": "7f1f9d573339061262a81d7656173c05557aaa27c6f0a558e9f86fee4ab0d2fa"
+    },
+    {
+      "label": "iOS Simulator 화면",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/representative-screen.png",
+      "httpStatus": 200,
+      "sha256": "be623158ae6b1cfaa3ec68807b0323b31b083de3a1ab85cf683f95d844e0dfc4"
+    }
+  ],
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser-pass01.png",
+    "bytes": 254460,
+    "sha256": "685415e869857105b9b8ff9242eeafaf3571f3da328df1b338b22892eb1670c4",
+    "dimensions": {
+      "width": 1280,
+      "height": 633
+    }
+  },
+  "agentBrowserSession": "spinon-tailnet-pr939",
+  "agentBrowserClosed": true,
+  "agentBrowserProcessRemaining": false
+}
