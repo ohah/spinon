@@ -2,6 +2,10 @@
 
 이 근거는 anonymous direct-text Grid의 고정 opt-in fixture에 `text-indent: <length> hanging each-line`을 연결한 제한 slice만 다룬다. 일반 CSS admission이나 C11.4/C11 완료를 뜻하지 않는다. 기준 Chromium 156 관측과 독립 Ahem 계산은 [사전 비교](../c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.md)에 있다.
 
+## 구현 PR
+
+구현 PR [#959](https://github.com/ohah/spinon/pull/959)은 2026-11-01T02:06:32Z Rebase and merge로 병합됐고 merge SHA는 `590f5946e97e0252113abf34b23ae31b13819acf`다. GitHub check rollup은 비어 있고 required checks도 보고되지 않아 CI 통과로 기록하지 않는다. C11.4/C11 완료 확인란과 공식 `72/213`은 미완료로 유지한다.
+
 ## 최종 결과
 
 최종 수정 코드로 Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 각 행렬을 다시 실행했다.
