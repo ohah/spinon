@@ -1,0 +1,8 @@
+{
+  "base_commit": "c3fbcde7d77e20468595ec9eac2d6c71a224eb21",
+  "branch": "codex/c11-4-auto-repeat-gap-ceiling-20261101",
+  "source_file": "crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_track_ceiling.rs",
+  "source_sha256": "cc5607b7c439772cec5172417965881eb82d962e920674b1f68a5c3bfcef9971",
+  "candidate_diff_sha256": "39a7fa927c91df717ed66c161b8c9732841306be9e2e1d6439495cf7fc62ae54",
+  "test_scope": "C11.4 positive 1px gap auto-repeat ceiling trace; Rust unit tests only"
+}
