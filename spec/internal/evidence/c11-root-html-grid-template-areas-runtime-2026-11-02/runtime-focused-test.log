@@ -1,0 +1,16 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.82s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 7 tests
+test session::tests::root_html_grid_template_areas::c11_1_invalid_area_declaration_uses_css_cascade_fallback ... ok
+test session::tests::root_html_grid_template_areas::c11_1_default_root_html_runtime_places_semantic_named_areas_independent_of_source_order ... ok
+test session::tests::root_html_grid_template_areas::c11_1_failed_new_environment_does_not_retain_a_stale_named_area_scene ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_projects_author_grid_tracks_and_auto_places_items ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_applies_fixed_px_grid_gaps ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs ... ok
+test session::tests::root_html_grid_template_areas::c11_1_default_root_html_runtime_rejects_out_of_scope_named_area_candidates ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 192 filtered out; finished in 3.31s

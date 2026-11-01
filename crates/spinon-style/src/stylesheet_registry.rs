@@ -8,8 +8,9 @@ mod css_profile;
 mod raw_style;
 pub(crate) use css_profile::{
     declaration_contains_css_system_color, is_border_image_initial,
-    is_invalid_fixed_px_gap_declaration_diagnostic, supports_runtime_visibility_collapse_value,
-    supports_runtime_visibility_value,
+    is_invalid_fixed_px_gap_declaration_diagnostic,
+    is_invalid_root_html_named_grid_declaration_diagnostic,
+    supports_runtime_visibility_collapse_value, supports_runtime_visibility_value,
 };
 
 use cssparser::SourceLocation;
@@ -380,6 +381,8 @@ impl StylesheetRegistry {
                     .iter()
                     .find(|diagnostic| {
                         !css_profile::is_invalid_fixed_px_gap_declaration_diagnostic(
+                            &diagnostic.message,
+                        ) && !css_profile::is_invalid_root_html_named_grid_declaration_diagnostic(
                             &diagnostic.message,
                         )
                     })

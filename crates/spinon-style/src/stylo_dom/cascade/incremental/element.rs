@@ -227,14 +227,25 @@ pub(super) fn computed_element_output(
                 computed,
                 node_id,
                 &computed_properties,
-                matches!(
-                    profile,
-                    ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
-                        | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-                ),
-                profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
-                profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
-                profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+                super::grid::GridLayoutProfileOptions {
+                    allow_integer_repeat: matches!(
+                        profile,
+                        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                    ),
+                    allow_intrinsic_tracks: profile
+                        == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                    allow_auto_repeat: profile
+                        == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                    allow_fixed_auto_track_lists: profile
+                        == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+                    allow_template_areas: matches!(
+                        profile,
+                        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                    ),
+                },
             )?)
         } else {
             None
@@ -249,6 +260,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
     ) && !layout_suppressed)
         .then(|| {
             super::grid::computed_grid_item_placement(
@@ -258,6 +270,7 @@ pub(super) fn computed_element_output(
                     profile,
                     ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                         | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                        | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 ),
             )
         });

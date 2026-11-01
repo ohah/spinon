@@ -34,6 +34,15 @@ struct ComputedGridTracks {
     single_bounded_auto_repeat: bool,
 }
 
+#[derive(Clone, Copy)]
+pub(super) struct GridLayoutProfileOptions {
+    pub(super) allow_integer_repeat: bool,
+    pub(super) allow_intrinsic_tracks: bool,
+    pub(super) allow_auto_repeat: bool,
+    pub(super) allow_fixed_auto_track_lists: bool,
+    pub(super) allow_template_areas: bool,
+}
+
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(in crate::stylo_dom::cascade) enum IntegerRepeatReservationSite {
     FixedRepeatGroups,
@@ -78,12 +87,16 @@ pub(super) fn computed_grid_layout(
     computed: &ComputedValues,
     node: NodeId,
     properties: &BTreeMap<String, String>,
-    allow_integer_repeat: bool,
-    allow_intrinsic_tracks: bool,
-    allow_auto_repeat: bool,
-    allow_fixed_auto_track_lists: bool,
+    options: GridLayoutProfileOptions,
 ) -> Result<ComputedCssGridLayout, CssCascadeError> {
-    let template_areas = if allow_integer_repeat {
+    let GridLayoutProfileOptions {
+        allow_integer_repeat,
+        allow_intrinsic_tracks,
+        allow_auto_repeat,
+        allow_fixed_auto_track_lists,
+        allow_template_areas,
+    } = options;
+    let template_areas = if allow_template_areas {
         super::grid_areas::computed_grid_template_areas(
             computed.clone_grid_template_areas(),
             node,

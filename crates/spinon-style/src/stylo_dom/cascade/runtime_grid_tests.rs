@@ -27,7 +27,6 @@ const HTML: &str = "http://www.w3.org/1999/xhtml";
 struct Fixture {
     view: StyloDocumentView,
     root: spinon_core::NodeId,
-    child: spinon_core::NodeId,
 }
 
 fn fixture(style: &str) -> Fixture {
@@ -40,10 +39,6 @@ fn fixture_with_base_url(style: &str, document_base_url: &str) -> Fixture {
         "display:block;box-sizing:border-box;width:20px;height:10px;margin:0;padding:0",
         document_base_url,
     )
-}
-
-fn fixture_with_child_style(style: &str, child_style: &str) -> Fixture {
-    fixture_with_styles(style, child_style, "https://spinon.invalid/document.html")
 }
 
 fn fixture_with_styles(style: &str, child_style: &str, document_base_url: &str) -> Fixture {
@@ -87,7 +82,6 @@ fn fixture_with_styles(style: &str, child_style: &str, document_base_url: &str) 
     Fixture {
         view,
         root: root.id(),
-        child: child.id(),
     }
 }
 

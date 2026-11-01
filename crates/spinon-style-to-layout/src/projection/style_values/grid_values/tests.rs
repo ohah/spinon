@@ -86,6 +86,94 @@ fn projection_reservation_failure_keeps_node_and_axis_context() {
 }
 
 #[test]
+fn root_html_named_area_projection_reports_line_and_area_allocation_failures() {
+    let node = NodeId::new(11_102).unwrap();
+    let grid = ComputedCssGridLayout {
+        columns: vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(80.0),
+        ],
+        rows: vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(50.0),
+        ],
+        columns_auto_repeat: None,
+        rows_auto_repeat: None,
+        columns_line_names: Vec::new(),
+        rows_line_names: Vec::new(),
+        template_areas: Some(ComputedCssGridTemplateAreas {
+            rows: 2,
+            columns: 2,
+            areas: vec![
+                ComputedCssGridArea {
+                    name: "header".to_owned(),
+                    row_start: 0,
+                    row_end: 1,
+                    column_start: 0,
+                    column_end: 2,
+                },
+                ComputedCssGridArea {
+                    name: "side".to_owned(),
+                    row_start: 1,
+                    row_end: 2,
+                    column_start: 0,
+                    column_end: 1,
+                },
+                ComputedCssGridArea {
+                    name: "content".to_owned(),
+                    row_start: 1,
+                    row_end: 2,
+                    column_start: 1,
+                    column_end: 2,
+                },
+            ],
+        }),
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    };
+
+    for (failure_site, failure_occurrence, expected_property) in [
+        (GridLineNameReservationSite::Groups, 1, "grid-template-rows"),
+        (GridLineNameReservationSite::Areas, 0, "grid-template-areas"),
+        (
+            GridLineNameReservationSite::AreaName,
+            0,
+            "grid-template-areas",
+        ),
+    ] {
+        let mut site_occurrence = 0;
+        let mut math = CssMathProjector::default();
+        let error = project_grid_layout_with_reservations(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            &mut math,
+            |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
+            |site| {
+                if site == failure_site {
+                    let occurrence = site_occurrence;
+                    site_occurrence += 1;
+                    if occurrence == failure_occurrence {
+                        return Err(());
+                    }
+                }
+                Ok(())
+            },
+        )
+        .expect_err("injected reservation failures should be returned");
+
+        assert!(matches!(
+            error,
+            crate::StyleLayoutError::Layout(LayoutError::GridAllocationFailure {
+                node: error_node,
+                property,
+            }) if error_node == node && property == expected_property
+        ));
+    }
+}
+
+#[test]
 fn template_profile_projects_n_plus_one_line_names_and_dense_grid_contract() {
     let node = NodeId::new(11_103).unwrap();
     let grid = ComputedCssGridLayout {
