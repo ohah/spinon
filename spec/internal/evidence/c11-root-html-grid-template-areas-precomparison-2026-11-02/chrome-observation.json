@@ -1,0 +1,67 @@
+{
+  "schema": "spinon.c11.root-html-grid-template-areas.chrome-observation.v1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-template-areas-precomparison.html",
+  "viewportCssPx": [1280, 633],
+  "deviceScaleFactor": 1,
+  "root": {
+    "display": "grid",
+    "gridTemplateColumns": "40px 80px",
+    "gridTemplateRows": "20px 50px",
+    "gridTemplateAreas": "\"header header\" \"side content\"",
+    "rectCssPx": [0, 0, 120, 70]
+  },
+  "originalOrder": ["content", "header", "side"],
+  "reversedOrder": ["side", "header", "content"],
+  "items": [
+    {
+      "area": "header",
+      "computedGridArea": "header",
+      "computedPlacementLonghands": ["header", "header", "header", "header"],
+      "rectCssPx": [0, 0, 120, 20],
+      "backgroundColor": "rgb(229, 72, 77)"
+    },
+    {
+      "area": "side",
+      "computedGridArea": "side",
+      "computedPlacementLonghands": ["side", "side", "side", "side"],
+      "rectCssPx": [0, 20, 40, 50],
+      "backgroundColor": "rgb(58, 143, 91)"
+    },
+    {
+      "area": "content",
+      "computedGridArea": "content",
+      "computedPlacementLonghands": ["content", "content", "content", "content"],
+      "rectCssPx": [40, 20, 80, 50],
+      "backgroundColor": "rgb(10, 132, 255)"
+    }
+  ],
+  "reversedItems": [
+    {
+      "area": "header",
+      "computedGridArea": "header",
+      "computedPlacementLonghands": ["header", "header", "header", "header"],
+      "rectCssPx": [0, 0, 120, 20],
+      "backgroundColor": "rgb(229, 72, 77)"
+    },
+    {
+      "area": "side",
+      "computedGridArea": "side",
+      "computedPlacementLonghands": ["side", "side", "side", "side"],
+      "rectCssPx": [0, 20, 40, 50],
+      "backgroundColor": "rgb(58, 143, 91)"
+    },
+    {
+      "area": "content",
+      "computedGridArea": "content",
+      "computedPlacementLonghands": ["content", "content", "content", "content"],
+      "rectCssPx": [40, 20, 80, 50],
+      "backgroundColor": "rgb(10, 132, 255)"
+    }
+  ],
+  "sourceOrderControl": {
+    "original": ["content", "header", "side"],
+    "afterDomReverse": ["side", "header", "content"],
+    "semanticItemFramesEqual": true
+  }
+}

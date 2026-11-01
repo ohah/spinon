@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-02",
+  "command": "node spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/verify-precomparison.mjs",
+  "result": "pass",
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "viewportCssPx": [1280, 633],
+  "deviceScaleFactor": 1,
+  "semanticItemsCompared": 3,
+  "rootGeometry": "120x70 CSS px",
+  "domOrderControl": "same per-area computed placement and frame before/after reverse",
+  "agentBrowserCleanup": "agent-browser close --all; process scan found no agent-browser or chrome-headless-shell process"
+}
