@@ -57,10 +57,17 @@ pub fn build_runtime_render_snapshot(
     let styles_by_node = indexed_styles(styles)?;
     let order = runtime_document_order(document, root, &styles_by_node, styles.profile)?;
     validate_style_node_set(&order.document_nodes, &styles_by_node)?;
+    let text_layout_nodes = order
+        .text_nodes
+        .iter()
+        .copied()
+        .filter(|node| output.layout.text_layouts.contains_key(node))
+        .collect::<std::collections::BTreeSet<_>>();
     validate_runtime_layout_nodes(
         &order.paint_nodes,
         &order.document_nodes,
         &output.layout.frames,
+        &text_layout_nodes,
     )?;
 
     let viewport_css_px = CssSize::new(styles.viewport.width_css_px, styles.viewport.height_css_px)
@@ -209,6 +216,7 @@ pub fn build_runtime_render_snapshot_with_scroll_requests(
 struct RuntimeDocumentOrder {
     document_nodes: Vec<NodeId>,
     paint_nodes: Vec<NodeId>,
+    text_nodes: Vec<NodeId>,
 }
 
 fn runtime_document_order(
@@ -229,6 +237,7 @@ fn runtime_document_order(
     let mut visible_nodes = std::collections::BTreeSet::new();
     let mut positioned_roots = Vec::new();
     let mut visited = std::collections::BTreeSet::new();
+    let mut text_nodes = Vec::new();
     let mut pending = vec![(root, false)];
     let root_html_text_profile = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
     let c11_4_text_measurement_profile = cfg!(feature = "c11-4-grid-track-sizing-fixture-test")
@@ -251,6 +260,9 @@ fn runtime_document_order(
         }
         let node = document.node(handle).ok_or(StyleRenderError::InvalidRoot)?;
         if let spinon_core::HostNodeKind::Text(text) = node.kind() {
+            if root_html_text_profile {
+                text_nodes.push(node.id());
+            }
             if ancestor_hidden
                 || (matches!(
                     profile,
@@ -321,6 +333,7 @@ fn runtime_document_order(
     Ok(RuntimeDocumentOrder {
         document_nodes,
         paint_nodes,
+        text_nodes,
     })
 }
 

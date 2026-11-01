@@ -372,6 +372,7 @@ pub(super) fn validate_runtime_layout_nodes(
     visible_nodes: &[NodeId],
     document_nodes: &[NodeId],
     frames: &BTreeMap<NodeId, spinon_layout::LayoutFrame>,
+    allowed_text_nodes: &BTreeSet<NodeId>,
 ) -> Result<(), StyleRenderError> {
     let document_nodes = document_nodes.iter().copied().collect::<BTreeSet<_>>();
     for node in visible_nodes {
@@ -379,7 +380,10 @@ pub(super) fn validate_runtime_layout_nodes(
             return Err(StyleRenderError::MissingLayoutFrame(*node));
         }
     }
-    if let Some(node) = frames.keys().find(|node| !document_nodes.contains(node)) {
+    if let Some(node) = frames
+        .keys()
+        .find(|node| !document_nodes.contains(node) && !allowed_text_nodes.contains(node))
+    {
         return Err(StyleRenderError::UnexpectedLayoutFrame(*node));
     }
     Ok(())

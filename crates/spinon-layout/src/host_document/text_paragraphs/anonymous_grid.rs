@@ -14,6 +14,7 @@ pub(super) fn collect_anonymous_grid_items(
     grid_id: NodeId,
     grid_style: LayoutStyle,
     paragraph_style: &ParagraphStyle,
+    root_html_default: bool,
 ) -> Result<Vec<AnonymousGridTextItem>, LayoutError> {
     let children = collector
         .snapshot
@@ -60,7 +61,7 @@ pub(super) fn collect_anonymous_grid_items(
                         collector.styles,
                         collector.excluded_layout_nodes,
                     )?,
-                    LayoutDisplay::Block => flush_anonymous_grid_text_run(
+                    LayoutDisplay::Block if !root_html_default => flush_anonymous_grid_text_run(
                         grid_style,
                         paragraph_style,
                         &mut anchor,
@@ -68,6 +69,12 @@ pub(super) fn collect_anonymous_grid_items(
                         &mut sources,
                         &mut items,
                     ),
+                    LayoutDisplay::Block => {
+                        return Err(LayoutError::UnsupportedTextParagraph {
+                            node: grid_id,
+                            reason: "Root HTML default anonymous Grid text does not allow visible element siblings",
+                        });
+                    }
                     LayoutDisplay::Inline
                     | LayoutDisplay::Flex
                     | LayoutDisplay::Grid
@@ -91,6 +98,12 @@ pub(super) fn collect_anonymous_grid_items(
         &mut items,
     );
     validate_unique_source_nodes(&items, grid_id)?;
+    if root_html_default && items.len() > 1 {
+        return Err(LayoutError::UnsupportedTextParagraph {
+            node: grid_id,
+            reason: "Root HTML default anonymous Grid text allows one text run",
+        });
+    }
     Ok(items)
 }
 

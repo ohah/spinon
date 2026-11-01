@@ -101,6 +101,7 @@ pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_wi
 pub use projection::compute_runtime_block_flex_grid_track_sizing_style_layout_with_two_axis_nested_grid_text_paragraphs;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use projection::compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_axis_grid_fixture;
+pub use projection::compute_runtime_style_layout_with_root_html_grid_text_profiles;
 #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
 pub use projection::compute_runtime_style_layout_with_text_paragraphs;
 pub use projection::compute_runtime_style_layout_with_text_profiles;

@@ -1,0 +1,38 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-466af74e1171adde)
+
+running 32 tests
+test host_document::tests::c11_4_anonymous_text::non_fixture_host_document_projection_still_rejects_direct_grid_text ... ok
+test host_document::tests::c11_4_anonymous_text::anonymous_grid_pre_wrap_still_rejects_nonzero_order ... ok
+test host_document::tests::c11_4_anonymous_text::anonymous_grid_text_still_rejects_nonzero_order ... ok
+test host_document::tests::c11_4_anonymous_text::collapsible_whitespace_between_blocks_does_not_create_an_item ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::break_spaces_whitespace_only_does_not_create_an_anonymous_grid_item ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::break_spaces_whitespace_before_block_does_not_consume_an_auto_cell ... ok
+test host_document::tests::c11_4_anonymous_text::leading_collapsible_text_keeps_provenance_but_anchors_item_to_first_content_node ... ok
+test host_document::tests::c11_4_anonymous_text::adjacent_text_nodes_become_one_anonymous_item_with_full_provenance ... ok
+test host_document::tests::c11_4_anonymous_text::direct_block_child_splits_anonymous_runs_without_losing_source_order ... ok
+test host_document::tests::c11_4_anonymous_text::direct_display_none_child_does_not_split_anonymous_text_run ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_line_preserves_segment_break_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_repeated_spaces_are_the_max_content_control ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_comment_split_keeps_one_item_and_both_sources ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_comment_split_remains_one_item_with_source_identity ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_forced_break_creates_two_max_content_rows ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_min_content_control_keeps_two_lines_at_twenty_px ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_segment_break_uses_collapsed_space_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_fixed_25px_track_keeps_non_hanging_wraps ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_nowrap_min_content_overflows_without_wrapping ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_trailing_spaces_wrap_and_size_without_hanging ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_min_content_keeps_two_lines ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_soft_wrap_excludes_the_hanging_separator_from_track_contributions ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_preserves_repeated_spaces_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_forced_breaks_remain_separate_intrinsic_lines ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_forced_break_contributes_spaces_to_tracks ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::pre_wrap_whitespace_before_block_does_not_consume_an_auto_placement_cell ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_overflows_a_fixed_width_without_soft_wrapping ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_max_and_min_content_use_non_hanging_spaces ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_wraps_at_min_content_width ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_min_content_does_not_break_at_preserved_spaces ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_preserves_repeated_spaces_in_max_content_contribution ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_tab_size_applies_to_grid_text_intrinsics ... ok
+
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 350 filtered out; finished in 0.06s

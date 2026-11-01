@@ -482,6 +482,47 @@ pub fn compute_runtime_style_layout_with_text_profiles(
     )
 }
 
+/// Root HTML 기본 runtime에서 제한 anonymous Grid direct text를 layout item으로 연결합니다.
+pub fn compute_runtime_style_layout_with_root_html_grid_text_profiles(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    inline_run_styles: &BTreeMap<NodeId, spinon_layout::InlineRunStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        None,
+        Some((paragraph_styles, inline_run_styles, text_engine)),
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: false,
+            allow_root_html_default_grid_text_items: true,
+            blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: false,
+            allow_c11_4_replaced_grid_item_align_self_start: false,
+            allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
+        },
+    )
+}
+
 /// C11.4 fixture에서 direct-leaf text를 Ahem 기반 Grid intrinsic sizing에 연결합니다.
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
@@ -559,6 +600,7 @@ pub fn compute_runtime_block_flex_grid_template_area_fit_content_cap_style_layou
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: false,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
             allow_c11_4_replaced_grid_item_align_self_start: false,
@@ -724,6 +766,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_a
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
             allow_c11_4_replaced_grid_item_align_self_start: true,
@@ -775,6 +818,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraph
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: options
                 .allow_c11_4_nested_grid_two_axis_intrinsics,
@@ -967,6 +1011,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_i
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
             allow_c11_4_replaced_grid_item_align_self_start: true,
@@ -1068,6 +1113,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: true,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: true,
             allow_c11_4_nested_grid_two_axis_intrinsics: projection_input
                 .allow_two_axis_nested_grid,
@@ -1140,6 +1186,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_a
             reject_cascade_diagnostics: true,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: false,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
             allow_c11_4_replaced_grid_item_align_self_start: false,
@@ -1262,6 +1309,7 @@ fn compute_layout_from_styles_with_grid_options(
             reject_cascade_diagnostics,
             allow_implicit_named_lines,
             allow_c11_4_anonymous_grid_text_items: false,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
             allow_c11_4_replaced_grid_item_align_self_start: false,
@@ -1293,6 +1341,7 @@ fn compute_layout_from_styles_with_text(
             reject_cascade_diagnostics,
             allow_implicit_named_lines: false,
             allow_c11_4_anonymous_grid_text_items: false,
+            allow_root_html_default_grid_text_items: false,
             blockify_c11_4_anonymous_grid_images: false,
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
             allow_c11_4_replaced_grid_item_align_self_start: false,
@@ -1309,6 +1358,7 @@ struct StyleLayoutProjectionOptions {
     reject_cascade_diagnostics: bool,
     allow_implicit_named_lines: bool,
     allow_c11_4_anonymous_grid_text_items: bool,
+    allow_root_html_default_grid_text_items: bool,
     blockify_c11_4_anonymous_grid_images: bool,
     allow_c11_4_nested_grid_two_axis_intrinsics: bool,
     allow_c11_4_replaced_grid_item_align_self_start: bool,
@@ -1484,9 +1534,12 @@ fn compute_layout_from_styles_with_text_and_grid_options(
             paragraphs: paragraph_styles,
             inline_runs: inline_run_styles,
         };
-        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-        let input = if options.allow_c11_4_anonymous_grid_text_items {
-            LayoutInput::from_host_document_with_viewport_containing_block_and_c11_4_anonymous_grid_text_items(
+        debug_assert!(
+            !(options.allow_root_html_default_grid_text_items
+                && options.allow_c11_4_anonymous_grid_text_items)
+        );
+        if options.allow_root_html_default_grid_text_items {
+            LayoutInput::from_host_document_with_viewport_containing_block_and_root_html_default_grid_text_items(
                 snapshot,
                 root,
                 layout_viewport,
@@ -1496,30 +1549,44 @@ fn compute_layout_from_styles_with_text_and_grid_options(
                 viewport.environment_revision,
             )?
         } else {
-            LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
-                snapshot,
-                root,
-                layout_viewport,
-                &styles,
-                text_styles,
-                computed_styles.style_revision,
-                viewport.environment_revision,
-            )?
-        };
-        #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
-        let input = {
-            debug_assert!(!options.allow_c11_4_anonymous_grid_text_items);
-            LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
-                snapshot,
-                root,
-                layout_viewport,
-                &styles,
-                text_styles,
-                computed_styles.style_revision,
-                viewport.environment_revision,
-            )?
-        };
-        input
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            {
+                if options.allow_c11_4_anonymous_grid_text_items {
+                    LayoutInput::from_host_document_with_viewport_containing_block_and_c11_4_anonymous_grid_text_items(
+                        snapshot,
+                        root,
+                        layout_viewport,
+                        &styles,
+                        text_styles,
+                        computed_styles.style_revision,
+                        viewport.environment_revision,
+                    )?
+                } else {
+                    LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
+                        snapshot,
+                        root,
+                        layout_viewport,
+                        &styles,
+                        text_styles,
+                        computed_styles.style_revision,
+                        viewport.environment_revision,
+                    )?
+                }
+            }
+            #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+            {
+                debug_assert!(!options.allow_c11_4_anonymous_grid_text_items);
+                LayoutInput::from_host_document_with_viewport_containing_block_and_text_paragraphs_and_run_styles_ignoring_collapsible_whitespace(
+                    snapshot,
+                    root,
+                    layout_viewport,
+                    &styles,
+                    text_styles,
+                    computed_styles.style_revision,
+                    viewport.environment_revision,
+                )?
+            }
+        }
     } else if matches!(
         computed_styles.profile,
         ComputedStyleProfile::RuntimeBlockFormattingV1

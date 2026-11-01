@@ -13,6 +13,7 @@ use std::thread;
 use std::time::{Duration, Instant};
 
 mod root_html_grid;
+mod root_html_grid_anonymous_text;
 mod root_html_grid_template_areas;
 
 struct FakeV8Runtime {

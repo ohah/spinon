@@ -185,6 +185,7 @@ fn validate_text_paragraphs(
                 grid_container,
                 paragraph,
                 source_nodes,
+                ..
             } => {
                 let grid_is_parent = index.get(grid_container).is_some_and(|&grid_index| {
                     input.nodes()[grid_index].style.display == crate::LayoutDisplay::Grid

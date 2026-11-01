@@ -926,7 +926,7 @@ where
         ));
     }
     let mut output = if let Some(text_input) = &root_html_default_render_input {
-        spinon_style_to_layout::compute_runtime_style_layout_with_text_profiles(
+        spinon_style_to_layout::compute_runtime_style_layout_with_root_html_grid_text_profiles(
             &request.snapshot,
             root,
             styles.clone(),
@@ -1394,12 +1394,27 @@ where
     let anonymous_grid_text_item_frames =
         detach_anonymous_grid_text_item_frames(&styles, &mut output.layout)?;
     if styles.profile == spinon_style::ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
-        let document_elements = host_document_element_ids(&request.snapshot, root)?;
+        let (document_nodes, document_text_nodes) =
+            host_document_node_ids(&request.snapshot, root)?;
+        let anonymous_grid_text_nodes = root_html_default_render_input
+            .as_ref()
+            .map(root_html_default_render::Input::anonymous_grid_text_nodes)
+            .unwrap_or_default();
+        if let Some(node) = anonymous_grid_text_nodes
+            .iter()
+            .find(|node| !document_text_nodes.contains(node))
+        {
+            return Err(layout_failure(
+                "root_html_default_render_text_layout_outside_document",
+                Some(node.get()),
+                None,
+            ));
+        }
         if let Some(node) = output
             .layout
             .frames
             .keys()
-            .find(|node| !document_elements.contains(node))
+            .find(|node| !document_nodes.contains(node))
         {
             return Err(layout_failure(
                 "root_html_default_render_frame_outside_document",
@@ -1411,10 +1426,9 @@ where
             .iter()
             .map(|frame| frame.node_id)
             .collect::<BTreeSet<_>>();
-        output
-            .layout
-            .frames
-            .retain(|node, _| paint_nodes.contains(&node.get()));
+        output.layout.frames.retain(|node, _| {
+            paint_nodes.contains(&node.get()) || anonymous_grid_text_nodes.contains(node)
+        });
     }
     let render_snapshot = if runtime_paint_enabled {
         let current = CurrentLayoutInputs::for_host_document(
@@ -1769,7 +1783,21 @@ fn runtime_frames(
 ) -> Result<Vec<RuntimeLayoutFrame>, RuntimeLayoutFailure> {
     let root_html_text_profile =
         styles.profile == spinon_style::ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
-    let anonymous_text_item_ids = anonymous_grid_text_item_ids(styles, output);
+    let anonymous_text_item_ids = if root_html_text_profile {
+        let element_ids = styles
+            .elements
+            .iter()
+            .map(|style| style.node_id)
+            .collect::<BTreeSet<_>>();
+        output
+            .text_layouts
+            .keys()
+            .filter(|node| !element_ids.contains(node))
+            .copied()
+            .collect::<BTreeSet<_>>()
+    } else {
+        anonymous_grid_text_item_ids(styles, output)
+    };
     for node in &anonymous_text_item_ids {
         let Some(frame) = output.frames.get(node) else {
             return Err(layout_failure(
@@ -1863,6 +1891,16 @@ fn runtime_frames(
             pending.extend(children.into_iter().rev());
         }
     }
+    for node in &anonymous_text_item_ids {
+        let frame = output.frames[node];
+        frames.push(RuntimeLayoutFrame {
+            node_id: node.get(),
+            x: frame.x,
+            y: frame.y,
+            width: frame.width,
+            height: frame.height,
+        });
+    }
     if !root_html_text_profile
         && frames.len() + anonymous_text_item_ids.len() != output.frames.len()
     {
@@ -1913,24 +1951,26 @@ fn detach_anonymous_grid_text_item_frames(
         .collect()
 }
 
-fn host_document_element_ids(
+fn host_document_node_ids(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
-) -> Result<BTreeSet<spinon_core::NodeId>, RuntimeLayoutFailure> {
+) -> Result<(BTreeSet<spinon_core::NodeId>, BTreeSet<spinon_core::NodeId>), RuntimeLayoutFailure> {
     let mut ids = BTreeSet::new();
+    let mut text_ids = BTreeSet::new();
     let mut pending = vec![root];
     while let Some(handle) = pending.pop() {
         let node = snapshot
             .node(handle)
             .ok_or_else(|| layout_failure("missing_node", Some(handle.id().get()), None))?;
-        if matches!(node.kind(), spinon_core::HostNodeKind::Element(_)) {
-            ids.insert(handle.id());
+        ids.insert(handle.id());
+        if matches!(node.kind(), spinon_core::HostNodeKind::Text(_)) {
+            text_ids.insert(handle.id());
         }
         if let Some(children) = snapshot.children(handle) {
             pending.extend(children);
         }
     }
-    Ok(ids)
+    Ok((ids, text_ids))
 }
 
 fn valid_frame(frame: LayoutFrame) -> bool {

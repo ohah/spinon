@@ -42,6 +42,7 @@ pub(super) fn collect(
     paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
     inline_run_styles: &BTreeMap<NodeId, InlineRunStyle>,
     allow_c11_4_anonymous_grid_text_items: bool,
+    allow_root_html_default_grid_text_items: bool,
 ) -> Result<HostTextLayouts, LayoutError> {
     let handles = collect_host_handles(snapshot, root)?;
     let mut result = HostTextLayouts {
@@ -73,24 +74,34 @@ pub(super) fn collect(
         if layout_style.display == LayoutDisplay::None {
             continue;
         }
-        if layout_style.display == LayoutDisplay::Grid && allow_c11_4_anonymous_grid_text_items {
+        if layout_style.display == LayoutDisplay::Grid
+            && (allow_c11_4_anonymous_grid_text_items || allow_root_html_default_grid_text_items)
+        {
             if is_hidden_by_ancestor(snapshot, paragraph_handle, root, styles)? {
                 continue;
             }
-            if !matches!(
-                paragraph_style.white_space,
-                WhiteSpaceMode::Normal
-                    | WhiteSpaceMode::NoWrap
-                    | WhiteSpaceMode::Pre
-                    | WhiteSpaceMode::PreWithTabSize(_)
-                    | WhiteSpaceMode::PreLine
-                    | WhiteSpaceMode::PreWrap
-                    | WhiteSpaceMode::BreakSpaces
-            ) || layout_style.order != 0
-            {
+            let white_space_supported = if allow_root_html_default_grid_text_items {
+                paragraph_style.white_space == WhiteSpaceMode::Normal
+            } else {
+                matches!(
+                    paragraph_style.white_space,
+                    WhiteSpaceMode::Normal
+                        | WhiteSpaceMode::NoWrap
+                        | WhiteSpaceMode::Pre
+                        | WhiteSpaceMode::PreWithTabSize(_)
+                        | WhiteSpaceMode::PreLine
+                        | WhiteSpaceMode::PreWrap
+                        | WhiteSpaceMode::BreakSpaces
+                )
+            };
+            if !white_space_supported || layout_style.order != 0 {
                 return Err(LayoutError::UnsupportedTextParagraph {
                     node: paragraph_id,
-                    reason: "C11.4 anonymous Grid text requires supported white-space mode and order:0",
+                    reason: if allow_root_html_default_grid_text_items {
+                        "Root HTML default anonymous Grid text requires white-space:normal and order:0"
+                    } else {
+                        "C11.4 anonymous Grid text requires supported white-space mode and order:0"
+                    },
                 });
             }
             let mut inline_styles = BTreeMap::new();
@@ -108,6 +119,7 @@ pub(super) fn collect(
                 paragraph_id,
                 layout_style,
                 paragraph_style,
+                allow_root_html_default_grid_text_items,
             )?;
             if !items.is_empty() {
                 result.anonymous_grid_items.insert(paragraph_id, items);

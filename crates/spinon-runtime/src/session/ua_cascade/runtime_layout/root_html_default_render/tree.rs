@@ -8,6 +8,11 @@ use super::style::property;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
+pub(super) struct AnonymousGridTextSource {
+    pub(super) anchor: NodeId,
+    pub(super) text: String,
+}
+
 pub(super) fn validate_root(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
@@ -33,9 +38,10 @@ pub(super) fn validate_visible_tree(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
     styles: &BTreeMap<NodeId, &ComputedElementStyle>,
-) -> Result<BTreeSet<NodeId>, RuntimeLayoutFailure> {
+) -> Result<(BTreeSet<NodeId>, BTreeMap<NodeId, AnonymousGridTextSource>), RuntimeLayoutFailure> {
     let mut pending = vec![(root, false)];
     let mut visible_elements = BTreeSet::new();
+    let mut anonymous_grid_text = BTreeMap::new();
     while let Some((handle, ancestor_hidden)) = pending.pop() {
         let node = snapshot
             .node(handle)
@@ -75,33 +81,97 @@ pub(super) fn validate_visible_tree(
             }
         }
         if let Some(children) = snapshot.children(handle) {
-            for child in children {
-                if !hidden
-                    && display == "grid"
-                    && snapshot.node(child).is_some_and(|node| {
-                        matches!(
-                            node.kind(),
-                            HostNodeKind::Text(text)
-                                if text.to_string_lossy().chars().any(|character| {
-                                    !matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
-                                })
-                        )
-                    })
-                {
+            if !hidden
+                && display == "grid"
+                && let Some(source) =
+                    validate_anonymous_grid_text_children(snapshot, handle, styles)?
+            {
+                if source.text != "AB" || !anonymous_grid_text.is_empty() {
                     return Err(layout_failure(
                         "unsupported_root_html_grid_text_item",
                         Some(handle.id().get()),
                         Some(
-                            "direct text under a Grid container is outside this C11.1 slice"
+                            "this slice supports one visible direct text run with value AB"
                                 .to_owned(),
                         ),
                     ));
                 }
+                anonymous_grid_text.insert(handle.id(), source);
+            }
+            for child in children {
                 pending.push((child, hidden));
             }
         }
     }
-    Ok(visible_elements)
+    Ok((visible_elements, anonymous_grid_text))
+}
+
+fn validate_anonymous_grid_text_children(
+    snapshot: &HostDocumentSnapshot,
+    grid: HostNodeHandle,
+    styles: &BTreeMap<NodeId, &ComputedElementStyle>,
+) -> Result<Option<AnonymousGridTextSource>, RuntimeLayoutFailure> {
+    let children = snapshot
+        .children(grid)
+        .ok_or_else(|| layout_failure("missing_node", Some(grid.id().get()), None))?;
+    let mut text = String::new();
+    let mut anchor = None;
+    let mut has_visible_text = false;
+    let mut has_visible_element = false;
+    for child in children {
+        let node = snapshot
+            .node(child)
+            .ok_or_else(|| layout_failure("missing_node", Some(child.id().get()), None))?;
+        match node.kind() {
+            HostNodeKind::Text(data) => {
+                let source = String::from_utf16(data.code_units()).map_err(|_| {
+                    layout_failure(
+                        "root_html_default_render_text_encoding_invalid",
+                        Some(child.id().get()),
+                        None,
+                    )
+                })?;
+                if source
+                    .chars()
+                    .any(|character| !is_collapsible_html_whitespace(character))
+                {
+                    has_visible_text = true;
+                    anchor.get_or_insert(child.id());
+                }
+                text.push_str(&source);
+            }
+            HostNodeKind::Element(_) => {
+                let style = styles.get(&child.id()).copied().ok_or_else(|| {
+                    layout_failure("missing_computed_style", Some(child.id().get()), None)
+                })?;
+                has_visible_element |= property(style, "display")? != "none";
+            }
+        }
+    }
+    if !has_visible_text {
+        return Ok(None);
+    }
+    if has_visible_element {
+        return Err(layout_failure(
+            "unsupported_root_html_grid_text_item",
+            Some(grid.id().get()),
+            Some(
+                "visible element siblings of anonymous Grid text are outside this slice".to_owned(),
+            ),
+        ));
+    }
+    let anchor = anchor.ok_or_else(|| {
+        layout_failure(
+            "unsupported_root_html_grid_text_item",
+            Some(grid.id().get()),
+            Some("visible Grid text has no source-node anchor".to_owned()),
+        )
+    })?;
+    Ok(Some(AnonymousGridTextSource { anchor, text }))
+}
+
+fn is_collapsible_html_whitespace(character: char) -> bool {
+    matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
 }
 
 fn is_non_rendered_html_element(local_name: &str) -> bool {
