@@ -507,6 +507,33 @@ pub(crate) fn is_invalid_fixed_px_gap_declaration_diagnostic(message: &str) -> b
     values.into_iter().any(|value| value < 0.0)
 }
 
+pub(crate) fn is_invalid_root_html_named_grid_declaration_diagnostic(message: &str) -> bool {
+    let Some(declaration) = message
+        .strip_prefix("Unsupported property declaration: '")
+        .and_then(|message| message.strip_suffix("', OtherInvalidValue"))
+    else {
+        return false;
+    };
+    let Some(declaration) = remove_css_comments(declaration) else {
+        return false;
+    };
+    let Some((property, _)) = declaration.split_once(':') else {
+        return false;
+    };
+    [
+        "grid-template-areas",
+        "grid-area",
+        "grid-row",
+        "grid-column",
+        "grid-row-start",
+        "grid-row-end",
+        "grid-column-start",
+        "grid-column-end",
+    ]
+    .iter()
+    .any(|supported| property.trim().eq_ignore_ascii_case(supported))
+}
+
 fn remove_css_comments(input: &str) -> Option<String> {
     let mut remaining = input;
     let mut output = String::with_capacity(input.len());

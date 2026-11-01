@@ -560,12 +560,12 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
         ),
         (
             "explicit item placement",
-            "cascade_failed",
+            "unsupported_computed_value",
             SOURCE.replace(".item-a {", ".item-a { grid-column: 2;"),
         ),
         (
             "non-default auto flow",
-            "cascade_failed",
+            "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
                 "grid-template-rows: 70px;\n        grid-auto-flow: column;",
@@ -588,7 +588,7 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
         ),
         (
             "named grid area",
-            "cascade_failed",
+            "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
                 "grid-template-rows: 70px;\n        grid-template-areas: \"a b\";",
@@ -596,7 +596,7 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
         ),
         (
             "explicit implicit row sizing",
-            "cascade_failed",
+            "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
                 "grid-template-rows: 70px;\n        grid-auto-rows: 20px;",

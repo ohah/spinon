@@ -1,0 +1,13 @@
+tool=LLVM 22.1.2-rust-1.96.1-stable llvm-nm
+
+default_build=mise exec -- cargo build --locked -p spinon-ffi --lib
+default_archive_sha256=d641ccb6c2c135d5768d138560a2077cb6a54ff7583c1b6a7f9ce3af1561d093
+default_symbol_query=spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture
+default_symbol_matches=0
+
+opt_in_build=mise exec -- cargo build --locked -p spinon-ffi --lib --features c11-grid-metal-surface-pixels-test
+opt_in_archive_sha256=361fcf78dd674cbf8bd1b83e0ee5887d8a52cb229de3d5fa886ae469bab2070d
+opt_in_symbol_query=spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture
+opt_in_symbol_match=0000000000000378 T _spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture
+
+restored_default_archive_sha256=d641ccb6c2c135d5768d138560a2077cb6a54ff7583c1b6a7f9ce3af1561d093

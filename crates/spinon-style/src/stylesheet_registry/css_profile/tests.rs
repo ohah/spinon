@@ -1,5 +1,6 @@
 use super::{
-    is_invalid_fixed_px_gap_declaration_diagnostic, supported_media_query_surface,
+    is_invalid_fixed_px_gap_declaration_diagnostic,
+    is_invalid_root_html_named_grid_declaration_diagnostic, supported_media_query_surface,
     supported_root_html_media_query_surface,
 };
 use crate::stylesheet_registry::{CssOrigin, StylesheetRegistry, StylesheetSource};
@@ -67,6 +68,33 @@ fn root_html_gap_recovery_ignores_only_invalid_negative_fixed_px_declarations() 
         assert!(
             !is_invalid_fixed_px_gap_declaration_diagnostic(diagnostic),
             "non-matching CSS parser diagnostic must remain fail-closed: {diagnostic}"
+        );
+    }
+}
+
+#[test]
+fn root_html_named_grid_recovery_ignores_invalid_values_only_for_grid_placement_properties() {
+    for diagnostic in [
+        "Unsupported property declaration: 'grid-template-areas: 1px;', OtherInvalidValue",
+        "Unsupported property declaration: 'GRID-AREA: bad;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-row-start: bad;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-column: bad;', OtherInvalidValue",
+    ] {
+        assert!(
+            is_invalid_root_html_named_grid_declaration_diagnostic(diagnostic),
+            "CSS-invalid named-grid declaration should be dropped by cascade: {diagnostic}"
+        );
+    }
+
+    for diagnostic in [
+        "Unsupported property declaration: 'grid-template-columns: bad;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-auto-flow: sideways;', OtherInvalidValue",
+        "Unsupported property declaration: 'color: bad;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-area: bad;', UnexpectedToken",
+    ] {
+        assert!(
+            !is_invalid_root_html_named_grid_declaration_diagnostic(diagnostic),
+            "non-matching diagnostic should remain fail-closed: {diagnostic}"
         );
     }
 }

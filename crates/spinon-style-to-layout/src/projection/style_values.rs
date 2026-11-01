@@ -17,6 +17,7 @@ mod grid_placement_values;
 mod grid_values;
 mod positioning_values;
 mod primitive_values;
+mod root_html_named_area;
 mod spacing_values;
 
 use super::fixed_containing_block::validate_fixed_ancestor_effects;
@@ -241,6 +242,7 @@ pub(super) fn project_styles(
     if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && let Some(nodes) = grid_nodes.as_ref()
     {
+        root_html_named_area::validate_root_html_named_area_candidate(tree, snapshot, nodes)?;
         validate_root_html_grid_item_capacity(snapshot, nodes)?;
     }
     let runtime_flex_items = if supports_runtime_flex(snapshot.profile) {
@@ -893,6 +895,11 @@ pub(super) fn project_styles(
             return Err(StyleLayoutError::DuplicateComputedElement(node));
         }
     }
+    let root_html_named_area_route = snapshot.profile
+        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && grid_styles
+            .values()
+            .any(|grid| grid.template_areas.is_some());
     if matches!(
         snapshot.profile,
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -900,16 +907,26 @@ pub(super) fn project_styles(
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-    ) {
+    ) || root_html_named_area_route
+    {
+        let is_root_html = snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
         let grid_item_nodes = grid_nodes
             .as_ref()
             .map(|nodes| &nodes.grid_items)
             .expect("placement profile has a Grid tree context");
-        for element in snapshot
-            .elements
-            .iter()
-            .filter(|element| grid_item_nodes.contains(&element.node_id))
-        {
+        for element in snapshot.elements.iter().filter(|element| {
+            if !grid_item_nodes.contains(&element.node_id) {
+                return false;
+            }
+            if !is_root_html {
+                return true;
+            }
+            grid_nodes
+                .as_ref()
+                .and_then(|nodes| nodes.grid_item_owners.get(&element.node_id))
+                .and_then(|owner| grid_styles.get(owner))
+                .is_some_and(|grid| grid.template_areas.is_some())
+        }) {
             let placement = element.grid_item_placement.as_ref().ok_or(
                 crate::StyleLayoutError::MissingComputedProperty {
                     node: element.node_id,
@@ -1028,6 +1045,7 @@ pub(super) fn project_styles(
 struct RuntimeGridNodes {
     hidden: BTreeSet<NodeId>,
     grid_containers: BTreeSet<NodeId>,
+    grid_container_handles: BTreeMap<NodeId, HostNodeHandle>,
     grid_items: BTreeSet<NodeId>,
     html_image_grid_items: BTreeSet<NodeId>,
     grid_item_owners: BTreeMap<NodeId, NodeId>,
@@ -1275,6 +1293,7 @@ fn runtime_grid_nodes(
             nodes.hidden.insert(parent.id());
         } else if display == "grid" {
             nodes.grid_containers.insert(parent.id());
+            nodes.grid_container_handles.insert(parent.id(), parent);
         }
         let Some(children) = tree.children(parent) else {
             continue;

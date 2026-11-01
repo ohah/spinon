@@ -7,7 +7,7 @@ use spinon_layout::{
 use spinon_style::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
     ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTrackSize, ComputedCssMath, ComputedStyleProfile,
+    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedCssMath, ComputedStyleProfile,
 };
 
 use super::super::typed_math::CssMathProjector;
@@ -147,11 +147,8 @@ fn validate_root_html_fixed_grid_tracks(
             ));
         }
     }
-    if grid.template_areas.is_some() {
-        return Err(unsupported(
-            "grid-template-areas",
-            "Root HTML Grid에서는 grid-template-areas를 지원하지 않습니다",
-        ));
+    if let Some(areas) = &grid.template_areas {
+        validate_root_html_named_area_template(node, grid, areas)?;
     }
     if grid.auto_flow != ComputedCssGridAutoFlow::Row {
         return Err(unsupported(
@@ -174,6 +171,60 @@ fn validate_root_html_fixed_grid_tracks(
     Ok(())
 }
 
+fn validate_root_html_named_area_template(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+    areas: &ComputedCssGridTemplateAreas,
+) -> Result<(), StyleLayoutError> {
+    let unsupported = |property, value: &str| StyleLayoutError::UnsupportedComputedValue {
+        node,
+        property,
+        value: value.to_owned(),
+    };
+    let columns_match = matches!(
+        grid.columns.as_slice(),
+        [ComputedCssGridTrackSize::LengthPx(first), ComputedCssGridTrackSize::LengthPx(second)]
+            if *first == 40.0 && *second == 80.0
+    );
+    let rows_match = matches!(
+        grid.rows.as_slice(),
+        [ComputedCssGridTrackSize::LengthPx(first), ComputedCssGridTrackSize::LengthPx(second)]
+            if *first == 20.0 && *second == 50.0
+    );
+    if !columns_match || !rows_match {
+        return Err(unsupported(
+            "grid-template-areas",
+            "Root HTML named-area 제한 경로는 열 40px 80px, 행 20px 50px를 요구합니다",
+        ));
+    }
+    let expected = [
+        ("header", 0, 1, 0, 2),
+        ("side", 1, 2, 0, 1),
+        ("content", 1, 2, 1, 2),
+    ];
+    if areas.rows != 2
+        || areas.columns != 2
+        || areas.areas.len() != expected.len()
+        || expected
+            .iter()
+            .any(|(name, row_start, row_end, column_start, column_end)| {
+                !areas.areas.iter().any(|area| {
+                    area.name == *name
+                        && area.row_start == *row_start
+                        && area.row_end == *row_end
+                        && area.column_start == *column_start
+                        && area.column_end == *column_end
+                })
+            })
+    {
+        return Err(unsupported(
+            "grid-template-areas",
+            "Root HTML named-area 제한 경로는 header/side/content의 직사각형 2x2 영역을 요구합니다",
+        ));
+    }
+    Ok(())
+}
+
 fn validate_combined_grid_line_area_metadata(
     node: NodeId,
     grid: &ComputedCssGridLayout,
@@ -184,7 +235,9 @@ fn validate_combined_grid_line_area_metadata(
     };
     let carries_area_metadata = grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
-        || profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1;
+        || profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        || (profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            && grid.template_areas.is_some());
     if !carries_area_metadata {
         return Ok(());
     }
@@ -536,7 +589,24 @@ fn project_grid_layout_with_reservations(
         math,
         &mut reserve,
     )?;
-    let (mut columns_line_names, mut rows_line_names) = if matches!(
+    let root_html_named_areas = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && grid.template_areas.is_some();
+    let (mut columns_line_names, mut rows_line_names) = if root_html_named_areas {
+        (
+            empty_grid_line_names(
+                node,
+                "grid-template-columns",
+                columns.len(),
+                &mut reserve_line_metadata,
+            )?,
+            empty_grid_line_names(
+                node,
+                "grid-template-rows",
+                rows.len(),
+                &mut reserve_line_metadata,
+            )?,
+        )
+    } else if matches!(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
@@ -633,6 +703,8 @@ fn project_grid_layout_with_reservations(
     let template_areas = if columns_auto_repeat.is_some()
         || rows_auto_repeat.is_some()
         || profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        || (profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            && grid.template_areas.is_some())
     {
         grid.template_areas
             .as_ref()
@@ -704,6 +776,9 @@ fn project_grid_layout_with_reservations(
                 if grid.template_areas.is_some()
                     || has_implicit_template_area_line_aliases(grid) =>
             {
+                GridPlacementMode::TemplateGrid
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if grid.template_areas.is_some() => {
                 GridPlacementMode::TemplateGrid
             }
             ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
@@ -1076,6 +1151,37 @@ fn project_line_names(
         output.push(projected);
     }
     Ok(output)
+}
+
+fn empty_grid_line_names(
+    node: NodeId,
+    property: &'static str,
+    track_count: usize,
+    reserve: &mut impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
+) -> Result<Vec<Vec<String>>, StyleLayoutError> {
+    let line_count =
+        track_count
+            .checked_add(1)
+            .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: "explicit Grid line 수가 지원 범위를 넘었습니다".to_owned(),
+            })?;
+    reserve(GridLineNameReservationSite::Groups).map_err(|_| {
+        StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+            node,
+            property,
+        })
+    })?;
+    let mut lines = Vec::new();
+    lines.try_reserve_exact(line_count).map_err(|_| {
+        StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+            node,
+            property,
+        })
+    })?;
+    lines.extend(std::iter::repeat_with(Vec::new).take(line_count));
+    Ok(lines)
 }
 
 fn project_auto_columns(
