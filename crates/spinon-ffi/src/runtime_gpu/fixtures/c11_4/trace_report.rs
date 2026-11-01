@@ -552,6 +552,8 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
             "letterSpacing": style.letter_spacing,
             "wordSpacing": style.word_spacing,
             "textIndent": style.text_indent,
+            "textIndentEachLine": style.text_indent_flags.each_line,
+            "textIndentHanging": style.text_indent_flags.hanging,
             "textTransform": format!("{:?}", style.text_transform),
             "lineHeight": style.line_height,
             "lineHeightIsNormal": style.line_height_is_normal,
@@ -583,6 +585,7 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
         "lines": snapshot.layout.lines.iter().map(|line| {
             serde_json::json!({
                 "advance": line.advance,
+                "indent": line.indent,
                 "lineTop": line.line_top,
                 "lineHeight": line.line_height,
                 "baseline": line.baseline,

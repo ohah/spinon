@@ -17,6 +17,10 @@ Implementation PR [#938](https://github.com/ohah/spinon/pull/938) was Rebase and
 
 각 장면에서 computed value와 HostDocument revision, intrinsic min/max/height, line count와 각 line advance, item frame, Columns/Rows 최종 track을 검사했다. 앱 실행이 끝난 뒤 AVD 앱은 force-stop했고 iOS 앱은 terminate했다. 캡처 화면은 glyph pixel 검증이 아니며 실기기나 Android hardware GPU 결과로 확대 해석하지 않는다.
 
+### Draw/present 재검증
+
+초기 capture runner는 layout summary 직후 종료해 draw/present를 수집하지 못했다. runner가 scene별 성공 present와 예상 root 높이, 양수 Surface texture까지 기다리도록 고친 뒤 최종 Rust 빌드로 2026-11-01에 양수 회귀 18개를 포함해 30개 장면을 다시 실행했다. Android 30/30 [matrix](android-avd-c114-computed-text-indent-negative-android-avd-1793498266019-85db63d2/matrix.tsv), 설치 APK SHA-256 `997f08b094ba06f8443ec945e626e053a093916046fc4a6e2169dfbe57487128`; iOS 30/30 [matrix](ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793498306331-56c5719e/matrix.tsv), 설치 executable SHA-256 `d1999a7a51d1287ddad9f002138c73b68609c04f8a1b44cf7c9d9fcc63dba43d`. 각 row는 draw generation과 superseded retry 수도 보존한다. 이는 WGPU surface 제출을 확인하며 glyph raster나 실제 기기 GPU를 증명하지 않는다.
+
 PR diff 검토 중 Android expectation adapter가 max-content scene의 유일한 line advance에 첫 단어 폭을 사용하고 있음을 발견했다. expected width를 전체 unindented max-content advance로 바꾸고 CSS reference static test에 이 분기를 고정했다. 수정 뒤 fixture app build, 26개 Bun 검사를 다시 통과했고, 새 설치 hash가 빌드 APK와 일치하는 상태에서 Android 30/30을 재실행했다. 앞선 Android capture는 최종 근거로 사용하지 않는다.
 
 ## 확인 중 수정한 실행 결함

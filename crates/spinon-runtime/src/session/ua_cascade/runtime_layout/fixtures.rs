@@ -207,6 +207,8 @@ pub(super) use c11_4_nested_grid_replaced_item::prepare as prepare_c11_4_nested_
 pub(super) use c11_4_nested_grid_depth_three_anonymous_image::prepare as prepare_c11_4_nested_grid_depth_three_anonymous_image;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_anonymous_text::is_expected_text_indent_flags_diagnostic;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_anonymous_text::prepare as prepare_c11_4_anonymous_text;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

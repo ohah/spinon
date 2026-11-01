@@ -10,19 +10,25 @@ const target = process.argv[2];
 const deviceID = process.argv[3];
 const profile = process.argv[4] ?? 'positive';
 const negativeMode = profile === 'negative';
+const flagsMode = profile === 'flags';
 const packageName = 'dev.spinon.bootstrap';
 const androidApk = resolve(repositoryRoot,
   'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
-const evidenceRoot = resolve(repositoryRoot, negativeMode
-  ? 'spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01'
-  : 'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01');
+const evidenceRoot = resolve(repositoryRoot, flagsMode
+  ? 'spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01'
+  : negativeMode
+    ? 'spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01'
+    : 'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01');
 const positiveExpectedValues = JSON.parse(await readFile(resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/spec-derived-expectations.json'),
 { encoding: 'utf8' }));
 const negativeExpectedValues = negativeMode ? JSON.parse(await readFile(resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/expected.json'),
+{ encoding: 'utf8' })) : null;
+const flagsPrecomparison = flagsMode ? JSON.parse(await readFile(resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/expected-values.json'),
 { encoding: 'utf8' })) : null;
 const negativeCases = negativeMode ? negativeExpectedValues.candidateScenes.map((candidate) => {
   const metric = negativeExpectedValues.candidateMetrics.find((item) =>
@@ -40,11 +46,71 @@ const negativeCases = negativeMode ? negativeExpectedValues.candidateScenes.map(
     maxContentPx: metric.maxContentPx,
     minContentHeightPx: metric.minContentRows * positiveExpectedValues.ahem.fontSizeCssPx,
     maxContentHeightPx: positiveExpectedValues.ahem.fontSizeCssPx,
-    lineCount: metric.minContentRows,
+    lineCount: candidate.trackKind === 'min-content'
+      ? metric.minContentRows : metric.maxContentRows,
     lineAdvancePx: null,
   };
 }) : [];
-const expectedValues = {
+const flagsExpectedCases = flagsMode ? flagsPrecomparison.cases.map((candidate) => {
+  const forcedBreak = candidate.whiteSpace === 'pre-line';
+  const minContentTrack = candidate.id.includes('-min-content-');
+  const textIndentPx = Number.parseFloat(candidate.computedIndent);
+  const eachLine = candidate.computedIndent.includes('each-line');
+  const hanging = candidate.computedIndent.includes('hanging');
+  const firstIndent = hanging ? 0 : textIndentPx;
+  const secondIndent = forcedBreak
+    ? ((eachLine !== hanging) ? textIndentPx : 0)
+    : (hanging ? textIndentPx : 0);
+  const expectedLineIndents = minContentTrack || forcedBreak
+    ? [firstIndent, secondIndent] : [firstIndent];
+  const expectedLineAdvances = minContentTrack || forcedBreak ? [30, 10] : [50];
+  assert.deepEqual(candidate.lineOffsetsPx, expectedLineIndents,
+    `${candidate.id}: independent line-indent semantics`);
+  assert.deepEqual(candidate.lineAdvancesPx, expectedLineAdvances,
+    `${candidate.id}: independent line advances`);
+  const otherTrack = candidate.id.replace(
+    candidate.id.includes('-min-content-') ? '-min-content-' : '-max-content-',
+    candidate.id.includes('-min-content-') ? '-max-content-' : '-min-content-');
+  const other = flagsPrecomparison.cases.find((item) => item.id === otherTrack);
+  assert.ok(other, `${candidate.id}: paired track expectation missing`);
+  const minContent = candidate.id.includes('-min-content-')
+    ? candidate.usedColumnsPx : other.usedColumnsPx;
+  const maxContent = candidate.id.includes('-max-content-')
+    ? candidate.usedColumnsPx : other.usedColumnsPx;
+  const expectedMinContent = Math.max(30 + firstIndent, 10 + secondIndent);
+  const expectedMaxContent = forcedBreak
+    ? expectedMinContent : 50 + firstIndent;
+  assert.equal(minContent, expectedMinContent, `${candidate.id}: independent min-content`);
+  assert.equal(maxContent, expectedMaxContent, `${candidate.id}: independent max-content`);
+  const expectedTrackWidth = minContentTrack ? expectedMinContent : expectedMaxContent;
+  assert.equal(candidate.usedColumnsPx, expectedTrackWidth,
+    `${candidate.id}: selected intrinsic track`);
+  assert.equal(candidate.rootHeightPx, minContentTrack || forcedBreak ? 20 : 10,
+    `${candidate.id}: used auto row height`);
+  return {
+    id: `text-indent-flags-${candidate.id}`,
+    computedTextIndent: candidate.computedIndent,
+    textIndentPx,
+    text: candidate.whiteSpace === 'pre-line' ? 'XXX\nX' : 'XXX X',
+    track: candidate.id.includes('-min-content-') ? 'min' : 'max',
+    columnsPx: candidate.usedColumnsPx,
+    rowsPx: candidate.rootHeightPx,
+    minContentPx: minContent,
+    maxContentPx: maxContent,
+    minContentHeightPx: 20,
+    maxContentHeightPx: forcedBreak ? 20 : 10,
+    lineCount: expectedLineAdvances.length,
+    lineAdvancesPx: expectedLineAdvances,
+    lineIndentsPx: expectedLineIndents,
+    whiteSpace: candidate.whiteSpace,
+    eachLine,
+    hanging,
+  };
+}) : [];
+const expectedValues = flagsMode ? {
+  ahem: { fontSizeCssPx: flagsPrecomparison.font.sizeCssPx },
+  cases: flagsExpectedCases,
+} : {
   ...positiveExpectedValues,
   cases: negativeMode
     ? [...positiveExpectedValues.cases, ...negativeCases]
@@ -105,24 +171,29 @@ function deriveScene(scene) {
   const words = scene.text.trim().split(/\s+/);
   const fontSize = expectedValues.ahem.fontSizeCssPx;
   const textIndent = Number.parseFloat(scene.computedTextIndent);
-  const minContent = Math.max(...words.map((word, index) => [...word].length * fontSize
-    + (index === 0 ? textIndent : 0)));
-  const maxContent = words.reduce((sum, word) => sum + [...word].length, 0) * fontSize
+  const lineCount = scene.lineCount ?? (scene.track === 'min' ? words.length : 1);
+  const lineIndents = scene.lineIndentsPx
+    ?? Array.from({ length: lineCount }, (_, index) => index === 0 ? textIndent : 0);
+  const minContent = scene.minContentPx ?? Math.max(...words.map((word, index) =>
+    [...word].length * fontSize + (index === 0 ? textIndent : 0)));
+  const maxContent = scene.maxContentPx ?? words.reduce((sum, word) =>
+    sum + [...word].length, 0) * fontSize
     + Math.max(0, words.length - 1) * fontSize + textIndent;
   const unindentedMaxContent = maxContent - textIndent;
-  const minContentHeight = words.length * fontSize;
-  const maxContentHeight = fontSize;
+  const minContentHeight = scene.minContentHeightPx ?? words.length * fontSize;
+  const maxContentHeight = scene.maxContentHeightPx ?? fontSize;
   assert.ok(Number.isFinite(textIndent) && textIndent >= -10 && textIndent <= 10,
     `${scene.id}: invalid fixed-profile text-indent`);
   assert.equal(scene.columnsPx, scene.track === 'min' ? minContent : maxContent,
     `${scene.id}: independent column formula`);
-  assert.equal(scene.rowsPx, scene.track === 'min' ? minContentHeight : maxContentHeight,
+  assert.equal(scene.rowsPx,
+    scene.whiteSpace === 'pre-line' || scene.track === 'min'
+      ? minContentHeight : maxContentHeight,
     `${scene.id}: independent row formula`);
-  const lineCount = scene.track === 'min' ? words.length : 1;
   const trackWidth = scene.track === 'min' ? minContent : maxContent;
-  const lineAdvances = scene.track === 'min'
+  const lineAdvances = scene.lineAdvancesPx ?? (scene.track === 'min'
     ? words.map((word) => [...word].length * fontSize)
-    : [unindentedMaxContent];
+    : [unindentedMaxContent]);
   return {
     words,
     textIndent,
@@ -134,7 +205,8 @@ function deriveScene(scene) {
     rowHeight: scene.rowsPx,
     lineCount,
     lineAdvances,
-    layoutText: words.join(' '),
+    lineIndents,
+    layoutText: scene.whiteSpace === 'pre-line' ? scene.text : words.join(' '),
   };
 }
 
@@ -174,6 +246,8 @@ function validateScene(log, scene, runID) {
   assert.equal(layout.paragraphStyle.fontSize, expectedValues.ahem.fontSizeCssPx);
   assert.equal(layout.paragraphStyle.wordSpacing, 0);
   assert.equal(layout.paragraphStyle.textIndent, expected.textIndent);
+  assert.equal(layout.paragraphStyle.textIndentEachLine, scene.eachLine ?? false);
+  assert.equal(layout.paragraphStyle.textIndentHanging, scene.hanging ?? false);
   assert.equal(layout.paragraphStyle.lineHeight, expectedValues.ahem.fontSizeCssPx);
   assert.equal(layout.lines.length, expected.lineCount, `${scene.id}: line count`);
   for (const line of layout.lines) {
@@ -202,9 +276,51 @@ function validateScene(log, scene, runID) {
   assert.deepEqual(finalTrackSizes('Rows'), [rowHeight], `${scene.id}: final auto row track`);
   assert.deepEqual(layout.lines.map(({ advance }) => advance), expected.lineAdvances,
     `${scene.id}: line advances`);
+  assert.deepEqual(layout.lines.map(({ indent }) => indent), expected.lineIndents,
+    `${scene.id}: per-line text indent`);
   return { scene: scene.id, result: 'PASS', textIndentPx: expected.textIndent,
     track: scene.track, lineCount: expected.lineCount, gridColumnPx: trackWidth,
-    gridRowPx: rowHeight, traceParts: partCount };
+    gridRowPx: rowHeight, lineIndentsPx: expected.lineIndents.join(','), traceParts: partCount,
+    ...validatePresentedDraw(log, scene) };
+}
+
+function presentedDraw(log, scene) {
+  const marker = 'SPINON_C0410_DRAW generation=';
+  for (const line of log.split(/\r?\n/)) {
+    const markerOffset = line.indexOf(marker);
+    if (markerOffset < 0) continue;
+    const report = line.slice(markerOffset + 'SPINON_C0410_DRAW '.length);
+    const generation = report.match(/^generation=(\d+)\b/)?.[1];
+    const texture = report.match(/\bsurface_texture=(\d+)x(\d+)\b/);
+    const root = report.match(/\broot_css_px=(\d+)x(\d+)\b/);
+    if (!generation || !texture || !root
+        || !report.includes('status=0 presented boxes=1')
+        || Number(texture[1]) <= 0 || Number(texture[2]) <= 0
+        || Number(root[1]) !== 120 || Number(root[2]) !== scene.rowsPx) continue;
+    return {
+      drawPresented: true,
+      drawGeneration: Number(generation),
+      surfaceTexture: `${texture[1]}x${texture[2]}`,
+      drawSupersededRetries: (log.match(/SPINON_C0410_DRAW_SUPERSEDED generation=/g) ?? []).length,
+    };
+  }
+  return null;
+}
+
+function validatePresentedDraw(log, scene) {
+  const draw = presentedDraw(log, scene);
+  assert.ok(draw,
+    `${scene.id}: matching SPINON_C0410_DRAW present missing for root_css_px=120x${scene.rowsPx}`);
+  return draw;
+}
+
+function hasTerminalDrawFailure(log) {
+  return log.split(/\r?\n/).some((line) => {
+    const markerOffset = line.indexOf('SPINON_C0410_DRAW generation=');
+    if (markerOffset < 0) return false;
+    const report = line.slice(markerOffset);
+    return !report.includes('status=-12 ') && !report.includes('status=0 presented boxes=1');
+  });
 }
 
 function androidDevice(serial) {
@@ -230,8 +346,8 @@ function androidLog(adb, pid) {
     'SpinonBootstrap:V', '*:S'], { timeout: 30_000 }).stdout;
 }
 
-function iosLog(udid, runID) {
-  const predicate = `process == "SpinonBootstrap" AND eventMessage CONTAINS[c] "${runID}"`;
+function iosLog(udid, pid) {
+  const predicate = `process == "SpinonBootstrap" AND processIdentifier == ${pid}`;
   return command('xcrun', ['simctl', 'spawn', udid, 'log', 'show', '--last', '2m',
     '--style', 'compact', '--predicate', predicate], { timeout: 45_000 }).stdout;
 }
@@ -273,17 +389,22 @@ async function runAndroid(serial) {
       const deadline = Date.now() + 90_000;
       while (Date.now() < deadline) {
         log = androidLog(adb, pid);
-        if (log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${id} `)) break;
         if (log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
+        if (log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${id} `)
+            && presentedDraw(log, scene)) break;
+        if (hasTerminalDrawFailure(log)) break;
         sleep(300);
       }
       await writeFile(resolve(evidenceDirectory, `${id}.log`), evidenceLog(log));
       const row = validateScene(log, scene, runID);
       rows.push(row);
-      if (id === (negativeMode
-        ? 'text-indent-negative-five-first-word-long-max-content'
-        : 'text-indent-five-collapsed-three-words-max-content')) {
+      const screenshotScene = flagsMode
+        ? 'text-indent-flags-forced-min-content-hanging-each-line'
+        : negativeMode
+          ? 'text-indent-negative-five-first-word-long-max-content'
+          : 'text-indent-five-collapsed-three-words-max-content';
+      if (id === screenshotScene) {
         sleep(1500);
         const screenshot = command('/opt/homebrew/bin/adb', ['-s', serial, 'exec-out', 'screencap', '-p'],
           { encoding: null, maxBuffer: 16 * 1024 * 1024 });
@@ -295,10 +416,11 @@ async function runAndroid(serial) {
     adb(['shell', 'am', 'force-stop', packageName], { allowFailure: true });
   }
   await writeFile(resolve(evidenceDirectory, 'matrix.tsv'),
-    `scene\tresult\tcomputed_text_indent_px\ttrack\tline_count\tgrid_column_px\tgrid_row_px\ttrace_parts\n`
+    `scene\tresult\tcomputed_text_indent_px\ttrack\tline_count\tgrid_column_px\tgrid_row_px\tline_indents_px\ttrace_parts\tdraw_presented\tdraw_generation\tsurface_texture\tdraw_superseded_retries\n`
       + rows.map(({ scene, result, textIndentPx, track, lineCount,
-        gridColumnPx, gridRowPx, traceParts }) =>
-        `${scene}\t${result}\t${textIndentPx}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${traceParts}`).join('\n') + '\n');
+        gridColumnPx, gridRowPx, lineIndentsPx, traceParts, drawPresented,
+        drawGeneration, surfaceTexture, drawSupersededRetries }) =>
+        `${scene}\t${result}\t${textIndentPx}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${lineIndentsPx}\t${traceParts}\t${drawPresented}\t${drawGeneration}\t${surfaceTexture}\t${drawSupersededRetries}`).join('\n') + '\n');
 }
 
 async function runIOS(udid) {
@@ -338,10 +460,12 @@ async function runIOS(udid) {
       let log = '';
       const deadline = Date.now() + 90_000;
       while (Date.now() < deadline) {
-        log = iosLog(udid, runID);
-        if (log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${id} `)) break;
+        log = iosLog(udid, pid);
         if (log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
+        if (log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${id} `)
+            && presentedDraw(log, scene)) break;
+        if (hasTerminalDrawFailure(log)) break;
         sleep(500);
       }
       await writeFile(resolve(evidenceDirectory, `${id}.log`), evidenceLog(log));
@@ -360,15 +484,16 @@ async function runIOS(udid) {
     command('xcrun', ['simctl', 'terminate', udid, packageName], { allowFailure: true });
   }
   await writeFile(resolve(evidenceDirectory, 'matrix.tsv'),
-    `scene\tresult\tcomputed_text_indent_px\ttrack\tline_count\tgrid_column_px\tgrid_row_px\ttrace_parts\n`
+    `scene\tresult\tcomputed_text_indent_px\ttrack\tline_count\tgrid_column_px\tgrid_row_px\tline_indents_px\ttrace_parts\tdraw_presented\tdraw_generation\tsurface_texture\tdraw_superseded_retries\n`
       + rows.map(({ scene, result, textIndentPx, track, lineCount,
-        gridColumnPx, gridRowPx, traceParts }) =>
-        `${scene}\t${result}\t${textIndentPx}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${traceParts}`).join('\n') + '\n');
+        gridColumnPx, gridRowPx, lineIndentsPx, traceParts, drawPresented,
+        drawGeneration, surfaceTexture, drawSupersededRetries }) =>
+        `${scene}\t${result}\t${textIndentPx}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${lineIndentsPx}\t${traceParts}\t${drawPresented}\t${drawGeneration}\t${surfaceTexture}\t${drawSupersededRetries}`).join('\n') + '\n');
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
   'Usage: capture-c11-4-computed-text-indent-simulators.mjs <android-avd|ios-simulator> <serial|UDID> [positive|negative]');
-assert.ok(['positive', 'negative'].includes(profile), 'Unknown text-indent matrix profile');
+assert.ok(['positive', 'negative', 'flags'].includes(profile), 'Unknown text-indent matrix profile');
 assert.ok(deviceID, 'An explicit Android serial or iOS Simulator UDID is required');
 await mkdir(evidenceDirectory, { recursive: true });
 if (target === 'android-avd') await runAndroid(deviceID);

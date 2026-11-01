@@ -1,0 +1,15 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 9 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::text_indent_source::tests::declaration_value_removes_only_the_declaration_terminator ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::text_indent_source::tests::declaration_location_uses_one_based_utf16_columns ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::text_indent::tests::stylo_flags_diagnostic_exception_is_single_exact_and_source_bound ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::text_indent::tests::computed_text_indent_matrix_has_fifty_unique_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::text_indent::tests::computed_text_indent_accepts_only_the_fixed_scene_values ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_text_indent::anonymous_grid_text_indent_unlisted_negative_scene_fails_before_layout_publication ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_text_indent::anonymous_grid_text_indent_out_of_profile_and_mismatch_fail_before_layout_publication ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_text_indent::anonymous_grid_text_indent_flags_reach_intrinsic_tracks_and_line_origins ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_text_indent::anonymous_grid_computed_text_indent_reaches_intrinsic_tracks_and_first_line_position ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 377 filtered out; finished in 0.14s

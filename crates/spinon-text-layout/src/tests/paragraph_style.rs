@@ -153,6 +153,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
                 font_size: 10.0,
                 line_height: 10.0,
                 text_indent: f32::NAN,
+                text_indent_flags: crate::TextIndentFlags::default(),
                 white_space: WhiteSpaceMode::Normal,
                 word_break: WordBreakMode::Normal,
                 direction: crate::TextDirection::Auto,

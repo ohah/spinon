@@ -1,0 +1,42 @@
+{
+  "mode": "fixture",
+  "artifact": "/Users/yoonhb/Documents/workspace/spinon/target/release/libspinon_ffi.a",
+  "bytes": 92020272,
+  "sha256": "b1e3e57b0cb163b238a3d4cd7ec380e5740d8f7746a1032cdf0c8b29e1934f5f",
+  "sceneMarkerCount": 20,
+  "sceneMarkers": {
+    "text-indent-flags-soft-min-content-none": true,
+    "text-indent-flags-soft-min-content-indent": true,
+    "text-indent-flags-soft-min-content-each-line": true,
+    "text-indent-flags-soft-min-content-hanging": true,
+    "text-indent-flags-soft-min-content-hanging-each-line": true,
+    "text-indent-flags-soft-max-content-none": true,
+    "text-indent-flags-soft-max-content-indent": true,
+    "text-indent-flags-soft-max-content-each-line": true,
+    "text-indent-flags-soft-max-content-hanging": true,
+    "text-indent-flags-soft-max-content-hanging-each-line": true,
+    "text-indent-flags-forced-min-content-none": true,
+    "text-indent-flags-forced-min-content-indent": true,
+    "text-indent-flags-forced-min-content-each-line": true,
+    "text-indent-flags-forced-min-content-hanging": true,
+    "text-indent-flags-forced-min-content-hanging-each-line": true,
+    "text-indent-flags-forced-max-content-none": true,
+    "text-indent-flags-forced-max-content-indent": true,
+    "text-indent-flags-forced-max-content-each-line": true,
+    "text-indent-flags-forced-max-content-hanging": true,
+    "text-indent-flags-forced-max-content-hanging-each-line": true
+  },
+  "c114HostFfiSymbols": [
+    "000000000000ab48 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+    "000000000000d8c4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+  ],
+  "rustc": [
+    "rustc 1.96.1 (31fca3adb 2026-06-26)",
+    "binary: rustc",
+    "commit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd",
+    "commit-date: 2026-06-26",
+    "host: aarch64-apple-darwin",
+    "release: 1.96.1"
+  ],
+  "llvmNm": "/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm"
+}

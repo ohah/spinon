@@ -136,6 +136,7 @@ pub(super) fn layout_fixture(
             ligatures: LigatureMode::Normal,
             letter_spacing: 0.0,
             text_indent: 0.0,
+            text_indent_flags: spinon_layout::TextIndentFlags::default(),
         },
     )]);
     let input = LayoutInput::from_host_document_with_text_paragraphs(

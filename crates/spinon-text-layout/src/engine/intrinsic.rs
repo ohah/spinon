@@ -80,10 +80,9 @@ impl TextLayoutEngine {
             ));
         }
         let letter_spacing = input.style.letter_spacing;
-        let text_indent = input.style.text_indent;
         layout.break_all_lines(None);
         let max_content = (
-            max_content_inline_advance(&layout, input.node, letter_spacing, text_indent)?,
+            max_content_inline_advance(&layout, input.node, letter_spacing)?,
             layout.height(),
         );
         let (inline_boundaries, mut min_layout) =
@@ -117,7 +116,6 @@ impl TextLayoutEngine {
             &inline_boundaries,
             input.node,
             letter_spacing,
-            text_indent,
         )?;
         let min_content_block = if input.style.white_space == WhiteSpaceMode::BreakSpaces {
             // break-spaces does not hang preserved end-of-line spaces. Reflow at the
@@ -310,7 +308,13 @@ impl TextLayoutEngine {
             builder.push_inline_box(inline_box);
         }
         let mut layout = builder.build(&normalized.text);
-        layout.set_text_indent(input.style.text_indent, IndentOptions::default());
+        layout.set_text_indent(
+            input.style.text_indent,
+            IndentOptions {
+                each_line: input.style.text_indent_flags.each_line,
+                hanging: input.style.text_indent_flags.hanging,
+            },
+        );
         Ok(BuiltParleyLayout {
             normalized,
             inline_boundaries,
@@ -335,6 +339,7 @@ fn supports_vertical_intrinsic_profile(input: &ParagraphInput) -> bool {
         && style.font_family == "Ahem"
         && style.font_size == 10.0
         && style.text_indent == 0.0
+        && style.text_indent_flags == Default::default()
         && style.line_height == 10.0
         && !style.line_height_is_normal
         && style.font_weight == 400.0
@@ -355,10 +360,9 @@ fn min_content_inline_advance(
     inline_boundaries: &BTreeMap<u64, inline_boxes::InlineBoundary>,
     paragraph: NodeId,
     letter_spacing: f32,
-    text_indent: f32,
 ) -> Result<f32, TextLayoutError> {
     let mut lines = Vec::with_capacity(layout.len());
-    for (line_index, line) in layout.lines().enumerate() {
+    for line in layout.lines() {
         let metrics = line.metrics();
         let mut inline_width = 0.0;
         for item in line.items() {
@@ -372,10 +376,9 @@ fn min_content_inline_advance(
                 inline_width += positioned.width;
             }
         }
-        let first_line_indent = if line_index == 0 { text_indent } else { 0.0 };
         let advance = super::letter_spacing::visible_line_advance(metrics, letter_spacing)
             - inline_width
-            + first_line_indent;
+            + metrics.indent;
         if !advance.is_finite() {
             return Err(TextLayoutError::InvalidGlyphLayout(paragraph));
         }
@@ -416,14 +419,12 @@ fn max_content_inline_advance(
     layout: &parley::Layout<[u8; 4]>,
     paragraph: NodeId,
     letter_spacing: f32,
-    text_indent: f32,
 ) -> Result<f32, TextLayoutError> {
     let mut max_advance = 0.0_f32;
-    for (line_index, line) in layout.lines().enumerate() {
+    for line in layout.lines() {
         let metrics = line.metrics();
-        let first_line_indent = if line_index == 0 { text_indent } else { 0.0 };
-        let advance = super::letter_spacing::visible_line_advance(metrics, letter_spacing)
-            + first_line_indent;
+        let advance =
+            super::letter_spacing::visible_line_advance(metrics, letter_spacing) + metrics.indent;
         if !advance.is_finite() {
             return Err(TextLayoutError::InvalidGlyphLayout(paragraph));
         }

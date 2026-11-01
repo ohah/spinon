@@ -186,8 +186,10 @@ pub struct ParagraphStyle {
     pub letter_spacing: f32,
     /// 제한 text profile에서 사용하는 computed CSS `word-spacing` (CSS px)입니다.
     pub word_spacing: f32,
-    /// Paragraph의 first formatted line에 적용하는 computed CSS `text-indent` (CSS px)입니다.
+    /// Computed CSS `text-indent` 길이 (CSS px)입니다. 대상 line은 아래 flags가 정합니다.
     pub text_indent: f32,
+    /// 제한 profile에서 `text-indent`가 적용되는 line 집합을 정하는 computed flags입니다.
+    pub text_indent_flags: TextIndentFlags,
     /// 제한 text profile에서 layout용 normalized text에 적용하는 computed 변환입니다.
     pub text_transform: TextTransformMode,
     pub white_space: WhiteSpaceMode,
@@ -202,6 +204,13 @@ pub struct ParagraphStyle {
     pub text_orientation: TextOrientation,
     pub line_break: LineBreakMode,
     pub ligatures: LigatureMode,
+}
+
+/// 제한 text profile에서 `text-indent`의 `hanging`·`each-line` 동작을 보존합니다.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct TextIndentFlags {
+    pub each_line: bool,
+    pub hanging: bool,
 }
 
 impl ParagraphStyle {
@@ -257,6 +266,7 @@ impl Default for ParagraphStyle {
             letter_spacing: 0.0,
             word_spacing: 0.0,
             text_indent: 0.0,
+            text_indent_flags: TextIndentFlags::default(),
             text_transform: TextTransformMode::None,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,

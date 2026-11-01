@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-89dd99839ccaa5f8)
+
+running 2 tests
+test runtime_gpu::fixtures::c11_4::anonymous_text_items::computed_text_indent::tests::computed_text_indent_flags_matrix_generates_twenty_direct_text_scenes ... ok
+test runtime_gpu::fixtures::c11_4::anonymous_text_items::computed_text_indent::tests::computed_text_indent_matrix_generates_thirty_exact_direct_text_scenes ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 183 filtered out; finished in 0.01s

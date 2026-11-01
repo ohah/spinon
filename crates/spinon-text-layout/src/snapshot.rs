@@ -50,11 +50,12 @@ pub struct TextRect {
     pub height: f32,
 }
 
-/// 한 줄의 line box와 실제 shaped advance입니다.
+/// 한 줄의 line box, 실제 shaped advance, 사용된 `text-indent`입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct TextLine {
     pub text_range: Range<usize>,
     pub advance: f32,
+    pub indent: f32,
     pub hanging_advance: f32,
     pub line_top: f32,
     pub line_height: f32,
