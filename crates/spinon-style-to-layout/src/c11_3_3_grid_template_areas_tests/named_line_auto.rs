@@ -147,3 +147,143 @@ fn positive_no_area_named_line_pair_auto_sizing_fails_closed_outside_the_slice()
     let error = fixture.compute_with_implicit_named_lines(true).unwrap_err();
     assert!(format!("{error:?}").contains("InvalidGridPlacement"));
 }
+
+#[test]
+fn negative_no_area_named_line_pair_sizes_leading_implicit_tracks() {
+    let column_scenes = [
+        ("-4 ghost / -1 ghost", (0.0, 0.0, 17.0, 10.0)),
+        ("-1 ghost / -4 ghost", (0.0, 0.0, 17.0, 10.0)),
+        ("-2 ghost / -1 ghost", (0.0, 0.0, 17.0, 10.0)),
+        ("-2 ghost / -2 ghost", (0.0, 0.0, 17.0, 10.0)),
+        ("-5 ghost / -2 ghost", (0.0, 0.0, 17.0, 10.0)),
+    ];
+    for (placement, expected) in column_scenes {
+        let fixture = Fixture::new(
+            "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:5px 7px;grid-auto-rows:5px 7px;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+            &[(
+                "negative-pair-item",
+                &format!(
+                    "box-sizing:border-box;width:17px;height:10px;grid-column:{placement};grid-row:1 / 2;margin:0;padding:0;border:0"
+                ),
+            )],
+        );
+        let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+        let frame = output.layout.frames[&fixture.nodes["negative-pair-item"].id()];
+        assert_eq!(
+            (frame.x, frame.y, frame.width, frame.height),
+            expected,
+            "grid-column:{placement}"
+        );
+    }
+
+    let columns_auto = Fixture::new(
+        "display:grid;box-sizing:border-box;width:108px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:auto;grid-auto-rows:5px 7px;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "negative-auto-item",
+            "box-sizing:border-box;width:18px;height:10px;grid-column:-4 ghost / -1 ghost;grid-row:1 / 2;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = columns_auto
+        .compute_with_implicit_named_lines(true)
+        .unwrap();
+    let frame = output.layout.frames[&columns_auto.nodes["negative-auto-item"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (0.0, 0.0, 18.0, 10.0)
+    );
+
+    let rows = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:5px 7px;grid-auto-rows:5px 7px;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "negative-row-item",
+            "box-sizing:border-box;width:10px;height:17px;grid-column:1 / 2;grid-row:-4 ghost / -1 ghost;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = rows.compute_with_implicit_named_lines(true).unwrap();
+    let frame = output.layout.frames[&rows.nodes["negative-row-item"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (0.0, 0.0, 10.0, 17.0)
+    );
+
+    let rows_auto = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:108px;grid-template-columns:20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:5px 7px;grid-auto-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "negative-row-auto-item",
+            "box-sizing:border-box;width:10px;height:18px;grid-column:1 / 2;grid-row:-4 ghost / -1 ghost;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = rows_auto.compute_with_implicit_named_lines(true).unwrap();
+    let frame = output.layout.frames[&rows_auto.nodes["negative-row-auto-item"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (0.0, 0.0, 10.0, 18.0)
+    );
+
+    let authored_line = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:[ghost] 20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:5px 7px;grid-auto-rows:5px 7px;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "authored-control-item",
+            "box-sizing:border-box;width:17px;height:10px;grid-column:-2 ghost / -1 ghost;grid-row:1 / 2;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = authored_line
+        .compute_with_implicit_named_lines(true)
+        .unwrap();
+    let frame = output.layout.frames[&authored_line.nodes["authored-control-item"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (0.0, 0.0, 17.0, 10.0)
+    );
+}
+
+#[test]
+fn negative_named_line_auto_pair_keeps_unsupported_shapes_closed() {
+    for (grid_style, item_styles, expected_error) in [
+        (
+            "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px;grid-auto-columns:auto;grid-auto-rows:20px;margin:0;padding:0;border:0",
+            vec![
+                "box-sizing:border-box;width:auto;height:10px;grid-column:-4 ghost / -1 ghost;grid-row:1 / 2;margin:0;padding:0;border:0",
+            ],
+            "UnsupportedGridAutoColumns",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px;grid-auto-columns:auto;grid-auto-rows:20px;margin:0;padding:0;border:0",
+            vec![
+                "box-sizing:border-box;width:17px;height:10px;grid-column:-4 start-ghost / -1 end-ghost;grid-row:1 / 2;margin:0;padding:0;border:0",
+            ],
+            "UnsupportedGridAutoColumns",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:5px 7px;grid-auto-rows:5px 7px;margin:0;padding:0;border:0",
+            vec![
+                "box-sizing:border-box;width:17px;height:10px;grid-column:-4 ghost / -1 ghost;grid-row:1 / 2;margin:0;padding:0;border:0",
+                "box-sizing:border-box;width:10px;height:10px;grid-column:1 / 2;grid-row:1 / 2;margin:0;padding:0;border:0",
+            ],
+            "InvalidGridPlacement",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:160px;height:160px;grid-template-columns:20px 30px 40px;grid-template-rows:20px 30px 40px;grid-auto-columns:auto;grid-auto-rows:auto;margin:0;padding:0;border:0",
+            vec![
+                "box-sizing:border-box;width:17px;height:10px;grid-column:-4 ghost / -1 ghost;grid-row:-4 row-ghost / -1 row-ghost;margin:0;padding:0;border:0",
+            ],
+            "UnsupportedGridAutoRows",
+        ),
+    ] {
+        let items = item_styles
+            .iter()
+            .enumerate()
+            .map(|(index, style)| (format!("negative-item-{index}"), *style))
+            .collect::<Vec<_>>();
+        let item_refs = items
+            .iter()
+            .map(|(name, style)| (name.as_str(), *style))
+            .collect::<Vec<_>>();
+        let fixture = Fixture::new(grid_style, &item_refs);
+        let error = fixture.compute_with_implicit_named_lines(true).unwrap_err();
+        assert!(
+            format!("{error:?}").contains(expected_error),
+            "expected {expected_error}, got {error:?}"
+        );
+    }
+}

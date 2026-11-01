@@ -1,0 +1,41 @@
+{
+  "schema": "spinon-css-c11-3-3-negative-named-line-pair-auto-implicit-tracks-mobile-pixels/v1",
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-leading-named-line-pair-matrix-2026-11-01",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-negative-named-line-pairs-reference-v1.json",
+    "referenceSha256": "4b1f9f878eccce6b0e79e1ff8ce2654008d916b769aeaf05f60a99cd9a7f8f69",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "screenshotPath": "spec/internal/evidence/c11-3-3-negative-named-line-pair-runtime-2026-11-01/chrome-156-agent-browser.png",
+    "screenshotSha256": "5f12e3251051cd30c7c5a318a56b03242715e03064bd668708aa8e60028847d4"
+  },
+  "sceneId": "negative-named-line-pair-matrix",
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "deviceScaleFactor": 1,
+    "expectedNodeCount": 17,
+    "expectedFrames": [
+      [0, 0, 320, 240],
+      [0, 0, 160, 30], [0, 0, 17, 10],
+      [160, 0, 160, 30], [160, 0, 17, 10],
+      [0, 60, 160, 30], [0, 60, 17, 10],
+      [160, 60, 160, 30], [160, 60, 17, 10],
+      [0, 120, 160, 30], [0, 120, 17, 10],
+      [160, 120, 108, 30], [160, 120, 18, 10],
+      [0, 180, 160, 54], [0, 180, 10, 17],
+      [160, 180, 160, 48], [160, 180, 10, 18]
+    ]
+  },
+  "samples": [
+    { "id": "negative-pair-0", "nodeId": "negative-pair-span-item", "xCssPx": 5, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-1", "nodeId": "negative-pair-reversed-item", "xCssPx": 165, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-2", "nodeId": "negative-pair-one-item", "xCssPx": 5, "yCssPx": 65, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-3", "nodeId": "negative-pair-equal-item", "xCssPx": 165, "yCssPx": 65, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-4", "nodeId": "negative-pair-offset-item", "xCssPx": 5, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-5", "nodeId": "negative-pair-auto-columns-item", "xCssPx": 165, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-6", "nodeId": "negative-pair-rows-item", "xCssPx": 5, "yCssPx": 185, "rgba": [40, 102, 246, 255] },
+    { "id": "negative-pair-7", "nodeId": "negative-pair-auto-rows-item", "xCssPx": 165, "yCssPx": 185, "rgba": [40, 102, 246, 255] }
+  ]
+}

@@ -165,6 +165,7 @@ fn missing_backward_named_span_creates_leading_line_and_selects_signed_extent() 
             requires_signed_extent: true,
             allows_positive_auto_track_sizing: false,
             allows_positive_named_line_pair_auto_track_sizing: false,
+            allows_negative_named_line_pair_auto_track_sizing: false,
         }
     );
 }
@@ -224,6 +225,93 @@ fn only_two_resolved_positive_implicit_named_line_endpoints_select_auto_pair_siz
     )
     .unwrap();
     assert!(!usage.allows_positive_named_line_pair_auto_track_sizing);
+}
+
+#[test]
+fn only_two_resolved_negative_implicit_named_line_endpoints_select_auto_pair_sizing() {
+    let line_names = names(&[&[], &[], &[], &[]]);
+    let (start, end, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(46).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("ghost", -4),
+        &named("ghost", -1),
+        metadata(&line_names, &[], None, GridAxis::Columns, 3),
+        true,
+    )
+    .unwrap();
+
+    assert_eq!(start, GridPlacementInput::Line(-8));
+    assert_eq!(end, GridPlacementInput::Line(-5));
+    assert!(usage.uses_implicit_tracks);
+    assert!(usage.requires_signed_extent);
+    assert!(usage.allows_negative_named_line_pair_auto_track_sizing);
+
+    let (start, end, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(47).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("ghost", -1),
+        &named("ghost", -4),
+        metadata(&line_names, &[], None, GridAxis::Columns, 3),
+        true,
+    )
+    .unwrap();
+    assert_eq!(start, GridPlacementInput::Line(-5));
+    assert_eq!(end, GridPlacementInput::Line(-8));
+    assert!(usage.allows_negative_named_line_pair_auto_track_sizing);
+
+    let (start, end, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(48).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("ghost", -2),
+        &named("ghost", -2),
+        metadata(&line_names, &[], None, GridAxis::Columns, 3),
+        true,
+    )
+    .unwrap();
+    assert_eq!(start, GridPlacementInput::Line(-6));
+    assert_eq!(end, GridPlacementInput::Line(-6));
+    assert!(usage.allows_negative_named_line_pair_auto_track_sizing);
+
+    let (_, _, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(51).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("start-ghost", -4),
+        &named("end-ghost", -1),
+        metadata(&line_names, &[], None, GridAxis::Columns, 3),
+        true,
+    )
+    .unwrap();
+    assert!(usage.requires_signed_extent);
+    assert!(!usage.allows_negative_named_line_pair_auto_track_sizing);
+
+    let authored_name = names(&[&["ghost"], &[], &[], &[]]);
+    let (_, _, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(49).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("ghost", -2),
+        &named("ghost", -1),
+        metadata(&authored_name, &[], None, GridAxis::Columns, 3),
+        true,
+    )
+    .unwrap();
+    assert!(!usage.allows_negative_named_line_pair_auto_track_sizing);
+
+    let (_, _, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(50).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("ghost", -4),
+        &named("ghost", 1),
+        metadata(&line_names, &[], None, GridAxis::Columns, 3),
+        true,
+    )
+    .unwrap();
+    assert!(!usage.allows_negative_named_line_pair_auto_track_sizing);
 }
 
 #[test]

@@ -140,6 +140,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     };
     private static final String[] C1133_NAMED_LINE_PAIR_SCENE_IDS = {
             "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
+            "negative-named-line-pair-matrix",
     };
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
@@ -1800,6 +1801,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c1133NamedLinePairSampleY(String sceneId) {
         return "named-line-pair-rows-multi-track".equals(sceneId) ? 45 : 5;
+    }
+
+    private static List<SurfaceViewPixelCapture.Sample> c1133NegativeNamedLinePairPixelSamples(
+            String sceneId) {
+        if (!"negative-named-line-pair-matrix".equals(sceneId)) return null;
+        return List.of(
+                new SurfaceViewPixelCapture.Sample("negative-pair-0", "negative-pair-span-item", 5, 5),
+                new SurfaceViewPixelCapture.Sample("negative-pair-1", "negative-pair-reversed-item", 165, 5),
+                new SurfaceViewPixelCapture.Sample("negative-pair-2", "negative-pair-one-item", 5, 65),
+                new SurfaceViewPixelCapture.Sample("negative-pair-3", "negative-pair-equal-item", 165, 65),
+                new SurfaceViewPixelCapture.Sample("negative-pair-4", "negative-pair-offset-item", 5, 125),
+                new SurfaceViewPixelCapture.Sample("negative-pair-5", "negative-pair-auto-columns-item", 165, 125),
+                new SurfaceViewPixelCapture.Sample("negative-pair-6", "negative-pair-rows-item", 5, 185),
+                new SurfaceViewPixelCapture.Sample("negative-pair-7", "negative-pair-auto-rows-item", 165, 185));
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
         if (c114ComputedWordBreakScene(sceneId) != null) {
@@ -16040,6 +16055,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && sample.xCssPx == c1133NamedLinePairSampleX(sceneId)
                     && sample.yCssPx == c1133NamedLinePairSampleY(sceneId);
         }
+        List<SurfaceViewPixelCapture.Sample> negativeNamedLinePairSamples =
+                c1133NegativeNamedLinePairPixelSamples(sceneId);
+        if (negativeNamedLinePairSamples != null) {
+            if (samples.size() != negativeNamedLinePairSamples.size()) return false;
+            for (SurfaceViewPixelCapture.Sample expected : negativeNamedLinePairSamples) {
+                boolean found = false;
+                for (SurfaceViewPixelCapture.Sample sample : samples) {
+                    if (expected.id.equals(sample.id)
+                            && expected.targetNodeId.equals(sample.targetNodeId)
+                            && expected.xCssPx == sample.xCssPx
+                            && expected.yCssPx == sample.yCssPx) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return false;
+            }
+            return true;
+        }
         if (!"unknown-area-fixed-implicit-tracks".equals(sceneId) || samples.size() != 3) {
             return false;
         }
@@ -17201,7 +17235,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c1133FitContentAreaCapPixelSamples(pixelMatrixSceneId) != null
                         || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null
                         || c1133NamedLineAutoItemId(pixelMatrixSceneId) != null
-                        || c1133NamedLinePairItemId(pixelMatrixSceneId) != null)
+                        || c1133NamedLinePairItemId(pixelMatrixSceneId) != null
+                        || c1133NegativeNamedLinePairPixelSamples(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
                         && C1131_GRID_REPEAT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -17354,6 +17389,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C11.4 Grid track sizing"
                 : c1133GridTemplateAreasRequested
                 ? c1133NamedLinePairItemId(c1133GridTemplateAreasSceneId) != null
+                        || c1133NegativeNamedLinePairPixelSamples(
+                                c1133GridTemplateAreasSceneId) != null
                         ? "SPINON · C11.3.3 named-line pair"
                         : "SPINON · C11.3.3 Grid template areas"
                 : c1132GridNamedLinesRequested
@@ -17503,7 +17540,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " CSS px"
                 : c1133GridTemplateAreasRequested
                 ? c1133NamedLinePairItemId(c1133GridTemplateAreasSceneId) != null
-                        ? "Positive implicit named-line pair → Stylo → Taffy → WGPU · 320×240 CSS px"
+                        || c1133NegativeNamedLinePairPixelSamples(
+                                c1133GridTemplateAreasSceneId) != null
+                        ? "negative-named-line-pair-matrix".equals(c1133GridTemplateAreasSceneId)
+                                ? "Negative leading named-line pair → Stylo → Taffy → WGPU · 320×240 CSS px"
+                                : "Positive implicit named-line pair → Stylo → Taffy → WGPU · 320×240 CSS px"
                         : "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1132GridNamedLinesRequested
                 ? "V8 named Grid line occurrence → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -21510,6 +21551,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return new int[] {62, 99, 221};
         }
         if ("named-implicit-item".equals(sampleId)) {
+            return new int[] {40, 102, 246};
+        }
+        if (sampleId != null && sampleId.startsWith("negative-pair-")) {
             return new int[] {40, 102, 246};
         }
         if ("item-blue".equals(sampleId)) return new int[] {40, 102, 246};

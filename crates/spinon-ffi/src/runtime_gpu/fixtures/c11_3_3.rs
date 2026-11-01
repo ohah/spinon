@@ -132,6 +132,37 @@ return { sceneId:'named-line-pair-rows-multi-track', rootId:'named-pair-rows-gri
 })()"#,
     ),
 ];
+const C11_3_3_NEGATIVE_NAMED_LINE_PAIR_MATRIX_SOURCE: &str = r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'negative-named-pair-matrix-grid');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:320px;height:240px;margin:0;padding:0;border:0;gap:0;grid-template-columns:160px 160px;grid-template-rows:60px 60px 60px 60px;grid-auto-flow:row');
+document.appendChild(root);
+const cases = [
+  { id:'columns-negative-span', root:'negative-pair-span-grid', item:'negative-pair-span-item', width:160, height:30, columns:'20px 30px 40px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'5px 7px', itemWidth:17, itemHeight:10, column:'-4 ghost / -1 ghost', row:'1 / 2' },
+  { id:'columns-negative-reversed', root:'negative-pair-reversed-grid', item:'negative-pair-reversed-item', width:160, height:30, columns:'20px 30px 40px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'5px 7px', itemWidth:17, itemHeight:10, column:'-1 ghost / -4 ghost', row:'1 / 2' },
+  { id:'columns-negative-one', root:'negative-pair-one-grid', item:'negative-pair-one-item', width:160, height:30, columns:'20px 30px 40px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'5px 7px', itemWidth:17, itemHeight:10, column:'-2 ghost / -1 ghost', row:'1 / 2' },
+  { id:'columns-negative-equal', root:'negative-pair-equal-grid', item:'negative-pair-equal-item', width:160, height:30, columns:'20px 30px 40px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'5px 7px', itemWidth:17, itemHeight:10, column:'-2 ghost / -2 ghost', row:'1 / 2' },
+  { id:'columns-negative-offset', root:'negative-pair-offset-grid', item:'negative-pair-offset-item', width:160, height:30, columns:'20px 30px 40px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'5px 7px', itemWidth:17, itemHeight:10, column:'-5 ghost / -2 ghost', row:'1 / 2' },
+  { id:'columns-negative-auto', root:'negative-pair-auto-columns-grid', item:'negative-pair-auto-columns-item', width:108, height:30, columns:'20px 30px 40px', rows:'10px 10px 10px', autoColumns:'auto', autoRows:'5px 7px', itemWidth:18, itemHeight:10, column:'-4 ghost / -1 ghost', row:'1 / 2' },
+  { id:'rows-negative-span', root:'negative-pair-rows-grid', item:'negative-pair-rows-item', width:160, height:54, columns:'20px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'5px 7px', itemWidth:10, itemHeight:17, column:'1 / 2', row:'-4 ghost / -1 ghost' },
+  { id:'rows-negative-auto', root:'negative-pair-auto-rows-grid', item:'negative-pair-auto-rows-item', width:160, height:48, columns:'20px', rows:'10px 10px 10px', autoColumns:'5px 7px', autoRows:'auto', itemWidth:10, itemHeight:18, column:'1 / 2', row:'-4 ghost / -1 ghost' },
+];
+const nodeIds = [];
+for (const scene of cases) {
+  const grid = document.createElement('div');
+  grid.setAttribute('id', scene.root);
+  grid.setAttribute('data-node', '');
+  grid.setAttribute('style', `box-sizing:border-box;display:grid;width:${scene.width}px;height:${scene.height}px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:${scene.columns};grid-template-rows:${scene.rows};grid-auto-rows:${scene.autoRows};grid-auto-columns:${scene.autoColumns};grid-auto-flow:row`);
+  root.appendChild(grid);
+  const item = document.createElement('div');
+  item.setAttribute('id', scene.item);
+  item.setAttribute('data-node', '');
+  item.setAttribute('style', `box-sizing:border-box;width:${scene.itemWidth}px;height:${scene.itemHeight}px;margin:0;padding:0;border:0;background-color:#2866f6;grid-column:${scene.column};grid-row:${scene.row}`);
+  grid.appendChild(item);
+  nodeIds.push(scene.root, scene.item);
+}
+return { sceneId:'negative-named-line-pair-matrix', rootId:cases[0].root, nodeIds };
+})()"#;
 const C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES: [(&str, &str); 7] = [
     (
         "positive-missing-occurrences",
@@ -291,6 +322,9 @@ const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 39] = [
 pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
     scene_id: &str,
 ) -> Result<&'static str, String> {
+    if scene_id == "negative-named-line-pair-matrix" {
+        return Ok(C11_3_3_NEGATIVE_NAMED_LINE_PAIR_MATRIX_SOURCE);
+    }
     if scene_id == "fit-content-area-cap" {
         return Ok(fit_content_area_cap::SOURCE);
     }
@@ -596,6 +630,36 @@ mod tests {
                 "named-line-pair-columns-multi-track;throw 1"
             )
             .is_err()
+        );
+    }
+
+    #[test]
+    fn negative_named_line_pair_matrix_has_all_fixed_and_auto_leading_cases() {
+        let source =
+            c11_3_3_grid_template_areas_runtime_source("negative-named-line-pair-matrix").unwrap();
+        for expected in [
+            "columns-negative-span",
+            "columns-negative-reversed",
+            "columns-negative-one",
+            "columns-negative-equal",
+            "columns-negative-offset",
+            "columns-negative-auto",
+            "rows-negative-span",
+            "rows-negative-auto",
+            "autoColumns:'auto'",
+            "autoRows:'auto'",
+            "column:'-4 ghost / -1 ghost'",
+            "row:'-4 ghost / -1 ghost'",
+            "background-color:#2866f6",
+        ] {
+            assert!(
+                source.contains(expected),
+                "missing runtime token: {expected}"
+            );
+        }
+        assert!(
+            c11_3_3_grid_template_areas_runtime_source("negative-named-line-pair-matrix;throw 1")
+                .is_err()
         );
     }
 

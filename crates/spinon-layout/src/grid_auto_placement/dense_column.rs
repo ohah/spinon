@@ -53,7 +53,11 @@ pub(crate) fn normalize_dense_grid_container(
         );
     }
 
-    if container.placement_mode == crate::GridPlacementMode::TemplateGridSignedImplicitTracks {
+    if matches!(
+        container.placement_mode,
+        crate::GridPlacementMode::TemplateGridSignedImplicitTracks
+            | crate::GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
+    ) {
         return super::track_sizing::normalize_signed_implicit_grid_container(
             input,
             hidden,

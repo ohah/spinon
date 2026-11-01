@@ -61,7 +61,7 @@ fn is_positive_implicit_line_pair(
     )
 }
 
-fn is_explicit_definite_axis(
+pub(super) fn is_explicit_definite_axis(
     start: &GridPlacementInput,
     end: &GridPlacementInput,
     track_count: usize,
