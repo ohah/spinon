@@ -77,7 +77,7 @@ use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 118] = [
+const SCENE_IDS: [&str; 129] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -166,6 +166,17 @@ const SCENE_IDS: [&str; 118] = [
     "text-transform-capitalize-max-content",
     "text-transform-capitalize-mixed-case",
     "text-transform-capitalize-collapsed-spaces",
+    "text-transform-unicode-sharp-s-min-content",
+    "text-transform-unicode-sharp-s-max-content",
+    "text-transform-unicode-source-split-max-content",
+    "text-transform-unicode-accented-max-content",
+    "text-transform-unicode-combining-max-content",
+    "text-transform-unicode-hyphen-boundary-max-content",
+    "text-transform-unicode-apostrophe-word-max-content",
+    "text-transform-unicode-opening-punctuation-max-content",
+    "text-transform-unicode-number-first-none",
+    "text-transform-unicode-number-first-control",
+    "text-transform-unicode-collapsed-space-max-content",
     "hyphens-none-soft-min",
     "hyphens-none-soft-max",
     "hyphens-none-soft-fixed-30",
@@ -492,6 +503,30 @@ fn validate_direct_children(
         .children(root)
         .ok_or_else(|| layout_failure("missing_node", Some(root.id().get()), None))?
         .collect::<Vec<_>>();
+    if let Some(source_text_nodes) = text_transform_scene(scene_id)
+        .and_then(|scene| scene.source_text_nodes)
+        .filter(|source_text_nodes| source_text_nodes.len() > 1)
+    {
+        if children.len() != source_text_nodes.len() {
+            return Err(unsupported(root.id(), "direct text source count"));
+        }
+        for (&handle, expected_text) in children.iter().zip(source_text_nodes) {
+            if snapshot.parent(handle) != Some(HostParent::Node(root)) {
+                return Err(unsupported(handle.id(), "direct text ownership"));
+            }
+            let actual_text = snapshot
+                .node(handle)
+                .and_then(|node| match node.kind() {
+                    HostNodeKind::Text(value) => Some(value.to_string_lossy()),
+                    HostNodeKind::Element(_) => None,
+                })
+                .ok_or_else(|| unsupported(handle.id(), "direct text node expected"))?;
+            if actual_text != *expected_text {
+                return Err(unsupported(handle.id(), "direct text content"));
+            }
+        }
+        return Ok(());
+    }
     let expected: &[ExpectedChild<'_>] = match scene_id {
         "anonymous-min-content-wrap"
         | "anonymous-normal-min-content"
@@ -1615,7 +1650,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 118);
+        assert_eq!(SCENE_IDS.len(), 129);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -1845,7 +1880,16 @@ mod tests {
                 ),
                 scene.id,
             ));
-            assert_eq!(scene.min_content_height, 20.0, "{}", scene.id);
+            assert_eq!(
+                scene.min_content_height,
+                if scene.min_content == scene.max_content {
+                    10.0
+                } else {
+                    20.0
+                },
+                "{}",
+                scene.id
+            );
             assert_eq!(scene.max_content_height, 10.0, "{}", scene.id);
         }
     }

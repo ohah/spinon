@@ -6,6 +6,12 @@ publish = false
 
 [features]
 c11-4-hyphens-auto-fixture-test = ["dep:hypher"]
+c11-4-text-transform-unicode-fixture-test = [
+    "dep:icu_casemap",
+    "dep:icu_locale_core",
+    "dep:icu_properties",
+    "dep:icu_segmenter",
+]
 
 [dependencies]
 linebender_resource_handle = "=0.1.1"
@@ -13,6 +19,10 @@ parley = { version = "=0.12.0", default-features = false, features = ["std"] }
 swash = { version = "=0.2.10", default-features = false, features = ["render", "scale", "std"] }
 spinon-core = { path = "../spinon-core" }
 hypher = { version = "=0.1.8", default-features = false, features = ["english"], optional = true }
+icu_casemap = { version = "=2.3.0", default-features = false, features = ["compiled_data"], optional = true }
+icu_locale_core = { version = "=2.3.0", optional = true }
+icu_properties = { version = "=2.3.0", default-features = false, features = ["compiled_data"], optional = true }
+icu_segmenter = { version = "=2.3.0", default-features = false, features = ["compiled_data"], optional = true }
 
 [target.'cfg(any(target_os = "android", target_vendor = "apple"))'.dependencies]
 parley = { version = "=0.12.0", default-features = false, features = ["std", "system"] }

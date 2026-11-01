@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 단계. 기존 ASCII English 제한 slice [PR #986](https://github.com/ohah/spinon/pull/986)의 다음 후속이다. 기존 runtime 행렬 12개(none/uppercase/lowercase 6개와 capitalize 6개)를 보존하고 11개 Unicode scene을 더한다. 이 계획은 C11.4/C11 완료나 공개 CSS 지원을 선언하지 않는다.
+**상태:** 구현 검증 완료, PR 준비 중. 기존 ASCII English 제한 slice [PR #986](https://github.com/ohah/spinon/pull/986)의 다음 후속이다. 기존 runtime 행렬 12개(none/uppercase/lowercase 6개와 capitalize 6개)를 보존하고 11개 Unicode scene을 더한다. focused Rust/Node 검사, 관련 Clippy, Android/iOS Simulator app build 및 최종 23-scene Simulator matrix가 통과했다. PR review/merge는 아직 남아 있다. 이 계획은 C11.4/C11 완료나 공개 CSS 지원을 선언하지 않는다.
 
 **사전 비교:** [Chrome 156 Agent Browser 관측, CSS Text·Unicode 규범 및 기대값](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.md) · [20개 계획 실패 검토](./c11-4-anonymous-grid-text-transform-unicode-titlecase-plan-review-20.md) · [계획 PR 변경 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/plan-pr-diff-review-30.md)
 

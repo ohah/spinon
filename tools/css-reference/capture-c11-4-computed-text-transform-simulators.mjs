@@ -14,12 +14,12 @@ const androidApk = resolve(repositoryRoot,
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const expectedPath = resolve(repositoryRoot, process.argv[4]
-  ?? 'spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json');
+  ?? 'spec/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/runtime-matrix-expected.json');
 const expectedValues = JSON.parse(await readFile(expectedPath, 'utf8'));
 const scenes = expectedValues.scenes;
 const runPrefix = `c114-computed-text-transform-${target}-${Date.now()}-${randomUUID().slice(0, 8)}`;
 const evidenceDirectory = resolve(repositoryRoot, process.argv[5]
-  ?? `spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/${runPrefix}`);
+  ?? `spec/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-01/${runPrefix}`);
 const tolerance = expectedValues.toleranceCssPx;
 const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 
@@ -72,32 +72,50 @@ function parseTrace(log, runID, sceneID) {
 }
 
 function deriveScene(scene) {
-  const glyphAdvances = expectedValues.font.glyphAdvances;
-  const fontSize = 10;
-  const advance = (text) => [...text].reduce((sum, character) => {
-    const glyph = glyphAdvances[character];
-    assert.ok(Number.isFinite(glyph), `${scene.id}: missing glyph advance for ${character}`);
-    return sum + glyph * fontSize / expectedValues.font.unitsPerEm;
-  }, 0);
-  const words = scene.shapedText.split(' ');
-  const wordAdvances = words.map(advance);
-  const minContent = Math.max(...wordAdvances);
-  const maxContent = wordAdvances.reduce((sum, width) => sum + width, 0)
-    + glyphAdvances.space * fontSize / expectedValues.font.unitsPerEm;
-  const track = scene.track === 'min-content' ? minContent : maxContent;
-  near(scene.columnsPx, track, `${scene.id}: independently shaped track`);
-  assert.equal(scene.rowsPx, scene.track === 'min-content' ? 20 : 10,
+  const minContent = scene.minContentPx;
+  const maxContent = scene.canvasTextMetrics?.widthPx ?? scene.maxContentPx;
+  const track = scene.canvasTextMetrics?.widthPx ?? scene.columnsPx;
+  const lineAdvances = scene.canvasTextMetrics?.lineAdvancesPx ?? scene.lineAdvancesPx;
+  for (const [name, value] of Object.entries({
+    minContent, maxContent, track, minContentHeight: scene.minContentHeightPx,
+    maxContentHeight: scene.maxContentHeightPx,
+  })) {
+    assert.ok(Number.isFinite(value) && value >= 0, `${scene.id}: invalid ${name}`);
+  }
+  assert.ok(Array.isArray(lineAdvances) && lineAdvances.length > 0,
+    `${scene.id}: missing expected line advances`);
+  if (scene.canvasTextMetrics) {
+    const metric = scene.canvasTextMetrics;
+    assert.equal(metric.fontFamily, expectedValues.font.family, `${scene.id}: Canvas font family`);
+    assert.equal(metric.fontWeight, 400, `${scene.id}: Canvas font weight`);
+    assert.equal(metric.fontSizeCssPx, expectedValues.font.fontSizeCssPx,
+      `${scene.id}: Canvas font size`);
+    assert.equal(metric.language, expectedValues.font.language, `${scene.id}: Canvas language`);
+    assert.ok(Array.isArray(metric.lineAdvancesPx)
+      && metric.lineAdvancesPx.length === scene.lineAdvancesPx.length,
+    `${scene.id}: Canvas line advances`);
+    near(scene.columnsPx, metric.widthPx, `${scene.id}: CSSOM track vs unquantized Canvas width`);
+    for (const [index, advance] of metric.lineAdvancesPx.entries()) {
+      near(scene.lineAdvancesPx[index], advance,
+        `${scene.id}: CSSOM line advance vs unquantized Canvas width`);
+    }
+  }
+  near(track, scene.track === 'min-content' ? minContent : maxContent,
+    `${scene.id}: selected track`);
+  assert.equal(scene.rowsPx, scene.track === 'min-content'
+    ? scene.minContentHeightPx : scene.maxContentHeightPx,
     `${scene.id}: auto row height`);
   const expectedTextTransform = {
     none: 'None', uppercase: 'Uppercase', lowercase: 'Lowercase', capitalize: 'Capitalize',
   }[scene.textTransform];
   assert.ok(expectedTextTransform, `${scene.id}: unsupported transform ${scene.textTransform}`);
-  const lineAdvances = scene.track === 'min-content' ? wordAdvances : [maxContent];
   return {
     track, rowHeight: scene.rowsPx, minContent, maxContent,
+    minContentHeight: scene.minContentHeightPx,
+    maxContentHeight: scene.maxContentHeightPx,
     expectedTextTransform, lineAdvances,
     layoutWidth: scene.track === 'min-content' ? minContent : maxContent,
-    contribution: scene.track === 'min-content' ? Math.max(...wordAdvances) : maxContent,
+    contribution: scene.track === 'min-content' ? minContent : maxContent,
   };
 }
 
@@ -134,6 +152,10 @@ function validateScene(log, scene, runID) {
   const layout = report.gridItemTextLayouts?.find(({ node }) => node === 2);
   assert.ok(layout, `${scene.id}: text layout missing`);
   assert.equal(layout.text, scene.shapedText, `${scene.id}: transformed layout text`);
+  const expectedTextSources = scene.sourceTextNodes ?? [scene.sourceText];
+  assert.deepEqual(layout.sources?.map(({ node, text }) => ({ node, text })),
+    expectedTextSources.map((text, index) => ({ node: 2 + index, text })),
+    `${scene.id}: text layout source fragments`);
   near(layout.availableWidth, expected.track, `${scene.id}: available text width`);
   near(layout.width, expected.layoutWidth, `${scene.id}: shaped text width`);
   near(layout.height, expected.rowHeight, `${scene.id}: text layout height`);
@@ -157,13 +179,15 @@ function validateScene(log, scene, runID) {
   }
   const input = report.gridItemIntrinsicInputs?.find(({ node }) => node === 2);
   assert.ok(input, `${scene.id}: intrinsic input missing`);
-  assert.equal(input.textSources?.length, 1, `${scene.id}: source count`);
-  assert.equal(input.textSources[0].text, scene.sourceText,
-    `${scene.id}: original source text must be preserved`);
+  assert.deepEqual(input.textSources?.map(({ node, text }) => ({ node, text })),
+    expectedTextSources.map((text, index) => ({ node: 2 + index, text })),
+    `${scene.id}: original source fragments must be preserved`);
   near(input.source.minContent, expected.minContent, `${scene.id}: min-content input`);
   near(input.source.maxContent, expected.maxContent, `${scene.id}: max-content input`);
-  near(input.source.minContentHeight, 20, `${scene.id}: min-content height input`);
-  near(input.source.maxContentHeight, 10, `${scene.id}: max-content height input`);
+  near(input.source.minContentHeight, expected.minContentHeight,
+    `${scene.id}: min-content height input`);
+  near(input.source.maxContentHeight, expected.maxContentHeight,
+    `${scene.id}: max-content height input`);
 
   const passes = report.trackSizingTraces?.find(({ grid }) => grid === 1)?.passes;
   const columnPass = passes?.find(({ axis }) => axis === 'Columns');
@@ -179,7 +203,7 @@ function validateScene(log, scene, runID) {
   const expectedContributionKind = scene.track === 'min-content' ? 'MinContent' : 'MaxContent';
   assert.ok(columnPass?.contributions?.some((contribution) =>
     contribution.kind === expectedContributionKind
-      && Math.abs(contribution.value - expected.contribution) <= 1 / 64),
+      && Math.abs(contribution.value - expected.contribution) <= tolerance),
   `${scene.id}: expected ${expectedContributionKind} contribution missing`);
   return {
     scene: scene.id, result: 'PASS', textTransform: scene.textTransform,
@@ -262,7 +286,16 @@ async function runAndroid(serial) {
         sleep(300);
       }
       await writeFile(resolve(evidenceDirectory, `${sceneID}.log`), evidenceLog(log));
-      rows.push(validateScene(log, { ...scene, id: sceneID }, runID));
+      try {
+        rows.push(validateScene(log, { ...scene, id: sceneID }, runID));
+        console.log(`android ${index + 1}/${scenes.length}: ${sceneID} PASS`);
+      } catch (error) {
+        rows.push({ scene: sceneID, result: 'FAIL', textTransform: scene.textTransform,
+          track: scene.track, lineCount: scene.lineAdvancesPx.length,
+          gridColumnPx: '', gridRowPx: '', traceParts: '',
+          error: String(error?.message ?? error).replace(/[\t\r\n]+/g, ' ') });
+        console.error(`android ${index + 1}/${scenes.length}: ${sceneID} FAIL: ${error?.message ?? error}`);
+      }
       if (index === scenes.length - 1) {
         sleep(1000);
         const screenshot = command('/opt/homebrew/bin/adb',
@@ -270,17 +303,19 @@ async function runAndroid(serial) {
           { encoding: null, maxBuffer: 16 * 1024 * 1024 });
         await writeFile(resolve(evidenceDirectory, 'representative-screen.png'), screenshot.stdout);
       }
-      console.log(`android ${index + 1}/${scenes.length}: ${sceneID} PASS`);
     }
   } finally {
     adb(['shell', 'am', 'force-stop', packageName], { allowFailure: true });
   }
   await writeFile(resolve(evidenceDirectory, 'matrix.tsv'),
-    'scene\tresult\ttext_transform\ttrack\tline_count\tgrid_column_px\tgrid_row_px\ttrace_parts\n'
+    'scene\tresult\ttext_transform\ttrack\tline_count\tgrid_column_px\tgrid_row_px\ttrace_parts\terror\n'
       + rows.map(({ scene, result, textTransform, track, lineCount,
-        gridColumnPx, gridRowPx, traceParts }) =>
-        `${scene}\t${result}\t${textTransform}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${traceParts}`
+        gridColumnPx, gridRowPx, traceParts, error = '' }) =>
+        `${scene}\t${result}\t${textTransform}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${traceParts}\t${error || 'none'}`
       ).join('\n') + '\n');
+  const failures = rows.filter(({ result }) => result !== 'PASS');
+  assert.equal(failures.length, 0,
+    `Android simulator matrix failed ${failures.length}/${scenes.length}: ${failures.map(({ scene, error }) => `${scene}: ${error}`).join('; ')}`);
 }
 
 async function runIOS(udid) {
@@ -327,30 +362,41 @@ async function runIOS(udid) {
         sleep(500);
       }
       await writeFile(resolve(evidenceDirectory, `${sceneID}.log`), evidenceLog(log));
-      rows.push(validateScene(log, { ...scene, id: sceneID }, runID));
+      try {
+        rows.push(validateScene(log, { ...scene, id: sceneID }, runID));
+        console.log(`ios ${index + 1}/${scenes.length}: ${sceneID} PASS`);
+      } catch (error) {
+        rows.push({ scene: sceneID, result: 'FAIL', textTransform: scene.textTransform,
+          track: scene.track, lineCount: scene.lineAdvancesPx.length,
+          gridColumnPx: '', gridRowPx: '', traceParts: '',
+          error: String(error?.message ?? error).replace(/[\t\r\n]+/g, ' ') });
+        console.error(`ios ${index + 1}/${scenes.length}: ${sceneID} FAIL: ${error?.message ?? error}`);
+      }
       if (index === scenes.length - 1) {
         sleep(1000);
         command('xcrun', ['simctl', 'io', udid, 'screenshot',
           resolve(evidenceDirectory, 'representative-screen.png')]);
       }
-      console.log(`ios ${index + 1}/${scenes.length}: ${sceneID} PASS`);
     }
   } finally {
     command('xcrun', ['simctl', 'terminate', udid, packageName], { allowFailure: true });
   }
   await writeFile(resolve(evidenceDirectory, 'matrix.tsv'),
-    'scene\tresult\ttext_transform\ttrack\tline_count\tgrid_column_px\tgrid_row_px\ttrace_parts\n'
+    'scene\tresult\ttext_transform\ttrack\tline_count\tgrid_column_px\tgrid_row_px\ttrace_parts\terror\n'
       + rows.map(({ scene, result, textTransform, track, lineCount,
-        gridColumnPx, gridRowPx, traceParts }) =>
-        `${scene}\t${result}\t${textTransform}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${traceParts}`
+        gridColumnPx, gridRowPx, traceParts, error = '' }) =>
+        `${scene}\t${result}\t${textTransform}\t${track}\t${lineCount}\t${gridColumnPx}\t${gridRowPx}\t${traceParts}\t${error || 'none'}`
       ).join('\n') + '\n');
+  const failures = rows.filter(({ result }) => result !== 'PASS');
+  assert.equal(failures.length, 0,
+    `iOS Simulator matrix failed ${failures.length}/${scenes.length}: ${failures.map(({ scene, error }) => `${scene}: ${error}`).join('; ')}`);
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
   'Usage: capture-c11-4-computed-text-transform-simulators.mjs <android-avd|ios-simulator> <serial|UDID> [expected.json] [evidence-directory]');
 assert.ok(deviceID, 'An explicit Android serial or iOS Simulator UDID is required');
 assert.equal(expectedValues.browser, 'HeadlessChrome 156.0.0.0 via Agent Browser');
-assert.equal(scenes.length, 6);
+  assert.equal(scenes.length, 23);
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length);
 await mkdir(evidenceDirectory, { recursive: true });
 if (target === 'android-avd') await runAndroid(deviceID);
