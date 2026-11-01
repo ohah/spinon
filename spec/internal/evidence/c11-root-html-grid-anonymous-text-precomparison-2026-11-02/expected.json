@@ -1,0 +1,74 @@
+{
+  "fixture_id": "C11.1-root-html-grid-anonymous-text-v1",
+  "viewport": {
+    "width_css_px": 1280,
+    "height_css_px": 633,
+    "device_scale_factor": 1
+  },
+  "grid": {
+    "origin_css_px": [
+      0,
+      0
+    ],
+    "size_css_px": [
+      120,
+      70
+    ],
+    "columns_css_px": [
+      40,
+      80
+    ],
+    "rows_css_px": [
+      70
+    ],
+    "row_gap_css_px": 0,
+    "column_gap_css_px": 0
+  },
+  "anonymous_item": {
+    "source_text": "AB",
+    "row_lines_1_based": [
+      1,
+      2
+    ],
+    "column_lines_1_based": [
+      1,
+      2
+    ],
+    "frame_css_px": [
+      0,
+      0,
+      40,
+      70
+    ],
+    "reason": "one in-flow anonymous Grid item auto-places in the first row-major cell and normal self-alignment stretches its auto-size box to that cell"
+  },
+  "text_range": {
+    "origin_css_px": [
+      0,
+      0
+    ],
+    "line_count": 1,
+    "must_remain_within_first_column": true
+  },
+  "whitespace_only_control": {
+    "text": " \n  ",
+    "anonymous_item_count": 0,
+    "range_rect_count": 0,
+    "grid_size_css_px": [
+      120,
+      70
+    ],
+    "columns_css_px": [
+      40,
+      80
+    ],
+    "rows_css_px": [
+      70
+    ]
+  },
+  "text_style": {
+    "white_space": "normal",
+    "font": "16px / 20px monospace",
+    "color": "rgb(229, 72, 77)"
+  }
+}

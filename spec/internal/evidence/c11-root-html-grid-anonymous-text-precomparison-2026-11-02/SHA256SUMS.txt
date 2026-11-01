@@ -1,0 +1,6 @@
+6565f9eb6de1aafc90d5ef4a2fd1a1b7155678d6a8a0ba0dd8f1ef69408a2276  tests/fixtures/css/c11/root-html-grid-anonymous-text-precomparison.html
+3778186f7d1a25cdf7e611873dead0a31e8435ec3b49f720249db9d01155d811  spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/expected.json
+c9b55d97b9dcdd8fb46a347c08f1230360f1f54eb5cee7f346707bd54b8ce3e0  spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/chrome-observation.json
+5aab1d77ba12772b8a0cb66fd6555504670d2242b89c087d543dba4c17da72c4  spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/chrome-156-anonymous-grid-text.png
+51012c2472b11f9f9847b796d47ed235c8af7795360674b1ff4fbc6159cc13bc  spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/verify-precomparison.mjs
+cc7956c7d66a4f47651e677e816f285aa6822b3074ac79fd4437ddf978c5e513  spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.md
