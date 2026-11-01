@@ -1,0 +1,17 @@
+{
+  "tool": "agent-browser",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "documentWidth": 1440,
+  "bodyWidth": 1440,
+  "title": "스피논 구현 로드맵",
+  "visibleChecks": {
+    "pr1002": true,
+    "mergeSha": "12b554c5e1a1946e7267545d5d5092ba33211af9",
+    "officialCount": "72/213"
+  },
+  "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+}
