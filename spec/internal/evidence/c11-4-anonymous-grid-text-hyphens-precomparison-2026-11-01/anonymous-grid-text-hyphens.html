@@ -1,0 +1,73 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text hyphens precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../../../tests/fixtures/resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { padding: 8px; font: 13px/16px sans-serif; }
+.case { margin: 0 0 6px; }
+.case span { display: block; }
+.grid {
+  display: grid;
+  grid-template-rows: auto;
+  font: 10px/10px Ahem, sans-serif;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+#min-none, #min-manual,
+#min-visible-none, #min-visible-manual,
+#min-control-none, #min-control-manual,
+#min-multi-none, #min-multi-manual { width: min-content; }
+#min-none, #min-visible-none, #min-control-none {
+  grid-template-columns: min-content;
+  hyphens: none;
+}
+#min-manual, #min-visible-manual, #min-control-manual {
+  grid-template-columns: min-content;
+  hyphens: manual;
+}
+#max-none, #max-manual {
+  width: max-content;
+  grid-template-columns: max-content;
+}
+#max-none { hyphens: none; }
+#max-manual { hyphens: manual; }
+#min-multi-none { grid-template-columns: min-content; hyphens: none; }
+#min-multi-manual { grid-template-columns: min-content; hyphens: manual; }
+#fixed-none, #fixed-manual, #fixed-visible-none, #fixed-visible-manual,
+#fixed-multi-none, #fixed-multi-manual, #inherited-none, #inherited-manual,
+#default-manual {
+  width: 30px;
+  grid-template-columns: 30px;
+}
+#fixed-none, #fixed-visible-none, #fixed-multi-none { hyphens: none; }
+#fixed-manual, #fixed-visible-manual, #fixed-multi-manual { hyphens: manual; }
+.inherited-none { hyphens: none; }
+.inherited-manual { hyphens: manual; }
+</style>
+<section class="case"><span>min-content · none · soft hyphen</span><div class="grid" id="min-none">AB&shy;CD</div></section>
+<section class="case"><span>min-content · manual · soft hyphen</span><div class="grid" id="min-manual">AB&shy;CD</div></section>
+<section class="case"><span>max-content · none · soft hyphen</span><div class="grid" id="max-none">AB&shy;CD</div></section>
+<section class="case"><span>max-content · manual · soft hyphen</span><div class="grid" id="max-manual">AB&shy;CD</div></section>
+<section class="case"><span>fixed 30px · none · soft hyphen</span><div class="grid" id="fixed-none">AB&shy;CD</div></section>
+<section class="case"><span>fixed 30px · manual · soft hyphen</span><div class="grid" id="fixed-manual">AB&shy;CD</div></section>
+<section class="case"><span>initial manual · fixed 30px</span><div class="grid" id="default-manual">AB&shy;CD</div></section>
+<section class="case"><span>min-content · none · visible hyphen control</span><div class="grid" id="min-visible-none">AB-CD</div></section>
+<section class="case"><span>min-content · manual · visible hyphen control</span><div class="grid" id="min-visible-manual">AB-CD</div></section>
+<section class="case"><span>fixed 30px · none · visible hyphen control</span><div class="grid" id="fixed-visible-none">AB-CD</div></section>
+<section class="case"><span>fixed 30px · manual · visible hyphen control</span><div class="grid" id="fixed-visible-manual">AB-CD</div></section>
+<section class="case"><span>min-content · none · no soft hyphen control</span><div class="grid" id="min-control-none">ABCD</div></section>
+<section class="case"><span>min-content · manual · no soft hyphen control</span><div class="grid" id="min-control-manual">ABCD</div></section>
+<section class="case"><span>min-content · none · two soft hyphens</span><div class="grid" id="min-multi-none">AB&shy;CD&shy;EF</div></section>
+<section class="case"><span>min-content · manual · two soft hyphens</span><div class="grid" id="min-multi-manual">AB&shy;CD&shy;EF</div></section>
+<section class="case"><span>fixed 30px · none · two soft hyphens</span><div class="grid" id="fixed-multi-none">AB&shy;CD&shy;EF</div></section>
+<section class="case"><span>fixed 30px · manual · two soft hyphens</span><div class="grid" id="fixed-multi-manual">AB&shy;CD&shy;EF</div></section>
+<section class="case inherited-none"><span>inherited none · fixed 30px</span><div class="grid" id="inherited-none">AB&shy;CD</div></section>
+<section class="case inherited-manual"><span>inherited manual · fixed 30px</span><div class="grid" id="inherited-manual">AB&shy;CD</div></section>
