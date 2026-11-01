@@ -1,6 +1,6 @@
 {
   "schema": "spinon-c11-3-3-negative-named-line-two-axis-source-revision/v1",
-  "sourceCommit": "b5706af77d840b69db51d5fb7743b19af610697d",
+  "sourceCommit": "0954c9cef855237510563a7ad3585e190249ee49",
   "fixture": {
     "path": "tests/fixtures/css/c11/negative-named-line-pair-two-axis-auto-implicit-tracks-mobile-v1.json",
     "sha256": "6f4fc7903d754b30546858b0eec2d7cdf70822113990c79caa0840d53c9a175b"
@@ -8,14 +8,14 @@
   "captures": [
     {
       "target": "android-avd",
-      "runID": "c1133-negative-pair-two-axis-android-avd-20261101T053332629Z-1e025432",
-      "appSha256": "69de13afbc8ad21101216e3ab8a34a18569a7d6a06c1e61d255e32f44772c464"
+      "runID": "c1133-negative-pair-two-axis-android-avd-20261101T055432072Z-227c6067",
+      "appSha256": "bf233d706759c13885be42e6795d36dc0f6951894a0b46f555e7191966f236f8"
     },
     {
       "target": "ios-simulator",
-      "runID": "c1133-negative-pair-two-axis-ios-simulator-20261101T053349261Z-bb761734",
-      "appSha256": "5bdb2531792468ac4b38084ea3a4e7ceea860d1a44ba9f1148b928e8758e520d"
+      "runID": "c1133-negative-pair-two-axis-ios-simulator-20261101T055554422Z-f9734042",
+      "appSha256": "80707f8d51170342980d2053019b54018bbee225fe4d6a7525199ce7ce53758b"
     }
   ],
-  "binding": "sourceCommit의 runtime 동작 소스는 캡처 빌드에 사용한 파일과 동일하다. 캡처 후 이 commit 전까지 cfg(test) layout assertion과 문서·근거 파일만 변경했다."
+  "binding": "sourceCommit 0954c9cef855237510563a7ad3585e190249ee49의 runtime 동작 소스는 두 최종 simulator 캡처의 앱 빌드에 사용한 파일과 동일하다. 두 캡처 후 runtime source를 변경하지 않았다."
 }

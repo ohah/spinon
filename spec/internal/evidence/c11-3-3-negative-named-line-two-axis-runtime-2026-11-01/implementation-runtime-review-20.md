@@ -23,4 +23,4 @@
 19. **iOS fixture가 좌표/표면 identity를 무시하는가?** iPhone 17 Pro/iOS 26.2의 Metal drawable 6/6 exact, 잘못된 좌표는 readback 전 거부된다. 이는 compositor 이후 표면을 뜻하지 않는다.
 20. **fixture payload가 기본 FFI archive로 새는가?** macOS default archive에서 `negative-named-line-pair-two-axis-matrix`, `two-axis-fixed-pattern`, `two-axis-fixed-item` marker 모두 없다. opt-in positive control에는 세 marker 모두 있다. APK/IPA archive boundary는 별도 미검증이다.
 
-검토 과정에서 발견한 검증 공백은 0/2 children, non-fixed item, valid template-areas rejection, unsupported/invalid `grid-auto-*`, 10,001-track rejection을 focused tests에 추가해 닫았다. 특히 fixed-px 목록 아래 auto-sized item이 signed mode로 빠지던 우회를 수정한 뒤 focused style test가 통과했다. 전체 style suite에는 위 문서의 unrelated C07.3 float assertion 하나가 남아 있어 전체 suite green으로 기록하지 않았다.
+검토 과정에서 발견한 검증 공백은 0/2 children, non-fixed item, valid template-areas rejection, unsupported/invalid `grid-auto-*`, 10,001-track rejection을 focused tests에 추가해 닫았다. 특히 fixed-px 목록 아래 auto-sized item이 signed mode로 빠지던 우회를 수정한 뒤 focused style test와 최신 Android/iOS simulator capture가 통과했다. 최신 전체 style suite는 276 passed·1 failed이며, 실패는 변경과 무관한 C07.3 float assertion이다. 전체 suite를 green으로 기록하지 않았다.
