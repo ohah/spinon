@@ -50,17 +50,36 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     if input.style.text_transform != crate::TextTransformMode::None {
         if !input.inline_styles.is_empty()
             || !input.inline_run_styles.is_empty()
-            || characters
-                .iter()
-                .any(|source| !source.inline_ancestors.is_empty() || !source.character.is_ascii())
+            || characters.iter().any(|source| {
+                !source.inline_ancestors.is_empty()
+                    || !source.character.is_ascii()
+                    || (input.style.text_transform == crate::TextTransformMode::Capitalize
+                        && !source.character.is_ascii_alphabetic()
+                        && source.character != ' ')
+            })
         {
             return Err(TextLayoutError::UnsupportedTextTransformProfile(input.node));
         }
+        let mut capitalize_word_start = true;
         for source in &mut characters {
             source.character = match input.style.text_transform {
                 crate::TextTransformMode::None => source.character,
                 crate::TextTransformMode::Uppercase => source.character.to_ascii_uppercase(),
                 crate::TextTransformMode::Lowercase => source.character.to_ascii_lowercase(),
+                crate::TextTransformMode::Capitalize => {
+                    if source.character == ' ' {
+                        capitalize_word_start = true;
+                        source.character
+                    } else {
+                        let transformed = if capitalize_word_start {
+                            source.character.to_ascii_uppercase()
+                        } else {
+                            source.character
+                        };
+                        capitalize_word_start = false;
+                        transformed
+                    }
+                }
             };
         }
     }

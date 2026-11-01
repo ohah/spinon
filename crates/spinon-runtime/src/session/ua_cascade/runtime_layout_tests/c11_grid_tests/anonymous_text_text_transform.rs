@@ -16,6 +16,7 @@ struct Case {
     scene_id: &'static str,
     computed_value: &'static str,
     mode: TextTransformMode,
+    text: &'static str,
     expected_text: &'static str,
     is_min_content: bool,
     min_content: f32,
@@ -24,13 +25,85 @@ struct Case {
     second_line_advance: f32,
 }
 
-const CASES: [Case; 6] = [
+const CASES: [Case; 12] = [
     case(TextTransformMode::None, true),
     case(TextTransformMode::None, false),
     case(TextTransformMode::Uppercase, true),
     case(TextTransformMode::Uppercase, false),
     case(TextTransformMode::Lowercase, true),
     case(TextTransformMode::Lowercase, false),
+    Case {
+        scene_id: "text-transform-capitalize-none-min-content",
+        computed_value: "none",
+        mode: TextTransformMode::None,
+        text: "iiii ii",
+        expected_text: "iiii ii",
+        is_min_content: true,
+        min_content: 11.0,
+        max_content: 18.71875,
+        first_line_advance: 11.0,
+        second_line_advance: 5.5,
+    },
+    Case {
+        scene_id: "text-transform-capitalize-none-max-content",
+        computed_value: "none",
+        mode: TextTransformMode::None,
+        text: "iiii ii",
+        expected_text: "iiii ii",
+        is_min_content: false,
+        min_content: 11.0,
+        max_content: 18.71875,
+        first_line_advance: 18.71875,
+        second_line_advance: 0.0,
+    },
+    Case {
+        scene_id: "text-transform-capitalize-min-content",
+        computed_value: "capitalize",
+        mode: TextTransformMode::Capitalize,
+        text: "iiii ii",
+        expected_text: "Iiii Ii",
+        is_min_content: true,
+        min_content: 11.1875,
+        max_content: 19.09375,
+        first_line_advance: 11.1875,
+        second_line_advance: 5.6875,
+    },
+    Case {
+        scene_id: "text-transform-capitalize-max-content",
+        computed_value: "capitalize",
+        mode: TextTransformMode::Capitalize,
+        text: "iiii ii",
+        expected_text: "Iiii Ii",
+        is_min_content: false,
+        min_content: 11.1875,
+        max_content: 19.09375,
+        first_line_advance: 19.09375,
+        second_line_advance: 0.0,
+    },
+    Case {
+        scene_id: "text-transform-capitalize-mixed-case",
+        computed_value: "capitalize",
+        mode: TextTransformMode::Capitalize,
+        text: "iIII ii",
+        expected_text: "IIII Ii",
+        is_min_content: false,
+        min_content: 11.734375,
+        max_content: 19.65625,
+        first_line_advance: 19.65625,
+        second_line_advance: 0.0,
+    },
+    Case {
+        scene_id: "text-transform-capitalize-collapsed-spaces",
+        computed_value: "capitalize",
+        mode: TextTransformMode::Capitalize,
+        text: "ii   ii",
+        expected_text: "Ii Ii",
+        is_min_content: false,
+        min_content: 5.6875,
+        max_content: 13.59375,
+        first_line_advance: 13.59375,
+        second_line_advance: 0.0,
+    },
 ];
 
 const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
@@ -66,6 +139,16 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
                 11.0,
                 5.5,
             ),
+            TextTransformMode::Capitalize => (
+                "capitalize",
+                "text-transform-capitalize-min-content",
+                "text-transform-capitalize-max-content",
+                "Iiii Ii",
+                11.1875,
+                19.09375,
+                11.1875,
+                5.6875,
+            ),
         };
     Case {
         scene_id: if is_min_content {
@@ -75,6 +158,7 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
         },
         computed_value: value,
         mode,
+        text: "IIII ii",
         expected_text,
         is_min_content,
         min_content,
@@ -86,7 +170,7 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
 
 #[test]
 fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom_text() {
-    assert_eq!(CASES.len(), 6);
+    assert_eq!(CASES.len(), 12);
     assert_eq!(
         CASES
             .iter()
@@ -184,14 +268,27 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
             .find(|text| text.input.node == text_node.id())
             .expect("anonymous text layout");
         assert_eq!(text_layout.input.style.text_transform, case.mode);
-        assert_eq!(text_layout.input.sources[0].text, "IIII ii");
+        assert_eq!(text_layout.input.sources[0].text, case.text);
         assert_eq!(text_layout.layout.text_transform, case.mode);
         assert_eq!(text_layout.layout.text, case.expected_text);
         assert_eq!(text_layout.layout.sources.len(), 7);
         for (source_index, source) in text_layout.layout.sources.iter().enumerate() {
             assert_eq!(source.node, text_node.id());
             assert_eq!(source.source_utf16, source_index..source_index + 1);
-            assert_eq!(source.paragraph_utf8, source_index..source_index + 1);
+            let expected_paragraph_range =
+                if case.scene_id == "text-transform-capitalize-collapsed-spaces" {
+                    match source_index {
+                        0 => 0..1,
+                        1 => 1..2,
+                        2..=4 => 2..3,
+                        5 => 3..4,
+                        6 => 4..5,
+                        _ => unreachable!(),
+                    }
+                } else {
+                    source_index..source_index + 1
+                };
+            assert_eq!(source.paragraph_utf8, expected_paragraph_range);
         }
         let expected_line_count = if case.is_min_content { 2 } else { 1 };
         assert_eq!(text_layout.layout.lines.len(), expected_line_count);
@@ -259,11 +356,15 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
 
 #[test]
 fn anonymous_grid_text_transform_rejects_wrong_value_or_missing_direct_language() {
-    for (index, (value, lang)) in [("lowercase", Some("en")), ("uppercase", None)]
-        .into_iter()
-        .enumerate()
+    for (index, (mut case, value, lang)) in [
+        (CASES[2], "lowercase", Some("en")),
+        (CASES[2], "uppercase", None),
+        (CASES[8], "none", Some("en")),
+        (CASES[9], "capitalize", None),
+    ]
+    .into_iter()
+    .enumerate()
     {
-        let mut case = CASES[2];
         case.computed_value = value;
         let (snapshot, _, _) = snapshot_for(&case, 12_920 + index as u64, lang);
         let request = WorkRequest {
@@ -344,7 +445,7 @@ fn snapshot_for(
     });
     batch.push(DocumentOperation::CreateText {
         node: text,
-        data: "IIII ii".into(),
+        data: case.text.into(),
     });
     batch.push(DocumentOperation::InsertBefore {
         parent: HostParent::Node(root),

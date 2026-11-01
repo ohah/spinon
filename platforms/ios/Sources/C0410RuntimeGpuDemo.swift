@@ -526,7 +526,8 @@ private func c114GenericDirectTextExpectation(
             node: 2, x: 0, width: textTransform.trackWidth, height: textTransform.rowHeight,
             minContent: textTransform.minContent, maxContent: textTransform.maxContent,
             minContentHeight: textTransform.minContentHeight, maxContentHeight: 10,
-            rawText: "IIII ii", layoutText: textTransform.layoutText,
+            rawText: c114ComputedTextTransformSourceText(sceneID),
+            layoutText: textTransform.layoutText,
             whiteSpace: "Normal", wordBreak: "Normal",
             availableWidth: textTransform.trackWidth,
             textWidth: minContentTrack
@@ -11233,9 +11234,20 @@ private func c114ComputedTextTransformScene(
     let minContentTrack = sceneID.hasSuffix("-min-content")
     let metrics: (Double, Double, Double, Double, Double)
     switch mode {
-    case "None": metrics = (11.734375, 19.46875, 11.72, 5.5, 19.46)
+    case "None":
+        metrics = sceneID.hasPrefix("text-transform-capitalize-none-")
+            ? (11.0, 18.71875, 11.0, 5.5, 18.74)
+            : (11.734375, 19.46875, 11.72, 5.5, 19.46)
     case "Uppercase": metrics = (11.734375, 19.84375, 11.72, 5.86, 19.82)
     case "Lowercase": metrics = (11.0, 18.71875, 11.0, 5.5, 18.74)
+    case "Capitalize":
+        if sceneID.hasSuffix("mixed-case") {
+            metrics = (11.734375, 19.65625, 11.72, 5.68, 19.64)
+        } else if sceneID.hasSuffix("collapsed-spaces") {
+            metrics = (5.6875, 13.59375, 5.68, 5.68, 13.60)
+        } else {
+            metrics = (11.1875, 19.09375, 11.18, 5.68, 19.10)
+        }
     default: return nil
     }
     let trackWidth = minContentTrack ? metrics.0 : metrics.1
@@ -11244,7 +11256,7 @@ private func c114ComputedTextTransformScene(
         rowHeight: minContentTrack ? 20 : 10, minContentHeight: 20,
         firstWordAdvance: metrics.2, secondWordAdvance: metrics.3,
         unbrokenAdvance: metrics.4,
-        layoutText: mode == "Uppercase" ? "IIII II" : mode == "Lowercase" ? "iiii ii" : "IIII ii"
+        layoutText: c114ComputedTextTransformLayoutText(sceneID)
     )
     #else
     return nil
@@ -11258,7 +11270,40 @@ private func c114ComputedTextTransformStyle(_ sceneID: String) -> String? {
         return "Uppercase"
     case "text-transform-lowercase-min-content", "text-transform-lowercase-max-content":
         return "Lowercase"
+    case "text-transform-capitalize-none-min-content",
+         "text-transform-capitalize-none-max-content": return "None"
+    case "text-transform-capitalize-min-content", "text-transform-capitalize-max-content",
+         "text-transform-capitalize-mixed-case", "text-transform-capitalize-collapsed-spaces":
+        return "Capitalize"
     default: return nil
+    }
+}
+
+private func c114ComputedTextTransformLayoutText(_ sceneID: String) -> String {
+    switch sceneID {
+    case "text-transform-capitalize-none-min-content",
+         "text-transform-capitalize-none-max-content": return "iiii ii"
+    case "text-transform-capitalize-min-content", "text-transform-capitalize-max-content":
+        return "Iiii Ii"
+    case "text-transform-capitalize-mixed-case": return "IIII Ii"
+    case "text-transform-capitalize-collapsed-spaces": return "Ii Ii"
+    default:
+        let mode = c114ComputedTextTransformStyle(sceneID)
+        if mode == "Uppercase" { return "IIII II" }
+        if mode == "Lowercase" { return "iiii ii" }
+        return "IIII ii"
+    }
+}
+
+private func c114ComputedTextTransformSourceText(_ sceneID: String) -> String {
+    switch sceneID {
+    case "text-transform-capitalize-none-min-content",
+         "text-transform-capitalize-none-max-content",
+         "text-transform-capitalize-min-content", "text-transform-capitalize-max-content":
+        return "iiii ii"
+    case "text-transform-capitalize-mixed-case": return "iIII ii"
+    case "text-transform-capitalize-collapsed-spaces": return "ii   ii"
+    default: return "IIII ii"
     }
 }
 

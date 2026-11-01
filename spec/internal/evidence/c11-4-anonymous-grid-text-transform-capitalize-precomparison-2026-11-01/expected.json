@@ -1,0 +1,93 @@
+{
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform-capitalize.html",
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "font": {
+    "family": "Noto Sans KR",
+    "source": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+    "variation": "wght=400",
+    "unitsPerEm": 1000,
+    "language": "en",
+    "glyphAdvances": {
+      "I": 293,
+      "i": 275,
+      "space": 224
+    }
+  },
+  "toleranceCssPx": 0.03125,
+  "scenes": [
+    {
+      "id": "transform-none-min",
+      "runtimeSceneId": "text-transform-capitalize-none-min-content",
+      "sourceText": "iiii ii",
+      "textTransform": "none",
+      "shapedText": "iiii ii",
+      "track": "min-content",
+      "independentContentWidthPx": 11.0,
+      "columnsPx": 11.0,
+      "rowsPx": 20.0
+    },
+    {
+      "id": "transform-none-max",
+      "runtimeSceneId": "text-transform-capitalize-none-max-content",
+      "sourceText": "iiii ii",
+      "textTransform": "none",
+      "shapedText": "iiii ii",
+      "track": "max-content",
+      "independentContentWidthPx": 18.74,
+      "columnsPx": 18.71875,
+      "rowsPx": 10.0
+    },
+    {
+      "id": "transform-capitalize-min",
+      "runtimeSceneId": "text-transform-capitalize-min-content",
+      "sourceText": "iiii ii",
+      "textTransform": "capitalize",
+      "shapedText": "Iiii Ii",
+      "track": "min-content",
+      "independentContentWidthPx": 11.18,
+      "columnsPx": 11.1875,
+      "rowsPx": 20.0
+    },
+    {
+      "id": "transform-capitalize-max",
+      "runtimeSceneId": "text-transform-capitalize-max-content",
+      "sourceText": "iiii ii",
+      "textTransform": "capitalize",
+      "shapedText": "Iiii Ii",
+      "track": "max-content",
+      "independentContentWidthPx": 19.1,
+      "columnsPx": 19.09375,
+      "rowsPx": 10.0
+    },
+    {
+      "id": "transform-capitalize-mixed-case",
+      "runtimeSceneId": "text-transform-capitalize-mixed-case",
+      "sourceText": "iIII ii",
+      "textTransform": "capitalize",
+      "shapedText": "IIII Ii",
+      "track": "max-content",
+      "independentContentWidthPx": 19.64,
+      "columnsPx": 19.65625,
+      "rowsPx": 10.0
+    },
+    {
+      "id": "transform-capitalize-collapsed-spaces",
+      "runtimeSceneId": "text-transform-capitalize-collapsed-spaces",
+      "sourceText": "ii   ii",
+      "textTransform": "capitalize",
+      "shapedText": "Ii Ii",
+      "track": "max-content",
+      "independentContentWidthPx": 13.6,
+      "columnsPx": 13.59375,
+      "rowsPx": 10.0
+    }
+  ],
+  "independentAdvanceSums": {
+    "noneMinContent": "max(4*275, 2*275)*10/1000 = 11.0 CSS px",
+    "noneMaxContent": "(6*275 + 224)*10/1000 = 18.74 CSS px",
+    "capitalizeMinContent": "max((293 + 3*275), (293 + 275))*10/1000 = 11.18 CSS px",
+    "capitalizeMaxContent": "(293 + 3*275 + 224 + 293 + 275)*10/1000 = 19.10 CSS px",
+    "mixedCaseMaxContent": "(4*293 + 224 + 293 + 275)*10/1000 = 19.64 CSS px",
+    "collapsedSpaceMaxContent": "(293 + 275 + 224 + 293 + 275)*10/1000 = 13.60 CSS px"
+  }
+}

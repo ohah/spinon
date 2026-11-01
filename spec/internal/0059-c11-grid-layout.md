@@ -1052,6 +1052,14 @@ HostDocument 원문 Text node와 UTF-16 source mapping은 그대로 둔다. 변�
 
 이 항목은 [PR #952](https://github.com/ohah/spinon/pull/952) 제한 구현 후보이며 별도 PR diff 실패 관점 검토 30개를 마쳤다([기록](evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md)). PR #952는 2026-10-31T23:48:28Z Rebase and merge로 병합됐다(merge SHA `be62a4dd3c1b67ada2db094f19a76231e9f3df35`). GitHub가 check을 보고하지 않아 CI 성공을 주장하지 않는다. 병합 후 상태 문서도 별도 검토했다([검토 기록](evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md)). C11.4/C11 checkbox와 공식 `72/213`은 미완료로 유지한다.
 
+## C11.4 anonymous Grid text computed `text-transform:capitalize` · 제한 opt-in runtime 후보
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. PR #952에서 연결한 `none|uppercase|lowercase` profile에 computed `capitalize`의 고정 ASCII English 변형을 추가한다. 고정 입력은 direct `lang="en"`, ASCII letters와 U+0020만 포함하는 anonymous direct Text다. U+0020만 word boundary로 사용하고, 각 segment의 첫 lowercase letter만 ASCII uppercase로 바꾸며 나머지 대소문자는 보존한다. 이는 UA-dependent word boundary를 갖는 CSS Text 동작의 좁은 profile이며 일반적인 단어 분절 구현이 아니다.
+
+HostDocument Text와 UTF-16 source range는 보존한다. 변환은 normalized layout buffer에서 one-to-one으로 수행하고 기존 normal whitespace collapse에 넘긴다. punctuation, digits, non-ASCII, tab/newline, inline run, 누락·상속·다른 언어는 fail-closed한다. Chrome 156 Noto Sans KR 10px/400의 6-scene min/max/mixed-case/repeated-space oracle와 독립 glyph advance를 고정했다. [구현 계획](../../plan/c11-4-anonymous-grid-text-transform-capitalize.md) · [Chrome 사전 비교](evidence/c11-4-anonymous-grid-text-transform-capitalize-precomparison-2026-11-01/README.md) · [계획 실패 관점 20개](evidence/c11-4-anonymous-grid-text-transform-capitalize-plan-review-20-2026-11-01.md).
+
+후보 작업 트리의 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 실행은 각 6/6 scene layout 검증을 통과했다. 첫 iOS 실행은 새 scene 요청에 의해 `status=-12`로 취소되어 별도 보존했고, fresh-app 실행 결과를 성공 cohort로 분리했다. 최종 PR evidence는 commit-bound simulator 재실행 후 확정한다. 캡처 앱은 glyph paint가 꺼져 있어 glyph pixel 근거가 아니다. 일반 CSS author admission, UAX #29, locale/Unicode casing, WPT 및 전체 C11.4/C11 지원은 제외한다. 공식 `72/213`과 C11/C11.4 미완료 상태를 유지한다.
+
 ## C11.4 anonymous Grid text computed `text-indent` flags · 제한 opt-in runtime 확장
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 anonymous direct-text Grid `text-indent` fixture의 허용 목록을 50개 고정 scene으로 확장한다. 이번에 추가한 20개는 Ahem 10px/400, `XXX X`와 `XXX\nX`, `white-space:normal|pre-line`, min-/max-content column 및 `0px`·`10px`·`10px each-line`·`10px hanging`·`10px hanging each-line`의 조합이다. Chrome 156 관측과 독립 Ahem advance 계산은 [사전 비교](evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.md)에 고정한다.

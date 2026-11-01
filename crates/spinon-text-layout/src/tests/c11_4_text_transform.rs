@@ -101,6 +101,74 @@ fn c114_text_transform_keeps_collapsed_space_source_mapping_one_to_one() {
 }
 
 #[test]
+fn c114_text_transform_capitalize_uses_ascii_space_word_boundaries_and_preserves_ranges() {
+    let mut engine = engine();
+    for (source, expected, min_content, max_content) in [
+        ("iiii ii", "Iiii Ii", 11.1875, 19.09375),
+        ("iIII ii", "IIII Ii", 11.734375, 19.65625),
+        ("ii   ii", "Ii Ii", 5.6875, 13.59375),
+    ] {
+        let input = paragraph(source, TextTransformMode::Capitalize);
+        let original = input.sources[0].text.clone();
+        let intrinsic = engine.intrinsic_inline_sizes(&input).unwrap();
+        close_to(
+            intrinsic.min_content(),
+            min_content,
+            "capitalize min-content",
+        );
+        close_to(
+            intrinsic.max_content(),
+            max_content,
+            "capitalize max-content",
+        );
+
+        let layout = engine.layout_paragraph(&input, 120.0).unwrap();
+        assert_eq!(layout.text_transform, TextTransformMode::Capitalize);
+        assert_eq!(layout.text, expected);
+        assert_eq!(input.sources[0].text, original);
+        assert_eq!(layout.sources.len(), source.chars().count());
+        for (index, mapped) in layout.sources.iter().enumerate() {
+            assert_eq!(mapped.node, spinon_core::NodeId::new(2).unwrap());
+            assert_eq!(mapped.source_utf16, index..index + 1);
+            let expected_paragraph_range = if source == "ii   ii" {
+                match index {
+                    0 => 0..1,
+                    1 => 1..2,
+                    2..=4 => 2..3,
+                    5 => 3..4,
+                    6 => 4..5,
+                    _ => unreachable!(),
+                }
+            } else {
+                index..index + 1
+            };
+            assert_eq!(mapped.paragraph_utf8, expected_paragraph_range);
+        }
+    }
+}
+
+#[test]
+fn c114_text_transform_capitalize_rejects_non_letter_ascii_and_other_whitespace() {
+    for source in [
+        "hello-world",
+        "hello1",
+        "hello\tworld",
+        "hello\nworld",
+        "İi",
+    ] {
+        let mut engine = engine();
+        let input = paragraph(source, TextTransformMode::Capitalize);
+        assert_eq!(
+            engine.layout_paragraph(&input, 120.0),
+            Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+                input.node
+            )),
+            "unsupported capitalize source {source:?}"
+        );
+    }
+}
+
+#[test]
 fn c114_text_transform_fails_closed_for_non_ascii_and_inline_sources() {
     let mut engine = engine();
     let mut non_ascii = paragraph("İi", TextTransformMode::Lowercase);
@@ -119,6 +187,17 @@ fn c114_text_transform_fails_closed_for_non_ascii_and_inline_sources() {
         engine.intrinsic_inline_sizes(&inline),
         Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
             inline.node
+        ))
+    );
+
+    let mut capitalize_inline = paragraph("II ii", TextTransformMode::Capitalize);
+    capitalize_inline.sources[0]
+        .inline_ancestors
+        .push(spinon_core::NodeId::new(3).unwrap());
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&capitalize_inline),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            capitalize_inline.node
         ))
     );
 
