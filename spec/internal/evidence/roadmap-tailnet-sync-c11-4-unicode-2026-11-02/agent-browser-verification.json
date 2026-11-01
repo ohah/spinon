@@ -1,0 +1,31 @@
+{
+  "browser": "Agent Browser 0.31.1 / Chrome 156.0.8078.80",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "mergeShaVisible": "108d0eed91220f81971f8c2eb7c4d2b727b26452",
+  "desktop": {
+    "viewportWidth": 1280,
+    "documentWidth": 1280,
+    "horizontalOverflow": false,
+    "screenshot": "tailnet-roadmap-agent-browser-desktop-pr991-card-focused.png",
+    "screenshotWidth": 1280,
+    "screenshotHeight": 900,
+    "screenshotSha256": "6eb5c2c5af11cec49fcf62e07c78cac465c6647fff421cfedab11c324a1eea01"
+  },
+  "mobile": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false,
+    "screenshot": "tailnet-roadmap-agent-browser-mobile-pr991-card-focused.png",
+    "screenshotWidth": 390,
+    "screenshotHeight": 844,
+    "screenshotSha256": "5c78e6a9b03ee981d6470903fbccdebcf09adc28c97191fc4fe8db49cc84341f"
+  },
+  "processLifecycle": {
+    "sessionClosed": true,
+    "agentBrowserAndChromeProcessesAbsentAfterClose": true
+  },
+  "scope": "선택한 roadmap 카드·로컬 링크·표시 집계의 UI 확인. 전체 문서 링크 또는 전체 사이트 dead-link 검사는 포함하지 않음."
+}

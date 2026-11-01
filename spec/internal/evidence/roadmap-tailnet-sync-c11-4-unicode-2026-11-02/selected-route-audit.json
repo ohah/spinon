@@ -1,0 +1,67 @@
+{
+  "sourceHead": "108d0eed91220f81971f8c2eb7c4d2b727b26452",
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "roadmapCardMarker": "#991 Rebase and merge",
+  "mergeSha": "108d0eed91220f81971f8c2eb7c4d2b727b26452",
+  "localRoadmapLinks": 8,
+  "fullSiteDeadLinkCheck": false,
+  "checks": [
+    {
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.html",
+      "route": "plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.html",
+      "bytes": 44919,
+      "sha256": "8d1bcf585bd3a05a39cd43bc45bb2c918ffb06b082d19e31b873402c2b5ec15d",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 468400,
+      "sha256": "694c8d2c5d7acd4d01ccf30e5883d21340e32ad0957657e397e53fe1ab8868b0",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.html",
+      "bytes": 39757,
+      "sha256": "58d6392072d26150c24b4a3ec79b974b14a71066017becced8ccdad81f39b45c",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/README.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/README.html",
+      "bytes": 35773,
+      "sha256": "e284f4577c8dc0ce12ec7f84f63bdef3028cc10f3fa05febd348b0adcfbe85f7",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/implementation-review-20.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/implementation-review-20.html",
+      "bytes": 35937,
+      "sha256": "23ae3459f381b4ff283518ad5a7cb745ca3191ee84055092e83fcd4b43bec955",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/pr-diff-review-30.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/pr-diff-review-30.html",
+      "bytes": 41505,
+      "sha256": "451109f8d8e2e3ced91e0a5f80923bf094d9e0d505140b8c3795c5625e82c9e5",
+      "verified": true
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "bytes": 743542,
+      "sha256": "e432e9553f40297a4ddf6e7ee1ce68ae455eae098fd42d172c039df0b529706d",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-c11-4-unicode-2026-11-02/roadmap-pr-diff-review-30.html",
+      "route": "internal/evidence/roadmap-tailnet-sync-c11-4-unicode-2026-11-02/roadmap-pr-diff-review-30.html",
+      "bytes": 38471,
+      "sha256": "0087781eeceb78b6acb9b678b853bed82786d9e787f3d285268ef56bb70c905f",
+      "verified": true
+    }
+  ]
+}
