@@ -1,6 +1,6 @@
 use std::{collections::BTreeSet, ops::Range};
 
-use crate::{ParagraphInput, TextLayoutError, TextSourceRange, WhiteSpaceMode};
+use crate::{HyphensMode, ParagraphInput, TextLayoutError, TextSourceRange, WhiteSpaceMode};
 
 pub(crate) struct NormalizedText {
     pub text: String,
@@ -40,6 +40,10 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
         }
     }
 
+    if input.style.hyphens.is_some() && !supports_hyphens_profile(input, &characters) {
+        return Err(TextLayoutError::UnsupportedHyphensProfile(input.node));
+    }
+
     if input.style.text_transform != crate::TextTransformMode::None {
         if !input.inline_styles.is_empty()
             || !input.inline_run_styles.is_empty()
@@ -55,6 +59,15 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
                 crate::TextTransformMode::Uppercase => source.character.to_ascii_uppercase(),
                 crate::TextTransformMode::Lowercase => source.character.to_ascii_lowercase(),
             };
+        }
+    }
+
+    if input.style.hyphens == Some(HyphensMode::None) {
+        for source in &mut characters {
+            if source.character == '\u{00ad}' {
+                // WORD JOINER keeps the authored UTF-16 source span while suppressing SHY breaks.
+                source.character = '\u{2060}';
+            }
         }
     }
 
@@ -221,6 +234,46 @@ fn supports_pre_wrap_tab_profile(input: &ParagraphInput, characters: &[SourceCha
         && characters[2].character == '\t'
         && characters[3].character == 'X'
         && characters[4].character == 'X'
+}
+
+fn supports_hyphens_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {
+    let style = &input.style;
+    style.font_family == "Ahem"
+        && style.font_size == 10.0
+        && style.line_height == 10.0
+        && !style.line_height_is_normal
+        && style.font_weight == 400.0
+        && style.font_style == crate::FontStyleMode::Normal
+        && style.white_space == WhiteSpaceMode::Normal
+        && style.word_break == crate::WordBreakMode::Normal
+        && style.overflow_wrap == crate::OverflowWrapMode::Normal
+        && style.text_transform == crate::TextTransformMode::None
+        && style.text_indent == 0.0
+        && style.text_indent_flags == Default::default()
+        && style.letter_spacing == 0.0
+        && style.word_spacing == 0.0
+        && style.direction == crate::TextDirection::Ltr
+        && style.writing_mode == spinon_core::WritingMode::HorizontalTb
+        && style.text_orientation == spinon_core::TextOrientation::Mixed
+        && style.line_break == crate::LineBreakMode::Normal
+        && style.ligatures == crate::LigatureMode::Normal
+        && style
+            .locale
+            .as_deref()
+            .is_none_or(|locale| locale.eq_ignore_ascii_case("en"))
+        && input.sources.len() == 1
+        && input.inline_styles.is_empty()
+        && input.inline_run_styles.is_empty()
+        && input.sources[0].inline_ancestors.is_empty()
+        && characters.iter().all(|source| {
+            matches!(source.character, 'A'..='F' | '-' | '\u{00ad}')
+                && source.inline_ancestors.is_empty()
+        })
+        && characters
+            .iter()
+            .filter(|source| source.character == '\u{00ad}')
+            .count()
+            <= 2
 }
 
 fn supports_pre_tab_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {

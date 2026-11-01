@@ -1,0 +1,22 @@
+scene	result	specified	computed	track	min_content	max_content	track_width	row_height	line_advances	trace_parts
+hyphens-none-soft-min	PASS	none	None	min-content	40	40	40	10	40	14
+hyphens-none-soft-max	PASS	none	None	max-content	40	40	40	10	40	14
+hyphens-none-soft-fixed-30	PASS	none	None	30px	40	40	30	10	40	11
+hyphens-manual-soft-min	PASS	manual	Manual	min-content	30	40	30	20	30,20	14
+hyphens-manual-soft-max	PASS	manual	Manual	max-content	30	40	40	10	40	14
+hyphens-manual-soft-fixed-30	PASS	manual	Manual	30px	30	40	30	20	30,20	11
+hyphens-default-soft-fixed-30	PASS	initial	Manual	30px	30	40	30	20	30,20	11
+hyphens-none-visible-min	PASS	none	None	min-content	30	50	30	20	30,20	14
+hyphens-none-visible-fixed-30	PASS	none	None	30px	30	50	30	20	30,20	11
+hyphens-manual-visible-min	PASS	manual	Manual	min-content	30	50	30	20	30,20	14
+hyphens-manual-visible-fixed-30	PASS	manual	Manual	30px	30	50	30	20	30,20	11
+hyphens-none-unbroken-min	PASS	none	None	min-content	40	40	40	10	40	13
+hyphens-manual-unbroken-min	PASS	manual	Manual	min-content	40	40	40	10	40	13
+hyphens-none-multiple-min	PASS	none	None	min-content	60	60	60	10	60	14
+hyphens-none-multiple-fixed-30	PASS	none	None	30px	60	60	30	10	60	11
+hyphens-manual-multiple-min	PASS	manual	Manual	min-content	30	60	30	30	30,30,20	14
+hyphens-manual-multiple-fixed-30	PASS	manual	Manual	30px	30	60	30	30	30,30,20	11
+hyphens-inherited-none-fixed-30	PASS	none	None	30px	40	40	30	10	40	11
+hyphens-inherited-manual-fixed-30	PASS	manual	Manual	30px	30	40	30	20	30,20	11
+hyphens-auto-expected-reject	EXPECTED_REJECT									0
+hyphens-invalid-expected-reject	EXPECTED_REJECT									0

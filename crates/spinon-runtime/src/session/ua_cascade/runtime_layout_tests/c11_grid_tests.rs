@@ -44,6 +44,10 @@ mod anonymous_text_word_break_overflow_wrap;
 mod anonymous_text_line_break;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/anonymous_text_hyphens.rs"]
+mod anonymous_text_hyphens;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/anonymous_text_text_indent.rs"]
 mod anonymous_text_text_indent;
 

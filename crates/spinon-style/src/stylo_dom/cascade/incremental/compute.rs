@@ -122,6 +122,23 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         registry.append_with_stylo_preferences_held(source.clone())?;
     }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        for source in author_stylesheets {
+            if let Err(feature) = crate::c11_4_hyphens_css::normalize_css_hyphens(&source.css, true)
+            {
+                return Err(CssCascadeError::UnsupportedAuthorCss {
+                    stylesheet_id: source.id.clone(),
+                    feature,
+                });
+            }
+        }
+        for (node, source) in view.inline_style_sources() {
+            if let Err(property) = crate::c11_4_hyphens_css::normalize_css_hyphens(source, false) {
+                return Err(CssCascadeError::UnsupportedInlineAuthorProperty { node, property });
+            }
+        }
+    }
     let stylesheet_border_sources = registry.raw_style_declaration_sources();
     if is_runtime_layout_profile(profile) {
         for source in author_stylesheets {
@@ -343,7 +360,14 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             }),
         ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => allowed_author_properties
             .and_then(|allowed| {
-                registry.first_unsupported_runtime_author_feature(allowed, false, false, false)
+                #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                {
+                    registry.first_unsupported_runtime_hyphens_author_feature(allowed)
+                }
+                #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+                {
+                    registry.first_unsupported_runtime_author_feature(allowed, false, false, false)
+                }
             }),
         ComputedStyleProfile::RuntimeBlockImageV1 => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed))

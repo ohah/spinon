@@ -1,12 +1,12 @@
 # C11.4 익명 Grid 텍스트 `hyphens` 제한 profile 계획
 
-**상태:** Chrome 156 사전 비교와 Ahem 독립 계산을 고정했다. 제품 구현은 시작하지 않았다. C11.4/C11은 미완료이며 공식 완료 `72/213`은 변경하지 않는다.
+**상태:** 고정 profile 구현 후보와 계획에 적은 검증을 마쳤다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 19개 positive scene 및 2개 기대 거부 scene을 최신 앱 소스로 확인했고 기본 artifact 제외/fixture positive-control 경계, 구현/runtime 검토 20개와 PR diff 검토 30개를 끝냈다. PR 생성 전 후보이며 C11.4/C11은 미완료, 공식 완료 `72/213`이다.
 
 ## 규범 동작과 문제
 
 CSS Text 3 §5.3에서 `hyphens`는 `none | manual | auto`, 초기값 `manual`, 상속 속성이다. 하이픈 기회는 min-content intrinsic size 계산에 반영된다. `manual`은 U+00AD SOFT HYPHEN 같은 명시적 기회에서만 단어를 나누고 줄이 바뀌면 하이픈을 표시한다. `none`은 U+00AD 기회도 막지만, 눈에 보이는 U+002D HYPHEN-MINUS의 일반 줄바꿈은 막지 않는다. `auto`는 언어별 사전이 필요하다.
 
-현재 C11.4 direct-text adapter는 computed `hyphens`를 Paragraph 입력으로 전달하지 않는다. Stylo 0.22가 `hyphens`를 알 수 없는 속성으로 무시하는 현상은 기존 negative fixture가 기록한다. 사전 비교의 Chrome geometry는 이 격차가 실제 min-content track과 고정 너비 줄바꿈에 영향을 주는 것을 보여준다.
+현재 C11.4 direct-text adapter는 computed `hyphens`를 Paragraph 입력으로 전달하지 않는다. 고정 후보는 Stylo 0.22 cascade가 지원하지 않는 속성을 fixture 전용 alias adapter로 받아 제한된 computed 값만 전달한다. 독립 Chrome 사전 비교는 이 속성이 min-content track과 고정 너비 줄바꿈에 영향을 주는 근거를 제공한다.
 
 ## 제한 구현 범위
 
@@ -42,8 +42,8 @@ CSS Text 3 §5.3에서 `hyphens`는 `none | manual | auto`, 초기값 `manual`, 
 
 ## 검증 관문
 
-1. 실제 Stylo cascade가 예약 custom property의 상속, `!important`, selector/source order, CSS-wide keyword와 revision 변경을 의도대로 유지한다는 style tests를 추가한다. alias collision, `@property`, `all`, stylesheet·inline 경계도 positive/negative control을 둔다. Stylo computed value를 확실히 읽지 못하거나 정상 cascade 의미가 보존되지 않으면 implementation을 진행시키지 않는다.
-2. `spinon-text-layout`에서 `none`/`manual`의 max/min-content, single/multiple soft hyphen, visible-hyphen control, UTF-16 source map, finite metrics와 rejection을 검증한다. U+00AD의 ordinary line-break 동작이 Parley pinned revision에서 Chrome과 다르면 그 차이를 숨기지 말고 explicit break handling을 구현한다.
-3. opt-in C11.4 runtime fixture에서 21 scene 모두 computed property, exact owner, source/style revision, line count/advance, min/max contribution, Columns/Rows track, overflow와 expected rejection을 검사한다. 일반 CSS projection negative gate와 기존 C11.4 regression을 유지한다.
-4. 기본/product artifact에서 fixture-only alias/FFI/payload가 빠지고 fixture-test positive control에만 포함되는지 확인한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 pinned matrix와 회귀를 실행하고 설치 artifact hash를 근거에 묶는다. 실기기/hardware GPU와 glyph paint는 판정 범위 밖이다.
-5. 구현/runtime 실패 관점 20개와 PR 변경 diff 20개는 서로 다른 항목으로 남긴다. 제한 profile만 병합해도 C11.4/C11 체크와 공식 `72/213`은 유지한다.
+1. 완료: 실제 Stylo cascade의 상속, `!important`, selector/source order, CSS-wide keyword, alias collision, `@property`, `all`, stylesheet·inline 경계를 style tests에서 확인했다.
+2. 완료: `spinon-text-layout`에서 `none`/`manual`의 max/min-content, single/multiple soft hyphen, visible-hyphen control, UTF-16 source map, finite metrics와 profile rejection을 확인했다. Parley 0.12가 U+00AD break의 glyph advance를 보고하지 않아 고정 Ahem profile에서 U+2010 advance를 보정했다.
+3. 완료: opt-in C11.4 runtime fixture 21 scene에서 computed property, owner, source/style revision, line count/advance, min/max contribution, Columns/Rows track, overflow와 2개 expected rejection을 확인했다. Runtime package는 단위 394 passed/3 ignored, 통합 19 passed, 0 failed다. 낡은 Stylo `UnknownProperty` 기대를 computed `hyphens` 검사로 갱신했고, 기존 word-break matrix의 `max-content` line-count assertion을 해당 track 정의에 맞췄다.
+4. 완료: Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 21 scene을 실행하고 설치 hash를 확인했다. macOS ARM64 기본 release static archive에서는 candidate scene ID 0/21·generic fixture export 0, fixture-test positive control에서는 21/21·export 1을 확인했다([runtime evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md), [archive boundary](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md)). 이 결과는 APK/IPA 전체 bundle 제외를 증명하지 않는다. 실기기/hardware GPU와 glyph paint는 판정 범위 밖이다.
+5. 완료: 구현/runtime 실패 관점 20개와 실제 변경 PR diff 실패 관점 30개를 서로 다른 항목으로 기록했다([구현/runtime](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md), [PR diff](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md)). 제한 profile만 병합해도 C11.4/C11 체크와 공식 `72/213`은 유지한다.

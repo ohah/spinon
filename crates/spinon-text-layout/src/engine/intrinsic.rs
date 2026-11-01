@@ -11,7 +11,7 @@ use parley::{
 use spinon_core::{NodeId, TextOrientation, WritingMode};
 
 use crate::{
-    LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, TextDirection,
+    HyphensMode, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, TextDirection,
     TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes, TextLayoutError, WhiteSpaceMode,
     WordBreakMode, normalize::normalize,
 };
@@ -86,7 +86,23 @@ impl TextLayoutEngine {
             layout.height(),
         );
         let (inline_boundaries, mut min_layout) =
-            if input.style.overflow_wrap == OverflowWrapMode::BreakWord {
+            if input.style.hyphens == Some(HyphensMode::Manual) {
+                // Parley preserves a soft-hyphen break opportunity but assigns U+00AD no
+                // advance. CSS min-content includes the visible U+2010 selected at that break.
+                // The fixed C11.4 profile has one UTF-16 unit per replacement, and this copy is
+                // used only for measurement; source/document text remains unchanged.
+                let mut manual_min_input = input.clone();
+                manual_min_input.style.hyphens = None;
+                for source in &mut manual_min_input.sources {
+                    source.text = source.text.replace('\u{00ad}', "\u{2010}");
+                }
+                let BuiltParleyLayout {
+                    inline_boundaries,
+                    layout,
+                    ..
+                } = self.build_parley_layout(&manual_min_input, Vec::new())?;
+                (inline_boundaries, layout)
+            } else if input.style.overflow_wrap == OverflowWrapMode::BreakWord {
                 // CSS Text excludes break-word emergency opportunities from min-content sizing.
                 // Parley uses BreakWord for definite-width emergency wrapping, so measure this
                 // one intrinsic pass with Normal while retaining the computed mode elsewhere.

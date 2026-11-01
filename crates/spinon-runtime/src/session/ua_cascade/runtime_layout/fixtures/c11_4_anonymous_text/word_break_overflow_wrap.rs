@@ -203,12 +203,20 @@ mod tests {
             );
             assert_eq!(
                 scene.fixed_line_count,
-                if scene.word_break == super::WordBreakMode::Normal
-                    && scene.overflow_wrap == super::OverflowWrapMode::Normal
-                {
-                    1
-                } else {
-                    4
+                match scene.track {
+                    super::TrackKind::MinContent => {
+                        if effective_anywhere { 4 } else { 1 }
+                    }
+                    super::TrackKind::MaxContent => 1,
+                    super::TrackKind::Fixed10Px => {
+                        if scene.word_break == super::WordBreakMode::Normal
+                            && scene.overflow_wrap == super::OverflowWrapMode::Normal
+                        {
+                            1
+                        } else {
+                            4
+                        }
+                    }
                 }
             );
         }

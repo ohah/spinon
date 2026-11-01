@@ -113,6 +113,13 @@ pub enum WordBreakMode {
     KeepAll,
 }
 
+/// C11.4 anonymous Grid text profile에서 명시하는 `hyphens` 동작입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum HyphensMode {
+    None,
+    Manual,
+}
+
 /// C11.4 anonymous Grid text profile의 computed CSS `overflow-wrap` 값입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub enum OverflowWrapMode {
@@ -196,6 +203,8 @@ pub struct ParagraphStyle {
     pub text_transform: TextTransformMode,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
+    /// `Some`일 때만 C11.4의 제한된 soft-hyphen profile을 적용합니다.
+    pub hyphens: Option<HyphensMode>,
     pub overflow_wrap: OverflowWrapMode,
     /// Parley에 줄바꿈 언어를 전달할 제한된 BCP 47 태그입니다.
     pub locale: Option<String>,
@@ -272,6 +281,7 @@ impl Default for ParagraphStyle {
             text_transform: TextTransformMode::None,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            hyphens: None,
             overflow_wrap: OverflowWrapMode::Normal,
             locale: None,
             direction: TextDirection::Auto,

@@ -1,5 +1,7 @@
 #[path = "anonymous_text_items/computed_font_size.rs"]
 mod computed_font_size;
+#[path = "anonymous_text_items/computed_hyphens.rs"]
+mod computed_hyphens;
 #[path = "anonymous_text_items/computed_letter_spacing.rs"]
 mod computed_letter_spacing;
 #[path = "anonymous_text_items/computed_line_break.rs"]
@@ -19,7 +21,7 @@ mod computed_word_break_overflow_wrap;
 #[path = "anonymous_text_items/computed_word_spacing.rs"]
 mod computed_word_spacing;
 
-const SCENE_IDS: [&str; 55] = [
+const SCENE_IDS: [&str; 76] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -75,6 +77,27 @@ const SCENE_IDS: [&str; 55] = [
     "anonymous-pre-tab-size-0-negative",
     "anonymous-pre-tab-size-fractional-negative",
     "anonymous-pre-tab-size-length-negative",
+    "hyphens-none-soft-min",
+    "hyphens-none-soft-max",
+    "hyphens-none-soft-fixed-30",
+    "hyphens-manual-soft-min",
+    "hyphens-manual-soft-max",
+    "hyphens-manual-soft-fixed-30",
+    "hyphens-default-soft-fixed-30",
+    "hyphens-none-visible-min",
+    "hyphens-none-visible-fixed-30",
+    "hyphens-manual-visible-min",
+    "hyphens-manual-visible-fixed-30",
+    "hyphens-none-unbroken-min",
+    "hyphens-manual-unbroken-min",
+    "hyphens-none-multiple-min",
+    "hyphens-none-multiple-fixed-30",
+    "hyphens-manual-multiple-min",
+    "hyphens-manual-multiple-fixed-30",
+    "hyphens-inherited-none-fixed-30",
+    "hyphens-inherited-manual-fixed-30",
+    "hyphens-auto-expected-reject",
+    "hyphens-invalid-expected-reject",
 ];
 
 const FULL_TAB_VALUE_IDS: [&str; 14] = [
@@ -153,6 +176,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         return Some(source);
     }
     if let Some(source) = computed_text_transform::runtime_source(scene_id) {
+        return Some(source);
+    }
+    if let Some(source) = computed_hyphens::runtime_source(scene_id) {
         return Some(source);
     }
     if let Some((value_index, case_index)) = full_tab_scene(scene_id) {
