@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>C11.3.3 negative named implicit line precomparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 16px; font: 14px/1.4 sans-serif; background: #f3f4f6; }
+    .case { position: relative; display: grid; width: 160px; height: 100px; margin: 0 0 12px; padding: 0; border: 0; gap: 0; justify-content: start; align-content: start; justify-items: start; align-items: start; grid-auto-flow: row; grid-auto-columns: 5px 7px; grid-auto-rows: 5px 7px; background: #e5e7eb; }
+    .case::before { content: attr(id); position: absolute; z-index: 1; left: 2px; bottom: 2px; padding: 1px 3px; color: #111827; background: #fff; font: 9px/1.2 monospace; }
+    .columns { grid-template-columns: [a] 20px [b] 30px [c] 40px [d]; grid-template-rows: [top] 20px [bottom]; }
+    .columns-authored { grid-template-columns: [ghost] 20px [b] 30px [c] 40px [d]; }
+    .rows { grid-template-columns: [left] 20px [right]; grid-template-rows: [a] 20px [b] 30px [c] 40px [d]; }
+    .columns-auto { grid-auto-columns: auto; }
+    .rows-auto { grid-auto-rows: auto; }
+    .item { width: 17px; height: 10px; margin: 0; padding: 0; border: 0; background: #2563eb; }
+    .metrics { position: absolute; z-index: 2; top: 4px; left: 172px; width: 980px; min-height: 46px; padding: 4px 6px; border: 1px solid #9ca3af; color: #111827; background: #fff; font: 10px/1.35 ui-monospace, monospace; white-space: pre-wrap; }
+    #columns-negative-span > .item { grid-column: -4 ghost / -1 ghost; grid-row: 1; }
+    #columns-negative-reversed > .item { grid-column: -1 ghost / -4 ghost; grid-row: 1; }
+    #columns-negative-one > .item { grid-column: -2 ghost / -1 ghost; grid-row: 1; }
+    #columns-negative-equal > .item { grid-column: -2 ghost / -2 ghost; grid-row: 1; }
+    #columns-negative-offset > .item { grid-column: -5 ghost / -2 ghost; grid-row: 1; }
+    #columns-negative-auto > .item { grid-column: -4 ghost / -1 ghost; grid-row: 1; width: 18px; }
+    #rows-negative-span > .item { grid-row: -4 ghost / -1 ghost; grid-column: 1; height: 17px; width: 10px; }
+    #rows-negative-auto > .item { grid-row: -4 ghost / -1 ghost; grid-column: 1; height: 18px; width: 10px; }
+    #columns-positive-control > .item { grid-column: 4 ghost / 1 ghost; grid-row: 1; }
+    #columns-authored-control > .item { grid-column: -2 ghost / -1 ghost; grid-row: 1; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>C11.3.3 named implicit lines</h1>
+    <p>Chrome 156 observation only; normative expectations are recorded separately.</p>
+    <section id="columns-negative-span" class="case columns"><div id="negative-span-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-negative-reversed" class="case columns"><div id="negative-reversed-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-negative-one" class="case columns"><div id="negative-one-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-negative-equal" class="case columns"><div id="negative-equal-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-negative-offset" class="case columns"><div id="negative-offset-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-negative-auto" class="case columns columns-auto"><div id="negative-auto-item" class="item"></div><output class="metrics"></output></section>
+    <section id="rows-negative-span" class="case rows"><div id="negative-row-item" class="item"></div><output class="metrics"></output></section>
+    <section id="rows-negative-auto" class="case rows rows-auto"><div id="negative-row-auto-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-positive-control" class="case columns"><div id="positive-control-item" class="item"></div><output class="metrics"></output></section>
+    <section id="columns-authored-control" class="case columns columns-authored"><div id="authored-control-item" class="item"></div><output class="metrics"></output></section>
+  </main>
+  <script>
+    window.c11GridPrecomparison = [...document.querySelectorAll('.case')].map((root) => {
+      const item = root.querySelector('.item');
+      const rootRect = root.getBoundingClientRect();
+      const itemRect = item.getBoundingClientRect();
+      const style = getComputedStyle(root);
+      const itemStyle = getComputedStyle(item);
+      const observation = {
+        id: root.id,
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        placement: {
+          columnStart: itemStyle.gridColumnStart,
+          columnEnd: itemStyle.gridColumnEnd,
+          rowStart: itemStyle.gridRowStart,
+          rowEnd: itemStyle.gridRowEnd,
+        },
+        root: { x: rootRect.x, y: rootRect.y, width: rootRect.width, height: rootRect.height },
+        item: {
+          x: itemRect.x - rootRect.x,
+          y: itemRect.y - rootRect.y,
+          width: itemRect.width,
+          height: itemRect.height,
+        },
+      };
+      root.querySelector('.metrics').textContent =
+        `columns: ${observation.columns}\nrows: ${observation.rows}\nitem: x=${observation.item.x} y=${observation.item.y} w=${observation.item.width} h=${observation.item.height}`;
+      return observation;
+    });
+  </script>
+</body>
+</html>

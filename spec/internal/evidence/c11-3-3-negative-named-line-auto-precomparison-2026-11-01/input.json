@@ -1,0 +1,26 @@
+{
+  "schema": "spinon.c11.3.3.negative-named-line-auto.precomparison-input.v1",
+  "viewport": { "width": 1280, "height": 1040, "deviceScaleFactor": 1 },
+  "root": {
+    "width": 160,
+    "height": 100,
+    "explicitColumns": [20, 30, 40],
+    "explicitRows": [20, 30, 40],
+    "leadingAutoTrackPattern": [5, 7],
+    "itemBoxSizing": "border-box",
+    "gaps": [0, 0],
+    "alignment": ["start", "start"]
+  },
+  "cases": [
+    { "id": "columns-negative-span", "axis": "columns", "placement": "-4 ghost / -1 ghost", "autoTracks": false, "item": [17, 10] },
+    { "id": "columns-negative-reversed", "axis": "columns", "placement": "-1 ghost / -4 ghost", "autoTracks": false, "item": [17, 10] },
+    { "id": "columns-negative-one", "axis": "columns", "placement": "-2 ghost / -1 ghost", "autoTracks": false, "item": [17, 10] },
+    { "id": "columns-negative-equal", "axis": "columns", "placement": "-2 ghost / -2 ghost", "autoTracks": false, "item": [17, 10] },
+    { "id": "columns-negative-offset", "axis": "columns", "placement": "-5 ghost / -2 ghost", "autoTracks": false, "item": [17, 10] },
+    { "id": "columns-negative-auto", "axis": "columns", "placement": "-4 ghost / -1 ghost", "autoTracks": true, "item": [18, 10] },
+    { "id": "rows-negative-span", "axis": "rows", "placement": "-4 ghost / -1 ghost", "autoTracks": false, "item": [10, 17] },
+    { "id": "rows-negative-auto", "axis": "rows", "placement": "-4 ghost / -1 ghost", "autoTracks": true, "item": [10, 18] },
+    { "id": "columns-positive-control", "axis": "columns", "placement": "4 ghost / 1 ghost", "autoTracks": false, "item": [17, 10] },
+    { "id": "columns-authored-control", "axis": "columns", "placement": "-2 ghost / -1 ghost", "autoTracks": false, "explicitColumns": ["[ghost] 20px", "[b] 30px", "[c] 40px"], "item": [17, 10] }
+  ]
+}
