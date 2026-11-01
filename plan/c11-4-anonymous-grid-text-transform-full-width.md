@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 새 제한 fixture 계획. `full-width`는 CSS Text Level 3 CRD 2026-08-14에 정의되어 있지만 at-risk로 표시된다. Chrome 156 Agent Browser는 이 값을 거부하고 computed `none`을 반환한다. 구현은 CSS Text와 Unicode mapping을 기준으로 하는 opt-in fixture 후보이며 Chrome의 text-transform 지원을 주장하지 않는다. [사전 비교와 관측 한계](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/README.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-transform-full-width-plan-review-20.md) · [계획 PR diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/plan-pr-diff-review-30.md)
+**상태:** 제한 fixture 구현 계획. `full-width`는 CSS Text Level 3 CRD 2026-08-14에 정의되어 있지만 at-risk로 표시된다. Chrome 156 Agent Browser는 이 값을 거부하고 computed `none`을 반환한다. 구현은 CSS Text와 Unicode mapping을 기준으로 하는 opt-in fixture 후보이며 Chrome의 text-transform 지원을 주장하지 않는다. 사전 구현에서 Parley `WordBreak::Normal`이 후보 기대 20px 대신 min-content 10px을 계산했다. [추가 발견](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/implementation-discovery.md)에 따라 exact allowlisted source에서만 internal `WordBreak::KeepAll` 적용을 시험하고, computed CSS `word-break:normal`은 유지한다. 이를 통과하지 못하면 이 profile은 merge하지 않는다. [사전 비교와 관측 한계](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/README.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-transform-full-width-plan-review-20.md) · [계획 PR diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/plan-pr-diff-review-30.md) · [계획 보완 20개](./c11-4-anonymous-grid-text-transform-full-width-amendment-review-20.md) · [계획 보완 PR diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/plan-amendment-pr-diff-review-30.md)
 
 ## 목표와 범위
 
@@ -29,11 +29,15 @@ HTML fixture, Chrome observation, standard-based expected strings, screenshot과
 
 허용 폭 오차는 `0.03125 CSS px`이다. Chrome target의 computed `none`은 unsupported-value negative control이다. Chrome screenshot과 CSSOM은 full-width 변환 성공 증거가 아니며 제품과 Chrome 간 호환성 주장을 하지 않는다. Unicode expected는 `UnicodeData.txt`의 `<wide>` compatibility decomposition 및 CSS Text mapping 규칙을 입력의 고정 문자에 적용해 만든다. CSS Text CRD의 at-risk 표시는 명세가 CR 기간에 이 기능을 제거할 수 있음을 의미하므로 남은 범위에 유지한다.
 
+### 구현 중 발견한 line-breaking 경계
+
+Chrome 156 literal output candidate는 computed `word-break:normal`에서 min-content `20px`·두 줄이다. `spinon-text-layout`의 Parley `WordBreak::Normal`은 같은 변환 output에서 min-content `10px`·네 줄을 낸다. 계획 보완 검토를 거쳐 exact allowlisted string인 동안에만 내부 Parley setting을 `KeepAll`로 시도한다. HostDocument/CSSOM typed style의 computed `word-break:normal`은 그대로 검증하고 보존한다. 이 내부 accommodation은 일반 `word-break:keep-all` 지원이나 임의 text에 대한 CSS 동작으로 게시하지 않는다. 엔진 layout result가 computed style을 그대로 보존하는지, min/max contribution과 실제 line count가 각각 20/50px 및 2/1줄인지 검증한다. 불일치가 남으면 그 scene/profile을 fail-closed한다. [실패 관측과 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/implementation-discovery.md)
+
 ## 구현·검증 순서
 
 1. 이 계획과 precomparison을 20개의 서로 다른 실패 관점으로 검토하고 계획 PR 변경을 별도 30 관점으로 확인한다.
 2. 계획 PR을 `Rebase and merge`한 후 현재 checkout에서 최신 `main`으로 진행해 순차 구현 branch를 만든다. 별도 worktree와 동시 구현은 사용하지 않는다.
-3. `TextTransformMode::FullWidth`의 layout-buffer 변환을 추가한다. 원본 허용 집합과 phase order를 layout 전에 검증하고, 각 output scalar의 paragraph byte range를 대응하는 원본 UTF-16 range와 연결한다. 변환 후 Noto shaping 결과로 intrinsic min/max contribution과 line break를 계산한다.
+3. `TextTransformMode::FullWidth`의 layout-buffer 변환을 추가한다. 원본 허용 집합과 phase order를 layout 전에 검증하고, 각 output scalar의 paragraph byte range를 대응하는 원본 UTF-16 range와 연결한다. Exact transformed source에서만 Parley의 `KeepAll` break setting을 adapter 내부에 적용해 letter/digit sequence의 CSS soft-wrap contribution을 보존한다. Layout result는 computed `word-break:normal`을 계속 보고해야 하며 일반 input에는 이 override를 허용하지 않는다. Noto shaping 결과로 intrinsic min/max contribution과 line break를 계산한다.
 4. 기존 `c11-4-text-transform-unicode-fixture-test` opt-in의 anonymous Grid runtime allowlist에 `lang=ja` 고정 scene을 추가한다. Scene ID는 computed value, exact Grid owner, source text, language, document/style revision을 대신하지 않는다. Unsupported style 값, wrong/missing/inherited `lang`, punctuation, 다른 source, inline run과 stale snapshot은 layout publication 전에 거부한다.
 5. 동일한 4 scene을 text-layout, runtime adapter, FFI scene source 및 fixture dispatcher에 연결한다. fixture-only scene IDs와 source strings의 기본 archive 부재 및 opt-in positive control을 검사한다. 신규 scene에 대한 default CSS author admission이나 공개 API는 추가하지 않는다.
 6. focused/full relevant Rust suites, fixture-boundary checks, feature-scoped Clippy, `cargo fmt --all -- --check`, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator를 같은 source revision에서 검증한다. Chrome unsupported-value 결과는 제품 mismatch 수정으로 다루지 않는다.

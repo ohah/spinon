@@ -62,6 +62,7 @@
           text: node.textContent,
           width: node.getBoundingClientRect().width,
           height: node.getBoundingClientRect().height,
+          wordBreak: getComputedStyle(node).wordBreak,
           matchesTargetWidth: Math.abs(node.getBoundingClientRect().width - targetWidth) <= 1 / 64,
         }));
         return {
@@ -69,6 +70,7 @@
           expectedByCssText: figure.dataset.expected,
           sourceText: target.textContent,
           textTransform: targetStyle.textTransform,
+          wordBreak: targetStyle.wordBreak,
           fontFamily: targetStyle.fontFamily,
           fontSize: targetStyle.fontSize,
           targetTrackWidth: targetWidth,
