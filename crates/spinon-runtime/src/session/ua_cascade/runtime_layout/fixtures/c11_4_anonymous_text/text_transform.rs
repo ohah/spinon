@@ -11,6 +11,7 @@ pub(super) struct TextTransformScene {
     pub(super) computed_value: &'static str,
     pub(super) mode: TextTransformMode,
     pub(super) text: &'static str,
+    pub(super) expected_layout_text: &'static str,
     pub(super) is_min_content: bool,
     pub(super) min_content: f32,
     pub(super) max_content: f32,
@@ -18,13 +19,61 @@ pub(super) struct TextTransformScene {
     pub(super) max_content_height: f32,
 }
 
-pub(super) const SCENES: [TextTransformScene; 6] = [
+pub(super) const SCENES: [TextTransformScene; 12] = [
     scene(TextTransformMode::None, true),
     scene(TextTransformMode::None, false),
     scene(TextTransformMode::Uppercase, true),
     scene(TextTransformMode::Uppercase, false),
     scene(TextTransformMode::Lowercase, true),
     scene(TextTransformMode::Lowercase, false),
+    scene_with_text(
+        "text-transform-capitalize-none-min-content",
+        TextTransformMode::None,
+        "iiii ii",
+        "iiii ii",
+        true,
+        (11.0, 18.71875),
+    ),
+    scene_with_text(
+        "text-transform-capitalize-none-max-content",
+        TextTransformMode::None,
+        "iiii ii",
+        "iiii ii",
+        false,
+        (11.0, 18.71875),
+    ),
+    scene_with_text(
+        "text-transform-capitalize-min-content",
+        TextTransformMode::Capitalize,
+        "iiii ii",
+        "Iiii Ii",
+        true,
+        (11.1875, 19.09375),
+    ),
+    scene_with_text(
+        "text-transform-capitalize-max-content",
+        TextTransformMode::Capitalize,
+        "iiii ii",
+        "Iiii Ii",
+        false,
+        (11.1875, 19.09375),
+    ),
+    scene_with_text(
+        "text-transform-capitalize-mixed-case",
+        TextTransformMode::Capitalize,
+        "iIII ii",
+        "IIII Ii",
+        false,
+        (11.734375, 19.65625),
+    ),
+    scene_with_text(
+        "text-transform-capitalize-collapsed-spaces",
+        TextTransformMode::Capitalize,
+        "ii   ii",
+        "Ii Ii",
+        false,
+        (5.6875, 13.59375),
+    ),
 ];
 
 pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
@@ -34,10 +83,16 @@ pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
     "text-transform-uppercase-max-content",
     "text-transform-lowercase-min-content",
     "text-transform-lowercase-max-content",
+    "text-transform-capitalize-none-min-content",
+    "text-transform-capitalize-none-max-content",
+    "text-transform-capitalize-min-content",
+    "text-transform-capitalize-max-content",
+    "text-transform-capitalize-mixed-case",
+    "text-transform-capitalize-collapsed-spaces",
 ];
 
 const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformScene {
-    let (computed_value, id, min_content, max_content) = match mode {
+    let (computed_value, id, min_content, max_content, expected_layout_text) = match mode {
         TextTransformMode::None => (
             "none",
             if is_min_content {
@@ -47,6 +102,7 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
             },
             11.734375,
             19.46875,
+            "IIII ii",
         ),
         TextTransformMode::Uppercase => (
             "uppercase",
@@ -57,6 +113,7 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
             },
             11.734375,
             19.84375,
+            "IIII II",
         ),
         TextTransformMode::Lowercase => (
             "lowercase",
@@ -67,6 +124,18 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
             },
             11.0,
             18.71875,
+            "iiii ii",
+        ),
+        TextTransformMode::Capitalize => (
+            "capitalize",
+            if is_min_content {
+                "text-transform-capitalize-min-content"
+            } else {
+                "text-transform-capitalize-max-content"
+            },
+            11.1875,
+            19.09375,
+            "Iiii Ii",
         ),
     };
     TextTransformScene {
@@ -74,9 +143,37 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
         computed_value,
         mode,
         text: "IIII ii",
+        expected_layout_text,
         is_min_content,
         min_content,
         max_content,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
+    }
+}
+
+const fn scene_with_text(
+    id: &'static str,
+    mode: TextTransformMode,
+    text: &'static str,
+    expected_layout_text: &'static str,
+    is_min_content: bool,
+    intrinsic_sizes: (f32, f32),
+) -> TextTransformScene {
+    TextTransformScene {
+        id,
+        computed_value: match mode {
+            TextTransformMode::None => "none",
+            TextTransformMode::Uppercase => "uppercase",
+            TextTransformMode::Lowercase => "lowercase",
+            TextTransformMode::Capitalize => "capitalize",
+        },
+        mode,
+        text,
+        expected_layout_text,
+        is_min_content,
+        min_content: intrinsic_sizes.0,
+        max_content: intrinsic_sizes.1,
         min_content_height: 20.0,
         max_content_height: 10.0,
     }
@@ -156,9 +253,7 @@ fn unsupported(owner: HostNodeHandle, reason: &str) -> RuntimeLayoutFailure {
 #[cfg(test)]
 mod tests {
     use super::super::validate_snapshot_revision;
-    use super::{
-        SCENE_IDS, SCENES, find_scene, validate_computed_text_transform, validate_owner_language,
-    };
+    use super::{SCENE_IDS, SCENES, validate_computed_text_transform, validate_owner_language};
     use spinon_core::{
         AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostParent, NodeId,
         OwnerId, StyleRevision,
@@ -169,17 +264,20 @@ mod tests {
     use std::sync::Arc;
 
     #[test]
-    fn computed_text_transform_matrix_has_six_unique_mode_track_scenes() {
+    fn computed_text_transform_matrix_has_twelve_unique_mode_track_scenes() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 6);
+        assert_eq!(SCENES.len(), 12);
         assert_eq!(SCENE_IDS.len(), SCENES.len());
         assert_eq!(ids.len(), SCENES.len());
         assert_eq!(
             SCENES.iter().map(|scene| scene.id).collect::<Vec<_>>(),
             SCENE_IDS
         );
-        assert!(SCENES.iter().all(|scene| scene.text == "IIII ii"));
-        assert!(find_scene("text-transform-capitalize-min-content").is_none());
+        assert!(SCENES.iter().any(|scene| {
+            scene.id == "text-transform-capitalize-min-content"
+                && scene.text == "iiii ii"
+                && scene.expected_layout_text == "Iiii Ii"
+        }));
     }
 
     #[test]
@@ -195,7 +293,7 @@ mod tests {
                 scene.id
             );
         }
-        for value in ["capitalize", "full-width", "uppercase ", "Uppercase"] {
+        for value in ["full-width", "uppercase ", "Uppercase"] {
             let properties = BTreeMap::from([("text-transform".to_owned(), value.to_owned())]);
             assert!(
                 validate_computed_text_transform(

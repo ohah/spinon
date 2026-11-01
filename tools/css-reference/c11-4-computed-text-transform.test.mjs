@@ -77,7 +77,7 @@ test('C11.4 anonymous Grid text-transform stays fixed, opt-in, and source preser
   assert.match(text.runtime,
     /TEXT_TRANSFORM_SCENE_IDS[\s\S]*validate_computed_text_transform[\s\S]*text_transform,/);
   assert.match(text.runtimeTest,
-    /text_layout\.input\.sources\[0\]\.text, "IIII ii"[\s\S]*text_layout\.layout\.text, case\.expected_text/);
+    /text_layout\.input\.sources\[0\]\.text, case\.text[\s\S]*text_layout\.layout\.text, case\.expected_text/);
   assert.ok(text.validation.includes('xml:lang is outside the fixture profile'));
   assert.ok(text.validation.includes('Grid style owner lang must be exactly en'));
   assert.ok(text.trace.includes('"textTransform": format!("{:?}", style.text_transform)'));

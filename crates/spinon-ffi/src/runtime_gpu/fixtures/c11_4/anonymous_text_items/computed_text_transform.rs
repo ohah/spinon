@@ -3,38 +3,81 @@ struct Scene {
     id: &'static str,
     transform: &'static str,
     columns: &'static str,
+    text: &'static str,
 }
 
-const SCENES: [Scene; 6] = [
+const SCENES: [Scene; 12] = [
     Scene {
         id: "text-transform-none-min-content",
         transform: "none",
         columns: "min-content",
+        text: "IIII ii",
     },
     Scene {
         id: "text-transform-none-max-content",
         transform: "none",
         columns: "max-content",
+        text: "IIII ii",
     },
     Scene {
         id: "text-transform-uppercase-min-content",
         transform: "uppercase",
         columns: "min-content",
+        text: "IIII ii",
     },
     Scene {
         id: "text-transform-uppercase-max-content",
         transform: "uppercase",
         columns: "max-content",
+        text: "IIII ii",
     },
     Scene {
         id: "text-transform-lowercase-min-content",
         transform: "lowercase",
         columns: "min-content",
+        text: "IIII ii",
     },
     Scene {
         id: "text-transform-lowercase-max-content",
         transform: "lowercase",
         columns: "max-content",
+        text: "IIII ii",
+    },
+    Scene {
+        id: "text-transform-capitalize-none-min-content",
+        transform: "none",
+        columns: "min-content",
+        text: "iiii ii",
+    },
+    Scene {
+        id: "text-transform-capitalize-none-max-content",
+        transform: "none",
+        columns: "max-content",
+        text: "iiii ii",
+    },
+    Scene {
+        id: "text-transform-capitalize-min-content",
+        transform: "capitalize",
+        columns: "min-content",
+        text: "iiii ii",
+    },
+    Scene {
+        id: "text-transform-capitalize-max-content",
+        transform: "capitalize",
+        columns: "max-content",
+        text: "iiii ii",
+    },
+    Scene {
+        id: "text-transform-capitalize-mixed-case",
+        transform: "capitalize",
+        columns: "max-content",
+        text: "iIII ii",
+    },
+    Scene {
+        id: "text-transform-capitalize-collapsed-spaces",
+        transform: "capitalize",
+        columns: "max-content",
+        text: "ii   ii",
     },
 ];
 
@@ -54,10 +97,11 @@ root.setAttribute('lang', 'en');
 root.setAttribute('style', {style:?});
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
-root.appendChild(document.createTextNode('IIII ii'));
+root.appendChild(document.createTextNode({text:?}));
 return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds }};
 }})()"#,
         scene_id = scene.id,
+        text = scene.text,
     ))
 }
 
@@ -69,7 +113,7 @@ mod tests {
     #[test]
     fn computed_text_transform_generates_the_fixed_direct_language_scene_matrix() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 6);
+        assert_eq!(SCENES.len(), 12);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted text-transform scene");
@@ -78,10 +122,10 @@ mod tests {
             assert!(source.contains(&format!("grid-template-columns:{};", scene.columns)));
             assert!(source.contains(&format!("text-transform:{};", scene.transform)));
             assert!(source.contains("font-family:\\\"Noto Sans KR\\\";"));
-            assert!(source.contains("createTextNode('IIII ii')"));
+            assert!(source.contains(&format!("createTextNode({:?})", scene.text)));
             assert_eq!(source.matches("document.createTextNode(").count(), 1);
             assert_eq!(source.matches("document.createElement('div')").count(), 1);
         }
-        assert!(runtime_source("text-transform-capitalize-min-content").is_none());
+        assert!(runtime_source("unlisted-text-transform-scene").is_none());
     }
 }

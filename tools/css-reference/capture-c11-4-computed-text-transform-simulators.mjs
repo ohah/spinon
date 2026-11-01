@@ -13,13 +13,13 @@ const androidApk = resolve(repositoryRoot,
   'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
-const expectedPath = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json');
+const expectedPath = resolve(repositoryRoot, process.argv[4]
+  ?? 'spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json');
 const expectedValues = JSON.parse(await readFile(expectedPath, 'utf8'));
 const scenes = expectedValues.scenes;
 const runPrefix = `c114-computed-text-transform-${target}-${Date.now()}-${randomUUID().slice(0, 8)}`;
-const evidenceDirectory = resolve(repositoryRoot,
-  `spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/${runPrefix}`);
+const evidenceDirectory = resolve(repositoryRoot, process.argv[5]
+  ?? `spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/${runPrefix}`);
 const tolerance = expectedValues.toleranceCssPx;
 const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 
@@ -88,9 +88,10 @@ function deriveScene(scene) {
   near(scene.columnsPx, track, `${scene.id}: independently shaped track`);
   assert.equal(scene.rowsPx, scene.track === 'min-content' ? 20 : 10,
     `${scene.id}: auto row height`);
-  assert.equal(scene.sourceText, 'IIII ii');
-  const expectedTextTransform = scene.textTransform === 'none' ? 'None'
-    : scene.textTransform === 'uppercase' ? 'Uppercase' : 'Lowercase';
+  const expectedTextTransform = {
+    none: 'None', uppercase: 'Uppercase', lowercase: 'Lowercase', capitalize: 'Capitalize',
+  }[scene.textTransform];
+  assert.ok(expectedTextTransform, `${scene.id}: unsupported transform ${scene.textTransform}`);
   const lineAdvances = scene.track === 'min-content' ? wordAdvances : [maxContent];
   return {
     track, rowHeight: scene.rowsPx, minContent, maxContent,
@@ -101,6 +102,7 @@ function deriveScene(scene) {
 }
 
 function runtimeSceneID(scene) {
+  if (scene.runtimeSceneId) return scene.runtimeSceneId;
   const track = scene.track === 'min-content' ? 'min-content' : 'max-content';
   return `text-transform-${scene.textTransform}-${track}`;
 }
@@ -345,7 +347,7 @@ async function runIOS(udid) {
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  'Usage: capture-c11-4-computed-text-transform-simulators.mjs <android-avd|ios-simulator> <serial|UDID>');
+  'Usage: capture-c11-4-computed-text-transform-simulators.mjs <android-avd|ios-simulator> <serial|UDID> [expected.json] [evidence-directory]');
 assert.ok(deviceID, 'An explicit Android serial or iOS Simulator UDID is required');
 assert.equal(expectedValues.browser, 'HeadlessChrome 156.0.0.0 via Agent Browser');
 assert.equal(scenes.length, 6);

@@ -617,7 +617,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             textTransform[2], minContentTrack
                                     ? textTransform[2] : textTransform[7], 0, 0, 0,
                             textTransform[0], textTransform[1], textTransform[4], 10,
-                            "IIII ii", c114ComputedTextTransformLayoutText(sceneId),
+                            c114ComputedTextTransformSourceText(sceneId),
+                            c114ComputedTextTransformLayoutText(sceneId),
                             "Normal", "Normal", 0, 0, 0,
                             "Noto Sans KR", "en", "Strict", "Normal", advances);
             return new C114GenericDirectTextSceneExpectation(
@@ -12944,11 +12945,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         double unbrokenAdvance;
         switch (mode) {
             case "None":
-                minContent = 11.734375;
-                maxContent = 19.46875;
-                firstWordAdvance = 11.72;
-                secondWordAdvance = 5.5;
-                unbrokenAdvance = 19.46;
+                if (sceneId.startsWith("text-transform-capitalize-none-")) {
+                    minContent = 11.0;
+                    maxContent = 18.71875;
+                    firstWordAdvance = 11.0;
+                    secondWordAdvance = 5.5;
+                    unbrokenAdvance = 18.74;
+                } else {
+                    minContent = 11.734375;
+                    maxContent = 19.46875;
+                    firstWordAdvance = 11.72;
+                    secondWordAdvance = 5.5;
+                    unbrokenAdvance = 19.46;
+                }
                 break;
             case "Uppercase":
                 minContent = 11.734375;
@@ -12963,6 +12972,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 firstWordAdvance = 11.0;
                 secondWordAdvance = 5.5;
                 unbrokenAdvance = 18.74;
+                break;
+            case "Capitalize":
+                if (sceneId.endsWith("mixed-case")) {
+                    minContent = 11.734375;
+                    maxContent = 19.65625;
+                    firstWordAdvance = 11.72;
+                    secondWordAdvance = 5.68;
+                    unbrokenAdvance = 19.64;
+                } else if (sceneId.endsWith("collapsed-spaces")) {
+                    minContent = 5.6875;
+                    maxContent = 13.59375;
+                    firstWordAdvance = 5.68;
+                    secondWordAdvance = 5.68;
+                    unbrokenAdvance = 13.60;
+                } else {
+                    minContent = 11.1875;
+                    maxContent = 19.09375;
+                    firstWordAdvance = 11.18;
+                    secondWordAdvance = 5.68;
+                    unbrokenAdvance = 19.10;
+                }
                 break;
             default:
                 return null;
@@ -12984,14 +13014,36 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "text-transform-uppercase-max-content": return "Uppercase";
             case "text-transform-lowercase-min-content":
             case "text-transform-lowercase-max-content": return "Lowercase";
+            case "text-transform-capitalize-none-min-content":
+            case "text-transform-capitalize-none-max-content": return "None";
+            case "text-transform-capitalize-min-content":
+            case "text-transform-capitalize-max-content":
+            case "text-transform-capitalize-mixed-case":
+            case "text-transform-capitalize-collapsed-spaces": return "Capitalize";
             default: return null;
         }
     }
 
     private static String c114ComputedTextTransformLayoutText(String sceneId) {
+        if ("text-transform-capitalize-none-min-content".equals(sceneId)
+                || "text-transform-capitalize-none-max-content".equals(sceneId)) return "iiii ii";
+        if ("text-transform-capitalize-min-content".equals(sceneId)
+                || "text-transform-capitalize-max-content".equals(sceneId)) return "Iiii Ii";
+        if ("text-transform-capitalize-mixed-case".equals(sceneId)) return "IIII Ii";
+        if ("text-transform-capitalize-collapsed-spaces".equals(sceneId)) return "Ii Ii";
         String mode = c114ComputedTextTransformStyle(sceneId);
         if ("Uppercase".equals(mode)) return "IIII II";
         if ("Lowercase".equals(mode)) return "iiii ii";
+        return "IIII ii";
+    }
+
+    private static String c114ComputedTextTransformSourceText(String sceneId) {
+        if ("text-transform-capitalize-none-min-content".equals(sceneId)
+                || "text-transform-capitalize-none-max-content".equals(sceneId)
+                || "text-transform-capitalize-min-content".equals(sceneId)
+                || "text-transform-capitalize-max-content".equals(sceneId)) return "iiii ii";
+        if ("text-transform-capitalize-mixed-case".equals(sceneId)) return "iIII ii";
+        if ("text-transform-capitalize-collapsed-spaces".equals(sceneId)) return "ii   ii";
         return "IIII ii";
     }
 

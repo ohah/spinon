@@ -2543,6 +2543,9 @@ test('C11.4 computed text-transform scenes stay behind fixture-test gates', asyn
     'text-transform-none-min-content', 'text-transform-none-max-content',
     'text-transform-uppercase-min-content', 'text-transform-uppercase-max-content',
     'text-transform-lowercase-min-content', 'text-transform-lowercase-max-content',
+    'text-transform-capitalize-none-min-content', 'text-transform-capitalize-none-max-content',
+    'text-transform-capitalize-min-content', 'text-transform-capitalize-max-content',
+    'text-transform-capitalize-mixed-case', 'text-transform-capitalize-collapsed-spaces',
   ];
   assert.match(runtimeGpu,
     /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
@@ -2606,7 +2609,7 @@ test('C11.4 anonymous Grid hyphens auto stays fixture-only with exact English so
   assert.ok(normalize.includes('hypher::MAX_INLINE_SIZE'));
   assert.ok(normalize.includes('source_utf16: position..position'));
   assert.ok(textTests.includes('c114_hyphens_auto_fails_closed_for_language_word_and_soft_hyphen_outside_profile'));
-  assert.match(runtimeCatalog, /const SCENE_IDS: \[&str; 112\]/);
+  assert.match(runtimeCatalog, /const SCENE_IDS: \[&str; 118\]/);
   assert.match(runtimeScenes, /pub\(super\) const SCENES: \[Scene; 30\]/);
   assert.match(ffiCatalog, /const SCENE_IDS: \[&str; 85\]/);
   assert.match(ffiScenes, /computed_hyphens_generates_the_fixed_direct_text_matrix/);

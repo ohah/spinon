@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid text-transform capitalize oracle</title>
+  <style>
+    @font-face {
+      font-family: "Noto Sans KR";
+      src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+    }
+    body { margin: 16px; color: #fff; background: #18222d; font: 14px/1.4 sans-serif; }
+    main { display: grid; grid-template-columns: repeat(3, max-content); gap: 16px; }
+    figure { margin: 0; padding: 10px; background: #263645; }
+    figure > div { box-sizing: border-box; display: grid; width: 120px; height: auto; grid-template-rows: auto; gap: 0; justify-items: start; align-items: start; align-content: start; justify-content: start; font-family: "Noto Sans KR"; font-size: 10px; font-weight: 400; font-style: normal; line-height: 10px; white-space: normal; word-break: normal; line-break: auto; overflow-wrap: normal; direction: ltr; text-align: start; letter-spacing: normal; word-spacing: 0px; text-indent: 0px; }
+    figure[data-mode="none"] > div { text-transform: none; }
+    figure[data-mode="capitalize"] > div { text-transform: capitalize; }
+    figure[data-track="min"] > div { grid-template-columns: min-content; }
+    figure[data-track="max"] > div { grid-template-columns: max-content; }
+    figcaption { margin-bottom: 6px; }
+    output { display: block; white-space: pre-wrap; margin-top: 18px; font: 12px/1.35 ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <main id="scenes">
+    <figure data-mode="none" data-track="min"><figcaption>none / min-content</figcaption><div id="transform-none-min" lang="en">iiii ii</div></figure>
+    <figure data-mode="none" data-track="max"><figcaption>none / max-content</figcaption><div id="transform-none-max" lang="en">iiii ii</div></figure>
+    <figure data-mode="capitalize" data-track="min"><figcaption>capitalize / min-content</figcaption><div id="transform-capitalize-min" lang="en">iiii ii</div></figure>
+    <figure data-mode="capitalize" data-track="max"><figcaption>capitalize / max-content</figcaption><div id="transform-capitalize-max" lang="en">iiii ii</div></figure>
+    <figure data-mode="capitalize" data-track="max"><figcaption>capitalize / mixed-case</figcaption><div id="transform-capitalize-mixed-case" lang="en">iIII ii</div></figure>
+    <figure data-mode="capitalize" data-track="max"><figcaption>capitalize / collapsed spaces</figcaption><div id="transform-capitalize-collapsed-spaces" lang="en">ii   ii</div></figure>
+  </main>
+  <output id="observations">Loading Noto Sans KR…</output>
+  <script>
+    (async () => {
+      await document.fonts.load('400 10px "Noto Sans KR"');
+      await document.fonts.ready;
+      const rows = [...document.querySelectorAll('figure')].map((figure) => {
+        const item = figure.querySelector('div');
+        const style = getComputedStyle(item);
+        const range = new Range();
+        range.selectNodeContents(item);
+        return {
+          id: item.id,
+          text: item.textContent,
+          transform: style.textTransform,
+          fontFamily: style.fontFamily,
+          fontSize: style.fontSize,
+          column: style.gridTemplateColumns,
+          row: style.gridTemplateRows,
+          rangeRects: [...range.getClientRects()].map(({ x, y, width, height }) => ({ x, y, width, height })),
+          rootRect: (() => { const { x, y, width, height } = item.getBoundingClientRect(); return { x, y, width, height }; })(),
+        };
+      });
+      document.querySelector('#observations').textContent = JSON.stringify({
+        userAgent: navigator.userAgent,
+        dpr: devicePixelRatio,
+        viewport: { width: innerWidth, height: innerHeight },
+        fontLoaded: document.fonts.check('400 10px "Noto Sans KR"'),
+        fontStatus: document.fonts.status,
+        rows,
+      }, null, 2);
+    })();
+  </script>
+</body>
+</html>
