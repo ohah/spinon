@@ -1,0 +1,24 @@
+scene	result	text_transform	track	line_count	grid_column_px	grid_row_px	trace_parts	error
+text-transform-none-min-content	FAIL	none	min-content	2				text-transform-none-min-content: summary missing
+text-transform-none-max-content	FAIL	none	max-content	1				text-transform-none-max-content: summary missing
+text-transform-uppercase-min-content	FAIL	uppercase	min-content	2				text-transform-uppercase-min-content: summary missing
+text-transform-uppercase-max-content	FAIL	uppercase	max-content	1				text-transform-uppercase-max-content: summary missing
+text-transform-lowercase-min-content	FAIL	lowercase	min-content	2				text-transform-lowercase-min-content: summary missing
+text-transform-lowercase-max-content	FAIL	lowercase	max-content	1				text-transform-lowercase-max-content: summary missing
+text-transform-capitalize-none-min-content	FAIL	none	min-content	2				text-transform-capitalize-none-min-content: summary missing
+text-transform-capitalize-none-max-content	FAIL	none	max-content	1				text-transform-capitalize-none-max-content: summary missing
+text-transform-capitalize-min-content	FAIL	capitalize	min-content	2				text-transform-capitalize-min-content: summary missing
+text-transform-capitalize-max-content	FAIL	capitalize	max-content	1				text-transform-capitalize-max-content: summary missing
+text-transform-capitalize-mixed-case	FAIL	capitalize	max-content	1				text-transform-capitalize-mixed-case: summary missing
+text-transform-capitalize-collapsed-spaces	FAIL	capitalize	max-content	1				text-transform-capitalize-collapsed-spaces: summary missing
+text-transform-unicode-sharp-s-min-content	PASS	capitalize	min-content	1	25.169998168945312	10	14	none
+text-transform-unicode-sharp-s-max-content	PASS	capitalize	max-content	1	25.169998168945312	10	15	none
+text-transform-unicode-source-split-max-content	PASS	capitalize	max-content	1	25.169998168945312	10	15	none
+text-transform-unicode-accented-max-content	PASS	capitalize	max-content	1	25.94999885559082	10	15	none
+text-transform-unicode-combining-max-content	PASS	capitalize	max-content	1	20.459999084472656	10	15	none
+text-transform-unicode-hyphen-boundary-max-content	PASS	capitalize	max-content	1	56.13999557495117	10	15	none
+text-transform-unicode-apostrophe-word-max-content	PASS	capitalize	max-content	1	30.270000457763672	10	15	none
+text-transform-unicode-opening-punctuation-max-content	PASS	capitalize	max-content	1	30.040000915527344	10	15	none
+text-transform-unicode-number-first-none	PASS	capitalize	max-content	1	24.969999313354492	10	15	none
+text-transform-unicode-number-first-control	PASS	none	max-content	1	24.969999313354492	10	15	none
+text-transform-unicode-collapsed-space-max-content	PASS	capitalize	max-content	1	53.3599967956543	10	15	none

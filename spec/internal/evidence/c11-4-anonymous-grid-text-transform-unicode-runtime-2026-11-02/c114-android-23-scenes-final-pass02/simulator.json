@@ -1,0 +1,11 @@
+{
+  "target": "Android API 37 ARM64 AVD",
+  "serial": "emulator-5556",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "apkSha256": "1dd1a1fc51fce955d3be0fd5d8dc8427641ffc4a3d71c8612584c017ef9b2aa1",
+  "installedApkSha256": "1dd1a1fc51fce955d3be0fd5d8dc8427641ffc4a3d71c8612584c017ef9b2aa1",
+  "sourceHead": "84d70e8eeb500661cc1cabfda3be091fdbfa04a3"
+}
