@@ -354,6 +354,7 @@ fn debug_raw_runtime_output(
             font_style: FontStyleMode::Normal,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            hyphens: None,
             locale: None,
             direction: TextParagraphDirection::Ltr,
             line_break: LineBreakMode::Normal,

@@ -40,6 +40,7 @@ pub enum TextLayoutError {
     UnsupportedPreWrapTabProfile(NodeId),
     UnsupportedBreakSpacesTabProfile(NodeId),
     UnsupportedTextTransformProfile(NodeId),
+    UnsupportedHyphensProfile(NodeId),
     MissingGlyphCoverage {
         paragraph: NodeId,
         text_range: Range<usize>,
@@ -155,6 +156,10 @@ impl fmt::Display for TextLayoutError {
             Self::UnsupportedTextTransformProfile(node) => write!(
                 formatter,
                 "paragraph {node}의 text-transform 입력이 고정 ASCII direct-text profile과 일치하지 않습니다"
+            ),
+            Self::UnsupportedHyphensProfile(node) => write!(
+                formatter,
+                "paragraph {node}의 hyphens 입력이 고정 Ahem 10px ASCII direct-text profile과 일치하지 않습니다"
             ),
             Self::MissingGlyphCoverage {
                 paragraph,

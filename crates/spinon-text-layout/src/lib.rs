@@ -10,9 +10,9 @@ mod snapshot;
 pub use engine::TextLayoutEngine;
 pub use error::TextLayoutError;
 pub use model::{
-    FontStyleMode, InlineBoxStyle, InlineEdges, InlineRunStyle, LigatureMode, LineBreakMode,
-    OverflowWrapMode, ParagraphInput, ParagraphStyle, TabSize, TextDirection, TextIndentFlags,
-    TextSource, TextTransformMode, WhiteSpaceMode, WordBreakMode,
+    FontStyleMode, HyphensMode, InlineBoxStyle, InlineEdges, InlineRunStyle, LigatureMode,
+    LineBreakMode, OverflowWrapMode, ParagraphInput, ParagraphStyle, TabSize, TextDirection,
+    TextIndentFlags, TextSource, TextTransformMode, WhiteSpaceMode, WordBreakMode,
 };
 pub use raster::{GlyphBitmap, GlyphBitmapContent, TextGlyphRaster, TextGlyphRasterSnapshot};
 pub use snapshot::{

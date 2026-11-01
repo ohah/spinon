@@ -4,6 +4,8 @@ use selectors::matching::{
 use std::collections::{BTreeMap, HashMap};
 
 use spinon_core::NodeId;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use style::{Atom, custom_properties::Name};
 use style::{
     applicable_declarations::ApplicableDeclarationList,
     context::{CascadeInputs, TreeCountingCaches},
@@ -190,6 +192,12 @@ pub(super) fn computed_element_output(
     if word_break_is_break_word && computed_properties.contains_key("word-break") {
         computed_properties.insert("word-break".to_owned(), "break-word".to_owned());
     }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        && let Some(value) = computed_hyphens_alias_value(computed)
+    {
+        computed_properties.insert("hyphens".to_owned(), value);
+    }
     if computed_properties.contains_key("aspect-ratio") {
         computed_properties.insert(
             "aspect-ratio".to_owned(),
@@ -293,6 +301,15 @@ pub(super) fn computed_element_output(
         computed_color,
         computed_background_color,
     })
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn computed_hyphens_alias_value(computed: &ComputedValues) -> Option<String> {
+    let name = Name::from(Atom::from("shyph"));
+    computed
+        .custom_properties()
+        .get_for_cssom(&name)
+        .map(|value| value.to_variable_value().css_text().to_owned())
 }
 
 pub(super) struct ComputedElementSourceOverrides {

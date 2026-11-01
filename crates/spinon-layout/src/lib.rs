@@ -64,12 +64,12 @@ pub use intrinsic_measurement::{
 pub use intrinsic_size::{LayoutIntrinsicSize, LayoutIntrinsicSizeSnapshot};
 pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use spinon_text_layout::{
-    FontRegistryRevision, FontStyleMode, GlyphBitmap, GlyphBitmapContent, InlineFragment,
-    InlineRunStyle, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, ParagraphStyle,
-    TabSize, TextDirection as TextParagraphDirection, TextGlyph, TextGlyphRasterSnapshot,
-    TextIndentFlags, TextIntrinsicLogicalSizes, TextLayoutEngine, TextLayoutSnapshot, TextLine,
-    TextRect, TextRun, TextSource, TextSourceRange, TextTransformMode, WhiteSpaceMode,
-    WordBreakMode,
+    FontRegistryRevision, FontStyleMode, GlyphBitmap, GlyphBitmapContent, HyphensMode,
+    InlineFragment, InlineRunStyle, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput,
+    ParagraphStyle, TabSize, TextDirection as TextParagraphDirection, TextGlyph,
+    TextGlyphRasterSnapshot, TextIndentFlags, TextIntrinsicLogicalSizes, TextLayoutEngine,
+    TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource, TextSourceRange,
+    TextTransformMode, WhiteSpaceMode, WordBreakMode,
 };
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,

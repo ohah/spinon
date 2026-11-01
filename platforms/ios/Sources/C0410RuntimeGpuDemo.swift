@@ -471,12 +471,16 @@ private func c114GenericDirectTextExpectation(
     }
     if let wordBreak = c114ComputedWordBreakScene(sceneID) {
         let textWidth = max(wordBreak.trackWidth, wordBreak.lineAdvances.max() ?? 0)
+        let layoutText = c114ComputedHyphensStyle(sceneID) == "None"
+            ? wordBreak.text.replacingOccurrences(of: "\u{00ad}", with: "\u{2060}")
+            : wordBreak.text
+        let textNode = c114IsAnonymousHyphensInheritedScene(sceneID) ? 3 : 2
         let item = c114GenericTextItem(
-            node: 2, x: 0, width: wordBreak.trackWidth, height: wordBreak.rowHeight,
+            node: textNode, x: 0, width: wordBreak.trackWidth, height: wordBreak.rowHeight,
             minContent: wordBreak.minContent, maxContent: wordBreak.maxContent,
             minContentHeight: wordBreak.minContentHeight,
             maxContentHeight: wordBreak.maxContentHeight,
-            rawText: wordBreak.text, layoutText: wordBreak.text,
+            rawText: wordBreak.text, layoutText: layoutText,
             whiteSpace: "Normal", wordBreak: wordBreak.wordBreak,
             availableWidth: wordBreak.trackWidth, textWidth: textWidth,
             fontFamily: wordBreak.fontFamily,
@@ -486,7 +490,8 @@ private func c114GenericDirectTextExpectation(
             lineAdvances: wordBreak.lineAdvances
         )
         return C114GenericDirectTextSceneExpectation(
-            rootWidth: 120, rootHeight: wordBreak.rowHeight,
+            rootWidth: c114AnonymousHyphensRootWidth(sceneID),
+            rootHeight: wordBreak.rowHeight,
             columns: [wordBreak.trackWidth], items: [item]
         )
     }
@@ -1376,6 +1381,13 @@ private func c114SingleTrackOverflowAutoMinimumState(
 }
 
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    if ["hyphens-auto-expected-reject", "hyphens-invalid-expected-reject"].contains(sceneID) {
+        #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+        return true
+        #else
+        return false
+        #endif
+    }
     if c114ComputedWordBreakScene(sceneID) != nil { return true }
     if c114ComputedWordSpacingScene(sceneID) != nil { return true }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return true }
@@ -1872,6 +1884,8 @@ private func c114CalcNeighborItemFrames(_ sceneID: String) -> [C114PercentageNei
 private func c114CalcNeighborExpectedRejection(_ sceneID: String)
     -> (code: String, property: String, nodeID: String)? {
     switch sceneID {
+    case "hyphens-auto-expected-reject", "hyphens-invalid-expected-reject":
+        return ("unsupported_c114_hyphens_value", "computed hyphens", "1")
     case "calc-neighbor-col-fill-extra-term":
         return ("unsupported_computed_value", "grid-template-columns", "1")
     case "calc-neighbor-col-max-content":
@@ -6792,7 +6806,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     } ? 2 : 1
     for (index, input) in inputs.enumerated() {
         let expected = scene.items[index]
-        guard c114GenericJSONInteger(input["grid"]) == 1,
+        guard c114GenericJSONInteger(input["grid"]) == c114ExpectedHyphensGridNode(sceneID),
               c114GenericJSONInteger(input["node"]) == expectedNodes[index],
               c114GenericJSONInteger(input["sourceOrder"]) == index,
               let textSources = input["textSources"] as? [[String: Any]],
@@ -6880,8 +6894,9 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     }
     if anonymousTextScene {
         let minContentTrack = c114IsMinContentTextTrackScene(sceneID)
-        let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
-            && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px"))
+        let fixedOverflowWrapTrack = (c114ComputedOverflowWrapMode(sceneID) != nil
+            && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px")))
+            || c114IsAnonymousHyphensFixedTrack(sceneID)
         let expectedMinContentWidthNodes = fixedOverflowWrapTrack ? Set<Int>() : Set(expectedNodes)
         let expectedMaxContentWidthNodes = fixedOverflowWrapTrack || minContentTrack
             ? Set<Int>() : Set(expectedNodes)
@@ -7097,6 +7112,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
         $0.fontFamily == "Noto Sans KR"
     } ? 2 : 1
     let expectedTextTransform = c114ComputedTextTransformStyle(sceneID) ?? "None"
+    let expectedHyphens = c114ComputedHyphensStyle(sceneID)
     for (index, expected) in scene.items.enumerated() {
         let layout = layouts[index]
         let expectedTextWidth = expected.textWidth != expected.width
@@ -7133,6 +7149,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONString(style["whiteSpace"]) == expected.whiteSpace,
               c114GenericJSONString(style["wordBreak"]) == expected.wordBreak,
               c114GenericJSONString(style["overflowWrap"]) == expected.overflowWrap,
+              c114GenericJSONString(style["hyphens"]) == expectedHyphens,
               c114GenericJSONString(style["direction"]) == "Ltr",
               c114GenericJSONNear(style["letterSpacing"], expected: expected.letterSpacing, tolerance: 0),
               c114GenericJSONNear(style["wordSpacing"], expected: expected.wordSpacing, tolerance: 0),
@@ -7382,7 +7399,7 @@ private func c114GenericDirectTextTraceMatches(
     guard let scene = c114GenericDirectTextExpectation(sceneID) else { return false }
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
-          c114GenericJSONInteger(traces[0]["grid"]) == 1,
+          c114GenericJSONInteger(traces[0]["grid"]) == c114ExpectedHyphensGridNode(sceneID),
           let passes = traces[0]["passes"] as? [[String: Any]],
           passes.count == 2,
           passes.enumerated().allSatisfy({ index, pass in
@@ -7396,8 +7413,9 @@ private func c114GenericDirectTextTraceMatches(
         return false
     }
     let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
-    let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
-        && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px"))
+    let fixedOverflowWrapTrack = (c114ComputedOverflowWrapMode(sceneID) != nil
+        && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px")))
+        || c114IsAnonymousHyphensFixedTrack(sceneID)
     let columnTracksMatch = fixedOverflowWrapTrack
         ? c114GenericFixedTrackSizesMatch(passes[0], expected: scene.columns)
         : c114GenericTrackSizesMatch(
@@ -8654,7 +8672,13 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if let wordBreak = c114ComputedWordBreakScene(sceneID) {
-        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
+        if c114IsAnonymousHyphensInheritedScene(sceneID) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=320,height="
+                + "\(c114GenericFrameNumber(wordBreak.rowHeight));"
+                + "1:node=2,x=0,y=0,width=30,height=\(c114GenericFrameNumber(wordBreak.rowHeight))]"
+        }
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width="
+            + "\(c114GenericFrameNumber(c114AnonymousHyphensRootWidth(sceneID))),"
             + "height=\(c114GenericFrameNumber(wordBreak.rowHeight))]"
     }
     if let textIndent = c114ComputedTextIndentScene(sceneID) {
@@ -10405,7 +10429,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
-    if c114ComputedWordBreakScene(sceneID) != nil { return 1 }
+    if c114ComputedWordBreakScene(sceneID) != nil {
+        return c114IsAnonymousHyphensInheritedScene(sceneID) ? 2 : 1
+    }
     if c114ComputedTextIndentScene(sceneID) != nil { return 1 }
     if c114ComputedTextTransformScene(sceneID) != nil { return 1 }
     if c114ComputedWordSpacingScene(sceneID) != nil { return 1 }
@@ -10732,6 +10758,7 @@ private func c114ComputedWordBreakScene(
     lineAdvances: [Double])? {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     if let combined = c114CombinedWordBreakOverflowWrapScene(sceneID) { return combined }
+    if let hyphens = c114ComputedHyphensScene(sceneID) { return hyphens }
     switch sceneID {
     case "word-break-normal-unbroken-min-content", "word-break-normal-unbroken-max-content":
         return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 40, 10, [40])
@@ -10810,6 +10837,103 @@ private func c114ComputedWordBreakScene(
     #endif
 }
 
+private func c114ComputedHyphensScene(
+    _ sceneID: String
+) -> (text: String, language: String, fontFamily: String, wordBreak: String,
+    minContent: Double, maxContent: Double, minContentHeight: Double,
+    maxContentHeight: Double, trackWidth: Double, rowHeight: Double,
+    lineAdvances: [Double])? {
+    guard sceneID.hasPrefix("hyphens-"),
+          !sceneID.hasSuffix("expected-reject") else { return nil }
+    let none = sceneID.contains("-none-")
+    let visible = sceneID.contains("-visible-")
+    let unbroken = sceneID.contains("-unbroken-")
+    let multiple = sceneID.contains("-multiple-")
+    let minTrack = sceneID.hasSuffix("-min")
+    let maxTrack = sceneID.hasSuffix("-max")
+    let fixedTrack = sceneID.hasSuffix("-fixed-30")
+    guard minTrack || maxTrack || fixedTrack else { return nil }
+
+    let text: String
+    let minContent: Double
+    let maxContent: Double
+    let minContentHeight: Double
+    let minLines: [Double]
+    let maxLines: [Double]
+    if visible {
+        text = "AB-CD"
+        minContent = 30
+        maxContent = 50
+        minContentHeight = 20
+        minLines = [30, 20]
+        maxLines = [50]
+    } else if unbroken {
+        text = "ABCD"
+        minContent = 40
+        maxContent = 40
+        minContentHeight = 10
+        minLines = [40]
+        maxLines = minLines
+    } else if multiple && none {
+        text = "AB\u{00ad}CD\u{00ad}EF"
+        minContent = 60
+        maxContent = 60
+        minContentHeight = 10
+        minLines = [60]
+        maxLines = minLines
+    } else if multiple {
+        text = "AB\u{00ad}CD\u{00ad}EF"
+        minContent = 30
+        maxContent = 60
+        minContentHeight = 30
+        minLines = [30, 30, 20]
+        maxLines = [60]
+    } else if none {
+        text = "AB\u{00ad}CD"
+        minContent = 40
+        maxContent = 40
+        minContentHeight = 10
+        minLines = [40]
+        maxLines = minLines
+    } else {
+        text = "AB\u{00ad}CD"
+        minContent = 30
+        maxContent = 40
+        minContentHeight = 20
+        minLines = [30, 20]
+        maxLines = [40]
+    }
+    let maxContentHeight = 10.0
+    let trackWidth = minTrack ? minContent : maxTrack ? maxContent : 30
+    let rowHeight = minTrack ? minContentHeight : maxTrack ? maxContentHeight : minContentHeight
+    return (
+        text, "en", "Ahem", "Normal", minContent, maxContent,
+        minContentHeight, maxContentHeight, trackWidth, rowHeight,
+        minTrack || fixedTrack ? minLines : maxLines
+    )
+}
+
+private func c114AnonymousHyphensRootWidth(_ sceneID: String) -> Double {
+    if c114IsAnonymousHyphensInheritedScene(sceneID) { return 320 }
+    return c114IsAnonymousHyphensFixedTrack(sceneID) ? 30 : 120
+}
+
+private func c114IsAnonymousHyphensInheritedScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("hyphens-inherited-")
+}
+
+private func c114ExpectedHyphensGridNode(_ sceneID: String) -> Int {
+    c114IsAnonymousHyphensInheritedScene(sceneID) ? 2 : 1
+}
+
+private func c114IsAnonymousHyphensMinTrack(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("hyphens-") && sceneID.hasSuffix("-min")
+}
+
+private func c114IsAnonymousHyphensFixedTrack(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("hyphens-") && sceneID.hasSuffix("-fixed-30")
+}
+
 private func c114CombinedWordBreakOverflowWrapScene(
     _ sceneID: String
 ) -> (text: String, language: String, fontFamily: String, wordBreak: String,
@@ -10850,10 +10974,16 @@ private func c114CombinedWordBreakOverflowWrapScene(
 }
 
 private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
+    if sceneID.hasPrefix("hyphens-") { return "Normal" }
     guard sceneID.hasPrefix("line-break-") else { return nil }
     if sceneID.contains("-normal-") { return "Normal" }
     if sceneID.contains("-loose-") { return "Loose" }
     return "Strict"
+}
+
+private func c114ComputedHyphensStyle(_ sceneID: String) -> String? {
+    guard sceneID.hasPrefix("hyphens-") else { return nil }
+    return sceneID.contains("-none-") ? "None" : "Manual"
 }
 
 private func c114ComputedOverflowWrapMode(_ sceneID: String) -> String? {
@@ -11024,6 +11154,7 @@ private func c114ComputedTextIndentFlagsScene(
 }
 
 private func c114IsMinContentTextTrackScene(_ sceneID: String) -> Bool {
+    if c114IsAnonymousHyphensMinTrack(sceneID) { return true }
     if sceneID.hasPrefix("text-indent-flags-") {
         return sceneID.contains("-min-content-")
     }
@@ -17233,7 +17364,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 log("SPINON_C114_GRID_REJECTION_DETAIL run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) report=\(report.suffix(1600))")
                 let status = String(report.split(separator: " ", maxSplits: 1).first ?? "status=-1")
                 let code = report.contains(expected.code) ? expected.code : "missing"
-                let property = report.contains("property=Some(\"\(expected.property)\")")
+                let propertyMatches = expected.property == "computed hyphens"
+                    ? report.contains("property=Some(\"computed hyphens ")
+                    : report.contains("property=Some(\"\(expected.property)\")")
+                let property = propertyMatches
                     ? expected.property : "missing"
                 let nodeID = report.contains("node=Some(\(expected.nodeID))")
                     ? expected.nodeID : "missing"

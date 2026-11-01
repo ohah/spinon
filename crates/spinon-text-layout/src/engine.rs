@@ -151,10 +151,25 @@ impl TextLayoutEngine {
         let mut lines = Vec::new();
         let mut runs = Vec::new();
         let mut fragments = BTreeMap::<(NodeId, usize), TextRect>::new();
+        let line_count = layout.lines().len();
         for (line_index, line) in layout.lines().enumerate() {
             let metrics = line.metrics();
             let text_range = line.text_range();
-            let visible_line_advance = visible_line_advance(metrics, input.style.letter_spacing);
+            let line_ends_with_soft_hyphen = valid_text_range(&text_range, &normalized.text)
+                && normalized.text[..text_range.end].ends_with('\u{00ad}');
+            let discretionary_hyphen_advance = if input.style.hyphens
+                == Some(crate::HyphensMode::Manual)
+                && line_index + 1 < line_count
+                && line_ends_with_soft_hyphen
+            {
+                // Parley 0.12 retains the SHY break but reports zero advance for it. The fixed
+                // C11.4 Ahem profile gives the inserted U+2010 one em of advance.
+                input.style.font_size
+            } else {
+                0.0
+            };
+            let visible_line_advance = visible_line_advance(metrics, input.style.letter_spacing)
+                + discretionary_hyphen_advance;
             if !valid_text_range(&text_range, &normalized.text)
                 || ![
                     metrics.advance,

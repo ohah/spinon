@@ -444,6 +444,7 @@ fn ahem_paragraph_style(font_size: f32) -> ParagraphStyle {
         font_style: FontStyleMode::Normal,
         white_space: WhiteSpaceMode::Normal,
         word_break: WordBreakMode::Normal,
+        hyphens: None,
         locale: None,
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,

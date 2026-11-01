@@ -305,7 +305,7 @@ fn inline_unsupported_properties_fail_before_snapshot_or_layout_creation() {
 }
 
 #[test]
-fn hyphens_inline_declaration_is_reported_as_a_stylo_unknown_property() {
+fn hyphens_inline_declaration_is_exposed_as_a_computed_property() {
     let fixture = positive_fixture_with_inline_style(SCENES[0], "hyphens:none");
     let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
         &fixture.view,
@@ -313,14 +313,24 @@ fn hyphens_inline_declaration_is_reported_as_a_stylo_unknown_property() {
         VIEWPORT,
         StyleRevision::INITIAL,
     )
-    .expect("Stylo 0.22 ignores this unknown declaration and returns a snapshot");
-    let diagnostic = snapshot
-        .diagnostics
+    .expect("the limited hyphens adapter returns the computed snapshot");
+    let style = snapshot
+        .elements
         .iter()
-        .find(|diagnostic| diagnostic.node_id == Some(fixture.items[0].id()))
-        .expect("the inline property parser observation must identify its element");
-    assert!(diagnostic.diagnostic.message.contains("'hyphens'"));
-    assert!(diagnostic.diagnostic.message.contains("UnknownProperty"));
+        .find(|style| style.node_id == fixture.items[0].id())
+        .expect("the inline declaration must identify its element");
+    assert_eq!(
+        style.properties.get("hyphens").map(String::as_str),
+        Some("none")
+    );
+    assert!(
+        !snapshot.diagnostics.iter().any(|diagnostic| {
+            diagnostic.node_id == Some(fixture.items[0].id())
+                && diagnostic.diagnostic.message.contains("'hyphens'")
+                && diagnostic.diagnostic.message.contains("UnknownProperty")
+        }),
+        "hyphens must not be reported as an unknown property"
+    );
 }
 
 #[test]

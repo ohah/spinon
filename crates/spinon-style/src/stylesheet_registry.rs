@@ -211,6 +211,9 @@ impl StylesheetRegistry {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let parser_css =
             crate::c11_4_word_break_css::normalize_css_word_break_break_word(&parser_css, true);
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let parser_css = crate::c11_4_hyphens_css::normalize_css_hyphens(&parser_css, true)
+            .unwrap_or_else(|_| source.css.clone());
         let stylesheet = Stylesheet::from_str(
             &parser_css,
             UrlExtraData::from(base_url),
@@ -319,6 +322,14 @@ impl StylesheetRegistry {
         )
     }
 
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(crate) fn first_unsupported_runtime_hyphens_author_feature(
+        &self,
+        allowed_properties: &[&str],
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_runtime_hyphens_author_feature(self, allowed_properties)
+    }
+
     pub(crate) fn first_unsupported_runtime_registered_properties_author_feature(
         &self,
         allowed_properties: &[&str],
@@ -405,6 +416,9 @@ pub(super) fn parse_inline_style_attribute(
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let parser_source =
         crate::c11_4_word_break_css::normalize_css_word_break_break_word(&parser_source, false);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let parser_source = crate::c11_4_hyphens_css::normalize_css_hyphens(&parser_source, false)
+        .unwrap_or_else(|_| source.to_owned());
     let declarations = parse_style_attribute(
         &parser_source,
         &UrlExtraData::from(base_url.clone()),

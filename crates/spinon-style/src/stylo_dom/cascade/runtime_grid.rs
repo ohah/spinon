@@ -70,6 +70,8 @@ pub(super) fn runtime_block_flex_grid_placement_author_properties() -> Vec<&'sta
             properties.push(property);
         }
     }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    properties.push("--shyph");
     properties
 }
 

@@ -185,6 +185,9 @@ mod fixed_repeat_auto_repeat;
 mod fixed_repeat_line_names;
 #[path = "runtime_grid_tests/hidden_context.rs"]
 mod hidden_context;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "runtime_grid_tests/hyphens.rs"]
+mod hyphens;
 #[path = "runtime_grid_tests/orthogonal_writing_mode.rs"]
 mod orthogonal_writing_mode;
 #[path = "runtime_grid_tests/placement.rs"]

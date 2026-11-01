@@ -17,6 +17,8 @@ use super::super::{RuntimeLayoutFailure, layout_failure};
 
 #[path = "c11_4_anonymous_text/font_size.rs"]
 mod font_size;
+#[path = "c11_4_anonymous_text/hyphens.rs"]
+mod hyphens;
 #[path = "c11_4_anonymous_text/letter_spacing.rs"]
 mod letter_spacing;
 #[path = "c11_4_anonymous_text/line_break.rs"]
@@ -38,6 +40,7 @@ mod word_break_overflow_wrap;
 #[path = "c11_4_anonymous_text/word_spacing.rs"]
 mod word_spacing;
 use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
+use hyphens::{find_scene as hyphens_scene, validate_computed_hyphens};
 use letter_spacing::{
     LETTER_SPACING_SCENE_IDS, find_scene as letter_spacing_scene, validate_computed_letter_spacing,
 };
@@ -74,7 +77,7 @@ use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 82] = [
+const SCENE_IDS: [&str; 103] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -157,6 +160,27 @@ const SCENE_IDS: [&str; 82] = [
     "text-transform-uppercase-max-content",
     "text-transform-lowercase-min-content",
     "text-transform-lowercase-max-content",
+    "hyphens-none-soft-min",
+    "hyphens-none-soft-max",
+    "hyphens-none-soft-fixed-30",
+    "hyphens-manual-soft-min",
+    "hyphens-manual-soft-max",
+    "hyphens-manual-soft-fixed-30",
+    "hyphens-default-soft-fixed-30",
+    "hyphens-none-visible-min",
+    "hyphens-none-visible-fixed-30",
+    "hyphens-manual-visible-min",
+    "hyphens-manual-visible-fixed-30",
+    "hyphens-none-unbroken-min",
+    "hyphens-manual-unbroken-min",
+    "hyphens-none-multiple-min",
+    "hyphens-none-multiple-fixed-30",
+    "hyphens-manual-multiple-min",
+    "hyphens-manual-multiple-fixed-30",
+    "hyphens-inherited-none-fixed-30",
+    "hyphens-inherited-manual-fixed-30",
+    "hyphens-auto-expected-reject",
+    "hyphens-invalid-expected-reject",
 ];
 
 const FULL_TAB_VALUE_IDS: [&str; 14] = [
@@ -228,7 +252,38 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<super::C11_4TextInput>, RuntimeLayoutFailure> {
-    let (tag, root_id) = element_identity(snapshot, root)?;
+    let (tag, outer_id) = element_identity(snapshot, root)?;
+    let (scene_root, tag, root_id) = if let Some(scene_id) = outer_id
+        .strip_prefix("c114-")
+        .and_then(|value| value.strip_suffix("-parent"))
+        .filter(|scene_id| scene_id.starts_with("hyphens-inherited-"))
+    {
+        if tag != "div" || outer_id != format!("c114-{scene_id}-parent") {
+            return Err(unsupported(root.id(), "inherited hyphens wrapper identity"));
+        }
+        let mut children = snapshot
+            .children(root)
+            .ok_or_else(|| unsupported(root.id(), "inherited hyphens wrapper children"))?;
+        let grid_root = children
+            .next()
+            .ok_or_else(|| unsupported(root.id(), "inherited hyphens Grid child missing"))?;
+        if children.next().is_some() {
+            return Err(unsupported(
+                root.id(),
+                "inherited hyphens wrapper child count",
+            ));
+        }
+        let (grid_tag, grid_id) = element_identity(snapshot, grid_root)?;
+        if grid_tag != "div" || grid_id != format!("c114-{scene_id}-grid") {
+            return Err(unsupported(
+                grid_root.id(),
+                "inherited hyphens Grid identity",
+            ));
+        }
+        (grid_root, grid_tag, grid_id)
+    } else {
+        (root, tag, outer_id)
+    };
     let Some(scene_id) = root_id
         .strip_prefix("c114-")
         .and_then(|value| value.strip_suffix("-grid"))
@@ -242,6 +297,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         && !WORD_SPACING_SCENE_IDS.contains(&scene_id)
         && !TEXT_INDENT_SCENE_IDS.contains(&scene_id)
         && !TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id)
+        && hyphens_scene(scene_id).is_none()
         && word_break_overflow_wrap_scene(scene_id).is_none()
         && line_break_scene(scene_id).is_none()
         && full_tab_scene(scene_id).is_none()
@@ -251,9 +307,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             || scene_id.starts_with("line-break-")
             || scene_id.starts_with("overflow-wrap-")
             || scene_id.starts_with("text-transform-")
+            || scene_id.starts_with("hyphens-")
             || scene_id == "whitespace-does-not-create-item"
         {
-            Err(unsupported(root.id(), "unknown anonymous text scene"))
+            Err(unsupported(scene_root.id(), "unknown anonymous text scene"))
         } else {
             Ok(None)
         };
@@ -261,24 +318,31 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 || tag != "div" {
         return Err(unsupported(root.id(), "runtime profile or root tag"));
     }
-    validate_snapshot_revision(snapshot, root, styles)?;
+    validate_snapshot_revision(snapshot, scene_root, styles)?;
 
     let word_break_scene = word_break_scene(scene_id);
+    let hyphens_scene = hyphens_scene(scene_id);
     let combined_break_scene = word_break_overflow_wrap_scene(scene_id);
-    let locale = if let Some(scene) = combined_break_scene {
-        word_break::validate_owner_language_value(snapshot, root, scene.language)?
+    let locale = if hyphens_scene.is_some() {
+        word_break::validate_owner_language_value(snapshot, scene_root, "en")?
+    } else if let Some(scene) = combined_break_scene {
+        word_break::validate_owner_language_value(snapshot, scene_root, scene.language)?
     } else {
-        word_break::validate_owner_language(snapshot, root, scene_id)?
+        word_break::validate_owner_language(snapshot, scene_root, scene_id)?
     };
     let line_break_scene = line_break_scene(scene_id);
-    let line_break_locale = line_break::validate_owner_language(snapshot, root, scene_id)?;
+    let line_break_locale = line_break::validate_owner_language(snapshot, scene_root, scene_id)?;
     let text_transform_scene = text_transform_scene(scene_id);
-    let text_transform_locale = text_transform::validate_owner_language(snapshot, root, scene_id)?;
-    let grid_style = style_for(styles, root.id())?;
+    let text_transform_locale =
+        text_transform::validate_owner_language(snapshot, scene_root, scene_id)?;
+    let grid_style = style_for(styles, scene_root.id())?;
+    let hyphens_mode = hyphens_scene
+        .map(|scene| validate_computed_hyphens(grid_style, scene))
+        .transpose()?;
     let font_size = validate_computed_font_size(grid_style, scene_id)?;
-    let authored_text_indent = authored_inline_text_indent(snapshot, root)?;
+    let authored_text_indent = authored_inline_text_indent(snapshot, scene_root)?;
     let stylo_text_indent_flags_fallback_allowed =
-        is_expected_text_indent_flags_diagnostic(snapshot, root, styles);
+        is_expected_text_indent_flags_diagnostic(snapshot, scene_root, styles);
     let validated_text_style = validate_grid_style(
         grid_style,
         scene_id,
@@ -288,7 +352,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             .map(|source| source.value.as_str()),
         stylo_text_indent_flags_fallback_allowed,
     )?;
-    validate_direct_children(snapshot, root, scene_id, styles)?;
+    validate_direct_children(snapshot, scene_root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
     engine
@@ -296,7 +360,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         .map_err(|error| {
             layout_failure(
                 "c114_anonymous_text_font_registration",
-                Some(root.id().get()),
+                Some(scene_root.id().get()),
                 Some(error.to_string()),
             )
         })?;
@@ -309,7 +373,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             .map_err(|error| {
                 layout_failure(
                     "c114_anonymous_text_font_registration",
-                    Some(root.id().get()),
+                    Some(scene_root.id().get()),
                     Some(error.to_string()),
                 )
             })?;
@@ -325,6 +389,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     );
     paragraph_style.overflow_wrap = validated_text_style.overflow_wrap;
     paragraph_style.text_transform = validated_text_style.text_transform;
+    paragraph_style.hyphens = hyphens_mode;
+    if hyphens_scene.is_some() {
+        paragraph_style.line_break = LineBreakMode::Normal;
+    }
     if let Some(scene) = word_break_scene {
         paragraph_style.font_family = scene.font_family.to_owned();
         paragraph_style.word_break = scene.word_break;
@@ -332,6 +400,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }
     if let Some(scene) = combined_break_scene {
         paragraph_style.word_break = scene.word_break;
+        paragraph_style.locale = locale.clone();
+    }
+    if hyphens_scene.is_some() {
         paragraph_style.locale = locale.clone();
     }
     if let Some(scene) = line_break_scene {
@@ -344,7 +415,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_style.locale = text_transform_locale;
     }
     Ok(Some(super::C11_4TextInput {
-        paragraph_styles: BTreeMap::from([(root.id(), paragraph_style)]),
+        paragraph_styles: BTreeMap::from([(scene_root.id(), paragraph_style)]),
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
@@ -480,6 +551,9 @@ fn validate_direct_children(
         scene_id if TEXT_INDENT_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
             text_indent_scene(scene_id).unwrap().text,
         )],
+        scene_id if hyphens_scene(scene_id).is_some() => {
+            &[ExpectedChild::Text(hyphens_scene(scene_id).unwrap().text)]
+        }
         scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
             text_transform_scene(scene_id).unwrap().text,
         )],
@@ -747,6 +821,10 @@ fn validate_grid_style(
             scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => {
                 (120.0, ComputedCssDimension::Auto)
             }
+            scene_id if hyphens_scene(scene_id).is_some() => (
+                hyphens_scene(scene_id).unwrap().root_width,
+                ComputedCssDimension::Auto,
+            ),
             scene_id if word_break_overflow_wrap_scene(scene_id).is_some() => {
                 (120.0, ComputedCssDimension::Auto)
             }
@@ -1069,6 +1147,13 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
                     ComputedCssGridTrackSize::MaxContent
                 }]
             }
+            scene_id if hyphens_scene(scene_id).is_some() => {
+                vec![match hyphens_scene(scene_id).unwrap().track {
+                    hyphens::TrackKind::MinContent => ComputedCssGridTrackSize::MinContent,
+                    hyphens::TrackKind::MaxContent => ComputedCssGridTrackSize::MaxContent,
+                    hyphens::TrackKind::Fixed30Px => ComputedCssGridTrackSize::LengthPx(30.0),
+                }]
+            }
             "anonymous-min-content-wrap" => vec![
                 ComputedCssGridTrackSize::MinContent,
                 ComputedCssGridTrackSize::Fraction(1.0),
@@ -1169,6 +1254,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         || WORD_SPACING_SCENE_IDS.contains(&scene_id)
         || TEXT_INDENT_SCENE_IDS.contains(&scene_id)
         || TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id)
+        || hyphens_scene(scene_id).is_some()
         || word_break_overflow_wrap_scene(scene_id).is_some()
         || word_break_scene(scene_id).is_some()
         || line_break_scene(scene_id).is_some()
@@ -1332,7 +1418,11 @@ fn expected_word_break(scene_id: &str) -> &'static str {
 }
 
 fn expected_line_break(scene_id: &str) -> &'static str {
-    line_break_scene(scene_id).map_or("auto", |scene| scene.computed_line_break)
+    if hyphens_scene(scene_id).is_some() {
+        "normal"
+    } else {
+        line_break_scene(scene_id).map_or("auto", |scene| scene.computed_line_break)
+    }
 }
 
 fn expected_overflow_wrap(scene_id: &str) -> &'static str {
@@ -1442,6 +1532,7 @@ fn anonymous_paragraph_style(
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
         text_transform: TextTransformMode::None,
+        hyphens: None,
     }
 }
 
@@ -1478,6 +1569,7 @@ enum ExpectedChild<'a> {
 #[cfg(test)]
 mod tests {
     use super::super::c11_4_text::AHEM;
+    use super::hyphens::{SCENES as HYPHENS_SCENES, TrackKind as HyphensTrackKind};
     use super::{
         ComputedLineHeight, ComputedTextIndent, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS,
         FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS,
@@ -1491,6 +1583,7 @@ mod tests {
     };
     use spinon_core::NodeId;
     use spinon_core::{TextOrientation, WritingMode};
+    use spinon_layout::HyphensMode;
     use spinon_layout::{
         FontStyleMode, LigatureMode, LineBreakMode, ParagraphInput, ParagraphStyle, TabSize,
         TextLayoutEngine, TextParagraphDirection, TextSource, WhiteSpaceMode, WordBreakMode,
@@ -1506,8 +1599,91 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 82);
+        assert_eq!(SCENE_IDS.len(), 103);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
+    }
+
+    #[test]
+    fn computed_hyphens_scenes_match_intrinsic_and_definite_line_oracles() {
+        let mut engine = TextLayoutEngine::new_without_system_fonts();
+        engine.register_font("Ahem", AHEM).unwrap();
+        assert_eq!(HYPHENS_SCENES.len(), 21);
+        for scene in HYPHENS_SCENES.iter().filter(|scene| scene.mode.is_some()) {
+            let mut style = anonymous_paragraph_style(
+                scene.id,
+                TabSize::Number(8.0),
+                ComputedLineHeight::AbsolutePx(10.0),
+                10.0,
+                0.0,
+                0.0,
+                ComputedTextIndent {
+                    value: 0.0,
+                    flags: TextIndentFlags::default(),
+                },
+            );
+            style.locale = Some("en".to_owned());
+            style.hyphens = scene.mode;
+            style.line_break = LineBreakMode::Normal;
+            let input = ParagraphInput {
+                node: NodeId::new(1).unwrap(),
+                sources: vec![TextSource {
+                    node: NodeId::new(2).unwrap(),
+                    inline_ancestors: Vec::new(),
+                    text: scene.text.to_owned(),
+                }],
+                style,
+                inline_styles: Default::default(),
+                inline_run_styles: Default::default(),
+            };
+            let intrinsic = engine.intrinsic_inline_sizes(&input).unwrap();
+            assert!(
+                (intrinsic.min_content() - scene.min_content).abs() <= 0.05,
+                "{} min",
+                scene.id
+            );
+            assert!(
+                (intrinsic.max_content() - scene.max_content).abs() <= 0.05,
+                "{} max",
+                scene.id
+            );
+            assert!(
+                (intrinsic.min_content_height() - scene.min_content_height).abs() <= 0.05,
+                "{} min height",
+                scene.id
+            );
+            assert!(
+                (intrinsic.max_content_height() - scene.max_content_height).abs() <= 0.05,
+                "{} max height",
+                scene.id
+            );
+
+            let available_width = match scene.track {
+                HyphensTrackKind::MinContent => scene.min_content,
+                HyphensTrackKind::MaxContent => scene.max_content,
+                HyphensTrackKind::Fixed30Px => 30.0,
+            };
+            let layout = engine.layout_paragraph(&input, available_width).unwrap();
+            assert_eq!(
+                layout.lines.len(),
+                scene.expected_line_advances.len(),
+                "{} line count",
+                scene.id
+            );
+            for (line, expected) in layout.lines.iter().zip(scene.expected_line_advances) {
+                assert!(
+                    (line.advance - expected).abs() <= 0.05,
+                    "{} line advance",
+                    scene.id
+                );
+            }
+        }
+        assert!(
+            HYPHENS_SCENES
+                .iter()
+                .filter(|scene| scene.mode.is_none())
+                .all(|scene| matches!(scene.expected_computed, "auto" | "balanced"))
+        );
+        assert_eq!(Some(HyphensMode::Manual), HYPHENS_SCENES[3].mode);
     }
 
     #[test]
@@ -1931,6 +2107,7 @@ mod tests {
                     font_style: FontStyleMode::Normal,
                     white_space: WhiteSpaceMode::PreWithTabSize(expected_style),
                     word_break: WordBreakMode::Normal,
+                    hyphens: None,
                     locale: None,
                     direction: TextParagraphDirection::Ltr,
                     line_break: LineBreakMode::Strict,

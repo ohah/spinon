@@ -17,6 +17,7 @@ struct AuthorFeaturePolicy {
     allow_media: bool,
     allow_viewport_dimensions: bool,
     allow_custom_properties: bool,
+    custom_property_allowlist: Option<&'static [&'static str]>,
     allow_background_color: bool,
     allow_property_registration: bool,
     allow_border_image_initial_resets: bool,
@@ -111,6 +112,7 @@ pub(super) fn first_unsupported_author_feature_with_media(
             allow_media: true,
             allow_viewport_dimensions: false,
             allow_custom_properties: false,
+            custom_property_allowlist: None,
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: false,
@@ -131,6 +133,7 @@ pub(super) fn first_unsupported_runtime_author_feature_with_media(
             allow_media: true,
             allow_viewport_dimensions: true,
             allow_custom_properties: true,
+            custom_property_allowlist: None,
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: true,
@@ -312,7 +315,30 @@ pub(super) fn first_unsupported_runtime_author_feature(
             allow_media: false,
             allow_viewport_dimensions: false,
             allow_custom_properties,
+            custom_property_allowlist: None,
             allow_background_color,
+            allow_property_registration: false,
+            allow_border_image_initial_resets: true,
+            allow_visibility_collapse: false,
+        },
+    )
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) fn first_unsupported_runtime_hyphens_author_feature(
+    registry: &StylesheetRegistry,
+    allowed_properties: &[&str],
+) -> Option<(String, String)> {
+    first_unsupported_author_feature_with_rules(
+        registry,
+        allowed_properties,
+        AuthorFeaturePolicy {
+            allow_layers: false,
+            allow_media: false,
+            allow_viewport_dimensions: false,
+            allow_custom_properties: true,
+            custom_property_allowlist: Some(&["shyph"]),
+            allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: true,
             allow_visibility_collapse: false,
@@ -333,6 +359,7 @@ pub(super) fn first_unsupported_runtime_registered_properties_author_feature(
             allow_media: false,
             allow_viewport_dimensions: false,
             allow_custom_properties: true,
+            custom_property_allowlist: None,
             allow_background_color,
             allow_property_registration: true,
             allow_border_image_initial_resets: true,
@@ -354,6 +381,7 @@ pub(super) fn first_unsupported_runtime_layered_registered_properties_author_fea
             allow_media: false,
             allow_viewport_dimensions: false,
             allow_custom_properties: true,
+            custom_property_allowlist: None,
             allow_background_color,
             allow_property_registration: true,
             allow_border_image_initial_resets: true,
@@ -376,6 +404,7 @@ fn first_unsupported_author_feature_with_layer_rules(
             allow_media: false,
             allow_viewport_dimensions: false,
             allow_custom_properties: false,
+            custom_property_allowlist: None,
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: false,
@@ -469,7 +498,12 @@ fn unsupported_rule_feature(
                     PropertyDeclarationId::Custom(_) => "사용자 지정 속성".to_owned(),
                 };
                 let allowed = match property {
-                    PropertyDeclarationId::Custom(_) => policy.allow_custom_properties,
+                    PropertyDeclarationId::Custom(name) => {
+                        policy.allow_custom_properties
+                            && policy
+                                .custom_property_allowlist
+                                .is_none_or(|allowed| allowed.contains(&name.as_ref()))
+                    }
                     PropertyDeclarationId::Longhand(_) => {
                         allowed_properties.contains(&name.as_str())
                             || (policy.allow_background_color && name == "background-color")

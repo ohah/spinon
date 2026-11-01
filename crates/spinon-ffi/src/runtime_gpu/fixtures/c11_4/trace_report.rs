@@ -562,6 +562,7 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
             "whiteSpace": format!("{:?}", style.white_space),
             "wordBreak": format!("{:?}", style.word_break),
             "overflowWrap": format!("{:?}", style.overflow_wrap),
+            "hyphens": style.hyphens.map(|mode| format!("{mode:?}")),
             "locale": style.locale,
             "direction": format!("{:?}", style.direction),
             "writingMode": format!("{:?}", style.writing_mode),
