@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-01 positive-gap auto-repeat ceiling test-only slice
+
+고정 Taffy `0.15.0`의 내부 10,000-track cap에서 `1px` gap이 두-track auto-repeat의 repetition count, source-order 절단, 마지막 named-line item frame에 반영되는지 확인한다. `25,001px` exact-fit과 `25,006px` cap 입력을 Columns/Rows에 각각 실행해 4/4 기대값을 확인했다. Rust Grid trace test만 해당하며 공개 CSS admission이나 C11.4/C11 완료를 뜻하지 않는다. C11.4/C11과 공식 `72/213`은 미완료로 유지한다. [집중 계획](./c11-4-auto-repeat-gap-ceiling.md) · [계획 검토 20개](./c11-4-auto-repeat-gap-ceiling-plan-review-20.md) · [실행·구현 검토](../spec/internal/evidence/c11-4-auto-repeat-gap-ceiling-runtime-2026-11-01/README.md).
+
 ## 2026-11-01 anonymous Grid text `word-break: break-word` + `overflow-wrap` interaction · PR #974 병합
 
 CSS Text 3 defines the deprecated `word-break:break-word` value as `normal` plus effective `overflow-wrap:anywhere`, regardless of the actual `overflow-wrap` value. This cross-property combination was excluded from the already merged computed `word-break` PR #942 because anonymous-text `overflow-wrap` had not yet been connected. After `overflow-wrap` PR #948, a Chrome 156/independent Ahem 18-scene precomparison now distinguishes this mapping from `word-break:normal; overflow-wrap:break-word` (min-content remains 40px). The limited implementation merged in PR #974 with 18 fixed opt-in scenes on Android and iOS; the full C11.4 scope remains incomplete. [Plan](./c11-4-anonymous-grid-text-word-break-break-word.md) · [Chrome 156 precomparison and independent expectations](../spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md) · [plan review 20](./c11-4-anonymous-grid-text-word-break-break-word-plan-review-20.md).

@@ -184,6 +184,14 @@ fn auto_repeat_ceiling_preserves_prefix_and_truncates_suffix_in_source_order() {
 }
 
 fn two_track_auto_repeat_input(axis: LayoutGridTrackSizingAxis, basis: f32) -> crate::LayoutInput {
+    two_track_auto_repeat_input_with_gap(axis, basis, LayoutGap::default())
+}
+
+fn two_track_auto_repeat_input_with_gap(
+    axis: LayoutGridTrackSizingAxis,
+    basis: f32,
+    gap: LayoutGap,
+) -> crate::LayoutInput {
     let repeated_axis_tracks = vec![
         GridTrackSize::LengthPx(2.0),
         GridTrackSize::LengthPx(1.0),
@@ -199,7 +207,7 @@ fn two_track_auto_repeat_input(axis: LayoutGridTrackSizingAxis, basis: f32) -> c
         LayoutGridTrackSizingAxis::Columns => (basis, 1.0),
         LayoutGridTrackSizingAxis::Rows => (1.0, basis),
     };
-    let mut input = grid_input(columns, rows, 1, LayoutGap::default());
+    let mut input = grid_input(columns, rows, 1, gap);
     input.nodes[0].style.width = LayoutDimension::Fixed(width);
     input.nodes[0].style.height = LayoutDimension::Fixed(height);
     input.nodes[1].style.width = LayoutDimension::Fixed(1.0);
@@ -270,6 +278,76 @@ fn auto_repeat_two_track_pattern_preserves_named_line_at_the_ceiling_on_both_axe
         {
             let label = format!("{axis:?} {basis}px two-track auto-repeat");
             let input = two_track_auto_repeat_input(axis, basis);
+            let output = TaffyLayoutEngine
+                .compute(&input)
+                .unwrap_or_else(|error| panic!("{label}: expected bounded layout, got {error:?}"));
+            let (resolved_count, tracks, trace_state_count) =
+                initialize_tracks(&output, axis, &label);
+
+            assert_eq!(
+                resolved_count, GRID_MAX_TRACKS,
+                "{label}: resolved explicit count"
+            );
+            assert_eq!(tracks.len(), GRID_MAX_TRACKS, "{label}: stage track count");
+            assert!(
+                trace_state_count < 100_000,
+                "{label}: {trace_state_count} trace states"
+            );
+
+            let mut expected_sizes = Vec::with_capacity(GRID_MAX_TRACKS);
+            expected_sizes.push(2.0);
+            for _ in 0..4_999 {
+                expected_sizes.extend([1.0, 2.0]);
+            }
+            expected_sizes.push(expected_last_track);
+            assert_eq!(
+                tracks.iter().map(|track| track.1).collect::<Vec<_>>(),
+                expected_sizes,
+                "{label}: complete pattern and source-order truncation"
+            );
+            assert!(
+                tracks.iter().all(|track| !track.0),
+                "{label}: auto-fill tracks must not collapse"
+            );
+
+            let frame = &output.frames[&id(2)];
+            match axis {
+                LayoutGridTrackSizingAxis::Columns => assert_eq!(
+                    (frame.x, frame.width),
+                    (expected_item_offset, 1.0),
+                    "{label}: last named-line track frame"
+                ),
+                LayoutGridTrackSizingAxis::Rows => assert_eq!(
+                    (frame.y, frame.height),
+                    (expected_item_offset, 1.0),
+                    "{label}: last named-line track frame"
+                ),
+            }
+        }
+    }
+}
+
+#[test]
+fn auto_repeat_positive_gap_preserves_named_line_at_the_ceiling_on_both_axes() {
+    for axis in [
+        LayoutGridTrackSizingAxis::Columns,
+        LayoutGridTrackSizingAxis::Rows,
+    ] {
+        let gap = match axis {
+            LayoutGridTrackSizingAxis::Columns => LayoutGap {
+                column: crate::LayoutLengthPercentage::length(1.0),
+                ..LayoutGap::default()
+            },
+            LayoutGridTrackSizingAxis::Rows => LayoutGap {
+                row: crate::LayoutLengthPercentage::length(1.0),
+                ..LayoutGap::default()
+            },
+        };
+        for (basis, expected_item_offset, expected_last_track) in
+            [(25_001.0, 24_993.0, 3.0), (25_006.0, 24_998.0, 1.0)]
+        {
+            let label = format!("{axis:?} {basis}px gapped two-track auto-repeat");
+            let input = two_track_auto_repeat_input_with_gap(axis, basis, gap);
             let output = TaffyLayoutEngine
                 .compute(&input)
                 .unwrap_or_else(|error| panic!("{label}: expected bounded layout, got {error:?}"));
