@@ -1,12 +1,13 @@
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 struct Scene {
     id: &'static str,
+    text: &'static str,
     language: &'static str,
     line_break: &'static str,
     track: &'static str,
 }
 
-const SCENES: [Scene; 5] = [
+const SCENES: [Scene; 9] = [
     scene(
         "line-break-ja-normal-min-content",
         "ja",
@@ -37,6 +38,34 @@ const SCENES: [Scene; 5] = [
         "normal",
         "min-content",
     ),
+    scene_with_text(
+        "line-break-ja-loose-min-content",
+        "文＄文",
+        "ja",
+        "loose",
+        "min-content",
+    ),
+    scene_with_text(
+        "line-break-ja-loose-max-content",
+        "文＄文",
+        "ja",
+        "loose",
+        "max-content",
+    ),
+    scene_with_text(
+        "line-break-en-loose-min-content",
+        "文＄文",
+        "en",
+        "loose",
+        "min-content",
+    ),
+    scene_with_text(
+        "line-break-ja-normal-prefix-control-min-content",
+        "文＄文",
+        "ja",
+        "normal",
+        "min-content",
+    ),
 ];
 
 const fn scene(
@@ -45,8 +74,19 @@ const fn scene(
     line_break: &'static str,
     track: &'static str,
 ) -> Scene {
+    scene_with_text(id, "文〜文", language, line_break, track)
+}
+
+const fn scene_with_text(
+    id: &'static str,
+    text: &'static str,
+    language: &'static str,
+    line_break: &'static str,
+    track: &'static str,
+) -> Scene {
     Scene {
         id,
+        text,
         language,
         line_break,
         track,
@@ -69,10 +109,11 @@ root.setAttribute('lang', {language:?});
 root.setAttribute('style', {style:?});
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
-root.appendChild(document.createTextNode('文〜文'));
+root.appendChild(document.createTextNode({text:?}));
 return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds }};
 }})()"#,
         language = scene.language,
+        text = scene.text,
         style = style,
         scene_id = scene.id,
     ))
@@ -86,7 +127,7 @@ mod tests {
     #[test]
     fn computed_line_break_scenes_generate_the_exact_allowlisted_inputs() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 5);
+        assert_eq!(SCENES.len(), 9);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted line-break scene");
@@ -95,7 +136,7 @@ mod tests {
             assert!(source.contains(&format!("grid-template-columns:{};", scene.track)));
             assert!(source.contains(&format!("line-break:{};", scene.line_break)));
             assert!(source.contains("font-family:\\\"Noto Sans KR\\\";"));
-            assert!(source.contains("createTextNode('文〜文')"));
+            assert!(source.contains(&format!("createTextNode({:?})", scene.text)));
             assert_eq!(source.matches("document.createTextNode(").count(), 1);
             assert_eq!(source.matches("document.createElement('div')").count(), 1);
         }

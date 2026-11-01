@@ -8,16 +8,20 @@ import { fileURLToPath } from 'node:url';
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const target = process.argv[2];
 const deviceID = process.argv[3];
+const variant = process.argv[4] ?? 'baseline';
+assert.ok(['baseline', 'loose'].includes(variant),
+  'The optional capture variant must be baseline or loose');
 const packageName = 'dev.spinon.bootstrap';
 const androidApk = resolve(repositoryRoot,
   'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
-const evidenceRoot = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01');
-const expectedValues = JSON.parse(await readFile(resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json'),
-{ encoding: 'utf8' }));
+const evidenceName = variant === 'loose'
+  ? 'c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01'
+  : 'c11-4-anonymous-grid-text-line-break-runtime-2026-11-01';
+const evidenceRoot = resolve(repositoryRoot, 'spec/internal/evidence', evidenceName);
+const expectedValues = JSON.parse(await readFile(resolve(evidenceRoot, 'expected-values.json'),
+  { encoding: 'utf8' }));
 const runPrefix = `c114-computed-line-break-${target}-${Date.now()}-${randomUUID().slice(0, 8)}`;
 const evidenceDirectory = resolve(evidenceRoot, target);
 const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
@@ -74,10 +78,12 @@ function deriveScene(scene) {
   const fontSize = reference.cssFontSizePx;
   const glyphAdvance = reference.notoSansKrCjkAdvanceUnits
     / reference.notoSansKrUnitsPerEm * fontSize;
-  const minContent = scene.language === 'ja' && scene.lineBreak === 'normal'
-    ? glyphAdvance : 2 * glyphAdvance;
+  const allowsPrefixBreak = scene.text === '文〜文'
+    ? scene.language === 'ja' && scene.lineBreak === 'normal'
+    : scene.language === 'ja' && scene.lineBreak === 'loose';
+  const minContent = allowsPrefixBreak ? glyphAdvance : 2 * glyphAdvance;
   const maxContent = 3 * glyphAdvance;
-  const minContentLineCount = scene.language === 'ja' && scene.lineBreak === 'normal' ? 3 : 2;
+  const minContentLineCount = allowsPrefixBreak ? 3 : 2;
   const minContentHeight = minContentLineCount * fontSize;
   const maxContentHeight = fontSize;
   assert.ok(Math.abs(scene.minContentCssPx - minContent) <= 1e-9,
@@ -357,7 +363,7 @@ async function runIOS(udid) {
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  'Usage: capture-c11-4-anonymous-grid-text-line-break-simulators.mjs <android-avd|ios-simulator> <serial|UDID>');
+  'Usage: capture-c11-4-anonymous-grid-text-line-break-simulators.mjs <android-avd|ios-simulator> <serial|UDID> [baseline|loose]');
 assert.ok(deviceID, 'An explicit Android serial or iOS Simulator UDID is required');
 await mkdir(evidenceDirectory, { recursive: true });
 if (target === 'android-avd') await runAndroid(deviceID);

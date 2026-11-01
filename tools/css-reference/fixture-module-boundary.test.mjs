@@ -2246,9 +2246,9 @@ test('C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulat
   assert.match(ffi,
     /#\[path = "anonymous_text_items\/computed_font_size\.rs"\]\s*mod computed_font_size;/);
   assert.match(runtime,
-    /let font_size = validate_computed_font_size\(grid_style, scene_id\)\?;[\s\S]*let validated_text_style = validate_grid_style\(grid_style, scene_id, font_size\)\?;/);
+    /let font_size = validate_computed_font_size\(grid_style, scene_id\)\?;[\s\S]*let validated_text_style = validate_grid_style\(\s*grid_style,\s*scene_id,\s*font_size,/);
   assert.match(runtime,
-    /let mut paragraph_style = anonymous_paragraph_style\(\s*scene_id,\s*validated_text_style\.tab_size,\s*validated_text_style\.line_height,\s*font_size,\s*validated_text_style\.letter_spacing,\s*validated_text_style\.word_spacing,\s*validated_text_style\.text_indent,?\s*\);[\s\S]*paragraph_style\.text_transform = validated_text_style\.text_transform;/);
+    /let mut paragraph_style = anonymous_paragraph_style\(\s*scene_id,\s*validated_text_style\.tab_size,\s*validated_text_style\.line_height,\s*font_size,\s*validated_text_style\.letter_spacing,\s*validated_text_style\.word_spacing,\s*validated_text_style\.computed_text_indent,?\s*\);[\s\S]*paragraph_style\.overflow_wrap = validated_text_style\.overflow_wrap;[\s\S]*paragraph_style\.text_transform = validated_text_style\.text_transform;/);
   assert.ok(validation.includes('style.font_size_css_px'));
   assert.ok(capture.includes("target: 'Android API 37 ARM64 AVD'"));
   assert.ok(capture.includes("target: 'iPhone 17 Pro / iOS 26.2 Simulator'"));
@@ -2364,6 +2364,47 @@ test('C11.4 anonymous Grid computed line-break matrix stays opt-in and reaches b
   assert.ok(runtimeTestSource.includes('anonymous_grid_line_break_rejects_unlisted_scenes_and_stale_revisions'));
   assert.ok(evidence.includes('5/5'));
   assert.ok(evidence.includes('renderer'));
+});
+
+test('C11.4 anonymous Grid computed line-break loose matrix keeps locale controls and simulator adapters aligned', async () => {
+  const sceneIDs = [
+    'line-break-ja-normal-min-content', 'line-break-ja-normal-max-content',
+    'line-break-ja-strict-min-content', 'line-break-ja-strict-max-content',
+    'line-break-en-normal-min-content', 'line-break-ja-loose-min-content',
+    'line-break-ja-loose-max-content', 'line-break-en-loose-min-content',
+    'line-break-ja-normal-prefix-control-min-content',
+  ];
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_line_break.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/line_break.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_line_break.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-anonymous-grid-text-line-break-simulators.mjs',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/expected-values.json',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [ffiSource, runtimeSource, runtimeTest, android, ios, capture, expectedText] = contents;
+  const expected = JSON.parse(expectedText);
+  for (const sceneID of sceneIDs) {
+    for (const [label, source] of [
+      ['FFI source catalog', ffiSource], ['runtime scene catalog', runtimeSource],
+      ['runtime verifier', runtimeTest], ['Android scene validator', android],
+      ['iOS scene validator', ios],
+    ]) {
+      assert.ok(source.includes(sceneID), `${label} is missing ${sceneID}`);
+    }
+    assert.ok(expected.cases.some(({ id }) => id === sceneID),
+      `independent expected values are missing ${sceneID}`);
+  }
+  assert.equal(expected.cases.length, sceneIDs.length);
+  assert.ok(android.includes('sceneId.contains("-loose-")'));
+  assert.ok(ios.includes('sceneID.contains("-loose-")'));
+  assert.ok(capture.includes("variant === 'loose'"));
+  assert.ok(capture.includes('scene.text === \'文〜文\''));
+  assert.ok(capture.includes('layout.paragraphStyle.lineBreak'));
+  assert.ok(runtimeTest.includes('anonymous_grid_line_break_loose_rejects_locale_mode_and_text_mismatches'));
 });
 
 test('C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reaches both simulators', async () => {

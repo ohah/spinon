@@ -10774,6 +10774,18 @@ private func c114ComputedWordBreakScene(
     case "line-break-en-normal-min-content":
         return ("文〜文", "en", "Noto Sans KR", "Normal", 20, 30, 20, 10,
             20, 20, [20, 10])
+    case "line-break-ja-loose-min-content":
+        return ("文＄文", "ja", "Noto Sans KR", "Normal", 10, 30, 30, 10,
+            10, 30, [10, 10, 10])
+    case "line-break-ja-loose-max-content":
+        return ("文＄文", "ja", "Noto Sans KR", "Normal", 10, 30, 30, 10,
+            30, 10, [30])
+    case "line-break-en-loose-min-content":
+        return ("文＄文", "en", "Noto Sans KR", "Normal", 20, 30, 20, 10,
+            20, 20, [10, 20])
+    case "line-break-ja-normal-prefix-control-min-content":
+        return ("文＄文", "ja", "Noto Sans KR", "Normal", 20, 30, 20, 10,
+            20, 20, [10, 20])
     case "overflow-wrap-normal-min-content", "overflow-wrap-normal-max-content":
         return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 40, 10, [40])
     case "overflow-wrap-normal-fixed-10px":
@@ -10798,7 +10810,9 @@ private func c114ComputedWordBreakScene(
 
 private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
     guard sceneID.hasPrefix("line-break-") else { return nil }
-    return sceneID.contains("-normal-") ? "Normal" : "Strict"
+    if sceneID.contains("-normal-") { return "Normal" }
+    if sceneID.contains("-loose-") { return "Loose" }
+    return "Strict"
 }
 
 private func c114ComputedOverflowWrapMode(_ sceneID: String) -> String? {
