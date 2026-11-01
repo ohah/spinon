@@ -1,6 +1,6 @@
 # C11.4 `word-break: break-word` 구현 PR diff 적대적 검토 30개
 
-2026-11-01, PR #974의 현재 GitHub head `b4e8b856a9d0a69e0b8e9367a6acacfb0ba46f3b`와 `origin/main` base `48c97510a4a49c06785c2ff74834b67b3ce1329d` 사이의 실제 diff 76개 파일을 검토했다. fetch 후 PR head/base SHA가 로컬 검토 범위와 같고 파일 수는 76개였다. 계획 자체의 20관점과 구현/runtime 실패 관점 20개는 재사용하지 않고 parser 경계, cascade source identity, feature 유출, 플랫폼 어댑터와 증거 귀속을 별도로 확인했다.
+2026-11-01, PR #974의 구현 head `b4e8b856a9d0a69e0b8e9367a6acacfb0ba46f3b`와 `origin/main` base `48c97510a4a49c06785c2ff74834b67b3ce1329d` 사이의 구현 diff 76개 파일을 검토했다. fetch 후 PR head/base SHA가 로컬 검토 범위와 같았다. 이 기록을 추가한 뒤 PR diff는 문서 1개가 늘어난 77개 파일이다. 추가 문서 diff도 별도로 다시 읽어 path 수, base/head, 검토 대상과 본문 주장이 구현 기록과 맞는지 확인했다. 계획 자체의 20관점과 구현/runtime 실패 관점 20개는 재사용하지 않고 parser 경계, cascade source identity, feature 유출, 플랫폼 어댑터와 증거 귀속을 별도로 확인했다.
 
 | # | PR diff의 실패 관점 | 확인 결과 |
 |---:|---|---|
