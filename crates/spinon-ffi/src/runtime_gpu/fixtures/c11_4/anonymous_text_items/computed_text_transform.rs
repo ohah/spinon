@@ -187,7 +187,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
     Some(format!(
         r#"(() => {{
 const previousState = globalThis.__spinonC114TextTransformRetryRoot;
-if (previousState !== undefined && previousState.root.parentNode === document) {{
+if (previousState !== undefined
+    && previousState.sceneId === {scene_id:?}
+    && previousState.root.parentNode === document) {{
   return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds:previousState.nodeIds }};
 }}
 const root = document.createElement('div');
@@ -198,7 +200,7 @@ root.setAttribute('style', {style:?});
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
 {text_nodes}
-globalThis.__spinonC114TextTransformRetryRoot = {{ root, nodeIds }};
+globalThis.__spinonC114TextTransformRetryRoot = {{ sceneId:{scene_id:?}, root, nodeIds }};
 return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds }};
 }})()"#,
         scene_id = scene.id,
@@ -221,11 +223,12 @@ mod tests {
             assert!(source.contains(&format!("sceneId:{:?}", scene.id)));
             assert!(source.contains("root.setAttribute('lang', 'en')"));
             assert!(source.contains("previousState.root.parentNode === document"));
+            assert!(source.contains(&format!("previousState.sceneId === {:?}", scene.id)));
             assert!(source.contains("nodeIds:previousState.nodeIds"));
-            assert!(
-                source
-                    .contains("globalThis.__spinonC114TextTransformRetryRoot = { root, nodeIds }")
-            );
+            assert!(source.contains(&format!(
+                "globalThis.__spinonC114TextTransformRetryRoot = {{ sceneId:{:?}, root, nodeIds }}",
+                scene.id
+            )));
             assert!(
                 source
                     .find("previousState.root.parentNode === document")
@@ -243,7 +246,10 @@ mod tests {
                 assert!(source.contains(&format!("createTextNode({text:?})")));
             }
             let retry_state_assignment = source
-                .find("globalThis.__spinonC114TextTransformRetryRoot = { root, nodeIds }")
+                .find(&format!(
+                    "globalThis.__spinonC114TextTransformRetryRoot = {{ sceneId:{:?}, root, nodeIds }}",
+                    scene.id
+                ))
                 .unwrap();
             let final_text_node = source.rfind("document.createTextNode(").unwrap();
             assert!(final_text_node < retry_state_assignment);
