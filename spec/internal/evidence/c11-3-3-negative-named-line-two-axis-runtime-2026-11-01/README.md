@@ -21,4 +21,4 @@
 
 검증 명령 결과: `spinon-layout` 330/330, focused style projection 및 FFI tests 통과, CSS reference 19/19, fixture module boundary 30/30, scoped Clippy 및 rustfmt 통과. 새 양 축 shape boundary test와 auto-size rejection 회귀도 focused로 통과했다. 전체 `spinon-style-to-layout`는 276 passed·1 failed이며, 실패는 C07.3 `aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs` float string assertion에서 실제 `1.7777778`, 기대 `1.77778`이다. 이를 candidate 통과로 계산하지 않는다. PR #970 diff 30개 독립 관점 검토를 마쳤다. GitHub check rollup은 비어 있어 hosted CI 성공으로 기록하지 않는다.
 
-Android AVD는 SwiftShader software renderer다. iOS sample은 compositor 이전 Metal drawable이다. 실기기/hardware GPU, Spinon WPT, 일반 CSS admission, 전체 C11.3.3/C11 지원은 범위 밖이다. PR #970은 아직 merge 전이다.
+Android AVD는 SwiftShader software renderer다. iOS sample은 compositor 이전 Metal drawable이다. 실기기/hardware GPU, Spinon WPT, 일반 CSS admission, 전체 C11.3.3/C11 지원은 범위 밖이다. PR #970은 Rebase and merge로 병합됐다. merge SHA와 미보고 check 상태는 [병합 기록](./merge-PR970.md) 및 [병합 후 상태 대조 검토](./post-merge-status-roadmap-review-30.md) 및 [문서 PR diff 검토](./post-merge-docs-pr-diff-review-30.md)에 둔다.

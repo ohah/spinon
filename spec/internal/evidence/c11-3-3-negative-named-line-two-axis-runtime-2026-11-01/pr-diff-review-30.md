@@ -35,4 +35,4 @@
 | 29 | app hash 또는 fixture/oracle hash가 다른 run에 붙는가 | source revision JSON은 commit `0954c9c`, fixture hash, Android app hash와 iOS app hash를 각각 exact run ID에 연결한다. 두 결과 모두 `matched`다. PASS. |
 | 30 | 제한 candidate가 WPT/full CSS Grid 지원 또는 공식 완료로 문서화되는가 | plan, contract, STATUS와 PR 본문은 C11.3.3/C11을 미완료로 두고 official `72/213`을 유지한다. 범위에서 일반 CSS admission, WPT와 전체 Grid를 제외한다. PASS. |
 
-GitHub PR #970의 check rollup은 현재 비어 있다. 따라서 hosted CI 통과로 기록하지 않는다. PR은 review 종료 시점에 open이며 merge되지 않았다.
+GitHub PR #970의 check rollup은 비어 있었다. 따라서 hosted CI 통과로 기록하지 않는다. PR은 2026-11-01T05:59:35Z Rebase and merge로 병합됐다(merge SHA `dd178e769c562d3cbc12cfea0c9e11093b36b8fd`).
