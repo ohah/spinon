@@ -5,7 +5,8 @@ use spinon_core::{
     HostParent, OwnerId,
 };
 use spinon_layout::{
-    LayoutGridItemIntrinsicSource, LayoutGridTrackSizingAxis, LayoutGridTrackSizingContributionKind,
+    LayoutGridItemIntrinsicSource, LayoutGridTrackSizingAxis,
+    LayoutGridTrackSizingContributionKind, TextIndentFlags,
 };
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
@@ -18,10 +19,13 @@ struct Case {
     text: &'static str,
     is_min_content: bool,
     text_indent: f32,
+    text_indent_flags: TextIndentFlags,
+    is_pre_line: bool,
     expected_min_content: f32,
     expected_max_content: f32,
     expected_min_height: f32,
     expected_line_advances: Vec<f32>,
+    expected_line_indents: Vec<f32>,
 }
 
 fn cases() -> Vec<Case> {
@@ -100,6 +104,8 @@ fn append_cases(
                 text,
                 is_min_content,
                 text_indent,
+                text_indent_flags: TextIndentFlags::default(),
+                is_pre_line: false,
                 expected_min_content,
                 expected_max_content,
                 expected_min_height: 10.0 * words.len() as f32,
@@ -108,8 +114,268 @@ fn append_cases(
                 } else {
                     vec![unindented_max_content]
                 },
+                expected_line_indents: if is_min_content {
+                    std::iter::once(text_indent)
+                        .chain(std::iter::repeat_n(0.0, expected_line_advances.len() - 1))
+                        .collect()
+                } else {
+                    vec![text_indent]
+                },
             });
         }
+    }
+}
+
+fn flag_cases() -> Vec<Case> {
+    let profiles = [
+        ("indent", "10px", TextIndentFlags::default()),
+        (
+            "each-line",
+            "10px each-line",
+            TextIndentFlags {
+                each_line: true,
+                hanging: false,
+            },
+        ),
+        (
+            "hanging",
+            "10px hanging",
+            TextIndentFlags {
+                each_line: false,
+                hanging: true,
+            },
+        ),
+        (
+            "hanging-each-line",
+            "10px hanging each-line",
+            TextIndentFlags {
+                each_line: true,
+                hanging: true,
+            },
+        ),
+        ("none", "0px", TextIndentFlags::default()),
+    ];
+    let mut cases = Vec::with_capacity(20);
+    for (value_name, computed_value, flags) in profiles {
+        for (input_name, text, is_pre_line) in
+            [("soft", "XXX X", false), ("forced", "XXX\nX", true)]
+        {
+            let indent: f32 = if computed_value == "0px" { 0.0 } else { 10.0 };
+            let line_indents = if is_pre_line {
+                [
+                    if flags.hanging { 0.0 } else { indent },
+                    if flags.each_line ^ flags.hanging {
+                        indent
+                    } else {
+                        0.0
+                    },
+                ]
+            } else {
+                [
+                    if flags.hanging { 0.0 } else { indent },
+                    if flags.hanging { indent } else { 0.0 },
+                ]
+            };
+            let line_contributions = [30.0 + line_indents[0], 10.0 + line_indents[1]];
+            let expected_min_content = line_contributions[0].max(line_contributions[1]);
+            let expected_max_content = if is_pre_line {
+                expected_min_content
+            } else {
+                50.0 + line_indents[0]
+            };
+            for (track_name, is_min_content) in [("min-content", true), ("max-content", false)] {
+                let expected_line_count = if is_pre_line || is_min_content { 2 } else { 1 };
+                cases.push(Case {
+                    scene_id: format!("text-indent-flags-{input_name}-{track_name}-{value_name}"),
+                    specified_value: computed_value,
+                    computed_value,
+                    text,
+                    is_min_content,
+                    text_indent: indent,
+                    text_indent_flags: flags,
+                    is_pre_line,
+                    expected_min_content,
+                    expected_max_content,
+                    expected_min_height: 20.0,
+                    expected_line_advances: if expected_line_count == 1 {
+                        vec![50.0]
+                    } else {
+                        vec![30.0, 10.0]
+                    },
+                    expected_line_indents: line_indents[..expected_line_count].to_vec(),
+                });
+            }
+        }
+    }
+    cases
+}
+
+#[test]
+fn anonymous_grid_text_indent_flags_reach_intrinsic_tracks_and_line_origins() {
+    let cases = flag_cases();
+    assert_eq!(cases.len(), 20);
+    assert_eq!(
+        cases
+            .iter()
+            .map(|case| case.scene_id.as_str())
+            .collect::<std::collections::BTreeSet<_>>()
+            .len(),
+        cases.len(),
+    );
+
+    for (index, case) in cases.iter().enumerate() {
+        let (snapshot, root, text_node) = snapshot_for(case, 12_600 + index as u64);
+        let request = WorkRequest {
+            key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+            snapshot: snapshot.clone(),
+            viewport: CssViewport {
+                width_css_px: 120.0,
+                height_css_px: 100.0,
+                device_scale_factor: 1.0,
+                environment_revision: EnvironmentRevision::INITIAL,
+                media_environment: CssMediaEnvironment::MOBILE,
+            },
+            previous_snapshot: None,
+            force_full: true,
+            invalidation: None,
+            previous_styles: None,
+        };
+        let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
+            .unwrap_or_else(|error| panic!("{}: {error:?}", case.scene_id));
+        let computed_style = calculation.roots[0]
+            .styles
+            .elements
+            .iter()
+            .find(|style| style.node_id == root.id())
+            .expect("root computed style");
+        assert_eq!(
+            computed_style
+                .properties
+                .get("text-indent")
+                .map(String::as_str),
+            Some(if case.text_indent_flags == TextIndentFlags::default() {
+                case.computed_value
+            } else {
+                "0px"
+            }),
+            "{} computed indent serialization",
+            case.scene_id
+        );
+        assert_eq!(
+            computed_style
+                .properties
+                .get("white-space-collapse")
+                .map(String::as_str),
+            Some(if case.is_pre_line {
+                "preserve-breaks"
+            } else {
+                "collapse"
+            }),
+            "{} white-space",
+            case.scene_id
+        );
+        let layout = calculation
+            .layout
+            .unwrap_or_else(|error| panic!("{}: {error:?}", case.scene_id));
+        let diagnostics = layout.grid_track_sizing_diagnostics.as_ref().unwrap();
+        let item = diagnostics
+            .item_inputs
+            .iter()
+            .find(|input| input.node == text_node.id())
+            .unwrap();
+        let LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
+            panic!("{} did not use text intrinsic sizing", case.scene_id);
+        };
+        assert_eq!(
+            sizes.min_content(),
+            case.expected_min_content,
+            "{} min-content",
+            case.scene_id
+        );
+        assert_eq!(
+            sizes.max_content(),
+            case.expected_max_content,
+            "{} max-content",
+            case.scene_id
+        );
+        assert_eq!(
+            sizes.min_content_height(),
+            case.expected_min_height,
+            "{} min height",
+            case.scene_id
+        );
+        assert_eq!(
+            sizes.max_content_height(),
+            if case.is_pre_line { 20.0 } else { 10.0 },
+            "{} max height",
+            case.scene_id
+        );
+        let text_layout = diagnostics
+            .item_text_layouts
+            .iter()
+            .find(|text| text.input.node == text_node.id())
+            .expect("text layout");
+        assert_eq!(text_layout.input.style.text_indent, case.text_indent);
+        assert_eq!(
+            text_layout.input.style.text_indent_flags,
+            case.text_indent_flags
+        );
+        assert_eq!(
+            text_layout.layout.lines.len(),
+            case.expected_line_advances.len()
+        );
+        for (index, line) in text_layout.layout.lines.iter().enumerate() {
+            assert!((line.advance - case.expected_line_advances[index]).abs() <= 1.0 / 64.0);
+            assert!((line.indent - case.expected_line_indents[index]).abs() <= 1.0 / 64.0);
+            assert!((line.line_top - index as f32 * 10.0).abs() <= 1.0 / 64.0);
+        }
+        for (line_index, expected_x) in case.expected_line_indents.iter().enumerate() {
+            let run = text_layout
+                .layout
+                .runs
+                .iter()
+                .find(|run| run.line_index == line_index)
+                .expect("line glyph run");
+            assert!((run.glyphs[0].x - expected_x).abs() <= 1.0 / 64.0);
+        }
+        assert_eq!(
+            text_layout.layout.text,
+            if case.is_pre_line {
+                case.text.to_owned()
+            } else {
+                "XXX X".to_owned()
+            }
+        );
+        let expected_track = if case.is_min_content {
+            case.expected_min_content
+        } else {
+            case.expected_max_content
+        };
+        let trace = diagnostics
+            .traces
+            .iter()
+            .find(|trace| trace.node == root.id())
+            .unwrap();
+        let column_pass = trace
+            .passes
+            .iter()
+            .rfind(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+            .unwrap();
+        let tracks = column_pass
+            .stages
+            .last()
+            .unwrap()
+            .tracks
+            .iter()
+            .filter(|track| !track.is_gutter)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>();
+        assert_eq!(
+            tracks,
+            vec![expected_track],
+            "{} final column",
+            case.scene_id
+        );
     }
 }
 
@@ -412,11 +678,16 @@ fn snapshot_for(
         root,
         "style",
         &format!(
-            "box-sizing:border-box;display:grid;width:120px;height:auto;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:auto;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;tab-size:8;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:{}",
+            "box-sizing:border-box;display:grid;width:120px;height:auto;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:auto;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;tab-size:8;white-space-collapse:{};text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:{}",
             if case.is_min_content {
                 "min-content"
             } else {
                 "max-content"
+            },
+            if case.is_pre_line {
+                "preserve-breaks"
+            } else {
+                "collapse"
             },
             case.specified_value
         ),

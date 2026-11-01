@@ -448,6 +448,7 @@ pub(super) fn ahem_paragraph_style() -> ParagraphStyle {
         letter_spacing: 0.0,
         word_spacing: 0.0,
         text_indent: 0.0,
+        text_indent_flags: spinon_layout::TextIndentFlags::default(),
         text_transform: Default::default(),
     }
 }

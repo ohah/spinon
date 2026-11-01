@@ -67,8 +67,9 @@ pub use spinon_text_layout::{
     FontRegistryRevision, FontStyleMode, GlyphBitmap, GlyphBitmapContent, InlineFragment,
     InlineRunStyle, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, ParagraphStyle,
     TabSize, TextDirection as TextParagraphDirection, TextGlyph, TextGlyphRasterSnapshot,
-    TextIntrinsicLogicalSizes, TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun,
-    TextSource, TextSourceRange, TextTransformMode, WhiteSpaceMode, WordBreakMode,
+    TextIndentFlags, TextIntrinsicLogicalSizes, TextLayoutEngine, TextLayoutSnapshot, TextLine,
+    TextRect, TextRun, TextSource, TextSourceRange, TextTransformMode, WhiteSpaceMode,
+    WordBreakMode,
 };
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,

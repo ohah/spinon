@@ -158,6 +158,7 @@ impl TextLayoutEngine {
             if !valid_text_range(&text_range, &normalized.text)
                 || ![
                     metrics.advance,
+                    metrics.indent,
                     metrics.hanging_advance,
                     metrics.block_min_coord,
                     metrics.line_height,
@@ -174,6 +175,7 @@ impl TextLayoutEngine {
             lines.push(TextLine {
                 text_range,
                 advance: visible_line_advance,
+                indent: metrics.indent,
                 hanging_advance: metrics.hanging_advance,
                 line_top: metrics.block_min_coord,
                 line_height: metrics.line_height,

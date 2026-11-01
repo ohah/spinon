@@ -271,6 +271,9 @@ private struct C114GenericDirectTextItemExpectation {
     let wordSpacing: Double
     let textIndent: Double
     let lineAdvances: [Double]
+    var textIndentEachLine = false
+    var textIndentHanging = false
+    var lineIndents: [Double] = []
 }
 
 private struct C114GenericDirectTextSceneExpectation {
@@ -404,11 +407,13 @@ private func c114GenericTextItem(
     availableWidth: Double? = nil, textWidth: Double? = nil,
     paddingInline: Double = 0, paddingBlock: Double = 0, borderWidth: Double = 0,
     letterSpacing: Double = 0, wordSpacing: Double = 0, textIndent: Double = 0,
+    textIndentEachLine: Bool = false, textIndentHanging: Bool = false,
+    lineIndents: [Double]? = nil,
     fontFamily: String = "Ahem", locale: String? = nil, lineBreak: String = "Strict",
     overflowWrap: String = "Normal",
     lineAdvances: [Double]
 ) -> C114GenericDirectTextItemExpectation {
-    C114GenericDirectTextItemExpectation(
+    var expected = C114GenericDirectTextItemExpectation(
         node: node, x: x, width: width, height: height,
         availableWidth: availableWidth ?? width, textWidth: textWidth ?? width,
         paddingInline: paddingInline, paddingBlock: paddingBlock, borderWidth: borderWidth,
@@ -420,6 +425,10 @@ private func c114GenericTextItem(
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing, textIndent: textIndent, lineAdvances: lineAdvances
     )
+    expected.textIndentEachLine = textIndentEachLine
+    expected.textIndentHanging = textIndentHanging
+    expected.lineIndents = lineIndents ?? (lineAdvances.indices.map { $0 == 0 ? textIndent : 0 })
+    return expected
 }
 
 private func c114GenericDirectTextExpectation(
@@ -484,11 +493,16 @@ private func c114GenericDirectTextExpectation(
         let item = c114GenericTextItem(
             node: 2, x: 0, width: textIndent.trackWidth, height: textIndent.rowHeight,
             minContent: textIndent.minContent, maxContent: textIndent.maxContent,
-            minContentHeight: textIndent.minContentHeight, maxContentHeight: 10,
+            minContentHeight: textIndent.minContentHeight,
+            maxContentHeight: textIndent.whiteSpace == "PreLine"
+                ? textIndent.minContentHeight : 10,
             rawText: textIndent.rawText, layoutText: textIndent.layoutText,
-            whiteSpace: "Normal", wordBreak: "Normal",
+            whiteSpace: textIndent.whiteSpace, wordBreak: "Normal",
             textWidth: textIndent.unindentedLineAdvance,
             textIndent: textIndent.textIndent,
+            textIndentEachLine: textIndent.textIndentEachLine,
+            textIndentHanging: textIndent.textIndentHanging,
+            lineIndents: textIndent.lineIndents,
             lineAdvances: textIndent.lineAdvances
         )
         return C114GenericDirectTextSceneExpectation(
@@ -6864,7 +6878,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
         }
     }
     if anonymousTextScene {
-        let minContentTrack = sceneID.hasSuffix("-min-content")
+        let minContentTrack = c114IsMinContentTextTrackScene(sceneID)
         let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
             && sceneID.hasSuffix("-fixed-10px")
         let expectedMinContentWidthNodes = fixedOverflowWrapTrack ? Set<Int>() : Set(expectedNodes)
@@ -7122,16 +7136,22 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONNear(style["letterSpacing"], expected: expected.letterSpacing, tolerance: 0),
               c114GenericJSONNear(style["wordSpacing"], expected: expected.wordSpacing, tolerance: 0),
               c114GenericJSONNear(style["textIndent"], expected: expected.textIndent, tolerance: 0),
+              style["textIndentEachLine"] as? Bool == expected.textIndentEachLine,
+              style["textIndentHanging"] as? Bool == expected.textIndentHanging,
               c114GenericJSONString(style["textTransform"]) == expectedTextTransform,
               c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
               c114GenericJSONString(style["textOrientation"]) == "Mixed",
               c114GenericJSONString(style["lineBreak"]) == expected.lineBreak,
               c114GenericJSONString(style["ligatures"]) == "Normal",
               let lines = layout["lines"] as? [[String: Any]],
-              lines.count == expected.lineAdvances.count else { return false }
+              lines.count == expected.lineAdvances.count,
+              expected.lineIndents.count == expected.lineAdvances.count else { return false }
         for (lineIndex, line) in lines.enumerated() {
             guard c114GenericJSONNear(
                     line["advance"], expected: expected.lineAdvances[lineIndex], tolerance: 1.0 / 64.0
+                  ),
+                  c114GenericJSONNear(
+                    line["indent"], expected: expected.lineIndents[lineIndex], tolerance: 1.0 / 64.0
                   ),
                   c114GenericJSONNear(line["lineTop"], expected: Double(lineIndex) * 10, tolerance: 1.0 / 64.0),
                   c114GenericJSONNear(line["lineHeight"], expected: 10, tolerance: 1.0 / 64.0) else {
@@ -7430,7 +7450,7 @@ private func c114GenericDirectTextTraceMatches(
     }
     if anonymousTextScene {
         let item = scene.items[0]
-        let minContentTrack = sceneID.hasSuffix("-min-content")
+        let minContentTrack = c114IsMinContentTextTrackScene(sceneID)
         let expectedColumns: [(item: Int, kind: String, value: Double)] = fixedOverflowWrapTrack
             ? [] : minContentTrack ? [(item.node, "MinContent", item.minContent)] : [
                 (item.node, "MinContent", item.minContent),
@@ -10824,13 +10844,19 @@ private func c114ComputedWordSpacingScene(
     #endif
 }
 
-private func c114ComputedTextIndentScene(
-    _ sceneID: String
-) -> (textIndent: Double, minContent: Double, maxContent: Double,
+private typealias C114TextIndentSceneExpectation = (
+    textIndent: Double, minContent: Double, maxContent: Double,
     trackWidth: Double, rowHeight: Double, minContentHeight: Double,
     lineCount: Int, unindentedLineAdvance: Double, lineAdvances: [Double],
-    rawText: String, layoutText: String)? {
+    rawText: String, layoutText: String, whiteSpace: String,
+    textIndentEachLine: Bool, textIndentHanging: Bool, lineIndents: [Double]
+)
+
+private func c114ComputedTextIndentScene(
+    _ sceneID: String
+) -> C114TextIndentSceneExpectation? {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    if let flags = c114ComputedTextIndentFlagsScene(sceneID) { return flags }
     let textIndent: Double
     if sceneID.hasPrefix("text-indent-zero-") {
         textIndent = 0
@@ -10876,11 +10902,72 @@ private func c114ComputedTextIndentScene(
         textIndent: textIndent, minContent: minContent, maxContent: maxContent,
         trackWidth: trackWidth, rowHeight: rowHeight, minContentHeight: minContentHeight,
         lineCount: lineCount, unindentedLineAdvance: unindentedLineAdvance,
-        lineAdvances: lineAdvances, rawText: rawText, layoutText: layoutText
+        lineAdvances: lineAdvances, rawText: rawText, layoutText: layoutText,
+        whiteSpace: "Normal", textIndentEachLine: false, textIndentHanging: false,
+        lineIndents: lineAdvances.indices.map { $0 == 0 ? textIndent : 0 }
     )
     #else
     return nil
     #endif
+}
+
+private func c114ComputedTextIndentFlagsScene(
+    _ sceneID: String
+) -> C114TextIndentSceneExpectation? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    guard sceneID.range(
+        of: #"^text-indent-flags-(soft|forced)-(min|max)-content-(none|indent|each-line|hanging|hanging-each-line)$"#,
+        options: .regularExpression
+    ) != nil else { return nil }
+    let forcedBreak = sceneID.hasPrefix("text-indent-flags-forced-")
+    let softWrap = sceneID.hasPrefix("text-indent-flags-soft-")
+    let minContentTrack = sceneID.contains("-min-content-")
+    let zero = sceneID.hasSuffix("-none")
+    let plainIndent = sceneID.hasSuffix("-indent")
+    let eachLine = sceneID.contains("-each-line")
+    let hanging = sceneID.contains("-hanging")
+    guard (forcedBreak || softWrap),
+          sceneID.contains("-min-content-") || sceneID.contains("-max-content-"),
+          !(zero && (eachLine || hanging)),
+          zero || plainIndent || eachLine || hanging else { return nil }
+    let indent = zero ? 0.0 : 10.0
+    let firstIndent = hanging ? 0.0 : indent
+    let secondIndent = forcedBreak
+        ? ((eachLine != hanging) ? indent : 0.0)
+        : (hanging ? indent : 0.0)
+    let minContent = max(30 + firstIndent, 10 + secondIndent)
+    let maxContent = forcedBreak ? minContent : 50 + firstIndent
+    let rowHeight = minContentTrack || forcedBreak ? 20.0 : 10.0
+    let lineAdvances = minContentTrack || forcedBreak ? [30.0, 10.0] : [50.0]
+    let lineCount = lineAdvances.count
+    let rawText = forcedBreak ? "XXX\nX" : "XXX X"
+    return (
+        textIndent: indent,
+        minContent: minContent,
+        maxContent: maxContent,
+        trackWidth: minContentTrack ? minContent : maxContent,
+        rowHeight: rowHeight,
+        minContentHeight: 20,
+        lineCount: lineCount,
+        unindentedLineAdvance: lineAdvances.max() ?? 0,
+        lineAdvances: lineAdvances,
+        rawText: rawText,
+        layoutText: rawText,
+        whiteSpace: forcedBreak ? "PreLine" : "Normal",
+        textIndentEachLine: eachLine,
+        textIndentHanging: hanging,
+        lineIndents: Array([firstIndent, secondIndent].prefix(lineCount))
+    )
+    #else
+    return nil
+    #endif
+}
+
+private func c114IsMinContentTextTrackScene(_ sceneID: String) -> Bool {
+    if sceneID.hasPrefix("text-indent-flags-") {
+        return sceneID.contains("-min-content-")
+    }
+    return sceneID.hasSuffix("-min-content")
 }
 
 private func c114ComputedTextTransformScene(
@@ -16268,7 +16355,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || c1133GridTemplateAreasProbeRequested || c1123GridAutoPlacementProbeRequested
                 || c1122GridAutoPlacementProbeRequested || c1121GridPlacementProbeRequested
                 || c11GridSceneArgument != nil) {
-            log("SPINON_C114_GRID_ARGUMENT_ERROR rejected=true")
+            log("SPINON_C114_GRID_ARGUMENT_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) rejected=true")
             postStatus("실패 · C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다")
             return
         }

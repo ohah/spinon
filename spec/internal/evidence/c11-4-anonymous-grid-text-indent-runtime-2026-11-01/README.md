@@ -13,6 +13,10 @@ Chrome 156 Agent Browser의 사전 관찰과 Ahem font table에 기반한 독립
 
 각 scene 로그는 computed property와 HostDocument revision, intrinsic min/max/height, shaped line advance, item frame, Columns/Rows 최종 track을 비교한다. 두 simulator 앱은 실행 후 종료했다. 캡처에는 앱 상태 화면이 보이나 renderer 영역은 검게 표시되므로 glyph paint나 PixelCopy/Metal drawable/compositor 이후 pixel 근거가 아니다.
 
+### Draw/present 재검증
+
+초기 capture runner가 layout summary에서 멈춰 draw/present를 수집하지 못해 runner를 수정하고 최종 Rust 빌드로 2026-11-01에 양수 18개를 다시 실행했다. scene별 `SPINON_C0410_DRAW status=0 presented boxes=1`, 예상 root 크기, 양수 Surface texture를 확인했다. Android 18/18 [matrix](android-avd-c114-computed-text-indent-positive-android-avd-1793498215176-fa585dfe/matrix.tsv), 설치 APK SHA-256 `997f08b094ba06f8443ec945e626e053a093916046fc4a6e2169dfbe57487128`; iOS 18/18 [matrix](ios-simulator-c114-computed-text-indent-positive-ios-simulator-1793498240700-24ba943b/matrix.tsv), 설치 executable SHA-256 `d1999a7a51d1287ddad9f002138c73b68609c04f8a1b44cf7c9d9fcc63dba43d`. Matrices include draw generation and superseded retry count. 이 결과는 WGPU surface 제출 근거이지 glyph pixel 동등성 근거는 아니다.
+
 ## Test, lint, artifact 근거
 
 - `cargo test --locked -p spinon-text-layout`: 76 passed. [로그](text-layout-pass02.log)

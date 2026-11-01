@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
+use spinon_layout::TextIndentFlags;
 use spinon_layout::{
     FontStyleMode, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphStyle, TabSize,
     TextLayoutEngine, TextParagraphDirection, TextTransformMode, WhiteSpaceMode, WordBreakMode,
@@ -26,6 +27,8 @@ mod line_height;
 mod overflow_wrap;
 #[path = "c11_4_anonymous_text/text_indent.rs"]
 mod text_indent;
+#[path = "c11_4_anonymous_text/text_indent_source.rs"]
+mod text_indent_source;
 #[path = "c11_4_anonymous_text/text_transform.rs"]
 mod text_transform;
 #[path = "c11_4_anonymous_text/word_break.rs"]
@@ -49,8 +52,10 @@ use overflow_wrap::{
     validate_computed_overflow_wrap,
 };
 use text_indent::{
-    TEXT_INDENT_SCENE_IDS, find_scene as text_indent_scene, validate_computed_text_indent,
+    ComputedTextIndent, TEXT_INDENT_SCENE_IDS, find_scene as text_indent_scene,
+    validate_computed_text_indent,
 };
+use text_indent_source::authored_inline_text_indent;
 #[cfg(test)]
 use text_transform::SCENES as TEXT_TRANSFORM_SCENES;
 use text_transform::{
@@ -260,7 +265,18 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     let text_transform_locale = text_transform::validate_owner_language(snapshot, root, scene_id)?;
     let grid_style = style_for(styles, root.id())?;
     let font_size = validate_computed_font_size(grid_style, scene_id)?;
-    let validated_text_style = validate_grid_style(grid_style, scene_id, font_size)?;
+    let authored_text_indent = authored_inline_text_indent(snapshot, root)?;
+    let stylo_text_indent_flags_fallback_allowed =
+        is_expected_text_indent_flags_diagnostic(snapshot, root, styles);
+    let validated_text_style = validate_grid_style(
+        grid_style,
+        scene_id,
+        font_size,
+        authored_text_indent
+            .as_ref()
+            .map(|source| source.value.as_str()),
+        stylo_text_indent_flags_fallback_allowed,
+    )?;
     validate_direct_children(snapshot, root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -294,7 +310,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         font_size,
         validated_text_style.letter_spacing,
         validated_text_style.word_spacing,
-        validated_text_style.text_indent,
+        validated_text_style.computed_text_indent,
     );
     paragraph_style.overflow_wrap = validated_text_style.overflow_wrap;
     paragraph_style.text_transform = validated_text_style.text_transform;
@@ -320,6 +336,49 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         aspect_ratio_minmax_node: None,
         definite_axis_ratio_node: None,
     }))
+}
+
+/// Stylo 0.22 `servo` builds reject the two fixed C11.4 `text-indent` flags.
+/// Permit that one diagnostic only after the fixture has validated the exact
+/// authored declaration, root identity, computed-style revision, and scene.
+pub(in crate::session::ua_cascade::runtime_layout) fn is_expected_text_indent_flags_diagnostic(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> bool {
+    if styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        || validate_snapshot_revision(snapshot, root, styles).is_err()
+    {
+        return false;
+    }
+    let Ok((tag, root_id)) = element_identity(snapshot, root) else {
+        return false;
+    };
+    let Some(scene_id) = root_id
+        .strip_prefix("c114-")
+        .and_then(|value| value.strip_suffix("-grid"))
+    else {
+        return false;
+    };
+    let Some(scene) = text_indent_scene(scene_id) else {
+        return false;
+    };
+    if tag != "div" || scene.text_indent_flags == TextIndentFlags::default() {
+        return false;
+    }
+    let Ok(Some(authored)) = authored_inline_text_indent(snapshot, root) else {
+        return false;
+    };
+    if authored.value != scene.computed_value {
+        return false;
+    }
+    text_indent::is_single_expected_stylo_flags_diagnostic(
+        &styles.diagnostics,
+        root.id(),
+        scene.computed_value,
+        authored.line,
+        authored.column,
+    )
 }
 
 fn validate_direct_children(
@@ -528,7 +587,7 @@ struct ValidatedAnonymousTextStyle {
     line_height: ComputedLineHeight,
     letter_spacing: f32,
     word_spacing: f32,
-    text_indent: f32,
+    computed_text_indent: ComputedTextIndent,
     overflow_wrap: OverflowWrapMode,
     text_transform: TextTransformMode,
 }
@@ -537,6 +596,8 @@ fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
     font_size: f32,
+    authored_text_indent: Option<&str>,
+    stylo_text_indent_flags_fallback_allowed: bool,
 ) -> Result<ValidatedAnonymousTextStyle, RuntimeLayoutFailure> {
     let expected_wrap_mode = if is_pre_tab_scene(scene_id)
         || matches!(
@@ -564,6 +625,9 @@ fn validate_grid_style(
         | "anonymous-pre-forced-break"
         | "anonymous-pre-fixed-width-nowrap" => "preserve",
         scene_id if is_pre_tab_scene(scene_id) => "preserve",
+        scene_id if text_indent_scene(scene_id).is_some_and(|scene| scene.is_pre_line) => {
+            "preserve-breaks"
+        }
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-min-content"
@@ -681,13 +745,26 @@ fn validate_grid_style(
     let letter_spacing =
         validate_computed_letter_spacing(style.node_id, &style.properties, scene_id)?;
     let word_spacing = validate_computed_word_spacing(style.node_id, &style.properties, scene_id)?;
-    let text_indent = validate_computed_text_indent(style.node_id, &style.properties, scene_id)?;
+    let computed_text_indent = validate_computed_text_indent(
+        style.node_id,
+        &style.properties,
+        scene_id,
+        authored_text_indent,
+        stylo_text_indent_flags_fallback_allowed,
+    )?;
     let overflow_wrap =
         validate_computed_overflow_wrap(style.node_id, &style.properties, scene_id)?;
     let text_transform =
         validate_computed_text_transform(style.node_id, &style.properties, scene_id)?;
-    let expected_text_indent =
-        text_indent_scene(scene_id).map_or("0px", |scene| scene.computed_value);
+    let expected_text_indent = text_indent_scene(scene_id).map_or("0px", |scene| {
+        if scene.text_indent_flags != TextIndentFlags::default()
+            && style.properties.get("text-indent").map(String::as_str) == Some("0px")
+        {
+            "0px"
+        } else {
+            scene.computed_value
+        }
+    });
     validate_text_profile_properties(
         style.node_id,
         &style.properties,
@@ -745,7 +822,7 @@ fn validate_grid_style(
         line_height,
         letter_spacing,
         word_spacing,
-        text_indent,
+        computed_text_indent,
         overflow_wrap,
         text_transform,
     })
@@ -1268,7 +1345,7 @@ fn anonymous_paragraph_style(
     font_size: f32,
     letter_spacing: f32,
     word_spacing: f32,
-    text_indent: f32,
+    text_indent: ComputedTextIndent,
 ) -> ParagraphStyle {
     let (line_height, line_height_is_normal) = match line_height {
         ComputedLineHeight::Normal => (10.0, true),
@@ -1282,7 +1359,8 @@ fn anonymous_paragraph_style(
         font_size,
         letter_spacing,
         word_spacing,
-        text_indent,
+        text_indent: text_indent.value,
+        text_indent_flags: text_indent.flags,
         line_height,
         line_height_is_normal,
         font_weight: 400.0,
@@ -1292,6 +1370,9 @@ fn anonymous_paragraph_style(
                 if LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
                     && !scene_id.ends_with("soft-wrap") =>
             {
+                WhiteSpaceMode::PreLine
+            }
+            scene_id if text_indent_scene(scene_id).is_some_and(|scene| scene.is_pre_line) => {
                 WhiteSpaceMode::PreLine
             }
             "anonymous-nowrap-min-content" => WhiteSpaceMode::NoWrap,
@@ -1362,12 +1443,13 @@ enum ExpectedChild<'a> {
 mod tests {
     use super::super::c11_4_text::AHEM;
     use super::{
-        ComputedLineHeight, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES,
-        FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS,
-        FULL_TAB_VALUE_IDS, LINE_BREAK_SCENES, OVERFLOW_WRAP_SCENES, OverflowWrapTrackKind,
-        SCENE_IDS, TEXT_TRANSFORM_SCENES, WORD_BREAK_SCENES, anonymous_paragraph_style,
-        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
-        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
+        ComputedLineHeight, ComputedTextIndent, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS,
+        FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS,
+        FULL_TAB_LF_SECOND_LINE_WIDTHS, FULL_TAB_VALUE_IDS, LINE_BREAK_SCENES,
+        OVERFLOW_WRAP_SCENES, OverflowWrapTrackKind, SCENE_IDS, TEXT_TRANSFORM_SCENES,
+        TextIndentFlags, WORD_BREAK_SCENES, anonymous_paragraph_style, full_tab_expected_width,
+        full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto, grid_tracks_match,
+        parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
         validate_text_profile_properties,
     };
     use spinon_core::NodeId;
@@ -1590,7 +1672,10 @@ mod tests {
                 font_size,
                 0.0,
                 0.0,
-                0.0,
+                ComputedTextIndent {
+                    value: 0.0,
+                    flags: TextIndentFlags::default(),
+                },
             );
             assert_eq!(
                 style.font_size, font_size,
@@ -1621,7 +1706,10 @@ mod tests {
                     font_size,
                     0.0,
                     0.0,
-                    0.0,
+                    ComputedTextIndent {
+                        value: 0.0,
+                        flags: TextIndentFlags::default(),
+                    },
                 ),
                 inline_styles: BTreeMap::new(),
                 inline_run_styles: BTreeMap::new(),
@@ -1779,6 +1867,7 @@ mod tests {
                     letter_spacing: 0.0,
                     word_spacing: 0.0,
                     text_indent: 0.0,
+                    text_indent_flags: spinon_layout::TextIndentFlags::default(),
                     text_transform: Default::default(),
                 };
                 let paragraph = ParagraphInput {

@@ -252,6 +252,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final double wordSpacing;
         final double textIndent;
         final double[] lineAdvances;
+        final boolean textIndentEachLine;
+        final boolean textIndentHanging;
+        final double[] lineIndents;
 
         C114GenericDirectTextItemExpectation(
                 int node, double x, double width, double height,
@@ -375,6 +378,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 String fontFamily, String locale, String lineBreak, String overflowWrap,
                 double[] lineAdvances
         ) {
+            this(node, x, width, height, availableWidth, textWidth,
+                    paddingInline, paddingBlock, borderWidth,
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    rawText, layoutText, whiteSpace, wordBreak,
+                    letterSpacing, wordSpacing, textIndent,
+                    fontFamily, locale, lineBreak, overflowWrap, lineAdvances,
+                    false, false, null);
+        }
+
+        C114GenericDirectTextItemExpectation(
+                int node, double x, double width, double height,
+                double availableWidth, double textWidth,
+                double paddingInline, double paddingBlock, double borderWidth,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                String rawText, String layoutText, String whiteSpace, String wordBreak,
+                double letterSpacing, double wordSpacing, double textIndent,
+                String fontFamily, String locale, String lineBreak, String overflowWrap,
+                double[] lineAdvances, boolean textIndentEachLine,
+                boolean textIndentHanging, double[] lineIndents
+        ) {
             this.node = node;
             this.x = x;
             this.width = width;
@@ -400,7 +424,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             this.wordSpacing = wordSpacing;
             this.textIndent = textIndent;
             this.lineAdvances = lineAdvances;
+            this.textIndentEachLine = textIndentEachLine;
+            this.textIndentHanging = textIndentHanging;
+            this.lineIndents = lineIndents == null
+                    ? c114DefaultLineIndents(textIndent, lineAdvances.length)
+                    : lineIndents.clone();
         }
+    }
+
+    private static double[] c114DefaultLineIndents(double textIndent, int lineCount) {
+        double[] indents = new double[lineCount];
+        if (lineCount > 0) indents[0] = textIndent;
+        return indents;
     }
 
     private static final class C114GenericDirectTextSceneExpectation {
@@ -569,6 +604,29 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         double[] textIndent = c114ComputedTextIndentScene(sceneId);
         if (textIndent != null) {
+            if (textIndent.length > 15 && textIndent[15] == 1) {
+                boolean forcedBreak = textIndent[14] == 1;
+                boolean minContentTrack = sceneId.contains("-min-content-");
+                int lineCount = (int) textIndent[5];
+                double[] advances = minContentTrack || forcedBreak
+                        ? new double[] {textIndent[7], textIndent[8]}
+                        : new double[] {textIndent[9]};
+                double[] lineIndents = new double[lineCount];
+                if (lineCount > 0) lineIndents[0] = textIndent[12];
+                if (lineCount > 1) lineIndents[1] = textIndent[13];
+                String rawText = forcedBreak ? "XXX\nX" : "XXX X";
+                C114GenericDirectTextItemExpectation item =
+                        new C114GenericDirectTextItemExpectation(
+                                2, 0, textIndent[3], textIndent[4],
+                                textIndent[3], textIndent[9], 0, 0, 0,
+                                textIndent[1], textIndent[2], textIndent[6], 10,
+                                rawText, rawText, forcedBreak ? "PreLine" : "Normal", "Normal",
+                                0, 0, textIndent[0], "Ahem", null, "Strict", "Normal",
+                                advances, textIndent[10] == 1, textIndent[11] == 1,
+                                lineIndents);
+                return new C114GenericDirectTextSceneExpectation(
+                        120, textIndent[4], new double[] {textIndent[3]}, item, null);
+            }
             boolean singleWord = sceneId.contains("-single-word-");
             boolean collapsed = sceneId.contains("-collapsed-three-words-");
             boolean minContentTrack = sceneId.endsWith("-min-content");
@@ -7845,7 +7903,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !c114GenericJsonNear(layout, "height", expectedTextHeight, 1.0 / 64.0)
                     || !expected.layoutText.equals(c114GenericJsonString(layout, "text"))
                     || !c114GenericParagraphStyleMatches(sceneId, paragraph, expected)
-                    || lines == null || lines.length() != expected.lineAdvances.length) {
+                    || lines == null || lines.length() != expected.lineAdvances.length
+                    || expected.lineIndents.length != expected.lineAdvances.length) {
                 return false;
             }
             org.json.JSONObject source = sources.optJSONObject(0);
@@ -7862,6 +7921,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 org.json.JSONObject line = lines.optJSONObject(lineIndex);
                 if (!c114GenericJsonNear(
                             line, "advance", expected.lineAdvances[lineIndex], 1.0 / 64.0)
+                        || !c114GenericJsonNear(
+                            line, "indent", expected.lineIndents[lineIndex], 1.0 / 64.0)
                         || !c114GenericJsonNear(line, "lineTop", lineIndex * 10.0, 1.0 / 64.0)
                         || !c114GenericJsonNear(line, "lineHeight", 10, 1.0 / 64.0)) {
                     return false;
@@ -7907,6 +7968,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && c114GenericJsonNear(style, "letterSpacing", expected.letterSpacing, 0)
                 && c114GenericJsonNear(style, "wordSpacing", expected.wordSpacing, 0)
                 && c114GenericJsonNear(style, "textIndent", expected.textIndent, 0)
+                && Objects.equals(expected.textIndentEachLine,
+                        c114GenericJsonBoolean(style, "textIndentEachLine"))
+                && Objects.equals(expected.textIndentHanging,
+                        c114GenericJsonBoolean(style, "textIndentHanging"))
                 && expectedTextTransform.equals(
                         c114GenericJsonString(style, "textTransform"))
                 && "HorizontalTb".equals(c114GenericJsonString(style, "writingMode"))
@@ -12703,10 +12768,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     // [text-indent px, min-content px, max-content px, track width px, row height px,
     // line count, min-content row height, first line advance, second line advance,
-    // maximum unindented line advance]
+    // maximum unindented line advance, each-line, hanging, first/second line indent,
+    // forced-break, text-indent-flags scene]
     private static double[] c114ComputedTextIndentScene(String sceneId) {
         if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null
                 || !sceneId.startsWith("text-indent-")) return null;
+        double[] flags = c114ComputedTextIndentFlagsScene(sceneId);
+        if (flags != null) return flags;
         double textIndent;
         if (sceneId.startsWith("text-indent-zero-")) {
             textIndent = 0;
@@ -12746,7 +12814,47 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 textIndent, minContent, maxContent, trackWidth, rowHeight,
                 rowHeight == 10 ? 1 : (int) (rowHeight / 10), minContentHeight,
                 firstLineAdvance,
-                secondLineAdvance, lineAdvance,
+                secondLineAdvance, lineAdvance, 0, 0, textIndent, 0,
+                0, 0,
+        };
+    }
+
+    private static double[] c114ComputedTextIndentFlagsScene(String sceneId) {
+        if (sceneId == null || !sceneId.matches(
+                "text-indent-flags-(soft|forced)-(min|max)-content-(none|indent|each-line|hanging|hanging-each-line)")) {
+            return null;
+        }
+        boolean forcedBreak = sceneId.startsWith("text-indent-flags-forced-");
+        boolean softWrap = sceneId.startsWith("text-indent-flags-soft-");
+        boolean minContentTrack = sceneId.contains("-min-content-");
+        boolean zero = sceneId.endsWith("-none");
+        boolean eachLine = sceneId.contains("-each-line");
+        boolean hanging = sceneId.contains("-hanging");
+        if ((!forcedBreak && !softWrap)
+                || (!sceneId.contains("-min-content-") && !sceneId.contains("-max-content-"))
+                || zero && (eachLine || hanging)
+                || !zero && !sceneId.endsWith("-indent") && !eachLine && !hanging) {
+            return null;
+        }
+        double indent = zero ? 0 : 10;
+        double firstIndent = hanging ? 0 : indent;
+        double secondIndent = forcedBreak
+                ? ((eachLine ^ hanging) ? indent : 0)
+                : (hanging ? indent : 0);
+        double minContent = Math.max(30 + firstIndent, 10 + secondIndent);
+        double maxContent = forcedBreak
+                ? minContent : 50 + firstIndent;
+        double rowHeight = minContentTrack || forcedBreak ? 20 : 10;
+        double[] advances = minContentTrack || forcedBreak
+                ? new double[] {30, 10} : new double[] {50};
+        double maxUnindentedAdvance = minContentTrack || forcedBreak ? 30 : 50;
+        return new double[] {
+                indent, minContent, maxContent,
+                minContentTrack ? minContent : maxContent,
+                rowHeight, advances.length, 20,
+                30, 10, maxUnindentedAdvance,
+                eachLine ? 1 : 0, hanging ? 1 : 0,
+                firstIndent, secondIndent, forcedBreak ? 1 : 0, 1,
         };
     }
 
