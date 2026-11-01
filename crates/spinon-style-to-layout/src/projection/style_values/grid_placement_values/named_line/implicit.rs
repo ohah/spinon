@@ -13,6 +13,13 @@ pub(super) fn resolve_named_placements<'a>(
         super::ImplicitNamedLineResolver::new(node, line_metadata, allow_implicit_named_lines);
     let start_is_named_line = matches!(start, Placement::NamedLine { .. });
     let end_is_named_line = matches!(end, Placement::NamedLine { .. });
+    let is_same_named_line_pair = matches!(
+        (start, end),
+        (
+            Placement::NamedLine { name: start_name, .. },
+            Placement::NamedLine { name: end_name, .. }
+        ) if start_name == end_name
+    );
     let mut start_uses_implicit_grid_line = false;
     let mut end_uses_implicit_grid_line = false;
     let mut usage = ImplicitNamedLineUsage::default();
@@ -183,6 +190,13 @@ pub(super) fn resolve_named_placements<'a>(
         && end_uses_implicit_grid_line
         && is_positive_trailing_implicit_line(start, line_metadata.track_count)
         && is_positive_trailing_implicit_line(end, line_metadata.track_count);
+    usage.allows_negative_named_line_pair_auto_track_sizing = start_is_named_line
+        && end_is_named_line
+        && is_same_named_line_pair
+        && start_uses_implicit_grid_line
+        && end_uses_implicit_grid_line
+        && is_negative_leading_implicit_line(start, line_metadata.track_count)
+        && is_negative_leading_implicit_line(end, line_metadata.track_count);
 
     Ok((start, end, usage))
 }
@@ -190,6 +204,11 @@ pub(super) fn resolve_named_placements<'a>(
 fn is_positive_trailing_implicit_line(placement: Placement<'_>, track_count: usize) -> bool {
     matches!(placement, Placement::Line(line)
         if line > 0 && line_requires_implicit_extent(line, track_count))
+}
+
+fn is_negative_leading_implicit_line(placement: Placement<'_>, track_count: usize) -> bool {
+    matches!(placement, Placement::Line(line)
+        if line < 0 && line_requires_implicit_extent(line, track_count))
 }
 
 fn usage_for_line(
@@ -207,6 +226,7 @@ fn usage_for_line(
         requires_signed_extent,
         allows_positive_auto_track_sizing: false,
         allows_positive_named_line_pair_auto_track_sizing: false,
+        allows_negative_named_line_pair_auto_track_sizing: false,
     }
 }
 

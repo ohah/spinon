@@ -97,6 +97,7 @@ public final class MainActivity extends Activity {
     };
     private static final String[] C1133_NAMED_LINE_PAIR_SCENE_IDS = {
             "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
+            "negative-named-line-pair-matrix",
     };
     private static final int RUNTIME_QUEUE_CAPACITY = 64;
     private static final String LIFECYCLE_FIXTURE_ASSET = "s03-lifecycle-probe.js";

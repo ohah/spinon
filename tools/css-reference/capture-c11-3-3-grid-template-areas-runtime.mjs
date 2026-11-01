@@ -30,6 +30,8 @@ const namedLineAutoRuntimeMode = fixture.schema
   === 'spinon-css-c11-3-3-named-line-auto-implicit-tracks-mobile-pixels/v1';
 const namedLinePairRuntimeMode = fixture.schema
   === 'spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1';
+const negativeNamedLinePairRuntimeMode = fixture.schema
+  === 'spinon-css-c11-3-3-negative-named-line-pair-auto-implicit-tracks-mobile-pixels/v1';
 assert.ok(['android-avd', 'android-physical', 'ios-simulator'].includes(target),
   '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID] [--fit-content-area-cap] [--fixture=repo-relative-path]');
 
@@ -40,11 +42,13 @@ const serialOrUDID = positionalArgs[1]
   ?? (target === 'ios-simulator' ? defaultSimulatorUDID
     : target === 'android-avd' ? process.env.SPINON_ANDROID_EMULATOR_SERIAL ?? 'emulator-5554'
       : process.env.ANDROID_SERIAL);
-const runID = `${fitContentAreaCapMode ? 'c1133-fitcap' : 'c1133'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runID = `${negativeNamedLinePairRuntimeMode ? 'c1133-negative-pair' : fitContentAreaCapMode ? 'c1133-fitcap' : 'c1133'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
   `spec/internal/evidence/${namedLinePairRuntimeMode
     ? `c11-3-3-named-line-pair-runtime-${date}`
+    : negativeNamedLinePairRuntimeMode
+      ? `c11-3-3-negative-named-line-pair-runtime-${date}`
     : fitContentAreaCapMode
       ? `c11-3-3-template-area-fit-content-cap-runtime-${date}`
       : `c11-3-3-grid-template-areas-runtime-${date}`}`, `${target}-${runID}`);
@@ -393,7 +397,9 @@ const rootFrame = platform.frames[0];
 const itemFrame = platform.frames.at(-1);
 assert.ok(rootFrame && itemFrame, '성공 scene root/item frame이 없습니다.');
 const result = {
-  schema: namedLinePairRuntimeMode
+  schema: negativeNamedLinePairRuntimeMode
+    ? 'spinon-c11-3-3-negative-named-line-pair-auto-implicit-tracks-runtime-result/v1'
+    : namedLinePairRuntimeMode
     ? 'spinon-c11-3-3-named-line-pair-auto-implicit-tracks-runtime-result/v1'
     : namedLineAutoRuntimeMode
       ? 'spinon-c11-3-3-named-line-auto-implicit-tracks-runtime-result/v1'
@@ -414,7 +420,9 @@ const result = {
 };
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
 await writeFile(resolve(evidenceDirectory, 'README.md'), [
-  namedLinePairRuntimeMode
+  negativeNamedLinePairRuntimeMode
+    ? '# C11.3.3 negative leading named-line pair 모바일 실행'
+    : namedLinePairRuntimeMode
     ? '# C11.3.3 양 끝 implicit named-line pair 모바일 실행'
     : namedLineAutoRuntimeMode
       ? '# C11.3.3 named-line auto implicit tracks 모바일 실행' : '# C11.3.3 Grid template area 모바일 실행', '',

@@ -721,13 +721,72 @@ test('양 끝 positive implicit named-line pair fixtures가 Chrome 기준과 And
   ]) {
     const allowlist = source.match(pattern)?.[1];
     assert.ok(allowlist);
-    assert.deepEqual([...allowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), sceneIds);
+    assert.deepEqual([...allowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), [
+      ...sceneIds, 'negative-named-line-pair-matrix',
+    ]);
   }
   assert.ok(android.includes('pair-columns-red'));
   assert.ok(android.includes('pair-rows-red'));
   assert.ok(ios.includes('c1133NamedLinePairPixelSamples'));
   assert.ok(capture.includes('spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1'));
   assert.ok(capture.includes('spinon-c11-3-3-named-line-pair-auto-implicit-tracks-runtime-result/v1'));
+});
+
+test('negative leading named-line pair runtime matrix is pinned to Chrome and both app allowlists', async () => {
+  const fixturePath = 'tests/fixtures/css/c11/negative-named-line-pair-auto-implicit-tracks-mobile-v1.json';
+  const referencePath = 'tests/fixtures/css/references/c11-3-3-negative-named-line-pairs-reference-v1.json';
+  const screenshotPath = 'spec/internal/evidence/c11-3-3-negative-named-line-pair-runtime-2026-11-01/chrome-156-agent-browser.png';
+  const observationPath = 'spec/internal/evidence/c11-3-3-negative-named-line-pair-runtime-2026-11-01/chrome-156-observations.json';
+  const [fixtureBytes, referenceBytes, screenshotBytes, observationBytes,
+    rustBytes, mainActivityBytes, androidBytes, iosBytes, captureBytes] = await Promise.all([
+    read(fixturePath), read(referencePath), read(screenshotPath), read(observationPath),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_3.rs'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    read('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs'),
+  ]);
+  const fixture = JSON.parse(fixtureBytes.toString('utf8'));
+  const reference = JSON.parse(referenceBytes.toString('utf8'));
+  const observation = JSON.parse(observationBytes.toString('utf8'));
+  assert.equal(fixture.schema,
+    'spinon-css-c11-3-3-negative-named-line-pair-auto-implicit-tracks-mobile-pixels/v1');
+  assert.equal(fixture.sceneId, 'negative-named-line-pair-matrix');
+  assert.equal(fixture.oracle.referenceId, reference.referenceId);
+  assert.equal(fixture.oracle.referenceSha256, sha256(referenceBytes));
+  assert.equal(reference.sourceObservation.sha256, sha256(observationBytes));
+  assert.equal(fixture.oracle.screenshotSha256, sha256(screenshotBytes));
+  assert.deepEqual(fixture.runtime.expectedFrames,
+    [observation.wrapper, ...observation.cases.flatMap(({ root, item }) => [root, item])]);
+  assert.equal(fixture.runtime.expectedNodeCount, 17);
+  assert.deepEqual(fixture.samples.map(({ id }) => id),
+    observation.cases.map((_, index) => `negative-pair-${index}`));
+  assert.equal(validateC11IOSChromeOracle({ fixture, referenceBytes, screenshotBytes }).sampleCount, 8);
+
+  const sceneId = fixture.sceneId;
+  const rust = rustBytes.toString('utf8');
+  const mainActivity = mainActivityBytes.toString('utf8');
+  const android = androidBytes.toString('utf8');
+  const ios = iosBytes.toString('utf8');
+  const capture = captureBytes.toString('utf8');
+  for (const source of [rust, mainActivity, android, ios]) {
+    assert.ok(source.includes(sceneId), `${sceneId}: route가 없습니다.`);
+  }
+  for (const [source, pattern] of [
+    [mainActivity, /C1133_NAMED_LINE_PAIR_SCENE_IDS = \{([\s\S]*?)\};/],
+    [android, /C1133_NAMED_LINE_PAIR_SCENE_IDS = \{([\s\S]*?)\};/],
+    [ios, /c1133NamedLinePairSceneIDs: Set<String> = \[([\s\S]*?)\]/],
+  ]) {
+    assert.ok(source.match(pattern)?.[1]?.includes(sceneId), `${sceneId}: pair allowlist가 없습니다.`);
+  }
+  for (const sample of fixture.samples) {
+    assert.ok(android.includes(`new SurfaceViewPixelCapture.Sample("${sample.id}"`),
+      `Android sample ${sample.id}가 없습니다.`);
+    assert.ok(ios.includes(`("${sample.id}",`), `iOS sample ${sample.id}가 없습니다.`);
+  }
+  assert.ok(android.includes('sampleId.startsWith("negative-pair-")'));
+  assert.ok(capture.includes('spinon-css-c11-3-3-negative-named-line-pair-auto-implicit-tracks-mobile-pixels/v1'));
+  assert.ok(capture.includes('spinon-c11-3-3-negative-named-line-pair-auto-implicit-tracks-runtime-result/v1'));
 });
 
 test('unknown-area fixed implicit tracks root 바깥 paint가 Chrome geometry와 pixel에 고정된다', async () => {

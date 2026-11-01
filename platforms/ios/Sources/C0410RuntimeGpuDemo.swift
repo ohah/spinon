@@ -30,6 +30,7 @@ private let c1133NamedLineAutoSceneIDs: Set<String> = [
 ]
 private let c1133NamedLinePairSceneIDs: Set<String> = [
     "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
+    "negative-named-line-pair-matrix",
 ]
 private func isC1133GridTemplateAreaScene(_ sceneID: String) -> Bool {
     c1133GridTemplateAreasSceneIDs.contains(sceneID)
@@ -11617,6 +11618,22 @@ private struct C111MetalPixelRun {
             return []
         }
     }
+    private static func c1133NegativeNamedLinePairPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        guard sceneID == "negative-named-line-pair-matrix" else { return [] }
+        let color: [UInt32] = [40, 102, 246, 255]
+        return [
+            ("negative-pair-0", "negative-pair-span-item", 5, 5, color),
+            ("negative-pair-1", "negative-pair-reversed-item", 165, 5, color),
+            ("negative-pair-2", "negative-pair-one-item", 5, 65, color),
+            ("negative-pair-3", "negative-pair-equal-item", 165, 65, color),
+            ("negative-pair-4", "negative-pair-offset-item", 5, 125, color),
+            ("negative-pair-5", "negative-pair-auto-columns-item", 165, 125, color),
+            ("negative-pair-6", "negative-pair-rows-item", 5, 185, color),
+            ("negative-pair-7", "negative-pair-auto-rows-item", 165, 185, color),
+        ]
+    }
     private static let c114TextOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("item-inside-root", "c114-break-all-item", 5, 20, [229, 72, 77, 255]),
         ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
@@ -11749,6 +11766,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c1133NamedLineAutoPixelSamples(sceneID: sceneID)
         } else if !c1133NamedLinePairPixelSamples(sceneID: sceneID).isEmpty {
             expectedSamples = c1133NamedLinePairPixelSamples(sceneID: sceneID)
+        } else if !c1133NegativeNamedLinePairPixelSamples(sceneID: sceneID).isEmpty {
+            expectedSamples = c1133NegativeNamedLinePairPixelSamples(sceneID: sceneID)
         } else {
             expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
         }
@@ -13347,6 +13366,7 @@ private struct C111MetalPixelRun {
                     || !c1133FitContentAreaCapPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133NamedLineAutoPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133NamedLinePairPixelSamples(sceneID: sceneID).isEmpty
+                    || !c1133NegativeNamedLinePairPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
                   isC1133GridTemplateAreaScene(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,
@@ -14435,7 +14455,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" ? 800 : c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? c1133NamedLinePairSceneIDs.contains(c1133GridTemplateAreasSceneID)
-                ? "Positive implicit named-line pair → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+                ? c1133GridTemplateAreasSceneID == "negative-named-line-pair-matrix"
+                    ? "Negative leading named-line pair → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+                    : "Positive implicit named-line pair → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
                 : "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
             ? "named Grid line occurrence·span → Stylo → Taffy → WGPU · 320×240 CSS px"

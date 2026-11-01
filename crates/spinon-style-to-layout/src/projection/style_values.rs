@@ -940,47 +940,58 @@ pub(super) fn project_styles(
                 implicit_usage.allows_positive_auto_track_sizing && fixed_size_item;
             let allows_positive_named_line_pair_auto_tracks =
                 implicit_usage.allows_positive_named_line_pair_auto_track_sizing && fixed_size_item;
-            if implicit_usage.requires_signed_extent {
-                let container = grid_containers
-                    .get_mut(&owner)
-                    .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
-                container.placement_mode =
-                    spinon_layout::GridPlacementMode::TemplateGridSignedImplicitTracks;
-            } else if implicit_usage.uses_implicit_tracks {
+            let allows_negative_named_line_pair_auto_tracks =
+                implicit_usage.allows_negative_named_line_pair_auto_track_sizing && fixed_size_item;
+            if implicit_usage.uses_implicit_tracks {
                 let container = grid_containers
                     .get_mut(&owner)
                     .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
                 use spinon_layout::GridPlacementMode;
-                match container.placement_mode {
-                    GridPlacementMode::TemplateGridSignedImplicitTracks => {}
-                    GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
-                        if !allows_positive_named_line_pair_auto_tracks =>
-                    {
-                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
-                    }
-                    GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks => {}
-                    GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
-                        if !allows_positive_named_line_auto_tracks =>
-                    {
-                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
-                    }
-                    GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
-                        if allows_positive_named_line_pair_auto_tracks =>
-                    {
-                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
-                    }
-                    GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {}
-                    GridPlacementMode::TemplateGridImplicitTracks => {}
-                    _ if allows_positive_named_line_pair_auto_tracks => {
-                        container.placement_mode =
-                            GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks;
-                    }
-                    _ if allows_positive_named_line_auto_tracks => {
-                        container.placement_mode =
-                            GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks;
-                    }
-                    _ => {
-                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+                if allows_negative_named_line_pair_auto_tracks {
+                    container.placement_mode =
+                        GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks;
+                } else if container.placement_mode
+                    == GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
+                {
+                    // 전체 Grid 자식 수를 검증할 때까지 strict pair mode를 유지합니다.
+                } else if implicit_usage.requires_signed_extent {
+                    container.placement_mode = GridPlacementMode::TemplateGridSignedImplicitTracks;
+                } else {
+                    match container.placement_mode {
+                        GridPlacementMode::TemplateGridSignedImplicitTracks => {}
+                        GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
+                            if !allows_positive_named_line_pair_auto_tracks =>
+                        {
+                            container.placement_mode =
+                                GridPlacementMode::TemplateGridImplicitTracks;
+                        }
+                        GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks => {}
+                        GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                            if !allows_positive_named_line_auto_tracks =>
+                        {
+                            container.placement_mode =
+                                GridPlacementMode::TemplateGridImplicitTracks;
+                        }
+                        GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                            if allows_positive_named_line_pair_auto_tracks =>
+                        {
+                            container.placement_mode =
+                                GridPlacementMode::TemplateGridImplicitTracks;
+                        }
+                        GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {}
+                        GridPlacementMode::TemplateGridImplicitTracks => {}
+                        _ if allows_positive_named_line_pair_auto_tracks => {
+                            container.placement_mode =
+                                GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks;
+                        }
+                        _ if allows_positive_named_line_auto_tracks => {
+                            container.placement_mode =
+                                GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks;
+                        }
+                        _ => {
+                            container.placement_mode =
+                                GridPlacementMode::TemplateGridImplicitTracks;
+                        }
                     }
                 }
             }
