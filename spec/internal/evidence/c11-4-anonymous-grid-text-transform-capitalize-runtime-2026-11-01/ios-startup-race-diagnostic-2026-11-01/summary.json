@@ -1,0 +1,118 @@
+{
+  "sourceHead": "9b124aeab080711028f1198686b8818f26aed122",
+  "simulator": "iPhone 17 Pro / iOS 26.2",
+  "attemptsPerScene": 5,
+  "scenes": {
+    "existing-none": [
+      {
+        "runId": "c114-startup-existing-none-01",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-existing-none-02",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-existing-none-03",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-existing-none-04",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-existing-none-05",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      }
+    ],
+    "added-none": [
+      {
+        "runId": "c114-startup-added-none-01",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-added-none-02",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-added-none-03",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-added-none-04",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-added-none-05",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      }
+    ],
+    "capitalize": [
+      {
+        "runId": "c114-startup-capitalize-01",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-capitalize-02",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-capitalize-03",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-capitalize-04",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      },
+      {
+        "runId": "c114-startup-capitalize-05",
+        "launchStatus": 0,
+        "status": 0,
+        "summary": true,
+        "logStatus": 0
+      }
+    ]
+  }
+}
