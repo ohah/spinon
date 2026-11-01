@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 구현·runtime 및 PR 변경 검토를 마쳤고 PR #991 병합을 기다린다. GitHub PR Checks에는 check run이 보고되지 않았다. 기존 ASCII English 제한 slice [PR #986](https://github.com/ohah/spinon/pull/986)의 다음 후속으로, runtime의 ASCII 12개 장면을 보존하고 Unicode 11개를 더한다. focused Rust/Node 검사, 관련 Clippy, Android/iOS Simulator app build 및 최종 23-scene Simulator matrix가 통과했다. 이 계획은 C11.4/C11 완료나 공개 CSS 지원을 선언하지 않는다.
+**상태:** PR #991 구현은 2026-11-01T16:59:25Z Rebase and merge됐다(merge SHA `108d0eed91220f81971f8c2eb7c4d2b727b26452`). GitHub PR Checks에는 check run이 보고되지 않았고 main required status check도 설정되지 않았다. 병합 후 상태 문서와 공개 roadmap을 갱신했고, Tailnet 미리보기에서 새 카드를 desktop/mobile로 확인했다. 기존 ASCII English 제한 slice [PR #986](https://github.com/ohah/spinon/pull/986)의 다음 후속으로, runtime의 ASCII 12개 장면을 보존하고 Unicode 11개를 더한다. focused Rust/Node 검사, 관련 Clippy, Android/iOS Simulator app build 및 최종 23-scene Simulator matrix가 통과했다. 이 계획은 C11.4/C11 완료나 공개 CSS 지원을 선언하지 않는다.
 
 **사전 비교:** [Chrome 156 Agent Browser 관측, CSS Text·Unicode 규범 및 기대값](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.md) · [20개 계획 실패 검토](./c11-4-anonymous-grid-text-transform-unicode-titlecase-plan-review-20.md) · [계획 PR 변경 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/plan-pr-diff-review-30.md)
 
@@ -47,7 +47,7 @@ Text-layout unit tests는 runtime 폰트 matrix와 분리해 `ǆ`→`ǅ`, supple
 5. anonymous Grid runtime validator, FFI source generator, 23-scene test table과 simulator capture checker를 같은 source profile로 갱신한다. ID가 style value·lang·source를 대신하지 않으며 owner/revision mismatch와 inline source는 layout 전에 거부한다. Superseded retry root/node ID는 동일 scene에서만 재사용하고 다른 scene 호출은 새로운 DOM root를 만든다.
 6. `spinon-text-layout` focused/full unit test, runtime/FFI feature test, fixture-module boundary, default/opt-in archive raw marker scan, scoped Clippy, `cargo fmt --all -- --check` 및 Android/iOS 앱 builds를 같은 commit에서 실행한다. 실패 cohort를 삭제하거나 성공 재실행으로 고쳐 쓰지 않는다.
 7. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 12개와 신규 11개 scene을 각각 23/23 실행한다. source revision·설치 artifact hash를 고정하고 text output, source ranges, intrinsic contribution, line count, track/frame, draw/present를 확인한다. Chrome의 U+00DF 동작 차이는 제품 mismatch로 표기하고 CSS Text+Unicode expected와 분리한다. Screenshot은 layout 상태 증거이며 glyph pixel이 아니다.
-8. 구현/runtime 실패 관점 20개와 구현 PR diff 실패 관점 30개 검토를 마쳤다. PR 본문에는 두 동작 참고 이미지를 첨부하고 Agent Browser에서 로드 여부를 확인했다. PR 번호/merge SHA/check rollup을 확인한 뒤 `Rebase and merge`한다.
+8. 구현/runtime 실패 관점 20개와 구현 PR diff 실패 관점 30개 검토를 마쳤다. PR 본문에는 두 동작 참고 이미지를 첨부하고 Agent Browser에서 로드 여부를 확인했다. PR #991을 `Rebase and merge`했다. merge SHA와 빈 PR check rollup을 확인했다. PR 본문의 iOS/Chrome 이미지는 Agent Browser에서 실제 로드됐다.
 9. 병합 뒤 내부 계약 0059, C11.4 계획, `spec/STATUS.md`, 공개 roadmap을 동일한 제한 범위·Chrome 차이·미검증 범위로 갱신한다. C11.4/C11 checkbox 또는 공식 완료 `72/213`을 바꾸지 않는다.
 
 ## 범위 밖과 완료 판정
