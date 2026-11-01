@@ -64,6 +64,23 @@
     "c11OverviewDetailRouteIncluded": true,
     "fullDocsDeadLinkCheck": false
   },
+  "prBodyImageVerification": {
+    "url": "https://github.com/ohah/spinon/pull/957",
+    "images": [
+      {
+        "alt": "C11.4 plan at 1280x900",
+        "loaded": true,
+        "naturalWidth": 1280,
+        "naturalHeight": 900
+      },
+      {
+        "alt": "C11.4 plan at 390x844",
+        "loaded": true,
+        "naturalWidth": 390,
+        "naturalHeight": 844
+      }
+    ]
+  },
   "sessionsClosed": ["spinon-pr956-plan-rollup-20261101", "spinon-pr956-mobile-20261101"],
   "noAgentBrowserExecutableRemains": true
 }
