@@ -1,0 +1,21 @@
+{
+  "tool": "agent-browser",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "documentWidth": 390,
+  "bodyWidth": 390,
+  "firstTwoProgressCardWidths": [
+    362,
+    362
+  ],
+  "visibleChecks": {
+    "pr1002": true,
+    "officialCount": "72/213",
+    "statusRoute": "/spinon/STATUS.html#css-구현-체크리스트"
+  },
+  "horizontalOverflow": false,
+  "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+}

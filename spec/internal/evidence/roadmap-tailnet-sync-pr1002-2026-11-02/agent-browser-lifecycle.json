@@ -1,0 +1,9 @@
+{
+  "closeCommand": "agent-browser close --all",
+  "closedSessions": [
+    "default"
+  ],
+  "remainingAgentBrowserOrHeadlessChromeProcesses": 0,
+  "verifiedBy": "ps -axo pid,etime,command | rg agent-browser|chrome-headless-shell",
+  "previewServerPidPreserved": 28040
+}
