@@ -395,9 +395,15 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             feature,
         });
     }
+    let root_html_author_diagnostic = if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+    {
+        registry.first_runtime_root_html_text_paint_author_diagnostic()
+    } else {
+        registry.first_runtime_author_diagnostic()
+    };
     if (profile == ComputedStyleProfile::RuntimeRootHtmlBlockPaintV1
         || profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1)
-        && let Some((stylesheet_id, diagnostic)) = registry.first_runtime_author_diagnostic()
+        && let Some((stylesheet_id, diagnostic)) = root_html_author_diagnostic
     {
         return Err(CssCascadeError::AuthorStylesheetDiagnostic {
             stylesheet_id,
@@ -460,13 +466,19 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 .diagnostics()
                 .iter()
                 .filter(|diagnostic| {
-                    !matches!(
-                        profile,
-                        ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
-                            | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
-                    ) || !diagnostic
-                        .message
-                        .starts_with("Unsupported @property descriptor declaration:")
+                    let ignored_invalid_fixed_px_gap = profile
+                        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                        && crate::stylesheet_registry::is_invalid_fixed_px_gap_declaration_diagnostic(
+                            &diagnostic.message,
+                        );
+                    !ignored_invalid_fixed_px_gap
+                        && (!matches!(
+                            profile,
+                            ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
+                                | ComputedStyleProfile::RuntimeFlexRegisteredPropertiesPaintV1
+                        ) || !diagnostic
+                            .message
+                            .starts_with("Unsupported @property descriptor declaration:"))
                 })
                 .cloned()
                 .map(|diagnostic| CascadeDiagnostic {
@@ -552,6 +564,13 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         let mut subtree_word_break_is_break_word = parent_word_break_is_break_word;
         let computed = if let Some(element) = view.element(handle) {
             for diagnostic in &element.data().inline_style_diagnostics {
+                if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                    && crate::stylesheet_registry::is_invalid_fixed_px_gap_declaration_diagnostic(
+                        &diagnostic.message,
+                    )
+                {
+                    continue;
+                }
                 diagnostics.push(CascadeDiagnostic {
                     source_id: format!("inline:{}", handle.id()),
                     node_id: Some(handle.id()),

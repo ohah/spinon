@@ -28,6 +28,12 @@
 
 Repeat·named line/area, fraction·percentage·intrinsic track, implicit sizing·placement, explicit placement, non-default auto-flow, nonzero gap·margin·border·padding, non-static positioning, non-visible overflow, RTL·비수평 writing mode, flex/nested Grid item 및 그 밖의 projection 밖 값은 제한 경로에서 성공 입력으로 받아들이지 않는다. 실패 시 partial scene을 publish하지 않는다. 고정 Chrome 156 expected/overflow oracle, Root HTML Rust tests, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 실행 근거와 한계는 [C11.1 Root HTML runtime evidence](./evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/README.md)에 기록한다. CSS Grid item text 규칙은 [CSS Grid Layout Module Level 2 §6](https://www.w3.org/TR/css-grid-2/#grid-items)에 따른다.
 
+## C11.1 parsed Root HTML Grid fixed-px gap · implementation candidate · 2026-11-02
+
+현재 후보는 기존 `RuntimeRootHtmlTextPaintV1` default Root HTML 경로에서 CSS `gap`/`row-gap`/`column-gap`의 computed `normal` 또는 finite non-negative `LengthPx`를 제한적으로 허용한다. computed row/column 값은 같은 style snapshot의 `LayoutGap`에 한 번 전달되어 Taffy track 사이 gutter로 배치된다. percentage와 math-backed `calc()`는 각각 해당 longhand의 `unsupported_computed_value` diagnostic으로 scene publication 전에 거부한다. CSS-invalid negative shorthand는 cascade가 전체 declaration을 폐기해 기존 zero-gap computed behavior를 유지한다.
+
+Fixed explicit px tracks, default row auto-placement, definite root axes, implicit track 없는 빈 blockified items만 다룬다. Shorthand/longhand, id·selector 변경, hidden prefix, zero-gap와 invalid-negative controls 및 exact item frames는 [C11.1 gap plan](../../plan/c11-root-html-grid-gap.md)과 [실행 evidence](./evidence/c11-root-html-grid-gap-runtime-2026-11-02/README.md)에 고정한다. Chrome verifier 1/1, Root HTML runtime 18/18, computed-gap 및 CSS-invalid-declaration unit 검사 각 1/1, Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행과 [구현/runtime 실패 관점 검토 20개](./evidence/c11-root-html-grid-gap-runtime-2026-11-02/implementation-runtime-review-20.md)를 완료했다. PR diff 적대 검토 30개와 PR/merge는 남아 있다. 이 후보는 public CSS support나 C11.1/C11 완료를 뜻하지 않으며 공식 `72/213`은 그대로다. 내부 숫자 버전은 `0.1.0`을 유지한다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.

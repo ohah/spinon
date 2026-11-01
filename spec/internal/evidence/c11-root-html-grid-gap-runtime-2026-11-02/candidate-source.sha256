@@ -1,0 +1,9 @@
+8dfda05fd72a45d873c8ff533eaf0fedb41181859502fd4792fddc738ce289ab  crates/spinon-style/src/stylo_dom/cascade/runtime_paint.rs
+d5b925fd9d7bc83c616e63085a30759dcda92532c9ddf6ffdb9d7a82a3154ca3  crates/spinon-style/src/stylesheet_registry.rs
+dbe58c25991b5210ecbd2e474deee7c2c2cf919f40665c62409998c23001212a  crates/spinon-style/src/stylesheet_registry/css_profile.rs
+478ab749d61bf8fe1b301fc094d63631aa2ee040c1176ef8740659078e682567  crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs
+ecce6060dd83c2bbbf811e090aeddb05969843f26e5c966a0d68363d87d9d5a2  crates/spinon-style-to-layout/src/projection/style_values.rs
+b7534853c8e1cdc1ccce9ea9b7b7e2c9c67cf30424fafd9781cbdf8ee9348924  crates/spinon-runtime/src/session/tests/root_html_grid.rs
+82b4695f83df26e013c0dc1e76d6c42146900e5511667664c99cdcb1487d93e5  crates/spinon-style/src/stylesheet_registry/css_profile/tests.rs
+73d4ceb1e67799f7aae87750397f42bf56fa0f57adb95ee9583243b9f6b328e2  tests/fixtures/css/c11/root-html-grid-gap-author-precomparison.html
+9a935b2cc6c04e93cb144e65623ce60968c7ce517d632a12eadb8ef6c1f04000  spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/root-app-runtime-probe.js

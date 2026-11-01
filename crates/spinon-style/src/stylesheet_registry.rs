@@ -8,7 +8,8 @@ mod css_profile;
 mod raw_style;
 pub(crate) use css_profile::{
     declaration_contains_css_system_color, is_border_image_initial,
-    supports_runtime_visibility_collapse_value, supports_runtime_visibility_value,
+    is_invalid_fixed_px_gap_declaration_diagnostic, supports_runtime_visibility_collapse_value,
+    supports_runtime_visibility_value,
 };
 
 use cssparser::SourceLocation;
@@ -362,6 +363,26 @@ impl StylesheetRegistry {
                 stylesheet
                     .diagnostics
                     .first()
+                    .cloned()
+                    .map(|diagnostic| (stylesheet.id.clone(), diagnostic))
+            })
+    }
+
+    pub(crate) fn first_runtime_root_html_text_paint_author_diagnostic(
+        &self,
+    ) -> Option<(String, CssParseDiagnostic)> {
+        self.stylesheets
+            .iter()
+            .filter(|stylesheet| stylesheet.origin == CssOrigin::Author)
+            .find_map(|stylesheet| {
+                stylesheet
+                    .diagnostics
+                    .iter()
+                    .find(|diagnostic| {
+                        !css_profile::is_invalid_fixed_px_gap_declaration_diagnostic(
+                            &diagnostic.message,
+                        )
+                    })
                     .cloned()
                     .map(|diagnostic| (stylesheet.id.clone(), diagnostic))
             })
