@@ -107,7 +107,10 @@ pub(super) fn validate_computed_overflow_wrap(
     properties: &BTreeMap<String, String>,
     scene_id: &str,
 ) -> Result<OverflowWrapMode, RuntimeLayoutFailure> {
-    let expected = find_scene(scene_id).map_or("normal", |scene| scene.computed_overflow_wrap);
+    let expected = super::word_break_overflow_wrap::find_scene(scene_id)
+        .map(|scene| scene.computed_overflow_wrap)
+        .or_else(|| find_scene(scene_id).map(|scene| scene.computed_overflow_wrap))
+        .unwrap_or("normal");
     let actual = properties.get("overflow-wrap").map(String::as_str);
     let mode = match actual {
         Some("normal") => OverflowWrapMode::Normal,

@@ -1,0 +1,12 @@
+{
+  "target": "Android API 37.1 ARM64 16 KB AVD",
+  "serial": "emulator-5560",
+  "avdName": "spinon_api37_1_compat16k",
+  "qemu": "1",
+  "apiLevel": 37,
+  "pageSizeBytes": 16384,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "apkSha256": "073b4f367f0a08e3d04d8674fca3cf5fc09301a27676bd3b7cb3900db219700e",
+  "installedApkSha256": "073b4f367f0a08e3d04d8674fca3cf5fc09301a27676bd3b7cb3900db219700e"
+}

@@ -209,6 +209,14 @@ pub(super) fn validate_owner_language(
     let Some(scene) = find_scene(scene_id) else {
         return Ok(None);
     };
+    validate_owner_language_value(snapshot, owner, scene.language)
+}
+
+pub(super) fn validate_owner_language_value(
+    snapshot: &HostDocumentSnapshot,
+    owner: HostNodeHandle,
+    expected_language: &str,
+) -> Result<Option<String>, RuntimeLayoutFailure> {
     let element = snapshot
         .node(owner)
         .and_then(|node| match node.kind() {
@@ -231,13 +239,13 @@ pub(super) fn validate_owner_language(
         .filter(|(name, _)| name.namespace().is_none() && name.local_name() == "lang")
         .map(|(_, value)| value.to_string_lossy())
         .collect::<Vec<_>>();
-    if languages.len() != 1 || languages[0] != scene.language {
+    if languages.len() != 1 || languages[0] != expected_language {
         return Err(unsupported(
             owner,
             "Grid style owner lang must exactly match the allowlisted scene",
         ));
     }
-    Ok(Some(scene.language.to_owned()))
+    Ok(Some(expected_language.to_owned()))
 }
 
 fn unsupported(owner: HostNodeHandle, reason: &str) -> RuntimeLayoutFailure {

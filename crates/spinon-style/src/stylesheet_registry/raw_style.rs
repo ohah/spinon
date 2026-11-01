@@ -34,7 +34,8 @@ fn collect_rule_sources(
     for rule in rules {
         if let CssRule::Style(style_rule) = rule {
             let style_rule = style_rule.read_with(guard);
-            if has_border_width(&style_rule.block, guard)
+            if (has_border_width(&style_rule.block, guard)
+                || has_word_break(&style_rule.block, guard))
                 && let Some(declarations) =
                     declaration_block_source(source, style_rule.source_location, offsets)
             {
@@ -43,6 +44,21 @@ fn collect_rule_sources(
         }
         collect_rule_sources(rule.children(guard), source, offsets, guard, sources);
     }
+}
+
+fn has_word_break(
+    block: &Arc<Locked<PropertyDeclarationBlock>>,
+    guard: &SharedRwLockReadGuard<'_>,
+) -> bool {
+    block
+        .read_with(guard)
+        .declaration_importance_iter()
+        .any(|(declaration, _)| {
+            matches!(
+                declaration.id(),
+                PropertyDeclarationId::Longhand(LonghandId::WordBreak)
+            )
+        })
 }
 
 fn has_border_width(

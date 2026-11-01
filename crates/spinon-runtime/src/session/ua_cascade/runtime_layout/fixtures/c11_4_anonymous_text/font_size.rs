@@ -76,6 +76,7 @@ fn expected_font_size(scene_id: &str) -> Option<f32> {
             || super::LETTER_SPACING_SCENE_IDS.contains(&scene_id)
             || super::WORD_SPACING_SCENE_IDS.contains(&scene_id)
             || super::TEXT_INDENT_SCENE_IDS.contains(&scene_id)
+            || super::word_break_overflow_wrap_scene(scene_id).is_some()
             || super::line_break_scene(scene_id).is_some()
             || super::full_tab_scene(scene_id).is_some() =>
         {
@@ -118,6 +119,9 @@ mod tests {
         assert!(font_size_css_value("font-size-7-5-min-content") == "7.5px");
         assert!(font_size_css_value("font-size-12-5-max-content") == "12.5px");
         assert!(font_size_css_value("anonymous-normal-min-content") == "10px");
+        assert!(
+            font_size_css_value("word-break-break-word-overflow-wrap-normal-min-content") == "10px"
+        );
         assert!(font_size_css_value("unknown-font-size-scene") == "unsupported-font-size");
     }
 

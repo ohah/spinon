@@ -107,6 +107,8 @@ mod reuse;
 mod source_border;
 #[path = "incremental/source_math.rs"]
 mod source_math;
+#[path = "incremental/source_word_break.rs"]
+mod source_word_break;
 #[path = "incremental/spacing.rs"]
 mod spacing;
 pub(super) use aspect_ratio::{computed_aspect_ratio_serialization, computed_layout_aspect_ratio};

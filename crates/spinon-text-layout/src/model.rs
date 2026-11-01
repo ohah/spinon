@@ -108,6 +108,7 @@ impl Default for TabSize {
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum WordBreakMode {
     Normal,
+    BreakWord,
     BreakAll,
     KeepAll,
 }

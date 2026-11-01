@@ -89,6 +89,52 @@ fn c114_overflow_wrap_separates_min_content_from_emergency_wrap() {
 }
 
 #[test]
+fn c114_word_break_break_word_overrides_overflow_wrap_for_sizing_and_layout() {
+    let mut engine = engine();
+    for mode in [
+        OverflowWrapMode::Normal,
+        OverflowWrapMode::BreakWord,
+        OverflowWrapMode::Anywhere,
+    ] {
+        let mut input = paragraph(mode);
+        input.style.word_break = WordBreakMode::BreakWord;
+        let label = format!("word-break=break-word; overflow-wrap={mode:?}");
+
+        let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
+        close_to(sizes.min_content(), 10.0, &format!("{label} min inline"));
+        close_to(
+            sizes.min_content_height(),
+            40.0,
+            &format!("{label} min block"),
+        );
+        close_to(sizes.max_content(), 40.0, &format!("{label} max inline"));
+        close_to(
+            sizes.max_content_height(),
+            10.0,
+            &format!("{label} max block"),
+        );
+
+        let snapshot = engine.layout_paragraph(&input, 10.0).unwrap();
+        assert_eq!(
+            snapshot.overflow_wrap, mode,
+            "{label} computed-value provenance"
+        );
+        assert_eq!(snapshot.lines.len(), 4, "{label} emergency line count");
+        assert!(
+            snapshot
+                .lines
+                .iter()
+                .all(|line| (line.advance - 10.0).abs() <= 0.05)
+        );
+        close_to(
+            snapshot.height,
+            40.0,
+            &format!("{label} fixed-width block size"),
+        );
+    }
+}
+
+#[test]
 fn empty_snapshot_keeps_computed_overflow_wrap_mode() {
     let mut input = paragraph(OverflowWrapMode::BreakWord);
     input.sources[0].text.clear();

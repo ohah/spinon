@@ -480,7 +480,7 @@ private func c114GenericDirectTextExpectation(
             whiteSpace: "Normal", wordBreak: wordBreak.wordBreak,
             availableWidth: wordBreak.trackWidth, textWidth: textWidth,
             fontFamily: wordBreak.fontFamily,
-            locale: c114ComputedOverflowWrapMode(sceneID) == nil ? wordBreak.language : nil,
+            locale: sceneID.hasPrefix("overflow-wrap-") ? nil : wordBreak.language,
             lineBreak: c114ComputedLineBreakMode(sceneID) ?? "Strict",
             overflowWrap: c114ComputedOverflowWrapMode(sceneID) ?? "Normal",
             lineAdvances: wordBreak.lineAdvances
@@ -6881,7 +6881,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     if anonymousTextScene {
         let minContentTrack = c114IsMinContentTextTrackScene(sceneID)
         let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
-            && sceneID.hasSuffix("-fixed-10px")
+            && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px"))
         let expectedMinContentWidthNodes = fixedOverflowWrapTrack ? Set<Int>() : Set(expectedNodes)
         let expectedMaxContentWidthNodes = fixedOverflowWrapTrack || minContentTrack
             ? Set<Int>() : Set(expectedNodes)
@@ -7397,7 +7397,7 @@ private func c114GenericDirectTextTraceMatches(
     }
     let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
     let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
-        && sceneID.hasSuffix("-fixed-10px")
+        && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px"))
     let columnTracksMatch = fixedOverflowWrapTrack
         ? c114GenericFixedTrackSizesMatch(passes[0], expected: scene.columns)
         : c114GenericTrackSizesMatch(
@@ -10731,6 +10731,7 @@ private func c114ComputedWordBreakScene(
     maxContentHeight: Double, trackWidth: Double, rowHeight: Double,
     lineAdvances: [Double])? {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    if let combined = c114CombinedWordBreakOverflowWrapScene(sceneID) { return combined }
     switch sceneID {
     case "word-break-normal-unbroken-min-content", "word-break-normal-unbroken-max-content":
         return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 40, 10, [40])
@@ -10809,6 +10810,45 @@ private func c114ComputedWordBreakScene(
     #endif
 }
 
+private func c114CombinedWordBreakOverflowWrapScene(
+    _ sceneID: String
+) -> (text: String, language: String, fontFamily: String, wordBreak: String,
+    minContent: Double, maxContent: Double, minContentHeight: Double,
+    maxContentHeight: Double, trackWidth: Double, rowHeight: Double,
+    lineAdvances: [Double])? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    for wordBreak in ["normal", "break-word"] {
+        for overflowWrap in ["normal", "break-word", "anywhere"] {
+            for track in ["min-content", "max-content", "10px"] {
+                guard sceneID == "word-break-\(wordBreak)-overflow-wrap-\(overflowWrap)-\(track)"
+                else { continue }
+
+                let minContentCanBreak = wordBreak == "break-word" || overflowWrap == "anywhere"
+                let fixedTrackCanBreak = minContentCanBreak || overflowWrap == "break-word"
+                let minContent = minContentCanBreak ? 10.0 : 40.0
+                let minContentHeight = minContentCanBreak ? 40.0 : 10.0
+                let trackWidth = track == "min-content" ? minContent : track == "max-content" ? 40 : 10
+                let rowHeight = track == "min-content" ? minContentHeight
+                    : track == "max-content" ? 10 : fixedTrackCanBreak ? 40 : 10
+                let lineAdvances: [Double]
+                if track == "min-content" {
+                    lineAdvances = minContentCanBreak ? [10, 10, 10, 10] : [40]
+                } else if track == "max-content" || !fixedTrackCanBreak {
+                    lineAdvances = [40]
+                } else {
+                    lineAdvances = [10, 10, 10, 10]
+                }
+                return (
+                    "XXXX", "en", "Ahem", wordBreak == "break-word" ? "BreakWord" : "Normal",
+                    minContent, 40, minContentHeight, 10, trackWidth, rowHeight, lineAdvances
+                )
+            }
+        }
+    }
+    #endif
+    return nil
+}
+
 private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
     guard sceneID.hasPrefix("line-break-") else { return nil }
     if sceneID.contains("-normal-") { return "Normal" }
@@ -10817,6 +10857,11 @@ private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
 }
 
 private func c114ComputedOverflowWrapMode(_ sceneID: String) -> String? {
+    if sceneID.hasPrefix("word-break-") {
+        if sceneID.contains("-overflow-wrap-anywhere-") { return "Anywhere" }
+        if sceneID.contains("-overflow-wrap-break-word-") { return "BreakWord" }
+        if sceneID.contains("-overflow-wrap-normal-") { return "Normal" }
+    }
     guard sceneID.hasPrefix("overflow-wrap-") else { return nil }
     if sceneID.hasPrefix("overflow-wrap-anywhere-") { return "Anywhere" }
     if sceneID.hasPrefix("overflow-wrap-break-word-") { return "BreakWord" }

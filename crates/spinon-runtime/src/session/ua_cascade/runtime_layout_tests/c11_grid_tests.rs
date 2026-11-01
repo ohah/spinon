@@ -36,6 +36,10 @@ mod anonymous_text_word_break;
 mod anonymous_text_overflow_wrap;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/anonymous_text_word_break_overflow_wrap.rs"]
+mod anonymous_text_word_break_overflow_wrap;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/anonymous_text_line_break.rs"]
 mod anonymous_text_line_break;
 

@@ -34,7 +34,10 @@ use super::super::{
 };
 use super::{
     RuntimeCascadeReuseStats, StyloDocumentView, computed_font_size_css_px,
-    element::{compute_element_style, compute_element_style_with_math, computed_element_output},
+    element::{
+        ComputedElementSourceOverrides, compute_element_style, compute_element_style_with_math,
+        computed_element_output,
+    },
     is_runtime_layout_profile,
     reuse::make_reuse_plan,
     validate_synthetic_document_box,
@@ -461,15 +464,17 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let mut reuse_stats = RuntimeCascadeReuseStats::default();
     let mut document_root_font_size_css_px = stylist.device().root_font_size().px();
     let mut mount_parent_style = None;
+    let mut mount_parent_word_break_is_break_word = false;
     let needs_synthetic_document_cascade =
         is_runtime_layout_profile(profile) || profile == ComputedStyleProfile::C19ComputedColorV1;
     if needs_synthetic_document_cascade && view.has_synthetic_html_document() {
         let html = view.root_element();
-        let html_style = compute_element_style(
+        let (html_style, html_word_break_is_break_word) = compute_element_style(
             &stylist,
             html,
             &guards,
             None,
+            false,
             viewport,
             &stylesheet_border_sources,
         );
@@ -491,11 +496,12 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         let body = view
             .synthetic_body_element()
             .expect("합성 HTML 문서에는 body wrapper가 있어야 합니다");
-        let body_style = compute_element_style(
+        let (body_style, body_word_break_is_break_word) = compute_element_style(
             &stylist,
             body,
             &guards,
             Some(&html_style),
+            html_word_break_is_break_word,
             viewport,
             &stylesheet_border_sources,
         );
@@ -507,10 +513,19 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             )?;
         }
         mount_parent_style = Some(body_style);
+        mount_parent_word_break_is_break_word = body_word_break_is_break_word;
     }
-    let mut pending = vec![(view.root_handle(), mount_parent_style, false)];
-    while let Some((handle, parent_style, ancestor_hidden)) = pending.pop() {
+    let mut pending = vec![(
+        view.root_handle(),
+        mount_parent_style,
+        mount_parent_word_break_is_break_word,
+        false,
+    )];
+    while let Some((handle, parent_style, parent_word_break_is_break_word, ancestor_hidden)) =
+        pending.pop()
+    {
         let mut subtree_hidden = ancestor_hidden;
+        let mut subtree_word_break_is_break_word = parent_word_break_is_break_word;
         let computed = if let Some(element) = view.element(handle) {
             for diagnostic in &element.data().inline_style_diagnostics {
                 diagnostics.push(CascadeDiagnostic {
@@ -524,14 +539,17 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                 plan.dirty_nodes.contains(&node_id) || plan.context_nodes.contains(&node_id)
             });
             if should_compute {
-                let (computed, source_math, source_border_widths) = compute_element_style_with_math(
-                    &stylist,
-                    element,
-                    &guards,
-                    parent_style.as_deref(),
-                    viewport,
-                    &stylesheet_border_sources,
-                );
+                let (computed, source_math, source_border_widths, word_break_is_break_word) =
+                    compute_element_style_with_math(
+                        &stylist,
+                        element,
+                        &guards,
+                        parent_style.as_deref(),
+                        parent_word_break_is_break_word,
+                        viewport,
+                        &stylesheet_border_sources,
+                    );
+                subtree_word_break_is_break_word = word_break_is_break_word;
                 if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
                     let (writing_mode, text_orientation) =
                         computed_writing_style(&computed, node_id)?;
@@ -575,8 +593,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                         &computed,
                         node_id,
                         ancestor_hidden,
-                        source_math,
-                        source_border_widths,
+                        ComputedElementSourceOverrides {
+                            math_values: source_math,
+                            border_widths: source_border_widths,
+                            word_break_is_break_word,
+                        },
                     )?;
                     subtree_hidden = ancestor_hidden
                         || output
@@ -593,6 +614,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     .and_then(|plan| plan.old_styles.get(&node_id))
                     .expect("재사용 대상 요소의 computed style output이 있어야 합니다")
                     .clone();
+                if let Some(value) = output.properties.get("word-break") {
+                    subtree_word_break_is_break_word = value == "break-word";
+                }
                 subtree_hidden = ancestor_hidden
                     || output
                         .properties
@@ -608,12 +632,14 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
 
         if let Some(children) = view.snapshot().children(handle) {
             let children = children.collect::<Vec<_>>();
-            pending.extend(
-                children
-                    .into_iter()
-                    .rev()
-                    .map(|child| (child, computed.clone(), subtree_hidden)),
-            );
+            pending.extend(children.into_iter().rev().map(|child| {
+                (
+                    child,
+                    computed.clone(),
+                    subtree_word_break_is_break_word,
+                    subtree_hidden,
+                )
+            }));
         }
     }
 

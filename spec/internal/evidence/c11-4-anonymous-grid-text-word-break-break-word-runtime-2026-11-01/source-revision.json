@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "baseHead": "48c97510a4a49c06785c2ff74834b67b3ce1329d",
+  "branch": "feat/c11-4-word-break-break-word-overflow-wrap",
+  "featureScope": "opt-in C11.4 fixture only; no C11/C11.4 status promotion",
+  "sourceManifestSha256": "eb9b27749875d230d32b12e5fee4b1418a7ffc5abdc70e1784e8dff81773b9aa",
+  "android": {
+    "target": "Android API 37.1 ARM64 16 KB AVD",
+    "serial": "emulator-5560",
+    "avdName": "spinon_api37_1_compat16k",
+    "qemu": "1",
+    "apiLevel": 37,
+    "pageSizeBytes": 16384,
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone16k_arm64",
+    "apkSha256": "073b4f367f0a08e3d04d8674fca3cf5fc09301a27676bd3b7cb3900db219700e",
+    "installedApkSha256": "073b4f367f0a08e3d04d8674fca3cf5fc09301a27676bd3b7cb3900db219700e"
+  },
+  "ios": {
+    "target": "iPhone 17 Pro / iOS 26.2 Simulator",
+    "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "name": "iPhone 17 Pro",
+    "modelIdentifier": "iPhone18,1",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "executableSha256": "0c59b77c569b33af8acbd67f1e94f0f9da5b7b7eae6960ac27f1be35fdf326ea",
+    "installedExecutableSha256": "0c59b77c569b33af8acbd67f1e94f0f9da5b7b7eae6960ac27f1be35fdf326ea"
+  },
+  "sourceFiles": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs",
+      "role": "product-and-test-dispatch",
+      "sha256": "ce48152c0fa29959a70abe77269f4b392bcc092ade1ee5fe58cbb011a3cfc409"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_word_break_overflow_wrap.rs",
+      "role": "product",
+      "sha256": "61c3194a9ab503bf356b917ab5e906ef497113e9d6d0a3076fb15def2e7d3a90"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "role": "product",
+      "sha256": "a7cb8d2d094d4d1c93680d8899c4f2f818fd02785bd42e3f62ede54d1b65cf20"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/font_size.rs",
+      "role": "product",
+      "sha256": "e0d52a88e51b1b344bd3a275b1c2885e4ac0c20effafc1ab206e7fb674100cc8"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/overflow_wrap.rs",
+      "role": "product",
+      "sha256": "255ebccc92c9eaf67638c0975c2651f189eb2f9ff0d185504a4d27c6a8ae1baf"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/word_break.rs",
+      "role": "product",
+      "sha256": "dcf418770c5603e17e24bb4a79dc6382bb9640957062fb3aa70b5e46a298faa8"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/word_break_overflow_wrap.rs",
+      "role": "product",
+      "sha256": "682567533a998b8a2180f6592e133492b5f11c080a850a030c385710878708c1"
+    },
+    {
+      "path": "crates/spinon-style/src/lib.rs",
+      "role": "product",
+      "sha256": "3ac2a6fe46257f9b2df6b0aa62c0b6e83931b9756a166ffd7b740c6393469ca2"
+    },
+    {
+      "path": "crates/spinon-style/src/stylesheet_registry.rs",
+      "role": "product",
+      "sha256": "dff8dd5ae1e19d38d6364b65337e4e62f92a05fec1b2c4cbe21f3763a41a2175"
+    },
+    {
+      "path": "crates/spinon-style/src/stylesheet_registry/raw_style.rs",
+      "role": "product",
+      "sha256": "f35eb06497ec8236ed5b0d87bcdf34e36f904ea6f2f126327486b57a4327fbd4"
+    },
+    {
+      "path": "crates/spinon-style/src/c11_4_word_break_css.rs",
+      "role": "product",
+      "sha256": "9b4089e29edb82b231e4e829cc3ff050a4f186a701b0be45c07fc76896d19f9f"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental.rs",
+      "role": "product",
+      "sha256": "4e62fdf08754170ea21026bfc2de9ff8d71a90fc120aaa7e1193978bfd762be8"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs",
+      "role": "product",
+      "sha256": "cdfb5603370e82e63e4cbf47321b6963c53c5a723995822a3d4d9e2c0484155a"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs",
+      "role": "product",
+      "sha256": "777619580803f40d0cb8b5e9827825f6dabb1a115d8bb1fcf61ef3288430f2ff"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/source_word_break.rs",
+      "role": "product-and-unit-tests",
+      "sha256": "8d7c8a24f04dc6a4575bef6a9ccf13fc5b07c0104f5693708e879090249d8f3a"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/engine/intrinsic.rs",
+      "role": "product",
+      "sha256": "414d92327d23904d5566226636b0386741bb5c84bf0042a81b99f2df8be4a5d4"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/model.rs",
+      "role": "product",
+      "sha256": "6b47617425dd65f064cdd56165b89d70c257cf5c8b242d9e8b152869895ce881"
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "role": "android-host",
+      "sha256": "983849db058e7a987938639edec63a66300103647f49835ad00d0a1d29e44bf4"
+    },
+    {
+      "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "role": "ios-host",
+      "sha256": "2ab77ea83aa432f4af036da61833d20b50a4f6672a71f0e066c544fba6679176"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "role": "test",
+      "sha256": "dfd28740a775ea26d9c43f75c33d42da966453dbb83e35b9aea9d9f6a7b8aafa"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_word_break_overflow_wrap.rs",
+      "role": "test",
+      "sha256": "901adf5b82c00d42fc140080e175ca6472bb979aee952dc9a8b2819e6532a6ba"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs",
+      "role": "test",
+      "sha256": "456aa129002ec28260e293f64626e0e8e7f69eff0bf98008120ffb6d1deede5e"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/word_break_alias.rs",
+      "role": "test",
+      "sha256": "5d51a967c7956f05f7a71ef09d4d137b6c92f2f64e2d5a12799340999b52e7be"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/tests/c11_4_overflow_wrap.rs",
+      "role": "test",
+      "sha256": "60020a8b52bbbc088a36a3f645d2985e20e5597f7cc5da2f177dd6c2a735ebaf"
+    },
+    {
+      "path": "tools/css-reference/capture-c11-4-anonymous-grid-text-word-break-overflow-wrap-simulators.mjs",
+      "role": "capture-tool",
+      "sha256": "fc2b6635b9104578713bba3cb3ea62b2f6660ec039f97006384775bc06fc4cdc"
+    },
+    {
+      "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+      "role": "boundary-test",
+      "sha256": "b7c09dde335739d528913feec34daf7a00247d14210799a9d19e3ba3bd2210b9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "role": "independent-oracle",
+      "sha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291"
+    }
+  ]
+}

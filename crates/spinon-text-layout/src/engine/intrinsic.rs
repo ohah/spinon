@@ -234,6 +234,9 @@ impl TextLayoutEngine {
         ));
         builder.push_default(StyleProperty::WordBreak(match input.style.word_break {
             WordBreakMode::Normal => WordBreak::Normal,
+            // CSS Text maps the deprecated value to normal word breaking; its emergency
+            // opportunities are represented by the effective overflow-wrap value below.
+            WordBreakMode::BreakWord => WordBreak::Normal,
             WordBreakMode::BreakAll => WordBreak::BreakAll,
             WordBreakMode::KeepAll => WordBreak::KeepAll,
         }));
@@ -253,7 +256,14 @@ impl TextLayoutEngine {
                 "\"liga\" off, \"clig\" off, \"dlig\" off, \"hlig\" off, \"calt\" off",
             )));
         }
-        builder.push_default(StyleProperty::OverflowWrap(match overflow_wrap {
+        let effective_overflow_wrap = if input.style.word_break == WordBreakMode::BreakWord {
+            // CSS Text gives word-break:break-word the effect of overflow-wrap:anywhere,
+            // regardless of the separately retained computed overflow-wrap property.
+            OverflowWrapMode::Anywhere
+        } else {
+            overflow_wrap
+        };
+        builder.push_default(StyleProperty::OverflowWrap(match effective_overflow_wrap {
             OverflowWrapMode::Normal => OverflowWrap::Normal,
             OverflowWrapMode::Anywhere => OverflowWrap::Anywhere,
             OverflowWrapMode::BreakWord => OverflowWrap::BreakWord,

@@ -14,6 +14,8 @@ mod computed_text_indent;
 mod computed_text_transform;
 #[path = "anonymous_text_items/computed_word_break.rs"]
 mod computed_word_break;
+#[path = "anonymous_text_items/computed_word_break_overflow_wrap.rs"]
+mod computed_word_break_overflow_wrap;
 #[path = "anonymous_text_items/computed_word_spacing.rs"]
 mod computed_word_spacing;
 
@@ -123,6 +125,9 @@ const FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
+    if let Some(source) = computed_word_break_overflow_wrap::runtime_source(scene_id) {
+        return Some(source);
+    }
     if let Some(source) = computed_overflow_wrap::runtime_source(scene_id) {
         return Some(source);
     }
@@ -1114,5 +1119,15 @@ mod tests {
         }
         assert_eq!(unique.len(), 140);
         assert!(runtime_source("anonymous-pre-tab-value-number-zero-unknown").is_none());
+    }
+
+    #[test]
+    fn combined_word_break_and_overflow_wrap_scenes_reach_the_fixture_dispatcher() {
+        let source = runtime_source("word-break-break-word-overflow-wrap-normal-10px")
+            .expect("combined anonymous-text scene dispatch");
+        assert!(source.contains("word-break:break-word;"));
+        assert!(source.contains("overflow-wrap:normal;"));
+        assert!(source.contains("grid-template-columns:10px;"));
+        assert!(source.contains("root.setAttribute('lang', 'en')"));
     }
 }
