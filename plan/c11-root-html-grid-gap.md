@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML 기본 Grid 경로](./c11-root-html-grid-runtime.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획·Chrome 156 사전 비교를 고정했다. 구현은 아직 시작하지 않았다. 이 제한 조각은 C11.1, C11 또는 공개 CSS Grid 지원 완료로 표시되지 않으며 공식 `72/213`을 바꾸지 않는다.
+**상태:** 현재 후보는 Root HTML CSS allowlist와 typed layout admission까지 구현했다. Root HTML 회귀 18/18, computed gap admission 단위 검사 1/1, CSS-invalid gap 진단 단위 검사 1/1, Chrome 156 사전 비교 verifier 1/1, Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 실행, 구현/runtime 실패 관점 검토 20개가 통과했다. [실행 근거](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/README.md) · [구현/runtime 검토](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/implementation-runtime-review-20.md). PR 생성, 별도 PR diff 적대 검토 30개, GitHub check 확인 및 rebase merge는 남아 있다. 이 제한 조각은 C11.1, C11 또는 공개 CSS Grid 지원 완료로 표시되지 않으며 공식 `72/213`을 바꾸지 않는다.
 
 **구현 전 입력:** [HTML fixture](../tests/fixtures/css/c11/root-html-grid-gap-author-precomparison.html) · [독립 기대값](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/expected.json) · [Agent Browser Chrome 관측](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/chrome-observation.json) · [화면](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/chrome-156-grid-gap-precomparison.png) · [기계 검증기](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/verify-precomparison.mjs)
 
@@ -10,7 +10,7 @@
 
 ## 결손과 목표
 
-`RuntimeSession::new_runtime_gpu_with_root_html()`은 기본 Root HTML Grid 경로에서 computed `row-gap`·`column-gap`이 `normal` 또는 0px일 때만 layout에 도달한다. 기존 typed layout/Taffy Grid 입력은 gap을 보유하지만 Root HTML Grid admission이 모든 nonzero gap을 거부한다. 이 계획은 같은 parsed document/style revision 경로에서 명시적인 non-negative px gap만 통과시킨다.
+`RuntimeSession::new_runtime_gpu_with_root_html()`은 기본 Root HTML Grid 경로에서 computed `row-gap`·`column-gap`이 `normal` 또는 0px일 때만 layout에 도달한다. 기존 typed layout/Taffy Grid 입력은 gap을 보유하지만 Root HTML CSS property allowlist와 Grid admission이 authored gap을 거부한다. 이 계획은 같은 parsed document/style revision 경로에서 명시적인 non-negative px gap만 통과시킨다.
 
 CSS Grid gutter는 인접한 행·열 track 사이에만 존재하며 track 크기 합에 별도의 공간으로 반영된다. [`gap` shorthand](https://www.w3.org/TR/css-gaps-1/#gap-shorthand)에서 첫 값은 `row-gap`, 두 번째 값은 `column-gap`이다. 이 조각은 shorthand의 두 px 값과 동등한 두 longhand를 고정 입력으로 비교한다.
 
@@ -39,7 +39,7 @@ Chrome `HeadlessChrome/156.0.0.0` 관측은 computed rows/columns/gap, root/item
 
 1. `verify-precomparison.mjs`가 고정 fixture, expected JSON, Agent Browser Chrome 관측을 검증한다.
 2. Root HTML positive runtime scene의 root frame, two axis track/gap, four item frames, source order와 same snapshot key가 기대값에 일치한다. Shorthand/longhand, changed ids/selectors, zero-gap controls를 실행한다.
-3. percentage와 `calc()` gap inputs는 cascade/layout 단계의 구체적인 property diagnostic으로 scene·partial frame을 내지 않고 거부한다. 기존 nonzero edge/margin/border/overflow 및 explicit placement rejection도 유지한다.
+3. percentage와 `calc()` gap inputs는 `column-gap`/`row-gap`을 식별하는 `unsupported_computed_value` diagnostic으로 scene·partial frame을 내지 않고 거부한다. CSS-invalid negative shorthand는 CSS cascade가 declaration 전체를 버리고 zero-gap scene을 유지한다. 기존 nonzero edge/margin/border/overflow 및 explicit placement rejection도 유지한다.
 4. Rust focused test, relevant workspace regressions, rustfmt/Clippy를 통과한다.
 5. Android API 37 ARM64 AVD/SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 parsed source를 제품 Root HTML entry로 실행한다. source/build hashes와 runtime log·화면을 저장한다. 화면 캡처는 draw/present까지만 입증한다. PixelCopy/Metal drawable readback을 별도 실행하지 않으면 표면 pixel equality를 주장하지 않는다. Android 실기기는 사용하지 않는다.
 6. 내부 계약 0059의 Root HTML 제한 profile을 갱신하되 숫자 버전 `0.1.0`을 유지한다. C11/C11.1 체크박스와 공식 `72/213`은 미완료로 둔다.

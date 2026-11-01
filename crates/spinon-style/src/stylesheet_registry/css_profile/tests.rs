@@ -1,4 +1,7 @@
-use super::{supported_media_query_surface, supported_root_html_media_query_surface};
+use super::{
+    is_invalid_fixed_px_gap_declaration_diagnostic, supported_media_query_surface,
+    supported_root_html_media_query_surface,
+};
 use crate::stylesheet_registry::{CssOrigin, StylesheetRegistry, StylesheetSource};
 
 #[test]
@@ -34,6 +37,36 @@ fn viewport_media_rejects_unsupported_units_and_invalid_lengths() {
         assert!(
             !supported_root_html_media_query_surface(malformed),
             "malformed media query must fail closed: {malformed}"
+        );
+    }
+}
+
+#[test]
+fn root_html_gap_recovery_ignores_only_invalid_negative_fixed_px_declarations() {
+    for diagnostic in [
+        "Unsupported property declaration: 'gap: -1px 10px;', OtherInvalidValue",
+        "Unsupported property declaration: 'row-gap: -0.5px;', OtherInvalidValue",
+        "Unsupported property declaration: 'column-gap: 10PX -2PX !important;', OtherInvalidValue",
+        "Unsupported property declaration: 'GAP: -1PX 10px !IMPORTANT;', OtherInvalidValue",
+        "Unsupported property declaration: 'gap: -1px/**/ 10px;', OtherInvalidValue",
+        "Unsupported property declaration: 'gap: -1px 10px !/**/IMPORTANT;', OtherInvalidValue",
+    ] {
+        assert!(
+            is_invalid_fixed_px_gap_declaration_diagnostic(diagnostic),
+            "negative fixed-px gap declaration should be treated as a discarded CSS declaration: {diagnostic}"
+        );
+    }
+
+    for diagnostic in [
+        "Unsupported property declaration: 'gap: 1px 10px;', OtherInvalidValue",
+        "Unsupported property declaration: 'gap: -1em 10px;', OtherInvalidValue",
+        "Unsupported property declaration: 'gap: calc(-1px);', OtherInvalidValue",
+        "Unsupported property declaration: 'color: bad;', OtherInvalidValue",
+        "Unsupported property declaration: 'display: grid;', UnexpectedToken",
+    ] {
+        assert!(
+            !is_invalid_fixed_px_gap_declaration_diagnostic(diagnostic),
+            "non-matching CSS parser diagnostic must remain fail-closed: {diagnostic}"
         );
     }
 }

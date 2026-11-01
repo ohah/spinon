@@ -97,6 +97,9 @@ pub(super) const RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "writing-mode",
     "grid-template-columns",
     "grid-template-rows",
+    "gap",
+    "row-gap",
+    "column-gap",
     "overflow",
     "overflow-x",
     "overflow-y",
@@ -350,6 +353,8 @@ pub(super) fn runtime_root_html_text_paint_properties() -> Vec<(&'static str, Lo
         ("overflow-y", LonghandId::OverflowY),
         ("grid-template-columns", LonghandId::GridTemplateColumns),
         ("grid-template-rows", LonghandId::GridTemplateRows),
+        ("row-gap", LonghandId::RowGap),
+        ("column-gap", LonghandId::ColumnGap),
         ("grid-auto-flow", LonghandId::GridAutoFlow),
     ]);
     properties.sort_by_key(|(name, _)| *name);

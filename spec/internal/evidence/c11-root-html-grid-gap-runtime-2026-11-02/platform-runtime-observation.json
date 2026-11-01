@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "observedAtLocal": "2026-11-02T05:46:24+09:00",
+  "baseHead": "f15b5de56669acc47afc6f26ca9707bf23c3cea5",
+  "candidateSourceManifest": "candidate-source.sha256",
+  "validationLog": "validation-pass03.log",
+  "validationLogSha256": "75ebea77ca8f8b09ed2f4ef70e8a0305429117cec17c43bd55c24c8d18f61e06",
+  "entryPath": "RuntimeSession::new_runtime_gpu_with_root_html",
+  "bootstrapSource": {
+    "indexHtml": "../../../../tests/fixtures/css/c11/root-html-grid-gap-author-precomparison.html",
+    "rootAppProbe": "root-app-runtime-probe.js",
+    "htmlBytes": 1148,
+    "scriptBytes": 1001,
+    "testOnlyFfiRoute": false
+  },
+  "features": {
+    "c04RuntimeGpu": true,
+    "c04RuntimeGpuFixtureTest": false,
+    "c11GridFixture": false
+  },
+  "android": {
+    "device": {
+      "avd": "spinon_api37_0_applied_txn",
+      "adbSerial": "emulator-5556",
+      "productModel": "sdk_gphone64_arm64",
+      "apiLevel": 37,
+      "abi": "arm64-v8a",
+      "physicalSize": "1080x2400",
+      "densityDpi": 420,
+      "renderer": "ANGLE / Vulkan / SwiftShader"
+    },
+    "runtime": {
+      "viewportCssPx": [411.42856, 841.52374],
+      "deviceScaleFactor": 2.625,
+      "layout": "ready",
+      "rootFrameCssPx": [411.42856, 65],
+      "drawPresentedBoxes": 7
+    },
+    "launchMethod": "adb shell am start -n dev.spinon.bootstrap/.MainActivity",
+    "artifacts": {
+      "apk": "../../../../build/spinon/artifacts/android-c11-root-html-grid-gap-current-source-pass03.apk",
+      "apkSha256": "a5ab79dfcad2d537cc60bda1d15b4a25c120c8038be0cfa66974e3c5fd2c5ea0",
+      "buildLog": "android-avd-gap-build-pass03.log",
+      "appBuildLog": "android-avd-gap-app-build-pass03.log",
+      "runtimeLog": "android-api37-avd-gap-runtime-pass03.log",
+      "runtimeLogSha256": "1c5b17c7ad915f876cfd9c0ddb1f08e56a290ae0916fbf9b482157177b61cdb3",
+      "screenshot": "android-api37-avd-grid-gap-current-source-pass03.png",
+      "screenshotSha256": "d6dcd955accf0dedbf267e8597ed4511308db915080efdbd54eb85e6aa87f4fa"
+    },
+    "priorLaunchAttempt": {
+      "attempt": "adb shell monkey -p dev.spinon.bootstrap 1",
+      "result": "An earlier pass02 attempt returned Android Runtime result -5 because the AVD has no physical keys. Final pass03 used explicit MainActivity launch and succeeded.",
+      "attemptLog": "android-avd-launch-pass02.log"
+    },
+    "appStoppedAfterCapture": true
+  },
+  "ios": {
+    "device": {
+      "simulator": "iPhone 17 Pro",
+      "runtime": "iOS 26.2",
+      "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "renderer": "Metal Simulator GPU"
+    },
+    "runtime": {
+      "viewportCssPx": [402, 778],
+      "deviceScaleFactor": 3,
+      "layout": "ready",
+      "rootFrameCssPx": [402, 65],
+      "drawPresentedBoxes": 7
+    },
+    "launchMethod": "xcrun simctl launch <UDID> dev.spinon.bootstrap",
+    "artifacts": {
+      "executable": "../../../../build/spinon/artifacts/ios-c11-root-html-grid-gap-current-source-pass03",
+      "executableSha256": "c89861b9199ed9668f2205740c3a1563bb8dd5dae76572d895f00b0c24284b47",
+      "appBundle": "../../../../build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+      "buildLog": "ios-simulator-gap-build-pass03.log",
+      "runtimeLog": "ios-26_2-simulator-gap-runtime-pass03.log",
+      "runtimeLogSha256": "8d709fecc4909e79b19520ea883b7ac0665f8a6e80e3fd48c6921a19513e950e",
+      "screenshot": "ios-26_2-simulator-grid-gap-current-source-pass03.png",
+      "screenshotSha256": "6684e63ab644b2f4cb36307a62335ee352a25c62aeef55f4b142886c30070de0"
+    },
+    "appStoppedAfterCapture": true
+  },
+  "captureLimits": [
+    "Android screenshot is adb exec-out screencap; iOS screenshot is simctl io screenshot. These captures do not read back the GPU surface or establish pixel equality.",
+    "Exact row/column track and item-frame assertions come from the Rust Root HTML integration tests; platform logs establish successful layout and presentation of seven boxes.",
+    "Android evidence is an API 37 ARM64 software-rendered AVD, not Samsung hardware. iOS evidence is a Simulator and does not inspect pixels after compositor submission."
+  ],
+  "repositoryStateAfterRun": {
+    "examplesBootstrapAssetsRestored": true,
+    "buildBootstrapAssetsRestored": true,
+    "androidAppStopped": true,
+    "iosAppStopped": true
+  }
+}

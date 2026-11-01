@@ -227,6 +227,263 @@ html, body { margin: 0; }
 }
 
 #[test]
+fn c11_1_root_html_default_runtime_applies_fixed_px_grid_gaps() {
+    const SOURCE: &str = include_str!(
+        "../../../../../tests/fixtures/css/c11/root-html-grid-gap-author-precomparison.html"
+    );
+
+    fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
+        let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
+            .expect("parsed Root HTML should initialize the default runtime");
+        let mut media = spinon_style::CssMediaEnvironment::MOBILE;
+        media.color_scheme = spinon_style::CssColorScheme::Light;
+        session
+            .set_root_html_environment(390.0, 844.0, 1.0, media)
+            .expect("root metadata should configure the CSS environment");
+        let layout = session.wait_for_layout_snapshot(Duration::from_secs(5));
+        (session, layout)
+    }
+
+    fn frame_for_paint(
+        scene: &spinon_render::RuntimeRenderSnapshot,
+        expected: spinon_render::OpaqueCssSrgb,
+    ) -> [f32; 4] {
+        let render_box = scene
+            .boxes()
+            .iter()
+            .find(|render_box| {
+                matches!(
+                    render_box.paint(),
+                    spinon_render::RuntimePaint::Opaque(color) if color == expected
+                )
+            })
+            .expect("semantic Grid box should have its computed paint");
+        let frame = render_box.frame_css_px();
+        [frame.x(), frame.y(), frame.width(), frame.height()]
+    }
+
+    fn assert_gap_scene(scene: &spinon_render::RuntimeRenderSnapshot) {
+        assert_eq!(
+            frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(16, 24, 32)),
+            [0.0, 0.0, 130.0, 65.0],
+            "gap space belongs between tracks and does not expand the root"
+        );
+        for (color, expected, name) in [
+            (
+                spinon_render::OpaqueCssSrgb::new(229, 72, 77),
+                [0.0, 0.0, 40.0, 30.0],
+                "first cell",
+            ),
+            (
+                spinon_render::OpaqueCssSrgb::new(58, 143, 91),
+                [50.0, 0.0, 80.0, 30.0],
+                "second cell",
+            ),
+            (
+                spinon_render::OpaqueCssSrgb::new(10, 132, 255),
+                [0.0, 35.0, 40.0, 30.0],
+                "third cell",
+            ),
+            (
+                spinon_render::OpaqueCssSrgb::new(242, 201, 76),
+                [50.0, 35.0, 80.0, 30.0],
+                "fourth cell",
+            ),
+        ] {
+            assert_eq!(frame_for_paint(scene, color), expected, "{name}");
+        }
+    }
+
+    let (session, layout) = run(SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "fixed px gaps should publish through the default Root HTML runtime: {layout:?}; cascade: {:?}",
+        session.ua_cascade_snapshot().error
+    );
+    let completed = layout
+        .completed
+        .expect("fixed px gap layout should complete");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("fixed px gap layout should publish paint");
+    assert_gap_scene(scene);
+    let cascade = session.ua_cascade_snapshot();
+    let cascade_completed = cascade
+        .completed
+        .expect("Root HTML gap cascade should complete");
+    assert_eq!(completed.key, cascade_completed.key);
+    let grid = cascade_completed.roots[0]
+        .styles
+        .elements
+        .iter()
+        .find(|style| {
+            style
+                .properties
+                .get("display")
+                .is_some_and(|value| value == "grid")
+        })
+        .expect("the parsed author Grid remains in the computed snapshot");
+    assert_eq!(
+        grid.properties.get("row-gap").map(String::as_str),
+        Some("5px")
+    );
+    assert_eq!(
+        grid.properties.get("column-gap").map(String::as_str),
+        Some("10px")
+    );
+    assert_eq!(
+        grid.layout_spacing.row_gap,
+        spinon_style::ComputedCssSpacingValue::LengthPx(5.0)
+    );
+    assert_eq!(
+        grid.layout_spacing.column_gap,
+        spinon_style::ComputedCssSpacingValue::LengthPx(10.0)
+    );
+
+    let longhands = SOURCE.replace("gap: 5px 10px;", "row-gap: 5px;\n        column-gap: 10px;");
+    let (_, longhand_layout) = run(&longhands);
+    assert_eq!(
+        longhand_layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "equivalent row/column longhands should reach the same profile"
+    );
+    assert_gap_scene(
+        longhand_layout
+            .completed
+            .as_ref()
+            .and_then(|completed| completed.render_snapshot.as_ref())
+            .expect("equivalent longhands should publish a scene"),
+    );
+
+    let renamed = SOURCE
+        .replace("#gap-grid", ".renamed-grid")
+        .replace("id=\"gap-grid\"", "class=\"renamed-grid\"")
+        .replace("<body>", "<body><div style=\"display:none\"></div>");
+    let (_, renamed_layout) = run(&renamed);
+    assert_eq!(
+        renamed_layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "changing Grid selector/identity and inserting a hidden prefix must preserve layout"
+    );
+    assert_gap_scene(
+        renamed_layout
+            .completed
+            .as_ref()
+            .and_then(|completed| completed.render_snapshot.as_ref())
+            .expect("renamed Grid should publish a scene"),
+    );
+
+    let zero_gap_source = SOURCE.replace("gap: 5px 10px;", "gap: 0px;");
+    let (_, zero_gap_layout) = run(&zero_gap_source);
+    assert_eq!(
+        zero_gap_layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "the preexisting zero-gap profile should remain available"
+    );
+    let zero_gap_scene = zero_gap_layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("zero-gap Grid should publish a scene");
+    for (color, expected) in [
+        (
+            spinon_render::OpaqueCssSrgb::new(229, 72, 77),
+            [0.0, 0.0, 40.0, 30.0],
+        ),
+        (
+            spinon_render::OpaqueCssSrgb::new(58, 143, 91),
+            [40.0, 0.0, 80.0, 30.0],
+        ),
+        (
+            spinon_render::OpaqueCssSrgb::new(10, 132, 255),
+            [0.0, 30.0, 40.0, 30.0],
+        ),
+        (
+            spinon_render::OpaqueCssSrgb::new(242, 201, 76),
+            [40.0, 30.0, 80.0, 30.0],
+        ),
+    ] {
+        assert_eq!(frame_for_paint(zero_gap_scene, color), expected);
+    }
+
+    let negative_gap_source = SOURCE.replace("gap: 5px 10px;", "gap: -1px 10px;");
+    let (negative_gap_session, negative_gap_layout) = run(&negative_gap_source);
+    assert_eq!(
+        negative_gap_layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "negative gap should fail closed unless Stylo discards the declaration: {negative_gap_layout:?}; cascade={:?}",
+        negative_gap_session.ua_cascade_snapshot()
+    );
+    let negative_gap_scene = negative_gap_layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("discarded negative gap declaration should keep a zero-gap scene");
+    assert_eq!(
+        frame_for_paint(
+            negative_gap_scene,
+            spinon_render::OpaqueCssSrgb::new(58, 143, 91)
+        ),
+        [40.0, 0.0, 80.0, 30.0],
+        "invalid negative shorthand must not leak its valid second component"
+    );
+
+    for (name, declaration) in [
+        ("ASCII-case variants", "GAP: -1PX 10px !IMPORTANT;"),
+        ("comment-separated values", "gap: -1px/**/ 10px;"),
+    ] {
+        let source = SOURCE.replace("gap: 5px 10px;", declaration);
+        let (session, layout) = run(&source);
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "CSS-invalid negative gap ({name}) should be discarded: {layout:?}; cascade={:?}",
+            session.ua_cascade_snapshot()
+        );
+        let scene = layout
+            .completed
+            .as_ref()
+            .and_then(|completed| completed.render_snapshot.as_ref())
+            .expect("discarded CSS-invalid gap should publish the scene without that declaration");
+        assert_eq!(
+            frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(58, 143, 91)),
+            [40.0, 0.0, 80.0, 30.0],
+            "invalid negative shorthand ({name}) must not publish its column gutter"
+        );
+    }
+
+    let inline_negative_gap_source = SOURCE.replace(
+        "<section id=\"gap-grid\">",
+        "<section id=\"gap-grid\" style=\"gap: -1px 10px;\">",
+    );
+    let (inline_negative_session, inline_negative_layout) = run(&inline_negative_gap_source);
+    assert_eq!(
+        inline_negative_layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "inline negative gap declaration should be discarded without masking stylesheet CSS"
+    );
+    assert_gap_scene(
+        inline_negative_layout
+            .completed
+            .as_ref()
+            .and_then(|completed| completed.render_snapshot.as_ref())
+            .expect("valid stylesheet gap should survive invalid inline declaration"),
+    );
+    assert!(
+        inline_negative_session
+            .ua_cascade_snapshot()
+            .completed
+            .expect("inline negative gap cascade should complete")
+            .roots[0]
+            .styles
+            .diagnostics
+            .is_empty()
+    );
+}
+
+#[test]
 fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
     const SOURCE: &str = include_str!(
         "../../../../../tests/fixtures/css/c11/root-html-grid-author-precomparison.html"
@@ -245,11 +502,19 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
 
     let cases = [
         (
-            "nonzero gap",
-            "cascade_failed",
+            "percentage gap",
+            "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        column-gap: 1px;",
+                "grid-template-rows: 70px;\n        column-gap: 10%;",
+            ),
+        ),
+        (
+            "calc gap",
+            "unsupported_computed_value",
+            SOURCE.replace(
+                "grid-template-rows: 70px;",
+                "grid-template-rows: 70px;\n        row-gap: calc(1px + 1%);",
             ),
         ),
         (
@@ -419,6 +684,21 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             Some(expected_code),
             "out-of-scope case={name} should keep the expected rejection code"
         );
+        let expected_gap_property = match name {
+            "percentage gap" => Some("column-gap"),
+            "calc gap" => Some("row-gap"),
+            _ => None,
+        };
+        if let Some(property) = expected_gap_property {
+            assert_eq!(
+                result
+                    .error
+                    .as_ref()
+                    .and_then(|error| error.property.as_deref()),
+                Some(property),
+                "out-of-scope case={name} should identify the rejected gap longhand"
+            );
+        }
         assert!(
             result.completed.is_none(),
             "out-of-scope case={name} must not publish a partial scene"

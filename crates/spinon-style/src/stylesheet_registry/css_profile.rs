@@ -455,6 +455,85 @@ fn is_unsupported_media_or_at_rule_diagnostic(message: &str) -> bool {
         || message.starts_with("Unsupported rule: '@")
 }
 
+pub(crate) fn is_invalid_fixed_px_gap_declaration_diagnostic(message: &str) -> bool {
+    let Some(declaration) = message
+        .strip_prefix("Unsupported property declaration: '")
+        .and_then(|message| message.strip_suffix("', OtherInvalidValue"))
+    else {
+        return false;
+    };
+    let Some(declaration) = remove_css_comments(declaration) else {
+        return false;
+    };
+    let Some((property, value)) = declaration.split_once(':') else {
+        return false;
+    };
+    if !["gap", "row-gap", "column-gap"]
+        .iter()
+        .any(|supported| property.trim().eq_ignore_ascii_case(supported))
+    {
+        return false;
+    }
+
+    let mut components = value
+        .trim()
+        .trim_end_matches(';')
+        .split_whitespace()
+        .collect::<Vec<_>>();
+    if components
+        .last()
+        .is_some_and(|component| component.eq_ignore_ascii_case("!important"))
+    {
+        components.pop();
+    } else if components.len() >= 2
+        && components[components.len() - 2] == "!"
+        && components
+            .last()
+            .is_some_and(|component| component.eq_ignore_ascii_case("important"))
+    {
+        components.truncate(components.len() - 2);
+    }
+    if !(1..=2).contains(&components.len()) {
+        return false;
+    }
+
+    let Some(values) = components
+        .into_iter()
+        .map(parse_px_component)
+        .collect::<Option<Vec<_>>>()
+    else {
+        return false;
+    };
+    values.into_iter().any(|value| value < 0.0)
+}
+
+fn remove_css_comments(input: &str) -> Option<String> {
+    let mut remaining = input;
+    let mut output = String::with_capacity(input.len());
+    while let Some(comment_start) = remaining.find("/*") {
+        output.push_str(&remaining[..comment_start]);
+        let comment_body = &remaining[comment_start + 2..];
+        let comment_end = comment_body.find("*/")?;
+        output.push(' ');
+        remaining = &comment_body[comment_end + 2..];
+    }
+    output.push_str(remaining);
+    Some(output)
+}
+
+fn parse_px_component(value: &str) -> Option<f32> {
+    let value = value.trim_end_matches(';');
+    let unit_start = value.len().checked_sub(2)?;
+    let (number, unit) = value.split_at(unit_start);
+    if !unit.eq_ignore_ascii_case("px") {
+        return None;
+    }
+    number
+        .parse::<f32>()
+        .ok()
+        .filter(|number| number.is_finite())
+}
+
 fn unsupported_rule_feature(
     rule: &CssRule,
     guard: &SharedRwLockReadGuard<'_>,

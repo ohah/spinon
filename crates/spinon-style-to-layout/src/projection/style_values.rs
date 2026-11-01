@@ -1174,9 +1174,7 @@ fn validate_root_html_grid_box_inputs(
             ("row-gap", element.layout_spacing.row_gap),
             ("column-gap", element.layout_spacing.column_gap),
         ] {
-            if !matches!(value, ComputedCssSpacingValue::Normal) && !is_zero(value)
-                || element.layout_math_values.contains_key(property)
-            {
+            if !is_fixed_root_html_gap(value) || element.layout_math_values.contains_key(property) {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node,
                     property,
@@ -1241,6 +1239,16 @@ fn validate_root_html_grid_box_inputs(
         });
     }
     Ok(())
+}
+
+fn is_fixed_root_html_gap(value: ComputedCssSpacingValue) -> bool {
+    match value {
+        ComputedCssSpacingValue::Normal => true,
+        ComputedCssSpacingValue::LengthPx(value) => value.is_finite() && value >= 0.0,
+        ComputedCssSpacingValue::Percentage(_)
+        | ComputedCssSpacingValue::Auto
+        | ComputedCssSpacingValue::Unsupported => false,
+    }
 }
 
 fn runtime_grid_nodes(
@@ -1551,6 +1559,40 @@ mod c13_2_tests {
             assert_eq!(
                 parse_overflow(node, "overflow-x", Some(computed)).unwrap(),
                 projected
+            );
+        }
+    }
+}
+
+#[cfg(test)]
+mod root_html_grid_gap_tests {
+    use super::is_fixed_root_html_gap;
+    use spinon_style::ComputedCssSpacingValue;
+
+    #[test]
+    fn root_html_grid_gap_admits_only_finite_nonnegative_px_or_normal() {
+        for accepted in [
+            ComputedCssSpacingValue::Normal,
+            ComputedCssSpacingValue::LengthPx(0.0),
+            ComputedCssSpacingValue::LengthPx(5.0),
+        ] {
+            assert!(
+                is_fixed_root_html_gap(accepted),
+                "should admit {accepted:?}"
+            );
+        }
+
+        for rejected in [
+            ComputedCssSpacingValue::LengthPx(-0.5),
+            ComputedCssSpacingValue::LengthPx(f32::NAN),
+            ComputedCssSpacingValue::LengthPx(f32::INFINITY),
+            ComputedCssSpacingValue::Percentage(0.0),
+            ComputedCssSpacingValue::Auto,
+            ComputedCssSpacingValue::Unsupported,
+        ] {
+            assert!(
+                !is_fixed_root_html_gap(rejected),
+                "should reject {rejected:?}"
             );
         }
     }
