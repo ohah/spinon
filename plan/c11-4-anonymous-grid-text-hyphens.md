@@ -1,6 +1,6 @@
 # C11.4 익명 Grid 텍스트 `hyphens` 제한 profile 계획
 
-**상태:** 고정 profile 구현 후보와 계획에 적은 검증을 마쳤다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 19개 positive scene 및 2개 기대 거부 scene을 최신 앱 소스로 확인했고 기본 artifact 제외/fixture positive-control 경계, 구현/runtime 검토 20개와 PR diff 검토 30개를 끝냈다. PR 생성 전 후보이며 C11.4/C11은 미완료, 공식 완료 `72/213`이다.
+**상태:** 고정 profile 제한 구현을 PR [#977](https://github.com/ohah/spinon/pull/977)로 병합했다(2026-11-01T09:31:16Z, merge SHA `103254c1a1e23a166a6274a829bd6631c38a9fec`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 19개 positive scene 및 2개 기대 거부 scene을 최신 앱 소스로 확인했고 기본 artifact 제외/fixture positive-control 경계, 구현/runtime 검토 20개와 PR diff 검토 30개를 마쳤다. GitHub status check rollup은 비어 있어 CI 통과로 세지 않는다. C11.4/C11은 미완료이며 공식 완료 `72/213`이다.
 
 ## 규범 동작과 문제
 

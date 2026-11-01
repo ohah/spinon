@@ -37,7 +37,7 @@
 
 첫 Clippy 실행의 두 지적은 final diff 전에 수정했다. CSS parser 조건식은 let-chain으로 바꿨고 11-argument `Scene` helper는 값/ID를 바꾸지 않는 macro literal로 바꿨다. 최신 fixture Clippy와 focused tests 및 양 플랫폼 재실행 통과 후 검토했다. 변경 diff review에서 별도의 미해결 결함은 찾지 못했다.
 
-이 기록은 현재 제한 후보 diff에 대한 검토다. 병합된 main/CI 완료, 일반 CSS admission, APK/IPA 전체 artifact 제외, WPT, 실기기/hardware GPU 또는 실제 glyph pixels를 뜻하지 않는다.
+이 기록은 PR #977에 병합된 제한 diff를 검토한다. GitHub status check rollup은 비어 있어 CI 통과로 세지 않으며, 일반 CSS admission, APK/IPA 전체 artifact 제외, WPT, 실기기/hardware GPU 또는 실제 glyph pixels를 뜻하지 않는다.
 
 ## 전체 패키지 회귀 후 확인
 
