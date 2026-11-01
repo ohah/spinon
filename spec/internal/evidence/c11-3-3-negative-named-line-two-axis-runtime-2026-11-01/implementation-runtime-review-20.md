@@ -13,7 +13,7 @@
 9. **reversed endpoint order가 축마다 정규화되는가?** both-reversed 및 columns-only/rows-only reversal scene의 final track arrays가 기준과 같다.
 10. **fixed item이 track area 밖으로 칠해질 때 track이 늘어나는가?** fixed pattern의 17×10 spanned area와 18×12 item을 유지한다. `(117,10)` overflow sample은 Android/iOS에서 Chrome RGBA와 exact하다.
 11. **참여 자식이 0개 또는 여러 개인가?** 양 축 mode에서 둘 다 InvalidGridPlacement로 거부한다. focused layout boundary test.
-12. **item 한 축이 auto size인가?** Style gate는 width와 height 둘 다 Fixed인지 확인하고 layout validator도 각 dimension을 검사한다. width Auto negative case가 거부된다.
+12. **item 한 축이 auto size지만 `grid-auto-*`는 fixed-px 목록인가?** 첫 review에서 이 입력이 generic signed mode로 빠져 `17×10` frame을 내는 것을 재현했다. Style projection이 두 축 pair shape를 발견하면 item 크기와 무관하게 dual-axis mode를 선택하도록 고쳤고, layout validator가 `UnsupportedGridItemSize`로 거부하는 focused style test가 통과한다.
 13. **positive, mixed, Auto, Span endpoint가 dual-axis mode로 들어오는가?** Layout shape validator는 두 축의 endpoints가 모두 leading negative Line인지 요구한다. row positive/mixed case를 거부한다. Named span과 Auto는 같은 enum pattern에서 거부된다.
 14. **template areas가 함께 지정되는가?** 양 축 mode와 `GridTemplateAreasInput` 조합을 검증 전 차단한다. `grid-template-areas` property의 InvalidGridTrackList를 확인한다.
 15. **implicit track list에 auto sizing function이 섞이는가?** `GridTrackSize::Auto` 목록을 UnsupportedGridAutoColumns로 거부한다. 기존 one-axis invalid-track-kind regression도 남아 있다.
@@ -23,4 +23,4 @@
 19. **iOS fixture가 좌표/표면 identity를 무시하는가?** iPhone 17 Pro/iOS 26.2의 Metal drawable 6/6 exact, 잘못된 좌표는 readback 전 거부된다. 이는 compositor 이후 표면을 뜻하지 않는다.
 20. **fixture payload가 기본 FFI archive로 새는가?** macOS default archive에서 `negative-named-line-pair-two-axis-matrix`, `two-axis-fixed-pattern`, `two-axis-fixed-item` marker 모두 없다. opt-in positive control에는 세 marker 모두 있다. APK/IPA archive boundary는 별도 미검증이다.
 
-검토 과정에서 발견한 검증 공백은 0/2 children, non-fixed item, valid template-areas rejection, unsupported/invalid `grid-auto-*`, 10,001-track rejection을 focused layout test에 추가해 닫았다. focused test 최종 실행은 통과했다. 전체 style suite에는 위 문서의 unrelated C07.3 float assertion 하나가 남아 있어 전체 suite green으로 기록하지 않았다.
+검토 과정에서 발견한 검증 공백은 0/2 children, non-fixed item, valid template-areas rejection, unsupported/invalid `grid-auto-*`, 10,001-track rejection을 focused tests에 추가해 닫았다. 특히 fixed-px 목록 아래 auto-sized item이 signed mode로 빠지던 우회를 수정한 뒤 focused style test가 통과했다. 전체 style suite에는 위 문서의 unrelated C07.3 float assertion 하나가 남아 있어 전체 suite green으로 기록하지 않았다.
