@@ -1,0 +1,3522 @@
+{
+  "sourceHead": "39f57f7a6eed4ddd49e06836e89579d0514cc591",
+  "sourceTree": "05ad3c22259547128b462a4f6ce0e99ea4b68597",
+  "trackedDiffSha256": "e1716157534632371333f0f55fd8ea9896aa9d65b77051826f8ba111d4924658",
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 476354,
+  "localRoadmapSha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328",
+  "selectedRouteCount": 350,
+  "selectedBytes": 19017880,
+  "counts": {
+    "create": 179,
+    "replace": 29,
+    "same": 142
+  },
+  "changedRouteOpenHandleCount": 0,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr979-2026-11-01/pass01",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 466641,
+      "sourceSha256": "9d45b465ec94ceb9ca6825c199a9276fee5f287bfba7e10569bff1e1279c2d56",
+      "targetExists": true,
+      "targetBytes": 453720,
+      "targetSha256": "d499114f495b4db61a1c041a788cc42206c05d55ef4f21f108abceaadff9ffd0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 316569,
+      "sourceSha256": "588d8a051e95a7df7fe8318e0af4396c9102a7e12c0ab8c8d875c8fc1a3bb91e",
+      "targetExists": true,
+      "targetBytes": 313439,
+      "targetSha256": "7c6845e4c5d0001856876cb0548e1830263a70b815726595bf910cdd6a844dde",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/anonymous-grid-text-hyphens.html",
+      "action": "create",
+      "sourceBytes": 4352,
+      "sourceSha256": "6f08960a394a13278f5d5a05647cbbb7fea728c2fd614b4daa6fee2b693d979d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/chrome-agent-browser.png",
+      "action": "create",
+      "sourceBytes": 49800,
+      "sourceSha256": "3740eef02a70a5deae8263258b7807b927a7bd58ea1b40f2d35c57e3ce103e75",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.html",
+      "action": "create",
+      "sourceBytes": 44768,
+      "sourceSha256": "44d3a54eeb6306c8ee3ba57988d57ce8665ee5ee1477be1530430c33c2fef1b8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.md",
+      "action": "create",
+      "sourceBytes": 4151,
+      "sourceSha256": "49c8b6fe383829ba87621fcf7dd72dc65d3cfbe57f8d24616865bf10ee32338f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/expected-values.json",
+      "action": "create",
+      "sourceBytes": 11264,
+      "sourceSha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-auto-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 6518,
+      "sourceSha256": "f3acaf5021af4c549f32f8a0934e127311ba00076b77423416a01960df828f8e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-default-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21479,
+      "sourceSha256": "2b7d4ec5994505934bf25f0bdda39f5a5d09348a78cf1cb91a2d289996119ab2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-manual-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21863,
+      "sourceSha256": "0749b4d5f5009713d2774eed322e0e6cb4c63ebdd7e741021af10b1d46418fc4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-none-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21773,
+      "sourceSha256": "608ee74d2bec508f30912856d7b0fb32a33b38e1694760da925cdd839e8fca25",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-invalid-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 6552,
+      "sourceSha256": "c14c6dd2deb5da6ff66863b6f32a47309dbc3b5cf10f9fb9ef22d5c37aae12af",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21709,
+      "sourceSha256": "275ac98140e3476c225efffe27c603e0df3450fa0e8f9f5345340e7b861927aa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 24211,
+      "sourceSha256": "4e853baca1b997d50bce9241532be63635a5c43655558531f19d721143c13020",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21475,
+      "sourceSha256": "aa45fff944a283de359364057bfbf53f5c7c05d8b499cc611a7cc4b6f72042dc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-max.log",
+      "action": "create",
+      "sourceBytes": 24198,
+      "sourceSha256": "d7666949e6d0186a490f78e48b3ee70904ee7b2d9762f1f082930b3f76c3d9c6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-min.log",
+      "action": "create",
+      "sourceBytes": 23978,
+      "sourceSha256": "ec7dcce2212062a3b31dc4fc251146a0e87922a7485eb1d4dd37eb4568379fba",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 23736,
+      "sourceSha256": "feb689e870b109e16e69e719661ddf7b2fec94a89cdb765c5fb230f2f8ec6b0d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21388,
+      "sourceSha256": "50d701b2fe1ca6fc9685ede5f708846b41909c9661c5a78bce6f164a9f41d5d2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-min.log",
+      "action": "create",
+      "sourceBytes": 29159,
+      "sourceSha256": "9db558f175bf0ee6a7ce8ef18ceccd5d9fb07618997c34ce644e84106c739ce3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21640,
+      "sourceSha256": "77915ffec9c499c76649258b86de91540bafb9fe3d90e8364b187c6ec2a4d081",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 29318,
+      "sourceSha256": "061eed5fb57f724a19b1988f8d90132830ce43a9df1411bf849589bb61534b9f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21388,
+      "sourceSha256": "5d30ba536369bd82fd92612e9d3182681a01cb056da1f49c2459d5e93ad50525",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-max.log",
+      "action": "create",
+      "sourceBytes": 24660,
+      "sourceSha256": "edd70ea3227c04ccba80e27c742191c4b4b20ca007e6f6176dee2ccaccbbb567",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-min.log",
+      "action": "create",
+      "sourceBytes": 23797,
+      "sourceSha256": "d9b642d986b8f3e84bb1257f8798e5338001bec388c027d66940bb0e09ee2fea",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 23823,
+      "sourceSha256": "ef73d1db43ae2c0aa68f4a5bca268f720e464b2201a2d689c7d5e57841ebde64",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21850,
+      "sourceSha256": "4882deae801dc5c916c4fc1e2ebd141a02aa0927efbc5fde011d2951f8ea8d4a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-min.log",
+      "action": "create",
+      "sourceBytes": 23973,
+      "sourceSha256": "eeb59199abf9162b40e8aff8abf9d07627297c00c5b91f5bd39c298bf0c044b4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/matrix.tsv",
+      "action": "create",
+      "sourceBytes": 1604,
+      "sourceSha256": "8c39d3ca393ae544b1c0de98438a00df9d16ebe68b701ac4eb8209939c2e0c7d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/representative-screen.png",
+      "action": "create",
+      "sourceBytes": 78434,
+      "sourceSha256": "d896f82be32e2c22ff41460a8830cdf7506cc3211ecd28a7889d88c13a57344c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/simulator.json",
+      "action": "create",
+      "sourceBytes": 335,
+      "sourceSha256": "334cf79fffcb791edeea27b3e9357343f709105e77524cf8eba64f193cf36862",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.html",
+      "action": "create",
+      "sourceBytes": 40874,
+      "sourceSha256": "ff12a69d5113507582b520628537a0ce5e440b563625a944be680a4d43d8e016",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md",
+      "action": "create",
+      "sourceBytes": 1283,
+      "sourceSha256": "95a75215c145f58953eb3afa5972892b33f256339ab26b0c8f7e56d056d1cc17",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 48060,
+      "sourceSha256": "2e2817d08a8c2144902b0c9d80dc4263525598d9144bda778c2c465533a0935b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 6091,
+      "sourceSha256": "79004edc942ca697e0b76fcfade3ca8fa1091f87dae9b4abad17341816aadc4b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/expected-values.json",
+      "action": "create",
+      "sourceBytes": 11264,
+      "sourceSha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-auto-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 2280,
+      "sourceSha256": "f70235744f497178a976c71359fa9373431b69df1f63230cfec0d27c493ef331",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-default-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9861,
+      "sourceSha256": "3260b2de4faa2ebf3619e8947a0d48291e18f447eb1fac38b276e7713ee40cb4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-manual-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9977,
+      "sourceSha256": "0ba40ada35d876e26c097cc3e0305dc9c26a6dac52c93c6859ade906719cdb19",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-none-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9893,
+      "sourceSha256": "0b17d59eea84705146cc2c25a3e478a7cd9d529519df36a676293929de3a6314",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-invalid-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 2283,
+      "sourceSha256": "a1c8bda8d234279127e3bb07c3c9dff90521fec3ffe96537a04f2f46c8d7a094",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 10181,
+      "sourceSha256": "8c6d2d1106f8579d729f959c1ca964f7ae265c2ab86d04e16fb5b93729dc02a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 12842,
+      "sourceSha256": "516cb43d37c6a1d21d0bedb6ec03e2f666f2e10913aa0673a14e9a5cbec3111d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9859,
+      "sourceSha256": "073a76e8bd869bb9eb162612dde0bb8e093db0df6e8c39f08e64ddc2aa1658d8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-max.log",
+      "action": "create",
+      "sourceBytes": 12835,
+      "sourceSha256": "85d42b76d6a92f396a3ba1e9122552c77e20a85c22def9dacde277a33700c490",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-min.log",
+      "action": "create",
+      "sourceBytes": 12520,
+      "sourceSha256": "73558b6489912dc26c0e57fbc80bf2c58543d1a4b8f45dafd1dcade3e23d0029",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 12268,
+      "sourceSha256": "9ae51d785bcad611c53d100d07314531676cb4c866441c0eba8e6b59ef0b62c4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9862,
+      "sourceSha256": "9923ac6c5e4a5085c17b6e32badd8727ec0b1d626b8a7fe9f520a35c8dddeb03",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-min.log",
+      "action": "create",
+      "sourceBytes": 12523,
+      "sourceSha256": "2e1afdfc9459c67d5ca4718f895ab853923e00fe8577edc8fce2b65d3187fb12",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 10023,
+      "sourceSha256": "e7ed7b8eb0ecd0a527fff0d2c50be016c3b5464acb2143f23e545dff7e23b346",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 12684,
+      "sourceSha256": "dbce49761061707d85a3cd8456a9e8d3e46cd801eb51cb0d57108d2b1c46cffe",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9775,
+      "sourceSha256": "8b8ac5855799e0fe9801f1087474ecb0ad4e148c0ec30cc72c8c8da09abd32f1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-max.log",
+      "action": "create",
+      "sourceBytes": 12830,
+      "sourceSha256": "bedba3b7b38f00d5e64e88dc128731c8aa0b8feac8d9ab755e7325fc50dbe2e8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-min.log",
+      "action": "create",
+      "sourceBytes": 12435,
+      "sourceSha256": "65051383e2fb23051142ab0728ebff168c30b9a400a3fccffafb1028d088a4ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 12261,
+      "sourceSha256": "bf7fa53628ceaa198fd3f60c9d1bebca19cc0f1d3e619e1588f5ed38ea83be71",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9856,
+      "sourceSha256": "73474ca92826ad81c92ae9e388c0de6684f0588dd4c7f0ed052952c5453bf424",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-min.log",
+      "action": "create",
+      "sourceBytes": 12517,
+      "sourceSha256": "05f0c7232fb121c8686c9e9eed59e49f7ccb0b5363a4322f6d8c168276030de2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "action": "create",
+      "sourceBytes": 1623,
+      "sourceSha256": "fdf2f8b7948f61a4f324bc8995ea07a37ca3fbca9affe03f6a7abceff683c187",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "action": "create",
+      "sourceBytes": 141840,
+      "sourceSha256": "2c80d00c1b51f1dce9a487d9668756246a63ae9fe79fbe8d75535a38fc4d4b59",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/simulator.json",
+      "action": "create",
+      "sourceBytes": 414,
+      "sourceSha256": "305d752f3c50f10ada1c8ab4452f814af9fd995816cfc38d3c59a68e6173f8fb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 50379,
+      "sourceSha256": "80007889d35efde36d931da71667325f8c17aeddd77dbed9631f7e37367e4e5d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 8035,
+      "sourceSha256": "8f34b31d5e8a6a90b33bac8ad4bfd6a6ea9141f79c1482ec5a0e509a6e52d6ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.html",
+      "action": "create",
+      "sourceBytes": 48119,
+      "sourceSha256": "6f0ca3769edfc5cfdc06ddd4847b7a6cc4c8a9a858d59b94980760b4b80e867b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md",
+      "action": "create",
+      "sourceBytes": 5077,
+      "sourceSha256": "f444bdaeb06afa7d0dd40536b18dccf0c3fcfa70d3372638235660a33661cec6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "action": "same",
+      "sourceBytes": 470,
+      "sourceSha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae",
+      "targetExists": true,
+      "targetBytes": 470,
+      "targetSha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "action": "same",
+      "sourceBytes": 122809,
+      "sourceSha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a",
+      "targetExists": true,
+      "targetBytes": 122809,
+      "targetSha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 13472,
+      "sourceSha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f",
+      "targetExists": true,
+      "targetBytes": 13472,
+      "targetSha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "action": "same",
+      "sourceBytes": 1646,
+      "sourceSha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291",
+      "targetExists": true,
+      "targetBytes": 1646,
+      "targetSha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 45088,
+      "sourceSha256": "cdaf4a44160fb89988632ea9f3c0e1065c6f077a37f18576a8e6fdadbd928364",
+      "targetExists": true,
+      "targetBytes": 36254,
+      "targetSha256": "bd4c2f5b5b5dd11bf56e238112f3a46165a3dcc561233188e7fdef373ca1d2cc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 4579,
+      "sourceSha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55",
+      "targetExists": true,
+      "targetBytes": 4579,
+      "targetSha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.html",
+      "action": "replace",
+      "sourceBytes": 46486,
+      "sourceSha256": "5c0cd67e771425958107795a24ac6d2d531f4081fd34d61ed0f8c7d0d3da15b3",
+      "targetExists": true,
+      "targetBytes": 37718,
+      "targetSha256": "eaa9f78e99eb0662b5764e05da4309de45700bfac00948e103487e32dcb2b641",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "action": "same",
+      "sourceBytes": 4551,
+      "sourceSha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758",
+      "targetExists": true,
+      "targetBytes": 4551,
+      "targetSha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 124,
+      "sourceSha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4",
+      "targetExists": true,
+      "targetBytes": 124,
+      "targetSha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "action": "same",
+      "sourceBytes": 1810,
+      "sourceSha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980",
+      "targetExists": true,
+      "targetBytes": 1810,
+      "targetSha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "action": "same",
+      "sourceBytes": 411,
+      "sourceSha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1",
+      "targetExists": true,
+      "targetBytes": 411,
+      "targetSha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 21632,
+      "sourceSha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b",
+      "targetExists": true,
+      "targetBytes": 21632,
+      "targetSha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 24901,
+      "sourceSha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f",
+      "targetExists": true,
+      "targetBytes": 24901,
+      "targetSha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 24180,
+      "sourceSha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409",
+      "targetExists": true,
+      "targetBytes": 24180,
+      "targetSha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 26905,
+      "sourceSha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee",
+      "targetExists": true,
+      "targetBytes": 26905,
+      "targetSha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 24440,
+      "sourceSha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424",
+      "targetExists": true,
+      "targetBytes": 24440,
+      "targetSha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 24750,
+      "sourceSha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba",
+      "targetExists": true,
+      "targetBytes": 24750,
+      "targetSha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 77090,
+      "sourceSha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c",
+      "targetExists": true,
+      "targetBytes": 77090,
+      "targetSha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 21716,
+      "sourceSha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3",
+      "targetExists": true,
+      "targetBytes": 21716,
+      "targetSha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 24424,
+      "sourceSha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d",
+      "targetExists": true,
+      "targetBytes": 24424,
+      "targetSha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 24173,
+      "sourceSha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac",
+      "targetExists": true,
+      "targetBytes": 24173,
+      "targetSha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 22177,
+      "sourceSha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07",
+      "targetExists": true,
+      "targetBytes": 22177,
+      "targetSha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 29593,
+      "sourceSha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa",
+      "targetExists": true,
+      "targetBytes": 29593,
+      "targetSha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 24166,
+      "sourceSha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e",
+      "targetExists": true,
+      "targetBytes": 24166,
+      "targetSha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 22090,
+      "sourceSha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b",
+      "targetExists": true,
+      "targetBytes": 22090,
+      "targetSha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 24332,
+      "sourceSha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5",
+      "targetExists": true,
+      "targetBytes": 24332,
+      "targetSha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 24030,
+      "sourceSha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f",
+      "targetExists": true,
+      "targetBytes": 24030,
+      "targetSha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 77570,
+      "sourceSha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195",
+      "targetExists": true,
+      "targetBytes": 77570,
+      "targetSha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 21300,
+      "sourceSha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768",
+      "targetExists": true,
+      "targetBytes": 21300,
+      "targetSha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 24409,
+      "sourceSha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c",
+      "targetExists": true,
+      "targetBytes": 24409,
+      "targetSha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 24014,
+      "sourceSha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf",
+      "targetExists": true,
+      "targetBytes": 24014,
+      "targetSha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 49730,
+      "sourceSha256": "53ee9c9fbc0274a66315bc4d6a532c9be8f72472b86d9b2a14417dd340a32dcd",
+      "targetExists": true,
+      "targetBytes": 40962,
+      "targetSha256": "bca0b20f6c14427f507bf38cf338e325e6857889e72806b718f49d7eca2d662c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 7689,
+      "sourceSha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f",
+      "targetExists": true,
+      "targetBytes": 7689,
+      "targetSha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "action": "same",
+      "sourceBytes": 3476,
+      "sourceSha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f",
+      "targetExists": true,
+      "targetBytes": 3476,
+      "targetSha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "action": "same",
+      "sourceBytes": 1828,
+      "sourceSha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49",
+      "targetExists": true,
+      "targetBytes": 1828,
+      "targetSha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "action": "same",
+      "sourceBytes": 414,
+      "sourceSha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51",
+      "targetExists": true,
+      "targetBytes": 414,
+      "targetSha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 11284,
+      "sourceSha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808",
+      "targetExists": true,
+      "targetBytes": 11284,
+      "targetSha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 14398,
+      "sourceSha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23",
+      "targetExists": true,
+      "targetBytes": 14398,
+      "targetSha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 14241,
+      "sourceSha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7",
+      "targetExists": true,
+      "targetBytes": 14241,
+      "targetSha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 11289,
+      "sourceSha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3",
+      "targetExists": true,
+      "targetBytes": 11289,
+      "targetSha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 14403,
+      "sourceSha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5",
+      "targetExists": true,
+      "targetBytes": 14403,
+      "targetSha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 14246,
+      "sourceSha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f",
+      "targetExists": true,
+      "targetBytes": 14246,
+      "targetSha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 142013,
+      "sourceSha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa",
+      "targetExists": true,
+      "targetBytes": 142013,
+      "targetSha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 11278,
+      "sourceSha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58",
+      "targetExists": true,
+      "targetBytes": 11278,
+      "targetSha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 14392,
+      "sourceSha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59",
+      "targetExists": true,
+      "targetBytes": 14392,
+      "targetSha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 14235,
+      "sourceSha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911",
+      "targetExists": true,
+      "targetBytes": 14235,
+      "targetSha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 11273,
+      "sourceSha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5",
+      "targetExists": true,
+      "targetBytes": 11273,
+      "targetSha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 14387,
+      "sourceSha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c",
+      "targetExists": true,
+      "targetBytes": 14387,
+      "targetSha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 14230,
+      "sourceSha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f",
+      "targetExists": true,
+      "targetBytes": 14230,
+      "targetSha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 11278,
+      "sourceSha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c",
+      "targetExists": true,
+      "targetBytes": 11278,
+      "targetSha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 14392,
+      "sourceSha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500",
+      "targetExists": true,
+      "targetBytes": 14392,
+      "targetSha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 13806,
+      "sourceSha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec",
+      "targetExists": true,
+      "targetBytes": 13806,
+      "targetSha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 141968,
+      "sourceSha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483",
+      "targetExists": true,
+      "targetBytes": 141968,
+      "targetSha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 10838,
+      "sourceSha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c",
+      "targetExists": true,
+      "targetBytes": 10838,
+      "targetSha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 14381,
+      "sourceSha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e",
+      "targetExists": true,
+      "targetBytes": 14381,
+      "targetSha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 13795,
+      "sourceSha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50",
+      "targetExists": true,
+      "targetBytes": 13795,
+      "targetSha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 52605,
+      "sourceSha256": "627199eb4ac33f1ebdc281e210034765c89ad2aeec13917881e3b350ca7e748c",
+      "targetExists": true,
+      "targetBytes": 43837,
+      "targetSha256": "55ada77e62802bcef4a8d90bdd54d3f48cb8507ab2cf2be522142a8dc69ed820",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 10183,
+      "sourceSha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5",
+      "targetExists": true,
+      "targetBytes": 10183,
+      "targetSha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "action": "replace",
+      "sourceBytes": 43605,
+      "sourceSha256": "851bd0cb7f7892201ac9f91c3181953c68f70330d0df1ecd99ebd807398cf510",
+      "targetExists": true,
+      "targetBytes": 34837,
+      "targetSha256": "f76b7149e8b50575910d19b2f164f1b32f8c5e39fe0dfd0c4f2a7a40dfde8c5e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "action": "same",
+      "sourceBytes": 3719,
+      "sourceSha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf",
+      "targetExists": true,
+      "targetBytes": 3719,
+      "targetSha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "action": "same",
+      "sourceBytes": 7044,
+      "sourceSha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db",
+      "targetExists": true,
+      "targetBytes": 7044,
+      "targetSha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-lifecycle-final.json",
+      "action": "create",
+      "sourceBytes": 293,
+      "sourceSha256": "abc989be43b6cfafafba8d11f6481456e77d7024d4b71a3b63dcba71bbbc3b18",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-verification-final.json",
+      "action": "create",
+      "sourceBytes": 1345,
+      "sourceSha256": "377cefcaed57cb25b545791773a37633b18de92448cd7327f5dab1c6e440947f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/copy-and-backup-release.json",
+      "action": "create",
+      "sourceBytes": 45682,
+      "sourceSha256": "89c96f4eb05c9ae079f99f46ecb726ddff73315e6524b65acff650731b84ee14",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/preflight-release.json",
+      "action": "create",
+      "sourceBytes": 87346,
+      "sourceSha256": "76b54c5ae4fa68dfdd2079d36f4b7321bf1e27b86dc030e61fa49598feb07157",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.html",
+      "action": "replace",
+      "sourceBytes": 43118,
+      "sourceSha256": "c2e82d53b3999728f54521a3252eb95bd83ca6057b6c4dbe9b750d56de8c6bfb",
+      "targetExists": true,
+      "targetBytes": 34350,
+      "targetSha256": "52ef82251a325fb3fe3ccc9dd6d183862f039ffc209ca127d2fe60f3f8d858fe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "action": "same",
+      "sourceBytes": 3058,
+      "sourceSha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959",
+      "targetExists": true,
+      "targetBytes": 3058,
+      "targetSha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 45527,
+      "sourceSha256": "d8026760f7f2a22c526c66c70e0c53dc8f2aec2e1cc43befbdf28bfb6cac067e",
+      "targetExists": true,
+      "targetBytes": 36781,
+      "targetSha256": "e795ea7669b335c367db5c0f99b143e32ff36aea3ec1a75c9cabf46ae07072bf",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 5428,
+      "sourceSha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923",
+      "targetExists": true,
+      "targetBytes": 5428,
+      "targetSha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-publication-release.json",
+      "action": "create",
+      "sourceBytes": 84480,
+      "sourceSha256": "d8e964350e42166478ac5fca28e8604d77e46ceade5d382ef40ed406245833d6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-root-release.json",
+      "action": "create",
+      "sourceBytes": 57823,
+      "sourceSha256": "ad751970d3d28ab945ff88e969b0e796d855ee234f377e8e1518fcdb9fc48722",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/served-verification-release.json",
+      "action": "create",
+      "sourceBytes": 114403,
+      "sourceSha256": "3d83bacc93f162ae2923882701f9077bcae69caa20e5657ff7dd63204299dcb8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "action": "same",
+      "sourceBytes": 251617,
+      "sourceSha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde",
+      "targetExists": true,
+      "targetBytes": 251617,
+      "targetSha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "action": "same",
+      "sourceBytes": 139545,
+      "sourceSha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68",
+      "targetExists": true,
+      "targetBytes": 139545,
+      "targetSha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68",
+      "openHandleCount": 0
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-hyphens.html",
+      "action": "create",
+      "sourceBytes": 49967,
+      "sourceSha256": "59a11d1aff8ba33e0187e45feb91b00896c1c7e62802bb12477d0a681ffd64b2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-hyphens.md",
+      "action": "create",
+      "sourceBytes": 8097,
+      "sourceSha256": "bbc3c6dbb430442fbb07dde32fefcfd9a7fcfd993671ea9048fbc38aadb0142f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "action": "replace",
+      "sourceBytes": 51681,
+      "sourceSha256": "f82c471f50c1b8a9fdbcc6ed850848095fb02abd9e470a739ea5c2d2dd784786",
+      "targetExists": true,
+      "targetBytes": 42950,
+      "targetSha256": "742268e25244310f37286184de7bb55219f0850e33d53453caf36a6cf3e4feee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "action": "same",
+      "sourceBytes": 9421,
+      "sourceSha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de",
+      "targetExists": true,
+      "targetBytes": 9421,
+      "targetSha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 83120,
+      "sourceSha256": "27847f751c1495119fad38771165d287b08cfa5be1bb6f50348f3ffbcfa9c69d",
+      "targetExists": true,
+      "targetBytes": 73200,
+      "targetSha256": "f4eecb4d843e4379d48011c24439e85a60a07cc844d85c379675c535675b1c72",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "action": "replace",
+      "sourceBytes": 32598,
+      "sourceSha256": "29d57b050dd514fa99096a3d360612c4de0d63bdfa1c9fb12b176137776aa2f8",
+      "targetExists": true,
+      "targetBytes": 32153,
+      "targetSha256": "ff96e72017ff102dff985ca640546cb61ff90f10638231e48f0e70b30f2ddb69",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.html",
+      "action": "replace",
+      "sourceBytes": 477963,
+      "sourceSha256": "e681b9578a6943158318bc74e66ca73adf01ddc6d3e16c5152179c70b36f4937",
+      "targetExists": true,
+      "targetBytes": 476354,
+      "targetSha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.html",
+      "action": "replace",
+      "sourceBytes": 477963,
+      "sourceSha256": "e681b9578a6943158318bc74e66ca73adf01ddc6d3e16c5152179c70b36f4937",
+      "targetExists": true,
+      "targetBytes": 476354,
+      "targetSha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 466730,
+      "sourceSha256": "82fa63bc8099837a8d5def1447659f58310946b75f10aca28b6f5935c8bc768c",
+      "targetExists": true,
+      "targetBytes": 453795,
+      "targetSha256": "a2d9fe66001f2c2559ee10807365ef1d38bc004e52fd2e33533e7f27b640b75b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 316569,
+      "sourceSha256": "588d8a051e95a7df7fe8318e0af4396c9102a7e12c0ab8c8d875c8fc1a3bb91e",
+      "targetExists": true,
+      "targetBytes": 313439,
+      "targetSha256": "7c6845e4c5d0001856876cb0548e1830263a70b815726595bf910cdd6a844dde",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/anonymous-grid-text-hyphens.html",
+      "action": "create",
+      "sourceBytes": 4352,
+      "sourceSha256": "6f08960a394a13278f5d5a05647cbbb7fea728c2fd614b4daa6fee2b693d979d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/chrome-agent-browser.png",
+      "action": "create",
+      "sourceBytes": 49800,
+      "sourceSha256": "3740eef02a70a5deae8263258b7807b927a7bd58ea1b40f2d35c57e3ce103e75",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.html",
+      "action": "create",
+      "sourceBytes": 44778,
+      "sourceSha256": "5f0663cad37dbf1a3cc283de1178e0f259cf760933a978e5ec31c6f1ebd2dce6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.md",
+      "action": "create",
+      "sourceBytes": 4151,
+      "sourceSha256": "49c8b6fe383829ba87621fcf7dd72dc65d3cfbe57f8d24616865bf10ee32338f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/expected-values.json",
+      "action": "create",
+      "sourceBytes": 11264,
+      "sourceSha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-auto-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 6518,
+      "sourceSha256": "f3acaf5021af4c549f32f8a0934e127311ba00076b77423416a01960df828f8e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-default-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21479,
+      "sourceSha256": "2b7d4ec5994505934bf25f0bdda39f5a5d09348a78cf1cb91a2d289996119ab2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-manual-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21863,
+      "sourceSha256": "0749b4d5f5009713d2774eed322e0e6cb4c63ebdd7e741021af10b1d46418fc4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-none-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21773,
+      "sourceSha256": "608ee74d2bec508f30912856d7b0fb32a33b38e1694760da925cdd839e8fca25",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-invalid-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 6552,
+      "sourceSha256": "c14c6dd2deb5da6ff66863b6f32a47309dbc3b5cf10f9fb9ef22d5c37aae12af",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21709,
+      "sourceSha256": "275ac98140e3476c225efffe27c603e0df3450fa0e8f9f5345340e7b861927aa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 24211,
+      "sourceSha256": "4e853baca1b997d50bce9241532be63635a5c43655558531f19d721143c13020",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21475,
+      "sourceSha256": "aa45fff944a283de359364057bfbf53f5c7c05d8b499cc611a7cc4b6f72042dc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-max.log",
+      "action": "create",
+      "sourceBytes": 24198,
+      "sourceSha256": "d7666949e6d0186a490f78e48b3ee70904ee7b2d9762f1f082930b3f76c3d9c6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-min.log",
+      "action": "create",
+      "sourceBytes": 23978,
+      "sourceSha256": "ec7dcce2212062a3b31dc4fc251146a0e87922a7485eb1d4dd37eb4568379fba",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 23736,
+      "sourceSha256": "feb689e870b109e16e69e719661ddf7b2fec94a89cdb765c5fb230f2f8ec6b0d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21388,
+      "sourceSha256": "50d701b2fe1ca6fc9685ede5f708846b41909c9661c5a78bce6f164a9f41d5d2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-min.log",
+      "action": "create",
+      "sourceBytes": 29159,
+      "sourceSha256": "9db558f175bf0ee6a7ce8ef18ceccd5d9fb07618997c34ce644e84106c739ce3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21640,
+      "sourceSha256": "77915ffec9c499c76649258b86de91540bafb9fe3d90e8364b187c6ec2a4d081",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 29318,
+      "sourceSha256": "061eed5fb57f724a19b1988f8d90132830ce43a9df1411bf849589bb61534b9f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21388,
+      "sourceSha256": "5d30ba536369bd82fd92612e9d3182681a01cb056da1f49c2459d5e93ad50525",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-max.log",
+      "action": "create",
+      "sourceBytes": 24660,
+      "sourceSha256": "edd70ea3227c04ccba80e27c742191c4b4b20ca007e6f6176dee2ccaccbbb567",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-min.log",
+      "action": "create",
+      "sourceBytes": 23797,
+      "sourceSha256": "d9b642d986b8f3e84bb1257f8798e5338001bec388c027d66940bb0e09ee2fea",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 23823,
+      "sourceSha256": "ef73d1db43ae2c0aa68f4a5bca268f720e464b2201a2d689c7d5e57841ebde64",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 21850,
+      "sourceSha256": "4882deae801dc5c916c4fc1e2ebd141a02aa0927efbc5fde011d2951f8ea8d4a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-min.log",
+      "action": "create",
+      "sourceBytes": 23973,
+      "sourceSha256": "eeb59199abf9162b40e8aff8abf9d07627297c00c5b91f5bd39c298bf0c044b4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/matrix.tsv",
+      "action": "create",
+      "sourceBytes": 1604,
+      "sourceSha256": "8c39d3ca393ae544b1c0de98438a00df9d16ebe68b701ac4eb8209939c2e0c7d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/representative-screen.png",
+      "action": "create",
+      "sourceBytes": 78434,
+      "sourceSha256": "d896f82be32e2c22ff41460a8830cdf7506cc3211ecd28a7889d88c13a57344c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/simulator.json",
+      "action": "create",
+      "sourceBytes": 335,
+      "sourceSha256": "334cf79fffcb791edeea27b3e9357343f709105e77524cf8eba64f193cf36862",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.html",
+      "action": "create",
+      "sourceBytes": 40884,
+      "sourceSha256": "0e545cb21d3f2a91c8d5c4eddc3ec3fa81ca895954a22a49bed81758054c48bc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md",
+      "action": "create",
+      "sourceBytes": 1283,
+      "sourceSha256": "95a75215c145f58953eb3afa5972892b33f256339ab26b0c8f7e56d056d1cc17",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 48070,
+      "sourceSha256": "3031156404d1496b35b0c0adaa4fee8dacc7758f11a0ad6c2fb868f4322ef66a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 6091,
+      "sourceSha256": "79004edc942ca697e0b76fcfade3ca8fa1091f87dae9b4abad17341816aadc4b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/expected-values.json",
+      "action": "create",
+      "sourceBytes": 11264,
+      "sourceSha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-auto-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 2280,
+      "sourceSha256": "f70235744f497178a976c71359fa9373431b69df1f63230cfec0d27c493ef331",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-default-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9861,
+      "sourceSha256": "3260b2de4faa2ebf3619e8947a0d48291e18f447eb1fac38b276e7713ee40cb4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-manual-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9977,
+      "sourceSha256": "0ba40ada35d876e26c097cc3e0305dc9c26a6dac52c93c6859ade906719cdb19",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-none-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9893,
+      "sourceSha256": "0b17d59eea84705146cc2c25a3e478a7cd9d529519df36a676293929de3a6314",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-invalid-expected-reject.log",
+      "action": "create",
+      "sourceBytes": 2283,
+      "sourceSha256": "a1c8bda8d234279127e3bb07c3c9dff90521fec3ffe96537a04f2f46c8d7a094",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 10181,
+      "sourceSha256": "8c6d2d1106f8579d729f959c1ca964f7ae265c2ab86d04e16fb5b93729dc02a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 12842,
+      "sourceSha256": "516cb43d37c6a1d21d0bedb6ec03e2f666f2e10913aa0673a14e9a5cbec3111d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9859,
+      "sourceSha256": "073a76e8bd869bb9eb162612dde0bb8e093db0df6e8c39f08e64ddc2aa1658d8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-max.log",
+      "action": "create",
+      "sourceBytes": 12835,
+      "sourceSha256": "85d42b76d6a92f396a3ba1e9122552c77e20a85c22def9dacde277a33700c490",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-min.log",
+      "action": "create",
+      "sourceBytes": 12520,
+      "sourceSha256": "73558b6489912dc26c0e57fbc80bf2c58543d1a4b8f45dafd1dcade3e23d0029",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 12268,
+      "sourceSha256": "9ae51d785bcad611c53d100d07314531676cb4c866441c0eba8e6b59ef0b62c4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9862,
+      "sourceSha256": "9923ac6c5e4a5085c17b6e32badd8727ec0b1d626b8a7fe9f520a35c8dddeb03",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-min.log",
+      "action": "create",
+      "sourceBytes": 12523,
+      "sourceSha256": "2e1afdfc9459c67d5ca4718f895ab853923e00fe8577edc8fce2b65d3187fb12",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 10023,
+      "sourceSha256": "e7ed7b8eb0ecd0a527fff0d2c50be016c3b5464acb2143f23e545dff7e23b346",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-min.log",
+      "action": "create",
+      "sourceBytes": 12684,
+      "sourceSha256": "dbce49761061707d85a3cd8456a9e8d3e46cd801eb51cb0d57108d2b1c46cffe",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9775,
+      "sourceSha256": "8b8ac5855799e0fe9801f1087474ecb0ad4e148c0ec30cc72c8c8da09abd32f1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-max.log",
+      "action": "create",
+      "sourceBytes": 12830,
+      "sourceSha256": "bedba3b7b38f00d5e64e88dc128731c8aa0b8feac8d9ab755e7325fc50dbe2e8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-min.log",
+      "action": "create",
+      "sourceBytes": 12435,
+      "sourceSha256": "65051383e2fb23051142ab0728ebff168c30b9a400a3fccffafb1028d088a4ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-unbroken-min.log",
+      "action": "create",
+      "sourceBytes": 12261,
+      "sourceSha256": "bf7fa53628ceaa198fd3f60c9d1bebca19cc0f1d3e619e1588f5ed38ea83be71",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-fixed-30.log",
+      "action": "create",
+      "sourceBytes": 9856,
+      "sourceSha256": "73474ca92826ad81c92ae9e388c0de6684f0588dd4c7f0ed052952c5453bf424",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-min.log",
+      "action": "create",
+      "sourceBytes": 12517,
+      "sourceSha256": "05f0c7232fb121c8686c9e9eed59e49f7ccb0b5363a4322f6d8c168276030de2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "action": "create",
+      "sourceBytes": 1623,
+      "sourceSha256": "fdf2f8b7948f61a4f324bc8995ea07a37ca3fbca9affe03f6a7abceff683c187",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "action": "create",
+      "sourceBytes": 141840,
+      "sourceSha256": "2c80d00c1b51f1dce9a487d9668756246a63ae9fe79fbe8d75535a38fc4d4b59",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/simulator.json",
+      "action": "create",
+      "sourceBytes": 414,
+      "sourceSha256": "305d752f3c50f10ada1c8ab4452f814af9fd995816cfc38d3c59a68e6173f8fb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 50389,
+      "sourceSha256": "6e0efc879cbace68e416915e1308c3c8a5f6803b95a081ef814cf75fb5cac549",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 8035,
+      "sourceSha256": "8f34b31d5e8a6a90b33bac8ad4bfd6a6ea9141f79c1482ec5a0e509a6e52d6ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.html",
+      "action": "create",
+      "sourceBytes": 48149,
+      "sourceSha256": "83ecd486481f456f1915d427c8644855647f669a43fb03f0689bac1518e27f8e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md",
+      "action": "create",
+      "sourceBytes": 5077,
+      "sourceSha256": "f444bdaeb06afa7d0dd40536b18dccf0c3fcfa70d3372638235660a33661cec6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "action": "same",
+      "sourceBytes": 470,
+      "sourceSha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae",
+      "targetExists": true,
+      "targetBytes": 470,
+      "targetSha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "action": "same",
+      "sourceBytes": 122809,
+      "sourceSha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a",
+      "targetExists": true,
+      "targetBytes": 122809,
+      "targetSha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 13472,
+      "sourceSha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f",
+      "targetExists": true,
+      "targetBytes": 13472,
+      "targetSha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "action": "same",
+      "sourceBytes": 1646,
+      "sourceSha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291",
+      "targetExists": true,
+      "targetBytes": 1646,
+      "targetSha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 45098,
+      "sourceSha256": "d3bb618f791bb777d99293ea027ffde0ec6a02af529b1d01854eea5dcf17dc54",
+      "targetExists": true,
+      "targetBytes": 36264,
+      "targetSha256": "79bc1e692a7e57813bfbee51da0659bc3b2f303872d735434c26db1797089393",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 4579,
+      "sourceSha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55",
+      "targetExists": true,
+      "targetBytes": 4579,
+      "targetSha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.html",
+      "action": "replace",
+      "sourceBytes": 46496,
+      "sourceSha256": "bf8e998928452f842d22ef5b05a15f9b899ea6adf6c22e8d1fd553ec2dd343bf",
+      "targetExists": true,
+      "targetBytes": 37728,
+      "targetSha256": "e6eefce01a23d9063b49fda3802da071cf3db03022b6b13924c4e0831f09fbeb",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "action": "same",
+      "sourceBytes": 4551,
+      "sourceSha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758",
+      "targetExists": true,
+      "targetBytes": 4551,
+      "targetSha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 124,
+      "sourceSha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4",
+      "targetExists": true,
+      "targetBytes": 124,
+      "targetSha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "action": "same",
+      "sourceBytes": 1810,
+      "sourceSha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980",
+      "targetExists": true,
+      "targetBytes": 1810,
+      "targetSha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "action": "same",
+      "sourceBytes": 411,
+      "sourceSha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1",
+      "targetExists": true,
+      "targetBytes": 411,
+      "targetSha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 21632,
+      "sourceSha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b",
+      "targetExists": true,
+      "targetBytes": 21632,
+      "targetSha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 24901,
+      "sourceSha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f",
+      "targetExists": true,
+      "targetBytes": 24901,
+      "targetSha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 24180,
+      "sourceSha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409",
+      "targetExists": true,
+      "targetBytes": 24180,
+      "targetSha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 26905,
+      "sourceSha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee",
+      "targetExists": true,
+      "targetBytes": 26905,
+      "targetSha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 24440,
+      "sourceSha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424",
+      "targetExists": true,
+      "targetBytes": 24440,
+      "targetSha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 24750,
+      "sourceSha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba",
+      "targetExists": true,
+      "targetBytes": 24750,
+      "targetSha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 77090,
+      "sourceSha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c",
+      "targetExists": true,
+      "targetBytes": 77090,
+      "targetSha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 21716,
+      "sourceSha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3",
+      "targetExists": true,
+      "targetBytes": 21716,
+      "targetSha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 24424,
+      "sourceSha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d",
+      "targetExists": true,
+      "targetBytes": 24424,
+      "targetSha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 24173,
+      "sourceSha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac",
+      "targetExists": true,
+      "targetBytes": 24173,
+      "targetSha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 22177,
+      "sourceSha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07",
+      "targetExists": true,
+      "targetBytes": 22177,
+      "targetSha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 29593,
+      "sourceSha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa",
+      "targetExists": true,
+      "targetBytes": 29593,
+      "targetSha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 24166,
+      "sourceSha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e",
+      "targetExists": true,
+      "targetBytes": 24166,
+      "targetSha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 22090,
+      "sourceSha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b",
+      "targetExists": true,
+      "targetBytes": 22090,
+      "targetSha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 24332,
+      "sourceSha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5",
+      "targetExists": true,
+      "targetBytes": 24332,
+      "targetSha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 24030,
+      "sourceSha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f",
+      "targetExists": true,
+      "targetBytes": 24030,
+      "targetSha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 77570,
+      "sourceSha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195",
+      "targetExists": true,
+      "targetBytes": 77570,
+      "targetSha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 21300,
+      "sourceSha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768",
+      "targetExists": true,
+      "targetBytes": 21300,
+      "targetSha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 24409,
+      "sourceSha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c",
+      "targetExists": true,
+      "targetBytes": 24409,
+      "targetSha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 24014,
+      "sourceSha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf",
+      "targetExists": true,
+      "targetBytes": 24014,
+      "targetSha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 49750,
+      "sourceSha256": "fcef370298cc42d6907d991bf7fd98695935c926f3f6911bf5ae1089133ef27e",
+      "targetExists": true,
+      "targetBytes": 40982,
+      "targetSha256": "a334d590845a48d15364b364a4547e8bf073584f38a70b65348427563d26e6c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 7689,
+      "sourceSha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f",
+      "targetExists": true,
+      "targetBytes": 7689,
+      "targetSha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "action": "same",
+      "sourceBytes": 3476,
+      "sourceSha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f",
+      "targetExists": true,
+      "targetBytes": 3476,
+      "targetSha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "action": "same",
+      "sourceBytes": 1828,
+      "sourceSha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49",
+      "targetExists": true,
+      "targetBytes": 1828,
+      "targetSha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "action": "same",
+      "sourceBytes": 414,
+      "sourceSha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51",
+      "targetExists": true,
+      "targetBytes": 414,
+      "targetSha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 11284,
+      "sourceSha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808",
+      "targetExists": true,
+      "targetBytes": 11284,
+      "targetSha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 14398,
+      "sourceSha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23",
+      "targetExists": true,
+      "targetBytes": 14398,
+      "targetSha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 14241,
+      "sourceSha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7",
+      "targetExists": true,
+      "targetBytes": 14241,
+      "targetSha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 11289,
+      "sourceSha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3",
+      "targetExists": true,
+      "targetBytes": 11289,
+      "targetSha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 14403,
+      "sourceSha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5",
+      "targetExists": true,
+      "targetBytes": 14403,
+      "targetSha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 14246,
+      "sourceSha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f",
+      "targetExists": true,
+      "targetBytes": 14246,
+      "targetSha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 142013,
+      "sourceSha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa",
+      "targetExists": true,
+      "targetBytes": 142013,
+      "targetSha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 11278,
+      "sourceSha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58",
+      "targetExists": true,
+      "targetBytes": 11278,
+      "targetSha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 14392,
+      "sourceSha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59",
+      "targetExists": true,
+      "targetBytes": 14392,
+      "targetSha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 14235,
+      "sourceSha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911",
+      "targetExists": true,
+      "targetBytes": 14235,
+      "targetSha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "action": "same",
+      "sourceBytes": 11273,
+      "sourceSha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5",
+      "targetExists": true,
+      "targetBytes": 11273,
+      "targetSha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "action": "same",
+      "sourceBytes": 14387,
+      "sourceSha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c",
+      "targetExists": true,
+      "targetBytes": 14387,
+      "targetSha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "action": "same",
+      "sourceBytes": 14230,
+      "sourceSha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f",
+      "targetExists": true,
+      "targetBytes": 14230,
+      "targetSha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "action": "same",
+      "sourceBytes": 11278,
+      "sourceSha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c",
+      "targetExists": true,
+      "targetBytes": 11278,
+      "targetSha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "action": "same",
+      "sourceBytes": 14392,
+      "sourceSha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500",
+      "targetExists": true,
+      "targetBytes": 14392,
+      "targetSha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "action": "same",
+      "sourceBytes": 13806,
+      "sourceSha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec",
+      "targetExists": true,
+      "targetBytes": 13806,
+      "targetSha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "action": "same",
+      "sourceBytes": 141968,
+      "sourceSha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483",
+      "targetExists": true,
+      "targetBytes": 141968,
+      "targetSha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "action": "same",
+      "sourceBytes": 10838,
+      "sourceSha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c",
+      "targetExists": true,
+      "targetBytes": 10838,
+      "targetSha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "action": "same",
+      "sourceBytes": 14381,
+      "sourceSha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e",
+      "targetExists": true,
+      "targetBytes": 14381,
+      "targetSha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "action": "same",
+      "sourceBytes": 13795,
+      "sourceSha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50",
+      "targetExists": true,
+      "targetBytes": 13795,
+      "targetSha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 52615,
+      "sourceSha256": "190a29d5a1f6a8f3d7300eedea489411814c228410f613e25d4cf2b2e1747f04",
+      "targetExists": true,
+      "targetBytes": 43847,
+      "targetSha256": "d83c6ed241802be9dfbaddb9fa36b1699fa6e1bf403c3a80087d46f1f657c080",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 10183,
+      "sourceSha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5",
+      "targetExists": true,
+      "targetBytes": 10183,
+      "targetSha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "action": "replace",
+      "sourceBytes": 43625,
+      "sourceSha256": "0b4aae75a8c6afb75e5099340366b922f882da4d91e1e4f0fd15da377d0142dd",
+      "targetExists": true,
+      "targetBytes": 34857,
+      "targetSha256": "f82d642e428b94af7598faf91c8920fc36b3977180fe88930bddd67eb22dacaf",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "action": "same",
+      "sourceBytes": 3719,
+      "sourceSha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf",
+      "targetExists": true,
+      "targetBytes": 3719,
+      "targetSha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "action": "same",
+      "sourceBytes": 7044,
+      "sourceSha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db",
+      "targetExists": true,
+      "targetBytes": 7044,
+      "targetSha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-lifecycle-final.json",
+      "action": "create",
+      "sourceBytes": 293,
+      "sourceSha256": "abc989be43b6cfafafba8d11f6481456e77d7024d4b71a3b63dcba71bbbc3b18",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-verification-final.json",
+      "action": "create",
+      "sourceBytes": 1345,
+      "sourceSha256": "377cefcaed57cb25b545791773a37633b18de92448cd7327f5dab1c6e440947f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/copy-and-backup-release.json",
+      "action": "create",
+      "sourceBytes": 45682,
+      "sourceSha256": "89c96f4eb05c9ae079f99f46ecb726ddff73315e6524b65acff650731b84ee14",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/preflight-release.json",
+      "action": "create",
+      "sourceBytes": 87346,
+      "sourceSha256": "76b54c5ae4fa68dfdd2079d36f4b7321bf1e27b86dc030e61fa49598feb07157",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.html",
+      "action": "replace",
+      "sourceBytes": 43133,
+      "sourceSha256": "719c3ca5bdf46e3c9de369b0a7e96003f08462723ab565b7c8c4b4cdc13581b0",
+      "targetExists": true,
+      "targetBytes": 34365,
+      "targetSha256": "e65a4919f349b502c7bba9ae5d942231cb0df7e70d4ed444c552c82d700647f2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "action": "same",
+      "sourceBytes": 3058,
+      "sourceSha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959",
+      "targetExists": true,
+      "targetBytes": 3058,
+      "targetSha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 45537,
+      "sourceSha256": "f62edef02d56b4fc57b31a9c3ec05f2f903dd449d52210d54a85f1414132dd99",
+      "targetExists": true,
+      "targetBytes": 36791,
+      "targetSha256": "a1ac6ec1b0de3ddfc0f117f7355139ef428660c05a42f20bee381665e7b3bd13",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 5428,
+      "sourceSha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923",
+      "targetExists": true,
+      "targetBytes": 5428,
+      "targetSha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-publication-release.json",
+      "action": "create",
+      "sourceBytes": 84480,
+      "sourceSha256": "d8e964350e42166478ac5fca28e8604d77e46ceade5d382ef40ed406245833d6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-root-release.json",
+      "action": "create",
+      "sourceBytes": 57823,
+      "sourceSha256": "ad751970d3d28ab945ff88e969b0e796d855ee234f377e8e1518fcdb9fc48722",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/served-verification-release.json",
+      "action": "create",
+      "sourceBytes": 114403,
+      "sourceSha256": "3d83bacc93f162ae2923882701f9077bcae69caa20e5657ff7dd63204299dcb8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "action": "same",
+      "sourceBytes": 251617,
+      "sourceSha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde",
+      "targetExists": true,
+      "targetBytes": 251617,
+      "targetSha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "action": "same",
+      "sourceBytes": 139545,
+      "sourceSha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68",
+      "targetExists": true,
+      "targetBytes": 139545,
+      "targetSha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-hyphens.html",
+      "action": "create",
+      "sourceBytes": 49942,
+      "sourceSha256": "350f9c4ae4d362f4c1dc522699b7a8c6d32bb36152be4ef3cee2bf3499a15e6f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-hyphens.md",
+      "action": "create",
+      "sourceBytes": 8097,
+      "sourceSha256": "bbc3c6dbb430442fbb07dde32fefcfd9a7fcfd993671ea9048fbc38aadb0142f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "action": "replace",
+      "sourceBytes": 51661,
+      "sourceSha256": "7c6826207113706e9e97532ab073c4727dc3a2e4b8b580835de6835133684a02",
+      "targetExists": true,
+      "targetBytes": 42930,
+      "targetSha256": "6640e56b1cb5a5321adc379e827160b4d77568c683a7da7e803ae3beb10e6a39",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "action": "same",
+      "sourceBytes": 9421,
+      "sourceSha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de",
+      "targetExists": true,
+      "targetBytes": 9421,
+      "targetSha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "action": "replace",
+      "sourceBytes": 477963,
+      "sourceSha256": "e681b9578a6943158318bc74e66ca73adf01ddc6d3e16c5152179c70b36f4937",
+      "targetExists": true,
+      "targetBytes": 476354,
+      "targetSha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 746353,
+      "sourceSha256": "f5889b380cf180efd0feb184e331401eb99e869dbcf583d67f50ae8c480b8181",
+      "targetExists": true,
+      "targetBytes": 735052,
+      "targetSha256": "4217c28530e0289968061de09b739d97cc72a01ff0053363d80e077defe1cfad",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "replace",
+      "sourceBytes": 593107,
+      "sourceSha256": "89a491ee6f2c48cabb2a78bc8608c8976bd441ae73c366cf696294c2ac8fb9d5",
+      "targetExists": true,
+      "targetBytes": 590955,
+      "targetSha256": "69bf426f2d0f4f5f745da75cfeeefc88034b0ebdf39e8367bc03645d65ac6cf0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-pass02-desktop.f71c083bdb.png",
+      "action": "same",
+      "sourceBytes": 251617,
+      "sourceSha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde",
+      "targetExists": true,
+      "targetBytes": 251617,
+      "targetSha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-pass02-mobile.027c2ade13.png",
+      "action": "same",
+      "sourceBytes": 139545,
+      "sourceSha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68",
+      "targetExists": true,
+      "targetBytes": 139545,
+      "targetSha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-02e94960d709.9db0bef235.js",
+      "action": "create",
+      "sourceBytes": 14504,
+      "sourceSha256": "dc3648ba5bcb0cbcb2287fc33ece680ffa175e59051e6e0274cbb1220484c43d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-0b43262613a1.2b3e3db90b.js",
+      "action": "create",
+      "sourceBytes": 10464,
+      "sourceSha256": "54f335caf2a76e9d95e5806a25aaea03c2e0f84244c3cb416d5402ea30ea54d8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-0d442e5f9706.46c325507b.js",
+      "action": "create",
+      "sourceBytes": 10111,
+      "sourceSha256": "593133ada6eb41f5879b1f6a67217c79d9a8473f9f9016ce225f257f62f975ff",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-1a8d41b4eca0.5ca1a4cd20.js",
+      "action": "create",
+      "sourceBytes": 10454,
+      "sourceSha256": "4c40e9fa96e98e4d7c243f75ca25058cda9a0a52737ef153c6ff8d907c1724e0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-1e1925739540.d954144d8b.js",
+      "action": "create",
+      "sourceBytes": 10117,
+      "sourceSha256": "37ab802ea8f9357022f187bc56e96c0dd3a52e5bd5bf1194989adf2f633aaf82",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-220025124b75.7a6404fcb1.js",
+      "action": "create",
+      "sourceBytes": 14522,
+      "sourceSha256": "a189a8d8be7566a9e820993ec484af17f0a0dcbcfed15b7c79fb9b60f68d7588",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-223b9c40f69e.3da1532272.js",
+      "action": "create",
+      "sourceBytes": 5951,
+      "sourceSha256": "2fb309c0531e5f88832f4f5700b4ba372dba6b23b8962f87c03398ee4f922781",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-24beae1480e8.633467a722.js",
+      "action": "create",
+      "sourceBytes": 14466,
+      "sourceSha256": "399a3d488a0f7a6b6871d972deefa05c1f7eff5dd13da3fcb7fa5d198a05b770",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-340375062dbb.62aec298c6.js",
+      "action": "create",
+      "sourceBytes": 18932,
+      "sourceSha256": "ec2b5bffbb776a6d3d287c45dc3282edbd7b95c3049fa5dd6bdec1b55a177493",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-37f657f8268c.fb1129a443.js",
+      "action": "create",
+      "sourceBytes": 16278,
+      "sourceSha256": "55a2ab3672eabdb86ee58e87e3d57f40c7b3b0cd124121df915140004df2c0a3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-44319800eb0d.0a49e0382f.js",
+      "action": "create",
+      "sourceBytes": 10982,
+      "sourceSha256": "93bfd94a13ac4ab01810a72bc2ca5c6800672763ced4af927be8de29dd635048",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-526fe2818c1a.7f2c0e3b4e.js",
+      "action": "create",
+      "sourceBytes": 3535,
+      "sourceSha256": "1897e4fffe931264391aa2900cdc4f4521001500603688e7876c6c1461c18314",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-64be05b3aed4.4890e95413.js",
+      "action": "create",
+      "sourceBytes": 6874,
+      "sourceSha256": "6dfd61a5257b8f04854de7c5289ca611c6907f35b8f679f2208f410eba72bffb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.e263ee751f.js",
+      "action": "create",
+      "sourceBytes": 783373,
+      "sourceSha256": "7b4aed0b05ae15097a0481f79dec74e9dde8809572e1409884ee4f4e27ba431d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-73764eac6907.e1c2955d98.js",
+      "action": "create",
+      "sourceBytes": 10492,
+      "sourceSha256": "089a029ba4e9eea23b7bfad90a99a6a5c43577cf3cb4a4944891c19cb895683c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.bfd94f4ffc.js",
+      "action": "create",
+      "sourceBytes": 461205,
+      "sourceSha256": "d4e2abe97343e17f0a2b7c89ca8823276a08c0389cb4573537b3b1de2d08d241",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-752bcc96e748.62d9bb2de8.js",
+      "action": "create",
+      "sourceBytes": 6892,
+      "sourceSha256": "d17dd5e96ed59ba400e5c37da70796bf6925f965f27ca1d54d9673bb4d43c341",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7bbb689fe194.226beddb9e.js",
+      "action": "create",
+      "sourceBytes": 10990,
+      "sourceSha256": "40ae9e47b1ccbf5e486a46255dca887f482a7ac5df4bdae120084220fdd1738c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ce0dd0bbad.js",
+      "action": "create",
+      "sourceBytes": 783551,
+      "sourceSha256": "de0d355724f34278ab6ba666b64bbd288dad1f23437eef23c1d35f00d041342b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-8a87f7201721.5b5804b6e9.js",
+      "action": "create",
+      "sourceBytes": 9715,
+      "sourceSha256": "76ee994d9bf90c755725f4b958edb7ba5c8a32584e6b8a262e17b046872c714d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.a8423a6bec.js",
+      "action": "create",
+      "sourceBytes": 1009,
+      "sourceSha256": "ed42e94f6fea92a25bc326a416478f443c1f75767f855439870b22964fe43e7c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a9465381b900.d3139800e2.js",
+      "action": "create",
+      "sourceBytes": 11709,
+      "sourceSha256": "fbb2054836fd143765440c99ba7fc3ef361f1980192e32d4696d00ad7b312994",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-ac12ac35053c.eb4f74795e.js",
+      "action": "create",
+      "sourceBytes": 3541,
+      "sourceSha256": "9507e3692b5fc3be7d0cff092de6340e474d25bcb336aa2e38e6c472a8f6a161",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-bc88064cdd4f.3aed1454b2.js",
+      "action": "create",
+      "sourceBytes": 18942,
+      "sourceSha256": "ba858a34fcd74e67a99b91939427ac5be604d2e1e2d6b9f17c771eeeb236b220",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.ddd1342365.js",
+      "action": "create",
+      "sourceBytes": 45696,
+      "sourceSha256": "97036174753352e88cfce7235f5269b307014c118e60ab1148ce99dbae73019c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.c0822ce039.js",
+      "action": "create",
+      "sourceBytes": 461168,
+      "sourceSha256": "2f9512a2b7d58862f306884e4372904678691bca606b63cbe845ac9830647ec5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-d4b02f34c38e.2e150dab78.js",
+      "action": "create",
+      "sourceBytes": 45714,
+      "sourceSha256": "8a5a322d7d30433fd6629b281137d99a20dd0f7db9698071820f5578222e2f45",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-da5c114c95ef.8af7350cf7.js",
+      "action": "create",
+      "sourceBytes": 11715,
+      "sourceSha256": "a7e15cda2d6b6bde8c4d9fb0357854817f6707a9a90a668655ce5d41226a09a4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-dc4cb0a836b6.2ab0f8b4ab.js",
+      "action": "create",
+      "sourceBytes": 14460,
+      "sourceSha256": "a918410f6b3532b7104c67ab2ec53c5796f3ae5ab35a3cad3af78e31ae8cc712",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-dd9ce9dba9d1.30add5be4c.js",
+      "action": "create",
+      "sourceBytes": 15433,
+      "sourceSha256": "ab5558c5cd322ea886f74070c0c2608df95c9a740cf0b0052129260e7bf6888e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e193af29815f.28f3b0481c.js",
+      "action": "create",
+      "sourceBytes": 15429,
+      "sourceSha256": "c7933b409695827a743de65bcac2762a142c31e7084e644ab4536db9ab38488b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e80cfb024c17.b94087929c.js",
+      "action": "create",
+      "sourceBytes": 16268,
+      "sourceSha256": "335de58c21fe0720a5b7a43f0f5d63da50a3497f4276fd269e53f738fcef927b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e86ae4a7039a.b6973cce0a.js",
+      "action": "create",
+      "sourceBytes": 9706,
+      "sourceSha256": "4ea236b7bed43b102961e4a97e1cb50ce0ac13c74b6cbe20c5446732f92128d3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f1b91dc883c0.e6bf93bcf9.js",
+      "action": "create",
+      "sourceBytes": 10449,
+      "sourceSha256": "133d9aa255f87c820c5e6b711a6a7c98e3b24ae168892080625c53a8efb86bdb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-ff6e93b31427.b6efa0abf6.js",
+      "action": "create",
+      "sourceBytes": 5941,
+      "sourceSha256": "79dd5f846bafe409624f71f5fccb47c2503685e71567c0afb41b599fb6670117",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/index.10110f4a61.js",
+      "action": "create",
+      "sourceBytes": 122702,
+      "sourceSha256": "509f0f68758f7a1c62985b53309c7ef513dbf676d5e294cac71274bbf2f0cb7b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "action": "same",
+      "sourceBytes": 473,
+      "sourceSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "targetExists": true,
+      "targetBytes": 473,
+      "targetSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/search_index.ko.b046ed08.json",
+      "action": "create",
+      "sourceBytes": 1710758,
+      "sourceSha256": "b046ed084cca069dd1161a49a78398be6b551ab52f0fd80f72b49b073ee42b50",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 745767,
+      "sourceSha256": "d846179088cc869b929e74f403efc30d5c6d61e83aef4b2e3d78ef26a80d2403",
+      "targetExists": true,
+      "targetBytes": 734498,
+      "targetSha256": "7c37f657428fe0deb7c0b33875d35ab257ca9b866cfb729ff65a813b94358e0d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.md",
+      "action": "replace",
+      "sourceBytes": 593107,
+      "sourceSha256": "89a491ee6f2c48cabb2a78bc8608c8976bd441ae73c366cf696294c2ac8fb9d5",
+      "targetExists": true,
+      "targetBytes": 590955,
+      "targetSha256": "69bf426f2d0f4f5f745da75cfeeefc88034b0ebdf39e8367bc03645d65ac6cf0",
+      "openHandleCount": 0
+    }
+  ]
+}
