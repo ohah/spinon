@@ -55,7 +55,36 @@ fn replacements(_input: &ParagraphInput, text: &str) -> Vec<Replacement> {
             }
             ascii_capitalize_replacements(text)
         }
+        TextTransformMode::FullWidth => {
+            #[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+            {
+                full_width_replacements(text)
+            }
+            #[cfg(not(feature = "c11-4-text-transform-unicode-fixture-test"))]
+            {
+                Vec::new()
+            }
+        }
     }
+}
+
+#[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+fn full_width_replacements(text: &str) -> Vec<Replacement> {
+    text.char_indices()
+        .filter_map(|(start, character)| {
+            let full_width = match character {
+                'A'..='Z' => char::from_u32(0xff21 + (character as u32 - 'A' as u32)),
+                'a'..='z' => char::from_u32(0xff41 + (character as u32 - 'a' as u32)),
+                '0'..='9' => char::from_u32(0xff10 + (character as u32 - '0' as u32)),
+                ' ' => Some('\u{3000}'),
+                _ => None,
+            }?;
+            Some(Replacement {
+                source_utf8: start..start + character.len_utf8(),
+                text: full_width.to_string(),
+            })
+        })
+        .collect()
 }
 
 fn ascii_capitalize_replacements(text: &str) -> Vec<Replacement> {

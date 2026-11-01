@@ -532,7 +532,9 @@ private func c114GenericDirectTextExpectation(
             availableWidth: textTransform.trackWidth,
             textWidth: minContentTrack
                 ? textTransform.trackWidth : textTransform.unbrokenAdvance,
-            fontFamily: "Noto Sans KR", locale: "en", lineBreak: "Strict",
+            fontFamily: "Noto Sans KR",
+            locale: c114IsFullWidthTextTransformScene(sceneID) ? "ja" : "en",
+            lineBreak: "Strict",
             lineAdvances: lineAdvances
         )
         return C114GenericDirectTextSceneExpectation(
@@ -3236,7 +3238,7 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
     if c114ComputedTextIndentScene(sceneID) != nil {
         return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
-    if c114IsUnicodeTextTransformScene(sceneID) {
+    if c114ComputedTextTransformScene(sceneID) != nil {
         return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114IsComputedFontSizeScene(sceneID) {
@@ -7444,7 +7446,8 @@ private func c114GenericDirectTextTraceMatches(
         return false
     }
     let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
-    let textTrackTolerance = c114IsUnicodeTextTransformScene(sceneID) ? 0.03125 : 0.0001
+    let textTrackTolerance = c114IsUnicodeTextTransformScene(sceneID)
+        || c114IsFullWidthTextTransformScene(sceneID) ? 0.03125 : 0.0001
     let fixedOverflowWrapTrack = (c114ComputedOverflowWrapMode(sceneID) != nil
         && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px")))
         || c114IsAnonymousHyphensFixedTrack(sceneID)
@@ -11259,6 +11262,7 @@ private func c114ComputedTextTransformScene(
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     guard let mode = c114ComputedTextTransformStyle(sceneID) else { return nil }
     if let unicode = c114UnicodeTextTransformScene(sceneID) { return unicode }
+    if let fullWidth = c114FullWidthTextTransformScene(sceneID) { return fullWidth }
     let minContentTrack = sceneID.hasSuffix("-min-content")
     let metrics: (Double, Double, Double, Double, Double)
     switch mode {
@@ -11289,6 +11293,37 @@ private func c114ComputedTextTransformScene(
     #else
     return nil
     #endif
+}
+
+private func c114FullWidthTextTransformScene(
+    _ sceneID: String
+) -> (minContent: Double, maxContent: Double, trackWidth: Double, rowHeight: Double,
+    minContentHeight: Double, firstWordAdvance: Double, secondWordAdvance: Double,
+    unbrokenAdvance: Double, layoutText: String)? {
+    switch sceneID {
+    case "text-transform-full-width-none-max-content":
+        return (
+            minContent: 12.65625, maxContent: 25.984375, trackWidth: 25.984375,
+            rowHeight: 10, minContentHeight: 20, firstWordAdvance: 12.65625,
+            secondWordAdvance: 13.328125, unbrokenAdvance: 25.984375,
+            layoutText: "AB 12"
+        )
+    case "text-transform-full-width-max-content",
+        "text-transform-full-width-collapsed-spaces-max-content":
+        return (
+            minContent: 20, maxContent: 50, trackWidth: 50, rowHeight: 10,
+            minContentHeight: 20, firstWordAdvance: 20, secondWordAdvance: 20,
+            unbrokenAdvance: 50, layoutText: "ＡＢ　１２"
+        )
+    case "text-transform-full-width-min-content":
+        return (
+            minContent: 20, maxContent: 50, trackWidth: 20, rowHeight: 20,
+            minContentHeight: 20, firstWordAdvance: 20, secondWordAdvance: 20,
+            unbrokenAdvance: 50, layoutText: "ＡＢ　１２"
+        )
+    default:
+        return nil
+    }
 }
 
 private func c114UnicodeTextTransformScene(
@@ -11392,6 +11427,10 @@ private func c114ComputedTextTransformStyle(_ sceneID: String) -> String? {
          "text-transform-unicode-number-first-none",
          "text-transform-unicode-collapsed-space-max-content": return "Capitalize"
     case "text-transform-unicode-number-first-control": return "None"
+    case "text-transform-full-width-none-max-content": return "None"
+    case "text-transform-full-width-max-content",
+        "text-transform-full-width-min-content",
+        "text-transform-full-width-collapsed-spaces-max-content": return "FullWidth"
     default: return nil
     }
 }
@@ -11404,6 +11443,10 @@ private func c114ComputedTextTransformLayoutText(_ sceneID: String) -> String {
         return "Iiii Ii"
     case "text-transform-capitalize-mixed-case": return "IIII Ii"
     case "text-transform-capitalize-collapsed-spaces": return "Ii Ii"
+    case "text-transform-full-width-none-max-content": return "AB 12"
+    case "text-transform-full-width-max-content",
+        "text-transform-full-width-min-content",
+        "text-transform-full-width-collapsed-spaces-max-content": return "ＡＢ　１２"
     case "text-transform-unicode-sharp-s-min-content",
          "text-transform-unicode-sharp-s-max-content",
          "text-transform-unicode-source-split-max-content": return "Sseta"
@@ -11431,6 +11474,10 @@ private func c114ComputedTextTransformSourceText(_ sceneID: String) -> String {
         return "iiii ii"
     case "text-transform-capitalize-mixed-case": return "iIII ii"
     case "text-transform-capitalize-collapsed-spaces": return "ii   ii"
+    case "text-transform-full-width-none-max-content",
+        "text-transform-full-width-max-content",
+        "text-transform-full-width-min-content": return "AB 12"
+    case "text-transform-full-width-collapsed-spaces-max-content": return "AB   12"
     case "text-transform-unicode-sharp-s-min-content",
          "text-transform-unicode-sharp-s-max-content",
          "text-transform-unicode-source-split-max-content": return "ßeta"
@@ -11455,8 +11502,13 @@ private func c114IsUnicodeTextTransformScene(_ sceneID: String) -> Bool {
     sceneID.hasPrefix("text-transform-unicode-")
 }
 
+private func c114IsFullWidthTextTransformScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("text-transform-full-width-")
+}
+
 private func c114TextTransformCssomTolerance(_ sceneID: String) -> Double {
-    c114IsUnicodeTextTransformScene(sceneID) ? 0.03125 : 1.0 / 64.0
+    c114IsUnicodeTextTransformScene(sceneID) || c114IsFullWidthTextTransformScene(sceneID)
+        ? 0.03125 : 1.0 / 64.0
 }
 
 private func c114ComputedLetterSpacingTextIntrinsicInputsMatch(

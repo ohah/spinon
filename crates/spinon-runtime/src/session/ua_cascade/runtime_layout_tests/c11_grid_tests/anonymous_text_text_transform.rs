@@ -175,7 +175,7 @@ const fn unicode_case(
     }
 }
 
-const CASES: [Case; 12] = [
+const CASES: [Case; 16] = [
     case(TextTransformMode::None, true),
     case(TextTransformMode::None, false),
     case(TextTransformMode::Uppercase, true),
@@ -254,6 +254,32 @@ const CASES: [Case; 12] = [
         first_line_advance: 13.59375,
         second_line_advance: 0.0,
     },
+    Case {
+        scene_id: "text-transform-full-width-none-max-content",
+        computed_value: "none",
+        mode: TextTransformMode::None,
+        text: "AB 12",
+        expected_text: "AB 12",
+        is_min_content: false,
+        min_content: 12.65625,
+        max_content: 25.984375,
+        first_line_advance: 25.984375,
+        second_line_advance: 0.0,
+    },
+    case(TextTransformMode::FullWidth, true),
+    case(TextTransformMode::FullWidth, false),
+    Case {
+        scene_id: "text-transform-full-width-collapsed-spaces-max-content",
+        computed_value: "full-width",
+        mode: TextTransformMode::FullWidth,
+        text: "AB   12",
+        expected_text: "ＡＢ　１２",
+        is_min_content: false,
+        min_content: 20.0,
+        max_content: 50.0,
+        first_line_advance: 50.0,
+        second_line_advance: 0.0,
+    },
 ];
 
 const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
@@ -299,6 +325,16 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
                 11.1875,
                 5.6875,
             ),
+            TextTransformMode::FullWidth => (
+                "full-width",
+                "text-transform-full-width-min-content",
+                "text-transform-full-width-max-content",
+                "ＡＢ　１２",
+                20.0,
+                50.0,
+                20.0,
+                20.0,
+            ),
         };
     Case {
         scene_id: if is_min_content {
@@ -308,7 +344,13 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
         },
         computed_value: value,
         mode,
-        text: "IIII ii",
+        text: match mode {
+            TextTransformMode::FullWidth => "AB 12",
+            TextTransformMode::None
+            | TextTransformMode::Uppercase
+            | TextTransformMode::Lowercase
+            | TextTransformMode::Capitalize => "IIII ii",
+        },
         expected_text,
         is_min_content,
         min_content,
@@ -320,7 +362,7 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
 
 #[test]
 fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom_text() {
-    assert_eq!(CASES.len(), 12);
+    assert_eq!(CASES.len(), 16);
     assert_eq!(
         CASES
             .iter()
@@ -331,7 +373,9 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
     );
 
     for (index, case) in CASES.iter().enumerate() {
-        let (snapshot, root, text_node) = snapshot_for(case, 12_910 + index as u64, Some("en"));
+        let full_width_scene = case.scene_id.starts_with("text-transform-full-width-");
+        let language = if full_width_scene { "ja" } else { "en" };
+        let (snapshot, root, text_node) = snapshot_for(case, 12_910 + index as u64, Some(language));
         let request = WorkRequest {
             key: key_for(&snapshot, EnvironmentRevision::INITIAL),
             snapshot: snapshot.clone(),
@@ -364,6 +408,26 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
             "{} computed text-transform",
             case.scene_id
         );
+        if full_width_scene {
+            assert_eq!(
+                computed_style
+                    .properties
+                    .get("word-break")
+                    .map(String::as_str),
+                Some("normal"),
+                "{} computed word-break",
+                case.scene_id
+            );
+            assert_eq!(
+                computed_style
+                    .properties
+                    .get("line-break")
+                    .map(String::as_str),
+                Some("auto"),
+                "{} computed line-break",
+                case.scene_id
+            );
+        }
         assert_eq!(
             calculation.roots[0].styles.document_revision,
             snapshot.document_revision(),
@@ -418,15 +482,37 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
             .find(|text| text.input.node == text_node.id())
             .expect("anonymous text layout");
         assert_eq!(text_layout.input.style.text_transform, case.mode);
+        if full_width_scene {
+            assert_eq!(text_layout.input.style.locale.as_deref(), Some("ja"));
+            assert_eq!(
+                text_layout.input.style.word_break,
+                spinon_layout::WordBreakMode::Normal
+            );
+            assert_eq!(
+                text_layout.input.style.line_break,
+                spinon_layout::LineBreakMode::Strict
+            );
+        }
         assert_eq!(text_layout.input.sources[0].text, case.text);
         assert_eq!(text_layout.layout.text_transform, case.mode);
         assert_eq!(text_layout.layout.text, case.expected_text);
-        assert_eq!(text_layout.layout.sources.len(), 7);
+        assert_eq!(text_layout.layout.sources.len(), case.text.chars().count());
         for (source_index, source) in text_layout.layout.sources.iter().enumerate() {
             assert_eq!(source.node, text_node.id());
             assert_eq!(source.source_utf16, source_index..source_index + 1);
             let expected_paragraph_range =
-                if case.scene_id == "text-transform-capitalize-collapsed-spaces" {
+                if case.scene_id == "text-transform-full-width-collapsed-spaces-max-content" {
+                    match source_index {
+                        0 => 0..3,
+                        1 => 3..6,
+                        2..=4 => 6..9,
+                        5 => 9..12,
+                        6 => 12..15,
+                        _ => unreachable!(),
+                    }
+                } else if case.mode == TextTransformMode::FullWidth {
+                    source_index * 3..(source_index + 1) * 3
+                } else if case.scene_id == "text-transform-capitalize-collapsed-spaces" {
                     match source_index {
                         0 => 0..1,
                         1 => 1..2,

@@ -1070,6 +1070,18 @@ Adjacent direct Text node는 하나의 normalized paragraph로 이어 붙여 단
 
 `well-known`의 Chrome CSSOM 폭은 1/64 CSS px 단위 `56.171875`; 같은 고정 browser/font profile의 Canvas advance는 비반올림 `56.165863`이다. runtime layout 폭은 Canvas advance를 독립 shaping 기준으로 비교하고 허용 오차 `0.03125 CSS px`를 유지한다. screenshot은 layout 상태 확인용이며 glyph raster pixels나 font coverage를 증명하지 않는다. 일반 locale casing, 임의 Unicode 문자열/글꼴, inline formatting, WPT 적합성, 실기기/hardware GPU 및 전체 C11.4/C11 지원은 포함하지 않는다. 이 추가 profile도 C11.4/C11 완료 또는 공식 완료 `72/213`의 승격이 아니다. [Unicode 사전 비교](evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.md) · [전용 계획](../../plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.md) · [runtime evidence](evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/README.md).
 
+## C11.4 anonymous Grid text computed `text-transform: full-width` · 제한 fixture candidate
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 anonymous direct-text Grid `text-transform` fixture에 `c11-4-text-transform-unicode-fixture-test` opt-in 후보를 추가한다. 이 slice는 정확한 computed value `full-width`, Grid style owner의 direct `lang="ja"`, Noto Sans KR 10px/400, horizontal LTR, `white-space:normal`, `word-break:normal`, computed `line-break:auto`, `AB 12` 또는 `AB   12` anonymous direct Text만 허용한다. `line-break:auto`는 현재 adapter에서 `ParagraphInput.style.line_break=Strict`로 투영된다. 다른 source, language, inline run, profile 밖 style과 feature-off 호출은 layout publication 전에 거부한다.
+
+Whitespace Phase I가 연속 U+0020을 먼저 하나로 축약한 뒤 고정 입력의 ASCII `A`, `B`, `1`, `2`, U+0020을 각각 `Ａ`, `Ｂ`, `１`, `２`, U+3000으로 바꾼다. 따라서 두 허용 source는 모두 normalized layout text `ＡＢ　１２`를 낸다. HostDocument 원문은 수정하지 않으며 각 output scalar의 source range는 원문 UTF-16 단위와 연결한다. 반복 공백 세 source unit은 하나의 normalized U+3000 range를 함께 가리킨다.
+
+Parley가 full-width ideograph와 digit 사이에 과도한 min-content opportunity를 추가하는 것을 막기 위해 이 exact profile의 layout adapter만 `KeepAll`을 사용한다. Computed CSS style snapshot의 `word-break`는 `normal`, `ParagraphInput.style.word_break`는 `Normal`로 유지된다. `TextLayoutSnapshot`은 computed `word-break` field를 노출하지 않으므로 결과 snapshot이 그 값을 보고한다고 주장하지 않는다. U+3000 뒤의 break는 유지한다. 독립 규범 문자열·font candidate·허용 폭 오차는 [Chrome 사전 비교](evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/README.md)와 [runtime 기대 matrix](evidence/c11-4-anonymous-grid-text-transform-full-width-precomparison-2026-11-02/runtime-matrix-expected.json)에 고정한다. Chrome 156은 `text-transform:full-width`를 computed `none`으로 돌려주므로 property 동작 oracle이 아니다. CSS Text Level 3 CRD 2026-08-14는 이 value를 at-risk로 표시한다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 고정 4-scene runtime matrix, source/artifact hash, 로그와 한계는 [runtime evidence](evidence/c11-4-anonymous-grid-text-transform-full-width-runtime-2026-11-02/README.md)에 연결한다. Screenshot은 `layout=ready` 상태만 보여 주며 glyph paint 또는 pixel equality 증거가 아니다. `c04-runtime-gpu` macOS static archive에서 새 scene marker를 찾지 못했고 fixture-test positive control에서는 확인했다. 이는 해당 archive의 feature 경계만 증명하며 APK/IPA 전체 bundle 제외 근거가 아니다.
+
+일반 CSS author admission, 임의 Unicode input/font/locale, punctuation, lowercase, inline formatting, WPT, `full-size-kana`, 실기기/hardware GPU, glyph pixel, 전체 C11.4/C11 완료는 범위 밖이다. C11.4/C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다.
+
 ## C11.4 anonymous Grid text computed `text-indent` flags · 제한 opt-in runtime 확장
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 anonymous direct-text Grid `text-indent` fixture의 허용 목록을 50개 고정 scene으로 확장한다. 이번에 추가한 20개는 Ahem 10px/400, `XXX X`와 `XXX\nX`, `white-space:normal|pre-line`, min-/max-content column 및 `0px`·`10px`·`10px each-line`·`10px hanging`·`10px hanging each-line`의 조합이다. Chrome 156 관측과 독립 Ahem advance 계산은 [사전 비교](evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.md)에 고정한다.

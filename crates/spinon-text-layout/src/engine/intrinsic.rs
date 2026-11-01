@@ -12,8 +12,8 @@ use spinon_core::{NodeId, TextOrientation, WritingMode};
 
 use crate::{
     HyphensMode, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, TextDirection,
-    TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes, TextLayoutError, WhiteSpaceMode,
-    WordBreakMode, normalize::normalize,
+    TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes, TextLayoutError, TextTransformMode,
+    WhiteSpaceMode, WordBreakMode, normalize::normalize,
 };
 
 #[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
@@ -271,7 +271,16 @@ impl TextLayoutEngine {
                 LineHeight::Absolute(input.style.line_height)
             },
         ));
-        builder.push_default(StyleProperty::WordBreak(match input.style.word_break {
+        let parley_word_break = match (input.style.text_transform, input.style.word_break) {
+            // The exact opt-in full-width profile transforms the allowlisted ASCII
+            // sequences into Unicode ID characters. Parley otherwise introduces
+            // min-content breaks between every such character. Keep the computed
+            // `ParagraphStyle.word_break=Normal`; use KeepAll only in this bounded
+            // shaping adapter. U+3000 remains a break.
+            (TextTransformMode::FullWidth, WordBreakMode::Normal) => WordBreakMode::KeepAll,
+            (_, mode) => mode,
+        };
+        builder.push_default(StyleProperty::WordBreak(match parley_word_break {
             WordBreakMode::Normal => WordBreak::Normal,
             // CSS Text maps the deprecated value to normal word breaking; its emergency
             // opportunities are represented by the effective overflow-wrap value below.

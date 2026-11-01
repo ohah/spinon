@@ -139,6 +139,7 @@ pub enum TextTransformMode {
     Uppercase,
     Lowercase,
     Capitalize,
+    FullWidth,
 }
 
 /// C15.3의 고정 paragraph base direction입니다.
