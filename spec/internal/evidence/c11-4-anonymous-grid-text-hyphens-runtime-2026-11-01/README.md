@@ -41,6 +41,10 @@ Positive scene validator는 computed style, exact Grid/text owner, HostDocument 
 
 실제 구현/runtime 실패 경로 20개와 PR 변경 diff의 별도 실패 관점 30개를 검토했다([구현/runtime 검토](./implementation-runtime-review-20.md), [PR diff 검토](./pr-diff-review-30.md)).
 
+## PR 병합 상태
+
+구현 PR [#977](https://github.com/ohah/spinon/pull/977)은 2026-11-01T09:31:16Z Rebase and merge로 병합됐으며 merge SHA는 `103254c1a1e23a166a6274a829bd6631c38a9fec`다. GitHub status check rollup은 비어 있어 CI 통과로 해석하지 않는다. 이 제한 slice는 일반 CSS 지원이나 C11.4/C11 완료가 아니므로 공식 완료 `72/213`은 유지한다.
+
 ## 범위 밖
 
 이 제한 profile은 일반 author CSS admission, 임의 font·language·script·inline run, 자동 사전 기반 `hyphens:auto`, glyph paint, WPT, 실기기/hardware GPU, iOS compositor 이후 출력, 전체 C11.4 또는 C11을 지원한다고 선언하지 않는다. C11.4/C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다.
