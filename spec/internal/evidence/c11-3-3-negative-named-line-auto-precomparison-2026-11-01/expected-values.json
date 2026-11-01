@@ -1,0 +1,66 @@
+{
+  "schema": "spinon.c11.3.3.negative-named-line-auto.precomparison-expected.v1",
+  "authority": "CSS Grid Layout Module Level 1, 2025-03-26 CRD §§7.6, 8.1.3, 8.3.1; independent line-count and track-pattern calculation",
+  "expectations": [
+    {
+      "id": "columns-negative-span",
+      "trackSizes": [5, 7, 5, 7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 17, "height": 10 },
+      "derivation": "The missing negative occurrences -4 and -1 require four leading implicit tracks; their endpoints enclose three tracks. The [5px,7px] pattern is expanded toward the start side from the explicit grid edge."
+    },
+    {
+      "id": "columns-negative-reversed",
+      "trackSizes": [5, 7, 5, 7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 17, "height": 10 },
+      "derivation": "CSS Grid §8.3.1 swaps the reversed endpoints before sizing; tracks and frame must equal columns-negative-span."
+    },
+    {
+      "id": "columns-negative-one",
+      "trackSizes": [5, 7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 17, "height": 10 },
+      "derivation": "The -2 and -1 endpoints enclose one leading implicit track and the more negative endpoint requires two leading tracks total."
+    },
+    {
+      "id": "columns-negative-equal",
+      "trackSizes": [5, 7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 17, "height": 10 },
+      "derivation": "CSS Grid §8.3.1 removes the equal end line. The remaining -2 ghost line requires two leading tracks, and the definite placement uses its default one-track span."
+    },
+    {
+      "id": "columns-negative-offset",
+      "trackSizes": [7, 5, 7, 5, 7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 17, "height": 10 },
+      "derivation": "The -5 and -2 endpoints enclose three tracks; the -5 occurrence requires five leading tracks."
+    },
+    {
+      "id": "columns-negative-auto",
+      "trackSizes": [6, 6, 6, 0, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 18, "height": 10 },
+      "derivation": "The item spans three auto tracks with an 18px fixed inline size, so their equal contribution is 6px each. The fourth leading auto track is outside the item span and has zero contribution."
+    },
+    {
+      "id": "rows-negative-span",
+      "trackSizes": [5, 7, 5, 7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 10, "height": 17 },
+      "derivation": "The same negative occurrence and leading fixed-pixel track-list rules apply on the row axis."
+    },
+    {
+      "id": "rows-negative-auto",
+      "trackSizes": [6, 6, 6, 0, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 10, "height": 18 },
+      "derivation": "The item spans three row auto tracks with an 18px fixed block size; the fourth leading auto row remains at zero contribution."
+    },
+    {
+      "id": "columns-positive-control",
+      "trackSizes": [20, 30, 40, 5, 7, 5, 7],
+      "itemFrameRelativeToRoot": { "x": 95, "y": 0, "width": 17, "height": 10 },
+      "derivation": "Existing positive trailing named-line behavior is a regression control and must keep its authored-order pattern."
+    },
+    {
+      "id": "columns-authored-control",
+      "trackSizes": [7, 20, 30, 40],
+      "itemFrameRelativeToRoot": { "x": 0, "y": 0, "width": 17, "height": 10 },
+      "derivation": "The authored ghost line satisfies -1 ghost before leading implicit fallback supplies -2 ghost; only one 7px leading track is needed."
+    }
+  ]
+}
