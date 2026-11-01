@@ -16,7 +16,7 @@
 | 10 | label 또는 parent Grid stretch가 target row를 오염시키는가 | 외부 label을 block 흐름에 두고 잘못된 16px 측정은 폐기했다고 명시한다. **통과** |
 | 11 | 초기값·inherited·max/min-content·visible hyphen·multi-soft-hyphen controls가 빠지는가 | 고정 표에 각각의 통제 장면과 기대값이 있다. **통과** |
 | 12 | HTML fixture의 기대 geometry가 Ahem 계산과 모순되는가 | `none` 40px, `manual` 30px min-content와 fixed 30px 1/2-line 구분을 대조했다. **통과** |
-| 13 | PR screenshot이 제품 text painting 증거처럼 보이는가 | PNG는 장면 위치 보조 자료이며 숫자는 DOM geometry, glyph pixel 증거가 아님을 밝힌다. **통과** |
+| 13 | PR screenshot이 제품 text painting 증거처럼 보이는가 | PNG는 장면 위치 보조 자료이며 숫자는 DOM geometry, glyph pixel 증거가 아님을 밝힌다. PR #976 본문에서 Agent Browser가 raw image를 1280×744로 로드했다. **통과** |
 | 14 | 무효 authored keyword가 파서에서 사라져 `manual` 기본값으로 잘못 성공하는가 | parsing 전 원문을 분류하고 미선언과 구분되지 않으면 layout 전에 거부하도록 계획 관문을 보강했다. **통과** |
 | 15 | fixture alias가 cascade·상속·CSS-wide keyword를 우회하는가 | 실제 computed custom property를 읽고 selector/order/priority 및 collision·`@property`·`all` 경계를 구현 관문으로 둔다. **통과** |
 | 16 | UTF-8 변환 뒤 Node/source mapping이나 revision이 손상되는가 | source NodeId, UTF-8 byte/UTF-16 range, document/style revision 검증을 요구한다. **통과** |
@@ -25,4 +25,4 @@
 | 19 | 브라우저·runtime·simulator 검증을 실행한 것처럼 PR 범위를 부풀리는가 | 이 변경은 기존 Agent Browser 사전 관찰을 문서화하며 제품 tests/runtime/simulator는 수행하지 않았다고 구분한다. **통과** |
 | 20 | 사용자 WIP나 무관한 파일이 PR에 섞이는가 | stage된 변경은 계획·두 문서 색인·고정 HTML/PNG/README와 두 검토 문서뿐이다. **통과** |
 
-체크는 `git diff --cached --check`, 고정 자원 SHA-256, scene 수, 관련 병합 PR 상태를 확인했다. 제품 테스트는 실행하지 않았다. PR 본문의 screenshot raw link는 branch push 뒤 Agent Browser로 열리는지 확인한 후 병합 관문으로 남긴다.
+체크는 `git diff --cached --check`, 고정 자원 SHA-256, scene 수, 관련 병합 PR 상태, PR #976 본문 screenshot 렌더링을 확인했다. 확인 후 Agent Browser를 닫았고 `pgrep -af '[a]gent-browser'`는 비어 있었다. 제품 테스트는 실행하지 않았다.
