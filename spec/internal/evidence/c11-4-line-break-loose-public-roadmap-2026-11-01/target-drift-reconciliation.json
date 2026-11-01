@@ -1,0 +1,279 @@
+{
+  "previousPublicationSourceHead": "00f7f316abf515b21fca3b93ad2360b2c203a98f",
+  "previousPublicationRouteCount": 529,
+  "preSyncPreview": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "preSyncSourceHead": "d46888e1130d371099cc94f616c5b0c65c95d29b",
+  "preSyncRouteCount": 845,
+  "replacementCount": 55,
+  "preSyncRoutesDifferingFromArchivedPr956Manifest": 38,
+  "driftRoutes": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "targetSha256BeforeSync": "8c83096429e20b89ffe54c6696513727e0137540dd526756a67e2575c213c9fd",
+      "previousPr956PublishedSha256": "d9c55dd51ab4cf3a3c69e724d1f526ac80df7ee0351332168300bafa264ab9af",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.html",
+      "targetSha256BeforeSync": "c69e8d23a8accf4b2045b077386821f175a2b8917ec116d12742d905f569526d",
+      "previousPr956PublishedSha256": null,
+      "previouslyInPr956Publication": false
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "targetSha256BeforeSync": "f7f04bb4c3d59a450fa13639abd859047948f336522a02cc44a6fc59754758d3",
+      "previousPr956PublishedSha256": "c5ef06ba4d44042dc0b50f017597ad7b8873e0b1a502fd9e4b7e0fae7ae2c0cd",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "targetSha256BeforeSync": "2128b999ef54b714b67ae40f19ab1b9fae12dc7ca665a6939163c0667e425230",
+      "previousPr956PublishedSha256": "07d6501a0066fe580c0ce6507c2f062f3d4f7dc4d0f094b07ac4bccabae6567b",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "targetSha256BeforeSync": "6f0f68ad002f6e54e41a067275e3c588e5e150c5433478827f6e5958537b8642",
+      "previousPr956PublishedSha256": "9073d915fb4f00c27a04d1f8eaec6aab1a693f30bcf8e3488d29eb9a5863216c",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "targetSha256BeforeSync": "9937721f41cb6827a6c6f30a7725a9421b6f04c078fd6354975158587c89ea4b",
+      "previousPr956PublishedSha256": "403271633775e1c158c6ca388c9fdb20070724203561ba6b670252ca6806c5f7",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "targetSha256BeforeSync": "d404cac10677fd70e26750bd43f4de527b9533f4fd883c596395b7ef7031524f",
+      "previousPr956PublishedSha256": "b13e8f0840cecf3421108668183bf84b6eeb8136aefecdd48bc86a32571d2f2f",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "targetSha256BeforeSync": "34e75d593e0189a7cd42319bbe310b92746801531185e1adb2b3b9e9f7fb68e3",
+      "previousPr956PublishedSha256": "83726baecc58d54aefde9394c6fb300c578d46409847e494359d69d6b1b93c12",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "targetSha256BeforeSync": "38cb5302bcd3f1b1a4c46c19a1382db907d50d765aaf1339a856e10393d5d025",
+      "previousPr956PublishedSha256": "4a7e2c47223ffd420e4315c9113e04855089843e8345e3385b6989c8e929005d",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.html",
+      "targetSha256BeforeSync": "58097c2e31b1154db22017b8c46563f5421aa0c551a337c12658449f0372b2df",
+      "previousPr956PublishedSha256": "3eff27c8f623354736a237c8f95463984694520fcdcf083175c4b4c3703bdbe4",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "targetSha256BeforeSync": "18a85bf92bb7d400a584fe8d019c63e788b8ad43904823e1d8154d32daf32f68",
+      "previousPr956PublishedSha256": "8a0225a6b24fb3d325390e47820c273aedf1e5dceb044f6f6bcef534676951c3",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+      "targetSha256BeforeSync": "bb2619a80091b953d8b6841c6203724a1ee8ef08f603e9add7b46325e0d9a4fc",
+      "previousPr956PublishedSha256": "7aa2a1e90fb8a963f760c9e1ae16326c5e7de11aad86eca152fde9ebdc771da2",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "targetSha256BeforeSync": "67fb761c6157f1b1db3ed2bceb47b751beaf71efdfb146e77d01a728d12245d5",
+      "previousPr956PublishedSha256": "9baf8ff5497b810914e48d11c90f2d0e62b63fd4a25660f3b12570c69529d292",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags-plan-pr-diff-review-30.html",
+      "targetSha256BeforeSync": "fad8bf472631b5094370daf3da6dd00b98936a43b04cf3f8af13f522459924b3",
+      "previousPr956PublishedSha256": null,
+      "previouslyInPr956Publication": false
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags-plan-review-20.html",
+      "targetSha256BeforeSync": "45b8449085e566d6a896b562dff04f64694e542d8963d040793fe5ee73aa33dd",
+      "previousPr956PublishedSha256": null,
+      "previouslyInPr956Publication": false
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags.html",
+      "targetSha256BeforeSync": "263c82fb0c646f1d477f15920bfe4dc5d756147410af8bcdf1c79217a576574a",
+      "previousPr956PublishedSha256": null,
+      "previouslyInPr956Publication": false
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags.md",
+      "targetSha256BeforeSync": "62ff1b89fa9f9e73a27d16db8ee430ee51e1e84da6ccc07c2af687956c11d4f6",
+      "previousPr956PublishedSha256": null,
+      "previouslyInPr956Publication": false
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "targetSha256BeforeSync": "db56818e9ff851b1e026c1db3c866ef6f2ebfc171063ffe452ae41a79308595e",
+      "previousPr956PublishedSha256": "01e978915649365ea8a0a33b27280e1cb7b614774216cd450ddf4c3207544893",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "targetSha256BeforeSync": "2ee5f333df754b8787a109b8eafca03f33bb141ceaf40f23ad1c59682e9b63a6",
+      "previousPr956PublishedSha256": "d8226e4aa039429774d3bb6a3ea733e97cbb41fba3998331239610dd7ace79d7",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "targetSha256BeforeSync": "9e36e4ef35cca2cc31f37e0d425e706cd51e530804f1b188cc655cbeb39c3d13",
+      "previousPr956PublishedSha256": "4652828b0f5c8a77e0c7dc9fc8e77f9a819aa88f16438f35beef7b6c0bc011ef",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "targetSha256BeforeSync": "9e73671b9eeb9f3a41d763c46e67604bd88017dab39775fe5f1886843238f75e",
+      "previousPr956PublishedSha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "roadmap.html",
+      "targetSha256BeforeSync": "9e73671b9eeb9f3a41d763c46e67604bd88017dab39775fe5f1886843238f75e",
+      "previousPr956PublishedSha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "targetSha256BeforeSync": "bccb9a71659b0013463180539f33c71d9974f170044631188a4cce46eb61bf1c",
+      "previousPr956PublishedSha256": "3a9f7e1abd675216ca1ab27dd1f380d0b8954765a295982218d61401512c0ae4",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.html",
+      "targetSha256BeforeSync": "d3268f31f63962c1921723bea4c2d9ba44f46520bd99add674733e7e05a869d5",
+      "previousPr956PublishedSha256": null,
+      "previouslyInPr956Publication": false
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "targetSha256BeforeSync": "9288accb9e2f55254600b2067097a0f98a491e9555e9a8eea832990ccde92215",
+      "previousPr956PublishedSha256": "5b2461e5934a3555c4111cc7a3ef1d3f7ecdb57d1316eb65ff6aa377b38dcffa",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "targetSha256BeforeSync": "c46377a4a28a9ccd78516306d049a38d409c6273b50370a7b445af7a76bd4539",
+      "previousPr956PublishedSha256": "25955ce3a3ce2cdd5ce98ec379656afd418caddc3a51ea8f1ec783257e58bad1",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "targetSha256BeforeSync": "f8d86f4b5322e3e0d821968969eab28321dc19e81fcc002b92cf6e255ce07e60",
+      "previousPr956PublishedSha256": "11ce022bd3534c42bfc2c21570c3949914ff8738888e20a3783066242dfa4f07",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "targetSha256BeforeSync": "2de03aef17d12311a4020196d8efd6729cab242f27bda486bad03a4f92044d7e",
+      "previousPr956PublishedSha256": "5aa4ceee197ea4354806f9b7520a69360c855299532e62fde13960c27dce705f",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "targetSha256BeforeSync": "28c428f41322228035c865e12a5c104b68945916f8405c84871e4b594c74a818",
+      "previousPr956PublishedSha256": "9827ab079cab8a092b36567b1adfe2140095bf43cfb65ffcf48544a5bdd2c1a0",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "targetSha256BeforeSync": "92fe71764505473d6e6d7a3d6451181a6104b67d04e3ceecfe086208d937c3a0",
+      "previousPr956PublishedSha256": "547692b93afe38d9262865588362194c7248ce0d93323a00479e83cd935c96b6",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "targetSha256BeforeSync": "a5933488deec12fc09848e6aa16c7b25f61dcf6382488e96a897e9ae16f789a3",
+      "previousPr956PublishedSha256": "dedd5e22a6e8dcfdd7a7b4a10dd34240ae24811ef737e0148d09c8cc43f318b8",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.html",
+      "targetSha256BeforeSync": "55d4784ec6adb146f8efed0e7f39e9ad7bd273e4783dff2a045a22988fa030dd",
+      "previousPr956PublishedSha256": "d609ec514937937d12b8f94635318b9f582662e6af86a5f2d29298898041ea73",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "targetSha256BeforeSync": "5ebcf2cba59bc113b64a14701ed4e2ce96eed011693426167139a582e83d3c7e",
+      "previousPr956PublishedSha256": "4fe39a57d5f4f5f38a888899542f78c56d1e158c922b4b17f921f4d36d4cc3d2",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "targetSha256BeforeSync": "9e73671b9eeb9f3a41d763c46e67604bd88017dab39775fe5f1886843238f75e",
+      "previousPr956PublishedSha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "targetSha256BeforeSync": "6081ef4dbe933066aa388c9270076fcf68cdfe3ab43134c96716cd7f44afcf18",
+      "previousPr956PublishedSha256": "9c822554769db6d99d020e41b7362a0bc281ff1c25476e46cfccc55a134bf98c",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "targetSha256BeforeSync": "af17fd7c7334885b53c09f6142575bfac492d56d87c4535efc12ca086652a85f",
+      "previousPr956PublishedSha256": "d991407897bdaa4a3610b0af78f1887c6e7541d128a138f931e05fc242457b1f",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "STATUS.html",
+      "targetSha256BeforeSync": "95585ebff4bf684c9100df09bdb240a99f719d5b73157d3938689829b939d2bc",
+      "previousPr956PublishedSha256": "a8083387ea025d01eb122d376672155ce601f3e7529e1d3a79296bae92bbd560",
+      "previouslyInPr956Publication": true
+    },
+    {
+      "route": "STATUS.md",
+      "targetSha256BeforeSync": "af17fd7c7334885b53c09f6142575bfac492d56d87c4535efc12ca086652a85f",
+      "previousPr956PublishedSha256": "d991407897bdaa4a3610b0af78f1887c6e7541d128a138f931e05fc242457b1f",
+      "previouslyInPr956Publication": true
+    }
+  ],
+  "representativeRawSourceMatches": [
+    {
+      "route": "spec/STATUS.md",
+      "backupSha256": "af17fd7c7334885b53c09f6142575bfac492d56d87c4535efc12ca086652a85f",
+      "matchesRepositoryRevisions": [
+        "178f299ed",
+        "590f5946e"
+      ]
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "backupSha256": "8ef7489281b92d41f6f3efbb655fb2982a6f29b17ddb161271f7ec717baa4921",
+      "matchesRepositoryRevisions": [
+        "c3bab17fa",
+        "443f2b65e",
+        "178f299ed"
+      ]
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "backupSha256": "2ee5f333df754b8787a109b8eafca03f33bb141ceaf40f23ad1c59682e9b63a6",
+      "matchesRepositoryRevisions": [
+        "178f299ed",
+        "590f5946e",
+        "cfbb60fbd",
+        "18b4d4088"
+      ]
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags.md",
+      "backupSha256": "62ff1b89fa9f9e73a27d16db8ee430ee51e1e84da6ccc07c2af687956c11d4f6",
+      "matchesRepositoryRevisions": [
+        "178f299ed"
+      ]
+    }
+  ],
+  "allReplacementsBackedUp": true,
+  "backupCount": 55,
+  "noDeletes": true,
+  "noOpenHandlesAtPreflight": true
+}

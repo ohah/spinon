@@ -1,0 +1,8 @@
+{
+  "command": "mise exec -- env RSPRESS_PERSISTENT_CACHE=false SPINON_DOC_OUT_DIR=build/spinon/c11-4-line-break-loose-public-roadmap-pr964/site bun run docs:build",
+  "exitCode": 1,
+  "scope": "full docs tree",
+  "failure": "Rspress reported dead links across unrelated existing evidence and source links; examples included missing R05 simulator logs and C11/C13 evidence routes. No full docs dead-link pass is claimed.",
+  "followup": "Built the selected 434-file C11 roadmap root with pinned RSPress 2.0.22 and link checking disabled, then audited the two updated cards local links against the 845-route publication manifest.",
+  "selectedBuildLog": "selected-rspress-build-pass02.log"
+}

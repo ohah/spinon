@@ -1,0 +1,53 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "publicRoadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "desktop": {
+    "viewport": [
+      1280,
+      900
+    ],
+    "documentWidth": 1280,
+    "containsPr962": true,
+    "containsPr959": true,
+    "containsStaleTextIndentPlanCandidate": false,
+    "containsOfficialCount": "72/213",
+    "screenshot": "roadmap-desktop-agent-browser.png"
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentWidth": 390,
+    "cardWidth": 362,
+    "containsPr962": true,
+    "containsPr959": true,
+    "containsOfficialCount": "72/213",
+    "screenshot": "roadmap-mobile-agent-browser.png"
+  },
+  "openedRoutes": [
+    {
+      "path": "/spinon/plan/c11-4-anonymous-grid-text-indent-flags.html",
+      "title": "C11.4 anonymous Grid text-indent hanging·each-line 제한 계획 - 스피논 문서"
+    },
+    {
+      "path": "/spinon/plan/c11-4-anonymous-grid-text-line-break-loose.html",
+      "title": "C11.4 anonymous Grid text computed line-break: loose 제한 계획 - 스피논 문서"
+    }
+  ],
+  "serverRestarted": false,
+  "agentBrowserClosed": true,
+  "agentBrowserOrChromeProcessesRemain": false,
+  "cardLinks": {
+    "pr962": {
+      "allAnchors": 7,
+      "localRoutes": 6,
+      "externalPrLink": 1
+    },
+    "pr959": {
+      "allAnchors": 6,
+      "localRoutes": 5,
+      "externalPrLink": 1
+    }
+  }
+}
