@@ -1,0 +1,1847 @@
+{
+  "sourceHead": "00f7f316abf515b21fca3b93ad2360b2c203a98f",
+  "sourceTree": "358534b97890729a501e35ba08435e181e129f12",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "previousSelectedRoot": "build/spinon/roadmap-c11-plan-rollup-pr956-tailnet-20261101/root",
+  "selectedRoot": "build/spinon/roadmap-c11-plan-rollup-pr956-tailnet-20261101-pass02/root",
+  "previousStagedFileCount": 93,
+  "stagedFileCount": 218,
+  "stagedBytes": 6723972,
+  "overlayFiles": [
+    {
+      "route": "plan/c11-css-grid.md",
+      "source": "plan/c11-css-grid.md"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "source": "plan/c11-4-grid-track-sizing.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md",
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md",
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.md",
+      "source": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.md"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-review-20.md",
+      "source": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-review-20.md"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-pr-diff-review-30.md",
+      "source": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-pr-diff-review-30.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json",
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json"
+    }
+  ],
+  "noSymlinks": true,
+  "staged": [
+    {
+      "source": "previous-selected-root:internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 298673,
+      "sha256": "8ef7489281b92d41f6f3efbb655fb2982a6f29b17ddb161271f7ec717baa4921"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json",
+      "bytes": 5490,
+      "sha256": "8faf4a7906e3232c8bfccf15967467531654b4cea4a09bb16bbe62d01ef77ef5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png",
+      "bytes": 74416,
+      "sha256": "75c14c1c375e688092bb327e9262a813a08dbed5768583542a22011f484c945e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json",
+      "bytes": 3072,
+      "sha256": "22766574772139cd932456ffc84c19b876e1d37569c3bbf23a5a863cb71a0f8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md",
+      "bytes": 2420,
+      "sha256": "6384b3af74da1a2f87190efa9ba5b9787ac0dd10a2a50f52396a5d932a677442"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 698,
+      "sha256": "075514429e704334ed4913a3e1c9863a8f925a4e2f58c842d749b6ce5812b8bd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log",
+      "bytes": 21843,
+      "sha256": "3bd076af95bd7da8cdc38d8fda47f6a48d6940e80f68a121d4e30ca46c5e5d96"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log",
+      "bytes": 24278,
+      "sha256": "71ad0242bcf77e38bbaff7bcea4c20bb5aab825cddd354935643242581383e0b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log",
+      "bytes": 24367,
+      "sha256": "601ed86f10767558004b456c610474a682186d1ac0dd6416458f13fda2ff870f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png",
+      "bytes": 76907,
+      "sha256": "d8f4e99b47870f75b43aaaa4a41cea01b774c49892fe39d346c4dd43d668fa49"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log",
+      "bytes": 21381,
+      "sha256": "4c0be8cdb093e4bff8902e798acce10ae85c912b907c67c7cf8700ad2f4f6925"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log",
+      "bytes": 24098,
+      "sha256": "fd12c0c12dfd3d697337aae97fb58210419a960541688b02b3faf68aa40a7349"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log",
+      "bytes": 23706,
+      "sha256": "13289172100ef8fec41fc1ffa135a80d04531f7b52efa7aed6f6f5d3b7897dcf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png",
+      "bytes": 76920,
+      "sha256": "064a95a489ed06e3cf4d0fe9669ef77e27e3c670ae12eab9c5ca9d82227a20b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "bytes": 20402,
+      "sha256": "fab708b120948fa3784a9d659bf31e198f119e4fafe865802666fccfaf6e661d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log",
+      "bytes": 20401,
+      "sha256": "a409e690f65fe2ce18e43f0b35d348599333f220d4c1cd8af5becaa217c4d45a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log",
+      "bytes": 21017,
+      "sha256": "9ef1ab9fbce04eff9a68bf346c1388ea613b68d0a86f0c6a7356636c92576c00"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log",
+      "bytes": 24084,
+      "sha256": "70a3da6f0a6fbe690fc3aff38e3dc045f8ea263afc7f0361e232246b5a0b9843"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log",
+      "bytes": 24084,
+      "sha256": "aa941e844e3a7bec328192e8ca7dcf4e11dcdecd7947c2afe62bd197eec2a70d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log",
+      "bytes": 24085,
+      "sha256": "9856ab9aaeb78a945f42301872701a41e226c81433d6f8efc5b2d4bedd68a167"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log",
+      "bytes": 23076,
+      "sha256": "5141df8bfbbd0e2b214a11a55de27456d97778fdc073e72174ef772ba8aaa0a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log",
+      "bytes": 23692,
+      "sha256": "a251441966e5ef001c0ee4dbe0c6566d32cfad9b94094fc6fdede9962d8148d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log",
+      "bytes": 24160,
+      "sha256": "3a02f5fddc9eed6772852b16538e8504dd3a134fdc93b53b1d5b52e0b1947e83"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log",
+      "bytes": 24162,
+      "sha256": "7eacc2708faaa6bbfd2fc9c07b1accea730e41fb2f0a54bfe403b1c25857aa4d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 336,
+      "sha256": "8352118bd2f676de8b76e5d0abd86ac153cfc6d779feb689563fcedca55c6b26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json",
+      "bytes": 336,
+      "sha256": "7c66af0b55f3c070bf50c3cfc1a20ce8e7c9e6e0f08150a360b8d25a3f6fef9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json",
+      "bytes": 336,
+      "sha256": "18d541bb450ef3883eca49217d399a00635fdcfb0254a72eba9d753dc75a7d0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log",
+      "bytes": 6239,
+      "sha256": "1d92e30c6ebf013696e530e273fa4a375bb67edde4daa4003d73b7737ac8f1b7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log",
+      "bytes": 3753,
+      "sha256": "a6f12e8b11b7cff64c74aa57a6fc79118a7f7d058e639122947c785e98dae005"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt",
+      "bytes": 161,
+      "sha256": "80c2a72d477c77f675bd0f86b8bf21983c327017b8baccf2f663580af45be57c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt",
+      "bytes": 312,
+      "sha256": "06e152316390057c0e1cdbfa0403c71f04020f1ed63c94661cd9112a2d1dafc9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md",
+      "bytes": 1556,
+      "sha256": "155c4a4cdef75661d63ac689d532b1c7069869f19f12cd010160bfa721d1dc57"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 6579,
+      "sha256": "07a25b5b61754d940c67c55970b4618d099be4e357f43e1c165ba6612c0d6f9e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv",
+      "bytes": 314,
+      "sha256": "e38ba44702a238b09ce99d8a93c1294d7ea66c369a006b3b37b17395c8da8925"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "bytes": 1331,
+      "sha256": "26dd909bd449a69f2f18bf661fb6a4d0d4f6b0111b7ec1e047c0e30ac149a217"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 707,
+      "sha256": "98dc15d68cce32a457b4b7f162d91ba1fdb19220b9bb56d6afc565f734c37c01"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log",
+      "bytes": 10967,
+      "sha256": "8319aa65443a2e8539c030f2edef467db682506ade336454201741f91c045c70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log",
+      "bytes": 14075,
+      "sha256": "a319576dfb6388cc3f62aa923340b4a7025c46c0e51021f9bc4ed42a4ca9b8af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log",
+      "bytes": 13879,
+      "sha256": "b5d0a3688e704722660c53efdd1f7717819266d2822279d32962d4a7dac1f840"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png",
+      "bytes": 142104,
+      "sha256": "cdfe84180fd746a0e173b2440cf49b9692b35efbbe4b663619418ab2b1eb6d4d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log",
+      "bytes": 10972,
+      "sha256": "3ca89da9eca708d227e7feb677554902f0d68f6366cbc0714d38bd527298c24f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log",
+      "bytes": 14080,
+      "sha256": "88e4b5c5fcd46378c62458c4eb38e389e6252d05550ade15637b36dad6119341"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log",
+      "bytes": 13505,
+      "sha256": "74e4d53f63f8060400bd36fc99f0abfb0487cd38fb7bcdc13cddbbae806a63e5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png",
+      "bytes": 142059,
+      "sha256": "5df75eebddbbb8825f48ec8043caf54484636d1738b266635fd39abe00da6191"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "bytes": 12395,
+      "sha256": "33f510cd13abc6d6c0f2310fdab347f0bc75bcd3aaf3cdec850847e31abbcb55"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log",
+      "bytes": 10582,
+      "sha256": "23c979ad73e0eb8ee5d7c9d8f0f76f3a67fd0312bd2e37ff33528aeb0bce0215"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log",
+      "bytes": 14068,
+      "sha256": "8140448e506d67ea62d377584936119935ab845831391eeb87859fa588a3f6af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log",
+      "bytes": 14068,
+      "sha256": "248e763117419ced59a35a7a626ca771226b47546f1cf2bafdccc64909dd30f7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log",
+      "bytes": 13494,
+      "sha256": "f73e0a89f40cddcdeaad714841927c95a841894e4018ce9f77e768393b65f9ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log",
+      "bytes": 13494,
+      "sha256": "29ac1116d3de60311f937a7598000b27ed395746f322e27611eab6173d003868"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "d67d836b43579db0cb7c8d40efbe3591055b702645bbbd8e73ede448ec8e2262"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json",
+      "bytes": 414,
+      "sha256": "dac2c526f46ab89c16d86f49a2a39b5f0c99e66bfee852084a2ccfbaed9dd2a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md",
+      "bytes": 3435,
+      "sha256": "bbb867b71f4b24d0bb5a9f3d0a66b2aad75fcbde684a8b5fcfb882128e314c96"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 8716,
+      "sha256": "e4cd4e1c89675a2b7f0b576714f9f954c8c62db831eb3f1c45519589e5c562ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md",
+      "bytes": 6731,
+      "sha256": "29b077ce67ba6739e947cca9ece4825119ba4f506078ff56fc389ff439d61560"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log",
+      "bytes": 3026,
+      "sha256": "da2ee6de8643e1ad7a46e85d67d1e664b69664dc5578227eb92c968bd2ae3457"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log",
+      "bytes": 23009,
+      "sha256": "6363e385f9c15c53019c65ed23df20a428e6c38bb57c90c60cdd3c2ab0e54809"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log",
+      "bytes": 35241,
+      "sha256": "d8ce17f9d94c24d9c57ff43b602437c0c2ecf16e90ef86449ba550010483ff5e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log",
+      "bytes": 54511,
+      "sha256": "24e3c06d6b23b2d5622a942388838453a82c8677ae47665ff8f0e8582c4809f8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log",
+      "bytes": 32239,
+      "sha256": "6388bd974202381f4a8ad6cb43eb80892462309e2bbf5b3b8d347ec0205fae5b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log",
+      "bytes": 8613,
+      "sha256": "ef5366d04bda622b22e8652cc4fcbdc9526734baefd428b38208cf6431e3bb8b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json",
+      "bytes": 761,
+      "sha256": "6e038155893c3bc08cc6d3bcbffc914532bc0c6a2d2f58de5764eb5151dbb2ca"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "bytes": 3523,
+      "sha256": "fe73ded71b9cc25b0cf889ecb581f4f45cac34171d8dce9696e663971b943a5a"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "bytes": 59090,
+      "sha256": "ca4be56c62a370c23c773ff8aefc303ab95e56d94280bd4ee0dae5475bc88a42"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "bytes": 2177,
+      "sha256": "3dd5d56cad6205958744e850321e3c75e79f1de291cd53748c785b4e8b3ba82e"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "bytes": 5602,
+      "sha256": "c258ba2e3f59cf395089775cb89975f9ee82512d5ce282282ef94595e038b07e"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "bytes": 3123,
+      "sha256": "b6ed8976374b3fa5b910712f9acfef60851043bc2244cb9f7869266dab0c4568"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "bytes": 1547,
+      "sha256": "0e9f2b19424b2d5c75e78ebc177019c810be9cf38f835b7546be0c2c019acd9d"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "bytes": 124,
+      "sha256": "5bd985acf90948ea5c54a41d5e526ac4f428229342ac0b28331607a23b0f27d8"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "bytes": 29899,
+      "sha256": "ea4c4622d875c781548dee0a116ffa5efee8602b42f4db953d87955a38f43473"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "bytes": 587,
+      "sha256": "8c1c99e929f064e3ce07d76c8ac3e6682f70cbd6425e2a4a7fcdfb75acbb5ca8"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "bytes": 78445,
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "bytes": 396,
+      "sha256": "2863cec2adaf653f30341cfb19585840a6d091e527bd17e84ad655f2ec724f45"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "bytes": 30258,
+      "sha256": "b91401c75d3588c7662277323b2afd9e9c30c0800fec15d893dad4ef6e32d803"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "bytes": 24142,
+      "sha256": "7eb92db549c14ec362c9ac02dcc7988141a3ed829ea5bbfd893a5cf80218b1ef"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "bytes": 25135,
+      "sha256": "eefb8dafc49810b6b5d011d79b241ebc1d4ce0ca3c0c1b2f76a2164111c2e868"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "bytes": 24629,
+      "sha256": "5523152e09406a96a8592ec990795b4853e0f64acf03ca051652754664f871db"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "bytes": 30301,
+      "sha256": "3b4a5bc92224b3e063fe6604c8b88919ca8612f00a59273b85ebd8f2dd6ea38e"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "bytes": 24663,
+      "sha256": "b8167fbb444045ae6e5a1087718b0c20f49e84c7f15c06ce3d81c18cfdf0a574"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "bytes": 474,
+      "sha256": "01d56433c069d28e3e9ababd54ae7f872857a57e9de094451251e62dddefb094"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "bytes": 5004,
+      "sha256": "68ff75275fa9565c14db2a2088e2a41636963666672c7ad747fa28a85f8c02a9"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "bytes": 593,
+      "sha256": "09e48d170a8712ee80f43e0b9221519f77247cc5d36e1bbc07e88a0940c97905"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "bytes": 142718,
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "bytes": 474,
+      "sha256": "7e47c675ab03c88a47024e35c0e7732bae778f9c739a635f5a054fe9e0b4c818"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "bytes": 15017,
+      "sha256": "d2969702baa570a3a558fa3ce09cf21ea77c99effa2322522886a2d00611ef14"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "bytes": 14145,
+      "sha256": "4abd0508398eec8df3a4c44a69b12b10536ecd9cced6d8a193c39adc4c030a74"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "bytes": 15072,
+      "sha256": "471e84f8249e24d64189d1bca887b0cf87918841623ffc77d1915dfc1780f609"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "bytes": 14543,
+      "sha256": "a328df1772d30d9197e4e83494fd85ef773ec7e5e93cf56136b826cebe646df2"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "bytes": 15060,
+      "sha256": "7e973c3230b7e9a81262f68bff4dfa3bb128d2213d5d34052d21fde853080f15"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "bytes": 14571,
+      "sha256": "9ae76eed61e045a6e32a39492f70290d276a5a4bc0f360a884fd57b8e0f44e41"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 5975,
+      "sha256": "c38ba06c9aa1c21541c42c168bedceecab8f38d0cbba090718e0f327b878966c"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "bytes": 4357,
+      "sha256": "cd8067dcea588e4bb61993e0d9d32c3101ebdbb49ca7cf3c84eaefcf5471ee10"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 7037,
+      "sha256": "d08fe0776fc045f994a21dfe469c15f838de11270620188bb3796ea7104d6551"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "bytes": 3688,
+      "sha256": "2e2c1e0cef3effdd698f8da2dca356beb08652cba4b078b6d35c2417652c6638"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "bytes": 6997,
+      "sha256": "e277e78e697cd7736e9dc295976b757b43ad921ff79cef34c1c870c27368a0c0"
+    },
+    {
+      "source": "previous-selected-root:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "bytes": 8794,
+      "sha256": "99a9fd43133990a167c19f632882da1b2ea009364635052c1802f346761933a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md",
+      "bytes": 4564,
+      "sha256": "a75d6f0941e2ce4f4f005b8fbd180b4f0ad1e4be940d96b62bec6cd6d7f550dd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md",
+      "bytes": 1923,
+      "sha256": "4fe7fbb3e7a943f03b66c861b8036c2bdbaba22799b6d15e4215b1e20a47e651"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-pr-diff-review-30.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-pr-diff-review-30.md",
+      "bytes": 6319,
+      "sha256": "2884a8fee7943bf5f5faf8e78f0bfe76b67892b168096e445880d74da3f0f256"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-review-20.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-review-20.md",
+      "bytes": 4819,
+      "sha256": "af6d90899e1118af6630d764849c925f314dfbe664e19a23391484475d3f7287"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.md",
+      "bytes": 7790,
+      "sha256": "729d3fa92a49e9abff13ae89f261de9da776d742a17f1c8cf417c411abc9717d"
+    },
+    {
+      "source": "previous-selected-root:plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.md",
+      "bytes": 3580,
+      "sha256": "26d7ad08a824dd6cd6782f0e0eaa52bff96b6cb58b080e34d3637bfd855a57e2"
+    },
+    {
+      "source": "previous-selected-root:plan/c11-4-anonymous-grid-text-computed-text-transform.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.md",
+      "bytes": 7931,
+      "sha256": "37d4efc30467d85b342eb3ae3d7e39dfa77c70164716319eeef5f5e34ca2bd11"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 210792,
+      "sha256": "d8226e4aa039429774d3bb6a3ea733e97cbb41fba3998331239610dd7ace79d7"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "plan/c11-css-grid.md",
+      "bytes": 30034,
+      "sha256": "5a39ea66ef29955a89240d259a1c5052b94c72cff0991855ac332f8cfe1e4f4e"
+    },
+    {
+      "source": "previous-selected-root:public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "previous-selected-root:public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "previous-selected-root:public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 467100,
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2"
+    },
+    {
+      "source": "previous-selected-root:public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 298673,
+      "sha256": "8ef7489281b92d41f6f3efbb655fb2982a6f29b17ddb161271f7ec717baa4921"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-observations.json",
+      "bytes": 5490,
+      "sha256": "8faf4a7906e3232c8bfccf15967467531654b4cea4a09bb16bbe62d01ef77ef5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/chrome156-overflow-wrap-grid.png",
+      "bytes": 74416,
+      "sha256": "75c14c1c375e688092bb327e9262a813a08dbed5768583542a22011f484c945e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json",
+      "bytes": 3072,
+      "sha256": "22766574772139cd932456ffc84c19b876e1d37569c3bbf23a5a863cb71a0f8d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md",
+      "bytes": 2420,
+      "sha256": "6384b3af74da1a2f87190efa9ba5b9787ac0dd10a2a50f52396a5d932a677442"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 698,
+      "sha256": "075514429e704334ed4913a3e1c9863a8f925a4e2f58c842d749b6ce5812b8bd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-fixed-10px.log",
+      "bytes": 21843,
+      "sha256": "3bd076af95bd7da8cdc38d8fda47f6a48d6940e80f68a121d4e30ca46c5e5d96"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-max-content.log",
+      "bytes": 24278,
+      "sha256": "71ad0242bcf77e38bbaff7bcea4c20bb5aab825cddd354935643242581383e0b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-anywhere-min-content.log",
+      "bytes": 24367,
+      "sha256": "601ed86f10767558004b456c610474a682186d1ac0dd6416458f13fda2ff870f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px-screen.png",
+      "bytes": 76907,
+      "sha256": "d8f4e99b47870f75b43aaaa4a41cea01b774c49892fe39d346c4dd43d668fa49"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-fixed-10px.log",
+      "bytes": 21381,
+      "sha256": "4c0be8cdb093e4bff8902e798acce10ae85c912b907c67c7cf8700ad2f4f6925"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-max-content.log",
+      "bytes": 24098,
+      "sha256": "fd12c0c12dfd3d697337aae97fb58210419a960541688b02b3faf68aa40a7349"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-break-word-min-content.log",
+      "bytes": 23706,
+      "sha256": "13289172100ef8fec41fc1ffa135a80d04531f7b52efa7aed6f6f5d3b7897dcf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px-screen.png",
+      "bytes": 76920,
+      "sha256": "064a95a489ed06e3cf4d0fe9669ef77e27e3c670ae12eab9c5ca9d82227a20b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "bytes": 20402,
+      "sha256": "fab708b120948fa3784a9d659bf31e198f119e4fafe865802666fccfaf6e661d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.failed-attempt-02.log",
+      "bytes": 20401,
+      "sha256": "a409e690f65fe2ce18e43f0b35d348599333f220d4c1cd8af5becaa217c4d45a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-fixed-10px.log",
+      "bytes": 21017,
+      "sha256": "9ef1ab9fbce04eff9a68bf346c1388ea613b68d0a86f0c6a7356636c92576c00"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.log",
+      "bytes": 24084,
+      "sha256": "70a3da6f0a6fbe690fc3aff38e3dc045f8ea263afc7f0361e232246b5a0b9843"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-01.log",
+      "bytes": 24084,
+      "sha256": "aa941e844e3a7bec328192e8ca7dcf4e11dcdecd7947c2afe62bd197eec2a70d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-max-content.pre-fix-pass-02.log",
+      "bytes": 24085,
+      "sha256": "9856ab9aaeb78a945f42301872701a41e226c81433d6f8efc5b2d4bedd68a167"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.failed-attempt-01.log",
+      "bytes": 23076,
+      "sha256": "5141df8bfbbd0e2b214a11a55de27456d97778fdc073e72174ef772ba8aaa0a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.log",
+      "bytes": 23692,
+      "sha256": "a251441966e5ef001c0ee4dbe0c6566d32cfad9b94094fc6fdede9962d8148d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-01.log",
+      "bytes": 24160,
+      "sha256": "3a02f5fddc9eed6772852b16538e8504dd3a134fdc93b53b1d5b52e0b1947e83"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/overflow-wrap-normal-min-content.pre-fix-pass-02.log",
+      "bytes": 24162,
+      "sha256": "7eacc2708faaa6bbfd2fc9c07b1accea730e41fb2f0a54bfe403b1c25857aa4d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 336,
+      "sha256": "8352118bd2f676de8b76e5d0abd86ac153cfc6d779feb689563fcedca55c6b26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-01.json",
+      "bytes": 336,
+      "sha256": "7c66af0b55f3c070bf50c3cfc1a20ce8e7c9e6e0f08150a360b8d25a3f6fef9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/android-avd/simulator.pre-fix-pass-02.json",
+      "bytes": 336,
+      "sha256": "18d541bb450ef3883eca49217d399a00635fdcfb0254a72eba9d753dc75a7d0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/default-build.log",
+      "bytes": 6239,
+      "sha256": "1d92e30c6ebf013696e530e273fa4a375bb67edde4daa4003d73b7737ac8f1b7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-build.log",
+      "bytes": 3753,
+      "sha256": "a6f12e8b11b7cff64c74aa57a6fc79118a7f7d058e639122947c785e98dae005"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-host-symbols.txt",
+      "bytes": 161,
+      "sha256": "80c2a72d477c77f675bd0f86b8bf21983c327017b8baccf2f663580af45be57c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/fixture-scene-markers.txt",
+      "bytes": 312,
+      "sha256": "06e152316390057c0e1cdbfa0403c71f04020f1ed63c94661cd9112a2d1dafc9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md",
+      "bytes": 1556,
+      "sha256": "155c4a4cdef75661d63ac689d532b1c7069869f19f12cd010160bfa721d1dc57"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 6579,
+      "sha256": "07a25b5b61754d940c67c55970b4618d099be4e357f43e1c165ba6612c0d6f9e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.pre-debug-pass-01.tsv",
+      "bytes": 314,
+      "sha256": "e38ba44702a238b09ce99d8a93c1294d7ea66c369a006b3b37b17395c8da8925"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "bytes": 1331,
+      "sha256": "26dd909bd449a69f2f18bf661fb6a4d0d4f6b0111b7ec1e047c0e30ac149a217"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 707,
+      "sha256": "98dc15d68cce32a457b4b7f162d91ba1fdb19220b9bb56d6afc565f734c37c01"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-fixed-10px.log",
+      "bytes": 10967,
+      "sha256": "8319aa65443a2e8539c030f2edef467db682506ade336454201741f91c045c70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-max-content.log",
+      "bytes": 14075,
+      "sha256": "a319576dfb6388cc3f62aa923340b4a7025c46c0e51021f9bc4ed42a4ca9b8af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-anywhere-min-content.log",
+      "bytes": 13879,
+      "sha256": "b5d0a3688e704722660c53efdd1f7717819266d2822279d32962d4a7dac1f840"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px-screen.png",
+      "bytes": 142104,
+      "sha256": "cdfe84180fd746a0e173b2440cf49b9692b35efbbe4b663619418ab2b1eb6d4d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-fixed-10px.log",
+      "bytes": 10972,
+      "sha256": "3ca89da9eca708d227e7feb677554902f0d68f6366cbc0714d38bd527298c24f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-max-content.log",
+      "bytes": 14080,
+      "sha256": "88e4b5c5fcd46378c62458c4eb38e389e6252d05550ade15637b36dad6119341"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-break-word-min-content.log",
+      "bytes": 13505,
+      "sha256": "74e4d53f63f8060400bd36fc99f0abfb0487cd38fb7bcdc13cddbbae806a63e5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px-screen.png",
+      "bytes": 142059,
+      "sha256": "5df75eebddbbb8825f48ec8043caf54484636d1738b266635fd39abe00da6191"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.failed-attempt-01.log",
+      "bytes": 12395,
+      "sha256": "33f510cd13abc6d6c0f2310fdab347f0bc75bcd3aaf3cdec850847e31abbcb55"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-fixed-10px.log",
+      "bytes": 10582,
+      "sha256": "23c979ad73e0eb8ee5d7c9d8f0f76f3a67fd0312bd2e37ff33528aeb0bce0215"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.log",
+      "bytes": 14068,
+      "sha256": "8140448e506d67ea62d377584936119935ab845831391eeb87859fa588a3f6af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-max-content.pre-debug-pass-01.log",
+      "bytes": 14068,
+      "sha256": "248e763117419ced59a35a7a626ca771226b47546f1cf2bafdccc64909dd30f7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.log",
+      "bytes": 13494,
+      "sha256": "f73e0a89f40cddcdeaad714841927c95a841894e4018ce9f77e768393b65f9ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/overflow-wrap-normal-min-content.pre-debug-pass-01.log",
+      "bytes": 13494,
+      "sha256": "29ac1116d3de60311f937a7598000b27ed395746f322e27611eab6173d003868"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "d67d836b43579db0cb7c8d40efbe3591055b702645bbbd8e73ede448ec8e2262"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/ios-simulator/simulator.pre-debug-pass-01.json",
+      "bytes": 414,
+      "sha256": "dac2c526f46ab89c16d86f49a2a39b5f0c99e66bfee852084a2ccfbaed9dd2a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md",
+      "bytes": 3435,
+      "sha256": "bbb867b71f4b24d0bb5a9f3d0a66b2aad75fcbde684a8b5fcfb882128e314c96"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 8716,
+      "sha256": "e4cd4e1c89675a2b7f0b576714f9f954c8c62db831eb3f1c45519589e5c562ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md",
+      "bytes": 6731,
+      "sha256": "29b077ce67ba6739e947cca9ece4825119ba4f506078ff56fc389ff439d61560"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/fixture-module-boundary.log",
+      "bytes": 3026,
+      "sha256": "da2ee6de8643e1ad7a46e85d67d1e664b69664dc5578227eb92c968bd2ae3457"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-ffi-fixture.log",
+      "bytes": 23009,
+      "sha256": "6363e385f9c15c53019c65ed23df20a428e6c38bb57c90c60cdd3c2ab0e54809"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-layout.log",
+      "bytes": 35241,
+      "sha256": "d8ce17f9d94c24d9c57ff43b602437c0c2ecf16e90ef86449ba550010483ff5e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-runtime-fixture.log",
+      "bytes": 54511,
+      "sha256": "24e3c06d6b23b2d5622a942388838453a82c8677ae47665ff8f0e8582c4809f8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-style-to-layout.log",
+      "bytes": 32239,
+      "sha256": "6388bd974202381f4a8ad6cb43eb80892462309e2bbf5b3b8d347ec0205fae5b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/rust/spinon-text-layout.log",
+      "bytes": 8613,
+      "sha256": "ef5366d04bda622b22e8652cc4fcbdc9526734baefd428b38208cf6431e3bb8b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/source-revision.json",
+      "bytes": 761,
+      "sha256": "6e038155893c3bc08cc6d3bcbffc914532bc0c6a2d2f58de5764eb5151dbb2ca"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "bytes": 3523,
+      "sha256": "fe73ded71b9cc25b0cf889ecb581f4f45cac34171d8dce9696e663971b943a5a"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "bytes": 59090,
+      "sha256": "ca4be56c62a370c23c773ff8aefc303ab95e56d94280bd4ee0dae5475bc88a42"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "bytes": 2177,
+      "sha256": "3dd5d56cad6205958744e850321e3c75e79f1de291cd53748c785b4e8b3ba82e"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "bytes": 5602,
+      "sha256": "c258ba2e3f59cf395089775cb89975f9ee82512d5ce282282ef94595e038b07e"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "bytes": 3123,
+      "sha256": "b6ed8976374b3fa5b910712f9acfef60851043bc2244cb9f7869266dab0c4568"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "bytes": 1547,
+      "sha256": "0e9f2b19424b2d5c75e78ebc177019c810be9cf38f835b7546be0c2c019acd9d"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "bytes": 124,
+      "sha256": "5bd985acf90948ea5c54a41d5e526ac4f428229342ac0b28331607a23b0f27d8"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "bytes": 29899,
+      "sha256": "ea4c4622d875c781548dee0a116ffa5efee8602b42f4db953d87955a38f43473"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "bytes": 587,
+      "sha256": "8c1c99e929f064e3ce07d76c8ac3e6682f70cbd6425e2a4a7fcdfb75acbb5ca8"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "bytes": 78445,
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "bytes": 396,
+      "sha256": "2863cec2adaf653f30341cfb19585840a6d091e527bd17e84ad655f2ec724f45"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "bytes": 30258,
+      "sha256": "b91401c75d3588c7662277323b2afd9e9c30c0800fec15d893dad4ef6e32d803"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "bytes": 24142,
+      "sha256": "7eb92db549c14ec362c9ac02dcc7988141a3ed829ea5bbfd893a5cf80218b1ef"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "bytes": 25135,
+      "sha256": "eefb8dafc49810b6b5d011d79b241ebc1d4ce0ca3c0c1b2f76a2164111c2e868"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "bytes": 24629,
+      "sha256": "5523152e09406a96a8592ec990795b4853e0f64acf03ca051652754664f871db"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "bytes": 30301,
+      "sha256": "3b4a5bc92224b3e063fe6604c8b88919ca8612f00a59273b85ebd8f2dd6ea38e"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "bytes": 24663,
+      "sha256": "b8167fbb444045ae6e5a1087718b0c20f49e84c7f15c06ce3d81c18cfdf0a574"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "bytes": 474,
+      "sha256": "01d56433c069d28e3e9ababd54ae7f872857a57e9de094451251e62dddefb094"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "bytes": 5004,
+      "sha256": "68ff75275fa9565c14db2a2088e2a41636963666672c7ad747fa28a85f8c02a9"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "bytes": 593,
+      "sha256": "09e48d170a8712ee80f43e0b9221519f77247cc5d36e1bbc07e88a0940c97905"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "bytes": 142718,
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "bytes": 474,
+      "sha256": "7e47c675ab03c88a47024e35c0e7732bae778f9c739a635f5a054fe9e0b4c818"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "bytes": 15017,
+      "sha256": "d2969702baa570a3a558fa3ce09cf21ea77c99effa2322522886a2d00611ef14"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "bytes": 14145,
+      "sha256": "4abd0508398eec8df3a4c44a69b12b10536ecd9cced6d8a193c39adc4c030a74"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "bytes": 15072,
+      "sha256": "471e84f8249e24d64189d1bca887b0cf87918841623ffc77d1915dfc1780f609"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "bytes": 14543,
+      "sha256": "a328df1772d30d9197e4e83494fd85ef773ec7e5e93cf56136b826cebe646df2"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "bytes": 15060,
+      "sha256": "7e973c3230b7e9a81262f68bff4dfa3bb128d2213d5d34052d21fde853080f15"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "bytes": 14571,
+      "sha256": "9ae76eed61e045a6e32a39492f70290d276a5a4bc0f360a884fd57b8e0f44e41"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 5975,
+      "sha256": "c38ba06c9aa1c21541c42c168bedceecab8f38d0cbba090718e0f327b878966c"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "bytes": 4357,
+      "sha256": "cd8067dcea588e4bb61993e0d9d32c3101ebdbb49ca7cf3c84eaefcf5471ee10"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 7037,
+      "sha256": "d08fe0776fc045f994a21dfe469c15f838de11270620188bb3796ea7104d6551"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "bytes": 3688,
+      "sha256": "2e2c1e0cef3effdd698f8da2dca356beb08652cba4b078b6d35c2417652c6638"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "bytes": 6997,
+      "sha256": "e277e78e697cd7736e9dc295976b757b43ad921ff79cef34c1c870c27368a0c0"
+    },
+    {
+      "source": "previous-selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "bytes": 8794,
+      "sha256": "99a9fd43133990a167c19f632882da1b2ea009364635052c1802f346761933a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.md",
+      "bytes": 4564,
+      "sha256": "a75d6f0941e2ce4f4f005b8fbd180b4f0ad1e4be940d96b62bec6cd6d7f550dd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.md",
+      "bytes": 1923,
+      "sha256": "4fe7fbb3e7a943f03b66c861b8036c2bdbaba22799b6d15e4215b1e20a47e651"
+    },
+    {
+      "source": "previous-selected-root:spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "previous-selected-root:spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "previous-selected-root:spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 467100,
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2"
+    },
+    {
+      "source": "previous-selected-root:spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "previous-selected-root:spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 579520,
+      "sha256": "d991407897bdaa4a3610b0af78f1887c6e7541d128a138f931e05fc242457b1f"
+    },
+    {
+      "source": "previous-selected-root:STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 579520,
+      "sha256": "d991407897bdaa4a3610b0af78f1887c6e7541d128a138f931e05fc242457b1f"
+    },
+    {
+      "source": "previous-selected-root:tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform.html",
+      "route": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform.html",
+      "bytes": 4019,
+      "sha256": "98ab0ae80ff2f1ca79dd34713d82103c7e31883ff740fc4a12092ca49bb3fa11"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "sourceHead": "00f7f316abf515b21fca3b93ad2360b2c203a98f",
+  "sourceTree": "358534b97890729a501e35ba08435e181e129f12",
+  "rspressVersion": "2.0.22",
+  "command": "RSPRESS_PERSISTENT_CACHE=false packages/docs/node_modules/.bin/rspress build --config spec/internal/evidence/roadmap-tailnet-sync-pr956-plan-rollup-2026-11-01/rspress-pass02.config.ts",
+  "exitCode": 0,
+  "selectedRootFileCount": 218,
+  "siteFileCount": 101,
+  "siteBytes": 10884653,
+  "requiredGeneratedPages": [
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "bytes": 52241,
+      "sha256": "51a76b66c2fe7afe4fcb4c41e7bc0066c530ea7fd92176b21ab1e013a0bd30af"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 358040,
+      "sha256": "01e978915649365ea8a0a33b27280e1cb7b614774216cd450ddf4c3207544893"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 78349,
+      "sha256": "4652828b0f5c8a77e0c7dc9fc8e77f9a819aa88f16438f35beef7b6c0bc011ef"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "bytes": 44240,
+      "sha256": "4fe39a57d5f4f5f38a888899542f78c56d1e158c922b4b17f921f4d36d4cc3d2"
+    }
+  ],
+  "noSymlinks": true
+}
