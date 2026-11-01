@@ -1,0 +1,1640 @@
+{
+  "sourceHead": "39f57f7a6eed4ddd49e06836e89579d0514cc591",
+  "sourceTree": "05ad3c22259547128b462a4f6ce0e99ea4b68597",
+  "trackedDiffSha256": "e1716157534632371333f0f55fd8ea9896aa9d65b77051826f8ba111d4924658",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr979-2026-11-01/pass01/root",
+  "stagedFileCount": 271,
+  "stagedBytes": 9549482,
+  "sourceTreesFromGitIndexOnly": true,
+  "noSymlinks": true,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 477963,
+      "sha256": "e681b9578a6943158318bc74e66ca73adf01ddc6d3e16c5152179c70b36f4937"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 477963,
+      "sha256": "e681b9578a6943158318bc74e66ca73adf01ddc6d3e16c5152179c70b36f4937"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 477963,
+      "sha256": "e681b9578a6943158318bc74e66ca73adf01ddc6d3e16c5152179c70b36f4937"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 593107,
+      "sha256": "89a491ee6f2c48cabb2a78bc8608c8976bd441ae73c366cf696294c2ac8fb9d5"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 593107,
+      "sha256": "89a491ee6f2c48cabb2a78bc8608c8976bd441ae73c366cf696294c2ac8fb9d5"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 316569,
+      "sha256": "588d8a051e95a7df7fe8318e0af4396c9102a7e12c0ab8c8d875c8fc1a3bb91e"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 316569,
+      "sha256": "588d8a051e95a7df7fe8318e0af4396c9102a7e12c0ab8c8d875c8fc1a3bb91e"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "plan/c11-css-grid.md",
+      "bytes": 32598,
+      "sha256": "29d57b050dd514fa99096a3d360612c4de0d63bdfa1c9fb12b176137776aa2f8"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "spec/plan/c11-css-grid.md",
+      "bytes": 32598,
+      "sha256": "29d57b050dd514fa99096a3d360612c4de0d63bdfa1c9fb12b176137776aa2f8"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-hyphens.md",
+      "route": "plan/c11-4-anonymous-grid-text-hyphens.md",
+      "bytes": 8097,
+      "sha256": "bbc3c6dbb430442fbb07dde32fefcfd9a7fcfd993671ea9048fbc38aadb0142f"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-hyphens.md",
+      "route": "spec/plan/c11-4-anonymous-grid-text-hyphens.md",
+      "bytes": 8097,
+      "sha256": "bbc3c6dbb430442fbb07dde32fefcfd9a7fcfd993671ea9048fbc38aadb0142f"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "route": "plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "bytes": 9421,
+      "sha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "route": "spec/plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "bytes": 9421,
+      "sha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.md",
+      "bytes": 4151,
+      "sha256": "49c8b6fe383829ba87621fcf7dd72dc65d3cfbe57f8d24616865bf10ee32338f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/README.md",
+      "bytes": 4151,
+      "sha256": "49c8b6fe383829ba87621fcf7dd72dc65d3cfbe57f8d24616865bf10ee32338f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/anonymous-grid-text-hyphens.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/anonymous-grid-text-hyphens.html",
+      "bytes": 4352,
+      "sha256": "6f08960a394a13278f5d5a05647cbbb7fea728c2fd614b4daa6fee2b693d979d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/anonymous-grid-text-hyphens.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/anonymous-grid-text-hyphens.html",
+      "bytes": 4352,
+      "sha256": "6f08960a394a13278f5d5a05647cbbb7fea728c2fd614b4daa6fee2b693d979d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/chrome-agent-browser.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/chrome-agent-browser.png",
+      "bytes": 49800,
+      "sha256": "3740eef02a70a5deae8263258b7807b927a7bd58ea1b40f2d35c57e3ce103e75"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/chrome-agent-browser.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-precomparison-2026-11-01/chrome-agent-browser.png",
+      "bytes": 49800,
+      "sha256": "3740eef02a70a5deae8263258b7807b927a7bd58ea1b40f2d35c57e3ce103e75"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md",
+      "bytes": 5077,
+      "sha256": "f444bdaeb06afa7d0dd40536b18dccf0c3fcfa70d3372638235660a33661cec6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/README.md",
+      "bytes": 5077,
+      "sha256": "f444bdaeb06afa7d0dd40536b18dccf0c3fcfa70d3372638235660a33661cec6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/expected-values.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/expected-values.json",
+      "bytes": 11264,
+      "sha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/expected-values.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/expected-values.json",
+      "bytes": 11264,
+      "sha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-auto-expected-reject.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-auto-expected-reject.log",
+      "bytes": 6518,
+      "sha256": "f3acaf5021af4c549f32f8a0934e127311ba00076b77423416a01960df828f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-auto-expected-reject.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-auto-expected-reject.log",
+      "bytes": 6518,
+      "sha256": "f3acaf5021af4c549f32f8a0934e127311ba00076b77423416a01960df828f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-default-soft-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-default-soft-fixed-30.log",
+      "bytes": 21479,
+      "sha256": "2b7d4ec5994505934bf25f0bdda39f5a5d09348a78cf1cb91a2d289996119ab2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-default-soft-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-default-soft-fixed-30.log",
+      "bytes": 21479,
+      "sha256": "2b7d4ec5994505934bf25f0bdda39f5a5d09348a78cf1cb91a2d289996119ab2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-manual-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-manual-fixed-30.log",
+      "bytes": 21863,
+      "sha256": "0749b4d5f5009713d2774eed322e0e6cb4c63ebdd7e741021af10b1d46418fc4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-manual-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-manual-fixed-30.log",
+      "bytes": 21863,
+      "sha256": "0749b4d5f5009713d2774eed322e0e6cb4c63ebdd7e741021af10b1d46418fc4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-none-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-none-fixed-30.log",
+      "bytes": 21773,
+      "sha256": "608ee74d2bec508f30912856d7b0fb32a33b38e1694760da925cdd839e8fca25"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-none-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-inherited-none-fixed-30.log",
+      "bytes": 21773,
+      "sha256": "608ee74d2bec508f30912856d7b0fb32a33b38e1694760da925cdd839e8fca25"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-invalid-expected-reject.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-invalid-expected-reject.log",
+      "bytes": 6552,
+      "sha256": "c14c6dd2deb5da6ff66863b6f32a47309dbc3b5cf10f9fb9ef22d5c37aae12af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-invalid-expected-reject.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-invalid-expected-reject.log",
+      "bytes": 6552,
+      "sha256": "c14c6dd2deb5da6ff66863b6f32a47309dbc3b5cf10f9fb9ef22d5c37aae12af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-fixed-30.log",
+      "bytes": 21709,
+      "sha256": "275ac98140e3476c225efffe27c603e0df3450fa0e8f9f5345340e7b861927aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-fixed-30.log",
+      "bytes": 21709,
+      "sha256": "275ac98140e3476c225efffe27c603e0df3450fa0e8f9f5345340e7b861927aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-min.log",
+      "bytes": 24211,
+      "sha256": "4e853baca1b997d50bce9241532be63635a5c43655558531f19d721143c13020"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-multiple-min.log",
+      "bytes": 24211,
+      "sha256": "4e853baca1b997d50bce9241532be63635a5c43655558531f19d721143c13020"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-fixed-30.log",
+      "bytes": 21475,
+      "sha256": "aa45fff944a283de359364057bfbf53f5c7c05d8b499cc611a7cc4b6f72042dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-fixed-30.log",
+      "bytes": 21475,
+      "sha256": "aa45fff944a283de359364057bfbf53f5c7c05d8b499cc611a7cc4b6f72042dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-max.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-max.log",
+      "bytes": 24198,
+      "sha256": "d7666949e6d0186a490f78e48b3ee70904ee7b2d9762f1f082930b3f76c3d9c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-max.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-max.log",
+      "bytes": 24198,
+      "sha256": "d7666949e6d0186a490f78e48b3ee70904ee7b2d9762f1f082930b3f76c3d9c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-min.log",
+      "bytes": 23978,
+      "sha256": "ec7dcce2212062a3b31dc4fc251146a0e87922a7485eb1d4dd37eb4568379fba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-soft-min.log",
+      "bytes": 23978,
+      "sha256": "ec7dcce2212062a3b31dc4fc251146a0e87922a7485eb1d4dd37eb4568379fba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-unbroken-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-unbroken-min.log",
+      "bytes": 23736,
+      "sha256": "feb689e870b109e16e69e719661ddf7b2fec94a89cdb765c5fb230f2f8ec6b0d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-unbroken-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-unbroken-min.log",
+      "bytes": 23736,
+      "sha256": "feb689e870b109e16e69e719661ddf7b2fec94a89cdb765c5fb230f2f8ec6b0d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-fixed-30.log",
+      "bytes": 21388,
+      "sha256": "50d701b2fe1ca6fc9685ede5f708846b41909c9661c5a78bce6f164a9f41d5d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-fixed-30.log",
+      "bytes": 21388,
+      "sha256": "50d701b2fe1ca6fc9685ede5f708846b41909c9661c5a78bce6f164a9f41d5d2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-min.log",
+      "bytes": 29159,
+      "sha256": "9db558f175bf0ee6a7ce8ef18ceccd5d9fb07618997c34ce644e84106c739ce3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-manual-visible-min.log",
+      "bytes": 29159,
+      "sha256": "9db558f175bf0ee6a7ce8ef18ceccd5d9fb07618997c34ce644e84106c739ce3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-fixed-30.log",
+      "bytes": 21640,
+      "sha256": "77915ffec9c499c76649258b86de91540bafb9fe3d90e8364b187c6ec2a4d081"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-fixed-30.log",
+      "bytes": 21640,
+      "sha256": "77915ffec9c499c76649258b86de91540bafb9fe3d90e8364b187c6ec2a4d081"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-min.log",
+      "bytes": 29318,
+      "sha256": "061eed5fb57f724a19b1988f8d90132830ce43a9df1411bf849589bb61534b9f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-multiple-min.log",
+      "bytes": 29318,
+      "sha256": "061eed5fb57f724a19b1988f8d90132830ce43a9df1411bf849589bb61534b9f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-fixed-30.log",
+      "bytes": 21388,
+      "sha256": "5d30ba536369bd82fd92612e9d3182681a01cb056da1f49c2459d5e93ad50525"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-fixed-30.log",
+      "bytes": 21388,
+      "sha256": "5d30ba536369bd82fd92612e9d3182681a01cb056da1f49c2459d5e93ad50525"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-max.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-max.log",
+      "bytes": 24660,
+      "sha256": "edd70ea3227c04ccba80e27c742191c4b4b20ca007e6f6176dee2ccaccbbb567"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-max.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-max.log",
+      "bytes": 24660,
+      "sha256": "edd70ea3227c04ccba80e27c742191c4b4b20ca007e6f6176dee2ccaccbbb567"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-min.log",
+      "bytes": 23797,
+      "sha256": "d9b642d986b8f3e84bb1257f8798e5338001bec388c027d66940bb0e09ee2fea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-soft-min.log",
+      "bytes": 23797,
+      "sha256": "d9b642d986b8f3e84bb1257f8798e5338001bec388c027d66940bb0e09ee2fea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-unbroken-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-unbroken-min.log",
+      "bytes": 23823,
+      "sha256": "ef73d1db43ae2c0aa68f4a5bca268f720e464b2201a2d689c7d5e57841ebde64"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-unbroken-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-unbroken-min.log",
+      "bytes": 23823,
+      "sha256": "ef73d1db43ae2c0aa68f4a5bca268f720e464b2201a2d689c7d5e57841ebde64"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-fixed-30.log",
+      "bytes": 21850,
+      "sha256": "4882deae801dc5c916c4fc1e2ebd141a02aa0927efbc5fde011d2951f8ea8d4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-fixed-30.log",
+      "bytes": 21850,
+      "sha256": "4882deae801dc5c916c4fc1e2ebd141a02aa0927efbc5fde011d2951f8ea8d4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-min.log",
+      "bytes": 23973,
+      "sha256": "eeb59199abf9162b40e8aff8abf9d07627297c00c5b91f5bd39c298bf0c044b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/hyphens-none-visible-min.log",
+      "bytes": 23973,
+      "sha256": "eeb59199abf9162b40e8aff8abf9d07627297c00c5b91f5bd39c298bf0c044b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 1604,
+      "sha256": "8c39d3ca393ae544b1c0de98438a00df9d16ebe68b701ac4eb8209939c2e0c7d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 1604,
+      "sha256": "8c39d3ca393ae544b1c0de98438a00df9d16ebe68b701ac4eb8209939c2e0c7d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/representative-screen.png",
+      "bytes": 78434,
+      "sha256": "d896f82be32e2c22ff41460a8830cdf7506cc3211ecd28a7889d88c13a57344c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/representative-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/representative-screen.png",
+      "bytes": 78434,
+      "sha256": "d896f82be32e2c22ff41460a8830cdf7506cc3211ecd28a7889d88c13a57344c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 335,
+      "sha256": "334cf79fffcb791edeea27b3e9357343f709105e77524cf8eba64f193cf36862"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 335,
+      "sha256": "334cf79fffcb791edeea27b3e9357343f709105e77524cf8eba64f193cf36862"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md",
+      "bytes": 1283,
+      "sha256": "95a75215c145f58953eb3afa5972892b33f256339ab26b0c8f7e56d056d1cc17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/artifact-boundary/README.md",
+      "bytes": 1283,
+      "sha256": "95a75215c145f58953eb3afa5972892b33f256339ab26b0c8f7e56d056d1cc17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 6091,
+      "sha256": "79004edc942ca697e0b76fcfade3ca8fa1091f87dae9b4abad17341816aadc4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 6091,
+      "sha256": "79004edc942ca697e0b76fcfade3ca8fa1091f87dae9b4abad17341816aadc4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/expected-values.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/expected-values.json",
+      "bytes": 11264,
+      "sha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/expected-values.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/expected-values.json",
+      "bytes": 11264,
+      "sha256": "ed5c85875e6aea796f87f8aa443bc5855c504733f3e62a9ffe97706dbff21a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-auto-expected-reject.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-auto-expected-reject.log",
+      "bytes": 2280,
+      "sha256": "f70235744f497178a976c71359fa9373431b69df1f63230cfec0d27c493ef331"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-auto-expected-reject.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-auto-expected-reject.log",
+      "bytes": 2280,
+      "sha256": "f70235744f497178a976c71359fa9373431b69df1f63230cfec0d27c493ef331"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-default-soft-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-default-soft-fixed-30.log",
+      "bytes": 9861,
+      "sha256": "3260b2de4faa2ebf3619e8947a0d48291e18f447eb1fac38b276e7713ee40cb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-default-soft-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-default-soft-fixed-30.log",
+      "bytes": 9861,
+      "sha256": "3260b2de4faa2ebf3619e8947a0d48291e18f447eb1fac38b276e7713ee40cb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-manual-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-manual-fixed-30.log",
+      "bytes": 9977,
+      "sha256": "0ba40ada35d876e26c097cc3e0305dc9c26a6dac52c93c6859ade906719cdb19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-manual-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-manual-fixed-30.log",
+      "bytes": 9977,
+      "sha256": "0ba40ada35d876e26c097cc3e0305dc9c26a6dac52c93c6859ade906719cdb19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-none-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-none-fixed-30.log",
+      "bytes": 9893,
+      "sha256": "0b17d59eea84705146cc2c25a3e478a7cd9d529519df36a676293929de3a6314"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-none-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-inherited-none-fixed-30.log",
+      "bytes": 9893,
+      "sha256": "0b17d59eea84705146cc2c25a3e478a7cd9d529519df36a676293929de3a6314"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-invalid-expected-reject.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-invalid-expected-reject.log",
+      "bytes": 2283,
+      "sha256": "a1c8bda8d234279127e3bb07c3c9dff90521fec3ffe96537a04f2f46c8d7a094"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-invalid-expected-reject.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-invalid-expected-reject.log",
+      "bytes": 2283,
+      "sha256": "a1c8bda8d234279127e3bb07c3c9dff90521fec3ffe96537a04f2f46c8d7a094"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-fixed-30.log",
+      "bytes": 10181,
+      "sha256": "8c6d2d1106f8579d729f959c1ca964f7ae265c2ab86d04e16fb5b93729dc02a9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-fixed-30.log",
+      "bytes": 10181,
+      "sha256": "8c6d2d1106f8579d729f959c1ca964f7ae265c2ab86d04e16fb5b93729dc02a9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-min.log",
+      "bytes": 12842,
+      "sha256": "516cb43d37c6a1d21d0bedb6ec03e2f666f2e10913aa0673a14e9a5cbec3111d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-multiple-min.log",
+      "bytes": 12842,
+      "sha256": "516cb43d37c6a1d21d0bedb6ec03e2f666f2e10913aa0673a14e9a5cbec3111d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-fixed-30.log",
+      "bytes": 9859,
+      "sha256": "073a76e8bd869bb9eb162612dde0bb8e093db0df6e8c39f08e64ddc2aa1658d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-fixed-30.log",
+      "bytes": 9859,
+      "sha256": "073a76e8bd869bb9eb162612dde0bb8e093db0df6e8c39f08e64ddc2aa1658d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-max.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-max.log",
+      "bytes": 12835,
+      "sha256": "85d42b76d6a92f396a3ba1e9122552c77e20a85c22def9dacde277a33700c490"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-max.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-max.log",
+      "bytes": 12835,
+      "sha256": "85d42b76d6a92f396a3ba1e9122552c77e20a85c22def9dacde277a33700c490"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-min.log",
+      "bytes": 12520,
+      "sha256": "73558b6489912dc26c0e57fbc80bf2c58543d1a4b8f45dafd1dcade3e23d0029"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-soft-min.log",
+      "bytes": 12520,
+      "sha256": "73558b6489912dc26c0e57fbc80bf2c58543d1a4b8f45dafd1dcade3e23d0029"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-unbroken-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-unbroken-min.log",
+      "bytes": 12268,
+      "sha256": "9ae51d785bcad611c53d100d07314531676cb4c866441c0eba8e6b59ef0b62c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-unbroken-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-unbroken-min.log",
+      "bytes": 12268,
+      "sha256": "9ae51d785bcad611c53d100d07314531676cb4c866441c0eba8e6b59ef0b62c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-fixed-30.log",
+      "bytes": 9862,
+      "sha256": "9923ac6c5e4a5085c17b6e32badd8727ec0b1d626b8a7fe9f520a35c8dddeb03"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-fixed-30.log",
+      "bytes": 9862,
+      "sha256": "9923ac6c5e4a5085c17b6e32badd8727ec0b1d626b8a7fe9f520a35c8dddeb03"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-min.log",
+      "bytes": 12523,
+      "sha256": "2e1afdfc9459c67d5ca4718f895ab853923e00fe8577edc8fce2b65d3187fb12"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-manual-visible-min.log",
+      "bytes": 12523,
+      "sha256": "2e1afdfc9459c67d5ca4718f895ab853923e00fe8577edc8fce2b65d3187fb12"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-fixed-30.log",
+      "bytes": 10023,
+      "sha256": "e7ed7b8eb0ecd0a527fff0d2c50be016c3b5464acb2143f23e545dff7e23b346"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-fixed-30.log",
+      "bytes": 10023,
+      "sha256": "e7ed7b8eb0ecd0a527fff0d2c50be016c3b5464acb2143f23e545dff7e23b346"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-min.log",
+      "bytes": 12684,
+      "sha256": "dbce49761061707d85a3cd8456a9e8d3e46cd801eb51cb0d57108d2b1c46cffe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-multiple-min.log",
+      "bytes": 12684,
+      "sha256": "dbce49761061707d85a3cd8456a9e8d3e46cd801eb51cb0d57108d2b1c46cffe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-fixed-30.log",
+      "bytes": 9775,
+      "sha256": "8b8ac5855799e0fe9801f1087474ecb0ad4e148c0ec30cc72c8c8da09abd32f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-fixed-30.log",
+      "bytes": 9775,
+      "sha256": "8b8ac5855799e0fe9801f1087474ecb0ad4e148c0ec30cc72c8c8da09abd32f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-max.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-max.log",
+      "bytes": 12830,
+      "sha256": "bedba3b7b38f00d5e64e88dc128731c8aa0b8feac8d9ab755e7325fc50dbe2e8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-max.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-max.log",
+      "bytes": 12830,
+      "sha256": "bedba3b7b38f00d5e64e88dc128731c8aa0b8feac8d9ab755e7325fc50dbe2e8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-min.log",
+      "bytes": 12435,
+      "sha256": "65051383e2fb23051142ab0728ebff168c30b9a400a3fccffafb1028d088a4ca"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-soft-min.log",
+      "bytes": 12435,
+      "sha256": "65051383e2fb23051142ab0728ebff168c30b9a400a3fccffafb1028d088a4ca"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-unbroken-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-unbroken-min.log",
+      "bytes": 12261,
+      "sha256": "bf7fa53628ceaa198fd3f60c9d1bebca19cc0f1d3e619e1588f5ed38ea83be71"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-unbroken-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-unbroken-min.log",
+      "bytes": 12261,
+      "sha256": "bf7fa53628ceaa198fd3f60c9d1bebca19cc0f1d3e619e1588f5ed38ea83be71"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-fixed-30.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-fixed-30.log",
+      "bytes": 9856,
+      "sha256": "73474ca92826ad81c92ae9e388c0de6684f0588dd4c7f0ed052952c5453bf424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-fixed-30.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-fixed-30.log",
+      "bytes": 9856,
+      "sha256": "73474ca92826ad81c92ae9e388c0de6684f0588dd4c7f0ed052952c5453bf424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-min.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-min.log",
+      "bytes": 12517,
+      "sha256": "05f0c7232fb121c8686c9e9eed59e49f7ccb0b5363a4322f6d8c168276030de2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-min.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/hyphens-none-visible-min.log",
+      "bytes": 12517,
+      "sha256": "05f0c7232fb121c8686c9e9eed59e49f7ccb0b5363a4322f6d8c168276030de2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 1623,
+      "sha256": "fdf2f8b7948f61a4f324bc8995ea07a37ca3fbca9affe03f6a7abceff683c187"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 1623,
+      "sha256": "fdf2f8b7948f61a4f324bc8995ea07a37ca3fbca9affe03f6a7abceff683c187"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "bytes": 141840,
+      "sha256": "2c80d00c1b51f1dce9a487d9668756246a63ae9fe79fbe8d75535a38fc4d4b59"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "bytes": 141840,
+      "sha256": "2c80d00c1b51f1dce9a487d9668756246a63ae9fe79fbe8d75535a38fc4d4b59"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "305d752f3c50f10ada1c8ab4452f814af9fd995816cfc38d3c59a68e6173f8fb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "305d752f3c50f10ada1c8ab4452f814af9fd995816cfc38d3c59a68e6173f8fb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 8035,
+      "sha256": "8f34b31d5e8a6a90b33bac8ad4bfd6a6ea9141f79c1482ec5a0e509a6e52d6ca"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 8035,
+      "sha256": "8f34b31d5e8a6a90b33bac8ad4bfd6a6ea9141f79c1482ec5a0e509a6e52d6ca"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "bytes": 4551,
+      "sha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "bytes": 4551,
+      "sha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "bytes": 470,
+      "sha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "bytes": 470,
+      "sha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "bytes": 122809,
+      "sha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "bytes": 122809,
+      "sha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "bytes": 13472,
+      "sha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "bytes": 13472,
+      "sha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "bytes": 1646,
+      "sha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "bytes": 1646,
+      "sha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "bytes": 4579,
+      "sha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "bytes": 4579,
+      "sha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "bytes": 3719,
+      "sha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "bytes": 3719,
+      "sha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "bytes": 124,
+      "sha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "bytes": 124,
+      "sha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 1810,
+      "sha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 1810,
+      "sha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 411,
+      "sha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 411,
+      "sha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "bytes": 21632,
+      "sha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "bytes": 21632,
+      "sha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "bytes": 24901,
+      "sha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "bytes": 24901,
+      "sha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "bytes": 24180,
+      "sha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "bytes": 24180,
+      "sha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "bytes": 26905,
+      "sha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "bytes": 26905,
+      "sha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "bytes": 24440,
+      "sha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "bytes": 24440,
+      "sha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "bytes": 24750,
+      "sha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "bytes": 24750,
+      "sha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "bytes": 77090,
+      "sha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "bytes": 77090,
+      "sha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "bytes": 21716,
+      "sha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "bytes": 21716,
+      "sha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "bytes": 24424,
+      "sha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "bytes": 24424,
+      "sha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "bytes": 24173,
+      "sha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "bytes": 24173,
+      "sha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "bytes": 22177,
+      "sha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "bytes": 22177,
+      "sha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "bytes": 29593,
+      "sha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "bytes": 29593,
+      "sha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "bytes": 24166,
+      "sha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "bytes": 24166,
+      "sha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "bytes": 22090,
+      "sha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "bytes": 22090,
+      "sha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "bytes": 24332,
+      "sha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "bytes": 24332,
+      "sha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "bytes": 24030,
+      "sha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "bytes": 24030,
+      "sha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "bytes": 77570,
+      "sha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "bytes": 77570,
+      "sha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "bytes": 21300,
+      "sha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "bytes": 21300,
+      "sha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "bytes": 24409,
+      "sha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "bytes": 24409,
+      "sha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "bytes": 24014,
+      "sha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "bytes": 24014,
+      "sha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 7689,
+      "sha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 7689,
+      "sha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "bytes": 3476,
+      "sha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "bytes": 3476,
+      "sha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 1828,
+      "sha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 1828,
+      "sha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "bytes": 11284,
+      "sha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "bytes": 11284,
+      "sha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "bytes": 14398,
+      "sha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "bytes": 14398,
+      "sha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "bytes": 14241,
+      "sha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "bytes": 14241,
+      "sha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "bytes": 11289,
+      "sha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "bytes": 11289,
+      "sha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "bytes": 14403,
+      "sha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "bytes": 14403,
+      "sha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "bytes": 14246,
+      "sha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "bytes": 14246,
+      "sha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "bytes": 142013,
+      "sha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "bytes": 142013,
+      "sha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "bytes": 11278,
+      "sha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "bytes": 11278,
+      "sha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "bytes": 14392,
+      "sha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "bytes": 14392,
+      "sha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "bytes": 14235,
+      "sha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "bytes": 14235,
+      "sha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "bytes": 11273,
+      "sha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "bytes": 11273,
+      "sha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "bytes": 14387,
+      "sha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "bytes": 14387,
+      "sha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "bytes": 14230,
+      "sha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "bytes": 14230,
+      "sha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "bytes": 11278,
+      "sha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "bytes": 11278,
+      "sha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "bytes": 14392,
+      "sha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "bytes": 14392,
+      "sha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "bytes": 13806,
+      "sha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "bytes": 13806,
+      "sha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "bytes": 141968,
+      "sha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "bytes": 141968,
+      "sha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "bytes": 10838,
+      "sha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "bytes": 10838,
+      "sha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "bytes": 14381,
+      "sha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "bytes": 14381,
+      "sha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "bytes": 13795,
+      "sha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "bytes": 13795,
+      "sha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 10183,
+      "sha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 10183,
+      "sha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "bytes": 7044,
+      "sha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "bytes": 7044,
+      "sha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "bytes": 3058,
+      "sha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "bytes": 3058,
+      "sha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-lifecycle-final.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-lifecycle-final.json",
+      "bytes": 293,
+      "sha256": "abc989be43b6cfafafba8d11f6481456e77d7024d4b71a3b63dcba71bbbc3b18"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-lifecycle-final.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-lifecycle-final.json",
+      "bytes": 293,
+      "sha256": "abc989be43b6cfafafba8d11f6481456e77d7024d4b71a3b63dcba71bbbc3b18"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-verification-final.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-verification-final.json",
+      "bytes": 1345,
+      "sha256": "377cefcaed57cb25b545791773a37633b18de92448cd7327f5dab1c6e440947f"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-verification-final.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/agent-browser-verification-final.json",
+      "bytes": 1345,
+      "sha256": "377cefcaed57cb25b545791773a37633b18de92448cd7327f5dab1c6e440947f"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/copy-and-backup-release.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/copy-and-backup-release.json",
+      "bytes": 45682,
+      "sha256": "89c96f4eb05c9ae079f99f46ecb726ddff73315e6524b65acff650731b84ee14"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/copy-and-backup-release.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/copy-and-backup-release.json",
+      "bytes": 45682,
+      "sha256": "89c96f4eb05c9ae079f99f46ecb726ddff73315e6524b65acff650731b84ee14"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/preflight-release.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/preflight-release.json",
+      "bytes": 87346,
+      "sha256": "76b54c5ae4fa68dfdd2079d36f4b7321bf1e27b86dc030e61fa49598feb07157"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/preflight-release.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/preflight-release.json",
+      "bytes": 87346,
+      "sha256": "76b54c5ae4fa68dfdd2079d36f4b7321bf1e27b86dc030e61fa49598feb07157"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "bytes": 5428,
+      "sha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "bytes": 5428,
+      "sha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-publication-release.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-publication-release.json",
+      "bytes": 84480,
+      "sha256": "d8e964350e42166478ac5fca28e8604d77e46ceade5d382ef40ed406245833d6"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-publication-release.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-publication-release.json",
+      "bytes": 84480,
+      "sha256": "d8e964350e42166478ac5fca28e8604d77e46ceade5d382ef40ed406245833d6"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-root-release.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-root-release.json",
+      "bytes": 57823,
+      "sha256": "ad751970d3d28ab945ff88e969b0e796d855ee234f377e8e1518fcdb9fc48722"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-root-release.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/selected-root-release.json",
+      "bytes": 57823,
+      "sha256": "ad751970d3d28ab945ff88e969b0e796d855ee234f377e8e1518fcdb9fc48722"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/served-verification-release.json",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/served-verification-release.json",
+      "bytes": 114403,
+      "sha256": "3d83bacc93f162ae2923882701f9077bcae69caa20e5657ff7dd63204299dcb8"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/served-verification-release.json",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/served-verification-release.json",
+      "bytes": 114403,
+      "sha256": "3d83bacc93f162ae2923882701f9077bcae69caa20e5657ff7dd63204299dcb8"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "bytes": 251617,
+      "sha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "bytes": 251617,
+      "sha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "bytes": 139545,
+      "sha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "bytes": 139545,
+      "sha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
