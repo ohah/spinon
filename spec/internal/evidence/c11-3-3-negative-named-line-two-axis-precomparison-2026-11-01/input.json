@@ -1,0 +1,84 @@
+{
+  "task": "C11.3.3 negative named-line pair on both axes",
+  "standard": "CSS Grid Layout Module Level 1, 2025-03-26 CRD §§7.2, 8.1.3, 8.3.1",
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1
+  },
+  "grid": {
+    "width": "120px",
+    "height": "100px",
+    "gridTemplateColumns": "20px",
+    "gridTemplateRows": "15px",
+    "gridAutoColumns": "auto",
+    "gridAutoRows": "auto",
+    "gridTemplateAreas": "none",
+    "gap": "0"
+  },
+  "item": {
+    "directChildCount": 1,
+    "width": "18px",
+    "height": "12px",
+    "boxSizing": "border-box"
+  },
+  "scenes": [
+    {
+      "id": "columns-only-auto",
+      "gridColumn": "-4 ghost / -1 ghost",
+      "gridRow": "1 / 2",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    },
+    {
+      "id": "rows-only-auto",
+      "gridColumn": "1 / 2",
+      "gridRow": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    },
+    {
+      "id": "both-axes-auto",
+      "gridColumn": "-4 ghost / -1 ghost",
+      "gridRow": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    },
+    {
+      "id": "both-axes-fixed-pattern",
+      "gridColumn": "-4 ghost / -1 ghost",
+      "gridRow": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "5px 7px",
+      "gridAutoRows": "3px 4px"
+    },
+    {
+      "id": "both-axes-equal-endpoints",
+      "gridColumn": "-1 ghost / -1 ghost",
+      "gridRow": "-1 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    },
+    {
+      "id": "both-axes-reversed",
+      "gridColumn": "-1 ghost / -4 ghost",
+      "gridRow": "-1 ghost / -4 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    },
+    {
+      "id": "columns-reversed",
+      "gridColumn": "-1 ghost / -4 ghost",
+      "gridRow": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    },
+    {
+      "id": "rows-reversed",
+      "gridColumn": "-4 ghost / -1 ghost",
+      "gridRow": "-1 ghost / -4 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto"
+    }
+  ]
+}

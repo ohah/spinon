@@ -1,0 +1,41 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.3.3 two-axis negative named lines oracle</title>
+<style>
+  body { font: 12px sans-serif; background: #fff; }
+  #scenes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .scene { min-height: 138px; padding: 6px; border: 1px solid #777; }
+  .grid { display: grid; align-content: start; justify-content: start; gap: 0; background: #e8eef5; outline: 1px solid #245; }
+  .item { box-sizing: border-box; background: #e5484d; }
+  pre { white-space: pre-wrap; font: 11px monospace; }
+  .metrics { margin-top: 4px; font: 10px monospace; }
+  #result { display: none; }
+</style>
+<div id="scenes"></div><pre id="result"></pre>
+<script>
+const defs = [
+  { id: "columns-only-auto", columns: "-4 ghost / -1 ghost", rows: "1 / 2", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+  { id: "rows-only-auto", columns: "1 / 2", rows: "-4 ghost / -1 ghost", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+  { id: "both-axes-auto", columns: "-4 ghost / -1 ghost", rows: "-4 ghost / -1 ghost", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+  { id: "both-axes-fixed-pattern", columns: "-4 ghost / -1 ghost", rows: "-4 ghost / -1 ghost", autoColumns: "5px 7px", autoRows: "3px 4px", w: 18, h: 12 },
+  { id: "both-axes-equal-endpoints", columns: "-1 ghost / -1 ghost", rows: "-1 ghost / -1 ghost", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+  { id: "both-axes-reversed", columns: "-1 ghost / -4 ghost", rows: "-1 ghost / -4 ghost", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+  { id: "columns-reversed", columns: "-1 ghost / -4 ghost", rows: "-4 ghost / -1 ghost", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+  { id: "rows-reversed", columns: "-4 ghost / -1 ghost", rows: "-1 ghost / -4 ghost", autoColumns: "auto", autoRows: "auto", w: 18, h: 12 },
+];
+function rect(el, root) { const a=el.getBoundingClientRect(), b=root.getBoundingClientRect(); return [a.left-b.left,a.top-b.top,a.width,a.height].map(n=>Math.round(n*64)/64); }
+const out=[];
+for (const d of defs) {
+ const wrap=document.createElement('section'); wrap.className='scene'; wrap.innerHTML=`<b>${d.id}</b>`;
+ const root=document.createElement('div'); root.className='grid'; root.style.cssText=`width:120px;height:100px;grid-template-columns:20px;grid-template-rows:15px;grid-auto-columns:${d.autoColumns};grid-auto-rows:${d.autoRows};`;
+ const item=document.createElement('div'); item.className='item'; item.style.cssText=`grid-column:${d.columns};grid-row:${d.rows};width:${d.w}px;height:${d.h}px;`;
+ root.append(item); wrap.append(root); document.querySelector('#scenes').append(wrap);
+ const s=getComputedStyle(root), i=getComputedStyle(item);
+ const metrics=document.createElement('div'); metrics.className='metrics';
+ metrics.textContent=`C ${s.gridTemplateColumns} / R ${s.gridTemplateRows} / frame ${rect(item,root).join(',')}`;
+ wrap.append(metrics);
+ out.push({id:d.id,columns:d.columns,rows:d.rows,gridAutoColumns:s.gridAutoColumns,gridAutoRows:s.gridAutoRows,tracksColumns:s.gridTemplateColumns,tracksRows:s.gridTemplateRows,itemFrame:rect(item,root),itemGridColumnStart:i.gridColumnStart,itemGridColumnEnd:i.gridColumnEnd,itemGridRowStart:i.gridRowStart,itemGridRowEnd:i.gridRowEnd,rootFrame:[root.getBoundingClientRect().width,root.getBoundingClientRect().height]});
+}
+document.querySelector('#result').textContent=JSON.stringify(out,null,2);
+window.oracle=out;
+</script>
