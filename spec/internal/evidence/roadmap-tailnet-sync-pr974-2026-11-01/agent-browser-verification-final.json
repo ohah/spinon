@@ -1,0 +1,46 @@
+{
+  "sourceHead": "71ccb9fb395a7fbdc5b67af3838e5cd32f46c48e",
+  "selectedDiffSha256": "6a06da7af2b060bcda80b197221a2d3f8131c889686b7df78e977c15dc5b86bc",
+  "publishedRouteCount": 196,
+  "tool": "agent-browser",
+  "terminalBrowserUsed": false,
+  "checks": {
+    "roadmapTitle": "스피논 구현 로드맵",
+    "pr974CardVisible": true,
+    "mergeSha": "2700a8bfad05c1b8fc474603c58ae68c2dde3fb3",
+    "officialCount": "72/213",
+    "mobileViewport": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "cardWidth": 362,
+      "horizontalOverflow": false
+    },
+    "statusPage": {
+      "c11Checked": false,
+      "c114Checked": false
+    },
+    "reviewRoute": {
+      "reviewRows": 20,
+      "allRowsPass": true
+    },
+    "evidenceReadmeImages": [
+      { "width": 1280, "height": 633, "loaded": true },
+      { "width": 390, "height": 844, "loaded": true }
+    ],
+    "excludedRoutes": [
+      "spec/plan/c11-css-grid.html",
+      "spec/plan/c11-css-grid.md"
+    ]
+  },
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "sha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde"
+    },
+    {
+      "path": "tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "sha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68"
+    }
+  ]
+}

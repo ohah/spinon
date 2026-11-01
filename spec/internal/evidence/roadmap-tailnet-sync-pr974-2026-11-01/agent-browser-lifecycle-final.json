@@ -1,0 +1,9 @@
+{
+  "browserCloseCommand": "agent-browser close --all",
+  "sessionClosed": true,
+  "agentBrowserProcessRemained": false,
+  "agentBrowserChromeProcessRemained": false,
+  "preexistingPreviewServerRestarted": false,
+  "preexistingPreviewServerStillListening": true,
+  "previewServerPid": 28040
+}
