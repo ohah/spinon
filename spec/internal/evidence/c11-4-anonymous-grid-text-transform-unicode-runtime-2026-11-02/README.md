@@ -2,14 +2,14 @@
 
 ## 판정
 
-소스 commit 84d70e8eeb500661cc1cabfda3be091fdbfa04a3에서 기존 12개 ASCII text-transform 장면과 신규 Unicode 11개를 Android 및 iOS Simulator에서 각각 통과했다. Android와 iOS 결과는 각 23/23이다. 이 제한 fixture candidate는 C11.4 또는 C11 완료가 아니며 공식 완료 수 72/213도 바꾸지 않는다.
+최종 소스 commit `b3dadbc6ae28712b656a5ff24157cb4939d16252`에는 같은 scene 재시도에서만 root/node ID를 재사용하도록 scene ID guard를 추가했다. 기존 12개 ASCII text-transform 장면과 신규 Unicode 11개가 Android 및 iOS Simulator에서 각각 23/23 통과했다. 최종 simulator metadata의 source HEAD는 이 commit이며 설치 artifact SHA-256도 빌드 artifact와 일치한다. 이 제한 fixture candidate는 C11.4 또는 C11 완료가 아니며 공식 완료 수 72/213도 바꾸지 않는다.
 
 계약, 입력 allowlist, Chrome·표준 차이와 기대값 근거는 [계획](../../../../plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.md), [내부 계약 0059](../../../internal/0059-c11-grid-layout.md), [Chrome 156 사전 비교](../c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.md)에 있다.
 
 ## Simulator 실행
 
-- iOS: iPhone 17 Pro, iOS 26.2 Simulator, UDID 9DCCE836-7659-4914-B6C1-13F54BFFA9DB. [23-scene matrix](c114-ios-23-scenes-final-pass03/matrix.tsv), [simulator metadata](c114-ios-23-scenes-final-pass03/simulator.json), [대표 화면](c114-ios-23-scenes-final-pass03/representative-screen.png).
-- Android: Android API 37 ARM64 AVD, emulator-5556, QEMU, model sdk_gphone64_arm64. [23-scene matrix](c114-android-23-scenes-final-pass02/matrix.tsv), [simulator metadata](c114-android-23-scenes-final-pass02/simulator.json), [대표 화면](c114-android-23-scenes-final-pass02/representative-screen.png).
+- iOS: iPhone 17 Pro, iOS 26.2 Simulator, UDID 9DCCE836-7659-4914-B6C1-13F54BFFA9DB. [최종 23-scene matrix](c114-ios-23-scenes-final-pass06/matrix.tsv), [simulator metadata](c114-ios-23-scenes-final-pass06/simulator.json), [대표 화면](c114-ios-23-scenes-final-pass06/representative-screen.png).
+- Android: Android API 37 ARM64 AVD, emulator-5556, QEMU, model sdk_gphone64_arm64. [최종 23-scene matrix](c114-android-23-scenes-final-pass05/matrix.tsv), [simulator metadata](c114-android-23-scenes-final-pass05/simulator.json), [대표 화면](c114-android-23-scenes-final-pass05/representative-screen.png).
 - 각 simulator.json은 소스 HEAD와 설치 실행 파일 SHA-256을 기록한다. 빌드 산출물 해시와 설치된 산출물 해시가 각 대상에서 일치한다.
 - 실기기는 사용하지 않았다. 캡처 도구는 실행 후 Android 앱을 force-stop하고 iOS 앱을 terminate한다.
 - 대표 화면은 앱 셸, runtime surface 및 layout 상태를 보여준다. 검정 surface 때문에 Unicode glyph raster나 개별 글리프 모양의 증거로 사용하지 않는다. 실제 장면별 text, source mapping, intrinsic contribution, line count, track 및 frame 판정은 로그와 matrix로 확인했다.
@@ -21,6 +21,7 @@
 - spinon-text-layout 기본 기능: 96/96 통과. Unicode fixture feature 포함: 102/102 통과.
 - spinon-runtime C11.4 fixture feature: unit 395 pass, 3 ignored; integration 3/3; lifecycle 16/16.
 - spinon-ffi C04 runtime GPU fixture feature: 188 pass, 2 ignored.
+- FFI text-transform fixture source test after scene-scoped retry guard: 1/1 passed.
 - Clippy: spinon-text-layout all-targets + Unicode fixture feature, spinon-runtime lib + C11.4 feature, spinon-ffi all-targets + C04 fixture feature가 -D warnings로 통과.
 - Android AVD 및 iOS Simulator fixture app build: 성공.
 - 기본 spinon-ffi rlib/staticlib에는 고유 Unicode scene marker가 없고 C04 fixture feature rlib/staticlib에는 marker가 있다. 기본 spinon-text-layout dependency tree에는 icu_casemap이 없으며 Unicode fixture feature를 켰을 때만 추가된다.

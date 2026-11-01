@@ -1,6 +1,6 @@
 # C11.4 Unicode titlecase 구현 실패 경계 검토 20개
 
-계획 검토와 분리해 source commit 84d70e8e, opt-in dependency 경계, app validator 및 최종 Android/iOS 23-scene 결과를 기준으로 서로 다른 실패 경로를 확인했다.
+계획 검토와 분리해 최종 source commit `b3dadbc6`, opt-in dependency 경계, app validator 및 Android/iOS 최종 23-scene 결과를 기준으로 서로 다른 실패 경로를 확인했다. PR diff 검토에서 scene을 구분하지 않는 attached-root cache 조건을 추가로 발견해 scene ID guard를 넣었고, FFI source 검증과 양쪽 simulator matrix를 다시 실행했다.
 
 | # | 실패 관점 | 확인 및 결과 |
 | --- | --- | --- |
@@ -21,10 +21,10 @@
 | 15 | supplementary source scalar의 UTF-16 길이를 1로 가정함 | source normalization은 char.len_utf16() 기준이다. case-map unit test가 supplementary Deseret 변환을 확인하고 전체 기존 text-layout suite도 통과했다. |
 | 16 | combining mark를 별도 word로 바꾸거나 삭제함 | e + U+0301 입력은 E + U+0301로 보존된다. source mapping test와 iOS/Android combining scene이 통과했다. |
 | 17 | 변환된 UTF-8 byte range의 경계를 다시 매기지 않음 | 각 출력 scalar마다 고유 paragraph byte range를 생성하고 source range를 복사한다. ß→Ss 및 collapse range assertions가 통과했다. |
-| 18 | superseded eval 재시도 때 같은 scene을 중복 생성함 | FFI source는 동일 document에 root가 남아 있으면 root와 nodeIds를 재사용한다. source guard 순서와 stored node IDs 검사가 통과했고 두 simulator의 최종 재시도 가능한 matrix가 23/23이다. |
+| 18 | superseded eval 재시도 때 같은 scene을 중복 생성하거나 다른 scene의 root를 재사용함 | FFI source는 저장된 scene ID가 요청 scene과 같고 root가 같은 document에 붙어 있을 때만 root와 nodeIds를 재사용한다. source guard 및 assignment 검사가 통과했고 FFI source test 1/1, 두 simulator 최종 matrix 23/23이다. |
 | 19 | Unicode 기대값 분기가 기존 ASCII matrix 검증까지 바꿈 | 첫 iOS run은 신규 11개는 통과하고 ASCII 12개는 app 내부 validator false로 실패했다. 플랫폼 helper를 Unicode scene 전용으로 좁힌 뒤 구조 검사 및 최종 양 플랫폼 ASCII 12개가 통과했다. 실패 artifact는 보존했다. |
 | 20 | 표준 기대값, Chrome 관측, 실제 app layout을 같은 수치로 혼동함 | well-known Chrome CSSOM 56.171875와 Canvas 56.165863을 분리하고 app actual 56.139996을 0.03125 CSS px tolerance로 비교했다. 두 simulator가 scene을 통과했으며 screenshots는 glyph pixel 증거로 취급하지 않았다. |
 
 ## 판정
 
-최종 source commit에서 제한된 Unicode candidate 및 보존된 ASCII 회귀 행렬은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 23/23 통과했다. 전체 workspace Clippy의 기존 미수정 warning은 [실행 근거](README.md)에 분리 기록했다. 일반 CSS admission, hardware/physical device, glyph raster, full WPT 및 C11.4/C11 completion은 이 검토의 판정 범위 밖이다.
+최종 source commit `b3dadbc6`에서 제한된 Unicode candidate 및 보존된 ASCII 회귀 행렬은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 23/23 통과했다. 전체 workspace Clippy의 기존 미수정 warning은 [실행 근거](README.md)에 분리 기록했다. 일반 CSS admission, hardware/physical device, glyph raster, full WPT 및 C11.4/C11 completion은 이 검토의 판정 범위 밖이다.
