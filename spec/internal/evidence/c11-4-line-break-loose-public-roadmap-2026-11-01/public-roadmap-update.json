@@ -1,0 +1,22 @@
+{
+  "sourceHead": "d46888e1130d371099cc94f616c5b0c65c95d29b",
+  "sourceTreeBefore": "eaaea997509eea1dbb39b17369a641daf2545d68",
+  "roadmap": "spec/public/roadmap.html",
+  "originalSha256": "9e73671b9eeb9f3a41d763c46e67604bd88017dab39775fe5f1886843238f75e",
+  "updatedSha256": "fd5f46a3d2000a120761c0e26c0998fff2506935fca4780a2cbace8dbb78f11e",
+  "insertedAfter": "PR #945 computed line-break card",
+  "addedImplementationPr": 962,
+  "mergeAt": "2026-11-01T02:41:05Z",
+  "mergeCommit": "5831014125e26079748f0b99cb99d3c21613358c",
+  "checks": "no checks reported",
+  "officialCompletion": "72/213",
+  "c11AndC114RemainIncomplete": true,
+  "requiredSources": [
+    "plan/c11-4-anonymous-grid-text-line-break-loose.md",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-precomparison-2026-11-01/README.md",
+    "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/README.md",
+    "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/post-merge-status-roadmap-review-30.md"
+  ]
+}
