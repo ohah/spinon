@@ -14,6 +14,7 @@
 
 - Agent Browser에서 C11 계획과 C11.4 track sizing 계획을 1280×900 및 390×844로 열었다. 네 화면 모두 document width가 viewport와 같았고 수평 overflow가 없었다.
 - 두 페이지에서 `overflow-wrap`, `text-transform`, PR #948/#952, `72/213`, 미완료 상태를 확인했다. C11.4 계획에서 overflow-wrap 계획과 runtime README 링크를 눌러 대상 문서 제목까지 확인했다.
+- PR #957 본문에 포함한 C11.4 desktop/mobile image가 GitHub 화면에서 각각 1280×900, 390×844의 natural size로 로드됐다.
 - 집중 링크 감사는 두 계획 페이지의 overflow-wrap/text-transform 관련 링크 11개와 C11 overview의 C11.4 상세 계획 링크를 확인했다. PR #948 계획, Chrome precomparison, runtime README, 20/30-point reviews와 PR #952 계획/evidence route가 publication에 들어 있다. 전체 문서 dead-link 검사는 실행하지 않았다.
 - 확인 후 Agent Browser 세션을 모두 닫았다. 프로세스 검사에서 `agent-browser` 실행 파일은 남지 않았고, 별도로 실행 중이던 Tailscale preview server는 계속 유지됐다.
 
