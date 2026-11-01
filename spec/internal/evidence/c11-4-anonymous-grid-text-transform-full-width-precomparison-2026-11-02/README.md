@@ -10,6 +10,8 @@ Chrome 156의 10px Noto Sans KR 측정은 `AB 12` max-content 25.984375px, 문�
 
 이 사전 비교는 계획 후보를 고정한다. 구현이 채택되면 정확한 fixture owner, computed `full-width`, direct `lang="ja"`, Noto Sans KR 10px/400, horizontal LTR, `white-space:normal`, `AB 12`와 `AB   12`만 허용한다. 일반 CSS admission, 임의 Unicode mapping, arbitrary font, WPT 적합성, 일반 `full-width` support, full-size-kana, 전체 C11.4/C11 완료는 검증하지 않는다. CSS Text가 at-risk로 분류하는 점은 기능의 표준 상태 한계로 남긴다.
 
+플랫폼 runner 기대값은 [runtime-matrix-expected.json](./runtime-matrix-expected.json)에 별도로 고정한다. 이 네 장면은 unsupported Chrome target이 아니라 독립 규범 문자열과 고정 Noto font candidate를 대상으로 Android/iOS fixture 결과를 비교한다. 허용 오차는 `0.03125 CSS px`이며, `none` control의 Chrome 측 폭은 1/64 CSS px 양자화로 runtime font advance와 약 `0.006 CSS px` 차이가 날 수 있다.
+
 ## SHA-256
 
 | 입력 | SHA-256 |
@@ -19,3 +21,4 @@ Chrome 156의 10px Noto Sans KR 측정은 `AB 12` max-content 25.984375px, 문�
 | Chrome observation JSON | `6c637bf80cc91a3ee6018bb8e5704f1bd8c2e64d14e206a23b9a88d17847777d` |
 | Standard expected JSON | `6af7f1958eadaf21912cd5aba9c0e4159d85d4e5fdb9d9cc6d749eeb877b9571` |
 | Chrome screenshot | `b5dd04d1aae723d505806f2565ff67d770342028f69e997f24af2a8c43eb3e8b` |
+| Android/iOS runtime expected JSON | `a4d3c02e3404df060d5586756fa16b660e595a0cb5f07c7e69924c4501bdb870` |

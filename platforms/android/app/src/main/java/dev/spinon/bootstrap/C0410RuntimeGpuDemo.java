@@ -620,7 +620,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             c114ComputedTextTransformSourceText(sceneId),
                             c114ComputedTextTransformLayoutText(sceneId),
                             "Normal", "Normal", 0, 0, 0,
-                            "Noto Sans KR", "en", "Strict", "Normal", advances);
+                            "Noto Sans KR",
+                            c114IsFullWidthTextTransformScene(sceneId) ? "ja" : "en",
+                            "Strict", "Normal", advances);
             return new C114GenericDirectTextSceneExpectation(
                     120, textTransform[3], new double[] {textTransform[2]}, item, null);
         }
@@ -6094,7 +6096,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114ComputedWordBreakScene(sceneId) != null) {
             return c114GenericDirectTextIntrinsicInputsMatch(sceneId, report);
         }
-        if (c114IsUnicodeTextTransformScene(sceneId)) {
+        if (c114ComputedTextTransformScene(sceneId) != null) {
             return c114GenericDirectTextIntrinsicInputsMatch(sceneId, report);
         }
         if (c114IsComputedLetterSpacingScene(sceneId)) {
@@ -8130,7 +8132,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || passes == null || passes.length() != 2) return false;
         org.json.JSONObject columns = passes.optJSONObject(0);
         org.json.JSONObject rows = passes.optJSONObject(1);
-        double trackTolerance = c114IsUnicodeTextTransformScene(sceneId) ? 0.03125 : 0.0001;
+        double trackTolerance = c114IsUnicodeTextTransformScene(sceneId)
+                || c114IsFullWidthTextTransformScene(sceneId) ? 0.03125 : 0.0001;
         double columnGap = c114IsGridTextAspectRatioScene(sceneId)
                 || c114IsAnonymousTextScene(sceneId) ? 0.0 : 10.0;
         if (columns == null || rows == null
@@ -12987,6 +12990,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (mode == null || !BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST) return null;
         double[] unicodeMetrics = c114UnicodeTextTransformMetrics(sceneId);
         if (unicodeMetrics != null) return unicodeMetrics;
+        double[] fullWidthMetrics = c114FullWidthTextTransformMetrics(sceneId);
+        if (fullWidthMetrics != null) return fullWidthMetrics;
         boolean minContentTrack = sceneId.endsWith("-min-content");
         double minContent;
         double maxContent;
@@ -13054,6 +13059,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 minContent, maxContent, track, rowHeight, minContentHeight,
                 firstWordAdvance, secondWordAdvance, unbrokenAdvance,
         };
+    }
+
+    private static double[] c114FullWidthTextTransformMetrics(String sceneId) {
+        switch (sceneId) {
+            case "text-transform-full-width-none-max-content":
+                return new double[] {12.65625, 25.984375, 25.984375, 10, 20,
+                        12.65625, 13.328125, 25.984375};
+            case "text-transform-full-width-max-content":
+            case "text-transform-full-width-collapsed-spaces-max-content":
+                return new double[] {20, 50, 50, 10, 20, 20, 20, 50};
+            case "text-transform-full-width-min-content":
+                return new double[] {20, 50, 20, 20, 20, 20, 20, 50};
+            default:
+                return null;
+        }
     }
 
     private static double[] c114UnicodeTextTransformMetrics(String sceneId) {
@@ -13141,6 +13161,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "text-transform-unicode-number-first-none":
             case "text-transform-unicode-collapsed-space-max-content": return "Capitalize";
             case "text-transform-unicode-number-first-control": return "None";
+            case "text-transform-full-width-none-max-content": return "None";
+            case "text-transform-full-width-max-content":
+            case "text-transform-full-width-min-content":
+            case "text-transform-full-width-collapsed-spaces-max-content": return "FullWidth";
             default: return null;
         }
     }
@@ -13153,6 +13177,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("text-transform-capitalize-mixed-case".equals(sceneId)) return "IIII Ii";
         if ("text-transform-capitalize-collapsed-spaces".equals(sceneId)) return "Ii Ii";
         switch (sceneId) {
+            case "text-transform-full-width-max-content":
+            case "text-transform-full-width-min-content":
+            case "text-transform-full-width-collapsed-spaces-max-content": return "ＡＢ　１２";
+            case "text-transform-full-width-none-max-content": return "AB 12";
             case "text-transform-unicode-sharp-s-min-content":
             case "text-transform-unicode-sharp-s-max-content":
             case "text-transform-unicode-source-split-max-content": return "Sseta";
@@ -13180,6 +13208,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("text-transform-capitalize-mixed-case".equals(sceneId)) return "iIII ii";
         if ("text-transform-capitalize-collapsed-spaces".equals(sceneId)) return "ii   ii";
         switch (sceneId) {
+            case "text-transform-full-width-none-max-content":
+            case "text-transform-full-width-max-content":
+            case "text-transform-full-width-min-content": return "AB 12";
+            case "text-transform-full-width-collapsed-spaces-max-content": return "AB   12";
             case "text-transform-unicode-sharp-s-min-content":
             case "text-transform-unicode-sharp-s-max-content":
             case "text-transform-unicode-source-split-max-content": return "ßeta";
@@ -13205,6 +13237,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsUnicodeTextTransformScene(String sceneId) {
         return sceneId != null && sceneId.startsWith("text-transform-unicode-");
+    }
+
+    private static boolean c114IsFullWidthTextTransformScene(String sceneId) {
+        return sceneId != null && sceneId.startsWith("text-transform-full-width-");
     }
 
     private static String evalC114ComputedTextTransformFixture(
@@ -13235,7 +13271,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static double c114TextTransformCssomTolerance(String sceneId) {
-        return c114IsUnicodeTextTransformScene(sceneId) ? 0.03125 : 1.0 / 64.0;
+        return c114IsUnicodeTextTransformScene(sceneId)
+                || c114IsFullWidthTextTransformScene(sceneId) ? 0.03125 : 1.0 / 64.0;
     }
 
     private static C114ComputedWordBreakScene c114ComputedWordBreakScene(String sceneId) {

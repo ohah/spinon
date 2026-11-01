@@ -107,6 +107,7 @@ function deriveScene(scene) {
     `${scene.id}: auto row height`);
   const expectedTextTransform = {
     none: 'None', uppercase: 'Uppercase', lowercase: 'Lowercase', capitalize: 'Capitalize',
+    'full-width': 'FullWidth',
   }[scene.textTransform];
   assert.ok(expectedTextTransform, `${scene.id}: unsupported transform ${scene.textTransform}`);
   return {
@@ -163,6 +164,9 @@ function validateScene(log, scene, runID) {
   assert.equal(style.fontFamily, expectedValues.font.family);
   assert.equal(style.locale, expectedValues.font.language);
   assert.equal(style.textTransform, expected.expectedTextTransform);
+  assert.equal(style.whiteSpace, 'Normal');
+  assert.equal(style.wordBreak, 'Normal');
+  assert.equal(style.lineBreak, 'Strict');
   assert.equal(style.fontSize, 10);
   assert.equal(style.lineHeight, 10);
   assert.equal(style.lineHeightIsNormal, false);
@@ -396,7 +400,7 @@ assert.ok(['android-avd', 'ios-simulator'].includes(target),
   'Usage: capture-c11-4-computed-text-transform-simulators.mjs <android-avd|ios-simulator> <serial|UDID> [expected.json] [evidence-directory]');
 assert.ok(deviceID, 'An explicit Android serial or iOS Simulator UDID is required');
 assert.equal(expectedValues.browser, 'HeadlessChrome 156.0.0.0 via Agent Browser');
-  assert.equal(scenes.length, 23);
+assert.equal(scenes.length, expectedValues.sceneCount ?? 23);
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length);
 await mkdir(evidenceDirectory, { recursive: true });
 if (target === 'android-avd') await runAndroid(deviceID);

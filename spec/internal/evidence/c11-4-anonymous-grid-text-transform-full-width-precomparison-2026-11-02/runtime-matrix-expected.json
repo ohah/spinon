@@ -1,0 +1,76 @@
+{
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform-full-width.html",
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "status": "oracle-targets-only-not-a-Spinon-result",
+  "sceneCount": 4,
+  "font": {
+    "family": "Noto Sans KR",
+    "source": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+    "variation": "wght=400",
+    "fontSizeCssPx": 10,
+    "language": "ja"
+  },
+  "toleranceCssPx": 0.03125,
+  "scenes": [
+    {
+      "id": "full-width-none-max-content",
+      "runtimeSceneId": "text-transform-full-width-none-max-content",
+      "sourceText": "AB 12",
+      "textTransform": "none",
+      "shapedText": "AB 12",
+      "track": "max-content",
+      "minContentPx": 12.65625,
+      "maxContentPx": 25.984375,
+      "minContentHeightPx": 20,
+      "maxContentHeightPx": 10,
+      "columnsPx": 25.984375,
+      "rowsPx": 10,
+      "lineAdvancesPx": [25.984375]
+    },
+    {
+      "id": "full-width-max-content",
+      "runtimeSceneId": "text-transform-full-width-max-content",
+      "sourceText": "AB 12",
+      "textTransform": "full-width",
+      "shapedText": "ＡＢ　１２",
+      "track": "max-content",
+      "minContentPx": 20,
+      "maxContentPx": 50,
+      "minContentHeightPx": 20,
+      "maxContentHeightPx": 10,
+      "columnsPx": 50,
+      "rowsPx": 10,
+      "lineAdvancesPx": [50]
+    },
+    {
+      "id": "full-width-min-content",
+      "runtimeSceneId": "text-transform-full-width-min-content",
+      "sourceText": "AB 12",
+      "textTransform": "full-width",
+      "shapedText": "ＡＢ　１２",
+      "track": "min-content",
+      "minContentPx": 20,
+      "maxContentPx": 50,
+      "minContentHeightPx": 20,
+      "maxContentHeightPx": 10,
+      "columnsPx": 20,
+      "rowsPx": 20,
+      "lineAdvancesPx": [20, 20]
+    },
+    {
+      "id": "full-width-collapsed-spaces-max-content",
+      "runtimeSceneId": "text-transform-full-width-collapsed-spaces-max-content",
+      "sourceText": "AB   12",
+      "textTransform": "full-width",
+      "shapedText": "ＡＢ　１２",
+      "track": "max-content",
+      "minContentPx": 20,
+      "maxContentPx": 50,
+      "minContentHeightPx": 20,
+      "maxContentHeightPx": 10,
+      "columnsPx": 50,
+      "rowsPx": 10,
+      "lineAdvancesPx": [50]
+    }
+  ]
+}

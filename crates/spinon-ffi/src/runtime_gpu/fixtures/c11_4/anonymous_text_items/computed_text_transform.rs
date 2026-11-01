@@ -7,7 +7,7 @@ struct Scene {
     source_text_nodes: Option<&'static [&'static str]>,
 }
 
-const SCENES: [Scene; 23] = [
+const SCENES: [Scene; 27] = [
     Scene {
         id: "text-transform-none-min-content",
         transform: "none",
@@ -169,11 +169,44 @@ const SCENES: [Scene; 23] = [
         text: "ßeta   éclair",
         source_text_nodes: None,
     },
+    Scene {
+        id: "text-transform-full-width-none-max-content",
+        transform: "none",
+        columns: "max-content",
+        text: "AB 12",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-width-max-content",
+        transform: "full-width",
+        columns: "max-content",
+        text: "AB 12",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-width-min-content",
+        transform: "full-width",
+        columns: "min-content",
+        text: "AB 12",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-width-collapsed-spaces-max-content",
+        transform: "full-width",
+        columns: "max-content",
+        text: "AB   12",
+        source_text_nodes: None,
+    },
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
     let scene = SCENES.iter().find(|scene| scene.id == scene_id)?;
     let root_id = format!("c114-{}-grid", scene.id);
+    let language = if scene.id.starts_with("text-transform-full-width-") {
+        "ja"
+    } else {
+        "en"
+    };
     let style = format!(
         "box-sizing:border-box;display:grid;width:120px;height:auto;margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{};grid-template-rows:auto;font-family:\"Noto Sans KR\";font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:{};letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#101820",
         scene.columns, scene.transform
@@ -195,7 +228,7 @@ if (previousState !== undefined
 const root = document.createElement('div');
 root.setAttribute('id', {root_id:?});
 root.setAttribute('data-node', '');
-root.setAttribute('lang', 'en');
+root.setAttribute('lang', {language:?});
 root.setAttribute('style', {style:?});
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
@@ -205,6 +238,7 @@ return {{ sceneId:{scene_id:?}, rootId:{root_id:?}, nodeIds }};
 }})()"#,
         scene_id = scene.id,
         text_nodes = text_nodes,
+        language = language,
     ))
 }
 
@@ -216,12 +250,20 @@ mod tests {
     #[test]
     fn computed_text_transform_generates_the_fixed_direct_language_scene_matrix() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 23);
+        assert_eq!(SCENES.len(), 27);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted text-transform scene");
             assert!(source.contains(&format!("sceneId:{:?}", scene.id)));
-            assert!(source.contains("root.setAttribute('lang', 'en')"));
+            let expected_language = if scene.id.starts_with("text-transform-full-width-") {
+                "ja"
+            } else {
+                "en"
+            };
+            assert!(source.contains(&format!(
+                "root.setAttribute('lang', {:?})",
+                expected_language
+            )));
             assert!(source.contains("previousState.root.parentNode === document"));
             assert!(source.contains(&format!("previousState.sceneId === {:?}", scene.id)));
             assert!(source.contains("nodeIds:previousState.nodeIds"));

@@ -10,6 +10,7 @@ pub(super) struct TextTransformScene {
     pub(super) id: &'static str,
     pub(super) computed_value: &'static str,
     pub(super) mode: TextTransformMode,
+    pub(super) owner_language: &'static str,
     pub(super) text: &'static str,
     pub(super) source_text_nodes: Option<&'static [&'static str]>,
     pub(super) expected_layout_text: &'static str,
@@ -20,7 +21,7 @@ pub(super) struct TextTransformScene {
     pub(super) max_content_height: f32,
 }
 
-pub(super) const SCENES: [TextTransformScene; 23] = [
+pub(super) const SCENES: [TextTransformScene; 27] = [
     scene(TextTransformMode::None, true),
     scene(TextTransformMode::None, false),
     scene(TextTransformMode::Uppercase, true),
@@ -177,6 +178,38 @@ pub(super) const SCENES: [TextTransformScene; 23] = [
         (25.953125, 53.359375),
         (20.0, 10.0),
     ),
+    full_width_scene(
+        "text-transform-full-width-none-max-content",
+        TextTransformMode::None,
+        "AB 12",
+        "AB 12",
+        false,
+        (12.65625, 25.984375),
+    ),
+    full_width_scene(
+        "text-transform-full-width-max-content",
+        TextTransformMode::FullWidth,
+        "AB 12",
+        "ＡＢ　１２",
+        false,
+        (20.0, 50.0),
+    ),
+    full_width_scene(
+        "text-transform-full-width-min-content",
+        TextTransformMode::FullWidth,
+        "AB 12",
+        "ＡＢ　１２",
+        true,
+        (20.0, 50.0),
+    ),
+    full_width_scene(
+        "text-transform-full-width-collapsed-spaces-max-content",
+        TextTransformMode::FullWidth,
+        "AB   12",
+        "ＡＢ　１２",
+        false,
+        (20.0, 50.0),
+    ),
 ];
 
 pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
@@ -203,6 +236,10 @@ pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
     "text-transform-unicode-number-first-none",
     "text-transform-unicode-number-first-control",
     "text-transform-unicode-collapsed-space-max-content",
+    "text-transform-full-width-none-max-content",
+    "text-transform-full-width-max-content",
+    "text-transform-full-width-min-content",
+    "text-transform-full-width-collapsed-spaces-max-content",
 ];
 
 const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformScene {
@@ -251,12 +288,36 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
             19.09375,
             "Iiii Ii",
         ),
+        TextTransformMode::FullWidth => (
+            "full-width",
+            if is_min_content {
+                "text-transform-full-width-min-content"
+            } else {
+                "text-transform-full-width-max-content"
+            },
+            20.0,
+            50.0,
+            "ＡＢ　１２",
+        ),
     };
     TextTransformScene {
         id,
         computed_value,
         mode,
-        text: "IIII ii",
+        owner_language: match mode {
+            TextTransformMode::FullWidth => "ja",
+            TextTransformMode::None
+            | TextTransformMode::Uppercase
+            | TextTransformMode::Lowercase
+            | TextTransformMode::Capitalize => "en",
+        },
+        text: match mode {
+            TextTransformMode::FullWidth => "AB 12",
+            TextTransformMode::None
+            | TextTransformMode::Uppercase
+            | TextTransformMode::Lowercase
+            | TextTransformMode::Capitalize => "IIII ii",
+        },
         source_text_nodes: None,
         expected_layout_text,
         is_min_content,
@@ -282,8 +343,10 @@ const fn scene_with_text(
             TextTransformMode::Uppercase => "uppercase",
             TextTransformMode::Lowercase => "lowercase",
             TextTransformMode::Capitalize => "capitalize",
+            TextTransformMode::FullWidth => "full-width",
         },
         mode,
+        owner_language: "en",
         text,
         source_text_nodes: None,
         expected_layout_text,
@@ -311,8 +374,10 @@ const fn unicode_scene(
             TextTransformMode::Uppercase => "uppercase",
             TextTransformMode::Lowercase => "lowercase",
             TextTransformMode::Capitalize => "capitalize",
+            TextTransformMode::FullWidth => "full-width",
         },
         mode,
+        owner_language: "en",
         text,
         source_text_nodes: None,
         expected_layout_text,
@@ -321,6 +386,36 @@ const fn unicode_scene(
         max_content: intrinsic_sizes.1,
         min_content_height: intrinsic_heights.0,
         max_content_height: intrinsic_heights.1,
+    }
+}
+
+const fn full_width_scene(
+    id: &'static str,
+    mode: TextTransformMode,
+    text: &'static str,
+    expected_layout_text: &'static str,
+    is_min_content: bool,
+    intrinsic_sizes: (f32, f32),
+) -> TextTransformScene {
+    TextTransformScene {
+        id,
+        computed_value: match mode {
+            TextTransformMode::None => "none",
+            TextTransformMode::FullWidth => "full-width",
+            TextTransformMode::Uppercase
+            | TextTransformMode::Lowercase
+            | TextTransformMode::Capitalize => "unsupported",
+        },
+        mode,
+        owner_language: "ja",
+        text,
+        source_text_nodes: None,
+        expected_layout_text,
+        is_min_content,
+        min_content: intrinsic_sizes.0,
+        max_content: intrinsic_sizes.1,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
     }
 }
 
@@ -378,13 +473,16 @@ pub(super) fn validate_owner_language(
         .filter(|(name, _)| name.namespace().is_none() && name.local_name() == "lang")
         .map(|(_, value)| value.to_string_lossy())
         .collect::<Vec<_>>();
-    if languages.len() != 1 || languages[0] != "en" {
+    let expected_language = find_scene(scene_id)
+        .map(|scene| scene.owner_language)
+        .unwrap_or("en");
+    if languages.len() != 1 || languages[0] != expected_language {
         return Err(unsupported(
             owner,
-            "Grid style owner lang must be exactly en",
+            "Grid style owner lang must match the exact fixture scene language",
         ));
     }
-    Ok(Some("en".to_owned()))
+    Ok(Some(expected_language.to_owned()))
 }
 
 fn unsupported(owner: HostNodeHandle, reason: &str) -> RuntimeLayoutFailure {
@@ -409,9 +507,9 @@ mod tests {
     use std::sync::Arc;
 
     #[test]
-    fn computed_text_transform_matrix_has_unique_mode_track_and_unicode_scenes() {
+    fn computed_text_transform_matrix_has_unique_mode_track_unicode_and_full_width_scenes() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 23);
+        assert_eq!(SCENES.len(), 27);
         assert_eq!(SCENE_IDS.len(), SCENES.len());
         assert_eq!(ids.len(), SCENES.len());
         assert_eq!(
@@ -427,6 +525,13 @@ mod tests {
             scene.id == "text-transform-unicode-source-split-max-content"
                 && scene.source_text_nodes == Some(&["ß", "eta"])
                 && scene.expected_layout_text == "Sseta"
+        }));
+        assert!(SCENES.iter().any(|scene| {
+            scene.id == "text-transform-full-width-min-content"
+                && scene.owner_language == "ja"
+                && scene.expected_layout_text == "ＡＢ　１２"
+                && scene.min_content == 20.0
+                && scene.max_content == 50.0
         }));
     }
 
@@ -538,6 +643,25 @@ mod tests {
                 &document.snapshot(),
                 owner,
                 "text-transform-uppercase-min-content"
+            )
+            .is_err()
+        );
+
+        let (document, owner) = owner_document(None, Some("ja"));
+        assert_eq!(
+            validate_owner_language(
+                &document.snapshot(),
+                owner,
+                "text-transform-full-width-max-content"
+            ),
+            Ok(Some("ja".to_owned()))
+        );
+        let (document, owner) = owner_document(Some("ja"), None);
+        assert!(
+            validate_owner_language(
+                &document.snapshot(),
+                owner,
+                "text-transform-full-width-max-content"
             )
             .is_err()
         );

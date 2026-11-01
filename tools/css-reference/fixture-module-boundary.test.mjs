@@ -2620,7 +2620,7 @@ test('C11.4 anonymous Grid hyphens auto stays fixture-only with exact English so
   assert.ok(normalize.includes('hypher::MAX_INLINE_SIZE'));
   assert.ok(normalize.includes('source_utf16: position..position'));
   assert.ok(textTests.includes('c114_hyphens_auto_fails_closed_for_language_word_and_soft_hyphen_outside_profile'));
-  assert.match(runtimeCatalog, /const SCENE_IDS: \[&str; 129\]/);
+  assert.match(runtimeCatalog, /const SCENE_IDS: \[&str; 133\]/);
   assert.match(runtimeScenes, /pub\(super\) const SCENES: \[Scene; 30\]/);
   assert.match(ffiCatalog, /const SCENE_IDS: \[&str; 85\]/);
   assert.match(ffiScenes, /computed_hyphens_generates_the_fixed_direct_text_matrix/);

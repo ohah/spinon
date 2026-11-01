@@ -77,7 +77,7 @@ use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 129] = [
+const SCENE_IDS: [&str; 133] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -177,6 +177,10 @@ const SCENE_IDS: [&str; 129] = [
     "text-transform-unicode-number-first-none",
     "text-transform-unicode-number-first-control",
     "text-transform-unicode-collapsed-space-max-content",
+    "text-transform-full-width-none-max-content",
+    "text-transform-full-width-max-content",
+    "text-transform-full-width-min-content",
+    "text-transform-full-width-collapsed-spaces-max-content",
     "hyphens-none-soft-min",
     "hyphens-none-soft-max",
     "hyphens-none-soft-fixed-30",
@@ -1650,7 +1654,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 129);
+        assert_eq!(SCENE_IDS.len(), 133);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 

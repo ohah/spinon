@@ -205,3 +205,130 @@ fn c114_text_transform_fails_closed_for_non_ascii_and_inline_sources() {
     let layout = engine.layout_paragraph(&non_ascii, 120.0).unwrap();
     assert_eq!(layout.text, "İi");
 }
+
+#[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+#[test]
+fn c114_text_transform_full_width_runs_before_intrinsic_sizing_and_preserves_ranges() {
+    for (source, expected_source_count) in [("AB 12", 5), ("AB   12", 7)] {
+        let mut input = paragraph(source, TextTransformMode::FullWidth);
+        input.style.locale = Some("ja".to_owned());
+        input.style.line_break = LineBreakMode::Strict;
+        let mut engine = engine();
+        let original = input.sources[0].text.clone();
+        let intrinsic = engine.intrinsic_inline_sizes(&input).unwrap();
+        close_to(intrinsic.min_content(), 20.0, "full-width min-content");
+        close_to(intrinsic.max_content(), 50.0, "full-width max-content");
+        close_to(
+            intrinsic.min_content_height(),
+            20.0,
+            "full-width min-content height",
+        );
+        close_to(
+            intrinsic.max_content_height(),
+            10.0,
+            "full-width max-content height",
+        );
+
+        let layout = engine.layout_paragraph(&input, 120.0).unwrap();
+        assert_eq!(layout.text_transform, TextTransformMode::FullWidth);
+        assert_eq!(input.style.word_break, WordBreakMode::Normal);
+        assert_eq!(layout.text, "ＡＢ　１２");
+        assert_eq!(input.sources[0].text, original);
+        assert_eq!(layout.sources.len(), expected_source_count);
+        assert_eq!(layout.lines.len(), 1);
+        close_to(layout.lines[0].advance, 50.0, "full-width line advance");
+
+        if source == "AB 12" {
+            for (index, mapped) in layout.sources.iter().enumerate() {
+                assert_eq!(mapped.source_utf16, index..index + 1);
+                assert_eq!(mapped.paragraph_utf8, index * 3..(index + 1) * 3);
+            }
+
+            let wrapped = engine.layout_paragraph(&input, 20.0).unwrap();
+            assert_eq!(wrapped.text, "ＡＢ　１２");
+            assert_eq!(input.style.word_break, WordBreakMode::Normal);
+            assert_eq!(wrapped.lines.len(), 2);
+            for line in &wrapped.lines {
+                close_to(line.advance, 20.0, "full-width min-content line");
+            }
+        } else {
+            for mapped in &layout.sources[2..5] {
+                assert_eq!(mapped.paragraph_utf8, 6..9);
+            }
+        }
+    }
+}
+
+#[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+#[test]
+fn c114_text_transform_full_width_rejects_unlisted_sources_and_non_japanese_locale() {
+    for source in ["A 12", "AB 1", "AB-12", "ab 12", "ＡＢ　１２"] {
+        let mut input = paragraph(source, TextTransformMode::FullWidth);
+        input.style.locale = Some("ja".to_owned());
+        input.style.line_break = LineBreakMode::Strict;
+        let mut engine = engine();
+        assert_eq!(
+            engine.layout_paragraph(&input, 120.0),
+            Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+                input.node
+            )),
+            "unsupported full-width source {source:?}"
+        );
+    }
+
+    let mut wrong_language = paragraph("AB 12", TextTransformMode::FullWidth);
+    wrong_language.style.locale = Some("en".to_owned());
+    wrong_language.style.line_break = LineBreakMode::Strict;
+    let mut engine = engine();
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_language),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_language.node
+        ))
+    );
+
+    let mut wrong_word_break = paragraph("AB 12", TextTransformMode::FullWidth);
+    wrong_word_break.style.locale = Some("ja".to_owned());
+    wrong_word_break.style.word_break = WordBreakMode::BreakAll;
+    wrong_word_break.style.line_break = LineBreakMode::Strict;
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_word_break),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_word_break.node
+        ))
+    );
+
+    let mut wrong_line_break = paragraph("AB 12", TextTransformMode::FullWidth);
+    wrong_line_break.style.locale = Some("ja".to_owned());
+    wrong_line_break.style.line_break = LineBreakMode::Normal;
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_line_break),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_line_break.node
+        ))
+    );
+
+    let mut split = paragraph("AB 12", TextTransformMode::FullWidth);
+    split.style.locale = Some("ja".to_owned());
+    split.style.line_break = LineBreakMode::Strict;
+    split.sources.push(split.sources[0].clone());
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&split),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            split.node
+        ))
+    );
+}
+
+#[cfg(not(feature = "c11-4-text-transform-unicode-fixture-test"))]
+#[test]
+fn c114_text_transform_full_width_requires_the_opt_in_fixture_feature() {
+    let input = paragraph("AB 12", TextTransformMode::FullWidth);
+    let mut engine = engine();
+    assert_eq!(
+        engine.layout_paragraph(&input, 120.0),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            input.node
+        ))
+    );
+}

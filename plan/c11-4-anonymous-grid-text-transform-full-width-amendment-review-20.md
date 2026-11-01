@@ -26,3 +26,7 @@
 | 20 | workaround가 계획의 visible CSS contract로 승인됨 | 계획은 이를 adapter detail로 한정하고 일반 `word-break:keep-all` 지원을 제외한다. |
 
 구현 단계에서는 이 계획 검토를 복사하지 않고 실제 engine, runtime snapshot, Android/iOS scene 결과를 새 관점으로 검토한다.
+
+## 구현 대조 정정
+
+구현 코드 대조 중 14번의 표현 오류를 발견했다. `TextLayoutSnapshot`에는 `word_break` field가 없다. 구현 검증은 runtime computed-style snapshot의 CSS `word-break:normal`과 `ParagraphInput.style.word_break=Normal`을 확인한다. 해당 행은 의도한 내부 KeepAll 비노출 경계를 가리키지만, 없는 result field를 확인했다고 읽어서는 안 된다. 수정 기준과 구현 증거는 [구현 계획](./c11-4-anonymous-grid-text-transform-full-width.md)과 runtime evidence에 기록한다.
