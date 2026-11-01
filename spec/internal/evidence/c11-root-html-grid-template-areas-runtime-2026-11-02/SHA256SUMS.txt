@@ -1,5 +1,4 @@
-7c49f066398d51b6ade5ccf842addfc9bf1ec857b21b9e16c7e74d39a6275f3d  tests/fixtures/css/c11/root-html-grid-template-areas-precomparison.html
-4be4e51f9fd43b5581acf03e9904ea8fcb3509341f87521e4b892b999ccc94a8  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/README.md
+d8927bdd9a05cc3b47eb1c904d302c06af2e0b8dcc5d336c9fb68d82ab6d1ef3  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/README.md
 7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/android-avd/android-abi.txt
 b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/android-avd/android-api.txt
 c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/android-avd/android-density.txt
@@ -26,7 +25,8 @@ be7a11cd4d6f4a11a0037c5ceece23300a84011df9dbb5b266e1ef45796289d0  spec/internal/
 3a2598c57d37183f05cf7e59cd79c85a619f882aab5f5eebb0c06ecb5e4b5c86  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/ios-simulator/unified-log.txt
 add3ee6a9bed90efb41c32e90251571b51d9ec40401885561925af1b6088fbf5  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/opt-in-ffi-build.log
 e26496ce2b064251839760327a97ac830712057f7fbf6f44990e47bd10893266  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/opt-in-ffi-c11-fixture-symbols.txt
-c3df8a262e44baf63f9ffe70fbf67e2bde07c573cf13622634c8bae1f08f7559  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/pr-diff-review-30.md
+a8b8a55bde349e26a86f756e7566c633d2279f2df57d34d128366e8dfe0c1918  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/post-merge-doc-sync-review-30.md
+75514b4f9ac99fb079be260afde9ff67cf0375aa03951f9e1ad145f78d7c2597  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/pr-diff-review-30.md
 c0341f16714973b8281a0babd30aeee7ba8e210a8203fe14a84ba52f561c74ce  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/root-html-area-allocation-test.log
 c53c14822d943a1374d5643e288b539da9ed8186f7c0ac32cda074e9bacbeed3  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/runtime-focused-test.log
 829e0a6baae8c2c0eb2ee5aa92aaa9dd6ce445ae7f819d668815fe0a3df4cc47  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/runtime-root-html-regressions.log
@@ -36,3 +36,4 @@ f2e5bd776a6e8edc97a7ffeea026c8122a6b9616b98ded925466020506835dc8  spec/internal/
 39b8dc3fc8b44765c8e6f1adee04c5b465e555ab791cc42d0d9e810d5b64297c  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/style-to-layout-full-test.exit
 5e4cc9f0c9a9c9f0627103e705b78add620246d8be8bfb2947e6db3ed96769ba  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/style-to-layout-full-test.log
 1bdd992c4cac0a13c0b4bd5e1182008a2deba9307f4a9494af7e632bbd2b4752  spec/internal/evidence/c11-root-html-grid-template-areas-runtime-2026-11-02/style-to-layout-template-area-test.log
+7c49f066398d51b6ade5ccf842addfc9bf1ec857b21b9e16c7e74d39a6275f3d  tests/fixtures/css/c11/root-html-grid-template-areas-precomparison.html
