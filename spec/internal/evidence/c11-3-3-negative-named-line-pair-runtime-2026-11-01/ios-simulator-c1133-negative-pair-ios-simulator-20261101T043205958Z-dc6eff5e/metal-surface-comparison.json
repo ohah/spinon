@@ -1,0 +1,173 @@
+{
+  "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1133-negative-pair-ios-simulator-20261101T043205958Z-dc6eff5e",
+  "processId": 46559,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 84,
+    "renderTree": 17,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 8,
+  "matchedSamples": 8,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "negative-pair-0",
+      "css": [
+        5,
+        5
+      ],
+      "drawable": [
+        16,
+        16
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-1",
+      "css": [
+        165,
+        5
+      ],
+      "drawable": [
+        496,
+        16
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-2",
+      "css": [
+        5,
+        65
+      ],
+      "drawable": [
+        16,
+        196
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-3",
+      "css": [
+        165,
+        65
+      ],
+      "drawable": [
+        496,
+        196
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-4",
+      "css": [
+        5,
+        125
+      ],
+      "drawable": [
+        16,
+        376
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-5",
+      "css": [
+        165,
+        125
+      ],
+      "drawable": [
+        496,
+        376
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-6",
+      "css": [
+        5,
+        185
+      ],
+      "drawable": [
+        16,
+        556
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "negative-pair-7",
+      "css": [
+        165,
+        185
+      ],
+      "drawable": [
+        496,
+        556
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

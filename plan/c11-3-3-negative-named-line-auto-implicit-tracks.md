@@ -1,6 +1,6 @@
 # C11.3.3 negative named-line pair의 leading implicit auto tracks
 
-**상태:** CSS Grid 2025 CRD의 named-line 규칙과 독립 계산을 고정했고 Chrome 156 Agent Browser에서 10개 사전 비교가 모두 일치했다. 계획 실패 관점 20개와 계획 PR diff 30개 검토를 마쳤으며 구현은 시작하지 않았다. C11.3.3·C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다. [사전 비교](../spec/internal/evidence/c11-3-3-negative-named-line-auto-precomparison-2026-11-01/README.md) · [계획 실패 관점 검토](../spec/internal/evidence/c11-3-3-negative-named-line-auto-precomparison-2026-11-01/plan-review-20.md) · [계획 PR diff 검토](../spec/internal/evidence/c11-3-3-negative-named-line-auto-precomparison-2026-11-01/plan-pr-diff-review-30.md)
+**상태:** CSS Grid 2025 CRD의 named-line 규칙과 독립 계산을 고정했고 Chrome 156 Agent Browser에서 10개 사전 비교가 모두 일치했다. 제한 구현 commit [`0096e39d`](https://github.com/ohah/spinon/commit/0096e39d59988abb60768129a5cdada0ec077497)을 만들었다. `spinon-layout` 328/328, 대상 style projection/fixture tests, CSS reference 18/18, rustfmt와 대상 Clippy가 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 전용 runtime은 각각 17 frame·8/8 표면 표본 exact이며, 기존 C11.3.3 전체 39-scene·126-node 행렬도 양쪽에서 최대 geometry 오차 0 CSS px다. 기본 Android linked ELF와 opt-in fixture-test positive control의 경계도 확인했다. 구현/runtime 실패 관점 20개와 실제 PR diff 실패 관점 30개 검토를 마쳤다. PR 생성, required check과 merge 판정은 남아 있다. 이 작업만으로 C11.3.3·C11 checkbox나 공식 완료 `72/213`을 바꾸지 않는다. [사전 비교](../spec/internal/evidence/c11-3-3-negative-named-line-auto-precomparison-2026-11-01/README.md) · [계획 실패 관점 검토](../spec/internal/evidence/c11-3-3-negative-named-line-auto-precomparison-2026-11-01/plan-review-20.md) · [계획 PR diff 검토](../spec/internal/evidence/c11-3-3-negative-named-line-auto-precomparison-2026-11-01/plan-pr-diff-review-30.md) · [구현·runtime 근거](../spec/internal/evidence/c11-3-3-negative-named-line-pair-runtime-2026-11-01/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-3-3-negative-named-line-pair-runtime-2026-11-01/implementation-review-20.md) · [실제 PR diff 실패 관점 30개](../spec/internal/evidence/c11-3-3-negative-named-line-pair-runtime-2026-11-01/pr-diff-review-30.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -33,7 +33,7 @@
 
 ## 완료 범위와 제외
 
-이 slice는 모든 C11.3.3 named-line fallback, arbitrary numeric implicit placement, named span, mixed positive/negative extent, two-axis implicit sizing, 두 축이 모두 automatic인 placement, intrinsic item dimensions, arbitrary `grid-auto-*` grammar, public CSS admission, WPT 적합성 또는 전체 CSS Grid 지원을 선언하지 않는다. 계획의 10-scene Chrome 관찰은 Spinon 구현 결과가 아니며 implementation gate에는 Android/iOS app runtime 재실행이 필요하다. C11.3.3, C11, 공식 완료 `72/213`은 이 제한 fixture 구현 뒤에도 미완료다.
+이 slice는 모든 C11.3.3 named-line fallback, arbitrary numeric implicit placement, named span, mixed positive/negative extent, two-axis implicit sizing, 두 축이 모두 automatic인 placement, intrinsic item dimensions, arbitrary `grid-auto-*` grammar, public CSS admission, WPT 적합성 또는 전체 CSS Grid 지원을 선언하지 않는다. Chrome 156 관찰은 oracle이며 Spinon 구현 결과와 구분한다. C11.3.3, C11, 공식 완료 `72/213`은 이 제한 fixture 구현 뒤에도 미완료다.
 
 ## 사전 비교 검토
 
