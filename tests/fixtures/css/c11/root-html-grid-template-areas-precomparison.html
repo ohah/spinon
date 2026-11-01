@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spinon root HTML Grid template areas precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-width: 0;
+      }
+
+      #layout {
+        box-sizing: border-box;
+        display: grid;
+        width: 120px;
+        height: 70px;
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 20px 50px;
+        grid-template-areas: "header header" "side content";
+        background-color: #101820;
+      }
+
+      #layout > div {
+        box-sizing: border-box;
+      }
+
+      [data-area="header"] {
+        grid-area: header;
+        background-color: #e5484d;
+      }
+
+      [data-area="side"] {
+        grid-area: side;
+        background-color: #3a8f5b;
+      }
+
+      [data-area="content"] {
+        grid-area: content;
+        background-color: #0a84ff;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="layout">
+      <div data-area="content"></div>
+      <div data-area="header"></div>
+      <div data-area="side"></div>
+    </main>
+  </body>
+</html>

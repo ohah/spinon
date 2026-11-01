@@ -1,0 +1,6 @@
+7c49f066398d51b6ade5ccf842addfc9bf1ec857b21b9e16c7e74d39a6275f3d  tests/fixtures/css/c11/root-html-grid-template-areas-precomparison.html
+539ae40bd947f19a898236ab74121144b2c4df30296962c9539a1282e3990c19  spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/expected.json
+1868a60a59bfc4619844d83c8ee0792816536858b9cd33473d90f080c056fffe  spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/chrome-observation.json
+f263b4a51caa49e1a950ddcebccceb0a973003ea60af0e7409f22fb5d66416d5  spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/chrome-156-template-areas.png
+86b10fd07db32167ded6c4c022cab596f6324ef1e98486a81c7fc53dc6c07c3c  spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/verify-precomparison.mjs
+2f5157c866f0f24da6f556b356ceb6b234879dc36cd614210557f9b15e2e85be  spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/verification.json

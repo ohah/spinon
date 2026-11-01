@@ -1,0 +1,53 @@
+{
+  "schema": "spinon.c11.root-html-grid-template-areas.expected.v1",
+  "source": "tests/fixtures/css/c11/root-html-grid-template-areas-precomparison.html",
+  "browserOracle": {
+    "product": "Chrome Headless",
+    "major": 156,
+    "viewportCssPx": [1280, 633],
+    "deviceScaleFactor": 1
+  },
+  "calculation": {
+    "columnsCssPx": [40, 80],
+    "rowsCssPx": [20, 50],
+    "rootWidthCssPx": 120,
+    "rootHeightCssPx": 70,
+    "gapCssPx": [0, 0],
+    "areaCellMapping": {
+      "header": { "row": [0, 1], "column": [0, 2] },
+      "side": { "row": [1, 2], "column": [0, 1] },
+      "content": { "row": [1, 2], "column": [1, 2] }
+    }
+  },
+  "root": {
+    "rectCssPx": [0, 0, 120, 70],
+    "gridTemplateColumns": ["40px", "80px"],
+    "gridTemplateRows": ["20px", "50px"],
+    "gridTemplateAreas": "\"header header\" \"side content\""
+  },
+  "items": [
+    {
+      "area": "header",
+      "gridArea": "header",
+      "rectCssPx": [0, 0, 120, 20],
+      "backgroundColor": "rgb(229, 72, 77)"
+    },
+    {
+      "area": "side",
+      "gridArea": "side",
+      "rectCssPx": [0, 20, 40, 50],
+      "backgroundColor": "rgb(58, 143, 91)"
+    },
+    {
+      "area": "content",
+      "gridArea": "content",
+      "rectCssPx": [40, 20, 80, 50],
+      "backgroundColor": "rgb(10, 132, 255)"
+    }
+  ],
+  "sourceOrderControl": {
+    "before": ["content", "header", "side"],
+    "after": ["side", "header", "content"],
+    "expectedSemanticItemFramesUnchanged": true
+  }
+}
