@@ -1,0 +1,10 @@
+{
+  "session": "spinon-tailnet-pr971",
+  "closeCommand": "agent-browser --session spinon-tailnet-pr971 close",
+  "closeResult": "success",
+  "postCloseProcessCheck": {
+    "agentBrowserProcesses": 0,
+    "agentBrowserChromeProcesses": 0,
+    "existingTailnetPreviewServer": "still running; intentionally left unchanged"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "tool": "Agent Browser",
+  "session": "spinon-tailnet-pr971",
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "checks": [
+    {
+      "route": "/spinon/roadmap.html",
+      "result": "pass",
+      "observed": [
+        "Roadmap title and C11.3.3 PR #970 card are visible",
+        "PR #970 Rebase and merge and merge SHA dd178e769c562d3cbc12cfea0c9e11093b36b8fd are present",
+        "Official implementation count is 72/213 and C11 is marked incomplete"
+      ],
+      "screenshot": "tailnet-roadmap-agent-browser-pass01.png"
+    },
+    {
+      "route": "/spinon/STATUS.html",
+      "result": "pass",
+      "observed": [
+        "Official implementation count 72/213 is visible",
+        "C11 heading and PR #970 merge SHA are present"
+      ]
+    },
+    {
+      "route": "/spinon/spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/android-avd-c1133-negative-pair-two-axis-android-avd-20261101T055432072Z-227c6067/android-screen.png",
+      "result": "pass",
+      "naturalSize": "1080x2400"
+    },
+    {
+      "route": "/spinon/spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/ios-simulator-c1133-negative-pair-two-axis-ios-simulator-20261101T055554422Z-f9734042/ios-screen.png",
+      "result": "pass",
+      "naturalSize": "1206x2622"
+    }
+  ],
+  "limits": [
+    "Full documentation site dead-link validation was not performed",
+    "Image loading does not add device or compositor evidence beyond the recorded simulator runs"
+  ]
+}
