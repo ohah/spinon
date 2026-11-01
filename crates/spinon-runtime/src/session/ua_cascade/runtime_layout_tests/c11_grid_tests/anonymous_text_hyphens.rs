@@ -218,26 +218,52 @@ fn anonymous_grid_hyphens_scenes_use_cascaded_style_and_grid_intrinsics() {
 }
 
 #[test]
-fn anonymous_grid_hyphens_rejects_auto_and_invalid_computed_values() {
-    for (index, value) in ["auto", "balanced"].into_iter().enumerate() {
-        let case = Case {
-            scene_id: if value == "auto" {
-                "hyphens-auto-expected-reject"
-            } else {
-                "hyphens-invalid-expected-reject"
-            },
-            declared_hyphens: Some(value),
-            computed_hyphens: value,
-            ..CASES[3]
-        };
-        let (snapshot, _, _) = snapshot_for(&case, 13_100 + index as u64);
-        let calculation = calculate(&snapshot, case.scene_id);
-        let error = format!("{:?}", calculation.layout.expect_err("unsupported value"));
-        assert!(
-            error.contains("unsupported_c114_hyphens_value"),
-            "{value}: {error}"
-        );
-    }
+fn anonymous_grid_hyphens_rejects_auto_source_soft_hyphen_and_invalid_value() {
+    let auto_case = Case {
+        scene_id: "hyphens-auto-expected-reject",
+        text: "AB\u{00ad}CD",
+        columns: "30px",
+        width: 30.0,
+        declared_hyphens: Some("auto"),
+        inherited_hyphens: None,
+        computed_hyphens: "auto",
+        min_content: 0.0,
+        max_content: 0.0,
+        height: 0.0,
+        lines: &[],
+    };
+    let (snapshot, _, _) = snapshot_for(&auto_case, 13_100);
+    let auto_error = format!(
+        "{:?}",
+        calculate(&snapshot, auto_case.scene_id)
+            .layout
+            .expect_err("auto source SHY is outside the fixed profile")
+    );
+    assert!(auto_error.contains("layout_failed"), "{auto_error}");
+    assert!(
+        auto_error.contains(
+            "hyphens 입력이 고정 Ahem 10px ASCII direct-text profile과 일치하지 않습니다"
+        ),
+        "{auto_error}"
+    );
+
+    let invalid_case = Case {
+        scene_id: "hyphens-invalid-expected-reject",
+        declared_hyphens: Some("balanced"),
+        computed_hyphens: "balanced",
+        ..CASES[3]
+    };
+    let (snapshot, _, _) = snapshot_for(&invalid_case, 13_101);
+    let invalid_error = format!(
+        "{:?}",
+        calculate(&snapshot, invalid_case.scene_id)
+            .layout
+            .expect_err("unsupported computed value")
+    );
+    assert!(
+        invalid_error.contains("unsupported_c114_hyphens_value"),
+        "{invalid_error}"
+    );
 }
 
 fn calculate(

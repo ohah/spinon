@@ -1,0 +1,31 @@
+scene	result	specified	computed	track	min_content	max_content	track_width	row_height	line_advances	trace_parts
+hyphens-none-soft-min	PASS	none	None	min-content	40	40	40	10	40	7
+hyphens-none-soft-max	PASS	none	None	max-content	40	40	40	10	40	7
+hyphens-none-soft-fixed-30	PASS	none	None	30px	40	40	30	10	40	6
+hyphens-manual-soft-min	PASS	manual	Manual	min-content	30	40	30	20	30,20	7
+hyphens-manual-soft-max	PASS	manual	Manual	max-content	30	40	40	10	40	7
+hyphens-manual-soft-fixed-30	PASS	manual	Manual	30px	30	40	30	20	30,20	6
+hyphens-default-soft-fixed-30	PASS	initial	Manual	30px	30	40	30	20	30,20	6
+hyphens-none-visible-min	PASS	none	None	min-content	30	50	30	20	30,20	7
+hyphens-none-visible-fixed-30	PASS	none	None	30px	30	50	30	20	30,20	6
+hyphens-manual-visible-min	PASS	manual	Manual	min-content	30	50	30	20	30,20	7
+hyphens-manual-visible-fixed-30	PASS	manual	Manual	30px	30	50	30	20	30,20	6
+hyphens-none-unbroken-min	PASS	none	None	min-content	40	40	40	10	40	7
+hyphens-manual-unbroken-min	PASS	manual	Manual	min-content	40	40	40	10	40	7
+hyphens-none-multiple-min	PASS	none	None	min-content	60	60	60	10	60	7
+hyphens-none-multiple-fixed-30	PASS	none	None	30px	60	60	30	10	60	6
+hyphens-manual-multiple-min	PASS	manual	Manual	min-content	30	60	30	30	30,30,20	7
+hyphens-manual-multiple-fixed-30	PASS	manual	Manual	30px	30	60	30	30	30,30,20	6
+hyphens-inherited-none-fixed-30	PASS	none	None	30px	40	40	30	10	40	6
+hyphens-inherited-manual-fixed-30	PASS	manual	Manual	30px	30	40	30	20	30,20	6
+hyphens-auto-hyphenation-min	PASS	auto	Auto	min-content	50	110	50	30	30,50,50	8
+hyphens-auto-hyphenation-max	PASS	auto	Auto	max-content	50	110	110	10	110	8
+hyphens-auto-hyphenation-fixed-50	PASS	auto	Auto	50px	50	110	50	30	30,50,50	6
+hyphens-auto-internationalization-min	PASS	auto	Auto	min-content	50	200	50	70	30,40,30,50,30,40,40	8
+hyphens-auto-internationalization-max	PASS	auto	Auto	max-content	50	200	200	10	200	8
+hyphens-auto-internationalization-fixed-50	PASS	auto	Auto	50px	50	200	50	70	30,40,30,50,30,40,40	7
+hyphens-auto-representation-min	PASS	auto	Auto	min-content	40	140	40	50	40,30,40,30,40	8
+hyphens-auto-representation-max	PASS	auto	Auto	max-content	40	140	140	10	140	8
+hyphens-auto-representation-fixed-50	PASS	auto	Auto	50px	40	140	50	50	40,30,40,30,40	6
+hyphens-auto-expected-reject	EXPECTED_REJECT									0
+hyphens-invalid-expected-reject	EXPECTED_REJECT									0

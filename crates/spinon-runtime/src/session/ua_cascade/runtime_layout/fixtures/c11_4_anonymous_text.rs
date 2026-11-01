@@ -77,7 +77,7 @@ use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 103] = [
+const SCENE_IDS: [&str; 112] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -179,6 +179,15 @@ const SCENE_IDS: [&str; 103] = [
     "hyphens-manual-multiple-fixed-30",
     "hyphens-inherited-none-fixed-30",
     "hyphens-inherited-manual-fixed-30",
+    "hyphens-auto-hyphenation-min",
+    "hyphens-auto-hyphenation-max",
+    "hyphens-auto-hyphenation-fixed-50",
+    "hyphens-auto-internationalization-min",
+    "hyphens-auto-internationalization-max",
+    "hyphens-auto-internationalization-fixed-50",
+    "hyphens-auto-representation-min",
+    "hyphens-auto-representation-max",
+    "hyphens-auto-representation-fixed-50",
     "hyphens-auto-expected-reject",
     "hyphens-invalid-expected-reject",
 ];
@@ -1152,6 +1161,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
                     hyphens::TrackKind::MinContent => ComputedCssGridTrackSize::MinContent,
                     hyphens::TrackKind::MaxContent => ComputedCssGridTrackSize::MaxContent,
                     hyphens::TrackKind::Fixed30Px => ComputedCssGridTrackSize::LengthPx(30.0),
+                    hyphens::TrackKind::Fixed50Px => ComputedCssGridTrackSize::LengthPx(50.0),
                 }]
             }
             "anonymous-min-content-wrap" => vec![
@@ -1599,7 +1609,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 103);
+        assert_eq!(SCENE_IDS.len(), 112);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -1607,8 +1617,11 @@ mod tests {
     fn computed_hyphens_scenes_match_intrinsic_and_definite_line_oracles() {
         let mut engine = TextLayoutEngine::new_without_system_fonts();
         engine.register_font("Ahem", AHEM).unwrap();
-        assert_eq!(HYPHENS_SCENES.len(), 21);
-        for scene in HYPHENS_SCENES.iter().filter(|scene| scene.mode.is_some()) {
+        assert_eq!(HYPHENS_SCENES.len(), 30);
+        for scene in HYPHENS_SCENES
+            .iter()
+            .filter(|scene| scene.mode.is_some() && scene.id != "hyphens-auto-expected-reject")
+        {
             let mut style = anonymous_paragraph_style(
                 scene.id,
                 TabSize::Number(8.0),
@@ -1661,6 +1674,7 @@ mod tests {
                 HyphensTrackKind::MinContent => scene.min_content,
                 HyphensTrackKind::MaxContent => scene.max_content,
                 HyphensTrackKind::Fixed30Px => 30.0,
+                HyphensTrackKind::Fixed50Px => 50.0,
             };
             let layout = engine.layout_paragraph(&input, available_width).unwrap();
             assert_eq!(

@@ -581,9 +581,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         C114ComputedWordBreakScene wordBreak = c114ComputedWordBreakScene(sceneId);
         if (wordBreak != null) {
-            double textWidth = wordBreak.trackWidth;
-            String layoutText = "None".equals(c114ComputedHyphensStyle(sceneId))
-                    ? wordBreak.text.replace('\u00ad', '\u2060') : wordBreak.text;
+            double textWidth = 0;
+            String hyphensStyle = c114ComputedHyphensStyle(sceneId);
+            String layoutText = "None".equals(hyphensStyle)
+                    ? wordBreak.text.replace('\u00ad', '\u2060')
+                    : "Auto".equals(hyphensStyle)
+                            ? c114ComputedAutoHyphenatedText(sceneId) : wordBreak.text;
             for (double lineAdvance : wordBreak.lineAdvances) {
                 textWidth = Math.max(textWidth, lineAdvance);
             }
@@ -5031,6 +5034,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String[] c114CalcNeighborExpectedRejection(String sceneId) {
         switch (sceneId) {
             case "hyphens-auto-expected-reject":
+                return new String[] {"layout_failed",
+                        "contains:hyphens 입력이 고정 Ahem 10px ASCII direct-text profile과 일치하지 않습니다",
+                        "missing"};
             case "hyphens-invalid-expected-reject":
                 return new String[] {"unsupported_c114_hyphens_value", "computed hyphens", "1"};
             case "calc-neighbor-col-fill-extra-term":
@@ -13091,13 +13097,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static C114ComputedWordBreakScene c114ComputedHyphensScene(String sceneId) {
         if (!sceneId.startsWith("hyphens-") || sceneId.contains("expected-reject")) return null;
+        if (sceneId.startsWith("hyphens-auto-")) return c114ComputedAutoHyphensScene(sceneId);
         boolean none = sceneId.contains("-none-");
         boolean visible = sceneId.contains("-visible-");
         boolean unbroken = sceneId.contains("-unbroken-");
         boolean multiple = sceneId.contains("-multiple-");
         boolean minTrack = sceneId.endsWith("-min");
         boolean maxTrack = sceneId.endsWith("-max");
-        boolean fixedTrack = sceneId.endsWith("-fixed-30");
+        boolean fixedTrack = sceneId.endsWith("-fixed-30") || sceneId.endsWith("-fixed-50");
         if (!minTrack && !maxTrack && !fixedTrack) return null;
 
         String text;
@@ -13162,6 +13169,52 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 trackWidth, rowHeight, lineAdvances);
     }
 
+    private static C114ComputedWordBreakScene c114ComputedAutoHyphensScene(String sceneId) {
+        String word;
+        double minContent;
+        double maxContent;
+        double minContentHeight;
+        double[] minLines;
+        switch (sceneId.substring("hyphens-auto-".length()).split("-")[0]) {
+            case "hyphenation":
+                word = "hyphenation";
+                minContent = 50;
+                maxContent = 110;
+                minContentHeight = 30;
+                minLines = new double[] {30, 50, 50};
+                break;
+            case "internationalization":
+                word = "internationalization";
+                minContent = 50;
+                maxContent = 200;
+                minContentHeight = 70;
+                minLines = new double[] {30, 40, 30, 50, 30, 40, 40};
+                break;
+            case "representation":
+                word = "representation";
+                minContent = 40;
+                maxContent = 140;
+                minContentHeight = 50;
+                minLines = new double[] {40, 30, 40, 30, 40};
+                break;
+            default:
+                return null;
+        }
+        boolean minTrack = sceneId.endsWith("-min");
+        boolean maxTrack = sceneId.endsWith("-max");
+        boolean fixedTrack = sceneId.endsWith("-fixed-50");
+        if (!minTrack && !maxTrack && !fixedTrack) return null;
+        double trackWidth = minTrack ? minContent : maxTrack ? maxContent : 50;
+        double rowHeight = minTrack || fixedTrack ? minContentHeight : 10;
+        double[] lineAdvances = minTrack || fixedTrack
+                ? minLines : new double[] {maxContent};
+        double rootWidth = fixedTrack ? 50 : 120;
+        return new C114ComputedWordBreakScene(
+                rootWidth, word, "en", "Ahem", "Normal", "Normal",
+                minContent, maxContent, minContentHeight, 10,
+                trackWidth, rowHeight, lineAdvances);
+    }
+
     private static C114ComputedWordBreakScene c114CombinedWordBreakOverflowWrapScene(
             String sceneId
     ) {
@@ -13218,7 +13271,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ComputedHyphensStyle(String sceneId) {
         if (sceneId == null || !sceneId.startsWith("hyphens-")) return null;
+        if (sceneId.startsWith("hyphens-auto-") && !sceneId.contains("expected-reject")) {
+            return "Auto";
+        }
         return sceneId.contains("-none-") ? "None" : "Manual";
+    }
+
+    private static String c114ComputedAutoHyphenatedText(String sceneId) {
+        if (sceneId.contains("hyphenation")) return "hy\u00adphen\u00adation";
+        if (sceneId.contains("internationalization")) {
+            return "in\u00adter\u00adna\u00adtion\u00adal\u00adiza\u00adtion";
+        }
+        if (sceneId.contains("representation")) return "rep\u00adre\u00adsen\u00adta\u00adtion";
+        return "";
     }
 
     private static boolean c114IsAnonymousHyphensInheritedScene(String sceneId) {
@@ -13235,7 +13300,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsAnonymousHyphensFixedTrack(String sceneId) {
         return sceneId != null && sceneId.startsWith("hyphens-")
-                && sceneId.endsWith("-fixed-30");
+                && (sceneId.endsWith("-fixed-30") || sceneId.endsWith("-fixed-50"));
     }
 
     // [word spacing px, min-content px, max-content px, track width px, row height px, line count, min-content row height]
@@ -18652,7 +18717,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 String status = result.split(" ", 2)[0];
                 String code = result.contains(expectedRejection[0])
                         ? expectedRejection[0] : "missing";
-                boolean propertyMatches = "computed hyphens".equals(expectedRejection[1])
+                boolean propertyMatches = expectedRejection[1].startsWith("contains:")
+                        ? result.contains("property=Some(\"")
+                                && result.contains(expectedRejection[1].substring("contains:".length()))
+                        : "computed hyphens".equals(expectedRejection[1])
                         ? result.contains("property=Some(\"computed hyphens ")
                         : result.contains("property=Some(\"" + expectedRejection[1] + "\")");
                 String property = propertyMatches ? expectedRejection[1] : "missing";

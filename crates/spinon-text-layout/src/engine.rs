@@ -142,6 +142,19 @@ impl TextLayoutEngine {
         } else {
             layout.break_all_lines(Some(line_break_width));
         }
+        if input.style.hyphens == Some(crate::HyphensMode::Auto)
+            && has_overwide_auto_hyphenated_line(
+                &layout,
+                &normalized.text,
+                input.style.font_size,
+                input.style.letter_spacing,
+                line_break_width,
+            )
+        {
+            // Parley treats U+00AD as zero-width while selecting a line. Reflow with room for
+            // the fixed profile's visible U+2010 only when the initial choice would overflow.
+            layout.break_all_lines(Some((line_break_width - input.style.font_size).max(0.0)));
+        }
         layout.align(Alignment::Start, AlignmentOptions::default());
         let layout_height = layout.height();
         if !layout_height.is_finite() || layout_height < 0.0 {
@@ -157,9 +170,10 @@ impl TextLayoutEngine {
             let text_range = line.text_range();
             let line_ends_with_soft_hyphen = valid_text_range(&text_range, &normalized.text)
                 && normalized.text[..text_range.end].ends_with('\u{00ad}');
-            let discretionary_hyphen_advance = if input.style.hyphens
-                == Some(crate::HyphensMode::Manual)
-                && line_index + 1 < line_count
+            let discretionary_hyphen_advance = if matches!(
+                input.style.hyphens,
+                Some(crate::HyphensMode::Manual | crate::HyphensMode::Auto)
+            ) && line_index + 1 < line_count
                 && line_ends_with_soft_hyphen
             {
                 // Parley 0.12 retains the SHY break but reports zero advance for it. The fixed
@@ -476,6 +490,26 @@ pub(super) fn valid_text_range(range: &Range<usize>, text: &str) -> bool {
         && range.end <= text.len()
         && text.is_char_boundary(range.start)
         && text.is_char_boundary(range.end)
+}
+
+fn has_overwide_auto_hyphenated_line(
+    layout: &parley::Layout<[u8; 4]>,
+    text: &str,
+    hyphen_advance: f32,
+    letter_spacing: f32,
+    available_width: f32,
+) -> bool {
+    let line_count = layout.lines().len();
+    layout.lines().enumerate().any(|(line_index, line)| {
+        if line_index + 1 >= line_count {
+            return false;
+        }
+        let range = line.text_range();
+        valid_text_range(&range, text)
+            && text[..range.end].ends_with('\u{00ad}')
+            && visible_line_advance(line.metrics(), letter_spacing) + hyphen_advance
+                > available_width
+    })
 }
 
 #[cfg(test)]

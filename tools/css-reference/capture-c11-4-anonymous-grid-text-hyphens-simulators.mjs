@@ -13,9 +13,10 @@ const androidApk = resolve(repositoryRoot,
   'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
-const evidenceDirectory = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-runtime-2026-11-01', target);
 const runPrefix = `c114-hyphens-${target}-${Date.now()}-${randomUUID().slice(0, 8)}`;
+const evidenceDirectory = resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-auto-runtime-2026-11-01',
+  target, runPrefix);
 const softHyphen = '\u00ad';
 const wordJoiner = '\u2060';
 const cases = [
@@ -38,14 +39,31 @@ const cases = [
   ['hyphens-manual-multiple-fixed-30', `AB${softHyphen}CD${softHyphen}EF`, 'manual', '30px', 30],
   ['hyphens-inherited-none-fixed-30', `AB${softHyphen}CD`, 'none', '30px', 30, true],
   ['hyphens-inherited-manual-fixed-30', `AB${softHyphen}CD`, 'manual', '30px', 30, true],
+  ['hyphens-auto-hyphenation-min', 'hyphenation', 'auto', 'min-content', 120],
+  ['hyphens-auto-hyphenation-max', 'hyphenation', 'auto', 'max-content', 120],
+  ['hyphens-auto-hyphenation-fixed-50', 'hyphenation', 'auto', '50px', 50],
+  ['hyphens-auto-internationalization-min', 'internationalization', 'auto', 'min-content', 120],
+  ['hyphens-auto-internationalization-max', 'internationalization', 'auto', 'max-content', 120],
+  ['hyphens-auto-internationalization-fixed-50', 'internationalization', 'auto', '50px', 50],
+  ['hyphens-auto-representation-min', 'representation', 'auto', 'min-content', 120],
+  ['hyphens-auto-representation-max', 'representation', 'auto', 'max-content', 120],
+  ['hyphens-auto-representation-fixed-50', 'representation', 'auto', '50px', 50],
 ].map(([id, text, specified, track, gridWidth, inherited = false]) => ({
-  id, text, specified, mode: specified === 'none' ? 'none' : 'manual', track, gridWidth,
+  id, text, specified, mode: specified === 'initial' ? 'manual' : specified, track, gridWidth,
   inherited, rootWidth: inherited ? 320 : gridWidth,
   gridNode: inherited ? 2 : 1, itemNode: inherited ? 3 : 2,
 }));
 const rejectionCases = [
-  { id: 'hyphens-auto-expected-reject', expectedReject: true },
-  { id: 'hyphens-invalid-expected-reject', expectedReject: true },
+  {
+    id: 'hyphens-auto-expected-reject', expectedReject: true,
+    code: 'layout_failed',
+    propertyContains: 'hyphens 입력이 고정 Ahem 10px ASCII direct-text profile과 일치하지 않습니다',
+    nodeID: 'missing',
+  },
+  {
+    id: 'hyphens-invalid-expected-reject', expectedReject: true,
+    code: 'unsupported_c114_hyphens_value', property: 'computed hyphens', nodeID: '1',
+  },
 ];
 
 function command(binary, args, {
@@ -67,7 +85,19 @@ function derive(scene) {
   const visibleText = scene.text.replaceAll(softHyphen, '');
   const maxContent = [...visibleText].length * 10;
   let segments;
-  if (scene.text.includes('-')) {
+  let autoLayoutText = scene.text;
+  if (scene.mode === 'auto') {
+    const syllablesByWord = {
+      hyphenation: ['hy', 'phen', 'ation'],
+      internationalization: ['in', 'ter', 'na', 'tion', 'al', 'iza', 'tion'],
+      representation: ['rep', 're', 'sen', 'ta', 'tion'],
+    };
+    const syllables = syllablesByWord[scene.text];
+    assert.ok(syllables, `${scene.id}: missing fixed syllable oracle`);
+    segments = syllables.map((syllable, index) =>
+      syllable.length * 10 + (index < syllables.length - 1 ? 10 : 0));
+    autoLayoutText = syllables.join(softHyphen);
+  } else if (scene.text.includes('-')) {
     const dash = scene.text.indexOf('-') + 1;
     segments = [scene.text.slice(0, dash).length * 10, scene.text.slice(dash).length * 10];
   } else if (scene.mode === 'manual' && scene.text.includes(softHyphen)) {
@@ -78,16 +108,17 @@ function derive(scene) {
   }
   const minContent = Math.max(...segments);
   const trackWidth = scene.track === 'min-content' ? minContent
-    : scene.track === 'max-content' ? maxContent : 30;
+    : scene.track === 'max-content' ? maxContent : scene.gridWidth;
   const lineAdvances = scene.track === 'max-content' ? [maxContent] : segments;
   const rowHeight = lineAdvances.length * 10;
   return {
     ...scene,
-    computedHyphens: scene.mode === 'none' ? 'None' : 'Manual',
-    layoutText: scene.mode === 'none' ? scene.text.replaceAll(softHyphen, wordJoiner) : scene.text,
+    computedHyphens: scene.mode === 'none' ? 'None' : scene.mode === 'auto' ? 'Auto' : 'Manual',
+    layoutText: scene.mode === 'none' ? scene.text.replaceAll(softHyphen, wordJoiner)
+      : scene.mode === 'auto' ? autoLayoutText : scene.text,
     minContent, maxContent, minContentHeight: segments.length * 10,
     maxContentHeight: 10, trackWidth, rowHeight, lineAdvances,
-    textWidth: Math.max(trackWidth, ...lineAdvances),
+    textWidth: Math.max(...lineAdvances),
   };
 }
 
@@ -96,7 +127,7 @@ const expectedValues = {
     source: 'CSS Text 3 §5.3 and fixed Ahem 10px precomparison',
     ahemFontSha256: 'b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448',
     runtimeToleranceCssPx: 1 / 64,
-    scope: 'ASCII A-F, visible hyphen, U+00AD, hyphens none/manual/initial only',
+    scope: 'Ahem 10px; existing none/manual cases plus exact English auto dictionary words in an opt-in fixture',
   },
   cases: [...cases.map(derive), ...rejectionCases],
 };
@@ -167,6 +198,44 @@ function validateScene(log, scene, runID) {
   assert.equal(layout.paragraphStyle.locale, 'en');
   assert.equal(layout.paragraphStyle.hyphens, expected.computedHyphens);
   assert.equal(layout.paragraphStyle.lineBreak, 'Normal');
+  if (scene.mode === 'auto') {
+    const syllablesByWord = {
+      hyphenation: ['hy', 'phen', 'ation'],
+      internationalization: ['in', 'ter', 'na', 'tion', 'al', 'iza', 'tion'],
+      representation: ['rep', 're', 'sen', 'ta', 'tion'],
+    };
+    const syllables = syllablesByWord[scene.text];
+    const breakOffsets = [];
+    let sourceOffset = 0;
+    for (const syllable of syllables.slice(0, -1)) {
+      sourceOffset += syllable.length;
+      breakOffsets.push(sourceOffset);
+    }
+    const expectedSourceMap = [];
+    let paragraphOffset = 0;
+    for (let index = 0; index <= scene.text.length; index++) {
+      if (breakOffsets.includes(index)) {
+        expectedSourceMap.push({
+          node: scene.itemNode, sourceUtf16: [index, index],
+          paragraphUtf8: [paragraphOffset, paragraphOffset + 2], inlineAncestors: [],
+        });
+        paragraphOffset += 2;
+      }
+      if (index < scene.text.length) {
+        expectedSourceMap.push({
+          node: scene.itemNode, sourceUtf16: [index, index + 1],
+          paragraphUtf8: [paragraphOffset, paragraphOffset + 1], inlineAncestors: [],
+        });
+        paragraphOffset += 1;
+      }
+    }
+    assert.deepEqual(layout.normalizedSources, expectedSourceMap,
+      `${scene.id}: synthetic hyphen source ranges must be empty UTF-16 ranges`);
+    assert.deepEqual(layout.sources.map(({ node, text: sourceText }) => ({
+      node, text: sourceText,
+    })), [{ node: scene.itemNode, text: scene.text }],
+    `${scene.id}: layout source text must remain unchanged`);
+  }
   assert.equal(layout.lines.length, expected.lineAdvances.length, 'line count');
   layout.lines.forEach((line, index) => {
     near(line.advance, expected.lineAdvances[index], `line ${index + 1} advance`);
@@ -197,9 +266,16 @@ function validateRejection(log, scene, runID) {
   const summary = log.split(/\r?\n/).find((line) => line.includes(marker));
   assert.ok(summary, `${scene.id}: rejection summary missing`);
   assert.ok(summary.includes('expected=true status=-11')
-    && summary.includes('code=unsupported_c114_hyphens_value')
-    && summary.includes('property=computed hyphens node_id=1 frames=absent'),
+    && summary.includes(`code=${scene.code}`)
+    && summary.includes(`node_id=${scene.nodeID} frames=absent`),
   `${scene.id}: rejection contract mismatch: ${summary}`);
+  if (scene.propertyContains) {
+    assert.ok(summary.includes(`property=contains:${scene.propertyContains}`),
+      `${scene.id}: rejection property mismatch: ${summary}`);
+  } else {
+    assert.ok(summary.includes(`property=${scene.property}`),
+      `${scene.id}: rejection property mismatch: ${summary}`);
+  }
   assert.ok(!log.includes('SPINON_C114_GRID_TRACE_CHUNK')
     && !log.includes('SPINON_C114_GRID_SUMMARY'), `${scene.id}: rejected scene published layout`);
   return {

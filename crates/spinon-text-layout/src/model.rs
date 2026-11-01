@@ -118,6 +118,8 @@ pub enum WordBreakMode {
 pub enum HyphensMode {
     None,
     Manual,
+    /// 영어 고정 사전 fixture에서만 자동 분절을 사용합니다.
+    Auto,
 }
 
 /// C11.4 anonymous Grid text profile의 computed CSS `overflow-wrap` 값입니다.

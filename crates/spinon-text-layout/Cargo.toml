@@ -4,11 +4,15 @@ version = "0.1.0"
 edition = "2024"
 publish = false
 
+[features]
+c11-4-hyphens-auto-fixture-test = ["dep:hypher"]
+
 [dependencies]
 linebender_resource_handle = "=0.1.1"
 parley = { version = "=0.12.0", default-features = false, features = ["std"] }
 swash = { version = "=0.2.10", default-features = false, features = ["render", "scale", "std"] }
 spinon-core = { path = "../spinon-core" }
+hypher = { version = "=0.1.8", default-features = false, features = ["english"], optional = true }
 
 [target.'cfg(any(target_os = "android", target_vendor = "apple"))'.dependencies]
 parley = { version = "=0.12.0", default-features = false, features = ["std", "system"] }
