@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spinon root HTML Grid author-style precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-width: 0;
+      }
+
+      main {
+        box-sizing: border-box;
+        display: grid;
+        width: 120px;
+        height: 70px;
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 20px 50px;
+        column-gap: 0;
+        row-gap: 0;
+        background-color: #101820;
+      }
+
+      main > div {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        min-width: 0;
+        min-height: 0;
+      }
+
+      .item-a {
+        grid-column: 2;
+        grid-row: 1;
+        background-color: #e5484d;
+      }
+
+      .item-b {
+        grid-column: 1;
+        grid-row: 2;
+        background-color: #3a8f5b;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="item-a"></div>
+      <div class="item-b"></div>
+    </main>
+  </body>
+</html>

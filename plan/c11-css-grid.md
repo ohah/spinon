@@ -10,6 +10,8 @@
 
 **2026-11-02 C11.4 anonymous Grid `text-transform: full-width` 병합 결과:** 구현 PR [#995](https://github.com/ohah/spinon/pull/995)은 2026-11-01T18:03:31Z Rebase and merge됐고 merge SHA는 `772df994a5fba4aa8d405b3f42792c281150f88c`다. direct `lang=ja`, Noto Sans KR 10px/400 및 고정 ASCII source 두 개로만 변환하는 opt-in runtime slice를 추가했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 4 scene을 각각 4/4 확인했다. Chrome 156은 target 값을 `none`으로 거부하며 screenshot은 layout 상태만 나타낸다. 일반 CSS admission·임의 Unicode·WPT·glyph pixel·실기기/hardware GPU는 포함되지 않는다. C11.4/C11과 공식 완료 `72/213`은 미완료다. [계획·사전 비교](./c11-4-anonymous-grid-text-transform-full-width.md) · [실행 근거와 한계](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-width-runtime-2026-11-02/README.md) · [병합 후 상태·로드맵 검토 30개](../spec/internal/evidence/c11-4-full-width-roadmap-postmerge-2026-11-02/roadmap-postmerge-review-30.md)
 
+**다음 root HTML 통합 계획:** [Parsed root HTML author CSS Grid runtime](./c11-root-html-grid-runtime.md)은 fixed-ID C11 fixture 경로에서 parsed root HTML의 일반 `display:grid` author CSS 경로로 연결하는 사전 비교·계획이다. 계획만 등록하며 implementation이나 공식 C11 완료를 뜻하지 않는다.
+
 **목표:** Android·iOS GPU UI에서 웹과 같은 CSS Grid 계산 결과를 만든다. Stylo의 computed CSS를 typed layout 입력으로 옮기고, 고정 Chromium oracle과 비교하며, Taffy의 Grid 알고리즘은 후보 계산기로만 사용한다. 단계별 제한 profile은 적용할 수 없는 문법·교차 동작을 성공처럼 건너뛰지 않는다.
 
 ## 로드맵 순서와 완료 범위
