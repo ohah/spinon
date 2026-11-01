@@ -2463,6 +2463,69 @@ test('C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reache
   assert.ok(evidence.includes('overflow'));
 });
 
+test('C11.4 word-break break-word interaction matrix stays fixture-only across both platforms', async () => {
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_word_break_overflow_wrap.rs',
+    'crates/spinon-runtime/Cargo.toml',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/word_break_overflow_wrap.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_word_break_overflow_wrap.rs',
+    'crates/spinon-style/Cargo.toml',
+    'crates/spinon-style/src/lib.rs',
+    'crates/spinon-style/src/c11_4_word_break_css.rs',
+    'crates/spinon-style/src/stylo_dom/cascade/incremental/source_word_break.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-anonymous-grid-text-word-break-overflow-wrap-simulators.mjs',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [runtimeGpu, ffiRoute, ffiScenes, runtimeCargo, runtimeRoute, runtimeScenes,
+    runtimeTests, runtimeTestSource, styleCargo, styleLib, cssAdapter, cascadeSource,
+    android, ios, capture, expectedText] = contents;
+  const expected = JSON.parse(expectedText);
+  const sceneIDs = expected.matrix.flatMap((pair) => expected.trackValues.map((track) =>
+    `word-break-${pair.wordBreak}-overflow-wrap-${pair.overflowWrap}-${track}`));
+  assert.equal(sceneIDs.length, 18);
+  assert.equal(new Set(sceneIDs).size, sceneIDs.length);
+  assert.match(runtimeGpu,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(ffiRoute,
+    /#\[path = "anonymous_text_items\/computed_word_break_overflow_wrap\.rs"\]\s*mod computed_word_break_overflow_wrap;/);
+  assert.match(runtimeCargo,
+    /c11-4-grid-track-sizing-fixture-test\s*=\s*\[[\s\S]*?spinon-style-to-layout\/c11-4-grid-track-sizing-fixture-test/);
+  assert.match(runtimeTests,
+    /#\[cfg\(feature = "c11-4-grid-track-sizing-fixture-test"\)\][\s\S]*anonymous_text_word_break_overflow_wrap;/);
+  assert.match(styleLib,
+    /#\[cfg\(feature = "c11-4-grid-track-sizing-fixture-test"\)\]\s*mod c11_4_word_break_css;/);
+  assert.match(styleCargo,
+    /c11-4-grid-track-sizing-fixture-test\s*=\s*\[\]/);
+  assert.ok(cssAdapter.includes('normalize_css_word_break_break_word'));
+  assert.ok(cascadeSource.includes('winning_word_break_source'));
+  assert.ok(cascadeSource.includes('stylesheet_sources'));
+  for (const sceneID of sceneIDs) {
+    for (const [label, source] of [
+      ['FFI catalog', ffiScenes], ['runtime catalog', runtimeScenes],
+      ['runtime verifier', runtimeTestSource],
+    ]) {
+      assert.ok(source.includes(sceneID), `${label} is missing ${sceneID}`);
+    }
+  }
+  assert.match(android,
+    /c114CombinedWordBreakOverflowWrapScene\([\s\S]*?String\[\] wordBreakValues = \{"normal", "break-word"\}[\s\S]*?String\[\] overflowWrapValues = \{"normal", "break-word", "anywhere"\}[\s\S]*?String\[\] tracks = \{"min-content", "max-content", "10px"\}[\s\S]*?candidate\.equals\(sceneId\)/);
+  assert.match(ios,
+    /c114CombinedWordBreakOverflowWrapScene[\s\S]*?for wordBreak in \["normal", "break-word"\][\s\S]*?for overflowWrap in \["normal", "break-word", "anywhere"\][\s\S]*?for track in \["min-content", "max-content", "10px"\][\s\S]*?sceneID == "word-break-/);
+  assert.ok(capture.includes('independent.matrix.flatMap'));
+  assert.ok(capture.includes('expectedValues.candidateScenes.length, 18'));
+  assert.ok(capture.includes('layout.paragraphStyle.wordBreak'));
+  assert.ok(capture.includes('layout.paragraphStyle.overflowWrap'));
+  assert.ok(capture.includes('pageSizeBytes'));
+});
+
 test('C11.4 computed text-transform scenes stay behind fixture-test gates', async () => {
   const paths = [
     'crates/spinon-ffi/src/runtime_gpu.rs',

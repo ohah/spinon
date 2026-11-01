@@ -7645,8 +7645,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             if (anonymousTextScene) {
                 boolean minContentTrack = sceneId.endsWith("-min-content");
-                boolean fixedOverflowWrapTrack = sceneId.startsWith("overflow-wrap-")
-                        && sceneId.endsWith("-fixed-10px");
+                boolean fixedOverflowWrapTrack = (sceneId.startsWith("overflow-wrap-")
+                        || sceneId.startsWith("word-break-"))
+                        && (sceneId.endsWith("-fixed-10px") || sceneId.endsWith("-10px"));
                 for (int index = 0; index < expectedNodes.length; index++) {
                     if (!measuredNodes[index]
                             || minContentWidthNodes[index] != !fixedOverflowWrapTrack
@@ -8084,8 +8085,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsAnonymousTextScene(sceneId)) {
             C114GenericDirectTextItemExpectation item = scene.items[0];
             boolean minContentTrack = sceneId.endsWith("-min-content");
-            boolean fixedOverflowWrapTrack = sceneId.startsWith("overflow-wrap-")
-                    && sceneId.endsWith("-fixed-10px");
+            boolean fixedOverflowWrapTrack = (sceneId.startsWith("overflow-wrap-")
+                    || sceneId.startsWith("word-break-"))
+                    && (sceneId.endsWith("-fixed-10px") || sceneId.endsWith("-10px"));
             double rowHeight = scene.rootHeight;
             int[] columnItems = fixedOverflowWrapTrack ? new int[0] : minContentTrack
                     ? new int[] {item.node, item.node} : new int[] {item.node, item.node};
@@ -12949,6 +12951,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static C114ComputedWordBreakScene c114ComputedWordBreakScene(String sceneId) {
         if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null) return null;
+        C114ComputedWordBreakScene combined = c114CombinedWordBreakOverflowWrapScene(sceneId);
+        if (combined != null) return combined;
         boolean minContentTrack = sceneId.endsWith("-min-content");
         switch (sceneId) {
             case "word-break-normal-unbroken-min-content":
@@ -13041,6 +13045,52 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             default:
                 return null;
         }
+    }
+
+    private static C114ComputedWordBreakScene c114CombinedWordBreakOverflowWrapScene(
+            String sceneId
+    ) {
+        String[] wordBreakValues = {"normal", "break-word"};
+        String[] overflowWrapValues = {"normal", "break-word", "anywhere"};
+        String[] tracks = {"min-content", "max-content", "10px"};
+        for (String wordBreak : wordBreakValues) {
+            for (String overflowWrap : overflowWrapValues) {
+                for (String track : tracks) {
+                    String candidate = "word-break-" + wordBreak + "-overflow-wrap-"
+                            + overflowWrap + "-" + track;
+                    if (!candidate.equals(sceneId)) continue;
+
+                    boolean minContentCanBreak = "break-word".equals(wordBreak)
+                            || "anywhere".equals(overflowWrap);
+                    boolean fixedTrackCanBreak = minContentCanBreak
+                            || "break-word".equals(overflowWrap);
+                    double minContent = minContentCanBreak ? 10 : 40;
+                    double minContentHeight = minContentCanBreak ? 40 : 10;
+                    double trackWidth = "min-content".equals(track)
+                            ? minContent : "max-content".equals(track) ? 40 : 10;
+                    double rowHeight = "min-content".equals(track)
+                            ? minContentHeight
+                            : "max-content".equals(track) ? 10 : fixedTrackCanBreak ? 40 : 10;
+                    double[] lineAdvances;
+                    if ("min-content".equals(track)) {
+                        lineAdvances = minContentCanBreak
+                                ? new double[] {10, 10, 10, 10} : new double[] {40};
+                    } else if ("max-content".equals(track) || !fixedTrackCanBreak) {
+                        lineAdvances = new double[] {40};
+                    } else {
+                        lineAdvances = new double[] {10, 10, 10, 10};
+                    }
+                    return new C114ComputedWordBreakScene(
+                            "XXXX", "en", "Ahem",
+                            "break-word".equals(wordBreak) ? "BreakWord" : "Normal",
+                            "break-word".equals(overflowWrap) ? "BreakWord"
+                                    : "anywhere".equals(overflowWrap) ? "Anywhere" : "Normal",
+                            minContent, 40, minContentHeight, 10,
+                            trackWidth, rowHeight, lineAdvances);
+                }
+            }
+        }
+        return null;
     }
 
     private static String c114ComputedLineBreakMode(String sceneId) {

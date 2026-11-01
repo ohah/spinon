@@ -29,6 +29,7 @@ use super::source_border::{
     CssLengthContext, computed_border_width_values, winning_border_width_sources,
 };
 use super::source_math::winning_layout_math_values;
+use super::source_word_break::{WordBreakSource, winning_word_break_source};
 use super::spacing::{computed_layout_insets, computed_layout_spacing};
 use super::{
     computed_aspect_ratio_serialization, computed_layout_aspect_ratio, computed_layout_border,
@@ -41,9 +42,13 @@ pub(super) fn computed_element_output(
     computed: &ComputedValues,
     node_id: NodeId,
     ancestor_hidden: bool,
-    source_math: BTreeMap<String, ComputedCssMath>,
-    source_border_widths: BTreeMap<&'static str, f32>,
+    source_overrides: ComputedElementSourceOverrides,
 ) -> Result<ComputedElementStyle, CssCascadeError> {
+    let ComputedElementSourceOverrides {
+        math_values: source_math,
+        border_widths: source_border_widths,
+        word_break_is_break_word,
+    } = source_overrides;
     let (background_color, background_paint) =
         runtime_paint::computed_background_for_profile(profile, computed, node_id)?;
     let (computed_color, computed_background_color) =
@@ -182,6 +187,9 @@ pub(super) fn computed_element_output(
             )
         })
         .collect::<BTreeMap<_, _>>();
+    if word_break_is_break_word && computed_properties.contains_key("word-break") {
+        computed_properties.insert("word-break".to_owned(), "break-word".to_owned());
+    }
     if computed_properties.contains_key("aspect-ratio") {
         computed_properties.insert(
             "aspect-ratio".to_owned(),
@@ -285,6 +293,12 @@ pub(super) fn computed_element_output(
         computed_color,
         computed_background_color,
     })
+}
+
+pub(super) struct ComputedElementSourceOverrides {
+    pub(super) math_values: BTreeMap<String, ComputedCssMath>,
+    pub(super) border_widths: BTreeMap<&'static str, f32>,
+    pub(super) word_break_is_break_word: bool,
 }
 
 fn computed_overflow(value: style::values::computed::Overflow) -> ComputedCssOverflow {
@@ -397,18 +411,20 @@ pub(super) fn compute_element_style(
     element: StyloElement<'_>,
     guards: &StylesheetGuards<'_>,
     parent_style: Option<&ComputedValues>,
+    parent_word_break_is_break_word: bool,
     viewport: CssViewport,
     stylesheet_sources: &HashMap<usize, String>,
-) -> style::servo_arc::Arc<ComputedValues> {
-    compute_element_style_with_math(
+) -> (style::servo_arc::Arc<ComputedValues>, bool) {
+    let (computed, _, _, word_break_is_break_word) = compute_element_style_with_math(
         stylist,
         element,
         guards,
         parent_style,
+        parent_word_break_is_break_word,
         viewport,
         stylesheet_sources,
-    )
-    .0
+    );
+    (computed, word_break_is_break_word)
 }
 
 pub(super) fn compute_element_style_with_math(
@@ -416,12 +432,14 @@ pub(super) fn compute_element_style_with_math(
     element: StyloElement<'_>,
     guards: &StylesheetGuards<'_>,
     parent_style: Option<&ComputedValues>,
+    parent_word_break_is_break_word: bool,
     viewport: CssViewport,
     stylesheet_sources: &HashMap<usize, String>,
 ) -> (
     style::servo_arc::Arc<ComputedValues>,
     BTreeMap<String, ComputedCssMath>,
     BTreeMap<&'static str, f32>,
+    bool,
 ) {
     let mut selector_caches = SelectorCaches::default();
     let mut matching_context = MatchingContext::<SelectorImpl>::new(
@@ -453,6 +471,18 @@ pub(super) fn compute_element_style_with_math(
         element.data().inline_style.as_ref(),
         stylesheet_sources,
     );
+    let word_break_is_break_word = match winning_word_break_source(
+        &rules,
+        guards,
+        element.data().inline_style.as_ref(),
+        element.data().inline_style_text.as_deref(),
+        stylesheet_sources,
+    ) {
+        Some(WordBreakSource::BreakWord) => true,
+        Some(WordBreakSource::Inherit) | None => parent_word_break_is_break_word,
+        Some(WordBreakSource::Revert | WordBreakSource::RevertLayer) => false,
+        Some(WordBreakSource::Other) => false,
+    };
     let inputs = CascadeInputs {
         rules: Some(rules),
         visited_rules: None,
@@ -487,5 +517,10 @@ pub(super) fn compute_element_style_with_math(
         element.view.shared_lock(),
         length_context,
     );
-    (computed, source_math, source_border_widths)
+    (
+        computed,
+        source_math,
+        source_border_widths,
+        word_break_is_break_word,
+    )
 }

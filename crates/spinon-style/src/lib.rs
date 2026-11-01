@@ -13,6 +13,8 @@ pub use stylo_dom::{
 };
 
 mod c10_flex_baseline_css;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+mod c11_4_word_break_css;
 mod computed_css_color;
 mod container_relative_units;
 mod font_relative_units;

@@ -33,6 +33,8 @@ mod text_indent_source;
 mod text_transform;
 #[path = "c11_4_anonymous_text/word_break.rs"]
 mod word_break;
+#[path = "c11_4_anonymous_text/word_break_overflow_wrap.rs"]
+mod word_break_overflow_wrap;
 #[path = "c11_4_anonymous_text/word_spacing.rs"]
 mod word_spacing;
 use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
@@ -65,6 +67,9 @@ use text_transform::{
 #[cfg(test)]
 use word_break::SCENES as WORD_BREAK_SCENES;
 use word_break::find_scene as word_break_scene;
+#[cfg(test)]
+use word_break_overflow_wrap::SCENES as WORD_BREAK_OVERFLOW_WRAP_SCENES;
+use word_break_overflow_wrap::find_scene as word_break_overflow_wrap_scene;
 use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
@@ -237,6 +242,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         && !WORD_SPACING_SCENE_IDS.contains(&scene_id)
         && !TEXT_INDENT_SCENE_IDS.contains(&scene_id)
         && !TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id)
+        && word_break_overflow_wrap_scene(scene_id).is_none()
         && line_break_scene(scene_id).is_none()
         && full_tab_scene(scene_id).is_none()
     {
@@ -258,7 +264,12 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     validate_snapshot_revision(snapshot, root, styles)?;
 
     let word_break_scene = word_break_scene(scene_id);
-    let locale = word_break::validate_owner_language(snapshot, root, scene_id)?;
+    let combined_break_scene = word_break_overflow_wrap_scene(scene_id);
+    let locale = if let Some(scene) = combined_break_scene {
+        word_break::validate_owner_language_value(snapshot, root, scene.language)?
+    } else {
+        word_break::validate_owner_language(snapshot, root, scene_id)?
+    };
     let line_break_scene = line_break_scene(scene_id);
     let line_break_locale = line_break::validate_owner_language(snapshot, root, scene_id)?;
     let text_transform_scene = text_transform_scene(scene_id);
@@ -317,7 +328,11 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if let Some(scene) = word_break_scene {
         paragraph_style.font_family = scene.font_family.to_owned();
         paragraph_style.word_break = scene.word_break;
-        paragraph_style.locale = locale;
+        paragraph_style.locale = locale.clone();
+    }
+    if let Some(scene) = combined_break_scene {
+        paragraph_style.word_break = scene.word_break;
+        paragraph_style.locale = locale.clone();
     }
     if let Some(scene) = line_break_scene {
         paragraph_style.font_family = scene.font_family.to_owned();
@@ -467,6 +482,9 @@ fn validate_direct_children(
         )],
         scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
             text_transform_scene(scene_id).unwrap().text,
+        )],
+        scene_id if word_break_overflow_wrap_scene(scene_id).is_some() => &[ExpectedChild::Text(
+            word_break_overflow_wrap_scene(scene_id).unwrap().text,
         )],
         scene_id if word_break_scene(scene_id).is_some() => &[ExpectedChild::Text(
             word_break_scene(scene_id).unwrap().text,
@@ -729,6 +747,9 @@ fn validate_grid_style(
             scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => {
                 (120.0, ComputedCssDimension::Auto)
             }
+            scene_id if word_break_overflow_wrap_scene(scene_id).is_some() => {
+                (120.0, ComputedCssDimension::Auto)
+            }
             scene_id if word_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
             scene_id if line_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
             scene_id if overflow_wrap_scene(scene_id).is_some() => {
@@ -976,6 +997,14 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         }]
     } else {
         match scene_id {
+            scene_id if word_break_overflow_wrap_scene(scene_id).is_some() => {
+                let scene = word_break_overflow_wrap_scene(scene_id).unwrap();
+                vec![match scene.track {
+                    OverflowWrapTrackKind::MinContent => ComputedCssGridTrackSize::MinContent,
+                    OverflowWrapTrackKind::MaxContent => ComputedCssGridTrackSize::MaxContent,
+                    OverflowWrapTrackKind::Fixed10Px => ComputedCssGridTrackSize::LengthPx(10.0),
+                }]
+            }
             scene_id if word_break_scene(scene_id).is_some() => {
                 vec![if word_break_scene(scene_id).unwrap().is_min_content {
                     ComputedCssGridTrackSize::MinContent
@@ -1140,6 +1169,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         || WORD_SPACING_SCENE_IDS.contains(&scene_id)
         || TEXT_INDENT_SCENE_IDS.contains(&scene_id)
         || TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id)
+        || word_break_overflow_wrap_scene(scene_id).is_some()
         || word_break_scene(scene_id).is_some()
         || line_break_scene(scene_id).is_some()
         || overflow_wrap_scene(scene_id).is_some()
@@ -1295,7 +1325,10 @@ fn expected_font_family(scene_id: &str) -> &'static str {
 }
 
 fn expected_word_break(scene_id: &str) -> &'static str {
-    word_break_scene(scene_id).map_or("normal", |scene| scene.computed_word_break)
+    word_break_overflow_wrap_scene(scene_id)
+        .map(|scene| scene.computed_word_break)
+        .or_else(|| word_break_scene(scene_id).map(|scene| scene.computed_word_break))
+        .unwrap_or("normal")
 }
 
 fn expected_line_break(scene_id: &str) -> &'static str {
@@ -1303,7 +1336,10 @@ fn expected_line_break(scene_id: &str) -> &'static str {
 }
 
 fn expected_overflow_wrap(scene_id: &str) -> &'static str {
-    overflow_wrap_scene(scene_id).map_or("normal", |scene| scene.computed_overflow_wrap)
+    word_break_overflow_wrap_scene(scene_id)
+        .map(|scene| scene.computed_overflow_wrap)
+        .or_else(|| overflow_wrap_scene(scene_id).map(|scene| scene.computed_overflow_wrap))
+        .unwrap_or("normal")
 }
 
 fn style_for(
@@ -1447,9 +1483,10 @@ mod tests {
         FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS,
         FULL_TAB_LF_SECOND_LINE_WIDTHS, FULL_TAB_VALUE_IDS, LINE_BREAK_SCENES,
         OVERFLOW_WRAP_SCENES, OverflowWrapTrackKind, SCENE_IDS, TEXT_TRANSFORM_SCENES,
-        TextIndentFlags, WORD_BREAK_SCENES, anonymous_paragraph_style, full_tab_expected_width,
-        full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto, grid_tracks_match,
-        parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
+        TextIndentFlags, WORD_BREAK_OVERFLOW_WRAP_SCENES, WORD_BREAK_SCENES,
+        anonymous_paragraph_style, expected_overflow_wrap, expected_word_break,
+        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
+        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
         validate_text_profile_properties,
     };
     use spinon_core::NodeId;
@@ -1539,6 +1576,40 @@ mod tests {
                 OverflowWrapTrackKind::MaxContent => ComputedCssGridTrackSize::MinContent,
                 OverflowWrapTrackKind::Fixed10Px => ComputedCssGridTrackSize::LengthPx(20.0),
             };
+            assert!(grid_tracks_match(
+                &grid(vec![expected], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+            assert!(!grid_tracks_match(
+                &grid(vec![wrong], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+        }
+    }
+
+    #[test]
+    fn combined_word_break_and_overflow_wrap_scenes_validate_both_values_and_exact_tracks() {
+        assert_eq!(WORD_BREAK_OVERFLOW_WRAP_SCENES.len(), 18);
+        for scene in WORD_BREAK_OVERFLOW_WRAP_SCENES {
+            let (expected, wrong) = match scene.track {
+                OverflowWrapTrackKind::MinContent => (
+                    ComputedCssGridTrackSize::MinContent,
+                    ComputedCssGridTrackSize::MaxContent,
+                ),
+                OverflowWrapTrackKind::MaxContent => (
+                    ComputedCssGridTrackSize::MaxContent,
+                    ComputedCssGridTrackSize::MinContent,
+                ),
+                OverflowWrapTrackKind::Fixed10Px => (
+                    ComputedCssGridTrackSize::LengthPx(10.0),
+                    ComputedCssGridTrackSize::LengthPx(20.0),
+                ),
+            };
+            assert_eq!(expected_word_break(scene.id), scene.computed_word_break);
+            assert_eq!(
+                expected_overflow_wrap(scene.id),
+                scene.computed_overflow_wrap
+            );
             assert!(grid_tracks_match(
                 &grid(vec![expected], vec![ComputedCssGridTrackSize::Auto]),
                 scene.id,

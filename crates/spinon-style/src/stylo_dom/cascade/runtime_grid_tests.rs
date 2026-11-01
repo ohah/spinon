@@ -27,6 +27,7 @@ const HTML: &str = "http://www.w3.org/1999/xhtml";
 struct Fixture {
     view: StyloDocumentView,
     root: spinon_core::NodeId,
+    child: spinon_core::NodeId,
 }
 
 fn fixture(style: &str) -> Fixture {
@@ -34,6 +35,18 @@ fn fixture(style: &str) -> Fixture {
 }
 
 fn fixture_with_base_url(style: &str, document_base_url: &str) -> Fixture {
+    fixture_with_styles(
+        style,
+        "display:block;box-sizing:border-box;width:20px;height:10px;margin:0;padding:0",
+        document_base_url,
+    )
+}
+
+fn fixture_with_child_style(style: &str, child_style: &str) -> Fixture {
+    fixture_with_styles(style, child_style, "https://spinon.invalid/document.html")
+}
+
+fn fixture_with_styles(style: &str, child_style: &str, document_base_url: &str) -> Fixture {
     let mut document = HostDocument::new().unwrap();
     let root = document.reserve_node_handle().unwrap();
     let child = document.reserve_node_handle().unwrap();
@@ -41,12 +54,7 @@ fn fixture_with_base_url(style: &str, document_base_url: &str) -> Fixture {
         DocumentChangeBatch::new(OwnerId::new(6059).unwrap(), document.document_revision());
     for (node, name, parent, node_style) in [
         (root, "root", HostParent::Root, style),
-        (
-            child,
-            "child",
-            HostParent::Node(root),
-            "display:block;box-sizing:border-box;width:20px;height:10px;margin:0;padding:0",
-        ),
+        (child, "child", HostParent::Node(root), child_style),
     ] {
         batch.push(DocumentOperation::CreateElement {
             node,
@@ -79,6 +87,7 @@ fn fixture_with_base_url(style: &str, document_base_url: &str) -> Fixture {
     Fixture {
         view,
         root: root.id(),
+        child: child.id(),
     }
 }
 
@@ -188,6 +197,9 @@ mod template_repeat;
 mod track_sizing;
 #[path = "runtime_grid_tests/tracks.rs"]
 mod tracks;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "runtime_grid_tests/word_break_alias.rs"]
+mod word_break_alias;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "runtime_grid_tests/zoom_fixture.rs"]
 mod zoom_fixture;

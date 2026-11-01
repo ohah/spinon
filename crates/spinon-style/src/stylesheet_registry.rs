@@ -208,6 +208,9 @@ impl StylesheetRegistry {
             &source.css,
             true,
         );
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let parser_css =
+            crate::c11_4_word_break_css::normalize_css_word_break_break_word(&parser_css, true);
         let stylesheet = Stylesheet::from_str(
             &parser_css,
             UrlExtraData::from(base_url),
@@ -399,6 +402,9 @@ pub(super) fn parse_inline_style_attribute(
     let diagnostics = ParseDiagnostics::default();
     let parser_source =
         crate::c10_flex_baseline_css::invalidate_chrome_unsupported_last_baseline(source, false);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let parser_source =
+        crate::c11_4_word_break_css::normalize_css_word_break_break_word(&parser_source, false);
     let declarations = parse_style_attribute(
         &parser_source,
         &UrlExtraData::from(base_url.clone()),
