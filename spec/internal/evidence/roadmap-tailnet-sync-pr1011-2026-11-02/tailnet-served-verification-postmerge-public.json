@@ -1,0 +1,254 @@
+{
+  "sourceHead": "fbf2c69125ef5242b43616ff817556e65f5057c0",
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1011-20261102/postmerge/route-publication",
+  "selectedRouteCount": 156,
+  "liveRouteCount": 91454,
+  "baselineRouteCount": 91348,
+  "baselineBytes": 4136831023,
+  "selectedRouteHash": "76ca8bf5b4ffa60df24c9f0f0d045838531edd62d0abb30289411e60a7ab11ce",
+  "backupCount": 21,
+  "backupChecks": [
+    "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-css-grid.md",
+    "plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+    "plan/c11-root-html-grid-anonymous-text.html",
+    "plan/c11-root-html-grid-anonymous-text.md",
+    "public/roadmap.html",
+    "roadmap.html",
+    "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+    "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+    "spec/plan/c11-css-grid.html",
+    "spec/plan/c11-css-grid.md",
+    "spec/plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+    "spec/plan/c11-root-html-grid-anonymous-text.html",
+    "spec/plan/c11-root-html-grid-anonymous-text.md",
+    "spec/public/roadmap.html",
+    "spec/STATUS.html",
+    "spec/STATUS.md",
+    "STATUS.html",
+    "STATUS.md"
+  ],
+  "noDeletes": true,
+  "deletedBaselineRouteCount": 0,
+  "requiredHttpRouteCount": 15,
+  "http": [
+    {
+      "kind": "local",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 495755,
+      "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7"
+    },
+    {
+      "kind": "tailnet",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 495755,
+      "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7"
+    },
+    {
+      "kind": "local",
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 605368,
+      "sha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66"
+    },
+    {
+      "kind": "tailnet",
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 605368,
+      "sha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66"
+    },
+    {
+      "kind": "local",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 749895,
+      "sha256": "61933f12de52168fff7e081b2f2c93d0c26ce1e35d166a1731270afe0db1db11"
+    },
+    {
+      "kind": "tailnet",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 749895,
+      "sha256": "61933f12de52168fff7e081b2f2c93d0c26ce1e35d166a1731270afe0db1db11"
+    },
+    {
+      "kind": "local",
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 605368,
+      "sha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 605368,
+      "sha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66"
+    },
+    {
+      "kind": "local",
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 750378,
+      "sha256": "456622ba48133a71e94b4f8a11a4f69b8119fec904368ae25f91d2d70330bbcf"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 750378,
+      "sha256": "456622ba48133a71e94b4f8a11a4f69b8119fec904368ae25f91d2d70330bbcf"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 83938,
+      "sha256": "683ea0eba77fac8e358584fbe8dcd9a4453ee129b12e0d0a7cd4f1c6e59e11c3"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 83938,
+      "sha256": "683ea0eba77fac8e358584fbe8dcd9a4453ee129b12e0d0a7cd4f1c6e59e11c3"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-root-html-grid-anonymous-text.html",
+      "status": 200,
+      "bytes": 42631,
+      "sha256": "b4d5945f5e2d9857b75191affe0d07ceb2d65efa1d70f3099e6989888e5c01a0"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-root-html-grid-anonymous-text.html",
+      "status": 200,
+      "bytes": 42631,
+      "sha256": "b4d5945f5e2d9857b75191affe0d07ceb2d65efa1d70f3099e6989888e5c01a0"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+      "status": 200,
+      "bytes": 36063,
+      "sha256": "d6c2340765f5ffa277f406d7060bc735d6e79c422b77234a234aec0e90cc88a7"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+      "status": 200,
+      "bytes": 36063,
+      "sha256": "d6c2340765f5ffa277f406d7060bc735d6e79c422b77234a234aec0e90cc88a7"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 35449,
+      "sha256": "df422e77d2f1c0c95b87db9596ed99adcf38744fd1e842ce94f99f8bac2b4707"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 35449,
+      "sha256": "df422e77d2f1c0c95b87db9596ed99adcf38744fd1e842ce94f99f8bac2b4707"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 42835,
+      "sha256": "18157feb3902718d8dde78a7ccd2767a1794fc9210227c2df6bdd228b892641f"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 42835,
+      "sha256": "18157feb3902718d8dde78a7ccd2767a1794fc9210227c2df6bdd228b892641f"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 37597,
+      "sha256": "453f6054abee2d5914e5a405ea6f028213bd5cbfd028e88b1cf652953cc3e127"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 37597,
+      "sha256": "453f6054abee2d5914e5a405ea6f028213bd5cbfd028e88b1cf652953cc3e127"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 36207,
+      "sha256": "7f1c8ebba2d2e5d921c19153ce904bffecefac3c3cca43a37724c26d659ab001"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 36207,
+      "sha256": "7f1c8ebba2d2e5d921c19153ce904bffecefac3c3cca43a37724c26d659ab001"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 35819,
+      "sha256": "1b24716cd29dccb3ad0aa1da3917e178d476c460beaf9b6f03588427b769aa2d"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 35819,
+      "sha256": "1b24716cd29dccb3ad0aa1da3917e178d476c460beaf9b6f03588427b769aa2d"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "status": 200,
+      "bytes": 26520,
+      "sha256": "8bb5c983e86fcbe17ac36745e9a4ea589cc7a71905922159a9daa1c49db660f0"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "status": 200,
+      "bytes": 26520,
+      "sha256": "8bb5c983e86fcbe17ac36745e9a4ea589cc7a71905922159a9daa1c49db660f0"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "status": 200,
+      "bytes": 78002,
+      "sha256": "55a8d56e0b2b134c23bbedd1267448d495f8a489cda4298782634e34edfac84c"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "status": 200,
+      "bytes": 78002,
+      "sha256": "55a8d56e0b2b134c23bbedd1267448d495f8a489cda4298782634e34edfac84c"
+    }
+  ],
+  "server": {
+    "backendState": "Running",
+    "self": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040,
+    "args": "node tailnet-preview-server.mjs"
+  }
+}

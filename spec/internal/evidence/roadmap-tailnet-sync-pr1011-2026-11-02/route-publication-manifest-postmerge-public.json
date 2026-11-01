@@ -1,0 +1,1158 @@
+{
+  "sourceHead": "fbf2c69125ef5242b43616ff817556e65f5057c0",
+  "sourceTree": "d60f436cc3051cac94106e9251e11d1e3e13ae1c",
+  "selectedSourceFileCount": 104,
+  "routeCount": 156,
+  "totalBytes": 9304119,
+  "changedRouteCount": 127,
+  "changedExistingRouteCount": 21,
+  "newRouteCount": 106,
+  "unchangedRouteCount": 29,
+  "baselineRouteCount": 91348,
+  "baselineBytes": 4136831023,
+  "noDeletes": true,
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.md",
+    "STATUS.html",
+    "spec/STATUS.md",
+    "spec/STATUS.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-root-html-grid-anonymous-text.html",
+    "plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.html",
+    "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png"
+  ],
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "staged": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "staged": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "staged": true
+    },
+    {
+      "href": "/spinon/plan/c11-root-html-grid-anonymous-text.html",
+      "route": "plan/c11-root-html-grid-anonymous-text.html",
+      "staged": true
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "staged": true
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "staged": true
+    }
+  ],
+  "routes": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousBytes": 638
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/abi.txt",
+      "bytes": 10,
+      "sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/api-level.txt",
+      "bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/build.log",
+      "bytes": 4848,
+      "sha256": "5c374cfe396771ccf9cc7836e041ed2ebd90d4b036e6c0c406c234076041b849",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "bytes": 26520,
+      "sha256": "8bb5c983e86fcbe17ac36745e9a4ea589cc7a71905922159a9daa1c49db660f0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/density.txt",
+      "bytes": 22,
+      "sha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/index-html-sha256.txt",
+      "bytes": 68,
+      "sha256": "0614d3d2b90499f9b96f0ba14ce9df7665a25cc0960cfd44aa65f85d8bf3ac5d",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/input-source-and-apk-sha256.txt",
+      "bytes": 305,
+      "sha256": "9bf54cc051b8f2e47392ada1d4171fa43e7132940e54c68efc8455643d6404ce",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/logcat.txt",
+      "bytes": 1317,
+      "sha256": "e9d0694559892039dd450950431c71b84d3cb7b06ff26ec3758d4b5b201777d0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/root-app-js-sha256.txt",
+      "bytes": 68,
+      "sha256": "8288c2d6487a8248b0b6e25e8c9a827c35a379481a560796fa6d025060920567",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/screen-size.txt",
+      "bytes": 25,
+      "sha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/screenshot-dimensions.txt",
+      "bytes": 213,
+      "sha256": "7b2bb3417511837fea8a507e89d3c30824ea7cfcd70c53889fa8555348348bc3",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/clippy-c11-4-feature.log",
+      "bytes": 842,
+      "sha256": "5fa004d5cfe4bda6110c55804b8246fab9a86992a42c2dfdd1d58e4a5b871a21",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/clippy-c11-4-library.log",
+      "bytes": 72,
+      "sha256": "4cf86278c1e6d659943a46a3d7e3da429ac15be90f0f17742e24ef85228e7d3e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/clippy-default.log",
+      "bytes": 172,
+      "sha256": "e0b14d0775250ce43460fd488e2ddac3c06474e9e00c94f552a8068e5347ef0e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ffi-c11-4-positive-control.log",
+      "bytes": 368,
+      "sha256": "3139f15cbc6a6f38703ba2800ba26620122981dd910fd0f093a14095a82ddb24",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.html",
+      "bytes": 36207,
+      "sha256": "7f1c8ebba2d2e5d921c19153ce904bffecefac3c3cca43a37724c26d659ab001",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.md",
+      "bytes": 5653,
+      "sha256": "19ab417d5c1db3c284d31feff01eb5a0848dc67c39230a6d5287562f093f4ef1",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.html",
+      "bytes": 37597,
+      "sha256": "453f6054abee2d5914e5a405ea6f028213bd5cbfd028e88b1cf652953cc3e127",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.md",
+      "bytes": 6725,
+      "sha256": "93352d8036e293c9b1aaad688481046b62868133aa5594c33ec3b0a06a0d7d74",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/build.log",
+      "bytes": 65369,
+      "sha256": "b0095a916820039df8928395881d0a926433728b5c0323ff938b8af9253fee2e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "bytes": 78002,
+      "sha256": "55a8d56e0b2b134c23bbedd1267448d495f8a489cda4298782634e34edfac84c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/device.txt",
+      "bytes": 78,
+      "sha256": "a03d6e21f27a823a8867543bd9be58ceb4e3a39e7dc0b74ac2b580185b9fe8d0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/input-source-and-app-sha256.txt",
+      "bytes": 539,
+      "sha256": "9d5e0f9697608215288bab1b59575adc39f5f791eb46d74861f8f9ffd547616a",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/install.log",
+      "bytes": 62,
+      "sha256": "477c7282972b2ce8393651f8383754d18e47437182cb90b5be84027887522a7f",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/launch.log",
+      "bytes": 28,
+      "sha256": "0e500e508ded2914356ba10a62d6fbe27da5eedcd4c183d50771e6675f64917c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/screenshot-dimensions.txt",
+      "bytes": 215,
+      "sha256": "21b7fa6d0d7eb72c69bf6ddaaad3ec40ed95ed818e5107607a0b49a16cc2a49c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/screenshot.log",
+      "bytes": 237,
+      "sha256": "d3975c70dec4159eb055910cf545029aa048882a8d9bd8e5a2cec94782c000f2",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/unified-log.txt",
+      "bytes": 37960,
+      "sha256": "c82a6a516b9718d0b0f586882faa01ed5d590926c43d821c9a01e2f158fac8f1",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/layout-c11-4-anonymous-text-tests.log",
+      "bytes": 4464,
+      "sha256": "98a5b6aa2945e4d14a9a171ad6ff89ca52c6f2c14d1646c0a0a91e3026ae404a",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "bytes": 42835,
+      "sha256": "18157feb3902718d8dde78a7ccd2767a1794fc9210227c2df6bdd228b892641f",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.md",
+      "bytes": 6196,
+      "sha256": "21edca8245d3d46b6d79ba86994b902a21f2145a2fba65c5656443667c3def78",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/runtime-root-html-regressions.log",
+      "bytes": 6598,
+      "sha256": "3286b97651e039d94c41f471f055c4ccedf452fd0d35a2f0bc8bfa88b69d3451",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/runtime-root-html-tests.log",
+      "bytes": 1697,
+      "sha256": "49615609cb02cfb4812e4c10bbdfb4627c869184b6a7d7012923e61aa4c0367e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/rustfmt.log",
+      "bytes": 49,
+      "sha256": "74e295129a1b32f232a9f92cd1a35a783b8a7ac1a6dcc9583e8528e015f9b7de",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/SHA256SUMS.txt",
+      "bytes": 3717,
+      "sha256": "de7c60220164f3e37fe5dd20102aed25e992af0568bc7536153484367adf45ff",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/style-to-layout-full-tests.log",
+      "bytes": 33320,
+      "sha256": "de9f67a8b0514e5cee7a94c04a5f16352bebc0b01188f9c8610638ba3705ac23",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/style-to-layout-root-html-tests.log",
+      "bytes": 540,
+      "sha256": "941d1e31172aa5e8ce390fb0d2470f3e26d272f56c57943283d44bbf9b9a7d63",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/style-to-render-tests.log",
+      "bytes": 8377,
+      "sha256": "f8552a11b8c734769c0e252daddfe73e02dfa33f41dbe9b22ae5118de21b24c9",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/chrome-156-anonymous-grid-text.png",
+      "bytes": 4448,
+      "sha256": "5aab1d77ba12772b8a0cb66fd6555504670d2242b89c087d543dba4c17da72c4",
+      "previousSha256": "5aab1d77ba12772b8a0cb66fd6555504670d2242b89c087d543dba4c17da72c4",
+      "previousBytes": 4448
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/chrome-observation.json",
+      "bytes": 2040,
+      "sha256": "c9b55d97b9dcdd8fb46a347c08f1230360f1f54eb5cee7f346707bd54b8ce3e0",
+      "previousSha256": "c9b55d97b9dcdd8fb46a347c08f1230360f1f54eb5cee7f346707bd54b8ce3e0",
+      "previousBytes": 2040
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/expected.json",
+      "bytes": 1302,
+      "sha256": "3778186f7d1a25cdf7e611873dead0a31e8435ec3b49f720249db9d01155d811",
+      "previousSha256": "3778186f7d1a25cdf7e611873dead0a31e8435ec3b49f720249db9d01155d811",
+      "previousBytes": 1302
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+      "bytes": 36449,
+      "sha256": "7de5290fe5cc57916bd3735dd8326575065c2fd9d3fbd7141fc70f3e11c0a50e",
+      "previousSha256": "ed25bfbdf76f6a57a2ccf246a38130b4da5706393bb184c8a4c02828caab5ce2",
+      "previousBytes": 45963
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+      "bytes": 6019,
+      "sha256": "1ab3938435cc84bc14da335c0762bdb24f49799aed31d4c34adae0628ba7727c",
+      "previousSha256": "1ab3938435cc84bc14da335c0762bdb24f49799aed31d4c34adae0628ba7727c",
+      "previousBytes": 6019
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+      "bytes": 35449,
+      "sha256": "df422e77d2f1c0c95b87db9596ed99adcf38744fd1e842ce94f99f8bac2b4707",
+      "previousSha256": "b056d7bbef84fcf896a5e7bf2c310c1636455eea7242f4d346bb119d20ce1616",
+      "previousBytes": 45045
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.md",
+      "bytes": 4464,
+      "sha256": "cc7956c7d66a4f47651e677e816f285aa6822b3074ac79fd4437ddf978c5e513",
+      "previousSha256": "cc7956c7d66a4f47651e677e816f285aa6822b3074ac79fd4437ddf978c5e513",
+      "previousBytes": 4464
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/SHA256SUMS.txt",
+      "bytes": 986,
+      "sha256": "0251aa3ad4833bdb3fa9745f14a5da7b9d03166b25af992f082046e54329bac5",
+      "previousSha256": "0251aa3ad4833bdb3fa9745f14a5da7b9d03166b25af992f082046e54329bac5",
+      "previousBytes": 986
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/verification.json",
+      "bytes": 2246,
+      "sha256": "fb4f591367326e43d36467fbd344f7406cd70cdbe9c6ec4ac7c2afae86bc450e",
+      "previousSha256": "fb4f591367326e43d36467fbd344f7406cd70cdbe9c6ec4ac7c2afae86bc450e",
+      "previousBytes": 2246
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "bytes": 35819,
+      "sha256": "1b24716cd29dccb3ad0aa1da3917e178d476c460beaf9b6f03588427b769aa2d",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.md",
+      "bytes": 5025,
+      "sha256": "13cd8c8ba4d24bd67884c72909672d1e1329bb92b82740f44b0b7a3ecbf1466e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 83938,
+      "sha256": "683ea0eba77fac8e358584fbe8dcd9a4453ee129b12e0d0a7cd4f1c6e59e11c3",
+      "previousSha256": "1abc73f5cc125037ab0c8983f9678a0f833c6f5361640db4b1cd67de1776ba99",
+      "previousBytes": 91858
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "bytes": 36730,
+      "sha256": "135de09f276a25819cca37fd1f08f3aa9b0d6fc60a3a6b2e5bea7b7c605a34cb",
+      "previousSha256": "44b67fa99714e76ade70b9fbf339bd275b0a962892ef382f7c416d5adbc86f7f",
+      "previousBytes": 35976
+    },
+    {
+      "path": "plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+      "bytes": 36063,
+      "sha256": "d6c2340765f5ffa277f406d7060bc735d6e79c422b77234a234aec0e90cc88a7",
+      "previousSha256": "a7d575cf34965589a237d44d42fcc455e535e29ecff36e0cd4d36a36aa300335",
+      "previousBytes": 45645
+    },
+    {
+      "path": "plan/c11-root-html-grid-anonymous-text-plan-review-20.md",
+      "bytes": 5378,
+      "sha256": "30c16e1c23380f4e9202f543cad4c7021b6baa342e9385d27be530dad3423a1b",
+      "previousSha256": "30c16e1c23380f4e9202f543cad4c7021b6baa342e9385d27be530dad3423a1b",
+      "previousBytes": 5378
+    },
+    {
+      "path": "plan/c11-root-html-grid-anonymous-text.html",
+      "bytes": 42631,
+      "sha256": "b4d5945f5e2d9857b75191affe0d07ceb2d65efa1d70f3099e6989888e5c01a0",
+      "previousSha256": "d9569cef280032dbefc05a89ce5c351ac2060c899b314799ee7fab34f047f2de",
+      "previousBytes": 51642
+    },
+    {
+      "path": "plan/c11-root-html-grid-anonymous-text.md",
+      "bytes": 9624,
+      "sha256": "20fc1003b5b96bef819110e9238c762364a4c176bd2929fbc7c41369dad8d468",
+      "previousSha256": "7a7e16d2d1f820b9d8a982627f33c845a98bb5c569d1cd4e0010c343cdcf7d79",
+      "previousBytes": 9441
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousBytes": 638
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previousSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previousBytes": 568
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 495755,
+      "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7",
+      "previousSha256": "25d48046ed43d98a9f7d8bdc75b929fe0b396dcf0973ed8214ed3b8c77630ac4",
+      "previousBytes": 494747
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previousSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "previousBytes": 4835
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 495755,
+      "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7",
+      "previousSha256": "25d48046ed43d98a9f7d8bdc75b929fe0b396dcf0973ed8214ed3b8c77630ac4",
+      "previousBytes": 494747
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/abi.txt",
+      "bytes": 10,
+      "sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/api-level.txt",
+      "bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/build.log",
+      "bytes": 4848,
+      "sha256": "5c374cfe396771ccf9cc7836e041ed2ebd90d4b036e6c0c406c234076041b849",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "bytes": 26520,
+      "sha256": "8bb5c983e86fcbe17ac36745e9a4ea589cc7a71905922159a9daa1c49db660f0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/density.txt",
+      "bytes": 22,
+      "sha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/index-html-sha256.txt",
+      "bytes": 68,
+      "sha256": "0614d3d2b90499f9b96f0ba14ce9df7665a25cc0960cfd44aa65f85d8bf3ac5d",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/input-source-and-apk-sha256.txt",
+      "bytes": 305,
+      "sha256": "9bf54cc051b8f2e47392ada1d4171fa43e7132940e54c68efc8455643d6404ce",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/logcat.txt",
+      "bytes": 1317,
+      "sha256": "e9d0694559892039dd450950431c71b84d3cb7b06ff26ec3758d4b5b201777d0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/root-app-js-sha256.txt",
+      "bytes": 68,
+      "sha256": "8288c2d6487a8248b0b6e25e8c9a827c35a379481a560796fa6d025060920567",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/screen-size.txt",
+      "bytes": 25,
+      "sha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/screenshot-dimensions.txt",
+      "bytes": 213,
+      "sha256": "7b2bb3417511837fea8a507e89d3c30824ea7cfcd70c53889fa8555348348bc3",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/clippy-c11-4-feature.log",
+      "bytes": 842,
+      "sha256": "5fa004d5cfe4bda6110c55804b8246fab9a86992a42c2dfdd1d58e4a5b871a21",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/clippy-c11-4-library.log",
+      "bytes": 72,
+      "sha256": "4cf86278c1e6d659943a46a3d7e3da429ac15be90f0f17742e24ef85228e7d3e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/clippy-default.log",
+      "bytes": 172,
+      "sha256": "e0b14d0775250ce43460fd488e2ddac3c06474e9e00c94f552a8068e5347ef0e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ffi-c11-4-positive-control.log",
+      "bytes": 368,
+      "sha256": "3139f15cbc6a6f38703ba2800ba26620122981dd910fd0f093a14095a82ddb24",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.html",
+      "bytes": 36693,
+      "sha256": "2ba84f6ef6cba86bb07c18893c5fa32477bcd7928ee79d66bebd509dd9441443",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.md",
+      "bytes": 5653,
+      "sha256": "19ab417d5c1db3c284d31feff01eb5a0848dc67c39230a6d5287562f093f4ef1",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.html",
+      "bytes": 37610,
+      "sha256": "be92fb93d559807625494944aa2a08db1ba2919d40b03445afcdf3401d91523c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.md",
+      "bytes": 6725,
+      "sha256": "93352d8036e293c9b1aaad688481046b62868133aa5594c33ec3b0a06a0d7d74",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/build.log",
+      "bytes": 65369,
+      "sha256": "b0095a916820039df8928395881d0a926433728b5c0323ff938b8af9253fee2e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "bytes": 78002,
+      "sha256": "55a8d56e0b2b134c23bbedd1267448d495f8a489cda4298782634e34edfac84c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/device.txt",
+      "bytes": 78,
+      "sha256": "a03d6e21f27a823a8867543bd9be58ceb4e3a39e7dc0b74ac2b580185b9fe8d0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/input-source-and-app-sha256.txt",
+      "bytes": 539,
+      "sha256": "9d5e0f9697608215288bab1b59575adc39f5f791eb46d74861f8f9ffd547616a",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/install.log",
+      "bytes": 62,
+      "sha256": "477c7282972b2ce8393651f8383754d18e47437182cb90b5be84027887522a7f",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/launch.log",
+      "bytes": 28,
+      "sha256": "0e500e508ded2914356ba10a62d6fbe27da5eedcd4c183d50771e6675f64917c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/screenshot-dimensions.txt",
+      "bytes": 215,
+      "sha256": "21b7fa6d0d7eb72c69bf6ddaaad3ec40ed95ed818e5107607a0b49a16cc2a49c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/screenshot.log",
+      "bytes": 237,
+      "sha256": "d3975c70dec4159eb055910cf545029aa048882a8d9bd8e5a2cec94782c000f2",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/unified-log.txt",
+      "bytes": 37960,
+      "sha256": "c82a6a516b9718d0b0f586882faa01ed5d590926c43d821c9a01e2f158fac8f1",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/layout-c11-4-anonymous-text-tests.log",
+      "bytes": 4464,
+      "sha256": "98a5b6aa2945e4d14a9a171ad6ff89ca52c6f2c14d1646c0a0a91e3026ae404a",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "bytes": 42858,
+      "sha256": "af6dbce245f817517e27ca275176d55127de7cbc805eb37db68f88d1e543aae0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.md",
+      "bytes": 6196,
+      "sha256": "21edca8245d3d46b6d79ba86994b902a21f2145a2fba65c5656443667c3def78",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/runtime-root-html-regressions.log",
+      "bytes": 6598,
+      "sha256": "3286b97651e039d94c41f471f055c4ccedf452fd0d35a2f0bc8bfa88b69d3451",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/runtime-root-html-tests.log",
+      "bytes": 1697,
+      "sha256": "49615609cb02cfb4812e4c10bbdfb4627c869184b6a7d7012923e61aa4c0367e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/rustfmt.log",
+      "bytes": 49,
+      "sha256": "74e295129a1b32f232a9f92cd1a35a783b8a7ac1a6dcc9583e8528e015f9b7de",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/SHA256SUMS.txt",
+      "bytes": 3717,
+      "sha256": "de7c60220164f3e37fe5dd20102aed25e992af0568bc7536153484367adf45ff",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/style-to-layout-full-tests.log",
+      "bytes": 33320,
+      "sha256": "de9f67a8b0514e5cee7a94c04a5f16352bebc0b01188f9c8610638ba3705ac23",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/style-to-layout-root-html-tests.log",
+      "bytes": 540,
+      "sha256": "941d1e31172aa5e8ce390fb0d2470f3e26d272f56c57943283d44bbf9b9a7d63",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/style-to-render-tests.log",
+      "bytes": 8377,
+      "sha256": "f8552a11b8c734769c0e252daddfe73e02dfa33f41dbe9b22ae5118de21b24c9",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/chrome-156-anonymous-grid-text.png",
+      "bytes": 4448,
+      "sha256": "5aab1d77ba12772b8a0cb66fd6555504670d2242b89c087d543dba4c17da72c4",
+      "previousSha256": "5aab1d77ba12772b8a0cb66fd6555504670d2242b89c087d543dba4c17da72c4",
+      "previousBytes": 4448
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/chrome-observation.json",
+      "bytes": 2040,
+      "sha256": "c9b55d97b9dcdd8fb46a347c08f1230360f1f54eb5cee7f346707bd54b8ce3e0",
+      "previousSha256": "c9b55d97b9dcdd8fb46a347c08f1230360f1f54eb5cee7f346707bd54b8ce3e0",
+      "previousBytes": 2040
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/expected.json",
+      "bytes": 1302,
+      "sha256": "3778186f7d1a25cdf7e611873dead0a31e8435ec3b49f720249db9d01155d811",
+      "previousSha256": "3778186f7d1a25cdf7e611873dead0a31e8435ec3b49f720249db9d01155d811",
+      "previousBytes": 1302
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+      "bytes": 36459,
+      "sha256": "99efa854d5701a4c74041f0084b686053b08a3d7effe205903ea6de439865303",
+      "previousSha256": "c64c5f3c9841091fd8e7d3b155296be11a1c71a8a0037ff8aa8038c4d9180287",
+      "previousBytes": 45973
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+      "bytes": 6019,
+      "sha256": "1ab3938435cc84bc14da335c0762bdb24f49799aed31d4c34adae0628ba7727c",
+      "previousSha256": "1ab3938435cc84bc14da335c0762bdb24f49799aed31d4c34adae0628ba7727c",
+      "previousBytes": 6019
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+      "bytes": 35460,
+      "sha256": "daf48567992fa29565d3fd3db9433c6cce1fab6ed2aea94bb667cc26c5a4aaba",
+      "previousSha256": "52d472a7be948c22854087bc8fda11f27b916d4a8cdd860ff58b5f89cb1efd76",
+      "previousBytes": 45056
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.md",
+      "bytes": 4464,
+      "sha256": "cc7956c7d66a4f47651e677e816f285aa6822b3074ac79fd4437ddf978c5e513",
+      "previousSha256": "cc7956c7d66a4f47651e677e816f285aa6822b3074ac79fd4437ddf978c5e513",
+      "previousBytes": 4464
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/SHA256SUMS.txt",
+      "bytes": 986,
+      "sha256": "0251aa3ad4833bdb3fa9745f14a5da7b9d03166b25af992f082046e54329bac5",
+      "previousSha256": "0251aa3ad4833bdb3fa9745f14a5da7b9d03166b25af992f082046e54329bac5",
+      "previousBytes": 986
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/verification.json",
+      "bytes": 2246,
+      "sha256": "fb4f591367326e43d36467fbd344f7406cd70cdbe9c6ec4ac7c2afae86bc450e",
+      "previousSha256": "fb4f591367326e43d36467fbd344f7406cd70cdbe9c6ec4ac7c2afae86bc450e",
+      "previousBytes": 2246
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "bytes": 35829,
+      "sha256": "537af4f5d7678810bc48451e4e5ed28264e84b9921598d82a08addbc65ea5785",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.md",
+      "bytes": 5025,
+      "sha256": "13cd8c8ba4d24bd67884c72909672d1e1329bb92b82740f44b0b7a3ecbf1466e",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "bytes": 83918,
+      "sha256": "10777ff239926d051a74c65cd67f345c02d9da1413d07e269c1de370aba47176",
+      "previousSha256": "35054f39888544aa18beff2b82856d9b4bd832e3747ee02c5ffa53d30bef2208",
+      "previousBytes": 72381
+    },
+    {
+      "path": "spec/plan/c11-css-grid.md",
+      "bytes": 36730,
+      "sha256": "135de09f276a25819cca37fd1f08f3aa9b0d6fc60a3a6b2e5bea7b7c605a34cb",
+      "previousSha256": "ff96e72017ff102dff985ca640546cb61ff90f10638231e48f0e70b30f2ddb69",
+      "previousBytes": 32153
+    },
+    {
+      "path": "spec/plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+      "bytes": 36078,
+      "sha256": "09ecc4015d2fa92608821249586b434844633e00a38cf25343446112026ccf3f",
+      "previousSha256": "5cc9c3f50dbefdbe86fc558495cfd47eb734d0738c789298cfe7eab76cb59859",
+      "previousBytes": 45660
+    },
+    {
+      "path": "spec/plan/c11-root-html-grid-anonymous-text-plan-review-20.md",
+      "bytes": 5378,
+      "sha256": "30c16e1c23380f4e9202f543cad4c7021b6baa342e9385d27be530dad3423a1b",
+      "previousSha256": "30c16e1c23380f4e9202f543cad4c7021b6baa342e9385d27be530dad3423a1b",
+      "previousBytes": 5378
+    },
+    {
+      "path": "spec/plan/c11-root-html-grid-anonymous-text.html",
+      "bytes": 42511,
+      "sha256": "5c1a56966ae0ff8b32619b0af5c60a90ce4488b5692a63d9e839320f9be92bfe",
+      "previousSha256": "769e8dcead0936a542ac0d80633552526a09f4e649b67283c67422c7d17f185e",
+      "previousBytes": 51643
+    },
+    {
+      "path": "spec/plan/c11-root-html-grid-anonymous-text.md",
+      "bytes": 9624,
+      "sha256": "20fc1003b5b96bef819110e9238c762364a4c176bd2929fbc7c41369dad8d468",
+      "previousSha256": "7a7e16d2d1f820b9d8a982627f33c845a98bb5c569d1cd4e0010c343cdcf7d79",
+      "previousBytes": 9441
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 495755,
+      "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7",
+      "previousSha256": "25d48046ed43d98a9f7d8bdc75b929fe0b396dcf0973ed8214ed3b8c77630ac4",
+      "previousBytes": 494747
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 750378,
+      "sha256": "456622ba48133a71e94b4f8a11a4f69b8119fec904368ae25f91d2d70330bbcf",
+      "previousSha256": "a89733fa942139464d07c35b5a0cf1937904428950c2e181a467310407a1909d",
+      "previousBytes": 759455
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 605368,
+      "sha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66",
+      "previousSha256": "642b04a26f16e3bdf945c3603cf503747e88d6e2ebbccde4d9158bd6159ef07e",
+      "previousBytes": 604526
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previousSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previousBytes": 73952
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "previousSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "previousBytes": 217061
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previousSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previousBytes": 384
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "previousSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "previousBytes": 98
+    },
+    {
+      "path": "static/js/async/route-062b4dc6c0df.6fb6bef76f.js",
+      "bytes": 12592,
+      "sha256": "f421c95671d0adc063f59253f3f714231f25e708b23c1e2f223908af3456b5d6",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-0fac454b8758.26ea444c0d.js",
+      "bytes": 8172,
+      "sha256": "503558ec21cab040191c51a74065d85c7951ece61e5cda046ac070f018bc189f",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-1273b3b45a07.fe8e5b308c.js",
+      "bytes": 16396,
+      "sha256": "3d4b72fd7b607e33266117029360e8b4ea21202b6739892968dc1bd55b6da75a",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-2b45afeddb8e.5b23d123f8.js",
+      "bytes": 8168,
+      "sha256": "84bca7d4f5520a5ce1d76504eddf5c599e75327d0d43436dba8f0c0cdadc90df",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-47ead9c37118.53567adf90.js",
+      "bytes": 11505,
+      "sha256": "f6c300607abbb54a272b449ce9d054557c2d524e778d3f0af92997eca14f3bbe",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-679f00fe556b.16034a3c16.js",
+      "bytes": 15631,
+      "sha256": "727eeaad061ed282e4d25a5eb961d0ae1c007be99c1c6d8750b52edfc66dbfd8",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-6865bc171a63.aa0e2b6ad9.js",
+      "bytes": 12029,
+      "sha256": "3b55beaf049161613c02a12b19fef82555b33ef2a2f671f8b3152bedf811c8c2",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-69f6a2e9742d.e703819147.js",
+      "bytes": 12597,
+      "sha256": "1170cd8a7110d8d6198c150be6159bff1d0db17709a731fe6ab0d37d162e9b03",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.d27e750445.js",
+      "bytes": 799350,
+      "sha256": "2a722c573f2229ec20fe0c74185104bf4859cb791af3f20386982496a31c5ba5",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.9e3fa5a056.js",
+      "bytes": 799383,
+      "sha256": "0436b3e7476f2e9b83af82e50d76d3eddf152cd9eff64733e228e1099d67caac",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-9f0a927f4164.4a93ca11c6.js",
+      "bytes": 12272,
+      "sha256": "0b3a225e5589d554a189f125e98dd2e5bb93634f0542750b27298f9ff7a4c449",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-a68fd5a125b8.04ccb06cdb.js",
+      "bytes": 12039,
+      "sha256": "43b62befade2e688a37f53cd98fd57a4677d8889b7130dd68d507c764833fdb0",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-a79e0e71c2bf.2df845b8c3.js",
+      "bytes": 12280,
+      "sha256": "ca9eb3c7ae203febf8a9d88df9739bd59e7165b7c42d2c832effcd69966b067d",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.3a8fdcb9e6.js",
+      "bytes": 51288,
+      "sha256": "cd61d3c5217605e127c2870bed495950b359ce23e3d68090a8a26688d94f09f9",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-cfe35579d41d.8292cdc70f.js",
+      "bytes": 10026,
+      "sha256": "2cfa19e91752dd4a736cc0ef0f0fe8f868dc85604a38943e8ad589fd7ed86d70",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.f5a9895c76.js",
+      "bytes": 51301,
+      "sha256": "f2ef1ea646b747b95d9288ee55c3665f5bd9042cc43c6cdac7998ef9f8e11c1c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-e182101d8918.5a58da9f3a.js",
+      "bytes": 15642,
+      "sha256": "a26e602fd2bd7f7bd03c3eb76c44054be220df2d55708cfeaaeb2260aae3ed9f",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-e46bab1df014.24cd4d14f8.js",
+      "bytes": 10015,
+      "sha256": "ccf735f4da39af78ae80e6d39144e0d392a55174a09e336807bc6e1e770599a3",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-e5ee6980d45f.7dc2bba887.js",
+      "bytes": 16382,
+      "sha256": "ae8b5be3649ca29d02fdcd363dcc0f2327dea779352c109be14a22a5be17831c",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/async/route-fb6d50bc4f58.0d9dd52459.js",
+      "bytes": 11500,
+      "sha256": "f099fc0c657c8853307fb6faf17897d3fadf6c19c86d5a3e4af3489c0c424cec",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/index.9c0b784003.js",
+      "bytes": 57063,
+      "sha256": "a25d8952a628fb3cf985c46befc4e3fdfa36beaee089aadabe68c29648cbf80a",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "previousSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "previousBytes": 218366
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previousSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previousBytes": 1209
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "previousSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "previousBytes": 35366
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previousSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previousBytes": 222
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "previousSha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "previousBytes": 472
+    },
+    {
+      "path": "static/search_index.ko.582367b2.json",
+      "bytes": 1075927,
+      "sha256": "582367b2ea16384f481765868d3fa5484ff3056c74ecf4b54d27d251f258348b",
+      "previousSha256": null,
+      "previousBytes": null
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 749895,
+      "sha256": "61933f12de52168fff7e081b2f2c93d0c26ce1e35d166a1731270afe0db1db11",
+      "previousSha256": "bf7cc40d23662bd13327a4c1cfa6492f983ddfe116799fe94787d12960fd3309",
+      "previousBytes": 758812
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 605368,
+      "sha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66",
+      "previousSha256": "642b04a26f16e3bdf945c3603cf503747e88d6e2ebbccde4d9158bd6159ef07e",
+      "previousBytes": 604526
+    }
+  ],
+  "selectedRouteHash": "76ca8bf5b4ffa60df24c9f0f0d045838531edd62d0abb30289411e60a7ab11ce"
+}

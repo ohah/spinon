@@ -1,0 +1,46 @@
+{
+  "sourceHead": "fbf2c69125ef5242b43616ff817556e65f5057c0",
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1011-20261102/postmerge/route-publication",
+  "selectedRouteCount": 156,
+  "changedRouteCount": 127,
+  "changedExistingRouteCount": 21,
+  "newRouteCount": 106,
+  "baselineRouteCount": 91348,
+  "openHandleCount": 1,
+  "atomicReadOnlyServerHandles": [
+    {
+      "route": "spec/plan/c11-css-grid.html",
+      "process": "node",
+      "pid": 28040,
+      "fd": "437r",
+      "readOnly": true
+    }
+  ],
+  "replacementMethod": "same-directory temporary file and atomic rename",
+  "noDeletes": true,
+  "server": {
+    "backendState": "Running",
+    "self": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040,
+    "args": "node tailnet-preview-server.mjs"
+  },
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.md",
+    "STATUS.html",
+    "spec/STATUS.md",
+    "spec/STATUS.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-root-html-grid-anonymous-text.html",
+    "plan/c11-root-html-grid-anonymous-text-plan-review-20.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-runtime-review-20.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/implementation-pr-diff-review-30.html",
+    "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+    "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png"
+  ],
+  "previewRootLabel": "~/Library/Application Support/SpinonPreview",
+  "backupRootLabel": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1012-c11-progress-2026-11-02/pass01"
+}
