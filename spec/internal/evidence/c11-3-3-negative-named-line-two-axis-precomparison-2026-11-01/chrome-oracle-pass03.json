@@ -1,0 +1,197 @@
+{
+  "environment": {
+    "devicePixelRatio": 1,
+    "title": "C11.3.3 two-axis negative named lines oracle",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": [
+      1280,
+      633
+    ]
+  },
+  "scenes": [
+    {
+      "columns": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "columns-only-auto",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-1 ghost",
+      "itemGridColumnStart": "-4 ghost",
+      "itemGridRowEnd": "2",
+      "itemGridRowStart": "1",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "1 / 2",
+      "tracksColumns": "6px 6px 6px 0px 20px",
+      "tracksRows": "15px"
+    },
+    {
+      "columns": "1 / 2",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "rows-only-auto",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "2",
+      "itemGridColumnStart": "1",
+      "itemGridRowEnd": "-1 ghost",
+      "itemGridRowStart": "-4 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-4 ghost / -1 ghost",
+      "tracksColumns": "20px",
+      "tracksRows": "4px 4px 4px 0px 15px"
+    },
+    {
+      "columns": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "both-axes-auto",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-1 ghost",
+      "itemGridColumnStart": "-4 ghost",
+      "itemGridRowEnd": "-1 ghost",
+      "itemGridRowStart": "-4 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-4 ghost / -1 ghost",
+      "tracksColumns": "6px 6px 6px 0px 20px",
+      "tracksRows": "4px 4px 4px 0px 15px"
+    },
+    {
+      "columns": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "5px 7px",
+      "gridAutoRows": "3px 4px",
+      "id": "both-axes-fixed-pattern",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-1 ghost",
+      "itemGridColumnStart": "-4 ghost",
+      "itemGridRowEnd": "-1 ghost",
+      "itemGridRowStart": "-4 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-4 ghost / -1 ghost",
+      "tracksColumns": "5px 7px 5px 7px 20px",
+      "tracksRows": "3px 4px 3px 4px 15px"
+    },
+    {
+      "columns": "-1 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "both-axes-equal-endpoints",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-1 ghost",
+      "itemGridColumnStart": "-1 ghost",
+      "itemGridRowEnd": "-1 ghost",
+      "itemGridRowStart": "-1 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-1 ghost / -1 ghost",
+      "tracksColumns": "18px 20px",
+      "tracksRows": "12px 15px"
+    },
+    {
+      "columns": "-1 ghost / -4 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "both-axes-reversed",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-4 ghost",
+      "itemGridColumnStart": "-1 ghost",
+      "itemGridRowEnd": "-4 ghost",
+      "itemGridRowStart": "-1 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-1 ghost / -4 ghost",
+      "tracksColumns": "6px 6px 6px 0px 20px",
+      "tracksRows": "4px 4px 4px 0px 15px"
+    },
+    {
+      "columns": "-1 ghost / -4 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "columns-reversed",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-4 ghost",
+      "itemGridColumnStart": "-1 ghost",
+      "itemGridRowEnd": "-1 ghost",
+      "itemGridRowStart": "-4 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-4 ghost / -1 ghost",
+      "tracksColumns": "6px 6px 6px 0px 20px",
+      "tracksRows": "4px 4px 4px 0px 15px"
+    },
+    {
+      "columns": "-4 ghost / -1 ghost",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "id": "rows-reversed",
+      "itemFrame": [
+        0,
+        0,
+        18,
+        12
+      ],
+      "itemGridColumnEnd": "-1 ghost",
+      "itemGridColumnStart": "-4 ghost",
+      "itemGridRowEnd": "-4 ghost",
+      "itemGridRowStart": "-1 ghost",
+      "rootFrame": [
+        120,
+        100
+      ],
+      "rows": "-1 ghost / -4 ghost",
+      "tracksColumns": "6px 6px 6px 0px 20px",
+      "tracksRows": "4px 4px 4px 0px 15px"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "basis": "Independent CSS Grid line-resolution and track-sizing calculation; dimensions are CSS px.",
+  "scenes": [
+    {
+      "id": "columns-only-auto",
+      "columns": [6, 6, 6, 0, 20],
+      "rows": [15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "rows-only-auto",
+      "columns": [20],
+      "rows": [4, 4, 4, 0, 15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "both-axes-auto",
+      "columns": [6, 6, 6, 0, 20],
+      "rows": [4, 4, 4, 0, 15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "both-axes-fixed-pattern",
+      "columns": [5, 7, 5, 7, 20],
+      "rows": [3, 4, 3, 4, 15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "both-axes-equal-endpoints",
+      "columns": [18, 20],
+      "rows": [12, 15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "both-axes-reversed",
+      "columns": [6, 6, 6, 0, 20],
+      "rows": [4, 4, 4, 0, 15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "columns-reversed",
+      "columns": [6, 6, 6, 0, 20],
+      "rows": [4, 4, 4, 0, 15],
+      "itemFrame": [0, 0, 18, 12]
+    },
+    {
+      "id": "rows-reversed",
+      "columns": [6, 6, 6, 0, 20],
+      "rows": [4, 4, 4, 0, 15],
+      "itemFrame": [0, 0, 18, 12]
+    }
+  ]
+}
