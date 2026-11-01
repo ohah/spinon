@@ -75,7 +75,30 @@ pub(super) fn validate_visible_tree(
             }
         }
         if let Some(children) = snapshot.children(handle) {
-            pending.extend(children.map(|child| (child, hidden)));
+            for child in children {
+                if !hidden
+                    && display == "grid"
+                    && snapshot.node(child).is_some_and(|node| {
+                        matches!(
+                            node.kind(),
+                            HostNodeKind::Text(text)
+                                if text.to_string_lossy().chars().any(|character| {
+                                    !matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
+                                })
+                        )
+                    })
+                {
+                    return Err(layout_failure(
+                        "unsupported_root_html_grid_text_item",
+                        Some(handle.id().get()),
+                        Some(
+                            "direct text under a Grid container is outside this C11.1 slice"
+                                .to_owned(),
+                        ),
+                    ));
+                }
+                pending.push((child, hidden));
+            }
         }
     }
     Ok(visible_elements)

@@ -1,0 +1,36 @@
+{
+  "fixture": "tests/fixtures/css/c11/root-html-grid-visible-overflow.html",
+  "browser": "Agent Browser 0.31.1",
+  "engine": "HeadlessChrome 156.0.0.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewportCssPx": {
+    "width": 1280,
+    "height": 633,
+    "deviceScaleFactor": 1
+  },
+  "frames": {
+    "main": {
+      "x": 0,
+      "y": 0,
+      "width": 120,
+      "height": 70
+    },
+    "itemA": {
+      "x": 0,
+      "y": 0,
+      "width": 41,
+      "height": 71
+    },
+    "itemB": {
+      "x": 40,
+      "y": 0,
+      "width": 81,
+      "height": 70
+    }
+  },
+  "mainScrollOverflow": {
+    "right": true,
+    "bottom": true
+  },
+  "screenshot": "chrome-visible-overflow.png"
+}

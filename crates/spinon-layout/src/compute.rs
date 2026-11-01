@@ -264,10 +264,12 @@ fn validate_text_paragraphs(
                             };
                             if input.nodes()[child_position].style.display
                                 != crate::LayoutDisplay::Block
+                                && input.nodes()[child_position].style.display
+                                    != crate::LayoutDisplay::Grid
                             {
                                 return Err(LayoutError::UnsupportedTextParagraph {
                                     node: id,
-                                    reason: "anonymous flow child는 display:block이어야 합니다",
+                                    reason: "anonymous flow child는 display:block 또는 grid여야 합니다",
                                 });
                             }
                             if input.positioning.get(block).is_some_and(|positioning| {

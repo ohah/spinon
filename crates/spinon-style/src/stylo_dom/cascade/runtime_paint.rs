@@ -95,6 +95,8 @@ pub(super) const RUNTIME_ROOT_HTML_TEXT_PAINT_AUTHOR_PROPERTIES: &[&str] = &[
     "text-align",
     "direction",
     "writing-mode",
+    "grid-template-columns",
+    "grid-template-rows",
     "overflow",
     "overflow-x",
     "overflow-y",
@@ -346,6 +348,9 @@ pub(super) fn runtime_root_html_text_paint_properties() -> Vec<(&'static str, Lo
         ("writing-mode", LonghandId::WritingMode),
         ("overflow-x", LonghandId::OverflowX),
         ("overflow-y", LonghandId::OverflowY),
+        ("grid-template-columns", LonghandId::GridTemplateColumns),
+        ("grid-template-rows", LonghandId::GridTemplateRows),
+        ("grid-auto-flow", LonghandId::GridAutoFlow),
     ]);
     properties.sort_by_key(|(name, _)| *name);
     properties.dedup_by_key(|(name, _)| *name);

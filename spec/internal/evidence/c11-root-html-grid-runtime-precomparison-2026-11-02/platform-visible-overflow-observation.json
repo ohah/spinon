@@ -1,0 +1,133 @@
+{
+  "baseHead": "caaf10f187553b4c4a351d9b9c1e96eb53387e08",
+  "candidateSourceManifest": {
+    "path": "candidate-source.sha256",
+    "sha256": "6aebcbad26fc2402d7299c3d8b396e48a60f821c779029931409500f6746a2ea"
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-visible-overflow.html",
+    "sha256": "0a5afde5eab0c89e3352cf6ff4b195e0d8fd8b4eaa79c823e1df8a04a93c8b56"
+  },
+  "rootAppProbe": {
+    "path": "root-app-runtime-probe.js",
+    "sha256": "465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991"
+  },
+  "expectedFramesCssPx": {
+    "main": [
+      0,
+      0,
+      120,
+      70
+    ],
+    "itemA": [
+      0,
+      0,
+      41,
+      71
+    ],
+    "itemB": [
+      40,
+      0,
+      81,
+      70
+    ],
+    "overflowExtent": [
+      121,
+      71
+    ]
+  },
+  "android": {
+    "device": "emulator-5556",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "route": "default Root HTML app; no launch override",
+    "features": {
+      "c04RuntimeGpu": true,
+      "c04RuntimeGpuFixtureTest": false
+    },
+    "renderer": "ANGLE / Vulkan / SwiftShader software",
+    "viewportCssPx": [
+      411.42856,
+      841.52374
+    ],
+    "deviceScaleFactor": 2.625,
+    "runtime": {
+      "layout": "ready",
+      "boxes": 5,
+      "rootFrameCssPx": [
+        411.42856,
+        70
+      ],
+      "drawPresentedBoxes": 5
+    },
+    "assetHashes": {
+      "index.html": "0a5afde5eab0c89e3352cf6ff4b195e0d8fd8b4eaa79c823e1df8a04a93c8b56",
+      "root-app.js": "465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991"
+    },
+    "apk": {
+      "path": "build/spinon/artifacts/android-c11-root-html-grid-visible-overflow-current-source.apk",
+      "sha256": "b499603a657cac7294097a72e41b9c1e539c57b2c1a77bc46f308c358cd89ef1"
+    },
+    "screenshot": {
+      "path": "android-api37-avd-visible-overflow-current-source.png",
+      "sha256": "aa65b942e3ce8f5b3f2c3db5bf3bf9204b8ec3c42ffe68cc4f13ddbf2923cc4f"
+    },
+    "runtimeLog": {
+      "path": "android-api37-avd-visible-overflow-current-source.log",
+      "sha256": "9e5db19488074582d924c5b6f89c66a8c9c9cdae0388ad9ec8bdc2f64a420597"
+    },
+    "nativeLibrary": {
+      "path": "lib/arm64-v8a/libspinon_bootstrap.so inside APK",
+      "sha256": "47ad1f430f46fff374a5c19ad2d92a5e3a60433967ba33a4836cf36a01367997"
+    }
+  },
+  "ios": {
+    "device": "iPhone 17 Pro",
+    "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "runtime": {
+      "layout": "ready",
+      "boxes": 5,
+      "rootFrameCssPx": [
+        402,
+        70
+      ],
+      "drawPresentedBoxes": 5
+    },
+    "route": "default Root HTML app; no launch arguments",
+    "features": {
+      "c04RuntimeGpu": true,
+      "c04RuntimeGpuFixtureTest": false
+    },
+    "viewportCssPx": [
+      402,
+      778
+    ],
+    "deviceScaleFactor": 3,
+    "drawablePx": [
+      1206,
+      2334
+    ],
+    "assetHashes": {
+      "index.html": "0a5afde5eab0c89e3352cf6ff4b195e0d8fd8b4eaa79c823e1df8a04a93c8b56",
+      "root-app.js": "465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991"
+    },
+    "executable": {
+      "path": "build/spinon/artifacts/ios-c11-root-html-grid-current-source",
+      "sha256": "169ba1fc9b544b423e52b7fd549a1fd141a2d9a80a226739f938b656bf46d3d0"
+    },
+    "screenshot": {
+      "path": "ios-26_2-simulator-visible-overflow-current-source.png",
+      "sha256": "dfbfa8f272770bbca30b2f83b56eb8b292f1c51fe70c7703a7ba3abdd4111854"
+    },
+    "runtimeLog": {
+      "path": "ios-26_2-simulator-visible-overflow-runtime-current-source.log",
+      "sha256": "61d0cf46ed667c1e64f0651ae63ae624c4b818e8618f57809a911efd0163e275"
+    }
+  },
+  "captureLimits": [
+    "Screenshots are simulator display captures, not Android PixelCopy or iOS Metal drawable readback.",
+    "iOS capture is before compositor scanout.",
+    "Logs assert the full scene box count and root frame; individual item geometry and overflow extent are asserted by the Root HTML Rust runtime test.",
+    "The connected SM-S731N Android device was not used; the selected target was the API 37 AVD."
+  ]
+}

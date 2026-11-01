@@ -1,0 +1,110 @@
+{
+  "baseHead": "caaf10f187553b4c4a351d9b9c1e96eb53387e08",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-author-precomparison.html",
+    "sha256": "39f70509e281ffb542881a2049769133e1b95c200308c5c53b404df261c9ff3d"
+  },
+  "rootAppProbe": {
+    "path": "root-app-runtime-probe.js",
+    "sha256": "465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991"
+  },
+  "android": {
+    "device": "emulator-5556",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "route": "default Root HTML app; no launch override",
+    "features": {
+      "c04RuntimeGpu": true,
+      "c04RuntimeGpuFixtureTest": false
+    },
+    "renderer": "ANGLE / Vulkan / SwiftShader software",
+    "viewportCssPx": [
+      411.42856,
+      841.52374
+    ],
+    "deviceScaleFactor": 2.625,
+    "surfaceTexturePx": [
+      1080,
+      2209
+    ],
+    "runtime": {
+      "layout": "ready",
+      "boxes": 5,
+      "rootFrameCssPx": [
+        411.42856,
+        70
+      ]
+    },
+    "apk": {
+      "path": "build/spinon/artifacts/android-c11-root-html-grid-base-current-source.apk",
+      "sha256": "cde3286301d0db502c6b5c122ff8f9d0476fb1936575a42d2657244b3f2592c9"
+    },
+    "screenshot": {
+      "path": "android-api37-avd-grid-current-source.png",
+      "sha256": "60df4e0b6aaea30243b39ae8be0a129b34839bd8e1c55520a016e8d113621e77"
+    },
+    "runtimeLog": {
+      "path": "android-api37-avd-runtime-current-source.log",
+      "sha256": "76fecd104a3620ce76e8f8f808cc7b124ce90a183391ee92b234230f9357b11e"
+    },
+    "nativeLibrary": {
+      "path": "lib/arm64-v8a/libspinon_bootstrap.so inside APK",
+      "sha256": "47ad1f430f46fff374a5c19ad2d92a5e3a60433967ba33a4836cf36a01367997"
+    },
+    "assetHashes": {
+      "index.html": "39f70509e281ffb542881a2049769133e1b95c200308c5c53b404df261c9ff3d",
+      "root-app.js": "465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991"
+    }
+  },
+  "ios": {
+    "device": "iPhone 17 Pro",
+    "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "runtime": {
+      "layout": "ready",
+      "boxes": 5,
+      "rootFrameCssPx": [
+        402,
+        70
+      ]
+    },
+    "route": "default Root HTML app; no launch arguments",
+    "features": {
+      "c04RuntimeGpu": true,
+      "c04RuntimeGpuFixtureTest": false
+    },
+    "viewportCssPx": [
+      402,
+      778
+    ],
+    "deviceScaleFactor": 3,
+    "drawablePx": [
+      1206,
+      2334
+    ],
+    "executable": {
+      "path": "build/spinon/artifacts/ios-c11-root-html-grid-current-source",
+      "sha256": "169ba1fc9b544b423e52b7fd549a1fd141a2d9a80a226739f938b656bf46d3d0"
+    },
+    "screenshot": {
+      "path": "ios-26_2-simulator-grid-current-source.png",
+      "sha256": "2373f175637b28d53891d79b65bd2d1abd3994889756a191f37f84be9edac780"
+    },
+    "runtimeLog": {
+      "path": "ios-26_2-simulator-runtime-current-source.log",
+      "sha256": "b9f14b37ee28f2be5adf2575b30ee23afe5efa70f233ba11e75f3f33ac006797"
+    },
+    "assetHashes": {
+      "index.html": "39f70509e281ffb542881a2049769133e1b95c200308c5c53b404df261c9ff3d",
+      "root-app.js": "465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991"
+    }
+  },
+  "captureLimits": [
+    "Screenshots are simulator display captures, not Android PixelCopy or iOS Metal drawable readback.",
+    "iOS capture is before compositor scanout.",
+    "App logs report the complete scene box count and root frame; exact individual item frames are asserted by the focused Rust runtime test."
+  ],
+  "candidateSourceManifest": {
+    "path": "candidate-source.sha256",
+    "sha256": "6aebcbad26fc2402d7299c3d8b396e48a60f821c779029931409500f6746a2ea"
+  }
+}

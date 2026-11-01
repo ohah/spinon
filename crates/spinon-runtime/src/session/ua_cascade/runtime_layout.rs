@@ -1816,7 +1816,7 @@ fn runtime_frames(
         let include_frame = if root_html_text_profile {
             match display {
                 Some("inline") => false,
-                Some("block") => true,
+                Some("block" | "grid") => true,
                 Some(value) => {
                     return Err(layout_failure(
                         "unsupported_root_html_default_render_display",

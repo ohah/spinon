@@ -282,7 +282,7 @@ fn runtime_document_order(
         let display = style.properties.get("display").map(String::as_str);
         document_nodes.push(node.id());
         let absolute = style.properties.get("position").map(String::as_str) == Some("absolute");
-        if !hidden && (!root_html_text_profile || display == Some("block")) {
+        if !hidden && (!root_html_text_profile || matches!(display, Some("block" | "grid"))) {
             visible_nodes.insert(node.id());
             if absolute {
                 positioned_roots.push(handle);
@@ -308,7 +308,7 @@ fn runtime_document_order(
             styles
                 .get(node)
                 .and_then(|style| style.properties.get("display"))
-                .is_some_and(|display| display == "block")
+                .is_some_and(|display| matches!(display.as_str(), "block" | "grid"))
         });
     }
     let unique_paint_nodes = paint_nodes

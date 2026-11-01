@@ -41,6 +41,9 @@ pub(super) fn project_grid_layout_with_math(
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
+    if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        validate_root_html_fixed_grid_tracks(node, grid)?;
+    }
     let has_auto_repeat = grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some();
     if has_auto_repeat {
         let property = if grid.columns_auto_repeat.is_some() {
@@ -106,6 +109,69 @@ pub(super) fn project_grid_layout_with_math(
         |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
         |_| Ok(()),
     )
+}
+
+fn validate_root_html_fixed_grid_tracks(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+) -> Result<(), StyleLayoutError> {
+    let unsupported = |property, value: &str| StyleLayoutError::UnsupportedComputedValue {
+        node,
+        property,
+        value: value.to_owned(),
+    };
+    for (property, tracks, line_names, auto_repeat) in [
+        (
+            "grid-template-columns",
+            grid.columns.as_slice(),
+            grid.columns_line_names.as_slice(),
+            grid.columns_auto_repeat.as_ref(),
+        ),
+        (
+            "grid-template-rows",
+            grid.rows.as_slice(),
+            grid.rows_line_names.as_slice(),
+            grid.rows_auto_repeat.as_ref(),
+        ),
+    ] {
+        if tracks.is_empty()
+            || auto_repeat.is_some()
+            || line_names.iter().any(|group| !group.is_empty())
+            || tracks.iter().any(|track| {
+                !matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+            })
+        {
+            return Err(unsupported(
+                property,
+                "Root HTML Grid은 이름 없는 고정 px explicit track만 지원합니다",
+            ));
+        }
+    }
+    if grid.template_areas.is_some() {
+        return Err(unsupported(
+            "grid-template-areas",
+            "Root HTML Grid에서는 grid-template-areas를 지원하지 않습니다",
+        ));
+    }
+    if grid.auto_flow != ComputedCssGridAutoFlow::Row {
+        return Err(unsupported(
+            "grid-auto-flow",
+            "Root HTML Grid에서는 기본 row auto-placement만 지원합니다",
+        ));
+    }
+    if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) {
+        return Err(unsupported(
+            "grid-auto-rows",
+            "Root HTML Grid에서는 implicit row sizing을 지원하지 않습니다",
+        ));
+    }
+    if !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
+        return Err(unsupported(
+            "grid-auto-columns",
+            "Root HTML Grid에서는 implicit column sizing을 지원하지 않습니다",
+        ));
+    }
+    Ok(())
 }
 
 fn validate_combined_grid_line_area_metadata(
