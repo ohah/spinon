@@ -25,4 +25,6 @@ Android AVD는 `sdk_gphone64_arm64`, Android 17/API 37, ANGLE/Vulkan/SwiftShader
 
 ## 상태
 
+제한 slice 구현 PR [#967](https://github.com/ohah/spinon/pull/967)은 2026-11-01T04:44:03Z `Rebase and merge`됐고 merge SHA는 `eeda2155354236d3e97954f75217228893ceca21`이다([병합 확인](./merge-PR967.md)). GitHub check run은 보고되지 않았다.
+
 이 제한 slice는 C11.3.3·C11의 전체 완료가 아니다. 공식 완료 집계 `72/213`과 `spec/STATUS.md`의 미완료 checkbox는 그대로 둔다. 내부 계약 `0059` 숫자 버전도 `0.1.0`으로 유지한다.
