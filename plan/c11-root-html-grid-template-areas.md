@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [기본 Root HTML Grid 경로](./c11-root-html-grid-runtime.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 및 Chrome 사전 비교 후보. 구현/runtime 미시작. 이 계획은 C11.1, C11.3.3, C11.4 또는 C11의 완료 표시를 바꾸지 않는다.
+**상태:** 계획 및 Chrome 사전 비교 후보. 계획 PR [#1004](https://github.com/ohah/spinon/pull/1004)는 2026-11-01T21:15:51Z에 Rebase and merge됐고 merge SHA는 `77cc880c37a14dff0b26ad7202d97e1947c894b5`다. 구현/runtime 및 Android·iOS simulator 검증은 시작하지 않았다. 이 계획은 C11.1, C11.3.3, C11.4 또는 C11의 완료 표시와 공식 `72/213`을 바꾸지 않는다.
 
 **구현 전 비교:** [고정 source와 독립 기대값](../spec/internal/evidence/c11-root-html-grid-template-areas-precomparison-2026-11-02/README.md) · JSON 자료: `chrome-observation.json`, `expected.json`.
 
