@@ -8,7 +8,7 @@ CSS Text의 processing order는 white-space Phase I collapse 뒤 text transform�
 
 Noto Sans KR에서 `Sseta`의 unshaped nominal `hmtx` advance 합은 25.58 CSS px다. 이는 shaping width가 아니다. `hb-shape 14.6.0`의 FreeType, `wght=400` diagnostic은 glyph substitution 후 25.17 CSS px를 반환하고 Chrome CSSOM candidate는 25.1875 CSS px다. 다만 `Iiii Ii`에서는 HarfBuzz가 space에 nominal `hmtx`의 224 대신 280-unit glyph advance를 선택해 19.66 CSS px를 반환하며 Chrome CSSOM은 19.09375 CSS px다. 이 adversarial mismatch 때문에 nominal `hmtx`나 `hb-shape`를 독립 CSS layout 폭 기대값으로 쓰지 않는다. Chrome CSSOM은 폭 관찰, CSS Text/Unicode data는 변환 문자열의 기준으로 분리한다.
 
-재현 HTML 입력은 저장소의 `tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform-unicode.html`이다. 기계 판독 관측은 <a href="./chrome156-observations.json">chrome156-observations.json</a>, 규범 기대값은 <a href="./expected.json">expected.json</a>이다.
+재현 HTML 입력은 저장소의 `tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform-unicode.html`이다. 기계 판독 관측은 <a href="./chrome156-observations.json">chrome156-observations.json</a>, 규범 기대값은 <a href="./expected.json">expected.json</a>이다. simulator capture runner가 읽는 23-scene oracle matrix는 <a href="./runtime-matrix-expected.json">runtime-matrix-expected.json</a>에 고정했다. 해당 파일도 oracle target만 기록하며 Spinon 실행 결과를 포함하지 않는다.
 
 ![Chrome 156 Agent Browser precomparison](./chrome156-capitalize-unicode.png)
 
@@ -23,3 +23,4 @@ Noto Sans KR에서 `Sseta`의 unshaped nominal `hmtx` advance 합은 25.58 CSS p
 | Chrome observation JSON | `767c24c838525f111f4df836ff6cbb7bfb630508d496626829b4a9051b0596ed` |
 | expected JSON | `ea7f9c051cee374e74e7e36a6d6753dfdbd30498f33be616052b6e5b095d7156` |
 | Chrome screenshot | `ed3e698f4d293521963a2f21a708dd16d45b4b98076564bd58b0781bf2209435` |
+| runtime matrix expected JSON | `fabee11bef69ae5c4dba224f42fcaead4958a4dc437c22f4a1b10de4fe975d9f` |

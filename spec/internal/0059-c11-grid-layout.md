@@ -1060,6 +1060,16 @@ HostDocument Text와 UTF-16 source range는 보존한다. 변환은 normalized l
 
 source commit `9b124ae`의 Android API 37 ARM64 AVD `android-avd-pass02`와 iPhone 17 Pro/iOS 26.2 Simulator `ios-simulator-pass04`가 각각 commit-bound 6/6 scene layout 검증을 통과했다. iOS `status=-12` 실패 pass01·pass03의 log와 receipt도 보존해 성공 cohort와 분리했다. pass03 실패 뒤 pass04 성공은 실패 수정으로 세지 않는다. 빌드·artifact hash·scene matrix 및 정확한 한계는 [runtime evidence](evidence/c11-4-anonymous-grid-text-transform-capitalize-runtime-2026-11-01/README.md)에 있다. 캡처 앱은 glyph paint가 꺼져 있어 glyph pixel 근거가 아니다. 일반 CSS author admission, UAX #29, locale/Unicode casing, WPT 및 전체 C11.4/C11 지원은 제외한다. 공식 `72/213`과 C11/C11.4 미완료 상태를 유지한다.
 
+### Unicode English titlecase · 추가 제한 fixture profile
+
+내부 계약 숫자 `0.1.0`은 유지한다. 위 ASCII profile과 별도로 `c11-4-text-transform-unicode-fixture-test` opt-in 경로에서 Unicode `capitalize` 후보 11 scene을 허용한다. 이 matrix에는 기존 12 scene 회귀를 더해 23개를 실행한다. 입력은 Grid style owner의 direct `lang="en"`, `white-space:normal`, 고정 anonymous direct Text source allowlist로 제한한다. `xml:lang`, 상속 언어, 다른 locale, inline styles/ancestors, profile 밖 source는 layout publication 전에 거부한다. 일반 CSS author admission은 추가하지 않는다.
+
+Whitespace Phase I collapse가 끝난 normalized layout buffer를 UAX #29 word boundary로 나눈다. 각 segment의 첫 Unicode General Category `Letter` 또는 `Number`를 찾고 그 scalar에 Unicode `Lowercase` property가 있을 때만 English full titlecase mapping을 적용한다. 뒤 문자는 유지한다. `ßeta`는 `Sseta`, `well-known`은 `Well-Known`, `o'neill`은 `O'neill`, `«élan»`은 `«Élan»`, 숫자로 시작하는 `49ers`는 그대로다. 데이터 버전은 ICU4X 2.3.0의 Unicode 17 자료로 고정하고, ICU case-map·locale·property·segmenter 직접 의존성 및 이 mapping code는 fixture-test feature에서만 사용한다.
+
+Adjacent direct Text node는 하나의 normalized paragraph로 이어 붙여 단어 분절을 수행하고 각 원문 node ownership을 보존한다. HostDocument 원문과 UTF-16 source range는 바꾸지 않는다. full mapping이 원문 scalar 하나를 여러 출력 scalar로 늘리면 각 출력 scalar의 paragraph UTF-8 range는 같은 원문 UTF-16 range를 가리킨다. 테스트는 U+00DF `ß` → `Ss`, decomposed accent, split source node, collapse 전후 source 범위를 확인한다. Chrome 156이 `ßeta`를 그대로 관측한 차이는 CSS Text와 Unicode full titlecase 기준에 대한 별도 호환성 차이로 남기며 Chrome 출력에 기대값을 맞추지 않는다.
+
+`well-known`의 Chrome CSSOM 폭은 1/64 CSS px 단위 `56.171875`; 같은 고정 browser/font profile의 Canvas advance는 비반올림 `56.165863`이다. runtime layout 폭은 Canvas advance를 독립 shaping 기준으로 비교하고 허용 오차 `0.03125 CSS px`를 유지한다. screenshot은 layout 상태 확인용이며 glyph raster pixels나 font coverage를 증명하지 않는다. 일반 locale casing, 임의 Unicode 문자열/글꼴, inline formatting, WPT 적합성, 실기기/hardware GPU 및 전체 C11.4/C11 지원은 포함하지 않는다. 이 추가 profile도 C11.4/C11 완료 또는 공식 완료 `72/213`의 승격이 아니다. [Unicode 사전 비교](evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.md) · [전용 계획](../../plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.md) · [runtime evidence](evidence/c11-4-anonymous-grid-text-transform-unicode-runtime-2026-11-02/README.md).
+
 ## C11.4 anonymous Grid text computed `text-indent` flags · 제한 opt-in runtime 확장
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 anonymous direct-text Grid `text-indent` fixture의 허용 목록을 50개 고정 scene으로 확장한다. 이번에 추가한 20개는 Ahem 10px/400, `XXX X`와 `XXX\nX`, `white-space:normal|pre-line`, min-/max-content column 및 `0px`·`10px`·`10px each-line`·`10px hanging`·`10px hanging each-line`의 조합이다. Chrome 156 관측과 독립 Ahem advance 계산은 [사전 비교](evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.md)에 고정한다.

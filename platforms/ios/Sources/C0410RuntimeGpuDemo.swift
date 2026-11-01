@@ -519,7 +519,7 @@ private func c114GenericDirectTextExpectation(
     }
     if let textTransform = c114ComputedTextTransformScene(sceneID) {
         let minContentTrack = sceneID.hasSuffix("-min-content")
-        let lineAdvances = minContentTrack
+        let lineAdvances = minContentTrack && textTransform.minContent != textTransform.maxContent
             ? [textTransform.firstWordAdvance, textTransform.secondWordAdvance]
             : [textTransform.unbrokenAdvance]
         let item = c114GenericTextItem(
@@ -3234,6 +3234,9 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
         return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114ComputedTextIndentScene(sceneID) != nil {
+        return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
+    }
+    if c114IsUnicodeTextTransformScene(sceneID) {
         return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114IsComputedFontSizeScene(sceneID) {
@@ -6790,6 +6793,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     let isMinmaxScene = c114AspectRatioMinmaxSceneExpectation(sceneID) != nil
     let isMultispanScene = c114DirectTextMultispanSceneExpectation(sceneID) != nil
     let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
+    let textTolerance = c114TextTransformCssomTolerance(sceneID)
     guard let scene = c114GenericDirectTextExpectation(sceneID),
           let diagnostics = c114GridTrackSizingDiagnostics(report),
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
@@ -6814,29 +6818,31 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     } ? 2 : 1
     for (index, input) in inputs.enumerated() {
         let expected = scene.items[index]
+        let expectedSourceTexts = anonymousTextScene
+            ? c114ExpectedDirectTextSourceTexts(sceneID, rawText: expected.rawText) : []
         guard c114GenericJSONInteger(input["grid"]) == c114ExpectedHyphensGridNode(sceneID),
               c114GenericJSONInteger(input["node"]) == expectedNodes[index],
               c114GenericJSONInteger(input["sourceOrder"]) == index,
               let textSources = input["textSources"] as? [[String: Any]],
-              textSources.count == (anonymousTextScene ? 1 : 0),
+              textSources.count == expectedSourceTexts.count,
               let source = input["source"] as? [String: Any],
               c114GenericJSONString(source["kind"]) == "text",
               c114GenericJSONInteger(source["fontRegistryRevision"]) == expectedFontRegistryRevision,
               c114GenericJSONNear(
-                source["minContent"], expected: expected.minContent, tolerance: 1.0 / 64.0
+                source["minContent"], expected: expected.minContent, tolerance: textTolerance
               ),
               c114GenericJSONNear(
                 source["minContentHeight"],
                 expected: expected.minContentHeight,
-                tolerance: 1.0 / 64.0
+                tolerance: textTolerance
               ),
               c114GenericJSONNear(
-                source["maxContent"], expected: expected.maxContent, tolerance: 1.0 / 64.0
+                source["maxContent"], expected: expected.maxContent, tolerance: textTolerance
               ),
               c114GenericJSONNear(
                 source["maxContentHeight"],
                 expected: expected.maxContentHeight,
-                tolerance: 1.0 / 64.0
+                tolerance: textTolerance
               ),
               c114GenericContributionInputMatches(
                 input, expected, sceneID: sceneID, itemIndex: index
@@ -6847,10 +6853,12 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
             return false
         }
         if anonymousTextScene {
-            guard let textSource = textSources.first,
-                  c114GenericJSONInteger(textSource["node"]) == expected.node,
-                  c114GenericJSONString(textSource["text"]) == expected.rawText else {
-                return false
+            for (sourceIndex, expectedSourceText) in expectedSourceTexts.enumerated() {
+                let textSource = textSources[sourceIndex]
+                guard c114GenericJSONInteger(textSource["node"]) == expected.node + sourceIndex,
+                      c114GenericJSONString(textSource["text"]) == expectedSourceText else {
+                    return false
+                }
             }
         }
     }
@@ -7012,12 +7020,14 @@ private func c114GenericContributionInputMatches(
     }
     return c114GenericAxisContributionMatches(
         contribution["width"], minContent: expected.minContent, maxContent: expected.maxContent,
-        padding: expected.paddingInline, border: expected.borderWidth
+        padding: expected.paddingInline, border: expected.borderWidth,
+        textTolerance: c114TextTransformCssomTolerance(sceneID)
     ) && c114GenericAxisContributionMatches(
         contribution["height"],
         minContent: expected.minContentHeight,
         maxContent: expected.maxContentHeight,
-        padding: expected.paddingBlock, border: expected.borderWidth
+        padding: expected.paddingBlock, border: expected.borderWidth,
+        textTolerance: c114TextTransformCssomTolerance(sceneID)
     )
 }
 
@@ -7079,14 +7089,15 @@ private func c114GenericSizeConstraintMatches(
 
 private func c114GenericAxisContributionMatches(
     _ value: Any?, minContent: Double, maxContent: Double,
-    padding: Double, border: Double, preferredSize expectedPreferredSize: Double = .nan
+    padding: Double, border: Double, preferredSize expectedPreferredSize: Double = .nan,
+    textTolerance: Double = 1.0 / 64.0
 ) -> Bool {
     guard let axis = value as? [String: Any],
           let preferredSize = axis["preferredSize"] as? [String: Any],
           let minSize = axis["minSize"] as? [String: Any],
           let maxSize = axis["maxSize"] as? [String: Any] else { return false }
-    return c114GenericJSONNear(axis["minContent"], expected: minContent, tolerance: 1.0 / 64.0)
-        && c114GenericJSONNear(axis["maxContent"], expected: maxContent, tolerance: 1.0 / 64.0)
+    return c114GenericJSONNear(axis["minContent"], expected: minContent, tolerance: textTolerance)
+        && c114GenericJSONNear(axis["maxContent"], expected: maxContent, tolerance: textTolerance)
         && c114GenericSizeConstraintMatches(preferredSize, expected: expectedPreferredSize)
         && c114GenericJSONString(minSize["kind"]) == "auto"
         && c114GenericJSONString(maxSize["kind"]) == "auto"
@@ -7122,6 +7133,13 @@ private func c114GenericDirectTextTextLayoutsMatch(
     let expectedTextTransform = c114ComputedTextTransformStyle(sceneID) ?? "None"
     let expectedHyphens = c114ComputedHyphensStyle(sceneID)
     for (index, expected) in scene.items.enumerated() {
+        let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
+        let textTolerance = c114TextTransformCssomTolerance(sceneID)
+        let expectedSourceTexts = c114ExpectedDirectTextSourceTexts(
+            sceneID, rawText: expected.rawText
+        )
+        let expectedSourceCount = anonymousTextScene ? expectedSourceTexts.count : 1
+        let expectedSourceNodeBase = expected.node + (anonymousTextScene ? 0 : 1)
         let layout = layouts[index]
         let expectedTextWidth = expected.textWidth != expected.width
             ? expected.textWidth : c114IsGridTextAspectRatioScene(sceneID)
@@ -7135,17 +7153,13 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONInteger(revision["style"]) == c114GenericJSONInteger(layoutRevision["style"]),
               c114GenericJSONInteger(revision["environment"]) == c114GenericJSONInteger(layoutRevision["environment"]),
               c114GenericJSONInteger(revision["intrinsicSize"]) == c114GenericJSONInteger(layoutRevision["intrinsicSize"]),
-              let sources = layout["sources"] as? [[String: Any]], sources.count == 1,
-              let sourceNode = c114GenericJSONInteger(sources[0]["node"]),
-              sourceNode == expected.node + (c114IsAnonymousTextScene(sceneID) ? 0 : 1),
-              c114GenericJSONString(sources[0]["text"]) == expected.rawText,
-              let inlineAncestors = sources[0]["inlineAncestors"] as? [Any],
-              inlineAncestors.isEmpty,
+              let sources = layout["sources"] as? [[String: Any]],
+              sources.count == expectedSourceCount,
               c114GenericJSONString(layout["text"]) == expected.layoutText,
               c114GenericJSONInteger(layout["fontRegistryRevision"]) == expectedFontRegistryRevision,
-              c114GenericJSONNear(layout["availableWidth"], expected: expected.availableWidth, tolerance: 1.0 / 64.0),
-              c114GenericJSONNear(layout["width"], expected: expectedTextWidth, tolerance: 1.0 / 64.0),
-              c114GenericJSONNear(layout["height"], expected: expectedTextHeight, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(layout["availableWidth"], expected: expected.availableWidth, tolerance: textTolerance),
+              c114GenericJSONNear(layout["width"], expected: expectedTextWidth, tolerance: textTolerance),
+              c114GenericJSONNear(layout["height"], expected: expectedTextHeight, tolerance: textTolerance),
               let style = layout["paragraphStyle"] as? [String: Any],
               c114GenericJSONString(style["fontFamily"]) == expected.fontFamily,
               c114GenericJSONString(style["locale"]) == expected.locale,
@@ -7172,15 +7186,24 @@ private func c114GenericDirectTextTextLayoutsMatch(
               let lines = layout["lines"] as? [[String: Any]],
               lines.count == expected.lineAdvances.count,
               expected.lineIndents.count == expected.lineAdvances.count else { return false }
+        for sourceIndex in 0..<expectedSourceCount {
+            let source = sources[sourceIndex]
+            let expectedSourceText = anonymousTextScene
+                ? expectedSourceTexts[sourceIndex] : expected.rawText
+            guard c114GenericJSONInteger(source["node"]) == expectedSourceNodeBase + sourceIndex,
+                  c114GenericJSONString(source["text"]) == expectedSourceText,
+                  let inlineAncestors = source["inlineAncestors"] as? [Any],
+                  inlineAncestors.isEmpty else { return false }
+        }
         for (lineIndex, line) in lines.enumerated() {
             guard c114GenericJSONNear(
-                    line["advance"], expected: expected.lineAdvances[lineIndex], tolerance: 1.0 / 64.0
+                    line["advance"], expected: expected.lineAdvances[lineIndex], tolerance: textTolerance
                   ),
                   c114GenericJSONNear(
-                    line["indent"], expected: expected.lineIndents[lineIndex], tolerance: 1.0 / 64.0
+                    line["indent"], expected: expected.lineIndents[lineIndex], tolerance: textTolerance
                   ),
-                  c114GenericJSONNear(line["lineTop"], expected: Double(lineIndex) * 10, tolerance: 1.0 / 64.0),
-                  c114GenericJSONNear(line["lineHeight"], expected: 10, tolerance: 1.0 / 64.0) else {
+                  c114GenericJSONNear(line["lineTop"], expected: Double(lineIndex) * 10, tolerance: textTolerance),
+                  c114GenericJSONNear(line["lineHeight"], expected: 10, tolerance: textTolerance) else {
                 return false
             }
         }
@@ -7421,6 +7444,7 @@ private func c114GenericDirectTextTraceMatches(
         return false
     }
     let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
+    let textTrackTolerance = c114IsUnicodeTextTransformScene(sceneID) ? 0.03125 : 0.0001
     let fixedOverflowWrapTrack = (c114ComputedOverflowWrapMode(sceneID) != nil
         && (sceneID.hasSuffix("-fixed-10px") || sceneID.hasSuffix("-10px")))
         || c114IsAnonymousHyphensFixedTrack(sceneID)
@@ -7428,7 +7452,8 @@ private func c114GenericDirectTextTraceMatches(
         ? c114GenericFixedTrackSizesMatch(passes[0], expected: scene.columns)
         : c114GenericTrackSizesMatch(
             passes[0], expected: scene.columns,
-            gap: c114IsGridTextAspectRatioScene(sceneID) || anonymousTextScene ? 0 : 10
+            gap: c114IsGridTextAspectRatioScene(sceneID) || anonymousTextScene ? 0 : 10,
+            tolerance: textTrackTolerance
         )
     let rowTracksMatch = c114IsGridTextAspectRatioColumnScene(sceneID)
         ? c114GenericFixedTrackSizesMatch(passes[1], expected: [scene.rootHeight])
@@ -7437,7 +7462,7 @@ private func c114GenericDirectTextTraceMatches(
             expected: [c114GenericDirectTextAspectRatioRowTrackSize(
                 sceneID, fallback: scene.rootHeight
             )],
-            gap: 0
+            gap: 0, tolerance: textTrackTolerance
         )
     guard
           columnTracksMatch,
@@ -7490,9 +7515,11 @@ private func c114GenericDirectTextTraceMatches(
             (item.node, "MaxContent", rowHeight),
         ]
         return c114GenericDirectTextContributionsMatch(
-            passes[0], expected: expectedColumns, allowIdenticalDuplicates: true
+            passes[0], expected: expectedColumns, allowIdenticalDuplicates: true,
+            tolerance: c114TextTransformCssomTolerance(sceneID)
         ) && c114GenericDirectTextContributionsMatch(
-            passes[1], expected: expectedRows, allowIdenticalDuplicates: true
+            passes[1], expected: expectedRows, allowIdenticalDuplicates: true,
+            tolerance: c114TextTransformCssomTolerance(sceneID)
         )
     }
     let first = scene.items[0]
@@ -7667,7 +7694,7 @@ private func c114GenericDirectTextSpanContributionsMatch(
 }
 
 private func c114GenericTrackSizesMatch(
-    _ pass: [String: Any], expected: [Double], gap: Double
+    _ pass: [String: Any], expected: [Double], gap: Double, tolerance: Double = 0.0001
 ) -> Bool {
     guard let stages = pass["stages"] as? [[String: Any]], !stages.isEmpty else { return false }
     let stageNames = stages.map({ c114GenericJSONString($0["stage"]) })
@@ -7704,7 +7731,7 @@ private func c114GenericTrackSizesMatch(
             } else {
                 guard contentTrackIndex < expected.count else { return false }
                 if stageIndex == stages.count - 1 {
-                    guard abs(size - expected[contentTrackIndex]) <= 0.0001 else { return false }
+                    guard abs(size - expected[contentTrackIndex]) <= tolerance else { return false }
                 }
                 contentTrackIndex += 1
             }
@@ -7800,7 +7827,7 @@ private func c114GenericStageNameMatches(_ actual: String?, expected: String) ->
 
 private func c114GenericDirectTextContributionsMatch(
     _ pass: [String: Any], expected: [(item: Int, kind: String, value: Double)],
-    allowIdenticalDuplicates: Bool
+    allowIdenticalDuplicates: Bool, tolerance: Double = 1.0 / 64.0
 ) -> Bool {
     guard let contributions = pass["contributions"] as? [[String: Any]],
           contributions.count >= expected.count,
@@ -7815,12 +7842,12 @@ private func c114GenericDirectTextContributionsMatch(
         let match = expected.indices.first(where: { index in
             expected[index].item == item
                 && expected[index].kind == kind
-                && abs(value - expected[index].value) <= 1.0 / 64.0
+                && abs(value - expected[index].value) <= tolerance
                 && !observed[index]
         }) ?? (allowIdenticalDuplicates ? expected.indices.first(where: { index in
             expected[index].item == item
                 && expected[index].kind == kind
-                && abs(value - expected[index].value) <= 1.0 / 64.0
+                && abs(value - expected[index].value) <= tolerance
         }) : nil)
         guard let match, allowIdenticalDuplicates || !observed[match] else { return false }
         observed[match] = true
@@ -11231,6 +11258,7 @@ private func c114ComputedTextTransformScene(
     unbrokenAdvance: Double, layoutText: String)? {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     guard let mode = c114ComputedTextTransformStyle(sceneID) else { return nil }
+    if let unicode = c114UnicodeTextTransformScene(sceneID) { return unicode }
     let minContentTrack = sceneID.hasSuffix("-min-content")
     let metrics: (Double, Double, Double, Double, Double)
     switch mode {
@@ -11263,6 +11291,84 @@ private func c114ComputedTextTransformScene(
     #endif
 }
 
+private func c114UnicodeTextTransformScene(
+    _ sceneID: String
+) -> (minContent: Double, maxContent: Double, trackWidth: Double, rowHeight: Double,
+    minContentHeight: Double, firstWordAdvance: Double, secondWordAdvance: Double,
+    unbrokenAdvance: Double, layoutText: String)? {
+    let minContent: Double
+    let maxContent: Double
+    let firstWordAdvance: Double
+    let secondWordAdvance: Double
+    let unbrokenAdvance: Double
+    switch sceneID {
+    case "text-transform-unicode-sharp-s-min-content",
+         "text-transform-unicode-sharp-s-max-content",
+         "text-transform-unicode-source-split-max-content":
+        minContent = 25.1875
+        maxContent = 25.1875
+        firstWordAdvance = 25.1875
+        secondWordAdvance = 0
+        unbrokenAdvance = 25.1875
+    case "text-transform-unicode-accented-max-content":
+        minContent = 25.953125
+        maxContent = 25.953125
+        firstWordAdvance = 25.953125
+        secondWordAdvance = 0
+        unbrokenAdvance = 25.953125
+    case "text-transform-unicode-combining-max-content":
+        minContent = 20.46875
+        maxContent = 20.46875
+        firstWordAdvance = 20.46875
+        secondWordAdvance = 0
+        unbrokenAdvance = 20.46875
+    case "text-transform-unicode-hyphen-boundary-max-content":
+        minContent = 32.671875
+        maxContent = 56.165863
+        firstWordAdvance = 32.671875
+        secondWordAdvance = 23.5
+        unbrokenAdvance = 56.165863
+    case "text-transform-unicode-apostrophe-word-max-content":
+        minContent = 30.28125
+        maxContent = 30.28125
+        firstWordAdvance = 30.28125
+        secondWordAdvance = 0
+        unbrokenAdvance = 30.28125
+    case "text-transform-unicode-opening-punctuation-max-content":
+        minContent = 30.046875
+        maxContent = 30.046875
+        firstWordAdvance = 30.046875
+        secondWordAdvance = 0
+        unbrokenAdvance = 30.046875
+    case "text-transform-unicode-number-first-none",
+         "text-transform-unicode-number-first-control":
+        minContent = 24.984375
+        maxContent = 24.984375
+        firstWordAdvance = 24.984375
+        secondWordAdvance = 0
+        unbrokenAdvance = 24.984375
+    case "text-transform-unicode-collapsed-space-max-content":
+        minContent = 25.953125
+        maxContent = 53.359375
+        firstWordAdvance = 25.1875
+        secondWordAdvance = 25.953125
+        unbrokenAdvance = 53.359375
+    default:
+        return nil
+    }
+    let minContentTrack = sceneID.hasSuffix("-min-content")
+    let minContentHeight = minContent == maxContent ? 10.0 : 20.0
+    return (
+        minContent: minContent, maxContent: maxContent,
+        trackWidth: minContentTrack ? minContent : maxContent,
+        rowHeight: minContentTrack ? minContentHeight : 10,
+        minContentHeight: minContentHeight,
+        firstWordAdvance: firstWordAdvance, secondWordAdvance: secondWordAdvance,
+        unbrokenAdvance: unbrokenAdvance,
+        layoutText: c114ComputedTextTransformLayoutText(sceneID)
+    )
+}
+
 private func c114ComputedTextTransformStyle(_ sceneID: String) -> String? {
     switch sceneID {
     case "text-transform-none-min-content", "text-transform-none-max-content": return "None"
@@ -11275,6 +11381,17 @@ private func c114ComputedTextTransformStyle(_ sceneID: String) -> String? {
     case "text-transform-capitalize-min-content", "text-transform-capitalize-max-content",
          "text-transform-capitalize-mixed-case", "text-transform-capitalize-collapsed-spaces":
         return "Capitalize"
+    case "text-transform-unicode-sharp-s-min-content",
+         "text-transform-unicode-sharp-s-max-content",
+         "text-transform-unicode-source-split-max-content",
+         "text-transform-unicode-accented-max-content",
+         "text-transform-unicode-combining-max-content",
+         "text-transform-unicode-hyphen-boundary-max-content",
+         "text-transform-unicode-apostrophe-word-max-content",
+         "text-transform-unicode-opening-punctuation-max-content",
+         "text-transform-unicode-number-first-none",
+         "text-transform-unicode-collapsed-space-max-content": return "Capitalize"
+    case "text-transform-unicode-number-first-control": return "None"
     default: return nil
     }
 }
@@ -11287,6 +11404,17 @@ private func c114ComputedTextTransformLayoutText(_ sceneID: String) -> String {
         return "Iiii Ii"
     case "text-transform-capitalize-mixed-case": return "IIII Ii"
     case "text-transform-capitalize-collapsed-spaces": return "Ii Ii"
+    case "text-transform-unicode-sharp-s-min-content",
+         "text-transform-unicode-sharp-s-max-content",
+         "text-transform-unicode-source-split-max-content": return "Sseta"
+    case "text-transform-unicode-accented-max-content": return "Éclair"
+    case "text-transform-unicode-combining-max-content": return "E\u{0301}lan"
+    case "text-transform-unicode-hyphen-boundary-max-content": return "Well-Known"
+    case "text-transform-unicode-apostrophe-word-max-content": return "O'neill"
+    case "text-transform-unicode-opening-punctuation-max-content": return "«Élan»"
+    case "text-transform-unicode-number-first-none",
+         "text-transform-unicode-number-first-control": return "49ers"
+    case "text-transform-unicode-collapsed-space-max-content": return "Sseta Éclair"
     default:
         let mode = c114ComputedTextTransformStyle(sceneID)
         if mode == "Uppercase" { return "IIII II" }
@@ -11303,8 +11431,32 @@ private func c114ComputedTextTransformSourceText(_ sceneID: String) -> String {
         return "iiii ii"
     case "text-transform-capitalize-mixed-case": return "iIII ii"
     case "text-transform-capitalize-collapsed-spaces": return "ii   ii"
+    case "text-transform-unicode-sharp-s-min-content",
+         "text-transform-unicode-sharp-s-max-content",
+         "text-transform-unicode-source-split-max-content": return "ßeta"
+    case "text-transform-unicode-accented-max-content": return "éclair"
+    case "text-transform-unicode-combining-max-content": return "e\u{0301}lan"
+    case "text-transform-unicode-hyphen-boundary-max-content": return "well-known"
+    case "text-transform-unicode-apostrophe-word-max-content": return "o'neill"
+    case "text-transform-unicode-opening-punctuation-max-content": return "«élan»"
+    case "text-transform-unicode-number-first-none",
+         "text-transform-unicode-number-first-control": return "49ers"
+    case "text-transform-unicode-collapsed-space-max-content": return "ßeta   éclair"
     default: return "IIII ii"
     }
+}
+
+private func c114ExpectedDirectTextSourceTexts(_ sceneID: String, rawText: String) -> [String] {
+    if sceneID == "text-transform-unicode-source-split-max-content" { return ["ß", "eta"] }
+    return [rawText]
+}
+
+private func c114IsUnicodeTextTransformScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("text-transform-unicode-")
+}
+
+private func c114TextTransformCssomTolerance(_ sceneID: String) -> Double {
+    c114IsUnicodeTextTransformScene(sceneID) ? 0.03125 : 1.0 / 64.0
 }
 
 private func c114ComputedLetterSpacingTextIntrinsicInputsMatch(
@@ -16335,6 +16487,33 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return (report, 5)
     }
 
+    private func evalC114GridTrackSizing(
+        host: UInt64,
+        sceneID: String,
+        runID: String
+    ) -> (report: String, attempts: Int) {
+        guard c114ComputedTextTransformScene(sceneID) != nil else {
+            return (
+                SpinonRunner.evalRuntimeGpuC11_4GridTrackSizingFixture(
+                    host, sceneID: sceneID, runID: runID),
+                1
+            )
+        }
+        var report = ""
+        for attempt in 1...5 {
+            report = SpinonRunner.evalRuntimeGpuC11_4GridTrackSizingFixture(
+                host, sceneID: sceneID, runID: runID)
+            let superseded = report.hasPrefix("status=-12 ")
+                && report.contains("op=eval status=0 ")
+            if !superseded || attempt == 5 {
+                return (report, attempt)
+            }
+            log("SPINON_C114_GRID_SUPERSEDED run_id=\(runID) scene_id=\(sceneID) attempt=\(attempt) \(runtimeStatusSummary(report))")
+            Thread.sleep(forTimeInterval: 0.025)
+        }
+        return (report, 5)
+    }
+
     private func logC1032NodeFrames(_ report: String) {
         guard let marker = report.range(of: "node_frames_css_px=["),
               let closing = report[marker.upperBound...].firstIndex(of: "]") else {
@@ -17160,9 +17339,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuC13_3GestureFixture(handle)
 #endif
         } else if c114GridTrackSizingProbeRequested {
-            result = SpinonRunner.evalRuntimeGpuC11_4GridTrackSizingFixture(
-                handle, sceneID: c114GridTrackSizingSceneID,
+            let fixtureResult = evalC114GridTrackSizing(
+                host: handle, sceneID: c114GridTrackSizingSceneID,
                 runID: c114GridTrackSizingRunID)
+            result = fixtureResult.report
+            if fixtureResult.attempts > 1 {
+                log("SPINON_C114_GRID_RETRY_SUMMARY run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) attempts=\(fixtureResult.attempts)")
+            }
         } else if c1133GridTemplateAreasProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
                 handle, sceneID: c1133GridTemplateAreasSceneID,

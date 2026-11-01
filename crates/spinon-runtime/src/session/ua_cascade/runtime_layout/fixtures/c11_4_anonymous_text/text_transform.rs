@@ -11,6 +11,7 @@ pub(super) struct TextTransformScene {
     pub(super) computed_value: &'static str,
     pub(super) mode: TextTransformMode,
     pub(super) text: &'static str,
+    pub(super) source_text_nodes: Option<&'static [&'static str]>,
     pub(super) expected_layout_text: &'static str,
     pub(super) is_min_content: bool,
     pub(super) min_content: f32,
@@ -19,7 +20,7 @@ pub(super) struct TextTransformScene {
     pub(super) max_content_height: f32,
 }
 
-pub(super) const SCENES: [TextTransformScene; 12] = [
+pub(super) const SCENES: [TextTransformScene; 23] = [
     scene(TextTransformMode::None, true),
     scene(TextTransformMode::None, false),
     scene(TextTransformMode::Uppercase, true),
@@ -74,6 +75,108 @@ pub(super) const SCENES: [TextTransformScene; 12] = [
         false,
         (5.6875, 13.59375),
     ),
+    unicode_scene(
+        "text-transform-unicode-sharp-s-min-content",
+        TextTransformMode::Capitalize,
+        "ßeta",
+        "Sseta",
+        true,
+        (25.1875, 25.1875),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-sharp-s-max-content",
+        TextTransformMode::Capitalize,
+        "ßeta",
+        "Sseta",
+        false,
+        (25.1875, 25.1875),
+        (10.0, 10.0),
+    ),
+    TextTransformScene {
+        source_text_nodes: Some(&["ß", "eta"]),
+        ..unicode_scene(
+            "text-transform-unicode-source-split-max-content",
+            TextTransformMode::Capitalize,
+            "ßeta",
+            "Sseta",
+            false,
+            (25.1875, 25.1875),
+            (10.0, 10.0),
+        )
+    },
+    unicode_scene(
+        "text-transform-unicode-accented-max-content",
+        TextTransformMode::Capitalize,
+        "éclair",
+        "Éclair",
+        false,
+        (25.953125, 25.953125),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-combining-max-content",
+        TextTransformMode::Capitalize,
+        "e\u{0301}lan",
+        "E\u{0301}lan",
+        false,
+        (20.46875, 20.46875),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-hyphen-boundary-max-content",
+        TextTransformMode::Capitalize,
+        "well-known",
+        "Well-Known",
+        false,
+        (32.671875, 56.165863),
+        (20.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-apostrophe-word-max-content",
+        TextTransformMode::Capitalize,
+        "o'neill",
+        "O'neill",
+        false,
+        (30.28125, 30.28125),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-opening-punctuation-max-content",
+        TextTransformMode::Capitalize,
+        "«élan»",
+        "«Élan»",
+        false,
+        (30.046875, 30.046875),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-number-first-none",
+        TextTransformMode::Capitalize,
+        "49ers",
+        "49ers",
+        false,
+        (24.984375, 24.984375),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-number-first-control",
+        TextTransformMode::None,
+        "49ers",
+        "49ers",
+        false,
+        (24.984375, 24.984375),
+        (10.0, 10.0),
+    ),
+    unicode_scene(
+        "text-transform-unicode-collapsed-space-max-content",
+        TextTransformMode::Capitalize,
+        "ßeta   éclair",
+        "Sseta Éclair",
+        false,
+        (25.953125, 53.359375),
+        (20.0, 10.0),
+    ),
 ];
 
 pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
@@ -89,6 +192,17 @@ pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
     "text-transform-capitalize-max-content",
     "text-transform-capitalize-mixed-case",
     "text-transform-capitalize-collapsed-spaces",
+    "text-transform-unicode-sharp-s-min-content",
+    "text-transform-unicode-sharp-s-max-content",
+    "text-transform-unicode-source-split-max-content",
+    "text-transform-unicode-accented-max-content",
+    "text-transform-unicode-combining-max-content",
+    "text-transform-unicode-hyphen-boundary-max-content",
+    "text-transform-unicode-apostrophe-word-max-content",
+    "text-transform-unicode-opening-punctuation-max-content",
+    "text-transform-unicode-number-first-none",
+    "text-transform-unicode-number-first-control",
+    "text-transform-unicode-collapsed-space-max-content",
 ];
 
 const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformScene {
@@ -143,6 +257,7 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
         computed_value,
         mode,
         text: "IIII ii",
+        source_text_nodes: None,
         expected_layout_text,
         is_min_content,
         min_content,
@@ -170,12 +285,42 @@ const fn scene_with_text(
         },
         mode,
         text,
+        source_text_nodes: None,
         expected_layout_text,
         is_min_content,
         min_content: intrinsic_sizes.0,
         max_content: intrinsic_sizes.1,
         min_content_height: 20.0,
         max_content_height: 10.0,
+    }
+}
+
+const fn unicode_scene(
+    id: &'static str,
+    mode: TextTransformMode,
+    text: &'static str,
+    expected_layout_text: &'static str,
+    is_min_content: bool,
+    intrinsic_sizes: (f32, f32),
+    intrinsic_heights: (f32, f32),
+) -> TextTransformScene {
+    TextTransformScene {
+        id,
+        computed_value: match mode {
+            TextTransformMode::None => "none",
+            TextTransformMode::Uppercase => "uppercase",
+            TextTransformMode::Lowercase => "lowercase",
+            TextTransformMode::Capitalize => "capitalize",
+        },
+        mode,
+        text,
+        source_text_nodes: None,
+        expected_layout_text,
+        is_min_content,
+        min_content: intrinsic_sizes.0,
+        max_content: intrinsic_sizes.1,
+        min_content_height: intrinsic_heights.0,
+        max_content_height: intrinsic_heights.1,
     }
 }
 
@@ -264,9 +409,9 @@ mod tests {
     use std::sync::Arc;
 
     #[test]
-    fn computed_text_transform_matrix_has_twelve_unique_mode_track_scenes() {
+    fn computed_text_transform_matrix_has_unique_mode_track_and_unicode_scenes() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 12);
+        assert_eq!(SCENES.len(), 23);
         assert_eq!(SCENE_IDS.len(), SCENES.len());
         assert_eq!(ids.len(), SCENES.len());
         assert_eq!(
@@ -277,6 +422,11 @@ mod tests {
             scene.id == "text-transform-capitalize-min-content"
                 && scene.text == "iiii ii"
                 && scene.expected_layout_text == "Iiii Ii"
+        }));
+        assert!(SCENES.iter().any(|scene| {
+            scene.id == "text-transform-unicode-source-split-max-content"
+                && scene.source_text_nodes == Some(&["ß", "eta"])
+                && scene.expected_layout_text == "Sseta"
         }));
     }
 
