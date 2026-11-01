@@ -48,3 +48,9 @@ The pinned Stylo 0.22 Servo build does not compile its `WordBreak::BreakWord` pa
 ## Out of scope
 
 `break-all`/`keep-all` expansion, arbitrary `word-break` values, arbitrary `overflow-wrap` combinations beyond the six fixed pairs, non-Ahem fonts, arbitrary scripts, inline descendants, `lang` inheritance changes, bidi/vertical text, all CSS Text behavior, WPT conformance, physical-device/hardware-GPU testing, and complete C11.4/C11 support.
+
+## 구현 결과 · 2026-11-01
+
+구현 PR [#974](https://github.com/ohah/spinon/pull/974)은 2026-11-01T07:28:34Z에 Rebase and merge됐고 merge SHA는 `2700a8bfad05c1b8fc474603c58ae68c2dde3fb3`다. opt-in C11.4 fixture에 `word-break` × `overflow-wrap` × Grid track의 18개 고정 장면을 연결했다. Android API 37.1 ARM64 16 KB SwiftShader AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 18/18을 통과했다. 집중 style/cascade·runtime·text-layout·FFI·fixture-boundary 검사, scoped Clippy, 서식 검사와 Android/iOS simulator app 빌드는 [runtime evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md)에 기록했다. 구현/runtime 검토와 별도 PR diff 검토도 같은 증거 디렉터리에 연결했다.
+
+GitHub에서 PR checks가 보고되지 않아 CI 통과로 세지 않는다. glyph-paint fixture가 비활성화되어 screenshot은 글자 픽셀 증거가 아니다. 일반 CSS admission, WPT, 실기기/hardware GPU 동작, iOS compositor 이후 픽셀, 전체 C11.4/C11은 미검증이다. 이 계획의 제한 slice는 병합했지만 C11/C11.4 체크는 미완료로 두며 공식 완료 `72/213`을 유지한다.
