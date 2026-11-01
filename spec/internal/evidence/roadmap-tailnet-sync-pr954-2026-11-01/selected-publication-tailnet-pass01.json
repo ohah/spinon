@@ -1,0 +1,2324 @@
+{
+  "sourceHead": "43db168f26ecaaf6eb799692359e3f3861dcb546",
+  "sourceTree": "cdf6e67755a4361f7d50056dc8259556dcd80f70",
+  "trackedDiffSha256": "7a361d3f5b938f549d640fd8d46f2f42d3f8dcdc2fcc55c5115591f7ae7fafd2",
+  "previousSourceHead": "b77964973b40534c03a43a5e1fa86993fb6f7f42",
+  "previousSourceTree": "4c886d4c4188e3f18723e5bc85568a163508b3af",
+  "selectedRoot": "build/spinon/roadmap-c11-4-text-transform-pr954-tailnet-postmerge-20261101/root",
+  "publicationRoot": "build/spinon/roadmap-c11-4-text-transform-pr954-tailnet-postmerge-20261101/publication-pass01/publication",
+  "routeCount": 306,
+  "totalBytes": 25498629,
+  "previousRouteCount": 179,
+  "addedRoutes": 127,
+  "replacedRoutes": 13,
+  "preservedRoutes": 166,
+  "noDeletes": true,
+  "fullDocsDeadLinkCheck": false,
+  "serverRestarted": false,
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+    "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+    "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform.html"
+  ],
+  "roadmapMarkers": [
+    "PR #952 Rebase and merge",
+    "be62a4dd3c1b67ada2db094f19a76231e9f3df35",
+    "72/213"
+  ],
+  "checkedCardLocalLinks": [
+    {
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "sha256": "b8d7c979a8ed83404789b2919f8b5147dbe4fafd795e7477663b37b5fde68a92"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "92c530cfa54671d3dda2babdb77b4a8a8b148a0c36608dd7377f06d8cc7b5bf2"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "sha256": "05786f5f9085e6ca193f0dc5249371e87e3e1636e662a481fe6e8098fba720f4"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "sha256": "94b5a0fc6277aa9d254aa48cbb6875b32b86e95b9c24ddb90dec2f510c4a0a4e"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "sha256": "19eca59ad7f90a89a63a3700a2626f2fbf41bcff543f67ece813f673723aeae3"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "sha256": "edccb0f76bb44f59b14ab79777e737a707012d36d71da53be3654ec753b7e2e4"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "sha256": "57e98ef20041f0984ad29d90036d77a8ce7f06dcfbc6600e0e030b7566e16998"
+    }
+  ],
+  "changes": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "previousSha256": "afd2fca8354aad4ea18f0b4153079b66320e1a50898c5168e6b7cf27419d2195",
+      "sha256": "92c530cfa54671d3dda2babdb77b4a8a8b148a0c36608dd7377f06d8cc7b5bf2",
+      "previousSource": "previous-publication:internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "previousSha256": "1f0fd1999a40fb436c1175f2fafbcdf7975a2eefc42ff13c743e93b52ce4ec90",
+      "sha256": "03c1830fe21e46f373291ac8c89e7030f38d98afda8c5a7351193c375aa3000d",
+      "previousSource": "previous-publication:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "previousSha256": "05ca4c6ef26fe1f50382c45e97358b8b1f92443f083bea39a4a8dd385c0b46c6",
+      "sha256": "05786f5f9085e6ca193f0dc5249371e87e3e1636e662a481fe6e8098fba720f4",
+      "previousSource": "previous-publication:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+      "previousSha256": "3093451083aa804edad5f783cc4b1756b7238dadde181a3bb9ef05ac4523a1fc",
+      "sha256": "d1fd1bb665fe6c23b6cf76713a58edaaccfff46fd99e747d0ac9f8ecd35198b9",
+      "previousSource": "previous-publication:plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "previousSha256": "5632093d43ffbfb1a3a88d3e5d77d46f6cfc1b059c4e989a9a783d786e8d486e",
+      "sha256": "b8d7c979a8ed83404789b2919f8b5147dbe4fafd795e7477663b37b5fde68a92",
+      "previousSource": "previous-publication:plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-text-transform.html"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "previousSha256": "052609593d45fc29f9d6673e50c27f5c41be0b70e5fcae3133e9303069ae9652",
+      "sha256": "e964d29bf1d2194c6c5b9ce9dc9b9d835508b50c6ca8a43aed913d4fc8752cba",
+      "previousSource": "previous-publication:plan/c11-4-grid-track-sizing.html",
+      "source": "rspress:plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "previousSha256": "ada60b73d36050abcb68f8c55a4a7066f0ea2b96e04842da036c8ea030d7a82b",
+      "sha256": "44987f4dd51019f0013ff0d7c2d659c7665dcdd4dc61e4f1defaf69ee6f8deb7",
+      "previousSource": "previous-publication:plan/c11-css-grid.html",
+      "source": "rspress:plan/c11-css-grid.html"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "previousSha256": "079f89e6360b56602f1c4f0746981cf5160988975fa055d21a1ceb3676f9deb7",
+      "sha256": "6c73fc48ed9dc86ab1c20bdc416ba823e10e5cb9a90fb6433c0ece72e724823e",
+      "previousSource": "previous-publication:spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "previousSha256": "777ac5b178744925897f3d8e62268f859c344193e5ebfee5e7f9f187974ad471",
+      "sha256": "7cffd90e169506ac3cb2dfa00e48508d428f1338b7e92765c3d064fae0c237dc",
+      "previousSource": "previous-publication:spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html"
+    },
+    {
+      "path": "STATUS.html",
+      "previousSha256": "5c35b647c0bc49b7c82c637df99224594a8f3b0e5d8c5168ee782e2685129322",
+      "sha256": "57e98ef20041f0984ad29d90036d77a8ce7f06dcfbc6600e0e030b7566e16998",
+      "previousSource": "previous-publication:STATUS.html",
+      "source": "rspress:STATUS.html"
+    },
+    {
+      "path": "public/roadmap.html",
+      "previousSha256": "944cfed9033e57f3fd3014e91a896f438be230901f702bfe6d37323331424b0a",
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "previousSource": "previous-publication:public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "previousSha256": "944cfed9033e57f3fd3014e91a896f438be230901f702bfe6d37323331424b0a",
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "previousSource": "previous-publication:spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html"
+    },
+    {
+      "path": "roadmap.html",
+      "previousSha256": "944cfed9033e57f3fd3014e91a896f438be230901f702bfe6d37323331424b0a",
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "previousSource": "previous-publication:roadmap.html",
+      "source": "selected-root:public/roadmap.html"
+    }
+  ],
+  "routes": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "source": "previous-publication:icon.svg",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 430435,
+      "sha256": "92c530cfa54671d3dda2babdb77b4a8a8b148a0c36608dd7377f06d8cc7b5bf2",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 298673,
+      "sha256": "8ef7489281b92d41f6f3efbb655fb2982a6f29b17ddb161271f7ec717baa4921",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "bytes": 3523,
+      "sha256": "fe73ded71b9cc25b0cf889ecb581f4f45cac34171d8dce9696e663971b943a5a",
+      "source": "previous-publication:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "bytes": 59090,
+      "sha256": "ca4be56c62a370c23c773ff8aefc303ab95e56d94280bd4ee0dae5475bc88a42",
+      "source": "previous-publication:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "bytes": 2177,
+      "sha256": "3dd5d56cad6205958744e850321e3c75e79f1de291cd53748c785b4e8b3ba82e",
+      "source": "previous-publication:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "bytes": 35173,
+      "sha256": "03c1830fe21e46f373291ac8c89e7030f38d98afda8c5a7351193c375aa3000d",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "bytes": 5602,
+      "sha256": "c258ba2e3f59cf395089775cb89975f9ee82512d5ce282282ef94595e038b07e",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "bytes": 34494,
+      "sha256": "05786f5f9085e6ca193f0dc5249371e87e3e1636e662a481fe6e8098fba720f4",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "bytes": 3123,
+      "sha256": "b6ed8976374b3fa5b910712f9acfef60851043bc2244cb9f7869266dab0c4568",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "bytes": 1547,
+      "sha256": "0e9f2b19424b2d5c75e78ebc177019c810be9cf38f835b7546be0c2c019acd9d",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "bytes": 124,
+      "sha256": "5bd985acf90948ea5c54a41d5e526ac4f428229342ac0b28331607a23b0f27d8",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "bytes": 29899,
+      "sha256": "ea4c4622d875c781548dee0a116ffa5efee8602b42f4db953d87955a38f43473",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "bytes": 587,
+      "sha256": "8c1c99e929f064e3ce07d76c8ac3e6682f70cbd6425e2a4a7fcdfb75acbb5ca8",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "bytes": 78445,
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "bytes": 396,
+      "sha256": "2863cec2adaf653f30341cfb19585840a6d091e527bd17e84ad655f2ec724f45",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "bytes": 30258,
+      "sha256": "b91401c75d3588c7662277323b2afd9e9c30c0800fec15d893dad4ef6e32d803",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "bytes": 24142,
+      "sha256": "7eb92db549c14ec362c9ac02dcc7988141a3ed829ea5bbfd893a5cf80218b1ef",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "bytes": 25135,
+      "sha256": "eefb8dafc49810b6b5d011d79b241ebc1d4ce0ca3c0c1b2f76a2164111c2e868",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "bytes": 24629,
+      "sha256": "5523152e09406a96a8592ec990795b4853e0f64acf03ca051652754664f871db",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "bytes": 30301,
+      "sha256": "3b4a5bc92224b3e063fe6604c8b88919ca8612f00a59273b85ebd8f2dd6ea38e",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "bytes": 24663,
+      "sha256": "b8167fbb444045ae6e5a1087718b0c20f49e84c7f15c06ce3d81c18cfdf0a574",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "bytes": 474,
+      "sha256": "01d56433c069d28e3e9ababd54ae7f872857a57e9de094451251e62dddefb094",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "bytes": 5004,
+      "sha256": "68ff75275fa9565c14db2a2088e2a41636963666672c7ad747fa28a85f8c02a9",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "bytes": 593,
+      "sha256": "09e48d170a8712ee80f43e0b9221519f77247cc5d36e1bbc07e88a0940c97905",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "bytes": 142718,
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "bytes": 474,
+      "sha256": "7e47c675ab03c88a47024e35c0e7732bae778f9c739a635f5a054fe9e0b4c818",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "bytes": 15017,
+      "sha256": "d2969702baa570a3a558fa3ce09cf21ea77c99effa2322522886a2d00611ef14",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "bytes": 14145,
+      "sha256": "4abd0508398eec8df3a4c44a69b12b10536ecd9cced6d8a193c39adc4c030a74",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "bytes": 15072,
+      "sha256": "471e84f8249e24d64189d1bca887b0cf87918841623ffc77d1915dfc1780f609",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "bytes": 14543,
+      "sha256": "a328df1772d30d9197e4e83494fd85ef773ec7e5e93cf56136b826cebe646df2",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "bytes": 15060,
+      "sha256": "7e973c3230b7e9a81262f68bff4dfa3bb128d2213d5d34052d21fde853080f15",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "bytes": 14571,
+      "sha256": "9ae76eed61e045a6e32a39492f70290d276a5a4bc0f360a884fd57b8e0f44e41",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 36157,
+      "sha256": "b308bb57771a4e5c75df76ea87d60e98e648ae352e6b40cff33e05c87cac09b6",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 5975,
+      "sha256": "c38ba06c9aa1c21541c42c168bedceecab8f38d0cbba090718e0f327b878966c",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "bytes": 39653,
+      "sha256": "edccb0f76bb44f59b14ab79777e737a707012d36d71da53be3654ec753b7e2e4",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "bytes": 4357,
+      "sha256": "cd8067dcea588e4bb61993e0d9d32c3101ebdbb49ca7cf3c84eaefcf5471ee10",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 47849,
+      "sha256": "19eca59ad7f90a89a63a3700a2626f2fbf41bcff543f67ece813f673723aeae3",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 7037,
+      "sha256": "d08fe0776fc045f994a21dfe469c15f838de11270620188bb3796ea7104d6551",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "bytes": 37591,
+      "sha256": "de75f729ca95b685afd75593630792535320361e1c153427d573e61cba1905cb",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "bytes": 3688,
+      "sha256": "2e2c1e0cef3effdd698f8da2dca356beb08652cba4b078b6d35c2417652c6638",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "bytes": 38215,
+      "sha256": "94b5a0fc6277aa9d254aa48cbb6875b32b86e95b9c24ddb90dec2f510c4a0a4e",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "bytes": 6997,
+      "sha256": "e277e78e697cd7736e9dc295976b757b43ad921ff79cef34c1c870c27368a0c0",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "bytes": 8794,
+      "sha256": "99a9fd43133990a167c19f632882da1b2ea009364635052c1802f346761933a2",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "bytes": 43733,
+      "sha256": "f64131fb8d30fcbc458eee5b8880f23d97967a32557248c036241b6c48c4a8e2",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "bytes": 4590,
+      "sha256": "6f736b092d3e69700b30e790a37821a7e0156bb98ff9e6e3a00838cf935f14ac",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/expected-values.json",
+      "bytes": 2822,
+      "sha256": "d65674d8a1ddcc86862639612e98d539c80aff350ce447817af5cbe7740b766b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/expected-values.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/README.html",
+      "bytes": 31686,
+      "sha256": "7e1c2e5b98c6a0dfd80a154d8b8e42ff379f43076cb6cc150e2a8dc1344b4a54",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/README.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-post-merge-2026-11-01/post-merge-doc-review-30.html",
+      "bytes": 31937,
+      "sha256": "31e9406d3737a4156d60fbc0fd095173a1c25d1916dc6c6c5f17f626707c0b7d",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-post-merge-2026-11-01/post-merge-doc-review-30.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-control.png",
+      "bytes": 78091,
+      "sha256": "28e57d51c3a2ffb9bfa4f71c5f71ddd6d120f0bbb605c6ee784d1aaa82055a05",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-ratio.png",
+      "bytes": 78145,
+      "sha256": "e01f959623ec7098e8201e1ba692942ea824f37720265cef2963196a08fc0f7f",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-control.png",
+      "bytes": 78134,
+      "sha256": "4f420eeeb5caf3440a5f826fa2b35a5ca100243bbe20823b826630229cbedacc",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-ratio.png",
+      "bytes": 78145,
+      "sha256": "e01f959623ec7098e8201e1ba692942ea824f37720265cef2963196a08fc0f7f",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/install.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/result.json",
+      "bytes": 20761,
+      "sha256": "c3c0264ffaadf3ad27c753037e614e80633c5ac1e9da6e768eb88f6ceb50985b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/result.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 32737,
+      "sha256": "842be91046b818a15599fff1ae5a64aff7720ebfdf6a39dfad1d247a6a64865b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 37145,
+      "sha256": "940cc73255295a5886818156fa049d283b14784179b864b6c99726246f16baed",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 32743,
+      "sha256": "a3fcf6533310de4373adf650d1eaab871c24114ba7b731f716bcf348258eae91",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 32119,
+      "sha256": "12715c61782ddbb7fb7f53144a61405c9cd3ed05484f39cd15de2d1587f04f48",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/simulator.json",
+      "bytes": 517,
+      "sha256": "e00a8bb0ec82b4332bb42ebc66b98e0209dbf227d27383cfc91379a1d3e51559",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/simulator.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-build-final4.log",
+      "bytes": 4520,
+      "sha256": "e51102c622c715600e9b2db95cd88d78fc5d92eff793d01018f0fa325f61fd80",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-build-final4.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-capture-pass06.log",
+      "bytes": 17097,
+      "sha256": "66ef1802981f2d09ccbf93a28aaa584b41d4e61dce89e350636c25e96e0dbdb7",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-capture-pass06.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/archive-boundary/README.html",
+      "bytes": 27053,
+      "sha256": "ec09f6e51d1d95ed6c929988c5293910caadb618370f99294c73349d1ebcac88",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/archive-boundary/README.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/capture-syntax-check.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/capture-syntax-check.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/clippy-default.log",
+      "bytes": 906,
+      "sha256": "f055b814e11a165184241442ea17870071f7fc11e4f209a2c5e6e5b067bada31",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/clippy-default.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ffi-focused-test.log",
+      "bytes": 614,
+      "sha256": "5f772ba18675ed00ddd844d2196e94f28bfaa3b5553145441add97ecca5abef0",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ffi-focused-test.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-archive-build.log",
+      "bytes": 681,
+      "sha256": "4fa0701b9852dd1b9387120216da8d746149073ab12e0ad8012bced85d88a35d",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-archive-build.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-module-boundary-test.log",
+      "bytes": 2605,
+      "sha256": "a9fe555b3ee61e422a7ea6a23981b472b9af655d77f65add2b1668608fcd8a83",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-module-boundary-test.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/implementation-review-20.html",
+      "bytes": 33892,
+      "sha256": "d88d5f2b39c1b335f0025b8fc876b7b6c6c464b5ec5e4209e84ea7867557de4a",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/implementation-review-20.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-build-final4.log",
+      "bytes": 92325,
+      "sha256": "7e1baf1a923f5debc824331c461f008620ffb855693843c118e7d31eaf7cdc6b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-build-final4.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-capture-pass03.log",
+      "bytes": 12742,
+      "sha256": "5ba8f1a426904314379148046fd13d3747f29b5c77b98de153ad21a005a6b8e4",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-capture-pass03.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-crash-triage.html",
+      "bytes": 28755,
+      "sha256": "8324f56745a5f7a04d42ee3bef463677d01730d8177a57a8da2b53c0a26b18cf",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-crash-triage.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-control.png",
+      "bytes": 133705,
+      "sha256": "49fda78c6d054e5be44492de7002cc36d208496ff2d01afb2f03eb5a5d134242",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-ratio.png",
+      "bytes": 133925,
+      "sha256": "cb6bc0d671c0be520c2fa2cbf92cc51b52ebb7f9025687070b037e17a9991625",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-control.png",
+      "bytes": 133990,
+      "sha256": "910e9112e657b9f348c06c146c17012433f6adf19fe4b198535a8a591d1b4470",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-ratio.png",
+      "bytes": 133925,
+      "sha256": "cb6bc0d671c0be520c2fa2cbf92cc51b52ebb7f9025687070b037e17a9991625",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/install.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/install.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 28,
+      "sha256": "28c7a764914ae12eb6e9b0f5646e3dc9e87c23e96214dc84d2630958346a68b9",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 28,
+      "sha256": "659a44403ac475f992a6bca5c6888d6f38de1416869d1ed5a54da0fd601fed8a",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 28,
+      "sha256": "9b85ecfde2d9af0392e7f619684f48710afbf85868da9b59875ce0f91419f57c",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 28,
+      "sha256": "5176d7f92cf9d77d1752eb9e422f8f1875db3e92c88d08272ec01b7364638b76",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/result.json",
+      "bytes": 16294,
+      "sha256": "029e454a6ebb9d6977e6f007d769e1a3d1ac961e81ced578c85636fad19b02da",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/result.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 24930,
+      "sha256": "6e3aeeb9be346387ae86861d7343558a26aa70117155199d87ab42bb6a6dcc36",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 24160,
+      "sha256": "79be75148ea57d76451a2e659ac299de4b82703fcccc97d79e5c73c21b79e1a6",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 25040,
+      "sha256": "c05cf6a104fd50b1c196e7b6776a67dfd2b8ee7f4491af23b553dab44cc4e71d",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 24434,
+      "sha256": "e0e0db3cc09da569c68383bd9e478397bd460e90999a647f658b560e07eb89e7",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 288,
+      "sha256": "4e19adb6163f444a7e18d114d8ddcd34a71431ab01f66c2cc384dd10d2596a57",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 286,
+      "sha256": "bab2c47f9d16f4be0e29882149b5ee580b8269c9a8177bbcfde87a1d34197606",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 287,
+      "sha256": "c19e771c6a71ddd9709e00b4579277e865c8a8146ba065792b13d1e19e7990f2",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 285,
+      "sha256": "c119ff6f7d11f3dd894e4c781bc82f9d8362a9285b11f7ee837f2271334d2ccb",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/simulator.json",
+      "bytes": 393,
+      "sha256": "8355d8d48bdba6997b6cb1ab6402b4a0a117014eb39431f329f2cc6b9b89129d",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/simulator.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/pr-diff-review-30.html",
+      "bytes": 34710,
+      "sha256": "ef842a718efe843d6ccb165c509fab28afbaa21656f172d2a44d14afe36546da",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/pr-diff-review-30.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/product-archive-build.log",
+      "bytes": 692,
+      "sha256": "ed62108f84c27dcafe21e1a4a8709f4f009fcf17b54017b151166b07fd1ac368",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/product-archive-build.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/README.html",
+      "bytes": 32616,
+      "sha256": "5a0c682b976acb2265104c573fd5e56bed25075c613851dcc53d13fd1ce6a771",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/README.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/runtime-focused-test.log",
+      "bytes": 1673,
+      "sha256": "3cc5743afbf3979fc1ab45b9c36c94336fdd500d743f534eea556a040f2a8128",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/runtime-focused-test.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/rustfmt-check.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "source": "previous-publication:internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/rustfmt-check.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "source": "previous-publication:logo.svg",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+      "bytes": 31610,
+      "sha256": "d1fd1bb665fe6c23b6cf76713a58edaaccfff46fd99e747d0ac9f8ecd35198b9",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.md",
+      "bytes": 3580,
+      "sha256": "26d7ad08a824dd6cd6782f0e0eaa52bff96b6cb58b080e34d3637bfd855a57e2",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "bytes": 40105,
+      "sha256": "b8d7c979a8ed83404789b2919f8b5147dbe4fafd795e7477663b37b5fde68a92",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform.md",
+      "bytes": 7931,
+      "sha256": "37d4efc30467d85b342eb3ae3d7e39dfa77c70164716319eeef5f5e34ca2bd11",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-computed-text-transform.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-auto.html",
+      "bytes": 43581,
+      "sha256": "9d08c60400b579eec4cdb0efc0b9e00977a55fadfe2593943ab2e95fd42aec05",
+      "source": "previous-publication:plan/c11-4-direct-text-aspect-ratio-auto.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-definite-axis.html",
+      "bytes": 39429,
+      "sha256": "f378a27464062a51c51b2eb40608cd2762e5854d97e1074346441a4f05d1ac3f",
+      "source": "previous-publication:plan/c11-4-direct-text-aspect-ratio-definite-axis.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-finite.html",
+      "bytes": 40165,
+      "sha256": "56d07fe337f6a07f85e372a77b5271d4930d661e9ff1260208eef3a0f0b4e79a",
+      "source": "previous-publication:plan/c11-4-direct-text-aspect-ratio-finite.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 341653,
+      "sha256": "e964d29bf1d2194c6c5b9ce9dc9b9d835508b50c6ca8a43aed913d4fc8752cba",
+      "source": "rspress:plan/c11-4-grid-track-sizing.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 208439,
+      "sha256": "246130735e5aebdde7e3bb3ece13c9e19cce11244ed1892f1e439e90b817a86f",
+      "source": "selected-root:plan/c11-4-grid-track-sizing.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 66333,
+      "sha256": "44987f4dd51019f0013ff0d7c2d659c7665dcdd4dc61e4f1defaf69ee6f8deb7",
+      "source": "rspress:plan/c11-css-grid.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "bytes": 29886,
+      "sha256": "8e925809b18c57def2c6a129c2e03837ce32bec1c9c5b8d047930a1090c45467",
+      "source": "selected-root:plan/c11-css-grid.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "selected-source"
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "selected-source"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 467100,
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "selected-source"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "selected-source"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 467100,
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "source": "selected-root:public/roadmap.html",
+      "kind": "public-alias"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "source": "selected-root:public/roadmap.svg",
+      "kind": "public-alias"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 430937,
+      "sha256": "6c73fc48ed9dc86ab1c20bdc416ba823e10e5cb9a90fb6433c0ece72e724823e",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 298673,
+      "sha256": "8ef7489281b92d41f6f3efbb655fb2982a6f29b17ddb161271f7ec717baa4921",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "bytes": 3523,
+      "sha256": "fe73ded71b9cc25b0cf889ecb581f4f45cac34171d8dce9696e663971b943a5a",
+      "source": "previous-publication:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-observations.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "bytes": 59090,
+      "sha256": "ca4be56c62a370c23c773ff8aefc303ab95e56d94280bd4ee0dae5475bc88a42",
+      "source": "previous-publication:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/chrome156-text-transform-grid.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "bytes": 2177,
+      "sha256": "3dd5d56cad6205958744e850321e3c75e79f1de291cd53748c785b4e8b3ba82e",
+      "source": "previous-publication:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/expected.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "bytes": 35183,
+      "sha256": "bb4c19d7b4d2901a7ccfab69b9961028a189cbc91a8f96b32465e94ec59410cf",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "bytes": 5602,
+      "sha256": "c258ba2e3f59cf395089775cb89975f9ee82512d5ce282282ef94595e038b07e",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "bytes": 34504,
+      "sha256": "c3fb47aa44182a3be0c7c3ea536b5ca3f128b32ea135af900df40b344a549938",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "bytes": 3123,
+      "sha256": "b6ed8976374b3fa5b910712f9acfef60851043bc2244cb9f7869266dab0c4568",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "bytes": 1547,
+      "sha256": "0e9f2b19424b2d5c75e78ebc177019c810be9cf38f835b7546be0c2c019acd9d",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/selected-docs-build-plan-pr951.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "bytes": 124,
+      "sha256": "5bd985acf90948ea5c54a41d5e526ac4f428229342ac0b28331607a23b0f27d8",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489039660-d6f00964/transform-none-min.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "bytes": 396,
+      "sha256": "5cbc45928a24e9991b9fce5ab2929de0d0752dddfd24ba14483135104ad33e99",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "bytes": 29899,
+      "sha256": "ea4c4622d875c781548dee0a116ffa5efee8602b42f4db953d87955a38f43473",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793489069996-49688617/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "bytes": 587,
+      "sha256": "8c1c99e929f064e3ce07d76c8ac3e6682f70cbd6425e2a4a7fcdfb75acbb5ca8",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "bytes": 78445,
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "bytes": 396,
+      "sha256": "2863cec2adaf653f30341cfb19585840a6d091e527bd17e84ad655f2ec724f45",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "bytes": 30258,
+      "sha256": "b91401c75d3588c7662277323b2afd9e9c30c0800fec15d893dad4ef6e32d803",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "bytes": 24142,
+      "sha256": "7eb92db549c14ec362c9ac02dcc7988141a3ed829ea5bbfd893a5cf80218b1ef",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-lowercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "bytes": 25135,
+      "sha256": "eefb8dafc49810b6b5d011d79b241ebc1d4ce0ca3c0c1b2f76a2164111c2e868",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "bytes": 24629,
+      "sha256": "5523152e09406a96a8592ec990795b4853e0f64acf03ca051652754664f871db",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "bytes": 30301,
+      "sha256": "3b4a5bc92224b3e063fe6604c8b88919ca8612f00a59273b85ebd8f2dd6ea38e",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "bytes": 24663,
+      "sha256": "b8167fbb444045ae6e5a1087718b0c20f49e84c7f15c06ce3d81c18cfdf0a574",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/text-transform-uppercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "bytes": 474,
+      "sha256": "01d56433c069d28e3e9ababd54ae7f872857a57e9de094451251e62dddefb094",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "bytes": 5004,
+      "sha256": "68ff75275fa9565c14db2a2088e2a41636963666672c7ad747fa28a85f8c02a9",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793489198230-9ba4efd4/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "bytes": 593,
+      "sha256": "09e48d170a8712ee80f43e0b9221519f77247cc5d36e1bbc07e88a0940c97905",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "bytes": 142718,
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "bytes": 474,
+      "sha256": "7e47c675ab03c88a47024e35c0e7732bae778f9c739a635f5a054fe9e0b4c818",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/simulator.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "bytes": 15017,
+      "sha256": "d2969702baa570a3a558fa3ce09cf21ea77c99effa2322522886a2d00611ef14",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "bytes": 14145,
+      "sha256": "4abd0508398eec8df3a4c44a69b12b10536ecd9cced6d8a193c39adc4c030a74",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-lowercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "bytes": 15072,
+      "sha256": "471e84f8249e24d64189d1bca887b0cf87918841623ffc77d1915dfc1780f609",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "bytes": 14543,
+      "sha256": "a328df1772d30d9197e4e83494fd85ef773ec7e5e93cf56136b826cebe646df2",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-none-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "bytes": 15060,
+      "sha256": "7e973c3230b7e9a81262f68bff4dfa3bb128d2213d5d34052d21fde853080f15",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-max-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "bytes": 14571,
+      "sha256": "9ae76eed61e045a6e32a39492f70290d276a5a4bc0f360a884fd57b8e0f44e41",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/text-transform-uppercase-min-content.log",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 36175,
+      "sha256": "776fd8030949872002d155a3f38c62aa369dd02c856984924f90e5b1209e3598",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 5975,
+      "sha256": "c38ba06c9aa1c21541c42c168bedceecab8f38d0cbba090718e0f327b878966c",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "bytes": 39663,
+      "sha256": "9159db65591893020a2ee854a6fc38837c1c749ae9eafcd60d07846584421db7",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "bytes": 4357,
+      "sha256": "cd8067dcea588e4bb61993e0d9d32c3101ebdbb49ca7cf3c84eaefcf5471ee10",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 47859,
+      "sha256": "0866d73cac09757cdf12c2c3dfc0fe5381493556b6fb86564fbf572e3502e245",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 7037,
+      "sha256": "d08fe0776fc045f994a21dfe469c15f838de11270620188bb3796ea7104d6551",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "bytes": 37601,
+      "sha256": "f9a9c34e456b19554036398bab0a93e3047438c1dfc48c9f1f4d872cfa60971c",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "bytes": 3688,
+      "sha256": "2e2c1e0cef3effdd698f8da2dca356beb08652cba4b078b6d35c2417652c6638",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "bytes": 38160,
+      "sha256": "5d690b3ab7941a468d596069aeecdac6bd2e2adfcfa559b77dadf8e96aae0a16",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "bytes": 6997,
+      "sha256": "e277e78e697cd7736e9dc295976b757b43ad921ff79cef34c1c870c27368a0c0",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "bytes": 8794,
+      "sha256": "99a9fd43133990a167c19f632882da1b2ea009364635052c1802f346761933a2",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/source-revision.json",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "bytes": 43733,
+      "sha256": "f64131fb8d30fcbc458eee5b8880f23d97967a32557248c036241b6c48c4a8e2",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "bytes": 4590,
+      "sha256": "6f736b092d3e69700b30e790a37821a7e0156bb98ff9e6e3a00838cf935f14ac",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/expected-values.json",
+      "bytes": 2822,
+      "sha256": "d65674d8a1ddcc86862639612e98d539c80aff350ce447817af5cbe7740b766b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/expected-values.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-control.png",
+      "bytes": 78091,
+      "sha256": "28e57d51c3a2ffb9bfa4f71c5f71ddd6d120f0bbb605c6ee784d1aaa82055a05",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-ratio.png",
+      "bytes": 78145,
+      "sha256": "e01f959623ec7098e8201e1ba692942ea824f37720265cef2963196a08fc0f7f",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-height-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-control.png",
+      "bytes": 78134,
+      "sha256": "4f420eeeb5caf3440a5f826fa2b35a5ca100243bbe20823b826630229cbedacc",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-ratio.png",
+      "bytes": 78145,
+      "sha256": "e01f959623ec7098e8201e1ba692942ea824f37720265cef2963196a08fc0f7f",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/grid-text-aspect-ratio-definite-width-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/install.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/result.json",
+      "bytes": 20761,
+      "sha256": "c3c0264ffaadf3ad27c753037e614e80633c5ac1e9da6e768eb88f6ceb50985b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/result.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 32737,
+      "sha256": "842be91046b818a15599fff1ae5a64aff7720ebfdf6a39dfad1d247a6a64865b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 37145,
+      "sha256": "940cc73255295a5886818156fa049d283b14784179b864b6c99726246f16baed",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 32743,
+      "sha256": "a3fcf6533310de4373adf650d1eaab871c24114ba7b731f716bcf348258eae91",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 32119,
+      "sha256": "12715c61782ddbb7fb7f53144a61405c9cd3ed05484f39cd15de2d1587f04f48",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/simulator.json",
+      "bytes": 517,
+      "sha256": "e00a8bb0ec82b4332bb42ebc66b98e0209dbf227d27383cfc91379a1d3e51559",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435/simulator.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-build-final4.log",
+      "bytes": 4520,
+      "sha256": "e51102c622c715600e9b2db95cd88d78fc5d92eff793d01018f0fa325f61fd80",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-build-final4.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-capture-pass06.log",
+      "bytes": 17097,
+      "sha256": "66ef1802981f2d09ccbf93a28aaa584b41d4e61dce89e350636c25e96e0dbdb7",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-capture-pass06.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/capture-syntax-check.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/capture-syntax-check.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/clippy-default.log",
+      "bytes": 906,
+      "sha256": "f055b814e11a165184241442ea17870071f7fc11e4f209a2c5e6e5b067bada31",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/clippy-default.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ffi-focused-test.log",
+      "bytes": 614,
+      "sha256": "5f772ba18675ed00ddd844d2196e94f28bfaa3b5553145441add97ecca5abef0",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ffi-focused-test.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-archive-build.log",
+      "bytes": 681,
+      "sha256": "4fa0701b9852dd1b9387120216da8d746149073ab12e0ad8012bced85d88a35d",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-archive-build.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-module-boundary-test.log",
+      "bytes": 2605,
+      "sha256": "a9fe555b3ee61e422a7ea6a23981b472b9af655d77f65add2b1668608fcd8a83",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/fixture-module-boundary-test.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-build-final4.log",
+      "bytes": 92325,
+      "sha256": "7e1baf1a923f5debc824331c461f008620ffb855693843c118e7d31eaf7cdc6b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-build-final4.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-capture-pass03.log",
+      "bytes": 12742,
+      "sha256": "5ba8f1a426904314379148046fd13d3747f29b5c77b98de153ad21a005a6b8e4",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-capture-pass03.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-control.png",
+      "bytes": 133705,
+      "sha256": "49fda78c6d054e5be44492de7002cc36d208496ff2d01afb2f03eb5a5d134242",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-ratio.png",
+      "bytes": 133925,
+      "sha256": "cb6bc0d671c0be520c2fa2cbf92cc51b52ebb7f9025687070b037e17a9991625",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-height-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-control.png",
+      "bytes": 133990,
+      "sha256": "910e9112e657b9f348c06c146c17012433f6adf19fe4b198535a8a591d1b4470",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-control.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-ratio.png",
+      "bytes": 133925,
+      "sha256": "cb6bc0d671c0be520c2fa2cbf92cc51b52ebb7f9025687070b037e17a9991625",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/grid-text-aspect-ratio-definite-width-ratio.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/install.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/install.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 28,
+      "sha256": "28c7a764914ae12eb6e9b0f5646e3dc9e87c23e96214dc84d2630958346a68b9",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 28,
+      "sha256": "659a44403ac475f992a6bca5c6888d6f38de1416869d1ed5a54da0fd601fed8a",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 28,
+      "sha256": "9b85ecfde2d9af0392e7f619684f48710afbf85868da9b59875ce0f91419f57c",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 28,
+      "sha256": "5176d7f92cf9d77d1752eb9e422f8f1875db3e92c88d08272ec01b7364638b76",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/launch-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/result.json",
+      "bytes": 16294,
+      "sha256": "029e454a6ebb9d6977e6f007d769e1a3d1ac961e81ced578c85636fad19b02da",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/result.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 24930,
+      "sha256": "6e3aeeb9be346387ae86861d7343558a26aa70117155199d87ab42bb6a6dcc36",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 24160,
+      "sha256": "79be75148ea57d76451a2e659ac299de4b82703fcccc97d79e5c73c21b79e1a6",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 25040,
+      "sha256": "c05cf6a104fd50b1c196e7b6776a67dfd2b8ee7f4491af23b553dab44cc4e71d",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 24434,
+      "sha256": "e0e0db3cc09da569c68383bd9e478397bd460e90999a647f658b560e07eb89e7",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/runtime-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-control.log",
+      "bytes": 288,
+      "sha256": "4e19adb6163f444a7e18d114d8ddcd34a71431ab01f66c2cc384dd10d2596a57",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-ratio.log",
+      "bytes": 286,
+      "sha256": "bab2c47f9d16f4be0e29882149b5ee580b8269c9a8177bbcfde87a1d34197606",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-height-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-control.log",
+      "bytes": 287,
+      "sha256": "c19e771c6a71ddd9709e00b4579277e865c8a8146ba065792b13d1e19e7990f2",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-control.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-ratio.log",
+      "bytes": 285,
+      "sha256": "c119ff6f7d11f3dd894e4c781bc82f9d8362a9285b11f7ee837f2271334d2ccb",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/screenshot-grid-text-aspect-ratio-definite-width-ratio.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/simulator.json",
+      "bytes": 393,
+      "sha256": "8355d8d48bdba6997b6cb1ab6402b4a0a117014eb39431f329f2cc6b9b89129d",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/ios-simulator/c114-text-ratio-mvvhvvfz-4b9929a2/simulator.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/product-archive-build.log",
+      "bytes": 692,
+      "sha256": "ed62108f84c27dcafe21e1a4a8709f4f009fcf17b54017b151166b07fd1ac368",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/product-archive-build.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/runtime-focused-test.log",
+      "bytes": 1673,
+      "sha256": "3cc5743afbf3979fc1ab45b9c36c94336fdd500d743f534eea556a040f2a8128",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/runtime-focused-test.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/rustfmt-check.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "source": "previous-publication:spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/rustfmt-check.log",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-auto.html",
+      "bytes": 43505,
+      "sha256": "59fbead478d5ca3efbb86144c312bef63fa78f9dc2da6ca2c528bcdfdf438a66",
+      "source": "previous-publication:spec/plan/c11-4-direct-text-aspect-ratio-auto.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-definite-axis.html",
+      "bytes": 39440,
+      "sha256": "a3fe6ff2e53041f6469854a161e29cc2130b8cb7c567dc46f6e558c53b260f04",
+      "source": "previous-publication:spec/plan/c11-4-direct-text-aspect-ratio-definite-axis.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-finite.html",
+      "bytes": 40166,
+      "sha256": "308158dd9910f68244cc7548543eed51f30248ed7e70f320ce057086f28cc756",
+      "source": "previous-publication:spec/plan/c11-4-direct-text-aspect-ratio-finite.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 340247,
+      "sha256": "0a098aec6668c3c053b24115410e5482c5e9685eaebee62244fb96786beb4b3f",
+      "source": "previous-publication:spec/plan/c11-4-grid-track-sizing.html",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 467100,
+      "sha256": "32bf5320c810a581898e892a5e037569951628ccb1bea3d5b98cfdd954a056d2",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "selected-source"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 719670,
+      "sha256": "7cffd90e169506ac3cb2dfa00e48508d428f1338b7e92765c3d064fae0c237dc",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 579520,
+      "sha256": "d991407897bdaa4a3610b0af78f1887c6e7541d128a138f931e05fc242457b1f",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "source": "previous-publication:static/css/styles.8d918fd78e.css",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/image/grid-text-aspect-ratio-definite-width-ratio.19f0ba4ef0.png",
+      "bytes": 78145,
+      "sha256": "e01f959623ec7098e8201e1ba692942ea824f37720265cef2963196a08fc0f7f",
+      "source": "previous-publication:static/image/grid-text-aspect-ratio-definite-width-ratio.19f0ba4ef0.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/image/grid-text-aspect-ratio-definite-width-ratio.1dd65b58eb.png",
+      "bytes": 133925,
+      "sha256": "cb6bc0d671c0be520c2fa2cbf92cc51b52ebb7f9025687070b037e17a9991625",
+      "source": "previous-publication:static/image/grid-text-aspect-ratio-definite-width-ratio.1dd65b58eb.png",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/image/representative-screen.721139421f.png",
+      "bytes": 78445,
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d",
+      "source": "rspress:static/image/representative-screen.721139421f.png",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/image/representative-screen.b404e159c3.png",
+      "bytes": 142718,
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984",
+      "source": "rspress:static/image/representative-screen.b404e159c3.png",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "source": "rspress:static/js/3.d8b550a68d.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "source": "rspress:static/js/3.d8b550a68d.js.LICENSE.txt",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "source": "previous-publication:static/js/a.877e354479.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "source": "previous-publication:static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "source": "previous-publication:static/js/async/i.25208e7c92.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "source": "rspress:static/js/async/l.76b60f2b87.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-0079c1ca4523.4ff116195e.js",
+      "bytes": 8347,
+      "sha256": "74bfad486e04cafc0aa8dbf54a079d24f165af116da76fcacb463d33fc95fbb0",
+      "source": "rspress:static/js/async/route-0079c1ca4523.4ff116195e.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-0079c1ca4523.a82c5990bd.js",
+      "bytes": 8350,
+      "sha256": "182304595374f46d1872d5e9fab32129fc8a94028563ab2c68a5d26112ee8921",
+      "source": "previous-publication:static/js/async/route-0079c1ca4523.a82c5990bd.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.9ab2060d54.js",
+      "bytes": 328284,
+      "sha256": "414636bae8aa2333bca92faa1a9cc4ad6c21108ac8507d24eda9382dd5a61429",
+      "source": "previous-publication:static/js/async/route-04cbcabea10a.9ab2060d54.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ded7e42750.js",
+      "bytes": 328282,
+      "sha256": "24e35f79a89a25e02b21fdb3e1e2571869351d36fc5588d9ffcaa4be6b9dc6b4",
+      "source": "rspress:static/js/async/route-04cbcabea10a.ded7e42750.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.f9f63a13c5.js",
+      "bytes": 328288,
+      "sha256": "10ad3c7d683ee39e25967b477e30bf9450854de6a7ceb426d4d98e09966cf901",
+      "source": "previous-publication:static/js/async/route-04cbcabea10a.f9f63a13c5.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-167642c0790c.78996291d6.js",
+      "bytes": 11839,
+      "sha256": "100c7ea35e61a07a44bf17f68bf56a3ea1fdd67e5e33f2ea2fd53945261e3955",
+      "source": "previous-publication:static/js/async/route-167642c0790c.78996291d6.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-1fd58ce40d0f.bf02f5a8eb.js",
+      "bytes": 16274,
+      "sha256": "a23c11f82bd8e61bbc681f8ec56f3beaaaebbfa456486a0994f9391efdfd07af",
+      "source": "previous-publication:static/js/async/route-1fd58ce40d0f.bf02f5a8eb.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-284129ca16c3.88cfe15c43.js",
+      "bytes": 12818,
+      "sha256": "8fea8e3ae13a3ec054c501923d7a6af89411ad493dda82392f1bc07c7115c6e8",
+      "source": "rspress:static/js/async/route-284129ca16c3.88cfe15c43.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-31d085b9b7df.9c246590df.js",
+      "bytes": 16771,
+      "sha256": "bcca2d40d700dbc5f8299b764fa45c42f21a9d578208fd67b7331dba7f234931",
+      "source": "previous-publication:static/js/async/route-31d085b9b7df.9c246590df.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-543217cc835c.a7e14ef615.js",
+      "bytes": 16783,
+      "sha256": "0ef0e98dcf9aa3912e3470220a1dd1ef2899fa78d3ff83f2973888f72fe019b6",
+      "source": "previous-publication:static/js/async/route-543217cc835c.a7e14ef615.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-553a7b25e650.b7f319dc62.js",
+      "bytes": 8834,
+      "sha256": "6ca5f99dfdacd397e9a2736fe41f65c2970544f8b6396eccd793c5110ae42670",
+      "source": "previous-publication:static/js/async/route-553a7b25e650.b7f319dc62.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-5fc23afe6f9e.a6996658c0.js",
+      "bytes": 2896,
+      "sha256": "d6fc46c8ce3a2eff2cb0d95adb79b715d4c9f758e6005ff408620b9ac4de46dc",
+      "source": "previous-publication:static/js/async/route-5fc23afe6f9e.a6996658c0.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-60f0def4b8c9.6d9c262005.js",
+      "bytes": 12767,
+      "sha256": "fc57d31f3649a6f2e2c9d130352c0459571c39cfbb9847e05bd84b7e7eee190d",
+      "source": "rspress:static/js/async/route-60f0def4b8c9.6d9c262005.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-655860cceddf.86d8ec075b.js",
+      "bytes": 8039,
+      "sha256": "37512629aa323f5ffbd058a3137138f1612055ed09ad99757a21e99aa181bb92",
+      "source": "rspress:static/js/async/route-655860cceddf.86d8ec075b.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-68bc4618b037.0fc9e6fff1.js",
+      "bytes": 16298,
+      "sha256": "4b848ceba60982f601ff29170a22420459b5038b489f390e0c6a617ac26bed64",
+      "source": "previous-publication:static/js/async/route-68bc4618b037.0fc9e6fff1.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-6a090e83535d.3d1aa74e53.js",
+      "bytes": 11663,
+      "sha256": "d2a818665d517b57972b3d32bfd8a969bf6f5e33de1e1e86296cca9154e4230d",
+      "source": "previous-publication:static/js/async/route-6a090e83535d.3d1aa74e53.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-6a090e83535d.d1a55d34f1.js",
+      "bytes": 13648,
+      "sha256": "6ef4f3d44b9409f2924b5494427f9898ce3217b8b695387138718dcfb09ea321",
+      "source": "rspress:static/js/async/route-6a090e83535d.d1a55d34f1.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.4b57813a70.js",
+      "bytes": 764627,
+      "sha256": "ef7adf09a10f70ea7b6c4c1ad1eaa1adb9fda7e1c4275da709d21a336f9a7da2",
+      "source": "previous-publication:static/js/async/route-6c33a3943990.4b57813a70.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.e830aa500e.js",
+      "bytes": 763479,
+      "sha256": "abb064b68a5842a167a029be0714067c718a4784aa028436448e7f7ead188cc4",
+      "source": "previous-publication:static/js/async/route-6c33a3943990.e830aa500e.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.fdf4ce5676.js",
+      "bytes": 766218,
+      "sha256": "56b8b04d9f77915df4e74a0fc313f68c6ed76a11601fdc8f0da583dd24c7ce05",
+      "source": "rspress:static/js/async/route-6c33a3943990.fdf4ce5676.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.141951043c.js",
+      "bytes": 429973,
+      "sha256": "da95dba66055006f0357d2149db7fa45fa4a218c7c3636ea2a85972f5a4c48af",
+      "source": "previous-publication:static/js/async/route-739571cd2ae5.141951043c.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.abd055f29d.js",
+      "bytes": 434550,
+      "sha256": "aa058143adc7911234cdd32cf7c587e692b202d1cede55bc471125166d73d907",
+      "source": "rspress:static/js/async/route-739571cd2ae5.abd055f29d.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-7b04da4823b4.25fc8ee99f.js",
+      "bytes": 7247,
+      "sha256": "df8200bb6a60193123deb5f9afed51831ae848ff4034cbabb83766090378bb02",
+      "source": "rspress:static/js/async/route-7b04da4823b4.25fc8ee99f.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.499f092f4e.js",
+      "bytes": 763603,
+      "sha256": "20b3b521eb8dae5bb4571a0ffc6feecdb54a6bed81813f12602a47617b59a590",
+      "source": "previous-publication:static/js/async/route-7ce2535ac56d.499f092f4e.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.79e82cb288.js",
+      "bytes": 766378,
+      "sha256": "72ea4461209e2b27ad3b0148276b19115fdbec469628c27d941aa243cbd84189",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.79e82cb288.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-8119af4e97e9.b442275219.js",
+      "bytes": 11567,
+      "sha256": "a1c2d3858bd1c8a1c09a3fe1dd52e8ab6edc44db8540e468b79ddadf87558455",
+      "source": "rspress:static/js/async/route-8119af4e97e9.b442275219.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-864a9933bdb8.8c72a485eb.js",
+      "bytes": 13137,
+      "sha256": "bec12f5cc5f8f71eba1802ca634992df9dfff339e1d3d0a8a276d1e74a73907d",
+      "source": "previous-publication:static/js/async/route-864a9933bdb8.8c72a485eb.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-8e5c6bacf127.0f616374ef.js",
+      "bytes": 21202,
+      "sha256": "bb8ed7c213285490fe315ff2f15b8b246940bf00d5c104a83653cd48058563fa",
+      "source": "previous-publication:static/js/async/route-8e5c6bacf127.0f616374ef.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-8fdbe5732907.49a7503e33.js",
+      "bytes": 6015,
+      "sha256": "ae27fca075ac7f0ea2e5a823d4900a682cac47a858f0d6509a2525bdd8964dd9",
+      "source": "previous-publication:static/js/async/route-8fdbe5732907.49a7503e33.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-8fdbe5732907.b3a13d611a.js",
+      "bytes": 6498,
+      "sha256": "d5427bc21d6d1bc649e26910b6eb00ec1af77759c77a1a11a0d7fa7d35225b2f",
+      "source": "rspress:static/js/async/route-8fdbe5732907.b3a13d611a.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-9af52d4674ec.af288fe530.js",
+      "bytes": 7255,
+      "sha256": "926ffc5458bf5a05facf55a0fb9d1a14bc607666476be44f34e34c315d061995",
+      "source": "rspress:static/js/async/route-9af52d4674ec.af288fe530.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.be7572346e.js",
+      "bytes": 1007,
+      "sha256": "81b6d22f47923ea72a0c99d4fab38e3fb32b555b66c2f74e9c911a4e09e6f36c",
+      "source": "previous-publication:static/js/async/route-a48746cae70c.be7572346e.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.f9773b61d4.js",
+      "bytes": 7998,
+      "sha256": "4bf774f673fd7076bc0ed107db69b6e0468e70be71c280d9848d84f93d2d5003",
+      "source": "previous-publication:static/js/async/route-a48746cae70c.f9773b61d4.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-b572e57e63d7.74752d7fff.js",
+      "bytes": 21222,
+      "sha256": "18bd6e31bd7030581a4a4d964439a8eac94d0cdec8b18ce8693657a09d105dfa",
+      "source": "previous-publication:static/js/async/route-b572e57e63d7.74752d7fff.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.d0f2f85287.js",
+      "bytes": 328306,
+      "sha256": "d53f6a5d3c5024d40dd33ad22a84d020e2b05b617fd8bf18055c4e96c706beb4",
+      "source": "previous-publication:static/js/async/route-b7ce154f07b0.d0f2f85287.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-bcb4ac56e16a.60a82bd694.js",
+      "bytes": 11485,
+      "sha256": "65c153921b7d06745d89a1a1fa91ceef413ff2a036a6ac6aa2241434c560a99d",
+      "source": "rspress:static/js/async/route-bcb4ac56e16a.60a82bd694.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.3e6323fbec.js",
+      "bytes": 43165,
+      "sha256": "dcb4e9eee063ff075c0b9876276ecf152113dae277e410d64b15f41485329684",
+      "source": "previous-publication:static/js/async/route-c2801b21f038.3e6323fbec.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.f1bf4af06a.js",
+      "bytes": 43163,
+      "sha256": "d7db538cf0cf8133f0473239c58c18d2693fb4d2e1d6fa752a281bd8f9a1811d",
+      "source": "rspress:static/js/async/route-c2801b21f038.f1bf4af06a.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.27f6d96046.js",
+      "bytes": 429978,
+      "sha256": "b2bacb29ebcc1e6ea65cc983bb1522b66a1b5fcfafa00842aefeeef7c59f0773",
+      "source": "previous-publication:static/js/async/route-c4dae6800800.27f6d96046.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.8dd39e137c.js",
+      "bytes": 432715,
+      "sha256": "27c6e3c1723b98548b44d84bf8733d80fe5802932c0366cc239cf5301bafb12a",
+      "source": "previous-publication:static/js/async/route-c4dae6800800.8dd39e137c.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.c6050797d3.js",
+      "bytes": 434511,
+      "sha256": "53e746ab14f1ec9e99c14d7f54d0bfde96976c5fd5f425cb2b189e1cc0113103",
+      "source": "rspress:static/js/async/route-c4dae6800800.c6050797d3.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-ce32ff31d344.7f121e3e00.js",
+      "bytes": 12745,
+      "sha256": "fe72684d5c0c1197f8bc89aa1aa103d182d49bf74ac28514e6053e353aa7755c",
+      "source": "rspress:static/js/async/route-ce32ff31d344.7f121e3e00.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-d0ed50b99111.30ef97288a.js",
+      "bytes": 3717,
+      "sha256": "885131c7b70808301275eb10418680c5f7d9939ad963f2c0585e8c88e9dd8a42",
+      "source": "previous-publication:static/js/async/route-d0ed50b99111.30ef97288a.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-d1ed533e4943.6236eac679.js",
+      "bytes": 11491,
+      "sha256": "3886841713b4ae94f4d55a35911b1f9f9e4dfa4341c61db89f5a66c22ca4165d",
+      "source": "rspress:static/js/async/route-d1ed533e4943.6236eac679.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-df8bc2c67b23.b9550c5cd8.js",
+      "bytes": 10118,
+      "sha256": "3dff04af0aed204f126685de63c4c7707bd2d39b6acf482f5d56dfc7b458e593",
+      "source": "previous-publication:static/js/async/route-df8bc2c67b23.b9550c5cd8.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-dfe46283eae9.d517206411.js",
+      "bytes": 8776,
+      "sha256": "6624b9d1b6324270a79988276297242401e2e477f2034914ba458f753cee7bf8",
+      "source": "previous-publication:static/js/async/route-dfe46283eae9.d517206411.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-e98914a747d5.1f3e8167c8.js",
+      "bytes": 11558,
+      "sha256": "50f65a1e3f38997b9ef909fe38f4a8508303dc3100b59e91138c670544dcc88b",
+      "source": "rspress:static/js/async/route-e98914a747d5.1f3e8167c8.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-f09538323dc1.df56a1130b.js",
+      "bytes": 12666,
+      "sha256": "6e2175b3a3b9624646572a732cd225a156acbe17132aa6ad785a0b6e677e92c1",
+      "source": "previous-publication:static/js/async/route-f09538323dc1.df56a1130b.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/async/route-f09538323dc1.e01a8a13ae.js",
+      "bytes": 12812,
+      "sha256": "0015bc29d1f74f7f02624ae53289e9156676b4a448d143e7658ca3ed0c6cd393",
+      "source": "rspress:static/js/async/route-f09538323dc1.e01a8a13ae.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-f2402bd44c87.205514e3fa.js",
+      "bytes": 6503,
+      "sha256": "b363adb3190877bbf25902e2d5501c45d0267e01c412d4f09869485d67ce59ea",
+      "source": "rspress:static/js/async/route-f2402bd44c87.205514e3fa.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/async/route-fe27a6f2e475.f305b84eeb.js",
+      "bytes": 8029,
+      "sha256": "9d7bc466fdaa3e3308f4faec6b925c0bdc12103da1eb421cfb4050515f9a63dd",
+      "source": "rspress:static/js/async/route-fe27a6f2e475.f305b84eeb.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/index.1a11eebf86.js",
+      "bytes": 124353,
+      "sha256": "8bc4dc7585b5120641c70bcd57557e381903ea625287cbe1584b495312d1f072",
+      "source": "previous-publication:static/js/index.1a11eebf86.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/index.5ce477e61f.js",
+      "bytes": 137431,
+      "sha256": "2cf0ae2aa6712e815f62888f1f45bbe1516e8e871cbb0c9b4c32b3612797d3ed",
+      "source": "rspress:static/js/index.5ce477e61f.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/index.eafa597469.js",
+      "bytes": 65682,
+      "sha256": "69fb43559d44862da03aa6a4765e97a43a7d15c915c6d467555527cb2c879cb1",
+      "source": "previous-publication:static/js/index.eafa597469.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "source": "rspress:static/js/lib-react.801d719c4f.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "source": "rspress:static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "source": "previous-publication:static/js/lib-react.9cdf8f49ce.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "source": "previous-publication:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "source": "previous-publication:static/js/lib-router.1e14e568cb.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "source": "previous-publication:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "source": "previous-publication:static/js/styles.2da0941fcb.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "source": "rspress:static/js/styles.aba03c5c90.js",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "source": "previous-publication:static/js/styles.d2a6dfa6a0.js",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/search_index.ko.056ded0c.json",
+      "bytes": 1866741,
+      "sha256": "056ded0cc7a1576c10b24a76e2baa7f41d9f431a8e67eaaafe641f2a7b7f5284",
+      "source": "previous-publication:static/search_index.ko.056ded0c.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "static/search_index.ko.55dea960.json",
+      "bytes": 1742941,
+      "sha256": "55dea960bc82a7651587ee76132c8846534ed27b635095f4f741355ef1a8060b",
+      "source": "rspress:static/search_index.ko.55dea960.json",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "static/search_index.ko.7cea153d.json",
+      "bytes": 938566,
+      "sha256": "7cea153d40b19463ac12317c6be94bfdbc527e92bd150353cb69992be2b58c0c",
+      "source": "previous-publication:static/search_index.ko.7cea153d.json",
+      "kind": "preserved-route"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 718996,
+      "sha256": "57e98ef20041f0984ad29d90036d77a8ce7f06dcfbc6600e0e030b7566e16998",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 579520,
+      "sha256": "d991407897bdaa4a3610b0af78f1887c6e7541d128a138f931e05fc242457b1f",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "selected-source"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform.html",
+      "bytes": 4019,
+      "sha256": "98ab0ae80ff2f1ca79dd34713d82103c7e31883ff740fc4a12092ca49bb3fa11",
+      "source": "previous-publication:tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform.html",
+      "kind": "preserved-route"
+    }
+  ]
+}

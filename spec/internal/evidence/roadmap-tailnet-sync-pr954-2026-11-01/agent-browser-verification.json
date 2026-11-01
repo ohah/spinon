@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-01",
+  "browser": "Agent Browser",
+  "sourceHead": "43db168f26ecaaf6eb799692359e3f3861dcb546",
+  "roadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "server": {
+    "tailscaleBackendState": "Running",
+    "previewPid": 28040,
+    "listen": "127.0.0.1:8768",
+    "restarted": false
+  },
+  "publication": {
+    "routeCount": 306,
+    "bytes": 25498629,
+    "created": 106,
+    "replaced": 19,
+    "identical": 181,
+    "verifiedBackups": 19,
+    "localHashesVerified": 306,
+    "https200": 306,
+    "remoteHashesVerified": 306,
+    "deletes": 0
+  },
+  "roadmapDesktop": {
+    "viewport": [
+      1280,
+      900
+    ],
+    "documentWidth": 1280,
+    "bodyWidth": 1280,
+    "horizontalOverflow": false,
+    "mergedPr952Visible": true,
+    "stalePlanOnlyText": false,
+    "officialCompletionVisible": "72/213",
+    "localCardLinkChecks": [
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-android-avd-1793490026684-7e379b0a/representative-screen.png",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/representative-screen.png",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+        "status": 200
+      },
+      {
+        "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-구현-체크리스트",
+        "status": 200
+      }
+    ],
+    "screenshot": "roadmap-agent-browser-desktop.png",
+    "sha256": "de4a1c895635d4f4d2c92eb77d7901870bca2927edc06b6a04f6e8d69451a1ec"
+  },
+  "roadmapMobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "horizontalOverflow": false,
+    "mergedPr952Visible": true,
+    "officialCompletionVisible": "72/213",
+    "screenshot": "roadmap-agent-browser-mobile.png",
+    "sha256": "43f85cc6e5a3dde371f2450609d7224d13b803fbb3373b5d6a0a00fd0f13bb7b"
+  },
+  "planRoute": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "titleVisible": true,
+    "scopeAndSimulatorEvidenceVisible": true,
+    "officialCompletionVisible": "72/213"
+  },
+  "browserCleanup": {
+    "sessionClosed": true,
+    "agentBrowserProcessesAfterClose": 0,
+    "browserChromeProcessesAfterClose": 0
+  }
+}
