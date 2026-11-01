@@ -1,0 +1,171 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 297 ms.
+ready   built in 1.87s (web)
+ready   built in 1.87s (node)
+
+File (web)                                                                                                                                 Size        Gzip
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/l.76b60f2b87.js                                          0.10 kB     0.09 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/styles.aba03c5c90.js                                           0.47 kB     0.23 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/icon.svg                                                                 0.64 kB     0.42 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-589115541021.fb3b83264e.js                         4.0 kB      1.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ee5f4696c81a.1badff376a.js                         4.0 kB      1.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-a67b9d611648.c10d1027dd.js                         4.1 kB      1.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-86b843f83433.7da2d254b9.js                         4.1 kB      1.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-44c7add360ce.02a4c24c2b.js                         4.3 kB      1.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-d53f6e9d0769.3846ba99a5.js                         4.3 kB      1.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-14499f1c0ea4.f65cce8aac.js                         5.3 kB      2.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-1659ec5cb7a8.c39164d1d2.js                         5.4 kB      2.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-8fdbe5732907.978d81c6da.js                         6.5 kB      2.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-f2402bd44c87.ced59f5de1.js                         6.5 kB      2.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-3cfdf000abac.0efc7377ed.js                         6.8 kB      2.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-1ca3350ecc2f.4ea4c08cb4.js                         6.8 kB      2.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-3b382757bbb7.dbe8533d40.js                         7.0 kB      2.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-c3d8eee44843.63444aa64b.js                         7.0 kB      2.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-003f0c98c1e3.0195a42dda.js                         7.1 kB      2.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-7b04da4823b4.a57d774feb.js                         7.2 kB      2.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-9af52d4674ec.5fda62f7f4.js                         7.3 kB      2.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ec2b50c9c7c6.1b33dfc867.js                         7.4 kB      1.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-44f4d0c2cb7d.4cee05e35d.js                         7.4 kB      1.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-013658c76a8b.73328d5d40.js                         7.5 kB      2.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-fe27a6f2e475.3ba358d9c1.js                         8.0 kB      2.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-655860cceddf.d221c643e3.js                         8.0 kB      2.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-0079c1ca4523.dcd8fd28ed.js                         8.3 kB      2.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-8a77fade6ec9.ad34bb0147.js                         9.2 kB      3.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-361ac97b3c55.a2ddbf327c.js                         9.2 kB      3.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-a3c91a808ffa.b6a18dbd9e.js                         9.6 kB      2.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-e4cce4689874.fc85c70ed3.js                         9.6 kB      2.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-847d9e1dd89c.2d99a04608.js                         10.2 kB     3.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-22ef5dd88c13.75430963ea.js                         10.6 kB     3.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-b91c128b1ebb.5a45261310.js                         10.6 kB     3.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-f25cd5897909.9754608023.js                         10.8 kB     3.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-6d4726ac38ae.69306ed1fd.js                         10.8 kB     3.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-a0802050f513.dab9f93511.js                         10.8 kB     3.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-8ed6f5111201.9936a9af86.js                         10.8 kB     3.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-f96368fa9f64.fa94f63ae5.js                         10.8 kB     3.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-fed032923ff3.ef15b35c4a.js                         11.0 kB     3.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-f2f694e5eb70.f9073f47a4.js                         11.0 kB     3.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-34cb20c5fb27.c9c29d8f1e.js                         11.4 kB     3.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-34a177c7b813.8d103221d9.js                         11.4 kB     3.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-bcb4ac56e16a.46ffa8b95c.js                         11.5 kB     4.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-d1ed533e4943.c94b7463d4.js                         11.5 kB     4.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-e98914a747d5.2b8bcb8fa8.js                         11.6 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-8119af4e97e9.ed8414b7f9.js                         11.6 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-8a2044aa7b16.3b880ae546.js                         12.6 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-8402d6e9a6ae.418fe34805.js                         12.6 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ce32ff31d344.8fe7eaf1ba.js                         12.7 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-60f0def4b8c9.ede91d1264.js                         12.8 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-f09538323dc1.62473fc491.js                         12.8 kB     3.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-284129ca16c3.bf58dc5cc7.js                         12.8 kB     3.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ae839aad1ef6.9fb0bc0d7e.js                         12.8 kB     3.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ce3a879afc92.0678a2625a.js                         12.8 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-efa044be41cc.e616230e91.js                         12.9 kB     4.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-5afd064101b5.5135f7abf0.js                         13.4 kB     4.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-1c1635d141c0.2d6ad2e82f.js                         13.4 kB     3.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-dddc5f2ee74d.ca18ab1d66.js                         13.5 kB     4.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-6a090e83535d.4b2ce4c684.js                         13.6 kB     4.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-1ab31dc2f907.3df544210b.js                         14.4 kB     4.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-7742170544d9.3966fd4fbf.js                         14.4 kB     4.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-b4a0baa89902.42bd1a6d91.js                         15.3 kB     4.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-a00a11912515.c256bab31c.js                         16.0 kB     5.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ae32519c848b.b6cc1583a7.js                         16.0 kB     5.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-ecca6d672752.78cf9bdc44.js                         17.0 kB     4.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-a9b4f39531df.c168236e75.js                         17.0 kB     4.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-fa59a7df8ad7.4ffc558ed1.js                         20.1 kB     5.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/lib-router.d3b08da66f.js                                       35.4 kB     12.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-c2801b21f038.c89a8767ef.js                         42.5 kB     12.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/css/styles.8d918fd78e.css                                         74.0 kB     14.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/image/overflow-wrap-break-word-fixed-10px-screen.e4483206d7.png   76.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/image/overflow-wrap-normal-fixed-10px-screen.10a2cd24cf.png       76.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/image/representative-screen.721139421f.png                        78.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/image/overflow-wrap-normal-fixed-10px-screen.192645098d.png       142.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/image/overflow-wrap-break-word-fixed-10px-screen.bcdb2e35d0.png   142.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/image/representative-screen.b404e159c3.png                        142.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/3.d8b550a68d.js                                                217.1 kB    72.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/lib-react.801d719c4f.js                                        218.4 kB    68.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/index.7b767a7d31.js                                            224.6 kB    54.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-04cbcabea10a.cc6fb567e3.js                         336.4 kB    67.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-c4dae6800800.c319f32500.js                         441.6 kB    97.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-739571cd2ae5.7502bc662b.js                         441.7 kB    97.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-6c33a3943990.f5c149760d.js                         772.7 kB    163.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/js/async/route-7ce2535ac56d.b726ff910f.js                         773.0 kB    163.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/static/search_index.ko.bb3f7a57.json                                     2013.3 kB   582.5 kB
+
+                                                                                                                                  Total:   6908.4 kB   2275.5 kB
+
+File (node)                                                                                                                                                                                       Size        Gzip
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/404.html                                                                                                                        8.5 kB      2.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html                                  62.8 kB     7.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/artifact-boundary.html                          62.9 kB     6.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html                             62.9 kB     7.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/artifact-boundary.html                     62.9 kB     6.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.html                      62.9 kB     6.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.html                 62.9 kB     6.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-precomparison-2026-11-01/README.html                               63.0 kB     6.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-precomparison-2026-11-01/README.html                          63.0 kB     6.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html                                                      63.2 kB     6.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html                                                           63.3 kB     6.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html                                                      63.5 kB     7.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.html                                   63.8 kB     7.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.html                              63.8 kB     7.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.html           64.9 kB     7.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.html      64.9 kB     7.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.html                                                65.6 kB     7.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.html                                           65.6 kB     7.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-indent-flags-plan-review-20.html                                                                 65.6 kB     7.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/README.html                                     65.6 kB     7.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/README.html                                65.7 kB     7.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/implementation-runtime-review-20.html           65.9 kB     8.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/implementation-runtime-review-20.html      65.9 kB     8.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/post-merge-status-review-30.html                    65.9 kB     7.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/post-merge-status-review-30.html               65.9 kB     7.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/post-merge-status-roadmap-review-30.html        66.2 kB     7.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-review-20.html                                                       66.2 kB     7.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/post-merge-status-roadmap-review-30.html   66.2 kB     7.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html                                      66.4 kB     8.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html                                 66.4 kB     8.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/artifact-boundary/README.html                       66.5 kB     7.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/artifact-boundary/README.html                  66.6 kB     7.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html                      67.2 kB     8.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html                 67.2 kB     8.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/pr-diff-review-30.html                          67.3 kB     8.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/pr-diff-review-30.html                     67.3 kB     8.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-pr-diff-review-30.html                                               68.0 kB     8.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-indent-flags-plan-pr-diff-review-30.html                                                         68.1 kB     8.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html                  68.1 kB     9.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html             68.1 kB     9.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/README.html                                         68.1 kB     8.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/README.html                                    68.2 kB     8.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-line-break-loose-plan-pr-diff-review-30.html                                                     68.8 kB     8.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-indent-flags-implementation-review-20.html                                                       68.9 kB     9.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html              69.2 kB     9.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/pr-diff-review-30.html                              69.2 kB     9.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html         69.2 kB     9.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/pr-diff-review-30.html                         69.2 kB     9.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html                  69.5 kB     8.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html             69.5 kB     8.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-line-break-loose-plan-review-20.html                                                             69.9 kB     9.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html                                            70.1 kB     9.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html                                       70.2 kB     9.0 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html                             70.7 kB     9.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html                        70.7 kB     9.8 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html                                                                      71.2 kB     9.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html                       71.6 kB     9.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html                  71.6 kB     9.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-computed-text-transform.html                                                                     72.1 kB     9.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-line-break-loose.html                                                                            72.6 kB     9.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html                                        72.8 kB     9.3 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html                                   72.8 kB     9.2 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-anonymous-grid-text-indent-flags.html                                                                                78.9 kB     11.4 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html                                 79.8 kB     11.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html                            79.8 kB     11.9 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-css-grid.html                                                                                                          98.3 kB     17.7 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/plan/c11-4-grid-track-sizing.html                                                                                               381.7 kB    72.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/internal/0059-c11-grid-layout.html                                                                                              469.0 kB    101.5 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/internal/0059-c11-grid-layout.html                                                                                         469.6 kB    101.6 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/STATUS.html                                                                                                                     757.0 kB    166.1 kB
+build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/site/spec/STATUS.html                                                                                                                757.7 kB    166.2 kB
+
+                                                                                                                                                                                         Total:   7274.1 kB   1164.0 kB
