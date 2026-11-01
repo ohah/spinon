@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      #gap-grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 130px;
+        height: 65px;
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 30px 30px;
+        gap: 5px 10px;
+        background-color: #101820;
+      }
+
+      #gap-grid > div {
+        box-sizing: border-box;
+      }
+
+      .cell-a {
+        width: 40px;
+        height: 30px;
+        background-color: #e5484d;
+      }
+
+      .cell-b {
+        width: 80px;
+        height: 30px;
+        background-color: #3a8f5b;
+      }
+
+      .cell-c {
+        width: 40px;
+        height: 30px;
+        background-color: #0a84ff;
+      }
+
+      .cell-d {
+        width: 80px;
+        height: 30px;
+        background-color: #f2c94c;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="gap-grid">
+      <div class="cell-a"></div>
+      <div class="cell-b"></div>
+      <div class="cell-c"></div>
+      <div class="cell-d"></div>
+    </section>
+  </body>
+</html>
