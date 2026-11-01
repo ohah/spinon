@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid full-width oracle</title>
+  <style>
+    @font-face {
+      font-family: "Noto Sans KR";
+      src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+    }
+    body { margin: 16px; color: #fff; background: #18222d; font: 14px/1.4 sans-serif; }
+    main { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px; }
+    figure { min-width: 280px; margin: 0; padding: 10px; background: #263645; }
+    figure > div { font: 400 10px/10px "Noto Sans KR"; white-space: normal; }
+    .target { display: grid; grid-template-columns: max-content; width: max-content; }
+    .target.min { grid-template-columns: min-content; }
+    .target.full-width { text-transform: full-width; }
+    .candidate { display: inline-block; margin-right: 12px; }
+    .candidate-grid { display: grid; grid-template-columns: min-content; width: max-content; }
+    .candidate-list { margin-top: 6px; color: #b6c4d2; }
+    figcaption { margin-bottom: 6px; }
+    output { display: block; white-space: pre-wrap; margin-top: 18px; font: 12px/1.35 ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <main id="scenes">
+    <figure data-id="none-max" data-expected="AB 12">
+      <figcaption>Untransformed max-content control</figcaption>
+      <div class="target">AB 12</div>
+      <div class="candidate-list"><span class="candidate">AB 12</span><span class="candidate">ＡＢ　１２</span></div>
+    </figure>
+    <figure data-id="full-width-max" data-expected="ＡＢ　１２">
+      <figcaption>Full-width max-content</figcaption>
+      <div class="target full-width">AB 12</div>
+      <div class="candidate-list"><span class="candidate">ＡＢ　１２</span><span class="candidate">AB 12</span></div>
+    </figure>
+    <figure data-id="full-width-min" data-expected="ＡＢ　１２">
+      <figcaption>Full-width min-content</figcaption>
+      <div class="target full-width min">AB 12</div>
+      <div class="candidate-list"><div class="candidate-grid">ＡＢ　１２</div><div class="candidate-grid">AB 12</div></div>
+    </figure>
+    <figure data-id="full-width-collapsed-spaces" data-expected="ＡＢ　１２">
+      <figcaption>Full-width after normal-space collapse</figcaption>
+      <div class="target full-width">AB   12</div>
+      <div class="candidate-list"><span class="candidate">ＡＢ　１２</span><span class="candidate">ＡＢ　　　１２</span></div>
+    </figure>
+  </main>
+  <output id="observations">Loading Noto Sans KR…</output>
+  <script>
+    (async () => {
+      await document.fonts.load('400 10px "Noto Sans KR"');
+      await document.fonts.ready;
+      const rows = [...document.querySelectorAll('figure')].map((figure) => {
+        const target = figure.querySelector('.target');
+        const targetStyle = getComputedStyle(target);
+        const targetWidth = target.getBoundingClientRect().width;
+        const targetHeight = target.getBoundingClientRect().height;
+        const candidates = [...figure.querySelectorAll('.candidate, .candidate-grid')].map((node) => ({
+          text: node.textContent,
+          width: node.getBoundingClientRect().width,
+          height: node.getBoundingClientRect().height,
+          matchesTargetWidth: Math.abs(node.getBoundingClientRect().width - targetWidth) <= 1 / 64,
+        }));
+        return {
+          id: figure.dataset.id,
+          expectedByCssText: figure.dataset.expected,
+          sourceText: target.textContent,
+          textTransform: targetStyle.textTransform,
+          fontFamily: targetStyle.fontFamily,
+          fontSize: targetStyle.fontSize,
+          targetTrackWidth: targetWidth,
+          targetHeight,
+          candidates,
+        };
+      });
+      document.querySelector('#observations').textContent = JSON.stringify({
+        userAgent: navigator.userAgent,
+        dpr: devicePixelRatio,
+        viewport: { width: innerWidth, height: innerHeight },
+        fontLoaded: document.fonts.check('400 10px "Noto Sans KR"'),
+        fontStatus: document.fonts.status,
+        rows,
+      }, null, 2);
+    })();
+  </script>
+</body>
+</html>

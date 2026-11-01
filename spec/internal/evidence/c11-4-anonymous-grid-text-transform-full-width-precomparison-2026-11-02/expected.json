@@ -1,0 +1,54 @@
+{
+  "basis": {
+    "cssText": "CSS Text Level 3 CRD 2026-08-14 section 2.1 text-transform",
+    "unicode": "Unicode 17.0.0 UnicodeData.txt compatibility decomposition tags <wide>",
+    "fontMetrics": "Chrome 156 literal candidate spans and candidate min-content Grid tracks; not a Chrome text-transform oracle",
+    "font": "Noto Sans KR variable, wght=400, 10 CSS px",
+    "toleranceCssPx": 0.03125
+  },
+  "mapping": [
+    { "source": "U+0041 A", "output": "U+FF21 Ａ" },
+    { "source": "U+0042 B", "output": "U+FF22 Ｂ" },
+    { "source": "U+0020 SPACE", "output": "U+3000 IDEOGRAPHIC SPACE" },
+    { "source": "U+0031 DIGIT ONE", "output": "U+FF11 １" },
+    { "source": "U+0032 DIGIT TWO", "output": "U+FF12 ２" }
+  ],
+  "scenes": [
+    {
+      "id": "none-max",
+      "sourceText": "AB 12",
+      "expectedLayoutText": "AB 12",
+      "expectedTrackWidthCssPx": 25.984375,
+      "expectedLines": 1
+    },
+    {
+      "id": "full-width-max",
+      "sourceText": "AB 12",
+      "computedTextTransform": "full-width",
+      "expectedLayoutText": "ＡＢ　１２",
+      "expectedTrackWidthCssPx": 50,
+      "expectedLines": 1
+    },
+    {
+      "id": "full-width-min",
+      "sourceText": "AB 12",
+      "computedTextTransform": "full-width",
+      "expectedLayoutText": "ＡＢ　１２",
+      "expectedTrackWidthCssPx": 20,
+      "expectedLines": 2
+    },
+    {
+      "id": "full-width-collapsed-spaces",
+      "sourceText": "AB   12",
+      "computedTextTransform": "full-width",
+      "expectedLayoutText": "ＡＢ　１２",
+      "expectedTrackWidthCssPx": 50,
+      "expectedLines": 1
+    }
+  ],
+  "limits": [
+    "Chrome 156 rejects full-width and therefore supplies no target semantics oracle.",
+    "Unicode compatibility decompositions and CSS Text provide the mapping oracle; literal candidate text supplies font shaping observations only.",
+    "The matrix does not establish arbitrary punctuation, non-ASCII width mappings, language inheritance, general CSS admission, WPT conformance, or the at-risk value's future status."
+  ]
+}
