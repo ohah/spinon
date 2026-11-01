@@ -41,4 +41,4 @@
 
 ## 검토 자료
 
-[Unicode titlecase 계획](../../../../plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.md) · [계획 실패 관점 검토 20개](../../../../plan/c11-4-anonymous-grid-text-transform-unicode-titlecase-plan-review-20.md) · [Chrome 관측](./chrome156-observations.json) · [규범 기대값](./expected.json) · [Chrome precomparison screenshot](./chrome156-capitalize-unicode.png)
+<a href="/spinon/plan/c11-4-anonymous-grid-text-transform-unicode-titlecase.html">Unicode titlecase 계획</a> · <a href="/spinon/plan/c11-4-anonymous-grid-text-transform-unicode-titlecase-plan-review-20.html">계획 실패 관점 검토 20개</a> · <a href="./chrome156-observations.json">Chrome 관측 JSON</a> · <a href="./expected.json">규범 기대값 JSON</a> · <a href="./chrome156-capitalize-unicode.png">Chrome precomparison screenshot</a>
