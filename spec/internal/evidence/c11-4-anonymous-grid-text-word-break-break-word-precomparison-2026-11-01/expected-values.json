@@ -1,0 +1,58 @@
+{
+  "fixture": "grid-track-sizing-c114-anonymous-text-break-word.html",
+  "text": "XXXX",
+  "font": {
+    "family": "Ahem",
+    "sizeCssPx": 10,
+    "weight": 400,
+    "lineHeightCssPx": 10,
+    "glyphAdvanceCssPx": 10
+  },
+  "gridWidthCssPx": 120,
+  "trackValues": ["min-content", "max-content", "10px"],
+  "matrix": [
+    {
+      "wordBreak": "normal",
+      "overflowWrap": "normal",
+      "minContentColumnCssPx": 40,
+      "fixed10Px": {"rowCssPx": 10, "lineWidthsCssPx": [40]}
+    },
+    {
+      "wordBreak": "normal",
+      "overflowWrap": "break-word",
+      "minContentColumnCssPx": 40,
+      "fixed10Px": {"rowCssPx": 40, "lineWidthsCssPx": [10, 10, 10, 10]}
+    },
+    {
+      "wordBreak": "normal",
+      "overflowWrap": "anywhere",
+      "minContentColumnCssPx": 10,
+      "fixed10Px": {"rowCssPx": 40, "lineWidthsCssPx": [10, 10, 10, 10]}
+    },
+    {
+      "wordBreak": "break-word",
+      "overflowWrap": "normal",
+      "minContentColumnCssPx": 10,
+      "fixed10Px": {"rowCssPx": 40, "lineWidthsCssPx": [10, 10, 10, 10]}
+    },
+    {
+      "wordBreak": "break-word",
+      "overflowWrap": "break-word",
+      "minContentColumnCssPx": 10,
+      "fixed10Px": {"rowCssPx": 40, "lineWidthsCssPx": [10, 10, 10, 10]}
+    },
+    {
+      "wordBreak": "break-word",
+      "overflowWrap": "anywhere",
+      "minContentColumnCssPx": 10,
+      "fixed10Px": {"rowCssPx": 40, "lineWidthsCssPx": [10, 10, 10, 10]}
+    }
+  ],
+  "allCases": {
+    "maxContentColumnCssPx": 40,
+    "maxContentRowCssPx": 10,
+    "maxContentLineWidthsCssPx": [40],
+    "wrappedMinContentRowCssPx": 40,
+    "wrappedMinContentLineWidthsCssPx": [10, 10, 10, 10]
+  }
+}

@@ -1,0 +1,587 @@
+{
+  "chrome": "156.0.0.0",
+  "devicePixelRatio": 1,
+  "fontsLoaded": {
+    "ahem": true
+  },
+  "observations": [
+    {
+      "authoredOverflowWrap": "normal",
+      "authoredWordBreak": "normal",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "normal",
+      "computedRows": "10px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-normal-min-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 79.375
+        }
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "authoredWordBreak": "normal",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "normal",
+      "computedRows": "10px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-normal-max-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 107.375
+        }
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "authoredWordBreak": "normal",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "normal",
+      "computedRows": "10px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-normal-10px",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 135.375
+        }
+      ],
+      "track": "10px"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "authoredWordBreak": "normal",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "break-word",
+      "computedRows": "10px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-break-word-min-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 163.375
+        }
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "authoredWordBreak": "normal",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "break-word",
+      "computedRows": "10px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-break-word-max-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 191.375
+        }
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "authoredWordBreak": "normal",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "break-word",
+      "computedRows": "40px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-break-word-10px",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 219.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 229.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 239.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 249.375
+        }
+      ],
+      "track": "10px"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "authoredWordBreak": "normal",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedRows": "40px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-anywhere-min-content",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 263.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 273.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 283.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 293.375
+        }
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "authoredWordBreak": "normal",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "anywhere",
+      "computedRows": "10px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-anywhere-max-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 307.375
+        }
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "authoredWordBreak": "normal",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedRows": "40px",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-overflow-wrap-anywhere-10px",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 335.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 345.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 355.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 365.375
+        }
+      ],
+      "track": "10px"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "normal",
+      "computedRows": "40px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-normal-min-content",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 379.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 389.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 399.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 409.375
+        }
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "normal",
+      "computedRows": "10px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-normal-max-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 423.375
+        }
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "normal",
+      "computedRows": "40px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-normal-10px",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 451.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 461.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 471.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 481.375
+        }
+      ],
+      "track": "10px"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "break-word",
+      "computedRows": "40px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-break-word-min-content",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 495.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 505.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 515.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 525.375
+        }
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "break-word",
+      "computedRows": "10px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-break-word-max-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 539.375
+        }
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "break-word",
+      "computedRows": "40px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-break-word-10px",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 567.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 577.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 587.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 597.375
+        }
+      ],
+      "track": "10px"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedRows": "40px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-anywhere-min-content",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 611.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 621.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 631.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 641.375
+        }
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "40px",
+      "computedOverflowWrap": "anywhere",
+      "computedRows": "10px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-anywhere-max-content",
+      "lineCount": 1,
+      "rootBox": {
+        "height": 10,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 40,
+          "x": 466,
+          "y": 655.375
+        }
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "authoredWordBreak": "break-word",
+      "computedColumns": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedRows": "40px",
+      "computedWordBreak": "break-word",
+      "id": "word-break-break-word-overflow-wrap-anywhere-10px",
+      "lineCount": 4,
+      "rootBox": {
+        "height": 40,
+        "width": 120
+      },
+      "textRects": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 683.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 693.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 703.375
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 466,
+          "y": 713.375
+        }
+      ],
+      "track": "10px"
+    }
+  ],
+  "supportsWordBreakBreakWord": true,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}
