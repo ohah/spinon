@@ -1,0 +1,352 @@
+{
+  "schema": "spinon-c11-3-3-negative-named-line-pair-auto-implicit-tracks-runtime-result/v1",
+  "status": "matched",
+  "runID": "c1133-negative-pair-ios-simulator-20261101T043205958Z-dc6eff5e",
+  "target": "ios-simulator",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/negative-named-line-pair-auto-implicit-tracks-mobile-v1.json",
+    "sha256": "ee8ba7b742b161225593191541c89f7fcf8607e0b64c097d49d776026069537c"
+  },
+  "oracle": {
+    "product": "HeadlessChrome/156.0.0.0",
+    "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-leading-named-line-pair-matrix-2026-11-01",
+    "referenceSha256": "4b1f9f878eccce6b0e79e1ff8ce2654008d916b769aeaf05f60a99cd9a7f8f69",
+    "screenshotSha256": "5f12e3251051cd30c7c5a318a56b03242715e03064bd668708aa8e60028847d4",
+    "sampleCount": 8,
+    "maximumChannelError": 0,
+    "oracleComparison": {
+      "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-leading-named-line-pair-matrix-2026-11-01",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 8
+    }
+  },
+  "platform": {
+    "metadata": {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "appSha256": "6055e923f82f34777028bac6751ac95163ba18b26d726641710723fd4deee437",
+    "frames": [
+      {
+        "index": 0,
+        "nodeId": 1,
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 240
+      },
+      {
+        "index": 1,
+        "nodeId": 2,
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 2,
+        "nodeId": 3,
+        "x": 0,
+        "y": 0,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 3,
+        "nodeId": 4,
+        "x": 160,
+        "y": 0,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 4,
+        "nodeId": 5,
+        "x": 160,
+        "y": 0,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 5,
+        "nodeId": 6,
+        "x": 0,
+        "y": 60,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 6,
+        "nodeId": 7,
+        "x": 0,
+        "y": 60,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 7,
+        "nodeId": 8,
+        "x": 160,
+        "y": 60,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 8,
+        "nodeId": 9,
+        "x": 160,
+        "y": 60,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 9,
+        "nodeId": 10,
+        "x": 0,
+        "y": 120,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 10,
+        "nodeId": 11,
+        "x": 0,
+        "y": 120,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 11,
+        "nodeId": 12,
+        "x": 160,
+        "y": 120,
+        "width": 108,
+        "height": 30
+      },
+      {
+        "index": 12,
+        "nodeId": 13,
+        "x": 160,
+        "y": 120,
+        "width": 18,
+        "height": 10
+      },
+      {
+        "index": 13,
+        "nodeId": 14,
+        "x": 0,
+        "y": 180,
+        "width": 160,
+        "height": 54
+      },
+      {
+        "index": 14,
+        "nodeId": 15,
+        "x": 0,
+        "y": 180,
+        "width": 10,
+        "height": 17
+      },
+      {
+        "index": 15,
+        "nodeId": 16,
+        "x": 160,
+        "y": 180,
+        "width": 160,
+        "height": 48
+      },
+      {
+        "index": 16,
+        "nodeId": 17,
+        "x": 160,
+        "y": 180,
+        "width": 10,
+        "height": 18
+      }
+    ],
+    "pixelComparison": {
+      "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1133-negative-pair-ios-simulator-20261101T043205958Z-dc6eff5e",
+      "processId": 46559,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 84,
+        "renderTree": 17,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 8,
+      "matchedSamples": 8,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "negative-pair-0",
+          "css": [
+            5,
+            5
+          ],
+          "drawable": [
+            16,
+            16
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-1",
+          "css": [
+            165,
+            5
+          ],
+          "drawable": [
+            496,
+            16
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-2",
+          "css": [
+            5,
+            65
+          ],
+          "drawable": [
+            16,
+            196
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-3",
+          "css": [
+            165,
+            65
+          ],
+          "drawable": [
+            496,
+            196
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-4",
+          "css": [
+            5,
+            125
+          ],
+          "drawable": [
+            16,
+            376
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-5",
+          "css": [
+            165,
+            125
+          ],
+          "drawable": [
+            496,
+            376
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-6",
+          "css": [
+            5,
+            185
+          ],
+          "drawable": [
+            16,
+            556
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "negative-pair-7",
+          "css": [
+            165,
+            185
+          ],
+          "drawable": [
+            496,
+            556
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    },
+    "screenSha256": "507713f259aab18847d1b36243ebc6009210f0bfaaea3e16293267fc7094f468",
+    "negative": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-negative-pair-ios-simulator-20261101T043205958Z-dc6eff5e-bad-samples",
+      "readbackStarted": false
+    }
+  },
+  "interpretation": "Metal drawable 표면을 OS compositor 제출 전에 읽어 고정 Chrome RGBA와 비교했다. 별도 화면 캡처는 UI 확인 자료다."
+}

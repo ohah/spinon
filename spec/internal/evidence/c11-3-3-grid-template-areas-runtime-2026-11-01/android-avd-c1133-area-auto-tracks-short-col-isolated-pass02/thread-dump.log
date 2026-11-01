@@ -1,0 +1,803 @@
+--------- beginning of kernel
+11-01 13:06:31.245     1     1 I init    : Untracked process (pid: 30187 name: (crash_dump64) ppid: 1 pgrp: 30186 state: Z) did not have an associated service entry and will not be reaped
+--------- beginning of system
+11-01 13:06:31.251   653   680 I ActivityManager: Collecting stacks for native pid 861
+--------- beginning of main
+11-01 13:06:31.252   653   680 E android.os.Debug: Failed to get binder state info for pid: 861 status: -2: Success
+11-01 13:06:31.253   653   680 I system_server: libdebuggerd_client: started dumping process 861
+11-01 13:06:31.253   346   346 I tombstoned: registered intercept for pid 861 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.255     1     1 I init    : Untracked process (pid: 30189 name: (drmserver) ppid: 1 pgrp: 30189 state: Z) exited with status 0
+11-01 13:06:31.255     1     1 I init    : Untracked process (pid: 30189 name: (drmserver) ppid: 1 pgrp: 30189 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.258   861   861 I libc    : Requested dump for pid 861 (android.hardwar)
+11-01 13:06:31.279 30192 30192 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.279   346   346 I tombstoned: received crash request for pid 861
+11-01 13:06:31.279   346   346 I tombstoned: found intercept fd 512 for pid 861 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.279 30192 30192 I crash_dump64: performing dump of process 861 (target tid = 861)
+11-01 13:06:31.287   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.287   653   680 I system_server: libdebuggerd_client: done dumping process 861
+11-01 13:06:31.289   653   680 I ActivityManager: Collecting stacks for native pid 288
+11-01 13:06:31.287     1     1 I init    : Untracked process (pid: 30192 name: (crash_dump64) ppid: 1 pgrp: 30191 state: Z) exited with status 0
+11-01 13:06:31.287     1     1 I init    : Untracked process (pid: 30192 name: (crash_dump64) ppid: 1 pgrp: 30191 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.288     1     1 I init    : Untracked process (pid: 30194 name: (android.hardwar) ppid: 1 pgrp: 30194 state: Z) exited with status 0
+11-01 13:06:31.288     1     1 I init    : Untracked process (pid: 30194 name: (android.hardwar) ppid: 1 pgrp: 30194 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.295   653   680 E android.os.Debug: Failed to get binder state info for pid: 288 status: -2: Success
+11-01 13:06:31.295   653   680 I system_server: libdebuggerd_client: started dumping process 288
+11-01 13:06:31.295   346   346 I tombstoned: registered intercept for pid 288 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.297   288   288 I libc    : Requested dump for pid 288 (servicemanager)
+11-01 13:06:31.322 30197 30197 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.322   346   346 I tombstoned: received crash request for pid 288
+11-01 13:06:31.322   346   346 I tombstoned: found intercept fd 512 for pid 288 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.322 30197 30197 I crash_dump64: performing dump of process 288 (target tid = 288)
+11-01 13:06:31.331   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.331   653   680 I system_server: libdebuggerd_client: done dumping process 288
+11-01 13:06:31.332     1     1 I init    : Untracked process (pid: 30199 name: (servicemanager) ppid: 1 pgrp: 30199 state: Z) exited with status 0
+11-01 13:06:31.332     1     1 I init    : Untracked process (pid: 30199 name: (servicemanager) ppid: 1 pgrp: 30199 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.332     1     1 I init    : Untracked process (pid: 30197 name: (crash_dump64) ppid: 1 pgrp: 30196 state: Z) exited with status 0
+11-01 13:06:31.332     1     1 I init    : Untracked process (pid: 30197 name: (crash_dump64) ppid: 1 pgrp: 30196 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.335   653   680 I ActivityManager: Collecting stacks for native pid 481
+11-01 13:06:31.336   653   680 E android.os.Debug: Failed to get binder state info for pid: 481 status: -2: Success
+11-01 13:06:31.342   653   680 I system_server: libdebuggerd_client: started dumping process 481
+11-01 13:06:31.346   346   346 I tombstoned: registered intercept for pid 481 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.346   481   481 I libc    : Requested dump for pid 481 (android.hardwar)
+11-01 13:06:31.367 30202 30202 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.367   346   346 I tombstoned: received crash request for pid 481
+11-01 13:06:31.367   346   346 I tombstoned: found intercept fd 512 for pid 481 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.367 30202 30202 I crash_dump64: performing dump of process 481 (target tid = 481)
+11-01 13:06:31.370   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.370   653   680 I system_server: libdebuggerd_client: done dumping process 481
+11-01 13:06:31.372   653   680 I ActivityManager: Collecting stacks for native pid 485
+11-01 13:06:31.373   653   680 E android.os.Debug: Failed to get binder state info for pid: 485 status: -2: Success
+11-01 13:06:31.371     1     1 I init    : Untracked process (pid: 30202 name: (crash_dump64) ppid: 1 pgrp: 30201 state: Z) exited with status 0
+11-01 13:06:31.371     1     1 I init    : Untracked process (pid: 30202 name: (crash_dump64) ppid: 1 pgrp: 30201 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.371     1     1 I init    : Untracked process (pid: 30204 name: (android.hardwar) ppid: 1 pgrp: 30204 state: Z) exited with status 0
+11-01 13:06:31.371     1     1 I init    : Untracked process (pid: 30204 name: (android.hardwar) ppid: 1 pgrp: 30204 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.379   653   680 I system_server: libdebuggerd_client: started dumping process 485
+11-01 13:06:31.379   346   346 I tombstoned: registered intercept for pid 485 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.379   485   485 I libc    : Requested dump for pid 485 (android.hardwar)
+11-01 13:06:31.396 30207 30207 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.396   346   346 I tombstoned: received crash request for pid 485
+11-01 13:06:31.396   346   346 I tombstoned: found intercept fd 512 for pid 485 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.396 30207 30207 I crash_dump64: performing dump of process 485 (target tid = 485)
+11-01 13:06:31.399   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.399   653   680 I system_server: libdebuggerd_client: done dumping process 485
+11-01 13:06:31.400     1     1 I init    : Untracked process (pid: 30207 name: (crash_dump64) ppid: 1 pgrp: 30206 state: Z) exited with status 0
+11-01 13:06:31.400     1     1 I init    : Untracked process (pid: 30207 name: (crash_dump64) ppid: 1 pgrp: 30206 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.406   653   680 I ActivityManager: Collecting stacks for native pid 486
+11-01 13:06:31.404     1     1 I init    : Untracked process (pid: 30209 name: (android.hardwar) ppid: 1 pgrp: 30209 state: Z) exited with status 0
+11-01 13:06:31.404     1     1 I init    : Untracked process (pid: 30209 name: (android.hardwar) ppid: 1 pgrp: 30209 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.411   653   680 I system_server: libdebuggerd_client: started dumping process 486
+11-01 13:06:31.418   346   346 I tombstoned: registered intercept for pid 486 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.419   486   486 I libc    : Requested dump for pid 486 (audioserver)
+11-01 13:06:31.447 30212 30212 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.447   346   346 I tombstoned: received crash request for pid 486
+11-01 13:06:31.447   346   346 I tombstoned: found intercept fd 512 for pid 486 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.448 30212 30212 I crash_dump64: performing dump of process 486 (target tid = 486)
+11-01 13:06:31.464   653   680 I system_server: libdebuggerd_client: done dumping process 486
+11-01 13:06:31.464   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.465   653   680 I ActivityManager: Collecting stacks for native pid 550
+11-01 13:06:31.467   653   680 I system_server: libdebuggerd_client: started dumping process 550
+11-01 13:06:31.468     1     1 I init    : Untracked process (pid: 30212 name: (crash_dump64) ppid: 1 pgrp: 30211 state: Z) exited with status 0
+11-01 13:06:31.468     1     1 I init    : Untracked process (pid: 30212 name: (crash_dump64) ppid: 1 pgrp: 30211 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.469     1     1 I init    : Untracked process (pid: 30214 name: (audioserver) ppid: 1 pgrp: 30214 state: Z) exited with status 0
+11-01 13:06:31.469     1     1 I init    : Untracked process (pid: 30214 name: (audioserver) ppid: 1 pgrp: 30214 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.478   346   346 I tombstoned: registered intercept for pid 550 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.478   550   550 I libc    : Requested dump for pid 550 (cameraserver)
+11-01 13:06:31.681 30217 30217 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.681   346   346 I tombstoned: received crash request for pid 550
+11-01 13:06:31.681   346   346 I tombstoned: found intercept fd 512 for pid 550 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.681 30217 30217 I crash_dump64: performing dump of process 550 (target tid = 550)
+11-01 13:06:31.713   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.714     1     1 I init    : Untracked process (pid: 30217 name: (crash_dump64) ppid: 1 pgrp: 30216 state: Z) exited with status 0
+11-01 13:06:31.714     1     1 I init    : Untracked process (pid: 30217 name: (crash_dump64) ppid: 1 pgrp: 30216 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.714   653   680 I system_server: libdebuggerd_client: done dumping process 550
+11-01 13:06:31.715     1     1 I init    : Untracked process (pid: 30219 name: (cameraserver) ppid: 1 pgrp: 30219 state: Z) exited with status 0
+11-01 13:06:31.715     1     1 I init    : Untracked process (pid: 30219 name: (cameraserver) ppid: 1 pgrp: 30219 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.719   653   680 I ActivityManager: Collecting stacks for native pid 493
+11-01 13:06:31.720   653   680 I system_server: libdebuggerd_client: started dumping process 493
+11-01 13:06:31.726   346   346 I tombstoned: registered intercept for pid 493 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.726   493   493 I libc    : Requested dump for pid 493 (surfaceflinger)
+11-01 13:06:31.745 30222 30222 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.745   346   346 I tombstoned: received crash request for pid 493
+11-01 13:06:31.745   346   346 I tombstoned: found intercept fd 512 for pid 493 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.746 30222 30222 I crash_dump64: performing dump of process 493 (target tid = 493)
+11-01 13:06:31.773   653   680 I system_server: libdebuggerd_client: done dumping process 493
+11-01 13:06:31.773   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.773     1     1 I init    : Untracked process (pid: 30222 name: (crash_dump64) ppid: 1 pgrp: 30221 state: Z) exited with status 0
+11-01 13:06:31.773     1     1 I init    : Untracked process (pid: 30222 name: (crash_dump64) ppid: 1 pgrp: 30221 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.774     1     1 I init    : Untracked process (pid: 30224 name: (surfaceflinger) ppid: 1 pgrp: 30224 state: Z) exited with status 0
+11-01 13:06:31.774     1     1 I init    : Untracked process (pid: 30224 name: (surfaceflinger) ppid: 1 pgrp: 30224 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.778   653   680 I ActivityManager: Collecting stacks for native pid 557
+11-01 13:06:31.781   653   680 E android.os.Debug: Failed to get binder state info for pid: 557 status: -2: Success
+11-01 13:06:31.782   653   680 I system_server: libdebuggerd_client: started dumping process 557
+11-01 13:06:31.782   346   346 I tombstoned: registered intercept for pid 557 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.786   346   346 I tombstoned: received crash request for pid 557
+11-01 13:06:31.786   346   346 I tombstoned: found intercept fd 512 for pid 557 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.803   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.803   653   680 I system_server: libdebuggerd_client: done dumping process 557
+11-01 13:06:31.807   653   680 I ActivityManager: Collecting stacks for native pid 303
+11-01 13:06:31.808   653   680 I system_server: libdebuggerd_client: started dumping process 303
+11-01 13:06:31.813   346   346 I tombstoned: registered intercept for pid 303 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.813   303   303 I libc    : Requested dump for pid 303 (binder:303_2)
+11-01 13:06:31.850 30227 30227 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.851   346   346 I tombstoned: received crash request for pid 303
+11-01 13:06:31.851   346   346 I tombstoned: found intercept fd 512 for pid 303 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.851 30227 30227 I crash_dump64: performing dump of process 303 (target tid = 303)
+11-01 13:06:31.856   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.862   653   680 I system_server: libdebuggerd_client: done dumping process 303
+11-01 13:06:31.864   653   680 I ActivityManager: Collecting stacks for native pid 431
+11-01 13:06:31.863     1     1 I init    : Untracked process (pid: 30227 name: (crash_dump64) ppid: 1 pgrp: 30226 state: Z) exited with status 0
+11-01 13:06:31.863     1     1 I init    : Untracked process (pid: 30227 name: (crash_dump64) ppid: 1 pgrp: 30226 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.863     1     1 I init    : Untracked process (pid: 30229 name: (binder:303_2) ppid: 1 pgrp: 30229 state: Z) exited with status 0
+11-01 13:06:31.863     1     1 I init    : Untracked process (pid: 30229 name: (binder:303_2) ppid: 1 pgrp: 30229 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.871   653   680 I system_server: libdebuggerd_client: started dumping process 431
+11-01 13:06:31.879   346   346 I tombstoned: registered intercept for pid 431 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.880   431   431 I libc    : Requested dump for pid 431 (binder:431_3)
+11-01 13:06:31.946 30232 30232 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.948   346   346 I tombstoned: received crash request for pid 431
+11-01 13:06:31.948   346   346 I tombstoned: found intercept fd 512 for pid 431 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.950 30232 30232 I crash_dump64: performing dump of process 431 (target tid = 431)
+11-01 13:06:31.964   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:31.964   653   680 I system_server: libdebuggerd_client: done dumping process 431
+11-01 13:06:31.965     1     1 I init    : Untracked process (pid: 30232 name: (crash_dump64) ppid: 1 pgrp: 30231 state: Z) exited with status 0
+11-01 13:06:31.965     1     1 I init    : Untracked process (pid: 30232 name: (crash_dump64) ppid: 1 pgrp: 30231 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.965     1     1 I init    : Untracked process (pid: 30234 name: (binder:431_3) ppid: 1 pgrp: 30234 state: Z) exited with status 0
+11-01 13:06:31.965     1     1 I init    : Untracked process (pid: 30234 name: (binder:431_3) ppid: 1 pgrp: 30234 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:31.967   653   680 I ActivityManager: Collecting stacks for native pid 432
+11-01 13:06:31.968   653   680 E android.os.Debug: Failed to get binder state info for pid: 432 status: -2: Success
+11-01 13:06:31.968   653   680 I system_server: libdebuggerd_client: started dumping process 432
+11-01 13:06:31.968   346   346 I tombstoned: registered intercept for pid 432 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.974   432   432 I libc    : Requested dump for pid 432 (statsd)
+11-01 13:06:31.980 30237 30237 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:31.980   346   346 I tombstoned: received crash request for pid 432
+11-01 13:06:31.980   346   346 I tombstoned: found intercept fd 512 for pid 432 and type kDebuggerdNativeBacktrace
+11-01 13:06:31.980 30237 30237 I crash_dump64: performing dump of process 432 (target tid = 432)
+11-01 13:06:32.003   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:32.003   653   680 I system_server: libdebuggerd_client: done dumping process 432
+11-01 13:06:32.003     1     1 I init    : Untracked process (pid: 30237 name: (crash_dump64) ppid: 1 pgrp: 30236 state: Z) exited with status 0
+11-01 13:06:32.003     1     1 I init    : Untracked process (pid: 30237 name: (crash_dump64) ppid: 1 pgrp: 30236 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.004     1     1 I init    : Untracked process (pid: 30239 name: (statsd) ppid: 1 pgrp: 30239 state: Z) exited with status 0
+11-01 13:06:32.004     1     1 I init    : Untracked process (pid: 30239 name: (statsd) ppid: 1 pgrp: 30239 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.005   653   680 I ActivityManager: Collecting stacks for native pid 561
+11-01 13:06:32.006   653   680 E android.os.Debug: Failed to get binder state info for pid: 561 status: -2: Success
+11-01 13:06:32.007   653   680 I system_server: libdebuggerd_client: started dumping process 561
+11-01 13:06:32.007   346   346 I tombstoned: registered intercept for pid 561 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.007   561   561 I libc    : Requested dump for pid 561 (mediametrics)
+11-01 13:06:32.086 30242 30242 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:32.090   346   346 I tombstoned: received crash request for pid 561
+11-01 13:06:32.090   346   346 I tombstoned: found intercept fd 512 for pid 561 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.090 30242 30242 I crash_dump64: performing dump of process 561 (target tid = 561)
+11-01 13:06:32.110   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:32.111   653   680 I system_server: libdebuggerd_client: done dumping process 561
+11-01 13:06:32.112   653   680 I ActivityManager: Collecting stacks for native pid 562
+11-01 13:06:32.113   653   680 E android.os.Debug: Failed to get binder state info for pid: 562 status: -2: Success
+11-01 13:06:32.118     1     1 I init    : Untracked process (pid: 30242 name: (crash_dump64) ppid: 1 pgrp: 30241 state: Z) exited with status 0
+11-01 13:06:32.118     1     1 I init    : Untracked process (pid: 30242 name: (crash_dump64) ppid: 1 pgrp: 30241 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.119     1     1 I init    : Untracked process (pid: 30244 name: (mediametrics) ppid: 1 pgrp: 30244 state: Z) exited with status 0
+11-01 13:06:32.119     1     1 I init    : Untracked process (pid: 30244 name: (mediametrics) ppid: 1 pgrp: 30244 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.122   653   680 I system_server: libdebuggerd_client: started dumping process 562
+11-01 13:06:32.123   346   346 I tombstoned: registered intercept for pid 562 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.123   562   562 I libc    : Requested dump for pid 562 (mediaserver)
+11-01 13:06:32.171 30247 30247 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:32.181   346   346 I tombstoned: received crash request for pid 562
+11-01 13:06:32.182   346   346 I tombstoned: found intercept fd 512 for pid 562 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.182 30247 30247 I crash_dump64: performing dump of process 562 (target tid = 562)
+11-01 13:06:32.194   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:32.196   653   680 I system_server: libdebuggerd_client: done dumping process 562
+11-01 13:06:32.197   653   680 I ActivityManager: Collecting stacks for native pid 565
+11-01 13:06:32.199   653   680 I system_server: libdebuggerd_client: started dumping process 565
+11-01 13:06:32.206   346   346 I tombstoned: registered intercept for pid 565 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.207     1     1 I init    : Untracked process (pid: 30247 name: (crash_dump64) ppid: 1 pgrp: 30246 state: Z) exited with status 0
+11-01 13:06:32.207     1     1 I init    : Untracked process (pid: 30247 name: (crash_dump64) ppid: 1 pgrp: 30246 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.207     1     1 I init    : Untracked process (pid: 30249 name: (mediaserver) ppid: 1 pgrp: 30249 state: Z) exited with status 0
+11-01 13:06:32.207     1     1 I init    : Untracked process (pid: 30249 name: (mediaserver) ppid: 1 pgrp: 30249 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.210   346   346 I tombstoned: received crash request for pid 565
+11-01 13:06:32.210   346   346 I tombstoned: found intercept fd 512 for pid 565 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.514   653   680 I system_server: libdebuggerd_client: done dumping process 565
+11-01 13:06:32.515   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:32.517   653   680 I ActivityManager: Collecting stacks for native pid 439
+11-01 13:06:32.518   653   680 E android.os.Debug: Failed to get binder state info for pid: 439 status: -2: Success
+11-01 13:06:32.519   653   680 I system_server: libdebuggerd_client: started dumping process 439
+11-01 13:06:32.519   346   346 I tombstoned: registered intercept for pid 439 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.520   439   439 I libc    : Requested dump for pid 439 (audio.service)
+11-01 13:06:32.647 30252 30252 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:32.658   346   346 I tombstoned: received crash request for pid 439
+11-01 13:06:32.662   346   346 I tombstoned: found intercept fd 512 for pid 439 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.662 30252 30252 I crash_dump64: performing dump of process 439 (target tid = 439)
+11-01 13:06:32.686   653   680 I system_server: libdebuggerd_client: done dumping process 439
+11-01 13:06:32.686   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:32.687   653   680 I ActivityManager: Collecting stacks for native pid 440
+11-01 13:06:32.688   653   680 E android.os.Debug: Failed to get binder state info for pid: 440 status: -2: Success
+11-01 13:06:32.689     1     1 I init    : Untracked process (pid: 30252 name: (crash_dump64) ppid: 1 pgrp: 30251 state: Z) exited with status 0
+11-01 13:06:32.689     1     1 I init    : Untracked process (pid: 30252 name: (crash_dump64) ppid: 1 pgrp: 30251 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.690   653   680 I system_server: libdebuggerd_client: started dumping process 440
+11-01 13:06:32.691     1     1 I init    : Untracked process (pid: 30254 name: (audio.service) ppid: 1 pgrp: 30254 state: Z) exited with status 0
+11-01 13:06:32.691     1     1 I init    : Untracked process (pid: 30254 name: (audio.service) ppid: 1 pgrp: 30254 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:32.695   346   346 I tombstoned: registered intercept for pid 440 and type kDebuggerdNativeBacktrace
+11-01 13:06:32.822   440   440 I libc    : Requested dump for pid 440 (camera.provider)
+11-01 13:06:33.078 30257 30257 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:33.079   346   346 I tombstoned: received crash request for pid 440
+11-01 13:06:33.079   346   346 I tombstoned: found intercept fd 512 for pid 440 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.079 30257 30257 I crash_dump64: performing dump of process 440 (target tid = 440)
+11-01 13:06:33.084   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:33.084   653   680 I system_server: libdebuggerd_client: done dumping process 440
+11-01 13:06:33.085   653   680 I ActivityManager: Collecting stacks for native pid 441
+11-01 13:06:33.084     1     1 I init    : Untracked process (pid: 30257 name: (crash_dump64) ppid: 1 pgrp: 30256 state: Z) exited with status 0
+11-01 13:06:33.084     1     1 I init    : Untracked process (pid: 30257 name: (crash_dump64) ppid: 1 pgrp: 30256 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.086     1     1 I init    : Untracked process (pid: 30259 name: (camera.provider) ppid: 1 pgrp: 30259 state: Z) exited with status 0
+11-01 13:06:33.086     1     1 I init    : Untracked process (pid: 30259 name: (camera.provider) ppid: 1 pgrp: 30259 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.091   653   680 E android.os.Debug: Failed to get binder state info for pid: 441 status: -2: Success
+11-01 13:06:33.094   653   680 I system_server: libdebuggerd_client: started dumping process 441
+11-01 13:06:33.094   346   346 I tombstoned: registered intercept for pid 441 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.094   441   441 I libc    : Requested dump for pid 441 (android.hardwar)
+11-01 13:06:33.275 30262 30262 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:33.275   346   346 I tombstoned: received crash request for pid 441
+11-01 13:06:33.275   346   346 I tombstoned: found intercept fd 512 for pid 441 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.275 30262 30262 I crash_dump64: performing dump of process 441 (target tid = 441)
+11-01 13:06:33.283   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:33.283   653   680 I system_server: libdebuggerd_client: done dumping process 441
+11-01 13:06:33.283     1     1 I init    : Untracked process (pid: 30262 name: (crash_dump64) ppid: 1 pgrp: 30261 state: Z) exited with status 0
+11-01 13:06:33.283     1     1 I init    : Untracked process (pid: 30262 name: (crash_dump64) ppid: 1 pgrp: 30261 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.285     1     1 I init    : Untracked process (pid: 30264 name: (android.hardwar) ppid: 1 pgrp: 30264 state: Z) exited with status 0
+11-01 13:06:33.285     1     1 I init    : Untracked process (pid: 30264 name: (android.hardwar) ppid: 1 pgrp: 30264 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.286   653   680 I ActivityManager: Collecting stacks for native pid 442
+11-01 13:06:33.287   653   680 E android.os.Debug: Failed to get binder state info for pid: 442 status: -2: Success
+11-01 13:06:33.294   653   680 I system_server: libdebuggerd_client: started dumping process 442
+11-01 13:06:33.294   346   346 I tombstoned: registered intercept for pid 442 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.294   346   346 I tombstoned: received crash request for pid 442
+11-01 13:06:33.294   346   346 I tombstoned: found intercept fd 512 for pid 442 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.296   346   346 W tombstoned: crash socket received short read of length 0 (expected 12)
+11-01 13:06:33.297     1     1 I init    : Service 'android-hardware-media-c2-goldfish' (pid 442) received SIGSYS
+11-01 13:06:33.297     1     1 I init    : Sending SIGKILL to service 'android-hardware-media-c2-goldfish' (pid 442) process group...
+11-01 13:06:33.297     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1013/pid_442
+11-01 13:06:33.298     1     1 I init    : starting service 'android-hardware-media-c2-goldfish'...
+11-01 13:06:33.298   653   680 I system_server: libdebuggerd_client: done dumping process 442
+11-01 13:06:33.299     1     1 I libprocessgroup: Created cgroup /sys/fs/cgroup/system/uid_1013/pid_30265
+11-01 13:06:33.307   653   680 I ActivityManager: Collecting stacks for native pid 315
+11-01 13:06:33.308   653   680 E android.os.Debug: Failed to get binder state info for pid: 315 status: -2: Success
+11-01 13:06:33.322   653   680 I system_server: libdebuggerd_client: started dumping process 315
+11-01 13:06:33.322   346   346 I tombstoned: registered intercept for pid 315 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.324     1     1 I init    : ... started service 'android-hardware-media-c2-goldfish' has pid 30265
+11-01 13:06:33.337   315   315 I libc    : Requested dump for pid 315 (android.system.)
+11-01 13:06:33.398 30268 30268 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:33.398   346   346 I tombstoned: received crash request for pid 315
+11-01 13:06:33.398   346   346 I tombstoned: found intercept fd 512 for pid 315 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.399 30268 30268 I crash_dump64: performing dump of process 315 (target tid = 315)
+11-01 13:06:33.407   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:33.408     1     1 I init    : Untracked process (pid: 30268 name: (crash_dump64) ppid: 1 pgrp: 30267 state: Z) exited with status 0
+11-01 13:06:33.408     1     1 I init    : Untracked process (pid: 30268 name: (crash_dump64) ppid: 1 pgrp: 30267 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.409     1     1 I init    : Untracked process (pid: 30270 name: (android.system.) ppid: 1 pgrp: 30270 state: Z) exited with status 0
+11-01 13:06:33.409     1     1 I init    : Untracked process (pid: 30270 name: (android.system.) ppid: 1 pgrp: 30270 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.410   653   680 I system_server: libdebuggerd_client: done dumping process 315
+11-01 13:06:33.429   653   680 I ActivityManager: Collecting stacks for native pid 444
+11-01 13:06:33.430   653   680 E android.os.Debug: Failed to get binder state info for pid: 444 status: -2: Success
+11-01 13:06:33.430   653   680 I system_server: libdebuggerd_client: started dumping process 444
+11-01 13:06:33.431   346   346 I tombstoned: registered intercept for pid 444 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.446   444   444 I libc    : Requested dump for pid 444 (android.hardwar)
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: Could not read additional policy file '/vendor/etc/seccomp_policy/codec2.vendor.ext.policy'
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: failed to get path of fd 4: No such file or directory
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: allowing syscall: connect
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: allowing syscall: fcntl
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: allowing syscall: sendto
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: allowing syscall: socket
+11-01 13:06:33.459 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: allowing syscall: writev
+11-01 13:06:33.460 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: compile_file: <fd>(75): syscall munmap redefined here
+11-01 13:06:33.460 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: compile_file: <fd>(39): previous definition here
+11-01 13:06:33.460 30265 30265 W android.hardware.media.c2-service-goldfish: libminijail[30265]: logging seccomp filter failures
+11-01 13:06:33.460 30265 30265 D android.hardware.media.c2-service-goldfish: useAndroidGoldfishComponentInstance 38 found prop ro.boot.qemu.hwcodec.avcdec val 2
+11-01 13:06:33.460 30265 30265 D android.hardware.media.c2-service-goldfish: useAndroidGoldfishComponentInstance 38 found prop ro.boot.qemu.hwcodec.hevcdec val 2
+11-01 13:06:33.460 30265 30265 D android.hardware.media.c2-service-goldfish: useAndroidGoldfishComponentInstance 38 found prop ro.boot.qemu.hwcodec.vpxdec val 2
+11-01 13:06:33.464 30265 30265 E Codec2-FilterWrapper: plugin not OK: -19
+11-01 13:06:33.465   288   288 I servicemanager: Caller(pid=30265,uid=1013,sid=u:r:mediacodec:s0) Found android.hardware.media.c2.IComponentStore/default in device VINTF manifest.
+11-01 13:06:33.470 30273 30273 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:33.470   346   346 I tombstoned: received crash request for pid 444
+11-01 13:06:33.470   346   346 I tombstoned: found intercept fd 512 for pid 444 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.470 30273 30273 I crash_dump64: performing dump of process 444 (target tid = 444)
+11-01 13:06:33.481   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:33.481   653   680 I system_server: libdebuggerd_client: done dumping process 444
+11-01 13:06:33.481     1     1 I init    : Untracked process (pid: 30273 name: (crash_dump64) ppid: 1 pgrp: 30272 state: Z) exited with status 0
+11-01 13:06:33.481     1     1 I init    : Untracked process (pid: 30273 name: (crash_dump64) ppid: 1 pgrp: 30272 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.481     1     1 I init    : Untracked process (pid: 30277 name: (android.hardwar) ppid: 1 pgrp: 30277 state: Z) exited with status 0
+11-01 13:06:33.481     1     1 I init    : Untracked process (pid: 30277 name: (android.hardwar) ppid: 1 pgrp: 30277 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.483   653   680 I ActivityManager: Collecting stacks for native pid 446
+11-01 13:06:33.484   653   680 E android.os.Debug: Failed to get binder state info for pid: 446 status: -2: Success
+11-01 13:06:33.494   653   680 I system_server: libdebuggerd_client: started dumping process 446
+11-01 13:06:33.494   346   346 I tombstoned: registered intercept for pid 446 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.494   446   446 I libc    : Requested dump for pid 446 (android.hardwar)
+11-01 13:06:33.511 30280 30280 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+11-01 13:06:33.511   346   346 I tombstoned: received crash request for pid 446
+11-01 13:06:33.511   346   346 I tombstoned: found intercept fd 512 for pid 446 and type kDebuggerdNativeBacktrace
+11-01 13:06:33.511 30280 30280 I crash_dump64: performing dump of process 446 (target tid = 446)
+11-01 13:06:33.519   346   346 W tombstoned: skipping tombstone file creation due to intercept
+11-01 13:06:33.519   653   680 I system_server: libdebuggerd_client: done dumping process 446
+11-01 13:06:33.520     1     1 I init    : Untracked process (pid: 30280 name: (crash_dump64) ppid: 1 pgrp: 30279 state: Z) exited with status 0
+11-01 13:06:33.520     1     1 I init    : Untracked process (pid: 30280 name: (crash_dump64) ppid: 1 pgrp: 30279 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:33.523   653   680 I ActivityManager: dumpStackTraces extraPids=[]
+11-01 13:06:33.523   653   680 I ActivityManager: Done dumping
+11-01 13:06:33.523     1     1 I init    : Untracked process (pid: 30282 name: (android.hardwar) ppid: 1 pgrp: 30282 state: Z) exited with status 0
+11-01 13:06:33.523     1     1 I init    : Untracked process (pid: 30282 name: (android.hardwar) ppid: 1 pgrp: 30282 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:34.030   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:34.030   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:34.030   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:34.030   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:34.030   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:34.030   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:34.030   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:34.030   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:34.030   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:34.030   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:34.030   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:34.030   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:34.030   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3002] from screen [on:0 period:-1790335698] score=100
+11-01 13:06:36.622   653   694 I WifiService: isFeatureSupported uid=1000 returns [WIFI_FEATURE_INFRA, WIFI_FEATURE_P2P, WIFI_FEATURE_MOBILE_HOTSPOT, WIFI_FEATURE_WPA3_SAE, WIFI_FEATURE_WPA3_SUITE_B, WIFI_FEATURE_OWE, WIFI_FEATURE_DPP, WIFI_FEATURE_AP_RAND_MAC, WIFI_FEATURE_MBO, WIFI_FEATURE_FILS_SHA256, WIFI_FEATURE_FILS_SHA384, WIFI_FEATURE_SAE_PK, WIFI_FEATURE_DPP_ENROLLEE_RESPONDER, WIFI_FEATURE_PASSPOINT_TERMS_AND_CONDITIONS, WIFI_FEATURE_WFD_R2, WIFI_FEATURE_DECORATED_IDENTITY, WIFI_FEATURE_TRUST_ON_FIRST_USE, WIFI_FEATURE_SET_TLS_MINIMUM_VERSION, WIFI_FEATURE_TLS_V1_3, WIFI_FEATURE_WEP, WIFI_FEATURE_WPA_PERSONAL]
+11-01 13:06:37.034   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:37.034   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:37.034   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:37.034   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:37.034   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:37.034   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:37.034   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:37.034   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:37.034   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:37.035   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:37.035   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:37.035   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:37.035   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3005] from screen [on:0 period:-1790332693] score=100
+11-01 13:06:38.538   653 30283 I DropBoxManagerService: add tag=system_server_pre_watchdog isTagEnabled=true flags=0x6
+11-01 13:06:40.039   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:40.040   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:40.046   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:40.046   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:40.046   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:40.046   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:40.046   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:40.046   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:40.046   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:40.054   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:40.054   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:40.054   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:40.054   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3019] from screen [on:0 period:-1790329674] score=100
+11-01 13:06:41.057   519   519 W adbd    : timeout expired while flushing socket, closing
+11-01 13:06:42.058   519   519 W adbd    : timeout expired while flushing socket, closing
+11-01 13:06:42.059     1     1 I init    : Untracked process (pid: 30109 name: (screencap) ppid: 1 pgrp: 30107 state: Z) received SIGHUP
+11-01 13:06:42.059     1     1 I init    : Untracked process (pid: 30109 name: (screencap) ppid: 1 pgrp: 30107 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:43.060     1     1 I init    : Untracked process (pid: 30129 name: (screencap) ppid: 1 pgrp: 30128 state: Z) received SIGHUP
+11-01 13:06:43.060     1     1 I init    : Untracked process (pid: 30129 name: (screencap) ppid: 1 pgrp: 30128 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:06:43.062   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:43.062   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:43.063   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:43.063   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:43.064   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:43.070   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:43.070   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:43.070   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:43.070   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:43.070   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:43.070   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:43.070   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:43.070   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3016] from screen [on:0 period:-1790326658] score=100
+11-01 13:06:46.074   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:46.074   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:46.074   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:46.074   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:46.074   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:46.074   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:46.075   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:46.075   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:46.075   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:46.075   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:46.078   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:46.078   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:46.078   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3008] from screen [on:0 period:-1790323650] score=100
+11-01 13:06:46.999   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-s' 'SpinonBootstrap:I''
+11-01 13:06:47.238   300   300 I logd    : logdr: UID=2000 GID=2000 PID=30284 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+11-01 13:06:49.081   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:49.086   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:49.086   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:49.086   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:49.086   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:49.086   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:49.086   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:49.086   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:49.086   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:49.087   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:49.091   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:49.091   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:49.091   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3013] from screen [on:0 period:-1790320637] score=100
+11-01 13:06:52.094   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:06:52.094   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:52.094   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:52.094   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:52.094   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:52.094   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:52.094   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:52.094   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:52.094   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:52.097   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:52.097   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:06:52.097   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:52.097   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3006] from screen [on:0 period:-1790317631] score=100
+11-01 13:06:52.691   441   441 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+11-01 13:06:53.516   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:dumpsys activity activities'
+11-01 13:06:55.098   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+11-01 13:06:55.098   653   812 D WifiClientModeImpl[4192:wlan0]: reported txKbps 12000 rxKbps 30000
+11-01 13:06:55.098   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:55.098   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:55.098   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:55.098   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 1 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:55.098   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:55.098   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:55.098   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:55.098   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:55.098   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:55.098   653   812 D WifiScoreCard: txRate: 1 txSpeed: 1
+11-01 13:06:55.098   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:55.098   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=1 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3001] from screen [on:0 period:-1790314630] score=100
+11-01 13:06:58.102   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:06:58.102   653   812 D WifiClientModeImpl[4192:wlan0]: reported txKbps 12000 rxKbps 30000
+11-01 13:06:58.102   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:06:58.102   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:06:58.102   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:06:58.102   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:06:58.102   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:58.102   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:58.102   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:06:58.102   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:06:58.102   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:06:58.102   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:06:58.102   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:06:58.102   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790311626] score=100
+11-01 13:07:01.106   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:01.106   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:01.106   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:01.106   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:01.106   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:01.106   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:01.106   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:01.106   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:01.106   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:01.106   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:01.106   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:01.106   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:01.106   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790308622] score=100
+11-01 13:07:03.535 29406 29406 I binder  : release 30287:30291 transaction 10099259 out, still active
+11-01 13:07:03.550   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:ps -T -p 30083'
+11-01 13:07:03.590   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:cat /proc/30083/wchan'
+11-01 13:07:03.615   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:getprop sys.boot_completed'
+11-01 13:07:04.110   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:04.110   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:04.110   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:04.110   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:04.110   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:04.110   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:04.110   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:04.110   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:04.110   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:04.111   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:04.111   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:04.111   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:04.111   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3005] from screen [on:0 period:-1790305617] score=100
+11-01 13:07:06.381   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 0 events previously dropped
+11-01 13:07:07.114   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:07.114   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:07.114   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:07.114   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:07.114   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:07.114   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:07.114   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:07.114   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:07.114   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:07.114   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:07.114   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:07.114   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:07.114   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790302614] score=100
+11-01 13:07:08.386   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:10.115   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:10.115   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:10.115   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:10.115   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:10.115   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:10.115   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:10.115   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:10.115   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:10.115   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:10.115   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:10.115   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:10.115   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:10.116   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3001] from screen [on:0 period:-1790299613] score=100
+11-01 13:07:10.381   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:12.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:13.118   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:13.118   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:13.118   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:13.118   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:13.118   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:13.119   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:13.119   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:13.119   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:13.119   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:13.119   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:13.119   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:13.119   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:13.119   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790296609] score=100
+11-01 13:07:14.274   653   695 D AppOpHistoryHelper: MetricHandler reporting 6 records.
+11-01 13:07:14.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:16.122   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:16.122   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:16.122   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:16.122   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:16.122   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:16.122   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:16.122   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:16.122   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:16.122   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:16.122   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:16.122   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:16.122   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:16.122   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790293606] score=100
+11-01 13:07:16.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:18.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:19.126   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:19.126   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:19.126   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:19.126   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:19.126   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:19.126   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:19.126   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:19.126   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:19.126   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:19.126   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:19.126   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:19.126   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:19.126   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790290602] score=100
+11-01 13:07:20.381   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:20.751 30294 30294 I binder  : release 30114:30114 transaction 10095384 out, still active
+11-01 13:07:20.751 30294 30294 I binder  : undelivered TRANSACTION_COMPLETE
+11-01 13:07:20.759   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:top -b -n 1 -p 30083'
+11-01 13:07:21.213   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:dumpsys activity activities'
+11-01 13:07:21.755     1     1 I init    : Untracked process (pid: 30114 name: (cmd) ppid: 1 pgrp: 30112 state: Z) received SIGHUP
+11-01 13:07:21.755     1     1 I init    : Untracked process (pid: 30114 name: (cmd) ppid: 1 pgrp: 30112 state: Z) did not have an associated service entry and will not be reaped
+11-01 13:07:22.130   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:22.130   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:22.130   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:22.130   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:22.130   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:22.130   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:22.130   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:22.130   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:22.130   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:22.130   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:22.130   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:22.130   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:22.130   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790287598] score=100
+11-01 13:07:22.381   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:24.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:25.134   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=24 freq=2437 RxLinkSpeed=2
+11-01 13:07:25.134   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:25.134   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:25.134   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:25.134   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 24 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:25.134   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:25.134   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:25.134   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:25.134   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:25.134   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 24Mbps, Tx Link speed: 24Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:25.134   653   812 D WifiScoreCard: txRate: 1 txSpeed: 24
+11-01 13:07:25.134   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:25.134   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=24 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790284594] score=100
+11-01 13:07:26.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:28.138   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:28.138   653   812 D WifiClientModeImpl[4192:wlan0]: reported txKbps 12000 rxKbps 30000
+11-01 13:07:28.138   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:28.138   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:28.138   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:28.138   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:28.138   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:28.138   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:28.138   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:28.138   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:28.138   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:28.138   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:28.138   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:28.138   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790281590] score=100
+11-01 13:07:28.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:30.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:31.142   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:31.142   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:31.142   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:31.142   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:31.142   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:31.142   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:31.142   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:31.142   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:31.142   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:31.142   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:31.142   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:31.142   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:31.142   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790278586] score=100
+11-01 13:07:31.238 30294 30294 I binder  : release 30302:30305 transaction 10100957 out, still active
+11-01 13:07:31.254   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:dumpsys window'
+11-01 13:07:32.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:34.147   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:34.147   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:34.147   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:34.147   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:34.147   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:34.147   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:34.147   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:34.147   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:34.147   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:34.148   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:34.148   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:34.148   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:34.148   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3006] from screen [on:0 period:-1790275580] score=100
+11-01 13:07:34.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:36.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:37.150   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:37.150   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:37.150   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:37.150   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:37.150   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:37.150   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:37.150   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:37.150   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:37.150   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:37.151   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:37.151   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:37.151   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:37.151   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790272577] score=100
+11-01 13:07:38.381   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:40.154   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:40.154   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:40.154   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:40.154   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:40.154   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:40.154   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:40.154   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:40.154   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:40.154   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:40.154   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:40.154   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:40.154   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:40.154   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790269574] score=100
+11-01 13:07:40.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:41.275 30294 30294 I binder  : release 30307:30310 transaction 10101576 out, still active
+11-01 13:07:42.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:43.154   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:43.154   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:43.154   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:43.154   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:43.154   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:43.154   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:43.155   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:43.155   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:43.155   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:43.155   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:43.155   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:43.155   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:43.155   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3001] from screen [on:0 period:-1790266573] score=100
+11-01 13:07:44.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:46.158   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:46.158   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:46.158   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:46.158   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:46.158   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:46.158   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:46.158   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:46.158   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:46.158   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:46.158   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:46.158   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:46.158   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:46.158   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790263570] score=100
+11-01 13:07:46.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:48.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:48.939   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:top -H -b -n 1 -p 30083'
+11-01 13:07:49.162   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:49.162   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:49.162   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:49.162   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:49.162   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:49.162   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:49.162   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:49.162   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:49.162   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:49.163   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:49.163   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:49.163   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:49.163   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3005] from screen [on:0 period:-1790260565] score=100
+11-01 13:07:49.487   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:ps -A'
+11-01 13:07:49.521   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-s' 'AndroidRuntime:E' 'EGL_emulation:E' 'OpenGLRenderer:E' 'SurfaceFlinger:E''
+11-01 13:07:49.530   300   300 I logd    : logdr: UID=2000 GID=2000 PID=30316 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+11-01 13:07:50.386   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:51.581  1230  3691 E WakeLock: GmsAlarm:NetworkLocationActivityDetection ** IS FORCE-RELEASED ON TIMEOUT ** [CONTEXT service_id=259 ]
+11-01 13:07:52.166   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:52.166   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:52.166   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:52.166   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:52.166   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:52.166   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:52.166   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:52.166   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:52.166   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:52.166   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:52.166   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:52.166   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:52.166   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3003] from screen [on:0 period:-1790257562] score=100
+11-01 13:07:52.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:52.690   441   441 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+11-01 13:07:54.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:55.166   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=6 freq=2437 RxLinkSpeed=2
+11-01 13:07:55.166   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:55.166   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:55.166   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:55.166   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 6 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:55.166   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:55.166   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:55.166   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:55.166   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:55.166   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 6Mbps, Tx Link speed: 6Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:55.166   653   812 D WifiScoreCard: txRate: 1 txSpeed: 6
+11-01 13:07:55.166   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:55.166   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=6 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3000] from screen [on:0 period:-1790254562] score=100
+11-01 13:07:56.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:07:58.170   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=54 freq=2437 RxLinkSpeed=2
+11-01 13:07:58.170   653   812 D WifiClientModeImpl[4192:wlan0]: reported txKbps 12000 rxKbps 30000
+11-01 13:07:58.170   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:07:58.170   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:07:58.170   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:07:58.170   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 54 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:07:58.170   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:58.170   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:58.170   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:07:58.170   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:07:58.170   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 54Mbps, Tx Link speed: 54Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:07:58.170   653   812 D WifiScoreCard: txRate: 1 txSpeed: 54
+11-01 13:07:58.170   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:07:58.170   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=54 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790251558] score=100
+11-01 13:07:58.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:08:00.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:08:01.174   653   812 D WifiClientModeImpl[4192:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=54 freq=2437 RxLinkSpeed=2
+11-01 13:08:01.174   653   812 D WifiDataStall: tx tput in kbps: -1
+11-01 13:08:01.174   653   812 D WifiDataStall: rx tput in kbps: -1
+11-01 13:08:01.174   653   812 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-01 13:08:01.174   653   812 E WifiDataStall: Ignore this poll. newStats: null txLinkSpeedMbps: 54 rxLinkSpeedMbps: 2 rssi: -50 connectionCapabilities: com.android.server.wifi.WifiNative$ConnectionCapabilities@9175ad9
+11-01 13:08:01.174   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:08:01.174   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:08:01.174   653   812 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-01 13:08:01.174   653   812 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-01 13:08:01.174   653   812 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 813000563 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.17, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 54Mbps, Tx Link speed: 54Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-01 13:08:01.174   653   812 D WifiScoreCard: txRate: 1 txSpeed: 54
+11-01 13:08:01.174   653   812 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 380428552 RSSI -50 txSpeed -1
+11-01 13:08:01.174   653   812 D WifiClientModeImpl[4192:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=54 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3004] from screen [on:0 period:-1790248554] score=100
+11-01 13:08:01.988   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:kill -3 30083'
+11-01 13:08:02.382   653   739 W SensorService: Dropping 1 cached events (984/984) to save 1/1 new events. 29 events previously dropped
+11-01 13:08:02.978   653   812 D WifiNetworkSelector: Current connected network: 0
+11-01 13:08:02.978   653   812 V WifiConnectivityManager: No full band scan because current network is sufficient
+11-01 13:08:02.978   653   812 V WifiConnectivityManager: schedulePeriodicScanTimer intervalMs 160000
+11-01 13:08:02.978   653   816 I WifiScanningService: Registering listener= com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@b682139 uid=1000 packageName=null workSource=WorkSource{1000}
+11-01 13:08:02.978   653   816 I WifiScanningService: start scan: ClientInfo[uid=1000, package=null, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@b682139] package null AttributionTag null
+11-01 13:08:02.978   653   816 I WifiScanningService: addSingleScanRequest: ClientInfo[uid=1000, package=null, attributionTag=null, com.android.server.wifi.scanner.WifiScannerInternal$ScanListener@b682139],WorkSource{1010}, ScanSettings {  type:HIGH ACCURACY band:unspecified ignoreLocationSettings:false period:0 reportEvents:3 numBssidsPerScan:0 maxScansToCache:0 rnrSetting:2 6GhzPscOnlyEnabled:false channels:[ 2437  ]  } 
+11-01 13:08:02.978   653   816 D WifiScanningService: replySucceeded onSuccess
+11-01 13:08:02.978   653   816 E Nl80211Native: getChannelsMhzForBand: Wiphy index not recorded for band 8
+11-01 13:08:02.978   653   816 E Nl80211Native: getChannelsMhzForBand: Wiphy index not recorded for band 16
+11-01 13:08:02.978   653   816 D Nl80211Native: Ignoring unsupported scan type 2
+11-01 13:08:02.978   653   816 I Nl80211Proxy: Sending Nl80211 message: GenericNetlinkMsg{ nlHeader{StructNlMsgHdr{ nlmsg_len{56}, nlmsg_type{29()}, nlmsg_flags{5(NLM_F_REQUEST|NLM_F_ACK)}, nlmsg_seq{1746}, nlmsg_pid{0} }}, genNlHeader{StructGenNlMsgHdr{ command{33}, version{1}, reserved{0} }}, attributes{[StructNlAttr{ nla_len{8}, nla_type{-32723}, nla_value{04000000}, }, StructNlAttr{ nla_len{8}, nla_type{3}, nla_value{10000000}, }, StructNlAttr{ nla_len{12}, nla_type{-32724}, nla_value{0800000085090000}, }, StructNlAttr{ nla_len{8}, nla_type{158}, nla_value{00000000}, }]} }
+11-01 13:08:02.979   653   816 I Nl80211Proxy: Received NLMSG_ERROR with error 0 for message GenericNetlinkMsg{ nlHeader{StructNlMsgHdr{ nlmsg_len{56}, nlmsg_type{29()}, nlmsg_flags{5(NLM_F_REQUEST|NLM_F_ACK)}, nlmsg_seq{1746}, nlmsg_pid{0} }}, genNlHeader{StructGenNlMsgHdr{ command{33}, version{1}, reserved{0} }}, attributes{[StructNlAttr{ nla_len{8}, nla_type{-32723}, nla_value{04000000}, }, StructNlAttr{ nla_len{8}, nla_type{3}, nla_value{10000000}, }, StructNlAttr{ nla_len{12}, nla_type{-32724}, nla_value{0800000085090000}, }, StructNlAttr{ nla_len{8}, nla_type{158}, nla_value{00000000}, }]} }
+11-01 13:08:02.979   899   899 D wpa_supplicant: nl80211: Drv Event 33 (NL80211_CMD_TRIGGER_SCAN) received for wlan0
+11-01 13:08:02.979   899   899 D wpa_supplicant: wlan0: nl80211: Scan trigger
+11-01 13:08:02.979   899   899 D wpa_supplicant: wlan0: Event SCAN_STARTED (47) received
+11-01 13:08:02.979   899   899 D wpa_supplicant: wlan0: External program started a scan
+11-01 13:08:03.032   653   812 D Nl80211Native: Received NL80211 broadcast: GenericNetlinkMsg{ nlHeader{StructNlMsgHdr{ nlmsg_len{68}, nlmsg_type{29()}, nlmsg_flags{0()}, nlmsg_seq{0}, nlmsg_pid{0} }}, genNlHeader{StructGenNlMsgHdr{ command{34}, version{1}, reserved{0} }}, attributes{[StructNlAttr{ nla_len{8}, nla_type{1}, nla_value{01000000}, }, StructNlAttr{ nla_len{8}, nla_type{3}, nla_value{10000000}, }, StructNlAttr{ nla_len{12}, nla_type{153}, nla_value{0100000001000000}, }, StructNlAttr{ nla_len{12}, nla_type{44}, nla_value{0800000085090000}, }, StructNlAttr{ nla_len{8}, nla_type{45}, nla_value{04000000}, }]} }
+11-01 13:08:03.032   653   812 D WifiNative: Scan result ready event
+11-01 13:08:03.032   899   899 D wpa_supplicant: nl80211: Drv Event 34 (NL80211_CMD_NEW_SCAN_RESULTS) received for wlan0
+11-01 13:08:03.032   899   899 D wpa_supplicant: wlan0: nl80211: New scan results available
+11-01 13:08:03.032   899   899 D wpa_supplicant: nl80211: Scan probed for SSID ''
+11-01 13:08:03.032   899   899 D wpa_supplicant: nl80211: Scan included frequencies: 2437
+11-01 13:08:03.032   899   899 D wpa_supplicant: wlan0: Event SCAN_RESULTS (3) received
+11-01 13:08:03.032   899   899 D wpa_supplicant: nl80211: Received scan results (1 BSSes)
+11-01 13:08:03.032   899   899 D wpa_supplicant: nl80211: Scan results indicate BSS status with 02:15:b2:00:00:01 as associated
+11-01 13:08:03.032   899   899 D wpa_supplicant: wlan0: BSS: Start scan result update 580
+11-01 13:08:03.032   899   899 D wpa_supplicant: BSS: last_scan_res_used=1/32
+11-01 13:08:03.032   899   899 D wpa_supplicant: wlan0: New scan results available (own=0 ext=1)
+11-01 13:08:03.032   899   899 D wpa_supplicant: wlan0: Do not use results from externally requested scan operation for network selection
+11-01 13:08:04.018   519   519 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color:export ANDROID_LOG_TAGS=''; exec logcat '-b' 'all' '-d' '-t' '800''

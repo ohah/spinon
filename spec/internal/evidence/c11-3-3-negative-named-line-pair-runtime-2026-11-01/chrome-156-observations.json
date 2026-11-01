@@ -1,0 +1,27 @@
+{
+  "schema": "spinon-css-reference-observation-v1",
+  "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-leading-named-line-pair-matrix-2026-11-01",
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 320, "height": 240 }
+  },
+  "source": {
+    "path": "tests/fixtures/css/c11/grid-template-negative-named-line-pair-runtime-reference.html",
+    "sha256": "a27c02e138d02262e52c03c9fc4bfa3ac3db4ee4a67f29daa3f640515f5cfeff"
+  },
+  "viewport": { "width": 320, "height": 240, "deviceScaleFactor": 1 },
+  "wrapper": [0, 0, 320, 240],
+  "cases": [
+    { "id": "columns-negative-span", "root": [0, 0, 160, 30], "item": [0, 0, 17, 10], "columns": [5, 7, 5, 7, 20, 30, 40], "rows": [10, 10, 10], "sample": [5, 5], "rgba": [40, 102, 246, 255] },
+    { "id": "columns-negative-reversed", "root": [160, 0, 160, 30], "item": [160, 0, 17, 10], "columns": [5, 7, 5, 7, 20, 30, 40], "rows": [10, 10, 10], "sample": [165, 5], "rgba": [40, 102, 246, 255] },
+    { "id": "columns-negative-one", "root": [0, 60, 160, 30], "item": [0, 60, 17, 10], "columns": [5, 7, 20, 30, 40], "rows": [10, 10, 10], "sample": [5, 65], "rgba": [40, 102, 246, 255] },
+    { "id": "columns-negative-equal", "root": [160, 60, 160, 30], "item": [160, 60, 17, 10], "columns": [5, 7, 20, 30, 40], "rows": [10, 10, 10], "sample": [165, 65], "rgba": [40, 102, 246, 255] },
+    { "id": "columns-negative-offset", "root": [0, 120, 160, 30], "item": [0, 120, 17, 10], "columns": [7, 5, 7, 5, 7, 20, 30, 40], "rows": [10, 10, 10], "sample": [5, 125], "rgba": [40, 102, 246, 255] },
+    { "id": "columns-negative-auto", "root": [160, 120, 108, 30], "item": [160, 120, 18, 10], "columns": [6, 6, 6, 0, 20, 30, 40], "rows": [10, 10, 10], "sample": [165, 125], "rgba": [40, 102, 246, 255] },
+    { "id": "rows-negative-span", "root": [0, 180, 160, 54], "item": [0, 180, 10, 17], "columns": [20], "rows": [5, 7, 5, 7, 10, 10, 10], "sample": [5, 185], "rgba": [40, 102, 246, 255] },
+    { "id": "rows-negative-auto", "root": [160, 180, 160, 48], "item": [160, 180, 10, 18], "columns": [20], "rows": [6, 6, 6, 0, 10, 10, 10], "sample": [165, 185], "rgba": [40, 102, 246, 255] }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}
