@@ -1,0 +1,30 @@
+{
+  "roadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "statusUrl": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+  "roadmap": {
+    "desktop": {
+      "viewport": [1280, 720],
+      "documentWidth": 1280,
+      "bodyWidth": 1280,
+      "containsPR986MergeCard": true,
+      "containsOfficialCount72of213": true
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "containsPR986MergeCard": true,
+      "containsOfficialCount72of213": true
+    },
+    "cardText": "2026-11-01 C11.4 anonymous Grid text computed text-transform:capitalize 제한 runtime slice · 구현 PR #986 Rebase and merge (2026-11-01T12:09:30Z, merge SHA d5951d09390c746d29389e821f24088fbf51245b)"
+  },
+  "status": {
+    "containsOfficialCount72of213": true,
+    "C11CssGridChecked": false,
+    "C11_2_2Checked": true,
+    "C11_2_3Checked": true,
+    "C11_4IntrinsicTrackSizingChecked": false
+  },
+  "browser": "Agent Browser",
+  "terminalBrowserUsed": false
+}
