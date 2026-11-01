@@ -1,0 +1,80 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text-indent flag precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url("../../resources/c15/Ahem.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  padding: 8px;
+  color: #111;
+  background: #fff;
+  font: 10px/10px Ahem, monospace;
+}
+.case {
+  display: inline-grid;
+  grid-template-columns: var(--track);
+  grid-auto-rows: auto;
+  gap: 0;
+  vertical-align: top;
+  margin: 0 12px 16px 0;
+  padding: 0;
+  border: 0;
+  white-space: var(--white-space, normal);
+  text-indent: var(--indent, 0px);
+  font: 10px/10px Ahem, monospace;
+  position: relative;
+}
+.case::after {
+  content: attr(data-id);
+  position: absolute;
+  left: 0;
+  top: -9px;
+  z-index: 1;
+  white-space: nowrap;
+  color: #a00;
+  background: #fff;
+  font: 6px/7px monospace;
+  text-indent: 0;
+  pointer-events: none;
+}
+</style>
+<div id="cases"></div>
+<script>
+const modes = [
+  { id: "none", value: "0px" },
+  { id: "indent", value: "10px" },
+  { id: "each-line", value: "10px each-line" },
+  { id: "hanging", value: "10px hanging" },
+  { id: "hanging-each-line", value: "10px hanging each-line" },
+];
+const paragraphs = [
+  { id: "soft", text: "XXX X", whiteSpace: "normal" },
+  { id: "forced", text: "XXX\nX", whiteSpace: "pre-line" },
+];
+const cases = document.querySelector("#cases");
+for (const paragraph of paragraphs) {
+  for (const track of ["min-content", "max-content"]) {
+    for (const mode of modes) {
+      const node = document.createElement("div");
+      node.className = "case";
+      node.dataset.id = `${paragraph.id}-${track}-${mode.id}`;
+      node.dataset.track = track;
+      node.dataset.indent = mode.value;
+      node.dataset.text = paragraph.text;
+      node.style.setProperty("--track", track);
+      node.style.setProperty("--white-space", paragraph.whiteSpace);
+      node.style.setProperty("--indent", mode.value);
+      node.append(document.createTextNode(paragraph.text));
+      cases.append(node);
+      cases.append(document.createElement("br"));
+    }
+  }
+}
+window.c114IndentFlagCases = Array.from(document.querySelectorAll(".case"));
+</script>

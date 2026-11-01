@@ -1,0 +1,386 @@
+{
+  "status": "independent-css-text-grid-expectations",
+  "source": "CSS Text Module Level 3 §8.1, W3C CRD 2026-08-14",
+  "font": {
+    "family": "Ahem",
+    "sizeCssPx": 10,
+    "unitsPerEm": 1000,
+    "xAdvanceUnits": 1000,
+    "spaceAdvanceUnits": 1000,
+    "xAdvanceCssPx": 10,
+    "spaceAdvanceCssPx": 10
+  },
+  "interpretation": {
+    "soft": "Only the first formatted line participates in text-indent unless each-line adds forced-break lines; hanging inverts the indent onto subsequent soft-wrapped lines.",
+    "forced": "The preserved line break creates two formatted lines. each-line adds the second line; hanging inverts the first-line indentation. With both keywords, the observed and expected line offsets are zero for this input.",
+    "minContent": "Ahem XXX has a 30px unbreakable contribution; the soft-space-separated X has a 10px contribution. The intrinsic width is the greatest indented line contribution.",
+    "maxContent": "Each unbroken soft paragraph has a 50px advance (XXX + collapsed space + X). A forced-break paragraph uses the widest of its two line advances."
+  },
+  "cases": [
+    {
+      "id": "soft-min-content-none",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "0px",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "soft-min-content-indent",
+      "usedColumnsPx": 40,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        10,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "soft-min-content-each-line",
+      "usedColumnsPx": 40,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        10,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px each-line",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "soft-min-content-hanging",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        10
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px hanging",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "soft-min-content-hanging-each-line",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        10
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px hanging each-line",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "soft-max-content-none",
+      "usedColumnsPx": 50,
+      "rootHeightPx": 10,
+      "lineOffsetsPx": [
+        0
+      ],
+      "lineAdvancesPx": [
+        50
+      ],
+      "computedIndent": "0px",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0
+      ]
+    },
+    {
+      "id": "soft-max-content-indent",
+      "usedColumnsPx": 60,
+      "rootHeightPx": 10,
+      "lineOffsetsPx": [
+        10
+      ],
+      "lineAdvancesPx": [
+        50
+      ],
+      "computedIndent": "10px",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0
+      ]
+    },
+    {
+      "id": "soft-max-content-each-line",
+      "usedColumnsPx": 60,
+      "rootHeightPx": 10,
+      "lineOffsetsPx": [
+        10
+      ],
+      "lineAdvancesPx": [
+        50
+      ],
+      "computedIndent": "10px each-line",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0
+      ]
+    },
+    {
+      "id": "soft-max-content-hanging",
+      "usedColumnsPx": 50,
+      "rootHeightPx": 10,
+      "lineOffsetsPx": [
+        0
+      ],
+      "lineAdvancesPx": [
+        50
+      ],
+      "computedIndent": "10px hanging",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0
+      ]
+    },
+    {
+      "id": "soft-max-content-hanging-each-line",
+      "usedColumnsPx": 50,
+      "rootHeightPx": 10,
+      "lineOffsetsPx": [
+        0
+      ],
+      "lineAdvancesPx": [
+        50
+      ],
+      "computedIndent": "10px hanging each-line",
+      "whiteSpace": "normal",
+      "lineOriginsYPx": [
+        0
+      ]
+    },
+    {
+      "id": "forced-min-content-none",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "0px",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-min-content-indent",
+      "usedColumnsPx": 40,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        10,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-min-content-each-line",
+      "usedColumnsPx": 40,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        10,
+        10
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px each-line",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-min-content-hanging",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        10
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px hanging",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-min-content-hanging-each-line",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px hanging each-line",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-max-content-none",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "0px",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-max-content-indent",
+      "usedColumnsPx": 40,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        10,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-max-content-each-line",
+      "usedColumnsPx": 40,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        10,
+        10
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px each-line",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-max-content-hanging",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        10
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px hanging",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "forced-max-content-hanging-each-line",
+      "usedColumnsPx": 30,
+      "rootHeightPx": 20,
+      "lineOffsetsPx": [
+        0,
+        0
+      ],
+      "lineAdvancesPx": [
+        30,
+        10
+      ],
+      "computedIndent": "10px hanging each-line",
+      "whiteSpace": "pre-line",
+      "lineOriginsYPx": [
+        0,
+        10
+      ]
+    }
+  ]
+}
