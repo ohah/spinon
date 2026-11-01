@@ -1376,7 +1376,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
                     matches!(display.as_str(), "block" | "flow-root" | "none")
                 }
                 ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 => {
-                    matches!(display.as_str(), "block" | "inline" | "none")
+                    matches!(display.as_str(), "block" | "inline" | "grid" | "none")
                 }
                 ComputedStyleProfile::RuntimeBlockFlexStackingV1 => {
                     matches!(display.as_str(), "block" | "flow-root" | "flex" | "none")
@@ -1407,6 +1407,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
                             | ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1
                             | ComputedStyleProfile::C19BoxPaintOpacityV1
                             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
+                            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1

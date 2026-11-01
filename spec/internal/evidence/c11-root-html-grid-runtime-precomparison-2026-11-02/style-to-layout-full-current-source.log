@@ -1,0 +1,27 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.53s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 277 tests
+................... 19/277
+c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs --- FAILED
+....................................................................................... 107/277
+....................................................................................... 194/277
+...................................................................................
+failures:
+
+---- c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs stdout ----
+
+thread 'c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs' (135695715) panicked at crates/spinon-style-to-layout/src/c07_3_aspect_ratio_tests.rs:229:13:
+assertion `left == right` failed: 1x ratio-calc-number.aspect-ratio computed style
+  left: Some("1.7777778 / 1")
+ right: Some("1.77778 / 1")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs
+
+test result: FAILED. 276 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.48s
+
+error: test failed, to rerun pass `-p spinon-style-to-layout --lib`

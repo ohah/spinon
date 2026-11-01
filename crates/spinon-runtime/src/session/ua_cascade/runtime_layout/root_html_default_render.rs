@@ -109,6 +109,7 @@ pub(super) fn prepare(
             "inline" => {
                 inline_run_styles.insert(style.node_id, inline_run_style(style)?);
             }
+            "grid" => {}
             _ => {
                 return Err(unsupported_style(style.node_id, "display", display));
             }

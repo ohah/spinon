@@ -1,0 +1,19 @@
+2026-11-02 C11.1 base-grid and visible-overflow simulator rerun
+
+Both app builds use `SPINON_ENABLE_C04_RUNTIME_GPU=1` and keep all runtime-GPU fixture-test features disabled. The APKs and iOS executable were built from the same current working tree described by [`candidate-source.sha256`](./candidate-source.sha256); this manifest records source and input hashes, while `baseHead` remains `caaf10f187553b4c4a351d9b9c1e96eb53387e08`.
+
+- Android base APK: `build/spinon/artifacts/android-c11-root-html-grid-base-current-source.apk`, SHA-256 `cde3286301d0db502c6b5c122ff8f9d0476fb1936575a42d2657244b3f2592c9`.
+- Android visible-overflow APK: `build/spinon/artifacts/android-c11-root-html-grid-visible-overflow-current-source.apk`, SHA-256 `b499603a657cac7294097a72e41b9c1e539c57b2c1a77bc46f308c358cd89ef1`.
+- Both APKs contain identical stripped ARM64 `libspinon_bootstrap.so`, SHA-256 `47ad1f430f46fff374a5c19ad2d92a5e3a60433967ba33a4836cf36a01367997`.
+- iOS Simulator executable: `build/spinon/artifacts/ios-c11-root-html-grid-current-source`, SHA-256 `169ba1fc9b544b423e52b7fd549a1fd141a2d9a80a226739f938b656bf46d3d0`.
+- Candidate source/input manifest SHA-256: `6aebcbad26fc2402d7299c3d8b396e48a60f821c779029931409500f6746a2ea`.
+
+APK source assets were checked against each capture's fixture:
+
+- Base `index.html`: `39f70509e281ffb542881a2049769133e1b95c200308c5c53b404df261c9ff3d`.
+- Visible-overflow `index.html`: `0a5afde5eab0c89e3352cf6ff4b195e0d8fd8b4eaa79c823e1df8a04a93c8b56`.
+- Both `root-app.js` probes: `465eb57c58c6b3dba51bcb0a888ae79bd0838a56e4ef2887f0875df3ff7c1991`.
+
+Static marker scans on the preserved binaries found no `spinon_runtime_gpu_host_new_c11_1_grid_fixture` or `c11-grid-fixture` string in Android's packaged native library or the iOS executable. Android's packaged native library also has no `C11.1 Grid scene` string. The iOS executable does contain `C11.1 Grid scene`, which is an existing label in the unchanged `platforms/ios/Sources/C0410RuntimeGpuDemo.swift`; this scan therefore claims only that the new route does not call the fixture constructor, not that the binary has no C11 demo text.
+
+The APKs carry the ordinary parsed Root HTML route and fixture HTML resources used for these captures. This is a runtime integration check, not proof that the overall app binary contains no other existing test/demo code. The screenshots are simulator display captures; they are not Android PixelCopy or iOS Metal drawable readback.

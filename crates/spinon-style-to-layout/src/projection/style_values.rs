@@ -8,8 +8,8 @@ use spinon_layout::{
 };
 use spinon_style::{
     ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize,
-    ComputedCssOverflow, ComputedCssPosition, ComputedElementStyle, ComputedStyleProfile,
-    ComputedStyleSnapshot,
+    ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -238,6 +238,11 @@ pub(super) fn project_styles(
     let mut math = CssMathProjector::default();
     let grid_nodes =
         is_grid_profile(snapshot.profile).then(|| runtime_grid_nodes(tree, root, snapshot));
+    if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && let Some(nodes) = grid_nodes.as_ref()
+    {
+        validate_root_html_grid_item_capacity(snapshot, nodes)?;
+    }
     let runtime_flex_items = if supports_runtime_flex(snapshot.profile) {
         runtime_flex_item_nodes(tree, root, snapshot)
     } else {
@@ -250,6 +255,7 @@ pub(super) fn project_styles(
             ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         ) {
             if grid_nodes
                 .as_ref()
@@ -413,15 +419,7 @@ pub(super) fn project_styles(
                     | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                     | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
             ),
-            matches!(
-                snapshot.profile,
-                ComputedStyleProfile::RuntimeBlockFlexGridV1
-                    | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
-                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
-                    | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-                    | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
-                    | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-            ),
+            is_grid_profile(snapshot.profile),
             snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 || blockify_anonymous_grid_image,
         )?;
@@ -798,6 +796,15 @@ pub(super) fn project_styles(
             style.display = spinon_layout::LayoutDisplay::None;
         }
         if let Some(nodes) = grid_nodes.as_ref() {
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && (nodes.grid_containers.contains(&node) || nodes.grid_items.contains(&node))
+            {
+                validate_root_html_grid_box_inputs(
+                    element,
+                    nodes.grid_containers.contains(&node),
+                    nodes.grid_items.contains(&node),
+                )?;
+            }
             if nodes.grid_containers.contains(&node) {
                 reject_grid_alignment(
                     element,
@@ -1026,16 +1033,214 @@ struct RuntimeGridNodes {
     grid_item_owners: BTreeMap<NodeId, NodeId>,
 }
 
+fn validate_root_html_grid_item_capacity(
+    snapshot: &ComputedStyleSnapshot,
+    nodes: &RuntimeGridNodes,
+) -> Result<(), StyleLayoutError> {
+    let mut item_counts = BTreeMap::<NodeId, usize>::new();
+    for owner in nodes.grid_item_owners.values() {
+        let count = item_counts.entry(*owner).or_default();
+        *count =
+            count
+                .checked_add(1)
+                .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+                    node: *owner,
+                    property: "grid-auto-rows",
+                    value: "Root HTML Grid item 수가 표현 가능한 범위를 넘었습니다".to_owned(),
+                })?;
+    }
+    for element in snapshot.elements.iter() {
+        if !nodes.grid_containers.contains(&element.node_id) {
+            continue;
+        }
+        let grid = element.grid_layout.as_ref().ok_or_else(|| {
+            StyleLayoutError::UnsupportedComputedValue {
+                node: element.node_id,
+                property: "grid-template-columns",
+                value: "computed Grid track 정보가 없습니다".to_owned(),
+            }
+        })?;
+        let capacity = grid
+            .columns
+            .len()
+            .checked_mul(grid.rows.len())
+            .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+                node: element.node_id,
+                property: "grid-template-rows",
+                value: "Root HTML Grid explicit track 수가 표현 가능한 범위를 넘었습니다"
+                    .to_owned(),
+            })?;
+        if item_counts
+            .get(&element.node_id)
+            .copied()
+            .unwrap_or_default()
+            > capacity
+        {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node: element.node_id,
+                property: "grid-auto-rows",
+                value:
+                    "Root HTML Grid은 explicit track를 벗어나는 implicit item을 지원하지 않습니다"
+                        .to_owned(),
+            });
+        }
+    }
+    for item_node in &nodes.grid_items {
+        if nodes.html_image_grid_items.contains(item_node) {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node: *item_node,
+                property: "grid-item",
+                value: "Root HTML Grid에서는 intrinsic image item을 지원하지 않습니다".to_owned(),
+            });
+        }
+    }
+    Ok(())
+}
+
 fn is_grid_profile(profile: ComputedStyleProfile) -> bool {
     matches!(
         profile,
-        ComputedStyleProfile::RuntimeBlockFlexGridV1
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            | ComputedStyleProfile::RuntimeBlockFlexGridV1
             | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
             | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     )
+}
+
+fn validate_root_html_grid_box_inputs(
+    element: &ComputedElementStyle,
+    is_grid_container: bool,
+    is_grid_item: bool,
+) -> Result<(), StyleLayoutError> {
+    let node = element.node_id;
+    if is_grid_item {
+        let display = required(element, "display")?;
+        if display != "block" {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property: "display",
+                value: format!(
+                    "Root HTML Grid item display {display:?} is outside this block-item slice"
+                ),
+            });
+        }
+    }
+    let is_zero = |value: ComputedCssSpacingValue| matches!(value, ComputedCssSpacingValue::LengthPx(value) if value == 0.0);
+    for (property, value) in [
+        ("margin-top", element.layout_spacing.margin.top),
+        ("margin-right", element.layout_spacing.margin.right),
+        ("margin-bottom", element.layout_spacing.margin.bottom),
+        ("margin-left", element.layout_spacing.margin.left),
+        ("padding-top", element.layout_spacing.padding.top),
+        ("padding-right", element.layout_spacing.padding.right),
+        ("padding-bottom", element.layout_spacing.padding.bottom),
+        ("padding-left", element.layout_spacing.padding.left),
+    ] {
+        if !is_zero(value) || element.layout_math_values.contains_key(property) {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: element
+                    .properties
+                    .get(property)
+                    .cloned()
+                    .unwrap_or_else(|| format!("{value:?}")),
+            });
+        }
+    }
+    for (property, value) in [
+        ("border-top-width", element.layout_border.top),
+        ("border-right-width", element.layout_border.right),
+        ("border-bottom-width", element.layout_border.bottom),
+        ("border-left-width", element.layout_border.left),
+    ] {
+        if value != 0.0 {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: element
+                    .properties
+                    .get(property)
+                    .cloned()
+                    .unwrap_or_else(|| format!("{value}px")),
+            });
+        }
+    }
+    if is_grid_container {
+        for (property, value) in [
+            ("row-gap", element.layout_spacing.row_gap),
+            ("column-gap", element.layout_spacing.column_gap),
+        ] {
+            if !matches!(value, ComputedCssSpacingValue::Normal) && !is_zero(value)
+                || element.layout_math_values.contains_key(property)
+            {
+                return Err(StyleLayoutError::UnsupportedComputedValue {
+                    node,
+                    property,
+                    value: element
+                        .properties
+                        .get(property)
+                        .cloned()
+                        .unwrap_or_else(|| format!("{value:?}")),
+                });
+            }
+        }
+    }
+    if element.layout_position != ComputedCssPosition::Static {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "position",
+            value: element
+                .properties
+                .get("position")
+                .cloned()
+                .unwrap_or_else(|| format!("{:?}", element.layout_position)),
+        });
+    }
+    for (property, value) in [
+        ("overflow-x", element.layout_overflow_x),
+        ("overflow-y", element.layout_overflow_y),
+    ] {
+        if value != Some(ComputedCssOverflow::Visible) {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: element
+                    .properties
+                    .get(property)
+                    .cloned()
+                    .unwrap_or_else(|| format!("{value:?}")),
+            });
+        }
+    }
+    let writing_mode = element
+        .properties
+        .get("writing-mode")
+        .map(String::as_str)
+        .unwrap_or("horizontal-tb");
+    if writing_mode != "horizontal-tb" {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "writing-mode",
+            value: writing_mode.to_owned(),
+        });
+    }
+    let direction = element
+        .properties
+        .get("direction")
+        .map(String::as_str)
+        .unwrap_or("ltr");
+    if direction != "ltr" {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "direction",
+            value: direction.to_owned(),
+        });
+    }
+    Ok(())
 }
 
 fn runtime_grid_nodes(
@@ -1067,8 +1272,15 @@ fn runtime_grid_nodes(
             continue;
         };
         for child in children {
+            let ignored_grid_whitespace_text = tree.node(child).is_some_and(|child_node| {
+                matches!(child_node.kind(), HostNodeKind::Text(text)
+                if text.to_string_lossy().chars().all(|character| {
+                    matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
+                }))
+            });
             if !hidden
                 && display == "grid"
+                && !ignored_grid_whitespace_text
                 && displays
                     .get(&child.id())
                     .is_none_or(|display| *display != "none")

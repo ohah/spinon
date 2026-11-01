@@ -1,0 +1,48 @@
+{
+  "source": "tests/fixtures/css/c11/root-html-grid-visible-overflow.html",
+  "viewportCssPx": {
+    "width": 1280,
+    "height": 633
+  },
+  "root": {
+    "frame": {
+      "x": 0,
+      "y": 0,
+      "width": 120,
+      "height": 70
+    },
+    "columns": [40, 80],
+    "rows": [70]
+  },
+  "items": [
+    {
+      "class": "item-a",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 41,
+        "height": 71
+      }
+    },
+    {
+      "class": "item-b",
+      "frame": {
+        "x": 40,
+        "y": 0,
+        "width": 81,
+        "height": 70
+      }
+    }
+  ],
+  "visibleOverflow": {
+    "rootBounds": {
+      "right": 120,
+      "bottom": 70
+    },
+    "overflowingItemBounds": {
+      "right": 121,
+      "bottom": 71
+    },
+    "expected": true
+  }
+}

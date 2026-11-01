@@ -20,6 +20,14 @@
 - iPhone 17 Pro / iOS 26.2 Simulator에서 고정 Chrome 154 reference 10 scene·40 node geometry와 별도 10-scene Metal drawable 행렬의 36/36 RGBA exact를 확인했다. 이는 simulator surface 결과이며 iPhone 실기기나 compositor 최종 출력의 color-management 결과가 아니다. [10-scene geometry](./evidence/c11-grid-ios-simulator-2026-10-12/c11-grid-ios-matrix-20261011T205619778Z-2032fc2e/README.md) · [10-scene 표면 비교](./evidence/c11-1-mobile-surface-pixel-matrix-2026-10-12/README.md) · [초기 Metal 표본](./evidence/c11-1-ios-metal-surface-pixels-2026-10-12/run-c11-ios-metal-20261011T205937099Z-a996f7ef/README.md).
 - 두 플랫폼의 geometry 행렬은 각각 10 scene·40 node다. 표면 행렬은 Android API 37 AVD와 iOS Simulator에서 각각 10 scene·36 sample이며, Android 실기기 표면은 fixed scene 7 sample만 확인했다. 공식 Spinon WPT runner, Android 실기기 전체 pixel 행렬, iOS 실기기, 다른 기기 성능을 뜻하지 않는다. 전체 경계와 다음 관문은 [C11 계획](../../plan/c11-css-grid.md)을 따른다.
 
+## Parsed Root HTML 기본 경로의 제한 Grid 입력
+
+`RuntimeRootHtmlTextPaintV1` profile은 기존 root HTML document, viewport·environment, Stylo cascade, typed style snapshot과 revision identity를 유지한 채 `RuntimeSession::new_runtime_gpu_with_root_html`의 기본 runtime 경로에 제한된 author CSS Grid를 전달한다. 이는 `c04-runtime-gpu-fixture-test`의 고정 scene entry가 아니며 새 공개 API, 일반 CSS 지원 선언, 전체 C11.1 완료를 뜻하지 않는다.
+
+이 연결 범위는 이름 없는 유한·비음수 fixed-px explicit columns/rows, CSS 기본 row auto-placement, implicit track을 만들지 않는 item 수, fixed-size visible block items, `horizontal-tb`·LTR과 zero/initial box edges·gap에 한정한다. Stylo의 computed `display:block`을 projection에 사용하므로 author `display:inline` Grid item의 CSS Grid blockification은 허용된다. CSS Grid §6에 따라 ASCII CSS whitespace만 있는 직계 text sequence는 `white-space:pre`에서도 anonymous item 수에 포함하지 않는다. non-whitespace direct text와 HTML image item은 intrinsic/anonymous layout을 지원하지 않으므로 scene publish 전에 거부한다. Visible overflow는 item frame을 track/root 경계로 clamp하지 않으며, authored clipping·scroll은 지원하지 않는다.
+
+Repeat·named line/area, fraction·percentage·intrinsic track, implicit sizing·placement, explicit placement, non-default auto-flow, nonzero gap·margin·border·padding, non-static positioning, non-visible overflow, RTL·비수평 writing mode, flex/nested Grid item 및 그 밖의 projection 밖 값은 제한 경로에서 성공 입력으로 받아들이지 않는다. 실패 시 partial scene을 publish하지 않는다. 고정 Chrome 156 expected/overflow oracle, Root HTML Rust tests, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 실행 근거와 한계는 [C11.1 Root HTML runtime evidence](./evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/README.md)에 기록한다. CSS Grid item text 규칙은 [CSS Grid Layout Module Level 2 §6](https://www.w3.org/TR/css-grid-2/#grid-items)에 따른다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.

@@ -204,7 +204,7 @@ impl ParagraphSourceCollector<'_> {
                             self.styles,
                             self.excluded_layout_nodes,
                         )?;
-                    } else if style.display == LayoutDisplay::Block {
+                    } else if matches!(style.display, LayoutDisplay::Block | LayoutDisplay::Grid) {
                         push_anonymous_paragraph(
                             &mut items,
                             paragraph_id,
@@ -224,7 +224,7 @@ impl ParagraphSourceCollector<'_> {
                     } else {
                         return Err(LayoutError::UnsupportedTextParagraph {
                             node: paragraph_id,
-                            reason: "visible direct child는 HTML span 또는 Block이어야 합니다",
+                            reason: "visible direct child는 HTML span, Block 또는 Grid이어야 합니다",
                         });
                     }
                 }

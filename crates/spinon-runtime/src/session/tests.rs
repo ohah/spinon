@@ -12,6 +12,8 @@ use std::sync::{Arc, Barrier, Mutex};
 use std::thread;
 use std::time::{Duration, Instant};
 
+mod root_html_grid;
+
 struct FakeV8Runtime {
     node_callback: super::NodeCallback,
     text_callback: super::TextCallback,

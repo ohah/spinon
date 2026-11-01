@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spinon root HTML Grid visible overflow</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-width: 0;
+      }
+
+      main {
+        box-sizing: border-box;
+        display: grid;
+        width: 120px;
+        height: 70px;
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 70px;
+        background-color: #101820;
+      }
+
+      main > div {
+        box-sizing: border-box;
+      }
+
+      .item-a {
+        width: 41px;
+        height: 71px;
+        background-color: #e5484d;
+      }
+
+      .item-b {
+        width: 81px;
+        height: 70px;
+        background-color: #3a8f5b;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="item-a"></div>
+      <div class="item-b"></div>
+    </main>
+  </body>
+</html>

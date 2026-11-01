@@ -13,25 +13,30 @@
       "computedWidth": "120px",
       "computedHeight": "70px",
       "gridTemplateColumns": "40px 80px",
-      "gridTemplateRows": "20px 50px",
+      "gridTemplateRows": "70px",
+      "gridAutoFlow": "row",
       "frame": [0, 0, 120, 70]
     },
     "items": [
       {
         "class": "item-a",
-        "computedGridColumn": "2",
-        "computedGridRow": "1",
-        "frame": [40, 0, 80, 20]
+        "computedWidth": "40px",
+        "computedHeight": "70px",
+        "computedGridColumn": "auto",
+        "computedGridRow": "auto",
+        "frame": [0, 0, 40, 70]
       },
       {
         "class": "item-b",
-        "computedGridColumn": "1",
-        "computedGridRow": "2",
-        "frame": [0, 20, 40, 50]
+        "computedWidth": "80px",
+        "computedHeight": "70px",
+        "computedGridColumn": "auto",
+        "computedGridRow": "auto",
+        "frame": [40, 0, 80, 70]
       }
     ]
   },
   "screenshot": "chrome-156-root-html-grid.png",
-  "screenshotSha256": "9b38607e88d67e147513d8415e307d424e84d095b47615eb4d61de6bcf90b608",
+  "screenshotSha256": "d42316856f5dc135efe9e18b36eebbae7192a20c0ecf401de2d94071f2b4d71b",
   "scope": "Browser oracle only; this is not evidence that the Spinon runtime accepts or renders the root HTML Grid input."
 }

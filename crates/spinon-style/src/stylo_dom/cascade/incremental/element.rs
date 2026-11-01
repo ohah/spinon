@@ -211,7 +211,8 @@ pub(super) fn computed_element_output(
     let grid_layout = if !layout_suppressed
         && matches!(
             profile,
-            ComputedStyleProfile::RuntimeBlockFlexGridV1
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1
                 | ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
