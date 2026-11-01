@@ -1,0 +1,89 @@
+{
+  "sourceHead": "1a862af09ddf53d91043facfe744b24322536def",
+  "rawRoadmapSha256": "14a4390e2573404a1a20a9a1962c8c66a08dac54ca551f0acf0e718c0b394155",
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "roadmapCardMarker": "구현 PR #970 Rebase and merge",
+  "mergeSha": "dd178e769c562d3cbc12cfea0c9e11093b36b8fd",
+  "localRoadmapLinks": 11,
+  "fullSiteDeadLinkCheck": false,
+  "checks": [
+    {
+      "href": "/spinon/plan/c11-3-3-negative-named-line-two-axis.html",
+      "route": "plan/c11-3-3-negative-named-line-two-axis.html",
+      "bytes": 55301,
+      "sha256": "07f65762785cb923e1d252edcacab62e1335ca8fdc8fd9acd7ee48c074d486da",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 458650,
+      "sha256": "617762660ab7e1870fff0547cc83c923560ac836273e580eff420711e9ff7ff6",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/README.html",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/README.html",
+      "bytes": 44958,
+      "sha256": "7ef21a34e71597134038ebaf64e209521f8574d290864d0bd3d8db527a7e97a7",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 54461,
+      "sha256": "134959d6f7ce14c4dd30b182cdeaeae0f516b59415a00c5f9e7a329e910d4373",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/pr-diff-review-30.html",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 48713,
+      "sha256": "cc47d265acdf8ccfc88cff53dffc77777218a80942615cf8d07a5db1c700a62d",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/merge-PR970.html",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/merge-PR970.html",
+      "bytes": 41697,
+      "sha256": "3e7f91f5ddc2e4c68a4c2e267deb3ea1abbf12803c3992c34114a2ea408925f2",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/post-merge-status-roadmap-review-30.html",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/post-merge-status-roadmap-review-30.html",
+      "bytes": 45993,
+      "sha256": "b1800378e2657e734caf43918e2ab69669acbc95e940c05626fe90bf2eea4795",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/post-merge-docs-pr-diff-review-30.html",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/post-merge-docs-pr-diff-review-30.html",
+      "bytes": 45696,
+      "sha256": "7a2625ccf7144fe85acadd0aff0df938bd9926d3bb4a1509f98d43023dfeb183",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/android-avd-c1133-negative-pair-two-axis-android-avd-20261101T055432072Z-227c6067/android-screen.png",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/android-avd-c1133-negative-pair-two-axis-android-avd-20261101T055432072Z-227c6067/android-screen.png",
+      "bytes": 75369,
+      "sha256": "26a68aabb8b1386a334f97cbb38afe30b8cd8e1d33d4aa919d4bb18bd43431af",
+      "verified": true
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/ios-simulator-c1133-negative-pair-two-axis-ios-simulator-20261101T055554422Z-f9734042/ios-screen.png",
+      "route": "internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/ios-simulator-c1133-negative-pair-two-axis-ios-simulator-20261101T055554422Z-f9734042/ios-screen.png",
+      "bytes": 131667,
+      "sha256": "345afc1a80a02a6f0f6d5cb47dea7fa6cae0c341b681179505fe36f8decd9469",
+      "verified": true
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "bytes": 741533,
+      "sha256": "8bec9470806a7cd6f9da440a3107b695cbf7651d55245718ee2f7fbee0707911",
+      "verified": true
+    }
+  ]
+}

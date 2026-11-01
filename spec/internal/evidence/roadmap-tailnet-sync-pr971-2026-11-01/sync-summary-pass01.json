@@ -1,0 +1,31 @@
+{
+  "sourceHead": "1a862af09ddf53d91043facfe744b24322536def",
+  "sourceTree": "ddba25f3c41fd77e8027b109ed5e104708098fc1",
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "routeCount": 224,
+  "targetBytes": 13391160,
+  "previousRoadmap": {
+    "status": 200,
+    "bytes": 472201,
+    "sha256": "973158ab0332e65bcbfac39baa164aec0bce6735b8942f0514e0a2183205a095"
+  },
+  "publishedRoadmap": {
+    "bytes": 474950,
+    "sha256": "14a4390e2573404a1a20a9a1962c8c66a08dac54ca551f0acf0e718c0b394155"
+  },
+  "counts": {
+    "created": 195,
+    "replaced": 11,
+    "unchanged": 18
+  },
+  "replacedFileBackups": 11,
+  "deletedFiles": 0,
+  "localTargetsMatchSelectedHashes": true,
+  "backupHashesMatchOriginals": true,
+  "http200ForAllRoutes": true,
+  "servedHashesMatchSelectedHashes": true,
+  "previewServerRestarted": false,
+  "officialImplementationCount": "72/213",
+  "c11Complete": false,
+  "fullDocumentationDeadLinkValidation": false
+}
