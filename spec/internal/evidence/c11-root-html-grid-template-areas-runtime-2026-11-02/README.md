@@ -43,4 +43,4 @@
 
 양 플랫폼 결과는 Simulator/AVD의 기본 Root HTML app route에서 scene 준비와 draw/present를 확인한 실행 및 화면 캡처다. Android PixelCopy 또는 iOS Metal drawable pixel readback은 수행하지 않았으며 실기기, hardware GPU, post-compositor 색상 결과를 주장하지 않는다. 전체 C11.3.3 fixture 행렬과 WPT 적합성을 검증한 결과도 아니다.
 
-구현/runtime 20개와 PR diff 30개 실패 관점 검토는 각각 [구현/runtime review](./implementation-runtime-review-20.md), [PR diff review](./pr-diff-review-30.md)에 기록했다. 구현 PR 생성·GitHub checks/review·merge는 남아 있다. C11.1/C11.3.3/C11.4/C11의 공식 checkbox와 완료 수 `72/213`은 그대로다.
+구현/runtime 20개와 PR diff 30개 실패 관점 검토는 각각 [구현/runtime review](./implementation-runtime-review-20.md), [PR diff review](./pr-diff-review-30.md)에 기록했다. 병합 후 PR·상태 동기화 검토는 [post-merge doc sync review](./post-merge-doc-sync-review-30.md)에 기록했다. 구현 PR [#1006](https://github.com/ohah/spinon/pull/1006)은 2026-11-01T22:11:00Z Rebase and merge로 병합됐고 merge SHA는 `f4bcce22566c147277bf51ab1f3eae37f12caf4f`다. PR에 GitHub check run은 없었고 main required status checks도 설정되지 않아 CI 통과를 주장하지 않는다. C11.1/C11.3.3/C11.4/C11의 공식 checkbox와 완료 수 `72/213`은 그대로다.

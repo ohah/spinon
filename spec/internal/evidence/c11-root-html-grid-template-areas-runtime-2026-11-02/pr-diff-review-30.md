@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | 1 | 구현 후보가 상위 C11을 완료 상태로 올린다. | `spec/STATUS.md`의 C11 checkbox와 `72/213`을 유지했다. 통과. |
 | 2 | candidate가 C11.1, C11.3.3, C11.4를 한 번에 완료 처리한다. | 계획·계약은 exact Root HTML slice로 한정하고 세 항목 및 C11 전체를 미완료로 남긴다. 통과. |
-| 3 | 계획 PR과 구현 PR의 상태/역할이 혼동된다. | PR #1004는 계획 승인·병합으로만 인용하고 구현 변경은 별도 PR 대기 상태다. 통과. |
+| 3 | 계획 PR과 구현 PR의 상태/역할이 혼동된다. | 계획 PR #1004와 구현 PR #1006을 분리해 기록했고, #1006만 구현 candidate를 병합했다. 통과. |
 | 4 | C11 공식 완료 수가 하위 후보 기록에 따라 증가한다. | status 문서의 공식 집계 및 plan/contract/evidence 본문에서 `72/213`을 일치시켰다. 통과. |
 | 5 | 내부 contract version이 구현 후보만으로 부당하게 변경된다. | internal/0059 version `0.1.0`을 유지하고 candidate section을 별도 표기했다. 통과. |
 | 6 | 계획의 parser/profile 경계와 실제 구현이 다르다. | 새 통합은 parsed Root HTML 기본 GPU route에만 연결되고 C11.3.3 fixture route를 호출하지 않는다. 통과. |
@@ -32,9 +32,9 @@
 | 26 | Rust tests와 simulator APK/iOS app이 다른 HTML fixture를 사용한다. | source fixture와 both app bundles의 SHA-256 `7c49f066398d51b6ade5ccf842addfc9bf1ec857b21b9e16c7e74d39a6275f3d`를 verification logs에서 대조한다. 통과. |
 | 27 | screenshot이 예상하지 않은 fixture route 또는 content에서 생성된다. | app logs는 기본 `index.html` route와 ready marker, layout ready, draw/present를 기록한다. 임시 asset 교체는 복구되어 bootstrap inputs가 unmodified다. 통과. |
 | 28 | screenshots가 hardware/readback/compositor exactness를 증명한다고 PR image가 암시한다. | PNG는 visual scene evidence로만 link하고 README는 PixelCopy/Metal readback 및 post-compositor/hardware claims가 아님을 명시한다. 통과. |
-| 29 | local validation이 PR CI 통과로 서술되거나 unrelated failure가 숨겨진다. | CI는 아직 없음으로 표시한다. 전체 style-to-layout의 C07 aspect-ratio string serialization `1.7777778 / 1` vs `1.77778 / 1` 실패는 정확히 분리하고 전체 suite를 non-green으로 둔다. 통과. |
+| 29 | local validation이 PR CI 통과로 서술되거나 unrelated failure가 숨겨진다. | PR #1006에는 check run이 없고 main required status checks도 비활성이다. 전체 style-to-layout의 C07 aspect-ratio string serialization `1.7777778 / 1` vs `1.77778 / 1` 실패는 정확히 분리하고 CI를 통과로 주장하지 않는다. 통과. |
 | 30 | review 범위/개수 또는 evidence manifest가 diff 작성과 충돌한다. | plan review 20, 구현/runtime review 20, 이 PR diff review 30을 별도 문서로 분리한다. 최종 staging은 후보 경로만 명시하고 `SHA256SUMS.txt`를 마지막에 재생성한다. 통과. |
 
 ## 판정
 
-초기 검토에서 candidate의 unbounded temporary collection을 수정 대상으로 찾았고 고정 슬롯으로 바꾼 최종 diff에서 해당 경계를 재검토했다. 최종 diff에서 남은 blocking 결함은 발견하지 않았다. PR 생성 후 GitHub rendered diff, required checks, mergeability와 screenshot 렌더링을 다시 확인해야 한다. check rollup이 비어 있으면 CI 통과로 보고하지 않는다. C11 전체와 `72/213`은 유지한다.
+초기 검토에서 candidate의 unbounded temporary collection을 수정 대상으로 찾았고 고정 슬롯으로 바꾼 최종 diff에서 해당 경계를 재검토했다. Agent Browser에서 PR #1006의 56-file Files changed 화면과 본문을 열었고 Android screenshot 1080×2400 및 iOS screenshot 1206×2622가 모두 자연 크기로 로드됐다. `gh pr checks`는 check run 없음, main required status checks 조회는 비활성(HTTP 404), review decision은 비어 있고 PR은 `MERGEABLE`/`CLEAN`이었다. 이 상태에서 Rebase and merge됐으며 merge SHA는 `f4bcce22566c147277bf51ab1f3eae37f12caf4f`다. check rollup이 비어 있으므로 CI 통과로 보고하지 않는다. C11 전체와 `72/213`은 유지한다.
