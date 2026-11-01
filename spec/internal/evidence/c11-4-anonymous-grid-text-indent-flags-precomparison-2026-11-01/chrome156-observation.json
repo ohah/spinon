@@ -1,0 +1,543 @@
+{
+  "cases": [
+    {
+      "computedIndent": "0px",
+      "id": "soft-min-content-none",
+      "requestedIndent": "0px",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px",
+      "id": "soft-min-content-indent",
+      "requestedIndent": "10px",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 40,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "40px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px each-line",
+      "id": "soft-min-content-each-line",
+      "requestedIndent": "10px each-line",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 40,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "40px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px hanging",
+      "id": "soft-min-content-hanging",
+      "requestedIndent": "10px hanging",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px hanging each-line",
+      "id": "soft-min-content-hanging-each-line",
+      "requestedIndent": "10px hanging each-line",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "0px",
+      "id": "soft-max-content-none",
+      "requestedIndent": "0px",
+      "requestedTrack": "max-content",
+      "rootHeight": 10,
+      "rootWidth": 50,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 50,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "usedColumns": "50px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px",
+      "id": "soft-max-content-indent",
+      "requestedIndent": "10px",
+      "requestedTrack": "max-content",
+      "rootHeight": 10,
+      "rootWidth": 60,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 50,
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "usedColumns": "60px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px each-line",
+      "id": "soft-max-content-each-line",
+      "requestedIndent": "10px each-line",
+      "requestedTrack": "max-content",
+      "rootHeight": 10,
+      "rootWidth": 60,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 50,
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "usedColumns": "60px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px hanging",
+      "id": "soft-max-content-hanging",
+      "requestedIndent": "10px hanging",
+      "requestedTrack": "max-content",
+      "rootHeight": 10,
+      "rootWidth": 50,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 50,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "usedColumns": "50px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "10px hanging each-line",
+      "id": "soft-max-content-hanging-each-line",
+      "requestedIndent": "10px hanging each-line",
+      "requestedTrack": "max-content",
+      "rootHeight": 10,
+      "rootWidth": 50,
+      "text": "XXX X",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 50,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "usedColumns": "50px",
+      "whiteSpace": "normal"
+    },
+    {
+      "computedIndent": "0px",
+      "id": "forced-min-content-none",
+      "requestedIndent": "0px",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px",
+      "id": "forced-min-content-indent",
+      "requestedIndent": "10px",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 40,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "40px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px each-line",
+      "id": "forced-min-content-each-line",
+      "requestedIndent": "10px each-line",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 40,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "usedColumns": "40px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px hanging",
+      "id": "forced-min-content-hanging",
+      "requestedIndent": "10px hanging",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px hanging each-line",
+      "id": "forced-min-content-hanging-each-line",
+      "requestedIndent": "10px hanging each-line",
+      "requestedTrack": "min-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "0px",
+      "id": "forced-max-content-none",
+      "requestedIndent": "0px",
+      "requestedTrack": "max-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px",
+      "id": "forced-max-content-indent",
+      "requestedIndent": "10px",
+      "requestedTrack": "max-content",
+      "rootHeight": 20,
+      "rootWidth": 40,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "40px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px each-line",
+      "id": "forced-max-content-each-line",
+      "requestedIndent": "10px each-line",
+      "requestedTrack": "max-content",
+      "rootHeight": 20,
+      "rootWidth": 40,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "usedColumns": "40px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px hanging",
+      "id": "forced-max-content-hanging",
+      "requestedIndent": "10px hanging",
+      "requestedTrack": "max-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 10,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "pre-line"
+    },
+    {
+      "computedIndent": "10px hanging each-line",
+      "id": "forced-max-content-hanging-each-line",
+      "requestedIndent": "10px hanging each-line",
+      "requestedTrack": "max-content",
+      "rootHeight": 20,
+      "rootWidth": 30,
+      "text": "XXX\nX",
+      "textRects": [
+        {
+          "height": 10,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ],
+      "usedColumns": "30px",
+      "whiteSpace": "pre-line"
+    }
+  ],
+  "fontLoaded": true,
+  "platform": "MacIntel",
+  "title": "C11.4 anonymous Grid text-indent flag precomparison",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
