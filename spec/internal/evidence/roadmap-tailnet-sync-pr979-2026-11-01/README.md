@@ -20,6 +20,8 @@ PR [#979](https://github.com/ohah/spinon/pull/979)의 C11.4 `hyphens` 진행 카
 
 Agent Browser로 `https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?verify=pr979-2026-11-01`을 열어 페이지 제목과 최신 `PR #977` 카드, `72/213` 문구를 확인했다. 페이지 viewport는 1280px이었다. 확인 후 `agent-browser close --all`을 실행했고 Agent Browser 및 전용 Chrome 프로세스가 남지 않았음을 확인했다.
 
+공개 페이지 화면: [roadmap-tailnet-agent-browser.png](roadmap-tailnet-agent-browser.png) (1280×633).
+
 ## 범위와 한계
 
 이 작업은 선택된 350개 경로만 게시했다. 전체 문서 사이트의 링크 검증이나 전체 배포를 주장하지 않는다. 기존 server가 파일을 열고 있어 C11 상위 계획의 generated HTML 및 raw Markdown alias 두 경로는 선택 publication에서 제외했고, 최신 카드가 직접 연결한 계획과 근거 경로는 모두 포함했다. `selected-publication.json`의 `fullDocsLinkValidation`도 `false`다.
