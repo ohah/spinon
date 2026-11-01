@@ -1,0 +1,70 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 hyphens:auto precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype");
+}
+* { box-sizing: content-box; }
+body { margin: 24px; color: #172033; font: 14px/1.45 system-ui, sans-serif; }
+h1 { margin: 0 0 6px; font-size: 22px; }
+.note { margin: 0 0 20px; color: #4b5563; }
+.cases { display: grid; grid-template-columns: repeat(2, minmax(360px, 1fr)); gap: 14px; }
+.case { padding: 12px; border: 1px solid #d5dce7; border-radius: 8px; background: #f8fafc; }
+h2 { margin: 0 0 10px; font-size: 16px; }
+.samples { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: start; }
+.sample { min-width: 0; }
+.label { display: block; margin-bottom: 5px; color: #526176; font: 11px/1.3 system-ui, sans-serif; }
+.word {
+  font: 10px/10px Ahem, sans-serif;
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+  min-height: 70px;
+  outline: 1px solid #9aa8bc;
+  background: white;
+}
+.auto { hyphens: auto; }
+.manual { hyphens: manual; }
+.none { hyphens: none; }
+.min { width: min-content; }
+.fixed-50 { width: 50px; }
+@media (max-width: 800px) { .cases { grid-template-columns: 1fr; } }
+</style>
+<h1>Chrome 156: hyphens:auto</h1>
+<p class="note">Ahem 10px, lang=en. Min-content width and a 50px definite-width wrapping control.</p>
+<main class="cases">
+  <section class="case">
+    <h2>extraordinary</h2>
+    <div class="samples">
+      <div class="sample"><span class="label">none · min-content</span><div lang="en" class="word none min">extraordinary</div></div>
+      <div class="sample"><span class="label">auto · min-content</span><div lang="en" class="word auto min">extraordinary</div></div>
+      <div class="sample"><span class="label">auto · width 50px</span><div lang="en" class="word auto fixed-50">extraordinary</div></div>
+    </div>
+  </section>
+  <section class="case">
+    <h2>hyphenation</h2>
+    <div class="samples">
+      <div class="sample"><span class="label">none · min-content</span><div lang="en" class="word none min">hyphenation</div></div>
+      <div class="sample"><span class="label">auto · min-content</span><div lang="en" class="word auto min">hyphenation</div></div>
+      <div class="sample"><span class="label">auto · width 50px</span><div lang="en" class="word auto fixed-50">hyphenation</div></div>
+    </div>
+  </section>
+  <section class="case">
+    <h2>internationalization</h2>
+    <div class="samples">
+      <div class="sample"><span class="label">none · min-content</span><div lang="en" class="word none min">internationalization</div></div>
+      <div class="sample"><span class="label">auto · min-content</span><div lang="en" class="word auto min">internationalization</div></div>
+      <div class="sample"><span class="label">auto · width 50px</span><div lang="en" class="word auto fixed-50">internationalization</div></div>
+    </div>
+  </section>
+  <section class="case">
+    <h2>representation</h2>
+    <div class="samples">
+      <div class="sample"><span class="label">none · min-content</span><div lang="en" class="word none min">representation</div></div>
+      <div class="sample"><span class="label">auto · min-content</span><div lang="en" class="word auto min">representation</div></div>
+      <div class="sample"><span class="label">auto · width 50px</span><div lang="en" class="word auto fixed-50">representation</div></div>
+    </div>
+  </section>
+</main>

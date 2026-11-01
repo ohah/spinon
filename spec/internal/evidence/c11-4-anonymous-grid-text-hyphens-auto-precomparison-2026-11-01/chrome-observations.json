@@ -1,0 +1,69 @@
+{
+  "schema": "spinon.c11-4.hyphens-auto.precomparison.v1",
+  "sourceRevision": "c5c4084fadb8a973d001bc345d65332b4330b7c6",
+  "browser": {
+    "name": "Chrome",
+    "version": "156.0.8078.80",
+    "driver": "Agent Browser",
+    "driverVersion": "0.31.1",
+    "fontLoaded": true
+  },
+  "profile": {
+    "fontFamily": "Ahem",
+    "fontSizePx": 10,
+    "lineHeightPx": 10,
+    "lang": "en",
+    "whiteSpace": "normal",
+    "wordBreak": "normal",
+    "overflowWrap": "normal"
+  },
+  "measurement": {
+    "minContent": "element bounding box with width:min-content",
+    "fixedWidth": 50,
+    "lineText": "original DOM UTF-16 characters grouped by Range rectangle y; inserted visual hyphen is not part of returned text"
+  },
+  "cases": [
+    {
+      "word": "extraordinary",
+      "noneMinContentWidth": 130,
+      "autoMinContentWidth": 110,
+      "autoFixedWidthLineSourceText": ["ext", "rao", "rdin", "ary"]
+    },
+    {
+      "word": "hyphenation",
+      "noneMinContentWidth": 110,
+      "autoMinContentWidth": 50,
+      "autoFixedWidthLineSourceText": ["hyp", "hena", "tion"]
+    },
+    {
+      "word": "internationalization",
+      "noneMinContentWidth": 200,
+      "autoMinContentWidth": 50,
+      "autoFixedWidthLineSourceText": ["int", "ern", "at", "iona", "li", "zat", "ion"]
+    },
+    {
+      "word": "representation",
+      "noneMinContentWidth": 140,
+      "autoMinContentWidth": 40,
+      "autoFixedWidthLineSourceText": ["repr", "es", "ent", "ation"]
+    }
+  ],
+  "probe": {
+    "crate": "hypher",
+    "version": "0.1.8",
+    "defaultFeatures": false,
+    "features": ["english"],
+    "lockChecksum": "45f2b4f6b5da34d400d4c112eadcc14512cc5d04307a8eee182586d9bebd7ce6",
+    "words": {
+      "extraordinary": "ex-tra-or-di-nary",
+      "hyphenation": "hy-phen-ation",
+      "internationalization": "in-ter-na-tion-al-iza-tion",
+      "representation": "rep-re-sen-ta-tion"
+    }
+  },
+  "sha256": {
+    "html": "761ab28dbceacc62be2487cab155437bcfd4c9d355180950e6b75d765f61b2dc",
+    "screenshot": "819d3c652b2d0b7a44cec1d8ea49a1ce9e69cbd24d86f9271701b576f939b6ac",
+    "ahem": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  }
+}
