@@ -1,0 +1,37 @@
+{
+  "browser": "Agent Browser 0.31.1 / HeadlessChrome 156.0.0.0",
+  "platform": "macOS browser host",
+  "deviceScaleFactor": 1,
+  "viewportCssPx": {
+    "width": 1280,
+    "height": 633
+  },
+  "file": "tests/fixtures/css/c11/root-html-grid-author-precomparison.html",
+  "observed": {
+    "root": {
+      "display": "grid",
+      "computedWidth": "120px",
+      "computedHeight": "70px",
+      "gridTemplateColumns": "40px 80px",
+      "gridTemplateRows": "20px 50px",
+      "frame": [0, 0, 120, 70]
+    },
+    "items": [
+      {
+        "class": "item-a",
+        "computedGridColumn": "2",
+        "computedGridRow": "1",
+        "frame": [40, 0, 80, 20]
+      },
+      {
+        "class": "item-b",
+        "computedGridColumn": "1",
+        "computedGridRow": "2",
+        "frame": [0, 20, 40, 50]
+      }
+    ]
+  },
+  "screenshot": "chrome-156-root-html-grid.png",
+  "screenshotSha256": "9b38607e88d67e147513d8415e307d424e84d095b47615eb4d61de6bcf90b608",
+  "scope": "Browser oracle only; this is not evidence that the Spinon runtime accepts or renders the root HTML Grid input."
+}
