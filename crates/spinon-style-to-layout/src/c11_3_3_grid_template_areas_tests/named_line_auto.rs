@@ -255,6 +255,22 @@ fn negative_named_line_pair_auto_tracks_accept_start_content_alignment() {
 }
 
 #[test]
+fn negative_named_line_pair_both_axes_rejects_auto_sized_item_with_fixed_tracks() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:120px;height:100px;grid-template-columns:20px;grid-template-rows:15px;grid-auto-columns:5px 7px;grid-auto-rows:3px 4px;justify-content:start;align-content:start;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "two-axis-auto-item",
+            "box-sizing:border-box;width:auto;height:auto;grid-column:-4 ghost / -1 ghost;grid-row:-4 ghost / -1 ghost;margin:0;padding:0;border:0",
+        )],
+    );
+    let error = fixture.compute_with_implicit_named_lines(true).unwrap_err();
+    assert!(
+        format!("{error:?}").contains("UnsupportedGridItemSize"),
+        "auto-sized two-axis item unexpectedly passed: {error:?}"
+    );
+}
+
+#[test]
 fn negative_named_line_auto_pair_keeps_unsupported_shapes_closed() {
     for (grid_style, item_styles, expected_error) in [
         (
