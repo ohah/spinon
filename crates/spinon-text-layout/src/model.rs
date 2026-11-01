@@ -139,9 +139,10 @@ pub enum TextDirection {
     Rtl,
 }
 
-/// C15.3의 고정 Unicode line-break strictness입니다.
+/// C15.3 intrinsic text layout에 전달하는 CSS `line-break` strictness입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub enum LineBreakMode {
+    Loose,
     Normal,
     #[default]
     Strict,

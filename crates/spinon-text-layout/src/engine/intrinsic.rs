@@ -244,6 +244,7 @@ impl TextLayoutEngine {
             builder.push_default(StyleProperty::Locale(Some(locale)));
         }
         builder.push_default(StyleProperty::LineBreak(match input.style.line_break {
+            LineBreakMode::Loose => parley::style::LineBreak::Loose,
             LineBreakMode::Normal => parley::style::LineBreak::Normal,
             LineBreakMode::Strict => parley::style::LineBreak::Strict,
         }));

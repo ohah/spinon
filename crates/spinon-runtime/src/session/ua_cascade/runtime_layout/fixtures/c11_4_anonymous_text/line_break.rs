@@ -23,7 +23,7 @@ pub(super) struct IntrinsicSizes {
     pub(super) max_content_height: f32,
 }
 
-pub(super) const SCENES: [Scene; 5] = [
+pub(super) const SCENES: [Scene; 9] = [
     scene(
         "line-break-ja-normal-min-content",
         "ja",
@@ -89,6 +89,62 @@ pub(super) const SCENES: [Scene; 5] = [
             max_content_height: 10.0,
         },
     ),
+    scene_with_text(
+        "line-break-ja-loose-min-content",
+        "文＄文",
+        "ja",
+        "loose",
+        LineBreakMode::Loose,
+        true,
+        IntrinsicSizes {
+            min_content: 10.0,
+            max_content: 30.0,
+            min_content_height: 30.0,
+            max_content_height: 10.0,
+        },
+    ),
+    scene_with_text(
+        "line-break-ja-loose-max-content",
+        "文＄文",
+        "ja",
+        "loose",
+        LineBreakMode::Loose,
+        false,
+        IntrinsicSizes {
+            min_content: 10.0,
+            max_content: 30.0,
+            min_content_height: 30.0,
+            max_content_height: 10.0,
+        },
+    ),
+    scene_with_text(
+        "line-break-en-loose-min-content",
+        "文＄文",
+        "en",
+        "loose",
+        LineBreakMode::Loose,
+        true,
+        IntrinsicSizes {
+            min_content: 20.0,
+            max_content: 30.0,
+            min_content_height: 20.0,
+            max_content_height: 10.0,
+        },
+    ),
+    scene_with_text(
+        "line-break-ja-normal-prefix-control-min-content",
+        "文＄文",
+        "ja",
+        "normal",
+        LineBreakMode::Normal,
+        true,
+        IntrinsicSizes {
+            min_content: 20.0,
+            max_content: 30.0,
+            min_content_height: 20.0,
+            max_content_height: 10.0,
+        },
+    ),
 ];
 
 const fn scene(
@@ -99,9 +155,29 @@ const fn scene(
     is_min_content: bool,
     sizes: IntrinsicSizes,
 ) -> Scene {
+    scene_with_text(
+        id,
+        "文〜文",
+        language,
+        computed_line_break,
+        line_break,
+        is_min_content,
+        sizes,
+    )
+}
+
+const fn scene_with_text(
+    id: &'static str,
+    text: &'static str,
+    language: &'static str,
+    computed_line_break: &'static str,
+    line_break: LineBreakMode,
+    is_min_content: bool,
+    sizes: IntrinsicSizes,
+) -> Scene {
     Scene {
         id,
-        text: "文〜文",
+        text,
         font_family: "Noto Sans KR",
         language,
         computed_line_break,
@@ -173,10 +249,24 @@ mod tests {
     #[test]
     fn computed_line_break_scenes_are_unique_and_cover_the_fixed_matrix() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 5);
+        assert_eq!(SCENES.len(), 9);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
-            assert_eq!(scene.text, "文〜文");
+            let loose_prefix_scene = matches!(
+                scene.id,
+                "line-break-ja-loose-min-content"
+                    | "line-break-ja-loose-max-content"
+                    | "line-break-en-loose-min-content"
+                    | "line-break-ja-normal-prefix-control-min-content"
+            );
+            assert_eq!(
+                scene.text,
+                if loose_prefix_scene {
+                    "文＄文"
+                } else {
+                    "文〜文"
+                }
+            );
             assert_eq!(scene.font_family, "Noto Sans KR");
             assert_eq!(find_scene(scene.id), Some(&scene));
         }

@@ -7,12 +7,16 @@ const NOTO_KR: &[u8] =
     include_bytes!("../../../../tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf");
 
 fn paragraph(language: &str, line_break: LineBreakMode) -> ParagraphInput {
+    paragraph_with_text(language, line_break, "文〜文")
+}
+
+fn paragraph_with_text(language: &str, line_break: LineBreakMode, text: &str) -> ParagraphInput {
     ParagraphInput {
         node: spinon_core::NodeId::new(1).unwrap(),
         sources: vec![TextSource {
             node: spinon_core::NodeId::new(2).unwrap(),
             inline_ancestors: Vec::new(),
-            text: "文〜文".to_owned(),
+            text: text.to_owned(),
         }],
         style: ParagraphStyle {
             overflow_wrap: Default::default(),
@@ -85,5 +89,37 @@ fn c114_line_break_rejects_malformed_language_metadata() {
     for invalid in ["", " ja", "ja ", "ja JP"] {
         input.style.locale = Some(invalid.to_owned());
         assert_eq!(input.style.validate(), Err("locale"), "{invalid:?}");
+    }
+}
+
+#[test]
+fn c114_line_break_loose_allows_japanese_prefix_break_for_intrinsic_sizes() {
+    let mut engine = TextLayoutEngine::new_without_system_fonts();
+    engine.register_font("Noto Sans KR", NOTO_KR).unwrap();
+    for (language, mode, min_inline, min_block) in [
+        ("ja", LineBreakMode::Loose, 10.0, 30.0),
+        ("en", LineBreakMode::Loose, 20.0, 20.0),
+        ("ja", LineBreakMode::Normal, 20.0, 20.0),
+        ("ja", LineBreakMode::Strict, 20.0, 20.0),
+    ] {
+        let input = paragraph_with_text(language, mode, "文＄文");
+        let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
+        let label = format!("lang={language}; line-break={mode:?}; text=文＄文");
+        close_to(
+            sizes.min_content(),
+            min_inline,
+            &format!("{label} min inline"),
+        );
+        close_to(sizes.max_content(), 30.0, &format!("{label} max inline"));
+        close_to(
+            sizes.min_content_height(),
+            min_block,
+            &format!("{label} min block"),
+        );
+        close_to(
+            sizes.max_content_height(),
+            10.0,
+            &format!("{label} max block"),
+        );
     }
 }

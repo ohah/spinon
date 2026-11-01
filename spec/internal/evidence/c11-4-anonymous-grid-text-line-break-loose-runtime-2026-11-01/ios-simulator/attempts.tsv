@@ -1,0 +1,11 @@
+scene	attempt	run_id	result	log
+line-break-ja-normal-min-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-01-a1	superseded-retry	line-break-ja-normal-min-content.superseded-attempt-1.log
+line-break-ja-normal-min-content	2	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-01-a2	passed	line-break-ja-normal-min-content.log
+line-break-ja-normal-max-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-02-a1	passed	line-break-ja-normal-max-content.log
+line-break-ja-strict-min-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-03-a1	passed	line-break-ja-strict-min-content.log
+line-break-ja-strict-max-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-04-a1	passed	line-break-ja-strict-max-content.log
+line-break-en-normal-min-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-05-a1	passed	line-break-en-normal-min-content.log
+line-break-ja-loose-min-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-06-a1	passed	line-break-ja-loose-min-content.log
+line-break-ja-loose-max-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-07-a1	passed	line-break-ja-loose-max-content.log
+line-break-en-loose-min-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-08-a1	passed	line-break-en-loose-min-content.log
+line-break-ja-normal-prefix-control-min-content	1	c114-computed-line-break-ios-simulator-1793500420304-d2b13381-09-a1	passed	line-break-ja-normal-prefix-control-min-content.log

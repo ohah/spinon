@@ -12977,6 +12977,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "line-break-en-normal-min-content":
                 return new C114ComputedWordBreakScene("文〜文", "en", "Noto Sans KR", "Normal",
                         20, 30, 20, 10, true, new double[] {20, 10});
+            case "line-break-ja-loose-min-content":
+                return new C114ComputedWordBreakScene("文＄文", "ja", "Noto Sans KR", "Normal",
+                        10, 30, 30, 10, true, new double[] {10, 10, 10});
+            case "line-break-ja-loose-max-content":
+                return new C114ComputedWordBreakScene("文＄文", "ja", "Noto Sans KR", "Normal",
+                        10, 30, 30, 10, false, new double[] {30});
+            case "line-break-en-loose-min-content":
+                return new C114ComputedWordBreakScene("文＄文", "en", "Noto Sans KR", "Normal",
+                        20, 30, 20, 10, true, new double[] {10, 20});
+            case "line-break-ja-normal-prefix-control-min-content":
+                return new C114ComputedWordBreakScene("文＄文", "ja", "Noto Sans KR", "Normal",
+                        20, 30, 20, 10, true, new double[] {10, 20});
             case "overflow-wrap-normal-min-content":
             case "overflow-wrap-normal-max-content":
                 return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
@@ -13009,7 +13021,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ComputedLineBreakMode(String sceneId) {
         if (sceneId == null || !sceneId.startsWith("line-break-")) return "Strict";
-        return sceneId.contains("-normal-") ? "Normal" : "Strict";
+        if (sceneId.contains("-normal-")) return "Normal";
+        if (sceneId.contains("-loose-")) return "Loose";
+        return "Strict";
     }
 
     // [word spacing px, min-content px, max-content px, track width px, row height px, line count, min-content row height]

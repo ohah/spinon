@@ -12,6 +12,7 @@ const XML: &str = "http://www.w3.org/XML/1998/namespace";
 #[derive(Clone, Copy)]
 struct Case {
     scene_id: &'static str,
+    text: &'static str,
     language: &'static str,
     line_break_css: &'static str,
     line_break: LineBreakMode,
@@ -27,7 +28,7 @@ struct IntrinsicSizes {
     max_content_height: f32,
 }
 
-const CASES: [Case; 5] = [
+const CASES: [Case; 9] = [
     case(
         "line-break-ja-normal-min-content",
         "ja",
@@ -93,6 +94,62 @@ const CASES: [Case; 5] = [
             max_content_height: 10.0,
         },
     ),
+    case_with_text(
+        "line-break-ja-loose-min-content",
+        "文＄文",
+        "ja",
+        "loose",
+        LineBreakMode::Loose,
+        true,
+        IntrinsicSizes {
+            min_content: 10.0,
+            max_content: 30.0,
+            min_content_height: 30.0,
+            max_content_height: 10.0,
+        },
+    ),
+    case_with_text(
+        "line-break-ja-loose-max-content",
+        "文＄文",
+        "ja",
+        "loose",
+        LineBreakMode::Loose,
+        false,
+        IntrinsicSizes {
+            min_content: 10.0,
+            max_content: 30.0,
+            min_content_height: 30.0,
+            max_content_height: 10.0,
+        },
+    ),
+    case_with_text(
+        "line-break-en-loose-min-content",
+        "文＄文",
+        "en",
+        "loose",
+        LineBreakMode::Loose,
+        true,
+        IntrinsicSizes {
+            min_content: 20.0,
+            max_content: 30.0,
+            min_content_height: 20.0,
+            max_content_height: 10.0,
+        },
+    ),
+    case_with_text(
+        "line-break-ja-normal-prefix-control-min-content",
+        "文＄文",
+        "ja",
+        "normal",
+        LineBreakMode::Normal,
+        true,
+        IntrinsicSizes {
+            min_content: 20.0,
+            max_content: 30.0,
+            min_content_height: 20.0,
+            max_content_height: 10.0,
+        },
+    ),
 ];
 
 const fn case(
@@ -103,8 +160,29 @@ const fn case(
     is_min_content: bool,
     sizes: IntrinsicSizes,
 ) -> Case {
+    case_with_text(
+        scene_id,
+        "文〜文",
+        language,
+        line_break_css,
+        line_break,
+        is_min_content,
+        sizes,
+    )
+}
+
+const fn case_with_text(
+    scene_id: &'static str,
+    text: &'static str,
+    language: &'static str,
+    line_break_css: &'static str,
+    line_break: LineBreakMode,
+    is_min_content: bool,
+    sizes: IntrinsicSizes,
+) -> Case {
     Case {
         scene_id,
+        text,
         language,
         line_break_css,
         line_break,
@@ -115,7 +193,7 @@ const fn case(
 
 #[test]
 fn computed_line_break_scenes_require_their_exact_intrinsic_track() {
-    assert_eq!(CASES.len(), 5);
+    assert_eq!(CASES.len(), 9);
     assert_eq!(
         CASES
             .iter()
@@ -132,7 +210,7 @@ fn computed_line_break_scenes_require_their_exact_intrinsic_track() {
             Some(case.language),
             None,
             case.line_break_css,
-            "文〜文",
+            case.text,
             false,
         );
         let request = WorkRequest {
@@ -246,7 +324,7 @@ fn computed_line_break_scenes_require_their_exact_intrinsic_track() {
             Some(case.language)
         );
         assert_eq!(text_layout.input.style.font_family, "Noto Sans KR");
-        assert_eq!(text_layout.layout.text, "文〜文");
+        assert_eq!(text_layout.layout.text, case.text);
         assert_eq!(
             text_layout.layout.lines.len(),
             (expected_height / 10.0) as usize,
@@ -472,6 +550,49 @@ fn anonymous_grid_line_break_rejects_unlisted_scenes_and_stale_revisions() {
         Ok(calculation) => format!("{:?}", calculation.layout.expect_err("stale revision")),
     };
     assert!(stale_error.contains("revision"), "{stale_error}");
+}
+
+#[test]
+fn anonymous_grid_line_break_loose_rejects_locale_mode_and_text_mismatches() {
+    let case = CASES[5];
+    for (owner_id, language, line_break, text, expected_error) in [
+        (12_910, "en", "loose", case.text, "Grid style owner lang"),
+        (12_911, "ja", "normal", case.text, "line-break"),
+        (12_912, "ja", "loose", "文〜文", "direct text content"),
+    ] {
+        let (snapshot, _, _) = snapshot_for(
+            &case,
+            owner_id,
+            Some(language),
+            None,
+            line_break,
+            text,
+            false,
+        );
+        let request = WorkRequest {
+            key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+            snapshot,
+            viewport: CssViewport {
+                width_css_px: 120.0,
+                height_css_px: 100.0,
+                device_scale_factor: 1.0,
+                environment_revision: EnvironmentRevision::INITIAL,
+                media_environment: CssMediaEnvironment::MOBILE,
+            },
+            previous_snapshot: None,
+            force_full: true,
+            invalidation: None,
+            previous_styles: None,
+        };
+        let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
+            .unwrap_or_else(|error| panic!("runtime calculation: {error:?}"));
+        let Err(error) = calculation.layout else {
+            panic!("unsupported loose line-break input published layout: owner {owner_id}");
+        };
+        let error = format!("{error:?}");
+        assert!(error.contains("unsupported_c114_anonymous_text"), "{error}");
+        assert!(error.contains(expected_error), "{owner_id}: {error}");
+    }
 }
 
 fn snapshot_for(
