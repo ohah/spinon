@@ -1,0 +1,16 @@
+{
+  "session": "spinon-c11-4-20261101",
+  "closeCommand": "agent-browser close --all",
+  "sessionInfo": {
+    "active": false,
+    "pid": null,
+    "runtime": null
+  },
+  "agentBrowserExecutableProcesses": 0,
+  "previewServer": {
+    "pid": 28040,
+    "listener": "127.0.0.1:8768",
+    "stillRunning": true,
+    "restarted": false
+  }
+}

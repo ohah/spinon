@@ -1,0 +1,12 @@
+{
+  "sourceHead": "0f8d7d708d10d25e92391cb50adc0cd9204d5945",
+  "step": "stage-publication",
+  "result": "failed-before-preview-copy",
+  "errorName": "AssertionError",
+  "message": "로드맵 marker 누락: PR #986 Rebase and merge",
+  "cause": "HTML places PR and #986 in separate text nodes around an anchor, so the initial contiguous-string assertion did not match.",
+  "partialOutput": "build/spinon/roadmap-tailnet-sync-pr987-2026-11-01/pass01/publication",
+  "partialOutputPreserved": true,
+  "previewChanged": false,
+  "followup": "stage-publication-pass02.mjs validates the rendered PR #986 card and its local routes; pass02 succeeded."
+}
