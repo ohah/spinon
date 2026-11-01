@@ -1,0 +1,1424 @@
+{
+  "sourceHead": "71ccb9fb395a7fbdc5b67af3838e5cd32f46c48e",
+  "sourceTree": "4c23e6cb779ade04c01c07bf78203436eae43dcf",
+  "trackedDiffSha256": "6a06da7af2b060bcda80b197221a2d3f8131c889686b7df78e977c15dc5b86bc",
+  "selectedRootFileCount": 141,
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr974-2026-11-01/pass04/publication-release",
+  "routeCount": 196,
+  "totalBytes": 15174679,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "route": "plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "sha256": "742268e25244310f37286184de7bb55219f0850e33d53453caf36a6cf3e4feee"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "d499114f495b4db61a1c041a788cc42206c05d55ef4f21f108abceaadff9ffd0"
+    },
+    {
+      "href": "/spinon/STATUS.html",
+      "route": "STATUS.html",
+      "sha256": "7c37f657428fe0deb7c0b33875d35ab257ca9b866cfb729ff65a813b94358e0d"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "sha256": "f76b7149e8b50575910d19b2f164f1b32f8c5e39fe0dfd0c4f2a7a40dfde8c5e"
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "sha256": "e795ea7669b335c367db5c0f99b143e32ff36aea3ec1a75c9cabf46ae07072bf"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "reason": "held open by the pre-existing preview server; not linked by the selected PR card or its plan"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.md",
+      "reason": "paired raw-source alias is not linked by the selected PR card or its plan"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 453720,
+      "sha256": "d499114f495b4db61a1c041a788cc42206c05d55ef4f21f108abceaadff9ffd0"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 313439,
+      "sha256": "7c6845e4c5d0001856876cb0548e1830263a70b815726595bf910cdd6a844dde"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "kind": "source-page-or-asset",
+      "bytes": 470,
+      "sha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 122809,
+      "sha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "kind": "source-page-or-asset",
+      "bytes": 13472,
+      "sha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1646,
+      "sha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36254,
+      "sha256": "bd4c2f5b5b5dd11bf56e238112f3a46165a3dcc561233188e7fdef373ca1d2cc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4579,
+      "sha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37718,
+      "sha256": "eaa9f78e99eb0662b5764e05da4309de45700bfac00948e103487e32dcb2b641"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4551,
+      "sha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 124,
+      "sha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1810,
+      "sha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 411,
+      "sha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 21632,
+      "sha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24901,
+      "sha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24180,
+      "sha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 26905,
+      "sha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24440,
+      "sha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24750,
+      "sha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 77090,
+      "sha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 21716,
+      "sha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24424,
+      "sha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24173,
+      "sha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 22177,
+      "sha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 29593,
+      "sha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24166,
+      "sha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 22090,
+      "sha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24332,
+      "sha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24030,
+      "sha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 77570,
+      "sha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 21300,
+      "sha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24409,
+      "sha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24014,
+      "sha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 40962,
+      "sha256": "bca0b20f6c14427f507bf38cf338e325e6857889e72806b718f49d7eca2d662c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7689,
+      "sha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 3476,
+      "sha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1828,
+      "sha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 414,
+      "sha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11284,
+      "sha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14398,
+      "sha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14241,
+      "sha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11289,
+      "sha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14403,
+      "sha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14246,
+      "sha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 142013,
+      "sha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11278,
+      "sha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14392,
+      "sha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14235,
+      "sha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11273,
+      "sha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14387,
+      "sha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14230,
+      "sha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11278,
+      "sha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14392,
+      "sha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13806,
+      "sha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 141968,
+      "sha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 10838,
+      "sha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14381,
+      "sha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13795,
+      "sha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 43837,
+      "sha256": "55ada77e62802bcef4a8d90bdd54d3f48cb8507ab2cf2be522142a8dc69ed820"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 10183,
+      "sha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34837,
+      "sha256": "f76b7149e8b50575910d19b2f164f1b32f8c5e39fe0dfd0c4f2a7a40dfde8c5e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3719,
+      "sha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "kind": "source-page-or-asset",
+      "bytes": 7044,
+      "sha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34350,
+      "sha256": "52ef82251a325fb3fe3ccc9dd6d183862f039ffc209ca127d2fe60f3f8d858fe"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3058,
+      "sha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36781,
+      "sha256": "e795ea7669b335c367db5c0f99b143e32ff36aea3ec1a75c9cabf46ae07072bf"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5428,
+      "sha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "kind": "source-page-or-asset",
+      "bytes": 251617,
+      "sha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "kind": "source-page-or-asset",
+      "bytes": 139545,
+      "sha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 42950,
+      "sha256": "742268e25244310f37286184de7bb55219f0850e33d53453caf36a6cf3e4feee"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "kind": "source-page-or-asset",
+      "bytes": 9421,
+      "sha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "source": "rspress:plan/c11-css-grid.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 73200,
+      "sha256": "f4eecb4d843e4379d48011c24439e85a60a07cc844d85c379675c535675b1c72"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "source": "selected-root:plan/c11-css-grid.md",
+      "kind": "source-page-or-asset",
+      "bytes": 32153,
+      "sha256": "ff96e72017ff102dff985ca640546cb61ff90f10638231e48f0e70b30f2ddb69"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 476354,
+      "sha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 476354,
+      "sha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 453795,
+      "sha256": "a2d9fe66001f2c2559ee10807365ef1d38bc004e52fd2e33533e7f27b640b75b"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 313439,
+      "sha256": "7c6845e4c5d0001856876cb0548e1830263a70b815726595bf910cdd6a844dde"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/agent-browser-lifecycle.json",
+      "kind": "source-page-or-asset",
+      "bytes": 470,
+      "sha256": "11a3b7f226f8cfa549941ed289e3b5dfadf2c7abc47b66a8d343907ea261e2ae"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 122809,
+      "sha256": "497b0ae055e5b038c569988b4a921d873c4a6f15470aa78e7f79f5ddf977126a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/chrome156-observation.json",
+      "kind": "source-page-or-asset",
+      "bytes": 13472,
+      "sha256": "2d9da51d0d8d1bd7ba54ee50554a6bc6908e48543bc448bcf5abeac9ec0e595f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/expected-values.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1646,
+      "sha256": "d4e9964cac03b6e869ea0edab7848d088813c70cb3fb124eb1244c9611a57291"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36264,
+      "sha256": "79bc1e692a7e57813bfbee51da0659bc3b2f303872d735434c26db1797089393"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/plan-pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4579,
+      "sha256": "f13fc972b8fcf53f553702610bc9cb6513d84d2651b2763f11578c4df64e7f55"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37728,
+      "sha256": "e6eefce01a23d9063b49fda3802da071cf3db03022b6b13924c4e0831f09fbeb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-precomparison-2026-11-01/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4551,
+      "sha256": "e055b50ba25011027ed4a44030f76c80ef9e0f115b9d30612e23f529ef8e0758"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/first-host-dispatch-rejected-word-break-normal-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 124,
+      "sha256": "5f078046e4ae417061c52a68dbc40d2ade89fe72d1b615f521afed0d085b5ff4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1810,
+      "sha256": "24d457efcb95d043ea6b5ee1f307a0845280e970aadb37200844f3f22f453980"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 411,
+      "sha256": "c71d857714d597c074d983f580daa5e4f3763315dd2f3802a0c0db0e0e2f81f1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 21632,
+      "sha256": "f9a026d26dd64a813e4e3ab3e76c1a99c599492e210ac911187c7295c8bd2a3b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24901,
+      "sha256": "90dde9349d4568333ae4b0f129b2dfff86e84713753c5d243fa5e758c1d52a6f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24180,
+      "sha256": "ab27a686ba8838a202097ea0c0973c01c9724cd4cda845b2552d0e5d7646d409"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 26905,
+      "sha256": "edd0b1866603280133ec8399ff25812f1d100892846599a4a164011351ceb7ee"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24440,
+      "sha256": "2438519c03df94a370edb5c3d23e72b412402afe34379771f30fd6520827f424"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24750,
+      "sha256": "ba4dfe1e1f964fe9957716137548aadd03d6226327cb26515418fd72eb6fb0ba"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 77090,
+      "sha256": "fe6296abb477c5fe8538e682cf1eafaf1e7f365ec26a755a3c00621eaa1c146c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 21716,
+      "sha256": "81f21ade6bfaf7d3cccb83540d8c3354abc79f27a36d1688087a0d7f4fd78ee3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24424,
+      "sha256": "a3f88cddc6afa7eb6f4a1dd9617f95bebcb1ffbd79dfb0aa49f249e814fbf50d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24173,
+      "sha256": "eedb7467657fec8f49dc06799ddb62516348819834ce9c00a8b089b11a65daac"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 22177,
+      "sha256": "3e246db869bd7902aa597db50dda3a6e2732277be87846d3998dd73f25918e07"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 29593,
+      "sha256": "e9a1c3f5152408f18e91b9a24c21b08882335afb56b21cc1740e19da1c9b29aa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24166,
+      "sha256": "61b0233090c99c788d2c1a0d40fdf081b9356db26623bfda0270280c3838fa4e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 22090,
+      "sha256": "f96f39b2a9228fee0f73da2ff7746fe75b598b57342ded05f1cec904ff8fc80b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24332,
+      "sha256": "e2b07b7a3d71f654e2aa8f35b5bf9b98c4f992796c25a51aa38c55a1953cf5f5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24030,
+      "sha256": "e2c2fa526faafacc2ecd25df76ed6aaa667a8ed8a6fbdde0b6ec979f7c64860f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 77570,
+      "sha256": "3fb47b0c5b060788536b22a69afa9fcd1e12b4c9745e79f4a321362afcd2c195"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 21300,
+      "sha256": "ed377dbc764e7a3cee45497b361073775016139c8ff618372460f540b75c7768"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24409,
+      "sha256": "c59872ce9350cc3a6da7893528bbb90fcda487125e68e9e30c69a068306c552c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/android-avd/word-break-normal-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 24014,
+      "sha256": "5847bf281767204afc523eda3a55b6107830f9fe011f178fcc17134352d2fbaf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 40982,
+      "sha256": "a334d590845a48d15364b364a4547e8bf073584f38a70b65348427563d26e6c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7689,
+      "sha256": "de1f7116e0aa5ddd1d4fda91f204e4e270c57ff2e477b260e2cc1d898f8d491f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 3476,
+      "sha256": "cfe6922f28a7c3e992839ceb7ad189753d199f8c29e53030fc9197304832818f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "kind": "source-page-or-asset",
+      "bytes": 1828,
+      "sha256": "8ee9ca565f11a42b1964949adf9c5f566d989fb5dc2f969133a10adcb501da49"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 414,
+      "sha256": "95d62fd5a0e2f9e38438d9ddc58766e62d78dcd466d8621153c2b65c4f35ea51"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11284,
+      "sha256": "bf9d1befe2583e15446181e27b06607a2b6b512f291174de90d2484df4e8f808"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14398,
+      "sha256": "58e882a9dbc9de7749e850328bde4f06949ba0115f7f51fd688d6610e0287d23"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14241,
+      "sha256": "356373e1b48a7a137be8ac402f6346eae63721b3ba27ca00d062fa70adf566d7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11289,
+      "sha256": "044ced0235d0784ebf902b5666f8ae88acfc200f554554da370629989ad161d3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14403,
+      "sha256": "cf021112f512e5115de7232b480ecc351b763e98a28621b618ff390bf44df1b5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14246,
+      "sha256": "6be2148fc878d44514a7e8c2613268f7d480fb7e55de0b24f0494cecedc9c43f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 142013,
+      "sha256": "92e6840b88ccff9eb8eb9358b96a67d3a43309157b9357e7b04f1be7390214aa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11278,
+      "sha256": "8d938de40f9188a2e0408d7f22b40cf44ea8e501e1180a9bb3518479b89a7d58"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14392,
+      "sha256": "17b566712bffdc55873b991f869b3bab010da25f9ba3664fe58eb4069a245d59"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-break-word-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14235,
+      "sha256": "41aecac6e84b6c4159ae353848030f4412e0bcc8bd3e8bbd50afb63195ded911"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11273,
+      "sha256": "5f1c25134838b30e9b8c5f31ab23d9b14f4f257f8ac2df631e7188dde4a7cab5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14387,
+      "sha256": "b91c0a4a4385ab659a1d3c038b92c8e83a272f0b83918ce74151fb6ce751e89c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-anywhere-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14230,
+      "sha256": "f048ef86bae20d5d8e5fbd90cf8ca2d5fb091be2d8fd0a872c1f1c1adb52bf8f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 11278,
+      "sha256": "0d3b5607cfb57fda5b1e02ffdfcff22318f1e0464418d397dd818300853b618c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14392,
+      "sha256": "56824b0dc9b67be47e16068e8d5e49d0e5cb8efc3c727cd6c5ddf49d5d4e7500"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-break-word-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13806,
+      "sha256": "e5a8376480739446f2d8e7d7eb562d0e69a1f930c33018e99031133fd23b0fec"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px-screen.png",
+      "kind": "source-page-or-asset",
+      "bytes": 141968,
+      "sha256": "5da4bee5f45a2f44f2fe452368c4ea35e60c28fd435dda62f6954baa75b2f483"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-10px.log",
+      "kind": "source-page-or-asset",
+      "bytes": 10838,
+      "sha256": "531b08735c57f27c2f2631cea2b33e60a31e72c92291a67f6e69f8f04b7df86c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-max-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 14381,
+      "sha256": "693f9f48a20cae1d37fa00f9512e017add4382c4ab1ea82341764d8c8284fa4e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/ios-simulator/word-break-normal-overflow-wrap-normal-min-content.log",
+      "kind": "source-page-or-asset",
+      "bytes": 13795,
+      "sha256": "a6b55854139b57adfaa27bed0a4493c254b46d2488ab441f600cab1c4060ad50"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 43847,
+      "sha256": "d83c6ed241802be9dfbaddb9fa36b1699fa6e1bf403c3a80087d46f1f657c080"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 10183,
+      "sha256": "8f30e0e0d5aa9a13a8fff14f7df230f964fe88cf6326e9f0ea5b66b73487ffe5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34857,
+      "sha256": "f82d642e428b94af7598faf91c8920fc36b3977180fe88930bddd67eb22dacaf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3719,
+      "sha256": "99a88db2a2b114bb52ec4d05f066fef26fd3793ea042c2233427ac4ba6d1f6bf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/source-revision.json",
+      "kind": "source-page-or-asset",
+      "bytes": 7044,
+      "sha256": "99dff27bc2460e1fd9f76898594e7275a3234fe78e1e0fb3617795e92c6a11db"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.html",
+      "source": "rspress:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34365,
+      "sha256": "e65a4919f349b502c7bba9ae5d942231cb0df7e70d4ed444c552c82d700647f2"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3058,
+      "sha256": "7f39c086122a90bc6ee2ac2767582efe865e8872cb3b6e3d942241212b111959"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "source": "rspress:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36791,
+      "sha256": "a1ac6ec1b0de3ddfc0f117f7355139ef428660c05a42f20bee381665e7b3bd13"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/roadmap-pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5428,
+      "sha256": "f6c6c0df67248ff77d6a0493a3a3b8f97520fbb214e75bf9b4743ff1ecf97923"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-desktop.png",
+      "kind": "source-page-or-asset",
+      "bytes": 251617,
+      "sha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr974-2026-11-01/tailnet-roadmap-agent-browser-pass02-mobile.png",
+      "kind": "source-page-or-asset",
+      "bytes": 139545,
+      "sha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-word-break-break-word.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 42930,
+      "sha256": "6640e56b1cb5a5321adc379e827160b4d77568c683a7da7e803ae3beb10e6a39"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-word-break-break-word.md",
+      "kind": "source-page-or-asset",
+      "bytes": 9421,
+      "sha256": "a75305e014d633f6defecf52c627c6e9133b2228ac1ecce17ff986d800ada0de"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 476354,
+      "sha256": "871633d70d61287286bf45e146b0a560b07f9b76c068f98c5bdf10785ced4328"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 735052,
+      "sha256": "4217c28530e0289968061de09b739d97cc72a01ff0053363d80e077defe1cfad"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 590955,
+      "sha256": "69bf426f2d0f4f5f745da75cfeeefc88034b0ebdf39e8367bc03645d65ac6cf0"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser-pass02-desktop.f71c083bdb.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser-pass02-desktop.f71c083bdb.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 251617,
+      "sha256": "89c28b94c2f2a2f2a878ad67e639020f1c201fb4d33a6d5f3f57d069472f6fde"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser-pass02-mobile.027c2ade13.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser-pass02-mobile.027c2ade13.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 139545,
+      "sha256": "02f84d9526f1368dafba6d98e9a1782f128e050d55988b56cc9c0a5e0482ed68"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "source": "rspress:static/js/a.877e354479.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-02e94960d709.ef433059c5.js",
+      "source": "rspress:static/js/async/route-02e94960d709.ef433059c5.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14505,
+      "sha256": "477ef5ce9543e7173e8d8dd91aae7c599b5597b5a15c133c4bf7e8e19e46b0b2"
+    },
+    {
+      "path": "static/js/async/route-0d442e5f9706.c34ef9616c.js",
+      "source": "rspress:static/js/async/route-0d442e5f9706.c34ef9616c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10111,
+      "sha256": "c40133f91f7704a647893c590a26739604b230edc203d34f5d7630b9f6648756"
+    },
+    {
+      "path": "static/js/async/route-1a8d41b4eca0.b68a08c8c8.js",
+      "source": "rspress:static/js/async/route-1a8d41b4eca0.b68a08c8c8.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10454,
+      "sha256": "63f4c6fae0e573a4f8072009612d391b3a4a44584bd11eddedeaf559ab448201"
+    },
+    {
+      "path": "static/js/async/route-1e1925739540.cbe1cf8fec.js",
+      "source": "rspress:static/js/async/route-1e1925739540.cbe1cf8fec.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10118,
+      "sha256": "2ee8cf709133b32d61d9b4472d149e83baa1b038088fb6083ecd5f4edd38a3c1"
+    },
+    {
+      "path": "static/js/async/route-220025124b75.7ac66cb724.js",
+      "source": "rspress:static/js/async/route-220025124b75.7ac66cb724.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14522,
+      "sha256": "bb4f39d9f3648fa926695d2f4328ddcfcfd56429b07d449cc7b7048f53f5fc34"
+    },
+    {
+      "path": "static/js/async/route-223b9c40f69e.0992b5bf44.js",
+      "source": "rspress:static/js/async/route-223b9c40f69e.0992b5bf44.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5952,
+      "sha256": "9c8213a9731e7e49e36f78b4bdf3d9498eb6d497ecba6f3799f26d3e77475887"
+    },
+    {
+      "path": "static/js/async/route-340375062dbb.7f3bdfefce.js",
+      "source": "rspress:static/js/async/route-340375062dbb.7f3bdfefce.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 18932,
+      "sha256": "117f0ce2b498a10a567e47d6ca1d033ebd61518d251bb6957293120aeeeadc7c"
+    },
+    {
+      "path": "static/js/async/route-37f657f8268c.77ec3d73c6.js",
+      "source": "rspress:static/js/async/route-37f657f8268c.77ec3d73c6.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 16278,
+      "sha256": "630dece47279946e24570e5015511b9d8511bb9161aa368315b0a608d1393fd2"
+    },
+    {
+      "path": "static/js/async/route-44319800eb0d.86a853c245.js",
+      "source": "rspress:static/js/async/route-44319800eb0d.86a853c245.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10981,
+      "sha256": "097e33f49c7dec4b2980586e43c79d2a530d560c36450a7b1861c2ceeec76739"
+    },
+    {
+      "path": "static/js/async/route-64be05b3aed4.78f643dbe7.js",
+      "source": "rspress:static/js/async/route-64be05b3aed4.78f643dbe7.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6874,
+      "sha256": "3e0bdb5b69ccb551dde222d949863fcd41e29363f30ad050a0a2ebfabaf43f1e"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.5f34b7cdea.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.5f34b7cdea.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 780660,
+      "sha256": "f5025f02968f34654fadf33832a4658d260eb4d9b26a980348cef1883d9a4a97"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.38768da969.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.38768da969.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 456399,
+      "sha256": "8e74af92bfa0e7e0c0600e340393e1823b5dcec87d8ea5217cc4b6c0ee7a0d2a"
+    },
+    {
+      "path": "static/js/async/route-752bcc96e748.6a12e0c1ac.js",
+      "source": "rspress:static/js/async/route-752bcc96e748.6a12e0c1ac.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6892,
+      "sha256": "454b7770c0d43001f8d800aee0d7c435f94be0176c51504400eee14464f57a15"
+    },
+    {
+      "path": "static/js/async/route-7bbb689fe194.227723e1a9.js",
+      "source": "rspress:static/js/async/route-7bbb689fe194.227723e1a9.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10990,
+      "sha256": "ed6b8876dd9ffeda493ad16915ff0025fa8cf94a236e9b24fe18d03a03e8d0ba"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.bf88fb743c.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.bf88fb743c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 780813,
+      "sha256": "4fd335ac104923cdbd5531f5ea18259b9cba218943031efd46174ac5e1ae9c8a"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.c5f7ea8905.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.c5f7ea8905.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1009,
+      "sha256": "666f0c56395be2dad1cedf59eb56dd97f8008495a155df35d01df09473111a93"
+    },
+    {
+      "path": "static/js/async/route-bc88064cdd4f.c63a1150c3.js",
+      "source": "rspress:static/js/async/route-bc88064cdd4f.c63a1150c3.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 18941,
+      "sha256": "640d613cf9baf16a43eccbe1eb5ba8cc1a6c4aafc1b484bb6ff682b9377187e3"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.cee83c31f4.js",
+      "source": "rspress:static/js/async/route-c2801b21f038.cee83c31f4.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 45042,
+      "sha256": "dece70c60f55a4624015abe7e0b06e3db6a47bddb56fbd10b4677b64cf893563"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.8ff1fbb2e8.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.8ff1fbb2e8.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 456368,
+      "sha256": "4c6d3f081e5181be95349b285535a0f00ab138f33827c60305109a4c78e74c2f"
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.956eb7cb1b.js",
+      "source": "rspress:static/js/async/route-d4b02f34c38e.956eb7cb1b.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 45055,
+      "sha256": "1857380747155477182926b4732106f16e918a7010ceab1ddb58348023e980d6"
+    },
+    {
+      "path": "static/js/async/route-e80cfb024c17.184b7f81ee.js",
+      "source": "rspress:static/js/async/route-e80cfb024c17.184b7f81ee.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 16269,
+      "sha256": "2f23c3c0c26fc9806db85cac89861c24807a7842ed253f556a92cb1edd2246d3"
+    },
+    {
+      "path": "static/js/async/route-f1b91dc883c0.82d8235ea7.js",
+      "source": "rspress:static/js/async/route-f1b91dc883c0.82d8235ea7.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10449,
+      "sha256": "2cbc762142990ecf12993e6a71c8fecc77ce024c2d8dacd04d4165c55b5a1b5b"
+    },
+    {
+      "path": "static/js/async/route-ff6e93b31427.fa3ac8a684.js",
+      "source": "rspress:static/js/async/route-ff6e93b31427.fa3ac8a684.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 5941,
+      "sha256": "1b9152082282fbdc30690a4b1a0f5d3d668e1da132ec6fcdc1b69bbcf2bcc43d"
+    },
+    {
+      "path": "static/js/index.9b71d72956.js",
+      "source": "rspress:static/js/index.9b71d72956.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 97528,
+      "sha256": "6f4b1b9b9bb724066704a59954140fa161dcea10f2932d9d1c62ebe233c82834"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "source": "rspress:static/js/styles.2da0941fcb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.2edf6453.json",
+      "source": "rspress:static/search_index.ko.2edf6453.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 1624806,
+      "sha256": "2edf645360a423b0fbd13fcd8efb862b978238e823eaa3e736bc199322f6efc2"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 734498,
+      "sha256": "7c37f657428fe0deb7c0b33875d35ab257ca9b866cfb729ff65a813b94358e0d"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 590955,
+      "sha256": "69bf426f2d0f4f5f745da75cfeeefc88034b0ebdf39e8367bc03645d65ac6cf0"
+    }
+  ]
+}
