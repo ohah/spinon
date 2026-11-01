@@ -1,0 +1,49 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fontFamily": "Noto Fixture",
+  "fontSource": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+  "fontSha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+  "fontLoaded": true,
+  "fontSizePx": 10,
+  "lineHeightPx": 10,
+  "sourceText": "文＄文",
+  "gridContentWidthPx": 120,
+  "cases": [
+    {
+      "id": "ja-loose-min",
+      "lang": "ja",
+      "lineBreak": "loose",
+      "gridTemplateColumns": "min-content",
+      "usedColumns": "10px",
+      "rootHeightPx": 30,
+      "characterRects": [[0, -1, 10], [0, 9, 10], [0, 19, 10]]
+    },
+    {
+      "id": "ja-loose-max",
+      "lang": "ja",
+      "lineBreak": "loose",
+      "gridTemplateColumns": "max-content",
+      "usedColumns": "30px",
+      "rootHeightPx": 10,
+      "characterRects": [[0, -1, 10], [10, -1, 10], [20, -1, 10]]
+    },
+    {
+      "id": "en-loose-min",
+      "lang": "en",
+      "lineBreak": "loose",
+      "gridTemplateColumns": "min-content",
+      "usedColumns": "20px",
+      "rootHeightPx": 20,
+      "characterRects": [[0, -1, 10], [0, 9, 10], [10, 9, 10]]
+    },
+    {
+      "id": "ja-normal-min",
+      "lang": "ja",
+      "lineBreak": "normal",
+      "gridTemplateColumns": "min-content",
+      "usedColumns": "20px",
+      "rootHeightPx": 20,
+      "characterRects": [[0, -1, 10], [0, 9, 10], [10, 9, 10]]
+    }
+  ]
+}

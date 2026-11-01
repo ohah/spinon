@@ -1,0 +1,29 @@
+{
+  "spec": "CSS Text Level 3 §5.2 line-break property; Unicode UAX #14 LB25 PR × ID; CSS Sizing Level 3 min-content contribution; CSS Grid Level 1 track sizing",
+  "source": "文＄文",
+  "codePoints": ["U+6587", "U+FF04", "U+6587"],
+  "font": {
+    "file": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+    "sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+    "unitsPerEm": 1000,
+    "glyphAdvances1000Em": {"U+6587": 1000, "U+FF04": 1000},
+    "sizePx": 10,
+    "weight": 400,
+    "advancesPx": [10, 10, 10],
+    "maxContentPx": 30
+  },
+  "independentRules": [
+    "U+FF04 FULLWIDTH DOLLAR SIGN is a fullwidth East Asian PR prefix.",
+    "For loose line breaking, a break after a fullwidth PR prefix is allowed for Chinese/Japanese writing systems.",
+    "The corresponding break is forbidden for normal line breaking and for non-CJK writing systems under loose.",
+    "The boundary before U+FF04 is allowed; the boundary after it remains unbreakable under UAX #14 LB25 unless CSS Text loose Japanese tailoring adds the break.",
+    "The minimum-content inline size is the largest unbreakable segment; the auto row is 10px per wrapped line at 10px line-height."
+  ],
+  "cases": [
+    {"id":"ja-loose-min","lang":"ja","lineBreak":"loose","track":"min-content","breakAfterPrefix":true,"unbreakableSegmentsPx":[10,10,10],"usedColumnPx":10,"autoRowPx":30},
+    {"id":"ja-loose-max","lang":"ja","lineBreak":"loose","track":"max-content","breakAfterPrefix":true,"usedColumnPx":30,"autoRowPx":10},
+    {"id":"en-loose-min","lang":"en","lineBreak":"loose","track":"min-content","breakAfterPrefix":false,"unbreakableSegmentsPx":[10,20],"usedColumnPx":20,"autoRowPx":20},
+    {"id":"ja-normal-min","lang":"ja","lineBreak":"normal","track":"min-content","breakAfterPrefix":false,"unbreakableSegmentsPx":[10,20],"usedColumnPx":20,"autoRowPx":20}
+  ],
+  "tolerance": {"usedTrackPx": 0, "lineHeightPx": 0, "textMetricsPx": 0.05}
+}

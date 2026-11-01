@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text line-break loose precomparison</title>
+<style>
+  @font-face {
+    font-family: "Noto Fixture";
+    src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .case {
+    display: grid;
+    width: 120px;
+    grid-template-rows: auto;
+    align-content: start;
+    justify-content: start;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: 10px/10px "Noto Fixture";
+    white-space: normal;
+    word-break: normal;
+  }
+  .ja-loose-min {
+    grid-template-columns: min-content;
+    line-break: loose;
+  }
+  .ja-loose-max {
+    grid-template-columns: max-content;
+    line-break: loose;
+  }
+  .en-loose-min {
+    grid-template-columns: min-content;
+    line-break: loose;
+  }
+  .ja-normal-min {
+    grid-template-columns: min-content;
+    line-break: normal;
+  }
+</style>
+<div lang="ja" class="case ja-loose-min">文＄文</div>
+<div lang="ja" class="case ja-loose-max">文＄文</div>
+<div lang="en" class="case en-loose-min">文＄文</div>
+<div lang="ja" class="case ja-normal-min">文＄文</div>
