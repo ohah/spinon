@@ -1,0 +1,137 @@
+{
+  "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1133-negative-pair-two-axis-ios-simulator-20261101T055554422Z-f9734042",
+  "processId": 49374,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 64,
+    "renderTree": 13,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "two-axis-auto",
+      "css": [
+        5,
+        5
+      ],
+      "drawable": [
+        16,
+        16
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "two-axis-fixed-overflow",
+      "css": [
+        117,
+        10
+      ],
+      "drawable": [
+        352,
+        31
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "two-axis-equal",
+      "css": [
+        205,
+        5
+      ],
+      "drawable": [
+        616,
+        16
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "two-axis-reversed",
+      "css": [
+        5,
+        125
+      ],
+      "drawable": [
+        16,
+        376
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "columns-reversed",
+      "css": [
+        105,
+        125
+      ],
+      "drawable": [
+        316,
+        376
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "rows-reversed",
+      "css": [
+        205,
+        125
+      ],
+      "drawable": [
+        616,
+        376
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
