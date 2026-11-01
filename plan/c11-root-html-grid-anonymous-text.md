@@ -1,12 +1,12 @@
 # C11.1 parsed Root HTML 기본 Grid anonymous text 제한 구현 계획
 
-**상태:** 제한 구현 후보 PR #1011이 열려 있다. 기본 parsed Root HTML runtime 경로에 direct text `AB` 하나를 anonymous Grid item으로 배치·paint하는 변경과 Android API 37 ARM64 AVD/iOS Simulator 근거를 제출했다. 이 후보는 병합 및 상태 대장 완료 요건 전까지 미완료이며 C11.1·C11.4·C11과 공식 완료 `72/213`은 유지한다. main의 현재 동작은 여전히 비공백 Grid direct text를 `unsupported_root_html_grid_text_item`로 거부한다.
+**상태:** 제한 구현 PR [#1011](https://github.com/ohah/spinon/pull/1011)은 2026-11-01T23:22:20Z Rebase and merge로 병합됐다(merge SHA `40725c44d5cfe7ea187fe7731c47fed439c3b98f`). 기본 parsed Root HTML runtime 경로에서 direct text `AB` 하나를 anonymous Grid item으로 배치·paint하는 제한 지원과 Android API 37 ARM64 AVD/iOS Simulator 근거가 반영됐다. 이 slice는 C11.1·C11.4·C11 완료 요건을 충족하지 않으므로 공식 완료 `72/213`은 유지한다. 다른 Grid direct text 조합과 지원 밖 입력은 계속 fail-closed한다.
 
 **기준:** CSS Grid Layout Module Level 1 2025-03-26 CRD [§6 Grid Items](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#grid-items), [§8.5 Grid Item Placement Algorithm](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-placement-algo). 독립 입력, 예상값, Chrome 156 관측, 화면 및 hash는 [사전 비교 자료](../spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.md)에 고정한다.
 
 ## 현재 결손
 
-기본 parsed Root HTML tree 검증은 visible Grid direct child 중 비공백 text node를 scene publication 전에 거부한다. 현재 C11.4 layout collector는 anonymous Grid text paragraph/item을 만들 수 있지만 `allow_c11_4_anonymous_grid_text_items`라는 제한 profile gate로 호출된다. 이 계획은 C11.4 fixture gate를 임의로 켜서 우회하지 않는다. 기본 Root HTML 입력의 computed style, document identity와 revision을 유지하면서 renderer가 이해하는 text paragraph와 layout item을 안전하게 연결할 구현 경계를 먼저 확정한다.
+기본 parsed Root HTML 경로는 고정된 단일 direct text run `AB`만 지원하며, 다른 visible Grid direct child text 조합은 scene publication 전에 거부한다. C11.4 layout collector는 anonymous Grid text paragraph/item을 만들 수 있지만 `allow_c11_4_anonymous_grid_text_items`라는 제한 profile gate로 호출된다. 이 계획은 C11.4 fixture gate를 임의로 켜서 우회하지 않았다. Root HTML 입력의 computed style, document identity와 revision을 유지하면서 renderer가 이해하는 text paragraph와 layout item을 연결하는 경계를 이번 제한 slice에 반영했다.
 
 CSS Grid §6에 따르면 in-flow direct text sequence는 anonymous block-container grid item이 되고, 해당 sequence가 white-space 처리 후 whitespace만이면 렌더링하지 않는다. §8.5의 anonymous item은 항상 자동 배치된다. 기준 입력은 한 개 item과 definite fixed-px tracks뿐이므로 첫 row-major cell의 위치·크기를 CSS Grid cell geometry와 normal stretch 규칙으로 독립 계산할 수 있다.
 

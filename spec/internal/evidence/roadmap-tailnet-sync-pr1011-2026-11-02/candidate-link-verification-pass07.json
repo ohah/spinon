@@ -1,0 +1,58 @@
+{
+  "sourceHead": "40725c44d5cfe7ea187fe7731c47fed439c3b98f",
+  "generatedRouteCount": 16,
+  "checkedRoadmapLocalRouteCount": 6,
+  "officialC11Checkboxes": {
+    "C11": "unchecked",
+    "C11_2_2": "checked",
+    "C11_2_3": "checked",
+    "C11_3": "unchecked",
+    "C11_4": "unchecked"
+  },
+  "officialCount": "72/213",
+  "fullDocsDeadLinkCheck": false,
+  "candidateRoutes": [
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "resolvedFrom": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/android-avd/c11-root-html-grid-anonymous-text.png",
+      "bytes": 26520,
+      "sha256": "8bb5c983e86fcbe17ac36745e9a4ea589cc7a71905922159a9daa1c49db660f0"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "resolvedFrom": "spec/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/ios-simulator/c11-root-html-grid-anonymous-text.png",
+      "bytes": 78002,
+      "sha256": "55a8d56e0b2b134c23bbedd1267448d495f8a489cda4298782634e34edfac84c"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "route": "internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "resolvedFrom": "build/spinon/roadmap-tailnet-sync-pr1011-20261102/pass07/site/internal/evidence/c11-root-html-grid-anonymous-text-implementation-2026-11-02/README.html",
+      "bytes": 42835,
+      "sha256": "dbd45f7993463435ca9c9fbcb8417c2c2ffe68f901e94bae6435346c0c71e18e"
+    },
+    {
+      "href": "/spinon/plan/c11-root-html-grid-anonymous-text.html",
+      "route": "plan/c11-root-html-grid-anonymous-text.html",
+      "resolvedFrom": "build/spinon/roadmap-tailnet-sync-pr1011-20261102/pass07/site/plan/c11-root-html-grid-anonymous-text.html",
+      "bytes": 42631,
+      "sha256": "a175e944be10d1739ee1b0805e48620d6c2d4703a0624fe5bc48933483a992b1"
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "resolvedFrom": "build/spinon/roadmap-tailnet-sync-pr1011-20261102/pass07/site/internal/evidence/roadmap-tailnet-sync-pr1011-2026-11-02/roadmap-pr-diff-review-30.html",
+      "bytes": 35819,
+      "sha256": "347f7f832ec7606b1bdc5c221844aaa43705d1280e0c16ecc3fb57a1d11d6021"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "resolvedFrom": "build/spinon/roadmap-tailnet-sync-pr1011-20261102/pass07/site/STATUS.html",
+      "bytes": 749895,
+      "sha256": "148012144318464515b602ed8188f2aefbeadd25d5d839aa13ecb43d48b2d3cc"
+    }
+  ]
+}
