@@ -3,6 +3,7 @@
     "cssText": "CSS Text Level 3 CRD 2026-08-14 section 2.1 text-transform",
     "unicode": "Unicode 17.0.0 UnicodeData.txt compatibility decomposition tags <wide>",
     "fontMetrics": "Chrome 156 literal candidate spans and candidate min-content Grid tracks; not a Chrome text-transform oracle",
+    "candidateComputedWordBreak": "normal",
     "font": "Noto Sans KR variable, wght=400, 10 CSS px",
     "toleranceCssPx": 0.03125
   },
@@ -35,7 +36,8 @@
       "computedTextTransform": "full-width",
       "expectedLayoutText": "ＡＢ　１２",
       "expectedTrackWidthCssPx": 20,
-      "expectedLines": 2
+      "expectedLines": 2,
+      "candidateComputedWordBreak": "normal"
     },
     {
       "id": "full-width-collapsed-spaces",
