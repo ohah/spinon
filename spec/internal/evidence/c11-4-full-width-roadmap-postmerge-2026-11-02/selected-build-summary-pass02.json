@@ -1,0 +1,19 @@
+{
+  "pass": 2,
+  "sourceHead": "c2a30611244a9bb2d73ff135387157d5fe92109c",
+  "sourceTree": "a36d01a7f805948ff5cee68276ee2d153e15ecd0",
+  "command": "mise exec -- bun run docs:build --config <absolute path to rspress-pass02.config.ts>",
+  "exitCode": 0,
+  "rspressVersion": "2.0.22",
+  "elapsedSecondsReportedByRspress": 2.01,
+  "buildScope": "selected documentation root only",
+  "deadLinkCheck": false,
+  "deadImageCheck": false,
+  "sitePath": "build/spinon/roadmap-tailnet-sync-c11-4-full-width-postmerge-2026-11-02/pass02/site",
+  "publicationPath": "build/spinon/roadmap-tailnet-sync-c11-4-full-width-postmerge-2026-11-02/pass02/publication",
+  "previousRouteCount": 1253,
+  "routeCount": 1463,
+  "addedRoutes": 210,
+  "changedRoutesAgainstPriorPublication": 296,
+  "noDeletes": true
+}

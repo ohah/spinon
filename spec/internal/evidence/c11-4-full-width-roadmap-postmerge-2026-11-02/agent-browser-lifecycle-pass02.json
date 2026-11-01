@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-11-01T18:20:54.359Z",
+  "session": "spinon-tailnet-roadmap-final",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "sessionClosed": true,
+  "processQuery": "pgrep -fl [a]gent-browser-darwin-arm64|[a]gent-browser-chrome|[t]erminal-browser",
+  "matchingBrowserProcessCount": 0,
+  "matchingBrowserProcesses": [],
+  "desktop": {
+    "viewport": "1440x1000",
+    "screenshot": {
+      "file": "tailnet-roadmap-agent-browser-desktop-pass02.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 493240,
+      "sha256": "103a9efdea1074776addc88158ad3622e7db68129fbb9c94d0acadf500efc095"
+    },
+    "pageMarkers": [
+      "PR #995 Rebase and merge",
+      "772df994a5fba4aa8d405b3f42792c281150f88c",
+      "72/213"
+    ],
+    "pageBodyWidth": 1440,
+    "documentWidth": 1440
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "screenshot": {
+      "file": "tailnet-roadmap-agent-browser-mobile-pass02.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 172823,
+      "sha256": "9f67df96237f39a9250d6b2636550abee56db93b83371a24652e9a36d4a4ce4c"
+    },
+    "pageBodyWidth": 390,
+    "documentWidth": 390
+  },
+  "previewPid": 28040,
+  "serverRestarted": false
+}
