@@ -32,6 +32,7 @@ impl LayoutInput {
                 inline_run_styles: Some(text_styles.inline_runs),
                 ignore_collapsible_whitespace_text: true,
                 allow_c11_4_anonymous_grid_text_items: true,
+                allow_root_html_default_grid_text_items: false,
             },
         )
     }

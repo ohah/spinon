@@ -107,6 +107,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare_text_owners(
         inline_run_styles: BTreeMap::new(),
         engine: engine.clone(),
         style_colors,
+        text_style_owners: BTreeMap::new(),
         node_handles,
         device_scale_factor: styles.viewport.device_scale_factor,
     })

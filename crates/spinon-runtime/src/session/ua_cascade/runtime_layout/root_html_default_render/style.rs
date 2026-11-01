@@ -38,6 +38,54 @@ pub(super) fn paragraph_style(
     })
 }
 
+pub(super) fn root_html_grid_text_paragraph_style(
+    style: &ComputedElementStyle,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    let paragraph = paragraph_style(style)?;
+    require_property(style, "font-family", &["monospace"])?;
+    require_property(style, "font-style", &["normal"])?;
+    require_property(style, "font-weight", &["400"])?;
+    require_property(style, "line-height", &["20px"])?;
+    require_property(style, "text-align", &["start"])?;
+    require_property(style, "white-space-collapse", &["collapse"])?;
+    require_property(style, "text-wrap-mode", &["wrap"])?;
+    if style.font_size_css_px != 16.0 {
+        return Err(unsupported_style(
+            style.node_id,
+            "font-size",
+            &format!("{}px", style.font_size_css_px),
+        ));
+    }
+    if paragraph.white_space != WhiteSpaceMode::Normal
+        || paragraph.direction != TextParagraphDirection::Ltr
+        || paragraph.word_break != WordBreakMode::Normal
+        || paragraph.line_height_is_normal
+        || paragraph.line_height != 20.0
+    {
+        return Err(unsupported_style(
+            style.node_id,
+            "text-style",
+            "requires white-space:normal, ltr, word-break:normal, and line-height:20px",
+        ));
+    }
+    let expected_color = RuntimeSrgbColor::new(229.0 / 255.0, 72.0 / 255.0, 77.0 / 255.0, 1.0)
+        .map_err(|error| {
+            layout_failure(
+                "root_html_default_render_color_invalid",
+                Some(style.node_id.get()),
+                Some(error.to_string()),
+            )
+        })?;
+    if runtime_text_color(style)? != expected_color {
+        return Err(unsupported_style(
+            style.node_id,
+            "color",
+            "requires #e5484d",
+        ));
+    }
+    Ok(paragraph)
+}
+
 pub(super) fn inline_run_style(
     style: &ComputedElementStyle,
 ) -> Result<InlineRunStyle, RuntimeLayoutFailure> {

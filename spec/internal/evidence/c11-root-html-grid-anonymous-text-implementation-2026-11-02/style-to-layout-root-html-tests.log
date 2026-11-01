@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 2 tests
+test projection::style_values::root_html_grid_gap_tests::root_html_grid_gap_admits_only_finite_nonnegative_px_or_normal ... ok
+test projection::style_values::grid_values::tests::root_html_named_area_projection_reports_line_and_area_allocation_failures ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 277 filtered out; finished in 0.01s

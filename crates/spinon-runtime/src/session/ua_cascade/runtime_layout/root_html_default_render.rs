@@ -28,8 +28,8 @@ pub(super) use self::fixture::{
 };
 
 use self::style::{
-    inline_run_style, paragraph_style, property, runtime_text_color, unsupported_style,
-    validate_frame,
+    inline_run_style, paragraph_style, property, root_html_grid_text_paragraph_style,
+    runtime_text_color, unsupported_style, validate_frame,
 };
 use self::tree::{collect_handles, validate_root, validate_visible_tree};
 
@@ -38,16 +38,26 @@ pub(super) struct Input {
     pub(super) inline_run_styles: BTreeMap<NodeId, InlineRunStyle>,
     pub(super) engine: TextLayoutEngine,
     style_colors: BTreeMap<NodeId, RuntimeSrgbColor>,
+    text_style_owners: BTreeMap<NodeId, NodeId>,
     node_handles: BTreeMap<NodeId, HostNodeHandle>,
     device_scale_factor: f32,
 }
 
+impl Input {
+    pub(super) fn anonymous_grid_text_nodes(&self) -> std::collections::BTreeSet<NodeId> {
+        self.text_style_owners.keys().copied().collect()
+    }
+}
+
 #[derive(Default)]
 struct OwnerText {
-    segments: Vec<(LayoutTextSnapshot, f32, f32)>,
+    frame: Option<(NodeId, spinon_layout::LayoutFrame)>,
+    segments: Vec<(NodeId, LayoutTextSnapshot, f32, f32)>,
 }
 
 struct PendingText {
+    origin_x_css_px: f32,
+    origin_y_css_px: f32,
     glyphs: Vec<RuntimeGlyphBitmap>,
     colors: Vec<RuntimeSrgbColor>,
     fallback_color: RuntimeSrgbColor,
@@ -90,11 +100,13 @@ pub(super) fn prepare(
     }
     validate_root(snapshot, root)?;
     let node_handles = collect_handles(snapshot, root)?;
-    let visible_elements = validate_visible_tree(snapshot, root, &style_by_node)?;
+    let (visible_elements, anonymous_grid_text) =
+        validate_visible_tree(snapshot, root, &style_by_node)?;
 
     let mut paragraph_styles = BTreeMap::new();
     let mut inline_run_styles = BTreeMap::new();
     let mut style_colors = BTreeMap::new();
+    let mut text_style_owners = BTreeMap::new();
     for style in styles.elements.iter() {
         if !visible_elements.contains(&style.node_id) {
             continue;
@@ -109,7 +121,24 @@ pub(super) fn prepare(
             "inline" => {
                 inline_run_styles.insert(style.node_id, inline_run_style(style)?);
             }
-            "grid" => {}
+            "grid" => {
+                if let Some(source) = anonymous_grid_text.get(&style.node_id) {
+                    paragraph_styles
+                        .insert(style.node_id, root_html_grid_text_paragraph_style(style)?);
+                    let color = style_colors[&style.node_id];
+                    if style_colors.insert(source.anchor, color).is_some()
+                        || text_style_owners
+                            .insert(source.anchor, style.node_id)
+                            .is_some()
+                    {
+                        return Err(layout_failure(
+                            "duplicate_root_html_default_render_text_owner",
+                            Some(source.anchor.get()),
+                            None,
+                        ));
+                    }
+                }
+            }
             _ => {
                 return Err(unsupported_style(style.node_id, "display", display));
             }
@@ -121,6 +150,7 @@ pub(super) fn prepare(
         inline_run_styles,
         engine: TextLayoutEngine::new_for_runtime(),
         style_colors,
+        text_style_owners,
         node_handles,
         device_scale_factor: styles.viewport.device_scale_factor,
     })
@@ -165,17 +195,50 @@ pub(super) fn attach(
         .map(|style| (style.node_id, style))
         .collect::<BTreeMap<_, _>>();
     let mut owner_text = BTreeMap::<NodeId, OwnerText>::new();
-    for (&owner, text) in &output.layout.text_layouts {
-        owner_text
-            .entry(owner)
-            .or_default()
+    for (&paragraph_owner, text) in &output.layout.text_layouts {
+        let render_owner = input
+            .text_style_owners
+            .get(&paragraph_owner)
+            .copied()
+            .unwrap_or(paragraph_owner);
+        let frame = *output.layout.frames.get(&paragraph_owner).ok_or_else(|| {
+            layout_failure(
+                "root_html_default_render_owner_frame_missing",
+                Some(paragraph_owner.get()),
+                None,
+            )
+        })?;
+        let owner_layouts = owner_text.entry(render_owner).or_default();
+        if owner_layouts
+            .frame
+            .replace((paragraph_owner, frame))
+            .is_some()
+        {
+            return Err(layout_failure(
+                "duplicate_root_html_default_render_text_owner",
+                Some(render_owner.get()),
+                None,
+            ));
+        }
+        owner_layouts
             .segments
-            .push((text.clone(), 0.0, 0.0));
+            .push((paragraph_owner, text.clone(), 0.0, 0.0));
     }
     for (&owner, segments) in &output.layout.text_flow_layouts {
         let owner_segments = owner_text.entry(owner).or_default();
+        if owner_segments.frame.is_none() {
+            let frame = *output.layout.frames.get(&owner).ok_or_else(|| {
+                layout_failure(
+                    "root_html_default_render_owner_frame_missing",
+                    Some(owner.get()),
+                    None,
+                )
+            })?;
+            owner_segments.frame = Some((owner, frame));
+        }
         for segment in segments {
             owner_segments.segments.push((
+                segment.snapshot.input.node,
                 segment.snapshot.clone(),
                 segment.frame.x,
                 segment.frame.y,
@@ -199,24 +262,26 @@ pub(super) fn attach(
                 None,
             )
         })?;
-        let frame = *output.layout.frames.get(&owner).ok_or_else(|| {
+        let (frame_owner, frame) = owner_layouts.frame.ok_or_else(|| {
             layout_failure(
                 "root_html_default_render_owner_frame_missing",
                 Some(owner.get()),
                 None,
             )
         })?;
-        validate_frame(frame, owner)?;
+        validate_frame(frame, frame_owner)?;
         let mut pending = PendingText {
+            origin_x_css_px: frame.x,
+            origin_y_css_px: frame.y,
             glyphs: Vec::new(),
             colors: Vec::new(),
             fallback_color,
         };
-        for (text, offset_x, offset_y) in owner_layouts.segments {
+        for (paragraph_owner, text, offset_x, offset_y) in owner_layouts.segments {
             validate_layout_text(
                 snapshot,
                 &input.node_handles,
-                owner,
+                paragraph_owner,
                 &text,
                 output.layout.revision,
             )?;
@@ -245,7 +310,7 @@ pub(super) fn attach(
                     )
                 })?;
             append_segment_glyphs(
-                owner,
+                paragraph_owner,
                 &raster_input,
                 &raster,
                 &input.style_colors,
@@ -273,23 +338,12 @@ pub(super) fn attach(
         let Some(pending) = pending_texts.remove(&render_box.node_id()) else {
             continue;
         };
-        let frame = *output
-            .layout
-            .frames
-            .get(&render_box.node_id())
-            .ok_or_else(|| {
-                layout_failure(
-                    "root_html_default_render_owner_frame_missing",
-                    Some(render_box.node_id().get()),
-                    None,
-                )
-            })?;
         let text_index = texts.len();
         let text = RuntimeRenderText::new_with_glyph_colors(
             render_box.node_id(),
             expected_key,
-            frame.x,
-            frame.y,
+            pending.origin_x_css_px,
+            pending.origin_y_css_px,
             input.device_scale_factor,
             pending.fallback_color,
             pending.colors,

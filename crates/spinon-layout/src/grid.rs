@@ -784,6 +784,15 @@ pub(super) fn validate_grid_layout(
                                 | crate::LayoutDimension::FitContent
                         )
                     });
+            let root_html_default_grid_text_item = matches!(
+                input.text_paragraphs.get(&child_id),
+                Some(crate::TextParagraphInput::AnonymousGridText {
+                    grid_container,
+                    root_html_default: true,
+                    ..
+                })
+                    if *grid_container == node.id
+            );
             let valid_c14_3_dimension = |size| {
                 matches!(
                     size,
@@ -808,70 +817,77 @@ pub(super) fn validate_grid_layout(
                         | crate::LayoutDimension::FitContent
                 )
             };
-            let valid_item_size = |size| match container.placement_mode {
-                GridPlacementMode::SparseRow
-                | GridPlacementMode::DenseAutoPlacement
-                | GridPlacementMode::TemplateGrid
-                | GridPlacementMode::TemplateGridImplicitTracks
-                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
-                | GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
-                | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
-                | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes
-                | GridPlacementMode::TemplateGridSignedImplicitTracks
-                    if normalized_grid.auto_placed_items.contains(&child_id) =>
+            let valid_item_size = |size| {
+                if root_html_default_grid_text_item && matches!(size, crate::LayoutDimension::Auto)
                 {
-                    matches!(size, crate::LayoutDimension::Fixed(_))
-                        || (c14_3_replaced_item && valid_c14_3_dimension(size))
+                    true
+                } else {
+                    match container.placement_mode {
+                        GridPlacementMode::SparseRow
+                        | GridPlacementMode::DenseAutoPlacement
+                        | GridPlacementMode::TemplateGrid
+                        | GridPlacementMode::TemplateGridImplicitTracks
+                        | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                        | GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
+                        | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
+                        | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes
+                        | GridPlacementMode::TemplateGridSignedImplicitTracks
+                            if normalized_grid.auto_placed_items.contains(&child_id) =>
+                        {
+                            matches!(size, crate::LayoutDimension::Fixed(_))
+                                || (c14_3_replaced_item && valid_c14_3_dimension(size))
+                        }
+                        GridPlacementMode::TrackSizing
+                            if normalized_grid.auto_placed_items.contains(&child_id) =>
+                        {
+                            valid_track_sizing_dimension(size)
+                        }
+                        GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
+                            if has_explicit_placement =>
+                        {
+                            matches!(
+                                size,
+                                crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                            )
+                        }
+                        GridPlacementMode::TrackSizing
+                            if !normalized_grid.auto_placed_items.contains(&child_id) =>
+                        {
+                            valid_track_sizing_dimension(size)
+                                || (c14_3_replaced_item && valid_c14_3_dimension(size))
+                        }
+                        GridPlacementMode::TemplateGrid
+                            if !normalized_grid.auto_placed_items.contains(&child_id) =>
+                        {
+                            matches!(
+                                size,
+                                crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                            ) || (c14_3_replaced_item && valid_c14_3_dimension(size))
+                        }
+                        GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {
+                            matches!(size, crate::LayoutDimension::Fixed(_))
+                        }
+                        GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks => {
+                            matches!(size, crate::LayoutDimension::Fixed(_))
+                        }
+                        GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks => {
+                            matches!(size, crate::LayoutDimension::Fixed(_))
+                        }
+                        GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes => {
+                            matches!(size, crate::LayoutDimension::Fixed(_))
+                        }
+                        GridPlacementMode::TemplateGridImplicitTracks
+                        | GridPlacementMode::TemplateGridSignedImplicitTracks
+                            if !normalized_grid.auto_placed_items.contains(&child_id) =>
+                        {
+                            matches!(
+                                size,
+                                crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                            )
+                        }
+                        _ => matches!(size, crate::LayoutDimension::Fixed(_)),
+                    }
                 }
-                GridPlacementMode::TrackSizing
-                    if normalized_grid.auto_placed_items.contains(&child_id) =>
-                {
-                    valid_track_sizing_dimension(size)
-                }
-                GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
-                    if has_explicit_placement =>
-                {
-                    matches!(
-                        size,
-                        crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
-                    )
-                }
-                GridPlacementMode::TrackSizing
-                    if !normalized_grid.auto_placed_items.contains(&child_id) =>
-                {
-                    valid_track_sizing_dimension(size)
-                        || (c14_3_replaced_item && valid_c14_3_dimension(size))
-                }
-                GridPlacementMode::TemplateGrid
-                    if !normalized_grid.auto_placed_items.contains(&child_id) =>
-                {
-                    matches!(
-                        size,
-                        crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
-                    ) || (c14_3_replaced_item && valid_c14_3_dimension(size))
-                }
-                GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {
-                    matches!(size, crate::LayoutDimension::Fixed(_))
-                }
-                GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks => {
-                    matches!(size, crate::LayoutDimension::Fixed(_))
-                }
-                GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks => {
-                    matches!(size, crate::LayoutDimension::Fixed(_))
-                }
-                GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes => {
-                    matches!(size, crate::LayoutDimension::Fixed(_))
-                }
-                GridPlacementMode::TemplateGridImplicitTracks
-                | GridPlacementMode::TemplateGridSignedImplicitTracks
-                    if !normalized_grid.auto_placed_items.contains(&child_id) =>
-                {
-                    matches!(
-                        size,
-                        crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
-                    )
-                }
-                _ => matches!(size, crate::LayoutDimension::Fixed(_)),
             };
             if !valid_item_size(child.style.width) || !valid_item_size(child.style.height) {
                 return Err(LayoutError::UnsupportedGridItemSize(child_id));

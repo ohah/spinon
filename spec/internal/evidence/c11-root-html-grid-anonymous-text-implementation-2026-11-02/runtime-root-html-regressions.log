@@ -1,0 +1,72 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 54 tests
+test root_html::environment::tests::color_scheme_tokens_are_case_insensitive_and_reject_unknown_values ... ok
+test root_html::environment::tests::opaque_body_background_propagates_when_html_background_is_transparent ... ok
+test root_html::environment::tests::mobile_default_matches_chrome_overview_viewport_and_keeps_page_scale_separate ... ok
+test host::document::root_html::tests::rejects_html_parser_profiles_that_cannot_be_mirrored ... ok
+test root_html::environment::tests::opaque_html_background_precedes_body_background_for_canvas ... ok
+test root_html::environment::tests::invalid_first_color_scheme_metadata_falls_back_to_light ... ok
+test root_html::environment::tests::first_color_scheme_element_wins_for_the_duplicate_fixture ... ok
+test root_html::environment::tests::invalid_surface_inputs_fail_before_creating_a_css_viewport ... ok
+test root_html::environment::tests::duplicate_color_scheme_metadata_is_detected_even_when_the_first_value_is_invalid ... ok
+test root_html::environment::tests::document_scheme_does_not_replace_os_prefers_color_scheme ... ok
+test root_html::environment::tests::device_width_metadata_matches_chrome_css_viewport ... ok
+test root_html::environment::tests::partial_alpha_is_rejected_only_when_it_is_a_canvas_background_candidate ... ok
+test root_html::environment::tests::last_viewport_element_matches_pinned_chrome_duplicate_fixture ... ok
+test root_html::environment::tests::root_canvas_scheme_rejects_unknown_computed_values ... ok
+test root_html::environment::tests::initial_scale_changes_layout_viewport_but_not_device_scale ... ok
+test root_html::environment::tests::root_canvas_scheme_uses_css_precedence_metadata_fallback_and_light_default ... ok
+test root_html::environment::tests::narrow_fixed_width_expands_to_the_mobile_screen_width ... ok
+test root_html::environment::tests::only_scheme_overrides_the_native_preference ... ok
+test host::document::root_html::tests::template_contents_do_not_become_visible_host_document_children ... ok
+test host::document::root_html::tests::imports_complete_html_document_tree_and_head_metadata_without_render_projection ... ok
+test root_html::environment::tests::transparent_html_and_body_backgrounds_use_the_selected_scheme_fallback ... ok
+test root_html::tests::html5_document_mode_inserts_html_head_and_body_and_recovers_misnested_markup ... ok
+test root_html::environment::tests::scale_two_keeps_layout_viewport_and_reports_smaller_visual_viewport ... ok
+test root_html::tests::html5_tree_foster_parents_table_text_before_the_table ... ok
+test root_html::tests::html5_tree_keeps_element_attribute_and_text_source_order ... ok
+test root_html::environment::tests::wide_fixed_width_uses_layout_aspect_ratio_and_keeps_visual_viewport_smaller ... ok
+test root_html::environment::tests::supported_scheme_list_selects_the_native_preference ... ok
+test session::tests::root_html_canvas_follows_os_only_when_root_css_and_single_meta_allow_it ... ok
+test session::tests::root_html_canvas_treats_zero_alpha_body_background_as_transparent ... ok
+test session::tests::root_html_canvas_uses_computed_root_scheme_and_exact_chrome_srgb_bytes ... ok
+test session::tests::root_html_canvas_propagates_body_color_from_stylesheet_and_custom_property ... ok
+test session::tests::root_html_canvas_rejects_duplicate_scheme_metadata_before_publishing_a_color ... ok
+test session::tests::root_html_canvas_prefers_opaque_html_background_then_propagates_body_background ... ok
+test session::tests::root_html_canvas_ignores_unsupported_body_alpha_when_opaque_html_wins ... ok
+test session::tests::root_html_canvas_recomputes_body_background_for_prefers_color_scheme ... ok
+test session::tests::root_html_environment_projects_viewport_and_os_scheme_into_css_cascade ... ok
+test session::tests::root_html_layout_media_queries_use_layout_height_not_visual_height ... ok
+test session::tests::root_html_session_imports_document_before_v8_worker_is_ready ... ok
+test session::ua_cascade::runtime_layout::root_html_default_render::style::tests::root_html_maps_pre_to_preserved_no_wrap_without_aliasing_neighbor_modes ... ok
+test session::tests::root_html_canvas_fails_closed_for_partial_alpha_and_background_images ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_keeps_mixed_and_out_of_scope_text_fail_closed ... ok
+test root_html::tests::html5_tree_rejects_quirks_mode_and_source_or_tree_budgets ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_omits_whitespace_only_grid_text ... ok
+test session::tests::root_html_grid_template_areas::c11_1_invalid_area_declaration_uses_css_cascade_fallback ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_renders_one_anonymous_grid_text_item ... ok
+test session::tests::c04_12_root_html_default_runtime_ignores_unsupported_styles_in_hidden_subtree ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_keeps_adjacent_text_sources_in_one_grid_item ... ok
+test session::tests::c04_12_root_html_default_runtime_paints_computed_block_and_inline_text ... ok
+test session::tests::root_html_grid_template_areas::c11_1_failed_new_environment_does_not_retain_a_stale_named_area_scene ... ok
+test session::tests::root_html_grid_template_areas::c11_1_default_root_html_runtime_places_semantic_named_areas_independent_of_source_order ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_projects_author_grid_tracks_and_auto_places_items ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_applies_fixed_px_grid_gaps ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs ... ok
+test session::tests::root_html_grid_template_areas::c11_1_default_root_html_runtime_rejects_out_of_scope_named_area_candidates ... ok
+
+test result: ok. 54 passed; 0 failed; 0 ignored; 0 measured; 149 filtered out; finished in 2.23s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

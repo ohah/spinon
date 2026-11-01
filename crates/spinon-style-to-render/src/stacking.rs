@@ -340,7 +340,12 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
             reserve,
         )?;
     }
-    validate_runtime_layout_nodes(&paint_nodes, &document_nodes, &output.layout.frames)?;
+    validate_runtime_layout_nodes(
+        &paint_nodes,
+        &document_nodes,
+        &output.layout.frames,
+        &BTreeSet::new(),
+    )?;
     let hit_test_order_by_node = if uses_overflow_clip_profile(styles.profile) {
         let mut hit_render_nodes = Vec::new();
         reserve.reserve(

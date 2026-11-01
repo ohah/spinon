@@ -9,6 +9,7 @@ pub(crate) enum TextParagraphInput {
     AnonymousGridText {
         grid_container: NodeId,
         paragraph: ParagraphInput,
+        root_html_default: bool,
         source_nodes: Vec<LayoutGridItemTextSource>,
     },
     Flow(TextFlowInput),

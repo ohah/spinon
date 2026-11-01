@@ -1,0 +1,6 @@
+11-02 08:04:19.643 I/SpinonBootstrap(12333): SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=787 script_bytes=250
+11-02 08:04:19.652 I/SpinonBootstrap(12333): SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+11-02 08:04:19.727 I/SpinonBootstrap(12333): SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=787
+11-02 08:04:19.771 I/SpinonBootstrap(12333): SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready status=0 layout=ready boxes=3 generation=2 document_revision=2 environment_revision=0
+11-02 08:04:20.228 I/SpinonBootstrap(12333): SPINON_C0410_DRAW status=0 presented boxes=3 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x70 runtime_image_count=0 image_draw_count=0 runtime_text_count=1 glyph_batch_draw_count=1
+11-02 08:04:20.228 I/SpinonBootstrap(12333): SPINON_C0410_DRAW generation=2 status=0 presented boxes=3 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x70 runtime_image_count=0 image_draw_count=0 runtime_text_count=1 glyph_batch_draw_count=1
