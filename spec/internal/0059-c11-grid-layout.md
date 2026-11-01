@@ -994,7 +994,9 @@ scene owner에는 정확히 하나의 unnamespaced HTML `lang` 값이 있어야 
 
 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 고정 5개 scene을 각각 5/5 통과했다. computed keyword·owner locale·font·revision, text intrinsic min/max inline/block, Columns/Rows 최종 track, root/item frame 및 runtime trace를 검사했다. [전체 logs·matrix·screenshots·hashes](evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md) · [기본/fixture FFI archive 경계](evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md).
 
-## C11.4 anonymous Grid text computed `line-break: loose` · 제한 opt-in 구현 후보
+## C11.4 anonymous Grid text computed `line-break: loose` · 제한 opt-in 구현 slice
+
+구현 PR [#962](https://github.com/ohah/spinon/pull/962)은 2026-11-01T02:41:05Z Rebase and merge됐고 merge SHA는 `5831014125e26079748f0b99cb99d3c21613358c`다. PR check run은 보고되지 않아 CI 성공으로 세지 않는다. 내부 계약 숫자 버전은 `0.1.0`을 유지한다.
 
 후속 후보는 동일한 fixture-test 경로의 `LineBreakMode::Loose`를 Parley 0.12.0 `LineBreak::Loose`에 연결한다. 입력은 Noto Sans KR 10px/400, LTR/horizontal writing, `line-height:10px`, normal whitespace/word-break, 120px Grid width이며 고정 source text `文＄文`이다. `lang=ja; line-break:loose` min-/max-content 두 scene, `lang=en; loose` min-content control, `lang=ja; normal` prefix control로 정확히 네 scene을 추가한다. Japanese loose min-content는 10px inline/30px block, English loose와 Japanese normal control은 20px/20px이며 loose max-content는 30px/10px다. 전체 9-scene 행렬은 [Chrome 156 및 독립 기대값 사전 비교](evidence/c11-4-anonymous-grid-text-line-break-loose-precomparison-2026-11-01/README.md)에 고정되어 있다.
 

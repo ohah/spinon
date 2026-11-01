@@ -34,5 +34,6 @@ Screenshots: [Android](android-avd/representative-screen.png) · [iOS](ios-simul
 - Default and fixture-test FFI archive comparison: [artifact boundary](artifact-boundary.md).
 - 구현/runtime 실패 관점 검토: [20개](implementation-runtime-review-20.md).
 - 최종 PR diff 실패 관점 검토: [30개](pr-diff-review-30.md).
+- 병합 후 상태·계획 diff 검토: [30개](post-merge-status-roadmap-review-30.md).
 
 이 근거는 해당 고정 fixture profile만 설명한다. 제품 일반 CSS cascade 지원이나 전체 C11.4/C11 완료를 주장하지 않는다.
