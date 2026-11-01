@@ -1032,6 +1032,16 @@ Screenshots는 Grid frame을 보여 주며 glyph rasterization이나 compositor 
 
 [PR #948 구현 diff 검토 30개](evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.md) · [병합 후 상태·로드맵 검토 30개](evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.md)
 
+## C11.4 anonymous Grid text computed `word-break: break-word` × `overflow-wrap` · 병합 제한 opt-in slice
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 구현 PR [#974](https://github.com/ohah/spinon/pull/974)은 2026-11-01T07:28:34Z Rebase and merge됐고 merge SHA는 `2700a8bfad05c1b8fc474603c58ae68c2dde3fb3`다. 적용 지점은 `c11-4-grid-track-sizing-fixture-test` opt-in stylesheet/inline parser와 기존 anonymous direct-text Grid fixture뿐이다. Stylo 0.22 Servo parser가 거부하는 literal `word-break: break-word` token만 같은 byte 길이의 `normal`로 바꿔 원문 source offset을 보존하고, winning declaration의 원문을 회수해 computed-style snapshot에 alias를 복원한다. specificity·source order·`!important`·inherit/unset과 `revert`/`revert-layer` rollback은 Stylo cascade priority를 따른다. 일반 author CSS와 `@layer` admission, custom-property substitution은 추가하지 않았다.
+
+고정 입력은 anonymous direct Text `XXXX`, Ahem 10px/400, 10px line-height, horizontal-tb/LTR, `white-space:normal`, 120px definite Grid width, 0 gap/edge다. `word-break:normal|break-word` × `overflow-wrap:normal|break-word|anywhere` × `min-content|max-content|10px` track의 18개 장면을 고정했다. `break-word`는 모든 overflow-wrap computed 값에서 `normal + anywhere`의 line-break와 min-content 효과를 내며, 실제 computed overflow-wrap 값은 computed-style과 trace에 유지한다.
+
+Android API 37.1 ARM64 16 KB SwiftShader AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 18/18 scene의 computed properties, owner/document/layout revision, paragraph locale/font/line metrics, intrinsic sizes 및 최종 Grid columns/rows를 통과했다. 설치 APK/executable hash는 빌드 artifact와 일치한다. Focused style cascade/alias 12개, combined runtime 5개, 기존 word-break 2개, overflow-wrap 2개, text-layout 8개, FFI dispatcher 1개, fixture boundary 31개와 scoped Clippy/rustfmt가 통과했다. GitHub PR checks는 보고되지 않아 CI 통과로 세지 않는다. [실행 logs·matrix·hash·한계](evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/README.md) · [구현/runtime 검토](evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/implementation-runtime-review-20.md) · [PR diff 검토](evidence/c11-4-anonymous-grid-text-word-break-break-word-runtime-2026-11-01/pr-diff-review-30.md).
+
+캡처 앱에서는 C15.3 glyph paint가 꺼져 있으므로 screenshot은 글자 픽셀 근거가 아니다. AVD는 SwiftShader software rendering이며 실기기/hardware GPU를 검증하지 않는다. 일반 CSS author admission, 임의 text/font/language/writing-mode, WPT, iOS compositor 이후 surface와 전체 C11.4/C11은 범위 밖이다. C11/C11.4 상태 체크와 공식 완료 `72/213`은 유지한다.
+
 ## C11.4 anonymous Grid text computed `text-transform` · 제한 opt-in runtime 후보
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 `c11-4-grid-track-sizing-fixture-test` anonymous direct-text Grid adapter는 exact Grid owner의 computed `text-transform:none|uppercase|lowercase`와 direct `lang="en"`을 검증한 뒤 `ParagraphStyle`과 intrinsic shaping text에 전달한다. Fixed Noto Sans KR 10px/400, LTR, `white-space:normal`, 원문 `IIII ii`, min-/max-content columns의 여섯 scene만 허용한다. style snapshot의 generation/document/render-tree revision이 HostDocument snapshot과 다르면 layout 전에 거부한다. Scene ID는 CSS value를 대신하지 않는다.
