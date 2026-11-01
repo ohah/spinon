@@ -1,0 +1,178 @@
+{
+  "sourceHead": "00f7f316abf515b21fca3b93ad2360b2c203a98f",
+  "publicationRoot": "build/spinon/roadmap-c11-plan-rollup-pr956-tailnet-20261101-pass02/publication-pass02/publication",
+  "pageCount": 2,
+  "c11OverviewLink": {
+    "page": "plan/c11-css-grid.html",
+    "route": "plan/c11-4-grid-track-sizing.html",
+    "bytes": 358040,
+    "sha256": "01e978915649365ea8a0a33b27280e1cb7b614774216cd450ddf4c3207544893"
+  },
+  "fullDocsDeadLinkCheck": false,
+  "checkedLinks": [
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "계획",
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "bytes": 53118,
+      "sha256": "9baf8ff5497b810914e48d11c90f2d0e62b63fd4a25660f3b12570c69529d292"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "Chrome 사전 비교",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "bytes": 47517,
+      "sha256": "25955ce3a3ce2cdd5ce98ec379656afd418caddc3a51ea8f1ec783257e58bad1"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "구현 근거",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "bytes": 51252,
+      "sha256": "dedd5e22a6e8dcfdd7a7b4a10dd34240ae24811ef737e0148d09c8cc43f318b8"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "실패 관점 20개",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 49188,
+      "sha256": "11ce022bd3534c42bfc2c21570c3949914ff8738888e20a3783066242dfa4f07"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "PR diff 검토 30개",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 60872,
+      "sha256": "9827ab079cab8a092b36567b1adfe2140095bf43cfb65ffcf48544a5bdd2c1a0"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "계획",
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "bytes": 52241,
+      "sha256": "51a76b66c2fe7afe4fcb4c41e7bc0066c530ea7fd92176b21ab1e013a0bd30af"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "Chrome·독립 기대값",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "bytes": 43847,
+      "sha256": "c5e69035e4cfb460891299d7747dfc496ab3c468cca4c623bd215e1e30690964"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "실행 근거",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "bytes": 53914,
+      "sha256": "76fe402f8a47c13c68cc191ff61064107ab1b0110be4ee3dd28ade1a7ad6f349"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "구현/runtime 검토 20개",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 50324,
+      "sha256": "7a2a148dba091bb0c0947d00f71deca2c670d1764ccfc60d259f585817b93779"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "PR diff 검토 30개",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 51762,
+      "sha256": "a47cfb4f2beb35402eac37407f83f3dd3fa66cc121003f4bd391ce17b14bf6d0"
+    },
+    {
+      "page": "plan/c11-4-grid-track-sizing.html",
+      "label": "이전 페이지C11.4 anonymous Grid text computed text-transform 제한 계획",
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "bytes": 53118,
+      "sha256": "9baf8ff5497b810914e48d11c90f2d0e62b63fd4a25660f3b12570c69529d292"
+    }
+  ],
+  "checkedLinkCount": 11,
+  "requiredRoutes": [
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "path": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "bytes": 52241,
+      "sha256": "51a76b66c2fe7afe4fcb4c41e7bc0066c530ea7fd92176b21ab1e013a0bd30af",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "bytes": 53118,
+      "sha256": "9baf8ff5497b810914e48d11c90f2d0e62b63fd4a25660f3b12570c69529d292",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "bytes": 43847,
+      "sha256": "c5e69035e4cfb460891299d7747dfc496ab3c468cca4c623bd215e1e30690964",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "bytes": 53914,
+      "sha256": "76fe402f8a47c13c68cc191ff61064107ab1b0110be4ee3dd28ade1a7ad6f349",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 50324,
+      "sha256": "7a2a148dba091bb0c0947d00f71deca2c670d1764ccfc60d259f585817b93779",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 51762,
+      "sha256": "a47cfb4f2beb35402eac37407f83f3dd3fa66cc121003f4bd391ce17b14bf6d0",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "bytes": 47517,
+      "sha256": "25955ce3a3ce2cdd5ce98ec379656afd418caddc3a51ea8f1ec783257e58bad1",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "bytes": 51252,
+      "sha256": "dedd5e22a6e8dcfdd7a7b4a10dd34240ae24811ef737e0148d09c8cc43f318b8",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "path": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "bytes": 44240,
+      "sha256": "4fe39a57d5f4f5f38a888899542f78c56d1e158c922b4b17f921f4d36d4cc3d2",
+      "source": "rspress:spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "kind": "generated-page-or-asset"
+    }
+  ],
+  "allCheckedLinksInPublication": true
+}

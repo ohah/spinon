@@ -1,0 +1,69 @@
+{
+  "sourceHead": "00f7f316abf515b21fca3b93ad2360b2c203a98f",
+  "sourceTree": "358534b97890729a501e35ba08435e181e129f12",
+  "tool": "Agent Browser",
+  "viewportChecks": [
+    {
+      "page": "C11 · CSS Grid 레이아웃 구현 계획",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-css-grid.html",
+      "width": 1280,
+      "height": 900,
+      "documentWidth": 1280,
+      "noHorizontalOverflow": true,
+      "markers": ["overflow-wrap", "text-transform", "PR #948", "PR #952", "72/213", "미완료"],
+      "screenshot": "c11-plan-desktop-agent-browser-pass02.png"
+    },
+    {
+      "page": "C11 · CSS Grid 레이아웃 구현 계획",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-css-grid.html",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "noHorizontalOverflow": true,
+      "markers": ["overflow-wrap", "text-transform", "PR #948", "PR #952", "72/213", "미완료"],
+      "screenshot": "c11-plan-mobile-agent-browser-pass03.png"
+    },
+    {
+      "page": "C11.4 · CSS Grid track sizing 계획",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "width": 1280,
+      "height": 900,
+      "documentWidth": 1280,
+      "noHorizontalOverflow": true,
+      "markers": ["overflow-wrap", "text-transform", "PR #948", "PR #952", "72/213", "미완료"],
+      "screenshot": "c114-plan-desktop-agent-browser-pass02.png"
+    },
+    {
+      "page": "C11.4 · CSS Grid track sizing 계획",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "noHorizontalOverflow": true,
+      "markers": ["overflow-wrap", "text-transform", "PR #948", "PR #952", "72/213", "미완료"],
+      "screenshot": "c114-plan-mobile-agent-browser-pass02.png"
+    }
+  ],
+  "linkNavigations": [
+    {
+      "from": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "title": "C11.4 anonymous Grid text computed overflow-wrap 제한 계획 - 스피논 문서",
+      "loaded": true
+    },
+    {
+      "from": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "href": "/spinon/spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "title": "C11.4 anonymous Grid text overflow-wrap runtime - 스피논 문서",
+      "loaded": true
+    }
+  ],
+  "focusedPlanLinkAudit": {
+    "manifest": "plan-link-route-audit-pass02.json",
+    "checkedC114Links": 11,
+    "c11OverviewDetailRouteIncluded": true,
+    "fullDocsDeadLinkCheck": false
+  },
+  "sessionsClosed": ["spinon-pr956-plan-rollup-20261101", "spinon-pr956-mobile-20261101"],
+  "noAgentBrowserExecutableRemains": true
+}
