@@ -1,0 +1,33 @@
+{
+  "tool": "Agent Browser 0.31.1",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "viewport": { "width": 1280, "height": 633 },
+      "documentWidth": 1280,
+      "markers": {
+        "pr959ImplementationVisible": true,
+        "mergeShaVisible": true,
+        "officialCount72of213Visible": true
+      },
+      "screenshot": "status-agent-browser.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "viewport": { "width": 1280, "height": 633 },
+      "documentWidth": 1280,
+      "markers": {
+        "pr959Visible": true,
+        "pr962Visible": true,
+        "officialCount72of213Visible": true,
+        "staleTextIndentPlanCandidateVisible": false
+      },
+      "screenshot": "roadmap-agent-browser.png"
+    }
+  ],
+  "agentBrowserClosed": true,
+  "noAgentBrowserProcessAfterClose": true,
+  "tailnetPreviewServerRestarted": false
+}

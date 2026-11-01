@@ -1,0 +1,16 @@
+{
+  "sourceHead": "359047a833132113bf4192b0340c1f8165602356",
+  "baseTree": "172a527bd6517cc8d9fbda0312861169377c5b9e",
+  "sourceStatusWorkingTreeSha256": "9eec08c3a8157e39abfb99ce9f0466b2c177f485cc8bb4ceb62df8ec228b55ce",
+  "previousSelectedRoot": "build/spinon/c11-4-loose-and-text-indent-flags-roadmap-pr964-pass01/root",
+  "selectedRoot": "build/spinon/c11-4-text-indent-status-sync-2026-11-01-pass02/root",
+  "previousFileCount": 434,
+  "fileCount": 434,
+  "overlays": [
+    "STATUS.md",
+    "spec/STATUS.md"
+  ],
+  "overlaySha256": "9eec08c3a8157e39abfb99ce9f0466b2c177f485cc8bb4ceb62df8ec228b55ce",
+  "noDeletes": true,
+  "noSymlinksAdded": true
+}

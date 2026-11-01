@@ -1,0 +1,965 @@
+{
+  "sourceHead": "359047a833132113bf4192b0340c1f8165602356",
+  "statusSha256": "9eec08c3a8157e39abfb99ce9f0466b2c177f485cc8bb4ceb62df8ec228b55ce",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-4-text-indent-status-sync-2026-11-01/pass01",
+  "routeCount": 160,
+  "createdCount": 72,
+  "replacedCount": 71,
+  "identicalCount": 16,
+  "preservedOpenCount": 1,
+  "noDeletes": true,
+  "serverRestarted": false,
+  "created": [
+    {
+      "route": "static/js/async/route-003f0c98c1e3.0195a42dda.js",
+      "bytes": 7112,
+      "sha256": "0f7b1f136f09b8ebba000259db5ff1272e099038a065d1e48057cdd777c3d2c4"
+    },
+    {
+      "route": "static/js/async/route-0079c1ca4523.dcd8fd28ed.js",
+      "bytes": 8348,
+      "sha256": "950bf825352babb9a3bccad91131a92923bcc132508e5834dadeddf88cf56b7d"
+    },
+    {
+      "route": "static/js/async/route-013658c76a8b.73328d5d40.js",
+      "bytes": 7534,
+      "sha256": "44488d85e66d71a3cc54039350a06a1f0c3ae41254db3dc7797160eb3506e855"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.cc6fb567e3.js",
+      "bytes": 336424,
+      "sha256": "bca0bc52c5cf082d0c6da4172a8c34977c96e575f67ddb49218b4a4f72e3c8d0"
+    },
+    {
+      "route": "static/js/async/route-14499f1c0ea4.f65cce8aac.js",
+      "bytes": 5343,
+      "sha256": "9c187e31cb156e6f8cf7e4415edf3a1332e81d4df82ee4e5d65b1d39112f874d"
+    },
+    {
+      "route": "static/js/async/route-1659ec5cb7a8.c39164d1d2.js",
+      "bytes": 5351,
+      "sha256": "e863517f2eff75293bb1f3f5abf9b34a6699f1563967f1cb2e5abe708d8eb367"
+    },
+    {
+      "route": "static/js/async/route-1ab31dc2f907.3df544210b.js",
+      "bytes": 14404,
+      "sha256": "5a24310b43dec2ea02f1791de79d4d58814717e6012345dec1b761c4dea55f19"
+    },
+    {
+      "route": "static/js/async/route-1c1635d141c0.2d6ad2e82f.js",
+      "bytes": 13414,
+      "sha256": "42535778d8ace4a150f40243e2fc16b42354e1cddeb567fdb0ff3b1d087b184c"
+    },
+    {
+      "route": "static/js/async/route-1ca3350ecc2f.4ea4c08cb4.js",
+      "bytes": 6844,
+      "sha256": "2ac52fb4866d917fc11522073be07da09898448d69844cbf74c2816d517986f4"
+    },
+    {
+      "route": "static/js/async/route-22ef5dd88c13.75430963ea.js",
+      "bytes": 10636,
+      "sha256": "323ab05b3c5b6c3d798206c569ebfbf2d5e105e4e23c4634d147c2c16d2d05d4"
+    },
+    {
+      "route": "static/js/async/route-284129ca16c3.bf58dc5cc7.js",
+      "bytes": 12818,
+      "sha256": "43e20759a564027b03f2f6c9c154798b946369ff195e08f33119caa50f26cf1a"
+    },
+    {
+      "route": "static/js/async/route-34a177c7b813.8d103221d9.js",
+      "bytes": 11393,
+      "sha256": "b6dbe1260d6813340a38415c86c382f0da900abe2ea87dc6cbf7aa349a5c1e00"
+    },
+    {
+      "route": "static/js/async/route-34cb20c5fb27.c9c29d8f1e.js",
+      "bytes": 11385,
+      "sha256": "0495925749cff218180527e57ec024768b6e762d871dfd929d69d3ee32376658"
+    },
+    {
+      "route": "static/js/async/route-361ac97b3c55.a2ddbf327c.js",
+      "bytes": 9236,
+      "sha256": "d6bb6e747c8eb04561c4cc4e7e0903ba94f660d191958d842aa88c20c2cd4f19"
+    },
+    {
+      "route": "static/js/async/route-3b382757bbb7.dbe8533d40.js",
+      "bytes": 6952,
+      "sha256": "4655f609f482229270e10d49276695452666c6f234aaf748f1d0e989b5f910c6"
+    },
+    {
+      "route": "static/js/async/route-3cfdf000abac.0efc7377ed.js",
+      "bytes": 6839,
+      "sha256": "019e3d4f40e306313c20de9f5071881c3738a7648ec0b2612d06ed6d046c45a4"
+    },
+    {
+      "route": "static/js/async/route-44c7add360ce.02a4c24c2b.js",
+      "bytes": 4312,
+      "sha256": "54303c078a3788c29d7a0d480c36b98c0dac82a290ffad1ecfbb3ec95941b344"
+    },
+    {
+      "route": "static/js/async/route-44f4d0c2cb7d.4cee05e35d.js",
+      "bytes": 7378,
+      "sha256": "040e27cc2be86368a22350670c49fbccaba932d566bb3c5e374c4bc5e230ae7d"
+    },
+    {
+      "route": "static/js/async/route-589115541021.fb3b83264e.js",
+      "bytes": 4029,
+      "sha256": "fb48041507f14371854433db71efba52b32fb0e7eec04eb681fb92ea2db2e03c"
+    },
+    {
+      "route": "static/js/async/route-5afd064101b5.5135f7abf0.js",
+      "bytes": 13352,
+      "sha256": "450d3f7bbba65a44bd7516febf9f7f20ddde892e74e2a7e7fdb822cdd9455c48"
+    },
+    {
+      "route": "static/js/async/route-60f0def4b8c9.ede91d1264.js",
+      "bytes": 12768,
+      "sha256": "cfd7e58a4de39154d081e44b04ac14ca31405b57ede57378e205313447eccb50"
+    },
+    {
+      "route": "static/js/async/route-655860cceddf.d221c643e3.js",
+      "bytes": 8039,
+      "sha256": "69f5104d49970374405a019d2a904bec66909692aa044fc5c6c581c0c66ec637"
+    },
+    {
+      "route": "static/js/async/route-6a090e83535d.4b2ce4c684.js",
+      "bytes": 13649,
+      "sha256": "5a59d03c25d1ff28d42f3690c61dc8b8e05dfd8d5b76860b0c6367283ca89765"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.f5c149760d.js",
+      "bytes": 772743,
+      "sha256": "eada910e5135d1f144d7d2b0371905bfe1cb3a4471d1852a8356aa8a4d93c5d7"
+    },
+    {
+      "route": "static/js/async/route-6d4726ac38ae.69306ed1fd.js",
+      "bytes": 10792,
+      "sha256": "291324c6c163df0eb33bce571027ebc10e846b74c5db3b5c1757770bbde4a546"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.7502bc662b.js",
+      "bytes": 441696,
+      "sha256": "e5246e7dd32bc63d23e27a7dd8bb56112ca52291ea1548b2cfd55dec09e7413a"
+    },
+    {
+      "route": "static/js/async/route-7742170544d9.3966fd4fbf.js",
+      "bytes": 14418,
+      "sha256": "03832e75140ad5f7341f8809c5f6f3efb22ebd99dcdf7322e8cb6219bd14383f"
+    },
+    {
+      "route": "static/js/async/route-7b04da4823b4.a57d774feb.js",
+      "bytes": 7248,
+      "sha256": "4ff26adfc214b95f17c9ee50305fe6c43bc7edfd7b29f4995a07b07a378a827b"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.b726ff910f.js",
+      "bytes": 772983,
+      "sha256": "bb8dd52a94a5ab402504a97ffed27520956c397f35e95e774d24c56210180a7a"
+    },
+    {
+      "route": "static/js/async/route-8119af4e97e9.ed8414b7f9.js",
+      "bytes": 11567,
+      "sha256": "87d500a6ca773a06b5109da131f27aa3275f6bf12e68dce7b4d448e7df154ced"
+    },
+    {
+      "route": "static/js/async/route-8402d6e9a6ae.418fe34805.js",
+      "bytes": 12606,
+      "sha256": "6b287171c26840c07777e6182c40cfa91bf25ba96651a036779cc890414c31dc"
+    },
+    {
+      "route": "static/js/async/route-847d9e1dd89c.2d99a04608.js",
+      "bytes": 10216,
+      "sha256": "a59dc9f0941a7ffa52a8cfbf2554fbe42b3b8001f4383f148443163a40d8c05e"
+    },
+    {
+      "route": "static/js/async/route-86b843f83433.7da2d254b9.js",
+      "bytes": 4099,
+      "sha256": "d2401d4a7d42ce5d59711a4624b40d5e5186187c9de2ce44f2f3bb555d9bd448"
+    },
+    {
+      "route": "static/js/async/route-8a2044aa7b16.3b880ae546.js",
+      "bytes": 12600,
+      "sha256": "5da7fe118e1983e8c681bf98d69bfb691c7dbef755c73730dce86c6fa0f4e751"
+    },
+    {
+      "route": "static/js/async/route-8a77fade6ec9.ad34bb0147.js",
+      "bytes": 9204,
+      "sha256": "b0d20bd4cbdb92360496da50cc4411a1a2dcef7a59ace6cc7c703895a7fa81ba"
+    },
+    {
+      "route": "static/js/async/route-8ed6f5111201.9936a9af86.js",
+      "bytes": 10840,
+      "sha256": "0d5c23ae9375e8830607d7f5ebd07be9ae430a49e79044727b85510e2089eb67"
+    },
+    {
+      "route": "static/js/async/route-8fdbe5732907.978d81c6da.js",
+      "bytes": 6499,
+      "sha256": "044a2425929fb7fb4a2d73c866dd55fb754414a09f1e88d1da441c81d458ed71"
+    },
+    {
+      "route": "static/js/async/route-9af52d4674ec.5fda62f7f4.js",
+      "bytes": 7255,
+      "sha256": "d62a598da0dfb3ef4129442b138c734e4d86b9d677f728281781a89fa6a777f8"
+    },
+    {
+      "route": "static/js/async/route-a00a11912515.c256bab31c.js",
+      "bytes": 15968,
+      "sha256": "c5fa721f93f9a522ac2d381cd85b4db95675e2c90fa28396a1deeb15007084cc"
+    },
+    {
+      "route": "static/js/async/route-a0802050f513.dab9f93511.js",
+      "bytes": 10798,
+      "sha256": "99e792fb13a865eb20a26fa16b822a473f68b1111d7ab0910af68b37c884ae09"
+    },
+    {
+      "route": "static/js/async/route-a3c91a808ffa.b6a18dbd9e.js",
+      "bytes": 9578,
+      "sha256": "0183cbd8f17e7493b72f25f48bb2360dc165e0342ae69a0b04c1aedef0eb3bbb"
+    },
+    {
+      "route": "static/js/async/route-a67b9d611648.c10d1027dd.js",
+      "bytes": 4090,
+      "sha256": "d759e85410ea16132b9d5c0ded52fc5e381cc40bec1e804edfe58523fa8af5b5"
+    },
+    {
+      "route": "static/js/async/route-a9b4f39531df.c168236e75.js",
+      "bytes": 16970,
+      "sha256": "0129bd4c05b354c9921bfd316e74cb14dcdf1d4b1f6aa349eabf8dd5131992c5"
+    },
+    {
+      "route": "static/js/async/route-ae32519c848b.b6cc1583a7.js",
+      "bytes": 15975,
+      "sha256": "d01591ea8550ce24669fcc5991175a3455d1857851d093f6253a8f25972d645f"
+    },
+    {
+      "route": "static/js/async/route-ae839aad1ef6.9fb0bc0d7e.js",
+      "bytes": 12843,
+      "sha256": "f0a3ebc02844b8749ee79ab7e5baa86c33ef3c96ae0f05009c0876d96f86ef72"
+    },
+    {
+      "route": "static/js/async/route-b4a0baa89902.42bd1a6d91.js",
+      "bytes": 15349,
+      "sha256": "c9bc548eaeda062fa2619f6907dc764b03b802c1915d638f76e80b364c28af08"
+    },
+    {
+      "route": "static/js/async/route-b91c128b1ebb.5a45261310.js",
+      "bytes": 10643,
+      "sha256": "83b531927a3496c6b1df7d114dcdbd658e11d4bf80654da9b504acce692de8d9"
+    },
+    {
+      "route": "static/js/async/route-bcb4ac56e16a.46ffa8b95c.js",
+      "bytes": 11485,
+      "sha256": "936edff2a08ab1136940c2b652f356434102e64e47bb7c673e4762d9b297b2ec"
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.c89a8767ef.js",
+      "bytes": 42509,
+      "sha256": "74ad2ca1b2a27150ce253e47a9aefe25d32eeeb26a168fff4ee9cdd2eaf0a01f"
+    },
+    {
+      "route": "static/js/async/route-c3d8eee44843.63444aa64b.js",
+      "bytes": 6959,
+      "sha256": "4bf7b2442aefe3cba669f2025f93671f318fd41678a174e3138ef9b3559562a6"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.c319f32500.js",
+      "bytes": 441595,
+      "sha256": "e8ec50b052bdf872b2626489d9fd3aee611f5f75c489bcfabf7558712088fdf0"
+    },
+    {
+      "route": "static/js/async/route-ce32ff31d344.8fe7eaf1ba.js",
+      "bytes": 12745,
+      "sha256": "d937dc7c39b9805163e81c3cbf92b5dc9034a8641492d3309af57009d48549e8"
+    },
+    {
+      "route": "static/js/async/route-ce3a879afc92.0678a2625a.js",
+      "bytes": 12845,
+      "sha256": "d1d25f8be454fe80ef08ec528534440436e8e4d495870a944b35149e0e52dd96"
+    },
+    {
+      "route": "static/js/async/route-d1ed533e4943.c94b7463d4.js",
+      "bytes": 11491,
+      "sha256": "8d4f5308fde4595a81b37bc553f3899546f8e1862ffd6e9b9c081565ae30e7b6"
+    },
+    {
+      "route": "static/js/async/route-d53f6e9d0769.3846ba99a5.js",
+      "bytes": 4316,
+      "sha256": "ed92455c17f8f16924d3142a62a1e622c84aa09ae6c0b6cfa3c87c99dd50fb49"
+    },
+    {
+      "route": "static/js/async/route-dddc5f2ee74d.ca18ab1d66.js",
+      "bytes": 13453,
+      "sha256": "add5788dc09b853161bb04a361342c7315898c111ce2ea3e3f72df59ca248302"
+    },
+    {
+      "route": "static/js/async/route-e4cce4689874.fc85c70ed3.js",
+      "bytes": 9587,
+      "sha256": "b625dc201bc2e9cef37a7615aeb5016c3bbc5cceaccad3a613b103a0e0083794"
+    },
+    {
+      "route": "static/js/async/route-e98914a747d5.2b8bcb8fa8.js",
+      "bytes": 11558,
+      "sha256": "480179a9470c2a1b82847a9d866cf9e2d4df204be6a97e7ee8e1de06939e3180"
+    },
+    {
+      "route": "static/js/async/route-ec2b50c9c7c6.1b33dfc867.js",
+      "bytes": 7372,
+      "sha256": "618c67c90fc3012844de3f08cc3309ac656b829032441eff8a93aa8b40d86c11"
+    },
+    {
+      "route": "static/js/async/route-ecca6d672752.78cf9bdc44.js",
+      "bytes": 16953,
+      "sha256": "322bcc7030ba9298ea4640dd390f298b98de821b0e626fa2272bba88f80680de"
+    },
+    {
+      "route": "static/js/async/route-ee5f4696c81a.1badff376a.js",
+      "bytes": 4034,
+      "sha256": "8b4cfc0102fe65b448cd8140276b48344cfbc83c456e6321409bea126f721dab"
+    },
+    {
+      "route": "static/js/async/route-efa044be41cc.e616230e91.js",
+      "bytes": 12865,
+      "sha256": "0db614dc112adf9a604c7c054e8768cae39253b5799adab34f7e475e84ae1a0c"
+    },
+    {
+      "route": "static/js/async/route-f09538323dc1.62473fc491.js",
+      "bytes": 12812,
+      "sha256": "68e5cf2312ac58a0002ef44b833e40bf6400c0c7dbf3f4907b37cf4ad11db2ea"
+    },
+    {
+      "route": "static/js/async/route-f2402bd44c87.ced59f5de1.js",
+      "bytes": 6504,
+      "sha256": "206720ec89a9ec9a55e54951edf4c3760329df94612bbfe6485d2ec8dec952b8"
+    },
+    {
+      "route": "static/js/async/route-f25cd5897909.9754608023.js",
+      "bytes": 10788,
+      "sha256": "33ce20462dde3c1ecce835cc5b9f2b3b977161d98b4db6bda1c40ec404f32b31"
+    },
+    {
+      "route": "static/js/async/route-f2f694e5eb70.f9073f47a4.js",
+      "bytes": 11009,
+      "sha256": "af2cf0b9261d4bdd2cc224ac612cbed83e70d787a5008769a38054a616b32364"
+    },
+    {
+      "route": "static/js/async/route-f96368fa9f64.fa94f63ae5.js",
+      "bytes": 10846,
+      "sha256": "8ef01e03c697740e9dfac7ca5e30d9474dc5dbb0c86e510c43156a1d2b41aa5e"
+    },
+    {
+      "route": "static/js/async/route-fa59a7df8ad7.4ffc558ed1.js",
+      "bytes": 20058,
+      "sha256": "4ca13cdb3349f2710553849aa1b25e0a3da5a495ca3155c6d5ccbf7d457583ab"
+    },
+    {
+      "route": "static/js/async/route-fe27a6f2e475.3ba358d9c1.js",
+      "bytes": 8033,
+      "sha256": "f8b712794219f74e9f1fd156ad4172fd6ae186557e261235c596b9a39ff6b745"
+    },
+    {
+      "route": "static/js/async/route-fed032923ff3.ef15b35c4a.js",
+      "bytes": 11002,
+      "sha256": "4f89962abab367ca899d857b99e9dd1e156bfde80829496160c430f3952feb2d"
+    },
+    {
+      "route": "static/js/index.7b767a7d31.js",
+      "bytes": 224630,
+      "sha256": "7d91c3f1e310eade94a3552d6af02475f275b23b8014bf3d7533eeade91d8259"
+    },
+    {
+      "route": "static/search_index.ko.bb3f7a57.json",
+      "bytes": 2013288,
+      "sha256": "bb3f7a57bd046b78648f8d53e73e39ec77a97a1ad25bbddd174b19ab5da286af"
+    }
+  ],
+  "replaced": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 468999,
+      "sha256": "c966c91541dbadb9056752abce727d0bee8e3557ebc9eb25d0dec531a4245066",
+      "previousBytes": 468999,
+      "previousSha256": "6732744ca6fa8528347d9a7e1f6ee6be5681ccb136a1ebba6a437e4f4b405fa8"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.html",
+      "bytes": 63760,
+      "sha256": "291bb449e63380b19ac197cd67750ac01fe013c56793a69a3eed0d4c65866486",
+      "previousBytes": 63760,
+      "previousSha256": "6faae8bcfa01b42df49f80446a61b1eda55b920d3b178be25dea093be86e562a"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/artifact-boundary/README.html",
+      "bytes": 66543,
+      "sha256": "9b724f52eaeb1b2176cd273652791466fcbac8b5e3c3065fab051738e8b1b22c",
+      "previousBytes": 66543,
+      "previousSha256": "db759fc069cf8986a060b88407aeb170481a97f8db8afdec229f57a08f1eeabd"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/post-merge-status-review-30.html",
+      "bytes": 65928,
+      "sha256": "6129a0be5ae702a5d7c3cef5f8a3b835b6da64dce73b933059e448f63d7eebff",
+      "previousBytes": 65928,
+      "previousSha256": "4df0fc79d123ae8aecb79e79b74899a1ca93ab30fd700271c8015701f3661179"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 69228,
+      "sha256": "ea21c3c4ac0d83e45776a19e71410fa73920cba82ad224f49dbf193d20c3b2e1",
+      "previousBytes": 69228,
+      "previousSha256": "1e4fcb7c0cb7e31f7ac12221f28c8e25e1832be81b7298d72f4af04d0208070b"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/README.html",
+      "bytes": 68134,
+      "sha256": "2a258e459cd9799bd9d716a7ed0179ed67590688b8e586684617a8f409aae220",
+      "previousBytes": 68134,
+      "previousSha256": "211c5caea6f34f00f1a426d20bff0dede471b91400bb4c82b5c96723a2f6a93a"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-loose-precomparison-2026-11-01/README.html",
+      "bytes": 63016,
+      "sha256": "f289aa290f9a6bd36b735b5312b3ad3a3039c27b08e83b8069f5166f0e5d2a03",
+      "previousBytes": 63016,
+      "previousSha256": "ab0a24bddbbfa17f6366ddbb9469ee433a5bf904d06084bf677c4853c127c8ce"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/artifact-boundary.html",
+      "bytes": 62851,
+      "sha256": "0eecf3b0244f33f6d4af5c8e3f35c89751d6fec99c589fb5ad5ae80de6956cd6",
+      "previousBytes": 62851,
+      "previousSha256": "f49367e5a957f7a748e89950db193bf8309a92e2e755a5dd7186c7d1d760a444"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 65884,
+      "sha256": "2ee34e34d6f1ceb0ee7d2ef50e333e1f9019770cda91298ccf6f878b0e239cdf",
+      "previousBytes": 65884,
+      "previousSha256": "b82c3aa30658522d596a2e05ba416cb9d7fad39d1ec53438648350d9f315e52d"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/post-merge-status-roadmap-review-30.html",
+      "bytes": 66166,
+      "sha256": "bd9bfdc7059d077e4e9d076332408d6db9a6952e9cf2a3a639b737dd8e457747",
+      "previousBytes": 66166,
+      "previousSha256": "b23b63e8e27d40d5d4b1ca0294bd3a93ed50577251bee2f58375bb4505a10819"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 67290,
+      "sha256": "1b240d3b569a2d737feaa996210f456dd30cd9bed92b598152b4153746200dc5",
+      "previousBytes": 67290,
+      "previousSha256": "1586fd6f51931f1becfd4e8a4385541dbbfcb0890cb6e9b943159a8a8af70c08"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/README.html",
+      "bytes": 65625,
+      "sha256": "8c346259a896dc204274374ab99d86b9a581360cf77ee6643f787a2b00d3b2e9",
+      "previousBytes": 65625,
+      "previousSha256": "fca6f1274325556c83c22917d497e377797ea7594259ce51a9edcf290aa0ac23"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "bytes": 62847,
+      "sha256": "f2064a4e97d65ad58402e7ef992df0057dc3f39edfa83a8438f056cb42c72da3",
+      "previousBytes": 62847,
+      "previousSha256": "9b8df0236ea2f9c9b11bae653dfda1a41c24d5f95bc3039b8ba04f5ebd26269d"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.html",
+      "bytes": 62867,
+      "sha256": "808cbbfbfa303ac5fe9c9859b2ef806248be54de35623122e81d125724d632b6",
+      "previousBytes": 62867,
+      "previousSha256": "d35331317d6480f505742b8cb703a4badf5a2d8fc023872d7bb3e50053cc3764"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 69216,
+      "sha256": "243ef13808e1c9ab9d55b87a515879a106c08889885853fad1f89075fc402596",
+      "previousBytes": 69216,
+      "previousSha256": "fc8e3476dd88d97998534a4c2d3f6a5964fc09bb563be1dbfee878f28bb18db9"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.html",
+      "bytes": 64862,
+      "sha256": "7f69f5f3830803249df495d5582b8fb7021eccd93edba3afaed384110ba6badb",
+      "previousBytes": 64862,
+      "previousSha256": "5659ec8762b3415a8c72f95c30bdb10bfcc6b63bd274417cdd8ab5c5714bee47"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 70669,
+      "sha256": "c887db241c67246c16848d5d46f920aeeeb6815f216fb3538315840f4a133b76",
+      "previousBytes": 70669,
+      "previousSha256": "5bd2c68acc1e5efe220ca6792b5eea601de860a108137d1ba96be145b3eaec7e"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "bytes": 72811,
+      "sha256": "4ad8b589dd21244312a7edc6e0f457d070bd0887749e7f67c19d31b9ab6043d2",
+      "previousBytes": 72811,
+      "previousSha256": "4286c8574031b0e44668c70e610b9e9d3092b64ee34c4f1e808d8ba427552cdf"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "bytes": 67174,
+      "sha256": "7c1c1e7356e961cc9253240645085201a8295a858b76f859149f550b6d0e81d2",
+      "previousBytes": 67174,
+      "previousSha256": "049b44229ad747898f171093143ec722de5964d5347f5d9eb4a7036ae5013a0c"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "bytes": 66424,
+      "sha256": "0af8e5c0b81b9175ae7d23bcf7091a05cda3d9ac7ab6f8a4f6679cdd6258b1e2",
+      "previousBytes": 66424,
+      "previousSha256": "f7204fa890fb2436c6a7a73c4fcfa0a8ac33d3a2172aa4e5f95a868bb676b86c"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 68087,
+      "sha256": "cca8adb1d096581700050df3e6dc9ec32af800871aa13d339151c8b539ed7834",
+      "previousBytes": 68087,
+      "previousSha256": "1218caa3b797d50584ab289cccb6d6deb18a36aba32a0eb3c3692b1d6d393fa0"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "bytes": 71583,
+      "sha256": "e848f91b716c871fae21492f47c5bf68e54661ff5fcb44614c643f3b88f7bc10",
+      "previousBytes": 71583,
+      "previousSha256": "9e73c5e24af9fcb307efdf949957abe7bd78da6d5d5c9b61ea2b11a5e9489d93"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 79779,
+      "sha256": "68301e2dc85b63600d8a7fd82a797221808197f4e20e0e52035107e02e5c8c15",
+      "previousBytes": 79779,
+      "previousSha256": "fa6a378d885fd9c74ba5890c8e90084eb01d4a075e61a41203b379402c327a51"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "bytes": 69521,
+      "sha256": "a120a3d1e32bd5ad5bdba3807701d458b9cf6e7ba28a09f1b2b22f277e204521",
+      "previousBytes": 69521,
+      "previousSha256": "0a7d4a1320581ae3569a50a9bf53c5f712365dc8316663a54760c449b58bd4c9"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "bytes": 70136,
+      "sha256": "8f47daf6878c29723030b2fdc60e25019165c5d3ae693219b017d36e52b4b563",
+      "previousBytes": 70136,
+      "previousSha256": "db13362e80660aed24541550c79f4b65734cae6561ea7f70f03f18fb206b380d"
+    },
+    {
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.html",
+      "bytes": 65555,
+      "sha256": "dba006a1524d6aab2005e37c48d90d6aa3f76e09046d15abf9237220020aea92",
+      "previousBytes": 65555,
+      "previousSha256": "06c6109cb9239f50edf8d398e92a070d8e6645960a98cc681191dc2ccc640ae4"
+    },
+    {
+      "route": "internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "bytes": 63251,
+      "sha256": "0e0b72a6fe212e28b27b8aad8195cf5f2ccebd6db57d9f781fe4715eec6eece2",
+      "previousBytes": 63251,
+      "previousSha256": "c94072ce9a45cb3b467803e0c4a75f537ba0a72a4e23bd8bf272b16bdaf0b901"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-pr-diff-review-30.html",
+      "bytes": 68006,
+      "sha256": "518c632076d9b550aed04d2ad9591910872192b94428ff6da5027a42d7f8d156",
+      "previousBytes": 68006,
+      "previousSha256": "002201e33144328390f6e508da43316d05f74f189f266db4a28e562bf8c45558"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap-plan-review-20.html",
+      "bytes": 66170,
+      "sha256": "093558c8354d6de023c9c7814232eac58afeaa660dc8cbb6ab9b2af4b755b2e6",
+      "previousBytes": 66170,
+      "previousSha256": "af5ef867550fa68af681efa3be5dda2a0aea4d50edf6629916857e03d068e17c"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-overflow-wrap.html",
+      "bytes": 71158,
+      "sha256": "f78ff142da155d6b707a37f5a095bc6b5d1787580a3f8928c757e94eab8ff72f",
+      "previousBytes": 71158,
+      "previousSha256": "ef605e17387396af2a725c5443b283e41284306593398fffefc9b4d0af7bb74d"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.html",
+      "bytes": 63527,
+      "sha256": "b80cda7b247b303e669ecac9edd134a4b08bf3e55b7114c0edf8ff2310318d6b",
+      "previousBytes": 63527,
+      "previousSha256": "55c8b1826574ca9c976ffd07387e6cc80ef995a1f9fdb6914924382bf8d71f77"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-text-transform.html",
+      "bytes": 72123,
+      "sha256": "fe0fdd4d3c86b4e68d5e30ed856da5cc2ace8b94c90ea247294cb7af5be78c32",
+      "previousBytes": 72123,
+      "previousSha256": "010f26714b4a8f5c0cff347ae311f580ab8319392ad6ea92d886402ee44390e0"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags-implementation-review-20.html",
+      "bytes": 68863,
+      "sha256": "16fb8a2614a5581b8f7b86fb12160b0b1f876f3fadbe50c18dd7cc42e1b637e5",
+      "previousBytes": 68863,
+      "previousSha256": "9aff01dec207c7e59d7d9e9b3ca43048c47b7ddf55870777d11a31f85312fdaf"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags-plan-pr-diff-review-30.html",
+      "bytes": 68058,
+      "sha256": "ee63031d3cfba479b7aa4d1c4760ae64b62350ea665f349cef1fa1659dd409b7",
+      "previousBytes": 68058,
+      "previousSha256": "2eef882b9e0e302ccee637cd067ddf07e37bd825dd569f1b3f2e27f8b3dace8e"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags-plan-review-20.html",
+      "bytes": 65619,
+      "sha256": "eba0f706aa14aced7045c698193153f440c8c16fde2c98c7dbbf0b9d83af544c",
+      "previousBytes": 65619,
+      "previousSha256": "9e3bdd63f8e19a7c3faf1a0c4c07dcc14e379aa663d0029c994bf6609cc475f9"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-indent-flags.html",
+      "bytes": 78887,
+      "sha256": "62a7be51208a8afdf490afc587327f9645ecd9cfec7fcf46d5bacacc6c9e0a27",
+      "previousBytes": 78887,
+      "previousSha256": "68e6de86c648f03aa81c736b746ea8f956d4fedb937644f408d6409ee86c1b49"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-line-break-loose-plan-pr-diff-review-30.html",
+      "bytes": 68777,
+      "sha256": "d7011c2bc88fb14149026e46e218efaca89032aab16caa21064df4b967670fd2",
+      "previousBytes": 68777,
+      "previousSha256": "b6d20afaf940336219bdbe807f9ec16392f88601bcbb1eacf74e5f023cfdf350"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-line-break-loose-plan-review-20.html",
+      "bytes": 69925,
+      "sha256": "419e5e72a9f8a5785651bce149909beb4cef4860b9294e193b32693df89cf82f",
+      "previousBytes": 69925,
+      "previousSha256": "cc1dad2ea518a491c29ec38f671019976151f0b8f45c24c7024185187b5122d1"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-line-break-loose.html",
+      "bytes": 72569,
+      "sha256": "3fe9e4c2ebfb22522c0418865bf7fe6d6a3e96cdea96638fcd8ba5a4016d4a77",
+      "previousBytes": 72569,
+      "previousSha256": "9c80a7ea31bfb50266f2e95710fe370a6670fc564aa2a3c56fe6bec0d5543794"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 381670,
+      "sha256": "912a8925e5ce7b84cbcfb3e881a5e2130a365367cc97760623fdc119bbd61ddd",
+      "previousBytes": 381670,
+      "previousSha256": "f0cba29997d588ce18e80a17ffc60ad0f8a28bf4cb7b2b15c456c3e6bc50a0e2"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "bytes": 98327,
+      "sha256": "0e17ded404a2c1c0f0fdd5b79172652ae1edb01ed36e0e4853784804f94f0d04",
+      "previousBytes": 98327,
+      "previousSha256": "9ff5084716e0038072770f39b513f2222005467e5dd84f554fc34e5bdc61530b"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 469566,
+      "sha256": "d023f4668f3ac6a079685418977e02e06ae6849e2c114de748e4597454e76c27",
+      "previousBytes": 469566,
+      "previousSha256": "57650800aba1b8a8e31b14538bdf126610d2302a571eca239c86a76079679727"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.html",
+      "bytes": 63770,
+      "sha256": "84333724eabce436139b8f77230a7b6fe18e01b32913c42718c41ddd556f75d6",
+      "previousBytes": 63770,
+      "previousSha256": "3f9ac3ec814cdbdf161fd1ddb7763dd97daff5e3222834e02e4e5da4628afab8"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/artifact-boundary/README.html",
+      "bytes": 66553,
+      "sha256": "efcb4a280edf97d79ef5783e3ddae582b0c3094d7471a4d43363096645104ea4",
+      "previousBytes": 66553,
+      "previousSha256": "abf96043489c998f2cf284d2a7744b4f37d44f45a6c72a64f6ab679cf46aa63c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/post-merge-status-review-30.html",
+      "bytes": 65938,
+      "sha256": "06462feca5dfbf2a1cdd967a2764d4d0eab926b432fe502601bb2937698f38f9",
+      "previousBytes": 65938,
+      "previousSha256": "fffbd1b4a444aa6f67e37a987cea6392d99b681e5e824bab1848ae32c193f49b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 69243,
+      "sha256": "98b4540b33e9a527af0a47d33f28b4b482d9d1dbbb38310a387f197a8963cdfa",
+      "previousBytes": 69243,
+      "previousSha256": "29adbacf1f79b8be658127c4a1f7ba73feb7575f43b543c1f9dbe88c5b7b05b6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-precomparison-2026-11-01/README.html",
+      "bytes": 63026,
+      "sha256": "0578803df491620b2012e76f1c99802bb0095ee44f31c07bec5a91ffe3da70d4",
+      "previousBytes": 63026,
+      "previousSha256": "372fbaccbe8436932d387945d3c17436a7a3ef0e6caa46edc4944f4d2bc1e1cc"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/artifact-boundary.html",
+      "bytes": 62861,
+      "sha256": "af7d319eb947c1887788d24338c75c0aa389e1d6f034beebd63138d250f8fa99",
+      "previousBytes": 62861,
+      "previousSha256": "6f4ac7c0ecb17f21b016eb974b0a75a402dfb373ba77d07050603f9832bd56bd"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 65894,
+      "sha256": "5a2bccfeb7e898a0a7d2fc7b6b5712dcda1440a7584cc6907dc9701276f46196",
+      "previousBytes": 65894,
+      "previousSha256": "81a168347a42c812b7cad847d0e76e23c6260cd863be5063f70fb47fb3d0f990"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/post-merge-status-roadmap-review-30.html",
+      "bytes": 66176,
+      "sha256": "84d3ad5c1ebe112db3cbc58a4fa5c4275b0091f0c69fc8cb28a66d076090fbdb",
+      "previousBytes": 66176,
+      "previousSha256": "f03396026fe71a755d6aa25ce64fe8cb1d71f61e41011dddedcc2c9b1b78b7ad"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 67300,
+      "sha256": "b5deed9cf69489235ae5373d2b224e8c22351cb2fa9832986e92f361f77b9801",
+      "previousBytes": 67300,
+      "previousSha256": "454060a9a3a0a5e7d684d546b5a6155b89a9fb3918b78a6c2ca71b78628017ee"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-loose-runtime-2026-11-01/README.html",
+      "bytes": 65660,
+      "sha256": "075a32c3014dc4d1fbf9f84630ba57f4bdcd1188f33cdc57b8f5f25c37a71306",
+      "previousBytes": 65660,
+      "previousSha256": "d1cdec39f005ce1831bce000bb5b89b12ee51ef72255e1852b6a6ec2223270b6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.html",
+      "bytes": 62857,
+      "sha256": "4cca2fdedd9acad3042057f9e493e0eb19c44b7e640480fc0cf13d26787df5b7",
+      "previousBytes": 62857,
+      "previousSha256": "5c5c94bdd5bd8d6c944ad5f70b71c838dcf7f31ac757fc2689f59124565d4b9d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.html",
+      "bytes": 62882,
+      "sha256": "340380e34be7f4f4828d70dc56b0214e060013be72aa878def62779ddb74f82f",
+      "previousBytes": 62882,
+      "previousSha256": "2244c221cba15c3f838c2b9fd0e249281760af8bed3f0b5b87c4416fc7daf7cb"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 69241,
+      "sha256": "d4b2f558ea95f6890244965094ee972aa9052835af25d6de5edf7201fa428abc",
+      "previousBytes": 69241,
+      "previousSha256": "1647fb6dc3720ea1aa065a75e0d53c68c83aa631c340609447c6bcb7c25e7c83"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/post-merge-status-roadmap-review-30.html",
+      "bytes": 64872,
+      "sha256": "273dac10813a031075212a5fbf8e84b3f79bd09ffb8ac7edd5e7c515142bbbe9",
+      "previousBytes": 64872,
+      "previousSha256": "b241f55e95efaadb7c1022a93a40183ad101957bc58bb6262ecc616e7b09973c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 70679,
+      "sha256": "f7e268505050ab050e23039c9976cd9f1f8205878b390613ceae4e220fa46b44",
+      "previousBytes": 70679,
+      "previousSha256": "e8172bd7fcde8af1bf5eb0965007448baebc30757e7bec10b4d9d44403896e9c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.html",
+      "bytes": 72831,
+      "sha256": "5c07ce1ec9462000e5271bda839318bb262061729da6e7fc67764fc27ec8d76e",
+      "previousBytes": 72831,
+      "previousSha256": "608fc3d78d31af7aaeab49842f9ce3aeb94734d84ba83bb136b8dc166dea38ab"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/plan-pr-diff-review-30.html",
+      "bytes": 67184,
+      "sha256": "536856bb0abebde90cc824361bae36194f967d3e66aafc407a549091c8b9fd4f",
+      "previousBytes": 67184,
+      "previousSha256": "54e75dc61c053d114cba02e2198a41f4d19befa2c6af0d0f89a23f1ed9216183"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.html",
+      "bytes": 66434,
+      "sha256": "ee56081eba301cc436c2ae7f3f473874238c53793217449b76ee9b3ac80a1668",
+      "previousBytes": 66434,
+      "previousSha256": "59f174da53d7e19a83cd34ff58bec2d4cecb33d442bb90f06b2cafcb6456d15d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 68105,
+      "sha256": "7c5720bcc0030ecdf28027c708341e99c1eac070b828d5938a6735327457aa24",
+      "previousBytes": 68105,
+      "previousSha256": "b3aadc9ee492c43590d01983bf8e9d23d61946967770651e0c382224996f37a2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/post-merge-status-review-30.html",
+      "bytes": 71593,
+      "sha256": "6486395a4aa24b51c8016c0bc451560bcb8e812c87a2e3bf7d2edc0d089169cd",
+      "previousBytes": 71593,
+      "previousSha256": "2ea46591c500848fc549a3ef597bbb53fceb2a5d3891aceaf9f2711ab5ace4f7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 79789,
+      "sha256": "22f9a47a26011776b71b1b123126c8587a58ffc19e9e76197343ea0f022d37d9",
+      "previousBytes": 79789,
+      "previousSha256": "88e228b4de0a8b3c1c38ead579a7dea0f821a0bc08f7515bc9c47914c83ad75f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/public-roadmap-pr-diff-review-30.html",
+      "bytes": 69531,
+      "sha256": "0114f1c4122bd553009eeb14b23a711d971735d3cbd36e61da370845daae91df",
+      "previousBytes": 69531,
+      "previousSha256": "0e360411f57ea9a60c8d0fabc55a611fb63233182783dcfe3c7cdd5c79ad3bec"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.html",
+      "bytes": 70169,
+      "sha256": "93c55b6550b049932af72d29cb0a6aeeef6cda55668fc24e5f0a2d64359c8090",
+      "previousBytes": 70169,
+      "previousSha256": "e4a9f00740b0cda75bf5722df97c2db3616322317c07b55fdcdaaf64d61503b5"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/pr-diff-review-30.html",
+      "bytes": 65565,
+      "sha256": "9c8b1a942e9e717dd59bab0e328dd5e7138a7dfe0a9746d8f65d79520db3deb6",
+      "previousBytes": 65565,
+      "previousSha256": "1a4788c46e4277b9d1347ca5ecf9b1ddc8e037cdf3cac9dbfc5292b5562b539a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-plan-rollup-sync-pr952-2026-11-01/README.html",
+      "bytes": 63157,
+      "sha256": "c16fe230722fe878b7f600466019a7f1cdcf72f34790324deb548276a1eac449",
+      "previousBytes": 63157,
+      "previousSha256": "ff1a9f69104e9b8ef87fdaabac5405da552dc04d3b83f1edfaa0c42dab9f08f9"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 757716,
+      "sha256": "f41ce5eeb6db36039f2a1827328bdb97895dec3ae00c8336c17e6de3e46a0b5c",
+      "previousBytes": 756931,
+      "previousSha256": "09f9cd5f1df7c3febe57858ca10f711c308545530634066016687b21c1f74d8c"
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 756964,
+      "sha256": "6effae455b6e213f064693664802a0e5d0f1e191e760a6f933260ebac5f3aa67",
+      "previousBytes": 756182,
+      "previousSha256": "48f729ad43c4a4d026f5d8bdb21f4e4fea1e62834e268b15d183a0ca4e42e0ad"
+    },
+    {
+      "route": "STATUS.md",
+      "bytes": 584582,
+      "sha256": "9eec08c3a8157e39abfb99ce9f0466b2c177f485cc8bb4ceb62df8ec228b55ce",
+      "previousBytes": 583916,
+      "previousSha256": "ed7e8ba1b379bae101596d48632a88099593c1b852467102be5692cae8713668"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "bytes": 584582,
+      "sha256": "9eec08c3a8157e39abfb99ce9f0466b2c177f485cc8bb4ceb62df8ec228b55ce",
+      "previousBytes": 583916,
+      "previousSha256": "ed7e8ba1b379bae101596d48632a88099593c1b852467102be5692cae8713668"
+    }
+  ],
+  "identical": [
+    {
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/image/overflow-wrap-break-word-fixed-10px-screen.bcdb2e35d0.png",
+      "bytes": 142104,
+      "sha256": "cdfe84180fd746a0e173b2440cf49b9692b35efbbe4b663619418ab2b1eb6d4d"
+    },
+    {
+      "route": "static/image/overflow-wrap-break-word-fixed-10px-screen.e4483206d7.png",
+      "bytes": 76907,
+      "sha256": "d8f4e99b47870f75b43aaaa4a41cea01b774c49892fe39d346c4dd43d668fa49"
+    },
+    {
+      "route": "static/image/overflow-wrap-normal-fixed-10px-screen.10a2cd24cf.png",
+      "bytes": 76920,
+      "sha256": "064a95a489ed06e3cf4d0fe9669ef77e27e3c670ae12eab9c5ca9d82227a20b0"
+    },
+    {
+      "route": "static/image/overflow-wrap-normal-fixed-10px-screen.192645098d.png",
+      "bytes": 142059,
+      "sha256": "5df75eebddbbb8825f48ec8043caf54484636d1738b266635fd39abe00da6191"
+    },
+    {
+      "route": "static/image/representative-screen.721139421f.png",
+      "bytes": 78445,
+      "sha256": "879041c2d9f16655da5e3cf9466b87a78cb33392592d640e0134bfc6df2e8f9d"
+    },
+    {
+      "route": "static/image/representative-screen.b404e159c3.png",
+      "bytes": 142718,
+      "sha256": "9632a4265b7a38f47ca1d889cf498b8755e78441397caf71f0325c0907862984"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.aba03c5c90.js",
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5"
+    }
+  ],
+  "preservedOpen": [
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-indent-flags-runtime-2026-11-01/README.html",
+      "bytes": 68155,
+      "sha256": "56558558e0a2d8b5686ebccb58a7209e600f9bc78117c3d4bd644b011f3034d0",
+      "sourceSha256": "2dfec1aedde1891805f0218ec2fa8c1834b351a72bf374212b0367015e0c0c28",
+      "reason": "open server handle; normalized HTML body unchanged"
+    }
+  ]
+}
