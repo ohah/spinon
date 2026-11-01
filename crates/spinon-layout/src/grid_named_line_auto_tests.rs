@@ -396,6 +396,312 @@ fn negative_named_line_pair_tracks_expand_startward_and_size_auto_contributions(
 }
 
 #[test]
+fn negative_named_line_pair_both_axes_tracks_size_independently() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(20.0)],
+        vec![GridTrackSize::LengthPx(15.0)],
+        120.0,
+        100.0,
+        18.0,
+        12.0,
+    );
+    input.nodes[0].style.align_content = Some(crate::LayoutAlignContent::FlexStart);
+    input.nodes[0].style.justify_content = crate::LayoutJustifyContent::FlexStart;
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode =
+        GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes;
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-6),
+            row_end: GridPlacementInput::Line(-3),
+            column_start: GridPlacementInput::Line(-6),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let frame = output.frames[&id(2)];
+    assert_eq!(
+        [frame.x, frame.y, frame.width, frame.height],
+        [0.0, 0.0, 18.0, 12.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Columns),
+        [6.0, 6.0, 6.0, 0.0, 20.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows),
+        [4.0, 4.0, 4.0, 0.0, 15.0]
+    );
+
+    {
+        let container = input.grid_containers.get_mut(&id(1)).unwrap();
+        container.auto_columns = GridAutoColumns::TrackList(vec![
+            GridTrackSize::LengthPx(5.0),
+            GridTrackSize::LengthPx(7.0),
+        ]);
+        container.auto_rows = GridAutoRows::TrackList(vec![
+            GridTrackSize::LengthPx(3.0),
+            GridTrackSize::LengthPx(4.0),
+        ]);
+    }
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let frame = output.frames[&id(2)];
+    assert_eq!(
+        [frame.x, frame.y, frame.width, frame.height],
+        [0.0, 0.0, 18.0, 12.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Columns),
+        [5.0, 7.0, 5.0, 7.0, 20.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows),
+        [3.0, 4.0, 3.0, 4.0, 15.0]
+    );
+
+    {
+        let container = input.grid_containers.get_mut(&id(1)).unwrap();
+        container.auto_columns = GridAutoColumns::Auto;
+        container.auto_rows = GridAutoRows::Auto;
+    }
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-3),
+            row_end: GridPlacementInput::Line(-3),
+            column_start: GridPlacementInput::Line(-3),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Columns),
+        [18.0, 20.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows),
+        [12.0, 15.0]
+    );
+
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-3),
+            row_end: GridPlacementInput::Line(-6),
+            column_start: GridPlacementInput::Line(-3),
+            column_end: GridPlacementInput::Line(-6),
+        },
+    );
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Columns),
+        [6.0, 6.0, 6.0, 0.0, 20.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows),
+        [4.0, 4.0, 4.0, 0.0, 15.0]
+    );
+}
+
+#[test]
+fn negative_named_line_pair_both_axes_mode_keeps_its_shape_boundary() {
+    let both_axes_mode =
+        GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes;
+    let one_axis_mode = GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks;
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(20.0)],
+        vec![GridTrackSize::LengthPx(15.0)],
+        120.0,
+        100.0,
+        18.0,
+        12.0,
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = both_axes_mode;
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(-6),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridPlacement { node, property: "grid-row-start", .. }) if node == id(1)
+    ));
+
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-6),
+            row_end: GridPlacementInput::Line(-3),
+            column_start: GridPlacementInput::Line(-6),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = one_axis_mode;
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridPlacement { node, .. }) if node == id(1)
+    ));
+
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = both_axes_mode;
+    input.nodes.push(LayoutNode {
+        id: id(3),
+        children: Vec::new(),
+        style: LayoutStyle {
+            display: LayoutDisplay::Block,
+            width: LayoutDimension::Fixed(1.0),
+            height: LayoutDimension::Fixed(1.0),
+            ..LayoutStyle::default()
+        },
+    });
+    input.nodes[0].children.push(id(3));
+    input.grid_items.insert(
+        id(3),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-6),
+            row_end: GridPlacementInput::Line(-3),
+            column_start: GridPlacementInput::Line(-6),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridPlacement { node, .. }) if node == id(1)
+    ));
+
+    input.nodes.pop();
+    input.nodes[0].children.pop();
+    input.grid_items.remove(&id(3));
+
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-6),
+            row_end: GridPlacementInput::Line(1),
+            column_start: GridPlacementInput::Line(-6),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridPlacement { node, .. }) if node == id(1)
+    ));
+
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-6),
+            row_end: GridPlacementInput::Line(-3),
+            column_start: GridPlacementInput::Line(-6),
+            column_end: GridPlacementInput::Line(-3),
+        },
+    );
+    input.nodes[1].style.width = LayoutDimension::Auto;
+    assert!(TaffyLayoutEngine.compute(&input).is_err());
+    input.nodes[1].style.width = LayoutDimension::Fixed(18.0);
+
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .template_areas = Some(GridTemplateAreasInput {
+        rows: 1,
+        columns: 1,
+        areas: vec![GridTemplateAreaInput {
+            name: "area".into(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 1,
+        }],
+    });
+    let area_error = TaffyLayoutEngine.compute(&input).unwrap_err();
+    assert!(
+        matches!(
+            &area_error,
+            LayoutError::InvalidGridTrackList { node, property }
+                if *node == id(1) && *property == "grid-template-areas"
+        ),
+        "unexpected grid-template-areas error: {area_error:?}"
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .template_areas = None;
+
+    input.grid_containers.get_mut(&id(1)).unwrap().auto_columns =
+        GridAutoColumns::TrackList(vec![GridTrackSize::Auto]);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::UnsupportedGridAutoColumns { node, .. }) if node == id(1)
+    ));
+    input.grid_containers.get_mut(&id(1)).unwrap().auto_columns = GridAutoColumns::Auto;
+
+    input.grid_containers.get_mut(&id(1)).unwrap().auto_rows =
+        GridAutoRows::TrackList(vec![GridTrackSize::LengthPx(f32::INFINITY)]);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::InvalidGridTrack {
+            node,
+            property: "grid-auto-rows",
+        }) if node == id(1)
+    ));
+    input.grid_containers.get_mut(&id(1)).unwrap().auto_rows = GridAutoRows::Auto;
+
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(-10_002),
+            row_end: GridPlacementInput::Line(-10_001),
+            column_start: GridPlacementInput::Line(-10_002),
+            column_end: GridPlacementInput::Line(-10_001),
+        },
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::GridTrackLimitExceeded {
+            node,
+            count: 10_001,
+            maximum: 10_000,
+            ..
+        }) if node == id(1)
+    ));
+
+    input.nodes[0].children.clear();
+    input.nodes.pop();
+    input.grid_items.remove(&id(2));
+    let zero_child_error = TaffyLayoutEngine.compute(&input).unwrap_err();
+    assert!(
+        matches!(
+            &zero_child_error,
+            LayoutError::InvalidGridPlacement { node, .. } if *node == id(1)
+        ),
+        "unexpected zero-child error: {zero_child_error:?}"
+    );
+}
+
+#[test]
 fn negative_named_line_pair_mode_rejects_invalid_shapes_and_track_kinds() {
     let mut input = grid_input(
         vec![

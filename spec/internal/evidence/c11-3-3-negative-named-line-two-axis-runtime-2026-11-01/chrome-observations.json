@@ -1,0 +1,26 @@
+{
+  "schema": "spinon-c11-3-3-negative-named-line-two-axis-chrome-observation/v1",
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "deviceScaleFactor": 1
+  },
+  "wrapperFrame": [0, 0, 320, 240],
+  "scenes": [
+    { "id": "two-axis-auto", "columns": [6, 6, 6, 0, 20], "rows": [4, 4, 4, 0, 15], "sceneFrame": [0, 0, 120, 100], "itemFrame": [0, 0, 18, 12] },
+    { "id": "two-axis-fixed-pattern", "columns": [5, 7, 5, 7, 20], "rows": [3, 4, 3, 4, 15], "sceneFrame": [100, 0, 120, 100], "itemFrame": [0, 0, 18, 12] },
+    { "id": "two-axis-equal-endpoints", "columns": [18, 20], "rows": [12, 15], "sceneFrame": [200, 0, 120, 100], "itemFrame": [0, 0, 18, 12] },
+    { "id": "two-axis-reversed", "columns": [6, 6, 6, 0, 20], "rows": [4, 4, 4, 0, 15], "sceneFrame": [0, 120, 120, 100], "itemFrame": [0, 0, 18, 12] },
+    { "id": "columns-reversed", "columns": [6, 6, 6, 0, 20], "rows": [4, 4, 4, 0, 15], "sceneFrame": [100, 120, 120, 100], "itemFrame": [0, 0, 18, 12] },
+    { "id": "rows-reversed", "columns": [6, 6, 6, 0, 20], "rows": [4, 4, 4, 0, 15], "sceneFrame": [200, 120, 120, 100], "itemFrame": [0, 0, 18, 12] }
+  ],
+  "samples": [
+    { "id": "two-axis-auto", "nodeId": "two-axis-auto-item", "xCssPx": 5, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+    { "id": "two-axis-fixed-overflow", "nodeId": "two-axis-fixed-item", "xCssPx": 117, "yCssPx": 10, "rgba": [40, 102, 246, 255], "purpose": "item paint one pixel beyond the fixed spanned track area in both axes" },
+    { "id": "two-axis-equal", "nodeId": "two-axis-equal-item", "xCssPx": 205, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+    { "id": "two-axis-reversed", "nodeId": "two-axis-reversed-item", "xCssPx": 5, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+    { "id": "columns-reversed", "nodeId": "two-axis-columns-reversed-item", "xCssPx": 105, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+    { "id": "rows-reversed", "nodeId": "two-axis-rows-reversed-item", "xCssPx": 205, "yCssPx": 125, "rgba": [40, 102, 246, 255] }
+  ]
+}

@@ -1,0 +1,4 @@
+11-01 14:42:40.215 16813 16813 E SpinonBootstrap: SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=c1133-negative-pair-android-avd-20261101T054233146Z-70fec10c-bad-samples scene=negative-named-line-pair-matrix reason=invalid-c1133-sample-fixture
+11-01 14:42:40.315 16813 16813 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+11-01 14:42:40.316 16813 16813 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true
+11-01 14:42:40.317 16813 16841 E SpinonBootstrap: SPINON_C1133_GRID_PIXEL_MATRIX status=error reason=invalid-c1133-sample-fixture

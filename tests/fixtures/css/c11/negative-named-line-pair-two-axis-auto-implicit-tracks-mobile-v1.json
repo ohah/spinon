@@ -1,0 +1,37 @@
+{
+  "schema": "spinon-css-c11-3-3-negative-named-line-pair-two-axis-auto-implicit-tracks-mobile-pixels/v1",
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-named-line-two-axis-matrix-2026-11-01",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-negative-named-line-two-axis-v1.json",
+    "referenceSha256": "ec480afda9f01bba352284319532f5cf068724651b14a33a152b1f1f1456c32b",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "screenshotPath": "spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/chrome-156-reference.png",
+    "screenshotSha256": "617f139b3500bf6cdc26820a0cb67c31d062e32c27ffe7efac30f5f06f57f04e"
+  },
+  "sceneId": "negative-named-line-pair-two-axis-matrix",
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "deviceScaleFactor": 1,
+    "expectedNodeCount": 13,
+    "expectedFrames": [
+      [0, 0, 320, 240],
+      [0, 0, 120, 100], [0, 0, 18, 12],
+      [100, 0, 120, 100], [100, 0, 18, 12],
+      [200, 0, 120, 100], [200, 0, 18, 12],
+      [0, 120, 120, 100], [0, 120, 18, 12],
+      [100, 120, 120, 100], [100, 120, 18, 12],
+      [200, 120, 120, 100], [200, 120, 18, 12]
+    ]
+  },
+  "samples": [
+    { "id": "two-axis-auto", "nodeId": "two-axis-auto-item", "xCssPx": 5, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+    { "id": "two-axis-fixed-overflow", "nodeId": "two-axis-fixed-item", "xCssPx": 117, "yCssPx": 10, "rgba": [40, 102, 246, 255] },
+    { "id": "two-axis-equal", "nodeId": "two-axis-equal-item", "xCssPx": 205, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+    { "id": "two-axis-reversed", "nodeId": "two-axis-reversed-item", "xCssPx": 5, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+    { "id": "columns-reversed", "nodeId": "two-axis-columns-reversed-item", "xCssPx": 105, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+    { "id": "rows-reversed", "nodeId": "two-axis-rows-reversed-item", "xCssPx": 205, "yCssPx": 125, "rgba": [40, 102, 246, 255] }
+  ]
+}

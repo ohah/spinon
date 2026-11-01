@@ -32,6 +32,8 @@ const namedLinePairRuntimeMode = fixture.schema
   === 'spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1';
 const negativeNamedLinePairRuntimeMode = fixture.schema
   === 'spinon-css-c11-3-3-negative-named-line-pair-auto-implicit-tracks-mobile-pixels/v1';
+const negativeNamedLinePairTwoAxisRuntimeMode = fixture.schema
+  === 'spinon-css-c11-3-3-negative-named-line-pair-two-axis-auto-implicit-tracks-mobile-pixels/v1';
 assert.ok(['android-avd', 'android-physical', 'ios-simulator'].includes(target),
   '사용법: node capture-c11-3-3-grid-template-areas-runtime.mjs android-avd|android-physical [serial]|ios-simulator [Simulator UDID] [--fit-content-area-cap] [--fixture=repo-relative-path]');
 
@@ -42,11 +44,13 @@ const serialOrUDID = positionalArgs[1]
   ?? (target === 'ios-simulator' ? defaultSimulatorUDID
     : target === 'android-avd' ? process.env.SPINON_ANDROID_EMULATOR_SERIAL ?? 'emulator-5554'
       : process.env.ANDROID_SERIAL);
-const runID = `${negativeNamedLinePairRuntimeMode ? 'c1133-negative-pair' : fitContentAreaCapMode ? 'c1133-fitcap' : 'c1133'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
+const runID = `${negativeNamedLinePairTwoAxisRuntimeMode ? 'c1133-negative-pair-two-axis' : negativeNamedLinePairRuntimeMode ? 'c1133-negative-pair' : fitContentAreaCapMode ? 'c1133-fitcap' : 'c1133'}-${target}-${new Date().toISOString().replaceAll(/[^0-9TZ]/g, '')}-${randomUUID().slice(0, 8)}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot,
   `spec/internal/evidence/${namedLinePairRuntimeMode
     ? `c11-3-3-named-line-pair-runtime-${date}`
+    : negativeNamedLinePairTwoAxisRuntimeMode
+      ? `c11-3-3-negative-named-line-two-axis-runtime-${date}`
     : negativeNamedLinePairRuntimeMode
       ? `c11-3-3-negative-named-line-pair-runtime-${date}`
     : fitContentAreaCapMode
@@ -78,6 +82,14 @@ async function saveLog(path, result) {
 
 function samplePayload(encoding, samples = fixture.samples) {
   return Buffer.from(JSON.stringify(samples)).toString(encoding);
+}
+
+function runIDWithSuffix(base, suffix) {
+  const ending = `-${suffix}`;
+  if (base.length + ending.length <= 80) return `${base}${ending}`;
+  const hash = base.match(/-[a-f0-9]{8}$/i)?.[0] ?? '';
+  const prefixBudget = 80 - ending.length - hash.length;
+  return `${base.slice(0, prefixBudget)}${hash}${ending}`;
 }
 
 function assertC1133RuntimeGeometry(log, runID) {
@@ -254,8 +266,9 @@ async function runAndroid() {
 }
 
 async function runAndroidNegative(adb) {
-  const negativeRunID = `${runID}-bad-samples`;
-  const mutationIndex = Math.max(0, fixture.samples.findIndex((sample) => sample.id === 'item-blue'));
+  const negativeRunID = runIDWithSuffix(runID, 'bad-samples');
+  const mutationIndex = Math.max(0, fixture.samples.findIndex((sample) =>
+    sample.id === 'two-axis-fixed-overflow' || sample.id === 'item-blue'));
   const invalidSamples = fixture.samples.map((sample, index) => index === mutationIndex
     ? { ...sample, xCssPx: sample.xCssPx + 1 } : sample);
   const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', androidComponent,
@@ -279,7 +292,7 @@ async function runAndroidNegative(adb) {
 }
 
 async function runAndroidRouteNegative(adb) {
-  const negativeRunID = runID + '-bad-scene';
+  const negativeRunID = runIDWithSuffix(runID, 'bad-scene');
   const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n', androidComponent,
     '--ez', 'spinon_c1133_grid_template_areas', 'true',
     '--es', 'spinon_c1133_grid_template_areas_run_id', negativeRunID,
@@ -360,8 +373,9 @@ async function runIOS() {
 }
 
 async function runIOSNegative(udid) {
-  const negativeRunID = `${runID}-bad-samples`;
-  const mutationIndex = Math.max(0, fixture.samples.findIndex((sample) => sample.id === 'item-blue'));
+  const negativeRunID = runIDWithSuffix(runID, 'bad-samples');
+  const mutationIndex = Math.max(0, fixture.samples.findIndex((sample) =>
+    sample.id === 'two-axis-fixed-overflow' || sample.id === 'item-blue'));
   const invalidSamples = fixture.samples.map((sample, index) => index === mutationIndex
     ? { ...sample, xCssPx: sample.xCssPx + 1 } : sample);
   const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process', udid,
@@ -399,6 +413,8 @@ assert.ok(rootFrame && itemFrame, '성공 scene root/item frame이 없습니다.
 const result = {
   schema: negativeNamedLinePairRuntimeMode
     ? 'spinon-c11-3-3-negative-named-line-pair-auto-implicit-tracks-runtime-result/v1'
+    : negativeNamedLinePairTwoAxisRuntimeMode
+      ? 'spinon-c11-3-3-negative-named-line-pair-two-axis-auto-implicit-tracks-runtime-result/v1'
     : namedLinePairRuntimeMode
     ? 'spinon-c11-3-3-named-line-pair-auto-implicit-tracks-runtime-result/v1'
     : namedLineAutoRuntimeMode
@@ -420,7 +436,9 @@ const result = {
 };
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify(result, null, 2)}\n`);
 await writeFile(resolve(evidenceDirectory, 'README.md'), [
-  negativeNamedLinePairRuntimeMode
+  negativeNamedLinePairTwoAxisRuntimeMode
+    ? '# C11.3.3 양 축 negative leading named-line pair 모바일 실행'
+    : negativeNamedLinePairRuntimeMode
     ? '# C11.3.3 negative leading named-line pair 모바일 실행'
     : namedLinePairRuntimeMode
     ? '# C11.3.3 양 끝 implicit named-line pair 모바일 실행'

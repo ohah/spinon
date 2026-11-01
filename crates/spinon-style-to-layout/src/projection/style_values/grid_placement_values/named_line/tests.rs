@@ -166,6 +166,7 @@ fn missing_backward_named_span_creates_leading_line_and_selects_signed_extent() 
             allows_positive_auto_track_sizing: false,
             allows_positive_named_line_pair_auto_track_sizing: false,
             allows_negative_named_line_pair_auto_track_sizing: false,
+            allows_negative_named_line_pair_auto_track_sizing_both_axes: false,
         }
     );
 }
