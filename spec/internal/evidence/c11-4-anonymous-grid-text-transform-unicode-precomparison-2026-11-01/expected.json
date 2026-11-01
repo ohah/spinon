@@ -1,0 +1,188 @@
+{
+  "status": "plan-only-oracle-not-a-Spinon-result",
+  "standards": {
+    "cssText": "https://www.w3.org/TR/2026/CRD-css-text-3-20260814/#text-transform-mapping",
+    "unicodeSpecialCasing": "https://www.unicode.org/Public/17.0.0/ucd/SpecialCasing.txt",
+    "unicodeWordSegmentation": "https://www.unicode.org/reports/tr29/tr29-47.html",
+    "unicodeVersion": "17.0.0",
+    "icu4xCandidate": {
+      "version": "2.3.0",
+      "wordSegmenter": "UAX #29 default word boundaries",
+      "titlecaseOptions": "trailingCase=Unchanged, leadingAdjustment=None"
+    }
+  },
+  "browser": {
+    "name": "HeadlessChrome 156.0.0.0 via Agent Browser",
+    "platform": "macOS ARM64",
+    "dpr": 1,
+    "viewport": "1280x633 CSS px",
+    "cssomQuantization": "1/64 CSS px",
+    "fontLoaded": true
+  },
+  "font": {
+    "family": "Noto Sans KR",
+    "source": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+    "sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+    "variation": "wght=400",
+    "fontSizeCssPx": 10,
+    "unitsPerEm": 1000
+  },
+  "comparisonPolicy": {
+    "toleranceCssPx": 0.03125,
+    "normativeTextSource": "CSS Text Level 3 plus Unicode 17 full titlecase data",
+    "widthSource": "Chrome CSSOM candidate spans; width observations do not decide normative text",
+    "nominalHmtxWarning": "Unshaped hmtx sum for Sseta is 25.58 CSS px and is not a shaped-width oracle.",
+    "harfBuzzDiagnostic": {
+      "Sseta": "hb-shape 14.6.0 with FreeType and wght=400 gives 25.17 CSS px; Chrome candidate CSSOM is 25.1875 CSS px.",
+      "Iiii Ii": "HarfBuzz uses a 280-unit contextual space glyph instead of the nominal 224-unit hmtx space, producing 19.66 CSS px; Chrome CSSOM is 19.09375 CSS px.",
+      "policy": "Diagnostic only; do not use HarfBuzz width as a CSS layout oracle."
+    }
+  },
+  "scenes": [
+    {
+      "id": "ascii-baseline",
+      "sourceText": "iiii ii",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "Iiii Ii",
+      "chromeTargetText": "Iiii Ii",
+      "chromeTargetTrackWidthCssPx": 19.09375,
+      "candidateWidthsCssPx": {
+        "Iiii Ii": 19.09375,
+        "iiii ii": 18.71875
+      }
+    },
+    {
+      "id": "german-sharp-s",
+      "sourceText": "ßeta",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "Sseta",
+      "chromeTargetText": "ßeta",
+      "chromeTargetTrackWidthCssPx": 20.96875,
+      "candidateWidthsCssPx": {
+        "Sseta": 25.1875,
+        "SSeta": 26.296875,
+        "ẞeta": 21.34375,
+        "ßeta": 20.96875
+      },
+      "difference": "CSS Text full case mapping plus Unicode 17 SpecialCasing maps U+00DF titlecase to U+0053 U+0073 (Ss); Chrome 156 leaves it unchanged.",
+      "sourceRangesUtf16": [
+        { "output": "S", "source": [0, 1] },
+        { "output": "s", "source": [0, 1] },
+        { "output": "e", "source": [1, 2] },
+        { "output": "t", "source": [2, 3] },
+        { "output": "a", "source": [3, 4] }
+      ]
+    },
+    {
+      "id": "accented-letter",
+      "sourceText": "éclair",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "Éclair",
+      "chromeTargetText": "Éclair",
+      "chromeTargetTrackWidthCssPx": 25.953125,
+      "candidateWidthsCssPx": { "Éclair": 25.953125, "éclair": 25.75 }
+    },
+    {
+      "id": "apostrophe-word",
+      "sourceText": "o'neill",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "O'neill",
+      "chromeTargetText": "O'neill",
+      "chromeTargetTrackWidthCssPx": 30.28125,
+      "candidateWidthsCssPx": { "O'neill": 30.28125, "O'Neill": 31.40625 }
+    },
+    {
+      "id": "hyphen-boundary",
+      "sourceText": "well-known",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "Well-Known",
+      "chromeTargetText": "Well-Known",
+      "chromeTargetTrackWidthCssPx": 56.171875,
+      "candidateWidthsCssPx": { "Well-Known": 56.171875, "Well-known": 55.21875 }
+    },
+    {
+      "id": "opening-punctuation",
+      "sourceText": "«élan»",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "«Élan»",
+      "chromeTargetText": "«Élan»",
+      "chromeTargetTrackWidthCssPx": 30.046875,
+      "candidateWidthsCssPx": { "«Élan»": 30.046875, "«élan»": 29.703125 }
+    },
+    {
+      "id": "numeric-prefix",
+      "sourceText": "49ers",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "49ers",
+      "chromeTargetText": "49ers",
+      "chromeTargetTrackWidthCssPx": 24.984375,
+      "candidateWidthsCssPx": { "49Ers": 25.484375, "49ers": 24.984375 },
+      "reason": "The first typographic letter unit is Number 4, so the word is not titlecased."
+    },
+    {
+      "id": "numeric-prefix-control",
+      "sourceText": "49ers",
+      "textTransform": "none",
+      "normativeLayoutText": "49ers",
+      "chromeTargetText": "49ers",
+      "chromeTargetTrackWidthCssPx": 24.984375,
+      "candidateWidthsCssPx": { "49ers": 24.984375 }
+    },
+    {
+      "id": "combining-mark",
+      "sourceText": "e\u0301lan",
+      "textTransform": "capitalize",
+      "normativeLayoutText": "E\u0301lan",
+      "chromeTargetTextCandidates": ["E\u0301lan", "Élan"],
+      "chromeTargetTrackWidthCssPx": 20.46875,
+      "candidateWidthsCssPx": {
+        "E\u0301lan": 20.46875,
+        "Élan": 20.46875,
+        "e\u0301lan": 20.125
+      },
+      "sourceRangesUtf16": [
+        { "output": "E", "source": [0, 1] },
+        { "output": "\u0301", "source": [1, 2] },
+        { "output": "l", "source": [2, 3] },
+        { "output": "a", "source": [3, 4] },
+        { "output": "n", "source": [4, 5] }
+      ],
+      "note": "CSSOM width cannot distinguish decomposed E plus combining acute from precomposed É."
+    },
+    {
+      "id": "collapsed-whitespace",
+      "sourceText": "ßeta   éclair",
+      "textTransform": "capitalize",
+      "normativeLayoutTextAfterPhaseI": "Sseta Éclair",
+      "chromeTargetTextAfterPhaseI": "ßeta Éclair",
+      "chromeTargetTrackWidthCssPx": 49.15625,
+      "candidateWidthsCssPx": {
+        "Sseta Éclair": 53.359375,
+        "ßeta Éclair": 49.15625
+      },
+      "difference": "Phase I whitespace collapse is performed before text transform; the remaining U+00DF titlecase mapping still differs from Chrome 156."
+    },
+    {
+      "id": "source-split",
+      "sourceText": "ßeta",
+      "sourceTextNodes": ["ß", "eta"],
+      "textTransform": "capitalize",
+      "normativeLayoutText": "Sseta",
+      "chromeTargetText": "ßeta",
+      "chromeTargetTrackWidthCssPx": 20.984375,
+      "candidateWidthsCssPx": { "Sseta": 25.1875, "ßeta": 20.96875 },
+      "difference": "Adjacent direct Text nodes form one anonymous item and do not start a new capitalization word; the Chrome target width is 1/64 CSS px above the single-node observation."
+    },
+    {
+      "id": "source-split-control",
+      "sourceText": "ßeta",
+      "sourceTextNodes": ["ß", "eta"],
+      "textTransform": "none",
+      "normativeLayoutText": "ßeta",
+      "chromeTargetText": "ßeta",
+      "chromeTargetTrackWidthCssPx": 20.984375,
+      "candidateWidthsCssPx": { "ßeta": 20.96875 },
+      "note": "Adjacent direct Text node split has the same width for none/capitalize in Chrome 156."
+    }
+  ]
+}

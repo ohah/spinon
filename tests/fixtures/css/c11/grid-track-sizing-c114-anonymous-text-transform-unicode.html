@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid Unicode capitalize oracle</title>
+  <style>
+    @font-face {
+      font-family: "Noto Sans KR";
+      src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+    }
+    body { margin: 16px; color: #fff; background: #18222d; font: 14px/1.4 sans-serif; }
+    main { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px; }
+    figure { min-width: 280px; margin: 0; padding: 10px; background: #263645; }
+    figure > div { font: 400 10px/10px "Noto Sans KR"; white-space: normal; }
+    .target { display: grid; grid-template-columns: max-content; width: max-content; }
+    .target { text-transform: capitalize; }
+    .target.no-transform { text-transform: none; }
+    .candidate { display: inline-block; margin-right: 12px; }
+    .candidate-list { margin-top: 6px; color: #b6c4d2; }
+    figcaption { margin-bottom: 6px; }
+    output { display: block; white-space: pre-wrap; margin-top: 18px; font: 12px/1.35 ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <main id="scenes">
+    <figure data-id="ascii-baseline" data-expected="Iiii Ii">
+      <figcaption>Prior ASCII capitalize baseline</figcaption>
+      <div class="target" lang="en">iiii ii</div>
+      <div class="candidate-list"><span class="candidate">Iiii Ii</span><span class="candidate">iiii ii</span></div>
+    </figure>
+    <figure data-id="german-sharp-s" data-expected="Sseta">
+      <figcaption>German sharp s expansion</figcaption>
+      <div class="target" lang="en">ßeta</div>
+      <div class="candidate-list"><span class="candidate">Sseta</span><span class="candidate">SSeta</span><span class="candidate">ẞeta</span><span class="candidate">ßeta</span></div>
+    </figure>
+    <figure data-id="accented-letter" data-expected="Éclair">
+      <figcaption>Latin-1 titlecase mapping</figcaption>
+      <div class="target" lang="en">éclair</div>
+      <div class="candidate-list"><span class="candidate">Éclair</span><span class="candidate">éclair</span></div>
+    </figure>
+    <figure data-id="apostrophe-word" data-expected="O'neill">
+      <figcaption>UAX 29 apostrophe word boundary</figcaption>
+      <div class="target" lang="en">o'neill</div>
+      <div class="candidate-list"><span class="candidate">O'neill</span><span class="candidate">O'Neill</span></div>
+    </figure>
+    <figure data-id="hyphen-boundary" data-expected="Well-Known">
+      <figcaption>UAX 29 hyphen boundary</figcaption>
+      <div class="target" lang="en">well-known</div>
+      <div class="candidate-list"><span class="candidate">Well-Known</span><span class="candidate">Well-known</span></div>
+    </figure>
+    <figure data-id="opening-punctuation" data-expected="«Élan»">
+      <figcaption>Unicode letter after opening punctuation</figcaption>
+      <div class="target" lang="en">«élan»</div>
+      <div class="candidate-list"><span class="candidate">«Élan»</span><span class="candidate">«élan»</span></div>
+    </figure>
+    <figure data-id="numeric-prefix" data-expected="49ers">
+      <figcaption>Number is the first typographic letter unit</figcaption>
+      <div class="target" lang="en">49ers</div>
+      <div class="candidate-list"><span class="candidate">49Ers</span><span class="candidate">49ers</span></div>
+    </figure>
+    <figure data-id="numeric-prefix-control" data-expected="49ers">
+      <figcaption>Untransformed numeric control</figcaption>
+      <div class="target no-transform" lang="en">49ers</div>
+      <div class="candidate-list"><span class="candidate">49ers</span></div>
+    </figure>
+    <figure data-id="combining-mark" data-expected="Élan">
+      <figcaption>Combining mark and source range</figcaption>
+      <div class="target" lang="en">élan</div>
+      <div class="candidate-list"><span class="candidate">Élan</span><span class="candidate">Élan</span><span class="candidate">élan</span></div>
+    </figure>
+    <figure data-id="collapsed-whitespace" data-expected="Sseta Éclair">
+      <figcaption>Case expansion across collapsed whitespace</figcaption>
+      <div class="target" lang="en">ßeta   éclair</div>
+      <div class="candidate-list"><span class="candidate">Sseta Éclair</span><span class="candidate">ßeta Éclair</span></div>
+    </figure>
+    <figure data-id="source-split" data-expected="Sseta">
+      <figcaption>Case expansion across direct text nodes</figcaption>
+      <div class="target" id="source-split" lang="en"></div>
+      <div class="candidate-list"><span class="candidate">Sseta</span><span class="candidate">ßEta</span></div>
+    </figure>
+    <figure data-id="source-split-control" data-expected="ßeta">
+      <figcaption>Untransformed direct-text control</figcaption>
+      <div class="target no-transform" id="source-split-control" lang="en"></div>
+      <div class="candidate-list"><span class="candidate">ßeta</span></div>
+    </figure>
+  </main>
+  <output id="observations">Loading Noto Sans KR…</output>
+  <script>
+    (async () => {
+      const split = document.querySelector('#source-split');
+      split.append(document.createTextNode('ß'), document.createTextNode('eta'));
+      const splitControl = document.querySelector('#source-split-control');
+      splitControl.append(document.createTextNode('ß'), document.createTextNode('eta'));
+      await document.fonts.load('400 10px "Noto Sans KR"');
+      await document.fonts.ready;
+      const rows = [...document.querySelectorAll('figure')].map((figure) => {
+        const target = figure.querySelector('.target');
+        const targetText = target.textContent;
+        const targetStyle = getComputedStyle(target);
+        const targetWidth = target.getBoundingClientRect().width;
+        const candidates = [...figure.querySelectorAll('.candidate')].map((node) => ({
+          text: node.textContent,
+          width: node.getBoundingClientRect().width,
+          matchesTargetWidth: Math.abs(node.getBoundingClientRect().width - targetWidth) <= 1 / 64,
+        }));
+        return {
+          id: figure.dataset.id,
+          expectedByCssText: figure.dataset.expected,
+          sourceText: targetText,
+          textTransform: targetStyle.textTransform,
+          fontFamily: targetStyle.fontFamily,
+          fontSize: targetStyle.fontSize,
+          targetTrackWidth: targetWidth,
+          candidates,
+        };
+      });
+      document.querySelector('#observations').textContent = JSON.stringify({
+        userAgent: navigator.userAgent,
+        dpr: devicePixelRatio,
+        viewport: { width: innerWidth, height: innerHeight },
+        fontLoaded: document.fonts.check('400 10px "Noto Sans KR"'),
+        fontStatus: document.fonts.status,
+        rows,
+      }, null, 2);
+    })();
+  </script>
+</body>
+</html>

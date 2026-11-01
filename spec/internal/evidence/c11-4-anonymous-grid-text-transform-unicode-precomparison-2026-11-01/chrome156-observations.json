@@ -1,0 +1,182 @@
+{
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "platform": "macOS ARM64",
+  "dpr": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "fontLoaded": true,
+  "fontStatus": "loaded",
+  "font": {
+    "family": "Noto Sans KR",
+    "source": "tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf",
+    "sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+    "weight": 400,
+    "fontSizeCssPx": 10
+  },
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform-unicode.html",
+  "rows": [
+    {
+      "id": "ascii-baseline",
+      "sourceText": "iiii ii",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "Iiii Ii",
+      "targetTrackWidthCssPx": 19.09375,
+      "candidateWidthsCssPx": {
+        "Iiii Ii": 19.09375,
+        "iiii ii": 18.71875
+      },
+      "chromeMatched": "Iiii Ii"
+    },
+    {
+      "id": "german-sharp-s",
+      "sourceText": "ßeta",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "Sseta",
+      "targetTrackWidthCssPx": 20.96875,
+      "candidateWidthsCssPx": {
+        "Sseta": 25.1875,
+        "SSeta": 26.296875,
+        "ẞeta": 21.34375,
+        "ßeta": 20.96875
+      },
+      "chromeMatched": "ßeta",
+      "classifiedDifference": "CSS Text full case mapping with Unicode 17 SpecialCasing expects U+00DF titlecase Ss; Chrome 156 leaves U+00DF unchanged"
+    },
+    {
+      "id": "accented-letter",
+      "sourceText": "éclair",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "Éclair",
+      "targetTrackWidthCssPx": 25.953125,
+      "candidateWidthsCssPx": {
+        "Éclair": 25.953125,
+        "éclair": 25.75
+      },
+      "chromeMatched": "Éclair"
+    },
+    {
+      "id": "apostrophe-word",
+      "sourceText": "o'neill",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "O'neill",
+      "targetTrackWidthCssPx": 30.28125,
+      "candidateWidthsCssPx": {
+        "O'neill": 30.28125,
+        "O'Neill": 31.40625
+      },
+      "chromeMatched": "O'neill"
+    },
+    {
+      "id": "hyphen-boundary",
+      "sourceText": "well-known",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "Well-Known",
+      "targetTrackWidthCssPx": 56.171875,
+      "candidateWidthsCssPx": {
+        "Well-Known": 56.171875,
+        "Well-known": 55.21875
+      },
+      "chromeMatched": "Well-Known"
+    },
+    {
+      "id": "opening-punctuation",
+      "sourceText": "«élan»",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "«Élan»",
+      "targetTrackWidthCssPx": 30.046875,
+      "candidateWidthsCssPx": {
+        "«Élan»": 30.046875,
+        "«élan»": 29.703125
+      },
+      "chromeMatched": "«Élan»"
+    },
+    {
+      "id": "numeric-prefix",
+      "sourceText": "49ers",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "49ers",
+      "targetTrackWidthCssPx": 24.984375,
+      "candidateWidthsCssPx": {
+        "49Ers": 25.484375,
+        "49ers": 24.984375
+      },
+      "chromeMatched": "49ers"
+    },
+    {
+      "id": "numeric-prefix-control",
+      "sourceText": "49ers",
+      "textTransform": "none",
+      "normativeExpectedLayoutText": "49ers",
+      "targetTrackWidthCssPx": 24.984375,
+      "candidateWidthsCssPx": {
+        "49ers": 24.984375
+      },
+      "chromeMatched": "49ers"
+    },
+    {
+      "id": "combining-mark",
+      "sourceText": "élan",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "Élan",
+      "targetTrackWidthCssPx": 20.46875,
+      "candidateWidthsCssPx": {
+        "Élan": 20.46875,
+        "Élan": 20.46875,
+        "élan": 20.125
+      },
+      "chromeMatched": [
+        "Élan",
+        "Élan"
+      ],
+      "note": "CSSOM width cannot distinguish decomposed E plus combining acute from precomposed É"
+    },
+    {
+      "id": "collapsed-whitespace",
+      "sourceText": "ßeta   éclair",
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutTextAfterWhiteSpaceCollapse": "Sseta Éclair",
+      "targetTrackWidthCssPx": 49.15625,
+      "candidateWidthsCssPx": {
+        "Sseta Éclair": 53.359375,
+        "ßeta Éclair": 49.15625
+      },
+      "chromeMatched": "ßeta Éclair",
+      "classifiedDifference": "CSS Text full case mapping with Unicode 17 SpecialCasing expects the initial U+00DF to expand to Ss"
+    },
+    {
+      "id": "source-split",
+      "sourceText": "ßeta",
+      "sourceTextNodes": [
+        "ß",
+        "eta"
+      ],
+      "textTransform": "capitalize",
+      "normativeExpectedLayoutText": "Sseta",
+      "targetTrackWidthCssPx": 20.984375,
+      "candidateWidthsCssPx": {
+        "Sseta": 25.1875,
+        "ßEta": 21.171875
+      },
+      "chromeMatched": "ßeta",
+      "classifiedDifference": "same U+00DF full-case-mapping difference; splitting adjacent direct Text nodes changes Chrome width by 1/64 CSS px"
+    },
+    {
+      "id": "source-split-control",
+      "sourceText": "ßeta",
+      "sourceTextNodes": [
+        "ß",
+        "eta"
+      ],
+      "textTransform": "none",
+      "normativeExpectedLayoutText": "ßeta",
+      "targetTrackWidthCssPx": 20.984375,
+      "candidateWidthsCssPx": {
+        "ßeta": 20.96875
+      },
+      "chromeMatched": "ßeta",
+      "note": "adjacent direct Text node split has the same width with none/capitalize in Chrome 156"
+    }
+  ]
+}
