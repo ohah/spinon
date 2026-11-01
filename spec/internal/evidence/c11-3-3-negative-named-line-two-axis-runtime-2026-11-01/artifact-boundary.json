@@ -1,0 +1,27 @@
+{
+  "schema": "spinon-c11-3-3-two-axis-fixture-artifact-boundary/v1",
+  "default": {
+    "featureSet": [],
+    "archive": "target/debug/libspinon_ffi.a",
+    "sha256": "96ce7eedc5018365fa6bf58ae7f8b33e8e9e622d0023eb20d5db741101c7bd5b",
+    "bytes": 517661144,
+    "markers": {
+      "negative-named-line-pair-two-axis-matrix": false,
+      "two-axis-fixed-pattern": false,
+      "two-axis-fixed-item": false
+    }
+  },
+  "optIn": {
+    "featureSet": [
+      "c11-grid-metal-surface-pixels-test"
+    ],
+    "archive": "target/debug/libspinon_ffi.a",
+    "sha256": "b38ebade90c1342d64beb5bfc2054d48f41357a7c4c7ac8ade1fa7b7d7aff31e",
+    "bytes": 744577592,
+    "markers": {
+      "negative-named-line-pair-two-axis-matrix": true,
+      "two-axis-fixed-pattern": true,
+      "two-axis-fixed-item": true
+    }
+  }
+}

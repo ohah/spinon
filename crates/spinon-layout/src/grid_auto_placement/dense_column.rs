@@ -57,6 +57,7 @@ pub(crate) fn normalize_dense_grid_container(
         container.placement_mode,
         crate::GridPlacementMode::TemplateGridSignedImplicitTracks
             | crate::GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
+            | crate::GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes
     ) {
         return super::track_sizing::normalize_signed_implicit_grid_container(
             input,

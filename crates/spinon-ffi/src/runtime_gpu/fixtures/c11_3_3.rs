@@ -163,6 +163,35 @@ for (const scene of cases) {
 }
 return { sceneId:'negative-named-line-pair-matrix', rootId:cases[0].root, nodeIds };
 })()"#;
+const C11_3_3_NEGATIVE_NAMED_LINE_PAIR_TWO_AXIS_MATRIX_SOURCE: &str = r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'two-axis-matrix-grid');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:320px;height:240px;margin:0;padding:0;border:0;gap:0;grid-template-columns:100px 100px 120px;grid-template-rows:120px 120px;grid-auto-flow:row');
+document.appendChild(root);
+const cases = [
+  { id:'two-axis-auto', root:'two-axis-auto-grid', item:'two-axis-auto-item', autoColumns:'auto', autoRows:'auto', column:'-4 ghost / -1 ghost', row:'-4 ghost / -1 ghost' },
+  { id:'two-axis-fixed-pattern', root:'two-axis-fixed-grid', item:'two-axis-fixed-item', autoColumns:'5px 7px', autoRows:'3px 4px', column:'-4 ghost / -1 ghost', row:'-4 ghost / -1 ghost' },
+  { id:'two-axis-equal-endpoints', root:'two-axis-equal-grid', item:'two-axis-equal-item', autoColumns:'auto', autoRows:'auto', column:'-1 ghost / -1 ghost', row:'-1 ghost / -1 ghost' },
+  { id:'two-axis-reversed', root:'two-axis-reversed-grid', item:'two-axis-reversed-item', autoColumns:'auto', autoRows:'auto', column:'-1 ghost / -4 ghost', row:'-1 ghost / -4 ghost' },
+  { id:'columns-reversed', root:'two-axis-columns-reversed-grid', item:'two-axis-columns-reversed-item', autoColumns:'auto', autoRows:'auto', column:'-1 ghost / -4 ghost', row:'-4 ghost / -1 ghost' },
+  { id:'rows-reversed', root:'two-axis-rows-reversed-grid', item:'two-axis-rows-reversed-item', autoColumns:'auto', autoRows:'auto', column:'-4 ghost / -1 ghost', row:'-1 ghost / -4 ghost' },
+];
+const nodeIds = [];
+for (const scene of cases) {
+  const grid = document.createElement('div');
+  grid.setAttribute('id', scene.root);
+  grid.setAttribute('data-node', '');
+  grid.setAttribute('style', `box-sizing:border-box;display:grid;width:120px;height:100px;margin:0;padding:0;border:0;gap:0;justify-content:start;align-content:start;background-color:#101820;grid-template-columns:20px;grid-template-rows:15px;grid-auto-columns:${scene.autoColumns};grid-auto-rows:${scene.autoRows};grid-auto-flow:row`);
+  root.appendChild(grid);
+  const item = document.createElement('div');
+  item.setAttribute('id', scene.item);
+  item.setAttribute('data-node', '');
+  item.setAttribute('style', `box-sizing:border-box;width:18px;height:12px;margin:0;padding:0;border:0;background-color:#2866f6;grid-column:${scene.column};grid-row:${scene.row}`);
+  grid.appendChild(item);
+  nodeIds.push(scene.root, scene.item);
+}
+return { sceneId:'negative-named-line-pair-two-axis-matrix', rootId:cases[0].root, nodeIds };
+})()"#;
 const C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES: [(&str, &str); 7] = [
     (
         "positive-missing-occurrences",
@@ -324,6 +353,9 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
 ) -> Result<&'static str, String> {
     if scene_id == "negative-named-line-pair-matrix" {
         return Ok(C11_3_3_NEGATIVE_NAMED_LINE_PAIR_MATRIX_SOURCE);
+    }
+    if scene_id == "negative-named-line-pair-two-axis-matrix" {
+        return Ok(C11_3_3_NEGATIVE_NAMED_LINE_PAIR_TWO_AXIS_MATRIX_SOURCE);
     }
     if scene_id == "fit-content-area-cap" {
         return Ok(fit_content_area_cap::SOURCE);
@@ -660,6 +692,39 @@ mod tests {
         assert!(
             c11_3_3_grid_template_areas_runtime_source("negative-named-line-pair-matrix;throw 1")
                 .is_err()
+        );
+    }
+
+    #[test]
+    fn negative_named_line_pair_two_axis_matrix_keeps_independent_axis_cases() {
+        let source =
+            c11_3_3_grid_template_areas_runtime_source("negative-named-line-pair-two-axis-matrix")
+                .unwrap();
+        for expected in [
+            "two-axis-auto",
+            "two-axis-fixed-pattern",
+            "two-axis-equal-endpoints",
+            "two-axis-reversed",
+            "columns-reversed",
+            "rows-reversed",
+            "grid-template-columns:20px",
+            "grid-template-rows:15px",
+            "autoColumns:'5px 7px'",
+            "autoRows:'3px 4px'",
+            "column:'-4 ghost / -1 ghost'",
+            "row:'-4 ghost / -1 ghost'",
+            "background-color:#2866f6",
+        ] {
+            assert!(
+                source.contains(expected),
+                "missing runtime token: {expected}"
+            );
+        }
+        assert!(
+            c11_3_3_grid_template_areas_runtime_source(
+                "negative-named-line-pair-two-axis-matrix;throw 1"
+            )
+            .is_err()
         );
     }
 

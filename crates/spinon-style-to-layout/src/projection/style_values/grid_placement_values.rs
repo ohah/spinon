@@ -34,6 +34,7 @@ pub(super) fn project_grid_item_placement(
                     allows_positive_auto_track_sizing: false,
                     allows_positive_named_line_pair_auto_track_sizing: false,
                     allows_negative_named_line_pair_auto_track_sizing: false,
+                    allows_negative_named_line_pair_auto_track_sizing_both_axes: false,
                 },
             )
         }
@@ -74,6 +75,7 @@ pub(super) fn project_grid_item_placement(
                         allows_positive_auto_track_sizing: false,
                         allows_positive_named_line_pair_auto_track_sizing: false,
                         allows_negative_named_line_pair_auto_track_sizing: false,
+                        allows_negative_named_line_pair_auto_track_sizing_both_axes: false,
                     },
                 )
             }
@@ -142,6 +144,10 @@ pub(super) fn project_grid_item_placement(
             }
             _ => false,
         };
+    let allows_negative_named_line_pair_auto_track_sizing_both_axes = template_areas.is_none()
+        && row_implicit_usage.allows_negative_named_line_pair_auto_track_sizing
+        && column_implicit_usage.allows_negative_named_line_pair_auto_track_sizing
+        && negative_named_line_pair_names_match_across_axes(placement);
     let usage = named_line::ImplicitNamedLineUsage {
         uses_implicit_tracks: row_implicit_usage.uses_implicit_tracks
             || column_implicit_usage.uses_implicit_tracks,
@@ -150,6 +156,7 @@ pub(super) fn project_grid_item_placement(
         allows_positive_auto_track_sizing,
         allows_positive_named_line_pair_auto_track_sizing,
         allows_negative_named_line_pair_auto_track_sizing,
+        allows_negative_named_line_pair_auto_track_sizing_both_axes,
     };
     let result = GridItemInput {
         row_start,
@@ -192,6 +199,31 @@ fn is_definite_axis(start: &GridPlacementInput, end: &GridPlacementInput) -> boo
             GridPlacementInput::Line(_) | GridPlacementInput::Auto
         )
     )
+}
+
+fn negative_named_line_pair_names_match_across_axes(
+    placement: &ComputedCssGridItemPlacement,
+) -> bool {
+    match (
+        &placement.row_start,
+        &placement.row_end,
+        &placement.column_start,
+        &placement.column_end,
+    ) {
+        (
+            ComputedCssGridPlacement::NamedLine {
+                name: row_start, ..
+            },
+            ComputedCssGridPlacement::NamedLine { name: row_end, .. },
+            ComputedCssGridPlacement::NamedLine {
+                name: column_start, ..
+            },
+            ComputedCssGridPlacement::NamedLine {
+                name: column_end, ..
+            },
+        ) => row_start == row_end && column_start == column_end && row_start == column_start,
+        _ => false,
+    }
 }
 
 #[cfg(test)]
@@ -302,7 +334,7 @@ mod tests {
     }
 
     #[test]
-    fn negative_named_pair_gate_requires_one_leading_axis_and_definite_opposite_axis() {
+    fn negative_named_pair_gate_separates_one_axis_and_both_axes_profiles() {
         let container = GridContainerInput {
             columns: vec![
                 GridTrackSize::LengthPx(20.0),
@@ -342,14 +374,14 @@ mod tests {
 
         let mut both_axes_implicit = placement;
         both_axes_implicit.row_start = ComputedCssGridPlacement::NamedLine {
-            name: "row-ghost".into(),
-            occurrence: Some(-2),
+            name: "ghost".into(),
+            occurrence: Some(-4),
         };
         both_axes_implicit.row_end = ComputedCssGridPlacement::NamedLine {
-            name: "row-ghost".into(),
+            name: "ghost".into(),
             occurrence: Some(-1),
         };
-        let (_, usage) = project_grid_item_placement(
+        let (item, usage) = project_grid_item_placement(
             NodeId::new(25).unwrap(),
             &both_axes_implicit,
             &container,
@@ -357,7 +389,32 @@ mod tests {
             true,
         )
         .unwrap();
+        let item = item.unwrap();
+        assert_eq!(item.column_start, GridPlacementInput::Line(-8));
+        assert_eq!(item.column_end, GridPlacementInput::Line(-5));
+        assert_eq!(item.row_start, GridPlacementInput::Line(-6));
+        assert_eq!(item.row_end, GridPlacementInput::Line(-3));
         assert!(usage.requires_signed_extent);
         assert!(!usage.allows_negative_named_line_pair_auto_track_sizing);
+        assert!(usage.allows_negative_named_line_pair_auto_track_sizing_both_axes);
+
+        both_axes_implicit.row_start = ComputedCssGridPlacement::NamedLine {
+            name: "row-ghost".into(),
+            occurrence: Some(-4),
+        };
+        both_axes_implicit.row_end = ComputedCssGridPlacement::NamedLine {
+            name: "row-ghost".into(),
+            occurrence: Some(-1),
+        };
+        let (_, usage) = project_grid_item_placement(
+            NodeId::new(26).unwrap(),
+            &both_axes_implicit,
+            &container,
+            None,
+            true,
+        )
+        .unwrap();
+        assert!(usage.requires_signed_extent);
+        assert!(!usage.allows_negative_named_line_pair_auto_track_sizing_both_axes);
     }
 }

@@ -238,6 +238,23 @@ fn negative_no_area_named_line_pair_sizes_leading_implicit_tracks() {
 }
 
 #[test]
+fn negative_named_line_pair_auto_tracks_accept_start_content_alignment() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:120px;height:100px;grid-template-columns:20px;grid-template-rows:15px;grid-auto-columns:auto;grid-auto-rows:auto;justify-content:start;align-content:start;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "two-axis-item",
+            "box-sizing:border-box;width:18px;height:12px;grid-column:-4 ghost / -1 ghost;grid-row:-4 ghost / -1 ghost;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+    let frame = output.layout.frames[&fixture.nodes["two-axis-item"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (0.0, 0.0, 18.0, 12.0)
+    );
+}
+
+#[test]
 fn negative_named_line_auto_pair_keeps_unsupported_shapes_closed() {
     for (grid_style, item_styles, expected_error) in [
         (

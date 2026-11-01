@@ -1,0 +1,351 @@
+{
+  "schema": "spinon-c11-3-3-negative-named-line-pair-auto-implicit-tracks-runtime-result/v1",
+  "status": "matched",
+  "runID": "c1133-negative-pair-android-avd-20261101T054233146Z-70fec10c",
+  "target": "android-avd",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/negative-named-line-pair-auto-implicit-tracks-mobile-v1.json",
+    "sha256": "ee8ba7b742b161225593191541c89f7fcf8607e0b64c097d49d776026069537c"
+  },
+  "oracle": {
+    "product": "HeadlessChrome/156.0.0.0",
+    "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-leading-named-line-pair-matrix-2026-11-01",
+    "referenceSha256": "4b1f9f878eccce6b0e79e1ff8ce2654008d916b769aeaf05f60a99cd9a7f8f69",
+    "screenshotSha256": "5f12e3251051cd30c7c5a318a56b03242715e03064bd668708aa8e60028847d4",
+    "sampleCount": 8,
+    "maximumChannelError": 0,
+    "oracleComparison": {
+      "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-leading-named-line-pair-matrix-2026-11-01",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 8
+    }
+  },
+  "platform": {
+    "metadata": {
+      "serial": "emulator-5556",
+      "model": "sdk_gphone64_arm64",
+      "release": "17",
+      "sdk": 37,
+      "qemu": true,
+      "target": "android-avd",
+      "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+      "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+    },
+    "appSha256": "69de13afbc8ad21101216e3ab8a34a18569a7d6a06c1e61d255e32f44772c464",
+    "frames": [
+      {
+        "index": 0,
+        "nodeId": 1,
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 240
+      },
+      {
+        "index": 1,
+        "nodeId": 2,
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 2,
+        "nodeId": 3,
+        "x": 0,
+        "y": 0,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 3,
+        "nodeId": 4,
+        "x": 160,
+        "y": 0,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 4,
+        "nodeId": 5,
+        "x": 160,
+        "y": 0,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 5,
+        "nodeId": 6,
+        "x": 0,
+        "y": 60,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 6,
+        "nodeId": 7,
+        "x": 0,
+        "y": 60,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 7,
+        "nodeId": 8,
+        "x": 160,
+        "y": 60,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 8,
+        "nodeId": 9,
+        "x": 160,
+        "y": 60,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 9,
+        "nodeId": 10,
+        "x": 0,
+        "y": 120,
+        "width": 160,
+        "height": 30
+      },
+      {
+        "index": 10,
+        "nodeId": 11,
+        "x": 0,
+        "y": 120,
+        "width": 17,
+        "height": 10
+      },
+      {
+        "index": 11,
+        "nodeId": 12,
+        "x": 160,
+        "y": 120,
+        "width": 108,
+        "height": 30
+      },
+      {
+        "index": 12,
+        "nodeId": 13,
+        "x": 160,
+        "y": 120,
+        "width": 18,
+        "height": 10
+      },
+      {
+        "index": 13,
+        "nodeId": 14,
+        "x": 0,
+        "y": 180,
+        "width": 160,
+        "height": 54
+      },
+      {
+        "index": 14,
+        "nodeId": 15,
+        "x": 0,
+        "y": 180,
+        "width": 10,
+        "height": 17
+      },
+      {
+        "index": 15,
+        "nodeId": 16,
+        "x": 160,
+        "y": 180,
+        "width": 160,
+        "height": 48
+      },
+      {
+        "index": 16,
+        "nodeId": 17,
+        "x": 160,
+        "y": 180,
+        "width": 10,
+        "height": 18
+      }
+    ],
+    "pixelComparison": {
+      "status": "matched",
+      "scene": "negative-named-line-pair-matrix",
+      "runID": "c1133-negative-pair-android-avd-20261101T054233146Z-70fec10c",
+      "processId": 16722,
+      "markerPrefix": "C1133",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 8,
+      "matchedSamples": 8,
+      "maximumChannelError": 0,
+      "pngSha256": "875770ec69b0e40ce3ff9ea3c18460436db535ae38708f099c1b138f70dd08fe",
+      "samples": [
+        {
+          "id": "negative-pair-0",
+          "css": [
+            5,
+            5
+          ],
+          "pixel": [
+            14,
+            14
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-1",
+          "css": [
+            165,
+            5
+          ],
+          "pixel": [
+            434,
+            14
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-2",
+          "css": [
+            5,
+            65
+          ],
+          "pixel": [
+            14,
+            171
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-3",
+          "css": [
+            165,
+            65
+          ],
+          "pixel": [
+            434,
+            171
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-4",
+          "css": [
+            5,
+            125
+          ],
+          "pixel": [
+            14,
+            329
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-5",
+          "css": [
+            165,
+            125
+          ],
+          "pixel": [
+            434,
+            329
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-6",
+          "css": [
+            5,
+            185
+          ],
+          "pixel": [
+            14,
+            486
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "negative-pair-7",
+          "css": [
+            165,
+            185
+          ],
+          "pixel": [
+            434,
+            486
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        }
+      ]
+    },
+    "screenSha256": "cc6a228b165bf2d02e23a922ead93cd90e859fad04c277102bc1d2ac3b378f4e",
+    "negative": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-negative-pair-android-avd-20261101T054233146Z-70fec10c-bad-samples",
+      "readbackStarted": false
+    },
+    "routeNegative": {
+      "status": "rejected-before-runtime-draw",
+      "runID": "c1133-negative-pair-android-avd-20261101T054233146Z-70fec10c-bad-scene"
+    }
+  },
+  "interpretation": "Android API 37 AVD software renderer의 SurfaceView PixelCopy를 고정 Chrome RGBA와 비교했다. 실기기 동작이나 hardware GPU 근거가 아니다."
+}

@@ -30,7 +30,7 @@ private let c1133NamedLineAutoSceneIDs: Set<String> = [
 ]
 private let c1133NamedLinePairSceneIDs: Set<String> = [
     "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
-    "negative-named-line-pair-matrix",
+    "negative-named-line-pair-matrix", "negative-named-line-pair-two-axis-matrix",
 ]
 private func isC1133GridTemplateAreaScene(_ sceneID: String) -> Bool {
     c1133GridTemplateAreasSceneIDs.contains(sceneID)
@@ -11621,6 +11621,17 @@ private struct C111MetalPixelRun {
     private static func c1133NegativeNamedLinePairPixelSamples(
         sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        if sceneID == "negative-named-line-pair-two-axis-matrix" {
+            let color: [UInt32] = [40, 102, 246, 255]
+            return [
+                ("two-axis-auto", "two-axis-auto-item", 5, 5, color),
+                ("two-axis-fixed-overflow", "two-axis-fixed-item", 117, 10, color),
+                ("two-axis-equal", "two-axis-equal-item", 205, 5, color),
+                ("two-axis-reversed", "two-axis-reversed-item", 5, 125, color),
+                ("columns-reversed", "two-axis-columns-reversed-item", 105, 125, color),
+                ("rows-reversed", "two-axis-rows-reversed-item", 205, 125, color),
+            ]
+        }
         guard sceneID == "negative-named-line-pair-matrix" else { return [] }
         let color: [UInt32] = [40, 102, 246, 255]
         return [
@@ -14456,6 +14467,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c1133GridTemplateAreasProbeRequested
             ? c1133NamedLinePairSceneIDs.contains(c1133GridTemplateAreasSceneID)
                 ? c1133GridTemplateAreasSceneID == "negative-named-line-pair-matrix"
+                    || c1133GridTemplateAreasSceneID == "negative-named-line-pair-two-axis-matrix"
                     ? "Negative leading named-line pair → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
                     : "Positive implicit named-line pair → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
                 : "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"

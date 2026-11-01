@@ -942,12 +942,21 @@ pub(super) fn project_styles(
                 implicit_usage.allows_positive_named_line_pair_auto_track_sizing && fixed_size_item;
             let allows_negative_named_line_pair_auto_tracks =
                 implicit_usage.allows_negative_named_line_pair_auto_track_sizing && fixed_size_item;
+            let allows_negative_named_line_pair_auto_tracks_both_axes = implicit_usage
+                .allows_negative_named_line_pair_auto_track_sizing_both_axes
+                && fixed_size_item;
             if implicit_usage.uses_implicit_tracks {
                 let container = grid_containers
                     .get_mut(&owner)
                     .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
                 use spinon_layout::GridPlacementMode;
-                if allows_negative_named_line_pair_auto_tracks {
+                if allows_negative_named_line_pair_auto_tracks_both_axes {
+                    container.placement_mode = GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes;
+                } else if container.placement_mode
+                    == GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes
+                {
+                    // 최종 item 수와 두 축 shape는 layout validator가 검사합니다.
+                } else if allows_negative_named_line_pair_auto_tracks {
                     container.placement_mode =
                         GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks;
                 } else if container.placement_mode
@@ -1132,6 +1141,10 @@ fn reject_grid_alignment(
                 && value == "start")
             && !(is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && matches!(property, "align-content" | "justify-content")
+                && value == "start")
+            && !(is_grid_container
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 && matches!(property, "align-content" | "justify-content")
                 && value == "start")
             && !(is_grid_item

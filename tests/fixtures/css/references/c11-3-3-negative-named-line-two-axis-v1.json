@@ -1,0 +1,33 @@
+{
+  "schema": "spinon-css-reference-observation-v1",
+  "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-negative-named-line-two-axis-matrix-2026-11-01",
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 320, "height": 240 }
+  },
+  "sourceObservation": {
+    "path": "spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/chrome-observations.json",
+    "sha256": "84986c68b6c5ed6e4099ab750c55a6f306a3a34c4b619c917cfb84f88b5afd3b"
+  },
+  "sourceScreenshot": {
+    "path": "spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/chrome-156-reference.png",
+    "sha256": "617f139b3500bf6cdc26820a0cb67c31d062e32c27ffe7efac30f5f06f57f04e"
+  },
+  "environment": { "viewportCssPx": { "width": 320, "height": 240 } },
+  "observations": [
+    {
+      "deviceScaleFactor": 1,
+      "sourceObservationSha256": "84986c68b6c5ed6e4099ab750c55a6f306a3a34c4b619c917cfb84f88b5afd3b",
+      "samples": [
+        { "id": "two-axis-auto", "xCssPx": 5, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+        { "id": "two-axis-fixed-overflow", "xCssPx": 117, "yCssPx": 10, "rgba": [40, 102, 246, 255] },
+        { "id": "two-axis-equal", "xCssPx": 205, "yCssPx": 5, "rgba": [40, 102, 246, 255] },
+        { "id": "two-axis-reversed", "xCssPx": 5, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+        { "id": "columns-reversed", "xCssPx": 105, "yCssPx": 125, "rgba": [40, 102, 246, 255] },
+        { "id": "rows-reversed", "xCssPx": 205, "yCssPx": 125, "rgba": [40, 102, 246, 255] }
+      ]
+    }
+  ]
+}

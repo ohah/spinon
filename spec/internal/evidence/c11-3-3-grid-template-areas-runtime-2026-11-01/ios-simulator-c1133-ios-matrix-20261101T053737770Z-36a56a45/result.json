@@ -1,0 +1,6579 @@
+{
+  "schema": "spinon-c11-3-3-grid-template-areas-ios-runtime-matrix-result/v1",
+  "status": "matched",
+  "runID": "c1133-ios-matrix-20261101T053737770Z-36a56a45",
+  "target": "ios-simulator",
+  "source": {
+    "commit": "cccbbdb20621bac74a512a670942d2de3f18bfd6",
+    "runtimeMatrixSha256": "669e30fe49f93db5db05cd282ed60f78c1861a98db949124442ed244c1a875a8",
+    "mobileFixtureSha256": "fec1edba1a1eef22009991e286b6d0bd1503cc066505e75a046613870ca8beb6",
+    "trackListCyclePixelsSha256": "bfc2fd808e981f75185284423ce8142130d32e85fa5f1303e99e410837e83f03",
+    "typedAutoPixelsSha256": "cc3faf8a5e1eaffc85db2bcd8060a4ddd385298014fef409c7d7ac4304b09109",
+    "trackListCycleObservationSha256": "d5b338301c82502e710e3abb0839e5cb30e9dab9976be8d12add277eb4e2bb8b",
+    "trackListCycleChromeScreenshotSha256": "3df254c19ede58efae3072a10225113e941586d148cc741e7cad3040611261ed",
+    "chromeReferenceSha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913",
+    "unknownAreaPixelFixtureSha256": "10c676c6c1553d2f38a372d7c399c0f41885f9fa1acd99a00e58cf1dcece5647",
+    "unknownAreaReferenceSha256": "3f0f3fa8afead05c0bc1d77041b1ebe81c93208d48031e03b1758245fc9f9e20",
+    "leadingNamedLinesPixelFixtureSha256": "60717838fc88c0de02281c979aa2e3c549934d8c0aca46850d841fe453ce5871",
+    "leadingNamedLinesReferenceSha256": "e36e31c4ed658963cd9f3d5bdcd0a5c83c748950fe2f048d975b4a44191a6ec3",
+    "captureScriptSha256": "67a295fef7d526e4dc3389bb81f01abd66001d6a59f39fb18070e3c5a81dad49",
+    "matrixValidationSha256": "2b844ae6ae2e6dc59149eff8972819d8f8f64a417027ade5a1802a8180ec99cd",
+    "iosRuntimeSourceSha256": "1946affce7aa5ef9ceebf9da79b26eecbf2be8debdc7f2932ba7eb3bf457a96c",
+    "appSha256": "9440e71652b075e79f0402d60b6614ee7f2ddd5eab4026a699928d2be3360d53"
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "sampleCount": 2,
+    "oracleComparison": {
+      "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+      "screenshot": [
+        320,
+        240
+      ],
+      "sampleCount": 2
+    }
+  },
+  "platform": {
+    "metadata": {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "outcomeCounts": {
+      "successCount": 34,
+      "cascadeFallbackCount": 5,
+      "expectedRejectCount": 0
+    },
+    "sceneCount": 39,
+    "nodeCount": 126,
+    "comparedNodeFrames": 126,
+    "maximumGeometryErrorCssPx": 0,
+    "startupSupersededRetryCount": 0,
+    "pixelComparison": {
+      "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+      "status": "matched",
+      "runID": "c1133m-20261101T053737771Z-cf63f63f-00",
+      "processId": 34052,
+      "surfaceGeneration": 1,
+      "revisions": {
+        "document": 20,
+        "renderTree": 4,
+        "environment": 0
+      },
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "drawable": [
+        960,
+        720
+      ],
+      "scale": [
+        3,
+        3
+      ],
+      "expectedSamples": 2,
+      "matchedSamples": 2,
+      "maximumChannelError": 0,
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            150,
+            10
+          ],
+          "drawable": [
+            451,
+            31
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ],
+          "maximumChannelError": 0
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            100,
+            50
+          ],
+          "drawable": [
+            301,
+            151
+          ],
+          "rgba": [
+            62,
+            99,
+            221,
+            255
+          ],
+          "maximumChannelError": 0
+        }
+      ]
+    },
+    "screenshotSha256": "6795c82cd420358afa9dcb2108bfe6737697a55de0e22ce725508ff5a6d4f147",
+    "cyclePixelComparisons": [
+      {
+        "sceneId": "both-axis-cycle",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-31",
+        "processId": 36067,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 35,
+          "renderTree": 7,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              60
+            ],
+            "drawable": [
+              271,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "hero",
+            "css": [
+              20,
+              12
+            ],
+            "drawable": [
+              61,
+              37
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "side",
+            "css": [
+              53,
+              12
+            ],
+            "drawable": [
+              160,
+              37
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "footer",
+            "css": [
+              20,
+              28
+            ],
+            "drawable": [
+              61,
+              85
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "utility",
+            "css": [
+              53,
+              28
+            ],
+            "drawable": [
+              160,
+              85
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "extra",
+            "css": [
+              20,
+              34
+            ],
+            "drawable": [
+              61,
+              103
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "spare",
+            "css": [
+              53,
+              34
+            ],
+            "drawable": [
+              160,
+              103
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "row-cycle-from-first-implicit",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-32",
+        "processId": 36130,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 30,
+          "renderTree": 6,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              70
+            ],
+            "drawable": [
+              271,
+              211
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-a",
+            "css": [
+              10,
+              8
+            ],
+            "drawable": [
+              31,
+              25
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-b",
+            "css": [
+              10,
+              20
+            ],
+            "drawable": [
+              31,
+              61
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-c",
+            "css": [
+              10,
+              38
+            ],
+            "drawable": [
+              31,
+              115
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-d",
+            "css": [
+              10,
+              45
+            ],
+            "drawable": [
+              31,
+              136
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-e",
+            "css": [
+              10,
+              53
+            ],
+            "drawable": [
+              31,
+              160
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "column-cycle-from-first-implicit",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-33",
+        "processId": 36262,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              95,
+              70
+            ],
+            "drawable": [
+              286,
+              211
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "left",
+            "css": [
+              10,
+              5
+            ],
+            "drawable": [
+              31,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "middle",
+            "css": [
+              50,
+              5
+            ],
+            "drawable": [
+              151,
+              16
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "right",
+            "css": [
+              82,
+              5
+            ],
+            "drawable": [
+              247,
+              16
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "authored-tracks-exceed-area",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-34",
+        "processId": 36309,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 15,
+          "renderTree": 3,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "drawable": [
+              241,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "exceed-top",
+            "css": [
+              10,
+              5
+            ],
+            "drawable": [
+              31,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "exceed-bottom",
+            "css": [
+              10,
+              20
+            ],
+            "drawable": [
+              31,
+              61
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "row-cycle-continues-after-area",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-35",
+        "processId": 36360,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "drawable": [
+              241,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "drawable": [
+              31,
+              31
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "area",
+            "css": [
+              10,
+              22
+            ],
+            "drawable": [
+              31,
+              67
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "late",
+            "css": [
+              10,
+              30
+            ],
+            "drawable": [
+              31,
+              91
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "column-cycle-continues-after-area",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-36",
+        "processId": 36412,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "drawable": [
+              241,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "drawable": [
+              31,
+              31
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "area",
+            "css": [
+              22,
+              10
+            ],
+            "drawable": [
+              67,
+              31
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "late",
+            "css": [
+              28,
+              10
+            ],
+            "drawable": [
+              85,
+              31
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      }
+    ],
+    "typedAutoPixelComparisons": [
+      {
+        "sceneId": "typed-area-minmax-row",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-37",
+        "processId": 36456,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "first-row",
+            "css": [
+              50,
+              5
+            ],
+            "drawable": [
+              151,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "second-row",
+            "css": [
+              50,
+              20
+            ],
+            "drawable": [
+              151,
+              61
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "third-row",
+            "css": [
+              50,
+              60
+            ],
+            "drawable": [
+              151,
+              181
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      {
+        "sceneId": "typed-area-percentage-column",
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-38",
+        "processId": 36538,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              10
+            ],
+            "drawable": [
+              241,
+              31
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "left-column",
+            "css": [
+              5,
+              10
+            ],
+            "drawable": [
+              16,
+              31
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "middle-column",
+            "css": [
+              15,
+              10
+            ],
+            "drawable": [
+              46,
+              31
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "right-column",
+            "css": [
+              40,
+              10
+            ],
+            "drawable": [
+              121,
+              31
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      }
+    ],
+    "typedAutoScreenCaptures": [
+      {
+        "sceneId": "typed-area-minmax-row",
+        "path": "typed-area-minmax-row-screen.png",
+        "sha256": "c77921d5b6a517fbb436d73708f8c3a1fd29df7a7d0e58c223319e89c0a1f058"
+      },
+      {
+        "sceneId": "typed-area-percentage-column",
+        "path": "typed-area-percentage-column-screen.png",
+        "sha256": "8353c3d5fe569e2a80f63b614a522eed29a46a0c9eba044a64f5c8e1d7e98b7f"
+      }
+    ],
+    "trackListCycleScreenshotSha256": "5ff85f003d259ee153cb0b8d0797470a4d1767972b1f779397c0a836ee7d83bd",
+    "typedAutoPixels": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-mobile-pixels-v1.json",
+      "sha256": "cc3faf8a5e1eaffc85db2bcd8060a4ddd385298014fef409c7d7ac4304b09109",
+      "observations": [
+        {
+          "sceneId": "typed-area-minmax-row",
+          "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+          "status": "matched",
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-37",
+          "processId": 36456,
+          "surfaceGeneration": 1,
+          "revisions": {
+            "document": 20,
+            "renderTree": 4,
+            "environment": 0
+          },
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "drawable": [
+            960,
+            720
+          ],
+          "scale": [
+            3,
+            3
+          ],
+          "expectedSamples": 3,
+          "matchedSamples": 3,
+          "maximumChannelError": 0,
+          "samples": [
+            {
+              "id": "first-row",
+              "css": [
+                50,
+                5
+              ],
+              "drawable": [
+                151,
+                16
+              ],
+              "rgba": [
+                229,
+                72,
+                77,
+                255
+              ],
+              "maximumChannelError": 0
+            },
+            {
+              "id": "second-row",
+              "css": [
+                50,
+                20
+              ],
+              "drawable": [
+                151,
+                61
+              ],
+              "rgba": [
+                48,
+                164,
+                108,
+                255
+              ],
+              "maximumChannelError": 0
+            },
+            {
+              "id": "third-row",
+              "css": [
+                50,
+                60
+              ],
+              "drawable": [
+                151,
+                181
+              ],
+              "rgba": [
+                62,
+                99,
+                221,
+                255
+              ],
+              "maximumChannelError": 0
+            }
+          ]
+        },
+        {
+          "sceneId": "typed-area-percentage-column",
+          "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+          "status": "matched",
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-38",
+          "processId": 36538,
+          "surfaceGeneration": 1,
+          "revisions": {
+            "document": 20,
+            "renderTree": 4,
+            "environment": 0
+          },
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "drawable": [
+            960,
+            720
+          ],
+          "scale": [
+            3,
+            3
+          ],
+          "expectedSamples": 4,
+          "matchedSamples": 4,
+          "maximumChannelError": 0,
+          "samples": [
+            {
+              "id": "background",
+              "css": [
+                80,
+                10
+              ],
+              "drawable": [
+                241,
+                31
+              ],
+              "rgba": [
+                16,
+                24,
+                32,
+                255
+              ],
+              "maximumChannelError": 0
+            },
+            {
+              "id": "left-column",
+              "css": [
+                5,
+                10
+              ],
+              "drawable": [
+                16,
+                31
+              ],
+              "rgba": [
+                229,
+                72,
+                77,
+                255
+              ],
+              "maximumChannelError": 0
+            },
+            {
+              "id": "middle-column",
+              "css": [
+                15,
+                10
+              ],
+              "drawable": [
+                46,
+                31
+              ],
+              "rgba": [
+                48,
+                164,
+                108,
+                255
+              ],
+              "maximumChannelError": 0
+            },
+            {
+              "id": "right-column",
+              "css": [
+                40,
+                10
+              ],
+              "drawable": [
+                121,
+                31
+              ],
+              "rgba": [
+                62,
+                99,
+                221,
+                255
+              ],
+              "maximumChannelError": 0
+            }
+          ]
+        }
+      ],
+      "totalSamples": 7,
+      "screenshots": [
+        {
+          "sceneId": "typed-area-minmax-row",
+          "path": "typed-area-minmax-row-screen.png",
+          "sha256": "c77921d5b6a517fbb436d73708f8c3a1fd29df7a7d0e58c223319e89c0a1f058"
+        },
+        {
+          "sceneId": "typed-area-percentage-column",
+          "path": "typed-area-percentage-column-screen.png",
+          "sha256": "8353c3d5fe569e2a80f63b614a522eed29a46a0c9eba044a64f5c8e1d7e98b7f"
+        }
+      ]
+    },
+    "unknownAreaOverflow": {
+      "sceneId": "unknown-area-fixed-implicit-tracks",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-39",
+          "status": "matched",
+          "logPath": "runtime-unknown-area-fixed-implicit-tracks.log"
+        }
+      ],
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "fixed-implicit-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "fixed-known-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 60
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "fixed-unknown-area",
+          "expected": {
+            "x": 175,
+            "y": 125,
+            "width": 15,
+            "height": 5
+          },
+          "actual": {
+            "x": 175,
+            "y": 125,
+            "width": 15,
+            "height": 5
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-39",
+        "processId": 36618,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 15,
+          "renderTree": 3,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "grid-interior",
+            "css": [
+              150,
+              110
+            ],
+            "drawable": [
+              451,
+              331
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "known-area",
+            "css": [
+              10,
+              10
+            ],
+            "drawable": [
+              31,
+              31
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "unknown-area-overflow",
+            "css": [
+              182,
+              127
+            ],
+            "drawable": [
+              547,
+              382
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "screenshotSha256": "e64ebbae91a5870946818298bf7f3cf2330c60283578132be86dae9d87a87b63",
+      "logPath": "runtime-unknown-area-fixed-implicit-tracks.log"
+    },
+    "leadingNamedImplicitLines": {
+      "fixturePath": "tests/fixtures/css/c11/grid-leading-named-implicit-lines-mobile-pixels-v1.json",
+      "fixtureSha256": "60717838fc88c0de02281c979aa2e3c549934d8c0aca46850d841fe453ce5871",
+      "referencePath": "tests/fixtures/css/references/c11-3-3-leading-named-implicit-lines-precomparison-v1.json",
+      "referenceSha256": "e36e31c4ed658963cd9f3d5bdcd0a5c83c748950fe2f048d975b4a44191a6ec3",
+      "sceneCount": 7,
+      "comparedVisibleNodes": 14,
+      "maximumGeometryErrorCssPx": 0,
+      "matchedPixelSamples": 7,
+      "scenes": [
+        {
+          "index": 0,
+          "sceneId": "positive-missing-occurrences",
+          "expectedTracksPx": [
+            30,
+            40,
+            15,
+            7,
+            15,
+            7
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-40",
+              "status": "matched",
+              "logPath": "runtime-leading-00-positive-missing-occurrences.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-positive-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 114,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 114,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-positive-item",
+              "expected": {
+                "x": 107,
+                "y": 0,
+                "width": 7,
+                "height": 20
+              },
+              "actual": {
+                "x": 107,
+                "y": 0,
+                "width": 7,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-40",
+            "processId": 36676,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  110,
+                  10
+                ],
+                "drawable": [
+                  331,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "21beac233e20be19ae5281a7a496315007dba279cea002b72eedb28fd0596021",
+          "logPath": "runtime-leading-00-positive-missing-occurrences.log",
+          "pixelComparisonPath": "metal-leading-positive-missing-occurrences-comparison.json"
+        },
+        {
+          "index": 1,
+          "sceneId": "negative-missing-occurrences",
+          "expectedTracksPx": [
+            15,
+            7,
+            30,
+            40
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-41",
+              "status": "matched",
+              "logPath": "runtime-leading-01-negative-missing-occurrences.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-negative-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 92,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 92,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-negative-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 15,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 15,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-41",
+            "processId": 36743,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  7,
+                  10
+                ],
+                "drawable": [
+                  22,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "444f0f492fa9a89867f66d608c41a7759aa4f2d0f4bf8a94b6619bf3b7009879",
+          "logPath": "runtime-leading-01-negative-missing-occurrences.log",
+          "pixelComparisonPath": "metal-leading-negative-missing-occurrences-comparison.json"
+        },
+        {
+          "index": 2,
+          "sceneId": "backward-span-one",
+          "expectedTracksPx": [
+            7,
+            100,
+            15,
+            7
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-42",
+              "status": "matched",
+              "logPath": "runtime-leading-02-backward-span-one.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-backward-one-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-backward-one-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-42",
+            "processId": 36874,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  64,
+                  10
+                ],
+                "drawable": [
+                  193,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "c9295f06e9b1002f5368e38b2b25d0caa610756f4f82b2ed79cea43ea6fc0659",
+          "logPath": "runtime-leading-02-backward-span-one.log",
+          "pixelComparisonPath": "metal-leading-backward-span-one-comparison.json"
+        },
+        {
+          "index": 3,
+          "sceneId": "backward-span-two",
+          "expectedTracksPx": [
+            15,
+            7,
+            100,
+            15,
+            7
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-43",
+              "status": "matched",
+              "logPath": "runtime-leading-03-backward-span-two.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-backward-two-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-backward-two-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-43",
+            "processId": 36935,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  72,
+                  10
+                ],
+                "drawable": [
+                  217,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "95e91c352cb3ef8ec33dd87926839fb824a3b75ce4a50e64cde0e2153e05fcf4",
+          "logPath": "runtime-leading-03-backward-span-two.log",
+          "pixelComparisonPath": "metal-leading-backward-span-two-comparison.json"
+        },
+        {
+          "index": 4,
+          "sceneId": "backward-span-partial-explicit",
+          "expectedTracksPx": [
+            7,
+            40,
+            100,
+            15
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-44",
+              "status": "matched",
+              "logPath": "runtime-leading-04-backward-span-partial-explicit.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-backward-partial-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-backward-partial-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-44",
+            "processId": 37010,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  81,
+                  10
+                ],
+                "drawable": [
+                  244,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "71e01601b076f29e7f364387fe97fd035edd149a7bad078c6f2c71209ddf7dcb",
+          "logPath": "runtime-leading-04-backward-span-partial-explicit.log",
+          "pixelComparisonPath": "metal-leading-backward-span-partial-explicit-comparison.json"
+        },
+        {
+          "index": 5,
+          "sceneId": "forward-span-two",
+          "expectedTracksPx": [
+            50,
+            15,
+            7,
+            15,
+            7
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-45",
+              "status": "matched",
+              "logPath": "runtime-leading-05-forward-span-two.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-forward-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 94,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 94,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-forward-item",
+              "expected": {
+                "x": 72,
+                "y": 0,
+                "width": 22,
+                "height": 20
+              },
+              "actual": {
+                "x": 72,
+                "y": 0,
+                "width": 22,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-45",
+            "processId": 37076,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  80,
+                  10
+                ],
+                "drawable": [
+                  241,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "3efc68c8c3229cbcca389df2c45f8aff56a6e89e5ee786859aa416e185533810",
+          "logPath": "runtime-leading-05-forward-span-two.log",
+          "pixelComparisonPath": "metal-leading-forward-span-two-comparison.json"
+        },
+        {
+          "index": 6,
+          "sceneId": "backward-span-uses-authored-name",
+          "expectedTracksPx": [
+            30,
+            40,
+            15
+          ],
+          "attempts": [
+            {
+              "runID": "c1133m-20261101T053737771Z-cf63f63f-46",
+              "status": "matched",
+              "logPath": "runtime-leading-06-backward-span-uses-authored-name.log"
+            }
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "paintOrder": [
+            {
+              "order": 0,
+              "nodeId": 1
+            },
+            {
+              "order": 1,
+              "nodeId": 2
+            }
+          ],
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-authored-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 85,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 85,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-authored-item",
+              "expected": {
+                "x": 30,
+                "y": 0,
+                "width": 55,
+                "height": 20
+              },
+              "actual": {
+                "x": 30,
+                "y": 0,
+                "width": 55,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+            "status": "matched",
+            "runID": "c1133m-20261101T053737771Z-cf63f63f-46",
+            "processId": 37145,
+            "surfaceGeneration": 1,
+            "revisions": {
+              "document": 10,
+              "renderTree": 2,
+              "environment": 0
+            },
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "drawable": [
+              960,
+              720
+            ],
+            "scale": [
+              3,
+              3
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  50,
+                  10
+                ],
+                "drawable": [
+                  151,
+                  31
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ],
+                "maximumChannelError": 0
+              }
+            ]
+          },
+          "screenshotSha256": "b5ebbb29d1602df7ebd19bc590c30b13862f4e272f000dfb8af0eb0b503813bf",
+          "logPath": "runtime-leading-06-backward-span-uses-authored-name.log",
+          "pixelComparisonPath": "metal-leading-backward-span-uses-authored-name-comparison.json"
+        }
+      ]
+    },
+    "negative": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-ios-matrix-20261101T053737770Z-36a56a45-bad-samples",
+      "readbackStarted": false
+    },
+    "routeNegative": {
+      "status": "rejected-before-runtime-draw",
+      "runID": "c1133-ios-matrix-20261101T053737770Z-36a56a45-unknown-scene"
+    }
+  },
+  "observations": [
+    {
+      "index": 0,
+      "sceneId": "basic-rectangles",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-00",
+          "status": "matched",
+          "logPath": "runtime-00-basic-rectangles.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "basic-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "basic-head",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "basic-main",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "basic-foot",
+          "expected": {
+            "x": 0,
+            "y": 80,
+            "width": 160,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 80,
+            "width": 160,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-00",
+        "processId": 34052,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "grid-background",
+            "css": [
+              150,
+              10
+            ],
+            "drawable": [
+              451,
+              31
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "item-blue",
+            "css": [
+              100,
+              50
+            ],
+            "drawable": [
+              301,
+              151
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-00-basic-rectangles.log"
+    },
+    {
+      "index": 1,
+      "sceneId": "null-cell-dot-runs",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-01",
+          "status": "matched",
+          "logPath": "runtime-01-null-cell-dot-runs.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "null-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "null-hero",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "null-left",
+          "expected": {
+            "x": 0,
+            "y": 60,
+            "width": 40,
+            "height": 60
+          },
+          "actual": {
+            "x": 0,
+            "y": 60,
+            "width": 40,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "null-right",
+          "expected": {
+            "x": 100,
+            "y": 60,
+            "width": 60,
+            "height": 60
+          },
+          "actual": {
+            "x": 100,
+            "y": 60,
+            "width": 60,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-01-null-cell-dot-runs.log"
+    },
+    {
+      "index": 2,
+      "sceneId": "all-null-cells",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-02",
+          "status": "matched",
+          "logPath": "runtime-02-all-null-cells.log"
+        }
+      ],
+      "boxes": 1,
+      "frames": 1,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "empty-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-02-all-null-cells.log"
+    },
+    {
+      "index": 3,
+      "sceneId": "single-cell-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-03",
+          "status": "matched",
+          "logPath": "runtime-03-single-cell-area.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "single-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "single-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-03-single-cell-area.log"
+    },
+    {
+      "index": 4,
+      "sceneId": "bare-area-edge-aliases",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-04",
+          "status": "matched",
+          "logPath": "runtime-04-bare-area-edge-aliases.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "alias-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "alias-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-04-bare-area-edge-aliases.log"
+    },
+    {
+      "index": 5,
+      "sceneId": "grid-area-one-value",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-05",
+          "status": "matched",
+          "logPath": "runtime-05-grid-area-one-value.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-one-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-one-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-05-grid-area-one-value.log"
+    },
+    {
+      "index": 6,
+      "sceneId": "grid-area-two-values",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-06",
+          "status": "matched",
+          "logPath": "runtime-06-grid-area-two-values.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-two-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-two-item",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-06-grid-area-two-values.log"
+    },
+    {
+      "index": 7,
+      "sceneId": "grid-area-three-values",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-07",
+          "status": "matched",
+          "logPath": "runtime-07-grid-area-three-values.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-three-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-three-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-07-grid-area-three-values.log"
+    },
+    {
+      "index": 8,
+      "sceneId": "grid-area-four-values",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-08",
+          "status": "matched",
+          "logPath": "runtime-08-grid-area-four-values.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-four-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-four-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-08-grid-area-four-values.log"
+    },
+    {
+      "index": 9,
+      "sceneId": "row-column-longhands-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-09",
+          "status": "matched",
+          "logPath": "runtime-09-row-column-longhands-area.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "longhand-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "longhand-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-09-row-column-longhands-area.log"
+    },
+    {
+      "index": 10,
+      "sceneId": "grid-template-shorthand",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-10",
+          "status": "matched",
+          "logPath": "runtime-10-grid-template-shorthand.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "template-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "template-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-10-grid-template-shorthand.log"
+    },
+    {
+      "index": 11,
+      "sceneId": "grid-shorthand",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-11",
+          "status": "matched",
+          "logPath": "runtime-11-grid-shorthand.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "grid-shorthand-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "grid-shorthand-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-11-grid-shorthand.log"
+    },
+    {
+      "index": 12,
+      "sceneId": "bare-area-vs-explicit-one-name",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-12",
+          "status": "matched",
+          "logPath": "runtime-12-bare-area-vs-explicit-one-name.log"
+        }
+      ],
+      "boxes": 3,
+      "frames": 3,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "bare-vs-number-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "bare-area-name",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "explicit-one-name",
+          "expected": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-12-bare-area-vs-explicit-one-name.log"
+    },
+    {
+      "index": 13,
+      "sceneId": "explicit-line-before-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-13",
+          "status": "matched",
+          "logPath": "runtime-13-explicit-line-before-area.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "line-before-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "line-before-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "line-before-name",
+          "expected": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "line-before-grid-area",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-13-explicit-line-before-area.log"
+    },
+    {
+      "index": 14,
+      "sceneId": "explicit-line-after-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-14",
+          "status": "matched",
+          "logPath": "runtime-14-explicit-line-after-area.log"
+        }
+      ],
+      "boxes": 3,
+      "frames": 3,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "line-after-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "line-after-area",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "line-after-name",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-14-explicit-line-after-area.log"
+    },
+    {
+      "index": 15,
+      "sceneId": "area-names-ending-start-or-end",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-15",
+          "status": "matched",
+          "logPath": "runtime-15-area-names-ending-start-or-end.log"
+        }
+      ],
+      "boxes": 3,
+      "frames": 3,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "suffix-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "suffix-area-name",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "suffix-area-end-name",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-15-area-names-ending-start-or-end.log"
+    },
+    {
+      "index": 16,
+      "sceneId": "implicit-area-from-explicit-lines",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-16",
+          "status": "matched",
+          "logPath": "runtime-16-implicit-area-from-explicit-lines.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "implicit-area-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "implicit-area-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-16-implicit-area-from-explicit-lines.log"
+    },
+    {
+      "index": 17,
+      "sceneId": "escaped-and-unicode-identifiers",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-17",
+          "status": "matched",
+          "logPath": "runtime-17-escaped-and-unicode-identifiers.log"
+        }
+      ],
+      "boxes": 3,
+      "frames": 3,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "unicode-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "unicode-escaped-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "unicode-asian-item",
+          "expected": {
+            "x": 100,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "actual": {
+            "x": 100,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-17-escaped-and-unicode-identifiers.log"
+    },
+    {
+      "index": 18,
+      "sceneId": "invalid-l-shape-fallback",
+      "outcome": "cascade-fallback",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-18",
+          "status": "matched",
+          "logPath": "runtime-18-invalid-l-shape-fallback.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-l-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-l-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-18-invalid-l-shape-fallback.log"
+    },
+    {
+      "index": 19,
+      "sceneId": "invalid-disconnected-area-fallback",
+      "outcome": "cascade-fallback",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-19",
+          "status": "matched",
+          "logPath": "runtime-19-invalid-disconnected-area-fallback.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-disconnected-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-disconnected-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-19-invalid-disconnected-area-fallback.log"
+    },
+    {
+      "index": 20,
+      "sceneId": "invalid-row-width-fallback",
+      "outcome": "cascade-fallback",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-20",
+          "status": "matched",
+          "logPath": "runtime-20-invalid-row-width-fallback.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-row-width-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-row-width-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-20-invalid-row-width-fallback.log"
+    },
+    {
+      "index": 21,
+      "sceneId": "invalid-trash-token-fallback",
+      "outcome": "cascade-fallback",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-21",
+          "status": "matched",
+          "logPath": "runtime-21-invalid-trash-token-fallback.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-trash-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-trash-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-21-invalid-trash-token-fallback.log"
+    },
+    {
+      "index": 22,
+      "sceneId": "empty-string-fallback",
+      "outcome": "cascade-fallback",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-22",
+          "status": "matched",
+          "logPath": "runtime-22-empty-string-fallback.log"
+        }
+      ],
+      "boxes": 2,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-empty-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-empty-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-22-empty-string-fallback.log"
+    },
+    {
+      "index": 23,
+      "sceneId": "area-track-count-mismatch",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-23",
+          "status": "matched",
+          "logPath": "runtime-23-area-track-count-mismatch.log"
+        }
+      ],
+      "boxes": 1,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "mismatch-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "mismatch-last-cell",
+          "expected": {
+            "x": 160,
+            "y": 0,
+            "width": 0,
+            "height": 60
+          },
+          "actual": {
+            "x": 160,
+            "y": 0,
+            "width": 0,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-23-area-track-count-mismatch.log"
+    },
+    {
+      "index": 24,
+      "sceneId": "unknown-area-implicit-tracks",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-24",
+          "status": "matched",
+          "logPath": "runtime-24-unknown-area-implicit-tracks.log"
+        }
+      ],
+      "boxes": 1,
+      "frames": 2,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "unknown-area-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "unknown-area-item",
+          "expected": {
+            "x": 160,
+            "y": 120,
+            "width": 0,
+            "height": 0
+          },
+          "actual": {
+            "x": 160,
+            "y": 120,
+            "width": 0,
+            "height": 0
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-24-unknown-area-implicit-tracks.log"
+    },
+    {
+      "index": 25,
+      "sceneId": "nested-hidden-source-order",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-25",
+          "status": "matched",
+          "logPath": "runtime-25-nested-hidden-source-order.log"
+        }
+      ],
+      "boxes": 5,
+      "frames": 6,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "nested-outer-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "nested-outer-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "nested-inner-grid",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "nested-inner-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "nested-bottom-item",
+          "expected": {
+            "x": 40,
+            "y": 80,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 80,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "nested-hidden-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-25-nested-hidden-source-order.log"
+    },
+    {
+      "index": 26,
+      "sceneId": "area-auto-tracks-none",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-26",
+          "status": "matched",
+          "logPath": "runtime-26-area-auto-tracks-none.log"
+        }
+      ],
+      "boxes": 5,
+      "frames": 5,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-none",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-none-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-none-b",
+          "expected": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-none-c",
+          "expected": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-none-d",
+          "expected": {
+            "x": 9,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 9,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-26-area-auto-tracks-none.log"
+    },
+    {
+      "index": 27,
+      "sceneId": "area-auto-tracks-short-row",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-27",
+          "status": "matched",
+          "logPath": "runtime-27-area-auto-tracks-short-row.log"
+        }
+      ],
+      "boxes": 5,
+      "frames": 5,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-short-row",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-short-row-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-short-row-b",
+          "expected": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-short-row-c",
+          "expected": {
+            "x": 0,
+            "y": 12,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 12,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-short-row-d",
+          "expected": {
+            "x": 9,
+            "y": 12,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 9,
+            "y": 12,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-27-area-auto-tracks-short-row.log"
+    },
+    {
+      "index": 28,
+      "sceneId": "area-auto-tracks-short-col",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-28",
+          "status": "matched",
+          "logPath": "runtime-28-area-auto-tracks-short-col.log"
+        }
+      ],
+      "boxes": 5,
+      "frames": 5,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-short-col",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-short-col-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-short-col-b",
+          "expected": {
+            "x": 13,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 13,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-short-col-c",
+          "expected": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-short-col-d",
+          "expected": {
+            "x": 13,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 13,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-28-area-auto-tracks-short-col.log"
+    },
+    {
+      "index": 29,
+      "sceneId": "area-auto-tracks-auto",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-29",
+          "status": "matched",
+          "logPath": "runtime-29-area-auto-tracks-auto.log"
+        }
+      ],
+      "boxes": 5,
+      "frames": 5,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-auto",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 50,
+            "height": 30
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 50,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-auto-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-auto-b",
+          "expected": {
+            "x": 20,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 20,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-auto-c",
+          "expected": {
+            "x": 0,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-auto-d",
+          "expected": {
+            "x": 20,
+            "y": 10,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 20,
+            "y": 10,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-29-area-auto-tracks-auto.log"
+    },
+    {
+      "index": 30,
+      "sceneId": "area-auto-tracks-long",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-30",
+          "status": "matched",
+          "logPath": "runtime-30-area-auto-tracks-long.log"
+        }
+      ],
+      "boxes": 5,
+      "frames": 5,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-long",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-long-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-long-b",
+          "expected": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "actual": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-long-c",
+          "expected": {
+            "x": 0,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "actual": {
+            "x": 0,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-long-d",
+          "expected": {
+            "x": 30,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "actual": {
+            "x": 30,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-30-area-auto-tracks-long.log"
+    },
+    {
+      "index": 31,
+      "sceneId": "both-axis-cycle",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-31",
+          "status": "matched",
+          "logPath": "runtime-31-both-axis-cycle.log"
+        }
+      ],
+      "boxes": 7,
+      "frames": 7,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        },
+        {
+          "order": 5,
+          "nodeId": 6
+        },
+        {
+          "order": 6,
+          "nodeId": 7
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "both-axis-cycle",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "both-hero",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 41,
+            "height": 25
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 41,
+            "height": 25
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "both-side",
+          "expected": {
+            "x": 41,
+            "y": 0,
+            "width": 24,
+            "height": 25
+          },
+          "actual": {
+            "x": 41,
+            "y": 0,
+            "width": 24,
+            "height": 25
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "both-footer",
+          "expected": {
+            "x": 0,
+            "y": 25,
+            "width": 41,
+            "height": 7
+          },
+          "actual": {
+            "x": 0,
+            "y": 25,
+            "width": 41,
+            "height": 7
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "both-utility",
+          "expected": {
+            "x": 41,
+            "y": 25,
+            "width": 24,
+            "height": 7
+          },
+          "actual": {
+            "x": 41,
+            "y": 25,
+            "width": 24,
+            "height": 7
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "both-extra",
+          "expected": {
+            "x": 0,
+            "y": 32,
+            "width": 41,
+            "height": 5
+          },
+          "actual": {
+            "x": 0,
+            "y": 32,
+            "width": 41,
+            "height": 5
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 7,
+          "nodeName": "both-spare",
+          "expected": {
+            "x": 41,
+            "y": 32,
+            "width": 24,
+            "height": 5
+          },
+          "actual": {
+            "x": 41,
+            "y": 32,
+            "width": 24,
+            "height": 5
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-31",
+        "processId": 36067,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 35,
+          "renderTree": 7,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              60
+            ],
+            "drawable": [
+              271,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "hero",
+            "css": [
+              20,
+              12
+            ],
+            "drawable": [
+              61,
+              37
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "side",
+            "css": [
+              53,
+              12
+            ],
+            "drawable": [
+              160,
+              37
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "footer",
+            "css": [
+              20,
+              28
+            ],
+            "drawable": [
+              61,
+              85
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "utility",
+            "css": [
+              53,
+              28
+            ],
+            "drawable": [
+              160,
+              85
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "extra",
+            "css": [
+              20,
+              34
+            ],
+            "drawable": [
+              61,
+              103
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "spare",
+            "css": [
+              53,
+              34
+            ],
+            "drawable": [
+              160,
+              103
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-31-both-axis-cycle.log"
+    },
+    {
+      "index": 32,
+      "sceneId": "row-cycle-from-first-implicit",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-32",
+          "status": "matched",
+          "logPath": "runtime-32-row-cycle-from-first-implicit.log"
+        }
+      ],
+      "boxes": 6,
+      "frames": 6,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        },
+        {
+          "order": 4,
+          "nodeId": 5
+        },
+        {
+          "order": 5,
+          "nodeId": 6
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "row-cycle-from-first-implicit",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "row-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 46,
+            "height": 17
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 46,
+            "height": 17
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "row-b",
+          "expected": {
+            "x": 0,
+            "y": 17,
+            "width": 46,
+            "height": 19
+          },
+          "actual": {
+            "x": 0,
+            "y": 17,
+            "width": 46,
+            "height": 19
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "row-c",
+          "expected": {
+            "x": 0,
+            "y": 36,
+            "width": 46,
+            "height": 6
+          },
+          "actual": {
+            "x": 0,
+            "y": 36,
+            "width": 46,
+            "height": 6
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "row-d",
+          "expected": {
+            "x": 0,
+            "y": 42,
+            "width": 46,
+            "height": 8
+          },
+          "actual": {
+            "x": 0,
+            "y": 42,
+            "width": 46,
+            "height": 8
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "row-e",
+          "expected": {
+            "x": 0,
+            "y": 50,
+            "width": 46,
+            "height": 6
+          },
+          "actual": {
+            "x": 0,
+            "y": 50,
+            "width": 46,
+            "height": 6
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-32",
+        "processId": 36130,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 30,
+          "renderTree": 6,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              70
+            ],
+            "drawable": [
+              271,
+              211
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-a",
+            "css": [
+              10,
+              8
+            ],
+            "drawable": [
+              31,
+              25
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-b",
+            "css": [
+              10,
+              20
+            ],
+            "drawable": [
+              31,
+              61
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-c",
+            "css": [
+              10,
+              38
+            ],
+            "drawable": [
+              31,
+              115
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-d",
+            "css": [
+              10,
+              45
+            ],
+            "drawable": [
+              31,
+              136
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "row-e",
+            "css": [
+              10,
+              53
+            ],
+            "drawable": [
+              31,
+              160
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-32-row-cycle-from-first-implicit.log"
+    },
+    {
+      "index": 33,
+      "sceneId": "column-cycle-from-first-implicit",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-33",
+          "status": "matched",
+          "logPath": "runtime-33-column-cycle-from-first-implicit.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "column-cycle-from-first-implicit",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "column-left",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 44,
+            "height": 26
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 44,
+            "height": 26
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "column-middle",
+          "expected": {
+            "x": 44,
+            "y": 0,
+            "width": 34,
+            "height": 26
+          },
+          "actual": {
+            "x": 44,
+            "y": 0,
+            "width": 34,
+            "height": 26
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "column-right",
+          "expected": {
+            "x": 78,
+            "y": 0,
+            "width": 10,
+            "height": 26
+          },
+          "actual": {
+            "x": 78,
+            "y": 0,
+            "width": 10,
+            "height": 26
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-33",
+        "processId": 36262,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              95,
+              70
+            ],
+            "drawable": [
+              286,
+              211
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "left",
+            "css": [
+              10,
+              5
+            ],
+            "drawable": [
+              31,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "middle",
+            "css": [
+              50,
+              5
+            ],
+            "drawable": [
+              151,
+              16
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "right",
+            "css": [
+              82,
+              5
+            ],
+            "drawable": [
+              247,
+              16
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-33-column-cycle-from-first-implicit.log"
+    },
+    {
+      "index": 34,
+      "sceneId": "authored-tracks-exceed-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-34",
+          "status": "matched",
+          "logPath": "runtime-34-authored-tracks-exceed-area.log"
+        }
+      ],
+      "boxes": 3,
+      "frames": 3,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "authored-tracks-exceed-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "exceed-top",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 37,
+            "height": 15
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 37,
+            "height": 15
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "exceed-bottom",
+          "expected": {
+            "x": 0,
+            "y": 15,
+            "width": 37,
+            "height": 16
+          },
+          "actual": {
+            "x": 0,
+            "y": 15,
+            "width": 37,
+            "height": 16
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-34",
+        "processId": 36309,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 15,
+          "renderTree": 3,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "drawable": [
+              241,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "exceed-top",
+            "css": [
+              10,
+              5
+            ],
+            "drawable": [
+              31,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "exceed-bottom",
+            "css": [
+              10,
+              20
+            ],
+            "drawable": [
+              31,
+              61
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-34-authored-tracks-exceed-area.log"
+    },
+    {
+      "index": 35,
+      "sceneId": "row-cycle-continues-after-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-35",
+          "status": "matched",
+          "logPath": "runtime-35-row-cycle-continues-after-area.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "row-cycle-continues-after-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "phase-row-known",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "phase-row-area",
+          "expected": {
+            "x": 0,
+            "y": 20,
+            "width": 30,
+            "height": 6
+          },
+          "actual": {
+            "x": 0,
+            "y": 20,
+            "width": 30,
+            "height": 6
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "phase-row-late",
+          "expected": {
+            "x": 0,
+            "y": 26,
+            "width": 30,
+            "height": 8
+          },
+          "actual": {
+            "x": 0,
+            "y": 26,
+            "width": 30,
+            "height": 8
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-35",
+        "processId": 36360,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "drawable": [
+              241,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "drawable": [
+              31,
+              31
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "area",
+            "css": [
+              10,
+              22
+            ],
+            "drawable": [
+              31,
+              67
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "late",
+            "css": [
+              10,
+              30
+            ],
+            "drawable": [
+              31,
+              91
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-35-row-cycle-continues-after-area.log"
+    },
+    {
+      "index": 36,
+      "sceneId": "column-cycle-continues-after-area",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-36",
+          "status": "matched",
+          "logPath": "runtime-36-column-cycle-continues-after-area.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "column-cycle-continues-after-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "phase-column-known",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 30
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "phase-column-area",
+          "expected": {
+            "x": 20,
+            "y": 0,
+            "width": 5,
+            "height": 30
+          },
+          "actual": {
+            "x": 20,
+            "y": 0,
+            "width": 5,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "phase-column-late",
+          "expected": {
+            "x": 25,
+            "y": 0,
+            "width": 7,
+            "height": 30
+          },
+          "actual": {
+            "x": 25,
+            "y": 0,
+            "width": 7,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-36",
+        "processId": 36412,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "drawable": [
+              241,
+              181
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "drawable": [
+              31,
+              31
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "area",
+            "css": [
+              22,
+              10
+            ],
+            "drawable": [
+              67,
+              31
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "late",
+            "css": [
+              28,
+              10
+            ],
+            "drawable": [
+              85,
+              31
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-36-column-cycle-continues-after-area.log"
+    },
+    {
+      "index": 37,
+      "sceneId": "typed-area-minmax-row",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-37",
+          "status": "matched",
+          "logPath": "runtime-37-typed-area-minmax-row.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "typed-area-minmax-row",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 90
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 90
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "typed-area-minmax-row-first",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "typed-area-minmax-row-second",
+          "expected": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "typed-area-minmax-row-third",
+          "expected": {
+            "x": 0,
+            "y": 50,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 50,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-37",
+        "processId": 36456,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "first-row",
+            "css": [
+              50,
+              5
+            ],
+            "drawable": [
+              151,
+              16
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "second-row",
+            "css": [
+              50,
+              20
+            ],
+            "drawable": [
+              151,
+              61
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "third-row",
+            "css": [
+              50,
+              60
+            ],
+            "drawable": [
+              151,
+              181
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-37-typed-area-minmax-row.log"
+    },
+    {
+      "index": 38,
+      "sceneId": "typed-area-percentage-column",
+      "outcome": "success",
+      "attempts": [
+        {
+          "runID": "c1133m-20261101T053737771Z-cf63f63f-38",
+          "status": "matched",
+          "logPath": "runtime-38-typed-area-percentage-column.log"
+        }
+      ],
+      "boxes": 4,
+      "frames": 4,
+      "paintOrder": [
+        {
+          "order": 0,
+          "nodeId": 1
+        },
+        {
+          "order": 1,
+          "nodeId": 2
+        },
+        {
+          "order": 2,
+          "nodeId": 3
+        },
+        {
+          "order": 3,
+          "nodeId": 4
+        }
+      ],
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "typed-area-percentage-column",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "typed-area-percentage-column-left",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "typed-area-percentage-column-middle",
+          "expected": {
+            "x": 10,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "actual": {
+            "x": 10,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "typed-area-percentage-column-right",
+          "expected": {
+            "x": 35,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "actual": {
+            "x": 35,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+        "status": "matched",
+        "runID": "c1133m-20261101T053737771Z-cf63f63f-38",
+        "processId": 36538,
+        "surfaceGeneration": 1,
+        "revisions": {
+          "document": 20,
+          "renderTree": 4,
+          "environment": 0
+        },
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "drawable": [
+          960,
+          720
+        ],
+        "scale": [
+          3,
+          3
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              10
+            ],
+            "drawable": [
+              241,
+              31
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "left-column",
+            "css": [
+              5,
+              10
+            ],
+            "drawable": [
+              16,
+              31
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "middle-column",
+            "css": [
+              15,
+              10
+            ],
+            "drawable": [
+              46,
+              31
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ],
+            "maximumChannelError": 0
+          },
+          {
+            "id": "right-column",
+            "css": [
+              40,
+              10
+            ],
+            "drawable": [
+              121,
+              31
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ],
+            "maximumChannelError": 0
+          }
+        ]
+      },
+      "logPath": "runtime-38-typed-area-percentage-column.log"
+    }
+  ],
+  "interpretation": "iPhone 17 Pro/iOS 26.2 Simulator에서 기존 26개 Chrome 154 scene과 13개 Chrome 156 supplemental scene을 포함한 C11.3.3 39개 scene·126개 node 행렬, track-list cycling 6개 scene·28개 Metal 표본, leading named implicit line 7개 scene·14개 node를 검증했다. Metal drawable readback은 OS compositor 제출 전이며, 이는 실기기·hardware GPU·Spinon WPT 또는 전체 CSS Grid 지원 근거가 아니다."
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.3.3 two-axis negative named-line runtime oracle</title>
+<style>
+  html, body { width: 320px; height: 240px; margin: 0; overflow: hidden; }
+  #root { display: grid; width: 320px; height: 240px; grid-template-columns: 100px 100px 120px; grid-template-rows: 120px 120px; gap: 0; }
+  .scene { display: grid; box-sizing: border-box; width: 120px; height: 100px; margin: 0; padding: 0; border: 0; gap: 0; justify-content: start; align-content: start; grid-template-columns: 20px; grid-template-rows: 15px; background: #101820; }
+  .item { box-sizing: border-box; width: 18px; height: 12px; margin: 0; padding: 0; border: 0; background: #2866f6; }
+</style>
+<div id="root"></div>
+<script>
+const cases = [
+  { id: 'two-axis-auto', root: 'two-axis-auto-grid', item: 'two-axis-auto-item', autoColumns: 'auto', autoRows: 'auto', column: '-4 ghost / -1 ghost', row: '-4 ghost / -1 ghost' },
+  { id: 'two-axis-fixed-pattern', root: 'two-axis-fixed-grid', item: 'two-axis-fixed-item', autoColumns: '5px 7px', autoRows: '3px 4px', column: '-4 ghost / -1 ghost', row: '-4 ghost / -1 ghost' },
+  { id: 'two-axis-equal-endpoints', root: 'two-axis-equal-grid', item: 'two-axis-equal-item', autoColumns: 'auto', autoRows: 'auto', column: '-1 ghost / -1 ghost', row: '-1 ghost / -1 ghost' },
+  { id: 'two-axis-reversed', root: 'two-axis-reversed-grid', item: 'two-axis-reversed-item', autoColumns: 'auto', autoRows: 'auto', column: '-1 ghost / -4 ghost', row: '-1 ghost / -4 ghost' },
+  { id: 'columns-reversed', root: 'two-axis-columns-reversed-grid', item: 'two-axis-columns-reversed-item', autoColumns: 'auto', autoRows: 'auto', column: '-1 ghost / -4 ghost', row: '-4 ghost / -1 ghost' },
+  { id: 'rows-reversed', root: 'two-axis-rows-reversed-grid', item: 'two-axis-rows-reversed-item', autoColumns: 'auto', autoRows: 'auto', column: '-4 ghost / -1 ghost', row: '-1 ghost / -4 ghost' },
+];
+function rect(element, ancestor) {
+  const a = element.getBoundingClientRect();
+  const b = ancestor.getBoundingClientRect();
+  return [a.left - b.left, a.top - b.top, a.width, a.height];
+}
+const observation = [];
+for (const scene of cases) {
+  const grid = document.createElement('div');
+  grid.id = scene.root;
+  grid.className = 'scene';
+  grid.style.gridAutoColumns = scene.autoColumns;
+  grid.style.gridAutoRows = scene.autoRows;
+  document.querySelector('#root').append(grid);
+  const item = document.createElement('div');
+  item.id = scene.item;
+  item.className = 'item';
+  item.style.gridColumn = scene.column;
+  item.style.gridRow = scene.row;
+  grid.append(item);
+  const style = getComputedStyle(grid);
+  const tracks = (value) => value.trim().split(/\s+/).map((size) => Number.parseFloat(size));
+  observation.push({
+    id: scene.id,
+    columns: tracks(style.gridTemplateColumns),
+    rows: tracks(style.gridTemplateRows),
+    sceneFrame: rect(grid, document.querySelector('#root')),
+    itemFrame: rect(item, grid),
+  });
+}
+window.observation = observation;
+</script>

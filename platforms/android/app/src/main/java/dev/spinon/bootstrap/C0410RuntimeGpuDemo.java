@@ -140,7 +140,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     };
     private static final String[] C1133_NAMED_LINE_PAIR_SCENE_IDS = {
             "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
-            "negative-named-line-pair-matrix",
+            "negative-named-line-pair-matrix", "negative-named-line-pair-two-axis-matrix",
     };
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
@@ -1805,6 +1805,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static List<SurfaceViewPixelCapture.Sample> c1133NegativeNamedLinePairPixelSamples(
             String sceneId) {
+        if ("negative-named-line-pair-two-axis-matrix".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("two-axis-auto", "two-axis-auto-item", 5, 5),
+                    new SurfaceViewPixelCapture.Sample("two-axis-fixed-overflow", "two-axis-fixed-item", 117, 10),
+                    new SurfaceViewPixelCapture.Sample("two-axis-equal", "two-axis-equal-item", 205, 5),
+                    new SurfaceViewPixelCapture.Sample("two-axis-reversed", "two-axis-reversed-item", 5, 125),
+                    new SurfaceViewPixelCapture.Sample("columns-reversed", "two-axis-columns-reversed-item", 105, 125),
+                    new SurfaceViewPixelCapture.Sample("rows-reversed", "two-axis-rows-reversed-item", 205, 125));
+        }
         if (!"negative-named-line-pair-matrix".equals(sceneId)) return null;
         return List.of(
                 new SurfaceViewPixelCapture.Sample("negative-pair-0", "negative-pair-span-item", 5, 5),
@@ -17542,7 +17551,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? c1133NamedLinePairItemId(c1133GridTemplateAreasSceneId) != null
                         || c1133NegativeNamedLinePairPixelSamples(
                                 c1133GridTemplateAreasSceneId) != null
-                        ? "negative-named-line-pair-matrix".equals(c1133GridTemplateAreasSceneId)
+                        ? ("negative-named-line-pair-matrix".equals(c1133GridTemplateAreasSceneId)
+                                || "negative-named-line-pair-two-axis-matrix".equals(c1133GridTemplateAreasSceneId))
                                 ? "Negative leading named-line pair → Stylo → Taffy → WGPU · 320×240 CSS px"
                                 : "Positive implicit named-line pair → Stylo → Taffy → WGPU · 320×240 CSS px"
                         : "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
@@ -21554,6 +21564,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return new int[] {40, 102, 246};
         }
         if (sampleId != null && sampleId.startsWith("negative-pair-")) {
+            return new int[] {40, 102, 246};
+        }
+        if ("two-axis-auto".equals(sampleId)
+                || "two-axis-fixed-overflow".equals(sampleId)
+                || "two-axis-equal".equals(sampleId)
+                || "two-axis-reversed".equals(sampleId)
+                || "columns-reversed".equals(sampleId)
+                || "rows-reversed".equals(sampleId)) {
             return new int[] {40, 102, 246};
         }
         if ("item-blue".equals(sampleId)) return new int[] {40, 102, 246};

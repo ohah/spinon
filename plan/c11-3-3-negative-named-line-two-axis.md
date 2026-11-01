@@ -1,6 +1,6 @@
 # C11.3.3 양 축 negative named-line pair의 leading implicit sizing
 
-**상태:** Chrome 156 사전 비교 8 scene과 독립 CSS Grid 기대값을 고정한 계획이다. 현재 PR #967의 negative named-line auto profile은 Columns 또는 Rows 중 한 축만 implicit sizing하고 반대 축은 definite placement여야 한다. 이 계획은 같은 제한 계약을 두 축에 함께 적용하는 별도 opt-in fixture profile을 제안한다. 구현·앱 runtime은 아직 시작하지 않았다. [사전 비교](../spec/internal/evidence/c11-3-3-negative-named-line-two-axis-precomparison-2026-11-01/README.md) · [계획 실패 관점 검토 20개](./c11-3-3-negative-named-line-two-axis-plan-review-20.md) · [계획 PR 변경 검토 20개](../spec/internal/evidence/c11-3-3-negative-named-line-two-axis-precomparison-2026-11-01/plan-pr-diff-review-20.md)
+**상태:** Chrome 156 사전 비교 8 scene과 독립 CSS Grid 기대값을 고정했다. 구현 후보는 `feat/c11-3-3-negative-named-line-two-axis`에서 추가했으며 양 축 전용 typed mode, Rust/style/runtime 연결과 Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 근거를 확보했다. 아직 PR 미생성·미병합이며 전체 C11.3.3/C11 완료가 아니다. 현재 20개 구현/runtime 검토를 마쳤고 PR diff 20개 검토, 병합 후 공식 문서·Tailnet 반영이 남아 있다. [사전 비교](../spec/internal/evidence/c11-3-3-negative-named-line-two-axis-precomparison-2026-11-01/README.md) · [실행·artifact 근거](../spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/README.md) · [계획 실패 관점 검토 20개](./c11-3-3-negative-named-line-two-axis-plan-review-20.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-3-3-negative-named-line-two-axis-runtime-2026-11-01/implementation-runtime-review-20.md) · [계획 PR 변경 검토 20개](../spec/internal/evidence/c11-3-3-negative-named-line-two-axis-precomparison-2026-11-01/plan-pr-diff-review-20.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.3 단계 계획](./c11-3-template-repeat-named-lines-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -39,3 +39,13 @@
 ## 완료 판정과 제외
 
 여덟 scene과 fail-closed controls가 Chrome oracle 및 독립 규범 계산과 일치하고, 양 축의 track expansion·placement·revision·publication·artifact 경계가 모두 확인돼야 이 제한 fixture profile을 완료로 기록할 수 있다. 이는 다른 names, mixed sign, named spans, numeric placement, multi-item sizing, grid areas, 임의 track grammar, public CSS support, WPT conformance, full C11.3.3 또는 C11 전체를 완료로 만들지 않는다. C11.3.3/C11 checkboxes와 공식 `72/213`은 그대로 둔다.
+
+## 구현/runtime 후보 결과 · 2026-11-01
+
+별도 `TemplateGridNegativeNamedLinePairAutoImplicitTracksBothAxes` typed mode를 추가했다. 양 축에서 같은 custom-ident의 negative named-line pair가 leading implicit lines로 풀리는 경우만 선택하며, 기존 한 축 전용 mode는 그대로 유지한다. `grid-auto-columns`와 `grid-auto-rows`는 각각 `auto` 또는 비어 있지 않은 유한 non-negative fixed-px 목록만 허용한다. 한 개의 fixed-size item, no-area template와 definite container shape를 고정하고 invalid placement, template areas, 잘못된 track type, 10,000-track ceiling을 닫는다.
+
+양 축 auto 기준은 Columns `[6,6,6,0,20]px`, Rows `[4,4,4,0,15]px`, item `(0,0,18,12)`이다. fixed pattern, equal/reversed endpoints와 축별 reversal도 Rust·Chrome reference·mobile fixture에서 비교했다. Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 element frame 13개와 표면 표본 6/6 RGBA exact, 최대 채널 오차 0을 확인했다. 잘못된 표본 좌표는 readback 전에 거부됐고 Android 미등록 scene은 runtime draw 전에 거부됐다. iOS 표면은 compositor 제출 전 Metal drawable이다. PR #967의 한 축 negative pair 회귀도 Android/iOS 각각 8/8 exact로 다시 확인했다. 기존 C11.3.3 39-scene·126-node 행렬은 양쪽 모두 geometry 오차 0 CSS px다.
+
+`spinon-layout` 330 tests, focused style/FFI tests, CSS reference 19/19, fixture-boundary 30/30, scoped Clippy와 rustfmt가 통과했다. 전체 `spinon-style-to-layout` suite는 275 passed·1 failed로 끝났으며 실패는 변경과 무관한 기존 C07.3 `aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs`의 float serialization 기대값(`1.7777778` 대 `1.77778`)이다. 이를 전체 성공으로 계산하지 않는다. macOS 기본 `spinon-ffi` archive에는 세 candidate marker가 없고 fixture positive control에는 세 marker가 있다. 이 archive 검사는 APK/IPA 전체 bundle 제외를 증명하지 않는다. 자세한 경계와 앱 hash는 실행 근거에 둔다.
+
+현재 결과는 unmerged checkout에서 만든 candidate 증거다. Android는 SwiftShader AVD, iOS는 compositor 이전 drawable이며 실기기/hardware GPU, Spinon WPT, 일반 CSS admission, 전체 Grid 지원을 확인하지 않았다. PR의 hosted checks·diff 검토·merge가 끝나기 전에는 이 계획 slice를 완료 처리하지 않는다.

@@ -227,6 +227,7 @@ fn usage_for_line(
         allows_positive_auto_track_sizing: false,
         allows_positive_named_line_pair_auto_track_sizing: false,
         allows_negative_named_line_pair_auto_track_sizing: false,
+        allows_negative_named_line_pair_auto_track_sizing_both_axes: false,
     }
 }
 

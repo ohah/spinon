@@ -46,6 +46,8 @@ pub(in crate::projection::style_values) struct ImplicitNamedLineUsage {
     pub(in crate::projection::style_values) allows_positive_auto_track_sizing: bool,
     pub(in crate::projection::style_values) allows_positive_named_line_pair_auto_track_sizing: bool,
     pub(in crate::projection::style_values) allows_negative_named_line_pair_auto_track_sizing: bool,
+    pub(in crate::projection::style_values) allows_negative_named_line_pair_auto_track_sizing_both_axes:
+        bool,
 }
 
 impl ImplicitNamedLineUsage {
