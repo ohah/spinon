@@ -470,10 +470,11 @@ private func c114GenericDirectTextExpectation(
         )
     }
     if let wordBreak = c114ComputedWordBreakScene(sceneID) {
-        let textWidth = max(wordBreak.trackWidth, wordBreak.lineAdvances.max() ?? 0)
-        let layoutText = c114ComputedHyphensStyle(sceneID) == "None"
+        let textWidth = wordBreak.lineAdvances.max() ?? 0
+        let hyphensStyle = c114ComputedHyphensStyle(sceneID)
+        let layoutText = hyphensStyle == "None"
             ? wordBreak.text.replacingOccurrences(of: "\u{00ad}", with: "\u{2060}")
-            : wordBreak.text
+            : hyphensStyle == "Auto" ? c114ComputedAutoHyphenatedText(sceneID) : wordBreak.text
         let textNode = c114IsAnonymousHyphensInheritedScene(sceneID) ? 3 : 2
         let item = c114GenericTextItem(
             node: textNode, x: 0, width: wordBreak.trackWidth, height: wordBreak.rowHeight,
@@ -1884,7 +1885,13 @@ private func c114CalcNeighborItemFrames(_ sceneID: String) -> [C114PercentageNei
 private func c114CalcNeighborExpectedRejection(_ sceneID: String)
     -> (code: String, property: String, nodeID: String)? {
     switch sceneID {
-    case "hyphens-auto-expected-reject", "hyphens-invalid-expected-reject":
+    case "hyphens-auto-expected-reject":
+        return (
+            "layout_failed",
+            "contains:hyphens 입력이 고정 Ahem 10px ASCII direct-text profile과 일치하지 않습니다",
+            "missing"
+        )
+    case "hyphens-invalid-expected-reject":
         return ("unsupported_c114_hyphens_value", "computed hyphens", "1")
     case "calc-neighbor-col-fill-extra-term":
         return ("unsupported_computed_value", "grid-template-columns", "1")
@@ -10845,13 +10852,52 @@ private func c114ComputedHyphensScene(
     lineAdvances: [Double])? {
     guard sceneID.hasPrefix("hyphens-"),
           !sceneID.hasSuffix("expected-reject") else { return nil }
+    if sceneID.hasPrefix("hyphens-auto-") {
+        let word: String
+        let minContent: Double
+        let maxContent: Double
+        let minContentHeight: Double
+        let minLines: [Double]
+        if sceneID.hasPrefix("hyphens-auto-hyphenation-") {
+            word = "hyphenation"
+            minContent = 50
+            maxContent = 110
+            minContentHeight = 30
+            minLines = [30, 50, 50]
+        } else if sceneID.hasPrefix("hyphens-auto-internationalization-") {
+            word = "internationalization"
+            minContent = 50
+            maxContent = 200
+            minContentHeight = 70
+            minLines = [30, 40, 30, 50, 30, 40, 40]
+        } else if sceneID.hasPrefix("hyphens-auto-representation-") {
+            word = "representation"
+            minContent = 40
+            maxContent = 140
+            minContentHeight = 50
+            minLines = [40, 30, 40, 30, 40]
+        } else {
+            return nil
+        }
+        let minTrack = sceneID.hasSuffix("-min")
+        let maxTrack = sceneID.hasSuffix("-max")
+        let fixedTrack = sceneID.hasSuffix("-fixed-50")
+        guard minTrack || maxTrack || fixedTrack else { return nil }
+        let trackWidth = minTrack ? minContent : maxTrack ? maxContent : 50
+        let rowHeight = minTrack || fixedTrack ? minContentHeight : 10
+        return (
+            word, "en", "Ahem", "Normal", minContent, maxContent,
+            minContentHeight, 10, trackWidth, rowHeight,
+            minTrack || fixedTrack ? minLines : [maxContent]
+        )
+    }
     let none = sceneID.contains("-none-")
     let visible = sceneID.contains("-visible-")
     let unbroken = sceneID.contains("-unbroken-")
     let multiple = sceneID.contains("-multiple-")
     let minTrack = sceneID.hasSuffix("-min")
     let maxTrack = sceneID.hasSuffix("-max")
-    let fixedTrack = sceneID.hasSuffix("-fixed-30")
+    let fixedTrack = sceneID.hasSuffix("-fixed-30") || sceneID.hasSuffix("-fixed-50")
     guard minTrack || maxTrack || fixedTrack else { return nil }
 
     let text: String
@@ -10915,7 +10961,8 @@ private func c114ComputedHyphensScene(
 
 private func c114AnonymousHyphensRootWidth(_ sceneID: String) -> Double {
     if c114IsAnonymousHyphensInheritedScene(sceneID) { return 320 }
-    return c114IsAnonymousHyphensFixedTrack(sceneID) ? 30 : 120
+    return c114IsAnonymousHyphensFixedTrack(sceneID)
+        ? (sceneID.hasSuffix("-fixed-50") ? 50 : 30) : 120
 }
 
 private func c114IsAnonymousHyphensInheritedScene(_ sceneID: String) -> Bool {
@@ -10931,7 +10978,8 @@ private func c114IsAnonymousHyphensMinTrack(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousHyphensFixedTrack(_ sceneID: String) -> Bool {
-    sceneID.hasPrefix("hyphens-") && sceneID.hasSuffix("-fixed-30")
+    sceneID.hasPrefix("hyphens-")
+        && (sceneID.hasSuffix("-fixed-30") || sceneID.hasSuffix("-fixed-50"))
 }
 
 private func c114CombinedWordBreakOverflowWrapScene(
@@ -10983,7 +11031,21 @@ private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
 
 private func c114ComputedHyphensStyle(_ sceneID: String) -> String? {
     guard sceneID.hasPrefix("hyphens-") else { return nil }
+    if sceneID.hasPrefix("hyphens-auto-") && !sceneID.contains("expected-reject") {
+        return "Auto"
+    }
     return sceneID.contains("-none-") ? "None" : "Manual"
+}
+
+private func c114ComputedAutoHyphenatedText(_ sceneID: String) -> String {
+    if sceneID.contains("hyphenation") { return "hy\u{00ad}phen\u{00ad}ation" }
+    if sceneID.contains("internationalization") {
+        return "in\u{00ad}ter\u{00ad}na\u{00ad}tion\u{00ad}al\u{00ad}iza\u{00ad}tion"
+    }
+    if sceneID.contains("representation") {
+        return "rep\u{00ad}re\u{00ad}sen\u{00ad}ta\u{00ad}tion"
+    }
+    return ""
 }
 
 private func c114ComputedOverflowWrapMode(_ sceneID: String) -> String? {
@@ -17364,9 +17426,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 log("SPINON_C114_GRID_REJECTION_DETAIL run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) report=\(report.suffix(1600))")
                 let status = String(report.split(separator: " ", maxSplits: 1).first ?? "status=-1")
                 let code = report.contains(expected.code) ? expected.code : "missing"
-                let propertyMatches = expected.property == "computed hyphens"
-                    ? report.contains("property=Some(\"computed hyphens ")
-                    : report.contains("property=Some(\"\(expected.property)\")")
+                let propertyMatches: Bool
+                if expected.property.hasPrefix("contains:") {
+                    propertyMatches = report.contains("property=Some(\"")
+                        && report.contains(String(expected.property.dropFirst("contains:".count)))
+                } else if expected.property == "computed hyphens" {
+                    propertyMatches = report.contains("property=Some(\"computed hyphens ")
+                } else {
+                    propertyMatches = report.contains("property=Some(\"\(expected.property)\")")
+                }
                 let property = propertyMatches
                     ? expected.property : "missing"
                 let nodeID = report.contains("node=Some(\(expected.nodeID))")

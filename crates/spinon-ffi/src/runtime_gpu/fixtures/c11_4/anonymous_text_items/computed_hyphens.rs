@@ -8,7 +8,7 @@ struct Scene {
     inherited: bool,
 }
 
-const SCENES: [Scene; 21] = [
+const SCENES: [Scene; 30] = [
     scene(
         "hyphens-none-soft-min",
         "AB\u{00ad}CD",
@@ -162,6 +162,78 @@ const SCENES: [Scene; 21] = [
         true,
     ),
     scene(
+        "hyphens-auto-hyphenation-min",
+        "hyphenation",
+        "auto",
+        "min-content",
+        120,
+        false,
+    ),
+    scene(
+        "hyphens-auto-hyphenation-max",
+        "hyphenation",
+        "auto",
+        "max-content",
+        120,
+        false,
+    ),
+    scene(
+        "hyphens-auto-hyphenation-fixed-50",
+        "hyphenation",
+        "auto",
+        "50px",
+        50,
+        false,
+    ),
+    scene(
+        "hyphens-auto-internationalization-min",
+        "internationalization",
+        "auto",
+        "min-content",
+        120,
+        false,
+    ),
+    scene(
+        "hyphens-auto-internationalization-max",
+        "internationalization",
+        "auto",
+        "max-content",
+        120,
+        false,
+    ),
+    scene(
+        "hyphens-auto-internationalization-fixed-50",
+        "internationalization",
+        "auto",
+        "50px",
+        50,
+        false,
+    ),
+    scene(
+        "hyphens-auto-representation-min",
+        "representation",
+        "auto",
+        "min-content",
+        120,
+        false,
+    ),
+    scene(
+        "hyphens-auto-representation-max",
+        "representation",
+        "auto",
+        "max-content",
+        120,
+        false,
+    ),
+    scene(
+        "hyphens-auto-representation-fixed-50",
+        "representation",
+        "auto",
+        "50px",
+        50,
+        false,
+    ),
+    scene(
         "hyphens-auto-expected-reject",
         "AB\u{00ad}CD",
         "auto",
@@ -297,7 +369,7 @@ mod tests {
     #[test]
     fn computed_hyphens_generates_the_fixed_direct_text_matrix() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 21);
+        assert_eq!(SCENES.len(), 30);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted hyphens scene");
@@ -311,7 +383,7 @@ mod tests {
                 source.matches("document.createElement('div')").count(),
                 if scene.inherited { 2 } else { 1 }
             );
-            if scene.computed == "" || scene.inherited {
+            if scene.computed.is_empty() || scene.inherited {
                 assert!(!source.contains("hyphens:") || scene.inherited);
             } else {
                 assert!(source.contains(&format!("hyphens:{}", scene.computed)));

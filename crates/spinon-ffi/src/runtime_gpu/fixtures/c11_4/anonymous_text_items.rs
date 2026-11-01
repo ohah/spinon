@@ -21,7 +21,7 @@ mod computed_word_break_overflow_wrap;
 #[path = "anonymous_text_items/computed_word_spacing.rs"]
 mod computed_word_spacing;
 
-const SCENE_IDS: [&str; 76] = [
+const SCENE_IDS: [&str; 85] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -96,6 +96,15 @@ const SCENE_IDS: [&str; 76] = [
     "hyphens-manual-multiple-fixed-30",
     "hyphens-inherited-none-fixed-30",
     "hyphens-inherited-manual-fixed-30",
+    "hyphens-auto-hyphenation-min",
+    "hyphens-auto-hyphenation-max",
+    "hyphens-auto-hyphenation-fixed-50",
+    "hyphens-auto-internationalization-min",
+    "hyphens-auto-internationalization-max",
+    "hyphens-auto-internationalization-fixed-50",
+    "hyphens-auto-representation-min",
+    "hyphens-auto-representation-max",
+    "hyphens-auto-representation-fixed-50",
     "hyphens-auto-expected-reject",
     "hyphens-invalid-expected-reject",
 ];
@@ -575,9 +584,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_fifty_five_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_eighty_five_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 55);
+        assert_eq!(SCENE_IDS.len(), 85);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
             (

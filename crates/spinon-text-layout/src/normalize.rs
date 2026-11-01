@@ -2,6 +2,9 @@ use std::{collections::BTreeSet, ops::Range};
 
 use crate::{HyphensMode, ParagraphInput, TextLayoutError, TextSourceRange, WhiteSpaceMode};
 
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+use hypher::{Lang, hyphenate};
+
 pub(crate) struct NormalizedText {
     pub text: String,
     pub sources: Vec<TextSourceRange>,
@@ -193,6 +196,10 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     }
     push_suppressed_sources(&mut result, &pending_spaces);
 
+    if input.style.hyphens == Some(HyphensMode::Auto) {
+        add_auto_hyphenation_markers(&mut result, input)?;
+    }
+
     Ok(result)
 }
 
@@ -238,7 +245,7 @@ fn supports_pre_wrap_tab_profile(input: &ParagraphInput, characters: &[SourceCha
 
 fn supports_hyphens_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {
     let style = &input.style;
-    style.font_family == "Ahem"
+    let common_style = style.font_family == "Ahem"
         && style.font_size == 10.0
         && style.line_height == 10.0
         && !style.line_height_is_normal
@@ -256,24 +263,150 @@ fn supports_hyphens_profile(input: &ParagraphInput, characters: &[SourceCharacte
         && style.writing_mode == spinon_core::WritingMode::HorizontalTb
         && style.text_orientation == spinon_core::TextOrientation::Mixed
         && style.line_break == crate::LineBreakMode::Normal
-        && style.ligatures == crate::LigatureMode::Normal
-        && style
-            .locale
-            .as_deref()
-            .is_none_or(|locale| locale.eq_ignore_ascii_case("en"))
-        && input.sources.len() == 1
-        && input.inline_styles.is_empty()
-        && input.inline_run_styles.is_empty()
-        && input.sources[0].inline_ancestors.is_empty()
-        && characters.iter().all(|source| {
-            matches!(source.character, 'A'..='F' | '-' | '\u{00ad}')
-                && source.inline_ancestors.is_empty()
-        })
-        && characters
+        && style.ligatures == crate::LigatureMode::Normal;
+    if !common_style
+        || input.sources.len() != 1
+        || !input.inline_styles.is_empty()
+        || !input.inline_run_styles.is_empty()
+        || !input.sources[0].inline_ancestors.is_empty()
+        || characters
             .iter()
-            .filter(|source| source.character == '\u{00ad}')
-            .count()
-            <= 2
+            .any(|source| !source.inline_ancestors.is_empty())
+    {
+        return false;
+    }
+
+    match style.hyphens {
+        Some(HyphensMode::Auto) => {
+            #[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+            {
+                style.locale.as_deref() == Some("en")
+                    && matches!(
+                        input.sources[0].text.as_str(),
+                        "hyphenation" | "internationalization" | "representation"
+                    )
+                    && !input.sources[0].text.contains('\u{00ad}')
+                    && characters
+                        .iter()
+                        .all(|source| source.character.is_ascii_lowercase())
+            }
+            #[cfg(not(feature = "c11-4-hyphens-auto-fixture-test"))]
+            {
+                false
+            }
+        }
+        Some(HyphensMode::None | HyphensMode::Manual) => {
+            style
+                .locale
+                .as_deref()
+                .is_none_or(|locale| locale.eq_ignore_ascii_case("en"))
+                && characters
+                    .iter()
+                    .all(|source| matches!(source.character, 'A'..='F' | '-' | '\u{00ad}'))
+                && characters
+                    .iter()
+                    .filter(|source| source.character == '\u{00ad}')
+                    .count()
+                    <= 2
+        }
+        None => false,
+    }
+}
+
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+pub(crate) fn auto_hyphenated_source(text: &str, replacement: char) -> Option<String> {
+    let breaks = auto_hyphen_breaks(text)?;
+    let mut result = String::with_capacity(text.len() + breaks.len() * replacement.len_utf8());
+    let mut break_index = 0;
+    for (byte_index, character) in text.char_indices() {
+        if break_index < breaks.len() && breaks[break_index] == byte_index {
+            result.push(replacement);
+            break_index += 1;
+        }
+        result.push(character);
+    }
+    (break_index == breaks.len()).then_some(result)
+}
+
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+fn add_auto_hyphenation_markers(
+    result: &mut NormalizedText,
+    input: &ParagraphInput,
+) -> Result<(), TextLayoutError> {
+    let Some(breaks) = auto_hyphen_breaks(&result.text) else {
+        return Err(TextLayoutError::UnsupportedHyphensProfile(input.node));
+    };
+    for position in breaks.into_iter().rev() {
+        if !result.text.is_char_boundary(position) {
+            return Err(TextLayoutError::UnsupportedHyphensProfile(input.node));
+        }
+        result.text.insert(position, '\u{00ad}');
+        let marker_end = position + '\u{00ad}'.len_utf8();
+        for source in &mut result.sources {
+            if source.paragraph_utf8.start >= position {
+                source.paragraph_utf8.start += '\u{00ad}'.len_utf8();
+                source.paragraph_utf8.end += '\u{00ad}'.len_utf8();
+            } else if source.paragraph_utf8.end > position {
+                source.paragraph_utf8.end += '\u{00ad}'.len_utf8();
+            }
+            if source.paragraph_utf8.start < position && source.paragraph_utf8.end > marker_end {
+                return Err(TextLayoutError::UnsupportedHyphensProfile(input.node));
+            }
+        }
+        result.sources.push(TextSourceRange {
+            node: input.sources[0].node,
+            source_utf16: position..position,
+            paragraph_utf8: position..marker_end,
+            inline_ancestors: Vec::new(),
+        });
+    }
+    result
+        .sources
+        .sort_by_key(|source| (source.paragraph_utf8.start, source.paragraph_utf8.end));
+    Ok(())
+}
+
+#[cfg(not(feature = "c11-4-hyphens-auto-fixture-test"))]
+fn add_auto_hyphenation_markers(
+    _: &mut NormalizedText,
+    input: &ParagraphInput,
+) -> Result<(), TextLayoutError> {
+    Err(TextLayoutError::UnsupportedHyphensProfile(input.node))
+}
+
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+fn auto_hyphen_breaks(text: &str) -> Option<Vec<usize>> {
+    if text.len() > hypher::MAX_INLINE_SIZE {
+        return None;
+    }
+    let mut cursor = 0usize;
+    let mut syllables = Vec::new();
+    for syllable in hyphenate(text, Lang::English) {
+        if syllable.is_empty() {
+            return None;
+        }
+        cursor = cursor.checked_add(syllable.len())?;
+        syllables.push(syllable);
+    }
+    if cursor != text.len() {
+        return None;
+    }
+    let expected: &[&str] = match text {
+        "hyphenation" => &["hy", "phen", "ation"],
+        "internationalization" => &["in", "ter", "na", "tion", "al", "iza", "tion"],
+        "representation" => &["rep", "re", "sen", "ta", "tion"],
+        _ => return None,
+    };
+    if syllables != expected {
+        return None;
+    }
+    let mut breaks = Vec::with_capacity(syllables.len().saturating_sub(1));
+    let mut offset = 0usize;
+    for syllable in syllables.iter().take(syllables.len().saturating_sub(1)) {
+        offset = offset.checked_add(syllable.len())?;
+        breaks.push(offset);
+    }
+    Some(breaks)
 }
 
 fn supports_pre_tab_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {

@@ -16,6 +16,7 @@ c13-3-gesture-fixture-test = ["spinon-style-to-render/c13-3-gesture-fixture-test
 c14-1-live-v8-fixture-test = []
 c11-4-grid-track-sizing-fixture-test = [
     "dep:spinon-image",
+    "spinon-text-layout/c11-4-hyphens-auto-fixture-test",
     "spinon-style-to-layout/c11-4-grid-track-sizing-fixture-test",
     "spinon-style-to-render/c11-4-grid-track-sizing-fixture-test",
 ]

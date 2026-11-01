@@ -2198,7 +2198,7 @@ test('anonymous Grid white-space matrix stays opt-in and reaches both simulators
     assert.ok(ios.includes(sceneID), `iOS scene validator is missing ${sceneID}`);
   }
   assert.match(ffi,
-    /#\[cfg\(test\)\][\s\S]*anonymous_grid_text_sources_are_a_fixed_fifty_five_scene_matrix/);
+    /#\[cfg\(test\)\][\s\S]*anonymous_grid_text_sources_are_a_fixed_eighty_five_scene_matrix/);
   assert.match(runtime,
     /"anonymous-pre-line-max-content"\s*=> WhiteSpaceMode::PreLine/);
   assert.match(runtime,
@@ -2299,7 +2299,7 @@ test('C11.4 anonymous Grid computed word-break matrix stays opt-in and reaches b
   }
   assert.ok(capture.includes('expectedValues.cases'), 'simulator capture does not read the fixed case list');
   assert.match(runtimeRoute,
-    /validate_owner_language\(snapshot, root, scene_id\)/);
+    /validate_owner_language\(snapshot, scene_root, scene_id\)/);
   assert.ok(runtimeSource.includes('xml:lang is outside the fixture profile'));
   assert.ok(runtimeRoute.includes('register_font("Noto Sans KR"'));
   assert.ok(runtimeTestSource.includes(
@@ -2562,4 +2562,74 @@ test('C11.4 computed text-transform scenes stay behind fixture-test gates', asyn
     /c114ComputedTextTransformStyle\(String sceneId\)[\s\S]*!BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST/);
   assert.match(ios,
     /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1[\s\S]*c114ComputedTextTransformScene/);
+});
+
+test('C11.4 anonymous Grid hyphens auto stays fixture-only with exact English source mapping', async () => {
+  const paths = [
+    'crates/spinon-text-layout/Cargo.toml',
+    'crates/spinon-text-layout/src/normalize.rs',
+    'crates/spinon-text-layout/src/tests/c11_4_hyphens.rs',
+    'crates/spinon-runtime/Cargo.toml',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/hyphens.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_hyphens.rs',
+    'crates/spinon-ffi/Cargo.toml',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_hyphens.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-anonymous-grid-text-hyphens-simulators.mjs',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [textCargo, normalize, textTests, runtimeCargo, runtimeCatalog, runtimeScenes,
+    runtimeTests, ffiCargo, ffiCatalog, ffiScenes, android, ios, capture] = contents;
+  const autoSceneIDs = [
+    'hyphens-auto-hyphenation-min', 'hyphens-auto-hyphenation-max',
+    'hyphens-auto-hyphenation-fixed-50',
+    'hyphens-auto-internationalization-min', 'hyphens-auto-internationalization-max',
+    'hyphens-auto-internationalization-fixed-50',
+    'hyphens-auto-representation-min', 'hyphens-auto-representation-max',
+    'hyphens-auto-representation-fixed-50',
+  ];
+  assert.match(textCargo,
+    /c11-4-hyphens-auto-fixture-test\s*=\s*\["dep:hypher"\]/);
+  assert.ok(textCargo.includes(
+    'hypher = { version = "=0.1.8", default-features = false, features = ["english"], optional = true }'));
+  assert.ok(runtimeCargo.includes('spinon-text-layout/c11-4-hyphens-auto-fixture-test'));
+  assert.ok(ffiCargo.includes('spinon-runtime/c11-4-grid-track-sizing-fixture-test'));
+  assert.ok(normalize.includes('style.locale.as_deref() == Some("en")'));
+  for (const word of ['hyphenation', 'internationalization', 'representation']) {
+    assert.ok(normalize.includes(`"${word}"`), `Hypher allowlist is missing ${word}`);
+    assert.ok(textTests.includes(`"${word}"`), `text-layout oracle is missing ${word}`);
+  }
+  assert.ok(normalize.includes('hypher::MAX_INLINE_SIZE'));
+  assert.ok(normalize.includes('source_utf16: position..position'));
+  assert.ok(textTests.includes('c114_hyphens_auto_fails_closed_for_language_word_and_soft_hyphen_outside_profile'));
+  assert.match(runtimeCatalog, /const SCENE_IDS: \[&str; 112\]/);
+  assert.match(runtimeScenes, /pub\(super\) const SCENES: \[Scene; 30\]/);
+  assert.match(ffiCatalog, /const SCENE_IDS: \[&str; 85\]/);
+  assert.match(ffiScenes, /computed_hyphens_generates_the_fixed_direct_text_matrix/);
+  assert.match(runtimeTests, /anonymous_grid_hyphens_rejects_auto_source_soft_hyphen_and_invalid_value/);
+  for (const sceneID of autoSceneIDs) {
+    for (const [label, source] of [
+      ['runtime scene catalog', runtimeScenes], ['FFI scene catalog', ffiScenes],
+      ['simulator capture', capture],
+    ]) {
+      assert.ok(source.includes(sceneID), `${label} is missing ${sceneID}`);
+    }
+  }
+  for (const [platform, source] of [['Android', android], ['iOS', ios]]) {
+    assert.ok(source.includes('c114ComputedHyphensScene'),
+      `${platform} adapter is missing the computed hyphens scene matcher`);
+    assert.ok(source.includes('hyphens-auto-'),
+      `${platform} adapter is missing the Auto scene prefix`);
+    for (const word of ['hyphenation', 'internationalization', 'representation']) {
+      assert.ok(source.includes(word), `${platform} adapter is missing ${word}`);
+    }
+  }
+  assert.ok(runtimeCatalog.includes('validate_owner_language_value(snapshot, scene_root, "en")'));
+  assert.ok(capture.includes('layout.normalizedSources'));
+  assert.ok(capture.includes('installedApkSha256'));
+  assert.ok(capture.includes('installedExecutableSha256'));
 });

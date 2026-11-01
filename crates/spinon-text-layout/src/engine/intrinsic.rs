@@ -16,6 +16,9 @@ use crate::{
     WordBreakMode, normalize::normalize,
 };
 
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+use crate::normalize::auto_hyphenated_source;
+
 use super::{TextLayoutEngine, inline_boxes};
 
 pub(super) struct BuiltParleyLayout {
@@ -102,6 +105,26 @@ impl TextLayoutEngine {
                     ..
                 } = self.build_parley_layout(&manual_min_input, Vec::new())?;
                 (inline_boundaries, layout)
+            } else if input.style.hyphens == Some(HyphensMode::Auto) {
+                #[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+                {
+                    let mut auto_min_input = input.clone();
+                    auto_min_input.style.hyphens = None;
+                    for source in &mut auto_min_input.sources {
+                        source.text = auto_hyphenated_source(&source.text, '\u{2010}')
+                            .ok_or(TextLayoutError::UnsupportedHyphensProfile(input.node))?;
+                    }
+                    let BuiltParleyLayout {
+                        inline_boundaries,
+                        layout,
+                        ..
+                    } = self.build_parley_layout(&auto_min_input, Vec::new())?;
+                    (inline_boundaries, layout)
+                }
+                #[cfg(not(feature = "c11-4-hyphens-auto-fixture-test"))]
+                {
+                    return Err(TextLayoutError::UnsupportedHyphensProfile(input.node));
+                }
             } else if input.style.overflow_wrap == OverflowWrapMode::BreakWord {
                 // CSS Text excludes break-word emergency opportunities from min-content sizing.
                 // Parley uses BreakWord for definite-width emergency wrapping, so measure this

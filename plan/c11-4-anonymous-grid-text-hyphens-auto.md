@@ -1,6 +1,6 @@
 # C11.4 익명 Grid 텍스트 `hyphens:auto` 제한 profile 계획
 
-**상태:** 구현 전 계획. 기존 [`hyphens:none|manual` 제한 profile](./c11-4-anonymous-grid-text-hyphens.md)은 PR #977로 병합됐지만 `auto`는 사전 resource가 없어 거부한다. 본 계획은 고정 영어 패턴 fixture 하나만 다룬다. C11.4/C11과 공식 `72/213`은 미완료다.
+**상태:** 구현 및 양 플랫폼 simulator 검증 후보. 기존 [`hyphens:none|manual` 제한 profile](./c11-4-anonymous-grid-text-hyphens.md)은 PR #977로 병합됐다. 이 계획의 제한 `auto` 구현은 현재 작업 브랜치에서 30-scene Android/iOS Simulator 검증을 통과했으며 아직 PR로 병합되지 않았다. C11.4/C11과 공식 `72/213`은 미완료다.
 
 ## 목표와 규범 범위
 
@@ -41,5 +41,11 @@
 - Rust: focused text-layout, style cascade, runtime fixture, FFI matcher 및 관련 regression suites; `cargo fmt --all -- --check`; feature-scoped Clippy를 실행한다. 전체 suite 실패는 변경 전 기준과 분리한다.
 - 앱: Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 pinned source·app hash로 세 word × 세 mode 행렬과 expected rejects를 실행한다. geometry·track·trace·draw/present 결과를 확인한다. AVD software renderer와 iOS compositor 제출 전 표본은 해당 범위 그대로 적는다.
 - artifact: 기본/product `spinon-ffi` release static archive에는 Hypher English pattern marker, auto-only fixture symbols와 dictionary bytes가 없어야 한다. opt-in fixture-test archive에는 각각 positive control이 있어야 한다. Archive 검사는 APK/IPA 전체 fixture exclusion을 대신하지 않는다.
-- 구현/runtime 후 새 실패 관점 20개, 실제 최종 PR diff 별도 실패 관점 20개를 기록한다. 결함을 고치면 영향 관점을 다시 확인한다.
+- 구현/runtime 후 새 실패 관점 20개와 실제 최종 PR diff 별도 실패 관점 30개를 기록한다. 결함을 고치면 영향 관점을 다시 확인한다.
 - 일반 CSS author admission, 임의 English text, 다른 언어, U+00AD와 자동 break 혼합 fallback, spelling-changing hyphenation, `hyphenate-limit-*`, general WPT, glyph painting, hardware GPU/실기기는 이 slice의 증거가 아니다. 공식 `72/213` 및 C11.4/C11 체크를 올리지 않는다.
+
+## 2026-11-01 구현 후보 실행
+
+고정 matrix 30개(기존 `none|manual|initial` 회귀, Auto 9개, expected reject 2개)가 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 30/30 통과했다. Simulator trace에서 computed mode, document revision, min/max intrinsic, line advance, track/frame, 원문 source 및 각 synthetic marker의 0-length UTF-16 mapping을 검사했다. 설치 APK·iOS executable hash가 build hash와 같다. [실행·artifact 경계와 남은 범위](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-auto-runtime-2026-11-01/README.md) · [archive feature boundary](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-auto-runtime-2026-11-01/artifacts/README.md).
+
+Text-layout 96, Style cascade/CSS adapter 7, Runtime 394 passed/3 ignored, FFI 188 passed/2 ignored, fixture module-boundary 32, fixture-enabled FFI Clippy 및 `cargo fmt --all -- --check`가 통과했다. 초기 capture에서 두 harness expected-value 결함을 찾아 수정하고 전체 양 플랫폼 행렬을 다시 실행했다. 새 실패 관점의 [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-auto-runtime-2026-11-01/implementation-runtime-review-20.md)와 실제 최종 diff의 [PR 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-hyphens-auto-runtime-2026-11-01/pr-diff-review-30.md)는 완료했다. PR 생성·GitHub check 확인·병합이 남아 있다. 이 후보 자체는 공개 CSS 지원이나 전체 C11.4 완료를 선언하지 않는다.

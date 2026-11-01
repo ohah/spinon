@@ -154,3 +154,119 @@ fn c114_hyphens_rejects_inputs_outside_the_fixed_profile() {
         Err(TextLayoutError::UnsupportedHyphensProfile(node)) if node == input.node
     ));
 }
+
+#[test]
+fn c114_hyphens_auto_is_rejected_without_its_fixture_feature() {
+    if cfg!(feature = "c11-4-hyphens-auto-fixture-test") {
+        return;
+    }
+    let mut engine = engine();
+    let input = paragraph("hyphenation", HyphensMode::Auto);
+    assert!(matches!(
+        engine.intrinsic_inline_sizes(&input),
+        Err(TextLayoutError::UnsupportedHyphensProfile(node)) if node == input.node
+    ));
+}
+
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+#[test]
+fn c114_hyphens_auto_matches_fixed_english_intrinsic_and_line_oracles() {
+    let mut engine = engine();
+    for (text, expected_min, expected_max, expected_advances) in [
+        ("hyphenation", 50.0, 110.0, &[30.0, 50.0, 50.0][..]),
+        (
+            "internationalization",
+            50.0,
+            200.0,
+            &[30.0, 40.0, 30.0, 50.0, 30.0, 40.0, 40.0][..],
+        ),
+        (
+            "representation",
+            40.0,
+            140.0,
+            &[40.0, 30.0, 40.0, 30.0, 40.0][..],
+        ),
+    ] {
+        let input = paragraph(text, HyphensMode::Auto);
+        let intrinsic = engine.intrinsic_inline_sizes(&input).unwrap();
+        close_to(intrinsic.min_content(), expected_min, "auto min-content");
+        close_to(intrinsic.max_content(), expected_max, "auto max-content");
+
+        let layout = engine.layout_paragraph(&input, 50.0).unwrap();
+        let expected_text = match text {
+            "hyphenation" => "hy\u{00ad}phen\u{00ad}ation",
+            "internationalization" => {
+                "in\u{00ad}ter\u{00ad}na\u{00ad}tion\u{00ad}al\u{00ad}iza\u{00ad}tion"
+            }
+            "representation" => "rep\u{00ad}re\u{00ad}sen\u{00ad}ta\u{00ad}tion",
+            _ => unreachable!(),
+        };
+        assert_eq!(layout.text, expected_text);
+        assert_eq!(
+            layout.lines.len(),
+            expected_advances.len(),
+            "{text}: lines={:?}, advances={:?}",
+            layout
+                .lines
+                .iter()
+                .map(|line| &layout.text[line.text_range.clone()])
+                .collect::<Vec<_>>(),
+            layout
+                .lines
+                .iter()
+                .map(|line| line.advance)
+                .collect::<Vec<_>>()
+        );
+        for (line, expected) in layout.lines.iter().zip(expected_advances) {
+            close_to(line.advance, *expected, "auto visible line advance");
+        }
+
+        let source_utf16_len = text.encode_utf16().count();
+        assert!(
+            layout
+                .sources
+                .iter()
+                .all(|source| source.source_utf16.end <= source_utf16_len)
+        );
+        for marker_start in layout
+            .text
+            .match_indices('\u{00ad}')
+            .map(|(index, _)| index)
+        {
+            let marker_end = marker_start + '\u{00ad}'.len_utf8();
+            let marker_sources = layout
+                .sources
+                .iter()
+                .filter(|source| source.paragraph_utf8 == (marker_start..marker_end))
+                .collect::<Vec<_>>();
+            assert_eq!(marker_sources.len(), 1);
+            assert_eq!(
+                marker_sources[0].source_utf16.start,
+                marker_sources[0].source_utf16.end
+            );
+        }
+    }
+}
+
+#[cfg(feature = "c11-4-hyphens-auto-fixture-test")]
+#[test]
+fn c114_hyphens_auto_fails_closed_for_language_word_and_soft_hyphen_outside_profile() {
+    let mut engine = engine();
+    for (text, locale) in [
+        ("hyphenation", None),
+        ("hyphenation", Some("en-US")),
+        ("hyphenation", Some("fr")),
+        ("unsupported", Some("en")),
+        ("hy\u{00ad}phenation", Some("en")),
+    ] {
+        let mut input = paragraph(text, HyphensMode::Auto);
+        input.style.locale = locale.map(str::to_owned);
+        assert!(
+            matches!(
+                engine.intrinsic_inline_sizes(&input),
+                Err(TextLayoutError::UnsupportedHyphensProfile(node)) if node == input.node
+            ),
+            "unexpectedly accepted {text:?} with {locale:?}"
+        );
+    }
+}
