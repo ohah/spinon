@@ -1,6 +1,6 @@
 # C11.1 parsed Root HTML 기본 Grid anonymous text 제한 구현 계획
 
-**상태:** 계획 단계. 직접 텍스트를 포함한 Grid는 기본 Root HTML runtime에서 현재 `unsupported_root_html_grid_text_item`로 거부한다. 이 계획은 `RuntimeSession::new_runtime_gpu_with_root_html()` 기본 경로에서 하나의 일반 공백 정책 텍스트 run을 익명 Grid item으로 배치·그리는 후보만 다룬다. C11.1·C11.4·C11은 미완료이며 공식 완료 `72/213`을 유지한다.
+**상태:** 제한 구현 후보 PR #1011이 열려 있다. 기본 parsed Root HTML runtime 경로에 direct text `AB` 하나를 anonymous Grid item으로 배치·paint하는 변경과 Android API 37 ARM64 AVD/iOS Simulator 근거를 제출했다. 이 후보는 병합 및 상태 대장 완료 요건 전까지 미완료이며 C11.1·C11.4·C11과 공식 완료 `72/213`은 유지한다. main의 현재 동작은 여전히 비공백 Grid direct text를 `unsupported_root_html_grid_text_item`로 거부한다.
 
 **기준:** CSS Grid Layout Module Level 1 2025-03-26 CRD [§6 Grid Items](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#grid-items), [§8.5 Grid Item Placement Algorithm](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-placement-algo). 독립 입력, 예상값, Chrome 156 관측, 화면 및 hash는 [사전 비교 자료](../spec/internal/evidence/c11-root-html-grid-anonymous-text-precomparison-2026-11-02/README.md)에 고정한다.
 
