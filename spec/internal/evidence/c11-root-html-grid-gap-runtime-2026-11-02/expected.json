@@ -1,0 +1,26 @@
+{
+  "format": "spinon.c11.root-html-grid-gap.expected.v1",
+  "oracle": "CSS Grid fixed explicit tracks and row-major automatic placement, independently calculated; Chrome 156 is a cross-check only",
+  "viewportCssPx": [390, 844],
+  "root": {
+    "widthCssPx": 130,
+    "heightCssPx": 65,
+    "columnsCssPx": [40, 80],
+    "rowsCssPx": [30, 30],
+    "columnGapCssPx": 10,
+    "rowGapCssPx": 5,
+    "frameCssPx": [0, 0, 130, 65]
+  },
+  "items": [
+    {"selector": ".cell-a", "frameCssPx": [0, 0, 40, 30]},
+    {"selector": ".cell-b", "frameCssPx": [50, 0, 80, 30]},
+    {"selector": ".cell-c", "frameCssPx": [0, 35, 40, 30]},
+    {"selector": ".cell-d", "frameCssPx": [50, 35, 80, 30]}
+  ],
+  "independentChecks": [
+    "130px width equals 40px + 10px column gap + 80px",
+    "65px height equals 30px + 5px row gap + 30px",
+    "row-major auto-placement maps source items to column,row pairs (0,0), (1,0), (0,1), (1,1)",
+    "unsupported percentage and calc gap inputs must fail before a layout scene is published"
+  ]
+}
