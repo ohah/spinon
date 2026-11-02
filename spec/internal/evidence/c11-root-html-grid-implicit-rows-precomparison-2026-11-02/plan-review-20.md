@@ -19,7 +19,7 @@
 | 9 | CSS `order`가 DOM 순서를 바꾸지만 “기본 DOM row flow” 결과로 기록됨 | Root mode에서 `order:0`만 허용하고 비기본 order를 거부한다. | PASS |
 | 10 | `display:none` child가 빈 cell을 차지하거나 implicit row 수를 늘림 | hidden subtree는 auto-placement occupancy에서 제외하고 positive control로 검증한다. | PASS |
 | 11 | direct text, nested child 또는 image의 intrinsic contribution이 fixed row 크기와 섞임 | 빈 direct block item만 허용하고 text·nested·image/intrinsic child를 negative control로 둔다. | PASS |
-| 12 | fixed item 크기와 track 크기 차이가 stretch/alignment/overflow 검증을 오염시킴 | 고정 fixture에서 각 item 크기를 해당 cell과 맞추고 비기본 alignment·overflow를 추가 지원하지 않는다. | PASS |
+| 12 | 기존 Root HTML fr/percentage explicit sizing과 새 implicit-row mode가 검증 없이 결합됨 | 새 mode는 explicit fixed-px tracks/gap만 받고 fr/percentage 조합을 negative control로 둔다. | PASS |
 | 13 | `grid-auto-rows:0px`에서 row가 사라지거나 배치 cursor가 다음 행으로 이동하지 않음 | zero-height implicit row를 track·item 위치의 positive boundary control로 고정한다. | PASS |
 | 14 | row gap이 explicit/implicit 경계나 0px track에 두 번 적용되거나 빠짐 | `20 + 5 + 0 = 25`, 한 15px row의 40px, 두 row의 60px를 독립 산술과 Chrome geometry로 확인한다. | PASS |
 | 15 | item 수가 늘 때 implicit row 확장이 10,000 track을 초과하거나 overflow됨 | 기존 `GRID_MAX_TRACKS`와 sparse normalizer의 checked end 검사를 유지하고 초과 count를 거부한다. | PASS |
