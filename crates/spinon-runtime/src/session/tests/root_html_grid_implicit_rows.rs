@@ -2,6 +2,8 @@ use super::*;
 
 #[path = "root_html_grid_implicit_rows/composition.rs"]
 mod composition;
+#[path = "root_html_grid_implicit_rows/fraction.rs"]
+mod fraction;
 
 const SOURCE: &str =
     include_str!("../../../../../tests/fixtures/css/c11/root-html-grid-implicit-rows-runtime.html");
@@ -403,14 +405,6 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
                 "grid-auto-rows: 15px;",
                 "grid-auto-columns: 10px;\n        grid-auto-rows: 15px;",
             ),
-        ),
-        (
-            "fraction in implicit row list",
-            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 15px 1fr;"),
-        ),
-        (
-            "fraction implicit row",
-            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 1fr;"),
         ),
         (
             "intrinsic implicit row",

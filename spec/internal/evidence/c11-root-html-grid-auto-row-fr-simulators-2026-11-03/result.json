@@ -1,0 +1,76 @@
+{
+  "schema": "spinon-c11-root-html-grid-auto-row-fr-simulator-evidence/v1",
+  "baseCommit": "16534440505aa9214f838112aad60bd645702e0a",
+  "branch": "impl/c11-root-html-grid-auto-row-fr",
+  "status": "candidate-verified-not-merged",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-row-fr-runtime.html",
+    "sha256": "573b76610f648e52913225f9481f854c9ae9c9fedb57ecfe2fa1d2b1a5ad6f51"
+  },
+  "focusedRustTests": {
+    "spinon-style cascade": { "passed": 9, "failed": 0 },
+    "spinon-style-to-layout projection": { "passed": 12, "failed": 0 },
+    "spinon-layout implicit rows": { "passed": 22, "failed": 0 },
+    "spinon-runtime implicit rows": { "passed": 11, "failed": 0 }
+  },
+  "regressions": {
+    "spinon-layout auto-placement": { "passed": 52, "failed": 0 },
+    "spinon-runtime root_html_grid": { "passed": 41, "failed": 0 },
+    "spinon-style-to-layout root_html": {
+      "passed": 36,
+      "failed": 1,
+      "failure": "parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns"
+    }
+  },
+  "qualityGates": {
+    "scopedClippy": "passed",
+    "cargoFmt": "passed",
+    "gitDiffCheck": "passed"
+  },
+  "adversarialReviews": {
+    "implementationRuntime": {
+      "perspectives": 20,
+      "status": "complete",
+      "record": "implementation-runtime-review-20.md"
+    },
+    "implementationPrDiff": {
+      "perspectives": 30,
+      "status": "complete",
+      "record": "implementation-pr-diff-review-30.md"
+    }
+  },
+  "android": {
+    "avd": "spinon_api37_1_compat16k",
+    "api": 37,
+    "abi": "arm64-v8a",
+    "emulator": true,
+    "renderer": "ANGLE/SwiftShader software path",
+    "fixtureSha256InRuntimeLog": "573b76610f648e52913225f9481f854c9ae9c9fedb57ecfe2fa1d2b1a5ad6f51",
+    "layout": "ready",
+    "renderBoxes": 13,
+    "drawPresented": true,
+    "surfacePixelReadback": false,
+    "screenshot": "android-api37-screen.png"
+  },
+  "ios": {
+    "device": "iPhone 17 Pro",
+    "runtime": "iOS 26.2",
+    "xcode": "26.2 (17C52)",
+    "renderer": "Metal simulator GPU",
+    "fixtureSha256InRuntimeLog": "573b76610f648e52913225f9481f854c9ae9c9fedb57ecfe2fa1d2b1a5ad6f51",
+    "layout": "ready",
+    "renderBoxes": 13,
+    "drawPresented": true,
+    "surfacePixelReadback": false,
+    "screenshot": "ios-26-2-screen.png"
+  },
+  "officialProjectStatus": {
+    "completed": "72/213",
+    "c11Parent": "incomplete"
+  },
+  "limitations": [
+    "Simulator screenshots are visual smoke evidence; they are not surface pixel-readback evidence.",
+    "Android renderer is software-rendered and neither platform result is a physical-device GPU result.",
+    "The existing style-to-layout root_html filter remains 36/37 because its unchanged negative auto-column CSS fallback assertion fails."
+  ]
+}

@@ -459,7 +459,7 @@ fn root_html_profile_projects_fixed_px_implicit_row_track_lists_in_its_own_mode(
 }
 
 #[test]
-fn root_html_profile_projects_mixed_px_percentage_implicit_row_track_lists() {
+fn root_html_profile_projects_mixed_px_percentage_fractional_implicit_row_track_lists() {
     let node = NodeId::new(11_195).unwrap();
     let mut grid = grid(
         vec![
@@ -471,6 +471,7 @@ fn root_html_profile_projects_mixed_px_percentage_implicit_row_track_lists() {
     grid.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
         ComputedCssGridTrackSize::LengthPx(15.0),
         ComputedCssGridTrackSize::Percentage(0.25),
+        ComputedCssGridTrackSize::Fraction(1.0),
     ]);
 
     let projected = project_grid_layout(
@@ -489,6 +490,7 @@ fn root_html_profile_projects_mixed_px_percentage_implicit_row_track_lists() {
         spinon_layout::GridAutoRows::TrackList(vec![
             GridTrackSize::LengthPx(15.0),
             GridTrackSize::Percentage(0.25),
+            GridTrackSize::Fraction(1.0),
         ])
     );
 }
@@ -554,10 +556,9 @@ fn root_html_profile_rejects_empty_invalid_or_unsupported_implicit_row_lists() {
         ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Percentage(
             f32::INFINITY,
         )]),
-        ComputedCssGridAutoRows::TrackList(vec![
-            ComputedCssGridTrackSize::LengthPx(15.0),
-            ComputedCssGridTrackSize::Fraction(1.0),
-        ]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Fraction(-1.0)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Fraction(f32::NAN)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Fraction(f32::INFINITY)]),
     ] {
         let mut grid = grid(
             vec![

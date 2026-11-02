@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [fixed-px implicit row list](./c11-root-html-grid-auto-row-list.md) · [percentage implicit row list](./c11-root-html-grid-auto-row-percentage-list.md) · [explicit fractional tracks](./c11-root-html-grid-fr-track.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**계획 상태:** direct `fr` 암시적 행은 기본 parsed Root HTML 경로에서 구현되지 않았다. Chrome 156 사전 비교 7 scene과 독립 계산은 [precomparison evidence](../spec/internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/README.md)에 고정했다. fixture·기대값·Chrome 관찰 원본 및 캡처가 포함된다. [계획 실패 관점 20개](./c11-root-html-grid-auto-row-fr-plan-review-20.md)와 계획 PR 실제 변경의 [별도 diff 검토 30개](../spec/internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/plan-pr-diff-review-30.md)를 거쳐 계획 PR을 병합하고, 구현은 별도 PR로 진행한다. 이 계획은 공식 지원 완료를 바꾸지 않는다.
+**계획 상태:** Chrome 156 사전 비교 7 scene과 독립 계산은 [precomparison evidence](../spec/internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/README.md)에 고정했고, 계획 PR [#1069](https://github.com/ohah/spinon/pull/1069)은 병합됐다. `grid-auto-rows` direct px/%/fr implicit-row 목록 구현 후보는 cascade·projection·layout·runtime 집중 Rust 테스트와 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator의 layout-ready/draw-present까지 확인했다. [실행 evidence](../spec/internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/README.md)에 범위, 해시, 캡처와 한계를 기록한다. 넓은 style-to-layout Root HTML 회귀는 기존 auto-column invalid-fraction 검사 한 건이 실패해 green이 아니다. 구현/runtime 실패 관점 20개와 구현 PR diff 실패 관점 30개 검토는 완료했다. Implementation PR 생성·GitHub checks 확인·merge 및 Tailnet roadmap sync는 남아 있다. C11.1/C11 완료와 공식 `72/213`은 바꾸지 않는다.
 
 ## 문제와 목표
 
