@@ -594,7 +594,7 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        grid-auto-rows: 20px;",
+                "grid-template-rows: 70px;\n        grid-auto-rows: 20px 30px;",
             ),
         ),
         (

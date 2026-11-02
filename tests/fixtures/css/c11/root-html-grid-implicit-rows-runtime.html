@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      #grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 100px;
+        height: 40px;
+        grid-template-columns: 40px 55px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 15px;
+        column-gap: 5px;
+        row-gap: 5px;
+        background-color: #101820;
+      }
+
+      .item {
+        display: block;
+        margin: 0;
+      }
+
+      #a { width: 40px; height: 20px; background-color: #e5484d; }
+      #b { width: 55px; height: 20px; background-color: #3b82f6; }
+      #c { width: 40px; height: 15px; background-color: #3a8f5b; }
+      #d { width: 55px; height: 15px; background-color: #f59e0b; }
+      #e { width: 40px; height: 15px; background-color: #a855f7; }
+      #f { width: 55px; height: 15px; background-color: #06b6d4; }
+      .beyond { display: none; }
+    </style>
+  </head>
+  <body>
+    <main id="grid">
+      <div id="a" class="item"></div>
+      <div id="b" class="item"></div>
+      <div id="c" class="item"></div>
+      <div id="d" class="item beyond"></div>
+      <div id="e" class="item beyond"></div>
+      <div id="f" class="item beyond"></div>
+    </main>
+  </body>
+</html>

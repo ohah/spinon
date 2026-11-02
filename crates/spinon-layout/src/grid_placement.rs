@@ -18,11 +18,28 @@ pub(super) fn normalize_grid_layout(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
 ) -> Result<NormalizedGridLayout, LayoutError> {
+    let hidden = hidden_subtrees(input, index);
+    for container_node in &input.nodes {
+        let Some(container) = input.grid_containers.get(&container_node.id) else {
+            continue;
+        };
+        if container_node.style.display == LayoutDisplay::Grid
+            && !hidden[&container_node.id]
+            && container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
+        {
+            validate_root_html_implicit_rows_items(
+                input,
+                index,
+                &hidden,
+                container_node,
+                container,
+            )?;
+        }
+    }
     let mut output = NormalizedGridLayout {
         item_placements: normalize_grid_item_placements(input, index)?,
         ..NormalizedGridLayout::default()
     };
-    let hidden = hidden_subtrees(input, index);
     for container_node in &input.nodes {
         let Some(container) = input.grid_containers.get(&container_node.id) else {
             continue;
@@ -57,6 +74,7 @@ pub(super) fn normalize_grid_layout(
         if !matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -69,7 +87,10 @@ pub(super) fn normalize_grid_layout(
         ) {
             continue;
         }
-        if container.placement_mode == GridPlacementMode::SparseRow {
+        if matches!(
+            container.placement_mode,
+            GridPlacementMode::SparseRow | GridPlacementMode::RootHtmlImplicitRowsV1
+        ) {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,
                 index,
@@ -158,6 +179,7 @@ pub(super) fn normalize_grid_item_placements(
         if matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -224,6 +246,62 @@ pub(super) fn normalize_grid_item_placements(
         }
     }
     Ok(normalized)
+}
+
+fn validate_root_html_implicit_rows_items(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
+    hidden: &BTreeMap<NodeId, bool>,
+    container_node: &crate::LayoutNode,
+    container: &crate::GridContainerInput,
+) -> Result<(), LayoutError> {
+    let node = container_node.id;
+    let column_count = container.columns.len();
+    if column_count == 0 {
+        return Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-columns",
+        });
+    }
+    let visible_items = container_node
+        .children
+        .iter()
+        .copied()
+        .filter(|child| !hidden[child])
+        .collect::<Vec<_>>();
+    let minimum_rows = visible_items
+        .len()
+        .checked_add(column_count - 1)
+        .map(|count| count / column_count)
+        .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
+    if minimum_rows > super::grid::GRID_MAX_TRACKS {
+        return Err(LayoutError::GridImplicitTrackRequired(node));
+    }
+    for child in visible_items {
+        if input.nodes[index[&child]].style.order != 0 {
+            return Err(LayoutError::UnsupportedGridOrder(child));
+        }
+        if input
+            .grid_items
+            .get(&child)
+            .is_some_and(|placement| !placement.is_auto())
+        {
+            return Err(invalid_placement(
+                child,
+                "grid-row-start",
+                "Root HTML implicit row mode는 자동 배치만 지원합니다",
+            ));
+        }
+        if !input.nodes[index[&child]].children.is_empty()
+            || input
+                .text_paragraphs
+                .get(&child)
+                .is_some_and(crate::TextParagraphInput::has_content)
+        {
+            return Err(LayoutError::UnsupportedGridItemSize(child));
+        }
+    }
+    Ok(())
 }
 
 pub(super) fn hidden_subtrees(

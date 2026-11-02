@@ -1,0 +1,14 @@
+ld: warning: duplicate symbol '___REGISTER_CLASS_RawWindowMetalLayer' in:
+ld: warning: duplicate symbol '___CLASS_RawWindowMetalLayer' in:
+ld: warning: duplicate symbol '___DROP_FLAG_OFFSET_RawWindowMetalLayer' in:
+ld: warning: duplicate symbol '___IVAR_OFFSET_RawWindowMetalLayer' in:
+2026-11-02 11:46:22.656 appintentsmetadataprocessor[32190:140321529] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(allocation.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(free-list.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(ieee754.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(logging.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(mutex.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(platform.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(snapshot.o)
+warning: (arm64)  skipping debug map object with duplicate name and timestamp: 1970-01-01 09:00:00.000000000 /Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a(sweeper.o)
+** BUILD SUCCEEDED **

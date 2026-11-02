@@ -16,6 +16,14 @@ pub(crate) enum TextParagraphInput {
 }
 
 impl TextParagraphInput {
+    pub(crate) fn has_content(&self) -> bool {
+        match self {
+            Self::Paragraph(paragraph) => !paragraph.sources.is_empty(),
+            Self::AnonymousGridText { .. } => true,
+            Self::Flow(flow) => !flow.items.is_empty(),
+        }
+    }
+
     #[cfg(test)]
     pub(crate) fn paragraph(&self) -> Option<&ParagraphInput> {
         match self {

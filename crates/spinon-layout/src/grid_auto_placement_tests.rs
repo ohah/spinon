@@ -217,6 +217,21 @@ fn implicit_rows_repeat_fixed_track_size_and_keep_row_gap() {
 }
 
 #[test]
+fn grid_root_html_fixed_implicit_rows_reject_resource_limit_before_expansion() {
+    let mut input = sparse_grid(1, 1, super::GRID_MAX_TRACKS + 1);
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::RootHtmlImplicitRowsV1;
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::GridImplicitTrackRequired(node)) if node == id(1)
+    ));
+}
+
+#[test]
 fn implicit_auto_sizing_and_explicit_column_overflow_fail_closed() {
     let mut implicit_auto_rows = sparse_grid(2, 1, 3);
     implicit_auto_rows

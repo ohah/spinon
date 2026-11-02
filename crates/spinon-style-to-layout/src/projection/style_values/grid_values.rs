@@ -120,6 +120,7 @@ fn validate_root_html_grid_tracks(
         property,
         value: value.to_owned(),
     };
+    let implicit_rows = matches!(grid.auto_rows, ComputedCssGridAutoRows::LengthPx(_));
     for (property, tracks, line_names, auto_repeat) in [
         (
             "grid-template-columns",
@@ -143,12 +144,26 @@ fn validate_root_html_grid_tracks(
                 | ComputedCssGridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
                 _ => true,
             })
+            || (implicit_rows
+                && tracks
+                    .iter()
+                    .any(|track| !matches!(track, ComputedCssGridTrackSize::LengthPx(_))))
         {
             return Err(unsupported(
                 property,
-                "Root HTML Grid은 이름 없는 finite non-negative px/percentage/fr direct explicit track만 지원합니다",
+                if implicit_rows {
+                    "fixed implicit row와 함께 쓰는 Root HTML Grid explicit track은 이름 없는 fixed px만 지원합니다"
+                } else {
+                    "Root HTML Grid은 이름 없는 finite non-negative px/percentage/fr direct explicit track만 지원합니다"
+                },
             ));
         }
+    }
+    if implicit_rows && grid.template_areas.is_some() {
+        return Err(unsupported(
+            "grid-auto-rows",
+            "Root HTML implicit row sizing은 grid-template-areas와 함께 사용할 수 없습니다",
+        ));
     }
     if let Some(areas) = &grid.template_areas {
         validate_root_html_named_area_template(node, grid, areas)?;
@@ -159,10 +174,21 @@ fn validate_root_html_grid_tracks(
             "Root HTML Grid에서는 기본 row auto-placement만 지원합니다",
         ));
     }
-    if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) {
+    if !matches!(
+        grid.auto_rows,
+        ComputedCssGridAutoRows::Auto | ComputedCssGridAutoRows::LengthPx(_)
+    ) {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML Grid에서는 implicit row sizing을 지원하지 않습니다",
+            "Root HTML Grid에서는 단일 fixed px grid-auto-rows만 지원합니다",
+        ));
+    }
+    if let ComputedCssGridAutoRows::LengthPx(value) = grid.auto_rows
+        && (!value.is_finite() || value < 0.0)
+    {
+        return Err(unsupported(
+            "grid-auto-rows",
+            "Root HTML grid-auto-rows는 finite non-negative px여야 합니다",
         ));
     }
     if !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
@@ -655,7 +681,9 @@ fn project_grid_layout_with_reservations(
     let allow_template_area_track_sizing = profile
         == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         && grid.template_areas.is_some();
-    let mut auto_rows = if sparse_row || dense_auto_placement {
+    let root_html_implicit_rows = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && matches!(grid.auto_rows, ComputedCssGridAutoRows::LengthPx(_));
+    let mut auto_rows = if sparse_row || dense_auto_placement || root_html_implicit_rows {
         project_auto_rows(
             node,
             &grid.auto_rows,
@@ -783,6 +811,9 @@ fn project_grid_layout_with_reservations(
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if grid.template_areas.is_some() => {
                 GridPlacementMode::TemplateGrid
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if root_html_implicit_rows => {
+                GridPlacementMode::RootHtmlImplicitRowsV1
             }
             ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1 => {
                 GridPlacementMode::DenseAutoPlacement
