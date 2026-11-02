@@ -89,6 +89,24 @@ fn root_html_percentage_row_gap_resolves_against_the_definite_content_height() {
 }
 
 #[test]
+fn root_html_hidden_grid_items_do_not_add_percentage_gap_extent() {
+    let mut input = root_html_implicit_row_list_grid(
+        1.0,
+        &[20.0, 20.0, 10.0],
+        vec![GridTrackSize::Percentage(0.0)],
+    );
+    input.nodes[0].style.gap.row = LayoutLengthPercentage::percent(f32::MAX);
+    input.nodes[3].style.display = crate::LayoutDisplay::None;
+    wrap_root_html_grid_in_fixed_parent(&mut input);
+
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("the hidden third item must not introduce an implicit-row gutter");
+    assert_eq!(output.frames[&id(2)].y, 0.0);
+    assert_eq!(output.frames[&id(3)].y, 0.0);
+}
+
+#[test]
 fn root_html_percentage_row_gap_rejects_indefinite_constrained_and_overflowing_ranges() {
     for (change, property) in [(0, "row-gap"), (1, "min-height"), (2, "max-height")] {
         let mut input = root_html_implicit_row_list_grid(

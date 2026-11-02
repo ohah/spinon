@@ -1,0 +1,53 @@
+{
+  "sourceCommit": "f92352d97eddfa5e6142d9db78d5a1900879587b",
+  "sourceTree": "d1428f399b75d6409a4cf25c85a6cd54496e7bf3",
+  "fixture": {
+    "path": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/root-html-grid-percentage-gap-runtime.html",
+    "sha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e"
+  },
+  "v8DomProbe": {
+    "path": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/root-app-runtime-probe.js",
+    "sha256": "685d0f3b8ab8d78a9d14a5e3dfd019c60323e4eac4f4f5dcf172c12000a79d9c",
+    "result": "root_app_marker=ready"
+  },
+  "independentExpectedFramesCssPx": [
+    [0, 0, 20, 20],
+    [260, 0, 20, 20],
+    [0, 40, 20, 20],
+    [260, 40, 20, 20]
+  ],
+  "android": {
+    "target": "Android API 37 ARM64 AVD spinon_api37_1_compat16k",
+    "serial": "emulator-5558",
+    "apiLevel": 37,
+    "release": "17",
+    "model": "sdk_gphone16k_arm64",
+    "physicalResolution": [1080, 2400],
+    "densityDpi": 420,
+    "renderer": "ANGLE/Vulkan/SwiftShader software backend",
+    "apkSha256": "318ad3ba31eb4b8deddf11259fdf553f23c94b0806416cd5e299a6be1a749043",
+    "appPidDuringCapture": 3338,
+    "runtimeLog": "android-runtime.log",
+    "runtimeLogSha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7",
+    "screenshot": "android-api37-avd.png",
+    "screenshotSha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c",
+    "screenshotResolution": [1080, 2400],
+    "runtimeResult": "source=index.html; layout=ready boxes=7; presented boxes=7; viewport=411.42856x841.52374 CSS px; root=411.42856x200 CSS px",
+    "appTerminatedAfterCapture": true
+  },
+  "ios": {
+    "target": "iPhone 17 Pro Max, iOS 26.2 Simulator",
+    "udid": "2735DBB2-0B04-4FC4-9349-D3478860BAF1",
+    "appExecutableSha256": "4c4f245ba75ab36bb7fde79ee62ad0a8c5cdc57565d4a3d0190debc86ea2ed9d",
+    "appPidDuringCapture": 32515,
+    "runtimeLog": "ios-runtime.log",
+    "runtimeLogSha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557",
+    "screenshot": "ios-26_2-simulator.png",
+    "screenshotSha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc",
+    "screenshotResolution": [1320, 2868],
+    "runtimeResult": "source=index.html; layout=ready boxes=7; presented boxes=7; viewport=440x860 CSS px; root=440x200 CSS px; scale=3",
+    "appTerminatedAfterCapture": true
+  },
+  "pixelReadback": false,
+  "physicalDevice": false
+}

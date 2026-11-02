@@ -1,0 +1,21 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.29s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 10 tests
+test c11_1_root_html_percentage_gap_tests::simulator_fixture_keeps_percentage_gap_geometry_and_visible_overflow ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_percentage_auto_rows_and_percentage_gap_reach_taffy_geometry ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_percentage_auto_row_list_reaches_taffy_used_geometry ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_zero_and_over_hundred_percent_implicit_rows_keep_css_geometry ... ok
+test c11_1_root_html_percentage_gap_tests::percentage_gaps_compose_with_implicit_rows_and_column_flow_columns ... ok
+test c11_1_root_html_percentage_gap_tests::fixed_named_area_accepts_percentage_and_existing_px_gaps ... ok
+test c11_1_root_html_percentage_gap_tests::zero_and_over_hundred_percent_gaps_keep_their_used_geometry ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_percentage_auto_rows_require_a_definite_unconstrained_height ... ok
+test c11_1_root_html_percentage_gap_tests::percentage_gaps_resolve_against_their_own_axes_and_shorthand_order ... ok
+test c11_1_root_html_percentage_gap_tests::invalid_negative_gap_cascades_but_math_and_indefinite_basis_fail_closed ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 311 filtered out; finished in 0.07s

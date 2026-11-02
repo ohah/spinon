@@ -156,6 +156,33 @@ fn zero_and_over_hundred_percent_gaps_keep_their_used_geometry() {
 }
 
 #[test]
+fn simulator_fixture_keeps_percentage_gap_geometry_and_visible_overflow() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:200px;height:200px;grid-template-columns:20px 20px;grid-template-rows:20px 20px;column-gap:120%;row-gap:10%;margin:0;padding:0;overflow:visible",
+        &[
+            "display:block;box-sizing:border-box;width:20px;height:20px;margin:0;padding:0",
+            "display:block;box-sizing:border-box;width:20px;height:20px;margin:0;padding:0",
+            "display:block;box-sizing:border-box;width:20px;height:20px;margin:0;padding:0",
+            "display:block;box-sizing:border-box;width:20px;height:20px;margin:0;padding:0",
+        ],
+    );
+    let output = fixture.compute().unwrap();
+    assert_eq!(output.layout.frames[&fixture.grid.id()].width, 200.0);
+    assert_eq!(output.layout.frames[&fixture.grid.id()].height, 200.0);
+    assert_eq!(
+        (0..4)
+            .map(|index| fixture.item_frame(&output, index))
+            .collect::<Vec<_>>(),
+        [
+            [0.0, 0.0, 20.0, 20.0],
+            [260.0, 0.0, 20.0, 20.0],
+            [0.0, 40.0, 20.0, 20.0],
+            [260.0, 40.0, 20.0, 20.0],
+        ]
+    );
+}
+
+#[test]
 fn percentage_gaps_compose_with_implicit_rows_and_column_flow_columns() {
     let rows = Fixture::new(
         "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px 55px;grid-template-rows:20px;grid-auto-rows:25%;column-gap:5px;row-gap:10%;margin:0;padding:0",

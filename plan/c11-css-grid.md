@@ -1,6 +1,6 @@
 # C11 · CSS Grid 레이아웃 구현 계획
 
-**다음 focused plan 후보:** 기본 parsed Root HTML Grid의 percentage `row-gap`/`column-gap`을 기존 pixel gap 경로에 연결하는 12-scene 계획과 Chrome 156 비교를 [별도 문서](./c11-root-html-grid-percentage-gap.md) 및 [precomparison evidence](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md)에 고정했다. 구현 전 계획 검토 20개를 마쳤다. 이 candidate는 C11.1 및 공식 `72/213`을 완료로 바꾸지 않는다.
+**현재 focused implementation candidate:** 기본 parsed Root HTML Grid의 percentage `row-gap`/`column-gap`을 기존 pixel gap 경로에 연결하는 12-scene 계획과 Chrome 156 비교는 [별도 문서](./c11-root-html-grid-percentage-gap.md) 및 [precomparison evidence](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md)에 고정했다. 핵심 구현, 집중 Rust 검사, Android/iOS Simulator 실행과 구현/runtime 검토 20개를 마쳤다. 현재 PR 변경분 적대 검토와 PR 생성·검증은 진행 전이다. C11.1 및 공식 `72/213`은 완료로 바꾸지 않는다.
 
 **최근 병합:** parsed Root HTML Grid `grid-auto-rows` direct finite non-negative px/%/fr 목록 제한 구현 PR [#1070](https://github.com/ohah/spinon/pull/1070)은 2026-11-02T16:37:30Z Rebase and merge됐다(merge SHA `f40cb3b93d2555dafecd352bd35fb349b6bf7a64`). 실행 근거와 남은 검증 범위는 [STATUS](../spec/STATUS.md) 및 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/README.md)를 따른다.
 
