@@ -58,6 +58,14 @@ Current tests cover both percentage axes, `% + px`·`% + fr`, fixed-px gap, over
 
 이 병합 slice는 일반 CSS admission, intrinsic/cyclic percentage sizing, percentage gap, named-area + percentage, WPT 적합성, 물리기기/hardware GPU, C11.1 또는 C11 전체 완료를 뜻하지 않는다. PR check rollup은 비어 있었고 필수 status check가 설정되지 않아 CI 통과로 세지 않는다. 공식 `72/213`과 상위 C11 checkbox는 미완료로 유지한다. 내부 계약 숫자 버전 `0.1.0`은 변경하지 않는다.
 
+## C11.1 parsed Root HTML named-area percentage explicit tracks · implementation candidate · 2026-11-02
+
+`RuntimeRootHtmlTextPaintV1` 기본 parsed Root HTML 경로에서 기존 rectangular 2×2 `header/header`·`side/content` named-area map을 유지하며 columns/rows 각 축의 direct track 두 개가 finite non-negative `px` 또는 `%`이면 투영한다. 새 조합에는 최소 하나의 percentage track이 필요하다. percentage 축은 definite width/height basis를 요구하고, min-size `auto`, max-size `none`, `aspect-ratio` 미설정, gap 0, implicit track 없음, LTR/horizontal writing mode의 기존 경계를 유지한다. 기존 fixed-px 및 양축 `1fr 2fr` named-area paths는 별도 분기로 유지한다. `%`와 `fr` 혼합, `calc()`·`minmax()`·fit-content·repeat·named lines·다른 area map은 실패한다.
+
+독립 산술과 Chrome 156 observation은 `120×70px` root 기준 both-axes `[30,90]`/`[14,56]`, mixed-px-percent `[40,60]`/`[14,50]`, overflowing-columns `[144,12]`/`[14,56]`, zero-track `[0,120]`/`[14,56]`다. Rust runtime tests는 root/item frames와 같은 document/style/layout revision을 검사한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 `index.html` route에서 4/4 scene이 각각 layout ready와 draw/present에 도달했다. SwiftShader AVD 및 Simulator PNG는 시각 확인에 한정하고 PixelCopy·Metal drawable readback이나 physical-device/hardware-GPU 결과를 주장하지 않는다. min/max constraint 진단은 각각 실제 위반 property를 보고한다.
+
+상세 [precomparison](./evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/README.md) · [runtime/build/hash/screenshot evidence](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md) · [구현/runtime 검토 20개](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/implementation-runtime-review-20.md). 구현 PR은 아직 review/merge 전이다. 내부 숫자 버전 `0.1.0`, C11.1/C11 상태 및 공식 `72/213`은 그대로다.
+
 ## C11.1 parsed Root HTML fixed `grid-auto-rows` · bounded implementation candidate · 2026-11-02
 
 `RuntimeRootHtmlTextPaintV1` 기본 Root HTML route에서 no-area Grid의 단일 finite non-negative px `grid-auto-rows`를 제한 허용한다. 새 `GridPlacementMode::RootHtmlImplicitRowsV1`은 `grid-auto-flow:row`, `grid-auto-columns:auto`, 이름 없는 fixed-px explicit tracks와 fixed-px gaps, visible direct item의 자동 배치·`order:0`, 빈 fixed-size block item을 검증하고 기존 sparse row normalizer를 재사용한다. fixed-px named-area template, authored placement, 여러 implicit row size 목록, percentage/`fr`/intrinsic implicit sizing, implicit columns, text/nested item과 non-default alignment/overflow는 계속 거부한다. `GRID_MAX_TRACKS`를 넘는 implicit row 수는 track 확장 전에 오류로 반환한다. Cascade 계약과 숫자 버전 `0.1.0`은 바꾸지 않는다.

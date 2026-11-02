@@ -56,3 +56,8 @@
 ## 제외 범위
 
 이 제한 통합은 authored non-default auto-placement, repeat/named lines/areas, intrinsic text/image sizing, implicit tracks, span/fraction sizing, CSS overflow clipping/scroll, arbitrary unsupported CSS를 새로 지원하지 않는다. 기본 visible overflow는 고정-size Grid item frame에 대해 유지하고 별도 경계 fixture로 검사한다. 고정 장면은 `grid-auto-flow`와 item placement를 author CSS에서 생략한 기본 row placement만 검사한다. 이 목록은 C11 전체의 완료 정의가 아니다. Public CSS coverage, WPT runner, C11.3, C11.4 및 parent C11은 계속 열린다.
+
+
+## 2026-11-02 Root HTML named-area percentage track 후속 후보
+
+`RuntimeRootHtmlTextPaintV1` 기본 경로의 기존 2×2 semantic named-area map은 definite 축마다 direct finite non-negative `px`/`%` track 두 개를 허용한다. Chrome 156 네 장면에 대응하는 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene이 `layout=ready`와 draw/present를 보였다. Rust geometry assertion, build 경고, screenshot hash와 시각 확인 한계는 [전용 runtime 근거](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md)에 기록했다. 이 후보는 named-area percentage 조합만 추가하며 일반 CSS Grid, WPT, hardware GPU, surface pixel parity 또는 C11 완료를 뜻하지 않는다.
