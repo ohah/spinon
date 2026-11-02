@@ -1,0 +1,207 @@
+{
+  "sourceHead": "42cc95e32920e6a787b7ec46b9b1ff9cd230d603",
+  "sourceTree": "4ca79bdc134e3c742bf9fd4ff9b9e954fa2f1bc5",
+  "root": "build/spinon/roadmap-tailnet-sync-pr1060-2026-11-02/pass03/root",
+  "selectedFileCount": 33,
+  "totalBytes": 1851481,
+  "rows": [
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 363466,
+      "sha256": "833dc0d3434578fa117482821947b1b5a0b3b5a8bd08148e9e9d5449497ab52b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-agent-browser-pass02.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-agent-browser-pass02.png",
+      "bytes": 3998,
+      "sha256": "ea1cf2aa7c5ae19d2a2d23b0eddad58d198a675bcde98cc3caa199a5e61e228c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-agent-browser-pass03.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-agent-browser-pass03.png",
+      "bytes": 3998,
+      "sha256": "ea1cf2aa7c5ae19d2a2d23b0eddad58d198a675bcde98cc3caa199a5e61e228c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-agent-browser.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-agent-browser.png",
+      "bytes": 3998,
+      "sha256": "ea1cf2aa7c5ae19d2a2d23b0eddad58d198a675bcde98cc3caa199a5e61e228c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/README.md",
+      "bytes": 2675,
+      "sha256": "20a11fac5dff15a81bd0ffcf9e32b353727dc6245db5bdeeeef2f892de6ae6f6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/android-avd/simulator.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/android-avd/simulator.png",
+      "bytes": 24598,
+      "sha256": "5ad6e8035026a0f82d1732d4fc54df0969b12154e8fbb054049ddf7b05f966b5"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/implementation-review-20.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/implementation-review-20.md",
+      "bytes": 6759,
+      "sha256": "beaae0477786979580001ab7017970b89f6f7a272017701a09f2e3b53efe4f27"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/ios-simulator/simulator.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/ios-simulator/simulator.png",
+      "bytes": 76852,
+      "sha256": "3b4e24410e8d968b2ee76ba9b728aaab6607b3ccdf5277f84a6a3ed8ea69ab6a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/pr-diff-review-30.md",
+      "bytes": 6084,
+      "sha256": "f9000bb3e48bd8a5744e8ee202f975de2e5bc6111fd5e0f2345c00e1bca140b2"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/README.md",
+      "bytes": 6952,
+      "sha256": "c11834bd5968ba3faec1f8bf8fe972e237c8cef35e46ec0c394a8921bf72ae8c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-precomparison-2026-11-02/chrome-156-column-flow.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-precomparison-2026-11-02/chrome-156-column-flow.png",
+      "bytes": 3866,
+      "sha256": "435f1758d625f6f2ae15b0b04457cfc7dc81d336161befc15406707218a912e0"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-precomparison-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-precomparison-2026-11-02/README.md",
+      "bytes": 2707,
+      "sha256": "f12cdfc6b730acefb70dd425af631b27e2053b301f61bcd2aceeec0ee0759d58"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/android-avd/simulator.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/android-avd/simulator.png",
+      "bytes": 25067,
+      "sha256": "e7992d15c2ae0118e23e92efc759c6c2ce805dae40de8d7ecb8064e723eca7d9"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "bytes": 5824,
+      "sha256": "30beb3645a0b282a254eaec1456475a85e636e8d3e13651abc0953dece9fd204"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/ios-simulator/simulator.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/ios-simulator/simulator.png",
+      "bytes": 76164,
+      "sha256": "f5a6596a76662bf32a067e6f5ca4688cfcfacad5eb91a218d4f449a157547de3"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/merge-PR1056.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/merge-PR1056.md",
+      "bytes": 681,
+      "sha256": "2b9d859af3b1cdb6b7ac78fd94522b913543d051a44ba8b330ac9a7da527902a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/pr-diff-review-30.md",
+      "bytes": 6824,
+      "sha256": "4b682d79faebf5bb0c08955fd418415eddb85f4da5abe00c7eddb81c66f6ac18"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/README.md",
+      "bytes": 5880,
+      "sha256": "038b18611203a1446d74c9c818ff17bf2268c9d14c61b183e24c36bcc0c4b23b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.md",
+      "bytes": 4058,
+      "sha256": "4881176d2af61ae3e79c0569149630eb05970696e2a3c2b39a551241c3026ec6"
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/pr-diff-review-30.md",
+      "bytes": 5316,
+      "sha256": "e03f80edc93937ba340cb05ec02932bb0546650e71bde4bd69ef24cd5b768220"
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/README.md",
+      "source": "spec/internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/README.md",
+      "bytes": 1333,
+      "sha256": "0e41d22a1fdd320ebac80199c4fdf759526c72b794001a3f47555f81f81ff4cc"
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/roadmap-desktop-agent-browser.png",
+      "source": "spec/internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/roadmap-desktop-agent-browser.png",
+      "bytes": 413292,
+      "sha256": "2d2e1c88fcb5257fc4b5abeb61056e0baa6d91e2164b755ca4bb77bdec475076"
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/roadmap-mobile-agent-browser.png",
+      "source": "spec/internal/evidence/roadmap-c11-column-flow-plan-sync-2026-11-02/roadmap-mobile-agent-browser.png",
+      "bytes": 129965,
+      "sha256": "3c4edebe111b7b82bf58f4a5856da60ca51118c334f0a21b027cf80e8b49d373"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-implicit-columns-plan-pr-diff-review-30.md",
+      "source": "plan/c11-root-html-grid-column-flow-implicit-columns-plan-pr-diff-review-30.md",
+      "bytes": 6240,
+      "sha256": "3957435fa6d4b109208c375d7474d950cdc77f07baa9686deb3bc779b7a5afcd"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-implicit-columns-review-20.md",
+      "source": "plan/c11-root-html-grid-column-flow-implicit-columns-review-20.md",
+      "bytes": 4822,
+      "sha256": "f069dd9dd825c98e56d2f20cfe819f3d83bc0d23838916d22fba1099b8c46ee3"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-implicit-columns.md",
+      "source": "plan/c11-root-html-grid-column-flow-implicit-columns.md",
+      "bytes": 10571,
+      "sha256": "bb2163d4e0a13a890f0f09279ab8f99e446e5d7524dfd7482394f012719aca5e"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-plan-pr-diff-review-30.md",
+      "source": "plan/c11-root-html-grid-column-flow-plan-pr-diff-review-30.md",
+      "bytes": 6500,
+      "sha256": "1c0e541ee9734b9d13fbaf64bb800cbec671793bea214e29b28932873b2e7485"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-plan-review-20.md",
+      "source": "plan/c11-root-html-grid-column-flow-plan-review-20.md",
+      "bytes": 4927,
+      "sha256": "c324cec5baa6be0890aa9922522b24e6d9558da602d056e6814e16f72b24f21f"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow.md",
+      "source": "plan/c11-root-html-grid-column-flow.md",
+      "bytes": 9797,
+      "sha256": "9159985d0286b8ea4348ec76e862ad32236e923e0df7a7542481db107b22f6ba"
+    },
+    {
+      "route": "public/icon.svg",
+      "source": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "public/logo.svg",
+      "source": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "public/roadmap.svg",
+      "source": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "STATUS.md",
+      "source": "spec/STATUS.md",
+      "bytes": 622226,
+      "sha256": "7e92d6cdbd11d5ec4c767cffca6dd94bdbb80adc87af1d5f8fe8ead434418c99"
+    }
+  ]
+}
