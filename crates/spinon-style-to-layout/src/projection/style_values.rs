@@ -1103,8 +1103,8 @@ fn validate_root_html_grid_item_capacity(
                     if value.is_finite() && *value >= 0.0
             )
         };
-        let fixed_root_implicit_rows =
-            grid_values::root_html_has_fixed_implicit_rows(&grid.auto_rows)
+        let supported_root_implicit_rows =
+            grid_values::root_html_has_supported_implicit_rows(&grid.auto_rows)
                 && grid.auto_flow == ComputedCssGridAutoFlow::Row
                 && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
                 && grid.template_areas.is_none()
@@ -1112,7 +1112,7 @@ fn validate_root_html_grid_item_capacity(
                 && grid.rows_auto_repeat.is_none()
                 && grid.columns.iter().all(is_fixed_implicit_row_track)
                 && grid.rows.iter().all(is_fixed_implicit_row_track);
-        let implicit_row_capacity = fixed_root_implicit_rows
+        let implicit_row_capacity = supported_root_implicit_rows
             .then(|| {
                 grid.columns
                     .len()
@@ -1217,7 +1217,7 @@ fn validate_root_html_grid_box_inputs(
         if let Some(grid) = element.grid_layout.as_ref() {
             root_html_grid_tracks::validate_fraction_axis_inputs(element, grid)?;
             root_html_grid_tracks::validate_percentage_axis_inputs(element, grid)?;
-            if grid_values::root_html_has_fixed_implicit_rows(&grid.auto_rows) {
+            if grid_values::root_html_has_supported_implicit_rows(&grid.auto_rows) {
                 for (property, initial) in [
                     ("align-items", "normal"),
                     ("align-content", "normal"),

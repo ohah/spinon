@@ -1,0 +1,20 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 14 tests
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_checks_list_limit_without_implicit_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_rejects_unsupported_and_invalid_entries ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_rejects_invalid_values_without_implicit_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_implicit_row_rejects_individual_and_expanded_range_overflow ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_implicit_row_rejects_indefinite_constrained_or_aspect_ratio_height ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_accepts_zero_and_cycles_after_it ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_auto_rows_compose_with_explicit_percentage_and_fraction_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_cycles_from_first_implicit_row ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_mixed_px_percentage_implicit_rows_resolve_against_definite_height_and_overflow_visibly ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_implicit_row_list_cycles_from_first_implicit_row ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_zero_height_percentage_implicit_row_is_zero_but_item_can_overflow ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_implicit_rows_combine_direct_fraction_and_percentage_tracks ... ok
+test grid::auto_placement_tests::grid_root_html_fixed_implicit_rows_reject_resource_limit_before_expansion ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_checks_resource_limit_before_expansion ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 331 filtered out; finished in 0.14s

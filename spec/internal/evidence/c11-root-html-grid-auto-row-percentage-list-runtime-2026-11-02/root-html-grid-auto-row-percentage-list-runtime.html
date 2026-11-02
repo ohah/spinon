@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML percentage implicit row cycle</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      #percentage-rows-grid {
+        display: grid;
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 40px 55px;
+        grid-template-rows: 20px;
+        grid-auto-flow: row;
+        grid-auto-rows: 10% 20%;
+        column-gap: 5px;
+        row-gap: 5px;
+        background-color: #e4e4e4;
+      }
+
+      .grid-cell-v2 {
+        display: block;
+        width: 40px;
+        height: 10px;
+        background-color: #4a90e2;
+      }
+
+      .grid-cell-v2:nth-child(2n) {
+        width: 55px;
+        background-color: #22a06b;
+      }
+
+      .grid-cell-v2:nth-child(-n+2) {
+        height: 20px;
+      }
+
+      .grid-cell-v2:nth-child(n+5):nth-child(-n+6) {
+        height: 20px;
+      }
+
+      .grid-cell-v2:nth-child(n+9) {
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="percentage-rows-grid">
+      <div class="grid-cell-v2" id="tile-10"></div>
+      <div class="grid-cell-v2" id="tile-09"></div>
+      <div class="grid-cell-v2" id="tile-08"></div>
+      <div class="grid-cell-v2" id="tile-07"></div>
+      <div class="grid-cell-v2" id="tile-06"></div>
+      <div class="grid-cell-v2" id="tile-05"></div>
+      <div class="grid-cell-v2" id="tile-04"></div>
+      <div class="grid-cell-v2" id="tile-03"></div>
+      <div class="grid-cell-v2" id="tile-02"></div>
+      <div class="grid-cell-v2" id="tile-01"></div>
+    </main>
+  </body>
+</html>

@@ -233,7 +233,8 @@ pub(super) fn normalize_sparse_grid_container(
                 for track in tracks {
                     match track {
                         GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {}
-                        GridTrackSize::LengthPx(_) => {
+                        GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {}
+                        GridTrackSize::LengthPx(_) | GridTrackSize::Percentage(_) => {
                             return Err(LayoutError::InvalidGridTrack {
                                 node,
                                 property: "grid-auto-rows",
@@ -242,7 +243,7 @@ pub(super) fn normalize_sparse_grid_container(
                         _ => {
                             return Err(LayoutError::UnsupportedGridAutoRows {
                                 node,
-                                reason: "Root HTML implicit row mode requires fixed px grid-auto-rows values",
+                                reason: "Root HTML implicit row mode requires direct px/percentage grid-auto-rows values",
                             });
                         }
                     }
@@ -276,14 +277,90 @@ pub(super) fn normalize_sparse_grid_container(
             _ => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node,
-                    reason: "Root HTML implicit row mode requires fixed px grid-auto-rows values",
+                    reason: "Root HTML implicit row mode requires direct px/percentage grid-auto-rows values",
                 });
             }
+        }
+        if container.placement_mode == crate::GridPlacementMode::RootHtmlImplicitRowsV1
+            && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_))))
+        {
+            validate_root_html_expanded_row_range(node, container_node, &expanded_rows)?;
         }
         output.expanded_rows = Some(expanded_rows);
     }
 
     Ok(output)
+}
+
+fn validate_root_html_expanded_row_range(
+    node: NodeId,
+    container_node: &crate::LayoutNode,
+    expanded_rows: &[GridTrackSize],
+) -> Result<(), LayoutError> {
+    let style = container_node.style;
+    let unsupported_property = if !matches!(
+        style.height,
+        crate::LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0
+    ) {
+        Some("height")
+    } else if style.min_height != crate::LayoutDimension::Auto {
+        Some("min-height")
+    } else if style.max_height != crate::LayoutDimension::Auto {
+        Some("max-height")
+    } else if style.aspect_ratio.is_some() {
+        Some("aspect-ratio")
+    } else {
+        None
+    };
+    if let Some(property) = unsupported_property {
+        return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
+    }
+    let crate::LayoutDimension::Fixed(height) = container_node.style.height else {
+        unreachable!("the percentage row basis was validated above")
+    };
+    let crate::LayoutLengthPercentage::LengthPx(row_gap) = container_node.style.gap.row else {
+        return Err(LayoutError::InvalidGridTrack {
+            node,
+            property: "row-gap",
+        });
+    };
+    let max_f32 = f32::MAX as f64;
+    let mut total = (row_gap as f64) * expanded_rows.len().saturating_sub(1) as f64;
+    if !total.is_finite() || total > max_f32 {
+        return Err(LayoutError::InvalidGridTrack {
+            node,
+            property: "grid-auto-rows",
+        });
+    }
+    for track in expanded_rows {
+        let resolved = match track {
+            GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => *value as f64,
+            GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {
+                (*value as f64) * (height as f64)
+            }
+            GridTrackSize::Fraction(value) if value.is_finite() && *value >= 0.0 => continue,
+            _ => {
+                return Err(LayoutError::InvalidGridTrack {
+                    node,
+                    property: "grid-auto-rows",
+                });
+            }
+        };
+        if !resolved.is_finite() || resolved > max_f32 {
+            return Err(LayoutError::InvalidGridTrack {
+                node,
+                property: "grid-auto-rows",
+            });
+        }
+        total += resolved;
+        if !total.is_finite() || total > max_f32 {
+            return Err(LayoutError::InvalidGridTrack {
+                node,
+                property: "grid-auto-rows",
+            });
+        }
+    }
+    Ok(())
 }
 
 fn find_row_for_definite_column(

@@ -178,14 +178,101 @@ fn root_html_profile_projects_fixed_px_implicit_row_track_lists_in_its_own_mode(
 }
 
 #[test]
-fn root_html_profile_rejects_empty_invalid_or_non_px_implicit_row_lists() {
+fn root_html_profile_projects_mixed_px_percentage_implicit_row_track_lists() {
+    let node = NodeId::new(11_195).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(55.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    grid.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(15.0),
+        ComputedCssGridTrackSize::Percentage(0.25),
+    ]);
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlImplicitRowsV1
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::Percentage(0.25),
+        ])
+    );
+}
+
+#[test]
+fn root_html_percentage_auto_row_list_composes_with_explicit_percentage_and_fraction_tracks() {
+    let node = NodeId::new(11_197).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::Fraction(1.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::Fraction(1.0),
+        ],
+    );
+    grid.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(5.0),
+        ComputedCssGridTrackSize::Percentage(0.1),
+    ]);
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("percentage implicit rows should compose with existing direct percentage/fr tracks");
+
+    assert_eq!(
+        projected.columns,
+        vec![
+            GridTrackSize::Percentage(0.25),
+            GridTrackSize::Fraction(1.0)
+        ]
+    );
+    assert_eq!(
+        projected.rows,
+        vec![
+            GridTrackSize::Percentage(0.25),
+            GridTrackSize::Fraction(1.0)
+        ]
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![
+            GridTrackSize::LengthPx(5.0),
+            GridTrackSize::Percentage(0.1),
+        ])
+    );
+}
+
+#[test]
+fn root_html_profile_rejects_empty_invalid_or_unsupported_implicit_row_lists() {
     let node = NodeId::new(11_191).unwrap();
     for auto_rows in [
         ComputedCssGridAutoRows::TrackList(Vec::new()),
         ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::LengthPx(-1.0)]),
         ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::LengthPx(f32::NAN)]),
         ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::LengthPx(f32::INFINITY)]),
-        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Percentage(0.5)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Percentage(-0.5)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Percentage(f32::NAN)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Percentage(
+            f32::INFINITY,
+        )]),
         ComputedCssGridAutoRows::TrackList(vec![
             ComputedCssGridTrackSize::LengthPx(15.0),
             ComputedCssGridTrackSize::Fraction(1.0),
@@ -325,6 +412,51 @@ fn root_html_named_area_profile_rejects_fixed_implicit_row_track_lists() {
         ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
     .expect_err("fixed implicit-row lists must not widen the named-area profile");
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        } if error_node == node
+    ));
+}
+
+#[test]
+fn root_html_named_area_profile_rejects_percentage_implicit_row_track_lists() {
+    let node = NodeId::new(11_196).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(80.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(50.0),
+        ],
+    );
+    grid.template_areas = Some(ComputedCssGridTemplateAreas {
+        rows: 2,
+        columns: 2,
+        areas: vec![ComputedCssGridArea {
+            name: "header".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 2,
+        }],
+    });
+    grid.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(15.0),
+        ComputedCssGridTrackSize::Percentage(0.25),
+    ]);
+
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect_err("percentage implicit rows must not widen the named-area profile");
     assert!(matches!(
         error,
         crate::StyleLayoutError::UnsupportedComputedValue {

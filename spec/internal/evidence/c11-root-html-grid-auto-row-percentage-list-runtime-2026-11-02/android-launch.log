@@ -1,0 +1,9 @@
+  bash arg: -p
+  bash arg: dev.spinon.bootstrap
+  bash arg: 1
+args: [-p, dev.spinon.bootstrap, 1]
+ arg: "-p"
+ arg: "dev.spinon.bootstrap"
+ arg: "1"
+data="dev.spinon.bootstrap"
+** SYS_KEYS has no physical keys but with factor 2.0%.

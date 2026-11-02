@@ -47,6 +47,16 @@ Geometry 비교 허용치는 0.02 CSS px다. `getComputedStyle().gridAutoRows`, 
 7. 구현/runtime 실패 관점 20개는 계획 관점과 다른 목록으로 검토한다. 실제 구현 PR diff는 프로젝트 규칙대로 별도의 30개 관점으로 검토한다. 결함 수정 시 영향 검증과 해당 리뷰 관점을 다시 실행한다.
 8. 병합 후 C11 plan, Root HTML Grid plan, contract 0059 `0.1.0`, `spec/STATUS.md`, public roadmap 및 Tailnet preview를 확인한다. 제한 slice만 기록하고 C11.1/C11 checkbox와 공식 `72/213`은 유지한다.
 
+## 구현 결과 · 제한 slice candidate · 2026-11-02
+
+기본 parsed Root HTML `grid-auto-rows`에서 direct px/percentage scalar·list를 허용하는 구현을 추가했다. CSS typed cascade → Root HTML projection → `GridContainerInput` → Taffy used geometry까지 연결했다. fixed px 표현과 기존 gap/placement 경계를 유지하며 definite 0px, 100% 초과 visible overflow, mixed list, explicit `%`/`fr` 조합을 확인했다. indefinite/math-backed height, non-auto min/max·aspect ratio, percentage gap, unsupported track, resource/f32 overflow는 실패한다.
+
+- [Android/iOS build·runtime·artifact hash·한계](../spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.md)
+- [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/implementation-runtime-review-20.md)
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML app route에서 같은 입력 hash가 `layout=ready boxes=13` 및 13-box draw/present로 끝났다. Screenshots는 visual capture이고 surface pixel readback은 하지 않았다.
+- cascade 7/7, layout 14/14, style-to-layout Root HTML 26/26, parsed Root HTML integration 4/4, 관련 crate scoped all-target Clippy, rustfmt 및 diff 검사 통과.
+- 이 제한 candidate는 C11.1/C11 완료, 일반 CSS admission, WPT 적합성 또는 공식 완료 수를 변경하지 않는다. 공식 `72/213`과 체크박스는 그대로 둔다.
+
 ## 제외 범위
 
 Indefinite/cyclic percentage row sizing, intrinsic/min/max-content, `auto`/`fr`/`minmax()`/`fit-content()`/`calc()`/auto-repeat, named lines, named-area + implicit row 결합, percentage gap, implicit columns, column/dense flow, authored placement, nested Grid, intrinsic text/image contribution, general CSS admission, WPT runner/conformance, arbitrary writing modes, physical hardware GPU 및 C11 전체 완료는 이번 계획 범위가 아니다.

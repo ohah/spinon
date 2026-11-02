@@ -41,6 +41,7 @@ pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_auto_repeat: bool,
     pub(super) allow_fixed_auto_track_lists: bool,
     pub(super) allow_root_html_fixed_auto_row_lists: bool,
+    pub(super) allow_root_html_percentage_auto_row_lists: bool,
     pub(super) allow_template_areas: bool,
 }
 
@@ -96,6 +97,7 @@ pub(super) fn computed_grid_layout(
         allow_auto_repeat,
         allow_fixed_auto_track_lists,
         allow_root_html_fixed_auto_row_lists,
+        allow_root_html_percentage_auto_row_lists,
         allow_template_areas,
     } = options;
     let template_areas = if allow_template_areas {
@@ -199,6 +201,7 @@ pub(super) fn computed_grid_layout(
         property_value(properties, "grid-auto-rows"),
         allow_typed_auto_track_sizes,
         allow_fixed_auto_track_lists || allow_root_html_fixed_auto_row_lists,
+        allow_root_html_percentage_auto_row_lists,
     )?;
     let auto_columns = computed_grid_auto_columns(
         computed.clone_grid_auto_columns(),
@@ -245,9 +248,12 @@ fn computed_grid_auto_columns(
             node,
             "grid-auto-columns",
             serialized,
-            allow_typed_track_sizes,
-            allow_fixed_track_lists,
-            IntegerRepeatReservationSite::AutoColumns,
+            ComputedGridAutoTrackListOptions {
+                allow_typed_track_sizes,
+                allow_fixed_track_lists,
+                allow_percentage_track_lists: false,
+                reservation_site: IntegerRepeatReservationSite::AutoColumns,
+            },
         )? {
             ComputedGridAutoTrackValue::Auto => ComputedCssGridAutoColumns::Auto,
             ComputedGridAutoTrackValue::LengthPx(value) => {
@@ -269,6 +275,7 @@ fn computed_grid_auto_rows(
     serialized: &str,
     allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
+    allow_percentage_track_lists: bool,
 ) -> Result<ComputedCssGridAutoRows, CssCascadeError> {
     Ok(
         match computed_grid_auto_track_list(
@@ -276,9 +283,12 @@ fn computed_grid_auto_rows(
             node,
             "grid-auto-rows",
             serialized,
-            allow_typed_track_sizes,
-            allow_fixed_track_lists,
-            IntegerRepeatReservationSite::AutoRows,
+            ComputedGridAutoTrackListOptions {
+                allow_typed_track_sizes,
+                allow_fixed_track_lists,
+                allow_percentage_track_lists,
+                reservation_site: IntegerRepeatReservationSite::AutoRows,
+            },
         )? {
             ComputedGridAutoTrackValue::Auto => ComputedCssGridAutoRows::Auto,
             ComputedGridAutoTrackValue::LengthPx(value) => ComputedCssGridAutoRows::LengthPx(value),
@@ -299,15 +309,27 @@ enum ComputedGridAutoTrackValue {
     Unsupported(String),
 }
 
+#[derive(Clone, Copy)]
+struct ComputedGridAutoTrackListOptions {
+    allow_typed_track_sizes: bool,
+    allow_fixed_track_lists: bool,
+    allow_percentage_track_lists: bool,
+    reservation_site: IntegerRepeatReservationSite,
+}
+
 fn computed_grid_auto_track_list(
     value: style::values::computed::ImplicitGridTracks,
     node: NodeId,
     property: &'static str,
     serialized: &str,
-    allow_typed_track_sizes: bool,
-    allow_fixed_track_lists: bool,
-    reservation_site: IntegerRepeatReservationSite,
+    options: ComputedGridAutoTrackListOptions,
 ) -> Result<ComputedGridAutoTrackValue, CssCascadeError> {
+    let ComputedGridAutoTrackListOptions {
+        allow_typed_track_sizes,
+        allow_fixed_track_lists,
+        allow_percentage_track_lists,
+        reservation_site,
+    } = options;
     if value.is_initial() {
         return Ok(ComputedGridAutoTrackValue::Auto);
     }
@@ -324,21 +346,26 @@ fn computed_grid_auto_track_list(
             ));
         }
         if value.0.len() == 1 {
-            let TrackSize::Breadth(TrackBreadth::Breadth(value)) = &value.0[0] else {
-                return Ok(ComputedGridAutoTrackValue::Unsupported(
-                    serialized.to_owned(),
-                ));
-            };
-            let LengthPercentageValue::Length(length) = value.unpack() else {
-                return Ok(ComputedGridAutoTrackValue::Unsupported(
-                    serialized.to_owned(),
-                ));
-            };
-            let pixels = length.px();
-            return Ok(if pixels.is_finite() && pixels >= 0.0 {
-                ComputedGridAutoTrackValue::LengthPx(pixels)
-            } else {
-                ComputedGridAutoTrackValue::Unsupported(serialized.to_owned())
+            return Ok(match track_size(&value.0[0], false) {
+                Some(ComputedCssGridTrackSize::LengthPx(pixels))
+                    if pixels.is_finite() && pixels >= 0.0 =>
+                {
+                    ComputedGridAutoTrackValue::LengthPx(pixels)
+                }
+                Some(ComputedCssGridTrackSize::Percentage(percentage))
+                    if allow_percentage_track_lists
+                        && percentage.is_finite()
+                        && percentage >= 0.0 =>
+                {
+                    let mut tracks = Vec::new();
+                    reserve_computed_tracks(&mut tracks, 1, node, property, |tracks, count| {
+                        fail_integer_repeat_reservation_if_requested(reservation_site)?;
+                        tracks.try_reserve_exact(count).map_err(|_| ())
+                    })?;
+                    tracks.push(ComputedCssGridTrackSize::Percentage(percentage));
+                    ComputedGridAutoTrackValue::TrackList(tracks)
+                }
+                _ => ComputedGridAutoTrackValue::Unsupported(serialized.to_owned()),
             });
         }
 
@@ -354,12 +381,30 @@ fn computed_grid_auto_track_list(
             },
         )?;
         for size in value.0.iter() {
-            let Some(ComputedCssGridTrackSize::LengthPx(pixels)) = track_size(size, false) else {
+            let Some(track) = track_size(size, false) else {
                 return Ok(ComputedGridAutoTrackValue::Unsupported(
                     serialized.to_owned(),
                 ));
             };
-            tracks.push(ComputedCssGridTrackSize::LengthPx(pixels));
+            match track {
+                ComputedCssGridTrackSize::LengthPx(pixels)
+                    if pixels.is_finite() && pixels >= 0.0 =>
+                {
+                    tracks.push(ComputedCssGridTrackSize::LengthPx(pixels))
+                }
+                ComputedCssGridTrackSize::Percentage(percentage)
+                    if allow_percentage_track_lists
+                        && percentage.is_finite()
+                        && percentage >= 0.0 =>
+                {
+                    tracks.push(ComputedCssGridTrackSize::Percentage(percentage));
+                }
+                _ => {
+                    return Ok(ComputedGridAutoTrackValue::Unsupported(
+                        serialized.to_owned(),
+                    ));
+                }
+            }
         }
         return Ok(ComputedGridAutoTrackValue::TrackList(tracks));
     }
