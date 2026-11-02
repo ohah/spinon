@@ -1,0 +1,27 @@
+{
+  "sourceHead": "3c009d316f270fbfbca55fc8813a050d1921a000",
+  "publicationRouteCount": 112,
+  "changedRouteCount": 99,
+  "changedExistingRouteCount": 15,
+  "newRouteCount": 84,
+  "unchangedRouteCount": 13,
+  "currentPreviewRouteCount": 91454,
+  "changedOpenHandles": [],
+  "existingRouteDeletes": 0,
+  "noDeletes": true,
+  "localRoadmapBefore": {
+    "status": 200,
+    "bytes": 495755,
+    "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7"
+  },
+  "tailnetRoadmapBefore": {
+    "status": 200,
+    "bytes": 495755,
+    "sha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7"
+  },
+  "server": {
+    "backendState": "Running",
+    "dnsName": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "sourceHead": "3c009d316f270fbfbca55fc8813a050d1921a000",
+  "publicationRouteCount": 112,
+  "currentPreviewRouteCount": 91538,
+  "baselinePreviewRouteCount": 91454,
+  "deletedBaselineRouteCount": 0,
+  "noDeletes": true,
+  "selectedRouteHash": "cede280fa5673be10cc00965b9d1b9de2e3c44fa7e824ff18fbd0a6cfcea0388",
+  "backupCount": 15,
+  "requiredHttpRouteCount": 11,
+  "http": [
+    {
+      "kind": "local",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 497366,
+      "sha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93"
+    },
+    {
+      "kind": "tailnet",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 497366,
+      "sha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93"
+    },
+    {
+      "kind": "local",
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 606865,
+      "sha256": "021d5c6e53782f0124a341b6bbc06fbf76d9cdeb2829ae0cca9c9a751a661804"
+    },
+    {
+      "kind": "tailnet",
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 606865,
+      "sha256": "021d5c6e53782f0124a341b6bbc06fbf76d9cdeb2829ae0cca9c9a751a661804"
+    },
+    {
+      "kind": "local",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 746559,
+      "sha256": "02046c88e7d4bbd9863eb2a2164c3010b9e8a877d16c9a760f0b863fd0f67785"
+    },
+    {
+      "kind": "tailnet",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 746559,
+      "sha256": "02046c88e7d4bbd9863eb2a2164c3010b9e8a877d16c9a760f0b863fd0f67785"
+    },
+    {
+      "kind": "local",
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 606865,
+      "sha256": "021d5c6e53782f0124a341b6bbc06fbf76d9cdeb2829ae0cca9c9a751a661804"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 606865,
+      "sha256": "021d5c6e53782f0124a341b6bbc06fbf76d9cdeb2829ae0cca9c9a751a661804"
+    },
+    {
+      "kind": "local",
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 747171,
+      "sha256": "0ae1bd181c56e9f7dc340edaee4a81ded761b255cc71e9336389486c57d29d96"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 747171,
+      "sha256": "0ae1bd181c56e9f7dc340edaee4a81ded761b255cc71e9336389486c57d29d96"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 80995,
+      "sha256": "37612674c00bed8de9920ce58555a937bb907a5ecce6e3280fb77fc8737799b2"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 80995,
+      "sha256": "37612674c00bed8de9920ce58555a937bb907a5ecce6e3280fb77fc8737799b2"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-root-html-grid-fr-track.html",
+      "status": 200,
+      "bytes": 41924,
+      "sha256": "966320b49019c1b22b6f349dfd153d86ead85d73659bd75f3839aae22ff47bd6"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-root-html-grid-fr-track.html",
+      "status": 200,
+      "bytes": 41924,
+      "sha256": "966320b49019c1b22b6f349dfd153d86ead85d73659bd75f3839aae22ff47bd6"
+    },
+    {
+      "kind": "local",
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 480656,
+      "sha256": "b78f19007ca2f4d7743cea21f6ae6203c4a5b78efd90bbe27cb24a7aa078b002"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 480656,
+      "sha256": "b78f19007ca2f4d7743cea21f6ae6203c4a5b78efd90bbe27cb24a7aa078b002"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 30306,
+      "sha256": "c2adcb7ea83e1f44ad8ec8b29662a5d2dfe126d3501f398c7365dc3d5b7e0dd9"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 30306,
+      "sha256": "c2adcb7ea83e1f44ad8ec8b29662a5d2dfe126d3501f398c7365dc3d5b7e0dd9"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/simulator.png",
+      "status": 200,
+      "bytes": 76459,
+      "sha256": "0f808a7a85a7bf096281203f13b3918b798011757a55970dca800a6d902bc7cd"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/simulator.png",
+      "status": 200,
+      "bytes": 76459,
+      "sha256": "0f808a7a85a7bf096281203f13b3918b798011757a55970dca800a6d902bc7cd"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.png",
+      "status": 200,
+      "bytes": 137723,
+      "sha256": "c36fc8bf38aa43d9423742adf904d29f841f395a6eebd9cc225da0b302d8396d"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.png",
+      "status": 200,
+      "bytes": 137723,
+      "sha256": "c36fc8bf38aa43d9423742adf904d29f841f395a6eebd9cc225da0b302d8396d"
+    }
+  ],
+  "server": {
+    "backendState": "Running",
+    "dnsName": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040
+  }
+}
