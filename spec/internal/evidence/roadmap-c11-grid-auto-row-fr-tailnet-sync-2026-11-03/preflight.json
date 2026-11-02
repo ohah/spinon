@@ -1,0 +1,672 @@
+{
+  "sourceHead": "101936f7314f7027b3883ce4a49732b150111530",
+  "sourceTree": "3ed610d8fb627fb7c10e88fe8f85a36b804669d3",
+  "trackedDiffSha256": "fc32de315940e030b7f9e0af29094707e2383f0bf665a48dd3c743edaca4a3f5",
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 522608,
+  "localRoadmapSha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297",
+  "selectedRouteCount": 65,
+  "selectedBytes": 6239289,
+  "counts": {
+    "create": 48,
+    "replace": 5,
+    "same": 12
+  },
+  "changedRouteOpenHandleCount": 0,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-c11-grid-auto-row-fr-tailnet-sync-2026-11-03/pass01",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 523038,
+      "sourceSha256": "f3b0f80a76d84af773ef0425e152c25a6179a5386bd717cd11bbf506355b92be",
+      "targetExists": true,
+      "targetBytes": 532564,
+      "targetSha256": "b74fc0522173c69f6dc8d1a329b3a25bf11432eeda89d817c7b9f546054fd603",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 370322,
+      "sourceSha256": "d17adfd1c308263d1035345a2bb84072503e5232d5ccc4c211523927e28ee7fb",
+      "targetExists": true,
+      "targetBytes": 367999,
+      "targetSha256": "d2ccc5788b4debb6366a02912f14d479c1708cc46b966c3878702dc0bd43f76e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/chrome156-observation.json",
+      "action": "create",
+      "sourceBytes": 3355,
+      "sourceSha256": "91f6f4316a1318ce77509ccd88f7eb8c3318f016726eadac4abfbffca7f24065",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/chrome156.png",
+      "action": "create",
+      "sourceBytes": 15717,
+      "sourceSha256": "b05dc8f41c5bf8f566a23940feb10dafe624939af9a94144fb54f0da48660198",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/expected.json",
+      "action": "create",
+      "sourceBytes": 4045,
+      "sourceSha256": "d44ed58c0bb910134729e2777cb4f7ea9cac6b0d1889b510793aca8dbafe4299",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/plan-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 34740,
+      "sourceSha256": "cbc6abf46e26448818691ba0a667e33101270aec6658578c6f8b0ed03c4850b9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 5709,
+      "sourceSha256": "517e136183fabbcdd202454e76704d1c5d15563097fa45de1748ab9986230db4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 23380,
+      "sourceSha256": "138840acbf02112369c41feaa63dc1224b7736ad484e15e431712b62eb29e18e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-precomparison-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 1719,
+      "sourceSha256": "1e1ba53bfada0d4909c57429c7c396b5ca734ef98f728b4583edb23063a3f027",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-api37-screen.png",
+      "action": "create",
+      "sourceBytes": 75952,
+      "sourceSha256": "2821241414e645d946601daa735e7508b0259dd29e5be0ddf614b5c4815646c1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 422,
+      "sourceSha256": "6a4c7188bc6c63a23da66a865397846b0e8be9759af6d5a4466ead7014fae8a6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-build.log.gz",
+      "action": "create",
+      "sourceBytes": 1865,
+      "sourceSha256": "87aba4a632c20be80fb498f17477cd9706cabade2e597738b5591add48f3ae31",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-device.txt",
+      "action": "create",
+      "sourceBytes": 117,
+      "sourceSha256": "d62b8c62faeeee3abc2c9c6c162b2d0213218981db87526fcd495d5a6ef290e1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-install.log.gz",
+      "action": "create",
+      "sourceBytes": 56,
+      "sourceSha256": "47a4d13a09546112b51013145e95e66cf06e0f58a71e70434783c0aa035ce8d5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-launch.log.gz",
+      "action": "create",
+      "sourceBytes": 152,
+      "sourceSha256": "4f779e6e3a1a8fff65037cfea309c5f6517767fa8576249b5823886f1341c3dc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-packaged-fixture.sha256",
+      "action": "create",
+      "sourceBytes": 68,
+      "sourceSha256": "70404121d31f8d7967edb55ad4509b24290b7a136e685758537d318684f682ea",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/android-runtime.log.gz",
+      "action": "create",
+      "sourceBytes": 825,
+      "sourceSha256": "ef403d644d31fcd297fa0b35e1fa89008ac95b40a44c6661625b1974e1716ab2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/implementation-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 33080,
+      "sourceSha256": "ea3bbffa008e2460f911ca44585ee9f8efce6c156dfb90f907903ea9e32a9410",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/implementation-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 4868,
+      "sourceSha256": "78d4c1c303ae373544af5f5f66a120f10e1a3189d1d28b04a1f8486b9c4fb524",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 34799,
+      "sourceSha256": "fbb578112b5d9f3491932c9adec6c6046150151ae6dcb1423faf878a728cde7f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 5405,
+      "sourceSha256": "672712539b922835d9b1c216df906e0da5fe045fc204204950f22cf1a79ace3d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-26-2-screen.png",
+      "action": "create",
+      "sourceBytes": 137172,
+      "sourceSha256": "43bbcdd4f525ec03c13a7db5c9cfbc0cb4e16f72574b1aa3cbe561be62da581d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-build.log.gz",
+      "action": "create",
+      "sourceBytes": 17153,
+      "sourceSha256": "61b717dde223fcea31dea433dd83a4e339c593a2bef2f6fe446920e4298a96cd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-device.txt",
+      "action": "create",
+      "sourceBytes": 156,
+      "sourceSha256": "f5512bf54b470e905e45e1ff21a1415c9bb7d31c2d65f14708af6c0a9b08b917",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-install.log.gz",
+      "action": "create",
+      "sourceBytes": 20,
+      "sourceSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-launch.log.gz",
+      "action": "create",
+      "sourceBytes": 48,
+      "sourceSha256": "c27101c2f56f21d4e95769ce51bf7d5f37377ae9e8da49c37eabc8a0412d62d7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-packaged-fixture-and-app-hashes.txt",
+      "action": "create",
+      "sourceBytes": 636,
+      "sourceSha256": "6eb9fd5ff890980249521c4b4385905f23fd675f738e130609ca4ed1cad2593a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-runtime.log.gz",
+      "action": "create",
+      "sourceBytes": 670,
+      "sourceSha256": "1e536a182a8ae03f660a006690f840eff8a966eb0057cffa186f065633709fd9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/ios-screenshot.log.gz",
+      "action": "create",
+      "sourceBytes": 20,
+      "sourceSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/merge-PR1070.html",
+      "action": "create",
+      "sourceBytes": 20998,
+      "sourceSha256": "ec995b18a80117818d66388af0e2938a670dc2ff68e7276d5aa8665d2c7bf7dd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/merge-PR1070.md",
+      "action": "create",
+      "sourceBytes": 873,
+      "sourceSha256": "91ccdda6668c47cbff1c5219387b32807abecb17d8341c9b222965bcb41524a0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 28136,
+      "sourceSha256": "c2bb4421d996a424349be7fc44f138184f5e1ac09ac8028e3467bf79fb269ab6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 5346,
+      "sourceSha256": "d654ff1e0b24667d14daf49a09c395a74b56e514e0fbfbab53c8f5c136f57b51",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/result.json",
+      "action": "create",
+      "sourceBytes": 3170,
+      "sourceSha256": "b66ec7d38b1dbb51ff4f76f3e9fa43ac138a7ca9460154e58915d1fa7dd309d6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/source-and-original-asset-hashes.txt",
+      "action": "create",
+      "sourceBytes": 389,
+      "sourceSha256": "eee4b3ea4b1dc98cf68c62a966b5c9b6ebf50ec666dbc2e6bb32a229bf185a47",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-auto-row-fr.html",
+      "action": "create",
+      "sourceBytes": 35792,
+      "sourceSha256": "4189fcf880c7c7929c597a2b9b7eabe3591bd892c2af4f4fb71ac7f0c94d3ce9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-auto-row-fr.md",
+      "action": "create",
+      "sourceBytes": 10363,
+      "sourceSha256": "0e91e68cefa5a096d6a718a8a4aeb2c5323eb8185e813587b1f81687df05408f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.html",
+      "action": "replace",
+      "sourceBytes": 524967,
+      "sourceSha256": "70ba4cce22cd8169c7d415401c6048f3a7ae875c6bc0b18518b111b76d2951b8",
+      "targetExists": true,
+      "targetBytes": 522608,
+      "targetSha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "action": "same",
+      "sourceBytes": 217061,
+      "sourceSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "targetExists": true,
+      "targetBytes": 217061,
+      "targetSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "action": "same",
+      "sourceBytes": 98,
+      "sourceSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "targetExists": true,
+      "targetBytes": 98,
+      "targetSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-096c5a619b42.61cb87c18c.js",
+      "action": "create",
+      "sourceBytes": 2552,
+      "sourceSha256": "e54ab85b50194ed8ffb67754caad0a1e769722af13363ec065941962ee996031",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-549fc60392de.065285b44f.js",
+      "action": "create",
+      "sourceBytes": 19296,
+      "sourceSha256": "c33077d0037aba79eb65cf2b17f83f3874e1928bfca46f2606e0de09941b43b6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.92e7654095.js",
+      "action": "create",
+      "sourceBytes": 828060,
+      "sourceSha256": "b9692b0f1b6fb6f4ff89c33273b7fdf7e6e85835e1ad9121bad1abfaf3d8fc10",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-85ba8ad176ff.7341daddc4.js",
+      "action": "create",
+      "sourceBytes": 11718,
+      "sourceSha256": "34a2e6073418c15c2c86ec507b7c08189c001082207c47fb5df446c4211e450d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-8ea74bbddd68.d37a52e28f.js",
+      "action": "create",
+      "sourceBytes": 9663,
+      "sourceSha256": "5f3bb0beda16de1af113a75544e502878d6e61e70639a829080c07535c39c3e5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.6dffa81130.js",
+      "action": "create",
+      "sourceBytes": 864,
+      "sourceSha256": "19939ac3c3b86609bfd6bb23ae939b885c0b25d35e5dd16b2d4b4f0a6a180ea3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b5799debb218.099ce698c1.js",
+      "action": "create",
+      "sourceBytes": 8762,
+      "sourceSha256": "7b7ec244f58ad9fdec8af4ab0fb7c42b8a7d0c42ac2ab5bf5746cb83c559176d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.aff7df8104.js",
+      "action": "create",
+      "sourceBytes": 543183,
+      "sourceSha256": "6e1b156f8960aeaaea0167410d20ec2ae2e50a2484823e242c23f0e0634f5785",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-daefa3e10119.a6bff58c24.js",
+      "action": "create",
+      "sourceBytes": 3489,
+      "sourceSha256": "70ad128f3c44681507e145200fc1804fb8df55b12dfc3f1ab5c8b0c9e428edfa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e0f985d4416a.20833bd192.js",
+      "action": "create",
+      "sourceBytes": 8426,
+      "sourceSha256": "f68b9950f71ce40774988ffc34bdf714b99b7c61c5ae138b949078b7d96ff9d3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/index.e613d61126.js",
+      "action": "create",
+      "sourceBytes": 65450,
+      "sourceSha256": "4926a27aa54ec8a7d65a9ee034cf3fc8689d117cf2a14c0cc82abe74418a196a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "action": "same",
+      "sourceBytes": 218366,
+      "sourceSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "targetExists": true,
+      "targetBytes": 218366,
+      "targetSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "action": "same",
+      "sourceBytes": 35366,
+      "sourceSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "targetExists": true,
+      "targetBytes": 35366,
+      "targetSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/styles.aba03c5c90.js",
+      "action": "same",
+      "sourceBytes": 472,
+      "sourceSha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "targetExists": true,
+      "targetBytes": 472,
+      "targetSha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/search_index.ko.612f4c9c.json",
+      "action": "create",
+      "sourceBytes": 863457,
+      "sourceSha256": "612f4c9cbca55bcd9fabc93185804e6c466882a91b698a0ee67873eb266c27ec",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 766813,
+      "sourceSha256": "d434a04ed3026dca7d74beaefe6de5dcfdce093e8a7e08fc220cb3e441396100",
+      "targetExists": true,
+      "targetBytes": 777618,
+      "targetSha256": "91e6587b26636ba43a9891e69cbb213bbb111f1cdde2fbf2043d87ea1418274b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.md",
+      "action": "replace",
+      "sourceBytes": 627281,
+      "sourceSha256": "1a9bc6512d290c7513dfc6208a4bb2f8a1367928c68ed02af0d129ce7e50a6f4",
+      "targetExists": true,
+      "targetBytes": 625591,
+      "targetSha256": "81b367700acdd4fb199e3bc2ef1598fcf07710308d9abbadf762d9bf0f420057",
+      "openHandleCount": 0
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-auto-row-fr-runtime.html",
+      "action": "create",
+      "sourceBytes": 1561,
+      "sourceSha256": "573b76610f648e52913225f9481f854c9ae9c9fedb57ecfe2fa1d2b1a5ad6f51",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    }
+  ]
+}
