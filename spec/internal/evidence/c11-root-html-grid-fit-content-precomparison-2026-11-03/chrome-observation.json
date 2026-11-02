@@ -11,7 +11,7 @@
   },
   "fixture": {
     "path": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
-    "sha256": "809fdc36815e4ce0386f75d3fbf6ec82e9a55b1676070febd0605744566f8dfc",
+    "sha256": "a8b7a8b061fde108a4ffa79fc023f5e7cd7dffaa005801a49d61fb3488c2f5f3",
     "ahem_font_path": "tests/fixtures/resources/c15/Ahem.ttf",
     "ahem_font_sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
   },
@@ -47,16 +47,28 @@
       "root": [0, 180, 200, 60],
       "computed_columns": "40px 40px",
       "computed_rows": "60px",
-      "item_root_relative": [[0, 0, 40, 60], [40, 0, 40, 60]]
+      "item_root_relative": [
+        [0, 0, 40, 60],
+        [40, 0, 40, 60]
+      ]
     },
     "namedArea": {
       "root": [0, 240, 200, 60],
       "computed_columns": "20px 40px",
       "computed_rows": "60px",
-      "item_root_relative": [[0, 0, 20, 60], [20, 0, 40, 60]]
+      "item_root_relative": [
+        [0, 0, 20, 60],
+        [20, 0, 40, 60]
+      ]
     },
     "rowMinimumFloor": {
       "root": [0, 300, 20, 100],
+      "computed_columns": "20px",
+      "computed_rows": "40px",
+      "item_root_relative": [0, 0, 20, 40]
+    },
+    "fixedBoxRow": {
+      "root": [0, 400, 20, 20],
       "computed_columns": "20px",
       "computed_rows": "40px",
       "item_root_relative": [0, 0, 20, 40]
@@ -64,12 +76,14 @@
   },
   "screenshot": {
     "path": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
-    "sha256": "4e7e3cc9d32e1a75c258e6fca5bb52c448fd1c156783d3d7b5eeb0d615577e54",
+    "sha256": "d1c297aadeef7c26e0d67897f78cd5a8206bf72f753f16e8f813d925541bdec9",
     "size_px": [1280, 633],
     "sample_rgba": {
       "fixed_item_at_10_30": [229, 72, 77, 255],
       "fit_item_at_59_30": [48, 164, 108, 255],
-      "after_cap_at_60_30": [16, 24, 32, 255]
+      "after_cap_at_60_30": [16, 24, 32, 255],
+      "fixed_box_row_inside_root_at_10_410": [48, 164, 108, 255],
+      "fixed_box_row_below_root_at_10_435": [48, 164, 108, 255]
     }
   }
 }

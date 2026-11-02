@@ -48,11 +48,18 @@
     grid-template-columns: 20px;
     grid-template-rows: fit-content(20px);
   }
+  #fixed-box-row-grid {
+    width: 20px;
+    height: 20px;
+    grid-template-columns: 20px;
+    grid-template-rows: fit-content(20px);
+  }
   .item { margin: 0; padding: 0; border: 0; }
   #fixed-item { width: 20px; height: 60px; background: #e5484d; }
   #area-fixed { grid-area: fixed; width: 20px; height: 60px; background: #e5484d; }
   #area-fit { grid-area: fit; background: #30a46c; }
   #fit-content-item { background: #30a46c; }
+  #fixed-box-row-item { width: 20px; height: 40px; background: #30a46c; }
   .probe {
     position: absolute;
     top: 400px;
@@ -85,6 +92,9 @@
 </div>
 <div id="row-grid" data-scene="root-html-grid-fit-content-row" data-node class="grid">
   <div id="row-item" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="fixed-box-row-grid" data-scene="root-html-grid-fit-content-fixed-box-row" data-node class="grid">
+  <div id="fixed-box-row-item" data-node class="item"></div>
 </div>
 <div id="min-probe" class="probe">AA AA AA AA</div>
 <div id="max-probe" class="probe">AA AA AA AA</div>
@@ -121,6 +131,7 @@
       repeated: observeScene("#repeat-grid", ["#repeat-item-a", "#repeat-item-b"]),
       area: observeScene("#area-grid", ["#area-fixed", "#area-fit"]),
       row: observeScene("#row-grid", ["#row-item"]),
+      fixedBoxRow: observeScene("#fixed-box-row-grid", ["#fixed-box-row-item"]),
     },
     minContentProbe: rect(document.querySelector("#min-probe")),
     maxContentProbe: rect(document.querySelector("#max-probe")),
