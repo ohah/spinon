@@ -16958,6 +16958,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC125StickyHost();
     private static native long nativeCreateC133GestureHost(int scenarioId);
     private static native long nativeCreateC11GridHost();
+    private static native long nativeCreateC111RootHtmlPercentColumnsHost();
     private static native long nativeCreateC1121GridPlacementHost();
     private static native long nativeCreateC1122GridAutoPlacementHost();
     private static native long nativeCreateC1123GridAutoPlacementHost();
@@ -17244,6 +17245,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean c123FixedPositionProbeRequested;
     private final boolean c124StackingProbeRequested;
     private final boolean c11GridFixtureRequested;
+    private final boolean c111RootHtmlPercentColumnsRequested;
     private final boolean c1121GridPlacementRequested;
     private final boolean c1122GridAutoPlacementRequested;
     private final boolean c1123GridAutoPlacementRequested;
@@ -17670,6 +17672,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || activity.getIntent().hasExtra("spinon_c11_grid_case"))) {
             throw new IllegalArgumentException("C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다");
         }
+        c111RootHtmlPercentColumnsRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c111_root_html_percent_columns", false);
+        if (c111RootHtmlPercentColumnsRequested
+                && (c1121GridPlacementRequested || c1122GridAutoPlacementRequested
+                        || c1123GridAutoPlacementRequested || c1131GridRepeatRequested
+                        || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
+                        || c114GridTrackSizingRequested
+                        || activity.getIntent().hasExtra("spinon_c11_grid_case"))) {
+            throw new IllegalArgumentException(
+                    "C11.1 Root HTML percentage-column fixture는 단독으로 선택해야 합니다");
+        }
         c11GridFixtureRequested = c1121GridPlacementRequested || c1122GridAutoPlacementRequested
                 || c1123GridAutoPlacementRequested || c1131GridRepeatRequested
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
@@ -17918,6 +17931,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c125StickyFixtureRequested
                 || c132ScrollFixtureRequested
                 || c133GestureFixtureRequested
+                || c111RootHtmlPercentColumnsRequested
                 || c123FixedPositionProbeRequested
                 || c11GridFixtureRequested
                 || c124StackingProbeRequested
@@ -18004,6 +18018,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C13.1 paint/hit border"
                 : c131OverflowClipProbeRequested
                 ? "SPINON · C13.1 overflow clip"
+                : c111RootHtmlPercentColumnsRequested
+                ? "SPINON · C11.1 Root HTML percentage auto-columns"
                 : c11GridFixtureRequested
                 ? "SPINON · C11.1 CSS Grid"
                 : c131CompactSurfaceMatrixProbeRequested
@@ -18136,6 +18152,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "C11.2.2 행 우선 Grid 자동 배치 → Stylo → Taffy → WGPU · 360×800 CSS px"
                 : c1121GridPlacementRequested
                 ? "V8 numeric Grid line/span → Stylo → Taffy → WGPU · 320×240 CSS px"
+                : c111RootHtmlPercentColumnsRequested
+                ? "parsed Root HTML column-flow · 240×63 CSS px grid · WGPU"
                 : c11GridFixtureRequested
                 ? "V8 DOM display:grid → Stylo → Taffy → Rust 장면 → WGPU · 320×240 CSS px"
                 : c1035PositionedFlexProbeRequested
@@ -18681,7 +18699,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             postStatus("C04.12 root HTML text paint fixture-test 옵션을 켜서 빌드해야 합니다.");
             return;
         }
-        long host = c114GridTrackSizingRequested
+        long host = c111RootHtmlPercentColumnsRequested
+                ? nativeCreateC111RootHtmlPercentColumnsHost()
+                : c114GridTrackSizingRequested
                 ? nativeCreateC114GridTrackSizingHost()
                 : c1133GridTemplateAreasRequested
                 ? nativeCreateC1133GridTemplateAreasHost()
@@ -18852,7 +18872,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             result = evalC114ComputedTextTransformFixture(
                     host, c114GridTrackSizingSceneId, c114GridTrackSizingRunId);
         } else {
-            result = c114GridTrackSizingRequested
+            result = c111RootHtmlPercentColumnsRequested
+                ? decode(nativeEvalRootHtmlApplicationScript(host, "void 0"))
+                : c114GridTrackSizingRequested
                 ? decode(nativeEvalC114GridTrackSizingFixture(
                         host, c114GridTrackSizingSceneId, c114GridTrackSizingRunId))
                 : c1133GridTemplateAreasRequested
@@ -19491,6 +19513,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c1121GridPlacementRequested
                 ? "SPINON_C1121_GRID_EVAL run_id=" + c1121GridRunId
                         + " scene_id=" + c1121GridSceneId + " "
+                : c111RootHtmlPercentColumnsRequested
+                ? "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_EVAL "
                 : c11GridFixtureRequested
                 ? "SPINON_C111_GRID_EVAL " : c1035PositionedFlexProbeRequested
                 ? "SPINON_C1035_EVAL " : c123FixedPositionProbeRequested

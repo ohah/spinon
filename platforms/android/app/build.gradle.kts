@@ -203,9 +203,21 @@ require(spinonC153WgpuGlyphPaintFixtureTestValue == "0" ||
 require(spinonC153WgpuGlyphPaintFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C15.3 glyph paint fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC111RootHtmlPercentColumnsFixtureTestValue = providers
+    .environmentVariable("SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST")
+    .orElse("0").get()
+require(spinonC111RootHtmlPercentColumnsFixtureTestValue == "0" ||
+    spinonC111RootHtmlPercentColumnsFixtureTestValue == "1") {
+    "SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC111RootHtmlPercentColumnsFixtureTestValue != "1" ||
+    spinonC04RuntimeGpuValue == "1") {
+    "C11.1 Root HTML percentage-column fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
+}
 val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
     spinonC04RuntimeGpuFixtureTestValue,
     spinonC04RuntimeGpuFailureFixtureValue,
+    spinonC111RootHtmlPercentColumnsFixtureTestValue,
     providers.environmentVariable("SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST").orElse("0").get(),
     spinonC0412RootHtmlBlockPaintFixtureTestValue,
     spinonC0412RootHtmlTextPaintFixtureTestValue,

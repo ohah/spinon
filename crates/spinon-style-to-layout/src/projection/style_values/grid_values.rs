@@ -234,7 +234,7 @@ fn validate_root_html_grid_tracks(
     if column_flow && !root_html_auto_columns_supported(&grid.auto_columns) {
         return Err(unsupported(
             "grid-auto-columns",
-            "Root HTML column-flow mode requires auto or finite non-negative direct px auto columns",
+            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage auto columns",
         ));
     }
     if !column_flow && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
@@ -247,14 +247,21 @@ fn validate_root_html_grid_tracks(
 }
 
 fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
-    let valid_px = |track: &ComputedCssGridTrackSize| matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0);
+    let valid_track = |track: &ComputedCssGridTrackSize| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::LengthPx(value)
+                | ComputedCssGridTrackSize::Percentage(value)
+                if value.is_finite() && *value >= 0.0
+        )
+    };
     match auto_columns {
         ComputedCssGridAutoColumns::Auto => true,
         ComputedCssGridAutoColumns::LengthPx(value) => value.is_finite() && *value >= 0.0,
         ComputedCssGridAutoColumns::TrackList(tracks) => {
             !tracks.is_empty()
                 && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
-                && tracks.iter().all(valid_px)
+                && tracks.iter().all(valid_track)
         }
         ComputedCssGridAutoColumns::Unsupported(_) => false,
     }
@@ -1373,6 +1380,7 @@ fn project_auto_columns(
                     matches!(
                         track,
                         ComputedCssGridTrackSize::LengthPx(value)
+                            | ComputedCssGridTrackSize::Percentage(value)
                             if value.is_finite() && *value >= 0.0
                     )
                 }) =>

@@ -725,6 +725,32 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC11GridHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC111RootHtmlPercentColumnsHost(
+    JNIEnv *, jclass) {
+#if defined(SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c11_1_root_html_percent_columns_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_HOST_ERROR=%s",
+                        output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_HOST=%s",
+                      output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_DISABLED fixture feature is off");
+  return 0;
+#endif
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1121GridPlacementHost(
     JNIEnv *, jclass) {
   std::array<char, 1024> output{};

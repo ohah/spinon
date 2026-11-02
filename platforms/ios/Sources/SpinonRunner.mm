@@ -1287,6 +1287,29 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC11_1RootHtmlPercentColumnsFixture {
+#if defined(SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c11_1_root_html_percent_columns_fixture(
+          output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_HOST=%{public}s",
+         output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_DISABLED fixture feature is off");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithC11_2_1GridPlacementFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST

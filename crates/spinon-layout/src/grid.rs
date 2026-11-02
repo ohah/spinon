@@ -444,8 +444,7 @@ pub(super) fn validate_grid_layout(
                 });
             }
             (
-                GridPlacementMode::RootHtmlColumnFlowV1
-                | GridPlacementMode::TemplateGridImplicitTracks
+                GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
                 | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
@@ -519,6 +518,16 @@ pub(super) fn validate_grid_layout(
                 && tracks
                     .iter()
                     .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (GridPlacementMode::RootHtmlColumnFlowV1, GridAutoColumns::TrackList(tracks))
+                if !tracks.is_empty()
+                    && tracks.iter().all(|track| {
+                        matches!(
+                            track,
+                            GridTrackSize::LengthPx(value)
+                                | GridTrackSize::Percentage(value)
+                                if value.is_finite() && *value >= 0.0
+                        )
+                    }) => {}
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::TrackList(tracks))
                 if container.template_areas.is_some() && !tracks.is_empty() => {}
             (GridPlacementMode::TemplateGrid, GridAutoColumns::TrackList(tracks))
@@ -637,7 +646,13 @@ pub(super) fn validate_grid_layout(
             validate_root_html_implicit_rows_container_style(node.id, node.style, container)?;
         }
         if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
-            validate_root_html_implicit_rows_container_style(node.id, node.style, container)?;
+            let visible_items = node.children.iter().filter(|child| !hidden[child]).count();
+            validate_root_html_column_flow_container_style(
+                node.id,
+                node.style,
+                container,
+                visible_items,
+            )?;
         }
         let template_area_track_sizing = container.template_areas.is_some()
             && matches!(
@@ -1359,8 +1374,9 @@ fn validate_root_html_column_flow_auto_columns(
         crate::GridAutoColumns::TrackList(tracks) => {
             for track in tracks {
                 match track {
-                    GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {}
-                    GridTrackSize::LengthPx(_) => {
+                    GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value)
+                        if value.is_finite() && *value >= 0.0 => {}
+                    GridTrackSize::LengthPx(_) | GridTrackSize::Percentage(_) => {
                         return Err(LayoutError::InvalidGridTrack {
                             node,
                             property: "grid-auto-columns",
@@ -1369,7 +1385,7 @@ fn validate_root_html_column_flow_auto_columns(
                     _ => {
                         return Err(LayoutError::UnsupportedGridAutoColumns {
                             node,
-                            reason: "Root HTML column flow only supports fixed px auto columns",
+                            reason: "Root HTML column-flow mode는 direct px 또는 percentage auto column만 지원합니다",
                         });
                     }
                 }
@@ -1377,6 +1393,93 @@ fn validate_root_html_column_flow_auto_columns(
             Ok(())
         }
     }
+}
+
+fn validate_root_html_column_flow_container_style(
+    node: spinon_core::NodeId,
+    style: LayoutStyle,
+    container: &crate::GridContainerInput,
+    visible_items: usize,
+) -> Result<(), LayoutError> {
+    validate_root_html_implicit_rows_container_style(node, style, container)?;
+    let has_percentage = matches!(
+        &container.auto_columns,
+        crate::GridAutoColumns::TrackList(tracks)
+            if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_)))
+    );
+    if !has_percentage {
+        return Ok(());
+    }
+    let unsupported_property = if !matches!(
+        style.width,
+        LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0
+    ) {
+        Some("width")
+    } else if style.min_width != LayoutDimension::Auto {
+        Some("min-width")
+    } else if style.max_width != LayoutDimension::Auto {
+        Some("max-width")
+    } else if style.aspect_ratio.is_some() {
+        Some("aspect-ratio")
+    } else {
+        None
+    };
+    if let Some(property) = unsupported_property {
+        return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
+    }
+    let LayoutDimension::Fixed(width) = style.width else {
+        unreachable!("percentage auto-column width was validated above")
+    };
+    let required_columns = visible_items
+        .div_ceil(container.rows.len())
+        .max(container.columns.len());
+    let implicit_count = required_columns.saturating_sub(container.columns.len());
+    let column_gap = match style.gap.column {
+        LayoutLengthPercentage::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
+        _ => {
+            return Err(LayoutError::InvalidGridTrack {
+                node,
+                property: "column-gap",
+            });
+        }
+    };
+    let mut extent = (column_gap as f64) * required_columns.saturating_sub(1) as f64;
+    for track in &container.columns {
+        let GridTrackSize::LengthPx(value) = track else {
+            return Ok(());
+        };
+        extent += *value as f64;
+    }
+    let crate::GridAutoColumns::TrackList(tracks) = &container.auto_columns else {
+        return Ok(());
+    };
+    for index in 0..implicit_count {
+        let value = match tracks[index % tracks.len()] {
+            GridTrackSize::LengthPx(value) => value as f64,
+            GridTrackSize::Percentage(value) => (value as f64) * (width as f64),
+            _ => return Ok(()),
+        };
+        if !value.is_finite() || value < 0.0 {
+            return Err(LayoutError::InvalidGridTrack {
+                node,
+                property: "grid-auto-columns",
+            });
+        }
+        extent += value;
+        if !extent.is_finite() || extent > f32::MAX as f64 {
+            return Err(LayoutError::InvalidGridTrack {
+                node,
+                property: "grid-auto-columns",
+            });
+        }
+    }
+    if !extent.is_finite() || extent > f32::MAX as f64 {
+        return Err(LayoutError::InvalidGridTrack {
+            node,
+            property: "grid-auto-columns",
+        });
+    }
+    Ok(())
 }
 
 fn track_is_indefinite_height_safe(track: &GridTrackSize, has_definite_min_height: bool) -> bool {

@@ -1,6 +1,7 @@
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackSize,
-    ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedCssMaxSize,
+    ComputedCssSpacingValue, ComputedElementStyle,
 };
 
 use crate::StyleLayoutError;
@@ -62,13 +63,15 @@ pub(super) fn validate_percentage_axis_inputs(
     element: &ComputedElementStyle,
     grid: &ComputedCssGridLayout,
 ) -> Result<(), StyleLayoutError> {
+    let has_percentage_auto_columns = grid.auto_flow == ComputedCssGridAutoFlow::Column
+        && has_percentage_auto_columns(&grid.auto_columns);
     let has_percentage_auto_rows = match &grid.auto_rows {
         ComputedCssGridAutoRows::TrackList(tracks) => has_percentage_track(tracks),
         ComputedCssGridAutoRows::Auto
         | ComputedCssGridAutoRows::LengthPx(_)
         | ComputedCssGridAutoRows::Unsupported(_) => false,
     };
-    if has_percentage_track(&grid.columns) {
+    if has_percentage_track(&grid.columns) || has_percentage_auto_columns {
         validate_axis(
             element,
             AxisConstraints {
@@ -111,6 +114,7 @@ pub(super) fn validate_percentage_axis_inputs(
         )?;
     }
     if (has_percentage_track(&grid.columns)
+        || has_percentage_auto_columns
         || has_percentage_track(&grid.rows)
         || has_percentage_auto_rows)
         && (element.layout_aspect_ratio.is_some()
@@ -149,6 +153,69 @@ pub(super) fn validate_percentage_track_ranges(
         element.layout_spacing.row_gap,
     )?;
     validate_auto_row_percentage_ranges(element, &grid.auto_rows)
+        .and_then(|()| validate_auto_column_percentage_ranges(element, &grid.auto_columns))
+}
+
+pub(super) fn validate_implicit_column_percentage_extent(
+    element: &ComputedElementStyle,
+    grid: &ComputedCssGridLayout,
+    required_columns: usize,
+) -> Result<(), StyleLayoutError> {
+    if !has_percentage_auto_columns(&grid.auto_columns) || required_columns <= grid.columns.len() {
+        return Ok(());
+    }
+    let ComputedCssDimension::LengthPx(basis) = element.layout_dimensions.width else {
+        return Err(unsupported(
+            element,
+            "width",
+            "Root HTML Grid percentage auto columns require a definite finite non-negative CSS-pixel width",
+        ));
+    };
+    let tracks = match &grid.auto_columns {
+        ComputedCssGridAutoColumns::TrackList(tracks) => tracks.as_slice(),
+        _ => return Ok(()),
+    };
+    let gap = match element.layout_spacing.column_gap {
+        ComputedCssSpacingValue::Normal => 0.0,
+        ComputedCssSpacingValue::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
+        _ => {
+            return Err(unsupported(
+                element,
+                "column-gap",
+                "percentage implicit columns require the existing finite non-negative fixed-px gap subset",
+            ));
+        }
+    };
+    let mut total = (gap as f64) * required_columns.saturating_sub(1) as f64;
+    for track in &grid.columns {
+        let ComputedCssGridTrackSize::LengthPx(value) = track else {
+            return Ok(());
+        };
+        total += *value as f64;
+    }
+    for index in 0..required_columns - grid.columns.len() {
+        let value = match tracks[index % tracks.len()] {
+            ComputedCssGridTrackSize::LengthPx(value) => value as f64,
+            ComputedCssGridTrackSize::Percentage(value) => (value as f64) * (basis as f64),
+            _ => return Ok(()),
+        };
+        if !value.is_finite() || value < 0.0 {
+            return Err(unsupported(
+                element,
+                "grid-auto-columns",
+                "resolved percentage implicit-column extent must remain finite and non-negative",
+            ));
+        }
+        total += value;
+        if !total.is_finite() || total > f32::MAX as f64 {
+            return Err(unsupported(
+                element,
+                "grid-auto-columns",
+                "percentage implicit columns exceed the finite f32 CSS-pixel extent",
+            ));
+        }
+    }
+    Ok(())
 }
 
 fn validate_auto_row_percentage_ranges(
@@ -186,6 +253,47 @@ fn validate_auto_row_percentage_ranges(
                 element,
                 "grid-auto-rows",
                 "resolved percentage auto row exceeds the finite f32 CSS-pixel range",
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn validate_auto_column_percentage_ranges(
+    element: &ComputedElementStyle,
+    auto_columns: &ComputedCssGridAutoColumns,
+) -> Result<(), StyleLayoutError> {
+    let ComputedCssGridAutoColumns::TrackList(tracks) = auto_columns else {
+        return Ok(());
+    };
+    if !has_percentage_track(tracks) {
+        return Ok(());
+    }
+    let ComputedCssDimension::LengthPx(basis) = element.layout_dimensions.width else {
+        return Err(unsupported(
+            element,
+            "width",
+            "Root HTML Grid percentage auto columns require a definite finite non-negative CSS-pixel width",
+        ));
+    };
+    if !basis.is_finite() || basis < 0.0 {
+        return Err(unsupported(
+            element,
+            "width",
+            "Root HTML Grid percentage auto columns require a definite finite non-negative CSS-pixel width",
+        ));
+    }
+    for track in tracks {
+        let ComputedCssGridTrackSize::Percentage(value) = track else {
+            continue;
+        };
+        let resolved = (*value as f64) * (basis as f64);
+        if !value.is_finite() || *value < 0.0 || !resolved.is_finite() || resolved > f32::MAX as f64
+        {
+            return Err(unsupported(
+                element,
+                "grid-auto-columns",
+                "resolved percentage auto column exceeds the finite f32 CSS-pixel range",
             ));
         }
     }
@@ -295,6 +403,13 @@ fn has_percentage_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
     tracks
         .iter()
         .any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_)))
+}
+
+fn has_percentage_auto_columns(auto_columns: &ComputedCssGridAutoColumns) -> bool {
+    matches!(
+        auto_columns,
+        ComputedCssGridAutoColumns::TrackList(tracks) if has_percentage_track(tracks)
+    )
 }
 
 fn validate_axis(

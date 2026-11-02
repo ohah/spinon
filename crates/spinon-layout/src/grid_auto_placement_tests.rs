@@ -255,6 +255,167 @@ fn root_html_column_flow_expands_fixed_px_scalar_for_each_implicit_column() {
 }
 
 #[test]
+fn root_html_column_flow_repeats_percentage_auto_columns_from_the_definite_width() {
+    let mut input = root_html_column_flow_with_auto_columns(
+        12,
+        GridAutoColumns::TrackList(vec![
+            GridTrackSize::Percentage(0.1),
+            GridTrackSize::Percentage(0.15),
+        ]),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(240.0);
+    input.viewport.width = 240.0;
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("percentage auto-column list should resolve against the definite 240px width");
+
+    for (node, expected) in [
+        (2, [0.0, 0.0]),
+        (3, [0.0, 23.0]),
+        (4, [35.0, 0.0]),
+        (5, [35.0, 23.0]),
+        (6, [80.0, 0.0]),
+        (7, [80.0, 23.0]),
+        (8, [109.0, 0.0]),
+        (9, [109.0, 23.0]),
+        (10, [150.0, 0.0]),
+        (11, [150.0, 23.0]),
+        (12, [179.0, 0.0]),
+        (13, [179.0, 23.0]),
+    ] {
+        let actual = output.frames[&id(node)];
+        assert_eq!([actual.x, actual.y], expected, "node {node}");
+    }
+}
+
+#[test]
+fn root_html_column_flow_repeats_percentage_scalar_mixed_zero_and_overflow_tracks() {
+    for (auto_columns, expected_x) in [
+        (
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.1)]),
+            [80.0, 109.0, 138.0, 167.0],
+        ),
+        (
+            GridAutoColumns::TrackList(vec![
+                GridTrackSize::LengthPx(10.0),
+                GridTrackSize::Percentage(0.15),
+            ]),
+            [80.0, 95.0, 136.0, 151.0],
+        ),
+        (
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.0)]),
+            [80.0, 85.0, 90.0, 95.0],
+        ),
+        (
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(1.2)]),
+            [80.0, 373.0, 666.0, 959.0],
+        ),
+    ] {
+        let mut input = root_html_column_flow_with_auto_columns(12, auto_columns);
+        input.nodes[0].style.width = LayoutDimension::Fixed(240.0);
+        input.viewport.width = 240.0;
+        let output = TaffyLayoutEngine
+            .compute(&input)
+            .expect("percentage track list should repeat without clamping or subtracting the gap");
+        for (index, expected) in expected_x.into_iter().enumerate() {
+            let node = 6 + (index as u64 * 2);
+            let actual = output.frames[&id(node)];
+            assert_eq!(actual.x, expected, "node {node}");
+        }
+    }
+}
+
+#[test]
+fn root_html_column_flow_percentage_columns_accept_a_definite_zero_width_basis() {
+    let mut input = root_html_column_flow_with_auto_columns(
+        12,
+        GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.5)]),
+    );
+    let mut grid = input.nodes.remove(0);
+    grid.style.width = LayoutDimension::Fixed(0.0);
+    let wrapper = LayoutNode {
+        id: id(100),
+        children: vec![id(1)],
+        style: LayoutStyle {
+            display: LayoutDisplay::Block,
+            width: LayoutDimension::Fixed(175.0),
+            height: LayoutDimension::Fixed(63.0),
+            ..LayoutStyle::default()
+        },
+    };
+    input.root = id(100);
+    input.nodes.insert(0, wrapper);
+    input.nodes.insert(1, grid);
+    input.viewport.width = 175.0;
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("zero is a definite percentage basis");
+    for (node, expected) in [(6, 80.0), (8, 85.0), (10, 90.0), (12, 95.0)] {
+        assert_eq!(output.frames[&id(node)].x, expected, "node {node}");
+    }
+}
+
+#[test]
+fn root_html_column_flow_percentage_columns_reject_constrained_or_math_widths() {
+    let make_input = || {
+        root_html_column_flow_with_auto_columns(
+            8,
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.25)]),
+        )
+    };
+    let mut indefinite = make_input();
+    indefinite.nodes[0].style.width = LayoutDimension::Auto;
+    assert!(TaffyLayoutEngine.compute(&indefinite).is_err());
+
+    let mut minimum = make_input();
+    minimum.nodes[0].style.min_width = LayoutDimension::Fixed(1.0);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&minimum),
+        Err(crate::LayoutError::UnsupportedGridContainerStyle {
+            property: "min-width",
+            ..
+        })
+    ));
+
+    let mut maximum = make_input();
+    maximum.nodes[0].style.max_width = LayoutDimension::Fixed(200.0);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&maximum),
+        Err(crate::LayoutError::UnsupportedGridContainerStyle {
+            property: "max-width",
+            ..
+        })
+    ));
+
+    let mut ratio = make_input();
+    ratio.nodes[0].style.aspect_ratio = Some(1.0);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&ratio),
+        Err(crate::LayoutError::UnsupportedGridContainerStyle {
+            property: "aspect-ratio",
+            ..
+        })
+    ));
+}
+
+#[test]
+fn root_html_column_flow_percentage_columns_reject_aggregate_f32_overflow() {
+    let mut input = root_html_column_flow_with_auto_columns(
+        8,
+        GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(1.0)]),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(f32::MAX);
+    input.viewport.width = f32::MAX;
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::InvalidGridTrack {
+            property: "grid-auto-columns",
+            ..
+        })
+    ));
+}
+
+#[test]
 fn root_html_column_flow_keeps_implicit_sizing_when_explicit_cells_are_sufficient() {
     for auto_columns in [
         GridAutoColumns::Auto,
@@ -288,8 +449,18 @@ fn root_html_column_flow_rejects_invalid_auto_column_tracks() {
             "list",
         ),
         (
-            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.5)]),
-            "percentage track",
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(-0.5)]),
+            "negative percentage track",
+            "invalid",
+        ),
+        (
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(f32::NAN)]),
+            "non-finite percentage track",
+            "invalid",
+        ),
+        (
+            GridAutoColumns::TrackList(vec![GridTrackSize::Auto]),
+            "intrinsic track",
             "unsupported",
         ),
         (

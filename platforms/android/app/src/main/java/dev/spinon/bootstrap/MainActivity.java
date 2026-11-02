@@ -414,6 +414,8 @@ public final class MainActivity extends Activity {
         boolean c114GridTrackSizingRequested = getIntent()
                 .getBooleanExtra("spinon_c114_grid_track_sizing", false)
                 || c114GridScene != null;
+        boolean c111RootHtmlPercentColumnsRequested = getIntent()
+                .getBooleanExtra("spinon_c111_root_html_percent_columns", false);
         String c114GridRunId = getIntent().getStringExtra("spinon_c114_grid_run_id");
         if (c1131GridRepeatRequested
                 && ((c1131GridScene != null
@@ -492,7 +494,7 @@ public final class MainActivity extends Activity {
         boolean c11GridFixtureRequested = getIntent()
                 .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
-                || c114GridTrackSizingRequested;
+                || c114GridTrackSizingRequested || c111RootHtmlPercentColumnsRequested;
         if (c11GridCase != null) {
             c11GridSceneIndex = -1;
             for (int index = 0; index < C11_GRID_CASE_IDS.length; index++) {
@@ -597,6 +599,7 @@ public final class MainActivity extends Activity {
                 || c1132GridNamedLinesRequested
                 || c1133GridTemplateAreasRequested
                 || c114GridTrackSizingRequested
+                || c111RootHtmlPercentColumnsRequested
                 || c11GridFixtureRequested
                 || getIntent().getBooleanExtra("spinon_c121_static_relative", false)) {
             if (!BuildConfig.SPINON_C04_RUNTIME_GPU) {

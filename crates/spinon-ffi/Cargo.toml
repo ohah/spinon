@@ -32,6 +32,7 @@ c04-runtime-gpu-fixture-test = [
     "spinon-runtime/c11-3-3-grid-implicit-named-lines-fixture-test",
 ]
 c11-2-3-grid-fixture-test = ["c04-runtime-gpu-fixture-test"]
+c11-1-root-html-percent-columns-fixture-test = ["c04-runtime-gpu-fixture-test"]
 c04-runtime-gpu-test-hooks = ["c04-runtime-gpu-fixture-test", "spinon-render-wgpu/test-hooks"]
 c12-4-metal-surface-readback-test = ["c04-runtime-gpu-fixture-test"]
 c11-grid-metal-surface-pixels-test = ["c04-runtime-gpu-fixture-test"]

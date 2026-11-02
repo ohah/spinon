@@ -17,6 +17,7 @@ use crate::{
 enum AutoTrackExpansionMode {
     Unsupported,
     FixedPxList,
+    RootHtmlColumnFlow,
     TemplateAreaImplicit,
     PositiveNamedLineImplicit,
     Intrinsic,
@@ -458,7 +459,9 @@ pub(crate) fn normalize_dense_grid_container(
         crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {
             AutoTrackExpansionMode::FixedPxList
         }
-        crate::GridPlacementMode::RootHtmlColumnFlowV1 => AutoTrackExpansionMode::FixedPxList,
+        crate::GridPlacementMode::RootHtmlColumnFlowV1 => {
+            AutoTrackExpansionMode::RootHtmlColumnFlow
+        }
         _ => AutoTrackExpansionMode::Unsupported,
     };
     output.expanded_rows = expand_tracks(
@@ -751,6 +754,14 @@ fn expand_tracks(
                     | AutoTrackExpansionMode::PositiveNamedLineImplicit => tracks
                         .iter()
                         .all(|track| matches!(track, GridTrackSize::LengthPx(_))),
+                    AutoTrackExpansionMode::RootHtmlColumnFlow => tracks.iter().all(|track| {
+                        matches!(
+                            track,
+                            GridTrackSize::LengthPx(value)
+                                | GridTrackSize::Percentage(value)
+                                if value.is_finite() && *value >= 0.0
+                        )
+                    }),
                     AutoTrackExpansionMode::TemplateAreaImplicit
                     | AutoTrackExpansionMode::Intrinsic => true,
                 } =>

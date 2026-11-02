@@ -102,6 +102,7 @@
 + (uint64_t)createRuntimeGpuHostWithC13_3GestureFixture:(int32_t)scenarioID;
 #endif
 + (uint64_t)createRuntimeGpuHostWithC11_1GridFixture;
++ (uint64_t)createRuntimeGpuHostWithC11_1RootHtmlPercentColumnsFixture;
 + (uint64_t)createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture;
 + (NSString *)runtimeGpuC12_4WorkerStackResidencySample:(uint64_t)handle;
 + (uint64_t)createRuntimeGpuHostWithC12_4SurfaceReadbackFixture;
