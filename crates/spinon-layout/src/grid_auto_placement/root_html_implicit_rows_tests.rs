@@ -1,5 +1,7 @@
 use super::*;
 
+#[path = "root_html_implicit_rows_tests/fraction.rs"]
+mod fraction;
 #[path = "root_html_implicit_rows_tests/percentage.rs"]
 mod percentage;
 
@@ -214,7 +216,7 @@ fn root_html_fixed_px_implicit_row_list_accepts_zero_and_cycles_after_it() {
 fn root_html_fixed_px_implicit_row_list_rejects_unsupported_and_invalid_entries() {
     for (auto_rows, expect_invalid_track) in [
         (
-            vec![GridTrackSize::LengthPx(15.0), GridTrackSize::Fraction(1.0)],
+            vec![GridTrackSize::LengthPx(15.0), GridTrackSize::MinContent],
             false,
         ),
         (vec![GridTrackSize::LengthPx(-1.0)], true),
@@ -223,6 +225,9 @@ fn root_html_fixed_px_implicit_row_list_rejects_unsupported_and_invalid_entries(
         (vec![GridTrackSize::Percentage(-0.5)], true),
         (vec![GridTrackSize::Percentage(f32::NAN)], true),
         (vec![GridTrackSize::Percentage(f32::INFINITY)], true),
+        (vec![GridTrackSize::Fraction(-1.0)], true),
+        (vec![GridTrackSize::Fraction(f32::NAN)], true),
+        (vec![GridTrackSize::Fraction(f32::INFINITY)], true),
     ] {
         let input = root_html_implicit_row_list_grid(
             60.0,

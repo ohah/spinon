@@ -104,6 +104,14 @@ Rust runtime은 definite 120px/35–80px root를 쓰는 네 scene의 computed tr
 
 계속 거부하는 입력은 named lines/areas, auto-repeat·intrinsic explicit tracks, percentage/`fr`/intrinsic implicit row, implicit columns, dense·column flow, authored placement, nonzero order, nested/text/image item, nonzero box edges, clipping·scroll, 일반 CSS admission 및 WPT 적합성이다. 구현 PR [#1027](https://github.com/ohah/spinon/pull/1027)은 2026-11-02T03:48:24Z Rebase and merge됐고 merge SHA는 `732b0257146464de55ddede8a0477726bc5a380b`다. PR check rollup은 비어 있다. 공식 `72/213`, C11.1/C11 checkbox 및 공개 CSS 지원 상태는 변경하지 않는다.
 
+## C11.1 parsed Root HTML fractional `grid-auto-rows` list · 제한 구현 후보 · 2026-11-03
+
+`RuntimeRootHtmlTextPaintV1` 기본 parsed Root HTML route의 no-area Grid에서 기존 단일 fixed-px `grid-auto-rows`와 px/% 목록 의미를 유지하면서 direct finite non-negative `fr`을 포함한 비어 있지 않은 px/%/fr implicit-row 목록을 허용하는 제한 후보를 추가했다. `RootHtmlImplicitRowsV1`의 row-sparse auto-placement가 explicit rows 뒤 첫 implicit row부터 authored 목록을 순환하고, definite grid block size에서 기존 Taffy flexible track sizing으로 free space를 분배한다. `0fr`, 합이 1보다 작은 fraction, fixed-size item automatic minimum 및 visible overflow는 clamp 없이 보존한다.
+
+`%` 또는 `fr`을 포함한 목록은 finite non-negative definite root height, auto `min-height`/`max-height`, 미설정 `aspect-ratio`를 요구한다. Percentage basis는 root content-box height이며 row-gap을 빼지 않는다. 개별 resolved percentage와 fixed/percentage expanded extent·gutter 합은 f32 경계를 넘으면 layout/frame publication 전에 거부한다. 기존 list·expanded-track cap, allocation failure atomicity와 revision ownership을 유지한다.
+
+이 후보는 no-area 기본 Root HTML profile에만 적용한다. Named-area/implicit-track 조합, implicit columns, dense/column flow, authored placement, intrinsic/`minmax()`/`calc()` rows, math-backed height, non-default item/container behavior, general CSS admission과 WPT 적합성은 범위 밖이다. Chrome 156 사전 비교, Rust cascade/projection/layout/runtime 검증 및 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator draw/present 한계는 [계획](../../plan/c11-root-html-grid-auto-row-fr.md)과 [runtime evidence](./evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/README.md)에 기록한다. 구현/runtime 검토 20개와 구현 PR diff 검토 30개를 기록했으며, 구현 PR 생성·GitHub checks 확인·merge 및 Tailnet roadmap sync는 남아 있다. 내부 숫자 버전 `0.1.0`, C11.1/C11 미완료 및 공식 `72/213`을 유지한다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.

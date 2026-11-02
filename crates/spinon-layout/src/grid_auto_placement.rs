@@ -234,7 +234,14 @@ pub(super) fn normalize_sparse_grid_container(
                     match track {
                         GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {}
                         GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {}
+                        GridTrackSize::Fraction(value) if value.is_finite() && *value >= 0.0 => {}
                         GridTrackSize::LengthPx(_) | GridTrackSize::Percentage(_) => {
+                            return Err(LayoutError::InvalidGridTrack {
+                                node,
+                                property: "grid-auto-rows",
+                            });
+                        }
+                        GridTrackSize::Fraction(_) => {
                             return Err(LayoutError::InvalidGridTrack {
                                 node,
                                 property: "grid-auto-rows",
@@ -243,7 +250,7 @@ pub(super) fn normalize_sparse_grid_container(
                         _ => {
                             return Err(LayoutError::UnsupportedGridAutoRows {
                                 node,
-                                reason: "Root HTML implicit row mode requires direct px/percentage grid-auto-rows values",
+                                reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
                             });
                         }
                     }
@@ -277,12 +284,12 @@ pub(super) fn normalize_sparse_grid_container(
             _ => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node,
-                    reason: "Root HTML implicit row mode requires direct px/percentage grid-auto-rows values",
+                    reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
                 });
             }
         }
         if container.placement_mode == crate::GridPlacementMode::RootHtmlImplicitRowsV1
-            && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_))))
+            && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_))))
         {
             validate_root_html_expanded_row_range(node, container_node, &expanded_rows)?;
         }

@@ -342,13 +342,15 @@ fn is_root_html_auto_track_list(tracks: &[GridTrackSize]) -> bool {
         && tracks.iter().all(|track| {
             matches!(
                 track,
-                GridTrackSize::LengthPx(_) | GridTrackSize::Percentage(_)
+                GridTrackSize::LengthPx(_)
+                    | GridTrackSize::Percentage(_)
+                    | GridTrackSize::Fraction(_)
             )
         })
 }
 
-fn has_percentage_auto_rows(auto_rows: &GridAutoRows) -> bool {
-    matches!(auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_))))
+fn has_relative_auto_rows(auto_rows: &GridAutoRows) -> bool {
+    matches!(auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_))))
 }
 
 pub(super) fn validate_grid_layout(
@@ -416,7 +418,7 @@ pub(super) fn validate_grid_layout(
             (GridPlacementMode::RootHtmlImplicitRowsV1, _) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
-                    reason: "Root HTML implicit row mode requires direct px/percentage grid-auto-rows values",
+                    reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
                 });
             }
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto)
@@ -1145,7 +1147,7 @@ fn validate_root_html_implicit_rows_contract(
     {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
-            reason: "Root HTML implicit row mode requires direct px/percentage grid-auto-rows values",
+            reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
         });
     }
     if let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows
@@ -1161,9 +1163,9 @@ fn validate_root_html_implicit_rows_contract(
     let invalid_auto_rows = match &container.auto_rows {
         crate::GridAutoRows::LengthPx(value) => !value.is_finite() || *value < 0.0,
         crate::GridAutoRows::TrackList(tracks) => tracks.iter().any(|track| match track {
-            crate::GridTrackSize::LengthPx(value) | crate::GridTrackSize::Percentage(value) => {
-                !value.is_finite() || *value < 0.0
-            }
+            crate::GridTrackSize::LengthPx(value)
+            | crate::GridTrackSize::Percentage(value)
+            | crate::GridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
             _ => true,
         }),
         crate::GridAutoRows::Auto => false,
@@ -1215,7 +1217,7 @@ fn validate_root_html_implicit_rows_container_style(
     if let Some(property) = unsupported_property {
         return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
     }
-    if has_percentage_auto_rows(&container.auto_rows) {
+    if has_relative_auto_rows(&container.auto_rows) {
         let unsupported_property = if !matches!(
             style.height,
             LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0

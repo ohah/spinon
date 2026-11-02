@@ -213,14 +213,15 @@ fn validate_root_html_grid_tracks(
     if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) && !implicit_rows {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML Grid에서는 finite non-negative direct px/percentage grid-auto-rows 값과 목록만 지원합니다",
+            "Root HTML Grid에서는 finite non-negative direct px/percentage/fr grid-auto-rows 값과 목록만 지원합니다",
         ));
     }
     let invalid_implicit_row = match &grid.auto_rows {
         ComputedCssGridAutoRows::LengthPx(value) => !value.is_finite() || *value < 0.0,
         ComputedCssGridAutoRows::TrackList(tracks) => tracks.iter().any(|track| match track {
             ComputedCssGridTrackSize::LengthPx(value)
-            | ComputedCssGridTrackSize::Percentage(value) => !value.is_finite() || *value < 0.0,
+            | ComputedCssGridTrackSize::Percentage(value)
+            | ComputedCssGridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
             _ => true,
         }),
         _ => false,
@@ -228,7 +229,7 @@ fn validate_root_html_grid_tracks(
     if invalid_implicit_row {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML grid-auto-rows는 direct finite non-negative px/percentage 값만 포함해야 합니다",
+            "Root HTML grid-auto-rows는 direct finite non-negative px/percentage/fr 값만 포함해야 합니다",
         ));
     }
     if column_flow && !root_html_auto_columns_supported(&grid.auto_columns) {
@@ -274,7 +275,9 @@ fn root_html_direct_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> 
         && tracks.iter().all(|track| {
             matches!(
                 track,
-                ComputedCssGridTrackSize::LengthPx(_) | ComputedCssGridTrackSize::Percentage(_)
+                ComputedCssGridTrackSize::LengthPx(_)
+                    | ComputedCssGridTrackSize::Percentage(_)
+                    | ComputedCssGridTrackSize::Fraction(_)
             )
         })
 }

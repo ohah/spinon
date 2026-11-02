@@ -43,6 +43,7 @@ pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_root_html_fixed_auto_row_lists: bool,
     pub(super) allow_root_html_fixed_auto_column_lists: bool,
     pub(super) allow_root_html_percentage_auto_row_lists: bool,
+    pub(super) allow_root_html_fraction_auto_row_lists: bool,
     pub(super) allow_root_html_percentage_auto_column_lists: bool,
     pub(super) allow_template_areas: bool,
 }
@@ -101,6 +102,7 @@ pub(super) fn computed_grid_layout(
         allow_root_html_fixed_auto_row_lists,
         allow_root_html_fixed_auto_column_lists,
         allow_root_html_percentage_auto_row_lists,
+        allow_root_html_fraction_auto_row_lists,
         allow_root_html_percentage_auto_column_lists,
         allow_template_areas,
     } = options;
@@ -216,6 +218,7 @@ pub(super) fn computed_grid_layout(
         allow_typed_auto_track_sizes,
         allow_fixed_auto_track_lists || allow_root_html_fixed_auto_row_lists,
         allow_root_html_percentage_auto_row_lists,
+        allow_root_html_fraction_auto_row_lists,
     )?;
     let auto_columns = computed_grid_auto_columns(
         computed.clone_grid_auto_columns(),
@@ -288,6 +291,7 @@ fn computed_grid_auto_rows(
     allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
     allow_percentage_track_lists: bool,
+    allow_fraction_track_lists: bool,
 ) -> Result<ComputedCssGridAutoRows, CssCascadeError> {
     Ok(
         match computed_grid_auto_track_list(
@@ -299,7 +303,7 @@ fn computed_grid_auto_rows(
                 allow_typed_track_sizes,
                 allow_fixed_track_lists,
                 allow_percentage_track_lists,
-                allow_fraction_track_lists: false,
+                allow_fraction_track_lists,
                 reservation_site: IntegerRepeatReservationSite::AutoRows,
             },
         )? {

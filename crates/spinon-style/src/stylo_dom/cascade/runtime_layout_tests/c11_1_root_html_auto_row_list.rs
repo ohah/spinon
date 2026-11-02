@@ -93,9 +93,50 @@ fn root_html_profile_preserves_mixed_px_percentage_auto_row_list() {
 }
 
 #[test]
+fn root_html_profile_preserves_fractional_and_mixed_auto_row_lists() {
+    for (value, expected) in [
+        ("1fr", vec![ComputedCssGridTrackSize::Fraction(1.0)]),
+        (
+            "0fr 0.25fr",
+            vec![
+                ComputedCssGridTrackSize::Fraction(0.0),
+                ComputedCssGridTrackSize::Fraction(0.25),
+            ],
+        ),
+        (
+            "15px 25% 1fr",
+            vec![
+                ComputedCssGridTrackSize::LengthPx(15.0),
+                ComputedCssGridTrackSize::Percentage(0.25),
+                ComputedCssGridTrackSize::Fraction(1.0),
+            ],
+        ),
+    ] {
+        let style = format!(
+            "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px;grid-template-rows:20px;grid-auto-rows:{value};margin:0;padding:0"
+        );
+        let (view, root) = view_for_inline_style(&style);
+        let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+            &view,
+            &[],
+            CssViewport::C04_FIXTURE,
+            Default::default(),
+        )
+        .expect("finite direct fractional auto rows should remain typed in Root HTML");
+        let grid = snapshot
+            .elements
+            .iter()
+            .find(|element| element.node_id == root)
+            .and_then(|element| element.grid_layout.as_ref())
+            .expect("the Grid snapshot should be present");
+
+        assert_eq!(grid.auto_rows, ComputedCssGridAutoRows::TrackList(expected));
+    }
+}
+
+#[test]
 fn root_html_profile_keeps_unsupported_auto_row_lists_unsupported() {
     for (value, serialized) in [
-        ("15px 1fr", "15px 1fr"),
         ("15px min-content", "15px min-content"),
         ("15px calc(10px + 1%)", "15px calc(1% + 10px)"),
         ("15px auto", "15px auto"),
@@ -124,6 +165,28 @@ fn root_html_profile_keeps_unsupported_auto_row_lists_unsupported() {
             "{value}"
         );
     }
+}
+
+#[test]
+fn root_html_profile_falls_back_after_syntax_invalid_negative_fractional_auto_row() {
+    let (view, root) = view_for_inline_style(
+        "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px;grid-template-rows:20px;grid-auto-rows:-1fr;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+        &view,
+        &[],
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .expect("syntax-invalid negative fraction should fall back to the initial value");
+    let grid = snapshot
+        .elements
+        .iter()
+        .find(|element| element.node_id == root)
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("the Grid snapshot should be present");
+
+    assert_eq!(grid.auto_rows, ComputedCssGridAutoRows::Auto);
 }
 
 #[test]
