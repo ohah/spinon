@@ -73,6 +73,6 @@ iOS build는 성공했으며 Xcode가 V8 static archive 안의 duplicate timesta
 
 ## 적대적 검토와 남은 범위
 
-[구현/runtime 실패 관점 검토 20개](./implementation-runtime-review-20.md)는 plan review 20개와 별도로 작성했다. PR 제출 전에는 실제 최종 변경 delta에 대해 저장소 필수 30관점 검토를 새로 기록한다. 일반 CSS admission, arbitrary track grammar, WPT conformance, cyclic/indefinite gap, hardware GPU, 실기기, compositor 이후 픽셀은 검증 범위에 포함되지 않는다.
+[구현/runtime 실패 관점 검토 20개](./implementation-runtime-review-20.md)는 plan review 20개와 별도로 작성했다. 실제 PR 변경분은 [30개 적대 검토](./pr-diff-review-30.md)에서 코드 경계·호출 경로·fixture 연결을 별도로 확인했다. 일반 CSS admission, arbitrary track grammar, WPT conformance, cyclic/indefinite gap, hardware GPU, 실기기, compositor 이후 픽셀은 검증 범위에 포함되지 않는다.
 
 C11.1과 C11은 미완료다. 공식 `72/213`은 유지한다.

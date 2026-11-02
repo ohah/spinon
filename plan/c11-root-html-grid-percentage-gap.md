@@ -57,4 +57,4 @@ All positive geometry uses content-box dimensions with no padding/border, LTR ho
 - Focused cascade, projection, layout, runtime, rejection/overflow tests pass; scoped Clippy, rustfmt and `git diff --check` pass.
 - Android and iOS simulator runs use the same fixture and implementation commit, and both show the positive and overflow cases without claiming surface readback. [Simulator result, artifact hashes, logs and screenshots](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md).
 - Implementation/runtime failure review uses 20 distinct failure paths; [the review is complete](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.md). PR delta review uses at least the repository-required 30 distinct change-specific checks and is pending.
-- Roadmap and status record only this bounded feature slice; C11.1/C11 remain incomplete.
+- Roadmap and status record only this bounded feature slice; C11.1/C11 remain incomplete. The 30-point final PR diff review is recorded in [the runtime evidence](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.md).
