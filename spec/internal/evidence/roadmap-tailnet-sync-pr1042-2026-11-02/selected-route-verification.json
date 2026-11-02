@@ -1,0 +1,108 @@
+{
+  "baseHead": "a8856da5343963bcd7cee0bd2904aef34b0af4e0",
+  "sourceRoadmap": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 510960,
+    "sha256": "4a1a1302e7430ebdb6c9340a0c3162264a06e49d0ddf814f2d38e45e50752985"
+  },
+  "newCard": {
+    "sha256": "7e3ed89943af925523ef72bf1a322d3351519547d3b5884160b224dd88ab4cc4",
+    "officialCount": "72/213",
+    "c11Complete": false
+  },
+  "boundedRspressBuild": {
+    "version": "2.0.22",
+    "mode": "selected root only; dead-link and dead-image checks disabled",
+    "exitCode": 0,
+    "generatedPages": [
+      {
+        "route": "STATUS.html",
+        "bytes": 750145,
+        "sha256": "3fc1750e457f9d12a32c8efc38355b03091f2924b3e1a2b40d9bb07aa165a0a7"
+      },
+      {
+        "route": "plan/c11-root-html-grid-auto-row-list.html",
+        "bytes": 28999,
+        "sha256": "de235f8b4c6b51fe0382f4dc7fd54300621153f00bf6b4583f2236981b542706"
+      },
+      {
+        "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+        "bytes": 25726,
+        "sha256": "de0854c81343f782e3735acfb691c665a10ef721504b545d7cc83efeab00d43d"
+      }
+    ]
+  },
+  "cardLinks": [
+    {
+      "href": "/spinon/plan/c11-root-html-grid-auto-row-list.html",
+      "route": "plan/c11-root-html-grid-auto-row-list.html",
+      "sourcePath": "build/spinon/c11-roadmap-pr1042-pass02/site/plan/c11-root-html-grid-auto-row-list.html",
+      "bytes": 28999,
+      "sha256": "de235f8b4c6b51fe0382f4dc7fd54300621153f00bf6b4583f2236981b542706"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+      "sourcePath": "build/spinon/c11-roadmap-pr1042-pass02/site/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+      "bytes": 25726,
+      "sha256": "de0854c81343f782e3735acfb691c665a10ef721504b545d7cc83efeab00d43d"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "sourcePath": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "bytes": 5345,
+      "sha256": "baa72969ec34a739b57027b3a0050f4ab8cc081aeda65ff566b848d6f5b47f11"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "sourcePath": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "bytes": 7196,
+      "sha256": "4e384da6ecffa6eef4fa61b3503c37038667dac4653dba3882edeb467ebd36aa"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/merge-PR1042.md",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/merge-PR1042.md",
+      "sourcePath": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/merge-PR1042.md",
+      "bytes": 1189,
+      "sha256": "8f4cc20466a8766660cec49b9bcfbbaac0d0ff1383e4e173a805e654839e083b"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "sourcePath": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "bytes": 24323,
+      "sha256": "5d3631ffc58934ee9f0c54797ce8b18190230772a02ac126a0eb86d3d8ca729a"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "sourcePath": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "bytes": 74525,
+      "sha256": "7c354c76a9f37d0efde15542e6000d4fed2f206e8208e3e59e1e8dcc4e5607d1"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "sourcePath": "build/spinon/c11-roadmap-pr1042-pass02/site/STATUS.html",
+      "bytes": 750145,
+      "sha256": "3fc1750e457f9d12a32c8efc38355b03091f2924b3e1a2b40d9bb07aa165a0a7"
+    }
+  ],
+  "statusRoute": {
+    "hasOfficialCount": true,
+    "hasC11Heading": true,
+    "hasExpectedAnchor": true
+  },
+  "fullRepositoryBuild": {
+    "attempted": true,
+    "exitCode": 1,
+    "observedPreExistingIssues": [
+      "repository-wide dead-link reports",
+      "Shiki language rust,ignore unavailable in current bundle",
+      "unresolved relative image import in existing S04 document"
+    ]
+  },
+  "scope": "route generation evidence only; not a full documentation-site validation"
+}
