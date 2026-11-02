@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML column-flow implicit columns
 
-**상태:** 구현·Rust focused 검증·Chrome 156 비교·Android/iOS Simulator smoke를 마친 제한 후보. PR/merge와 C11.1 승격은 남아 있다. 기존 [column-flow 제한 slice](./c11-root-html-grid-column-flow.md)는 explicit cell만 사용하고 implicit track을 거부한다. 이 후속 계획은 fixed-px `grid-auto-columns`를 써서 positive implicit columns를 생성하는 좁은 기본 Root HTML runtime 경로를 추가한다. 일반 CSS Grid 지원이나 C11 완료를 뜻하지 않는다.
+**상태:** 구현·Rust focused 검증·Chrome 156 비교·Android/iOS Simulator smoke와 별도 실패 관점 검토를 마쳤다. [PR #1059](https://github.com/ohah/spinon/pull/1059)가 열려 있으며 merge와 C11.1 승격은 남아 있다. 기존 [column-flow 제한 slice](./c11-root-html-grid-column-flow.md)는 explicit cell만 사용하고 implicit track을 거부한다. 이 후속 계획은 fixed-px `grid-auto-columns`를 써서 positive implicit columns를 생성하는 좁은 기본 Root HTML runtime 경로를 추가한다. 일반 CSS Grid 지원이나 C11 완료를 뜻하지 않는다.
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid 통합](./c11-root-html-grid-runtime.md) · [상태 대장](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
