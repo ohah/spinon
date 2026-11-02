@@ -1,0 +1,134 @@
+{
+  "schema": "spinon.c11.root-html-grid-auto-row-fr.precomparison.v1",
+  "oracle": {
+    "name": "Chrome",
+    "version": "156.0.0.0",
+    "devicePixelRatio": 1,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "independentExpectedSource": "fixed CSS inputs and CSS Grid Level 1 flexible track sizing rules",
+    "geometryToleranceCssPx": 0.02
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-row-fr-precomparison.html",
+    "sha256": "062f22d9e04236d9b6723717139f01211792fabccefe21d30d58bcd819479b88"
+  },
+  "cases": [
+    {
+      "id": "cycle",
+      "rootSizeCssPx": [100, 100],
+      "explicitRowsCssPx": [20],
+      "autoRows": ["1fr", "2fr"],
+      "implicitRowCount": 4,
+      "resolvedImplicitRowsCssPx": [10, 20, 10, 20],
+      "usedRowsCssPx": [20, 10, 20, 10, 20],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 100,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 20], [45, 0, 10, 20],
+        [0, 25, 10, 10], [45, 25, 10, 10],
+        [0, 40, 10, 10], [45, 40, 10, 10],
+        [0, 65, 10, 10], [45, 65, 10, 10],
+        [0, 80, 10, 10], [45, 80, 10, 10]
+      ]
+    },
+    {
+      "id": "mixed",
+      "rootSizeCssPx": [120, 120],
+      "explicitRowsCssPx": [20],
+      "autoRows": ["15px", "25%", "1fr"],
+      "implicitRowCount": 4,
+      "resolvedImplicitRowsCssPx": [15, 30, 20, 15],
+      "usedRowsCssPx": [20, 15, 30, 20, 15],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 120,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 20], [45, 0, 10, 20],
+        [0, 25, 10, 10], [45, 25, 10, 10],
+        [0, 45, 10, 10], [45, 45, 10, 10],
+        [0, 80, 10, 10], [45, 80, 10, 10],
+        [0, 105, 10, 10], [45, 105, 10, 10]
+      ]
+    },
+    {
+      "id": "overflow",
+      "rootSizeCssPx": [100, 100],
+      "explicitRowsCssPx": [20],
+      "autoRows": ["120%", "1fr"],
+      "implicitRowCount": 2,
+      "resolvedImplicitRowsCssPx": [120, 0],
+      "usedRowsCssPx": [20, 120, 0],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 150,
+      "rootOverflowBottomCssPx": 50,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 20],
+        [0, 25, 10, 120],
+        [0, 150, 10, 0]
+      ]
+    },
+    {
+      "id": "zero",
+      "rootSizeCssPx": [100, 0],
+      "explicitRowsCssPx": [0],
+      "autoRows": ["1fr"],
+      "implicitRowCount": 1,
+      "resolvedImplicitRowsCssPx": [0],
+      "usedRowsCssPx": [0, 0],
+      "rowGapCssPx": 0,
+      "trackAndGutterExtentCssPx": 0,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 0], [0, 0, 10, 0]
+      ]
+    },
+    {
+      "id": "zero-factor",
+      "rootSizeCssPx": [100, 40],
+      "explicitRowsCssPx": [10],
+      "autoRows": ["0fr", "1fr"],
+      "implicitRowCount": 3,
+      "resolvedImplicitRowsCssPx": [10, 5, 0],
+      "usedRowsCssPx": [10, 10, 5, 0],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 40,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 10],
+        [0, 15, 10, 10],
+        [0, 30, 10, 0],
+        [0, 40, 10, 0]
+      ]
+    },
+    {
+      "id": "subunit",
+      "rootSizeCssPx": [100, 100],
+      "explicitRowsCssPx": [20],
+      "autoRows": ["0.25fr"],
+      "implicitRowCount": 2,
+      "resolvedImplicitRowsCssPx": [17.5, 17.5],
+      "usedRowsCssPx": [20, 17.5, 17.5],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 65,
+      "rootOverflowBottomCssPx": 35,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 20],
+        [0, 25, 10, 10],
+        [0, 47.5, 10, 10]
+      ]
+    },
+    {
+      "id": "minimum",
+      "rootSizeCssPx": [100, 30],
+      "explicitRowsCssPx": [20],
+      "autoRows": ["1fr"],
+      "implicitRowCount": 1,
+      "resolvedImplicitRowsCssPx": [40],
+      "usedRowsCssPx": [20, 40],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 65,
+      "rootOverflowBottomCssPx": 35,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 10, 20],
+        [0, 25, 10, 40]
+      ]
+    }
+  ]
+}
