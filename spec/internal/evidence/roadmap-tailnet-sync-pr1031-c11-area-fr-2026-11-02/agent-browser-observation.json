@@ -1,0 +1,24 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "target": "PR #1030 Rebase and merge roadmap card",
+  "markers": {
+    "mergeSha": "579435b1955e7ad157baa13d100d75f13a5dd283",
+    "officialProgress": "72/213"
+  },
+  "desktop": {
+    "viewport": [1280, 633],
+    "documentWidth": 1280,
+    "cardRect": { "x": 20, "right": 1260, "width": 1240, "y": 80.265625, "height": 101.953125 },
+    "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "cardRect": { "x": 14, "right": 376, "width": 362, "y": 70.421875, "height": 346.640625 },
+    "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+  },
+  "browserSessionClosed": true,
+  "agentBrowserProcessRemaining": false,
+  "checkedAtLocalDate": "2026-11-02"
+}
