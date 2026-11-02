@@ -1,0 +1,51 @@
+{
+  "schema": "spinon-tailnet-roadmap-browser-verification-v1",
+  "date": "2026-11-03",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "session": "spinon-c11-status",
+  "roadmap": {
+    "title": "스피논 구현 로드맵",
+    "cardFound": true,
+    "cardLinkCount": 10,
+    "servedRoutesRequested": 33,
+    "servedRoutesStatus": "33/33 HTTP 200 with exact SHA-256"
+  },
+  "plan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-text-transform-full-size-kana.html",
+    "title": "C11.4 anonymous Grid text computed text-transform: full-size-kana - 스피논 문서",
+    "renderedH1": "C11.4 anonymous Grid text computed text-transform: full-size-kana",
+    "loadedImages": 1,
+    "brokenImages": 0
+  },
+  "desktop": {
+    "viewport": "1280 CSS px wide, device scale factor 2",
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-c11-4-full-size-kana-2026-11-03/roadmap-tailnet-agent-browser-desktop.png",
+      "bytes": 743549,
+      "sha256": "0c0646f693836fb88be4c6dd28e8099533b86687f17dffac4366cb5fcd274295",
+      "width": 2560,
+      "height": 1400
+    }
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 2
+    },
+    "documentScrollWidth": 390,
+    "documentClientWidth": 390,
+    "cardScrollWidth": 362,
+    "cardClientWidth": 362,
+    "cardLinkCount": 10,
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-c11-4-full-size-kana-2026-11-03/roadmap-tailnet-agent-browser-mobile.png",
+      "bytes": 384551,
+      "sha256": "918d56ce6a97cec51496ce1026cb1160e6fe03d2b518d6af6b92965b40207af3",
+      "width": 780,
+      "height": 1688
+    }
+  },
+  "closed": true,
+  "agentBrowserProcessRemaining": false
+}
