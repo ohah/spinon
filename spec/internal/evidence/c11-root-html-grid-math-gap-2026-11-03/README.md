@@ -50,3 +50,22 @@ Chrome와 독립값은 정상 범위 17개 geometry case에서 일치한다. `ca
 ## 구현 전 현황
 
 이 비교를 고정한 source revision은 `085ec179a884ffe93404c432c2892d2ddb1a2b41`이다. 기존 parsed Root HTML Grid는 px/percentage/normal gap을 지원하지만 `layout_math_values`에 math-backed `row-gap`/`column-gap`이 있으면 projection에서 거부한다. 일반 `LayoutCssMath` evaluator와 Flex math gap 경로는 별도로 존재하므로, Root HTML 범위에서만 기존 node/property-bound typed math를 사용할 계획이다. 이 문서는 oracle과 계획 입력이며 구현 완료 근거가 아니다.
+
+## 구현 candidate 실행
+
+- 후보는 같은 저장소 checkout의 branch `feat/c11-root-html-grid-math-gap`, base `88b4001949fca480ff70dc75000f52d0c13063e6`에서 검증했다. 소스 변경 diff SHA-256은 `d7b13cc51b577f917765114798d5f80e45d2ca41f7cd40f14638dcfa95738a54`다. worktree는 만들지 않았다.
+- Runtime fixture는 위의 tracked `grid-math-gap-runtime-v1.html`이며 SHA-256 `e355b0a9bedf04de1e97538e939e0bad48e46395849d0ff39b2fb0f5ff7033c0`이다. 앱 실행에는 기존 opt-in `c11-1-root-html-percent-columns-fixture-test` host를 재사용했다. capture build 동안만 host의 `include_str!` 입력을 이 fixture로 연결하고 screenshot caption을 `Grid math gap · 200×100 CSS px`로 바꿨다. build 뒤 `host.rs`, Android Java, iOS Swift 세 파일 모두 base와 diff가 없는지 확인했다. 앱 캡션 변경은 candidate source에 포함되지 않는다.
+- Android는 `emulator-5558`, API 37, `sdk_gphone16k_arm64` AVD에서 실행했다. 사용한 APK SHA-256은 `0a9bbe46cad6eb641d469dd5ec376b3911063a9dcd8b164871c28a91282b5d9a`이다. Renderer는 기존 ANGLE/Vulkan/SwiftShader software path이고 Android 실기기는 사용하지 않았다. [`Android 화면`](./android-avd-screen-labeled.png), [install](./android-avd-labeled-install.log), [launch](./android-avd-labeled-launch.log), [process-filtered runtime log](./android-avd-labeled-runtime.log), [app build](./android-avd-labeled-apk-build.log), [native build](./android-avd-labeled-build.log).
+- iOS는 booted iPhone 17 Pro / iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`에서 실행했다. executable SHA-256은 `b85a51c09b8a5b72aa836ea71245685d1ae6d3d964b14ca09dc0c7c848c2afe4`이다. [`iOS 화면`](./ios-simulator-screen-labeled.png), [install](./ios-simulator-labeled-install.log), [launch](./ios-simulator-labeled-launch.log), [runtime log](./ios-simulator-labeled-runtime.log), [build log](./ios-simulator-labeled-build.log). iOS screenshot은 Metal draw/present 화면 관찰이며 compositor 이후 pixel readback은 아니다.
+- 양쪽에서 `layout=ready boxes=7`, grid `200×100`, item origins `(0,0)`, `(22,0)`, `(0,17)`, `(22,17)`을 기록했다. Android root width는 121.90476 CSS px, iOS root width는 106.666664 CSS px로 grid가 부모 root보다 넓다. 화면은 gray grid와 4개 item을 보여주며 parent/grid frame의 차이는 runtime log로 확인한다. 이는 시각 smoke이며 PixelCopy/Metal RGBA 표본의 정확성 주장이 아니다.
+- 최종 `cargo test --locked -p spinon-style-to-layout c11_1_root_html_percentage_gap_tests`는 8/8, `cargo test --locked -p spinon-layout grid::root_html_gap::tests`는 3/3 통과했다. 전체 변경 패키지 재실행은 [회귀 기록](./package-test-note.md)에 연결했다. Scoped Clippy와 workspace format check도 통과했다.
+- 최종 candidate code/runtime 독립 실패 관점 20개는 [구현·runtime 검토](./implementation-runtime-review-20-2026-11-03.md)에 기록했다. plan PR의 30개 diff review와는 별도 검토다. 구현 PR 자체의 diff review 30개는 해당 PR diff 생성 후 별도로 수행한다.
+- `ps` 검사에서는 Agent Browser와 terminal-browser 프로세스를 찾지 못했다. 이번 최종 화면 캡처는 native simulator screenshot이며 browser process를 시작하지 않았다.
+
+### Simulator screenshot
+
+| Android API 37 AVD | iPhone 17 Pro / iOS 26.2 Simulator |
+|---|---|
+| ![Android typed math gap](./android-avd-screen-labeled.png) | ![iOS typed math gap](./ios-simulator-screen-labeled.png) |
+
+현재 링크된 screenshot에는 fixture와 일치하는 caption이 있다. 앞선 pass의 `android-avd-screen.png`/`ios-simulator-screen.png`는 runner의 기존 정적 `300×63 column-flow` caption이 표시되어, 수정된 labeled capture가 최종 visual evidence다.

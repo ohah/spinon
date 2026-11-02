@@ -1,0 +1,9 @@
+$ adb -s emulator-5558 shell am start -W -n dev.spinon.bootstrap/.MainActivity --ez spinon_c111_root_html_percent_columns true
+Starting: Intent { cmp=dev.spinon.bootstrap/.MainActivity (has extras) }
+Status: ok
+LaunchState: COLD
+Activity: dev.spinon.bootstrap/.MainActivity
+TotalTime: 437
+WaitTime: 439
+Complete
+pid=4193

@@ -1,0 +1,23 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.01s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+
+thread 'c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order' (149433918) panicked at crates/spinon-layout/src/c15_text_layout_tests/host_document.rs:305:9:
+assertion failed: matches!(LayoutInput::from_host_document_with_text_paragraphs(&snapshot, root,
+    Viewport { width: 100.0, height: 80.0, }, &non_inline_display_styles,
+    &paragraph_styles, StyleRevision::INITIAL, EnvironmentRevision::INITIAL,),
+    Err(crate::LayoutError::UnsupportedTextParagraph { node, .. }) if node ==
+    paragraph.id())
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order ... FAILED
+
+failures:
+
+failures:
+    c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 376 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-layout --lib`

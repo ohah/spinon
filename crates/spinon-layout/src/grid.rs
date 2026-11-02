@@ -21,9 +21,9 @@ mod root_html_gap;
 
 use crate::grid_placement::normalize_grid_layout;
 use crate::{
-    GridPlacementInput, LayoutBoxSizing, LayoutCssMath, LayoutCssMathProperty, LayoutDimension,
-    LayoutDisplay, LayoutError, LayoutInput, LayoutLengthPercentage, LayoutPosition, LayoutStyle,
-    percentage_basis::DefiniteAxes,
+    GridPlacementInput, LayoutBoxSizing, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue,
+    LayoutDimension, LayoutDisplay, LayoutError, LayoutInput, LayoutLengthPercentage,
+    LayoutPosition, LayoutStyle, percentage_basis::DefiniteAxes,
 };
 pub(super) use root_html_gap::resolve_root_html_gap_px;
 use root_html_gap::{
@@ -662,6 +662,7 @@ pub(super) fn validate_grid_layout(
                 node.style,
                 container,
                 required_rows,
+                &input.css_math,
             )?;
         }
         if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
@@ -670,6 +671,7 @@ pub(super) fn validate_grid_layout(
                 node.style,
                 container,
                 visible_items,
+                &input.css_math,
             )?;
         }
         let template_area_track_sizing = container.template_areas.is_some()
@@ -1205,6 +1207,7 @@ fn validate_root_html_implicit_rows_container_style(
     style: LayoutStyle,
     container: &crate::GridContainerInput,
     required_rows: usize,
+    css_math: &[LayoutCssMathValue],
 ) -> Result<(), LayoutError> {
     let unsupported_property = if style.overflow_x != crate::LayoutOverflow::Visible {
         Some("overflow-x")
@@ -1270,8 +1273,9 @@ fn validate_root_html_implicit_rows_container_style(
             });
         }
     }
-    let column_gap = resolve_root_html_gap_px(node, "column-gap", style.gap.column, style)?;
-    let row_gap = resolve_root_html_gap_px(node, "row-gap", style.gap.row, style)?;
+    let column_gap =
+        resolve_root_html_gap_px(node, "column-gap", style.gap.column, style, css_math)?;
+    let row_gap = resolve_root_html_gap_px(node, "row-gap", style.gap.row, style, css_math)?;
     validate_root_html_track_extent(
         node,
         "grid-template-columns",
@@ -1449,8 +1453,15 @@ fn validate_root_html_column_flow_container_style(
     style: LayoutStyle,
     container: &crate::GridContainerInput,
     visible_items: usize,
+    css_math: &[LayoutCssMathValue],
 ) -> Result<(), LayoutError> {
-    validate_root_html_implicit_rows_container_style(node, style, container, container.rows.len())?;
+    validate_root_html_implicit_rows_container_style(
+        node,
+        style,
+        container,
+        container.rows.len(),
+        css_math,
+    )?;
     let has_relative_track = matches!(
         &container.auto_columns,
         crate::GridAutoColumns::TrackList(tracks)
@@ -1479,7 +1490,8 @@ fn validate_root_html_column_flow_container_style(
         .div_ceil(container.rows.len())
         .max(container.columns.len());
     let implicit_count = required_columns.saturating_sub(container.columns.len());
-    let column_gap = resolve_root_html_gap_px(node, "column-gap", style.gap.column, style)?;
+    let column_gap =
+        resolve_root_html_gap_px(node, "column-gap", style.gap.column, style, css_math)?;
     let mut extent = f64::from(column_gap) * required_columns.saturating_sub(1) as f64;
     validate_root_html_extent(node, "column-gap", extent)?;
     for track in &container.columns {

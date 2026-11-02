@@ -1266,17 +1266,6 @@ fn validate_root_html_grid_box_inputs(
                 element.layout_dimensions.width,
             ),
         ] {
-            if element.layout_math_values.contains_key(property) {
-                return Err(StyleLayoutError::UnsupportedComputedValue {
-                    node,
-                    property,
-                    value: element
-                        .properties
-                        .get(property)
-                        .cloned()
-                        .unwrap_or_else(|| format!("{value:?}")),
-                });
-            }
             root_html_grid_gap::validate_root_html_gap(element, property, value, basis)?;
         }
         if let Some(grid) = element.grid_layout.as_ref() {

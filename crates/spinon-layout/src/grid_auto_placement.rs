@@ -291,7 +291,12 @@ pub(super) fn normalize_sparse_grid_container(
         if container.placement_mode == crate::GridPlacementMode::RootHtmlImplicitRowsV1
             && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_))))
         {
-            validate_root_html_expanded_row_range(node, container_node, &expanded_rows)?;
+            validate_root_html_expanded_row_range(
+                node,
+                container_node,
+                &expanded_rows,
+                &input.css_math,
+            )?;
         }
         output.expanded_rows = Some(expanded_rows);
     }
@@ -303,6 +308,7 @@ fn validate_root_html_expanded_row_range(
     node: NodeId,
     container_node: &crate::LayoutNode,
     expanded_rows: &[GridTrackSize],
+    css_math: &[crate::LayoutCssMathValue],
 ) -> Result<(), LayoutError> {
     let style = container_node.style;
     let unsupported_property = if !matches!(
@@ -330,6 +336,7 @@ fn validate_root_html_expanded_row_range(
         "row-gap",
         container_node.style.gap.row,
         container_node.style,
+        css_math,
     )?;
     let max_f32 = f32::MAX as f64;
     let mut total = (row_gap as f64) * expanded_rows.len().saturating_sub(1) as f64;

@@ -1,0 +1,19 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.39s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 1 test
+
+thread 'c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns' (149442571) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_fr_auto_column_tests.rs:249:5:
+actual result: Err(CascadeDiagnostic(CascadeDiagnostic { source_id: "inline:2", node_id: Some(NodeId(2)), diagnostic: CssParseDiagnostic { line: 0, column: 111, message: "Unsupported property declaration: 'grid-auto-columns:-1fr;', OtherInvalidValue" } }))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns ... FAILED
+
+failures:
+
+failures:
+    c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 322 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p spinon-style-to-layout --lib`

@@ -1,0 +1,2 @@
+$ xcrun simctl launch --terminate-running-process ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap --spinon-c111-root-html-percent-columns
+dev.spinon.bootstrap: 72808
