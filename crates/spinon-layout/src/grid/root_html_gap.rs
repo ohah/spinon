@@ -1,6 +1,6 @@
 use crate::{
-    GridTrackSize, LayoutCssMathProperty, LayoutCssMathValue, LayoutDimension, LayoutError,
-    LayoutLengthPercentage, LayoutStyle,
+    GridTrackMaxSizingFunction, GridTrackMinSizingFunction, GridTrackSize, LayoutCssMathProperty,
+    LayoutCssMathValue, LayoutDimension, LayoutError, LayoutLengthPercentage, LayoutStyle,
 };
 
 pub fn resolve_root_html_gap_px(
@@ -124,7 +124,61 @@ pub(super) fn track_extent(
             Ok(resolved)
         }
         GridTrackSize::Fraction(value) if value.is_finite() && value >= 0.0 => Ok(0.0),
+        GridTrackSize::MinMax { min, max } => {
+            let Some(minimum) = resolve_root_html_track_breadth(min, basis) else {
+                return Err(LayoutError::InvalidGridTrack { node, property });
+            };
+            if !minimum.is_finite() || minimum < 0.0 {
+                return Err(LayoutError::InvalidGridTrack { node, property });
+            }
+            let maximum = match max {
+                GridTrackMaxSizingFunction::LengthPx(value)
+                    if value.is_finite() && value >= 0.0 =>
+                {
+                    f64::from(value)
+                }
+                GridTrackMaxSizingFunction::Percentage(value)
+                    if value.is_finite() && value >= 0.0 =>
+                {
+                    let LayoutDimension::Fixed(basis) = basis else {
+                        return Err(LayoutError::InvalidGridTrack { node, property });
+                    };
+                    if !basis.is_finite() || basis < 0.0 {
+                        return Err(LayoutError::InvalidGridTrack { node, property });
+                    }
+                    f64::from(value) * f64::from(basis)
+                }
+                GridTrackMaxSizingFunction::Fraction(value)
+                    if value.is_finite() && value >= 0.0 =>
+                {
+                    minimum
+                }
+                _ => return Err(LayoutError::InvalidGridTrack { node, property }),
+            };
+            if !maximum.is_finite() || maximum < 0.0 {
+                return Err(LayoutError::InvalidGridTrack { node, property });
+            }
+            Ok(minimum.max(maximum))
+        }
         _ => Err(LayoutError::InvalidGridTrack { node, property }),
+    }
+}
+
+fn resolve_root_html_track_breadth(
+    breadth: GridTrackMinSizingFunction,
+    basis: LayoutDimension,
+) -> Option<f64> {
+    match breadth {
+        GridTrackMinSizingFunction::LengthPx(value) if value.is_finite() && value >= 0.0 => {
+            Some(f64::from(value))
+        }
+        GridTrackMinSizingFunction::Percentage(value) if value.is_finite() && value >= 0.0 => {
+            let LayoutDimension::Fixed(basis) = basis else {
+                return None;
+            };
+            (basis.is_finite() && basis >= 0.0).then_some(f64::from(value) * f64::from(basis))
+        }
+        _ => None,
     }
 }
 

@@ -1,7 +1,7 @@
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
-    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedCssMaxSize,
-    ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackBreadth,
+    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
 };
 
 use crate::StyleLayoutError;
@@ -24,7 +24,8 @@ pub(super) fn validate_fraction_axis_inputs(
             &grid.auto_columns,
             ComputedCssGridAutoColumns::TrackList(tracks) if has_fraction_track(tracks)
         );
-    let has_fraction_columns = has_fraction_track(&grid.columns) || has_fraction_auto_columns;
+    let has_fraction_columns =
+        has_explicit_fraction_track(&grid.columns) || has_fraction_auto_columns;
     if has_fraction_columns {
         validate_axis(
             element,
@@ -39,7 +40,7 @@ pub(super) fn validate_fraction_axis_inputs(
             "fr",
         )?;
     }
-    if has_fraction_track(&grid.rows) {
+    if has_explicit_fraction_track(&grid.rows) {
         validate_axis(
             element,
             AxisConstraints {
@@ -53,7 +54,7 @@ pub(super) fn validate_fraction_axis_inputs(
             "fr",
         )?;
     }
-    if (has_fraction_columns || has_fraction_track(&grid.rows))
+    if (has_fraction_columns || has_explicit_fraction_track(&grid.rows))
         && (element.layout_aspect_ratio.is_some()
             || element
                 .properties
@@ -81,7 +82,7 @@ pub(super) fn validate_percentage_axis_inputs(
         | ComputedCssGridAutoRows::LengthPx(_)
         | ComputedCssGridAutoRows::Unsupported(_) => false,
     };
-    if has_percentage_track(&grid.columns) || has_percentage_auto_columns {
+    if has_explicit_percentage_track(&grid.columns) || has_percentage_auto_columns {
         validate_axis(
             element,
             AxisConstraints {
@@ -95,7 +96,7 @@ pub(super) fn validate_percentage_axis_inputs(
             "percentage",
         )?;
     }
-    if has_percentage_track(&grid.rows) {
+    if has_explicit_percentage_track(&grid.rows) {
         validate_axis(
             element,
             AxisConstraints {
@@ -123,9 +124,9 @@ pub(super) fn validate_percentage_axis_inputs(
             "percentage",
         )?;
     }
-    if (has_percentage_track(&grid.columns)
+    if (has_explicit_percentage_track(&grid.columns)
         || has_percentage_auto_columns
-        || has_percentage_track(&grid.rows)
+        || has_explicit_percentage_track(&grid.rows)
         || has_percentage_auto_rows)
         && (element.layout_aspect_ratio.is_some()
             || element
@@ -257,32 +258,44 @@ fn validate_axis_track_range(
     gap: ComputedCssSpacingValue,
 ) -> Result<(), StyleLayoutError> {
     let has_percentage_gap = matches!(gap, ComputedCssSpacingValue::Percentage(_));
-    if !has_percentage_track(tracks) && !has_percentage_gap {
+    let has_percentage_track = has_explicit_percentage_track(tracks);
+    let has_minmax_track = tracks
+        .iter()
+        .any(|track| matches!(track, ComputedCssGridTrackSize::MinMax { .. }));
+    if !has_percentage_track && !has_percentage_gap && !has_minmax_track {
         return Ok(());
     }
 
-    let ComputedCssDimension::LengthPx(basis) = basis else {
-        return Err(unsupported(
-            element,
-            if property == "grid-template-columns" {
-                "width"
-            } else {
-                "height"
-            },
-            "Root HTML Grid percentage track requires a definite finite non-negative CSS-pixel size",
-        ));
+    let basis = if has_percentage_track || has_percentage_gap {
+        let ComputedCssDimension::LengthPx(basis) = basis else {
+            return Err(unsupported(
+                element,
+                if property == "grid-template-columns" {
+                    "width"
+                } else {
+                    "height"
+                },
+                "Root HTML Grid percentage track requires a definite finite non-negative CSS-pixel size",
+            ));
+        };
+        if !basis.is_finite() || basis < 0.0 {
+            return Err(unsupported(
+                element,
+                if property == "grid-template-columns" {
+                    "width"
+                } else {
+                    "height"
+                },
+                "Root HTML Grid percentage track requires a definite finite non-negative CSS-pixel size",
+            ));
+        }
+        basis
+    } else {
+        match basis {
+            ComputedCssDimension::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
+            _ => 0.0,
+        }
     };
-    if !basis.is_finite() || basis < 0.0 {
-        return Err(unsupported(
-            element,
-            if property == "grid-template-columns" {
-                "width"
-            } else {
-                "height"
-            },
-            "Root HTML Grid percentage track requires a definite finite non-negative CSS-pixel size",
-        ));
-    }
 
     let gap = match gap {
         ComputedCssSpacingValue::Normal => 0.0,
@@ -309,6 +322,7 @@ fn validate_axis_track_range(
 
     let max_f32 = f32::MAX as f64;
     let mut fixed_total = (gap as f64) * tracks.len().saturating_sub(1) as f64;
+    let mut fraction_factor_total = 0.0_f64;
     for track in tracks {
         match track {
             ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
@@ -325,7 +339,45 @@ fn validate_axis_track_range(
                 }
                 fixed_total += resolved;
             }
-            ComputedCssGridTrackSize::Fraction(value) if value.is_finite() && *value >= 0.0 => {}
+            ComputedCssGridTrackSize::Fraction(value) if value.is_finite() && *value >= 0.0 => {
+                fraction_factor_total += f64::from(*value);
+            }
+            ComputedCssGridTrackSize::MinMax { min, max } => {
+                let Some(minimum) = resolve_fixed_breadth(min, basis) else {
+                    // The Root HTML explicit-track gate reports the unsupported breadth.
+                    return Ok(());
+                };
+                if !minimum.is_finite() || minimum < 0.0 || minimum > max_f32 {
+                    return Err(unsupported(
+                        element,
+                        property,
+                        "resolved minmax minimum exceeds the finite f32 CSS-pixel range",
+                    ));
+                }
+                let resolved = match max {
+                    ComputedCssGridTrackBreadth::Fraction(value)
+                        if value.is_finite() && *value >= 0.0 =>
+                    {
+                        fraction_factor_total += f64::from(*value);
+                        minimum
+                    }
+                    _ => {
+                        let Some(maximum) = resolve_fixed_breadth(max, basis) else {
+                            // The Root HTML explicit-track gate reports the unsupported breadth.
+                            return Ok(());
+                        };
+                        if !maximum.is_finite() || maximum < 0.0 || maximum > max_f32 {
+                            return Err(unsupported(
+                                element,
+                                property,
+                                "resolved minmax maximum exceeds the finite f32 CSS-pixel range",
+                            ));
+                        }
+                        minimum.max(maximum)
+                    }
+                };
+                fixed_total += resolved;
+            }
             ComputedCssGridTrackSize::Percentage(_) => {
                 return Err(unsupported(
                     element,
@@ -349,6 +401,13 @@ fn validate_axis_track_range(
                 "percentage tracks, fixed tracks, and gaps exceed the finite f32 CSS-pixel range",
             ));
         }
+        if !fraction_factor_total.is_finite() || fraction_factor_total > max_f32 {
+            return Err(unsupported(
+                element,
+                property,
+                "grid fraction factors exceed the finite f32 range",
+            ));
+        }
     }
     Ok(())
 }
@@ -359,10 +418,44 @@ fn has_fraction_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
         .any(|track| matches!(track, ComputedCssGridTrackSize::Fraction(_)))
 }
 
+fn has_explicit_fraction_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    tracks.iter().any(|track| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::Fraction(_)
+                | ComputedCssGridTrackSize::MinMax {
+                    max: ComputedCssGridTrackBreadth::Fraction(_),
+                    ..
+                }
+        )
+    })
+}
+
 fn has_percentage_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
     tracks
         .iter()
         .any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_)))
+}
+
+fn has_explicit_percentage_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    tracks.iter().any(|track| match track {
+        ComputedCssGridTrackSize::Percentage(_) => true,
+        ComputedCssGridTrackSize::MinMax { min, max } => {
+            matches!(min, ComputedCssGridTrackBreadth::Percentage(_))
+                || matches!(max, ComputedCssGridTrackBreadth::Percentage(_))
+        }
+        _ => false,
+    })
+}
+
+fn resolve_fixed_breadth(breadth: &ComputedCssGridTrackBreadth, basis: f32) -> Option<f64> {
+    match breadth {
+        ComputedCssGridTrackBreadth::LengthPx(value) => Some(f64::from(*value)),
+        ComputedCssGridTrackBreadth::Percentage(value) => {
+            Some(f64::from(*value) * f64::from(basis))
+        }
+        _ => None,
+    }
 }
 
 fn has_percentage_auto_columns(auto_columns: &ComputedCssGridAutoColumns) -> bool {

@@ -295,7 +295,7 @@ impl RuntimeGpuHost {
                 feature = "c19-2-box-paint-opacity-fixture-test",
                 feature = "c15-3-wgpu-glyph-paint-fixture-test"
             ))]
-            surface_pixel_readback_test: false,
+            surface_pixel_readback_test: cfg!(feature = "c11-grid-metal-surface-pixels-test"),
             #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
             c19_2_android_surface_readback_test: false,
             #[cfg(feature = "c18-1-image-paint-fixture-test")]

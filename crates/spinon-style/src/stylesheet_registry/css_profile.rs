@@ -507,6 +507,64 @@ pub(crate) fn is_invalid_fixed_px_gap_declaration_diagnostic(message: &str) -> b
     values.into_iter().any(|value| value < 0.0)
 }
 
+pub(crate) fn is_invalid_root_html_negative_fraction_track_diagnostic(message: &str) -> bool {
+    let Some(declaration) = message
+        .strip_prefix("Unsupported property declaration: '")
+        .and_then(|message| message.strip_suffix("', OtherInvalidValue"))
+    else {
+        return false;
+    };
+    let Some(declaration) = remove_css_comments(declaration) else {
+        return false;
+    };
+    let Some((property, value)) = declaration.split_once(':') else {
+        return false;
+    };
+    if ![
+        "grid-template-columns",
+        "grid-template-rows",
+        "grid-auto-columns",
+        "grid-auto-rows",
+    ]
+    .iter()
+    .any(|supported| property.trim().eq_ignore_ascii_case(supported))
+    {
+        return false;
+    }
+
+    let mut components = value
+        .trim()
+        .trim_end_matches(';')
+        .split_whitespace()
+        .collect::<Vec<_>>();
+    if components
+        .last()
+        .is_some_and(|component| component.eq_ignore_ascii_case("!important"))
+    {
+        components.pop();
+    } else if components.len() >= 2
+        && components[components.len() - 2] == "!"
+        && components
+            .last()
+            .is_some_and(|component| component.eq_ignore_ascii_case("important"))
+    {
+        components.truncate(components.len() - 2);
+    }
+    let [track] = components.as_slice() else {
+        return false;
+    };
+    let Some(factor) = track
+        .get(..track.len().saturating_sub(2))
+        .filter(|_| track.len() >= 3)
+        .filter(|_| track[track.len() - 2..].eq_ignore_ascii_case("fr"))
+    else {
+        return false;
+    };
+    factor
+        .parse::<f64>()
+        .is_ok_and(|factor| factor.is_finite() && factor < 0.0)
+}
+
 pub(crate) fn is_invalid_root_html_named_grid_declaration_diagnostic(message: &str) -> bool {
     let Some(declaration) = message
         .strip_prefix("Unsupported property declaration: '")

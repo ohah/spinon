@@ -1,0 +1,56 @@
+{
+  "candidate_base_head": "773cfe232",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-minmax-runtime.html",
+    "sha256": "92e346d6e06e6017bd22db1063e7fb4968ab60ebf72ba93fa807c457bf54052e"
+  },
+  "android": {
+    "device": "API 37 ARM64 AVD emulator-5556",
+    "renderer": "ANGLE / SwiftShader software renderer",
+    "build_log": "android/build-candidate-run08.log",
+    "pixelcopy_runs": [
+      {
+        "run_id": "c11minmax-android-20261103-run08",
+        "runtime_log": "android/runtime-run08.log",
+        "png": "android/pixelcopy-run08.png",
+        "sha256": "5e580452a61b83526a37fcf67fef7347caf5185e94669230e467e685121ca4be",
+        "matched_samples": 2
+      },
+      {
+        "run_id": "c11minmax-android-20261103-run09",
+        "runtime_log": "android/runtime-run09.log",
+        "png": "android/pixelcopy-run09.png",
+        "sha256": "5e580452a61b83526a37fcf67fef7347caf5185e94669230e467e685121ca4be",
+        "matched_samples": 2
+      }
+    ],
+    "screenshot": {
+      "path": "android/device-screenshot-run08.png",
+      "sha256": "2c072448e77cfbffec62fd5754cd7078edbec0c47ce3dca8abaa69a5860e0523"
+    }
+  },
+  "ios": {
+    "device": "iPhone 17 Pro Simulator",
+    "os": "iOS 26.2",
+    "simulator_uuid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "renderer": "Metal simulator drawable",
+    "run_id": "c11minmax-ios-20261103-run03",
+    "build_log": "ios/build-candidate-run03.log",
+    "runtime_log": "ios/runtime-run03.log",
+    "screenshot": {
+      "path": "ios/device-screenshot-run03.png",
+      "sha256": "8d84cc1f167b69482e24c5e72dd80b931c5b18a4bf42326f13fd8a8d7c17419e"
+    },
+    "matched_samples": 2
+  },
+  "official_status": {
+    "complete": "72/213",
+    "c11_complete": false,
+    "c11_1_complete": false
+  },
+  "remaining_gates": [
+    "implementation/runtime hostile review 20 perspectives",
+    "implementation PR diff review 30 perspectives",
+    "required PR CI and merge"
+  ]
+}

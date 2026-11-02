@@ -236,6 +236,8 @@ pub(super) fn computed_element_output(
                     ),
                     allow_intrinsic_tracks: profile
                         == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                    allow_root_html_bounded_minmax_tracks: profile
+                        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_auto_repeat: profile
                         == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
                     allow_fixed_auto_track_lists: profile

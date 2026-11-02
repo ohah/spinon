@@ -502,22 +502,6 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
 
     let cases = [
         (
-            "percentage gap",
-            "unsupported_computed_value",
-            SOURCE.replace(
-                "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        column-gap: 10%;",
-            ),
-        ),
-        (
-            "calc gap",
-            "unsupported_computed_value",
-            SOURCE.replace(
-                "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        row-gap: calc(1px + 1%);",
-            ),
-        ),
-        (
             "nonzero grid edge",
             "unsupported_computed_value",
             SOURCE.replace(
@@ -575,11 +559,6 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             "auto-repeat track",
             "cascade_failed",
             SOURCE.replace("40px 80px", "repeat(auto-fill, 40px)"),
-        ),
-        (
-            "minmax fractional track",
-            "cascade_failed",
-            SOURCE.replace("40px 80px", "minmax(0px,1fr) 2fr"),
         ),
         (
             "named grid area",
@@ -679,21 +658,6 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             Some(expected_code),
             "out-of-scope case={name} should keep the expected rejection code"
         );
-        let expected_gap_property = match name {
-            "percentage gap" => Some("column-gap"),
-            "calc gap" => Some("row-gap"),
-            _ => None,
-        };
-        if let Some(property) = expected_gap_property {
-            assert_eq!(
-                result
-                    .error
-                    .as_ref()
-                    .and_then(|error| error.property.as_deref()),
-                Some(property),
-                "out-of-scope case={name} should identify the rejected gap longhand"
-            );
-        }
         assert!(
             result.completed.is_none(),
             "out-of-scope case={name} must not publish a partial scene"

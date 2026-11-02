@@ -12132,6 +12132,7 @@ private struct C111MetalPixelRun {
     let sceneID: String
     let markerPrefix: String
     let samples: [C111MetalPixelSample]
+    let usesRootHtmlViewport: Bool
     private static let c1121PixelSceneIDs: Set<String> = [
         "numeric-lines", "positive-spans", "reversed-lines",
         "shorthand-cascade", "overlap-source-order", "nested-placement-modes",
@@ -14016,6 +14017,36 @@ private struct C111MetalPixelRun {
     }
 
     static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+        let rootHtmlRuns = arguments.filter {
+            $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+        }
+        if !rootHtmlRuns.isEmpty {
+            guard rootHtmlRuns.count == 1,
+                  !arguments.contains(where: {
+                      $0.hasPrefix("--spinon-") && $0 != rootHtmlRuns[0]
+                  }) else { return nil }
+            let prefix = "--spinon-root-html-grid-minmax-metal-surface-pixels="
+            let runID = String(rootHtmlRuns[0].dropFirst(prefix.count))
+            guard (8...80).contains(runID.count),
+                  runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
+            else { return nil }
+            return C111MetalPixelRun(
+                runID: runID,
+                sceneID: "root-html-grid-minmax-overflow",
+                markerPrefix: "C111",
+                samples: [
+                    C111MetalPixelSample(
+                        id: "grid-right-interior", nodeId: "root-grid",
+                        xCssPx: 29, yCssPx: 10, rgba: [16, 24, 32, 255]),
+                    C111MetalPixelSample(
+                        id: "overflow-blue-marker", nodeId: "overflow-blue",
+                        xCssPx: 44, yCssPx: 4, rgba: [59, 130, 246, 255]),
+                ],
+                usesRootHtmlViewport: true
+            )
+        }
+#endif
         guard let rawRun = arguments.first(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
         }), let rawSamples = arguments.first(where: {
@@ -14174,7 +14205,7 @@ private struct C111MetalPixelRun {
                                      : isC1131Repeat ? "C1131"
                                      : isC1123Placement ? "C1123"
                                      : isC1122Placement ? "C1122" : "C111",
-                                 samples: samples)
+                                 samples: samples, usesRootHtmlViewport: false)
     }
 }
 
@@ -14612,14 +14643,39 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         sceneID: c11GridMetalPixelSceneID(arguments: ProcessInfo.processInfo.arguments)
     )
     private var c111MetalPixelArgumentRequested: Bool {
-        ProcessInfo.processInfo.arguments.contains(where: {
+        let arguments = ProcessInfo.processInfo.arguments
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+        return arguments.contains(where: {
+            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+        })
+#else
+        return arguments.contains(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
         })
+#endif
     }
     private var c111MetalPixelArgumentRunID: String {
-        ProcessInfo.processInfo.arguments.first(where: {
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+        let argument = ProcessInfo.processInfo.arguments.first(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
-        }).map { String($0.dropFirst("--spinon-c11-grid-metal-surface-pixels=".count)) }
+                || $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+        })
+#else
+        let argument = ProcessInfo.processInfo.arguments.first(where: {
+            $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
+        })
+#endif
+        return argument.map { argument in
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+            let prefix = argument.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                ? "--spinon-root-html-grid-minmax-metal-surface-pixels="
+                : "--spinon-c11-grid-metal-surface-pixels="
+#else
+            let prefix = "--spinon-c11-grid-metal-surface-pixels="
+#endif
+            return String(argument.dropFirst(prefix.count))
+        }
             ?? "missing"
     }
     private var c111MetalPixelRequestIssued = false
@@ -14630,7 +14686,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c114GridTrackSizingProbeRequested
             || ProcessInfo.processInfo.arguments.contains("--spinon-c11-grid")
-            || c11GridSceneArgument != nil || c111MetalPixelRun != nil
+            || c11GridSceneArgument != nil
+            || (c111MetalPixelRun != nil && c111MetalPixelRun?.usesRootHtmlViewport != true)
     }
     private let c111RootHtmlPercentColumnsProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c111-root-html-percent-columns")
@@ -17307,7 +17364,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC11_2_2GridAutoPlacementFixture()
             : c1121GridPlacementProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_2_1GridPlacementFixture()
-            : c111MetalPixelRun != nil
+            : c111MetalPixelRun != nil && c111MetalPixelRun?.usesRootHtmlViewport != true
             ? SpinonRunner.createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture()
             : c111RootHtmlPercentColumnsProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_1RootHtmlPercentColumnsFixture()
@@ -20374,20 +20431,24 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         if let pixelRun = c111MetalPixelRun, !c111MetalPixelRequestIssued {
             let pixelMarker = "SPINON_\(pixelRun.markerPrefix)_METAL_PIXEL"
-            let expectedViewportWidth: Float = C114GridAutoFitColumnsWpt.surfacePixelSamples(
+            let fixedViewportWidth: Float = C114GridAutoFitColumnsWpt.surfacePixelSamples(
                 sceneID: pixelRun.sceneID
             ) == nil && C114FitContentImplicitColumnWpt.surfacePixelSamples(
                 sceneID: pixelRun.sceneID
             ) == nil ? 320 : 480
+            let fixedViewportHeight: Float =
+                pixelRun.sceneID == "fit-content-zoomed-grid-wpt" ? 800
+                    : c114IsFitContentPercentageArgumentScene(pixelRun.sceneID) ? 400
+                    : C114FitContentImplicitColumnWpt.isScene(pixelRun.sceneID) ? 320 : 240
             stateLock.lock()
             let drawableSize = c111MetalDrawableSize
             let viewportWidth = viewportWidthCssPx
             let viewportHeight = viewportHeightCssPx
             stateLock.unlock()
-            let expectedViewportHeight: Float =
-                pixelRun.sceneID == "fit-content-zoomed-grid-wpt" ? 800
-                    : c114IsFitContentPercentageArgumentScene(pixelRun.sceneID) ? 400
-                    : C114FitContentImplicitColumnWpt.isScene(pixelRun.sceneID) ? 320 : 240
+            let expectedViewportWidth = pixelRun.usesRootHtmlViewport
+                ? viewportWidth : fixedViewportWidth
+            let expectedViewportHeight = pixelRun.usesRootHtmlViewport
+                ? viewportHeight : fixedViewportHeight
             guard viewportWidth == expectedViewportWidth,
                   viewportHeight == expectedViewportHeight,
                   drawableSize.width > 0, drawableSize.height > 0 else {
@@ -21833,21 +21894,24 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard surface.count == 2, surface[0] > 0, surface[1] > 0 else {
             throw failure("surface-size", "WGPU draw report에 실제 surface 크기가 없습니다")
         }
-        let expectedViewportWidth: UInt32 = C114GridAutoFitColumnsWpt.surfacePixelSamples(
+        let fixedViewportWidth: UInt32 = C114GridAutoFitColumnsWpt.surfacePixelSamples(
             sceneID: run.sceneID
         ) == nil && C114FitContentImplicitColumnWpt.surfacePixelSamples(
             sceneID: run.sceneID
         ) == nil ? 320 : 480
-        let expectedViewportHeight: UInt32 =
+        let fixedViewportHeight: UInt32 =
             run.sceneID == "fit-content-zoomed-grid-wpt" ? 800
                 : c114IsFitContentPercentageArgumentScene(run.sceneID) ? 400
                 : C114FitContentImplicitColumnWpt.isScene(run.sceneID) ? 320 : 240
-        let viewport = (width: expectedViewportWidth, height: expectedViewportHeight)
         stateLock.lock()
         let drawableSize = c111MetalDrawableSize
         let viewportWidth = UInt32(viewportWidthCssPx)
         let viewportHeight = UInt32(viewportHeightCssPx)
         stateLock.unlock()
+        let viewport = (
+            width: run.usesRootHtmlViewport ? viewportWidth : fixedViewportWidth,
+            height: run.usesRootHtmlViewport ? viewportHeight : fixedViewportHeight
+        )
         guard viewportWidth == viewport.width, viewportHeight == viewport.height,
               drawableSize.width == CGFloat(surface[0]),
               drawableSize.height == CGFloat(surface[1]) else {

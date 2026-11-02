@@ -17352,6 +17352,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlDefaultRenderRequested;
     private final String rootHtmlPageScaleCase;
     private final boolean rootHtmlApplicationRequested;
+    private final boolean rootHtmlGridMinmaxPixelCaptureRequested;
+    private final String rootHtmlGridMinmaxPixelCaptureRunId;
+    private boolean rootHtmlGridMinmaxPixelCaptureStarted;
     private String rootHtmlApplicationSource;
     private String rootHtmlApplicationScript;
     private final boolean blockFormattingProbeRequested;
@@ -17587,6 +17590,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         rootHtmlPageScaleCase = activity.getIntent()
                 .getStringExtra("spinon_c0412_root_html_page_scale_case");
         this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
+        rootHtmlGridMinmaxPixelCaptureRequested = BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                && rootHtmlApplicationRequested
+                && activity.getIntent().getBooleanExtra(
+                        "spinon_root_html_grid_minmax_pixel_capture", false);
+        String rootHtmlGridMinmaxRunId = activity.getIntent().getStringExtra(
+                "spinon_root_html_grid_minmax_pixel_capture_run_id");
+        rootHtmlGridMinmaxPixelCaptureRunId = rootHtmlGridMinmaxRunId == null
+                ? "manual" : rootHtmlGridMinmaxRunId;
+        if (rootHtmlGridMinmaxPixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_CONFIGURED run_id="
+                    + rootHtmlGridMinmaxPixelCaptureRunId
+                    + " root_html_application=" + rootHtmlApplicationRequested);
+        }
         marginCollapseProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c092_margin_collapse", false);
         flowRootProbeRequested = activity.getIntent()
@@ -21538,6 +21554,99 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private void requestRootHtmlGridMinmaxPixelCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || rootHtmlGridMinmaxPixelCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                Log.w(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_SKIPPED run_id="
+                        + rootHtmlGridMinmaxPixelCaptureRunId + " closing=" + closing
+                        + " started=" + rootHtmlGridMinmaxPixelCaptureStarted
+                        + " surface_available=" + surfaceAvailable
+                        + " requested_generation=" + generation
+                        + " surface_generation=" + surfaceGeneration
+                        + " renderer_matches=" + (rendererHandle == renderer)
+                        + " renderer_generation=" + rendererGeneration);
+                return;
+            }
+            rootHtmlGridMinmaxPixelCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        String runId = rootHtmlGridMinmaxPixelCaptureRunId;
+        if (!runId.matches("[A-Za-z0-9_-]{8,80}")) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY status=error run_id="
+                    + runId + " reason=invalid-run-id");
+            return;
+        }
+        int viewportWidthCssPx = Math.round(width / density);
+        int viewportHeightCssPx = Math.round(height / density);
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("grid-right-interior", 29, 10),
+                new SurfaceViewPixelCapture.Sample("overflow-blue-marker", 44, 4));
+        if (width <= 0 || height <= 0 || viewportWidthCssPx <= 44
+                || viewportHeightCssPx <= 10) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY status=error run_id="
+                    + runId + " reason=invalid-surface-or-viewport width=" + width
+                    + " height=" + height + " viewport_width=" + viewportWidthCssPx
+                    + " viewport_height=" + viewportHeightCssPx);
+            return;
+        }
+        File output = new File(
+                new File(activity.getCacheDir(), "c11-root-html-grid-minmax-pixelcopy"),
+                runId + ".png");
+        Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " width=" + width + " height=" + height + " density=" + density
+                + " viewport_width=" + viewportWidthCssPx
+                + " viewport_height=" + viewportHeightCssPx + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
+                viewportWidthCssPx, viewportHeightCssPx, 0, 0,
+                "root-html-grid-minmax-overflow", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY status=error"
+                                + " run_id=" + runId + " generation=" + generation
+                                + " attempts=" + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C11.1 Root HTML Grid PixelCopy · " + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int[] expected = "grid-right-interior".equals(pixel.id)
+                                ? new int[] {16, 24, 32, 255}
+                                : new int[] {59, 130, 246, 255};
+                        boolean exact = pixel.red == expected[0] && pixel.green == expected[1]
+                                && pixel.blue == expected[2] && pixel.alpha == expected[3];
+                        if (exact) matched++;
+                        Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + "," + pixel.blue
+                                + "," + pixel.alpha + " expected=" + expected[0] + ","
+                                + expected[1] + "," + expected[2] + "," + expected[3]
+                                + " exact=" + exact);
+                    }
+                    boolean passed = result.pixels.size() == samples.size()
+                            && matched == samples.size();
+                    Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                            + " generation=" + generation + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matched + " png=" + output.getAbsolutePath()
+                            + " sha256=" + result.sha256);
+                    if (!passed) postStatus("실패 · C11.1 Root HTML Grid PixelCopy 표본 불일치");
+                });
+    }
+
     private void requestC11GridPixelMatrixCapture(long renderer, long generation) {
         final int width;
         final int height;
@@ -23783,7 +23892,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c133WheelProbeRequested) verifyC133WheelDraw(result);
-        if (c11GridFixtureRequested && !c11GridPixelMatrixRunId.isEmpty()) {
+        if (rootHtmlGridMinmaxPixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_DISPATCH run_id="
+                    + rootHtmlGridMinmaxPixelCaptureRunId + " generation=" + generation);
+            requestRootHtmlGridMinmaxPixelCapture(renderer, generation);
+        } else if (c11GridFixtureRequested && !c11GridPixelMatrixRunId.isEmpty()) {
             requestC11GridPixelMatrixCapture(renderer, generation);
         } else if (c11GridFixtureRequested && !c1121GridPlacementRequested
                 && !c1122GridAutoPlacementRequested

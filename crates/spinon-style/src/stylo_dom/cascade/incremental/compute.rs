@@ -476,8 +476,14 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                         && crate::stylesheet_registry::is_invalid_root_html_named_grid_declaration_diagnostic(
                             &diagnostic.message,
                         );
+                    let ignored_invalid_negative_fraction_track = profile
+                        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                        && crate::stylesheet_registry::is_invalid_root_html_negative_fraction_track_diagnostic(
+                            &diagnostic.message,
+                        );
                     !ignored_invalid_fixed_px_gap
                         && !ignored_invalid_named_grid_declaration
+                        && !ignored_invalid_negative_fraction_track
                         && (!matches!(
                             profile,
                             ComputedStyleProfile::RuntimeFlexRegisteredPropertiesV1
@@ -572,6 +578,13 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             for diagnostic in &element.data().inline_style_diagnostics {
                 if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                     && crate::stylesheet_registry::is_invalid_fixed_px_gap_declaration_diagnostic(
+                        &diagnostic.message,
+                    )
+                {
+                    continue;
+                }
+                if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                    && crate::stylesheet_registry::is_invalid_root_html_negative_fraction_track_diagnostic(
                         &diagnostic.message,
                     )
                 {

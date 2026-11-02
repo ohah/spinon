@@ -38,6 +38,7 @@ struct ComputedGridTracks {
 pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_integer_repeat: bool,
     pub(super) allow_intrinsic_tracks: bool,
+    pub(super) allow_root_html_bounded_minmax_tracks: bool,
     pub(super) allow_auto_repeat: bool,
     pub(super) allow_fixed_auto_track_lists: bool,
     pub(super) allow_root_html_fixed_auto_row_lists: bool,
@@ -97,6 +98,7 @@ pub(super) fn computed_grid_layout(
     let GridLayoutProfileOptions {
         allow_integer_repeat,
         allow_intrinsic_tracks,
+        allow_root_html_bounded_minmax_tracks,
         allow_auto_repeat,
         allow_fixed_auto_track_lists,
         allow_root_html_fixed_auto_row_lists,
@@ -133,6 +135,7 @@ pub(super) fn computed_grid_layout(
         GridTrackComputeOptions {
             allow_integer_repeat,
             allow_intrinsic_tracks,
+            allow_root_html_bounded_minmax_tracks,
             allow_auto_repeat,
             allow_empty_tracks: template_areas.is_some()
                 && allow_integer_repeat
@@ -155,6 +158,7 @@ pub(super) fn computed_grid_layout(
         GridTrackComputeOptions {
             allow_integer_repeat,
             allow_intrinsic_tracks,
+            allow_root_html_bounded_minmax_tracks,
             allow_auto_repeat,
             allow_empty_tracks: template_areas.is_some()
                 && allow_integer_repeat
@@ -550,6 +554,7 @@ fn computed_grid_placement(
 struct GridTrackComputeOptions {
     allow_integer_repeat: bool,
     allow_intrinsic_tracks: bool,
+    allow_root_html_bounded_minmax_tracks: bool,
     allow_auto_repeat: bool,
     allow_empty_tracks: bool,
 }
@@ -637,8 +642,12 @@ fn computed_grid_tracks(
                 return Err(unsupported_grid_value(node, property, serialized));
             };
             tracks.push(
-                track_size(size, options.allow_intrinsic_tracks)
-                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
+                track_size_with_root_html_bounded_minmax(
+                    size,
+                    options.allow_intrinsic_tracks,
+                    options.allow_root_html_bounded_minmax_tracks,
+                )
+                .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
             );
         }
         return Ok(ComputedGridTracks {
@@ -663,14 +672,18 @@ fn computed_grid_tracks(
             )
         })
         .count();
-    let single_bounded_fixed_repeat =
-        single_bounded_fixed_repeat(&list, options.allow_intrinsic_tracks);
+    let single_bounded_fixed_repeat = single_bounded_fixed_repeat(
+        &list,
+        options.allow_intrinsic_tracks,
+        options.allow_root_html_bounded_minmax_tracks,
+    );
     expand_integer_repeats(
         &list,
         node,
         property,
         serialized,
         options.allow_intrinsic_tracks,
+        options.allow_root_html_bounded_minmax_tracks,
     )
     .map(|(tracks, line_names)| ComputedGridTracks {
         tracks,
@@ -686,6 +699,7 @@ fn computed_grid_tracks(
 fn single_bounded_fixed_repeat(
     list: &style::values::computed::TrackList,
     allow_intrinsic_tracks: bool,
+    allow_root_html_bounded_minmax_tracks: bool,
 ) -> bool {
     if list.values.len() != 1 {
         return false;
@@ -697,7 +711,11 @@ fn single_bounded_fixed_repeat(
         && (1..=2).contains(&repeat.track_sizes.len())
         && repeat.track_sizes.iter().all(|size| {
             matches!(
-                track_size(size, allow_intrinsic_tracks),
+                track_size_with_root_html_bounded_minmax(
+                    size,
+                    allow_intrinsic_tracks,
+                    allow_root_html_bounded_minmax_tracks,
+                ),
                 Some(ComputedCssGridTrackSize::LengthPx(value))
                     if value.is_finite() && value >= 0.0
             )
@@ -768,6 +786,7 @@ fn expand_integer_repeats(
     property: &'static str,
     serialized: &str,
     allow_intrinsic_tracks: bool,
+    allow_root_html_bounded_minmax_tracks: bool,
 ) -> Result<(Vec<ComputedCssGridTrackSize>, Vec<Vec<String>>), CssCascadeError> {
     let outer_line_name_count = list
         .values
@@ -805,10 +824,14 @@ fn expand_integer_repeats(
                     .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
                 if repeat.track_sizes.is_empty()
                     || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
-                    || repeat
-                        .track_sizes
-                        .iter()
-                        .any(|size| track_size(size, allow_intrinsic_tracks).is_none())
+                    || repeat.track_sizes.iter().any(|size| {
+                        track_size_with_root_html_bounded_minmax(
+                            size,
+                            allow_intrinsic_tracks,
+                            allow_root_html_bounded_minmax_tracks,
+                        )
+                        .is_none()
+                    })
                 {
                     return Err(unsupported_grid_value(node, property, serialized));
                 }
@@ -874,8 +897,12 @@ fn expand_integer_repeats(
         match value {
             TrackListValue::TrackSize(size) => {
                 tracks.push(
-                    track_size(size, allow_intrinsic_tracks)
-                        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
+                    track_size_with_root_html_bounded_minmax(
+                        size,
+                        allow_intrinsic_tracks,
+                        allow_root_html_bounded_minmax_tracks,
+                    )
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
                 );
                 line_names.push(Vec::new());
             }
@@ -896,9 +923,12 @@ fn expand_integer_repeats(
                             property,
                         )?;
                         tracks.push(
-                            track_size(size, allow_intrinsic_tracks).ok_or_else(|| {
-                                unsupported_grid_value(node, property, serialized)
-                            })?,
+                            track_size_with_root_html_bounded_minmax(
+                                size,
+                                allow_intrinsic_tracks,
+                                allow_root_html_bounded_minmax_tracks,
+                            )
+                            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
                         );
                         line_names.push(Vec::new());
                     }
@@ -1043,6 +1073,14 @@ fn reserve_computed_tracks(
 }
 
 fn track_size(size: &TrackSize, allow_intrinsic: bool) -> Option<ComputedCssGridTrackSize> {
+    track_size_with_root_html_bounded_minmax(size, allow_intrinsic, false)
+}
+
+fn track_size_with_root_html_bounded_minmax(
+    size: &TrackSize,
+    allow_intrinsic: bool,
+    allow_root_html_bounded_minmax: bool,
+) -> Option<ComputedCssGridTrackSize> {
     let track = match size {
         TrackSize::Breadth(breadth) => match track_breadth(breadth)? {
             ComputedCssGridTrackBreadth::LengthPx(value) => {
@@ -1064,7 +1102,7 @@ fn track_size(size: &TrackSize, allow_intrinsic: bool) -> Option<ComputedCssGrid
             }
             _ => return None,
         },
-        TrackSize::Minmax(min, max) if allow_intrinsic => {
+        TrackSize::Minmax(min, max) if allow_intrinsic || allow_root_html_bounded_minmax => {
             let min = track_breadth(min)?;
             if matches!(min, ComputedCssGridTrackBreadth::Fraction(_)) {
                 return None;

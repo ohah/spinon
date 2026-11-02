@@ -274,7 +274,7 @@ pub enum GridPlacementMode {
     ExplicitOnly,
     /// C11.2.2의 row sparse auto-placement와 양의 implicit row를 계산합니다.
     SparseRow,
-    /// 제한 Root HTML 경로의 fixed-px implicit rows와 기본 row auto-placement입니다.
+    /// 제한 Root HTML 경로의 bounded explicit minmax track, implicit rows와 기본 row auto-placement입니다.
     RootHtmlImplicitRowsV1,
     /// 제한 Root HTML 경로의 explicit-cell sparse column auto-placement입니다.
     RootHtmlColumnFlowV1,
@@ -419,6 +419,7 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::LengthPx(_)) => {}
             (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::TrackList(tracks))
                 if is_root_html_auto_track_list(tracks) => {}
@@ -592,6 +593,7 @@ pub(super) fn validate_grid_layout(
                 template_area_track_sizing
                     || container.placement_mode == GridPlacementMode::TrackSizing,
                 false,
+                false,
             )?;
         }
         if let GridAutoColumns::TrackList(tracks) = &container.auto_columns {
@@ -607,6 +609,7 @@ pub(super) fn validate_grid_layout(
                 tracks,
                 template_area_track_sizing
                     || container.placement_mode == GridPlacementMode::TrackSizing,
+                false,
                 false,
             )?;
         }
@@ -690,6 +693,7 @@ pub(super) fn validate_grid_layout(
             &container.columns,
             allow_intrinsic_tracks,
             allow_template_area_auto_track,
+            container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1,
         )?;
         validate_tracks(
             node.id,
@@ -697,6 +701,7 @@ pub(super) fn validate_grid_layout(
             &container.rows,
             allow_intrinsic_tracks,
             allow_template_area_auto_track,
+            container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1,
         )?;
         if container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some() {
             if container.placement_mode != GridPlacementMode::TrackSizing {
@@ -1147,6 +1152,10 @@ fn validate_root_html_implicit_rows_contract(
                         | crate::GridTrackSize::Percentage(value)
                         | crate::GridTrackSize::Fraction(value)
                         if value.is_finite() && *value >= 0.0
+                ) && !matches!(
+                    track,
+                    crate::GridTrackSize::MinMax { min, max }
+                        if valid_root_html_bounded_minmax(*min, *max)
                 )
             })
         {
@@ -1156,12 +1165,13 @@ fn validate_root_html_implicit_rows_contract(
     if container.auto_flow != crate::GridAutoFlow::Row {
         return Err(LayoutError::UnsupportedGridAutoFlow(node));
     }
-    if !matches!(container.auto_rows, crate::GridAutoRows::LengthPx(_))
-        && !matches!(
-            &container.auto_rows,
-            crate::GridAutoRows::TrackList(tracks) if is_root_html_auto_track_list(tracks)
-        )
-    {
+    if !matches!(
+        container.auto_rows,
+        crate::GridAutoRows::Auto | crate::GridAutoRows::LengthPx(_)
+    ) && !matches!(
+        &container.auto_rows,
+        crate::GridAutoRows::TrackList(tracks) if is_root_html_auto_track_list(tracks)
+    ) {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
             reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
@@ -2098,6 +2108,7 @@ fn validate_tracks(
     tracks: &[GridTrackSize],
     allow_intrinsic: bool,
     allow_auto: bool,
+    allow_root_html_bounded_minmax: bool,
 ) -> Result<(), LayoutError> {
     if tracks.is_empty() {
         return if allow_intrinsic {
@@ -2124,9 +2135,11 @@ fn validate_tracks(
             GridTrackSize::Auto => allow_intrinsic || allow_auto,
             GridTrackSize::MinContent | GridTrackSize::MaxContent => allow_intrinsic,
             GridTrackSize::MinMax { min, max } => {
-                allow_intrinsic
+                (allow_intrinsic
                     && valid_min_track_sizing_function(*min)
-                    && valid_max_track_sizing_function(*max)
+                    && valid_max_track_sizing_function(*max))
+                    || (allow_root_html_bounded_minmax
+                        && valid_root_html_bounded_minmax(*min, *max))
             }
             GridTrackSize::FitContent(value) => {
                 allow_intrinsic && valid_grid_track_length_percentage(*value)
@@ -2137,6 +2150,24 @@ fn validate_tracks(
         }
     }
     Ok(())
+}
+
+fn valid_root_html_bounded_minmax(
+    min: GridTrackMinSizingFunction,
+    max: GridTrackMaxSizingFunction,
+) -> bool {
+    let valid_min = match min {
+        GridTrackMinSizingFunction::LengthPx(value)
+        | GridTrackMinSizingFunction::Percentage(value) => value.is_finite() && value >= 0.0,
+        _ => false,
+    };
+    let valid_max = match max {
+        GridTrackMaxSizingFunction::LengthPx(value)
+        | GridTrackMaxSizingFunction::Percentage(value)
+        | GridTrackMaxSizingFunction::Fraction(value) => value.is_finite() && value >= 0.0,
+        _ => false,
+    };
+    valid_min && valid_max
 }
 
 fn valid_grid_track_length_percentage(value: GridTrackLengthPercentage) -> bool {

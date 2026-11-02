@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 1 test
+test stylesheet_registry::css_profile::tests::root_html_negative_fraction_track_recovery_ignores_only_simple_invalid_track_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 275 filtered out; finished in 0.00s
