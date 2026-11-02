@@ -144,15 +144,11 @@ fn validate_root_html_grid_tracks(
                 | ComputedCssGridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
                 _ => true,
             })
-            || (implicit_rows
-                && tracks
-                    .iter()
-                    .any(|track| !matches!(track, ComputedCssGridTrackSize::LengthPx(_))))
         {
             return Err(unsupported(
                 property,
                 if implicit_rows {
-                    "fixed implicit row와 함께 쓰는 Root HTML Grid explicit track은 이름 없는 fixed px만 지원합니다"
+                    "fixed-px implicit row와 함께 쓰는 Root HTML Grid explicit track은 이름 없는 finite non-negative px/percentage/fr direct track만 지원합니다"
                 } else {
                     "Root HTML Grid은 이름 없는 finite non-negative px/percentage/fr direct explicit track만 지원합니다"
                 },

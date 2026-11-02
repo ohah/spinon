@@ -66,6 +66,14 @@ Chrome 156 independent expectation의 one-row frame, zero-height boundary, two-r
 
 구현 후보 PR [#1024](https://github.com/ohah/spinon/pull/1024)은 일반 CSS admission, WPT 적합성, C11.1/C11.3.3/C11.4 또는 C11 전체 완료를 뜻하지 않는다. 공식 `72/213`을 유지한다.
 
+## C11.1 direct `fr`·percentage explicit track과 fixed implicit row 결합 · 제한 구현 후보 · 2026-11-02
+
+계획 PR [#1026](https://github.com/ohah/spinon/pull/1026)은 rebase merge되어 `3f7bfa71ae67a1f61cb8a5154f0cb74137bad9fc`에 포함됐다. 이 후속 후보는 같은 `RuntimeRootHtmlTextPaintV1`·`RootHtmlImplicitRowsV1` 경계에서 기존 finite non-negative direct px explicit track 외에 direct finite non-negative percentage와 fraction explicit track도 단일 fixed-px `grid-auto-rows`와 조합한다. Percentage·fraction은 기존과 같이 축별 definite root content-box basis를 요구한다. Track sizing과 sparse row auto-placement는 기존 Taffy 0.15.0 경로를 재사용한다.
+
+Rust runtime은 definite 120px/35–80px root를 쓰는 네 scene의 computed tracks·root-relative frames를 확인한다. Percentage-column item은 x=35px에서 시작해 100px 너비로 root 오른쪽을 15px 넘고 clamp되지 않는다. Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 `index.html` route에서 같은 HTML hash로 boot, ready layout 6 boxes, draw/present 6 boxes를 기록했다. Android API 37/iOS 26.2의 실제 surface readback, pixel parity, 실기기/hardware GPU는 확인하지 않았다. Rust 74/12/20 focused suites, scoped Clippy와 rustfmt가 통과했다. 독립적인 구현/runtime 실패 관점 20개 및 실행 근거는 [runtime evidence](./evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.md)에 둔다.
+
+계속 거부하는 입력은 named lines/areas, auto-repeat·intrinsic explicit tracks, percentage/`fr`/intrinsic implicit row, implicit columns, dense·column flow, authored placement, nonzero order, nested/text/image item, nonzero box edges, clipping·scroll, 일반 CSS admission 및 WPT 적합성이다. 구현 PR diff 검토와 merge는 아직 남았으며 공식 `72/213`, C11.1/C11 checkbox, 공개 CSS 지원 상태를 변경하지 않는다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.

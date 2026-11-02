@@ -1094,20 +1094,24 @@ fn validate_root_html_grid_item_capacity(
             .get(&element.node_id)
             .copied()
             .unwrap_or_default();
-        let fixed_root_implicit_rows = matches!(
-            grid.auto_rows,
-            ComputedCssGridAutoRows::LengthPx(_)
-        ) && grid.auto_flow == ComputedCssGridAutoFlow::Row
-            && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
-            && grid.template_areas.is_none()
-            && grid.columns_auto_repeat.is_none()
-            && grid.rows_auto_repeat.is_none()
-            && grid.columns.iter().all(|track| {
-                matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
-            })
-            && grid.rows.iter().all(|track| {
-                matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
-            });
+        let is_fixed_implicit_row_track = |track: &ComputedCssGridTrackSize| {
+            matches!(
+                track,
+                ComputedCssGridTrackSize::LengthPx(value)
+                    | ComputedCssGridTrackSize::Percentage(value)
+                    | ComputedCssGridTrackSize::Fraction(value)
+                    if value.is_finite() && *value >= 0.0
+            )
+        };
+        let fixed_root_implicit_rows =
+            matches!(grid.auto_rows, ComputedCssGridAutoRows::LengthPx(_))
+                && grid.auto_flow == ComputedCssGridAutoFlow::Row
+                && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+                && grid.template_areas.is_none()
+                && grid.columns_auto_repeat.is_none()
+                && grid.rows_auto_repeat.is_none()
+                && grid.columns.iter().all(is_fixed_implicit_row_track)
+                && grid.rows.iter().all(is_fixed_implicit_row_track);
         let implicit_row_capacity = fixed_root_implicit_rows
             .then(|| {
                 grid.columns

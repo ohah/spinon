@@ -13,6 +13,9 @@ use crate::{
     Viewport,
 };
 
+#[path = "grid_auto_placement/root_html_implicit_rows_tests.rs"]
+mod root_html_implicit_rows_tests;
+
 fn id(value: u64) -> NodeId {
     NodeId::new(value).unwrap()
 }

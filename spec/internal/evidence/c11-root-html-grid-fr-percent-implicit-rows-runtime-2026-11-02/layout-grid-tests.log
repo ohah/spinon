@@ -1,0 +1,130 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 74 tests
+test compact_taffy_style::tests::grid_style_projection_is_smaller_than_taffy_style ... ok
+test grid::template_areas_tests::template_grid_areas_accept_missing_and_extra_authored_tracks ... ok
+test grid::template_areas_tests::template_grid_areas_remain_valid_after_implicit_placement_mode_selection ... ok
+test grid::tests::nonzero_grid_item_order_fails_closed_before_taffy ... ok
+GRID_RESERVATION_FAILURE site=VisibleItemList observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+test grid::dense_column_tests::grid_auto_columns_auto_rejects_when_an_implicit_column_is_needed ... ok
+test grid::tests::empty_grid_uses_explicit_tracks_without_creating_items ... ok
+test grid::tests::hidden_grid_child_does_not_trigger_validation_for_unsupported_placement ... ok
+GRID_RESERVATION_FAILURE site=RowLockedCursor observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+test grid::tests::nested_grid_containers_classify_auto_and_explicit_items_independently ... ok
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+test grid::tests::grid_track_count_above_taffy_limit_fails_instead_of_being_truncated ... ok
+test grid::negative_track_sizing_tests::empty_explicit_grid_uses_its_single_line_as_the_negative_track_anchor ... ok
+GRID_RESERVATION_FAILURE site=OccupancyRows observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+test grid::tests::grid_layout_preserves_child_flex_dispatch ... ok
+test grid::tests::template_area_implicit_rows_use_the_authored_grid_auto_track_list ... ok
+GRID_RESERVATION_FAILURE site=OccupancyIntervals observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+test grid::tests::percentage_tracks_use_the_definite_grid_content_axes ... ok
+test grid::auto_track_sizing_tests::auto_repeat::secondary_reversed_and_equal_lines_follow_taffy_grid_placement ... ok
+test grid::track_sizing_tests::auto_repeat_calc_neighbors::single_trailing_column_minmax_length_auto_neighbor_is_bounded_to_grid_track_sizing ... ok
+test grid::auto_placement_tests::actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_worker ... ok
+test grid::tests::template_grid_typed_auto_track_lists_require_area_while_named_mode_keeps_px_support ... ok
+test grid::track_sizing_tests::auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines ... ok
+test grid_auto_min_scrollable_overflow_tests::max_content::replaced_grid_auto_minmax_max_content_follows_overflow_scrollability_in_rows ... ok
+test grid::track_sizing_tests::flex_factor_bound::flexible_track_expansion_stage_matches_css_grid_oracle ... ok
+test grid_auto_placement::track_sizing::extent::tests::total_signed_extent_accepts_9999_and_10000_tracks_and_rejects_10001 ... ok
+test grid_auto_min_scrollable_overflow_tests::row_axis_replaced::replaced_grid_row_auto_minimum_follows_overflow_scrollability ... ok
+test grid_chrome_oracle_tests::chrome155_auto_fill_indefinite_grid_repeats_one_fixed_track ... ok
+test grid_chrome_oracle_tests::chrome155_spanning_track_oracle_cases_match_traces_and_frames ... ok
+test grid_fit_content_auto_min_floor_oracle_tests::fit_content_auto_minimum_floor_uses_contribution_above_argument ... ok
+test grid_chrome_oracle_tests::chrome155_indefinite_percentage_track_matches_max_content_grid_and_image_overflow ... ok
+test c15_text_layout_tests::grid_text_intrinsic_input_preserves_minmax_beyond_definite_callback_trace ... ok
+test c15_text_layout_tests::grid_text_intrinsic_measurement_records_font_and_layout_revisions ... ok
+test grid_chrome_oracle_tests::chrome155_image_track_oracle_cases_match_traces_and_frames ... ok
+test calc_tree::text::tests::grid_text_source_collection_needs_no_callback_and_keeps_definite_snapshot_separate ... ok
+test grid_fit_content_min_height_oracle_tests::fit_content_length_without_definite_min_height_remains_rejected ... ok
+test grid_fit_content_min_height_oracle_tests::fit_content_percentage_limit_is_rejected_with_indefinite_height_basis ... ok
+test grid_fit_content_auto_min_floor_oracle_tests::fit_content_auto_minimum_zero_control_applies_argument_and_keeps_overflow ... ok
+test grid_fit_content_min_height_oracle_tests::css_grid_2025_fit_content_row_does_not_stretch_to_min_height ... ok
+test grid_fit_content_min_height_oracle_tests::invalid_fit_content_length_is_rejected_by_grid_validation ... ok
+test grid_fit_content_min_height_oracle_tests::invalid_min_height_is_rejected_by_style_validation ... ok
+test grid_fit_content_auto_neighbor_oracle_tests::css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row ... ok
+test c15_text_layout_tests::grid_chrome_oracle::chrome155_spanning_auto_min_flex_tracks_match_text_contribution_and_frames ... ok
+test grid_cyclic_percentage_gap_tests::chrome155_percentage_grid_gaps_resolve_after_intrinsic_sizing ... ok
+test grid_image_ratio_fixed_gutter_tests::cases::fixed_area_limit_applies_after_preferred_min_max_constraints ... ok
+test grid_image_ratio_oracle_tests::authored_ratio_constraints_are_rejected_without_a_track_sizing_grid ... ok
+test grid_image_ratio_oracle_tests::border_box_ratio_transfer_keeps_preferred_size_in_border_box_coordinates ... ok
+test grid_chrome_oracle_tests::chrome155_auto_repeat_track_oracle_cases_match_traces_and_frames ... ok
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected' (140862443) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:305:32:
+growth limit: unsupported numeric string "missing slash"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test grid_image_ratio_oracle_tests::non_replaced_items_keep_their_min_content_suggestion_instead_of_transfer ... ok
+test grid_image_ratio_oracle_tests::content_box_ratio_transfer_adds_padding_and_border_after_conversion ... ok
+test grid_image_ratio_oracle_tests::transferred_size_input_is_clamped_by_fixed_tracks_in_the_opposite_axis ... ok
+test grid_multispan_chrome_oracle_tests::span_stage_trace_has_fixed_track_and_invalid_placement_negative_controls ... ok
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form' (140862444) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:264:5:
+assertion `left == right` failed: batch: non-canonical span label
+  left: "span02"
+ right: "span2"
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected' (140862443) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:316:9:
+growth limit: non-finite or non-positive rational "160/0"
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form' (140862444) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:264:5:
+assertion `left == right` failed: batch: non-canonical span label
+  left: "span+2"
+ right: "span2"
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected' (140862443) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:316:9:
+growth limit: non-finite or non-positive rational "160/-3"
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form' (140862444) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:263:5:
+batch: span must be positive
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected' (140862443) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:306:9:
+growth limit: malformed rational "160/3/4"
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected' (140862443) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:324:5:
+growth limit: value is outside finite f32 range
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::stage_arrays_require_exactly_four_tracks' (140862445) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:335:5:
+assertion `left == right` failed: base sizes: expected exactly four tracks
+  left: 3
+ right: 4
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::stage_arrays_require_exactly_four_tracks' (140862445) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:341:5:
+assertion `left == right` failed: growth limits: expected exactly four tracks
+  left: 3
+ right: 4
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form' (140862444) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:262:33:
+batch: invalid span label "span-2": invalid digit found in string
+
+thread 'grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form' (140862444) panicked at crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs:259:28:
+batch: expected spanN, got "column2"
+test grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected ... ok
+test grid_placement::tests::positive_and_negative_lines_resolve_from_explicit_grid_edges ... ok
+test grid_auto_min_scrollable_overflow_tests::max_content::text_grid_auto_minmax_max_content_follows_overflow_scrollability_in_columns ... ok
+test grid_multispan_chrome_oracle_tests::row_axis::expected::tests::stage_arrays_require_exactly_four_tracks ... ok
+test grid_nested_implicit_rows_tests::nested_positive_implicit_rows_contribute_through_the_outer_grid ... ok
+test grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form ... ok
+test grid_auto_min_scrollable_overflow_tests::two_track_span_max_content::text_grid_auto_minmax_max_content_two_track_span_follows_overflow_scrollability ... ok
+test grid_placement::tests::positive_spans_resolve_from_either_definite_endpoint ... ok
+test grid_multispan_chrome_oracle_tests::row_axis::chrome156_row_axis_multi_span_stages_match_normative_oracle_and_source_order ... ok
+test grid_placement::tests::reversed_lines_swap_and_equal_lines_fail_closed ... ok
+test grid_placement::tests::zero_negative_span_auto_mixture_and_overflowing_ranges_fail_closed ... ok
+test grid_multispan_chrome_oracle_tests::chrome155_multi_span_contributions_are_independent_of_item_source_order ... ok
+test intrinsic_size_tests::grid_image_intrinsic_input_is_separate_from_definite_measure_callback ... ok
+test taffy_style::tests::last_baseline_marker_is_limited_to_grid_alignment_mapping ... ok
+test intrinsic_size_tests::grid_image_intrinsic_measurement_keeps_style_source_and_both_revisions ... ok
+test intrinsic_size_tests::grid_item_intrinsic_input_reservation_failure_discards_output_and_recovers ... ok
+test grid_text_stretch_tests::grid_auto_height_with_zero_min_height_may_overflow_text_measure ... ok
+test grid_stretch_auto_tracks_oracle_tests::css_grid_2025_stretch_auto_tracks_distributes_definite_free_space_equally ... ok
+test grid_text_stretch_tests::grid_stretched_auto_height_text_box_may_exceed_paragraph_line_box ... ok
+test grid_auto_min_scrollable_overflow_tests::text_grid_auto_minimum_follows_overflow_scrollability_in_columns ... ok
+test grid_stretch_auto_tracks_oracle_tests::css_grid_2025_align_content_normal_stretches_auto_tracks_equally ... ok
+test grid_image_ratio_fixed_gutter_tests::cases::fixed_gutter_is_included_once_in_track_span_limit_and_transferred_input ... ok
+test grid_image_ratio_oracle_tests::chrome155_image_transferred_size_suggestions_match_in_both_grid_axes ... ok
+test grid_nested_intrinsic_tests::nested_grid_intrinsic_contributions_match_chrome_without_leaf_fallback ... ok
+test c15_text_layout_tests::grid_chrome_oracle::chrome155_text_track_oracle_cases_match_contributions_traces_and_frames ... ok
+test grid_non_replaced_ratio_content_tests::direct_text_ratio_min_max_cases_match_the_pinned_chrome_geometry ... ok
+test grid::auto_placement_tests::grid_root_html_fixed_implicit_rows_reject_resource_limit_before_expansion ... ok
+
+test result: ok. 74 passed; 0 failed; 0 ignored; 0 measured; 259 filtered out; finished in 0.12s

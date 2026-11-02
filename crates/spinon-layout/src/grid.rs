@@ -1074,7 +1074,13 @@ fn validate_root_html_implicit_rows_contract(
             || auto_repeat.is_some()
             || line_names.iter().flatten().any(|name| !name.is_empty())
             || tracks.iter().any(|track| {
-                !matches!(track, crate::GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+                !matches!(
+                    track,
+                    crate::GridTrackSize::LengthPx(value)
+                        | crate::GridTrackSize::Percentage(value)
+                        | crate::GridTrackSize::Fraction(value)
+                        if value.is_finite() && *value >= 0.0
+                )
             })
         {
             return Err(LayoutError::InvalidGridTrackList { node, property });
