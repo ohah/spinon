@@ -150,7 +150,15 @@ public final class MainActivity extends Activity {
 
     private static boolean hasSpinonLaunchOverride(Bundle extras) {
         if (extras == null) return false;
+        boolean rootHtmlGridMinmaxPixelCapture =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && extras.getBoolean("spinon_root_html_grid_minmax_pixel_capture", false);
         for (String key : extras.keySet()) {
+            if (rootHtmlGridMinmaxPixelCapture
+                    && ("spinon_root_html_grid_minmax_pixel_capture".equals(key)
+                            || "spinon_root_html_grid_minmax_pixel_capture_run_id".equals(key))) {
+                continue;
+            }
             if (!key.startsWith("spinon_")) continue;
             Object value = extras.get(key);
             if (value != null && !Boolean.FALSE.equals(value)) return true;

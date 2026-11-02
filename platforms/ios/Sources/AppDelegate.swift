@@ -357,7 +357,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
-        if !arguments.contains(where: { $0.hasPrefix("--spinon-") }) {
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+        let rootHtmlPixelCaptureArguments = arguments.filter {
+            $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+        }
+        let rootHtmlGridMinmaxPixelCaptureRequested = rootHtmlPixelCaptureArguments.count == 1
+            && arguments.allSatisfy {
+                !$0.hasPrefix("--spinon-") || $0 == rootHtmlPixelCaptureArguments[0]
+            }
+#else
+        let rootHtmlGridMinmaxPixelCaptureRequested = false
+#endif
+        if !arguments.contains(where: { $0.hasPrefix("--spinon-") })
+            || rootHtmlGridMinmaxPixelCaptureRequested {
             let window = UIWindow(frame: UIScreen.main.bounds)
             let controller = C0410RuntimeGpuDemoViewController()
             controller.defaultRootHtmlApplicationRequested = true

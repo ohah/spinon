@@ -214,6 +214,16 @@ require(spinonC111RootHtmlPercentColumnsFixtureTestValue != "1" ||
     spinonC04RuntimeGpuValue == "1") {
     "C11.1 Root HTML percentage-column fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
 }
+val spinonC11GridMetalSurfacePixelsTestValue = providers
+    .environmentVariable("SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST")
+    .orElse("0").get()
+require(spinonC11GridMetalSurfacePixelsTestValue == "0" ||
+    spinonC11GridMetalSurfacePixelsTestValue == "1") {
+    "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC11GridMetalSurfacePixelsTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C11 Grid surface pixel fixture-test는 C04.10 runtime GPU와 함께 켜야 합니다."
+}
 val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
     spinonC04RuntimeGpuFixtureTestValue,
     spinonC04RuntimeGpuFailureFixtureValue,
@@ -224,8 +234,7 @@ val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
     providers.environmentVariable("SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST")
         .orElse("0").get(),
     spinonC124WorkerStackResidencyTestValue,
-    providers.environmentVariable("SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST")
-        .orElse("0").get(),
+    spinonC11GridMetalSurfacePixelsTestValue,
     spinonC131OverflowClipFixtureTestValue,
     spinonC132ScrollFixtureTestValue,
     spinonC125StickyFixtureTestValue,
@@ -345,6 +354,11 @@ android {
             "boolean",
             "SPINON_C04_RUNTIME_GPU",
             (spinonC04RuntimeGpuValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST",
+            (spinonC11GridMetalSurfacePixelsTestValue == "1").toString(),
         )
         buildConfigField(
             "boolean",

@@ -1,6 +1,7 @@
 use super::{
     is_invalid_fixed_px_gap_declaration_diagnostic,
-    is_invalid_root_html_named_grid_declaration_diagnostic, supported_media_query_surface,
+    is_invalid_root_html_named_grid_declaration_diagnostic,
+    is_invalid_root_html_negative_fraction_track_diagnostic, supported_media_query_surface,
     supported_root_html_media_query_surface,
 };
 use crate::stylesheet_registry::{CssOrigin, StylesheetRegistry, StylesheetSource};
@@ -95,6 +96,36 @@ fn root_html_named_grid_recovery_ignores_invalid_values_only_for_grid_placement_
         assert!(
             !is_invalid_root_html_named_grid_declaration_diagnostic(diagnostic),
             "non-matching diagnostic should remain fail-closed: {diagnostic}"
+        );
+    }
+}
+
+#[test]
+fn root_html_negative_fraction_track_recovery_ignores_only_simple_invalid_track_values() {
+    for diagnostic in [
+        "Unsupported property declaration: 'grid-auto-columns: -1fr;', OtherInvalidValue",
+        "Unsupported property declaration: 'GRID-TEMPLATE-ROWS: -1e3FR !IMPORTANT;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-template-columns: -1fr/**/;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-auto-rows: -1fr !/**/IMPORTANT;', OtherInvalidValue",
+    ] {
+        assert!(
+            is_invalid_root_html_negative_fraction_track_diagnostic(diagnostic),
+            "a syntax-invalid negative simple fraction should be discarded: {diagnostic}"
+        );
+    }
+
+    for diagnostic in [
+        "Unsupported property declaration: 'grid-auto-columns: 1fr;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-auto-columns: -1px;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-auto-columns: minmax(10px, -1px);', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-auto-columns: -1fr 10px;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-template: -1fr;', OtherInvalidValue",
+        "Unsupported property declaration: 'color: -1fr;', OtherInvalidValue",
+        "Unsupported property declaration: 'grid-auto-columns: -1fr;', UnexpectedToken",
+    ] {
+        assert!(
+            !is_invalid_root_html_negative_fraction_track_diagnostic(diagnostic),
+            "non-matching diagnostics must remain fail-closed: {diagnostic}"
         );
     }
 }

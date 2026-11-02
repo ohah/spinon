@@ -4,9 +4,13 @@
 
 **구현 전 비교:** [고정 HTML·독립 기대값·Chrome 156 관측·화면](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-minmax-precomparison.html) · [expected.json](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/expected.json) · [Chrome observation](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/chrome156-observation.json)
 
-**계획 실패 관점 검토:** [20개](./c11-root-html-grid-minmax-plan-review-20.md) · **계획 PR diff 적대 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/plan-pr-diff-review-30.md) · **구현/runtime 검토:** 구현 후 새 20개 · **구현 PR diff:** 별도 30개.
+**계획 실패 관점 검토:** [20개](./c11-root-html-grid-minmax-plan-review-20.md) · **계획 PR diff 적대 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/plan-pr-diff-review-30.md) · **구현/runtime 검토:** [20개](./c11-root-html-grid-minmax-implementation-review-20.md) · **구현 PR diff 적대 검토:** [30개](./c11-root-html-grid-minmax-implementation-pr-diff-review-30.md).
 
-**상태:** 구현 전 계획. 기본 Root HTML projection은 모든 `ComputedCssGridTrackSize::MinMax`를 거부하고 일반 typed converter는 이미 `GridTrackSize::MinMax`를 만든다. 구현 PR은 계획 PR 병합 뒤 이 체크아웃에서 순차 진행한다. 이 bounded slice는 C11.1/C11 전체 완료나 일반 CSS Grid 지원을 뜻하지 않으며 공식 완료 `72/213`은 유지한다.
+**상태:** 구현 진행 중. 계획 PR은 `773cfe232`에 병합됐고, 현재 단일 체크아웃에서 순차적으로 구현하고 있다. 기본 Root HTML 경로에 bounded explicit `minmax()` 변환·axis/range gate와 Rust runtime 사례를 추가했다. 42개 C11.1 runtime tests, 포맷·diff 검사, 변경 크레이트 Clippy가 통과했다. Android API 37 ARM64 AVD에서 현재 코드의 PixelCopy 표본 2/2가 두 번 일치했고, iPhone 17 Pro / iOS 26.2 Simulator의 현재 코드에서도 Metal 표본 2/2가 일치했다. 상세 로그와 화면은 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-minmax-runtime-2026-11-03/README.md)에 있다.
+
+구현/runtime 적대 검토 20개와 별도의 PR diff 적대 검토 30개를 각각 완료했고, 현재 diff에서는 미해결 결함을 찾지 못했다. 구현 PR은 아직 만들지 않았으며 CI와 병합도 남아 있다. 이 bounded slice는 C11.1/C11 전체 완료나 일반 CSS Grid 지원을 뜻하지 않으며, 공식 상태 체크박스는 변경하지 않는다.
+
+Tailnet 로드맵은 현재 `72/213`을 표시하지만, `spec/STATUS.md`의 반복된 C04.12 ID와 `C06.6a`/`C06.6b`를 표시 화면에 정확히 대응하지 못한다. 공식 원본 대장의 체크 상태를 변경하지 않고, 병합 후 로드맵 동기화에서 ID 매핑을 고쳐 원본과 화면을 대조한다.
 
 ## 목표와 현행 결손
 
@@ -64,7 +68,7 @@ Browser-only `intrinsic-max`, `auto-max`, invalid negative-max controls는 규�
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 parsed Root HTML positive source를 기존 app entry로 실행한다. Layout geometry, draw/present, screenshot을 보존한다. Overflow scene에서는 AVD PixelCopy와 iOS Metal drawable sample로 root 끝 바깥 marker가 surface에 보이는지 확인한다. AVD software renderer, iOS compositor 제출 시점, 실기기/hardware GPU 한계를 분리 기록한다.
 7. Default/product artifact에 opt-in scene/fixture ABI를 추가하지 않는다. `cargo fmt --all -- --check`, focused Rust suites, changed crate scoped Clippy, Android/iOS Simulator app builds를 실행하고 실행하지 않은 항목을 통과로 보고하지 않는다. Empty GitHub check rollup은 CI 통과로 부르지 않는다.
 8. 구현/runtime 변경을 이 계획 검토와 다른 20개 실패 관점으로 검토하고, 구현 PR diff를 별도 30개 관점으로 검토한다. 결함 수정 뒤 관련 runtime/platform evidence와 검토 항목을 재확인한다.
-9. Implementation PR은 한글 본문과 `enhancement`, `area: layout`, `area: testing` 라벨, 지원·미지원·실행근거를 포함한다. PR 화면 링크를 Agent Browser로 확인한다. Rebase and merge 뒤 내부 계약 0059, C11 plan, `spec/STATUS.md`, 공개 roadmap을 실제 제한 구현에 맞게 동기화하되 C11/C11.1 체크와 `72/213`은 유지한다. Tailnet preview는 기존 승인 범위대로 갱신하고 served hash와 desktop/mobile overflow를 확인한다.
+9. Implementation PR은 한글 본문과 기존 `enhancement`, `area: layout` 라벨, 지원·미지원·실행근거를 포함한다. PR 화면 링크를 Agent Browser로 확인한다. Rebase and merge 뒤 내부 계약 0059, C11 plan, `spec/STATUS.md`, 공개 roadmap을 실제 제한 구현에 맞게 동기화하되 C11/C11.1 체크박스는 유지한다. Tailnet preview는 기존 승인 범위대로 갱신하고 served hash, 현재 체크 상태 집계, desktop/mobile overflow를 확인한다.
 
 ## 진행 순서
 
@@ -73,4 +77,4 @@ Browser-only `intrinsic-max`, `auto-max`, invalid negative-max controls는 규�
 3. 새 implementation/runtime hostile review 20개와 별도 PR diff review 30개를 고친 뒤 실행·화면·한계를 묶어 구현 PR을 Rebase and merge한다.
 4. Merge SHA 기준 상태 문서와 Tailnet roadmap을 갱신하고, served content/hash와 overflow surface artifact를 확인한다.
 
-이 계획 PR은 API를 추가하거나 기능 구현을 완료 표시하지 않는다. C11 상위와 C11.1/C11.3/C11.4 체크 및 공식 완료 `72/213`은 구현 PR에서도 유지한다.
+이 계획 PR은 API를 추가하거나 기능 구현을 완료 표시하지 않는다. C11 상위와 C11.1/C11.3/C11.4 체크는 구현 PR에서도 유지한다.

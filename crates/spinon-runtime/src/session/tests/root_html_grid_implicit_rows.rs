@@ -498,8 +498,8 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             "nonzero order"
             | "non-default alignment"
             | "fixed implicit row list with non-default alignment"
-            | "intrinsic explicit track"
             | "auto-repeat explicit track" => "cascade_failed",
+            "intrinsic explicit track" => "unsupported_computed_value",
             _ => "unsupported_computed_value",
         };
         assert_eq!(

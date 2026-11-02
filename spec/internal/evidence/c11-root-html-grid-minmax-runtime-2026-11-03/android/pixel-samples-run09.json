@@ -1,0 +1,54 @@
+{
+  "run_id": "c11minmax-android-20261103-run09",
+  "device": "API 37 ARM64 AVD emulator-5556 (SwiftShader via ANGLE)",
+  "pixelcopy_png": {
+    "path": "spec/internal/evidence/c11-root-html-grid-minmax-runtime-2026-11-03/android/pixelcopy-run09.png",
+    "size": [
+      1080,
+      2209
+    ],
+    "sha256": "5e580452a61b83526a37fcf67fef7347caf5185e94669230e467e685121ca4be"
+  },
+  "samples": [
+    {
+      "id": "grid-right-interior",
+      "surface_xy": [
+        77,
+        27
+      ],
+      "actual_rgba": [
+        16,
+        24,
+        32,
+        255
+      ],
+      "expected_rgba": [
+        16,
+        24,
+        32,
+        255
+      ],
+      "exact": true
+    },
+    {
+      "id": "overflow-blue-marker",
+      "surface_xy": [
+        116,
+        11
+      ],
+      "actual_rgba": [
+        59,
+        130,
+        246,
+        255
+      ],
+      "expected_rgba": [
+        59,
+        130,
+        246,
+        255
+      ],
+      "exact": true
+    }
+  ]
+}

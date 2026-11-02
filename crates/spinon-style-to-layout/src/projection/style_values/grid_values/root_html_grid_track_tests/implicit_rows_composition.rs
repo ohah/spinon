@@ -72,7 +72,7 @@ fn root_html_profile_still_rejects_intrinsic_tracks_with_fixed_implicit_rows() {
     for track in [
         ComputedCssGridTrackSize::Auto,
         ComputedCssGridTrackSize::MinMax {
-            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(0.0),
+            min: spinon_style::ComputedCssGridTrackBreadth::Auto,
             max: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
         },
     ] {
