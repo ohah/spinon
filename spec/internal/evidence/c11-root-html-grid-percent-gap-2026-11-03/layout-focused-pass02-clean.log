@@ -1,0 +1,75 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.26s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 57 tests
+GRID_RESERVATION_FAILURE site=VisibleItemList observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=RowLockedCursor observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+GRID_RESERVATION_FAILURE site=OccupancyRows observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=OccupancyIntervals observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+test grid::auto_placement_tests::implicit_auto_sizing_and_explicit_column_overflow_fail_closed ... ok
+test grid::auto_placement_tests::implicit_track_cap_is_checked_before_expanding_rows ... ok
+test grid::auto_placement_tests::implicit_rows_repeat_fixed_track_size_and_keep_row_gap ... ok
+test grid::auto_placement_tests::auto_placed_intrinsic_item_size_is_rejected_and_next_layout_recovers ... ok
+test grid::auto_placement_tests::column_locked_items_wrap_to_the_next_row_when_cursor_column_decreases ... ok
+test grid::auto_placement_tests::root_html_column_flow_expands_fixed_px_scalar_for_each_implicit_column ... ok
+test grid::auto_placement_tests::root_html_column_flow_fraction_tests::root_html_column_flow_rejects_aggregate_percentage_gap_overflow ... ok
+test grid::auto_placement_tests::root_html_column_flow_fraction_tests::root_html_column_flow_fraction_patterns_reject_invalid_factors_and_width_basis ... ok
+test grid::auto_placement_tests::actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_worker ... ok
+test grid::auto_placement_tests::root_html_column_flow_fraction_tests::root_html_column_flow_zero_fraction_keeps_the_fixed_item_auto_minimum ... ok
+test grid::auto_placement_tests::mixed_definite_and_auto_items_place_definite_items_first ... ok
+test grid::auto_placement_tests::root_html_column_flow_expanded_column_reservation_failure_recovers ... ok
+test grid::auto_placement_tests::root_html_column_flow_applies_each_gap_once_on_its_own_axis ... ok
+test grid::auto_placement_tests::root_html_column_flow_fraction_tests::root_html_column_flow_percentage_gap_resolves_with_percentage_auto_columns ... ok
+test grid::auto_placement_tests::root_html_column_flow_percentage_columns_reject_aggregate_f32_overflow ... ok
+test grid::auto_placement_tests::root_html_column_flow_percentage_columns_reject_constrained_or_math_widths ... ok
+test grid::auto_placement_tests::root_html_column_flow_keeps_implicit_sizing_when_explicit_cells_are_sufficient ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_implicit_column_overflow_before_placement ... ok
+test grid::auto_placement_tests::root_html_column_flow_places_source_order_down_each_explicit_column ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_order_and_authored_placement ... ok
+test grid::auto_placement_tests::root_html_column_flow_percentage_columns_accept_a_definite_zero_width_basis ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_invalid_auto_column_tracks ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_fractional_implicit_row_list_cycles_from_first_implicit_row ... ok
+test grid::auto_placement_tests::root_html_column_flow_fraction_tests::root_html_column_flow_fraction_lists_match_fixed_precomparison_scenes ... ok
+test grid::auto_placement_tests::root_html_column_flow_repeats_percentage_auto_columns_from_the_definite_width ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_fractional_auto_rows_reject_indefinite_constrained_and_aspect_ratio_height ... ok
+test grid::auto_placement_tests::root_html_column_flow_repeats_fixed_px_implicit_column_list ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_fractional_auto_rows_reject_invalid_factors ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_fraction_plus_overflowing_percentage_rows_are_not_clamped ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_fractional_implicit_row_preserves_fixed_item_minimum_overflow ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_mixed_px_percentage_fraction_rows_allocate_remaining_space ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_fractional_implicit_row_resolves_zero_height_to_zero ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_zero_fractional_track_keeps_automatic_minimum_and_remaining_fr_share ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_hidden_grid_items_do_not_add_percentage_gap_extent ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::fraction::root_html_subunit_fractional_implicit_rows_preserve_trailing_space ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_mixed_px_percentage_implicit_rows_resolve_against_definite_height_and_overflow_visibly ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_auto_rows_compose_with_explicit_percentage_and_fraction_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_implicit_row_list_cycles_from_first_implicit_row ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_implicit_row_rejects_individual_and_expanded_range_overflow ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_implicit_row_rejects_indefinite_constrained_or_aspect_ratio_height ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_row_gap_rejects_indefinite_constrained_and_overflowing_ranges ... ok
+test grid::auto_placement_tests::root_html_column_flow_repeats_percentage_scalar_mixed_zero_and_overflow_tracks ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_percentage_row_gap_resolves_against_the_definite_content_height ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_accepts_zero_and_cycles_after_it ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::percentage::root_html_zero_height_percentage_implicit_row_is_zero_but_item_can_overflow ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_cycles_from_first_implicit_row ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_rejects_invalid_values_without_implicit_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_checks_list_limit_without_implicit_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_implicit_rows_combine_direct_fraction_and_percentage_tracks ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_rejects_unsupported_and_invalid_entries ... ok
+test grid::auto_placement_tests::sparse_order_is_rejected_when_any_visible_item_has_partial_placement ... ok
+test grid::auto_placement_tests::sparse_placement_normalizes_reversed_equal_and_negative_lines ... ok
+test grid::auto_placement_tests::row_sparse_cursor_does_not_backfill_a_hole_and_respects_spans ... ok
+test grid::auto_placement_tests::sparse_auto_items_follow_order_and_preserve_source_order_for_ties ... ok
+test grid::auto_placement_tests::grid_root_html_fixed_implicit_rows_reject_resource_limit_before_expansion ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_checks_resource_limit_before_expansion ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_required_implicit_columns_over_track_limit ... ok
+
+test result: ok. 57 passed; 0 failed; 0 ignored; 0 measured; 320 filtered out; finished in 0.15s

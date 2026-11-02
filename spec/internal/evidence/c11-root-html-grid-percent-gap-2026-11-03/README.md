@@ -1,4 +1,4 @@
-# C11.1 parsed Root HTML Grid percentage gap 사전 비교
+# C11.1 parsed Root HTML Grid percentage gap 사전 비교와 실행 근거
 
 ## 판정 기준과 출처
 
@@ -37,4 +37,42 @@
 
 ## 후속 구현 계획
 
-세부 수용 범위, 거부 경계, finite extent 검사, 구현·실행 판정은 [C11.1 percentage gap 계획](../../../../plan/c11-root-html-grid-percentage-gap.md)을 따른다. 구현 뒤에는 이 아홉 scene과 Chrome 관측을 재사용하되 implementation runtime/PR 검토는 별도로 한다.
+세부 수용 범위, 거부 경계, finite extent 검사, 구현·실행 판정은 [C11.1 percentage gap 계획](../../../../plan/c11-root-html-grid-percentage-gap.md)을 따른다. Chrome 12 scene 관측과 독립 기대값은 사전 비교 입력이다. 모바일 앱의 단일-grid smoke는 별도 fixture를 사용하고 서로 다른 근거를 합쳐 pixel parity로 주장하지 않는다.
+
+## 구현과 Rust 검증
+
+구현 commit은 `f92352d97eddfa5e6142d9db78d5a1900879587b`이며 [source revision](./source-revision.json)에 tree hash를 기록했다. 제품 범위는 기본 `RuntimeRootHtmlTextPaintV1` 경로에서 definite content-box axis를 basis로 하는 유한·비음수 percentage `row-gap`/`column-gap`이다. `gap` shorthand와 `grid-gap` alias는 computed longhand 경로를 공유한다. >100%는 clamp하지 않으며 math, indefinite basis, 비정상 값과 finite-f32 초과는 fail-closed한다. Flex와 다른 runtime profile은 변경하지 않았다.
+
+| 검사 | 결과 | 원본 |
+|---|---:|---|
+| Percentage-gap Root HTML cascade/projection/layout | 10/10 | [Rust log](./style-focused-pass02-clean.log) |
+| Gap resolver `normal`/px/%/basis 경계 | 2/2 | [Rust log](./style-gap-helper-pass01-clean.log) |
+| Grid placement·implicit-row/column direct adapter | 57/57 | [Rust log](./layout-focused-pass02-clean.log) |
+| 200×200 simulator fixture exact item geometry | 1/1 | [Rust log](./rust-runtime-fixture-pass01-clean.log) |
+| Clippy, `spinon-layout` + `spinon-style-to-layout`, all targets, `-D warnings` | 통과 | [log](./clippy-pass02.log) |
+| `cargo fmt --all -- --check`, `git diff --check` | 통과 | [format](./format-check-pass02.log) · [diff](./diff-check-pass02.log) |
+
+실제 시뮬레이터 입력 [HTML](./root-html-grid-percentage-gap-runtime.html)은 SHA-256 `db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e`, V8 DOM probe는 `685d0f3b8ab8d78a9d14a5e3dfd019c60323e4eac4f4f5dcf172c12000a79d9c`이다. 독립 기대 item frame은 `[0,0,20,20]`, `[260,0,20,20]`, `[0,40,20,20]`, `[260,40,20,20]`이다. 해당 fixture와 같은 CSS를 사용하는 [Rust 회귀 검사](../../../../crates/spinon-style-to-layout/src/c11_1_root_html_percentage_gap_tests.rs)는 네 frame을 exact 비교한다.
+
+전체 package suite는 green이 아니다. `spinon-style-to-layout`은 319 passed / 2 failed이고, 실패는 변경하지 않은 C07 aspect-ratio computed-string 기대(`1.77778 / 1` 대 `1.7777778 / 1`)와 기존 C11 `grid-auto-columns:-1fr` 진단 타입 기대다. `spinon-layout --lib`은 376 passed / 1 failed이며 실패는 변경하지 않은 C15 HostDocument text test다. 전체 suite 결과는 [style log](./style-package-full-pass01.log)와 [layout log](./layout-package-full-pass01.log)에 보존한다. 집중 slice 통과를 전체 crate 통과로 확대 해석하지 않는다.
+
+## Android와 iOS Simulator
+
+두 앱은 동일한 implementation commit, HTML fixture hash, probe hash로 빌드했다. Android는 별도 API 37 ARM64 AVD `spinon_api37_1_compat16k` (`emulator-5558`, Android 17)이며 ANGLE/Vulkan/SwiftShader software backend다. 연결되어 있던 Samsung 실기기와 기존 부팅 시뮬레이터 앱은 사용하거나 종료하지 않았다. iOS는 새로 부팅한 iPhone 17 Pro Max / iOS 26.2 Simulator다.
+
+| 대상 | 실행 확인 | 캡처와 로그 |
+|---|---|---|
+| Android API 37 AVD | `source=index.html`, V8 probe `root_app_marker=ready`, `layout=ready boxes=7`, `presented boxes=7`; viewport `411.42856×841.52374`, root CSS `411.42856×200` | [화면](./android-api37-avd.png) · [실행 로그](./android-runtime.log) · [설치](./android-install.log) · [launch](./android-launch.log) |
+| iPhone 17 Pro Max iOS 26.2 Simulator | `source=index.html`, V8 probe `root_app_marker=ready`, `layout=ready boxes=7`, `presented boxes=7`; viewport `440×860`, root CSS `440×200`, scale 3 | [화면](./ios-26_2-simulator.png) · [실행 로그](./ios-runtime.log) · [launch](./ios-launch.log) |
+
+Android APK SHA-256은 `318ad3ba31eb4b8deddf11259fdf553f23c94b0806416cd5e299a6be1a749043`, iOS app executable SHA-256은 `4c4f245ba75ab36bb7fde79ee62ad0a8c5cdc57565d4a3d0190debc86ea2ed9d`이다. 원 fixture·probe·앱·캡처 hash와 simulator 식별자는 [관측 JSON](./platform-runtime-observation.json)에 정리했다. 임시 Bootstrap 입력은 원본 파일 hash로 복구했다([hash 목록](./restored-bootstrap-sha256.txt)). 앱 프로세스는 캡처 후 두 대상에서 종료했다.
+
+iOS build는 성공했으며 Xcode가 V8 static archive 안의 duplicate timestamp object에 대한 dSYM 경고와 `AppIntents.framework` 미사용 metadata skip 경고를 출력했다. 앱 설치·실행과 layout/draw marker에는 실패가 없었다. [정규화 build log](./ios-simulator-build-pass01-clean.log)에서 확인할 수 있다.
+
+두 screenshot 모두 200 CSS px root의 우측 바깥 x=260에 두 번째 column이 보인다. 이는 시각 smoke이며 Android PixelCopy·iOS Metal drawable readback 또는 Chrome과의 pixel equality가 아니다. Exact node geometry 근거는 Rust 검사이고 mobile runtime log는 기본 app route, layout-ready, draw/present를 증명한다.
+
+## 적대적 검토와 남은 범위
+
+[구현/runtime 실패 관점 검토 20개](./implementation-runtime-review-20.md)는 plan review 20개와 별도로 작성했다. PR 제출 전에는 실제 최종 변경 delta에 대해 저장소 필수 30관점 검토를 새로 기록한다. 일반 CSS admission, arbitrary track grammar, WPT conformance, cyclic/indefinite gap, hardware GPU, 실기기, compositor 이후 픽셀은 검증 범위에 포함되지 않는다.
+
+C11.1과 C11은 미완료다. 공식 `72/213`은 유지한다.
