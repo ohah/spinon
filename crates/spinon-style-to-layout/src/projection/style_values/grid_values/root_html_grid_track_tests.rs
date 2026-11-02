@@ -104,6 +104,34 @@ fn root_html_column_flow_projects_direct_fixed_px_auto_columns() {
 }
 
 #[test]
+fn root_html_column_flow_projects_direct_percentage_auto_column_lists() {
+    let node = NodeId::new(11_246).unwrap();
+    let mut input = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    input.auto_flow = ComputedCssGridAutoFlow::Column;
+    input.auto_columns = ComputedCssGridAutoColumns::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(10.0),
+        ComputedCssGridTrackSize::Percentage(0.15),
+    ]);
+
+    let projected = project_grid_layout(
+        node,
+        &input,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("direct px/percentage auto-column pattern should project in column-flow mode");
+    assert_eq!(
+        projected.auto_columns,
+        spinon_layout::GridAutoColumns::TrackList(vec![
+            GridTrackSize::LengthPx(10.0),
+            GridTrackSize::Percentage(0.15),
+        ])
+    );
+}
+
+#[test]
 fn root_html_column_flow_accepts_auto_column_list_at_track_limit() {
     let node = NodeId::new(11_245).unwrap();
     let mut input = grid(
@@ -137,7 +165,11 @@ fn root_html_column_flow_rejects_unsupported_auto_columns_and_row_flow_sizing() 
         ComputedCssGridAutoColumns::LengthPx(f32::NAN),
         ComputedCssGridAutoColumns::LengthPx(f32::INFINITY),
         ComputedCssGridAutoColumns::TrackList(Vec::new()),
-        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(0.5)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(-0.5)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(f32::NAN)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(
+            f32::INFINITY,
+        )]),
         ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Fraction(1.0)]),
         ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Calc(
             spinon_style::ComputedCssMath::LengthPx(15.0),

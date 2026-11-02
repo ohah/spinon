@@ -14465,6 +14465,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || ProcessInfo.processInfo.arguments.contains("--spinon-c11-grid")
             || c11GridSceneArgument != nil || c111MetalPixelRun != nil
     }
+    private let c111RootHtmlPercentColumnsProbeRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c111-root-html-percent-columns")
     private let c131CompactSurfaceMatrixProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c131-compact-surface-matrix")
     private let c131CompactHitIdentityGridProbeRequested = ProcessInfo.processInfo.arguments
@@ -14809,6 +14811,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c131StackingDescendantClipProbeRequested || c131BorderStripProbeRequested
             || c132ScrollFixtureRequested
             || c133GestureFixtureRequested || c11GridFixtureRequested
+            || c111RootHtmlPercentColumnsProbeRequested
             || rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
             || rootHtmlDefaultRenderRequested
         var selectedWithImagePaint = selected
@@ -14873,6 +14876,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C13.3 iOS touch adapter"
             : c114GridTrackSizingProbeRequested
             ? "SPINON · C11.4 Grid track sizing"
+            : c111RootHtmlPercentColumnsProbeRequested
+            ? "SPINON · C11.1 Root HTML percentage auto-columns"
             : c1133GridTemplateAreasProbeRequested
             ? c1133NamedLinePairSceneIDs.contains(c1133GridTemplateAreasSceneID)
                 ? "SPINON · C11.3.3 named-line pair"
@@ -15009,6 +15014,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "V8 행 우선 sparse auto-placement·implicit row → Stylo → Taffy → WGPU · 360×800 CSS px"
             : c1121GridPlacementProbeRequested
             ? "V8 numeric Grid line/span → Stylo → Taffy → WGPU · 320×240 CSS px"
+            : c111RootHtmlPercentColumnsProbeRequested
+            ? "parsed Root HTML column-flow · 240×63 CSS px grid · WGPU Metal"
             : c11GridFixtureRequested
             ? "V8 DOM display:grid → Stylo → Taffy → Rust 장면 → WGPU · 320×240 CSS px"
             : c1035PositionedFlexProbeRequested
@@ -17135,6 +17142,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? SpinonRunner.createRuntimeGpuHostWithC11_2_1GridPlacementFixture()
             : c111MetalPixelRun != nil
             ? SpinonRunner.createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture()
+            : c111RootHtmlPercentColumnsProbeRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC11_1RootHtmlPercentColumnsFixture()
             : c11GridFixtureRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_1GridFixture()
             : c124MetalPixelCase != nil
@@ -17431,6 +17440,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #if SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST_1
             result = SpinonRunner.evalRuntimeGpuC13_3GestureFixture(handle)
 #endif
+        } else if c111RootHtmlPercentColumnsProbeRequested {
+            result = SpinonRunner.evalRuntimeGpuHostSource(handle, source: "void 0")
         } else if c114GridTrackSizingProbeRequested {
             let fixtureResult = evalC114GridTrackSizing(
                 host: handle, sceneID: c114GridTrackSizingSceneID,
@@ -18072,6 +18083,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C1035_SUMMARY \(runtimeStatusSummary(result ?? ""))")
             logC1035NodeFrames(result ?? "")
         }
+        if c111RootHtmlPercentColumnsProbeRequested,
+           let result,
+           result.hasPrefix("status=0 ") {
+            log("SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_SUMMARY \(runtimeStatusSummary(result))")
+            logC111GridNodeFrames(result)
+        }
         if sceneWasSupersededAfterCommit {
             let scope = c1133GridTemplateAreasProbeRequested
                 ? "SPINON_C1133_GRID"
@@ -18143,6 +18160,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? "SPINON_C1131_GRID"
                 : c1121GridPlacementProbeRequested
                 ? "SPINON_C1121_GRID"
+                : c111RootHtmlPercentColumnsProbeRequested
+                ? "SPINON_C111_ROOT_HTML_PERCENT_COLUMNS"
                 : c11GridFixtureRequested
                 ? "SPINON_C111_GRID"
                 : c1035PositionedFlexProbeRequested

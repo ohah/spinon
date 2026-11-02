@@ -2,6 +2,17 @@ use super::super::RuntimeGpuHost;
 use spinon_runtime::RuntimeSession;
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c11-1-root-html-percent-columns-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c11_1_root_html_percent_columns_fixture()
+    -> Result<(Self, String), String> {
+        let source = include_str!(
+            "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-percent-auto-columns-precomparison.html"
+        );
+        let (mut host, report) = Self::new_with_root_html(source)?;
+        host.include_node_frame_report = true;
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c15-3-wgpu-glyph-paint-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c15_3_glyph_paint_fixture() -> Result<(Self, String), String>
     {

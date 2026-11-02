@@ -70,7 +70,7 @@ pub(super) fn validate_candidate(
         return Err(unsupported(
             node,
             "grid-auto-columns",
-            "Root HTML column-flow mode requires auto or a finite non-negative px value/list",
+            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage tracks",
         ));
     }
     if grid.template_areas.is_some()
@@ -119,13 +119,18 @@ pub(super) fn validate_candidate(
             "Root HTML column-flow mode exceeds the 10,000 explicit-plus-implicit column limit",
         ));
     }
+    super::root_html_grid_tracks::validate_implicit_column_percentage_extent(
+        container,
+        grid,
+        total_columns,
+    )?;
     if required_columns > grid.columns.len()
         && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
     {
         return Err(unsupported(
             node,
             "grid-auto-columns",
-            "implicit columns require fixed-px grid-auto-columns in the Root HTML column-flow profile",
+            "implicit columns require an explicit supported grid-auto-columns value in the Root HTML column-flow profile",
         ));
     }
     for item in tree
@@ -140,12 +145,19 @@ pub(super) fn validate_candidate(
 }
 
 fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
-    let valid_px = |track: &ComputedCssGridTrackSize| matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0);
+    let valid_track = |track: &ComputedCssGridTrackSize| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::LengthPx(value)
+                | ComputedCssGridTrackSize::Percentage(value)
+                if value.is_finite() && *value >= 0.0
+        )
+    };
     match auto_columns {
         ComputedCssGridAutoColumns::Auto => true,
         ComputedCssGridAutoColumns::LengthPx(value) => value.is_finite() && *value >= 0.0,
         ComputedCssGridAutoColumns::TrackList(tracks) => {
-            !tracks.is_empty() && tracks.len() <= GRID_MAX_TRACKS && tracks.iter().all(valid_px)
+            !tracks.is_empty() && tracks.len() <= GRID_MAX_TRACKS && tracks.iter().all(valid_track)
         }
         ComputedCssGridAutoColumns::Unsupported(_) => false,
     }

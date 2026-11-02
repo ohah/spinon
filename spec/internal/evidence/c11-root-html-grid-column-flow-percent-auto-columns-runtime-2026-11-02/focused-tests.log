@@ -1,0 +1,93 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.04s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 15 tests
+test grid::auto_placement_tests::root_html_column_flow_rejects_implicit_column_overflow_before_placement ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_order_and_authored_placement ... ok
+test grid::auto_placement_tests::root_html_column_flow_percentage_columns_reject_aggregate_f32_overflow ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_invalid_auto_column_tracks ... ok
+test grid::auto_placement_tests::root_html_column_flow_percentage_columns_reject_constrained_or_math_widths ... ok
+test grid::auto_placement_tests::root_html_column_flow_expands_fixed_px_scalar_for_each_implicit_column ... ok
+test grid::auto_placement_tests::root_html_column_flow_percentage_columns_accept_a_definite_zero_width_basis ... ok
+test grid::auto_placement_tests::root_html_column_flow_repeats_percentage_auto_columns_from_the_definite_width ... ok
+test grid::auto_placement_tests::root_html_column_flow_expanded_column_reservation_failure_recovers ... ok
+test grid::auto_placement_tests::root_html_column_flow_repeats_fixed_px_implicit_column_list ... ok
+test grid::auto_placement_tests::root_html_column_flow_keeps_implicit_sizing_when_explicit_cells_are_sufficient ... ok
+test grid::auto_placement_tests::root_html_column_flow_applies_each_gap_once_on_its_own_axis ... ok
+test grid::auto_placement_tests::root_html_column_flow_places_source_order_down_each_explicit_column ... ok
+test grid::auto_placement_tests::root_html_column_flow_repeats_percentage_scalar_mixed_zero_and_overflow_tracks ... ok
+test grid::auto_placement_tests::root_html_column_flow_rejects_required_implicit_columns_over_track_limit ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 345 filtered out; finished in 0.12s
+
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.90s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 28 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_rejects_fixed_repeat_groups_on_both_axes ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_rejects_dense_implicit_and_non_px_combinations ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_rejects_unsupported_auto_columns_and_row_flow_sizing ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_percentage_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_fixed_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_still_rejects_mixed_fraction_and_fixed_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::implicit_rows_composition::root_html_profile_still_rejects_intrinsic_tracks_with_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_selects_its_restricted_layout_mode ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_projects_direct_percentage_auto_column_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::implicit_rows_composition::root_html_profile_projects_percentage_tracks_with_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::implicit_rows_composition::root_html_profile_projects_fraction_rows_with_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_projects_direct_fixed_px_auto_columns ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_accepts_auto_column_list_at_track_limit ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_still_rejects_percentage_fraction_composition ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_projects_the_bounded_two_axis_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_percentage_auto_row_list_composes_with_explicit_percentage_and_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_direct_fraction_tracks_on_both_axes ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_projects_direct_px_percentage_track_pairs ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_direct_percentage_tracks_on_both_axes ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_fixed_px_implicit_row_track_lists_in_its_own_mode ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_mixed_px_percentage_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_one_fixed_implicit_row_size_in_its_own_mode ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_empty_invalid_or_unsupported_implicit_row_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_invalid_or_nondirect_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_invalid_or_nondirect_percentage_tracks ... ok
+test projection::style_values::root_html_grid_gap_tests::root_html_grid_gap_admits_only_finite_nonnegative_px_or_normal ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_oversized_implicit_row_lists ... ok
+
+test result: ok. 28 passed; 0 failed; 0 ignored; 0 measured; 282 filtered out; finished in 0.00s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 9 tests
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_single_percentage_auto_row_as_a_list ... ok
+test stylo_dom::cascade::runtime_layout_tests::root_html_profile_exports_inline_background_color_as_typed_paint ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_falls_back_after_syntax_invalid_negative_auto_row_declaration ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_mixed_px_percentage_auto_row_list ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_fixed_px_auto_row_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_preserves_fixed_px_auto_column_values_and_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_preserves_direct_percentage_auto_columns_and_mixed_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_unsupported_auto_row_lists_unsupported ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_keeps_intrinsic_auto_column_lists_unsupported ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 262 filtered out; finished in 0.04s
+
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.17s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 2 tests
+test session::tests::root_html_grid_column_flow::c11_1_root_html_column_flow_repeats_percentage_implicit_columns_in_the_default_route ... ok
+test session::tests::root_html_grid_column_flow::c11_1_root_html_column_flow_repeats_fixed_px_implicit_columns_and_gaps ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 229 filtered out; finished in 0.47s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 1 test
+test session::tests::root_html_grid_column_flow::c11_1_root_html_sparse_column_flow_rejects_unsupported_shapes_without_a_scene ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 230 filtered out; finished in 1.41s

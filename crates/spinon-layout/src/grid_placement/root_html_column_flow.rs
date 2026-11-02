@@ -198,9 +198,21 @@ fn validate_auto_columns(node: NodeId, auto_columns: &GridAutoColumns) -> Result
         GridAutoColumns::TrackList(tracks) => {
             for track in tracks {
                 if !matches!(track, GridTrackSize::LengthPx(_)) {
+                    if matches!(track, GridTrackSize::Percentage(_)) {
+                        let GridTrackSize::Percentage(value) = track else {
+                            unreachable!("percentage variant checked above")
+                        };
+                        if !value.is_finite() || *value < 0.0 {
+                            return Err(LayoutError::InvalidGridTrack {
+                                node,
+                                property: "grid-auto-columns",
+                            });
+                        }
+                        continue;
+                    }
                     return Err(LayoutError::UnsupportedGridAutoColumns {
                         node,
-                        reason: "Root HTML column-flow mode requires direct px auto-column tracks",
+                        reason: "Root HTML column-flow mode requires direct px or percentage auto-column tracks",
                     });
                 }
                 if !is_nonnegative_px(track) {

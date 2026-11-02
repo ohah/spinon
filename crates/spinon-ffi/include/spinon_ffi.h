@@ -444,6 +444,13 @@ int32_t spinon_runtime_gpu_host_process_c13_3_gesture_queue(
    일반 앱의 display:grid CSS 지원을 선언하지 않습니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_grid_fixture(
     char *output, size_t output_capacity);
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST
+/* C11.1 parsed Root HTML percentage implicit-column fixture 전용 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_root_html_percent_columns_fixture(
+    char *output, size_t output_capacity);
+#endif
 /* C11.2.1 numeric explicit Grid placement fixture 전용 검증 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture(
     char *output, size_t output_capacity);

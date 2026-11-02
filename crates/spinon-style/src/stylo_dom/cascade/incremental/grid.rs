@@ -43,6 +43,7 @@ pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_root_html_fixed_auto_row_lists: bool,
     pub(super) allow_root_html_fixed_auto_column_lists: bool,
     pub(super) allow_root_html_percentage_auto_row_lists: bool,
+    pub(super) allow_root_html_percentage_auto_column_lists: bool,
     pub(super) allow_template_areas: bool,
 }
 
@@ -100,6 +101,7 @@ pub(super) fn computed_grid_layout(
         allow_root_html_fixed_auto_row_lists,
         allow_root_html_fixed_auto_column_lists,
         allow_root_html_percentage_auto_row_lists,
+        allow_root_html_percentage_auto_column_lists,
         allow_template_areas,
     } = options;
     let template_areas = if allow_template_areas {
@@ -197,6 +199,16 @@ pub(super) fn computed_grid_layout(
     let allow_template_area_track_sizing =
         template_areas.is_some() && allow_fixed_auto_track_lists && !allow_intrinsic_tracks;
     let allow_typed_auto_track_sizes = allow_intrinsic_tracks || allow_template_area_track_sizing;
+    let flow = computed.clone_grid_auto_flow();
+    let auto_flow = match (
+        flow.contains(GridAutoFlow::COLUMN),
+        flow.contains(GridAutoFlow::DENSE),
+    ) {
+        (false, false) => ComputedCssGridAutoFlow::Row,
+        (true, false) => ComputedCssGridAutoFlow::Column,
+        (false, true) => ComputedCssGridAutoFlow::RowDense,
+        (true, true) => ComputedCssGridAutoFlow::ColumnDense,
+    };
     let auto_rows = computed_grid_auto_rows(
         computed.clone_grid_auto_rows(),
         node,
@@ -211,17 +223,9 @@ pub(super) fn computed_grid_layout(
         property_value(properties, "grid-auto-columns"),
         allow_typed_auto_track_sizes,
         allow_fixed_auto_track_lists || allow_root_html_fixed_auto_column_lists,
+        allow_root_html_percentage_auto_column_lists
+            && auto_flow == ComputedCssGridAutoFlow::Column,
     )?;
-    let flow = computed.clone_grid_auto_flow();
-    let auto_flow = match (
-        flow.contains(GridAutoFlow::COLUMN),
-        flow.contains(GridAutoFlow::DENSE),
-    ) {
-        (false, false) => ComputedCssGridAutoFlow::Row,
-        (true, false) => ComputedCssGridAutoFlow::Column,
-        (false, true) => ComputedCssGridAutoFlow::RowDense,
-        (true, true) => ComputedCssGridAutoFlow::ColumnDense,
-    };
 
     Ok(ComputedCssGridLayout {
         columns,
@@ -245,6 +249,7 @@ fn computed_grid_auto_columns(
     serialized: &str,
     allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
+    allow_percentage_track_lists: bool,
 ) -> Result<ComputedCssGridAutoColumns, CssCascadeError> {
     Ok(
         match computed_grid_auto_track_list(
@@ -255,7 +260,7 @@ fn computed_grid_auto_columns(
             ComputedGridAutoTrackListOptions {
                 allow_typed_track_sizes,
                 allow_fixed_track_lists,
-                allow_percentage_track_lists: false,
+                allow_percentage_track_lists,
                 reservation_site: IntegerRepeatReservationSite::AutoColumns,
             },
         )? {

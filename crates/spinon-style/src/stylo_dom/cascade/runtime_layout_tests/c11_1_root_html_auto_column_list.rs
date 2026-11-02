@@ -48,9 +48,30 @@ fn root_html_profile_preserves_fixed_px_auto_column_values_and_lists() {
 }
 
 #[test]
-fn root_html_profile_keeps_non_px_auto_column_lists_unsupported() {
+fn root_html_profile_preserves_direct_percentage_auto_columns_and_mixed_lists() {
+    assert_eq!(
+        computed_auto_columns("15%").1,
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(0.15)])
+    );
+    assert_eq!(
+        computed_auto_columns("10px 15%").1,
+        ComputedCssGridAutoColumns::TrackList(vec![
+            ComputedCssGridTrackSize::LengthPx(10.0),
+            ComputedCssGridTrackSize::Percentage(0.15),
+        ])
+    );
+    assert_eq!(
+        computed_auto_columns("10% 15%").1,
+        ComputedCssGridAutoColumns::TrackList(vec![
+            ComputedCssGridTrackSize::Percentage(0.1),
+            ComputedCssGridTrackSize::Percentage(0.15),
+        ])
+    );
+}
+
+#[test]
+fn root_html_profile_keeps_intrinsic_auto_column_lists_unsupported() {
     for (source, serialized) in [
-        ("15%", "15%"),
         ("1fr", "1fr"),
         ("minmax(10px, 20px)", "minmax(10px, 20px)"),
         ("fit-content(20px)", "fit-content(20px)"),

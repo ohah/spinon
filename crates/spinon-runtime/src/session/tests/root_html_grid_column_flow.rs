@@ -6,6 +6,9 @@ const SOURCE: &str = include_str!(
 const IMPLICIT_COLUMNS_SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-implicit-columns-precomparison.html"
 );
+const PERCENTAGE_COLUMNS_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-percent-auto-columns-precomparison.html"
+);
 const ROOT: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(16, 24, 32);
 const RED: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(229, 72, 77);
 const GREEN: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(58, 143, 91);
@@ -243,6 +246,56 @@ fn c11_1_root_html_column_flow_repeats_fixed_px_implicit_columns_and_gaps() {
 }
 
 #[test]
+fn c11_1_root_html_column_flow_repeats_percentage_implicit_columns_in_the_default_route() {
+    let (session, layout) = run(PERCENTAGE_COLUMNS_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "layout={layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout.completed.as_ref().expect("layout should complete");
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(cascade.state, RuntimeUaCascadeState::Ready);
+    let cascade_completed = cascade.completed.expect("Grid styles should complete");
+    assert_eq!(completed.key, cascade_completed.key);
+    let grid = cascade_completed.roots[0]
+        .styles
+        .elements
+        .iter()
+        .find_map(|element| element.grid_layout.as_ref())
+        .expect("percentage Grid style should be retained");
+    assert_eq!(
+        grid.auto_columns,
+        spinon_style::ComputedCssGridAutoColumns::TrackList(vec![
+            spinon_style::ComputedCssGridTrackSize::Percentage(0.1),
+            spinon_style::ComputedCssGridTrackSize::Percentage(0.15),
+        ])
+    );
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("default Root HTML route should publish the complete scene");
+    assert_eq!(frame(scene, ROOT), [0.0, 0.0, 240.0, 63.0]);
+    for (color, expected) in IMPLICIT_ITEM_COLORS.into_iter().zip([
+        [0.0, 0.0, 10.0, 10.0],
+        [0.0, 23.0, 10.0, 10.0],
+        [35.0, 0.0, 10.0, 10.0],
+        [35.0, 23.0, 10.0, 10.0],
+        [80.0, 0.0, 10.0, 10.0],
+        [80.0, 23.0, 10.0, 10.0],
+        [109.0, 0.0, 10.0, 10.0],
+        [109.0, 23.0, 10.0, 10.0],
+        [150.0, 0.0, 10.0, 10.0],
+        [150.0, 23.0, 10.0, 10.0],
+        [179.0, 0.0, 10.0, 10.0],
+        [179.0, 23.0, 10.0, 10.0],
+    ]) {
+        assert_eq!(frame(scene, color), expected, "item color {color:?}");
+    }
+}
+
+#[test]
 fn c11_1_root_html_sparse_column_flow_uses_document_order_and_tag_independent_identity() {
     let ordered_items = "<div class=\"item-a\"></div>\n      <div class=\"item-b\"></div>\n      <div class=\"item-c\"></div>\n      <div class=\"item-d\"></div>";
     let reversed_items = "<div class=\"item-d\"></div>\n      <div class=\"item-c\"></div>\n      <div class=\"item-b\"></div>\n      <div class=\"item-a\"></div>";
@@ -334,11 +387,37 @@ fn c11_1_root_html_sparse_column_flow_rejects_unsupported_shapes_without_a_scene
             ),
         ),
         (
-            "percentage implicit column sizing",
+            "percentage implicit columns with indefinite width",
+            SOURCE
+                .replace("grid-auto-flow: column;", "grid-auto-flow: column; grid-auto-columns: 25%;")
+                .replace("width: 100px;", "width: auto;"),
+        ),
+        (
+            "percentage implicit columns with min-width constraint",
             SOURCE.replace(
                 "grid-auto-flow: column;",
-                "grid-auto-flow: column; grid-auto-columns: 25%;",
+                "grid-auto-flow: column; grid-auto-columns: 25%; min-width: 1px;",
             ),
+        ),
+        (
+            "percentage implicit columns with max-width constraint",
+            SOURCE.replace(
+                "grid-auto-flow: column;",
+                "grid-auto-flow: column; grid-auto-columns: 25%; max-width: 100px;",
+            ),
+        ),
+        (
+            "percentage implicit columns with aspect-ratio width constraint",
+            SOURCE.replace(
+                "grid-auto-flow: column;",
+                "grid-auto-flow: column; grid-auto-columns: 25%; aspect-ratio: 5 / 3;",
+            ),
+        ),
+        (
+            "percentage implicit columns with math-backed width",
+            SOURCE
+                .replace("grid-auto-flow: column;", "grid-auto-flow: column; grid-auto-columns: 25%;")
+                .replace("width: 100px;", "width: calc(100px + 0px);"),
         ),
         (
             "percentage explicit track",
