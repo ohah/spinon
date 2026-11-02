@@ -28,17 +28,17 @@
 | 22 | Android AVD를 physical/hardware GPU 결과로 표현하는가 | Android API 37 ARM64 AVD/ANGLE SwiftShader와 visual-smoke 한계를 명시한다. 통과. |
 | 23 | iOS Simulator를 iPhone 실기기 또는 compositor pixel parity로 표현하는가 | 문서는 iPhone 17 Pro iOS 26.2 Simulator draw/present만 주장하고 Metal readback은 부인한다. 통과. |
 | 24 | 스크린샷을 frame geometry readback으로 오인시키는가 | STATUS, plan, PR body는 screenshots를 visual smoke로 제한한다. 통과. |
-| 25 | 병합 후 internal contract의 evidence 경로가 깨지는가 | 새 README, runtime review, PR review, merge record 경로 18개를 file existence 기준으로 검사했다. 통과. |
+| 25 | 병합 후 internal contract의 evidence 경로가 깨지는가 | C11 관련 문서의 새·수정 Markdown 상대 링크 23개를 file existence 기준으로 검사했다. 통과. |
 | 26 | C11 master plan의 최신 milestone이 날짜순으로 잘못 위치하는가 | `c11-css-grid.md` 첫 milestone에 #1038 병합 결과를 기록하고 기존 #1030/#1035 결과를 보존한다. 통과. |
 | 27 | dedicated implementation plan이 계속 pre-merge candidate라 하는가 | 결과 section을 implementation/merge result로 바꾸고 PR merge metadata 및 evidence 링크를 추가했다. 통과. |
 | 28 | STATUS와 internal contract가 서로 다른 merge SHA/state를 표시하는가 | 두 문서 모두 #1038, 같은 merge time/SHA, no checks 및 미완료 경계를 표시한다. 통과. |
-| 29 | 공개 roadmap의 새 링크가 화면/evidence/공식 상태를 찾지 못하는가 | PR card의 계획·README·review·merge record·두 PNG·STATUS를 검사해 local target 7개가 존재한다. 통과. |
+| 29 | 공개 roadmap의 새 링크가 화면/evidence/공식 상태를 찾지 못하는가 | PR card의 계획·README·review·merge record·두 PNG·STATUS를 검사해 local target 8개가 존재한다. 통과. |
 | 30 | 문서 전용 PR을 기능 재구현으로 오인하거나 PR #1039 상태를 과장하는가 | diff는 8개 문서/evidence file만 바꾼다. PR #1039는 draft·mergeable이며 checks 0개라 CI나 Tailnet 완료를 주장하지 않는다. 통과. |
 
 ## 검토 결과
 
 - `git diff --check`: 통과.
-- 새/수정된 Markdown 상대 링크 18개와 공개 roadmap 카드의 local link 7개를 확인했다.
+- 새/수정된 Markdown 상대 링크 23개와 공개 roadmap 카드의 local target 8개를 확인했다.
 - 공식 status checkbox 수, parent C11 미완료 상태 및 내부 계약 버전은 변하지 않았다.
 - PR #1038 병합 확인과 PR #1039 변경의 근거는 [merge record](./merge-PR1038.md)에 연결한다.
 - 남은 blocking 문서 오류는 없다. Tailnet 동기화는 PR #1039 병합 뒤 별도 수행하고 Agent Browser에서 확인한다.
