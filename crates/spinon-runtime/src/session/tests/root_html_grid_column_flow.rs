@@ -9,6 +9,9 @@ const IMPLICIT_COLUMNS_SOURCE: &str = include_str!(
 const PERCENTAGE_COLUMNS_SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-percent-auto-columns-precomparison.html"
 );
+const FR_AUTO_COLUMNS_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-fr-auto-columns-runtime.html"
+);
 const ROOT: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(16, 24, 32);
 const RED: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(229, 72, 77);
 const GREEN: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(58, 143, 91);
@@ -290,6 +293,62 @@ fn c11_1_root_html_column_flow_repeats_percentage_implicit_columns_in_the_defaul
         [150.0, 23.0, 10.0, 10.0],
         [179.0, 0.0, 10.0, 10.0],
         [179.0, 23.0, 10.0, 10.0],
+    ]) {
+        assert_eq!(frame(scene, color), expected, "item color {color:?}");
+    }
+}
+
+#[test]
+fn c11_1_root_html_fr_auto_columns_succeed_through_the_default_runtime_route() {
+    let (session, layout) = run(FR_AUTO_COLUMNS_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "layout={layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout.completed.as_ref().expect("layout should complete");
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(cascade.state, RuntimeUaCascadeState::Ready);
+    let cascade_completed = cascade.completed.expect("Grid styles should complete");
+    assert_eq!(completed.key, cascade_completed.key);
+    let grids = cascade_completed.roots[0]
+        .styles
+        .elements
+        .iter()
+        .filter_map(|element| element.grid_layout.as_ref())
+        .collect::<Vec<_>>();
+    assert_eq!(
+        grids.len(),
+        1,
+        "the fixture should have one non-nested Grid"
+    );
+    let expected_auto_columns = vec![
+        spinon_style::ComputedCssGridTrackSize::LengthPx(10.0),
+        spinon_style::ComputedCssGridTrackSize::Percentage(0.1),
+        spinon_style::ComputedCssGridTrackSize::Fraction(1.0),
+    ];
+    assert_eq!(
+        grids[0].auto_columns,
+        spinon_style::ComputedCssGridAutoColumns::TrackList(expected_auto_columns)
+    );
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("default Root HTML runtime should publish the fr scene");
+    for (color, expected) in IMPLICIT_ITEM_COLORS.into_iter().zip([
+        [0.0, 0.0, 10.0, 10.0],
+        [0.0, 23.0, 10.0, 10.0],
+        [35.0, 0.0, 10.0, 10.0],
+        [35.0, 23.0, 10.0, 10.0],
+        [80.0, 0.0, 10.0, 10.0],
+        [80.0, 23.0, 10.0, 10.0],
+        [95.0, 0.0, 10.0, 10.0],
+        [95.0, 23.0, 10.0, 10.0],
+        [130.0, 0.0, 10.0, 10.0],
+        [130.0, 23.0, 10.0, 10.0],
+        [290.0, 0.0, 10.0, 10.0],
+        [290.0, 23.0, 10.0, 10.0],
     ]) {
         assert_eq!(frame(scene, color), expected, "item color {color:?}");
     }

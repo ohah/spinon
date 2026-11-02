@@ -13,6 +13,8 @@ use crate::{
     TaffyLayoutEngine, Viewport,
 };
 
+#[path = "grid_auto_placement/root_html_column_flow_fraction_tests.rs"]
+mod root_html_column_flow_fraction_tests;
 #[path = "grid_auto_placement/root_html_implicit_rows_tests.rs"]
 mod root_html_implicit_rows_tests;
 

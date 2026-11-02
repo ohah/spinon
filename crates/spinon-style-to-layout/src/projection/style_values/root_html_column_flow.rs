@@ -70,7 +70,7 @@ pub(super) fn validate_candidate(
         return Err(unsupported(
             node,
             "grid-auto-columns",
-            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage tracks",
+            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage/fraction tracks",
         ));
     }
     if grid.template_areas.is_some()
@@ -119,7 +119,7 @@ pub(super) fn validate_candidate(
             "Root HTML column-flow mode exceeds the 10,000 explicit-plus-implicit column limit",
         ));
     }
-    super::root_html_grid_tracks::validate_implicit_column_percentage_extent(
+    super::root_html_grid_tracks::validate_implicit_column_relative_extent(
         container,
         grid,
         total_columns,
@@ -150,6 +150,7 @@ fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -
             track,
             ComputedCssGridTrackSize::LengthPx(value)
                 | ComputedCssGridTrackSize::Percentage(value)
+                | ComputedCssGridTrackSize::Fraction(value)
                 if value.is_finite() && *value >= 0.0
         )
     };

@@ -234,7 +234,7 @@ fn validate_root_html_grid_tracks(
     if column_flow && !root_html_auto_columns_supported(&grid.auto_columns) {
         return Err(unsupported(
             "grid-auto-columns",
-            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage auto columns",
+            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage/fraction auto columns",
         ));
     }
     if !column_flow && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
@@ -252,6 +252,7 @@ fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -
             track,
             ComputedCssGridTrackSize::LengthPx(value)
                 | ComputedCssGridTrackSize::Percentage(value)
+                | ComputedCssGridTrackSize::Fraction(value)
                 if value.is_finite() && *value >= 0.0
         )
     };
@@ -1381,6 +1382,7 @@ fn project_auto_columns(
                         track,
                         ComputedCssGridTrackSize::LengthPx(value)
                             | ComputedCssGridTrackSize::Percentage(value)
+                            | ComputedCssGridTrackSize::Fraction(value)
                             if value.is_finite() && *value >= 0.0
                     )
                 }) =>

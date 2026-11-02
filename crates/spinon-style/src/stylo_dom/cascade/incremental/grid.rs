@@ -225,6 +225,7 @@ pub(super) fn computed_grid_layout(
         allow_fixed_auto_track_lists || allow_root_html_fixed_auto_column_lists,
         allow_root_html_percentage_auto_column_lists
             && auto_flow == ComputedCssGridAutoFlow::Column,
+        allow_root_html_fixed_auto_column_lists && auto_flow == ComputedCssGridAutoFlow::Column,
     )?;
 
     Ok(ComputedCssGridLayout {
@@ -250,6 +251,7 @@ fn computed_grid_auto_columns(
     allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
     allow_percentage_track_lists: bool,
+    allow_fraction_track_lists: bool,
 ) -> Result<ComputedCssGridAutoColumns, CssCascadeError> {
     Ok(
         match computed_grid_auto_track_list(
@@ -261,6 +263,7 @@ fn computed_grid_auto_columns(
                 allow_typed_track_sizes,
                 allow_fixed_track_lists,
                 allow_percentage_track_lists,
+                allow_fraction_track_lists,
                 reservation_site: IntegerRepeatReservationSite::AutoColumns,
             },
         )? {
@@ -296,6 +299,7 @@ fn computed_grid_auto_rows(
                 allow_typed_track_sizes,
                 allow_fixed_track_lists,
                 allow_percentage_track_lists,
+                allow_fraction_track_lists: false,
                 reservation_site: IntegerRepeatReservationSite::AutoRows,
             },
         )? {
@@ -323,6 +327,7 @@ struct ComputedGridAutoTrackListOptions {
     allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
     allow_percentage_track_lists: bool,
+    allow_fraction_track_lists: bool,
     reservation_site: IntegerRepeatReservationSite,
 }
 
@@ -337,6 +342,7 @@ fn computed_grid_auto_track_list(
         allow_typed_track_sizes,
         allow_fixed_track_lists,
         allow_percentage_track_lists,
+        allow_fraction_track_lists,
         reservation_site,
     } = options;
     let explicit_auto = value.0.len() == 1
@@ -379,6 +385,17 @@ fn computed_grid_auto_track_list(
                     tracks.push(ComputedCssGridTrackSize::Percentage(percentage));
                     ComputedGridAutoTrackValue::TrackList(tracks)
                 }
+                Some(ComputedCssGridTrackSize::Fraction(factor))
+                    if allow_fraction_track_lists && factor.is_finite() && factor >= 0.0 =>
+                {
+                    let mut tracks = Vec::new();
+                    reserve_computed_tracks(&mut tracks, 1, node, property, |tracks, count| {
+                        fail_integer_repeat_reservation_if_requested(reservation_site)?;
+                        tracks.try_reserve_exact(count).map_err(|_| ())
+                    })?;
+                    tracks.push(ComputedCssGridTrackSize::Fraction(factor));
+                    ComputedGridAutoTrackValue::TrackList(tracks)
+                }
                 _ => ComputedGridAutoTrackValue::Unsupported(serialized.to_owned()),
             });
         }
@@ -412,6 +429,11 @@ fn computed_grid_auto_track_list(
                         && percentage >= 0.0 =>
                 {
                     tracks.push(ComputedCssGridTrackSize::Percentage(percentage));
+                }
+                ComputedCssGridTrackSize::Fraction(factor)
+                    if allow_fraction_track_lists && factor.is_finite() && factor >= 0.0 =>
+                {
+                    tracks.push(ComputedCssGridTrackSize::Fraction(factor));
                 }
                 _ => {
                     return Ok(ComputedGridAutoTrackValue::Unsupported(
