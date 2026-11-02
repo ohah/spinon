@@ -57,4 +57,9 @@ All positive geometry uses content-box dimensions with no padding/border, LTR ho
 - Focused cascade, projection, layout, runtime, rejection/overflow tests pass; scoped Clippy, rustfmt and `git diff --check` pass.
 - Android and iOS simulator runs use the same fixture and implementation commit, and both show the positive and overflow cases without claiming surface readback. [Simulator result, artifact hashes, logs and screenshots](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md).
 - Implementation/runtime failure review uses 20 distinct failure paths; [the review is complete](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.md). The final PR delta has a separate [30-point change-specific review](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.md).
-- The bounded behavior is documented in [internal Grid contract 0059](../spec/internal/0059-c11-grid-layout.md). The official status ledger remains unchecked and the count remains `72/213`; C11.1/C11 are incomplete.
+- The post-merge official status and public-roadmap documentation diff has its own [30-point hostile review](../spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.md).
+- The bounded behavior is documented in [internal Grid contract 0059](../spec/internal/0059-c11-grid-layout.md). C11.1/C11 checkboxes remain unchecked and the official count remains `72/213`.
+
+## 병합 후 상태
+
+구현 PR [#1072](https://github.com/ohah/spinon/pull/1072)은 2026-11-02T17:41:15Z Rebase and merge됐다(merge SHA `6508a1a91d04c7e83c00b10f230519d52e8ed86b`). 병합 후 status ledger와 공개 roadmap은 제한된 동작·검증 한계만 기록하며 C11.1/C11 완료 체크와 공식 `72/213`을 유지한다. GitHub check rollup은 비어 있고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다.
