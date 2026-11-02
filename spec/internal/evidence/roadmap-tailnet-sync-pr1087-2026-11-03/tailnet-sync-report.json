@@ -1,0 +1,36 @@
+{
+  "schema": "spinon-roadmap-tailnet-sync-v1",
+  "date": "2026-11-03",
+  "sourceHead": "52b58b6bd7fde6073e1c5992e0c93a815a53a684",
+  "previousSourceHead": "c82639bd1",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "serverPid": 28040,
+  "build": {
+    "kind": "selected Rspress build",
+    "version": "2.0.22",
+    "exitCode": 0,
+    "linkCheck": "disabled for selected-route build; full-site link verification not performed"
+  },
+  "routeCount": 170,
+  "routeBytes": 17757023,
+  "written": 158,
+  "created": 139,
+  "replaced": 19,
+  "unchanged": 12,
+  "backups": 19,
+  "verifiedRoutes": 170,
+  "criticalHttpRoutes": 17,
+  "criticalHttpRoutesPassed": 17,
+  "noDeletes": true,
+  "previewServerRestarted": false,
+  "agentBrowser": {
+    "counter": "215개 표시 · 공식 완료 78/215",
+    "inputCount": 215,
+    "checkedCount": 78,
+    "desktopDocumentWidth": 1440,
+    "mobileDocumentWidth": 390,
+    "closed": true,
+    "agentBrowserProcessRemaining": false
+  }
+}
