@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.1 Root HTML Grid implicit rows precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        padding: 16px;
+        font: 14px/20px sans-serif;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font: inherit;
+      }
+
+      main {
+        box-sizing: border-box;
+        display: grid;
+        width: 100px;
+        grid-template-columns: 40px 55px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 15px;
+        column-gap: 5px;
+        row-gap: 5px;
+        margin: 0 0 20px;
+        padding: 0;
+        border: 0;
+        background-color: #101820;
+      }
+
+      .one-implicit-row {
+        height: 40px;
+      }
+
+      .two-implicit-rows {
+        height: 60px;
+      }
+
+      .zero-implicit-row {
+        height: 25px;
+        grid-auto-rows: 0px;
+      }
+
+      .item {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .item:nth-child(1) { background-color: #e5484d; }
+      .item:nth-child(2) { background-color: #3b82f6; }
+      .item:nth-child(3) { background-color: #3a8f5b; }
+      .item:nth-child(4) { background-color: #f59e0b; }
+      .item:nth-child(5) { background-color: #a855f7; }
+      .item:nth-child(6) { background-color: #06b6d4; }
+
+      .item:nth-child(odd) { width: 40px; }
+      .item:nth-child(even) { width: 55px; }
+
+      .one-implicit-row .item:nth-child(-n + 2),
+      .zero-implicit-row .item:nth-child(-n + 2),
+      .two-implicit-rows .item:nth-child(-n + 2) {
+        height: 20px;
+      }
+
+      .one-implicit-row .item:nth-child(3),
+      .two-implicit-rows .item:nth-child(n + 3) {
+        height: 15px;
+      }
+
+      .zero-implicit-row .item:nth-child(3) {
+        height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>One generated row</h2>
+    <main id="one-row" class="one-implicit-row">
+      <div class="item" data-item="a"></div>
+      <div class="item" data-item="b"></div>
+      <div class="item" data-item="c"></div>
+    </main>
+
+    <h2>Zero-height generated row</h2>
+    <main id="zero-row" class="zero-implicit-row">
+      <div class="item" data-item="a"></div>
+      <div class="item" data-item="b"></div>
+      <div class="item" data-item="c"></div>
+    </main>
+
+    <h2>Two generated rows</h2>
+    <main id="two-rows" class="two-implicit-rows">
+      <div class="item" data-item="a"></div>
+      <div class="item" data-item="b"></div>
+      <div class="item" data-item="c"></div>
+      <div class="item" data-item="d"></div>
+      <div class="item" data-item="e"></div>
+      <div class="item" data-item="f"></div>
+    </main>
+  </body>
+</html>

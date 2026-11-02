@@ -1,0 +1,50 @@
+{
+  "source": "tests/fixtures/css/c11/root-html-grid-implicit-rows-precomparison.html",
+  "basis": {
+    "columns": [40, 55],
+    "columnGap": 5,
+    "explicitRows": [20],
+    "autoRows": [15],
+    "rowGap": 5,
+    "autoFlow": "row",
+    "independent": true
+  },
+  "cases": [
+    {
+      "id": "one-row",
+      "root": {"width": 100, "height": 40},
+      "columns": [40, 55],
+      "rows": [20, 15],
+      "items": [
+        {"id": "a", "x": 0, "y": 0, "width": 40, "height": 20},
+        {"id": "b", "x": 45, "y": 0, "width": 55, "height": 20},
+        {"id": "c", "x": 0, "y": 25, "width": 40, "height": 15}
+      ]
+    },
+    {
+      "id": "zero-row",
+      "root": {"width": 100, "height": 25},
+      "columns": [40, 55],
+      "rows": [20, 0],
+      "items": [
+        {"id": "a", "x": 0, "y": 0, "width": 40, "height": 20},
+        {"id": "b", "x": 45, "y": 0, "width": 55, "height": 20},
+        {"id": "c", "x": 0, "y": 25, "width": 40, "height": 0}
+      ]
+    },
+    {
+      "id": "two-rows",
+      "root": {"width": 100, "height": 60},
+      "columns": [40, 55],
+      "rows": [20, 15, 15],
+      "items": [
+        {"id": "a", "x": 0, "y": 0, "width": 40, "height": 20},
+        {"id": "b", "x": 45, "y": 0, "width": 55, "height": 20},
+        {"id": "c", "x": 0, "y": 25, "width": 40, "height": 15},
+        {"id": "d", "x": 45, "y": 25, "width": 55, "height": 15},
+        {"id": "e", "x": 0, "y": 45, "width": 40, "height": 15},
+        {"id": "f", "x": 45, "y": 45, "width": 55, "height": 15}
+      ]
+    }
+  ]
+}
