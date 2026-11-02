@@ -1,6 +1,6 @@
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedCssMaxSize,
-    ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedCssDimension, ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTrackSize,
+    ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
 };
 
 use crate::StyleLayoutError;
@@ -62,6 +62,12 @@ pub(super) fn validate_percentage_axis_inputs(
     element: &ComputedElementStyle,
     grid: &ComputedCssGridLayout,
 ) -> Result<(), StyleLayoutError> {
+    let has_percentage_auto_rows = match &grid.auto_rows {
+        ComputedCssGridAutoRows::TrackList(tracks) => has_percentage_track(tracks),
+        ComputedCssGridAutoRows::Auto
+        | ComputedCssGridAutoRows::LengthPx(_)
+        | ComputedCssGridAutoRows::Unsupported(_) => false,
+    };
     if has_percentage_track(&grid.columns) {
         validate_axis(
             element,
@@ -90,8 +96,28 @@ pub(super) fn validate_percentage_axis_inputs(
             "percentage",
         )?;
     }
-    if (has_percentage_track(&grid.columns) || has_percentage_track(&grid.rows))
-        && element.layout_aspect_ratio.is_some()
+    if has_percentage_auto_rows {
+        validate_axis(
+            element,
+            AxisConstraints {
+                size_property: "height",
+                min_property: "min-height",
+                max_property: "max-height",
+                size: element.layout_dimensions.height,
+                min_size: element.layout_dimensions.min_height,
+                max_size: element.layout_dimensions.max_height,
+            },
+            "percentage",
+        )?;
+    }
+    if (has_percentage_track(&grid.columns)
+        || has_percentage_track(&grid.rows)
+        || has_percentage_auto_rows)
+        && (element.layout_aspect_ratio.is_some()
+            || element
+                .properties
+                .get("aspect-ratio")
+                .is_some_and(|value| value != "auto"))
     {
         return Err(unsupported(
             element,
@@ -121,7 +147,49 @@ pub(super) fn validate_percentage_track_ranges(
         &grid.rows,
         element.layout_dimensions.height,
         element.layout_spacing.row_gap,
-    )
+    )?;
+    validate_auto_row_percentage_ranges(element, &grid.auto_rows)
+}
+
+fn validate_auto_row_percentage_ranges(
+    element: &ComputedElementStyle,
+    auto_rows: &ComputedCssGridAutoRows,
+) -> Result<(), StyleLayoutError> {
+    let ComputedCssGridAutoRows::TrackList(tracks) = auto_rows else {
+        return Ok(());
+    };
+    if !has_percentage_track(tracks) {
+        return Ok(());
+    }
+    let ComputedCssDimension::LengthPx(basis) = element.layout_dimensions.height else {
+        return Err(unsupported(
+            element,
+            "height",
+            "Root HTML Grid percentage auto rows require a definite finite non-negative CSS-pixel height",
+        ));
+    };
+    if !basis.is_finite() || basis < 0.0 {
+        return Err(unsupported(
+            element,
+            "height",
+            "Root HTML Grid percentage auto rows require a definite finite non-negative CSS-pixel height",
+        ));
+    }
+    for track in tracks {
+        let ComputedCssGridTrackSize::Percentage(value) = track else {
+            continue;
+        };
+        let resolved = (*value as f64) * (basis as f64);
+        if !value.is_finite() || *value < 0.0 || !resolved.is_finite() || resolved > f32::MAX as f64
+        {
+            return Err(unsupported(
+                element,
+                "grid-auto-rows",
+                "resolved percentage auto row exceeds the finite f32 CSS-pixel range",
+            ));
+        }
+    }
+    Ok(())
 }
 
 fn validate_axis_track_range(

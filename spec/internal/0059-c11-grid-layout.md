@@ -30,6 +30,12 @@
 
 기존 fixed-px tracks의 exact 2×2 named-area 경로, merged bounded direct-`fr`·percentage 경로만 해당 track 값 범위 안에서 예외다. 고정 Chrome 156 expected/overflow oracle, Root HTML Rust tests, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator의 기존 고정-track 입력 근거와 한계는 [C11.1 Root HTML runtime evidence](./evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/README.md)에 기록한다. CSS Grid item text 규칙은 [CSS Grid Layout Module Level 2 §6](https://www.w3.org/TR/css-grid-2/#grid-items)에 따른다.
 
+## C11.1 parsed Root HTML percentage implicit rows · 제한 구현 후보 · 2026-11-02
+
+기본 parsed Root HTML route의 `grid-auto-rows`에서 direct finite non-negative px/percentage scalar·list를 제한적으로 받는다. 기존 단일 px 표현을 유지하고 단위·목록 순서를 보존하며 첫 implicit row부터 반복한다. Percentage basis는 Root HTML Grid의 definite inner block height다. definite `0px`도 유효하고 100% 초과 값은 clamp하지 않으며 row-gap은 percentage basis에서 차감하지 않는다. Explicit rows와 기존 direct percentage/fr track 조합 및 row-sparse placement는 유지한다.
+
+Percentage 목록은 finite non-negative definite height, min/max height가 auto/none인 상태, non-auto aspect ratio가 없는 상태를 요구한다. Math-backed height, percentage gap, implicit columns, named-area 결합, dense/column flow 및 auto/fr/intrinsic/calc implicit track은 계속 거부한다. Direct item, explicit/implicit track와 gap의 범위는 placement/frame publish 전에 검사하며 resource cap·allocation 오류는 부분 scene을 내지 않는다. Plan, Chrome 사전 비교와 독립 oracle, focused Rust 검증 및 simulator 실행·한계는 [전용 계획](../../plan/c11-root-html-grid-auto-row-percentage-list.md)과 [runtime evidence](./evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.md)에 있다. 이 limited candidate는 public CSS 지원이나 C11.1/C11 완료가 아니며 숫자 버전 `0.1.0`과 공식 `72/213`을 유지한다.
+
 ## C11.1 parsed Root HTML Grid fixed-px gap · merged limited slice · 2026-11-02
 
 PR [#1002](https://github.com/ohah/spinon/pull/1002)은 2026-11-01T20:53:41Z Rebase and merge로 병합됐다(merge SHA `12b554c5e1a1946e7267545d5d5092ba33211af9`). 이 제한 slice는 기존 `RuntimeRootHtmlTextPaintV1` default Root HTML 경로에서 CSS `gap`/`row-gap`/`column-gap`의 computed `normal` 또는 finite non-negative `LengthPx`를 제한적으로 허용한다. computed row/column 값은 같은 style snapshot의 `LayoutGap`에 한 번 전달되어 Taffy track 사이 gutter로 배치된다. percentage와 math-backed `calc()`는 각각 해당 longhand의 `unsupported_computed_value` diagnostic으로 scene publication 전에 거부한다. CSS-invalid negative shorthand는 cascade가 전체 declaration을 폐기해 기존 zero-gap computed behavior를 유지한다.

@@ -1,0 +1,20 @@
+{
+  "base_commit": "98a793df343af6ea6bbc8c4a2de15e90d7ace9c3",
+  "source_patch_sha256": "832f1d335ca42875f938d6b07a0549c1ab879335841b67f8ff3125623ff935cb",
+  "additional_test_sources": {
+    "crates/spinon-layout/src/grid_auto_placement/root_html_implicit_rows_tests/percentage.rs": "2ca242a3715bc6768b5cae3015bcf4ce4c811441d737dcf6a18d77a5c67d1d60",
+    "crates/spinon-style-to-layout/src/c11_1_root_html_percentage_auto_row_tests.rs": "c376112f8364c8932f50e1d0877c6c6494697d0d8efc19dc4dc790cf4f053e4e"
+  },
+  "runtime_input_sha256": "7556e1203e22579a87fad7ea570f0521483d036c950f6afc9279c0e4b33a2d94",
+  "runtime_probe_sha256": "7caadb6d0457b240af0357ea9aea2923595363b8c442ea606ba5ac21fee2709b",
+  "android_api37_arm64_avd": {
+    "serial": "emulator-5556",
+    "installed_apk_sha256": "b8958ca48a08f4b12f19fbb90b0af37a9a10ae721236eb6f130f8e60d8b92e05",
+    "screenshot_sha256": "bf0145b407e3f7d3d11108a5a41d0954e8760c3c3a5bc4dff3833ab6454f80d6"
+  },
+  "ios_26_2_iphone_17_pro_simulator": {
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "installed_executable_sha256": "3d02f8992d290901456ce81e8f045f3695493f8e8465fda75e8b301b38942e0d",
+    "screenshot_sha256": "59bae0aace7ed08f6cb251b9d62fedaf26b551d64e1346c69cce58c7cdeab2de"
+  }
+}

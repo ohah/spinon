@@ -1,5 +1,8 @@
 use super::*;
 
+#[path = "root_html_implicit_rows_tests/percentage.rs"]
+mod percentage;
+
 fn root_html_implicit_grid(
     columns: Vec<GridTrackSize>,
     rows: Vec<GridTrackSize>,
@@ -208,15 +211,8 @@ fn root_html_fixed_px_implicit_row_list_accepts_zero_and_cycles_after_it() {
 }
 
 #[test]
-fn root_html_fixed_px_implicit_row_list_rejects_non_px_and_invalid_entries() {
+fn root_html_fixed_px_implicit_row_list_rejects_unsupported_and_invalid_entries() {
     for (auto_rows, expect_invalid_track) in [
-        (
-            vec![
-                GridTrackSize::LengthPx(15.0),
-                GridTrackSize::Percentage(0.5),
-            ],
-            false,
-        ),
         (
             vec![GridTrackSize::LengthPx(15.0), GridTrackSize::Fraction(1.0)],
             false,
@@ -224,6 +220,9 @@ fn root_html_fixed_px_implicit_row_list_rejects_non_px_and_invalid_entries() {
         (vec![GridTrackSize::LengthPx(-1.0)], true),
         (vec![GridTrackSize::LengthPx(f32::NAN)], true),
         (vec![GridTrackSize::LengthPx(f32::INFINITY)], true),
+        (vec![GridTrackSize::Percentage(-0.5)], true),
+        (vec![GridTrackSize::Percentage(f32::NAN)], true),
+        (vec![GridTrackSize::Percentage(f32::INFINITY)], true),
     ] {
         let input = root_html_implicit_row_list_grid(
             60.0,

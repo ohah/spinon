@@ -1,0 +1,13 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.28s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 7 tests
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_single_percentage_auto_row_as_a_list ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_mixed_px_percentage_auto_row_list ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_fixed_px_auto_row_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_falls_back_after_syntax_invalid_negative_auto_row_declaration ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_fixed_px_auto_row_list_allocation_failure_is_atomic_and_recovers ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_percentage_auto_row_allocation_failure_is_atomic_and_recovers ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_unsupported_auto_row_lists_unsupported ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 260 filtered out; finished in 0.04s

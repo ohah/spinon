@@ -1,0 +1,32 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 26 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_percentage_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_still_rejects_percentage_fraction_composition ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_fixed_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_still_rejects_mixed_fraction_and_fixed_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::implicit_rows_composition::root_html_profile_still_rejects_intrinsic_tracks_with_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_invalid_or_nondirect_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_invalid_or_nondirect_percentage_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_oversized_implicit_row_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_rejects_empty_invalid_or_unsupported_implicit_row_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_direct_fraction_tracks_on_both_axes ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::implicit_rows_composition::root_html_profile_projects_percentage_tracks_with_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_direct_percentage_tracks_on_both_axes ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_mixed_px_percentage_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_fixed_px_implicit_row_track_lists_in_its_own_mode ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_profile_projects_one_fixed_implicit_row_size_in_its_own_mode ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::implicit_rows_composition::root_html_profile_projects_fraction_rows_with_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_percentage_auto_row_list_composes_with_explicit_percentage_and_fraction_tracks ... ok
+test projection::style_values::grid_values::tests::root_html_named_area_projection_reports_line_and_area_allocation_failures ... ok
+test projection::style_values::root_html_grid_gap_tests::root_html_grid_gap_admits_only_finite_nonnegative_px_or_normal ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_projects_the_bounded_two_axis_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_projects_direct_px_percentage_track_pairs ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_percentage_auto_rows_keep_percentage_gap_unsupported ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_percentage_auto_row_list_reaches_taffy_used_geometry ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_zero_and_over_hundred_percent_implicit_rows_keep_css_geometry ... ok
+test c11_1_root_html_percentage_auto_row_tests::parsed_root_html_percentage_auto_rows_require_a_definite_unconstrained_height ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 277 filtered out; finished in 0.05s

@@ -364,7 +364,16 @@ fn actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_wo
         GridTrackSize::LengthPx(25.0),
     ]);
     fixed_row_list_container.placement_mode = GridPlacementMode::RootHtmlImplicitRowsV1;
+    let mut percentage_row_list = sparse_grid(1, 1, 2);
+    let percentage_row_list_container =
+        percentage_row_list.grid_containers.get_mut(&id(1)).unwrap();
+    percentage_row_list_container.auto_rows =
+        GridAutoRows::TrackList(vec![GridTrackSize::Percentage(0.25)]);
+    percentage_row_list_container.placement_mode = GridPlacementMode::RootHtmlImplicitRowsV1;
     for node in fixed_row_list.nodes.iter_mut().skip(1) {
+        node.style.display = LayoutDisplay::Block;
+    }
+    for node in percentage_row_list.nodes.iter_mut().skip(1) {
         node.style.display = LayoutDisplay::Block;
     }
 
@@ -390,6 +399,12 @@ fn actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_wo
         (
             GridReservationSite::ExpandedRows,
             fixed_row_list,
+            id(1),
+            "grid-template-rows",
+        ),
+        (
+            GridReservationSite::ExpandedRows,
+            percentage_row_list,
             id(1),
             "grid-template-rows",
         ),

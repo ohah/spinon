@@ -120,7 +120,7 @@ fn validate_root_html_grid_tracks(
         property,
         value: value.to_owned(),
     };
-    let implicit_rows = root_html_has_fixed_implicit_rows(&grid.auto_rows);
+    let implicit_rows = root_html_has_supported_implicit_rows(&grid.auto_rows);
     for (property, tracks, line_names, auto_repeat) in [
         (
             "grid-template-columns",
@@ -173,20 +173,22 @@ fn validate_root_html_grid_tracks(
     if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) && !implicit_rows {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML Grid에서는 단일 fixed px 또는 fixed-px 목록 grid-auto-rows만 지원합니다",
+            "Root HTML Grid에서는 finite non-negative direct px/percentage grid-auto-rows 값과 목록만 지원합니다",
         ));
     }
     let invalid_implicit_row = match &grid.auto_rows {
         ComputedCssGridAutoRows::LengthPx(value) => !value.is_finite() || *value < 0.0,
-        ComputedCssGridAutoRows::TrackList(tracks) => tracks.iter().any(|track| {
-            matches!(track, ComputedCssGridTrackSize::LengthPx(value) if !value.is_finite() || *value < 0.0)
+        ComputedCssGridAutoRows::TrackList(tracks) => tracks.iter().any(|track| match track {
+            ComputedCssGridTrackSize::LengthPx(value)
+            | ComputedCssGridTrackSize::Percentage(value) => !value.is_finite() || *value < 0.0,
+            _ => true,
         }),
         _ => false,
     };
     if invalid_implicit_row {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML grid-auto-rows는 finite non-negative px 값만 포함해야 합니다",
+            "Root HTML grid-auto-rows는 direct finite non-negative px/percentage 값만 포함해야 합니다",
         ));
     }
     if !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
@@ -198,18 +200,21 @@ fn validate_root_html_grid_tracks(
     Ok(())
 }
 
-fn root_html_px_only_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
+fn root_html_direct_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
-        && tracks
-            .iter()
-            .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_)))
+        && tracks.iter().all(|track| {
+            matches!(
+                track,
+                ComputedCssGridTrackSize::LengthPx(_) | ComputedCssGridTrackSize::Percentage(_)
+            )
+        })
 }
 
-pub(super) fn root_html_has_fixed_implicit_rows(auto_rows: &ComputedCssGridAutoRows) -> bool {
+pub(super) fn root_html_has_supported_implicit_rows(auto_rows: &ComputedCssGridAutoRows) -> bool {
     match auto_rows {
         ComputedCssGridAutoRows::LengthPx(_) => true,
-        ComputedCssGridAutoRows::TrackList(tracks) => root_html_px_only_track_list(tracks),
+        ComputedCssGridAutoRows::TrackList(tracks) => root_html_direct_auto_row_track_list(tracks),
         ComputedCssGridAutoRows::Auto | ComputedCssGridAutoRows::Unsupported(_) => false,
     }
 }
@@ -729,7 +734,7 @@ fn project_grid_layout_with_reservations(
         == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         && grid.template_areas.is_some();
     let root_html_implicit_rows = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
-        && root_html_has_fixed_implicit_rows(&grid.auto_rows);
+        && root_html_has_supported_implicit_rows(&grid.auto_rows);
     let mut auto_rows = if sparse_row || dense_auto_placement || root_html_implicit_rows {
         project_auto_rows(
             node,
@@ -1355,7 +1360,7 @@ fn project_auto_rows(
         }
         ComputedCssGridAutoRows::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
-                && root_html_px_only_track_list(tracks) =>
+                && root_html_direct_auto_row_track_list(tracks) =>
         {
             project_tracks(
                 tracks,
