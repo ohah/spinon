@@ -1,0 +1,1368 @@
+{
+  "sourceHead": "444304968ff930d23d9c73075db83d0ca97cccb8",
+  "sourceTree": "943843d78d1b8ff7f17f8cf278c2cbbf6fe52294",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1047-2026-11-02/publication",
+  "routeCount": 188,
+  "totalBytes": 8908454,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/plan/c11-root-html-grid-auto-row-percentage-list.html",
+      "route": "plan/c11-root-html-grid-auto-row-percentage-list.html",
+      "sha256": "da48e00a47c6e092e1e36f7baf38ba03797eb39559287c2f1f1d41ca6c300595"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.html",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.html",
+      "sha256": "3abf40202d7f590ffcc87ccd3ae75e92dc6cc2b47456b5169dad166e0ef0862b"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.md",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.md",
+      "sha256": "d8a7d01935a2ba414d638140b9fe0110c1678a591dbdc42f9fc1e5bcd7b9861c"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "sha256": "e422c7ba9b17f3d857254464b4fd34ffc85c0497e8f4b1cf3b6887b7d0d40bf2"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "sha256": "bf0145b407e3f7d3d11108a5a41d0954e8760c3c3a5bc4dff3833ab6454f80d6"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "route": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "sha256": "59bae0aace7ed08f6cb251b9d62fedaf26b551d64e1346c69cce58c7cdeab2de"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "sha256": "e56d590160ea3fe3fceb3bddd92ad9a4b8f7c0d94f73df2ef9129f3ffce93eaa"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "untrackedEvidencePublished": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/icon.svg",
+      "kind": "rspress-generated",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/0059-c11-grid-layout.html",
+      "kind": "rspress-generated",
+      "bytes": 504524,
+      "sha256": "e3f44976f7b3b56f5cd4d20a7cdb11b47754d0d52e08f5b44eb8c965c823923e"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "kind": "tracked-source",
+      "bytes": 353880,
+      "sha256": "2a98ef5def459e90b9073b84ef787450954de6ed811dc61fd6eb553ae2ca16f7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/chrome156-cycle-pass02.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/chrome156-cycle-pass02.png",
+      "kind": "tracked-source",
+      "bytes": 3938,
+      "sha256": "38fb232e47890531df3c9cdf4d153d1d78746258521e749968226f1e26b6133d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/chrome156-cycle.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/chrome156-cycle.png",
+      "kind": "tracked-source",
+      "bytes": 3938,
+      "sha256": "38fb232e47890531df3c9cdf4d153d1d78746258521e749968226f1e26b6133d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/chrome156-observation.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/chrome156-observation.json",
+      "kind": "tracked-source",
+      "bytes": 1259,
+      "sha256": "8ccffaa46dd4e7d4effbbd2da7110b65b3a465de40a94f96899e66c78ed3b000"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.html",
+      "kind": "rspress-generated",
+      "bytes": 28380,
+      "sha256": "a7c691e7dc9690ad23165ef063882c43869bb9978507ce1524f8bc59fc6e03b9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.md",
+      "kind": "tracked-source",
+      "bytes": 2017,
+      "sha256": "d21750a37b552d00b61cd36698ae3a7d9575e10092a56a4981fff45d4ff45c05"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass02.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass02.png",
+      "kind": "tracked-source",
+      "bytes": 24705,
+      "sha256": "7c475bbd067ee574eb1334405e61ff7451b77287d18c08fc6d71079bcab8e601"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "kind": "tracked-source",
+      "bytes": 24323,
+      "sha256": "5d3631ffc58934ee9f0c54797ce8b18190230772a02ac126a0eb86d3d8ca729a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-probe-failure.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-probe-failure.log",
+      "kind": "tracked-source",
+      "bytes": 1392,
+      "sha256": "340efcca23ff207985f07e444e14e07ecda49293c1e0c7fa31ac8a2ab02997c3"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-probe-failure.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-probe-failure.png",
+      "kind": "tracked-source",
+      "bytes": 23163,
+      "sha256": "16763c9ce01ec156b9de22405487b0bb794eb1dd90206c1338411efb52308a95"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-runtime-pass02-summary.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-runtime-pass02-summary.log",
+      "kind": "tracked-source",
+      "bytes": 2429,
+      "sha256": "56d829647d47c9a02ef05d691e87e5a5eaeacd32092aaad56f04d3c79a268a0d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-runtime-pass03-summary.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-runtime-pass03-summary.log",
+      "kind": "tracked-source",
+      "bytes": 2429,
+      "sha256": "67ac7f1feceac550d5abbbf74eea81cb56a399a31f330c1093bf87d2c9ac30d4"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-runtime-summary.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-runtime-summary.log",
+      "kind": "tracked-source",
+      "bytes": 2429,
+      "sha256": "5a64f67a64d47772ac0a0218ca3f74f40996d696c7510c834eb7f9cfb0a16a81"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd.png",
+      "kind": "tracked-source",
+      "bytes": 23993,
+      "sha256": "6a3ecd2e4f9b2ed0da377e08d91c68487bc49ec12d9e46db407ebc29c69f9192"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-apk-sha256.txt",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-apk-sha256.txt",
+      "kind": "tracked-source",
+      "bytes": 508,
+      "sha256": "3a56c815973a04b0a5af26d979b64a742c45ff619e2bbc69fef6e69fe07207b8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-build-pass04.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-build-pass04.log",
+      "kind": "tracked-source",
+      "bytes": 4806,
+      "sha256": "c27eb700329cb665e491f5db158f49ae86922116412e4e17574e3e2f02e14f58"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/build-platform-apps-pass02.sh",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/build-platform-apps-pass02.sh",
+      "kind": "tracked-source",
+      "bytes": 4324,
+      "sha256": "21e325cc46cc996c3d01022221902ecff45d13a63878850822a95dcbea375c05"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/build-platform-apps-pass03.sh",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/build-platform-apps-pass03.sh",
+      "kind": "tracked-source",
+      "bytes": 4324,
+      "sha256": "71cd777e608d170027ef4e56b12fb71be2051904b92475e10fbeece71abfc2af"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/cascade-allocation-recovery-test-final-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/cascade-allocation-recovery-test-final-clean.log",
+      "kind": "tracked-source",
+      "bytes": 430,
+      "sha256": "c3e01b7dba4e0ec5186e5332c3e59a43e83f49203e2de7cacebf53923810f0be"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/cascade-tests-final-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/cascade-tests-final-clean.log",
+      "kind": "tracked-source",
+      "bytes": 675,
+      "sha256": "4ec876bf282a6bfccb4676d0f2c80f568c1af0956390e03e959ea336a107c75b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/clippy-final.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/clippy-final.log",
+      "kind": "tracked-source",
+      "bytes": 72,
+      "sha256": "2b34696728dc82b03cbf6311d7e3a6a41658bbde097834c3010a78bc82842c1a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/clippy.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/clippy.log",
+      "kind": "tracked-source",
+      "bytes": 598,
+      "sha256": "29a6472b9eb3e52e82b06685a7ce6ffa30bb536e4e5d41cecd1d7ddb6adefd49"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/diff-check-final.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/diff-check-final.log",
+      "kind": "tracked-source",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/diff-check.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/diff-check.log",
+      "kind": "tracked-source",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/format-check-final.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/format-check-final.log",
+      "kind": "tracked-source",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/format-check.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/format-check.log",
+      "kind": "tracked-source",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "kind": "tracked-source",
+      "bytes": 5345,
+      "sha256": "baa72969ec34a739b57027b3a0050f4ab8cc081aeda65ff566b848d6f5b47f11"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass02.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass02.png",
+      "kind": "tracked-source",
+      "bytes": 74752,
+      "sha256": "3e18da06121f98734507afaba68ca6618d84d09a03e2f4b19631f78bdb657b7e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "kind": "tracked-source",
+      "bytes": 74525,
+      "sha256": "7c354c76a9f37d0efde15542e6000d4fed2f206e8208e3e59e1e8dcc4e5607d1"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator.png",
+      "kind": "tracked-source",
+      "bytes": 73470,
+      "sha256": "fa1f157413009af95a7a7df6cc6e77b43fbf441255c63792c129844413dc8b4f"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-build-pass03-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-build-pass03-clean.log",
+      "kind": "tracked-source",
+      "bytes": 65530,
+      "sha256": "602472ac2bbd23b51b83b8aaac7c1a3825d912144b652f79d7980f89b7d080ff"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-runtime-pass02-summary.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-runtime-pass02-summary.log",
+      "kind": "tracked-source",
+      "bytes": 2178,
+      "sha256": "b65f3a24480ab75cb701cd9500ffaa626e127dc7a68b0e41f4a34115ec84a476"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-runtime-pass03-summary.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-runtime-pass03-summary.log",
+      "kind": "tracked-source",
+      "bytes": 2178,
+      "sha256": "b5701eaedad03ea04395720afe1e06a3f0f5042fb7dd920cfceec78969308b65"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-runtime-summary.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-runtime-summary.log",
+      "kind": "tracked-source",
+      "bytes": 2178,
+      "sha256": "848cd1b40538ac314746dfa4c9c64c221105c3da8fb4e97e9b71eff682b69d57"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/layout-allocation-recovery-test-final-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/layout-allocation-recovery-test-final-clean.log",
+      "kind": "tracked-source",
+      "bytes": 1210,
+      "sha256": "e476ad93802d1f17fe9c2a09dbbc3cbb087f7b4c6bc3383583a65ab9b66d1197"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/layout-list-tests-final-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/layout-list-tests-final-clean.log",
+      "kind": "tracked-source",
+      "bytes": 1143,
+      "sha256": "f39d29625c68a75af8113180e62a875da716a27fcd00de39d2055a1cb0df84fd"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/merge-PR1042.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/merge-PR1042.md",
+      "kind": "tracked-source",
+      "bytes": 1189,
+      "sha256": "8f4cc20466a8766660cec49b9bcfbbaac0d0ff1383e4e173a805e654839e083b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/built-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/built-app.js",
+      "kind": "tracked-source",
+      "bytes": 17591,
+      "sha256": "a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/built-index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/built-index.html",
+      "kind": "tracked-source",
+      "bytes": 3879,
+      "sha256": "f2d0d35e88ce89d64ebaac5d37365ad9621735f54f6399e90a1959a7412ccd5d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/built-root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/built-root-app.js",
+      "kind": "tracked-source",
+      "bytes": 705,
+      "sha256": "c3e817bc8ddbeab5734e353136b94894c0e04d41d0d51ec01242c798e8b88ce5"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/index.html",
+      "kind": "tracked-source",
+      "bytes": 367,
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass02/root-app.js",
+      "kind": "tracked-source",
+      "bytes": 1648,
+      "sha256": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/built-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/built-app.js",
+      "kind": "tracked-source",
+      "bytes": 17591,
+      "sha256": "a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/built-index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/built-index.html",
+      "kind": "tracked-source",
+      "bytes": 3879,
+      "sha256": "f2d0d35e88ce89d64ebaac5d37365ad9621735f54f6399e90a1959a7412ccd5d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/built-root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/built-root-app.js",
+      "kind": "tracked-source",
+      "bytes": 705,
+      "sha256": "c3e817bc8ddbeab5734e353136b94894c0e04d41d0d51ec01242c798e8b88ce5"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/index.html",
+      "kind": "tracked-source",
+      "bytes": 367,
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap-pass03/root-app.js",
+      "kind": "tracked-source",
+      "bytes": 1648,
+      "sha256": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/built-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/built-app.js",
+      "kind": "tracked-source",
+      "bytes": 17591,
+      "sha256": "a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/built-index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/built-index.html",
+      "kind": "tracked-source",
+      "bytes": 3879,
+      "sha256": "f2d0d35e88ce89d64ebaac5d37365ad9621735f54f6399e90a1959a7412ccd5d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/built-root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/built-root-app.js",
+      "kind": "tracked-source",
+      "bytes": 705,
+      "sha256": "c3e817bc8ddbeab5734e353136b94894c0e04d41d0d51ec01242c798e8b88ce5"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/index.html",
+      "kind": "tracked-source",
+      "bytes": 367,
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/original-bootstrap/root-app.js",
+      "kind": "tracked-source",
+      "bytes": 1648,
+      "sha256": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/platform-runtime-observation.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/platform-runtime-observation.json",
+      "kind": "tracked-source",
+      "bytes": 2441,
+      "sha256": "4487c0cb97d4d2a27267476adc73f53864c4292ac7d5a883ee83b98f0aac5779"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 7196,
+      "sha256": "4e384da6ecffa6eef4fa61b3503c37038667dac4653dba3882edeb467ebd36aa"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-render-agent-browser.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/pr-render-agent-browser.json",
+      "kind": "tracked-source",
+      "bytes": 502,
+      "sha256": "3a2996ff81a0aac3e1c7d2add7eb59f70d911a23e2ecf9d4aab8ff2c38520864"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/projection-tests-final-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/projection-tests-final-clean.log",
+      "kind": "tracked-source",
+      "bytes": 1971,
+      "sha256": "996496d99fe84b9671a90a01317c9af38a4d1688c5b81d7cc5a150494d3e48de"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+      "kind": "rspress-generated",
+      "bytes": 33119,
+      "sha256": "a4188fae999d9a27902d35acf2d8303438983573a56d1925c7ecf240187da9e2"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.md",
+      "kind": "tracked-source",
+      "bytes": 6780,
+      "sha256": "d0d57941ef61a4e1317ac171e184909eb5b2775652a122d90239384032d467be"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/restored-bootstrap-sha256.txt",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/restored-bootstrap-sha256.txt",
+      "kind": "tracked-source",
+      "bytes": 829,
+      "sha256": "54e98a854a7d6376e5bf150998283945ab5e112b57b274b0bd7fb2fc6960c23b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/roadmap-postmerge-docs-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/roadmap-postmerge-docs-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 5122,
+      "sha256": "549732dfbb20c994786d768f3de55aac54ccac202bc82ebab96925fe1ba5fb28"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/root-app-runtime-probe-first-attempt.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/root-app-runtime-probe-first-attempt.js",
+      "kind": "tracked-source",
+      "bytes": 804,
+      "sha256": "7e7ade66f905d7a353e59f59f1290746b053ad3583cb60fcb2c900c8d75f4302"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/root-app-runtime-probe.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/root-app-runtime-probe.js",
+      "kind": "tracked-source",
+      "bytes": 1204,
+      "sha256": "db260b14610c54cc1ad779dcc3dd15ce2c66b814c97277590f8350fc6f51226c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/root-html-grid-auto-row-list-runtime.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/root-html-grid-auto-row-list-runtime.html",
+      "kind": "tracked-source",
+      "bytes": 1316,
+      "sha256": "963d5b05c6c64c8f64638e3cc6d4268cf364e9c52c8d595d0ca973814e77d857"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/runtime-tests-align-negative-pass01-failure.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/runtime-tests-align-negative-pass01-failure.log",
+      "kind": "tracked-source",
+      "bytes": 3849,
+      "sha256": "6093aee81918687aebec80c31f6b81c94164ec692f1ae97a17482a44ae6d987b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/runtime-tests-final-clean.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/runtime-tests-final-clean.log",
+      "kind": "tracked-source",
+      "bytes": 2971,
+      "sha256": "891b2d0f00cba79978dc90c2792e8f77b134621ac14fc23ff17f174a4eff5c4a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/source-revision.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/source-revision.json",
+      "kind": "tracked-source",
+      "bytes": 1549,
+      "sha256": "3aac1752930f21693190648568735316f86d01ec3d35548ddb417033a93fa470"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/chrome156-observation.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/chrome156-observation.json",
+      "kind": "tracked-source",
+      "bytes": 3853,
+      "sha256": "831d6668501745037c2187ff89c8b6a366d129824b50361cb1712d8959e3d0b8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/chrome156.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/chrome156.png",
+      "kind": "tracked-source",
+      "bytes": 4023,
+      "sha256": "5b6e62274a0f2ba5892af44dae56c806ee1d3c06988ba1129bc87670c6658d02"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/expected.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/expected.json",
+      "kind": "tracked-source",
+      "bytes": 2811,
+      "sha256": "8a312195e829ab3ef71a88015493d7e472bf14b0cb7f09dbdde5265f953e576e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 5391,
+      "sha256": "d3db712791d6762a042bf78731a0dc849aa26642774dab60307563d7ac63cec0"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/README.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/README.html",
+      "kind": "rspress-generated",
+      "bytes": 26929,
+      "sha256": "3e16f2f15143fcd3ca33b8694d09172f52ba676d63d60e90ac099ea631c988b1"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-precomparison-2026-11-02/README.md",
+      "kind": "tracked-source",
+      "bytes": 1495,
+      "sha256": "ab47a09f88ebeb747e8b0789295e6680701216d76a4f17a388a58db177ff1869"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-api37-avd-pass02.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-api37-avd-pass02.png",
+      "kind": "tracked-source",
+      "bytes": 24835,
+      "sha256": "8cce09512ccba0d2819898f58648c9d682f297e5defaf85e9fc512d485e4ce0e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "kind": "tracked-source",
+      "bytes": 24324,
+      "sha256": "bf0145b407e3f7d3d11108a5a41d0954e8760c3c3a5bc4dff3833ab6454f80d6"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-build-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-build-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 4802,
+      "sha256": "42cee4984c29415003bfeff7e9424d6104f128c0dd2fc9352c585f5c7555dd9a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-build.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-build.log",
+      "kind": "tracked-source",
+      "bytes": 4880,
+      "sha256": "4d7169a8a7381b4011ab3f587879301c29fa8fab9ab823e3daec31ef9f30ec80"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-install-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-install-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-install-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-install-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-install.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-install.log",
+      "kind": "tracked-source",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-launch-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-launch-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 172,
+      "sha256": "a7ba9be9ec0420a94d1afa2f12674d21444f7ec2c732d4416472c84719c90481"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-launch-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-launch-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 172,
+      "sha256": "a67d8dd24421483851c7bfc5103f25b3ad1a5ba1afc3ed5233196fb2ac23b4a3"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-launch.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-launch.log",
+      "kind": "tracked-source",
+      "bytes": 231,
+      "sha256": "2928fe0353175bba98fe13314d35331ccc014cd7a7f9ebc790fc53c44f782e3c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-runtime-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-runtime-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 6410,
+      "sha256": "08658a3d8cc1f2751c7d13a30d4e0c9aceb1e3301d8ef93a8573d53a50063b04"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-runtime-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/android-runtime-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 6414,
+      "sha256": "479184463270631d3e70160c9ddadd0e8b3714ea3aa8a113c73bac233cbdd53a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/build-platform-apps.sh",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/build-platform-apps.sh",
+      "kind": "tracked-source",
+      "bytes": 4859,
+      "sha256": "dae64790f84edc577666bd6cc89542d576aca8852a10fc437854ba4a253b380c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "kind": "rspress-generated",
+      "bytes": 31412,
+      "sha256": "b0241ff4525725f539abb99964fa741ca7b40f9190cc55f006528737dbc463af"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "kind": "tracked-source",
+      "bytes": 5839,
+      "sha256": "d383849131c0c2737202533eb25b4583087b67ec1d6a4c1734c3c640d122968d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-26_2-simulator-pass02.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-26_2-simulator-pass02.png",
+      "kind": "tracked-source",
+      "bytes": 74620,
+      "sha256": "14c8efa58bccaa30fce78bc057348cc42daec17f223568412edaf26b2f554412"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "kind": "tracked-source",
+      "bytes": 73647,
+      "sha256": "59bae0aace7ed08f6cb251b9d62fedaf26b551d64e1346c69cce58c7cdeab2de"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-install-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-install-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-install-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-install-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-launch-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-launch-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 28,
+      "sha256": "e0bd9441a3943b1b2ca8a1ca508303ad5cc46779cee8a48d8d3ba9728d3d79de"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-launch-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-launch-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 28,
+      "sha256": "a393c68d913597e24162bf9152bd16da441e9bdb7dbfd37f310ba265f3972cb8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-runtime-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-runtime-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 739,
+      "sha256": "8e26c030dae0903aaa200cabe6fd7df51a1fb6ea71ef0092a5825b9777d4a2c7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-runtime-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-runtime-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 739,
+      "sha256": "59c4fe10420d73a5745a2a45d49957bc5301222698e677dd75e1ab9bc2045787"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-screenshot-pass02.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-screenshot-pass02.log",
+      "kind": "tracked-source",
+      "bytes": 218,
+      "sha256": "36e07c452c56e9f034b47202146fb29f893c690da2d9c6636962ec401309a580"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-screenshot-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-screenshot-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 218,
+      "sha256": "1bf543cdb9d4f239d1b8ed6178c195f790ba807885ebd443411d91df87cdbc96"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-simulator-build-pass03.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-simulator-build-pass03.log",
+      "kind": "tracked-source",
+      "bytes": 65528,
+      "sha256": "5cb7496b85eb457e073e83ff42c4669319e576638409888166fbeaedf0ba2d34"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-simulator-build.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/ios-simulator-build.log",
+      "kind": "tracked-source",
+      "bytes": 65626,
+      "sha256": "d65a45e88fca3c539f557eb816d86fde9d40fc598ab5ad7e30eacf5e509c98c7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.html",
+      "kind": "rspress-generated",
+      "bytes": 27114,
+      "sha256": "2d1735420416cdc1415d2e4c31a9fdc9fcb88a576de78edf9d2697fad7dede61"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.md",
+      "kind": "tracked-source",
+      "bytes": 1442,
+      "sha256": "d8a7d01935a2ba414d638140b9fe0110c1678a591dbdc42f9fc1e5bcd7b9861c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/built-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/built-app.js",
+      "kind": "tracked-source",
+      "bytes": 17591,
+      "sha256": "a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/built-index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/built-index.html",
+      "kind": "tracked-source",
+      "bytes": 3879,
+      "sha256": "f2d0d35e88ce89d64ebaac5d37365ad9621735f54f6399e90a1959a7412ccd5d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/built-root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/built-root-app.js",
+      "kind": "tracked-source",
+      "bytes": 705,
+      "sha256": "c3e817bc8ddbeab5734e353136b94894c0e04d41d0d51ec01242c798e8b88ce5"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/index.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/index.html",
+      "kind": "tracked-source",
+      "bytes": 367,
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/root-app.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/original-bootstrap-before-build/root-app.js",
+      "kind": "tracked-source",
+      "bytes": 1648,
+      "sha256": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/pr-diff-review-30.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/pr-diff-review-30.html",
+      "kind": "rspress-generated",
+      "bytes": 33834,
+      "sha256": "e8376c5e18951e715ff603965be7e09a4c8668cc0d135fa84771df4bd6cab16f"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/pr-diff-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 7810,
+      "sha256": "e422c7ba9b17f3d857254464b4fd34ffc85c0497e8f4b1cf3b6887b7d0d40bf2"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.html",
+      "kind": "rspress-generated",
+      "bytes": 33773,
+      "sha256": "3abf40202d7f590ffcc87ccd3ae75e92dc6cc2b47456b5169dad166e0ef0862b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.md",
+      "kind": "tracked-source",
+      "bytes": 7096,
+      "sha256": "4edfe711866099cee4b3ff1519d6af3666a37d53f5b2d0d3a053f8ca9f864f02"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-postmerge-docs-review-30.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-postmerge-docs-review-30.html",
+      "kind": "rspress-generated",
+      "bytes": 30079,
+      "sha256": "bf18b05a4e61fdfb0926c6901d4c9ab0cee443bdf1681c17a710af8e33360a15"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-postmerge-docs-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-postmerge-docs-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 4423,
+      "sha256": "adcb012bccc14ae96f3a9efc1c74076acf11e76fdff307a9e8fbf9a0b0efa689"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-source-pr-diff-review-30.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-source-pr-diff-review-30.html",
+      "kind": "rspress-generated",
+      "bytes": 29060,
+      "sha256": "c3db541ce850f7c84f5df5c0b16aed4ed288a08dc7ae1aaa689cc03c3a9445f7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-source-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/roadmap-source-pr-diff-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 3634,
+      "sha256": "031c44ec53bca2a33877b95eebf6414043f8d3cd88dacd15210a5ec78c6b4450"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/root-app-runtime-probe.js",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/root-app-runtime-probe.js",
+      "kind": "tracked-source",
+      "bytes": 1417,
+      "sha256": "7caadb6d0457b240af0357ea9aea2923595363b8c442ea606ba5ac21fee2709b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/root-html-grid-auto-row-percentage-list-runtime.html",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/root-html-grid-auto-row-percentage-list-runtime.html",
+      "kind": "tracked-source",
+      "bytes": 1666,
+      "sha256": "7556e1203e22579a87fad7ea570f0521483d036c950f6afc9279c0e4b33a2d94"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/run-simulators.sh",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/run-simulators.sh",
+      "kind": "tracked-source",
+      "bytes": 3524,
+      "sha256": "c7c1a65c268adee25efc51809eb964af27578462d23a2a1a6bf62e69c33c95d8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/diff-check-staged.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/diff-check-staged.log",
+      "kind": "tracked-source",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/diff-check-worktree.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/diff-check-worktree.log",
+      "kind": "tracked-source",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/layout-allocation-recovery.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/layout-allocation-recovery.log",
+      "kind": "tracked-source",
+      "bytes": 393,
+      "sha256": "2694ec0cef7dbaa546cb34e70e29b9e9eda6109d75de6eb3502d998d4183ea04"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/layout-root-html.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/layout-root-html.log",
+      "kind": "tracked-source",
+      "bytes": 2403,
+      "sha256": "e8c9c41380c74d970a1415469fa4c3e744748827edde0288ef97edb6f8f90a59"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/parsed-root-html-integration.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/parsed-root-html-integration.log",
+      "kind": "tracked-source",
+      "bytes": 798,
+      "sha256": "6ccba4a7d6ba0d2d3a35a5d183ab6e001d23cb64b922f2a1bd0cb3f295f60cc8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/rustfmt.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/rustfmt.log",
+      "kind": "tracked-source",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/scoped-clippy.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/scoped-clippy.log",
+      "kind": "tracked-source",
+      "bytes": 72,
+      "sha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/style-cascade.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/style-cascade.log",
+      "kind": "tracked-source",
+      "bytes": 1335,
+      "sha256": "c8f1281d65082cab3b11533487edcaf8b2cab313a3ceba7dd8f500fad646757c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/style-to-layout-root-html.log",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/rust/style-to-layout-root-html.log",
+      "kind": "tracked-source",
+      "bytes": 4118,
+      "sha256": "3692d443b416b48ba8a72d044123c35cc54875c37411045a0f0f50698e0750f9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/source-revision.json",
+      "source": "spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/source-revision.json",
+      "kind": "tracked-source",
+      "bytes": 1316,
+      "sha256": "49f8f03114ee53bb79aa4328d9e979365d32456dc882947d1a4cf605a187f68d"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/agent-browser-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/agent-browser-verification.json",
+      "kind": "tracked-source",
+      "bytes": 2588,
+      "sha256": "54eed90ef1cb4b7df6b3ea47eec5543fbc5a23784e09e4851143ff906a4c66f3"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/build-publication.mjs",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/build-publication.mjs",
+      "kind": "tracked-source",
+      "bytes": 6875,
+      "sha256": "0baaab9095104750316a9896bd002fd34f3c254a39c46e08d4d1613c36836c9b"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/copy-and-backup.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/copy-and-backup.json",
+      "kind": "tracked-source",
+      "bytes": 21270,
+      "sha256": "dc6d116990f493d0497c6ed01a70a17429b3b531fed375b4f11a4e36da41bd77"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/preflight.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/preflight.json",
+      "kind": "tracked-source",
+      "bytes": 39535,
+      "sha256": "8ceb6433fcb401b426de2e9ed272a5156755f26b0acbf4ad03aae372f4f43cff"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/README.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/README.md",
+      "kind": "tracked-source",
+      "bytes": 3773,
+      "sha256": "876b65209ca03e93c94f6e5e5a627e8aa5347462b84bf18d4e9c121862e8b356"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/roadmap-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/roadmap-pr-diff-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 4207,
+      "sha256": "daafb09583c6d44317ce817aaeb56237e182c47b664e85c2485488d88b849686"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/selected-publication.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/selected-publication.json",
+      "kind": "tracked-source",
+      "bytes": 39643,
+      "sha256": "3b6c4a33223c4901ab1efcee5a69c363e969bb2fbd543847f61a3ba85e0c6b5a"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/selected-route-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/selected-route-verification.json",
+      "kind": "tracked-source",
+      "bytes": 5164,
+      "sha256": "c2de7be07a967041c8629e7ff1bb99157c489e9af4a5c3fe710a04b864c06382"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/served-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/served-verification.json",
+      "kind": "tracked-source",
+      "bytes": 53595,
+      "sha256": "259d31949a04fde81eaf2e4b9343c140104493956377ebac7ddfc08265545e1a"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/sync-tailnet.mjs",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/sync-tailnet.mjs",
+      "kind": "tracked-source",
+      "bytes": 14505,
+      "sha256": "5fc5660809099e744c711cfd7cd31e4f3d84bbb13b68f7beb623e719bc265776"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-pr-diff-review-30.md",
+      "kind": "tracked-source",
+      "bytes": 3858,
+      "sha256": "ba5177c0d39c67483a7e6020fb40e7a2a09327f97411e8d631591ce15aaf8cee"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-roadmap-agent-browser-desktop.png",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-roadmap-agent-browser-desktop.png",
+      "kind": "tracked-source",
+      "bytes": 98184,
+      "sha256": "69b7a8091be4c5cdb2cd493d923fafec2686732c4a5f7cd1659b00b7e0db24a3"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-roadmap-agent-browser-mobile.png",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-roadmap-agent-browser-mobile.png",
+      "kind": "tracked-source",
+      "bytes": 92645,
+      "sha256": "f9e0c4b4326f50c35068b6edbf486cb8164613c364ac2e4e066aa5b571f4dd56"
+    },
+    {
+      "path": "logo.svg",
+      "source": "spec/public/logo.svg",
+      "kind": "tracked-source",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/plan/c11-css-grid.html",
+      "kind": "rspress-generated",
+      "bytes": 115046,
+      "sha256": "a66ecc9316d5c583cdea9356b1707ec448932c863221354e274fa5b274b17b65"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "source": "plan/c11-css-grid.md",
+      "kind": "tracked-source",
+      "bytes": 53970,
+      "sha256": "f11f1271d1957474a527079fc40bf191b9b1c3e6680a507437188ff6d8e6228b"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-row-list.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/plan/c11-root-html-grid-auto-row-list.html",
+      "kind": "rspress-generated",
+      "bytes": 36275,
+      "sha256": "04dc32ef8dee3cbfe33050c43c6b6fa3d2214779bb89d9532ad26e6e7b7c0b05"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-row-list.md",
+      "source": "plan/c11-root-html-grid-auto-row-list.md",
+      "kind": "tracked-source",
+      "bytes": 8887,
+      "sha256": "8844ae7b0c718a7ae83b6ae78a0401e5a88bbf46a5ae59052f199dd9f44c718b"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-row-percentage-list-plan-review-20.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/plan/c11-root-html-grid-auto-row-percentage-list-plan-review-20.html",
+      "kind": "rspress-generated",
+      "bytes": 28815,
+      "sha256": "ed042221d2fc1ab5679da438a17f0d71bea64e6ca442d5e4bca73749b477784a"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-row-percentage-list.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/plan/c11-root-html-grid-auto-row-percentage-list.html",
+      "kind": "rspress-generated",
+      "bytes": 38545,
+      "sha256": "da48e00a47c6e092e1e36f7baf38ba03797eb39559287c2f1f1d41ca6c300595"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-row-percentage-list.md",
+      "source": "plan/c11-root-html-grid-auto-row-percentage-list.md",
+      "kind": "tracked-source",
+      "bytes": 10646,
+      "sha256": "426f50e75f1cd6a58ab7490121060606601d7cc312426b9d74535465edd02496"
+    },
+    {
+      "path": "plan/c11-root-html-grid-runtime.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/plan/c11-root-html-grid-runtime.html",
+      "kind": "rspress-generated",
+      "bytes": 49618,
+      "sha256": "97da617ff3a12c62dcd32025e609ddb9d76b78bb9302902aee0357bb314c34b1"
+    },
+    {
+      "path": "plan/c11-root-html-grid-runtime.md",
+      "source": "plan/c11-root-html-grid-runtime.md",
+      "kind": "tracked-source",
+      "bytes": 14468,
+      "sha256": "7be199c5ea9617176074189de78fbb748225dc6b539a98e54c24934512314627"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "kind": "tracked-source",
+      "bytes": 512845,
+      "sha256": "f7484076acecbe3b1b0c1409544018db6f083b4be7acc4d1544b5875dd327589"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "kind": "tracked-source",
+      "bytes": 512845,
+      "sha256": "f7484076acecbe3b1b0c1409544018db6f083b4be7acc4d1544b5875dd327589"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "spec/public/roadmap.svg",
+      "kind": "tracked-source",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "kind": "tracked-source",
+      "bytes": 512845,
+      "sha256": "f7484076acecbe3b1b0c1409544018db6f083b4be7acc4d1544b5875dd327589"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/css/styles.8d918fd78e.css",
+      "kind": "rspress-generated",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/3.d8b550a68d.js",
+      "kind": "rspress-generated",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/3.d8b550a68d.js.LICENSE.txt",
+      "kind": "rspress-generated",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/l.76b60f2b87.js",
+      "kind": "rspress-generated",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-08153049b7be.c6c6423162.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-08153049b7be.c6c6423162.js",
+      "kind": "rspress-generated",
+      "bytes": 3873,
+      "sha256": "4174c91d423fdf2fd267a11e988376a8c3ae2e29f460081c419041b2b78b0e07"
+    },
+    {
+      "path": "static/js/async/route-27c774c3b785.48a2630d8e.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-27c774c3b785.48a2630d8e.js",
+      "kind": "rspress-generated",
+      "bytes": 8847,
+      "sha256": "1782a10aa9b7730162dbf38adb57f06e35740a505e28a66e6034272b74d7312a"
+    },
+    {
+      "path": "static/js/async/route-3c14a41047c1.d92d8a3819.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-3c14a41047c1.d92d8a3819.js",
+      "kind": "rspress-generated",
+      "bytes": 14442,
+      "sha256": "3dacfc2cdc1d03a67871bf5f32b01e152f3b9e7fd1df32e9cffb329de010d5d3"
+    },
+    {
+      "path": "static/js/async/route-4ce53628724e.820b710bc7.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-4ce53628724e.820b710bc7.js",
+      "kind": "rspress-generated",
+      "bytes": 10025,
+      "sha256": "4d82b3c39a91ae4ca500305ac4879913b9917c7d2dd0526e0dcc0456414c7c2d"
+    },
+    {
+      "path": "static/js/async/route-50e3fdb86fcd.7512a73dc5.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-50e3fdb86fcd.7512a73dc5.js",
+      "kind": "rspress-generated",
+      "bytes": 3363,
+      "sha256": "1be4ea315b69263c515c73db005ff74b382a4fb6365d9963f26f76a27d00ab18"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.c548f6f83e.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-6c33a3943990.c548f6f83e.js",
+      "kind": "rspress-generated",
+      "bytes": 814992,
+      "sha256": "4eb7ef9bd26f993c3b5d0a47348179f0186265bb60b2c428f486cc55c8b48c3e"
+    },
+    {
+      "path": "static/js/async/route-9e9d74ed46f9.77e1a30c4c.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-9e9d74ed46f9.77e1a30c4c.js",
+      "kind": "rspress-generated",
+      "bytes": 13028,
+      "sha256": "a955bb52d95ad86385fa3dfc2933dde150a4158f2d82ed3cef22dfab739396af"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.45a5b444e6.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-a48746cae70c.45a5b444e6.js",
+      "kind": "rspress-generated",
+      "bytes": 804,
+      "sha256": "12ad6e76895e7bf2ea2b070df03b8f4878b9f4645610620af1249582bd6be40e"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.241cf37304.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-c2801b21f038.241cf37304.js",
+      "kind": "rspress-generated",
+      "bytes": 77608,
+      "sha256": "488a360e692ca5ab614901a35c561bf0fe7fd1074d5d0c0e64442cd3939bacee"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e67cacf924.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-c4dae6800800.e67cacf924.js",
+      "kind": "rspress-generated",
+      "bytes": 518576,
+      "sha256": "ab087865345cddc4b3dc221783c5444782a47e1b6284b661f9a02af7b28c41af"
+    },
+    {
+      "path": "static/js/async/route-cdd1a25e58f8.0fe63c356b.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-cdd1a25e58f8.0fe63c356b.js",
+      "kind": "rspress-generated",
+      "bytes": 12871,
+      "sha256": "e4d6ede5c828ec747521a3fd87d5ed49f8c7eff374678e3575cf12d75e4e4062"
+    },
+    {
+      "path": "static/js/async/route-d5c04f24f7f9.e54597a5b9.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-d5c04f24f7f9.e54597a5b9.js",
+      "kind": "rspress-generated",
+      "bytes": 15289,
+      "sha256": "e3a67038e8493e936e93bf92899997612d0c6aa5665c276e3369c557909a842b"
+    },
+    {
+      "path": "static/js/async/route-d7b88580cc0e.d7ad28674a.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-d7b88580cc0e.d7ad28674a.js",
+      "kind": "rspress-generated",
+      "bytes": 23175,
+      "sha256": "583fdad66fa55b7167f73f9c4474f11116bbdbfb7988a2f024929f1d2066f8c7"
+    },
+    {
+      "path": "static/js/async/route-dad624f88492.2ee84d9052.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-dad624f88492.2ee84d9052.js",
+      "kind": "rspress-generated",
+      "bytes": 18465,
+      "sha256": "73c19d8f43e3415255f5871a0831b45578e53d087d9425584862b71a1f9f4cca"
+    },
+    {
+      "path": "static/js/async/route-ddff7968f324.0382c23426.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-ddff7968f324.0382c23426.js",
+      "kind": "rspress-generated",
+      "bytes": 10927,
+      "sha256": "22b525cf81c9728ecfdefcc285e976e7137f40d2625af7a5085f499ce5e60c1b"
+    },
+    {
+      "path": "static/js/async/route-ec2c52a5da5c.05d8ffd40b.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-ec2c52a5da5c.05d8ffd40b.js",
+      "kind": "rspress-generated",
+      "bytes": 11722,
+      "sha256": "445f7127d9f4712e3fabbb6aa21841f6607dbc6abb91d1206c95226e3784462a"
+    },
+    {
+      "path": "static/js/async/route-f6b9ca880c25.4aeb2c2d1a.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/async/route-f6b9ca880c25.4aeb2c2d1a.js",
+      "kind": "rspress-generated",
+      "bytes": 3210,
+      "sha256": "1ffd86df8194ce162e391037764e28d2b77fdc8c0f1d0e810dc123ef39a6aad5"
+    },
+    {
+      "path": "static/js/index.b8bbf6515f.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/index.b8bbf6515f.js",
+      "kind": "rspress-generated",
+      "bytes": 78296,
+      "sha256": "da79c4eae8c228f283ae0ec599bdd2729e36ef650336504d0086d0bea552302d"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/lib-react.801d719c4f.js",
+      "kind": "rspress-generated",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "kind": "rspress-generated",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/lib-router.d3b08da66f.js",
+      "kind": "rspress-generated",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "kind": "rspress-generated",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/js/styles.b5d9a69293.js",
+      "kind": "rspress-generated",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "path": "static/search_index.ko.fee643ce.json",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/static/search_index.ko.fee643ce.json",
+      "kind": "rspress-generated",
+      "bytes": 929694,
+      "sha256": "fee643cedf5716fb39a341c62afc3046c6dfe569a130aab3147999c0430ee044"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "build/spinon/c11-roadmap-pr1047-pass01/site/STATUS.html",
+      "kind": "rspress-generated",
+      "bytes": 759300,
+      "sha256": "e56d590160ea3fe3fceb3bddd92ad9a4b8f7c0d94f73df2ef9129f3ffce93eaa"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "spec/STATUS.md",
+      "kind": "tracked-source",
+      "bytes": 617273,
+      "sha256": "d0d0ddc0acbd319540e59426d33ce5c387d9fb0565f19441a60b8e9a570fca58"
+    },
+    {
+      "path": "tests/fixtures/css/c11/root-html-grid-auto-row-list-precomparison.html",
+      "source": "tests/fixtures/css/c11/root-html-grid-auto-row-list-precomparison.html",
+      "kind": "tracked-source",
+      "bytes": 1316,
+      "sha256": "963d5b05c6c64c8f64638e3cc6d4268cf364e9c52c8d595d0ca973814e77d857"
+    },
+    {
+      "path": "tests/fixtures/css/c11/root-html-grid-auto-row-percentage-list-precomparison.html",
+      "source": "tests/fixtures/css/c11/root-html-grid-auto-row-percentage-list-precomparison.html",
+      "kind": "tracked-source",
+      "bytes": 3233,
+      "sha256": "aaf6ed5775c9d5137299fe1845c327d3233a129c7e7a1e8dd32319772ff32a02"
+    }
+  ]
+}
