@@ -2,20 +2,38 @@
   "schema": "spinon-c11-root-html-grid-auto-row-fr-simulator-evidence/v1",
   "baseCommit": "16534440505aa9214f838112aad60bd645702e0a",
   "branch": "impl/c11-root-html-grid-auto-row-fr",
-  "status": "candidate-verified-not-merged",
+  "status": "merged-limited-candidate",
   "fixture": {
     "path": "tests/fixtures/css/c11/root-html-grid-auto-row-fr-runtime.html",
     "sha256": "573b76610f648e52913225f9481f854c9ae9c9fedb57ecfe2fa1d2b1a5ad6f51"
   },
   "focusedRustTests": {
-    "spinon-style cascade": { "passed": 9, "failed": 0 },
-    "spinon-style-to-layout projection": { "passed": 12, "failed": 0 },
-    "spinon-layout implicit rows": { "passed": 22, "failed": 0 },
-    "spinon-runtime implicit rows": { "passed": 11, "failed": 0 }
+    "spinon-style cascade": {
+      "passed": 9,
+      "failed": 0
+    },
+    "spinon-style-to-layout projection": {
+      "passed": 12,
+      "failed": 0
+    },
+    "spinon-layout implicit rows": {
+      "passed": 22,
+      "failed": 0
+    },
+    "spinon-runtime implicit rows": {
+      "passed": 11,
+      "failed": 0
+    }
   },
   "regressions": {
-    "spinon-layout auto-placement": { "passed": 52, "failed": 0 },
-    "spinon-runtime root_html_grid": { "passed": 41, "failed": 0 },
+    "spinon-layout auto-placement": {
+      "passed": 52,
+      "failed": 0
+    },
+    "spinon-runtime root_html_grid": {
+      "passed": 41,
+      "failed": 0
+    },
     "spinon-style-to-layout root_html": {
       "passed": 36,
       "failed": 1,
@@ -72,5 +90,15 @@
     "Simulator screenshots are visual smoke evidence; they are not surface pixel-readback evidence.",
     "Android renderer is software-rendered and neither platform result is a physical-device GPU result.",
     "The existing style-to-layout root_html filter remains 36/37 because its unchanged negative auto-column CSS fallback assertion fails."
-  ]
+  ],
+  "implementationPr": {
+    "number": 1070,
+    "url": "https://github.com/ohah/spinon/pull/1070",
+    "state": "merged",
+    "mergeMethod": "rebase",
+    "mergedAt": "2026-11-02T16:37:30Z",
+    "mergeCommit": "f40cb3b93d2555dafecd352bd35fb349b6bf7a64",
+    "checkRollup": [],
+    "requiredStatusChecks": "not-enabled"
+  }
 }
