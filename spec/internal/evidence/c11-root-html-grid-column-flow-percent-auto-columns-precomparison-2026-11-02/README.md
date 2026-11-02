@@ -4,12 +4,12 @@
 
 ## 입력과 관측
 
-- Fixture: [`root-html-grid-column-flow-percent-auto-columns-precomparison.html`](../../../../tests/fixtures/css/c11/root-html-grid-column-flow-percent-auto-columns-precomparison.html)
+- Fixture source: [root-html-grid-column-flow-percent-auto-columns-precomparison.html](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/root-html-grid-column-flow-percent-auto-columns-precomparison.html)
 - Browser: Agent Browser가 실행한 `HeadlessChrome/156.0.0.0`, viewport `1280×633`, DPR 1
 - Grid: content width 240px, height 63px, explicit columns `[30,40]px`, rows `[20,40]px`, gaps 5px/3px, 12 fixed 10×10px items, `grid-auto-flow:column`
 - 구현 runtime fixture로 재사용할 수 있도록 background shorthand를 `background-color`로 펼치고 UA 기본값과 같은 `writing-mode:horizontal-tb` 선언을 제거했다. 이 변경 뒤 Agent Browser에서 여섯 case를 다시 읽었으며 모든 geometry 결과와 screenshot bytes가 이전 관측과 같았다.
-- Raw `getComputedStyle`, used tracks, root 및 각 item `DOMRect`: [Chrome observation](./chrome156-observation.json)
-- 독립 산술 기대값: [expected.json](./expected.json)
+- Raw `getComputedStyle`, used tracks, root 및 각 item `DOMRect`: [Chrome observation JSON](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-grid-column-flow-percent-auto-columns-precomparison-2026-11-02/chrome156-observation.json)
+- 독립 산술 기대값: [expected JSON](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-grid-column-flow-percent-auto-columns-precomparison-2026-11-02/expected.json)
 - source SHA-256: `b6f8eb8bf5f631a0cce483b5d389addcf8bb0126fc0a2f69c3d4f1b0de22d06a`
 - observation SHA-256: `e4533f8d560e9fe927e1212f2de512259d23044a5eb395cbe1d28ced7e810769`
 - Chrome screenshot SHA-256: `3e41efa6393a058ee9401eabf00ed35feb8cb08f3e029b9f3db14bc9c3ba84b7`
