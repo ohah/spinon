@@ -1,0 +1,61 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=pr1047-pass01",
+  "sourceHead": "444304968ff930d23d9c73075db83d0ca97cccb8",
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "pages": [
+    {
+      "route": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "pr1047Card": true,
+      "mergeShaVisible": true,
+      "officialCountVisible": true,
+      "c11IncompleteVisible": true
+    },
+    {
+      "route": "/spinon/plan/c11-root-html-grid-auto-row-percentage-list.html",
+      "title": "C11.1 parsed Root HTML grid-auto-rows definite percentage 목록 - 스피논 문서",
+      "mergeShaVisible": true,
+      "limitationsVisible": true
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/README.html",
+      "title": "C11.1 parsed Root HTML percentage grid-auto-rows runtime 근거 - 스피논 문서",
+      "layoutReadyVisible": true,
+      "officialCountVisible": true
+    },
+    {
+      "route": "/spinon/plan/c11-css-grid.html",
+      "title": "C11 · CSS Grid 레이아웃 구현 계획 - 스피논 문서",
+      "pr1047Visible": true,
+      "mergeShaVisible": true,
+      "officialCountVisible": true
+    },
+    {
+      "route": "/spinon/STATUS.html#css-구현-체크리스트",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "pr1047Visible": true,
+      "mergeShaVisible": true,
+      "officialCountVisible": true
+    }
+  ],
+  "desktop": {
+    "viewport": { "width": 1280, "height": 900 },
+    "documentWidth": 1280,
+    "bodyWidth": 1280,
+    "cardVisible": true,
+    "screenshot": "tailnet-roadmap-agent-browser-desktop-pass01.png",
+    "screenshotSha256": "ddf7d721f35c57857273cd4a4c0fa77f638e1eb8bd31b89c1ff92d99ce31b282"
+  },
+  "mobile": {
+    "viewport": { "width": 390, "height": 844 },
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "card": { "left": 14, "width": 362, "height": 285.46875 },
+    "screenshot": "tailnet-roadmap-agent-browser-mobile-pass01.png",
+    "screenshotSha256": "05b8503d4b25a80f28bf61101650981808073c495c3e9d02e30407037ef5bb43",
+    "overviewSvgRightEdgeClipped": true
+  },
+  "browserClosed": true,
+  "browserProcessScanClear": true
+}
