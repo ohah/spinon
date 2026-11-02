@@ -1,6 +1,6 @@
-# C11.1 parsed Root HTML sparse column-flow 후보 runtime 근거
+# C11.1 parsed Root HTML sparse column-flow 제한 구현 runtime 근거
 
-**상태:** 구현 후보 PR [#1056](https://github.com/ohah/spinon/pull/1056). 지정 Rust 검사, Android/iOS Simulator 기본 app-route smoke, [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](pr-diff-review-30.md)를 마쳤다. GitHub status check rollup은 비어 있고 merge가 남아 있어 C11.1/C11 완료로 세지 않는다. 공식 집계는 `72/213` 그대로다.
+**상태:** 제한 구현 PR [#1056](https://github.com/ohah/spinon/pull/1056)은 `2026-11-02T11:58:53Z` Rebase and merge됐다(merge SHA `665309d34f29ebd6a9d7e9e79b0ee9eed31ee746`). 지정 Rust 검사, Android/iOS Simulator 기본 app-route smoke, [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](pr-diff-review-30.md)를 마쳤다. GitHub status check rollup은 비어 있어 CI 통과로 세지 않는다. 이 제한 구현은 C11.1/C11 완료가 아니며 공식 집계는 `72/213` 그대로다. [merge record](merge-PR1056.md)
 
 ## 구현 전 기준
 
