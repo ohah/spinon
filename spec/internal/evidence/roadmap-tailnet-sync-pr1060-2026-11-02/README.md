@@ -46,6 +46,8 @@ URL, viewport, 표시 문자열, 화면 크기와 SHA-256은 [Agent Browser 검�
 
 브라우저 캡처는 Tailnet 문서 화면 확인이다. Spinon 앱의 네이티브 pixel equality 근거가 아니다.
 
+최종 확인 후 `agent-browser close --all`을 실행했고, 프로세스 검사에서 Agent Browser 및 Chrome 프로세스는 0개였다.
+
 ## 검토 범위
 
 [동기화 변경 실패 관점 30개](./tailnet-pr-diff-review-30.md)에서 source, 선택 route, backup, hash, C11 공식 상태, responsive 표시와 브라우저 수명을 검토했다. GitHub Pages workflow는 실행하지 않았다.
