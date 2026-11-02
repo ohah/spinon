@@ -53,7 +53,11 @@ Chrome precomparison source의 빈 Grid item은 auto stretch frame을 관찰한�
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 [같은 fixed-marker HTML source](../tests/fixtures/css/c11/root-html-grid-fr-runtime.html)를 기존 parsed Root HTML app entry로 실행한다. Source/build hashes, geometry comparison, draw/present 및 simulator screenshots를 보존한다. PixelCopy 또는 Metal drawable readback을 별도 수행하지 않으면 pixel equality를 주장하지 않는다. Android AVD software rendering과 iOS compositor 이후 미검증 경계를 기록한다.
 7. 기본/제품 artifact가 opt-in scene ID·payload·FFI entry를 얻지 않는지 확인하고, scoped focused Rust tests, `cargo fmt --all -- --check`, 관련 Clippy와 두 simulator app build를 실행한다. PR check rollup이 비어 있으면 CI 통과로 기록하지 않는다.
 8. 변경 코드와 runtime 결과를 계획 review와 다른 실패 관점 20개로 검토한다. 실제 구현 PR diff도 별도의 적대 관점으로 최소 20회 검토한다. 발견 결함을 수정한 뒤 영향받은 tests·matrix·review를 다시 실행한다.
-9. PR에는 CSS source와 Android/iOS simulator 화면을 첨부하고 image URL을 Agent Browser에서 확인한다. Rebase and merge 뒤 `spec/internal/0059-c11-grid-layout.md`, `plan/c11-css-grid.md`, 이 계획, `spec/STATUS.md`의 C11 note를 제한 범위로 동기화한다. C11/C11.1 체크박스와 공식 완료 `72/213`은 유지하고 Tailnet preview는 상태 문서 반영 후 hash와 실제 served response를 확인해 갱신한다.
+9. PR에는 CSS source와 Android/iOS simulator 화면을 첨부하고 image URL을 Agent Browser에서 확인한다. Rebase and merge 뒤 `spec/internal/0059-c11-grid-layout.md`, `plan/c11-css-grid.md`, 이 계획, `spec/STATUS.md`의 C11 note를 제한 범위로 동기화한다. C11 checkbox는 미완료로 두고 C11.1 전체도 미완료로 유지하며 공식 완료 `72/213`은 바꾸지 않고 Tailnet preview는 상태 문서 반영 후 hash와 실제 served response를 확인해 갱신한다.
+
+## 병합된 구현 결과 · PR #1015 · 2026-11-02
+
+PR [#1015](https://github.com/ohah/spinon/pull/1015)은 2026-11-02T00:39:29Z Rebase and merge됐고 merge SHA는 `015ff0e9ac959a269b60728a1ac3a6ab962791ea`다. 계획의 제한 범위로 Root HTML direct `fr` projection과 definite-axis gate를 구현했다. Rust runtime positive/rejection matrix 8/8씩, Root HTML regression 10/10, Grid projection 47/47, Taffy library 176/176, scoped Clippy·rustfmt·diff check을 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 shared source hash를 읽어 layout-ready 및 draw/present를 기록했다. Simulator screenshots는 visual smoke 근거로만 분류한다. 원래 platform assets 복구 후 기본 Android/iOS app도 재빌드했고 packaged asset hashes가 원본과 일치했다. PR check run은 보고되지 않았다. [실행 evidence](../spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-pr-diff-review-30.md).
 
 ## 범위 밖과 완료 판정
 

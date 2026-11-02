@@ -1,0 +1,10 @@
+{
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/public/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "text": "2026-11-02 C11.1 parsed Root HTML direct `fr` explicit track 제한 구현 · PR #1015 Rebase and merge (2026-11-02T00:39:29Z, merge SHA 015ff0e9ac959a269b60728a1ac3a6ab962791ea): 기본 parsed Root HTML profile에 definite CSS-pixel width/height 기준의 finite non-negative direct px/`fr` tracks를 연결하고, min/max/aspect-ratio 제약 및 범위 밖 입력을 검사한다. Rust runtime positive/rejection matrix 8/8씩, Root HTML regression 10/10, Grid projection 47/47, Taffy library 176/176이 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator가 동일 source hash로 layout-ready와 draw/present를 확인했다. Android 화면 · iOS 화면 · 실행·범위 근거 · 전용 계획 · 내부 계약 0059. PR check run은 보고되지 않았다. 이 제한 slice는 일반 CSS admission 또는 C11.1/C11 완료가 아니며 공식 72/213과 C11/C11.1 미완료 상태를 유지한다. 공식 상태",
+  "scrollWidth": 1440
+}

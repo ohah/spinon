@@ -42,13 +42,13 @@ Root HTML named-area integration 7/7, Root HTML regression 50/50, `spinon-style`
 
 이 slice는 구현 branch 후보이며 PR 검토·병합 전이다. 일반 `grid-template-areas`/`grid-area` 문법, 임의 면적/track/gap, implicit layout, responsive behavior, WPT 적합성 또는 전체 C11 완료를 뜻하지 않는다. 내부 인터페이스 숫자 버전 `0.1.0`과 공식 `72/213`은 유지한다.
 
-## C11.1 parsed Root HTML direct `fr` explicit tracks · bounded implementation candidate · 2026-11-02
+## C11.1 parsed Root HTML direct `fr` explicit tracks · bounded implementation slice · 2026-11-02
 
 계획 [c11-root-html-grid-fr-track](../../plan/c11-root-html-grid-fr-track.md)의 implementation candidate는 기존 `RuntimeRootHtmlTextPaintV1` 경로에서 finite non-negative direct px/`fr` explicit tracks를 허용한다. Columns `fr`에는 같은 computed element의 definite CSS-pixel width가, rows `fr`에는 definite CSS-pixel height가 필요하다. 해당 축 min-size는 `auto`, max-size는 `none`이어야 하고 `aspect-ratio` 및 해당 width/height의 math-backed value는 거부한다. px와 `fr` 혼합, `0fr`, subunit factor sum과 큰 유한 factor를 다루지만 `minmax()`·percentage·intrinsic/auto track·auto-repeat·line name은 허용하지 않는다. Fixed-px named-area 경로는 유지되며 area와 `fr`의 결합은 거부한다.
 
 이 제한은 explicit fixed-size visible block items와 definite root만 다룬다. Shared HTML은 Chrome 156 Agent Browser, 기본 Root HTML Rust runtime, Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 SHA-256으로 실행했다. Rust runtime positive matrix 8/8, bounded rejection matrix 8/8, Root HTML regression 10/10, Grid projection 47/47, vendored Taffy library 176/176 및 scoped Clippy·rustfmt가 통과했다. 네 개 `1e38fr`의 CSS Grid 2025 CRD 기대값 `[30,30,30,30]`은 Taffy f32 합 overflow를 막는 f64 accumulation으로 검사했다. Chrome 156의 `[0,0,0,0]` 관측은 별도 divergence로 기록하고 기대값으로 쓰지 않는다. Android/iOS simulator 로그는 source hash·layout ready·draw/present를 보이며 screenshot은 visual smoke evidence다. PixelCopy·Metal drawable readback은 수행하지 않았다. [사전 비교](./evidence/c11-root-html-grid-fr-track-precomparison-2026-11-02/README.md) · [실행·hash·화면과 한계](./evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.md) · [구현/runtime 실패 관점 검토 20개](./evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-runtime-review-20.md).
 
-이 candidate는 일반 CSS admission, intrinsic flex sizing, `fr` inside `minmax()`, named-area + `fr`, implicit tracks, WPT 적합성 또는 C11.1/C11 완료를 뜻하지 않는다. 구현 PR [#1015](https://github.com/ohah/spinon/pull/1015)가 열려 있고 status check rollup은 비어 있다. 병합은 남아 있으며 공식 `72/213`, C11 및 C11.1 미완료 상태를 유지한다. 내부 계약 숫자 버전 `0.1.0`은 변경하지 않는다.
+이 candidate는 일반 CSS admission, intrinsic flex sizing, `fr` inside `minmax()`, named-area + `fr`, implicit tracks, WPT 적합성 또는 C11.1/C11 완료를 뜻하지 않는다. 구현 PR [#1015](https://github.com/ohah/spinon/pull/1015)은 2026-11-02T00:39:29Z Rebase and merge됐고 merge SHA는 `015ff0e9ac959a269b60728a1ac3a6ab962791ea`다. PR check rollup은 비어 있어 CI 통과로 주장하지 않는다. 공식 `72/213`, C11 및 C11.1 미완료 상태를 유지한다. 내부 계약 숫자 버전 `0.1.0`은 변경하지 않는다.
 
 ## C11.2.1 numeric explicit placement 구현 상태
 
