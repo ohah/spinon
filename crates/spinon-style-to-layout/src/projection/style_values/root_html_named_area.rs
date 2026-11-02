@@ -108,13 +108,7 @@ pub(super) fn validate_root_html_named_area_candidate(
             container.layout_dimensions.width,
         ),
     ] {
-        if super::root_html_grid_gap::resolved_root_html_gap(value, basis).is_none() {
-            return Err(unsupported(
-                owner,
-                property,
-                "Root HTML named-area 제한 경로는 해당 축에 유한하게 해석되는 non-negative px/percentage Grid gap을 요구합니다",
-            ));
-        }
+        super::root_html_grid_gap::validate_root_html_gap(container, property, value, basis)?;
     }
     let container_handle = nodes
         .grid_container_handles

@@ -234,7 +234,153 @@ fn fixed_named_area_accepts_percentage_and_existing_px_gaps() {
 }
 
 #[test]
-fn invalid_negative_gap_cascades_but_math_and_indefinite_basis_fail_closed() {
+fn root_html_grid_math_gaps_use_their_axis_basis_and_css_math_operators() {
+    let mixed = Fixture::new(
+        "display:grid;box-sizing:border-box;width:200px;height:100px;grid-template-columns:10px 10px;grid-template-rows:10px 10px;column-gap:calc(5% + 2px);row-gap:calc(5% + 2px);margin:0;padding:0",
+        &auto_items(4),
+    );
+    let output = mixed.compute().unwrap();
+    assert_eq!(mixed.item_frame(&output, 1), [22.0, 0.0, 10.0, 10.0]);
+    assert_eq!(mixed.item_frame(&output, 2), [0.0, 17.0, 10.0, 10.0]);
+    assert_eq!(mixed.item_frame(&output, 3), [22.0, 17.0, 10.0, 10.0]);
+
+    for gap_property in ["gap:calc(5% + 2px)", "grid-gap:calc(5% + 2px)"] {
+        let fixture = Fixture::new(
+            &format!(
+                "display:grid;box-sizing:border-box;width:200px;height:100px;grid-template-columns:10px 10px;grid-template-rows:10px 10px;{gap_property};margin:0;padding:0"
+            ),
+            &auto_items(4),
+        );
+        let output = fixture.compute().unwrap();
+        assert_eq!(
+            (0..4)
+                .map(|index| fixture.item_frame(&output, index))
+                .collect::<Vec<_>>(),
+            [
+                [0.0, 0.0, 10.0, 10.0],
+                [22.0, 0.0, 10.0, 10.0],
+                [0.0, 17.0, 10.0, 10.0],
+                [22.0, 17.0, 10.0, 10.0],
+            ],
+            "{gap_property}"
+        );
+    }
+
+    for (expression, expected_x) in [
+        ("calc(5px + 7px)", 22.0),
+        ("calc(5% * 2)", 30.0),
+        ("calc(24px / 2)", 22.0),
+        ("min(15%, 20px)", 30.0),
+        ("max(15%, 20px)", 40.0),
+        ("clamp(5px, calc(5% + 2px), 20px)", 22.0),
+        ("clamp(30px, calc(5% + 2px), 10px)", 40.0),
+    ] {
+        let fixture = Fixture::new(
+            &format!(
+                "display:grid;box-sizing:border-box;width:200px;height:100px;grid-template-columns:10px 10px;grid-template-rows:10px;column-gap:{expression};margin:0;padding:0"
+            ),
+            &auto_items(2),
+        );
+        let output = fixture.compute().unwrap();
+        assert_eq!(
+            fixture.item_frame(&output, 1)[0],
+            expected_x,
+            "{expression}"
+        );
+    }
+
+    let negative = Fixture::new(
+        "display:grid;box-sizing:border-box;width:100px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(2px - 5%);margin:0;padding:0",
+        &auto_items(2),
+    );
+    let output = negative.compute().unwrap();
+    assert_eq!(negative.item_frame(&output, 1)[0], 10.0);
+
+    let zero_basis = Fixture::new(
+        "display:grid;box-sizing:border-box;width:0px;height:20px;grid-template-columns:0px 0px;grid-template-rows:20px;column-gap:calc(75% + 2px);margin:0;padding:0",
+        &auto_items(2),
+    );
+    let output = zero_basis.compute().unwrap();
+    assert_eq!(zero_basis.item_frame(&output, 0)[0], 0.0);
+    assert_eq!(zero_basis.item_frame(&output, 1)[0], 2.0);
+
+    let overflowing = Fixture::new(
+        "display:grid;box-sizing:border-box;width:100px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(120% + 1px);margin:0;padding:0",
+        &auto_items(2),
+    );
+    let output = overflowing.compute().unwrap();
+    assert_eq!(output.layout.frames[&overflowing.grid.id()].width, 100.0);
+    assert_eq!(overflowing.item_frame(&output, 1), [131.0, 0.0, 10.0, 10.0]);
+
+    let positive_infinity = Fixture::new(
+        "display:grid;box-sizing:border-box;width:100px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(1px / 0);margin:0;padding:0",
+        &auto_items(2),
+    );
+    let output = positive_infinity.compute().unwrap();
+    let second_x = positive_infinity.item_frame(&output, 1)[0];
+    assert!(
+        second_x.is_finite() && second_x >= 30_000_000.0,
+        "x={second_x}"
+    );
+
+    let nan = Fixture::new(
+        "display:grid;box-sizing:border-box;width:100px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(0px / 0);margin:0;padding:0",
+        &auto_items(2),
+    );
+    let output = nan.compute().unwrap();
+    assert_eq!(nan.item_frame(&output, 1)[0], 10.0);
+}
+
+#[test]
+fn root_html_grid_math_gaps_compose_with_implicit_rows_column_flow_and_named_areas() {
+    let rows = Fixture::new(
+        "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px 55px;grid-template-rows:10px;grid-auto-rows:25%;row-gap:calc(10% + 2px);margin:0;padding:0",
+        &auto_items(3),
+    );
+    let output = rows.compute().unwrap();
+    assert_eq!(rows.item_frame(&output, 2), [0.0, 22.0, 10.0, 10.0]);
+
+    let columns = Fixture::new(
+        "display:grid;box-sizing:border-box;width:200px;height:100px;grid-template-columns:40px;grid-template-rows:10px 10px;grid-auto-columns:50%;grid-auto-flow:column;column-gap:calc(5% + 2px);margin:0;padding:0",
+        &auto_items(3),
+    );
+    let output = columns.compute().unwrap();
+    assert_eq!(columns.item_frame(&output, 2), [52.0, 0.0, 10.0, 10.0]);
+
+    let length_only_columns = Fixture::new(
+        "display:grid;box-sizing:border-box;height:100px;grid-template-columns:40px;grid-template-rows:10px 10px;grid-auto-columns:100px;grid-auto-flow:column;column-gap:calc(5px + 7px);margin:0;padding:0",
+        &auto_items(3),
+    );
+    let output = length_only_columns.compute().unwrap();
+    assert_eq!(
+        length_only_columns.item_frame(&output, 2),
+        [52.0, 0.0, 10.0, 10.0]
+    );
+
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:120px;height:70px;grid-template-columns:40px 80px;grid-template-rows:20px 50px;grid-template-areas:'header header' 'side content';column-gap:calc(10% + 0px);row-gap:calc(10% + 0px);margin:0;padding:0",
+        &[
+            "display:block;box-sizing:border-box;width:132px;height:20px;grid-area:header;margin:0;padding:0",
+            "display:block;box-sizing:border-box;width:40px;height:50px;grid-area:side;margin:0;padding:0",
+            "display:block;box-sizing:border-box;width:80px;height:50px;grid-area:content;margin:0;padding:0",
+        ],
+    );
+    let output = fixture.compute().unwrap();
+    assert_eq!(fixture.item_frame(&output, 0), [0.0, 0.0, 132.0, 20.0]);
+    assert_eq!(fixture.item_frame(&output, 1)[1], 27.0);
+    assert_eq!(fixture.item_frame(&output, 2)[0], 52.0);
+
+    let length_only = Fixture::new(
+        "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:10px 10px;grid-template-rows:10px 10px;column-gap:calc(5px + 7px);row-gap:calc(5px + 7px);margin:0;padding:0",
+        &auto_items(4),
+    );
+    let output = length_only.compute().unwrap();
+    assert_eq!(length_only.item_frame(&output, 1)[0], 22.0);
+    assert_eq!(length_only.item_frame(&output, 2)[1], 22.0);
+}
+
+#[test]
+fn invalid_negative_gap_cascades_but_math_requires_a_definite_percentage_basis() {
     let invalid = Fixture::new(
         "display:grid;box-sizing:border-box;width:100px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:5px;column-gap:-10px;row-gap:0;margin:0;padding:0",
         &auto_items(2),
@@ -244,16 +390,32 @@ fn invalid_negative_gap_cascades_but_math_and_indefinite_basis_fail_closed() {
 
     for (style, property) in [
         (
-            "display:grid;box-sizing:border-box;width:200px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(5% + 2px);margin:0;padding:0",
-            "column-gap",
-        ),
-        (
             "display:grid;box-sizing:border-box;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:10%;margin:0;padding:0",
             "column-gap",
         ),
         (
             "display:grid;box-sizing:border-box;width:100px;min-width:1px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:10%;margin:0;padding:0",
             "min-width",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:100px;min-width:1px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(5% + 2px);margin:0;padding:0",
+            "min-width",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:100px;max-width:200px;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(5% + 2px);margin:0;padding:0",
+            "max-width",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:100px;height:100px;max-height:200px;grid-template-columns:10px;grid-template-rows:10px 10px;row-gap:calc(5% + 2px);margin:0;padding:0",
+            "max-height",
+        ),
+        (
+            "display:grid;box-sizing:border-box;height:20px;grid-template-columns:10px 10px;grid-template-rows:20px;column-gap:calc(5% + 2px);margin:0;padding:0",
+            "width",
+        ),
+        (
+            "display:grid;box-sizing:border-box;width:100px;grid-template-columns:10px;grid-template-rows:10px 10px;row-gap:calc(5% + 2px);margin:0;padding:0",
+            "height",
         ),
     ] {
         let fixture = Fixture::new(style, &auto_items(2));

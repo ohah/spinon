@@ -1,0 +1,35 @@
+
+running 323 tests
+................... 19/323
+c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs --- FAILED
+............. 33/323
+c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns --- FAILED
+....................................................................................... 121/323
+....................................................................................... 208/323
+....................................................................................... 295/323
+............................
+failures:
+
+---- c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs stdout ----
+
+thread 'c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs' (149440502) panicked at crates/spinon-style-to-layout/src/c07_3_aspect_ratio_tests.rs:229:13:
+assertion `left == right` failed: 1x ratio-calc-number.aspect-ratio computed style
+  left: Some("1.7777778 / 1")
+ right: Some("1.77778 / 1")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns stdout ----
+
+thread 'c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns' (149440539) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_fr_auto_column_tests.rs:248:5:
+assertion failed: matches!(fixture.compute(),
+    Err(StyleLayoutError::UnsupportedComputedValue
+    { property: "grid-auto-columns", .. }))
+
+
+failures:
+    c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs
+    c11_1_root_html_fr_auto_column_tests::parsed_root_html_css_invalid_fraction_falls_back_to_unsupported_auto_columns
+
+test result: FAILED. 321 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.45s
+
+error: test failed, to rerun pass `-p spinon-style-to-layout --lib`
