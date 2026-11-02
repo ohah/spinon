@@ -6,7 +6,7 @@
 
 **구현/runtime 검토:** [실패 관점 20개](../spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.md)
 
-**현재 상태:** 단일 fixed-px implicit row의 제한 구현 후보를 기본 Root HTML runtime 경로에 연결했다. Rust Root HTML/layout 회귀, 자원 상한, 관련 C11.3.3 검사, Clippy와 rustfmt 및 Android API 37 AVD/iOS 26.2 Simulator 실행을 마쳤다. 별도의 구현/runtime 실패 관점 20개 검토도 통과했다. [실행 근거](../spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.md)에 exact frame matrix, source/build hash, platform log, screenshots와 한계를 기록한다. PR diff 검토와 병합은 남아 있다. 이 제한 후보는 C11.1/C11 또는 공식 완료 `72/213`을 승격하지 않는다.
+**현재 상태:** 단일 fixed-px implicit row의 제한 구현 후보를 기본 Root HTML runtime 경로에 연결했다. Rust Root HTML/layout 회귀, 자원 상한, 관련 C11.3.3 검사, Clippy와 rustfmt 및 Android API 37 AVD/iOS 26.2 Simulator 실행을 마쳤다. 별도의 구현/runtime 실패 관점 20개 검토도 통과했다. [실행 근거](../spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.md)에 exact frame matrix, source/build hash, platform log, screenshots와 한계를 기록한다. PR [#1024](https://github.com/ohah/spinon/pull/1024)가 열려 있고 PR diff 검토 및 병합은 남아 있다. 이 제한 후보는 C11.1/C11 또는 공식 완료 `72/213`을 승격하지 않는다.
 
 ## 목표와 규범 근거
 
