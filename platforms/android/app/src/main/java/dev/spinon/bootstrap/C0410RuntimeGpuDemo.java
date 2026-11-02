@@ -621,7 +621,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             c114ComputedTextTransformLayoutText(sceneId),
                             "Normal", "Normal", 0, 0, 0,
                             "Noto Sans KR",
-                            c114IsFullWidthTextTransformScene(sceneId) ? "ja" : "en",
+                            c114IsFullWidthTextTransformScene(sceneId)
+                                    || c114IsFullSizeKanaTextTransformScene(sceneId) ? "ja" : "en",
                             "Strict", "Normal", advances);
             return new C114GenericDirectTextSceneExpectation(
                     120, textTransform[3], new double[] {textTransform[2]}, item, null);
@@ -8140,7 +8141,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         org.json.JSONObject columns = passes.optJSONObject(0);
         org.json.JSONObject rows = passes.optJSONObject(1);
         double trackTolerance = c114IsUnicodeTextTransformScene(sceneId)
-                || c114IsFullWidthTextTransformScene(sceneId) ? 0.03125 : 0.0001;
+                || c114IsFullWidthTextTransformScene(sceneId)
+                || c114IsFullSizeKanaTextTransformScene(sceneId) ? 0.03125 : 0.0001;
         double columnGap = c114IsGridTextAspectRatioScene(sceneId)
                 || c114IsAnonymousTextScene(sceneId) ? 0.0 : 10.0;
         if (columns == null || rows == null
@@ -13024,6 +13026,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (unicodeMetrics != null) return unicodeMetrics;
         double[] fullWidthMetrics = c114FullWidthTextTransformMetrics(sceneId);
         if (fullWidthMetrics != null) return fullWidthMetrics;
+        double[] fullSizeKanaMetrics = c114FullSizeKanaTextTransformMetrics(sceneId);
+        if (fullSizeKanaMetrics != null) return fullSizeKanaMetrics;
         boolean minContentTrack = sceneId.endsWith("-min-content");
         double minContent;
         double maxContent;
@@ -13103,6 +13107,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return new double[] {20, 50, 50, 10, 20, 20, 20, 50};
             case "text-transform-full-width-min-content":
                 return new double[] {20, 50, 20, 20, 20, 20, 20, 50};
+            default:
+                return null;
+        }
+    }
+
+    private static double[] c114FullSizeKanaTextTransformMetrics(String sceneId) {
+        switch (sceneId) {
+            case "text-transform-full-size-kana-none-max-content":
+            case "text-transform-full-size-kana-pass-through-max-content":
+                return new double[] {19.03, 62.37, 62.37, 10, 50, 19.03, 0, 62.37};
+            case "text-transform-full-size-kana-hiragana-min-content":
+                return new double[] {10, 20, 10, 20, 20, 10, 10, 20};
+            case "text-transform-full-size-kana-hiragana-max-content":
+                return new double[] {10, 100, 100, 10, 100, 10, 10, 100};
+            case "text-transform-full-size-kana-katakana-min-content":
+                return new double[] {10, 19.5, 10, 20, 20, 9.5, 10, 19.5};
+            case "text-transform-full-size-kana-katakana-max-content":
+                return new double[] {10, 99.5, 99.5, 10, 100, 10, 10, 99.5};
+            case "text-transform-full-size-kana-halfwidth-min-content":
+                return new double[] {5, 10, 5, 20, 20, 5, 5, 10};
+            case "text-transform-full-size-kana-halfwidth-max-content":
+                return new double[] {5, 45, 45, 10, 90, 5, 5, 45};
+            case "text-transform-full-size-kana-supplementary-min-content":
+                return new double[] {10, 20, 10, 20, 20, 10, 10, 20};
+            case "text-transform-full-size-kana-supplementary-max-content":
+                return new double[] {10, 90, 90, 10, 90, 10, 10, 90};
             default:
                 return null;
         }
@@ -13194,9 +13224,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "text-transform-unicode-collapsed-space-max-content": return "Capitalize";
             case "text-transform-unicode-number-first-control": return "None";
             case "text-transform-full-width-none-max-content": return "None";
+            case "text-transform-full-size-kana-none-max-content": return "None";
             case "text-transform-full-width-max-content":
             case "text-transform-full-width-min-content":
             case "text-transform-full-width-collapsed-spaces-max-content": return "FullWidth";
+            case "text-transform-full-size-kana-hiragana-min-content":
+            case "text-transform-full-size-kana-hiragana-max-content":
+            case "text-transform-full-size-kana-katakana-min-content":
+            case "text-transform-full-size-kana-katakana-max-content":
+            case "text-transform-full-size-kana-halfwidth-min-content":
+            case "text-transform-full-size-kana-halfwidth-max-content":
+            case "text-transform-full-size-kana-supplementary-min-content":
+            case "text-transform-full-size-kana-supplementary-max-content":
+            case "text-transform-full-size-kana-pass-through-max-content": return "FullSizeKana";
             default: return null;
         }
     }
@@ -13209,6 +13249,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("text-transform-capitalize-mixed-case".equals(sceneId)) return "IIII Ii";
         if ("text-transform-capitalize-collapsed-spaces".equals(sceneId)) return "Ii Ii";
         switch (sceneId) {
+            case "text-transform-full-size-kana-hiragana-min-content": return "あい";
+            case "text-transform-full-size-kana-hiragana-max-content": return "あいうえおつやゆよわ";
+            case "text-transform-full-size-kana-katakana-min-content": return "アイ";
+            case "text-transform-full-size-kana-katakana-max-content": return "アイウエオツヤユヨワ";
+            case "text-transform-full-size-kana-halfwidth-min-content": return "ｱｲ";
+            case "text-transform-full-size-kana-halfwidth-max-content": return "ｱｲｳｴｵﾂﾔﾕﾖ";
+            case "text-transform-full-size-kana-supplementary-min-content": return "こゐ";
+            case "text-transform-full-size-kana-supplementary-max-content": return "こゐゑをコヰヱヲン";
+            case "text-transform-full-size-kana-pass-through-max-content":
+                return "あカンABC 12";
             case "text-transform-full-width-max-content":
             case "text-transform-full-width-min-content":
             case "text-transform-full-width-collapsed-spaces-max-content": return "ＡＢ　１２";
@@ -13240,6 +13290,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("text-transform-capitalize-mixed-case".equals(sceneId)) return "iIII ii";
         if ("text-transform-capitalize-collapsed-spaces".equals(sceneId)) return "ii   ii";
         switch (sceneId) {
+            case "text-transform-full-size-kana-hiragana-min-content": return "ぁぃ";
+            case "text-transform-full-size-kana-hiragana-max-content": return "ぁぃぅぇぉっゃゅょゎ";
+            case "text-transform-full-size-kana-katakana-min-content": return "ァィ";
+            case "text-transform-full-size-kana-katakana-max-content": return "ァィゥェォッャュョヮ";
+            case "text-transform-full-size-kana-halfwidth-min-content": return "ｧｨ";
+            case "text-transform-full-size-kana-halfwidth-max-content": return "ｧｨｩｪｫｯｬｭｮ";
+            case "text-transform-full-size-kana-supplementary-min-content": return "𛄲𛅐";
+            case "text-transform-full-size-kana-supplementary-max-content":
+                return "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧";
+            case "text-transform-full-size-kana-none-max-content":
+            case "text-transform-full-size-kana-pass-through-max-content":
+                return "あカンABC 12";
             case "text-transform-full-width-none-max-content":
             case "text-transform-full-width-max-content":
             case "text-transform-full-width-min-content": return "AB 12";
@@ -13275,6 +13337,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return sceneId != null && sceneId.startsWith("text-transform-full-width-");
     }
 
+    private static boolean c114IsFullSizeKanaTextTransformScene(String sceneId) {
+        return sceneId != null && sceneId.startsWith("text-transform-full-size-kana-");
+    }
+
     private static String evalC114ComputedTextTransformFixture(
             long host, String sceneId, String runId
     ) {
@@ -13304,7 +13370,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static double c114TextTransformCssomTolerance(String sceneId) {
         return c114IsUnicodeTextTransformScene(sceneId)
-                || c114IsFullWidthTextTransformScene(sceneId) ? 0.03125 : 1.0 / 64.0;
+                || c114IsFullWidthTextTransformScene(sceneId)
+                || c114IsFullSizeKanaTextTransformScene(sceneId) ? 0.03125 : 1.0 / 64.0;
     }
 
     private static C114ComputedWordBreakScene c114ComputedWordBreakScene(String sceneId) {
