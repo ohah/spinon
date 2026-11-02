@@ -1,6 +1,6 @@
 # C11.1 parsed Root HTML sparse column-flow 후보 runtime 근거
 
-**상태:** 구현 후보. 지정 Rust 검사, Android/iOS Simulator 기본 app-route smoke와 [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)를 마쳤다. PR diff review, PR 및 merge가 아직 남아 있어 C11.1/C11 완료로 세지 않는다. 공식 집계는 `72/213` 그대로다.
+**상태:** 구현 후보 PR [#1056](https://github.com/ohah/spinon/pull/1056). 지정 Rust 검사, Android/iOS Simulator 기본 app-route smoke, [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](pr-diff-review-30.md)를 마쳤다. GitHub status check rollup은 비어 있고 merge가 남아 있어 C11.1/C11 완료로 세지 않는다. 공식 집계는 `72/213` 그대로다.
 
 ## 구현 전 기준
 
