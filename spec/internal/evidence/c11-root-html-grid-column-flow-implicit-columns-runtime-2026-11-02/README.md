@@ -1,6 +1,6 @@
 # C11.1 parsed Root HTML column-flow implicit columns 실행 근거
 
-**상태:** 제한 구현 후보의 앱 경로 smoke와 구현/runtime 관점 20개 및 diff 관점 30개 검토를 마쳤다. PR 생성·CI 확인·병합은 남아 있으며 C11.1/C11 완료나 공개 CSS 지원으로 승격하지 않는다. 공식 완료 집계는 `72/213`이다. [구현 검토 20개](implementation-review-20.md) · [diff 검토 30개](pr-diff-review-30.md)
+**상태:** 제한 구현 후보의 앱 경로 smoke, 구현/runtime 관점 20개 및 diff 관점 30개 검토를 마쳤다. [PR #1059](https://github.com/ohah/spinon/pull/1059)이 열려 있고 check run은 보고되지 않았으며 merge는 남아 있다. C11.1/C11 완료나 공개 CSS 지원으로 승격하지 않는다. 공식 완료 집계는 `72/213`이다. [구현 검토 20개](implementation-review-20.md) · [diff 검토 30개](pr-diff-review-30.md) · [PR 화면/상태 검증](pr1059-agent-browser-verification.json)
 
 ## 입력과 산출물
 

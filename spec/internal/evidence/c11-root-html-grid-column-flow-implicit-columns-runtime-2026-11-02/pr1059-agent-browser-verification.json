@@ -1,0 +1,36 @@
+{
+  "pullRequest": {
+    "number": 1059,
+    "url": "https://github.com/ohah/spinon/pull/1059",
+    "state": "OPEN",
+    "mergeable": "MERGEABLE",
+    "labels": [
+      "enhancement",
+      "area: layout"
+    ],
+    "statusCheckRollupCount": 0,
+    "ghPrChecks": "no checks reported"
+  },
+  "agentBrowser": {
+    "version": "0.31.1",
+    "session": "spinon-pr1059-image-check",
+    "closed": true,
+    "browserProcessesRemaining": false,
+    "images": [
+      {
+        "alt": "Android AVD에서 12개 Grid item 표시",
+        "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-root-html-grid-column-flow-implicit-columns-20261102/spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/android-avd/simulator.png",
+        "loaded": true,
+        "naturalWidth": 1080,
+        "naturalHeight": 2400
+      },
+      {
+        "alt": "iOS Simulator에서 12개 Grid item 표시",
+        "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-root-html-grid-column-flow-implicit-columns-20261102/spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/ios-simulator/simulator.png",
+        "loaded": true,
+        "naturalWidth": 1206,
+        "naturalHeight": 2622
+      }
+    ]
+  }
+}

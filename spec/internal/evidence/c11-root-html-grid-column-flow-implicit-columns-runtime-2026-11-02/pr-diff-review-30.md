@@ -32,7 +32,7 @@
 | 26 | 계획·구현·PR 검토가 하나의 표를 재사용하는가 | 계획 20/계획 PR diff 30과 새 구현 20/구현 PR diff 30 자료를 분리한다. |
 | 27 | screenshot evidence 파일이나 prior failed pass를 덮어썼는가 | 새 simulator 캡처는 전용 runtime 디렉터리에 저장했고 사전 비교 pass01~03을 보존한다. |
 | 28 | unrelated untracked roadmap/evidence 파일이 candidate에 섞이는가 | PR stage 단계에서 이 작업 경로만 선택하며 기존 사용자 산출물을 삭제하지 않는다. |
-| 29 | CI check rollup이 비어 있는데 통과했다고 PR 본문에 적는가 | PR 확인 시 실제 check rollup을 조회하고 비어 있으면 CI 통과를 주장하지 않는다. |
-| 30 | PR 이미지가 reviewer가 접근하지 못하는 local path인가 | push 후 branch의 raw GitHub screenshot URL을 본문에 넣어 렌더 여부를 확인한다. 업로드가 실패하면 증거 경로 링크를 남긴다. |
+| 29 | CI check rollup이 비어 있는데 통과했다고 PR 본문에 적는가 | PR #1059의 `statusCheckRollup`은 비어 있고 `gh pr checks`는 “no checks reported”를 반환했다. 본문은 CI 통과를 주장하지 않는다. |
+| 30 | PR 이미지가 reviewer가 접근하지 못하는 local path인가 | PR #1059 본문의 두 raw GitHub screenshot을 Agent Browser로 확인했다. Android 1080×2400과 iOS 1206×2622 이미지가 모두 `naturalWidth>0`으로 로드됐다. 검증 뒤 Agent Browser 세션을 닫았고 해당 프로세스도 종료됐다. |
 
 이 검토에서 blocking diff 결함은 찾지 못했다. 라벨, 실제 PR 번호·본문 렌더링, GitHub check 상태는 PR 생성 후 한 번 더 확인한다.
