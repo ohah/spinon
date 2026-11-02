@@ -1,0 +1,238 @@
+{
+  "cases": [
+    {
+      "autoRows": "10% 20%",
+      "id": "cycle",
+      "items": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ],
+          "id": "cycle-1"
+        },
+        {
+          "frame": [
+            45,
+            0,
+            55,
+            20
+          ],
+          "id": "cycle-2"
+        },
+        {
+          "frame": [
+            0,
+            25,
+            40,
+            10
+          ],
+          "id": "cycle-3"
+        },
+        {
+          "frame": [
+            45,
+            25,
+            55,
+            10
+          ],
+          "id": "cycle-4"
+        },
+        {
+          "frame": [
+            0,
+            40,
+            40,
+            20
+          ],
+          "id": "cycle-5"
+        },
+        {
+          "frame": [
+            45,
+            40,
+            55,
+            20
+          ],
+          "id": "cycle-6"
+        },
+        {
+          "frame": [
+            0,
+            65,
+            40,
+            10
+          ],
+          "id": "cycle-7"
+        },
+        {
+          "frame": [
+            45,
+            65,
+            55,
+            10
+          ],
+          "id": "cycle-8"
+        },
+        {
+          "frame": [
+            0,
+            80,
+            40,
+            20
+          ],
+          "id": "cycle-9"
+        },
+        {
+          "frame": [
+            45,
+            80,
+            55,
+            20
+          ],
+          "id": "cycle-10"
+        }
+      ],
+      "root": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "usedRows": "20px 10px 20px 10px 20px"
+    },
+    {
+      "autoRows": "15px 25%",
+      "id": "mixed",
+      "items": [
+        {
+          "frame": [
+            0,
+            100,
+            120,
+            20
+          ],
+          "id": "mixed-1"
+        },
+        {
+          "frame": [
+            0,
+            125,
+            120,
+            15
+          ],
+          "id": "mixed-2"
+        },
+        {
+          "frame": [
+            0,
+            145,
+            120,
+            30
+          ],
+          "id": "mixed-3"
+        },
+        {
+          "frame": [
+            0,
+            180,
+            120,
+            15
+          ],
+          "id": "mixed-4"
+        },
+        {
+          "frame": [
+            0,
+            200,
+            120,
+            30
+          ],
+          "id": "mixed-5"
+        }
+      ],
+      "root": [
+        0,
+        100,
+        120,
+        120
+      ],
+      "usedRows": "20px 15px 30px 15px 30px"
+    },
+    {
+      "autoRows": "0% 120%",
+      "id": "bounds",
+      "items": [
+        {
+          "frame": [
+            0,
+            220,
+            100,
+            20
+          ],
+          "id": "bounds-1"
+        },
+        {
+          "frame": [
+            0,
+            245,
+            100,
+            0
+          ],
+          "id": "bounds-2"
+        },
+        {
+          "frame": [
+            0,
+            250,
+            100,
+            120
+          ],
+          "id": "bounds-3"
+        }
+      ],
+      "root": [
+        0,
+        220,
+        100,
+        100
+      ],
+      "usedRows": "20px 0px 120px"
+    },
+    {
+      "autoRows": "50%",
+      "id": "zero",
+      "items": [
+        {
+          "frame": [
+            0,
+            320,
+            100,
+            0
+          ],
+          "id": "zero-1"
+        },
+        {
+          "frame": [
+            0,
+            325,
+            100,
+            7
+          ],
+          "id": "zero-2"
+        }
+      ],
+      "root": [
+        0,
+        320,
+        100,
+        0
+      ],
+      "usedRows": "0px 0px"
+    }
+  ],
+  "dpr": 1,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}

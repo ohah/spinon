@@ -1,0 +1,94 @@
+{
+  "schema": "spinon.c11.root-html-grid-auto-row-percentage-list.precomparison.v1",
+  "oracle": {
+    "name": "Chrome",
+    "version": "156.0.0.0",
+    "devicePixelRatio": 1,
+    "independentExpectedSource": "fixed CSS inputs and CSS Grid Level 1 track sizing rules",
+    "geometryToleranceCssPx": 0.02
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-row-percentage-list-precomparison.html",
+    "sha256": "aaf6ed5775c9d5137299fe1845c327d3233a129c7e7a1e8dd32319772ff32a02"
+  },
+  "cases": [
+    {
+      "id": "cycle",
+      "root": [0, 0, 100, 100],
+      "heightBasisCssPx": 100,
+      "explicitRowsCssPx": [20],
+      "autoRows": ["10%", "20%"],
+      "resolvedAutoRowsCssPx": [10, 20],
+      "implicitRowCount": 4,
+      "expandedImplicitRowsCssPx": [10, 20, 10, 20],
+      "usedRowsCssPx": [20, 10, 20, 10, 20],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 100,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 40, 20], [45, 0, 55, 20],
+        [0, 25, 40, 10], [45, 25, 55, 10],
+        [0, 40, 40, 20], [45, 40, 55, 20],
+        [0, 65, 40, 10], [45, 65, 55, 10],
+        [0, 80, 40, 20], [45, 80, 55, 20]
+      ]
+    },
+    {
+      "id": "mixed",
+      "root": [0, 0, 120, 120],
+      "heightBasisCssPx": 120,
+      "explicitRowsCssPx": [20],
+      "autoRows": ["15px", "25%"],
+      "resolvedAutoRowsCssPx": [15, 30],
+      "implicitRowCount": 4,
+      "expandedImplicitRowsCssPx": [15, 30, 15, 30],
+      "usedRowsCssPx": [20, 15, 30, 15, 30],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 130,
+      "rootOverflowBottomCssPx": 10,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 120, 20],
+        [0, 25, 120, 15],
+        [0, 45, 120, 30],
+        [0, 80, 120, 15],
+        [0, 100, 120, 30]
+      ]
+    },
+    {
+      "id": "bounds",
+      "root": [0, 0, 100, 100],
+      "heightBasisCssPx": 100,
+      "explicitRowsCssPx": [20],
+      "autoRows": ["0%", "120%"],
+      "resolvedAutoRowsCssPx": [0, 120],
+      "implicitRowCount": 2,
+      "expandedImplicitRowsCssPx": [0, 120],
+      "usedRowsCssPx": [20, 0, 120],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 150,
+      "rootOverflowBottomCssPx": 50,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 100, 20],
+        [0, 25, 100, 0],
+        [0, 30, 100, 120]
+      ]
+    },
+    {
+      "id": "zero",
+      "root": [0, 0, 100, 0],
+      "heightBasisCssPx": 0,
+      "explicitRowsCssPx": [0],
+      "autoRows": ["50%"],
+      "resolvedAutoRowsCssPx": [0],
+      "implicitRowCount": 1,
+      "expandedImplicitRowsCssPx": [0],
+      "usedRowsCssPx": [0, 0],
+      "rowGapCssPx": 5,
+      "trackAndGutterExtentCssPx": 5,
+      "rootOverflowBottomCssPx": 12,
+      "itemFramesRootRelativeCssPx": [
+        [0, 0, 100, 0],
+        [0, 5, 100, 7]
+      ]
+    }
+  ]
+}
