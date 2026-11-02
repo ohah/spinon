@@ -1,0 +1,429 @@
+{
+  "sourceHead": "3c009d316f270fbfbca55fc8813a050d1921a000",
+  "publicationRouteCount": 112,
+  "createdCount": 84,
+  "replacedCount": 15,
+  "unchangedCount": 13,
+  "backupCount": 15,
+  "noDeletes": true,
+  "created": [
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/agent-browser-pr-image-check.json",
+      "sourceSha256": "ebf94a1e17089333385ebf70f9beb304edb4045decaf5977a04ad09a8f9c38f1"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/runtime.log",
+      "sourceSha256": "3d14844d111ea31665cedf4b9445f7ff37dfeb05f68489eb81d061ffe1a73cfa"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/simulator.png",
+      "sourceSha256": "0f808a7a85a7bf096281203f13b3918b798011757a55970dca800a6d902bc7cd"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/chrome-marker-observation.json",
+      "sourceSha256": "a4c8b16d0edbcfa93031462bf2dae460e46434c557186c634141228a7701b7dc"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/chrome-marker-source.png",
+      "sourceSha256": "6cccc58a1e40593395a303af34437e3f984ff70d7b3bff54a313347df1414cce"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-pr-diff-review-30.html",
+      "sourceSha256": "01dfaff3ec8736e3f27ec5e1063c8d9b1930edbe0eb8b850149bc3b415349f78"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-pr-diff-review-30.md",
+      "sourceSha256": "de8288d67ac8dcb055e5223e26196a33f07565ddbd658042ab5d967c8f090105"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "sourceSha256": "61cc644eb1a5628d71ac79aafb9ed3ce97f4c5a3b3026e52bf0a08f20b95eac4"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "sourceSha256": "39be93e7b0fe866f01a3e0f42a3274529d04681b18ebda85c7451f032e0ec2ea"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/runtime.log",
+      "sourceSha256": "dff674014a25602dc47f9dc90271a1c7aeec7192a5305ea1fe5a7b6b84dc04fb"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.log",
+      "sourceSha256": "e688e93d58cf2d7d572acdebc4287fce307f998f5f2fda5fadddf7a8c21b5594"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.png",
+      "sourceSha256": "c36fc8bf38aa43d9423742adf904d29f841f395a6eebd9cc225da0b302d8396d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/original-platform-assets/android.html",
+      "sourceSha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/original-platform-assets/ios.html",
+      "sourceSha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/android-apk.sha256",
+      "sourceSha256": "787f345c4e7a7952b027b1d605996424f313d56d64951a4f3a757cbcf2a75ab6"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/android-build.log",
+      "sourceSha256": "9c6b7cef991f30f25f2ab0762f508bd48a5e26efa41d37aac73c39f617124c8a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/android-packaged-asset.sha256",
+      "sourceSha256": "2297a50d9c982e395ba0f76f777f4b2a9984e2e1678d4e6df0d86d750dc2a8af"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/ios-binary.sha256",
+      "sourceSha256": "69583c7a27ebc69fb44c167383c83e2c748f4c18670d50c3b0bb36870afe4306"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/ios-build.log",
+      "sourceSha256": "5e878d35d282970b25cab4a9a6411fd45348bdadc0c4ccf0ca96aa55023f674c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/ios-packaged-asset.sha256",
+      "sourceSha256": "09ad915379df6f666c8bf40042161e0eb558e5a39ae9f661009cdbfc59207675"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/restored-platform-assets.sha256",
+      "sourceSha256": "1ea4725d4b7c430e15c1e189412f2e492d77a859ca87c0df6ca139be6178190c"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.html",
+      "sourceSha256": "c2adcb7ea83e1f44ad8ec8b29662a5d2dfe126d3501f398c7365dc3d5b7e0dd9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.md",
+      "sourceSha256": "ff6a45812dcfa902ab30243bf4b81587712e5ca24cb8e4950523db8af0af2cd8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/roadmap-source-agent-browser.json",
+      "sourceSha256": "83c8b4dafffad6e32bbbb3e285b5a749304603701771bf1a5704e98a4452ca78"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/roadmap-source-agent-browser.png",
+      "sourceSha256": "2305b34937f92c0d8e3c33548550a4b499ae1eb489af9bb7fd69a2c475259e84"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/diff-check.log",
+      "sourceSha256": "759c12020cea18a3baf36c08ff12639ad6dbba34d7dc7a6c28567c0100bd2242"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/grid-projection.log",
+      "sourceSha256": "b13e3285a104603df0bc6c0a9483a63086e5f8fbed88018281f6c22312e6e982"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/root-html-runtime.log",
+      "sourceSha256": "1c6c66946767fef282290026f02e3d2673375a652a618de5bb80a48a1f87ff6f"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/rustfmt-taffy.log",
+      "sourceSha256": "142e4f9e4906eff00c55fa7b37ae9b07c433959f3a628e0c988b6670fc2b7bcd"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/rustfmt-workspace.log",
+      "sourceSha256": "2fc552c97cc50b6ac2471ea16efd882e588e946a148d3ecd635f31bb3b8b4e0e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/scoped-clippy.log",
+      "sourceSha256": "e4850c9bf8d77438eabcae94602db335c9ea2508cb4c6ef5cd4e508a13a0f53e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/taffy-library.log",
+      "sourceSha256": "0fb400c7b47c09f25a1bf0e6c5ba4e1a9ea9e37c29ca63cddc3bc9bc637997ed"
+    },
+    {
+      "path": "plan/c11-root-html-grid-fr-track.html",
+      "sourceSha256": "966320b49019c1b22b6f349dfd153d86ead85d73659bd75f3839aae22ff47bd6"
+    },
+    {
+      "path": "plan/c11-root-html-grid-fr-track.md",
+      "sourceSha256": "28ae86c6e08565e406be6610b65145b467fc8945f558704f9cc6a949e205eb29"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/agent-browser-pr-image-check.json",
+      "sourceSha256": "ebf94a1e17089333385ebf70f9beb304edb4045decaf5977a04ad09a8f9c38f1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/runtime.log",
+      "sourceSha256": "3d14844d111ea31665cedf4b9445f7ff37dfeb05f68489eb81d061ffe1a73cfa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/simulator.png",
+      "sourceSha256": "0f808a7a85a7bf096281203f13b3918b798011757a55970dca800a6d902bc7cd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/chrome-marker-observation.json",
+      "sourceSha256": "a4c8b16d0edbcfa93031462bf2dae460e46434c557186c634141228a7701b7dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/chrome-marker-source.png",
+      "sourceSha256": "6cccc58a1e40593395a303af34437e3f984ff70d7b3bff54a313347df1414cce"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-pr-diff-review-30.html",
+      "sourceSha256": "274d386caf6c8a334c101bb6a4c64478c1ec6ec4d4ff50799acf4f6af3e33edb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-pr-diff-review-30.md",
+      "sourceSha256": "de8288d67ac8dcb055e5223e26196a33f07565ddbd658042ab5d967c8f090105"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "sourceSha256": "1f125b78047cc3b3e2159fd486cceb07ea706e1b8b730564ed8353a438f18bb4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "sourceSha256": "39be93e7b0fe866f01a3e0f42a3274529d04681b18ebda85c7451f032e0ec2ea"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/runtime.log",
+      "sourceSha256": "dff674014a25602dc47f9dc90271a1c7aeec7192a5305ea1fe5a7b6b84dc04fb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.log",
+      "sourceSha256": "e688e93d58cf2d7d572acdebc4287fce307f998f5f2fda5fadddf7a8c21b5594"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.png",
+      "sourceSha256": "c36fc8bf38aa43d9423742adf904d29f841f395a6eebd9cc225da0b302d8396d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/original-platform-assets/android.html",
+      "sourceSha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/original-platform-assets/ios.html",
+      "sourceSha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/android-apk.sha256",
+      "sourceSha256": "787f345c4e7a7952b027b1d605996424f313d56d64951a4f3a757cbcf2a75ab6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/android-build.log",
+      "sourceSha256": "9c6b7cef991f30f25f2ab0762f508bd48a5e26efa41d37aac73c39f617124c8a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/android-packaged-asset.sha256",
+      "sourceSha256": "2297a50d9c982e395ba0f76f777f4b2a9984e2e1678d4e6df0d86d750dc2a8af"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/ios-binary.sha256",
+      "sourceSha256": "69583c7a27ebc69fb44c167383c83e2c748f4c18670d50c3b0bb36870afe4306"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/ios-build.log",
+      "sourceSha256": "5e878d35d282970b25cab4a9a6411fd45348bdadc0c4ccf0ca96aa55023f674c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/ios-packaged-asset.sha256",
+      "sourceSha256": "09ad915379df6f666c8bf40042161e0eb558e5a39ae9f661009cdbfc59207675"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/product-artifact/restored-platform-assets.sha256",
+      "sourceSha256": "1ea4725d4b7c430e15c1e189412f2e492d77a859ca87c0df6ca139be6178190c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.html",
+      "sourceSha256": "da848360e16ff0303c7932e8dbc86931e5db9b32164ffd65a4e0ea8c38dd81e0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/README.md",
+      "sourceSha256": "ff6a45812dcfa902ab30243bf4b81587712e5ca24cb8e4950523db8af0af2cd8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/roadmap-source-agent-browser.json",
+      "sourceSha256": "83c8b4dafffad6e32bbbb3e285b5a749304603701771bf1a5704e98a4452ca78"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/roadmap-source-agent-browser.png",
+      "sourceSha256": "2305b34937f92c0d8e3c33548550a4b499ae1eb489af9bb7fd69a2c475259e84"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/diff-check.log",
+      "sourceSha256": "759c12020cea18a3baf36c08ff12639ad6dbba34d7dc7a6c28567c0100bd2242"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/grid-projection.log",
+      "sourceSha256": "b13e3285a104603df0bc6c0a9483a63086e5f8fbed88018281f6c22312e6e982"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/root-html-runtime.log",
+      "sourceSha256": "1c6c66946767fef282290026f02e3d2673375a652a618de5bb80a48a1f87ff6f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/rustfmt-taffy.log",
+      "sourceSha256": "142e4f9e4906eff00c55fa7b37ae9b07c433959f3a628e0c988b6670fc2b7bcd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/rustfmt-workspace.log",
+      "sourceSha256": "2fc552c97cc50b6ac2471ea16efd882e588e946a148d3ecd635f31bb3b8b4e0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/scoped-clippy.log",
+      "sourceSha256": "e4850c9bf8d77438eabcae94602db335c9ea2508cb4c6ef5cd4e508a13a0f53e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/rust/taffy-library.log",
+      "sourceSha256": "0fb400c7b47c09f25a1bf0e6c5ba4e1a9ea9e37c29ca63cddc3bc9bc637997ed"
+    },
+    {
+      "path": "spec/plan/c11-root-html-grid-fr-track.html",
+      "sourceSha256": "cbd3fb3d54d0bf39b5a6bba86968cf38b9b8e1aaeb0ea1a9f5d81c91a90b7f2c"
+    },
+    {
+      "path": "spec/plan/c11-root-html-grid-fr-track.md",
+      "sourceSha256": "28ae86c6e08565e406be6610b65145b467fc8945f558704f9cc6a949e205eb29"
+    },
+    {
+      "path": "static/js/async/route-3256dfd3f80a.c5dfce815d.js",
+      "sourceSha256": "2dfcec7de444373f116843b1a316a2c6ffc1554c2f856d2527789836d1b0c47a"
+    },
+    {
+      "path": "static/js/async/route-330d8e4e12c3.f87a199ace.js",
+      "sourceSha256": "0868bee50ef459ab7af93f58baf635e77132672ae7c58f5d95b81c70768cacf8"
+    },
+    {
+      "path": "static/js/async/route-3dc75a65a7b8.1da3c4dfb7.js",
+      "sourceSha256": "f6c9055718edd7297117b54184e759f2f5d10a22b621000a34181d84e90e2793"
+    },
+    {
+      "path": "static/js/async/route-502bee9f5286.56bca24efb.js",
+      "sourceSha256": "8b27acae323329063ee45fd502757adb370456d5c52d04ab68f47892f533d7ed"
+    },
+    {
+      "path": "static/js/async/route-62cf72ea27e3.19b1edbf4e.js",
+      "sourceSha256": "03f096794c02fc679f985bd7b5c4cb9bc7f8a6c11e7ac6151fa48846e20643e8"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.124e340bda.js",
+      "sourceSha256": "c22f51f48725c43476a6b79d608ec93fef4588118808b2b92646a8ca0d49b338"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.68ab666c16.js",
+      "sourceSha256": "8e0a66d6ee9130b5027f717c61c9714579675a4d93c8f8dd73b6cb6b0647ee4b"
+    },
+    {
+      "path": "static/js/async/route-756ce9ac1897.fdc811622c.js",
+      "sourceSha256": "463cbdfda3d1e02715b901f01db6e408d735174adafe321df8f0b07fe7597ad1"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.d2f158f1e5.js",
+      "sourceSha256": "c316e1493b24d654ea542f4e04673c155db9f14ccecd0ba5b5ba01263afd7a20"
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.fd16829538.js",
+      "sourceSha256": "050530f6a20b08c2b7b88f1477eca672b72a2c8e616bc9349bbcbf5a5dd87c52"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.8f4af732a1.js",
+      "sourceSha256": "d84aaf2cea82d3346fefc0f22400e41710912c74678dbd27d68fd88cca8fe062"
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.d332f7ef36.js",
+      "sourceSha256": "ca4bf622b7b7453a86cfffbacee8630a7f30304c88f01aba27818c12d9dbe88f"
+    },
+    {
+      "path": "static/js/async/route-dd2e3e281ff7.c4bf84b391.js",
+      "sourceSha256": "4c3be475daa0947017ac6c82e83bcbcb109da9ce57f72ea2f68ee50cb8f696c4"
+    },
+    {
+      "path": "static/js/async/route-f5f34dd2c7ef.4a1050fb03.js",
+      "sourceSha256": "197d4788bfd76c6d30ac4e4bcd1e403495b4c1c96cfac79401fa390956615288"
+    },
+    {
+      "path": "static/js/index.5eea789da2.js",
+      "sourceSha256": "a14ac51a2e9e76a509ad360caab0d40b69a1ef3cb09a10e0af169d7655d8dc96"
+    },
+    {
+      "path": "static/search_index.ko.88fdddb3.json",
+      "sourceSha256": "88fdddb3374dc17356ce6206d6dece6308aae607633824717504d1120ed4b582"
+    }
+  ],
+  "replaced": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "previousSha256": "5e1b71442fe77f718252570e48396fb07bfc4372e8eea56c7c0bbb1672adc6b1",
+      "sourceSha256": "b78f19007ca2f4d7743cea21f6ae6203c4a5b78efd90bbe27cb24a7aa078b002"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "previousSha256": "e3acbe74fc6b3440bff4c3962fd4a158a9a7595849285170b9204e2eadd30a6e",
+      "sourceSha256": "6658b272a010b0e9396f05b8615c5b0b9eaf11270f3ca2fc42e98991d8734dae"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "previousSha256": "683ea0eba77fac8e358584fbe8dcd9a4453ee129b12e0d0a7cd4f1c6e59e11c3",
+      "sourceSha256": "37612674c00bed8de9920ce58555a937bb907a5ecce6e3280fb77fc8737799b2"
+    },
+    {
+      "path": "plan/c11-css-grid.md",
+      "previousSha256": "135de09f276a25819cca37fd1f08f3aa9b0d6fc60a3a6b2e5bea7b7c605a34cb",
+      "sourceSha256": "d2c71c18cace5355377e2f9a442b6f489e9e1038d58bfab8e2fd3f0d4fd6ec46"
+    },
+    {
+      "path": "public/roadmap.html",
+      "previousSha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7",
+      "sourceSha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93"
+    },
+    {
+      "path": "roadmap.html",
+      "previousSha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7",
+      "sourceSha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "previousSha256": "a475f654292759d5ea34220cccbd9e52c15962ca8c456c85153ac6029cfedfe2",
+      "sourceSha256": "183a564815c347c704eb0d77a1a38f384288be48b1afdf562b6622baf4405096"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "previousSha256": "e3acbe74fc6b3440bff4c3962fd4a158a9a7595849285170b9204e2eadd30a6e",
+      "sourceSha256": "6658b272a010b0e9396f05b8615c5b0b9eaf11270f3ca2fc42e98991d8734dae"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "previousSha256": "10777ff239926d051a74c65cd67f345c02d9da1413d07e269c1de370aba47176",
+      "sourceSha256": "aebb38d453ed8580b3c78f2d31983c417f3b1724d1fdae385baca135c27860f5"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.md",
+      "previousSha256": "135de09f276a25819cca37fd1f08f3aa9b0d6fc60a3a6b2e5bea7b7c605a34cb",
+      "sourceSha256": "d2c71c18cace5355377e2f9a442b6f489e9e1038d58bfab8e2fd3f0d4fd6ec46"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "previousSha256": "bcdc55c878f336f4586b54a1e661ec362e2fc39db847ba20efd49040952d41f7",
+      "sourceSha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "previousSha256": "456622ba48133a71e94b4f8a11a4f69b8119fec904368ae25f91d2d70330bbcf",
+      "sourceSha256": "0ae1bd181c56e9f7dc340edaee4a81ded761b255cc71e9336389486c57d29d96"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "previousSha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66",
+      "sourceSha256": "021d5c6e53782f0124a341b6bbc06fbf76d9cdeb2829ae0cca9c9a751a661804"
+    },
+    {
+      "path": "STATUS.html",
+      "previousSha256": "61933f12de52168fff7e081b2f2c93d0c26ce1e35d166a1731270afe0db1db11",
+      "sourceSha256": "02046c88e7d4bbd9863eb2a2164c3010b9e8a877d16c9a760f0b863fd0f67785"
+    },
+    {
+      "path": "STATUS.md",
+      "previousSha256": "81a62f601a2db76b5f440c7a81ffe91538fca2d274b31414c469ec9d9ee35b66",
+      "sourceSha256": "021d5c6e53782f0124a341b6bbc06fbf76d9cdeb2829ae0cca9c9a751a661804"
+    }
+  ],
+  "server": {
+    "backendState": "Running",
+    "dnsName": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040
+  }
+}

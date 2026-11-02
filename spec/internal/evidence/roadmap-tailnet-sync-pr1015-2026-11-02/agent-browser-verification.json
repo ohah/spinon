@@ -1,0 +1,28 @@
+{
+  "browser": "agent-browser CLI",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "pageTitle": "스피논 구현 로드맵",
+  "cardMarker": "PR #1015 Rebase and merge",
+  "mergeSha": "015ff0e9ac959a269b60728a1ac3a6ab962791ea",
+  "officialCompletion": "72/213",
+  "captures": [
+    {
+      "viewport": [1280, 633],
+      "documentScrollWidth": 1280,
+      "scrollY": 525,
+      "cardVisible": true,
+      "screenshot": "tailnet-roadmap-desktop-agent-browser-pass02.png",
+      "sha256": "5623b60d257b4529a3be8387fc8a448c36c28313272993edeeeb650eafae3ae5"
+    },
+    {
+      "viewport": [390, 844],
+      "documentScrollWidth": 390,
+      "scrollY": 1232,
+      "cardVisible": true,
+      "screenshot": "tailnet-roadmap-mobile-agent-browser-pass02.png",
+      "sha256": "bc9331be563c0578f04fac5f4e977f68aaae7844a8f8abdaf47a8115859421c8"
+    }
+  ],
+  "closedWith": "agent-browser close --all",
+  "remainingAgentBrowserOrHeadlessChromeProcesses": []
+}

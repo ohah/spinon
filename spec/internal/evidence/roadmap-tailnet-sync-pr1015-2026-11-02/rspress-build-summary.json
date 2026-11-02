@@ -1,0 +1,10 @@
+{
+  "command": "RSPRESS_PERSISTENT_CACHE=false packages/docs/node_modules/.bin/rspress build --config spec/internal/evidence/roadmap-tailnet-sync-pr1015-2026-11-02/rspress.config.ts",
+  "rspressVersion": "2.0.22",
+  "exitCode": 0,
+  "sourceHead": "3c009d316f270fbfbca55fc8813a050d1921a000",
+  "selectedRootSourceFiles": 73,
+  "selectedRootSourceBytes": 5191095,
+  "publicationRoutes": 112,
+  "publicationBytes": 13213819
+}
