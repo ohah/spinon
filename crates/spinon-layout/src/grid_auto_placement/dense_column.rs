@@ -759,6 +759,7 @@ fn expand_tracks(
                             track,
                             GridTrackSize::LengthPx(value)
                                 | GridTrackSize::Percentage(value)
+                                | GridTrackSize::Fraction(value)
                                 if value.is_finite() && *value >= 0.0
                         )
                     }),

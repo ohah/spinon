@@ -19,7 +19,13 @@ pub(super) fn validate_fraction_axis_inputs(
     element: &ComputedElementStyle,
     grid: &ComputedCssGridLayout,
 ) -> Result<(), StyleLayoutError> {
-    if has_fraction_track(&grid.columns) {
+    let has_fraction_auto_columns = grid.auto_flow == ComputedCssGridAutoFlow::Column
+        && matches!(
+            &grid.auto_columns,
+            ComputedCssGridAutoColumns::TrackList(tracks) if has_fraction_track(tracks)
+        );
+    let has_fraction_columns = has_fraction_track(&grid.columns) || has_fraction_auto_columns;
+    if has_fraction_columns {
         validate_axis(
             element,
             AxisConstraints {
@@ -47,8 +53,12 @@ pub(super) fn validate_fraction_axis_inputs(
             "fr",
         )?;
     }
-    if (has_fraction_track(&grid.columns) || has_fraction_track(&grid.rows))
-        && element.layout_aspect_ratio.is_some()
+    if (has_fraction_columns || has_fraction_track(&grid.rows))
+        && (element.layout_aspect_ratio.is_some()
+            || element
+                .properties
+                .get("aspect-ratio")
+                .is_some_and(|value| value != "auto"))
     {
         return Err(unsupported(
             element,
@@ -156,21 +166,28 @@ pub(super) fn validate_percentage_track_ranges(
         .and_then(|()| validate_auto_column_percentage_ranges(element, &grid.auto_columns))
 }
 
-pub(super) fn validate_implicit_column_percentage_extent(
+pub(super) fn validate_implicit_column_relative_extent(
     element: &ComputedElementStyle,
     grid: &ComputedCssGridLayout,
     required_columns: usize,
 ) -> Result<(), StyleLayoutError> {
-    if !has_percentage_auto_columns(&grid.auto_columns) || required_columns <= grid.columns.len() {
+    if !has_relative_auto_columns(&grid.auto_columns) || required_columns <= grid.columns.len() {
         return Ok(());
     }
     let ComputedCssDimension::LengthPx(basis) = element.layout_dimensions.width else {
         return Err(unsupported(
             element,
             "width",
-            "Root HTML Grid percentage auto columns require a definite finite non-negative CSS-pixel width",
+            "Root HTML Grid percentage/fraction auto columns require a definite finite non-negative CSS-pixel width",
         ));
     };
+    if !basis.is_finite() || basis < 0.0 {
+        return Err(unsupported(
+            element,
+            "width",
+            "Root HTML Grid percentage/fraction auto columns require a definite finite non-negative CSS-pixel width",
+        ));
+    }
     let tracks = match &grid.auto_columns {
         ComputedCssGridAutoColumns::TrackList(tracks) => tracks.as_slice(),
         _ => return Ok(()),
@@ -182,7 +199,7 @@ pub(super) fn validate_implicit_column_percentage_extent(
             return Err(unsupported(
                 element,
                 "column-gap",
-                "percentage implicit columns require the existing finite non-negative fixed-px gap subset",
+                "relative implicit columns require the existing finite non-negative fixed-px gap subset",
             ));
         }
     };
@@ -193,17 +210,34 @@ pub(super) fn validate_implicit_column_percentage_extent(
         };
         total += *value as f64;
     }
+    if !total.is_finite() || total > f32::MAX as f64 {
+        return Err(unsupported(
+            element,
+            "grid-auto-columns",
+            "explicit tracks and gaps exceed the finite f32 CSS-pixel extent",
+        ));
+    }
     for index in 0..required_columns - grid.columns.len() {
         let value = match tracks[index % tracks.len()] {
             ComputedCssGridTrackSize::LengthPx(value) => value as f64,
             ComputedCssGridTrackSize::Percentage(value) => (value as f64) * (basis as f64),
+            ComputedCssGridTrackSize::Fraction(value) if value.is_finite() && value >= 0.0 => {
+                continue;
+            }
+            ComputedCssGridTrackSize::Fraction(_) => {
+                return Err(unsupported(
+                    element,
+                    "grid-auto-columns",
+                    "fraction implicit columns must be finite and non-negative",
+                ));
+            }
             _ => return Ok(()),
         };
         if !value.is_finite() || value < 0.0 {
             return Err(unsupported(
                 element,
                 "grid-auto-columns",
-                "resolved percentage implicit-column extent must remain finite and non-negative",
+                "resolved relative implicit-column extent must remain finite and non-negative",
             ));
         }
         total += value;
@@ -211,7 +245,7 @@ pub(super) fn validate_implicit_column_percentage_extent(
             return Err(unsupported(
                 element,
                 "grid-auto-columns",
-                "percentage implicit columns exceed the finite f32 CSS-pixel extent",
+                "relative implicit columns exceed the finite f32 CSS-pixel extent",
             ));
         }
     }
@@ -412,6 +446,14 @@ fn has_percentage_auto_columns(auto_columns: &ComputedCssGridAutoColumns) -> boo
     )
 }
 
+fn has_relative_auto_columns(auto_columns: &ComputedCssGridAutoColumns) -> bool {
+    matches!(
+        auto_columns,
+        ComputedCssGridAutoColumns::TrackList(tracks)
+            if tracks.iter().any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_) | ComputedCssGridTrackSize::Fraction(_)))
+    )
+}
+
 fn validate_axis(
     element: &ComputedElementStyle,
     constraints: AxisConstraints,
@@ -425,7 +467,11 @@ fn validate_axis(
         min_size,
         max_size,
     } = constraints;
-    if element.layout_math_values.contains_key(size_property)
+    if element
+        .properties
+        .get(size_property)
+        .is_some_and(|value| value == "auto")
+        || element.layout_math_values.contains_key(size_property)
         || !matches!(size, ComputedCssDimension::LengthPx(value) if value.is_finite() && value >= 0.0)
     {
         return Err(unsupported(

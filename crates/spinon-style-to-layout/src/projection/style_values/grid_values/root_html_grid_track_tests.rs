@@ -8,6 +8,8 @@ use spinon_style::{
     ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
+#[path = "root_html_grid_track_tests/fr_auto_columns.rs"]
+mod fr_auto_columns;
 #[path = "root_html_grid_track_tests/implicit_rows_composition.rs"]
 mod implicit_rows_composition;
 
@@ -170,7 +172,11 @@ fn root_html_column_flow_rejects_unsupported_auto_columns_and_row_flow_sizing() 
         ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(
             f32::INFINITY,
         )]),
-        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Fraction(1.0)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Fraction(-0.5)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Fraction(f32::NAN)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Fraction(
+            f32::INFINITY,
+        )]),
         ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Calc(
             spinon_style::ComputedCssMath::LengthPx(15.0),
         )]),

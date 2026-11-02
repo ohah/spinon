@@ -525,6 +525,7 @@ pub(super) fn validate_grid_layout(
                             track,
                             GridTrackSize::LengthPx(value)
                                 | GridTrackSize::Percentage(value)
+                                | GridTrackSize::Fraction(value)
                                 if value.is_finite() && *value >= 0.0
                         )
                     }) => {}
@@ -1374,9 +1375,13 @@ fn validate_root_html_column_flow_auto_columns(
         crate::GridAutoColumns::TrackList(tracks) => {
             for track in tracks {
                 match track {
-                    GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value)
+                    GridTrackSize::LengthPx(value)
+                    | GridTrackSize::Percentage(value)
+                    | GridTrackSize::Fraction(value)
                         if value.is_finite() && *value >= 0.0 => {}
-                    GridTrackSize::LengthPx(_) | GridTrackSize::Percentage(_) => {
+                    GridTrackSize::LengthPx(_)
+                    | GridTrackSize::Percentage(_)
+                    | GridTrackSize::Fraction(_) => {
                         return Err(LayoutError::InvalidGridTrack {
                             node,
                             property: "grid-auto-columns",
@@ -1385,7 +1390,7 @@ fn validate_root_html_column_flow_auto_columns(
                     _ => {
                         return Err(LayoutError::UnsupportedGridAutoColumns {
                             node,
-                            reason: "Root HTML column-flow mode는 direct px 또는 percentage auto column만 지원합니다",
+                            reason: "Root HTML column-flow mode는 direct px, percentage 또는 fraction auto column만 지원합니다",
                         });
                     }
                 }
@@ -1402,12 +1407,12 @@ fn validate_root_html_column_flow_container_style(
     visible_items: usize,
 ) -> Result<(), LayoutError> {
     validate_root_html_implicit_rows_container_style(node, style, container)?;
-    let has_percentage = matches!(
+    let has_relative_track = matches!(
         &container.auto_columns,
         crate::GridAutoColumns::TrackList(tracks)
-            if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_)))
+            if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_)))
     );
-    if !has_percentage {
+    if !has_relative_track {
         return Ok(());
     }
     let unsupported_property = if !matches!(
@@ -1428,7 +1433,7 @@ fn validate_root_html_column_flow_container_style(
         return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
     }
     let LayoutDimension::Fixed(width) = style.width else {
-        unreachable!("percentage auto-column width was validated above")
+        unreachable!("relative auto-column width was validated above")
     };
     let required_columns = visible_items
         .div_ceil(container.rows.len())
@@ -1457,6 +1462,13 @@ fn validate_root_html_column_flow_container_style(
         let value = match tracks[index % tracks.len()] {
             GridTrackSize::LengthPx(value) => value as f64,
             GridTrackSize::Percentage(value) => (value as f64) * (width as f64),
+            GridTrackSize::Fraction(value) if value.is_finite() && value >= 0.0 => continue,
+            GridTrackSize::Fraction(_) => {
+                return Err(LayoutError::InvalidGridTrack {
+                    node,
+                    property: "grid-auto-columns",
+                });
+            }
             _ => return Ok(()),
         };
         if !value.is_finite() || value < 0.0 {

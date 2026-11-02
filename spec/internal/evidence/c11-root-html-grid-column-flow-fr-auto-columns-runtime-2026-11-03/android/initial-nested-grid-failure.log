@@ -1,0 +1,6 @@
+11-03 00:17:33.076 20714 20731 I SpinonBootstrap: SPINON_C111_ROOT_HTML_PERCENT_COLUMNS_HOST=session=ready owner_tid=20733 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=117 session_startup_us=8016
+11-03 00:17:33.079 20714 20731 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-03 00:17:33.133 20714 20731 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-03 00:17:33.133 20714 20731 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=320.0x240.0 scale=2.625 dark=false sequence=2 status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-03 00:17:33.135 20714 20731 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 root HTML Canvas 색 선택 실패: CascadeFailed
+11-03 00:17:33.135 20714 20731 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=320.0x240.0 scale=2.625 dark=false sequence=4 status=-11 root HTML Canvas 색 선택 실패: CascadeFailed

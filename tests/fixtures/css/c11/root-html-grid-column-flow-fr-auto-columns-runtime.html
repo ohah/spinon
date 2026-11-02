@@ -1,0 +1,60 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.1 fr implicit columns runtime</title>
+<style>
+  html,
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(16 24 32);
+  }
+
+  #grid {
+    display: grid;
+    box-sizing: border-box;
+    width: 300px;
+    height: 63px;
+    grid-template-columns: 30px 40px;
+    grid-template-rows: 20px 40px;
+    grid-auto-flow: column;
+    grid-auto-columns: 10px 10% 1fr;
+    column-gap: 5px;
+    row-gap: 3px;
+    direction: ltr;
+    background-color: rgb(34 43 52);
+  }
+
+  .item {
+    width: 10px;
+    height: 10px;
+  }
+
+  .item-0 { background-color: rgb(229 72 77); }
+  .item-1 { background-color: rgb(58 143 91); }
+  .item-2 { background-color: rgb(56 112 224); }
+  .item-3 { background-color: rgb(240 204 70); }
+  .item-4 { background-color: rgb(155 89 182); }
+  .item-5 { background-color: rgb(230 126 34); }
+  .item-6 { background-color: rgb(22 160 133); }
+  .item-7 { background-color: rgb(211 84 0); }
+  .item-8 { background-color: rgb(142 68 173); }
+  .item-9 { background-color: rgb(41 128 185); }
+  .item-10 { background-color: rgb(192 57 43); }
+  .item-11 { background-color: rgb(39 174 96); }
+</style>
+<div id="grid">
+  <div class="item item-0"></div>
+  <div class="item item-1"></div>
+  <div class="item item-2"></div>
+  <div class="item item-3"></div>
+  <div class="item item-4"></div>
+  <div class="item item-5"></div>
+  <div class="item item-6"></div>
+  <div class="item item-7"></div>
+  <div class="item item-8"></div>
+  <div class="item item-9"></div>
+  <div class="item item-10"></div>
+  <div class="item item-11"></div>
+</div>
