@@ -1,0 +1,74 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "sourceHead": "42cc95e32920e6a787b7ec46b9b1ff9cd230d603",
+  "cache": {
+    "priorSessionsClosedBeforeTailnetCheck": true,
+    "session": "spinon-roadmap-pr1060",
+    "cacheBustQuery": "source=42cc95e32920e6a787b7ec46b9b1ff9cd230d603",
+    "serverCacheControl": "no-cache"
+  },
+  "pages": [
+    {
+      "route": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "desktop": {
+        "viewport": "1440x1000",
+        "documentWidth": 1440,
+        "pr1056CardVisible": true,
+        "pr1059CardVisible": true,
+        "officialCountVisible": true
+      },
+      "mobile": {
+        "viewport": "390x844",
+        "documentWidth": 390,
+        "c11CardVisible": true,
+        "overviewSvgRightSideClipped": true
+      }
+    },
+    {
+      "route": "/spinon/plan/c11-root-html-grid-column-flow-implicit-columns.html",
+      "loaded": true,
+      "title": "C11.1 · parsed Root HTML column-flow implicit columns - 스피논 문서",
+      "mentionsGridAutoColumns": true,
+      "mentionsFixedPxScope": true
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/README.html",
+      "loaded": true,
+      "mentionsAndroidApi37Avd": true,
+      "mentionsIPhone17ProSimulator": true
+    },
+    {
+      "route": "/spinon/STATUS.html#css-구현-체크리스트",
+      "loaded": true,
+      "officialCount": "72/213",
+      "c11CheckboxChecked": false,
+      "pr1059MergeNoteVisible": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser-desktop.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "5b0048848fd1dc56fbe1002f6be539fdc70964a8720507f42992e221a5ccd1b6"
+    },
+    {
+      "path": "tailnet-roadmap-c11-cards-agent-browser-pass02.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "fdcaf98044e9f660af6b353f1bfa34afe46e29f69d3569ab611ddc91ec37ac03"
+    },
+    {
+      "path": "tailnet-roadmap-mobile-agent-browser.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "eece4482d56dbfe4fd03941482a536d2e23562edf6d927346c2fc323c706cd0f"
+    }
+  ],
+  "pr1060BodyImages": [
+    { "label": "Android API 37 ARM64 AVD", "naturalWidth": 1080, "naturalHeight": 2400, "loaded": true },
+    { "label": "iPhone 17 Pro iOS 26.2 Simulator", "naturalWidth": 1206, "naturalHeight": 2622, "loaded": true }
+  ],
+  "browserCloseAllVerified": false
+}
