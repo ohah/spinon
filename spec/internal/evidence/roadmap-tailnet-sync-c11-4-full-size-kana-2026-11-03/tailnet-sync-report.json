@@ -1,0 +1,358 @@
+{
+  "schema": "spinon-roadmap-tailnet-sync-v1",
+  "date": "2026-11-03",
+  "sourceHead": "c82639bd1",
+  "pr": 1084,
+  "previewRoot": "~/Library/Application Support/SpinonPreview",
+  "previewUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "serverPid": 28040,
+  "build": {
+    "kind": "selected Rspress build",
+    "version": "2.0.22",
+    "exitCode": 0,
+    "linkCheck": "disabled for selected-route build; full spec build is blocked by unrelated legacy dead links"
+  },
+  "backupRoot": "backup/c11-4-full-size-kana-pr1084-20261103",
+  "routeCount": 33,
+  "written": 23,
+  "unchanged": 10,
+  "backups": 3,
+  "noDeletes": true,
+  "entries": [
+    {
+      "route": "roadmap.html",
+      "kind": "standalone-roadmap",
+      "action": "replaced",
+      "bytes": 531447,
+      "sha256": "753d9ac60828709fc7746074d469428423c840291967915ac9d625b90988a649",
+      "previousSha256": "fde3c584aee2cbbb9cd7461be1dcf627bf71f31aee9056d74ee78ae8c7d70f9e",
+      "backup": "backup/c11-4-full-size-kana-pr1084-20261103/roadmap.html"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-transform-full-size-kana.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 29451,
+      "sha256": "cfe76dc82c7205cac803d3baa8f8ca84bcd12578807e7424f8b3d8496160dedf",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-precomparison-2026-11-03/README.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 24021,
+      "sha256": "ee68dce688c56bd74d1b37f98250467d4f2e1e3ee630ec267f833a8dda998cf5",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "kind": "rendered-doc",
+      "action": "replaced",
+      "bytes": 531710,
+      "sha256": "a23e1abf91ade0194bea7db82d044b1f1db359cc29552d4337e69df5308a9077",
+      "previousSha256": "735efba9cb06bcbc7aec3162e6f21cc6a3c0fc5f48ee16cd9839642b6b832a2a",
+      "backup": "backup/c11-4-full-size-kana-pr1084-20261103/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/README.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 32356,
+      "sha256": "a1a4d7c696d544db322f06941c6c465262c224d44bc9c0885265ff5a177e1310",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/implementation-runtime-review-20.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 29158,
+      "sha256": "bce5dcaaf8ef6919236817e1a8bc52aa3b50102f075430be43215d4d3e552470",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/pr-diff-review-30.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 31238,
+      "sha256": "e0429a1b619c7fdb16a248429b6838681dad2655f35bc94a29536107975d7882",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/post-merge-status-review-30.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 28120,
+      "sha256": "99a10137b2ed577e66adc5dea53936f5b6da2d98199a1d0376d0618c1bf87802",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "STATUS.html",
+      "kind": "rendered-doc",
+      "action": "replaced",
+      "bytes": 774474,
+      "sha256": "03823bd650702fcf64131eea0337fa9b036edf88fec795af7c45fd03b36f18bf",
+      "previousSha256": "931089c8f8f90869f3dbd3af5907ca9c88335ece958c6cce277c18de60c881aa",
+      "backup": "backup/c11-4-full-size-kana-pr1084-20261103/STATUS.html"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-c11-4-full-size-kana-2026-11-03/roadmap-pr-diff-review-30.html",
+      "kind": "rendered-doc",
+      "action": "created",
+      "bytes": 27669,
+      "sha256": "0cd71543a921078aeeee0a3ba524d6e189879467d38baf3b79ee3ddd5e443530",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/image/chrome156-literal-candidates.d1ea033377.png",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 48248,
+      "sha256": "244d9fb6aa0d4bb05842a160491d28df448525c48b8e195db67ecf75b6847ad1",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "route": "static/js/async/route-0583faf5f6fe.81870190f2.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 12249,
+      "sha256": "7acb4ed5403103b04ae6f23a898fbdc59e5309f5609c66b86d7c0b6a29095bfa",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-2960edd76831.4802d828f0.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 11088,
+      "sha256": "afb3ec57fa3de886a57a660013c6634661644926c9a37f6c67000786b9908b69",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-4bc5af1e8927.fddca62eee.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 8555,
+      "sha256": "6f9fdf7c829e2b0483fda51e2f3cfbed3b63bcb6ff93aeccdc2397a9e57be3b9",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.a98d00e384.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 835322,
+      "sha256": "2512f91d6b52037c009a018ccc6e94ccb1b3dbcee8db49f229d7e383f91e0dbf",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-731550dcfb3f.19e513d04b.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 12040,
+      "sha256": "ad6a1e3777c78b69e300b4c8cff545c50f2cbd4ad73178aa55900a531e4fbbd8",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-99b092bdc6e1.3701c5f645.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 15271,
+      "sha256": "3ab672e5dea4ee17e120b05c84b8719c67f67f54c2ae3757fa428b877b13ec3a",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-c05deb7c657f.5e23c1ed2a.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 16688,
+      "sha256": "f5a07b8a7e303f49a97a5e1c5524f3785339358e69cb527e7e5263158e407509",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.9b6c18de1c.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 551812,
+      "sha256": "b5648249d06021aff00e9f8572ea661e861fa06505425e8cb485e35a77e57a4d",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-cf2873544f88.a5cea0ffd4.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 5737,
+      "sha256": "cc99e20a74367dba835cf0f306e10693d262317640b4f7fa86543699279d8e59",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/async/route-e322263fda2d.b326517b4c.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 11467,
+      "sha256": "54ffcf190003fe54363277b2425b13c49b73d916904d7c457a9cc50b37547288",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/index.5568c97d41.js",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 55701,
+      "sha256": "f26722ba35624db8c4aa19a261048cfec679cd84662c56ba7f24c6b0584fe6be",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.b5d9a69293.js",
+      "kind": "hashed-site-asset",
+      "action": "unchanged",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "route": "static/search_index.ko.ca94e81e.json",
+      "kind": "hashed-site-asset",
+      "action": "created",
+      "bytes": 872072,
+      "sha256": "ca94e81e700c6206db5b7cfe21032bca0340821d5b060255d1e33ab8ca4e49a4",
+      "previousSha256": null,
+      "backup": null
+    },
+    {
+      "route": "icon.svg",
+      "kind": "site-icon",
+      "action": "unchanged",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    }
+  ],
+  "httpVerification": {
+    "checkedRoutes": 33,
+    "passed": 33,
+    "failed": 0,
+    "allServedSha256Matched": true
+  },
+  "agentBrowser": {
+    "session": "spinon-c11-status",
+    "roadmap": {
+      "title": "스피논 구현 로드맵",
+      "cardFound": true,
+      "cardLinkCount": 10,
+      "servedRoutesRequested": 33,
+      "servedRoutesStatus": "33/33 HTTP 200 with exact SHA-256"
+    },
+    "plan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-anonymous-grid-text-transform-full-size-kana.html",
+      "title": "C11.4 anonymous Grid text computed text-transform: full-size-kana - 스피논 문서",
+      "renderedH1": "C11.4 anonymous Grid text computed text-transform: full-size-kana",
+      "loadedImages": 1,
+      "brokenImages": 0
+    },
+    "desktop": {
+      "viewport": "1280 CSS px wide, device scale factor 2",
+      "screenshot": {
+        "path": "spec/internal/evidence/roadmap-tailnet-sync-c11-4-full-size-kana-2026-11-03/roadmap-tailnet-agent-browser-desktop.png",
+        "bytes": 743549,
+        "sha256": "0c0646f693836fb88be4c6dd28e8099533b86687f17dffac4366cb5fcd274295",
+        "width": 2560,
+        "height": 1400
+      }
+    },
+    "mobile": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "deviceScaleFactor": 2
+      },
+      "documentScrollWidth": 390,
+      "documentClientWidth": 390,
+      "cardScrollWidth": 362,
+      "cardClientWidth": 362,
+      "cardLinkCount": 10,
+      "screenshot": {
+        "path": "spec/internal/evidence/roadmap-tailnet-sync-c11-4-full-size-kana-2026-11-03/roadmap-tailnet-agent-browser-mobile.png",
+        "bytes": 384551,
+        "sha256": "918d56ce6a97cec51496ce1026cb1160e6fe03d2b518d6af6b92965b40207af3",
+        "width": 780,
+        "height": 1688
+      }
+    },
+    "closed": true,
+    "agentBrowserProcessRemaining": false
+  },
+  "fullSiteBuildAttempt": {
+    "exitCode": 1,
+    "reason": "full spec build dead-link validation reported existing missing links in unrelated historical docs; selected route build completed successfully with checks disabled for the selected subset"
+  }
+}
