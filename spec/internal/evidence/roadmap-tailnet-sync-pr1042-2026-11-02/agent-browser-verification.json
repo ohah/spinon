@@ -1,0 +1,68 @@
+{
+  "observedAt": "2026-11-02T08:09:20.223Z",
+  "browser": "Agent Browser",
+  "pages": {
+    "roadmap": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "c11Pr1042CardFound": true,
+      "desktop": {
+        "viewportWidth": 1280,
+        "documentWidth": 1280,
+        "screenshot": {
+          "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-roadmap-agent-browser-desktop.png",
+          "bytes": 98184,
+          "sha256": "69b7a8091be4c5cdb2cd493d923fafec2686732c4a5f7cd1659b00b7e0db24a3"
+        }
+      },
+      "mobile": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "cardVisible": true,
+        "screenshot": {
+          "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1042-2026-11-02/tailnet-roadmap-agent-browser-mobile.png",
+          "bytes": 92645,
+          "sha256": "f9e0c4b4326f50c35068b6edbf486cb8164613c364ac2e4e066aa5b571f4dd56"
+        },
+        "visualNote": "overview SVG right side appears clipped at this viewport"
+      }
+    },
+    "plan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-root-html-grid-auto-row-list.html",
+      "title": "C11.1 parsed Root HTML grid-auto-rows fixed-px list 계획",
+      "hasGridAutoRows": true,
+      "hasImplicitRowScope": true
+    },
+    "status": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장",
+      "officialCount": "72/213",
+      "c11Checked": false
+    },
+    "runtimeReadme": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.html",
+      "title": "C11.1 parsed Root HTML grid-auto-rows fixed-px list runtime 후보",
+      "hasRuntimeMatrix20of20": true,
+      "hasAndroidApi37": true,
+      "hasIosSimulator": true
+    }
+  },
+  "pr1044BodyImages": [
+    {
+      "url": "https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.png",
+      "loaded": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-26_2-simulator-pass03.png",
+      "loaded": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "closed": {
+    "command": "agent-browser close --all",
+    "processCountAfterSecondScan": 0
+  }
+}
