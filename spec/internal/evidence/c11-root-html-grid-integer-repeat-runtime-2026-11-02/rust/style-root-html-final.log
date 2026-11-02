@@ -1,0 +1,19 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 13 tests
+test stylesheet_registry::css_profile::tests::root_html_named_grid_recovery_ignores_invalid_values_only_for_grid_placement_properties ... ok
+test stylesheet_registry::css_profile::tests::root_html_gap_recovery_ignores_only_invalid_negative_fixed_px_declarations ... ok
+test stylesheet_registry::css_profile::tests::color_scheme_is_admitted_only_by_the_root_html_runtime_profile ... ok
+test stylesheet_registry::css_profile::tests::root_html_media_allowlist_does_not_change_default_runtime_profile ... ok
+test stylesheet_registry::css_profile::tests::root_html_canvas_system_color_scanner_ignores_string_contents ... ok
+test stylo_dom::cascade::runtime_layout_tests::root_html_inline_background_image_stays_outside_the_canvas_profile ... ok
+test stylesheet_registry::css_profile::tests::root_html_media_allowlist_rejects_unknown_features_and_properties ... ok
+test stylo_dom::cascade::runtime_layout_tests::root_html_inline_system_colors_and_custom_property_values_fail_closed ... ok
+test stylesheet_registry::css_profile::tests::root_html_canvas_profile_rejects_system_colors_and_their_custom_properties ... ok
+test stylo_dom::cascade::runtime_layout_tests::root_html_profile_exports_inline_background_color_as_typed_paint ... ok
+test stylo_dom::cascade::runtime_layout_tests::c04_12_root_html_block_paint::root_html_block_paint_rejects_partial_alpha_and_non_srgb_backgrounds ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_integer_repeat::root_html_integer_repeat_accepts_exact_expanded_track_limit ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_integer_repeat::root_html_integer_repeat_allocation_failures_are_contextual_and_recover ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 247 filtered out; finished in 0.01s

@@ -572,9 +572,9 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             ),
         ),
         (
-            "repeat track function",
+            "auto-repeat track",
             "cascade_failed",
-            SOURCE.replace("40px 80px", "repeat(2, 40px)"),
+            SOURCE.replace("40px 80px", "repeat(auto-fill, 40px)"),
         ),
         (
             "minmax fractional track",
@@ -599,7 +599,7 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
         ),
         (
             "named explicit line",
-            "cascade_failed",
+            "unsupported_computed_value",
             SOURCE.replace("40px 80px", "[left] 40px 80px"),
         ),
         (

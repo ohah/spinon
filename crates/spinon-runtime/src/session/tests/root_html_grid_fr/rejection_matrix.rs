@@ -227,11 +227,11 @@ fn c11_1_root_html_default_runtime_rejects_fraction_outside_its_bounded_profile(
             r#"<div class="a"></div><div class="b"></div>"#,
         ),
         (
-            "percentage fixed repeat remains unsupported",
+            "percentage intrinsic repeat remains unsupported",
             "grid-template-columns",
             "120px",
             "40px",
-            "repeat(2, 50%)",
+            "repeat(2, minmax(0px, 50%))",
             "40px",
             "0",
             "",
