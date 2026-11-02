@@ -2,6 +2,8 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [레이아웃 계약 0009](../spec/internal/0009-layout-engine.md)
 
+**다음 Root HTML track 후속 계획 후보:** [확정 축 percentage explicit track](./c11-root-html-grid-percentage-tracks.md). 계획 단계의 제한 slice이며 구현 근거를 별도 검토하기 전까지 기존 `px`/`fr` 경로와 공식 C11.1/C11 완료 상태는 바꾸지 않는다.
+
 **구현 전 비교:** [고정 HTML source와 독립 기대값](../spec/internal/evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/README.md) · [Chrome 156 관측](../spec/internal/evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/chrome-observation.json) · [expected.json](../spec/internal/evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/expected.json)
 
 **상태:** Root HTML 기본 runtime 통합 PR [#1000](https://github.com/ohah/spinon/pull/1000)은 2026-11-01T20:04:43Z Rebase and merge로 병합됐다(merge SHA `1971edf0ad9e11ec32f08b83728220f2161b17f5`). 제한된 base/visible-overflow 경로의 Root HTML regression 17/17, formatting·scoped Clippy와 플랫폼 실행 근거가 기록돼 있다. 이어 고정 px gap 후속 PR [#1002](https://github.com/ohah/spinon/pull/1002)도 2026-11-01T20:53:41Z 병합됐다(merge SHA `12b554c5e1a1946e7267545d5d5092ba33211af9`); Root HTML regression은 18/18이고 percent·math-backed gap은 계속 거부한다. [기본 경로 실행 근거](../spec/internal/evidence/c11-root-html-grid-runtime-precomparison-2026-11-02/README.md) · [gap 후속 실행 근거](../spec/internal/evidence/c11-root-html-grid-gap-runtime-2026-11-02/README.md). PR check run은 보고되지 않아 CI 통과로 주장하지 않는다. 이 두 제한 slice는 전체 CSS Grid, C11.3/C11.4 또는 C11 공식 완료를 뜻하지 않으며 `72/213`을 바꾸지 않는다.

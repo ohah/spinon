@@ -1,0 +1,91 @@
+{
+  "specification": {
+    "title": "CSS Grid Layout Module Level 1",
+    "snapshot": "2025-03-26 CRD",
+    "section": "7.2.1 Track Sizes",
+    "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+    "rule": "Column percentages resolve against the grid container inner inline size; row percentages resolve against its inner block size. If the grid container size depends on its tracks, percentages act as auto during intrinsic sizing and then resolve against the resulting grid-container size for layout."
+  },
+  "fixtureSha256": "2f58aa4b35548ce178a053afeeb56a788b6de0c52abbe6bab0ee34ad80ce71c7",
+  "runtimeFixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-percentage-runtime.html",
+    "sha256": "e48278bcae5c9dbf1510ef56edb9fec8413bc4cf78ffbc9316c99bc07aa1cb8c",
+    "expectedColumns": [60, 120, 20],
+    "expectedRows": [30, 60, 10],
+    "expectedColumnOrigins": [0, 70, 200],
+    "expectedRowOrigins": [0, 35, 100]
+  },
+  "toleranceCssPx": 0.02,
+  "positiveScenes": [
+    {
+      "id": "both-axes",
+      "basis": { "innerInlineSize": 240, "innerBlockSize": 120 },
+      "columns": ["25%", "50%", "20px"],
+      "expectedColumns": [60, 120, 20],
+      "columnGap": 10,
+      "expectedColumnOrigins": [0, 70, 200],
+      "rows": ["25%", "50%", "10px"],
+      "expectedRows": [30, 60, 10],
+      "rowGap": 5,
+      "expectedRowOrigins": [0, 35, 100],
+      "calculation": "Columns: 0.25×240, 0.50×240, 20. Row tracks: 0.25×120, 0.50×120, 10. Gaps advance item origins but do not reduce the percentage basis."
+    },
+    {
+      "id": "percentage-and-fr",
+      "basis": { "innerInlineSize": 240, "innerBlockSize": 40 },
+      "columns": ["25%", "1fr"],
+      "expectedColumns": [60, 170],
+      "columnGap": 10,
+      "expectedColumnOrigins": [0, 70],
+      "rows": ["100%"],
+      "expectedRows": [40],
+      "calculation": "25% resolves to 60px; 10px gap is removed once; 1fr receives the remaining 170px."
+    },
+    {
+      "id": "overfull-columns",
+      "basis": { "innerInlineSize": 200, "innerBlockSize": 40 },
+      "columns": ["120%", "10%"],
+      "expectedColumns": [240, 20],
+      "columnGap": 8,
+      "expectedColumnOrigins": [0, 248],
+      "expectedTrackEnd": 268,
+      "calculation": "1.20×200, 0.10×200; the 8px gutter is added between the fixed percentage tracks. The grid remains 200px wide and the track area overflows it."
+    },
+    {
+      "id": "zero-and-full-columns",
+      "basis": { "innerInlineSize": 200, "innerBlockSize": 40 },
+      "columns": ["0%", "100%"],
+      "expectedColumns": [0, 200],
+      "expectedColumnOrigins": [0, 0],
+      "calculation": "0×200, 1×200; both adjacent grid lines coincide at x=0 before the second track."
+    },
+    {
+      "id": "zero-basis-columns",
+      "basis": { "innerInlineSize": 0, "innerBlockSize": 40 },
+      "columns": ["50%", "50%"],
+      "expectedColumns": [0, 0],
+      "rows": ["100%"],
+      "expectedRows": [40],
+      "expectedColumnOrigins": [0, 0],
+      "calculation": "Both 50% tracks resolve against the definite 0px inline size, producing two 0px tracks."
+    }
+  ],
+  "negativeControls": [
+    {
+      "id": "indefinite-rows",
+      "reason": "This bounded Root HTML route requires a definite CSS-pixel size on any axis containing a percentage track; intrinsic/cyclic percentage sizing stays rejected.",
+      "chromeObservation": "CSS Grid treats the percentage tracks as auto while calculating intrinsic size; Chrome produced two 6px rows for the 6px markers and a 12px auto-height grid."
+    },
+    {
+      "id": "percentage-gap",
+      "reason": "This task does not widen the fixed-px-only Root HTML gap route.",
+      "chromeObservation": "The 10% gap resolves to 20px from the 200px inner inline size; two 100px tracks put the second item at x=120."
+    },
+    {
+      "id": "percentage-areas",
+      "reason": "The existing Root HTML named-area subset is deliberately fixed to its 40px/80px columns and 20px/50px rows. Percentage tracks combined with template areas remain rejected.",
+      "chromeObservation": "The 160×80px grid resolves columns to 40px/120px and rows to 20px/60px."
+    }
+  ],
+  "oracleBoundary": "The independent CSS Grid calculation is the expected result. Chrome 156 records browser observations only. This file does not claim Spinon runtime support, mobile application behavior, pixel equality, WPT conformance, or C11 completion."
+}

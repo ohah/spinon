@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spinon root HTML Grid percentage track precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        display: grid;
+        background: #101820;
+      }
+
+      .spacer { height: 8px; }
+
+      .marker {
+        width: 8px;
+        height: 6px;
+      }
+
+      .marker:nth-child(3n + 1) { background: #e5484d; }
+      .marker:nth-child(3n + 2) { background: #3b82f6; }
+      .marker:nth-child(3n) { background: #3a8f5b; }
+
+      #both-axes {
+        width: 240px;
+        height: 120px;
+        grid-template-columns: 25% 50% 20px;
+        grid-template-rows: 25% 50% 10px;
+        column-gap: 10px;
+        row-gap: 5px;
+      }
+
+      #percentage-and-fr {
+        width: 240px;
+        height: 40px;
+        grid-template-columns: 25% 1fr;
+        grid-template-rows: 100%;
+        column-gap: 10px;
+      }
+
+      #overfull-columns {
+        width: 200px;
+        height: 40px;
+        grid-template-columns: 120% 10%;
+        grid-template-rows: 100%;
+        column-gap: 8px;
+      }
+
+      #zero-and-full-columns {
+        width: 200px;
+        height: 40px;
+        grid-template-columns: 0% 100%;
+        grid-template-rows: 100%;
+      }
+
+      #zero-basis-columns {
+        width: 0;
+        height: 40px;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+      }
+
+      #indefinite-rows {
+        width: 120px;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+      }
+
+      #percentage-gap {
+        width: 200px;
+        height: 40px;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+        column-gap: 10%;
+      }
+
+      #percentage-areas {
+        width: 160px;
+        height: 80px;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 25% 75%;
+        grid-template-areas: "head head" "side body";
+      }
+
+      #percentage-areas .head { grid-area: head; }
+      #percentage-areas .side { grid-area: side; }
+      #percentage-areas .body { grid-area: body; }
+    </style>
+  </head>
+  <body>
+    <main id="both-axes">
+      <div class="marker"></div><div class="marker"></div><div class="marker"></div>
+      <div class="marker"></div><div class="marker"></div><div class="marker"></div>
+      <div class="marker"></div><div class="marker"></div><div class="marker"></div>
+    </main>
+    <div class="spacer"></div>
+    <main id="percentage-and-fr"><div class="marker"></div><div class="marker"></div></main>
+    <div class="spacer"></div>
+    <main id="overfull-columns"><div class="marker"></div><div class="marker"></div></main>
+    <div class="spacer"></div>
+    <main id="zero-and-full-columns"><div class="marker"></div><div class="marker"></div></main>
+    <div class="spacer"></div>
+    <main id="zero-basis-columns"><div class="marker"></div><div class="marker"></div></main>
+    <div class="spacer"></div>
+    <main id="indefinite-rows"><div class="marker"></div><div class="marker"></div></main>
+    <div class="spacer"></div>
+    <main id="percentage-gap"><div class="marker"></div><div class="marker"></div></main>
+    <div class="spacer"></div>
+    <main id="percentage-areas">
+      <div class="marker head"></div><div class="marker side"></div><div class="marker body"></div>
+    </main>
+  </body>
+</html>
