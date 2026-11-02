@@ -2006,6 +2006,9 @@ private func c114RowAxisSpanExpectedNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if c114IsFullSizeKanaTextTransformScene(sceneID) {
+        return c114FullSizeKanaNodeFramesMatch(sceneID, report: report)
+    }
     if c114IsGridTextAspectRatioScene(sceneID) {
         return c114AspectRatioNodeFramesMatch(sceneID, report: report)
     }
@@ -2026,6 +2029,34 @@ private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> B
     if report.contains(expected) { return true }
     guard sceneID == "calc-neighbor-col-fill-border-box" else { return false }
     return report.contains(expected.replacingOccurrences(of: "x=23.796875", with: "x=23.8"))
+}
+
+private func c114FullSizeKanaNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    guard let expected = c114ComputedTextTransformScene(sceneID) else { return false }
+    let marker = "node_frames_css_px=["
+    guard report.components(separatedBy: marker).count == 2,
+          let markerRange = report.range(of: marker),
+          let closing = report[markerRange.upperBound...].firstIndex(of: "]") else {
+        return false
+    }
+    let frames = report[markerRange.upperBound..<closing]
+        .split(separator: ";", omittingEmptySubsequences: false)
+    guard frames.count == 2 else { return false }
+    let dimensions: [(width: Double, height: Double)] = [
+        (120, expected.rowHeight),
+        (expected.trackWidth, expected.rowHeight)
+    ]
+    return frames.enumerated().allSatisfy { index, source in
+        guard let actual = c114RowAxisSpanParseNodeFrame(source),
+              actual.index == index,
+              actual.node == index + 1 else { return false }
+        let expectedFrame = dimensions[index]
+        let tolerance = 1.0 / 32.0
+        return abs(actual.x) <= tolerance
+            && abs(actual.y) <= tolerance
+            && abs(actual.width - expectedFrame.width) <= tolerance
+            && abs(actual.height - expectedFrame.height) <= tolerance
+    }
 }
 
 private func c114AspectRatioNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
@@ -8738,8 +8769,14 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "height=\(c114GenericFrameNumber(textIndent.rowHeight))]"
     }
     if let textTransform = c114ComputedTextTransformScene(sceneID) {
-        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
-            + "height=\(c114GenericFrameNumber(textTransform.rowHeight))]"
+        let root = "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
+            + "height=\(c114GenericFrameNumber(textTransform.rowHeight))"
+        if c114IsFullSizeKanaTextTransformScene(sceneID) {
+            return root + ";1:node=2,x=0,y=0,width="
+                + "\(c114GenericFrameNumber(textTransform.trackWidth)),height="
+                + "\(c114GenericFrameNumber(textTransform.rowHeight))]"
+        }
+        return root + "]"
     }
     if let letterSpacing = c114ComputedLetterSpacingScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
