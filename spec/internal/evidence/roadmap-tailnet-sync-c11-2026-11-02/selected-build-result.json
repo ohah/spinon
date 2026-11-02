@@ -1,0 +1,25 @@
+{
+  "sourceHead": "00230cda828254b21ddee42351aed3bddceaab8a",
+  "sourceTree": "6d0e2bf043ba998dee8b4cf00882a82f85aafaea",
+  "command": "mise exec -- bun run docs:build --config /Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/roadmap-tailnet-sync-c11-2026-11-02/rspress.config.ts",
+  "rspressVersion": "2.0.22",
+  "exitCode": 0,
+  "selectedRootFileCount": 42,
+  "renderedMarkdownRoutes": [
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-root-html-grid-runtime.html",
+    "plan/c11-3-template-repeat-named-lines-areas.html",
+    "plan/c11-root-html-grid-integer-repeat.html",
+    "plan/c11-root-html-grid-integer-repeat-plan-review-20.html",
+    "internal/evidence/c11-root-html-grid-integer-repeat-precomparison-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/implementation-runtime-review-20.html",
+    "internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/merge-PR1038.html",
+    "internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html"
+  ],
+  "globalDeadLinkCheck": "disabled for selected-root rendering; roadmap PR #1038 local hrefs separately required in publication manifest",
+  "scope": "selected documentation preview only; not a successful repository-wide docs build"
+}

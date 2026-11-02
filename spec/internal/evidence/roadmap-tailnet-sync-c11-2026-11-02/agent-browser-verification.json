@@ -1,0 +1,45 @@
+{
+  "sourceHead": "00230cda828254b21ddee42351aed3bddceaab8a",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "browser": "Agent Browser with Chrome 156.0.8078.80",
+  "roadmapEntry": {
+    "pullRequest": 1038,
+    "mergeSha": "b3ad473d4bfef4bb2f54a61603d498e620c03b0a",
+    "officialCount": "72/213",
+    "c11Complete": false,
+    "localLinkCount": 8
+  },
+  "imageRoutes": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/android-avd/simulator.png",
+      "httpStatus": 200,
+      "loadedInAgentBrowser": true,
+      "width": 1080,
+      "height": 2400
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/ios-simulator/simulator.png",
+      "httpStatus": 200,
+      "loadedInAgentBrowser": true,
+      "width": 1206,
+      "height": 2622
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser-desktop.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "d508930fdb4160e4d700f836a5fb96ab2c8e1aa01e1cbe256c3e16c14b030213"
+    },
+    {
+      "path": "tailnet-roadmap-agent-browser-mobile-pass04.png",
+      "width": 412,
+      "height": 915,
+      "sha256": "1bdfa11e39290073653522a46cbe518381a181724ca9602e7e8ec26061cd5121"
+    }
+  ],
+  "sessionClosed": true,
+  "sessionChromeProcessesRemaining": 0
+}
