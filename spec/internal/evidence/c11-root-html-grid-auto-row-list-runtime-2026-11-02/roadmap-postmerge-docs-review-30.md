@@ -1,6 +1,6 @@
-# PR #1042 병합 후 roadmap·명세 동기화 실패 관점 검토 30개
+# PR #1043 · #1042 병합 후 roadmap·명세 동기화 실패 관점 검토 30개
 
-대상: 구현 PR #1042 병합 뒤의 계획·상태 대장·내부 계약·실행 evidence 동기화 diff. 구현 동작 review와 PR #1042의 30개 diff 검토를 재사용하지 않고, 병합 사실·공식 상태·근거 연결 실패를 따로 확인한다.
+대상: PR #1042 병합 뒤 열린 문서 PR #1043의 계획·상태 대장·내부 계약·실행 evidence 동기화 diff. 구현 동작 review와 PR #1042의 30개 diff 검토를 재사용하지 않고, 병합 사실·공식 상태·근거 연결 실패를 따로 확인한다.
 
 | # | 실패 관점 | 판정과 확인 |
 |---:|---|---|
@@ -35,4 +35,4 @@
 | 29 | 비어 있는 GitHub checks를 CI 성공으로 표현하는가 | PR status rollup empty 및 main required checks disabled를 써 CI 통과를 주장하지 않는다. PASS. |
 | 30 | 동기화 변경에만 필요한 docs update가 제품 동작을 바꾸거나 evidence를 지우는가 | 문서·manifest·merge record만 변경하고 기존 logs·screenshots·failure artifacts를 보존한다. PASS. |
 
-**판정:** 실제 merge 이후의 main/PR state와 artifact hashes를 대조해 30개 동기화 실패 관점을 확인했다. C11.1/C11 상위 상태와 `72/213`은 바꾸지 않는다. PR check가 보고되지 않았으므로 CI 통과로 기록하지 않는다.
+**판정:** PR #1043의 실제 9-file diff와 merge 이후 main/PR state, artifact hashes를 대조해 30개 동기화 실패 관점을 확인했다. C11.1/C11 상위 상태와 `72/213`은 바꾸지 않는다. PR #1043 check rollup이 비어 있어 CI 통과로 기록하지 않는다.
