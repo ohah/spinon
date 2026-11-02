@@ -61,3 +61,7 @@
 ## 2026-11-02 Root HTML named-area percentage track 후속 후보
 
 `RuntimeRootHtmlTextPaintV1` 기본 경로의 기존 2×2 semantic named-area map은 definite 축마다 direct finite non-negative `px`/`%` track 두 개를 허용한다. 구현 PR [#1035](https://github.com/ohah/spinon/pull/1035)은 2026-11-02T05:24:52Z Rebase and merge됐다(merge SHA `4b921f3e8ccd86e7e156562bb7e5b4a464f082f2`). Chrome 156 네 장면에 대응하는 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene이 `layout=ready`와 draw/present를 보였다. Rust geometry assertion, build 경고, screenshot hash와 시각 확인 한계는 [전용 runtime 근거](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md)에 기록했다. 이 제한 slice는 일반 CSS Grid, WPT, hardware GPU, surface pixel parity 또는 C11 완료를 뜻하지 않는다.
+
+## 2026-11-02 Root HTML fixed-px implicit row list 후속 후보
+
+기본 Root HTML 경로의 단일 fixed-px `grid-auto-rows` 이후, [전용 계획](./c11-root-html-grid-auto-row-list.md)은 non-empty finite non-negative px-only track list의 implicit-row 순환을 검토한다. Chrome 156 사전 비교와 독립 기대값은 [precomparison evidence](../spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.md)에 있다. Root HTML `grid-auto-flow:row`, `grid-auto-columns:auto`, 기존 item shape와 resource limits를 유지하는 계획 slice이며 구현 전 상태다.
