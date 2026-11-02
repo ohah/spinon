@@ -325,12 +325,12 @@ fn validate_root_html_expanded_row_range(
     let crate::LayoutDimension::Fixed(height) = container_node.style.height else {
         unreachable!("the percentage row basis was validated above")
     };
-    let crate::LayoutLengthPercentage::LengthPx(row_gap) = container_node.style.gap.row else {
-        return Err(LayoutError::InvalidGridTrack {
-            node,
-            property: "row-gap",
-        });
-    };
+    let row_gap = crate::grid::resolve_root_html_gap_px(
+        node,
+        "row-gap",
+        container_node.style.gap.row,
+        container_node.style,
+    )?;
     let max_f32 = f32::MAX as f64;
     let mut total = (row_gap as f64) * expanded_rows.len().saturating_sub(1) as f64;
     if !total.is_finite() || total > max_f32 {

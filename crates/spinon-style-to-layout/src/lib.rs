@@ -24,6 +24,8 @@ mod c11_1_root_html_fr_auto_column_tests;
 #[cfg(test)]
 mod c11_1_root_html_percentage_auto_row_tests;
 #[cfg(test)]
+mod c11_1_root_html_percentage_gap_tests;
+#[cfg(test)]
 mod c11_2_1_grid_placement_tests;
 #[cfg(test)]
 mod c11_2_2_grid_auto_placement_tests;

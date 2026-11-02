@@ -19,6 +19,7 @@ mod grid_values;
 mod positioning_values;
 mod primitive_values;
 mod root_html_column_flow;
+mod root_html_grid_gap;
 mod root_html_grid_tracks;
 mod root_html_named_area;
 mod spacing_values;
@@ -1253,11 +1254,19 @@ fn validate_root_html_grid_box_inputs(
                 }
             }
         }
-        for (property, value) in [
-            ("row-gap", element.layout_spacing.row_gap),
-            ("column-gap", element.layout_spacing.column_gap),
+        for (property, value, basis) in [
+            (
+                "row-gap",
+                element.layout_spacing.row_gap,
+                element.layout_dimensions.height,
+            ),
+            (
+                "column-gap",
+                element.layout_spacing.column_gap,
+                element.layout_dimensions.width,
+            ),
         ] {
-            if !is_fixed_root_html_gap(value) || element.layout_math_values.contains_key(property) {
+            if element.layout_math_values.contains_key(property) {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node,
                     property,
@@ -1268,6 +1277,7 @@ fn validate_root_html_grid_box_inputs(
                         .unwrap_or_else(|| format!("{value:?}")),
                 });
             }
+            root_html_grid_gap::validate_root_html_gap(element, property, value, basis)?;
         }
         if let Some(grid) = element.grid_layout.as_ref() {
             root_html_grid_tracks::validate_percentage_track_ranges(element, grid)?;
@@ -1325,16 +1335,6 @@ fn validate_root_html_grid_box_inputs(
         });
     }
     Ok(())
-}
-
-fn is_fixed_root_html_gap(value: ComputedCssSpacingValue) -> bool {
-    match value {
-        ComputedCssSpacingValue::Normal => true,
-        ComputedCssSpacingValue::LengthPx(value) => value.is_finite() && value >= 0.0,
-        ComputedCssSpacingValue::Percentage(_)
-        | ComputedCssSpacingValue::Auto
-        | ComputedCssSpacingValue::Unsupported => false,
-    }
 }
 
 fn runtime_grid_nodes(
@@ -1653,18 +1653,21 @@ mod c13_2_tests {
 
 #[cfg(test)]
 mod root_html_grid_gap_tests {
-    use super::is_fixed_root_html_gap;
-    use spinon_style::ComputedCssSpacingValue;
+    use super::root_html_grid_gap::resolved_root_html_gap;
+    use spinon_style::{ComputedCssDimension, ComputedCssSpacingValue};
 
     #[test]
-    fn root_html_grid_gap_admits_only_finite_nonnegative_px_or_normal() {
+    fn root_html_grid_gap_admits_normal_px_and_resolvable_percentages() {
         for accepted in [
             ComputedCssSpacingValue::Normal,
             ComputedCssSpacingValue::LengthPx(0.0),
             ComputedCssSpacingValue::LengthPx(5.0),
+            ComputedCssSpacingValue::Percentage(0.0),
+            ComputedCssSpacingValue::Percentage(0.1),
+            ComputedCssSpacingValue::Percentage(1.2),
         ] {
             assert!(
-                is_fixed_root_html_gap(accepted),
+                resolved_root_html_gap(accepted, ComputedCssDimension::LengthPx(200.0),).is_some(),
                 "should admit {accepted:?}"
             );
         }
@@ -1673,14 +1676,45 @@ mod root_html_grid_gap_tests {
             ComputedCssSpacingValue::LengthPx(-0.5),
             ComputedCssSpacingValue::LengthPx(f32::NAN),
             ComputedCssSpacingValue::LengthPx(f32::INFINITY),
-            ComputedCssSpacingValue::Percentage(0.0),
+            ComputedCssSpacingValue::Percentage(-0.1),
+            ComputedCssSpacingValue::Percentage(f32::NAN),
+            ComputedCssSpacingValue::Percentage(f32::INFINITY),
             ComputedCssSpacingValue::Auto,
             ComputedCssSpacingValue::Unsupported,
         ] {
             assert!(
-                !is_fixed_root_html_gap(rejected),
+                resolved_root_html_gap(rejected, ComputedCssDimension::LengthPx(200.0),).is_none(),
                 "should reject {rejected:?}"
             );
         }
+    }
+
+    #[test]
+    fn root_html_grid_percentage_gap_requires_definite_finite_axis_basis() {
+        for basis in [
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(-1.0),
+            ComputedCssDimension::LengthPx(f32::NAN),
+            ComputedCssDimension::LengthPx(f32::INFINITY),
+        ] {
+            assert!(
+                resolved_root_html_gap(ComputedCssSpacingValue::Percentage(0.1), basis,).is_none(),
+                "should reject basis {basis:?}"
+            );
+        }
+        assert!(
+            resolved_root_html_gap(
+                ComputedCssSpacingValue::Percentage(f32::MAX),
+                ComputedCssDimension::LengthPx(2.0),
+            )
+            .is_none()
+        );
+        assert_eq!(
+            resolved_root_html_gap(
+                ComputedCssSpacingValue::Percentage(0.75),
+                ComputedCssDimension::LengthPx(0.0),
+            ),
+            Some(0.0)
+        );
     }
 }

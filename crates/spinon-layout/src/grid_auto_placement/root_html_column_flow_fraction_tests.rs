@@ -1,5 +1,24 @@
 use super::*;
 
+fn wrap_column_flow_in_fixed_parent(input: &mut LayoutInput) {
+    let grid = input.nodes.remove(0);
+    let parent = id(100);
+    input.nodes.insert(
+        0,
+        crate::LayoutNode {
+            id: parent,
+            children: vec![grid.id],
+            style: crate::LayoutStyle {
+                width: grid.style.width,
+                height: grid.style.height,
+                ..crate::LayoutStyle::default()
+            },
+        },
+    );
+    input.nodes.insert(1, grid);
+    input.root = parent;
+}
+
 fn fraction_grid(
     width: f32,
     item_count: usize,
@@ -231,4 +250,49 @@ fn root_html_column_flow_fraction_patterns_reject_invalid_factors_and_width_basi
             }) if actual == property
         ));
     }
+}
+
+#[test]
+fn root_html_column_flow_percentage_gap_resolves_with_percentage_auto_columns() {
+    let mut input = fraction_grid(
+        200.0,
+        2,
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::Percentage(0.5)],
+    );
+    input.nodes[0].style.gap.column = crate::LayoutLengthPercentage::percent(0.1);
+    wrap_column_flow_in_fixed_parent(&mut input);
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let second_column = output.frames[&id(3)];
+    assert_eq!(
+        [second_column.x, second_column.y, second_column.width],
+        [60.0, 0.0, 1.0]
+    );
+}
+
+#[test]
+fn root_html_column_flow_rejects_aggregate_percentage_gap_overflow() {
+    let mut input = fraction_grid(
+        f32::MAX,
+        4,
+        vec![GridTrackSize::LengthPx(0.0)],
+        vec![GridTrackSize::LengthPx(0.0)],
+    );
+    input.nodes[0].style.gap.column = crate::LayoutLengthPercentage::percent(0.5);
+    input.grid_containers.get_mut(&id(1)).unwrap().auto_columns =
+        crate::GridAutoColumns::LengthPx(0.0);
+    wrap_column_flow_in_fixed_parent(&mut input);
+
+    let error = TaffyLayoutEngine.compute(&input).unwrap_err();
+    assert!(
+        matches!(
+            &error,
+            crate::LayoutError::InvalidGridTrack {
+                property: "column-gap",
+                ..
+            }
+        ),
+        "aggregate gap overflow: {error:?}"
+    );
 }
