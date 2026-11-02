@@ -17,6 +17,7 @@ mod grid_placement_values;
 mod grid_values;
 mod positioning_values;
 mod primitive_values;
+mod root_html_grid_fr;
 mod root_html_named_area;
 mod spacing_values;
 
@@ -1188,6 +1189,9 @@ fn validate_root_html_grid_box_inputs(
         }
     }
     if is_grid_container {
+        if let Some(grid) = element.grid_layout.as_ref() {
+            root_html_grid_fr::validate_fraction_axis_inputs(element, grid)?;
+        }
         for (property, value) in [
             ("row-gap", element.layout_spacing.row_gap),
             ("column-gap", element.layout_spacing.column_gap),

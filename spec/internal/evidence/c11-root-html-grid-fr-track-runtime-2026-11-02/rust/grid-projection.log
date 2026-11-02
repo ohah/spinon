@@ -1,0 +1,53 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 47 tests
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_rejects_invalid_auto_repeat_ranges_before_slicing ... ok
+test projection::style_values::grid_values::auto_track_tests::auto_track_list_reservation_failure_keeps_axis_context ... ok
+test projection::style_values::grid_values::auto_track_tests::non_track_sizing_profile_rejects_typed_auto_track_lists ... ok
+test projection::style_values::grid_values::auto_track_tests::template_profile_projects_only_fixed_px_auto_track_lists ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_rejects_intrinsic_neighbor_outside_the_wpt_column_auto_fill_suffix ... ok
+test projection::style_values::grid_values::auto_repeat_fixed_maximum_tests::intrinsic_minimum_fixed_maximum_auto_repeat_tracks_are_preserved_by_projection ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::supported_auto_repeat_neighbor_projection_keeps_calc_ids_on_their_css_axis ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_fixed_minimum_flex_maximum_neighbors_on_both_axes ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_fixed_minimum_flexible_maximum_neighbors_without_repeat_provenance ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_only_the_single_trailing_column_intrinsic_neighbor ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_only_a_single_trailing_column_minmax_length_auto_neighbor ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_preserves_css_property_context_for_unsupported_neighbors ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_fixed_sizing_functions_after_auto_repeat ... ok
+test projection::style_values::grid_values::auto_track_tests::track_sizing_projects_axis_specific_auto_track_lists_and_math ... ok
+test projection::style_values::grid_values::combined_metadata_tests::combined_line_name_and_area_metadata_accepts_exactly_one_mib ... ok
+test projection::style_values::grid_values::combined_metadata_tests::combined_metadata_reservation_failures_keep_property_context_and_recover ... ok
+test projection::style_values::grid_values::combined_metadata_tests::line_name_only_projection_is_not_subject_to_combined_budget ... ok
+test projection::style_values::grid_values::tests::auto_repeat_template_areas_project_two_axes_and_reject_allocation_failures ... ok
+test projection::style_values::grid_values::tests::auto_fit_projection_preserves_area_dimensions_beyond_both_repeat_axes ... ok
+test projection::style_values::grid_values::tests::paired_area_edge_aliases_on_both_axes_select_template_grid_sizing_mode ... ok
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_the_supported_auto_repeat_neighbor_shapes ... ok
+test projection::style_values::grid_values::tests::template_profile_line_name_allocation_failures_keep_context_and_recover ... ok
+test projection::style_values::grid_values::root_html_fr_track_tests::root_html_named_area_profile_still_rejects_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_fr_track_tests::root_html_profile_rejects_invalid_or_nondirect_fraction_tracks ... ok
+test projection::style_values::grid_values::root_html_fr_track_tests::root_html_profile_projects_direct_fraction_tracks_on_both_axes ... ok
+test projection::style_values::grid_values::template_area_track_list_tests::template_area_lists_do_not_change_authored_tracks_when_no_extension_is_needed ... ok
+test projection::style_values::grid_values::combined_metadata_tests::combined_line_name_and_area_metadata_rejects_one_byte_over_one_mib ... ok
+test projection::style_values::grid_values::tests::template_profile_rejects_line_name_groups_that_do_not_match_track_count ... ok
+test projection::style_values::grid_values::combined_metadata_tests::combined_metadata_budget_counts_both_auto_repeat_axes ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_keeps_single_axis_auto_repeat_projection ... ok
+test projection::style_values::grid_values::tests::root_html_named_area_projection_reports_line_and_area_allocation_failures ... ok
+test projection::style_values::grid_values::tests::projection_reservation_failure_keeps_node_and_axis_context ... ok
+test projection::style_values::grid_values::combined_metadata_tests::template_grid_combined_line_name_and_area_metadata_obeys_one_mib_budget ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_preserves_cyclic_fit_content_percentage_limit ... ok
+test projection::style_values::grid_values::tests::template_area_profile_selects_template_grid_sizing_mode ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_calc_minimums_on_their_own_axes ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_typed_functions_and_axis_scoped_calc_ids ... ok
+test projection::style_values::grid_values::tests::track_sizing_projection_preserves_fixed_minimum_fraction_maximum ... ok
+test projection::style_values::grid_values::tests::track_sizing_projects_areas_with_one_auto_repeat_axis_and_preserves_authored_size ... ok
+test projection::style_values::grid_values::template_area_track_list_tests::template_area_track_lists_reject_empty_but_project_typed_values ... ok
+test projection::style_values::grid_values::template_area_track_list_tests::template_area_row_and_column_patterns_keep_independent_phase ... ok
+test projection::style_values::grid_values::template_area_track_list_tests::template_area_lists_cycle_forward_and_rotate_for_later_implicit_tracks ... ok
+test projection::style_values::grid_values::template_area_track_list_tests::template_area_typed_track_lists_cycle_and_preserve_later_implicit_phase ... ok
+test projection::style_values::grid_values::template_area_track_list_tests::template_area_track_reservation_failures_keep_axis_context_and_recover ... ok
+test projection::style_values::grid_values::tests::template_profile_projects_n_plus_one_line_names_and_dense_grid_contract ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_auto_repeat_inner_and_component_names ... ok
+
+test result: ok. 47 passed; 0 failed; 0 ignored; 0 measured; 235 filtered out; finished in 0.01s

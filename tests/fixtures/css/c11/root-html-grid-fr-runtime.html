@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid fractional track runtime</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      main {
+        box-sizing: border-box;
+        display: grid;
+        width: 130px;
+        height: 40px;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 40px;
+        column-gap: 10px;
+        background-color: #101820;
+      }
+      .a { width: 30px; height: 40px; background-color: #e5484d; }
+      .b { width: 30px; height: 40px; background-color: #3b82f6; }
+    </style>
+  </head>
+  <body>
+    <main><div class="a"></div><div class="b"></div></main>
+  </body>
+</html>
