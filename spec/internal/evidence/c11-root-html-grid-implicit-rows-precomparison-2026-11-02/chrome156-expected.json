@@ -4,7 +4,6 @@
     "columns": [40, 55],
     "columnGap": 5,
     "explicitRows": [20],
-    "autoRows": [15],
     "rowGap": 5,
     "autoFlow": "row",
     "independent": true
@@ -12,6 +11,7 @@
   "cases": [
     {
       "id": "one-row",
+      "autoRows": [15],
       "root": {"width": 100, "height": 40},
       "columns": [40, 55],
       "rows": [20, 15],
@@ -23,6 +23,7 @@
     },
     {
       "id": "zero-row",
+      "autoRows": [0],
       "root": {"width": 100, "height": 25},
       "columns": [40, 55],
       "rows": [20, 0],
@@ -34,6 +35,7 @@
     },
     {
       "id": "two-rows",
+      "autoRows": [15],
       "root": {"width": 100, "height": 60},
       "columns": [40, 55],
       "rows": [20, 15, 15],
