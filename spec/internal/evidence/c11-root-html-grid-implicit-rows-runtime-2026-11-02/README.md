@@ -38,4 +38,4 @@ screenshots는 ADB display capture와 `simctl io screenshot`의 시각 자료다
 
 ## 상태
 
-구현 후보이며 [구현/runtime 실패 관점 검토 20개](./implementation-runtime-review-20.md)와 별도 [구현 PR diff 실패 관점 검토 30개](./pr-diff-review-30.md)는 통과했다. PR [#1024](https://github.com/ohah/spinon/pull/1024)는 열려 있으며 병합은 남아 있다. Root HTML의 제한된 fixed-px implicit-row 입력 하나를 연결한 것으로 C11.1, C11.3.3, C11.4, C11 전체 완료를 뜻하지 않는다. 공식 완료 `72/213`을 유지한다.
+제한 구현 PR [#1024](https://github.com/ohah/spinon/pull/1024)은 2026-11-02T03:01:28Z Rebase and merge됐고 merge SHA는 `90723452724656a985c91428eaabc75976d8ad45`다. [구현/runtime 실패 관점 검토 20개](./implementation-runtime-review-20.md)와 별도 [구현 PR diff 실패 관점 검토 30개](./pr-diff-review-30.md)는 통과했다. PR check rollup은 비어 있어 CI 통과로 주장하지 않는다. Root HTML의 제한된 fixed-px implicit-row 입력 하나를 연결한 것으로 C11.1, C11.3.3, C11.4, C11 전체 완료를 뜻하지 않는다. 공식 완료 `72/213`을 유지한다.
