@@ -2,9 +2,9 @@
 
 ## 판정 범위
 
-이 후보는 기본 `RuntimeSession::new_runtime_gpu_with_root_html()` 경로에서 기존 `header/header`·`side/content` 2×2 named-area map과 direct `px`/`%` track 두 개씩의 조합만 허용한다. 기존 fixed-px와 양축 `1fr 2fr` named-area 경로는 유지한다. `%`와 `fr` 혼합, 다른 map·track 문법, implicit placement, percentage gap은 지원하지 않는다. C11.1/C11, 공개 CSS 지원 또는 WPT 적합성을 완료로 승격하지 않는다. 공식 집계는 `72/213` 그대로다.
+이 제한 병합 slice는 기본 `RuntimeSession::new_runtime_gpu_with_root_html()` 경로에서 기존 `header/header`·`side/content` 2×2 named-area map과 direct `px`/`%` track 두 개씩의 조합만 허용한다. 기존 fixed-px와 양축 `1fr 2fr` named-area 경로는 유지한다. `%`와 `fr` 혼합, 다른 map·track 문법, implicit placement, percentage gap은 지원하지 않는다. C11.1/C11, 공개 CSS 지원 또는 WPT 적합성을 완료로 승격하지 않는다. 공식 집계는 `72/213` 그대로다.
 
-구현 출발 commit은 [`1e73158`](https://github.com/ohah/spinon/commit/1e73158e945f2a9aa6d8b16718435d3a6497cc51)이며 현재 후보는 [PR #1035](https://github.com/ohah/spinon/pull/1035)다. 후속 검토에서 Root HTML named-area의 네 min/max 진단이 모두 `min-width`로 뭉뚱그려지던 기존 오류를 찾았다. 위반한 computed property별 오류를 반환하도록 수정하고 `max-width`, `min-height`, `max-height`, `min-width`를 각각 회귀 검사했다. 이 변경은 거부 입력의 진단만 바꾸며 성공 scene geometry는 바꾸지 않는다. 화면 캡처는 그 진단 수정 전 구현 commit에서 얻었고, 최종 Rust 검사와 PR에는 수정이 포함된다.
+구현 출발 commit은 [`1e73158`](https://github.com/ohah/spinon/commit/1e73158e945f2a9aa6d8b16718435d3a6497cc51)이며 [PR #1035](https://github.com/ohah/spinon/pull/1035)은 2026-11-02T05:24:52Z Rebase and merge됐다(merge SHA [`4b921f3`](https://github.com/ohah/spinon/commit/4b921f3e8ccd86e7e156562bb7e5b4a464f082f2)). 후속 검토에서 Root HTML named-area의 네 min/max 진단이 모두 `min-width`로 뭉뚱그려지던 기존 오류를 찾았다. 위반한 computed property별 오류를 반환하도록 수정하고 `max-width`, `min-height`, `max-height`, `min-width`를 각각 회귀 검사했다. 이 변경은 거부 입력의 진단만 바꾸며 성공 scene geometry는 바꾸지 않는다. 화면 캡처는 그 진단 수정 전 구현 commit에서 얻었고, 최종 Rust 검사와 PR에는 수정이 포함된다.
 
 ## 고정 입력과 독립 기대값
 
