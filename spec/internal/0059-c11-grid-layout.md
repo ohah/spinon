@@ -72,7 +72,7 @@ Chrome 156 independent expectation의 one-row frame, zero-height boundary, two-r
 
 Rust runtime은 definite 120px/35–80px root를 쓰는 네 scene의 computed tracks·root-relative frames를 확인한다. Percentage-column item은 x=35px에서 시작해 100px 너비로 root 오른쪽을 15px 넘고 clamp되지 않는다. Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 `index.html` route에서 같은 HTML hash로 boot, ready layout 6 boxes, draw/present 6 boxes를 기록했다. Android API 37/iOS 26.2의 실제 surface readback, pixel parity, 실기기/hardware GPU는 확인하지 않았다. Rust 74/12/20 focused suites, scoped Clippy와 rustfmt가 통과했다. 독립적인 구현/runtime 실패 관점 20개 및 실행 근거는 [runtime evidence](./evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.md)에 둔다.
 
-계속 거부하는 입력은 named lines/areas, auto-repeat·intrinsic explicit tracks, percentage/`fr`/intrinsic implicit row, implicit columns, dense·column flow, authored placement, nonzero order, nested/text/image item, nonzero box edges, clipping·scroll, 일반 CSS admission 및 WPT 적합성이다. 구현 PR diff 검토와 merge는 아직 남았으며 공식 `72/213`, C11.1/C11 checkbox, 공개 CSS 지원 상태를 변경하지 않는다.
+계속 거부하는 입력은 named lines/areas, auto-repeat·intrinsic explicit tracks, percentage/`fr`/intrinsic implicit row, implicit columns, dense·column flow, authored placement, nonzero order, nested/text/image item, nonzero box edges, clipping·scroll, 일반 CSS admission 및 WPT 적합성이다. PR #1027 diff 실패 관점 검토 30개를 기록했고 merge는 남았으며 공식 `72/213`, C11.1/C11 checkbox, 공개 CSS 지원 상태를 변경하지 않는다.
 
 ## C11.2.1 numeric explicit placement 구현 상태
 
