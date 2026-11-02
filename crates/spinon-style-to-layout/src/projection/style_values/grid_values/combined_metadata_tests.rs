@@ -8,6 +8,8 @@ fn projection_grid(line_name_bytes: usize, include_area: bool) -> ComputedCssGri
     ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 0,

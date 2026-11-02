@@ -24,6 +24,8 @@ fn area_grid(
         rows_line_names: vec![Vec::new(); rows.len() + 1],
         columns,
         rows,
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         template_areas: Some(ComputedCssGridTemplateAreas {

@@ -45,6 +45,8 @@ fn intrinsic_minimum_fixed_maximum_auto_repeat_tracks_are_preserved_by_projectio
                     max: computed_maximum,
                 }],
                 rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+                columns_fixed_repeat_group_count: 0,
+                rows_fixed_repeat_group_count: 0,
                 columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
                     mode: ComputedCssGridAutoRepeatMode::AutoFill,
                     start: 0,
@@ -95,6 +97,8 @@ fn intrinsic_minimum_fixed_maximum_auto_repeat_tracks_are_preserved_by_projectio
                 ])),
             }],
             rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+            columns_fixed_repeat_group_count: 0,
+            rows_fixed_repeat_group_count: 0,
             columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
                 mode: ComputedCssGridAutoRepeatMode::AutoFit,
                 start: 0,

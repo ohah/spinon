@@ -23,6 +23,8 @@ fn track_sizing_projection_preserves_fixed_minimum_fraction_maximum() {
             max: ComputedCssGridTrackBreadth::Fraction(0.5),
         }],
         rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![Vec::new(), Vec::new()],
@@ -55,6 +57,8 @@ fn projection_reservation_failure_keeps_node_and_axis_context() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(80.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
@@ -97,6 +101,8 @@ fn root_html_named_area_projection_reports_line_and_area_allocation_failures() {
             ComputedCssGridTrackSize::LengthPx(20.0),
             ComputedCssGridTrackSize::LengthPx(50.0),
         ],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
@@ -182,6 +188,8 @@ fn template_profile_projects_n_plus_one_line_names_and_dense_grid_contract() {
             ComputedCssGridTrackSize::LengthPx(30.0),
         ],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![
@@ -229,6 +237,8 @@ fn template_area_profile_selects_template_grid_sizing_mode() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(80.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![Vec::new(), Vec::new()],
@@ -309,6 +319,8 @@ fn track_sizing_projects_areas_with_one_auto_repeat_axis_and_preserves_authored_
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 0,
@@ -368,6 +380,8 @@ fn auto_repeat_template_areas_project_two_axes_and_reject_allocation_failures() 
     let mut grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 0,
@@ -468,6 +482,8 @@ fn paired_area_edge_aliases_on_both_axes_select_template_grid_sizing_mode() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(80.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![vec!["box-start".to_owned()], vec!["box-end".to_owned()]],
@@ -510,6 +526,8 @@ fn template_profile_line_name_allocation_failures_keep_context_and_recover() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![vec!["start".to_owned()], vec!["end".to_owned()]],
@@ -562,6 +580,8 @@ fn template_profile_rejects_line_name_groups_that_do_not_match_track_count() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![vec!["only-one-boundary".to_owned()]],
@@ -605,6 +625,8 @@ fn track_sizing_profile_projects_typed_functions_and_axis_scoped_calc_ids() {
             ),
         ],
         rows: vec![ComputedCssGridTrackSize::Calc(expression)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![Vec::new(); 4],
@@ -679,6 +701,8 @@ fn track_sizing_profile_projects_calc_minimums_on_their_own_axes() {
     let grid = ComputedCssGridLayout {
         columns: vec![minmax(column_calc)],
         rows: vec![minmax(row_calc)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![Vec::new(); 2],
@@ -732,6 +756,8 @@ fn track_sizing_profile_preserves_cyclic_fit_content_percentage_limit() {
             spinon_style::ComputedCssGridTrackLengthPercentage::Percentage(0.5),
         )],
         rows: vec![ComputedCssGridTrackSize::Auto],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: vec![Vec::new(); 2],
@@ -777,6 +803,8 @@ fn track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes() {
             },
             ComputedCssGridTrackSize::LengthPx(8.0),
         ],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
@@ -840,6 +868,8 @@ fn track_sizing_profile_projects_auto_repeat_inner_and_component_names() {
             ComputedCssGridTrackSize::LengthPx(10.0),
         ],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
@@ -891,6 +921,8 @@ fn track_sizing_profile_keeps_single_axis_auto_repeat_projection() {
             ComputedCssGridTrackSize::LengthPx(10.0),
         ],
         rows: vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
@@ -949,6 +981,8 @@ fn auto_fit_projection_preserves_area_dimensions_beyond_both_repeat_axes() {
     let grid = ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: auto_fit(),
         rows_auto_repeat: auto_fit(),
         columns_line_names: vec![Vec::new(), Vec::new()],

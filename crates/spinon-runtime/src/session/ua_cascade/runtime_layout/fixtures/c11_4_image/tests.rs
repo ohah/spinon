@@ -222,6 +222,8 @@ fn mixed_root_style(case: &ImageCase) -> ComputedElementStyle {
     let grid_layout = ComputedCssGridLayout {
         columns: case.columns.iter().copied().map(computed_track).collect(),
         rows: case.rows.iter().copied().map(computed_track).collect(),
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),

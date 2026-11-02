@@ -121,6 +121,7 @@ fn validate_root_html_grid_tracks(
         value: value.to_owned(),
     };
     let implicit_rows = root_html_has_supported_implicit_rows(&grid.auto_rows);
+    let column_flow = grid.auto_flow == ComputedCssGridAutoFlow::Column;
     for (property, tracks, line_names, auto_repeat) in [
         (
             "grid-template-columns",
@@ -154,6 +155,45 @@ fn validate_root_html_grid_tracks(
                 },
             ));
         }
+        if column_flow
+            && tracks.iter().any(|track| {
+                !matches!(
+                    track,
+                    ComputedCssGridTrackSize::LengthPx(value)
+                        if value.is_finite() && *value >= 0.0
+                )
+            })
+        {
+            return Err(unsupported(
+                property,
+                "Root HTML column-flow mode requires non-empty finite non-negative direct px tracks",
+            ));
+        }
+    }
+    if column_flow {
+        for (property, fixed_repeat_group_count) in [
+            (
+                "grid-template-columns",
+                grid.columns_fixed_repeat_group_count,
+            ),
+            ("grid-template-rows", grid.rows_fixed_repeat_group_count),
+        ] {
+            if fixed_repeat_group_count != 0 {
+                return Err(unsupported(
+                    property,
+                    "Root HTML column-flow mode excludes repeat() in explicit tracks",
+                ));
+            }
+        }
+    }
+    if column_flow
+        && (grid.template_areas.is_some()
+            || !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto))
+    {
+        return Err(unsupported(
+            "grid-auto-flow",
+            "Root HTML column-flow mode excludes template areas and non-auto implicit rows",
+        ));
     }
     if implicit_rows && grid.template_areas.is_some() {
         return Err(unsupported(
@@ -164,7 +204,7 @@ fn validate_root_html_grid_tracks(
     if let Some(areas) = &grid.template_areas {
         validate_root_html_named_area_template(node, grid, areas)?;
     }
-    if grid.auto_flow != ComputedCssGridAutoFlow::Row {
+    if grid.auto_flow != ComputedCssGridAutoFlow::Row && !column_flow {
         return Err(unsupported(
             "grid-auto-flow",
             "Root HTML Grid에서는 기본 row auto-placement만 지원합니다",
@@ -860,6 +900,11 @@ fn project_grid_layout_with_reservations(
                     || has_implicit_template_area_line_aliases(grid) =>
             {
                 GridPlacementMode::TemplateGrid
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                if grid.auto_flow == ComputedCssGridAutoFlow::Column =>
+            {
+                GridPlacementMode::RootHtmlColumnFlowV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if grid.template_areas.is_some() => {
                 GridPlacementMode::TemplateGrid

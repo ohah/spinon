@@ -269,6 +269,8 @@ pub enum GridPlacementMode {
     SparseRow,
     /// 제한 Root HTML 경로의 fixed-px implicit rows와 기본 row auto-placement입니다.
     RootHtmlImplicitRowsV1,
+    /// 제한 Root HTML 경로의 explicit-cell sparse column auto-placement입니다.
+    RootHtmlColumnFlowV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
@@ -372,6 +374,9 @@ pub(super) fn validate_grid_layout(
     for (&id, container) in &input.grid_containers {
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
             validate_root_html_implicit_rows_contract(id, container)?;
+        }
+        if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
+            validate_root_html_column_flow_contract(id, container)?;
         }
         validate_template_areas(id, container)?;
         if matches!(
@@ -628,6 +633,9 @@ pub(super) fn validate_grid_layout(
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
             validate_root_html_implicit_rows_container_style(node.id, node.style, container)?;
         }
+        if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
+            validate_root_html_implicit_rows_container_style(node.id, node.style, container)?;
+        }
         let template_area_track_sizing = container.template_areas.is_some()
             && matches!(
                 container.placement_mode,
@@ -721,6 +729,7 @@ pub(super) fn validate_grid_layout(
             container.placement_mode,
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
+                | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TrackSizing
@@ -789,8 +798,10 @@ pub(super) fn validate_grid_layout(
             if hidden[&child_id] {
                 continue;
             }
-            if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
-                && !root_html_implicit_rows_item_is_supported(input, child)
+            if matches!(
+                container.placement_mode,
+                GridPlacementMode::RootHtmlImplicitRowsV1 | GridPlacementMode::RootHtmlColumnFlowV1
+            ) && !root_html_fixed_empty_item_is_supported(input, child)
             {
                 return Err(LayoutError::UnsupportedGridItemSize(child_id));
             }
@@ -862,6 +873,7 @@ pub(super) fn validate_grid_layout(
                     match container.placement_mode {
                         GridPlacementMode::SparseRow
                         | GridPlacementMode::RootHtmlImplicitRowsV1
+                        | GridPlacementMode::RootHtmlColumnFlowV1
                         | GridPlacementMode::DenseAutoPlacement
                         | GridPlacementMode::TemplateGrid
                         | GridPlacementMode::TemplateGridImplicitTracks
@@ -1023,6 +1035,7 @@ pub(super) fn validate_grid_layout(
             container.placement_mode,
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
+                | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -1229,7 +1242,7 @@ fn validate_root_html_implicit_rows_container_style(
     Ok(())
 }
 
-fn root_html_implicit_rows_item_is_supported(
+pub(super) fn root_html_fixed_empty_item_is_supported(
     input: &LayoutInput,
     node: &crate::LayoutNode,
 ) -> bool {
@@ -1263,6 +1276,62 @@ fn root_html_implicit_rows_item_is_supported(
             .positioning
             .get(&node.id)
             .is_none_or(|position| position.position == LayoutPosition::Static)
+}
+
+fn validate_root_html_column_flow_contract(
+    node: spinon_core::NodeId,
+    container: &crate::GridContainerInput,
+) -> Result<(), LayoutError> {
+    if container.template_areas.is_some() {
+        return Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-areas",
+        });
+    }
+    for (property, tracks, line_names, auto_repeat) in [
+        (
+            "grid-template-columns",
+            container.columns.as_slice(),
+            container.columns_line_names.as_slice(),
+            container.columns_auto_repeat.as_ref(),
+        ),
+        (
+            "grid-template-rows",
+            container.rows.as_slice(),
+            container.rows_line_names.as_slice(),
+            container.rows_auto_repeat.as_ref(),
+        ),
+    ] {
+        if tracks.is_empty()
+            || auto_repeat.is_some()
+            || line_names.iter().flatten().any(|name| !name.is_empty())
+            || tracks.iter().any(|track| {
+                !matches!(
+                    track,
+                    crate::GridTrackSize::LengthPx(value)
+                        if value.is_finite() && *value >= 0.0
+                )
+            })
+        {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+    }
+    if container.auto_flow != crate::GridAutoFlow::Column {
+        return Err(LayoutError::UnsupportedGridAutoFlow(node));
+    }
+    if container.auto_rows != crate::GridAutoRows::Auto {
+        return Err(LayoutError::UnsupportedGridAutoRows {
+            node,
+            reason: "Root HTML column flow requires grid-auto-rows:auto",
+        });
+    }
+    if container.auto_columns != crate::GridAutoColumns::Auto {
+        return Err(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "Root HTML column flow requires grid-auto-columns:auto",
+        });
+    }
+    Ok(())
 }
 
 fn track_is_indefinite_height_safe(track: &GridTrackSize, has_definite_min_height: bool) -> bool {

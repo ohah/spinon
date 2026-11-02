@@ -260,6 +260,10 @@ pub enum ComputedCssGridAutoColumns {
 pub struct ComputedCssGridLayout {
     pub columns: Vec<ComputedCssGridTrackSize>,
     pub rows: Vec<ComputedCssGridTrackSize>,
+    /// Authored fixed `repeat()` group count, retained after the repeated tracks are expanded.
+    pub columns_fixed_repeat_group_count: usize,
+    /// Authored fixed `repeat()` group count, retained after the repeated tracks are expanded.
+    pub rows_fixed_repeat_group_count: usize,
     /// 반복이 있을 때 `columns`는 authored 순서로 fragment를 한 번 배치합니다.
     pub columns_auto_repeat: Option<ComputedCssGridAutoRepeat>,
     /// 반복이 있을 때 `rows`는 authored 순서로 fragment를 한 번 배치합니다.
