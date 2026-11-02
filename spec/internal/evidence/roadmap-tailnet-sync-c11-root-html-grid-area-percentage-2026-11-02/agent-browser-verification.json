@@ -1,0 +1,30 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "sourceHead": "ac1437908f9b064a28670c4f6affe6650bc508e7",
+  "card": {
+    "pr": 1035,
+    "mergeSha": "4b921f3e8ccd86e7e156562bb7e5b4a464f082f2",
+    "present": true,
+    "officialCount": "72/213",
+    "c11Complete": false,
+    "localLinkCount": 7
+  },
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentWidth": 1440,
+    "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+    "sha256": "d595f5aaed318666553a3fa426c94dc4eb891096ba83878c1d50d994fb34c2af"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+    "sha256": "c5e5853bbe22d88b6b921f642a4d55b3d79314acf5f32c4dd2c1d707c46f2399"
+  },
+  "linkedScreenshots": [
+    {"name": "Android AVD 화면", "status": 200, "contentType": "image/png", "bytes": 24802},
+    {"name": "iOS Simulator 화면", "status": 200, "contentType": "image/png", "bytes": 75088}
+  ],
+  "runtimePixelEvidence": false
+}
