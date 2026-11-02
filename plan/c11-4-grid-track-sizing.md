@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-11-02 anonymous Grid text computed `font-size: 0` 계획 후보
+## 2026-11-02 anonymous Grid text computed `font-size: 0` · PR #1052 제한 구현 병합
 
-기존 computed font-size 제한 slice에서 제외한 유효한 zero value가 `ParagraphStyle` 검증에서 거부된다. [집중 계획](./c11-4-anonymous-grid-text-font-size-zero.md)은 CSS Fonts Level 4의 non-negative font-size 규칙, pinned Ahem과 독립 계산, Chrome 156 Agent Browser 사전 비교를 고정한다. 이는 아직 계획 단계이며 구현·C11.4 완료·공식 `72/213` 집계에 반영되지 않았다. [사전 비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-precomparison-2026-11-02/README.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-font-size-zero-plan-review-20.md).
+기존 computed font-size 제한 slice에서 제외한 유효한 zero value를 고정 anonymous direct-text Grid fixture의 네 scene에 연결했다. 구현 PR [#1052](https://github.com/ohah/spinon/pull/1052)은 2026-11-02T10:29:53Z Rebase and merge됐고 merge SHA는 `472c5a6600603b2e69a0d42d5c5a1f68345094f3`이다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 scene을 확인했다. text-layout 99/99와 fixture-enabled FFI 189 passed·2 ignored였으며, feature-enabled runtime 전체는 425 passed·4 failed·3 ignored, default runtime은 219 passed·2 failed·3 ignored다. 실패 상세와 검증 한계는 [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-runtime-2026-11-02/README.md)에 기록되어 있다. 일반 CSS author admission, glyph rasterization, WPT 또는 전체 C11.4 지원을 뜻하지 않으며 C11.4/C11 체크와 공식 `72/213`은 유지한다. [집중 계획](./c11-4-anonymous-grid-text-font-size-zero.md) · [사전 비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-precomparison-2026-11-02/README.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-font-size-zero-plan-review-20.md).
 
 ## 2026-11-01 positive-gap auto-repeat ceiling test-only slice · PR #985
 
