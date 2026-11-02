@@ -59,7 +59,7 @@ Chrome와 독립값은 정상 범위 17개 geometry case에서 일치한다. `ca
 - iOS는 booted iPhone 17 Pro / iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`에서 실행했다. executable SHA-256은 `b85a51c09b8a5b72aa836ea71245685d1ae6d3d964b14ca09dc0c7c848c2afe4`이다. [`iOS 화면`](./ios-simulator-screen-labeled.png), [install](./ios-simulator-labeled-install.log), [launch](./ios-simulator-labeled-launch.log), [runtime log](./ios-simulator-labeled-runtime.log), [build log](./ios-simulator-labeled-build.log). iOS screenshot은 Metal draw/present 화면 관찰이며 compositor 이후 pixel readback은 아니다.
 - 양쪽에서 `layout=ready boxes=7`, grid `200×100`, item origins `(0,0)`, `(22,0)`, `(0,17)`, `(22,17)`을 기록했다. Android root width는 121.90476 CSS px, iOS root width는 106.666664 CSS px로 grid가 부모 root보다 넓다. 화면은 gray grid와 4개 item을 보여주며 parent/grid frame의 차이는 runtime log로 확인한다. 이는 시각 smoke이며 PixelCopy/Metal RGBA 표본의 정확성 주장이 아니다.
 - 최종 `cargo test --locked -p spinon-style-to-layout c11_1_root_html_percentage_gap_tests`는 8/8, `cargo test --locked -p spinon-layout grid::root_html_gap::tests`는 3/3 통과했다. 전체 변경 패키지 재실행은 [회귀 기록](./package-test-note.md)에 연결했다. Scoped Clippy와 workspace format check도 통과했다.
-- 최종 candidate code/runtime 독립 실패 관점 20개는 [구현·runtime 검토](./implementation-runtime-review-20-2026-11-03.md)에 기록했다. plan PR의 30개 diff review와는 별도 검토다. 구현 PR 자체의 diff review 30개는 해당 PR diff 생성 후 별도로 수행한다.
+- 최종 candidate code/runtime 독립 실패 관점 20개는 [구현·runtime 검토](./implementation-runtime-review-20-2026-11-03.md)에 기록했다. plan PR의 30개 diff review와는 별도 검토다. 구현 PR 변경분의 독립 30개 검토는 [PR diff review](./pr-diff-review-30.md)에 기록했다.
 - `ps` 검사에서는 Agent Browser와 terminal-browser 프로세스를 찾지 못했다. 이번 최종 화면 캡처는 native simulator screenshot이며 browser process를 시작하지 않았다.
 
 ### Simulator screenshot
