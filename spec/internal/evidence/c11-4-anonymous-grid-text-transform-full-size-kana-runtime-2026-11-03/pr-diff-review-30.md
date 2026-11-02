@@ -40,3 +40,7 @@
 30개 관점에서 현재 제한 opt-in 후보를 병합 차단할 diff 결함은 찾지 못했다. 이 판정은 일반 CSS admission, WPT, 임의 Japanese segmentation, Katakana line-advance 동등성, glyph pixel, 실기기/hardware GPU 또는 전체 APK/IPA artifact 제외를 승인하지 않는다. PR check rollup은 비어 있으며 CI 통과 주장은 없다.
 
 실행별 hash와 실패/성공 cohort는 [runtime README](./README.md) 및 [SHA-256 manifest](./SHA256SUMS.txt)에 있다.
+
+## 검토 기록 추가 확인
+
+위 기능 diff 검토 뒤 PR head `4ec04c2`에서 `5abe9cd`로 추가된 변경은 STATUS/0059의 검토 링크, 이 30개 검토표, manifest digest 갱신뿐이다. 구현·런타임·플랫폼 코드는 바뀌지 않았다. 세 evidence 문서의 상대 링크와 manifest 120개 digest를 다시 검증했고, 공식 C11 미완료 및 `72/213`, PR의 no-check 상태가 유지됨을 확인했다.
