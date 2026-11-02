@@ -1,0 +1,55 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 174 ms.
+ready   built in 1.40s (web)
+ready   built in 1.40s (node)
+
+File (web)                                                                                                         Size        Gzip
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/styles.b5d9a69293.js                     0.47 kB     0.23 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-a48746cae70c.0ea93e134b.js   1.0 kB      0.56 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-de920826f920.03826b4872.js   10.7 kB     3.6 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-43d8e9afaf42.d1fbc91415.js   10.7 kB     3.6 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-655f19524824.9e82fd3dd9.js   11.8 kB     3.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-d6e41856baf1.6910fa3207.js   11.8 kB     3.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-914577b650bf.19ab27e977.js   16.2 kB     4.9 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-3afb7ecf0512.73a541f3f9.js   16.2 kB     4.9 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-14ba0ff96d6e.390d7b153d.js   16.3 kB     5.0 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-3b6b18a75fb3.5329ed1ddb.js   22.7 kB     6.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-aa3278b6d966.6ec7909969.js   22.7 kB     6.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-c2801b21f038.c93feb2388.js   85.6 kB     20.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/index.8ae29c5e50.js                      103.8 kB    27.3 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/3.d8b550a68d.js                          217.1 kB    72.0 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-c4dae6800800.e3a6ce7c2d.js   547.7 kB    120.1 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-739571cd2ae5.b017903a5f.js   547.7 kB    120.2 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-6c33a3943990.26c27ebb05.js   830.2 kB    174.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/js/async/route-7ce2535ac56d.4aacd01111.js   830.4 kB    174.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/static/search_index.ko.6ade6662.json               1764.9 kB   520.8 kB
+
+                                                                                                          Total:   5396.4 kB   1369.1 kB
+
+File (node)                                                                                                                                                              Size        Gzip
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/404.html                                                                                                 8.5 kB      2.6 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/index.html                                                                                               21.5 kB     4.0 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html               30.2 kB     6.7 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html          30.2 kB     6.7 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html        30.7 kB     6.9 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html   30.7 kB     6.9 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html                       34.8 kB     8.1 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/plan/c11-root-html-grid-percentage-gap.html                                                              34.8 kB     8.3 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html                  34.8 kB     8.1 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html                                  39.2 kB     9.6 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html                             39.2 kB     9.6 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/plan/c11-css-grid.html                                                                                   128.3 kB    28.5 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/internal/0059-c11-grid-layout.html                                                                       530.7 kB    121.7 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/spec/internal/0059-c11-grid-layout.html                                                                  530.8 kB    121.7 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/STATUS.html                                                                                              772.3 kB    175.0 kB
+build/spinon/roadmap-tailnet-sync-pr1073-2026-11-03/pass01/site/spec/STATUS.html                                                                                         773.0 kB    175.1 kB
+
+                                                                                                                                                                Total:   3069.5 kB   699.3 kB

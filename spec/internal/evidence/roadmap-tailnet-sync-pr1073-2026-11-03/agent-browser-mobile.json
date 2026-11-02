@@ -1,0 +1,34 @@
+{
+  "cardBox": {
+    "width": 362,
+    "x": 14
+  },
+  "cardFound": true,
+  "cardLocalLinks": [
+    "/spinon/internal/0059-c11-grid-layout.html",
+    "/spinon/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html",
+    "/spinon/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html",
+    "/spinon/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html",
+    "/spinon/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html",
+    "/spinon/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-api37-avd.png",
+    "/spinon/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-26_2-simulator.png",
+    "/spinon/STATUS.html#css-구현-체크리스트"
+  ],
+  "cardMarkers": {
+    "c11Incomplete": true,
+    "mergeSha": true,
+    "officialCount": true,
+    "pr1072": true
+  },
+  "document": {
+    "bodyWidth": 390,
+    "height": 152732,
+    "width": 390
+  },
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "height": 844,
+    "width": 390
+  }
+}

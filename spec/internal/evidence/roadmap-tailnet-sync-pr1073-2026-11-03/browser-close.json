@@ -1,0 +1,10 @@
+{
+  "command": "agent-browser close --all",
+  "sessionList": [],
+  "agentBrowserProcessMatches": [],
+  "tailnetPreviewServer": {
+    "pid": 28040,
+    "listener": "127.0.0.1:8768",
+    "state": "still running"
+  }
+}

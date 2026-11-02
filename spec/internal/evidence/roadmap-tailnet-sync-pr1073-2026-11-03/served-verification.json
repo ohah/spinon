@@ -1,0 +1,197 @@
+{
+  "sourceHead": "227011db0df2cf403de779cde4e70e2a06551bb5",
+  "sourceTree": "38325dc420a4aa69a06f73fac25a18ef99603cab",
+  "selectedRouteCount": 120,
+  "backupAndCopy": {
+    "created": 89,
+    "replaced": 13,
+    "identical": 18
+  },
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "checkedRouteCount": 10,
+  "checks": [
+    {
+      "route": "roadmap.html",
+      "expectedSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 527200,
+          "sha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 527200,
+          "sha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033"
+        }
+      ]
+    },
+    {
+      "route": "STATUS.html",
+      "expectedSha256": "664d20dfea5166dda8da2fc44634d326edc2850e590c185b1f0d89ad12c72fff",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 772282,
+          "sha256": "664d20dfea5166dda8da2fc44634d326edc2850e590c185b1f0d89ad12c72fff"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 772282,
+          "sha256": "664d20dfea5166dda8da2fc44634d326edc2850e590c185b1f0d89ad12c72fff"
+        }
+      ]
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "expectedSha256": "cc9e82a4902014c1213218c37123b4f64ff4f2d328e8a79795f2a93773446b3c",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 128277,
+          "sha256": "cc9e82a4902014c1213218c37123b4f64ff4f2d328e8a79795f2a93773446b3c"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 128277,
+          "sha256": "cc9e82a4902014c1213218c37123b4f64ff4f2d328e8a79795f2a93773446b3c"
+        }
+      ]
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "expectedSha256": "b7283cd7779720bb03264b377fcc1d8fbaec7d200729e5b98c9d5063eab221f9",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 530667,
+          "sha256": "b7283cd7779720bb03264b377fcc1d8fbaec7d200729e5b98c9d5063eab221f9"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 530667,
+          "sha256": "b7283cd7779720bb03264b377fcc1d8fbaec7d200729e5b98c9d5063eab221f9"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html",
+      "expectedSha256": "241196430599aba47fec8e3d11df9c1dc58b3604b698cd920b833e4230373e08",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 39203,
+          "sha256": "241196430599aba47fec8e3d11df9c1dc58b3604b698cd920b833e4230373e08"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 39203,
+          "sha256": "241196430599aba47fec8e3d11df9c1dc58b3604b698cd920b833e4230373e08"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html",
+      "expectedSha256": "61a3fdd04d082dd6361176a72cbf013f70c333da4e324f63b84809a50fb1a159",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 30678,
+          "sha256": "61a3fdd04d082dd6361176a72cbf013f70c333da4e324f63b84809a50fb1a159"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 30678,
+          "sha256": "61a3fdd04d082dd6361176a72cbf013f70c333da4e324f63b84809a50fb1a159"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html",
+      "expectedSha256": "42745e08b40ef98fd1bc2c36dd08fb7062f345a873cbcc66989d1394c50d2ce7",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 34767,
+          "sha256": "42745e08b40ef98fd1bc2c36dd08fb7062f345a873cbcc66989d1394c50d2ce7"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 34767,
+          "sha256": "42745e08b40ef98fd1bc2c36dd08fb7062f345a873cbcc66989d1394c50d2ce7"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html",
+      "expectedSha256": "3ee5e732fcb8ab19f4a6ce2a7f3dea36d4ff2bc0e2f6ad847fbde41609c36708",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 30184,
+          "sha256": "3ee5e732fcb8ab19f4a6ce2a7f3dea36d4ff2bc0e2f6ad847fbde41609c36708"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 30184,
+          "sha256": "3ee5e732fcb8ab19f4a6ce2a7f3dea36d4ff2bc0e2f6ad847fbde41609c36708"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-api37-avd.png",
+      "expectedSha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 24656,
+          "sha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 24656,
+          "sha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-26_2-simulator.png",
+      "expectedSha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 86932,
+          "sha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 86932,
+          "sha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc"
+        }
+      ]
+    }
+  ],
+  "roadmapContainsMergeAndCount": true,
+  "noDeletes": true
+}
