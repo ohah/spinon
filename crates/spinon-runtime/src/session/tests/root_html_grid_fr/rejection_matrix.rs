@@ -40,7 +40,7 @@ fn c11_1_root_html_default_runtime_rejects_fraction_outside_its_bounded_profile(
             r#"<div class="a"></div><div class="b"></div>"#,
         ),
         (
-            "named areas with fraction",
+            "named areas with fraction on only one axis",
             "grid-template-areas",
             "120px",
             "70px",

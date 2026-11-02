@@ -1,0 +1,22 @@
+11-02 11:45:54.673 I/SpinonBootstrap(13732): SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=1350 script_bytes=1164
+11-02 11:45:54.676 I/SpinonBootstrap(13732): SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+11-02 11:45:54.772 I/SpinonBootstrap(13732): SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=1350
+11-02 11:45:54.954 I/SpinonBootstrap(13732): SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready status=0 layout=ready boxes=6 generation=2 document_revision=2 environment_revision=0
+11-02 11:45:55.302 I/SpinonBootstrap(13732): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1080x2209 selection=auto
+11-02 11:45:55.302 I/SpinonBootstrap(13732): SPINON_C0410_RENDERER generation=2 size=1080x2209
+11-02 11:45:55.351 I/SpinonBootstrap(13732): SPINON_C0410_DRAW status=0 presented boxes=6 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x40 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0
+11-02 11:45:55.352 I/SpinonBootstrap(13732): SPINON_C0410_DRAW generation=2 status=0 presented boxes=6 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x40 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0
+11-02 12:34:45.959 I/SpinonBootstrap(13997): SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=2184 script_bytes=1351
+11-02 12:34:45.963 I/SpinonBootstrap(13997): SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+11-02 12:34:46.017 I/SpinonBootstrap(13997): SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=2184
+11-02 12:36:17.662 I/SpinonBootstrap(14118): SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=1369 script_bytes=1176
+11-02 12:36:17.669 I/SpinonBootstrap(14118): SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+11-02 12:36:17.718 I/SpinonBootstrap(14118): SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=1369
+11-02 12:36:17.770 I/SpinonBootstrap(14118): SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready status=0 layout=ready boxes=6 generation=2 document_revision=2 environment_revision=0
+11-02 12:36:18.020 I/SpinonBootstrap(14118): SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1080x2209 selection=auto
+11-02 12:36:18.021 I/SpinonBootstrap(14118): SPINON_C0410_RENDERER generation=2 size=1080x2209
+11-02 12:36:18.029 I/SpinonBootstrap(14118): SPINON_C0410_DRAW status=0 presented boxes=6 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x40 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0
+11-02 12:36:18.030 I/SpinonBootstrap(14118): SPINON_C0410_DRAW generation=2 status=0 presented boxes=6 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x40 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0
+11-02 13:14:15.052 I/SpinonBootstrap(14431): SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=1153 script_bytes=1650
+11-02 13:14:15.066 I/SpinonBootstrap(14431): SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+11-02 13:14:15.199 I/SpinonBootstrap(14431): SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=1153

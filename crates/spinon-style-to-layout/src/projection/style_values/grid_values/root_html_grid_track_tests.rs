@@ -247,7 +247,72 @@ fn root_html_profile_rejects_invalid_or_nondirect_percentage_tracks() {
 }
 
 #[test]
-fn root_html_named_area_profile_still_rejects_fraction_tracks() {
+fn root_html_named_area_profile_projects_the_bounded_two_axis_fraction_tracks() {
+    let node = NodeId::new(11_182).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::Fraction(1.0),
+            ComputedCssGridTrackSize::Fraction(2.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::Fraction(1.0),
+            ComputedCssGridTrackSize::Fraction(2.0),
+        ],
+    );
+    grid.template_areas = Some(ComputedCssGridTemplateAreas {
+        rows: 2,
+        columns: 2,
+        areas: vec![
+            ComputedCssGridArea {
+                name: "header".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 0,
+                column_end: 2,
+            },
+            ComputedCssGridArea {
+                name: "side".to_owned(),
+                row_start: 1,
+                row_end: 2,
+                column_start: 0,
+                column_end: 1,
+            },
+            ComputedCssGridArea {
+                name: "content".to_owned(),
+                row_start: 1,
+                row_end: 2,
+                column_start: 1,
+                column_end: 2,
+            },
+        ],
+    });
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("the exact two-axis fraction/area composition should project");
+
+    assert_eq!(
+        projected.columns,
+        vec![GridTrackSize::Fraction(1.0), GridTrackSize::Fraction(2.0)]
+    );
+    assert_eq!(
+        projected.rows,
+        vec![GridTrackSize::Fraction(1.0), GridTrackSize::Fraction(2.0)]
+    );
+    assert_eq!(
+        projected
+            .template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns)),
+        Some((2, 2))
+    );
+}
+
+#[test]
+fn root_html_named_area_profile_still_rejects_mixed_fraction_and_fixed_tracks() {
     let node = NodeId::new(11_183).unwrap();
     let mut grid = grid(
         vec![
@@ -276,7 +341,7 @@ fn root_html_named_area_profile_still_rejects_fraction_tracks() {
         &grid,
         ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
-    .expect_err("fraction tracks must not widen the fixed named-area subset");
+    .expect_err("mixed fraction and fixed tracks must not widen the named-area subset");
     assert!(matches!(
         error,
         crate::StyleLayoutError::UnsupportedComputedValue {

@@ -216,10 +216,22 @@ fn validate_root_html_named_area_template(
         [ComputedCssGridTrackSize::LengthPx(first), ComputedCssGridTrackSize::LengthPx(second)]
             if *first == 20.0 && *second == 50.0
     );
-    if !columns_match || !rows_match {
+    let fractional_columns_match = matches!(
+        grid.columns.as_slice(),
+        [ComputedCssGridTrackSize::Fraction(first), ComputedCssGridTrackSize::Fraction(second)]
+            if *first == 1.0 && *second == 2.0
+    );
+    let fractional_rows_match = matches!(
+        grid.rows.as_slice(),
+        [ComputedCssGridTrackSize::Fraction(first), ComputedCssGridTrackSize::Fraction(second)]
+            if *first == 1.0 && *second == 2.0
+    );
+    let bounded_fraction_tracks_match = fractional_columns_match && fractional_rows_match;
+    let fixed_tracks_match = columns_match && rows_match;
+    if !(fixed_tracks_match || bounded_fraction_tracks_match) {
         return Err(unsupported(
             "grid-template-areas",
-            "Root HTML named-area 제한 경로는 열 40px 80px, 행 20px 50px를 요구합니다",
+            "Root HTML named-area 제한 경로는 기존 고정 px 트랙 또는 definite 양 축의 1fr 2fr 트랙만 지원합니다",
         ));
     }
     let expected = [

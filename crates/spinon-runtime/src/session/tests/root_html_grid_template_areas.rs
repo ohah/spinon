@@ -3,6 +3,9 @@ use super::*;
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-template-areas-precomparison.html"
 );
+const FRACTION_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-fr-named-areas-runtime.html"
+);
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
@@ -40,6 +43,15 @@ fn area_frames(scene: &spinon_render::RuntimeRenderSnapshot) -> [[f32; 4]; 3] {
         frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(58, 143, 91)),
         frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(10, 132, 255)),
     ]
+}
+
+fn assert_frame_close(actual: [f32; 4], expected: [f32; 4], name: &str) {
+    for (index, (actual_component, expected_component)) in actual.iter().zip(expected).enumerate() {
+        assert!(
+            actual_component.is_finite() && (*actual_component - expected_component).abs() <= 0.02,
+            "{name} frame component {index}: actual={actual_component}, expected={expected_component}, full actual={actual:?}"
+        );
+    }
 }
 
 #[test]
@@ -110,6 +122,223 @@ fn c11_1_default_root_html_runtime_places_semantic_named_areas_independent_of_so
         .and_then(|completed| completed.render_snapshot.clone())
         .expect("reordered named-area Grid should publish a scene");
     assert_eq!(area_frames(&reordered_scene), expected);
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_combines_named_areas_with_definite_fraction_tracks() {
+    let (session, layout) = run(FRACTION_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "fractional named-area Grid should be admitted: {layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout
+        .completed
+        .expect("fractional named-area Grid layout should complete");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("fractional named-area Grid should publish the default Root HTML scene");
+    assert_frame_close(
+        frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(16, 24, 32)),
+        [0.0, 0.0, 120.0, 70.0],
+        "fractional named-area root",
+    );
+    let expected = [
+        [0.0, 0.0, 120.0, 70.0 / 3.0],
+        [0.0, 70.0 / 3.0, 40.0, 140.0 / 3.0],
+        [40.0, 70.0 / 3.0, 80.0, 140.0 / 3.0],
+    ];
+    for (index, (actual, expected)) in area_frames(scene).into_iter().zip(expected).enumerate() {
+        assert_frame_close(actual, expected, ["header", "side", "content"][index]);
+    }
+
+    let cascade = session.ua_cascade_snapshot();
+    let cascade_completed = cascade
+        .completed
+        .expect("fractional area typed style should complete");
+    assert_eq!(completed.key, cascade_completed.key);
+    let root_grid = cascade_completed.roots[0]
+        .styles
+        .elements
+        .iter()
+        .find(|style| style.grid_layout.is_some())
+        .and_then(|style| style.grid_layout.as_ref())
+        .expect("fractional named-area root should retain typed tracks");
+    assert_eq!(
+        root_grid.columns,
+        [
+            spinon_style::ComputedCssGridTrackSize::Fraction(1.0),
+            spinon_style::ComputedCssGridTrackSize::Fraction(2.0),
+        ]
+    );
+    assert_eq!(root_grid.rows, root_grid.columns);
+    assert_eq!(
+        root_grid
+            .template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns)),
+        Some((2, 2))
+    );
+
+    let reordered_source = FRACTION_SOURCE
+        .replace("#layout", "#renamed-grid")
+        .replace("id=\"layout\"", "id=\"renamed-grid\"")
+        .replace("data-area", "data-zone")
+        .replace(
+            "<div data-zone=\"content\"></div>\n      <div data-zone=\"header\"></div>\n      <div data-zone=\"side\"></div>",
+            "<div data-zone=\"side\"></div>\n      <div data-zone=\"content\"></div>\n      <div data-zone=\"header\"></div>",
+        );
+    let (_, reordered) = run(&reordered_source);
+    assert_eq!(
+        reordered.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "renamed selector and source order must not block fractional named areas: {reordered:?}"
+    );
+    let reordered_scene = reordered
+        .completed
+        .and_then(|completed| completed.render_snapshot.clone())
+        .expect("reordered fractional named areas should publish a scene");
+    for (index, (actual, expected)) in area_frames(&reordered_scene)
+        .into_iter()
+        .zip(expected)
+        .enumerate()
+    {
+        assert_frame_close(
+            actual,
+            expected,
+            ["reordered header", "reordered side", "reordered content"][index],
+        );
+    }
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_rejects_out_of_scope_fractional_named_area_tracks() {
+    let cases = [
+        (
+            "wrong fraction ratio",
+            FRACTION_SOURCE.replace(
+                "grid-template-columns: 1fr 2fr;",
+                "grid-template-columns: 1fr 1fr;",
+            ),
+        ),
+        (
+            "wrong explicit track count",
+            FRACTION_SOURCE.replace(
+                "grid-template-columns: 1fr 2fr;",
+                "grid-template-columns: 1fr 2fr 3fr;",
+            ),
+        ),
+        (
+            "mixed px and fr tracks",
+            FRACTION_SOURCE.replace(
+                "grid-template-columns: 1fr 2fr;",
+                "grid-template-columns: 40px 2fr;",
+            ),
+        ),
+        (
+            "percentage tracks",
+            FRACTION_SOURCE
+                .replace(
+                    "grid-template-columns: 1fr 2fr;",
+                    "grid-template-columns: 25% 75%;",
+                )
+                .replace(
+                    "grid-template-rows: 1fr 2fr;",
+                    "grid-template-rows: 25% 75%;",
+                ),
+        ),
+        (
+            "indefinite fraction row axis",
+            FRACTION_SOURCE.replace("height: 70px;", "height: auto;"),
+        ),
+        (
+            "minimum size override",
+            FRACTION_SOURCE.replace("width: 120px;", "width: 120px; min-width: 0;"),
+        ),
+        (
+            "maximum width override",
+            FRACTION_SOURCE.replace("width: 120px;", "width: 120px; max-width: 121px;"),
+        ),
+        (
+            "minimum height override",
+            FRACTION_SOURCE.replace("height: 70px;", "height: 70px; min-height: 0;"),
+        ),
+        (
+            "maximum height override",
+            FRACTION_SOURCE.replace("height: 70px;", "height: 70px; max-height: 71px;"),
+        ),
+        (
+            "aspect ratio override",
+            FRACTION_SOURCE.replace("height: 70px;", "height: 70px; aspect-ratio: 2 / 1;"),
+        ),
+        (
+            "nonzero row gap",
+            FRACTION_SOURCE.replace(
+                "grid-template-rows: 1fr 2fr;",
+                "grid-template-rows: 1fr 2fr; row-gap: 1px;",
+            ),
+        ),
+        (
+            "nonzero column gap",
+            FRACTION_SOURCE.replace(
+                "grid-template-columns: 1fr 2fr;",
+                "grid-template-columns: 1fr 2fr; column-gap: 1px;",
+            ),
+        ),
+        (
+            "intrinsic minmax track",
+            FRACTION_SOURCE.replace(
+                "grid-template-columns: 1fr 2fr;",
+                "grid-template-columns: minmax(0px, 1fr) 2fr;",
+            ),
+        ),
+    ];
+
+    for (name, source) in cases {
+        let (_, result) = run(&source);
+        assert_eq!(
+            result.state,
+            crate::session::RuntimeLayoutState::Failed,
+            "out-of-scope fractional named-area case={name} must fail closed: {result:?}"
+        );
+        assert!(
+            result.error.is_some(),
+            "{name} should report its unsupported input"
+        );
+        let failure = result.error.as_ref().expect("failure was checked above");
+        let expected_property = match name {
+            "wrong fraction ratio"
+            | "wrong explicit track count"
+            | "mixed px and fr tracks"
+            | "percentage tracks" => Some("grid-template-areas"),
+            "indefinite fraction row axis" => None,
+            "minimum size override" => None,
+            "maximum width override" => None,
+            "minimum height override" => None,
+            "maximum height override" => None,
+            "aspect ratio override" => None,
+            "nonzero row gap" => Some("row-gap"),
+            "nonzero column gap" => Some("column-gap"),
+            // The intrinsic form is rejected by the cascade before typed
+            // projection, so only the fail-closed state is stable here.
+            "intrinsic minmax track" => None,
+            _ => unreachable!("unexpected rejection matrix case {name}"),
+        };
+        if let Some(expected_property) = expected_property {
+            assert_eq!(failure.code, "unsupported_computed_value", "{name}");
+            assert_eq!(
+                failure.property.as_deref(),
+                Some(expected_property),
+                "{name} should identify the unsupported computed property"
+            );
+        }
+        assert!(
+            result.completed.is_none(),
+            "{name} must not publish a partial or stale scene"
+        );
+    }
 }
 
 #[test]
