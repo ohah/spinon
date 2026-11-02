@@ -1,0 +1,33 @@
+{
+  "browser": "HeadlessChrome/156.0.8078.80",
+  "sourceSha256": "cd9b085c028371ae71d66a033a9042d1ddc1467781a1b08cb2c358e9893ebf4a",
+  "screenshotSha256": "ea1cf2aa7c5ae19d2a2d23b0eddad58d198a675bcde98cc3caa199a5e61e228c",
+  "viewport": { "width": 1280, "height": 633, "devicePixelRatio": 1 },
+  "root": {
+    "x": 0,
+    "y": 0,
+    "width": 175,
+    "height": 63,
+    "gridTemplateColumns": "30px 40px 15px 25px 15px 25px",
+    "gridTemplateRows": "20px 40px",
+    "gridAutoColumns": "15px 25px",
+    "gridAutoRows": "auto",
+    "gridAutoFlow": "column",
+    "columnGap": "5px",
+    "rowGap": "3px"
+  },
+  "items": [
+    { "id": "item-00", "x": 0, "y": 0, "width": 30, "height": 20 },
+    { "id": "item-01", "x": 0, "y": 23, "width": 30, "height": 40 },
+    { "id": "item-02", "x": 35, "y": 0, "width": 40, "height": 20 },
+    { "id": "item-03", "x": 35, "y": 23, "width": 40, "height": 40 },
+    { "id": "item-04", "x": 80, "y": 0, "width": 15, "height": 20 },
+    { "id": "item-05", "x": 80, "y": 23, "width": 15, "height": 40 },
+    { "id": "item-06", "x": 100, "y": 0, "width": 25, "height": 20 },
+    { "id": "item-07", "x": 100, "y": 23, "width": 25, "height": 40 },
+    { "id": "item-08", "x": 130, "y": 0, "width": 15, "height": 20 },
+    { "id": "item-09", "x": 130, "y": 23, "width": 15, "height": 40 },
+    { "id": "item-10", "x": 150, "y": 0, "width": 25, "height": 20 },
+    { "id": "item-11", "x": 150, "y": 23, "width": 25, "height": 40 }
+  ]
+}

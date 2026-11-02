@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid column-flow implicit columns precomparison</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background: #ffffff;
+        color: #101820;
+        font: 14px/20px sans-serif;
+      }
+
+      main {
+        display: grid;
+        width: 175px;
+        height: 63px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        grid-template-columns: 30px 40px;
+        grid-template-rows: 20px 40px;
+        grid-auto-columns: 15px 25px;
+        grid-auto-rows: auto;
+        grid-auto-flow: column;
+        column-gap: 5px;
+        row-gap: 3px;
+        justify-content: start;
+        align-content: start;
+        background-color: #101820;
+      }
+
+      main > div {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .column-0 { width: 30px; }
+      .column-1 { width: 40px; }
+      .column-2 { width: 15px; }
+      .column-3 { width: 25px; }
+      .column-4 { width: 15px; }
+      .column-5 { width: 25px; }
+      .row-0 { height: 20px; }
+      .row-1 { height: 40px; }
+
+      .color-a { background-color: #e5484d; }
+      .color-b { background-color: #3a8f5b; }
+      .color-c { background-color: #3870e0; }
+      .color-d { background-color: #f0cc46; }
+      .color-e { background-color: #9b59b6; }
+      .color-f { background-color: #e67e22; }
+      .color-g { background-color: #16a085; }
+      .color-h { background-color: #d35400; }
+      .color-i { background-color: #8e44ad; }
+      .color-j { background-color: #2980b9; }
+      .color-k { background-color: #c0392b; }
+      .color-l { background-color: #27ae60; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="item-00" class="column-0 row-0 color-a"></div>
+      <div id="item-01" class="column-0 row-1 color-b"></div>
+      <div id="item-02" class="column-1 row-0 color-c"></div>
+      <div id="item-03" class="column-1 row-1 color-d"></div>
+      <div id="item-04" class="column-2 row-0 color-e"></div>
+      <div id="item-05" class="column-2 row-1 color-f"></div>
+      <div id="item-06" class="column-3 row-0 color-g"></div>
+      <div id="item-07" class="column-3 row-1 color-h"></div>
+      <div id="item-08" class="column-4 row-0 color-i"></div>
+      <div id="item-09" class="column-4 row-1 color-j"></div>
+      <div id="item-10" class="column-5 row-0 color-k"></div>
+      <div id="item-11" class="column-5 row-1 color-l"></div>
+    </main>
+  </body>
+</html>
