@@ -79,7 +79,7 @@ test('C11.4 anonymous Grid text-transform stays fixed, opt-in, and source preser
   assert.match(text.runtimeTest,
     /text_layout\.input\.sources\[0\]\.text, case\.text[\s\S]*text_layout\.layout\.text, case\.expected_text/);
   assert.ok(text.validation.includes('xml:lang is outside the fixture profile'));
-  assert.ok(text.validation.includes('Grid style owner lang must be exactly en'));
+  assert.ok(text.validation.includes('Grid style owner lang must match the exact fixture scene language'));
   assert.ok(text.trace.includes('"textTransform": format!("{:?}", style.text_transform)'));
   assert.ok(text.android.includes('BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST'));
   assert.ok(text.ios.includes('#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1'));
@@ -91,4 +91,26 @@ test('C11.4 anonymous Grid text-transform stays fixed, opt-in, and source preser
   assert.match(text.plan, /ASCII/);
   assert.match(text.plan, /Noto Sans KR/);
   assert.match(text.plan, /12\/?213|72\/?213/);
+});
+
+test('C11.4 full-size-kana runtime matrix matches the literal browser profile', async () => {
+  const expectedPath = 'spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/expected-values.json';
+  const [expectedSource, ffiSource, captureSource] = await Promise.all([
+    source(expectedPath),
+    source('crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_text_transform.rs'),
+    source('tools/css-reference/capture-c11-4-computed-text-transform-simulators.mjs'),
+  ]);
+  const expected = JSON.parse(expectedSource);
+  assert.equal(expected.status, 'limited-fixture-runtime-expectations');
+  assert.equal(expected.browser, 'HeadlessChrome 156.0.0.0 via Agent Browser');
+  assert.equal(expected.sceneCount, 10);
+  assert.equal(expected.font.language, 'ja');
+  assert.equal(new Set(expected.scenes.map(({ runtimeSceneId }) => runtimeSceneId)).size, 10);
+  assert.ok(captureSource.includes("'full-size-kana': 'FullSizeKana'"));
+  for (const scene of expected.scenes) {
+    assert.ok(ffiSource.includes(scene.runtimeSceneId), `FFI scene missing ${scene.runtimeSceneId}`);
+    assert.ok(scene.runtimeSceneId.startsWith('text-transform-full-size-kana-'));
+    assert.ok(scene.lineAdvancesPx.length > 0);
+    assert.ok(Number.isFinite(scene.columnsPx) && Number.isFinite(scene.rowsPx));
+  }
 });

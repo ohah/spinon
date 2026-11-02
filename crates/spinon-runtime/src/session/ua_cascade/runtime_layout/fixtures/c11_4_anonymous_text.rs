@@ -77,7 +77,7 @@ use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 133] = [
+const SCENE_IDS: [&str; 143] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -181,6 +181,16 @@ const SCENE_IDS: [&str; 133] = [
     "text-transform-full-width-max-content",
     "text-transform-full-width-min-content",
     "text-transform-full-width-collapsed-spaces-max-content",
+    "text-transform-full-size-kana-none-max-content",
+    "text-transform-full-size-kana-hiragana-min-content",
+    "text-transform-full-size-kana-hiragana-max-content",
+    "text-transform-full-size-kana-katakana-min-content",
+    "text-transform-full-size-kana-katakana-max-content",
+    "text-transform-full-size-kana-halfwidth-min-content",
+    "text-transform-full-size-kana-halfwidth-max-content",
+    "text-transform-full-size-kana-supplementary-min-content",
+    "text-transform-full-size-kana-supplementary-max-content",
+    "text-transform-full-size-kana-pass-through-max-content",
     "hyphens-none-soft-min",
     "hyphens-none-soft-max",
     "hyphens-none-soft-fixed-30",
@@ -1905,13 +1915,18 @@ mod tests {
                 ),
                 scene.id,
             ));
+            let expected_min_content_height = match scene.id {
+                "text-transform-full-size-kana-none-max-content"
+                | "text-transform-full-size-kana-pass-through-max-content" => 50.0,
+                "text-transform-full-size-kana-hiragana-max-content"
+                | "text-transform-full-size-kana-katakana-max-content" => 100.0,
+                "text-transform-full-size-kana-halfwidth-max-content"
+                | "text-transform-full-size-kana-supplementary-max-content" => 90.0,
+                _ if scene.min_content == scene.max_content => 10.0,
+                _ => 20.0,
+            };
             assert_eq!(
-                scene.min_content_height,
-                if scene.min_content == scene.max_content {
-                    10.0
-                } else {
-                    20.0
-                },
+                scene.min_content_height, expected_min_content_height,
                 "{}",
                 scene.id
             );

@@ -21,6 +21,8 @@ struct Case {
     is_min_content: bool,
     min_content: f32,
     max_content: f32,
+    min_content_height: f32,
+    max_content_height: f32,
     first_line_advance: f32,
     second_line_advance: f32,
 }
@@ -175,7 +177,7 @@ const fn unicode_case(
     }
 }
 
-const CASES: [Case; 16] = [
+const CASES: [Case; 26] = [
     case(TextTransformMode::None, true),
     case(TextTransformMode::None, false),
     case(TextTransformMode::Uppercase, true),
@@ -191,6 +193,8 @@ const CASES: [Case; 16] = [
         is_min_content: true,
         min_content: 11.0,
         max_content: 18.71875,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 11.0,
         second_line_advance: 5.5,
     },
@@ -203,6 +207,8 @@ const CASES: [Case; 16] = [
         is_min_content: false,
         min_content: 11.0,
         max_content: 18.71875,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 18.71875,
         second_line_advance: 0.0,
     },
@@ -215,6 +221,8 @@ const CASES: [Case; 16] = [
         is_min_content: true,
         min_content: 11.1875,
         max_content: 19.09375,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 11.1875,
         second_line_advance: 5.6875,
     },
@@ -227,6 +235,8 @@ const CASES: [Case; 16] = [
         is_min_content: false,
         min_content: 11.1875,
         max_content: 19.09375,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 19.09375,
         second_line_advance: 0.0,
     },
@@ -239,6 +249,8 @@ const CASES: [Case; 16] = [
         is_min_content: false,
         min_content: 11.734375,
         max_content: 19.65625,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 19.65625,
         second_line_advance: 0.0,
     },
@@ -251,6 +263,8 @@ const CASES: [Case; 16] = [
         is_min_content: false,
         min_content: 5.6875,
         max_content: 13.59375,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 13.59375,
         second_line_advance: 0.0,
     },
@@ -263,6 +277,8 @@ const CASES: [Case; 16] = [
         is_min_content: false,
         min_content: 12.65625,
         max_content: 25.984375,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 25.984375,
         second_line_advance: 0.0,
     },
@@ -277,9 +293,124 @@ const CASES: [Case; 16] = [
         is_min_content: false,
         min_content: 20.0,
         max_content: 50.0,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: 50.0,
         second_line_advance: 0.0,
     },
+    Case {
+        scene_id: "text-transform-full-size-kana-none-max-content",
+        computed_value: "none",
+        mode: TextTransformMode::None,
+        text: "あカンABC 12",
+        expected_text: "あカンABC 12",
+        is_min_content: false,
+        min_content: 19.03,
+        max_content: 62.37,
+        min_content_height: 50.0,
+        max_content_height: 10.0,
+        first_line_advance: 62.37,
+        second_line_advance: 0.0,
+    },
+    full_size_kana_case(
+        "text-transform-full-size-kana-hiragana-min-content",
+        "ぁぃ",
+        "あい",
+        true,
+        10.0,
+        20.0,
+        (10.0, 10.0),
+        20.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-hiragana-max-content",
+        "ぁぃぅぇぉっゃゅょゎ",
+        "あいうえおつやゆよわ",
+        false,
+        10.0,
+        100.0,
+        (10.0, 10.0),
+        100.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-katakana-min-content",
+        "ァィ",
+        "アイ",
+        true,
+        10.0,
+        19.5,
+        (9.5, 10.0),
+        20.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-katakana-max-content",
+        "ァィゥェォッャュョヮ",
+        "アイウエオツヤユヨワ",
+        false,
+        10.0,
+        99.5,
+        (10.0, 10.0),
+        100.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-halfwidth-min-content",
+        "ｧｨ",
+        "ｱｲ",
+        true,
+        5.0,
+        10.0,
+        (5.0, 5.0),
+        20.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-halfwidth-max-content",
+        "ｧｨｩｪｫｯｬｭｮ",
+        "ｱｲｳｴｵﾂﾔﾕﾖ",
+        false,
+        5.0,
+        45.0,
+        (5.0, 5.0),
+        90.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-supplementary-min-content",
+        "𛄲𛅐",
+        "こゐ",
+        true,
+        10.0,
+        20.0,
+        (10.0, 10.0),
+        20.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-supplementary-max-content",
+        "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧",
+        "こゐゑをコヰヱヲン",
+        false,
+        10.0,
+        90.0,
+        (10.0, 10.0),
+        90.0,
+        10.0,
+    ),
+    full_size_kana_case(
+        "text-transform-full-size-kana-pass-through-max-content",
+        "あカンABC 12",
+        "あカンABC 12",
+        false,
+        19.03,
+        62.37,
+        (19.03, 0.0),
+        50.0,
+        10.0,
+    ),
 ];
 
 const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
@@ -335,6 +466,16 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
                 20.0,
                 20.0,
             ),
+            TextTransformMode::FullSizeKana => (
+                "full-size-kana",
+                "text-transform-full-size-kana-hiragana-min-content",
+                "text-transform-full-size-kana-hiragana-max-content",
+                "あい",
+                10.0,
+                20.0,
+                10.0,
+                10.0,
+            ),
         };
     Case {
         scene_id: if is_min_content {
@@ -346,6 +487,7 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
         mode,
         text: match mode {
             TextTransformMode::FullWidth => "AB 12",
+            TextTransformMode::FullSizeKana => "ぁぃ",
             TextTransformMode::None
             | TextTransformMode::Uppercase
             | TextTransformMode::Lowercase
@@ -355,14 +497,51 @@ const fn case(mode: TextTransformMode, is_min_content: bool) -> Case {
         is_min_content,
         min_content,
         max_content,
+        min_content_height: 20.0,
+        max_content_height: 10.0,
         first_line_advance: first,
         second_line_advance: second,
     }
 }
 
+const fn full_size_kana_case(
+    scene_id: &'static str,
+    text: &'static str,
+    expected_text: &'static str,
+    is_min_content: bool,
+    min_content: f32,
+    max_content: f32,
+    min_line_advances: (f32, f32),
+    min_content_height: f32,
+    max_content_height: f32,
+) -> Case {
+    Case {
+        scene_id,
+        computed_value: "full-size-kana",
+        mode: TextTransformMode::FullSizeKana,
+        text,
+        expected_text,
+        is_min_content,
+        min_content,
+        max_content,
+        min_content_height,
+        max_content_height,
+        first_line_advance: if is_min_content {
+            min_line_advances.0
+        } else {
+            max_content
+        },
+        second_line_advance: if is_min_content {
+            min_line_advances.1
+        } else {
+            0.0
+        },
+    }
+}
+
 #[test]
 fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom_text() {
-    assert_eq!(CASES.len(), 16);
+    assert_eq!(CASES.len(), 26);
     assert_eq!(
         CASES
             .iter()
@@ -373,8 +552,10 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
     );
 
     for (index, case) in CASES.iter().enumerate() {
-        let full_width_scene = case.scene_id.starts_with("text-transform-full-width-");
-        let language = if full_width_scene { "ja" } else { "en" };
+        let japanese_scene = case.scene_id.starts_with("text-transform-full-width-")
+            || case.scene_id.starts_with("text-transform-full-size-kana-");
+        let full_size_kana_scene = case.scene_id.starts_with("text-transform-full-size-kana-");
+        let language = if japanese_scene { "ja" } else { "en" };
         let (snapshot, root, text_node) = snapshot_for(case, 12_910 + index as u64, Some(language));
         let request = WorkRequest {
             key: key_for(&snapshot, EnvironmentRevision::INITIAL),
@@ -408,7 +589,7 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
             "{} computed text-transform",
             case.scene_id
         );
-        if full_width_scene {
+        if japanese_scene {
             assert_eq!(
                 computed_style
                     .properties
@@ -473,8 +654,16 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
         };
         close_to(sizes.min_content(), case.min_content, case.scene_id);
         close_to(sizes.max_content(), case.max_content, case.scene_id);
-        close_to(sizes.min_content_height(), 20.0, case.scene_id);
-        close_to(sizes.max_content_height(), 10.0, case.scene_id);
+        close_to(
+            sizes.min_content_height(),
+            case.min_content_height,
+            case.scene_id,
+        );
+        close_to(
+            sizes.max_content_height(),
+            case.max_content_height,
+            case.scene_id,
+        );
 
         let text_layout = diagnostics
             .item_text_layouts
@@ -482,7 +671,7 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
             .find(|text| text.input.node == text_node.id())
             .expect("anonymous text layout");
         assert_eq!(text_layout.input.style.text_transform, case.mode);
-        if full_width_scene {
+        if japanese_scene {
             assert_eq!(text_layout.input.style.locale.as_deref(), Some("ja"));
             assert_eq!(
                 text_layout.input.style.word_break,
@@ -499,7 +688,19 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
         assert_eq!(text_layout.layout.sources.len(), case.text.chars().count());
         for (source_index, source) in text_layout.layout.sources.iter().enumerate() {
             assert_eq!(source.node, text_node.id());
-            assert_eq!(source.source_utf16, source_index..source_index + 1);
+            let expected_source_range = if full_size_kana_scene {
+                let source_start = case
+                    .text
+                    .chars()
+                    .take(source_index)
+                    .map(char::len_utf16)
+                    .sum::<usize>();
+                let source_character = case.text.chars().nth(source_index).unwrap();
+                source_start..source_start + source_character.len_utf16()
+            } else {
+                source_index..source_index + 1
+            };
+            assert_eq!(source.source_utf16, expected_source_range);
             let expected_paragraph_range =
                 if case.scene_id == "text-transform-full-width-collapsed-spaces-max-content" {
                     match source_index {
@@ -510,6 +711,15 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
                         6 => 12..15,
                         _ => unreachable!(),
                     }
+                } else if full_size_kana_scene {
+                    let output_start = case
+                        .expected_text
+                        .chars()
+                        .take(source_index)
+                        .map(char::len_utf8)
+                        .sum::<usize>();
+                    let output_character = case.expected_text.chars().nth(source_index).unwrap();
+                    output_start..output_start + output_character.len_utf8()
                 } else if case.mode == TextTransformMode::FullWidth {
                     source_index * 3..(source_index + 1) * 3
                 } else if case.scene_id == "text-transform-capitalize-collapsed-spaces" {
@@ -526,7 +736,15 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
                 };
             assert_eq!(source.paragraph_utf8, expected_paragraph_range);
         }
-        let expected_line_count = if case.is_min_content { 2 } else { 1 };
+        let expected_line_count = if case.is_min_content {
+            if full_size_kana_scene {
+                case.expected_text.chars().count()
+            } else {
+                2
+            }
+        } else {
+            1
+        };
         assert_eq!(text_layout.layout.lines.len(), expected_line_count);
         close_to(
             text_layout.layout.lines[0].advance,
@@ -572,7 +790,11 @@ fn anonymous_grid_computed_text_transform_reaches_intrinsic_tracks_and_keeps_dom
             LayoutGridTrackSizingContributionKind::MaxContent
         };
         let expected_contribution = if case.is_min_content {
-            case.first_line_advance
+            if full_size_kana_scene {
+                case.min_content
+            } else {
+                case.first_line_advance
+            }
         } else {
             text_layout.layout.lines[0].advance
         };

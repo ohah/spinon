@@ -1,0 +1,29 @@
+{
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "font": {
+    "family": "Spinon Noto Sans KR",
+    "sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+    "loaded": true,
+    "sizeCssPx": 10,
+    "weight": 400
+  },
+  "viewport": {"width": 1280, "height": 633, "dpr": 1},
+  "computedLineBreak": "strict",
+  "textTransformSupport": false,
+  "literalRows": [
+    {"id": "hiragana-min", "text": "あい", "gridWidthPx": 10, "heightPx": 20, "lineAdvancesPx": [10, 10]},
+    {"id": "hiragana-max", "text": "あいうえおつやゆよわ", "gridWidthPx": 100, "heightPx": 10, "lineAdvancesPx": [100]},
+    {"id": "katakana-min", "text": "アイ", "gridWidthPx": 10, "heightPx": 20, "lineAdvancesPx": [10, 10]},
+    {"id": "katakana-max", "text": "アイウエオツヤユヨワ", "gridWidthPx": 99.5, "heightPx": 10, "lineAdvancesPx": [99.5]},
+    {"id": "halfwidth-min", "text": "ｱｲ", "gridWidthPx": 5, "heightPx": 20, "lineAdvancesPx": [5, 5]},
+    {"id": "halfwidth-max", "text": "ｱｲｳｴｵﾂﾔﾕﾖ", "gridWidthPx": 45, "heightPx": 10, "lineAdvancesPx": [45]},
+    {"id": "supplementary-min", "text": "こゐ", "gridWidthPx": 10, "heightPx": 20, "lineAdvancesPx": [10, 10]},
+    {"id": "supplementary-max", "text": "こゐゑをコヰヱヲン", "gridWidthPx": 90, "heightPx": 10, "lineAdvancesPx": [90]},
+    {"id": "passthrough-max", "text": "あカンABC 12", "gridWidthPx": 62.375, "heightPx": 10, "lineAdvancesPx": [62.375]}
+  ],
+  "limitations": [
+    "Chrome does not support text-transform: full-size-kana; these observations measure literal expected output strings.",
+    "CSS Grid width and row-height observations are the cross-engine comparison values; Range glyph boxes are not treated as font advance oracle values."
+  ]
+}

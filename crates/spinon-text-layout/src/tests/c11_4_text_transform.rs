@@ -320,10 +320,159 @@ fn c114_text_transform_full_width_rejects_unlisted_sources_and_non_japanese_loca
     );
 }
 
+#[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+#[test]
+fn c114_text_transform_full_size_kana_maps_all_script_groups_before_intrinsic_sizing() {
+    for (source, expected) in [
+        ("ぁぃぅぇぉっゃゅょゎ", "あいうえおつやゆよわ"),
+        ("ァィゥェォッャュョヮ", "アイウエオツヤユヨワ"),
+        ("ｧｨｩｪｫｯｬｭｮ", "ｱｲｳｴｵﾂﾔﾕﾖ"),
+        ("𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧", "こゐゑをコヰヱヲン"),
+        ("あカンABC 12", "あカンABC 12"),
+    ] {
+        let mut input = paragraph(source, TextTransformMode::FullSizeKana);
+        input.style.locale = Some("ja".to_owned());
+        input.style.line_break = LineBreakMode::Strict;
+        let original_source = input.sources[0].text.clone();
+        let mut engine = engine();
+
+        let actual_intrinsic = engine.intrinsic_inline_sizes(&input).unwrap();
+        let mut expected_input = paragraph(expected, TextTransformMode::None);
+        expected_input.style.locale = Some("ja".to_owned());
+        expected_input.style.line_break = LineBreakMode::Strict;
+        let expected_intrinsic = engine.intrinsic_inline_sizes(&expected_input).unwrap();
+        close_to(
+            actual_intrinsic.min_content(),
+            expected_intrinsic.min_content(),
+            "full-size-kana min-content",
+        );
+        close_to(
+            actual_intrinsic.max_content(),
+            expected_intrinsic.max_content(),
+            "full-size-kana max-content",
+        );
+
+        let layout = engine.layout_paragraph(&input, 240.0).unwrap();
+        assert_eq!(layout.text_transform, TextTransformMode::FullSizeKana);
+        assert_eq!(layout.text, expected, "source {source:?}");
+        assert_eq!(input.sources[0].text, original_source);
+        assert_eq!(input.sources[0].text, source);
+
+        let output_characters = expected.chars().collect::<Vec<_>>();
+        let source_characters = source.chars().collect::<Vec<_>>();
+        assert_eq!(layout.sources.len(), output_characters.len(), "{source:?}");
+        let mut source_utf16_start = 0;
+        let mut output_utf8_start = 0;
+        for ((source_character, output_character), mapped) in source_characters
+            .iter()
+            .zip(output_characters.iter())
+            .zip(layout.sources.iter())
+        {
+            let source_utf16_end = source_utf16_start + source_character.len_utf16();
+            let output_utf8_end = output_utf8_start + output_character.len_utf8();
+            assert_eq!(mapped.source_utf16, source_utf16_start..source_utf16_end);
+            assert_eq!(mapped.paragraph_utf8, output_utf8_start..output_utf8_end);
+            source_utf16_start = source_utf16_end;
+            output_utf8_start = output_utf8_end;
+        }
+    }
+}
+
+#[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+#[test]
+fn c114_text_transform_full_size_kana_rejects_out_of_profile_inputs() {
+    let mut wrong_language = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
+    wrong_language.style.locale = Some("en".to_owned());
+    wrong_language.style.line_break = LineBreakMode::Strict;
+    let mut engine = engine();
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_language),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_language.node
+        ))
+    );
+
+    let mut wrong_direction = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
+    wrong_direction.style.locale = Some("ja".to_owned());
+    wrong_direction.style.line_break = LineBreakMode::Strict;
+    wrong_direction.style.direction = TextDirection::Rtl;
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_direction),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_direction.node
+        ))
+    );
+
+    let mut wrong_whitespace = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
+    wrong_whitespace.style.locale = Some("ja".to_owned());
+    wrong_whitespace.style.line_break = LineBreakMode::Strict;
+    wrong_whitespace.style.white_space = WhiteSpaceMode::Pre;
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_whitespace),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_whitespace.node
+        ))
+    );
+
+    let mut wrong_word_break = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
+    wrong_word_break.style.locale = Some("ja".to_owned());
+    wrong_word_break.style.line_break = LineBreakMode::Strict;
+    wrong_word_break.style.word_break = WordBreakMode::BreakAll;
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_word_break),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_word_break.node
+        ))
+    );
+
+    let mut wrong_line_break = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
+    wrong_line_break.style.locale = Some("ja".to_owned());
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&wrong_line_break),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            wrong_line_break.node
+        ))
+    );
+
+    let mut unlisted = paragraph("ぁぃ!", TextTransformMode::FullSizeKana);
+    unlisted.style.locale = Some("ja".to_owned());
+    unlisted.style.line_break = LineBreakMode::Strict;
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&unlisted),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            unlisted.node
+        ))
+    );
+
+    let mut split = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
+    split.style.locale = Some("ja".to_owned());
+    split.style.line_break = LineBreakMode::Strict;
+    split.sources.push(split.sources[0].clone());
+    assert_eq!(
+        engine.intrinsic_inline_sizes(&split),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            split.node
+        ))
+    );
+}
+
 #[cfg(not(feature = "c11-4-text-transform-unicode-fixture-test"))]
 #[test]
 fn c114_text_transform_full_width_requires_the_opt_in_fixture_feature() {
     let input = paragraph("AB 12", TextTransformMode::FullWidth);
+    let mut engine = engine();
+    assert_eq!(
+        engine.layout_paragraph(&input, 120.0),
+        Err(crate::TextLayoutError::UnsupportedTextTransformProfile(
+            input.node
+        ))
+    );
+}
+
+#[cfg(not(feature = "c11-4-text-transform-unicode-fixture-test"))]
+#[test]
+fn c114_text_transform_full_size_kana_requires_the_opt_in_fixture_feature() {
+    let input = paragraph("ぁぃぅぇぉっゃゅょゎ", TextTransformMode::FullSizeKana);
     let mut engine = engine();
     assert_eq!(
         engine.layout_paragraph(&input, 120.0),

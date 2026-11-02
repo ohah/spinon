@@ -21,7 +21,7 @@ pub(super) struct TextTransformScene {
     pub(super) max_content_height: f32,
 }
 
-pub(super) const SCENES: [TextTransformScene; 27] = [
+pub(super) const SCENES: [TextTransformScene; 37] = [
     scene(TextTransformMode::None, true),
     scene(TextTransformMode::None, false),
     scene(TextTransformMode::Uppercase, true),
@@ -210,6 +210,96 @@ pub(super) const SCENES: [TextTransformScene; 27] = [
         false,
         (20.0, 50.0),
     ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-none-max-content",
+        TextTransformMode::None,
+        "あカンABC 12",
+        "あカンABC 12",
+        false,
+        (19.03, 62.37),
+        (50.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-hiragana-min-content",
+        TextTransformMode::FullSizeKana,
+        "ぁぃ",
+        "あい",
+        true,
+        (10.0, 20.0),
+        (20.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-hiragana-max-content",
+        TextTransformMode::FullSizeKana,
+        "ぁぃぅぇぉっゃゅょゎ",
+        "あいうえおつやゆよわ",
+        false,
+        (10.0, 100.0),
+        (100.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-katakana-min-content",
+        TextTransformMode::FullSizeKana,
+        "ァィ",
+        "アイ",
+        true,
+        (10.0, 19.5),
+        (20.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-katakana-max-content",
+        TextTransformMode::FullSizeKana,
+        "ァィゥェォッャュョヮ",
+        "アイウエオツヤユヨワ",
+        false,
+        (10.0, 99.5),
+        (100.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-halfwidth-min-content",
+        TextTransformMode::FullSizeKana,
+        "ｧｨ",
+        "ｱｲ",
+        true,
+        (5.0, 10.0),
+        (20.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-halfwidth-max-content",
+        TextTransformMode::FullSizeKana,
+        "ｧｨｩｪｫｯｬｭｮ",
+        "ｱｲｳｴｵﾂﾔﾕﾖ",
+        false,
+        (5.0, 45.0),
+        (90.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-supplementary-min-content",
+        TextTransformMode::FullSizeKana,
+        "𛄲𛅐",
+        "こゐ",
+        true,
+        (10.0, 20.0),
+        (20.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-supplementary-max-content",
+        TextTransformMode::FullSizeKana,
+        "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧",
+        "こゐゑをコヰヱヲン",
+        false,
+        (10.0, 90.0),
+        (90.0, 10.0),
+    ),
+    full_size_kana_scene(
+        "text-transform-full-size-kana-pass-through-max-content",
+        TextTransformMode::FullSizeKana,
+        "あカンABC 12",
+        "あカンABC 12",
+        false,
+        (19.03, 62.37),
+        (50.0, 10.0),
+    ),
 ];
 
 pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
@@ -240,6 +330,16 @@ pub(super) const SCENE_IDS: [&str; SCENES.len()] = [
     "text-transform-full-width-max-content",
     "text-transform-full-width-min-content",
     "text-transform-full-width-collapsed-spaces-max-content",
+    "text-transform-full-size-kana-none-max-content",
+    "text-transform-full-size-kana-hiragana-min-content",
+    "text-transform-full-size-kana-hiragana-max-content",
+    "text-transform-full-size-kana-katakana-min-content",
+    "text-transform-full-size-kana-katakana-max-content",
+    "text-transform-full-size-kana-halfwidth-min-content",
+    "text-transform-full-size-kana-halfwidth-max-content",
+    "text-transform-full-size-kana-supplementary-min-content",
+    "text-transform-full-size-kana-supplementary-max-content",
+    "text-transform-full-size-kana-pass-through-max-content",
 ];
 
 const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformScene {
@@ -299,13 +399,20 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
             50.0,
             "ＡＢ　１２",
         ),
+        TextTransformMode::FullSizeKana => (
+            "full-size-kana",
+            "text-transform-full-size-kana-unconfigured",
+            0.0,
+            0.0,
+            "",
+        ),
     };
     TextTransformScene {
         id,
         computed_value,
         mode,
         owner_language: match mode {
-            TextTransformMode::FullWidth => "ja",
+            TextTransformMode::FullWidth | TextTransformMode::FullSizeKana => "ja",
             TextTransformMode::None
             | TextTransformMode::Uppercase
             | TextTransformMode::Lowercase
@@ -313,6 +420,7 @@ const fn scene(mode: TextTransformMode, is_min_content: bool) -> TextTransformSc
         },
         text: match mode {
             TextTransformMode::FullWidth => "AB 12",
+            TextTransformMode::FullSizeKana => "ぁぃ",
             TextTransformMode::None
             | TextTransformMode::Uppercase
             | TextTransformMode::Lowercase
@@ -344,6 +452,7 @@ const fn scene_with_text(
             TextTransformMode::Lowercase => "lowercase",
             TextTransformMode::Capitalize => "capitalize",
             TextTransformMode::FullWidth => "full-width",
+            TextTransformMode::FullSizeKana => "full-size-kana",
         },
         mode,
         owner_language: "en",
@@ -375,6 +484,7 @@ const fn unicode_scene(
             TextTransformMode::Lowercase => "lowercase",
             TextTransformMode::Capitalize => "capitalize",
             TextTransformMode::FullWidth => "full-width",
+            TextTransformMode::FullSizeKana => "full-size-kana",
         },
         mode,
         owner_language: "en",
@@ -402,6 +512,7 @@ const fn full_width_scene(
         computed_value: match mode {
             TextTransformMode::None => "none",
             TextTransformMode::FullWidth => "full-width",
+            TextTransformMode::FullSizeKana => "unsupported",
             TextTransformMode::Uppercase
             | TextTransformMode::Lowercase
             | TextTransformMode::Capitalize => "unsupported",
@@ -416,6 +527,38 @@ const fn full_width_scene(
         max_content: intrinsic_sizes.1,
         min_content_height: 20.0,
         max_content_height: 10.0,
+    }
+}
+
+const fn full_size_kana_scene(
+    id: &'static str,
+    mode: TextTransformMode,
+    text: &'static str,
+    expected_layout_text: &'static str,
+    is_min_content: bool,
+    intrinsic_sizes: (f32, f32),
+    intrinsic_heights: (f32, f32),
+) -> TextTransformScene {
+    TextTransformScene {
+        id,
+        computed_value: match mode {
+            TextTransformMode::None => "none",
+            TextTransformMode::FullSizeKana => "full-size-kana",
+            TextTransformMode::Uppercase
+            | TextTransformMode::Lowercase
+            | TextTransformMode::Capitalize
+            | TextTransformMode::FullWidth => "unsupported",
+        },
+        mode,
+        owner_language: "ja",
+        text,
+        source_text_nodes: None,
+        expected_layout_text,
+        is_min_content,
+        min_content: intrinsic_sizes.0,
+        max_content: intrinsic_sizes.1,
+        min_content_height: intrinsic_heights.0,
+        max_content_height: intrinsic_heights.1,
     }
 }
 
@@ -507,9 +650,9 @@ mod tests {
     use std::sync::Arc;
 
     #[test]
-    fn computed_text_transform_matrix_has_unique_mode_track_unicode_and_full_width_scenes() {
+    fn computed_text_transform_matrix_has_unique_mode_track_unicode_and_kana_scenes() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 27);
+        assert_eq!(SCENES.len(), 37);
         assert_eq!(SCENE_IDS.len(), SCENES.len());
         assert_eq!(ids.len(), SCENES.len());
         assert_eq!(
@@ -533,6 +676,14 @@ mod tests {
                 && scene.min_content == 20.0
                 && scene.max_content == 50.0
         }));
+        assert!(SCENES.iter().any(|scene| {
+            scene.id == "text-transform-full-size-kana-supplementary-max-content"
+                && scene.owner_language == "ja"
+                && scene.text == "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧"
+                && scene.expected_layout_text == "こゐゑをコヰヱヲン"
+                && scene.min_content == 10.0
+                && scene.max_content == 90.0
+        }));
     }
 
     #[test]
@@ -548,7 +699,7 @@ mod tests {
                 scene.id
             );
         }
-        for value in ["full-width", "uppercase ", "Uppercase"] {
+        for value in ["full-width", "full-size-kana", "uppercase ", "Uppercase"] {
             let properties = BTreeMap::from([("text-transform".to_owned(), value.to_owned())]);
             assert!(
                 validate_computed_text_transform(
@@ -653,6 +804,15 @@ mod tests {
                 &document.snapshot(),
                 owner,
                 "text-transform-full-width-max-content"
+            ),
+            Ok(Some("ja".to_owned()))
+        );
+        let (document, owner) = owner_document(None, Some("ja"));
+        assert_eq!(
+            validate_owner_language(
+                &document.snapshot(),
+                owner,
+                "text-transform-full-size-kana-hiragana-max-content"
             ),
             Ok(Some("ja".to_owned()))
         );

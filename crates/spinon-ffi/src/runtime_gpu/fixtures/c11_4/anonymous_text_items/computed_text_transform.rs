@@ -7,7 +7,7 @@ struct Scene {
     source_text_nodes: Option<&'static [&'static str]>,
 }
 
-const SCENES: [Scene; 27] = [
+const SCENES: [Scene; 37] = [
     Scene {
         id: "text-transform-none-min-content",
         transform: "none",
@@ -197,12 +197,84 @@ const SCENES: [Scene; 27] = [
         text: "AB   12",
         source_text_nodes: None,
     },
+    Scene {
+        id: "text-transform-full-size-kana-none-max-content",
+        transform: "none",
+        columns: "max-content",
+        text: "あカンABC 12",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-hiragana-min-content",
+        transform: "full-size-kana",
+        columns: "min-content",
+        text: "ぁぃ",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-hiragana-max-content",
+        transform: "full-size-kana",
+        columns: "max-content",
+        text: "ぁぃぅぇぉっゃゅょゎ",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-katakana-min-content",
+        transform: "full-size-kana",
+        columns: "min-content",
+        text: "ァィ",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-katakana-max-content",
+        transform: "full-size-kana",
+        columns: "max-content",
+        text: "ァィゥェォッャュョヮ",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-halfwidth-min-content",
+        transform: "full-size-kana",
+        columns: "min-content",
+        text: "ｧｨ",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-halfwidth-max-content",
+        transform: "full-size-kana",
+        columns: "max-content",
+        text: "ｧｨｩｪｫｯｬｭｮ",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-supplementary-min-content",
+        transform: "full-size-kana",
+        columns: "min-content",
+        text: "𛄲𛅐",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-supplementary-max-content",
+        transform: "full-size-kana",
+        columns: "max-content",
+        text: "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧",
+        source_text_nodes: None,
+    },
+    Scene {
+        id: "text-transform-full-size-kana-pass-through-max-content",
+        transform: "full-size-kana",
+        columns: "max-content",
+        text: "あカンABC 12",
+        source_text_nodes: None,
+    },
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
     let scene = SCENES.iter().find(|scene| scene.id == scene_id)?;
     let root_id = format!("c114-{}-grid", scene.id);
-    let language = if scene.id.starts_with("text-transform-full-width-") {
+    let language = if scene.id.starts_with("text-transform-full-width-")
+        || scene.id.starts_with("text-transform-full-size-kana-")
+    {
         "ja"
     } else {
         "en"
@@ -250,12 +322,14 @@ mod tests {
     #[test]
     fn computed_text_transform_generates_the_fixed_direct_language_scene_matrix() {
         let ids = SCENES.iter().map(|scene| scene.id).collect::<BTreeSet<_>>();
-        assert_eq!(SCENES.len(), 27);
+        assert_eq!(SCENES.len(), 37);
         assert_eq!(ids.len(), SCENES.len());
         for scene in SCENES {
             let source = runtime_source(scene.id).expect("allowlisted text-transform scene");
             assert!(source.contains(&format!("sceneId:{:?}", scene.id)));
-            let expected_language = if scene.id.starts_with("text-transform-full-width-") {
+            let expected_language = if scene.id.starts_with("text-transform-full-width-")
+                || scene.id.starts_with("text-transform-full-size-kana-")
+            {
                 "ja"
             } else {
                 "en"

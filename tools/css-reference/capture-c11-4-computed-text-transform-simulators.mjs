@@ -107,7 +107,7 @@ function deriveScene(scene) {
     `${scene.id}: auto row height`);
   const expectedTextTransform = {
     none: 'None', uppercase: 'Uppercase', lowercase: 'Lowercase', capitalize: 'Capitalize',
-    'full-width': 'FullWidth',
+    'full-width': 'FullWidth', 'full-size-kana': 'FullSizeKana',
   }[scene.textTransform];
   assert.ok(expectedTextTransform, `${scene.id}: unsupported transform ${scene.textTransform}`);
   return {
