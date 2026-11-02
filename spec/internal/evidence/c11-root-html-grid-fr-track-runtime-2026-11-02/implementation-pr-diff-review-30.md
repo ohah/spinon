@@ -35,4 +35,4 @@
 | 29 | platform app smoke를 geometry 또는 pixel parity로 과장할 수 있음 | **PASS** — 문서와 PR evidence는 layout-ready/draw 및 screenshot을 smoke evidence로만 분류하고 PixelCopy/Metal readback을 미실행으로 명시한다. |
 | 30 | slice 결과가 C11/C11.1 또는 공식 완료 수를 잘못 올릴 수 있음 | **PASS** — `spec/STATUS.md`는 C11/C11.1 미완료와 `72/213`을 유지하고, `0059`는 bounded implementation candidate 및 비지원 범위를 기술한다. |
 
-**남은 경계:** intrinsic flex sizing, `minmax()`의 flex maximum, named-area + `fr`, implicit layout, 일반 CSS admission, WPT·전체 C11, Android hardware renderer, PixelCopy/Metal drawable readback, iOS compositor 이후 parity는 검증하거나 완료로 주장하지 않는다. GitHub CI check run 유무는 PR 생성 뒤 별도 확인한다.
+**남은 경계:** intrinsic flex sizing, `minmax()`의 flex maximum, named-area + `fr`, implicit layout, 일반 CSS admission, WPT·전체 C11, Android hardware renderer, PixelCopy/Metal drawable readback, iOS compositor 이후 parity는 검증하거나 완료로 주장하지 않는다. PR #1015의 GitHub status check rollup은 비어 있다. CI 통과로 주장하지 않는다.
