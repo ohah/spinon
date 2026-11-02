@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML percentage implicit columns
 
-**상태:** 구현 전 비교와 계획 검토를 마친 계획 후보. definite-width Root HTML sparse column-flow의 `grid-auto-columns`에 direct percentage track을 추가한다. 구현·status 승격 전이다.
+**상태:** 제한 구현 PR [#1063](https://github.com/ohah/spinon/pull/1063)이 `2026-11-02T14:18:53Z` Rebase and merge됐다(merge SHA `246babd793b27c2ca9e8edc5d81b8726c7479816`). definite-width Root HTML sparse column-flow의 direct percentage `grid-auto-columns` scalar/list가 구현됐다. 이는 C11.1/C11 완료나 공식 `72/213` 승격이 아니며, 이 계획의 제외 범위는 그대로 남는다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [기존 sparse column-flow](./c11-root-html-grid-column-flow.md) · [fixed-px implicit columns](./c11-root-html-grid-column-flow-implicit-columns.md) · [definite percentage implicit rows](./c11-root-html-grid-auto-row-percentage-list.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -50,3 +50,10 @@
 - 구현 전 계획의 서로 다른 실패 경로 20개는 [계획 검토](./c11-root-html-grid-column-flow-percent-implicit-columns-percentage-plan-review-20.md)에 둔다. 이 리뷰는 feature implementation/runtime 리뷰로 재사용하지 않는다.
 - 구현 후에는 새로운 implementation/runtime 실패 관점 20개를 기록한다. 구현 PR diff는 프로젝트 규칙에 따라 별도 30개 관점으로 검토한다.
 - 구현 PR이 병합되면 status ledger, public roadmap, contract 0059 `0.1.0` 및 Tailnet preview를 후속 문서 변경으로 맞춘다. 어느 bounded slice도 C11.1/C11 전체 완료나 공식 `72/213` 변경을 주장하지 않는다.
+
+
+## 병합 결과와 남은 범위
+
+PR #1063은 fixed-px implicit columns 뒤에 finite non-negative direct percentage 및 px/% 혼합 목록을 Root HTML `RootHtmlColumnFlowV1`에 연결했다. Chrome 156 독립 기대값, layout 15/15, style-to-layout 28/28, style cascade 9/9, runtime 3/3, affected-package Clippy와 rustfmt를 확인했다. 기본 FFI archive에는 task symbol/title이 없고 fixture-test positive control에는 둘 다 있다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 parsed Root HTML host route에서 같은 240×63 grid 및 12 item frame을 출력했다. 상세 hash·로그·화면과 simulator viewport 차이는 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-column-flow-percent-auto-columns-runtime-2026-11-02/README.md)에 둔다.
+
+일반 CSS admission, dense/row flow, intrinsic tracks, authored placement, nested Grid, WPT 적합성, 실기기/hardware GPU와 drawable pixel readback은 검증하지 않았다. PR checks는 보고되지 않았고 main required checks도 설정되어 있지 않다. 이 계획 slice는 C11.1/C11 checkbox를 완료하지 않으며 내부 계약 숫자 버전 `0.1.0`과 공식 `72/213`을 유지한다.
