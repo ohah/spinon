@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML column 흐름 자동 배치
 
-**상태:** 계획 단계. 기본 Root HTML runtime의 author `grid-auto-flow: column` 후보를 검토한다. 구현·플랫폼 실행은 아직 하지 않았다. C11.1과 C11은 미완료이고 공식 집계 `72/213`은 유지한다.
+**상태:** 구현 후보 코드, 지정 플랫폼 smoke 검증과 구현/runtime 적대 리뷰 20개를 마쳤다. `spinon-layout` 4/4, `spinon-style-to-layout` 3/3, runtime 4/4 및 Root HTML Grid 회귀 37/37이 통과했고, scoped Clippy와 `cargo fmt --all -- --check`도 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 app route에서 동일 fixture asset hash, `layout=ready`, 7-box draw/present를 확인했다. 전체 `spinon-style-to-layout` suite는 기존 C07 aspect-ratio serialization 기대값 불일치 1건으로 305/306이며 green으로 세지 않는다. [구현/runtime 적대 리뷰](../spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/implementation-runtime-review-20.md)와 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-column-flow-runtime-2026-11-02/README.md)를 남겼다. PR diff 30관점 리뷰와 PR/merge gate가 남아 있다. C11.1과 C11은 미완료이고 공식 집계 `72/213`은 유지한다.
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid 통합](./c11-root-html-grid-runtime.md) · [상태 대장](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -29,19 +29,19 @@ Layout core의 `DenseAutoPlacement` 경로는 sparse column auto-placement의 �
 
 1. 기존 `RuntimeSession::new_runtime_gpu_with_root_html` 경로에서만 기본 Root HTML style/layout/paint revision을 이어 준다. node id, class 이름, tag, scene 이름으로 feature를 선택하지 않는다.
 2. CSS `grid-auto-flow: column`만 새로 허용한다. `row`는 기존 동작을 유지하고, `row dense`, `column dense`는 계속 fail-closed한다.
-3. columns와 rows는 비어 있지 않은 finite non-negative direct px track만 사용한다. percentage/`fr` 조합, line name, `repeat()`, `grid-template-areas`, 중첩 Grid는 이 slice에서 함께 열지 않는다.
+3. columns와 rows는 Stylo typed snapshot에서 각각 하나 이상의 finite non-negative `LengthPx` track으로 계산되어야 한다. 절대 단위 `calc()`가 cascade에서 `LengthPx`로 계산되면 같은 값 계약으로 받는다. percentage/`fr`, line name, fixed/auto `repeat()`, `grid-template-areas`, 중첩 Grid는 이 slice에서 함께 열지 않는다. Fixed-repeat group count는 typed snapshot에서 보존해 Root HTML projection 전에 거부한다.
 4. `grid-auto-rows`와 `grid-auto-columns`는 computed `auto`여야 한다. 모든 visible direct Grid item의 계산된 네 placement longhand는 `auto`, `order`는 0이어야 한다. authored line/span/area placement를 무시하거나 auto 배치로 낮추지 않는다.
 5. 이 slice의 visible item은 기존 Root HTML block-item 제한을 따르는 direct empty `div`와 fixed finite width/height를 사용한다. 기존 hidden subtree 규칙대로 `display:none` item은 visible capacity와 scene에서 제외하고, non-whitespace 직접 text, nested item, image/intrinsic contribution 및 unsupported display는 fail-closed한다.
 6. logical-to-physical 매핑이 정해지지 않은 `direction:rtl` 또는 non-horizontal writing mode는 받지 않는다. 기존 fixed-px gap 규칙은 유지하며, precomparison 기준에서는 초기 gap 0을 사용한다.
 7. visible item 수는 `columns × rows` 이하로 제한한다. span/placement가 모두 auto인 조건과 결합해 implicit tracks 없이 명시 셀만 사용한다. 초과 item은 layout/scene publication 전에 거부한다.
-8. `RootHtmlColumnFlowV1` layout contract는 computed flow `Column`, `auto` implicit sizing, 이름 없는 finite explicit tracks, no-area/no-repeat shape 및 explicit capacity를 다시 검증한다. layout placement normalizer 결과가 명시 track 범위를 벗어나면 결과를 publish하지 않는다.
+8. Typed Root HTML projection은 computed flow `Column`, repeat group count 0, `auto` implicit sizing, 이름 없는 finite explicit tracks, no-area shape 및 explicit capacity를 확인한 뒤 `LayoutInput`으로 변환한다. `RootHtmlColumnFlowV1` layout contract는 변환된 explicit track 값, flow, implicit sizing, item shape와 explicit capacity를 다시 검증한다. layout placement normalizer 결과가 명시 track 범위를 벗어나면 결과를 publish하지 않는다.
 
 ## 구현 수락 기준
 
 - [고정 fixture](../tests/fixtures/css/c11/root-html-grid-column-flow-precomparison.html)의 Chrome 156 사전 기준과 같은 `1280×633` viewport에서 root frame, typed explicit track values, semantic item frame을 각각 `0.02 CSS px` 허용오차로 확인한다.
 - fixed-px `row-gap:3px; column-gap:5px` 조합 control도 두어 expected origins `(0,0)`, `(0,23)`, `(35,0)`, `(35,23)`을 확인한다. 기존 px gap 계산이 column auto-placement 순서와 결합될 때도 각 축의 gutter를 한 번만 반영해야 한다.
 - 실제 Root HTML runtime test에서 기본 column order, row-flow 회귀 control, source-order 변형, 다른 root tag/selector/HostNode ID를 함께 검사한다. 모든 assertion은 color 또는 DOM semantic mapping으로 frame을 찾고 고정 NodeId에 의존하지 않는다.
-- rejection tests는 `column dense`, `row dense`, 5번째 item에 의한 implicit column, authored numeric/named/span placement, non-auto `grid-auto-columns`/`grid-auto-rows`, named-area·repeat 조합, RTL/vertical writing mode와 unsupported item content를 각각 확인한다. 실패 때 partial layout 또는 render scene이 남지 않아야 한다.
+- rejection tests는 `column dense`, `row dense`, 5번째 item에 의한 implicit column, authored numeric/named/span placement, non-auto `grid-auto-columns`/`grid-auto-rows`, named-area·fixed repeat 조합, RTL/vertical writing mode와 unsupported item content를 각각 확인한다. 실패 때 partial layout 또는 render scene이 남지 않아야 한다.
 - `spinon-style-to-layout`, `spinon-layout`, `spinon-runtime`의 변경 관련 테스트와 기존 Root HTML Grid 회귀를 실행한다. `cargo fmt`, scoped Clippy와 제품 feature 빌드를 확인한다. 실행하지 않은 항목은 통과로 보고하지 않는다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 기본 app route에서 같은 HTML source hash, `layout=ready`, box count와 draw/present를 확인한다. Screenshot은 시각 확인만 보조하며 PixelCopy, Metal drawable readback, compositor 이후 pixel parity로 승격하지 않는다.
 - 구현 전에 [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)의 숫자 버전을 `0.1.0`으로 유지하면서 이 제한 mode의 입력, 오류 및 미지원 조합을 추가한다. C11.1/C11 checkbox와 공식 완료 집계는 올리지 않는다.

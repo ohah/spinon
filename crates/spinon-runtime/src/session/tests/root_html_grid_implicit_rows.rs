@@ -292,6 +292,37 @@ fn c11_1_root_html_default_runtime_cycles_fixed_px_implicit_row_lists() {
 }
 
 #[test]
+fn c11_1_root_html_default_runtime_cycles_mixed_fixed_percentage_implicit_row_lists() {
+    let source =
+        AUTO_ROW_LIST_SOURCE.replace("grid-auto-rows: 15px 25px;", "grid-auto-rows: 15px 25%;");
+    let (session, layout) = run(&source);
+    let scene = ready_scene_with_auto_rows(
+        &session,
+        &layout,
+        spinon_style::ComputedCssGridAutoRows::TrackList(vec![
+            spinon_style::ComputedCssGridTrackSize::LengthPx(15.0),
+            spinon_style::ComputedCssGridTrackSize::Percentage(0.25),
+        ]),
+    );
+    let root = spinon_render::OpaqueCssSrgb::new(221, 221, 221);
+    assert_eq!(frame_for_paint(&scene, root), [0.0, 0.0, 100.0, 100.0]);
+    let item_color = spinon_render::OpaqueCssSrgb::new(74, 144, 226);
+    assert_eq!(
+        frames_for_paint(&scene, item_color),
+        vec![
+            [0.0, 0.0, 40.0, 20.0],
+            [45.0, 0.0, 55.0, 20.0],
+            [0.0, 25.0, 40.0, 15.0],
+            [45.0, 25.0, 55.0, 15.0],
+            [0.0, 45.0, 40.0, 25.0],
+            [45.0, 45.0, 55.0, 25.0],
+            [0.0, 75.0, 40.0, 15.0],
+            [45.0, 75.0, 55.0, 15.0],
+        ]
+    );
+}
+
+#[test]
 fn c11_1_root_html_default_runtime_cycles_fixed_px_lists_for_one_two_and_three_implicit_rows() {
     let item_color = spinon_render::OpaqueCssSrgb::new(74, 144, 226);
     let auto_rows = spinon_style::ComputedCssGridAutoRows::TrackList(vec![
@@ -374,16 +405,8 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             ),
         ),
         (
-            "percentage in implicit row list",
-            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 15px 50%;"),
-        ),
-        (
             "fraction in implicit row list",
             SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 15px 1fr;"),
-        ),
-        (
-            "percentage implicit row",
-            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 50%;"),
         ),
         (
             "fraction implicit row",

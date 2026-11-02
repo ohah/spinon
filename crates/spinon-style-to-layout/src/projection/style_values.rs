@@ -18,6 +18,7 @@ mod grid_placement_values;
 mod grid_values;
 mod positioning_values;
 mod primitive_values;
+mod root_html_column_flow;
 mod root_html_grid_tracks;
 mod root_html_named_area;
 mod spacing_values;
@@ -245,6 +246,7 @@ pub(super) fn project_styles(
         && let Some(nodes) = grid_nodes.as_ref()
     {
         root_html_named_area::validate_root_html_named_area_candidate(tree, snapshot, nodes)?;
+        root_html_column_flow::validate_candidate(tree, snapshot, nodes)?;
         validate_root_html_grid_item_capacity(snapshot, nodes)?;
     }
     let runtime_flex_items = if supports_runtime_flex(snapshot.profile) {
@@ -902,6 +904,11 @@ pub(super) fn project_styles(
         && grid_styles
             .values()
             .any(|grid| grid.template_areas.is_some());
+    let root_html_column_flow_route = snapshot.profile
+        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && grid_styles
+            .values()
+            .any(|grid| grid.auto_flow == ComputedCssGridAutoFlow::Column);
     if matches!(
         snapshot.profile,
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -910,6 +917,7 @@ pub(super) fn project_styles(
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) || root_html_named_area_route
+        || root_html_column_flow_route
     {
         let is_root_html = snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
         let grid_item_nodes = grid_nodes
@@ -927,7 +935,10 @@ pub(super) fn project_styles(
                 .as_ref()
                 .and_then(|nodes| nodes.grid_item_owners.get(&element.node_id))
                 .and_then(|owner| grid_styles.get(owner))
-                .is_some_and(|grid| grid.template_areas.is_some())
+                .is_some_and(|grid| {
+                    grid.template_areas.is_some()
+                        || grid.auto_flow == ComputedCssGridAutoFlow::Column
+                })
         }) {
             let placement = element.grid_item_placement.as_ref().ok_or(
                 crate::StyleLayoutError::MissingComputedProperty {

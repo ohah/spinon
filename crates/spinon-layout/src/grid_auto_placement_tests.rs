@@ -7,10 +7,10 @@ use crate::grid_auto_placement::{
     TestGridReservationSite as GridReservationSite, inject_failure_once,
 };
 use crate::{
-    GridAutoRows, GridContainerInput, GridItemInput, GridPlacementInput, GridPlacementMode,
-    GridTrackSize, LayoutDimension, LayoutEngine, LayoutGap, LayoutInputRevision,
-    LayoutLengthPercentage, LayoutNode, LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine,
-    Viewport,
+    GridAutoColumns, GridAutoFlow, GridAutoRows, GridContainerInput, GridItemInput,
+    GridPlacementInput, GridPlacementMode, GridTrackSize, LayoutDimension, LayoutEngine, LayoutGap,
+    LayoutInputRevision, LayoutLengthPercentage, LayoutNode, LayoutSourceRevision, LayoutStyle,
+    TaffyLayoutEngine, Viewport,
 };
 
 #[path = "grid_auto_placement/root_html_implicit_rows_tests.rs"]
@@ -98,6 +98,106 @@ fn placement(
 
 fn frame(input: &LayoutInput, node: u64) -> crate::LayoutFrame {
     TaffyLayoutEngine.compute(input).unwrap().frames[&id(node)]
+}
+
+fn root_html_column_flow_grid(item_count: usize) -> LayoutInput {
+    let mut input = sparse_grid(2, 2, item_count);
+    input.nodes[0].style.width = LayoutDimension::Fixed(100.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(60.0);
+    input.viewport = Viewport {
+        width: 100.0,
+        height: 60.0,
+    };
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.columns = vec![GridTrackSize::LengthPx(30.0), GridTrackSize::LengthPx(70.0)];
+    container.rows = vec![GridTrackSize::LengthPx(20.0), GridTrackSize::LengthPx(40.0)];
+    container.auto_flow = GridAutoFlow::Column;
+    container.auto_rows = GridAutoRows::Auto;
+    container.auto_columns = GridAutoColumns::Auto;
+    container.placement_mode = GridPlacementMode::RootHtmlColumnFlowV1;
+    for (index, child) in input.nodes.iter_mut().skip(1).enumerate() {
+        child.style.display = LayoutDisplay::Block;
+        child.style.width = LayoutDimension::Fixed([30.0, 30.0, 70.0, 70.0, 10.0][index]);
+        child.style.height = LayoutDimension::Fixed([20.0, 40.0, 20.0, 40.0, 10.0][index]);
+    }
+    input
+}
+
+#[test]
+fn root_html_column_flow_places_source_order_down_each_explicit_column() {
+    let input = root_html_column_flow_grid(4);
+
+    for (node, expected) in [
+        (2, [0.0, 0.0, 30.0, 20.0]),
+        (3, [0.0, 20.0, 30.0, 40.0]),
+        (4, [30.0, 0.0, 70.0, 20.0]),
+        (5, [30.0, 20.0, 70.0, 40.0]),
+    ] {
+        let actual = frame(&input, node);
+        assert_eq!(
+            [actual.x, actual.y, actual.width, actual.height],
+            expected,
+            "node {node}"
+        );
+    }
+}
+
+#[test]
+fn root_html_column_flow_applies_each_gap_once_on_its_own_axis() {
+    let mut input = root_html_column_flow_grid(4);
+    input.nodes[0].style.gap = LayoutGap {
+        column: LayoutLengthPercentage::length(5.0),
+        row: LayoutLengthPercentage::length(3.0),
+    };
+
+    for (node, expected) in [
+        (2, [0.0, 0.0, 30.0, 20.0]),
+        (3, [0.0, 23.0, 30.0, 40.0]),
+        (4, [35.0, 0.0, 70.0, 20.0]),
+        (5, [35.0, 23.0, 70.0, 40.0]),
+    ] {
+        let actual = frame(&input, node);
+        assert_eq!(
+            [actual.x, actual.y, actual.width, actual.height],
+            expected,
+            "node {node}"
+        );
+    }
+}
+
+#[test]
+fn root_html_column_flow_rejects_implicit_column_overflow_before_placement() {
+    let input = root_html_column_flow_grid(5);
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::GridImplicitTrackRequired(node)) if node == id(1)
+    ));
+}
+
+#[test]
+fn root_html_column_flow_rejects_order_and_authored_placement() {
+    let mut ordered = root_html_column_flow_grid(4);
+    ordered.nodes[1].style.order = 1;
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&ordered),
+        Err(crate::LayoutError::UnsupportedGridOrder(node)) if node == id(2)
+    ));
+
+    let mut placed = root_html_column_flow_grid(4);
+    placed.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Auto,
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&placed),
+        Err(crate::LayoutError::InvalidGridPlacement { node, .. }) if node == id(2)
+    ));
 }
 
 #[test]

@@ -36,6 +36,8 @@ fn grid_with_column_neighbors(
     ComputedCssGridLayout {
         columns: vec![prefix, repeated_track(), suffix],
         rows: vec![ComputedCssGridTrackSize::LengthPx(12.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFill,
             start: 1,
@@ -60,6 +62,8 @@ fn grid_with_row_neighbors(
     ComputedCssGridLayout {
         columns: vec![ComputedCssGridTrackSize::LengthPx(12.0)],
         rows: vec![prefix, repeated_track(), suffix],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFit,
@@ -305,6 +309,8 @@ fn track_sizing_projection_accepts_fixed_sizing_functions_after_auto_repeat() {
             },
         ],
         rows: vec![ComputedCssGridTrackSize::LengthPx(12.0)],
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFit,
             start: 0,

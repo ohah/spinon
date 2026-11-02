@@ -1,0 +1,13 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.98s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_column_flow::c11_1_root_html_sparse_column_flow_ignores_hidden_items_without_using_extra_cells ... ok
+test session::tests::root_html_grid_column_flow::c11_1_root_html_sparse_column_flow_uses_document_order_and_tag_independent_identity ... ok
+test session::tests::root_html_grid_column_flow::c11_1_root_html_sparse_column_flow_matches_chrome_frames_and_row_control ... ok
+test session::tests::root_html_grid_column_flow::c11_1_root_html_sparse_column_flow_rejects_unsupported_shapes_without_a_scene ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 225 filtered out; finished in 1.35s

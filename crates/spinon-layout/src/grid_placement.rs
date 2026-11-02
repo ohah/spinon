@@ -4,6 +4,9 @@ use spinon_core::NodeId;
 
 use crate::{GridPlacementMode, GridTrackSize, LayoutDisplay, LayoutError, LayoutInput};
 
+#[path = "grid_placement/root_html_column_flow.rs"]
+mod root_html_column_flow;
+
 /// 한 번 계산하는 동안 정규화한 모든 Grid item과 container row입니다.
 #[derive(Default)]
 pub(crate) struct NormalizedGridLayout {
@@ -28,6 +31,18 @@ pub(super) fn normalize_grid_layout(
             && container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
         {
             validate_root_html_implicit_rows_items(
+                input,
+                index,
+                &hidden,
+                container_node,
+                container,
+            )?;
+        }
+        if container_node.style.display == LayoutDisplay::Grid
+            && !hidden[&container_node.id]
+            && container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1
+        {
+            root_html_column_flow::validate_items(
                 input,
                 index,
                 &hidden,
@@ -75,6 +90,7 @@ pub(super) fn normalize_grid_layout(
             container.placement_mode,
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
+                | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -103,6 +119,17 @@ pub(super) fn normalize_grid_layout(
                 output.expanded_rows.insert(container_node.id, rows);
             }
             output.auto_placed_items.extend(sparse.auto_placed_items);
+        } else if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
+            let dense =
+                root_html_column_flow::normalize(input, index, &hidden, container_node, container)?;
+            output.item_placements.extend(dense.item_placements);
+            if let Some(rows) = dense.expanded_rows {
+                output.expanded_rows.insert(container_node.id, rows);
+            }
+            if let Some(columns) = dense.expanded_columns {
+                output.expanded_columns.insert(container_node.id, columns);
+            }
+            output.auto_placed_items.extend(dense.auto_placed_items);
         } else {
             let dense = super::grid_auto_placement::normalize_dense_grid_container(
                 input,
@@ -180,6 +207,7 @@ pub(super) fn normalize_grid_item_placements(
             container.placement_mode,
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
+                | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

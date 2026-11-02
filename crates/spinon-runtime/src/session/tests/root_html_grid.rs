@@ -564,11 +564,11 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             SOURCE.replace(".item-a {", ".item-a { grid-column: 2;"),
         ),
         (
-            "non-default auto flow",
+            "dense auto flow",
             "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        grid-auto-flow: column;",
+                "grid-template-rows: 70px;\n        grid-auto-flow: row dense;",
             ),
         ),
         (
@@ -590,11 +590,11 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             ),
         ),
         (
-            "non-fixed implicit row list",
+            "intrinsic implicit row list",
             "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        grid-auto-rows: 20px 30%;",
+                "grid-template-rows: 70px;\n        grid-auto-rows: 20px minmax(10px, 30px);",
             ),
         ),
         (

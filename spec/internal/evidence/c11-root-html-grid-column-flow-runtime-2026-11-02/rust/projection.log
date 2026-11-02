@@ -1,0 +1,12 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.28s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 3 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_rejects_dense_implicit_and_non_px_combinations ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_rejects_fixed_repeat_groups_on_both_axes ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_column_flow_selects_its_restricted_layout_mode ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 303 filtered out; finished in 0.00s

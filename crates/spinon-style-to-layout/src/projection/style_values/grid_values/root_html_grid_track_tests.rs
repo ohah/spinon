@@ -19,12 +19,134 @@ fn grid(
         rows_line_names: vec![Vec::new(); rows.len() + 1],
         columns,
         rows,
+        columns_fixed_repeat_group_count: 0,
+        rows_fixed_repeat_group_count: 0,
         columns_auto_repeat: None,
         rows_auto_repeat: None,
         template_areas: None,
         auto_flow: ComputedCssGridAutoFlow::Row,
         auto_rows: ComputedCssGridAutoRows::Auto,
         auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    }
+}
+
+#[test]
+fn root_html_column_flow_selects_its_restricted_layout_mode() {
+    let node = NodeId::new(11_240).unwrap();
+    let mut input = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(30.0),
+            ComputedCssGridTrackSize::LengthPx(70.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(40.0),
+        ],
+    );
+    input.auto_flow = ComputedCssGridAutoFlow::Column;
+
+    let projected = project_grid_layout(
+        node,
+        &input,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlColumnFlowV1
+    );
+    assert_eq!(projected.auto_flow, spinon_layout::GridAutoFlow::Column);
+    assert_eq!(projected.auto_rows, spinon_layout::GridAutoRows::Auto);
+    assert_eq!(projected.auto_columns, spinon_layout::GridAutoColumns::Auto);
+}
+
+#[test]
+fn root_html_column_flow_rejects_dense_implicit_and_non_px_combinations() {
+    let node = NodeId::new(11_241).unwrap();
+    for flow in [
+        ComputedCssGridAutoFlow::RowDense,
+        ComputedCssGridAutoFlow::ColumnDense,
+    ] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        input.auto_flow = flow;
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &input,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                property: "grid-auto-flow",
+                ..
+            })
+        ));
+    }
+
+    let mut percentage = grid(
+        vec![ComputedCssGridTrackSize::Percentage(0.5)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    percentage.auto_flow = ComputedCssGridAutoFlow::Column;
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &percentage,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            property: "grid-template-columns",
+            ..
+        })
+    ));
+
+    let mut implicit = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    implicit.auto_flow = ComputedCssGridAutoFlow::Column;
+    implicit.auto_rows = ComputedCssGridAutoRows::LengthPx(12.0);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &implicit,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            property: "grid-auto-flow",
+            ..
+        })
+    ));
+}
+
+#[test]
+fn root_html_column_flow_rejects_fixed_repeat_groups_on_both_axes() {
+    let node = NodeId::new(11_242).unwrap();
+    for (property, columns, rows) in [
+        ("grid-template-columns", 1, 0),
+        ("grid-template-rows", 0, 1),
+    ] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        input.auto_flow = ComputedCssGridAutoFlow::Column;
+        input.columns_fixed_repeat_group_count = columns;
+        input.rows_fixed_repeat_group_count = rows;
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &input,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                property: actual,
+                ..
+            }) if actual == property
+        ));
     }
 }
 

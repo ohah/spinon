@@ -224,6 +224,8 @@ pub(super) fn computed_grid_layout(
     Ok(ComputedCssGridLayout {
         columns,
         rows,
+        columns_fixed_repeat_group_count,
+        rows_fixed_repeat_group_count,
         columns_auto_repeat,
         rows_auto_repeat,
         columns_line_names,
