@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-03",
+  "browser": "Agent Browser local temporary HTML with mocked STATUS response",
+  "stableStatusRows": 213,
+  "unnumberedChildRows": 2,
+  "cases": [
+    {
+      "case": "valid minimized status",
+      "expected": "215 rows, 78 checked",
+      "observed": {
+        "status": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 135개 + ID 없는 하위 체크 2개 · 완료 78/215개",
+        "counter": "215개 표시 · 공식 완료 78/215",
+        "rows": 215,
+        "checked": 78
+      },
+      "result": "PASS"
+    },
+    {
+      "case": "malformed no-ID child marker",
+      "expected": "sync failure; do not report any checklist value",
+      "observed": {
+        "status": "공식 상태를 불러오지 못했습니다. 연결을 확인한 뒤 새로고침하세요. 체크박스 상태는 판정되지 않았습니다.",
+        "boardError": "공식 상태 대장의 미구현 하위 체크 행 일부를 해석하지 못했습니다.",
+        "counter": "78개 표시 · 공식 상태 확인 중",
+        "rows": 78
+      },
+      "result": "PASS"
+    },
+    {
+      "case": "duplicate ID plus normalized title identity",
+      "expected": "sync failure; duplicate task identity is named",
+      "observed": {
+        "status": "공식 상태를 불러오지 못했습니다. 연결을 확인한 뒤 새로고침하세요. 체크박스 상태는 판정되지 않았습니다.",
+        "boardError": "공식 상태 대장에 중복 task identity가 있습니다: C04.12 앱 루트 HTML과 문서 환경 metadata",
+        "counter": "78개 표시 · 공식 상태 확인 중",
+        "rows": 78
+      },
+      "result": "PASS"
+    },
+    {
+      "case": "missing base identity R01",
+      "expected": "sync failure; missing base identity is named",
+      "observed": {
+        "status": "공식 상태를 불러오지 못했습니다. 연결을 확인한 뒤 새로고침하세요. 체크박스 상태는 판정되지 않았습니다.",
+        "boardError": "공식 상태 대장에서 상위 작업 identity를 하나로 대응할 수 없습니다: R01 웹 호환 범위 명세",
+        "counter": "78개 표시 · 공식 상태 확인 중",
+        "rows": 78
+      },
+      "result": "PASS"
+    },
+    {
+      "case": "malformed alphabetic-suffix ID marker",
+      "expected": "sync failure; unparsed stable task row is named",
+      "observed": {
+        "status": "공식 상태를 불러오지 못했습니다. 연결을 확인한 뒤 새로고침하세요. 체크박스 상태는 판정되지 않았습니다.",
+        "boardError": "공식 상태 대장의 ID 작업 행 일부를 해석하지 못했습니다.",
+        "counter": "78개 표시 · 공식 상태 확인 중",
+        "rows": 78
+      },
+      "result": "PASS"
+    }
+  ],
+  "note": "An initial missing-base fixture removed C11, which is a detail row rather than a static base row; the valid source-of-truth count fell to 214. The corrected negative case removes R01, which is an actual base row, and fails closed."
+}

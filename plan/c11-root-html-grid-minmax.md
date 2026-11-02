@@ -6,11 +6,11 @@
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-minmax-plan-review-20.md) · **계획 PR diff 적대 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/plan-pr-diff-review-30.md) · **구현/runtime 검토:** [20개](./c11-root-html-grid-minmax-implementation-review-20.md) · **구현 PR diff 적대 검토:** [30개](./c11-root-html-grid-minmax-implementation-pr-diff-review-30.md).
 
-**상태:** 구현 진행 중. 계획 PR은 `773cfe232`에 병합됐고, 현재 단일 체크아웃에서 순차적으로 구현하고 있다. 기본 Root HTML 경로에 bounded explicit `minmax()` 변환·axis/range gate와 Rust runtime 사례를 추가했다. 42개 C11.1 runtime tests, 포맷·diff 검사, 변경 크레이트 Clippy가 통과했다. Android API 37 ARM64 AVD에서 현재 코드의 PixelCopy 표본 2/2가 두 번 일치했고, iPhone 17 Pro / iOS 26.2 Simulator의 현재 코드에서도 Metal 표본 2/2가 일치했다. 상세 로그와 화면은 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-minmax-runtime-2026-11-03/README.md)에 있다.
+**상태:** bounded implementation PR [#1086](https://github.com/ohah/spinon/pull/1086)은 2026-11-02T22:13:40Z Rebase and merge됐고 merge SHA는 `2bb59a35c89358eee77918f8b7e9f7b9c9fae7c1`이다. 계획 PR은 `773cfe232`에 병합됐고, 구현과 문서 후속은 단일 체크아웃에서 순차적으로 진행한다. 기본 Root HTML 경로에 bounded explicit `minmax()` 변환·axis/range gate와 Rust runtime 사례를 추가했다. 42개 C11.1 runtime tests, 포맷·diff 검사, 변경 크레이트 Clippy가 통과했다. Android API 37 ARM64 AVD에서 현재 코드의 PixelCopy 표본 2/2가 두 번 일치했고, iPhone 17 Pro / iOS 26.2 Simulator의 현재 코드에서도 Metal 표본 2/2가 일치했다. 상세 로그와 화면은 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-minmax-runtime-2026-11-03/README.md)에 있다.
 
-구현/runtime 적대 검토 20개와 별도의 PR diff 적대 검토 30개를 각각 완료했고, 현재 diff에서는 미해결 결함을 찾지 못했다. 구현 PR은 아직 만들지 않았으며 CI와 병합도 남아 있다. 이 bounded slice는 C11.1/C11 전체 완료나 일반 CSS Grid 지원을 뜻하지 않으며, 공식 상태 체크박스는 변경하지 않는다.
+구현/runtime 적대 검토 20개와 별도의 PR diff 적대 검토 30개를 각각 완료했고, 검토 후 수정 사항을 해당 검증에 반영했다. PR #1086의 GitHub check rollup은 비어 있었고 필수 status check도 설정되어 있지 않아 CI 통과로 기록하지 않는다. 이 bounded slice는 C11.1/C11 전체 완료나 일반 CSS Grid 지원을 뜻하지 않으며, 공식 상태 체크박스는 변경하지 않는다.
 
-Tailnet 로드맵은 현재 `72/213`을 표시하지만, `spec/STATUS.md`의 반복된 C04.12 ID와 `C06.6a`/`C06.6b`를 표시 화면에 정확히 대응하지 못한다. 공식 원본 대장의 체크 상태를 변경하지 않고, 병합 후 로드맵 동기화에서 ID 매핑을 고쳐 원본과 화면을 대조한다.
+병합 당시 Tailnet 로드맵은 반복 ID와 alphabetic suffix ID 매핑 결함으로 `72/213`을 표시했다. 로드맵 집계 수정은 별도 작업 [계획](./roadmap-status-counter-identity.md)과 [검증 근거](../spec/internal/evidence/roadmap-status-counter-identity-2026-11-03/README.md)에서 다룬다. 공식 원본 대장의 체크 상태는 변경하지 않는다.
 
 ## 목표와 현행 결손
 

@@ -112,6 +112,16 @@ Rust runtime은 definite 120px/35–80px root를 쓰는 네 scene의 computed tr
 
 이 후보는 no-area 기본 Root HTML profile에만 적용한다. Named-area/implicit-track 조합, implicit columns, dense/column flow, authored placement, intrinsic/`minmax()`/`calc()` rows, math-backed height, non-default item/container behavior, general CSS admission과 WPT 적합성은 범위 밖이다. Chrome 156 사전 비교, Rust cascade/projection/layout/runtime 검증 및 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator draw/present 한계는 [계획](../../plan/c11-root-html-grid-auto-row-fr.md)과 [runtime evidence](./evidence/c11-root-html-grid-auto-row-fr-simulators-2026-11-03/README.md)에 기록한다. 구현/runtime 검토 20개와 구현 PR diff 검토 30개를 기록했다. 구현 PR [#1070](https://github.com/ohah/spinon/pull/1070)은 2026-11-02T16:37:30Z Rebase and merge됐고 merge SHA는 `f40cb3b93d2555dafecd352bd35fb349b6bf7a64`다. PR check rollup과 main required status checks는 비어 있다. Tailnet roadmap sync는 이어서 반영한다. 내부 숫자 버전 `0.1.0`, C11.1/C11 미완료 및 공식 `72/213`을 유지한다.
 
+## C11.1 parsed Root HTML Grid bounded `minmax()` explicit tracks · 병합된 제한 구현 · PR #1086
+
+구현 PR [#1086](https://github.com/ohah/spinon/pull/1086)은 2026-11-02T22:13:40Z Rebase and merge됐고 merge SHA는 `2bb59a35c89358eee77918f8b7e9f7b9c9fae7c1`이다. 기존 기본 parsed Root HTML `RuntimeRootHtmlTextPaintV1` 경로에서 explicit columns/rows의 bounded `minmax()`만 허용한다. Minimum은 finite non-negative px/percentage, maximum은 finite non-negative px/percentage/fraction으로 제한한다. Fraction minimum, intrinsic/auto/fit-content/math breadth, implicit `grid-auto-*`, auto-repeat, named-area track relaxation과 일반 author CSS admission은 범위 밖이며 fail-closed한다.
+
+Percentage breadth 및 fraction maximum은 같은 style snapshot의 definite finite non-negative 해당 축 basis를 요구한다. min-size `auto`, max-size `none`, 미설정 aspect-ratio와 기존 style/layout revision identity를 유지한다. 두 fixed/percentage breadth의 used maximum이 minimum보다 작으면 minimum까지 바닥 처리한다. 기존 integer `repeat()` 확장 track은 별도 metadata 변경 없이 적용되며 track cap은 유지된다. 상세 규범 범위와 제외 항목은 [전용 계획](../../plan/c11-root-html-grid-minmax.md)에 있다.
+
+Chrome 156 고정 비교·독립 기대값을 바탕으로 Root HTML runtime 42개 테스트, style-to-layout acceptance/rejection 및 cascade recovery 검사를 실행했다. 포맷과 변경 크레이트 Clippy를 확인했다. Android API 37 ARM64 AVD/SwiftShader PixelCopy 표본은 2/2를 두 번 확인했고, iPhone 17 Pro/iOS 26.2 Simulator의 Metal drawable 표본은 2/2다. 이들은 실기기/hardware GPU 및 iOS compositor 이후 픽셀 검증이 아니다. PR check rollup은 비어 있었으며 required check도 설정되지 않았다. [Chrome 사전 비교](./evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/README.md) · [runtime/build/화면 근거](./evidence/c11-root-html-grid-minmax-runtime-2026-11-03/README.md) · [구현 검토 20개](../../plan/c11-root-html-grid-minmax-implementation-review-20.md) · [PR diff 검토 30개](../../plan/c11-root-html-grid-minmax-implementation-pr-diff-review-30.md).
+
+이 제한 slice는 C11.1 또는 C11 완료, 일반 CSS Grid/WPT 적합성, 공개 CSS 지원을 뜻하지 않는다. 공식 체크박스와 출시 전 내부 계약 숫자 버전 `0.1.0`은 바꾸지 않는다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.
