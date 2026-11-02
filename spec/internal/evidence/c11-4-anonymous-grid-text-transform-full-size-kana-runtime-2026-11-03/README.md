@@ -2,7 +2,7 @@
 
 ## 범위와 판정
 
-구현 소스 기준 커밋은 `e6729ffbde7955f14f762232f188c02e845a755d`다. 기능은 C11.4 anonymous direct-text Grid fixture 경로에서만 동작하며 `c11-4-text-transform-unicode-fixture-test` opt-in이 필요하다. 계획 PR [#1081](https://github.com/ohah/spinon/pull/1081)은 병합됐고 구현 PR [#1082](https://github.com/ohah/spinon/pull/1082)는 검토 중이다. PR check rollup은 비어 있고 main required status checks도 없어 CI 통과로 세지 않는다.
+구현 소스 기준 커밋은 `e6729ffbde7955f14f762232f188c02e845a755d`다. 기능은 C11.4 anonymous direct-text Grid fixture 경로에서만 동작하며 `c11-4-text-transform-unicode-fixture-test` opt-in이 필요하다. 계획 PR [#1081](https://github.com/ohah/spinon/pull/1081)은 병합됐고 구현 PR [#1082](https://github.com/ohah/spinon/pull/1082)은 2026-11-02T20:18:40Z Rebase and merge됐다(merge SHA `3c34f3b8c71eb9a960414942cecab4179d62dbb8`). PR check rollup은 비어 있고 main required status checks도 없어 CI 통과로 세지 않는다. 공식 상태 동기화는 [병합 후 검토 30개](./post-merge-status-review-30.md)에 기록한다.
 
 허용 조건은 computed value `text-transform:full-size-kana`, Grid style owner의 직접 `lang="ja"`, Noto Sans KR 10px/400, horizontal LTR, `white-space:normal`, `word-break:normal`, `line-break:strict`와 정확한 고정 source allowlist다. CSS Text Level 3 CRD 2026-08-14 Appendix G의 Unicode 15.0 기반 58개 mapping을 normalized layout text에만 적용한다. HostDocument 원문과 UTF-16 source 범위는 유지한다. 이 결과는 일본어 일반 문장이나 임의 CSS 입력에 대한 공개 지원을 뜻하지 않는다.
 
