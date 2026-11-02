@@ -6,13 +6,13 @@
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-percentage-tracks-plan-review-20.md) · **계획 PR diff 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/plan-pr-diff-review-30.md) · **구현/runtime 실패 관점 검토:** [20개](../spec/internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/implementation-runtime-review-20.md) · **구현 PR diff 적대 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/pr-delta-review-30.md).
 
-**상태:** 계획 승인됨 ([PR #1018](https://github.com/ohah/spinon/pull/1018), 2026-11-02 Rebase and merge). 제한 범위의 implementation candidate를 같은 체크아웃에서 검증 중이다. 이 slice가 구현·병합되더라도 C11.1·C11 전체 완료나 공개 CSS Grid 지원으로 승격하지 않는다.
+**상태:** 계획은 PR [#1018](https://github.com/ohah/spinon/pull/1018)로 2026-11-02 병합됐고, 이 제한 구현은 PR [#1019](https://github.com/ohah/spinon/pull/1019)로 2026-11-02T01:42:07Z Rebase and merge됐다(merge SHA `8e549ed55ac6f7e9611a4f7e1e571fca3a1e5684`). PR check rollup은 비어 있었으며 필수 status check도 설정되지 않아 CI 통과로 세지 않는다. 이 slice는 C11.1·C11 전체 완료나 공개 CSS Grid 지원으로 승격하지 않는다. 공식 완료는 `72/213` 그대로다.
 
 ## 구현 전 확인한 결손
 
 - `RuntimeRootHtmlTextPaintV1`의 Root HTML Grid validator [`validate_root_html_grid_tracks()`](../crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs)는 이름 없는 direct explicit track 중 finite non-negative `LengthPx`와 `Fraction`만 받는다. `Percentage`는 아직 unsupported다.
 - 같은 typed projection의 generic converter는 [`ComputedCssGridTrackSize::Percentage`](../crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs)를 이미 `GridTrackSize::Percentage`로 변환한다. 공용 Grid engine에는 definite axes의 percentage track을 다루는 [`percentage_tracks_use_the_definite_grid_content_axes()`](../crates/spinon-layout/src/grid_tests.rs) 회귀가 있다. 이 구현은 새 CSS value parser나 새로운 Taffy track representation을 요구하지 않는다.
-- Root HTML의 [`validate_fraction_axis_inputs()`](../crates/spinon-style-to-layout/src/projection/style_values/root_html_grid_fr.rs)는 `fr`이 있는 축만 definite finite non-negative CSS-pixel size인지 검사한다. percentage track은 현재 이 gate를 지나가지 않는다.
+- Root HTML의 [`validate_fraction_axis_inputs()`](../crates/spinon-style-to-layout/src/projection/style_values/root_html_grid_tracks.rs)는 `fr`이 있는 축만 definite finite non-negative CSS-pixel size인지 검사한다. percentage track은 당시 이 gate를 지나가지 않았다.
 - `validate_root_html_named_area_template()`는 현재 named-area 예제를 정확한 40px/80px columns와 20px/50px rows로 제한한다. Root HTML gap gate는 기존 fixed-px gap만 받는다. 이 경로에 percentage track을 추가해도 named-area나 percentage gap은 확장하지 않는다.
 
 [CSS Grid Layout Module Level 1, 2025-03-26 CRD §7.2.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes)은 column percentage를 grid container의 inner inline size, row percentage를 inner block size 기준으로 해석한다. Container 크기가 track에 의존하면 percentage는 intrinsic sizing 동안 `auto`로 취급된 뒤 계산된 container 크기를 기준으로 layout 단계에서 resolve된다. 이번 범위는 그 cyclic/intrinsic 경로를 구현하지 않고 definite CSS-pixel axis만 허용한다.
