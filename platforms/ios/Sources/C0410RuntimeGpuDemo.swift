@@ -533,7 +533,8 @@ private func c114GenericDirectTextExpectation(
             textWidth: minContentTrack
                 ? textTransform.trackWidth : textTransform.unbrokenAdvance,
             fontFamily: "Noto Sans KR",
-            locale: c114IsFullWidthTextTransformScene(sceneID) ? "ja" : "en",
+            locale: c114IsFullWidthTextTransformScene(sceneID)
+                || c114IsFullSizeKanaTextTransformScene(sceneID) ? "ja" : "en",
             lineBreak: "Strict",
             lineAdvances: lineAdvances
         )
@@ -11303,6 +11304,7 @@ private func c114ComputedTextTransformScene(
     guard let mode = c114ComputedTextTransformStyle(sceneID) else { return nil }
     if let unicode = c114UnicodeTextTransformScene(sceneID) { return unicode }
     if let fullWidth = c114FullWidthTextTransformScene(sceneID) { return fullWidth }
+    if let fullSizeKana = c114FullSizeKanaTextTransformScene(sceneID) { return fullSizeKana }
     let minContentTrack = sceneID.hasSuffix("-min-content")
     let metrics: (Double, Double, Double, Double, Double)
     switch mode {
@@ -11363,6 +11365,99 @@ private func c114FullWidthTextTransformScene(
         )
     default:
         return nil
+    }
+}
+
+private func c114FullSizeKanaTextTransformScene(
+    _ sceneID: String
+) -> (minContent: Double, maxContent: Double, trackWidth: Double, rowHeight: Double,
+    minContentHeight: Double, firstWordAdvance: Double, secondWordAdvance: Double,
+    unbrokenAdvance: Double, layoutText: String)? {
+    let minContent: Double
+    let maxContent: Double
+    let firstWordAdvance: Double
+    let secondWordAdvance: Double
+    let unbrokenAdvance: Double
+    switch sceneID {
+    case "text-transform-full-size-kana-none-max-content",
+         "text-transform-full-size-kana-pass-through-max-content":
+        minContent = 19.03
+        maxContent = 62.37
+        unbrokenAdvance = 62.37
+        firstWordAdvance = 19.03
+        secondWordAdvance = 0
+    case "text-transform-full-size-kana-hiragana-min-content":
+        minContent = 10
+        maxContent = 20
+        firstWordAdvance = 10
+        secondWordAdvance = 10
+        unbrokenAdvance = 20
+    case "text-transform-full-size-kana-hiragana-max-content":
+        minContent = 10
+        maxContent = 100
+        unbrokenAdvance = 100
+        firstWordAdvance = 10
+        secondWordAdvance = 10
+    case "text-transform-full-size-kana-katakana-min-content":
+        minContent = 10
+        maxContent = 19.5
+        firstWordAdvance = 9.5
+        secondWordAdvance = 10
+        unbrokenAdvance = 19.5
+    case "text-transform-full-size-kana-katakana-max-content":
+        minContent = 10
+        maxContent = 99.5
+        unbrokenAdvance = 99.5
+        firstWordAdvance = 10
+        secondWordAdvance = 10
+    case "text-transform-full-size-kana-halfwidth-min-content":
+        minContent = 5
+        maxContent = 10
+        firstWordAdvance = 5
+        secondWordAdvance = 5
+        unbrokenAdvance = 10
+    case "text-transform-full-size-kana-halfwidth-max-content":
+        minContent = 5
+        maxContent = 45
+        unbrokenAdvance = 45
+        firstWordAdvance = 5
+        secondWordAdvance = 5
+    case "text-transform-full-size-kana-supplementary-min-content":
+        minContent = 10
+        maxContent = 20
+        firstWordAdvance = 10
+        secondWordAdvance = 10
+        unbrokenAdvance = 20
+    case "text-transform-full-size-kana-supplementary-max-content":
+        minContent = 10
+        maxContent = 90
+        unbrokenAdvance = 90
+        firstWordAdvance = 10
+        secondWordAdvance = 10
+    default:
+        return nil
+    }
+    let minContentTrack = sceneID.hasSuffix("-min-content")
+    return (
+        minContent: minContent, maxContent: maxContent,
+        trackWidth: minContentTrack ? minContent : maxContent,
+        rowHeight: minContentTrack ? c114FullSizeKanaMinContentHeight(sceneID) : 10,
+        minContentHeight: c114FullSizeKanaMinContentHeight(sceneID),
+        firstWordAdvance: firstWordAdvance, secondWordAdvance: secondWordAdvance,
+        unbrokenAdvance: unbrokenAdvance,
+        layoutText: c114ComputedTextTransformLayoutText(sceneID)
+    )
+}
+
+private func c114FullSizeKanaMinContentHeight(_ sceneID: String) -> Double {
+    switch sceneID {
+    case "text-transform-full-size-kana-hiragana-max-content",
+         "text-transform-full-size-kana-katakana-max-content": return 100
+    case "text-transform-full-size-kana-halfwidth-max-content",
+         "text-transform-full-size-kana-supplementary-max-content": return 90
+    case "text-transform-full-size-kana-none-max-content",
+         "text-transform-full-size-kana-pass-through-max-content": return 50
+    default: return 20
     }
 }
 
@@ -11468,15 +11563,35 @@ private func c114ComputedTextTransformStyle(_ sceneID: String) -> String? {
          "text-transform-unicode-collapsed-space-max-content": return "Capitalize"
     case "text-transform-unicode-number-first-control": return "None"
     case "text-transform-full-width-none-max-content": return "None"
+    case "text-transform-full-size-kana-none-max-content": return "None"
     case "text-transform-full-width-max-content",
         "text-transform-full-width-min-content",
         "text-transform-full-width-collapsed-spaces-max-content": return "FullWidth"
+    case "text-transform-full-size-kana-hiragana-min-content",
+        "text-transform-full-size-kana-hiragana-max-content",
+        "text-transform-full-size-kana-katakana-min-content",
+        "text-transform-full-size-kana-katakana-max-content",
+        "text-transform-full-size-kana-halfwidth-min-content",
+        "text-transform-full-size-kana-halfwidth-max-content",
+        "text-transform-full-size-kana-supplementary-min-content",
+        "text-transform-full-size-kana-supplementary-max-content",
+        "text-transform-full-size-kana-pass-through-max-content": return "FullSizeKana"
     default: return nil
     }
 }
 
 private func c114ComputedTextTransformLayoutText(_ sceneID: String) -> String {
     switch sceneID {
+    case "text-transform-full-size-kana-hiragana-min-content": return "あい"
+    case "text-transform-full-size-kana-hiragana-max-content": return "あいうえおつやゆよわ"
+    case "text-transform-full-size-kana-katakana-min-content": return "アイ"
+    case "text-transform-full-size-kana-katakana-max-content": return "アイウエオツヤユヨワ"
+    case "text-transform-full-size-kana-halfwidth-min-content": return "ｱｲ"
+    case "text-transform-full-size-kana-halfwidth-max-content": return "ｱｲｳｴｵﾂﾔﾕﾖ"
+    case "text-transform-full-size-kana-supplementary-min-content": return "こゐ"
+    case "text-transform-full-size-kana-supplementary-max-content": return "こゐゑをコヰヱヲン"
+    case "text-transform-full-size-kana-none-max-content",
+         "text-transform-full-size-kana-pass-through-max-content": return "あカンABC 12"
     case "text-transform-capitalize-none-min-content",
          "text-transform-capitalize-none-max-content": return "iiii ii"
     case "text-transform-capitalize-min-content", "text-transform-capitalize-max-content":
@@ -11508,6 +11623,16 @@ private func c114ComputedTextTransformLayoutText(_ sceneID: String) -> String {
 
 private func c114ComputedTextTransformSourceText(_ sceneID: String) -> String {
     switch sceneID {
+    case "text-transform-full-size-kana-hiragana-min-content": return "ぁぃ"
+    case "text-transform-full-size-kana-hiragana-max-content": return "ぁぃぅぇぉっゃゅょゎ"
+    case "text-transform-full-size-kana-katakana-min-content": return "ァィ"
+    case "text-transform-full-size-kana-katakana-max-content": return "ァィゥェォッャュョヮ"
+    case "text-transform-full-size-kana-halfwidth-min-content": return "ｧｨ"
+    case "text-transform-full-size-kana-halfwidth-max-content": return "ｧｨｩｪｫｯｬｭｮ"
+    case "text-transform-full-size-kana-supplementary-min-content": return "𛄲𛅐"
+    case "text-transform-full-size-kana-supplementary-max-content": return "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧"
+    case "text-transform-full-size-kana-none-max-content",
+         "text-transform-full-size-kana-pass-through-max-content": return "あカンABC 12"
     case "text-transform-capitalize-none-min-content",
          "text-transform-capitalize-none-max-content",
          "text-transform-capitalize-min-content", "text-transform-capitalize-max-content":
@@ -11546,8 +11671,13 @@ private func c114IsFullWidthTextTransformScene(_ sceneID: String) -> Bool {
     sceneID.hasPrefix("text-transform-full-width-")
 }
 
+private func c114IsFullSizeKanaTextTransformScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("text-transform-full-size-kana-")
+}
+
 private func c114TextTransformCssomTolerance(_ sceneID: String) -> Double {
     c114IsUnicodeTextTransformScene(sceneID) || c114IsFullWidthTextTransformScene(sceneID)
+        || c114IsFullSizeKanaTextTransformScene(sceneID)
         ? 0.03125 : 1.0 / 64.0
 }
 

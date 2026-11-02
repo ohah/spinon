@@ -95,9 +95,11 @@ test('C11.4 anonymous Grid text-transform stays fixed, opt-in, and source preser
 
 test('C11.4 full-size-kana runtime matrix matches the literal browser profile', async () => {
   const expectedPath = 'spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/expected-values.json';
-  const [expectedSource, ffiSource, captureSource] = await Promise.all([
+  const [expectedSource, ffiSource, androidSource, iosSource, captureSource] = await Promise.all([
     source(expectedPath),
     source('crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_text_transform.rs'),
+    source('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    source('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
     source('tools/css-reference/capture-c11-4-computed-text-transform-simulators.mjs'),
   ]);
   const expected = JSON.parse(expectedSource);
@@ -109,6 +111,8 @@ test('C11.4 full-size-kana runtime matrix matches the literal browser profile', 
   assert.ok(captureSource.includes("'full-size-kana': 'FullSizeKana'"));
   for (const scene of expected.scenes) {
     assert.ok(ffiSource.includes(scene.runtimeSceneId), `FFI scene missing ${scene.runtimeSceneId}`);
+    assert.ok(androidSource.includes(scene.runtimeSceneId), `Android fixture scene missing ${scene.runtimeSceneId}`);
+    assert.ok(iosSource.includes(scene.runtimeSceneId), `iOS fixture scene missing ${scene.runtimeSceneId}`);
     assert.ok(scene.runtimeSceneId.startsWith('text-transform-full-size-kana-'));
     assert.ok(scene.lineAdvancesPx.length > 0);
     assert.ok(Number.isFinite(scene.columnsPx) && Number.isFinite(scene.rowsPx));
