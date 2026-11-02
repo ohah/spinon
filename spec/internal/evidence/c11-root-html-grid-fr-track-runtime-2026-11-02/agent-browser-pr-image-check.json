@@ -1,0 +1,20 @@
+{
+  "url": "https://github.com/ohah/spinon/pull/1015",
+  "title": "feat(c11.1): Root HTML 제한 fr track 구현 by ohah · Pull Request #1015 · ohah/spinon",
+  "images": [
+    {
+      "alt": "Android AVD의 parsed Root HTML fr marker 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-1-root-html-grid-fr-track-20261102/spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/android/simulator.png",
+      "complete": true,
+      "width": 1080,
+      "height": 2400
+    },
+    {
+      "alt": "iOS Simulator의 parsed Root HTML fr marker 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-1-root-html-grid-fr-track-20261102/spec/internal/evidence/c11-root-html-grid-fr-track-runtime-2026-11-02/ios/simulator.png",
+      "complete": true,
+      "width": 1206,
+      "height": 2622
+    }
+  ]
+}
