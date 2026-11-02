@@ -1,0 +1,5 @@
+scene	result	root	boxes	column	column_px	row_px	trace_parts
+font-size-0-min-content	PASS	width=100,height=10	1	min-content	0	10	14
+font-size-0-max-content	PASS	width=100,height=10	1	max-content	0	10	14
+font-size-0-text-before-box	PASS	width=100,height=13	2	min-content	5	10,3	16
+font-size-0-whitespace-only	PASS	width=100,height=0	0	none		0	5

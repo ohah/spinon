@@ -233,7 +233,7 @@ impl ParagraphStyle {
         if self.font_family.trim().is_empty() {
             return Err("font-family");
         }
-        if !self.font_size.is_finite() || self.font_size <= 0.0 {
+        if !self.font_size.is_finite() || self.font_size < 0.0 {
             return Err("font-size");
         }
         if !self.line_height_is_normal && (!self.line_height.is_finite() || self.line_height < 0.0)

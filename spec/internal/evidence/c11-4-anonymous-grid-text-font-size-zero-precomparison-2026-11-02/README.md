@@ -16,9 +16,10 @@
 
 Auto-placement scene에서는 direct text가 zero inline contribution이어도 non-whitespace anonymous Grid item으로 먼저 배치된다. 다음 5×3px box가 y=10px에서 시작한다는 관측은 첫 번째 item이 첫 cell을 차지했음을 보여준다. 이 frame은 anonymous item box를 직접 관측한 값이 아니며 glyph paint도 아니다.
 
-## 구현 전 renderer 경계 확인
+## 구현 전 runtime route 확인
 
-현재 `root_html_default_render::attach`는 각 text layout을 `rasterize_glyphs`에 넘기고([호출부](../../../../crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render.rs#L304)), rasterizer는 device font size가 `<= 0`이면 `RasterFontSizeOutOfRange`를 반환한다([검사](../../../../crates/spinon-text-layout/src/engine/raster.rs#L65)). 따라서 이 계획은 text layout의 모든 run이 finite zero-size일 때 root HTML renderer가 glyph rasterization 호출을 생략하고 layout/scene publication만 유지하는 no-paint 경계를 명시한다. 신규 computed-zero admission은 C11.4 exact fixture로 제한하며, C15 `InlineRunStyle`와 rasterizer의 기존 positive-only 계약은 바뀌지 않는다. 이는 소스 정적 확인이며, 동작 수정이나 runtime 검증을 뜻하지 않는다.
+
+C11.4 fixture는 `RuntimeCalculationProfile::BlockFlexGridTrackSizing`에서 `prepare_c11_4_anonymous_text` 및 `compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs`를 사용한다([입력 dispatch](../../../../crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs#L668), [layout projection](../../../../crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs#L1051)). `root_html_default_render::prepare`는 별도 `RootHtmlDefaultRender` profile에서만 실행된다([profile dispatch](../../../../crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs#L575)). 따라서 이 C11.4 fixture 경로는 `rasterize_glyphs`를 호출하지 않는다. 이는 소스 정적 경로 확인이며 Parley zero-size 처리, runtime 동작 또는 glyph rendering 근거가 아니다.
 
 ## Chrome 관측
 

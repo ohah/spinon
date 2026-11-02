@@ -39,7 +39,7 @@ mod word_break;
 mod word_break_overflow_wrap;
 #[path = "c11_4_anonymous_text/word_spacing.rs"]
 mod word_spacing;
-use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
+use font_size::{FONT_SIZE_SCENE_IDS, FONT_SIZE_ZERO_SCENE_IDS, validate_computed_font_size};
 use hyphens::{find_scene as hyphens_scene, validate_computed_hyphens};
 use letter_spacing::{
     LETTER_SPACING_SCENE_IDS, find_scene as letter_spacing_scene, validate_computed_letter_spacing,
@@ -323,6 +323,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if !SCENE_IDS.contains(&scene_id)
         && !LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
         && !FONT_SIZE_SCENE_IDS.contains(&scene_id)
+        && !FONT_SIZE_ZERO_SCENE_IDS.contains(&scene_id)
         && !LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         && !WORD_SPACING_SCENE_IDS.contains(&scene_id)
         && !TEXT_INDENT_SCENE_IDS.contains(&scene_id)
@@ -590,6 +591,12 @@ fn validate_direct_children(
             ExpectedChild::Text("  "),
             ExpectedChild::Block("c114-anonymous-break-spaces-whitespace-before-block-item"),
         ],
+        "font-size-0-min-content" | "font-size-0-max-content" => &[ExpectedChild::Text("XX XX")],
+        "font-size-0-text-before-box" => &[
+            ExpectedChild::Text("XX"),
+            ExpectedChild::Block("c114-font-size-0-following-box"),
+        ],
+        "font-size-0-whitespace-only" => &[ExpectedChild::Text("   ")],
         scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
             let text = line_height_text(scene_id)
                 .ok_or_else(|| unsupported(root.id(), "line-height scene text missing"))?;
@@ -651,10 +658,10 @@ fn validate_direct_children(
                     return Err(unsupported(handle.id(), "block item identity"));
                 }
                 let style = style_for(styles, handle.id())?;
-                let (width, height) = if scene_id == "anonymous-runs-around-block" {
-                    (30.0, 10.0)
-                } else {
-                    (10.0, 10.0)
+                let (width, height) = match scene_id {
+                    "anonymous-runs-around-block" => (30.0, 10.0),
+                    "font-size-0-text-before-box" => (5.0, 3.0),
+                    _ => (10.0, 10.0),
                 };
                 if style.properties.get("display").map(String::as_str) != Some("block")
                     || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
@@ -799,6 +806,9 @@ fn validate_grid_style(
         match scene_id {
             "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
                 (20.0, ComputedCssDimension::Auto)
+            }
+            scene_id if FONT_SIZE_ZERO_SCENE_IDS.contains(&scene_id) => {
+                (100.0, ComputedCssDimension::Auto)
             }
             "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
                 (20.0, ComputedCssDimension::Auto)
@@ -1167,6 +1177,11 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
                     false => ComputedCssGridTrackSize::MaxContent,
                 }]
             }
+            "font-size-0-min-content" | "font-size-0-text-before-box" => {
+                vec![ComputedCssGridTrackSize::MinContent]
+            }
+            "font-size-0-max-content" => vec![ComputedCssGridTrackSize::MaxContent],
+            "font-size-0-whitespace-only" => Vec::new(),
             scene_id if LETTER_SPACING_SCENE_IDS.contains(&scene_id) => {
                 vec![
                     if letter_spacing_scene(scene_id).is_some_and(|scene| scene.is_min_content) {
@@ -1305,6 +1320,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
     let expected_rows = if full_tab_scene(scene_id).is_some()
         || LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
         || FONT_SIZE_SCENE_IDS.contains(&scene_id)
+        || FONT_SIZE_ZERO_SCENE_IDS.contains(&scene_id)
         || LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         || WORD_SPACING_SCENE_IDS.contains(&scene_id)
         || TEXT_INDENT_SCENE_IDS.contains(&scene_id)
@@ -1367,6 +1383,11 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
     } else {
         vec![ComputedCssGridTrackSize::LengthPx(10.0)]
     };
+    let columns_line_names_match = if grid.columns.is_empty() {
+        grid.columns_line_names.is_empty()
+    } else {
+        grid.columns_line_names.len() == grid.columns.len() + 1
+    };
     grid.columns == expected_columns
         && grid.rows == expected_rows
         && grid.columns_auto_repeat.is_none()
@@ -1375,7 +1396,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         && grid.auto_flow == ComputedCssGridAutoFlow::Row
         && grid.auto_rows == ComputedCssGridAutoRows::Auto
         && grid.auto_columns == ComputedCssGridAutoColumns::Auto
-        && grid.columns_line_names.len() == grid.columns.len() + 1
+        && columns_line_names_match
         && grid.rows_line_names.len() == grid.rows.len() + 1
         && grid.columns_line_names.iter().all(Vec::is_empty)
         && grid.rows_line_names.iter().all(Vec::is_empty)
@@ -1626,11 +1647,11 @@ mod tests {
     use super::super::c11_4_text::AHEM;
     use super::hyphens::{SCENES as HYPHENS_SCENES, TrackKind as HyphensTrackKind};
     use super::{
-        ComputedLineHeight, ComputedTextIndent, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS,
-        FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS,
-        FULL_TAB_LF_SECOND_LINE_WIDTHS, FULL_TAB_VALUE_IDS, LINE_BREAK_SCENES,
-        OVERFLOW_WRAP_SCENES, OverflowWrapTrackKind, SCENE_IDS, TEXT_TRANSFORM_SCENES,
-        TextIndentFlags, WORD_BREAK_OVERFLOW_WRAP_SCENES, WORD_BREAK_SCENES,
+        ComputedLineHeight, ComputedTextIndent, FONT_SIZE_SCENE_IDS, FONT_SIZE_ZERO_SCENE_IDS,
+        FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS,
+        FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS, FULL_TAB_VALUE_IDS,
+        LINE_BREAK_SCENES, OVERFLOW_WRAP_SCENES, OverflowWrapTrackKind, SCENE_IDS,
+        TEXT_TRANSFORM_SCENES, TextIndentFlags, WORD_BREAK_OVERFLOW_WRAP_SCENES, WORD_BREAK_SCENES,
         anonymous_paragraph_style, expected_overflow_wrap, expected_word_break,
         full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
         grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
@@ -2001,6 +2022,62 @@ mod tests {
     }
 
     #[test]
+    fn computed_zero_font_size_scenes_keep_exact_tracks_and_paragraph_style() {
+        assert_eq!(FONT_SIZE_ZERO_SCENE_IDS.len(), 4);
+        for (scene_id, columns) in [
+            (
+                "font-size-0-min-content",
+                vec![ComputedCssGridTrackSize::MinContent],
+            ),
+            (
+                "font-size-0-max-content",
+                vec![ComputedCssGridTrackSize::MaxContent],
+            ),
+            (
+                "font-size-0-text-before-box",
+                vec![ComputedCssGridTrackSize::MinContent],
+            ),
+            ("font-size-0-whitespace-only", Vec::new()),
+        ] {
+            assert!(
+                grid_tracks_match(
+                    &grid(columns, vec![ComputedCssGridTrackSize::Auto]),
+                    scene_id
+                ),
+                "{scene_id}: expected zero-size track profile"
+            );
+            let style = anonymous_paragraph_style(
+                scene_id,
+                TabSize::Number(8.0),
+                ComputedLineHeight::AbsolutePx(10.0),
+                0.0,
+                0.0,
+                0.0,
+                ComputedTextIndent {
+                    value: 0.0,
+                    flags: TextIndentFlags::default(),
+                },
+            );
+            assert_eq!(style.font_size, 0.0, "{scene_id}: zero font-size");
+            assert_eq!(style.line_height, 10.0, "{scene_id}: explicit line-height");
+        }
+        assert!(!grid_tracks_match(
+            &grid(
+                vec![ComputedCssGridTrackSize::LengthPx(0.0)],
+                vec![ComputedCssGridTrackSize::Auto]
+            ),
+            "font-size-0-min-content"
+        ));
+        assert!(!grid_tracks_match(
+            &grid(
+                vec![ComputedCssGridTrackSize::MinContent],
+                vec![ComputedCssGridTrackSize::LengthPx(10.0)]
+            ),
+            "font-size-0-min-content"
+        ));
+    }
+
+    #[test]
     fn computed_font_size_scales_anonymous_text_intrinsic_sizes_and_auto_height() {
         let node_id = NodeId::new(1).unwrap();
         let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -2281,7 +2358,11 @@ mod tests {
         rows: Vec<ComputedCssGridTrackSize>,
     ) -> ComputedCssGridLayout {
         ComputedCssGridLayout {
-            columns_line_names: vec![Vec::new(); columns.len() + 1],
+            columns_line_names: if columns.is_empty() {
+                Vec::new()
+            } else {
+                vec![Vec::new(); columns.len() + 1]
+            },
             rows_line_names: vec![Vec::new(); rows.len() + 1],
             columns,
             rows,

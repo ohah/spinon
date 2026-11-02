@@ -18,6 +18,13 @@ pub(super) const FONT_SIZE_SCENE_IDS: [&str; 10] = [
     "font-size-20-max-content",
 ];
 
+pub(super) const FONT_SIZE_ZERO_SCENE_IDS: [&str; 4] = [
+    "font-size-0-min-content",
+    "font-size-0-max-content",
+    "font-size-0-text-before-box",
+    "font-size-0-whitespace-only",
+];
+
 pub(super) fn validate_computed_font_size(
     style: &ComputedElementStyle,
     scene_id: &str,
@@ -56,7 +63,7 @@ fn validate_font_size(
     };
     if properties.get("font-size").map(String::as_str) != Some(expected_css)
         || !computed_font_size.is_finite()
-        || computed_font_size <= 0.0
+        || computed_font_size < 0.0
         || computed_font_size != expected
     {
         return Err(invalid());
@@ -66,6 +73,7 @@ fn validate_font_size(
 
 fn expected_font_size(scene_id: &str) -> Option<f32> {
     match scene_id {
+        scene_id if FONT_SIZE_ZERO_SCENE_IDS.contains(&scene_id) => Some(0.0),
         "font-size-5-min-content" | "font-size-5-max-content" => Some(5.0),
         "font-size-7-5-min-content" | "font-size-7-5-max-content" => Some(7.5),
         "font-size-10-min-content" | "font-size-10-max-content" => Some(10.0),
@@ -94,6 +102,7 @@ pub(super) fn font_size_css_value(scene_id: &str) -> &'static str {
 
 pub(super) fn font_size_css_value_for_px(font_size: f32) -> &'static str {
     match font_size {
+        0.0 => "0px",
         5.0 => "5px",
         7.5 => "7.5px",
         10.0 => "10px",
@@ -106,7 +115,8 @@ pub(super) fn font_size_css_value_for_px(font_size: f32) -> &'static str {
 #[cfg(test)]
 mod tests {
     use super::{
-        FONT_SIZE_SCENE_IDS, font_size_css_value, font_size_css_value_for_px, validate_font_size,
+        FONT_SIZE_SCENE_IDS, FONT_SIZE_ZERO_SCENE_IDS, font_size_css_value,
+        font_size_css_value_for_px, validate_font_size,
     };
     use spinon_core::NodeId;
     use std::collections::{BTreeMap, BTreeSet};
@@ -126,6 +136,22 @@ mod tests {
     }
 
     #[test]
+    fn zero_font_size_matrix_is_separate_and_has_exact_cssom_serialization() {
+        let unique = FONT_SIZE_ZERO_SCENE_IDS
+            .iter()
+            .copied()
+            .collect::<BTreeSet<_>>();
+        assert_eq!(FONT_SIZE_ZERO_SCENE_IDS.len(), 4);
+        assert_eq!(unique.len(), FONT_SIZE_ZERO_SCENE_IDS.len());
+        for scene_id in FONT_SIZE_ZERO_SCENE_IDS {
+            assert_eq!(font_size_css_value(scene_id), "0px");
+        }
+        assert_eq!(font_size_css_value_for_px(0.0), "0px");
+        assert_eq!(font_size_css_value_for_px(-0.0), "0px");
+        assert_eq!(font_size_css_value_for_px(-1.0), "unsupported-font-size");
+    }
+
+    #[test]
     fn computed_font_size_requires_matching_property_and_typed_value() {
         let node_id = NodeId::new(1).unwrap();
         for (scene_id, css, computed) in [
@@ -134,6 +160,10 @@ mod tests {
             ("font-size-10-min-content", "10px", 10.0),
             ("font-size-12-5-max-content", "12.5px", 12.5),
             ("font-size-20-max-content", "20px", 20.0),
+            ("font-size-0-min-content", "0px", 0.0),
+            ("font-size-0-max-content", "0px", -0.0),
+            ("font-size-0-text-before-box", "0px", 0.0),
+            ("font-size-0-whitespace-only", "0px", 0.0),
             ("anonymous-normal-min-content", "10px", 10.0),
         ] {
             let properties = BTreeMap::from([("font-size".to_owned(), css.to_owned())]);
@@ -152,6 +182,11 @@ mod tests {
             ("font-size-7-5-min-content", "7.5px", f32::INFINITY),
             ("font-size-7-5-min-content", "7.5px", 0.0),
             ("font-size-7-5-min-content", "7.5px", -1.0),
+            ("font-size-0-min-content", "0.0px", 0.0),
+            ("font-size-0-min-content", "0px", f32::EPSILON),
+            ("font-size-0-min-content", "0px", f32::NAN),
+            ("font-size-0-min-content", "0px", f32::INFINITY),
+            ("font-size-5-min-content", "5px", 0.0),
             ("font-size-6-min-content", "6px", 6.0),
             ("anonymous-normal-min-content", "20px", 20.0),
         ] {

@@ -38,3 +38,7 @@
 | 30 | AVD/iOS, default artifact, CI 또는 full C11 완료를 이미 검증했다고 읽히는가 | **통과.** Android/iOS runtime, release artifact 경계, focused tests는 구현 관문으로 남고 CI 통과나 전체 완료 주장은 없다. |
 
 **결론:** 계획 PR diff는 구현·공식 상태와 분리되어 있다. source inspection으로 발견한 zero-size raster handoff 문제를 계획에 반영했다. 아직 계획 검토이므로 runtime no-paint 동작은 구현 후 별도 20관점 review, 플랫폼 실행과 구현 PR diff 30관점 검토가 필요하다.
+
+## 병합 후 구현 route 재확인
+
+구현 branch에서 profile dispatch를 끝까지 추적한 결과, 위 28번의 no-paint 요구는 C11.4 fixture 경로에 적용되지 않는 것으로 정정했다. `BlockFlexGridTrackSizing`은 anonymous-text intrinsic projection을 선택하고 `root_html_default_render`는 별도 `RootHtmlDefaultRender` profile에서만 prepare/attach 된다. 이에 따라 구현 계획에서 no-paint renderer 변경을 제거하고, 이 fixture는 C11.4 layout/track evidence만 생성하도록 바로잡았다. 초기 계획 PR 검토 기록은 보존하며 이 정정이 zero-size text의 runtime 동작을 증명하지는 않는다.
