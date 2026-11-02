@@ -47,7 +47,9 @@ Geometry 비교 허용치는 0.02 CSS px다. `getComputedStyle().gridAutoRows`, 
 7. 구현/runtime 실패 관점 20개는 계획 관점과 다른 목록으로 검토한다. 실제 구현 PR diff는 프로젝트 규칙대로 별도의 30개 관점으로 검토한다. 결함 수정 시 영향 검증과 해당 리뷰 관점을 다시 실행한다.
 8. 병합 후 C11 plan, Root HTML Grid plan, contract 0059 `0.1.0`, `spec/STATUS.md`, public roadmap 및 Tailnet preview를 확인한다. 제한 slice만 기록하고 C11.1/C11 checkbox와 공식 `72/213`은 유지한다.
 
-## 구현 결과 · 제한 slice candidate · 2026-11-02
+## 구현 결과 · 병합된 제한 slice · PR #1047 · 2026-11-02
+
+구현 PR [#1047](https://github.com/ohah/spinon/pull/1047)은 2026-11-02T09:10:09Z Rebase and merge됐고 merge SHA는 `bc3430ac664e76a2f246bcbfc387f61121017bb6`다. GitHub PR check rollup은 비어 있었고 `main` required status checks도 설정되지 않아 CI 통과로 주장하지 않는다. 자세한 내용은 [병합 기록](../spec/internal/evidence/c11-root-html-grid-auto-row-percentage-list-runtime-2026-11-02/merge-PR1047.md)을 참조한다.
 
 기본 parsed Root HTML `grid-auto-rows`에서 direct px/percentage scalar·list를 허용하는 구현을 추가했다. CSS typed cascade → Root HTML projection → `GridContainerInput` → Taffy used geometry까지 연결했다. fixed px 표현과 기존 gap/placement 경계를 유지하며 definite 0px, 100% 초과 visible overflow, mixed list, explicit `%`/`fr` 조합을 확인했다. indefinite/math-backed height, non-auto min/max·aspect ratio, percentage gap, unsupported track, resource/f32 overflow는 실패한다.
 
