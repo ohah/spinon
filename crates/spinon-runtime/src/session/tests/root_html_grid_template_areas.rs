@@ -422,6 +422,11 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_in
     let source = PERCENTAGE_CASES[0].1;
     let cases = [
         (
+            "indefinite column percentage basis",
+            source.replace("width: 120px;", "width: auto;"),
+            Some("width"),
+        ),
+        (
             "indefinite row percentage basis",
             source.replace("height: 70px;", "height: auto;"),
             Some("height"),
@@ -432,9 +437,24 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_in
             Some("min-width"),
         ),
         (
+            "maximum width override",
+            source.replace("width: 120px;", "width: 120px; max-width: 121px;"),
+            Some("max-width"),
+        ),
+        (
+            "minimum height override",
+            source.replace("height: 70px;", "height: 70px; min-height: 0;"),
+            Some("min-height"),
+        ),
+        (
             "maximum height override",
             source.replace("height: 70px;", "height: 70px; max-height: 71px;"),
-            None,
+            Some("max-height"),
+        ),
+        (
+            "aspect ratio override",
+            source.replace("height: 70px;", "height: 70px; aspect-ratio: 2 / 1;"),
+            Some("aspect-ratio"),
         ),
         (
             "percentage gap",
@@ -447,7 +467,7 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_in
                 "grid-template-columns: 25% 75%;",
                 "grid-template-columns: calc(25% + 10px) 75%;",
             ),
-            None,
+            Some("grid-template-columns"),
         ),
         (
             "minmax track",
@@ -455,7 +475,7 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_in
                 "grid-template-columns: 25% 75%;",
                 "grid-template-columns: minmax(0px, 25%) 75%;",
             ),
-            None,
+            Some("grid-template-columns"),
         ),
         (
             "negative percentage track",
@@ -463,7 +483,7 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_in
                 "grid-template-columns: 25% 75%;",
                 "grid-template-columns: -25% 75%;",
             ),
-            None,
+            Some("grid-template-columns"),
         ),
     ];
 
@@ -483,11 +503,16 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_in
             .error
             .as_ref()
             .expect("failed case should report an error");
-        if let Some(property) = expected_property {
-            assert_eq!(
-                error.property.as_deref(),
-                Some(property),
-                "{name}; error={error:?}"
+        if let Some(property) = expected_property
+            && error.property.as_deref() != Some(property)
+        {
+            let cascade_error = session
+                .ua_cascade_snapshot()
+                .error
+                .expect("cascade failure should identify the rejected property");
+            assert!(
+                cascade_error.contains(property),
+                "{name}; expected {property}; layout={error:?}; cascade={cascade_error}"
             );
         }
     }

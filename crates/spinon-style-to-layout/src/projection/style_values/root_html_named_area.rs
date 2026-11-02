@@ -64,21 +64,37 @@ pub(super) fn validate_root_html_named_area_candidate(
             ));
         }
     }
-    if !matches!(
-        container.layout_dimensions.min_width,
-        ComputedCssDimension::Auto
-    ) || container.layout_dimensions.max_width != ComputedCssMaxSize::None
-        || !matches!(
-            container.layout_dimensions.min_height,
-            ComputedCssDimension::Auto
-        )
-        || container.layout_dimensions.max_height != ComputedCssMaxSize::None
-    {
-        return Err(unsupported(
-            owner,
+    for (property, is_default) in [
+        (
             "min-width",
-            "Root HTML named-area 제한 경로는 Grid container의 min/max 크기 제한을 허용하지 않습니다",
-        ));
+            matches!(
+                container.layout_dimensions.min_width,
+                ComputedCssDimension::Auto
+            ),
+        ),
+        (
+            "max-width",
+            container.layout_dimensions.max_width == ComputedCssMaxSize::None,
+        ),
+        (
+            "min-height",
+            matches!(
+                container.layout_dimensions.min_height,
+                ComputedCssDimension::Auto
+            ),
+        ),
+        (
+            "max-height",
+            container.layout_dimensions.max_height == ComputedCssMaxSize::None,
+        ),
+    ] {
+        if !is_default {
+            return Err(unsupported(
+                owner,
+                property,
+                "Root HTML named-area 제한 경로는 Grid container의 min/max 크기 제한을 허용하지 않습니다",
+            ));
+        }
     }
     for (property, value) in [
         ("row-gap", container.layout_spacing.row_gap),

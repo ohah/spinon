@@ -2,15 +2,17 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [parsed Root HTML percentage tracks](./c11-root-html-grid-percentage-tracks.md) · [parsed Root HTML named areas](./c11-root-html-grid-template-areas.md) · [named areas × fractional tracks](./c11-root-html-grid-fr-named-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**현재 상태:** four-case Chrome 156 사전 비교와 독립 기대값을 고정했다. 현재 기본 Root HTML projection은 named area와 percentage track의 조합을 `grid-template-areas`에서 거부한다. 구현은 시작하지 않았다. 이 계획 및 구현 slice만으로 C11.1/C11 완료, 일반 CSS Grid 지원 또는 공식 `72/213` 집계를 바꾸지 않는다.
+**현재 상태:** bounded projection/runtime 구현과 Chrome 156 사전 비교가 끝났다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 네 percentage named-area source를 각각 실행해 4/4 scene `layout=ready`와 draw/present, 화면 캡처를 확인했다. 구현 commit [`1e73158`](https://github.com/ohah/spinon/commit/1e73158e945f2a9aa6d8b16718435d3a6497cc51) 이후 검토에서 min/max 위반 진단을 실제 속성으로 고치는 수정이 더해졌다. PR 병합 전 후보이며 이 slice로 C11.1/C11 완료, 일반 CSS Grid 지원 또는 공식 `72/213` 집계를 바꾸지 않는다. [실행 근거](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/implementation-runtime-review-20.md).
 
 **사전 비교:** [Chrome observation과 독립 계산](../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/README.md) · [expected.json](../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/expected.json) · [SHA-256 manifest](../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/hashes.txt)
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-area-percentage-plan-review-20.md) · **계획 PR diff 검토:** [20개](../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/plan-pr-diff-review-20.md)
 
-## 현재 결손
+## 해결한 결손과 남은 제한
 
-`RuntimeRootHtmlTextPaintV1` 기본 parsed Root HTML route는 direct percentage track을 definite-axis 조건으로 처리하고, 고정 `grid-template-areas` map도 별도 제한 slice로 처리한다. [`validate_root_html_named_area_template()`](../crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs)는 named-area route에서 고정 `40px 80px` columns + `20px 50px` rows 또는 기존 양축 `1fr 2fr` 조합만 받는다. 따라서 `25% 75%` named-area 입력은 `grid-template-areas` 진단으로 거부된다. 현재 동작은 focused projection test [`root_html_named_area_profile_still_rejects_percentage_tracks`](../crates/spinon-style-to-layout/src/projection/style_values/grid_values/root_html_grid_track_tests.rs) 1/1로 재확인했다.
+기본 parsed Root HTML named-area route는 이제 정확한 2-track columns/rows, 기존 `header/header`·`side/content` rectangle map 및 세 semantic item을 유지하면서 finite non-negative direct `px`/`%` 조합을 받는다. 각 축에 percentage basis가 필요할 때 definite CSS-pixel width/height를 검증하고, `min-size:auto`, `max-size:none`, `aspect-ratio` 미지정과 finite f32 track/aggregate 범위를 유지한다. `fr`+`%`, 다른 area map, 계산식·intrinsic·implicit track은 계속 거부한다. 네 positive scene과 제한 rejection matrix는 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md)에 있다.
+
+후속 검토에서 named-area candidate의 네 min/max 조건이 모두 `min-width` 오류로 보고되던 진단 결함을 수정했다. 네 조건은 각각 실제 속성을 반환하고, runtime test는 cascade diagnostic 또는 computed-value diagnostic에서 위반 속성이 드러나는지 검사한다.
 
 ## 독립 기준과 고정 입력
 
@@ -38,15 +40,15 @@ The independent values are recorded in [`expected.json`](../spec/internal/eviden
 - Do not clamp finite percentages to 100%. The overflow case must retain the `[144,12]` columns and place the blue content item at x=144px outside the 120px root. Do not clip or clamp that frame in layout or screenshot processing.
 - Keep invalid/unlisted values, indefinite/cyclic percentage axes, computed min/max/aspect-ratio overrides, `calc()`, `minmax()`, `fit-content()`, `repeat()`, named lines, unsupported area maps, missing/duplicate area items, child mutation and stale revisions fail-closed before publishing a partial scene.
 
-## 구현 및 검증 관문
+## 수락 기준과 구현 결과
 
-1. Add the four fixed source pages and expected geometry to the Root HTML focused runtime/projection matrix. Assert the exact computed area map, direct track values, definite basis, root/item identity and same document/style/layout revision. Compare tracks and frames at 0.02 CSS px tolerance.
-2. Keep failure controls for indefinite width/height, percentage plus named-area `fr`, `calc()`/`minmax()`, percentage gap, min/max/aspect-ratio override, invalid area dimension/name/item topology, CSS-invalid negative percentage declarations, stale revision and track-range overflow. Every rejection must identify the property and leave no partial layout/frame/draw result.
-3. Re-run the existing fixed-px named-area and named-area `1fr 2fr` regressions, Root HTML percentage-track matrix, Root HTML base/gap/implicit-row regressions, and C11.3.3 area matrix. Keep all other computed-style profiles unchanged.
-4. Run the default Root HTML source on Android API 37 ARM64 AVD and iPhone 17 Pro/iOS 26.2 Simulator for the positive percentage scenes. Bind both runs to the same committed source hash; record computed tracks, root/item frames, revisions, layout readiness, draw/present, build hashes and screenshots. The overflow screenshot must visibly preserve item content outside the 120px root. Describe AVD as software-rendered and Simulator captures as visual evidence; do not claim PixelCopy/Metal pixel equality or physical-device/hardware-GPU results unless separately measured.
-5. Run focused Rust/projection/runtime checks, `cargo fmt --all -- --check`, scoped Clippy, Android/iOS Simulator builds, and the applicable default/fixture archive boundary checks. Separate related baseline failures and unrun gates from candidate results.
-6. Review implementation/runtime with 20 new failure perspectives. Review the actual implementation PR diff with 20 independent perspectives as requested by the user. Recheck affected perspectives after any corrections.
-7. After implementation merge, update this plan, `plan/c11-css-grid.md`, `plan/c11-root-html-grid-runtime.md`, internal contract 0059, and `spec/STATUS.md` with exact scope, merge SHA, runtime evidence and limits. Keep C11.1/C11 and official `72/213` unchanged.
+1. Four fixed source pages and independent expected geometry are in the Root HTML projection/runtime matrix. Tests assert area map, typed tracks, definite basis, root/item frames and same revision; tolerance is 0.02 CSS px.
+2. Rejection coverage includes indefinite axes, `%` plus named-area `fr`, `calc()`/`minmax()`, percentage gap, all four min/max overrides, aspect-ratio, negative percentage and no-partial-publication. Existing Root HTML percentage tests cover f32 range overflow. Existing area topology and stale revision regressions remain enabled.
+3. named-area percentage runtime positive 행렬은 4/4이고 제한 rejection matrix도 통과했다. fixed-px 및 양축 `1fr 2fr` named-area 회귀, Root HTML Grid 24/24, Root HTML projection 15/15, C11.3.3 projection 26/26, scoped Clippy와 rustfmt가 통과했다. geometry test와 명령 출력은 runtime evidence에서 확인할 수 있다.
+4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source commit의 네 positive scene을 실행했고 scene별 HTML hash가 일치한다. 두 환경 모두 layout ready와 draw/present를 기록했다. root/item frame은 app log나 screenshot 추정이 아니라 Rust snapshot 검사로 확인했다. Android는 SwiftShader이며 PixelCopy, iOS Metal/compositor pixel readback은 실행하지 않았다. Android overflow 장면의 APK hash는 당시 저장하지 못한 점을 기록했다.
+5. Android/iOS Simulator 빌드가 성공했다. FFI 심볼, fixture adapter, fixture scene ID, 제품 ABI 또는 fixture payload를 바꾸지 않아 fixture archive-boundary 재빌드는 해당되지 않는다. Android Gradle compileSdk 및 iOS duplicate-symbol/dSYM/AppIntents 경고는 build log에 보존했다.
+6. [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/implementation-runtime-review-20.md) 검토에서 발견한 min/max 진단 오류를 수정하고 관련 property assertions를 재검사했다. 실제 PR diff의 독립 검토는 PR 준비 후 별도 30개로 기록한다.
+7. 이 계획, 상위 C11 계획, Root HTML runtime 계획, 내부 계약 0059와 상태 대장에 후보 근거를 연결했다. PR merge SHA는 병합 뒤 추가한다. C11.1/C11 및 공식 `72/213`은 그대로다.
 
 ## 이 slice로 완료를 주장하지 않는 범위
 
