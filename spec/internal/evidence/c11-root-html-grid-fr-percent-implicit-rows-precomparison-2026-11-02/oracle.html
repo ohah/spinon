@@ -1,0 +1,32 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11 Root HTML explicit track and implicit row composition oracle</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 12px sans-serif; }
+  .scene { margin: 0 0 12px; }
+  .grid { display: grid; grid-auto-flow: row; grid-auto-rows: 15px; gap: 0; align-content: normal; overflow: visible; }
+  .item { width: 10px; height: 10px; background: #2463eb; }
+  #fraction-columns { width: 120px; height: 35px; grid-template-columns: 1fr 2fr; grid-template-rows: 20px; }
+  #percentage-columns { width: 120px; height: 40px; grid-template-columns: 25% 75%; grid-template-rows: 20px; gap: 5px; }
+  #percentage-columns > :nth-child(2) { width: 100px; }
+  #fraction-rows { width: 120px; height: 60px; grid-template-columns: 120px; grid-template-rows: 1fr 2fr; }
+  #percentage-rows { width: 120px; height: 80px; grid-template-columns: 120px; grid-template-rows: 25% 25%; }
+</style>
+<section class="scene">
+  <div>fraction columns + fixed implicit row</div>
+  <div class="grid" id="fraction-columns"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+</section>
+<section class="scene">
+  <div>percentage columns + fixed implicit row</div>
+  <div class="grid" id="percentage-columns"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+</section>
+<section class="scene">
+  <div>fraction rows + fixed implicit row</div>
+  <div class="grid" id="fraction-rows"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+</section>
+<section class="scene">
+  <div>percentage rows + fixed implicit row</div>
+  <div class="grid" id="percentage-rows"><div class="item"></div><div class="item"></div><div class="item"></div></div>
+</section>

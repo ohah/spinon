@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "file": "oracle.html",
+    "sha256": "de9446c778deb6b5bd73697a25306491313f9945a94c04e47ddd9621589375e6"
+  },
+  "oracle": {
+    "browser": "HeadlessChrome 156",
+    "screenshot": "chrome156-agent-browser.png",
+    "screenshotSha256": "63b203ae125ee9acc40aeae4c0f14b08c3edc54826f0ca4967991670f42dd0b5"
+  },
+  "scenes": [
+    {
+      "id": "fraction-columns",
+      "root": [120, 35],
+      "autoFlow": "row",
+      "autoRowsPx": 15,
+      "columnGapPx": 0,
+      "rowGapPx": 0,
+      "explicitColumnsCss": "1fr 2fr",
+      "explicitColumnsPx": [40, 80],
+      "explicitRowsPx": [20],
+      "implicitRowsPx": [15],
+      "itemFramesRootRelative": [[0, 0, 10, 10], [40, 0, 10, 10], [0, 20, 10, 10]]
+    },
+    {
+      "id": "percentage-columns",
+      "root": [120, 40],
+      "autoFlow": "row",
+      "autoRowsPx": 15,
+      "columnGapPx": 5,
+      "rowGapPx": 5,
+      "explicitColumnsCss": "25% 75%",
+      "explicitColumnsPx": [30, 90],
+      "explicitRowsPx": [20],
+      "implicitRowsPx": [15],
+      "itemFramesRootRelative": [[0, 0, 10, 10], [35, 0, 100, 10], [0, 25, 10, 10]],
+      "itemOverflowRightPx": 15
+    },
+    {
+      "id": "fraction-rows",
+      "root": [120, 60],
+      "autoFlow": "row",
+      "autoRowsPx": 15,
+      "columnGapPx": 0,
+      "rowGapPx": 0,
+      "explicitColumnsPx": [120],
+      "explicitRowsCss": "1fr 2fr",
+      "explicitRowsPx": [15, 30],
+      "implicitRowsPx": [15],
+      "itemFramesRootRelative": [[0, 0, 10, 10], [0, 15, 10, 10], [0, 45, 10, 10]]
+    },
+    {
+      "id": "percentage-rows",
+      "root": [120, 80],
+      "autoFlow": "row",
+      "autoRowsPx": 15,
+      "columnGapPx": 0,
+      "rowGapPx": 0,
+      "explicitColumnsPx": [120],
+      "explicitRowsCss": "25% 25%",
+      "explicitRowsPx": [20, 20],
+      "implicitRowsPx": [15],
+      "itemFramesRootRelative": [[0, 0, 10, 10], [0, 20, 10, 10], [0, 40, 10, 10]],
+      "remainingBlockFreeSpacePx": 25
+    }
+  ]
+}

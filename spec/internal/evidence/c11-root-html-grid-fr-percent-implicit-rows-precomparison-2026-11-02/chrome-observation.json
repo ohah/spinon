@@ -1,0 +1,48 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": { "width": 1280, "height": 633, "scrollWidth": 1280 }
+  },
+  "scenes": [
+    {
+      "id": "fraction-columns",
+      "columns": "40px 80px",
+      "rows": "20px 15px",
+      "columnGap": "0px",
+      "rowGap": "0px",
+      "autoRows": "15px",
+      "rootViewportRect": [0, 15, 120, 35],
+      "itemsRootRelative": [[0, 0, 10, 10], [40, 0, 10, 10], [0, 20, 10, 10]]
+    },
+    {
+      "id": "percentage-columns",
+      "columns": "30px 90px",
+      "rows": "20px 15px",
+      "columnGap": "5px",
+      "rowGap": "5px",
+      "autoRows": "15px",
+      "rootViewportRect": [0, 77, 120, 40],
+      "itemsRootRelative": [[0, 0, 10, 10], [35, 0, 100, 10], [0, 25, 10, 10]]
+    },
+    {
+      "id": "fraction-rows",
+      "columns": "120px",
+      "rows": "15px 30px 15px",
+      "columnGap": "0px",
+      "rowGap": "0px",
+      "autoRows": "15px",
+      "rootViewportRect": [0, 144, 120, 60],
+      "itemsRootRelative": [[0, 0, 10, 10], [0, 15, 10, 10], [0, 45, 10, 10]]
+    },
+    {
+      "id": "percentage-rows",
+      "columns": "120px",
+      "rows": "20px 20px 15px",
+      "columnGap": "0px",
+      "rowGap": "0px",
+      "autoRows": "15px",
+      "rootViewportRect": [0, 231, 120, 80],
+      "itemsRootRelative": [[0, 0, 10, 10], [0, 20, 10, 10], [0, 40, 10, 10]]
+    }
+  ]
+}
