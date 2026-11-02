@@ -1,0 +1,43 @@
+{
+  "c04": [
+    {
+      "checked": false,
+      "title": "앱 루트 HTML과 문서 환경 metadata"
+    },
+    {
+      "checked": false,
+      "title": "기본 root HTML 초기 page-scale runtime mapping (PR #388 병합)"
+    },
+    {
+      "checked": false,
+      "title": "파싱 루트 HTML Block scene 연결"
+    },
+    {
+      "checked": false,
+      "title": "파싱 루트 HTML direct text glyph paint"
+    },
+    {
+      "checked": false,
+      "title": "초기 visual viewport와 CSS layout viewport 분리"
+    },
+    {
+      "checked": false,
+      "title": "초기 page-scale WGPU scene mapping"
+    },
+    {
+      "checked": false,
+      "title": "구현 중 · 기본 root HTML runtime 렌더링"
+    }
+  ],
+  "c06": [
+    {
+      "checked": false,
+      "key": "C06.6",
+      "title": "Viewport·container units"
+    }
+  ],
+  "checked": 72,
+  "counter": "213개 표시 · 공식 완료 72/213",
+  "status": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 133개 + ID 없는 하위 체크 2개 · 완료 72/213개 · 마지막 확인 오전 7:14:50",
+  "total": 213
+}
