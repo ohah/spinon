@@ -1,6 +1,6 @@
 # C11.4 anonymous Grid text `font-size: 0` implementation PR diff review 30
 
-**검토 범위:** 구현 후보의 staged diff, runtime evidence, plan/internal contract/STATUS 변경. 앞서 작성한 구현/runtime 실패 관점 20개와 겹치지 않도록 PR 제출 경계와 교차 파일 계약을 별도로 확인했다. 현재 리뷰 시점에는 PR 생성 전 candidate diff다.
+**검토 범위:** 구현 후보의 staged diff, runtime evidence, plan/internal contract/STATUS 변경. 앞서 작성한 구현/runtime 실패 관점 20개와 겹치지 않도록 PR 제출 경계와 교차 파일 계약을 별도로 확인했다. 대상 PR은 [#1052](https://github.com/ohah/spinon/pull/1052)이며 첫 review 대상 commit은 `4ff95391d5ff0d7310742df4f311877237bed376`이다.
 
 | # | 독립 검토 관점 | 판정 |
 |---:|---|---|

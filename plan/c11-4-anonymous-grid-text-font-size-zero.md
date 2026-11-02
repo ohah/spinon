@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [기존 computed font-size slice](./c11-4-anonymous-grid-text-computed-font-size.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 PR [#1051](https://github.com/ohah/spinon/pull/1051)이 `origin/main`에 병합됐다. 제한 구현 후보와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증은 완료했고, default/fixture-test static archive 경계도 확인했다. 현재 구현 PR 전 단계이며 C11.4/C11 공식 상태는 바꾸지 않았다.
+**상태:** 계획 PR [#1051](https://github.com/ohah/spinon/pull/1051)이 `origin/main`에 병합됐다. 제한 구현 후보와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증은 완료했고, default/fixture-test static archive 경계도 확인했다. 구현 PR [#1052](https://github.com/ohah/spinon/pull/1052)이 열려 있다. check run은 보고되지 않았고 `main` required status checks도 설정되어 있지 않다. C11.4/C11 공식 상태는 바꾸지 않았다.
 
 ## 목적과 범위
 
