@@ -1,0 +1,215 @@
+{
+  "sourceHead": "afb68887e4b2882c5d05487196020b5e6865e1e3",
+  "sourceTree": "522777b7c9d00cde5d3ccf0a4a2df7da17ef866b",
+  "selectedRouteCount": 138,
+  "backupAndCopy": {
+    "created": 70,
+    "replaced": 30,
+    "identical": 38
+  },
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "checkedRouteCount": 11,
+  "checks": [
+    {
+      "route": "roadmap.html",
+      "expectedSha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 522608,
+          "sha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 522608,
+          "sha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297"
+        }
+      ]
+    },
+    {
+      "route": "STATUS.html",
+      "expectedSha256": "91e6587b26636ba43a9891e69cbb213bbb111f1cdde2fbf2043d87ea1418274b",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 777618,
+          "sha256": "91e6587b26636ba43a9891e69cbb213bbb111f1cdde2fbf2043d87ea1418274b"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 777618,
+          "sha256": "91e6587b26636ba43a9891e69cbb213bbb111f1cdde2fbf2043d87ea1418274b"
+        }
+      ]
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "expectedSha256": "15b5229ac07d18b9fab7e9d85dda7fde98e29cd069ba433ebb54c6fa3b253bc9",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 134129,
+          "sha256": "15b5229ac07d18b9fab7e9d85dda7fde98e29cd069ba433ebb54c6fa3b253bc9"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 134129,
+          "sha256": "15b5229ac07d18b9fab7e9d85dda7fde98e29cd069ba433ebb54c6fa3b253bc9"
+        }
+      ]
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-fr-implicit-columns.html",
+      "expectedSha256": "b9ca108da177f979ce23008bf5ec997e88379dfbc38395c745ffbeae727964b0",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 47718,
+          "sha256": "b9ca108da177f979ce23008bf5ec997e88379dfbc38395c745ffbeae727964b0"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 47718,
+          "sha256": "b9ca108da177f979ce23008bf5ec997e88379dfbc38395c745ffbeae727964b0"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/README.html",
+      "expectedSha256": "09371c7cdc04636e552d16699e765e9519332d997d7443fa8e3fe950a2a917f2",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 36127,
+          "sha256": "09371c7cdc04636e552d16699e765e9519332d997d7443fa8e3fe950a2a917f2"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 36127,
+          "sha256": "09371c7cdc04636e552d16699e765e9519332d997d7443fa8e3fe950a2a917f2"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/README.html",
+      "expectedSha256": "1f42124a83572ca393200d41f94b1fc3b0a0b0a309f6f58de36752ba802ffaee",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 41320,
+          "sha256": "1f42124a83572ca393200d41f94b1fc3b0a0b0a309f6f58de36752ba802ffaee"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 41320,
+          "sha256": "1f42124a83572ca393200d41f94b1fc3b0a0b0a309f6f58de36752ba802ffaee"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/merge-PR1066.html",
+      "expectedSha256": "3e49e484a3fd1749b8ac4da54f7030f58c94ba23c0f7dde1314e96e3f31a7347",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 34568,
+          "sha256": "3e49e484a3fd1749b8ac4da54f7030f58c94ba23c0f7dde1314e96e3f31a7347"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 34568,
+          "sha256": "3e49e484a3fd1749b8ac4da54f7030f58c94ba23c0f7dde1314e96e3f31a7347"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "expectedSha256": "ef8756eac56b6cf92cf9267ae3295110ecda7ec134a68d614791c7a6c2aa10ca",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 44196,
+          "sha256": "ef8756eac56b6cf92cf9267ae3295110ecda7ec134a68d614791c7a6c2aa10ca"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 44196,
+          "sha256": "ef8756eac56b6cf92cf9267ae3295110ecda7ec134a68d614791c7a6c2aa10ca"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "expectedSha256": "66f06e5a5863d4f56eb135479dccff9b2353cc764c8a1a0f01b7062ad4dd680b",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 68951,
+          "sha256": "66f06e5a5863d4f56eb135479dccff9b2353cc764c8a1a0f01b7062ad4dd680b"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 68951,
+          "sha256": "66f06e5a5863d4f56eb135479dccff9b2353cc764c8a1a0f01b7062ad4dd680b"
+        }
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "expectedSha256": "1a0f8a185501937f750462f6eaa6f3ecd4e2052c2803f83b51f7206496ccd82e",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 135788,
+          "sha256": "1a0f8a185501937f750462f6eaa6f3ecd4e2052c2803f83b51f7206496ccd82e"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 135788,
+          "sha256": "1a0f8a185501937f750462f6eaa6f3ecd4e2052c2803f83b51f7206496ccd82e"
+        }
+      ]
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "expectedSha256": "b74fc0522173c69f6dc8d1a329b3a25bf11432eeda89d817c7b9f546054fd603",
+      "results": [
+        {
+          "origin": "local",
+          "status": 200,
+          "bytes": 532564,
+          "sha256": "b74fc0522173c69f6dc8d1a329b3a25bf11432eeda89d817c7b9f546054fd603"
+        },
+        {
+          "origin": "tailnet",
+          "status": 200,
+          "bytes": 532564,
+          "sha256": "b74fc0522173c69f6dc8d1a329b3a25bf11432eeda89d817c7b9f546054fd603"
+        }
+      ]
+    }
+  ],
+  "roadmapContainsMergeAndCount": true,
+  "noDeletes": true
+}

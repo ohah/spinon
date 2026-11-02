@@ -1,0 +1,1419 @@
+{
+  "sourceHead": "afb68887e4b2882c5d05487196020b5e6865e1e3",
+  "sourceTree": "522777b7c9d00cde5d3ccf0a4a2df7da17ef866b",
+  "backendState": "Running",
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 520698,
+  "localRoadmapSha256": "d17969003b928e3d61673d8f977baea2cc9bf844b8fe5783dbf27c647bd18c52",
+  "selectedRouteCount": 138,
+  "selectedBytes": 14196035,
+  "counts": {
+    "create": 70,
+    "replace": 30,
+    "same": 38
+  },
+  "routesWithPreExistingReaders": [
+    {
+      "route": "roadmap.html",
+      "pids": [
+        28040
+      ]
+    },
+    {
+      "route": "STATUS.html",
+      "pids": [
+        28040
+      ]
+    }
+  ],
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1067-2026-11-03/pass01",
+  "replacementPolicy": "Back up prior bytes and atomically rename a same-directory temporary file. Open readers retain their old inode; no existing route is truncated in place and no route is removed.",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 532564,
+      "sourceSha256": "b74fc0522173c69f6dc8d1a329b3a25bf11432eeda89d817c7b9f546054fd603",
+      "targetExists": true,
+      "targetBytes": 531697,
+      "targetSha256": "94afd4fb279408ebee88786b8fe79b61eaa4e790c791d922ad490243b46c800f",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 367999,
+      "sourceSha256": "d2ccc5788b4debb6366a02912f14d479c1708cc46b966c3878702dc0bd43f76e",
+      "targetExists": true,
+      "targetBytes": 365377,
+      "targetSha256": "cd1bb24a4e943c4d165cee52c02bd7fcea722650b1e6dcaa6bc289cdb96cd068",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 8317,
+      "sourceSha256": "12391b9e31012e08f35af40269c2c41c51a192e1a0f5d05bb98fbf553fc43877",
+      "targetExists": true,
+      "targetBytes": 8317,
+      "targetSha256": "12391b9e31012e08f35af40269c2c41c51a192e1a0f5d05bb98fbf553fc43877",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/chrome156-overview.png",
+      "action": "same",
+      "sourceBytes": 15320,
+      "sourceSha256": "a9ad7d414169b3bcca3348a0c9c8681686e8a43d8b75dc85fbf48df4590c3310",
+      "targetExists": true,
+      "targetBytes": 15320,
+      "targetSha256": "a9ad7d414169b3bcca3348a0c9c8681686e8a43d8b75dc85fbf48df4590c3310",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/expected.json",
+      "action": "same",
+      "sourceBytes": 3191,
+      "sourceSha256": "4d295c8ded384df5bd9a44a298bf83b30ec9988033de643f88a16f0c1aa3d893",
+      "targetExists": true,
+      "targetBytes": 3191,
+      "targetSha256": "4d295c8ded384df5bd9a44a298bf83b30ec9988033de643f88a16f0c1aa3d893",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 39863,
+      "sourceSha256": "357b9d5b1790e8453978457e66726fb704ada6c892f7ae8b2beb771273f6f1d9",
+      "targetExists": true,
+      "targetBytes": 42781,
+      "targetSha256": "cd275e7924dcc9ff5a24b255a011033a7a3e4ee9dacefb4c7d3a0528268108d0",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 5500,
+      "sourceSha256": "369c6a2b4e7627a45b58e3efcdae5cf7c67084edba6cba4a35f774586b17d126",
+      "targetExists": true,
+      "targetBytes": 5500,
+      "targetSha256": "369c6a2b4e7627a45b58e3efcdae5cf7c67084edba6cba4a35f774586b17d126",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/README.html",
+      "action": "replace",
+      "sourceBytes": 36127,
+      "sourceSha256": "09371c7cdc04636e552d16699e765e9519332d997d7443fa8e3fe950a2a917f2",
+      "targetExists": true,
+      "targetBytes": 39006,
+      "targetSha256": "94e40455f32c27d992e0375d8c4ce2826db033fe277994d00b2d63ea25252da8",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/README.md",
+      "action": "same",
+      "sourceBytes": 2957,
+      "sourceSha256": "4c4aa613cadb89ea0c68f59669c922adf6fe23d0cec4cbd49ca9ccebd0836b04",
+      "targetExists": true,
+      "targetBytes": 2957,
+      "targetSha256": "4c4aa613cadb89ea0c68f59669c922adf6fe23d0cec4cbd49ca9ccebd0836b04",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "action": "create",
+      "sourceBytes": 2846,
+      "sourceSha256": "4112314a59c8ab03b0458a3d1e54e6d527edfa0eccae7c516a152b3b6e8f3ef2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "action": "create",
+      "sourceBytes": 68951,
+      "sourceSha256": "66f06e5a5863d4f56eb135479dccff9b2353cc764c8a1a0f01b7062ad4dd680b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/initial-nested-grid-failure.log",
+      "action": "create",
+      "sourceBytes": 1060,
+      "sourceSha256": "0e41b2f3e48d512e2018a2d302aff835f3185ea6be8a62cfad15206cb1fddb57",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/initial-nested-grid-failure.png",
+      "action": "create",
+      "sourceBytes": 77589,
+      "sourceSha256": "df65f9b6879036356a1721dc179dd4459adebdb6d9424ef3ae4dafa89e6b6c31",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 40064,
+      "sourceSha256": "f3f652aad7d25538c21cba465631b747e7159bd41181b7dab28bf05760e10779",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 5974,
+      "sourceSha256": "e6321ac1c47514a8f881e603c653dd3e6efe28e58c40367d0a4a5296cf1a2ca3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "action": "create",
+      "sourceBytes": 5914,
+      "sourceSha256": "865f988cf87463b7b2ea464738dbea2524503cb7bdafa84248149dcb76822755",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "action": "create",
+      "sourceBytes": 135788,
+      "sourceSha256": "1a0f8a185501937f750462f6eaa6f3ecd4e2052c2803f83b51f7206496ccd82e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/merge-PR1066.html",
+      "action": "create",
+      "sourceBytes": 34568,
+      "sourceSha256": "3e49e484a3fd1749b8ac4da54f7030f58c94ba23c0f7dde1314e96e3f31a7347",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/merge-PR1066.md",
+      "action": "create",
+      "sourceBytes": 1034,
+      "sourceSha256": "8ef0c0a08be385c4eaaddd83bbdc9aba333b79347ef08eb6fe00e0bf6cf263e7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 40151,
+      "sourceSha256": "4ffe02a8c1bd9809499fa863a1ac85e339b6b7dc36406baaf2462a9dee0361a6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 5611,
+      "sourceSha256": "94cbc5e6c059ee4866dc64e6c7b8952d1971809723221795df210f5fbbde7510",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 41320,
+      "sourceSha256": "1f42124a83572ca393200d41f94b1fc3b0a0b0a309f6f58de36752ba802ffaee",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 5490,
+      "sourceSha256": "eaaf76eecdee746b82aab3922cec76cb0b415675b0650314516cf6254192ec16",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 44196,
+      "sourceSha256": "ef8756eac56b6cf92cf9267ae3295110ecda7ec134a68d614791c7a6c2aa10ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/roadmap-postmerge-docs-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 4339,
+      "sourceSha256": "68ea771c3526b88ac4f170a6036ff7d52665865233a0ebecfe3d234c7b747bb5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 134129,
+      "sourceSha256": "15b5229ac07d18b9fab7e9d85dda7fde98e29cd069ba433ebb54c6fa3b253bc9",
+      "targetExists": true,
+      "targetBytes": 135504,
+      "targetSha256": "edf9f6bcfcb4bd380b99e0c9a3e2970e52220829b46608ad64ef5a6f40dd658b",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "action": "replace",
+      "sourceBytes": 58009,
+      "sourceSha256": "551882d3b54002007f68a4cf84999ad08301fb1e8017c665d1b17ed678784407",
+      "targetExists": true,
+      "targetBytes": 57398,
+      "targetSha256": "f2dc450ecef770fc4e6fb593bb0bdb4f687d4ed8111ca855ce5eb4b09b65bb45",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-fr-implicit-columns-plan-review-20.html",
+      "action": "replace",
+      "sourceBytes": 37798,
+      "sourceSha256": "2a1fcf2fcb867ae8f60e69053e369053ce64efc9265585d9ad388cb7ff0e1dfe",
+      "targetExists": true,
+      "targetBytes": 40716,
+      "targetSha256": "640939935e20975743203ef352cac434c1057e9dc5936cced0a5601c9feedea8",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-fr-implicit-columns-plan-review-20.md",
+      "action": "same",
+      "sourceBytes": 4314,
+      "sourceSha256": "4ca7599b5055010bfa0351895806b72191297d94ef53693b7f4b7443bdd916ce",
+      "targetExists": true,
+      "targetBytes": 4314,
+      "targetSha256": "4ca7599b5055010bfa0351895806b72191297d94ef53693b7f4b7443bdd916ce",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-fr-implicit-columns.html",
+      "action": "replace",
+      "sourceBytes": 47718,
+      "sourceSha256": "b9ca108da177f979ce23008bf5ec997e88379dfbc38395c745ffbeae727964b0",
+      "targetExists": true,
+      "targetBytes": 49584,
+      "targetSha256": "e6bfa7efddaea1d2850ebdaf52b2fc2450f1fd5f31c684f60d968fc7b9b8ce9d",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-fr-implicit-columns.md",
+      "action": "replace",
+      "sourceBytes": 10992,
+      "sourceSha256": "8e9c4522790a93e64e8e45c6063895c69c09329a674b992b66e5475e8094b9fe",
+      "targetExists": true,
+      "targetBytes": 10655,
+      "targetSha256": "c4e4a57b6eac28d8955f27eb3507c9798a4557bec8a42fd7f6112af6cc53fc3b",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-implicit-columns.html",
+      "action": "replace",
+      "sourceBytes": 48664,
+      "sourceSha256": "4efa443cb20d6e44d08d42bc5b6a902b8c0ef21cb12b600d17d87e0c9de451b5",
+      "targetExists": true,
+      "targetBytes": 51570,
+      "targetSha256": "72583bae318c78e53daff6c4606ab1e494ab6bf9264b7ae8a550d9037c178bba",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-implicit-columns.md",
+      "action": "same",
+      "sourceBytes": 10774,
+      "sourceSha256": "4c8436eb33474bac25d9faea90f9d9476ed67096c103a90ac6ed00f02b5d0d50",
+      "targetExists": true,
+      "targetBytes": 10774,
+      "targetSha256": "4c8436eb33474bac25d9faea90f9d9476ed67096c103a90ac6ed00f02b5d0d50",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-percent-implicit-columns.html",
+      "action": "replace",
+      "sourceBytes": 45742,
+      "sourceSha256": "fa613fbeaf06c4c726e615ddb9a5a6f0950752cd1428a116f4096614c6c043cb",
+      "targetExists": true,
+      "targetBytes": 48650,
+      "targetSha256": "f114209bc30d528df002979e08bec990a06b67866e0a4dec3d42d48a7c086967",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-percent-implicit-columns.md",
+      "action": "same",
+      "sourceBytes": 9602,
+      "sourceSha256": "6bd59cf53cf80d6f4c788923b31c1a48c2d4dcf9fd00a7406e495fe26b621605",
+      "targetExists": true,
+      "targetBytes": 9602,
+      "targetSha256": "6bd59cf53cf80d6f4c788923b31c1a48c2d4dcf9fd00a7406e495fe26b621605",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow.html",
+      "action": "replace",
+      "sourceBytes": 47820,
+      "sourceSha256": "4453cea2977f42fd774f312b08d5a3c2d82a31af73549033724b96bc2da21354",
+      "targetExists": true,
+      "targetBytes": 41011,
+      "targetSha256": "1b15543807ebc7daf3f0a55a167919e4458bc7e290dedc74aa0da8ffb5bc7d78",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow.md",
+      "action": "same",
+      "sourceBytes": 9797,
+      "sourceSha256": "9159985d0286b8ea4348ec76e862ad32236e923e0df7a7542481db107b22f6ba",
+      "targetExists": true,
+      "targetBytes": 9797,
+      "targetSha256": "9159985d0286b8ea4348ec76e862ad32236e923e0df7a7542481db107b22f6ba",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-fr-track.html",
+      "action": "replace",
+      "sourceBytes": 50900,
+      "sourceSha256": "37a6c775154b2be3e86377d96966de26a3925d3ee46494502b4ffdc67b364633",
+      "targetExists": true,
+      "targetBytes": 41924,
+      "targetSha256": "966320b49019c1b22b6f349dfd153d86ead85d73659bd75f3839aae22ff47bd6",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-fr-track.md",
+      "action": "same",
+      "sourceBytes": 14116,
+      "sourceSha256": "28ae86c6e08565e406be6610b65145b467fc8945f558704f9cc6a949e205eb29",
+      "targetExists": true,
+      "targetBytes": 14116,
+      "targetSha256": "28ae86c6e08565e406be6610b65145b467fc8945f558704f9cc6a949e205eb29",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/roadmap.html",
+      "action": "replace",
+      "sourceBytes": 522608,
+      "sourceSha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297",
+      "targetExists": true,
+      "targetBytes": 519538,
+      "targetSha256": "582e5a8acbdb4e89663234a83bc758439e0701bcc4a9c61ae31e8b475f8c8d7f",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openReaderPids": []
+    },
+    {
+      "route": "roadmap.html",
+      "action": "replace",
+      "sourceBytes": 522608,
+      "sourceSha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297",
+      "targetExists": true,
+      "targetBytes": 520698,
+      "targetSha256": "d17969003b928e3d61673d8f977baea2cc9bf844b8fe5783dbf27c647bd18c52",
+      "openReaderPids": [
+        28040
+      ]
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 532681,
+      "sourceSha256": "d03933a7f9479b72bac9a7f483d4a9b0c1a8b8bf9f6069c08870b4198e09cc8b",
+      "targetExists": true,
+      "targetBytes": 531821,
+      "targetSha256": "abbd3ed404973023a2358235a60cc2ff03978cdad953ac9c416cda1bc34280bb",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 367999,
+      "sourceSha256": "d2ccc5788b4debb6366a02912f14d479c1708cc46b966c3878702dc0bd43f76e",
+      "targetExists": true,
+      "targetBytes": 365377,
+      "targetSha256": "cd1bb24a4e943c4d165cee52c02bd7fcea722650b1e6dcaa6bc289cdb96cd068",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 8317,
+      "sourceSha256": "12391b9e31012e08f35af40269c2c41c51a192e1a0f5d05bb98fbf553fc43877",
+      "targetExists": true,
+      "targetBytes": 8317,
+      "targetSha256": "12391b9e31012e08f35af40269c2c41c51a192e1a0f5d05bb98fbf553fc43877",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/chrome156-overview.png",
+      "action": "same",
+      "sourceBytes": 15320,
+      "sourceSha256": "a9ad7d414169b3bcca3348a0c9c8681686e8a43d8b75dc85fbf48df4590c3310",
+      "targetExists": true,
+      "targetBytes": 15320,
+      "targetSha256": "a9ad7d414169b3bcca3348a0c9c8681686e8a43d8b75dc85fbf48df4590c3310",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/expected.json",
+      "action": "same",
+      "sourceBytes": 3191,
+      "sourceSha256": "4d295c8ded384df5bd9a44a298bf83b30ec9988033de643f88a16f0c1aa3d893",
+      "targetExists": true,
+      "targetBytes": 3191,
+      "targetSha256": "4d295c8ded384df5bd9a44a298bf83b30ec9988033de643f88a16f0c1aa3d893",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 39873,
+      "sourceSha256": "aaa0d7c8776fe8f8d092b148b106df9b8483642913b37a6103a5cae3397ec93e",
+      "targetExists": true,
+      "targetBytes": 42791,
+      "targetSha256": "ada86ef91627421f6e69d0fac0a7af154816bb1fbbec6587de34122777bbfe5d",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 5500,
+      "sourceSha256": "369c6a2b4e7627a45b58e3efcdae5cf7c67084edba6cba4a35f774586b17d126",
+      "targetExists": true,
+      "targetBytes": 5500,
+      "targetSha256": "369c6a2b4e7627a45b58e3efcdae5cf7c67084edba6cba4a35f774586b17d126",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/README.html",
+      "action": "replace",
+      "sourceBytes": 36137,
+      "sourceSha256": "fc2e90eaaf93f997ec6a3c9a6e6687c2bd42312528858887d0ef63782901452d",
+      "targetExists": true,
+      "targetBytes": 39016,
+      "targetSha256": "3ce00cd924b6fcfe56cebfeb7b089e3d3b9cde901c790fb206a738a44150dd56",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/README.md",
+      "action": "same",
+      "sourceBytes": 2957,
+      "sourceSha256": "4c4aa613cadb89ea0c68f59669c922adf6fe23d0cec4cbd49ca9ccebd0836b04",
+      "targetExists": true,
+      "targetBytes": 2957,
+      "targetSha256": "4c4aa613cadb89ea0c68f59669c922adf6fe23d0cec4cbd49ca9ccebd0836b04",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "action": "create",
+      "sourceBytes": 2846,
+      "sourceSha256": "4112314a59c8ab03b0458a3d1e54e6d527edfa0eccae7c516a152b3b6e8f3ef2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "action": "create",
+      "sourceBytes": 68951,
+      "sourceSha256": "66f06e5a5863d4f56eb135479dccff9b2353cc764c8a1a0f01b7062ad4dd680b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/initial-nested-grid-failure.log",
+      "action": "create",
+      "sourceBytes": 1060,
+      "sourceSha256": "0e41b2f3e48d512e2018a2d302aff835f3185ea6be8a62cfad15206cb1fddb57",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/android/initial-nested-grid-failure.png",
+      "action": "create",
+      "sourceBytes": 77589,
+      "sourceSha256": "df65f9b6879036356a1721dc179dd4459adebdb6d9424ef3ae4dafa89e6b6c31",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 40074,
+      "sourceSha256": "760cd0625dd65f16c2857cd9f1e1259fa0b4c27c86fc253078f8cb6bb48d2c44",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 5974,
+      "sourceSha256": "e6321ac1c47514a8f881e603c653dd3e6efe28e58c40367d0a4a5296cf1a2ca3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "action": "create",
+      "sourceBytes": 5914,
+      "sourceSha256": "865f988cf87463b7b2ea464738dbea2524503cb7bdafa84248149dcb76822755",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "action": "create",
+      "sourceBytes": 135788,
+      "sourceSha256": "1a0f8a185501937f750462f6eaa6f3ecd4e2052c2803f83b51f7206496ccd82e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/merge-PR1066.html",
+      "action": "create",
+      "sourceBytes": 34601,
+      "sourceSha256": "9c1a516fba1c8cdb7944b5f66da534e7e2bbd9e84db3835921d515befcd36177",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/merge-PR1066.md",
+      "action": "create",
+      "sourceBytes": 1034,
+      "sourceSha256": "8ef0c0a08be385c4eaaddd83bbdc9aba333b79347ef08eb6fe00e0bf6cf263e7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 40161,
+      "sourceSha256": "e43552c587cf94d1b7de9d616f4e7beb2f8a14532d3bd4c672b921b29fac5869",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 5611,
+      "sourceSha256": "94cbc5e6c059ee4866dc64e6c7b8952d1971809723221795df210f5fbbde7510",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 41350,
+      "sourceSha256": "c0a5bd724b0cfe121944e420a100fc2eaae34e7609d75ea434c10a0bbfbe5a4f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 5490,
+      "sourceSha256": "eaaf76eecdee746b82aab3922cec76cb0b415675b0650314516cf6254192ec16",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 44206,
+      "sourceSha256": "dd418b5b1719f93de8fbdc34f6ee8fc52da0660f143f60b9e71a1bff1fb888f8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-runtime-2026-11-03/roadmap-postmerge-docs-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 4339,
+      "sourceSha256": "68ea771c3526b88ac4f170a6036ff7d52665865233a0ebecfe3d234c7b747bb5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-fr-implicit-columns-plan-review-20.html",
+      "action": "replace",
+      "sourceBytes": 37808,
+      "sourceSha256": "fd79e404f22c82076c875d79cafecf7e436b4a4af67330d33672201d5182b17a",
+      "targetExists": true,
+      "targetBytes": 40726,
+      "targetSha256": "4771c9d7dd2539dabe545375d23b6327d5444cfcd70361b605c47c7d2e7d465f",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-fr-implicit-columns-plan-review-20.md",
+      "action": "same",
+      "sourceBytes": 4314,
+      "sourceSha256": "4ca7599b5055010bfa0351895806b72191297d94ef53693b7f4b7443bdd916ce",
+      "targetExists": true,
+      "targetBytes": 4314,
+      "targetSha256": "4ca7599b5055010bfa0351895806b72191297d94ef53693b7f4b7443bdd916ce",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-fr-implicit-columns.html",
+      "action": "replace",
+      "sourceBytes": 47735,
+      "sourceSha256": "5a7c51e67789e751097196bdb7a98623588c8144264309ca7c899552a94cd4af",
+      "targetExists": true,
+      "targetBytes": 49586,
+      "targetSha256": "e27c67f8b1811341b3961b55bf0356c9043d5d54a6ab4f2b633ca6683b4c8cbe",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-fr-implicit-columns.md",
+      "action": "replace",
+      "sourceBytes": 10992,
+      "sourceSha256": "8e9c4522790a93e64e8e45c6063895c69c09329a674b992b66e5475e8094b9fe",
+      "targetExists": true,
+      "targetBytes": 10655,
+      "targetSha256": "c4e4a57b6eac28d8955f27eb3507c9798a4557bec8a42fd7f6112af6cc53fc3b",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-implicit-columns.html",
+      "action": "replace",
+      "sourceBytes": 48668,
+      "sourceSha256": "9597cb5114f3d5bc9e2b5b24ca65633e64286b61ee55948ef224785685b65b7e",
+      "targetExists": true,
+      "targetBytes": 51550,
+      "targetSha256": "1368372cf14121129674f50bf86c7d3724663a95a6a2ddd7dc099275387eab29",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-implicit-columns.md",
+      "action": "same",
+      "sourceBytes": 10774,
+      "sourceSha256": "4c8436eb33474bac25d9faea90f9d9476ed67096c103a90ac6ed00f02b5d0d50",
+      "targetExists": true,
+      "targetBytes": 10774,
+      "targetSha256": "4c8436eb33474bac25d9faea90f9d9476ed67096c103a90ac6ed00f02b5d0d50",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-percent-implicit-columns.html",
+      "action": "replace",
+      "sourceBytes": 45753,
+      "sourceSha256": "94cc01d04703a7465b1cb9222ea2d017ae9d5b4fe9b84b3522b5d27ad90f8b9d",
+      "targetExists": true,
+      "targetBytes": 48615,
+      "targetSha256": "be9241b60452b0f010f28818ccf8ee0c155fc61a270a2c4ec68699816f397bd9",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-percent-implicit-columns.md",
+      "action": "same",
+      "sourceBytes": 9602,
+      "sourceSha256": "6bd59cf53cf80d6f4c788923b31c1a48c2d4dcf9fd00a7406e495fe26b621605",
+      "targetExists": true,
+      "targetBytes": 9602,
+      "targetSha256": "6bd59cf53cf80d6f4c788923b31c1a48c2d4dcf9fd00a7406e495fe26b621605",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow.html",
+      "action": "create",
+      "sourceBytes": 47814,
+      "sourceSha256": "b0f099ae7882a92dc9e9008e0718e05130d6624832f8156b77691d1bdaef6509",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow.md",
+      "action": "create",
+      "sourceBytes": 9797,
+      "sourceSha256": "9159985d0286b8ea4348ec76e862ad32236e923e0df7a7542481db107b22f6ba",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fr-track.html",
+      "action": "replace",
+      "sourceBytes": 50881,
+      "sourceSha256": "841d0401782fb7483afccd22a0ddfefb655b9975690ea230809e7e4920341c3d",
+      "targetExists": true,
+      "targetBytes": 41884,
+      "targetSha256": "cbd3fb3d54d0bf39b5a6bba86968cf38b9b8e1aaeb0ea1a9f5d81c91a90b7f2c",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fr-track.md",
+      "action": "same",
+      "sourceBytes": 14116,
+      "sourceSha256": "28ae86c6e08565e406be6610b65145b467fc8945f558704f9cc6a949e205eb29",
+      "targetExists": true,
+      "targetBytes": 14116,
+      "targetSha256": "28ae86c6e08565e406be6610b65145b467fc8945f558704f9cc6a949e205eb29",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "action": "replace",
+      "sourceBytes": 522608,
+      "sourceSha256": "7a213876bf4fbaed3330fed5ec5805f4a12cbdb0cb7c306060c242cf00c2f297",
+      "targetExists": true,
+      "targetBytes": 519538,
+      "targetSha256": "582e5a8acbdb4e89663234a83bc758439e0701bcc4a9c61ae31e8b475f8c8d7f",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 778261,
+      "sourceSha256": "00fd36998b7733a2e7103af317dc6611df10216fada8294e3bb3f132ce39bbc6",
+      "targetExists": true,
+      "targetBytes": 780601,
+      "targetSha256": "57e8c7350ead2882bf2ad263b6e608c65eee6dec57401853d7d234ebcc1f3eea",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "replace",
+      "sourceBytes": 625591,
+      "sourceSha256": "81b367700acdd4fb199e3bc2ef1598fcf07710308d9abbadf762d9bf0f420057",
+      "targetExists": true,
+      "targetBytes": 625045,
+      "targetSha256": "aa3fe0bc53a6585c770a5cba11dca524e9dc667da7422bea6f17a7ad199f51de",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-12750ac6ab82.92b5af2cf9.js",
+      "action": "create",
+      "sourceBytes": 17635,
+      "sourceSha256": "8ac58317113fc0aa4a5cbb4fa7a50dc28c65f2b660c96ee9e477b4b6879f4f79",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-21139db38af3.a73ee9240b.js",
+      "action": "create",
+      "sourceBytes": 12009,
+      "sourceSha256": "1383b1dcfbdccf522671143e6c87861850bb47e04bc9d3deeb622341f995de28",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-3256dfd3f80a.c67ac706d4.js",
+      "action": "create",
+      "sourceBytes": 23423,
+      "sourceSha256": "ae4193679b4561fa71c3e0e61b156e32bdf8e4efdc5d940035bce66ca82f2b74",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-39076c230781.a298ed7cb9.js",
+      "action": "create",
+      "sourceBytes": 16972,
+      "sourceSha256": "4645ea560f4c1963ae9d73c177599d8410cb09e4d1e59d27a1a903cd420146ae",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-4278bbf5c9f1.0bfbbf73b2.js",
+      "action": "create",
+      "sourceBytes": 16993,
+      "sourceSha256": "3c004a76a4b2ffa98ee08dc05e6d2e845e805f993cbb3932370cf6ad88c36a94",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-447148949b78.0fdced60f9.js",
+      "action": "create",
+      "sourceBytes": 11811,
+      "sourceSha256": "7b7f1e509e5bf8f0690d9abcf8297e7c9f1cedba94f2deeac6aea130cdc4ce69",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-50dc384f3f17.c22ac34ac5.js",
+      "action": "create",
+      "sourceBytes": 8974,
+      "sourceSha256": "fefe3eb43501d5489cf621059d5f82de6025845b175283dd8a67f5b26c1dbdea",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-582b3a57f9a7.f5c21c6251.js",
+      "action": "create",
+      "sourceBytes": 3671,
+      "sourceSha256": "811a830d658a4ab712719dc727b638ad7afc2896c441568fc895e7ef54bc97d0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-585ebf82ac32.820bff4656.js",
+      "action": "create",
+      "sourceBytes": 11674,
+      "sourceSha256": "9c84385aa59f4e46adb0125526103d9a28b5ec0a15867cd3ce8f3a956af2de4c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-5dcf24ae4c58.916ec92dd1.js",
+      "action": "create",
+      "sourceBytes": 11558,
+      "sourceSha256": "d9d0ec52f2aaa57a92f4bfa22dce731bc6aea625382f3cd5485dacdfc5607bf7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.4a72167020.js",
+      "action": "create",
+      "sourceBytes": 825921,
+      "sourceSha256": "31187d8f69f10eea143a0f167ffbd5d9f97defd2d48cc13ba4c2449db3e8fbb0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-6df32bc7651c.5429ec61ff.js",
+      "action": "create",
+      "sourceBytes": 11817,
+      "sourceSha256": "a1d0c4d48dd31ebc7056b0948e7cee7888ac603572552b1ca0980203b2793808",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-71d97951fe6d.8cbafb7e51.js",
+      "action": "create",
+      "sourceBytes": 11702,
+      "sourceSha256": "3b00ee5c7b5e5af2d99a06b406aaa5013e2007967512dc7fca2812167ec2a84e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.70b509b986.js",
+      "action": "create",
+      "sourceBytes": 539630,
+      "sourceSha256": "77fabe24ee35f5614ef776d5bf355d432b80d3f451505506f7e84b17ffdea092",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.2d56c0c644.js",
+      "action": "create",
+      "sourceBytes": 826102,
+      "sourceSha256": "9c69e55e48607db158e982985d5ed389a7ce8ae34319b7a00665b027d6b0552e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-7e48ca32062d.82b099b5c3.js",
+      "action": "create",
+      "sourceBytes": 5911,
+      "sourceSha256": "0f4660ed64046932e040549249074de0efeed9a22eefc2d054b80efda0c2460a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-80fa454bd545.10afe57678.js",
+      "action": "create",
+      "sourceBytes": 12005,
+      "sourceSha256": "3a85b6c227e298b0fb8fd952a8370c918bdf92a6291907ad78ce83d53c45bf1e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-81bbb345bcb6.cb8a63ca82.js",
+      "action": "create",
+      "sourceBytes": 7919,
+      "sourceSha256": "0beab3f46cc0d3be8f81167d4595a02a7088e9923a1a675bd379051e81ec84b1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-87bb62147319.5603debdef.js",
+      "action": "create",
+      "sourceBytes": 8982,
+      "sourceSha256": "cafb561ff53fe7c7d737de2cca7f4ba6d4d74c19a3bf46e534102ef7347ad03c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-a3955633b83c.a3c451a304.js",
+      "action": "create",
+      "sourceBytes": 5904,
+      "sourceSha256": "75ecd6e49ac6a740e8dda77db821dff9516c173d074904440da82c591012d0f5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-a40b24eadc50.7f46e8c510.js",
+      "action": "create",
+      "sourceBytes": 17647,
+      "sourceSha256": "d6211e16d59d0dd9bf755c25e951afce34ba5516b1407e2b9fcd314a228c2b0e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.74f546f744.js",
+      "action": "create",
+      "sourceBytes": 1009,
+      "sourceSha256": "3da2a1fd358af6956f4fc13d128ea1bd37402e0cc99edc636f031db2338c9375",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-a60b22d98f5c.07fc9dc5e0.js",
+      "action": "create",
+      "sourceBytes": 18375,
+      "sourceSha256": "ddbc25bc302d7d3d6be4a5442549aabf990a84e589c4cfb2191c04166ec7b49d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-ab46851738ec.1b29149db5.js",
+      "action": "create",
+      "sourceBytes": 18336,
+      "sourceSha256": "5966a6e1033a1adf260a7fcfd6b6d683d5d03d137159a2321b8c3132d1aed790",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-bd0d4757ae3d.c22be23a01.js",
+      "action": "create",
+      "sourceBytes": 19809,
+      "sourceSha256": "d32b609104dbaafcb93f30c30892e10480f39a2d53f310b6e1cb12cd3aa1398e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.1f63106d11.js",
+      "action": "create",
+      "sourceBytes": 83356,
+      "sourceSha256": "bf363c7ece0327f720c8b393b064756e418cf1069a8479b3669fa71689815a76",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.4e28c48e44.js",
+      "action": "create",
+      "sourceBytes": 539602,
+      "sourceSha256": "f2123bb78800c8d01bed134f727f1435a605857cc4dafccd8de802c06f2b1d67",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-c5a52a4c643f.1e2f867889.js",
+      "action": "create",
+      "sourceBytes": 11566,
+      "sourceSha256": "e2f8da395bfbabbe7048201c699289eb635c34e291c9bb0532513de96f83bb12",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-cf1adc94bb43.9079d88af5.js",
+      "action": "create",
+      "sourceBytes": 3649,
+      "sourceSha256": "35537eaf576d13d9ab3b5ed207bf1b06c1eaacfab8f44ca4d3254924f3d470e8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-cfa3bac35200.d5757b83ed.js",
+      "action": "create",
+      "sourceBytes": 7909,
+      "sourceSha256": "d672b87a86136a58cf5f54949e983ad9e82db73e0dbcb137f959a0860c95ddbc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-d4b02f34c38e.11e4380881.js",
+      "action": "create",
+      "sourceBytes": 83392,
+      "sourceSha256": "61df21998dd58f1a41610cc98520fa98e72ee0a7b872c2e69d5f30a2d4ac24f4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-e334bf9e42a2.78424afe52.js",
+      "action": "create",
+      "sourceBytes": 19790,
+      "sourceSha256": "c7ac2d713138f2fa548ab9c22e696bd820a8e1e2b30ba9d03f0a80d786fef523",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-f5f34dd2c7ef.54b1782e63.js",
+      "action": "create",
+      "sourceBytes": 23409,
+      "sourceSha256": "965dfa22575433ea098bb9b654f224e7cfc0976b6fecb1cd9c15c2ab209f9bd9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/index.edb031ea29.js",
+      "action": "create",
+      "sourceBytes": 157633,
+      "sourceSha256": "2a007aa9f05e4cc1e13a5b7cf969763cc00d10aa3ba21802f15037726ed50225",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "action": "same",
+      "sourceBytes": 472,
+      "sourceSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "targetExists": true,
+      "targetBytes": 472,
+      "targetSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/search_index.ko.81eb61d8.json",
+      "action": "create",
+      "sourceBytes": 1932731,
+      "sourceSha256": "81eb61d85eaa7fb5f4afb57f3dd6feab9518bd6c657bd3c333e3de540b49f99c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 777618,
+      "sourceSha256": "91e6587b26636ba43a9891e69cbb213bbb111f1cdde2fbf2043d87ea1418274b",
+      "targetExists": true,
+      "targetBytes": 779934,
+      "targetSha256": "fcc0444bfb898068cb3488f4bbb9251ba246674d05cd241f925873f01a3d448b",
+      "openReaderPids": [
+        28040
+      ]
+    },
+    {
+      "route": "STATUS.md",
+      "action": "replace",
+      "sourceBytes": 625591,
+      "sourceSha256": "81b367700acdd4fb199e3bc2ef1598fcf07710308d9abbadf762d9bf0f420057",
+      "targetExists": true,
+      "targetBytes": 625045,
+      "targetSha256": "aa3fe0bc53a6585c770a5cba11dca524e9dc667da7422bea6f17a7ad199f51de",
+      "openReaderPids": []
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-column-flow-fr-auto-columns-precomparison.html",
+      "action": "same",
+      "sourceBytes": 3027,
+      "sourceSha256": "f542209436c3f6fd6ac73dacbc5abc9945c350c745b9380360afddc4edb0134a",
+      "targetExists": true,
+      "targetBytes": 3027,
+      "targetSha256": "f542209436c3f6fd6ac73dacbc5abc9945c350c745b9380360afddc4edb0134a",
+      "openReaderPids": []
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-column-flow-fr-auto-columns-runtime.html",
+      "action": "create",
+      "sourceBytes": 1691,
+      "sourceSha256": "d1fe552977c3de7c6107c493ea728c5780c536efc88130c57a3955c630ed4164",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    }
+  ]
+}

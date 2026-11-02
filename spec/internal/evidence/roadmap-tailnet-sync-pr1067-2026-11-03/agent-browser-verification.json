@@ -1,0 +1,23 @@
+{
+  "tool": "agent-browser",
+  "session": "spinon-roadmap-pr1067",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "desktop": {
+    "viewport": { "width": 1440, "height": 1000 },
+    "documentWidth": 1440,
+    "cardVisible": "PR #1066 Rebase and merge",
+    "mergeSha": "2dde385c5f240c8b8837b9e55d9c5431f5f9294b",
+    "officialCount": "72/213",
+    "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+  },
+  "mobile": {
+    "viewport": { "width": 390, "height": 844 },
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "cardRect": { "x": 14, "width": 362, "height": 285.46875 },
+    "officialCountVisible": true,
+    "c11CheckboxUnchecked": true,
+    "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+  },
+  "closedAfterVerification": true
+}
