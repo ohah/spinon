@@ -231,18 +231,32 @@ fn parsed_root_html_percentage_auto_rows_require_a_definite_unconstrained_height
 }
 
 #[test]
-fn parsed_root_html_percentage_auto_rows_keep_percentage_gap_unsupported() {
+fn parsed_root_html_percentage_auto_rows_and_percentage_gap_reach_taffy_geometry() {
     let fixture = RootHtmlGridFixture::new(
         "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px 55px;grid-template-rows:20px;grid-auto-rows:10%;column-gap:5px;row-gap:5%;margin:0;padding:0",
-        &item_styles(&[20.0, 20.0]),
+        &item_styles(&[20.0, 20.0, 10.0, 10.0]),
     );
-    let error = fixture.compute().unwrap_err();
-    assert!(matches!(
-        error,
-        StyleLayoutError::UnsupportedComputedValue {
-            node,
-            property: "row-gap",
-            ..
-        } if node == fixture.grid.id()
-    ));
+    let output = fixture
+        .compute()
+        .expect("a definite row-gap basis should resolve in parsed Root HTML Grid");
+    let style = output
+        .computed_styles
+        .elements
+        .iter()
+        .find(|style| style.node_id == fixture.grid.id())
+        .expect("the parsed Grid style should be present");
+    assert_eq!(
+        style.layout_spacing.row_gap,
+        spinon_style::ComputedCssSpacingValue::Percentage(0.05)
+    );
+    let second_row = output.layout.frames[&fixture.items[2].id()];
+    assert_eq!(
+        [
+            second_row.x,
+            second_row.y,
+            second_row.width,
+            second_row.height
+        ],
+        [0.0, 25.0, 40.0, 10.0]
+    );
 }

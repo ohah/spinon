@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Spinon C11 Grid percentage gap reference</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      .grid {
+        display: grid;
+        align-content: start;
+        justify-content: start;
+        overflow: visible;
+      }
+
+      .grid > i {
+        display: block;
+        min-width: 0;
+        min-height: 0;
+        background: rgb(20 80 160);
+      }
+
+      #basis {
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: 20px 1fr;
+        row-gap: 10%;
+        column-gap: 10%;
+      }
+
+      #zero {
+        width: 120px;
+        height: 60px;
+        grid-template-columns: 20px 20px;
+        grid-template-rows: 10px 10px;
+        gap: 0% 0%;
+      }
+
+      #zero-basis {
+        width: 0;
+        height: 40px;
+        grid-template-columns: 0 0;
+        grid-template-rows: 20px;
+        column-gap: 75%;
+      }
+
+      #shorthand {
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 30px 1fr;
+        grid-template-rows: 10px 1fr;
+        gap: 5% 10%;
+      }
+
+      #legacy-alias {
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 30px 1fr;
+        grid-template-rows: 10px 1fr;
+        grid-gap: 5% 10%;
+      }
+
+      #over-100 {
+        width: 100px;
+        height: 40px;
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 20px;
+        column-gap: 120%;
+      }
+
+      #invalid-negative {
+        width: 100px;
+        height: 40px;
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 20px;
+        gap: 5px;
+        gap: -10px;
+      }
+
+      #math-control {
+        width: 200px;
+        height: 40px;
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 20px;
+        column-gap: calc(5% + 2px);
+      }
+
+      #implicit-row {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 40px 40px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 25%;
+        row-gap: 10%;
+      }
+
+      #column-flow {
+        width: 200px;
+        height: 80px;
+        grid-template-columns: 40px;
+        grid-template-rows: 20px 20px;
+        grid-auto-flow: column;
+        grid-auto-columns: 50%;
+        column-gap: 10%;
+      }
+
+      #named-area {
+        width: 120px;
+        height: 70px;
+        grid-template-areas: "header header" "side content";
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 20px 50px;
+        column-gap: 10%;
+        row-gap: 10%;
+      }
+
+      #named-area > #named-header {
+        grid-area: header;
+      }
+
+      #named-area > #named-side {
+        grid-area: side;
+      }
+
+      #named-area > #named-content {
+        grid-area: content;
+      }
+
+      #named-area-px {
+        width: 120px;
+        height: 70px;
+        grid-template-areas: "header header" "side content";
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 20px 50px;
+        column-gap: 6px;
+        row-gap: 4px;
+      }
+
+      #named-area-px > #named-px-header {
+        grid-area: header;
+      }
+
+      #named-area-px > #named-px-side {
+        grid-area: side;
+      }
+
+      #named-area-px > #named-px-content {
+        grid-area: content;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid" id="basis">
+      <i id="basis-a"></i><i id="basis-b"></i>
+      <i id="basis-c"></i><i id="basis-d"></i>
+    </div>
+    <div class="grid" id="zero"><i id="zero-a"></i><i id="zero-b"></i></div>
+    <div class="grid" id="zero-basis"><i id="zero-basis-a"></i><i id="zero-basis-b"></i></div>
+    <div class="grid" id="shorthand">
+      <i id="shorthand-a"></i><i id="shorthand-b"></i>
+      <i id="shorthand-c"></i><i id="shorthand-d"></i>
+    </div>
+    <div class="grid" id="legacy-alias">
+      <i id="legacy-a"></i><i id="legacy-b"></i>
+      <i id="legacy-c"></i><i id="legacy-d"></i>
+    </div>
+    <div class="grid" id="over-100"><i id="over-a"></i><i id="over-b"></i></div>
+    <div class="grid" id="invalid-negative"><i id="invalid-a"></i><i id="invalid-b"></i></div>
+    <div class="grid" id="math-control"><i id="math-a"></i><i id="math-b"></i></div>
+    <div class="grid" id="implicit-row">
+      <i id="implicit-row-a"></i><i id="implicit-row-b"></i>
+      <i id="implicit-row-c"></i><i id="implicit-row-d"></i>
+    </div>
+    <div class="grid" id="column-flow">
+      <i id="column-flow-a"></i><i id="column-flow-b"></i><i id="column-flow-c"></i>
+    </div>
+    <div class="grid" id="named-area">
+      <i id="named-header"></i><i id="named-side"></i><i id="named-content"></i>
+    </div>
+    <div class="grid" id="named-area-px">
+      <i id="named-px-header"></i><i id="named-px-side"></i><i id="named-px-content"></i>
+    </div>
+    <pre id="report"></pre>
+    <script>
+      const rect = (element, root) => {
+        const box = element.getBoundingClientRect();
+        const origin = root.getBoundingClientRect();
+        return [box.x - origin.x, box.y - origin.y, box.width, box.height].map((value) =>
+          Number(value.toFixed(4)),
+        );
+      };
+
+      const report = Array.from(document.querySelectorAll(".grid"), (root) => {
+        const style = getComputedStyle(root);
+        return {
+          id: root.id,
+          computed: {
+            rowGap: style.rowGap,
+            columnGap: style.columnGap,
+            gridTemplateRows: style.gridTemplateRows,
+            gridTemplateColumns: style.gridTemplateColumns,
+          },
+          root: [root.clientWidth, root.clientHeight, root.scrollWidth, root.scrollHeight],
+          items: Array.from(root.children, (item) => ({ id: item.id, rect: rect(item, root) })),
+        };
+      });
+      document.querySelector("#report").textContent = JSON.stringify(report, null, 2);
+      window.spinonGridGapReport = report;
+    </script>
+  </body>
+</html>

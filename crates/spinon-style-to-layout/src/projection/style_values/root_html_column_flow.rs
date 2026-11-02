@@ -119,7 +119,7 @@ pub(super) fn validate_candidate(
             "Root HTML column-flow mode exceeds the 10,000 explicit-plus-implicit column limit",
         ));
     }
-    super::root_html_grid_tracks::validate_implicit_column_relative_extent(
+    super::root_html_grid_gap::validate_implicit_column_relative_extent(
         container,
         grid,
         total_columns,

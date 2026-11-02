@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid percentage gaps and visible overflow</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      #root {
+        display: grid;
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        grid-template-columns: 20px 20px;
+        grid-template-rows: 20px 20px;
+        column-gap: 120%;
+        row-gap: 10%;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: #ddd;
+      }
+
+      .item {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: #2f80ed;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="root">
+      <div class="item" id="item1"></div>
+      <div class="item" id="item2"></div>
+      <div class="item" id="item3"></div>
+      <div class="item" id="item4"></div>
+    </main>
+  </body>
+</html>

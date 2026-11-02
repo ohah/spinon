@@ -1,0 +1,521 @@
+[
+  {
+    "computed": {
+      "columnGap": "10%",
+      "gridTemplateColumns": "40px 140px",
+      "gridTemplateRows": "20px 70px",
+      "rowGap": "10%"
+    },
+    "id": "basis",
+    "items": [
+      {
+        "id": "basis-a",
+        "rect": [
+          0,
+          0,
+          40,
+          20
+        ]
+      },
+      {
+        "id": "basis-b",
+        "rect": [
+          60,
+          0,
+          140,
+          20
+        ]
+      },
+      {
+        "id": "basis-c",
+        "rect": [
+          0,
+          30,
+          40,
+          70
+        ]
+      },
+      {
+        "id": "basis-d",
+        "rect": [
+          60,
+          30,
+          140,
+          70
+        ]
+      }
+    ],
+    "root": [
+      200,
+      100,
+      200,
+      100
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "0%",
+      "gridTemplateColumns": "20px 20px",
+      "gridTemplateRows": "10px 10px",
+      "rowGap": "0%"
+    },
+    "id": "zero",
+    "items": [
+      {
+        "id": "zero-a",
+        "rect": [
+          0,
+          0,
+          20,
+          10
+        ]
+      },
+      {
+        "id": "zero-b",
+        "rect": [
+          20,
+          0,
+          20,
+          10
+        ]
+      }
+    ],
+    "root": [
+      120,
+      60,
+      120,
+      60
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "75%",
+      "gridTemplateColumns": "0px 0px",
+      "gridTemplateRows": "20px",
+      "rowGap": "normal"
+    },
+    "id": "zero-basis",
+    "items": [
+      {
+        "id": "zero-basis-a",
+        "rect": [
+          0,
+          0,
+          0,
+          20
+        ]
+      },
+      {
+        "id": "zero-basis-b",
+        "rect": [
+          0,
+          0,
+          0,
+          20
+        ]
+      }
+    ],
+    "root": [
+      0,
+      40,
+      0,
+      40
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "10%",
+      "gridTemplateColumns": "30px 150px",
+      "gridTemplateRows": "10px 85px",
+      "rowGap": "5%"
+    },
+    "id": "shorthand",
+    "items": [
+      {
+        "id": "shorthand-a",
+        "rect": [
+          0,
+          0,
+          30,
+          10
+        ]
+      },
+      {
+        "id": "shorthand-b",
+        "rect": [
+          50,
+          0,
+          150,
+          10
+        ]
+      },
+      {
+        "id": "shorthand-c",
+        "rect": [
+          0,
+          15,
+          30,
+          85
+        ]
+      },
+      {
+        "id": "shorthand-d",
+        "rect": [
+          50,
+          15,
+          150,
+          85
+        ]
+      }
+    ],
+    "root": [
+      200,
+      100,
+      200,
+      100
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "10%",
+      "gridTemplateColumns": "30px 150px",
+      "gridTemplateRows": "10px 85px",
+      "rowGap": "5%"
+    },
+    "id": "legacy-alias",
+    "items": [
+      {
+        "id": "legacy-a",
+        "rect": [
+          0,
+          0,
+          30,
+          10
+        ]
+      },
+      {
+        "id": "legacy-b",
+        "rect": [
+          50,
+          0,
+          150,
+          10
+        ]
+      },
+      {
+        "id": "legacy-c",
+        "rect": [
+          0,
+          15,
+          30,
+          85
+        ]
+      },
+      {
+        "id": "legacy-d",
+        "rect": [
+          50,
+          15,
+          150,
+          85
+        ]
+      }
+    ],
+    "root": [
+      200,
+      100,
+      200,
+      100
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "120%",
+      "gridTemplateColumns": "10px 10px",
+      "gridTemplateRows": "20px",
+      "rowGap": "normal"
+    },
+    "id": "over-100",
+    "items": [
+      {
+        "id": "over-a",
+        "rect": [
+          0,
+          0,
+          10,
+          20
+        ]
+      },
+      {
+        "id": "over-b",
+        "rect": [
+          130,
+          0,
+          10,
+          20
+        ]
+      }
+    ],
+    "root": [
+      100,
+      40,
+      140,
+      40
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "5px",
+      "gridTemplateColumns": "10px 10px",
+      "gridTemplateRows": "20px",
+      "rowGap": "5px"
+    },
+    "id": "invalid-negative",
+    "items": [
+      {
+        "id": "invalid-a",
+        "rect": [
+          0,
+          0,
+          10,
+          20
+        ]
+      },
+      {
+        "id": "invalid-b",
+        "rect": [
+          15,
+          0,
+          10,
+          20
+        ]
+      }
+    ],
+    "root": [
+      100,
+      40,
+      100,
+      40
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "calc(5% + 2px)",
+      "gridTemplateColumns": "10px 10px",
+      "gridTemplateRows": "20px",
+      "rowGap": "normal"
+    },
+    "id": "math-control",
+    "items": [
+      {
+        "id": "math-a",
+        "rect": [
+          0,
+          0,
+          10,
+          20
+        ]
+      },
+      {
+        "id": "math-b",
+        "rect": [
+          22,
+          0,
+          10,
+          20
+        ]
+      }
+    ],
+    "root": [
+      200,
+      40,
+      200,
+      40
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "normal",
+      "gridTemplateColumns": "40px 40px",
+      "gridTemplateRows": "20px 25px",
+      "rowGap": "10%"
+    },
+    "id": "implicit-row",
+    "items": [
+      {
+        "id": "implicit-row-a",
+        "rect": [
+          0,
+          0,
+          40,
+          20
+        ]
+      },
+      {
+        "id": "implicit-row-b",
+        "rect": [
+          40,
+          0,
+          40,
+          20
+        ]
+      },
+      {
+        "id": "implicit-row-c",
+        "rect": [
+          0,
+          30,
+          40,
+          25
+        ]
+      },
+      {
+        "id": "implicit-row-d",
+        "rect": [
+          40,
+          30,
+          40,
+          25
+        ]
+      }
+    ],
+    "root": [
+      100,
+      100,
+      100,
+      100
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "10%",
+      "gridTemplateColumns": "40px 100px",
+      "gridTemplateRows": "20px 20px",
+      "rowGap": "normal"
+    },
+    "id": "column-flow",
+    "items": [
+      {
+        "id": "column-flow-a",
+        "rect": [
+          0,
+          0,
+          40,
+          20
+        ]
+      },
+      {
+        "id": "column-flow-b",
+        "rect": [
+          0,
+          20,
+          40,
+          20
+        ]
+      },
+      {
+        "id": "column-flow-c",
+        "rect": [
+          60,
+          0,
+          100,
+          20
+        ]
+      }
+    ],
+    "root": [
+      200,
+      80,
+      200,
+      80
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "10%",
+      "gridTemplateColumns": "40px 80px",
+      "gridTemplateRows": "20px 50px",
+      "rowGap": "10%"
+    },
+    "id": "named-area",
+    "items": [
+      {
+        "id": "named-header",
+        "rect": [
+          0,
+          0,
+          132,
+          20
+        ]
+      },
+      {
+        "id": "named-side",
+        "rect": [
+          0,
+          27,
+          40,
+          50
+        ]
+      },
+      {
+        "id": "named-content",
+        "rect": [
+          52,
+          27,
+          80,
+          50
+        ]
+      }
+    ],
+    "root": [
+      120,
+      70,
+      132,
+      77
+    ]
+  },
+  {
+    "computed": {
+      "columnGap": "6px",
+      "gridTemplateColumns": "40px 80px",
+      "gridTemplateRows": "20px 50px",
+      "rowGap": "4px"
+    },
+    "id": "named-area-px",
+    "items": [
+      {
+        "id": "named-px-header",
+        "rect": [
+          0,
+          0,
+          126,
+          20
+        ]
+      },
+      {
+        "id": "named-px-side",
+        "rect": [
+          0,
+          24,
+          40,
+          50
+        ]
+      },
+      {
+        "id": "named-px-content",
+        "rect": [
+          46,
+          24,
+          80,
+          50
+        ]
+      }
+    ],
+    "root": [
+      120,
+      70,
+      126,
+      74
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 use spinon_core::{HostDocumentSnapshot, HostNodeKind};
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridItemPlacement, ComputedCssGridPlacement,
-    ComputedCssMaxSize, ComputedCssSpacingValue, ComputedStyleSnapshot,
+    ComputedCssMaxSize, ComputedStyleSnapshot,
 };
 
 use super::{HTML_NAMESPACE, RuntimeGridNodes};
@@ -96,17 +96,23 @@ pub(super) fn validate_root_html_named_area_candidate(
             ));
         }
     }
-    for (property, value) in [
-        ("row-gap", container.layout_spacing.row_gap),
-        ("column-gap", container.layout_spacing.column_gap),
+    for (property, value, basis) in [
+        (
+            "row-gap",
+            container.layout_spacing.row_gap,
+            container.layout_dimensions.height,
+        ),
+        (
+            "column-gap",
+            container.layout_spacing.column_gap,
+            container.layout_dimensions.width,
+        ),
     ] {
-        if !matches!(value, ComputedCssSpacingValue::Normal)
-            && !matches!(value, ComputedCssSpacingValue::LengthPx(gap) if gap == 0.0)
-        {
+        if super::root_html_grid_gap::resolved_root_html_gap(value, basis).is_none() {
             return Err(unsupported(
                 owner,
                 property,
-                "Root HTML named-area 제한 경로는 Grid gap 0을 요구합니다",
+                "Root HTML named-area 제한 경로는 해당 축에 유한하게 해석되는 non-negative px/percentage Grid gap을 요구합니다",
             ));
         }
     }

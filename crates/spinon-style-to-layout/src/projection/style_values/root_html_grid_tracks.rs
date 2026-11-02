@@ -166,92 +166,6 @@ pub(super) fn validate_percentage_track_ranges(
         .and_then(|()| validate_auto_column_percentage_ranges(element, &grid.auto_columns))
 }
 
-pub(super) fn validate_implicit_column_relative_extent(
-    element: &ComputedElementStyle,
-    grid: &ComputedCssGridLayout,
-    required_columns: usize,
-) -> Result<(), StyleLayoutError> {
-    if !has_relative_auto_columns(&grid.auto_columns) || required_columns <= grid.columns.len() {
-        return Ok(());
-    }
-    let ComputedCssDimension::LengthPx(basis) = element.layout_dimensions.width else {
-        return Err(unsupported(
-            element,
-            "width",
-            "Root HTML Grid percentage/fraction auto columns require a definite finite non-negative CSS-pixel width",
-        ));
-    };
-    if !basis.is_finite() || basis < 0.0 {
-        return Err(unsupported(
-            element,
-            "width",
-            "Root HTML Grid percentage/fraction auto columns require a definite finite non-negative CSS-pixel width",
-        ));
-    }
-    let tracks = match &grid.auto_columns {
-        ComputedCssGridAutoColumns::TrackList(tracks) => tracks.as_slice(),
-        _ => return Ok(()),
-    };
-    let gap = match element.layout_spacing.column_gap {
-        ComputedCssSpacingValue::Normal => 0.0,
-        ComputedCssSpacingValue::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
-        _ => {
-            return Err(unsupported(
-                element,
-                "column-gap",
-                "relative implicit columns require the existing finite non-negative fixed-px gap subset",
-            ));
-        }
-    };
-    let mut total = (gap as f64) * required_columns.saturating_sub(1) as f64;
-    for track in &grid.columns {
-        let ComputedCssGridTrackSize::LengthPx(value) = track else {
-            return Ok(());
-        };
-        total += *value as f64;
-    }
-    if !total.is_finite() || total > f32::MAX as f64 {
-        return Err(unsupported(
-            element,
-            "grid-auto-columns",
-            "explicit tracks and gaps exceed the finite f32 CSS-pixel extent",
-        ));
-    }
-    for index in 0..required_columns - grid.columns.len() {
-        let value = match tracks[index % tracks.len()] {
-            ComputedCssGridTrackSize::LengthPx(value) => value as f64,
-            ComputedCssGridTrackSize::Percentage(value) => (value as f64) * (basis as f64),
-            ComputedCssGridTrackSize::Fraction(value) if value.is_finite() && value >= 0.0 => {
-                continue;
-            }
-            ComputedCssGridTrackSize::Fraction(_) => {
-                return Err(unsupported(
-                    element,
-                    "grid-auto-columns",
-                    "fraction implicit columns must be finite and non-negative",
-                ));
-            }
-            _ => return Ok(()),
-        };
-        if !value.is_finite() || value < 0.0 {
-            return Err(unsupported(
-                element,
-                "grid-auto-columns",
-                "resolved relative implicit-column extent must remain finite and non-negative",
-            ));
-        }
-        total += value;
-        if !total.is_finite() || total > f32::MAX as f64 {
-            return Err(unsupported(
-                element,
-                "grid-auto-columns",
-                "relative implicit columns exceed the finite f32 CSS-pixel extent",
-            ));
-        }
-    }
-    Ok(())
-}
-
 fn validate_auto_row_percentage_ranges(
     element: &ComputedElementStyle,
     auto_rows: &ComputedCssGridAutoRows,
@@ -342,7 +256,8 @@ fn validate_axis_track_range(
     basis: ComputedCssDimension,
     gap: ComputedCssSpacingValue,
 ) -> Result<(), StyleLayoutError> {
-    if !has_percentage_track(tracks) {
+    let has_percentage_gap = matches!(gap, ComputedCssSpacingValue::Percentage(_));
+    if !has_percentage_track(tracks) && !has_percentage_gap {
         return Ok(());
     }
 
@@ -372,11 +287,22 @@ fn validate_axis_track_range(
     let gap = match gap {
         ComputedCssSpacingValue::Normal => 0.0,
         ComputedCssSpacingValue::LengthPx(value) if value.is_finite() && value >= 0.0 => value,
+        ComputedCssSpacingValue::Percentage(value) if value.is_finite() && value >= 0.0 => {
+            let resolved = f64::from(value) * f64::from(basis);
+            if !resolved.is_finite() || resolved > f64::from(f32::MAX) {
+                return Err(unsupported(
+                    element,
+                    gap_property,
+                    "resolved percentage gap exceeds the finite f32 CSS-pixel range",
+                ));
+            }
+            resolved as f32
+        }
         _ => {
             return Err(unsupported(
                 element,
                 gap_property,
-                "Root HTML Grid percentage tracks require the existing finite non-negative fixed-px gap subset",
+                "Root HTML Grid percentage tracks require a finite non-negative px or percentage gap",
             ));
         }
     };
@@ -446,14 +372,6 @@ fn has_percentage_auto_columns(auto_columns: &ComputedCssGridAutoColumns) -> boo
     )
 }
 
-fn has_relative_auto_columns(auto_columns: &ComputedCssGridAutoColumns) -> bool {
-    matches!(
-        auto_columns,
-        ComputedCssGridAutoColumns::TrackList(tracks)
-            if tracks.iter().any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_) | ComputedCssGridTrackSize::Fraction(_)))
-    )
-}
-
 fn validate_axis(
     element: &ComputedElementStyle,
     constraints: AxisConstraints,
@@ -503,7 +421,7 @@ fn validate_axis(
     Ok(())
 }
 
-fn unsupported(
+pub(super) fn unsupported(
     element: &ComputedElementStyle,
     property: &'static str,
     explanation: &str,

@@ -66,6 +66,84 @@ fn root_html_percentage_implicit_row_list_cycles_from_first_implicit_row() {
 }
 
 #[test]
+fn root_html_percentage_row_gap_resolves_against_the_definite_content_height() {
+    let mut input = root_html_implicit_row_list_grid(
+        100.0,
+        &[20.0, 20.0, 10.0],
+        vec![GridTrackSize::Percentage(0.25)],
+    );
+    input.nodes[0].style.gap.row = LayoutLengthPercentage::percent(0.1);
+    wrap_root_html_grid_in_fixed_parent(&mut input);
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    let second_row = output.frames[&id(4)];
+    assert_eq!(
+        [
+            second_row.x,
+            second_row.y,
+            second_row.width,
+            second_row.height
+        ],
+        [0.0, 30.0, 40.0, 10.0]
+    );
+}
+
+#[test]
+fn root_html_percentage_row_gap_rejects_indefinite_constrained_and_overflowing_ranges() {
+    for (change, property) in [(0, "row-gap"), (1, "min-height"), (2, "max-height")] {
+        let mut input = root_html_implicit_row_list_grid(
+            100.0,
+            &[20.0, 20.0, 10.0],
+            vec![GridTrackSize::Percentage(0.25)],
+        );
+        input.nodes[0].style.gap.row = LayoutLengthPercentage::percent(0.1);
+        match change {
+            0 => input.nodes[0].style.height = LayoutDimension::Auto,
+            1 => input.nodes[0].style.min_height = LayoutDimension::Fixed(1.0),
+            2 => input.nodes[0].style.max_height = LayoutDimension::Fixed(120.0),
+            _ => unreachable!(),
+        }
+        wrap_root_html_grid_in_fixed_parent(&mut input);
+        let error = TaffyLayoutEngine.compute(&input).unwrap_err();
+        match change {
+            0 => assert!(
+                matches!(
+                    &error,
+                    crate::LayoutError::IndefinitePercentageBasis {
+                        property: actual,
+                        ..
+                    } if *actual == property
+                ),
+                "indefinite basis: {error:?}"
+            ),
+            _ => assert!(
+                matches!(
+                    &error,
+                    crate::LayoutError::UnsupportedGridContainerStyle {
+                        property: actual,
+                        ..
+                    } if *actual == property
+                ),
+                "constraint {change}: {error:?}"
+            ),
+        }
+    }
+
+    let mut overflow = root_html_implicit_row_list_grid(
+        1.0,
+        &[20.0, 20.0, 10.0, 10.0, 10.0, 10.0],
+        vec![GridTrackSize::Percentage(0.0)],
+    );
+    overflow.nodes[0].style.gap.row = LayoutLengthPercentage::percent(f32::MAX);
+    wrap_root_html_grid_in_fixed_parent(&mut overflow);
+    let error = TaffyLayoutEngine.compute(&overflow).unwrap_err();
+    assert!(
+        matches!(&error, crate::LayoutError::InvalidGridTrack { .. }),
+        "aggregate gap overflow: {error:?}"
+    );
+}
+
+#[test]
 fn root_html_mixed_px_percentage_implicit_rows_resolve_against_definite_height_and_overflow_visibly()
  {
     let input = root_html_implicit_row_list_grid(
