@@ -1,0 +1,69 @@
+{
+  "source_sha256": "4c11d2a68080d514b17c8f292a74d81b0cd567d23b1fa8967f83b879bbda5b3b",
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "viewport_css_px": [
+    1280,
+    633
+  ],
+  "dpr": 1,
+  "tolerance_css_px": 0.02,
+  "root": {
+    "frame": [
+      0,
+      0,
+      120,
+      70
+    ],
+    "columns": [
+      40,
+      80
+    ],
+    "rows": [
+      {
+        "numerator": 70,
+        "denominator": 3
+      },
+      {
+        "numerator": 140,
+        "denominator": 3
+      }
+    ],
+    "areas": "\"header header\" \"side content\""
+  },
+  "items": {
+    "header": [
+      0,
+      0,
+      120,
+      {
+        "numerator": 70,
+        "denominator": 3
+      }
+    ],
+    "side": [
+      0,
+      {
+        "numerator": 70,
+        "denominator": 3
+      },
+      40,
+      {
+        "numerator": 140,
+        "denominator": 3
+      }
+    ],
+    "content": [
+      40,
+      {
+        "numerator": 70,
+        "denominator": 3
+      },
+      80,
+      {
+        "numerator": 140,
+        "denominator": 3
+      }
+    ]
+  },
+  "calculation": "Each definite axis distributes free space in the 1:2 flex-factor ratio. Area rectangles derive item edges from those track boundaries. Values above are exact rational CSS-pixel geometry, not rounded Chrome CSSOM strings."
+}
