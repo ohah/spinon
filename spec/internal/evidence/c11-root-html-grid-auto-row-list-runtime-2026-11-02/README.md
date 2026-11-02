@@ -45,3 +45,7 @@ PR [#1042](https://github.com/ohah/spinon/pull/1042)의 GitHub 본문에서 Agen
 [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 별도 [구현 PR diff 실패 관점 30개](./pr-diff-review-30.md)를 작성했다. 검토 중 발견한 두 경계 누락은 invalid auto-row list를 implicit expansion 전에 검사하도록 수정하고, list 자체에 공통 10,000-track cap을 적용해 회귀 테스트로 확인했다.
 
 C11.1/C11 parent checklist와 공식 완료 `72/213`은 유지한다. 이 후보는 기본 parsed Root HTML 경로의 fixed-px implicit-row list만 연결한다. Arbitrary track values, named-area 조합, `grid-auto-columns` lists, implicit columns, 일반 CSS admission, WPT 또는 C11 전체 완료를 의미하지 않는다.
+
+병합 시각·SHA·required-check 상태는 [PR #1042 병합 기록](./merge-PR1042.md)에 있다.
+
+병합 후 공식 계획·상태 대장·내부 계약 동기화 diff는 별도 [30개 실패 관점 검토](./roadmap-postmerge-docs-review-30.md)에 기록했다.
