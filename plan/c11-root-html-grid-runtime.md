@@ -1,5 +1,7 @@
 # C11.1 · parsed root HTML author CSS Grid runtime integration
 
+**2026-11-02 sparse column-flow 후속 후보:** [전용 계획](./c11-root-html-grid-column-flow.md)은 기본 Root HTML runtime에서 명시 2×2 cells 안의 sparse `grid-auto-flow: column`만 제안한다. 계획 PR과 구현/runtime 근거가 생기기 전까지 기존 제한의 non-default auto-flow 거부는 그대로이며, 이 후보는 C11.1/C11 완료나 공식 `72/213`을 바꾸지 않는다.
+
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [레이아웃 계약 0009](../spec/internal/0009-layout-engine.md)
 
 **Root HTML percentage-track 후속:** 계획 PR [#1018](https://github.com/ohah/spinon/pull/1018)에 이어 제한 구현 PR [#1019](https://github.com/ohah/spinon/pull/1019)이 2026-11-02T01:42:07Z Rebase and merge됐다(merge SHA `8e549ed55ac6f7e9611a4f7e1e571fca3a1e5684`). 범위와 한계는 [전용 계획](./c11-root-html-grid-percentage-tracks.md)에 기록한다. 기존 `px`/`fr` 동작과 공식 C11.1/C11 완료 상태는 그대로이며 공식 완료는 `72/213`이다.

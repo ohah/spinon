@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spinon root HTML Grid column-flow precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-width: 0;
+      }
+
+      main {
+        box-sizing: border-box;
+        display: grid;
+        width: 100px;
+        height: 60px;
+        grid-template-columns: 30px 70px;
+        grid-template-rows: 20px 40px;
+        grid-auto-flow: column;
+        background-color: #101820;
+      }
+
+      main > div {
+        box-sizing: border-box;
+      }
+
+      .item-a {
+        width: 30px;
+        height: 20px;
+        background-color: #e5484d;
+      }
+
+      .item-b {
+        width: 30px;
+        height: 40px;
+        background-color: #3a8f5b;
+      }
+
+      .item-c {
+        width: 70px;
+        height: 20px;
+        background-color: #3870e0;
+      }
+
+      .item-d {
+        width: 70px;
+        height: 40px;
+        background-color: #f0cc46;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="item-a"></div>
+      <div class="item-b"></div>
+      <div class="item-c"></div>
+      <div class="item-d"></div>
+    </main>
+  </body>
+</html>
