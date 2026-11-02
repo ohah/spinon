@@ -1,6 +1,6 @@
 # C11.1 percentage gap PR 변경분 적대 검토 30개
 
-검토 대상은 `origin/main...9450daaf` 전체 diff다. 계획 검토 20개와 구현/runtime 검토 20개의 표를 재사용하지 않고, 이번 PR에서 바뀐 Rust 모듈 경계·호출 순서·adapter·fixture 연결을 별도 관점으로 확인했다.
+검토 대상은 `origin/main...9450daaf`의 구현/source delta와 이후 추가한 계약 0059 동기화다. 아래 표는 계획 검토 20개와 구현/runtime 검토 20개의 표를 재사용하지 않고, 이번 PR에서 바뀐 Rust 모듈 경계·호출 순서·adapter·fixture 연결 및 추가 계약 변경을 별도 관점으로 확인한다. 검토 기록 자체는 산출물이며 제품 변경 delta에 포함하지 않는다.
 
 | # | 이번 변경에서 확인한 실패 경로·불변 조건 | 검토 결과 |
 |---:|---|---|
@@ -33,6 +33,6 @@
 | 27 | named-area candidate gate가 layout projection과 다른 unit 또는 axis를 씀 | named-area 경로는 computed row height/column width를 공용 resolver에 넘긴다. spanning header와 lower/right item geometry의 percentage scene이 통과했다. |
 | 28 | named-area에서 신규 px/percentage admission이 unsupported gap 형태까지 넓어짐 | named-area는 resolver가 성공한 유한·비음수 px/percentage/normal만 받으며 기존 unsupported placement와 track gate는 그대로다. 기존 px control 및 unsupported negative scene이 통과했다. |
 | 29 | helper 이동/추가가 unrelated Grid/Flex, 공개 API, FFI 또는 Cargo feature로 새어 나감 | 전체 diff에서 변경은 layout/style projection, 테스트, 계획 및 evidence에 한정된다. public export, FFI symbol, feature, Flex dispatch 변경은 없다. 통과. |
-| 30 | 계획·실행 자료가 서로 다른 implementation commit 또는 임시 bootstrap 입력을 가리킴 | simulator source revision은 `f92352d9` 구현 commit, fixture/probe hash, 두 artifact hash를 기록하고 복원된 bootstrap hash 목록도 연결한다. README는 시각 smoke와 pixel readback 한계를 구분한다. 통과. |
+| 30 | 코드 변경과 제한 동작 계약이 어긋나거나 내부 계약 숫자 버전이 불필요하게 상승 | [계약 0059](../../0059-c11-grid-layout.md)의 신규 후보 절은 basis, 허용값, fail-closed 경계, adapter 한계와 실행 근거를 설명하고 `0.1.0`을 유지한다. source revision 및 artifact hash는 [runtime README](./README.md)에 묶여 있다. 통과. |
 
 검토 결론: PR 변경 범위에서 추가 수정이 필요한 차단 결함을 찾지 못했다. focused 검증과 시뮬레이터 근거는 [실행 README](./README.md)에 있고, broad package suites는 실패 항목을 그대로 명시한다. C11.1/C11 및 공식 완료 `72/213`은 이 변경으로 완료 처리하지 않는다.
