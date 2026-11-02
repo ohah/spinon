@@ -3,6 +3,7 @@
   "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
   "viewport_css_px": [1280, 633],
   "device_pixel_ratio": 1,
+  "source_note": "The item colors use equivalent background-color declarations so the pages stay within the current Root HTML CSS input profile; Grid declarations are unchanged.",
   "areas": "\"header header\" \"side content\"",
   "cases": {
     "both-axes": {
@@ -47,5 +48,5 @@
       }
     }
   },
-  "capture": "Agent Browser session spinon-c11-area-percent-precompare followed by spinon-c11-area-percent-cssom; both sessions were closed after capture."
+  "capture": "Agent Browser session spinon-c11-area-percent-verify captured computed styles, DOMRects, and screenshots; the browser session was closed after capture."
 }

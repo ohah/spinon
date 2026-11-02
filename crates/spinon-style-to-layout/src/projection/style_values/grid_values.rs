@@ -228,10 +228,15 @@ fn validate_root_html_named_area_template(
     );
     let bounded_fraction_tracks_match = fractional_columns_match && fractional_rows_match;
     let fixed_tracks_match = columns_match && rows_match;
-    if !(fixed_tracks_match || bounded_fraction_tracks_match) {
+    let percentage_tracks_match =
+        contains_percentage_track(&grid.columns) || contains_percentage_track(&grid.rows);
+    let percentage_area_tracks_match = percentage_tracks_match
+        && is_two_direct_px_percentage_tracks(&grid.columns)
+        && is_two_direct_px_percentage_tracks(&grid.rows);
+    if !(fixed_tracks_match || bounded_fraction_tracks_match || percentage_area_tracks_match) {
         return Err(unsupported(
             "grid-template-areas",
-            "Root HTML named-area 제한 경로는 기존 고정 px 트랙 또는 definite 양 축의 1fr 2fr 트랙만 지원합니다",
+            "Root HTML named-area 제한 경로는 기존 고정 px/1fr 2fr 트랙 또는 두 축의 직접 px/percentage 트랙만 지원합니다",
         ));
     }
     let expected = [
@@ -260,6 +265,22 @@ fn validate_root_html_named_area_template(
         ));
     }
     Ok(())
+}
+
+fn contains_percentage_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    tracks
+        .iter()
+        .any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_)))
+}
+
+fn is_two_direct_px_percentage_tracks(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    matches!(
+        tracks,
+        [
+            ComputedCssGridTrackSize::LengthPx(_) | ComputedCssGridTrackSize::Percentage(_),
+            ComputedCssGridTrackSize::LengthPx(_) | ComputedCssGridTrackSize::Percentage(_)
+        ]
+    )
 }
 
 fn validate_combined_grid_line_area_metadata(

@@ -183,11 +183,11 @@ fn c11_1_root_html_default_runtime_rejects_fraction_outside_its_bounded_profile(
             r#"<div class="a"></div><div class="b"></div>"#,
         ),
         (
-            "percentage tracks remain unsupported with named areas",
+            "percentage and fraction tracks remain unsupported with named areas",
             "grid-template-areas",
             "120px",
             "70px",
-            "25% 75%",
+            "25% 1fr",
             "25% 75%",
             "0",
             "grid-template-areas: \"header header\" \"side content\";",
