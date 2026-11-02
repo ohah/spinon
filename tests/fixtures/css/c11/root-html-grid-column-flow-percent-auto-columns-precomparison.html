@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.1 percentage implicit columns</title>
+<style>
+  html,
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #grid {
+    display: grid;
+    width: 240px;
+    height: 63px;
+    grid-template-columns: 30px 40px;
+    grid-template-rows: 20px 40px;
+    grid-auto-flow: column;
+    grid-auto-columns: 10% 15%;
+    column-gap: 5px;
+    row-gap: 3px;
+    direction: ltr;
+    writing-mode: horizontal-tb;
+    background: rgb(16 24 32);
+  }
+
+  .item {
+    width: 10px;
+    height: 10px;
+  }
+
+  #item-0 { background: rgb(229 72 77); }
+  #item-1 { background: rgb(58 143 91); }
+  #item-2 { background: rgb(56 112 224); }
+  #item-3 { background: rgb(240 204 70); }
+  #item-4 { background: rgb(155 89 182); }
+  #item-5 { background: rgb(230 126 34); }
+  #item-6 { background: rgb(22 160 133); }
+  #item-7 { background: rgb(211 84 0); }
+  #item-8 { background: rgb(142 68 173); }
+  #item-9 { background: rgb(41 128 185); }
+  #item-10 { background: rgb(192 57 43); }
+  #item-11 { background: rgb(39 174 96); }
+</style>
+<div id="grid">
+  <div class="item" id="item-0"></div>
+  <div class="item" id="item-1"></div>
+  <div class="item" id="item-2"></div>
+  <div class="item" id="item-3"></div>
+  <div class="item" id="item-4"></div>
+  <div class="item" id="item-5"></div>
+  <div class="item" id="item-6"></div>
+  <div class="item" id="item-7"></div>
+  <div class="item" id="item-8"></div>
+  <div class="item" id="item-9"></div>
+  <div class="item" id="item-10"></div>
+  <div class="item" id="item-11"></div>
+</div>
