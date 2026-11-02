@@ -1,0 +1,6 @@
+2f58aa4b35548ce178a053afeeb56a788b6de0c52abbe6bab0ee34ad80ce71c7  tests/fixtures/css/c11/root-html-grid-percentage-precomparison.html
+e48278bcae5c9dbf1510ef56edb9fec8413bc4cf78ffbc9316c99bc07aa1cb8c  tests/fixtures/css/c11/root-html-grid-percentage-runtime.html
+219e33d95f06d7c6a531af1aa79597596a3a7ef290dc3db48d824cb5dd5a9ba2  spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/expected.json
+e612d2a58733c6de3e51ccba9c0498c2761b1796197916fa301b8196d49831ce  spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/chrome156-observation.json
+050e8db9a98d61fcb91f5f2f13b6a8675a40bcd3070606d33cacd9a71f708191  spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/chrome156-agent-browser.png
+87288ba54b73e9295426f527d7f4c7864ded586618e1f44c6c48579a63f373b0  spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/chrome156-runtime-scene.png
