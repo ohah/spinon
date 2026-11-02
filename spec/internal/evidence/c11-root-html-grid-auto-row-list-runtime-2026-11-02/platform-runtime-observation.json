@@ -1,0 +1,63 @@
+{
+  "task": "C11.1 parsed Root HTML grid-auto-rows fixed-px list",
+  "input": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-row-list-precomparison.html",
+    "sha256": "963d5b05c6c64c8f64638e3cc6d4268cf364e9c52c8d595d0ca973814e77d857",
+    "rootCssPx": [100, 100],
+    "computedGridAutoRows": [15, 25],
+    "expectedImplicitRows": [15, 25, 15]
+  },
+  "android": {
+    "device": "API 37 ARM64 AVD spinon_api37_0_applied_txn",
+    "renderer": "ANGLE/Vulkan/SwiftShader",
+    "route": "default index.html",
+    "fixtureFlags": "all off; C04 runtime GPU only",
+    "runtime": {
+      "layout": "ready",
+      "boxes": 11,
+      "viewportCssPx": [411.42856, 841.52374],
+      "rootCssPx": [411.42856, 100],
+      "drawPresentBoxes": 11
+    },
+    "appSha256": "1abecc713c812165f79f4b36e4d8f1d4febd4a2188d6616c5db69352fb4394d2",
+    "screenshot": {
+      "path": "android-api37-avd-pass03.png",
+      "sha256": "5d3631ffc58934ee9f0c54797ce8b18190230772a02ac126a0eb86d3d8ca729a"
+    },
+    "buildLog": "android-build-pass04.log",
+    "runtimeLog": "android-api37-avd-runtime-pass03-summary.log",
+    "initialProbeFailure": {
+      "reason": "first probe called unsupported body.querySelector",
+      "artifacts": [
+        "android-api37-avd-probe-failure.log",
+        "android-api37-avd-probe-failure.png",
+        "root-app-runtime-probe-first-attempt.js"
+      ],
+      "classification": "probe failure; corrected probe passed"
+    }
+  },
+  "ios": {
+    "device": "iPhone 17 Pro Simulator",
+    "os": "iOS 26.2",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "renderer": "Metal Simulator GPU",
+    "route": "default index.html",
+    "fixtureFlags": "all off; C04 runtime GPU only",
+    "runtime": {
+      "layout": "ready",
+      "boxes": 11,
+      "viewportCssPx": [402, 778],
+      "rootCssPx": [402, 100],
+      "drawPresentBoxes": 11
+    },
+    "appExecutableSha256": "4c94f1b806ba770d791b97d30ca7794ff3b86386de3ea041856b0fe1bfe45e61",
+    "screenshot": {
+      "path": "ios-26_2-simulator-pass03.png",
+      "sha256": "7c354c76a9f37d0efde15542e6000d4fed2f206e8208e3e59e1e8dcc4e5607d1"
+    },
+    "buildLog": "ios-simulator-build-pass03.log",
+    "runtimeLog": "ios-simulator-runtime-pass03-summary.log"
+  },
+  "visualEvidenceBoundary": "screenshots show app display only; no PixelCopy, Metal drawable readback, or compositor-after equality",
+  "processStateAfterCapture": "app processes stopped on both simulators"
+}

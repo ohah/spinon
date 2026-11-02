@@ -1,0 +1,13 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+GRID_RESERVATION_FAILURE site=VisibleItemList observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=RowLockedCursor observed=true expected_node=1 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+GRID_RESERVATION_FAILURE site=ExpandedRows observed=true expected_node=1 expected_property=grid-template-rows returned_error=true
+GRID_RESERVATION_FAILURE site=OccupancyRows observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+GRID_RESERVATION_FAILURE site=OccupancyIntervals observed=true expected_node=2 expected_property=grid-placement-occupancy returned_error=true
+test grid::auto_placement_tests::actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_worker ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 338 filtered out; finished in 0.00s

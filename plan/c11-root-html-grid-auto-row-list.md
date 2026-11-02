@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid runtime](./c11-root-html-grid-runtime.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 후보. Chrome 156 Agent Browser 사전 비교만 완료했다. 구현은 시작하지 않았다. 이 작업은 기본 parsed Root HTML runtime에서 제한된 fixed-px `grid-auto-rows` list를 implicit row에 순환 적용한다. 구현·검증 후에도 C11.1/C11 상위 체크와 공식 완료 `72/213`은 별도 판단 전까지 그대로 둔다.
+**상태:** 계획 PR [#1041](https://github.com/ohah/spinon/pull/1041)이 병합됐다. 기본 parsed Root HTML runtime 구현 후보는 테스트·구현/runtime 실패 관점 20개와 구현 PR diff 실패 관점 30개 검토를 마쳤으며, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기본 route의 layout-ready 및 11-box draw/present를 확인했다. 구현 PR 생성·병합이 남아 있다. Simulator 화면은 PixelCopy·Metal readback이 아니다. 이 slice를 병합해도 C11.1/C11 상위 체크와 공식 완료 `72/213`은 그대로 둔다.
 
 ## 목적과 경계
 
@@ -21,9 +21,9 @@
 
 ## 사전 기준과 독립 기대값
 
-[Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.md)는 같은 repository fixture, raw computed values, item frame과 screenshot을 보존한다. fixture의 Grid root는 `100×100px`, explicit columns는 `[40px,55px]`, explicit row는 `[20px]`, row/column gap은 `5px`, `align-content:start`, `grid-auto-rows:15px 25px`다. 여덟 빈 direct block item의 크기를 DOM row에 맞춘다.
+[Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.md)는 같은 repository fixture, raw computed values, item frame과 screenshot을 보존한다. fixture의 Grid root는 `100×100px`, explicit columns는 `[40px,55px]`, explicit row는 `[20px]`, row/column gap은 `5px`, 기본 `align-content:normal`·`justify-content:normal`, `grid-auto-rows:15px 25px`다. 여덟 빈 direct block item의 크기를 DOM row에 맞춘다. Root HTML 경로가 거부하는 non-default alignment declaration은 넣지 않는다.
 
-CSS Grid의 implicit track sizing list 순환 규칙과 고정 입력에서 직접 계산한 값은 다음과 같다. Explicit row 뒤에 만들어지는 세 implicit rows는 `[15,25,15]px`이다. Row starts는 `0`, `20+5=25`, `25+15+5=45`, `45+25+5=75`px이며 columns는 `[40,55]px`, column start는 `0`, `40+5=45`px다. 따라서 item frames는 네 DOM row의 각 item에 대해 `(0,0,40,20)`, `(45,0,55,20)`; `(0,25,40,15)`, `(45,25,55,15)`; `(0,45,40,25)`, `(45,45,55,25)`; `(0,75,40,15)`, `(45,75,55,15)`이다. Used row tracks와 세 row gaps의 합은 `90px`이고, 나머지 `10px`은 `align-content:start` 때문에 root 하단에 남는다.
+CSS Grid의 implicit track sizing list 순환 규칙과 고정 입력에서 직접 계산한 값은 다음과 같다. Explicit row 뒤에 만들어지는 세 implicit rows는 `[15,25,15]px`이다. Row starts는 `0`, `20+5=25`, `25+15+5=45`, `45+25+5=75`px이며 columns는 `[40,55]px`, column start는 `0`, `40+5=45`px다. 따라서 item frames는 네 DOM row의 각 item에 대해 `(0,0,40,20)`, `(45,0,55,20)`; `(0,25,40,15)`, `(45,25,55,15)`; `(0,45,40,25)`, `(45,45,55,25)`; `(0,75,40,15)`, `(45,75,55,15)`이다. Used row tracks와 세 row gaps의 합은 `90px`이다. `normal`은 고정 track을 늘리지 않으므로 나머지 `10px`은 root 하단에 남는다.
 
 Chrome observation도 `grid-template-rows: 20px 15px 25px 15px`, 같은 8개 item frame과 root frame `[0,0,100,100]`을 반환했다. 이 비교는 해당 브라우저 관측의 기록이며 Chrome 출력만으로 규범을 정의하지 않는다. fixture SHA-256, 관찰 JSON과 screenshot SHA-256은 위 evidence README에 기록했다.
 
@@ -35,7 +35,7 @@ Chrome observation도 `grid-template-rows: 20px 15px 25px 15px`, 같은 8개 ite
 4. Row list 유효성, track-count cap과 allocation failure를 배치 결과/frame publication보다 먼저 검사한다. 오류 입력은 root/item partial frame, row trace 또는 surface draw를 남기지 않아야 한다. `display:none`과 revision/identity 처리도 명시적인 regression으로 둔다.
 5. Rust projection/layout matrix는 기존 scalar case와 위 Chrome oracle을 포함해 implicit row 1·2·3개에 대한 순환, 0px 경계, row-gap geometry, source-order control, invalid/unsupported list rejection, quota/allocation failure, no-partial-output를 확인한다. 기대값은 고정 fixture 식과 기록된 Chrome observation을 함께 사용한다.
 6. 같은 parsed HTML input을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS Simulator의 기본 Root HTML runtime route에서 실행한다. Build/app/source/input hashes, root/item frames, expanded tracks, layout revision, `layout=ready`, draw/present와 screenshots를 남긴다. PixelCopy/Metal drawable을 수행하면 해당 표면 결과를 draw/present와 구분하며 software AVD, simulator surface, physical device, hardware GPU, compositor-after evidence를 서로 바꾸어 주장하지 않는다.
-7. `cargo fmt`, focused Rust/runtime checks, affected crate Clippy와 Android/iOS simulator builds를 실행한다. PR check rollup이 비었거나 required checks가 없으면 CI 통과로 기록하지 않는다. 구현/runtime 실패 관점 20회와 PR 변경 diff 20회는 별도 artifact로 보존한다.
+7. `cargo fmt`, focused Rust/runtime checks, affected crate Clippy와 Android/iOS simulator builds를 실행한다. PR check rollup이 비었거나 required checks가 없으면 CI 통과로 기록하지 않는다. 구현/runtime 실패 관점 20회와 PR 변경 diff 30회는 별도 artifact로 보존한다.
 8. 구현 PR 병합 후 `plan/c11-root-html-grid-runtime.md`, `spec/STATUS.md`, internal contract 0059와 공개 roadmap을 확인하고 이 bounded behavior만 반영한다. C11.1/C11/C11.4 완료 checkbox, WPT 적합성 및 공식 `72/213`은 이 slice만으로 바꾸지 않는다.
 
 ## 실패 판정과 미포함 주장

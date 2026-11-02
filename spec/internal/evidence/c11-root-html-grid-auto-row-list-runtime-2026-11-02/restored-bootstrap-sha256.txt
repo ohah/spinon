@@ -1,0 +1,11 @@
+Examples bootstrap files after simulator capture:
+e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9  examples/bootstrap/index.html
+b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32  examples/bootstrap/root-app.js
+
+Generated bootstrap files after simulator capture:
+f2d0d35e88ce89d64ebaac5d37365ad9621735f54f6399e90a1959a7412ccd5d  build/spinon/bootstrap/index.html
+c3e817bc8ddbeab5734e353136b94894c0e04d41d0d51ec01242c798e8b88ce5  build/spinon/bootstrap/root-app.js
+a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c  build/spinon/bootstrap/app.js
+
+Each value matches the corresponding file in `original-bootstrap/`.
+The later pass02/pass03 builds used separate backups named `original-bootstrap-pass02/` and `original-bootstrap-pass03/`; their pre-run values match these same hashes.

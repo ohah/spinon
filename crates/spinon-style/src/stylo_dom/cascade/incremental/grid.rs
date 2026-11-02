@@ -40,6 +40,7 @@ pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_intrinsic_tracks: bool,
     pub(super) allow_auto_repeat: bool,
     pub(super) allow_fixed_auto_track_lists: bool,
+    pub(super) allow_root_html_fixed_auto_row_lists: bool,
     pub(super) allow_template_areas: bool,
 }
 
@@ -94,6 +95,7 @@ pub(super) fn computed_grid_layout(
         allow_intrinsic_tracks,
         allow_auto_repeat,
         allow_fixed_auto_track_lists,
+        allow_root_html_fixed_auto_row_lists,
         allow_template_areas,
     } = options;
     let template_areas = if allow_template_areas {
@@ -196,7 +198,7 @@ pub(super) fn computed_grid_layout(
         node,
         property_value(properties, "grid-auto-rows"),
         allow_typed_auto_track_sizes,
-        allow_fixed_auto_track_lists,
+        allow_fixed_auto_track_lists || allow_root_html_fixed_auto_row_lists,
     )?;
     let auto_columns = computed_grid_auto_columns(
         computed.clone_grid_auto_columns(),

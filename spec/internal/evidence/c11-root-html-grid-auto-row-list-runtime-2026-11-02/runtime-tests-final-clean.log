@@ -1,0 +1,26 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 20 tests
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_keeps_mixed_and_out_of_scope_text_fail_closed ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_omits_whitespace_only_grid_text ... ok
+test session::tests::root_html_grid_implicit_rows::c11_1_root_html_default_runtime_cycles_fixed_px_implicit_row_lists ... ok
+test session::tests::root_html_grid_fr::c11_1_root_html_default_runtime_uses_the_shared_simulator_source ... ok
+test session::tests::root_html_grid_fr::positive_matrix::c11_1_root_html_default_runtime_uses_percentage_simulator_source_and_keeps_visible_overflow ... ok
+test session::tests::root_html_grid_implicit_rows::c11_1_root_html_default_runtime_handles_zero_and_repeated_fixed_implicit_rows ... ok
+test session::tests::root_html_grid_integer_repeat::c11_1_root_html_default_runtime_expands_integer_repeat_for_bounded_direct_tracks ... ok
+test session::tests::root_html_grid_integer_repeat::c11_1_root_html_default_runtime_ignores_invalid_repeat_declaration_after_valid_tracks ... ok
+test session::tests::root_html_grid_implicit_rows::c11_1_root_html_default_runtime_cycles_fixed_px_lists_for_one_two_and_three_implicit_rows ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_renders_one_anonymous_grid_text_item ... ok
+test session::tests::root_html_grid_anonymous_text::c11_1_root_html_default_runtime_keeps_adjacent_text_sources_in_one_grid_item ... ok
+test session::tests::root_html_grid_implicit_rows::c11_1_root_html_default_runtime_places_fixed_implicit_rows_and_preserves_hidden_items ... ok
+test session::tests::root_html_grid_implicit_rows::composition::c11_1_root_html_default_runtime_combines_fraction_percentage_and_fixed_implicit_rows ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_projects_author_grid_tracks_and_auto_places_items ... ok
+test session::tests::root_html_grid_fr::positive_matrix::c11_1_root_html_default_runtime_lays_out_percentage_tracks_from_author_css ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_applies_fixed_px_grid_gaps ... ok
+test session::tests::root_html_grid_fr::positive_matrix::c11_1_root_html_default_runtime_lays_out_fraction_tracks_from_author_css ... ok
+test session::tests::root_html_grid_implicit_rows::c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations_atomically ... ok
+test session::tests::root_html_grid::c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs ... ok
+test session::tests::root_html_grid_fr::rejection_matrix::c11_1_root_html_default_runtime_rejects_fraction_outside_its_bounded_profile ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 204 filtered out; finished in 1.30s

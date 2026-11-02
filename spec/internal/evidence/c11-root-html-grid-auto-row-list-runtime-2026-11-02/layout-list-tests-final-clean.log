@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 6 tests
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_checks_list_limit_without_implicit_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_rejects_invalid_values_without_implicit_rows ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_rejects_non_px_and_invalid_entries ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_cycles_from_first_implicit_row ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_accepts_zero_and_cycles_after_it ... ok
+test grid::auto_placement_tests::root_html_implicit_rows_tests::root_html_fixed_px_implicit_row_list_checks_resource_limit_before_expansion ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 333 filtered out; finished in 0.13s

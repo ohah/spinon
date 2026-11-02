@@ -590,11 +590,11 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             ),
         ),
         (
-            "explicit implicit row sizing",
+            "non-fixed implicit row list",
             "unsupported_computed_value",
             SOURCE.replace(
                 "grid-template-rows: 70px;",
-                "grid-template-rows: 70px;\n        grid-auto-rows: 20px 30px;",
+                "grid-template-rows: 70px;\n        grid-auto-rows: 20px 30%;",
             ),
         ),
         (

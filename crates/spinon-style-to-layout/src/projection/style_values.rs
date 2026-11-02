@@ -8,9 +8,9 @@ use spinon_layout::{
 };
 use spinon_style::{
     ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridAutoColumns,
-    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssPosition,
-    ComputedCssSpacingValue, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssGridAutoFlow, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedCssMaxSize,
+    ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -1104,7 +1104,7 @@ fn validate_root_html_grid_item_capacity(
             )
         };
         let fixed_root_implicit_rows =
-            matches!(grid.auto_rows, ComputedCssGridAutoRows::LengthPx(_))
+            grid_values::root_html_has_fixed_implicit_rows(&grid.auto_rows)
                 && grid.auto_flow == ComputedCssGridAutoFlow::Row
                 && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
                 && grid.template_areas.is_none()
@@ -1217,7 +1217,7 @@ fn validate_root_html_grid_box_inputs(
         if let Some(grid) = element.grid_layout.as_ref() {
             root_html_grid_tracks::validate_fraction_axis_inputs(element, grid)?;
             root_html_grid_tracks::validate_percentage_axis_inputs(element, grid)?;
-            if matches!(grid.auto_rows, ComputedCssGridAutoRows::LengthPx(_)) {
+            if grid_values::root_html_has_fixed_implicit_rows(&grid.auto_rows) {
                 for (property, initial) in [
                     ("align-items", "normal"),
                     ("align-content", "normal"),

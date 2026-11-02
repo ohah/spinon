@@ -84,6 +84,12 @@ Chrome 156 independent expectation의 one-row frame, zero-height boundary, two-r
 
 구현 후보 PR [#1024](https://github.com/ohah/spinon/pull/1024)은 일반 CSS admission, WPT 적합성, C11.1/C11.3.3/C11.4 또는 C11 전체 완료를 뜻하지 않는다. 공식 `72/213`을 유지한다.
 
+## C11.1 parsed Root HTML fixed `grid-auto-rows` px list · bounded implementation candidate · 2026-11-02
+
+현재 구현 후보는 기존 `RuntimeRootHtmlTextPaintV1`·`RootHtmlImplicitRowsV1` 경계에서 단일 px 값에 더해 비어 있지 않은 px-only `grid-auto-rows` track list를 보존·투영하고, explicit rows 뒤 첫 implicit row부터 순환 적용한다. 각 값은 finite·non-negative여야 한다. `grid-auto-columns` 목록, percentage/`fr`/intrinsic implicit sizing, named-area와의 결합, implicit columns, dense/column flow, authored placement, nested/text/image item 및 일반 CSS admission은 범위 밖이다. Existing 10,000-track bound와 failure atomicity를 유지하며 내부 숫자 버전 `0.1.0`은 바꾸지 않는다.
+
+Chrome 156 비교 fixture의 fixed geometry 및 독립 산술을 기준으로 Root HTML runtime이 implicit row 1·2·3개에서 순환 frame을 출력한다. Cascade 4/4, style-to-layout 11/11, layout list·allocation 7/7, Root HTML runtime 20/20, 변경 네 크레이트 all-target Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 HTML route에서 `layout=ready`, root 높이 100px, 11-box draw/present를 확인했다. Screenshots는 화면 확인이며 PixelCopy·Metal readback이 아니다. 구현/runtime 실패 관점 20개와 PR diff 실패 관점 30개 검토를 마쳤으며, 구현 PR 생성·병합이 남아 있다. 이 후보는 C11.1/C11 완료와 공식 `72/213` 증가를 뜻하지 않는다. [계획과 수락 기준](../../plan/c11-root-html-grid-auto-row-list.md) · [Chrome 사전 비교](./evidence/c11-root-html-grid-auto-row-list-precomparison-2026-11-02/README.md) · [시뮬레이터·테스트 근거](./evidence/c11-root-html-grid-auto-row-list-runtime-2026-11-02/README.md).
+
 ## C11.1 direct `fr`·percentage explicit track과 fixed implicit row 결합 · 병합된 제한 구현 · 2026-11-02
 
 계획 PR [#1026](https://github.com/ohah/spinon/pull/1026)은 rebase merge되어 `3f7bfa71ae67a1f61cb8a5154f0cb74137bad9fc`에 포함됐다. 이 후속 후보는 같은 `RuntimeRootHtmlTextPaintV1`·`RootHtmlImplicitRowsV1` 경계에서 기존 finite non-negative direct px explicit track 외에 direct finite non-negative percentage와 fraction explicit track도 단일 fixed-px `grid-auto-rows`와 조합한다. Percentage·fraction은 기존과 같이 축별 definite root content-box basis를 요구한다. Track sizing과 sparse row auto-placement는 기존 Taffy 0.15.0 경로를 재사용한다.

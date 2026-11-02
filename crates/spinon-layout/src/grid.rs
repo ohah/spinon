@@ -335,6 +335,13 @@ pub struct GridContainerInput {
     pub track_sizing_trace_enabled: bool,
 }
 
+fn is_fixed_px_auto_track_list(tracks: &[GridTrackSize]) -> bool {
+    !tracks.is_empty()
+        && tracks
+            .iter()
+            .all(|track| matches!(track, GridTrackSize::LengthPx(_)))
+}
+
 pub(super) fn validate_grid_layout(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
@@ -392,10 +399,12 @@ pub(super) fn validate_grid_layout(
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
             (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::LengthPx(_)) => {}
+            (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::TrackList(tracks))
+                if is_fixed_px_auto_track_list(tracks) => {}
             (GridPlacementMode::RootHtmlImplicitRowsV1, _) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
-                    reason: "Root HTML implicit row mode requires one fixed px grid-auto-rows value",
+                    reason: "Root HTML implicit row mode requires fixed px grid-auto-rows values",
                 });
             }
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto)
@@ -1089,10 +1098,38 @@ fn validate_root_html_implicit_rows_contract(
     if container.auto_flow != crate::GridAutoFlow::Row {
         return Err(LayoutError::UnsupportedGridAutoFlow(node));
     }
-    if !matches!(container.auto_rows, crate::GridAutoRows::LengthPx(_)) {
+    if !matches!(container.auto_rows, crate::GridAutoRows::LengthPx(_))
+        && !matches!(
+            &container.auto_rows,
+            crate::GridAutoRows::TrackList(tracks) if is_fixed_px_auto_track_list(tracks)
+        )
+    {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
-            reason: "Root HTML implicit row mode requires one fixed px grid-auto-rows value",
+            reason: "Root HTML implicit row mode requires fixed px grid-auto-rows values",
+        });
+    }
+    if let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows
+        && tracks.len() > GRID_MAX_TRACKS
+    {
+        return Err(LayoutError::GridTrackLimitExceeded {
+            node,
+            property: "grid-auto-rows",
+            count: tracks.len(),
+            maximum: GRID_MAX_TRACKS,
+        });
+    }
+    let invalid_auto_rows = match &container.auto_rows {
+        crate::GridAutoRows::LengthPx(value) => !value.is_finite() || *value < 0.0,
+        crate::GridAutoRows::TrackList(tracks) => tracks.iter().any(|track| {
+            matches!(track, crate::GridTrackSize::LengthPx(value) if !value.is_finite() || *value < 0.0)
+        }),
+        crate::GridAutoRows::Auto => false,
+    };
+    if invalid_auto_rows {
+        return Err(LayoutError::InvalidGridTrack {
+            node,
+            property: "grid-auto-rows",
         });
     }
     if container.auto_columns != crate::GridAutoColumns::Auto {
