@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "fixture": "tests/fixtures/css/c11/root-html-grid-fr-precomparison.html",
+  "fixtureSha256": "78f2dcd6304646029408056e6686c79d1d900236f5c391d2ca7f317354294816",
+  "spec": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-flex-tracks",
+  "fractionAlgorithm": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-find-fr-size",
+  "frameToleranceCssPx": 0.02,
+  "positive": [
+    {
+      "scene": "column-1-2",
+      "formula": "(130 - 10) / (1 + 2)",
+      "rootSize": [130, 40],
+      "computedGap": "0px 10px",
+      "tracks": { "columns": [40, 80], "rows": [40] },
+      "items": [[0, 0, 40, 40], [50, 0, 80, 40]]
+    },
+    {
+      "scene": "column-2-1",
+      "formula": "(130 - 10) / (2 + 1)",
+      "rootSize": [130, 40],
+      "computedGap": "0px 10px",
+      "tracks": { "columns": [80, 40], "rows": [40] },
+      "items": [[0, 0, 80, 40], [90, 0, 40, 40]]
+    },
+    {
+      "scene": "mixed-tracks",
+      "formula": "(160 - 30 - 2*10) / (1 + 2) = 110/3",
+      "rootSize": [160, 40],
+      "computedGap": "0px 10px",
+      "tracks": { "columns": [30, "110/3", "220/3"], "rows": [40] },
+      "items": [[0, 0, 30, 40], [40, 0, "110/3", 40], ["260/3", 0, "220/3", 40]]
+    },
+    {
+      "scene": "row-1-2",
+      "formula": "(130 - 10) / (1 + 2)",
+      "rootSize": [40, 130],
+      "computedGap": "10px 0px",
+      "tracks": { "columns": [40], "rows": [40, 80] },
+      "items": [[0, 0, 40, 40], [0, 50, 40, 80]]
+    },
+    {
+      "scene": "subunit-sum",
+      "formula": "factor sum 0.5 is treated as 1; (110 - 10) * 0.25 = 25",
+      "rootSize": [110, 40],
+      "computedGap": "0px 10px",
+      "tracks": { "columns": [25, 25], "rows": [40] },
+      "remainingInlineSpaceCssPx": 50,
+      "items": [[0, 0, 25, 40], [35, 0, 25, 40]]
+    },
+    {
+      "scene": "zero-factor",
+      "formula": "120 * [0,1] / (0 + 1)",
+      "rootSize": [120, 40],
+      "computedGap": "0px",
+      "tracks": { "columns": [0, 120], "rows": [40] },
+      "items": [[0, 0, 0, 40], [0, 0, 120, 40]]
+    },
+    {
+      "scene": "large-factor",
+      "formula": "1e38fr x 3 keeps factor sum 3e38 finite in f32; 120 / 3 = 40",
+      "rootSize": [120, 40],
+      "computedGap": "0px",
+      "tracks": { "columns": [40, 40, 40], "rows": [40] },
+      "items": [[0, 0, 40, 40], [40, 0, 40, 40], [80, 0, 40, 40]]
+    },
+    {
+      "scene": "renamed-reversed",
+      "formula": "same track sizing as column-1-2; item ownership follows source order",
+      "rootSize": [130, 40],
+      "computedGap": "0px 10px",
+      "tracks": { "columns": [40, 80], "rows": [40] },
+      "items": [[0, 0, 40, 40], [50, 0, 80, 40]],
+      "semanticOrder": ["semantic-blue", "semantic-red"]
+    }
+  ],
+  "browserDivergences": [
+    {
+      "scene": "large-factor-overflow",
+      "formula": "four finite 1e38fr factors sum to 4e38, beyond f32 max; the spec ratio gives 120 / 4 = 30px per track",
+      "specTracks": { "columns": [30, 30, 30, 30], "rows": [40] },
+      "chromeTracks": { "columns": [0, 0, 0, 0], "rows": [40] },
+      "chromeItems": [[0, 0, 0, 40], [0, 0, 0, 40], [0, 0, 0, 40], [0, 0, 0, 40]]
+    }
+  ],
+  "runtimeNegativeControls": [
+    {
+      "scene": "minmax-negative",
+      "cssIsValid": true,
+      "chromeTracks": { "columns": [40, 80], "rows": [40] },
+      "expectedRuntimeResult": "reject grid-template-columns because minmax() is outside this direct-length/fraction slice"
+    },
+    {
+      "scene": "named-area-negative",
+      "cssIsValid": true,
+      "chromeTracks": { "columns": [40, 80], "rows": [20, 50] },
+      "expectedRuntimeResult": "reject grid-template-areas when a fraction track is combined with named areas"
+    },
+    {
+      "scene": "indefinite-row-negative",
+      "cssIsValid": true,
+      "chromeTracks": { "columns": [40], "rows": [0, 0] },
+      "expectedRuntimeResult": "reject grid-template-rows because the flex axis has no definite CSS-pixel container size"
+    }
+  ]
+}
