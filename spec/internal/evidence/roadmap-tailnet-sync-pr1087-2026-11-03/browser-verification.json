@@ -1,0 +1,62 @@
+{
+  "schema": "spinon-roadmap-tailnet-agent-browser-verification-v1",
+  "date": "2026-11-03",
+  "sourceHead": "52b58b6bd7fde6073e1c5992e0c93a815a53a684",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "publication": {
+    "routeCount": 170,
+    "verifiedRouteCount": 170,
+    "criticalHttpRoutes": 17,
+    "criticalHttpRoutesPassed": 17,
+    "createdCount": 139,
+    "replacedCount": 19,
+    "identicalCount": 12,
+    "backupCheckCount": 19,
+    "noDeletes": true,
+    "previewServerRestarted": false,
+    "previewPid": 28040
+  },
+  "roadmap": {
+    "title": "스피논 구현 로드맵",
+    "counter": "215개 표시 · 공식 완료 78/215",
+    "inputCount": 215,
+    "checkedCount": 78,
+    "uniqueInputIds": 215,
+    "minmaxCardFound": true,
+    "minmaxCardLinkCount": 3,
+    "desktop": {
+      "viewport": [1440, 1000],
+      "documentWidth": 1440,
+      "bodyWidth": 1440,
+      "screenshot": {
+        "path": "tailnet-roadmap-agent-browser-desktop.png",
+        "bytes": 428760,
+        "sha256": "4f996eb9ab53a0dc09e7e68da3baf0fa0c6e8b4328febb1bfd6f9f669f711f74",
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "minmaxCardWidth": 362,
+      "screenshot": {
+        "path": "tailnet-roadmap-agent-browser-mobile.png",
+        "bytes": 126932,
+        "sha256": "fd2afaeacedba9355c46e241b76ebdfe74ea812b3bb7ca70288bb430382dd37d",
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "minmaxPlan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-root-html-grid-minmax.html",
+    "title": "C11.1 · parsed Root HTML Grid minmax() bounded explicit tracks - 스피논 문서",
+    "renderedH1": "C11.1 · parsed Root HTML Grid minmax() bounded explicit tracks",
+    "loadedImages": 1,
+    "brokenImages": 0
+  },
+  "browserClosed": true,
+  "agentBrowserProcessRemaining": false
+}

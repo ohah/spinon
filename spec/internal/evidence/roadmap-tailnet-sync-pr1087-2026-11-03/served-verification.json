@@ -1,0 +1,170 @@
+{
+  "sourceHead": "52b58b6bd7fde6073e1c5992e0c93a815a53a684",
+  "sourceTree": "1a22bb3534374f0ec951e14dec25bbe0fba52368",
+  "trackedDiffSha256": "993438bc1a436abf920531e46e4ff25380d03a8f9f60b1ad33228b317b3db5c8",
+  "patchRouteCount": 170,
+  "verifiedRouteCount": 170,
+  "verifiedPatchSha256": "57d1280ee91f5d4a29b67fe8fc99fb7914acbfcc71e27bc58e341fa3269b51b0",
+  "backupCheckCount": 19,
+  "backupChecks": [
+    "404.html",
+    "internal/0059-c11-grid-layout.html",
+    "internal/0059-c11-grid-layout.md",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-precomparison-2026-11-03/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/post-merge-status-review-30.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/pr-diff-review-30.html",
+    "internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/README.html",
+    "internal/evidence/roadmap-tailnet-sync-c11-4-full-size-kana-2026-11-03/roadmap-pr-diff-review-30.html",
+    "plan/c11-4-anonymous-grid-text-transform-full-size-kana.html",
+    "public/roadmap.html",
+    "roadmap.html",
+    "spec/internal/0059-c11-grid-layout.html",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/public/roadmap.html",
+    "spec/STATUS.html",
+    "spec/STATUS.md",
+    "STATUS.html",
+    "STATUS.md"
+  ],
+  "localAndTailnetHttp": [
+    {
+      "route": "roadmap.html",
+      "bytes": 534973,
+      "sha256": "2546d5f14f1b90ae4627de5cb4529e736e84c36c0107b40d31a7364321830329",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 791165,
+      "sha256": "047d21c94116b91c7e51dc36fd811664436360b1a765e64d464a50d898f715ba",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "bytes": 634514,
+      "sha256": "0d16b499ddebb11d7bcd48393e20169aa3f9783b33ba2b8bbaa803a5375a0938",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "bytes": 534973,
+      "sha256": "2546d5f14f1b90ae4627de5cb4529e736e84c36c0107b40d31a7364321830329",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "bytes": 634514,
+      "sha256": "0d16b499ddebb11d7bcd48393e20169aa3f9783b33ba2b8bbaa803a5375a0938",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "bytes": 534973,
+      "sha256": "2546d5f14f1b90ae4627de5cb4529e736e84c36c0107b40d31a7364321830329",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 550195,
+      "sha256": "b30946e0de12f91af0c45da88185db1537cbe8870c0e32df5e4e5fbb8f6f589a",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-root-html-grid-minmax.html",
+      "bytes": 56207,
+      "sha256": "a65b473125849b94c94ee43877bd0dae4cd2f27410da54e5d58632b24b5ef593",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-root-html-grid-minmax-plan-review-20.html",
+      "bytes": 41232,
+      "sha256": "01d40fade43f9754fa5f68535aae97df6b268efb78e4031da29a410175a29698",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-root-html-grid-minmax-implementation-review-20.html",
+      "bytes": 42238,
+      "sha256": "99e5bae4be2e4770b10839510a08ad68e9e45305a278ae19949cb5b0d4f8227f",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-root-html-grid-minmax-implementation-pr-diff-review-30.html",
+      "bytes": 44220,
+      "sha256": "9a6b663f112b6144586be74de3975f0ffd6a29d4b689d79a0650eb705dc202bd",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/README.html",
+      "bytes": 40006,
+      "sha256": "907e4b83303f5b41e6ef7b66352fb8839ce3602b9ebb17e589c8f0cef21ba405",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-minmax-runtime-2026-11-03/README.html",
+      "bytes": 42924,
+      "sha256": "f5c4879d1e805248af4565503c9f4330e73d7ab58b2cbd4b06946c92da8bf8ee",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-minmax-runtime-2026-11-03/README.html",
+      "bytes": 42939,
+      "sha256": "c7ccd9c37b82a4c7c6760eee7497c3cc9cd94b300e09cb3893d091c8dd7d6d55",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/roadmap-status-counter-identity.html",
+      "bytes": 40873,
+      "sha256": "0cf1c8375c05143034a767a2a3d0c0ed422627c5c9de80a4bd257b11849acbf1",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/roadmap-status-counter-identity-plan-review-20.html",
+      "bytes": 39465,
+      "sha256": "bc8443fc3e6813f00accd2843b0a7c1511b85d736fc2f9b23b7b71cfe98a017f",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-status-counter-identity-2026-11-03/README.html",
+      "bytes": 45510,
+      "sha256": "0ec25942063766b009841ba29e8537a49ef12fdc08f3b216e9ea55619f7cdef0",
+      "localStatus": 200,
+      "remoteStatus": 200,
+      "verified": true
+    }
+  ],
+  "noDeletes": true,
+  "previewServerRestarted": false
+}
