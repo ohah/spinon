@@ -444,7 +444,8 @@ pub(super) fn validate_grid_layout(
                 });
             }
             (
-                GridPlacementMode::TemplateGridImplicitTracks
+                GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
                 | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
@@ -506,7 +507,8 @@ pub(super) fn validate_grid_layout(
                 });
             }
             (
-                GridPlacementMode::TemplateGridImplicitTracks
+                GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
                 | GridPlacementMode::TemplateGridNegativeNamedLinePairAutoImplicitTracks
@@ -523,6 +525,7 @@ pub(super) fn validate_grid_layout(
                 if container.template_areas.is_some() && !tracks.is_empty() => {}
             (
                 GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
@@ -1325,13 +1328,55 @@ fn validate_root_html_column_flow_contract(
             reason: "Root HTML column flow requires grid-auto-rows:auto",
         });
     }
-    if container.auto_columns != crate::GridAutoColumns::Auto {
-        return Err(LayoutError::UnsupportedGridAutoColumns {
+    validate_root_html_column_flow_auto_columns(node, &container.auto_columns)
+}
+
+fn validate_root_html_column_flow_auto_columns(
+    node: spinon_core::NodeId,
+    auto_columns: &crate::GridAutoColumns,
+) -> Result<(), LayoutError> {
+    match auto_columns {
+        crate::GridAutoColumns::Auto => Ok(()),
+        crate::GridAutoColumns::LengthPx(value) if value.is_finite() && *value >= 0.0 => Ok(()),
+        crate::GridAutoColumns::LengthPx(_) => Err(LayoutError::InvalidGridTrack {
             node,
-            reason: "Root HTML column flow requires grid-auto-columns:auto",
-        });
+            property: "grid-auto-columns",
+        }),
+        crate::GridAutoColumns::TrackList(tracks) if tracks.is_empty() => {
+            Err(LayoutError::InvalidGridTrackList {
+                node,
+                property: "grid-auto-columns",
+            })
+        }
+        crate::GridAutoColumns::TrackList(tracks) if tracks.len() > GRID_MAX_TRACKS => {
+            Err(LayoutError::GridTrackLimitExceeded {
+                node,
+                property: "grid-auto-columns",
+                count: tracks.len(),
+                maximum: GRID_MAX_TRACKS,
+            })
+        }
+        crate::GridAutoColumns::TrackList(tracks) => {
+            for track in tracks {
+                match track {
+                    GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {}
+                    GridTrackSize::LengthPx(_) => {
+                        return Err(LayoutError::InvalidGridTrack {
+                            node,
+                            property: "grid-auto-columns",
+                        });
+                    }
+                    _ => {
+                        return Err(LayoutError::UnsupportedGridAutoColumns {
+                            node,
+                            reason: "Root HTML column flow only supports fixed px auto columns",
+                        });
+                    }
+                }
+            }
+            Ok(())
+        }
     }
-    Ok(())
 }
 
 fn track_is_indefinite_height_safe(track: &GridTrackSize, has_definite_min_height: bool) -> bool {

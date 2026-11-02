@@ -458,6 +458,7 @@ pub(crate) fn normalize_dense_grid_container(
         crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {
             AutoTrackExpansionMode::FixedPxList
         }
+        crate::GridPlacementMode::RootHtmlColumnFlowV1 => AutoTrackExpansionMode::FixedPxList,
         _ => AutoTrackExpansionMode::Unsupported,
     };
     output.expanded_rows = expand_tracks(

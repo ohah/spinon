@@ -1,0 +1,26 @@
+{
+  "candidateState": "uncommitted working-tree candidate at simulator run",
+  "branch": "feat/c11-root-html-grid-column-flow-implicit-columns-20261102",
+  "headBeforeCandidateCommit": "3f4aca65c3c449f65e0b215fd16ff440e3835ec3",
+  "sourceTreeSha256": "fdb020def0805d984ded56fbc9b84cc5cc279c4679a913ca6c80c4290515e862",
+  "sourceFilesSha256": {
+    "crates/spinon-layout/src/grid.rs": "073a10067789155bf58df43812abac93bd790f6ff9ced12e5d69e5ea0c4844dc",
+    "crates/spinon-layout/src/grid_auto_placement/dense_column.rs": "869a1808e22c40fbf37d996f05b7431b3aa660055e0d1967c96bda4fae5d5c39",
+    "crates/spinon-layout/src/grid_auto_placement_tests.rs": "97eb23d1ecfd4d2f0f13cf78d867765f2efda9a469562a24685a18d3abb2a1c2",
+    "crates/spinon-layout/src/grid_placement/root_html_column_flow.rs": "62c71eb4873fbaac5b1d783db85e306187bd4d3bf6640822b331e1e7f4b36923",
+    "crates/spinon-runtime/src/session/tests/root_html_grid_column_flow.rs": "bead12fe0532921679cf0d6634a27b16a6df1a68af2a1a17f1be663169566d9f",
+    "crates/spinon-style-to-layout/src/projection/style_values.rs": "d970a7faf790a7f70bcee13d5c404835692226e5ab2e03d23037bf69f20006c9",
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs": "5b4a35c0c1ae9bb69617c56884819002f69ae33ce45b76aa83b8f4cd08ab7c6f",
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values/root_html_grid_track_tests.rs": "22d08a264b680e85357fd2eb711d0f6eec8ae40c6a02314ddc1536a0d45163a2",
+    "crates/spinon-style-to-layout/src/projection/style_values/root_html_column_flow.rs": "e534e19ef6219298113861652e63977c5fe02e957b4f0b92a045a2f00aeecc47",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs": "9793fee1236e96e1cd3581b3c71fca2a3662f234d9cf6fc6cedba89198ed9c51",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs": "d9ba88e98bac1f6c1d68824877c99994f0df78b25401db5949963877a8a16a17",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests.rs": "fe275fb4add5a06d3f9faca863b8411bd92d2f0eda6a3530c559c82c1bc37803",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c11_1_root_html_auto_column_list.rs": "64619d3696b7933d45bb94ee6cff39d82a07067d1f846e8aed00adfc06d8abce",
+    "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/chrome156-observation-pass03.json": "8591c18882aba4e04ed4be35de27c878837e079c5611afcffd7c61515a7e5625",
+    "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/expected.json": "2b014edcc07fe2f3ebcf267aa2be7d5c58c41742d157dfbdba5388531695a611",
+    "spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/root-app-marker.js": "eadc101e28bcebaa3bc52a4f7605a65e2439644dd4b06cad1139b64845c7fee9",
+    "tests/fixtures/css/c11/root-html-grid-column-flow-implicit-columns-precomparison.html": "432991cb1edf2a48186339431a5a4504441b0e787449baa4f8ee2703011df87a"
+  },
+  "artifacts": "See installed-artifacts.json for exact installed APK, iOS app asset, and executable hashes."
+}

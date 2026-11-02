@@ -123,6 +123,36 @@ fn root_html_column_flow_grid(item_count: usize) -> LayoutInput {
     input
 }
 
+fn root_html_column_flow_with_auto_columns(
+    item_count: usize,
+    auto_columns: GridAutoColumns,
+) -> LayoutInput {
+    let mut input = sparse_grid(2, 2, item_count);
+    input.nodes[0].style.width = LayoutDimension::Fixed(175.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(63.0);
+    input.nodes[0].style.gap = LayoutGap {
+        column: LayoutLengthPercentage::length(5.0),
+        row: LayoutLengthPercentage::length(3.0),
+    };
+    input.viewport = Viewport {
+        width: 175.0,
+        height: 63.0,
+    };
+    for child in input.nodes.iter_mut().skip(1) {
+        child.style.display = LayoutDisplay::Block;
+        child.style.width = LayoutDimension::Fixed(1.0);
+        child.style.height = LayoutDimension::Fixed(1.0);
+    }
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.columns = vec![GridTrackSize::LengthPx(30.0), GridTrackSize::LengthPx(40.0)];
+    container.rows = vec![GridTrackSize::LengthPx(20.0), GridTrackSize::LengthPx(40.0)];
+    container.auto_flow = GridAutoFlow::Column;
+    container.auto_rows = GridAutoRows::Auto;
+    container.auto_columns = auto_columns;
+    container.placement_mode = GridPlacementMode::RootHtmlColumnFlowV1;
+    input
+}
+
 #[test]
 fn root_html_column_flow_places_source_order_down_each_explicit_column() {
     let input = root_html_column_flow_grid(4);
@@ -173,6 +203,216 @@ fn root_html_column_flow_rejects_implicit_column_overflow_before_placement() {
         TaffyLayoutEngine.compute(&input),
         Err(crate::LayoutError::GridImplicitTrackRequired(node)) if node == id(1)
     ));
+}
+
+#[test]
+fn root_html_column_flow_repeats_fixed_px_implicit_column_list() {
+    for (item_count, expected) in [
+        (5, vec![(6, [80.0, 0.0])]),
+        (
+            8,
+            vec![
+                (6, [80.0, 0.0]),
+                (7, [80.0, 23.0]),
+                (8, [100.0, 0.0]),
+                (9, [100.0, 23.0]),
+            ],
+        ),
+    ] {
+        let input = root_html_column_flow_with_auto_columns(
+            item_count,
+            GridAutoColumns::TrackList(vec![
+                GridTrackSize::LengthPx(15.0),
+                GridTrackSize::LengthPx(25.0),
+            ]),
+        );
+        let output = TaffyLayoutEngine
+            .compute(&input)
+            .expect("fixed px list should produce only the required implicit columns");
+        for (node, expected_origin) in expected {
+            let actual = output.frames[&id(node)];
+            assert_eq!([actual.x, actual.y], expected_origin, "node {node}");
+        }
+    }
+}
+
+#[test]
+fn root_html_column_flow_expands_fixed_px_scalar_for_each_implicit_column() {
+    let input = root_html_column_flow_with_auto_columns(8, GridAutoColumns::LengthPx(12.0));
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("one fixed px auto-column size should repeat for implicit columns");
+
+    for (node, expected) in [
+        (6, [80.0, 0.0]),
+        (7, [80.0, 23.0]),
+        (8, [97.0, 0.0]),
+        (9, [97.0, 23.0]),
+    ] {
+        let actual = output.frames[&id(node)];
+        assert_eq!([actual.x, actual.y], expected, "node {node}");
+    }
+}
+
+#[test]
+fn root_html_column_flow_keeps_implicit_sizing_when_explicit_cells_are_sufficient() {
+    for auto_columns in [
+        GridAutoColumns::Auto,
+        GridAutoColumns::LengthPx(12.0),
+        GridAutoColumns::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(25.0),
+        ]),
+    ] {
+        let input = root_html_column_flow_with_auto_columns(4, auto_columns);
+        assert!(TaffyLayoutEngine.compute(&input).is_ok());
+    }
+}
+
+#[test]
+fn root_html_column_flow_rejects_invalid_auto_column_tracks() {
+    let cases = [
+        (
+            GridAutoColumns::LengthPx(-1.0),
+            "negative scalar",
+            "invalid",
+        ),
+        (
+            GridAutoColumns::LengthPx(f32::NAN),
+            "non-finite scalar",
+            "invalid",
+        ),
+        (
+            GridAutoColumns::TrackList(Vec::new()),
+            "empty track list",
+            "list",
+        ),
+        (
+            GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.5)]),
+            "percentage track",
+            "unsupported",
+        ),
+        (
+            GridAutoColumns::TrackList(vec![
+                GridTrackSize::LengthPx(1.0);
+                crate::GRID_MAX_TRACKS + 1
+            ]),
+            "oversized track list",
+            "limit",
+        ),
+    ];
+    for (auto_columns, label, expected) in cases {
+        let input = root_html_column_flow_with_auto_columns(5, auto_columns);
+        let result = TaffyLayoutEngine.compute(&input);
+        match expected {
+            "invalid" => assert!(
+                matches!(
+                    result,
+                    Err(LayoutError::InvalidGridTrack {
+                        property: "grid-auto-columns",
+                        ..
+                    })
+                ),
+                "{label}: {result:?}"
+            ),
+            "list" => assert!(
+                matches!(
+                    result,
+                    Err(LayoutError::InvalidGridTrackList {
+                        property: "grid-auto-columns",
+                        ..
+                    })
+                ),
+                "{label}: {result:?}"
+            ),
+            "unsupported" => assert!(
+                matches!(result, Err(LayoutError::UnsupportedGridAutoColumns { .. })),
+                "{label}: {result:?}"
+            ),
+            "limit" => assert!(
+                matches!(
+                    result,
+                    Err(LayoutError::GridTrackLimitExceeded {
+                        node,
+                        property: "grid-auto-columns",
+                        count: 10_001,
+                        maximum: 10_000,
+                    }) if node == id(1)
+                ),
+                "{label}: {result:?}"
+            ),
+            _ => unreachable!("test case must name its expected error"),
+        }
+    }
+}
+
+#[test]
+fn root_html_column_flow_rejects_required_implicit_columns_over_track_limit() {
+    let mut input = sparse_grid(1, 1, crate::GRID_MAX_TRACKS + 1);
+    input.nodes[0].style.width = LayoutDimension::Fixed(30.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(20.0);
+    input.viewport = Viewport {
+        width: 30.0,
+        height: 20.0,
+    };
+    for child in input.nodes.iter_mut().skip(1) {
+        child.style.display = LayoutDisplay::Block;
+    }
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.columns = vec![GridTrackSize::LengthPx(30.0)];
+    container.rows = vec![GridTrackSize::LengthPx(20.0)];
+    container.auto_flow = GridAutoFlow::Column;
+    container.auto_rows = GridAutoRows::Auto;
+    container.auto_columns = GridAutoColumns::LengthPx(10.0);
+    container.placement_mode = GridPlacementMode::RootHtmlColumnFlowV1;
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::GridTrackLimitExceeded {
+            node,
+            property: "grid-template-columns",
+            count: 10_001,
+            maximum: 10_000,
+        }) if node == id(1)
+    ));
+}
+
+#[test]
+fn root_html_column_flow_expanded_column_reservation_failure_recovers() {
+    let input = root_html_column_flow_with_auto_columns(
+        6,
+        GridAutoColumns::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(25.0),
+        ]),
+    );
+
+    std::thread::spawn(move || {
+        let engine = TaffyLayoutEngine;
+        let guard = inject_failure_once(GridReservationSite::ExpandedColumns);
+        let result = engine.compute(&input);
+        let observed_failure = crate::test_allocator::take_failure_observed();
+        assert!(
+            observed_failure,
+            "ExpandedColumns must hit a real reservation"
+        );
+        assert!(matches!(
+            result,
+            Err(LayoutError::GridAllocationFailure {
+                node,
+                property: "grid-template-columns"
+            }) if node == id(1)
+        ));
+        drop(guard);
+
+        let recovered = engine
+            .compute(&input)
+            .expect("the next layout on the same worker should recover");
+        assert!(recovered.frames.contains_key(&id(7)));
+        assert!(!crate::test_allocator::take_failure_observed());
+    })
+    .join()
+    .expect("implicit column allocation failure worker should recover");
 }
 
 #[test]

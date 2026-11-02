@@ -1,0 +1,59 @@
+{
+  "verifiedAtUtc": "2026-11-02T13:00:04.837421+00:00",
+  "checks": {
+    "candidateSourceFingerprintMatches": true,
+    "fixtureHashMatchesAndroidAndIosInstalledAssets": true,
+    "bundledRootAppHashMatchesAndroidAndIosInstalledAssets": true,
+    "androidInstalledApkMatchesBuild": true,
+    "iosInstalledExecutableMatchesBuild": true,
+    "chrome156ComparisonPasses": true,
+    "androidRuntimeMarkersPass": true,
+    "iosRuntimeMarkersPass": true,
+    "androidBuildSucceeded": true,
+    "iosBuildSucceeded": true,
+    "bootstrapInputsRestored": true
+  },
+  "tests": {
+    "layout-final": {
+      "passed": 10,
+      "failed": 0
+    },
+    "style-final": {
+      "passed": 8,
+      "failed": 0
+    },
+    "style-allocation-final": {
+      "passed": 1,
+      "failed": 0
+    },
+    "projection-final": {
+      "passed": 6,
+      "failed": 0
+    },
+    "projection-root-html-final": {
+      "passed": 32,
+      "failed": 0
+    },
+    "runtime-primary-final": {
+      "passed": 1,
+      "failed": 0
+    },
+    "runtime-column-flow-final": {
+      "passed": 5,
+      "failed": 0
+    },
+    "runtime-grid-final": {
+      "passed": 38,
+      "failed": 0
+    },
+    "style-to-layout-full": {
+      "passed": 308,
+      "failed": 1,
+      "knownUnrelatedFailure": "C07 aspect-ratio serialization expected 1.77778 / 1, actual 1.7777778 / 1"
+    }
+  },
+  "androidScreenshotSha256": "5ad6e8035026a0f82d1732d4fc54df0969b12154e8fbb054049ddf7b05f966b5",
+  "iosScreenshotSha256": "3b4e24410e8d968b2ee76ba9b728aaab6607b3ccdf5277f84a6a3ed8ea69ab6a",
+  "sourceTreeSha256": "fdb020def0805d984ded56fbc9b84cc5cc279c4679a913ca6c80c4290515e862",
+  "pass": true
+}

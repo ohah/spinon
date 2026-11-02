@@ -231,13 +231,33 @@ fn validate_root_html_grid_tracks(
             "Root HTML grid-auto-rows는 direct finite non-negative px/percentage 값만 포함해야 합니다",
         ));
     }
-    if !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
+    if column_flow && !root_html_auto_columns_supported(&grid.auto_columns) {
         return Err(unsupported(
             "grid-auto-columns",
-            "Root HTML Grid에서는 implicit column sizing을 지원하지 않습니다",
+            "Root HTML column-flow mode requires auto or finite non-negative direct px auto columns",
+        ));
+    }
+    if !column_flow && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
+        return Err(unsupported(
+            "grid-auto-columns",
+            "Root HTML row-flow mode excludes implicit column sizing",
         ));
     }
     Ok(())
+}
+
+fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
+    let valid_px = |track: &ComputedCssGridTrackSize| matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0);
+    match auto_columns {
+        ComputedCssGridAutoColumns::Auto => true,
+        ComputedCssGridAutoColumns::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridAutoColumns::TrackList(tracks) => {
+            !tracks.is_empty()
+                && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
+                && tracks.iter().all(valid_px)
+        }
+        ComputedCssGridAutoColumns::Unsupported(_) => false,
+    }
 }
 
 fn root_html_direct_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
@@ -775,6 +795,8 @@ fn project_grid_layout_with_reservations(
         && grid.template_areas.is_some();
     let root_html_implicit_rows = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && root_html_has_supported_implicit_rows(&grid.auto_rows);
+    let root_html_column_flow = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && grid.auto_flow == ComputedCssGridAutoFlow::Column;
     let mut auto_rows = if sparse_row || dense_auto_placement || root_html_implicit_rows {
         project_auto_rows(
             node,
@@ -787,7 +809,7 @@ fn project_grid_layout_with_reservations(
     } else {
         GridAutoRows::Auto
     };
-    let mut auto_columns = if dense_auto_placement {
+    let mut auto_columns = if dense_auto_placement || root_html_column_flow {
         project_auto_columns(
             node,
             &grid.auto_columns,
@@ -1333,6 +1355,27 @@ fn project_auto_columns(
                     || tracks
                         .iter()
                         .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_)))) =>
+        {
+            project_tracks(
+                tracks,
+                node,
+                "grid-auto-columns",
+                LayoutCssMathProperty::GridTemplateColumns,
+                math,
+                reserve,
+            )
+            .map(GridAutoColumns::TrackList)
+        }
+        ComputedCssGridAutoColumns::TrackList(tracks)
+            if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && !tracks.is_empty()
+                && tracks.iter().all(|track| {
+                    matches!(
+                        track,
+                        ComputedCssGridTrackSize::LengthPx(value)
+                            if value.is_finite() && *value >= 0.0
+                    )
+                }) =>
         {
             project_tracks(
                 tracks,

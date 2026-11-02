@@ -41,6 +41,7 @@ pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_auto_repeat: bool,
     pub(super) allow_fixed_auto_track_lists: bool,
     pub(super) allow_root_html_fixed_auto_row_lists: bool,
+    pub(super) allow_root_html_fixed_auto_column_lists: bool,
     pub(super) allow_root_html_percentage_auto_row_lists: bool,
     pub(super) allow_template_areas: bool,
 }
@@ -97,6 +98,7 @@ pub(super) fn computed_grid_layout(
         allow_auto_repeat,
         allow_fixed_auto_track_lists,
         allow_root_html_fixed_auto_row_lists,
+        allow_root_html_fixed_auto_column_lists,
         allow_root_html_percentage_auto_row_lists,
         allow_template_areas,
     } = options;
@@ -208,7 +210,7 @@ pub(super) fn computed_grid_layout(
         node,
         property_value(properties, "grid-auto-columns"),
         allow_typed_auto_track_sizes,
-        allow_fixed_auto_track_lists,
+        allow_fixed_auto_track_lists || allow_root_html_fixed_auto_column_lists,
     )?;
     let flow = computed.clone_grid_auto_flow();
     let auto_flow = match (
@@ -332,7 +334,12 @@ fn computed_grid_auto_track_list(
         allow_percentage_track_lists,
         reservation_site,
     } = options;
-    if value.is_initial() {
+    let explicit_auto = value.0.len() == 1
+        && value
+            .0
+            .first()
+            .is_some_and(|track| matches!(track, TrackSize::Breadth(TrackBreadth::Auto)));
+    if value.is_initial() || explicit_auto {
         return Ok(ComputedGridAutoTrackValue::Auto);
     }
     if value.0.is_empty() || value.0.len() > MAX_COMPUTED_GRID_TRACKS {

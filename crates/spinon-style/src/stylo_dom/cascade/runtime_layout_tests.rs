@@ -6,6 +6,8 @@ mod c07_border;
 mod c10_flex_alignment;
 #[path = "runtime_layout_tests/c10_flex_wrap.rs"]
 mod c10_flex_wrap;
+#[path = "runtime_layout_tests/c11_1_root_html_auto_column_list.rs"]
+mod c11_1_root_html_auto_column_list;
 #[path = "runtime_layout_tests/c11_1_root_html_auto_row_list.rs"]
 mod c11_1_root_html_auto_row_list;
 #[path = "runtime_layout_tests/c11_1_root_html_integer_repeat.rs"]

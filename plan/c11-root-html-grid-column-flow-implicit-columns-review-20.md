@@ -15,7 +15,7 @@
 11. **계산 overflow** — item 수/행 수 산술이 usize overflow를 일으키는가? checked arithmetic, quota 검사, overflow/rejection tests를 계획했다. 통과.
 12. **10,000 track 우회** — explicit 및 implicit track 합계가 개별 상한 검사를 우회하는가? 총 열 개수와 auto-list 길이를 합산 상한에 포함하도록 계획했다. 통과.
 13. **거대 allocation 선행** — quota 확인 전에 item/track 벡터를 확장하는가? bounded allocation과 expansion 전 초과 거부를 요구한다. reservation 실패 주입 확인을 명시하지 않아 수정 필요.
-14. **잘못된 CSS track을 기본값으로 오인** — `auto`, `%`, `fr`, `minmax`, `fit-content`, math가 silent fallback되는가? 이 값은 profile에서 fail-closed하고 property 진단을 확인한다. 통과.
+14. **잘못된 CSS track을 기본값으로 오인** — `%`, `fr`, `minmax`, `fit-content`, px로 환산되지 않는 math가 silent fallback되는가? 이 값은 profile에서 fail-closed하고 property 진단을 확인한다. length-only `calc()`가 computed style에서 정확한 px 값으로 환산되면 px scalar와 동일하게 취급한다. `auto`는 기존 explicit capacity 내 동작만 유지하고 implicit column이 필요하면 거부한다. 통과.
 15. **track list shape 오류** — 빈 typed list나 지나치게 긴 list를 받는가? nonempty와 `GRID_MAX_TRACKS` 범위를 계획했다. 통과.
 16. **negative/NaN/infinity** — 계산 typed value가 음수나 non-finite일 때 Taffy에 전달되는가? 검증 및 synthetic typed-value rejection을 요구한다. 통과.
 17. **line names/areas/repeat 결합** — 다른 Grid grammar가 이 profile로 섞이는가? named lines, area, fixed/auto repeat을 새 조합으로 열지 않는다고 명시했다. 통과.

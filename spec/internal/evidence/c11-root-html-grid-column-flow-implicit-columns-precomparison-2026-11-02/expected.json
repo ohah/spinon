@@ -1,11 +1,14 @@
 {
   "source": "tests/fixtures/css/c11/root-html-grid-column-flow-implicit-columns-precomparison.html",
   "root": {
+    "x": 0,
+    "y": 0,
     "width": 175,
     "height": 63,
     "gridTemplateColumns": [30, 40, 15, 25, 15, 25],
     "gridTemplateRows": [20, 40],
     "gridAutoColumns": [15, 25],
+    "gridAutoRows": "auto",
     "gridAutoFlow": "column",
     "columnGap": 5,
     "rowGap": 3
