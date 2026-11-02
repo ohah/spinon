@@ -23,6 +23,25 @@
       "sha256": "bc9331be563c0578f04fac5f4e977f68aaae7844a8f8abdaf47a8115859421c8"
     }
   ],
+  "pullRequestImageEmbeds": {
+    "pullRequestUrl": "https://github.com/ohah/spinon/pull/1017",
+    "images": [
+      {
+        "alt": "Tailnet roadmap desktop 1280x633",
+        "complete": true,
+        "naturalWidth": 1280,
+        "naturalHeight": 633,
+        "sha256": "5623b60d257b4529a3be8387fc8a448c36c28313272993edeeeb650eafae3ae5"
+      },
+      {
+        "alt": "Tailnet roadmap mobile 390x844",
+        "complete": true,
+        "naturalWidth": 390,
+        "naturalHeight": 844,
+        "sha256": "bc9331be563c0578f04fac5f4e977f68aaae7844a8f8abdaf47a8115859421c8"
+      }
+    ]
+  },
   "closedWith": "agent-browser close --all",
   "remainingAgentBrowserOrHeadlessChromeProcesses": []
 }

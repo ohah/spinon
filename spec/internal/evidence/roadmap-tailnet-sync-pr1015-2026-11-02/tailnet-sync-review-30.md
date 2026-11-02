@@ -32,7 +32,7 @@
 | 26 | Android/iOS 이미지가 누락되거나 다른 빌드에서 올 수 있음 | **PASS** — 각 simulator PNG가 source manifest 및 두 HTTP 응답과 크기·SHA가 같다. |
 | 27 | 모바일에서 새 progress card가 가로 넘침을 만들 수 있음 | **PASS** — Tailnet 화면 390×844에서 `scrollWidth=390`이고 PR #1015 카드가 보인다. |
 | 28 | 데스크톱에서 카드가 안 보이거나 가로 넘침을 만들 수 있음 | **PASS** — Tailnet 화면 1280×633에서 카드가 보이고 `scrollWidth=1280`이다. |
-| 29 | 화면 캡처가 local source를 보여주고 Tailnet으로 잘못 보고될 수 있음 | **PASS** — 새 desktop/mobile 캡처의 URL은 실제 Tailnet HTTPS이며 본문 merge SHA와 `72/213`을 읽었다. |
+| 29 | 화면 캡처가 local source를 보여주고 Tailnet으로 잘못 보고될 수 있음 | **PASS** — desktop/mobile 캡처는 실제 Tailnet HTTPS에서 만들었고 본문 merge SHA와 `72/213`을 읽었다. PR #1017의 두 embedded PNG도 Agent Browser에서 `complete=true`, 각 1280×633·390×844로 표시됐다. |
 | 30 | 브라우저 프로세스를 남길 수 있음 | **PASS** — 확인 뒤 `agent-browser close --all`을 실행했고 agent-browser/headless-shell process query는 비어 있었다. |
 
 전체 기존 preview 파일 91,454개의 내용을 다시 해시한 미러 감사는 이 범위에 포함되지 않는다. 이 게시 검증은 사전 경로 집합 보존, 변경 route별 이전/신규 해시, 백업, 선택 route 전체와 필수 HTTP 전달을 확인한다.
