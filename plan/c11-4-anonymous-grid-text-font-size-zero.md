@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [기존 computed font-size slice](./c11-4-anonymous-grid-text-computed-font-size.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 PR [#1051](https://github.com/ohah/spinon/pull/1051)이 `origin/main`에 병합됐다. 제한 구현 후보와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 검증은 완료했고, default/fixture-test static archive 경계도 확인했다. 구현 PR [#1052](https://github.com/ohah/spinon/pull/1052)이 열려 있다. check run은 보고되지 않았고 `main` required status checks도 설정되어 있지 않다. C11.4/C11 공식 상태는 바꾸지 않았다.
+**상태:** 계획 PR [#1051](https://github.com/ohah/spinon/pull/1051)이 먼저 병합됐다. 구현 PR [#1052](https://github.com/ohah/spinon/pull/1052)은 2026-11-02T10:29:53Z Rebase and merge됐고 merge SHA는 `472c5a6600603b2e69a0d42d5c5a1f68345094f3`이다. check run은 보고되지 않았고 `main` required status checks도 설정되어 있지 않다. 제한 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 4/4 실행, default/fixture-test static archive 경계를 확인했다. C11.4/C11 공식 완료는 아니며 `72/213`을 유지한다.
 
 ## 목적과 범위
 
@@ -64,6 +64,8 @@ Range rect는 zero-size text fragment 관찰값이다. anonymous Grid item box�
 - [Chrome 156 사전 비교와 독립 기대값](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-precomparison-2026-11-02/README.md)
 - [Android/iOS 실행·화면·trace·archive 경계](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-runtime-2026-11-02/README.md)
 - [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-runtime-2026-11-02/implementation-runtime-review-20.md)
+- [병합 기록](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-runtime-2026-11-02/merge-PR1052.md)
+- [병합 후 상태·로드맵 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-runtime-2026-11-02/postmerge-status-roadmap-review-30.md)
 - [고정 Chrome 입력 fixture](../tests/fixtures/css/c11/grid-track-sizing-c114-font-size-zero-precomparison.html)
 - [계획 실패 관점 20개](./c11-4-anonymous-grid-text-font-size-zero-plan-review-20.md)
 - [계획 PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-precomparison-2026-11-02/plan-pr-diff-review-30.md)
