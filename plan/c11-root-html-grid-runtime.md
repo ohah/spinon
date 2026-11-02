@@ -1,6 +1,6 @@
 # C11.1 · parsed root HTML author CSS Grid runtime integration
 
-**2026-11-02 sparse column-flow 후속 후보:** [전용 계획](./c11-root-html-grid-column-flow.md)은 기본 Root HTML runtime에서 명시 2×2 cells 안의 sparse `grid-auto-flow: column`만 제안한다. 계획 PR과 구현/runtime 근거가 생기기 전까지 기존 제한의 non-default auto-flow 거부는 그대로이며, 이 후보는 C11.1/C11 완료나 공식 `72/213`을 바꾸지 않는다.
+**2026-11-02 sparse column-flow 진행:** [explicit-cell 계획](./c11-root-html-grid-column-flow.md)의 제한 구현 PR [#1056](https://github.com/ohah/spinon/pull/1056)이 Rebase and merge됐다. 후속 [implicit-column 계획](./c11-root-html-grid-column-flow-implicit-columns.md)은 finite non-negative px `grid-auto-columns` 목록과 positive implicit columns만 제안하며, 구현은 아직 시작하지 않았다. 이 단계는 C11.1/C11 완료나 공식 `72/213`을 바꾸지 않는다.
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [레이아웃 계약 0009](../spec/internal/0009-layout-engine.md)
 
