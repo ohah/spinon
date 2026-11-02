@@ -1,0 +1,306 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.644792ms)
+✔ calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 (122.164542ms)
+✔ 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 (232.834292ms)
+✔ 41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로에 고정된다 (917.974584ms)
+✔ fit-content() 열 축 limit 네 장면이 opt-in runtime과 두 simulator에 연결된다 (116.515125ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (21.929709ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.393833ms)
+✔ C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fixture에 고정된다 (119.1245ms)
+✔ C11.4 zero fixed-maximum auto-repeat 24 scene은 opt-in runtime에만 연결된다 (121.657416ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.866458ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (15.284958ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (6.29975ms)
+✔ C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 (117.018958ms)
+✔ C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixture에 고정된다 (228.102834ms)
+✔ C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경계에 있다 (117.4165ms)
+✔ C11.4 intrinsic auto-repeat WPT 8 scene은 oracle 및 양 플랫폼 검사에 고정된다 (116.77875ms)
+✔ fit-content min-height WPT slice는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (117.614375ms)
+✔ zoomed fit-content WPT slice는 fixture parser와 양쪽 simulator 화면 판정에 고정된다 (115.639541ms)
+✔ definite-height percentage fit-content WPT slices는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (110.519959ms)
+✔ definite-height calc fit-content WPT slice is isolated in the runtime catalog (111.566125ms)
+✔ fit-content automatic-minimum floor와 zero control이 opt-in runtime에 고정된다 (118.908625ms)
+✔ fit-content span-2 WPT slice가 opt-in runtime과 simulator capture에 연결된다 (119.028667ms)
+✔ fit-content WPT growth-limit 경계 세 건이 opt-in runtime과 두 simulator에 연결된다 (116.689833ms)
+✔ anonymous Grid white-space matrix stays opt-in and reaches both simulators (117.567583ms)
+✔ C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulator route (5.730084ms)
+✔ C11.4 anonymous Grid computed word-break matrix stays opt-in and reaches both simulators (5.051625ms)
+✔ C11.4 anonymous Grid computed line-break matrix stays opt-in and reaches both simulators (3.790208ms)
+✔ C11.4 anonymous Grid computed line-break loose matrix keeps locale controls and simulator adapters aligned (7.945792ms)
+✔ C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reaches both simulators (4.607833ms)
+✔ C11.4 word-break break-word interaction matrix stays fixture-only across both platforms (3.530042ms)
+✔ C11.4 computed text-transform scenes stay behind fixture-test gates (8.835542ms)
+✖ C11.4 anonymous Grid hyphens auto stays fixture-only with exact English source mapping (3.70875ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 31
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3272.78525
+
+✖ failing tests:
+
+test at tools/css-reference/fixture-module-boundary.test.mjs:2581:1
+✖ C11.4 anonymous Grid hyphens auto stays fixture-only with exact English source mapping (3.70875ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /const SCENE_IDS: \[&str; 95\]/. Input:
+  
+  '#[path = "anonymous_text_items/computed_font_size.rs"]\n' +
+    'mod computed_font_size;\n' +
+    '#[path = "anonymous_text_items/computed_font_size_zero.rs"]\n' +
+    'mod computed_font_size_zero;\n' +
+    '#[path = "anonymous_text_items/computed_hyphens.rs"]\n' +
+    'mod computed_hyphens;\n' +
+    '#[path = "anonymous_text_items/computed_letter_spacing.rs"]\n' +
+    'mod computed_letter_spacing;\n' +
+    '#[path = "anonymous_text_items/computed_line_break.rs"]\n' +
+    'mod computed_line_break;\n' +
+    '#[path = "anonymous_text_items/computed_line_height.rs"]\n' +
+    'mod computed_line_height;\n' +
+    '#[path = "anonymous_text_items/computed_overflow_wrap.rs"]\n' +
+    'mod computed_overflow_wrap;\n' +
+    '#[path = "anonymous_text_items/computed_text_indent.rs"]\n' +
+    'mod computed_text_indent;\n' +
+    '#[path = "anonymous_text_items/computed_text_transform.rs"]\n' +
+    'mod computed_text_transform;\n' +
+    '#[path = "anonymous_text_items/computed_word_break.rs"]\n' +
+    'mod computed_word_break;\n' +
+    '#[path = "anonymous_text_items/computed_word_break_overflow_wrap.rs"]\n' +
+    'mod computed_word_break_overflow_wrap;\n' +
+    '#[path = "anonymous_text_items/computed_word_spacing.rs"]\n' +
+    'mod computed_word_spacing;\n' +
+    '\n' +
+    'const SCENE_IDS: [&str; 85] = [\n' +
+    '    "anonymous-min-content-wrap",\n' +
+    '    "anonymous-normal-min-content",\n' +
+    '    "anonymous-nowrap-min-content",\n' +
+    '    "anonymous-normal-newline-max-content",\n' +
+    '    "anonymous-pre-line-max-content",\n' +
+    '    "anonymous-comment-continuation",\n' +
+    '    "anonymous-runs-around-block",\n' +
+    '    "anonymous-hidden-child-continuation",\n' +
+    '    "whitespace-does-not-create-item",\n' +
+    '    "anonymous-normal-max-content-spaces",\n' +
+    '    "anonymous-pre-wrap-max-content-spaces",\n' +
+    '    "anonymous-pre-wrap-comment-split-max-content",\n' +
+    '    "anonymous-pre-wrap-min-content-spaces",\n' +
+    '    "anonymous-pre-wrap-soft-wrap",\n' +
+    '    "anonymous-pre-wrap-forced-break",\n' +
+    '    "anonymous-pre-wrap-whitespace-before-block",\n' +
+    '    "anonymous-break-spaces-max-content",\n' +
+    '    "anonymous-break-spaces-comment-split-max-content",\n' +
+    '    "anonymous-break-spaces-min-content",\n' +
+    '    "anonymous-break-spaces-soft-wrap-25",\n' +
+    '    "anonymous-break-spaces-forced-break-max-content",\n' +
+    '    "anonymous-break-spaces-forced-break-min-content",\n' +
+    '    "anonymous-break-spaces-trailing-soft-wrap-25",\n' +
+    '    "anonymous-break-spaces-trailing-max-content",\n' +
+    '    "anonymous-break-spaces-whitespace-only",\n' +
+    '    "anonymous-break-spaces-whitespace-before-block",\n' +
+    '    "anonymous-pre-max-content-spaces",\n' +
+    '    "anonymous-pre-min-content-spaces",\n' +
+    '    "anonymous-pre-forced-break",\n' +
+    '    "anonymous-normal-fixed-width-control",\n' +
+    '    "anonymous-pre-fixed-width-nowrap",\n' +
+    '    "anonymous-pre-tab-max-content",\n' +
+    '    "anonymous-pre-tab-leading",\n' +
+    '    "anonymous-pre-tab-exact-stop",\n' +
+    '    "anonymous-pre-tab-consecutive",\n' +
+    '    "anonymous-pre-tab-forced-break",\n' +
+    '    "anonymous-pre-tab-trailing",\n' +
+    '    "anonymous-pre-tab-min-content",\n' +
+    '    "anonymous-pre-tab-fixed-width-nowrap",\n' +
+    '    "anonymous-pre-tab-size-2-two-columns",\n' +
+    '    "anonymous-pre-tab-size-2-leading",\n' +
+    '    "anonymous-pre-tab-size-2-exact-stop",\n' +
+    '    "anonymous-pre-tab-size-2-consecutive",\n' +
+    '    "anonymous-pre-tab-size-2-reset",\n' +
+    '    "anonymous-pre-tab-size-2-crlf-reset",\n' +
+    '    "anonymous-pre-tab-size-2-trailing",\n' +
+    '    "anonymous-pre-tab-size-2-min-content",\n' +
+    '    "anonymous-pre-tab-size-2-fixed-overflow",\n' +
+    '    "anonymous-pre-tab-size-1-leading",\n' +
+    '    "anonymous-pre-tab-size-1-exact-stop",\n' +
+    '    "anonymous-pre-tab-size-4-leading",\n' +
+    '    "anonymous-pre-tab-size-4-exact-stop",\n' +
+    '    "anonymous-pre-tab-size-0-negative",\n' +
+    '    "anonymous-pre-tab-size-fractional-negative",\n' +
+    '    "anonymous-pre-tab-size-length-negative",\n' +
+    '    "hyphens-none-soft-min",\n' +
+    '    "hyphens-none-soft-max",\n' +
+    '    "hyphens-none-soft-fixed-30",\n' +
+    '    "hyphens-manual-soft-min",\n' +
+    '    "hyphens-manual-soft-max",\n' +
+    '    "hyphens-manual-soft-fixed-30",\n' +
+    '    "hyphens-default-soft-fixed-30",\n' +
+    '    "hyphens-none-visible-min",\n' +
+    '    "hyphens-none-visible-fixed-30",\n' +
+    '    "hyphens-manual-visible-min",\n' +
+    '    "hyphens-manual-visible-fixed-30",\n' +
+    '    "hyphens-none-unbroken-min",\n' +
+    '    "hyphens-manual-unbroken-min",\n' +
+    '    "hyphens-none-multiple-min",\n' +
+    '    "hyphens-none-multiple-fixed-30",\n' +
+    '    "hyphens-manual-multiple-min",\n' +
+    '    "hyphens-manual-multiple-fixed-30",\n' +
+    '    "hyphens-inherited-none-fixed-30",\n' +
+    '    "hyphens-inherited-manual-fixed-30",\n' +
+    '    "hyphens-auto-hyphenation-min",\n' +
+    '    "hyphens-auto-hyphenation-max",\n' +
+    '    "hyphens-auto-hyphenation-fixed-50",\n' +
+    '    "hyphens-auto-internationalization-min",\n' +
+    '    "hyphens-auto-internationalization-max",\n' +
+    '    "hyphens-auto-internationalization-fixed-50",\n' +
+    '    "hyphens-auto-representation-min",\n' +
+    '    "hyphens-auto-representation-max",\n' +
+    '    "hyphens-auto-representation-fixed-50",\n' +
+    '    "hyphens-auto-expected-reject",\n' +
+    '    "hyphens-invalid-expected-reject",\n' +
+    '];\n' +
+    '\n' +
+    'const FULL_TAB_VALUE_IDS: [&str; 14] = [\n' +
+    '    "number-zero",\n' +
+    '    "number-quarter",\n' +
+    '    "number-three-tenths",\n' +
+    '    "number-half",\n' +
+    '    "number-one-and-half",\n' +
+    '    "number-two-and-half",\n' +
+    '    "number-three-and-quarter",\n' +
+    '    "length-zero",\n' +
+    '    "length-three-tenths",\n' +
+    '    "length-two",\n' +
+    '    "length-five",\n' +
+    '    "length-twelve",\n' +
+    '    "length-em",\n' +
+    '    "length-calc",\n' +
+    '];\n' +
+    '\n' +
+    'const FULL_TAB_CASE_IDS: [&str; 10] = [\n' +
+    '    "leading",\n' +
+    '    "after-one",\n' +
+    '    "after-two",\n' +
+    '    "exact-stop",\n' +
+    '    "consecutive",\n' +
+    '    "trailing",\n' +
+    '    "lf-reset",\n' +
+    '    "crlf-reset",\n' +
+    '    "min-content",\n' +
+    '    "fixed-overflow",\n' +
+    '];\n' +
+    '\n' +
+    'const FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [\n' +
+    '    "0",\n' +
+    '    "0.25",\n' +
+    '    "0.3",\n' +
+    '    "0.5",\n' +
+    '    "1.5",\n' +
+    '    "2.5",\n' +
+    '    "3.25",\n' +
+    '    "0px",\n' +
+    '    "0.3px",\n' +
+    '    "2px",\n' +
+    '    "5px",\n' +
+    '    "12px",\n' +
+    '    "1.5em",\n' +
+    '    "calc(2px + 3px)",\n' +
+    '];\n' +
+    '\n' +
+    'pub(super) fn runtime_source(scene_id: &str) -> Option<String> {\n' +
+    '    if let Some(source) = computed_word_break_overflow_wrap::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_overflow_wrap::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_line_break::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_word_break::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_font_size::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_font_size_zero::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_line_height::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_letter_spacing::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_word_spacing::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_text_indent::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_text_transform::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some(source) = computed_hyphens::runtime_source(scene_id) {\n' +
+    '        return Some(source);\n' +
+    '    }\n' +
+    '    if let Some((value_index, case_index)) = full_tab_scene(scene_id) {\n' +
+    '        return Some(full_tab_runtime_source(scene_id, value_index, case_index));\n' +
+    '    }\n' +
+    '    if !SCENE_IDS.contains(&scene_id) {\n' +
+    '        return None;\n' +
+    '    }\n' +
+    '    let root_id = format!("c114-{scene_id}-grid");\n' +
+    '    let (width, height, columns, rows, wrap_mode) = match scene_id {\n' +
+    '        "anonymous-min-content-wrap" => (120, "20px", "min-content 1fr", "auto", "wrap"),\n' +
+    '        "anonymous-normal-min-content" => (20, "auto", "min-content", "auto", "wrap"),\n' +
+    '        "anonymous-nowrap-min-content" => (20, "auto", "min-content", "auto", "nowrap"),\n' +
+    '        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {\n' +
+    '            (20, "auto", "max-content", "auto", "wrap")\n' +
+    '        }\n' +
+    '        "anonymous-normal-max-content-spaces"\n' +
+    '        | "anonymous-pre-wrap-max-content-spaces"\n' +
+    '        | "anonymous-pre-wrap-comment-split-max-content"\n' +
+    '        | "anonymous-pre-wrap-forced-break" => (20, "auto", "max-content", "auto", "wrap"),\n' +
+    '        "anonymous-pre-wrap-min-content-spaces" => (20, "auto", "min-content", "auto", "wrap"),\n' +
+    '        "anonymous-pre-max-content-spaces" | "anonymous-pre-forced-break" => {\n' +
+    '            (20, "auto", "max-content", "auto", "nowrap")\n' +
+    '        }\n' +
+    '        "anonymous-pre-min-content-spaces" => (20, "auto", "min-content", "auto", "nowrap"),\n' +
+    '        "anonymous-normal-fixed-width-control" => (25, "auto", "25px", "auto", "wrap"),\n' +
+    '        "anonymous-pre-fixed-width-nowrap" | "anonymous-pre-tab-fixed-width-nowrap" => {\n' +
+    '            (25, "auto", "25px", "auto", "nowrap")\n' +
+    '        }\n' +
+    '        "anonymous-pre-tab-max-content" | "anonymous-pre-tab-forced-break" => {\n' +
+    '            (100, "auto", "max-content", "auto", "nowrap")\n' +
+    '        }\n' +
+    '        "anonymous-pre-tab-leading" => (90, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-exact-stop" | "anonymous-pre-tab-consecutive" => {\n' +
+    '            (170, "auto", "max-content", "auto", "nowrap")\n' +
+    '        }\n' +
+    '        "anonymous-pre-tab-trailing" => (80, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-min-content" => (100, "auto", "min-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-2-two-columns" | "anonymous-pre-tab-size-2-reset" => {\n' +
+    '            (60, "auto", "max-content", "auto", "nowrap")\n' +
+    '        }\n' +
+    '        "anonymous-pre-tab-size-2-leading" => (30, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-2-exact-stop" | "anonymous-pre-tab-size-2-consecutive" => {\n' +
+    '            (70, "auto", "max-content", "auto", "nowrap")\n' +
+    '        }\n' +
+    '        "anonymous-pre-tab-size-2-crlf-reset" => (30, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-2-trailing" => (40, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-2-min-content" => (60, "auto", "min-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-2-fixed-overflow" => (25, "auto", "25px", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-1-leading" => (20, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-1-exact-stop" => (30, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-4-leading" => (50, "auto", "max-content", "auto", "nowrap"),\n' +
+    '        "anonymous-pre-tab-size-4-exact-stop" => (90, "auto", "max-conte'... 33693 more characters
+  
+      at TestContext.<anonymous> (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/fixture-module-boundary.test.mjs:2625:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '#[path = "anonymous_text_items/computed_font_size.rs"]\nmod computed_font_size;\n#[path = "anonymous_text_items/computed_font_size_zero.rs"]\nmod computed_font_size_zero;\n#[path = "anonymous_text_items/computed_hyphens.rs"]\nmod computed_hyphens;\n#[path = "anonymous_text_items/computed_letter_spacing.rs"]\nmod computed_letter_spacing;\n#[path = "anonymous_text_items/computed_line_break.rs"]\nmod computed_line_break;\n#[path = "anonymous_text_items/computed_line_height.rs"]\nmod computed_line_height;\n#[path = "anonymous_text_items/computed_overflow_wrap.rs"]\nmod computed_overflow_wrap;\n#[path = "anonymous_text_items/computed_text_indent.rs"]\nmod computed_text_indent;\n#[path = "anonymous_text_items/computed_text_transform.rs"]\nmod computed_text_transform;\n#[path = "anonymous_text_items/computed_word_break.rs"]\nmod computed_word_break;\n#[path = "anonymous_text_items/computed_word_break_overflow_wrap.rs"]\nmod computed_word_break_overflow_wrap;\n#[path = "anonymous_text_items/computed_word_spacing.rs"]\nmod computed_word_spacing;\n\nconst SCENE_IDS: [&str; 85] = [\n    "anonymous-min-content-wrap",\n    "anonymous-normal-min-content",\n    "anonymous-nowrap-min-content",\n    "anonymous-normal-newline-max-content",\n    "anonymous-pre-line-max-content",\n    "anonymous-comment-continuation",\n    "anonymous-runs-around-block",\n    "anonymous-hidden-child-continuation",\n    "whitespace-does-not-create-item",\n    "anonymous-normal-max-content-spaces",\n    "anonymous-pre-wrap-max-content-spaces",\n    "anonymous-pre-wrap-comment-split-max-content",\n    "anonymous-pre-wrap-min-content-spaces",\n    "anonymous-pre-wrap-soft-wrap",\n    "anonymous-pre-wrap-forced-break",\n    "anonymous-pre-wrap-whitespace-before-block",\n    "anonymous-break-spaces-max-content",\n    "anonymous-break-spaces-comment-split-max-content",\n    "anonymous-break-spaces-min-content",\n    "anonymous-break-spaces-soft-wrap-25",\n    "anonymous-break-spaces-forced-break-max-content",\n    "anonymous-break-spaces-forced-break-min-content",\n    "anonymous-break-spaces-trailing-soft-wrap-25",\n    "anonymous-break-spaces-trailing-max-content",\n    "anonymous-break-spaces-whitespace-only",\n    "anonymous-break-spaces-whitespace-before-block",\n    "anonymous-pre-max-content-spaces",\n    "anonymous-pre-min-content-spaces",\n    "anonymous-pre-forced-break",\n    "anonymous-normal-fixed-width-control",\n    "anonymous-pre-fixed-width-nowrap",\n    "anonymous-pre-tab-max-content",\n    "anonymous-pre-tab-leading",\n    "anonymous-pre-tab-exact-stop",\n    "anonymous-pre-tab-consecutive",\n    "anonymous-pre-tab-forced-break",\n    "anonymous-pre-tab-trailing",\n    "anonymous-pre-tab-min-content",\n    "anonymous-pre-tab-fixed-width-nowrap",\n    "anonymous-pre-tab-size-2-two-columns",\n    "anonymous-pre-tab-size-2-leading",\n    "anonymous-pre-tab-size-2-exact-stop",\n    "anonymous-pre-tab-size-2-consecutive",\n    "anonymous-pre-tab-size-2-reset",\n    "anonymous-pre-tab-size-2-crlf-reset",\n    "anonymous-pre-tab-size-2-trailing",\n    "anonymous-pre-tab-size-2-min-content",\n    "anonymous-pre-tab-size-2-fixed-overflow",\n    "anonymous-pre-tab-size-1-leading",\n    "anonymous-pre-tab-size-1-exact-stop",\n    "anonymous-pre-tab-size-4-leading",\n    "anonymous-pre-tab-size-4-exact-stop",\n    "anonymous-pre-tab-size-0-negative",\n    "anonymous-pre-tab-size-fractional-negative",\n    "anonymous-pre-tab-size-length-negative",\n    "hyphens-none-soft-min",\n    "hyphens-none-soft-max",\n    "hyphens-none-soft-fixed-30",\n    "hyphens-manual-soft-min",\n    "hyphens-manual-soft-max",\n    "hyphens-manual-soft-fixed-30",\n    "hyphens-default-soft-fixed-30",\n    "hyphens-none-visible-min",\n    "hyphens-none-visible-fixed-30",\n    "hyphens-manual-visible-min",\n    "hyphens-manual-visible-fixed-30",\n    "hyphens-none-unbroken-min",\n    "hyphens-manual-unbroken-min",\n    "hyphens-none-multiple-min",\n    "hyphens-none-multiple-fixed-30",\n    "hyphens-manual-multiple-min",\n    "hyphens-manual-multiple-fixed-30",\n    "hyphens-inherited-none-fixed-30",\n    "hyphens-inherited-manual-fixed-30",\n    "hyphens-auto-hyphenation-min",\n    "hyphens-auto-hyphenation-max",\n    "hyphens-auto-hyphenation-fixed-50",\n    "hyphens-auto-internationalization-min",\n    "hyphens-auto-internationalization-max",\n    "hyphens-auto-internationalization-fixed-50",\n    "hyphens-auto-representation-min",\n    "hyphens-auto-representation-max",\n    "hyphens-auto-representation-fixed-50",\n    "hyphens-auto-expected-reject",\n    "hyphens-invalid-expected-reject",\n];\n\nconst FULL_TAB_VALUE_IDS: [&str; 14] = [\n    "number-zero",\n    "number-quarter",\n    "number-three-tenths",\n    "number-half",\n    "number-one-and-half",\n    "number-two-and-half",\n    "number-three-and-quarter",\n    "length-zero",\n    "length-three-tenths",\n    "length-two",\n    "length-five",\n    "length-twelve",\n    "length-em",\n    "length-calc",\n];\n\nconst FULL_TAB_CASE_IDS: [&str; 10] = [\n    "leading",\n    "after-one",\n    "after-two",\n    "exact-stop",\n    "consecutive",\n    "trailing",\n    "lf-reset",\n    "crlf-reset",\n    "min-content",\n    "fixed-overflow",\n];\n\nconst FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [\n    "0",\n    "0.25",\n    "0.3",\n    "0.5",\n    "1.5",\n    "2.5",\n    "3.25",\n    "0px",\n    "0.3px",\n    "2px",\n    "5px",\n    "12px",\n    "1.5em",\n    "calc(2px + 3px)",\n];\n\npub(super) fn runtime_source(scene_id: &str) -> Option<String> {\n    if let Some(source) = computed_word_break_overflow_wrap::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_overflow_wrap::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_line_break::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_word_break::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_font_size::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_font_size_zero::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_line_height::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_letter_spacing::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_word_spacing::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_text_indent::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_text_transform::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some(source) = computed_hyphens::runtime_source(scene_id) {\n        return Some(source);\n    }\n    if let Some((value_index, case_index)) = full_tab_scene(scene_id) {\n        return Some(full_tab_runtime_source(scene_id, value_index, case_index));\n    }\n    if !SCENE_IDS.contains(&scene_id) {\n        return None;\n    }\n    let root_id = format!("c114-{scene_id}-grid");\n    let (width, height, columns, rows, wrap_mode) = match scene_id {\n        "anonymous-min-content-wrap" => (120, "20px", "min-content 1fr", "auto", "wrap"),\n        "anonymous-normal-min-content" => (20, "auto", "min-content", "auto", "wrap"),\n        "anonymous-nowrap-min-content" => (20, "auto", "min-content", "auto", "nowrap"),\n        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {\n            (20, "auto", "max-content", "auto", "wrap")\n        }\n        "anonymous-normal-max-content-spaces"\n        | "anonymous-pre-wrap-max-content-spaces"\n        | "anonymous-pre-wrap-comment-split-max-content"\n        | "anonymous-pre-wrap-forced-break" => (20, "auto", "max-content", "auto", "wrap"),\n        "anonymous-pre-wrap-min-content-spaces" => (20, "auto", "min-content", "auto", "wrap"),\n        "anonymous-pre-max-content-spaces" | "anonymous-pre-forced-break" => {\n            (20, "auto", "max-content", "auto", "nowrap")\n        }\n        "anonymous-pre-min-content-spaces" => (20, "auto", "min-content", "auto", "nowrap"),\n        "anonymous-normal-fixed-width-control" => (25, "auto", "25px", "auto", "wrap"),\n        "anonymous-pre-fixed-width-nowrap" | "anonymous-pre-tab-fixed-width-nowrap" => {\n            (25, "auto", "25px", "auto", "nowrap")\n        }\n        "anonymous-pre-tab-max-content" | "anonymous-pre-tab-forced-break" => {\n            (100, "auto", "max-content", "auto", "nowrap")\n        }\n        "anonymous-pre-tab-leading" => (90, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-exact-stop" | "anonymous-pre-tab-consecutive" => {\n            (170, "auto", "max-content", "auto", "nowrap")\n        }\n        "anonymous-pre-tab-trailing" => (80, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-min-content" => (100, "auto", "min-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-2-two-columns" | "anonymous-pre-tab-size-2-reset" => {\n            (60, "auto", "max-content", "auto", "nowrap")\n        }\n        "anonymous-pre-tab-size-2-leading" => (30, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-2-exact-stop" | "anonymous-pre-tab-size-2-consecutive" => {\n            (70, "auto", "max-content", "auto", "nowrap")\n        }\n        "anonymous-pre-tab-size-2-crlf-reset" => (30, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-2-trailing" => (40, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-2-min-content" => (60, "auto", "min-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-2-fixed-overflow" => (25, "auto", "25px", "auto", "nowrap"),\n        "anonymous-pre-tab-size-1-leading" => (20, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-1-exact-stop" => (30, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-4-leading" => (50, "auto", "max-content", "auto", "nowrap"),\n        "anonymous-pre-tab-size-4-exact-stop" => (90, "auto", "max-conte'... 33693 more characters,
+    expected: /const SCENE_IDS: \[&str; 95\]/,
+    operator: 'match',
+    diff: 'simple'
+  }

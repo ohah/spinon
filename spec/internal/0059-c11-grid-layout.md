@@ -1182,6 +1182,16 @@ Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 고정 4-scene r
 
 일반 CSS author admission, 임의 Unicode input/font/locale, punctuation, lowercase, inline formatting, WPT, `full-size-kana`, 실기기/hardware GPU, glyph pixel, 전체 C11.4/C11 완료는 범위 밖이다. C11.4/C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다.
 
+## C11.4 anonymous Grid text computed `text-transform: full-size-kana` · 제한 opt-in fixture 후보 · 2026-11-03
+
+내부 계약 숫자 `0.1.0`을 유지한다. 이 후보는 `c11-4-text-transform-unicode-fixture-test`가 켜진 C11.4 anonymous direct-text Grid fixture에서만 동작한다. Grid style owner의 computed `text-transform:full-size-kana`, direct `lang="ja"`, Noto Sans KR 10px/400, horizontal LTR, `white-space:normal`, `word-break:normal`, `line-break:strict`와 정확히 하나의 허용 source string을 요구한다. Scene ID는 computed CSS 값을 대신하지 않는다.
+
+변환표는 CSS Text Level 3 CRD 2026-08-14 Appendix G의 Unicode 15.0 기반 58 mapping을 따른다. 현재 allowlist는 hiragana·katakana·halfwidth·supplementary Kana의 고정 min-/max-content source, `あカンABC 12` pass-through와 `text-transform:none` control이다. 매핑은 normalized layout text에만 적용한다. HostDocument의 원문 Text와 UTF-16 source 범위는 보존한다. 허용되지 않은 언어·style·source는 fail-closed한다.
+
+Chrome 156은 `text-transform:full-size-kana`를 지원하지 않으므로 positive transform oracle로 쓰지 않는다. Chrome의 literal expected-output Grid는 track/row geometry와 Noto Sans KR font candidate 관찰에만 사용하고, 변환 문자열은 Appendix G에서 정했다. 고정 10-scene matrix는 [사전 비교와 독립 기대값](evidence/c11-4-anonymous-grid-text-transform-full-size-kana-precomparison-2026-11-03/README.md)에, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 각 10/10 실행 및 build/archive 경계는 [runtime evidence](evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/README.md)에 기록한다. 제한 profile의 구현/runtime 실패 관점은 [20개 검토](evidence/c11-4-anonymous-grid-text-transform-full-size-kana-runtime-2026-11-03/implementation-runtime-review-20.md)에 따로 적었다.
+
+Katakana min-content에서 Spinon line advances는 `9.5/10px`, Chrome literal Range 관찰은 `10/10px`다. Track은 두 쪽 모두 10px이며 이 차이로 line-advance parity를 주장하지 않는다. Runtime test는 ICU4X가 Chinese/Japanese complex-script segmentation model을 찾지 못했다는 경고도 낸다. 이 제한 slice는 일본어 일반 단어 분절을 다루지 않는다. Simulator screenshot은 `layout=ready` report이며 glyph paint, surface readback/pixel equality, WPT 적합성, 실기기/hardware GPU, 일반 CSS admission 또는 공개 CSS 지원을 검증하지 않는다. C11.4/C11 완료나 공식 완료 수 승격 근거가 아니다.
+
 ## C11.4 anonymous Grid text computed `text-indent` flags · 제한 opt-in runtime 확장
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 anonymous direct-text Grid `text-indent` fixture의 허용 목록을 50개 고정 scene으로 확장한다. 이번에 추가한 20개는 Ahem 10px/400, `XXX X`와 `XXX\nX`, `white-space:normal|pre-line`, min-/max-content column 및 `0px`·`10px`·`10px each-line`·`10px hanging`·`10px hanging each-line`의 조합이다. Chrome 156 관측과 독립 Ahem advance 계산은 [사전 비교](evidence/c11-4-anonymous-grid-text-indent-flags-precomparison-2026-11-01/README.md)에 고정한다.

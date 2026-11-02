@@ -1,0 +1,311 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.709ms)
+✔ calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 (136.022125ms)
+✔ 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 (233.074875ms)
+✔ 41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로에 고정된다 (904.792458ms)
+✔ fit-content() 열 축 limit 네 장면이 opt-in runtime과 두 simulator에 연결된다 (117.463875ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (30.788416ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.416125ms)
+✔ C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fixture에 고정된다 (118.573916ms)
+✔ C11.4 zero fixed-maximum auto-repeat 24 scene은 opt-in runtime에만 연결된다 (120.369166ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.673666ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (19.328291ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (6.304416ms)
+✔ C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 (119.239792ms)
+✔ C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixture에 고정된다 (229.984875ms)
+✔ C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경계에 있다 (114.985083ms)
+✔ C11.4 intrinsic auto-repeat WPT 8 scene은 oracle 및 양 플랫폼 검사에 고정된다 (118.515417ms)
+✔ fit-content min-height WPT slice는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (118.496917ms)
+✔ zoomed fit-content WPT slice는 fixture parser와 양쪽 simulator 화면 판정에 고정된다 (117.288167ms)
+✔ definite-height percentage fit-content WPT slices는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (119.432625ms)
+✔ definite-height calc fit-content WPT slice is isolated in the runtime catalog (112.875625ms)
+✔ fit-content automatic-minimum floor와 zero control이 opt-in runtime에 고정된다 (116.076709ms)
+✔ fit-content span-2 WPT slice가 opt-in runtime과 simulator capture에 연결된다 (118.499625ms)
+✔ fit-content WPT growth-limit 경계 세 건이 opt-in runtime과 두 simulator에 연결된다 (116.179334ms)
+✔ anonymous Grid white-space matrix stays opt-in and reaches both simulators (118.075917ms)
+✔ C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulator route (5.690708ms)
+✔ C11.4 anonymous Grid computed word-break matrix stays opt-in and reaches both simulators (5.339042ms)
+✔ C11.4 anonymous Grid computed line-break matrix stays opt-in and reaches both simulators (3.987667ms)
+✔ C11.4 anonymous Grid computed line-break loose matrix keeps locale controls and simulator adapters aligned (7.828625ms)
+✔ C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reaches both simulators (4.635417ms)
+✔ C11.4 word-break break-word interaction matrix stays fixture-only across both platforms (3.140792ms)
+✔ C11.4 computed text-transform scenes stay behind fixture-test gates (8.048791ms)
+✖ C11.4 anonymous Grid hyphens auto stays fixture-only with exact English source mapping (4.529292ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 31
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3302.885833
+
+✖ failing tests:
+
+test at tools/css-reference/fixture-module-boundary.test.mjs:2581:1
+✖ C11.4 anonymous Grid hyphens auto stays fixture-only with exact English source mapping (4.529292ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /const SCENE_IDS: \[&str; 133\]/. Input:
+  
+  'use std::collections::BTreeMap;\n' +
+    '\n' +
+    'use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};\n' +
+    'use spinon_layout::TextIndentFlags;\n' +
+    'use spinon_layout::{\n' +
+    '    FontStyleMode, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphStyle, TabSize,\n' +
+    '    TextLayoutEngine, TextParagraphDirection, TextTransformMode, WhiteSpaceMode, WordBreakMode,\n' +
+    '};\n' +
+    'use spinon_style::{\n' +
+    '    ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,\n' +
+    '    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,\n' +
+    '    ComputedCssGridPlacement, ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedElementStyle,\n' +
+    '    ComputedStyleProfile, ComputedStyleSnapshot,\n' +
+    '};\n' +
+    '\n' +
+    'use super::super::{RuntimeLayoutFailure, layout_failure};\n' +
+    '\n' +
+    '#[path = "c11_4_anonymous_text/font_size.rs"]\n' +
+    'mod font_size;\n' +
+    '#[path = "c11_4_anonymous_text/hyphens.rs"]\n' +
+    'mod hyphens;\n' +
+    '#[path = "c11_4_anonymous_text/letter_spacing.rs"]\n' +
+    'mod letter_spacing;\n' +
+    '#[path = "c11_4_anonymous_text/line_break.rs"]\n' +
+    'mod line_break;\n' +
+    '#[path = "c11_4_anonymous_text/line_height.rs"]\n' +
+    'mod line_height;\n' +
+    '#[path = "c11_4_anonymous_text/overflow_wrap.rs"]\n' +
+    'mod overflow_wrap;\n' +
+    '#[path = "c11_4_anonymous_text/text_indent.rs"]\n' +
+    'mod text_indent;\n' +
+    '#[path = "c11_4_anonymous_text/text_indent_source.rs"]\n' +
+    'mod text_indent_source;\n' +
+    '#[path = "c11_4_anonymous_text/text_transform.rs"]\n' +
+    'mod text_transform;\n' +
+    '#[path = "c11_4_anonymous_text/word_break.rs"]\n' +
+    'mod word_break;\n' +
+    '#[path = "c11_4_anonymous_text/word_break_overflow_wrap.rs"]\n' +
+    'mod word_break_overflow_wrap;\n' +
+    '#[path = "c11_4_anonymous_text/word_spacing.rs"]\n' +
+    'mod word_spacing;\n' +
+    'use font_size::{FONT_SIZE_SCENE_IDS, FONT_SIZE_ZERO_SCENE_IDS, validate_computed_font_size};\n' +
+    'use hyphens::{find_scene as hyphens_scene, validate_computed_hyphens};\n' +
+    'use letter_spacing::{\n' +
+    '    LETTER_SPACING_SCENE_IDS, find_scene as letter_spacing_scene, validate_computed_letter_spacing,\n' +
+    '};\n' +
+    '#[cfg(test)]\n' +
+    'use line_break::SCENES as LINE_BREAK_SCENES;\n' +
+    'use line_break::find_scene as line_break_scene;\n' +
+    'use line_height::{\n' +
+    '    ComputedLineHeight, LINE_HEIGHT_SCENE_IDS, line_height_text, validate_computed_line_height,\n' +
+    '};\n' +
+    '#[cfg(test)]\n' +
+    'use overflow_wrap::SCENES as OVERFLOW_WRAP_SCENES;\n' +
+    'use overflow_wrap::{\n' +
+    '    TrackKind as OverflowWrapTrackKind, find_scene as overflow_wrap_scene,\n' +
+    '    validate_computed_overflow_wrap,\n' +
+    '};\n' +
+    'use text_indent::{\n' +
+    '    ComputedTextIndent, TEXT_INDENT_SCENE_IDS, find_scene as text_indent_scene,\n' +
+    '    validate_computed_text_indent,\n' +
+    '};\n' +
+    'use text_indent_source::authored_inline_text_indent;\n' +
+    '#[cfg(test)]\n' +
+    'use text_transform::SCENES as TEXT_TRANSFORM_SCENES;\n' +
+    'use text_transform::{\n' +
+    '    SCENE_IDS as TEXT_TRANSFORM_SCENE_IDS, find_scene as text_transform_scene,\n' +
+    '    validate_computed_text_transform,\n' +
+    '};\n' +
+    '#[cfg(test)]\n' +
+    'use word_break::SCENES as WORD_BREAK_SCENES;\n' +
+    'use word_break::find_scene as word_break_scene;\n' +
+    '#[cfg(test)]\n' +
+    'use word_break_overflow_wrap::SCENES as WORD_BREAK_OVERFLOW_WRAP_SCENES;\n' +
+    'use word_break_overflow_wrap::find_scene as word_break_overflow_wrap_scene;\n' +
+    'use word_spacing::{\n' +
+    '    WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,\n' +
+    '};\n' +
+    '\n' +
+    'const SCENE_IDS: [&str; 143] = [\n' +
+    '    "anonymous-min-content-wrap",\n' +
+    '    "anonymous-normal-min-content",\n' +
+    '    "anonymous-nowrap-min-content",\n' +
+    '    "anonymous-normal-newline-max-content",\n' +
+    '    "anonymous-pre-line-max-content",\n' +
+    '    "anonymous-comment-continuation",\n' +
+    '    "anonymous-runs-around-block",\n' +
+    '    "anonymous-hidden-child-continuation",\n' +
+    '    "whitespace-does-not-create-item",\n' +
+    '    "anonymous-normal-max-content-spaces",\n' +
+    '    "anonymous-pre-wrap-max-content-spaces",\n' +
+    '    "anonymous-pre-wrap-comment-split-max-content",\n' +
+    '    "anonymous-pre-wrap-min-content-spaces",\n' +
+    '    "anonymous-pre-wrap-soft-wrap",\n' +
+    '    "anonymous-pre-wrap-forced-break",\n' +
+    '    "anonymous-pre-wrap-whitespace-before-block",\n' +
+    '    "anonymous-break-spaces-max-content",\n' +
+    '    "anonymous-break-spaces-comment-split-max-content",\n' +
+    '    "anonymous-break-spaces-min-content",\n' +
+    '    "anonymous-break-spaces-soft-wrap-25",\n' +
+    '    "anonymous-break-spaces-forced-break-max-content",\n' +
+    '    "anonymous-break-spaces-forced-break-min-content",\n' +
+    '    "anonymous-break-spaces-trailing-soft-wrap-25",\n' +
+    '    "anonymous-break-spaces-trailing-max-content",\n' +
+    '    "anonymous-break-spaces-whitespace-only",\n' +
+    '    "anonymous-break-spaces-whitespace-before-block",\n' +
+    '    "anonymous-pre-max-content-spaces",\n' +
+    '    "anonymous-pre-min-content-spaces",\n' +
+    '    "anonymous-pre-forced-break",\n' +
+    '    "anonymous-normal-fixed-width-control",\n' +
+    '    "anonymous-pre-fixed-width-nowrap",\n' +
+    '    "anonymous-pre-tab-max-content",\n' +
+    '    "anonymous-pre-tab-leading",\n' +
+    '    "anonymous-pre-tab-exact-stop",\n' +
+    '    "anonymous-pre-tab-consecutive",\n' +
+    '    "anonymous-pre-tab-forced-break",\n' +
+    '    "anonymous-pre-tab-trailing",\n' +
+    '    "anonymous-pre-tab-min-content",\n' +
+    '    "anonymous-pre-tab-fixed-width-nowrap",\n' +
+    '    "anonymous-pre-tab-size-2-two-columns",\n' +
+    '    "anonymous-pre-tab-size-2-leading",\n' +
+    '    "anonymous-pre-tab-size-2-exact-stop",\n' +
+    '    "anonymous-pre-tab-size-2-consecutive",\n' +
+    '    "anonymous-pre-tab-size-2-reset",\n' +
+    '    "anonymous-pre-tab-size-2-crlf-reset",\n' +
+    '    "anonymous-pre-tab-size-2-trailing",\n' +
+    '    "anonymous-pre-tab-size-2-min-content",\n' +
+    '    "anonymous-pre-tab-size-2-fixed-overflow",\n' +
+    '    "anonymous-pre-tab-size-1-leading",\n' +
+    '    "anonymous-pre-tab-size-1-exact-stop",\n' +
+    '    "anonymous-pre-tab-size-4-leading",\n' +
+    '    "anonymous-pre-tab-size-4-exact-stop",\n' +
+    '    "anonymous-pre-tab-size-0-negative",\n' +
+    '    "anonymous-pre-tab-size-fractional-negative",\n' +
+    '    "anonymous-pre-tab-size-length-negative",\n' +
+    '    "word-break-normal-unbroken-min-content",\n' +
+    '    "word-break-normal-unbroken-max-content",\n' +
+    '    "word-break-break-all-unbroken-min-content",\n' +
+    '    "word-break-break-all-unbroken-max-content",\n' +
+    '    "word-break-normal-two-words-min-content",\n' +
+    '    "word-break-normal-two-words-max-content",\n' +
+    '    "word-break-break-all-two-words-min-content",\n' +
+    '    "word-break-break-all-two-words-max-content",\n' +
+    '    "word-break-normal-hangul-min-content",\n' +
+    '    "word-break-normal-hangul-max-content",\n' +
+    '    "word-break-keep-all-hangul-min-content",\n' +
+    '    "word-break-keep-all-hangul-max-content",\n' +
+    '    "overflow-wrap-normal-min-content",\n' +
+    '    "overflow-wrap-normal-max-content",\n' +
+    '    "overflow-wrap-normal-fixed-10px",\n' +
+    '    "overflow-wrap-anywhere-min-content",\n' +
+    '    "overflow-wrap-anywhere-max-content",\n' +
+    '    "overflow-wrap-anywhere-fixed-10px",\n' +
+    '    "overflow-wrap-break-word-min-content",\n' +
+    '    "overflow-wrap-break-word-max-content",\n' +
+    '    "overflow-wrap-break-word-fixed-10px",\n' +
+    '    "text-transform-none-min-content",\n' +
+    '    "text-transform-none-max-content",\n' +
+    '    "text-transform-uppercase-min-content",\n' +
+    '    "text-transform-uppercase-max-content",\n' +
+    '    "text-transform-lowercase-min-content",\n' +
+    '    "text-transform-lowercase-max-content",\n' +
+    '    "text-transform-capitalize-none-min-content",\n' +
+    '    "text-transform-capitalize-none-max-content",\n' +
+    '    "text-transform-capitalize-min-content",\n' +
+    '    "text-transform-capitalize-max-content",\n' +
+    '    "text-transform-capitalize-mixed-case",\n' +
+    '    "text-transform-capitalize-collapsed-spaces",\n' +
+    '    "text-transform-unicode-sharp-s-min-content",\n' +
+    '    "text-transform-unicode-sharp-s-max-content",\n' +
+    '    "text-transform-unicode-source-split-max-content",\n' +
+    '    "text-transform-unicode-accented-max-content",\n' +
+    '    "text-transform-unicode-combining-max-content",\n' +
+    '    "text-transform-unicode-hyphen-boundary-max-content",\n' +
+    '    "text-transform-unicode-apostrophe-word-max-content",\n' +
+    '    "text-transform-unicode-opening-punctuation-max-content",\n' +
+    '    "text-transform-unicode-number-first-none",\n' +
+    '    "text-transform-unicode-number-first-control",\n' +
+    '    "text-transform-unicode-collapsed-space-max-content",\n' +
+    '    "text-transform-full-width-none-max-content",\n' +
+    '    "text-transform-full-width-max-content",\n' +
+    '    "text-transform-full-width-min-content",\n' +
+    '    "text-transform-full-width-collapsed-spaces-max-content",\n' +
+    '    "text-transform-full-size-kana-none-max-content",\n' +
+    '    "text-transform-full-size-kana-hiragana-min-content",\n' +
+    '    "text-transform-full-size-kana-hiragana-max-content",\n' +
+    '    "text-transform-full-size-kana-katakana-min-content",\n' +
+    '    "text-transform-full-size-kana-katakana-max-content",\n' +
+    '    "text-transform-full-size-kana-halfwidth-min-content",\n' +
+    '    "text-transform-full-size-kana-halfwidth-max-content",\n' +
+    '    "text-transform-full-size-kana-supplementary-min-content",\n' +
+    '    "text-transform-full-size-kana-supplementary-max-content",\n' +
+    '    "text-transform-full-size-kana-pass-through-max-content",\n' +
+    '    "hyphens-none-soft-min",\n' +
+    '    "hyphens-none-soft-max",\n' +
+    '    "hyphens-none-soft-fixed-30",\n' +
+    '    "hyphens-manual-soft-min",\n' +
+    '    "hyphens-manual-soft-max",\n' +
+    '    "hyphens-manual-soft-fixed-30",\n' +
+    '    "hyphens-default-soft-fixed-30",\n' +
+    '    "hyphens-none-visible-min",\n' +
+    '    "hyphens-none-visible-fixed-30",\n' +
+    '    "hyphens-manual-visible-min",\n' +
+    '    "hyphens-manual-visible-fixed-30",\n' +
+    '    "hyphens-none-unbroken-min",\n' +
+    '    "hyphens-manual-unbroken-min",\n' +
+    '    "hyphens-none-multiple-min",\n' +
+    '    "hyphens-none-multiple-fixed-30",\n' +
+    '    "hyphens-manual-multiple-min",\n' +
+    '    "hyphens-manual-multiple-fixed-30",\n' +
+    '    "hyphens-inherited-none-fixed-30",\n' +
+    '    "hyphens-inherited-manual-fixed-30",\n' +
+    '    "hyphens-auto-hyphenation-min",\n' +
+    '    "hyphens-auto-hyphenation-max",\n' +
+    '    "hyphens-auto-hyphenation-fixed-50",\n' +
+    '    "hyphens-auto-internationalization-min",\n' +
+    '    "hyphens-auto-internationalization-max",\n' +
+    '    "hyphens-auto-internationalization-fixed-50",\n' +
+    '    "hyphens-auto-representation-min",\n' +
+    '    "hyphens-auto-representation-max",\n' +
+    '    "hyphens-auto-representation-fixed-50",\n' +
+    '    "hyphens-auto-expected-reject",\n' +
+    '    "hyphens-invalid-expected-reject",\n' +
+    '];\n' +
+    '\n' +
+    'const FULL_TAB_VALUE_IDS: [&str; 14] = [\n' +
+    '    "number-zero",\n' +
+    '    "number-quarter",\n' +
+    '    "number-three-tenths",\n' +
+    '    "number-half",\n' +
+    '    "number-one-and-half",\n' +
+    '    "number-two-and-half",\n' +
+    '    "number-three-and-quarter",\n' +
+    '    "length-zero",\n' +
+    '    "length-three-tenths",\n' +
+    '    "length-two",\n' +
+    '    "length-five",\n' +
+    '    "length-twelve",\n' +
+    '    "length-em",\n' +
+    '    "length-calc",\n' +
+    '];\n' +
+    '\n' +
+    'const FULL_TAB_CASE_IDS: [&str; 10] = [\n' +
+    '    "leading",\n' +
+    '    "after-one",\n' +
+    '    "after-two",\n' +
+    '    "exact-stop",\n' +
+    '    "consecutive",\n' +
+    '    "trailing",\n' +
+    '    "lf-reset",\n' +
+    '    "crlf-reset",\n' +
+    '    "min-content",\n' +
+    '    "fixed-overflow",\n'... 108627 more characters
+  
+      at TestContext.<anonymous> (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/fixture-module-boundary.test.mjs:2623:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'use std::collections::BTreeMap;\n\nuse spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};\nuse spinon_layout::TextIndentFlags;\nuse spinon_layout::{\n    FontStyleMode, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphStyle, TabSize,\n    TextLayoutEngine, TextParagraphDirection, TextTransformMode, WhiteSpaceMode, WordBreakMode,\n};\nuse spinon_style::{\n    ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,\n    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,\n    ComputedCssGridPlacement, ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedElementStyle,\n    ComputedStyleProfile, ComputedStyleSnapshot,\n};\n\nuse super::super::{RuntimeLayoutFailure, layout_failure};\n\n#[path = "c11_4_anonymous_text/font_size.rs"]\nmod font_size;\n#[path = "c11_4_anonymous_text/hyphens.rs"]\nmod hyphens;\n#[path = "c11_4_anonymous_text/letter_spacing.rs"]\nmod letter_spacing;\n#[path = "c11_4_anonymous_text/line_break.rs"]\nmod line_break;\n#[path = "c11_4_anonymous_text/line_height.rs"]\nmod line_height;\n#[path = "c11_4_anonymous_text/overflow_wrap.rs"]\nmod overflow_wrap;\n#[path = "c11_4_anonymous_text/text_indent.rs"]\nmod text_indent;\n#[path = "c11_4_anonymous_text/text_indent_source.rs"]\nmod text_indent_source;\n#[path = "c11_4_anonymous_text/text_transform.rs"]\nmod text_transform;\n#[path = "c11_4_anonymous_text/word_break.rs"]\nmod word_break;\n#[path = "c11_4_anonymous_text/word_break_overflow_wrap.rs"]\nmod word_break_overflow_wrap;\n#[path = "c11_4_anonymous_text/word_spacing.rs"]\nmod word_spacing;\nuse font_size::{FONT_SIZE_SCENE_IDS, FONT_SIZE_ZERO_SCENE_IDS, validate_computed_font_size};\nuse hyphens::{find_scene as hyphens_scene, validate_computed_hyphens};\nuse letter_spacing::{\n    LETTER_SPACING_SCENE_IDS, find_scene as letter_spacing_scene, validate_computed_letter_spacing,\n};\n#[cfg(test)]\nuse line_break::SCENES as LINE_BREAK_SCENES;\nuse line_break::find_scene as line_break_scene;\nuse line_height::{\n    ComputedLineHeight, LINE_HEIGHT_SCENE_IDS, line_height_text, validate_computed_line_height,\n};\n#[cfg(test)]\nuse overflow_wrap::SCENES as OVERFLOW_WRAP_SCENES;\nuse overflow_wrap::{\n    TrackKind as OverflowWrapTrackKind, find_scene as overflow_wrap_scene,\n    validate_computed_overflow_wrap,\n};\nuse text_indent::{\n    ComputedTextIndent, TEXT_INDENT_SCENE_IDS, find_scene as text_indent_scene,\n    validate_computed_text_indent,\n};\nuse text_indent_source::authored_inline_text_indent;\n#[cfg(test)]\nuse text_transform::SCENES as TEXT_TRANSFORM_SCENES;\nuse text_transform::{\n    SCENE_IDS as TEXT_TRANSFORM_SCENE_IDS, find_scene as text_transform_scene,\n    validate_computed_text_transform,\n};\n#[cfg(test)]\nuse word_break::SCENES as WORD_BREAK_SCENES;\nuse word_break::find_scene as word_break_scene;\n#[cfg(test)]\nuse word_break_overflow_wrap::SCENES as WORD_BREAK_OVERFLOW_WRAP_SCENES;\nuse word_break_overflow_wrap::find_scene as word_break_overflow_wrap_scene;\nuse word_spacing::{\n    WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,\n};\n\nconst SCENE_IDS: [&str; 143] = [\n    "anonymous-min-content-wrap",\n    "anonymous-normal-min-content",\n    "anonymous-nowrap-min-content",\n    "anonymous-normal-newline-max-content",\n    "anonymous-pre-line-max-content",\n    "anonymous-comment-continuation",\n    "anonymous-runs-around-block",\n    "anonymous-hidden-child-continuation",\n    "whitespace-does-not-create-item",\n    "anonymous-normal-max-content-spaces",\n    "anonymous-pre-wrap-max-content-spaces",\n    "anonymous-pre-wrap-comment-split-max-content",\n    "anonymous-pre-wrap-min-content-spaces",\n    "anonymous-pre-wrap-soft-wrap",\n    "anonymous-pre-wrap-forced-break",\n    "anonymous-pre-wrap-whitespace-before-block",\n    "anonymous-break-spaces-max-content",\n    "anonymous-break-spaces-comment-split-max-content",\n    "anonymous-break-spaces-min-content",\n    "anonymous-break-spaces-soft-wrap-25",\n    "anonymous-break-spaces-forced-break-max-content",\n    "anonymous-break-spaces-forced-break-min-content",\n    "anonymous-break-spaces-trailing-soft-wrap-25",\n    "anonymous-break-spaces-trailing-max-content",\n    "anonymous-break-spaces-whitespace-only",\n    "anonymous-break-spaces-whitespace-before-block",\n    "anonymous-pre-max-content-spaces",\n    "anonymous-pre-min-content-spaces",\n    "anonymous-pre-forced-break",\n    "anonymous-normal-fixed-width-control",\n    "anonymous-pre-fixed-width-nowrap",\n    "anonymous-pre-tab-max-content",\n    "anonymous-pre-tab-leading",\n    "anonymous-pre-tab-exact-stop",\n    "anonymous-pre-tab-consecutive",\n    "anonymous-pre-tab-forced-break",\n    "anonymous-pre-tab-trailing",\n    "anonymous-pre-tab-min-content",\n    "anonymous-pre-tab-fixed-width-nowrap",\n    "anonymous-pre-tab-size-2-two-columns",\n    "anonymous-pre-tab-size-2-leading",\n    "anonymous-pre-tab-size-2-exact-stop",\n    "anonymous-pre-tab-size-2-consecutive",\n    "anonymous-pre-tab-size-2-reset",\n    "anonymous-pre-tab-size-2-crlf-reset",\n    "anonymous-pre-tab-size-2-trailing",\n    "anonymous-pre-tab-size-2-min-content",\n    "anonymous-pre-tab-size-2-fixed-overflow",\n    "anonymous-pre-tab-size-1-leading",\n    "anonymous-pre-tab-size-1-exact-stop",\n    "anonymous-pre-tab-size-4-leading",\n    "anonymous-pre-tab-size-4-exact-stop",\n    "anonymous-pre-tab-size-0-negative",\n    "anonymous-pre-tab-size-fractional-negative",\n    "anonymous-pre-tab-size-length-negative",\n    "word-break-normal-unbroken-min-content",\n    "word-break-normal-unbroken-max-content",\n    "word-break-break-all-unbroken-min-content",\n    "word-break-break-all-unbroken-max-content",\n    "word-break-normal-two-words-min-content",\n    "word-break-normal-two-words-max-content",\n    "word-break-break-all-two-words-min-content",\n    "word-break-break-all-two-words-max-content",\n    "word-break-normal-hangul-min-content",\n    "word-break-normal-hangul-max-content",\n    "word-break-keep-all-hangul-min-content",\n    "word-break-keep-all-hangul-max-content",\n    "overflow-wrap-normal-min-content",\n    "overflow-wrap-normal-max-content",\n    "overflow-wrap-normal-fixed-10px",\n    "overflow-wrap-anywhere-min-content",\n    "overflow-wrap-anywhere-max-content",\n    "overflow-wrap-anywhere-fixed-10px",\n    "overflow-wrap-break-word-min-content",\n    "overflow-wrap-break-word-max-content",\n    "overflow-wrap-break-word-fixed-10px",\n    "text-transform-none-min-content",\n    "text-transform-none-max-content",\n    "text-transform-uppercase-min-content",\n    "text-transform-uppercase-max-content",\n    "text-transform-lowercase-min-content",\n    "text-transform-lowercase-max-content",\n    "text-transform-capitalize-none-min-content",\n    "text-transform-capitalize-none-max-content",\n    "text-transform-capitalize-min-content",\n    "text-transform-capitalize-max-content",\n    "text-transform-capitalize-mixed-case",\n    "text-transform-capitalize-collapsed-spaces",\n    "text-transform-unicode-sharp-s-min-content",\n    "text-transform-unicode-sharp-s-max-content",\n    "text-transform-unicode-source-split-max-content",\n    "text-transform-unicode-accented-max-content",\n    "text-transform-unicode-combining-max-content",\n    "text-transform-unicode-hyphen-boundary-max-content",\n    "text-transform-unicode-apostrophe-word-max-content",\n    "text-transform-unicode-opening-punctuation-max-content",\n    "text-transform-unicode-number-first-none",\n    "text-transform-unicode-number-first-control",\n    "text-transform-unicode-collapsed-space-max-content",\n    "text-transform-full-width-none-max-content",\n    "text-transform-full-width-max-content",\n    "text-transform-full-width-min-content",\n    "text-transform-full-width-collapsed-spaces-max-content",\n    "text-transform-full-size-kana-none-max-content",\n    "text-transform-full-size-kana-hiragana-min-content",\n    "text-transform-full-size-kana-hiragana-max-content",\n    "text-transform-full-size-kana-katakana-min-content",\n    "text-transform-full-size-kana-katakana-max-content",\n    "text-transform-full-size-kana-halfwidth-min-content",\n    "text-transform-full-size-kana-halfwidth-max-content",\n    "text-transform-full-size-kana-supplementary-min-content",\n    "text-transform-full-size-kana-supplementary-max-content",\n    "text-transform-full-size-kana-pass-through-max-content",\n    "hyphens-none-soft-min",\n    "hyphens-none-soft-max",\n    "hyphens-none-soft-fixed-30",\n    "hyphens-manual-soft-min",\n    "hyphens-manual-soft-max",\n    "hyphens-manual-soft-fixed-30",\n    "hyphens-default-soft-fixed-30",\n    "hyphens-none-visible-min",\n    "hyphens-none-visible-fixed-30",\n    "hyphens-manual-visible-min",\n    "hyphens-manual-visible-fixed-30",\n    "hyphens-none-unbroken-min",\n    "hyphens-manual-unbroken-min",\n    "hyphens-none-multiple-min",\n    "hyphens-none-multiple-fixed-30",\n    "hyphens-manual-multiple-min",\n    "hyphens-manual-multiple-fixed-30",\n    "hyphens-inherited-none-fixed-30",\n    "hyphens-inherited-manual-fixed-30",\n    "hyphens-auto-hyphenation-min",\n    "hyphens-auto-hyphenation-max",\n    "hyphens-auto-hyphenation-fixed-50",\n    "hyphens-auto-internationalization-min",\n    "hyphens-auto-internationalization-max",\n    "hyphens-auto-internationalization-fixed-50",\n    "hyphens-auto-representation-min",\n    "hyphens-auto-representation-max",\n    "hyphens-auto-representation-fixed-50",\n    "hyphens-auto-expected-reject",\n    "hyphens-invalid-expected-reject",\n];\n\nconst FULL_TAB_VALUE_IDS: [&str; 14] = [\n    "number-zero",\n    "number-quarter",\n    "number-three-tenths",\n    "number-half",\n    "number-one-and-half",\n    "number-two-and-half",\n    "number-three-and-quarter",\n    "length-zero",\n    "length-three-tenths",\n    "length-two",\n    "length-five",\n    "length-twelve",\n    "length-em",\n    "length-calc",\n];\n\nconst FULL_TAB_CASE_IDS: [&str; 10] = [\n    "leading",\n    "after-one",\n    "after-two",\n    "exact-stop",\n    "consecutive",\n    "trailing",\n    "lf-reset",\n    "crlf-reset",\n    "min-content",\n    "fixed-overflow",\n'... 108627 more characters,
+    expected: /const SCENE_IDS: \[&str; 133\]/,
+    operator: 'match',
+    diff: 'simple'
+  }

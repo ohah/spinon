@@ -1,0 +1,11 @@
+scene	result	text_transform	track	line_count	grid_column_px	grid_row_px	trace_parts	error
+text-transform-full-size-kana-none-max-content	PASS	none	max-content	1	62.37000274658203	10	15	none
+text-transform-full-size-kana-hiragana-min-content	PASS	full-size-kana	min-content	2	10	20	13	none
+text-transform-full-size-kana-hiragana-max-content	PASS	full-size-kana	max-content	1	100	10	15	none
+text-transform-full-size-kana-katakana-min-content	PASS	full-size-kana	min-content	2	10	20	13	none
+text-transform-full-size-kana-katakana-max-content	PASS	full-size-kana	max-content	1	99.5	10	15	none
+text-transform-full-size-kana-halfwidth-min-content	PASS	full-size-kana	min-content	2	5	20	13	none
+text-transform-full-size-kana-halfwidth-max-content	PASS	full-size-kana	max-content	1	45	10	14	none
+text-transform-full-size-kana-supplementary-min-content	PASS	full-size-kana	min-content	2	10	20	13	none
+text-transform-full-size-kana-supplementary-max-content	PASS	full-size-kana	max-content	1	90	10	14	none
+text-transform-full-size-kana-pass-through-max-content	PASS	full-size-kana	max-content	1	62.37000274658203	10	15	none
