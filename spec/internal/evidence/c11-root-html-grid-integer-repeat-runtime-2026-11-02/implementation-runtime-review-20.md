@@ -31,6 +31,6 @@
 - `cargo test --locked -p spinon-style root_html -- --nocapture`: 13 passed.
 - `cargo test --locked -p spinon-style-to-layout root_html -- --nocapture`: 15 passed.
 - `cargo clippy --locked -p spinon-runtime -p spinon-style-to-layout -p spinon-style --all-targets -- -D warnings`: 통과.
-- `cargo fmt --all -- --check` 및 `git diff --check`: 최종 검증에서 다시 실행한다.
+- `cargo fmt --all -- --check`와 `git diff --check`: 상태·계획·공개 로드맵 후속 편집 뒤 다시 실행해 통과했다. Rust 구현은 해당 시점 이후 변경하지 않았다.
 
 이 검토는 한정된 parsed Root HTML integer-repeat slice만 다룬다. C11.1·C11, 전체 CSS Grid, 공개 WPT 적합성, Android 실기기/hardware GPU, iOS post-compositor surface는 완료 판정하지 않는다.
