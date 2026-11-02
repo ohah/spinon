@@ -5090,6 +5090,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedNodeFramesMatch(String sceneId, String report) {
+        if (c114IsFullSizeKanaTextTransformScene(sceneId)) {
+            return c114FullSizeKanaNodeFramesMatch(sceneId, report);
+        }
         if (c114IsGridTextAspectRatioScene(sceneId)) {
             return c114AspectRatioNodeFramesMatch(sceneId, report);
         }
@@ -5110,6 +5113,44 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (expected == null || report.contains(expected)) return true;
         return "calc-neighbor-col-fill-border-box".equals(sceneId)
                 && report.contains(expected.replace("x=23.796875", "x=23.8"));
+    }
+
+    private static boolean c114FullSizeKanaNodeFramesMatch(String sceneId, String report) {
+        double[] expected = c114ComputedTextTransformScene(sceneId);
+        String marker = "node_frames_css_px=[";
+        if (expected == null || report.indexOf(marker) < 0
+                || report.indexOf(marker) != report.lastIndexOf(marker)) return false;
+        int start = report.indexOf(marker) + marker.length();
+        int end = report.indexOf(']', start);
+        if (end < 0) return false;
+        String[] frames = report.substring(start, end).split(";", -1);
+        if (frames.length != 2) return false;
+        double[][] dimensions = {{120, expected[3]}, {expected[2], expected[3]}};
+        String[] properties = {"x=", "y=", "width=", "height="};
+        double tolerance = 1.0 / 32.0;
+        for (int index = 0; index < frames.length; index++) {
+            String[] fields = frames[index].split(",", -1);
+            if (fields.length != 5) return false;
+            String[] identity = fields[0].split(":node=", -1);
+            if (identity.length != 2) return false;
+            try {
+                if (Integer.parseInt(identity[0]) != index
+                        || Integer.parseInt(identity[1]) != index + 1) return false;
+                double[] expectedValues = {0, 0, dimensions[index][0], dimensions[index][1]};
+                for (int property = 0; property < properties.length; property++) {
+                    if (!fields[property + 1].startsWith(properties[property])) return false;
+                    double actual = Double.parseDouble(
+                            fields[property + 1].substring(properties[property].length()));
+                    if (!Double.isFinite(actual)
+                            || Math.abs(actual - expectedValues[property]) > tolerance) {
+                        return false;
+                    }
+                }
+            } catch (NumberFormatException error) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean c114AspectRatioNodeFramesMatch(String sceneId, String report) {
@@ -9876,8 +9917,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         double[] textTransform = c114ComputedTextTransformScene(sceneId);
         if (textTransform != null) {
-            return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
-                    + c114GenericFrameNumber(textTransform[3]) + "]";
+            String root = "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
+                    + c114GenericFrameNumber(textTransform[3]);
+            if (c114IsFullSizeKanaTextTransformScene(sceneId)) {
+                return root + ";1:node=2,x=0,y=0,width="
+                        + c114GenericFrameNumber(textTransform[2]) + ",height="
+                        + c114GenericFrameNumber(textTransform[3]) + "]";
+            }
+            return root + "]";
         }
         double[] letterSpacing = c114ComputedLetterSpacingScene(sceneId);
         if (letterSpacing != null) {
@@ -13257,6 +13304,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "text-transform-full-size-kana-halfwidth-max-content": return "ｱｲｳｴｵﾂﾔﾕﾖ";
             case "text-transform-full-size-kana-supplementary-min-content": return "こゐ";
             case "text-transform-full-size-kana-supplementary-max-content": return "こゐゑをコヰヱヲン";
+            case "text-transform-full-size-kana-none-max-content":
             case "text-transform-full-size-kana-pass-through-max-content":
                 return "あカンABC 12";
             case "text-transform-full-width-max-content":

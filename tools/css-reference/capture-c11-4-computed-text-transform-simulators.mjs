@@ -128,6 +128,10 @@ function runtimeSceneID(scene) {
 
 function validateScene(log, scene, runID) {
   const expected = deriveScene(scene);
+  const runtimeAssertion = log.split(/\r?\n/).find((line) =>
+    line.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
+      || line.includes('SPINON_C114_GRID_ARGUMENT_ERROR'));
+  assert.ok(!runtimeAssertion, `${scene.id}: runtime rejected scene: ${runtimeAssertion ?? ''}`);
   assert.ok(log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `),
     `${scene.id}: summary missing`);
   assert.ok(log.includes(`expected_root_frame=width=120,height=${expected.rowHeight}`),
