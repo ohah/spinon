@@ -2,7 +2,7 @@
 
 **Root HTML named areas × definite-axis fractional tracks:** the bounded implementation in [PR #1030](https://github.com/ohah/spinon/pull/1030) merged on 2026-11-02 (merge SHA `579435b1955e7ad157baa13d100d75f13a5dd283`). The default parsed Root HTML route supports the fixed 2×2 area map with direct `1fr 2fr` tracks on both definite axes; Android API 37 ARM64 AVD and iPhone 17 Pro/iOS 26.2 Simulator draw/present evidence is recorded in [the implementation plan](./c11-root-html-grid-fr-named-areas.md). This limited slice does not complete C11.1 or C11, and the official `72/213` aggregate remains unchanged. [Status-sync evidence](../spec/internal/evidence/roadmap-c11-root-html-fr-named-areas-sync-2026-11-02/README.md).
 
-**현재 Root HTML 조합 후보:** [named area × percentage track](./c11-root-html-grid-area-percentage.md)은 기존 2×2 named-area 경로에 각 축의 finite direct `px`/`%` track을 추가한다. Chrome 156 사전 비교, 제한 positive/rejection test, Android AVD와 iOS Simulator 각 4/4 scene 결과를 [runtime 근거](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md)에 기록했다. 구현 PR은 아직 검토·병합 전이며 C11.1/C11 상태와 `72/213`은 그대로다.
+**현재 Root HTML 조합 후보:** [named area × percentage track](./c11-root-html-grid-area-percentage.md)은 기존 2×2 named-area 경로에 각 축의 finite direct `px`/`%` track을 추가한다. Chrome 156 사전 비교, 제한 positive/rejection test, Android AVD와 iOS Simulator 각 4/4 scene 결과를 [runtime 근거](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md)에 기록했다. 구현 PR [#1035](https://github.com/ohah/spinon/pull/1035)은 열려 있으며 C11.1/C11 상태와 `72/213`은 그대로다.
 
 **상위 원본:** [구현 상태 대장](../spec/STATUS.md) · [웹 호환 계약](../spec/0001-conformance.md) · [레이아웃 인터페이스 0009](../spec/internal/0009-layout-engine.md)
 
@@ -123,4 +123,4 @@ PR [#1015](https://github.com/ohah/spinon/pull/1015)은 2026-11-02T00:39:29Z Reb
 
 기본 parsed Root HTML 경로에서 기존 2×2 `header/header`·`side/content` named-area map에 대해 두 축 모두 direct finite non-negative `px`/`%` track을 각각 두 개까지 허용한다. Chrome 156 사전 비교, 제한 positive/rejection 검사, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 4-scene 실행 근거는 [전용 계획](./c11-root-html-grid-area-percentage.md)과 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md)에 있다. 두 simulator에서 source hash가 고정된 장면 모두 layout ready와 draw/present를 기록했고, Rust test는 used tracks와 semantic item frames를 확인한다.
 
-검토 중 Root HTML named-area의 min/max override가 항상 `min-width`로 진단되던 결함을 찾아 실제 위반 property를 반환하게 수정했다. 이 후보는 PR 검토·병합 전이고 PixelCopy·Metal readback, 실기기/hardware GPU, WPT 적합성 또는 전체 C11 완료를 주장하지 않는다. 공식 `72/213`은 유지한다.
+검토 중 Root HTML named-area의 min/max override가 항상 `min-width`로 진단되던 결함을 찾아 실제 위반 property를 반환하게 수정했다. 구현 PR [#1035](https://github.com/ohah/spinon/pull/1035)은 열려 있으며 PixelCopy·Metal readback, 실기기/hardware GPU, WPT 적합성 또는 전체 C11 완료를 주장하지 않는다. 공식 `72/213`은 유지한다.

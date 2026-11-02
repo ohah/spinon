@@ -64,7 +64,7 @@ Current tests cover both percentage axes, `% + px`·`% + fr`, fixed-px gap, over
 
 독립 산술과 Chrome 156 observation은 `120×70px` root 기준 both-axes `[30,90]`/`[14,56]`, mixed-px-percent `[40,60]`/`[14,50]`, overflowing-columns `[144,12]`/`[14,56]`, zero-track `[0,120]`/`[14,56]`다. Rust runtime tests는 root/item frames와 같은 document/style/layout revision을 검사한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 `index.html` route에서 4/4 scene이 각각 layout ready와 draw/present에 도달했다. SwiftShader AVD 및 Simulator PNG는 시각 확인에 한정하고 PixelCopy·Metal drawable readback이나 physical-device/hardware-GPU 결과를 주장하지 않는다. min/max constraint 진단은 각각 실제 위반 property를 보고한다.
 
-상세 [precomparison](./evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/README.md) · [runtime/build/hash/screenshot evidence](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md) · [구현/runtime 검토 20개](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/implementation-runtime-review-20.md). 구현 PR은 아직 review/merge 전이다. 내부 숫자 버전 `0.1.0`, C11.1/C11 상태 및 공식 `72/213`은 그대로다.
+상세 [precomparison](./evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/README.md) · [runtime/build/hash/screenshot evidence](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/README.md) · [구현/runtime 검토 20개](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/implementation-runtime-review-20.md) · [PR diff 검토 30개](./evidence/c11-root-html-grid-area-percentage-runtime-2026-11-02/pr-diff-review-30.md). 구현 PR [#1035](https://github.com/ohah/spinon/pull/1035)은 열려 있다. 내부 숫자 버전 `0.1.0`, C11.1/C11 상태 및 공식 `72/213`은 그대로다.
 
 ## C11.1 parsed Root HTML fixed `grid-auto-rows` · bounded implementation candidate · 2026-11-02
 
