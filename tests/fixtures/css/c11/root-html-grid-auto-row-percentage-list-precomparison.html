@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML percentage implicit row lists</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-auto-flow: row;
+        column-gap: 5px;
+        row-gap: 5px;
+        background-color: #ddd;
+      }
+
+      .item {
+        display: block;
+        background-color: #4a90e2;
+      }
+
+      #cycle {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 40px 55px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 10% 20%;
+      }
+
+      #cycle .item {
+        width: 40px;
+        height: 10px;
+      }
+
+      #cycle .item:nth-child(2n) {
+        width: 55px;
+      }
+
+      #cycle .item:nth-child(-n+2) {
+        height: 20px;
+      }
+
+      #cycle .item:nth-child(n+5):nth-child(-n+6) {
+        height: 20px;
+      }
+
+      #cycle .item:nth-child(n+9) {
+        height: 20px;
+      }
+
+      #mixed {
+        width: 120px;
+        height: 120px;
+        grid-template-columns: 120px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 15px 25%;
+      }
+
+      #mixed .item {
+        width: 120px;
+        height: 15px;
+      }
+
+      #mixed .item:first-child {
+        height: 20px;
+      }
+
+      #mixed .item:nth-child(2n+3) {
+        height: 30px;
+      }
+
+      #bounds {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 100px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 0% 120%;
+        row-gap: 5px;
+      }
+
+      #bounds .item {
+        width: 100px;
+        height: 0;
+      }
+
+      #bounds .item:first-child {
+        height: 20px;
+      }
+
+      #bounds .item:nth-child(3) {
+        height: 120px;
+      }
+
+      #zero {
+        width: 100px;
+        height: 0;
+        grid-template-columns: 100px;
+        grid-template-rows: 0px;
+        grid-auto-rows: 50%;
+      }
+
+      #zero .item {
+        width: 100px;
+        height: 7px;
+      }
+
+      #zero .item:first-child {
+        height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="cycle" class="grid">
+      <div class="item" id="cycle-1"></div>
+      <div class="item" id="cycle-2"></div>
+      <div class="item" id="cycle-3"></div>
+      <div class="item" id="cycle-4"></div>
+      <div class="item" id="cycle-5"></div>
+      <div class="item" id="cycle-6"></div>
+      <div class="item" id="cycle-7"></div>
+      <div class="item" id="cycle-8"></div>
+      <div class="item" id="cycle-9"></div>
+      <div class="item" id="cycle-10"></div>
+    </main>
+    <main id="mixed" class="grid">
+      <div class="item" id="mixed-1"></div>
+      <div class="item" id="mixed-2"></div>
+      <div class="item" id="mixed-3"></div>
+      <div class="item" id="mixed-4"></div>
+      <div class="item" id="mixed-5"></div>
+    </main>
+    <main id="bounds" class="grid">
+      <div class="item" id="bounds-1"></div>
+      <div class="item" id="bounds-2"></div>
+      <div class="item" id="bounds-3"></div>
+    </main>
+    <main id="zero" class="grid">
+      <div class="item" id="zero-1"></div>
+      <div class="item" id="zero-2"></div>
+    </main>
+  </body>
+</html>
