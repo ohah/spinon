@@ -32,7 +32,7 @@
 | 26 | 설치된 APK/executable이 기록된 candidate binary와 다른데 build hash만 보고함 | pass03에서 설치된 Android `base.apk`와 iOS app-container executable을 읽어 candidate 산출물과 각각 동일 hash를 확인했다. |
 | 27 | 실행 script가 이전 통과 또는 실패 evidence를 덮어씀 | `PASS=passNN` file namespace와 `test ! -e` preflight를 쓴다. pass01/02 원본은 남기고 final pass03을 새로 기록했다. |
 | 28 | simulator smoke screenshot을 PixelCopy/Metal pixel parity로 표현 | README와 plan은 screenshot을 visual capture로 한정하고 surface readback/pixel equality를 수행하지 않았다고 적는다. |
-| 29 | 계획/계약 문서 수정이 C11/C11.1을 공식 완료 처리하거나 버전 상승 | 공식 `spec/STATUS.md`, checkbox, 숫자 version `0059 0.1.0`은 이 candidate PR에서 변경하지 않는다. dedicated plan와 contract는 limited candidate임을 표기한다. |
+| 29 | 계획/계약 문서 수정이 C11/C11.1을 공식 완료 처리하거나 버전 상승 | dedicated plan와 contract 및 상위 `plan/c11-css-grid.md`는 제한 후보로 표기한다. `spec/STATUS.md`의 공식 완료 checkbox와 숫자 version `0059 0.1.0`은 그대로다. |
 | 30 | simulator build warning·첫 harness count 오류·미실행 CI를 숨겨 성공으로 표시 | build/runtime 로그를 보존한다. pass01의 잘못된 기대값 11은 pass03의 실제 13으로 수정했다고 설명한다. iOS 기존 warnings 및 GitHub CI 미보고는 성공으로 과장하지 않는다. |
 
 ## 발견과 최종 판정
