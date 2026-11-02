@@ -1,0 +1,42 @@
+{
+  "schema": "spinon-c11-root-html-grid-fr-runtime-marker-observation/v1",
+  "source": {
+    "path": "tests/fixtures/css/c11/root-html-grid-fr-runtime.html",
+    "sha256": "a18f14f5f34f5a8d51b2b996b8093ec600ae21b4a25eb524aeac577af73784fc"
+  },
+  "repositoryHead": "bac1721a8a4d34f7f657e04ce87f174aae5c38b7",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewportCssPx": [
+    1280,
+    633
+  ],
+  "rootFrameCssPx": [
+    0,
+    0,
+    130,
+    40
+  ],
+  "computedGridTemplateColumns": "40px 80px",
+  "itemFramesCssPx": [
+    [
+      0,
+      0,
+      30,
+      40
+    ],
+    [
+      50,
+      0,
+      30,
+      40
+    ]
+  ],
+  "screenshot": {
+    "path": "chrome-marker-source.png",
+    "sha256": "6cccc58a1e40593395a303af34437e3f984ff70d7b3bff54a313347df1414cce",
+    "pixelSize": [
+      1280,
+      633
+    ]
+  }
+}

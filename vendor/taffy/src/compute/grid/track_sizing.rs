@@ -1715,25 +1715,25 @@ fn find_size_of_fr(tracks: &[GridTrack], space_to_fill: f32) -> f32 {
         // Let leftover space be the space to fill minus the base sizes of the non-flexible grid tracks.
         // Let flex factor sum be the sum of the flex factors of the flexible tracks. If this value is less than 1, set it to 1 instead.
         // We compute both of these in a single loop to avoid iterating over the data twice
-        let mut used_space = 0.0;
-        let mut naive_flex_factor_sum = 0.0;
+        let mut used_space = 0.0_f64;
+        let mut naive_flex_factor_sum = 0.0_f64;
         for track in tracks.iter() {
             // Tracks for which flex_factor * hypothetical_fr_size < track.base_size are treated as inflexible
             if track.max_track_sizing_function.is_fr()
                 && track.max_track_sizing_function.0.value() * hypothetical_fr_size
                     >= track.base_size
             {
-                naive_flex_factor_sum += track.max_track_sizing_function.0.value();
+                naive_flex_factor_sum += f64::from(track.max_track_sizing_function.0.value());
             } else {
-                used_space += track.base_size;
+                used_space += f64::from(track.base_size);
             };
         }
-        let leftover_space = space_to_fill - used_space;
-        let flex_factor = f32_max(naive_flex_factor_sum, 1.0);
+        let leftover_space = f64::from(space_to_fill) - used_space;
+        let flex_factor = naive_flex_factor_sum.max(1.0);
 
         // Let the hypothetical fr size be the leftover space divided by the flex factor sum.
         previous_iter_hypothetical_fr_size = hypothetical_fr_size;
-        hypothetical_fr_size = leftover_space / flex_factor;
+        hypothetical_fr_size = (leftover_space / flex_factor) as f32;
 
         // If the product of the hypothetical fr size and a flexible track’s flex factor is less than the track’s base size,
         // restart this algorithm treating all such tracks as inflexible.
@@ -1860,4 +1860,64 @@ fn distribute_space_up_to_limits(
     }
 
     space_to_distribute
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{find_size_of_fr, GridTrack};
+    use crate::style::{MaxTrackSizingFunction, MinTrackSizingFunction};
+
+    fn flexible_track(factor: f32) -> GridTrack {
+        GridTrack::new(
+            MinTrackSizingFunction::auto(),
+            MaxTrackSizingFunction::fr(factor),
+        )
+    }
+
+    fn assert_flexible_sizes(factors: &[f32], space: f32, expected: &[f32]) {
+        let tracks = factors
+            .iter()
+            .copied()
+            .map(flexible_track)
+            .collect::<std::vec::Vec<_>>();
+        let hypothetical_fr_size = find_size_of_fr(&tracks, space);
+        assert!(hypothetical_fr_size.is_finite());
+        for (index, (factor, expected)) in factors.iter().zip(expected).enumerate() {
+            let actual = *factor * hypothetical_fr_size;
+            assert!(
+                actual.is_finite() && (actual - *expected).abs() <= 0.02,
+                "track {index}: factor={factor}, fr={hypothetical_fr_size}, actual={actual}, expected={expected}"
+            );
+        }
+    }
+
+    #[test]
+    fn find_size_of_fr_preserves_finite_ratios_when_f32_factor_sum_overflows() {
+        let large_factor = 1e38_f32;
+        let sum_two = large_factor + large_factor;
+        let sum_three = sum_two + large_factor;
+        let sum_four = sum_three + large_factor;
+        assert!(sum_two.is_finite());
+        assert!(sum_three.is_finite());
+        assert!(sum_four.is_infinite());
+
+        assert_flexible_sizes(&[large_factor, large_factor], 120.0, &[60.0, 60.0]);
+        assert_flexible_sizes(
+            &[large_factor, large_factor, large_factor],
+            120.0,
+            &[40.0, 40.0, 40.0],
+        );
+        assert_flexible_sizes(
+            &[large_factor, large_factor, large_factor, large_factor],
+            120.0,
+            &[30.0, 30.0, 30.0, 30.0],
+        );
+    }
+
+    #[test]
+    fn find_size_of_fr_keeps_ratio_zero_and_subunit_factor_rules() {
+        assert_flexible_sizes(&[1.0, 2.0], 120.0, &[40.0, 80.0]);
+        assert_flexible_sizes(&[0.25, 0.25], 120.0, &[30.0, 30.0]);
+        assert_flexible_sizes(&[0.0, 1.0], 120.0, &[0.0, 120.0]);
+    }
 }

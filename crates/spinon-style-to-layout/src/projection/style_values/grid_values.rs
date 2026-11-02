@@ -42,7 +42,7 @@ pub(super) fn project_grid_layout_with_math(
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
     if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
-        validate_root_html_fixed_grid_tracks(node, grid)?;
+        validate_root_html_grid_tracks(node, grid)?;
     }
     let has_auto_repeat = grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some();
     if has_auto_repeat {
@@ -111,7 +111,7 @@ pub(super) fn project_grid_layout_with_math(
     )
 }
 
-fn validate_root_html_fixed_grid_tracks(
+fn validate_root_html_grid_tracks(
     node: NodeId,
     grid: &ComputedCssGridLayout,
 ) -> Result<(), StyleLayoutError> {
@@ -137,13 +137,15 @@ fn validate_root_html_fixed_grid_tracks(
         if tracks.is_empty()
             || auto_repeat.is_some()
             || line_names.iter().any(|group| !group.is_empty())
-            || tracks.iter().any(|track| {
-                !matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+            || tracks.iter().any(|track| match track {
+                ComputedCssGridTrackSize::LengthPx(value)
+                | ComputedCssGridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
+                _ => true,
             })
         {
             return Err(unsupported(
                 property,
-                "Root HTML Grid은 이름 없는 고정 px explicit track만 지원합니다",
+                "Root HTML Grid은 이름 없는 finite non-negative px/fr direct explicit track만 지원합니다",
             ));
         }
     }
@@ -1420,6 +1422,10 @@ fn project_track(
 #[cfg(test)]
 #[path = "grid_values/tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "grid_values/root_html_fr_track_tests.rs"]
+mod root_html_fr_track_tests;
 
 #[cfg(test)]
 #[path = "grid_values/auto_repeat_neighbor_tests.rs"]
