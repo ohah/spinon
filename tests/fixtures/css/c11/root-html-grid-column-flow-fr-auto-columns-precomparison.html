@@ -1,0 +1,114 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.1 fr implicit columns</title>
+<style>
+  html,
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    padding: 16px;
+    color: #eef3f7;
+    background: #101820;
+    font: 12px/1.4 sans-serif;
+  }
+
+  #cases {
+    display: grid;
+    grid-template-columns: 270px 270px;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .case h2 {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-rows: 20px 40px;
+    grid-auto-flow: column;
+    column-gap: 5px;
+    row-gap: 3px;
+    direction: ltr;
+    background-color: rgb(34 43 52);
+  }
+
+  .item {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(60 180 140);
+  }
+
+  #list .grid,
+  #scalar .grid,
+  #mixed .grid {
+    width: 240px;
+    height: 63px;
+    grid-template-columns: 30px 40px;
+  }
+
+  #list .grid { grid-auto-columns: 1fr 2fr; }
+  #scalar .grid { grid-auto-columns: 1fr; }
+  #mixed .grid { grid-auto-columns: 10px 1fr; }
+
+  #composite .grid {
+    width: 300px;
+    height: 63px;
+    grid-template-columns: 30px 40px;
+    grid-auto-columns: 10px 10% 1fr;
+  }
+
+  #subunit .grid,
+  #zero .grid {
+    width: 120px;
+    height: 63px;
+    grid-template-columns: 30px;
+  }
+
+  #subunit .grid { grid-auto-columns: 0.25fr; }
+  #zero .grid { grid-auto-columns: 0fr 1fr; }
+</style>
+<main id="cases">
+  <section class="case" id="list"><h2>1fr 2fr · four implicit columns</h2><div class="grid"></div></section>
+  <section class="case" id="scalar"><h2>1fr · scalar repeated</h2><div class="grid"></div></section>
+  <section class="case" id="mixed"><h2>10px 1fr · mixed list</h2><div class="grid"></div></section>
+  <section class="case" id="composite"><h2>10px 10% 1fr · repeated mixed list</h2><div class="grid"></div></section>
+  <section class="case" id="subunit"><h2>0.25fr · factor sum below one</h2><div class="grid"></div></section>
+  <section class="case" id="zero"><h2>0fr 1fr · zero-factor track</h2><div class="grid"></div></section>
+</main>
+<script>
+  for (const id of ["list", "scalar", "mixed"]) {
+    const grid = document.querySelector(`#${id} .grid`);
+    for (let index = 0; index < 12; index += 1) {
+      const item = document.createElement("div");
+      item.className = "item";
+      item.dataset.index = String(index);
+      grid.append(item);
+    }
+  }
+  {
+    const grid = document.querySelector("#composite .grid");
+    for (let index = 0; index < 16; index += 1) {
+      const item = document.createElement("div");
+      item.className = "item";
+      item.dataset.index = String(index);
+      grid.append(item);
+    }
+  }
+  for (const id of ["subunit", "zero"]) {
+    const grid = document.querySelector(`#${id} .grid`);
+    for (let index = 0; index < 6; index += 1) {
+      const item = document.createElement("div");
+      item.className = "item";
+      item.dataset.index = String(index);
+      grid.append(item);
+    }
+  }
+</script>

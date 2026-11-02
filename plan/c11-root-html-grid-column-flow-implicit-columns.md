@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML column-flow implicit columns
 
-**상태:** 구현·Rust focused 검증·Chrome 156 비교·Android/iOS Simulator smoke와 별도 실패 관점 검토를 마쳤다. [PR #1059](https://github.com/ohah/spinon/pull/1059)가 열려 있으며 merge와 C11.1 승격은 남아 있다. 기존 [column-flow 제한 slice](./c11-root-html-grid-column-flow.md)는 explicit cell만 사용하고 implicit track을 거부한다. 이 후속 계획은 fixed-px `grid-auto-columns`를 써서 positive implicit columns를 생성하는 좁은 기본 Root HTML runtime 경로를 추가한다. 일반 CSS Grid 지원이나 C11 완료를 뜻하지 않는다.
+**상태:** 제한 구현 PR [#1059](https://github.com/ohah/spinon/pull/1059)은 `2026-11-02T13:03:56Z` Rebase and merge됐고 merge SHA는 `16c62916b4a72de6a44a9cbd3bec021d0454541e`다. Root HTML sparse column-flow에서 fixed-px `grid-auto-columns` scalar/list가 positive implicit columns에 순환 적용된다. Rust focused 검증, Chrome 156 비교, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator draw/present 및 별도 실패 관점 검토 근거는 [실행 evidence](../spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/README.md)에 있다. C11.1/C11 완료나 공개 CSS 지원으로 승격하지 않는다. 기존 [column-flow 제한 slice](./c11-root-html-grid-column-flow.md)는 explicit cell auto-placement의 선행 구현이다.
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid 통합](./c11-root-html-grid-runtime.md) · [상태 대장](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -74,7 +74,7 @@ Root frame is `(0,0,175,63)`. The expected JSON is authored independently from t
 - 구현 뒤에는 구현/runtime 실패 관점 20개와 구현 PR diff 관점 30개를 새로 기록한다. 계획 검토 결과를 재사용하지 않는다.
 - PR은 프로젝트 PR 양식과 문서 라벨 기준을 따르고 Rebase and merge로 병합한다. GitHub check run이 없는 경우 CI 통과로 표시하지 않는다.
 
-## 구현 후보 진행 기록
+## 구현·실행 기록 · PR #1059
 
 - Layout, cascade, style-to-layout, Root HTML runtime에 제한 경로를 연결했다. fixed px scalar/list, list 순환, 다중 implicit column, gap, hidden item 제외, explicit capacity 내 `auto`, percentage·`fr`·intrinsic sizing 거부, quota 및 reservation failure/recovery를 검사했다.
 - Chrome 156.0.8078.80 기준 viewport 1280×633에서 explicit columns `[30,40]`, rows `[20,40]`, auto columns `[15,25]`, gaps 5/3, 12 semantic item을 비교했다. root와 12 item frame은 독립 기대값과 정확히 일치했다. [사전 비교 evidence](../spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/README.md)

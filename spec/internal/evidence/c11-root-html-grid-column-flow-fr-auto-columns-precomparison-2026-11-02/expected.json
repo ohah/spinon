@@ -1,0 +1,39 @@
+{
+  "reference": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, §§6.6, 7.6, 7.7, 11.7, 11.7.1",
+  "browser": "HeadlessChrome/156.0.0.0 via Agent Browser",
+  "viewport": { "width": 1280, "height": 633, "dpr": 1 },
+  "geometryToleranceCssPx": 0.02,
+  "framesAreRootRelative": true,
+  "cases": {
+    "list": {
+      "input": { "width": 240, "explicitColumns": [30, 40], "columnGap": 5, "autoColumns": ["1fr", "2fr"], "implicitCount": 4 },
+      "independent": { "flexSpace": 145, "frUnit": "145/6", "usedColumns": [30, 40, "145/6", "145/3", "145/6", "145/3"], "columnStarts": [0, 35, 80, "655/6", "325/2", "575/3"], "rowStarts": [0, 23] },
+      "chrome156": { "usedColumns": [30, 40, 24.1562, 48.3438, 24.1562, 48.3438], "columnStarts": [0, 35, 80, 109.15625, 162.5, 191.65625], "rowStarts": [0, 23] }
+    },
+    "scalar": {
+      "input": { "width": 240, "explicitColumns": [30, 40], "columnGap": 5, "autoColumns": ["1fr"], "implicitCount": 4 },
+      "independent": { "flexSpace": 145, "frUnit": 36.25, "usedColumns": [30, 40, 36.25, 36.25, 36.25, 36.25], "columnStarts": [0, 35, 80, 121.25, 162.5, 203.75], "rowStarts": [0, 23] },
+      "chrome156": { "usedColumns": [30, 40, 36.25, 36.25, 36.25, 36.25], "columnStarts": [0, 35, 80, 121.25, 162.5, 203.75], "rowStarts": [0, 23] }
+    },
+    "mixed": {
+      "input": { "width": 240, "explicitColumns": [30, 40], "columnGap": 5, "autoColumns": ["10px", "1fr"], "implicitCount": 4 },
+      "independent": { "flexSpace": 125, "frUnit": 62.5, "usedColumns": [30, 40, 10, 62.5, 10, 62.5], "columnStarts": [0, 35, 80, 95, 162.5, 177.5], "rowStarts": [0, 23] },
+      "chrome156": { "usedColumns": [30, 40, 10, 62.5, 10, 62.5], "columnStarts": [0, 35, 80, 95, 162.5, 177.5], "rowStarts": [0, 23] }
+    },
+    "composite": {
+      "input": { "width": 300, "explicitColumns": [30, 40], "columnGap": 5, "autoColumns": ["10px", "10%", "1fr"], "implicitCount": 6 },
+      "independent": { "percentageBasis": 300, "flexSpace": 115, "frUnit": 57.5, "usedColumns": [30, 40, 10, 30, 57.5, 10, 30, 57.5], "columnStarts": [0, 35, 80, 95, 130, 192.5, 207.5, 242.5], "rowStarts": [0, 23] },
+      "chrome156": { "usedColumns": [30, 40, 10, 30, 57.5, 10, 30, 57.5], "columnStarts": [0, 35, 80, 95, 130, 192.5, 207.5, 242.5], "rowStarts": [0, 23] }
+    },
+    "subunit": {
+      "input": { "width": 120, "explicitColumns": [30], "columnGap": 5, "autoColumns": ["0.25fr"], "implicitCount": 2 },
+      "independent": { "spaceToFill": 80, "flexFactorSumBeforeFloor": 0.5, "effectiveFlexFactorSum": 1, "usedColumns": [30, 20, 20], "unfilledTrailingSpace": 40, "columnStarts": [0, 35, 60], "rowStarts": [0, 23] },
+      "chrome156": { "usedColumns": [30, 20, 20], "columnStarts": [0, 35, 60], "rowStarts": [0, 23] }
+    },
+    "zero": {
+      "input": { "width": 120, "explicitColumns": [30], "columnGap": 5, "autoColumns": ["0fr", "1fr"], "implicitCount": 2, "itemWidth": 10 },
+      "independent": { "spaceToFill": 80, "zeroFactorBaseFromAutomaticItemMinimum": 10, "usedColumns": [30, 10, 70], "columnStarts": [0, 35, 50], "rowStarts": [0, 23] },
+      "chrome156": { "usedColumns": [30, 10, 70], "columnStarts": [0, 35, 50], "rowStarts": [0, 23] }
+    }
+  }
+}
