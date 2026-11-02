@@ -34,6 +34,8 @@
 
 최신 Android APK SHA-256은 `1abecc713c812165f79f4b36e4d8f1d4febd4a2188d6616c5db69352fb4394d2`, iOS executable SHA-256은 `4c94f1b806ba770d791b97d30ca7794ff3b86386de3ea041856b0fe1bfe45e61`이다. Pass01/pass02 산출물과 실패 로그를 덮어쓰지 않고 보존했다. 기기 UDID, fixture flags, screenshot/input/app hashes는 [관측 JSON](./platform-runtime-observation.json)에 있고, 빌드 산출물을 기준 소스에 연결한 [revision manifest](./source-revision.json)도 보존했다. Simulator build 중 임시로 바꾼 example/generated bootstrap assets는 원본 hash로 복구했으며, pass02/pass03의 복구 hash는 [이 파일](./restored-bootstrap-sha256.txt)에 기록했다.
 
+PR [#1042](https://github.com/ohah/spinon/pull/1042)의 GitHub 본문에서 Agent Browser가 Android·iOS 두 PNG를 실제 이미지로 로드하는 것을 확인했다. [관측 JSON](./pr-render-agent-browser.json)은 자연 크기와 세션 종료 상태를 기록한다.
+
 초기 Android probe는 HostDocument body에 없는 `querySelector`를 호출해 probe만 실패했다. 실패 log/screenshot을 보존하고 `firstChild` 순회 probe로 고친 뒤 pass01 이후 성공했다. 이는 제품 runtime 실패가 아니다. iOS build logs에는 기존 dSYM duplicate-object와 AppIntents metadata 경고도 보존했다.
 
 스크린샷은 화면 표시 확인이며 PixelCopy·Metal drawable readback이나 픽셀 동등성 근거가 아니다. 최신 Simulator marker는 layout-ready와 draw/present를 증명하고, item별 정확한 geometry는 Rust runtime test가 증명한다. 실기기, hardware GPU, iOS compositor 이후 출력, WPT 적합성 또는 일반 CSS Grid 지원은 검증하지 않았다. 두 앱은 캡처 뒤 종료했다.

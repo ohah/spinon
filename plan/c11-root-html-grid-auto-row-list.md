@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid runtime](./c11-root-html-grid-runtime.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR [#1041](https://github.com/ohah/spinon/pull/1041)이 병합됐다. 기본 parsed Root HTML runtime 구현 후보는 테스트·구현/runtime 실패 관점 20개와 구현 PR diff 실패 관점 30개 검토를 마쳤으며, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기본 route의 layout-ready 및 11-box draw/present를 확인했다. 구현 PR 생성·병합이 남아 있다. Simulator 화면은 PixelCopy·Metal readback이 아니다. 이 slice를 병합해도 C11.1/C11 상위 체크와 공식 완료 `72/213`은 그대로 둔다.
+**상태:** 계획 PR [#1041](https://github.com/ohah/spinon/pull/1041)이 병합됐고 구현 PR [#1042](https://github.com/ohah/spinon/pull/1042)이 열려 있다. 기본 parsed Root HTML runtime 구현은 테스트·구현/runtime 실패 관점 20개와 실제 PR diff 실패 관점 30개 검토를 마쳤다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기본 route의 layout-ready 및 11-box draw/present를 확인했고, Agent Browser가 PR 본문의 두 화면을 정상 로드하는 것도 확인했다. GitHub check rollup은 비었고 main required checks도 설정되어 있지 않다. Simulator 화면은 PixelCopy·Metal readback이 아니다. 이 slice를 병합해도 C11.1/C11 상위 체크와 공식 완료 `72/213`은 그대로 둔다.
 
 ## 목적과 경계
 

@@ -32,7 +32,7 @@
 | 26 | app build에 opt-in C11 fixture flags가 켜져 기본 route라는 주장과 충돌하는가 | build logs는 C04 runtime GPU만 켜고 C04/C11/C15/C18/C19 fixture switches off를 기록한다. |
 | 27 | Android/iOS UI capture가 GPU pixel equality로 과장되는가 | README/status는 screenshot과 draw/present를 visual evidence로 제한하고 PixelCopy/Metal readback을 명시적으로 제외한다. |
 | 28 | build 중 bootstrap 파일을 덮어쓰고 원본을 잃는가 | `build-platform-apps-pass03.sh`가 source/generated bootstrap 다섯 파일을 backup 후 trap으로 복구하며 복구 hash가 원본과 같다. |
-| 29 | evidence JSON·README의 screenshot/app hash가 최신 성공 run과 다른가 | pass03 APK, iOS executable, screenshot 및 동일 HTML input hash를 observation JSON과 대조한다. |
-| 30 | status·contract·plan이 parent complete, CI 통과 또는 72/213 증가로 잘못 집계하는가 | C11.1/C11 checkbox와 공식 `72/213`을 유지하고 PR checks 미보고를 따로 기록한다. |
+| 29 | evidence JSON·README의 screenshot/app hash가 최신 성공 run과 다른가 | `source-revision.json`·runtime observation과 실제 pass03 APK, iOS executable, 두 screenshot hash를 대조했다. PR #1042 본문의 이미지도 Agent Browser에서 둘 다 로드됨을 확인했다(1080×2400, 1206×2622). [브라우저 관측](./pr-render-agent-browser.json). |
+| 30 | status·contract·plan이 parent complete, CI 통과 또는 72/213 증가로 잘못 집계하는가 | C11.1/C11 checkbox와 공식 `72/213`을 유지한다. PR #1042의 `statusCheckRollup`은 비었고 `main`의 required status checks는 비활성이라 CI 통과를 주장하지 않는다. |
 
-**판정:** 최종 implementation diff에서 30개 관점을 각각 재확인했다. 검토에서 발견한 direct no-implicit-row invalid-value validation 누락과 auto-row list count cap을 수정했고, alignment negative test의 기대 오류 단계를 실제 cascade boundary로 조정했다. Rust focused tests, scoped Clippy와 최신 simulator rerun 통과를 확인했다. GitHub check rollup/required check 상태는 PR 생성 후 별도로 확인한다.
+**판정:** PR #1042의 실제 diff에서 30개 관점을 각각 확인했다. 검토에서 발견한 direct no-implicit-row invalid-value validation 누락과 auto-row list count cap을 수정했고, alignment negative test의 기대 오류 단계를 실제 cascade boundary로 조정했다. Rust focused tests, scoped Clippy와 최신 simulator rerun 통과를 확인했다. GitHub status rollup은 비었고 required checks도 설정되지 않았다. PR merge 전 현황을 재조회했다.
