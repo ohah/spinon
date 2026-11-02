@@ -1,5 +1,8 @@
 use super::*;
 
+#[path = "root_html_grid_implicit_rows/composition.rs"]
+mod composition;
+
 const SOURCE: &str =
     include_str!("../../../../../tests/fixtures/css/c11/root-html-grid-implicit-rows-runtime.html");
 
@@ -263,17 +266,17 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             ),
         ),
         (
-            "explicit fractional track",
+            "intrinsic explicit track",
             SOURCE.replace(
                 "grid-template-columns: 40px 55px;",
-                "grid-template-columns: 1fr 55px;",
+                "grid-template-columns: minmax(10px, 1fr) 55px;",
             ),
         ),
         (
-            "explicit percentage track",
+            "auto-repeat explicit track",
             SOURCE.replace(
                 "grid-template-columns: 40px 55px;",
-                "grid-template-columns: 40% 55px;",
+                "grid-template-columns: repeat(2, 40px);",
             ),
         ),
         (
@@ -337,7 +340,10 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
         );
         let expected_code = match name {
             "visible text item" | "nested item" => "layout_failed",
-            "nonzero order" | "non-default alignment" => "cascade_failed",
+            "nonzero order"
+            | "non-default alignment"
+            | "intrinsic explicit track"
+            | "auto-repeat explicit track" => "cascade_failed",
             _ => "unsupported_computed_value",
         };
         assert_eq!(

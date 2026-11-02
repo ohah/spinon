@@ -4,6 +4,8 @@
 
 **계획 상태:** Chrome 156 기준 네 scene과 독립 계산을 [사전 비교 자료](../spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.md)에 고정했다. 이 계획은 기존 Root HTML 지원인 direct `fr`·percentage explicit tracks와 PR #1024의 단일 fixed-px `grid-auto-rows`를 함께 쓰는 조합만 다룬다. 구현 전 계획 실패 관점 20개 검토는 [계획 검토](../spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.md)에 기록한다. 계획 PR을 먼저 병합하고 이 기준을 만족하는 구현 PR을 별도로 제출한다. 이 계획만으로 지원 상태나 공식 완료 집계는 바뀌지 않는다.
 
+**현재 구현 후보:** 계획 PR [#1026](https://github.com/ohah/spinon/pull/1026)은 2026-11-02 rebase merge됐고 merge SHA는 `3f7bfa71ae67a1f61cb8a5154f0cb74137bad9fc`다. 후보 코드는 direct finite non-negative explicit px/percentage/fr track을 기존 fixed implicit-row contract와 연결했다. 구현/runtime 관점 검토 20개, layout 74개·style projection 12개·Root HTML runtime 20개, scoped Clippy·rustfmt·diff check, Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 경로 확인은 [실행 근거](../spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.md)에 기록했다. 구현 PR diff 30개 검토·merge, surface readback과 Tailnet 동기화는 미완료다. 공식 `72/213` 및 C11.1/C11 체크 상태는 바꾸지 않는다.
+
 ## 문제와 목표
 
 [Root HTML fixed implicit-row slice](./c11-root-html-grid-implicit-rows.md)는 no-area 기본 Root HTML Grid에서 단일 finite non-negative px `grid-auto-rows`를 허용하지만 explicit tracks를 fixed px로 제한했다. [Root HTML `fr` slice](./c11-root-html-grid-fr-track.md)와 [percentage slice](./c11-root-html-grid-percentage-tracks.md)는 definite axis의 explicit tracks로 각각 finite non-negative `fr`와 percentage를 허용하지만, `grid-auto-rows:auto`만 허용한다. 결과적으로 각자 허용된 track 기능이 같은 유효한 Grid에서 조합되지 않는다.

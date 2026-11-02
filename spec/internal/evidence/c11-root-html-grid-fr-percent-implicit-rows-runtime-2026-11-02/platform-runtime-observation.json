@@ -1,0 +1,66 @@
+{
+  "task": "C11.1 parsed Root HTML direct fr/percentage explicit tracks combined with one fixed-px implicit row",
+  "status": "bounded_candidate_runtime_verified",
+  "plan_pr": {
+    "number": 1026,
+    "merge_method": "rebase",
+    "merge_sha": "3f7bfa71ae67a1f61cb8a5154f0cb74137bad9fc"
+  },
+  "official_completion_count": "72/213",
+  "candidate_html_sha256": "3b65d6be1ddca70975b6cbbf95fc7c743a0c7112fa903f67da2e4b1d5296cc7e",
+  "candidate_scene": {
+    "root_css_px": [120, 40],
+    "columns": ["25%", "75%"],
+    "rows": ["20px"],
+    "grid_auto_rows": "15px",
+    "gaps_css_px": [5, 5],
+    "visible_overflow_item_root_relative_css_px": [35, 0, 100, 10],
+    "visible_overflow_beyond_root_right_css_px": 15
+  },
+  "android": {
+    "device": "Android API 37 AVD emulator-5556",
+    "resolution_px": [1080, 2400],
+    "density_dpi": 420,
+    "build": "passed",
+    "fixture_test_flags": false,
+    "default_root_html_boot": "passed",
+    "layout": "ready, boxes=6",
+    "draw_present": "passed, boxes=6",
+    "screenshot": "android-api37.png",
+    "screenshot_sha256": "275587cfd26338443ff124e2a5e9cde826c9ada5ad921e57bd9f78b01450c3ff",
+    "app_index_sha256_matches_candidate": true,
+    "surface_readback": false,
+    "app_stopped_after_capture": true
+  },
+  "ios": {
+    "device": "iPhone 17 Pro Simulator, iOS 26.2",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "resolution_px": [1206, 2622],
+    "build": "passed",
+    "fixture_test_flags": false,
+    "default_root_html_boot": "passed",
+    "layout": "ready, boxes=6",
+    "draw_present": "passed, boxes=6",
+    "screenshot": "ios-26_2-simulator.png",
+    "screenshot_sha256": "d773e5721873208d324bf61438b57454a6085b093aab5f559a7ca38fbcc6084d",
+    "app_index_sha256_matches_candidate": true,
+    "metal_drawable_readback": false,
+    "app_stopped_after_capture": true
+  },
+  "rust_validation": {
+    "layout_grid_tests": "74 passed",
+    "style_projection_root_html_grid_tests": "12 passed",
+    "runtime_root_html_grid_tests": "20 passed",
+    "clippy": "passed for spinon-layout, spinon-style-to-layout, spinon-runtime --all-targets -D warnings",
+    "rustfmt": "passed",
+    "git_diff_check": "passed"
+  },
+  "limitations": [
+    "Android PixelCopy surface readback was not run",
+    "iOS Metal drawable readback was not run",
+    "no physical-device or hardware-GPU evidence",
+    "no pixel parity claim",
+    "not a WPT conformance result",
+    "not C11.1 or C11 completion"
+  ]
+}

@@ -1,0 +1,29 @@
+SHA-256 evidence manifest (candidate source, packaged inputs, screenshots and logs)
+
+candidate-index.html  3b65d6be1ddca70975b6cbbf95fc7c743a0c7112fa903f67da2e4b1d5296cc7e
+root-app-runtime-probe.js  21c0cd583320d620141a9ad7a1d2ec42e7f9de95109bdbaae9903de30d8f7c2e
+Android app-debug.apk  b0dcec31d2b6f04eaf8beb448a7de9b40d9cb90c88eb07af9970fa055f9dfa48
+Android APK assets/index.html  3b65d6be1ddca70975b6cbbf95fc7c743a0c7112fa903f67da2e4b1d5296cc7e
+android-api37.png  275587cfd26338443ff124e2a5e9cde826c9ada5ad921e57bd9f78b01450c3ff
+ios-26_2-simulator.png  d773e5721873208d324bf61438b57454a6085b093aab5f559a7ca38fbcc6084d
+installed iOS index.html  3b65d6be1ddca70975b6cbbf95fc7c743a0c7112fa903f67da2e4b1d5296cc7e
+installed iOS SpinonBootstrap executable  a5795b8a6dd50b845ef5c892ac80f81db64c6ff6bad4e5cba9dc6f9bbae868bc
+android-api37-runtime.log  afac0fc97d34a22f1ab5f3b4b7b729d644d4a7b3101694ede6ed36f2de344b9e
+ios-26_2-runtime.log  b3187219721cea8ba8a3a2cbc932b1760e92d12dfc7bfc4e59b39a7ea060c86a
+android-build.log  bb2a4ef159c4bcb134c8b0ef22f46e4cdf6d5ef80b2bc79abfb1e365891edb0c
+ios-simulator-build.log  86b45b8089917efb4db0ddc04bc9ee207eeada5fa12751731df4f7b201acd6f8
+layout-grid-tests.log  724e747108badf14890d917921bdb512f356e8ca9bcf3c43b23f8aa82b40a8ef
+style-projection-tests.log  fbcf1e83e7cb90a476dfed40d748d957bd918cfecb9da11754518fc8ee7aeac2
+runtime-root-html-grid-tests.log  dc2a7016d2d946349cd44f52fb97dad554b5232051a6529ed69130e2334d8a0b
+clippy.log  9276ab8ccb8d91e3a61cedbbf131093dfc663f1119a11ca7bfa2b2acd7f60bd9
+
+Text build/test log copies have trailing whitespace trimmed for Git diff hygiene; test names, diagnostics, commands and result summaries are unchanged.
+
+Bootstrap restoration check: all five source/generated bootstrap files were byte-for-byte identical to the backups captured before the temporary simulator build. Their SHA-256 pairs are listed below; no bootstrap file is part of the candidate change.
+
+Restored bootstrap source/generated files:
+examples/bootstrap/index.html = backup  e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9
+examples/bootstrap/root-app.js = backup  b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32
+build/spinon/bootstrap/index.html = backup  e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9
+build/spinon/bootstrap/root-app.js = backup  98f5a7c551d3f4d00ea4a1030506d211fa0e63379241a78ca2151c8923965a08
+build/spinon/bootstrap/app.js = backup  a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c

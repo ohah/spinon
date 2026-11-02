@@ -7,6 +7,9 @@ use spinon_style::{
     ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
+#[path = "root_html_grid_track_tests/implicit_rows_composition.rs"]
+mod implicit_rows_composition;
+
 fn grid(
     columns: Vec<ComputedCssGridTrackSize>,
     rows: Vec<ComputedCssGridTrackSize>,
@@ -135,34 +138,6 @@ fn root_html_profile_projects_one_fixed_implicit_row_size_in_its_own_mode() {
         vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(55.0)]
     );
     assert_eq!(projected.rows, vec![GridTrackSize::LengthPx(20.0)]);
-}
-
-#[test]
-fn root_html_profile_rejects_percentage_tracks_with_fixed_implicit_rows() {
-    let node = NodeId::new(11_188).unwrap();
-    let mut grid = grid(
-        vec![
-            ComputedCssGridTrackSize::Percentage(0.4),
-            ComputedCssGridTrackSize::LengthPx(55.0),
-        ],
-        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
-    );
-    grid.auto_rows = ComputedCssGridAutoRows::LengthPx(15.0);
-
-    let error = project_grid_layout(
-        node,
-        &grid,
-        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
-    )
-    .expect_err("fixed implicit rows must not combine with percentage explicit tracks");
-    assert!(matches!(
-        error,
-        crate::StyleLayoutError::UnsupportedComputedValue {
-            node: error_node,
-            property: "grid-template-columns",
-            ..
-        } if error_node == node
-    ));
 }
 
 #[test]
