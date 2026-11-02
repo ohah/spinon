@@ -1,0 +1,60 @@
+{
+  "sourceSha256": "3c449465c7b3425ad42ad7ea9a4466493f4453c49eac86fcc627ca0b81f59262",
+  "reference": "CSS Grid Layout Module Level 2, 2025-03-26 CRD, sections 5.2, 7.6, 7.7, 8.5, 12",
+  "basis": {
+    "gridContentWidthCssPx": 240,
+    "columnGapCssPx": 5,
+    "rowGapCssPx": 3,
+    "explicitColumnsCssPx": [30, 40],
+    "explicitRowsCssPx": [20, 40],
+    "items": 12,
+    "rowsPerColumn": 2
+  },
+  "calculations": {
+    "cycle": {
+      "authoredGridAutoColumns": "10% 15%",
+      "percentageBasisCssPx": 240,
+      "implicitPatternCssPx": [24, 36],
+      "resolvedColumnsCssPx": [30, 40, 24, 36, 24, 36],
+      "columnStartsCssPx": [0, 35, 80, 109, 150, 179],
+      "rowStartsCssPx": [0, 23],
+      "rootCssPx": [0, 0, 240, 63],
+      "itemCssPx": [
+        [0, 0, 10, 10], [0, 23, 10, 10],
+        [35, 0, 10, 10], [35, 23, 10, 10],
+        [80, 0, 10, 10], [80, 23, 10, 10],
+        [109, 0, 10, 10], [109, 23, 10, 10],
+        [150, 0, 10, 10], [150, 23, 10, 10],
+        [179, 0, 10, 10], [179, 23, 10, 10]
+      ]
+    },
+    "scalar": {
+      "authoredGridAutoColumns": "10%",
+      "resolvedColumnsCssPx": [30, 40, 24, 24, 24, 24],
+      "columnStartsCssPx": [0, 35, 80, 109, 138, 167]
+    },
+    "mixed": {
+      "authoredGridAutoColumns": "10px 15%",
+      "resolvedColumnsCssPx": [30, 40, 10, 36, 10, 36],
+      "columnStartsCssPx": [0, 35, 80, 95, 136, 151]
+    },
+    "zeroPercent": {
+      "authoredGridAutoColumns": "0%",
+      "resolvedColumnsCssPx": [30, 40, 0, 0, 0, 0],
+      "columnStartsCssPx": [0, 35, 80, 85, 90, 95]
+    },
+    "over100Percent": {
+      "authoredGridAutoColumns": "120%",
+      "resolvedColumnsCssPx": [30, 40, 288, 288, 288, 288],
+      "columnStartsCssPx": [0, 35, 80, 373, 666, 959],
+      "clamp": false
+    },
+    "zeroBasis": {
+      "gridContentWidthCssPx": 0,
+      "authoredGridAutoColumns": "50%",
+      "resolvedColumnsCssPx": [30, 40, 0, 0, 0, 0],
+      "columnStartsCssPx": [0, 35, 80, 85, 90, 95]
+    }
+  },
+  "geometryToleranceCssPx": 0.02
+}
