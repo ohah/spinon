@@ -139,6 +139,10 @@ pub enum LayoutError {
         reason: &'static str,
     },
     UnsupportedGridPlacement(NodeId),
+    UnsupportedGridContainerStyle {
+        node: NodeId,
+        property: &'static str,
+    },
     InvalidGridPlacement {
         node: NodeId,
         property: &'static str,
@@ -423,6 +427,10 @@ impl fmt::Display for LayoutError {
                     "Grid item {id}의 명시 line placement를 현재 profile에서 지원하지 않습니다"
                 )
             }
+            Self::UnsupportedGridContainerStyle { node, property } => write!(
+                formatter,
+                "Grid container {node}의 {property} 스타일을 현재 profile에서 지원하지 않습니다"
+            ),
             Self::InvalidGridPlacement {
                 node,
                 property,

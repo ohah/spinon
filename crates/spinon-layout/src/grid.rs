@@ -267,6 +267,8 @@ pub enum GridPlacementMode {
     ExplicitOnly,
     /// C11.2.2의 row sparse auto-placement와 양의 implicit row를 계산합니다.
     SparseRow,
+    /// 제한 Root HTML 경로의 fixed-px implicit rows와 기본 row auto-placement입니다.
+    RootHtmlImplicitRowsV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
@@ -354,6 +356,9 @@ pub(super) fn validate_grid_layout(
     }
 
     for (&id, container) in &input.grid_containers {
+        if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
+            validate_root_html_implicit_rows_contract(id, container)?;
+        }
         validate_template_areas(id, container)?;
         if matches!(
             container.placement_mode,
@@ -386,6 +391,13 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::LengthPx(_)) => {}
+            (GridPlacementMode::RootHtmlImplicitRowsV1, _) => {
+                return Err(LayoutError::UnsupportedGridAutoRows {
+                    node: id,
+                    reason: "Root HTML implicit row mode requires one fixed px grid-auto-rows value",
+                });
+            }
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto)
                 if container.template_areas.is_some() => {}
             (
@@ -597,6 +609,9 @@ pub(super) fn validate_grid_layout(
         let Some(container) = input.grid_containers.get(&node.id) else {
             return Err(LayoutError::MissingGridContainer(node.id));
         };
+        if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
+            validate_root_html_implicit_rows_container_style(node.id, node.style, container)?;
+        }
         let template_area_track_sizing = container.template_areas.is_some()
             && matches!(
                 container.placement_mode,
@@ -689,6 +704,7 @@ pub(super) fn validate_grid_layout(
         if !matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TrackSizing
@@ -757,6 +773,11 @@ pub(super) fn validate_grid_layout(
             if hidden[&child_id] {
                 continue;
             }
+            if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
+                && !root_html_implicit_rows_item_is_supported(input, child)
+            {
+                return Err(LayoutError::UnsupportedGridItemSize(child_id));
+            }
             let positioned = input
                 .positioning
                 .get(&child_id)
@@ -824,6 +845,7 @@ pub(super) fn validate_grid_layout(
                 } else {
                     match container.placement_mode {
                         GridPlacementMode::SparseRow
+                        | GridPlacementMode::RootHtmlImplicitRowsV1
                         | GridPlacementMode::DenseAutoPlacement
                         | GridPlacementMode::TemplateGrid
                         | GridPlacementMode::TemplateGridImplicitTracks
@@ -984,6 +1006,7 @@ pub(super) fn validate_grid_layout(
         if !matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -1021,6 +1044,135 @@ fn indefinite_track_sizing_height_is_bounded(
                 .iter()
                 .all(|track| track_is_indefinite_height_safe(track, has_definite_min_height)),
         }
+}
+
+fn validate_root_html_implicit_rows_contract(
+    node: spinon_core::NodeId,
+    container: &crate::GridContainerInput,
+) -> Result<(), LayoutError> {
+    if container.template_areas.is_some() {
+        return Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: "grid-template-areas",
+        });
+    }
+    for (property, tracks, line_names, auto_repeat) in [
+        (
+            "grid-template-columns",
+            container.columns.as_slice(),
+            container.columns_line_names.as_slice(),
+            container.columns_auto_repeat.as_ref(),
+        ),
+        (
+            "grid-template-rows",
+            container.rows.as_slice(),
+            container.rows_line_names.as_slice(),
+            container.rows_auto_repeat.as_ref(),
+        ),
+    ] {
+        if tracks.is_empty()
+            || auto_repeat.is_some()
+            || line_names.iter().flatten().any(|name| !name.is_empty())
+            || tracks.iter().any(|track| {
+                !matches!(track, crate::GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+            })
+        {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+    }
+    if container.auto_flow != crate::GridAutoFlow::Row {
+        return Err(LayoutError::UnsupportedGridAutoFlow(node));
+    }
+    if !matches!(container.auto_rows, crate::GridAutoRows::LengthPx(_)) {
+        return Err(LayoutError::UnsupportedGridAutoRows {
+            node,
+            reason: "Root HTML implicit row mode requires one fixed px grid-auto-rows value",
+        });
+    }
+    if container.auto_columns != crate::GridAutoColumns::Auto {
+        return Err(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "Root HTML implicit row mode does not create implicit columns",
+        });
+    }
+    Ok(())
+}
+
+fn validate_root_html_implicit_rows_container_style(
+    node: spinon_core::NodeId,
+    style: LayoutStyle,
+    container: &crate::GridContainerInput,
+) -> Result<(), LayoutError> {
+    let unsupported_property = if style.overflow_x != crate::LayoutOverflow::Visible {
+        Some("overflow-x")
+    } else if style.overflow_y != crate::LayoutOverflow::Visible {
+        Some("overflow-y")
+    } else if !matches!(
+        style.align_items,
+        crate::LayoutAlignItems::Normal | crate::LayoutAlignItems::Stretch
+    ) {
+        Some("align-items")
+    } else if style
+        .align_content
+        .is_some_and(|value| value != crate::LayoutAlignContent::Normal)
+    {
+        Some("align-content")
+    } else if !matches!(
+        style.justify_content,
+        crate::LayoutJustifyContent::Normal | crate::LayoutJustifyContent::FlexStart
+    ) {
+        Some("justify-content")
+    } else if container.justify_items != crate::LayoutAlignItems::Normal {
+        Some("justify-items")
+    } else {
+        None
+    };
+    if let Some(property) = unsupported_property {
+        return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
+    }
+    for (property, gap) in [("column-gap", style.gap.column), ("row-gap", style.gap.row)] {
+        if !matches!(gap, LayoutLengthPercentage::LengthPx(value) if value.is_finite() && value >= 0.0)
+        {
+            return Err(LayoutError::InvalidGridTrack { node, property });
+        }
+    }
+    Ok(())
+}
+
+fn root_html_implicit_rows_item_is_supported(
+    input: &LayoutInput,
+    node: &crate::LayoutNode,
+) -> bool {
+    let size_is_fixed =
+        |size| matches!(size, LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0);
+    node.style.display == LayoutDisplay::Block
+        && node.children.is_empty()
+        && !input
+            .text_paragraphs
+            .get(&node.id)
+            .is_some_and(crate::TextParagraphInput::has_content)
+        && node.style.order == 0
+        && size_is_fixed(node.style.width)
+        && size_is_fixed(node.style.height)
+        && node.style.min_width == LayoutDimension::Auto
+        && node.style.max_width == LayoutDimension::Auto
+        && node.style.min_height == LayoutDimension::Auto
+        && node.style.max_height == LayoutDimension::Auto
+        && node.style.aspect_ratio.is_none()
+        && node.style.margin == crate::LayoutEdges::default()
+        && node.style.padding == crate::LayoutEdges::default()
+        && node.style.border == crate::LayoutBorder::default()
+        && node.style.overflow_x == crate::LayoutOverflow::Visible
+        && node.style.overflow_y == crate::LayoutOverflow::Visible
+        && node.style.align_self == crate::LayoutAlignSelf::Auto
+        && input
+            .grid_items
+            .get(&node.id)
+            .is_none_or(crate::GridItemInput::is_auto)
+        && input
+            .positioning
+            .get(&node.id)
+            .is_none_or(|position| position.position == LayoutPosition::Static)
 }
 
 fn track_is_indefinite_height_safe(track: &GridTrackSize, has_definite_min_height: bool) -> bool {

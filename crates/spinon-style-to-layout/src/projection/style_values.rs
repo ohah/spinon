@@ -7,9 +7,10 @@ use spinon_layout::{
     LayoutPositioning, LayoutStyle, TextDirection,
 };
 use spinon_style::{
-    ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize,
-    ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridAutoColumns,
+    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
+    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssPosition,
+    ComputedCssSpacingValue, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -1079,28 +1080,48 @@ fn validate_root_html_grid_item_capacity(
                 value: "computed Grid track 정보가 없습니다".to_owned(),
             }
         })?;
-        let capacity = grid
-            .columns
-            .len()
-            .checked_mul(grid.rows.len())
-            .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
-                node: element.node_id,
-                property: "grid-template-rows",
-                value: "Root HTML Grid explicit track 수가 표현 가능한 범위를 넘었습니다"
-                    .to_owned(),
-            })?;
-        if item_counts
+        let explicit_capacity =
+            grid.columns
+                .len()
+                .checked_mul(grid.rows.len())
+                .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+                    node: element.node_id,
+                    property: "grid-template-rows",
+                    value: "Root HTML Grid explicit track 수가 표현 가능한 범위를 넘었습니다"
+                        .to_owned(),
+                })?;
+        let item_count = item_counts
             .get(&element.node_id)
             .copied()
-            .unwrap_or_default()
-            > capacity
-        {
+            .unwrap_or_default();
+        let fixed_root_implicit_rows = matches!(
+            grid.auto_rows,
+            ComputedCssGridAutoRows::LengthPx(_)
+        ) && grid.auto_flow == ComputedCssGridAutoFlow::Row
+            && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+            && grid.template_areas.is_none()
+            && grid.columns_auto_repeat.is_none()
+            && grid.rows_auto_repeat.is_none()
+            && grid.columns.iter().all(|track| {
+                matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+            })
+            && grid.rows.iter().all(|track| {
+                matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0)
+            });
+        let implicit_row_capacity = fixed_root_implicit_rows
+            .then(|| {
+                grid.columns
+                    .len()
+                    .checked_mul(spinon_layout::GRID_MAX_TRACKS)
+            })
+            .flatten()
+            .unwrap_or(explicit_capacity);
+        if item_count > implicit_row_capacity {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node: element.node_id,
                 property: "grid-auto-rows",
-                value:
-                    "Root HTML Grid은 explicit track를 벗어나는 implicit item을 지원하지 않습니다"
-                        .to_owned(),
+                value: "Root HTML Grid item 수가 explicit 및 제한 implicit row 용량을 넘었습니다"
+                    .to_owned(),
             });
         }
     }
@@ -1192,6 +1213,26 @@ fn validate_root_html_grid_box_inputs(
         if let Some(grid) = element.grid_layout.as_ref() {
             root_html_grid_tracks::validate_fraction_axis_inputs(element, grid)?;
             root_html_grid_tracks::validate_percentage_axis_inputs(element, grid)?;
+            if matches!(grid.auto_rows, ComputedCssGridAutoRows::LengthPx(_)) {
+                for (property, initial) in [
+                    ("align-items", "normal"),
+                    ("align-content", "normal"),
+                    ("justify-content", "normal"),
+                    ("justify-items", "normal"),
+                ] {
+                    if element
+                        .properties
+                        .get(property)
+                        .is_some_and(|value| value != initial)
+                    {
+                        return Err(StyleLayoutError::UnsupportedComputedValue {
+                            node,
+                            property,
+                            value: element.properties[property].clone(),
+                        });
+                    }
+                }
+            }
         }
         for (property, value) in [
             ("row-gap", element.layout_spacing.row_gap),

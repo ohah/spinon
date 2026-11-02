@@ -105,6 +105,109 @@ fn root_html_profile_projects_direct_percentage_tracks_on_both_axes() {
 }
 
 #[test]
+fn root_html_profile_projects_one_fixed_implicit_row_size_in_its_own_mode() {
+    let node = NodeId::new(11_187).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(55.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    grid.auto_rows = ComputedCssGridAutoRows::LengthPx(15.0);
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlImplicitRowsV1
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::LengthPx(15.0)
+    );
+    assert_eq!(
+        projected.columns,
+        vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(55.0)]
+    );
+    assert_eq!(projected.rows, vec![GridTrackSize::LengthPx(20.0)]);
+}
+
+#[test]
+fn root_html_profile_rejects_percentage_tracks_with_fixed_implicit_rows() {
+    let node = NodeId::new(11_188).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.4),
+            ComputedCssGridTrackSize::LengthPx(55.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    grid.auto_rows = ComputedCssGridAutoRows::LengthPx(15.0);
+
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect_err("fixed implicit rows must not combine with percentage explicit tracks");
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-template-columns",
+            ..
+        } if error_node == node
+    ));
+}
+
+#[test]
+fn root_html_named_area_profile_rejects_fixed_implicit_rows() {
+    let node = NodeId::new(11_189).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(80.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(50.0),
+        ],
+    );
+    grid.template_areas = Some(ComputedCssGridTemplateAreas {
+        rows: 2,
+        columns: 2,
+        areas: vec![ComputedCssGridArea {
+            name: "header".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 2,
+        }],
+    });
+    grid.auto_rows = ComputedCssGridAutoRows::LengthPx(15.0);
+
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect_err("fixed implicit rows must not widen the named-area profile");
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        } if error_node == node
+    ));
+}
+
+#[test]
 fn root_html_profile_rejects_invalid_or_nondirect_fraction_tracks() {
     let node = NodeId::new(11_182).unwrap();
     for track in [

@@ -4,7 +4,9 @@
 
 **계획 검토:** [구현 전 실패 관점 20개](../spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.md)
 
-**현재 상태:** 구현 전 계획 후보. 코드 감사에서 Root HTML cascade가 단일 finite non-negative px `grid-auto-rows`를 `ComputedCssGridAutoRows::LengthPx`로 이미 계산하지만, 기본 Root HTML Grid projection은 `auto`만 허용해 그 값을 거부하는 것을 확인했다([cascade 경계](../crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs#L305), [projection 경계](../crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs#L114)). Chrome 156 사전 비교와 독립 산술은 [evidence](../spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.md)에 고정했다. 이 계획만으로 C11.1/C11 또는 공식 완료 `72/213`을 승격하지 않는다.
+**구현/runtime 검토:** [실패 관점 20개](../spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.md)
+
+**현재 상태:** 단일 fixed-px implicit row의 제한 구현 후보를 기본 Root HTML runtime 경로에 연결했다. Rust Root HTML/layout 회귀, 자원 상한, 관련 C11.3.3 검사, Clippy와 rustfmt 및 Android API 37 AVD/iOS 26.2 Simulator 실행을 마쳤다. 별도의 구현/runtime 실패 관점 20개 검토도 통과했다. [실행 근거](../spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.md)에 exact frame matrix, source/build hash, platform log, screenshots와 한계를 기록한다. PR diff 검토와 병합은 남아 있다. 이 제한 후보는 C11.1/C11 또는 공식 완료 `72/213`을 승격하지 않는다.
 
 ## 목표와 규범 근거
 

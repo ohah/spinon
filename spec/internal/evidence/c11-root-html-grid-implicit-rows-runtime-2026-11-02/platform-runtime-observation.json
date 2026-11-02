@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "observedAtLocal": "2026-11-02T11:47:15+09:00",
+  "baseHead": "f270e43ff19a5a3739e8391cafcbf16d2ffd303d",
+  "candidateSourceManifest": "candidate-source.sha256",
+  "rustValidation": "validation-pass03.log",
+  "entryPath": "RuntimeSession::new_runtime_gpu_with_root_html",
+  "bootstrapSource": {
+    "indexHtml": "root-html-grid-implicit-rows-runtime.html",
+    "rootAppProbe": "root-app-runtime-probe.js",
+    "htmlBytes": 1350,
+    "scriptBytes": 1164,
+    "testOnlyFfiRoute": false
+  },
+  "features": {
+    "c04RuntimeGpu": true,
+    "c04RuntimeGpuFixtureTest": false,
+    "c11_2_3GridFixtureTest": false
+  },
+  "case": {
+    "rootCssPx": [100, 40],
+    "columnsPx": [40, 55],
+    "columnGapPx": 5,
+    "rowsPx": [20, 15],
+    "rowGapPx": 5,
+    "visibleItems": ["a", "b", "c"],
+    "exactFrameOracle": "Rust integration tests and Chrome 156 precomparison"
+  },
+  "android": {
+    "device": {
+      "avd": "spinon_api37_0_applied_txn",
+      "adbSerial": "emulator-5556",
+      "productModel": "sdk_gphone64_arm64",
+      "apiLevel": 37,
+      "abi": "arm64-v8a",
+      "physicalSize": "1080x2400",
+      "densityDpi": 420,
+      "renderer": "ANGLE / Vulkan / SwiftShader"
+    },
+    "runtime": {
+      "viewportCssPx": [411.42856, 841.52374],
+      "deviceScaleFactor": 2.625,
+      "layout": "ready",
+      "rootFrameCssPx": [411.42856, 40],
+      "drawPresentedBoxes": 6
+    },
+    "launchMethod": "adb shell am start -n dev.spinon.bootstrap/.MainActivity",
+    "artifacts": {
+      "apk": "../../../../build/spinon/artifacts/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd.apk",
+      "installedBaseApk": "../../../../build/spinon/artifacts/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-installed-base.apk",
+      "apkSha256": "657655c1291078ed5f5dac729170ace1bced29e9b4dd89957fb990ea20bb9ee9",
+      "installedBaseApkSha256": "657655c1291078ed5f5dac729170ace1bced29e9b4dd89957fb990ea20bb9ee9",
+      "buildLog": "android-build.log",
+      "runtimeLog": "android-api37-avd-runtime-summary.log",
+      "screenshot": "android-api37-avd.png",
+      "screenshotSha256": "6f9eb9d7de42d39a76b7c69b3e5bbfd48f5c1b6a97ee5da3184e72ba1c728f11"
+    },
+    "appStoppedAfterCapture": true
+  },
+  "ios": {
+    "device": {
+      "simulator": "iPhone 17 Pro",
+      "runtime": "iOS 26.2",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "renderer": "Metal Simulator GPU"
+    },
+    "runtime": {
+      "viewportCssPx": [402, 778],
+      "deviceScaleFactor": 3,
+      "layout": "ready",
+      "rootFrameCssPx": [402, 40],
+      "drawPresentedBoxes": 6
+    },
+    "launchMethod": "xcrun simctl launch <UDID> dev.spinon.bootstrap",
+    "artifacts": {
+      "executable": "../../../../build/spinon/artifacts/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-executable",
+      "executableSha256": "eb2013f3d4fe611d3c0eea16ad0f0626ad4f2f268da13eb0cb154f15a84ec95e",
+      "installedExecutableSha256": "eb2013f3d4fe611d3c0eea16ad0f0626ad4f2f268da13eb0cb154f15a84ec95e",
+      "appBundle": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+      "buildLog": "ios-simulator-build-summary.log",
+      "runtimeLog": "ios-simulator-runtime.log",
+      "screenshot": "ios-26_2-simulator.png",
+      "screenshotSha256": "2fd581d441cd22785447a4a18ed5201e003fac493e897f77bed5424bf8429439"
+    },
+    "appStoppedAfterCapture": true
+  },
+  "captureLimits": [
+    "Android screenshot is adb exec-out screencap; iOS screenshot is simctl io screenshot. Neither reads back the GPU surface or proves pixel equality.",
+    "Exact track and item frames are asserted by Rust Root HTML integration tests against the independent Chrome 156 precomparison; simulator logs establish layout-ready and six-box draw/present.",
+    "Android evidence is a SwiftShader software-rendered API 37 ARM64 AVD. iOS evidence is a Simulator, not a physical iPhone.",
+    "The iOS simulator build log contains duplicate-symbol/dSYM warnings from existing archives; the build completed successfully."
+  ],
+  "repositoryStateAfterRun": {
+    "examplesBootstrapAssetsRestored": true,
+    "generatedBootstrapAssetsRestored": true,
+    "androidAppStopped": true,
+    "iosAppStopped": true
+  }
+}
