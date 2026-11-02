@@ -36,3 +36,9 @@ PR용 텍스트 log 사본에서는 Git diff whitespace 검사에 걸린 줄 끝
 ## 실패 관점 검토 및 남은 한계
 
 - 아직 미검증: Android PixelCopy 및 iOS Metal surface readback, 실기기/hardware GPU, pixel parity, WPT, intrinsic/`minmax()`/auto-repeat, named line/area 결합, arbitrary CSS Grid 및 C11 전체 적합성.
+
+## 구현 PR 병합 상태
+
+구현 PR [#1027](https://github.com/ohah/spinon/pull/1027)은 2026-11-02T03:48:24Z Rebase and merge됐고 GitHub API merge SHA는 `732b0257146464de55ddede8a0477726bc5a380b`다. 계획 PR [#1026](https://github.com/ohah/spinon/pull/1026)은 2026-11-02T03:21:01Z 병합됐고 merge SHA는 `3f7bfa71ae67a1f61cb8a5154f0cb74137bad9fc`다. PR #1027의 check rollup은 비어 있었으므로 CI 통과로 기록하지 않는다. 위 실행 자료는 제한 Root HTML slice의 Rust·Android AVD·iOS Simulator 동작 근거다. 일반 CSS admission, WPT, 실기기/hardware GPU 및 C11.1/C11 완료 상태는 바꾸지 않으며 공식 집계는 `72/213`을 유지한다.
+
+문서 병합 동기화 diff의 별도 30개 실패 관점 검토는 [roadmap-postmerge-docs-pr-diff-review-30.md](roadmap-postmerge-docs-pr-diff-review-30.md)에 있다.
