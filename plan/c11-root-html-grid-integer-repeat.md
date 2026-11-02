@@ -56,10 +56,10 @@ Gap은 0이며 각 item은 해당 track 크기와 고정 20px cross-axis 크기�
 
 Auto-repeat, arbitrary line names/placement, minmax/fit-content/intrinsic track repeats, all Grid grammar, public CSS support, WPT suite conformance, general dynamic layout combinations, hardware-GPU/physical-device performance, iOS post-compositor pixels, C11.1 or C11 completion.
 
-## 구현 후보 실행 결과
+## 구현 실행·병합 결과
 
-현재 branch 후보는 `RuntimeRootHtmlTextPaintV1`의 integer-repeat 확장만 켠다. `allow_intrinsic_tracks`와 `allow_auto_repeat`은 그대로 닫혀 있다. Chrome 156 사전 비교 7/7 scene·35 column/row tracks·28 items가 독립 expected와 일치하고, default Root HTML runtime matrix는 typed tracks·root/item frame·37 scene boxes를 검사한다. Root HTML runtime 30/30, `spinon-style` Root HTML 13/13, `spinon-style-to-layout` Root HTML 15/15, scoped Clippy가 통과했다. 정확히 10,000 tracks, 10,001 거부, 1 MiB metadata quota, allocation failpoint별 복구와 empty named-area track projection rejection도 검사한다. 별도 [구현/runtime 적대적 검토 20개](../spec/internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/implementation-runtime-review-20.md)는 계획 검토표를 재사용하지 않는다.
+PR #1038로 병합된 구현은 `RuntimeRootHtmlTextPaintV1`의 integer-repeat 확장만 켠다. `allow_intrinsic_tracks`와 `allow_auto_repeat`은 그대로 닫혀 있다. Chrome 156 사전 비교 7/7 scene·35 column/row tracks·28 items가 독립 expected와 일치하고, default Root HTML runtime matrix는 typed tracks·root/item frame·37 scene boxes를 검사한다. Root HTML runtime 30/30, `spinon-style` Root HTML 13/13, `spinon-style-to-layout` Root HTML 15/15, scoped Clippy가 통과했다. 정확히 10,000 tracks, 10,001 거부, 1 MiB metadata quota, allocation failpoint별 복구와 empty named-area track projection rejection도 검사한다. 별도 [구현/runtime 적대적 검토 20개](../spec/internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/implementation-runtime-review-20.md)는 계획 검토표를 재사용하지 않는다.
 
 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 동일 fixture hash로 default runtime boot, layout-ready 37 boxes, draw/present를 기록했다. Android는 ANGLE/SwiftShader software renderer다. Simulator screenshots는 visual smoke evidence이며 Android PixelCopy나 Metal surface readback 근거가 아니다. 모든 task fixture-test build flags는 꺼져 있고 `examples/bootstrap/index.html`·`root-app.js`는 원본 hash로 복원했다. [Chrome 및 Rust·Android·iOS logs, hashes, screenshots, 종료·복구 기록](../spec/internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/README.md).
 
-PR review 및 merge 전 candidate다. C11.1/C11 완료 체크와 공식 `72/213`은 변경하지 않는다. PR check rollup이 비어 있으면 CI 성공으로 주장하지 않는다.
+구현 PR [#1038](https://github.com/ohah/spinon/pull/1038)은 2026-11-02T06:23:58Z Rebase and merge로 병합됐다(merge SHA `b3ad473d4bfef4bb2f54a61603d498e620c03b0a`). GitHub PR checks는 보고되지 않았다. [병합 근거](../spec/internal/evidence/c11-root-html-grid-integer-repeat-runtime-2026-11-02/merge-PR1038.md). C11.1/C11 완료 체크와 공식 `72/213`은 변경하지 않는다.

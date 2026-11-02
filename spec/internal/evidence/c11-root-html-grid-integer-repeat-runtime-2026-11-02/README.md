@@ -2,6 +2,8 @@
 
 이 실행은 [구현 계획](../../../../plan/c11-root-html-grid-integer-repeat.md)의 같은 7-grid HTML 입력으로 default parsed Root HTML runtime, Android AVD, iOS Simulator를 확인한다. Chrome baseline은 [사전 비교 기록](../c11-root-html-grid-integer-repeat-precomparison-2026-11-02/README.md)에 있다.
 
+구현 PR [#1038](https://github.com/ohah/spinon/pull/1038)은 2026-11-02T06:23:58Z Rebase and merge로 병합됐고 merge SHA는 `b3ad473d4bfef4bb2f54a61603d498e620c03b0a`다. GitHub PR checks는 보고되지 않았으며, 병합 시각과 `origin/main` 확인은 [merge record](./merge-PR1038.md)에 기록했다.
+
 ## 고정 입력과 산출물 식별
 
 - 입력: `tests/fixtures/css/c11/root-html-grid-integer-repeat-precomparison.html`
