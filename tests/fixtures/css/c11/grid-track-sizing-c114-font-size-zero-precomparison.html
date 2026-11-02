@@ -1,0 +1,90 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text with zero computed font size</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../resources/c15/Ahem.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Ahem;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px;
+  }
+
+  .scene {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .label {
+    width: 220px;
+    color: #172033;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .case {
+    display: grid;
+    width: 100px;
+    height: auto;
+    margin: 0 0 4px;
+    padding: 0;
+    border: 0;
+    column-gap: 0;
+    row-gap: 0;
+    align-items: start;
+    align-content: start;
+    justify-content: start;
+    grid-template-rows: auto;
+    font-family: Ahem;
+    font-size: 0;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 10px;
+    white-space: normal;
+    direction: ltr;
+  }
+
+  #min-content {
+    grid-template-columns: min-content;
+  }
+
+  #max-content {
+    grid-template-columns: max-content;
+  }
+
+  #zero-text-before-box {
+    grid-template-columns: min-content;
+  }
+
+  #zero-text-before-box .box {
+    width: 5px;
+    height: 3px;
+    background: #e5484d;
+  }
+
+  #negative-declaration {
+    font-size: 10px;
+    font-size: -1px;
+  }
+</style>
+
+<div class="scene"><div class="label">min-content: 0px text contribution, 10px line box</div><div class="case" id="min-content">XX XX</div></div>
+<div class="scene"><div class="label">max-content: 0px text contribution, 10px line box</div><div class="case" id="max-content">XX XX</div></div>
+<div class="scene"><div class="label">zero-size text item still consumes the first auto-placement cell</div><div class="case" id="zero-text-before-box">XX<div class="box" id="following-box"></div></div></div>
+<div class="scene"><div class="label">collapsible whitespace creates no anonymous item</div><div class="case" id="whitespace-only">   </div></div>
+<div class="scene"><div class="label">negative font-size is invalid and falls back to 10px</div><div class="case" id="negative-declaration" style="grid-template-columns:min-content">XX</div></div>
