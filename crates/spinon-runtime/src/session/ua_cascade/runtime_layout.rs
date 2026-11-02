@@ -1901,9 +1901,7 @@ fn runtime_frames(
             height: frame.height,
         });
     }
-    if !root_html_text_profile
-        && frames.len() + anonymous_text_item_ids.len() != output.frames.len()
-    {
+    if !root_html_text_profile && frames.len() != output.frames.len() {
         return Err(layout_failure("frame_set_mismatch", None, None));
     }
     Ok(frames)

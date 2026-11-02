@@ -1868,6 +1868,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114ComputedLetterSpacingScene(sceneId) != null) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
+        if (c114IsZeroFontSizeTextBeforeBoxScene(sceneId)
+                || c114IsZeroFontSizeWhitespaceScene(sceneId)) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (c114IsComputedFontSizeScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -5230,6 +5234,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (c114IsZeroFontSizeTextBeforeBoxScene(sceneId)) return "width=100,height=13";
+        if (c114IsZeroFontSizeWhitespaceScene(sceneId)) return "width=100,height=0";
         C114GenericDirectTextSceneExpectation letterSpacing =
                 c114ComputedLetterSpacingScene(sceneId) == null
                         ? null : c114GenericDirectTextExpectation(sceneId);
@@ -5239,7 +5245,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         double[] fontSize = c114ComputedFontSizeScene(sceneId);
         if (fontSize != null) {
-            return "width=20,height=" + c114GenericFrameNumber(fontSize[2]);
+            return "width=" + c114GenericFrameNumber(fontSize[4]) + ",height="
+                    + c114GenericFrameNumber(fontSize[2]);
         }
         int lineHeight = c114ComputedLineHeightTrackHeight(sceneId);
         if (lineHeight >= 0) return "width=20,height=" + lineHeight;
@@ -9840,6 +9847,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        if (c114IsZeroFontSizeTextBeforeBoxScene(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=13;"
+                    + "1:node=3,x=0,y=10,width=5,height=3;"
+                    + "2:node=2,x=0,y=0,width=5,height=10]";
+        }
+        if (c114IsZeroFontSizeWhitespaceScene(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=0]";
+        }
         C114ComputedWordBreakScene wordBreak = c114ComputedWordBreakScene(sceneId);
         if (wordBreak != null) {
             if (c114IsAnonymousHyphensInheritedScene(sceneId)) {
@@ -9874,7 +9889,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         double[] fontSize = c114ComputedFontSizeScene(sceneId);
         if (fontSize != null) {
-            return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height="
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width="
+                    + c114GenericFrameNumber(fontSize[4]) + ",height="
+                    + c114GenericFrameNumber(fontSize[2]) + ";1:node=2,x=0,y=0,width="
+                    + c114GenericFrameNumber(fontSize[1]) + ",height="
                     + c114GenericFrameNumber(fontSize[2]) + "]";
         }
         int lineHeight = c114ComputedLineHeightTrackHeight(sceneId);
@@ -12605,6 +12623,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsComputedWordSpacingScene(sceneId)) return 1;
         if (c114IsComputedLetterSpacingScene(sceneId)) return 1;
         if (c114IsComputedFontSizeScene(sceneId)) return 1;
+        if (c114IsZeroFontSizeTextBeforeBoxScene(sceneId)) return 2;
+        if (c114IsZeroFontSizeWhitespaceScene(sceneId)) return 0;
         if (c114IsComputedLineHeightScene(sceneId)) {
             return c114ComputedLineHeightTrackHeight(sceneId) == 0 ? 0 : 1;
         }
@@ -12860,6 +12880,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c114ComputedTextTransformScene(sceneId) != null
                 || c114IsComputedLetterSpacingScene(sceneId)
                 || c114IsComputedFontSizeScene(sceneId)
+                || c114IsZeroFontSizeTextBeforeBoxScene(sceneId)
+                || c114IsZeroFontSizeWhitespaceScene(sceneId)
                 || c114IsComputedLineHeightScene(sceneId)
                 || sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-normal-min-content")
@@ -12880,6 +12902,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsComputedFontSizeScene(String sceneId) {
         return c114ComputedFontSizeScene(sceneId) != null;
+    }
+
+    private static boolean c114IsZeroFontSizeTextBeforeBoxScene(String sceneId) {
+        return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
+                && "font-size-0-text-before-box".equals(sceneId);
+    }
+
+    private static boolean c114IsZeroFontSizeWhitespaceScene(String sceneId) {
+        return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
+                && "font-size-0-whitespace-only".equals(sceneId);
     }
 
     private static boolean c114IsComputedLetterSpacingScene(String sceneId) {
@@ -13615,11 +13647,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         };
     }
 
-    // [font-size px, intrinsic column width px, auto row height px, line count]
+    // [font size, intrinsic column, row height, line count, root width, min-content height]
     private static double[] c114ComputedFontSizeScene(String sceneId) {
         if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null) return null;
         double fontSize;
         switch (sceneId) {
+            case "font-size-0-min-content":
+            case "font-size-0-max-content": fontSize = 0; break;
             case "font-size-5-min-content":
             case "font-size-5-max-content": fontSize = 5; break;
             case "font-size-7-5-min-content":
@@ -13633,11 +13667,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             default: return null;
         }
         boolean minContent = sceneId.endsWith("-min-content");
+        boolean zeroSize = fontSize == 0;
         return new double[] {
                 fontSize,
                 (minContent ? 2.0 : 5.0) * fontSize,
-                minContent ? 20.0 : 10.0,
-                minContent ? 2.0 : 1.0,
+                zeroSize ? 10.0 : minContent ? 20.0 : 10.0,
+                zeroSize ? 1.0 : minContent ? 2.0 : 1.0,
+                zeroSize ? 100.0 : 20.0,
+                zeroSize ? 10.0 : 20.0,
         };
     }
 
@@ -13796,7 +13833,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !"text".equals(source.optString("kind"))
                     || source.optInt("fontRegistryRevision", -1) != 1
                     || !c114GenericJsonNear(source, "minContent", 2 * expected[0], 1.0 / 64.0)
-                    || !c114GenericJsonNear(source, "minContentHeight", 20, 1.0 / 64.0)
+                    || !c114GenericJsonNear(source, "minContentHeight", expected[5], 1.0 / 64.0)
                     || !c114GenericJsonNear(source, "maxContent", 5 * expected[0], 1.0 / 64.0)
                     || !c114GenericJsonNear(source, "maxContentHeight", 10, 1.0 / 64.0)
                     || frame.optInt("node", -1) != 2

@@ -22,9 +22,9 @@
 | 14 | fallback font가 Ahem과 달라 독립 산식이 바뀜 | **통과.** Ahem asset SHA와 `document.fonts.check('10px Ahem')=true`를 보존한다. |
 | 15 | positive font-size 회귀가 zero-only 변경에 의해 깨짐 | **통과.** 기존 5, 7.5, 10, 12.5, 20px 행렬을 구현 시 계속 실행한다. |
 | 16 | 다른 `ParagraphStyle` caller가 검증 변경으로 의도치 않게 zero 입력을 얻음 | **부분 통제.** 모델 validator는 finite zero를 표현하되 runtime admission은 C11.4 exact fixture gate로 한정하고 다른 route의 범위를 PR에 적는다. |
-| 17 | Root HTML renderer의 positive-only glyph rasterizer가 zero-size layout 때문에 `drawPresented` 전에 실패 | **통과.** exact fixture의 all-zero run은 renderer가 rasterizer를 호출하지 않고 no-paint로 건너뛴다. `InlineRunStyle`과 C15 rasterizer는 기존 양수 전용 계약으로 유지한다. |
+| 17 | C11.4 fixture의 `BlockFlexGridTrackSizing` 경로가 별도 `RootHtmlDefaultRender` raster path로 잘못 연결되는가 | **재확인 통과.** runtime dispatch는 C11.4 anonymous-text intrinsic projection을 사용하며 root HTML default renderer는 별도 profile이다. 이 fixture에는 no-paint renderer 변경을 요구하지 않고 C15 raster API도 건드리지 않는다. |
 | 18 | text layout builder가 zero advance에서 NaN 또는 음수 intrinsic을 게시 | **통과.** implementation gate에 zero-font Parley 결과, finite output, 0 contribution, line-height를 요구한다. |
 | 19 | style-owner revision과 typed font-size 값이 다른 시점에서 조합 | **통과.** same node, root, style revision, serialization과 typed `0.0`의 동일성을 요구한다. |
 | 20 | 이 bounded slice만으로 C11.4 또는 전체 roadmap 완료를 표시 | **통과.** C11.4/C11 check와 공식 `72/213`은 변경하지 않는다. |
 
-**결론:** 계획은 구현 전 oracle·독립 계산·허용 입력·negative 경계·플랫폼 및 보고 한계를 고정했다. Root HTML renderer/rasterizer 경계는 소스 확인에서 발견해 fixture no-paint 규칙으로 제한했다. 발견된 부분 통제는 implementation 20 및 final PR diff review에서 runtime admission과 다른 `ParagraphStyle` caller를 다시 확인한다.
+**결론:** 계획은 구현 전 oracle·독립 계산·허용 입력·negative 경계·플랫폼 및 보고 한계를 고정했다. 최초 계획 diff에서 root HTML renderer와 C11.4 fixture 경로를 혼동한 우려는 runtime profile dispatch를 확인한 뒤 수정했다. 발견된 부분 통제는 implementation 20 및 final PR diff review에서 runtime admission과 다른 `ParagraphStyle` caller를 다시 확인한다.

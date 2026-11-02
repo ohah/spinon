@@ -46,7 +46,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
-                font_size: 0.0,
+                font_size: -1.0,
                 line_height: 10.0,
                 white_space: WhiteSpaceMode::Normal,
                 word_break: WordBreakMode::Normal,

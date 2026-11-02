@@ -1,5 +1,7 @@
 #[path = "anonymous_text_items/computed_font_size.rs"]
 mod computed_font_size;
+#[path = "anonymous_text_items/computed_font_size_zero.rs"]
+mod computed_font_size_zero;
 #[path = "anonymous_text_items/computed_hyphens.rs"]
 mod computed_hyphens;
 #[path = "anonymous_text_items/computed_letter_spacing.rs"]
@@ -170,6 +172,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         return Some(source);
     }
     if let Some(source) = computed_font_size::runtime_source(scene_id) {
+        return Some(source);
+    }
+    if let Some(source) = computed_font_size_zero::runtime_source(scene_id) {
         return Some(source);
     }
     if let Some(source) = computed_line_height::runtime_source(scene_id) {

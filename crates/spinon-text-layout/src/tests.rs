@@ -1000,6 +1000,8 @@ mod c11_4_hyphens;
 #[path = "tests/c11_4_line_break.rs"]
 mod c11_4_line_break;
 
+#[path = "tests/c11_4_font_size_zero.rs"]
+mod c11_4_font_size_zero;
 #[path = "tests/c11_4_overflow_wrap.rs"]
 mod c11_4_overflow_wrap;
 #[path = "tests/c11_4_pre.rs"]
