@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.1 Root HTML Grid fractional tracks precomparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font: 12px sans-serif; background: #fff; color: #101820; }
+    .scene { display: grid; margin: 0 0 12px; padding: 0; border: 0; gap: 0; }
+    .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
+    .a { background: #e5484d; }
+    .b { background: #3b82f6; }
+    .c { background: #16a34a; }
+    .d { background: #f59e0b; }
+    .note { margin: 0 0 4px; font: 12px sans-serif; color: #7f1d1d; }
+    #column-1-2 { width: 130px; height: 40px; grid-template-columns: 1fr 2fr; grid-template-rows: 40px; column-gap: 10px; }
+    #column-2-1 { width: 130px; height: 40px; grid-template-columns: 2fr 1fr; grid-template-rows: 40px; column-gap: 10px; }
+    #mixed-tracks { width: 160px; height: 40px; grid-template-columns: 30px 1fr 2fr; grid-template-rows: 40px; gap: 0 10px; }
+    #row-1-2 { width: 40px; height: 130px; grid-template-columns: 40px; grid-template-rows: 1fr 2fr; row-gap: 10px; }
+    #subunit-sum { width: 110px; height: 40px; grid-template-columns: 0.25fr 0.25fr; grid-template-rows: 40px; column-gap: 10px; }
+    #zero-factor { width: 120px; height: 40px; grid-template-columns: 0fr 1fr; grid-template-rows: 40px; }
+    #large-factor { width: 120px; height: 40px; grid-template-columns: 1e38fr 1e38fr 1e38fr; grid-template-rows: 40px; }
+    #large-factor-overflow { width: 120px; height: 40px; grid-template-columns: 1e38fr 1e38fr 1e38fr 1e38fr; grid-template-rows: 40px; }
+    #renamed-reversed { width: 130px; height: 40px; grid-template-columns: 1fr 2fr; grid-template-rows: 40px; column-gap: 10px; }
+    #renamed-reversed .semantic-blue { background: #3b82f6; }
+    #renamed-reversed .semantic-red { background: #e5484d; }
+    #minmax-negative { width: 130px; height: 40px; grid-template-columns: minmax(0px, 1fr) 2fr; grid-template-rows: 40px; column-gap: 10px; }
+    #named-area-negative { width: 130px; height: 75px; grid-template-columns: 1fr 2fr; grid-template-rows: 20px 50px; column-gap: 10px; grid-template-areas: "header header" "side content"; }
+    #indefinite-row-negative { width: 40px; height: auto; grid-template-columns: 40px; grid-template-rows: 1fr 2fr; row-gap: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Root HTML Grid fractional track precomparison</h1>
+  <div id="column-1-2" class="scene"><div class="item a"></div><div class="item b"></div></div>
+  <div id="column-2-1" class="scene"><div class="item a"></div><div class="item b"></div></div>
+  <div id="mixed-tracks" class="scene"><div class="item a"></div><div class="item b"></div><div class="item c"></div></div>
+  <div id="row-1-2" class="scene"><div class="item a"></div><div class="item b"></div></div>
+  <div id="subunit-sum" class="scene"><div class="item a"></div><div class="item b"></div></div>
+  <div id="zero-factor" class="scene"><div class="item a"></div><div class="item b"></div></div>
+  <div id="large-factor" class="scene"><div class="item a"></div><div class="item b"></div><div class="item c"></div></div>
+  <p class="note">Four 1e38fr tracks: spec expectation 30px each; HeadlessChrome 156 observation 0px each.</p>
+  <div id="large-factor-overflow" class="scene"><div class="item a"></div><div class="item b"></div><div class="item c"></div><div class="item d"></div></div>
+  <div id="renamed-reversed" class="scene"><div class="item semantic-blue"></div><div class="item semantic-red"></div></div>
+  <div id="minmax-negative" class="scene"><div class="item a"></div><div class="item b"></div></div>
+  <div id="named-area-negative" class="scene"><div class="item a" style="grid-area:header"></div><div class="item b" style="grid-area:side"></div><div class="item c" style="grid-area:content"></div></div>
+  <div id="indefinite-row-negative" class="scene"><div class="item a"></div><div class="item b"></div></div>
+</body>
+</html>
