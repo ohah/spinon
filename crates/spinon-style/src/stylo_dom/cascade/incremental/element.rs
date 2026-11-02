@@ -232,6 +232,7 @@ pub(super) fn computed_element_output(
                         profile,
                         ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                     ),
                     allow_intrinsic_tracks: profile
                         == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,

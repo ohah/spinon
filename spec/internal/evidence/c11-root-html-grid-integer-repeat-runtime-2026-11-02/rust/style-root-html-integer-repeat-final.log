@@ -1,0 +1,9 @@
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.78s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 2 tests
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_integer_repeat::root_html_integer_repeat_accepts_exact_expanded_track_limit ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_integer_repeat::root_html_integer_repeat_allocation_failures_are_contextual_and_recover ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 258 filtered out; finished in 0.01s

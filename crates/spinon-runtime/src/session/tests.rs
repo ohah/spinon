@@ -16,6 +16,7 @@ mod root_html_grid;
 mod root_html_grid_anonymous_text;
 mod root_html_grid_fr;
 mod root_html_grid_implicit_rows;
+mod root_html_grid_integer_repeat;
 mod root_html_grid_template_areas;
 
 struct FakeV8Runtime {

@@ -276,7 +276,7 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             "auto-repeat explicit track",
             SOURCE.replace(
                 "grid-template-columns: 40px 55px;",
-                "grid-template-columns: repeat(2, 40px);",
+                "grid-template-columns: repeat(auto-fill, 40px);",
             ),
         ),
         (
