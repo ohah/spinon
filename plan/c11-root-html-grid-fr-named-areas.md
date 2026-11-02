@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [parsed Root HTML Grid 기본 경로](./c11-root-html-grid-runtime.md) · [named-area 경로](./c11-root-html-grid-template-areas.md) · [fractional-track 경로](./c11-root-html-grid-fr-track.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**현재 상태:** 계획 단계. 현재 Root HTML named-area validator는 고정 `40px 80px` columns와 `20px 50px` rows만 허용한다. 별도 Root HTML `fr` slice는 definite axis에서 direct finite non-negative fraction을 지원하지만 template areas와 함께 쓰면 거부한다. 재현과 기준은 [Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.md)다.
+**현재 상태:** 구현 후보 검증 완료, 구현 PR 대기. 기본 parsed Root HTML 경로는 기존 고정 `40px 80px` columns와 `20px 50px` rows를 유지하면서 동일한 2×2 `header/side/content` template에 definite 두 축의 direct `1fr 2fr`도 제한 허용한다. Chrome 156 기준, Rust positive/rejection matrix, Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator draw/present를 확인했다. PixelCopy·Metal drawable readback은 수행하지 않았다. 구현/runtime 실패 관점 20개를 마쳤으며 구현 PR diff 30개 검토는 아래 [구현 검토 기록](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.md)과 실행 [README](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.md)에 남긴다. 전체 CSS Grid, 상위 C11 단계나 완료 수 `72/213`은 승격하지 않는다. 재현과 기준은 [Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.md)다.
 
 ## 확인한 차이와 목표
 
@@ -38,6 +38,13 @@ CSS Grid Layout Module Level 1 2025 CRD의 [named areas §7.3](https://www.w3.or
 ## 제외와 중단 조건
 
 Percentage + area, mixed px/fr + area, arbitrary factors/track count, named lines/repeat, implicit tracks, auto-placement 확장, intrinsic `auto`/`minmax()`/`fit-content()`, image/text contributions, arbitrary area templates, general CSS admission, WPT conformance, RTL/writing modes, nested Grid, surface-pixel equality, physical-device/hardware GPU validation은 이 계획 범위에 없다. Taffy 또는 Chrome geometry가 독립 §11.7 계산과 허용 오차 밖으로 다르면 validator를 느슨하게 하지 않고 구현을 중단해 최소 재현을 보강한다.
+
+## 구현 후보 결과 (2026-11-02)
+
+- 변경은 named-area track allowlist와 기존 `Fraction` typed projection 경계에 한정했다. `[1fr,2fr]` 각 축, 기존 `header/header`·`side/content` matrix, definite root, zero gap 조건을 유지한다. HTML/CSS 재파싱, Taffy 보정, FFI·scene ID·공개 API 추가는 없다.
+- Root HTML runtime 65/65, named-area projection 5/5, C11.3.3 area placement regression 26/26, focused named-area runtime 22/22, scoped Clippy와 `cargo fmt --all -- --check`가 통과했다. 세부 실행값·negative controls·오류 범위는 [실행 README](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.md)에 둔다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 fixture hash로 기본 Root HTML `layout=ready`, 6-box draw/present와 시각 screenshot을 얻었다. 두 screenshot은 surface readback, compositor pixel equality, 실기기 검증이 아니다. 첫 app boot assertion mismatch와 pass02 복구 절차도 근거에 보존했다.
+- [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.md)와 [구현 PR diff 30개 검토](../spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.md)를 별도로 마쳤다. PR/merge 상태와 status sync는 PR 준비 후 기록한다. 이 제한 slice는 C11.1·C11.3.3·C11 전체 완료 checkbox 또는 공식 완료 `72/213`을 바꾸지 않는다.
 
 ## 계획 전 검토
 
