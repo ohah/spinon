@@ -1,0 +1,23 @@
+{
+  "feature": "C11.1 parsed Root HTML fixed-px grid-auto-rows list",
+  "base_commit": "1d838ba44bd635bb5c572dc950b9313f1863434a",
+  "source_commit": "3f818577098e51867cc4819e7c6fa230da2de9e0",
+  "source_tree": "7a5ebedcbf0ba5a0b40fc5b7594099c14a810be7",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-row-list-precomparison.html",
+    "sha256": "963d5b05c6c64c8f64638e3cc6d4268cf364e9c52c8d595d0ca973814e77d857"
+  },
+  "android_api37_arm64_avd": {
+    "app_path": "build/spinon/artifacts/c11-root-html-grid-auto-row-list-runtime-2026-11-02/android-api37-avd-pass03.apk",
+    "app_sha256": "1abecc713c812165f79f4b36e4d8f1d4febd4a2188d6616c5db69352fb4394d2",
+    "screenshot": "android-api37-avd-pass03.png",
+    "screenshot_sha256": "5d3631ffc58934ee9f0c54797ce8b18190230772a02ac126a0eb86d3d8ca729a"
+  },
+  "ios_26_2_iphone_17_pro_simulator": {
+    "app_path": "build/spinon/artifacts/c11-root-html-grid-auto-row-list-runtime-2026-11-02/ios-simulator-executable-pass03",
+    "app_sha256": "4c94f1b806ba770d791b97d30ca7794ff3b86386de3ea041856b0fe1bfe45e61",
+    "screenshot": "ios-26_2-simulator-pass03.png",
+    "screenshot_sha256": "7c354c76a9f37d0efde15542e6000d4fed2f206e8208e3e59e1e8dcc4e5607d1"
+  },
+  "runtime_evidence_boundary": "default Root HTML route layout-ready and 11-box draw/present; screenshots are not PixelCopy, Metal drawable readback, or compositor-after pixel equality"
+}
