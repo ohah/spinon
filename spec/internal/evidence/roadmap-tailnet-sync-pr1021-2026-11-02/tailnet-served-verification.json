@@ -1,0 +1,85 @@
+{
+  "sourceHead": "004291f5033942f9037d3e8a0ee96658bbd7595d",
+  "tailnetHost": "macstudio.tailed42f2.ts.net",
+  "previewRoot": "~/Library/Application Support/SpinonPreview",
+  "noDeletes": true,
+  "checkedRouteCount": 10,
+  "uniqueRouteCount": 5,
+  "requiredCardMarkers": [
+    "PR #1019 Rebase and merge",
+    "8e549ed55ac6f7e9611a4f7e1e571fca3a1e5684",
+    "72/213"
+  ],
+  "checks": [
+    {
+      "kind": "local",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 499359,
+      "sha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "kind": "tailnet",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 499359,
+      "sha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "kind": "local",
+      "route": "public/roadmap.html",
+      "status": 200,
+      "bytes": 499359,
+      "sha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "kind": "tailnet",
+      "route": "public/roadmap.html",
+      "status": 200,
+      "bytes": 499359,
+      "sha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "kind": "local",
+      "route": "spec/public/roadmap.html",
+      "status": 200,
+      "bytes": 499359,
+      "sha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/public/roadmap.html",
+      "status": 200,
+      "bytes": 499359,
+      "sha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/android-api37-avd-percentage-overflow.png",
+      "status": 200,
+      "bytes": 25140,
+      "sha256": "cf306c2984e60f12085c90cd33bb256a032a6e7e7d9636dad975c2ba6effb9b6"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/android-api37-avd-percentage-overflow.png",
+      "status": 200,
+      "bytes": 25140,
+      "sha256": "cf306c2984e60f12085c90cd33bb256a032a6e7e7d9636dad975c2ba6effb9b6"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/ios-26_2-simulator-percentage-overflow.png",
+      "status": 200,
+      "bytes": 76236,
+      "sha256": "fd3e9b2326af9ede0a7452554da19069cff072f7e7202c212af3de7186587e5f"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/ios-26_2-simulator-percentage-overflow.png",
+      "status": 200,
+      "bytes": 76236,
+      "sha256": "fd3e9b2326af9ede0a7452554da19069cff072f7e7202c212af3de7186587e5f"
+    }
+  ]
+}
