@@ -1,0 +1,54 @@
+{
+  "sourceHead": "004291f5033942f9037d3e8a0ee96658bbd7595d",
+  "previewRoot": "~/Library/Application Support/SpinonPreview",
+  "backupRoot": "~/Library/Application Support/SpinonPreview-backups/roadmap-tailnet-sync-pr1021-2026-11-02",
+  "server": {
+    "backendState": "Running",
+    "selfDnsName": "macstudio.tailed42f2.ts.net",
+    "serverPid": 28040,
+    "serverArgs": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs"
+  },
+  "changedOpenHandles": [],
+  "noDeletes": true,
+  "routeCount": 5,
+  "changedRouteCount": 5,
+  "changedExistingRouteCount": 3,
+  "newRouteCount": 2,
+  "routes": [
+    {
+      "route": "roadmap.html",
+      "previousExists": true,
+      "previousBytes": 497366,
+      "previousSha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93",
+      "nextSha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "route": "public/roadmap.html",
+      "previousExists": true,
+      "previousBytes": 497366,
+      "previousSha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93",
+      "nextSha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "previousExists": true,
+      "previousBytes": 497366,
+      "previousSha256": "7b11787a888494b98864ff1171279b110fcac1c33cd916083882d4ad80ea9a93",
+      "nextSha256": "96a35b484e5f0ff5cf5be18a4ee8ccb26e31f7e180e30e19927e07d04e0b747c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/android-api37-avd-percentage-overflow.png",
+      "previousExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "nextSha256": "cf306c2984e60f12085c90cd33bb256a032a6e7e7d9636dad975c2ba6effb9b6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/ios-26_2-simulator-percentage-overflow.png",
+      "previousExists": false,
+      "previousBytes": null,
+      "previousSha256": null,
+      "nextSha256": "fd3e9b2326af9ede0a7452554da19069cff072f7e7202c212af3de7186587e5f"
+    }
+  ]
+}
