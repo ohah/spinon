@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML fractional implicit row tracks</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      body {
+        display: grid;
+        grid-template-columns: 180px 180px;
+        align-items: start;
+        gap: 20px;
+        padding: 20px;
+        font: 12px/1.3 sans-serif;
+      }
+
+      h2 {
+        margin: 0 0 6px;
+        font-size: 12px;
+      }
+
+      .grid {
+        display: grid;
+        grid-auto-flow: row;
+        column-gap: 5px;
+        row-gap: 5px;
+        background-color: #ddd;
+      }
+
+      .item {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #4a90e2;
+      }
+
+      #cycle {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 40px 55px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 1fr 2fr;
+      }
+
+      #cycle .item {
+        height: 10px;
+      }
+
+      #cycle .item:nth-child(-n + 2) {
+        height: 20px;
+      }
+
+      #mixed {
+        width: 120px;
+        height: 120px;
+        grid-template-columns: 40px 55px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 15px 25% 1fr;
+      }
+
+      #mixed .item:nth-child(-n + 2) {
+        height: 20px;
+      }
+
+      #mixed .item {
+        height: 10px;
+      }
+
+      #overflow {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 100px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 120% 1fr;
+        row-gap: 5px;
+      }
+
+      #overflow .item {
+        width: 10px;
+        height: 0;
+      }
+
+      #overflow .item:first-child {
+        height: 20px;
+      }
+
+      #overflow .item:nth-child(2) {
+        height: 120px;
+      }
+
+      #zero {
+        width: 100px;
+        height: 0;
+        grid-template-columns: 100px;
+        grid-template-rows: 0px;
+        grid-auto-rows: 1fr;
+        row-gap: 0;
+      }
+
+      #zero .item {
+        width: 10px;
+        height: 0;
+      }
+
+      #zero-factor {
+        width: 100px;
+        height: 40px;
+        grid-template-columns: 100px;
+        grid-template-rows: 10px;
+        grid-auto-rows: 0fr 1fr;
+      }
+
+      #zero-factor .item {
+        width: 10px;
+        height: 0;
+      }
+
+      #zero-factor .item:first-child {
+        height: 10px;
+      }
+
+      #zero-factor .item:nth-child(2) {
+        height: 10px;
+      }
+
+      #subunit {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 100px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 0.25fr;
+      }
+
+      #subunit .item {
+        height: 10px;
+      }
+
+      #subunit .item:first-child {
+        height: 20px;
+      }
+
+      #minimum {
+        width: 100px;
+        height: 30px;
+        grid-template-columns: 100px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 1fr;
+      }
+
+      #minimum .item:first-child {
+        height: 20px;
+      }
+
+      #minimum .item:last-child {
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="case">
+      <h2>1fr / 2fr cycle</h2>
+      <section id="cycle" class="grid">
+        <div id="cycle-1" class="item"></div>
+        <div id="cycle-2" class="item"></div>
+        <div id="cycle-3" class="item"></div>
+        <div id="cycle-4" class="item"></div>
+        <div id="cycle-5" class="item"></div>
+        <div id="cycle-6" class="item"></div>
+        <div id="cycle-7" class="item"></div>
+        <div id="cycle-8" class="item"></div>
+        <div id="cycle-9" class="item"></div>
+        <div id="cycle-10" class="item"></div>
+      </section>
+    </div>
+    <div class="case">
+      <h2>px / percentage / fr cycle</h2>
+      <section id="mixed" class="grid">
+        <div id="mixed-1" class="item"></div>
+        <div id="mixed-2" class="item"></div>
+        <div id="mixed-3" class="item"></div>
+        <div id="mixed-4" class="item"></div>
+        <div id="mixed-5" class="item"></div>
+        <div id="mixed-6" class="item"></div>
+        <div id="mixed-7" class="item"></div>
+        <div id="mixed-8" class="item"></div>
+        <div id="mixed-9" class="item"></div>
+        <div id="mixed-10" class="item"></div>
+      </section>
+    </div>
+    <div class="case">
+      <h2>percentage overflow + fr</h2>
+      <section id="overflow" class="grid">
+        <div id="overflow-1" class="item"></div>
+        <div id="overflow-2" class="item"></div>
+        <div id="overflow-3" class="item"></div>
+      </section>
+    </div>
+    <div class="case">
+      <h2>definite zero height</h2>
+      <section id="zero" class="grid">
+        <div id="zero-1" class="item"></div>
+        <div id="zero-2" class="item"></div>
+      </section>
+    </div>
+    <div class="case">
+      <h2>zero fractional factor cycle</h2>
+      <section id="zero-factor" class="grid">
+        <div id="zero-factor-1" class="item"></div>
+        <div id="zero-factor-2" class="item"></div>
+        <div id="zero-factor-3" class="item"></div>
+        <div id="zero-factor-4" class="item"></div>
+      </section>
+    </div>
+    <div class="case">
+      <h2>subunit fractional sum</h2>
+      <section id="subunit" class="grid">
+        <div id="subunit-1" class="item"></div>
+        <div id="subunit-2" class="item"></div>
+        <div id="subunit-3" class="item"></div>
+      </section>
+    </div>
+    <div class="case">
+      <h2>automatic minimum overflow</h2>
+      <section id="minimum" class="grid">
+        <div id="minimum-1" class="item"></div>
+        <div id="minimum-2" class="item"></div>
+      </section>
+    </div>
+    <script>
+      const ids = ["cycle", "mixed", "overflow", "zero", "zero-factor", "subunit", "minimum"];
+      const observe = (id) => {
+        const root = document.getElementById(id);
+        const rootRect = root.getBoundingClientRect();
+        const style = getComputedStyle(root);
+        return {
+          id,
+          autoRows: style.gridAutoRows,
+          usedRows: style.gridTemplateRows,
+          rowGap: style.rowGap,
+          root: [rootRect.x, rootRect.y, rootRect.width, rootRect.height],
+          items: [...root.children].map((item) => {
+            const rect = item.getBoundingClientRect();
+            return {
+              id: item.id,
+              frame: [
+                rect.x - rootRect.x,
+                rect.y - rootRect.y,
+                rect.width,
+                rect.height,
+              ],
+            };
+          }),
+        };
+      };
+      window.observations = ids.map(observe);
+    </script>
+  </body>
+</html>
