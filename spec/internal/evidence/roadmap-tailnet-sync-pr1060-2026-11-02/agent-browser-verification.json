@@ -70,5 +70,6 @@
     { "label": "Android API 37 ARM64 AVD", "naturalWidth": 1080, "naturalHeight": 2400, "loaded": true },
     { "label": "iPhone 17 Pro iOS 26.2 Simulator", "naturalWidth": 1206, "naturalHeight": 2622, "loaded": true }
   ],
-  "browserCloseAllVerified": false
+  "browserCloseAllVerified": true,
+  "agentBrowserProcessCountAfterClose": 0
 }
