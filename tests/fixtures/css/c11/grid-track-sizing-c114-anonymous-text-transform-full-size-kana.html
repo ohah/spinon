@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>C11.4 full-size-kana intrinsic comparison</title>
+    <style>
+      @font-face {
+        font-family: "Spinon Noto Sans KR";
+        src: url("../../resources/c15/c15-3/NotoSansKR-VF.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 100 900;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 24px;
+        color: #f3f4f6;
+        background: #101820;
+        font: 14px/1.5 "Spinon Noto Sans KR", sans-serif;
+      }
+      h1 { margin: 0 0 8px; font-size: 20px; }
+      p { margin: 0 0 20px; color: #b8c3cc; }
+      .case {
+        display: grid;
+        grid-template-columns: 120px minmax(180px, max-content) minmax(180px, max-content);
+        gap: 12px;
+        align-items: start;
+        margin: 0 0 10px;
+      }
+      .label { color: #f0c674; }
+      .cell {
+        min-height: 42px;
+        padding: 8px;
+        border: 1px solid #53616d;
+        background: #18232d;
+        white-space: nowrap;
+        font-size: 20px;
+        line-height: 24px;
+        word-break: normal;
+        line-break: strict;
+      }
+      .target { text-transform: full-size-kana; }
+      .expected { background: #233329; }
+      code { font: 12px/1.4 ui-monospace, monospace; }
+      .measurements {
+        position: absolute;
+        top: 0;
+        left: -10000px;
+        white-space: nowrap;
+        font-size: 10px;
+        line-height: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>C11.4 text-transform: full-size-kana</h1>
+    <p>Chrome 156 literal candidates. The CSS target declaration may be unsupported.</p>
+    <div class="case" data-case="hiragana">
+      <span class="label">Hiragana</span>
+      <span class="cell target" id="hiragana-target">ぁぃぅぇぉっゃゅょゎ</span>
+      <span class="cell expected" id="hiragana-literal">あいうえおつやゆよわ</span>
+    </div>
+    <div class="case" data-case="katakana">
+      <span class="label">Katakana</span>
+      <span class="cell target" id="katakana-target">ァィゥェォッャュョヮ</span>
+      <span class="cell expected" id="katakana-literal">アイウエオツヤユヨワ</span>
+    </div>
+    <div class="case" data-case="halfwidth-katakana">
+      <span class="label">Halfwidth</span>
+      <span class="cell target" id="halfwidth-target">ｧｨｩｪｫｯｬｭｮ</span>
+      <span class="cell expected" id="halfwidth-literal">ｱｲｳｴｵﾂﾔﾕﾖ</span>
+    </div>
+    <div class="case" data-case="pass-through">
+      <span class="label">Unmapped controls</span>
+      <span class="cell target" id="passthrough-target">あカンABC 12</span>
+      <span class="cell expected" id="passthrough-literal">あカンABC 12</span>
+    </div>
+    <div class="measurements" aria-hidden="true">
+      <span data-measure="hiragana-small">ぁぃぅぇぉっゃゅょゎ</span>
+      <span data-measure="hiragana-full">あいうえおつやゆよわ</span>
+      <span data-measure="katakana-small">ァィゥェォッャュョヮ</span>
+      <span data-measure="katakana-full">アイウエオツヤユヨワ</span>
+      <span data-measure="halfwidth-small">ｧｨｩｪｫｯｬｭｮ</span>
+      <span data-measure="halfwidth-full">ｱｲｳｴｵﾂﾔﾕﾖ</span>
+    </div>
+  </body>
+</html>

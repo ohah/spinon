@@ -1,0 +1,246 @@
+{
+  "atRiskNotice": "The following features are at-risk, and may be dropped during the CR period:\n\nthe full-width value of text-transform\nthe full-size-kana value of text-transform\nthe <length> values of the tab-size property\nthe text-justify property\nthe hanging-punctuation property\nWriting-system specific adjustments to line-breaking\nTrimming trailing Ogham space marks\n\n“At-risk” is a W3C Process term-of-art, and does not necessarily imply that the feature is in danger of being dropped or delayed. It means that the WG believes the feature may have difficulty being interoperably implemented in a timely manner, and marking it as such allows the WG to drop the feature if necessary when transitioning to the Proposed Rec stage, without having to publish a new Candidate Rec without the feature first.",
+  "rowCount": 59,
+  "rows": [
+    [
+      "Small",
+      "Full-size"
+    ],
+    [
+      "ぁ U+3041",
+      "あ U+3042"
+    ],
+    [
+      "ぃ U+3043",
+      "い U+3044"
+    ],
+    [
+      "ぅ U+3045",
+      "う U+3046"
+    ],
+    [
+      "ぇ U+3047",
+      "え U+3048"
+    ],
+    [
+      "ぉ U+3049",
+      "お U+304A"
+    ],
+    [
+      "ゕ U+3095",
+      "か U+304B"
+    ],
+    [
+      "ゖ U+3096",
+      "け U+3051"
+    ],
+    [
+      "𛄲 U+1B132",
+      "こ U+3053"
+    ],
+    [
+      "っ U+3063",
+      "つ U+3064"
+    ],
+    [
+      "ゃ U+3083",
+      "や U+3084"
+    ],
+    [
+      "ゅ U+3085",
+      "ゆ U+3086"
+    ],
+    [
+      "ょ U+3087",
+      "よ U+3088"
+    ],
+    [
+      "ゎ U+308E",
+      "わ U+308F"
+    ],
+    [
+      "𛅐 U+1B150",
+      "ゐ U+3090"
+    ],
+    [
+      "𛅑 U+1B151",
+      "ゑ U+3091"
+    ],
+    [
+      "𛅒 U+1B152",
+      "を U+3092"
+    ],
+    [
+      "ァ U+30A1",
+      "ア U+30A2"
+    ],
+    [
+      "ィ U+30A3",
+      "イ U+30A4"
+    ],
+    [
+      "ゥ U+30A5",
+      "ウ U+30A6"
+    ],
+    [
+      "ェ U+30A7",
+      "エ U+30A8"
+    ],
+    [
+      "ォ U+30A9",
+      "オ U+30AA"
+    ],
+    [
+      "ヵ U+30F5",
+      "カ U+30AB"
+    ],
+    [
+      "ㇰ U+31F0",
+      "ク U+30AF"
+    ],
+    [
+      "ヶ U+30F6",
+      "ケ U+30B1"
+    ],
+    [
+      "𛅕 U+1B155",
+      "コ U+30B3"
+    ],
+    [
+      "ㇱ U+31F1",
+      "シ U+30B7"
+    ],
+    [
+      "ㇲ U+31F2",
+      "ス U+30B9"
+    ],
+    [
+      "ッ U+30C3",
+      "ツ U+30C4"
+    ],
+    [
+      "ㇳ U+31F3",
+      "ト U+30C8"
+    ],
+    [
+      "ㇴ U+31F4",
+      "ヌ U+30CC"
+    ],
+    [
+      "ㇵ U+31F5",
+      "ハ U+30CF"
+    ],
+    [
+      "ㇶ U+31F6",
+      "ヒ U+30D2"
+    ],
+    [
+      "ㇷ U+31F7",
+      "フ U+30D5"
+    ],
+    [
+      "ㇸ U+31F8",
+      "ヘ U+30D8"
+    ],
+    [
+      "ㇹ U+31F9",
+      "ホ U+30DB"
+    ],
+    [
+      "ㇺ U+31FA",
+      "ム U+30E0"
+    ],
+    [
+      "ャ U+30E3",
+      "ヤ U+30E4"
+    ],
+    [
+      "ュ U+30E5",
+      "ユ U+30E6"
+    ],
+    [
+      "ョ U+30E7",
+      "ヨ U+30E8"
+    ],
+    [
+      "ㇻ U+31FB",
+      "ラ U+30E9"
+    ],
+    [
+      "ㇼ U+31FC",
+      "リ U+30EA"
+    ],
+    [
+      "ㇽ U+31FD",
+      "ル U+30EB"
+    ],
+    [
+      "ㇾ U+31FE",
+      "レ U+30EC"
+    ],
+    [
+      "ㇿ U+31FF",
+      "ロ U+30ED"
+    ],
+    [
+      "ヮ U+30EE",
+      "ワ U+30EF"
+    ],
+    [
+      "𛅤 U+1B164",
+      "ヰ U+30F0"
+    ],
+    [
+      "𛅥 U+1B165",
+      "ヱ U+30F1"
+    ],
+    [
+      "𛅦 U+1B166",
+      "ヲ U+30F2"
+    ],
+    [
+      "𛅧 U+1B167",
+      "ン U+30F3"
+    ],
+    [
+      "ｧ U+FF67",
+      "ｱ U+FF71"
+    ],
+    [
+      "ｨ U+FF68",
+      "ｲ U+FF72"
+    ],
+    [
+      "ｩ U+FF69",
+      "ｳ U+FF73"
+    ],
+    [
+      "ｪ U+FF6A",
+      "ｴ U+FF74"
+    ],
+    [
+      "ｫ U+FF6B",
+      "ｵ U+FF75"
+    ],
+    [
+      "ｯ U+FF6F",
+      "ﾂ U+FF82"
+    ],
+    [
+      "ｬ U+FF6C",
+      "ﾔ U+FF94"
+    ],
+    [
+      "ｭ U+FF6D",
+      "ﾕ U+FF95"
+    ],
+    [
+      "ｮ U+FF6E",
+      "ﾖ U+FF96"
+    ]
+  ],
+  "source": "https://www.w3.org/TR/css-text-3/#small-kana",
+  "tableCaption": "Small Kana Map to Full-size Kana",
+  "title": "CSS Text Module Level 3",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}

@@ -1,0 +1,358 @@
+{
+  "source": "https://www.w3.org/TR/css-text-3/#small-kana",
+  "title": "CSS Text Module Level 3",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "unicodeTable": "CSS Text Level 3 Appendix G, Unicode 15.0",
+  "atRiskNotice": "The following features are at-risk, and may be dropped during the CR period:\n\nthe full-width value of text-transform\nthe full-size-kana value of text-transform\nthe <length> values of the tab-size property\nthe text-justify property\nthe hanging-punctuation property\nWriting-system specific adjustments to line-breaking\nTrimming trailing Ogham space marks\n\n“At-risk” is a W3C Process term-of-art, and does not necessarily imply that the feature is in danger of being dropped or delayed. It means that the WG believes the feature may have difficulty being interoperably implemented in a timely manner, and marking it as such allows the WG to drop the feature if necessary when transitioning to the Proposed Rec stage, without having to publish a new Candidate Rec without the feature first.",
+  "mappingCount": 58,
+  "mappings": [
+    {
+      "from": "ぁ",
+      "fromCodePoint": "U+3041",
+      "to": "あ",
+      "toCodePoint": "U+3042"
+    },
+    {
+      "from": "ぃ",
+      "fromCodePoint": "U+3043",
+      "to": "い",
+      "toCodePoint": "U+3044"
+    },
+    {
+      "from": "ぅ",
+      "fromCodePoint": "U+3045",
+      "to": "う",
+      "toCodePoint": "U+3046"
+    },
+    {
+      "from": "ぇ",
+      "fromCodePoint": "U+3047",
+      "to": "え",
+      "toCodePoint": "U+3048"
+    },
+    {
+      "from": "ぉ",
+      "fromCodePoint": "U+3049",
+      "to": "お",
+      "toCodePoint": "U+304A"
+    },
+    {
+      "from": "ゕ",
+      "fromCodePoint": "U+3095",
+      "to": "か",
+      "toCodePoint": "U+304B"
+    },
+    {
+      "from": "ゖ",
+      "fromCodePoint": "U+3096",
+      "to": "け",
+      "toCodePoint": "U+3051"
+    },
+    {
+      "from": "𛄲",
+      "fromCodePoint": "U+1B132",
+      "to": "こ",
+      "toCodePoint": "U+3053"
+    },
+    {
+      "from": "っ",
+      "fromCodePoint": "U+3063",
+      "to": "つ",
+      "toCodePoint": "U+3064"
+    },
+    {
+      "from": "ゃ",
+      "fromCodePoint": "U+3083",
+      "to": "や",
+      "toCodePoint": "U+3084"
+    },
+    {
+      "from": "ゅ",
+      "fromCodePoint": "U+3085",
+      "to": "ゆ",
+      "toCodePoint": "U+3086"
+    },
+    {
+      "from": "ょ",
+      "fromCodePoint": "U+3087",
+      "to": "よ",
+      "toCodePoint": "U+3088"
+    },
+    {
+      "from": "ゎ",
+      "fromCodePoint": "U+308E",
+      "to": "わ",
+      "toCodePoint": "U+308F"
+    },
+    {
+      "from": "𛅐",
+      "fromCodePoint": "U+1B150",
+      "to": "ゐ",
+      "toCodePoint": "U+3090"
+    },
+    {
+      "from": "𛅑",
+      "fromCodePoint": "U+1B151",
+      "to": "ゑ",
+      "toCodePoint": "U+3091"
+    },
+    {
+      "from": "𛅒",
+      "fromCodePoint": "U+1B152",
+      "to": "を",
+      "toCodePoint": "U+3092"
+    },
+    {
+      "from": "ァ",
+      "fromCodePoint": "U+30A1",
+      "to": "ア",
+      "toCodePoint": "U+30A2"
+    },
+    {
+      "from": "ィ",
+      "fromCodePoint": "U+30A3",
+      "to": "イ",
+      "toCodePoint": "U+30A4"
+    },
+    {
+      "from": "ゥ",
+      "fromCodePoint": "U+30A5",
+      "to": "ウ",
+      "toCodePoint": "U+30A6"
+    },
+    {
+      "from": "ェ",
+      "fromCodePoint": "U+30A7",
+      "to": "エ",
+      "toCodePoint": "U+30A8"
+    },
+    {
+      "from": "ォ",
+      "fromCodePoint": "U+30A9",
+      "to": "オ",
+      "toCodePoint": "U+30AA"
+    },
+    {
+      "from": "ヵ",
+      "fromCodePoint": "U+30F5",
+      "to": "カ",
+      "toCodePoint": "U+30AB"
+    },
+    {
+      "from": "ㇰ",
+      "fromCodePoint": "U+31F0",
+      "to": "ク",
+      "toCodePoint": "U+30AF"
+    },
+    {
+      "from": "ヶ",
+      "fromCodePoint": "U+30F6",
+      "to": "ケ",
+      "toCodePoint": "U+30B1"
+    },
+    {
+      "from": "𛅕",
+      "fromCodePoint": "U+1B155",
+      "to": "コ",
+      "toCodePoint": "U+30B3"
+    },
+    {
+      "from": "ㇱ",
+      "fromCodePoint": "U+31F1",
+      "to": "シ",
+      "toCodePoint": "U+30B7"
+    },
+    {
+      "from": "ㇲ",
+      "fromCodePoint": "U+31F2",
+      "to": "ス",
+      "toCodePoint": "U+30B9"
+    },
+    {
+      "from": "ッ",
+      "fromCodePoint": "U+30C3",
+      "to": "ツ",
+      "toCodePoint": "U+30C4"
+    },
+    {
+      "from": "ㇳ",
+      "fromCodePoint": "U+31F3",
+      "to": "ト",
+      "toCodePoint": "U+30C8"
+    },
+    {
+      "from": "ㇴ",
+      "fromCodePoint": "U+31F4",
+      "to": "ヌ",
+      "toCodePoint": "U+30CC"
+    },
+    {
+      "from": "ㇵ",
+      "fromCodePoint": "U+31F5",
+      "to": "ハ",
+      "toCodePoint": "U+30CF"
+    },
+    {
+      "from": "ㇶ",
+      "fromCodePoint": "U+31F6",
+      "to": "ヒ",
+      "toCodePoint": "U+30D2"
+    },
+    {
+      "from": "ㇷ",
+      "fromCodePoint": "U+31F7",
+      "to": "フ",
+      "toCodePoint": "U+30D5"
+    },
+    {
+      "from": "ㇸ",
+      "fromCodePoint": "U+31F8",
+      "to": "ヘ",
+      "toCodePoint": "U+30D8"
+    },
+    {
+      "from": "ㇹ",
+      "fromCodePoint": "U+31F9",
+      "to": "ホ",
+      "toCodePoint": "U+30DB"
+    },
+    {
+      "from": "ㇺ",
+      "fromCodePoint": "U+31FA",
+      "to": "ム",
+      "toCodePoint": "U+30E0"
+    },
+    {
+      "from": "ャ",
+      "fromCodePoint": "U+30E3",
+      "to": "ヤ",
+      "toCodePoint": "U+30E4"
+    },
+    {
+      "from": "ュ",
+      "fromCodePoint": "U+30E5",
+      "to": "ユ",
+      "toCodePoint": "U+30E6"
+    },
+    {
+      "from": "ョ",
+      "fromCodePoint": "U+30E7",
+      "to": "ヨ",
+      "toCodePoint": "U+30E8"
+    },
+    {
+      "from": "ㇻ",
+      "fromCodePoint": "U+31FB",
+      "to": "ラ",
+      "toCodePoint": "U+30E9"
+    },
+    {
+      "from": "ㇼ",
+      "fromCodePoint": "U+31FC",
+      "to": "リ",
+      "toCodePoint": "U+30EA"
+    },
+    {
+      "from": "ㇽ",
+      "fromCodePoint": "U+31FD",
+      "to": "ル",
+      "toCodePoint": "U+30EB"
+    },
+    {
+      "from": "ㇾ",
+      "fromCodePoint": "U+31FE",
+      "to": "レ",
+      "toCodePoint": "U+30EC"
+    },
+    {
+      "from": "ㇿ",
+      "fromCodePoint": "U+31FF",
+      "to": "ロ",
+      "toCodePoint": "U+30ED"
+    },
+    {
+      "from": "ヮ",
+      "fromCodePoint": "U+30EE",
+      "to": "ワ",
+      "toCodePoint": "U+30EF"
+    },
+    {
+      "from": "𛅤",
+      "fromCodePoint": "U+1B164",
+      "to": "ヰ",
+      "toCodePoint": "U+30F0"
+    },
+    {
+      "from": "𛅥",
+      "fromCodePoint": "U+1B165",
+      "to": "ヱ",
+      "toCodePoint": "U+30F1"
+    },
+    {
+      "from": "𛅦",
+      "fromCodePoint": "U+1B166",
+      "to": "ヲ",
+      "toCodePoint": "U+30F2"
+    },
+    {
+      "from": "𛅧",
+      "fromCodePoint": "U+1B167",
+      "to": "ン",
+      "toCodePoint": "U+30F3"
+    },
+    {
+      "from": "ｧ",
+      "fromCodePoint": "U+FF67",
+      "to": "ｱ",
+      "toCodePoint": "U+FF71"
+    },
+    {
+      "from": "ｨ",
+      "fromCodePoint": "U+FF68",
+      "to": "ｲ",
+      "toCodePoint": "U+FF72"
+    },
+    {
+      "from": "ｩ",
+      "fromCodePoint": "U+FF69",
+      "to": "ｳ",
+      "toCodePoint": "U+FF73"
+    },
+    {
+      "from": "ｪ",
+      "fromCodePoint": "U+FF6A",
+      "to": "ｴ",
+      "toCodePoint": "U+FF74"
+    },
+    {
+      "from": "ｫ",
+      "fromCodePoint": "U+FF6B",
+      "to": "ｵ",
+      "toCodePoint": "U+FF75"
+    },
+    {
+      "from": "ｯ",
+      "fromCodePoint": "U+FF6F",
+      "to": "ﾂ",
+      "toCodePoint": "U+FF82"
+    },
+    {
+      "from": "ｬ",
+      "fromCodePoint": "U+FF6C",
+      "to": "ﾔ",
+      "toCodePoint": "U+FF94"
+    },
+    {
+      "from": "ｭ",
+      "fromCodePoint": "U+FF6D",
+      "to": "ﾕ",
+      "toCodePoint": "U+FF95"
+    },
+    {
+      "from": "ｮ",
+      "fromCodePoint": "U+FF6E",
+      "to": "ﾖ",
+      "toCodePoint": "U+FF96"
+    }
+  ]
+}

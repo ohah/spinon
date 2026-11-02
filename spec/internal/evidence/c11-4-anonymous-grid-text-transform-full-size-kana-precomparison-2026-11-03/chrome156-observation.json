@@ -1,0 +1,113 @@
+{
+  "cssSupportsFullSizeKana": false,
+  "font": {
+    "check": true,
+    "status": "loaded"
+  },
+  "rows": [
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "hiragana-target",
+      "sourceText": "ぁぃぅぇぉっゃゅょゎ",
+      "width": 218
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "hiragana-literal",
+      "sourceText": "あいうえおつやゆよわ",
+      "width": 218
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "katakana-target",
+      "sourceText": "ァィゥェォッャュョヮ",
+      "width": 218
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "katakana-literal",
+      "sourceText": "アイウエオツヤユヨワ",
+      "width": 217
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "halfwidth-target",
+      "sourceText": "ｧｨｩｪｫｯｬｭｮ",
+      "width": 180
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "halfwidth-literal",
+      "sourceText": "ｱｲｳｴｵﾂﾔﾕﾖ",
+      "width": 180
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "passthrough-target",
+      "sourceText": "あカンABC 12",
+      "width": 180
+    },
+    {
+      "computedTextTransform": "none",
+      "fontFamily": "\"Spinon Noto Sans KR\", sans-serif",
+      "height": 42,
+      "id": "passthrough-literal",
+      "sourceText": "あカンABC 12",
+      "width": 180
+    }
+  ],
+  "source": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/grid-track-sizing-c114-anonymous-text-transform-full-size-kana.html",
+  "tenPxLiteralAdvances": [
+    {
+      "id": "hiragana-small",
+      "text": "ぁぃぅぇぉっゃゅょゎ",
+      "width": 100
+    },
+    {
+      "id": "hiragana-full",
+      "text": "あいうえおつやゆよわ",
+      "width": 100
+    },
+    {
+      "id": "katakana-small",
+      "text": "ァィゥェォッャュョヮ",
+      "width": 100
+    },
+    {
+      "id": "katakana-full",
+      "text": "アイウエオツヤユヨワ",
+      "width": 99.5
+    },
+    {
+      "id": "halfwidth-small",
+      "text": "ｧｨｩｪｫｯｬｭｮ",
+      "width": 45
+    },
+    {
+      "id": "halfwidth-full",
+      "text": "ｱｲｳｴｵﾂﾔﾕﾖ",
+      "width": 45
+    }
+  ],
+  "title": "C11.4 full-size-kana intrinsic comparison",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 900,
+    "width": 1280
+  }
+}
