@@ -2,7 +2,7 @@
   "browser_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
   "device_pixel_ratio": 1,
   "fixture": "tests/fixtures/css/c11/root-html-grid-auto-row-list-precomparison.html",
-  "fixture_sha256": "63a5aad195c91531f1b79d15f5caf3104f93897c3125f9c0fb9aa1f415270e4f",
+  "fixture_sha256": "963d5b05c6c64c8f64638e3cc6d4268cf364e9c52c8d595d0ca973814e77d857",
   "computed": {
     "grid_auto_rows": "15px 25px",
     "grid_template_rows": "20px 15px 25px 15px",
@@ -20,6 +20,6 @@
     {"id": "item7", "x": 0, "y": 75, "width": 40, "height": 15},
     {"id": "item8", "x": 45, "y": 75, "width": 55, "height": 15}
   ],
-  "screenshot": "chrome156-cycle.png",
+  "screenshot": "chrome156-cycle-pass02.png",
   "screenshot_sha256": "38fb232e47890531df3c9cdf4d153d1d78746258521e749968226f1e26b6133d"
 }

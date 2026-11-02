@@ -5,6 +5,9 @@ mod composition;
 
 const SOURCE: &str =
     include_str!("../../../../../tests/fixtures/css/c11/root-html-grid-implicit-rows-runtime.html");
+const AUTO_ROW_LIST_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-auto-row-list-precomparison.html"
+);
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
@@ -36,6 +39,32 @@ fn frame_for_paint(
     [frame.x(), frame.y(), frame.width(), frame.height()]
 }
 
+fn frames_for_paint(
+    scene: &spinon_render::RuntimeRenderSnapshot,
+    expected: spinon_render::OpaqueCssSrgb,
+) -> Vec<[f32; 4]> {
+    let mut frames = scene
+        .boxes()
+        .iter()
+        .filter(|render_box| {
+            matches!(
+                render_box.paint(),
+                spinon_render::RuntimePaint::Opaque(color) if color == expected
+            )
+        })
+        .map(|render_box| {
+            let frame = render_box.frame_css_px();
+            [frame.x(), frame.y(), frame.width(), frame.height()]
+        })
+        .collect::<Vec<_>>();
+    frames.sort_by(|left, right| {
+        left[1]
+            .total_cmp(&right[1])
+            .then(left[0].total_cmp(&right[0]))
+    });
+    frames
+}
+
 fn assert_frames(
     scene: &spinon_render::RuntimeRenderSnapshot,
     expected: &[(spinon_render::OpaqueCssSrgb, [f32; 4])],
@@ -57,6 +86,18 @@ fn ready_scene(
     session: &RuntimeSession,
     layout: &crate::session::RuntimeLayoutSnapshot,
 ) -> spinon_render::RuntimeRenderSnapshot {
+    ready_scene_with_auto_rows(
+        session,
+        layout,
+        spinon_style::ComputedCssGridAutoRows::LengthPx(15.0),
+    )
+}
+
+fn ready_scene_with_auto_rows(
+    session: &RuntimeSession,
+    layout: &crate::session::RuntimeLayoutSnapshot,
+    expected_auto_rows: spinon_style::ComputedCssGridAutoRows,
+) -> spinon_render::RuntimeRenderSnapshot {
     let cascade = session.ua_cascade_snapshot();
     let computed_auto_rows = cascade
         .completed
@@ -77,8 +118,10 @@ fn ready_scene(
     assert_eq!(
         layout.state,
         crate::session::RuntimeLayoutState::Ready,
-        "layout error={:?}; computed auto rows={computed_auto_rows:?}",
-        layout.error
+        "layout error={:?}; cascade state={:?}, cascade error={:?}; computed auto rows={computed_auto_rows:?}",
+        layout.error,
+        cascade.state,
+        cascade.error
     );
     let completed = layout.completed.as_ref().expect("layout should complete");
     let scene = completed
@@ -94,10 +137,7 @@ fn ready_scene(
         .iter()
         .find_map(|style| style.grid_layout.as_ref())
         .expect("computed Root HTML grid styles should remain observable");
-    assert_eq!(
-        projected_grid.auto_rows,
-        spinon_style::ComputedCssGridAutoRows::LengthPx(15.0)
-    );
+    assert_eq!(projected_grid.auto_rows, expected_auto_rows);
     scene
 }
 
@@ -223,6 +263,93 @@ fn c11_1_root_html_default_runtime_handles_zero_and_repeated_fixed_implicit_rows
 }
 
 #[test]
+fn c11_1_root_html_default_runtime_cycles_fixed_px_implicit_row_lists() {
+    let (session, layout) = run(AUTO_ROW_LIST_SOURCE);
+    let scene = ready_scene_with_auto_rows(
+        &session,
+        &layout,
+        spinon_style::ComputedCssGridAutoRows::TrackList(vec![
+            spinon_style::ComputedCssGridTrackSize::LengthPx(15.0),
+            spinon_style::ComputedCssGridTrackSize::LengthPx(25.0),
+        ]),
+    );
+    let root = spinon_render::OpaqueCssSrgb::new(221, 221, 221);
+    assert_eq!(frame_for_paint(&scene, root), [0.0, 0.0, 100.0, 100.0]);
+    let item_color = spinon_render::OpaqueCssSrgb::new(74, 144, 226);
+    assert_eq!(
+        frames_for_paint(&scene, item_color),
+        vec![
+            [0.0, 0.0, 40.0, 20.0],
+            [45.0, 0.0, 55.0, 20.0],
+            [0.0, 25.0, 40.0, 15.0],
+            [45.0, 25.0, 55.0, 15.0],
+            [0.0, 45.0, 40.0, 25.0],
+            [45.0, 45.0, 55.0, 25.0],
+            [0.0, 75.0, 40.0, 15.0],
+            [45.0, 75.0, 55.0, 15.0],
+        ]
+    );
+}
+
+#[test]
+fn c11_1_root_html_default_runtime_cycles_fixed_px_lists_for_one_two_and_three_implicit_rows() {
+    let item_color = spinon_render::OpaqueCssSrgb::new(74, 144, 226);
+    let auto_rows = spinon_style::ComputedCssGridAutoRows::TrackList(vec![
+        spinon_style::ComputedCssGridTrackSize::LengthPx(15.0),
+        spinon_style::ComputedCssGridTrackSize::LengthPx(25.0),
+    ]);
+    let cases: [(usize, &[[f32; 4]]); 3] = [
+        (
+            3,
+            &[
+                [0.0, 0.0, 40.0, 20.0],
+                [45.0, 0.0, 55.0, 20.0],
+                [0.0, 25.0, 40.0, 15.0],
+            ],
+        ),
+        (
+            5,
+            &[
+                [0.0, 0.0, 40.0, 20.0],
+                [45.0, 0.0, 55.0, 20.0],
+                [0.0, 25.0, 40.0, 15.0],
+                [45.0, 25.0, 55.0, 15.0],
+                [0.0, 45.0, 40.0, 25.0],
+            ],
+        ),
+        (
+            7,
+            &[
+                [0.0, 0.0, 40.0, 20.0],
+                [45.0, 0.0, 55.0, 20.0],
+                [0.0, 25.0, 40.0, 15.0],
+                [45.0, 25.0, 55.0, 15.0],
+                [0.0, 45.0, 40.0, 25.0],
+                [45.0, 45.0, 55.0, 25.0],
+                [0.0, 75.0, 40.0, 15.0],
+            ],
+        ),
+    ];
+
+    for (item_count, expected_frames) in cases {
+        let mut source = AUTO_ROW_LIST_SOURCE.to_owned();
+        for index in (item_count + 1)..=8 {
+            let item = format!("      <div class=\"item\" id=\"item{index}\"></div>\n");
+            assert!(source.contains(&item), "fixture item {index} should exist");
+            source = source.replacen(&item, "", 1);
+        }
+
+        let (session, layout) = run(&source);
+        let scene = ready_scene_with_auto_rows(&session, &layout, auto_rows.clone());
+        assert_eq!(
+            frames_for_paint(&scene, item_color),
+            expected_frames,
+            "item_count={item_count}"
+        );
+    }
+}
+
+#[test]
 fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations_atomically() {
     let cases = [
         (
@@ -247,8 +374,12 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             ),
         ),
         (
-            "multiple implicit rows",
-            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 15px 20px;"),
+            "percentage in implicit row list",
+            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 15px 50%;"),
+        ),
+        (
+            "fraction in implicit row list",
+            SOURCE.replace("grid-auto-rows: 15px;", "grid-auto-rows: 15px 1fr;"),
         ),
         (
             "percentage implicit row",
@@ -306,6 +437,13 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             ),
         ),
         (
+            "fixed implicit row list with non-default alignment",
+            AUTO_ROW_LIST_SOURCE.replace(
+                "grid-auto-rows: 15px 25px;",
+                "grid-auto-rows: 15px 25px;\n        align-items: start;",
+            ),
+        ),
+        (
             "clipped overflow",
             SOURCE.replace(
                 "grid-auto-rows: 15px;",
@@ -342,6 +480,7 @@ fn c11_1_root_html_default_runtime_rejects_unsupported_implicit_row_combinations
             "visible text item" | "nested item" => "layout_failed",
             "nonzero order"
             | "non-default alignment"
+            | "fixed implicit row list with non-default alignment"
             | "intrinsic explicit track"
             | "auto-repeat explicit track" => "cascade_failed",
             _ => "unsupported_computed_value",

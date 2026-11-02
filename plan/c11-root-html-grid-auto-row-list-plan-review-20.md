@@ -13,7 +13,7 @@
 9. **0px track이 거부되거나 일반 auto track으로 오인될 위험 — PASS.** 0을 유효 경계값으로 두고 별도 regression을 계획했다.
 10. **explicit row를 pattern cycle에 포함할 위험 — PASS.** 예제의 explicit `[20px]`과 implicit `[15,25,15]`를 분리해 검산했다.
 11. **row-gap이 track base로 합산될 위험 — PASS.** 3개의 5px gutter를 row-start 계산에서 별도로 더하고 trace에서도 분리하도록 했다.
-12. **align-content가 남은 공간을 row pattern에 분배할 위험 — PASS.** definite 100px root과 `align-content:start`를 oracle에 고정해 leftover 10px를 분명히 했다.
+12. **align-content가 남은 공간을 row pattern에 분배할 위험 — PASS.** definite 100px root의 default `normal`을 사용하고 tracks는 모두 fixed라 남은 10px가 auto row pattern에 배분되지 않음을 명시했다.
 13. **item size를 track size로 혼동할 위험 — PASS.** 각 DOM row의 item 높이를 expected used row에 맞춰 고정하고 row track 자체도 관측한다.
 14. **implicit track 확장 자원 한도 초과 — PASS.** track quota, checked arithmetic, reserve failure와 publication atomicity를 계획에 포함했다.
 15. **hidden item이 row 개수에 포함될 위험 — PASS.** `display:none` occupancy regression을 명시했다.

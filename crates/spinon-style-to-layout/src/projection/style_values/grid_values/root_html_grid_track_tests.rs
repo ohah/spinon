@@ -141,6 +141,114 @@ fn root_html_profile_projects_one_fixed_implicit_row_size_in_its_own_mode() {
 }
 
 #[test]
+fn root_html_profile_projects_fixed_px_implicit_row_track_lists_in_its_own_mode() {
+    let node = NodeId::new(11_190).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(55.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    grid.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(15.0),
+        ComputedCssGridTrackSize::LengthPx(25.0),
+    ]);
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlImplicitRowsV1
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(25.0),
+        ])
+    );
+    assert_eq!(projected.columns.len(), 2);
+    assert_eq!(projected.rows, vec![GridTrackSize::LengthPx(20.0)]);
+}
+
+#[test]
+fn root_html_profile_rejects_empty_invalid_or_non_px_implicit_row_lists() {
+    let node = NodeId::new(11_191).unwrap();
+    for auto_rows in [
+        ComputedCssGridAutoRows::TrackList(Vec::new()),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::LengthPx(-1.0)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::LengthPx(f32::NAN)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::LengthPx(f32::INFINITY)]),
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Percentage(0.5)]),
+        ComputedCssGridAutoRows::TrackList(vec![
+            ComputedCssGridTrackSize::LengthPx(15.0),
+            ComputedCssGridTrackSize::Fraction(1.0),
+        ]),
+    ] {
+        let mut grid = grid(
+            vec![
+                ComputedCssGridTrackSize::LengthPx(40.0),
+                ComputedCssGridTrackSize::LengthPx(55.0),
+            ],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        grid.auto_rows = auto_rows;
+        let error = project_grid_layout(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        )
+        .expect_err("unsupported Root HTML implicit-row lists must fail closed");
+        assert!(matches!(
+            error,
+            crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-auto-rows",
+                ..
+            } if error_node == node
+        ));
+    }
+}
+
+#[test]
+fn root_html_profile_rejects_oversized_implicit_row_lists() {
+    let node = NodeId::new(11_193).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(55.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    grid.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![
+            ComputedCssGridTrackSize::LengthPx(1.0);
+            spinon_layout::GRID_MAX_TRACKS + 1
+        ]);
+
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect_err("auto-row lists above the shared Grid track limit must fail closed");
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        } if error_node == node
+    ));
+}
+
+#[test]
 fn root_html_named_area_profile_rejects_fixed_implicit_rows() {
     let node = NodeId::new(11_189).unwrap();
     let mut grid = grid(
@@ -172,6 +280,51 @@ fn root_html_named_area_profile_rejects_fixed_implicit_rows() {
         ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
     .expect_err("fixed implicit rows must not widen the named-area profile");
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        } if error_node == node
+    ));
+}
+
+#[test]
+fn root_html_named_area_profile_rejects_fixed_implicit_row_track_lists() {
+    let node = NodeId::new(11_192).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(40.0),
+            ComputedCssGridTrackSize::LengthPx(80.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(50.0),
+        ],
+    );
+    grid.template_areas = Some(ComputedCssGridTemplateAreas {
+        rows: 2,
+        columns: 2,
+        areas: vec![ComputedCssGridArea {
+            name: "header".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 2,
+        }],
+    });
+    grid.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(15.0),
+        ComputedCssGridTrackSize::LengthPx(25.0),
+    ]);
+
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect_err("fixed implicit-row lists must not widen the named-area profile");
     assert!(matches!(
         error,
         crate::StyleLayoutError::UnsupportedComputedValue {

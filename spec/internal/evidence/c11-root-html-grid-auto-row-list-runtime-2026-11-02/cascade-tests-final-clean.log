@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 3 tests
+test stylo_dom::cascade::runtime_layout_tests::root_html_profile_exports_inline_background_color_as_typed_paint ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_only_fixed_px_auto_row_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_non_px_auto_row_lists_unsupported ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 260 filtered out; finished in 0.03s

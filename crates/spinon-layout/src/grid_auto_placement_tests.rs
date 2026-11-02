@@ -357,6 +357,17 @@ fn actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_wo
             GridPlacementInput::Line(2),
         ),
     );
+    let mut fixed_row_list = sparse_grid(1, 1, 2);
+    let fixed_row_list_container = fixed_row_list.grid_containers.get_mut(&id(1)).unwrap();
+    fixed_row_list_container.auto_rows = GridAutoRows::TrackList(vec![
+        GridTrackSize::LengthPx(15.0),
+        GridTrackSize::LengthPx(25.0),
+    ]);
+    fixed_row_list_container.placement_mode = GridPlacementMode::RootHtmlImplicitRowsV1;
+    for node in fixed_row_list.nodes.iter_mut().skip(1) {
+        node.style.display = LayoutDisplay::Block;
+    }
+
     let cases = vec![
         (
             GridReservationSite::VisibleItemList,
@@ -373,6 +384,12 @@ fn actual_grid_vec_reservation_failures_return_errors_and_recover_on_the_same_wo
         (
             GridReservationSite::ExpandedRows,
             sparse_grid(1, 1, 2),
+            id(1),
+            "grid-template-rows",
+        ),
+        (
+            GridReservationSite::ExpandedRows,
+            fixed_row_list,
             id(1),
             "grid-template-rows",
         ),

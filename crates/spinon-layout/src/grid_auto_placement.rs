@@ -213,18 +213,49 @@ pub(super) fn normalize_sparse_grid_container(
 
     if max_rows > container.rows.len() {
         let implicit_rows = max_rows - container.rows.len();
-        let GridAutoRows::LengthPx(auto_row_size) = &container.auto_rows else {
-            return Err(LayoutError::UnsupportedGridAutoRows {
-                node,
-                reason: "implicit row가 필요하지만 grid-auto-rows:auto는 content sizing이 필요합니다",
-            });
+        let (single_auto_row, auto_row_pattern) = match &container.auto_rows {
+            GridAutoRows::LengthPx(value) => {
+                if !value.is_finite() || *value < 0.0 {
+                    return Err(LayoutError::InvalidGridTrack {
+                        node,
+                        property: "grid-auto-rows",
+                    });
+                }
+                (Some(*value), None)
+            }
+            GridAutoRows::TrackList(tracks) => {
+                if tracks.is_empty() {
+                    return Err(LayoutError::InvalidGridTrackList {
+                        node,
+                        property: "grid-auto-rows",
+                    });
+                }
+                for track in tracks {
+                    match track {
+                        GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {}
+                        GridTrackSize::LengthPx(_) => {
+                            return Err(LayoutError::InvalidGridTrack {
+                                node,
+                                property: "grid-auto-rows",
+                            });
+                        }
+                        _ => {
+                            return Err(LayoutError::UnsupportedGridAutoRows {
+                                node,
+                                reason: "Root HTML implicit row mode requires fixed px grid-auto-rows values",
+                            });
+                        }
+                    }
+                }
+                (None, Some(tracks.as_slice()))
+            }
+            GridAutoRows::Auto => {
+                return Err(LayoutError::UnsupportedGridAutoRows {
+                    node,
+                    reason: "implicit row가 필요하지만 grid-auto-rows:auto는 content sizing이 필요합니다",
+                });
+            }
         };
-        if !auto_row_size.is_finite() || *auto_row_size < 0.0 {
-            return Err(LayoutError::InvalidGridTrack {
-                node,
-                property: "grid-auto-rows",
-            });
-        }
         let mut expanded_rows = Vec::new();
         reserve_exact(
             &mut expanded_rows,
@@ -234,10 +265,21 @@ pub(super) fn normalize_sparse_grid_container(
             GridReservationSite::ExpandedRows,
         )?;
         expanded_rows.extend_from_slice(&container.rows);
-        expanded_rows.extend(std::iter::repeat_n(
-            GridTrackSize::LengthPx(*auto_row_size),
-            implicit_rows,
-        ));
+        match (single_auto_row, auto_row_pattern) {
+            (Some(auto_row_size), None) => expanded_rows.extend(std::iter::repeat_n(
+                GridTrackSize::LengthPx(auto_row_size),
+                implicit_rows,
+            )),
+            (None, Some(pattern)) => {
+                expanded_rows.extend(pattern.iter().cycle().take(implicit_rows).copied());
+            }
+            _ => {
+                return Err(LayoutError::UnsupportedGridAutoRows {
+                    node,
+                    reason: "Root HTML implicit row mode requires fixed px grid-auto-rows values",
+                });
+            }
+        }
         output.expanded_rows = Some(expanded_rows);
     }
 
