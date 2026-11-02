@@ -43,3 +43,9 @@
 
 - [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md).
 - [실제 구현 diff 적대 검토 30개](pr-diff-review-30.md).
+
+## 병합 기록
+
+- 제한 구현 PR [#1066](https://github.com/ohah/spinon/pull/1066)은 `2026-11-02T15:41:43Z` Rebase and merge로 병합됐다. merge SHA는 `2dde385c5f240c8b8837b9e55d9c5431f5f9294b`다.
+- GitHub PR check rollup은 비어 있으며 `main`의 required status checks는 설정되지 않았다. CI 통과를 주장하지 않는다.
+- C11.1/C11은 미완료이고 공식 완료 수 `72/213`을 유지한다. 세부 내용은 [병합 기록](merge-PR1066.md).
