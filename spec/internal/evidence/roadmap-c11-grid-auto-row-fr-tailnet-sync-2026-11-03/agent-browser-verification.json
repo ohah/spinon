@@ -1,0 +1,41 @@
+{
+  "schema": "spinon-c11-root-html-grid-auto-row-fr-tailnet-agent-browser/v1",
+  "date": "2026-11-03",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "roadmapCard": "PR #1070 Rebase and merge",
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "linksInNewCard": {
+    "local": 10,
+    "publicationAndHttpsHashVerified": 10,
+    "planRouteOpenedInAgentBrowser": true
+  },
+  "viewports": [
+    {
+      "kind": "desktop",
+      "width": 1280,
+      "height": 900,
+      "documentWidth": 1280,
+      "cardBounds": { "left": 20, "right": 928, "top": -0.0625, "width": 908 },
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+    },
+    {
+      "kind": "mobile",
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "horizontalScroll": 0,
+      "cardBounds": { "left": 14, "right": 376, "top": -0.5, "width": 362 },
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+    }
+  ],
+  "agentBrowser": {
+    "closeAll": true,
+    "activeSessionsAfterClose": 0,
+    "cliProcessesAfterClose": 0
+  },
+  "previewServer": {
+    "pid": 28040,
+    "restarted": false
+  }
+}
