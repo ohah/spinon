@@ -1,0 +1,135 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.1 Root HTML explicit fit-content precomparison</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 10px/10px Ahem, sans-serif; }
+  .grid {
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .grid { width: 200px; height: 60px; background: #101820; }
+  #fit-content-grid {
+    grid-template-columns: 20px fit-content(40px);
+    grid-template-rows: 60px;
+  }
+  #below-min-grid {
+    grid-template-columns: fit-content(10px);
+    grid-template-rows: 60px;
+  }
+  #above-max-grid {
+    grid-template-columns: fit-content(120px);
+    grid-template-rows: 60px;
+  }
+  #repeat-grid {
+    grid-template-columns: repeat(2, fit-content(40px));
+    grid-template-rows: 60px;
+  }
+  #area-grid {
+    grid-template-columns: 20px fit-content(40px);
+    grid-template-rows: 60px;
+    grid-template-areas: "fixed fit";
+  }
+  #row-grid {
+    width: 20px;
+    height: 100px;
+    grid-template-columns: 20px;
+    grid-template-rows: fit-content(20px);
+  }
+  .item { margin: 0; padding: 0; border: 0; }
+  #fixed-item { width: 20px; height: 60px; background: #e5484d; }
+  #area-fixed { grid-area: fixed; width: 20px; height: 60px; background: #e5484d; }
+  #area-fit { grid-area: fit; background: #30a46c; }
+  #fit-content-item { background: #30a46c; }
+  .probe {
+    position: absolute;
+    top: 400px;
+    visibility: hidden;
+    font: 10px/10px Ahem, sans-serif;
+    white-space: normal;
+  }
+  #min-probe { left: 0; width: min-content; }
+  #max-probe { left: 200px; width: max-content; }
+  #row-min-probe { left: 400px; width: 20px; height: min-content; }
+</style>
+
+<div id="fit-content-grid" data-scene="root-html-grid-fit-content-cap-between" data-node class="grid">
+  <div id="fixed-item" data-node class="item"></div>
+  <div id="fit-content-item" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="below-min-grid" data-scene="root-html-grid-fit-content-cap-below-min" data-node class="grid">
+  <div id="below-min-item" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="above-max-grid" data-scene="root-html-grid-fit-content-cap-above-max" data-node class="grid">
+  <div id="above-max-item" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="repeat-grid" data-scene="root-html-grid-fit-content-repeat" data-node class="grid">
+  <div id="repeat-item-a" data-node class="item">AA AA AA AA</div>
+  <div id="repeat-item-b" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="area-grid" data-scene="root-html-grid-fit-content-area" data-node class="grid">
+  <div id="area-fixed" data-node class="item"></div>
+  <div id="area-fit" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="row-grid" data-scene="root-html-grid-fit-content-row" data-node class="grid">
+  <div id="row-item" data-node class="item">AA AA AA AA</div>
+</div>
+<div id="min-probe" class="probe">AA AA AA AA</div>
+<div id="max-probe" class="probe">AA AA AA AA</div>
+<div id="row-min-probe" class="probe">AA AA AA AA</div>
+
+<pre id="result"></pre>
+<script>
+  const rect = (element) => {
+    const value = element.getBoundingClientRect();
+    return { x: value.x, y: value.y, width: value.width, height: value.height };
+  };
+  const observeScene = (selector, itemSelectors) => {
+    const grid = document.querySelector(selector);
+    const root = grid.getBoundingClientRect();
+    return {
+      root: rect(grid),
+      items: Object.fromEntries(itemSelectors.map((selector) => {
+        const item = document.querySelector(selector).getBoundingClientRect();
+        return [selector, { x: item.x, y: item.y, width: item.width, height: item.height,
+          rootRelativeX: item.x - root.x, rootRelativeY: item.y - root.y }];
+      })),
+      computedColumns: getComputedStyle(grid).gridTemplateColumns,
+      computedRows: getComputedStyle(grid).gridTemplateRows,
+    };
+  };
+  const observe = () => ({
+    fontReady: document.fonts.check("10px Ahem"),
+    fontStatus: document.fonts.status,
+    viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+    scenes: {
+      capBetween: observeScene("#fit-content-grid", ["#fit-content-item"]),
+      capBelowMin: observeScene("#below-min-grid", ["#below-min-item"]),
+      capAboveMax: observeScene("#above-max-grid", ["#above-max-item"]),
+      repeated: observeScene("#repeat-grid", ["#repeat-item-a", "#repeat-item-b"]),
+      area: observeScene("#area-grid", ["#area-fixed", "#area-fit"]),
+      row: observeScene("#row-grid", ["#row-item"]),
+    },
+    minContentProbe: rect(document.querySelector("#min-probe")),
+    maxContentProbe: rect(document.querySelector("#max-probe")),
+    rowMinContentProbe: rect(document.querySelector("#row-min-probe")),
+  });
+  window.rootHtmlGridFitContentObservation = null;
+  document.fonts.ready.then(() => {
+    window.rootHtmlGridFitContentObservation = observe();
+    document.querySelector("#result").textContent =
+      JSON.stringify(window.rootHtmlGridFitContentObservation, null, 2);
+  });
+</script>

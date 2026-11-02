@@ -1,0 +1,45 @@
+{
+  "schema": "spinon.c11.root_html_grid_fit_content.precomparison.expected.v1",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizing-functions",
+  "fixture": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+  "coordinate_unit": "CSS px",
+  "common_input": {
+    "font": "Ahem 10px/10px",
+    "text": "AA AA AA AA",
+    "gap": 0,
+    "alignment": "start"
+  },
+  "scenes": [
+    {"id":"cap-between","root":[200,60],"columns":[20,"fit-content(40px)"],"rows":[60]},
+    {"id":"cap-below-min","root":[200,60],"columns":["fit-content(10px)"],"rows":[60]},
+    {"id":"cap-above-max","root":[200,60],"columns":["fit-content(120px)"],"rows":[60]},
+    {"id":"fixed-repeat","root":[200,60],"columns":["repeat(2, fit-content(40px))"],"rows":[60]},
+    {"id":"named-area","root":[200,60],"columns":[20,"fit-content(40px)"],"rows":[60],"areas":["fixed fit"]},
+    {"id":"row-minimum-floor","root":[20,100],"columns":[20],"rows":["fit-content(20px)"]}
+  ],
+  "independentIntrinsicValues": {
+    "minContentWidth": 20,
+    "maxContentWidth": 110,
+    "rowMinContentProbeAt20pxInlineSize": 40
+  },
+  "expected": {
+    "capBetween": {"columns":[20,40],"itemRootRelative":[20,0,40,60]},
+    "capBelowMin": {"columns":[20],"itemRootRelative":[0,0,20,60]},
+    "capAboveMax": {"columns":[110],"itemRootRelative":[0,0,110,60]},
+    "fixedRepeat": {"columns":[40,40],"itemRootRelative":[[0,0,40,60],[40,0,40,60]]},
+    "namedArea": {"columns":[20,40],"itemRootRelative":[[0,0,20,60],[20,0,40,60]]},
+    "rowMinimumFloor": {"columns":[20],"rows":[40],"itemRootRelative":[0,0,20,40]},
+    "screenshotSamplesRgba": {
+      "fixedItemAt10x30": [229,72,77,255],
+      "fitItemAt59x30": [48,164,108,255],
+      "afterCapAt60x30": [16,24,32,255]
+    }
+  },
+  "calculation": "CSS Grid fit-content() uses max(auto minimum, min(limit, max-content)). For columns, Ahem text has 20px min-content and 110px max-content widths: limits 10px, 40px, and 120px yield 20px, 40px, and 110px. A two-track fixed repeat yields [40px,40px]. The fixed named-area matrix keeps its authored 20px first track and sizes the area-backed fit track at 40px. At 20px inline size the text wraps to four 10px lines; fit-content(20px) floors the row at its 40px minimum contribution.",
+  "tolerance_css_px": 0.02,
+  "limits": [
+    "Chrome oracle only; not Spinon runtime, a simulator surface, or WPT conformance.",
+    "Covers finite non-negative pixel arguments on explicit columns and one row, plus fixed integer repeat expansion.",
+    "Does not cover percentage or calc arguments, auto tracks, line names, auto-repeat, area-created unsized tracks, or implicit tracks."
+  ]
+}
