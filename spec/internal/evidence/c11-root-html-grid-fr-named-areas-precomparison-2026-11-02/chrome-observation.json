@@ -1,0 +1,17 @@
+{
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport_css_px": [1280, 633],
+  "device_pixel_ratio": 1,
+  "root": {
+    "frame_css_px": [0, 0, 120, 70],
+    "grid_template_columns": "40px 80px",
+    "grid_template_rows": "23.3281px 46.6719px",
+    "grid_template_areas": "\"header header\" \"side content\""
+  },
+  "items": {
+    "header": { "frame_css_px": [0, 0, 120, 23.328125], "grid_area": "header" },
+    "side": { "frame_css_px": [0, 23.328125, 40, 46.671875], "grid_area": "side" },
+    "content": { "frame_css_px": [40, 23.328125, 80, 46.671875], "grid_area": "content" }
+  },
+  "capture": "Agent Browser session spinon-c11-area-fr-precomparison; screenshot captured and session closed"
+}
