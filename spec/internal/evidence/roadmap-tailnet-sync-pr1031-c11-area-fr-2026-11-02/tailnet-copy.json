@@ -1,0 +1,1172 @@
+{
+  "sourceHead": "1068f1070ddf02d2a9d625c86c0d8902479eb510",
+  "selectedRouteCount": 385,
+  "changedRouteCount": 241,
+  "createdCount": 198,
+  "replacedCount": 43,
+  "unchangedCount": 144,
+  "backupCount": 43,
+  "noDeletes": true,
+  "created": [
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/chrome-agent-browser.png",
+      "sourceSha256": "20f58522ce5ed4d2ced34585a798367a524e2feaa395e1a29d48e5ca292d9951"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/chrome-observation.json",
+      "sourceSha256": "12abc72d7cb8607bfb6c236585e75213963fddaf1a30d130f5e9cfae4d423d5f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/expected.json",
+      "sourceSha256": "9fed97112446c045e696cca8f6757c5522b65b2d2d6ef861cfcc0166a0f541d0"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/hashes.txt",
+      "sourceSha256": "09177f6130da01010b0f55eedadbbbffb10eab8806b7c5a8f618f9cf9e12f287"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.html",
+      "sourceSha256": "92022164f71c67fb8e5d1f6ef6896fd48a0abf7b02b3bc75f9b69a669e68d264"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.md",
+      "sourceSha256": "38e9384eeb338f6a4e1aae0e20c2eba823dafefcedf89ba997a18568ac03508a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/source.html",
+      "sourceSha256": "4c11d2a68080d514b17c8f292a74d81b0cd567d23b1fa8967f83b879bbda5b3b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/android-abi.txt",
+      "sourceSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/android-api.txt",
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/android-release.txt",
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/build.log",
+      "sourceSha256": "f65b3a4b32bb7092fc5dea83e71c69e5fc172c835ef1cfb77dbfa0cab04addca"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "fe95ec42d6563db00603cd75f3843619530d6c7b42efdd6b9043b5d8e149ce8f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/index-html-hash.txt",
+      "sourceSha256": "f7fabfb37665f2fac452b1c738e01cdc2cb7c070817c1bd4f0e3c7767d29f05d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/install.log",
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/launch.log",
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/build.log",
+      "sourceSha256": "e4c00f730bce9f3eaf649e888f9a3334962d938cf7ea26b8c093a4e5876da137"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "34ebea31c93504b02dc8c042f6590b4c8f17a6bb5143c966bff2a628c07a03c1"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/device.txt",
+      "sourceSha256": "9a34a82c1cb1f871d8585ef8bdc2726242c96bb67c13b2e5bbe540fd7ac74fad"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/index-html-hash.txt",
+      "sourceSha256": "f7fabfb37665f2fac452b1c738e01cdc2cb7c070817c1bd4f0e3c7767d29f05d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/install.log",
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/launch.log",
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/root-app-js-hash.txt",
+      "sourceSha256": "6e2aa2c394049540d2d7d39cd0f9fba2b6fc4b28b9af33eada7e084f26b5a896"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/runtime.log",
+      "sourceSha256": "e8ed84eb0347f7d68d2b21f9581c9995bd1fd5c5b313c3aa019f4c1102ff1b28"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/runtime.log",
+      "sourceSha256": "49ea7326a453205ea5ee1e1f824f09ec25e18c1b0ee4c5ef410e784ea0cdc4bc"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "sourceSha256": "b23dd2e983bfc86d38d8ab945e30e900a0763a93b18079205f9c8cc38c0c3d13"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "sourceSha256": "870e6e9b4e9e6b56914a9208d0afbcd2960a066d2e7cc622d65668831291483b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/booted-devices.txt",
+      "sourceSha256": "db7f81e98a58b17a6a45fabe43f4911f49e7fe39e6a54a1c950cbefd3490c935"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/build.log",
+      "sourceSha256": "ed6d470ee21758e04331bcd79262cc5e4f7b4d66b104440a89faee9949d21137"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/build.log.raw.sha256",
+      "sourceSha256": "912ed1616d0f0f708e60e2fb8103e7f8ceb9a529bdba3315c51ea1458520069b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "0ac62014ee8627a186466116fa190ae5f387c5740298672e3a844fe271e24c37"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/device.txt",
+      "sourceSha256": "d6ee17b7acd99756efa358ef56b76571aae960e551aa1f0e6ac71d24865e778c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/index-html-hash.txt",
+      "sourceSha256": "301e2ea3c0c9de409699554b79b2bbabeb8a33a9bcf230825cfad88897d7e94b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/launch.log",
+      "sourceSha256": "11f8f08ba635f602a94a1866e7d27697b98c7c48b2161a7474d8deb8cd990f1f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/build.log",
+      "sourceSha256": "44e8780718b9793ea331bfffec4934502f73171bf26931b83ef6b60ff68473cf"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/build.log.raw.sha256",
+      "sourceSha256": "6d338461f7a064d46eec904e05c497369ccbbd60f86f76e3bc627ac8492224ae"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "c5e2174d0e0151b3006304c868f9fda219a0873cdac085830c46bf2a6ec8f483"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/index-html-hash.txt",
+      "sourceSha256": "301e2ea3c0c9de409699554b79b2bbabeb8a33a9bcf230825cfad88897d7e94b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/launch.log",
+      "sourceSha256": "b872207475a50b82f4d4de4c45782a957cbe915e2aeff9cd9abbe843537a098b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/root-app-js-hash.txt",
+      "sourceSha256": "99417a5207b89d73c8ff8e746cf57b79ce9768d6055cbb8f1ecb902578c1dfc1"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/unified-log.txt",
+      "sourceSha256": "a6b5a92353fb727d7b572dc8199c1d8559749f2b949b02ba4a0c108febb197c1"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/unified-log.txt",
+      "sourceSha256": "7eb08b609f5b04d5633e2e10b9bcb2c78121af576fa8c2164b8e44228cdfbd41"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass02-source-hashes.txt",
+      "sourceSha256": "b7705a1999d79f918ee7ab0099fb39dd094c54face1485cd39490f12d678da23"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/android-abi.txt",
+      "sourceSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/android-api.txt",
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/android-release.txt",
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/build.log",
+      "sourceSha256": "ddd154a1cb45789ab1a50f79ad2fcb9936b96b4151a20be73d8e112d1dcd176f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "dbe213c2121822f6bed98e4b8f43b78870462071ff06af49a5e80336b61fd5c1"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/device.txt",
+      "sourceSha256": "e7aa89d6037a8757837aa2e04b631c2e69d3d6afb000d18a707f25c44f12ddbf"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/index-html-hash.txt",
+      "sourceSha256": "f7fabfb37665f2fac452b1c738e01cdc2cb7c070817c1bd4f0e3c7767d29f05d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/install.log",
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/launch.log",
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/runtime.log",
+      "sourceSha256": "ee91f5f4dd9f153c122855f05967e47a5099b2c010f77e21a5d11f0b86f03d66"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/implementation-source-hashes.txt",
+      "sourceSha256": "279c57618f34a0a1fae7e4d6a0bbb0463f2fcb6650eefd431fc909426fbb6588"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/input-backup/original-index.html",
+      "sourceSha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/input-hashes-after-restore.txt",
+      "sourceSha256": "e1c7b2d2f82909b1798d174ef559c0bd1868f25d680af6819243780c593a2b0b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/input-hashes-before-build.txt",
+      "sourceSha256": "40f445c62ca21bd18935d6c305897f36953a6e8c57baa9ada5fc3d65d86680f2"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/build.log",
+      "sourceSha256": "af5d04ab7bf936bd7fde14ba4bb2a5f7abe8ff48c588e889cdc6da6f9ef98f24"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/build.log.raw.sha256",
+      "sourceSha256": "1171e0cb2e995da492a09d2cd33dd559c5ea42279294327949cc39eaf0b4b1e3"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "4f8ce4f15c463b24a54bd285148c3610f1633c52f3f381b15b897da36ec9de7d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/device.txt",
+      "sourceSha256": "cc5813bd69dbe1e05a0e910550c3b5dbc3da3e5f57b8ebaf3d67ff6c4ff5b9a6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/index-html-hash.txt",
+      "sourceSha256": "4c8a90ac31b1ac8960aed11fed40ec5c3b34437bea4543c1ab611027cac3d94a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/install.log",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/launch.log",
+      "sourceSha256": "f707303d43bdde901baf9cb74fcd06cc066c48fdb2e03c397617534bbb4b57ef"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/screenshot.log",
+      "sourceSha256": "acf1824d187fd78745a366dc8fd124e56ea67a8ab5375e6df9baa7b28853344a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/unified-log.txt",
+      "sourceSha256": "04c2a4a816184f2673ef72b20c1235fef7268351b41103478e1a994c1c578d50"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.html",
+      "sourceSha256": "b3b7471e38b2912980599b34f48e884dfe853904f94127b0157bf0b98aae912f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.md",
+      "sourceSha256": "fd777e3d078bee9979156b3b39b53d54ae8f7472efac2203bab4c7f3aa9b14db"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.html",
+      "sourceSha256": "4d0e60466cda9f01576e105aa5bd00041068d5cdbc760dbf215a61c0d9f429eb"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.md",
+      "sourceSha256": "2f5d5a14b302bd974a41dbbcb289da77c33410384fc0b60cfe702655087cecb6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "sourceSha256": "ce5bef0e7986d633586747af0dcec52c71c19e2b71d40e98240edf7fbd093730"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.md",
+      "sourceSha256": "e185ad123b4ae9b76066d4076f73f965e986f6a3417c8bda264689090531309d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/source-hashes.txt",
+      "sourceSha256": "aa86c73e00be2ecff6cde3a3870c2421fdb96da047212680be58e7ecfa35a5c3"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fr-named-areas.html",
+      "sourceSha256": "9dd83819d57ac0b8e48cc31156793f838ead12a5130f88522c07a16a08ca83e2"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fr-named-areas.md",
+      "sourceSha256": "dbe6d75d9a195194c2c46be034669aa006eb4858261b56ddbf3b927bf0422e63"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/chrome-agent-browser.png",
+      "sourceSha256": "20f58522ce5ed4d2ced34585a798367a524e2feaa395e1a29d48e5ca292d9951"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/chrome-observation.json",
+      "sourceSha256": "12abc72d7cb8607bfb6c236585e75213963fddaf1a30d130f5e9cfae4d423d5f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/expected.json",
+      "sourceSha256": "9fed97112446c045e696cca8f6757c5522b65b2d2d6ef861cfcc0166a0f541d0"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/hashes.txt",
+      "sourceSha256": "09177f6130da01010b0f55eedadbbbffb10eab8806b7c5a8f618f9cf9e12f287"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.html",
+      "sourceSha256": "a97e85485c82384a53738253b5c4151003b291006195b1e1a89b170d611314d7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.md",
+      "sourceSha256": "38e9384eeb338f6a4e1aae0e20c2eba823dafefcedf89ba997a18568ac03508a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/source.html",
+      "sourceSha256": "4c11d2a68080d514b17c8f292a74d81b0cd567d23b1fa8967f83b879bbda5b3b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/android-abi.txt",
+      "sourceSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/android-api.txt",
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/android-release.txt",
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/build.log",
+      "sourceSha256": "f65b3a4b32bb7092fc5dea83e71c69e5fc172c835ef1cfb77dbfa0cab04addca"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "fe95ec42d6563db00603cd75f3843619530d6c7b42efdd6b9043b5d8e149ce8f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/index-html-hash.txt",
+      "sourceSha256": "f7fabfb37665f2fac452b1c738e01cdc2cb7c070817c1bd4f0e3c7767d29f05d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/install.log",
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/launch.log",
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/build.log",
+      "sourceSha256": "e4c00f730bce9f3eaf649e888f9a3334962d938cf7ea26b8c093a4e5876da137"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "34ebea31c93504b02dc8c042f6590b4c8f17a6bb5143c966bff2a628c07a03c1"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/device.txt",
+      "sourceSha256": "9a34a82c1cb1f871d8585ef8bdc2726242c96bb67c13b2e5bbe540fd7ac74fad"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/index-html-hash.txt",
+      "sourceSha256": "f7fabfb37665f2fac452b1c738e01cdc2cb7c070817c1bd4f0e3c7767d29f05d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/install.log",
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/launch.log",
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/root-app-js-hash.txt",
+      "sourceSha256": "6e2aa2c394049540d2d7d39cd0f9fba2b6fc4b28b9af33eada7e084f26b5a896"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/pass02/runtime.log",
+      "sourceSha256": "e8ed84eb0347f7d68d2b21f9581c9995bd1fd5c5b313c3aa019f4c1102ff1b28"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/runtime.log",
+      "sourceSha256": "49ea7326a453205ea5ee1e1f824f09ec25e18c1b0ee4c5ef410e784ea0cdc4bc"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "sourceSha256": "990596d3657b7189186a27de0fed16e414c798521ca2ac28035ec60604125a3b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.md",
+      "sourceSha256": "870e6e9b4e9e6b56914a9208d0afbcd2960a066d2e7cc622d65668831291483b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/booted-devices.txt",
+      "sourceSha256": "db7f81e98a58b17a6a45fabe43f4911f49e7fe39e6a54a1c950cbefd3490c935"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/build.log",
+      "sourceSha256": "ed6d470ee21758e04331bcd79262cc5e4f7b4d66b104440a89faee9949d21137"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/build.log.raw.sha256",
+      "sourceSha256": "912ed1616d0f0f708e60e2fb8103e7f8ceb9a529bdba3315c51ea1458520069b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "0ac62014ee8627a186466116fa190ae5f387c5740298672e3a844fe271e24c37"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/device.txt",
+      "sourceSha256": "d6ee17b7acd99756efa358ef56b76571aae960e551aa1f0e6ac71d24865e778c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/index-html-hash.txt",
+      "sourceSha256": "301e2ea3c0c9de409699554b79b2bbabeb8a33a9bcf230825cfad88897d7e94b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/launch.log",
+      "sourceSha256": "11f8f08ba635f602a94a1866e7d27697b98c7c48b2161a7474d8deb8cd990f1f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/build.log",
+      "sourceSha256": "44e8780718b9793ea331bfffec4934502f73171bf26931b83ef6b60ff68473cf"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/build.log.raw.sha256",
+      "sourceSha256": "6d338461f7a064d46eec904e05c497369ccbbd60f86f76e3bc627ac8492224ae"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "c5e2174d0e0151b3006304c868f9fda219a0873cdac085830c46bf2a6ec8f483"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/index-html-hash.txt",
+      "sourceSha256": "301e2ea3c0c9de409699554b79b2bbabeb8a33a9bcf230825cfad88897d7e94b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/launch.log",
+      "sourceSha256": "b872207475a50b82f4d4de4c45782a957cbe915e2aeff9cd9abbe843537a098b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/root-app-js-hash.txt",
+      "sourceSha256": "99417a5207b89d73c8ff8e746cf57b79ce9768d6055cbb8f1ecb902578c1dfc1"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/pass02/unified-log.txt",
+      "sourceSha256": "a6b5a92353fb727d7b572dc8199c1d8559749f2b949b02ba4a0c108febb197c1"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/unified-log.txt",
+      "sourceSha256": "7eb08b609f5b04d5633e2e10b9bcb2c78121af576fa8c2164b8e44228cdfbd41"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass02-source-hashes.txt",
+      "sourceSha256": "b7705a1999d79f918ee7ab0099fb39dd094c54face1485cd39490f12d678da23"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/android-abi.txt",
+      "sourceSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/android-api.txt",
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/android-release.txt",
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/build.log",
+      "sourceSha256": "ddd154a1cb45789ab1a50f79ad2fcb9936b96b4151a20be73d8e112d1dcd176f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "dbe213c2121822f6bed98e4b8f43b78870462071ff06af49a5e80336b61fd5c1"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/device.txt",
+      "sourceSha256": "e7aa89d6037a8757837aa2e04b631c2e69d3d6afb000d18a707f25c44f12ddbf"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/index-html-hash.txt",
+      "sourceSha256": "f7fabfb37665f2fac452b1c738e01cdc2cb7c070817c1bd4f0e3c7767d29f05d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/install.log",
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/launch.log",
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/android-avd/runtime.log",
+      "sourceSha256": "ee91f5f4dd9f153c122855f05967e47a5099b2c010f77e21a5d11f0b86f03d66"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/implementation-source-hashes.txt",
+      "sourceSha256": "279c57618f34a0a1fae7e4d6a0bbb0463f2fcb6650eefd431fc909426fbb6588"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/input-backup/original-index.html",
+      "sourceSha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/input-hashes-after-restore.txt",
+      "sourceSha256": "e1c7b2d2f82909b1798d174ef559c0bd1868f25d680af6819243780c593a2b0b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/input-hashes-before-build.txt",
+      "sourceSha256": "40f445c62ca21bd18935d6c305897f36953a6e8c57baa9ada5fc3d65d86680f2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/build.log",
+      "sourceSha256": "af5d04ab7bf936bd7fde14ba4bb2a5f7abe8ff48c588e889cdc6da6f9ef98f24"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/build.log.raw.sha256",
+      "sourceSha256": "1171e0cb2e995da492a09d2cd33dd559c5ea42279294327949cc39eaf0b4b1e3"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/c11-root-html-grid-fr-named-areas.png",
+      "sourceSha256": "4f8ce4f15c463b24a54bd285148c3610f1633c52f3f381b15b897da36ec9de7d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/device.txt",
+      "sourceSha256": "cc5813bd69dbe1e05a0e910550c3b5dbc3da3e5f57b8ebaf3d67ff6c4ff5b9a6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/index-html-hash.txt",
+      "sourceSha256": "4c8a90ac31b1ac8960aed11fed40ec5c3b34437bea4543c1ab611027cac3d94a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/install.log",
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/launch.log",
+      "sourceSha256": "f707303d43bdde901baf9cb74fcd06cc066c48fdb2e03c397617534bbb4b57ef"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/screenshot.log",
+      "sourceSha256": "acf1824d187fd78745a366dc8fd124e56ea67a8ab5375e6df9baa7b28853344a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pass03/ios-simulator/unified-log.txt",
+      "sourceSha256": "04c2a4a816184f2673ef72b20c1235fef7268351b41103478e1a994c1c578d50"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.html",
+      "sourceSha256": "847f44833c4af2382c03e33f239f8e6b4fe9f2e40301cfd5eb5d55597fc15ba7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.md",
+      "sourceSha256": "fd777e3d078bee9979156b3b39b53d54ae8f7472efac2203bab4c7f3aa9b14db"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.html",
+      "sourceSha256": "5b0ff96abbd1434aea6f55dc359004476ef2556e8491580b125ab3536511ec1c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.md",
+      "sourceSha256": "2f5d5a14b302bd974a41dbbcb289da77c33410384fc0b60cfe702655087cecb6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "sourceSha256": "149bc7921ca3df275652a86def09924c34ad0092f152b7f44fd732a5437aca4c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.md",
+      "sourceSha256": "e185ad123b4ae9b76066d4076f73f965e986f6a3417c8bda264689090531309d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/source-hashes.txt",
+      "sourceSha256": "aa86c73e00be2ecff6cde3a3870c2421fdb96da047212680be58e7ecfa35a5c3"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fr-named-areas.html",
+      "sourceSha256": "f49164b0c0270f30d838a81b3eda6209dcd33fcc1e0efc14d8ef472633fa71b9"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fr-named-areas.md",
+      "sourceSha256": "dbe6d75d9a195194c2c46be034669aa006eb4858261b56ddbf3b927bf0422e63"
+    },
+    {
+      "route": "static/js/async/route-07c7f0f5ebc3.052ed6ed90.js",
+      "sourceSha256": "32bb88716850f47a867bf332bc1c5de7f0fd8cbfd86bb1a90459fb7f4429fc30"
+    },
+    {
+      "route": "static/js/async/route-07ce32c154eb.a50c84a5f7.js",
+      "sourceSha256": "e7810963a689903a0ff6b9615732679cd7a270b781643003397ac682f81a1fd6"
+    },
+    {
+      "route": "static/js/async/route-09974625e4fa.1b0de57f34.js",
+      "sourceSha256": "8d81527d4bc5ee2a05951275fef1e4942e422dee90014959c76f4ae3980dabaa"
+    },
+    {
+      "route": "static/js/async/route-0f7bf868ae3b.a4c29ffdf9.js",
+      "sourceSha256": "475fd829d264a29fba760cc80f8a763897e402d3c433ba6384327df5c449b57b"
+    },
+    {
+      "route": "static/js/async/route-116ade023f9d.a5564d9233.js",
+      "sourceSha256": "62886d8b14eae1ae4a38d8b33c3e5ad8a899cad2f1507d7e8c37a78487f94c1e"
+    },
+    {
+      "route": "static/js/async/route-14b89c82c341.b591e5f5d3.js",
+      "sourceSha256": "4ccd1def6ff9e936c8f781e58c6e36882f4fe4d4dc8bd5b7786948d06026b087"
+    },
+    {
+      "route": "static/js/async/route-17c34b834463.e587268695.js",
+      "sourceSha256": "958f488d97fff3fecec8fbcc66a5fa17cbab23207944ad4a48129d0952b3a831"
+    },
+    {
+      "route": "static/js/async/route-1e7c0adc8f82.3d28f85ef2.js",
+      "sourceSha256": "46a327936651994e6600b001d4a43aa7c09674416f46ed32fcf70a6c7fdb3bd3"
+    },
+    {
+      "route": "static/js/async/route-27916fc55012.c700d9d939.js",
+      "sourceSha256": "5b312bc1e7228ce69b797377a4ada0c62ad45ad6a4cae1fc5d5d6598d6648aed"
+    },
+    {
+      "route": "static/js/async/route-29d1d291d4ea.aef54f4000.js",
+      "sourceSha256": "c3a3872828d57316eb36c86f291530a701564e925cea402bf7c6f2c39f4cdaf9"
+    },
+    {
+      "route": "static/js/async/route-2cc2acc16234.ee2652c8ed.js",
+      "sourceSha256": "23b11a3e4d35ee7c7bd691bca737c2115bfdd597c8cb202dd748345b2f83a85b"
+    },
+    {
+      "route": "static/js/async/route-2de33524caa7.fdd8f632c1.js",
+      "sourceSha256": "8fa9a2883ddd195e8edff398173fe082418cde247ede6c1c6cea163fa99c2b8a"
+    },
+    {
+      "route": "static/js/async/route-316b255b255c.2087f11fbd.js",
+      "sourceSha256": "ba3a1505c1db7e290ed93f364dcee328ef48fcafa1d1cfff60a44f2ab1cc8c03"
+    },
+    {
+      "route": "static/js/async/route-3c0a3ac146a1.7c0d78b7a6.js",
+      "sourceSha256": "ecfca24303f07ce3dbc5d25422b35b2d8aaf3d17f140babbb7443cff813e01b3"
+    },
+    {
+      "route": "static/js/async/route-401590b27b7c.e53f11973b.js",
+      "sourceSha256": "77cc89f2af8141075dee1bf101b84654d385a910b8be6dd6e9f9b6e7867b9e6a"
+    },
+    {
+      "route": "static/js/async/route-46c6f9ced237.cbfc2159da.js",
+      "sourceSha256": "3ed5f9aebbad6c47d01a4280105b59cdd3c2476ec505f583565096aab4a016f5"
+    },
+    {
+      "route": "static/js/async/route-4c338320011c.d6bdbd2318.js",
+      "sourceSha256": "a680f8358ce80d4074788808125acf659dcc8f76ffe19fe03adb9a84c6c7f676"
+    },
+    {
+      "route": "static/js/async/route-5009af0f8710.67afa05e6f.js",
+      "sourceSha256": "4c51db5aea00e65ece2cac3a5f64615a0165d4146235bc3da7320d44427aaed2"
+    },
+    {
+      "route": "static/js/async/route-53f305aa03a9.f333fbd1bd.js",
+      "sourceSha256": "06c0009ac25a908cee0e9a75b5b404807fdd0c33cc5bc78aaa1043f6b6ba3a8b"
+    },
+    {
+      "route": "static/js/async/route-55b67011ae4c.955fccb933.js",
+      "sourceSha256": "91ea89b5ab215197c4158f9a76bc7e6adf5505a51ef95d89f3d9dd244fe0533f"
+    },
+    {
+      "route": "static/js/async/route-5cd351ea01d0.dacb819507.js",
+      "sourceSha256": "671e5ad6f710dd3ac68ebc2b8b4f97749ad892f8acde029e2331a2ce76bb882e"
+    },
+    {
+      "route": "static/js/async/route-6018f8637520.7e75f80116.js",
+      "sourceSha256": "92446b735fabc1d387e4a55a5c3fe87c193af8bbb35e093331ac2d2c76286ed6"
+    },
+    {
+      "route": "static/js/async/route-60331a46b09e.75b63c91d3.js",
+      "sourceSha256": "d14974d3dc5f464f8afc911bf8f3528dfc6340d3d94a574e19e36c86c2973d05"
+    },
+    {
+      "route": "static/js/async/route-645574602e8a.949fd64136.js",
+      "sourceSha256": "cb4199105f4fc4cb4957d6420e609805d22f0407704817ec78a793e4ebd06c2f"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.58ade84949.js",
+      "sourceSha256": "1ad96c89851a5c3449acdeebe30029f5a9ea135d285612fa8964851ae3e2630f"
+    },
+    {
+      "route": "static/js/async/route-6f55121fcabc.2bcd5c47ec.js",
+      "sourceSha256": "eea05e26e9b270ee29e2006b70716f24976250cce233dfe36660e5e13ff016fb"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.fa32c7c912.js",
+      "sourceSha256": "52c5f0d7d41922a5cc6d93cf6810a914179de331dd789e99e22593b7845006a7"
+    },
+    {
+      "route": "static/js/async/route-7b7eaad17774.12388aebe2.js",
+      "sourceSha256": "4bf5f0ac5a9b9a9821898e65abb60c773aa307f0c446aaec7c3ad12d021584b6"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.b07478bd64.js",
+      "sourceSha256": "f6762259962e67a2c140827645bd6690e7053fbd7185c61cc01e617a2c81afbc"
+    },
+    {
+      "route": "static/js/async/route-833419003ee3.09d57010b1.js",
+      "sourceSha256": "808c533364f8724838f64088a989ff2bead23188b2ab6e82c48a508c7064de7f"
+    },
+    {
+      "route": "static/js/async/route-8ab3f432a1a0.3329738811.js",
+      "sourceSha256": "0ab36fee54f08cc1eec709ba668ee4f93fc81008c3e6bb71612d6827459e6c54"
+    },
+    {
+      "route": "static/js/async/route-8e04729a6af4.c07d9e2727.js",
+      "sourceSha256": "0729bfed10d9045f9f2c170fbd72f9ba9b79763a8256752577be3bc7781b1d17"
+    },
+    {
+      "route": "static/js/async/route-8ff09fa5e49c.728b19d930.js",
+      "sourceSha256": "3a54b5d9785218d590652843fb09d5e7bfab69aea41ea29fcebc35494cfc3872"
+    },
+    {
+      "route": "static/js/async/route-95bff8b34115.5d5073aa7a.js",
+      "sourceSha256": "dd481ed114d97d8347b8dbc1a34773a03f70bd1719681d3696192c9298f1d55d"
+    },
+    {
+      "route": "static/js/async/route-a3c028bca21c.faa4341953.js",
+      "sourceSha256": "c0a553011717b5b1db6332d7ca9294891161ef4da0ae8cfe96986636476f0b72"
+    },
+    {
+      "route": "static/js/async/route-a6b76ea39c10.540abe6b4a.js",
+      "sourceSha256": "59a2b8084304a0ce2dcb066a9975808e3a44ec8fa725ac2a9ed8ffc45fbf462f"
+    },
+    {
+      "route": "static/js/async/route-a9179c49e185.479493583d.js",
+      "sourceSha256": "519588b39601fb86e3c782301b7499f61b85f6a6bc1e1c87aa717e0917a5b6d0"
+    },
+    {
+      "route": "static/js/async/route-b954be04d17d.d4ad5adfe8.js",
+      "sourceSha256": "925dd6810e36c2a887249a9aa476f60592be081c4f850454bb535548544d00d8"
+    },
+    {
+      "route": "static/js/async/route-c1c8431a5279.9819b1e7c7.js",
+      "sourceSha256": "428162bbc838ea08ba7845546d15012878b3c15e1d18bf1f79b699bcc139581f"
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.ea48ee69e2.js",
+      "sourceSha256": "96bc3a6357d2f3be85d907a7cb194cc000556a4e8c059c7961cebd20ef928388"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.aa4c4d2a4d.js",
+      "sourceSha256": "88b1a32ddcf1f43d7248bff84ab1135369cc87c31b0febd731f4329c4c4c4df3"
+    },
+    {
+      "route": "static/js/async/route-c50e2650ef88.1f27e145bf.js",
+      "sourceSha256": "353ec689b1219b14f636cba2c1221efed2846fe4a12b1659cc3abac8e9fe7993"
+    },
+    {
+      "route": "static/js/async/route-c626a2eef8d4.af02a65742.js",
+      "sourceSha256": "e267c173279acb58883f325a7730a570a3dd651a790b654aba6e3c5fb463af83"
+    },
+    {
+      "route": "static/js/async/route-d022cfdf192d.b751d24fdd.js",
+      "sourceSha256": "9c57082d57691a00bc80e092e4cc529e326fc88b7709ecdc06a2afcca60158ce"
+    },
+    {
+      "route": "static/js/async/route-d4b02f34c38e.2e3ca23d7d.js",
+      "sourceSha256": "0006d83aef6d5d6ec8b2b1e10e54b057d3159c9ce51372643650f23cbad70422"
+    },
+    {
+      "route": "static/js/async/route-d64c4155665a.897e1bbfa0.js",
+      "sourceSha256": "ed4a979cefa9e224da9bc73c5b8f4673d9598905a0c93dff2969399e9678e03a"
+    },
+    {
+      "route": "static/js/async/route-e2b7167b02b4.c00c58164b.js",
+      "sourceSha256": "4f2742b33cab78f3b15fe36b84694164be743df0a400b79912c681ca4a8197de"
+    },
+    {
+      "route": "static/js/async/route-fb7b0e81b02a.27c484dad8.js",
+      "sourceSha256": "93ded7c943e7c2e90ca2aa58d89d3929c6323a008de7605f4eeb5d376a123112"
+    },
+    {
+      "route": "static/js/index.fd40fb9847.js",
+      "sourceSha256": "3b9438127ad6a69d55499f2b6331ac06b6bfa0c5f58e172b244cb6277e75dd7f"
+    },
+    {
+      "route": "static/search_index.ko.32b9d685.json",
+      "sourceSha256": "32b9d6855bb4f9e516dda2431f858c3409490d8cd09b10dbdfafd903fa6cd00e"
+    }
+  ],
+  "replaced": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "previousSha256": "c3625edd1517cc22d88c127c5c85b555a24d6510605615b4fe6f670a6a7021b6",
+      "sourceSha256": "e7fbccf14d0b1206fb3021154faf6d88297070f384686af33a01cd24fa687a64"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+      "previousSha256": "6dfb866883bc46b0e38a601bd484ec99b58b21952862fa72c055ce461caf009a",
+      "sourceSha256": "dcea47067313c843ec46abe0973b2065dc9403860ab77da456dbf57a988aedff"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+      "previousSha256": "0d208eb3fefab25cc1d39fe11204c3cda95de0fa66a5749c7aa4984ce4455c99",
+      "sourceSha256": "badba13fe9e75facfba1baed4e3b30aab5feff9ce5a1e29d6e843590bd14e709"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.html",
+      "previousSha256": "d0fa5502af88d5cb2185f064bd9c1d74e007a12c5a052bcc2a386fcdb6462f10",
+      "sourceSha256": "007977ce39c1d13fe1de0cc1c3a9fdf2cd5c8999a586ea10c5e230abfc8ec20f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "previousSha256": "4ac3b95209e25fc92b52723b3fe9a8ad71714af2972b48b715d00f2bb1deb5fd",
+      "sourceSha256": "2b974fbd37bed0f010b8bb66346dc309fee65723a903db32f16ed63bad79f0b6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "previousSha256": "8f7012c19e8efc713b56797cf417f5ad223a66e19b3e5b12a53f647e8bc87cca",
+      "sourceSha256": "6a1273c9d1a44639ff625ad6af4e9d4fd03c5c6d11a45d54809849690650acd2"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.html",
+      "previousSha256": "4af5b689693bca5e7d6cd0367677d733baf0f57613a43d8413c2bbc65ad432d8",
+      "sourceSha256": "7f6e2186237050fa92c56fd6629e143987a0e08972e3d5ab5be6a31e30a636cf"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "previousSha256": "b27d4ad6230369cc8daaa2e05bd629e2c0011f89ac7985f33016f658a315e603",
+      "sourceSha256": "2fd85b5bc04ae9dd3e635f26724221b9b2dd0da88ff9880dc97c1afdb2228be8"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-20.html",
+      "previousSha256": "6c75611be7f8cc2d3be62def1af33429f0cd0c42f1198b304f00a46a28689bfd",
+      "sourceSha256": "0448941d056001c5b8211792805bf11f131daec7e909d23346395998874f2b70"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+      "previousSha256": "5ea66a617b555e36a32653d9d7020ffb3708976972919910baac895c58d445d8",
+      "sourceSha256": "32cec6fb4ad06dfa39a99c2962e7d9618a5573fe19a016ceb4bb441b2ba5f497"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.html",
+      "previousSha256": "e5a8d98d8ef90cb6b92042728f3184d8cf4ecf00cbff64736fa8b7b801ca6032",
+      "sourceSha256": "2e2f516a61099ee599cbcdfcb695759e1247ab150058884658fd60fc5baf2e97"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "previousSha256": "f91b654b823497219dd42e3e826d703db5f4df3153bed6f88db5bf76c743fe83",
+      "sourceSha256": "38310d02e8f4a30c4e4e730f5e0c0271a71a985dff6f6ffc451a268b712bf1a3"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "previousSha256": "16e6eb77b72e31364d9865690719b98f5779729ffd4aea626721c781c9a53168",
+      "sourceSha256": "945fa9a9019992d69cc09a4038e769c28e6eed56045493c831bdccbc24a5b334"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.html",
+      "previousSha256": "0fe6a28e3c888f84c506e08eef895be53755851f16d2615308ef39753dddd081",
+      "sourceSha256": "a6cbda94cac026a08f73aa0cd59bf2c60ee2c3ba7598b60c810e4e821eef9006"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "previousSha256": "70fcf8b740273a4551d6f4ddf6115f5eda6ec8090f271f60df381e185d5d1795",
+      "sourceSha256": "99b0274c378086bcb79ed589291da847d9dbbe33f9268f413137a8bfc472f422"
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "previousSha256": "511a2c720c1910a42b9761b3b3752c7b7efa184ff7bc112b0eb78eab62ed4aad",
+      "sourceSha256": "ff59a3f19135cc0026774830a52263923001578aa5683fa794d744434178f7a2"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+      "previousSha256": "a6d699bac7f99103053fddfd0f6f75dcc35500dcd260f2181743e79747a81792",
+      "sourceSha256": "1e5ceb8bb9c38dc1bf1077c583ab55a4f81a1cd613352c5cb120e68d167f25b3"
+    },
+    {
+      "route": "plan/c11-root-html-grid-implicit-rows.html",
+      "previousSha256": "b5f36bca15d908791e5dac143efe4232ce9b6563c8518bbca93c668af8c4f903",
+      "sourceSha256": "b580c09a47a172fffd446ac59034c74538f4ead6715a6fb919354dc449acec06"
+    },
+    {
+      "route": "public/roadmap.html",
+      "previousSha256": "1f1611d1aa651aba37fce76eea16f1fcf7c79dffb6318a5656863b01791b1f88",
+      "sourceSha256": "26bfd29e3fa7c542620359152f71393362831fabfc34f0775042d24b884fe72f"
+    },
+    {
+      "route": "roadmap.html",
+      "previousSha256": "1f1611d1aa651aba37fce76eea16f1fcf7c79dffb6318a5656863b01791b1f88",
+      "sourceSha256": "26bfd29e3fa7c542620359152f71393362831fabfc34f0775042d24b884fe72f"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "previousSha256": "b46fe2e3000c7a4656a72c60f1bf8bb563136113f603fa09a102edd87cafaebd",
+      "sourceSha256": "6f228a2e5040da075ec36a6e5de488c4f0aed138a2e86991e4520dc6af928135"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+      "previousSha256": "03c446bec8a4c007c4bf5fbcde260b7e6e70d07af3e76ce7d309d1547d159738",
+      "sourceSha256": "4252d974272c9ee735a4aff84f74adb10d9c9f4a87148800d86325556cefe931"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+      "previousSha256": "8ae03b30ffadfa407e4c110067597694f7e9113fcaecd32fc8b682584b221a47",
+      "sourceSha256": "293841351aaa40f78e3e609e6d5c12097cc0a6775318d3ce3f3292e11a0344c8"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.html",
+      "previousSha256": "f2a33618307af7bb6607ffe0f8e652081483896399d822da503c16c28f48be66",
+      "sourceSha256": "6128f51904fd2a111709f1c7ea30eef993a3fbf3f3ad92e99855169a6db45fd2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "previousSha256": "d6847fd131c554ab6af151edc687b21d4188a8f5efa1d987f587bcf0adca4976",
+      "sourceSha256": "9e24add88cc9c71d799764e392a802482df99d56501785d54765a96d05a8fe96"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "previousSha256": "84d6d6bf03fbe20a1a95506e6c61782f66954e3130a888e5ff2c49b6090c3bd0",
+      "sourceSha256": "d58f3b1a4dc198aa753ff821a4b0af55c90e1209193b0077da985f0815f5d98c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.html",
+      "previousSha256": "952b7f196690f6013d4817bb1b462c7a9192b09b924c2fe6a10f3cabd39427c8",
+      "sourceSha256": "fbd8aaf92a0b18779f9048ec282aec09ac6a97510aad223fdae59ab80eef9a54"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "previousSha256": "0dbf785e3901ac874edf86bda5afe52ae8938d984ddbf8540f83895c9da46181",
+      "sourceSha256": "f84f3ad7deb07a711f65f996dd36bcc222ec6d94fa438471d5de6cf1e72b1976"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-20.html",
+      "previousSha256": "f98d2eedfc7294f935d2baed35c7e073b022f6b9209f8c8181bc5a07165c62b1",
+      "sourceSha256": "c613098106e7b150f413c09f9f4517210e4c4be78b019c90e4af8cf80303f9c0"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+      "previousSha256": "36ff7caf5bfca25b0279e409388545ced7bec845bd64884a8939e904ec146f87",
+      "sourceSha256": "821582030dfa5d5bf1526f2980de65d6e5bddca0178daf9c2717e6330c4246ad"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.html",
+      "previousSha256": "609500072b99cce154443ceca8f2875c57688013ac25a7c68ba8597a687cf038",
+      "sourceSha256": "e9b59c665d2e8bfca5655ac0f85944e02662f1018a6f13f2a1adb3354257720d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "previousSha256": "7a74c16b823334b14e1bfca024b36fb96b21dd8285f20ec3c274489f4e5ef4be",
+      "sourceSha256": "f1b62ae9d62d03c4c69145b9cdeee245df355a1523fc3ecc28c4ad70e17e44bd"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "previousSha256": "c565592ed5cf1c7d2898b9c8932f6bf31d36cce112bfb8027eda7fd01250cd7f",
+      "sourceSha256": "32cd87951303f91c7fe6ed0fe019bc09e12db72fcbad799a58be560c56f53af8"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.html",
+      "previousSha256": "08bb7c5727283ad460e8ef11a4c0fd79a886b0bf601df255d2ccd71fbc73ba03",
+      "sourceSha256": "f5c5e1415144c1f9dfca62b54402a33d56c200b5739c961c6dfae52dba8483b0"
+    },
+    {
+      "route": "spec/plan/c11-css-grid.html",
+      "previousSha256": "70e48d4594a5342f6758ac17d9e82306998c54be2d8365a2cbaacefd382d047c",
+      "sourceSha256": "22631933d09ce4bcee4476ba877a5da4a379e6001ba443f3f34a6959e3e00597"
+    },
+    {
+      "route": "spec/plan/c11-css-grid.md",
+      "previousSha256": "511a2c720c1910a42b9761b3b3752c7b7efa184ff7bc112b0eb78eab62ed4aad",
+      "sourceSha256": "ff59a3f19135cc0026774830a52263923001578aa5683fa794d744434178f7a2"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+      "previousSha256": "6305d7426096603a869fcf1e924ce950a85ea084b9e574b9974f42e824902750",
+      "sourceSha256": "72e6a28de5e066214587d2371adf793889f8203fb4ce68469288f35acf7e70e8"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-implicit-rows.html",
+      "previousSha256": "f5ee214fbca3692b99f6e6662b6e1ae384d11b7e17d5829d309d9ce7435bb384",
+      "sourceSha256": "4a493d8a98f3ae2b14f93d89624c7ceb8d16addcd63f5694583312b17bd4133a"
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "previousSha256": "1f1611d1aa651aba37fce76eea16f1fcf7c79dffb6318a5656863b01791b1f88",
+      "sourceSha256": "26bfd29e3fa7c542620359152f71393362831fabfc34f0775042d24b884fe72f"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "previousSha256": "cf1609cb55171d575dffdf890befa23151abfca16b834dafc1f3b29b6a5aba78",
+      "sourceSha256": "2be4ef87bc719f544cdcc4827d861b02dc5219a498664cbbc06ae225ee859686"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "previousSha256": "aa501c1bafcaddee62b6b3f70c1b374e3618cc0828a0ed1bc635c20ee0a71369",
+      "sourceSha256": "9cf833af2fc9a82cdd89adc841078b1ea6d216824befd098a20f586b847bba05"
+    },
+    {
+      "route": "STATUS.html",
+      "previousSha256": "0a07c88cca02d8b9618907cc59432b358b477fa2aa06626c44a9c537b7031168",
+      "sourceSha256": "21c68c9b01966ac8844fe2c2cf38344a180d241959c7cddf0703ac2c83fe19f7"
+    },
+    {
+      "route": "STATUS.md",
+      "previousSha256": "aa501c1bafcaddee62b6b3f70c1b374e3618cc0828a0ed1bc635c20ee0a71369",
+      "sourceSha256": "9cf833af2fc9a82cdd89adc841078b1ea6d216824befd098a20f586b847bba05"
+    }
+  ],
+  "unchanged": [
+    "icon.svg",
+    "internal/0059-c11-grid-layout.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/chrome-observation.json",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/chrome156-agent-browser.png",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/expected.json",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/oracle.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37-multiple-grid-attempt.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37-multiple-grid-attempt.png",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37-runtime.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37.png",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-build.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/candidate-index.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/clippy.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/diff-check.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/format-check.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/hash-manifest.txt",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-26_2-runtime.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-simulator-build.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/layout-grid-tests.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/original-bootstrap/built-index.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/original-bootstrap/index.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/platform-runtime-observation.json",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.md",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/root-app-runtime-probe.js",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/runtime-root-html-grid-tests.log",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/style-projection-tests.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/chrome156-agent-browser.png",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/chrome156-expected.json",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/chrome156-observation.json",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-20.md",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.md",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.md",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-artifact-sha256.txt",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd-runtime-summary.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd.png",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-build.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/bootstrap-source.sha256",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/candidate-source.sha256",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.md",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-artifact-sha256.txt",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-build-summary.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-runtime-summary.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-runtime.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/original-bootstrap/built-index.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/original-bootstrap/index.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/platform-runtime-observation.json",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.md",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.md",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/recorded-at-local.txt",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/resource-cap-test.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/restored-bootstrap-sha256.txt",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/root-html-grid-implicit-rows-runtime.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/stale-revision-test.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass01.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass02.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass03.log",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass04.log",
+    "plan/c11-root-html-grid-fr-percent-implicit-rows.md",
+    "plan/c11-root-html-grid-implicit-rows.md",
+    "public/icon.svg",
+    "public/logo.svg",
+    "public/roadmap.svg",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/chrome-observation.json",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/chrome156-agent-browser.png",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/expected.json",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/oracle.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-30.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37-multiple-grid-attempt.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37-multiple-grid-attempt.png",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37-runtime.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37.png",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-build.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/candidate-index.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/clippy.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/diff-check.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/format-check.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/hash-manifest.txt",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-26_2-runtime.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-simulator-build.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/layout-grid-tests.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/original-bootstrap/built-index.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/original-bootstrap/index.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/platform-runtime-observation.json",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.md",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/runtime-root-html-grid-tests.log",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/style-projection-tests.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/chrome156-agent-browser.png",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/chrome156-expected.json",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/chrome156-observation.json",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-20.md",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.md",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.md",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-artifact-sha256.txt",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd-runtime-summary.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd.png",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-build.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/bootstrap-source.sha256",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/candidate-source.sha256",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.md",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-artifact-sha256.txt",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-build-summary.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-runtime-summary.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-simulator-runtime.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/original-bootstrap/built-index.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/original-bootstrap/index.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/platform-runtime-observation.json",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.md",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/recorded-at-local.txt",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/resource-cap-test.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/restored-bootstrap-sha256.txt",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/root-html-grid-implicit-rows-runtime.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/stale-revision-test.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass01.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass02.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass03.log",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/validation-pass04.log",
+    "spec/plan/c11-root-html-grid-fr-percent-implicit-rows.md",
+    "spec/plan/c11-root-html-grid-implicit-rows.md",
+    "static/css/styles.8d918fd78e.css",
+    "static/js/3.d8b550a68d.js",
+    "static/js/3.d8b550a68d.js.LICENSE.txt",
+    "static/js/async/l.76b60f2b87.js",
+    "static/js/lib-react.801d719c4f.js",
+    "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+    "static/js/lib-router.d3b08da66f.js",
+    "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+    "static/js/styles.aba03c5c90.js"
+  ],
+  "server": {
+    "backendState": "Running",
+    "dnsName": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040
+  }
+}

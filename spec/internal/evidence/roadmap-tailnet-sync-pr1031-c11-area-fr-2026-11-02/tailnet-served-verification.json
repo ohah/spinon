@@ -1,0 +1,538 @@
+{
+  "sourceHead": "1068f1070ddf02d2a9d625c86c0d8902479eb510",
+  "selectedRouteCount": 385,
+  "selectedBytes": 17073716,
+  "selectedRouteHash": "8912288348a809058b692c58a78838b47fe2f83e49abffc5277856c378f2ad88",
+  "publishedRouteCount": 385,
+  "backupCount": 43,
+  "backups": [
+    "internal/0059-c11-grid-layout.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-20.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+    "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.html",
+    "plan/c11-css-grid.html",
+    "plan/c11-css-grid.md",
+    "plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+    "plan/c11-root-html-grid-implicit-rows.html",
+    "public/roadmap.html",
+    "roadmap.html",
+    "spec/internal/0059-c11-grid-layout.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-30.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.html",
+    "spec/internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-pr-diff-review-20.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/plan-review-20.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+    "spec/internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.html",
+    "spec/plan/c11-css-grid.html",
+    "spec/plan/c11-css-grid.md",
+    "spec/plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+    "spec/plan/c11-root-html-grid-implicit-rows.html",
+    "spec/public/roadmap.html",
+    "spec/STATUS.html",
+    "spec/STATUS.md",
+    "STATUS.html",
+    "STATUS.md"
+  ],
+  "noDeletes": true,
+  "requiredHttpRouteCount": 34,
+  "http": [
+    {
+      "kind": "local",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 504870,
+      "sha256": "26bfd29e3fa7c542620359152f71393362831fabfc34f0775042d24b884fe72f"
+    },
+    {
+      "kind": "tailnet",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 504870,
+      "sha256": "26bfd29e3fa7c542620359152f71393362831fabfc34f0775042d24b884fe72f"
+    },
+    {
+      "kind": "local",
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 611419,
+      "sha256": "9cf833af2fc9a82cdd89adc841078b1ea6d216824befd098a20f586b847bba05"
+    },
+    {
+      "kind": "tailnet",
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 611419,
+      "sha256": "9cf833af2fc9a82cdd89adc841078b1ea6d216824befd098a20f586b847bba05"
+    },
+    {
+      "kind": "local",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 773188,
+      "sha256": "21c68c9b01966ac8844fe2c2cf38344a180d241959c7cddf0703ac2c83fe19f7"
+    },
+    {
+      "kind": "tailnet",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 773188,
+      "sha256": "21c68c9b01966ac8844fe2c2cf38344a180d241959c7cddf0703ac2c83fe19f7"
+    },
+    {
+      "kind": "local",
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 611419,
+      "sha256": "9cf833af2fc9a82cdd89adc841078b1ea6d216824befd098a20f586b847bba05"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 611419,
+      "sha256": "9cf833af2fc9a82cdd89adc841078b1ea6d216824befd098a20f586b847bba05"
+    },
+    {
+      "kind": "local",
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 773869,
+      "sha256": "2be4ef87bc719f544cdcc4827d861b02dc5219a498664cbbc06ae225ee859686"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 773869,
+      "sha256": "2be4ef87bc719f544cdcc4827d861b02dc5219a498664cbbc06ae225ee859686"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 114770,
+      "sha256": "99b0274c378086bcb79ed589291da847d9dbbe33f9268f413137a8bfc472f422"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 114770,
+      "sha256": "99b0274c378086bcb79ed589291da847d9dbbe33f9268f413137a8bfc472f422"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-root-html-grid-implicit-rows.html",
+      "status": 200,
+      "bytes": 60106,
+      "sha256": "b580c09a47a172fffd446ac59034c74538f4ead6715a6fb919354dc449acec06"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-root-html-grid-implicit-rows.html",
+      "status": 200,
+      "bytes": 60106,
+      "sha256": "b580c09a47a172fffd446ac59034c74538f4ead6715a6fb919354dc449acec06"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+      "status": 200,
+      "bytes": 63262,
+      "sha256": "1e5ceb8bb9c38dc1bf1077c583ab55a4f81a1cd613352c5cb120e68d167f25b3"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+      "status": 200,
+      "bytes": 63262,
+      "sha256": "1e5ceb8bb9c38dc1bf1077c583ab55a4f81a1cd613352c5cb120e68d167f25b3"
+    },
+    {
+      "kind": "local",
+      "route": "plan/c11-root-html-grid-fr-named-areas.html",
+      "status": 200,
+      "bytes": 58697,
+      "sha256": "9dd83819d57ac0b8e48cc31156793f838ead12a5130f88522c07a16a08ca83e2"
+    },
+    {
+      "kind": "tailnet",
+      "route": "plan/c11-root-html-grid-fr-named-areas.html",
+      "status": 200,
+      "bytes": 58697,
+      "sha256": "9dd83819d57ac0b8e48cc31156793f838ead12a5130f88522c07a16a08ca83e2"
+    },
+    {
+      "kind": "local",
+      "route": "spec/plan/c11-root-html-grid-implicit-rows.html",
+      "status": 200,
+      "bytes": 60052,
+      "sha256": "4a493d8a98f3ae2b14f93d89624c7ceb8d16addcd63f5694583312b17bd4133a"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/plan/c11-root-html-grid-implicit-rows.html",
+      "status": 200,
+      "bytes": 60052,
+      "sha256": "4a493d8a98f3ae2b14f93d89624c7ceb8d16addcd63f5694583312b17bd4133a"
+    },
+    {
+      "kind": "local",
+      "route": "spec/plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+      "status": 200,
+      "bytes": 63231,
+      "sha256": "72e6a28de5e066214587d2371adf793889f8203fb4ce68469288f35acf7e70e8"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/plan/c11-root-html-grid-fr-percent-implicit-rows.html",
+      "status": 200,
+      "bytes": 63231,
+      "sha256": "72e6a28de5e066214587d2371adf793889f8203fb4ce68469288f35acf7e70e8"
+    },
+    {
+      "kind": "local",
+      "route": "spec/plan/c11-root-html-grid-fr-named-areas.html",
+      "status": 200,
+      "bytes": 58663,
+      "sha256": "f49164b0c0270f30d838a81b3eda6209dcd33fcc1e0efc14d8ef472633fa71b9"
+    },
+    {
+      "kind": "tailnet",
+      "route": "spec/plan/c11-root-html-grid-fr-named-areas.html",
+      "status": 200,
+      "bytes": 58663,
+      "sha256": "f49164b0c0270f30d838a81b3eda6209dcd33fcc1e0efc14d8ef472633fa71b9"
+    },
+    {
+      "kind": "local",
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 512188,
+      "sha256": "e7fbccf14d0b1206fb3021154faf6d88297070f384686af33a01cd24fa687a64"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 512188,
+      "sha256": "e7fbccf14d0b1206fb3021154faf6d88297070f384686af33a01cd24fa687a64"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 49132,
+      "sha256": "2e2f516a61099ee599cbcdfcb695759e1247ab150058884658fd60fc5baf2e97"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 49132,
+      "sha256": "2e2f516a61099ee599cbcdfcb695759e1247ab150058884658fd60fc5baf2e97"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 51231,
+      "sha256": "a6cbda94cac026a08f73aa0cd59bf2c60ee2c3ba7598b60c810e4e821eef9006"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 51231,
+      "sha256": "a6cbda94cac026a08f73aa0cd59bf2c60ee2c3ba7598b60c810e4e821eef9006"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 51819,
+      "sha256": "38310d02e8f4a30c4e4e730f5e0c0271a71a985dff6f6ffc451a268b712bf1a3"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 51819,
+      "sha256": "38310d02e8f4a30c4e4e730f5e0c0271a71a985dff6f6ffc451a268b712bf1a3"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 55079,
+      "sha256": "945fa9a9019992d69cc09a4038e769c28e6eed56045493c831bdccbc24a5b334"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 55079,
+      "sha256": "945fa9a9019992d69cc09a4038e769c28e6eed56045493c831bdccbc24a5b334"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd.png",
+      "status": 200,
+      "bytes": 23737,
+      "sha256": "6f9eb9d7de42d39a76b7c69b3e5bbfd48f5c1b6a97ee5da3184e72ba1c728f11"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/android-api37-avd.png",
+      "status": 200,
+      "bytes": 23737,
+      "sha256": "6f9eb9d7de42d39a76b7c69b3e5bbfd48f5c1b6a97ee5da3184e72ba1c728f11"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+      "status": 200,
+      "bytes": 74033,
+      "sha256": "2fd581d441cd22785447a4a18ed5201e003fac493e897f77bed5424bf8429439"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+      "status": 200,
+      "bytes": 74033,
+      "sha256": "2fd581d441cd22785447a4a18ed5201e003fac493e897f77bed5424bf8429439"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 49794,
+      "sha256": "007977ce39c1d13fe1de0cc1c3a9fdf2cd5c8999a586ea10c5e230abfc8ec20f"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 49794,
+      "sha256": "007977ce39c1d13fe1de0cc1c3a9fdf2cd5c8999a586ea10c5e230abfc8ec20f"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 53796,
+      "sha256": "7f6e2186237050fa92c56fd6629e143987a0e08972e3d5ab5be6a31e30a636cf"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 53796,
+      "sha256": "7f6e2186237050fa92c56fd6629e143987a0e08972e3d5ab5be6a31e30a636cf"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 52547,
+      "sha256": "2b974fbd37bed0f010b8bb66346dc309fee65723a903db32f16ed63bad79f0b6"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 52547,
+      "sha256": "2b974fbd37bed0f010b8bb66346dc309fee65723a903db32f16ed63bad79f0b6"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 55154,
+      "sha256": "6a1273c9d1a44639ff625ad6af4e9d4fd03c5c6d11a45d54809849690650acd2"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 55154,
+      "sha256": "6a1273c9d1a44639ff625ad6af4e9d4fd03c5c6d11a45d54809849690650acd2"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 52222,
+      "sha256": "2fd85b5bc04ae9dd3e635f26724221b9b2dd0da88ff9880dc97c1afdb2228be8"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 52222,
+      "sha256": "2fd85b5bc04ae9dd3e635f26724221b9b2dd0da88ff9880dc97c1afdb2228be8"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37.png",
+      "status": 200,
+      "bytes": 25148,
+      "sha256": "275587cfd26338443ff124e2a5e9cde826c9ada5ad921e57bd9f78b01450c3ff"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/android-api37.png",
+      "status": 200,
+      "bytes": 25148,
+      "sha256": "275587cfd26338443ff124e2a5e9cde826c9ada5ad921e57bd9f78b01450c3ff"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+      "status": 200,
+      "bytes": 76570,
+      "sha256": "d773e5721873208d324bf61438b57454a6085b093aab5f559a7ca38fbcc6084d"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-percent-implicit-rows-runtime-2026-11-02/ios-26_2-simulator.png",
+      "status": 200,
+      "bytes": 76570,
+      "sha256": "d773e5721873208d324bf61438b57454a6085b093aab5f559a7ca38fbcc6084d"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 48751,
+      "sha256": "92022164f71c67fb8e5d1f6ef6896fd48a0abf7b02b3bc75f9b69a669e68d264"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 48751,
+      "sha256": "92022164f71c67fb8e5d1f6ef6896fd48a0abf7b02b3bc75f9b69a669e68d264"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/chrome-agent-browser.png",
+      "status": 200,
+      "bytes": 3850,
+      "sha256": "20f58522ce5ed4d2ced34585a798367a524e2feaa395e1a29d48e5ca292d9951"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-precomparison-2026-11-02/chrome-agent-browser.png",
+      "status": 200,
+      "bytes": 3850,
+      "sha256": "20f58522ce5ed4d2ced34585a798367a524e2feaa395e1a29d48e5ca292d9951"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 55022,
+      "sha256": "4d0e60466cda9f01576e105aa5bd00041068d5cdbc760dbf215a61c0d9f429eb"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/README.html",
+      "status": 200,
+      "bytes": 55022,
+      "sha256": "4d0e60466cda9f01576e105aa5bd00041068d5cdbc760dbf215a61c0d9f429eb"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 51697,
+      "sha256": "b23dd2e983bfc86d38d8ab945e30e900a0763a93b18079205f9c8cc38c0c3d13"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/implementation-runtime-review-20.html",
+      "status": 200,
+      "bytes": 51697,
+      "sha256": "b23dd2e983bfc86d38d8ab945e30e900a0763a93b18079205f9c8cc38c0c3d13"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 53811,
+      "sha256": "b3b7471e38b2912980599b34f48e884dfe853904f94127b0157bf0b98aae912f"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 53811,
+      "sha256": "b3b7471e38b2912980599b34f48e884dfe853904f94127b0157bf0b98aae912f"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 51638,
+      "sha256": "ce5bef0e7986d633586747af0dcec52c71c19e2b71d40e98240edf7fbd093730"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/roadmap-postmerge-docs-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 51638,
+      "sha256": "ce5bef0e7986d633586747af0dcec52c71c19e2b71d40e98240edf7fbd093730"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/c11-root-html-grid-fr-named-areas.png",
+      "status": 200,
+      "bytes": 79904,
+      "sha256": "fe95ec42d6563db00603cd75f3843619530d6c7b42efdd6b9043b5d8e149ce8f"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/android-avd/c11-root-html-grid-fr-named-areas.png",
+      "status": 200,
+      "bytes": 79904,
+      "sha256": "fe95ec42d6563db00603cd75f3843619530d6c7b42efdd6b9043b5d8e149ce8f"
+    },
+    {
+      "kind": "local",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/c11-root-html-grid-fr-named-areas.png",
+      "status": 200,
+      "bytes": 70031,
+      "sha256": "0ac62014ee8627a186466116fa190ae5f387c5740298672e3a844fe271e24c37"
+    },
+    {
+      "kind": "tailnet",
+      "route": "internal/evidence/c11-root-html-grid-fr-named-areas-runtime-2026-11-02/ios-simulator/c11-root-html-grid-fr-named-areas.png",
+      "status": 200,
+      "bytes": 70031,
+      "sha256": "0ac62014ee8627a186466116fa190ae5f387c5740298672e3a844fe271e24c37"
+    }
+  ],
+  "server": {
+    "backendState": "Running",
+    "dnsName": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040
+  }
+}

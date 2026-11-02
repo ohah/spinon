@@ -1,0 +1,30 @@
+{
+  "sourceHead": "1068f1070ddf02d2a9d625c86c0d8902479eb510",
+  "selectedRouteCount": 385,
+  "changedRouteCount": 241,
+  "changedExistingRouteCount": 43,
+  "newRouteCount": 198,
+  "openChangedTargets": [],
+  "noDeletes": true,
+  "roadmapBefore": [
+    {
+      "kind": "local",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 502849,
+      "sha256": "1f1611d1aa651aba37fce76eea16f1fcf7c79dffb6318a5656863b01791b1f88"
+    },
+    {
+      "kind": "tailnet",
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 502849,
+      "sha256": "1f1611d1aa651aba37fce76eea16f1fcf7c79dffb6318a5656863b01791b1f88"
+    }
+  ],
+  "server": {
+    "backendState": "Running",
+    "dnsName": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040
+  }
+}
