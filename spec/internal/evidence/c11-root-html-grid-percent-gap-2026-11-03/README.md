@@ -43,6 +43,8 @@
 
 구현 commit은 `f92352d97eddfa5e6142d9db78d5a1900879587b`이며 [source revision](./source-revision.json)에 tree hash를 기록했다. 제품 범위는 기본 `RuntimeRootHtmlTextPaintV1` 경로에서 definite content-box axis를 basis로 하는 유한·비음수 percentage `row-gap`/`column-gap`이다. `gap` shorthand와 `grid-gap` alias는 computed longhand 경로를 공유한다. >100%는 clamp하지 않으며 math, indefinite basis, 비정상 값과 finite-f32 초과는 fail-closed한다. Flex와 다른 runtime profile은 변경하지 않았다.
 
+현재 후보 계약은 [내부 Grid 계약 0059](../../0059-c11-grid-layout.md)에 연결했으며 숫자 버전 `0.1.0`을 유지한다. 공식 상태 대장과 완료 수는 갱신하지 않았다.
+
 | 검사 | 결과 | 원본 |
 |---|---:|---|
 | Percentage-gap Root HTML cascade/projection/layout | 10/10 | [Rust log](./style-focused-pass02-clean.log) |
