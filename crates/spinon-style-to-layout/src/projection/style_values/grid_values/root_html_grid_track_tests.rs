@@ -353,28 +353,139 @@ fn root_html_named_area_profile_still_rejects_mixed_fraction_and_fixed_tracks() 
 }
 
 #[test]
-fn root_html_named_area_profile_still_rejects_percentage_tracks() {
+fn root_html_named_area_profile_projects_direct_px_percentage_track_pairs() {
+    let node = NodeId::new(11_190).unwrap();
+    let cases = [
+        (
+            vec![
+                ComputedCssGridTrackSize::Percentage(0.25),
+                ComputedCssGridTrackSize::Percentage(0.75),
+            ],
+            vec![
+                ComputedCssGridTrackSize::Percentage(0.2),
+                ComputedCssGridTrackSize::Percentage(0.8),
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::LengthPx(40.0),
+                ComputedCssGridTrackSize::Percentage(0.5),
+            ],
+            vec![
+                ComputedCssGridTrackSize::Percentage(0.2),
+                ComputedCssGridTrackSize::LengthPx(50.0),
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::Percentage(1.2),
+                ComputedCssGridTrackSize::Percentage(0.1),
+            ],
+            vec![
+                ComputedCssGridTrackSize::LengthPx(14.0),
+                ComputedCssGridTrackSize::LengthPx(56.0),
+            ],
+        ),
+    ];
+
+    let to_layout_track = |track| match track {
+        ComputedCssGridTrackSize::LengthPx(value) => GridTrackSize::LengthPx(value),
+        ComputedCssGridTrackSize::Percentage(value) => GridTrackSize::Percentage(value),
+        _ => unreachable!("the positive matrix contains only direct px/percentage tracks"),
+    };
+    for (columns, rows) in cases {
+        let mut grid = grid(columns.clone(), rows.clone());
+        grid.template_areas = Some(ComputedCssGridTemplateAreas {
+            rows: 2,
+            columns: 2,
+            areas: vec![
+                ComputedCssGridArea {
+                    name: "header".to_owned(),
+                    row_start: 0,
+                    row_end: 1,
+                    column_start: 0,
+                    column_end: 2,
+                },
+                ComputedCssGridArea {
+                    name: "side".to_owned(),
+                    row_start: 1,
+                    row_end: 2,
+                    column_start: 0,
+                    column_end: 1,
+                },
+                ComputedCssGridArea {
+                    name: "content".to_owned(),
+                    row_start: 1,
+                    row_end: 2,
+                    column_start: 1,
+                    column_end: 2,
+                },
+            ],
+        });
+
+        let projected = project_grid_layout(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        )
+        .expect("the bounded direct px/percentage area composition should project");
+        assert_eq!(
+            projected.columns,
+            columns.into_iter().map(to_layout_track).collect::<Vec<_>>()
+        );
+        assert_eq!(
+            projected.rows,
+            rows.into_iter().map(to_layout_track).collect::<Vec<_>>()
+        );
+        assert_eq!(
+            projected
+                .template_areas
+                .as_ref()
+                .map(|areas| (areas.rows, areas.columns)),
+            Some((2, 2))
+        );
+    }
+}
+
+#[test]
+fn root_html_named_area_profile_still_rejects_percentage_fraction_composition() {
     let node = NodeId::new(11_186).unwrap();
     let mut grid = grid(
         vec![
             ComputedCssGridTrackSize::Percentage(0.25),
-            ComputedCssGridTrackSize::Percentage(0.75),
+            ComputedCssGridTrackSize::Fraction(1.0),
         ],
         vec![
-            ComputedCssGridTrackSize::LengthPx(20.0),
-            ComputedCssGridTrackSize::LengthPx(50.0),
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::Percentage(0.75),
         ],
     );
     grid.template_areas = Some(ComputedCssGridTemplateAreas {
         rows: 2,
         columns: 2,
-        areas: vec![ComputedCssGridArea {
-            name: "header".to_owned(),
-            row_start: 0,
-            row_end: 1,
-            column_start: 0,
-            column_end: 2,
-        }],
+        areas: vec![
+            ComputedCssGridArea {
+                name: "header".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 0,
+                column_end: 2,
+            },
+            ComputedCssGridArea {
+                name: "side".to_owned(),
+                row_start: 1,
+                row_end: 2,
+                column_start: 0,
+                column_end: 1,
+            },
+            ComputedCssGridArea {
+                name: "content".to_owned(),
+                row_start: 1,
+                row_end: 2,
+                column_start: 1,
+                column_end: 2,
+            },
+        ],
     });
 
     let error = project_grid_layout(
@@ -382,7 +493,7 @@ fn root_html_named_area_profile_still_rejects_percentage_tracks() {
         &grid,
         ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
-    .expect_err("percentage tracks must not widen the fixed named-area subset");
+    .expect_err("percentage and fr tracks must remain disjoint in the named-area subset");
     assert!(matches!(
         error,
         crate::StyleLayoutError::UnsupportedComputedValue {

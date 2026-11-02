@@ -6,6 +6,32 @@ const SOURCE: &str = include_str!(
 const FRACTION_SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-fr-named-areas-runtime.html"
 );
+const PERCENTAGE_CASES: [(&str, &str); 4] = [
+    (
+        "both-axes",
+        include_str!(
+            "../../../../../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/both-axes.html"
+        ),
+    ),
+    (
+        "mixed-px-percent",
+        include_str!(
+            "../../../../../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/mixed-px-percent.html"
+        ),
+    ),
+    (
+        "overflowing-columns",
+        include_str!(
+            "../../../../../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/overflowing-columns.html"
+        ),
+    ),
+    (
+        "zero-track",
+        include_str!(
+            "../../../../../spec/internal/evidence/c11-root-html-grid-area-percentage-precomparison-2026-11-02/zero-track.html"
+        ),
+    ),
+];
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
@@ -214,6 +240,260 @@ fn c11_1_default_root_html_runtime_combines_named_areas_with_definite_fraction_t
 }
 
 #[test]
+fn c11_1_default_root_html_runtime_combines_named_areas_with_percentage_tracks() {
+    use spinon_render::OpaqueCssSrgb;
+    use spinon_style::ComputedCssGridTrackSize::{LengthPx, Percentage};
+
+    let cases = [
+        (
+            "both-axes",
+            [Percentage(0.25), Percentage(0.75)],
+            [Percentage(0.2), Percentage(0.8)],
+            [
+                [0.0, 0.0, 120.0, 14.0],
+                [0.0, 14.0, 30.0, 56.0],
+                [30.0, 14.0, 90.0, 56.0],
+            ],
+        ),
+        (
+            "mixed-px-percent",
+            [LengthPx(40.0), Percentage(0.5)],
+            [Percentage(0.2), LengthPx(50.0)],
+            [
+                [0.0, 0.0, 100.0, 14.0],
+                [0.0, 14.0, 40.0, 50.0],
+                [40.0, 14.0, 60.0, 50.0],
+            ],
+        ),
+        (
+            "overflowing-columns",
+            [Percentage(1.2), Percentage(0.1)],
+            [Percentage(0.2), Percentage(0.8)],
+            [
+                [0.0, 0.0, 156.0, 14.0],
+                [0.0, 14.0, 144.0, 56.0],
+                [144.0, 14.0, 12.0, 56.0],
+            ],
+        ),
+        (
+            "zero-track",
+            [Percentage(0.0), Percentage(1.0)],
+            [Percentage(0.2), Percentage(0.8)],
+            [
+                [0.0, 0.0, 120.0, 14.0],
+                [0.0, 14.0, 0.0, 56.0],
+                [0.0, 14.0, 120.0, 56.0],
+            ],
+        ),
+    ];
+    let colors = [
+        OpaqueCssSrgb::new(238, 51, 51),
+        OpaqueCssSrgb::new(51, 170, 51),
+        OpaqueCssSrgb::new(51, 102, 204),
+    ];
+
+    for ((name, source), (expected_name, columns, rows, expected_frames)) in
+        PERCENTAGE_CASES.iter().zip(cases)
+    {
+        assert_eq!(
+            *name, expected_name,
+            "fixed source order is part of the matrix"
+        );
+        let (session, layout) = run(source);
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "{name}: percentage named-area scene should be admitted: {layout:?}; cascade={:?}",
+            session.ua_cascade_snapshot()
+        );
+        let completed = layout
+            .completed
+            .expect("percentage named-area Grid layout should complete");
+        let scene = completed
+            .render_snapshot
+            .as_ref()
+            .expect("percentage named-area Grid should publish a Root HTML scene");
+        let cascade = session.ua_cascade_snapshot();
+        let cascade_completed = cascade
+            .completed
+            .expect("percentage Grid typed styles should complete");
+        assert_eq!(completed.key, cascade_completed.key, "{name} revision");
+        let root_style = cascade_completed.roots[0]
+            .styles
+            .elements
+            .iter()
+            .find(|style| style.grid_layout.is_some())
+            .expect("percentage named-area root should retain its computed style");
+        assert_eq!(
+            root_style.layout_dimensions.width,
+            spinon_style::ComputedCssDimension::LengthPx(120.0),
+            "{name} definite width basis"
+        );
+        assert_eq!(
+            root_style.layout_dimensions.height,
+            spinon_style::ComputedCssDimension::LengthPx(70.0),
+            "{name} definite height basis"
+        );
+        let root_grid = root_style
+            .grid_layout
+            .as_ref()
+            .expect("percentage named-area tracks should remain typed");
+        assert_eq!(root_grid.columns, columns, "{name} columns");
+        assert_eq!(root_grid.rows, rows, "{name} rows");
+        assert_eq!(
+            root_grid
+                .template_areas
+                .as_ref()
+                .map(|areas| (areas.rows, areas.columns)),
+            Some((2, 2)),
+            "{name} area map"
+        );
+        let root_frame = completed
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == root_style.node_id.get())
+            .expect("percentage named-area root should retain its layout frame");
+        assert_frame_close(
+            [
+                root_frame.x,
+                root_frame.y,
+                root_frame.width,
+                root_frame.height,
+            ],
+            [0.0, 0.0, 120.0, 70.0],
+            &format!("{name} root"),
+        );
+
+        for (index, (color, expected)) in colors.into_iter().zip(expected_frames).enumerate() {
+            let frame = scene
+                .boxes()
+                .iter()
+                .find_map(|render_box| {
+                    matches!(
+                        render_box.paint(),
+                        spinon_render::RuntimePaint::Opaque(actual) if actual == color
+                    )
+                    .then(|| {
+                        let frame = render_box.frame_css_px();
+                        [frame.x(), frame.y(), frame.width(), frame.height()]
+                    })
+                })
+                .or_else(|| {
+                    let style =
+                        cascade_completed.roots[0]
+                            .styles
+                            .elements
+                            .iter()
+                            .find(|style| {
+                                style.background_color.is_some_and(|background| {
+                                    background.red == color.red()
+                                        && background.green == color.green()
+                                        && background.blue == color.blue()
+                                })
+                            })?;
+                    let frame = completed
+                        .frames
+                        .iter()
+                        .find(|frame| frame.node_id == style.node_id.get())?;
+                    Some([frame.x, frame.y, frame.width, frame.height])
+                })
+                .unwrap_or_else(|| {
+                    panic!(
+                        "{name} semantic item {} should retain its layout frame",
+                        index
+                    )
+                });
+            assert_frame_close(
+                frame,
+                expected,
+                &format!("{name} {}", ["header", "side", "content"][index]),
+            );
+        }
+        if *name == "overflowing-columns" {
+            assert_eq!(expected_frames[2][0], 144.0);
+            assert!(expected_frames[0][2] > 120.0);
+            assert!(expected_frames[2][0] >= 120.0);
+        }
+    }
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_rejects_out_of_scope_percentage_named_area_inputs() {
+    let source = PERCENTAGE_CASES[0].1;
+    let cases = [
+        (
+            "indefinite row percentage basis",
+            source.replace("height: 70px;", "height: auto;"),
+            Some("height"),
+        ),
+        (
+            "minimum width override",
+            source.replace("width: 120px;", "width: 120px; min-width: 0;"),
+            Some("min-width"),
+        ),
+        (
+            "maximum height override",
+            source.replace("height: 70px;", "height: 70px; max-height: 71px;"),
+            None,
+        ),
+        (
+            "percentage gap",
+            source.replace("gap: 0;", "gap: 0 1%;"),
+            Some("column-gap"),
+        ),
+        (
+            "calc track",
+            source.replace(
+                "grid-template-columns: 25% 75%;",
+                "grid-template-columns: calc(25% + 10px) 75%;",
+            ),
+            None,
+        ),
+        (
+            "minmax track",
+            source.replace(
+                "grid-template-columns: 25% 75%;",
+                "grid-template-columns: minmax(0px, 25%) 75%;",
+            ),
+            None,
+        ),
+        (
+            "negative percentage track",
+            source.replace(
+                "grid-template-columns: 25% 75%;",
+                "grid-template-columns: -25% 75%;",
+            ),
+            None,
+        ),
+    ];
+
+    for (name, source, expected_property) in cases {
+        let (session, result) = run(&source);
+        assert_eq!(
+            result.state,
+            crate::session::RuntimeLayoutState::Failed,
+            "out-of-scope percentage named-area case={name} must fail closed: {result:?}; cascade={:?}",
+            session.ua_cascade_snapshot()
+        );
+        assert!(
+            result.completed.is_none(),
+            "{name} must not publish a partial scene"
+        );
+        let error = result
+            .error
+            .as_ref()
+            .expect("failed case should report an error");
+        if let Some(property) = expected_property {
+            assert_eq!(
+                error.property.as_deref(),
+                Some(property),
+                "{name}; error={error:?}"
+            );
+        }
+    }
+}
+
+#[test]
 fn c11_1_default_root_html_runtime_rejects_out_of_scope_fractional_named_area_tracks() {
     let cases = [
         (
@@ -238,16 +518,11 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_fractional_named_area_tr
             ),
         ),
         (
-            "percentage tracks",
-            FRACTION_SOURCE
-                .replace(
-                    "grid-template-columns: 1fr 2fr;",
-                    "grid-template-columns: 25% 75%;",
-                )
-                .replace(
-                    "grid-template-rows: 1fr 2fr;",
-                    "grid-template-rows: 25% 75%;",
-                ),
+            "percentage and fraction tracks",
+            FRACTION_SOURCE.replace(
+                "grid-template-columns: 1fr 2fr;",
+                "grid-template-columns: 25% 1fr;",
+            ),
         ),
         (
             "indefinite fraction row axis",
@@ -312,7 +587,7 @@ fn c11_1_default_root_html_runtime_rejects_out_of_scope_fractional_named_area_tr
             "wrong fraction ratio"
             | "wrong explicit track count"
             | "mixed px and fr tracks"
-            | "percentage tracks" => Some("grid-template-areas"),
+            | "percentage and fraction tracks" => Some("grid-template-areas"),
             "indefinite fraction row axis" => None,
             "minimum size override" => None,
             "maximum width override" => None,

@@ -5,6 +5,7 @@
 - Browser: Agent Browser with `HeadlessChrome/156.0.0.0`.
 - Viewport: 1280×633 CSS px at DPR 1.
 - Four source pages: both-axis percentages, mixed px/percentage tracks, overflowing columns above 100%, and a zero-width first percentage track.
+- The three item colors use `background-color` declarations. They are visually and semantically equivalent to the original shorthand, while keeping these Grid scenes within the runtime's existing CSS input profile; Grid declarations and geometry are unchanged.
 - Raw computed-style strings, DOMRects, and case IDs: [Chrome observation](./chrome-observation.json).
 - Normative independent calculation: [expected values](./expected.json).
 - Chrome screenshots: [`both axes`](./chrome-both-axes.png), [`mixed px and percentage`](./chrome-mixed-px-percent.png), [`overflowing columns`](./chrome-overflowing-columns.png), [`zero track`](./chrome-zero-track.png).
@@ -25,4 +26,4 @@ The expected values are calculated from the definite content-box axes and area b
 
 Chrome returned computed tracks `30px 90px` / `14px 56px` for the both-axis case, `40px 60px` / `14px 50px` for the mixed case, `144px 12px` / `14px 56px` for the overflowing case, and `0px 120px` / `14px 56px` for the zero-track case. All item frames match the independent arithmetic exactly at these integer boundaries. The overflowing page reports `root.scrollWidth=156` while the grid root remains 120px wide.
 
-These browser observations are an independent oracle only. They do not establish Spinon runtime behavior or standards conformance. Current-code rejection is separately anchored by the existing focused projection test [`root_html_named_area_profile_still_rejects_percentage_tracks`](../../../../crates/spinon-style-to-layout/src/projection/style_values/grid_values/root_html_grid_track_tests.rs), which passed 1/1 on the current `main` source. The runtime rejection matrix also names the case “percentage tracks remain unsupported with named areas” in `crates/spinon-runtime/src/session/tests/root_html_grid_fr/rejection_matrix.rs`.
+These browser observations are an independent oracle only. They do not establish Spinon runtime behavior or standards conformance. The default Root HTML runtime comparison is covered by [`c11_1_default_root_html_runtime_combines_named_areas_with_percentage_tracks`](../../../../crates/spinon-runtime/src/session/tests/root_html_grid_template_areas.rs); projection accepts only the exact 2×2 map and two direct px/percentage tracks per axis. Separate runtime rejection cases keep mixed `%`/`fr`, indefinite bases, nonzero percentage gap, math tracks, and negative percentages closed.
