@@ -1,0 +1,17 @@
+{
+  "archive": "target/release/libspinon_ffi.a",
+  "sha256": "9487fae39fb19baf1a155293655d818ccedd222ed5213f4fc1289e209c249ba1",
+  "sceneMarkers": {
+    "text-transform-full-size-kana-none-max-content": false,
+    "text-transform-full-size-kana-hiragana-min-content": false,
+    "text-transform-full-size-kana-hiragana-max-content": false,
+    "text-transform-full-size-kana-katakana-min-content": false,
+    "text-transform-full-size-kana-katakana-max-content": false,
+    "text-transform-full-size-kana-halfwidth-min-content": false,
+    "text-transform-full-size-kana-halfwidth-max-content": false,
+    "text-transform-full-size-kana-supplementary-min-content": false,
+    "text-transform-full-size-kana-supplementary-max-content": false,
+    "text-transform-full-size-kana-pass-through-max-content": false
+  },
+  "fixtureSymbol": false
+}

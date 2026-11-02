@@ -1,0 +1,33 @@
+   Compiling icu_casemap_data v2.3.0
+   Compiling icu_collections v2.3.0
+   Compiling simd-adler32 v0.3.10
+   Compiling adler2 v2.0.1
+   Compiling hypher v0.1.8
+   Compiling crc32fast v1.5.2
+   Compiling taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+   Compiling miniz_oxide v0.9.1
+   Compiling miniz_oxide v0.8.9
+   Compiling fdeflate v0.3.7
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_segmenter v2.3.0
+   Compiling parley_data v0.12.0
+   Compiling idna_adapter v1.2.2
+   Compiling icu_casemap v2.3.0
+   Compiling idna v1.1.0
+   Compiling parley_engine v0.12.0
+   Compiling flate2 v1.1.10
+   Compiling url v2.5.8
+   Compiling png v0.18.1
+   Compiling parley v0.12.0
+   Compiling stylo_traits v0.22.0
+   Compiling stylo v0.22.0
+   Compiling spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+    Finished `release` profile [optimized] target(s) in 31.17s

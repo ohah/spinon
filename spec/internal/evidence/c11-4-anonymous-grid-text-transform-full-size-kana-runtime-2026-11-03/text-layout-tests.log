@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_text_layout-ffc4ff1bdac63dd3)
+
+running 3 tests
+test normalize::text_transform::tests::full_size_kana_table_has_58_unique_sources_and_maps_every_entry ... ok
+test engine::tests::c11_4_text_transform::c114_text_transform_full_size_kana_rejects_out_of_profile_inputs ... ok
+test engine::tests::c11_4_text_transform::c114_text_transform_full_size_kana_maps_all_script_groups_before_intrinsic_sizing ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 106 filtered out; finished in 0.06s
+
