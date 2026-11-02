@@ -16042,7 +16042,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         let trace = String(report[range.lowerBound...])
         let chunkSize = 800
-        let chunkCount = (trace.utf8.count + chunkSize - 1) / chunkSize
+        let chunkCount = (trace.count + chunkSize - 1) / chunkSize
         var start = trace.startIndex
         var chunkIndex = 0
         while start < trace.endIndex {
