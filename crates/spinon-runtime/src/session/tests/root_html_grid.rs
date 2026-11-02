@@ -582,11 +582,6 @@ fn c11_1_root_html_default_runtime_rejects_out_of_scope_author_grid_inputs() {
             SOURCE.replace("40px 80px", "minmax(0px,1fr) 2fr"),
         ),
         (
-            "percentage track",
-            "unsupported_computed_value",
-            SOURCE.replace("40px 80px", "40px 50%"),
-        ),
-        (
             "named grid area",
             "unsupported_computed_value",
             SOURCE.replace(

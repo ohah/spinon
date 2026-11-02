@@ -9,11 +9,22 @@
   "fixtureSha256": "2f58aa4b35548ce178a053afeeb56a788b6de0c52abbe6bab0ee34ad80ce71c7",
   "runtimeFixture": {
     "path": "tests/fixtures/css/c11/root-html-grid-percentage-runtime.html",
-    "sha256": "e48278bcae5c9dbf1510ef56edb9fec8413bc4cf78ffbc9316c99bc07aa1cb8c",
+    "sha256": "957686766fd7c11441c4c4d84f755f4eb353b69867a73fd01489f8ffa5523153",
     "expectedColumns": [60, 120, 20],
     "expectedRows": [30, 60, 10],
     "expectedColumnOrigins": [0, 70, 200],
     "expectedRowOrigins": [0, 35, 100]
+  },
+  "runtimeOverflowScene": {
+    "root": [0, 120, 200, 40],
+    "columns": [240, 20],
+    "rows": [40],
+    "columnGap": 8,
+    "itemOrigins": [[0, 120], [248, 120]],
+    "itemSize": [8, 6],
+    "visibleOverflowItemRightEdge": 256,
+    "trackAreaRightEdge": 268,
+    "rootRightEdge": 200
   },
   "toleranceCssPx": 0.02,
   "positiveScenes": [

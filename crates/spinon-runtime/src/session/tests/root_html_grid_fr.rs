@@ -18,6 +18,11 @@ const HTML_TEMPLATE: &str = r#"<!doctype html>
     .b { background-color: #3b82f6; }
     .c { background-color: #16a34a; }
     .d { background-color: #f59e0b; }
+    .e { background-color: #a855f7; }
+    .f { background-color: #eab308; }
+    .g { background-color: #14b8a6; }
+    .h { background-color: #ec4899; }
+    .i { background-color: #94a3b8; }
     .semantic-blue { background-color: #3b82f6; }
     .semantic-red { background-color: #e5484d; }
   </style>
@@ -98,11 +103,11 @@ fn frame_for_paint(
     [frame.x(), frame.y(), frame.width(), frame.height()]
 }
 
-fn assert_frame(actual: [f32; 4], expected: [f32; 4], scene: &str) {
-    for (axis, (actual, expected)) in actual.into_iter().zip(expected).enumerate() {
+fn assert_frame(actual_frame: [f32; 4], expected_frame: [f32; 4], scene: &str) {
+    for (axis, (actual, expected)) in actual_frame.into_iter().zip(expected_frame).enumerate() {
         assert!(
             actual.is_finite() && (actual - expected).abs() <= 0.02,
-            "{scene} frame component {axis}: got {actual}, expected {expected} ± 0.02"
+            "{scene} frame component {axis}: actual frame={actual_frame:?}, expected frame={expected_frame:?} ± 0.02"
         );
     }
 }

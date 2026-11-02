@@ -4,9 +4,9 @@
 
 **구현 전 비교:** [독립 기대값과 Chrome 156 관측](../spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/README.md) · [다중 case HTML](../tests/fixtures/css/c11/root-html-grid-percentage-precomparison.html) · [simulator 입력 HTML](../tests/fixtures/css/c11/root-html-grid-percentage-runtime.html) · [expected.json](../spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/expected.json) · [Chrome observation](../spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/chrome156-observation.json)
 
-**계획 실패 관점 검토:** [20개](./c11-root-html-grid-percentage-tracks-plan-review-20.md) · **계획 PR diff 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/plan-pr-diff-review-30.md).
+**계획 실패 관점 검토:** [20개](./c11-root-html-grid-percentage-tracks-plan-review-20.md) · **계획 PR diff 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-percentage-precomparison-2026-11-02/plan-pr-diff-review-30.md) · **구현/runtime 실패 관점 검토:** [20개](../spec/internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/implementation-runtime-review-20.md) · **구현 PR diff 적대 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/pr-delta-review-30.md).
 
-**상태:** 계획 후보. 이 계획 PR이 병합되기 전에는 구현을 시작하지 않는다. 이 제한 slice를 구현하더라도 C11.1·C11 전체 완료나 공개 CSS Grid 지원으로 승격하지 않는다.
+**상태:** 계획 승인됨 ([PR #1018](https://github.com/ohah/spinon/pull/1018), 2026-11-02 Rebase and merge). 제한 범위의 implementation candidate를 같은 체크아웃에서 검증 중이다. 이 slice가 구현·병합되더라도 C11.1·C11 전체 완료나 공개 CSS Grid 지원으로 승격하지 않는다.
 
 ## 구현 전 확인한 결손
 
@@ -45,7 +45,7 @@
 | `percentage-gap` | Root HTML adapter에서 거부 | 기존 fixed-px-only gap 범위 유지 |
 | `percentage-areas` | Root HTML adapter에서 거부 | 기존 fixed named-area 크기 제약 유지 |
 
-Runtime expected frames는 독립 계산값과 CSS 0.02px 이내로 비교한다. Chrome `getComputedStyle()`/`DOMRect`의 1/64 CSS px 정밀도를 감안해 exact string identity를 요구하지 않는다. Simulator와 end-to-end Root HTML 비교는 양성 `both-axes` case만 담은 [positive-only runtime fixture](../tests/fixtures/css/c11/root-html-grid-percentage-runtime.html)를 사용한다. 나머지 positive/negative track-list matrix는 고정 multi-case precomparison fixture의 CSS와 같은 선언을 projection/runtime focused tests에 직접 옮겨 검증한다. Browser-only `spacer`와 invalid negative scene은 simulator input에 넣지 않는다.
+Runtime expected frames는 독립 계산값과 CSS 0.02px 이내로 비교한다. Chrome `getComputedStyle()`/`DOMRect`의 1/64 CSS px 정밀도를 감안해 exact string identity를 요구하지 않는다. Simulator와 end-to-end Root HTML 비교는 양성 `both-axes` 및 visible `overfull-columns` case만 담은 [positive-only runtime fixture](../tests/fixtures/css/c11/root-html-grid-percentage-runtime.html)를 사용한다. 두 번째 Grid의 10% track은 200px root 끝을 넘어 x=248px에 놓이며, root에 overflow clipping이 없어 화면 밖 track area 안의 8px marker를 유지한다. 나머지 positive/negative track-list matrix는 고정 multi-case precomparison fixture의 CSS와 같은 선언을 projection/runtime focused tests에 직접 옮겨 검증한다. Browser-only `spacer`와 invalid negative scene은 simulator input에 넣지 않는다.
 
 ## 구현 수락 기준
 

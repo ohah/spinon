@@ -139,13 +139,14 @@ fn validate_root_html_grid_tracks(
             || line_names.iter().any(|group| !group.is_empty())
             || tracks.iter().any(|track| match track {
                 ComputedCssGridTrackSize::LengthPx(value)
+                | ComputedCssGridTrackSize::Percentage(value)
                 | ComputedCssGridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
                 _ => true,
             })
         {
             return Err(unsupported(
                 property,
-                "Root HTML Grid은 이름 없는 finite non-negative px/fr direct explicit track만 지원합니다",
+                "Root HTML Grid은 이름 없는 finite non-negative px/percentage/fr direct explicit track만 지원합니다",
             ));
         }
     }
@@ -1424,8 +1425,8 @@ fn project_track(
 mod tests;
 
 #[cfg(test)]
-#[path = "grid_values/root_html_fr_track_tests.rs"]
-mod root_html_fr_track_tests;
+#[path = "grid_values/root_html_grid_track_tests.rs"]
+mod root_html_grid_track_tests;
 
 #[cfg(test)]
 #[path = "grid_values/auto_repeat_neighbor_tests.rs"]

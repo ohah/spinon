@@ -23,6 +23,15 @@
         background-color: #101820;
       }
 
+      .overflow-grid {
+        width: 200px;
+        height: 40px;
+        grid-template-columns: 120% 10%;
+        grid-template-rows: 100%;
+        column-gap: 8px;
+        row-gap: 0;
+      }
+
       .marker {
         width: 8px;
         height: 6px;
@@ -31,6 +40,8 @@
       .marker:nth-child(3n + 1) { background-color: #e5484d; }
       .marker:nth-child(3n + 2) { background-color: #3b82f6; }
       .marker:nth-child(3n) { background-color: #3a8f5b; }
+      .overflow-first { width: 8px; height: 6px; background-color: #f59e0b; }
+      .overflow-second { width: 8px; height: 6px; background-color: #a855f7; }
     </style>
   </head>
   <body>
@@ -38,6 +49,9 @@
       <div class="marker"></div><div class="marker"></div><div class="marker"></div>
       <div class="marker"></div><div class="marker"></div><div class="marker"></div>
       <div class="marker"></div><div class="marker"></div><div class="marker"></div>
+    </main>
+    <main class="overflow-grid">
+      <div class="overflow-first"></div><div class="overflow-second"></div>
     </main>
   </body>
 </html>
