@@ -4,7 +4,7 @@
 
 **구현 전 기준:** [Chrome 156 관측과 독립 계산](../spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-column-flow-fr-auto-columns-precomparison.html) · [plan 실패 관점 20개](./c11-root-html-grid-column-flow-fr-implicit-columns-plan-review-20.md) · [계획 PR diff 검토 30개](../spec/internal/evidence/c11-root-html-grid-column-flow-fr-auto-columns-precomparison-2026-11-02/plan-pr-diff-review-30.md).
 
-**상태:** 구현 후보를 검증했다. 계획 PR [#1065](https://github.com/ohah/spinon/pull/1065)이 병합됐고, 현재 변경은 기본 parsed Root HTML 경로의 direct finite non-negative `fr` auto-column scalar/list만 연결한다. 별도 구현/runtime 실패 관점 20개와 실제 구현 diff 30개 검토를 마쳤다. 구현 PR의 checks와 merge는 남아 있다. 이 제한 slice는 C11.1 또는 C11 완료, 공식 `72/213` 증가를 뜻하지 않는다.
+**상태:** 제한 구현 PR [#1066](https://github.com/ohah/spinon/pull/1066)이 `2026-11-02T15:41:43Z` Rebase and merge됐다(merge SHA `2dde385c5f240c8b8837b9e55d9c5431f5f9294b`). 기본 parsed Root HTML 경로에서 direct finite non-negative `fr` auto-column scalar/list를 지원한다. 구현/runtime 실패 관점 20개와 실제 구현 diff 30개 검토를 기록했다. PR check rollup은 비어 있고 main required status checks도 설정되지 않았다. 이 제한 slice는 C11.1 또는 C11 완료, 공식 `72/213` 증가를 뜻하지 않는다.
 
 ## 구현 전 확인한 결손
 
