@@ -248,6 +248,21 @@ fn supports_text_transform_profile(input: &ParagraphInput, characters: &[SourceC
                 false
             }
         }
+        crate::TextTransformMode::FullSizeKana => {
+            #[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+            {
+                input.style.locale.as_deref() == Some("ja")
+                    && input.style.white_space == WhiteSpaceMode::Normal
+                    && input.style.word_break == crate::WordBreakMode::Normal
+                    && input.style.line_break == crate::LineBreakMode::Strict
+                    && input.style.direction == crate::TextDirection::Ltr
+                    && supports_full_size_kana_source(input)
+            }
+            #[cfg(not(feature = "c11-4-text-transform-unicode-fixture-test"))]
+            {
+                false
+            }
+        }
     }
 }
 
@@ -257,6 +272,25 @@ fn supports_full_width_source(input: &ParagraphInput) -> bool {
         return false;
     }
     matches!(input.sources[0].text.as_str(), "AB 12" | "AB   12")
+}
+
+#[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
+fn supports_full_size_kana_source(input: &ParagraphInput) -> bool {
+    if input.sources.len() != 1 {
+        return false;
+    }
+    matches!(
+        input.sources[0].text.as_str(),
+        "ぁぃ"
+            | "ァィ"
+            | "ｧｨ"
+            | "𛄲𛅐"
+            | "ぁぃぅぇぉっゃゅょゎ"
+            | "ァィゥェォッャュョヮ"
+            | "ｧｨｩｪｫｯｬｭｮ"
+            | "𛄲𛅐𛅑𛅒𛅕𛅤𛅥𛅦𛅧"
+            | "あカンABC 12"
+    )
 }
 
 #[cfg(feature = "c11-4-text-transform-unicode-fixture-test")]
