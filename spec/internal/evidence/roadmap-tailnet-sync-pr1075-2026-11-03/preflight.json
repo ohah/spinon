@@ -1,0 +1,1231 @@
+{
+  "sourceHead": "42d591f3f2509a0b5c9795815eb45ea206c0197d",
+  "sourceTree": "3065acaf805369958426c43680ebc1555021d46a",
+  "backendState": "Running",
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 527200,
+  "localRoadmapSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+  "selectedRouteCount": 120,
+  "selectedBytes": 12858919,
+  "counts": {
+    "create": 17,
+    "replace": 16,
+    "same": 87
+  },
+  "routesWithPreExistingReaders": [
+    {
+      "route": "STATUS.html",
+      "pids": [
+        28040
+      ]
+    }
+  ],
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1075-2026-11-03/pass01",
+  "replacementPolicy": "Back up prior bytes and atomically rename a same-directory temporary file. Open readers retain their old inode; no existing route is truncated in place and no route is removed.",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 530667,
+      "sourceSha256": "3f3bd5d2b1cb988e91ceaab05d67d9a6d4ccdf19ee60386e6cc1eab03610bf3e",
+      "targetExists": true,
+      "targetBytes": 530667,
+      "targetSha256": "b7283cd7779720bb03264b377fcc1d8fbaec7d200729e5b98c9d5063eab221f9",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 373412,
+      "sourceSha256": "5272908f5c9b6503fe3a34c6f10fbbfba8938513d4e97511ac8ce98f48ff71e6",
+      "targetExists": true,
+      "targetBytes": 373412,
+      "targetSha256": "5272908f5c9b6503fe3a34c6f10fbbfba8938513d4e97511ac8ce98f48ff71e6",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-api37-avd.png",
+      "action": "same",
+      "sourceBytes": 24656,
+      "sourceSha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c",
+      "targetExists": true,
+      "targetBytes": 24656,
+      "targetSha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-app-pid.txt",
+      "action": "same",
+      "sourceBytes": 5,
+      "sourceSha256": "27d838e8b45f1357234cf9c7ffb448d3d18597bf0e2afe1fd83b273787a47ab6",
+      "targetExists": true,
+      "targetBytes": 5,
+      "targetSha256": "27d838e8b45f1357234cf9c7ffb448d3d18597bf0e2afe1fd83b273787a47ab6",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-build-pass01.log",
+      "action": "same",
+      "sourceBytes": 4927,
+      "sourceSha256": "8569d25a8892f95c9b3d4c1b69ce5369e1fc57c48970ab707bbde72ca800900e",
+      "targetExists": true,
+      "targetBytes": 4927,
+      "targetSha256": "8569d25a8892f95c9b3d4c1b69ce5369e1fc57c48970ab707bbde72ca800900e",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-launch.log",
+      "action": "same",
+      "sourceBytes": 172,
+      "sourceSha256": "ce6fc18e89be73ecabdb5c7f6d4d53eb3629bc0bec3f970833573f3cc340cb8f",
+      "targetExists": true,
+      "targetBytes": 172,
+      "targetSha256": "ce6fc18e89be73ecabdb5c7f6d4d53eb3629bc0bec3f970833573f3cc340cb8f",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-runtime.log",
+      "action": "same",
+      "sourceBytes": 6399,
+      "sourceSha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7",
+      "targetExists": true,
+      "targetBytes": 6399,
+      "targetSha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/build-sha256.txt",
+      "action": "same",
+      "sourceBytes": 815,
+      "sourceSha256": "a78f0fedd6b50cdffed2356af21a5422aa82dceb574b170c24cc314ea8c3b046",
+      "targetExists": true,
+      "targetBytes": 815,
+      "targetSha256": "a78f0fedd6b50cdffed2356af21a5422aa82dceb574b170c24cc314ea8c3b046",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 7694,
+      "sourceSha256": "12de0fa47eb4ae66473c334618e3f1de0d9dc32fb1d77380ca9d39ef1648bb12",
+      "targetExists": true,
+      "targetBytes": 7694,
+      "targetSha256": "12de0fa47eb4ae66473c334618e3f1de0d9dc32fb1d77380ca9d39ef1648bb12",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-precomparison.png",
+      "action": "same",
+      "sourceBytes": 4030,
+      "sourceSha256": "f415a6f8922b7e4e1c3829241a35bd6d5588007f316d6055f259c6b94961a1c4",
+      "targetExists": true,
+      "targetBytes": 4030,
+      "targetSha256": "f415a6f8922b7e4e1c3829241a35bd6d5588007f316d6055f259c6b94961a1c4",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/clippy-pass02.log",
+      "action": "same",
+      "sourceBytes": 380,
+      "sourceSha256": "d984b26d697de36250b69941c4449a81fdc4a120e363755b1e3c0c194e726da4",
+      "targetExists": true,
+      "targetBytes": 380,
+      "targetSha256": "d984b26d697de36250b69941c4449a81fdc4a120e363755b1e3c0c194e726da4",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/diff-check-pass02.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/format-check-pass02.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 30678,
+      "sourceSha256": "39455ab715a52d2112d28cab8d8080bd578f21a47c27b9efca334bc6622019a8",
+      "targetExists": true,
+      "targetBytes": 30678,
+      "targetSha256": "61a3fdd04d082dd6361176a72cbf013f70c333da4e324f63b84809a50fb1a159",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 5345,
+      "sourceSha256": "bb1256c1eaaa07fbd48f727a294287571bb410c3589ca0d266eba1e793d3af28",
+      "targetExists": true,
+      "targetBytes": 5345,
+      "targetSha256": "bb1256c1eaaa07fbd48f727a294287571bb410c3589ca0d266eba1e793d3af28",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-26_2-simulator.png",
+      "action": "same",
+      "sourceBytes": 86932,
+      "sourceSha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc",
+      "targetExists": true,
+      "targetBytes": 86932,
+      "targetSha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "b2ac28f2e7bdd2766e16ad20817f3d9c03be9d8fb0fcff002243ac797732d532",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "b2ac28f2e7bdd2766e16ad20817f3d9c03be9d8fb0fcff002243ac797732d532",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-runtime.log",
+      "action": "same",
+      "sourceBytes": 36976,
+      "sourceSha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557",
+      "targetExists": true,
+      "targetBytes": 36976,
+      "targetSha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-simulator-build-pass01-clean.log",
+      "action": "same",
+      "sourceBytes": 66810,
+      "sourceSha256": "38b2cb6844eb2093832fdf98df8cf3ff2410a52d8b3042dcf9affd0194096513",
+      "targetExists": true,
+      "targetBytes": 66810,
+      "targetSha256": "38b2cb6844eb2093832fdf98df8cf3ff2410a52d8b3042dcf9affd0194096513",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-focused-pass02-clean.log",
+      "action": "same",
+      "sourceBytes": 8974,
+      "sourceSha256": "7e7e8c09e8703dc2199e49131003c87df34ecb9c4e03ecc66c1fcec3817bf8da",
+      "targetExists": true,
+      "targetBytes": 8974,
+      "targetSha256": "7e7e8c09e8703dc2199e49131003c87df34ecb9c4e03ecc66c1fcec3817bf8da",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-package-full-pass01.log",
+      "action": "same",
+      "sourceBytes": 43096,
+      "sourceSha256": "74c16367470a023e46a082f15b2bef48b2aa5c3f7fa9326a84e6cb909bfeb5e8",
+      "targetExists": true,
+      "targetBytes": 43096,
+      "targetSha256": "74c16367470a023e46a082f15b2bef48b2aa5c3f7fa9326a84e6cb909bfeb5e8",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/platform-runtime-observation.json",
+      "action": "same",
+      "sourceBytes": 2446,
+      "sourceSha256": "3e55bc6439c3745b3b935caf46b577d5c310d6d6d5c6fbc97dfa820c815aedea",
+      "targetExists": true,
+      "targetBytes": 2446,
+      "targetSha256": "3e55bc6439c3745b3b935caf46b577d5c310d6d6d5c6fbc97dfa820c815aedea",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 34767,
+      "sourceSha256": "6c59588cec81a8ec2670dac96bf41a9bebf11bb7803ce5a569ffb4af3c87d8b4",
+      "targetExists": true,
+      "targetBytes": 34767,
+      "targetSha256": "42745e08b40ef98fd1bc2c36dd08fb7062f345a873cbcc66989d1394c50d2ce7",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 8854,
+      "sourceSha256": "0610b9004244b8ac32aed2aa14247c0d5a53f455c34ae38a8e856e88b8e8d9a3",
+      "targetExists": true,
+      "targetBytes": 8854,
+      "targetSha256": "0610b9004244b8ac32aed2aa14247c0d5a53f455c34ae38a8e856e88b8e8d9a3",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html",
+      "action": "replace",
+      "sourceBytes": 39203,
+      "sourceSha256": "a905d73b379c55bb3d70981a27985d2ff476cf483ccde1c4b70f058adefa59f5",
+      "targetExists": true,
+      "targetBytes": 39203,
+      "targetSha256": "241196430599aba47fec8e3d11df9c1dc58b3604b698cd920b833e4230373e08",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md",
+      "action": "same",
+      "sourceBytes": 10581,
+      "sourceSha256": "3b2dcb7422faa5d1c60441d05b7b2757bc3bf6ffacc66cfd61e557dc69467cb2",
+      "targetExists": true,
+      "targetBytes": 10581,
+      "targetSha256": "3b2dcb7422faa5d1c60441d05b7b2757bc3bf6ffacc66cfd61e557dc69467cb2",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/restored-bootstrap-sha256.txt",
+      "action": "same",
+      "sourceBytes": 490,
+      "sourceSha256": "113f4edf8f30baeee03266a133fc3ff74ace750802f8293e986371abe95a7711",
+      "targetExists": true,
+      "targetBytes": 490,
+      "targetSha256": "113f4edf8f30baeee03266a133fc3ff74ace750802f8293e986371abe95a7711",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 30184,
+      "sourceSha256": "2f4a85614c16602f35395c54be15597dddd9bca0b64f0570feb5b1d6a425e7ad",
+      "targetExists": true,
+      "targetBytes": 30184,
+      "targetSha256": "3ee5e732fcb8ab19f4a6ce2a7f3dea36d4ff2bc0e2f6ad847fbde41609c36708",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 5300,
+      "sourceSha256": "9509f778af57228049e6ddd6d8e76870f2981c6ab94bbab958a163fbe8687ffa",
+      "targetExists": true,
+      "targetBytes": 5300,
+      "targetSha256": "9509f778af57228049e6ddd6d8e76870f2981c6ab94bbab958a163fbe8687ffa",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/root-html-grid-percentage-gap-runtime.html",
+      "action": "same",
+      "sourceBytes": 1003,
+      "sourceSha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e",
+      "targetExists": true,
+      "targetBytes": 1003,
+      "targetSha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/rust-runtime-fixture-pass01-clean.log",
+      "action": "same",
+      "sourceBytes": 567,
+      "sourceSha256": "7950d32f636e46de02dc953379b9b52f3e43bab1f2c7338acde9167e9c14af85",
+      "targetExists": true,
+      "targetBytes": 567,
+      "targetSha256": "7950d32f636e46de02dc953379b9b52f3e43bab1f2c7338acde9167e9c14af85",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/source-revision.json",
+      "action": "same",
+      "sourceBytes": 113,
+      "sourceSha256": "56973e5f8775861961461358c0b1eeaf724c66ad65b4ad52e67d635f6bccb3b6",
+      "targetExists": true,
+      "targetBytes": 113,
+      "targetSha256": "56973e5f8775861961461358c0b1eeaf724c66ad65b4ad52e67d635f6bccb3b6",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-focused-pass02-clean.log",
+      "action": "same",
+      "sourceBytes": 1762,
+      "sourceSha256": "0ea47c4150c46ffa7ea14da83b2c6e646495a17d7cdbe42402d4731b55f510b9",
+      "targetExists": true,
+      "targetBytes": 1762,
+      "targetSha256": "0ea47c4150c46ffa7ea14da83b2c6e646495a17d7cdbe42402d4731b55f510b9",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-gap-helper-pass01-clean.log",
+      "action": "same",
+      "sourceBytes": 694,
+      "sourceSha256": "bde7d37cc7ad9e116a1af85d8462225ef12c372f34ebefe907d9d599f3c21b80",
+      "targetExists": true,
+      "targetBytes": 694,
+      "targetSha256": "bde7d37cc7ad9e116a1af85d8462225ef12c372f34ebefe907d9d599f3c21b80",
+      "openReaderPids": []
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-package-full-pass01.log",
+      "action": "same",
+      "sourceBytes": 40168,
+      "sourceSha256": "7b62862ed0973c39da627f72af18841debe262130b0d07e747fc7ea78bc4f1a7",
+      "targetExists": true,
+      "targetBytes": 40168,
+      "targetSha256": "7b62862ed0973c39da627f72af18841debe262130b0d07e747fc7ea78bc4f1a7",
+      "openReaderPids": []
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 128277,
+      "sourceSha256": "bac2e6f680f45bf07b278b741519de5069b0e6409f5c128c305ebf49bea689aa",
+      "targetExists": true,
+      "targetBytes": 128277,
+      "targetSha256": "cc9e82a4902014c1213218c37123b4f64ff4f2d328e8a79795f2a93773446b3c",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "action": "same",
+      "sourceBytes": 59487,
+      "sourceSha256": "376af13556d0ff49e17e0b003f0ada5d0149a99f3a3e0dcc05f4978da68c6538",
+      "targetExists": true,
+      "targetBytes": 59487,
+      "targetSha256": "376af13556d0ff49e17e0b003f0ada5d0149a99f3a3e0dcc05f4978da68c6538",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-percentage-gap.html",
+      "action": "replace",
+      "sourceBytes": 34791,
+      "sourceSha256": "ed4f9f9ba0aa0c900c0c8e94f3ac1d79757fb07c4267dfa9ca622347ea9c1d62",
+      "targetExists": true,
+      "targetBytes": 34791,
+      "targetSha256": "9992c81eaa9b17949ce2279849237e69852b466bd8b35c4397330f73de8f08de",
+      "openReaderPids": []
+    },
+    {
+      "route": "plan/c11-root-html-grid-percentage-gap.md",
+      "action": "same",
+      "sourceBytes": 8818,
+      "sourceSha256": "779fb99edf409f8a2fb75b0e93a7025af776c127fe74085fe6b50db178a0eef7",
+      "targetExists": true,
+      "targetBytes": 8818,
+      "targetSha256": "779fb99edf409f8a2fb75b0e93a7025af776c127fe74085fe6b50db178a0eef7",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/roadmap.html",
+      "action": "same",
+      "sourceBytes": 527200,
+      "sourceSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "targetExists": true,
+      "targetBytes": 527200,
+      "targetSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "openReaderPids": []
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openReaderPids": []
+    },
+    {
+      "route": "roadmap.html",
+      "action": "same",
+      "sourceBytes": 527200,
+      "sourceSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "targetExists": true,
+      "targetBytes": 527200,
+      "targetSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "openReaderPids": []
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 530768,
+      "sourceSha256": "b6210c4ca156391566c5602bff01f7b43f1c149376a5ed38c9369f064cfcfaba",
+      "targetExists": true,
+      "targetBytes": 530768,
+      "targetSha256": "0c30d0ec217553f9c1ab398f41af538914bd688d801c9c21a55378a6994fa8ab",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 373412,
+      "sourceSha256": "5272908f5c9b6503fe3a34c6f10fbbfba8938513d4e97511ac8ce98f48ff71e6",
+      "targetExists": true,
+      "targetBytes": 373412,
+      "targetSha256": "5272908f5c9b6503fe3a34c6f10fbbfba8938513d4e97511ac8ce98f48ff71e6",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-api37-avd.png",
+      "action": "same",
+      "sourceBytes": 24656,
+      "sourceSha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c",
+      "targetExists": true,
+      "targetBytes": 24656,
+      "targetSha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-app-pid.txt",
+      "action": "same",
+      "sourceBytes": 5,
+      "sourceSha256": "27d838e8b45f1357234cf9c7ffb448d3d18597bf0e2afe1fd83b273787a47ab6",
+      "targetExists": true,
+      "targetBytes": 5,
+      "targetSha256": "27d838e8b45f1357234cf9c7ffb448d3d18597bf0e2afe1fd83b273787a47ab6",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-build-pass01.log",
+      "action": "same",
+      "sourceBytes": 4927,
+      "sourceSha256": "8569d25a8892f95c9b3d4c1b69ce5369e1fc57c48970ab707bbde72ca800900e",
+      "targetExists": true,
+      "targetBytes": 4927,
+      "targetSha256": "8569d25a8892f95c9b3d4c1b69ce5369e1fc57c48970ab707bbde72ca800900e",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-launch.log",
+      "action": "same",
+      "sourceBytes": 172,
+      "sourceSha256": "ce6fc18e89be73ecabdb5c7f6d4d53eb3629bc0bec3f970833573f3cc340cb8f",
+      "targetExists": true,
+      "targetBytes": 172,
+      "targetSha256": "ce6fc18e89be73ecabdb5c7f6d4d53eb3629bc0bec3f970833573f3cc340cb8f",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-runtime.log",
+      "action": "same",
+      "sourceBytes": 6399,
+      "sourceSha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7",
+      "targetExists": true,
+      "targetBytes": 6399,
+      "targetSha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/build-sha256.txt",
+      "action": "same",
+      "sourceBytes": 815,
+      "sourceSha256": "a78f0fedd6b50cdffed2356af21a5422aa82dceb574b170c24cc314ea8c3b046",
+      "targetExists": true,
+      "targetBytes": 815,
+      "targetSha256": "a78f0fedd6b50cdffed2356af21a5422aa82dceb574b170c24cc314ea8c3b046",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 7694,
+      "sourceSha256": "12de0fa47eb4ae66473c334618e3f1de0d9dc32fb1d77380ca9d39ef1648bb12",
+      "targetExists": true,
+      "targetBytes": 7694,
+      "targetSha256": "12de0fa47eb4ae66473c334618e3f1de0d9dc32fb1d77380ca9d39ef1648bb12",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-precomparison.png",
+      "action": "same",
+      "sourceBytes": 4030,
+      "sourceSha256": "f415a6f8922b7e4e1c3829241a35bd6d5588007f316d6055f259c6b94961a1c4",
+      "targetExists": true,
+      "targetBytes": 4030,
+      "targetSha256": "f415a6f8922b7e4e1c3829241a35bd6d5588007f316d6055f259c6b94961a1c4",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/clippy-pass02.log",
+      "action": "same",
+      "sourceBytes": 380,
+      "sourceSha256": "d984b26d697de36250b69941c4449a81fdc4a120e363755b1e3c0c194e726da4",
+      "targetExists": true,
+      "targetBytes": 380,
+      "targetSha256": "d984b26d697de36250b69941c4449a81fdc4a120e363755b1e3c0c194e726da4",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/diff-check-pass02.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/format-check-pass02.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 30688,
+      "sourceSha256": "0a44f4132e56ca2fa4b55df552c02f8094d97f5607cb20ba56a0ef4314b4b6df",
+      "targetExists": true,
+      "targetBytes": 30688,
+      "targetSha256": "91ff291f78db5f83b84b369e0ee6ffd73d9e5329cfa56a00727b44f5b2c410fd",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 5345,
+      "sourceSha256": "bb1256c1eaaa07fbd48f727a294287571bb410c3589ca0d266eba1e793d3af28",
+      "targetExists": true,
+      "targetBytes": 5345,
+      "targetSha256": "bb1256c1eaaa07fbd48f727a294287571bb410c3589ca0d266eba1e793d3af28",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-26_2-simulator.png",
+      "action": "same",
+      "sourceBytes": 86932,
+      "sourceSha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc",
+      "targetExists": true,
+      "targetBytes": 86932,
+      "targetSha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "b2ac28f2e7bdd2766e16ad20817f3d9c03be9d8fb0fcff002243ac797732d532",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "b2ac28f2e7bdd2766e16ad20817f3d9c03be9d8fb0fcff002243ac797732d532",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-runtime.log",
+      "action": "same",
+      "sourceBytes": 36976,
+      "sourceSha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557",
+      "targetExists": true,
+      "targetBytes": 36976,
+      "targetSha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-simulator-build-pass01-clean.log",
+      "action": "same",
+      "sourceBytes": 66810,
+      "sourceSha256": "38b2cb6844eb2093832fdf98df8cf3ff2410a52d8b3042dcf9affd0194096513",
+      "targetExists": true,
+      "targetBytes": 66810,
+      "targetSha256": "38b2cb6844eb2093832fdf98df8cf3ff2410a52d8b3042dcf9affd0194096513",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-focused-pass02-clean.log",
+      "action": "same",
+      "sourceBytes": 8974,
+      "sourceSha256": "7e7e8c09e8703dc2199e49131003c87df34ecb9c4e03ecc66c1fcec3817bf8da",
+      "targetExists": true,
+      "targetBytes": 8974,
+      "targetSha256": "7e7e8c09e8703dc2199e49131003c87df34ecb9c4e03ecc66c1fcec3817bf8da",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-package-full-pass01.log",
+      "action": "same",
+      "sourceBytes": 43096,
+      "sourceSha256": "74c16367470a023e46a082f15b2bef48b2aa5c3f7fa9326a84e6cb909bfeb5e8",
+      "targetExists": true,
+      "targetBytes": 43096,
+      "targetSha256": "74c16367470a023e46a082f15b2bef48b2aa5c3f7fa9326a84e6cb909bfeb5e8",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/platform-runtime-observation.json",
+      "action": "same",
+      "sourceBytes": 2446,
+      "sourceSha256": "3e55bc6439c3745b3b935caf46b577d5c310d6d6d5c6fbc97dfa820c815aedea",
+      "targetExists": true,
+      "targetBytes": 2446,
+      "targetSha256": "3e55bc6439c3745b3b935caf46b577d5c310d6d6d5c6fbc97dfa820c815aedea",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 34792,
+      "sourceSha256": "ac9ee9fc1a1d9f0a6e8e571b96b737cfa4b1e3f082caeb048352abfdd80aa76b",
+      "targetExists": true,
+      "targetBytes": 34792,
+      "targetSha256": "65095b6ae7b38d16b2d478c26b58fe008234d3988d9850199bda999ddeb7874f",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 8854,
+      "sourceSha256": "0610b9004244b8ac32aed2aa14247c0d5a53f455c34ae38a8e856e88b8e8d9a3",
+      "targetExists": true,
+      "targetBytes": 8854,
+      "targetSha256": "0610b9004244b8ac32aed2aa14247c0d5a53f455c34ae38a8e856e88b8e8d9a3",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html",
+      "action": "replace",
+      "sourceBytes": 39226,
+      "sourceSha256": "34b8b1959df14e79982595828e3e32eba02dec1e9870bfa298c392f456f9ca5e",
+      "targetExists": true,
+      "targetBytes": 39226,
+      "targetSha256": "8b76c0f3e733f9c9abcddc413987ceb3c4886bb4d5b65ce6d01c2e76eec365a3",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md",
+      "action": "same",
+      "sourceBytes": 10581,
+      "sourceSha256": "3b2dcb7422faa5d1c60441d05b7b2757bc3bf6ffacc66cfd61e557dc69467cb2",
+      "targetExists": true,
+      "targetBytes": 10581,
+      "targetSha256": "3b2dcb7422faa5d1c60441d05b7b2757bc3bf6ffacc66cfd61e557dc69467cb2",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/restored-bootstrap-sha256.txt",
+      "action": "same",
+      "sourceBytes": 490,
+      "sourceSha256": "113f4edf8f30baeee03266a133fc3ff74ace750802f8293e986371abe95a7711",
+      "targetExists": true,
+      "targetBytes": 490,
+      "targetSha256": "113f4edf8f30baeee03266a133fc3ff74ace750802f8293e986371abe95a7711",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 30185,
+      "sourceSha256": "448790abc2d8097b3f5be0ca184a7b8987847d5bf9cc51cf4103be7d7a4ccdad",
+      "targetExists": true,
+      "targetBytes": 30185,
+      "targetSha256": "63871181456da5dbf0502e7c5e91070ecde261a66cb4c7aa87964c661ec12fa8",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 5300,
+      "sourceSha256": "9509f778af57228049e6ddd6d8e76870f2981c6ab94bbab958a163fbe8687ffa",
+      "targetExists": true,
+      "targetBytes": 5300,
+      "targetSha256": "9509f778af57228049e6ddd6d8e76870f2981c6ab94bbab958a163fbe8687ffa",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/root-html-grid-percentage-gap-runtime.html",
+      "action": "same",
+      "sourceBytes": 1003,
+      "sourceSha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e",
+      "targetExists": true,
+      "targetBytes": 1003,
+      "targetSha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/rust-runtime-fixture-pass01-clean.log",
+      "action": "same",
+      "sourceBytes": 567,
+      "sourceSha256": "7950d32f636e46de02dc953379b9b52f3e43bab1f2c7338acde9167e9c14af85",
+      "targetExists": true,
+      "targetBytes": 567,
+      "targetSha256": "7950d32f636e46de02dc953379b9b52f3e43bab1f2c7338acde9167e9c14af85",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/source-revision.json",
+      "action": "same",
+      "sourceBytes": 113,
+      "sourceSha256": "56973e5f8775861961461358c0b1eeaf724c66ad65b4ad52e67d635f6bccb3b6",
+      "targetExists": true,
+      "targetBytes": 113,
+      "targetSha256": "56973e5f8775861961461358c0b1eeaf724c66ad65b4ad52e67d635f6bccb3b6",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-focused-pass02-clean.log",
+      "action": "same",
+      "sourceBytes": 1762,
+      "sourceSha256": "0ea47c4150c46ffa7ea14da83b2c6e646495a17d7cdbe42402d4731b55f510b9",
+      "targetExists": true,
+      "targetBytes": 1762,
+      "targetSha256": "0ea47c4150c46ffa7ea14da83b2c6e646495a17d7cdbe42402d4731b55f510b9",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-gap-helper-pass01-clean.log",
+      "action": "same",
+      "sourceBytes": 694,
+      "sourceSha256": "bde7d37cc7ad9e116a1af85d8462225ef12c372f34ebefe907d9d599f3c21b80",
+      "targetExists": true,
+      "targetBytes": 694,
+      "targetSha256": "bde7d37cc7ad9e116a1af85d8462225ef12c372f34ebefe907d9d599f3c21b80",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-package-full-pass01.log",
+      "action": "same",
+      "sourceBytes": 40168,
+      "sourceSha256": "7b62862ed0973c39da627f72af18841debe262130b0d07e747fc7ea78bc4f1a7",
+      "targetExists": true,
+      "targetBytes": 40168,
+      "targetSha256": "7b62862ed0973c39da627f72af18841debe262130b0d07e747fc7ea78bc4f1a7",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "action": "same",
+      "sourceBytes": 527200,
+      "sourceSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "targetExists": true,
+      "targetBytes": 527200,
+      "targetSha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 772972,
+      "sourceSha256": "3b2e4b2332117784ffba0ef7449e23333e0c5e54cb79dad721a8f7736cbfaf8f",
+      "targetExists": true,
+      "targetBytes": 772975,
+      "targetSha256": "2ba27b01d3f7a28682a4d71b13502d69949514c01a415b29e76a5ef01c4c98e5",
+      "openReaderPids": []
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "replace",
+      "sourceBytes": 629092,
+      "sourceSha256": "b2cc6f19c068c85fc83c62d8a505844ae14cd35d2ec2a9d509e2f31f8893b294",
+      "targetExists": true,
+      "targetBytes": 629095,
+      "targetSha256": "b99a7b5a459c337e8932696447af9cb13f07e102f153dbf6167717a9649aef1b",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-14ba0ff96d6e.a85930c590.js",
+      "action": "create",
+      "sourceBytes": 16269,
+      "sourceSha256": "5c3220a471c02a4280d8617b5b89f4d8b81f93ba1620aaac319fda4bbb2f91da",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-3afb7ecf0512.7d2c4bfcc3.js",
+      "action": "create",
+      "sourceBytes": 16219,
+      "sourceSha256": "7263c42f0a7f3f08f883a0e7b4d1a5963e0d7ba89e5ba9056cee92d25d505432",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-3b6b18a75fb3.58e6acc53a.js",
+      "action": "create",
+      "sourceBytes": 22726,
+      "sourceSha256": "f40aba40b889e5d584d91c768f8f940140f62b857004d2eed06b8bbff5cb6934",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-43d8e9afaf42.0f6f09a7d9.js",
+      "action": "create",
+      "sourceBytes": 10704,
+      "sourceSha256": "c6b6b7092ce355562b0e359b1a561b7ec31b575a5a33d2a98f625d7115aecd8b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-655f19524824.fad2d03174.js",
+      "action": "create",
+      "sourceBytes": 11839,
+      "sourceSha256": "95e4f98380d56f08294a46ad90a7b80d246c1e9f1b3f1f4ca9999b6955e13351",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.a3b3751c50.js",
+      "action": "create",
+      "sourceBytes": 830167,
+      "sourceSha256": "c24b3a66c11b791c5cd62126c1a9f5c27ad1f3198c1f12306b91976ffe5560be",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.d4eabbd414.js",
+      "action": "create",
+      "sourceBytes": 547706,
+      "sourceSha256": "4045763fef3d2389f624586ed0cf655af4703d09f6c6eaf7961e4c70082cf3c4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ad511af5e3.js",
+      "action": "create",
+      "sourceBytes": 830352,
+      "sourceSha256": "c2c0bb69aa2d21107895c36e61f70c091c3a0b52ec25d6d5810bbf1813c85e99",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-914577b650bf.5d7dd4b5d8.js",
+      "action": "create",
+      "sourceBytes": 16200,
+      "sourceSha256": "73df385ff7aab4d122e54007eacb1c754c3d9424c13307d1fc4ed5af2469ff57",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.da6cc1c436.js",
+      "action": "create",
+      "sourceBytes": 1008,
+      "sourceSha256": "83f3c238590e578d76b56559f76936b14559561260fc918b71f8075c816a9871",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-aa3278b6d966.52ce0cc833.js",
+      "action": "create",
+      "sourceBytes": 22740,
+      "sourceSha256": "ad5a965e40f44dabad765b1453c74f69992bffb66b7ff1b029c44f7c45f8ce89",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.aa0a47d47a.js",
+      "action": "create",
+      "sourceBytes": 85605,
+      "sourceSha256": "93676695e6888cfedfe9c1d38c0a37c18e672f857b3efb9090eb2025897fb445",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.d60c37dfb4.js",
+      "action": "create",
+      "sourceBytes": 547679,
+      "sourceSha256": "985efab0e9bc436b748c7dcb9b56c17d61db9f0d0157186d6b4d9ee8e9abf1a2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-d6e41856baf1.3a635f3f8e.js",
+      "action": "create",
+      "sourceBytes": 11848,
+      "sourceSha256": "5c0eec66e6c40c286f906b7b6416f52c1f22d417566030b652af430757ed90a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/async/route-de920826f920.037797d9f7.js",
+      "action": "create",
+      "sourceBytes": 10698,
+      "sourceSha256": "83350d3e720926fe2055dec40507eb58297de7577c855e50e151463addcbc8ef",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/index.356b41ed1e.js",
+      "action": "create",
+      "sourceBytes": 103851,
+      "sourceSha256": "53226eca05ef4e1b6fa18476b7e650fa777a63f1375600e4be72ce1187b3242a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "action": "same",
+      "sourceBytes": 472,
+      "sourceSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "targetExists": true,
+      "targetBytes": 472,
+      "targetSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "openReaderPids": []
+    },
+    {
+      "route": "static/search_index.ko.1ea23c33.json",
+      "action": "create",
+      "sourceBytes": 1764864,
+      "sourceSha256": "1ea23c33fefe9ef63443df0281e46675fb94ab21e42d92407d2cc7d4b551edf8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openReaderPids": []
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 772279,
+      "sourceSha256": "97e62b8efeabca866ce1cfac84b149e86277ecb2e99faa3f4bb406362fa3c7ae",
+      "targetExists": true,
+      "targetBytes": 772282,
+      "targetSha256": "664d20dfea5166dda8da2fc44634d326edc2850e590c185b1f0d89ad12c72fff",
+      "openReaderPids": [
+        28040
+      ]
+    },
+    {
+      "route": "STATUS.md",
+      "action": "replace",
+      "sourceBytes": 629092,
+      "sourceSha256": "b2cc6f19c068c85fc83c62d8a505844ae14cd35d2ec2a9d509e2f31f8893b294",
+      "targetExists": true,
+      "targetBytes": 629095,
+      "targetSha256": "b99a7b5a459c337e8932696447af9cb13f07e102f153dbf6167717a9649aef1b",
+      "openReaderPids": []
+    },
+    {
+      "route": "tests/fixtures/css/c11/grid-percentage-gap-v1.html",
+      "action": "same",
+      "sourceBytes": 5903,
+      "sourceSha256": "c79a97f3d5fa55c838e8e1ab5386cec4e3cbb73adee682c614bad0e5cce28a36",
+      "targetExists": true,
+      "targetBytes": 5903,
+      "targetSha256": "c79a97f3d5fa55c838e8e1ab5386cec4e3cbb73adee682c614bad0e5cce28a36",
+      "openReaderPids": []
+    },
+    {
+      "route": "tests/fixtures/css/c11/grid-track-sizing-c114-percentage-gaps.html",
+      "action": "same",
+      "sourceBytes": 4364,
+      "sourceSha256": "85bf57cd85db9bd3e72e608060275cee7759ef6121a1833ad05ee711a5bacbd6",
+      "targetExists": true,
+      "targetBytes": 4364,
+      "targetSha256": "85bf57cd85db9bd3e72e608060275cee7759ef6121a1833ad05ee711a5bacbd6",
+      "openReaderPids": []
+    }
+  ]
+}

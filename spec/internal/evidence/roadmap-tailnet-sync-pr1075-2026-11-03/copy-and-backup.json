@@ -1,0 +1,513 @@
+{
+  "sourceHead": "42d591f3f2509a0b5c9795815eb45ea206c0197d",
+  "sourceTree": "3065acaf805369958426c43680ebc1555021d46a",
+  "selectedRouteCount": 120,
+  "createdCount": 17,
+  "replacedCount": 16,
+  "identicalCount": 87,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1075-2026-11-03/pass01",
+  "replacementPolicy": "Back up prior bytes and atomically rename a same-directory temporary file. Open readers retain their old inode; no existing route is truncated in place and no route is removed.",
+  "noDeletes": true,
+  "created": [
+    {
+      "route": "static/js/async/route-14ba0ff96d6e.a85930c590.js",
+      "sha256": "5c3220a471c02a4280d8617b5b89f4d8b81f93ba1620aaac319fda4bbb2f91da"
+    },
+    {
+      "route": "static/js/async/route-3afb7ecf0512.7d2c4bfcc3.js",
+      "sha256": "7263c42f0a7f3f08f883a0e7b4d1a5963e0d7ba89e5ba9056cee92d25d505432"
+    },
+    {
+      "route": "static/js/async/route-3b6b18a75fb3.58e6acc53a.js",
+      "sha256": "f40aba40b889e5d584d91c768f8f940140f62b857004d2eed06b8bbff5cb6934"
+    },
+    {
+      "route": "static/js/async/route-43d8e9afaf42.0f6f09a7d9.js",
+      "sha256": "c6b6b7092ce355562b0e359b1a561b7ec31b575a5a33d2a98f625d7115aecd8b"
+    },
+    {
+      "route": "static/js/async/route-655f19524824.fad2d03174.js",
+      "sha256": "95e4f98380d56f08294a46ad90a7b80d246c1e9f1b3f1f4ca9999b6955e13351"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.a3b3751c50.js",
+      "sha256": "c24b3a66c11b791c5cd62126c1a9f5c27ad1f3198c1f12306b91976ffe5560be"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.d4eabbd414.js",
+      "sha256": "4045763fef3d2389f624586ed0cf655af4703d09f6c6eaf7961e4c70082cf3c4"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ad511af5e3.js",
+      "sha256": "c2c0bb69aa2d21107895c36e61f70c091c3a0b52ec25d6d5810bbf1813c85e99"
+    },
+    {
+      "route": "static/js/async/route-914577b650bf.5d7dd4b5d8.js",
+      "sha256": "73df385ff7aab4d122e54007eacb1c754c3d9424c13307d1fc4ed5af2469ff57"
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.da6cc1c436.js",
+      "sha256": "83f3c238590e578d76b56559f76936b14559561260fc918b71f8075c816a9871"
+    },
+    {
+      "route": "static/js/async/route-aa3278b6d966.52ce0cc833.js",
+      "sha256": "ad5a965e40f44dabad765b1453c74f69992bffb66b7ff1b029c44f7c45f8ce89"
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.aa0a47d47a.js",
+      "sha256": "93676695e6888cfedfe9c1d38c0a37c18e672f857b3efb9090eb2025897fb445"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.d60c37dfb4.js",
+      "sha256": "985efab0e9bc436b748c7dcb9b56c17d61db9f0d0157186d6b4d9ee8e9abf1a2"
+    },
+    {
+      "route": "static/js/async/route-d6e41856baf1.3a635f3f8e.js",
+      "sha256": "5c0eec66e6c40c286f906b7b6416f52c1f22d417566030b652af430757ed90a9"
+    },
+    {
+      "route": "static/js/async/route-de920826f920.037797d9f7.js",
+      "sha256": "83350d3e720926fe2055dec40507eb58297de7577c855e50e151463addcbc8ef"
+    },
+    {
+      "route": "static/js/index.356b41ed1e.js",
+      "sha256": "53226eca05ef4e1b6fa18476b7e650fa777a63f1375600e4be72ce1187b3242a"
+    },
+    {
+      "route": "static/search_index.ko.1ea23c33.json",
+      "sha256": "1ea23c33fefe9ef63443df0281e46675fb94ab21e42d92407d2cc7d4b551edf8"
+    }
+  ],
+  "replaced": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "previousSha256": "b7283cd7779720bb03264b377fcc1d8fbaec7d200729e5b98c9d5063eab221f9",
+      "sha256": "3f3bd5d2b1cb988e91ceaab05d67d9a6d4ccdf19ee60386e6cc1eab03610bf3e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html",
+      "previousSha256": "61a3fdd04d082dd6361176a72cbf013f70c333da4e324f63b84809a50fb1a159",
+      "sha256": "39455ab715a52d2112d28cab8d8080bd578f21a47c27b9efca334bc6622019a8"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html",
+      "previousSha256": "42745e08b40ef98fd1bc2c36dd08fb7062f345a873cbcc66989d1394c50d2ce7",
+      "sha256": "6c59588cec81a8ec2670dac96bf41a9bebf11bb7803ce5a569ffb4af3c87d8b4"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html",
+      "previousSha256": "241196430599aba47fec8e3d11df9c1dc58b3604b698cd920b833e4230373e08",
+      "sha256": "a905d73b379c55bb3d70981a27985d2ff476cf483ccde1c4b70f058adefa59f5"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html",
+      "previousSha256": "3ee5e732fcb8ab19f4a6ce2a7f3dea36d4ff2bc0e2f6ad847fbde41609c36708",
+      "sha256": "2f4a85614c16602f35395c54be15597dddd9bca0b64f0570feb5b1d6a425e7ad"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "previousSha256": "cc9e82a4902014c1213218c37123b4f64ff4f2d328e8a79795f2a93773446b3c",
+      "sha256": "bac2e6f680f45bf07b278b741519de5069b0e6409f5c128c305ebf49bea689aa"
+    },
+    {
+      "route": "plan/c11-root-html-grid-percentage-gap.html",
+      "previousSha256": "9992c81eaa9b17949ce2279849237e69852b466bd8b35c4397330f73de8f08de",
+      "sha256": "ed4f9f9ba0aa0c900c0c8e94f3ac1d79757fb07c4267dfa9ca622347ea9c1d62"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "previousSha256": "0c30d0ec217553f9c1ab398f41af538914bd688d801c9c21a55378a6994fa8ab",
+      "sha256": "b6210c4ca156391566c5602bff01f7b43f1c149376a5ed38c9369f064cfcfaba"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.html",
+      "previousSha256": "91ff291f78db5f83b84b369e0ee6ffd73d9e5329cfa56a00727b44f5b2c410fd",
+      "sha256": "0a44f4132e56ca2fa4b55df552c02f8094d97f5607cb20ba56a0ef4314b4b6df"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.html",
+      "previousSha256": "65095b6ae7b38d16b2d478c26b58fe008234d3988d9850199bda999ddeb7874f",
+      "sha256": "ac9ee9fc1a1d9f0a6e8e571b96b737cfa4b1e3f082caeb048352abfdd80aa76b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.html",
+      "previousSha256": "8b76c0f3e733f9c9abcddc413987ceb3c4886bb4d5b65ce6d01c2e76eec365a3",
+      "sha256": "34b8b1959df14e79982595828e3e32eba02dec1e9870bfa298c392f456f9ca5e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.html",
+      "previousSha256": "63871181456da5dbf0502e7c5e91070ecde261a66cb4c7aa87964c661ec12fa8",
+      "sha256": "448790abc2d8097b3f5be0ca184a7b8987847d5bf9cc51cf4103be7d7a4ccdad"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "previousSha256": "2ba27b01d3f7a28682a4d71b13502d69949514c01a415b29e76a5ef01c4c98e5",
+      "sha256": "3b2e4b2332117784ffba0ef7449e23333e0c5e54cb79dad721a8f7736cbfaf8f"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "previousSha256": "b99a7b5a459c337e8932696447af9cb13f07e102f153dbf6167717a9649aef1b",
+      "sha256": "b2cc6f19c068c85fc83c62d8a505844ae14cd35d2ec2a9d509e2f31f8893b294"
+    },
+    {
+      "route": "STATUS.html",
+      "previousSha256": "664d20dfea5166dda8da2fc44634d326edc2850e590c185b1f0d89ad12c72fff",
+      "sha256": "97e62b8efeabca866ce1cfac84b149e86277ecb2e99faa3f4bb406362fa3c7ae"
+    },
+    {
+      "route": "STATUS.md",
+      "previousSha256": "b99a7b5a459c337e8932696447af9cb13f07e102f153dbf6167717a9649aef1b",
+      "sha256": "b2cc6f19c068c85fc83c62d8a505844ae14cd35d2ec2a9d509e2f31f8893b294"
+    }
+  ],
+  "identical": [
+    {
+      "route": "icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "sha256": "5272908f5c9b6503fe3a34c6f10fbbfba8938513d4e97511ac8ce98f48ff71e6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-api37-avd.png",
+      "sha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-app-pid.txt",
+      "sha256": "27d838e8b45f1357234cf9c7ffb448d3d18597bf0e2afe1fd83b273787a47ab6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-build-pass01.log",
+      "sha256": "8569d25a8892f95c9b3d4c1b69ce5369e1fc57c48970ab707bbde72ca800900e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-install.log",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-launch.log",
+      "sha256": "ce6fc18e89be73ecabdb5c7f6d4d53eb3629bc0bec3f970833573f3cc340cb8f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-runtime.log",
+      "sha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/build-sha256.txt",
+      "sha256": "a78f0fedd6b50cdffed2356af21a5422aa82dceb574b170c24cc314ea8c3b046"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-observation.json",
+      "sha256": "12de0fa47eb4ae66473c334618e3f1de0d9dc32fb1d77380ca9d39ef1648bb12"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-precomparison.png",
+      "sha256": "f415a6f8922b7e4e1c3829241a35bd6d5588007f316d6055f259c6b94961a1c4"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/clippy-pass02.log",
+      "sha256": "d984b26d697de36250b69941c4449a81fdc4a120e363755b1e3c0c194e726da4"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/diff-check-pass02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/format-check-pass02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.md",
+      "sha256": "bb1256c1eaaa07fbd48f727a294287571bb410c3589ca0d266eba1e793d3af28"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-26_2-simulator.png",
+      "sha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-launch.log",
+      "sha256": "b2ac28f2e7bdd2766e16ad20817f3d9c03be9d8fb0fcff002243ac797732d532"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-runtime.log",
+      "sha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-simulator-build-pass01-clean.log",
+      "sha256": "38b2cb6844eb2093832fdf98df8cf3ff2410a52d8b3042dcf9affd0194096513"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-focused-pass02-clean.log",
+      "sha256": "7e7e8c09e8703dc2199e49131003c87df34ecb9c4e03ecc66c1fcec3817bf8da"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-package-full-pass01.log",
+      "sha256": "74c16367470a023e46a082f15b2bef48b2aa5c3f7fa9326a84e6cb909bfeb5e8"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/platform-runtime-observation.json",
+      "sha256": "3e55bc6439c3745b3b935caf46b577d5c310d6d6d5c6fbc97dfa820c815aedea"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.md",
+      "sha256": "0610b9004244b8ac32aed2aa14247c0d5a53f455c34ae38a8e856e88b8e8d9a3"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md",
+      "sha256": "3b2dcb7422faa5d1c60441d05b7b2757bc3bf6ffacc66cfd61e557dc69467cb2"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/restored-bootstrap-sha256.txt",
+      "sha256": "113f4edf8f30baeee03266a133fc3ff74ace750802f8293e986371abe95a7711"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.md",
+      "sha256": "9509f778af57228049e6ddd6d8e76870f2981c6ab94bbab958a163fbe8687ffa"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/root-html-grid-percentage-gap-runtime.html",
+      "sha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/rust-runtime-fixture-pass01-clean.log",
+      "sha256": "7950d32f636e46de02dc953379b9b52f3e43bab1f2c7338acde9167e9c14af85"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/source-revision.json",
+      "sha256": "56973e5f8775861961461358c0b1eeaf724c66ad65b4ad52e67d635f6bccb3b6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-focused-pass02-clean.log",
+      "sha256": "0ea47c4150c46ffa7ea14da83b2c6e646495a17d7cdbe42402d4731b55f510b9"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-gap-helper-pass01-clean.log",
+      "sha256": "bde7d37cc7ad9e116a1af85d8462225ef12c372f34ebefe907d9d599f3c21b80"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-package-full-pass01.log",
+      "sha256": "7b62862ed0973c39da627f72af18841debe262130b0d07e747fc7ea78bc4f1a7"
+    },
+    {
+      "route": "logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "sha256": "376af13556d0ff49e17e0b003f0ada5d0149a99f3a3e0dcc05f4978da68c6538"
+    },
+    {
+      "route": "plan/c11-root-html-grid-percentage-gap.md",
+      "sha256": "779fb99edf409f8a2fb75b0e93a7025af776c127fe74085fe6b50db178a0eef7"
+    },
+    {
+      "route": "public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "public/roadmap.html",
+      "sha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033"
+    },
+    {
+      "route": "public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "roadmap.html",
+      "sha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033"
+    },
+    {
+      "route": "roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "sha256": "5272908f5c9b6503fe3a34c6f10fbbfba8938513d4e97511ac8ce98f48ff71e6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-api37-avd.png",
+      "sha256": "81a2bde3a1a3a26a01e38936fe149f02d766bc444f9ed597e02c82ed8eb3391c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-app-pid.txt",
+      "sha256": "27d838e8b45f1357234cf9c7ffb448d3d18597bf0e2afe1fd83b273787a47ab6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-build-pass01.log",
+      "sha256": "8569d25a8892f95c9b3d4c1b69ce5369e1fc57c48970ab707bbde72ca800900e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-install.log",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-launch.log",
+      "sha256": "ce6fc18e89be73ecabdb5c7f6d4d53eb3629bc0bec3f970833573f3cc340cb8f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/android-runtime.log",
+      "sha256": "e90934e667aff25b5ed64c78f316b44ada7aea41d6cf843df93bc7a2f8b36ae7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/build-sha256.txt",
+      "sha256": "a78f0fedd6b50cdffed2356af21a5422aa82dceb574b170c24cc314ea8c3b046"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-observation.json",
+      "sha256": "12de0fa47eb4ae66473c334618e3f1de0d9dc32fb1d77380ca9d39ef1648bb12"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/chrome156-precomparison.png",
+      "sha256": "f415a6f8922b7e4e1c3829241a35bd6d5588007f316d6055f259c6b94961a1c4"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/clippy-pass02.log",
+      "sha256": "d984b26d697de36250b69941c4449a81fdc4a120e363755b1e3c0c194e726da4"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/diff-check-pass02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/format-check-pass02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/implementation-runtime-review-20.md",
+      "sha256": "bb1256c1eaaa07fbd48f727a294287571bb410c3589ca0d266eba1e793d3af28"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-26_2-simulator.png",
+      "sha256": "11072f320de731cb6c51d4a87cc15c594416d7e9ca95f82c12b974c69e19f3fc"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-launch.log",
+      "sha256": "b2ac28f2e7bdd2766e16ad20817f3d9c03be9d8fb0fcff002243ac797732d532"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-runtime.log",
+      "sha256": "f05cdc3380a9eee2929f27a6f2c61a5c1a7ed664d48c71bb2652d18ffe730557"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/ios-simulator-build-pass01-clean.log",
+      "sha256": "38b2cb6844eb2093832fdf98df8cf3ff2410a52d8b3042dcf9affd0194096513"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-focused-pass02-clean.log",
+      "sha256": "7e7e8c09e8703dc2199e49131003c87df34ecb9c4e03ecc66c1fcec3817bf8da"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/layout-package-full-pass01.log",
+      "sha256": "74c16367470a023e46a082f15b2bef48b2aa5c3f7fa9326a84e6cb909bfeb5e8"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/platform-runtime-observation.json",
+      "sha256": "3e55bc6439c3745b3b935caf46b577d5c310d6d6d5c6fbc97dfa820c815aedea"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/pr-diff-review-30.md",
+      "sha256": "0610b9004244b8ac32aed2aa14247c0d5a53f455c34ae38a8e856e88b8e8d9a3"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/README.md",
+      "sha256": "3b2dcb7422faa5d1c60441d05b7b2757bc3bf6ffacc66cfd61e557dc69467cb2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/restored-bootstrap-sha256.txt",
+      "sha256": "113f4edf8f30baeee03266a133fc3ff74ace750802f8293e986371abe95a7711"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/roadmap-pr-diff-review-30.md",
+      "sha256": "9509f778af57228049e6ddd6d8e76870f2981c6ab94bbab958a163fbe8687ffa"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/root-html-grid-percentage-gap-runtime.html",
+      "sha256": "db10b2cfd2fcafe8062c0bdd7cfcba922d2e41c04e4471f1f29d1377ffa23d3e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/rust-runtime-fixture-pass01-clean.log",
+      "sha256": "7950d32f636e46de02dc953379b9b52f3e43bab1f2c7338acde9167e9c14af85"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/source-revision.json",
+      "sha256": "56973e5f8775861961461358c0b1eeaf724c66ad65b4ad52e67d635f6bccb3b6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-focused-pass02-clean.log",
+      "sha256": "0ea47c4150c46ffa7ea14da83b2c6e646495a17d7cdbe42402d4731b55f510b9"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-gap-helper-pass01-clean.log",
+      "sha256": "bde7d37cc7ad9e116a1af85d8462225ef12c372f34ebefe907d9d599f3c21b80"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-percent-gap-2026-11-03/style-package-full-pass01.log",
+      "sha256": "7b62862ed0973c39da627f72af18841debe262130b0d07e747fc7ea78bc4f1a7"
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "sha256": "b8fa0013fb6bde01ea63a5fd0080f71e94a5e51617278b8ed66ea40872c53033"
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "route": "tests/fixtures/css/c11/grid-percentage-gap-v1.html",
+      "sha256": "c79a97f3d5fa55c838e8e1ab5386cec4e3cbb73adee682c614bad0e5cce28a36"
+    },
+    {
+      "route": "tests/fixtures/css/c11/grid-track-sizing-c114-percentage-gaps.html",
+      "sha256": "85bf57cd85db9bd3e72e608060275cee7759ef6121a1833ad05ee711a5bacbd6"
+    }
+  ]
+}
