@@ -1,0 +1,604 @@
+{
+  "report": [
+    {
+      "computed": {
+        "columnGap": "calc(5% + 2px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-mixed-column",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          22,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        40,
+        200,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "normal",
+        "gridTemplateColumns": "10px",
+        "gridTemplateRows": "10px 10px",
+        "rowGap": "calc(10% + 2px)"
+      },
+      "id": "calc-mixed-row",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          0,
+          22,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "12px",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-absolute",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          22,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        100,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "min(15%, 20px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-min",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          30,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        40,
+        200,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "max(15%, 20px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-max",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          40,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        40,
+        200,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "clamp(5px, 5% + 2px, 20px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-clamp",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          22,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        40,
+        200,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "clamp(30px, 5% + 2px, 10px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-clamp-min-wins",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          40,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        100,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "10%",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-product",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          30,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        40,
+        200,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "12px",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-divide",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          22,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        100,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(75% + 2px)",
+        "gridTemplateColumns": "0px 0px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-zero-basis",
+      "items": [
+        [
+          0,
+          0,
+          0,
+          10
+        ],
+        [
+          2,
+          0,
+          0,
+          10
+        ]
+      ],
+      "root": [
+        0,
+        40,
+        0,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(-5% + 2px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-negative",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          10,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        100,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(120% + 1px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-over-100",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          131,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        141,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "3.35544e+07px",
+        "gridTemplateColumns": "3.98438px 0px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-infinity",
+      "items": [
+        [
+          0,
+          0,
+          3.9844,
+          10
+        ],
+        [
+          33554432,
+          0,
+          0,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        100,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "0px",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px",
+        "rowGap": "normal"
+      },
+      "id": "calc-nan",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          10,
+          0,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        100,
+        40,
+        100,
+        40
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "normal",
+        "gridTemplateColumns": "40px 40px",
+        "gridTemplateRows": "20px 25px",
+        "rowGap": "calc(5% + 2px)"
+      },
+      "id": "calc-implicit-row",
+      "items": [
+        [
+          0,
+          0,
+          40,
+          20
+        ],
+        [
+          40,
+          0,
+          40,
+          20
+        ],
+        [
+          0,
+          27,
+          40,
+          25
+        ],
+        [
+          40,
+          27,
+          40,
+          25
+        ]
+      ],
+      "root": [
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(5% + 2px)",
+        "gridTemplateColumns": "40px 100px",
+        "gridTemplateRows": "20px 20px",
+        "rowGap": "normal"
+      },
+      "id": "calc-column-flow",
+      "items": [
+        [
+          0,
+          0,
+          40,
+          20
+        ],
+        [
+          0,
+          20,
+          40,
+          20
+        ],
+        [
+          52,
+          0,
+          100,
+          20
+        ]
+      ],
+      "root": [
+        200,
+        80,
+        200,
+        80
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(5% + 2px)",
+        "gridTemplateColumns": "40px 80px",
+        "gridTemplateRows": "20px 50px",
+        "rowGap": "calc(5% + 2px)"
+      },
+      "id": "calc-named-area",
+      "items": [
+        [
+          0,
+          0,
+          128,
+          20
+        ],
+        [
+          0,
+          25.5,
+          40,
+          50
+        ],
+        [
+          48,
+          25.5,
+          80,
+          50
+        ]
+      ],
+      "root": [
+        120,
+        70,
+        128,
+        76
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(5% + 2px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px 10px",
+        "rowGap": "calc(5% + 2px)"
+      },
+      "id": "calc-shorthand",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          22,
+          0,
+          10,
+          10
+        ],
+        [
+          0,
+          17,
+          10,
+          10
+        ],
+        [
+          22,
+          17,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        100,
+        200,
+        100
+      ]
+    },
+    {
+      "computed": {
+        "columnGap": "calc(5% + 2px)",
+        "gridTemplateColumns": "10px 10px",
+        "gridTemplateRows": "10px 10px",
+        "rowGap": "calc(5% + 2px)"
+      },
+      "id": "calc-legacy-alias",
+      "items": [
+        [
+          0,
+          0,
+          10,
+          10
+        ],
+        [
+          22,
+          0,
+          10,
+          10
+        ],
+        [
+          0,
+          17,
+          10,
+          10
+        ],
+        [
+          22,
+          17,
+          10,
+          10
+        ]
+      ],
+      "root": [
+        200,
+        100,
+        200,
+        100
+      ]
+    }
+  ],
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}

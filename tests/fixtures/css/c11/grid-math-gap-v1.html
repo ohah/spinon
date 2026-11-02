@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Spinon C11 Grid math gap reference</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      .grid {
+        display: grid;
+        align-content: start;
+        justify-content: start;
+        overflow: visible;
+      }
+
+      .grid > i,
+      .grid > div {
+        display: block;
+        min-width: 0;
+        min-height: 0;
+        background: rgb(20 80 160);
+      }
+
+      .two-column {
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 10px;
+      }
+
+      #calc-mixed-column {
+        width: 200px;
+        height: 40px;
+        column-gap: calc(5% + 2px);
+      }
+
+      #calc-mixed-row {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 10px;
+        grid-template-rows: 10px 10px;
+        row-gap: calc(10% + 2px);
+      }
+
+      #calc-absolute {
+        width: 100px;
+        height: 40px;
+        column-gap: calc(5px + 7px);
+      }
+
+      #calc-min {
+        width: 200px;
+        height: 40px;
+        column-gap: min(15%, 20px);
+      }
+
+      #calc-max {
+        width: 200px;
+        height: 40px;
+        column-gap: max(15%, 20px);
+      }
+
+      #calc-clamp {
+        width: 200px;
+        height: 40px;
+        column-gap: clamp(5px, calc(5% + 2px), 20px);
+      }
+
+      #calc-clamp-min-wins {
+        width: 100px;
+        height: 40px;
+        column-gap: clamp(30px, calc(5% + 2px), 10px);
+      }
+
+      #calc-product {
+        width: 200px;
+        height: 40px;
+        column-gap: calc(5% * 2);
+      }
+
+      #calc-divide {
+        width: 100px;
+        height: 40px;
+        column-gap: calc(24px / 2);
+      }
+
+      #calc-zero-basis {
+        width: 0;
+        height: 40px;
+        grid-template-columns: 0 0;
+        grid-template-rows: 10px;
+        column-gap: calc(75% + 2px);
+      }
+
+      #calc-negative {
+        width: 100px;
+        height: 40px;
+        column-gap: calc(2px - 5%);
+      }
+
+      #calc-over-100 {
+        width: 100px;
+        height: 40px;
+        column-gap: calc(120% + 1px);
+      }
+
+      #calc-infinity {
+        width: 100px;
+        height: 40px;
+        column-gap: calc(1px / 0);
+      }
+
+      #calc-nan {
+        width: 100px;
+        height: 40px;
+        column-gap: calc(0px / 0);
+      }
+
+      #calc-implicit-row {
+        width: 100px;
+        height: 100px;
+        grid-template-columns: 40px 40px;
+        grid-template-rows: 20px;
+        grid-auto-rows: 25%;
+        row-gap: calc(5% + 2px);
+      }
+
+      #calc-column-flow {
+        width: 200px;
+        height: 80px;
+        grid-template-columns: 40px;
+        grid-template-rows: 20px 20px;
+        grid-auto-flow: column;
+        grid-auto-columns: 50%;
+        column-gap: calc(5% + 2px);
+      }
+
+      #calc-named-area {
+        width: 120px;
+        height: 70px;
+        grid-template-areas: "header header" "side content";
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 20px 50px;
+        column-gap: calc(5% + 2px);
+        row-gap: calc(5% + 2px);
+      }
+
+      #calc-named-area > #calc-area-header {
+        grid-area: header;
+      }
+
+      #calc-named-area > #calc-area-side {
+        grid-area: side;
+      }
+
+      #calc-named-area > #calc-area-content {
+        grid-area: content;
+      }
+
+      #calc-shorthand {
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 10px 10px;
+        gap: calc(5% + 2px);
+      }
+
+      #calc-legacy-alias {
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 10px 10px;
+        grid-gap: calc(5% + 2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid two-column" id="calc-mixed-column"><i></i><i></i></div>
+    <div class="grid" id="calc-mixed-row"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-absolute"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-min"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-max"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-clamp"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-clamp-min-wins"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-product"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-divide"><i></i><i></i></div>
+    <div class="grid" id="calc-zero-basis"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-negative"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-over-100"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-infinity"><i></i><i></i></div>
+    <div class="grid two-column" id="calc-nan"><i></i><i></i></div>
+    <div class="grid" id="calc-implicit-row">
+      <i></i><i></i><i></i><i></i>
+    </div>
+    <div class="grid" id="calc-column-flow"><i></i><i></i><i></i></div>
+    <div class="grid" id="calc-named-area">
+      <div id="calc-area-header"></div><div id="calc-area-side"></div><div id="calc-area-content"></div>
+    </div>
+    <div class="grid" id="calc-shorthand">
+      <i></i><i></i><i></i><i></i>
+    </div>
+    <div class="grid" id="calc-legacy-alias">
+      <i></i><i></i><i></i><i></i>
+    </div>
+    <script>
+      const rect = (element, root) => {
+        const box = element.getBoundingClientRect();
+        const origin = root.getBoundingClientRect();
+        return [box.x - origin.x, box.y - origin.y, box.width, box.height].map((value) =>
+          Number(value.toFixed(4)),
+        );
+      };
+
+      window.spinonGridMathGapReport = Array.from(document.querySelectorAll(".grid"), (root) => {
+        const style = getComputedStyle(root);
+        return {
+          id: root.id,
+          computed: {
+            rowGap: style.rowGap,
+            columnGap: style.columnGap,
+            gridTemplateRows: style.gridTemplateRows,
+            gridTemplateColumns: style.gridTemplateColumns,
+          },
+          root: [root.clientWidth, root.clientHeight, root.scrollWidth, root.scrollHeight],
+          items: Array.from(root.children, (item) => rect(item, root)),
+        };
+      });
+    </script>
+  </body>
+</html>

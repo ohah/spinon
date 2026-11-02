@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Root HTML Grid typed math gap runtime</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      #root {
+        display: grid;
+        box-sizing: border-box;
+        width: 200px;
+        height: 100px;
+        grid-template-columns: 10px 10px;
+        grid-template-rows: 10px 10px;
+        gap: calc(5% + 2px);
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: #ddd;
+      }
+
+      .item {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #2f80ed;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="root">
+      <div class="item" id="item1"></div>
+      <div class="item" id="item2"></div>
+      <div class="item" id="item3"></div>
+      <div class="item" id="item4"></div>
+    </main>
+  </body>
+</html>

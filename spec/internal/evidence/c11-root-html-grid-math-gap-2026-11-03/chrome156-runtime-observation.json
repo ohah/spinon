@@ -1,0 +1,39 @@
+{
+  "columnGap": "calc(5% + 2px)",
+  "gridTemplateColumns": "10px 10px",
+  "gridTemplateRows": "10px 10px",
+  "items": [
+    [
+      0,
+      0,
+      10,
+      10
+    ],
+    [
+      22,
+      0,
+      10,
+      10
+    ],
+    [
+      0,
+      17,
+      10,
+      10
+    ],
+    [
+      22,
+      17,
+      10,
+      10
+    ]
+  ],
+  "root": [
+    200,
+    100,
+    200,
+    100
+  ],
+  "rowGap": "calc(5% + 2px)",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}
