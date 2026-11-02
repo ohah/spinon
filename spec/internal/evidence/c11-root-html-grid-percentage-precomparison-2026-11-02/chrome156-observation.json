@@ -1,7 +1,7 @@
 {
   "source": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-percentage-precomparison.html",
   "fixtureSha256": "2f58aa4b35548ce178a053afeeb56a788b6de0c52abbe6bab0ee34ad80ce71c7",
-  "runtimeFixtureSha256": "e48278bcae5c9dbf1510ef56edb9fec8413bc4cf78ffbc9316c99bc07aa1cb8c",
+  "runtimeFixtureSha256": "957686766fd7c11441c4c4d84f755f4eb353b69867a73fd01489f8ffa5523153",
   "capture": {
     "agentBrowserVersion": "0.31.1",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
@@ -115,7 +115,20 @@
     "itemSize": [8, 6],
     "screenshot": {
       "path": "chrome156-runtime-scene.png",
-      "sha256": "87288ba54b73e9295426f527d7f4c7864ded586618e1f44c6c48579a63f373b0"
+      "sha256": "3ce6eea0363825277c68c0891e2d124151b1b50edd28340d84e3a75125472639"
     }
+  },
+  "runtimeOverflowScene": {
+    "frame": { "x": 0, "y": 120, "width": 200, "height": 40 },
+    "columns": [240, 20],
+    "rows": [40],
+    "columnGap": 8,
+    "rowGap": 0,
+    "itemOrigins": [[0, 120], [248, 120]],
+    "itemSize": [8, 6],
+    "itemColors": [[245, 158, 11], [168, 85, 247]],
+    "rootRightEdge": 200,
+    "secondItemRightEdge": 256,
+    "trackAreaRightEdge": 268
   }
 }

@@ -1,0 +1,10 @@
+C11 percentage runtime source manifest
+8b10bcb440c31ef740fca2dea93b4a10d5a2ae7f5113c74d31d8b6e93556e108  crates/spinon-style-to-layout/src/projection/style_values.rs
+c2d6f6f94ead804a765c70c0bd7f8e158f2f3f1c41955440379eab776d75c495  crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs
+528497ebcfe61543ead091d35a9a91034b04142c07437ab0968683263cd3cf57  crates/spinon-style-to-layout/src/projection/style_values/root_html_grid_tracks.rs
+51db7fb00b03098b42258f3171ed2794dbb3e9f0794e101b8f19564756d3a217  crates/spinon-style-to-layout/src/projection/style_values/grid_values/root_html_grid_track_tests.rs
+71828e4bee32cba8de3cde12a9e0b06a6ac0a69abe783c778cf26361258e1179  crates/spinon-runtime/src/session/tests/root_html_grid_fr.rs
+f8cab242f0d6411687cb639321435d981fe5402a3ffe27aec17102621ac8ea25  crates/spinon-runtime/src/session/tests/root_html_grid_fr/positive_matrix.rs
+fa4117fea2b41d46a7aa31cad4d9125daa275bc299139d994e00856cfaf910d2  crates/spinon-runtime/src/session/tests/root_html_grid_fr/rejection_matrix.rs
+957686766fd7c11441c4c4d84f755f4eb353b69867a73fd01489f8ffa5523153  tests/fixtures/css/c11/root-html-grid-percentage-runtime.html
+502bf60db82f95465544df031422ca12bfec9a3204f49b520e5af9fe3d20ff87  /Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-root-html-grid-percentage-runtime-2026-11-02/root-app-runtime-probe.js

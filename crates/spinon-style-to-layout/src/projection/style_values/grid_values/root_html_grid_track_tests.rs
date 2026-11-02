@@ -64,6 +64,47 @@ fn root_html_profile_projects_direct_fraction_tracks_on_both_axes() {
 }
 
 #[test]
+fn root_html_profile_projects_direct_percentage_tracks_on_both_axes() {
+    let node = NodeId::new(11_184).unwrap();
+    let grid = grid(
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::Fraction(1.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.5),
+            ComputedCssGridTrackSize::Percentage(0.0),
+        ],
+    );
+    let mut math = CssMathProjector::default();
+
+    let projected = project_grid_layout_with_math(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        &mut math,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.columns,
+        vec![
+            GridTrackSize::Percentage(0.25),
+            GridTrackSize::LengthPx(20.0),
+            GridTrackSize::Fraction(1.0),
+        ]
+    );
+    assert_eq!(
+        projected.rows,
+        vec![
+            GridTrackSize::Percentage(0.5),
+            GridTrackSize::Percentage(0.0)
+        ]
+    );
+}
+
+#[test]
 fn root_html_profile_rejects_invalid_or_nondirect_fraction_tracks() {
     let node = NodeId::new(11_182).unwrap();
     for track in [
@@ -84,6 +125,38 @@ fn root_html_profile_rejects_invalid_or_nondirect_fraction_tracks() {
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
         )
         .expect_err("out-of-scope fraction tracks must fail closed");
+        assert!(matches!(
+            error,
+            crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-template-columns",
+                ..
+            } if error_node == node
+        ));
+    }
+}
+
+#[test]
+fn root_html_profile_rejects_invalid_or_nondirect_percentage_tracks() {
+    let node = NodeId::new(11_185).unwrap();
+    for track in [
+        ComputedCssGridTrackSize::Percentage(-0.25),
+        ComputedCssGridTrackSize::Percentage(f32::NAN),
+        ComputedCssGridTrackSize::Percentage(f32::INFINITY),
+        ComputedCssGridTrackSize::Percentage(f32::NEG_INFINITY),
+        ComputedCssGridTrackSize::Auto,
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(0.0),
+            max: spinon_style::ComputedCssGridTrackBreadth::Percentage(0.5),
+        },
+    ] {
+        let grid = grid(vec![track], vec![ComputedCssGridTrackSize::LengthPx(40.0)]);
+        let error = project_grid_layout(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        )
+        .expect_err("out-of-scope percentage tracks must fail closed");
         assert!(matches!(
             error,
             crate::StyleLayoutError::UnsupportedComputedValue {
@@ -126,6 +199,47 @@ fn root_html_named_area_profile_still_rejects_fraction_tracks() {
         ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
     .expect_err("fraction tracks must not widen the fixed named-area subset");
+    assert!(matches!(
+        error,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-template-areas",
+            ..
+        } if error_node == node
+    ));
+}
+
+#[test]
+fn root_html_named_area_profile_still_rejects_percentage_tracks() {
+    let node = NodeId::new(11_186).unwrap();
+    let mut grid = grid(
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::Percentage(0.75),
+        ],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(50.0),
+        ],
+    );
+    grid.template_areas = Some(ComputedCssGridTemplateAreas {
+        rows: 2,
+        columns: 2,
+        areas: vec![ComputedCssGridArea {
+            name: "header".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 2,
+        }],
+    });
+
+    let error = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect_err("percentage tracks must not widen the fixed named-area subset");
     assert!(matches!(
         error,
         crate::StyleLayoutError::UnsupportedComputedValue {
