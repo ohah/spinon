@@ -1,0 +1,32 @@
+{
+  "schema": "spinon.c11.root_html_grid_minmax.precomparison.expected.v1",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizing-functions",
+  "fixture": "tests/fixtures/css/c11/root-html-grid-minmax-precomparison.html",
+  "fixture_sha256": "74171bb89ebfcb193c50e0cdb0f0f5c115d2e9311f54e51eb3b871576cdab88d",
+  "coordinate_unit": "CSS px",
+  "cases": [
+    {"id":"single-max","root":[160,40],"columns":[80],"rows":[40],"reason":"A fixed min/max track grows from 20px to its 80px growth limit; remaining space stays after the track."},
+    {"id":"bounded-space","root":[60,40],"columns":[60],"rows":[40],"reason":"Available inline space limits growth before the 80px maximum."},
+    {"id":"minimum-overflow","root":[30,40],"columns":[40,10],"rows":[40],"item_origins":[[0,0],[40,0]],"overflow":{"track_end":50,"root_end":30,"second_item_end":48},"reason":"The 40px minimum is preserved; the explicit second track and its marker remain outside the 30px grid box."},
+    {"id":"max-under-min","root":[100,40],"columns":[40],"rows":[40],"reason":"The 20px maximum is floored to the 40px minimum."},
+    {"id":"two-bounds","root":[180,40],"column_gap":10,"columns":[60,80],"rows":[40],"item_origins":[[0,0],[70,0]],"reason":"The two tracks grow from bases 20px and 30px up to their 60px and 80px limits; 30px remains unused after the 10px gap."},
+    {"id":"percentage-bounds","root":[200,40],"columns":[80],"rows":[40],"reason":"With a definite 200px content inline size, 10% and 40% resolve to 20px and 80px."},
+    {"id":"fraction-max","root":[130,40],"column_gap":10,"columns":[60,60],"rows":[40],"item_origins":[[0,0],[70,0]],"reason":"The 10px gap leaves 120px for two equal 1fr maxima."},
+    {"id":"percent-flex-max","root":[200,40],"columns":[100,100],"rows":[40],"item_origins":[[0,0],[100,0]],"reason":"A 20% minimum resolves to 40px and does not prevent the two 1fr maxima from sharing 200px equally."},
+    {"id":"zero-fr-max","root":[130,40],"column_gap":10,"columns":[20,100],"rows":[40],"item_origins":[[0,0],[30,0]],"reason":"A zero flex factor keeps the 20px floor; the remaining flexible track receives the remaining 100px."},
+    {"id":"row-max","root":[40,100],"columns":[40],"rows":[80],"reason":"The row track grows from 20px to its 80px fixed maximum."},
+    {"id":"row-percentage-bounds","root":[40,100],"columns":[40],"rows":[40],"reason":"The definite 100px block-size basis resolves the row's 40% maximum to 40px."},
+    {"id":"percent-max","root":[200,40],"columns":[60],"rows":[40],"reason":"The definite inline basis resolves the 30% maximum to 60px."},
+    {"id":"percent-min-floor","root":[200,40],"columns":[120],"rows":[40],"reason":"The 20% maximum (40px) is floored to the 60% minimum (120px)."},
+    {"id":"px-min-percent-floor","root":[200,40],"columns":[60],"rows":[40],"reason":"The 20% maximum (40px) is floored to the 60px minimum."},
+    {"id":"zero-percentage-basis","root":[0,40],"columns":[0],"rows":[40],"reason":"A finite definite zero-width percentage basis resolves both bounds to zero."},
+    {"id":"repeat-bounds","root":[100,40],"column_gap":5,"columns":[40,40],"rows":[40],"item_origins":[[0,0],[45,0]],"reason":"Existing integer repeat expansion creates two identical bounded tracks; 15px remains unused."}
+  ],
+  "controls": [
+    {"id":"intrinsic-max","css_valid":true,"chrome_columns":[80],"root_html_slice":"reject; intrinsic content sizing is outside this stage"},
+    {"id":"auto-max","css_valid":true,"chrome_columns":[50],"root_html_slice":"reject; auto maximum is outside this stage"},
+    {"id":"invalid-negative-max","css_valid":false,"chrome_columns":[8],"meaning":"The invalid explicit declaration is dropped; the 8px implicit track comes from the fixed-size item and is not a minmax result."},
+    {"id":"invalid-flex-min","css_valid":false,"chrome_columns":[8],"meaning":"A flex minimum is invalid; the 8px implicit track comes from the fixed-size item and is not a minmax result."}
+  ],
+  "tolerance_css_px": 0.02
+}

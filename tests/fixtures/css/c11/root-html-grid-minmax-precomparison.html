@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid minmax precomparison</title>
+    <style>
+      html, body { margin: 0; padding: 0; background: #fff; }
+      body { color: #101820; font: 12px/16px monospace; }
+      #matrix { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px; }
+      .case { width: 280px; min-height: 100px; }
+      .case-name { margin-bottom: 4px; }
+      .grid { display: grid; box-sizing: border-box; align-content: start; justify-content: start; background: #edf1f7; }
+      .item { width: 8px; height: 8px; margin: 0; background: #e5484d; }
+      #single-max .grid { width: 160px; height: 40px; grid-template-columns: minmax(20px, 80px); grid-template-rows: 40px; }
+      #bounded-space .grid { width: 60px; height: 40px; grid-template-columns: minmax(20px, 80px); grid-template-rows: 40px; }
+      #minimum-overflow .grid { width: 30px; height: 40px; grid-template-columns: minmax(40px, 80px) 10px; grid-template-rows: 40px; }
+      #max-under-min .grid { width: 100px; height: 40px; grid-template-columns: minmax(40px, 20px); grid-template-rows: 40px; }
+      #two-bounds .grid { width: 180px; height: 40px; grid-template-columns: minmax(20px, 60px) minmax(30px, 80px); grid-template-rows: 40px; column-gap: 10px; }
+      #percentage-bounds .grid { width: 200px; height: 40px; grid-template-columns: minmax(10%, 40%); grid-template-rows: 40px; }
+      #fraction-max .grid { width: 130px; height: 40px; grid-template-columns: minmax(20px, 1fr) 1fr; grid-template-rows: 40px; column-gap: 10px; }
+      #percent-flex-max .grid { width: 200px; height: 40px; grid-template-columns: minmax(20%, 1fr) 1fr; grid-template-rows: 40px; }
+      #zero-fr-max .grid { width: 130px; height: 40px; grid-template-columns: minmax(20px, 0fr) 1fr; grid-template-rows: 40px; column-gap: 10px; }
+      #row-max .grid { width: 40px; height: 100px; grid-template-columns: 40px; grid-template-rows: minmax(20px, 80px); }
+      #row-percentage-bounds .grid { width: 40px; height: 100px; grid-template-columns: 40px; grid-template-rows: minmax(10%, 40%); }
+      #percent-max .grid { width: 200px; height: 40px; grid-template-columns: minmax(10%, 30%); grid-template-rows: 40px; }
+      #percent-min-floor .grid { width: 200px; height: 40px; grid-template-columns: minmax(60%, 20%); grid-template-rows: 40px; }
+      #px-min-percent-floor .grid { width: 200px; height: 40px; grid-template-columns: minmax(60px, 20%); grid-template-rows: 40px; }
+      #zero-percentage-basis .grid { width: 0; height: 40px; grid-template-columns: minmax(50%, 60%); grid-template-rows: 40px; }
+      #repeat-bounds .grid { width: 100px; height: 40px; grid-template-columns: repeat(2, minmax(20px, 40px)); grid-template-rows: 40px; column-gap: 5px; }
+      #intrinsic-max .grid { width: 120px; height: 40px; grid-template-columns: minmax(min-content, 80px); grid-template-rows: 40px; }
+      #intrinsic-max .item { width: 50px; }
+      #auto-max .grid { width: 120px; height: 40px; grid-template-columns: minmax(20px, auto); grid-template-rows: 40px; }
+      #auto-max .item { width: 50px; }
+      #invalid-negative-max .grid { width: 120px; height: 40px; grid-template-columns: minmax(20px, -1px); grid-template-rows: 40px; }
+      #invalid-flex-min .grid { width: 120px; height: 40px; grid-template-columns: minmax(1fr, 40px); grid-template-rows: 40px; }
+    </style>
+  </head>
+  <body>
+    <div id="matrix">
+      <section class="case" id="single-max"><div class="case-name">single-max</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="bounded-space"><div class="case-name">bounded-space</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="minimum-overflow"><div class="case-name">minimum-overflow</div><div class="grid"><div class="item"></div><div class="item"></div></div></section>
+      <section class="case" id="max-under-min"><div class="case-name">max-under-min</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="two-bounds"><div class="case-name">two-bounds</div><div class="grid"><div class="item"></div><div class="item"></div></div></section>
+      <section class="case" id="percentage-bounds"><div class="case-name">percentage-bounds</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="fraction-max"><div class="case-name">fraction-max</div><div class="grid"><div class="item"></div><div class="item"></div></div></section>
+      <section class="case" id="percent-flex-max"><div class="case-name">percent-flex-max</div><div class="grid"><div class="item"></div><div class="item"></div></div></section>
+      <section class="case" id="zero-fr-max"><div class="case-name">zero-fr-max</div><div class="grid"><div class="item"></div><div class="item"></div></div></section>
+      <section class="case" id="row-max"><div class="case-name">row-max</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="row-percentage-bounds"><div class="case-name">row-percentage-bounds</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="percent-max"><div class="case-name">percent-max</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="percent-min-floor"><div class="case-name">percent-min-floor</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="px-min-percent-floor"><div class="case-name">px-min-percent-floor</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="zero-percentage-basis"><div class="case-name">zero-percentage-basis</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="repeat-bounds"><div class="case-name">repeat-bounds</div><div class="grid"><div class="item"></div><div class="item"></div></div></section>
+      <section class="case" id="intrinsic-max"><div class="case-name">intrinsic-max</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="auto-max"><div class="case-name">auto-max</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="invalid-negative-max"><div class="case-name">invalid-negative-max</div><div class="grid"><div class="item"></div></div></section>
+      <section class="case" id="invalid-flex-min"><div class="case-name">invalid-flex-min</div><div class="grid"><div class="item"></div></div></section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "schema": "spinon.c11.root_html_grid_minmax.precomparison.chrome.v1",
+  "browser": "Agent Browser HeadlessChrome/156.0.0.0",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-minmax-precomparison.html",
+  "fixture_sha256": "74171bb89ebfcb193c50e0cdb0f0f5c115d2e9311f54e51eb3b871576cdab88d",
+  "screenshot": "chrome156-precomparison.png",
+  "screenshot_sha256": "8041900696c7049d2b4c89e60422a486fb9f1ff17d659ae8be5862f24205f9be",
+  "cases": [
+    {"id":"single-max","computed_columns":"80px","computed_rows":"40px","root":[160,40],"item_origins":[[0,0]]},
+    {"id":"bounded-space","computed_columns":"60px","computed_rows":"40px","root":[60,40],"item_origins":[[0,0]]},
+    {"id":"minimum-overflow","computed_columns":"40px 10px","computed_rows":"40px","root":[30,40],"item_origins":[[0,0],[40,0]]},
+    {"id":"max-under-min","computed_columns":"40px","computed_rows":"40px","root":[100,40],"item_origins":[[0,0]]},
+    {"id":"two-bounds","computed_columns":"60px 80px","computed_rows":"40px","root":[180,40],"item_origins":[[0,0],[70,0]]},
+    {"id":"percentage-bounds","computed_columns":"80px","computed_rows":"40px","root":[200,40],"item_origins":[[0,0]]},
+    {"id":"fraction-max","computed_columns":"60px 60px","computed_rows":"40px","root":[130,40],"item_origins":[[0,0],[70,0]]},
+    {"id":"percent-flex-max","computed_columns":"100px 100px","computed_rows":"40px","root":[200,40],"item_origins":[[0,0],[100,0]]},
+    {"id":"zero-fr-max","computed_columns":"20px 100px","computed_rows":"40px","root":[130,40],"item_origins":[[0,0],[30,0]]},
+    {"id":"row-max","computed_columns":"40px","computed_rows":"80px","root":[40,100],"item_origins":[[0,0]]},
+    {"id":"row-percentage-bounds","computed_columns":"40px","computed_rows":"40px","root":[40,100],"item_origins":[[0,0]]},
+    {"id":"percent-max","computed_columns":"60px","computed_rows":"40px","root":[200,40],"item_origins":[[0,0]]},
+    {"id":"percent-min-floor","computed_columns":"120px","computed_rows":"40px","root":[200,40],"item_origins":[[0,0]]},
+    {"id":"px-min-percent-floor","computed_columns":"60px","computed_rows":"40px","root":[200,40],"item_origins":[[0,0]]},
+    {"id":"zero-percentage-basis","computed_columns":"0px","computed_rows":"40px","root":[0,40],"item_origins":[[0,0]]},
+    {"id":"repeat-bounds","computed_columns":"40px 40px","computed_rows":"40px","root":[100,40],"item_origins":[[0,0],[45,0]]},
+    {"id":"intrinsic-max","computed_columns":"80px","computed_rows":"40px","root":[120,40],"item_origins":[[0,0]]},
+    {"id":"auto-max","computed_columns":"50px","computed_rows":"40px","root":[120,40],"item_origins":[[0,0]]},
+    {"id":"invalid-negative-max","computed_columns":"8px","computed_rows":"40px","root":[120,40],"item_origins":[[0,0]],"css_valid":false},
+    {"id":"invalid-flex-min","computed_columns":"8px","computed_rows":"40px","root":[120,40],"item_origins":[[0,0]],"css_valid":false}
+  ]
+}
