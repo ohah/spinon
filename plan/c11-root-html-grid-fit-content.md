@@ -6,7 +6,9 @@
 
 **검증 경계 근거:** [기본 Root HTML font 경로와 Ahem test engine 구분](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md)
 
-**계획 실패 관점 검토:** [20개](./c11-root-html-grid-fit-content-plan-review-20.md) · **계획 PR 변경 검토:** [20개](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md) · **runtime 검증 분리 계획 정정:** [20개](./c11-root-html-grid-fit-content-plan-correction-review-20.md) · [정정 PR 변경 검토 20개](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md). **구현/runtime 검토:** 별도 20개 · **구현 PR 변경 검토:** 별도 20개.
+**named-area admission 경계 근거:** [현재 Root HTML area gate와 fit-content 조합 제안](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md)
+
+**계획 실패 관점 검토:** [20개](./c11-root-html-grid-fit-content-plan-review-20.md) · **계획 PR 변경 검토:** [20개](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md) · **font 경계 계획 정정 검토:** [20개](./c11-root-html-grid-fit-content-plan-correction-review-20.md) · [정정 PR 변경 검토 20개](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md) · **named-area admission 계획 정정 검토:** [20개](./c11-root-html-grid-fit-content-area-admission-review-20.md) · [정정 PR 변경 검토 20개](../spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md). **구현/runtime 검토:** 별도 20개 · **구현 PR 변경 검토:** 별도 20개.
 
 **상태:** 구현 전 계획. 현재 기본 Root HTML `RuntimeRootHtmlTextPaintV1` 경로의 `validate_root_html_grid_tracks()`는 direct px/%/fr와 bounded `minmax()`만 허용한다. 일반 typed converter와 `spinon-layout` Taffy adapter에는 이미 `FitContent` 변환이 있으므로, 이번 slice는 안전한 제한값 admission과 parsed Root HTML 통합을 다룬다.
 
@@ -18,7 +20,7 @@
 
 허용하는 typed 값은 `ComputedCssGridTrackSize::FitContent(LengthPx(value))`이며 `value.is_finite() && value >= 0.0`이어야 한다. 기존 integer `repeat()`가 만든 explicit track list에서도 같은 검증을 적용한다. Browser baseline은 직접 track과 fixed integer repeat에서 px cap 동작을 고정한다.
 
-Percentage 및 `calc()` 인자, auto sizing, auto-repeat, implicit `grid-auto-*`, named line 신규 admission, area-created unsized tracks는 범위 밖이다. 이미 지원되는 track 수와 일치하는 고정 named-area map 하나와 explicit `fit-content(px)`의 조합만 기준 입력에 포함한다. 기존 line-name·auto-repeat·column-flow·implicit-track·area 검증을 그대로 유지한다. 지원 밖 값은 기존 parsed Root HTML profile에서 property-bound diagnostic으로 fail-closed하며 부분 frame을 발행하지 않는다.
+`fit-content()`의 percentage 및 `calc()` 인자, auto sizing, auto-repeat, implicit `grid-auto-*`, named line 신규 admission, area-created unsized tracks는 범위 밖이다. 현재 Root HTML area gate는 고정 named-area map 일부만 허용하며 Chrome 기준의 `"fixed fit"` 1×2 map은 아직 기본 route에서 허용되지 않는다. 이 slice는 파서가 만든 유효한 직사각형 area map이 explicit row/column track 수와 정확히 일치하고, 두 축의 모든 track이 finite non-negative direct px 또는 `fit-content(px)`이며 적어도 하나가 `fit-content(px)`인 경우를 추가로 허용한다. area 이름이나 scene/node 식별자를 하드코딩하지 않는다. 새 named-area 경로는 direct percentage, `fit-content()` percentage/calc 인자, auto, `fr`, `minmax()`를 허용하지 않는다. 이 제약은 기존 fixed/fraction/percentage named-area profiles를 바꾸지 않는다. 기존 line-name·auto-repeat·column-flow·implicit-track·area 검증을 유지하고 지원 밖 값은 property-bound diagnostic으로 fail-closed하며 부분 frame을 발행하지 않는다.
 
 ## 규범 해석과 고정 기준
 
@@ -32,18 +34,18 @@ Chrome 156.0.8078.80 Agent Browser observation과 fixture/font/screenshot hash�
 | Column cap between contributions | `fit-content(40px)` | 40px |
 | Column cap above max-content | `fit-content(120px)` | 110px |
 | Fixed integer repeat | `repeat(2, fit-content(40px))` | `[40px, 40px]` |
-| Existing fixed named-area map | `"fixed fit"`, tracks `20px fit-content(40px)` | `[20px, 40px]` |
+| Named-area baseline | `"fixed fit"`, tracks `20px fit-content(40px)` | `[20px, 40px]` (Chrome 기준이며 현재 Root HTML admission은 아님) |
 | Row cap below wrapped minimum | width 20px, four Ahem lines, `fit-content(20px)` | 40px |
 
 Chrome은 computed track list와 item frame을 전부 독립 oracle과 일치시켰다. 그 결과는 Spinon 동작이나 WPT 적합성을 증명하지 않는다.
 
 ## 구현 수락 기준
 
-1. 기본 parsed Root HTML profile에서 explicit row/column `fit-content(px)`만 정확히 허용한다. 음수·비유한 px, percentage, calc, auto, 그리고 implicit `grid-auto-*`의 `fit-content()`는 거부하며 diagnostic은 해당 Grid property와 node를 보존한다.
-2. 기존 `project_track()` typed 변환을 재사용한다. 기존 integer repeat 확장 결과도 동일 admission을 받으며 auto-repeat과 named lines는 계속 거부한다. 신규 profile, scene allowlist 또는 fixture 전용 product branch를 만들지 않는다.
-3. Projection 검사는 column/row 값과 fixed-repeat expansion, `0px`, 양수, 음수, NaN, ±infinity, percentage, calc 인자를 acceptance/rejection matrix로 고정한다. Unsupported 값이 다른 valid tracks나 CSS declaration의 부분 성공으로 바뀌지 않는다.
+1. 기본 parsed Root HTML profile에서 explicit row/column `fit-content(px)`만 정확히 허용한다. 음수·비유한 px, `fit-content(%)`, `fit-content(calc())`, auto sizing, 그리고 implicit `grid-auto-*`의 `fit-content()`는 거부하며 diagnostic은 해당 Grid property와 node를 보존한다.
+2. 기존 `project_track()` typed 변환을 재사용한다. 기존 integer repeat 확장 결과도 동일 admission을 받으며 auto-repeat과 named lines는 계속 거부한다. parser-validated dimension-matched area 조합은 area 이름이나 scene ID에 종속되지 않고, 신규 profile 또는 fixture 전용 product branch를 만들지 않는다.
+3. Projection 검사는 column/row 값과 fixed-repeat expansion, `0px`, 양수, 음수, NaN, ±infinity, `fit-content(%)`, `fit-content(calc())`를 acceptance/rejection matrix로 고정한다. Unsupported 값이 다른 valid tracks나 CSS declaration의 부분 성공으로 바뀌지 않는다.
 4. `spinon-layout`의 fixed Ahem test engine은 Chrome 기준 중 세 cap column, fixed repeat, row minimum floor의 다섯 Ahem text sizing cases를 independent expected JSON과 비교한다. Named-area scene은 projection 및 default runtime layer에서 검사한다. 이는 Grid/Taffy sizing 근거이며 Root HTML parsing이나 앱 runtime 근거로 부르지 않는다.
-5. `spinon-style-to-layout`은 parsed computed Root HTML values의 explicit columns/rows, fixed repeat 및 기존 fixed named-area 조합을 typed `GridTrackSize::FitContent`으로 투영하는지 별도 검사한다. Percentage/calc, invalid lengths, auto-repeat, line names와 implicit `grid-auto-*` fail-closed를 검사한다.
+5. `spinon-style-to-layout`은 parsed computed Root HTML values의 explicit columns/rows, fixed repeat 및 dimension-matched arbitrary-name rectangular area 조합을 typed `GridTrackSize::FitContent`으로 투영하는지 별도 검사한다. named-area fit-content 경로는 두 축이 finite non-negative px/fit-content(px) track으로만 구성되고 적어도 한 fit-content track을 가져야 한다. `fit-content()`의 percentage/calc argument, invalid lengths, auto-repeat, line names와 implicit `grid-auto-*` fail-closed를 검사한다. 기존 2×2 fixed/fraction/percentage area profiles의 동작은 유지한다.
 6. `RuntimeSession::new_runtime_gpu_with_root_html()`의 default Root HTML route는 font 독립적인 fixed-size child로 세 scene을 실행한다. 직접 track scene은 30×20px grid, `fit-content(40px) 10px` columns, 20px row, 40×20px first item과 8×20px second marker를 두고 layout tracks `[40px, 10px]`, marker frame `(x=40,y=0,w=8,h=20)`을 확인한다. Fixed-area scene은 30×20px grid, `grid-template-areas: "fixed fit"`, `20px fit-content(40px)` columns, 20px row, `grid-area: fixed`인 20×20px child와 `grid-area: fit`인 40×20px child를 두고 tracks `[20px, 40px]`, child frames `(x=0,y=0,w=20,h=20)` 및 `(x=20,y=0,w=40,h=20)`를 확인한다. Fixed-row scene은 20×20px grid, 20px column, `fit-content(20px)` row, 20×40px child로 row track과 child height 40px를 확인한다. 이는 default route admission/layout evidence이며 Ahem cap 계산 검증이 아니다.
 7. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 세 scene을 동일 source fixture 및 기본 앱 entry로 실행한다. 각 scene의 `layout=ready`, boxes, draw/present와 화면 PNG를 남긴다. 두 column scene은 grid origin 기준 CSS 좌표 `(25,10)`은 root 안, `(35,10)`은 root 바깥이지만 40px fit child 안이며, 직접 track scene의 `(42,10)`은 x=40px marker 안임을 확인한다. Fixed-row scene은 `(10,10)`이 20px root 안, `(10,25)`가 root 바깥이지만 40px child 안임을 확인한다. 각 root-relative CSS sample을 recorded DPR/표면 크기로 AVD PixelCopy와 iOS Metal drawable 표본 좌표로 변환한다. AVD software renderer, Metal compositor 제출 시점, simulator와 실기기 차이를 분리 기록한다.
 8. 기존 direct px/%/fr, `minmax()`, repeat, named-area, implicit row, column-flow, overflow, allocation failure 및 fallback/recovery 검증을 회귀 검사한다. 불변 fixture/font/source hash와 simulator source commit을 evidence에 기록한다.
