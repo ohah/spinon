@@ -40,3 +40,7 @@
 `spinon-text-layout --lib`는 99/99, fixture-enabled `spinon-ffi --lib`는 189 passed·2 ignored다. feature-enabled runtime 전체는 425 passed·4 failed·3 ignored이고, default runtime 전체는 219 passed·2 failed·3 ignored다. 실패는 Root HTML grid/rejection 및 anonymous-text profile에 있으며 [runtime README](./README.md)에 test ID와 경계를 기록했다. runtime all-target Clippy는 기존 `anonymous_text_hyphens.rs`의 `too_many_arguments` lint에 막혔고 scoped `--lib` Clippy는 통과했다. CI 결과는 없다.
 
 **결론:** 제한 C11.4 candidate와 명시된 simulator/archive evidence는 제출 범위에 맞다. 넓은 Root HTML runtime suite와 all-target Clippy는 green으로 표시하지 않았다. 이 PR은 C11.4 또는 C11 공식 완료를 표시하지 않는다.
+
+## PR-open 문서 변경 재검토
+
+후속 문서 commit `2370de3cd8d423d75d26d257877196d675960ccd`는 계획·상태·내부 계약에 PR #1052 링크와 확인된 check 상태만 추가했다. source/runtime/evidence 변경은 없으며 위 30개 판정은 그대로 유효하다. PR check rollup은 비어 있고 `main` required status checks는 설정되지 않았다.
