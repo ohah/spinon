@@ -3,11 +3,28 @@ use super::*;
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-precomparison.html"
 );
+const IMPLICIT_COLUMNS_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-implicit-columns-precomparison.html"
+);
 const ROOT: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(16, 24, 32);
 const RED: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(229, 72, 77);
 const GREEN: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(58, 143, 91);
 const BLUE: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(56, 112, 224);
 const YELLOW: spinon_render::OpaqueCssSrgb = spinon_render::OpaqueCssSrgb::new(240, 204, 70);
+const IMPLICIT_ITEM_COLORS: [spinon_render::OpaqueCssSrgb; 12] = [
+    spinon_render::OpaqueCssSrgb::new(229, 72, 77),
+    spinon_render::OpaqueCssSrgb::new(58, 143, 91),
+    spinon_render::OpaqueCssSrgb::new(56, 112, 224),
+    spinon_render::OpaqueCssSrgb::new(240, 204, 70),
+    spinon_render::OpaqueCssSrgb::new(155, 89, 182),
+    spinon_render::OpaqueCssSrgb::new(230, 126, 34),
+    spinon_render::OpaqueCssSrgb::new(22, 160, 133),
+    spinon_render::OpaqueCssSrgb::new(211, 84, 0),
+    spinon_render::OpaqueCssSrgb::new(142, 68, 173),
+    spinon_render::OpaqueCssSrgb::new(41, 128, 185),
+    spinon_render::OpaqueCssSrgb::new(192, 57, 43),
+    spinon_render::OpaqueCssSrgb::new(39, 174, 96),
+];
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
@@ -44,6 +61,7 @@ fn ready_scene(
     layout: &crate::session::RuntimeLayoutSnapshot,
     expected_auto_flow: spinon_style::ComputedCssGridAutoFlow,
 ) -> spinon_render::RuntimeRenderSnapshot {
+    let cascade = session.ua_cascade_snapshot();
     assert_eq!(
         layout.state,
         crate::session::RuntimeLayoutState::Ready,
@@ -51,7 +69,6 @@ fn ready_scene(
         session.ua_cascade_snapshot()
     );
     let completed = layout.completed.as_ref().expect("layout should complete");
-    let cascade = session.ua_cascade_snapshot();
     assert_eq!(cascade.state, RuntimeUaCascadeState::Ready);
     let cascade_completed = cascade.completed.expect("Grid styles should complete");
     assert_eq!(completed.key, cascade_completed.key);
@@ -88,6 +105,60 @@ fn ready_scene(
         .render_snapshot
         .clone()
         .expect("default Root HTML route should publish a scene")
+}
+
+fn ready_implicit_column_scene(
+    session: &RuntimeSession,
+    layout: &crate::session::RuntimeLayoutSnapshot,
+) -> spinon_render::RuntimeRenderSnapshot {
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "layout={layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout.completed.as_ref().expect("layout should complete");
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(cascade.state, RuntimeUaCascadeState::Ready);
+    let cascade_completed = cascade.completed.expect("Grid styles should complete");
+    assert_eq!(completed.key, cascade_completed.key);
+    let grid = cascade_completed.roots[0]
+        .styles
+        .elements
+        .iter()
+        .find(|element| element.grid_layout.is_some())
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("computed Grid style should be retained");
+    assert_eq!(
+        grid.auto_flow,
+        spinon_style::ComputedCssGridAutoFlow::Column
+    );
+    assert_eq!(
+        grid.columns,
+        vec![
+            spinon_style::ComputedCssGridTrackSize::LengthPx(30.0),
+            spinon_style::ComputedCssGridTrackSize::LengthPx(40.0),
+        ]
+    );
+    assert_eq!(
+        grid.rows,
+        vec![
+            spinon_style::ComputedCssGridTrackSize::LengthPx(20.0),
+            spinon_style::ComputedCssGridTrackSize::LengthPx(40.0),
+        ]
+    );
+    assert_eq!(grid.auto_rows, spinon_style::ComputedCssGridAutoRows::Auto);
+    assert_eq!(
+        grid.auto_columns,
+        spinon_style::ComputedCssGridAutoColumns::TrackList(vec![
+            spinon_style::ComputedCssGridTrackSize::LengthPx(15.0),
+            spinon_style::ComputedCssGridTrackSize::LengthPx(25.0),
+        ])
+    );
+    completed
+        .render_snapshot
+        .clone()
+        .expect("the default Root HTML route should publish the complete implicit-column scene")
 }
 
 #[test]
@@ -145,6 +216,30 @@ fn c11_1_root_html_sparse_column_flow_matches_chrome_frames_and_row_control() {
     assert_eq!(frame(&scene, GREEN), [30.0, 0.0, 30.0, 40.0]);
     assert_eq!(frame(&scene, BLUE), [0.0, 20.0, 70.0, 20.0]);
     assert_eq!(frame(&scene, YELLOW), [30.0, 20.0, 70.0, 40.0]);
+}
+
+#[test]
+fn c11_1_root_html_column_flow_repeats_fixed_px_implicit_columns_and_gaps() {
+    let (session, layout) = run(IMPLICIT_COLUMNS_SOURCE);
+    let scene = ready_implicit_column_scene(&session, &layout);
+    assert_eq!(frame(&scene, ROOT), [0.0, 0.0, 175.0, 63.0]);
+
+    for (color, expected) in IMPLICIT_ITEM_COLORS.into_iter().zip([
+        [0.0, 0.0, 30.0, 20.0],
+        [0.0, 23.0, 30.0, 40.0],
+        [35.0, 0.0, 40.0, 20.0],
+        [35.0, 23.0, 40.0, 40.0],
+        [80.0, 0.0, 15.0, 20.0],
+        [80.0, 23.0, 15.0, 40.0],
+        [100.0, 0.0, 25.0, 20.0],
+        [100.0, 23.0, 25.0, 40.0],
+        [130.0, 0.0, 15.0, 20.0],
+        [130.0, 23.0, 15.0, 40.0],
+        [150.0, 0.0, 25.0, 20.0],
+        [150.0, 23.0, 25.0, 40.0],
+    ]) {
+        assert_eq!(frame(&scene, color), expected, "item color {color:?}");
+    }
 }
 
 #[test]
@@ -239,10 +334,10 @@ fn c11_1_root_html_sparse_column_flow_rejects_unsupported_shapes_without_a_scene
             ),
         ),
         (
-            "non-auto implicit column sizing",
+            "percentage implicit column sizing",
             SOURCE.replace(
                 "grid-auto-flow: column;",
-                "grid-auto-flow: column; grid-auto-columns: 10px;",
+                "grid-auto-flow: column; grid-auto-columns: 25%;",
             ),
         ),
         (

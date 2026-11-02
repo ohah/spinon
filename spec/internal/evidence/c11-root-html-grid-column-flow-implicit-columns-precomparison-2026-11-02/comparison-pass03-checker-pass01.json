@@ -1,0 +1,15 @@
+{
+  "browser": "HeadlessChrome/156.0.8078.80",
+  "sourceSha256": "432991cb1edf2a48186339431a5a4504441b0e787449baa4f8ee2703011df87a",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "devicePixelRatio": 1
+  },
+  "rootGeometryAndComputedTracksMatch": false,
+  "semanticItemFramesMatch": true,
+  "itemCount": 12,
+  "maxAbsoluteFrameErrorCssPx": 0,
+  "pass": false,
+  "checkerNote": "Initial helper compared numeric gap values to computed-style px strings; this is a verifier normalization error, not a browser or product failure."
+}

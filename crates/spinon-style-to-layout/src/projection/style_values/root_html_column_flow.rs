@@ -1,4 +1,5 @@
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind};
+use spinon_layout::GRID_MAX_TRACKS;
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRows, ComputedCssGridPlacement, ComputedCssGridTrackSize,
@@ -65,11 +66,17 @@ pub(super) fn validate_candidate(
             "Root HTML column-flow mode requires computed writing-mode:horizontal-tb",
         ));
     }
+    if !root_html_auto_columns_supported(&grid.auto_columns) {
+        return Err(unsupported(
+            node,
+            "grid-auto-columns",
+            "Root HTML column-flow mode requires auto or a finite non-negative px value/list",
+        ));
+    }
     if grid.template_areas.is_some()
         || grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
         || !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto)
-        || !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
         || grid.columns.is_empty()
         || grid.rows.is_empty()
         || grid.columns.iter().chain(&grid.rows).any(|track| {
@@ -83,20 +90,9 @@ pub(super) fn validate_candidate(
         return Err(unsupported(
             node,
             "grid-auto-flow",
-            "Root HTML column-flow mode requires direct px explicit tracks, auto implicit sizing, no areas, and no repeat",
+            "Root HTML column-flow mode requires direct px explicit tracks, auto rows, no areas, and no repeat",
         ));
     }
-    let capacity = grid
-        .columns
-        .len()
-        .checked_mul(grid.rows.len())
-        .ok_or_else(|| {
-            unsupported(
-                node,
-                "grid-template-rows",
-                "explicit cell capacity overflows usize",
-            )
-        })?;
     let container_handle = nodes
         .grid_container_handles
         .get(&node)
@@ -114,11 +110,22 @@ pub(super) fn validate_candidate(
         .flatten()
         .filter(|child| nodes.grid_item_owners.get(&child.id()) == Some(&node))
         .count();
-    if visible_item_count > capacity {
+    let required_columns = visible_item_count.div_ceil(grid.rows.len());
+    let total_columns = required_columns.max(grid.columns.len());
+    if total_columns > GRID_MAX_TRACKS {
         return Err(unsupported(
             node,
-            "grid-auto-flow",
-            "visible item count exceeds explicit cell capacity",
+            "grid-template-columns",
+            "Root HTML column-flow mode exceeds the 10,000 explicit-plus-implicit column limit",
+        ));
+    }
+    if required_columns > grid.columns.len()
+        && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+    {
+        return Err(unsupported(
+            node,
+            "grid-auto-columns",
+            "implicit columns require fixed-px grid-auto-columns in the Root HTML column-flow profile",
         ));
     }
     for item in tree
@@ -130,6 +137,18 @@ pub(super) fn validate_candidate(
         validate_item(tree, snapshot, item)?;
     }
     Ok(())
+}
+
+fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
+    let valid_px = |track: &ComputedCssGridTrackSize| matches!(track, ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0);
+    match auto_columns {
+        ComputedCssGridAutoColumns::Auto => true,
+        ComputedCssGridAutoColumns::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridAutoColumns::TrackList(tracks) => {
+            !tracks.is_empty() && tracks.len() <= GRID_MAX_TRACKS && tracks.iter().all(valid_px)
+        }
+        ComputedCssGridAutoColumns::Unsupported(_) => false,
+    }
 }
 
 fn validate_item(

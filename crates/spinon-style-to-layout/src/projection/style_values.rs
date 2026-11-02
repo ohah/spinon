@@ -1091,6 +1091,10 @@ fn validate_root_html_grid_item_capacity(
                 value: "computed Grid track 정보가 없습니다".to_owned(),
             }
         })?;
+        if grid.auto_flow == ComputedCssGridAutoFlow::Column {
+            // column-flow의 explicit-plus-implicit column cap은 전용 후보 검증기에서 확인합니다.
+            continue;
+        }
         let explicit_capacity =
             grid.columns
                 .len()

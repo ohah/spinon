@@ -1,0 +1,24 @@
+{
+  "android": {
+    "serial": "emulator-5556",
+    "package": "dev.spinon.bootstrap",
+    "installedApkPath": "/data/app/~~YBEB1XHterTYG07EfaOdGw==/dev.spinon.bootstrap-29QpRXFEl7GGKtE3xI-0SQ==/base.apk",
+    "installedApkSha256": "cd6e387ce94a60e8d30b0248baa3a73242e271384fe4de2233afc9f9522fad86",
+    "assets": {
+      "assets/index.html": "432991cb1edf2a48186339431a5a4504441b0e787449baa4f8ee2703011df87a",
+      "assets/root-app.js": "41170b50d5d2e55503423776f61bfa3e74147e3d510d4663518816058dced8be"
+    }
+  },
+  "ios": {
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "bundleId": "dev.spinon.bootstrap",
+    "installedAppContainer": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data/Containers/Bundle/Application/7E02EA7E-6B06-4439-B0BE-9FB25DD9573D/SpinonBootstrap.app",
+    "indexHtmlSha256": "432991cb1edf2a48186339431a5a4504441b0e787449baa4f8ee2703011df87a",
+    "rootAppJsSha256": "41170b50d5d2e55503423776f61bfa3e74147e3d510d4663518816058dced8be",
+    "executableSha256": "dc29b3ff8061fa9f8d9f4007eb64e58812173628bfd0947478998cc7f762f661"
+  },
+  "expected": {
+    "indexHtmlSha256": "432991cb1edf2a48186339431a5a4504441b0e787449baa4f8ee2703011df87a",
+    "rootAppJsSha256": "41170b50d5d2e55503423776f61bfa3e74147e3d510d4663518816058dced8be"
+  }
+}

@@ -3,8 +3,9 @@ use crate::projection::typed_math::CssMathProjector;
 use spinon_core::NodeId;
 use spinon_layout::GridTrackSize;
 use spinon_style::{
-    ComputedCssGridArea, ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTemplateAreas,
+    ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 #[path = "root_html_grid_track_tests/implicit_rows_composition.rs"]
@@ -59,6 +60,126 @@ fn root_html_column_flow_selects_its_restricted_layout_mode() {
     assert_eq!(projected.auto_flow, spinon_layout::GridAutoFlow::Column);
     assert_eq!(projected.auto_rows, spinon_layout::GridAutoRows::Auto);
     assert_eq!(projected.auto_columns, spinon_layout::GridAutoColumns::Auto);
+}
+
+#[test]
+fn root_html_column_flow_projects_direct_fixed_px_auto_columns() {
+    let node = NodeId::new(11_243).unwrap();
+    for (auto_columns, expected) in [
+        (
+            ComputedCssGridAutoColumns::LengthPx(15.0),
+            spinon_layout::GridAutoColumns::LengthPx(15.0),
+        ),
+        (
+            ComputedCssGridAutoColumns::TrackList(vec![
+                ComputedCssGridTrackSize::LengthPx(15.0),
+                ComputedCssGridTrackSize::LengthPx(25.0),
+            ]),
+            spinon_layout::GridAutoColumns::TrackList(vec![
+                GridTrackSize::LengthPx(15.0),
+                GridTrackSize::LengthPx(25.0),
+            ]),
+        ),
+    ] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        input.auto_flow = ComputedCssGridAutoFlow::Column;
+        input.auto_columns = auto_columns;
+
+        let projected = project_grid_layout(
+            node,
+            &input,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        )
+        .unwrap();
+
+        assert_eq!(projected.auto_columns, expected);
+        assert_eq!(
+            projected.placement_mode,
+            spinon_layout::GridPlacementMode::RootHtmlColumnFlowV1
+        );
+    }
+}
+
+#[test]
+fn root_html_column_flow_accepts_auto_column_list_at_track_limit() {
+    let node = NodeId::new(11_245).unwrap();
+    let mut input = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    input.auto_flow = ComputedCssGridAutoFlow::Column;
+    input.auto_columns = ComputedCssGridAutoColumns::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(1.0);
+        spinon_layout::GRID_MAX_TRACKS
+    ]);
+
+    let projected = project_grid_layout(
+        node,
+        &input,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("an auto-column pattern at the shared track limit should be accepted");
+    assert!(matches!(
+        projected.auto_columns,
+        spinon_layout::GridAutoColumns::TrackList(tracks)
+            if tracks.len() == spinon_layout::GRID_MAX_TRACKS
+    ));
+}
+
+#[test]
+fn root_html_column_flow_rejects_unsupported_auto_columns_and_row_flow_sizing() {
+    let node = NodeId::new(11_244).unwrap();
+    for auto_columns in [
+        ComputedCssGridAutoColumns::LengthPx(-1.0),
+        ComputedCssGridAutoColumns::LengthPx(f32::NAN),
+        ComputedCssGridAutoColumns::LengthPx(f32::INFINITY),
+        ComputedCssGridAutoColumns::TrackList(Vec::new()),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(0.5)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Fraction(1.0)]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Calc(
+            spinon_style::ComputedCssMath::LengthPx(15.0),
+        )]),
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::LengthPx(-1.0)]),
+        ComputedCssGridAutoColumns::Unsupported("15%".to_owned()),
+    ] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        input.auto_flow = ComputedCssGridAutoFlow::Column;
+        input.auto_columns = auto_columns;
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &input,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                property: "grid-auto-columns",
+                ..
+            })
+        ));
+    }
+
+    let mut row_flow = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    row_flow.auto_columns = ComputedCssGridAutoColumns::LengthPx(15.0);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &row_flow,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            property: "grid-auto-columns",
+            ..
+        })
+    ));
 }
 
 #[test]

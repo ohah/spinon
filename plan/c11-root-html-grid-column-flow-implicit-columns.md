@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML column-flow implicit columns
 
-**상태:** 구현 전 계획. 기존 [column-flow 제한 slice](./c11-root-html-grid-column-flow.md)는 explicit cell만 사용하고 implicit track을 거부한다. 이 후속 계획은 fixed-px `grid-auto-columns`를 써서 positive implicit columns를 생성하는 좁은 기본 Root HTML runtime 경로를 추가한다. 일반 CSS Grid 지원이나 C11 완료를 뜻하지 않는다.
+**상태:** 구현·Rust focused 검증·Chrome 156 비교·Android/iOS Simulator smoke를 마친 제한 후보. PR/merge와 C11.1 승격은 남아 있다. 기존 [column-flow 제한 slice](./c11-root-html-grid-column-flow.md)는 explicit cell만 사용하고 implicit track을 거부한다. 이 후속 계획은 fixed-px `grid-auto-columns`를 써서 positive implicit columns를 생성하는 좁은 기본 Root HTML runtime 경로를 추가한다. 일반 CSS Grid 지원이나 C11 완료를 뜻하지 않는다.
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid 통합](./c11-root-html-grid-runtime.md) · [상태 대장](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -16,7 +16,7 @@
 
 - explicit rows와 columns: 비어 있지 않은 finite non-negative direct px track 목록
 - `grid-auto-flow: column` sparse placement
-- `grid-auto-columns`: 단일 finite non-negative px 크기 또는 그런 크기만 포함한 비어 있지 않은 typed track 목록
+- `grid-auto-columns`: 기존 `auto` 동작은 explicit cell 안에서 유지하고, implicit column이 필요하면 computed 값이 finite non-negative px인 단일 크기 또는 그런 값만 포함한 비어 있지 않은 typed track 목록을 사용
 - `grid-auto-rows: auto`
 - placement longhand 네 개가 모두 `auto`이고 `order: 0`인 direct empty HTML `div` child
 - item의 고정 finite non-negative px width와 height
@@ -60,7 +60,7 @@ Root frame is `(0,0,175,63)`. The expected JSON is authored independently from t
 
 - Chrome 156 고정 fixture의 root frame 및 12개 semantic item frame을 `0.02 CSS px` 이내로 일치시킨다. implicit column list의 반복, column-major source order, column/row gap을 각각 확인한다.
 - Layout tests는 1-column, 1-item baseline, explicit capacity 안의 기존 동작, 정확히 한 개/여러 개 implicit column, 두 번 이상 auto track-list 순환, hidden item 제외 및 row flow 회귀를 확인한다.
-- Style projection과 runtime tests는 px scalar/list 긍정 사례와 percentage, `fr`, `auto`, `minmax()`, `fit-content()`, math, empty/oversized list, negative/nonfinite synthetic typed value를 거부한다. `column dense`, implicit row, explicit placement, wrong direction/writing mode, nested Grid, item order, nonempty/non-`div`/auto-sized item도 기존 fail-closed 계약을 유지한다.
+- Style projection과 runtime tests는 px scalar/list 긍정 사례와 percentage, `fr`, overflow가 필요한 `auto`, `minmax()`, `fit-content()`, px로 환산되지 않는 math, empty/oversized list, negative/nonfinite synthetic typed value를 거부한다. 순수 length `calc()`처럼 cascade가 정확한 finite px 값으로 환산한 값은 fixed px와 동일하게 처리하고, percentage가 남는 `calc()`는 거부한다. `auto`는 기존처럼 explicit cell에 들어가는 경우 허용하고 implicit column이 필요할 때 거부한다. `column dense`, implicit row, explicit placement, wrong direction/writing mode, nested Grid, item order, nonempty/non-`div`/auto-sized item도 기존 fail-closed 계약을 유지한다.
 - 10,000-track 경계에서 마지막 유효 입력과 첫 초과 입력을 검사하고, 실패 시 layout 결과·revision·render scene이 publish되지 않는지 확인한다.
 - auto-column expansion과 item-placement reserve 실패를 주입해 fallible error 전파와 scene 미발행을 확인한다.
 - Rust focused tests, 관련 Root HTML regression, `cargo fmt --all -- --check`, scoped Clippy 및 default product feature build를 실행한다. 기존 무관 실패가 있으면 실패로 분리 기록한다.
@@ -73,3 +73,10 @@ Root frame is `(0,0,175,63)`. The expected JSON is authored independently from t
 - 계획 PR 변경분은 계획 검토와 별도로 서로 다른 30개 관점에서 검토했다: [계획 PR diff 검토](./c11-root-html-grid-column-flow-implicit-columns-plan-pr-diff-review-30.md).
 - 구현 뒤에는 구현/runtime 실패 관점 20개와 구현 PR diff 관점 30개를 새로 기록한다. 계획 검토 결과를 재사용하지 않는다.
 - PR은 프로젝트 PR 양식과 문서 라벨 기준을 따르고 Rebase and merge로 병합한다. GitHub check run이 없는 경우 CI 통과로 표시하지 않는다.
+
+## 구현 후보 진행 기록
+
+- Layout, cascade, style-to-layout, Root HTML runtime에 제한 경로를 연결했다. fixed px scalar/list, list 순환, 다중 implicit column, gap, hidden item 제외, explicit capacity 내 `auto`, percentage·`fr`·intrinsic sizing 거부, quota 및 reservation failure/recovery를 검사했다.
+- Chrome 156.0.8078.80 기준 viewport 1280×633에서 explicit columns `[30,40]`, rows `[20,40]`, auto columns `[15,25]`, gaps 5/3, 12 semantic item을 비교했다. root와 12 item frame은 독립 기대값과 정확히 일치했다. [사전 비교 evidence](../spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-precomparison-2026-11-02/README.md)
+- Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator의 기본 app route에서 동일 fixture/script bundle hash, `layout=ready`, `boxes=15`, draw/present와 화면을 확인했다. 이는 surface readback이나 실기기 GPU 검증이 아니다. [실행 evidence](../spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/README.md)
+- 구현/runtime 실패 관점 20개([검토](../spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/implementation-review-20.md))와 PR diff 실패 관점 30개([검토](../spec/internal/evidence/c11-root-html-grid-column-flow-implicit-columns-runtime-2026-11-02/pr-diff-review-30.md))를 각각 새로 검토했다. 계획 20개와 계획 PR diff 30개는 별도 자료로 유지한다.
