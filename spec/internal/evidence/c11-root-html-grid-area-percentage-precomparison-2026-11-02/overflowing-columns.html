@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; width: 320px; height: 240px; }
+  main {
+    display: grid;
+    width: 120px;
+    height: 70px;
+    grid-template-columns: 120% 10%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas: "header header" "side content";
+    gap: 0;
+    overflow: visible;
+  }
+  .header { grid-area: header; background: #e33; }
+  .side { grid-area: side; background: #3a3; }
+  .content { grid-area: content; background: #36c; }
+</style>
+<main id="root" data-case="overflowing-columns">
+  <div class="content"></div>
+  <div class="header"></div>
+  <div class="side"></div>
+</main>

@@ -1,0 +1,51 @@
+{
+  "tolerance_css_px": 0.02,
+  "areas": "\"header header\" \"side content\"",
+  "root": [0, 0, 120, 70],
+  "calculation": "Columns percentages resolve against the definite 120px content width and row percentages against the definite 70px content height. Direct px tracks keep their authored used size. No percentage value is clamped to 100%; overflow remains visible.",
+  "cases": {
+    "both-axes": {
+      "columns": [30, 90],
+      "rows": [14, 56],
+      "items": {
+        "header": [0, 0, 120, 14],
+        "side": [0, 14, 30, 56],
+        "content": [30, 14, 90, 56]
+      }
+    },
+    "mixed-px-percent": {
+      "columns": [40, 60],
+      "rows": [14, 50],
+      "items": {
+        "header": [0, 0, 100, 14],
+        "side": [0, 14, 40, 50],
+        "content": [40, 14, 60, 50]
+      }
+    },
+    "overflowing-columns": {
+      "columns": [144, 12],
+      "rows": [14, 56],
+      "items": {
+        "header": [0, 0, 156, 14],
+        "side": [0, 14, 144, 56],
+        "content": [144, 14, 12, 56]
+      },
+      "root_scroll_width": 156
+    },
+    "zero-track": {
+      "columns": [0, 120],
+      "rows": [14, 56],
+      "items": {
+        "header": [0, 0, 120, 14],
+        "side": [0, 14, 0, 56],
+        "content": [0, 14, 120, 56]
+      }
+    }
+  },
+  "calculation_details": {
+    "both-axes": "120 × [0.25, 0.75] columns; 70 × [0.20, 0.80] rows.",
+    "mixed-px-percent": "[40px, 120 × 0.50] columns; [70 × 0.20, 50px] rows. Unused trailing space is not stretched into fixed/percentage tracks.",
+    "overflowing-columns": "[120 × 1.20, 120 × 0.10] columns; 70 × [0.20, 0.80] rows. The 144px first track and 156px total remain larger than the 120px root.",
+    "zero-track": "[120 × 0, 120 × 1] columns; 70 × [0.20, 0.80] rows. The first area has zero inline size and the second begins at x=0."
+  }
+}

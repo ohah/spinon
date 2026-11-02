@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; width: 320px; height: 240px; }
+  main {
+    display: grid;
+    width: 120px;
+    height: 70px;
+    grid-template-columns: 40px 50%;
+    grid-template-rows: 20% 50px;
+    grid-template-areas: "header header" "side content";
+    gap: 0;
+  }
+  .header { grid-area: header; background: #e33; }
+  .side { grid-area: side; background: #3a3; }
+  .content { grid-area: content; background: #36c; }
+</style>
+<main id="root" data-case="mixed-px-percent">
+  <div class="content"></div>
+  <div class="header"></div>
+  <div class="side"></div>
+</main>
