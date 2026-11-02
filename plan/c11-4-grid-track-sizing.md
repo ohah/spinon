@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-02 anonymous Grid text computed `font-size: 0` 계획 후보
+
+기존 computed font-size 제한 slice에서 제외한 유효한 zero value가 `ParagraphStyle` 검증에서 거부된다. [집중 계획](./c11-4-anonymous-grid-text-font-size-zero.md)은 CSS Fonts Level 4의 non-negative font-size 규칙, pinned Ahem과 독립 계산, Chrome 156 Agent Browser 사전 비교를 고정한다. 이는 아직 계획 단계이며 구현·C11.4 완료·공식 `72/213` 집계에 반영되지 않았다. [사전 비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-font-size-zero-precomparison-2026-11-02/README.md) · [계획 실패 관점 20개](./c11-4-anonymous-grid-text-font-size-zero-plan-review-20.md).
+
 ## 2026-11-01 positive-gap auto-repeat ceiling test-only slice · PR #985
 
 고정 Taffy `0.15.0`의 내부 10,000-track cap에서 `1px` gap이 두-track auto-repeat의 repetition count, source-order 절단, 마지막 named-line item frame에 반영되는지 확인한다. `25,001px` exact-fit과 `25,006px` cap 입력을 Columns/Rows에 각각 실행해 4/4 기대값을 확인했다. Rust Grid trace test만 해당하며 공개 CSS admission이나 C11.4/C11 완료를 뜻하지 않는다. C11.4/C11과 공식 `72/213`은 미완료로 유지한다. [집중 계획](./c11-4-auto-repeat-gap-ceiling.md) · [계획 검토 20개](./c11-4-auto-repeat-gap-ceiling-plan-review-20.md) · [실행·구현 검토](../spec/internal/evidence/c11-4-auto-repeat-gap-ceiling-runtime-2026-11-01/README.md).

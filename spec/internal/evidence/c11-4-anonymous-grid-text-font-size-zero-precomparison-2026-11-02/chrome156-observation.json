@@ -1,0 +1,124 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fontLoaded": true,
+  "negativeAccepted": false,
+  "scenes": {
+    "maxContent": {
+      "children": [],
+      "columns": "0px",
+      "directTextRange": {
+        "fragments": 1,
+        "height": 0,
+        "width": 0
+      },
+      "fontSize": "0px",
+      "grid": {
+        "height": 10,
+        "width": 100,
+        "x": 232,
+        "y": 44
+      },
+      "lineHeight": "10px",
+      "rows": "10px"
+    },
+    "minContent": {
+      "children": [],
+      "columns": "0px",
+      "directTextRange": {
+        "fragments": 1,
+        "height": 0,
+        "width": 0
+      },
+      "fontSize": "0px",
+      "grid": {
+        "height": 10,
+        "width": 100,
+        "x": 232,
+        "y": 0
+      },
+      "lineHeight": "10px",
+      "rows": "10px"
+    },
+    "negativeDeclaration": {
+      "children": [],
+      "columns": "20px",
+      "directTextRange": {
+        "fragments": 1,
+        "height": 10,
+        "width": 20
+      },
+      "fontSize": "10px",
+      "grid": {
+        "height": 10,
+        "width": 100,
+        "x": 232,
+        "y": 176
+      },
+      "lineHeight": "10px",
+      "rows": "10px"
+    },
+    "whitespaceOnly": {
+      "children": [],
+      "columns": "none",
+      "directTextRange": {
+        "fragments": 0,
+        "height": 0,
+        "width": 0
+      },
+      "fontSize": "0px",
+      "grid": {
+        "height": 0,
+        "width": 100,
+        "x": 232,
+        "y": 132
+      },
+      "lineHeight": "10px",
+      "rows": "0px"
+    },
+    "zeroTextBeforeBox": {
+      "children": [
+        {
+          "id": "following-box",
+          "rect": {
+            "height": 3,
+            "width": 5,
+            "x": 232,
+            "y": 98
+          }
+        }
+      ],
+      "columns": "5px",
+      "directTextRange": {
+        "fragments": 1,
+        "height": 0,
+        "width": 0
+      },
+      "fontSize": "0px",
+      "grid": {
+        "height": 13,
+        "width": 100,
+        "x": 232,
+        "y": 88
+      },
+      "lineHeight": "10px",
+      "rows": "10px 3px"
+    }
+  },
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  },
+  "zeroAccepted": true,
+  "chromeVersion": "156.0.8078.80",
+  "font": "Ahem from tests/fixtures/resources/c15/Ahem.ttf; document.fonts.check(10px Ahem)=true",
+  "negativeZero": {
+    "supports": "font-size:-0px is accepted",
+    "specified": "0px",
+    "computed": "0px",
+    "directTextRange": {
+      "width": 0,
+      "height": 0
+    }
+  }
+}
