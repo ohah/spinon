@@ -11,10 +11,12 @@ This is a preimplementation oracle for the next narrow parsed Root HTML Grid ite
 
 ## Evidence
 
-- Fixture: [`root-html-grid-item-auto-stretch-precomparison.html`](../../../../tests/fixtures/css/c11/root-html-grid-item-auto-stretch-precomparison.html), SHA-256 `d034f5584f4475270e11e2eec3947671571f98496e3b31b145c53e237cfcc40e`.
+- Fixture: [`root-html-grid-item-auto-stretch-precomparison.html`](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/root-html-grid-item-auto-stretch-precomparison.html), SHA-256 `d034f5584f4475270e11e2eec3947671571f98496e3b31b145c53e237cfcc40e`.
 - Browser: Agent Browser, HeadlessChrome `156.0.8078.80`, revision `fb096c0011f9d50f0a264a9376420cdea9c421e3`, macOS `26.5.1 arm64`, viewport `1280×633 CSS px`, DPR 1.
-- [Chrome observations](./chrome156-observation.json) include computed self-alignment keywords, CSSOM-resolved width/height, and measured frames. [Independent expected frames](./expected.json) are derived from the normative rules, not copied from browser output.
-- [Chrome screenshot](./chrome156.png), SHA-256 `3d70d992e6b52f578f0ae37f53f2192156c469c302733ece7b99b23d0d429737`, `1280×633` pixels.
+- Chrome observations include computed self-alignment keywords, CSSOM-resolved width/height, and measured frames ([JSON source](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-5-grid-item-auto-stretch-precomparison-2026-11-04/chrome156-observation.json)). Independent expected frames ([JSON source](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-5-grid-item-auto-stretch-precomparison-2026-11-04/expected.json)) are derived from normative rules, not copied from browser output.
+- Screenshot: SHA-256 `3d70d992e6b52f578f0ae37f53f2192156c469c302733ece7b99b23d0d429737`, `1280×633` pixels.
+
+![Agent Browser HeadlessChrome 156 precomparison](./chrome156.png)
 
 ## Normative basis
 
