@@ -761,7 +761,7 @@ fn expand_tracks(
                                 | GridTrackSize::Percentage(value)
                                 | GridTrackSize::Fraction(value)
                                 if value.is_finite() && *value >= 0.0
-                        )
+                        ) || matches!(track, GridTrackSize::Calc(_))
                     }),
                     AutoTrackExpansionMode::TemplateAreaImplicit
                     | AutoTrackExpansionMode::Intrinsic => true,

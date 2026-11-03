@@ -14,12 +14,13 @@ pub(super) fn validate_items(
     hidden: &BTreeMap<NodeId, bool>,
     container_node: &crate::LayoutNode,
     container: &GridContainerInput,
+    css_math: &crate::grid::root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     let node = container_node.id;
     if container.placement_mode != GridPlacementMode::RootHtmlColumnFlowV1 {
         return Ok(());
     }
-    validate_container(node, container)?;
+    validate_container(node, container, css_math)?;
     let visible_count = visible_item_count(hidden, container_node);
     let required_columns = required_column_count(container, visible_count);
     if required_columns > crate::GRID_MAX_TRACKS {
@@ -72,8 +73,9 @@ pub(super) fn normalize(
     hidden: &BTreeMap<NodeId, bool>,
     container_node: &crate::LayoutNode,
     container: &GridContainerInput,
+    css_math: &crate::grid::root_html_column::CssMathIndex<'_>,
 ) -> Result<DenseGridPlacement, LayoutError> {
-    validate_items(input, index, hidden, container_node, container)?;
+    validate_items(input, index, hidden, container_node, container, css_math)?;
     let placement = crate::grid_auto_placement::normalize_dense_grid_container(
         input,
         hidden,
@@ -114,7 +116,11 @@ pub(super) fn normalize(
     Ok(placement)
 }
 
-fn validate_container(node: NodeId, container: &GridContainerInput) -> Result<(), LayoutError> {
+fn validate_container(
+    node: NodeId,
+    container: &GridContainerInput,
+    css_math: &crate::grid::root_html_column::CssMathIndex<'_>,
+) -> Result<(), LayoutError> {
     if container.auto_flow != GridAutoFlow::Column
         || container.columns.is_empty()
         || container.rows.is_empty()
@@ -170,10 +176,14 @@ fn validate_container(node: NodeId, container: &GridContainerInput) -> Result<()
             reason: "Root HTML column-flow mode only supports grid-auto-rows:auto",
         });
     }
-    validate_auto_columns(node, &container.auto_columns)
+    validate_auto_columns(node, &container.auto_columns, css_math)
 }
 
-fn validate_auto_columns(node: NodeId, auto_columns: &GridAutoColumns) -> Result<(), LayoutError> {
+fn validate_auto_columns(
+    node: NodeId,
+    auto_columns: &GridAutoColumns,
+    css_math: &crate::grid::root_html_column::CssMathIndex<'_>,
+) -> Result<(), LayoutError> {
     match auto_columns {
         GridAutoColumns::Auto => Ok(()),
         GridAutoColumns::LengthPx(value) if value.is_finite() && *value >= 0.0 => Ok(()),
@@ -201,6 +211,12 @@ fn validate_auto_columns(node: NodeId, auto_columns: &GridAutoColumns) -> Result
                     GridTrackSize::LengthPx(value)
                     | GridTrackSize::Percentage(value)
                     | GridTrackSize::Fraction(value) => value,
+                    GridTrackSize::Calc(id) => {
+                        crate::grid::root_html_column::validate_auto_column_calc(
+                            node, *id, css_math,
+                        )?;
+                        continue;
+                    }
                     _ => {
                         return Err(LayoutError::UnsupportedGridAutoColumns {
                             node,

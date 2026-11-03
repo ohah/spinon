@@ -4,17 +4,32 @@ use super::super::incremental::{
 use super::super::{CssViewport, compute_runtime_root_html_text_paint_cascade_with_stylesheets};
 use super::view_for_inline_style;
 use crate::{
-    ComputedCssGridAutoColumns, ComputedCssGridAutoRows, ComputedCssGridTrackSize, CssCascadeError,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoRows, ComputedCssGridTrackSize, ComputedCssMath,
+    CssCascadeError,
 };
 
 fn root_grid(source: &str) -> (super::super::StyloDocumentView, spinon_core::NodeId) {
+    root_grid_with_flow(source, "column")
+}
+
+fn root_grid_with_flow(
+    source: &str,
+    flow: &str,
+) -> (super::super::StyloDocumentView, spinon_core::NodeId) {
     view_for_inline_style(&format!(
-        "display:grid;box-sizing:border-box;width:175px;height:63px;grid-template-columns:30px 40px;grid-template-rows:20px 40px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:{source};margin:0;padding:0"
+        "display:grid;box-sizing:border-box;width:175px;height:63px;grid-template-columns:30px 40px;grid-template-rows:20px 40px;grid-auto-flow:{flow};grid-auto-rows:auto;grid-auto-columns:{source};margin:0;padding:0"
     ))
 }
 
 fn computed_auto_columns(source: &str) -> (spinon_core::NodeId, ComputedCssGridAutoColumns) {
-    let (view, root) = root_grid(source);
+    computed_auto_columns_with_flow(source, "column")
+}
+
+fn computed_auto_columns_with_flow(
+    source: &str,
+    flow: &str,
+) -> (spinon_core::NodeId, ComputedCssGridAutoColumns) {
+    let (view, root) = root_grid_with_flow(source, flow);
     let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
         &view,
         &[],
@@ -106,7 +121,6 @@ fn root_html_profile_keeps_intrinsic_auto_column_lists_unsupported() {
     for (source, serialized) in [
         ("minmax(10px, 20px)", "minmax(10px, 20px)"),
         ("fit-content(20px)", "fit-content(20px)"),
-        ("calc(50% + 5px)", "calc(50% + 5px)"),
     ] {
         assert_eq!(
             computed_auto_columns(source).1,
@@ -122,6 +136,27 @@ fn root_html_profile_keeps_intrinsic_auto_column_lists_unsupported() {
         computed_auto_columns("calc(10px + 5px)").1,
         ComputedCssGridAutoColumns::LengthPx(15.0)
     );
+}
+
+#[test]
+fn root_html_profile_preserves_supported_calc_only_for_column_flow() {
+    let expression = ComputedCssMath::Sum(vec![
+        ComputedCssMath::Percentage(0.5),
+        ComputedCssMath::LengthPx(5.0),
+    ]);
+    assert_eq!(
+        computed_auto_columns("calc(50% + 5px)").1,
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Calc(
+            expression.clone(),
+        )])
+    );
+    for flow in ["row", "row dense"] {
+        assert_eq!(
+            computed_auto_columns_with_flow("calc(50% + 5px)", flow).1,
+            ComputedCssGridAutoColumns::Unsupported("calc(50% + 5px)".to_owned()),
+            "calc tracks must stay unsupported for grid-auto-flow:{flow}"
+        );
+    }
 }
 
 #[test]

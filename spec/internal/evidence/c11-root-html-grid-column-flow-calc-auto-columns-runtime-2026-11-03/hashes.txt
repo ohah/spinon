@@ -1,0 +1,10 @@
+3071fc655beaae8bc7d7ef176893b1bef4844d08b40b442e5091b1c958d7185d  tests/fixtures/css/c11/root-html-grid-column-flow-calc-auto-columns-precomparison.html
+d1fe552977c3de7c6107c493ea728c5780c536efc88130c57a3955c630ed4164  tests/fixtures/css/c11/root-html-grid-column-flow-fr-auto-columns-runtime.html
+38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85  platforms/android/app/src/main/assets/root-html-default-rendering.html
+38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85  platforms/ios/Resources/root-html-default-rendering.html
+4daf3e276a74043fb2a913743dd9150ad6b882a7818caf0dd22cbcab6c2a7dd3  spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png
+220f091306bf94b563ee0d2c1571be20f31c1ebe49dd68b8c0a141b9e93013aa  spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log
+7a0422229e651227f79093d78dc58e2dac564b659ea0da84f28da9d1fc1cda51  spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png
+d109edbe1f235839ab1d09ff491a6144effacf7fe3de52df70dba638912bb209  spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log
+49eb850e44eb98fc96609e2b1969e8cb643dc02bb173de328560b76fc424634d  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+cdb74162154975565d3d7aeb3c99a883b3a339bd26f167afe76c21124beb6456  build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap

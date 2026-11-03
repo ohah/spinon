@@ -158,7 +158,7 @@ pub(super) fn validate_implicit_column_relative_extent(
     let has_relative_auto_columns = matches!(
         &grid.auto_columns,
         ComputedCssGridAutoColumns::TrackList(tracks)
-            if tracks.iter().any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_) | ComputedCssGridTrackSize::Fraction(_)))
+            if tracks.iter().any(|track| matches!(track, ComputedCssGridTrackSize::Percentage(_) | ComputedCssGridTrackSize::Fraction(_) | ComputedCssGridTrackSize::Calc(_)))
     );
     if !has_relative_auto_columns || required_columns <= grid.columns.len() {
         return Ok(());
@@ -176,6 +176,36 @@ pub(super) fn validate_implicit_column_relative_extent(
             "width",
             "Root HTML Grid percentage/fraction auto columns require a definite finite non-negative CSS-pixel width",
         ));
+    }
+    let has_calc = matches!(
+        &grid.auto_columns,
+        ComputedCssGridAutoColumns::TrackList(tracks)
+            if tracks.iter().any(|track| matches!(track, ComputedCssGridTrackSize::Calc(_)))
+    );
+    if has_calc {
+        let invalid_property = if element.layout_math_values.contains_key("width") {
+            Some("width")
+        } else if element.layout_dimensions.min_width != ComputedCssDimension::Auto {
+            Some("min-width")
+        } else if element.layout_dimensions.max_width != ComputedCssMaxSize::None {
+            Some("max-width")
+        } else if element.layout_aspect_ratio.is_some()
+            || element
+                .properties
+                .get("aspect-ratio")
+                .is_some_and(|value| value != "auto")
+        {
+            Some("aspect-ratio")
+        } else {
+            None
+        };
+        if let Some(property) = invalid_property {
+            return Err(unsupported(
+                element,
+                property,
+                "Root HTML Grid calc() auto columns require a direct definite width without min/max or aspect-ratio constraints",
+            ));
+        }
     }
     let ComputedCssGridAutoColumns::TrackList(tracks) = &grid.auto_columns else {
         return Ok(());
@@ -225,6 +255,7 @@ pub(super) fn validate_implicit_column_relative_extent(
                     "fraction implicit columns must be finite and non-negative",
                 ));
             }
+            ComputedCssGridTrackSize::Calc(_) => return Ok(()),
             _ => return Ok(()),
         };
         if !value.is_finite() || value < 0.0 {
