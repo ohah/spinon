@@ -1,6 +1,6 @@
 # C11.5 구현/runtime 실패 관점 검토 20개
 
-이 검토는 C11.5 구현 candidate의 실제 코드, Chrome 기준, Rust runtime, Android/iOS simulator readback과 artifact 경계를 검사한다. 계획 PR의 20개 검토 및 계획 PR diff 검토 30개와 별개다. Candidate는 아직 구현 PR로 병합되지 않았고 broad Cargo package tests는 green이 아니다.
+이 검토는 C11.5 제한 구현 PR #1128의 실제 코드, Chrome 기준, Rust runtime, Android/iOS simulator readback과 artifact 경계를 검사한다. 계획 PR의 20개 검토 및 계획 PR diff 검토 30개와 별개다. 제한 구현은 병합됐지만 C11.5 전체와 broad Cargo package tests는 완료/green 상태가 아니다.
 
 | # | 구현/runtime 실패 관점 | 확인 결과 |
 |---|---|---|
@@ -23,11 +23,11 @@
 | 17 | sample point가 cell 경계, safe/unsafe overflow, viewport clipping을 충분히 건드리는가 | **통과** — 각 플랫폼 7개 sample이 내부/외부 경계와 clipping inside/outside를 포함하며 직접 surface 표본은 Android PixelCopy 7/7, iOS Metal 7/7이다. |
 | 18 | OS screenshot이 직접 surface readback으로 오인되거나 simulator가 hardware/physical device 근거로 과장되는가 | **통과** — OS-composited PNG, PixelCopy, pre-compositor Metal readback을 metadata에서 분리했다. Android는 SwiftShader AVD로 기록한다. |
 | 19 | fixture adapter와 fixed scene/sample payload가 기본 앱 artifact에 포함되는가 | **통과** — Android default DEX에서 opt-in adapter 클래스명과 fixture scene ID가 없고 iOS default executable에서는 C11.5 argument와 scene ID가 없다. Opt-in positive builds에는 각각 fixture adapter/argument와 표본 ID가 있다. Android의 runtime request/diagnostic guard 문자열은 기본 DEX에 남을 수 있어 payload exclusion과 구분한다. |
-| 20 | candidate를 전체 Grid/C11 완료로 부풀리거나 전체 package test 실패를 숨기는가 | **한계 기록** — Chrome/Rust focused와 simulator 검증은 bounded evidence다. broad Cargo는 spinon-layout 423 passed/1 failed, style-to-layout 372/1, style 283/1, runtime 261 passed/2 failed/3 ignored로 green이 아니다. 전체 C11·WPT·실기기·hardware GPU를 주장하지 않는다. 공식 완료는 `72/213`이다. |
+| 20 | 제한 구현을 전체 Grid/C11 완료로 부풀리거나 전체 package test 실패를 숨기는가 | **한계 기록** — Chrome/Rust focused와 simulator 검증은 bounded evidence다. broad Cargo는 spinon-layout 423 passed/1 failed, style-to-layout 372/1, style 283/1, runtime 261 passed/2 failed/3 ignored로 green이 아니다. 전체 C11·WPT·실기기·hardware GPU를 주장하지 않는다. 공식 완료는 `72/213`이다. |
 
 ## 실패 수정 후 재확인
 
 - C11.1 projection 테스트가 새로 지원하는 `align-self:end`/`justify-self:start`를 계속 reject하도록 남아 있던 것을 발견했다. 그 검사를 `baseline`/`safe start`의 valid-but-unsupported negative controls로 고쳤고 C11.1 alignment regression 7/7을 통과했다.
 - Android default APK에 opt-in capture adapter reflection class name이 남아 있었다. 호출을 BuildConfig compile-time gate 안으로 옮긴 뒤 default DEX에서 adapter name/scene IDs 부재, opt-in DEX에서 adapter/sample ID 포함을 다시 확인했다.
 - iOS default executable에 사용되지 않는 C11.5 argument exception 문자열이 남아 있었다. 이 인수는 conflict filter의 `--spinon-c*` 조건과 일치하지 않아 해당 예외를 지운 뒤 default executable 부재와 opt-in executable 포함을 다시 검사했다.
-- broad package failure 중 이번 candidate 코드가 건드리지 않은 C07 aspect-ratio string comparison, C15 HostDocument error-kind, 다른 Grid profile track-list, PR #1117 dense-flow rejection expectation은 관련 README와 내부 계약에 별도 보존했다. 이를 green baseline으로 취급하지 않는다.
+- broad package failure 중 이번 제한 구현이 건드리지 않은 C07 aspect-ratio string comparison, C15 HostDocument error-kind, 다른 Grid profile track-list, PR #1117 dense-flow rejection expectation은 관련 README와 내부 계약에 별도 보존했다. 이를 green baseline으로 취급하지 않는다.
