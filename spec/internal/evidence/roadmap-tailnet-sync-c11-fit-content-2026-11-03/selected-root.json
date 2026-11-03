@@ -1,0 +1,680 @@
+{
+  "sourceHead": "0326850ceb20ee19cea81ae5e0df1080cc018063",
+  "sourceTree": "36844d6e5afdad46d1ce4f744335071836c7dc7e",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-c11-fit-content-postmerge-2026-11-03/pass01/root",
+  "stagedFileCount": 111,
+  "stagedBytes": 5587717,
+  "selectedFromGitIndexOnly": true,
+  "noSymlinks": true,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 536480,
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 536480,
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 536480,
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 636282,
+      "sha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 636282,
+      "sha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 380286,
+      "sha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 380286,
+      "sha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content.md",
+      "route": "plan/c11-root-html-grid-fit-content.md",
+      "bytes": 15002,
+      "sha256": "0442a8fe5d0042d30544ea38f89000248e55d2ef6426b4d1a78b1bd3c310893e"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content.md",
+      "bytes": 15002,
+      "sha256": "0442a8fe5d0042d30544ea38f89000248e55d2ef6426b4d1a78b1bd3c310893e"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-plan-review-20.md",
+      "route": "plan/c11-root-html-grid-fit-content-plan-review-20.md",
+      "bytes": 3720,
+      "sha256": "d04e848b69eea81759bcd1c1bef6b4937b918e3ec396fd88c9e2cedb17289518"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-plan-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content-plan-review-20.md",
+      "bytes": 3720,
+      "sha256": "d04e848b69eea81759bcd1c1bef6b4937b918e3ec396fd88c9e2cedb17289518"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-plan-correction-review-20.md",
+      "route": "plan/c11-root-html-grid-fit-content-plan-correction-review-20.md",
+      "bytes": 3766,
+      "sha256": "aa3c2aa8d6ab0202452f74703061a50bb57ed602236809ebe204f34a2b6e1ed7"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-plan-correction-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content-plan-correction-review-20.md",
+      "bytes": 3766,
+      "sha256": "aa3c2aa8d6ab0202452f74703061a50bb57ed602236809ebe204f34a2b6e1ed7"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-area-admission-review-20.md",
+      "route": "plan/c11-root-html-grid-fit-content-area-admission-review-20.md",
+      "bytes": 3744,
+      "sha256": "e58d67067dcb981c361c53d4d8d91d449539ea8d34e85adf8122ba6c127a2c80"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-area-admission-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content-area-admission-review-20.md",
+      "bytes": 3744,
+      "sha256": "e58d67067dcb981c361c53d4d8d91d449539ea8d34e85adf8122ba6c127a2c80"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-runtime-gate-review-20.md",
+      "route": "plan/c11-root-html-grid-fit-content-runtime-gate-review-20.md",
+      "bytes": 3555,
+      "sha256": "af9e4b699e4b822bfa68376f25a91997105892bef5c4bfab25bc50dc5435c71d"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-runtime-gate-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content-runtime-gate-review-20.md",
+      "bytes": 3555,
+      "sha256": "af9e4b699e4b822bfa68376f25a91997105892bef5c4bfab25bc50dc5435c71d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.md",
+      "bytes": 6022,
+      "sha256": "7ba8dd54a2d519ab583c97c736fdfb55426f3665076bdb22ccbb3f10e7b50346"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.md",
+      "bytes": 6022,
+      "sha256": "7ba8dd54a2d519ab583c97c736fdfb55426f3665076bdb22ccbb3f10e7b50346"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.log",
+      "bytes": 8427,
+      "sha256": "99906321108a5d24d08743bd255f82aa20c916aff36cf3eda685b1c8062ca7b6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.log",
+      "bytes": 8427,
+      "sha256": "99906321108a5d24d08743bd255f82aa20c916aff36cf3eda685b1c8062ca7b6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.png",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.png",
+      "bytes": 14442,
+      "sha256": "aa21098bb4a746428ec70b3390a258999379dac3b99ee0b1895b451e49464474"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.png",
+      "bytes": 14442,
+      "sha256": "aa21098bb4a746428ec70b3390a258999379dac3b99ee0b1895b451e49464474"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-screen-final-pass01.png",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-screen-final-pass01.png",
+      "bytes": 24665,
+      "sha256": "6fe5fb2cbf4e83b53b1e3bae0c07e559e12e14f5574605e9fee049655a54a853"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-screen-final-pass01.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-screen-final-pass01.png",
+      "bytes": 24665,
+      "sha256": "6fe5fb2cbf4e83b53b1e3bae0c07e559e12e14f5574605e9fee049655a54a853"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-apk-final-pass01.sha256",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-apk-final-pass01.sha256",
+      "bytes": 126,
+      "sha256": "eaca994cf93f6d8791f04ce8bded8591ac68bd46ece5631d2f0a371033ca1d19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-apk-final-pass01.sha256",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-apk-final-pass01.sha256",
+      "bytes": 126,
+      "sha256": "eaca994cf93f6d8791f04ce8bded8591ac68bd46ece5631d2f0a371033ca1d19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-build-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-build-final-pass01.log",
+      "bytes": 4845,
+      "sha256": "a9b4dc54c546a246751aeadfb527bfc5e5aacb91a038e1bd785d6600020e5a4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-build-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-build-final-pass01.log",
+      "bytes": 4845,
+      "sha256": "a9b4dc54c546a246751aeadfb527bfc5e5aacb91a038e1bd785d6600020e5a4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-install-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-install-final-pass01.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-install-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-install-final-pass01.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-launch-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-launch-final-pass01.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-launch-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-launch-final-pass01.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/artifact-hashes.sha256",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/artifact-hashes.sha256",
+      "bytes": 1714,
+      "sha256": "dfd7521a3059efb89f9a9cac54428cf0d9eba6fe79fe3704f979d0f786089c2b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/artifact-hashes.sha256",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/artifact-hashes.sha256",
+      "bytes": 1714,
+      "sha256": "dfd7521a3059efb89f9a9cac54428cf0d9eba6fe79fe3704f979d0f786089c2b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.md",
+      "bytes": 5793,
+      "sha256": "1aa908ff03c99c2981c972694aa3bc269711f3789385f477aee1ee3f4818162e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.md",
+      "bytes": 5793,
+      "sha256": "1aa908ff03c99c2981c972694aa3bc269711f3789385f477aee1ee3f4818162e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-metal-pixel-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-metal-pixel-final-pass01.log",
+      "bytes": 41046,
+      "sha256": "6ee55d70505d6048c2fc285ba18b20fe03135a596f4d35f44f8ee9c5b6b78fa0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-metal-pixel-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-metal-pixel-final-pass01.log",
+      "bytes": 41046,
+      "sha256": "6ee55d70505d6048c2fc285ba18b20fe03135a596f4d35f44f8ee9c5b6b78fa0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-screen-final-pass01.png",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-screen-final-pass01.png",
+      "bytes": 76758,
+      "sha256": "ab833def8d8fc7c7e862da141bc23ca0159a03d2d8e675e578daf7f5d80dfe51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-screen-final-pass01.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-screen-final-pass01.png",
+      "bytes": 76758,
+      "sha256": "ab833def8d8fc7c7e862da141bc23ca0159a03d2d8e675e578daf7f5d80dfe51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-app-final-pass01.sha256",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-app-final-pass01.sha256",
+      "bytes": 164,
+      "sha256": "bccab977d023392ba60610c93d7a5cc1c2fbc822c882e16abb3b9b236d3351ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-app-final-pass01.sha256",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-app-final-pass01.sha256",
+      "bytes": 164,
+      "sha256": "bccab977d023392ba60610c93d7a5cc1c2fbc822c882e16abb3b9b236d3351ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-build-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-build-final-pass01.log",
+      "bytes": 92227,
+      "sha256": "6a1fdd73ce3c512a6f7b5177ebebcd47b21aeddb53c1d08d7ee00b4cdabe86d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-build-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-build-final-pass01.log",
+      "bytes": 92227,
+      "sha256": "6a1fdd73ce3c512a6f7b5177ebebcd47b21aeddb53c1d08d7ee00b4cdabe86d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-launch-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-launch-final-pass01.log",
+      "bytes": 28,
+      "sha256": "bfa790d3db0a658c4bc5d6cc89683fe774b61f82b7224e8c1fd97213b89fbd7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-launch-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-launch-final-pass01.log",
+      "bytes": 28,
+      "sha256": "bfa790d3db0a658c4bc5d6cc89683fe774b61f82b7224e8c1fd97213b89fbd7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-screenshot-final-pass01.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-screenshot-final-pass01.log",
+      "bytes": 230,
+      "sha256": "6f9b65c504fd7afd77d5e8a4860f47bc5a9761a2424e649e0f29c72649b68051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-screenshot-final-pass01.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-screenshot-final-pass01.log",
+      "bytes": 230,
+      "sha256": "6f9b65c504fd7afd77d5e8a4860f47bc5a9761a2424e649e0f29c72649b68051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-ahem-final.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-ahem-final.log",
+      "bytes": 641,
+      "sha256": "f7bde994e7fe89c23bd146c76f7b8959bc6723332c9198e4bea01e1eba79efef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-ahem-final.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-ahem-final.log",
+      "bytes": 641,
+      "sha256": "f7bde994e7fe89c23bd146c76f7b8959bc6723332c9198e4bea01e1eba79efef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-fit-content-rejection-final.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-fit-content-rejection-final.log",
+      "bytes": 377,
+      "sha256": "d374414e83ed13459a8e6c844627963166b01e2fb868ad3249d613d359dd348b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-fit-content-rejection-final.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-fit-content-rejection-final.log",
+      "bytes": 377,
+      "sha256": "d374414e83ed13459a8e6c844627963166b01e2fb868ad3249d613d359dd348b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.md",
+      "bytes": 7113,
+      "sha256": "cebfae37cf5fe089d945c029bba8d86a725bb14d062d0c150a6b08e0d516172b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.md",
+      "bytes": 7113,
+      "sha256": "cebfae37cf5fe089d945c029bba8d86a725bb14d062d0c150a6b08e0d516172b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "bytes": 421744,
+      "sha256": "09d7406d76911cb8e68d00f58f84e1197d60a0b234fe077aa2289df8cce5969a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "bytes": 421744,
+      "sha256": "09d7406d76911cb8e68d00f58f84e1197d60a0b234fe077aa2289df8cce5969a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "bytes": 126630,
+      "sha256": "03769b0a38eff559381c7eab725a3ef6a4f7e80de14df6ef31e906ef6a01884a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "bytes": 126630,
+      "sha256": "03769b0a38eff559381c7eab725a3ef6a4f7e80de14df6ef31e906ef6a01884a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "bytes": 5389,
+      "sha256": "bb8484512e7e8db792f11f117f64f85498f701a8714bc35a8927ac15caf7ef76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "bytes": 5389,
+      "sha256": "bb8484512e7e8db792f11f117f64f85498f701a8714bc35a8927ac15caf7ef76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-fit-content-final.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-fit-content-final.log",
+      "bytes": 813,
+      "sha256": "11cd7e18a123e5e40beede232d369dbbb37299423c40447bd2ef51e5a6d35e93"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-fit-content-final.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-fit-content-final.log",
+      "bytes": 813,
+      "sha256": "11cd7e18a123e5e40beede232d369dbbb37299423c40447bd2ef51e5a6d35e93"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-root-html-tests.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-root-html-tests.log",
+      "bytes": 9070,
+      "sha256": "9b0bc1ecdf611f1bb1771e37c4f81bb51c9b223111a58c912b5dd90293a4ce74"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-root-html-tests.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-root-html-tests.log",
+      "bytes": 9070,
+      "sha256": "9b0bc1ecdf611f1bb1771e37c4f81bb51c9b223111a58c912b5dd90293a4ce74"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/scoped-clippy.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/scoped-clippy.log",
+      "bytes": 268,
+      "sha256": "7ca20b04ca14473df39479ce04b029b1b71e4eb669fb11ea731b433c7cab5d9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/scoped-clippy.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/scoped-clippy.log",
+      "bytes": 268,
+      "sha256": "7ca20b04ca14473df39479ce04b029b1b71e4eb669fb11ea731b433c7cab5d9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/selected-docs-build-report-final-2026-11-03-pass02.json",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/selected-docs-build-report-final-2026-11-03-pass02.json",
+      "bytes": 3599,
+      "sha256": "5565dd200410700f1e27458efe679b29e3ce9dc22060f96985952ea011e2ff6f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/selected-docs-build-report-final-2026-11-03-pass02.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/selected-docs-build-report-final-2026-11-03-pass02.json",
+      "bytes": 3599,
+      "sha256": "5565dd200410700f1e27458efe679b29e3ce9dc22060f96985952ea011e2ff6f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-files.sha256",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-files.sha256",
+      "bytes": 2805,
+      "sha256": "b279bce27b37bab638c4a4739e8865821b63ccf2a6f6742b4d3c24bba658bcc6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-files.sha256",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-files.sha256",
+      "bytes": 2805,
+      "sha256": "b279bce27b37bab638c4a4739e8865821b63ccf2a6f6742b4d3c24bba658bcc6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-revision.txt",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-revision.txt",
+      "bytes": 111,
+      "sha256": "b0809af1e0c8a37eab666d956a40ee357aaebd52ea4c74e0345924069c6a2b0e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-revision.txt",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-revision.txt",
+      "bytes": 111,
+      "sha256": "b0809af1e0c8a37eab666d956a40ee357aaebd52ea4c74e0345924069c6a2b0e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-cascade-fit-content-final.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-cascade-fit-content-final.log",
+      "bytes": 728,
+      "sha256": "3acf07fb5a251fe13c908a24dbed49fd4e02335ee517612549da620896704af2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-cascade-fit-content-final.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-cascade-fit-content-final.log",
+      "bytes": 728,
+      "sha256": "3acf07fb5a251fe13c908a24dbed49fd4e02335ee517612549da620896704af2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-grid-final.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-grid-final.log",
+      "bytes": 13775,
+      "sha256": "add4ce5816a37abfd3d42489a770a91f1a2f7880579256ad0af3083e1fe2ea17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-grid-final.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-grid-final.log",
+      "bytes": 13775,
+      "sha256": "add4ce5816a37abfd3d42489a770a91f1a2f7880579256ad0af3083e1fe2ea17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-to-layout-root-html-tests.log",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-to-layout-root-html-tests.log",
+      "bytes": 7692,
+      "sha256": "ac8c1d8443535f2e3e98cd942cbf3bca08efbbf90e87d40c6d09375b65321cce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-to-layout-root-html-tests.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-to-layout-root-html-tests.log",
+      "bytes": 7692,
+      "sha256": "ac8c1d8443535f2e3e98cd942cbf3bca08efbbf90e87d40c6d09375b65321cce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.md",
+      "bytes": 3269,
+      "sha256": "ca13eab558b51d63574d7ea9584761afcc9d9cd309f4f395987ec85cfea23e82"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.md",
+      "bytes": 3269,
+      "sha256": "ca13eab558b51d63574d7ea9584761afcc9d9cd309f4f395987ec85cfea23e82"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md",
+      "bytes": 3639,
+      "sha256": "e5f45a13bb773cf50e83dce2934d815dff3b278f8b315f2fbe2a16404952b361"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md",
+      "bytes": 3639,
+      "sha256": "e5f45a13bb773cf50e83dce2934d815dff3b278f8b315f2fbe2a16404952b361"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
+      "bytes": 21573,
+      "sha256": "d1c297aadeef7c26e0d67897f78cd5a8206bf72f753f16e8f813d925541bdec9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
+      "bytes": 21573,
+      "sha256": "d1c297aadeef7c26e0d67897f78cd5a8206bf72f753f16e8f813d925541bdec9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-observation.json",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-observation.json",
+      "bytes": 2804,
+      "sha256": "bad739f7d18a285995060333b291b29d52e3db7d80146113e525eac2bec1014e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-observation.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-observation.json",
+      "bytes": 2804,
+      "sha256": "bad739f7d18a285995060333b291b29d52e3db7d80146113e525eac2bec1014e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/expected.json",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/expected.json",
+      "bytes": 3173,
+      "sha256": "bc0d623ff795cf58350a922e9bd71c313f75eae070b6594559f126f05a51c2cb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/expected.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/expected.json",
+      "bytes": 3173,
+      "sha256": "bc0d623ff795cf58350a922e9bd71c313f75eae070b6594559f126f05a51c2cb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md",
+      "bytes": 3662,
+      "sha256": "7971ea86af47b7e6ee10d55163f813958519b2c1da1a8aa3b8c82264bda1e7c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md",
+      "bytes": 3662,
+      "sha256": "7971ea86af47b7e6ee10d55163f813958519b2c1da1a8aa3b8c82264bda1e7c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md",
+      "bytes": 3676,
+      "sha256": "f107a1cbf0b586ca09319f600991f3cf4882d45df76c618153391561ef075706"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md",
+      "bytes": 3676,
+      "sha256": "f107a1cbf0b586ca09319f600991f3cf4882d45df76c618153391561ef075706"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md",
+      "bytes": 3873,
+      "sha256": "8848ddbaf946eab0cada0b01e5a4000fc0f6ab4125bd25680de9b2f2d2ae8911"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md",
+      "bytes": 3873,
+      "sha256": "8848ddbaf946eab0cada0b01e5a4000fc0f6ab4125bd25680de9b2f2d2ae8911"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+      "bytes": 5717,
+      "sha256": "a8b7a8b061fde108a4ffa79fc023f5e7cd7dffaa005801a49d61fb3488c2f5f3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+      "bytes": 5717,
+      "sha256": "a8b7a8b061fde108a4ffa79fc023f5e7cd7dffaa005801a49d61fb3488c2f5f3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.md",
+      "bytes": 3375,
+      "sha256": "eb21596d321de9d247ed71f6191b1400aa82004fdad42edcb8208f17ec6b05d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.md",
+      "bytes": 3375,
+      "sha256": "eb21596d321de9d247ed71f6191b1400aa82004fdad42edcb8208f17ec6b05d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md",
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md",
+      "bytes": 1551,
+      "sha256": "c4e3fe72dffb715eab9f6a8056ad86fa2fd8f69a05ade107688a5200f5e813a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md",
+      "bytes": 1551,
+      "sha256": "c4e3fe72dffb715eab9f6a8056ad86fa2fd8f69a05ade107688a5200f5e813a0"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}

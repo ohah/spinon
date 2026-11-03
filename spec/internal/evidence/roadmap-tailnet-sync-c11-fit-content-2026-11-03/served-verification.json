@@ -1,0 +1,104 @@
+{
+  "sourceHead": "0326850ceb20ee19cea81ae5e0df1080cc018063",
+  "sourceTree": "36844d6e5afdad46d1ce4f744335071836c7dc7e",
+  "publicationRouteCount": 198,
+  "localCriticalRoutes": 7,
+  "httpsAllRoutes": 198,
+  "criticalHttpsRoutes": 7,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "noDeletes": true,
+  "copied": {
+    "createdCount": 169,
+    "replacedCount": 11,
+    "identicalCount": 18
+  },
+  "localResults": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 551894,
+      "sha256": "74642f4e01d67c9c93469ecf1b05d6a24031f4c883e11b40e9f8ce5a6a130d8f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 43650,
+      "sha256": "88093a7b422fb1e35d4a2d48ec7985f108a8a8fe0aa87ac00d8a1c67ed7343ba"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "status": 200,
+      "bytes": 44740,
+      "sha256": "5f018f7cb221fccdb3995c29c580450497c91c8eaf307ddeefad3793e3ac558c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.html",
+      "status": 200,
+      "bytes": 48208,
+      "sha256": "cbcc5a23e06d62a3d3b23fefc0d0f659cabaa4cd7aee3c1ed0f3223ad0673272"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content.html",
+      "status": 200,
+      "bytes": 56463,
+      "sha256": "89174c93f625f195d6cba57d9655c7eb488aa73a1dac19162fa97c511a46aa5e"
+    },
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 536480,
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 792024,
+      "sha256": "85c855cb6146ef5ff22fee41eca850ee98165ee748fcf59473ce35089321ef24"
+    }
+  ],
+  "remoteResults": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 551894,
+      "sha256": "74642f4e01d67c9c93469ecf1b05d6a24031f4c883e11b40e9f8ce5a6a130d8f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 43650,
+      "sha256": "88093a7b422fb1e35d4a2d48ec7985f108a8a8fe0aa87ac00d8a1c67ed7343ba"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "status": 200,
+      "bytes": 44740,
+      "sha256": "5f018f7cb221fccdb3995c29c580450497c91c8eaf307ddeefad3793e3ac558c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.html",
+      "status": 200,
+      "bytes": 48208,
+      "sha256": "cbcc5a23e06d62a3d3b23fefc0d0f659cabaa4cd7aee3c1ed0f3223ad0673272"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content.html",
+      "status": 200,
+      "bytes": 56463,
+      "sha256": "89174c93f625f195d6cba57d9655c7eb488aa73a1dac19162fa97c511a46aa5e"
+    },
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 536480,
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 792024,
+      "sha256": "85c855cb6146ef5ff22fee41eca850ee98165ee748fcf59473ce35089321ef24"
+    }
+  ]
+}

@@ -1,0 +1,820 @@
+{
+  "sourceHead": "0326850ceb20ee19cea81ae5e0df1080cc018063",
+  "sourceTree": "36844d6e5afdad46d1ce4f744335071836c7dc7e",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selectedRouteCount": 198,
+  "createdCount": 169,
+  "replacedCount": 11,
+  "identicalCount": 18,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-c11-fit-content-2026-11-03/pass01",
+  "noDeletes": true,
+  "created": [
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.html",
+      "sha256": "b280f2356bd7d8401238ee9ec91798d0185756f5bd2c2b77e4d774091997757b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md",
+      "sha256": "e5f45a13bb773cf50e83dce2934d815dff3b278f8b315f2fbe2a16404952b361"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
+      "sha256": "d1c297aadeef7c26e0d67897f78cd5a8206bf72f753f16e8f813d925541bdec9"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-observation.json",
+      "sha256": "bad739f7d18a285995060333b291b29d52e3db7d80146113e525eac2bec1014e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/expected.json",
+      "sha256": "bc0d623ff795cf58350a922e9bd71c313f75eae070b6594559f126f05a51c2cb"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.html",
+      "sha256": "b04595b422fbe39f1dee4c0895c8540d68bb56c99d6f1c6dc8ee671184e4942a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md",
+      "sha256": "7971ea86af47b7e6ee10d55163f813958519b2c1da1a8aa3b8c82264bda1e7c9"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.html",
+      "sha256": "8dec73239d8f7a868b17f48c35a5a065ac134a5a007443837325e5b4bc5e59eb"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md",
+      "sha256": "f107a1cbf0b586ca09319f600991f3cf4882d45df76c618153391561ef075706"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.html",
+      "sha256": "3d2b079d4f16eee85aa866daf8412670861ab6633b19b486cf6a9c0c14a040da"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md",
+      "sha256": "8848ddbaf946eab0cada0b01e5a4000fc0f6ab4125bd25680de9b2f2d2ae8911"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.html",
+      "sha256": "b2658ed1388320857d9563d3659374f50e3aff534317bdf6c2a65d8d25228d4c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.md",
+      "sha256": "ca13eab558b51d63574d7ea9584761afcc9d9cd309f4f395987ec85cfea23e82"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+      "sha256": "a8b7a8b061fde108a4ffa79fc023f5e7cd7dffaa005801a49d61fb3488c2f5f3"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.html",
+      "sha256": "24d0396d90cb19e3d98d107992f5b94a75bee7aff54e185ff78ce40d25051cbf"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.md",
+      "sha256": "eb21596d321de9d247ed71f6191b1400aa82004fdad42edcb8208f17ec6b05d6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.html",
+      "sha256": "8851f0aeabe33b92526ba8045b03a20b9933194e7fb2feb54609d35ec68b95c9"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md",
+      "sha256": "c4e3fe72dffb715eab9f6a8056ad86fa2fd8f69a05ade107688a5200f5e813a0"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.log",
+      "sha256": "99906321108a5d24d08743bd255f82aa20c916aff36cf3eda685b1c8062ca7b6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.png",
+      "sha256": "aa21098bb4a746428ec70b3390a258999379dac3b99ee0b1895b451e49464474"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-screen-final-pass01.png",
+      "sha256": "6fe5fb2cbf4e83b53b1e3bae0c07e559e12e14f5574605e9fee049655a54a853"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-apk-final-pass01.sha256",
+      "sha256": "eaca994cf93f6d8791f04ce8bded8591ac68bd46ece5631d2f0a371033ca1d19"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-build-final-pass01.log",
+      "sha256": "a9b4dc54c546a246751aeadfb527bfc5e5aacb91a038e1bd785d6600020e5a4a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-install-final-pass01.log",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-launch-final-pass01.log",
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/artifact-hashes.sha256",
+      "sha256": "dfd7521a3059efb89f9a9cac54428cf0d9eba6fe79fe3704f979d0f786089c2b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.html",
+      "sha256": "27e19698c51f604883311598294692eeca132513dedfcdd890d4c7bedc787eee"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.md",
+      "sha256": "1aa908ff03c99c2981c972694aa3bc269711f3789385f477aee1ee3f4818162e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-metal-pixel-final-pass01.log",
+      "sha256": "6ee55d70505d6048c2fc285ba18b20fe03135a596f4d35f44f8ee9c5b6b78fa0"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-screen-final-pass01.png",
+      "sha256": "ab833def8d8fc7c7e862da141bc23ca0159a03d2d8e675e578daf7f5d80dfe51"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-app-final-pass01.sha256",
+      "sha256": "bccab977d023392ba60610c93d7a5cc1c2fbc822c882e16abb3b9b236d3351ae"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-build-final-pass01.log",
+      "sha256": "6a1fdd73ce3c512a6f7b5177ebebcd47b21aeddb53c1d08d7ee00b4cdabe86d3"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-launch-final-pass01.log",
+      "sha256": "bfa790d3db0a658c4bc5d6cc89683fe774b61f82b7224e8c1fd97213b89fbd7c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-screenshot-final-pass01.log",
+      "sha256": "6f9b65c504fd7afd77d5e8a4860f47bc5a9761a2424e649e0f29c72649b68051"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-ahem-final.log",
+      "sha256": "f7bde994e7fe89c23bd146c76f7b8959bc6723332c9198e4bea01e1eba79efef"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-fit-content-rejection-final.log",
+      "sha256": "d374414e83ed13459a8e6c844627963166b01e2fb868ad3249d613d359dd348b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "sha256": "88093a7b422fb1e35d4a2d48ec7985f108a8a8fe0aa87ac00d8a1c67ed7343ba"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.md",
+      "sha256": "cebfae37cf5fe089d945c029bba8d86a725bb14d062d0c150a6b08e0d516172b"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "sha256": "5f018f7cb221fccdb3995c29c580450497c91c8eaf307ddeefad3793e3ac558c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.md",
+      "sha256": "7ba8dd54a2d519ab583c97c736fdfb55426f3665076bdb22ccbb3f10e7b50346"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "sha256": "09d7406d76911cb8e68d00f58f84e1197d60a0b234fe077aa2289df8cce5969a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "sha256": "03769b0a38eff559381c7eab725a3ef6a4f7e80de14df6ef31e906ef6a01884a"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.html",
+      "sha256": "cbcc5a23e06d62a3d3b23fefc0d0f659cabaa4cd7aee3c1ed0f3223ad0673272"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "sha256": "bb8484512e7e8db792f11f117f64f85498f701a8714bc35a8927ac15caf7ef76"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-fit-content-final.log",
+      "sha256": "11cd7e18a123e5e40beede232d369dbbb37299423c40447bd2ef51e5a6d35e93"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-root-html-tests.log",
+      "sha256": "9b0bc1ecdf611f1bb1771e37c4f81bb51c9b223111a58c912b5dd90293a4ce74"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/scoped-clippy.log",
+      "sha256": "7ca20b04ca14473df39479ce04b029b1b71e4eb669fb11ea731b433c7cab5d9c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/selected-docs-build-report-final-2026-11-03-pass02.json",
+      "sha256": "5565dd200410700f1e27458efe679b29e3ce9dc22060f96985952ea011e2ff6f"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-files.sha256",
+      "sha256": "b279bce27b37bab638c4a4739e8865821b63ccf2a6f6742b4d3c24bba658bcc6"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-revision.txt",
+      "sha256": "b0809af1e0c8a37eab666d956a40ee357aaebd52ea4c74e0345924069c6a2b0e"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-cascade-fit-content-final.log",
+      "sha256": "3acf07fb5a251fe13c908a24dbed49fd4e02335ee517612549da620896704af2"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-grid-final.log",
+      "sha256": "add4ce5816a37abfd3d42489a770a91f1a2f7880579256ad0af3083e1fe2ea17"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-to-layout-root-html-tests.log",
+      "sha256": "ac8c1d8443535f2e3e98cd942cbf3bca08efbbf90e87d40c6d09375b65321cce"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-area-admission-review-20.html",
+      "sha256": "716a4398c762f8048caec36a7827100685eceff893d71c159475455a899de4fc"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-area-admission-review-20.md",
+      "sha256": "e58d67067dcb981c361c53d4d8d91d449539ea8d34e85adf8122ba6c127a2c80"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-plan-correction-review-20.html",
+      "sha256": "cc95dccae00f0c2e4ec0b05ea3ff7a4c89d3c3078ec57ce9d65ce9bdac43fde6"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-plan-correction-review-20.md",
+      "sha256": "aa3c2aa8d6ab0202452f74703061a50bb57ed602236809ebe204f34a2b6e1ed7"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-plan-review-20.html",
+      "sha256": "308f48182939c289505320e9ecb535de1662a065b5f15882b7672116506d20ad"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-plan-review-20.md",
+      "sha256": "d04e848b69eea81759bcd1c1bef6b4937b918e3ec396fd88c9e2cedb17289518"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-runtime-gate-review-20.html",
+      "sha256": "e602d5f0319f2624c5da45ec138e54752088228b750e47fd62cc5eceb0092fa3"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content-runtime-gate-review-20.md",
+      "sha256": "af9e4b699e4b822bfa68376f25a91997105892bef5c4bfab25bc50dc5435c71d"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content.html",
+      "sha256": "89174c93f625f195d6cba57d9655c7eb488aa73a1dac19162fa97c511a46aa5e"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content.md",
+      "sha256": "0442a8fe5d0042d30544ea38f89000248e55d2ef6426b4d1a78b1bd3c310893e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.html",
+      "sha256": "8f4e8b80970cafa7b45bc2da8193709880febfbd3a7e470c2175ea2b8368d3e8"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/area-admission-plan-pr-diff-review-20.md",
+      "sha256": "e5f45a13bb773cf50e83dce2934d815dff3b278f8b315f2fbe2a16404952b361"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-156-agent-browser.png",
+      "sha256": "d1c297aadeef7c26e0d67897f78cd5a8206bf72f753f16e8f813d925541bdec9"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/chrome-observation.json",
+      "sha256": "bad739f7d18a285995060333b291b29d52e3db7d80146113e525eac2bec1014e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/expected.json",
+      "sha256": "bc0d623ff795cf58350a922e9bd71c313f75eae070b6594559f126f05a51c2cb"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.html",
+      "sha256": "07478511d920f16b701a04261e137d2a22359290c3eb8b2a1e40d54a3c4b70bf"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/named-area-admission-boundary.md",
+      "sha256": "7971ea86af47b7e6ee10d55163f813958519b2c1da1a8aa3b8c82264bda1e7c9"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.html",
+      "sha256": "2df879978ea52587b801725473240668ffa0f5ea70317d95fe89a74ed1a51503"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-correction-pr-diff-review-20.md",
+      "sha256": "f107a1cbf0b586ca09319f600991f3cf4882d45df76c618153391561ef075706"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.html",
+      "sha256": "66d412737f492174973518a8833b4af518608ef822f51acd51183a9c8844c6fe"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/plan-pr-diff-review-20.md",
+      "sha256": "8848ddbaf946eab0cada0b01e5a4000fc0f6ab4125bd25680de9b2f2d2ae8911"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.html",
+      "sha256": "2eacd40765ceefe8b3ff641b62a3eff7b72b51da174335ad7d24ceae948dc248"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/README.md",
+      "sha256": "ca13eab558b51d63574d7ea9584761afcc9d9cd309f4f395987ec85cfea23e82"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/root-html-grid-fit-content-precomparison.html",
+      "sha256": "a8b7a8b061fde108a4ffa79fc023f5e7cd7dffaa005801a49d61fb3488c2f5f3"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.html",
+      "sha256": "df0bc0b3ec218042e7da857348e3d59b7fff9024cd38f6233a26524e16fc9f4e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-gate-plan-pr-diff-review-20.md",
+      "sha256": "eb21596d321de9d247ed71f6191b1400aa82004fdad42edcb8208f17ec6b05d6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.html",
+      "sha256": "da8b913a7c360e4d0d14944f27261ac0deaac5167ba7b155994b277f2af7afaa"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-precomparison-2026-11-03/runtime-validation-boundary.md",
+      "sha256": "c4e3fe72dffb715eab9f6a8056ad86fa2fd8f69a05ade107688a5200f5e813a0"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.log",
+      "sha256": "99906321108a5d24d08743bd255f82aa20c916aff36cf3eda685b1c8062ca7b6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-final-pass01.png",
+      "sha256": "aa21098bb4a746428ec70b3390a258999379dac3b99ee0b1895b451e49464474"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-api37-avd-fit-content-pixelcopy-screen-final-pass01.png",
+      "sha256": "6fe5fb2cbf4e83b53b1e3bae0c07e559e12e14f5574605e9fee049655a54a853"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-apk-final-pass01.sha256",
+      "sha256": "eaca994cf93f6d8791f04ce8bded8591ac68bd46ece5631d2f0a371033ca1d19"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-build-final-pass01.log",
+      "sha256": "a9b4dc54c546a246751aeadfb527bfc5e5aacb91a038e1bd785d6600020e5a4a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-install-final-pass01.log",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/android-avd-launch-final-pass01.log",
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/artifact-hashes.sha256",
+      "sha256": "dfd7521a3059efb89f9a9cac54428cf0d9eba6fe79fe3704f979d0f786089c2b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.html",
+      "sha256": "1cec4de6b0791f724230370e5baaa8246d47ad54d54d9faf49445db0110371ba"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/implementation-review-20.md",
+      "sha256": "1aa908ff03c99c2981c972694aa3bc269711f3789385f477aee1ee3f4818162e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-metal-pixel-final-pass01.log",
+      "sha256": "6ee55d70505d6048c2fc285ba18b20fe03135a596f4d35f44f8ee9c5b6b78fa0"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-26_2-simulator-fit-content-screen-final-pass01.png",
+      "sha256": "ab833def8d8fc7c7e862da141bc23ca0159a03d2d8e675e578daf7f5d80dfe51"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-app-final-pass01.sha256",
+      "sha256": "bccab977d023392ba60610c93d7a5cc1c2fbc822c882e16abb3b9b236d3351ae"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-build-final-pass01.log",
+      "sha256": "6a1fdd73ce3c512a6f7b5177ebebcd47b21aeddb53c1d08d7ee00b4cdabe86d3"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-launch-final-pass01.log",
+      "sha256": "bfa790d3db0a658c4bc5d6cc89683fe774b61f82b7224e8c1fd97213b89fbd7c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/ios-simulator-screenshot-final-pass01.log",
+      "sha256": "6f9b65c504fd7afd77d5e8a4860f47bc5a9761a2424e649e0f29c72649b68051"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-ahem-final.log",
+      "sha256": "f7bde994e7fe89c23bd146c76f7b8959bc6723332c9198e4bea01e1eba79efef"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/layout-fit-content-rejection-final.log",
+      "sha256": "d374414e83ed13459a8e6c844627963166b01e2fb868ad3249d613d359dd348b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "sha256": "2b4cbc4f8e1175ab1df9377841b153d81bb3eff3029abe8386e39dc9796d9fc3"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.md",
+      "sha256": "cebfae37cf5fe089d945c029bba8d86a725bb14d062d0c150a6b08e0d516172b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "sha256": "381df9a55ddaaef12346a587a14bb175a875e5a1612a0e3a3f75188e09a3443f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.md",
+      "sha256": "7ba8dd54a2d519ab583c97c736fdfb55426f3665076bdb22ccbb3f10e7b50346"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "sha256": "09d7406d76911cb8e68d00f58f84e1197d60a0b234fe077aa2289df8cce5969a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "sha256": "03769b0a38eff559381c7eab725a3ef6a4f7e80de14df6ef31e906ef6a01884a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.html",
+      "sha256": "cf7e352caa7ff7e6b67a17e1b1d7e41404e55aec837a77741958b0472daabef2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "sha256": "bb8484512e7e8db792f11f117f64f85498f701a8714bc35a8927ac15caf7ef76"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-fit-content-final.log",
+      "sha256": "11cd7e18a123e5e40beede232d369dbbb37299423c40447bd2ef51e5a6d35e93"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/runtime-root-html-tests.log",
+      "sha256": "9b0bc1ecdf611f1bb1771e37c4f81bb51c9b223111a58c912b5dd90293a4ce74"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/scoped-clippy.log",
+      "sha256": "7ca20b04ca14473df39479ce04b029b1b71e4eb669fb11ea731b433c7cab5d9c"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/selected-docs-build-report-final-2026-11-03-pass02.json",
+      "sha256": "5565dd200410700f1e27458efe679b29e3ce9dc22060f96985952ea011e2ff6f"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-files.sha256",
+      "sha256": "b279bce27b37bab638c4a4739e8865821b63ccf2a6f6742b4d3c24bba658bcc6"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/source-revision.txt",
+      "sha256": "b0809af1e0c8a37eab666d956a40ee357aaebd52ea4c74e0345924069c6a2b0e"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-cascade-fit-content-final.log",
+      "sha256": "3acf07fb5a251fe13c908a24dbed49fd4e02335ee517612549da620896704af2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-grid-final.log",
+      "sha256": "add4ce5816a37abfd3d42489a770a91f1a2f7880579256ad0af3083e1fe2ea17"
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/style-to-layout-root-html-tests.log",
+      "sha256": "ac8c1d8443535f2e3e98cd942cbf3bca08efbbf90e87d40c6d09375b65321cce"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-area-admission-review-20.html",
+      "sha256": "13203f0f50edb636bf875afe78819d4fda2c02964c3f7cb855843e01db74f7a2"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-area-admission-review-20.md",
+      "sha256": "e58d67067dcb981c361c53d4d8d91d449539ea8d34e85adf8122ba6c127a2c80"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-plan-correction-review-20.html",
+      "sha256": "92159e9e457200130f455b6c6d7a26735782482bf19af5565cd7f42cdce3c1a7"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-plan-correction-review-20.md",
+      "sha256": "aa3c2aa8d6ab0202452f74703061a50bb57ed602236809ebe204f34a2b6e1ed7"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-plan-review-20.html",
+      "sha256": "3964dccac726d034b091e22e4a9d07a2df71e05a83817329bb7fd1ff830f6e0b"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-plan-review-20.md",
+      "sha256": "d04e848b69eea81759bcd1c1bef6b4937b918e3ec396fd88c9e2cedb17289518"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-runtime-gate-review-20.html",
+      "sha256": "06bcb57f3a1cfcb3a742ff1bc43af3db00a948c0f3591c7698740a709552e9dc"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content-runtime-gate-review-20.md",
+      "sha256": "af9e4b699e4b822bfa68376f25a91997105892bef5c4bfab25bc50dc5435c71d"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content.html",
+      "sha256": "3c8367359667f311597788183af0302537df02790e972b61b3d27ecd1e5bc58f"
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-fit-content.md",
+      "sha256": "0442a8fe5d0042d30544ea38f89000248e55d2ef6426b4d1a78b1bd3c310893e"
+    },
+    {
+      "route": "static/image/android-api37-avd-fit-content-pixelcopy-final-pass01.c2e37c03c7.png",
+      "sha256": "aa21098bb4a746428ec70b3390a258999379dac3b99ee0b1895b451e49464474"
+    },
+    {
+      "route": "static/image/ios-26_2-simulator-fit-content-screen-final-pass01.dffca63a4f.png",
+      "sha256": "ab833def8d8fc7c7e862da141bc23ca0159a03d2d8e675e578daf7f5d80dfe51"
+    },
+    {
+      "route": "static/image/roadmap-doc-pr-candidate-desktop-2026-11-03.fc1cd4d677.png",
+      "sha256": "09d7406d76911cb8e68d00f58f84e1197d60a0b234fe077aa2289df8cce5969a"
+    },
+    {
+      "route": "static/image/roadmap-doc-pr-candidate-mobile-2026-11-03.cbc2d759ac.png",
+      "sha256": "03769b0a38eff559381c7eab725a3ef6a4f7e80de14df6ef31e906ef6a01884a"
+    },
+    {
+      "route": "static/js/async/route-03aa61110830.3a9695473e.js",
+      "sha256": "5db9b21b945bc10ab47c0933a3109940a0bdcb58deb1d3713eb152866b37b56f"
+    },
+    {
+      "route": "static/js/async/route-03eccd31b653.4f7c79e984.js",
+      "sha256": "bc16df87f0e3a9d6ef51d147d0f236546f1ee59b481879838061738975201ea7"
+    },
+    {
+      "route": "static/js/async/route-04c6c2219829.49c7011daa.js",
+      "sha256": "01b1eb2beb658d2c9addfb6faf2d58c61c6d9d2ffb0d404f4ffdb374749021be"
+    },
+    {
+      "route": "static/js/async/route-069c75e251a0.b4e732b30e.js",
+      "sha256": "59833027bd84e07f8669b62919434e69ff797080edde34f419c976e640d197e3"
+    },
+    {
+      "route": "static/js/async/route-15a6b35d401b.49e4a419d6.js",
+      "sha256": "292742479e01df4ec709a7a3520bee275914be1612061147b425f3900b0ca48f"
+    },
+    {
+      "route": "static/js/async/route-20cce419d76f.2f54f81319.js",
+      "sha256": "e50e7f66120642b924490b080443d76446e366cc18aa6943b5d3ceee4a82a4d5"
+    },
+    {
+      "route": "static/js/async/route-2e0e54b0dc08.f64b509afd.js",
+      "sha256": "156b958965b307c661055af5ff5e9de9a08cc5be1cd4f21b4f9332a3b00dae92"
+    },
+    {
+      "route": "static/js/async/route-3bada4534ba8.eaa7f95a7e.js",
+      "sha256": "8707938a655eaf1b9f7edab1feebbfd649b503bd676dfd9d721337316b9d6391"
+    },
+    {
+      "route": "static/js/async/route-45bbf8d80f4f.1f30a2cdd0.js",
+      "sha256": "9561eef3b6c18695bab62ef10b27a4a60f1d40c55109ad832ad3af2e9f3a5755"
+    },
+    {
+      "route": "static/js/async/route-4a1d861e0bd7.7724e1c973.js",
+      "sha256": "a0e4e1845690b3eb851ac7752970b2d878938a3fcaac3b22977d19c111ca6a66"
+    },
+    {
+      "route": "static/js/async/route-66984b4bcf82.6f4d89e78b.js",
+      "sha256": "b450c693928f1f51f2fee81e4f3f404e897c6e9416cd0b40331cbafa623a5fd2"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.b20ee5ac90.js",
+      "sha256": "a79004e9a9c4a71937ec6b52bfa9790b9cca80112bdbf2a0ea19cd83e0d9cffe"
+    },
+    {
+      "route": "static/js/async/route-6fc24d752dea.acda37d86d.js",
+      "sha256": "6adea14f062c7689d6e712e502a07acc16ca9fe56c9da3f13293880a89681f8e"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.7165efafef.js",
+      "sha256": "f28ce5091bf84bd7c89fcf930fd2d5726b6099933dc680d72ca2bd90c8be35fa"
+    },
+    {
+      "route": "static/js/async/route-73e5d13b02c8.efd48bd57f.js",
+      "sha256": "02e496eda6ab0e1e55634453a9abcf60120b2c7dd3f4ebe44bc8cb36a9bd6487"
+    },
+    {
+      "route": "static/js/async/route-73f573e83e34.71f367ae4a.js",
+      "sha256": "653a7a6463c32f0cdebf9c062723bff9fcee685516aa4eec4c682eafb4dbe468"
+    },
+    {
+      "route": "static/js/async/route-7401fdbfed58.62356ddfa6.js",
+      "sha256": "fcf541fa9eb491157cad565fa029c1c9aee33b66427b1ca39391902818706df1"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.0a6b5e3885.js",
+      "sha256": "bd81b404fab5698b83ef61d9ef6f366430a5403a407ead06abeed76a968f37ae"
+    },
+    {
+      "route": "static/js/async/route-88f08bd820bb.ce1dc2d9d3.js",
+      "sha256": "7740378b07904f396fa510284b8d0d86d57add2b16e36b6383a8106a8a5a2bac"
+    },
+    {
+      "route": "static/js/async/route-891c04ac33f1.a6aa729c53.js",
+      "sha256": "d589bb4e2040e75dfdbe745bb52d93109808c10a5aca8d7adf2f5902db9fcda4"
+    },
+    {
+      "route": "static/js/async/route-8de7016deb46.5325c61fe4.js",
+      "sha256": "2b03dab94a5dd7bb2b201f836437d7e631bc4621346603f033ff302f870619fd"
+    },
+    {
+      "route": "static/js/async/route-965e82934a3e.7b85a8064c.js",
+      "sha256": "db5b511b13c6673d3ce3b5a69f8c7616dc536a9663255e3cb6adac2526729d93"
+    },
+    {
+      "route": "static/js/async/route-9c8aee67af1e.7be2d41cc3.js",
+      "sha256": "db60c7fab604f859cff74e9536de04dbb8df29223f99d69b817bb24ce538f2ab"
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.eceb341f42.js",
+      "sha256": "6426fdc20acaf9fe03ef4f539b521aae9c80942526f8f0fa0c6890ce6ce6e3ea"
+    },
+    {
+      "route": "static/js/async/route-b2612899750c.59ee50a0e7.js",
+      "sha256": "33d70c0f23e58afec21108c7afd2276b5f25b78f635fd1705f108b114163d515"
+    },
+    {
+      "route": "static/js/async/route-b53b27522799.d1582edf66.js",
+      "sha256": "261e916aad2cce9b548132f1d277b56f91b2657384efe87d581915c0c05b30d5"
+    },
+    {
+      "route": "static/js/async/route-c155f7d7332e.cf2c00acb1.js",
+      "sha256": "34f517c3c375c9c7429b398e0f208828ba7b2a1d0d084b213575e6d9bc804763"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.39e70b51c0.js",
+      "sha256": "6327483905fbee28eebf058b8c3723971b1c58a9e14352ddea2759b07b3d3b5c"
+    },
+    {
+      "route": "static/js/async/route-d2ed21cc166a.2efabd10f8.js",
+      "sha256": "765c35a3fb2ed0ad844ec3a8c68ecca51d744789b5d938ad2cba99600d2c02b7"
+    },
+    {
+      "route": "static/js/async/route-d2f844588c0e.e7c5d7573d.js",
+      "sha256": "80e3ce5e48fc505e3d04da0d6d23e74072f37f2ab0c90b6e66e4b03dde5382b6"
+    },
+    {
+      "route": "static/js/async/route-d3c32b318d4d.b3a8c2ceb9.js",
+      "sha256": "4bf2c0d85f277980540a693c2e2537e94c651d4b574b52f96f530bac2996360a"
+    },
+    {
+      "route": "static/js/async/route-d4c74b012ade.17305963c5.js",
+      "sha256": "f24eb685f6f814b132d3f30467ea23a0bf36c99a81b1d14496dd54e067e36fe1"
+    },
+    {
+      "route": "static/js/async/route-d50bfb52cbad.231d213cbb.js",
+      "sha256": "bb4a1c1d141999a9637294794dcb57e992faf9e6dc3b5fc910f4134bd0b69839"
+    },
+    {
+      "route": "static/js/async/route-e565adb2bc70.6ac7a9ecc6.js",
+      "sha256": "d27b576db6ec475a75a4385951eab385cb4cd4d994fb2250d19ca3fffa772aa2"
+    },
+    {
+      "route": "static/js/async/route-e74593277156.20a88feac2.js",
+      "sha256": "22b5f5eb9edb03e9f51e197f1860282cde2a8ee449cbfb7a3b47607c7dbc7816"
+    },
+    {
+      "route": "static/js/async/route-ea735711ae21.c16e02fa4c.js",
+      "sha256": "f1a770a31a43a0d32db4e17e82d679b8c5bf8086cee63acbbd39cd7f988c2da6"
+    },
+    {
+      "route": "static/js/async/route-f2361a6a778b.8a701f2c9c.js",
+      "sha256": "acbf7fc6fc797bd0312059b1a0cae7356d7199dfbb37587ef9dadcc4f0f67334"
+    },
+    {
+      "route": "static/js/index.5f7be87307.js",
+      "sha256": "144fd0b71574e3baa7244976572e616fab008e5eec6503b8505a6bb96eafa7a2"
+    },
+    {
+      "route": "static/search_index.ko.263b8358.json",
+      "sha256": "263b8358cbb53429e701d0ae93c48d989612769cf9f9b6e925b3bfbd5f144cd8"
+    }
+  ],
+  "replaced": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "previousSha256": "b30946e0de12f91af0c45da88185db1537cbe8870c0e32df5e4e5fbb8f6f589a",
+      "sha256": "74642f4e01d67c9c93469ecf1b05d6a24031f4c883e11b40e9f8ce5a6a130d8f"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "previousSha256": "3637c1ae9ef5d5a4efd110ff66486043b05b8f789fb75823baad7bb9d22e9bd4",
+      "sha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea"
+    },
+    {
+      "route": "public/roadmap.html",
+      "previousSha256": "2546d5f14f1b90ae4627de5cb4529e736e84c36c0107b40d31a7364321830329",
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "route": "roadmap.html",
+      "previousSha256": "2546d5f14f1b90ae4627de5cb4529e736e84c36c0107b40d31a7364321830329",
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "previousSha256": "7e8cc9ebbb0b665694ee265d0ef333ab82d7185ad9e8fb33398606de077c4e4f",
+      "sha256": "0fe00644d1eae1ff14fc5f7699e588906f43e39e2fb33ead57c8826822d41263"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "previousSha256": "3637c1ae9ef5d5a4efd110ff66486043b05b8f789fb75823baad7bb9d22e9bd4",
+      "sha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea"
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "previousSha256": "2546d5f14f1b90ae4627de5cb4529e736e84c36c0107b40d31a7364321830329",
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "previousSha256": "3ac5bc960f658b8b56d013642e5b915eea70451905e86114993fb4832d2bae90",
+      "sha256": "a536030b9a2247608f0d9a2f36b58b6ba7f20078b8dcd8170bd8443d7eb15e33"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "previousSha256": "0d16b499ddebb11d7bcd48393e20169aa3f9783b33ba2b8bbaa803a5375a0938",
+      "sha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c"
+    },
+    {
+      "route": "STATUS.html",
+      "previousSha256": "047d21c94116b91c7e51dc36fd811664436360b1a765e64d464a50d898f715ba",
+      "sha256": "85c855cb6146ef5ff22fee41eca850ee98165ee748fcf59473ce35089321ef24"
+    },
+    {
+      "route": "STATUS.md",
+      "previousSha256": "0d16b499ddebb11d7bcd48393e20169aa3f9783b33ba2b8bbaa803a5375a0938",
+      "sha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c"
+    }
+  ],
+  "identical": [
+    {
+      "route": "icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2"
+    }
+  ]
+}
