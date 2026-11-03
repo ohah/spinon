@@ -31,7 +31,7 @@
 - Runtime 픽셀 근거는 Android API 37 ARM64 software-rendered AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator의 compositor 제출 전 Metal drawable에 한정된다. 실기기·hardware GPU·iOS compositor 이후 픽셀 결과가 아니다.
 - 현재 `RootHtmlFitContentV1` core gate는 두 Grid content dimension 모두 definite하도록 요구한다. percentage가 없는 반대 축의 `auto` size는 이 제한 구현에서 지원하지 않는다.
 - Ahem text contribution은 공유 `TrackSizing` sizing algorithm에서 비교했다. 기본 Root HTML platform scene은 fixed-size child를 사용한다. 일반 CSS admission, WPT conformance, public CSS support와 전체 C11은 검증하지 않았다.
-- 실제 구현 PR diff 검토와 GitHub checks/merge는 아직 남아 있다.
+- 실제 구현 PR diff는 [사용자 요청 20개](pr-diff-review-user-20.md)와 [프로젝트 필수 30개](pr-diff-review-required-30.md)로 별도 검토했고 수정이 필요한 결함은 없었다. PR check rollup은 비었고 main required status checks도 없어 CI 통과를 주장하지 않는다. Rebase-and-merge는 아직 남아 있다.
 
 ## 연결된 원본
 

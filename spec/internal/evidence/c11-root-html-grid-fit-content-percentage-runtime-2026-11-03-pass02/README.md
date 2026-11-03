@@ -60,6 +60,12 @@ Chrome 156, 테두리와 content-box basis 비교:
 - [style-render 기본 71 passed·1 ignored](style-render-focused-tests.log), [C11.4 fixture mode 74 passed·1 ignored](style-render-c114-fixture-tests.log)
 - [rustfmt](rustfmt.log), [변경 crate Clippy](clippy-scoped.log), [C11.4 fixture mode Clippy](clippy-style-render-c114.log)
 
+## 검토
+
+- [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)
+- [사용자 요청 PR diff 검토 20개](pr-diff-review-user-20.md) 및 [프로젝트 필수 PR diff 검토 30개](pr-diff-review-required-30.md). 실제 diff에서 수정이 필요한 결함은 발견하지 않았다.
+- PR #1106 GitHub check rollup은 비어 있고 `main` required status checks는 설정되지 않았다. CI 통과로 간주하지 않는다.
+
 첫 진단 시도의 route 및 표본 좌표 오류는 [진단 evidence](../c11-root-html-grid-fit-content-percentage-runtime-2026-11-03/README.md)에 남겼다. 이 실행에서는 parsed Root HTML 앱 경로를 사용하고 노출된 테두리를 표본화했다.
 
 ## 한계
