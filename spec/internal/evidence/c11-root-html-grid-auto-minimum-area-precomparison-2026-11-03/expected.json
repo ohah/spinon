@@ -1,0 +1,89 @@
+{
+  "basis": {
+    "contentAxisPx": 100,
+    "fixedNeighborTrackPx": 40,
+    "automaticMinimumContributionPx": 80,
+    "rootBorderPx": 2,
+    "expectedOuterOverflowPx": 18,
+    "rules": [
+      "For minmax(auto, 1fr), the non-spanning item's automatic minimum contribution sets an 80px track base; the 40px fixed neighbor makes 120px of tracks in a 100px content axis.",
+      "For minmax(0, 1fr), the first track receives the 60px remaining after the fixed 40px neighbor.",
+      "For minmax(auto, 0fr), the automatic 80px minimum remains the track base despite the zero flex factor.",
+      "The root's 2px border means a 20px content-axis overrun extends 18px beyond the outer border edge."
+    ]
+  },
+  "scenes": [
+    {
+      "id": "columns-auto",
+      "tracks": { "columns": [80, 40], "rows": [20, 20] },
+      "rootBorderBox": [0, 0, 104, 44],
+      "itemsRootRelative": {
+        "header": [2, 2, 120, 20],
+        "side": [2, 22, 80, 20],
+        "content": [82, 22, 40, 20]
+      },
+      "surfaceSamples": [{ "rootRelative": [110, 30], "rgba": [112, 168, 216, 255] }],
+      "outerOverflowPx": 18
+    },
+    {
+      "id": "columns-zero",
+      "tracks": { "columns": [60, 40], "rows": [20, 20] },
+      "rootBorderBox": [0, 0, 104, 44],
+      "itemsRootRelative": {
+        "header": [2, 2, 100, 20],
+        "side": [2, 22, 80, 20],
+        "content": [62, 22, 40, 20]
+      },
+      "surfaceSamples": [{ "rootRelative": [110, 30], "rgba": [255, 255, 255, 255] }],
+      "outerOverflowPx": 0
+    },
+    {
+      "id": "columns-zero-factor",
+      "tracks": { "columns": [80, 40], "rows": [20, 20] },
+      "rootBorderBox": [0, 0, 104, 44],
+      "itemsRootRelative": {
+        "header": [2, 2, 120, 20],
+        "side": [2, 22, 80, 20],
+        "content": [82, 22, 40, 20]
+      },
+      "surfaceSamples": [{ "rootRelative": [110, 30], "rgba": [112, 168, 216, 255] }],
+      "outerOverflowPx": 18
+    },
+    {
+      "id": "rows-auto",
+      "tracks": { "columns": [40, 40], "rows": [80, 40] },
+      "rootBorderBox": [0, 0, 84, 104],
+      "itemsRootRelative": {
+        "header": [2, 2, 80, 80],
+        "side": [2, 82, 40, 40],
+        "content": [42, 82, 40, 40]
+      },
+      "surfaceSamples": [{ "rootRelative": [50, 110], "rgba": [112, 168, 216, 255] }],
+      "outerOverflowPx": 18
+    },
+    {
+      "id": "rows-zero",
+      "tracks": { "columns": [40, 40], "rows": [60, 40] },
+      "rootBorderBox": [0, 0, 84, 104],
+      "itemsRootRelative": {
+        "header": [2, 2, 80, 80],
+        "side": [2, 62, 40, 40],
+        "content": [42, 62, 40, 40]
+      },
+      "surfaceSamples": [{ "rootRelative": [50, 110], "rgba": [255, 255, 255, 255] }],
+      "outerOverflowPx": 0
+    },
+    {
+      "id": "rows-zero-factor",
+      "tracks": { "columns": [40, 40], "rows": [80, 40] },
+      "rootBorderBox": [0, 0, 84, 104],
+      "itemsRootRelative": {
+        "header": [2, 2, 80, 80],
+        "side": [2, 82, 40, 40],
+        "content": [42, 82, 40, 40]
+      },
+      "surfaceSamples": [{ "rootRelative": [50, 110], "rgba": [112, 168, 216, 255] }],
+      "outerOverflowPx": 18
+    }
+  ]
+}

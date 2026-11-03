@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid auto minimum with named areas</title>
+    <style>
+      * { box-sizing: content-box; }
+      body { margin: 16px; color: #111; font: 14px/1.4 sans-serif; background: #fff; }
+      main { display: grid; grid-template-columns: repeat(2, max-content); gap: 20px 32px; }
+      section { display: grid; gap: 4px; align-content: start; }
+      h2 { margin: 0; font-size: 14px; }
+      .root {
+        display: grid;
+        grid-template-areas: "header header" "side content";
+        grid-template-rows: 20px 20px;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        border: 2px solid #111;
+        overflow: visible;
+        background: #fff;
+      }
+      .columns { width: 100px; height: 40px; grid-template-rows: 20px 20px; }
+      .rows { width: 80px; height: 100px; grid-template-columns: 40px 40px; }
+      .auto-column { grid-template-columns: minmax(auto, 1fr) 40px; }
+      .zero-column { grid-template-columns: minmax(0, 1fr) 40px; }
+      .zero-factor-column { grid-template-columns: minmax(auto, 0fr) 40px; }
+      .auto-row { grid-template-rows: minmax(auto, 1fr) 40px; }
+      .zero-row { grid-template-rows: minmax(0, 1fr) 40px; }
+      .zero-factor-row { grid-template-rows: minmax(auto, 0fr) 40px; }
+      .item { display: block; margin: 0; padding: 0; border: 0; overflow: visible; }
+      .header { grid-area: header; background: #f4c95d; }
+      .side { grid-area: side; background: #78c59c; }
+      .content { grid-area: content; background: #70a8d8; }
+      .columns .header { height: 20px; }
+      .columns .side { width: 80px; height: 20px; }
+      .columns .content { width: 40px; height: 20px; }
+      .rows .header { width: 80px; height: 80px; }
+      .rows .side, .rows .content { width: 40px; height: 40px; }
+    </style>
+  </head>
+  <body>
+    <main id="scenes">
+      <section><h2>columns · minmax(auto, 1fr)</h2><div class="root columns auto-column" data-scene="columns-auto"><div class="item header" data-role="header"></div><div class="item side" data-role="side"></div><div class="item content" data-role="content"></div></div></section>
+      <section><h2>columns · minmax(0, 1fr) control</h2><div class="root columns zero-column" data-scene="columns-zero"><div class="item header" data-role="header"></div><div class="item side" data-role="side"></div><div class="item content" data-role="content"></div></div></section>
+      <section><h2>columns · minmax(auto, 0fr)</h2><div class="root columns zero-factor-column" data-scene="columns-zero-factor"><div class="item header" data-role="header"></div><div class="item side" data-role="side"></div><div class="item content" data-role="content"></div></div></section>
+      <section><h2>rows · minmax(auto, 1fr)</h2><div class="root rows auto-row" data-scene="rows-auto"><div class="item header" data-role="header"></div><div class="item side" data-role="side"></div><div class="item content" data-role="content"></div></div></section>
+      <section><h2>rows · minmax(0, 1fr) control</h2><div class="root rows zero-row" data-scene="rows-zero"><div class="item header" data-role="header"></div><div class="item side" data-role="side"></div><div class="item content" data-role="content"></div></div></section>
+      <section><h2>rows · minmax(auto, 0fr)</h2><div class="root rows zero-factor-row" data-scene="rows-zero-factor"><div class="item header" data-role="header"></div><div class="item side" data-role="side"></div><div class="item content" data-role="content"></div></div></section>
+    </main>
+    <script>
+      window.__gridObservation = () => {
+        const rect = (node, origin) => {
+          const value = node.getBoundingClientRect();
+          return [value.left - origin.left, value.top - origin.top, value.width, value.height]
+            .map(component => Math.round(component * 1000) / 1000);
+        };
+        return [...document.querySelectorAll('[data-scene]')].map(grid => {
+          const style = getComputedStyle(grid);
+          const rootRect = grid.getBoundingClientRect();
+          return {
+            id: grid.dataset.scene,
+            tracks: { columns: style.gridTemplateColumns, rows: style.gridTemplateRows },
+            root: [0, 0, rootRect.width, rootRect.height].map(component => Math.round(component * 1000) / 1000),
+            items: Object.fromEntries([...grid.querySelectorAll('[data-role]')].map(node => [node.dataset.role, rect(node, { left: rootRect.left, top: rootRect.top })])),
+            scroll: { width: grid.scrollWidth, height: grid.scrollHeight },
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
