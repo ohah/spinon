@@ -264,6 +264,9 @@ fn is_supported_root_html_explicit_track(track: &ComputedCssGridTrackSize) -> bo
             };
             supported_min && supported_max
         }
+        ComputedCssGridTrackSize::FitContent(
+            spinon_style::ComputedCssGridTrackLengthPercentage::LengthPx(value),
+        ) => finite_nonnegative(value),
         _ => false,
     }
 }
@@ -321,6 +324,20 @@ fn validate_root_html_named_area_template(
         property,
         value: value.to_owned(),
     };
+    for (property, tracks) in [
+        ("grid-template-columns", grid.columns.as_slice()),
+        ("grid-template-rows", grid.rows.as_slice()),
+    ] {
+        if tracks
+            .iter()
+            .any(|track| matches!(track, ComputedCssGridTrackSize::MinMax { .. }))
+        {
+            return Err(unsupported(
+                property,
+                "Root HTML named-area tracks do not admit minmax() in this profile",
+            ));
+        }
+    }
     let columns_match = matches!(
         grid.columns.as_slice(),
         [ComputedCssGridTrackSize::LengthPx(first), ComputedCssGridTrackSize::LengthPx(second)]
@@ -348,10 +365,16 @@ fn validate_root_html_named_area_template(
     let percentage_area_tracks_match = percentage_tracks_match
         && is_two_direct_px_percentage_tracks(&grid.columns)
         && is_two_direct_px_percentage_tracks(&grid.rows);
-    if !(fixed_tracks_match || bounded_fraction_tracks_match || percentage_area_tracks_match) {
+    let fit_content_area_tracks_match =
+        root_html_dimension_matched_fit_content_area_tracks(grid, areas);
+    if !(fixed_tracks_match
+        || bounded_fraction_tracks_match
+        || percentage_area_tracks_match
+        || fit_content_area_tracks_match)
+    {
         return Err(unsupported(
             "grid-template-areas",
-            "Root HTML named-area 제한 경로는 기존 고정 px/1fr 2fr 트랙 또는 두 축의 직접 px/percentage 트랙만 지원합니다",
+            "Root HTML named-area 제한 경로는 기존 header/side/content 고정 px·1fr/2fr·직접 px/percentage 패턴 또는 dimension-matched px/fit-content(px) 트랙을 지원합니다",
         ));
     }
     let expected = [
@@ -359,27 +382,59 @@ fn validate_root_html_named_area_template(
         ("side", 1, 2, 0, 1),
         ("content", 1, 2, 1, 2),
     ];
-    if areas.rows != 2
-        || areas.columns != 2
-        || areas.areas.len() != expected.len()
-        || expected
+    let existing_named_areas_match = areas.rows == 2
+        && areas.columns == 2
+        && areas.areas.len() == expected.len()
+        && expected
             .iter()
-            .any(|(name, row_start, row_end, column_start, column_end)| {
-                !areas.areas.iter().any(|area| {
+            .all(|(name, row_start, row_end, column_start, column_end)| {
+                areas.areas.iter().any(|area| {
                     area.name == *name
                         && area.row_start == *row_start
                         && area.row_end == *row_end
                         && area.column_start == *column_start
                         && area.column_end == *column_end
                 })
-            })
-    {
+            });
+    if !fit_content_area_tracks_match && !existing_named_areas_match {
         return Err(unsupported(
             "grid-template-areas",
-            "Root HTML named-area 제한 경로는 header/side/content의 직사각형 2x2 영역을 요구합니다",
+            "Root HTML 기존 named-area profiles는 header/side/content의 직사각형 2x2 영역을 요구합니다",
         ));
     }
     Ok(())
+}
+
+pub(super) fn root_html_dimension_matched_fit_content_area_tracks(
+    grid: &ComputedCssGridLayout,
+    areas: &ComputedCssGridTemplateAreas,
+) -> bool {
+    if areas.rows == 0
+        || areas.columns == 0
+        || areas.rows != grid.rows.len()
+        || areas.columns != grid.columns.len()
+        || areas.areas.is_empty()
+    {
+        return false;
+    }
+
+    let mut has_fit_content = false;
+    for track in grid.columns.iter().chain(&grid.rows) {
+        let valid = match track {
+            ComputedCssGridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+            ComputedCssGridTrackSize::FitContent(
+                spinon_style::ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) => {
+                has_fit_content = true;
+                value.is_finite() && *value >= 0.0
+            }
+            _ => false,
+        };
+        if !valid {
+            return false;
+        }
+    }
+    has_fit_content
 }
 
 fn contains_percentage_track(tracks: &[ComputedCssGridTrackSize]) -> bool {
@@ -971,6 +1026,11 @@ fn project_grid_layout_with_reservations(
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if grid.template_areas.is_some() => {
                 GridPlacementMode::TemplateGrid
             }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                if root_html_has_fit_content_tracks(grid) =>
+            {
+                GridPlacementMode::RootHtmlFitContentV1
+            }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if root_html_implicit_rows => {
                 GridPlacementMode::RootHtmlImplicitRowsV1
             }
@@ -984,6 +1044,13 @@ fn project_grid_layout_with_reservations(
         },
         track_sizing_trace_enabled: false,
     })
+}
+
+fn root_html_has_fit_content_tracks(grid: &ComputedCssGridLayout) -> bool {
+    grid.columns
+        .iter()
+        .chain(&grid.rows)
+        .any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
 }
 
 struct TemplateAreaTrackExpansion {

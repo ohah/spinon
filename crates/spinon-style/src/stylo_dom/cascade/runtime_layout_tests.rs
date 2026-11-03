@@ -10,6 +10,8 @@ mod c10_flex_wrap;
 mod c11_1_root_html_auto_column_list;
 #[path = "runtime_layout_tests/c11_1_root_html_auto_row_list.rs"]
 mod c11_1_root_html_auto_row_list;
+#[path = "runtime_layout_tests/c11_1_root_html_fit_content.rs"]
+mod c11_1_root_html_fit_content;
 #[path = "runtime_layout_tests/c11_1_root_html_integer_repeat.rs"]
 mod c11_1_root_html_integer_repeat;
 #[path = "runtime_layout_tests/c12_absolute.rs"]

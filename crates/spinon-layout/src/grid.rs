@@ -278,6 +278,8 @@ pub enum GridPlacementMode {
     RootHtmlImplicitRowsV1,
     /// 제한 Root HTML 경로의 explicit-cell sparse column auto-placement입니다.
     RootHtmlColumnFlowV1,
+    /// 제한 Root HTML 경로에서 finite non-negative px `fit-content()` explicit track을 sizing합니다.
+    RootHtmlFitContentV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
@@ -594,6 +596,7 @@ pub(super) fn validate_grid_layout(
                     || container.placement_mode == GridPlacementMode::TrackSizing,
                 false,
                 false,
+                false,
             )?;
         }
         if let GridAutoColumns::TrackList(tracks) = &container.auto_columns {
@@ -609,6 +612,7 @@ pub(super) fn validate_grid_layout(
                 tracks,
                 template_area_track_sizing
                     || container.placement_mode == GridPlacementMode::TrackSizing,
+                false,
                 false,
                 false,
             )?;
@@ -694,6 +698,7 @@ pub(super) fn validate_grid_layout(
             allow_intrinsic_tracks,
             allow_template_area_auto_track,
             container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1,
+            container.placement_mode == GridPlacementMode::RootHtmlFitContentV1,
         )?;
         validate_tracks(
             node.id,
@@ -702,6 +707,7 @@ pub(super) fn validate_grid_layout(
             allow_intrinsic_tracks,
             allow_template_area_auto_track,
             container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1,
+            container.placement_mode == GridPlacementMode::RootHtmlFitContentV1,
         )?;
         if container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some() {
             if container.placement_mode != GridPlacementMode::TrackSizing {
@@ -2109,6 +2115,7 @@ fn validate_tracks(
     allow_intrinsic: bool,
     allow_auto: bool,
     allow_root_html_bounded_minmax: bool,
+    allow_root_html_fit_content: bool,
 ) -> Result<(), LayoutError> {
     if tracks.is_empty() {
         return if allow_intrinsic {
@@ -2142,7 +2149,13 @@ fn validate_tracks(
                         && valid_root_html_bounded_minmax(*min, *max))
             }
             GridTrackSize::FitContent(value) => {
-                allow_intrinsic && valid_grid_track_length_percentage(*value)
+                (allow_intrinsic && valid_grid_track_length_percentage(*value))
+                    || (allow_root_html_fit_content
+                        && matches!(
+                            value,
+                            GridTrackLengthPercentage::LengthPx(limit)
+                                if limit.is_finite() && *limit >= 0.0
+                        ))
             }
         };
         if !valid {

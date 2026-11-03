@@ -360,16 +360,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
         let rootHtmlPixelCaptureArguments = arguments.filter {
             $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
         }
-        let rootHtmlGridMinmaxPixelCaptureRequested = rootHtmlPixelCaptureArguments.count == 1
+        let rootHtmlGridPixelCaptureRequested = rootHtmlPixelCaptureArguments.count == 1
             && arguments.allSatisfy {
                 !$0.hasPrefix("--spinon-") || $0 == rootHtmlPixelCaptureArguments[0]
             }
 #else
-        let rootHtmlGridMinmaxPixelCaptureRequested = false
+        let rootHtmlGridPixelCaptureRequested = false
 #endif
         if !arguments.contains(where: { $0.hasPrefix("--spinon-") })
-            || rootHtmlGridMinmaxPixelCaptureRequested {
+            || rootHtmlGridPixelCaptureRequested {
             let window = UIWindow(frame: UIScreen.main.bounds)
             let controller = C0410RuntimeGpuDemoViewController()
             controller.defaultRootHtmlApplicationRequested = true

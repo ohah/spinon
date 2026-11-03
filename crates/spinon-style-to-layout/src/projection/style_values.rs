@@ -19,6 +19,7 @@ mod grid_values;
 mod positioning_values;
 mod primitive_values;
 mod root_html_column_flow;
+mod root_html_fit_content_named_area;
 mod root_html_grid_gap;
 mod root_html_grid_tracks;
 mod root_html_named_area;

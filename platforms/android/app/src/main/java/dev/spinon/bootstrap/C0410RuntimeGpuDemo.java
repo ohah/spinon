@@ -17355,6 +17355,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlGridMinmaxPixelCaptureRequested;
     private final String rootHtmlGridMinmaxPixelCaptureRunId;
     private boolean rootHtmlGridMinmaxPixelCaptureStarted;
+    private final boolean rootHtmlFitContentPixelCaptureRequested;
+    private final String rootHtmlFitContentPixelCaptureRunId;
+    private boolean rootHtmlFitContentPixelCaptureStarted;
     private String rootHtmlApplicationSource;
     private String rootHtmlApplicationScript;
     private final boolean blockFormattingProbeRequested;
@@ -17590,10 +17593,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         rootHtmlPageScaleCase = activity.getIntent()
                 .getStringExtra("spinon_c0412_root_html_page_scale_case");
         this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
+        boolean rootHtmlFitContentPixelCaptureArgument =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && activity.getIntent().getBooleanExtra(
+                                "spinon_root_html_fit_content_pixel_capture", false);
+        boolean rootHtmlGridMinmaxPixelCaptureArgument =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && activity.getIntent().getBooleanExtra(
+                                "spinon_root_html_grid_minmax_pixel_capture", false);
         rootHtmlGridMinmaxPixelCaptureRequested = BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                 && rootHtmlApplicationRequested
-                && activity.getIntent().getBooleanExtra(
-                        "spinon_root_html_grid_minmax_pixel_capture", false);
+                && rootHtmlGridMinmaxPixelCaptureArgument
+                && !rootHtmlFitContentPixelCaptureArgument;
         String rootHtmlGridMinmaxRunId = activity.getIntent().getStringExtra(
                 "spinon_root_html_grid_minmax_pixel_capture_run_id");
         rootHtmlGridMinmaxPixelCaptureRunId = rootHtmlGridMinmaxRunId == null
@@ -17601,6 +17612,22 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (rootHtmlGridMinmaxPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_CONFIGURED run_id="
                     + rootHtmlGridMinmaxPixelCaptureRunId
+                    + " root_html_application=" + rootHtmlApplicationRequested);
+        }
+        rootHtmlFitContentPixelCaptureRequested = BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                && rootHtmlApplicationRequested
+                && rootHtmlFitContentPixelCaptureArgument
+                && !rootHtmlGridMinmaxPixelCaptureArgument;
+        if (rootHtmlGridMinmaxPixelCaptureArgument && rootHtmlFitContentPixelCaptureArgument) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_PIXELCOPY_ARGUMENT_ERROR reason=conflicting-captures");
+        }
+        String rootHtmlFitContentRunId = activity.getIntent().getStringExtra(
+                "spinon_root_html_fit_content_pixel_capture_run_id");
+        rootHtmlFitContentPixelCaptureRunId = rootHtmlFitContentRunId == null
+                ? "manual" : rootHtmlFitContentRunId;
+        if (rootHtmlFitContentPixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_CONFIGURED run_id="
+                    + rootHtmlFitContentPixelCaptureRunId
                     + " root_html_application=" + rootHtmlApplicationRequested);
         }
         marginCollapseProbeRequested = activity.getIntent()
@@ -21647,6 +21674,112 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private void requestRootHtmlFitContentPixelCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || rootHtmlFitContentPixelCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            rootHtmlFitContentPixelCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        String runId = rootHtmlFitContentPixelCaptureRunId;
+        if (!runId.matches("[A-Za-z0-9_-]{8,80}")) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY status=error run_id="
+                    + runId + " reason=invalid-run-id");
+            return;
+        }
+        int viewportWidthCssPx = Math.round(width / density);
+        int viewportHeightCssPx = Math.round(height / density);
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("direct-in-root", 25, 10),
+                new SurfaceViewPixelCapture.Sample("direct-overflow", 35, 10),
+                new SurfaceViewPixelCapture.Sample("direct-blue-marker", 42, 10),
+                new SurfaceViewPixelCapture.Sample("area-in-root", 25, 30),
+                new SurfaceViewPixelCapture.Sample("area-overflow", 35, 30),
+                new SurfaceViewPixelCapture.Sample("row-in-root", 10, 50),
+                new SurfaceViewPixelCapture.Sample("row-overflow", 10, 65));
+        int[][] expected = {
+                {229, 72, 77, 255}, {229, 72, 77, 255}, {59, 130, 246, 255},
+                {48, 164, 108, 255}, {48, 164, 108, 255},
+                {240, 180, 41, 255}, {240, 180, 41, 255},
+        };
+        if (width <= 0 || height <= 0 || viewportWidthCssPx <= 42
+                || viewportHeightCssPx <= 65) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY status=error run_id="
+                    + runId + " reason=invalid-surface-or-viewport width=" + width
+                    + " height=" + height + " viewport_width=" + viewportWidthCssPx
+                    + " viewport_height=" + viewportHeightCssPx);
+            return;
+        }
+        File output = new File(new File(activity.getCacheDir(),
+                "c11-root-html-fit-content-pixelcopy"), runId + ".png");
+        Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " width=" + width + " height=" + height + " density=" + density
+                + " viewport_width=" + viewportWidthCssPx
+                + " viewport_height=" + viewportHeightCssPx + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
+                viewportWidthCssPx, viewportHeightCssPx, 0, 0,
+                "root-html-grid-fit-content-overflow", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY status=error"
+                                + " run_id=" + runId + " generation=" + generation
+                                + " attempts=" + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C11.1 Root HTML fit-content PixelCopy · "
+                                + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int index;
+                        switch (pixel.id) {
+                            case "direct-in-root": index = 0; break;
+                            case "direct-overflow": index = 1; break;
+                            case "direct-blue-marker": index = 2; break;
+                            case "area-in-root": index = 3; break;
+                            case "area-overflow": index = 4; break;
+                            case "row-in-root": index = 5; break;
+                            case "row-overflow": index = 6; break;
+                            default: index = -1; break;
+                        }
+                        boolean exact = index >= 0
+                                && pixel.red == expected[index][0]
+                                && pixel.green == expected[index][1]
+                                && pixel.blue == expected[index][2]
+                                && pixel.alpha == expected[index][3];
+                        if (exact) matched++;
+                        Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + "," + pixel.blue
+                                + "," + pixel.alpha + " expected_match=" + exact);
+                    }
+                    boolean passed = result.pixels.size() == samples.size()
+                            && matched == samples.size();
+                    Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                            + " generation=" + generation + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matched + " png=" + output.getAbsolutePath()
+                            + " sha256=" + result.sha256);
+                    postStatus(passed
+                            ? "완료 · C11.1 Root HTML fit-content PixelCopy · 7/7"
+                            : "실패 · C11.1 Root HTML fit-content PixelCopy 표본 불일치");
+                });
+    }
+
     private void requestC11GridPixelMatrixCapture(long renderer, long generation) {
         final int width;
         final int height;
@@ -23892,7 +24025,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c133WheelProbeRequested) verifyC133WheelDraw(result);
-        if (rootHtmlGridMinmaxPixelCaptureRequested) {
+        if (rootHtmlFitContentPixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_DISPATCH run_id="
+                    + rootHtmlFitContentPixelCaptureRunId + " generation=" + generation);
+            requestRootHtmlFitContentPixelCapture(renderer, generation);
+        } else if (rootHtmlGridMinmaxPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_DISPATCH run_id="
                     + rootHtmlGridMinmaxPixelCaptureRunId + " generation=" + generation);
             requestRootHtmlGridMinmaxPixelCapture(renderer, generation);
