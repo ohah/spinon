@@ -1,0 +1,11 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.57s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 2 tests
+test session::tests::root_html_grid_item_alignment::c11_1_root_html_rejected_item_alignment_does_not_publish_a_scene ... ok
+test session::tests::root_html_grid_item_alignment::c11_1_root_html_fixed_grid_item_alignment_matches_all_expected_frames ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 261 filtered out; finished in 1.19s

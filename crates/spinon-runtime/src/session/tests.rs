@@ -25,6 +25,7 @@ mod root_html_grid_fit_content_percentage;
 mod root_html_grid_fr;
 mod root_html_grid_implicit_rows;
 mod root_html_grid_integer_repeat;
+mod root_html_grid_item_alignment;
 mod root_html_grid_minmax;
 mod root_html_grid_template_areas;
 

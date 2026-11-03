@@ -1,4 +1,4 @@
-//! Fixed-track Root HTML Grid content-alignment admission for C11.
+//! Fixed-track Root HTML Grid alignment admission for C11.
 
 use std::collections::BTreeSet;
 
@@ -42,7 +42,7 @@ pub(super) fn eligible_nodes(
         .collect()
 }
 
-pub(super) fn supports_content_alignment_value(property: &str, value: &str) -> bool {
+pub(super) fn supports_alignment_value(property: &str, value: &str) -> bool {
     match property {
         "align-content" | "justify-content" => matches!(
             value,
@@ -60,6 +60,24 @@ pub(super) fn supports_content_alignment_value(property: &str, value: &str) -> b
                 | "unsafe center"
                 | "safe end"
         ),
+        "align-items" | "justify-items" => {
+            matches!(
+                value,
+                "normal"
+                    | "stretch"
+                    | "start"
+                    | "end"
+                    | "flex-start"
+                    | "flex-end"
+                    | "self-start"
+                    | "self-end"
+                    | "center"
+                    | "safe center"
+                    | "unsafe center"
+                    | "safe end"
+                    | "unsafe end"
+            ) || (property == "justify-items" && matches!(value, "left" | "right"))
+        }
         _ => false,
     }
 }
@@ -259,10 +277,10 @@ fn zero_spacing(value: ComputedCssSpacingValue) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::supports_content_alignment_value;
+    use super::supports_alignment_value;
 
     #[test]
-    fn content_alignment_allowlist_rejects_baseline_and_unknown_values() {
+    fn item_and_content_alignment_allowlists_reject_baseline_and_unknown_values() {
         for value in [
             "normal",
             "stretch",
@@ -278,8 +296,8 @@ mod tests {
             "unsafe center",
             "safe end",
         ] {
-            assert!(supports_content_alignment_value("align-content", value));
-            assert!(supports_content_alignment_value("justify-content", value));
+            assert!(supports_alignment_value("align-content", value));
+            assert!(supports_alignment_value("justify-content", value));
         }
         for value in [
             "baseline",
@@ -288,9 +306,35 @@ mod tests {
             "unsafe end",
             "safe start",
         ] {
-            assert!(!supports_content_alignment_value("align-content", value));
-            assert!(!supports_content_alignment_value("justify-content", value));
+            assert!(!supports_alignment_value("align-content", value));
+            assert!(!supports_alignment_value("justify-content", value));
         }
-        assert!(!supports_content_alignment_value("align-items", "center"));
+        assert!(!supports_alignment_value("align-items", "baseline"));
+        assert!(!supports_alignment_value("align-items", "legacy"));
+        assert!(!supports_alignment_value("align-items", "safe start"));
+        assert!(!supports_alignment_value("justify-items", "baseline"));
+        assert!(!supports_alignment_value("justify-items", "legacy"));
+        for value in [
+            "normal",
+            "stretch",
+            "start",
+            "end",
+            "flex-start",
+            "flex-end",
+            "self-start",
+            "self-end",
+            "center",
+            "safe center",
+            "unsafe center",
+            "safe end",
+            "unsafe end",
+        ] {
+            assert!(supports_alignment_value("align-items", value));
+            assert!(supports_alignment_value("justify-items", value));
+        }
+        assert!(!supports_alignment_value("align-items", "left"));
+        assert!(!supports_alignment_value("align-items", "right"));
+        assert!(supports_alignment_value("justify-items", "left"));
+        assert!(supports_alignment_value("justify-items", "right"));
     }
 }

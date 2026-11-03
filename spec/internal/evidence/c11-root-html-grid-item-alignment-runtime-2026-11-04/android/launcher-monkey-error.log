@@ -1,0 +1,19 @@
+command: adb -s emulator-5556 shell monkey -p dev.spinon.bootstrap -c android.intent.category.LAUNCHER 1
+exit_code: 251
+stdout/stderr:
+  bash arg: -p
+  bash arg: dev.spinon.bootstrap
+  bash arg: -c
+  bash arg: android.intent.category.LAUNCHER
+  bash arg: 1
+args: [-p, dev.spinon.bootstrap, -c, android.intent.category.LAUNCHER, 1]
+ arg: "-p"
+ arg: "dev.spinon.bootstrap"
+ arg: "-c"
+ arg: "android.intent.category.LAUNCHER"
+ arg: "1"
+data="dev.spinon.bootstrap"
+data="android.intent.category.LAUNCHER"
+** SYS_KEYS has no physical keys but with factor 2.0%.
+
+The activity was then started through an explicit component intent; this was a launcher-harness limitation.

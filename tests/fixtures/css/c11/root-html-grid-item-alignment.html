@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root HTML Grid item alignment precomparison</title>
+<style>
+html, body { margin: 0; padding: 0; }
+.case { display: grid; width: 84px; height: 64px; grid-template-columns: 40px 40px; grid-template-rows: 30px 30px; column-gap: 4px; row-gap: 4px; align-content: start; justify-content: start; overflow: visible; background-color: #f4f4f4; }
+.item { width: 16px; height: 10px; }
+.case-align-normal { align-items: normal; }
+.case-align-normal .item { background-color: #310000; }
+.case-align-stretch { align-items: stretch; }
+.case-align-stretch .item { background-color: #310031; }
+.case-align-start { align-items: start; }
+.case-align-start .item { background-color: #310062; }
+.case-align-end { align-items: end; }
+.case-align-end .item { background-color: #310093; }
+.case-align-flex-start { align-items: flex-start; }
+.case-align-flex-start .item { background-color: #3100c4; }
+.case-align-flex-end { align-items: flex-end; }
+.case-align-flex-end .item { background-color: #3100f5; }
+.case-align-self-start { align-items: self-start; }
+.case-align-self-start .item { background-color: #310126; }
+.case-align-self-end { align-items: self-end; }
+.case-align-self-end .item { background-color: #310157; }
+.case-align-center { align-items: center; }
+.case-align-center .item { background-color: #310188; }
+.case-align-safe-center { align-items: safe center; }
+.case-align-safe-center .item { background-color: #3101b9; }
+.case-align-unsafe-center { align-items: unsafe center; }
+.case-align-unsafe-center .item { background-color: #3101ea; }
+.case-align-safe-end { align-items: safe end; }
+.case-align-safe-end .item { background-color: #31021b; }
+.case-align-unsafe-end { align-items: unsafe end; }
+.case-align-unsafe-end .item { background-color: #31024c; }
+.case-justify-normal { justify-items: normal; }
+.case-justify-normal .item { background-color: #31027d; }
+.case-justify-stretch { justify-items: stretch; }
+.case-justify-stretch .item { background-color: #3102ae; }
+.case-justify-start { justify-items: start; }
+.case-justify-start .item { background-color: #3102df; }
+.case-justify-end { justify-items: end; }
+.case-justify-end .item { background-color: #310310; }
+.case-justify-flex-start { justify-items: flex-start; }
+.case-justify-flex-start .item { background-color: #310341; }
+.case-justify-flex-end { justify-items: flex-end; }
+.case-justify-flex-end .item { background-color: #310372; }
+.case-justify-self-start { justify-items: self-start; }
+.case-justify-self-start .item { background-color: #3103a3; }
+.case-justify-self-end { justify-items: self-end; }
+.case-justify-self-end .item { background-color: #3103d4; }
+.case-justify-center { justify-items: center; }
+.case-justify-center .item { background-color: #310405; }
+.case-justify-safe-center { justify-items: safe center; }
+.case-justify-safe-center .item { background-color: #310436; }
+.case-justify-unsafe-center { justify-items: unsafe center; }
+.case-justify-unsafe-center .item { background-color: #310467; }
+.case-justify-safe-end { justify-items: safe end; }
+.case-justify-safe-end .item { background-color: #310498; }
+.case-justify-unsafe-end { justify-items: unsafe end; }
+.case-justify-unsafe-end .item { background-color: #3104c9; }
+.case-justify-left { justify-items: left; }
+.case-justify-left .item { background-color: #3104fa; }
+.case-justify-right { justify-items: right; }
+.case-justify-right .item { background-color: #31052b; }
+.case-align-safe-center-overflow { align-items: safe center; }
+.case-align-safe-center-overflow .item { width: 16px; height: 40px; }
+.case-align-safe-center-overflow .item { background-color: #31055c; }
+.case-align-unsafe-center-overflow { align-items: unsafe center; }
+.case-align-unsafe-center-overflow .item { width: 16px; height: 40px; }
+.case-align-unsafe-center-overflow .item { background-color: #31058d; }
+.case-align-safe-end-overflow { align-items: safe end; }
+.case-align-safe-end-overflow .item { width: 16px; height: 40px; }
+.case-align-safe-end-overflow .item { background-color: #3105be; }
+.case-align-unsafe-end-overflow { align-items: unsafe end; }
+.case-align-unsafe-end-overflow .item { width: 16px; height: 40px; }
+.case-align-unsafe-end-overflow .item { background-color: #3105ef; }
+.case-justify-safe-center-overflow { justify-items: safe center; }
+.case-justify-safe-center-overflow .item { width: 50px; height: 10px; }
+.case-justify-safe-center-overflow .item { background-color: #310620; }
+.case-justify-unsafe-center-overflow { justify-items: unsafe center; }
+.case-justify-unsafe-center-overflow .item { width: 50px; height: 10px; }
+.case-justify-unsafe-center-overflow .item { background-color: #310651; }
+.case-justify-safe-end-overflow { justify-items: safe end; }
+.case-justify-safe-end-overflow .item { width: 50px; height: 10px; }
+.case-justify-safe-end-overflow .item { background-color: #310682; }
+.case-justify-unsafe-end-overflow { justify-items: unsafe end; }
+.case-justify-unsafe-end-overflow .item { width: 50px; height: 10px; }
+.case-justify-unsafe-end-overflow .item { background-color: #3106b3; }
+.place-items-center { place-items: center; }
+.place-items-center .item { background-color: #3106e4; }
+.place-items-end-start { place-items: end start; }
+.place-items-end-start .item { background-color: #310715; }
+#combined { display: grid; width: 240px; height: 180px; grid-template-columns: 40px 60px; grid-template-rows: 30px 50px; column-gap: 10px; row-gap: 10px; align-content: space-around; justify-content: space-evenly; place-items: center; overflow: visible; }
+#combined .item { width: 10px; height: 10px; }
+#combined [data-combined="0"] { background-color: #310746; }
+#combined [data-combined="1"] { background-color: #310777; }
+#combined [data-combined="2"] { background-color: #3107a8; }
+#combined [data-combined="3"] { background-color: #3107d9; }
+</style>
+</head>
+<body>
+<div class="case case-align-normal" data-case="align-normal"><div class="item" data-item="align-normal"></div></div>
+<div class="case case-align-stretch" data-case="align-stretch"><div class="item" data-item="align-stretch"></div></div>
+<div class="case case-align-start" data-case="align-start"><div class="item" data-item="align-start"></div></div>
+<div class="case case-align-end" data-case="align-end"><div class="item" data-item="align-end"></div></div>
+<div class="case case-align-flex-start" data-case="align-flex-start"><div class="item" data-item="align-flex-start"></div></div>
+<div class="case case-align-flex-end" data-case="align-flex-end"><div class="item" data-item="align-flex-end"></div></div>
+<div class="case case-align-self-start" data-case="align-self-start"><div class="item" data-item="align-self-start"></div></div>
+<div class="case case-align-self-end" data-case="align-self-end"><div class="item" data-item="align-self-end"></div></div>
+<div class="case case-align-center" data-case="align-center"><div class="item" data-item="align-center"></div></div>
+<div class="case case-align-safe-center" data-case="align-safe-center"><div class="item" data-item="align-safe-center"></div></div>
+<div class="case case-align-unsafe-center" data-case="align-unsafe-center"><div class="item" data-item="align-unsafe-center"></div></div>
+<div class="case case-align-safe-end" data-case="align-safe-end"><div class="item" data-item="align-safe-end"></div></div>
+<div class="case case-align-unsafe-end" data-case="align-unsafe-end"><div class="item" data-item="align-unsafe-end"></div></div>
+<div class="case case-justify-normal" data-case="justify-normal"><div class="item" data-item="justify-normal"></div></div>
+<div class="case case-justify-stretch" data-case="justify-stretch"><div class="item" data-item="justify-stretch"></div></div>
+<div class="case case-justify-start" data-case="justify-start"><div class="item" data-item="justify-start"></div></div>
+<div class="case case-justify-end" data-case="justify-end"><div class="item" data-item="justify-end"></div></div>
+<div class="case case-justify-flex-start" data-case="justify-flex-start"><div class="item" data-item="justify-flex-start"></div></div>
+<div class="case case-justify-flex-end" data-case="justify-flex-end"><div class="item" data-item="justify-flex-end"></div></div>
+<div class="case case-justify-self-start" data-case="justify-self-start"><div class="item" data-item="justify-self-start"></div></div>
+<div class="case case-justify-self-end" data-case="justify-self-end"><div class="item" data-item="justify-self-end"></div></div>
+<div class="case case-justify-center" data-case="justify-center"><div class="item" data-item="justify-center"></div></div>
+<div class="case case-justify-safe-center" data-case="justify-safe-center"><div class="item" data-item="justify-safe-center"></div></div>
+<div class="case case-justify-unsafe-center" data-case="justify-unsafe-center"><div class="item" data-item="justify-unsafe-center"></div></div>
+<div class="case case-justify-safe-end" data-case="justify-safe-end"><div class="item" data-item="justify-safe-end"></div></div>
+<div class="case case-justify-unsafe-end" data-case="justify-unsafe-end"><div class="item" data-item="justify-unsafe-end"></div></div>
+<div class="case case-justify-left" data-case="justify-left"><div class="item" data-item="justify-left"></div></div>
+<div class="case case-justify-right" data-case="justify-right"><div class="item" data-item="justify-right"></div></div>
+<div class="case case-align-safe-center-overflow" data-case="align-safe-center-overflow"><div class="item" data-item="align-safe-center-overflow"></div></div>
+<div class="case case-align-unsafe-center-overflow" data-case="align-unsafe-center-overflow"><div class="item" data-item="align-unsafe-center-overflow"></div></div>
+<div class="case case-align-safe-end-overflow" data-case="align-safe-end-overflow"><div class="item" data-item="align-safe-end-overflow"></div></div>
+<div class="case case-align-unsafe-end-overflow" data-case="align-unsafe-end-overflow"><div class="item" data-item="align-unsafe-end-overflow"></div></div>
+<div class="case case-justify-safe-center-overflow" data-case="justify-safe-center-overflow"><div class="item" data-item="justify-safe-center-overflow"></div></div>
+<div class="case case-justify-unsafe-center-overflow" data-case="justify-unsafe-center-overflow"><div class="item" data-item="justify-unsafe-center-overflow"></div></div>
+<div class="case case-justify-safe-end-overflow" data-case="justify-safe-end-overflow"><div class="item" data-item="justify-safe-end-overflow"></div></div>
+<div class="case case-justify-unsafe-end-overflow" data-case="justify-unsafe-end-overflow"><div class="item" data-item="justify-unsafe-end-overflow"></div></div>
+<div class="case place-items-center" data-case="place-items-center"><div class="item" data-item="place-items-center"></div></div>
+<div class="case place-items-end-start" data-case="place-items-end-start"><div class="item" data-item="place-items-end-start"></div></div>
+<div id="combined" data-case="combined"><div class="item" data-combined="0"></div><div class="item" data-combined="1"></div><div class="item" data-combined="2"></div><div class="item" data-combined="3"></div></div>
+</body>
+</html>
