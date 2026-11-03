@@ -1,6 +1,6 @@
 # C11.1 parsed Root HTML `grid-auto-rows: calc(px + %)`
 
-**상태:** 계획 PR [#1101](https://github.com/ohah/spinon/pull/1101)은 `2026-11-03T02:27:46Z` Rebase and merge됐다. 제한 구현 후보는 focused Rust 검증, scoped Clippy, Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행과 구현/runtime 20개 및 PR diff 30개 검토를 마쳤다. 구현 PR·병합 및 그 뒤 문서/로드맵 동기화는 남아 있으며 이 slice는 C11.1/C11 상위 완료와 공식 `72/213`을 바꾸지 않는다.
+**상태:** 계획 PR [#1101](https://github.com/ohah/spinon/pull/1101)은 `2026-11-03T02:27:46Z` Rebase and merge됐고, 제한 구현 PR [#1102](https://github.com/ohah/spinon/pull/1102)은 `2026-11-03T02:59:45Z` Rebase and merge됐다(merge SHA `7464e2ca469e5e7b7f35fc837f9adfedca6a0b3a`). Focused Rust 검증, scoped Clippy, Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행과 구현/runtime 및 PR diff review를 마쳤다. 이 slice는 C11.1/C11 상위 완료와 공식 `72/213`을 바꾸지 않는다.
 
 **상위와 인접 작업:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML implicit row list](./c11-root-html-grid-auto-row-list.md) · [definite percentage row list](./c11-root-html-grid-auto-row-percentage-list.md) · [Root HTML `grid-auto-columns` calc](./c11-root-html-grid-column-flow-calc-auto-columns.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
