@@ -1386,9 +1386,9 @@ Chrome 156의 사전 비교는 positive 17 scenes와 CSS-invalid cascade fallbac
 
 제한 구현 병합 뒤에도 내부 계약 숫자 버전 `0.1.0`, C11.5/C11 미완료 상태 및 공식 완료 `72/213`을 유지한다.
 
-## C11.5 parsed Root HTML Grid item auto-size/stretch · 로컬 구현 후보 · 2026-11-04
+## C11.5 parsed Root HTML Grid item auto-size/stretch · PR #1132 제한 구현 병합 · 2026-11-04
 
-이 section은 기존 fixed-size self-alignment PR #1128 뒤의 별도, 미병합 후보를 기록한다. 내부 계약 숫자 버전 `0.1.0`은 유지하며 공개 CSS 지원이나 C11.5/C11 완료를 선언하지 않는다. 진입점은 기존 `RuntimeRootHtmlTextPaintV1` parsed Root HTML 경로이며 새 parser나 public API는 추가하지 않는다.
+이 section은 기존 fixed-size self-alignment PR #1128 뒤의 별도 제한 구현 slice를 기록한다. 구현 PR [#1132](https://github.com/ohah/spinon/pull/1132)은 2026-11-03T20:03:49Z Rebase and merge로 병합됐다(merge SHA `8e3d6b4ac3391a1d8e7601a96ab5fe870c825be0`). 내부 계약 숫자 버전 `0.1.0`은 유지하며 공개 CSS 지원이나 C11.5/C11 완료를 선언하지 않는다. 진입점은 기존 `RuntimeRootHtmlTextPaintV1` parsed Root HTML 경로이며 새 parser나 public API는 추가하지 않는다.
 
 대상 Grid는 finite nonnegative fixed-px definite size, 이름 없는 fixed-px explicit row/column tracks, row sparse auto-placement, 0px gap, visible overflow, static position과 LTR/horizontal-tb 조건을 만족해야 한다. Grid item은 해당 Grid의 직접 자식인 빈 non-replaced block `div`만 받는다. 각 축의 used-size 입력은 `auto` 또는 finite nonnegative fixed-px이고, min-size는 `auto`, max-size는 `none`, aspect ratio는 없으며 margin/padding/border는 0이어야 한다. Zero padding/border 경계에서는 `box-sizing:content-box`와 `border-box`가 같은 used geometry를 내므로 둘 다 허용한다. Item count는 explicit track capacity 이하여야 하고 implicit/auto track 생성, span, authored placement, text·자식·replaced item은 publication 전에 거부한다.
 
@@ -1396,4 +1396,4 @@ Computed `align-self`/`justify-self` 값 `auto`는 부모의 해당 computed `al
 
 Chrome 156의 10-scene independent expected JSON과 Rust frame matrix를 대조했다. accepted runtime 10 scenes와 16 atomic negative controls, projection 3/3, 기존 Grid text stretch 2/2 및 scoped Clippy를 확인했다. Android API 37 ARM64 AVD/ANGLE Vulkan SwiftShader SurfaceView PixelCopy는 11/11 exact이고, iPhone 17 Pro/iOS 26.2 Simulator Metal drawable은 11/11 exact다. iOS drawable readback은 compositor 제출 전이며, 두 OS screenshot을 surface readback과 분리해 보존한다. 기본 Android DEX와 iOS executable에서는 opt-in route/fixture 식별자를 제외하고 opt-in artifact에서 positive control을 확인했다. 기존 fixed-size C11.5 app route도 두 플랫폼에서 layout 79 boxes 및 7/7 exact로 회귀 확인했다. shared admission의 불필요한 border-box gate 회귀를 수정하고, PR diff를 30개의 독립 실패 관점으로 검토했다. [후보 실행·빌드 근거](evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/README.md) · [실패 관점 구현/runtime 검토 20개](evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/implementation-runtime-review-20.md) · [PR diff 실패 검토 30개](evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/pr-diff-review-30.md) · [전용 계획](../../plan/c11-root-html-grid-item-auto-stretch.md).
 
-후보 PR [#1132](https://github.com/ohah/spinon/pull/1132)의 GitHub check rollup은 비어 있어 CI 통과로 기록하지 않는다. 이 bounded slice만으로 C11.5/C11 체크나 공식 완료 `72/213` 집계를 바꾸지 않는다.
+구현 PR [#1132](https://github.com/ohah/spinon/pull/1132)의 GitHub check rollup은 비어 있어 CI 통과로 기록하지 않는다. 병합된 bounded slice만으로 C11.5/C11 체크나 공식 완료 `72/213` 집계를 바꾸지 않는다.
