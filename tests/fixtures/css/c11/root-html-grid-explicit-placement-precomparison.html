@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11 parsed Root HTML explicit Grid placement precomparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 20px; color: #111827; font: 12px/16px sans-serif; }
+      h1 { margin: 0 0 16px; font-size: 18px; line-height: 24px; }
+      #cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .case { min-height: 116px; padding: 8px; border: 1px solid #cbd5e1; }
+      h2 { margin: 0 0 8px; font-size: 11px; line-height: 14px; font-weight: 600; }
+      .grid {
+        display: grid;
+        width: 120px;
+        height: 50px;
+        grid-template-columns: 40px 80px;
+        grid-template-rows: 20px 30px;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #dbeafe;
+      }
+      .item {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        min-width: auto;
+        max-width: none;
+        min-height: auto;
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+      }
+      .red { background: #e5484d; }
+      .green { background: #3a8f5b; }
+      .blue { background: #3578c7; }
+      .orange { background: #f97316; }
+      .purple { background: #845ef7; }
+      .hidden { display: none; }
+      #implicit-out-of-range .grid { grid-auto-rows: 8px; }
+      #anonymous-text .grid { color: #111827; font: 10px/10px monospace; }
+      #results { margin-top: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    </style>
+  </head>
+  <body>
+    <h1>C11 · parsed Root HTML numeric explicit placement</h1>
+    <main id="cases">
+      <section class="case" id="auto-control">
+        <h2>All-auto default placement control</h2>
+        <div class="grid">
+          <div class="item red" id="auto-a"></div>
+          <div class="item green" id="auto-b"></div>
+          <div class="item blue" id="auto-c"></div>
+        </div>
+      </section>
+
+      <section class="case" id="positive-lines">
+        <h2>Positive numeric lines</h2>
+        <div class="grid">
+          <div class="item red" id="positive-a" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+          <div class="item green" id="positive-b" style="grid-row:2 / 3;grid-column:1 / 2"></div>
+          <div class="item blue" id="positive-c" style="grid-row:1 / 2;grid-column:1 / 2"></div>
+          <div class="item orange" id="positive-d" style="grid-row:2 / 3;grid-column:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="negative-and-reversed">
+        <h2>Negative lines and reversed endpoints</h2>
+        <div class="grid">
+          <div class="item red" id="negative-a" style="grid-row:-2 / -1;grid-column:-2 / -1"></div>
+          <div class="item green" id="reversed-b" style="grid-row:2 / 1;grid-column:2 / 1"></div>
+        </div>
+      </section>
+
+      <section class="case" id="shorthand-span-cascade">
+        <h2>Shorthand, span, and longhand cascade</h2>
+        <div class="grid">
+          <div class="item red" id="area-shorthand" style="grid-area:1 / 2 / 2 / 3"></div>
+          <div class="item green" id="span-shorthand" style="grid-row:2 / span 1;grid-column:1 / span 1"></div>
+          <div class="item purple" id="longhand-overrides" style="grid-area:2 / 2 / 3 / 3;grid-row-start:1"></div>
+        </div>
+      </section>
+
+      <section class="case" id="overlap-source-order">
+        <h2>Overlapping items preserve source paint order</h2>
+        <div class="grid">
+          <div class="item red" id="overlap-first" style="grid-row:1 / 2;grid-column:1 / 2"></div>
+          <div class="item green" id="overlap-last" style="grid-row:1 / 2;grid-column:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="hidden-child-control">
+        <h2>Hidden explicit child is not a grid item</h2>
+        <div class="grid">
+          <div class="item red" id="visible-explicit" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+          <div class="item hidden" id="hidden-out-of-range" style="grid-row:30 / 31;grid-column:30 / 31"></div>
+        </div>
+      </section>
+
+      <section class="case" id="mixed-auto-reject">
+        <h2>Mixed fully explicit and auto item</h2>
+        <div class="grid">
+          <div class="item red" id="mixed-explicit" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+          <div class="item green" id="mixed-auto"></div>
+        </div>
+      </section>
+
+      <section class="case" id="partial-auto-reject">
+        <h2>One definite axis and one auto axis</h2>
+        <div class="grid">
+          <div class="item red" id="partial-auto" style="grid-column:1 / 2"></div>
+          <div class="item green" id="partial-control" style="grid-row:2 / 3;grid-column:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="implicit-out-of-range">
+        <h2>Numeric placement requiring an implicit row</h2>
+        <div class="grid">
+          <div class="item red" id="implicit-row" style="grid-row:3 / 4;grid-column:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="anonymous-text-reject">
+        <h2>Anonymous direct text remains a Grid item</h2>
+        <div class="grid">
+          <div class="item red" id="text-explicit" style="grid-row:2 / 3;grid-column:2 / 3"></div>
+          TEXT
+          <div class="item green" id="text-explicit-second" style="grid-row:1 / 2;grid-column:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="explicit-self-alignment">
+        <h2>Explicit placement composes with item self-alignment</h2>
+        <div class="grid">
+          <div class="item purple" id="aligned-explicit" style="width:16px;height:10px;grid-row:1 / 2;grid-column:1 / 2;align-self:end;justify-self:end"></div>
+        </div>
+      </section>
+    </main>
+    <pre id="results"></pre>
+    <script>
+      const scenes = [...document.querySelectorAll(".case")].map((card) => {
+        const grid = card.querySelector(".grid");
+        const gridRect = grid.getBoundingClientRect();
+        const children = [...grid.children].map((item) => {
+          const rect = item.getBoundingClientRect();
+          const style = getComputedStyle(item);
+          return {
+            id: item.id,
+            display: style.display,
+            gridRowStart: style.gridRowStart,
+            gridRowEnd: style.gridRowEnd,
+            gridColumnStart: style.gridColumnStart,
+            gridColumnEnd: style.gridColumnEnd,
+            frame: {
+              x: rect.x - gridRect.x,
+              y: rect.y - gridRect.y,
+              width: rect.width,
+              height: rect.height,
+            },
+          };
+        });
+        const walker = document.createTreeWalker(grid, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          if (!node.nodeValue.trim()) continue;
+          const range = document.createRange();
+          range.selectNodeContents(node);
+          const rect = range.getBoundingClientRect();
+          textNodes.push({
+            text: node.nodeValue.trim(),
+            frame: {
+              x: rect.x - gridRect.x,
+              y: rect.y - gridRect.y,
+              width: rect.width,
+              height: rect.height,
+            },
+          });
+        }
+        const hit = document.elementFromPoint(gridRect.x + 20, gridRect.y + 10);
+        return {
+          id: card.id,
+          columns: getComputedStyle(grid).gridTemplateColumns,
+          rows: getComputedStyle(grid).gridTemplateRows,
+          children,
+          textNodes,
+          topItemAtFirstCell: hit && hit !== grid && grid.contains(hit) ? hit.id : null,
+        };
+      });
+      const report = {
+        userAgent: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight },
+        devicePixelRatio,
+        scenes,
+      };
+      document.querySelector("#results").textContent = JSON.stringify(report, null, 2);
+      document.documentElement.dataset.ready = "true";
+      window.__c11ExplicitPlacementReport = report;
+    </script>
+  </body>
+</html>

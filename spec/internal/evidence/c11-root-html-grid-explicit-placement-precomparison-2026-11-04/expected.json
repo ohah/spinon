@@ -1,0 +1,116 @@
+{
+  "basis": "CSS Grid line placement semantics and arithmetic from the authored fixed tracks; values are derived independently of the Chrome observation.",
+  "toleranceCssPx": 0.5,
+  "scenes": {
+    "auto-control": {
+      "runtime": "retain the existing all-auto Root HTML path",
+      "frames": {
+        "auto-a": [0, 0, 40, 20],
+        "auto-b": [40, 0, 80, 20],
+        "auto-c": [0, 20, 40, 30]
+      }
+    },
+    "positive-lines": {
+      "runtime": "accept; every visible item is definite on both axes and stays in the explicit grid",
+      "computed": {
+        "positive-a": {"gridRowStart": "1", "gridRowEnd": "2", "gridColumnStart": "2", "gridColumnEnd": "3"},
+        "positive-b": {"gridRowStart": "2", "gridRowEnd": "3", "gridColumnStart": "1", "gridColumnEnd": "2"}
+      },
+      "frames": {
+        "positive-a": [40, 0, 80, 20],
+        "positive-b": [0, 20, 40, 30],
+        "positive-c": [0, 0, 40, 20],
+        "positive-d": [40, 20, 80, 30]
+      }
+    },
+    "negative-and-reversed": {
+      "runtime": "accept; negative lines resolve from the explicit-grid end and reversed endpoints normalize",
+      "computed": {
+        "negative-a": {"gridRowStart": "-2", "gridRowEnd": "-1", "gridColumnStart": "-2", "gridColumnEnd": "-1"},
+        "reversed-b": {"gridRowStart": "2", "gridRowEnd": "1", "gridColumnStart": "2", "gridColumnEnd": "1"}
+      },
+      "frames": {
+        "negative-a": [40, 20, 80, 30],
+        "reversed-b": [0, 0, 40, 20]
+      }
+    },
+    "shorthand-span-cascade": {
+      "runtime": "accept; Stylo-expanded shorthand longhands and longhand cascade winner determine placement",
+      "computed": {
+        "area-shorthand": {"gridRowStart": "1", "gridRowEnd": "2", "gridColumnStart": "2", "gridColumnEnd": "3"},
+        "span-shorthand": {"gridRowStart": "2", "gridRowEnd": "span 1", "gridColumnStart": "1", "gridColumnEnd": "span 1"},
+        "longhand-overrides": {"gridRowStart": "1", "gridRowEnd": "3", "gridColumnStart": "2", "gridColumnEnd": "3"}
+      },
+      "frames": {
+        "area-shorthand": [40, 0, 80, 20],
+        "span-shorthand": [0, 20, 40, 30],
+        "longhand-overrides": [40, 0, 80, 50]
+      }
+    },
+    "overlap-source-order": {
+      "runtime": "accept; both items retain the same explicit area and later source item paints on top",
+      "frames": {
+        "overlap-first": [0, 0, 40, 20],
+        "overlap-last": [0, 0, 40, 20]
+      },
+      "topItemAtFirstCell": "overlap-last"
+    },
+    "hidden-child-control": {
+      "runtime": "accept; display:none child is excluded from grid placement validation",
+      "computed": {
+        "hidden-out-of-range": {"display": "none", "gridRowStart": "30", "gridRowEnd": "31", "gridColumnStart": "30", "gridColumnEnd": "31"}
+      },
+      "frames": {
+        "visible-explicit": [40, 0, 80, 20]
+      },
+      "excludedItems": ["hidden-out-of-range"]
+    },
+    "mixed-auto-reject": {
+      "runtime": "reject the entire layout before publishing a partial scene; do not silently auto-place the unplaced sibling",
+      "computed": {
+        "mixed-auto": {"gridRowStart": "auto", "gridRowEnd": "auto", "gridColumnStart": "auto", "gridColumnEnd": "auto"}
+      },
+      "chromeFrames": {
+        "mixed-explicit": [40, 0, 80, 20],
+        "mixed-auto": [0, 0, 40, 20]
+      }
+    },
+    "partial-auto-reject": {
+      "runtime": "reject the entire layout; a definite column with an auto row is outside the all-definite subset",
+      "computed": {
+        "partial-auto": {"gridRowStart": "auto", "gridRowEnd": "auto", "gridColumnStart": "1", "gridColumnEnd": "2"}
+      },
+      "chromeFrames": {
+        "partial-auto": [0, 0, 40, 20],
+        "partial-control": [40, 20, 80, 30]
+      }
+    },
+    "implicit-out-of-range": {
+      "runtime": "reject before publishing; row lines 3/4 require an implicit row beyond the two explicit rows",
+      "computed": {
+        "implicit-row": {"gridRowStart": "3", "gridRowEnd": "4", "gridColumnStart": "1", "gridColumnEnd": "2"}
+      },
+      "chromeFrames": {
+        "implicit-row": [0, 50, 40, 8]
+      },
+      "chromeRows": "20px 30px 8px"
+    },
+    "anonymous-text-reject": {
+      "runtime": "reject the entire layout; direct text creates an additional auto-placed anonymous Grid item",
+      "chromeFrames": {
+        "text-explicit": [40, 20, 80, 30],
+        "text-explicit-second": [0, 0, 40, 20]
+      },
+      "anonymousTextItemCount": 1
+    },
+    "explicit-self-alignment": {
+      "runtime": "accept; explicit placement and the existing self-alignment style map remain independent inputs",
+      "computed": {
+        "aligned-explicit": {"gridRowStart": "1", "gridRowEnd": "2", "gridColumnStart": "1", "gridColumnEnd": "2"}
+      },
+      "frames": {
+        "aligned-explicit": [24, 10, 16, 10]
+      }
+    }
+  }
+}
