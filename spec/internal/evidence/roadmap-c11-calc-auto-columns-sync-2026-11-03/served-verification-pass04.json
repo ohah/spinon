@@ -1,0 +1,116 @@
+{
+  "sourceHead": "f2cf4bb7fe19f30d5e927966aa79921f3583f093",
+  "sourceTree": "82688b49d18630737af206543ee5e586545026f0",
+  "publicationRouteCount": 107,
+  "localCriticalRoutes": 8,
+  "httpsAllRoutes": 107,
+  "criticalHttpsRoutes": 8,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "noDeletes": true,
+  "copied": {
+    "createdCount": 76,
+    "replacedCount": 9,
+    "identicalCount": 22
+  },
+  "localResults": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 547601,
+      "sha256": "9829b4695289ddc1d632a50d68870e6332a39e5231ef0d0685fc922aaa9b827d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 38316,
+      "sha256": "033785faedd1a3f9c21e715c374f26a6710463dc6da92d2c35725a5d0f2b1436"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.html",
+      "status": 200,
+      "bytes": 36434,
+      "sha256": "32387a3059035dca4b876443e9385ae80c738f88516f75c7ebcb36b3514b13d1"
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 36372,
+      "sha256": "00f223db3688c4c41ef29d6acab05565a78ca4378903c92d32707e913ce6ee7c"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 143129,
+      "sha256": "55129b16509b29dd87c2972dcda01c18917539e7b85303f1aff62561dce4add6"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns.html",
+      "status": 200,
+      "bytes": 45422,
+      "sha256": "7914f2078c025e57332d5f513772f92d3a2c381d9c339c63817fe6234f90bb36"
+    },
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 538151,
+      "sha256": "2af02d414f0a442b18157acb391db50dcd315a7d1133671b13af363bfb03568e"
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 787703,
+      "sha256": "420daff38e4180cbb8017a94755ccc5643e5d20ff34e6e5dae18f261dc07d587"
+    }
+  ],
+  "remoteResults": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 547601,
+      "sha256": "9829b4695289ddc1d632a50d68870e6332a39e5231ef0d0685fc922aaa9b827d"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.html",
+      "status": 200,
+      "bytes": 36434,
+      "sha256": "32387a3059035dca4b876443e9385ae80c738f88516f75c7ebcb36b3514b13d1"
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 36372,
+      "sha256": "00f223db3688c4c41ef29d6acab05565a78ca4378903c92d32707e913ce6ee7c"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 38316,
+      "sha256": "033785faedd1a3f9c21e715c374f26a6710463dc6da92d2c35725a5d0f2b1436"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "status": 200,
+      "bytes": 143129,
+      "sha256": "55129b16509b29dd87c2972dcda01c18917539e7b85303f1aff62561dce4add6"
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns.html",
+      "status": 200,
+      "bytes": 45422,
+      "sha256": "7914f2078c025e57332d5f513772f92d3a2c381d9c339c63817fe6234f90bb36"
+    },
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 538151,
+      "sha256": "2af02d414f0a442b18157acb391db50dcd315a7d1133671b13af363bfb03568e"
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 787703,
+      "sha256": "420daff38e4180cbb8017a94755ccc5643e5d20ff34e6e5dae18f261dc07d587"
+    }
+  ]
+}

@@ -1,0 +1,1099 @@
+{
+  "sourceHead": "f2cf4bb7fe19f30d5e927966aa79921f3583f093",
+  "sourceTree": "82688b49d18630737af206543ee5e586545026f0",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localRoadmapBefore": {
+    "status": 200,
+    "bytes": 536480,
+    "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+  },
+  "remoteRoadmapBefore": {
+    "status": 200,
+    "bytes": 536480,
+    "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+  },
+  "selectedRouteCount": 107,
+  "selectedBytes": 12623481,
+  "counts": {
+    "create": 76,
+    "replace": 9,
+    "same": 22
+  },
+  "changedRouteOpenHandleCount": 0,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-c11-calc-auto-columns-sync-2026-11-03/pass04",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 547601,
+      "sourceSha256": "9829b4695289ddc1d632a50d68870e6332a39e5231ef0d0685fc922aaa9b827d",
+      "targetExists": true,
+      "targetBytes": 551894,
+      "targetSha256": "74642f4e01d67c9c93469ecf1b05d6a24031f4c883e11b40e9f8ce5a6a130d8f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 380286,
+      "sourceSha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea",
+      "targetExists": true,
+      "targetBytes": 380286,
+      "targetSha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-calc-precomparison.png",
+      "action": "create",
+      "sourceBytes": 4023,
+      "sourceSha256": "359d0a2844605286634addf90cb2d9eb1da69ebbcae21dc7a85d328e3a181a76",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-observation.json",
+      "action": "create",
+      "sourceBytes": 1789,
+      "sourceSha256": "a971af13c478f4d6123486c5a1bbd8c2129be6efcac08dc9d9be74579a9ff268",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/expected.json",
+      "action": "create",
+      "sourceBytes": 1012,
+      "sourceSha256": "0766f6332293720d61d70b2e7d20f403dc78ae2513a58b566494a156ad80a713",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 36495,
+      "sourceSha256": "069fce159890366817fe49103ca32ffa41d80bca5a4a7d193aa4f255f36aa772",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 5255,
+      "sourceSha256": "e8a3ae8b742a3779840b9315c5fdd0f9c4c921a5480970c6b6f599d56ae3bb4d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/range-controls.json",
+      "action": "create",
+      "sourceBytes": 1744,
+      "sourceSha256": "95d63ddbf808767f25b94ec2c6059e609212a9e89b4e86fdf7b8192d3925be6d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 34751,
+      "sourceSha256": "ea95f30496f86df2c1d3d773c618f4bc4a3cbe49986a6d647f0b1996384dfdbc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 3323,
+      "sourceSha256": "9db0a76ef1982ed7e0f8dae8a895fbae4838249924ca0c9ab44546cd77a4b8ef",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "action": "create",
+      "sourceBytes": 22620,
+      "sourceSha256": "220f091306bf94b563ee0d2c1571be20f31c1ebe49dd68b8c0a141b9e93013aa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "action": "create",
+      "sourceBytes": 67360,
+      "sourceSha256": "4daf3e276a74043fb2a913743dd9150ad6b882a7818caf0dd22cbcab6c2a7dd3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/hashes.txt",
+      "action": "create",
+      "sourceBytes": 1578,
+      "sourceSha256": "dfbd6f6b7de05065689948cdfb972204a12d0fdb823864159f6bd4116c908f9e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 38316,
+      "sourceSha256": "033785faedd1a3f9c21e715c374f26a6710463dc6da92d2c35725a5d0f2b1436",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 6310,
+      "sourceSha256": "4e00d30d0b1d83ba9b27ec067c042687b57875ef7dee35bb9ed2a0be2391ab3a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 37489,
+      "sourceSha256": "6271a5746d2567e13ad6b3ec2031aa3e0f61049361fca506835bf70d10f145e2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 5797,
+      "sourceSha256": "7da1c374d1f8ac84dacc47af2078e47a2e1c1f2a40a3d9ee96428bc8fcd8f0cb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "action": "create",
+      "sourceBytes": 33572,
+      "sourceSha256": "d109edbe1f235839ab1d09ff491a6144effacf7fe3de52df70dba638912bb209",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "action": "create",
+      "sourceBytes": 133089,
+      "sourceSha256": "7a0422229e651227f79093d78dc58e2dac564b659ea0da84f28da9d1fc1cda51",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 36434,
+      "sourceSha256": "32387a3059035dca4b876443e9385ae80c738f88516f75c7ebcb36b3514b13d1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 4114,
+      "sourceSha256": "f4a1d9be98d1659b5cc498ab973bfcfe0b78c0a4a1ca8500b786771766683878",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 36372,
+      "sourceSha256": "00f223db3688c4c41ef29d6acab05565a78ca4378903c92d32707e913ce6ee7c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 4632,
+      "sourceSha256": "ed90462bbdfa9b0b4434c25ee8f130d990284e362f52606c20af3bb8c05ddc81",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 143129,
+      "sourceSha256": "55129b16509b29dd87c2972dcda01c18917539e7b85303f1aff62561dce4add6",
+      "targetExists": true,
+      "targetBytes": 128277,
+      "targetSha256": "bac2e6f680f45bf07b278b741519de5069b0e6409f5c128c305ebf49bea689aa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "action": "replace",
+      "sourceBytes": 62484,
+      "sourceSha256": "4459b829f109546de906843511be5a381c9eb53d139ceddb7512cb837edeea95",
+      "targetExists": true,
+      "targetBytes": 59487,
+      "targetSha256": "376af13556d0ff49e17e0b003f0ada5d0149a99f3a3e0dcc05f4978da68c6538",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.html",
+      "action": "create",
+      "sourceBytes": 34980,
+      "sourceSha256": "ba7ca1951039eafa6639aed405d2e088d748d0094b0edd0170f576c07058d14c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.md",
+      "action": "create",
+      "sourceBytes": 4310,
+      "sourceSha256": "5b4a1734dffc9934eb4a4f3a96dea7ae4715c213e10e82eb630612a7386254ae",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns.html",
+      "action": "create",
+      "sourceBytes": 45422,
+      "sourceSha256": "7914f2078c025e57332d5f513772f92d3a2c381d9c339c63817fe6234f90bb36",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns.md",
+      "action": "create",
+      "sourceBytes": 10766,
+      "sourceSha256": "20d4fc8be5a79f54a0501a5827253ac0795bdb38419eb0b4828964c4d146cfe7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.html",
+      "action": "replace",
+      "sourceBytes": 538151,
+      "sourceSha256": "2af02d414f0a442b18157acb391db50dcd315a7d1133671b13af363bfb03568e",
+      "targetExists": true,
+      "targetBytes": 536480,
+      "targetSha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 547717,
+      "sourceSha256": "08107bd456fc982405743e06f7007a82cf3f6da0a793e7479e74101ffcd6d949",
+      "targetExists": true,
+      "targetBytes": 552003,
+      "targetSha256": "0fe00644d1eae1ff14fc5f7699e588906f43e39e2fb33ead57c8826822d41263",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 380286,
+      "sourceSha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea",
+      "targetExists": true,
+      "targetBytes": 380286,
+      "targetSha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-calc-precomparison.png",
+      "action": "create",
+      "sourceBytes": 4023,
+      "sourceSha256": "359d0a2844605286634addf90cb2d9eb1da69ebbcae21dc7a85d328e3a181a76",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-observation.json",
+      "action": "create",
+      "sourceBytes": 1789,
+      "sourceSha256": "a971af13c478f4d6123486c5a1bbd8c2129be6efcac08dc9d9be74579a9ff268",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/expected.json",
+      "action": "create",
+      "sourceBytes": 1012,
+      "sourceSha256": "0766f6332293720d61d70b2e7d20f403dc78ae2513a58b566494a156ad80a713",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 36505,
+      "sourceSha256": "d0148a4f4c125c55339433162cb0f510d011748d25be0e88843bd75b01660499",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 5255,
+      "sourceSha256": "e8a3ae8b742a3779840b9315c5fdd0f9c4c921a5480970c6b6f599d56ae3bb4d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/range-controls.json",
+      "action": "create",
+      "sourceBytes": 1744,
+      "sourceSha256": "95d63ddbf808767f25b94ec2c6059e609212a9e89b4e86fdf7b8192d3925be6d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 34761,
+      "sourceSha256": "46b5791e8869cd3aef169395addbcc346cfbfb6dc6dfa5d2c5775a4d350c8628",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 3323,
+      "sourceSha256": "9db0a76ef1982ed7e0f8dae8a895fbae4838249924ca0c9ab44546cd77a4b8ef",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "action": "create",
+      "sourceBytes": 22620,
+      "sourceSha256": "220f091306bf94b563ee0d2c1571be20f31c1ebe49dd68b8c0a141b9e93013aa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "action": "create",
+      "sourceBytes": 67360,
+      "sourceSha256": "4daf3e276a74043fb2a913743dd9150ad6b882a7818caf0dd22cbcab6c2a7dd3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/hashes.txt",
+      "action": "create",
+      "sourceBytes": 1578,
+      "sourceSha256": "dfbd6f6b7de05065689948cdfb972204a12d0fdb823864159f6bd4116c908f9e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 38326,
+      "sourceSha256": "fd270d36f5f7869c13e02633d4d1db5e00787687c3ea0255ccfdce14b2f91dea",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 6310,
+      "sourceSha256": "4e00d30d0b1d83ba9b27ec067c042687b57875ef7dee35bb9ed2a0be2391ab3a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 37499,
+      "sourceSha256": "181b1ec0d360165a416912f60e585c06c8ca2f510421e6865fa1e793936caaa9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 5797,
+      "sourceSha256": "7da1c374d1f8ac84dacc47af2078e47a2e1c1f2a40a3d9ee96428bc8fcd8f0cb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "action": "create",
+      "sourceBytes": 33572,
+      "sourceSha256": "d109edbe1f235839ab1d09ff491a6144effacf7fe3de52df70dba638912bb209",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "action": "create",
+      "sourceBytes": 133089,
+      "sourceSha256": "7a0422229e651227f79093d78dc58e2dac564b659ea0da84f28da9d1fc1cda51",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.html",
+      "action": "create",
+      "sourceBytes": 36454,
+      "sourceSha256": "0406334692402c63e7d43f15c0a605d7e3f6f2ba9657572c7964140b203f8a3e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md",
+      "action": "create",
+      "sourceBytes": 4114,
+      "sourceSha256": "f4a1d9be98d1659b5cc498ab973bfcfe0b78c0a4a1ca8500b786771766683878",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 36382,
+      "sourceSha256": "887bfa6f376caed822e057f1995c42a02643f3623c4462507d57bf6cf8c0b80c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 4632,
+      "sourceSha256": "ed90462bbdfa9b0b4434c25ee8f130d990284e362f52606c20af3bb8c05ddc81",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 143100,
+      "sourceSha256": "e05e5ad62217954dbffe39a116c39046445c26f9828712ee16672fd1d73caf54",
+      "targetExists": true,
+      "targetBytes": 135487,
+      "targetSha256": "e736f25fa149ef2d0fe07c0cd5c79ee951d18dd95292936382f84530832239b4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-css-grid.md",
+      "action": "replace",
+      "sourceBytes": 62484,
+      "sourceSha256": "4459b829f109546de906843511be5a381c9eb53d139ceddb7512cb837edeea95",
+      "targetExists": true,
+      "targetBytes": 55791,
+      "targetSha256": "a6c38b1d54ee5c797dd4a911727f8c48d8cd3c007d55c8d7912476384f65ebee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.html",
+      "action": "create",
+      "sourceBytes": 34988,
+      "sourceSha256": "4fafe16447483ff70185cda832eb02016abadc2d3ce61ba5c330525c9e165ee4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.md",
+      "action": "create",
+      "sourceBytes": 4310,
+      "sourceSha256": "5b4a1734dffc9934eb4a4f3a96dea7ae4715c213e10e82eb630612a7386254ae",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-calc-auto-columns.html",
+      "action": "create",
+      "sourceBytes": 45345,
+      "sourceSha256": "524ded66957fbf78dbec1c9d85d32459ba3fef119f33cbdd314b5343f1990323",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/plan/c11-root-html-grid-column-flow-calc-auto-columns.md",
+      "action": "create",
+      "sourceBytes": 10766,
+      "sourceSha256": "20d4fc8be5a79f54a0501a5827253ac0795bdb38419eb0b4828964c4d146cfe7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 788331,
+      "sourceSha256": "f01d5ed24d3947b0b830dd3dd5a63ce55e3553bb4b696b83ad019f1d76cae544",
+      "targetExists": true,
+      "targetBytes": 792672,
+      "targetSha256": "a536030b9a2247608f0d9a2f36b58b6ba7f20078b8dcd8170bd8443d7eb15e33",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "same",
+      "sourceBytes": 636282,
+      "sourceSha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c",
+      "targetExists": true,
+      "targetBytes": 636282,
+      "targetSha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-0dec168111b2.86bef33555.js",
+      "action": "create",
+      "sourceBytes": 9502,
+      "sourceSha256": "267bbb0aaae071e9f2a6e9215513fa964eed2f94a3a6d8489dd05e0d4bed37cd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-185347cc4831.294d32f504.js",
+      "action": "create",
+      "sourceBytes": 11289,
+      "sourceSha256": "5e25b3b78c2dcdd8e1e48fcd556a6154cf14e0689c4fd8dc039bb17145da4237",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-194f3624410d.6a29dd96c6.js",
+      "action": "create",
+      "sourceBytes": 18478,
+      "sourceSha256": "06d6df0e587f0f2250d0bcd33e4ac36fc2577a4c236fd573b4bfee7139744c5a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-1e2493d27472.fc0dcb1755.js",
+      "action": "create",
+      "sourceBytes": 11908,
+      "sourceSha256": "0a11813e2eb07d354b9b13f3f04fd1f0da8f136d51bc03cbd4f809cd3cb345fc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-4080e6f614ff.791f1d8dc6.js",
+      "action": "create",
+      "sourceBytes": 8688,
+      "sourceSha256": "c3940082c7bee0ba59a6b91992079a4b6092a213450fde0946594d8d9760eda9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-4514163151ac.f472a271f6.js",
+      "action": "create",
+      "sourceBytes": 11049,
+      "sourceSha256": "655d0da1b0d8efa6ca334baa7be761f814756928caf0ff099a9d4f0540eb5e9f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-506058c6ee9a.3bb4b44850.js",
+      "action": "create",
+      "sourceBytes": 13201,
+      "sourceSha256": "ffcd76691350e9c91e277f74a6ca66c4ef6566f80e946c2b14da5393e3070635",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.6d7ceb0d5b.js",
+      "action": "create",
+      "sourceBytes": 839626,
+      "sourceSha256": "4912a6823e4c94e7c235ad096538ca357a439db12dad7b3fb18a29e38d09a4d8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.5dc80d94d8.js",
+      "action": "create",
+      "sourceBytes": 558208,
+      "sourceSha256": "f25483e2653ac92a602a48fe2f37c37986bcebe07daf72d1b1181a37b14e50f2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-757b3c13bccb.ff726564af.js",
+      "action": "create",
+      "sourceBytes": 11044,
+      "sourceSha256": "5aa82df45b80e0edf2e7770f8217b8c3390db1d15eeac6673f78906965b11893",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.d704c72fbe.js",
+      "action": "create",
+      "sourceBytes": 839801,
+      "sourceSha256": "251d3895f05c80abdaf903e6a65f4ecd3f6cde52cbe77688dee6a13b792bac40",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-9275a20930d5.eb67f94ccc.js",
+      "action": "create",
+      "sourceBytes": 18461,
+      "sourceSha256": "8777c1f603f872962478c870b95228c2016a6bdd915de47de7bf87df9ce4d0a7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-963929a3a53b.c5c9ddd364.js",
+      "action": "create",
+      "sourceBytes": 8704,
+      "sourceSha256": "35c75feb63ea1e698bdb5c19f828f65c539840e898efa015b67394b097975dd2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.d7376819d1.js",
+      "action": "create",
+      "sourceBytes": 1008,
+      "sourceSha256": "8ad7799cd2cc4d7f67b4973ca20dbcea837b173ddb1e76df3084dc6341b90847",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a7dc6a50c05a.970347ef3d.js",
+      "action": "create",
+      "sourceBytes": 11297,
+      "sourceSha256": "a88a71341dfe911b7325b9e2400dfba69d02fd3ea9f173a7d8ed007e98c1fc56",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b7e001c8668d.68ba5b151b.js",
+      "action": "create",
+      "sourceBytes": 11904,
+      "sourceSha256": "05a112b3afcdb416b773403b282704b24faed80eab216329b104ebd5914155b8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.cf030c2ef3.js",
+      "action": "create",
+      "sourceBytes": 89813,
+      "sourceSha256": "a3703630f5c5483f6f3dce845ce30d25d7bfa87b2108c6f0a4764e827afbe5ff",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.8a340198a2.js",
+      "action": "create",
+      "sourceBytes": 558192,
+      "sourceSha256": "6b7c6df472107c5289275b65fede464c88548437fb0f8b41feb9ed9c72186c89",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c542cfcfa7c9.363937467c.js",
+      "action": "create",
+      "sourceBytes": 7261,
+      "sourceSha256": "7c8e077611af2374ca24a5fb54a7b905e76da35bb746480d2b34f59031996132",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-d4b02f34c38e.04ddaeac68.js",
+      "action": "create",
+      "sourceBytes": 89830,
+      "sourceSha256": "0547c236d35c0d1ab73c96a3cb698db1411dd12f8bdec5bab0a6417038699193",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-da7ad22436c1.531daa7e84.js",
+      "action": "create",
+      "sourceBytes": 9491,
+      "sourceSha256": "356a1e212f6f240110b421f177ae2a2244352ebb77864043c0b6a1c362a4b9a3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e733d8195686.d036e885b2.js",
+      "action": "create",
+      "sourceBytes": 7267,
+      "sourceSha256": "aeee3c736cfbefed4a1f3cd8f3cde34e2b5217dd5b2a8475f7b9d16e06da819d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f397384bb121.209925cf6d.js",
+      "action": "create",
+      "sourceBytes": 13206,
+      "sourceSha256": "141bc9125350347dc5e809139ee4666ed44ce4425980257bc7646f14f71b9ec7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/index.31ea64c44f.js",
+      "action": "create",
+      "sourceBytes": 138729,
+      "sourceSha256": "0d54fec2bb5266bd162c72e65b14a2e7ac987a0720931a9a64e0170df16ddb58",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "action": "same",
+      "sourceBytes": 472,
+      "sourceSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "targetExists": true,
+      "targetBytes": 472,
+      "targetSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/search_index.ko.960e0d37.json",
+      "action": "create",
+      "sourceBytes": 1881602,
+      "sourceSha256": "960e0d37a7fecb25a23aa490790b3d51849e04e9a81b6eca66703f70b1c598a6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 787703,
+      "sourceSha256": "420daff38e4180cbb8017a94755ccc5643e5d20ff34e6e5dae18f261dc07d587",
+      "targetExists": true,
+      "targetBytes": 792024,
+      "targetSha256": "85c855cb6146ef5ff22fee41eca850ee98165ee748fcf59473ce35089321ef24",
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.md",
+      "action": "same",
+      "sourceBytes": 636282,
+      "sourceSha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c",
+      "targetExists": true,
+      "targetBytes": 636282,
+      "targetSha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-column-flow-calc-auto-columns-precomparison.html",
+      "action": "create",
+      "sourceBytes": 1698,
+      "sourceSha256": "3071fc655beaae8bc7d7ef176893b1bef4844d08b40b442e5091b1c958d7185d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    }
+  ]
+}
