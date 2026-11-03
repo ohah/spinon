@@ -9,6 +9,7 @@ mod raw_style;
 pub(crate) use css_profile::{
     declaration_contains_css_system_color, is_border_image_initial,
     is_invalid_fixed_px_gap_declaration_diagnostic,
+    is_invalid_root_html_grid_self_alignment_declaration_diagnostic,
     is_invalid_root_html_named_grid_declaration_diagnostic,
     is_invalid_root_html_negative_fraction_track_diagnostic,
     supports_runtime_visibility_collapse_value, supports_runtime_visibility_value,
@@ -386,6 +387,8 @@ impl StylesheetRegistry {
                         ) && !css_profile::is_invalid_root_html_named_grid_declaration_diagnostic(
                             &diagnostic.message,
                         ) && !css_profile::is_invalid_root_html_negative_fraction_track_diagnostic(
+                            &diagnostic.message,
+                        ) && !css_profile::is_invalid_root_html_grid_self_alignment_declaration_diagnostic(
                             &diagnostic.message,
                         )
                     })

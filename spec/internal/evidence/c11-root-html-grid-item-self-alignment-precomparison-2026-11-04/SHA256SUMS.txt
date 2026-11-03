@@ -1,9 +1,8 @@
-b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448  tests/fixtures/resources/c15/Ahem.ttf
-255e04000d9be74f5748bc23090692e20e77c53919861576a7388759156fe0c2  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/README.md
-90000dc050bdceb58146a3f6a0dfe16c5f565fc39dc5c7969ede97070185b786  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/grid-item-self-alignment.html
+fd22d2eb3dbfdb058a1ab4c96ffa98f675c6f86888a1f9291124e9bb79182be7  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/README.md
+86ef7173edc57185fb0c4c8bebf69615844f6bf56bd377fdbda79906e40e720a  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/browser-metadata.json
+970ddf825ae87522109e0f36730c962571f61f70a107543be3c5c1380d0585c6  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/chrome-agent-browser.png
 81be46cdf4c4df73d66919400ee307f7035e26e4507e1deaf7d6295cb52c9185  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/chrome-observation.json
-dcb38fd7d6a78121e50d49de31541c21b0d204ba032e1971d061f806d3ff9161  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/expected.json
 222b672faae2804e3a6efe406becc4c7558884f868b3d661d370d1c235dc85fe  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/comparison-verification.json
-e755ca155a874c269e9e268d692333bde23819f972f0293da5f1be5ee25cf967  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/browser-metadata.json
+dcb38fd7d6a78121e50d49de31541c21b0d204ba032e1971d061f806d3ff9161  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/expected.json
+5971ab2d64894ee6f8c356d05b5030be1a14d4920f4a6c509cb15fc49402ea98  tests/fixtures/css/c11/root-html-grid-item-self-alignment.html
 e0281d5f24e78effbea1a99d9835f572770a42797680aa98033bedf07d19ca73  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/verify-precomparison.mjs
-df5a5180e356534130eb091b0318eca82d33a69be512681ab40ec2cb5712715b  spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/chrome-agent-browser.png

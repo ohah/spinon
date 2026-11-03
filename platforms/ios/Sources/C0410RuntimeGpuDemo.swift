@@ -14059,11 +14059,19 @@ private struct C111MetalPixelRun {
                 || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
         }
         if !rootHtmlRuns.isEmpty {
+            let isSelfAlignment = rootHtmlRuns[0].hasPrefix(
+                "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
             guard rootHtmlRuns.count == 1,
                   !arguments.contains(where: {
-                      $0.hasPrefix("--spinon-") && $0 != rootHtmlRuns[0]
+                      guard $0.hasPrefix("--spinon-"), $0 != rootHtmlRuns[0] else {
+                          return false
+                      }
+                      return !isSelfAlignment
+                          || ($0 != "--spinon-c0410-runtime-gpu"
+                              && $0 != "--spinon-c0412-root-html-default-render")
                   }) else { return nil }
             let isFitContent = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-fit-content-metal-surface-pixels=")
@@ -14071,7 +14079,9 @@ private struct C111MetalPixelRun {
                 "--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
             let isFitContentPercentage = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
-            let prefix = isFitContentPercentage
+            let prefix = isSelfAlignment
+                ? "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels="
+                : isFitContentPercentage
                 ? "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels="
                 : isFitContent
                     ? "--spinon-root-html-grid-fit-content-metal-surface-pixels="
@@ -14087,9 +14097,12 @@ private struct C111MetalPixelRun {
             if isAutoMinimum && runID.hasPrefix("c11na-") && namedAreaAutoMinimumScene == nil {
                 return nil
             }
+            if isSelfAlignment && runID != "c115-20261104" { return nil }
             return C111MetalPixelRun(
                 runID: runID,
-                sceneID: isAutoMinimum
+                sceneID: isSelfAlignment
+                    ? "root-html-grid-item-self-alignment"
+                    : isAutoMinimum
                     ? namedAreaAutoMinimumScene.map {
                         "root-html-grid-auto-minimum-named-area-\($0)"
                     } ?? "root-html-grid-auto-minimum"
@@ -14097,8 +14110,31 @@ private struct C111MetalPixelRun {
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
-                markerPrefix: namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
-                samples: namedAreaAutoMinimumScene.map {
+                markerPrefix: isSelfAlignment ? "C115"
+                    : namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
+                samples: isSelfAlignment ? [
+                    C111MetalPixelSample(
+                        id: "centered-default-item", nodeId: "item",
+                        xCssPx: 44, yCssPx: 51, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "right-edge-item-interior", nodeId: "item",
+                        xCssPx: 63, yCssPx: 151, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "cell-right-boundary-outside", nodeId: "item",
+                        xCssPx: 64, yCssPx: 151, rgba: [255, 255, 255, 255]),
+                    C111MetalPixelSample(
+                        id: "safe-overflow-outside-cell", nodeId: "item",
+                        xCssPx: 69, yCssPx: 556, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "unsafe-overflow-outside-cell", nodeId: "item",
+                        xCssPx: 20, yCssPx: 596, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "viewport-bottom-clip-visible-last-row", nodeId: "item",
+                        xCssPx: 49, yCssPx: 734, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "viewport-bottom-clip-outside-x", nodeId: "item",
+                        xCssPx: 90, yCssPx: 734, rgba: [255, 255, 255, 255]),
+                ] : namedAreaAutoMinimumScene.map {
                     rootHtmlNamedAreaAutoMinimumSamples(scene: $0)
                 } ?? (isAutoMinimum ? [
                     C111MetalPixelSample(
@@ -14759,7 +14795,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return 480
     }
     private var c11GridMetalPixelStatusName: String {
-        c114GridTrackSizingProbeRequested ? "C11.4"
+        c111MetalPixelRun?.markerPrefix == "C115"
+            ? "C11.5 Root HTML Grid item self-alignment"
+            : c114GridTrackSizingProbeRequested ? "C11.4"
             : c111RootHtmlDensePlacementProbeRequested ? "C11.1 Root HTML dense placement"
             : c1133GridTemplateAreasProbeRequested ? "C11.3.3"
             : c1132GridNamedLinesProbeRequested ? "C11.3.2"
@@ -14795,6 +14833,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
         })
 #else
         return arguments.contains(where: {
@@ -14810,6 +14849,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
         })
 #else
         let argument = ProcessInfo.processInfo.arguments.first(where: {
@@ -14819,6 +14859,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return argument.map { argument in
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
             let prefix = argument.hasPrefix(
+                "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
+                ? "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels="
+                : argument.hasPrefix(
                 "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
                 ? "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels="
                 : argument.hasPrefix(
@@ -20710,6 +20753,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 pixelRun.sceneID == "fit-content-zoomed-grid-wpt" ? 800
                     : c114IsFitContentPercentageArgumentScene(pixelRun.sceneID) ? 400
                     : C114FitContentImplicitColumnWpt.isScene(pixelRun.sceneID) ? 320 : 240
+            let usesReportedC115Viewport = pixelRun.markerPrefix == "C115"
             stateLock.lock()
             let drawableSize = c111MetalDrawableSize
             let viewportWidth = viewportWidthCssPx
@@ -20719,16 +20763,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? viewportWidth : fixedViewportWidth
             let expectedViewportHeight = pixelRun.usesRootHtmlViewport
                 ? viewportHeight : fixedViewportHeight
-            guard viewportWidth == expectedViewportWidth,
-                  viewportHeight == expectedViewportHeight,
+            let pixelViewportWidth = usesReportedC115Viewport
+                ? 980 : expectedViewportWidth
+            let pixelViewportHeight = usesReportedC115Viewport
+                ? 735 : expectedViewportHeight
+            guard (usesReportedC115Viewport
+                    || (viewportWidth == expectedViewportWidth
+                        && viewportHeight == expectedViewportHeight)),
                   drawableSize.width > 0, drawableSize.height > 0 else {
                 let detail = "C11 Metal pixel viewport/drawable이 준비되지 않았습니다"
                 log("\(pixelMarker)_ERROR run_id=\(pixelRun.runID) stage=surface-size")
                 c111MetalPixelReadbackFinished = true
                 throw C0410LatestTaskLaneError.operationFailed(detail)
             }
-            let scaleX = Float(drawableSize.width) / viewportWidth
-            let scaleY = Float(drawableSize.height) / viewportHeight
+            let scaleX = Float(drawableSize.width) / pixelViewportWidth
+            let scaleY = Float(drawableSize.height) / pixelViewportHeight
             guard scaleX.isFinite, scaleY.isFinite, scaleX > 0,
                   abs(scaleX - scaleY) < 0.000001 else {
                 let detail = "C11 Metal pixel drawable scale의 가로·세로 비율이 다릅니다"
@@ -22164,6 +22213,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard surface.count == 2, surface[0] > 0, surface[1] > 0 else {
             throw failure("surface-size", "WGPU draw report에 실제 surface 크기가 없습니다")
         }
+        let usesReportedC115Viewport = run.markerPrefix == "C115"
+        let reportedViewport = reportField(result, "viewport_css_px=")
+            .split(separator: "x").compactMap { UInt32($0) }
+        if usesReportedC115Viewport
+            && (reportedViewport.count != 2
+                || reportedViewport[0] != 980 || reportedViewport[1] != 735) {
+            throw failure("viewport-report", "C11.5 Root HTML draw viewport가 980x735가 아닙니다")
+        }
         let fixedViewportWidth: UInt32 = C114GridAutoFitColumnsWpt.surfacePixelSamples(
             sceneID: run.sceneID
         ) == nil && C114FitContentImplicitColumnWpt.surfacePixelSamples(
@@ -22179,16 +22236,21 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight = UInt32(viewportHeightCssPx)
         stateLock.unlock()
         let viewport = (
-            width: run.usesRootHtmlViewport ? viewportWidth : fixedViewportWidth,
-            height: run.usesRootHtmlViewport ? viewportHeight : fixedViewportHeight
+            width: run.usesRootHtmlViewport
+                ? usesReportedC115Viewport ? reportedViewport[0] : viewportWidth
+                : fixedViewportWidth,
+            height: run.usesRootHtmlViewport
+                ? usesReportedC115Viewport ? reportedViewport[1] : viewportHeight
+                : fixedViewportHeight
         )
-        guard viewportWidth == viewport.width, viewportHeight == viewport.height,
+        guard (usesReportedC115Viewport
+                || (viewportWidth == viewport.width && viewportHeight == viewport.height)),
               drawableSize.width == CGFloat(surface[0]),
               drawableSize.height == CGFloat(surface[1]) else {
             throw failure("surface-generation", "viewport 또는 surface drawable 크기가 요청과 달라졌습니다")
         }
-        let scaleX = Float(surface[0]) / Float(viewportWidth)
-        let scaleY = Float(surface[1]) / Float(viewportHeight)
+        let scaleX = Float(surface[0]) / Float(viewport.width)
+        let scaleY = Float(surface[1]) / Float(viewport.height)
         guard scaleX.isFinite, scaleY.isFinite, scaleX > 0,
               abs(scaleX - scaleY) < 0.000001 else {
             throw failure("surface-scale", "drawable 가로·세로 pixel scale이 일치하지 않습니다")

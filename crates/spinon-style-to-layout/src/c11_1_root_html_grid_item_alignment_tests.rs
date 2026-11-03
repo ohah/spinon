@@ -317,8 +317,8 @@ fn root_html_grid_item_alignment_rejects_baseline_and_out_of_profile_values() {
 }
 
 #[test]
-fn root_html_grid_item_alignment_keeps_item_self_alignment_rejected() {
-    for (property, value) in [("align-self", "end"), ("justify-self", "start")] {
+fn root_html_grid_item_alignment_rejects_unsupported_item_self_alignment_values() {
+    for (property, value) in [("align-self", "baseline"), ("justify-self", "safe start")] {
         let fixture = GridFixture::new(
             GridSpec {
                 width: 40.0,

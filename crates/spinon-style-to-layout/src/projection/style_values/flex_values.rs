@@ -98,7 +98,29 @@ pub(super) fn parse_runtime_align_self(
     node: NodeId,
     value: &str,
 ) -> Result<LayoutAlignSelf, StyleLayoutError> {
+    parse_runtime_self_alignment(value).ok_or_else(|| unsupported_value(node, "align-self", value))
+}
+
+pub(super) fn parse_runtime_justify_self(
+    node: NodeId,
+    value: &str,
+) -> Result<LayoutAlignSelf, StyleLayoutError> {
     let parsed = match value {
+        "left" => Some(LayoutAlignSelf::Position {
+            position: ItemAlignmentPosition::Start,
+            safety: None,
+        }),
+        "right" => Some(LayoutAlignSelf::Position {
+            position: ItemAlignmentPosition::End,
+            safety: None,
+        }),
+        _ => parse_runtime_self_alignment(value),
+    };
+    parsed.ok_or_else(|| unsupported_value(node, "justify-self", value))
+}
+
+fn parse_runtime_self_alignment(value: &str) -> Option<LayoutAlignSelf> {
+    match value {
         "auto" => Some(LayoutAlignSelf::Auto),
         "normal" => Some(LayoutAlignSelf::Normal),
         "stretch" => Some(LayoutAlignSelf::Stretch),
@@ -109,8 +131,7 @@ pub(super) fn parse_runtime_align_self(
         "last baseline" => Some(LayoutAlignSelf::LastBaseline),
         _ => parse_item_position(value)
             .map(|(position, safety)| LayoutAlignSelf::Position { position, safety }),
-    };
-    parsed.ok_or_else(|| unsupported_value(node, "align-self", value))
+    }
 }
 
 pub(super) fn parse_runtime_align_content(
@@ -273,10 +294,12 @@ pub(super) fn parse_order(node: NodeId, value: &str) -> Result<i32, StyleLayoutE
 
 #[cfg(test)]
 mod tests {
-    use super::{parse_order, parse_runtime_justify_items};
+    use super::{parse_order, parse_runtime_justify_items, parse_runtime_justify_self};
     use crate::StyleLayoutError;
     use spinon_core::NodeId;
-    use spinon_layout::{ItemAlignmentPosition, LayoutAlignItems};
+    use spinon_layout::{
+        AlignmentSafety, ItemAlignmentPosition, LayoutAlignItems, LayoutAlignSelf,
+    };
 
     #[test]
     fn order_values_outside_the_typed_i32_range_fail_closed() {
@@ -333,6 +356,47 @@ mod tests {
                 property: "justify-items",
                 ..
             })
+        ));
+    }
+
+    #[test]
+    fn justify_self_maps_physical_and_overflow_positions_with_its_property_name() {
+        let node = NodeId::new(44).unwrap();
+        assert_eq!(
+            parse_runtime_justify_self(node, "left").unwrap(),
+            LayoutAlignSelf::Position {
+                position: ItemAlignmentPosition::Start,
+                safety: None,
+            }
+        );
+        assert_eq!(
+            parse_runtime_justify_self(node, "right").unwrap(),
+            LayoutAlignSelf::Position {
+                position: ItemAlignmentPosition::End,
+                safety: None,
+            }
+        );
+        assert_eq!(
+            parse_runtime_justify_self(node, "safe center").unwrap(),
+            LayoutAlignSelf::Position {
+                position: ItemAlignmentPosition::Center,
+                safety: Some(AlignmentSafety::Safe),
+            }
+        );
+        assert_eq!(
+            parse_runtime_justify_self(node, "unsafe end").unwrap(),
+            LayoutAlignSelf::Position {
+                position: ItemAlignmentPosition::End,
+                safety: Some(AlignmentSafety::Unsafe),
+            }
+        );
+        assert!(matches!(
+            parse_runtime_justify_self(node, "top"),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "justify-self",
+                value,
+            }) if error_node == node && value == "top"
         ));
     }
 }

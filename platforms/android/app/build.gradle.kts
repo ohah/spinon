@@ -21,6 +21,17 @@ require(spinonC04RuntimeGpuFixtureTestValue == "0" ||
     spinonC04RuntimeGpuFixtureTestValue == "1") {
     "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST는 0 또는 1이어야 합니다."
 }
+val spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue = providers
+    .environmentVariable("SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST")
+    .orElse("0").get()
+require(spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue == "0" ||
+    spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue == "1") {
+    "SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue != "1" ||
+    spinonC04RuntimeGpuValue == "1") {
+    "C11.5 Root HTML self-alignment PixelCopy fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
+}
 require(spinonC04RuntimeGpuFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C04 runtime GPU fixture-test는 C04 runtime GPU와 함께 켜야 합니다."
 }
@@ -238,6 +249,7 @@ require(spinonC11GridMetalSurfacePixelsTestValue != "1" || spinonC04RuntimeGpuVa
 val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
     spinonC04RuntimeGpuFixtureTestValue,
     spinonC04RuntimeGpuFailureFixtureValue,
+    spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue,
     spinonC111RootHtmlPercentColumnsFixtureTestValue,
     spinonC111RootHtmlDensePlacementFixtureTestValue,
     providers.environmentVariable("SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST").orElse("0").get(),
@@ -383,6 +395,11 @@ android {
         )
         buildConfigField(
             "boolean",
+            "SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST",
+            (spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
             "SPINON_C04_12_ROOT_HTML_FIXTURE_TEST",
             (spinonC0412RootHtmlFixtureTestValue == "1").toString(),
         )
@@ -499,6 +516,9 @@ android {
         }
         if (spinonC0412RootHtmlTextPaintFixtureTestValue == "1") {
             java.srcDir("src/c04_12_root_html_text_paint_fixture_test/java")
+        }
+        if (spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue == "1") {
+            java.srcDir("src/c11_5_root_html_grid_item_self_alignment_fixture_test/java")
         }
         if (spinonImagePaintFixtureTestValue) {
             java.srcDir("src/c18_1_image_paint_fixture_test/java")

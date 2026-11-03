@@ -42,6 +42,17 @@ pub(super) fn eligible_nodes(
         .collect()
 }
 
+pub(super) fn eligible_item_nodes(
+    nodes: &RuntimeGridNodes,
+    eligible_containers: &BTreeSet<NodeId>,
+) -> BTreeSet<NodeId> {
+    nodes
+        .grid_item_owners
+        .iter()
+        .filter_map(|(item, owner)| eligible_containers.contains(owner).then_some(*item))
+        .collect()
+}
+
 pub(super) fn supports_alignment_value(property: &str, value: &str) -> bool {
     match property {
         "align-content" | "justify-content" => matches!(
@@ -77,6 +88,23 @@ pub(super) fn supports_alignment_value(property: &str, value: &str) -> bool {
                     | "safe end"
                     | "unsafe end"
             ) || (property == "justify-items" && matches!(value, "left" | "right"))
+        }
+        "align-self" | "justify-self" => {
+            matches!(
+                value,
+                "auto"
+                    | "start"
+                    | "end"
+                    | "flex-start"
+                    | "flex-end"
+                    | "self-start"
+                    | "self-end"
+                    | "center"
+                    | "safe center"
+                    | "unsafe center"
+                    | "safe end"
+                    | "unsafe end"
+            ) || (property == "justify-self" && matches!(value, "left" | "right"))
         }
         _ => false,
     }
@@ -277,7 +305,30 @@ fn zero_spacing(value: ComputedCssSpacingValue) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::supports_alignment_value;
+    use super::super::RuntimeGridNodes;
+    use super::{eligible_item_nodes, supports_alignment_value};
+    use spinon_core::NodeId;
+    use std::collections::{BTreeMap, BTreeSet};
+
+    #[test]
+    fn eligible_items_are_limited_to_their_exact_admitted_grid_owner() {
+        let first_container = NodeId::new(1).unwrap();
+        let second_container = NodeId::new(2).unwrap();
+        let first_item = NodeId::new(3).unwrap();
+        let second_item = NodeId::new(4).unwrap();
+        let nodes = RuntimeGridNodes {
+            grid_item_owners: BTreeMap::from([
+                (first_item, first_container),
+                (second_item, second_container),
+            ]),
+            ..RuntimeGridNodes::default()
+        };
+
+        assert_eq!(
+            eligible_item_nodes(&nodes, &BTreeSet::from([first_container])),
+            BTreeSet::from([first_item])
+        );
+    }
 
     #[test]
     fn item_and_content_alignment_allowlists_reject_baseline_and_unknown_values() {
@@ -336,5 +387,30 @@ mod tests {
         assert!(!supports_alignment_value("align-items", "right"));
         assert!(supports_alignment_value("justify-items", "left"));
         assert!(supports_alignment_value("justify-items", "right"));
+        for property in ["align-self", "justify-self"] {
+            for value in [
+                "auto",
+                "start",
+                "end",
+                "flex-start",
+                "flex-end",
+                "self-start",
+                "self-end",
+                "center",
+                "safe center",
+                "unsafe center",
+                "safe end",
+                "unsafe end",
+            ] {
+                assert!(supports_alignment_value(property, value));
+            }
+            for value in ["normal", "stretch", "baseline", "safe start", "legacy"] {
+                assert!(!supports_alignment_value(property, value));
+            }
+        }
+        assert!(!supports_alignment_value("align-self", "left"));
+        assert!(!supports_alignment_value("align-self", "right"));
+        assert!(supports_alignment_value("justify-self", "left"));
+        assert!(supports_alignment_value("justify-self", "right"));
     }
 }
