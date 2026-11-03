@@ -306,9 +306,9 @@ fn c11_5_root_html_grid_item_auto_stretch_rejects_out_of_scope_inputs_atomically
             "<div class=\"item\" style=\"aspect-ratio:1;align-self:auto;justify-self:auto\"></div>",
         ),
         (
-            "content-box sizing",
-            item,
-            "<div class=\"item\" style=\"box-sizing:content-box;align-self:auto;justify-self:auto\"></div>",
+            "nonzero Grid container border",
+            ".grid { display:grid;",
+            ".grid { border-left:1px solid #000; display:grid;",
         ),
         (
             "nonzero margin",
@@ -371,14 +371,14 @@ fn c11_5_root_html_grid_item_auto_stretch_rejects_out_of_scope_inputs_atomically
             "column-gap:0px; row-gap:1px",
         ),
         (
-            "content-box Grid container",
-            ".grid { display:grid;",
-            ".grid { box-sizing:content-box; display:grid;",
+            "nonzero item order",
+            "<div class=\"item\" style=\"box-sizing:border-box;align-self:auto;justify-self:auto\"></div>",
+            "<div class=\"item\" style=\"box-sizing:border-box;order:1;align-self:auto;justify-self:auto\"></div>",
         ),
         (
             "implicit auto-placement row",
-            "<div class=\"grid\" style=\"align-items:normal;justify-items:normal\"><div class=\"item\" style=\"align-self:auto;justify-self:auto\"></div></div>",
-            "<div class=\"grid\" style=\"align-items:normal;justify-items:normal\"><div class=\"item\" style=\"align-self:auto;justify-self:auto\"></div><div class=\"item\" style=\"align-self:auto;justify-self:auto\"></div></div>",
+            "<div class=\"grid\" style=\"align-items:normal;justify-items:normal\"><div class=\"item\" style=\"box-sizing:border-box;align-self:auto;justify-self:auto\"></div></div>",
+            "<div class=\"grid\" style=\"align-items:normal;justify-items:normal\"><div class=\"item\" style=\"box-sizing:border-box;align-self:auto;justify-self:auto\"></div><div class=\"item\" style=\"align-self:auto;justify-self:auto\"></div></div>",
         ),
     ];
     for (label, needle, replacement) in cases {

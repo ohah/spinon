@@ -18942,6 +18942,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
+        if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
+                && c115RootHtmlGridItemAutoStretchPixelCaptureRequested) {
+            Log.e(TAG, "SPINON_C115_PIXELCOPY_ARGUMENT_ERROR rejected=true"
+                    + " reason=mutually-exclusive-scenes");
+            postStatus("실패 · C11.5 PixelCopy scene은 한 번에 하나만 선택할 수 있습니다");
+            return;
+        }
         if ((c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
                 || c115RootHtmlGridItemAutoStretchPixelCaptureRequested)
                 && (!BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST

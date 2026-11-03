@@ -1451,7 +1451,6 @@ pub(super) fn root_html_auto_stretch_empty_item_is_supported(
         crate::LayoutAlignSelf::FirstBaseline | crate::LayoutAlignSelf::LastBaseline => false,
     };
     node.style.display == LayoutDisplay::Block
-        && node.style.box_sizing == crate::LayoutBoxSizing::BorderBox
         && node.children.is_empty()
         && !input
             .text_paragraphs
@@ -1494,7 +1493,6 @@ fn root_html_auto_stretch_grid_is_supported(
         return false;
     };
     node.style.display == LayoutDisplay::Grid
-        && node.style.box_sizing == crate::LayoutBoxSizing::BorderBox
         && size_is_fixed(node.style.width)
         && size_is_fixed(node.style.height)
         && node.style.min_width == LayoutDimension::Auto

@@ -16,7 +16,7 @@
 
 - [CSS Box Alignment Level 3](https://www.w3.org/TR/css-align-3/#align-justify-self-property)은 `auto`가 부모의 해당 items 정렬값을 따르며, `stretch`가 해당 축의 computed size가 `auto`일 때 auto margin이 없으면 alignment area를 채우는 used size를 만든다고 정의한다. 이 profile의 margin은 0이다.
 - [CSS Grid Layout Level 2](https://www.w3.org/TR/css-grid-2/#grid-item-align)은 preferred aspect ratio가 없는 Grid item에서 `normal`이 stretch처럼 동작하는 규칙을 둔다. 이 profile은 비대체(non-replaced) 빈 `div`만 받아 이 규칙에 해당한다.
-- 허용 child 크기는 각 축에서 `auto` 또는 유한한 0 이상 고정 `px`다. 기존 `min-width/height:auto`, `max-width/height:none`, `box-sizing:border-box` 조건을 유지한다.
+- 허용 child 크기는 각 축에서 `auto` 또는 유한한 0 이상 고정 `px`다. `min-width/height:auto`, `max-width/height:none`를 요구한다. Container와 item의 padding/border가 0이므로 `box-sizing:content-box`와 `border-box` 모두 동일한 used geometry를 만든다. Runtime fixture는 두 값을 함께 포함한다.
 - item은 기존 eligible static empty `div`, 단일 fixed explicit row/column cell, auto placement, visible overflow, zero margin/padding/border, horizontal-tb/LTR, no aspect ratio, no text/child 조건을 유지한다. Grid container의 definite `40×30px` size, fixed `40px`/`30px` tracks, zero gap 조건도 유지한다.
 - 기존 self-alignment allowlist에 computed `normal`과 `stretch`를 더한다. `auto`는 기존처럼 자식의 computed value로 보존하고, 정확한 parent `align-items`/`justify-items` computed value와 함께 해석한다. 기타 값은 기존처럼 node·property·value를 포함해 scene publication 전에 거부한다.
 - `normal`/`stretch`는 자동 크기 축에서만 사용 크기를 늘린다. 고정 축은 그대로 유지한다. 한 축만 stretch인 경우 다른 축의 기존 positional alignment와 automatic fit-content sizing을 유지한다.
@@ -32,7 +32,7 @@
 1. Existing Root HTML self-alignment projection의 width/height eligibility가 auto와 fixed px만 받도록 좁게 확장한다. 새 CSS profile이나 parser 경로를 추가하지 않는다.
 2. `normal`/`stretch` computed value와 parent `align-items`/`justify-items`를 정확한 item style snapshot에서 검증해 Grid item의 typed style로 전달한다. 각 axis의 auto/fixed 조건을 Taffy Grid sizing 결과에서 확인하며 scene ID에 따른 값 선택은 금지한다.
 3. Chrome 고정 입력 10 scene을 독립 기대 JSON과 비교한다. 각 scene에서 computed parent/self values, item owner 및 source/style revision, Grid frame, item frame을 검증한다. 기존 fixed-size 19 scene을 회귀 대조군으로 유지한다.
-4. Negative controls는 aspect ratio, nonzero margin/padding/border, min/max 변경, non-px size, replaced/content-bearing child, unsupported self value, implicit/auto tracks, multi-cell span을 각각 거부하고 부분 scene을 발행하지 않는지 확인한다.
+4. Negative controls는 aspect ratio, nonzero item/container margin/padding/border, min/max 변경, non-px size, replaced/content-bearing child, unsupported self value, implicit/auto tracks, multi-cell span을 각각 거부하고 부분 scene을 발행하지 않는지 확인한다. Content-box는 zero-edge positive control로 유지한다.
 5. Default/product artifact와 opt-in test route를 분리한다. 기본 artifact에 fixture payload/전용 ABI가 없는지, opt-in artifact에만 존재하는지 기존 경계 검사를 실행한다.
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 같은 앱 경로에서 layout geometry와 화면 근거를 수집한다. Android software-renderer/PixelCopy 및 iOS Metal drawable/compositor 경계를 따로 기록하고, 확인하지 않은 GPU·compositor 단계는 주장하지 않는다.
 7. 계획 실패 관점 20개, 구현/runtime 실패 관점 20개, 실제 PR diff 실패 관점 30개를 서로 다른 기록으로 작성한다. 모든 수정 후 해당 검토 항목을 다시 대조한다.
