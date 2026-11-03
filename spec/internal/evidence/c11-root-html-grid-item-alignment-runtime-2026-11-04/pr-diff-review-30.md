@@ -2,6 +2,8 @@
 
 **대상:** [`feat/c11-root-html-grid-item-alignment`](https://github.com/ohah/spinon/pull/1124), 구현 commit `12319dc` 및 계획·계약·테스트·evidence diff. 계획 실패 관점 20개와 구현/runtime 실패 관점 20개를 재사용하지 않았다. 아래 검사는 서로 다른 failure path와 claim boundary를 대상으로 한다.
 
+**검토 보정:** 첫 PR push에는 `lib.rs`의 test module declaration은 포함됐지만 `c11_1_root_html_grid_item_alignment_tests.rs`는 로컬 untracked라 빠져 있었다. 최종 PR audit에서 확인해 해당 파일을 PR diff에 추가하고 style suite 38/38, Clippy, formatter를 다시 실행했다. 아래 30개는 test source가 포함된 최종 diff를 재검토한 결과다.
+
 1. **Profile 진입:** 새 alignment parsing은 `RuntimeRootHtmlTextPaintV1`와 기존 eligible-node 집합에 한정되고 다른 profile은 기본 동작을 유지한다 — 통과.
 2. **Grid shape:** definite fixed-px size/tracks/gaps, sparse row, auto implicit tracks, no repeat/area/named lines 조건은 기존 validator 그대로다 — 통과.
 3. **Item ownership:** empty direct HTML `div`, static fixed-size, auto placement 및 explicit cell capacity 경계를 유지한다 — 통과.
@@ -27,10 +29,10 @@
 23. **Normal/stretch behavior:** fixed-size item에서 `normal`·`stretch`의 existing sizing을 깨뜨리지 않는 expected frames가 있다 — 통과.
 24. **Content + item composition:** combined scene은 `align-content`·`justify-content` track placement에 item center offsets를 합성해 확인한다 — 통과.
 25. **Oracle independence:** Chrome 156 관찰 JSON과 별도 계산 expected JSON을 분리하고 39 scene 모두 대조한다 — 통과.
-26. **Matrix cardinality:** 전체 runtime test가 39 scene·42 item을 확인하고 item별 유일 색으로 frame을 찾는다 — 통과.
+26. **Test source completeness:** `#[cfg(test)]` module declaration과 406-line projection test source가 모두 최종 PR diff에 있고, test 실행에서 38/38이 통과한다 — 통과.
 27. **Frame assertion:** x/y/width/height 네 성분을 1/64 CSS px 허용 오차로 비교하고 sibling scene block offset을 포함한다 — 통과.
 28. **Failure atomicity:** baseline rejection control은 failed layout/error 유지와 partial completed scene 부재를 검사한다 — 통과.
 29. **Platform artifact identity:** 최종 Android APK와 iOS Simulator executable/root script hash가 metadata에 있고 최신 source build/run log와 연결된다. 두 앱은 `layout=ready boxes=83`과 draw/present를 기록한다 — 통과.
 30. **Claim and evidence boundary:** screenshots는 first-viewport visual evidence로만 설명하고 PixelCopy/Metal readback·실기기·WPT·전체 C11 완료를 주장하지 않는다. STATUS와 PR 본문은 공식 `72/213`을 유지한다 — 통과.
 
-검토 중 발견한 non-Grid `align-items` scope 누락은 fail-closed guard와 두 scope regression assertions로 수정한 뒤 관련 projection tests, runtime tests, Clippy, formatter 및 최신 Android/iOS build/run을 다시 확인했다. Agent Browser에서 PR 본문을 열어 두 raw screenshot이 모두 로드되고 natural dimensions가 Android 1080×2400, iOS 1206×2622임을 확인했다. 현재 PR status check rollup은 비어 있고 main required checks endpoint는 "Required status checks not enabled"를 반환했다. 이를 CI 성공으로 기록하지 않는다.
+검토 중 발견한 non-Grid `align-items` scope 누락은 fail-closed guard와 두 scope regression assertions로 수정했다. 최종 diff에서는 projection test source 누락도 보완했다. 관련 projection/runtime tests, Clippy, formatter 및 최신 Android/iOS build/run을 확인했다. Agent Browser에서 PR 본문을 열어 두 raw screenshot이 모두 로드되고 natural dimensions가 Android 1080×2400, iOS 1206×2622임을 확인했다. 현재 PR status check rollup은 비어 있고 main required checks endpoint는 "Required status checks not enabled"를 반환했다. 이를 CI 성공으로 기록하지 않는다.
