@@ -1,6 +1,6 @@
 # C11.5 구현 PR diff 실패 관점 검토 30개
 
-검토 대상은 GitHub PR [#1128](https://github.com/ohah/spinon/pull/1128)의 실제 diff다. 기준 `a0dd16e668204acd3d177eb301229e0a007b205f`, 구현 commit `b2d59ee170155c339d3bc8777e58533e2a27ac86`의 56 files를 검토했다. 후속 문서·검토 기록 commit `ca4c06377764bd258207d9fc8d79037dae1d6167` 뒤 PR diff는 57 files이며 제품 소스에는 추가 변경이 없다. 그 후속 문서와 metadata를 아래 보충 대조에서 다시 확인했다. 계획 검토 20개와 구현/runtime 검토 20개를 반복하지 않고, 공개 직전 코드·artifact·명세 연결에서 서로 다른 실패 경로를 확인했다.
+검토 대상은 GitHub PR [#1128](https://github.com/ohah/spinon/pull/1128)의 실제 diff다. 기준 `a0dd16e668204acd3d177eb301229e0a007b205f`에서 구현 commit `b2d59ee170155c339d3bc8777e58533e2a27ac86`까지의 56개 구현 파일을 검토했다. 이후 PR diff에는 검토 결과·상태를 기록하는 문서 변경이 추가되어 57개 파일이다. 이 후속 변경은 제품 소스를 수정하지 않으며, 아래 보충 대조에서 문서와 metadata를 함께 확인했다. 계획 검토 20개와 구현/runtime 검토 20개를 반복하지 않고, 공개 직전 코드·artifact·명세 연결에서 서로 다른 실패 경로를 확인했다.
 
 | # | 실패 관점 | 검토 결과 |
 |---|---|---|
@@ -37,6 +37,6 @@
 
 ## 최종 diff 대조
 
-- 30개 검토의 구현 diff 기준은 base `a0dd16e668204acd3d177eb301229e0a007b205f`, head `b2d59ee170155c339d3bc8777e58533e2a27ac86`, 56 files다. 현재 PR은 문서·검토 후속 commit `ca4c06377764bd258207d9fc8d79037dae1d6167`를 포함해 57 files다.
-- 후속 commit은 review artifact, 상태 문구와 metadata만 추가·수정했다. 제품 소스가 바뀌지 않았음을 확인하고, PR 상태·문서의 test count·review 상태를 서로 대조했다. 구현/runtime 20개와 계획 검토 20개는 별도 문서로 유지한다.
+- 30개 검토의 구현 diff 기준은 base `a0dd16e668204acd3d177eb301229e0a007b205f`, 구현 commit `b2d59ee170155c339d3bc8777e58533e2a27ac86`, 56 files다. 최종 PR diff는 검토·상태 후속 문서를 포함해 57 files다.
+- 후속 변경은 review artifact, 상태 문구와 metadata만 추가·수정했다. 제품 소스가 바뀌지 않았음을 확인하고, 최종 PR 상태·문서의 test count·review 상태와 diff whitespace를 서로 대조했다. 구현/runtime 20개와 계획 검토 20개는 별도 문서로 유지한다.
 - Merge 전에 실제 PR status checks와 최종 base/head를 다시 확인한다. 이 PR은 C11.5의 제한 후보이며 C11 checkbox와 공식 `72/213`을 승격하지 않는다.
