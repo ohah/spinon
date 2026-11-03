@@ -32,6 +32,6 @@
 - Android 유효 capture는 새 run ID `c11autominandroid06`로 다시 실행해 PixelCopy 4/4 exact를 확인했다. 같은 run ID의 이전 PNG 충돌 로그와 오래된 좌표 표본 불일치는 유효 pass 증거에서 제외했다.
 - 기본 FFI artifact와 opt-in positive control은 각각 다시 빌드해 심볼 부재/존재를 대조했다. Rust 소스 변경의 `cargo fmt --all -- --check`와 당시 source diff whitespace 검사는 통과했다.
 - PR diff review에서 auto-minimum Metal capture argument 탐지가 iOS feature-flag `#else`에도 포함된 것을 발견했다. 두 fallback 인식 지점에서 제거한 뒤 default iOS Simulator app을 다시 빌드했고, 8개 bundle 파일 scan에서 argument 문자열 0건을 확인했다. 이 artifact 경계 결과는 새 검토 사항이며 초기 20개 표의 다른 관점을 재사용하지 않는다.
-- 완전한 PR evidence diff의 `git diff --check`는 원본 Android logcat의 trailing space와 ADB CRLF 결과를 보고한다. 원본 artifact는 SHA manifest로 고정해 byte-for-byte 보존했고, source·문서의 whitespace 검사는 별도로 통과했다.
+- 완전한 PR evidence diff의 `git diff --check`는 원본 Android logcat trailing spaces, ADB CRLF 및 Xcode build log의 padded export/blank lines를 보고한다. 원본 artifact는 SHA manifest로 고정해 byte-for-byte 보존했고, source·문서의 whitespace 검사는 별도로 통과했다.
 
-이 검토는 로컬 구현 후보의 범위만 판정한다. PR diff 검토 30개, CI, 병합, 공개 상태 대장 갱신은 아직 남아 있으며 C11 상위 항목과 공식 완료 수는 변경하지 않았다.
+이 검토는 로컬 구현 후보의 범위만 판정한다. 별도 PR diff 검토 30개는 [전용 기록](pr-diff-review-30.md)에 완료했다. GitHub checks는 보고되지 않았고 main required status checks도 설정되지 않아 CI 통과로 세지 않는다. PR 병합과 post-merge public roadmap sync는 남아 있으며 C11 상위 항목과 공식 완료 수는 변경하지 않았다.
