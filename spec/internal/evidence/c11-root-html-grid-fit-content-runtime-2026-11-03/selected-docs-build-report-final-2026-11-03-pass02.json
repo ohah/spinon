@@ -1,0 +1,81 @@
+{
+  "sourceHead": "24610c5731b66f076908b2ecf7cd5c4104729369",
+  "workingTreeDiffSha256": "029624e510bcf0c3615b1d0ccba8f3fe4e7d3db0d1ddf1065834f5fc2b4dae45",
+  "explicitUntrackedInputs": [
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-desktop-2026-11-03.png",
+      "sha256": "09d7406d76911cb8e68d00f58f84e1197d60a0b234fe077aa2289df8cce5969a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-candidate-mobile-2026-11-03.png",
+      "sha256": "03769b0a38eff559381c7eab725a3ef6a4f7e80de14df6ef31e906ef6a01884a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.md",
+      "sha256": "bb8484512e7e8db792f11f117f64f85498f701a8714bc35a8927ac15caf7ef76"
+    }
+  ],
+  "reportExcludesItself": true,
+  "fullDocsBuild": "failed with repository root/link-scope errors; no success claim",
+  "selectedBuild": "passed; RSPress 2.0.22; link and image validation disabled for selected root only",
+  "selectedRouteCount": 7,
+  "checkedRoadmapCardLinks": [
+    {
+      "href": "/spinon/plan/c11-root-html-grid-fit-content.html",
+      "targetRoute": "plan/c11-root-html-grid-fit-content.html",
+      "targetSha256": "1afde57c29180fcd6fc02f232e3a26bbefabce7c6dd8a262c0c89e99c6fb32c3"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "targetRoute": "internal/0059-c11-grid-layout.html",
+      "targetSha256": "23ac56c1fc4ed05aea48665a35cf150120539973b3114565922a955b2638b7f7"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "targetRoute": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "targetSha256": "d124789ecc1b0f65ef1421ead806e659b8d891e17bf6f2e9050fe649bb79fb42"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "targetRoute": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "targetSha256": "e92a25d3aa1b9c66bba905e1f585d7c9428af3793f93cccb55b13ecb17f37906"
+    }
+  ],
+  "routes": [
+    {
+      "route": "roadmap.html",
+      "bytes": 536480,
+      "sha256": "fe4b1e131dd576fe4d52f27a6f14903695898be718ca2b517ddb75747e0f5300"
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 784918,
+      "sha256": "db936da540f38f803ed97891b4ee9daf86cb8fd80b125dde4c879a9074651622"
+    },
+    {
+      "route": "plan/c11-root-html-grid-fit-content.html",
+      "bytes": 52120,
+      "sha256": "1afde57c29180fcd6fc02f232e3a26bbefabce7c6dd8a262c0c89e99c6fb32c3"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 498634,
+      "sha256": "23ac56c1fc4ed05aea48665a35cf150120539973b3114565922a955b2638b7f7"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/README.html",
+      "bytes": 39950,
+      "sha256": "d124789ecc1b0f65ef1421ead806e659b8d891e17bf6f2e9050fe649bb79fb42"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/pr-diff-review-30.html",
+      "bytes": 40329,
+      "sha256": "e92a25d3aa1b9c66bba905e1f585d7c9428af3793f93cccb55b13ecb17f37906"
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-fit-content-runtime-2026-11-03/roadmap-doc-pr-review-30.html",
+      "bytes": 44435,
+      "sha256": "bc1e5f0ee355ef84235fc531aff351d74ee0556075a6221e8e62ed41beb28b48"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
-# C11.1 Root HTML `fit-content(px)` runtime candidate
+# C11.1 Root HTML `fit-content(px)` merged bounded implementation
 
-2026-11-03 기준 구현 후보 근거다. parsed Root HTML 기본 runtime에서 explicit columns/rows의 finite non-negative px `fit-content()`와 이에 맞는 named-area track 조합을 제한적으로 허용한다. CSS Grid 전체, implicit `fit-content()`, percentage/calc limit, WPT 적합성 또는 C11 완료 근거가 아니다. 공식 `spec/STATUS.md`의 72/213과 C11 체크 상태를 승격하지 않는다.
+PR #1093이 2026-11-03 병합한 제한 구현의 실행 근거다. parsed Root HTML 기본 runtime에서 explicit columns/rows의 finite non-negative px `fit-content()`와 이에 맞는 named-area track 조합을 제한적으로 허용한다. CSS Grid 전체, implicit `fit-content()`, percentage/calc limit, WPT 적합성 또는 C11 완료 근거가 아니다. 공식 `spec/STATUS.md`의 72/213과 C11 체크 상태를 승격하지 않는다.
 
 ## 검증 결과
 
 - `cargo fmt --all -- --check`, `git diff --check`: 통과.
 - Focused Rust tests: **223 passed, 0 failed**. Layout Ahem sizing 3, layout percentage rejection 1, style cascade fit-content 3, existing style Grid 95, style-to-layout Root HTML 52, runtime Root HTML 69. Runtime fit-content 4개 테스트는 마지막 69개 집계 안에 포함된다.
 - `cargo clippy --locked -p spinon-runtime -p spinon-layout -p spinon-style-to-layout -p spinon-style --all-targets -- -D warnings`: 통과.
-- 구현/runtime 실패 관점 검토 20개: [implementation-review-20.md](./implementation-review-20.md). PR #1093 실제 diff의 별도 30개 검토: [pr-diff-review-30.md](./pr-diff-review-30.md). Agent Browser 확인에서 PR 본문의 Android/iOS embedded image 두 장 모두 로드됐다. PR Checks는 0개다.
+- 구현/runtime 실패 관점 검토 20개: [implementation-review-20.md](./implementation-review-20.md). PR #1093 실제 diff의 별도 30개 검토: [pr-diff-review-30.md](./pr-diff-review-30.md). Agent Browser에서 PR 본문의 Android/iOS embedded image 두 장이 모두 로드됨을 확인했다. PR #1093은 `2026-11-03T00:25:34Z` Rebase and merge됐고 merge SHA는 `24610c5731b66f076908b2ecf7cd5c4104729369`다. GitHub check rollup은 비었고 `main` required status checks도 없어 CI 통과 근거로 세지 않는다.
 
 로그는 [layout Ahem](./layout-ahem-final.log), [layout 거부](./layout-fit-content-rejection-final.log), [cascade](./style-cascade-fit-content-final.log), [style Grid 회귀](./style-grid-final.log), [projection](./style-to-layout-root-html-tests.log), [runtime 후보](./runtime-fit-content-final.log), [Root HTML runtime 회귀](./runtime-root-html-tests.log), [Clippy](./scoped-clippy.log)에 있다.
 
@@ -42,6 +42,14 @@ iPhone 17 Pro / iOS 26.2 Simulator, UDID `9DCCE836-7659-4914-B6C1-13F54BFFA9DB`,
 화면 캡처 SHA-256: `ab833def8d8fc7c7e862da141bc23ca0159a03d2d8e675e578daf7f5d80dfe51`.
 
 ![iPhone 17 Pro iOS 26.2 Simulator](./ios-26_2-simulator-fit-content-screen-final-pass01.png)
+
+## 병합 후 로드맵 카드 화면 확인
+
+Agent Browser로 수정한 `spec/public/roadmap.html`을 로컬 file route에서 확인했다. Desktop 1440×1000에서 document/body 폭은 1440px이고 PR #1093 카드가 표시됐다. Mobile 390×844에서 document/body 폭은 390px, 카드 폭은 362px이며 문서와 카드 모두 가로 overflow가 없었다. 캡처는 병합 전 후보 HTML의 시각 검증이다. 선택 RSPress route 산출은 `selected-docs-build-report-final-2026-11-03-pass02.json`, 문서 PR의 별도 검토는 [30개 관점 기록](./roadmap-doc-pr-review-30.md)에 있다.
+
+![로드맵 후보 desktop 화면](./roadmap-doc-pr-candidate-desktop-2026-11-03.png)
+
+![로드맵 후보 mobile 화면](./roadmap-doc-pr-candidate-mobile-2026-11-03.png)
 
 ## 재현 입력과 한계
 
