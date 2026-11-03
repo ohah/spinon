@@ -1,0 +1,73 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "engine": "HeadlessChrome/156.0.0.0",
+  "viewportCssPx": [1280, 633],
+  "devicePixelRatio": 1,
+  "fixture": "tests/fixtures/css/c11/root-html-grid-auto-minimum-precomparison.html",
+  "scenes": [
+    {
+      "id": "columns-auto-min",
+      "computed": {
+        "columns": [80, 40],
+        "rows": [40],
+        "width": "100px",
+        "height": "40px",
+        "rootBorderBox": [104, 44],
+        "overflow": ["visible", "visible"]
+      },
+      "itemsFromRootBorderOrigin": [
+        { "id": "columns-auto-first", "frame": [2, 2, 80, 40], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] },
+        { "id": "columns-auto-second", "frame": [82, 2, 40, 40], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] }
+      ],
+      "rightOverflowBeyondBorderCssPx": 18
+    },
+    {
+      "id": "columns-zero-min-control",
+      "computed": {
+        "columns": [60, 40],
+        "rows": [40],
+        "width": "100px",
+        "height": "40px",
+        "rootBorderBox": [104, 44],
+        "overflow": ["visible", "visible"]
+      },
+      "itemsFromRootBorderOrigin": [
+        { "id": "columns-zero-first", "frame": [2, 2, 80, 40], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] },
+        { "id": "columns-zero-second", "frame": [62, 2, 40, 40], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] }
+      ],
+      "rightOverflowBeyondBorderCssPx": 0
+    },
+    {
+      "id": "rows-auto-min",
+      "computed": {
+        "columns": [40],
+        "rows": [80, 40],
+        "width": "40px",
+        "height": "100px",
+        "rootBorderBox": [44, 104],
+        "overflow": ["visible", "visible"]
+      },
+      "itemsFromRootBorderOrigin": [
+        { "id": "rows-auto-first", "frame": [2, 2, 40, 80], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] },
+        { "id": "rows-auto-second", "frame": [2, 82, 40, 40], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] }
+      ],
+      "bottomOverflowBeyondBorderCssPx": 18
+    },
+    {
+      "id": "rows-zero-min-control",
+      "computed": {
+        "columns": [40],
+        "rows": [60, 40],
+        "width": "40px",
+        "height": "100px",
+        "rootBorderBox": [44, 104],
+        "overflow": ["visible", "visible"]
+      },
+      "itemsFromRootBorderOrigin": [
+        { "id": "rows-zero-first", "frame": [2, 2, 40, 80], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] },
+        { "id": "rows-zero-second", "frame": [2, 62, 40, 40], "minWidth": "auto", "minHeight": "auto", "overflow": ["visible", "visible"] }
+      ],
+      "bottomOverflowBeyondBorderCssPx": 0
+    }
+  ]
+}

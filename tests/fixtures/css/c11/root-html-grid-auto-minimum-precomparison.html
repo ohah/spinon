@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11 parsed Root HTML Grid automatic minimum</title>
+    <style>
+      * { box-sizing: content-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        color: #101010;
+        background: #ffffff;
+        font-family: sans-serif;
+        font-size: 12px;
+      }
+      .scene {
+        margin: 16px;
+        width: max-content;
+      }
+      .root {
+        display: grid;
+        gap: 0;
+        padding: 0;
+        border: 2px solid #111111;
+        overflow: visible;
+        background: #eeeeee;
+      }
+      .columns-auto {
+        width: 100px;
+        height: 40px;
+        grid-template-columns: minmax(auto, 1fr) 40px;
+        grid-template-rows: 40px;
+      }
+      .columns-zero {
+        width: 100px;
+        height: 40px;
+        grid-template-columns: minmax(0px, 1fr) 40px;
+        grid-template-rows: 40px;
+      }
+      .rows-auto {
+        width: 40px;
+        height: 100px;
+        grid-template-columns: 40px;
+        grid-template-rows: minmax(auto, 1fr) 40px;
+      }
+      .rows-zero {
+        width: 40px;
+        height: 100px;
+        grid-template-columns: 40px;
+        grid-template-rows: minmax(0px, 1fr) 40px;
+      }
+      .item {
+        min-width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        justify-self: start;
+        align-self: start;
+      }
+      .first { background: #1769aa; }
+      .second { background: #e36b2c; }
+      .columns .first { width: 80px; height: 40px; }
+      .columns .second { width: 40px; height: 40px; }
+      .rows .first { width: 40px; height: 80px; }
+      .rows .second { width: 40px; height: 40px; }
+      h2 { margin: 0 0 4px; font: 12px sans-serif; }
+    </style>
+  </head>
+  <body>
+    <section class="scene columns">
+      <h2>columns-auto-min</h2>
+      <div id="columns-auto-min" class="root columns-auto">
+        <div id="columns-auto-first" class="item first"></div>
+        <div id="columns-auto-second" class="item second"></div>
+      </div>
+    </section>
+    <section class="scene columns">
+      <h2>columns-zero-min-control</h2>
+      <div id="columns-zero-min-control" class="root columns-zero">
+        <div id="columns-zero-first" class="item first"></div>
+        <div id="columns-zero-second" class="item second"></div>
+      </div>
+    </section>
+    <section class="scene rows">
+      <h2>rows-auto-min</h2>
+      <div id="rows-auto-min" class="root rows-auto">
+        <div id="rows-auto-first" class="item first"></div>
+        <div id="rows-auto-second" class="item second"></div>
+      </div>
+    </section>
+    <section class="scene rows">
+      <h2>rows-zero-min-control</h2>
+      <div id="rows-zero-min-control" class="root rows-zero">
+        <div id="rows-zero-first" class="item first"></div>
+        <div id="rows-zero-second" class="item second"></div>
+      </div>
+    </section>
+  </body>
+</html>

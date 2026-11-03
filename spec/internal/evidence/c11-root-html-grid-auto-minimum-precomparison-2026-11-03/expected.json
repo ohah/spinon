@@ -1,0 +1,57 @@
+{
+  "basis": "CSS Grid Layout Module Level 1 2025-03-26 CRD §§7.2.1, 11.5, 11.7; values derived from the fixed box sizes and definite content axes before browser observation",
+  "toleranceCssPx": 0.02,
+  "scenes": [
+    {
+      "id": "columns-auto-min",
+      "axis": "columns",
+      "trackList": "minmax(auto, 1fr) 40px",
+      "containerContentAxisCssPx": 100,
+      "itemMinContentContributionCssPx": 80,
+      "tracksCssPx": [80, 40],
+      "rootBorderBoxCssPx": [104, 44],
+      "itemFramesFromRootBorderOriginCssPx": [[2, 2, 80, 40], [82, 2, 40, 40]],
+      "overflowBeyondRootBorderCssPx": { "right": 18 }
+    },
+    {
+      "id": "columns-zero-min-control",
+      "axis": "columns",
+      "trackList": "minmax(0px, 1fr) 40px",
+      "containerContentAxisCssPx": 100,
+      "itemMinContentContributionCssPx": 80,
+      "tracksCssPx": [60, 40],
+      "rootBorderBoxCssPx": [104, 44],
+      "itemFramesFromRootBorderOriginCssPx": [[2, 2, 80, 40], [62, 2, 40, 40]],
+      "overflowBeyondRootBorderCssPx": { "right": 0 }
+    },
+    {
+      "id": "rows-auto-min",
+      "axis": "rows",
+      "trackList": "minmax(auto, 1fr) 40px",
+      "containerContentAxisCssPx": 100,
+      "itemMinContentContributionCssPx": 80,
+      "tracksCssPx": [80, 40],
+      "rootBorderBoxCssPx": [44, 104],
+      "itemFramesFromRootBorderOriginCssPx": [[2, 2, 40, 80], [2, 82, 40, 40]],
+      "overflowBeyondRootBorderCssPx": { "bottom": 18 }
+    },
+    {
+      "id": "rows-zero-min-control",
+      "axis": "rows",
+      "trackList": "minmax(0px, 1fr) 40px",
+      "containerContentAxisCssPx": 100,
+      "itemMinContentContributionCssPx": 80,
+      "tracksCssPx": [60, 40],
+      "rootBorderBoxCssPx": [44, 104],
+      "itemFramesFromRootBorderOriginCssPx": [[2, 2, 40, 80], [2, 62, 40, 40]],
+      "overflowBeyondRootBorderCssPx": { "bottom": 0 }
+    }
+  ],
+  "zeroFractionBoundary": {
+    "trackList": "minmax(auto, 0fr) 40px",
+    "expectedTracksCssPx": [80, 40],
+    "rootBorderBoxCssPx": [104, 44],
+    "secondItemOverflowBeyondRootBorderCssPx": 18,
+    "reason": "The auto minimum preserves the 80px track base; a zero flex factor contributes no leftover space. The same calculation applies on the definite row axis."
+  }
+}
