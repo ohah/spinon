@@ -7,7 +7,7 @@
 3. **지원하지 않는 auto-flow가 sparse placement로 흘러들지 않는가?** layout validation이 row flow를 요구하고, CSS profile도 row만 허용한다. 통과.
 4. **implicit/auto track이 조용히 추가되는가?** explicit tracks는 유한한 nonnegative px만 받고 auto track과 반복 track을 제외한다. auto-row negative control 통과.
 5. **item 수가 track capacity보다 많으면 부분 배치되는가?** style eligibility 및 layout contract가 capacity를 확인한다. 두 번째 item으로 implicit row를 만드는 negative control은 scene publication 전에 거부됐다.
-6. **Grid container 크기/box model이 auto size에 영향을 주는데 제한이 빠졌는가?** definite finite size, border-box, min/max, ratio, zero edges/gap, LTR/static 조건을 검사한다. content-box, gap negative controls 통과.
+6. **Grid container 크기/box model이 auto size에 영향을 주는데 제한이 빠졌는가?** definite finite size, min/max, ratio, zero edges/gap, LTR/static 조건을 검사한다. zero edges이므로 content-box와 border-box 둘 다 유효하다. Nonzero container border/margin 및 gap negative controls 통과.
 7. **item owner가 다른 Grid의 정렬을 상속하는가?** 정확한 grid-item owner map을 대조하고, runtime test는 Grid/item computed values 및 scene identity가 같은 revision인지 확인한다. 통과.
 8. **non-div/replaced 또는 자식이 있는 item이 받아들여지는가?** HTML eligibility는 빈 direct `div`만 선택하고 layout은 block, childless, no-content를 확인한다. text와 replaced negative controls 통과.
 9. **`auto` 크기와 유효하지 않은 크기가 섞여 허용되는가?** 축별 `auto` 또는 finite nonnegative fixed만 허용한다. 음수·infinity는 projection unit test, percentage는 runtime negative control에서 거부됐다.
@@ -25,4 +25,4 @@
 
 검증 입력과 raw logs는 같은 디렉터리의 README 및 `simulator-build-metadata.json`에 연결했다. PR 변경분 검토와 CI/merge 상태는 이 검토 범위에 포함하지 않는다.
 
-구현 중 발견·수정한 artifact 경계 결함: opt-in scene label 비교가 Swift 공통 status expression에 있어 iOS default executable에 `root-html-grid-item-auto-stretch` 문자열이 남았다. 비교를 `SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1` 조건으로 옮긴 뒤 opt-in/default를 다시 빌드해 문자열 포함·제외를 확인했다. Android DEX 검증은 adapter가 든 `classes2.dex`를 포함해 전체 DEX에서 positive/negative 대조했다.
+구현 중 발견·수정한 결함: opt-in scene label 비교가 Swift 공통 status expression에 있어 iOS default executable에 `root-html-grid-item-auto-stretch` 문자열이 남았다. 비교를 `SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1` 조건으로 옮긴 뒤 opt-in/default를 다시 빌드해 문자열 포함·제외를 확인했다. PR diff review에서는 공통 style admission의 신규 `box-sizing:border-box` gate가 기존 fixed-size Root HTML Grid 경로에서 content-box 입력을 퇴행시킬 수 있음을 찾았다. 모든 item/container edge가 0인 범위에서는 양 box sizing의 geometry가 같으므로 gate를 제거했고, runtime fixture에 두 값을 함께 넣어 frame parity 및 acceptance를 확인한다. Android DEX 검증은 adapter가 든 `classes2.dex`를 포함해 전체 DEX에서 positive/negative 대조했다.

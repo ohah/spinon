@@ -129,10 +129,6 @@ fn supports_grid(element: &ComputedElementStyle, grid: &ComputedCssGridLayout) -
         && grid.rows_line_names.iter().all(Vec::is_empty)
         && fixed_nonnegative_dimension(element.layout_dimensions.width)
         && fixed_nonnegative_dimension(element.layout_dimensions.height)
-        && element
-            .properties
-            .get("box-sizing")
-            .is_some_and(|value| value == "border-box")
         && element.layout_dimensions.min_width == ComputedCssDimension::Auto
         && element.layout_dimensions.min_height == ComputedCssDimension::Auto
         && element.layout_dimensions.max_width == ComputedCssMaxSize::None
@@ -228,10 +224,6 @@ fn supports_item(element: &ComputedElementStyle) -> bool {
         .properties
         .get("display")
         .is_some_and(|value| value == "block")
-        && element
-            .properties
-            .get("box-sizing")
-            .is_some_and(|value| value == "border-box")
         && element.layout_position == spinon_style::ComputedCssPosition::Static
         && auto_or_fixed_nonnegative_dimension(element.layout_dimensions.width)
         && auto_or_fixed_nonnegative_dimension(element.layout_dimensions.height)
