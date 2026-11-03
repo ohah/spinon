@@ -14020,22 +14020,50 @@ private struct C111MetalPixelRun {
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
         let rootHtmlRuns = arguments.filter {
             $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
         }
         if !rootHtmlRuns.isEmpty {
             guard rootHtmlRuns.count == 1,
                   !arguments.contains(where: {
                       $0.hasPrefix("--spinon-") && $0 != rootHtmlRuns[0]
                   }) else { return nil }
-            let prefix = "--spinon-root-html-grid-minmax-metal-surface-pixels="
+            let isFitContent = rootHtmlRuns[0].hasPrefix(
+                "--spinon-root-html-grid-fit-content-metal-surface-pixels=")
+            let prefix = isFitContent
+                ? "--spinon-root-html-grid-fit-content-metal-surface-pixels="
+                : "--spinon-root-html-grid-minmax-metal-surface-pixels="
             let runID = String(rootHtmlRuns[0].dropFirst(prefix.count))
             guard (8...80).contains(runID.count),
                   runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
             else { return nil }
             return C111MetalPixelRun(
                 runID: runID,
-                sceneID: "root-html-grid-minmax-overflow",
+                sceneID: isFitContent
+                    ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
                 markerPrefix: "C111",
-                samples: [
+                samples: isFitContent ? [
+                    C111MetalPixelSample(
+                        id: "direct-in-root", nodeId: "direct-fit",
+                        xCssPx: 25, yCssPx: 10, rgba: [229, 72, 77, 255]),
+                    C111MetalPixelSample(
+                        id: "direct-overflow", nodeId: "direct-fit",
+                        xCssPx: 35, yCssPx: 10, rgba: [229, 72, 77, 255]),
+                    C111MetalPixelSample(
+                        id: "direct-blue-marker", nodeId: "direct-marker",
+                        xCssPx: 42, yCssPx: 10, rgba: [59, 130, 246, 255]),
+                    C111MetalPixelSample(
+                        id: "area-in-root", nodeId: "area-fit",
+                        xCssPx: 25, yCssPx: 30, rgba: [48, 164, 108, 255]),
+                    C111MetalPixelSample(
+                        id: "area-overflow", nodeId: "area-fit",
+                        xCssPx: 35, yCssPx: 30, rgba: [48, 164, 108, 255]),
+                    C111MetalPixelSample(
+                        id: "row-in-root", nodeId: "row-fit",
+                        xCssPx: 10, yCssPx: 50, rgba: [240, 180, 41, 255]),
+                    C111MetalPixelSample(
+                        id: "row-overflow", nodeId: "row-fit",
+                        xCssPx: 10, yCssPx: 65, rgba: [240, 180, 41, 255]),
+                ] : [
                     C111MetalPixelSample(
                         id: "grid-right-interior", nodeId: "root-grid",
                         xCssPx: 29, yCssPx: 10, rgba: [16, 24, 32, 255]),
@@ -14648,6 +14676,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return arguments.contains(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
         })
 #else
         return arguments.contains(where: {
@@ -14660,6 +14689,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let argument = ProcessInfo.processInfo.arguments.first(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
         })
 #else
         let argument = ProcessInfo.processInfo.arguments.first(where: {
@@ -14668,9 +14698,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #endif
         return argument.map { argument in
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
-            let prefix = argument.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
-                ? "--spinon-root-html-grid-minmax-metal-surface-pixels="
-                : "--spinon-c11-grid-metal-surface-pixels="
+            let prefix = argument.hasPrefix(
+                "--spinon-root-html-grid-fit-content-metal-surface-pixels=")
+                ? "--spinon-root-html-grid-fit-content-metal-surface-pixels="
+                : argument.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                    ? "--spinon-root-html-grid-minmax-metal-surface-pixels="
+                    : "--spinon-c11-grid-metal-surface-pixels="
 #else
             let prefix = "--spinon-c11-grid-metal-surface-pixels="
 #endif

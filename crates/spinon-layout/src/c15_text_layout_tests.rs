@@ -515,6 +515,9 @@ mod c15_2b;
 #[path = "c15_text_layout_tests/grid_chrome_oracle.rs"]
 mod grid_chrome_oracle;
 
+#[path = "c15_text_layout_tests/grid_fit_content.rs"]
+mod grid_fit_content;
+
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c15_text_layout_tests/grid_text_baseline.rs"]
 mod grid_text_baseline;

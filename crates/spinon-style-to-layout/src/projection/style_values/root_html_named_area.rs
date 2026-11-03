@@ -12,6 +12,30 @@ pub(super) fn validate_root_html_named_area_candidate(
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
 ) -> Result<(), StyleLayoutError> {
+    if let Some(container) = snapshot.elements.iter().find(|element| {
+        element.grid_layout.as_ref().is_some_and(|grid| {
+            grid.template_areas.as_ref().is_some_and(|areas| {
+                super::grid_values::root_html_dimension_matched_fit_content_area_tracks(grid, areas)
+            })
+        })
+    }) {
+        let grid = container
+            .grid_layout
+            .as_ref()
+            .expect("fit-content area lookup requires a Grid value");
+        let areas = grid
+            .template_areas
+            .as_ref()
+            .expect("fit-content area lookup requires parsed areas");
+        return super::root_html_fit_content_named_area::validate_root_html_fit_content_named_area_candidate(
+            tree,
+            snapshot,
+            nodes,
+            container,
+            areas,
+        );
+    }
+
     let mut area_containers = snapshot.elements.iter().filter(|element| {
         element
             .grid_layout
@@ -96,6 +120,15 @@ pub(super) fn validate_root_html_named_area_candidate(
             ));
         }
     }
+    let is_parsed_root_html = tree.root_children().any(|root| {
+        tree.node(root).is_some_and(|node| {
+            matches!(
+                node.kind(),
+                HostNodeKind::Element(element)
+                    if element.namespace() == HTML_NAMESPACE && element.local_name() == "html"
+            )
+        })
+    });
     for (property, value, basis) in [
         (
             "row-gap",
@@ -109,6 +142,16 @@ pub(super) fn validate_root_html_named_area_candidate(
         ),
     ] {
         super::root_html_grid_gap::validate_root_html_gap(container, property, value, basis)?;
+        if is_parsed_root_html
+            && (container.layout_math_values.contains_key(property)
+                || super::root_html_grid_gap::resolved_root_html_gap(value, basis) != Some(0.0))
+        {
+            return Err(unsupported(
+                owner,
+                property,
+                "기존 parsed Root HTML named-area runtime 경로는 zero gap만 지원합니다",
+            ));
+        }
     }
     let container_handle = nodes
         .grid_container_handles
@@ -269,7 +312,7 @@ fn root_html_has_non_auto_grid_placement(placement: &ComputedCssGridItemPlacemen
     .any(|value| !matches!(value, ComputedCssGridPlacement::Auto))
 }
 
-fn root_html_named_area_name(placement: &ComputedCssGridItemPlacement) -> Option<&str> {
+pub(super) fn root_html_named_area_name(placement: &ComputedCssGridItemPlacement) -> Option<&str> {
     let endpoints = [
         &placement.row_start,
         &placement.row_end,

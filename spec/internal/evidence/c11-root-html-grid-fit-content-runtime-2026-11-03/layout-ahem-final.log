@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 3 tests
+test c15_text_layout_tests::grid_fit_content::ahem_wrapped_min_content_sets_a_fit_content_row_floor_above_its_cap ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_text_fixed_repeat_fit_content_tracks_are_sized_independently ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_text_fit_content_columns_respect_minimum_cap_and_maximum_contributions ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 381 filtered out; finished in 0.03s

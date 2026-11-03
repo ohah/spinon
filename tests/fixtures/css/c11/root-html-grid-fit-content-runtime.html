@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      main {
+        display: grid;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      #direct {
+        width: 30px;
+        height: 20px;
+        grid-template-columns: fit-content(40px) 10px;
+        grid-template-rows: 20px;
+        background-color: #101820;
+      }
+      #direct-fit {
+        width: 40px;
+        height: 20px;
+        background-color: #e5484d;
+      }
+      #direct-marker {
+        width: 8px;
+        height: 20px;
+        background-color: #3b82f6;
+      }
+
+      #named-area {
+        width: 30px;
+        height: 20px;
+        grid-template-columns: 20px fit-content(40px);
+        grid-template-rows: 20px;
+        grid-template-areas: "fixed fit";
+        background-color: #1f2937;
+      }
+      #area-fixed {
+        grid-area: fixed;
+        width: 20px;
+        height: 20px;
+        background-color: #16a34a;
+      }
+      #area-fit {
+        grid-area: fit;
+        width: 40px;
+        height: 20px;
+        background-color: #30a46c;
+      }
+
+      #row {
+        width: 20px;
+        height: 20px;
+        grid-template-columns: 20px;
+        grid-template-rows: fit-content(20px);
+        background-color: #111827;
+      }
+      #row-fit {
+        width: 20px;
+        height: 40px;
+        background-color: #f0b429;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="direct">
+      <div id="direct-fit"></div>
+      <div id="direct-marker"></div>
+    </main>
+    <main id="named-area">
+      <div id="area-fixed"></div>
+      <div id="area-fit"></div>
+    </main>
+    <main id="row">
+      <div id="row-fit"></div>
+    </main>
+  </body>
+</html>
