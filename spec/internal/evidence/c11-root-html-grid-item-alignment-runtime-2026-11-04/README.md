@@ -14,6 +14,7 @@
 - 기존 `align-content`·`justify-content` 기본 Root HTML runtime: [`rust-runtime-content-alignment.log`](rust-runtime-content-alignment.log), 1/1 통과.
 - 새 기본 Root HTML runtime: [`rust-runtime-item-alignment.log`](rust-runtime-item-alignment.log), full fixture의 39 scene·42 item frame 42/42가 독립 기대값과 1/64 CSS px 이내로 일치하고, baseline projection 거부 때 partial scene을 publish하지 않는다. Runtime tests 2/2 통과.
 - `cargo fmt --all -- --check` 및 scoped all-target Clippy는 통과했다. Clippy 출력은 [`rust-clippy.log`](rust-clippy.log)에 있다.
+- 별도 [PR #1124 변경분 적대 검토 30개](pr-diff-review-30.md)는 구현/runtime 검토 20개와 겹치지 않게 source, test, contract, platform evidence와 claim boundary를 대조했다.
 
 Style projection은 기존 fixed-track Grid eligibility와 direct empty `div` item 경계를 재사용한다. Non-eligible Root HTML node/Grid의 non-initial `justify-items`, child `align-self`·`justify-self`, baseline, `safe start`, `legacy`, 미지원 profile의 `left/right`는 거부한다. CSS-invalid declaration의 cascade fallback은 profile rejection과 구분한다.
 

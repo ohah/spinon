@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.1 Root HTML Grid 콘텐츠 정렬](./c11-root-html-grid-content-alignment.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 검토 20개 및 구현/runtime 실패 관점 20개 완료; bounded 구현 후보가 현재 branch에 있고 내부 계약·공식 상태 대장에 반영됐다. 구현 PR/diff review/merge는 아직이다. `RuntimeRootHtmlTextPaintV1`의 기존 fixed-track Grid eligibility를 재사용해 Grid container의 `align-items`와 `justify-items`를 그 자식 item의 self-alignment 기본값으로 연결한다. `place-items` shorthand는 Stylo가 산출한 두 longhand computed value를 통해 처리한다. 이 계획만으로 일반 CSS 지원, C11.1/C11 완료, 또는 공식 완료 `72/213` 승격을 주장하지 않는다.
+**상태:** 계획 검토 20개, 구현/runtime 실패 관점 20개 및 PR #1124 변경분 실패 관점 30개 검토를 마쳤다. bounded 구현 후보가 현재 branch에 있고 내부 계약·공식 상태 대장에 반영됐다. 구현 PR [#1124](https://github.com/ohah/spinon/pull/1124)이 열려 있으며 merge는 아직이다. `RuntimeRootHtmlTextPaintV1`의 기존 fixed-track Grid eligibility를 재사용해 Grid container의 `align-items`와 `justify-items`를 그 자식 item의 self-alignment 기본값으로 연결한다. `place-items` shorthand는 Stylo가 산출한 두 longhand computed value를 통해 처리한다. 이 계획만으로 일반 CSS 지원, C11.1/C11 완료, 또는 공식 완료 `72/213` 승격을 주장하지 않는다.
 
 **규범 기준:** [CSS Box Alignment Module Level 3 §4.1 positional alignment, §4.4 overflow alignment, §7.1 `justify-items`, §7.2 `align-items`](https://www.w3.org/TR/css-align-3/#default-alignment) · [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §11.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#grid-align)
 
@@ -45,15 +45,15 @@
 4. **완료:** Style projection checks cover positional/self/overflow values, left/right, `place-items`, baseline/`safe start`, wrong shape, item self-alignment rejection 및 property attribution. Root HTML projection 38/38, parser 1/1, full runtime fixture 39 scene·42 item, baseline failure atomicity, 기존 content-alignment runtime regression 통과.
 5. **완료:** Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 앱 경로를 같은 fixture로 빌드·실행했다. 두 앱에서 `layout=ready boxes=83` 및 draw/present를 기록했다. Captures는 visual evidence며 PixelCopy/Metal drawable sample은 수집하지 않았다.
 6. **완료:** Rust focused tests, `cargo fmt --all -- --check`, scoped all-target Clippy 및 두 simulator build/run 결과를 evidence에 보존했다. 일반/default product artifact에는 fixture-only ABI를 추가하지 않았다.
-7. **부분 완료:** [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-item-alignment-runtime-2026-11-04/implementation-runtime-review-20.md)를 계획 검토와 분리해 기록했다. PR diff review는 구현 PR 작성 뒤 별도 20개로 검토한다.
-8. **부분 완료:** 내부 계약 0059와 공식 `spec/STATUS.md`에 bounded candidate를 반영했다. PR diff review와 PR 본문 screenshot links를 추가한 뒤 merge한다. Merge 후 Tailnet preview hash를 확인하고 Agent Browser로 검증한 다음 browser session/process를 종료한다.
+7. **완료:** [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-item-alignment-runtime-2026-11-04/implementation-runtime-review-20.md)와 [PR #1124 변경분 검토 30개](../spec/internal/evidence/c11-root-html-grid-item-alignment-runtime-2026-11-04/pr-diff-review-30.md)를 계획 검토와 분리해 기록했다. PR 본문에 Android/iOS 화면을 올렸다.
+8. **부분 완료:** 내부 계약 0059와 공식 `spec/STATUS.md`에 bounded candidate 및 PR #1124를 반영했다. PR check 상태와 merge가 남아 있다. Merge 후 Tailnet preview hash를 확인하고 Agent Browser로 검증한 다음 browser session/process를 종료한다.
 
 ## 완료 조건
 
 - 39 scene·42 item의 fixed expected frames와 overflow alignment 결과가 독립 계산 및 pinned Chrome 156 관찰과 맞는다.
 - `align-items`, `justify-items`, `place-items`가 적격 default Root HTML Grid path에서만 적용되고, `left/right`, axis, safety, error property, unsupported profile 경계가 test로 고정된다.
 - 기존 `align-content`/`justify-content`, CSS cascade, item auto-size/default behavior, snapshot revision, render publication 및 failure atomicity가 회귀하지 않는다.
-- 최종 source Android/iOS simulator builds·runtime, 적용 가능한 surface reads, formatter/Clippy, 구현/runtime review 20개 및 PR diff review 20개가 근거와 함께 통과한다.
+- 최종 source Android/iOS simulator builds·runtime, 적용 가능한 surface reads, formatter/Clippy, 구현/runtime review 20개 및 PR diff review 30개가 근거와 함께 통과한다.
 - C11.1/C11과 공식 완료 수 `72/213`은 별도 승격 조건을 만족하기 전까지 그대로 둔다.
 
 ## 미포함
