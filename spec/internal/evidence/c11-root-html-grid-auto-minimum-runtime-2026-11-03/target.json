@@ -50,12 +50,22 @@
     "defaultAndroidApkSha256": "e7ff8d436f355cbed52b28fe4c3142bd6d64a9ce78ee94864f65fdccbd3694bf",
     "defaultAndroidNativeSha256": "1c62afaaa5b18bff2db267c11f3a8b69af781c8072bfe2cab934683a0ae2febb",
     "defaultAndroidPixelCaptureBuildConfig": false,
+    "defaultAndroidDebugHarnessDiagnosticStringsPresent": true,
+    "defaultAndroidHtmlBootPayloadPresent": false,
     "defaultAndroidNativePixelFixtureSymbols": false,
     "defaultFfiStaticlibSha256": "b90bf7c9a08c9935693925611e09dd2c86af040560859446a1575539721ce11a",
     "defaultFfiStaticlibSymbols": false,
     "optInFfiStaticlibSha256": "d2ee02222df2fe13770bb8269c018a81707ddf2b0e0dd3dcf89d9b1f2e7697f0",
     "optInFfiFeaturePositiveControlSymbols": true,
     "details": "source-candidate-sha256.txt and ffi-* artifact reports; the opt-in C11 surface-readback ABI predates this slice and this change adds no C11.1 auto-minimum FFI route or payload"
+  },
+  "defaultIosSimulatorArtifact": {
+    "buildFlag": "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_0",
+    "buildLog": "ios-default-artifact-build.log",
+    "executableSha256": "15ca10b72728e9dd8b25bb959af64f81c8723fdbe5cd184f097d0c618c848ba2",
+    "bundleFilesSearched": 8,
+    "autoMinimumCaptureArgumentOccurrences": 0,
+    "searchEvidence": "ios-default-c11-auto-minimum-string-scan.json"
   },
   "browserReference": {
     "engine": "Chrome 156 via Agent Browser",

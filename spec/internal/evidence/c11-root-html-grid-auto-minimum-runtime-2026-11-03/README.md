@@ -12,6 +12,7 @@
 - iPhone 17 Pro / iOS 26.2 Simulator Metal drawable 표본 4/4 exact. [화면](ios/simulator-auto-minimum-metal-pass01.png) · [원본 log](ios/spinon-auto-minimum-metal-pass01.log)
 - Chrome 156 Agent Browser는 독립적인 사전 비교 관찰이다. [규범식에서 먼저 계산한 expected 값](../c11-root-html-grid-auto-minimum-precomparison-2026-11-03/expected.json), [Chrome 관찰](../c11-root-html-grid-auto-minimum-precomparison-2026-11-03/chrome-observation.json), [화면](../c11-root-html-grid-auto-minimum-precomparison-2026-11-03/chrome156-agent-browser.png).
 - 구현/runtime 실패 관점 20개를 별도 기록했다: [검토 20개](implementation-runtime-review-20.md).
+- PR diff 검토 중 발견한 기본 iOS capture argument 노출을 opt-in compile gate 안으로 옮겼다. default iOS Simulator build는 성공했고 app bundle 8개 파일에서 새 argument 문자열이 0건이다. [빌드 로그](ios-default-artifact-build.log) · [문자열 scan과 executable hash](ios-default-c11-auto-minimum-string-scan.json).
 
 ## 재현 대상과 한계
 
@@ -25,10 +26,10 @@ iOS는 iPhone 17 Pro / iOS 26.2 Simulator다. Metal 표본은 1206×2334 drawabl
 
 ## 기본 artifact 경계
 
-기본 `spinon-ffi` staticlib에는 C11 surface-pixel fixture의 두 심볼이 없고, opt-in `c11-grid-metal-surface-pixels-test` positive control에서만 기존 심볼이 나타났다. 기본 Android build에서는 capture BuildConfig가 `false`이고 native artifact에도 같은 심볼이 없다. Android는 시스템 PixelCopy API를 사용해 읽기 때문에 C11.1 auto-minimum 전용 FFI route/payload를 추가하지 않았다. 빌드 로그, symbol 목록 및 hash는 이 폴더의 `ffi-*` 파일과 `android-default-*` 파일을 참조한다.
+기본 `spinon-ffi` staticlib에는 C11 surface-pixel fixture의 두 심볼이 없고, opt-in `c11-grid-metal-surface-pixels-test` positive control에서만 기존 심볼이 나타났다. 기본 Android build에서는 capture BuildConfig가 `false`이고 native artifact에도 같은 심볼이 없다. Android debug APK DEX에는 opt-in demo capture request/log labels가 남아 있지만 capture gate는 꺼져 있고 auto-minimum HTML boot payload는 APK에 없다. 기본 iOS Simulator app은 capture feature flag `0`으로 빌드했으며 app bundle scan에서 새 auto-minimum capture argument가 없었다. Android는 시스템 PixelCopy API를 사용해 읽기 때문에 C11.1 auto-minimum 전용 FFI route/payload를 추가하지 않았다. 빌드 로그, symbol 목록과 hash는 이 폴더의 `ffi-*`, `android-default-*`, `ios-default-*` 파일을 참조한다.
 
 기본 Android build 로그는 capture 옵션을 끈 artifact를 검사하기 위한 것이다. 설치·화면 검증은 capture 옵션을 켠 debug APK에서 했으며 APK SHA-256은 `target.json`에 분리 기록했다.
 
 ## 후속 관문
 
-현재 branch HEAD는 계획 병합 SHA `a7838b7de949f79ee7e39030845fb83ee3fafeb7`이고 구현은 아직 checkout의 미병합 후보다. GitHub PR diff 검토 30개, required CI, PR 병합 및 병합 후 상태·로드맵 동기화는 남아 있다. 공식 상태 대장 `72/213` 및 C11 checkbox는 변경하지 않았다.
+런타임 capture는 base checkout HEAD `a7838b7de949f79ee7e39030845fb83ee3fafeb7`에서 기록했다. 이후 PR review가 feature-flag 미설정 iOS 경로에 남던 새 capture argument 탐지를 제거했다. opt-in runtime 경로는 변경되지 않았고, default iOS app의 문자열 부재는 별도 빌드·scan으로 확인했다. 현재 구현 PR [#1109](https://github.com/ohah/spinon/pull/1109)은 열려 있다. PR diff 검토 30개, checks 상태와 merge는 남아 있으며 GitHub에 보고된 PR check는 아직 없다. required status checks도 설정되지 않아 CI 통과로 세지 않는다. 공식 상태 대장 `72/213` 및 C11 checkbox는 변경하지 않았다.

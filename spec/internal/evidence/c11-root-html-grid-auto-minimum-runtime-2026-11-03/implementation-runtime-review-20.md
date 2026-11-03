@@ -30,6 +30,8 @@
 - 검토에서 0fr의 style projection은 있었지만 default runtime 최종 배치 테스트가 빠진 것을 확인했다. 양 축 0fr runtime 테스트를 추가했고 해당 Rust test 4개가 통과했다.
 - Android 캡처 인수에서 auto-minimum과 fit-content percentage가 함께 오면 auto-minimum 요청만 살아날 수 있었다. 충돌 상태에서 두 경로 모두 dispatch하지 않도록 조건을 고쳤고 API 37 AVD의 음성 실행에서 오류 로그만 남고 capture dispatch가 없는 것을 확인했다.
 - Android 유효 capture는 새 run ID `c11autominandroid06`로 다시 실행해 PixelCopy 4/4 exact를 확인했다. 같은 run ID의 이전 PNG 충돌 로그와 오래된 좌표 표본 불일치는 유효 pass 증거에서 제외했다.
-- 기본 FFI artifact와 opt-in positive control은 각각 다시 빌드해 심볼 부재/존재를 대조했다. `cargo fmt --all -- --check`, `git diff --check`도 통과했다.
+- 기본 FFI artifact와 opt-in positive control은 각각 다시 빌드해 심볼 부재/존재를 대조했다. Rust 소스 변경의 `cargo fmt --all -- --check`와 당시 source diff whitespace 검사는 통과했다.
+- PR diff review에서 auto-minimum Metal capture argument 탐지가 iOS feature-flag `#else`에도 포함된 것을 발견했다. 두 fallback 인식 지점에서 제거한 뒤 default iOS Simulator app을 다시 빌드했고, 8개 bundle 파일 scan에서 argument 문자열 0건을 확인했다. 이 artifact 경계 결과는 새 검토 사항이며 초기 20개 표의 다른 관점을 재사용하지 않는다.
+- 완전한 PR evidence diff의 `git diff --check`는 원본 Android logcat의 trailing space와 ADB CRLF 결과를 보고한다. 원본 artifact는 SHA manifest로 고정해 byte-for-byte 보존했고, source·문서의 whitespace 검사는 별도로 통과했다.
 
 이 검토는 로컬 구현 후보의 범위만 판정한다. PR diff 검토 30개, CI, 병합, 공개 상태 대장 갱신은 아직 남아 있으며 C11 상위 항목과 공식 완료 수는 변경하지 않았다.

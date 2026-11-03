@@ -14723,7 +14723,6 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
         return arguments.contains(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
-                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
         })
 #endif
     }
@@ -14739,7 +14738,6 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
         let argument = ProcessInfo.processInfo.arguments.first(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
-                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
         })
 #endif
         return argument.map { argument in
