@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>C11 parsed Root HTML calc auto rows precomparison</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .grid {
+      display: grid;
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-sizing: content-box;
+      grid-auto-flow: row;
+      grid-template-columns: 50px;
+      margin: 0;
+      padding: 0;
+      overflow: visible;
+      background: #e8edf2;
+    }
+
+    .item {
+      width: 10px;
+      height: 10px;
+      margin: 0;
+      padding: 0;
+      background: #df6373;
+    }
+
+    .label {
+      position: absolute;
+      top: 170px;
+      color: #17212b;
+      font: 12px/16px sans-serif;
+    }
+
+    #list-pattern {
+      left: 0;
+      width: 50px;
+      height: 100px;
+      grid-template-rows: 10px 20px;
+      grid-auto-rows: calc(10% + 2px) 25% 15px;
+      row-gap: 3px;
+    }
+
+    #negative-range {
+      left: 110px;
+      width: 30px;
+      height: 100px;
+      grid-template-columns: 30px;
+      grid-template-rows: none;
+      grid-auto-rows: calc(1px - 10%);
+    }
+
+    #over-100-percent {
+      left: 220px;
+      width: 30px;
+      height: 100px;
+      grid-template-columns: 30px;
+      grid-template-rows: none;
+      grid-auto-rows: calc(120% + 1px);
+    }
+
+    #zero-basis {
+      left: 330px;
+      width: 30px;
+      height: 0;
+      grid-template-columns: 30px;
+      grid-template-rows: none;
+      grid-auto-rows: calc(10% + 5px);
+    }
+
+    #gap-basis {
+      left: 440px;
+      width: 30px;
+      height: 100px;
+      grid-template-columns: 30px;
+      grid-template-rows: none;
+      grid-auto-rows: calc(10% + 5px);
+      row-gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="list-pattern" class="grid">
+    <div class="item" id="list-0"></div><div class="item" id="list-1"></div>
+    <div class="item" id="list-2"></div><div class="item" id="list-3"></div>
+    <div class="item" id="list-4"></div><div class="item" id="list-5"></div>
+    <div class="item" id="list-6"></div><div class="item" id="list-7"></div>
+  </div>
+  <div id="negative-range" class="grid"><div class="item" id="negative-item"></div></div>
+  <div id="over-100-percent" class="grid"><div class="item" id="over-item"></div></div>
+  <div id="zero-basis" class="grid"><div class="item" id="zero-item"></div></div>
+  <div id="gap-basis" class="grid">
+    <div class="item" id="gap-0"></div><div class="item" id="gap-1"></div>
+  </div>
+  <span class="label" style="left: 0">list pattern</span>
+  <span class="label" style="left: 110px">negative → 0</span>
+  <span class="label" style="left: 220px">120% + 1px</span>
+  <span class="label" style="left: 330px">zero basis</span>
+  <span class="label" style="left: 440px">gap independent</span>
+</body>
+</html>
