@@ -1,0 +1,43 @@
+{
+  "fixture_sha256": "922b6f37db0ce6f00262cf6d927e4d947502233796ad08c68cfccaef77c9c7f9",
+  "note": "표본은 PNG 화면 캡처에서 직접 읽었다. 앱 surface PixelCopy나 Metal drawable readback 결과가 아니다.",
+  "captures": [
+    {
+      "platform": "Chrome 156 Agent Browser",
+      "file": "chrome156-runtime.png",
+      "size_px": [1280, 633],
+      "samples": [
+        { "label": "item 내부", "pixel_xy": [50, 10], "rgb": [229, 72, 77] },
+        { "label": "Grid 오른쪽 경계 밖, item 안쪽", "pixel_xy": [125, 10], "rgb": [229, 72, 77] },
+        { "label": "item 오른쪽 끝 밖", "pixel_xy": [145, 10], "rgb": [255, 255, 255] },
+        { "label": "item 아래쪽 끝 밖", "pixel_xy": [125, 30], "rgb": [255, 255, 255] }
+      ]
+    },
+    {
+      "platform": "Android API 37 ARM64 emulator-5554 AVD",
+      "file": "android-simulator-screen.png",
+      "size_px": [1080, 2400],
+      "renderer": "ANGLE Vulkan SwiftShader software",
+      "samples": [
+        { "label": "item 내부", "pixel_xy": [400, 1020], "rgb": [229, 72, 77] },
+        { "label": "Grid 오른쪽 경계 밖, item 안쪽", "pixel_xy": [460, 1020], "rgb": [229, 72, 77] },
+        { "label": "Grid 아래·오른쪽 경계 밖, item 안쪽", "pixel_xy": [460, 1080], "rgb": [229, 72, 77] },
+        { "label": "item 아래쪽 끝 밖", "pixel_xy": [460, 1095], "rgb": [255, 255, 255] },
+        { "label": "item 오른쪽 끝 밖", "pixel_xy": [500, 1020], "rgb": [255, 255, 255] }
+      ]
+    },
+    {
+      "platform": "iPhone 17 Pro iOS 26.2 Simulator",
+      "file": "ios-simulator-screen.png",
+      "size_px": [1206, 2622],
+      "renderer": "Metal",
+      "samples": [
+        { "label": "item 내부", "pixel_xy": [450, 1000], "rgb": [229, 72, 77] },
+        { "label": "Grid 오른쪽 경계 밖, item 안쪽", "pixel_xy": [500, 1000], "rgb": [229, 72, 77] },
+        { "label": "Grid 아래·오른쪽 경계 밖, item 안쪽", "pixel_xy": [500, 1040], "rgb": [229, 72, 77] },
+        { "label": "item 아래쪽 끝 밖", "pixel_xy": [500, 1050], "rgb": [255, 255, 255] },
+        { "label": "item 오른쪽 끝 밖", "pixel_xy": [550, 1000], "rgb": [255, 255, 255] }
+      ]
+    }
+  ]
+}
