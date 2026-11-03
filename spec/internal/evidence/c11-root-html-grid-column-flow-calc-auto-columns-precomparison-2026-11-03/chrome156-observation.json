@@ -1,0 +1,52 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "devicePixelRatio": 1
+  },
+  "input": {
+    "contentWidthPx": 240,
+    "contentHeightPx": 63,
+    "explicitColumnsPx": [30, 40],
+    "explicitRowsPx": [20, 40],
+    "gridAutoFlow": "column",
+    "gridAutoColumns": "calc(10% + 5px) calc(2% + 2px)",
+    "columnGapPx": 5,
+    "rowGapPx": 3,
+    "itemCount": 12,
+    "itemSizePx": [10, 10]
+  },
+  "computed": {
+    "width": "240px",
+    "height": "63px",
+    "gridTemplateColumns": "30px 40px 29px 6.79688px 29px 6.79688px",
+    "gridTemplateRows": "20px 40px",
+    "gridAutoColumns": "calc(10% + 5px) calc(2% + 2px)",
+    "columnGap": "5px",
+    "rowGap": "3px",
+    "direction": "ltr"
+  },
+  "gridRect": {
+    "x": 0,
+    "y": 0,
+    "width": 240,
+    "height": 63,
+    "right": 240,
+    "bottom": 63
+  },
+  "usedItems": [
+    { "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 },
+    { "index": 1, "x": 0, "y": 23, "width": 10, "height": 10 },
+    { "index": 2, "x": 35, "y": 0, "width": 10, "height": 10 },
+    { "index": 3, "x": 35, "y": 23, "width": 10, "height": 10 },
+    { "index": 4, "x": 80, "y": 0, "width": 10, "height": 10 },
+    { "index": 5, "x": 80, "y": 23, "width": 10, "height": 10 },
+    { "index": 6, "x": 114, "y": 0, "width": 10, "height": 10 },
+    { "index": 7, "x": 114, "y": 23, "width": 10, "height": 10 },
+    { "index": 8, "x": 125.796875, "y": 0, "width": 10, "height": 10 },
+    { "index": 9, "x": 125.796875, "y": 23, "width": 10, "height": 10 },
+    { "index": 10, "x": 159.796875, "y": 0, "width": 10, "height": 10 },
+    { "index": 11, "x": 159.796875, "y": 23, "width": 10, "height": 10 }
+  ]
+}
