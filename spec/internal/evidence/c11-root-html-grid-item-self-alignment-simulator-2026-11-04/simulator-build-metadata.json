@@ -119,8 +119,9 @@
     "implementationRuntimeReview20": "completed_with_known_broad_package_failures_documented",
     "implementationPrDiffReview30": "completed_30_for_pr_1128",
     "directPlatformSurfaceReadback": "passed",
-    "implementationPr": "open_1128",
+    "implementationPr": "merged_rebase_0f704151cfd805ad2fef2e12535739f0d3a109dd",
     "officialCompletionTotal": "72/213",
-    "githubStatusChecks": "none_reported"
+    "githubStatusChecks": "none_reported",
+    "implementationPrMergedAt": "2026-11-03T17:52:20Z"
   }
 }

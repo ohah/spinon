@@ -4,7 +4,7 @@
 
 | # | 실패 관점 | 검토 결과 |
 |---|---|---|
-| 1 | 지원이 다른 computed-style profile이나 일반 CSS admission으로 번지는가 | **통과** — item owner 집합은 `RuntimeRootHtmlTextPaintV1`에서만 계산하고, 일반 author CSS profile은 추가 허용 경로를 받지 않는다. 내부 계약은 candidate로만 남는다. |
+| 1 | 지원이 다른 computed-style profile이나 일반 CSS admission으로 번지는가 | **통과** — item owner 집합은 `RuntimeRootHtmlTextPaintV1`에서만 계산하고, 일반 author CSS profile은 추가 허용 경로를 받지 않는다. 이 제한 slice는 전체 C11.5 내부 계약을 승격하지 않는다. |
 | 2 | item이 자기 소유 Grid가 아닌 적격 container의 허용을 빌리는가 | **통과** — `grid_item_owners`에서 실제 owner ID가 적격 container 집합에 속하는 경우만 허용한다. 서로 다른 owner의 projection test가 한쪽 item만 선택한다. |
 | 3 | nested, spanning, text, replaced 또는 non-empty child가 1-cell item으로 오인되는가 | **통과** — 기존 fixed-track eligibility와 direct empty `div`, 단일 cell 용량, auto placement 경계를 재사용한다. 조건 밖의 비초기 computed self value는 거부된다. |
 | 4 | implicit/fractional/dense/column-flow 또는 named-area Grid가 허용되는가 | **통과** — C11.5는 기존 eligible container의 정확한 owner만 사용한다. dense, column flow, implicit track, repeat, area와 fraction은 해당 owner admission에서 제외된다. |
@@ -39,4 +39,4 @@
 
 - 30개 검토의 구현 diff 기준은 base `a0dd16e668204acd3d177eb301229e0a007b205f`, 구현 commit `b2d59ee170155c339d3bc8777e58533e2a27ac86`, 56 files다. 최종 PR diff는 검토·상태 후속 문서를 포함해 57 files다.
 - 후속 변경은 review artifact, 상태 문구와 metadata만 추가·수정했다. 제품 소스가 바뀌지 않았음을 확인하고, 최종 PR 상태·문서의 test count·review 상태와 diff whitespace를 서로 대조했다. 구현/runtime 20개와 계획 검토 20개는 별도 문서로 유지한다.
-- Merge 전에 실제 PR status checks와 최종 base/head를 다시 확인한다. 이 PR은 C11.5의 제한 후보이며 C11 checkbox와 공식 `72/213`을 승격하지 않는다.
+- 최종 상태: PR #1128은 2026-11-03T17:52:20Z Rebase and merge로 병합됐고 merge SHA는 `0f704151cfd805ad2fef2e12535739f0d3a109dd`다. PR check rollup은 비어 있다. 병합은 제한 후보의 통합이며 C11.5 전체, C11 checkbox와 공식 `72/213`을 승격하지 않는다.
