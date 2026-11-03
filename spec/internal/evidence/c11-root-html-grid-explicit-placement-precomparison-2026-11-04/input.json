@@ -1,0 +1,30 @@
+{
+  "capturedOn": "2026-11-04",
+  "sourceHead": "628d9faf888324333f8f5bc98e4bf55b0f365f3f",
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "reportedInnerViewportCssPx": [1280, 633],
+    "devicePixelRatio": 1,
+    "host": "macOS 26.5.1 arm64"
+  },
+  "artifacts": {
+    "fixture": {
+      "path": "tests/fixtures/css/c11/root-html-grid-explicit-placement-precomparison.html",
+      "sha256": "e6beb2c084c0d1c0dbc6e90137d20abc7e12a7623ff46f5884e7bb5f223f10d7"
+    },
+    "observation": {
+      "path": "spec/internal/evidence/c11-root-html-grid-explicit-placement-precomparison-2026-11-04/chrome156-observation.json",
+      "sha256": "b123f65ce498be62d5cae43c0970e2ba3a929a381534c1ae938bcaa18f4babb1"
+    },
+    "independentExpected": {
+      "path": "spec/internal/evidence/c11-root-html-grid-explicit-placement-precomparison-2026-11-04/expected.json",
+      "sha256": "9d772a62693c97e82975af7c6fd8df2f4050a513570161f568dba4f1438bef5d"
+    },
+    "screenshot": {
+      "path": "spec/internal/evidence/c11-root-html-grid-explicit-placement-precomparison-2026-11-04/chrome156.png",
+      "dimensionsPx": [1280, 640],
+      "sha256": "8b79a0bf4b124f81c1cd19e0dd34ce8b2b6992702dc3bd46f57590332c6d730f"
+    }
+  }
+}
