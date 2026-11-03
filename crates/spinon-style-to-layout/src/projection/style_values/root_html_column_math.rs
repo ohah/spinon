@@ -1,6 +1,6 @@
 use spinon_style::ComputedCssMath;
 
-pub(super) fn supported_auto_column_calc(expression: &ComputedCssMath) -> bool {
+pub(super) fn supported_root_html_auto_track_calc(expression: &ComputedCssMath) -> bool {
     let ComputedCssMath::Sum(terms) = expression else {
         return false;
     };
@@ -46,7 +46,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn auto_column_calc_requires_one_finite_length_and_percentage_sum() {
+    fn auto_track_calc_requires_one_finite_length_and_percentage_sum() {
         for value in [
             ComputedCssMath::Sum(vec![
                 ComputedCssMath::Percentage(0.1),
@@ -61,7 +61,7 @@ mod tests {
                 ComputedCssMath::Negate(Box::new(ComputedCssMath::Percentage(0.1))),
             ]),
         ] {
-            assert!(supported_auto_column_calc(&value));
+            assert!(supported_root_html_auto_track_calc(&value));
         }
         for value in [
             ComputedCssMath::LengthPx(5.0),
@@ -80,7 +80,7 @@ mod tests {
                 ComputedCssMath::Percentage(0.1),
             ]),
         ] {
-            assert!(!supported_auto_column_calc(&value));
+            assert!(!supported_root_html_auto_track_calc(&value));
         }
     }
 }

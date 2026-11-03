@@ -101,7 +101,7 @@ fn bound_math<'a>(
     Ok(value)
 }
 
-fn is_supported_expression(expression: &LayoutCssMath) -> bool {
+pub(super) fn is_supported_expression(expression: &LayoutCssMath) -> bool {
     let LayoutCssMath::Sum(terms) = expression else {
         return false;
     };

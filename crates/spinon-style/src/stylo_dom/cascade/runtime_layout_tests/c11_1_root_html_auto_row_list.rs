@@ -4,7 +4,8 @@ use super::super::incremental::{
 use super::super::{CssViewport, compute_runtime_root_html_text_paint_cascade_with_stylesheets};
 use super::view_for_inline_style;
 use crate::{
-    ComputedCssGridAutoColumns, ComputedCssGridAutoRows, ComputedCssGridTrackSize, CssCascadeError,
+    ComputedCssGridAutoColumns, ComputedCssGridAutoRows, ComputedCssGridTrackSize, ComputedCssMath,
+    CssCascadeError,
 };
 
 #[test]
@@ -93,6 +94,38 @@ fn root_html_profile_preserves_mixed_px_percentage_auto_row_list() {
 }
 
 #[test]
+fn root_html_profile_preserves_typed_calc_auto_row_lists_for_projection() {
+    let (view, root) = view_for_inline_style(
+        "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px;grid-template-rows:20px;grid-auto-rows:calc(10% + 2px) 25% 15px;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+        &view,
+        &[],
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .expect("the Root HTML cascade should preserve typed calc tracks for projection");
+    let grid = snapshot
+        .elements
+        .iter()
+        .find(|element| element.node_id == root)
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("the Grid snapshot should be present");
+
+    assert_eq!(
+        grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(vec![
+            ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
+                ComputedCssMath::Percentage(0.1),
+                ComputedCssMath::LengthPx(2.0),
+            ])),
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::LengthPx(15.0),
+        ])
+    );
+}
+
+#[test]
 fn root_html_profile_preserves_fractional_and_mixed_auto_row_lists() {
     for (value, expected) in [
         ("1fr", vec![ComputedCssGridTrackSize::Fraction(1.0)]),
@@ -138,7 +171,6 @@ fn root_html_profile_preserves_fractional_and_mixed_auto_row_lists() {
 fn root_html_profile_keeps_unsupported_auto_row_lists_unsupported() {
     for (value, serialized) in [
         ("15px min-content", "15px min-content"),
-        ("15px calc(10px + 1%)", "15px calc(1% + 10px)"),
         ("15px auto", "15px auto"),
     ] {
         let style = format!(

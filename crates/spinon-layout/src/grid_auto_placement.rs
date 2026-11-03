@@ -247,6 +247,9 @@ pub(super) fn normalize_sparse_grid_container(
                                 property: "grid-auto-rows",
                             });
                         }
+                        GridTrackSize::Calc(_)
+                            if container.placement_mode
+                                == crate::GridPlacementMode::RootHtmlImplicitRowsV1 => {}
                         _ => {
                             return Err(LayoutError::UnsupportedGridAutoRows {
                                 node,
@@ -289,7 +292,7 @@ pub(super) fn normalize_sparse_grid_container(
             }
         }
         if container.placement_mode == crate::GridPlacementMode::RootHtmlImplicitRowsV1
-            && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_))))
+            && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_) | GridTrackSize::Calc(_))))
         {
             validate_root_html_expanded_row_range(
                 node,
@@ -338,6 +341,14 @@ fn validate_root_html_expanded_row_range(
         container_node.style,
         css_math,
     )?;
+    let css_math_by_id = if expanded_rows
+        .iter()
+        .any(|track| matches!(track, GridTrackSize::Calc(_)))
+    {
+        crate::grid::root_html_column::index_css_math(css_math)?
+    } else {
+        std::collections::BTreeMap::new()
+    };
     let max_f32 = f32::MAX as f64;
     let mut total = (row_gap as f64) * expanded_rows.len().saturating_sub(1) as f64;
     if !total.is_finite() || total > max_f32 {
@@ -353,6 +364,12 @@ fn validate_root_html_expanded_row_range(
                 (*value as f64) * (height as f64)
             }
             GridTrackSize::Fraction(value) if value.is_finite() && *value >= 0.0 => continue,
+            GridTrackSize::Calc(_) => crate::grid::root_html_row::calc_track_extent(
+                node,
+                *track,
+                container_node.style.height,
+                &css_math_by_id,
+            )?,
             _ => {
                 return Err(LayoutError::InvalidGridTrack {
                     node,

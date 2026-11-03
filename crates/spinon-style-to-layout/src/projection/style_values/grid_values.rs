@@ -11,7 +11,7 @@ use spinon_style::{
 };
 
 use super::super::typed_math::CssMathProjector;
-use super::root_html_column_math::supported_auto_column_calc;
+use super::root_html_column_math::supported_root_html_auto_track_calc;
 use crate::StyleLayoutError;
 
 const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
@@ -216,6 +216,9 @@ fn validate_root_html_grid_tracks(
             ComputedCssGridTrackSize::LengthPx(value)
             | ComputedCssGridTrackSize::Percentage(value)
             | ComputedCssGridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
+            ComputedCssGridTrackSize::Calc(expression) => {
+                !supported_root_html_auto_track_calc(expression)
+            }
             _ => true,
         }),
         _ => false,
@@ -223,7 +226,7 @@ fn validate_root_html_grid_tracks(
     if invalid_implicit_row {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML grid-auto-rows는 direct finite non-negative px/percentage/fr 값만 포함해야 합니다",
+            "Root HTML grid-auto-rows는 direct px/percentage/fr와 제한 calc(px + %) 값만 포함해야 합니다",
         ));
     }
     if column_flow && !root_html_auto_columns_supported(&grid.auto_columns) {
@@ -277,7 +280,9 @@ fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -
         ComputedCssGridTrackSize::LengthPx(value)
         | ComputedCssGridTrackSize::Percentage(value)
         | ComputedCssGridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
-        ComputedCssGridTrackSize::Calc(expression) => supported_auto_column_calc(expression),
+        ComputedCssGridTrackSize::Calc(expression) => {
+            supported_root_html_auto_track_calc(expression)
+        }
         _ => false,
     };
     match auto_columns {
@@ -295,13 +300,14 @@ fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -
 fn root_html_direct_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
-        && tracks.iter().all(|track| {
-            matches!(
-                track,
-                ComputedCssGridTrackSize::LengthPx(_)
-                    | ComputedCssGridTrackSize::Percentage(_)
-                    | ComputedCssGridTrackSize::Fraction(_)
-            )
+        && tracks.iter().all(|track| match track {
+            ComputedCssGridTrackSize::LengthPx(_)
+            | ComputedCssGridTrackSize::Percentage(_)
+            | ComputedCssGridTrackSize::Fraction(_) => true,
+            ComputedCssGridTrackSize::Calc(expression) => {
+                supported_root_html_auto_track_calc(expression)
+            }
+            _ => false,
         })
 }
 
@@ -1483,7 +1489,7 @@ fn project_auto_columns(
                             value.is_finite() && *value >= 0.0
                         }
                         ComputedCssGridTrackSize::Calc(expression) => {
-                            supported_auto_column_calc(expression)
+                            supported_root_html_auto_track_calc(expression)
                         }
                         _ => false,
                     }

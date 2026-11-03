@@ -4,6 +4,7 @@ use spinon_style::{
     ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
 };
 
+use super::root_html_column_math::supported_root_html_auto_track_calc;
 use crate::StyleLayoutError;
 
 struct AxisConstraints {
@@ -77,7 +78,13 @@ pub(super) fn validate_percentage_axis_inputs(
     let has_percentage_auto_columns = grid.auto_flow == ComputedCssGridAutoFlow::Column
         && has_percentage_auto_columns(&grid.auto_columns);
     let has_percentage_auto_rows = match &grid.auto_rows {
-        ComputedCssGridAutoRows::TrackList(tracks) => has_percentage_track(tracks),
+        ComputedCssGridAutoRows::TrackList(tracks) => tracks.iter().any(|track| match track {
+            ComputedCssGridTrackSize::Percentage(_) => true,
+            ComputedCssGridTrackSize::Calc(expression) => {
+                supported_root_html_auto_track_calc(expression)
+            }
+            _ => false,
+        }),
         ComputedCssGridAutoRows::Auto
         | ComputedCssGridAutoRows::LengthPx(_)
         | ComputedCssGridAutoRows::Unsupported(_) => false,

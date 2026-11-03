@@ -587,6 +587,133 @@ fn root_html_profile_projects_mixed_px_percentage_fractional_implicit_row_track_
 }
 
 #[test]
+fn root_html_profile_projects_calc_implicit_rows_with_grid_template_rows_binding() {
+    let node = NodeId::new(11_198).unwrap();
+    let expression = ComputedCssMath::Sum(vec![
+        ComputedCssMath::Percentage(0.1),
+        ComputedCssMath::LengthPx(2.0),
+    ]);
+    let mut input = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(50.0)],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(10.0),
+            ComputedCssGridTrackSize::LengthPx(20.0),
+        ],
+    );
+    input.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::Calc(expression.clone()),
+        ComputedCssGridTrackSize::Percentage(0.25),
+        ComputedCssGridTrackSize::Fraction(1.0),
+    ]);
+
+    let mut math = CssMathProjector::default();
+    let projected = project_grid_layout_with_math(
+        node,
+        &input,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        &mut math,
+    )
+    .expect("a supported calc row should remain in the Root HTML implicit-row profile");
+    let spinon_layout::GridAutoRows::TrackList(tracks) = projected.auto_rows else {
+        panic!("calc auto rows should be projected as a track list");
+    };
+    let [
+        GridTrackSize::Calc(calc_id),
+        GridTrackSize::Percentage(percentage),
+        GridTrackSize::Fraction(fraction),
+    ] = tracks.as_slice()
+    else {
+        panic!("row pattern order and supported neighbor types should be preserved");
+    };
+    assert_eq!(*percentage, 0.25);
+    assert_eq!(*fraction, 1.0);
+    let values = math.into_values();
+    assert_eq!(values.len(), 1);
+    assert_eq!(values[0].id, *calc_id);
+    assert_eq!(values[0].node_id, node);
+    assert_eq!(
+        values[0].property,
+        spinon_layout::LayoutCssMathProperty::GridTemplateRows
+    );
+    assert_eq!(
+        values[0].expression,
+        spinon_layout::LayoutCssMath::Sum(vec![
+            spinon_layout::LayoutCssMath::Percentage(0.1),
+            spinon_layout::LayoutCssMath::LengthPx(2.0),
+        ])
+    );
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlImplicitRowsV1
+    );
+}
+
+#[test]
+fn root_html_profile_rejects_unsupported_implicit_row_calc_shapes() {
+    let node = NodeId::new(11_199).unwrap();
+    for expression in [
+        ComputedCssMath::LengthPx(5.0),
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::LengthPx(1.0),
+            ComputedCssMath::LengthPx(2.0),
+        ]),
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::Percentage(0.1),
+            ComputedCssMath::LengthPx(2.0),
+            ComputedCssMath::LengthPx(3.0),
+        ]),
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::Product(vec![ComputedCssMath::LengthPx(2.0)]),
+            ComputedCssMath::Percentage(0.1),
+        ]),
+    ] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(50.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        input.auto_rows =
+            ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Calc(expression)]);
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &input,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                property: "grid-auto-rows",
+                ..
+            })
+        ));
+    }
+}
+
+#[test]
+fn calc_implicit_rows_do_not_widen_the_general_template_profile() {
+    let node = NodeId::new(11_200).unwrap();
+    let mut input = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(50.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    input.auto_rows = ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::Calc(
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::LengthPx(2.0),
+            ComputedCssMath::Percentage(0.1),
+        ]),
+    )]);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &input,
+            ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            property: "grid-auto-rows",
+            ..
+        })
+    ));
+}
+
+#[test]
 fn root_html_percentage_auto_row_list_composes_with_explicit_percentage_and_fraction_tracks() {
     let node = NodeId::new(11_197).unwrap();
     let mut grid = grid(

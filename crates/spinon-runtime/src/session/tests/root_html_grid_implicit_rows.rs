@@ -1,5 +1,7 @@
 use super::*;
 
+#[path = "root_html_grid_implicit_rows/calc.rs"]
+mod calc;
 #[path = "root_html_grid_implicit_rows/composition.rs"]
 mod composition;
 #[path = "root_html_grid_implicit_rows/fraction.rs"]
