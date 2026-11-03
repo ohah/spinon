@@ -1,8 +1,9 @@
 use super::{input, node, text_engine};
 use crate::{
     GridContainerInput, GridItemInput, GridPlacementInput, GridPlacementMode,
-    GridTrackLengthPercentage, GridTrackSize, LayoutDimension, LayoutGridTrackSizingAxis,
-    LayoutNode, LayoutStyle, TaffyLayoutEngine, TextParagraphInput, WhiteSpaceMode,
+    GridTrackLengthPercentage, GridTrackSize, LayoutBorder, LayoutBoxSizing, LayoutDimension,
+    LayoutEngine, LayoutGridTrackSizingAxis, LayoutNode, LayoutStyle, TaffyLayoutEngine,
+    TextParagraphInput, WhiteSpaceMode,
 };
 
 fn fit_content_input(limit: f32, width: f32, height: f32) -> crate::LayoutInput {
@@ -36,6 +37,24 @@ fn fit_content_input(limit: f32, width: f32, height: f32) -> crate::LayoutInput 
             column_end: GridPlacementInput::Line(2),
         },
     );
+    input
+}
+
+fn root_html_fit_content_fixed_input(
+    width: f32,
+    height: f32,
+    item_width: f32,
+    item_height: f32,
+) -> crate::LayoutInput {
+    let mut input = fit_content_input(0.0, width, height);
+    input.text_paragraphs.remove(&node(2));
+    input.nodes[1].style.width = LayoutDimension::Fixed(item_width);
+    input.nodes[1].style.height = LayoutDimension::Fixed(item_height);
+    input
+        .grid_containers
+        .get_mut(&node(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::RootHtmlFitContentV1;
     input
 }
 
@@ -171,26 +190,5 @@ fn ahem_wrapped_min_content_sets_a_fit_content_row_floor_above_its_cap() {
     assert_eq!(intrinsic.height.max_content, Some(10.0));
 }
 
-#[test]
-fn root_html_fit_content_mode_rejects_percentage_limits() {
-    let mut input = fit_content_input(40.0, 200.0, 60.0);
-    let grid = input.grid_containers.get_mut(&node(1)).unwrap();
-    grid.placement_mode = GridPlacementMode::RootHtmlFitContentV1;
-    grid.columns = vec![GridTrackSize::FitContent(
-        GridTrackLengthPercentage::Percentage(0.5),
-    )];
-
-    let error = TaffyLayoutEngine
-        .compute_with_text_layout_engine(&input, &text_engine())
-        .expect_err("Root HTML fit-content mode must reject percentage limits");
-    assert!(
-        matches!(
-            error,
-            crate::LayoutError::InvalidGridTrack {
-                property: "grid-template-columns",
-                ..
-            }
-        ),
-        "unexpected Root HTML fit-content rejection: {error:?}"
-    );
-}
+#[path = "grid_fit_content/percentage.rs"]
+mod percentage;

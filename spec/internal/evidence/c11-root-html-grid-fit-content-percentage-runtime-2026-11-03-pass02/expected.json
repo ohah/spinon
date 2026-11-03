@@ -1,0 +1,15 @@
+{
+  "scene_id": "root-html-grid-fit-content-percentage-overflow",
+  "input_fixture": "tests/fixtures/css/c11/root-html-grid-fit-content-percentage-overflow-runtime.html",
+  "geometry_css_px": {
+    "root_border_box": [20, 40, 34, 24],
+    "child_overflow_box": [22, 42, 60, 20]
+  },
+  "samples": [
+    {"id": "percentage-root-interior", "css_px": [30, 50], "rgba": [229, 72, 77, 255]},
+    {"id": "percentage-root-border", "css_px": [21, 50], "rgba": [48, 164, 108, 255]},
+    {"id": "percentage-child-overflow", "css_px": [60, 50], "rgba": [229, 72, 77, 255]},
+    {"id": "percentage-outside-child", "css_px": [85, 50], "rgba": [16, 24, 32, 255]}
+  ],
+  "result": "android PixelCopy 4/4 exact; iOS Metal drawable 4/4 exact"
+}

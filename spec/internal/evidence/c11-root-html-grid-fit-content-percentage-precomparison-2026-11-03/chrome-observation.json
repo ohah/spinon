@@ -1,39 +1,544 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "status": "all-independent-expectations-matched-after-font-ready-observation",
+  "toleranceCssPx": 0.02,
   "browser": {
     "product": "HeadlessChrome",
     "version": "156.0.0.0",
     "agentBrowserCli": "0.31.1",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
-    "viewport": { "width": 1280, "height": 900, "devicePixelRatio": 1 }
+    "viewport": {
+      "dpr": 1,
+      "height": 1200,
+      "width": 1280
+    }
   },
   "fixture": {
     "path": "root-html-grid-fit-content-percentage-precomparison.html",
-    "sha256": "1c3da787f92230795c1a2f4e2d0f2e45caa42f0d1c7d8e069129bf1e2d5057ea"
+    "sha256": "8c6c49321271deec1a0d9cd8246a1f7f0c0b9bcd07a0563ef1dbbd289a384aed"
   },
   "font": {
     "family": "Ahem",
     "status": "loaded",
+    "ready": true,
     "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
   },
   "intrinsicProbes": {
-    "minContentWidth": { "width": 20, "height": 40 },
-    "maxContentWidth": { "width": 110, "height": 10 },
-    "rowMinContent": { "width": 20, "height": 40 }
+    "minContentWidthPx": 20,
+    "maxContentWidthPx": 110,
+    "rowMinContentHeightPx": 40
   },
+  "sceneCount": 13,
+  "allScenesMatch": true,
   "scenes": {
-    "belowMinimum": { "resolvedColumns": [20], "itemFrame": [0, 0, 20, 60] },
-    "betweenContributions": { "resolvedColumns": [40], "itemFrame": [0, 0, 40, 60] },
-    "aboveMaxContent": { "resolvedColumns": [110], "itemFrame": [0, 0, 110, 60] },
-    "above100": { "resolvedColumns": [110], "itemFrame": [0, 0, 110, 60] },
-    "fixedRepeat": { "resolvedColumns": [40, 40], "itemFrames": [[0, 0, 40, 60], [40, 0, 40, 60]] },
-    "zeroBasis": { "resolvedColumns": [20], "itemFrame": [0, 0, 20, 60] },
-    "rowBelowMinimum": { "resolvedColumns": [20], "resolvedRows": [40], "itemFrame": [0, 0, 20, 40] },
-    "fixedRuntimeFloorControl": { "resolvedColumns": [60], "itemFrame": [0, 0, 60, 20] },
-    "textRuntimeCapControl": { "resolvedColumns": [80], "itemFrame": [0, 0, 80, 100] }
+    "belowMinimum": {
+      "independentExpectation": {
+        "rootWidthPx": 200,
+        "cap": "5%",
+        "resolvedCapPx": 10,
+        "usedColumnsPx": [
+          20
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          60
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "below-min-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            60
+          ]
+        ]
+      }
+    },
+    "betweenContributions": {
+      "independentExpectation": {
+        "rootWidthPx": 200,
+        "cap": "20%",
+        "resolvedCapPx": 40,
+        "usedColumnsPx": [
+          40
+        ],
+        "itemFrame": [
+          0,
+          0,
+          40,
+          60
+        ]
+      },
+      "chrome": {
+        "computedColumns": "40px",
+        "resolvedColumnsPx": [
+          40.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "between-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            40,
+            60
+          ]
+        ]
+      }
+    },
+    "aboveMaxContent": {
+      "independentExpectation": {
+        "rootWidthPx": 200,
+        "cap": "60%",
+        "resolvedCapPx": 120,
+        "usedColumnsPx": [
+          110
+        ],
+        "itemFrame": [
+          0,
+          0,
+          110,
+          60
+        ]
+      },
+      "chrome": {
+        "computedColumns": "110px",
+        "resolvedColumnsPx": [
+          110.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "above-max-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            110,
+            60
+          ]
+        ]
+      }
+    },
+    "above100": {
+      "independentExpectation": {
+        "rootWidthPx": 200,
+        "cap": "120%",
+        "resolvedCapPx": 240,
+        "usedColumnsPx": [
+          110
+        ],
+        "itemFrame": [
+          0,
+          0,
+          110,
+          60
+        ]
+      },
+      "chrome": {
+        "computedColumns": "110px",
+        "resolvedColumnsPx": [
+          110.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "above-100-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            110,
+            60
+          ]
+        ]
+      }
+    },
+    "fixedRepeat": {
+      "independentExpectation": {
+        "rootWidthPx": 200,
+        "cap": "20%",
+        "resolvedCapPx": 40,
+        "usedColumnsPx": [
+          40,
+          40
+        ],
+        "itemFrames": [
+          [
+            0,
+            0,
+            40,
+            60
+          ],
+          [
+            40,
+            0,
+            40,
+            60
+          ]
+        ]
+      },
+      "chrome": {
+        "computedColumns": "40px 40px",
+        "resolvedColumnsPx": [
+          40.0,
+          40.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "repeat-item-a",
+          "repeat-item-b"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            40,
+            60
+          ],
+          [
+            40,
+            0,
+            40,
+            60
+          ]
+        ]
+      }
+    },
+    "zeroPercentColumn": {
+      "independentExpectation": {
+        "rootWidthPx": 200,
+        "cap": "0%",
+        "resolvedCapPx": 0,
+        "usedColumnsPx": [
+          20
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          60
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "zero-column-cap-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            60
+          ]
+        ]
+      }
+    },
+    "zeroBasis": {
+      "independentExpectation": {
+        "rootWidthPx": 0,
+        "cap": "100%",
+        "resolvedCapPx": 0,
+        "usedColumnsPx": [
+          20
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          60
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "60px",
+        "resolvedRowsPx": [
+          60.0
+        ],
+        "itemIds": [
+          "zero-basis-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            60
+          ]
+        ]
+      }
+    },
+    "rowBelowMinimum": {
+      "independentExpectation": {
+        "rootWidthPx": 20,
+        "rootHeightPx": 100,
+        "cap": "20%",
+        "resolvedCapPx": 20,
+        "usedRowsPx": [
+          40
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          40
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "40px",
+        "resolvedRowsPx": [
+          40.0
+        ],
+        "itemIds": [
+          "row-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            40
+          ]
+        ]
+      }
+    },
+    "zeroPercentRow": {
+      "independentExpectation": {
+        "rootWidthPx": 20,
+        "rootHeightPx": 100,
+        "cap": "0%",
+        "resolvedCapPx": 0,
+        "usedRowsPx": [
+          40
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          40
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "40px",
+        "resolvedRowsPx": [
+          40.0
+        ],
+        "itemIds": [
+          "zero-row-cap-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            40
+          ]
+        ]
+      }
+    },
+    "above100Row": {
+      "independentExpectation": {
+        "rootWidthPx": 20,
+        "rootHeightPx": 100,
+        "cap": "120%",
+        "resolvedCapPx": 120,
+        "usedRowsPx": [
+          40
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          40
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "40px",
+        "resolvedRowsPx": [
+          40.0
+        ],
+        "itemIds": [
+          "above-100-row-cap-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            40
+          ]
+        ]
+      }
+    },
+    "zeroRowBasis": {
+      "independentExpectation": {
+        "rootWidthPx": 20,
+        "rootHeightPx": 0,
+        "cap": "100%",
+        "resolvedCapPx": 0,
+        "usedRowsPx": [
+          40
+        ],
+        "itemFrame": [
+          0,
+          0,
+          20,
+          40
+        ]
+      },
+      "chrome": {
+        "computedColumns": "20px",
+        "resolvedColumnsPx": [
+          20.0
+        ],
+        "computedRows": "40px",
+        "resolvedRowsPx": [
+          40.0
+        ],
+        "itemIds": [
+          "zero-row-basis-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            20,
+            40
+          ]
+        ]
+      }
+    },
+    "fixedRuntimeFloorControl": {
+      "independentExpectation": {
+        "rootWidthPx": 160,
+        "cap": "25%",
+        "resolvedCapPx": 40,
+        "specifiedItemWidthPx": 60,
+        "usedColumnsPx": [
+          60
+        ],
+        "itemFrame": [
+          0,
+          0,
+          60,
+          20
+        ]
+      },
+      "chrome": {
+        "computedColumns": "60px",
+        "resolvedColumnsPx": [
+          60.0
+        ],
+        "computedRows": "20px",
+        "resolvedRowsPx": [
+          20.0
+        ],
+        "itemIds": [
+          "fixed-runtime-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            60,
+            20
+          ]
+        ]
+      }
+    },
+    "textRuntimeCapControl": {
+      "independentExpectation": {
+        "rootWidthPx": 320,
+        "cap": "25%",
+        "resolvedCapPx": 80,
+        "minContentWidthPx": 10,
+        "maxContentWidthPx": 390,
+        "usedColumnsPx": [
+          80
+        ],
+        "itemFrame": [
+          0,
+          0,
+          80,
+          100
+        ]
+      },
+      "chrome": {
+        "computedColumns": "80px",
+        "resolvedColumnsPx": [
+          80.0
+        ],
+        "computedRows": "100px",
+        "resolvedRowsPx": [
+          100.0
+        ],
+        "itemIds": [
+          "text-runtime-item"
+        ],
+        "itemFramesRootRelativePx": [
+          [
+            0,
+            0,
+            80,
+            100
+          ]
+        ]
+      }
+    }
   },
   "screenshot": {
     "path": "chrome-156-agent-browser.png",
-    "sha256": "d0e6a9e6674bd29caf7f161f43990d6f93de24517b223c507e7b7d5413ff7a9b"
+    "sha256": "3309293bb176a550590f36293d0e7f5262f58dc1f20ec0bd4f84a550736a835c"
   }
 }

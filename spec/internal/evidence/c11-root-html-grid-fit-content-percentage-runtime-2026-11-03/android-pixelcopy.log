@@ -1,0 +1,1 @@
+11-03 13:23:51.287   491   491 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:am start -n dev.spinon.bootstrap/.MainActivity --ez spinon_c0412_root_html_default_render true --ez spinon_root_html_fit_content_percentage_pixel_capture true --es spinon_root_html_fit_content_percentage_pixel_capture_run_id c11fitpctandroid01'

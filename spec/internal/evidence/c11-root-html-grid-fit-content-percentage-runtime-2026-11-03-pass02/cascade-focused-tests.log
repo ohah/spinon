@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 4 tests
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_tracks_are_typed_on_both_explicit_axes ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_fixed_integer_repeat_expands_typed_tracks ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_rejects_calc_limits_and_keeps_auto_tracks_out ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_percentages_are_preserved_on_both_axes_and_fixed_repeat ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 278 filtered out; finished in 0.00s

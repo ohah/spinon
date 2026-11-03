@@ -1,0 +1,31 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype");
+  }
+  html, body { margin: 0; padding: 0; }
+  #grid {
+    display: grid;
+    box-sizing: content-box;
+    width: 30px;
+    height: 20px;
+    grid-template-columns: fit-content(50%);
+    grid-template-rows: 20px;
+    gap: 0;
+    align-content: start;
+    justify-content: start;
+    padding: 0;
+    border: 2px solid #30a46c;
+    background: #263746;
+  }
+  #item { font: 10px/10px Ahem; white-space: normal; color: #e5484d; }
+  #min-probe { width: min-content; }
+  #max-probe { width: max-content; }
+  .probe { position: absolute; top: 50px; font: 10px/10px Ahem; white-space: normal; }
+</style>
+<main id="grid"><div id="item">A A</div></main>
+<div id="min-probe" class="probe">A A</div>
+<div id="max-probe" class="probe">A A</div>

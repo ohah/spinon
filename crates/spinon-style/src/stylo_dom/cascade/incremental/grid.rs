@@ -1143,6 +1143,7 @@ fn track_size_with_root_html_bounded_minmax(
                     track,
                     ComputedCssGridTrackSize::FitContent(
                         ComputedCssGridTrackLengthPercentage::LengthPx(value)
+                            | ComputedCssGridTrackLengthPercentage::Percentage(value)
                     ) if value.is_finite() && value >= 0.0
                 )
             {

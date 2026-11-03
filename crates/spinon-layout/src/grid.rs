@@ -282,7 +282,7 @@ pub enum GridPlacementMode {
     RootHtmlImplicitRowsV1,
     /// 제한 Root HTML 경로의 explicit-cell sparse column auto-placement입니다.
     RootHtmlColumnFlowV1,
-    /// 제한 Root HTML 경로에서 finite non-negative px `fit-content()` explicit track을 sizing합니다.
+    /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
     DenseAutoPlacement,
@@ -2201,6 +2201,7 @@ fn validate_tracks(
                         && matches!(
                             value,
                             GridTrackLengthPercentage::LengthPx(limit)
+                                | GridTrackLengthPercentage::Percentage(limit)
                                 if limit.is_finite() && *limit >= 0.0
                         ))
             }

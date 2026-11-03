@@ -1,0 +1,62 @@
+{
+  "capture_date": "2026-11-03",
+  "git_head": "9e0180be9522c3063f4186daaf599dcad87c087f",
+  "git_branch": "impl/c11-root-html-grid-fit-content-percentage",
+  "git_worktree_was_dirty": true,
+  "runtime_fixture_sha256": "aa6566910a8a7b699c002a6ed69cbd9a52174b1f1177b77e52facccb67bb7ae5",
+  "chrome_reference": {
+    "browser": "Agent Browser / HeadlessChrome 156.0.0.0",
+    "fixture": "chrome-over-100-cap.html",
+    "ahem_font_sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "content_width_px": 50,
+    "fit_content_argument": "120%",
+    "resolved_limit_from_css_grid_formula_px": 60,
+    "min_content_px": 20,
+    "max_content_px": 110,
+    "observed_used_track_px": 50,
+    "interpretation": "The 60px limit does not raise the used track beyond the definite 50px available grid space."
+  },
+  "content_box_basis_reference": {
+    "browser": "Agent Browser / HeadlessChrome 156.0.0.0",
+    "fixture": "chrome-content-box-percentage-basis.html",
+    "ahem_font_sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "content_width_px": 30,
+    "border_px_per_side": 2,
+    "fit_content_argument": "50%",
+    "content_box_cap_px": 15,
+    "incorrect_border_box_cap_px": 17,
+    "intrinsic_contributions_px": {
+      "min_content": 10,
+      "max_content": 30
+    },
+    "observed_used_track_px": 15,
+    "spinon_shared_track_sizing_used_track_px": 15,
+    "interpretation": "The 30px content box, not the 34px border box, resolves the percentage cap."
+  },
+  "android": {
+    "target": "Android API 37.0 ARM64 AVD",
+    "avd": "spinon_c114_cyclic_image_span_20261023",
+    "serial": "emulator-5560",
+    "renderer_request": "SwiftShader",
+    "capture": "SurfaceView PixelCopy",
+    "run_id": "c11fitpctandroid02",
+    "apk_sha256": "8f747cf83ce0c5cf4ed2e8914023a2d36f48930e4aa837ac069f5763a086a392",
+    "result": "matched 4/4"
+  },
+  "ios": {
+    "target": "iPhone 17 Pro Simulator",
+    "os": "iOS 26.2",
+    "udid": "14CEFD63-B67F-4466-BDEB-0E39A1744EB7",
+    "capture": "Metal drawable before compositor submission",
+    "drawable_px": [1206, 2334],
+    "scale": [3.0, 3.0],
+    "run_id": "c11fitpctios002",
+    "executable_sha256": "d5da53752ed87f1a4523a054b82a0a400962e3a029844e59f80ca42fefa7a957",
+    "result": "matched 4/4"
+  },
+  "limits": [
+    "The Android target is an emulator using software rendering, not physical hardware.",
+    "The iOS samples are from the Metal drawable before compositor submission.",
+    "This evidence covers one fixed Root HTML overflow scene, not all C11 behavior or WPT conformance."
+  ]
+}
