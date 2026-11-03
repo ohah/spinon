@@ -1,6 +1,6 @@
 # C11 plan sync PR #1115 diff review — 20 adversarial perspectives
 
-**Scope:** PR #1115 changes only the C11 high-level plan summary. Reviewed the live PR diff against `main` at `9708f18deda076b71e3644da2ae0b239af999cb1`, current `spec/STATUS.md`, and merged PR metadata. These checks validate documentation accuracy; they do not re-run product tests or simulator captures.
+**Scope:** The product-documentation change is limited to the C11 high-level plan summary; PR #1115 also adds this review record. The 20 checks review the plan correction against `main` at `9708f18deda076b71e3644da2ae0b239af999cb1`, current `spec/STATUS.md`, and merged PR metadata. They validate documentation accuracy and do not re-run product tests or simulator captures.
 
 1. **Source of truth:** Is the authoritative status read from `spec/STATUS.md` rather than inferred from this plan? **PASS** — the PR leaves the ledger unchanged and links it.
 2. **PR #1113 merge state:** Could the plan mark a still-open candidate as merged? **PASS** — GitHub reports PR #1113 `MERGED` at `2026-11-03T08:21:27Z`.
