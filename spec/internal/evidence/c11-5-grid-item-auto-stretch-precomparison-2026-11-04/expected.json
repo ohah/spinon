@@ -1,0 +1,21 @@
+{
+  "derivation": "Independent CSS Box Alignment and CSS Grid derivation for empty, non-replaced div grid items without a preferred aspect ratio; each grid area is 40x30 CSS px, with zero margins, padding, borders, and gaps.",
+  "rules": [
+    "For a grid item, self-alignment auto uses the parent's corresponding items alignment value.",
+    "For a non-replaced grid item without a preferred aspect ratio, normal behaves as stretch.",
+    "Stretch fills only an auto-sized axis; a fixed preferred dimension remains fixed.",
+    "A non-stretch self-alignment treats auto size as fit-content; an empty item has zero fit-content size."
+  ],
+  "scenes": [
+    { "id": "auto-parent-normal", "expectedComputedAlignSelf": "auto", "expectedComputedJustifySelf": "auto", "expectedItemFrame": { "x": 0, "y": 0, "width": 40, "height": 30 } },
+    { "id": "normal-self", "expectedComputedAlignSelf": "normal", "expectedComputedJustifySelf": "normal", "expectedItemFrame": { "x": 0, "y": 0, "width": 40, "height": 30 } },
+    { "id": "stretch-self", "expectedComputedAlignSelf": "stretch", "expectedComputedJustifySelf": "stretch", "expectedItemFrame": { "x": 0, "y": 0, "width": 40, "height": 30 } },
+    { "id": "position-self-start", "expectedComputedAlignSelf": "start", "expectedComputedJustifySelf": "start", "expectedItemFrame": { "x": 0, "y": 0, "width": 0, "height": 0 } },
+    { "id": "auto-parent-start", "expectedComputedAlignSelf": "auto", "expectedComputedJustifySelf": "auto", "expectedItemFrame": { "x": 0, "y": 0, "width": 0, "height": 0 } },
+    { "id": "fixed-stretch", "expectedComputedAlignSelf": "stretch", "expectedComputedJustifySelf": "stretch", "expectedItemFrame": { "x": 0, "y": 0, "width": 16, "height": 10 } },
+    { "id": "fixed-width-auto-height", "expectedComputedAlignSelf": "stretch", "expectedComputedJustifySelf": "stretch", "expectedItemFrame": { "x": 0, "y": 0, "width": 16, "height": 30 } },
+    { "id": "auto-width-fixed-height", "expectedComputedAlignSelf": "stretch", "expectedComputedJustifySelf": "stretch", "expectedItemFrame": { "x": 0, "y": 0, "width": 40, "height": 10 } },
+    { "id": "align-stretch-only", "expectedComputedAlignSelf": "stretch", "expectedComputedJustifySelf": "start", "expectedItemFrame": { "x": 0, "y": 0, "width": 0, "height": 30 } },
+    { "id": "justify-stretch-only", "expectedComputedAlignSelf": "start", "expectedComputedJustifySelf": "stretch", "expectedItemFrame": { "x": 0, "y": 0, "width": 40, "height": 0 } }
+  ]
+}

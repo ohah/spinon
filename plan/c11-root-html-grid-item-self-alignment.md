@@ -12,6 +12,8 @@ PR #1124는 적격 fixed-track Grid container의 `align-items`와 `justify-items
 
 이 후속은 기존 `RuntimeRootHtmlTextPaintV1` parsed Root HTML 경로와 PR #1124의 동일 fixed-track Grid eligibility를 재사용한다. 고정 크기 item의 alignment position만 제한적으로 연결하고, `auto` inheritance, shorthand computed-value 분리, 안전/비안전 overflow 위치를 검증한다. 일반 CSS admission, automatic/stretch item sizing, baseline groups 또는 전체 C11.5를 완료 처리하지 않는다.
 
+후속 [auto-size/`normal`/`stretch` 계획](./c11-root-html-grid-item-auto-stretch.md)은 이 fixed-size slice의 명시적 제외 범위를 독립된 제한 구현 대상으로 추적한다.
+
 ## 규범과 고정 profile
 
 - [CSS Box Alignment Module Level 3, 2026-10-08 Working Draft](https://www.w3.org/TR/2026/WD-css-align-3-20261008/) §§4.1, 4.4, 6.1.5, 6.2.5, 6.3을 기준으로 한다. [CSS Grid Layout Module Level 1, 2025-03-26 CRD](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) §§10.3–10.4에서 Grid item의 self-alignment container가 grid area임을 확인한다. Box Alignment Working Draft는 `<overflow-position>`을 at-risk로 표시한다. 그러므로 `safe`/`unsafe` 결과는 이 고정 Chrome/profile 관찰 범위로 기록하며 공개 호환성 약속으로 확대하지 않는다.

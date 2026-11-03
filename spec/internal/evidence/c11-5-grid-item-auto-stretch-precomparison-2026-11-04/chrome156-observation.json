@@ -1,0 +1,17 @@
+{
+  "source": "Agent Browser HeadlessChrome 156.0.8078.80",
+  "fixtureSha256": "d034f5584f4475270e11e2eec3947671571f98496e3b31b145c53e237cfcc40e",
+  "coordinateSpace": "CSS px relative to the 40x30 CSS px grid area",
+  "scenes": [
+    { "id": "auto-parent-normal", "alignSelf": "auto", "justifySelf": "auto", "cssomResolvedWidth": 40, "cssomResolvedHeight": 30, "frame": { "x": 0, "y": 0, "width": 40, "height": 30 } },
+    { "id": "normal-self", "alignSelf": "normal", "justifySelf": "normal", "cssomResolvedWidth": 40, "cssomResolvedHeight": 30, "frame": { "x": 0, "y": 0, "width": 40, "height": 30 } },
+    { "id": "stretch-self", "alignSelf": "stretch", "justifySelf": "stretch", "cssomResolvedWidth": 40, "cssomResolvedHeight": 30, "frame": { "x": 0, "y": 0, "width": 40, "height": 30 } },
+    { "id": "position-self-start", "alignSelf": "start", "justifySelf": "start", "cssomResolvedWidth": 0, "cssomResolvedHeight": 0, "frame": { "x": 0, "y": 0, "width": 0, "height": 0 } },
+    { "id": "auto-parent-start", "alignSelf": "auto", "justifySelf": "auto", "cssomResolvedWidth": 0, "cssomResolvedHeight": 0, "frame": { "x": 0, "y": 0, "width": 0, "height": 0 } },
+    { "id": "fixed-stretch", "alignSelf": "stretch", "justifySelf": "stretch", "cssomResolvedWidth": 16, "cssomResolvedHeight": 10, "frame": { "x": 0, "y": 0, "width": 16, "height": 10 } },
+    { "id": "fixed-width-auto-height", "alignSelf": "stretch", "justifySelf": "stretch", "cssomResolvedWidth": 16, "cssomResolvedHeight": 30, "frame": { "x": 0, "y": 0, "width": 16, "height": 30 } },
+    { "id": "auto-width-fixed-height", "alignSelf": "stretch", "justifySelf": "stretch", "cssomResolvedWidth": 40, "cssomResolvedHeight": 10, "frame": { "x": 0, "y": 0, "width": 40, "height": 10 } },
+    { "id": "align-stretch-only", "alignSelf": "stretch", "justifySelf": "start", "cssomResolvedWidth": 0, "cssomResolvedHeight": 30, "frame": { "x": 0, "y": 0, "width": 0, "height": 30 } },
+    { "id": "justify-stretch-only", "alignSelf": "start", "justifySelf": "stretch", "cssomResolvedWidth": 40, "cssomResolvedHeight": 0, "frame": { "x": 0, "y": 0, "width": 40, "height": 0 } }
+  ]
+}
