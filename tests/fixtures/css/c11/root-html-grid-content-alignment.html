@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid content alignment precomparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      #grid {
+        display: grid;
+        width: 240px;
+        height: 180px;
+        grid-template-columns: 40px 60px;
+        grid-template-rows: 30px 50px;
+        column-gap: 10px;
+        row-gap: 10px;
+        align-content: space-around;
+        justify-content: space-evenly;
+        overflow: visible;
+        background-color: #f4f4f4;
+      }
+      .item { width: 10px; height: 10px; }
+      [data-cell="a"] { background-color: #e53935; }
+      [data-cell="b"] { background-color: #1e88e5; }
+      [data-cell="c"] { background-color: #43a047; }
+      [data-cell="d"] { background-color: #8e24aa; }
+    </style>
+  </head>
+  <body>
+    <div id="grid" aria-label="Grid alignment reference">
+      <div class="item" data-cell="a"></div>
+      <div class="item" data-cell="b"></div>
+      <div class="item" data-cell="c"></div>
+      <div class="item" data-cell="d"></div>
+    </div>
+  </body>
+</html>
