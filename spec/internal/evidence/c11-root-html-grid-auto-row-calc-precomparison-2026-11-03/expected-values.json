@@ -1,0 +1,54 @@
+{
+  "basis": "CSS Grid Layout Module Level 1 (2025-03-26 CRD), §§7.2.1 and 7.6, plus direct arithmetic for the fixed fixture",
+  "toleranceCssPx": 0.02,
+  "scenes": {
+    "list-pattern": {
+      "definiteContentHeight": 100,
+      "explicitRows": [10, 20],
+      "autoRowsPattern": ["calc(10% + 2px)", "25%", "15px"],
+      "resolvedPattern": [12, 25, 15],
+      "implicitRowCount": 6,
+      "expandedUsedRows": [10, 20, 12, 25, 15, 12, 25, 15],
+      "rowGap": 3,
+      "rowStarts": [0, 13, 36, 51, 79, 97, 112, 140],
+      "itemRectsRelativeToRoot": [
+        [0, 0, 10, 10], [0, 13, 10, 10],
+        [0, 36, 10, 10], [0, 51, 10, 10],
+        [0, 79, 10, 10], [0, 97, 10, 10],
+        [0, 112, 10, 10], [0, 140, 10, 10]
+      ]
+    },
+    "negative-range": {
+      "definiteContentHeight": 100,
+      "expression": "1px - 10%",
+      "unclampedResult": -9,
+      "usedImplicitRows": [0]
+    },
+    "over-100-percent": {
+      "definiteContentHeight": 100,
+      "expression": "120% + 1px",
+      "usedImplicitRows": [121],
+      "overflowIsPreserved": true
+    },
+    "zero-basis": {
+      "definiteContentHeight": 0,
+      "expression": "10% + 5px",
+      "usedImplicitRows": [5]
+    },
+    "gap-basis": {
+      "definiteContentHeight": 100,
+      "expression": "10% + 5px",
+      "rowGap": 10,
+      "usedImplicitRows": [15, 15],
+      "rowStarts": [0, 25],
+      "gapIsExcludedFromPercentageBasis": true
+    }
+  },
+  "directCalculations": [
+    "100 * 0.10 + 2 = 12",
+    "100 * 0.25 = 25",
+    "100 * 1.20 + 1 = 121",
+    "0 * 0.10 + 5 = 5",
+    "15 + 10 row-gap = second row start 25"
+  ]
+}
