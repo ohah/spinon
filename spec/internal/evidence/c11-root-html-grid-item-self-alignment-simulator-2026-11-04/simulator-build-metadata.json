@@ -117,9 +117,10 @@
     "cargoFmtCheck": "passed",
     "targetedClippy": "passed",
     "implementationRuntimeReview20": "completed_with_known_broad_package_failures_documented",
-    "implementationPrDiffReview30": "pending",
+    "implementationPrDiffReview30": "completed_for_pr_1128_head_b2d59ee",
     "directPlatformSurfaceReadback": "passed",
-    "implementationPr": "not-created",
-    "officialCompletionTotal": "72/213"
+    "implementationPr": "open_1128",
+    "officialCompletionTotal": "72/213",
+    "githubStatusChecks": "none_reported"
   }
 }
