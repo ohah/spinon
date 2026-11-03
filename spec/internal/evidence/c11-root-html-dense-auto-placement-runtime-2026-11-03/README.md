@@ -1,5 +1,7 @@
 # C11.1 parsed Root HTML dense placement — Android/iOS runtime evidence
 
+제한 구현 PR [#1117](https://github.com/ohah/spinon/pull/1117)은 `2026-11-03T12:57:55Z` Rebase and merge됐고 merge SHA는 `f1043bda5ed69845b89992ba5f7cd28a03f42f5c`다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. C11.1/C11 및 공식 완료 `72/213`은 그대로다. [병합 후 문서 동기화 PR의 diff 검토](./post-merge-doc-sync-pr-diff-review-30.md)
+
 ## Final scored runs
 
 | Platform | Run | Result | Geometry | Surface pixels |
