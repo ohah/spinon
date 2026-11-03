@@ -357,6 +357,8 @@ pub struct LayoutStyle {
     pub direction: TextDirection,
     pub align_items: LayoutAlignItems,
     pub align_self: LayoutAlignSelf,
+    /// Grid item의 inline 축 self-alignment입니다. `Auto`는 부모 `justify-items`를 사용합니다.
+    pub justify_self: LayoutAlignSelf,
     /// `None`은 프로파일이 `align-content`를 지원하지 않음을 뜻합니다.
     pub align_content: Option<LayoutAlignContent>,
     pub justify_content: LayoutJustifyContent,
@@ -491,6 +493,7 @@ impl Default for LayoutStyle {
             direction: TextDirection::Ltr,
             align_items: LayoutAlignItems::Normal,
             align_self: LayoutAlignSelf::Auto,
+            justify_self: LayoutAlignSelf::Auto,
             align_content: None,
             justify_content: LayoutJustifyContent::Normal,
             margin: LayoutEdges::default(),

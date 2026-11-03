@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.5 Grid item self-alignment precomparison</title>
+<style>
+* { box-sizing:border-box; }
+body { margin:24px; }
+main { display:block; }
+.card { height:50px; padding:0; background-color:white; }
+h2 { height:12px; margin:0; font-size:10px; font-weight:400; }
+.grid { display:grid; grid-template-columns:40px; grid-template-rows:30px; width:40px; height:30px; column-gap:0px; row-gap:0px; margin:0; padding:0; background-color:#dbeafe; }
+.item { margin:0; padding:0; background-color:#f97316; }
+</style>
+<main><div class="card" data-scene="auto-inherits-center"><h2>auto-inherits-center</h2><div class="grid" data-parent="align-items:center;justify-items:center" style="align-items:center;justify-items:center"><div class="item" style="width:16px;height:10px;align-self:auto;justify-self:auto"></div></div></div>
+<div class="card" data-scene="align-end-justify-start"><h2>align-end-justify-start</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;align-self:end;justify-self:start"></div></div></div>
+<div class="card" data-scene="align-center-justify-end"><h2>align-center-justify-end</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;align-self:center;justify-self:end"></div></div></div>
+<div class="card" data-scene="align-start-justify-center"><h2>align-start-justify-center</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;align-self:start;justify-self:center"></div></div></div>
+<div class="card" data-scene="place-self-center"><h2>place-self-center</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;place-self:center"></div></div></div>
+<div class="card" data-scene="place-self-end-start"><h2>place-self-end-start</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;place-self:end start"></div></div></div>
+<div class="card" data-scene="self-overrides-parent"><h2>self-overrides-parent</h2><div class="grid" data-parent="align-items:center;justify-items:center" style="align-items:center;justify-items:center"><div class="item" style="width:16px;height:10px;align-self:start;justify-self:end"></div></div></div>
+<div class="card" data-scene="justify-left"><h2>justify-left</h2><div class="grid" data-parent="align-items:start;justify-items:end" style="align-items:start;justify-items:end"><div class="item" style="width:16px;height:10px;align-self:center;justify-self:left"></div></div></div>
+<div class="card" data-scene="justify-right"><h2>justify-right</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;align-self:end;justify-self:right"></div></div></div>
+<div class="card" data-scene="self-start-end"><h2>self-start-end</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;align-self:self-end;justify-self:self-start"></div></div></div>
+<div class="card" data-scene="safe-center-overflow"><h2>safe-center-overflow</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:50px;height:40px;align-self:safe center;justify-self:safe center"></div></div></div>
+<div class="card" data-scene="unsafe-center-overflow"><h2>unsafe-center-overflow</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:50px;height:40px;align-self:unsafe center;justify-self:unsafe center"></div></div></div>
+<div class="card" data-scene="safe-end-overflow"><h2>safe-end-overflow</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:50px;height:40px;align-self:safe end;justify-self:safe end"></div></div></div>
+<div class="card" data-scene="unsafe-end-overflow"><h2>unsafe-end-overflow</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:50px;height:40px;align-self:unsafe end;justify-self:unsafe end"></div></div></div>
+<div class="card" data-scene="place-self-unsafe-safe"><h2>place-self-unsafe-safe</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:50px;height:40px;place-self:unsafe center safe end"></div></div></div>
+<div class="card" data-scene="place-self-safe-unsafe"><h2>place-self-safe-unsafe</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:50px;height:40px;place-self:safe end unsafe center"></div></div></div>
+<div class="card" data-scene="flex-end-start-alias"><h2>flex-end-start-alias</h2><div class="grid" data-parent="align-items:start;justify-items:start" style="align-items:start;justify-items:start"><div class="item" style="width:16px;height:10px;align-self:flex-end;justify-self:flex-start"></div></div></div><div class="card" data-scene="invalid-align-self-left-falls-back-auto"><h2>invalid-align-self-left-falls-back-auto</h2><div class="grid" data-parent="align-items:center;justify-items:center" style="align-items:center;justify-items:center"><div class="item" style="width:16px;height:10px;align-self:left;justify-self:start"></div></div></div>
+<div class="card" data-scene="invalid-justify-self-top-falls-back-auto"><h2>invalid-justify-self-top-falls-back-auto</h2><div class="grid" data-parent="align-items:end;justify-items:end" style="align-items:end;justify-items:end"><div class="item" style="width:16px;height:10px;align-self:center;justify-self:top"></div></div></div>
+</main>
+<script>
+window.collect = () => [...document.querySelectorAll('[data-scene]')].map(card => {
+ const grid=card.querySelector('.grid'), item=card.querySelector('.item');
+ const g=grid.getBoundingClientRect(), r=item.getBoundingClientRect(), gs=getComputedStyle(grid), is=getComputedStyle(item);
+ return {id:card.dataset.scene, parent:{alignItems:gs.alignItems,justifyItems:gs.justifyItems}, self:{alignSelf:is.alignSelf,justifySelf:is.justifySelf,width:is.width,height:is.height}, grid:{x:g.x,y:g.y,width:g.width,height:g.height}, item:{x:r.x-g.x,y:r.y-g.y,width:r.width,height:r.height}};
+});
+</script>

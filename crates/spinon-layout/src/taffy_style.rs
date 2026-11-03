@@ -292,7 +292,7 @@ pub(super) fn to_taffy_style(
             .container
             .map(|container| to_taffy_align_items(container.justify_items))
             .unwrap_or(AlignItems::NORMAL),
-        justify_self: item_is_replaced.then_some(AlignSelf::START),
+        justify_self: to_taffy_justify_self(style.justify_self, item_is_replaced),
         justify_content: to_taffy_justify_content(
             style.justify_content,
             style.flex_direction,
@@ -450,6 +450,14 @@ fn to_taffy_grid_align_self(value: LayoutAlignSelf) -> Option<AlignSelf> {
     match value {
         LayoutAlignSelf::LastBaseline => Some(AlignSelf::LAST_BASELINE),
         _ => to_taffy_align_self(value),
+    }
+}
+
+fn to_taffy_justify_self(value: LayoutAlignSelf, item_is_replaced: bool) -> Option<AlignSelf> {
+    match value {
+        LayoutAlignSelf::Auto if item_is_replaced => Some(AlignSelf::START),
+        LayoutAlignSelf::Auto => None,
+        value => to_taffy_grid_align_self(value),
     }
 }
 

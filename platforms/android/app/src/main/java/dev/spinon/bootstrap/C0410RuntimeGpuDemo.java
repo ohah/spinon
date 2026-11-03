@@ -17384,6 +17384,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlBlockPaintProbeRequested;
     private final boolean rootHtmlTextPaintProbeRequested;
     private final boolean rootHtmlDefaultRenderRequested;
+    private final boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested;
+    private boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted;
     private final String rootHtmlPageScaleCase;
     private final boolean rootHtmlApplicationRequested;
     private final boolean rootHtmlGridMinmaxPixelCaptureRequested;
@@ -17632,6 +17634,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c0412_root_html_text_paint", false);
         rootHtmlDefaultRenderRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c0412_root_html_default_render", false);
+        c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c115_root_html_grid_item_self_alignment_pixelcopy", false);
         rootHtmlPageScaleCase = activity.getIntent()
                 .getStringExtra("spinon_c0412_root_html_page_scale_case");
         this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
@@ -18933,6 +18937,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
+        if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
+                && (!BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
+                        || !rootHtmlDefaultRenderRequested)) {
+            Log.e(TAG, "SPINON_C115_PIXELCOPY_ARGUMENT_ERROR rejected=true"
+                    + " reason=fixture-feature-and-root-html-route-required");
+            postStatus("실패 · C11.5 PixelCopy에는 opt-in Root HTML route가 필요합니다");
+            return;
+        }
         if (rootHtmlPageScaleCase != null
                 && (!rootHtmlDefaultRenderRequested
                         || !(rootHtmlPageScaleCase.equals("half")
@@ -18951,7 +18963,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     if (!key.startsWith("spinon_c")
                             || key.equals("spinon_c0412_root_html_default_render")
                             || key.equals("spinon_c0412_root_html_page_scale_case")
-                            || key.equals("spinon_c0410_runtime_gpu")) continue;
+                            || key.equals("spinon_c0410_runtime_gpu")
+                            || BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
+                                    && c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
+                                    && key.equals(
+                                            "spinon_c115_root_html_grid_item_self_alignment_pixelcopy")) {
+                        continue;
+                    }
                     Object value = extras.get(key);
                     if (Boolean.FALSE.equals(value)) continue;
                     Log.e(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ARGUMENT_ERROR conflicting="
@@ -22125,6 +22143,49 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private void requestC115RootHtmlGridItemSelfAlignmentPixelCapture(
+            long renderer, long generation, String drawReport) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted
+                    || !surfaceAvailable || surfaceGeneration != generation
+                    || rendererHandle != renderer || rendererGeneration != generation) {
+                return;
+            }
+            c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        String runId = Long.toHexString(SystemClock.elapsedRealtimeNanos());
+        java.util.function.BooleanSupplier sourceIsCurrent = () -> {
+            synchronized (stateLock) {
+                return !closing && surfaceAvailable && surfaceGeneration == generation
+                        && rendererHandle == renderer && rendererGeneration == generation
+                        && surfaceWidth == width && surfaceHeight == height;
+            }
+        };
+        java.util.function.Consumer<String> statusCallback = this::postStatus;
+        if (BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST) {
+            try {
+                invokeFixtureNative(
+                        "dev.spinon.bootstrap.C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter",
+                        "request",
+                        new Class<?>[] {SurfaceView.class, Activity.class,
+                                int.class, int.class, long.class, String.class, String.class,
+                                Handler.class, java.util.concurrent.Executor.class,
+                                java.util.function.BooleanSupplier.class,
+                                java.util.function.Consumer.class},
+                        surfaceView, activity, width, height, generation, runId, drawReport,
+                        mainHandler, runtimeQueue, sourceIsCurrent, statusCallback);
+            } catch (RuntimeException error) {
+                Log.e(TAG, "SPINON_C115_PIXELCOPY status=error run_id=" + runId
+                        + " reason=adapter-invocation", error);
+                postStatus("실패 · C11.5 Android PixelCopy adapter를 호출하지 못했습니다");
+            }
+        }
+    }
+
     private void requestC11GridPixelMatrixCapture(long renderer, long generation) {
         final int width;
         final int height;
@@ -24378,7 +24439,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c133WheelProbeRequested) verifyC133WheelDraw(result);
-        if (rootHtmlGridAutoMinimumPixelCaptureRequested) {
+        if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested) {
+            requestC115RootHtmlGridItemSelfAlignmentPixelCapture(renderer, generation, result);
+        } else if (rootHtmlGridAutoMinimumPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_DISPATCH run_id="
                     + rootHtmlGridAutoMinimumPixelCaptureRunId + " generation=" + generation);
             requestRootHtmlGridAutoMinimumPixelCapture(renderer, generation);

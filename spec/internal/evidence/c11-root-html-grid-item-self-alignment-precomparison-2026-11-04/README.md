@@ -4,11 +4,11 @@
 
 고정 track Root HTML Grid에서 `align-self`, `justify-self`, `place-self`가 grid item의 cell 내 위치를 어떻게 바꾸는지 고정했다. 기존 PR #1124 계획은 `align-items`와 `justify-items`를 다루고 child의 self-alignment는 계속 거부한다. 이 비교는 다음 제한 slice의 기준이며 Spinon 구현 결과가 아니다.
 
-Agent Browser를 통해 HeadlessChrome 156.0.0.0, DPR 1, viewport 1280×1100에서 로컬 고정 HTML을 열었다. 17개 유효 정렬 scene과 문법상 invalid인 `align-self:left`·`justify-self:top` declaration control 두 개를 관찰했다. `document.fonts.status=loaded`이고 Ahem font check도 참이었다. 각 장면은 40×30 CSS px grid area와 명시 크기 item, zero margin/padding/border를 쓴다. Overflow 장면은 item 50×40 CSS px다.
+Agent Browser를 통해 HeadlessChrome 156.0.0.0, DPR 1, viewport 1280×1100에서 로컬 고정 HTML을 열었다. 17개 유효 정렬 scene과 문법상 invalid인 `align-self:left`·`justify-self:top` declaration control 두 개를 관찰했다. fixture item은 자식 text node가 없는 빈 `div`이고 `overflow:visible`이며 custom font를 사용하지 않는다. metadata에는 item 19개의 child node 수가 모두 0임을 기록했다. 각 장면은 40×30 CSS px grid area와 명시 크기 item, zero margin/padding/border를 쓴다. Overflow 장면은 item 50×40 CSS px다.
 
-- [관찰 HTML](./grid-item-self-alignment.html)
+- [Agent Browser 관찰 및 runtime 공용 fixture](../../../../tests/fixtures/css/c11/root-html-grid-item-self-alignment.html)
 - [Chrome DOM 관측 JSON](./chrome-observation.json)
-- [Chrome/viewport/font metadata](./browser-metadata.json)
+- [Chrome/viewport metadata](./browser-metadata.json)
 - [Agent Browser 화면](./chrome-agent-browser.png)
 - [독립 기대값](./expected.json)
 - [재실행 가능한 19-scene 비교기](./verify-precomparison.mjs) 및 [결과](./comparison-verification.json)

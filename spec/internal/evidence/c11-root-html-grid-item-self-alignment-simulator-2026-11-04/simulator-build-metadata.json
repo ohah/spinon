@@ -1,0 +1,125 @@
+{
+  "schema": "spinon-c11-5-simulator-build-metadata-v1",
+  "source": {
+    "baseCommit": "a0dd16e668204acd3d177eb301229e0a007b205f",
+    "candidateBranch": "impl/c11-root-html-grid-item-self-alignment",
+    "candidateIsUncommitted": true,
+    "sharedFixture": "tests/fixtures/css/c11/root-html-grid-item-self-alignment.html",
+    "sharedFixtureSha256": "30a156fe7c9dfb02c3f4fb7148cb1205b8c9360a1061f349818ace7076c16ad1",
+    "bundleResourceWasRestoredAfterBuild": true
+  },
+  "android": {
+    "avd": "spinon_api37_0_applied_txn",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "renderer": "ANGLE over Vulkan SwiftShader",
+    "buildFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST": 1
+    },
+    "apkSha256": "6484469d7962265c9e04ae30a63696df2db72dc5ae44bc628592e1ea1ac38cbb",
+    "bundleFixtureSha256": "30a156fe7c9dfb02c3f4fb7148cb1205b8c9360a1061f349818ace7076c16ad1",
+    "runtimePresented": true,
+    "boxes": 79,
+    "screenshot": "android-api37-avd.png",
+    "log": "android-api37-avd.log",
+    "directSurfaceReadback": {
+      "method": "Android SurfaceView PixelCopy",
+      "matchedSamples": "7/7",
+      "png": "android-surfaceview-pixelcopy.png",
+      "log": "android-pixelcopy.log",
+      "pngSha256": "462052046c4cf9e9535e93a7beff56df13fe31217b3b9da1c5978f75bd4d6f81"
+    }
+  },
+  "ios": {
+    "device": "iPhone 17 Pro",
+    "os": "iOS 26.2 Simulator",
+    "architecture": "arm64",
+    "renderer": "Metal; Apple iOS simulator GPU",
+    "buildFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": 1
+    },
+    "executableSha256": "253e189db10ea9ee5e28e77f30f2a32f33b153778f97593cb91d6567c930ee28",
+    "bundleFixtureSha256": "30a156fe7c9dfb02c3f4fb7148cb1205b8c9360a1061f349818ace7076c16ad1",
+    "runtimePresented": true,
+    "boxes": 79,
+    "screenshot": "ios-iphone17pro-simulator.png",
+    "log": "ios-simulator.log",
+    "directSurfaceReadback": {
+      "method": "Metal drawable before compositor submission",
+      "matchedSamples": "7/7",
+      "drawable": "960x720",
+      "viewportCssPx": "980x735",
+      "log": "ios-metal-readback.log",
+      "screenshot": "ios-iphone17pro-metal-readback.png",
+      "screenshotSha256": "7f4bf0ba91c3c6815ddee43185d68ec2cdfa1fd357e770cb65d4442c5d615aa9"
+    }
+  },
+  "screenSamples": {
+    "artifact": "simulator-screen-samples.json",
+    "androidMatched": "7/7",
+    "iosMatched": "7/7",
+    "evidenceClass": "OS-composited screen screenshot samples",
+    "pixelCopy": false,
+    "metalDrawableReadback": false
+  },
+  "directSurfaceSamples": {
+    "androidPixelCopyMatched": "7/7",
+    "iosMetalDrawableMatched": "7/7",
+    "iosReadbackBoundary": "before-compositor-submission"
+  },
+  "androidArtifactBoundary": {
+    "defaultFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 0,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 0,
+      "SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST": 0
+    },
+    "defaultApkSha256": "56e718d3293e29d9a8422fbe9df5ad9c04962d064d8ad5230598ff8b2d59d18d",
+    "defaultBuildLog": "android-default-artifact-build-final.log",
+    "defaultDexContainsC115AdapterClassName": false,
+    "defaultDexContainsFixtureSceneIds": false,
+    "defaultAssetContainsSharedFixture": false,
+    "optInFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST": 1
+    },
+    "optInApkSha256": "da28b8f0edd1d2825f4e7e14145dc41d74c5252951f3add1548593fa786e3c94",
+    "optInBuildLog": "android-fixture-artifact-build-final.log",
+    "optInDexContainsAdapterClass": true,
+    "optInDexContainsFixtureSceneIds": true
+  },
+  "iosArtifactBoundary": {
+    "defaultFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 0,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 0,
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": 0
+    },
+    "defaultExecutableSha256": "751a82482275b6ef64bb27e595f3c0d62464c6a6924e6ef874de0e5bfd92b7b1",
+    "defaultBuildLog": "ios-default-artifact-build-final.log",
+    "defaultExecutableContainsC115Argument": false,
+    "defaultExecutableContainsFixtureSceneIds": false,
+    "optInFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": 1
+    },
+    "optInExecutableSha256": "f98ffcad8a3b6648048709a864462b6e82e882c17de669e04fdaa31b558cd4a4",
+    "optInBuildLog": "ios-fixture-artifact-build-final.log",
+    "optInExecutableContainsC115Argument": true,
+    "optInExecutableContainsFixtureSceneIds": true
+  },
+  "implementationState": {
+    "focusedRustTests": "passed",
+    "cargoFmtCheck": "passed",
+    "targetedClippy": "passed",
+    "implementationRuntimeReview20": "completed_with_known_broad_package_failures_documented",
+    "implementationPrDiffReview30": "pending",
+    "directPlatformSurfaceReadback": "passed",
+    "implementationPr": "not-created",
+    "officialCompletionTotal": "72/213"
+  }
+}

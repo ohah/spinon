@@ -592,6 +592,56 @@ pub(crate) fn is_invalid_root_html_named_grid_declaration_diagnostic(message: &s
     .any(|supported| property.trim().eq_ignore_ascii_case(supported))
 }
 
+pub(crate) fn is_invalid_root_html_grid_self_alignment_declaration_diagnostic(
+    message: &str,
+) -> bool {
+    let Some(declaration) = message
+        .strip_prefix("Unsupported property declaration: '")
+        .and_then(|message| message.strip_suffix("', OtherInvalidValue"))
+    else {
+        return false;
+    };
+    let Some(declaration) = remove_css_comments(declaration) else {
+        return false;
+    };
+    let Some((property, value)) = declaration.split_once(':') else {
+        return false;
+    };
+    let property = property.trim();
+    let mut components = value
+        .trim()
+        .trim_end_matches(';')
+        .split_whitespace()
+        .collect::<Vec<_>>();
+    if components
+        .last()
+        .is_some_and(|component| component.eq_ignore_ascii_case("!important"))
+    {
+        components.pop();
+    } else if components.len() >= 2
+        && components[components.len() - 2] == "!"
+        && components
+            .last()
+            .is_some_and(|component| component.eq_ignore_ascii_case("important"))
+    {
+        components.truncate(components.len() - 2);
+    }
+    let [value] = components.as_slice() else {
+        return false;
+    };
+    match property.to_ascii_lowercase().as_str() {
+        "align-self" => matches_ignore_ascii_case(value, &["left", "right", "top", "bottom"]),
+        "justify-self" => matches_ignore_ascii_case(value, &["top", "bottom"]),
+        _ => false,
+    }
+}
+
+fn matches_ignore_ascii_case(value: &str, candidates: &[&str]) -> bool {
+    candidates
+        .iter()
+        .any(|candidate| value.eq_ignore_ascii_case(candidate))
+}
+
 fn remove_css_comments(input: &str) -> Option<String> {
     let mut remaining = input;
     let mut output = String::with_capacity(input.len());

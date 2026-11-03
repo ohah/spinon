@@ -11,7 +11,7 @@
 | 7 | explicit self value가 parent default보다 우선하지 않는가 | **통과** — parent center와 item start/end를 결합한 scene이 좌표를 분리한다. |
 | 8 | `place-self`의 첫/두 번째 value 순서 또는 single-value 복제를 뒤집는가 | **통과** — `center`, `end start`, 안전/비안전 비대칭 두-value scene을 둔다. |
 | 9 | 물리 `left/right`가 `align-self`에도 잘못 허용되거나 RTL에 일반화되는가 | **통과** — `justify-self`만 허용하고 LTR·horizontal-tb로 scope를 제한한다. |
-| 10 | CSS-invalid authored value를 computed unsupported value로 처리하는가 | **통과** — Chrome 156에서 `align-self:left`·`justify-self:top`은 `auto`로 계산된다. raw author string을 읽지 않고 cascade fallback을 별도 통과 조건으로 둔다. |
+| 10 | CSS-invalid author declaration을 computed unsupported value로 처리하는가 | **통과** — Chrome 156에서 `align-self:left`·`justify-self:top`은 `auto`로 계산된다. Root HTML runtime은 알려진 invalid-declaration 진단만 좁게 허용하고 실제 정렬·fallback은 computed value로 판정한다. |
 | 11 | 문법상 유효하지만 아직 매핑하지 않은 `safe start` 등 값을 암묵 허용하는가 | **통과** — valid-but-unsupported computed value는 property/node를 보존해 layout 전 거부한다. |
 | 12 | `self-start/self-end`의 subject writing mode 의존을 임의로 바꾸는가 | **통과** — 이 profile은 item과 container를 LTR `horizontal-tb`로 고정하고 행렬은 시작/끝 결과만 확인한다. |
 | 13 | Grid에서 `flex-start/flex-end`가 start/end와 다른 결과를 만드는가 | **통과** — 비-flex formatting context의 alias 규범과 end/start scene을 포함한다. |

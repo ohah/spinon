@@ -1,5 +1,6 @@
 use super::{
     is_invalid_fixed_px_gap_declaration_diagnostic,
+    is_invalid_root_html_grid_self_alignment_declaration_diagnostic,
     is_invalid_root_html_named_grid_declaration_diagnostic,
     is_invalid_root_html_negative_fraction_track_diagnostic, supported_media_query_surface,
     supported_root_html_media_query_surface,
@@ -15,6 +16,36 @@ fn viewport_width_and_height_media_use_css_pixel_lengths() {
         "(width: 390px), (height: 844px)"
     ));
     assert!(supported_root_html_media_query_surface("(max-width: 0)"));
+}
+
+#[test]
+fn root_html_invalid_grid_self_alignment_declarations_fall_back_in_css_cascade() {
+    for diagnostic in [
+        "Unsupported property declaration: 'align-self:left;', OtherInvalidValue",
+        "Unsupported property declaration: 'ALIGN-SELF: right !IMPORTANT;', OtherInvalidValue",
+        "Unsupported property declaration: 'align-self:top/**/;', OtherInvalidValue",
+        "Unsupported property declaration: 'justify-self:bottom;', OtherInvalidValue",
+        "Unsupported property declaration: 'JUSTIFY-SELF: top ! important;', OtherInvalidValue",
+    ] {
+        assert!(
+            is_invalid_root_html_grid_self_alignment_declaration_diagnostic(diagnostic),
+            "known CSS-invalid self-alignment declaration should be dropped: {diagnostic}"
+        );
+    }
+
+    for diagnostic in [
+        "Unsupported property declaration: 'align-self:center;', OtherInvalidValue",
+        "Unsupported property declaration: 'justify-self:left;', OtherInvalidValue",
+        "Unsupported property declaration: 'justify-items:top;', OtherInvalidValue",
+        "Unsupported property declaration: 'align-self:top;', UnexpectedToken",
+        "Unsupported property declaration: 'justify-self:top;', UnexpectedToken",
+        "Unsupported property declaration: 'color:top;', OtherInvalidValue",
+    ] {
+        assert!(
+            !is_invalid_root_html_grid_self_alignment_declaration_diagnostic(diagnostic),
+            "unmatched diagnostic must remain fail-closed: {diagnostic}"
+        );
+    }
 }
 
 #[test]

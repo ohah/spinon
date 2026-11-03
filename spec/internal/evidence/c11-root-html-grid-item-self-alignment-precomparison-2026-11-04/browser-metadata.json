@@ -1,10 +1,224 @@
 {
+  "customFontFaces": 0,
   "devicePixelRatio": 1,
-  "fonts": {
-    "ahem": true,
-    "status": "loaded"
-  },
-  "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/grid-item-self-alignment.html",
+  "fontsStatus": "loaded",
+  "gridTracks": [
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    },
+    {
+      "columnGap": "0px",
+      "columns": "40px",
+      "rowGap": "0px",
+      "rows": "30px"
+    }
+  ],
+  "itemChildNodeCounts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "itemElementCount": 19,
+  "itemOverflow": [
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    },
+    {
+      "x": "visible",
+      "y": "visible"
+    }
+  ],
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-item-self-alignment.html",
   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
   "viewport": {
     "height": 1100,
