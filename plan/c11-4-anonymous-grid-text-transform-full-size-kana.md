@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [CSS Text Level 3 CRD 2026-08-14 §2.1 및 Appendix G](https://www.w3.org/TR/2026/CRD-css-text-3-20260814/#small-kana)
 
-**상태:** 계획 후보. `text-transform: full-size-kana`는 CSS Text Level 3의 Candidate Recommendation Draft에 정의되어 있으나 at-risk로 표시된다. 이 계획은 해당 draft의 고정 매핑 58개를 opt-in C11.4 anonymous direct-text Grid fixture 경로에서 구현하고, 공개 CSS 지원이나 안정된 상호운용 계약으로 승격하지 않는다.
+**상태:** 제한 opt-in 구현 PR [#1082](https://github.com/ohah/spinon/pull/1082) 병합 (2026-11-02). `text-transform: full-size-kana`는 CSS Text Level 3 Candidate Recommendation Draft에서 at-risk로 표시된다. 구현은 해당 draft의 고정 매핑 58개를 C11.4 anonymous direct-text Grid fixture 경로에 한정하며, 공개 CSS 지원이나 안정된 상호운용 계약으로 승격하지 않는다.
 
 ## 기준과 관찰
 
