@@ -1,0 +1,34 @@
+{
+  "basis": {
+    "property": "grid-auto-columns",
+    "percentageBasis": "definite grid content-box width",
+    "widthPx": 240
+  },
+  "patternArithmetic": [
+    {
+      "expression": "calc(10% + 5px)",
+      "calculation": "0.10 * 240px + 5px",
+      "expectedPx": 29
+    },
+    {
+      "expression": "calc(2% + 2px)",
+      "calculation": "0.02 * 240px + 2px",
+      "expectedPx": 6.8
+    }
+  ],
+  "usedColumnsPx": [30, 40, 29, 6.8, 29, 6.8],
+  "usedColumnStartsPx": [0, 35, 80, 114, 125.8, 159.8],
+  "rowStartsPx": [0, 23],
+  "itemColumnStartsPx": [0, 0, 35, 35, 80, 80, 114, 114, 125.8, 125.8, 159.8, 159.8],
+  "itemRowStartsPx": [0, 23, 0, 23, 0, 23, 0, 23, 0, 23, 0, 23],
+  "gridRightEdgePx": 240,
+  "lastTrackEndPx": 166.6,
+  "absoluteTolerancePx": 0.02,
+  "calcAndFrControl": {
+    "gridAutoColumns": "calc(10% + 5px) 1fr",
+    "usedColumnsPx": [30, 40, 29, 43.5, 29, 43.5],
+    "usedColumnStartsPx": [0, 35, 80, 114, 162.5, 196.5],
+    "flexAvailableSpacePx": 87,
+    "eachFractionTrackPx": 43.5
+  }
+}
