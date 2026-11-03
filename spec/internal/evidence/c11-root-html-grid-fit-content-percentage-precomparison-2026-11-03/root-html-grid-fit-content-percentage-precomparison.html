@@ -1,0 +1,140 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.1 Root HTML fit-content percentage precomparison</title>
+<style>
+  @font-face {
+    font-family: Ahem;
+    src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 10px/10px Ahem, sans-serif; color: white; background: #101820; }
+  .grid {
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    gap: 0;
+    width: 200px;
+    height: 60px;
+    margin: 0 0 8px;
+    padding: 0;
+    border: 0;
+  }
+  #below-min { grid-template-columns: fit-content(5%); grid-template-rows: 60px; }
+  #between { grid-template-columns: fit-content(20%); grid-template-rows: 60px; }
+  #above-max { grid-template-columns: fit-content(60%); grid-template-rows: 60px; }
+  #above-100 { grid-template-columns: fit-content(120%); grid-template-rows: 60px; }
+  #repeat { grid-template-columns: repeat(2, fit-content(20%)); grid-template-rows: 60px; }
+  #zero-basis { width: 0; grid-template-columns: fit-content(100%); grid-template-rows: 60px; }
+  #row-below-min {
+    width: 20px;
+    height: 100px;
+    grid-template-columns: 20px;
+    grid-template-rows: fit-content(20%);
+  }
+  #fixed-runtime {
+    width: 160px;
+    height: 40px;
+    grid-template-columns: fit-content(25%);
+    grid-template-rows: 20px;
+  }
+  #text-runtime {
+    width: 320px;
+    height: 100px;
+    grid-template-columns: fit-content(25%);
+    grid-template-rows: 100px;
+  }
+  .item { margin: 0; padding: 0; border: 0; background: #30a46c; }
+  #fixed-runtime-item { width: 60px; min-width: 0; height: 20px; background: #e5484d; }
+  .probe {
+    position: absolute;
+    top: 700px;
+    visibility: hidden;
+    font: 10px/10px Ahem, sans-serif;
+    white-space: normal;
+  }
+  #min-probe { left: 0; width: min-content; }
+  #max-probe { left: 200px; width: max-content; }
+  #row-min-probe { left: 400px; width: 20px; height: min-content; }
+  #result { position: absolute; top: 1000px; visibility: hidden; }
+</style>
+
+<div id="below-min" data-scene="fit-content-percent-below-minimum" class="grid">
+  <div id="below-min-item" class="item">AA AA AA AA</div>
+</div>
+<div id="between" data-scene="fit-content-percent-between-contributions" class="grid">
+  <div id="between-item" class="item">AA AA AA AA</div>
+</div>
+<div id="above-max" data-scene="fit-content-percent-above-max-content" class="grid">
+  <div id="above-max-item" class="item">AA AA AA AA</div>
+</div>
+<div id="above-100" data-scene="fit-content-percent-over-100" class="grid">
+  <div id="above-100-item" class="item">AA AA AA AA</div>
+</div>
+<div id="repeat" data-scene="fit-content-percent-fixed-repeat" class="grid">
+  <div id="repeat-item-a" class="item">AA AA AA AA</div>
+  <div id="repeat-item-b" class="item">AA AA AA AA</div>
+</div>
+<div id="zero-basis" data-scene="fit-content-percent-zero-basis" class="grid">
+  <div id="zero-basis-item" class="item">AA AA AA AA</div>
+</div>
+<div id="row-below-min" data-scene="fit-content-percent-row-below-minimum" class="grid">
+  <div id="row-item" class="item">AA AA AA AA</div>
+</div>
+<div id="fixed-runtime" data-scene="fit-content-percent-fixed-size-runtime" class="grid">
+  <div id="fixed-runtime-item" class="item"></div>
+</div>
+<div id="text-runtime" data-scene="fit-content-percent-text-runtime" class="grid">
+  <div id="text-runtime-item" class="item">A A A A A A A A A A A A A A A A A A A A</div>
+</div>
+<div id="min-probe" class="probe">AA AA AA AA</div>
+<div id="max-probe" class="probe">AA AA AA AA</div>
+<div id="row-min-probe" class="probe">AA AA AA AA</div>
+<pre id="result"></pre>
+<script>
+  const rect = (element) => {
+    const value = element.getBoundingClientRect();
+    return { x: value.x, y: value.y, width: value.width, height: value.height };
+  };
+  const observeScene = (id, itemIds) => {
+    const rootElement = document.querySelector(`#${id}`);
+    const root = rect(rootElement);
+    const style = getComputedStyle(rootElement);
+    return {
+      root,
+      computedColumns: style.gridTemplateColumns,
+      computedRows: style.gridTemplateRows,
+      items: Object.fromEntries(itemIds.map((itemId) => {
+        const item = rect(document.querySelector(`#${itemId}`));
+        return [itemId, { ...item, rootRelativeX: item.x - root.x, rootRelativeY: item.y - root.y }];
+      })),
+    };
+  };
+  const observe = () => ({
+    fontReady: document.fonts.check("10px Ahem"),
+    fontStatus: document.fonts.status,
+    viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+    scenes: {
+      belowMinimum: observeScene("below-min", ["below-min-item"]),
+      betweenContributions: observeScene("between", ["between-item"]),
+      aboveMaxContent: observeScene("above-max", ["above-max-item"]),
+      above100: observeScene("above-100", ["above-100-item"]),
+      fixedRepeat: observeScene("repeat", ["repeat-item-a", "repeat-item-b"]),
+      zeroBasis: observeScene("zero-basis", ["zero-basis-item"]),
+      rowBelowMinimum: observeScene("row-below-min", ["row-item"]),
+      fixedRuntime: observeScene("fixed-runtime", ["fixed-runtime-item"]),
+      textRuntime: observeScene("text-runtime", ["text-runtime-item"]),
+    },
+    minContentProbe: rect(document.querySelector("#min-probe")),
+    maxContentProbe: rect(document.querySelector("#max-probe")),
+    rowMinContentProbe: rect(document.querySelector("#row-min-probe")),
+  });
+  window.rootHtmlGridFitContentPercentageObservation = null;
+  document.fonts.ready.then(() => {
+    window.rootHtmlGridFitContentPercentageObservation = observe();
+    document.querySelector("#result").textContent = JSON.stringify(window.rootHtmlGridFitContentPercentageObservation, null, 2);
+  });
+</script>

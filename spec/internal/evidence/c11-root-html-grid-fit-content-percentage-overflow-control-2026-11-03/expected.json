@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-css-grid-calculation-before-chrome-observation",
+  "basis": {
+    "document": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, section 7.2.1",
+    "formula": "max(auto minimum, min(resolved limit, max-content contribution))",
+    "gridContentWidthPx": 30,
+    "percentage": 200,
+    "resolvedLimitPx": 60,
+    "specifiedItemWidthPx": 60
+  },
+  "expected": {
+    "gridTemplateColumns": [60],
+    "gridTemplateRows": [20],
+    "rootBorderBox": [20, 40, 34, 24],
+    "itemBorderBox": [22, 42, 60, 20],
+    "rootRelativeItemBorderBox": [2, 2, 60, 20],
+    "rootBorderRight": 54,
+    "itemRight": 82,
+    "visibleOverflowBeyondRootRight": 28,
+    "boundaryMarker": [52, 40, 2, 24],
+    "samplePixels": {
+      "insideItemAndRootAt30x50": [229, 72, 77, 255],
+      "rootBorderMarkerAt53x50": [48, 164, 108, 255],
+      "outsideRootBorderInsideItemAt60x50": [229, 72, 77, 255],
+      "outsideItemAt85x50": [16, 24, 32, 255]
+    }
+  },
+  "toleranceCssPx": 0.02
+}

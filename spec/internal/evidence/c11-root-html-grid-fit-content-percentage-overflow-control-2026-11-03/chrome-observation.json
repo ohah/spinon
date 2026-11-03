@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "browser": {
+    "product": "HeadlessChrome",
+    "version": "156.0.0.0",
+    "agentBrowserCli": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": { "width": 1280, "height": 633, "devicePixelRatio": 1 }
+  },
+  "fixture": {
+    "path": "percentage-fit-content-overflow-control.html",
+    "sha256": "a6171f21a8c358799ac936ea16855cc341bc25bdb8eacca95f6197f2273a5d76"
+  },
+  "computed": {
+    "gridTemplateColumns": "60px",
+    "gridTemplateRows": "20px",
+    "rootBorderBox": [20, 40, 34, 24],
+    "itemBorderBox": [22, 42, 60, 20],
+    "rootRelativeItemBorderBox": [2, 2, 60, 20],
+    "rootBorderRight": 54,
+    "itemRight": 82,
+    "visibleOverflowBeyondRootRight": 28,
+    "boundaryMarker": [52, 40, 2, 24]
+  },
+  "screenshot": {
+    "path": "chrome-156-agent-browser.png",
+    "sha256": "ce9b9620931cc9842eca9d3586748e5e28b77ecc77c6228febef9f17e7f6095e",
+    "pixelSamplesRgba": {
+      "insideItemAndRootAt30x50": [229, 72, 77, 255],
+      "rootBorderMarkerAt53x50": [48, 164, 108, 255],
+      "outsideRootBorderInsideItemAt60x50": [229, 72, 77, 255],
+      "outsideItemAt85x50": [16, 24, 32, 255]
+    }
+  }
+}

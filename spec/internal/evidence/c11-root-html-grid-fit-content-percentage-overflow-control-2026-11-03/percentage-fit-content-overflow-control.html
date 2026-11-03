@@ -1,0 +1,30 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.1 fit-content percentage overflow control</title>
+<style>
+  * { box-sizing: content-box; }
+  html, body { margin: 0; padding: 0; }
+  body { width: 240px; height: 140px; color: white; background: #101820; font: 12px/16px sans-serif; }
+  #root {
+    display: grid;
+    width: 30px;
+    height: 20px;
+    grid-template-columns: fit-content(200%);
+    grid-template-rows: 20px;
+    gap: 0;
+    margin: 40px 0 0 20px;
+    padding: 0;
+    border: 2px solid #30a46c;
+    overflow: visible;
+    background: #263746;
+  }
+  #item { width: 60px; height: 20px; margin: 0; padding: 0; border: 0; background: #e5484d; }
+  #boundary { position: absolute; z-index: 2; left: 52px; top: 40px; width: 2px; height: 24px; background: #30a46c; pointer-events: none; }
+  #label { position: absolute; left: 20px; top: 76px; }
+</style>
+<div id="root" data-scene="definite-percentage-cap-overflows-root-border">
+  <div id="item"></div>
+</div>
+<div id="boundary" aria-hidden="true"></div>
+<div id="label">green marker = Grid border right edge; red item continues outside</div>

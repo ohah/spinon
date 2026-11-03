@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "browser": {
+    "product": "HeadlessChrome",
+    "version": "156.0.0.0",
+    "agentBrowserCli": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": { "width": 1280, "height": 900, "devicePixelRatio": 1 }
+  },
+  "fixture": {
+    "path": "root-html-grid-fit-content-percentage-precomparison.html",
+    "sha256": "1c3da787f92230795c1a2f4e2d0f2e45caa42f0d1c7d8e069129bf1e2d5057ea"
+  },
+  "font": {
+    "family": "Ahem",
+    "status": "loaded",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "intrinsicProbes": {
+    "minContentWidth": { "width": 20, "height": 40 },
+    "maxContentWidth": { "width": 110, "height": 10 },
+    "rowMinContent": { "width": 20, "height": 40 }
+  },
+  "scenes": {
+    "belowMinimum": { "resolvedColumns": [20], "itemFrame": [0, 0, 20, 60] },
+    "betweenContributions": { "resolvedColumns": [40], "itemFrame": [0, 0, 40, 60] },
+    "aboveMaxContent": { "resolvedColumns": [110], "itemFrame": [0, 0, 110, 60] },
+    "above100": { "resolvedColumns": [110], "itemFrame": [0, 0, 110, 60] },
+    "fixedRepeat": { "resolvedColumns": [40, 40], "itemFrames": [[0, 0, 40, 60], [40, 0, 40, 60]] },
+    "zeroBasis": { "resolvedColumns": [20], "itemFrame": [0, 0, 20, 60] },
+    "rowBelowMinimum": { "resolvedColumns": [20], "resolvedRows": [40], "itemFrame": [0, 0, 20, 40] },
+    "fixedRuntimeFloorControl": { "resolvedColumns": [60], "itemFrame": [0, 0, 60, 20] },
+    "textRuntimeCapControl": { "resolvedColumns": [80], "itemFrame": [0, 0, 80, 100] }
+  },
+  "screenshot": {
+    "path": "chrome-156-agent-browser.png",
+    "sha256": "d0e6a9e6674bd29caf7f161f43990d6f93de24517b223c507e7b7d5413ff7a9b"
+  }
+}
