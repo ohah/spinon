@@ -1,0 +1,216 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "grids": [
+    {
+      "frame": [
+        0,
+        0,
+        120,
+        40
+      ],
+      "id": "positive",
+      "items": [
+        {
+          "color": "rgb(229, 72, 77)",
+          "display": "block",
+          "frame": [
+            40,
+            0,
+            100,
+            30
+          ]
+        },
+        {
+          "color": "rgb(58, 143, 91)",
+          "display": "block",
+          "frame": [
+            0,
+            20,
+            40,
+            20
+          ]
+        },
+        {
+          "color": "rgb(53, 120, 199)",
+          "display": "block",
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        {
+          "color": "rgb(249, 115, 22)",
+          "display": "block",
+          "frame": [
+            40,
+            20,
+            80,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "frame": [
+        0,
+        40,
+        120,
+        40
+      ],
+      "id": "negative-reversed",
+      "items": [
+        {
+          "color": "rgb(143, 63, 113)",
+          "display": "block",
+          "frame": [
+            40,
+            60,
+            80,
+            20
+          ]
+        },
+        {
+          "color": "rgb(91, 111, 143)",
+          "display": "block",
+          "frame": [
+            0,
+            40,
+            40,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "frame": [
+        0,
+        80,
+        120,
+        40
+      ],
+      "id": "shorthand-span",
+      "items": [
+        {
+          "color": "rgb(190, 75, 219)",
+          "display": "block",
+          "frame": [
+            40,
+            80,
+            80,
+            20
+          ]
+        },
+        {
+          "color": "rgb(47, 158, 68)",
+          "display": "block",
+          "frame": [
+            0,
+            100,
+            40,
+            20
+          ]
+        },
+        {
+          "color": "rgb(132, 94, 247)",
+          "display": "block",
+          "frame": [
+            40,
+            80,
+            80,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "frame": [
+        0,
+        120,
+        120,
+        40
+      ],
+      "id": "overlap",
+      "items": [
+        {
+          "color": "rgb(201, 42, 42)",
+          "display": "block",
+          "frame": [
+            0,
+            120,
+            40,
+            20
+          ]
+        },
+        {
+          "color": "rgb(8, 127, 91)",
+          "display": "block",
+          "frame": [
+            0,
+            120,
+            40,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "frame": [
+        0,
+        160,
+        120,
+        40
+      ],
+      "id": "hidden-control",
+      "items": [
+        {
+          "color": "rgb(240, 140, 0)",
+          "display": "block",
+          "frame": [
+            40,
+            160,
+            80,
+            20
+          ]
+        },
+        {
+          "color": "rgb(0, 0, 0)",
+          "display": "none",
+          "frame": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "frame": [
+        0,
+        200,
+        120,
+        40
+      ],
+      "id": "self-alignment",
+      "items": [
+        {
+          "color": "rgb(103, 65, 217)",
+          "display": "block",
+          "frame": [
+            24,
+            210,
+            16,
+            10
+          ]
+        }
+      ]
+    }
+  ],
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

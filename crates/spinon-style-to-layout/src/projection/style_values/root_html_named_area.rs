@@ -14,6 +14,7 @@ pub(super) fn validate_root_html_named_area_candidate(
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
     dense_placement_route_nodes: &std::collections::BTreeSet<spinon_core::NodeId>,
+    explicit_placement_route_nodes: &std::collections::BTreeSet<spinon_core::NodeId>,
 ) -> Result<(), StyleLayoutError> {
     if let Some(container) = snapshot.elements.iter().find(|element| {
         element.grid_layout.as_ref().is_some_and(|grid| {
@@ -47,19 +48,25 @@ pub(super) fn validate_root_html_named_area_candidate(
     });
     let Some(container) = area_containers.next() else {
         for item_node in &nodes.grid_items {
-            let owner_allows_placement = nodes
+            let owner_allows_dense_placement = nodes
                 .grid_item_owners
                 .get(item_node)
                 .is_some_and(|owner| dense_placement_route_nodes.contains(owner));
+            let owner_allows_explicit_placement = nodes
+                .grid_item_owners
+                .get(item_node)
+                .is_some_and(|owner| explicit_placement_route_nodes.contains(owner));
             let placement = snapshot
                 .elements
                 .iter()
                 .find(|element| element.node_id == *item_node)
                 .and_then(|element| element.grid_item_placement.as_ref());
-            if owner_allows_placement {
+            if owner_allows_dense_placement {
                 if let Some(placement) = placement {
                     validate_root_html_dense_route_placement(*item_node, placement)?;
                 }
+            } else if owner_allows_explicit_placement {
+                // C11.2.1 validates the projected numeric values and all visible siblings later.
             } else if placement.is_some_and(root_html_has_non_auto_grid_placement) {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: *item_node,

@@ -1,0 +1,46 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 7 tests
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_safe_alignment_falls_back_and_unsafe_alignment_overflows ... FAILED
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_physical_left_and_right_in_ltr ... FAILED
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_positional_and_place_items_values ... FAILED
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_self_axis_values_reach_the_grid_item_layout ... FAILED
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_rejects_unsupported_item_self_alignment_values ... ok
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_is_rejected_outside_an_eligible_grid ... ok
+test c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_rejects_baseline_and_out_of_profile_values ... ok
+
+failures:
+
+---- c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_safe_alignment_falls_back_and_unsafe_alignment_overflows stdout ----
+
+thread 'c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_safe_alignment_falls_back_and_unsafe_alignment_overflows' (164495930) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_grid_item_alignment_tests.rs:246:40:
+called `Result::unwrap()` on an `Err` value: Layout(UnsupportedGridContainerStyle { node: NodeId(2), property: "C11.5 fixed-track auto-size/stretch contract" })
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_physical_left_and_right_in_ltr stdout ----
+
+thread 'c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_physical_left_and_right_in_ltr' (164495926) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_grid_item_alignment_tests.rs:221:40:
+called `Result::unwrap()` on an `Err` value: Layout(UnsupportedGridContainerStyle { node: NodeId(2), property: "C11.5 fixed-track auto-size/stretch contract" })
+
+---- c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_positional_and_place_items_values stdout ----
+
+thread 'c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_positional_and_place_items_values' (164495927) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_grid_item_alignment_tests.rs:171:36:
+called `Result::unwrap()` on an `Err` value: Layout(UnsupportedGridContainerStyle { node: NodeId(2), property: "C11.5 fixed-track auto-size/stretch contract" })
+
+---- c11_1_root_html_grid_item_alignment_tests::root_html_grid_self_axis_values_reach_the_grid_item_layout stdout ----
+
+thread 'c11_1_root_html_grid_item_alignment_tests::root_html_grid_self_axis_values_reach_the_grid_item_layout' (164495931) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_grid_item_alignment_tests.rs:403:36:
+called `Result::unwrap()` on an `Err` value: Layout(UnsupportedGridContainerStyle { node: NodeId(2), property: "C11.5 fixed-track auto-size/stretch contract" })
+
+
+failures:
+    c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_physical_left_and_right_in_ltr
+    c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_alignment_maps_positional_and_place_items_values
+    c11_1_root_html_grid_item_alignment_tests::root_html_grid_item_safe_alignment_falls_back_and_unsafe_alignment_overflows
+    c11_1_root_html_grid_item_alignment_tests::root_html_grid_self_axis_values_reach_the_grid_item_layout
+
+test result: FAILED. 3 passed; 4 failed; 0 ignored; 0 measured; 372 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p spinon-style-to-layout --lib`

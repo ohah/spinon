@@ -20,6 +20,7 @@ mod root_html_grid_column_flow;
 mod root_html_grid_content_alignment;
 #[cfg(feature = "c14-1-live-v8-fixture-test")]
 mod root_html_grid_dense_auto_placement;
+mod root_html_grid_explicit_placement;
 mod root_html_grid_fit_content;
 mod root_html_grid_fit_content_percentage;
 mod root_html_grid_fr;

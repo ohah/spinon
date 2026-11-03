@@ -26,6 +26,8 @@ mod c11_1_root_html_calc_auto_column_tests;
 #[cfg(test)]
 mod c11_1_root_html_content_alignment_tests;
 #[cfg(test)]
+mod c11_1_root_html_explicit_grid_placement_tests;
+#[cfg(test)]
 mod c11_1_root_html_fr_auto_column_tests;
 #[cfg(test)]
 mod c11_1_root_html_grid_item_alignment_tests;

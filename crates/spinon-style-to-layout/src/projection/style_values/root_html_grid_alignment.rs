@@ -18,6 +18,7 @@ pub(super) fn eligible_nodes(
     tree: &HostDocumentSnapshot,
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
+    explicit_placement_route_nodes: &BTreeSet<NodeId>,
 ) -> BTreeSet<NodeId> {
     let elements = snapshot
         .elements
@@ -37,7 +38,14 @@ pub(super) fn eligible_nodes(
                 return false;
             };
             supports_grid(element, grid)
-                && supports_empty_direct_items(tree, element, grid, nodes, &elements)
+                && supports_empty_direct_items(
+                    tree,
+                    element,
+                    grid,
+                    nodes,
+                    &elements,
+                    explicit_placement_route_nodes.contains(node),
+                )
         })
         .collect()
 }
@@ -167,6 +175,7 @@ fn supports_empty_direct_items(
     grid: &ComputedCssGridLayout,
     nodes: &RuntimeGridNodes,
     elements: &std::collections::BTreeMap<NodeId, &ComputedElementStyle>,
+    allow_numeric_explicit_placement: bool,
 ) -> bool {
     let Some(handle) = nodes
         .grid_container_handles
@@ -205,7 +214,7 @@ fn supports_empty_direct_items(
                 let Some(style) = elements.get(&child.id()).copied() else {
                     return false;
                 };
-                if !supports_item(style)
+                if !supports_item(style, allow_numeric_explicit_placement)
                     || nodes.grid_item_owners.get(&child.id()) != Some(&container.node_id)
                 {
                     return false;
@@ -219,7 +228,7 @@ fn supports_empty_direct_items(
     item_count != 0 && item_count <= cell_capacity
 }
 
-fn supports_item(element: &ComputedElementStyle) -> bool {
+fn supports_item(element: &ComputedElementStyle, allow_numeric_explicit_placement: bool) -> bool {
     element
         .properties
         .get("display")
@@ -258,7 +267,29 @@ fn supports_item(element: &ComputedElementStyle) -> bool {
             .properties
             .get("direction")
             .is_some_and(|value| value == "ltr")
-        && item_placement_is_auto(element.grid_item_placement.as_ref(), &element.properties)
+        && if allow_numeric_explicit_placement {
+            item_placement_is_numeric_explicit(element.grid_item_placement.as_ref())
+        } else {
+            item_placement_is_auto(element.grid_item_placement.as_ref(), &element.properties)
+        }
+}
+
+fn item_placement_is_numeric_explicit(placement: Option<&ComputedCssGridItemPlacement>) -> bool {
+    placement.is_some_and(|placement| {
+        [
+            &placement.row_start,
+            &placement.row_end,
+            &placement.column_start,
+            &placement.column_end,
+        ]
+        .into_iter()
+        .all(|value| {
+            matches!(
+                value,
+                ComputedCssGridPlacement::Line(_) | ComputedCssGridPlacement::Span(_)
+            )
+        })
+    })
 }
 
 fn item_placement_is_auto(
