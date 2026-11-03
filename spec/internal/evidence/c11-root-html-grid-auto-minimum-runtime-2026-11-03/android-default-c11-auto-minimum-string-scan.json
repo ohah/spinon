@@ -1,0 +1,21 @@
+{
+  "apk": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+  "apkSha256": "e7ff8d436f355cbed52b28fe4c3142bd6d64a9ce78ee94864f65fdccbd3694bf",
+  "buildConfigCaptureFlag": false,
+  "harnessDiagnosticsCompiledIntoDebugApk": true,
+  "bootPayloadPresent": false,
+  "matchingFiles": [
+    {
+      "file": "classes2.dex",
+      "token": "captureExtraKey"
+    },
+    {
+      "file": "classes2.dex",
+      "token": "captureLogLabel"
+    },
+    {
+      "file": "classes2.dex",
+      "token": "captureSceneLabel"
+    }
+  ]
+}

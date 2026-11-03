@@ -3,6 +3,7 @@
   "branch": "impl/c11-root-html-grid-auto-minimum",
   "candidate_working_tree_dirty_at_capture": true,
   "candidate_source_hashes": "source-candidate-sha256.txt",
+  "post_capture_source_change": "PR review removed the auto-minimum Metal capture argument from the iOS compile-flag #else path; the opt-in branch used by the recorded iOS runtime capture was unchanged. Current source hashes are in ../post-review-source-candidate-sha256.txt.",
   "input_fixture": "tests/fixtures/css/c11/root-html-grid-auto-minimum-precomparison.html",
   "input_fixture_sha256": "269bd653ed3cbb0e1602b2257548c9dd07534365026794ba7ea27f0a562b8611",
   "runtime_route": "default RuntimeRootHtmlTextPaintV1 / Root HTML app route",
