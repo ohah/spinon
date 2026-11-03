@@ -1,0 +1,11 @@
+{
+  "serial": "emulator-5556",
+  "sdk": 37,
+  "release": "17",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "qemu": "1",
+  "density": "Physical density: 420",
+  "size": "Physical size: 1080x2400",
+  "renderer": "Android AVD SurfaceView PixelCopy"
+}

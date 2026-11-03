@@ -13,6 +13,7 @@ pub(super) fn validate_root_html_named_area_candidate(
     tree: &HostDocumentSnapshot,
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
+    dense_placement_route_nodes: &std::collections::BTreeSet<spinon_core::NodeId>,
 ) -> Result<(), StyleLayoutError> {
     if let Some(container) = snapshot.elements.iter().find(|element| {
         element.grid_layout.as_ref().is_some_and(|grid| {
@@ -46,12 +47,20 @@ pub(super) fn validate_root_html_named_area_candidate(
     });
     let Some(container) = area_containers.next() else {
         for item_node in &nodes.grid_items {
+            let owner_allows_placement = nodes
+                .grid_item_owners
+                .get(item_node)
+                .is_some_and(|owner| dense_placement_route_nodes.contains(owner));
             let placement = snapshot
                 .elements
                 .iter()
                 .find(|element| element.node_id == *item_node)
                 .and_then(|element| element.grid_item_placement.as_ref());
-            if placement.is_some_and(root_html_has_non_auto_grid_placement) {
+            if owner_allows_placement {
+                if let Some(placement) = placement {
+                    validate_root_html_dense_route_placement(*item_node, placement)?;
+                }
+            } else if placement.is_some_and(root_html_has_non_auto_grid_placement) {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: *item_node,
                     property: "grid-area",
@@ -337,6 +346,37 @@ fn root_html_has_non_auto_grid_placement(placement: &ComputedCssGridItemPlacemen
     .any(|value| !matches!(value, ComputedCssGridPlacement::Auto))
 }
 
+fn validate_root_html_dense_route_placement(
+    node: spinon_core::NodeId,
+    placement: &ComputedCssGridItemPlacement,
+) -> Result<(), StyleLayoutError> {
+    for (property, value) in [
+        ("grid-row-start", &placement.row_start),
+        ("grid-row-end", &placement.row_end),
+        ("grid-column-start", &placement.column_start),
+        ("grid-column-end", &placement.column_end),
+    ] {
+        let supported = match value {
+            ComputedCssGridPlacement::Auto => true,
+            ComputedCssGridPlacement::Line(line) => *line > 0,
+            ComputedCssGridPlacement::Span(span) => *span > 0,
+            ComputedCssGridPlacement::NamedLine { .. }
+            | ComputedCssGridPlacement::SpanNamed { .. }
+            | ComputedCssGridPlacement::Unsupported(_) => false,
+        };
+        if !supported {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value:
+                    "dense placement route accepts only auto, positive lines, and positive spans"
+                        .to_owned(),
+            });
+        }
+    }
+    Ok(())
+}
+
 pub(super) fn root_html_named_area_name(placement: &ComputedCssGridItemPlacement) -> Option<&str> {
     let endpoints = [
         &placement.row_start,
@@ -363,4 +403,46 @@ pub(super) fn root_html_named_area_name(placement: &ComputedCssGridItemPlacement
             )
         })
         .then_some(name)
+}
+
+#[cfg(test)]
+mod dense_route_placement_tests {
+    use super::validate_root_html_dense_route_placement;
+    use crate::StyleLayoutError;
+    use spinon_core::NodeId;
+    use spinon_style::{ComputedCssGridItemPlacement, ComputedCssGridPlacement};
+
+    #[test]
+    fn dense_route_ancestors_accept_only_auto_and_positive_numeric_placements() {
+        let node = NodeId::new(11_252).unwrap();
+        let mut placement = ComputedCssGridItemPlacement {
+            row_start: ComputedCssGridPlacement::Auto,
+            row_end: ComputedCssGridPlacement::Span(2),
+            column_start: ComputedCssGridPlacement::Line(1),
+            column_end: ComputedCssGridPlacement::Line(3),
+        };
+        assert!(validate_root_html_dense_route_placement(node, &placement).is_ok());
+
+        placement.column_start = ComputedCssGridPlacement::Line(-1);
+        assert!(matches!(
+            validate_root_html_dense_route_placement(node, &placement),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node: actual,
+                property: "grid-column-start",
+                ..
+            }) if actual == node
+        ));
+
+        placement.column_start = ComputedCssGridPlacement::NamedLine {
+            name: "track".to_owned(),
+            occurrence: Some(1),
+        };
+        assert!(matches!(
+            validate_root_html_dense_route_placement(node, &placement),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                property: "grid-column-start",
+                ..
+            })
+        ));
+    }
 }

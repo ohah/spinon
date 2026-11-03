@@ -1,0 +1,113 @@
+{
+  "status": "matched",
+  "scene": "row-dense-span-collision",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-span-collision",
+  "processId": 3372,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "aa4c5af1758e78ef1c96a45b59d06f9118072cdef8df430cd55463b2c3ad3727",
+  "samples": [
+    {
+      "id": "c1123-row-dense-span-collision-grid-center",
+      "css": [
+        64,
+        22
+      ],
+      "pixel": [
+        169,
+        59
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-span-collision-span-a-center",
+      "css": [
+        42,
+        9
+      ],
+      "pixel": [
+        111,
+        24
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-span-collision-fixed-c-center",
+      "css": [
+        97,
+        9
+      ],
+      "pixel": [
+        255,
+        24
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-span-collision-span-b-center",
+      "css": [
+        42,
+        33
+      ],
+      "pixel": [
+        111,
+        87
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-span-collision-small-d-center",
+      "css": [
+        97,
+        33
+      ],
+      "pixel": [
+        255,
+        87
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    }
+  ],
+  "png": "row-dense-span-collision-surface-pixels.png"
+}

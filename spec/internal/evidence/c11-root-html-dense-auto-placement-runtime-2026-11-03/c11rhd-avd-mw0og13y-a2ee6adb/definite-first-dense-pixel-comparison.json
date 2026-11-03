@@ -1,0 +1,113 @@
+{
+  "status": "matched",
+  "scene": "definite-first-dense",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-definite-first-dense",
+  "processId": 3825,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "9b34d5bdf40fd17ed8faed7f696c53daaf2315dc9359d2779e175411aa091818",
+  "samples": [
+    {
+      "id": "c1123-definite-first-dense-grid-center",
+      "css": [
+        64,
+        22
+      ],
+      "pixel": [
+        169,
+        59
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "c1123-definite-first-dense-auto-a-center",
+      "css": [
+        53,
+        9
+      ],
+      "pixel": [
+        140,
+        24
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "c1123-definite-first-dense-fixed-late-center",
+      "css": [
+        9,
+        9
+      ],
+      "pixel": [
+        24,
+        24
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "c1123-definite-first-dense-span-b-center",
+      "css": [
+        42,
+        33
+      ],
+      "pixel": [
+        111,
+        87
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "c1123-definite-first-dense-auto-c-center",
+      "css": [
+        97,
+        9
+      ],
+      "pixel": [
+        255,
+        24
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    }
+  ],
+  "png": "definite-first-dense-surface-pixels.png"
+}

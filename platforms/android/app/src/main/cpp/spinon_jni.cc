@@ -751,6 +751,38 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC111RootHtmlPercentCol
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC111RootHtmlDensePlacementHost(
+    JNIEnv *env, jclass, jstring scene_value) {
+#if defined(SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST
+  if (scene_value == nullptr) return 0;
+  const char *scene_id = env->GetStringUTFChars(scene_value, nullptr);
+  if (scene_id == nullptr) return 0;
+  const std::string scene_copy(scene_id);
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c11_1_root_html_dense_placement_fixture(
+          scene_id, output.data(), output.size());
+  env->ReleaseStringUTFChars(scene_value, scene_id);
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C111_ROOT_HTML_DENSE_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C111_ROOT_HTML_DENSE_HOST scene_id=%s %s",
+                      scene_copy.c_str(), output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  (void)env;
+  (void)scene_value;
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C111_ROOT_HTML_DENSE_DISABLED fixture feature is off");
+  return 0;
+#endif
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC1121GridPlacementHost(
     JNIEnv *, jclass) {
   std::array<char, 1024> output{};

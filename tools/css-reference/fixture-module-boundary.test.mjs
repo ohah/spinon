@@ -10,11 +10,13 @@ const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const legacyFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/c11_1_root_html_dense.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_2_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/c11_2_3.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/c11_1_root_html_dense.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c06.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c07.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/c08.rs',
@@ -33,6 +35,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_1_root_html_dense.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c13_3_scroll_gesture.rs',
@@ -66,6 +69,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_1.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_3_2.rs',
+  'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_1_root_html_dense.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_2.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_3.rs',
   'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c13_1.rs',
@@ -904,6 +908,16 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures.rs'),
     'utf8',
   );
+  const c111DenseRuntimeFixture = await readFile(
+    resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_1_root_html_dense.rs'),
+    'utf8',
+  );
+  const c111DenseFfiFixture = await readFile(
+    resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_1_root_html_dense.rs'),
+    'utf8',
+  );
   const c114RuntimeFixture = await readFile(
     resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs'),
     'utf8',
@@ -1112,6 +1126,15 @@ test('앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리
   assert.ok(runtimeGpuFixtureFeature, 'Runtime GPU fixtures stay behind the fixture-test feature');
   assert.match(runtimeGpuFixtureFeature[1], /"c04-runtime-gpu"/);
   assert.match(runtimeGpuFixtureFeature[1], /"spinon-runtime\/c11-4-grid-track-sizing-fixture-test"/);
+  assert.match(cargoManifest,
+    /^c11-1-root-html-dense-placement-fixture-test\s*=\s*\["c04-runtime-gpu-fixture-test"\]/m);
+  assert.match(runtimeFixtureSource,
+    /#\[cfg\(feature = "c11-1-root-html-dense-placement-fixture-test"\)\]\s*pub\(crate\) mod c11_1_root_html_dense;/);
+  assert.match(ffiFixtureSource,
+    /#\[cfg\(feature = "c11-1-root-html-dense-placement-fixture-test"\)\]\s*mod c11_1_root_html_dense;/);
+  assert.ok(c111DenseRuntimeFixture.includes('root-html-grid-dense-auto-placement-runtime-matrix-v1'));
+  assert.ok(c111DenseFfiFixture.includes(
+    'spinon_runtime_gpu_host_new_c11_1_root_html_dense_placement_fixture'));
   assert.match(runtimeFixtureSource,
     /#\[cfg\(feature = "c13-1-overflow-clip-fixture-test"\)\]\s*pub\(crate\) mod c13_1;/);
   assert.match(runtimeFixtureSource,

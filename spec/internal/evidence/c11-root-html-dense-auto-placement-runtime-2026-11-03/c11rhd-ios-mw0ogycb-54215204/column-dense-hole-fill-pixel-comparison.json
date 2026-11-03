@@ -1,0 +1,101 @@
+{
+  "schema": "spinon-c11-root-html-dense-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c11rhd-ios-mw0ogycb-54215204-column-dense-hole-fill",
+  "processId": 77142,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "drawable": [
+    1080,
+    2400
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 4,
+  "matchedSamples": 4,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "c1123-column-dense-hole-fill-grid-center",
+      "css": [
+        44,
+        38
+      ],
+      "drawable": [
+        133,
+        115
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-column-dense-hole-fill-span-a-center",
+      "css": [
+        9,
+        22
+      ],
+      "drawable": [
+        28,
+        67
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-column-dense-hole-fill-span-b-center",
+      "css": [
+        57,
+        22
+      ],
+      "drawable": [
+        172,
+        67
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-column-dense-hole-fill-small-c-center",
+      "css": [
+        9,
+        65
+      ],
+      "drawable": [
+        28,
+        196
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

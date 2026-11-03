@@ -4,6 +4,7 @@ set -euo pipefail
 : "${SPINON_ENABLE_C04_RUNTIME_GPU:=1}"
 : "${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:=0}"
 : "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:=0}"
+: "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:=0}"
 : "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:=0}"
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -67,9 +68,21 @@ case "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C11.1 Root HTML percentage-column fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
+if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C11.1 Root HTML dense fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
   exit 2
 fi
 if [[ "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" == "1" \
@@ -308,6 +321,7 @@ runtime_gpu_fixture_test_enabled="${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:-
 for fixture_flag in \
   "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" \
   "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" \
@@ -337,6 +351,7 @@ runtime_gpu_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU=${SPINON_ENABLE_C04_RUNTIM
 runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=$runtime_gpu_fixture_test_enabled"
 c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}"
 c111_root_html_percent_columns_cpp_flag="-DSPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST=${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}"
+c111_root_html_dense_placement_cpp_flag="-DSPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST=${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}"
 ua_cascade_probe_cpp_flag="-DSPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}"
 runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
 c124_surface_readback_cpp_flag="-DSPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST=${SPINON_ENABLE_C124_METAL_SURFACE_READBACK_TEST:-0}"
@@ -372,6 +387,9 @@ if [[ "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" == "1" ]]; then
 fi
 if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c11-1-root-html-percent-columns-fixture-test
+fi
+if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c11-1-root-html-dense-placement-fixture-test
 fi
 if [[ "${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c04-12-root-html-fixture-test
@@ -520,6 +538,7 @@ xcrun --sdk "$sdk" clang++ -std=c++20 -O2 -fPIC -target "$target" \
   -isysroot "$sdk_path" -I"$v8_dir/include" "$s03_dom_gc_cpp_flag" "$runtime_gpu_cpp_flag" \
   "$runtime_gpu_fixture_test_cpp_flag" \
   "$c111_root_html_percent_columns_cpp_flag" \
+  "$c111_root_html_dense_placement_cpp_flag" \
   "$c1123_grid_fixture_cpp_flag" \
   "$ua_cascade_probe_cpp_flag" \
   "$runtime_gpu_failure_cpp_flag" "$c124_surface_readback_cpp_flag" \

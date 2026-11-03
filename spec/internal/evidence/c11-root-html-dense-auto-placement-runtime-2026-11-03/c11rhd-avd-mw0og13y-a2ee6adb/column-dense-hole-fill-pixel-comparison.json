@@ -1,0 +1,96 @@
+{
+  "status": "matched",
+  "scene": "column-dense-hole-fill",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-hole-fill",
+  "processId": 3619,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 4,
+  "matchedSamples": 4,
+  "maximumChannelError": 0,
+  "pngSha256": "473f7aa2820525de0d5867b2c16db7bbb4a52345d7c7a0b2c6bd525533487a9b",
+  "samples": [
+    {
+      "id": "c1123-column-dense-hole-fill-grid-center",
+      "css": [
+        44,
+        38
+      ],
+      "pixel": [
+        116,
+        101
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "c1123-column-dense-hole-fill-span-a-center",
+      "css": [
+        9,
+        22
+      ],
+      "pixel": [
+        24,
+        59
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "c1123-column-dense-hole-fill-span-b-center",
+      "css": [
+        57,
+        22
+      ],
+      "pixel": [
+        150,
+        59
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "c1123-column-dense-hole-fill-small-c-center",
+      "css": [
+        9,
+        65
+      ],
+      "pixel": [
+        24,
+        171
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    }
+  ],
+  "png": "column-dense-hole-fill-surface-pixels.png"
+}

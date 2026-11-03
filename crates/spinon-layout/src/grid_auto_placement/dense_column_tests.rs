@@ -105,6 +105,19 @@ fn grid(
     }
 }
 
+fn root_html_dense(mut input: LayoutInput) -> LayoutInput {
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::RootHtmlDenseAutoPlacementV1;
+    input.nodes[0].style.box_sizing = crate::LayoutBoxSizing::ContentBox;
+    for node in input.nodes.iter_mut().skip(1) {
+        node.style.display = LayoutDisplay::Block;
+    }
+    input
+}
+
 fn positions(input: &LayoutInput, count: usize) -> Vec<(f32, f32)> {
     let output = TaffyLayoutEngine.compute(input).unwrap();
     (0..count)
@@ -187,6 +200,182 @@ fn column_flow_expands_positive_implicit_columns_with_fixed_auto_size() {
             (68.0, 0.0)
         ]
     );
+}
+
+#[test]
+fn root_html_dense_mode_uses_row_and_column_dense_normalization() {
+    let children = [(84.0, 18.0), (84.0, 18.0), (18.0, 18.0)];
+    let mut row = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0, 40.0, 40.0],
+        &[20.0, 20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &children,
+    ));
+    row.grid_items
+        .insert(id(2), item(P::Auto, P::Auto, P::Auto, P::Span(2)));
+    row.grid_items
+        .insert(id(3), item(P::Auto, P::Auto, P::Auto, P::Span(2)));
+    assert_eq!(positions(&row, 3), [(0.0, 0.0), (0.0, 20.0), (80.0, 0.0)]);
+
+    let children = [(18.0, 40.0), (18.0, 40.0), (18.0, 18.0)];
+    let mut column = root_html_dense(grid(
+        GridAutoFlow::ColumnDense,
+        &[40.0, 40.0],
+        &[20.0, 20.0, 20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &children,
+    ));
+    column
+        .grid_items
+        .insert(id(2), item(P::Auto, P::Span(2), P::Auto, P::Auto));
+    column
+        .grid_items
+        .insert(id(3), item(P::Auto, P::Span(2), P::Auto, P::Auto));
+    assert_eq!(
+        positions(&column, 3),
+        [(0.0, 0.0), (40.0, 0.0), (0.0, 40.0)]
+    );
+}
+
+#[test]
+fn root_html_dense_auto_implicit_track_is_allowed_only_without_expansion() {
+    let one_item = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0)],
+    ));
+    assert_eq!(positions(&one_item, 1), [(0.0, 0.0)]);
+
+    let two_items = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0); 2],
+    ));
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&two_items),
+        Err(crate::LayoutError::UnsupportedGridAutoRows { .. })
+    ));
+}
+
+#[test]
+fn root_html_column_dense_auto_columns_is_rejected_when_expansion_is_needed() {
+    let two_items = root_html_dense(grid(
+        GridAutoFlow::ColumnDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0); 2],
+    ));
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&two_items),
+        Err(crate::LayoutError::UnsupportedGridAutoColumns { .. })
+    ));
+}
+
+#[test]
+fn root_html_dense_expanded_row_reservation_failure_is_atomic_and_recovers() {
+    let input = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::LengthPx(20.0),
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0); 2],
+    ));
+
+    std::thread::spawn(move || {
+        let engine = TaffyLayoutEngine;
+        let guard = inject_failure_once(TestGridReservationSite::ExpandedRows);
+        let result = engine.compute(&input);
+        assert!(
+            crate::test_allocator::take_failure_observed(),
+            "Root HTML dense 확장 row가 실제 reserve 할당을 실패시켜야 합니다"
+        );
+        assert!(matches!(
+            result,
+            Err(crate::LayoutError::GridAllocationFailure {
+                node,
+                property: "grid-template-rows"
+            }) if node == id(1)
+        ));
+        drop(guard);
+
+        let recovered = engine
+            .compute(&input)
+            .expect("같은 worker의 다음 Root HTML dense 계산은 복구해야 합니다");
+        assert!(recovered.frames.contains_key(&id(3)));
+        assert!(
+            !crate::test_allocator::take_failure_observed(),
+            "복구 계산에서 allocator failpoint이 다시 발생하면 안 됩니다"
+        );
+    })
+    .join()
+    .expect("Root HTML dense reservation failure worker는 panic 없이 끝나야 합니다");
+}
+
+#[test]
+fn root_html_dense_rejects_grid_items_with_missing_node_handles() {
+    let mut input = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0)],
+    ));
+    input.grid_items.insert(id(99), GridItemInput::default());
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::UnknownGridItem(node)) if node == id(99)
+    ));
+}
+
+#[test]
+fn root_html_dense_rejects_nonzero_order_and_negative_lines() {
+    let mut ordered = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0)],
+    ));
+    ordered.nodes[1].style.order = 1;
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&ordered),
+        Err(crate::LayoutError::UnsupportedGridOrder(node)) if node == id(2)
+    ));
+
+    let mut negative_line = root_html_dense(grid(
+        GridAutoFlow::RowDense,
+        &[40.0],
+        &[20.0],
+        GridAutoRows::Auto,
+        GridAutoColumns::Auto,
+        &[(18.0, 18.0)],
+    ));
+    negative_line
+        .grid_items
+        .insert(id(2), item(P::Line(-1), P::Auto, P::Auto, P::Auto));
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&negative_line),
+        Err(crate::LayoutError::InvalidGridPlacement {
+            node,
+            property: "grid-row-start",
+            ..
+        }) if node == id(2)
+    ));
 }
 
 #[test]

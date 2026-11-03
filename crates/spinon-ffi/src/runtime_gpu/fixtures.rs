@@ -22,6 +22,8 @@ pub(super) mod c18_4;
 pub(super) mod c19_2;
 
 pub(crate) mod c11;
+#[cfg(feature = "c11-1-root-html-dense-placement-fixture-test")]
+pub(crate) mod c11_1_root_html_dense;
 pub(crate) mod c11_2_2;
 #[cfg(feature = "c11-2-3-grid-fixture-test")]
 pub(crate) mod c11_2_3;

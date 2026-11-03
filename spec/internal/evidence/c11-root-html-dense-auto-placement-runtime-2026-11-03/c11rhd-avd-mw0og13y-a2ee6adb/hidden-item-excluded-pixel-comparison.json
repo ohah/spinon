@@ -1,0 +1,79 @@
+{
+  "status": "matched",
+  "scene": "hidden-item-excluded",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-hidden-item-excluded",
+  "processId": 3890,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "c2e0c1ab41e3c9a546288db190bf357cf7287db89c6597e2f5451cb7be2984af",
+  "samples": [
+    {
+      "id": "c1123-hidden-item-excluded-grid-center",
+      "css": [
+        44,
+        10
+      ],
+      "pixel": [
+        116,
+        27
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "c1123-hidden-item-excluded-visible-a-center",
+      "css": [
+        9,
+        9
+      ],
+      "pixel": [
+        24,
+        24
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "c1123-hidden-item-excluded-visible-b-center",
+      "css": [
+        57,
+        9
+      ],
+      "pixel": [
+        150,
+        24
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    }
+  ],
+  "png": "hidden-item-excluded-surface-pixels.png"
+}

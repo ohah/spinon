@@ -282,6 +282,8 @@ pub enum GridPlacementMode {
     RootHtmlImplicitRowsV1,
     /// 제한 Root HTML 경로의 explicit-cell sparse column auto-placement입니다.
     RootHtmlColumnFlowV1,
+    /// 제한 Root HTML 경로의 fixed-px dense row/column auto-placement입니다.
+    RootHtmlDenseAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
@@ -488,6 +490,7 @@ pub(super) fn validate_grid_layout(
                 if container.template_areas.is_some() && !tracks.is_empty() => {}
             (
                 GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -562,6 +565,7 @@ pub(super) fn validate_grid_layout(
                 if container.template_areas.is_some() && !tracks.is_empty() => {}
             (
                 GridPlacementMode::DenseAutoPlacement
+                | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -799,6 +803,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TrackSizing
@@ -1105,6 +1110,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

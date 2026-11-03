@@ -6,6 +6,8 @@ use crate::{GridPlacementMode, GridTrackSize, LayoutDisplay, LayoutError, Layout
 
 #[path = "grid_placement/root_html_column_flow.rs"]
 mod root_html_column_flow;
+#[path = "grid_placement/root_html_dense_auto_placement.rs"]
+mod root_html_dense_auto_placement;
 
 /// 한 번 계산하는 동안 정규화한 모든 Grid item과 container row입니다.
 #[derive(Default)]
@@ -59,6 +61,18 @@ pub(super) fn normalize_grid_layout(
                 &css_math_by_id,
             )?;
         }
+        if container_node.style.display == LayoutDisplay::Grid
+            && !hidden[&container_node.id]
+            && container.placement_mode == GridPlacementMode::RootHtmlDenseAutoPlacementV1
+        {
+            root_html_dense_auto_placement::validate_items(
+                input,
+                index,
+                &hidden,
+                container_node,
+                container,
+            )?;
+        }
     }
     let mut output = NormalizedGridLayout {
         item_placements: normalize_grid_item_placements(input, index)?,
@@ -100,6 +114,7 @@ pub(super) fn normalize_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -223,6 +238,7 @@ pub(super) fn normalize_grid_item_placements(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

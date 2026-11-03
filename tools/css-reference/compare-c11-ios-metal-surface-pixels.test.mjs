@@ -9,6 +9,15 @@ import {
 
 const fixture = JSON.parse(readFileSync('tests/fixtures/css/c11/metal-surface-pixel-samples.json', 'utf8'));
 const c1131Fixture = JSON.parse(readFileSync('tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json', 'utf8'));
+const denseMatrix = JSON.parse(readFileSync(
+  'tests/fixtures/css/c11/root-html-grid-dense-auto-placement-runtime-matrix-v1.json', 'utf8'));
+const denseCase = denseMatrix.cases.find(({ id }) => id === 'row-dense-hole-fill');
+const denseFixture = {
+  fixtureId: denseCase.id,
+  sceneId: denseCase.id,
+  runtime: { viewportCssPx: denseMatrix.viewportCssPx },
+  samples: denseCase.pixelSamples,
+};
 const referenceBytes = readFileSync(fixture.oracle.referencePath);
 const screenshotBytes = readFileSync(fixture.oracle.screenshotPath);
 const runID = 'c11-ios-metal-20261012-fixed';
@@ -160,6 +169,51 @@ test('accepts the valid initial environment revision zero', () => {
   const log = validLog().replaceAll('environment_revision=1', 'environment_revision=0');
   assert.equal(compareC11IOSMetalPixelLogs(log, { fixture, runID }).status, 'matched');
 });
+
+test('C11.1 Root HTML dense accepts its namespaced Metal drawable sample matrix', () => {
+  const denseRunID = 'c111rhd-ios-metal-matrix-test-001';
+  const scale = 2;
+  const begin = {
+    run_id: denseRunID,
+    pid: '50126',
+    surface_generation: '7',
+    document_revision: '1',
+    render_tree_revision: '1',
+    environment_revision: '1',
+    scene: denseFixture.sceneId,
+    viewport: '360x800',
+    drawable: `${360 * scale}x${800 * scale}`,
+  };
+  const sampleLines = denseFixture.samples.map((sample) => {
+    const x = Math.floor((sample.xCssPx + 0.5) * scale);
+    const y = Math.floor((sample.yCssPx + 0.5) * scale);
+    return `SPINON_C111RHD_METAL_PIXEL_SAMPLE run_id=${denseRunID} pid=50126 surface_generation=7 sample=${sample.id} x=${x} y=${y} rgba=${sample.rgba.join(',')} expected=${sample.rgba.join(',')} exact=true`;
+  });
+  const summary = {
+    ...begin,
+    drawable: `${360 * scale}x${800 * scale}`,
+    scale_x: String(scale),
+    scale_y: String(scale),
+    status: 'matched',
+    expected_samples: String(denseFixture.samples.length),
+    observed_samples: String(denseFixture.samples.length),
+    matched_samples: String(denseFixture.samples.length),
+  };
+  const log = [
+    `SPINON_C111RHD_METAL_PIXEL_BEGIN ${Object.entries(begin).map(([key, value]) => `${key}=${value}`).join(' ')}`,
+    ...sampleLines,
+    `SPINON_C111RHD_METAL_PIXEL_SUMMARY ${Object.entries(summary).map(([key, value]) => `${key}=${value}`).join(' ')}`,
+  ].join('\n');
+  const result = compareC11IOSMetalPixelLogs(log, {
+    fixture: denseFixture,
+    runID: denseRunID,
+    markerPrefix: 'C111RHD',
+  });
+  assert.equal(result.status, 'matched');
+  assert.equal(result.matchedSamples, denseFixture.samples.length);
+  assert.equal(result.schema, 'spinon-c11-root-html-dense-ios-metal-surface-pixels/v1');
+});
+
 test('isolates one run when the unified log contains other process runs', () => {
   const otherRunID = 'c11-ios-metal-20261012-other';
   const interleaved = `${validLog()}\n${validLog().replaceAll(runID, otherRunID)}`;

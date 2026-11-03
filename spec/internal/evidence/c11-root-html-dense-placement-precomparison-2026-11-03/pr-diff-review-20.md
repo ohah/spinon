@@ -8,7 +8,7 @@
 4. **sparse 회귀:** dense 경로가 기존 row/column sparse 동작을 바꿀 위험. **통과** — sparse 대조 scene을 같은 matrix에서 보존하고 전용 mode만 dense item에 적용한다.
 5. **전용 admission:** 일반 FFI 입력이 Root HTML 전용 입력 제한을 우회할 위험. **통과** — `RootHtmlDenseAutoPlacementV1`은 parsed Root HTML 검증 후 선택한다.
 6. **explicit track 경계:** 비고정·빈 explicit track이 지원으로 확대될 위험. **통과** — 양 축 비어 있지 않은 finite non-negative fixed-px 목록으로 제한한다.
-7. **implicit auto 경계:** implicit track 생성이 필요한데 `auto`를 허용할 위험. **수정 후 통과** — 양 축 각각 `auto`는 해당 축에 새 track이 없을 때만 허용한다. `row-dense-fixed-row`의 `grid-auto-columns:auto` 기대 거부도 지정했다.
+7. **implicit auto·track ceiling 경계:** implicit track 생성이 필요한데 `auto`를 허용하거나 두 축 track 수를 합산해 상한을 다르게 적용할 위험. **수정 후 통과** — 양 축 각각 `auto`는 해당 축에 새 track이 없을 때만 허용한다. `row-dense-fixed-row`의 `grid-auto-columns:auto` 기대 거부와 C11.2.3의 축별 10,000 상한을 지정했다.
 8. **span·line 입력:** 0/음수 span이나 이름 line이 dense path에 들어올 위험. **통과** — 양수 span·positive definite line만 지원하고 negative/named line을 fail-closed한다.
 9. **order 정렬:** nonzero `order`를 일부만 처리해 occupancy와 paint order가 엇갈릴 위험. **통과** — `order:0`만 admission한다.
 10. **nested flow 격리:** nested mixed-flow의 한 container 판정이 이웃 결과에 번질 위험. **통과** — container별 독립 검증과 기존 nested candidate를 명시했다.

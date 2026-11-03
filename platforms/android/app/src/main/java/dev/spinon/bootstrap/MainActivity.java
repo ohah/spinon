@@ -366,6 +366,10 @@ public final class MainActivity extends Activity {
         }
         String c11GridCase = getIntent().getStringExtra("spinon_c11_grid_case");
         int c11GridSceneIndex = 0;
+        boolean c111RootHtmlDensePlacementRequested = getIntent()
+                .getBooleanExtra("spinon_c111_root_html_dense_placement", false);
+        String c111RootHtmlDenseScene = getIntent()
+                .getStringExtra("spinon_c111_root_html_dense_scene");
         boolean c1121GridPlacementRequested = getIntent()
                 .getBooleanExtra("spinon_c1121_grid_placement", false);
         boolean c131OverflowClipRequested = getIntent()
@@ -528,7 +532,8 @@ public final class MainActivity extends Activity {
         boolean c11GridFixtureRequested = getIntent()
                 .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
-                || c114GridTrackSizingRequested || c111RootHtmlPercentColumnsRequested;
+                || c114GridTrackSizingRequested || c111RootHtmlPercentColumnsRequested
+                || c111RootHtmlDensePlacementRequested;
         if (c11GridCase != null) {
             c11GridSceneIndex = -1;
             for (int index = 0; index < C11_GRID_CASE_IDS.length; index++) {
@@ -570,6 +575,11 @@ public final class MainActivity extends Activity {
             }
             if (c11GridSceneIndex < 0 && c1133GridTemplateAreasRequested
                     && isC1133GridTemplateAreasScene(c11GridCase)) {
+                c11GridSceneIndex = 0;
+            }
+            if (c11GridSceneIndex < 0 && c111RootHtmlDensePlacementRequested
+                    && c11GridCase.equals(c111RootHtmlDenseScene)) {
+                // The runtime fixture owns the complete dense scene allowlist validation.
                 c11GridSceneIndex = 0;
             }
             if (c11GridSceneIndex < 0) {

@@ -1,0 +1,130 @@
+{
+  "status": "matched",
+  "scene": "nested-mixed-flow",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-nested-mixed-flow",
+  "processId": 3963,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "pngSha256": "21eba66df9b146a8072521322207cec0424ad3e6e83d6f2ccf5909cae71b7217",
+  "samples": [
+    {
+      "id": "c1123-nested-mixed-flow-grid-center",
+      "css": [
+        92,
+        20
+      ],
+      "pixel": [
+        242,
+        53
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "c1123-nested-mixed-flow-nested-row-center",
+      "css": [
+        44,
+        20
+      ],
+      "pixel": [
+        116,
+        53
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "c1123-nested-mixed-flow-inner-span-a-center",
+      "css": [
+        18,
+        9
+      ],
+      "pixel": [
+        48,
+        24
+      ],
+      "rgba": [
+        255,
+        200,
+        87,
+        255
+      ]
+    },
+    {
+      "id": "c1123-nested-mixed-flow-inner-span-b-center",
+      "css": [
+        18,
+        33
+      ],
+      "pixel": [
+        48,
+        87
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ]
+    },
+    {
+      "id": "c1123-nested-mixed-flow-inner-small-center",
+      "css": [
+        9,
+        55
+      ],
+      "pixel": [
+        24,
+        145
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    },
+    {
+      "id": "c1123-nested-mixed-flow-outer-item-center",
+      "css": [
+        140,
+        20
+      ],
+      "pixel": [
+        368,
+        53
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    }
+  ],
+  "png": "nested-mixed-flow-surface-pixels.png"
+}
