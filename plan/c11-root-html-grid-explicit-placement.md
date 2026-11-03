@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [기존 C11.2.1 numeric placement profile](./c11-2-1-explicit-grid-placement.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 제한 구현 후보가 코드, focused Rust tests, scoped Clippy/rustfmt, Chrome 비교와 Android/iOS Simulator draw/present까지 통과했다. 구현/runtime 20관점 검토, 실제 staged diff 30관점 검토와 STATUS/계약 문서 반영도 끝났다. PR/merge 및 Tailnet preview 동기화가 남아 있다. 아직 PR/merge는 없으므로 C11/C11.1 체크와 공식 완료 수 `72/213`은 바꾸지 않는다. [현재 runtime evidence](../spec/internal/evidence/c11-root-html-grid-explicit-placement-runtime-2026-11-04/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-explicit-placement-runtime-2026-11-04/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-root-html-grid-explicit-placement-runtime-2026-11-04/pr-diff-review-30.md)
+**상태:** 제한 구현 PR [#1137](https://github.com/ohah/spinon/pull/1137)이 2026-11-03T22:48:45Z Rebase and merge됐다(merge SHA `6af14f69512c0c73d890efc728751e0ca342f9c0`). 코드·focused Rust tests·scoped Clippy/rustfmt·Chrome 비교·Android/iOS Simulator 실행 근거와 구현/runtime 및 PR diff 검토는 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-explicit-placement-runtime-2026-11-04/README.md)에 기록했다. 이 bounded slice는 C11/C11.1 체크나 공식 완료 수 `72/213`을 바꾸지 않는다. [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-explicit-placement-runtime-2026-11-04/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-root-html-grid-explicit-placement-runtime-2026-11-04/pr-diff-review-30.md)
 
 ## 확인한 결손
 
