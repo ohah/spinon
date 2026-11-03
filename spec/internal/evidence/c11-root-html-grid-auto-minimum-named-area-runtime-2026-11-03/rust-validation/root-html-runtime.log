@@ -1,0 +1,12 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.21s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 2 tests
+test session::tests::root_html_grid_auto_minimum_named_areas::root_html_named_area_unsupported_revision_does_not_publish_partial_layout ... ok
+test session::tests::root_html_grid_auto_minimum_named_areas::root_html_named_area_auto_minimum_scenes_publish_geometry_and_overflow ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 258 filtered out; finished in 0.94s
+
