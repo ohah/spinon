@@ -6,6 +6,7 @@ use spinon_style::{
     ComputedStyleSnapshot,
 };
 
+use super::root_html_column_math::supported_auto_column_calc;
 use super::{HTML_NAMESPACE, RuntimeGridNodes};
 use crate::StyleLayoutError;
 
@@ -70,7 +71,7 @@ pub(super) fn validate_candidate(
         return Err(unsupported(
             node,
             "grid-auto-columns",
-            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage/fraction tracks",
+            "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage/fraction tracks and supported calc() tracks",
         ));
     }
     if grid.template_areas.is_some()
@@ -145,14 +146,12 @@ pub(super) fn validate_candidate(
 }
 
 fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
-    let valid_track = |track: &ComputedCssGridTrackSize| {
-        matches!(
-            track,
-            ComputedCssGridTrackSize::LengthPx(value)
-                | ComputedCssGridTrackSize::Percentage(value)
-                | ComputedCssGridTrackSize::Fraction(value)
-                if value.is_finite() && *value >= 0.0
-        )
+    let valid_track = |track: &ComputedCssGridTrackSize| match track {
+        ComputedCssGridTrackSize::LengthPx(value)
+        | ComputedCssGridTrackSize::Percentage(value)
+        | ComputedCssGridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackSize::Calc(expression) => supported_auto_column_calc(expression),
+        _ => false,
     };
     match auto_columns {
         ComputedCssGridAutoColumns::Auto => true,

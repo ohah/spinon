@@ -5,7 +5,7 @@ use spinon_layout::GridTrackSize;
 use spinon_style::{
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTemplateAreas,
-    ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridTrackSize, ComputedCssMath, ComputedStyleProfile,
 };
 
 #[path = "root_html_grid_track_tests/fit_content.rs"]
@@ -135,6 +135,93 @@ fn root_html_column_flow_projects_direct_percentage_auto_column_lists() {
             GridTrackSize::Percentage(0.15),
         ])
     );
+}
+
+#[test]
+fn root_html_column_flow_projects_only_two_term_length_percentage_calc_tracks() {
+    let node = NodeId::new(11_247).unwrap();
+    let expression = ComputedCssMath::Sum(vec![
+        ComputedCssMath::Percentage(0.1),
+        ComputedCssMath::LengthPx(5.0),
+    ]);
+    let mut input = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    input.auto_flow = ComputedCssGridAutoFlow::Column;
+    input.auto_columns =
+        ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Calc(
+            expression.clone(),
+        )]);
+    let mut math = CssMathProjector::default();
+    let projected = project_grid_layout_with_math(
+        node,
+        &input,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        &mut math,
+    )
+    .expect("one finite px plus one finite percentage term should project");
+    let spinon_layout::GridAutoColumns::TrackList(tracks) = projected.auto_columns else {
+        panic!("calc track should be projected as a track list");
+    };
+    let [GridTrackSize::Calc(id)] = tracks.as_slice() else {
+        panic!("calc track should retain its typed math id");
+    };
+    let values = math.into_values();
+    assert_eq!(values.len(), 1);
+    assert_eq!(values[0].id, *id);
+    assert_eq!(values[0].node_id, node);
+    assert_eq!(
+        values[0].property,
+        spinon_layout::LayoutCssMathProperty::GridTemplateColumns
+    );
+    assert_eq!(
+        values[0].expression,
+        spinon_layout::LayoutCssMath::Sum(vec![
+            spinon_layout::LayoutCssMath::Percentage(0.1),
+            spinon_layout::LayoutCssMath::LengthPx(5.0),
+        ])
+    );
+}
+
+#[test]
+fn root_html_column_flow_rejects_unsupported_auto_column_calc_shapes() {
+    let node = NodeId::new(11_248).unwrap();
+    for expression in [
+        ComputedCssMath::LengthPx(5.0),
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::LengthPx(1.0),
+            ComputedCssMath::LengthPx(2.0),
+        ]),
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::Percentage(0.1),
+            ComputedCssMath::LengthPx(2.0),
+            ComputedCssMath::LengthPx(3.0),
+        ]),
+        ComputedCssMath::Sum(vec![
+            ComputedCssMath::Product(vec![ComputedCssMath::LengthPx(2.0)]),
+            ComputedCssMath::Percentage(0.1),
+        ]),
+    ] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        );
+        input.auto_flow = ComputedCssGridAutoFlow::Column;
+        input.auto_columns =
+            ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Calc(expression)]);
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &input,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                property: "grid-auto-columns",
+                ..
+            })
+        ));
+    }
 }
 
 #[test]

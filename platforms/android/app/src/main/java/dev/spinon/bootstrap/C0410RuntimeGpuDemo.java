@@ -18177,7 +18177,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131OverflowClipProbeRequested
                 ? "SPINON · C13.1 overflow clip"
                 : c111RootHtmlPercentColumnsRequested
-                ? "SPINON · C11.1 Grid fr"
+                ? "SPINON · C11.1 Root HTML columns"
                 : c11GridFixtureRequested
                 ? "SPINON · C11.1 CSS Grid"
                 : c131CompactSurfaceMatrixProbeRequested
@@ -18311,7 +18311,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c1121GridPlacementRequested
                 ? "V8 numeric Grid line/span → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c111RootHtmlPercentColumnsRequested
-                ? "parsed Root HTML column-flow · 300×63 CSS px grid · WGPU"
+                ? "parsed Root HTML column-flow · implicit columns · WGPU"
                 : c11GridFixtureRequested
                 ? "V8 DOM display:grid → Stylo → Taffy → Rust 장면 → WGPU · 320×240 CSS px"
                 : c1035PositionedFlexProbeRequested

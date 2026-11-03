@@ -11,6 +11,7 @@ use spinon_style::{
 };
 
 use super::super::typed_math::CssMathProjector;
+use super::root_html_column_math::supported_auto_column_calc;
 use crate::StyleLayoutError;
 
 const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
@@ -272,14 +273,12 @@ fn is_supported_root_html_explicit_track(track: &ComputedCssGridTrackSize) -> bo
 }
 
 fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
-    let valid_track = |track: &ComputedCssGridTrackSize| {
-        matches!(
-            track,
-            ComputedCssGridTrackSize::LengthPx(value)
-                | ComputedCssGridTrackSize::Percentage(value)
-                | ComputedCssGridTrackSize::Fraction(value)
-                if value.is_finite() && *value >= 0.0
-        )
+    let valid_track = |track: &ComputedCssGridTrackSize| match track {
+        ComputedCssGridTrackSize::LengthPx(value)
+        | ComputedCssGridTrackSize::Percentage(value)
+        | ComputedCssGridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackSize::Calc(expression) => supported_auto_column_calc(expression),
+        _ => false,
     };
     match auto_columns {
         ComputedCssGridAutoColumns::Auto => true,
@@ -1477,13 +1476,17 @@ fn project_auto_columns(
             if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && !tracks.is_empty()
                 && tracks.iter().all(|track| {
-                    matches!(
-                        track,
+                    match track {
                         ComputedCssGridTrackSize::LengthPx(value)
-                            | ComputedCssGridTrackSize::Percentage(value)
-                            | ComputedCssGridTrackSize::Fraction(value)
-                            if value.is_finite() && *value >= 0.0
-                    )
+                        | ComputedCssGridTrackSize::Percentage(value)
+                        | ComputedCssGridTrackSize::Fraction(value) => {
+                            value.is_finite() && *value >= 0.0
+                        }
+                        ComputedCssGridTrackSize::Calc(expression) => {
+                            supported_auto_column_calc(expression)
+                        }
+                        _ => false,
+                    }
                 }) =>
         {
             project_tracks(

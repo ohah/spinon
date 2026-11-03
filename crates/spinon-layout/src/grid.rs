@@ -16,6 +16,8 @@ mod c114_absolute_auto_repeat_probes;
 mod c114_grid_auto_repeat_intrinsic_wpt;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 mod cyclic_percentage_auto_repeat_rows;
+#[path = "grid/root_html_column.rs"]
+pub(crate) mod root_html_column;
 #[path = "grid/root_html_gap.rs"]
 mod root_html_gap;
 
@@ -368,6 +370,14 @@ pub(super) fn validate_grid_layout(
     definite_axes: &BTreeMap<NodeId, DefiniteAxes>,
     intrinsic_size_nodes: &std::collections::BTreeSet<NodeId>,
 ) -> Result<(), LayoutError> {
+    let css_math_by_id = if input.grid_containers.values().any(|container| {
+        container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1
+            && root_html_column::has_calc_auto_columns(&container.auto_columns)
+    }) {
+        root_html_column::index_css_math(&input.css_math)?
+    } else {
+        BTreeMap::new()
+    };
     for &id in input.grid_containers.keys() {
         if !index.contains_key(&id) {
             return Err(LayoutError::UnknownGridContainer(id));
@@ -387,7 +397,7 @@ pub(super) fn validate_grid_layout(
             validate_root_html_implicit_rows_contract(id, container)?;
         }
         if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
-            validate_root_html_column_flow_contract(id, container)?;
+            validate_root_html_column_flow_contract(id, container, &css_math_by_id)?;
         }
         validate_template_areas(id, container)?;
         if matches!(
@@ -539,7 +549,7 @@ pub(super) fn validate_grid_layout(
                                 | GridTrackSize::Percentage(value)
                                 | GridTrackSize::Fraction(value)
                                 if value.is_finite() && *value >= 0.0
-                        )
+                        ) || matches!(track, GridTrackSize::Calc(_))
                     }) => {}
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::TrackList(tracks))
                 if container.template_areas.is_some() && !tracks.is_empty() => {}
@@ -611,7 +621,8 @@ pub(super) fn validate_grid_layout(
                 "grid-auto-columns",
                 tracks,
                 template_area_track_sizing
-                    || container.placement_mode == GridPlacementMode::TrackSizing,
+                    || container.placement_mode == GridPlacementMode::TrackSizing
+                    || container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1,
                 false,
                 false,
                 false,
@@ -679,6 +690,7 @@ pub(super) fn validate_grid_layout(
                 container,
                 visible_items,
                 &input.css_math,
+                &css_math_by_id,
             )?;
         }
         let template_area_track_sizing = container.template_areas.is_some()
@@ -1364,6 +1376,7 @@ pub(super) fn root_html_fixed_empty_item_is_supported(
 fn validate_root_html_column_flow_contract(
     node: spinon_core::NodeId,
     container: &crate::GridContainerInput,
+    css_math: &root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     if container.template_areas.is_some() {
         return Err(LayoutError::InvalidGridTrackList {
@@ -1408,12 +1421,13 @@ fn validate_root_html_column_flow_contract(
             reason: "Root HTML column flow requires grid-auto-rows:auto",
         });
     }
-    validate_root_html_column_flow_auto_columns(node, &container.auto_columns)
+    validate_root_html_column_flow_auto_columns(node, &container.auto_columns, css_math)
 }
 
 fn validate_root_html_column_flow_auto_columns(
     node: spinon_core::NodeId,
     auto_columns: &crate::GridAutoColumns,
+    css_math: &root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     match auto_columns {
         crate::GridAutoColumns::Auto => Ok(()),
@@ -1443,6 +1457,9 @@ fn validate_root_html_column_flow_auto_columns(
                     | GridTrackSize::Percentage(value)
                     | GridTrackSize::Fraction(value)
                         if value.is_finite() && *value >= 0.0 => {}
+                    GridTrackSize::Calc(id) => {
+                        root_html_column::validate_auto_column_calc(node, *id, css_math)?;
+                    }
                     GridTrackSize::LengthPx(_)
                     | GridTrackSize::Percentage(_)
                     | GridTrackSize::Fraction(_) => {
@@ -1469,19 +1486,20 @@ fn validate_root_html_column_flow_container_style(
     style: LayoutStyle,
     container: &crate::GridContainerInput,
     visible_items: usize,
-    css_math: &[LayoutCssMathValue],
+    css_math_values: &[LayoutCssMathValue],
+    css_math_by_id: &root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     validate_root_html_implicit_rows_container_style(
         node,
         style,
         container,
         container.rows.len(),
-        css_math,
+        css_math_values,
     )?;
     let has_relative_track = matches!(
         &container.auto_columns,
         crate::GridAutoColumns::TrackList(tracks)
-            if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_)))
+            if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_) | GridTrackSize::Calc(_)))
     );
     if has_relative_track {
         let unsupported_property = if !matches!(
@@ -1507,7 +1525,7 @@ fn validate_root_html_column_flow_container_style(
         .max(container.columns.len());
     let implicit_count = required_columns.saturating_sub(container.columns.len());
     let column_gap =
-        resolve_root_html_gap_px(node, "column-gap", style.gap.column, style, css_math)?;
+        resolve_root_html_gap_px(node, "column-gap", style.gap.column, style, css_math_values)?;
     let mut extent = f64::from(column_gap) * required_columns.saturating_sub(1) as f64;
     validate_root_html_extent(node, "column-gap", extent)?;
     for track in &container.columns {
@@ -1521,7 +1539,12 @@ fn validate_root_html_column_flow_container_style(
             crate::GridAutoColumns::TrackList(tracks) => Some(tracks[index % tracks.len()]),
         };
         if let Some(track) = track {
-            extent += root_html_track_extent(node, "grid-auto-columns", track, style.width)?;
+            extent += match track {
+                GridTrackSize::Calc(_) => {
+                    root_html_column::calc_track_extent(node, track, style.width, css_math_by_id)?
+                }
+                _ => root_html_track_extent(node, "grid-auto-columns", track, style.width)?,
+            };
             validate_root_html_extent(node, "grid-auto-columns", extent)?;
         }
     }

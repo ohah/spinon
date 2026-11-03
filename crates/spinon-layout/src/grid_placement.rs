@@ -21,6 +21,14 @@ pub(super) fn normalize_grid_layout(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
 ) -> Result<NormalizedGridLayout, LayoutError> {
+    let css_math_by_id = if input.grid_containers.values().any(|container| {
+        container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1
+            && crate::grid::root_html_column::has_calc_auto_columns(&container.auto_columns)
+    }) {
+        crate::grid::root_html_column::index_css_math(&input.css_math)?
+    } else {
+        BTreeMap::new()
+    };
     let hidden = hidden_subtrees(input, index);
     for container_node in &input.nodes {
         let Some(container) = input.grid_containers.get(&container_node.id) else {
@@ -48,6 +56,7 @@ pub(super) fn normalize_grid_layout(
                 &hidden,
                 container_node,
                 container,
+                &css_math_by_id,
             )?;
         }
     }
@@ -120,8 +129,14 @@ pub(super) fn normalize_grid_layout(
             }
             output.auto_placed_items.extend(sparse.auto_placed_items);
         } else if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
-            let dense =
-                root_html_column_flow::normalize(input, index, &hidden, container_node, container)?;
+            let dense = root_html_column_flow::normalize(
+                input,
+                index,
+                &hidden,
+                container_node,
+                container,
+                &css_math_by_id,
+            )?;
             output.item_placements.extend(dense.item_placements);
             if let Some(rows) = dense.expanded_rows {
                 output.expanded_rows.insert(container_node.id, rows);

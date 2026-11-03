@@ -254,6 +254,8 @@ pub(super) fn computed_element_output(
                         == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_root_html_percentage_auto_column_lists: profile
                         == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+                    allow_root_html_calc_auto_column_tracks: profile
+                        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_template_areas: matches!(
                         profile,
                         ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
