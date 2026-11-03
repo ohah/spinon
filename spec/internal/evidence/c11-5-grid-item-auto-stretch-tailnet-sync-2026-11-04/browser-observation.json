@@ -1,0 +1,16 @@
+{
+  "tool": "Agent Browser",
+  "browser": "HeadlessChrome/156.0.0.0",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "viewportCssPx": { "width": 1280, "height": 633 },
+  "devicePixelRatio": 1,
+  "visiblePlanCard": "2026-11-04 C11.5 parsed Root HTML Grid item auto-size/normal/stretch · 계획 단계: 빈 non-replaced item의 auto-sized axis만 대상으로 하는 다음 제한 slice다. 계획과 Chrome 156 사전 비교가 준비됐으며 runtime 구현은 없다. C11.5/C11은 미완료이고 공식 집계 72/213은 유지한다.",
+  "links": [
+    "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-grid-item-auto-stretch.md",
+    "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-5-grid-item-auto-stretch-precomparison-2026-11-04/README.md"
+  ],
+  "screenshot": "roadmap-tailnet-agent-browser.png",
+  "screenshotSha256": "b507e3eeb372be543d3689cbb68209e945fe01e5a800e9fb4e00c94d687d2790",
+  "screenshotPixels": { "width": 1280, "height": 633 }
+}

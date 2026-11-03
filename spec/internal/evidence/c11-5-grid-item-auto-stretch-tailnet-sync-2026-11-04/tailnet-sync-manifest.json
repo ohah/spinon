@@ -1,0 +1,21 @@
+{
+  "syncedAtUtc": "2026-11-03T18:35:32.280619+00:00",
+  "sourceRevision": "74db75bf49ad24c1d5ac558bb22ffd1911b8684d",
+  "sourceFile": "spec/public/roadmap.html",
+  "servedRoute": "/spinon/roadmap.html",
+  "servedFile": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "backupFile": "/tmp/spinon-c11-5-grid-item-auto-stretch-tailnet-sync-2026-11-04/roadmap.html.before",
+  "backupSha256": "e953474d1b547abb8d2a8c82ccdabb7fab2e3b3bd117955d126ef2c5812c2c37",
+  "sourceSha256": "0301e2c299cbebd31811f405381883cec6dbdf124b1dd3a346643829e455e87e",
+  "servedSha256": "0301e2c299cbebd31811f405381883cec6dbdf124b1dd3a346643829e455e87e",
+  "sourceBytes": 551498,
+  "servedBytes": 551498,
+  "httpStatus": 200,
+  "server": {
+    "pidAtSync": 28040,
+    "listen": "127.0.0.1:8768",
+    "tailscaleServe": "https://macstudio.tailed42f2.ts.net -> http://127.0.0.1:8768",
+    "restarted": false
+  },
+  "scope": "roadmap.html only; STATUS.html was not regenerated"
+}
