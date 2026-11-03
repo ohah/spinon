@@ -1,6 +1,6 @@
-# parsed Root HTML 숫자형 Grid 배치 runtime 후보 · 2026-11-04
+# parsed Root HTML 숫자형 Grid 배치 runtime · 2026-11-04
 
-**상태:** 구현·로컬 검증 후보. 아직 PR과 merge가 없으므로 공식 C11 상태와 `72/213` 집계는 그대로다. [전용 계획](../../../../plan/c11-root-html-grid-explicit-placement.md)
+**상태:** 제한 구현 PR [#1137](https://github.com/ohah/spinon/pull/1137)이 2026-11-03T22:48:45Z Rebase and merge됐다(merge SHA `6af14f69512c0c73d890efc728751e0ca342f9c0`). GitHub check rollup은 비어 있고 `main`에는 required status check이 설정되지 않아 CI 통과로 세지 않는다. 공식 C11 상태와 `72/213` 집계는 그대로다. [전용 계획](../../../../plan/c11-root-html-grid-explicit-placement.md)
 
 ## 범위
 
@@ -41,9 +41,9 @@ Agent Browser `0.31.1`의 HeadlessChrome 156, DPR 1, CSS viewport 1280×633에�
 
 Android USB physical device `R5KYB06SMPE`에는 설치·실행하지 않았다. 캡처는 Android OS screenshot과 iOS Simulator screenshot이며 renderer surface readback 결과가 아니다. 화면상 overflow가 보이고 `simulator-screen-pixel-samples.json`의 PNG 표본도 Grid 바깥 item 내부 red, item 바깥 white를 확인한다. 이 표본은 PixelCopy/Metal drawable parity 또는 hardware GPU parity 주장이 아니다.
 
-![Android API 37 AVD 화면](android-simulator-screen.png)
+![Android API 37 AVD 화면](./android-simulator-screen.png)
 
-![iPhone 17 Pro iOS 26.2 Simulator 화면](ios-simulator-screen.png)
+![iPhone 17 Pro iOS 26.2 Simulator 화면](./ios-simulator-screen.png)
 
 ## 자료와 한계
 
