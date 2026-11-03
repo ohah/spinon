@@ -31,9 +31,10 @@
 - `android-api37-avd.png`, `android-api37-avd.log`, `android-emulator.log`, `ios-iphone17pro-simulator.png`, `ios-simulator.log` — 시뮬레이터 실행·화면 근거.
 - `simulator-screen-samples.json`, `verify-screen-samples.py` — screenshot 표본 추출 및 검증기.
 - `simulator-build-metadata.json` — build hash, 실행 경로와 근거 종류.
+- `implementation-runtime-review-20.md`, `pr-diff-review-30.md` — 별개의 구현/runtime 및 실제 PR diff 실패 관점 검토.
 
 Pillow가 있는 환경에서 `python3 spec/internal/evidence/c11-root-html-grid-item-self-alignment-simulator-2026-11-04/verify-screen-samples.py`를 실행하면 OS 합성 screenshot 표본을 다시 검증할 수 있다.
 
 ## 검증 범위
 
-Android PixelCopy와 Metal drawable 표본은 직접 surface readback이며, iOS readback은 compositor 제출 전이다. PNG screenshot은 OS 합성 결과로 별도 근거다. Android는 SwiftShader를 사용했으며 hardware GPU 결과가 아니다. 이번 실행은 실기기 동작, scanout 시각, 전체 CSS Grid 지원, WPT 적합성, 일반 CSS admission 또는 C11/C11.5 전체 완료를 증명하지 않는다. 구현/runtime 검토 20개는 [별도 기록](implementation-runtime-review-20.md)에 있다. 구현 PR diff 검토 30개와 구현 PR 생성은 남아 있다. 공식 완료 수는 `72/213`이다.
+Android PixelCopy와 Metal drawable 표본은 직접 surface readback이며, iOS readback은 compositor 제출 전이다. PNG screenshot은 OS 합성 결과로 별도 근거다. Android는 SwiftShader를 사용했으며 hardware GPU 결과가 아니다. 이번 실행은 실기기 동작, scanout 시각, 전체 CSS Grid 지원, WPT 적합성, 일반 CSS admission 또는 C11/C11.5 전체 완료를 증명하지 않는다. 구현/runtime 실패 관점 20개와 실제 PR [#1128](https://github.com/ohah/spinon/pull/1128) diff 실패 관점 30개 검토를 마쳤다. PR check rollup은 비어 있고 병합은 남아 있다. 공식 완료 수는 `72/213`이다.
