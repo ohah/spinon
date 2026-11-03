@@ -22,6 +22,7 @@ mod primitive_values;
 mod root_html_column_flow;
 mod root_html_column_math;
 mod root_html_fit_content_named_area;
+mod root_html_grid_content_alignment;
 mod root_html_grid_gap;
 mod root_html_grid_tracks;
 mod root_html_named_area;
@@ -263,6 +264,14 @@ pub(super) fn project_styles(
         };
     let root_html_dense_route_nodes =
         root_html_dense_placement_route_nodes(&root_html_dense_grid_nodes, grid_nodes.as_ref());
+    let root_html_grid_content_alignment_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
+                root_html_grid_content_alignment::eligible_nodes(tree, snapshot, nodes)
+            })
+        } else {
+            BTreeSet::new()
+        };
     if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && let Some(nodes) = grid_nodes.as_ref()
     {
@@ -282,6 +291,14 @@ pub(super) fn project_styles(
     };
     for element in snapshot.elements.iter() {
         let node = element.node_id;
+        let root_html_grid_content_alignment_enabled =
+            root_html_grid_content_alignment_nodes.contains(&node);
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            reject_root_html_content_alignment_scope(
+                element,
+                root_html_grid_content_alignment_enabled,
+            )?;
+        }
         if matches!(
             snapshot.profile,
             ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
@@ -613,7 +630,7 @@ pub(super) fn project_styles(
             } else {
                 LayoutStyle::default().align_self
             },
-            align_content: if supports_runtime_flex {
+            align_content: if supports_runtime_flex || root_html_grid_content_alignment_enabled {
                 Some(parse_runtime_align_content(
                     node,
                     required(element, "align-content")?,
@@ -622,6 +639,11 @@ pub(super) fn project_styles(
                 None
             },
             justify_content: match snapshot.profile {
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                    if root_html_grid_content_alignment_enabled =>
+                {
+                    parse_runtime_justify_content(node, required(element, "justify-content")?)?
+                }
                 ComputedStyleProfile::FlexAlignmentV1
                 | ComputedStyleProfile::FlexAlignmentCascadeLayersV1
                 | ComputedStyleProfile::RuntimeBlockPaintV1
@@ -846,23 +868,32 @@ pub(super) fn project_styles(
                 reject_grid_alignment(
                     element,
                     snapshot.profile,
-                    true,
-                    false,
-                    false,
-                    options.allow_c11_4_overflow_auto_minimum_fixture,
-                    options.allow_c11_4_grid_text_baseline_fixture,
+                    GridAlignmentChecks {
+                        is_grid_container: true,
+                        allow_root_html_grid_content_alignment:
+                            root_html_grid_content_alignment_nodes.contains(&node),
+                        allow_c11_4_overflow_auto_minimum_fixture: options
+                            .allow_c11_4_overflow_auto_minimum_fixture,
+                        allow_c11_4_grid_text_baseline_fixture: options
+                            .allow_c11_4_grid_text_baseline_fixture,
+                        ..GridAlignmentChecks::default()
+                    },
                 )?;
             }
             if nodes.grid_items.contains(&node) {
                 reject_grid_alignment(
                     element,
                     snapshot.profile,
-                    false,
-                    true,
-                    supports_grid_image_ratio_transfer
-                        && options.allow_c11_4_replaced_grid_item_align_self_start,
-                    options.allow_c11_4_overflow_auto_minimum_fixture,
-                    options.allow_c11_4_grid_text_baseline_fixture,
+                    GridAlignmentChecks {
+                        is_grid_item: true,
+                        is_replaced_grid_item: supports_grid_image_ratio_transfer
+                            && options.allow_c11_4_replaced_grid_item_align_self_start,
+                        allow_c11_4_overflow_auto_minimum_fixture: options
+                            .allow_c11_4_overflow_auto_minimum_fixture,
+                        allow_c11_4_grid_text_baseline_fixture: options
+                            .allow_c11_4_grid_text_baseline_fixture,
+                        ..GridAlignmentChecks::default()
+                    },
                 )?;
             }
         }
@@ -1546,17 +1577,23 @@ fn runtime_grid_nodes(
     nodes
 }
 
-fn reject_grid_alignment(
-    element: &ComputedElementStyle,
-    profile: ComputedStyleProfile,
+#[derive(Clone, Copy, Default)]
+struct GridAlignmentChecks {
     is_grid_container: bool,
     is_grid_item: bool,
     is_replaced_grid_item: bool,
+    allow_root_html_grid_content_alignment: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
+}
+
+fn reject_grid_alignment(
+    element: &ComputedElementStyle,
+    profile: ComputedStyleProfile,
+    checks: GridAlignmentChecks,
 ) -> Result<(), StyleLayoutError> {
     let mut unsupported = Vec::new();
-    if is_grid_container {
+    if checks.is_grid_container {
         unsupported.extend([
             ("align-items", "normal"),
             ("align-content", "normal"),
@@ -1564,51 +1601,78 @@ fn reject_grid_alignment(
             ("justify-items", "normal"),
         ]);
     }
-    if is_grid_item {
+    if checks.is_grid_item {
         unsupported.extend([("align-self", "auto"), ("justify-self", "auto")]);
     }
     for (property, initial) in unsupported {
         if let Some(value) = element.properties.get(property)
             && value != initial
-            && !(is_grid_container && property == "align-items" && value == "start")
-            && !(is_grid_container
-                && allow_c11_4_grid_text_baseline_fixture
+            && !(checks.is_grid_container && property == "align-items" && value == "start")
+            && !(checks.is_grid_container
+                && checks.allow_c11_4_grid_text_baseline_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "align-items"
                 && matches!(
                     value.as_str(),
                     "baseline" | "first baseline" | "last baseline"
                 ))
-            && !(is_grid_item
-                && allow_c11_4_grid_text_baseline_fixture
+            && !(checks.is_grid_item
+                && checks.allow_c11_4_grid_text_baseline_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "align-self"
                 && matches!(
                     value.as_str(),
                     "baseline" | "first baseline" | "last baseline"
                 ))
-            && !(is_grid_container
-                && allow_c11_4_overflow_auto_minimum_fixture
+            && !(checks.is_grid_container
+                && checks.allow_c11_4_overflow_auto_minimum_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "align-items"
                 && value == "stretch")
-            && !(is_grid_container
+            && !(checks.is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "justify-items"
                 && value == "start")
-            && !(is_grid_container
+            && !(checks.is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && matches!(property, "align-content" | "justify-content")
                 && value == "start")
-            && !(is_grid_container
+            && !(checks.is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 && matches!(property, "align-content" | "justify-content")
                 && value == "start")
-            && !(is_grid_item
-                && is_replaced_grid_item
+            && !(checks.is_grid_container
+                && checks.allow_root_html_grid_content_alignment
+                && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_grid_content_alignment::supports_content_alignment_value(
+                    property, value,
+                ))
+            && !(checks.is_grid_item
+                && checks.is_replaced_grid_item
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "align-self"
                 && value == "start")
+        {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node: element.node_id,
+                property,
+                value: value.clone(),
+            });
+        }
+    }
+    Ok(())
+}
+
+fn reject_root_html_content_alignment_scope(
+    element: &ComputedElementStyle,
+    allow_grid_content_alignment: bool,
+) -> Result<(), StyleLayoutError> {
+    if allow_grid_content_alignment {
+        return Ok(());
+    }
+    for property in ["align-content", "justify-content"] {
+        if let Some(value) = element.properties.get(property)
+            && value != "normal"
         {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node: element.node_id,

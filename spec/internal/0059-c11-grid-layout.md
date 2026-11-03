@@ -130,6 +130,16 @@ Chrome 156 고정 비교·독립 기대값을 바탕으로 Root HTML runtime 42�
 
 이 제한 slice는 C11.1 또는 C11 완료, 일반 CSS Grid/WPT 적합성, 공개 CSS 지원을 뜻하지 않는다. 공식 체크박스와 출시 전 내부 계약 숫자 버전 `0.1.0`은 바꾸지 않는다.
 
+## C11.1 parsed Root HTML fixed-track content alignment · implementation candidate · 2026-11-03
+
+`RuntimeRootHtmlTextPaintV1` 기본 parsed Root HTML route에서 `align-content`와 `justify-content`가 Grid track 묶음을 배치하는 제한 profile을 추가했다. 대상 container는 definite finite non-negative fixed-px width/height, 비어 있지 않은 fixed-px explicit rows/columns, sparse row auto-flow, auto implicit tracks, repeat·area·line name 없음, finite non-negative px gap, zero margin/padding/border, visible overflow, static LTR `horizontal-tb`여야 한다. 모든 direct item은 static fixed-size empty HTML `div`, all-auto placement여야 하며 item 수가 explicit cell 수를 넘지 않는다. 그 밖의 Root HTML node와 부적격 Grid에서 non-initial content-alignment 값은 node/property/value 오류로 거부한다.
+
+허용 값은 `normal`, `stretch`, start/end/flex-start/flex-end/center, `space-between`/`space-around`/`space-evenly`, `safe center`/`unsafe center`/`safe end`다. Baseline, `safe start`, `unsafe end` 및 허용 목록 밖 modifier/value는 거부한다. 고정 explicit track에는 auto-track stretch 의미가 없으며 일반 Taffy/Grid profile의 `normal` 의미는 바꾸지 않는다.
+
+Chrome 156 Agent Browser와 독립 산식의 positive case는 240×180px container, `[40,60]` columns, `[30,50]` rows, 10px gaps, `space-evenly`/`space-around`다. Chrome item 시작점은 `(43.328125,22.5)`, `(136.65625,22.5)`, `(43.328125,107.5)`, `(136.65625,107.5)` CSS px다. Taffy의 부동소수 결과는 Chrome과 1/64 CSS px 이내인지 확인한다. 80×70px negative case에서는 `unsafe center`가 x=-15px, `safe end`가 y=0px에 놓이고, 두 축의 safe center fallback 및 unsafe center overflow도 별도로 검사한다. [계획·독립 기대값](../../plan/c11-root-html-grid-content-alignment.md) · [Chrome 사후 fixture 비교](./evidence/c11-root-html-grid-content-alignment-precomparison-2026-11-03/chrome-post-fixture-validation/) · [실행·화면·hash·실패 기록](./evidence/c11-root-html-grid-content-alignment-runtime-2026-11-03-pass02/README.md).
+
+Root HTML author cascade, projection acceptance/rejection, Taffy frame, default Root HTML runtime 경로를 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 모두 실제 앱 로그에서 `layout=ready`, `boxes=7`을 기록하고 정렬된 2×2 화면을 캡처했다. 화면 캡처는 시각 smoke evidence이며 Android PixelCopy나 iOS Metal surface readback은 수행하지 않았다. Android AVD는 최초 crash reporter 동의 대기 때문에 부팅이 막혔으나 공식 `-crash-report-mode disabled` 옵션으로 다시 시작해 실행을 마쳤다. iOS build는 성공했고 기존 `RawWindowMetalLayer` duplicate-symbol 경고가 남았다. 두 실행 환경과 APK/실행 파일 hash, 실패 기록은 [runtime evidence](./evidence/c11-root-html-grid-content-alignment-runtime-2026-11-03-pass02/README.md)에 둔다. 이 후보는 C11.1/C11 완료, 일반 CSS admission, WPT 적합성 또는 공식 완료 수 증가를 뜻하지 않는다. 내부 숫자 버전 `0.1.0`과 공식 `72/213`은 유지한다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.

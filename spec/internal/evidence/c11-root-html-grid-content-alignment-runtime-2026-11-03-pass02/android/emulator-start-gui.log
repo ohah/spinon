@@ -1,0 +1,42 @@
+INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /Users/yoonhb/Library/Android/sdk/system-images/android-37.0/google_apis/arm64-v8a/
+INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+INFO         | Guest GLES Driver: Auto (ext controls)
+INFO         | emuglConfig_init: vulkan_mode_selected:lavapipe gles_mode_selected:host
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `spinon_c11_content_alignment_20261103` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `spinon_c11_content_alignment_20261103` are met
+WARNING      | hvf is not enabled on this aarch64 host.
+INFO         | Storing crashdata in: /tmp/android-yoonhb/emu-crash-37.2.12.db, detection is enabled for process: 32843
+INFO         | Showing crashdialog to get consent.
+  module_list[0].crashpad_annotations["ERRLOG"] (type = 1) = detected a hanging thread 'QEMU2 main loop'. No response for 15011 ms
+detected a hanging thread 'QEMU2 CPU0 thread'. No response for 15011 ms
+detected a hanging thread 'QEMU2 CPU1 thread'. No response for 15012 ms
+detected a hanging thread 'QEMU2 main loop'. No response for 15023 ms
+
+  module_list[0].crashpad_annotations["disk.dataPartition.size"] (type = 1) = 800M
+  module_list[0].crashpad_annotations["hw.lcd.height"] (type = 1) = 2400
+  module_list[0].crashpad_annotations["hw.gpu.mode"] (type = 1) = auto
+  module_list[0].crashpad_annotations["hw.cpu.ncore"] (type = 1) = 4
+  module_list[0].crashpad_annotations["hw.sensor.hinge"] (type = 1) = no
+  module_list[0].crashpad_annotations["hw.lcd.width"] (type = 1) = 1080
+  module_list[0].crashpad_annotations["hw.ramSize"] (type = 1) = 1536M
+  module_list[0].crashpad_annotations["PlayStore.enabled"] (type = 1) = no
+  module_list[0].crashpad_annotations["cpu_cores"] (type = 1) = 16
+  module_list[0].crashpad_annotations["hw.gpu.enabled"] (type = 1) = no
+  module_list[0].crashpad_annotations["free_ram"] (type = 1) = 23439
+  module_list[0].crashpad_annotations["avd_space"] (type = 1) = 51536928768
+  module_list[0].crashpad_annotations["ro.build.fingerprint"] (type = 1) = google/generic_system_google/generic:17/CE2A.260420.019/15611780:userdebug/dev-keys
+  module_list[0].crashpad_annotations["AVD_FLAVOR"] (type = 1) = AVD_OTHER
+  module_list[0].crashpad_annotations["gfxstream_features"] (type = 1) = GlPipeChecksum, VulkanShaderFloat16Int8, GlAsyncSwap, GlDma, GlesDynamicVersion, RefCountPipe, HostComposition, VulkanNullOptionalStrings, YuvCache, VulkanIgnoredHandles, VulkanQueueSubmitWithCommands, HwcMultiConfigs, VulkanVirtualQueue, VulkanUseDedicatedAhbMemoryType,
+  module_list[0].crashpad_annotations["internal-msg"] (type = 1) = emuglConfig_init: gpu_mode_requested: auto, no_window: 1
+emuglConfig_init: GPU emulation enabled using Vulkan:'lavapipe' GLES:'swangle' modes
+Deciding if GLDirectMem/Vulkan should be enabled. Selected GLES renderer: Angle Indirect Selected Vulkan renderer: Lavapipe API level: 3
+Host GPU selected, not enabling Vulkan because API level is < 29.
+detected a hanging thread 'QEMU2 main loop'. No response for 15023 ms
+  module_list[0].crashpad_annotations["command_line"] (type = 1) = -avd spinon_c11_content_alignment_20261103 -port 5554 -no-snapshot-load -no-snapshot-save -no-window -no-audio -no-boot-anim -gpu auto -cores 2 -memory 2048

@@ -1,0 +1,65 @@
+{
+  "oracle": "CSS Grid 1 §11.6 and CSS Box Alignment 3 §5.1.4 formulas, evaluated independently of Spinon",
+  "fixture": {
+    "positive": {
+      "contentBox": [240, 180],
+      "columns": [40, 60],
+      "rows": [30, 50],
+      "gap": [10, 10],
+      "freeSpace": [130, 90]
+    },
+    "negative": {
+      "contentBox": [80, 70],
+      "columns": [40, 60],
+      "rows": [30, 50],
+      "gap": [10, 10],
+      "freeSpace": [-30, -20]
+    }
+  },
+  "positiveTrackOrigins": {
+    "justifyContent": {
+      "start": [0, 50],
+      "flex-start": [0, 50],
+      "end": [130, 180],
+      "flex-end": [130, 180],
+      "center": [65, 115],
+      "space-between": [0, 180],
+      "space-around": [32.5, 147.5],
+      "space-evenly": [43.3333333333, 136.6666666667]
+    },
+    "alignContent": {
+      "start": [0, 40],
+      "flex-start": [0, 40],
+      "end": [90, 130],
+      "flex-end": [90, 130],
+      "center": [45, 85],
+      "space-between": [0, 130],
+      "space-around": [22.5, 107.5],
+      "space-evenly": [30, 100]
+    }
+  },
+  "negativeFreeSpaceFirstTrackOrigin": {
+    "justifyContent": {
+      "center": -15,
+      "safe center": 0,
+      "unsafe center": -15,
+      "end": -30,
+      "safe end": 0
+    },
+    "alignContent": {
+      "center": -10,
+      "safe center": 0,
+      "unsafe center": -10,
+      "end": -20,
+      "safe end": 0
+    }
+  },
+  "comparison": {
+    "coordinateToleranceCssPx": 0.015625,
+    "reason": "Chrome positions are quantized to 1/64 CSS px in the observed run; tolerance equals one quantization step"
+  },
+  "excludedDiagnostics": {
+    "autoTrackStretch": "Observed separately: normal/stretch can grow auto tracks. Not part of this fixed-px implementation gate.",
+    "baselineContentAlignment": "Rejected because the current Taffy projection maps first-baseline content alignment to flex-start."
+  }
+}
