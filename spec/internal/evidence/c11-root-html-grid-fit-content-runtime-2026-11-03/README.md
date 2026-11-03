@@ -7,7 +7,7 @@
 - `cargo fmt --all -- --check`, `git diff --check`: 통과.
 - Focused Rust tests: **223 passed, 0 failed**. Layout Ahem sizing 3, layout percentage rejection 1, style cascade fit-content 3, existing style Grid 95, style-to-layout Root HTML 52, runtime Root HTML 69. Runtime fit-content 4개 테스트는 마지막 69개 집계 안에 포함된다.
 - `cargo clippy --locked -p spinon-runtime -p spinon-layout -p spinon-style-to-layout -p spinon-style --all-targets -- -D warnings`: 통과.
-- 구현/runtime 실패 관점 검토 20개: [implementation-review-20.md](./implementation-review-20.md). PR 실제 diff의 별도 30개 검토는 아직 하지 않았다.
+- 구현/runtime 실패 관점 검토 20개: [implementation-review-20.md](./implementation-review-20.md). PR #1093 실제 diff의 별도 30개 검토: [pr-diff-review-30.md](./pr-diff-review-30.md). Agent Browser 확인에서 PR 본문의 Android/iOS embedded image 두 장 모두 로드됐다. PR Checks는 0개다.
 
 로그는 [layout Ahem](./layout-ahem-final.log), [layout 거부](./layout-fit-content-rejection-final.log), [cascade](./style-cascade-fit-content-final.log), [style Grid 회귀](./style-grid-final.log), [projection](./style-to-layout-root-html-tests.log), [runtime 후보](./runtime-fit-content-final.log), [Root HTML runtime 회귀](./runtime-root-html-tests.log), [Clippy](./scoped-clippy.log)에 있다.
 
