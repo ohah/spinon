@@ -1,6 +1,6 @@
 # C11 parsed Root HTML Grid 콘텐츠 정렬 제한 구현 계획
 
-**상태:** 제한 구현·Rust·Android/iOS 시뮬레이터 smoke 검증 완료, PR 전 리뷰 진행 중 · **대상:** `RuntimeRootHtmlTextPaintV1`의 좁은 Grid profile
+**상태:** 제한 구현·Rust·Android/iOS 시뮬레이터 smoke 검증 완료, [PR #1121 병합](https://github.com/ohah/spinon/pull/1121) · **대상:** `RuntimeRootHtmlTextPaintV1`의 좁은 Grid profile
 
 ## 목표와 경계
 
