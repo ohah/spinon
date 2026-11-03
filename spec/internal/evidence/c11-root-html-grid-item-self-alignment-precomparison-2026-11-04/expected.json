@@ -1,0 +1,294 @@
+{
+  "schema": "spinon-c11-root-html-grid-item-self-alignment-precomparison-v1",
+  "gridArea": {
+    "width": 40,
+    "height": 30
+  },
+  "scenes": [
+    {
+      "id": "auto-inherits-center",
+      "parentAlignment": {
+        "alignItems": "center",
+        "justifyItems": "center"
+      },
+      "alignSelf": "auto",
+      "justifySelf": "auto",
+      "expectedItemFrame": {
+        "x": 12,
+        "y": 10,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "align-end-justify-start",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "end",
+      "justifySelf": "start",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 20,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "align-center-justify-end",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "center",
+      "justifySelf": "end",
+      "expectedItemFrame": {
+        "x": 24,
+        "y": 10,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "align-start-justify-center",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "start",
+      "justifySelf": "center",
+      "expectedItemFrame": {
+        "x": 12,
+        "y": 0,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "place-self-center",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "center",
+      "justifySelf": "center",
+      "expectedItemFrame": {
+        "x": 12,
+        "y": 10,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "place-self-end-start",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "end",
+      "justifySelf": "start",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 20,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "self-overrides-parent",
+      "parentAlignment": {
+        "alignItems": "center",
+        "justifyItems": "center"
+      },
+      "alignSelf": "start",
+      "justifySelf": "end",
+      "expectedItemFrame": {
+        "x": 24,
+        "y": 0,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "justify-left",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "end"
+      },
+      "alignSelf": "center",
+      "justifySelf": "left",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 10,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "justify-right",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "end",
+      "justifySelf": "right",
+      "expectedItemFrame": {
+        "x": 24,
+        "y": 20,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "self-start-end",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "self-end",
+      "justifySelf": "self-start",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 20,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "safe-center-overflow",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "safe center",
+      "justifySelf": "safe center",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 40
+      }
+    },
+    {
+      "id": "unsafe-center-overflow",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "unsafe center",
+      "justifySelf": "unsafe center",
+      "expectedItemFrame": {
+        "x": -5,
+        "y": -5,
+        "width": 50,
+        "height": 40
+      }
+    },
+    {
+      "id": "safe-end-overflow",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "safe end",
+      "justifySelf": "safe end",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 40
+      }
+    },
+    {
+      "id": "unsafe-end-overflow",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "unsafe end",
+      "justifySelf": "unsafe end",
+      "expectedItemFrame": {
+        "x": -10,
+        "y": -10,
+        "width": 50,
+        "height": 40
+      }
+    },
+    {
+      "id": "place-self-unsafe-safe",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "unsafe center",
+      "justifySelf": "safe end",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": -5,
+        "width": 50,
+        "height": 40
+      }
+    },
+    {
+      "id": "place-self-safe-unsafe",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "safe end",
+      "justifySelf": "unsafe center",
+      "expectedItemFrame": {
+        "x": -5,
+        "y": 0,
+        "width": 50,
+        "height": 40
+      }
+    },
+    {
+      "id": "flex-end-start-alias",
+      "parentAlignment": {
+        "alignItems": "start",
+        "justifyItems": "start"
+      },
+      "alignSelf": "flex-end",
+      "justifySelf": "flex-start",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 20,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "invalid-align-self-left-falls-back-auto",
+      "parentAlignment": {
+        "alignItems": "center",
+        "justifyItems": "center"
+      },
+      "alignSelf": "auto",
+      "justifySelf": "start",
+      "expectedItemFrame": {
+        "x": 0,
+        "y": 10,
+        "width": 16,
+        "height": 10
+      }
+    },
+    {
+      "id": "invalid-justify-self-top-falls-back-auto",
+      "parentAlignment": {
+        "alignItems": "end",
+        "justifyItems": "end"
+      },
+      "alignSelf": "center",
+      "justifySelf": "auto",
+      "expectedItemFrame": {
+        "x": 24,
+        "y": 10,
+        "width": 16,
+        "height": 10
+      }
+    }
+  ]
+}

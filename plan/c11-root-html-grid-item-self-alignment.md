@@ -1,0 +1,46 @@
+# C11.5 parsed Root HTML Grid item self-alignment 제한 구현 계획
+
+**상위:** [C11 CSS Grid](./c11-css-grid.md) · [Grid container 기본 정렬 PR #1124 계획](./c11-root-html-grid-item-alignment.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
+
+**상태:** 계획 단계. 구현·Android/iOS runtime 결과는 없다. C11.5/C11과 공식 `72/213`은 미완료로 유지한다.
+
+**구현 전 비교:** [Agent Browser Chrome 156의 17개 positive scene·2개 invalid CSS cascade control(총 19 scene) 관측과 독립 기대값](../spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/README.md) · [계획 실패 관점 20개](./c11-root-html-grid-item-self-alignment-plan-review-20.md) · [계획 PR 변경분 검토 30개](./c11-root-html-grid-item-self-alignment-plan-pr-review-30.md)
+
+## 결손과 목표
+
+PR #1124는 적격 fixed-track Grid container의 `align-items`와 `justify-items`를 item의 기본 self-alignment로 연결했다. 당시 eligible child의 `align-self`와 `justify-self`는 계속 fail-closed다. CSS Grid에서 두 속성은 각각 item의 block/inline 축 self-alignment이며 `place-self`는 두 computed longhand를 설정한다.
+
+이 후속은 기존 `RuntimeRootHtmlTextPaintV1` parsed Root HTML 경로와 PR #1124의 동일 fixed-track Grid eligibility를 재사용한다. 고정 크기 item의 alignment position만 제한적으로 연결하고, `auto` inheritance, shorthand computed-value 분리, 안전/비안전 overflow 위치를 검증한다. 일반 CSS admission, automatic/stretch item sizing, baseline groups 또는 전체 C11.5를 완료 처리하지 않는다.
+
+## 규범과 고정 profile
+
+- [CSS Box Alignment Module Level 3, 2026-10-08 Working Draft](https://www.w3.org/TR/2026/WD-css-align-3-20261008/) §§4.1, 4.4, 6.1.5, 6.2.5, 6.3을 기준으로 한다. [CSS Grid Layout Module Level 1, 2025-03-26 CRD](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) §§10.3–10.4에서 Grid item의 self-alignment container가 grid area임을 확인한다. Box Alignment Working Draft는 `<overflow-position>`을 at-risk로 표시한다. 그러므로 `safe`/`unsafe` 결과는 이 고정 Chrome/profile 관찰 범위로 기록하며 공개 호환성 약속으로 확대하지 않는다.
+- 기존 PR #1124의 `RuntimeRootHtmlTextPaintV1` eligibility를 그대로 사용한다: parsed 기본 Root HTML route, static LTR `horizontal-tb`, definite finite fixed-px container와 단일 고정-px explicit row/column, sparse row flow, 반복·named line·area·implicit track 없음, visible overflow.
+- item은 적격 cell 안의 static empty `div`, fixed finite non-negative width/height, zero margin/padding/border, auto placement, 한 cell에 한 item이다. 이번 매트릭스는 40×30px cell에 16×10px item 또는 50×40px overflow item을 둔다. Item auto size, replaced element, anonymous text item, positioned child와 nonzero edges는 포함하지 않는다.
+- `align-self` 허용값은 `auto`, `start`, `center`, `end`, `self-start`, `self-end`, `flex-start`, `flex-end`, `safe|unsafe center`, `safe|unsafe end`다. `justify-self`는 같은 값에 `left|right`를 더한다. `left|right`는 적격 LTR horizontal inline 축에서만 처리한다. `auto`는 같은 revision의 부모 `align-items`/`justify-items` 값으로 이어진다.
+- `place-self`는 raw author string을 파싱하지 않는다. 같은 item의 Stylo computed `align-self`와 `justify-self` longhand를 읽는다. computed `auto`와 parent default를 구분하고 각 value/node를 정확히 검증한다.
+- `normal`, `stretch`, `first|last baseline`, baseline, valid computed `safe|unsafe start`, `legacy` 및 그 밖의 미지원 computed value는 현재 profile에서 계속 거부한다. 문법상 invalid한 author declaration인 `align-self:left|right`와 `justify-self:top`은 CSS cascade에서 무시되어 computed `auto`가 되므로, adapter가 raw source를 검사해 unsupported value로 오판하지 않는다. 자동 크기·stretch sizing과 baseline contribution은 별도 범위다.
+- eligibility 밖의 Root HTML/Grid item은 비초기 self-alignment를 계속 거부한다. Unsupported value, stale HostDocument/style revision, 잘못된 item owner나 일부 item 계산 실패가 있으면 결과 frame을 부분 publication하지 않는다.
+
+## Chrome 관측과 독립 기대값
+
+[19-scene fixture](../spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/grid-item-self-alignment.html)는 Agent Browser HeadlessChrome 156에서 parent defaults, child overrides, `place-self`, self-relative/flex aliases, `left|right`, safe/unsafe center·end overflow와 CSS-invalid `align-self:left`/`justify-self:top`의 `auto` fallback을 관찰했다. CSSOM computed values와 item의 grid-area-relative frame은 [원본 관측](../spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/chrome-observation.json)에 있다. 고정 40×30px area·zero edges에서 16×10px item의 start/center/end 좌표는 x=`0/12/24`, y=`0/10/20`이다. 50×40px item은 safe center/end에서 `(0,0)`, unsafe center에서 `(-5,-5)`, unsafe end에서 `(-10,-10)`이다. 독립 기대 JSON과 재실행 가능한 verifier는 각각 [expected.json](../spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/expected.json), [verify-precomparison.mjs](../spec/internal/evidence/c11-root-html-grid-item-self-alignment-precomparison-2026-11-04/verify-precomparison.mjs)이며 현재 positive 17/17과 CSS-invalid fallback 2/2, 총 19/19 exact다. Chrome oracle는 Spinon 결과나 WPT 적합성 근거가 아니다.
+
+## 구현과 검증 순서
+
+1. **완료:** 기능 전제 코드와 plan #1124를 확인했다. 현재 reject path가 Grid item의 비초기 `align-self`/`justify-self`를 차단한다. `LayoutStyle`에는 typed `align_self`만 있고 `justify_self`는 없다. Grid-to-Taffy 경로는 `justify_self`를 교체 요소에 대해 `start`로 직접 설정한다. 구현은 item owner와 fixed-size eligibility, 기존 container value mapping을 재사용하되, `justify_self`를 표현할 typed 입력을 추가하고 기존 교체 요소 예외를 보존해야 한다.
+2. 기존 `RuntimeRootHtmlTextPaintV1` eligible Grid item의 같은 computed style snapshot에서 허용된 `align-self`/`justify-self`를 각각 typed layout style로 투영한다. `justify_self`의 초기값은 `Auto`로 두고 Grid item에서만 명시값을 Taffy에 전달한다. 교체 요소의 기존 `start` 예외는 명시값이 없는 경로에서 유지한다. Container `align-items`/`justify-items`, item `auto` default와 `place-self` computed longhand를 분리한다. `justify-self:left|right`는 이 제한 LTR profile에서만 start/end로 map한다.
+3. Root HTML style projection 단위 행렬에서 17개 positive scene과 2개 CSS-invalid cascade controls의 computed values, 정확한 node/property error, item owner, source/style revision, fixed width/height, resolved frame과 container defaults를 검증한다. Invalid author declaration은 authored string으로 오류를 추측하지 않고 Stylo의 computed `auto` 및 parent fallback을 확인한다. Valid computed baseline/stretch/normal/unsupported values, noneligible root/item, nested/area/repeat/dense/implicit Grid, percentage/fr track, auto margin/nonzero edge, replaced/positioned/hidden item, wrong revision과 stale owner를 거부한다. CSS-invalid `align-self:left`와 `justify-self:top` control은 computed `auto` 및 parent fallback을 통과해야 한다. 거부 시 layout result와 scene publication이 없어야 한다.
+4. 기존 `align-items`/`justify-items`/`place-items` 및 `align-content`/`justify-content` fixed-track 회귀를 재실행한다. sibling child의 self value가 다른 item의 frame을 바꾸지 않고, source order·node identity·root track geometry는 유지되어야 한다.
+5. 최종 소스로 Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 19-scene 앱 경로를 각각 실행한다. 전체 matrix frame/layout/draw/present와 설치 앱 hash를 기록한다. Android PixelCopy와 iOS Metal drawable의 targeted RGBA samples에서 정상 위치, cell 경계, unsafe overflow의 cell 밖 item 위치와 viewport clipping을 검사한다. iOS drawable 표본은 compositor 제출 전으로 표기하며 실제 scanout/실기기·hardware GPU로 확대 해석하지 않는다.
+6. focused Rust tests, 관련 package tests, `cargo fmt --all -- --check`, 적용 범위의 Clippy와 Android/iOS simulator builds를 실행하고 결과 원본을 보존한다. GitHub check rollup이 비어 있으면 CI 성공으로 쓰지 않는다.
+7. 계획 실패 검토 20개와 별개로, 구현/runtime 동작을 새 실패 관점 20개로 검토한다. PR diff는 프로젝트 규칙대로 서로 다른 30개 실패 관점으로 검토하고 결함을 수정하면 영향 관점을 다시 통과시킨다. PR 본문에 Agent Browser Chrome와 Android/iOS simulator 화면을 첨부할 수 있으면 첨부한다.
+8. 구현 PR에서 내부 Grid 계약 `0059`, C11 status 설명 및 `plan/c11-css-grid.md`/이 계획의 구현 결과를 동기화한다. C11.5/C11과 공식 `72/213` 체크는 승격 조건을 별도로 충족하기 전까지 유지한다. 병합 뒤 Tailnet 공개 roadmap은 별도 배포 규칙에 따라 동기화한다.
+
+## 성공 조건
+
+- 17 positive scene의 computed self value, item owner, fixed item size와 frame이 독립 기대값 및 Chrome 156 관측과 exact 일치하며 CSS-invalid cascade fallback controls 2/2가 `auto` 결과를 유지한다.
+- `auto`, parent override, `place-self` longhand order, inline/block 축, `left|right`, `self-*`, flex alias와 safe/unsafe overflow가 고정 profile에서 통과한다.
+- 모든 out-of-profile/unsupported 입력은 exact node/property/value로 fail-closed하며 partial layout을 공개하지 않는다.
+- 기존 container alignment 회귀가 유지되고 Android/iOS simulator geometry와 targeted surface sample이 고정 fixture 기대값과 맞는다.
+- 계획 20, 구현/runtime 20, PR diff 30 검토를 서로 대체하지 않고 각각 끝낸다. 이 제한 slice는 일반 CSS admission, WPT 적합성, baseline, stretch/auto sizing, hardware GPU, iOS compositor 이후 pixels 또는 전체 C11.5/C11 완료가 아니다.
