@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML `calc()` implicit columns
 
-**상태:** 제한 구현 후보를 현재 checkout에서 검증 중이다. 아직 병합되지 않았고 공식 완료가 아니다. C11.1/C11 체크와 공식 완료 `72/213`은 바꾸지 않는다.
+**상태 · 2026-11-03:** 제한 구현 PR [#1097](https://github.com/ohah/spinon/pull/1097)이 2026-11-03T01:56:55Z Rebase and merge로 병합됐다(merge SHA `21d7ed0eb0c5a124133db3b75cb4504c229cf14f`). 이 slice는 parsed Root HTML sparse column-flow의 definite-width `grid-auto-columns: calc(px + %)`에 한정된다. C11.1/C11 체크는 미완료이며 공식 완료 `72/213`을 유지한다. [구현·시뮬레이터 근거](../spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md) · [병합 후 계획/로드맵 동기화 검토](../spec/internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md).
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [parsed Root HTML column-flow](./c11-root-html-grid-column-flow.md) · [percentage implicit columns](./c11-root-html-grid-column-flow-percent-implicit-columns.md) · [fraction implicit columns](./c11-root-html-grid-column-flow-fr-implicit-columns.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
