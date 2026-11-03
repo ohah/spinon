@@ -1,0 +1,326 @@
+{
+  "sourceHead": "f2cf4bb7fe19f30d5e927966aa79921f3583f093",
+  "sourceTree": "82688b49d18630737af206543ee5e586545026f0",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selectedRoot": "build/spinon/roadmap-c11-calc-auto-columns-tailnet-sync-pass04-2026-11-03/pass01/root",
+  "stagedFileCount": 52,
+  "stagedBytes": 3338782,
+  "selectedFromGitIndexOnly": true,
+  "noSymlinks": true,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 538151,
+      "sha256": "2af02d414f0a442b18157acb391db50dcd315a7d1133671b13af363bfb03568e"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 636282,
+      "sha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 636282,
+      "sha256": "112afdfc62dbd42beec5b74748d915ed33d02a3f5b7272887333975a4faf1a8c"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 380286,
+      "sha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 380286,
+      "sha256": "7e758ab3179979d9e8bc202c9b457793b7a1beaffd1ad911d763ae981b6a3cea"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "plan/c11-css-grid.md",
+      "bytes": 62484,
+      "sha256": "4459b829f109546de906843511be5a381c9eb53d139ceddb7512cb837edeea95"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "spec/plan/c11-css-grid.md",
+      "bytes": 62484,
+      "sha256": "4459b829f109546de906843511be5a381c9eb53d139ceddb7512cb837edeea95"
+    },
+    {
+      "source": "plan/c11-root-html-grid-column-flow-calc-auto-columns.md",
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns.md",
+      "bytes": 10766,
+      "sha256": "20d4fc8be5a79f54a0501a5827253ac0795bdb38419eb0b4828964c4d146cfe7"
+    },
+    {
+      "source": "plan/c11-root-html-grid-column-flow-calc-auto-columns.md",
+      "route": "spec/plan/c11-root-html-grid-column-flow-calc-auto-columns.md",
+      "bytes": 10766,
+      "sha256": "20d4fc8be5a79f54a0501a5827253ac0795bdb38419eb0b4828964c4d146cfe7"
+    },
+    {
+      "source": "plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.md",
+      "route": "plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.md",
+      "bytes": 4310,
+      "sha256": "5b4a1734dffc9934eb4a4f3a96dea7ae4715c213e10e82eb630612a7386254ae"
+    },
+    {
+      "source": "plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-column-flow-calc-auto-columns-plan-review-20.md",
+      "bytes": 4310,
+      "sha256": "5b4a1734dffc9934eb4a4f3a96dea7ae4715c213e10e82eb630612a7386254ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md",
+      "bytes": 4114,
+      "sha256": "f4a1d9be98d1659b5cc498ab973bfcfe0b78c0a4a1ca8500b786771766683878"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/README.md",
+      "bytes": 4114,
+      "sha256": "f4a1d9be98d1659b5cc498ab973bfcfe0b78c0a4a1ca8500b786771766683878"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "bytes": 22620,
+      "sha256": "220f091306bf94b563ee0d2c1571be20f31c1ebe49dd68b8c0a141b9e93013aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-runtime.log",
+      "bytes": 22620,
+      "sha256": "220f091306bf94b563ee0d2c1571be20f31c1ebe49dd68b8c0a141b9e93013aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "bytes": 67360,
+      "sha256": "4daf3e276a74043fb2a913743dd9150ad6b882a7818caf0dd22cbcab6c2a7dd3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/android/avd-screen.png",
+      "bytes": 67360,
+      "sha256": "4daf3e276a74043fb2a913743dd9150ad6b882a7818caf0dd22cbcab6c2a7dd3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/hashes.txt",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/hashes.txt",
+      "bytes": 1578,
+      "sha256": "dfbd6f6b7de05065689948cdfb972204a12d0fdb823864159f6bd4116c908f9e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/hashes.txt",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/hashes.txt",
+      "bytes": 1578,
+      "sha256": "dfbd6f6b7de05065689948cdfb972204a12d0fdb823864159f6bd4116c908f9e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.md",
+      "bytes": 6310,
+      "sha256": "4e00d30d0b1d83ba9b27ec067c042687b57875ef7dee35bb9ed2a0be2391ab3a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-pr-diff-review-30.md",
+      "bytes": 6310,
+      "sha256": "4e00d30d0b1d83ba9b27ec067c042687b57875ef7dee35bb9ed2a0be2391ab3a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "bytes": 5797,
+      "sha256": "7da1c374d1f8ac84dacc47af2078e47a2e1c1f2a40a3d9ee96428bc8fcd8f0cb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/implementation-runtime-review-20.md",
+      "bytes": 5797,
+      "sha256": "7da1c374d1f8ac84dacc47af2078e47a2e1c1f2a40a3d9ee96428bc8fcd8f0cb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "bytes": 33572,
+      "sha256": "d109edbe1f235839ab1d09ff491a6144effacf7fe3de52df70dba638912bb209"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-runtime.log",
+      "bytes": 33572,
+      "sha256": "d109edbe1f235839ab1d09ff491a6144effacf7fe3de52df70dba638912bb209"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "bytes": 133089,
+      "sha256": "7a0422229e651227f79093d78dc58e2dac564b659ea0da84f28da9d1fc1cda51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-runtime-2026-11-03/ios/iphone17pro-screen.png",
+      "bytes": 133089,
+      "sha256": "7a0422229e651227f79093d78dc58e2dac564b659ea0da84f28da9d1fc1cda51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.md",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.md",
+      "bytes": 3323,
+      "sha256": "9db0a76ef1982ed7e0f8dae8a895fbae4838249924ca0c9ab44546cd77a4b8ef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/README.md",
+      "bytes": 3323,
+      "sha256": "9db0a76ef1982ed7e0f8dae8a895fbae4838249924ca0c9ab44546cd77a4b8ef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-calc-precomparison.png",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-calc-precomparison.png",
+      "bytes": 4023,
+      "sha256": "359d0a2844605286634addf90cb2d9eb1da69ebbcae21dc7a85d328e3a181a76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-calc-precomparison.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-calc-precomparison.png",
+      "bytes": 4023,
+      "sha256": "359d0a2844605286634addf90cb2d9eb1da69ebbcae21dc7a85d328e3a181a76"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-observation.json",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-observation.json",
+      "bytes": 1789,
+      "sha256": "a971af13c478f4d6123486c5a1bbd8c2129be6efcac08dc9d9be74579a9ff268"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-observation.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/chrome156-observation.json",
+      "bytes": 1789,
+      "sha256": "a971af13c478f4d6123486c5a1bbd8c2129be6efcac08dc9d9be74579a9ff268"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/expected.json",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/expected.json",
+      "bytes": 1012,
+      "sha256": "0766f6332293720d61d70b2e7d20f403dc78ae2513a58b566494a156ad80a713"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/expected.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/expected.json",
+      "bytes": 1012,
+      "sha256": "0766f6332293720d61d70b2e7d20f403dc78ae2513a58b566494a156ad80a713"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "bytes": 5255,
+      "sha256": "e8a3ae8b742a3779840b9315c5fdd0f9c4c921a5480970c6b6f599d56ae3bb4d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/plan-pr-diff-review-30.md",
+      "bytes": 5255,
+      "sha256": "e8a3ae8b742a3779840b9315c5fdd0f9c4c921a5480970c6b6f599d56ae3bb4d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/range-controls.json",
+      "route": "internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/range-controls.json",
+      "bytes": 1744,
+      "sha256": "95d63ddbf808767f25b94ec2c6059e609212a9e89b4e86fdf7b8192d3925be6d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/range-controls.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-column-flow-calc-auto-columns-precomparison-2026-11-03/range-controls.json",
+      "bytes": 1744,
+      "sha256": "95d63ddbf808767f25b94ec2c6059e609212a9e89b4e86fdf7b8192d3925be6d"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md",
+      "route": "internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md",
+      "bytes": 4632,
+      "sha256": "ed90462bbdfa9b0b4434c25ee8f130d990284e362f52606c20af3bb8c05ddc81"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/roadmap-c11-calc-auto-columns-sync-2026-11-03/roadmap-pr-diff-review-30.md",
+      "bytes": 4632,
+      "sha256": "ed90462bbdfa9b0b4434c25ee8f130d990284e362f52606c20af3bb8c05ddc81"
+    },
+    {
+      "source": "tests/fixtures/css/c11/root-html-grid-column-flow-calc-auto-columns-precomparison.html",
+      "route": "tests/fixtures/css/c11/root-html-grid-column-flow-calc-auto-columns-precomparison.html",
+      "bytes": 1698,
+      "sha256": "3071fc655beaae8bc7d7ef176893b1bef4844d08b40b442e5091b1c958d7185d"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
