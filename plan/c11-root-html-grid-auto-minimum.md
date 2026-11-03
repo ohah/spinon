@@ -37,13 +37,13 @@ Chrome capture는 used track sizes, root/item DOMRect, computed min-size/overflo
 
 ## 구현 PR 수락 기준
 
-1. Root HTML explicit-track validator가 exact supported `MinMax { min: Auto, max: Fraction }` shape만 허용하고 기존 breadth converter와 `RootHtmlImplicitRowsV1`/track range checks에 올바르게 연결한다. 다른 Root HTML `minmax()`와 fixture profile 결과는 불변이다.
+1. Root HTML explicit-track validator가 exact supported `MinMax { min: Auto, max: Fraction }` shape만 허용하고 기존 breadth converter와 `RootHtmlImplicitRowsV1`/track range checks에 올바르게 연결한다. auto-minimum track과 `minmax(0, fr)` comparison을 같은 box geometry로 비교할 수 있게, finite fr maximum인 `minmax()`를 쓰는 Grid container에만 유한한 non-negative computed px border를 허용한다. 다른 Root HTML border gate와 item border 제한은 유지한다.
 2. Rust tests에서 rows/columns positive, `minmax(0, 1fr)` controls, `0fr`, indefinite/zero/negative/non-finite basis/factor, unsupported breadth, min/max override, aspect-ratio, item overflow override, placement/tree/style/document revision negatives를 검사한다.
 3. Parsed Root HTML runtime matrix에서 tracks, full frames, source/style/layout revision identity, overflow bounds와 unsupported input의 no-partial-output를 검사한다.
 4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 same-source fixture에서 geometry 및 draw/present를 확인한다. 외부 18px strip은 Android PixelCopy와 iOS Metal drawable에서 좌표·RGBA를 대조한다. AVD software renderer와 compositor 이전 iOS drawable 한계를 보존한다.
 5. Feature-specific fixture route/symbol/payload를 추가하지 않는다. Default product artifact 경계에 새 fixture string이 들어오지 않는지 확인한다.
 6. 새 구현/runtime 실패 관점 20개와 별도 implementation PR diff 30개 검토를 하고, 수정이 발견되면 영향 항목과 검증을 다시 수행한다. PR body에 simulator와 Chrome 화면·hash evidence를 넣고 Agent Browser에서 각 이미지를 확인한다.
-7. Merge 후 `spec/STATUS.md`, 내부 계약 0059, C11 plan, public roadmap을 merge SHA에 맞춘다. C11/C11.1/C11.4 checkboxes와 `72/213`은 그대로 유지한다. Tailnet preview를 안전 동기화하고 served hash, desktop/mobile layout 및 Agent Browser 종료를 확인한다.
+7. 구현 PR에 내부 계약 0059의 bounded input/error/runtime 한계를 기록하고 simulator·Chrome 화면 및 hash 링크를 싣는다. PR diff review 30개와 CI·merge를 마친 뒤 `spec/STATUS.md`, C11 plan, public roadmap을 merge SHA에 맞춰 동기화한다. C11/C11.1/C11.4 checkboxes와 `72/213`은 그대로 유지한다. Tailnet preview를 안전 동기화하고 served hash, desktop/mobile layout 및 Agent Browser 종료를 확인한다.
 
 ## 제외 범위
 

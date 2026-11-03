@@ -360,6 +360,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
         let rootHtmlPixelCaptureArguments = arguments.filter {
             $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
         }

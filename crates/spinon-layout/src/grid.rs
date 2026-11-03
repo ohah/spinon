@@ -2217,6 +2217,9 @@ fn valid_root_html_bounded_minmax(
     min: GridTrackMinSizingFunction,
     max: GridTrackMaxSizingFunction,
 ) -> bool {
+    if min == GridTrackMinSizingFunction::Auto {
+        return matches!(max, GridTrackMaxSizingFunction::Fraction(value) if value.is_finite() && value >= 0.0);
+    }
     let valid_min = match min {
         GridTrackMinSizingFunction::LengthPx(value)
         | GridTrackMinSizingFunction::Percentage(value) => value.is_finite() && value >= 0.0,

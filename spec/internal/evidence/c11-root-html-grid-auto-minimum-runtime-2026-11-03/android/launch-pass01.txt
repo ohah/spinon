@@ -1,0 +1,8 @@
+Stopping: dev.spinon.bootstrap
+Starting: Intent { flg=0x10008000 cmp=dev.spinon.bootstrap/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: dev.spinon.bootstrap/.MainActivity
+TotalTime: 381
+WaitTime: 391
+Complete

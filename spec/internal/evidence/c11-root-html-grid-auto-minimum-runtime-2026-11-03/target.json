@@ -1,0 +1,66 @@
+{
+  "candidate": {
+    "branch": "impl/c11-root-html-grid-auto-minimum",
+    "baseHead": "a7838b7de949f79ee7e39030845fb83ee3fafeb7",
+    "feature": "C11.1 parsed Root HTML Grid minmax(auto, finite non-negative fr), bounded slice",
+    "route": "default Root HTML application / RuntimeRootHtmlTextPaintV1",
+    "officialStatus": "72/213; C11 unchecked"
+  },
+  "input": {
+    "html": "tests/fixtures/css/c11/root-html-grid-auto-minimum-precomparison.html",
+    "htmlSha256": "269bd653ed3cbb0e1602b2257548c9dd07534365026794ba7ea27f0a562b8611",
+    "rootAppScript": "source/runtime-root-app.js",
+    "rootAppScriptSha256": "ffa09a85cb2828dede76b593379811e149be5b1829c1a4ede992e6c94e29a1d2",
+    "originalBootstrapSourcesRestored": true
+  },
+  "android": {
+    "device": "Android API 37 ARM64 AVD spinon_api37_0_applied_txn",
+    "adbSerial": "emulator-5556",
+    "model": "sdk_gphone64_arm64",
+    "hardware": "ranchu / emulator",
+    "renderer": "ANGLE with SwiftShader software Vulkan; OpenGL ES 3.1",
+    "runtimeSurface": "1080x2209 physical px; viewport 411.42856x841.52374 CSS px; density 2.625",
+    "runId": "c11autominandroid06",
+    "capture": "Android PixelCopy from the SurfaceView",
+    "samples": "4/4 exact RGBA; auto overflow orange, zero-min control exterior white",
+    "log": "android/spinon-pixelcopy-auto-minimum-pass03.log",
+    "surfacePng": "android/pixelcopy-auto-minimum-pass03.png",
+    "simulatorScreenshot": "android/simulator-auto-minimum-pass03.png",
+    "testedApkSha256": "db5d1c6f14efaf7ffafd9158428df8c11a6b08d93a04d8f5aca798450b836281",
+    "hardwareDeviceUsed": false
+  },
+  "ios": {
+    "device": "iPhone 17 Pro Simulator",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "iOS 26.2 build 23C54",
+    "xcode": "Xcode 26.2 build 17C52",
+    "modelIdentifier": "iPhone18,1",
+    "renderer": "Metal simulator GPU; Bgra8Unorm drawable",
+    "runtimeSurface": "1206x2334 drawable px; viewport 402x778 CSS px; scale 3",
+    "runId": "c11automin-ios20261103b",
+    "capture": "Metal drawable readback before compositor submission",
+    "samples": "4/4 exact RGBA",
+    "log": "ios/spinon-auto-minimum-metal-pass01.log",
+    "simulatorScreenshot": "ios/simulator-auto-minimum-metal-pass01.png",
+    "appExecutableSha256": "374eee54df9f3e9af959f5e07c51f81a6f4f5649ea46740ec59e7b0b78dc2882",
+    "physicalDeviceOrCompositorPixelsProven": false
+  },
+  "artifactBoundary": {
+    "defaultAndroidBuildLog": "android-default-artifact-build.log",
+    "defaultAndroidApkSha256": "e7ff8d436f355cbed52b28fe4c3142bd6d64a9ce78ee94864f65fdccbd3694bf",
+    "defaultAndroidNativeSha256": "1c62afaaa5b18bff2db267c11f3a8b69af781c8072bfe2cab934683a0ae2febb",
+    "defaultAndroidPixelCaptureBuildConfig": false,
+    "defaultAndroidNativePixelFixtureSymbols": false,
+    "defaultFfiStaticlibSha256": "b90bf7c9a08c9935693925611e09dd2c86af040560859446a1575539721ce11a",
+    "defaultFfiStaticlibSymbols": false,
+    "optInFfiStaticlibSha256": "d2ee02222df2fe13770bb8269c018a81707ddf2b0e0dd3dcf89d9b1f2e7697f0",
+    "optInFfiFeaturePositiveControlSymbols": true,
+    "details": "source-candidate-sha256.txt and ffi-* artifact reports; the opt-in C11 surface-readback ABI predates this slice and this change adds no C11.1 auto-minimum FFI route or payload"
+  },
+  "browserReference": {
+    "engine": "Chrome 156 via Agent Browser",
+    "expectedValues": "../c11-root-html-grid-auto-minimum-precomparison-2026-11-03/expected.json",
+    "observation": "../c11-root-html-grid-auto-minimum-precomparison-2026-11-03/chrome-observation.json",
+    "screenshot": "../c11-root-html-grid-auto-minimum-precomparison-2026-11-03/chrome156-agent-browser.png"
+  }
+}

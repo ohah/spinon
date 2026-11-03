@@ -1,0 +1,17 @@
+{
+  "base_checkout_head": "a7838b7de949f79ee7e39030845fb83ee3fafeb7",
+  "branch": "impl/c11-root-html-grid-auto-minimum",
+  "candidate_working_tree_dirty_at_capture": true,
+  "candidate_source_hashes": "source-candidate-sha256.txt",
+  "input_fixture": "tests/fixtures/css/c11/root-html-grid-auto-minimum-precomparison.html",
+  "input_fixture_sha256": "269bd653ed3cbb0e1602b2257548c9dd07534365026794ba7ea27f0a562b8611",
+  "runtime_route": "default RuntimeRootHtmlTextPaintV1 / Root HTML app route",
+  "runtime_root_app_script": "source/runtime-root-app.js",
+  "runtime_root_app_script_sha256": "ffa09a85cb2828dede76b593379811e149be5b1829c1a4ede992e6c94e29a1d2",
+  "original_bootstrap_sources_restored": true,
+  "original_index_sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9",
+  "original_root_app_sha256": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32",
+  "real_device_used": false,
+  "terminal_browser_used": false,
+  "agent_browser_process_running_after_capture": false
+}

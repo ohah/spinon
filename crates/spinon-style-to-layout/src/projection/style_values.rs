@@ -1224,13 +1224,25 @@ fn validate_root_html_grid_box_inputs(
                 )
             })
         });
+    let allow_fraction_minmax_border = is_grid_container
+        && element
+            .grid_layout
+            .as_ref()
+            .is_some_and(root_html_grid_tracks::has_fraction_maximum_minmax_track);
     for (property, value) in [
         ("border-top-width", element.layout_border.top),
         ("border-right-width", element.layout_border.right),
         ("border-bottom-width", element.layout_border.bottom),
         ("border-left-width", element.layout_border.left),
     ] {
-        if value != 0.0 && !allow_percentage_fit_content_border {
+        let fixed_fraction_minmax_border =
+            allow_fraction_minmax_border && value.is_finite() && value >= 0.0;
+        if !value.is_finite()
+            || value < 0.0
+            || (value != 0.0
+                && !allow_percentage_fit_content_border
+                && !fixed_fraction_minmax_border)
+        {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property,

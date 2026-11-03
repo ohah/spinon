@@ -9,21 +9,22 @@
       html, body { margin: 0; padding: 0; }
       body {
         color: #101010;
-        background: #ffffff;
+        background-color: #ffffff;
         font-family: sans-serif;
         font-size: 12px;
       }
       .scene {
         margin: 16px;
-        width: max-content;
+        width: 200px;
       }
       .root {
         display: grid;
         gap: 0;
         padding: 0;
-        border: 2px solid #111111;
+        border-width: 2px;
+        border-style: solid;
         overflow: visible;
-        background: #eeeeee;
+        background-color: #eeeeee;
       }
       .columns-auto {
         width: 100px;
@@ -54,48 +55,46 @@
         min-height: auto;
         margin: 0;
         padding: 0;
-        border: 0;
+        border-width: 0px;
         overflow: visible;
-        justify-self: start;
-        align-self: start;
       }
-      .first { background: #1769aa; }
-      .second { background: #e36b2c; }
+      .first { background-color: #1769aa; }
+      .second { background-color: #e36b2c; }
       .columns .first { width: 80px; height: 40px; }
       .columns .second { width: 40px; height: 40px; }
       .rows .first { width: 40px; height: 80px; }
       .rows .second { width: 40px; height: 40px; }
-      h2 { margin: 0 0 4px; font: 12px sans-serif; }
+      .scene-label { margin: 0 0 4px; font-size: 12px; }
     </style>
   </head>
   <body>
-    <section class="scene columns">
-      <h2>columns-auto-min</h2>
+    <div class="scene columns">
+      <div class="scene-label">columns-auto-min</div>
       <div id="columns-auto-min" class="root columns-auto">
         <div id="columns-auto-first" class="item first"></div>
         <div id="columns-auto-second" class="item second"></div>
       </div>
-    </section>
-    <section class="scene columns">
-      <h2>columns-zero-min-control</h2>
+    </div>
+    <div class="scene columns">
+      <div class="scene-label">columns-zero-min-control</div>
       <div id="columns-zero-min-control" class="root columns-zero">
         <div id="columns-zero-first" class="item first"></div>
         <div id="columns-zero-second" class="item second"></div>
       </div>
-    </section>
-    <section class="scene rows">
-      <h2>rows-auto-min</h2>
+    </div>
+    <div class="scene rows">
+      <div class="scene-label">rows-auto-min</div>
       <div id="rows-auto-min" class="root rows-auto">
         <div id="rows-auto-first" class="item first"></div>
         <div id="rows-auto-second" class="item second"></div>
       </div>
-    </section>
-    <section class="scene rows">
-      <h2>rows-zero-min-control</h2>
+    </div>
+    <div class="scene rows">
+      <div class="scene-label">rows-zero-min-control</div>
       <div id="rows-zero-min-control" class="root rows-zero">
         <div id="rows-zero-first" class="item first"></div>
         <div id="rows-zero-second" class="item second"></div>
       </div>
-    </section>
+    </div>
   </body>
 </html>

@@ -14020,6 +14020,7 @@ private struct C111MetalPixelRun {
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
         let rootHtmlRuns = arguments.filter {
             $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
         }
@@ -14030,25 +14031,44 @@ private struct C111MetalPixelRun {
                   }) else { return nil }
             let isFitContent = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-fit-content-metal-surface-pixels=")
+            let isAutoMinimum = rootHtmlRuns[0].hasPrefix(
+                "--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
             let isFitContentPercentage = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
             let prefix = isFitContentPercentage
                 ? "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels="
                 : isFitContent
                     ? "--spinon-root-html-grid-fit-content-metal-surface-pixels="
-                    : "--spinon-root-html-grid-minmax-metal-surface-pixels="
+                    : isAutoMinimum
+                        ? "--spinon-root-html-grid-auto-minimum-metal-surface-pixels="
+                        : "--spinon-root-html-grid-minmax-metal-surface-pixels="
             let runID = String(rootHtmlRuns[0].dropFirst(prefix.count))
             guard (8...80).contains(runID.count),
                   runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
             else { return nil }
             return C111MetalPixelRun(
                 runID: runID,
-                sceneID: isFitContentPercentage
+                sceneID: isAutoMinimum
+                    ? "root-html-grid-auto-minimum"
+                    : isFitContentPercentage
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
                 markerPrefix: "C111",
-                samples: isFitContentPercentage ? [
+                samples: isAutoMinimum ? [
+                    C111MetalPixelSample(
+                        id: "columns-auto-overflow", nodeId: "columns-auto-second",
+                        xCssPx: 125, yCssPx: 40, rgba: [227, 107, 44, 255]),
+                    C111MetalPixelSample(
+                        id: "columns-zero-outside", nodeId: "columns-zero-root",
+                        xCssPx: 125, yCssPx: 118, rgba: [255, 255, 255, 255]),
+                    C111MetalPixelSample(
+                        id: "rows-auto-overflow", nodeId: "rows-auto-second",
+                        xCssPx: 30, yCssPx: 300, rgba: [227, 107, 44, 255]),
+                    C111MetalPixelSample(
+                        id: "rows-zero-outside", nodeId: "rows-zero-root",
+                        xCssPx: 30, yCssPx: 438, rgba: [255, 255, 255, 255]),
+                ] : isFitContentPercentage ? [
                     C111MetalPixelSample(
                         id: "percentage-root-interior", nodeId: "root",
                         xCssPx: 30, yCssPx: 50, rgba: [229, 72, 77, 255]),
@@ -14696,12 +14716,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return arguments.contains(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
         })
 #else
         return arguments.contains(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
         })
 #endif
     }
@@ -14710,12 +14732,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let argument = ProcessInfo.processInfo.arguments.first(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
         })
 #else
         let argument = ProcessInfo.processInfo.arguments.first(where: {
             $0.hasPrefix("--spinon-c11-grid-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
         })
 #endif
         return argument.map { argument in
@@ -14726,6 +14750,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : argument.hasPrefix(
                 "--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                     ? "--spinon-root-html-grid-fit-content-metal-surface-pixels="
+                : argument.hasPrefix(
+                "--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
+                    ? "--spinon-root-html-grid-auto-minimum-metal-surface-pixels="
                 : argument.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
                     ? "--spinon-root-html-grid-minmax-metal-surface-pixels="
                     : "--spinon-c11-grid-metal-surface-pixels="
