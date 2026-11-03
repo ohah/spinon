@@ -361,6 +361,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootHtmlPixelCaptureArguments = arguments.filter {
             $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
         }
         let rootHtmlGridPixelCaptureRequested = rootHtmlPixelCaptureArguments.count == 1
             && arguments.allSatisfy {

@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 3 tests
+test session::tests::root_html_grid_fit_content_percentage::c11_1_root_html_fit_content_percentage_overflows_visible_root_border ... ok
+test session::tests::root_html_grid_fit_content_percentage::c11_1_root_html_fit_content_percentages_reach_default_runtime ... ok
+test session::tests::root_html_grid_fit_content_percentage::c11_1_root_html_fit_content_percentage_out_of_scope_inputs_fail_atomically ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 251 filtered out; finished in 0.45s

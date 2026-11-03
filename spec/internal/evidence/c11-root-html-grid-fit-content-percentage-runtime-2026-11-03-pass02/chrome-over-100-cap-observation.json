@@ -1,0 +1,29 @@
+{
+  "browser": "Agent Browser / HeadlessChrome 156.0.0.0",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fixture": "chrome-over-100-cap.html",
+  "font": {
+    "family": "Ahem",
+    "loaded": true,
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "independent_css_grid_calculation": {
+    "content_width_px": 50,
+    "fit_content_argument": "120%",
+    "resolved_limit_px": 60,
+    "auto_minimum_px": 20,
+    "max_content_contribution_px": 110,
+    "fit_content_formula_result_before_available_space_distribution_px": 60
+  },
+  "chrome_observation": {
+    "font_loaded": true,
+    "grid_content_width_px": 50,
+    "min_content_probe_px": 20,
+    "max_content_probe_px": 110,
+    "computed_grid_template_columns": "50px",
+    "used_track_px": 50,
+    "item_width_px": 50
+  },
+  "interpretation": "The fit-content limit resolves to 60px, but the definite grid has only 50px of available space. CSS Grid 11.6 distributes only positive free space, so the used track remains 50px. This observation does not mean the 120% typed argument was clamped to 100%.",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/"
+}

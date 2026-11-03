@@ -1,0 +1,31 @@
+{
+  "browser": "Agent Browser / HeadlessChrome 156.0.0.0",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fixture": "chrome-content-box-percentage-basis.html",
+  "font": {
+    "family": "Ahem",
+    "loaded": true,
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "independent_calculation": {
+    "box_sizing": "content-box",
+    "content_width_px": 30,
+    "border_px_per_side": 2,
+    "border_box_width_px": 34,
+    "fit_content_argument": "50%",
+    "content_box_cap_px": 15,
+    "incorrect_border_box_cap_px": 17,
+    "min_content_contribution_px": 10,
+    "max_content_contribution_px": 30
+  },
+  "chrome_observation": {
+    "content_width_css": "30px",
+    "border_box_width_px": 34,
+    "min_content_probe_px": 10,
+    "max_content_probe_px": 30,
+    "computed_grid_template_columns": "15px",
+    "item_width_px": 15
+  },
+  "interpretation": "Chrome uses the 30px content box as the percentage basis; the observed 15px track distinguishes this from a 17px border-box basis.",
+  "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/"
+}

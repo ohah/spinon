@@ -28,12 +28,31 @@
   #above-max { grid-template-columns: fit-content(60%); grid-template-rows: 60px; }
   #above-100 { grid-template-columns: fit-content(120%); grid-template-rows: 60px; }
   #repeat { grid-template-columns: repeat(2, fit-content(20%)); grid-template-rows: 60px; }
+  #zero-column-cap { grid-template-columns: fit-content(0%); grid-template-rows: 60px; }
   #zero-basis { width: 0; grid-template-columns: fit-content(100%); grid-template-rows: 60px; }
   #row-below-min {
     width: 20px;
     height: 100px;
     grid-template-columns: 20px;
     grid-template-rows: fit-content(20%);
+  }
+  #zero-row-cap {
+    width: 20px;
+    height: 100px;
+    grid-template-columns: 20px;
+    grid-template-rows: fit-content(0%);
+  }
+  #above-100-row-cap {
+    width: 20px;
+    height: 100px;
+    grid-template-columns: 20px;
+    grid-template-rows: fit-content(120%);
+  }
+  #zero-row-basis {
+    width: 20px;
+    height: 0;
+    grid-template-columns: 20px;
+    grid-template-rows: fit-content(100%);
   }
   #fixed-runtime {
     width: 160px;
@@ -78,11 +97,23 @@
   <div id="repeat-item-a" class="item">AA AA AA AA</div>
   <div id="repeat-item-b" class="item">AA AA AA AA</div>
 </div>
+<div id="zero-column-cap" data-scene="fit-content-percent-zero-column-cap" class="grid">
+  <div id="zero-column-cap-item" class="item">AA AA AA AA</div>
+</div>
 <div id="zero-basis" data-scene="fit-content-percent-zero-basis" class="grid">
   <div id="zero-basis-item" class="item">AA AA AA AA</div>
 </div>
 <div id="row-below-min" data-scene="fit-content-percent-row-below-minimum" class="grid">
   <div id="row-item" class="item">AA AA AA AA</div>
+</div>
+<div id="zero-row-cap" data-scene="fit-content-percent-zero-row-cap" class="grid">
+  <div id="zero-row-cap-item" class="item">AA AA AA AA</div>
+</div>
+<div id="above-100-row-cap" data-scene="fit-content-percent-above-100-row-cap" class="grid">
+  <div id="above-100-row-cap-item" class="item">AA AA AA AA</div>
+</div>
+<div id="zero-row-basis" data-scene="fit-content-percent-zero-row-basis" class="grid">
+  <div id="zero-row-basis-item" class="item">AA AA AA AA</div>
 </div>
 <div id="fixed-runtime" data-scene="fit-content-percent-fixed-size-runtime" class="grid">
   <div id="fixed-runtime-item" class="item"></div>
@@ -123,8 +154,12 @@
       aboveMaxContent: observeScene("above-max", ["above-max-item"]),
       above100: observeScene("above-100", ["above-100-item"]),
       fixedRepeat: observeScene("repeat", ["repeat-item-a", "repeat-item-b"]),
+      zeroPercentColumn: observeScene("zero-column-cap", ["zero-column-cap-item"]),
       zeroBasis: observeScene("zero-basis", ["zero-basis-item"]),
       rowBelowMinimum: observeScene("row-below-min", ["row-item"]),
+      zeroPercentRow: observeScene("zero-row-cap", ["zero-row-cap-item"]),
+      above100Row: observeScene("above-100-row-cap", ["above-100-row-cap-item"]),
+      zeroRowBasis: observeScene("zero-row-basis", ["zero-row-basis-item"]),
       fixedRuntime: observeScene("fixed-runtime", ["fixed-runtime-item"]),
       textRuntime: observeScene("text-runtime", ["text-runtime-item"]),
     },

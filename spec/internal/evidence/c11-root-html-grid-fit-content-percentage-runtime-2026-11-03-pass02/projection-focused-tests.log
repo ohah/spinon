@@ -1,0 +1,13 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 7 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_explicit_fit_content_percentage_tracks_project_for_columns_rows_and_fixed_repeat ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_explicit_fit_content_px_tracks_project_for_columns_rows_and_fixed_repeat ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_preserves_cyclic_fit_content_percentage_limit ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_rejects_calc_or_invalid_limits ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_named_area_fit_content_requires_matched_dimensions_and_supported_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_dimension_matched_fit_content_named_areas_do_not_depend_on_area_names ... ok
+test c14_intrinsic_contributions_tests::fit_content_function_is_rejected_for_the_image_node ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 335 filtered out; finished in 0.05s

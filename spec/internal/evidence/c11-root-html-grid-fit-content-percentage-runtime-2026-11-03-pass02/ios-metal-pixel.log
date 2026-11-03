@@ -1,0 +1,12 @@
+getpwuid_r did not find a match for uid 501
+Filtering the log data using "process == "SpinonBootstrap" AND composedMessage CONTAINS[c] "C111_METAL_PIXEL""
+Timestamp               Ty Process[PID:TID]
+2026-11-03 13:31:47.393 I  SpinonBootstrap[37381:93427ec] SPINON_C111_METAL_PIXEL_REQUEST status=0 Metal surface 표본을 요청했습니다 count=4
+2026-11-03 13:31:47.393 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_REQUESTED run_id=c11fitpctios002 scene=root-html-grid-fit-content-percentage-overflow generation=1 drawable=1206x2334 scale_x=3.0 scale_y=3.0 samples=4
+2026-11-03 13:31:47.443 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_BEGIN run_id=c11fitpctios002 pid=37381 surface_generation=1 layout_generation=2 document_revision=2 render_tree_revision=2 environment_revision=0 scene=root-html-grid-fit-content-percentage-overflow viewport=402x778 drawable=1206x2334
+2026-11-03 13:31:47.444 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_SAMPLE run_id=c11fitpctios002 pid=37381 surface_generation=1 sample=percentage-root-interior x=91 y=151 rgba=229,72,77,255 expected=229,72,77,255 exact=true
+2026-11-03 13:31:47.444 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_SAMPLE run_id=c11fitpctios002 pid=37381 surface_generation=1 sample=percentage-root-border x=64 y=151 rgba=48,164,108,255 expected=48,164,108,255 exact=true
+2026-11-03 13:31:47.444 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_SAMPLE run_id=c11fitpctios002 pid=37381 surface_generation=1 sample=percentage-child-overflow x=181 y=151 rgba=229,72,77,255 expected=229,72,77,255 exact=true
+2026-11-03 13:31:47.444 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_SAMPLE run_id=c11fitpctios002 pid=37381 surface_generation=1 sample=percentage-outside-child x=256 y=151 rgba=16,24,32,255 expected=16,24,32,255 exact=true
+2026-11-03 13:31:47.444 Df SpinonBootstrap[37381:93427ec] (Foundation) SPINON_C111_METAL_PIXEL_SUMMARY status=matched run_id=c11fitpctios002 pid=37381 surface_generation=1 document_revision=2 render_tree_revision=2 environment_revision=0 scene=root-html-grid-fit-content-percentage-overflow drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4
+Child process terminated with signal 15: Terminated

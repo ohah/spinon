@@ -17357,6 +17357,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean rootHtmlGridMinmaxPixelCaptureStarted;
     private final boolean rootHtmlFitContentPixelCaptureRequested;
     private final String rootHtmlFitContentPixelCaptureRunId;
+    private final boolean rootHtmlFitContentPercentagePixelCaptureRequested;
+    private final String rootHtmlFitContentPercentagePixelCaptureRunId;
     private boolean rootHtmlFitContentPixelCaptureStarted;
     private String rootHtmlApplicationSource;
     private String rootHtmlApplicationScript;
@@ -17618,7 +17620,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && rootHtmlApplicationRequested
                 && rootHtmlFitContentPixelCaptureArgument
                 && !rootHtmlGridMinmaxPixelCaptureArgument;
-        if (rootHtmlGridMinmaxPixelCaptureArgument && rootHtmlFitContentPixelCaptureArgument) {
+        boolean rootHtmlFitContentPercentagePixelCaptureArgument =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && activity.getIntent().getBooleanExtra(
+                                "spinon_root_html_fit_content_percentage_pixel_capture", false);
+        rootHtmlFitContentPercentagePixelCaptureRequested =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && rootHtmlApplicationRequested
+                        && rootHtmlFitContentPercentagePixelCaptureArgument
+                        && !rootHtmlGridMinmaxPixelCaptureArgument
+                        && !rootHtmlFitContentPixelCaptureArgument;
+        if ((rootHtmlGridMinmaxPixelCaptureArgument && rootHtmlFitContentPixelCaptureArgument)
+                || (rootHtmlFitContentPercentagePixelCaptureArgument
+                        && (rootHtmlGridMinmaxPixelCaptureArgument
+                                || rootHtmlFitContentPixelCaptureArgument))) {
             Log.e(TAG, "SPINON_C111_ROOT_HTML_PIXELCOPY_ARGUMENT_ERROR reason=conflicting-captures");
         }
         String rootHtmlFitContentRunId = activity.getIntent().getStringExtra(
@@ -17628,6 +17643,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (rootHtmlFitContentPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_CONFIGURED run_id="
                     + rootHtmlFitContentPixelCaptureRunId
+                    + " root_html_application=" + rootHtmlApplicationRequested);
+        }
+        String rootHtmlFitContentPercentageRunId = activity.getIntent().getStringExtra(
+                "spinon_root_html_fit_content_percentage_pixel_capture_run_id");
+        rootHtmlFitContentPercentagePixelCaptureRunId = rootHtmlFitContentPercentageRunId == null
+                ? "manual" : rootHtmlFitContentPercentageRunId;
+        if (rootHtmlFitContentPercentagePixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PERCENTAGE_PIXELCOPY_CONFIGURED run_id="
+                    + rootHtmlFitContentPercentagePixelCaptureRunId
                     + " root_html_application=" + rootHtmlApplicationRequested);
         }
         marginCollapseProbeRequested = activity.getIntent()
@@ -21675,6 +21699,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void requestRootHtmlFitContentPixelCapture(long renderer, long generation) {
+        boolean percentage = rootHtmlFitContentPercentagePixelCaptureRequested;
         final int width;
         final int height;
         synchronized (stateLock) {
@@ -21687,45 +21712,68 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             width = surfaceWidth;
             height = surfaceHeight;
         }
-        String runId = rootHtmlFitContentPixelCaptureRunId;
+        String runId = percentage
+                ? rootHtmlFitContentPercentagePixelCaptureRunId
+                : rootHtmlFitContentPixelCaptureRunId;
+        String marker = percentage
+                ? "SPINON_C111_ROOT_HTML_FIT_CONTENT_PERCENTAGE_PIXELCOPY"
+                : "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY";
         if (!runId.matches("[A-Za-z0-9_-]{8,80}")) {
-            Log.e(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY status=error run_id="
+            Log.e(TAG, marker + " status=error run_id="
                     + runId + " reason=invalid-run-id");
             return;
         }
         int viewportWidthCssPx = Math.round(width / density);
         int viewportHeightCssPx = Math.round(height / density);
-        List<SurfaceViewPixelCapture.Sample> samples = List.of(
-                new SurfaceViewPixelCapture.Sample("direct-in-root", 25, 10),
-                new SurfaceViewPixelCapture.Sample("direct-overflow", 35, 10),
-                new SurfaceViewPixelCapture.Sample("direct-blue-marker", 42, 10),
-                new SurfaceViewPixelCapture.Sample("area-in-root", 25, 30),
-                new SurfaceViewPixelCapture.Sample("area-overflow", 35, 30),
-                new SurfaceViewPixelCapture.Sample("row-in-root", 10, 50),
-                new SurfaceViewPixelCapture.Sample("row-overflow", 10, 65));
-        int[][] expected = {
-                {229, 72, 77, 255}, {229, 72, 77, 255}, {59, 130, 246, 255},
-                {48, 164, 108, 255}, {48, 164, 108, 255},
-                {240, 180, 41, 255}, {240, 180, 41, 255},
-        };
-        if (width <= 0 || height <= 0 || viewportWidthCssPx <= 42
-                || viewportHeightCssPx <= 65) {
-            Log.e(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY status=error run_id="
+        List<SurfaceViewPixelCapture.Sample> samples = percentage
+                ? List.of(
+                        new SurfaceViewPixelCapture.Sample("percentage-root-interior", 30, 50),
+                        new SurfaceViewPixelCapture.Sample("percentage-root-border", 21, 50),
+                        new SurfaceViewPixelCapture.Sample("percentage-child-overflow", 60, 50),
+                        new SurfaceViewPixelCapture.Sample("percentage-outside-child", 85, 50))
+                : List.of(
+                        new SurfaceViewPixelCapture.Sample("direct-in-root", 25, 10),
+                        new SurfaceViewPixelCapture.Sample("direct-overflow", 35, 10),
+                        new SurfaceViewPixelCapture.Sample("direct-blue-marker", 42, 10),
+                        new SurfaceViewPixelCapture.Sample("area-in-root", 25, 30),
+                        new SurfaceViewPixelCapture.Sample("area-overflow", 35, 30),
+                        new SurfaceViewPixelCapture.Sample("row-in-root", 10, 50),
+                        new SurfaceViewPixelCapture.Sample("row-overflow", 10, 65));
+        int[][] expected = percentage
+                ? new int[][] {
+                        {229, 72, 77, 255}, {48, 164, 108, 255},
+                        {229, 72, 77, 255}, {16, 24, 32, 255},
+                }
+                : new int[][] {
+                        {229, 72, 77, 255}, {229, 72, 77, 255}, {59, 130, 246, 255},
+                        {48, 164, 108, 255}, {48, 164, 108, 255},
+                        {240, 180, 41, 255}, {240, 180, 41, 255},
+                };
+        int maxX = percentage ? 85 : 42;
+        int maxY = percentage ? 50 : 65;
+        if (width <= 0 || height <= 0 || viewportWidthCssPx <= maxX
+                || viewportHeightCssPx <= maxY) {
+            Log.e(TAG, marker + " status=error run_id="
                     + runId + " reason=invalid-surface-or-viewport width=" + width
                     + " height=" + height + " viewport_width=" + viewportWidthCssPx
                     + " viewport_height=" + viewportHeightCssPx);
             return;
         }
         File output = new File(new File(activity.getCacheDir(),
-                "c11-root-html-fit-content-pixelcopy"), runId + ".png");
-        Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_BEGIN run_id=" + runId
+                percentage ? "c11-root-html-fit-content-percentage-pixelcopy"
+                        : "c11-root-html-fit-content-pixelcopy"), runId + ".png");
+        String sceneId = percentage
+                ? "root-html-grid-fit-content-percentage-overflow"
+                : "root-html-grid-fit-content-overflow";
+        Log.i(TAG, marker + "_BEGIN run_id=" + runId
                 + " pid=" + android.os.Process.myPid() + " generation=" + generation
                 + " width=" + width + " height=" + height + " density=" + density
                 + " viewport_width=" + viewportWidthCssPx
-                + " viewport_height=" + viewportHeightCssPx + " samples=" + samples.size());
+                + " viewport_height=" + viewportHeightCssPx + " percentage=" + percentage
+                + " samples=" + samples.size());
         SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
                 viewportWidthCssPx, viewportHeightCssPx, 0, 0,
-                "root-html-grid-fit-content-overflow", runId, output, samples,
+                sceneId, runId, output, samples,
                 mainHandler, runtimeQueue,
                 () -> {
                     synchronized (stateLock) {
@@ -21735,10 +21783,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                 }, result -> {
                     if (!result.error.isEmpty()) {
-                        Log.e(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY status=error"
+                        Log.e(TAG, marker + " status=error"
                                 + " run_id=" + runId + " generation=" + generation
                                 + " attempts=" + result.attempts + " reason=" + result.error);
-                        postStatus("실패 · C11.1 Root HTML fit-content PixelCopy · "
+                        postStatus("실패 · C11.1 Root HTML fit-content "
+                                + (percentage ? "percentage " : "") + "PixelCopy · "
                                 + result.error);
                         return;
                     }
@@ -21746,6 +21795,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
                         int index;
                         switch (pixel.id) {
+                            case "percentage-root-interior": index = 0; break;
+                            case "percentage-root-border": index = 1; break;
+                            case "percentage-child-overflow": index = 2; break;
+                            case "percentage-outside-child": index = 3; break;
                             case "direct-in-root": index = 0; break;
                             case "direct-overflow": index = 1; break;
                             case "direct-blue-marker": index = 2; break;
@@ -21761,21 +21814,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 && pixel.blue == expected[index][2]
                                 && pixel.alpha == expected[index][3];
                         if (exact) matched++;
-                        Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXEL run_id=" + runId
+                        Log.i(TAG, marker + "_PIXEL run_id=" + runId
                                 + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
                                 + " rgba=" + pixel.red + "," + pixel.green + "," + pixel.blue
                                 + "," + pixel.alpha + " expected_match=" + exact);
                     }
                     boolean passed = result.pixels.size() == samples.size()
                             && matched == samples.size();
-                    Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_SUMMARY status="
+                    Log.i(TAG, marker + "_SUMMARY status="
                             + (passed ? "matched" : "mismatch") + " run_id=" + runId
                             + " generation=" + generation + " expected_samples=" + samples.size()
                             + " observed_samples=" + result.pixels.size()
-                            + " matched_samples=" + matched + " png=" + output.getAbsolutePath()
+                            + " matched_samples=" + matched + " percentage=" + percentage
+                            + " png=" + output.getAbsolutePath()
                             + " sha256=" + result.sha256);
                     postStatus(passed
-                            ? "완료 · C11.1 Root HTML fit-content PixelCopy · 7/7"
+                            ? "완료 · C11.1 Root HTML fit-content "
+                                    + (percentage ? "percentage " : "")
+                                    + "PixelCopy · " + samples.size() + "/" + samples.size()
                             : "실패 · C11.1 Root HTML fit-content PixelCopy 표본 불일치");
                 });
     }
@@ -24025,9 +24081,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c133WheelProbeRequested) verifyC133WheelDraw(result);
-        if (rootHtmlFitContentPixelCaptureRequested) {
+        if (rootHtmlFitContentPercentagePixelCaptureRequested
+                || rootHtmlFitContentPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_DISPATCH run_id="
-                    + rootHtmlFitContentPixelCaptureRunId + " generation=" + generation);
+                    + (rootHtmlFitContentPercentagePixelCaptureRequested
+                            ? rootHtmlFitContentPercentagePixelCaptureRunId
+                            : rootHtmlFitContentPixelCaptureRunId)
+                    + " percentage=" + rootHtmlFitContentPercentagePixelCaptureRequested
+                    + " generation=" + generation);
             requestRootHtmlFitContentPixelCapture(renderer, generation);
         } else if (rootHtmlGridMinmaxPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY_DISPATCH run_id="

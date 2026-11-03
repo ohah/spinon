@@ -16,6 +16,7 @@ mod root_html_grid;
 mod root_html_grid_anonymous_text;
 mod root_html_grid_column_flow;
 mod root_html_grid_fit_content;
+mod root_html_grid_fit_content_percentage;
 mod root_html_grid_fr;
 mod root_html_grid_implicit_rows;
 mod root_html_grid_integer_repeat;

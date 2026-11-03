@@ -9,6 +9,10 @@ fn fit_content_px(value: f32) -> ComputedCssGridTrackSize {
     ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(value))
 }
 
+fn fit_content_percentage(value: f32) -> ComputedCssGridTrackSize {
+    ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::Percentage(value))
+}
+
 #[test]
 fn root_html_fit_content_tracks_are_typed_on_both_explicit_axes() {
     let (view, root) = view_for_inline_style(
@@ -72,28 +76,69 @@ fn root_html_fit_content_fixed_integer_repeat_expands_typed_tracks() {
 }
 
 #[test]
-fn root_html_fit_content_rejects_percentage_and_calc_limits_and_keeps_auto_tracks_out() {
-    for limit in ["20%", "calc(10px + 5%)"] {
-        let style = format!(
-            "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:fit-content({limit});grid-template-rows:20px;margin:0;padding:0"
-        );
-        let (view, root) = view_for_inline_style(&style);
-        let error = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
-            &view,
-            &[],
-            CssViewport::C04_FIXTURE,
-            Default::default(),
-        )
-        .expect_err("percentage and calc fit-content limits stay outside Root HTML");
-        assert!(
-            matches!(error, CssCascadeError::UnsupportedComputedGridValue {
-                node,
-                property: "grid-template-columns",
-                ..
-            } if node == root),
-            "limit {limit}: {error:?}"
-        );
-    }
+fn root_html_fit_content_percentages_are_preserved_on_both_axes_and_fixed_repeat() {
+    let (view, root) = view_for_inline_style(
+        "display:grid;box-sizing:border-box;width:200px;height:100px;grid-template-columns:fit-content(20%);grid-template-rows:fit-content(25%);margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+        &view,
+        &[],
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .expect("finite non-negative percentage limits should remain typed through Root HTML cascade");
+    let grid = snapshot
+        .elements
+        .iter()
+        .find(|element| element.node_id == root)
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("percentage tracks should produce a typed Grid");
+    assert_eq!(grid.columns, [fit_content_percentage(0.2)]);
+    assert_eq!(grid.rows, [fit_content_percentage(0.25)]);
+
+    let (view, root) = view_for_inline_style(
+        "display:grid;box-sizing:border-box;width:200px;height:100px;grid-template-columns:repeat(2,fit-content(20%));grid-template-rows:20px;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+        &view,
+        &[],
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .expect("fixed integer repeat should preserve percentage fit-content values");
+    let grid = snapshot
+        .elements
+        .iter()
+        .find(|element| element.node_id == root)
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("expanded percentage repeat should produce a typed Grid");
+    assert_eq!(
+        grid.columns,
+        [fit_content_percentage(0.2), fit_content_percentage(0.2)]
+    );
+    assert_eq!(grid.columns_fixed_repeat_group_count, 1);
+}
+
+#[test]
+fn root_html_fit_content_rejects_calc_limits_and_keeps_auto_tracks_out() {
+    let (view, root) = view_for_inline_style(
+        "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:fit-content(calc(10px + 5%));grid-template-rows:20px;margin:0;padding:0",
+    );
+    let error = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+        &view,
+        &[],
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .expect_err("percentage and calc fit-content limits stay outside Root HTML");
+    assert!(
+        matches!(error, CssCascadeError::UnsupportedComputedGridValue {
+            node,
+            property: "grid-template-columns",
+            ..
+        } if node == root),
+        "calc limit: {error:?}"
+    );
 
     let (view, root) = view_for_inline_style(
         "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:20px;grid-template-rows:20px;grid-auto-rows:fit-content(20px);margin:0;padding:0",

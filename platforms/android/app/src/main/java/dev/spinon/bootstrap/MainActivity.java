@@ -156,6 +156,10 @@ public final class MainActivity extends Activity {
         boolean rootHtmlFitContentPixelCapture =
                 BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                         && extras.getBoolean("spinon_root_html_fit_content_pixel_capture", false);
+        boolean rootHtmlFitContentPercentagePixelCapture =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && extras.getBoolean(
+                                "spinon_root_html_fit_content_percentage_pixel_capture", false);
         for (String key : extras.keySet()) {
             if (rootHtmlGridMinmaxPixelCapture
                     && ("spinon_root_html_grid_minmax_pixel_capture".equals(key)
@@ -165,6 +169,11 @@ public final class MainActivity extends Activity {
             if (rootHtmlFitContentPixelCapture
                     && ("spinon_root_html_fit_content_pixel_capture".equals(key)
                             || "spinon_root_html_fit_content_pixel_capture_run_id".equals(key))) {
+                continue;
+            }
+            if (rootHtmlFitContentPercentagePixelCapture
+                    && ("spinon_root_html_fit_content_percentage_pixel_capture".equals(key)
+                            || "spinon_root_html_fit_content_percentage_pixel_capture_run_id".equals(key))) {
                 continue;
             }
             if (!key.startsWith("spinon_")) continue;

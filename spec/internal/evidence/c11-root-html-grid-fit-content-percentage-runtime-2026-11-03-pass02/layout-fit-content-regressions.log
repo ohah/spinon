@@ -1,0 +1,26 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 20 tests
+test grid_fit_content_min_height_oracle_tests::css_grid_2025_fit_content_row_does_not_stretch_to_min_height ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_tracks_reject_negative_and_non_finite_limits ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_tracks_reject_indefinite_axes ... ok
+test grid_fit_content_auto_min_floor_oracle_tests::fit_content_auto_minimum_floor_uses_contribution_above_argument ... ok
+test grid_fit_content_auto_min_floor_oracle_tests::fit_content_auto_minimum_zero_control_applies_argument_and_keeps_overflow ... ok
+test grid_fit_content_auto_neighbor_oracle_tests::css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_columns_rows_and_zero_basis_are_admitted ... ok
+test grid_fit_content_min_height_oracle_tests::invalid_min_height_is_rejected_by_style_validation ... ok
+test grid_fit_content_min_height_oracle_tests::fit_content_percentage_limit_is_rejected_with_indefinite_height_basis ... ok
+test grid_fit_content_min_height_oracle_tests::fit_content_length_without_definite_min_height_remains_rejected ... ok
+test grid_fit_content_min_height_oracle_tests::invalid_fit_content_length_is_rejected_by_grid_validation ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_uses_content_box_basis_with_a_border ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_cap_does_not_subtract_the_grid_gap ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_over_100_cap_keeps_the_available_space_ceiling ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_text_fixed_repeat_fit_content_tracks_are_sized_independently ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_fixed_repeat_tracks_size_independently ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_wrapped_min_content_sets_a_fit_content_row_floor_above_its_cap ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_text_fit_content_columns_respect_minimum_cap_and_maximum_contributions ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_columns_resolve_against_definite_width ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_rows_keep_minimum_floor_at_zero_and_over_100_percent ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 391 filtered out; finished in 0.00s

@@ -1,12 +1,13 @@
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, NodeId};
 use spinon_layout::{LayoutFrame, LayoutSourceRevision};
 use spinon_render::{
-    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimePaint, RuntimeRenderBox,
-    RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeSrgbColor,
+    CssAxisClip, CssClip, CssRect, CssSize, OpaqueCssSrgb, RuntimeBorder, RuntimeBorderSide,
+    RuntimePaint, RuntimeRenderBox, RuntimeRenderKey, RuntimeRenderSnapshot, RuntimeSrgbColor,
 };
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-use spinon_render::{RuntimeBorder, RuntimeBorderSide};
-use spinon_style::{ComputedBackgroundPaint, ComputedCssOverflow, ComputedStyleProfile};
+use spinon_style::{
+    ComputedBackgroundPaint, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
+    ComputedCssOverflow, ComputedElementStyle, ComputedStyleProfile,
+};
 
 use crate::adapter::{
     indexed_styles, validate_revisions, validate_runtime_layout_nodes, validate_style_node_set,
@@ -109,30 +110,14 @@ pub fn build_runtime_render_snapshot(
         let paint_order =
             u32::try_from(boxes.len()).map_err(|_| StyleRenderError::PaintOrderOverflow)?;
         let mut render_box = RuntimeRenderBox::new(node_id, frame_css_px, paint, paint_order);
+        let include_runtime_border = styles.profile
+            == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            && has_percentage_fit_content_track(style);
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-        if styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
-            let border = match style.layout_border_paint {
-                Some(paint) => RuntimeBorder::new(
-                    RuntimeBorderSide::new(
-                        style.layout_border.top,
-                        computed_paint_to_runtime(paint.top)?,
-                    )?,
-                    RuntimeBorderSide::new(
-                        style.layout_border.right,
-                        computed_paint_to_runtime(paint.right)?,
-                    )?,
-                    RuntimeBorderSide::new(
-                        style.layout_border.bottom,
-                        computed_paint_to_runtime(paint.bottom)?,
-                    )?,
-                    RuntimeBorderSide::new(
-                        style.layout_border.left,
-                        computed_paint_to_runtime(paint.left)?,
-                    )?,
-                ),
-                None => RuntimeBorder::none(),
-            };
-            render_box = render_box.with_border(border);
+        let include_runtime_border = include_runtime_border
+            || styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1;
+        if include_runtime_border {
+            render_box = render_box.with_border(runtime_border(style)?);
         }
         if styles.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             render_box = render_box.with_clip(root_html_text_paint_clip(style, frame)?);
@@ -164,7 +149,43 @@ pub fn build_runtime_render_snapshot(
     RuntimeRenderSnapshot::new(key, viewport_css_px, boxes).map_err(Into::into)
 }
 
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn runtime_border(style: &ComputedElementStyle) -> Result<RuntimeBorder, StyleRenderError> {
+    match style.layout_border_paint {
+        Some(paint) => Ok(RuntimeBorder::new(
+            RuntimeBorderSide::new(
+                style.layout_border.top,
+                computed_paint_to_runtime(paint.top)?,
+            )?,
+            RuntimeBorderSide::new(
+                style.layout_border.right,
+                computed_paint_to_runtime(paint.right)?,
+            )?,
+            RuntimeBorderSide::new(
+                style.layout_border.bottom,
+                computed_paint_to_runtime(paint.bottom)?,
+            )?,
+            RuntimeBorderSide::new(
+                style.layout_border.left,
+                computed_paint_to_runtime(paint.left)?,
+            )?,
+        )),
+        None => Ok(RuntimeBorder::none()),
+    }
+}
+
+fn has_percentage_fit_content_track(style: &ComputedElementStyle) -> bool {
+    style.grid_layout.as_ref().is_some_and(|grid| {
+        grid.columns.iter().chain(&grid.rows).any(|track| {
+            matches!(
+                track,
+                ComputedCssGridTrackSize::FitContent(
+                    ComputedCssGridTrackLengthPercentage::Percentage(value)
+                ) if value.is_finite() && *value >= 0.0
+            )
+        })
+    })
+}
+
 fn computed_paint_to_runtime(
     paint: ComputedBackgroundPaint,
 ) -> Result<RuntimePaint, StyleRenderError> {

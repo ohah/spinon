@@ -10,6 +10,10 @@ fn fit_content(value: f32) -> ComputedCssGridTrackSize {
     ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(value))
 }
 
+fn fit_content_percentage(value: f32) -> ComputedCssGridTrackSize {
+    ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::Percentage(value))
+}
+
 fn one_row_two_area_grid(
     columns: Vec<ComputedCssGridTrackSize>,
     rows: Vec<ComputedCssGridTrackSize>,
@@ -114,6 +118,68 @@ fn root_html_explicit_fit_content_px_tracks_project_for_columns_rows_and_fixed_r
 }
 
 #[test]
+fn root_html_explicit_fit_content_percentage_tracks_project_for_columns_rows_and_fixed_repeat() {
+    let node = NodeId::new(11_284).unwrap();
+    let column_grid = grid(
+        vec![
+            fit_content_percentage(0.2),
+            ComputedCssGridTrackSize::LengthPx(10.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    let projected = project_grid_layout(
+        node,
+        &column_grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("finite non-negative percentage fit-content columns should project");
+    assert_eq!(
+        projected.columns,
+        [
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::LengthPx(10.0),
+        ]
+    );
+
+    let row_grid = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        vec![fit_content_percentage(0.0), fit_content_percentage(1.2)],
+    );
+    let projected = project_grid_layout(
+        node,
+        &row_grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("zero and over-100% fit-content rows should project as typed percentages");
+    assert_eq!(
+        projected.rows,
+        [
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(1.2)),
+        ]
+    );
+
+    let mut repeated_grid = grid(
+        vec![fit_content_percentage(0.2), fit_content_percentage(0.2)],
+        vec![ComputedCssGridTrackSize::LengthPx(60.0)],
+    );
+    repeated_grid.columns_fixed_repeat_group_count = 1;
+    let projected = project_grid_layout(
+        node,
+        &repeated_grid,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("expanded fixed-repeat percentage fit-content tracks should project");
+    assert_eq!(
+        projected.columns,
+        [
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+        ]
+    );
+}
+
+#[test]
 fn root_html_dimension_matched_fit_content_named_areas_do_not_depend_on_area_names() {
     let node = NodeId::new(11_281).unwrap();
     for names in [["fixed", "fit"], ["leading", "trailing"]] {
@@ -150,13 +216,16 @@ fn root_html_dimension_matched_fit_content_named_areas_do_not_depend_on_area_nam
 }
 
 #[test]
-fn root_html_fit_content_rejects_non_px_or_invalid_limits() {
+fn root_html_fit_content_rejects_calc_or_invalid_limits() {
     let node = NodeId::new(11_282).unwrap();
     for track in [
-        ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::Percentage(0.5)),
         ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::Calc(
             spinon_style::ComputedCssMath::LengthPx(20.0),
         )),
+        fit_content_percentage(-0.5),
+        fit_content_percentage(f32::NAN),
+        fit_content_percentage(f32::INFINITY),
+        fit_content_percentage(f32::NEG_INFINITY),
         fit_content(-1.0),
         fit_content(f32::NAN),
         fit_content(f32::INFINITY),
@@ -241,6 +310,13 @@ fn root_html_named_area_fit_content_requires_matched_dimensions_and_supported_tr
             vec![
                 ComputedCssGridTrackSize::LengthPx(20.0),
                 ComputedCssGridTrackSize::Fraction(1.0),
+            ],
+            "grid-template-areas",
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                fit_content_percentage(0.5),
             ],
             "grid-template-areas",
         ),

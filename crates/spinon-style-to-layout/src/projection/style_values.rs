@@ -8,9 +8,9 @@ use spinon_layout::{
 };
 use spinon_style::{
     ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridAutoColumns,
-    ComputedCssGridAutoFlow, ComputedCssGridLayout, ComputedCssGridTrackSize, ComputedCssMaxSize,
-    ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssGridAutoFlow, ComputedCssGridLayout, ComputedCssGridTrackLengthPercentage,
+    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssPosition,
+    ComputedCssSpacingValue, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -1213,13 +1213,24 @@ fn validate_root_html_grid_box_inputs(
             });
         }
     }
+    let allow_percentage_fit_content_border = is_grid_container
+        && element.grid_layout.as_ref().is_some_and(|grid| {
+            grid.columns.iter().chain(&grid.rows).any(|track| {
+                matches!(
+                    track,
+                    ComputedCssGridTrackSize::FitContent(
+                        ComputedCssGridTrackLengthPercentage::Percentage(value)
+                    ) if value.is_finite() && *value >= 0.0
+                )
+            })
+        });
     for (property, value) in [
         ("border-top-width", element.layout_border.top),
         ("border-right-width", element.layout_border.right),
         ("border-bottom-width", element.layout_border.bottom),
         ("border-left-width", element.layout_border.left),
     ] {
-        if value != 0.0 {
+        if value != 0.0 && !allow_percentage_fit_content_border {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property,
