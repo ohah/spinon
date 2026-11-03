@@ -15134,7 +15134,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c114GridTrackSizingProbeRequested
             ? "SPINON · C11.4 Grid track sizing"
             : c111RootHtmlPercentColumnsProbeRequested
-            ? "SPINON · C11.1 Root HTML columns"
+            ? "SPINON · C11.1 Root HTML Grid tracks"
             : c1133GridTemplateAreasProbeRequested
             ? c1133NamedLinePairSceneIDs.contains(c1133GridTemplateAreasSceneID)
                 ? "SPINON · C11.3.3 named-line pair"
@@ -15272,7 +15272,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c1121GridPlacementProbeRequested
             ? "V8 numeric Grid line/span → Stylo → Taffy → WGPU · 320×240 CSS px"
             : c111RootHtmlPercentColumnsProbeRequested
-            ? "parsed Root HTML column-flow · implicit columns · WGPU Metal"
+            ? "parsed Root HTML implicit calc rows · WGPU/Metal"
             : c11GridFixtureRequested
             ? "V8 DOM display:grid → Stylo → Taffy → Rust 장면 → WGPU · 320×240 CSS px"
             : c1035PositionedFlexProbeRequested

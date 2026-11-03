@@ -6,7 +6,7 @@ use spinon_style::{
     ComputedStyleSnapshot,
 };
 
-use super::root_html_column_math::supported_auto_column_calc;
+use super::root_html_column_math::supported_root_html_auto_track_calc;
 use super::{HTML_NAMESPACE, RuntimeGridNodes};
 use crate::StyleLayoutError;
 
@@ -150,7 +150,9 @@ fn root_html_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -
         ComputedCssGridTrackSize::LengthPx(value)
         | ComputedCssGridTrackSize::Percentage(value)
         | ComputedCssGridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
-        ComputedCssGridTrackSize::Calc(expression) => supported_auto_column_calc(expression),
+        ComputedCssGridTrackSize::Calc(expression) => {
+            supported_root_html_auto_track_calc(expression)
+        }
         _ => false,
     };
     match auto_columns {

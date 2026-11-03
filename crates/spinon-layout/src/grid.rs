@@ -20,6 +20,8 @@ mod cyclic_percentage_auto_repeat_rows;
 pub(crate) mod root_html_column;
 #[path = "grid/root_html_gap.rs"]
 mod root_html_gap;
+#[path = "grid/root_html_row.rs"]
+pub(crate) mod root_html_row;
 
 use crate::grid_placement::normalize_grid_layout;
 use crate::{
@@ -356,12 +358,13 @@ fn is_root_html_auto_track_list(tracks: &[GridTrackSize]) -> bool {
                 GridTrackSize::LengthPx(_)
                     | GridTrackSize::Percentage(_)
                     | GridTrackSize::Fraction(_)
+                    | GridTrackSize::Calc(_)
             )
         })
 }
 
 fn has_relative_auto_rows(auto_rows: &GridAutoRows) -> bool {
-    matches!(auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_))))
+    matches!(auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_) | GridTrackSize::Calc(_))))
 }
 
 pub(super) fn validate_grid_layout(
@@ -371,8 +374,10 @@ pub(super) fn validate_grid_layout(
     intrinsic_size_nodes: &std::collections::BTreeSet<NodeId>,
 ) -> Result<(), LayoutError> {
     let css_math_by_id = if input.grid_containers.values().any(|container| {
-        container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1
-            && root_html_column::has_calc_auto_columns(&container.auto_columns)
+        (container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1
+            && root_html_column::has_calc_auto_columns(&container.auto_columns))
+            || (container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
+                && root_html_row::has_calc_auto_rows(&container.auto_rows))
     }) {
         root_html_column::index_css_math(&input.css_math)?
     } else {
@@ -394,7 +399,7 @@ pub(super) fn validate_grid_layout(
 
     for (&id, container) in &input.grid_containers {
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
-            validate_root_html_implicit_rows_contract(id, container)?;
+            validate_root_html_implicit_rows_contract(id, container, &css_math_by_id)?;
         }
         if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
             validate_root_html_column_flow_contract(id, container, &css_math_by_id)?;
@@ -598,16 +603,18 @@ pub(super) fn validate_grid_layout(
                     property: "grid-auto-rows",
                 });
             }
-            validate_tracks(
-                id,
-                "grid-auto-rows",
-                tracks,
-                template_area_track_sizing
-                    || container.placement_mode == GridPlacementMode::TrackSizing,
-                false,
-                false,
-                false,
-            )?;
+            if container.placement_mode != GridPlacementMode::RootHtmlImplicitRowsV1 {
+                validate_tracks(
+                    id,
+                    "grid-auto-rows",
+                    tracks,
+                    template_area_track_sizing
+                        || container.placement_mode == GridPlacementMode::TrackSizing,
+                    false,
+                    false,
+                    false,
+                )?;
+            }
         }
         if let GridAutoColumns::TrackList(tracks) = &container.auto_columns {
             if tracks.is_empty() {
@@ -681,6 +688,7 @@ pub(super) fn validate_grid_layout(
                 container,
                 required_rows,
                 &input.css_math,
+                &css_math_by_id,
             )?;
         }
         if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
@@ -1139,6 +1147,7 @@ fn indefinite_track_sizing_height_is_bounded(
 fn validate_root_html_implicit_rows_contract(
     node: spinon_core::NodeId,
     container: &crate::GridContainerInput,
+    css_math: &root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     if container.template_areas.is_some() {
         return Err(LayoutError::InvalidGridTrackList {
@@ -1211,6 +1220,7 @@ fn validate_root_html_implicit_rows_contract(
             crate::GridTrackSize::LengthPx(value)
             | crate::GridTrackSize::Percentage(value)
             | crate::GridTrackSize::Fraction(value) => !value.is_finite() || *value < 0.0,
+            crate::GridTrackSize::Calc(_) => false,
             _ => true,
         }),
         crate::GridAutoRows::Auto => false,
@@ -1220,6 +1230,13 @@ fn validate_root_html_implicit_rows_contract(
             node,
             property: "grid-auto-rows",
         });
+    }
+    if let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows {
+        for track in tracks {
+            if let GridTrackSize::Calc(id) = track {
+                root_html_row::validate_auto_row_calc(node, *id, css_math)?;
+            }
+        }
     }
     if container.auto_columns != crate::GridAutoColumns::Auto {
         return Err(LayoutError::UnsupportedGridAutoColumns {
@@ -1236,6 +1253,7 @@ fn validate_root_html_implicit_rows_container_style(
     container: &crate::GridContainerInput,
     required_rows: usize,
     css_math: &[LayoutCssMathValue],
+    css_math_by_id: &root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     let unsupported_property = if style.overflow_x != crate::LayoutOverflow::Visible {
         Some("overflow-x")
@@ -1331,7 +1349,12 @@ fn validate_root_html_implicit_rows_container_style(
                 });
             }
         };
-        row_extent += root_html_track_extent(node, "grid-auto-rows", track, style.height)?;
+        row_extent += match track {
+            GridTrackSize::Calc(_) => {
+                root_html_row::calc_track_extent(node, track, style.height, css_math_by_id)?
+            }
+            _ => root_html_track_extent(node, "grid-auto-rows", track, style.height)?,
+        };
         validate_root_html_extent(node, "grid-auto-rows", row_extent)?;
     }
     Ok(())
@@ -1495,6 +1518,7 @@ fn validate_root_html_column_flow_container_style(
         container,
         container.rows.len(),
         css_math_values,
+        css_math_by_id,
     )?;
     let has_relative_track = matches!(
         &container.auto_columns,

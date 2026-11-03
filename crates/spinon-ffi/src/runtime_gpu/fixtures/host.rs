@@ -6,7 +6,7 @@ impl RuntimeGpuHost {
     pub(in crate::runtime_gpu) fn new_c11_1_root_html_percent_columns_fixture()
     -> Result<(Self, String), String> {
         let source = include_str!(
-            "../../../../../tests/fixtures/css/c11/root-html-grid-column-flow-fr-auto-columns-runtime.html"
+            "../../../../../tests/fixtures/css/c11/root-html-grid-auto-row-calc-runtime.html"
         );
         let (mut host, report) = Self::new_with_root_html(source)?;
         host.include_node_frame_report = true;

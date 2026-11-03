@@ -1,5 +1,7 @@
 use super::*;
 
+#[path = "root_html_implicit_rows_tests/calc.rs"]
+mod calc;
 #[path = "root_html_implicit_rows_tests/fraction.rs"]
 mod fraction;
 #[path = "root_html_implicit_rows_tests/percentage.rs"]
