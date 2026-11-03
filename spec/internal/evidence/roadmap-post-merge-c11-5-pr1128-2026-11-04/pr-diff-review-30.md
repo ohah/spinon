@@ -1,38 +1,40 @@
 # C11.5 병합 후 로드맵 동기화 PR 변경분 적대 검토 30개
 
-각 항목은 PR #1129의 문서·로드맵·동기화 근거에서 별도의 실패 경로나 불변 조건을 확인한다. 코드를 바꾸는 구현 PR 검토가 아니라 병합 후 상태 동기화 검토다.
+PR #1129의 상태·계획·내부 계약·공개 로드맵·Tailnet 근거를 서로 다른 실패 관점으로 대조했다. 이 검토는 구현 PR #1128의 코드 검토를 재사용하지 않는다.
 
-1. **PR 식별자** — 로드맵과 상태 대장이 제한 구현 PR #1128을 가리키며, 문서 동기화 PR #1129와 혼동하지 않는지 확인한다.
-2. **병합 결과** — #1128의 Rebase and merge 시각 `2026-11-03T17:52:20Z`가 세 문서의 기록과 일치한다.
-3. **merge SHA** — `0f704151cfd805ad2fef2e12535739f0d3a109dd`가 PR, 상태 대장, 내부 계약, 로드맵에서 동일하다.
-4. **체크 상태** — check rollup이 비어 있다는 기록을 CI 성공으로 부풀리지 않았는지 확인한다.
-5. **required checks** — main의 required status check 부재와 CI 결과 부재를 구분한다.
-6. **공식 완료 수** — 변경 전후 공식 완료가 `72/213`으로 유지되는지 확인한다.
-7. **상위 C11 상태** — C11 체크박스가 unchecked로 남고 C11 완료로 오인할 문구가 없는지 확인한다.
-8. **C11.5 범위** — 제한된 Root HTML slice와 전체 C11.5 계약을 구분한다.
-9. **입력 제한** — 기존 eligible fixed-track Grid, direct empty `div`, fixed-size item 제한을 일반 Grid 지원으로 확장하지 않는다.
-10. **지원 속성** — `align-self`·`justify-self` 위치 정렬 설명이 plan 및 내부 계약과 일치한다.
-11. **CSS admission** — 일반 CSS authoring 지원으로 승격하거나 공개 지원 표에 추가했다고 암시하지 않는다.
-12. **WPT 경계** — pinned Chrome 비교를 Spinon WPT 적합성 결과로 표현하지 않는다.
-13. **플랫폼 경계** — Android AVD/SwiftShader 결과를 실기기 또는 hardware GPU 결과라 부르지 않는다.
-14. **iOS 경계** — iOS Metal drawable 표본이 compositor 제출 전이라는 제한을 유지한다.
-15. **Chrome 결과** — 19 scene 19/19를 Chrome 156 사전 비교 결과로 정확히 귀속하고 플랫폼 통과와 합산하지 않는다.
-16. **Android 표본** — PixelCopy 7/7은 API 37 ARM64 AVD 결과이며 별도 OS 합성 PNG와 혼동하지 않는다.
-17. **iOS 표본** — Metal drawable 7/7을 OS compositor 이후 광학 화면 표본으로 오인하지 않는다.
-18. **기본 artifact 경계** — opt-in fixture adapter/payload가 기본 산출물에 없다는 증거를 positive artifact 포함 사실과 구분한다.
-19. **광범위 테스트 1** — `spinon-layout` 423 passed/1 failed 기록을 누락하거나 모두 통과로 바꾸지 않는다.
-20. **광범위 테스트 2** — `spinon-style-to-layout` 372 passed/1 failed 기록이 실행 근거와 일치한다.
-21. **광범위 테스트 3** — `spinon-style` 283 passed/1 failed 기록이 실행 근거와 일치한다.
-22. **광범위 테스트 4** — `spinon-runtime` 261 passed/2 failed/3 ignored 기록이 실행 근거와 일치한다.
-23. **문서 교차 일관성** — STATUS, internal contract 0059, 계획 문서와 공개 로드맵에서 scope·counts·limitations가 서로 모순되지 않는다.
-24. **계약 버전** — 제한 구현 병합만으로 내부 계약 버전 `0.1.0`을 올리지 않는다.
-25. **카드 순서** — 새 C11.5 병합 기록이 최신 진행 공지 위치에 있고 기존 roadmap 항목을 덮어쓰지 않는다.
-26. **링크 대상** — 새 문서 링크가 `main`의 GitHub blob 경로를 사용해 Tailnet의 미생성 라우트에 의존하지 않는다.
-27. **링크 파일 존재** — plan, contract, precomparison, simulator evidence, review 및 STATUS 링크의 대상 파일이 저장소에 존재한다.
-28. **반응형 데스크톱** — 로컬 1280px 및 Tailnet 1440px viewport에서 문서 너비가 viewport와 일치하고 카드가 화면 밖으로 나가지 않는다.
-29. **반응형 모바일** — 로컬 및 Tailnet 390px viewport에서 body/document 너비 390px, 카드 362px로 수평 overflow가 없다.
-30. **동기화 무결성·수명** — pass02 source/local/remote SHA와 byte count 일치, 이전 사본 백업, atomic rename, no-delete, preview PID 28040 무재시작이 근거 파일에 남는다.
+| # | 실패 관점 | 판정과 확인 근거 |
+|---:|---|---|
+| 1 | 로드맵에서 구현 PR과 문서 PR을 혼동할 수 있는가 | **통과** — 로드맵 카드와 상태 대장은 구현 PR #1128을 연결하고, 이 문서 PR은 #1129로 구분했다. GitHub PR #1129 제목·head/base도 확인했다. |
+| 2 | 병합 시각이 문서마다 달라지는가 | **통과** — `2026-11-03T17:52:20Z`가 상태 대장·계획·내부 계약·로드맵의 기록과 GitHub #1128 결과에 일치한다. |
+| 3 | merge SHA가 틀리거나 축약되어 추적을 잃는가 | **통과** — `0f704151cfd805ad2fef2e12535739f0d3a109dd`가 상태 대장·계획·내부 계약·로드맵에 동일하게 기록됐다. |
+| 4 | 비어 있는 check rollup을 CI 성공으로 읽는가 | **통과** — GitHub #1128 조회에서 `statusCheckRollup: []`; 문서는 “비어 있음”으로 기록하고 성공 주장을 하지 않는다. |
+| 5 | required check 부재를 통과한 CI로 오인하는가 | **통과** — 기존 상태 근거는 main의 required status check 부재와 실행된 check 부재를 구분한다. 문서도 두 사실을 CI 통과로 합치지 않는다. |
+| 6 | 제한 병합 때문에 전체 완료 수가 증가하는가 | **통과** — 변경 전후 공식 완료 `72/213`을 유지한다고 STATUS와 공개 로드맵이 기록한다. |
+| 7 | 상위 C11이 실수로 체크되는가 | **통과** — `spec/STATUS.md`의 C11 CSS Grid는 unchecked이고 변경 diff에서도 상태 체크를 바꾸지 않았다. |
+| 8 | C11.5의 한 slice가 C11.5 전체로 승격되는가 | **통과** — 제한 구현 병합과 전체 C11.5 미완료를 모든 사용자 노출 기록에서 함께 명시한다. |
+| 9 | Grid eligibility를 일반 Grid 입력으로 넓혀 읽는가 | **통과** — eligible fixed-track Grid, direct empty `div`, 고정 크기 item의 제한을 계획과 내부 계약에 유지한다. |
+| 10 | 구현된 속성이 과장되는가 | **통과** — 범위를 computed `align-self`·`justify-self` 위치 정렬로 한정하고 `place-self` computed longhand 경계를 내부 계약과 일치시켰다. |
+| 11 | 일반 CSS author admission을 지원한다고 암시하는가 | **통과** — 일반 CSS admission 미완료를 공개 로드맵과 계획에 남겼다. |
+| 12 | Chrome oracle을 Spinon WPT 적합성으로 오인하는가 | **통과** — Chrome 156 19/19를 사전 비교로 표현하고 Spinon WPT 적합성 미완료를 명시한다. |
+| 13 | Android AVD 결과를 실기기·hardware GPU로 읽는가 | **통과** — API 37 ARM64 AVD/SwiftShader로 표기하고 실기기·hardware GPU 완료 주장을 배제했다. |
+| 14 | iOS Metal 표본을 compositor 이후 화면 결과로 읽는가 | **통과** — Metal drawable 7/7은 compositor 제출 전이라고 기록한다. |
+| 15 | Chrome scene 수를 앱 플랫폼 결과와 합산하는가 | **통과** — Chrome 156 19 scene 19/19를 별도 사전 비교 항목으로 기록한다. |
+| 16 | Android direct surface 표본과 screenshot을 혼동하는가 | **통과** — Android SurfaceView PixelCopy 7/7과 OS 합성 PNG를 별도 근거로 구분했다. |
+| 17 | iOS drawable 표본의 표면 경계를 누락하는가 | **통과** — iOS Metal drawable 표본 7/7 및 compositor 전 경계를 계획·실행 근거·로드맵에서 유지한다. |
+| 18 | fixture payload가 기본 artifact에 포함되는가 | **통과** — Android default DEX와 iOS default executable의 제외, opt-in positive artifact의 포함을 대조해 기록했다. |
+| 19 | `spinon-layout`의 실패를 감추는가 | **통과** — `423 passed/1 failed`와 C15 Grid text error-kind assertion을 기록했다. |
+| 20 | `spinon-style-to-layout`의 실패를 감추는가 | **통과** — `372 passed/1 failed`와 C07 aspect-ratio serialization 비교 실패를 기록했다. |
+| 21 | `spinon-style`의 실패를 감추는가 | **통과** — `283 passed/1 failed`와 다른 Grid profile의 typed track-list assertion을 기록했다. |
+| 22 | `spinon-runtime` 실패·ignored 수를 누락하는가 | **통과** — `261 passed/2 failed/3 ignored` 및 두 rejection-code assertion의 기존 dense auto-placement 경계를 기록했다. |
+| 23 | 상태·계획·내부 계약·로드맵이 서로 모순되는가 | **통과** — PR #1128 결과, bounded scope, package counts, 미완료 경계를 네 문서 간 대조했다. |
+| 24 | 제한 구현 때문에 내부 계약 숫자 버전이 바뀌는가 | **통과** — 내부 계약 버전은 `0.1.0` 그대로라고 기록했다. |
+| 25 | 최신 공지가 이전 로드맵 상태를 덮어쓰는가 | **통과** — C11.5 공지를 최신 hero 위치에 추가하고 기존 roadmap 체크리스트 본문을 변경하지 않았다. |
+| 26 | Tailnet에서 없는 내부 경로를 열도록 링크하는가 | **통과** — 새 카드 링크는 GitHub `main`의 문서 경로를 사용하도록 수정했고 Agent Browser DOM에서 각 href를 확인했다. |
+| 27 | 링크 대상 파일이 main에 아직 없는가 | **통과** — plan, contract, precomparison, simulator evidence, implementation review, PR review, STATUS 대상이 `origin/main`에 존재한다. |
+| 28 | 데스크톱 화면에서 카드가 viewport 밖으로 밀리는가 | **통과** — 로컬 1280px viewport는 문서 1280px/카드 908px, Tailnet 1440px viewport는 문서 1440px/카드 928px로 Agent Browser JSON에 기록됐다. |
+| 29 | 모바일에서 가로 overflow가 생기는가 | **통과** — 로컬·Tailnet 390px viewport에서 body/document 390px, 카드 362px이며 가로 overflow가 없다. |
+| 30 | Tailnet 복사본이 stale이거나 원본을 파괴하는가 | **통과** — pass02 source/local/remote가 550,857 bytes 및 SHA-256 `e953474d1b547abb8d2a8c82ccdabb7fab2e3b3bd117955d126ef2c5812c2c37`로 일치한다. pass01 파일 백업, atomic rename, no-delete, PID 28040 무재시작이 JSON 근거에 있다. |
 
-## 검토 판정
+## 판정 한계
 
-30개 관점에서 공식 완료 수, C11 미완료 표기, 구현 범위, 광범위 테스트 결과, 링크 및 Tailnet 제공 무결성을 대조했다. 확인한 화면은 로드맵 문서 표시만 대상으로 하며 전체 Grid 호환성이나 앱 런타임 증거로 취급하지 않는다.
+문서 diff whitespace와 evidence checksum을 검사했고, Agent Browser로 로컬·Tailnet 표시를 확인했다. 이 문서 PR에 대해 앱 테스트나 C11 구현 테스트를 새로 실행하지 않았다. 화면 검증은 로드맵 렌더링·반응형 폭에 한하며 앱 동작, 전체 Grid 호환성 또는 package tests의 통과를 증명하지 않는다.
