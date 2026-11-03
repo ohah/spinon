@@ -152,6 +152,10 @@ pub(super) fn collect(
             inline_run_styles,
         )?;
         match collected {
+            // Empty block elements have no text measure input. Keeping an empty paragraph
+            // would make an auto-sized Grid item's stretched used width disagree with the
+            // zero-width text measurement, even though the element has no text to shape.
+            TextParagraphInput::Paragraph(paragraph) if paragraph.sources.is_empty() => {}
             TextParagraphInput::Paragraph(paragraph) => {
                 result.paragraphs.insert(paragraph_id, paragraph);
             }

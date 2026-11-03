@@ -93,6 +93,8 @@ pub(super) fn supports_alignment_value(property: &str, value: &str) -> bool {
             matches!(
                 value,
                 "auto"
+                    | "normal"
+                    | "stretch"
                     | "start"
                     | "end"
                     | "flex-start"
@@ -127,6 +129,10 @@ fn supports_grid(element: &ComputedElementStyle, grid: &ComputedCssGridLayout) -
         && grid.rows_line_names.iter().all(Vec::is_empty)
         && fixed_nonnegative_dimension(element.layout_dimensions.width)
         && fixed_nonnegative_dimension(element.layout_dimensions.height)
+        && element
+            .properties
+            .get("box-sizing")
+            .is_some_and(|value| value == "border-box")
         && element.layout_dimensions.min_width == ComputedCssDimension::Auto
         && element.layout_dimensions.min_height == ComputedCssDimension::Auto
         && element.layout_dimensions.max_width == ComputedCssMaxSize::None
@@ -222,9 +228,13 @@ fn supports_item(element: &ComputedElementStyle) -> bool {
         .properties
         .get("display")
         .is_some_and(|value| value == "block")
+        && element
+            .properties
+            .get("box-sizing")
+            .is_some_and(|value| value == "border-box")
         && element.layout_position == spinon_style::ComputedCssPosition::Static
-        && fixed_nonnegative_dimension(element.layout_dimensions.width)
-        && fixed_nonnegative_dimension(element.layout_dimensions.height)
+        && auto_or_fixed_nonnegative_dimension(element.layout_dimensions.width)
+        && auto_or_fixed_nonnegative_dimension(element.layout_dimensions.height)
         && element.layout_dimensions.min_width == ComputedCssDimension::Auto
         && element.layout_dimensions.min_height == ComputedCssDimension::Auto
         && element.layout_dimensions.max_width == ComputedCssMaxSize::None
@@ -295,6 +305,10 @@ fn fixed_nonnegative_dimension(value: ComputedCssDimension) -> bool {
     matches!(value, ComputedCssDimension::LengthPx(value) if value.is_finite() && value >= 0.0)
 }
 
+fn auto_or_fixed_nonnegative_dimension(value: ComputedCssDimension) -> bool {
+    value == ComputedCssDimension::Auto || fixed_nonnegative_dimension(value)
+}
+
 fn fixed_nonnegative_gap(value: ComputedCssSpacingValue) -> bool {
     matches!(value, ComputedCssSpacingValue::LengthPx(value) if value.is_finite() && value >= 0.0)
 }
@@ -306,8 +320,11 @@ fn zero_spacing(value: ComputedCssSpacingValue) -> bool {
 #[cfg(test)]
 mod tests {
     use super::super::RuntimeGridNodes;
-    use super::{eligible_item_nodes, supports_alignment_value};
+    use super::{
+        auto_or_fixed_nonnegative_dimension, eligible_item_nodes, supports_alignment_value,
+    };
     use spinon_core::NodeId;
+    use spinon_style::ComputedCssDimension;
     use std::collections::{BTreeMap, BTreeSet};
 
     #[test]
@@ -328,6 +345,22 @@ mod tests {
             eligible_item_nodes(&nodes, &BTreeSet::from([first_container])),
             BTreeSet::from([first_item])
         );
+    }
+
+    #[test]
+    fn auto_or_fixed_item_dimensions_reject_invalid_lengths() {
+        assert!(auto_or_fixed_nonnegative_dimension(
+            ComputedCssDimension::Auto
+        ));
+        assert!(auto_or_fixed_nonnegative_dimension(
+            ComputedCssDimension::LengthPx(16.0)
+        ));
+        assert!(!auto_or_fixed_nonnegative_dimension(
+            ComputedCssDimension::LengthPx(-1.0)
+        ));
+        assert!(!auto_or_fixed_nonnegative_dimension(
+            ComputedCssDimension::LengthPx(f32::INFINITY)
+        ));
     }
 
     #[test]
@@ -390,6 +423,8 @@ mod tests {
         for property in ["align-self", "justify-self"] {
             for value in [
                 "auto",
+                "normal",
+                "stretch",
                 "start",
                 "end",
                 "flex-start",
@@ -404,7 +439,7 @@ mod tests {
             ] {
                 assert!(supports_alignment_value(property, value));
             }
-            for value in ["normal", "stretch", "baseline", "safe start", "legacy"] {
+            for value in ["baseline", "safe start", "legacy"] {
                 assert!(!supports_alignment_value(property, value));
             }
         }

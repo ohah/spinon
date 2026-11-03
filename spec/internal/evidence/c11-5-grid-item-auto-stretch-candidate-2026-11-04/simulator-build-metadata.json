@@ -1,0 +1,62 @@
+{
+  "schema": "spinon-c11-5-grid-item-auto-stretch-candidate/v1",
+  "source": {
+    "baseCommit": "8288072446e1847580c2804570a0d5d6f20723c4",
+    "candidateBranch": "feat/c11-5-grid-item-auto-stretch",
+    "buildCapturedFromUncommittedTree": true,
+    "fixture": "tests/fixtures/css/c11/root-html-grid-item-auto-stretch-runtime.html",
+    "fixtureSha256": "b6cd473b009cefa090d57625246d872a14faedef2d39c17499062bcdda2d8dd8",
+    "bundledResourceSha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85",
+    "bundledResourcesRestored": true
+  },
+  "android": {
+    "target": "emulator-5554",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "renderer": "ANGLE over Vulkan SwiftShader",
+    "viewportCssPx": "980x735",
+    "surfaceView": "840x630",
+    "buildFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST": 1
+    },
+    "optInApkSha256": "9a482ff048d290edb905d4d727a9f0d07113ffd4a623b065049e01b9210edc1c",
+    "defaultApkSha256": "cd8865935bd8e50cd9a9b2204d647b522e5d4dc558787dbd0429b40cbacfae1b",
+    "pixelCopy": {
+      "matchedSamples": "11/11",
+      "png": "android-surfaceview-pixelcopy.png",
+      "pngSha256": "9bc0a0cc91daa4017b4038175a64eb2978fb008d973767796aaa9d9b7cb32f60"
+    },
+    "osScreenshot": {
+      "png": "android-simulator-screen.png",
+      "resolution": "1080x2400",
+      "pngSha256": "052b37c4efe38caa88ff1323e74a9fa58fb86e3e2d57050a69af07c49cac8a8e"
+    },
+    "defaultDexExcludesAdapterAndFixtureIds": true
+  },
+  "ios": {
+    "device": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "os": "iOS 26.2 Simulator",
+    "viewportCssPx": "980x735",
+    "metalDrawable": "960x720",
+    "buildFlags": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": 1
+    },
+    "optInExecutableSha256": "82da7bf9c31a27018a4f026c9ba125b45da141036df996a1213bca8aa6461c88",
+    "defaultExecutableSha256": "ea033df05fc48e6983887def4a6e73cf2ff5f7a35cbecbdacabf7b9dd84b364f",
+    "metalDrawableReadback": {
+      "matchedSamples": "11/11",
+      "boundary": "before compositor submission"
+    },
+    "osScreenshot": {
+      "png": "ios-simulator-screen.png",
+      "resolution": "1206x2622",
+      "pngSha256": "f78520292d12d19570f1d810c867a9873d67d70ee25a05282abe0ee5c1a720ae"
+    },
+    "defaultExecutableExcludesAutoStretchArgumentAndScene": true
+  }
+}
