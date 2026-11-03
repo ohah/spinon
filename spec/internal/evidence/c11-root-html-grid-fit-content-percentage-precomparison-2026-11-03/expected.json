@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-spec-derived-expectations-before-Chrome-observation",
+  "basis": {
+    "document": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, section 7.2.1",
+    "fitContentFormula": "max(auto minimum, min(resolved limit, max-content contribution))",
+    "fontPath": "tests/fixtures/resources/c15/Ahem.ttf",
+    "fontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "intrinsicProbes": {
+      "minContentWidthPx": 20,
+      "maxContentWidthPx": 110,
+      "rowMinContentHeightPx": 40
+    }
+  },
+  "scenes": {
+    "belowMinimum": { "rootWidthPx": 200, "cap": "5%", "resolvedCapPx": 10, "usedColumnsPx": [20], "itemFrame": [0, 0, 20, 60] },
+    "betweenContributions": { "rootWidthPx": 200, "cap": "20%", "resolvedCapPx": 40, "usedColumnsPx": [40], "itemFrame": [0, 0, 40, 60] },
+    "aboveMaxContent": { "rootWidthPx": 200, "cap": "60%", "resolvedCapPx": 120, "usedColumnsPx": [110], "itemFrame": [0, 0, 110, 60] },
+    "above100": { "rootWidthPx": 200, "cap": "120%", "resolvedCapPx": 240, "usedColumnsPx": [110], "itemFrame": [0, 0, 110, 60] },
+    "fixedRepeat": { "rootWidthPx": 200, "cap": "20%", "resolvedCapPx": 40, "usedColumnsPx": [40, 40], "itemFrames": [[0, 0, 40, 60], [40, 0, 40, 60]] },
+    "zeroBasis": { "rootWidthPx": 0, "cap": "100%", "resolvedCapPx": 0, "usedColumnsPx": [20], "itemFrame": [0, 0, 20, 60] },
+    "rowBelowMinimum": { "rootHeightPx": 100, "cap": "20%", "resolvedCapPx": 20, "usedRowsPx": [40], "itemFrame": [0, 0, 20, 40] },
+    "fixedRuntimeFloorControl": { "rootWidthPx": 160, "cap": "25%", "resolvedCapPx": 40, "specifiedItemWidthPx": 60, "usedColumnsPx": [60], "itemFrame": [0, 0, 60, 20] },
+    "textRuntimeCapControl": { "rootWidthPx": 320, "cap": "25%", "resolvedCapPx": 80, "minContentWidthPx": 10, "maxContentWidthPx": 390, "usedColumnsPx": [80], "itemFrame": [0, 0, 80, 100] }
+  },
+  "toleranceCssPx": 0.02
+}
