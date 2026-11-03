@@ -1,0 +1,15 @@
+{
+  "mode": "verify",
+  "source_commit": "c1c8eae0f52f1d7a0358a813c32b879fc4879692",
+  "route": "roadmap.html",
+  "status": 200,
+  "source_bytes": 546771,
+  "source_sha256": "c275d6c1bee8a1c58ab061be4236eeab331112f095c9feb5a818ab4f248f2df3",
+  "local_bytes": 546771,
+  "local_sha256": "c275d6c1bee8a1c58ab061be4236eeab331112f095c9feb5a818ab4f248f2df3",
+  "remote_bytes": 546771,
+  "remote_sha256": "c275d6c1bee8a1c58ab061be4236eeab331112f095c9feb5a818ab4f248f2df3",
+  "local_hash_matches": true,
+  "remote_http_200_and_hash_matches": true,
+  "no_deletes": true
+}

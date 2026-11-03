@@ -1,0 +1,37 @@
+{
+  "tool": "Agent Browser",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=c11-dense-2026-11-03",
+  "page_title": "스피논 구현 로드맵",
+  "visible_content": {
+    "pr_1117_card": true,
+    "pr_1118_link": true,
+    "c11_incomplete": true,
+    "official_count": "72/213"
+  },
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720,
+      "document_width": 1280,
+      "card_left": 20,
+      "card_right": 928,
+      "card_width": 908,
+      "horizontal_overflow": false,
+      "screenshot": "tailnet-roadmap-desktop-1280.png",
+      "screenshot_sha256": "e10378413be630e07d257c0f48b8ce623e0b6dbc2d1f7351cb37b773738b160f"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "document_width": 390,
+      "card_left": 14,
+      "card_right": 376,
+      "card_width": 362,
+      "horizontal_overflow": false,
+      "screenshot": "tailnet-roadmap-mobile-390.png",
+      "screenshot_sha256": "f38c3173e1ad5924c61742b362834b7df98c73113ed20343efe5175f08b264c3"
+    }
+  ],
+  "browser_closed": true,
+  "local_preview_server_stopped": true
+}
