@@ -14016,6 +14016,34 @@ private struct C111MetalPixelRun {
         return nil
     }
 
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+    private static let rootHtmlNamedAreaAutoMinimumScenes = [
+        "columns-auto-one", "columns-zero-one", "columns-auto-zero",
+        "rows-auto-one", "rows-zero-one", "rows-auto-zero",
+    ]
+
+    private static func rootHtmlNamedAreaAutoMinimumScene(runID: String) -> String? {
+        rootHtmlNamedAreaAutoMinimumScenes.first { runID.hasPrefix("c11na-\($0)-") }
+    }
+
+    private static func rootHtmlNamedAreaAutoMinimumSamples(
+        scene: String
+    ) -> [C111MetalPixelSample] {
+        let columnsOverflow = scene == "columns-auto-one" || scene == "columns-auto-zero"
+        let rowsOverflow = scene == "rows-auto-one" || scene == "rows-auto-zero"
+        return [
+            C111MetalPixelSample(
+                id: "columns-border-pixel", nodeId: "content",
+                xCssPx: 110, yCssPx: 30,
+                rgba: columnsOverflow ? [112, 168, 216, 255] : [255, 255, 255, 255]),
+            C111MetalPixelSample(
+                id: "rows-border-pixel", nodeId: "content",
+                xCssPx: 50, yCssPx: 110,
+                rgba: rowsOverflow ? [112, 168, 216, 255] : [255, 255, 255, 255]),
+        ]
+    }
+#endif
+
     static func parse(arguments: [String], sceneID: String?) -> C111MetalPixelRun? {
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
         let rootHtmlRuns = arguments.filter {
@@ -14046,16 +14074,25 @@ private struct C111MetalPixelRun {
             guard (8...80).contains(runID.count),
                   runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
             else { return nil }
+            let namedAreaAutoMinimumScene = isAutoMinimum
+                ? rootHtmlNamedAreaAutoMinimumScene(runID: runID) : nil
+            if isAutoMinimum && runID.hasPrefix("c11na-") && namedAreaAutoMinimumScene == nil {
+                return nil
+            }
             return C111MetalPixelRun(
                 runID: runID,
                 sceneID: isAutoMinimum
-                    ? "root-html-grid-auto-minimum"
+                    ? namedAreaAutoMinimumScene.map {
+                        "root-html-grid-auto-minimum-named-area-\($0)"
+                    } ?? "root-html-grid-auto-minimum"
                     : isFitContentPercentage
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
-                markerPrefix: "C111",
-                samples: isAutoMinimum ? [
+                markerPrefix: namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
+                samples: namedAreaAutoMinimumScene.map {
+                    rootHtmlNamedAreaAutoMinimumSamples(scene: $0)
+                } ?? (isAutoMinimum ? [
                     C111MetalPixelSample(
                         id: "columns-auto-overflow", nodeId: "columns-auto-second",
                         xCssPx: 125, yCssPx: 40, rgba: [227, 107, 44, 255]),
@@ -14110,7 +14147,7 @@ private struct C111MetalPixelRun {
                     C111MetalPixelSample(
                         id: "overflow-blue-marker", nodeId: "overflow-blue",
                         xCssPx: 44, yCssPx: 4, rgba: [59, 130, 246, 255]),
-                ],
+                ]),
                 usesRootHtmlViewport: true
             )
         }

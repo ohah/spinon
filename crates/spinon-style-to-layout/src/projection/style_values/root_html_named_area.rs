@@ -1,3 +1,5 @@
+mod auto_minimum;
+
 use spinon_core::{HostDocumentSnapshot, HostNodeKind};
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridItemPlacement, ComputedCssGridPlacement,
@@ -76,15 +78,28 @@ pub(super) fn validate_root_html_named_area_candidate(
             "Root HTML named-area 제한 경로는 visible Grid container 하나만 허용합니다",
         ));
     }
+    let auto_minimum_axis = container
+        .grid_layout
+        .as_ref()
+        .and_then(super::grid_values::root_html_named_area_auto_minimum_axis);
+    let expected_size = match auto_minimum_axis {
+        Some(super::grid_values::RootHtmlNamedAreaAutoMinimumAxis::Columns) => (100.0, 40.0),
+        Some(super::grid_values::RootHtmlNamedAreaAutoMinimumAxis::Rows) => (80.0, 100.0),
+        None => (120.0, 70.0),
+    };
     for (property, value, expected) in [
-        ("width", container.layout_dimensions.width, 120.0),
-        ("height", container.layout_dimensions.height, 70.0),
+        ("width", container.layout_dimensions.width, expected_size.0),
+        (
+            "height",
+            container.layout_dimensions.height,
+            expected_size.1,
+        ),
     ] {
         if !matches!(value, ComputedCssDimension::LengthPx(actual) if actual == expected) {
             return Err(unsupported(
                 owner,
                 property,
-                "Root HTML named-area 제한 경로는 120px × 70px Grid container를 요구합니다",
+                "Root HTML named-area 제한 profile은 지정된 고정 CSS px 크기를 요구합니다",
             ));
         }
     }
@@ -232,6 +247,9 @@ pub(super) fn validate_root_html_named_area_candidate(
             "Root HTML named-area 제한 경로는 visible div 직계 item 세 개를 요구합니다",
         ));
     }
+    if let Some(axis) = auto_minimum_axis {
+        auto_minimum::validate_box(container, axis, &unsupported)?;
+    }
     let mut projected_item_count = 0;
     for (item, item_owner) in &nodes.grid_item_owners {
         if *item_owner != owner {
@@ -254,16 +272,19 @@ pub(super) fn validate_root_html_named_area_candidate(
         ));
     }
     let mut item_areas = [None; 3];
+    let mut area_items = [None; 3];
     for item in direct_items.into_iter().flatten() {
-        let placement = snapshot
+        let element = snapshot
             .elements
             .iter()
             .find(|element| element.node_id == item)
-            .and_then(|element| element.grid_item_placement.as_ref())
-            .ok_or(StyleLayoutError::MissingComputedProperty {
+            .ok_or(StyleLayoutError::MissingComputedElement(item))?;
+        let placement = element.grid_item_placement.as_ref().ok_or(
+            StyleLayoutError::MissingComputedProperty {
                 node: item,
                 property: "grid-area",
-            })?;
+            },
+        )?;
         let Some(area) = root_html_named_area_name(placement) else {
             return Err(unsupported(
                 item,
@@ -290,6 +311,7 @@ pub(super) fn validate_root_html_named_area_candidate(
                 "header, side, content 영역은 각각 직계 item 하나에만 연결해야 합니다",
             ));
         }
+        area_items[area_index] = Some(element);
     }
     if item_areas.iter().any(Option::is_none) {
         return Err(unsupported(
@@ -297,6 +319,9 @@ pub(super) fn validate_root_html_named_area_candidate(
             "grid-area",
             "header, side, content 영역마다 직계 item 하나가 필요합니다",
         ));
+    }
+    if let Some(axis) = auto_minimum_axis {
+        auto_minimum::validate_items(owner, axis, &area_items, &unsupported)?;
     }
     Ok(())
 }

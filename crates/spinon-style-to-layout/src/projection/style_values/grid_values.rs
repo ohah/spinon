@@ -7,7 +7,8 @@ use spinon_layout::{
 use spinon_style::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
     ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedCssMath, ComputedStyleProfile,
+    ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth, ComputedCssGridTrackSize,
+    ComputedCssMath, ComputedStyleProfile,
 };
 
 use super::super::typed_math::CssMathProjector;
@@ -16,6 +17,12 @@ use crate::StyleLayoutError;
 
 const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
 const MAX_COMBINED_GRID_LINE_AREA_METADATA_BYTES: usize = 1024 * 1024;
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub(super) enum RootHtmlNamedAreaAutoMinimumAxis {
+    Columns,
+    Rows,
+}
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 enum GridLineNameReservationSite {
@@ -137,16 +144,30 @@ fn validate_root_html_grid_tracks(
             grid.rows_auto_repeat.as_ref(),
         ),
     ] {
+        let has_auto_minimum_track = tracks.iter().any(|track| {
+            matches!(
+                track,
+                ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::Auto,
+                    ..
+                }
+            )
+        });
         if tracks.is_empty()
             || auto_repeat.is_some()
             || line_names.iter().any(|group| !group.is_empty())
             || tracks
                 .iter()
                 .any(|track| !is_supported_root_html_explicit_track(track))
+            || (implicit_rows && has_auto_minimum_track)
         {
             return Err(unsupported(
                 property,
-                "Root HTML Grid explicit track은 finite non-negative px/percentage/fr direct track, minmax(px|%|auto, px|%|fr), fit-content(px|%)만 지원하며 line name과 auto-repeat은 지원하지 않습니다",
+                if implicit_rows && has_auto_minimum_track {
+                    "고정 implicit row와 함께 쓰는 Root HTML Grid explicit track은 자동 최소 크기 minmax()를 지원하지 않습니다"
+                } else {
+                    "Root HTML Grid explicit track은 finite non-negative px/percentage/fr direct track, minmax(px|%|auto, px|%|fr), fit-content(px|%)만 지원하며 line name과 auto-repeat은 지원하지 않습니다"
+                },
             ));
         }
         if column_flow
@@ -338,18 +359,21 @@ fn validate_root_html_named_area_template(
         property,
         value: value.to_owned(),
     };
-    for (property, tracks) in [
-        ("grid-template-columns", grid.columns.as_slice()),
-        ("grid-template-rows", grid.rows.as_slice()),
-    ] {
-        if tracks
-            .iter()
-            .any(|track| matches!(track, ComputedCssGridTrackSize::MinMax { .. }))
-        {
-            return Err(unsupported(
-                property,
-                "Root HTML named-area tracks do not admit minmax() in this profile",
-            ));
+    let auto_minimum_axis = root_html_named_area_auto_minimum_axis(grid);
+    if auto_minimum_axis.is_none() {
+        for (property, tracks) in [
+            ("grid-template-columns", grid.columns.as_slice()),
+            ("grid-template-rows", grid.rows.as_slice()),
+        ] {
+            if tracks
+                .iter()
+                .any(|track| matches!(track, ComputedCssGridTrackSize::MinMax { .. }))
+            {
+                return Err(unsupported(
+                    property,
+                    "Root HTML named-area 제한 profile은 지정된 자동 최소 크기 행렬 밖의 minmax()를 허용하지 않습니다",
+                ));
+            }
         }
     }
     let columns_match = matches!(
@@ -384,7 +408,8 @@ fn validate_root_html_named_area_template(
     if !(fixed_tracks_match
         || bounded_fraction_tracks_match
         || percentage_area_tracks_match
-        || fit_content_area_tracks_match)
+        || fit_content_area_tracks_match
+        || auto_minimum_axis.is_some())
     {
         return Err(unsupported(
             "grid-template-areas",
@@ -417,6 +442,59 @@ fn validate_root_html_named_area_template(
         ));
     }
     Ok(())
+}
+
+/// Root HTML runtime이 허용하는 named-area 자동 최소 크기 track 행렬을 식별합니다.
+/// 비교 대조군으로 0 최소 크기 track도 포함하며, 그 밖의 `minmax()` 조합은
+/// `validate_root_html_named_area_template`에서 계속 거부합니다.
+pub(super) fn root_html_named_area_auto_minimum_axis(
+    grid: &ComputedCssGridLayout,
+) -> Option<RootHtmlNamedAreaAutoMinimumAxis> {
+    let is_zero_minimum_fraction = |track: &ComputedCssGridTrackSize| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(min),
+                max: ComputedCssGridTrackBreadth::Fraction(factor),
+            } if *min == 0.0 && factor.is_finite() && *factor >= 0.0
+        )
+    };
+    let is_auto_minimum_fraction = |track: &ComputedCssGridTrackSize| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Auto,
+                max: ComputedCssGridTrackBreadth::Fraction(factor),
+            } if factor.is_finite() && *factor >= 0.0
+        )
+    };
+    let is_auto_or_zero_minimum_fraction = |track: &ComputedCssGridTrackSize| {
+        is_auto_minimum_fraction(track) || is_zero_minimum_fraction(track)
+    };
+
+    let columns_axis = matches!(
+        grid.columns.as_slice(),
+        [first, ComputedCssGridTrackSize::LengthPx(neighbor)]
+            if is_auto_or_zero_minimum_fraction(first) && *neighbor == 40.0
+    ) && matches!(
+        grid.rows.as_slice(),
+        [ComputedCssGridTrackSize::LengthPx(first), ComputedCssGridTrackSize::LengthPx(second)]
+            if *first == 20.0 && *second == 20.0
+    );
+    if columns_axis {
+        return Some(RootHtmlNamedAreaAutoMinimumAxis::Columns);
+    }
+
+    let rows_axis = matches!(
+        grid.columns.as_slice(),
+        [ComputedCssGridTrackSize::LengthPx(first), ComputedCssGridTrackSize::LengthPx(second)]
+            if *first == 40.0 && *second == 40.0
+    ) && matches!(
+        grid.rows.as_slice(),
+        [first, ComputedCssGridTrackSize::LengthPx(neighbor)]
+            if is_auto_or_zero_minimum_fraction(first) && *neighbor == 40.0
+    );
+    rows_axis.then_some(RootHtmlNamedAreaAutoMinimumAxis::Rows)
 }
 
 pub(super) fn root_html_dimension_matched_fit_content_area_tracks(

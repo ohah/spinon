@@ -21728,7 +21728,38 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
-    private static int[] rootHtmlAutoMinimumPixelExpectedRgba(String sampleId) {
+    private static boolean rootHtmlNamedAreaAutoMinimumRunId(String runId) {
+        for (String prefix : List.of(
+                "c11na-columns-auto-one-",
+                "c11na-columns-zero-one-",
+                "c11na-columns-auto-zero-",
+                "c11na-rows-auto-one-",
+                "c11na-rows-zero-one-",
+                "c11na-rows-auto-zero-")) {
+            if (runId.startsWith(prefix)) return true;
+        }
+        return false;
+    }
+
+    private static boolean rootHtmlNamedAreaColumnsAutoMinimum(String runId) {
+        return runId.startsWith("c11na-columns-auto-one-")
+                || runId.startsWith("c11na-columns-auto-zero-");
+    }
+
+    private static boolean rootHtmlNamedAreaRowsAutoMinimum(String runId) {
+        return runId.startsWith("c11na-rows-auto-one-")
+                || runId.startsWith("c11na-rows-auto-zero-");
+    }
+
+    private static int[] rootHtmlAutoMinimumPixelExpectedRgba(String sampleId, String runId) {
+        if (sampleId.equals("columns-border-pixel")) {
+            return rootHtmlNamedAreaColumnsAutoMinimum(runId)
+                    ? new int[] {112, 168, 216, 255} : new int[] {255, 255, 255, 255};
+        }
+        if (sampleId.equals("rows-border-pixel")) {
+            return rootHtmlNamedAreaRowsAutoMinimum(runId)
+                    ? new int[] {112, 168, 216, 255} : new int[] {255, 255, 255, 255};
+        }
         switch (sampleId) {
             case "columns-auto-overflow":
             case "rows-auto-overflow":
@@ -21768,15 +21799,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + runId + " reason=invalid-run-id");
             return;
         }
+        boolean namedArea = rootHtmlNamedAreaAutoMinimumRunId(runId);
+        if (runId.startsWith("c11na-") && !namedArea) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY status=error run_id="
+                    + runId + " reason=unknown-named-area-scene");
+            return;
+        }
         int viewportWidthCssPx = Math.round(width / density);
         int viewportHeightCssPx = Math.round(height / density);
-        List<SurfaceViewPixelCapture.Sample> samples = List.of(
-                new SurfaceViewPixelCapture.Sample("columns-auto-overflow", 125, 40),
-                new SurfaceViewPixelCapture.Sample("columns-zero-outside", 125, 118),
-                new SurfaceViewPixelCapture.Sample("rows-auto-overflow", 30, 300),
-                new SurfaceViewPixelCapture.Sample("rows-zero-outside", 30, 438));
-        if (width <= 0 || height <= 0 || viewportWidthCssPx <= 125
-                || viewportHeightCssPx <= 438) {
+        List<SurfaceViewPixelCapture.Sample> samples = namedArea
+                ? List.of(
+                        new SurfaceViewPixelCapture.Sample("columns-border-pixel", 110, 30),
+                        new SurfaceViewPixelCapture.Sample("rows-border-pixel", 50, 110))
+                : List.of(
+                        new SurfaceViewPixelCapture.Sample("columns-auto-overflow", 125, 40),
+                        new SurfaceViewPixelCapture.Sample("columns-zero-outside", 125, 118),
+                        new SurfaceViewPixelCapture.Sample("rows-auto-overflow", 30, 300),
+                        new SurfaceViewPixelCapture.Sample("rows-zero-outside", 30, 438));
+        int maxX = namedArea ? 110 : 125;
+        int maxY = namedArea ? 110 : 438;
+        if (width <= 0 || height <= 0 || viewportWidthCssPx <= maxX
+                || viewportHeightCssPx <= maxY) {
             Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY status=error run_id="
                     + runId + " reason=invalid-surface-or-viewport width=" + width
                     + " height=" + height + " viewport_width=" + viewportWidthCssPx
@@ -21812,7 +21855,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                     int matched = 0;
                     for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
-                        int[] expected = rootHtmlAutoMinimumPixelExpectedRgba(pixel.id);
+                        int[] expected = rootHtmlAutoMinimumPixelExpectedRgba(pixel.id, runId);
                         boolean exact = expected != null
                                 && pixel.red == expected[0] && pixel.green == expected[1]
                                 && pixel.blue == expected[2] && pixel.alpha == expected[3];

@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 14 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_fixed_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::auto_minimum::root_html_named_area_profile_rejects_out_of_matrix_minmax_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_fixed_implicit_rows ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_still_rejects_mixed_fraction_and_fixed_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_rejects_percentage_implicit_row_track_lists ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_still_rejects_percentage_fraction_composition ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_projects_the_bounded_two_axis_fraction_tracks ... ok
+test projection::style_values::grid_values::tests::root_html_named_area_projection_reports_line_and_area_allocation_failures ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_named_area_fit_content_requires_matched_dimensions_and_supported_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::auto_minimum::root_html_named_area_profile_projects_only_the_bounded_auto_minimum_matrices ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::root_html_named_area_profile_projects_direct_px_percentage_track_pairs ... ok
+test c11_1_root_html_named_area_auto_minimum_tests::named_area_auto_minimum_rejects_item_min_max_and_aspect_ratio_changes ... ok
+test c11_1_root_html_named_area_auto_minimum_tests::root_html_named_area_auto_minimum_tracks_match_both_axis_oracles ... ok
+test c11_1_root_html_named_area_auto_minimum_tests::named_area_auto_minimum_rejects_container_and_tree_boundary_changes ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 339 filtered out; finished in 0.03s
+

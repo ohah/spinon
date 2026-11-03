@@ -1,0 +1,8 @@
+Android BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST=false
+Android APK assets/index.html SHA-256=e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9 (matches restored bootstrap source)
+Android named-area fixture asset paths=[]
+Android debug DEX contains c11na debug harness marker=False (capture call remains guarded by BuildConfig=false)
+iOS SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=0 (see build log)
+iOS default executable new capture marker strings=[]
+Android APK SHA-256=f591adeedd675a041b08629141b875eab5cb446638652d7c26ab0479b995f96c
+iOS default executable SHA-256=e0a40b6677f4cdae1102cf9538519c207b5d63118073de37278d607d68597f84

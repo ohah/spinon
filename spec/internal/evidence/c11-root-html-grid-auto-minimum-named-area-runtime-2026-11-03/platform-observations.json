@@ -1,0 +1,984 @@
+{
+  "date": "2026-11-03",
+  "android": {
+    "target": "Android API 37 ARM64 AVD emulator-5556",
+    "model": "sdk_gphone64_arm64",
+    "androidRelease": "17",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "density": 2.625,
+    "renderer": "ANGLE/Vulkan/SwiftShader software renderer",
+    "capture": "SurfaceView PixelCopy RGBA exact; simulator screenshot is a separate display capture",
+    "scenes": {
+      "columns-auto-one": {
+        "runId": "c11na-columns-auto-one-20261103T075012",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 290,
+            "y": 80,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 132,
+            "y": 289,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "11-03 16:50:17.921 30514 30572 I SpinonBootstrap: SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status=matched run_id=c11na-columns-auto-one-20261103T075012 generation=2 expected_samples=2 observed_samples=2 matched_samples=2 png=/data/user/0/dev.spinon.bootstrap/cache/c11-root-html-grid-auto-minimum-pixelcopy/c11na-columns-auto-one-20261103T075012.png sha256=df444763b8a3c0f7d27dde1d7d41d296c2839577dfb80736bc983731ce615f0c",
+        "screenshot": "android/columns-auto-one-simulator.png",
+        "screenshotSha256": "d0c11051ab9461c8d540a51a3bd1aa238939a727e9674dbdb8c99f8e3a45597a",
+        "screenshotSize": [
+          1080,
+          2400
+        ],
+        "buildLog": "android/build-columns-auto-one.log",
+        "artifactSha256File": "android/apk-columns-auto-one.sha256",
+        "artifactSha256": "e635db82b7335c33fde020edaa51334b557094e130b1f1fb06bbd070257878b5",
+        "pixelCopyPng": "android/columns-auto-one-pixelcopy.png",
+        "pixelCopySha256": "df444763b8a3c0f7d27dde1d7d41d296c2839577dfb80736bc983731ce615f0c",
+        "pixelCopySize": [
+          1080,
+          2209
+        ],
+        "pixelCopyColorBoundingBoxes": {
+          "root": [
+            0,
+            0,
+            272,
+            114
+          ],
+          "header": [
+            5,
+            5,
+            319,
+            57
+          ],
+          "side": [
+            5,
+            58,
+            214,
+            109
+          ],
+          "content": [
+            215,
+            58,
+            319,
+            109
+          ]
+        }
+      },
+      "columns-zero-one": {
+        "runId": "c11na-columns-zero-one-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 290,
+            "y": 80,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 132,
+            "y": 289,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "11-03 16:52:08.002 30638 30699 I SpinonBootstrap: SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status=matched run_id=c11na-columns-zero-one-20261103T075201 generation=2 expected_samples=2 observed_samples=2 matched_samples=2 png=/data/user/0/dev.spinon.bootstrap/cache/c11-root-html-grid-auto-minimum-pixelcopy/c11na-columns-zero-one-20261103T075201.png sha256=97ad0a0be54ab1bd3a2159bcae87c862a7906a701437b30e541fa192f284daf6",
+        "screenshot": "android/columns-zero-one-simulator.png",
+        "screenshotSha256": "f05b95721e20575ab916b898fe827cf82044fca5d68e93435d4b5f8fce769517",
+        "screenshotSize": [
+          1080,
+          2400
+        ],
+        "buildLog": "android/build-columns-zero-one.log",
+        "artifactSha256File": "android/apk-columns-zero-one.sha256",
+        "artifactSha256": "3c4196ab3411cf67f0d528ab864a738a12e2a17abca988bdda5b344e260d3be0",
+        "pixelCopyPng": "android/columns-zero-one-pixelcopy.png",
+        "pixelCopySha256": "97ad0a0be54ab1bd3a2159bcae87c862a7906a701437b30e541fa192f284daf6",
+        "pixelCopySize": [
+          1080,
+          2209
+        ],
+        "pixelCopyColorBoundingBoxes": {
+          "root": [
+            0,
+            0,
+            272,
+            114
+          ],
+          "header": [
+            5,
+            5,
+            267,
+            57
+          ],
+          "side": [
+            5,
+            58,
+            162,
+            109
+          ],
+          "content": [
+            163,
+            58,
+            267,
+            109
+          ]
+        }
+      },
+      "columns-auto-zero": {
+        "runId": "c11na-columns-auto-zero-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 290,
+            "y": 80,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 132,
+            "y": 289,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "11-03 16:52:46.602 30761 30822 I SpinonBootstrap: SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status=matched run_id=c11na-columns-auto-zero-20261103T075201 generation=2 expected_samples=2 observed_samples=2 matched_samples=2 png=/data/user/0/dev.spinon.bootstrap/cache/c11-root-html-grid-auto-minimum-pixelcopy/c11na-columns-auto-zero-20261103T075201.png sha256=df444763b8a3c0f7d27dde1d7d41d296c2839577dfb80736bc983731ce615f0c",
+        "screenshot": "android/columns-auto-zero-simulator.png",
+        "screenshotSha256": "523dea9d5e835a8058cee43429578121d712524578fe910730b4e3025df0b074",
+        "screenshotSize": [
+          1080,
+          2400
+        ],
+        "buildLog": "android/build-columns-auto-zero.log",
+        "artifactSha256File": "android/apk-columns-auto-zero.sha256",
+        "artifactSha256": "497b4a0e3329953f565f6fd77b8ace4aa2cd079c0d9b98698f926b1883861292",
+        "pixelCopyPng": "android/columns-auto-zero-pixelcopy.png",
+        "pixelCopySha256": "df444763b8a3c0f7d27dde1d7d41d296c2839577dfb80736bc983731ce615f0c",
+        "pixelCopySize": [
+          1080,
+          2209
+        ],
+        "pixelCopyColorBoundingBoxes": {
+          "root": [
+            0,
+            0,
+            272,
+            114
+          ],
+          "header": [
+            5,
+            5,
+            319,
+            57
+          ],
+          "side": [
+            5,
+            58,
+            214,
+            109
+          ],
+          "content": [
+            215,
+            58,
+            319,
+            109
+          ]
+        }
+      },
+      "rows-auto-one": {
+        "runId": "c11na-rows-auto-one-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 290,
+            "y": 80,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 132,
+            "y": 289,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "11-03 16:53:25.481 30910 30941 I SpinonBootstrap: SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status=matched run_id=c11na-rows-auto-one-20261103T075201 generation=2 expected_samples=2 observed_samples=2 matched_samples=2 png=/data/user/0/dev.spinon.bootstrap/cache/c11-root-html-grid-auto-minimum-pixelcopy/c11na-rows-auto-one-20261103T075201.png sha256=fd00e51183db524807ccfeb6196ca891085d0bfe90bb14dec1ac2accbf184654",
+        "screenshot": "android/rows-auto-one-simulator.png",
+        "screenshotSha256": "25c319d7559302a3df327c7c422d0d05fed9e0863e75f4165c07984bb08e949b",
+        "screenshotSize": [
+          1080,
+          2400
+        ],
+        "buildLog": "android/build-rows-auto-one.log",
+        "artifactSha256File": "android/apk-rows-auto-one.sha256",
+        "artifactSha256": "5c7fda66a2ea89e0663960e0e3be5b20269aa729a873cc9314ee9b77c4b2e08f",
+        "pixelCopyPng": "android/rows-auto-one-pixelcopy.png",
+        "pixelCopySha256": "fd00e51183db524807ccfeb6196ca891085d0bfe90bb14dec1ac2accbf184654",
+        "pixelCopySize": [
+          1080,
+          2209
+        ],
+        "pixelCopyColorBoundingBoxes": {
+          "root": [
+            0,
+            0,
+            219,
+            272
+          ],
+          "header": [
+            5,
+            5,
+            214,
+            214
+          ],
+          "side": [
+            5,
+            215,
+            109,
+            319
+          ],
+          "content": [
+            110,
+            215,
+            214,
+            319
+          ]
+        }
+      },
+      "rows-zero-one": {
+        "runId": "c11na-rows-zero-one-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 290,
+            "y": 80,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 132,
+            "y": 289,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "11-03 16:54:03.705 31018 31075 I SpinonBootstrap: SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status=matched run_id=c11na-rows-zero-one-20261103T075201 generation=2 expected_samples=2 observed_samples=2 matched_samples=2 png=/data/user/0/dev.spinon.bootstrap/cache/c11-root-html-grid-auto-minimum-pixelcopy/c11na-rows-zero-one-20261103T075201.png sha256=5934b6ad0ceb31bc607457823620df083cfa97389d340152c79768800a74133b",
+        "screenshot": "android/rows-zero-one-simulator.png",
+        "screenshotSha256": "48f8e927c736aaf1eb4ab7184f98d8de3b3f00e08d31b1fcfa10c7c3f6029dc2",
+        "screenshotSize": [
+          1080,
+          2400
+        ],
+        "buildLog": "android/build-rows-zero-one.log",
+        "artifactSha256File": "android/apk-rows-zero-one.sha256",
+        "artifactSha256": "e98deebbcf0ce15fc2d84b453c7527fd34fe4b9e4bacfa14c839eb0927c33acd",
+        "pixelCopyPng": "android/rows-zero-one-pixelcopy.png",
+        "pixelCopySha256": "5934b6ad0ceb31bc607457823620df083cfa97389d340152c79768800a74133b",
+        "pixelCopySize": [
+          1080,
+          2209
+        ],
+        "pixelCopyColorBoundingBoxes": {
+          "root": [
+            0,
+            0,
+            219,
+            272
+          ],
+          "header": [
+            5,
+            5,
+            214,
+            162
+          ],
+          "side": [
+            5,
+            163,
+            109,
+            267
+          ],
+          "content": [
+            110,
+            163,
+            214,
+            267
+          ]
+        }
+      },
+      "rows-auto-zero": {
+        "runId": "c11na-rows-auto-zero-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 290,
+            "y": 80,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 132,
+            "y": 289,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "11-03 16:54:39.871 31142 31198 I SpinonBootstrap: SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status=matched run_id=c11na-rows-auto-zero-20261103T075201 generation=2 expected_samples=2 observed_samples=2 matched_samples=2 png=/data/user/0/dev.spinon.bootstrap/cache/c11-root-html-grid-auto-minimum-pixelcopy/c11na-rows-auto-zero-20261103T075201.png sha256=fd00e51183db524807ccfeb6196ca891085d0bfe90bb14dec1ac2accbf184654",
+        "screenshot": "android/rows-auto-zero-simulator.png",
+        "screenshotSha256": "1cf640fd7bc7ec6b4fbf75f2aad3649241821f771a8ae5749576a85b65703e3b",
+        "screenshotSize": [
+          1080,
+          2400
+        ],
+        "buildLog": "android/build-rows-auto-zero.log",
+        "artifactSha256File": "android/apk-rows-auto-zero.sha256",
+        "artifactSha256": "c3f6c2d9264214499aff9a7d347ddb05c088eee192beebc5ab1c0461d190e46b",
+        "pixelCopyPng": "android/rows-auto-zero-pixelcopy.png",
+        "pixelCopySha256": "fd00e51183db524807ccfeb6196ca891085d0bfe90bb14dec1ac2accbf184654",
+        "pixelCopySize": [
+          1080,
+          2209
+        ],
+        "pixelCopyColorBoundingBoxes": {
+          "root": [
+            0,
+            0,
+            219,
+            272
+          ],
+          "header": [
+            5,
+            5,
+            214,
+            214
+          ],
+          "side": [
+            5,
+            215,
+            109,
+            319
+          ],
+          "content": [
+            110,
+            215,
+            214,
+            319
+          ]
+        }
+      }
+    }
+  },
+  "ios": {
+    "target": "iPhone 17 Pro / iOS 26.2 Simulator",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "scale": 3.0,
+    "drawable": "1206x2334 Metal drawable before OS compositor submission",
+    "capture": "Metal drawable RGBA exact; simulator screenshot is a separate display capture",
+    "scenes": {
+      "columns-auto-one": {
+        "runId": "c11na-columns-auto-one-20261103T075012",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 331,
+            "y": 91,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 151,
+            "y": 331,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "2026-11-03 16:51:45.297 Df SpinonBootstrap[69345:94de3f5] (Foundation) SPINON_C111NA_METAL_PIXEL_SUMMARY status=matched run_id=c11na-columns-auto-one-20261103T075012 pid=69345 surface_generation=1 document_revision=1 render_tree_revision=1 environment_revision=0 scene=root-html-grid-auto-minimum-named-area-columns-auto-one drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=2 observed_samples=2 matched_samples=2",
+        "screenshot": "ios/columns-auto-one-simulator.png",
+        "screenshotSha256": "e895951909f0b689c89707eb3ff5818e886706d4fb18b846c4c6d95933758e18",
+        "screenshotSize": [
+          1206,
+          2622
+        ],
+        "exactColorBoundingBoxes": {
+          "root": [
+            0,
+            186,
+            311,
+            317
+          ],
+          "header": [
+            6,
+            192,
+            365,
+            251
+          ],
+          "side": [
+            6,
+            252,
+            245,
+            311
+          ],
+          "content": [
+            246,
+            252,
+            365,
+            311
+          ]
+        },
+        "buildLog": "ios/build-columns-auto-one.log",
+        "artifactSha256File": "ios/executable-columns-auto-one.sha256",
+        "artifactSha256": "ba34bdc0c42fe3a0fcda8355d9fafc3c850e5567d39293cbe00e91ed1e72da26"
+      },
+      "columns-zero-one": {
+        "runId": "c11na-columns-zero-one-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 331,
+            "y": 91,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 151,
+            "y": 331,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "2026-11-03 16:52:36.460 Df SpinonBootstrap[70037:94df373] (Foundation) SPINON_C111NA_METAL_PIXEL_SUMMARY status=matched run_id=c11na-columns-zero-one-20261103T075201 pid=70037 surface_generation=1 document_revision=1 render_tree_revision=1 environment_revision=0 scene=root-html-grid-auto-minimum-named-area-columns-zero-one drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=2 observed_samples=2 matched_samples=2",
+        "screenshot": "ios/columns-zero-one-simulator.png",
+        "screenshotSha256": "bb5b7cb8b36d5180132ce4bd70a764348b58f209d2c012d3c054a13c355b11b3",
+        "screenshotSize": [
+          1206,
+          2622
+        ],
+        "exactColorBoundingBoxes": {
+          "root": [
+            0,
+            186,
+            311,
+            317
+          ],
+          "header": [
+            6,
+            192,
+            305,
+            251
+          ],
+          "side": [
+            6,
+            252,
+            185,
+            311
+          ],
+          "content": [
+            186,
+            252,
+            305,
+            311
+          ]
+        },
+        "buildLog": "ios/build-columns-zero-one.log",
+        "artifactSha256File": "ios/executable-columns-zero-one.sha256",
+        "artifactSha256": "c0f8459a1b60b64c50be437eb6b9805da158ccbb8c724bdcff73c5a2f9c88721"
+      },
+      "columns-auto-zero": {
+        "runId": "c11na-columns-auto-zero-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 331,
+            "y": 91,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 151,
+            "y": 331,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "2026-11-03 16:53:15.145 Df SpinonBootstrap[70604:94dfffb] (Foundation) SPINON_C111NA_METAL_PIXEL_SUMMARY status=matched run_id=c11na-columns-auto-zero-20261103T075201 pid=70604 surface_generation=1 document_revision=1 render_tree_revision=1 environment_revision=0 scene=root-html-grid-auto-minimum-named-area-columns-auto-zero drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=2 observed_samples=2 matched_samples=2",
+        "screenshot": "ios/columns-auto-zero-simulator.png",
+        "screenshotSha256": "d9e9bcbffdfc3a0820ef9154742eefccbfd11bb9e18865efaca3e5feaf64981f",
+        "screenshotSize": [
+          1206,
+          2622
+        ],
+        "exactColorBoundingBoxes": {
+          "root": [
+            0,
+            186,
+            311,
+            317
+          ],
+          "header": [
+            6,
+            192,
+            365,
+            251
+          ],
+          "side": [
+            6,
+            252,
+            245,
+            311
+          ],
+          "content": [
+            246,
+            252,
+            365,
+            311
+          ]
+        },
+        "buildLog": "ios/build-columns-auto-zero.log",
+        "artifactSha256File": "ios/executable-columns-auto-zero.sha256",
+        "artifactSha256": "c0f8459a1b60b64c50be437eb6b9805da158ccbb8c724bdcff73c5a2f9c88721"
+      },
+      "rows-auto-one": {
+        "runId": "c11na-rows-auto-one-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 331,
+            "y": 91,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 151,
+            "y": 331,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "2026-11-03 16:53:54.362 Df SpinonBootstrap[71826:94e19bf] (Foundation) SPINON_C111NA_METAL_PIXEL_SUMMARY status=matched run_id=c11na-rows-auto-one-20261103T075201 pid=71826 surface_generation=1 document_revision=1 render_tree_revision=1 environment_revision=0 scene=root-html-grid-auto-minimum-named-area-rows-auto-one drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=2 observed_samples=2 matched_samples=2",
+        "screenshot": "ios/rows-auto-one-simulator.png",
+        "screenshotSha256": "e7c05d23cb2c2b577f299f11bd526996462117d652a9ebebbfe9ca0325a1585d",
+        "screenshotSize": [
+          1206,
+          2622
+        ],
+        "exactColorBoundingBoxes": {
+          "root": [
+            0,
+            186,
+            251,
+            497
+          ],
+          "header": [
+            6,
+            192,
+            245,
+            431
+          ],
+          "side": [
+            6,
+            432,
+            125,
+            551
+          ],
+          "content": [
+            126,
+            432,
+            245,
+            551
+          ]
+        },
+        "buildLog": "ios/build-rows-auto-one.log",
+        "artifactSha256File": "ios/executable-rows-auto-one.sha256",
+        "artifactSha256": "ba34bdc0c42fe3a0fcda8355d9fafc3c850e5567d39293cbe00e91ed1e72da26"
+      },
+      "rows-zero-one": {
+        "runId": "c11na-rows-zero-one-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 331,
+            "y": 91,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 151,
+            "y": 331,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "2026-11-03 16:54:31.832 Df SpinonBootstrap[73147:94e35c0] (Foundation) SPINON_C111NA_METAL_PIXEL_SUMMARY status=matched run_id=c11na-rows-zero-one-20261103T075201 pid=73147 surface_generation=1 document_revision=1 render_tree_revision=1 environment_revision=0 scene=root-html-grid-auto-minimum-named-area-rows-zero-one drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=2 observed_samples=2 matched_samples=2",
+        "screenshot": "ios/rows-zero-one-simulator.png",
+        "screenshotSha256": "7f67834cf43a3b2e4b943aec31695f6e501d57048c5ea211d42b642f0c302668",
+        "screenshotSize": [
+          1206,
+          2622
+        ],
+        "exactColorBoundingBoxes": {
+          "root": [
+            0,
+            186,
+            251,
+            497
+          ],
+          "header": [
+            6,
+            192,
+            245,
+            371
+          ],
+          "side": [
+            6,
+            372,
+            125,
+            491
+          ],
+          "content": [
+            126,
+            372,
+            245,
+            491
+          ]
+        },
+        "buildLog": "ios/build-rows-zero-one.log",
+        "artifactSha256File": "ios/executable-rows-zero-one.sha256",
+        "artifactSha256": "c0f8459a1b60b64c50be437eb6b9805da158ccbb8c724bdcff73c5a2f9c88721"
+      },
+      "rows-auto-zero": {
+        "runId": "c11na-rows-auto-zero-20261103T075201",
+        "samples": [
+          {
+            "id": "columns-border-pixel",
+            "x": 331,
+            "y": 91,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "expected": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "exact": true
+          },
+          {
+            "id": "rows-border-pixel",
+            "x": 151,
+            "y": 331,
+            "rgba": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "expected": [
+              112,
+              168,
+              216,
+              255
+            ],
+            "exact": true
+          }
+        ],
+        "summary": "2026-11-03 16:55:07.394 Df SpinonBootstrap[74232:94e4c7b] (Foundation) SPINON_C111NA_METAL_PIXEL_SUMMARY status=matched run_id=c11na-rows-auto-zero-20261103T075201 pid=74232 surface_generation=1 document_revision=1 render_tree_revision=1 environment_revision=0 scene=root-html-grid-auto-minimum-named-area-rows-auto-zero drawable=1206x2334 scale_x=3.0 scale_y=3.0 expected_samples=2 observed_samples=2 matched_samples=2",
+        "screenshot": "ios/rows-auto-zero-simulator.png",
+        "screenshotSha256": "8694a20a3958632c566527ae42d04fc6a95a09ae8333c7c6a3960b42fb7a8390",
+        "screenshotSize": [
+          1206,
+          2622
+        ],
+        "exactColorBoundingBoxes": {
+          "root": [
+            0,
+            186,
+            251,
+            497
+          ],
+          "header": [
+            6,
+            192,
+            245,
+            431
+          ],
+          "side": [
+            6,
+            432,
+            125,
+            551
+          ],
+          "content": [
+            126,
+            432,
+            245,
+            551
+          ]
+        },
+        "buildLog": "ios/build-rows-auto-zero.log",
+        "artifactSha256File": "ios/executable-rows-auto-zero.sha256",
+        "artifactSha256": "c0f8459a1b60b64c50be437eb6b9805da158ccbb8c724bdcff73c5a2f9c88721"
+      }
+    }
+  }
+}

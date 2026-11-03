@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Root HTML Grid automatic minimum with named areas</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background-color: #ffffff; }
+    </style>
+  </head>
+  <body>
+    <div id="grid" style="display:grid;box-sizing:content-box;width:100px;height:40px;grid-template-columns:minmax(auto,1fr) 40px;grid-template-rows:20px 20px;grid-template-areas:'header header' 'side content';gap:0;margin:0;padding:0;border-width:2px;border-style:solid;overflow:visible;background-color:#eeeeee;min-width:auto;min-height:auto;max-width:none;max-height:none">
+      <div id="header" style="display:block;box-sizing:content-box;width:auto;height:20px;min-width:auto;min-height:auto;max-width:none;max-height:none;grid-area:header;margin:0;padding:0;border-width:0;overflow:visible;background-color:#f4c95d"></div>
+      <div id="side" style="display:block;box-sizing:content-box;width:80px;height:20px;min-width:auto;min-height:auto;max-width:none;max-height:none;grid-area:side;margin:0;padding:0;border-width:0;overflow:visible;background-color:#78c59c"></div>
+      <div id="content" style="display:block;box-sizing:content-box;width:40px;height:20px;min-width:auto;min-height:auto;max-width:none;max-height:none;grid-area:content;margin:0;padding:0;border-width:0;overflow:visible;background-color:#70a8d8"></div>
+    </div>
+  </body>
+</html>
