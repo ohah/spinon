@@ -125,6 +125,18 @@ pub(super) fn track_extent(
         }
         GridTrackSize::Fraction(value) if value.is_finite() && value >= 0.0 => Ok(0.0),
         GridTrackSize::MinMax { min, max } => {
+            if min == GridTrackMinSizingFunction::Auto {
+                return match max {
+                    GridTrackMaxSizingFunction::Fraction(value)
+                        if value.is_finite() && value >= 0.0 =>
+                    {
+                        // The automatic base is content-derived and is sized by Taffy after item
+                        // contributions are available. This preflight counts only fixed extents.
+                        Ok(0.0)
+                    }
+                    _ => Err(LayoutError::InvalidGridTrack { node, property }),
+                };
+            }
             let Some(minimum) = resolve_root_html_track_breadth(min, basis) else {
                 return Err(LayoutError::InvalidGridTrack { node, property });
             };

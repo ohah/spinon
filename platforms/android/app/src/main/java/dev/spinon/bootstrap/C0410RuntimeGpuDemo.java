@@ -17355,6 +17355,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlGridMinmaxPixelCaptureRequested;
     private final String rootHtmlGridMinmaxPixelCaptureRunId;
     private boolean rootHtmlGridMinmaxPixelCaptureStarted;
+    private final boolean rootHtmlGridAutoMinimumPixelCaptureRequested;
+    private final String rootHtmlGridAutoMinimumPixelCaptureRunId;
+    private boolean rootHtmlGridAutoMinimumPixelCaptureStarted;
     private final boolean rootHtmlFitContentPixelCaptureRequested;
     private final String rootHtmlFitContentPixelCaptureRunId;
     private final boolean rootHtmlFitContentPercentagePixelCaptureRequested;
@@ -17603,10 +17606,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                         && activity.getIntent().getBooleanExtra(
                                 "spinon_root_html_grid_minmax_pixel_capture", false);
+        boolean rootHtmlGridAutoMinimumPixelCaptureArgument =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && activity.getIntent().getBooleanExtra(
+                                "spinon_root_html_grid_auto_minimum_pixel_capture", false);
+        boolean rootHtmlFitContentPercentagePixelCaptureArgument =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && activity.getIntent().getBooleanExtra(
+                                "spinon_root_html_fit_content_percentage_pixel_capture", false);
         rootHtmlGridMinmaxPixelCaptureRequested = BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                 && rootHtmlApplicationRequested
                 && rootHtmlGridMinmaxPixelCaptureArgument
-                && !rootHtmlFitContentPixelCaptureArgument;
+                && !rootHtmlFitContentPixelCaptureArgument
+                && !rootHtmlGridAutoMinimumPixelCaptureArgument;
         String rootHtmlGridMinmaxRunId = activity.getIntent().getStringExtra(
                 "spinon_root_html_grid_minmax_pixel_capture_run_id");
         rootHtmlGridMinmaxPixelCaptureRunId = rootHtmlGridMinmaxRunId == null
@@ -17616,21 +17628,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + rootHtmlGridMinmaxPixelCaptureRunId
                     + " root_html_application=" + rootHtmlApplicationRequested);
         }
+        rootHtmlGridAutoMinimumPixelCaptureRequested =
+                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
+                        && rootHtmlApplicationRequested
+                        && rootHtmlGridAutoMinimumPixelCaptureArgument
+                        && !rootHtmlGridMinmaxPixelCaptureArgument
+                        && !rootHtmlFitContentPixelCaptureArgument
+                        && !rootHtmlFitContentPercentagePixelCaptureArgument;
+        String rootHtmlGridAutoMinimumRunId = activity.getIntent().getStringExtra(
+                "spinon_root_html_grid_auto_minimum_pixel_capture_run_id");
+        rootHtmlGridAutoMinimumPixelCaptureRunId = rootHtmlGridAutoMinimumRunId == null
+                ? "manual" : rootHtmlGridAutoMinimumRunId;
+        if (rootHtmlGridAutoMinimumPixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_CONFIGURED run_id="
+                    + rootHtmlGridAutoMinimumPixelCaptureRunId
+                    + " root_html_application=" + rootHtmlApplicationRequested);
+        }
         rootHtmlFitContentPixelCaptureRequested = BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                 && rootHtmlApplicationRequested
                 && rootHtmlFitContentPixelCaptureArgument
-                && !rootHtmlGridMinmaxPixelCaptureArgument;
-        boolean rootHtmlFitContentPercentagePixelCaptureArgument =
-                BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
-                        && activity.getIntent().getBooleanExtra(
-                                "spinon_root_html_fit_content_percentage_pixel_capture", false);
+                && !rootHtmlGridMinmaxPixelCaptureArgument
+                && !rootHtmlGridAutoMinimumPixelCaptureArgument;
         rootHtmlFitContentPercentagePixelCaptureRequested =
                 BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                         && rootHtmlApplicationRequested
                         && rootHtmlFitContentPercentagePixelCaptureArgument
                         && !rootHtmlGridMinmaxPixelCaptureArgument
+                        && !rootHtmlGridAutoMinimumPixelCaptureArgument
                         && !rootHtmlFitContentPixelCaptureArgument;
         if ((rootHtmlGridMinmaxPixelCaptureArgument && rootHtmlFitContentPixelCaptureArgument)
+                || (rootHtmlGridAutoMinimumPixelCaptureArgument
+                        && (rootHtmlGridMinmaxPixelCaptureArgument
+                                || rootHtmlFitContentPixelCaptureArgument
+                                || rootHtmlFitContentPercentagePixelCaptureArgument))
                 || (rootHtmlFitContentPercentagePixelCaptureArgument
                         && (rootHtmlGridMinmaxPixelCaptureArgument
                                 || rootHtmlFitContentPixelCaptureArgument))) {
@@ -21698,6 +21728,118 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private static int[] rootHtmlAutoMinimumPixelExpectedRgba(String sampleId) {
+        switch (sampleId) {
+            case "columns-auto-overflow":
+            case "rows-auto-overflow":
+                return new int[] {227, 107, 44, 255};
+            case "columns-zero-outside":
+            case "rows-zero-outside":
+                return new int[] {255, 255, 255, 255};
+            default:
+                return null;
+        }
+    }
+
+    private void requestRootHtmlGridAutoMinimumPixelCapture(long renderer, long generation) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || rootHtmlGridAutoMinimumPixelCaptureStarted || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                Log.w(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SKIPPED run_id="
+                        + rootHtmlGridAutoMinimumPixelCaptureRunId + " closing=" + closing
+                        + " started=" + rootHtmlGridAutoMinimumPixelCaptureStarted
+                        + " surface_available=" + surfaceAvailable
+                        + " requested_generation=" + generation
+                        + " surface_generation=" + surfaceGeneration
+                        + " renderer_matches=" + (rendererHandle == renderer)
+                        + " renderer_generation=" + rendererGeneration);
+                return;
+            }
+            rootHtmlGridAutoMinimumPixelCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        String runId = rootHtmlGridAutoMinimumPixelCaptureRunId;
+        if (!runId.matches("[A-Za-z0-9_-]{8,80}")) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY status=error run_id="
+                    + runId + " reason=invalid-run-id");
+            return;
+        }
+        int viewportWidthCssPx = Math.round(width / density);
+        int viewportHeightCssPx = Math.round(height / density);
+        List<SurfaceViewPixelCapture.Sample> samples = List.of(
+                new SurfaceViewPixelCapture.Sample("columns-auto-overflow", 125, 40),
+                new SurfaceViewPixelCapture.Sample("columns-zero-outside", 125, 118),
+                new SurfaceViewPixelCapture.Sample("rows-auto-overflow", 30, 300),
+                new SurfaceViewPixelCapture.Sample("rows-zero-outside", 30, 438));
+        if (width <= 0 || height <= 0 || viewportWidthCssPx <= 125
+                || viewportHeightCssPx <= 438) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY status=error run_id="
+                    + runId + " reason=invalid-surface-or-viewport width=" + width
+                    + " height=" + height + " viewport_width=" + viewportWidthCssPx
+                    + " viewport_height=" + viewportHeightCssPx);
+            return;
+        }
+        File output = new File(
+                new File(activity.getCacheDir(), "c11-root-html-grid-auto-minimum-pixelcopy"),
+                runId + ".png");
+        Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_BEGIN run_id=" + runId
+                + " pid=" + android.os.Process.myPid() + " generation=" + generation
+                + " width=" + width + " height=" + height + " density=" + density
+                + " viewport_width=" + viewportWidthCssPx
+                + " viewport_height=" + viewportHeightCssPx + " samples=" + samples.size());
+        SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
+                viewportWidthCssPx, viewportHeightCssPx, 0, 0,
+                "root-html-grid-auto-minimum", runId, output, samples,
+                mainHandler, runtimeQueue,
+                () -> {
+                    synchronized (stateLock) {
+                        return !closing && surfaceAvailable && surfaceGeneration == generation
+                                && rendererHandle == renderer && rendererGeneration == generation
+                                && surfaceWidth == width && surfaceHeight == height;
+                    }
+                }, result -> {
+                    if (!result.error.isEmpty()) {
+                        Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY status=error"
+                                + " run_id=" + runId + " generation=" + generation
+                                + " attempts=" + result.attempts + " reason=" + result.error);
+                        postStatus("실패 · C11.1 Root HTML automatic minimum PixelCopy · "
+                                + result.error);
+                        return;
+                    }
+                    int matched = 0;
+                    for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
+                        int[] expected = rootHtmlAutoMinimumPixelExpectedRgba(pixel.id);
+                        boolean exact = expected != null
+                                && pixel.red == expected[0] && pixel.green == expected[1]
+                                && pixel.blue == expected[2] && pixel.alpha == expected[3];
+                        if (exact) matched++;
+                        String expectedText = expected == null ? "unknown"
+                                : expected[0] + "," + expected[1] + ","
+                                        + expected[2] + "," + expected[3];
+                        Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXEL run_id=" + runId
+                                + " sample=" + pixel.id + " x=" + pixel.x + " y=" + pixel.y
+                                + " rgba=" + pixel.red + "," + pixel.green + ","
+                                + pixel.blue + "," + pixel.alpha + " expected="
+                                + expectedText + " exact=" + exact);
+                    }
+                    boolean passed = result.pixels.size() == samples.size()
+                            && matched == samples.size();
+                    Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_SUMMARY status="
+                            + (passed ? "matched" : "mismatch") + " run_id=" + runId
+                            + " generation=" + generation + " expected_samples=" + samples.size()
+                            + " observed_samples=" + result.pixels.size()
+                            + " matched_samples=" + matched + " png=" + output.getAbsolutePath()
+                            + " sha256=" + result.sha256);
+                    if (!passed) {
+                        postStatus("실패 · C11.1 Root HTML automatic minimum PixelCopy 표본 불일치");
+                    }
+                });
+    }
+
     private void requestRootHtmlFitContentPixelCapture(long renderer, long generation) {
         boolean percentage = rootHtmlFitContentPercentagePixelCaptureRequested;
         final int width;
@@ -24081,7 +24223,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c133WheelProbeRequested) verifyC133WheelDraw(result);
-        if (rootHtmlFitContentPercentagePixelCaptureRequested
+        if (rootHtmlGridAutoMinimumPixelCaptureRequested) {
+            Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_DISPATCH run_id="
+                    + rootHtmlGridAutoMinimumPixelCaptureRunId + " generation=" + generation);
+            requestRootHtmlGridAutoMinimumPixelCapture(renderer, generation);
+        } else if (rootHtmlFitContentPercentagePixelCaptureRequested
                 || rootHtmlFitContentPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_FIT_CONTENT_PIXELCOPY_DISPATCH run_id="
                     + (rootHtmlFitContentPercentagePixelCaptureRequested

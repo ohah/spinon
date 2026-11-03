@@ -20,6 +20,8 @@ pub(super) fn validate_fraction_axis_inputs(
     element: &ComputedElementStyle,
     grid: &ComputedCssGridLayout,
 ) -> Result<(), StyleLayoutError> {
+    let has_auto_minimum_columns = tracks_have_auto_minimum_fraction(&grid.columns);
+    let has_auto_minimum_rows = tracks_have_auto_minimum_fraction(&grid.rows);
     let has_fraction_auto_columns = grid.auto_flow == ComputedCssGridAutoFlow::Column
         && matches!(
             &grid.auto_columns,
@@ -40,6 +42,9 @@ pub(super) fn validate_fraction_axis_inputs(
             },
             "fr",
         )?;
+        if has_auto_minimum_columns {
+            validate_positive_axis_basis(element, "width", element.layout_dimensions.width)?;
+        }
     }
     if has_explicit_fraction_track(&grid.rows) {
         validate_axis(
@@ -54,6 +59,9 @@ pub(super) fn validate_fraction_axis_inputs(
             },
             "fr",
         )?;
+        if has_auto_minimum_rows {
+            validate_positive_axis_basis(element, "height", element.layout_dimensions.height)?;
+        }
     }
     if (has_fraction_columns || has_explicit_fraction_track(&grid.rows))
         && (element.layout_aspect_ratio.is_some()
@@ -69,6 +77,45 @@ pub(super) fn validate_fraction_axis_inputs(
         ));
     }
     Ok(())
+}
+
+pub(super) fn has_fraction_maximum_minmax_track(grid: &ComputedCssGridLayout) -> bool {
+    grid.columns.iter().chain(&grid.rows).any(|track| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::MinMax {
+                max: ComputedCssGridTrackBreadth::Fraction(value),
+                ..
+            } if value.is_finite() && *value >= 0.0
+        )
+    })
+}
+
+fn tracks_have_auto_minimum_fraction(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    tracks.iter().any(|track| {
+        matches!(
+            track,
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Auto,
+                max: ComputedCssGridTrackBreadth::Fraction(value),
+            } if value.is_finite() && *value >= 0.0
+        )
+    })
+}
+
+fn validate_positive_axis_basis(
+    element: &ComputedElementStyle,
+    property: &'static str,
+    size: ComputedCssDimension,
+) -> Result<(), StyleLayoutError> {
+    if matches!(size, ComputedCssDimension::LengthPx(value) if value.is_finite() && value > 0.0) {
+        return Ok(());
+    }
+    Err(unsupported(
+        element,
+        property,
+        "Root HTML Grid auto-minimum flex track requires a definite positive CSS-pixel axis size",
+    ))
 }
 
 pub(super) fn validate_percentage_axis_inputs(
@@ -350,27 +397,37 @@ fn validate_axis_track_range(
                 fraction_factor_total += f64::from(*value);
             }
             ComputedCssGridTrackSize::MinMax { min, max } => {
-                let Some(minimum) = resolve_fixed_breadth(min, basis) else {
-                    // The Root HTML explicit-track gate reports the unsupported breadth.
-                    return Ok(());
+                let minimum = match min {
+                    ComputedCssGridTrackBreadth::Auto => None,
+                    _ => {
+                        let Some(minimum) = resolve_fixed_breadth(min, basis) else {
+                            // The Root HTML explicit-track gate reports unsupported breadths.
+                            return Ok(());
+                        };
+                        if !minimum.is_finite() || minimum < 0.0 || minimum > max_f32 {
+                            return Err(unsupported(
+                                element,
+                                property,
+                                "resolved minmax minimum exceeds the finite f32 CSS-pixel range",
+                            ));
+                        }
+                        Some(minimum)
+                    }
                 };
-                if !minimum.is_finite() || minimum < 0.0 || minimum > max_f32 {
-                    return Err(unsupported(
-                        element,
-                        property,
-                        "resolved minmax minimum exceeds the finite f32 CSS-pixel range",
-                    ));
-                }
                 let resolved = match max {
                     ComputedCssGridTrackBreadth::Fraction(value)
                         if value.is_finite() && *value >= 0.0 =>
                     {
                         fraction_factor_total += f64::from(*value);
-                        minimum
+                        minimum.unwrap_or(0.0)
                     }
                     _ => {
+                        let Some(minimum) = minimum else {
+                            // Root HTML only admits automatic minimum with a fraction maximum.
+                            return Ok(());
+                        };
                         let Some(maximum) = resolve_fixed_breadth(max, basis) else {
-                            // The Root HTML explicit-track gate reports the unsupported breadth.
+                            // The Root HTML explicit-track gate reports unsupported breadths.
                             return Ok(());
                         };
                         if !maximum.is_finite() || maximum < 0.0 || maximum > max_f32 {

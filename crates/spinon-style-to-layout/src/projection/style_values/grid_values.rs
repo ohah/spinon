@@ -146,7 +146,7 @@ fn validate_root_html_grid_tracks(
         {
             return Err(unsupported(
                 property,
-                "Root HTML Grid explicit track은 finite non-negative px/percentage/fr direct track, minmax(px|%, px|%|fr), fit-content(px|%)만 지원하며 line name과 auto-repeat은 지원하지 않습니다",
+                "Root HTML Grid explicit track은 finite non-negative px/percentage/fr direct track, minmax(px|%|auto, px|%|fr), fit-content(px|%)만 지원하며 line name과 auto-repeat은 지원하지 않습니다",
             ));
         }
         if column_flow
@@ -256,6 +256,11 @@ fn is_supported_root_html_explicit_track(track: &ComputedCssGridTrackSize) -> bo
                 | spinon_style::ComputedCssGridTrackBreadth::Percentage(value) => {
                     finite_nonnegative(value)
                 }
+                spinon_style::ComputedCssGridTrackBreadth::Auto => matches!(
+                    max,
+                    spinon_style::ComputedCssGridTrackBreadth::Fraction(value)
+                        if finite_nonnegative(value)
+                ),
                 _ => false,
             };
             let supported_max = match max {

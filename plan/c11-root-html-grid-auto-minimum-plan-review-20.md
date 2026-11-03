@@ -15,7 +15,7 @@
 | 9 | multi-track span에서 auto minimum의 spanning 규칙을 누락한다 | **PASS** — item이 한 track만 span하도록 두고 spanning은 제외한다. |
 | 10 | `minmax(0,1fr)` control에도 auto minimum이 남는다 | **PASS** — 0 minimum control은 `[60,40]`과 border 내 second item으로 분리한다. |
 | 11 | `0fr`이 auto minimum을 없애거나 positive free space를 가져간다고 가정한다 | **PASS** — 규범 기대값에 `[80,40]` 및 18px overflow 경계를 별도 기록하고 구현에서 확인한다. |
-| 12 | 고정 neighbor, gap, padding 또는 border가 사용 track 계산에 중복 반영된다 | **PASS** — neighbor 40px, gap/padding 0, border 2px를 명시하고 content/outer box를 구별한다. |
+| 12 | 고정 neighbor, gap, padding 또는 border가 사용 track 계산에 중복 반영된다 | **PASS** — neighbor 40px, gap/padding 0, border 2px를 명시하고 content/outer box를 구별한다. 같은 box comparison을 위해 finite fr-maximum `minmax()`를 쓰는 root만 computed px border를 허용하며 다른 gate와 item border는 유지한다. |
 | 13 | Row auto-placement가 두 번째 child를 예상하지 않은 cell에 놓는다 | **PASS** — 두 direct child, 기본 row placement, 한 explicit flex track과 fixed neighbor를 정확히 요구한다. |
 | 14 | overflow가 root outer border 기준이 아니라 content edge 기준으로 보고된다 | **PASS** — item frame은 border origin 기준이고 overflow는 root border 바깥 길이로 기록한다. |
 | 15 | node ID/class를 바꾸면 product 지원이 달라진다 | **PASS** — 식별자는 성공 selector가 아니며 ID/class 변경 positive control을 계획한다. |
@@ -25,4 +25,4 @@
 | 19 | Chrome 화면을 규범 oracle, pixel equality 또는 native platform 증거로 과장한다 | **PASS** — spec-derived JSON, browser observation, Android PixelCopy, iOS drawable을 별도 증거로 둔다. |
 | 20 | bounded slice만으로 C11.1/C11/전체 완료 수를 올린다 | **PASS** — plan/PR/STATUS 수락 기준이 상위 checkbox와 `72/213` 보존을 명시한다. |
 
-초기 확인에서 `0fr` 경계 결과가 계획에 있었지만 독립 기대 JSON에는 빠져 있었다. 규범 계산을 expected manifest에 추가했고, 수정 뒤 20개 관점을 다시 확인했다. 계획 및 PR diff 검토는 별도 기록으로 유지한다.
+초기 확인에서 `0fr` 경계 결과가 계획에 있었지만 독립 기대 JSON에는 빠져 있었다. 규범 계산을 expected manifest에 추가했고, 수정 뒤 20개 관점을 다시 확인했다. 구현 preflight에서 기존 Root HTML grid-border gate가 2px fixture border를 막는 점을 확인했다. auto-minimum과 `minmax(0,fr)` 대조 장면이 같은 border/content geometry를 쓰도록 fr-maximum `minmax()` Grid container만 computed px border를 허용하고, 다른 Root HTML border gate는 그대로 두도록 계획을 명확히 했다. 계획 및 PR diff 검토는 별도 기록으로 유지한다.

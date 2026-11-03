@@ -8,6 +8,8 @@ use spinon_style::{
     ComputedCssGridTrackSize, ComputedCssMath, ComputedStyleProfile,
 };
 
+#[path = "root_html_grid_track_tests/auto_minimum.rs"]
+mod auto_minimum;
 #[path = "root_html_grid_track_tests/fit_content.rs"]
 mod fit_content;
 #[path = "root_html_grid_track_tests/fr_auto_columns.rs"]

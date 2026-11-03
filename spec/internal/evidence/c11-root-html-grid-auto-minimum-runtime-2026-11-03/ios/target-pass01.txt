@@ -1,0 +1,13 @@
+device=iPhone 17 Pro Simulator
+udid=ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D
+runtime=iOS 26.2 (23C54)
+xcode=Xcode 26.2 (17C52)
+model_identifier=iPhone18,1
+app_executable_sha256=374eee54df9f3e9af959f5e07c51f81a6f4f5649ea46740ec59e7b0b78dc2882
+route=default Root HTML app source=index.html
+viewport_css_px=402x778
+drawable_px=1206x2334
+drawable_format=Bgra8Unorm
+renderer=Metal simulator GPU
+readback_boundary=before compositor submission
+physical_device_used=false

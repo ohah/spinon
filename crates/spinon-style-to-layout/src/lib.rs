@@ -20,6 +20,8 @@ mod c10_flex_order_tests;
 #[cfg(test)]
 mod c10_flex_wrap_tests;
 #[cfg(test)]
+mod c11_1_root_html_auto_minimum_tests;
+#[cfg(test)]
 mod c11_1_root_html_calc_auto_column_tests;
 #[cfg(test)]
 mod c11_1_root_html_fr_auto_column_tests;
