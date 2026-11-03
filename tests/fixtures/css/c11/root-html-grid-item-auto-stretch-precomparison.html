@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.5 Grid item auto-size stretch precomparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 20px; font: 12px/16px sans-serif; color: #111827; }
+      h1 { margin: 0 0 16px; font-size: 18px; }
+      #cases { display: grid; grid-template-columns: repeat(3, 180px); gap: 12px; }
+      .case { min-height: 76px; padding: 8px; border: 1px solid #cbd5e1; }
+      .case h2 { margin: 0 0 8px; font-size: 11px; font-weight: 600; }
+      .grid {
+        display: grid;
+        width: 40px;
+        height: 30px;
+        grid-template-columns: 40px;
+        grid-template-rows: 30px;
+        gap: 0;
+        padding: 0;
+        border: 0;
+        background: #dbeafe;
+      }
+      .item {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        min-width: auto;
+        max-width: none;
+        min-height: auto;
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        background: #f97316;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>C11.5 auto-size, normal, stretch</h1>
+    <main id="cases">
+      <section class="case" id="auto-parent-normal">
+        <h2>auto item / normal parent</h2>
+        <div class="grid" style="align-items:normal;justify-items:normal">
+          <div class="item" id="item-auto-parent-normal" style="align-self:auto;justify-self:auto"></div>
+        </div>
+      </section>
+      <section class="case" id="normal-self">
+        <h2>normal self</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-normal-self" style="align-self:normal;justify-self:normal"></div>
+        </div>
+      </section>
+      <section class="case" id="stretch-self">
+        <h2>stretch self</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-stretch-self" style="align-self:stretch;justify-self:stretch"></div>
+        </div>
+      </section>
+      <section class="case" id="position-self-start">
+        <h2>start self / auto size</h2>
+        <div class="grid" style="align-items:normal;justify-items:normal">
+          <div class="item" id="item-position-self-start" style="align-self:start;justify-self:start"></div>
+        </div>
+      </section>
+      <section class="case" id="auto-parent-start">
+        <h2>auto self / start parent</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-auto-parent-start" style="align-self:auto;justify-self:auto"></div>
+        </div>
+      </section>
+      <section class="case" id="fixed-stretch">
+        <h2>fixed size / stretch</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-fixed-stretch" style="width:16px;height:10px;align-self:stretch;justify-self:stretch"></div>
+        </div>
+      </section>
+      <section class="case" id="fixed-width-auto-height">
+        <h2>fixed width / auto height</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-fixed-width-auto-height" style="width:16px;height:auto;align-self:stretch;justify-self:stretch"></div>
+        </div>
+      </section>
+      <section class="case" id="auto-width-fixed-height">
+        <h2>auto width / fixed height</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-auto-width-fixed-height" style="width:auto;height:10px;align-self:stretch;justify-self:stretch"></div>
+        </div>
+      </section>
+      <section class="case" id="align-stretch-only">
+        <h2>align stretch only</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-align-stretch-only" style="align-self:stretch;justify-self:start"></div>
+        </div>
+      </section>
+      <section class="case" id="justify-stretch-only">
+        <h2>justify stretch only</h2>
+        <div class="grid" style="align-items:start;justify-items:start">
+          <div class="item" id="item-justify-stretch-only" style="align-self:start;justify-self:stretch"></div>
+        </div>
+      </section>
+    </main>
+    <pre id="results"></pre>
+    <script>
+      const scenes = [...document.querySelectorAll(".case")].map((card) => {
+        const grid = card.querySelector(".grid");
+        const item = grid.querySelector(".item");
+        const gridRect = grid.getBoundingClientRect();
+        const itemRect = item.getBoundingClientRect();
+        const style = getComputedStyle(item);
+        return {
+          id: card.id,
+          alignSelf: style.alignSelf,
+          justifySelf: style.justifySelf,
+          cssomResolvedWidth: Number(style.width.replace("px", "")),
+          cssomResolvedHeight: Number(style.height.replace("px", "")),
+          frame: {
+            x: itemRect.x - gridRect.x,
+            y: itemRect.y - gridRect.y,
+            width: itemRect.width,
+            height: itemRect.height,
+          },
+        };
+      });
+      document.querySelector("#results").textContent = JSON.stringify(scenes, null, 2);
+      document.documentElement.dataset.ready = "true";
+    </script>
+  </body>
+</html>
