@@ -34,4 +34,4 @@
 - PR diff review에서 auto-minimum Metal capture argument 탐지가 iOS feature-flag `#else`에도 포함된 것을 발견했다. 두 fallback 인식 지점에서 제거한 뒤 default iOS Simulator app을 다시 빌드했고, 8개 bundle 파일 scan에서 argument 문자열 0건을 확인했다. 이 artifact 경계 결과는 새 검토 사항이며 초기 20개 표의 다른 관점을 재사용하지 않는다.
 - 완전한 PR evidence diff의 `git diff --check`는 원본 Android logcat trailing spaces, ADB CRLF 및 Xcode build log의 padded export/blank lines를 보고한다. 원본 artifact는 SHA manifest로 고정해 byte-for-byte 보존했고, source·문서의 whitespace 검사는 별도로 통과했다.
 
-이 검토는 로컬 구현 후보의 범위만 판정한다. 별도 PR diff 검토 30개는 [전용 기록](pr-diff-review-30.md)에 완료했다. GitHub checks는 보고되지 않았고 main required status checks도 설정되지 않아 CI 통과로 세지 않는다. PR 병합과 post-merge public roadmap sync는 남아 있으며 C11 상위 항목과 공식 완료 수는 변경하지 않았다.
+이 검토는 병합된 제한 구현의 범위만 판정한다. 구현 PR [#1109](https://github.com/ohah/spinon/pull/1109)은 `2026-11-03T06:35:47Z` Rebase and merge됐고 merge SHA는 `9aa813727c79e274ce4d230ede2b0accd261fd87`다. 별도 PR diff 검토 30개는 [전용 기록](pr-diff-review-30.md)에 완료했다. GitHub checks는 보고되지 않았고 main required status checks도 설정되지 않아 CI 통과로 세지 않는다. 공개 로드맵 후속 동기화는 별도 문서 PR에서 진행하며 C11 상위 항목과 공식 완료 수는 변경하지 않는다.
