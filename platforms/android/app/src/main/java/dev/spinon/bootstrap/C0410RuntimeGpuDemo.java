@@ -17385,6 +17385,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlTextPaintProbeRequested;
     private final boolean rootHtmlDefaultRenderRequested;
     private final boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested;
+    private final boolean c115RootHtmlGridItemAutoStretchPixelCaptureRequested;
     private boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted;
     private final String rootHtmlPageScaleCase;
     private final boolean rootHtmlApplicationRequested;
@@ -17636,6 +17637,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c0412_root_html_default_render", false);
         c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c115_root_html_grid_item_self_alignment_pixelcopy", false);
+        c115RootHtmlGridItemAutoStretchPixelCaptureRequested =
+                BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
+                        && activity.getIntent().getBooleanExtra(
+                                "spinon_c115_root_html_grid_item_auto_stretch_pixelcopy", false);
         rootHtmlPageScaleCase = activity.getIntent()
                 .getStringExtra("spinon_c0412_root_html_page_scale_case");
         this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
@@ -18937,7 +18942,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
+        if ((c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
+                || c115RootHtmlGridItemAutoStretchPixelCaptureRequested)
                 && (!BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
                         || !rootHtmlDefaultRenderRequested)) {
             Log.e(TAG, "SPINON_C115_PIXELCOPY_ARGUMENT_ERROR rejected=true"
@@ -18967,7 +18973,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             || BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
                                     && c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
                                     && key.equals(
-                                            "spinon_c115_root_html_grid_item_self_alignment_pixelcopy")) {
+                                            "spinon_c115_root_html_grid_item_self_alignment_pixelcopy")
+                            || BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
+                                    && c115RootHtmlGridItemAutoStretchPixelCaptureRequested
+                                    && key.equals(
+                                            "spinon_c115_root_html_grid_item_auto_stretch_pixelcopy")) {
                         continue;
                     }
                     Object value = extras.get(key);
@@ -22144,7 +22154,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void requestC115RootHtmlGridItemSelfAlignmentPixelCapture(
-            long renderer, long generation, String drawReport) {
+            long renderer, long generation, String drawReport, boolean autoStretch) {
         final int width;
         final int height;
         synchronized (stateLock) {
@@ -22172,11 +22182,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         "dev.spinon.bootstrap.C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter",
                         "request",
                         new Class<?>[] {SurfaceView.class, Activity.class,
-                                int.class, int.class, long.class, String.class, String.class,
+                                int.class, int.class, long.class, boolean.class,
+                                String.class, String.class,
                                 Handler.class, java.util.concurrent.Executor.class,
                                 java.util.function.BooleanSupplier.class,
                                 java.util.function.Consumer.class},
-                        surfaceView, activity, width, height, generation, runId, drawReport,
+                        surfaceView, activity, width, height, generation, autoStretch,
+                        runId, drawReport,
                         mainHandler, runtimeQueue, sourceIsCurrent, statusCallback);
             } catch (RuntimeException error) {
                 Log.e(TAG, "SPINON_C115_PIXELCOPY status=error run_id=" + runId
@@ -24439,8 +24451,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         if (c133WheelProbeRequested) verifyC133WheelDraw(result);
-        if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested) {
-            requestC115RootHtmlGridItemSelfAlignmentPixelCapture(renderer, generation, result);
+        if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
+                || c115RootHtmlGridItemAutoStretchPixelCaptureRequested) {
+            requestC115RootHtmlGridItemSelfAlignmentPixelCapture(
+                    renderer, generation, result,
+                    c115RootHtmlGridItemAutoStretchPixelCaptureRequested);
         } else if (rootHtmlGridAutoMinimumPixelCaptureRequested) {
             Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_MINIMUM_PIXELCOPY_DISPATCH run_id="
                     + rootHtmlGridAutoMinimumPixelCaptureRunId + " generation=" + generation);

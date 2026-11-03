@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [기존 fixed-size self-alignment 구현](./c11-root-html-grid-item-self-alignment.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 신규 계획 단계. 기존 [C11.5 fixed-size self-alignment PR #1128](https://github.com/ohah/spinon/pull/1128)은 병합됐으나, 아래 auto-size/`normal`/`stretch` slice는 아직 구현되지 않았다. 공식 `STATUS.md`에서 C11과 C11.5는 계속 미완료이며 전체 집계 `72/213`을 유지한다.
+**상태:** 로컬 구현 후보와 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 검증까지 진행했다. Rust accepted/negative controls, PixelCopy 11/11, Metal drawable 11/11, 기본 artifact 제외 검사를 기록했다. [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/implementation-runtime-review-20.md)도 마쳤다. PR diff 검토 30개와 PR/CI/merge는 남아 있다. 공식 `STATUS.md`에서 C11과 C11.5는 계속 미완료이며 전체 집계 `72/213`을 유지한다.
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-item-auto-stretch-plan-review-20.md)
 
@@ -35,7 +35,7 @@
 4. Negative controls는 aspect ratio, nonzero margin/padding/border, min/max 변경, non-px size, replaced/content-bearing child, unsupported self value, implicit/auto tracks, multi-cell span을 각각 거부하고 부분 scene을 발행하지 않는지 확인한다.
 5. Default/product artifact와 opt-in test route를 분리한다. 기본 artifact에 fixture payload/전용 ABI가 없는지, opt-in artifact에만 존재하는지 기존 경계 검사를 실행한다.
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 같은 앱 경로에서 layout geometry와 화면 근거를 수집한다. Android software-renderer/PixelCopy 및 iOS Metal drawable/compositor 경계를 따로 기록하고, 확인하지 않은 GPU·compositor 단계는 주장하지 않는다.
-7. 계획 실패 관점 20개, 구현/runtime 실패 관점 20개, 실제 PR diff 실패 관점 20개를 서로 다른 기록으로 작성한다. 모든 수정 후 전체 20개 관점을 다시 대조한다.
+7. 계획 실패 관점 20개, 구현/runtime 실패 관점 20개, 실제 PR diff 실패 관점 30개를 서로 다른 기록으로 작성한다. 모든 수정 후 해당 검토 항목을 다시 대조한다.
 8. 구현 병합 후 실제 상태와 공개 roadmap 원본을 갱신하되 C11.5/C11 체크와 `72/213`은 유지한다. Tailnet preview를 갱신할 때는 실제 serve root와 파일 hash를 확인하고 Agent Browser로 검증한 뒤 해당 브라우저 세션을 종료한다.
 
 ## 성공 조건

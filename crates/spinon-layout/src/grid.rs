@@ -282,6 +282,8 @@ pub enum GridPlacementMode {
     RootHtmlImplicitRowsV1,
     /// 제한 Root HTML 경로의 explicit-cell sparse column auto-placement입니다.
     RootHtmlColumnFlowV1,
+    /// 제한 Root HTML Grid item alignment 경로에서 fixed tracks와 auto-sized empty items를 다룹니다.
+    RootHtmlGridItemSelfAlignmentV1,
     /// 제한 Root HTML 경로의 fixed-px dense row/column auto-placement입니다.
     RootHtmlDenseAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
@@ -400,6 +402,14 @@ pub(super) fn validate_grid_layout(
     }
 
     for (&id, container) in &input.grid_containers {
+        if container.placement_mode == GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
+            && !root_html_auto_stretch_grid_is_supported(input, &input.nodes[index[&id]], container)
+        {
+            return Err(LayoutError::UnsupportedGridContainerStyle {
+                node: id,
+                property: "C11.5 fixed-track auto-size/stretch contract",
+            });
+        }
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
             validate_root_html_implicit_rows_contract(id, container, &css_math_by_id)?;
         }
@@ -793,8 +803,10 @@ pub(super) fn validate_grid_layout(
                 container.rows_auto_repeat.as_ref(),
             )?;
         }
-        if container.placement_mode == GridPlacementMode::SparseRow
-            && container.auto_flow != GridAutoFlow::Row
+        if matches!(
+            container.placement_mode,
+            GridPlacementMode::SparseRow | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
+        ) && container.auto_flow != GridAutoFlow::Row
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
         }
@@ -876,6 +888,11 @@ pub(super) fn validate_grid_layout(
                 container.placement_mode,
                 GridPlacementMode::RootHtmlImplicitRowsV1 | GridPlacementMode::RootHtmlColumnFlowV1
             ) && !root_html_fixed_empty_item_is_supported(input, child)
+            {
+                return Err(LayoutError::UnsupportedGridItemSize(child_id));
+            }
+            if container.placement_mode == GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
+                && !root_html_auto_stretch_empty_item_is_supported(input, child)
             {
                 return Err(LayoutError::UnsupportedGridItemSize(child_id));
             }
@@ -1009,6 +1026,10 @@ pub(super) fn validate_grid_layout(
                                 crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                             )
                         }
+                        GridPlacementMode::RootHtmlGridItemSelfAlignmentV1 => matches!(
+                            size,
+                            crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                        ),
                         _ => matches!(size, crate::LayoutDimension::Fixed(_)),
                     }
                 }
@@ -1400,6 +1421,112 @@ pub(super) fn root_html_fixed_empty_item_is_supported(
             .positioning
             .get(&node.id)
             .is_none_or(|position| position.position == LayoutPosition::Static)
+}
+
+pub(super) fn root_html_auto_stretch_empty_item_is_supported(
+    input: &LayoutInput,
+    node: &crate::LayoutNode,
+) -> bool {
+    let size_is_auto_or_fixed = |size| {
+        matches!(size, LayoutDimension::Auto)
+            || matches!(size, LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0)
+    };
+    let alignment_is_supported = |alignment| match alignment {
+        crate::LayoutAlignSelf::Auto
+        | crate::LayoutAlignSelf::Normal
+        | crate::LayoutAlignSelf::Stretch
+        | crate::LayoutAlignSelf::FlexStart
+        | crate::LayoutAlignSelf::FlexEnd
+        | crate::LayoutAlignSelf::Center => true,
+        crate::LayoutAlignSelf::Position { position, .. } => matches!(
+            position,
+            crate::ItemAlignmentPosition::Start
+                | crate::ItemAlignmentPosition::End
+                | crate::ItemAlignmentPosition::FlexStart
+                | crate::ItemAlignmentPosition::FlexEnd
+                | crate::ItemAlignmentPosition::SelfStart
+                | crate::ItemAlignmentPosition::SelfEnd
+                | crate::ItemAlignmentPosition::Center
+        ),
+        crate::LayoutAlignSelf::FirstBaseline | crate::LayoutAlignSelf::LastBaseline => false,
+    };
+    node.style.display == LayoutDisplay::Block
+        && node.style.box_sizing == crate::LayoutBoxSizing::BorderBox
+        && node.children.is_empty()
+        && !input
+            .text_paragraphs
+            .get(&node.id)
+            .is_some_and(crate::TextParagraphInput::has_content)
+        && node.style.order == 0
+        && size_is_auto_or_fixed(node.style.width)
+        && size_is_auto_or_fixed(node.style.height)
+        && node.style.min_width == LayoutDimension::Auto
+        && node.style.max_width == LayoutDimension::Auto
+        && node.style.min_height == LayoutDimension::Auto
+        && node.style.max_height == LayoutDimension::Auto
+        && node.style.aspect_ratio.is_none()
+        && node.style.margin == crate::LayoutEdges::default()
+        && node.style.padding == crate::LayoutEdges::default()
+        && node.style.border == crate::LayoutBorder::default()
+        && node.style.overflow_x == crate::LayoutOverflow::Visible
+        && node.style.overflow_y == crate::LayoutOverflow::Visible
+        && alignment_is_supported(node.style.align_self)
+        && alignment_is_supported(node.style.justify_self)
+        && input
+            .grid_items
+            .get(&node.id)
+            .is_none_or(crate::GridItemInput::is_auto)
+        && input
+            .positioning
+            .get(&node.id)
+            .is_none_or(|position| position.position == LayoutPosition::Static)
+}
+
+fn root_html_auto_stretch_grid_is_supported(
+    input: &LayoutInput,
+    node: &crate::LayoutNode,
+    container: &GridContainerInput,
+) -> bool {
+    let size_is_fixed =
+        |size| matches!(size, LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0);
+    let track_is_fixed = |track: &GridTrackSize| matches!(track, GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0);
+    let Some(capacity) = container.columns.len().checked_mul(container.rows.len()) else {
+        return false;
+    };
+    node.style.display == LayoutDisplay::Grid
+        && node.style.box_sizing == crate::LayoutBoxSizing::BorderBox
+        && size_is_fixed(node.style.width)
+        && size_is_fixed(node.style.height)
+        && node.style.min_width == LayoutDimension::Auto
+        && node.style.max_width == LayoutDimension::Auto
+        && node.style.min_height == LayoutDimension::Auto
+        && node.style.max_height == LayoutDimension::Auto
+        && node.style.aspect_ratio.is_none()
+        && node.style.margin == crate::LayoutEdges::default()
+        && node.style.padding == crate::LayoutEdges::default()
+        && node.style.border == crate::LayoutBorder::default()
+        && node.style.gap.row == crate::LayoutLengthPercentage::ZERO
+        && node.style.gap.column == crate::LayoutLengthPercentage::ZERO
+        && node.style.overflow_x == crate::LayoutOverflow::Visible
+        && node.style.overflow_y == crate::LayoutOverflow::Visible
+        && node.style.direction == crate::TextDirection::Ltr
+        && input
+            .positioning
+            .get(&node.id)
+            .is_none_or(|position| position.position == LayoutPosition::Static)
+        && container.auto_flow == GridAutoFlow::Row
+        && !container.columns.is_empty()
+        && !container.rows.is_empty()
+        && container.columns.iter().all(track_is_fixed)
+        && container.rows.iter().all(track_is_fixed)
+        && container.columns_auto_repeat.is_none()
+        && container.rows_auto_repeat.is_none()
+        && container.columns_line_names.iter().all(Vec::is_empty)
+        && container.rows_line_names.iter().all(Vec::is_empty)
+        && container.template_areas.is_none()
+        && container.auto_rows == GridAutoRows::Auto
+        && container.auto_columns == GridAutoColumns::Auto
+        && node.children.len() <= capacity
 }
 
 fn validate_root_html_column_flow_contract(

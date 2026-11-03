@@ -113,6 +113,7 @@ pub(super) fn normalize_grid_layout(
             container.placement_mode,
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
+                | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
@@ -129,7 +130,9 @@ pub(super) fn normalize_grid_layout(
         }
         if matches!(
             container.placement_mode,
-            GridPlacementMode::SparseRow | GridPlacementMode::RootHtmlImplicitRowsV1
+            GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlImplicitRowsV1
+                | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
         ) {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,

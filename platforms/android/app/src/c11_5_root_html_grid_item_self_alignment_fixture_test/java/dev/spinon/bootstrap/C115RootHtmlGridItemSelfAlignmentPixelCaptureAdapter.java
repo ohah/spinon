@@ -32,12 +32,29 @@ public final class C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter {
             {249, 115, 22, 255}, {249, 115, 22, 255}, {249, 115, 22, 255},
             {255, 255, 255, 255},
     };
+    private static final String AUTO_STRETCH_SCENE_ID = "root-html-grid-item-auto-stretch";
+    private static final String[] AUTO_STRETCH_SAMPLE_IDS = {
+            "auto-parent-normal", "normal-self", "stretch-self", "position-self-start",
+            "auto-parent-start", "fixed-stretch", "fixed-stretch-outside-x",
+            "fixed-width-auto-height",
+            "auto-width-fixed-height", "align-stretch-only", "justify-stretch-only",
+    };
+    private static final int[][] AUTO_STRETCH_CSS_POINTS = {
+            {25, 25}, {25, 75}, {25, 125}, {25, 175}, {25, 225},
+            {25, 275}, {40, 275}, {25, 345}, {55, 375}, {25, 425}, {55, 475},
+    };
+    private static final int[][] AUTO_STRETCH_EXPECTED_RGBA = {
+            {249, 115, 22, 255}, {249, 115, 22, 255}, {249, 115, 22, 255},
+            {219, 234, 254, 255}, {219, 234, 254, 255}, {249, 115, 22, 255},
+            {219, 234, 254, 255}, {249, 115, 22, 255}, {249, 115, 22, 255},
+            {219, 234, 254, 255}, {219, 234, 254, 255},
+    };
 
     private C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter() {}
 
     public static void request(
             SurfaceView surfaceView, Activity activity, int width, int height,
-            long generation, String runId, String drawReport, Handler mainHandler,
+            long generation, boolean autoStretch, String runId, String drawReport, Handler mainHandler,
             Executor runtimeQueue, BooleanSupplier sourceIsCurrent, Consumer<String> status) {
         int[] reportedViewport = parsePair(drawReport, "viewport_css_px=");
         int[] reportedSurface = parsePair(drawReport, "surface_texture=");
@@ -52,13 +69,19 @@ public final class C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter {
             return;
         }
 
-        List<SurfaceViewPixelCapture.Sample> samples = new ArrayList<>(SAMPLE_IDS.length);
-        for (int index = 0; index < SAMPLE_IDS.length; index++) {
+        String sceneId = autoStretch ? AUTO_STRETCH_SCENE_ID : SCENE_ID;
+        String[] sampleIds = autoStretch ? AUTO_STRETCH_SAMPLE_IDS : SAMPLE_IDS;
+        int[][] cssPoints = autoStretch ? AUTO_STRETCH_CSS_POINTS : CSS_POINTS;
+        int[][] expectedRgba = autoStretch ? AUTO_STRETCH_EXPECTED_RGBA : EXPECTED_RGBA;
+        List<SurfaceViewPixelCapture.Sample> samples = new ArrayList<>(sampleIds.length);
+        for (int index = 0; index < sampleIds.length; index++) {
             samples.add(new SurfaceViewPixelCapture.Sample(
-                    SAMPLE_IDS[index], CSS_POINTS[index][0], CSS_POINTS[index][1]));
+                    sampleIds[index], cssPoints[index][0], cssPoints[index][1]));
         }
         File output = new File(new File(activity.getCacheDir(),
-                "c115-root-html-grid-item-self-alignment"), "surface-" + runId + ".png");
+                autoStretch ? "c115-root-html-grid-item-auto-stretch"
+                        : "c115-root-html-grid-item-self-alignment"),
+                "surface-" + runId + ".png");
         Log.i(TAG, "SPINON_C115_PIXELCOPY_BEGIN run_id=" + runId
                 + " pid=" + android.os.Process.myPid() + " generation=" + generation
                 + " surface=" + width + "x" + height + " viewport="
@@ -67,7 +90,7 @@ public final class C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter {
         SurfaceViewPixelCapture.requestForCssViewport(
                 surfaceView, width, height,
                 VIEWPORT_WIDTH_CSS_PX, VIEWPORT_HEIGHT_CSS_PX,
-                0, 0, SCENE_ID, runId, output, samples,
+                0, 0, sceneId, runId, output, samples,
                 mainHandler, runtimeQueue, sourceIsCurrent, result -> {
                     if (!result.error.isEmpty()) {
                         Log.e(TAG, "SPINON_C115_PIXELCOPY status=error run_id=" + runId
@@ -76,7 +99,7 @@ public final class C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter {
                         return;
                     }
                     if (result.width != width || result.height != height
-                            || result.pixels.size() != SAMPLE_IDS.length) {
+                            || result.pixels.size() != sampleIds.length) {
                         Log.e(TAG, "SPINON_C115_PIXELCOPY status=error run_id=" + runId
                                 + " reason=surface-or-sample-count width=" + result.width
                                 + " height=" + result.height + " samples=" + result.pixels.size());
@@ -89,13 +112,13 @@ public final class C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter {
                     for (int index = 0; index < result.pixels.size(); index++) {
                         SurfaceViewPixelCapture.Pixel pixel = result.pixels.get(index);
                         boolean coordinateMatch = pixel.x == (int) Math.floor(
-                                (CSS_POINTS[index][0] + 0.5) * scaleX)
+                                (cssPoints[index][0] + 0.5) * scaleX)
                                 && pixel.y == (int) Math.floor(
-                                        (CSS_POINTS[index][1] + 0.5) * scaleY);
-                        boolean colorMatch = pixel.red == EXPECTED_RGBA[index][0]
-                                && pixel.green == EXPECTED_RGBA[index][1]
-                                && pixel.blue == EXPECTED_RGBA[index][2]
-                                && pixel.alpha == EXPECTED_RGBA[index][3];
+                                        (cssPoints[index][1] + 0.5) * scaleY);
+                        boolean colorMatch = pixel.red == expectedRgba[index][0]
+                                && pixel.green == expectedRgba[index][1]
+                                && pixel.blue == expectedRgba[index][2]
+                                && pixel.alpha == expectedRgba[index][3];
                         boolean exact = coordinateMatch && colorMatch;
                         if (exact) matched++;
                         Log.i(TAG, "SPINON_C115_PIXELCOPY_SAMPLE run_id=" + runId
@@ -105,18 +128,19 @@ public final class C115RootHtmlGridItemSelfAlignmentPixelCaptureAdapter {
                                 + coordinateMatch + " expected_match=" + colorMatch
                                 + " exact=" + exact);
                     }
-                    boolean passed = matched == SAMPLE_IDS.length;
+                    boolean passed = matched == sampleIds.length;
                     Log.i(TAG, "SPINON_C115_PIXELCOPY_SUMMARY status="
                             + (passed ? "matched" : "mismatch") + " run_id=" + runId
                             + " pid=" + android.os.Process.myPid() + " generation=" + generation
-                            + " expected_samples=" + SAMPLE_IDS.length + " observed_samples="
+                            + " expected_samples=" + sampleIds.length + " observed_samples="
                             + result.pixels.size() + " matched_samples=" + matched
                             + " surface=" + result.width + "x" + result.height
                             + " viewport=" + VIEWPORT_WIDTH_CSS_PX + "x"
                             + VIEWPORT_HEIGHT_CSS_PX + " png=" + output.getAbsolutePath()
                             + " sha256=" + result.sha256);
                     status.accept(passed
-                            ? "완료 · C11.5 Android SurfaceView PixelCopy · 7/7"
+                            ? "완료 · C11.5 Android SurfaceView PixelCopy · "
+                                    + sampleIds.length + "/" + sampleIds.length
                             : "실패 · C11.5 Android PixelCopy 표본 불일치");
                 });
     }

@@ -935,6 +935,12 @@ pub(super) fn project_styles(
             grid_styles.insert(node, grid);
             let mut container =
                 project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?;
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_grid_alignment_nodes.contains(&node)
+            {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlGridItemSelfAlignmentV1;
+            }
             if snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
                 container.justify_items = parse_runtime_justify_items(
                     node,

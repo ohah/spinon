@@ -14060,16 +14060,20 @@ private struct C111MetalPixelRun {
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
         }
         if !rootHtmlRuns.isEmpty {
             let isSelfAlignment = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
+            let isAutoStretch = rootHtmlRuns[0].hasPrefix(
+                "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
+            let isRootHtmlAlignment = isSelfAlignment || isAutoStretch
             guard rootHtmlRuns.count == 1,
                   !arguments.contains(where: {
                       guard $0.hasPrefix("--spinon-"), $0 != rootHtmlRuns[0] else {
                           return false
                       }
-                      return !isSelfAlignment
+                      return !isRootHtmlAlignment
                           || ($0 != "--spinon-c0410-runtime-gpu"
                               && $0 != "--spinon-c0412-root-html-default-render")
                   }) else { return nil }
@@ -14079,7 +14083,9 @@ private struct C111MetalPixelRun {
                 "--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
             let isFitContentPercentage = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
-            let prefix = isSelfAlignment
+            let prefix = isAutoStretch
+                ? "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels="
+                : isSelfAlignment
                 ? "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels="
                 : isFitContentPercentage
                 ? "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels="
@@ -14098,9 +14104,12 @@ private struct C111MetalPixelRun {
                 return nil
             }
             if isSelfAlignment && runID != "c115-20261104" { return nil }
+            if isAutoStretch && runID != "c115as-20261104" { return nil }
             return C111MetalPixelRun(
                 runID: runID,
-                sceneID: isSelfAlignment
+                sceneID: isAutoStretch
+                    ? "root-html-grid-item-auto-stretch"
+                    : isSelfAlignment
                     ? "root-html-grid-item-self-alignment"
                     : isAutoMinimum
                     ? namedAreaAutoMinimumScene.map {
@@ -14110,9 +14119,43 @@ private struct C111MetalPixelRun {
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
-                markerPrefix: isSelfAlignment ? "C115"
+                markerPrefix: isRootHtmlAlignment ? "C115"
                     : namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
-                samples: isSelfAlignment ? [
+                samples: isAutoStretch ? [
+                    C111MetalPixelSample(
+                        id: "auto-parent-normal", nodeId: "item",
+                        xCssPx: 25, yCssPx: 25, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "normal-self", nodeId: "item",
+                        xCssPx: 25, yCssPx: 75, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "stretch-self", nodeId: "item",
+                        xCssPx: 25, yCssPx: 125, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "position-self-start", nodeId: "item",
+                        xCssPx: 25, yCssPx: 175, rgba: [219, 234, 254, 255]),
+                    C111MetalPixelSample(
+                        id: "auto-parent-start", nodeId: "item",
+                        xCssPx: 25, yCssPx: 225, rgba: [219, 234, 254, 255]),
+                    C111MetalPixelSample(
+                        id: "fixed-stretch-item", nodeId: "item",
+                        xCssPx: 25, yCssPx: 275, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "fixed-stretch-outside-x", nodeId: "item",
+                        xCssPx: 40, yCssPx: 275, rgba: [219, 234, 254, 255]),
+                    C111MetalPixelSample(
+                        id: "fixed-width-auto-height", nodeId: "item",
+                        xCssPx: 25, yCssPx: 345, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "auto-width-fixed-height", nodeId: "item",
+                        xCssPx: 55, yCssPx: 375, rgba: [249, 115, 22, 255]),
+                    C111MetalPixelSample(
+                        id: "align-stretch-only-empty", nodeId: "item",
+                        xCssPx: 25, yCssPx: 425, rgba: [219, 234, 254, 255]),
+                    C111MetalPixelSample(
+                        id: "justify-stretch-only-empty", nodeId: "item",
+                        xCssPx: 55, yCssPx: 475, rgba: [219, 234, 254, 255]),
+                ] : isSelfAlignment ? [
                     C111MetalPixelSample(
                         id: "centered-default-item", nodeId: "item",
                         xCssPx: 44, yCssPx: 51, rgba: [249, 115, 22, 255]),
@@ -14794,9 +14837,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
               ) != nil else { return 320 }
         return 480
     }
+    private var isC115RootHtmlAutoStretchPixelRun: Bool {
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+        c111MetalPixelRun?.sceneID == "root-html-grid-item-auto-stretch"
+#else
+        false
+#endif
+    }
     private var c11GridMetalPixelStatusName: String {
         c111MetalPixelRun?.markerPrefix == "C115"
-            ? "C11.5 Root HTML Grid item self-alignment"
+            ? isC115RootHtmlAutoStretchPixelRun
+                ? "C11.5 Root HTML Grid item auto-size/stretch"
+                : "C11.5 Root HTML Grid item self-alignment"
             : c114GridTrackSizingProbeRequested ? "C11.4"
             : c111RootHtmlDensePlacementProbeRequested ? "C11.1 Root HTML dense placement"
             : c1133GridTemplateAreasProbeRequested ? "C11.3.3"
@@ -14834,6 +14886,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
         })
 #else
         return arguments.contains(where: {
@@ -14850,6 +14903,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
         })
 #else
         let argument = ProcessInfo.processInfo.arguments.first(where: {
@@ -14859,6 +14913,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         return argument.map { argument in
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
             let prefix = argument.hasPrefix(
+                "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
+                ? "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels="
+                : argument.hasPrefix(
                 "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
                 ? "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels="
                 : argument.hasPrefix(
