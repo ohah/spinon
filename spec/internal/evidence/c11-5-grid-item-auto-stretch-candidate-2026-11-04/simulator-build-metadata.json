@@ -3,9 +3,16 @@
   "source": {
     "baseCommit": "8288072446e1847580c2804570a0d5d6f20723c4",
     "candidateBranch": "feat/c11-5-grid-item-auto-stretch",
+    "verifiedSourceCommit": "5969be0aca200a5507126bbf479aa45f7cf155c1",
     "buildCapturedFromUncommittedTree": true,
+    "uncommittedTreeMatchesVerifiedSourceCommit": true,
     "fixture": "tests/fixtures/css/c11/root-html-grid-item-auto-stretch-runtime.html",
-    "fixtureSha256": "b6cd473b009cefa090d57625246d872a14faedef2d39c17499062bcdda2d8dd8",
+    "fixtureSha256": "1951dd22e8e2036fc84a452e4290a8def000ada3f12dce92d3d6e69b33c51320",
+    "boxSizingCoverage": {
+      "container": "content-box",
+      "items": ["content-box", "border-box"],
+      "marginPaddingBorder": "zero"
+    },
     "bundledResourceSha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85",
     "bundledResourcesRestored": true
   },
@@ -21,8 +28,8 @@
       "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
       "SPINON_ENABLE_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST": 1
     },
-    "optInApkSha256": "9a482ff048d290edb905d4d727a9f0d07113ffd4a623b065049e01b9210edc1c",
-    "defaultApkSha256": "cd8865935bd8e50cd9a9b2204d647b522e5d4dc558787dbd0429b40cbacfae1b",
+    "optInApkSha256": "442148a8c741d3f010c7d8b832deff557d6b28aa1c50479c81e40eeed67dba46",
+    "defaultApkSha256": "f34d6a468d5e2288995754a469468a1b293426573f82c7ce7ed2ccdee3d39976",
     "pixelCopy": {
       "matchedSamples": "11/11",
       "png": "android-surfaceview-pixelcopy.png",
@@ -31,9 +38,15 @@
     "osScreenshot": {
       "png": "android-simulator-screen.png",
       "resolution": "1080x2400",
-      "pngSha256": "052b37c4efe38caa88ff1323e74a9fa58fb86e3e2d57050a69af07c49cac8a8e"
+      "pngSha256": "d9c19585cee1466fc7b177b020a0fad73dedbadfb12046edd75ac92bed706e49"
     },
-    "defaultDexExcludesAdapterAndFixtureIds": true
+    "defaultDexExcludesAdapterAndFixtureIds": true,
+    "fixedSizeSelfAlignmentRegression": {
+      "layoutBoxes": 79,
+      "pixelCopyMatchedSamples": "7/7",
+      "pixelCopyPngSha256": "462052046c4cf9e9535e93a7beff56df13fe31217b3b9da1c5978f75bd4d6f81",
+      "optInApkSha256": "b574932062883d2e3d403c28a9a40b2738175e8742dbfc0eb59d4be8fbb85090"
+    }
   },
   "ios": {
     "device": "iPhone 17 Pro",
@@ -46,8 +59,8 @@
       "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
       "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": 1
     },
-    "optInExecutableSha256": "82da7bf9c31a27018a4f026c9ba125b45da141036df996a1213bca8aa6461c88",
-    "defaultExecutableSha256": "ea033df05fc48e6983887def4a6e73cf2ff5f7a35cbecbdacabf7b9dd84b364f",
+    "optInExecutableSha256": "a352b323616be07317b2cba7d402cdd441c816c41a12108178aa36bebf7eb226",
+    "defaultExecutableSha256": "87d0fa94f7e8ba9b8447fd6bbf0576a19b2aa012389b841abdaeef1f0252fa5c",
     "metalDrawableReadback": {
       "matchedSamples": "11/11",
       "boundary": "before compositor submission"
@@ -55,8 +68,14 @@
     "osScreenshot": {
       "png": "ios-simulator-screen.png",
       "resolution": "1206x2622",
-      "pngSha256": "f78520292d12d19570f1d810c867a9873d67d70ee25a05282abe0ee5c1a720ae"
+      "pngSha256": "41f004f7f16319bd2414e00dd174ea8698b8d0fece3aad95b8fce89388dc1e9b"
     },
-    "defaultExecutableExcludesAutoStretchArgumentAndScene": true
+    "defaultExecutableExcludesAutoStretchArgumentAndScene": true,
+    "fixedSizeSelfAlignmentRegression": {
+      "layoutBoxes": 79,
+      "metalDrawableMatchedSamples": "7/7",
+      "metalReadbackBoundary": "before compositor submission",
+      "optInExecutableSha256": "7bcbed687d1e1e32d9c34c3a965089e29e09142fc3bef4a2f70a5d951fcfc672"
+    }
   }
 }

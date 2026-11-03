@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [기존 fixed-size self-alignment 구현](./c11-root-html-grid-item-self-alignment.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 로컬 구현 후보와 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 검증까지 진행했다. Rust accepted/negative controls, PixelCopy 11/11, Metal drawable 11/11, 기본 artifact 제외 검사를 기록했다. [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/implementation-runtime-review-20.md)도 마쳤다. PR diff 검토 30개와 PR/CI/merge는 남아 있다. 공식 `STATUS.md`에서 C11과 C11.5는 계속 미완료이며 전체 집계 `72/213`을 유지한다.
+**상태:** 로컬 구현 후보와 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 검증까지 진행했다. Rust accepted/negative controls, PixelCopy 11/11, Metal drawable 11/11, 기본 artifact 제외 검사를 기록했다. [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-5-grid-item-auto-stretch-candidate-2026-11-04/pr-diff-review-30.md)를 마쳤다. review에서 찾은 content-box admission 회귀를 수정하고 기존 fixed-size route를 두 플랫폼에서 다시 검증했다. PR #1132 check rollup은 비어 있어 CI 성공으로 세지 않는다. 공식 `STATUS.md`에서 C11과 C11.5는 계속 미완료이며 전체 집계 `72/213`을 유지한다.
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-item-auto-stretch-plan-review-20.md)
 
