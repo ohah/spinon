@@ -1,0 +1,525 @@
+{
+  "source": "CSS Box Alignment 3 §4.1, §4.4, §6, §7; CSS Grid 1 §6.1 and §11.6",
+  "viewport": [
+    1280,
+    633
+  ],
+  "dpr": 1,
+  "trackGrid": {
+    "container": [
+      84,
+      64
+    ],
+    "columns": [
+      40,
+      40
+    ],
+    "rows": [
+      30,
+      30
+    ],
+    "gaps": [
+      4,
+      4
+    ]
+  },
+  "cases": [
+    {
+      "case": "align-normal",
+      "property": "align-items",
+      "value": "normal",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#310000"
+    },
+    {
+      "case": "align-stretch",
+      "property": "align-items",
+      "value": "stretch",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#310031"
+    },
+    {
+      "case": "align-start",
+      "property": "align-items",
+      "value": "start",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#310062"
+    },
+    {
+      "case": "align-end",
+      "property": "align-items",
+      "value": "end",
+      "item": [
+        0,
+        20,
+        16,
+        10
+      ],
+      "color": "#310093"
+    },
+    {
+      "case": "align-flex-start",
+      "property": "align-items",
+      "value": "flex-start",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#3100c4"
+    },
+    {
+      "case": "align-flex-end",
+      "property": "align-items",
+      "value": "flex-end",
+      "item": [
+        0,
+        20,
+        16,
+        10
+      ],
+      "color": "#3100f5"
+    },
+    {
+      "case": "align-self-start",
+      "property": "align-items",
+      "value": "self-start",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#310126"
+    },
+    {
+      "case": "align-self-end",
+      "property": "align-items",
+      "value": "self-end",
+      "item": [
+        0,
+        20,
+        16,
+        10
+      ],
+      "color": "#310157"
+    },
+    {
+      "case": "align-center",
+      "property": "align-items",
+      "value": "center",
+      "item": [
+        0,
+        10,
+        16,
+        10
+      ],
+      "color": "#310188"
+    },
+    {
+      "case": "align-safe-center",
+      "property": "align-items",
+      "value": "safe center",
+      "item": [
+        0,
+        10,
+        16,
+        10
+      ],
+      "color": "#3101b9"
+    },
+    {
+      "case": "align-unsafe-center",
+      "property": "align-items",
+      "value": "unsafe center",
+      "item": [
+        0,
+        10,
+        16,
+        10
+      ],
+      "color": "#3101ea"
+    },
+    {
+      "case": "align-safe-end",
+      "property": "align-items",
+      "value": "safe end",
+      "item": [
+        0,
+        20,
+        16,
+        10
+      ],
+      "color": "#31021b"
+    },
+    {
+      "case": "align-unsafe-end",
+      "property": "align-items",
+      "value": "unsafe end",
+      "item": [
+        0,
+        20,
+        16,
+        10
+      ],
+      "color": "#31024c"
+    },
+    {
+      "case": "justify-normal",
+      "property": "justify-items",
+      "value": "normal",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#31027d"
+    },
+    {
+      "case": "justify-stretch",
+      "property": "justify-items",
+      "value": "stretch",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#3102ae"
+    },
+    {
+      "case": "justify-start",
+      "property": "justify-items",
+      "value": "start",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#3102df"
+    },
+    {
+      "case": "justify-end",
+      "property": "justify-items",
+      "value": "end",
+      "item": [
+        24,
+        0,
+        16,
+        10
+      ],
+      "color": "#310310"
+    },
+    {
+      "case": "justify-flex-start",
+      "property": "justify-items",
+      "value": "flex-start",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#310341"
+    },
+    {
+      "case": "justify-flex-end",
+      "property": "justify-items",
+      "value": "flex-end",
+      "item": [
+        24,
+        0,
+        16,
+        10
+      ],
+      "color": "#310372"
+    },
+    {
+      "case": "justify-self-start",
+      "property": "justify-items",
+      "value": "self-start",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#3103a3"
+    },
+    {
+      "case": "justify-self-end",
+      "property": "justify-items",
+      "value": "self-end",
+      "item": [
+        24,
+        0,
+        16,
+        10
+      ],
+      "color": "#3103d4"
+    },
+    {
+      "case": "justify-center",
+      "property": "justify-items",
+      "value": "center",
+      "item": [
+        12,
+        0,
+        16,
+        10
+      ],
+      "color": "#310405"
+    },
+    {
+      "case": "justify-safe-center",
+      "property": "justify-items",
+      "value": "safe center",
+      "item": [
+        12,
+        0,
+        16,
+        10
+      ],
+      "color": "#310436"
+    },
+    {
+      "case": "justify-unsafe-center",
+      "property": "justify-items",
+      "value": "unsafe center",
+      "item": [
+        12,
+        0,
+        16,
+        10
+      ],
+      "color": "#310467"
+    },
+    {
+      "case": "justify-safe-end",
+      "property": "justify-items",
+      "value": "safe end",
+      "item": [
+        24,
+        0,
+        16,
+        10
+      ],
+      "color": "#310498"
+    },
+    {
+      "case": "justify-unsafe-end",
+      "property": "justify-items",
+      "value": "unsafe end",
+      "item": [
+        24,
+        0,
+        16,
+        10
+      ],
+      "color": "#3104c9"
+    },
+    {
+      "case": "justify-left",
+      "property": "justify-items",
+      "value": "left",
+      "item": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "color": "#3104fa"
+    },
+    {
+      "case": "justify-right",
+      "property": "justify-items",
+      "value": "right",
+      "item": [
+        24,
+        0,
+        16,
+        10
+      ],
+      "color": "#31052b"
+    },
+    {
+      "case": "align-safe-center-overflow",
+      "property": "align-items",
+      "value": "safe center",
+      "item": [
+        0,
+        0,
+        16,
+        40
+      ],
+      "color": "#31055c"
+    },
+    {
+      "case": "align-unsafe-center-overflow",
+      "property": "align-items",
+      "value": "unsafe center",
+      "item": [
+        0,
+        -5,
+        16,
+        40
+      ],
+      "color": "#31058d"
+    },
+    {
+      "case": "align-safe-end-overflow",
+      "property": "align-items",
+      "value": "safe end",
+      "item": [
+        0,
+        0,
+        16,
+        40
+      ],
+      "color": "#3105be"
+    },
+    {
+      "case": "align-unsafe-end-overflow",
+      "property": "align-items",
+      "value": "unsafe end",
+      "item": [
+        0,
+        -10,
+        16,
+        40
+      ],
+      "color": "#3105ef"
+    },
+    {
+      "case": "justify-safe-center-overflow",
+      "property": "justify-items",
+      "value": "safe center",
+      "item": [
+        0,
+        0,
+        50,
+        10
+      ],
+      "color": "#310620"
+    },
+    {
+      "case": "justify-unsafe-center-overflow",
+      "property": "justify-items",
+      "value": "unsafe center",
+      "item": [
+        -5,
+        0,
+        50,
+        10
+      ],
+      "color": "#310651"
+    },
+    {
+      "case": "justify-safe-end-overflow",
+      "property": "justify-items",
+      "value": "safe end",
+      "item": [
+        0,
+        0,
+        50,
+        10
+      ],
+      "color": "#310682"
+    },
+    {
+      "case": "justify-unsafe-end-overflow",
+      "property": "justify-items",
+      "value": "unsafe end",
+      "item": [
+        -10,
+        0,
+        50,
+        10
+      ],
+      "color": "#3106b3"
+    },
+    {
+      "case": "place-items-center",
+      "property": "place-items",
+      "value": "center",
+      "item": [
+        12,
+        10,
+        16,
+        10
+      ],
+      "color": "#3106e4"
+    },
+    {
+      "case": "place-items-end-start",
+      "property": "place-items",
+      "value": "end start",
+      "item": [
+        0,
+        20,
+        16,
+        10
+      ],
+      "color": "#310715"
+    },
+    {
+      "case": "combined",
+      "root": [
+        0,
+        0,
+        240,
+        180
+      ],
+      "items": [
+        [
+          58.328125,
+          32.5,
+          10,
+          10
+        ],
+        [
+          161.65625,
+          32.5,
+          10,
+          10
+        ],
+        [
+          58.328125,
+          127.5,
+          10,
+          10
+        ],
+        [
+          161.65625,
+          127.5,
+          10,
+          10
+        ]
+      ],
+      "colors": [
+        "#310746",
+        "#310777",
+        "#3107a8",
+        "#3107d9"
+      ]
+    }
+  ]
+}

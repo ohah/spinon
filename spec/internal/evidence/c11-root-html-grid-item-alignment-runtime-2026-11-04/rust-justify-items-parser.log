@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 1 test
+test projection::style_values::flex_values::tests::justify_items_keeps_its_property_and_maps_physical_ltr_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 370 filtered out; finished in 0.00s

@@ -44,7 +44,39 @@ pub(super) fn parse_runtime_align_items(
     value: &str,
     allow_start: bool,
 ) -> Result<LayoutAlignItems, StyleLayoutError> {
-    let parsed = match value {
+    parse_runtime_item_alignment(value, allow_start)
+        .ok_or_else(|| unsupported_value(node, "align-items", value))
+}
+
+pub(super) fn parse_runtime_justify_items(
+    node: NodeId,
+    value: &str,
+    allow_start: bool,
+    allow_physical_left_right: bool,
+) -> Result<LayoutAlignItems, StyleLayoutError> {
+    if allow_physical_left_right {
+        match value {
+            "left" => {
+                return Ok(LayoutAlignItems::Position {
+                    position: ItemAlignmentPosition::Start,
+                    safety: None,
+                });
+            }
+            "right" => {
+                return Ok(LayoutAlignItems::Position {
+                    position: ItemAlignmentPosition::End,
+                    safety: None,
+                });
+            }
+            _ => {}
+        }
+    }
+    parse_runtime_item_alignment(value, allow_start)
+        .ok_or_else(|| unsupported_value(node, "justify-items", value))
+}
+
+fn parse_runtime_item_alignment(value: &str, allow_start: bool) -> Option<LayoutAlignItems> {
+    match value {
         "normal" => Some(LayoutAlignItems::Normal),
         "stretch" => Some(LayoutAlignItems::Stretch),
         "flex-start" => Some(LayoutAlignItems::FlexStart),
@@ -59,8 +91,7 @@ pub(super) fn parse_runtime_align_items(
         "last baseline" => Some(LayoutAlignItems::LastBaseline),
         _ => parse_item_position(value)
             .map(|(position, safety)| LayoutAlignItems::Position { position, safety }),
-    };
-    parsed.ok_or_else(|| unsupported_value(node, "align-items", value))
+    }
 }
 
 pub(super) fn parse_runtime_align_self(
@@ -242,9 +273,10 @@ pub(super) fn parse_order(node: NodeId, value: &str) -> Result<i32, StyleLayoutE
 
 #[cfg(test)]
 mod tests {
-    use super::parse_order;
+    use super::{parse_order, parse_runtime_justify_items};
     use crate::StyleLayoutError;
     use spinon_core::NodeId;
+    use spinon_layout::{ItemAlignmentPosition, LayoutAlignItems};
 
     #[test]
     fn order_values_outside_the_typed_i32_range_fail_closed() {
@@ -267,6 +299,40 @@ mod tests {
                 property: "order",
                 value,
             }) if error_node == node && value == "-2147483649"
+        ));
+    }
+
+    #[test]
+    fn justify_items_keeps_its_property_and_maps_physical_ltr_values() {
+        let node = NodeId::new(43).unwrap();
+        assert_eq!(
+            parse_runtime_justify_items(node, "left", true, true).unwrap(),
+            LayoutAlignItems::Position {
+                position: ItemAlignmentPosition::Start,
+                safety: None,
+            }
+        );
+        assert_eq!(
+            parse_runtime_justify_items(node, "right", true, true).unwrap(),
+            LayoutAlignItems::Position {
+                position: ItemAlignmentPosition::End,
+                safety: None,
+            }
+        );
+        assert!(matches!(
+            parse_runtime_justify_items(node, "legacy", true, true),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "justify-items",
+                value,
+            }) if error_node == node && value == "legacy"
+        ));
+        assert!(matches!(
+            parse_runtime_justify_items(node, "left", true, false),
+            Err(StyleLayoutError::UnsupportedComputedValue {
+                property: "justify-items",
+                ..
+            })
         ));
     }
 }

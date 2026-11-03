@@ -1,0 +1,25 @@
+   Compiling taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.92s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-5b740601e96d9bd5)
+
+running 14 tests
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_calc_minimums_on_their_own_axes ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_auto_repeat_inner_and_component_names ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_typed_functions_and_axis_scoped_calc_ids ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_preserves_cyclic_fit_content_percentage_limit ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_keeps_single_axis_auto_repeat_projection ... ok
+test projection::style_values::grid_values::auto_track_tests::non_track_sizing_profile_rejects_typed_auto_track_lists ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_projects_negative_lines_and_reverse_auto_track_lists ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_rejects_align_items_stretch_without_overflow_fixture_opt_in ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_keeps_named_area_placement ... ok
+test c11_4_track_sizing_areas_tests::direct_html_image_ratio_constraints_are_scoped_to_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_anchors_negative_lines_when_template_is_none ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_lays_out_css_auto_repeat_modes ... ok
+test c11_4_track_sizing_areas_tests::root_grid_max_content_is_scoped_to_the_track_sizing_profile ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 377 filtered out; finished in 0.03s
