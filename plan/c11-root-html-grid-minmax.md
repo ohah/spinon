@@ -2,6 +2,8 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML Grid 기본 경로](./c11-root-html-grid-runtime.md) · [percentage explicit tracks](./c11-root-html-grid-percentage-tracks.md) · [`fr` explicit tracks](./c11-root-html-grid-fr-track.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
+**후속 계획 후보:** explicit `minmax(auto, fr)` track의 Grid item automatic minimum은 [별도 Root HTML 계획](./c11-root-html-grid-auto-minimum.md)과 [독립 기대값·Chrome 비교](../spec/internal/evidence/c11-root-html-grid-auto-minimum-precomparison-2026-11-03/README.md)에서 다룬다. 이 문서의 bounded px/% minimum 지원 범위에는 포함하지 않는다.
+
 **구현 전 비교:** [고정 HTML·독립 기대값·Chrome 156 관측·화면](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-minmax-precomparison.html) · [expected.json](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/expected.json) · [Chrome observation](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/chrome156-observation.json)
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-minmax-plan-review-20.md) · **계획 PR diff 적대 검토:** [30개](../spec/internal/evidence/c11-root-html-grid-minmax-precomparison-2026-11-03/plan-pr-diff-review-30.md) · **구현/runtime 검토:** [20개](./c11-root-html-grid-minmax-implementation-review-20.md) · **구현 PR diff 적대 검토:** [30개](./c11-root-html-grid-minmax-implementation-pr-diff-review-30.md).
