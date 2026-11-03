@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11 Root HTML dense placement reference</title>
+<style>
+html,body{margin:0;padding:0;width:360px;height:540px;background:#101820;color:#fff;font:10px sans-serif}
+.grid{position:absolute;display:grid;align-content:start;justify-content:start;align-items:start;justify-items:start;background:#edf1f7;column-gap:4px;row-gap:4px}
+.row{width:128px;height:44px;grid-template-columns:40px 40px 40px;grid-template-rows:20px 20px;grid-auto-rows:20px;grid-auto-columns:auto}
+.column{width:88px;height:76px;grid-template-columns:40px 40px;grid-template-rows:20px 20px 20px;grid-auto-rows:20px;grid-auto-columns:28px;column-gap:8px;row-gap:8px}
+.item{box-sizing:border-box;background:#2866f6}
+.span-col{width:84px;height:18px;grid-column:span 2;background:#2866f6}
+.span-row{width:18px;height:44px;grid-row:span 2;background:#2866f6}
+.small{width:18px;height:18px;background:#19a974}
+.purple{background:#8758ff}
+.red{width:18px;height:18px;background:#e5484d}
+</style>
+<div id="row-dense" class="grid row" style="left:20px;top:20px;grid-auto-flow:row dense"><div class="item span-col"></div><div class="item span-col purple"></div><div class="item small"></div></div>
+<div id="row-sparse" class="grid row" style="left:20px;top:80px;grid-auto-flow:row"><div class="item span-col"></div><div class="item span-col purple"></div><div class="item small"></div></div>
+<div id="row-collision" class="grid row" style="left:20px;top:140px;grid-auto-flow:row dense"><div class="item span-col"></div><div class="item red" style="grid-column:3 / 4;grid-row:1 / 2"></div><div class="item span-col purple"></div><div class="item small"></div></div>
+<div id="column-dense" class="grid column" style="left:20px;top:220px;grid-auto-flow:column dense"><div class="item span-row"></div><div class="item span-row purple"></div><div class="item small"></div></div>
+<div id="column-sparse" class="grid column" style="left:20px;top:320px;grid-auto-flow:column"><div class="item span-row"></div><div class="item span-row purple"></div><div class="item small"></div></div>
+<div id="column-collision" class="grid column" style="left:20px;top:420px;grid-auto-flow:column dense"><div class="item span-row"></div><div class="item red" style="grid-row:3 / 4;grid-column:1 / 2"></div><div class="item span-row purple"></div><div class="item small"></div></div>
