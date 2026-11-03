@@ -11,6 +11,8 @@ mod c09;
 mod c10;
 mod c10_3_5;
 mod c11;
+#[cfg(feature = "c11-1-root-html-dense-placement-fixture-test")]
+mod c11_1_root_html_dense;
 #[cfg(feature = "c11-1-root-html-percent-columns-fixture-test")]
 mod c11_1_root_html_percent_columns;
 mod c11_2_1;

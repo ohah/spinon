@@ -1,0 +1,1666 @@
+{
+  "schema": "spinon-c11-root-html-dense-auto-placement-mobile-runtime-matrix/v1",
+  "status": "matched",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb",
+  "target": "emulator-5556",
+  "platform": {
+    "serial": "emulator-5556",
+    "sdk": 37,
+    "release": "17",
+    "model": "sdk_gphone64_arm64",
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+    "qemu": "1",
+    "density": "Physical density: 420",
+    "size": "Physical size: 1080x2400",
+    "renderer": "Android AVD SurfaceView PixelCopy"
+  },
+  "appSha256": "dec296bcb29a1828be57d8262f303fa39303b37605700e4b0c91718cb323b4c4",
+  "inputs": {
+    "matrix": "38b329ef6f4b52162a744c542e740be7e7aa8838eee5a98ee4d35580d56a68c0",
+    "html": "3e252f64565d1b9819f6afd964e981117359b6f59ecf2c67fad8b9c537f9dfdd",
+    "runtimeMatrix": "5bd83ff5f4b06915a965e8084bbbe20dd9249e44da5a05c3490226b59153eec9",
+    "chromiumReference": "16b411cc08d9fb3ef77481bdd004d8a925ea8c72af760cc6d503a8a8f90407f9",
+    "generator": "fb5c0a279edc33ce65e1955caffdb5589bd91ed11e9876b81cb0429f3db473a9"
+  },
+  "generatorCheck": "Root HTML dense placement matrix: 14 scene · 12 success · 2 expected reject · 60 nodes · verified",
+  "summary": {
+    "scenes": 14,
+    "successfulScenes": 12,
+    "rejectedScenes": 2,
+    "authoredNodes": 60,
+    "geometryToleranceCssPx": 0.5,
+    "maximumAbsoluteErrorCssPx": 0,
+    "surfacePixelReadback": {
+      "status": "matched",
+      "scenes": 12,
+      "samples": 52,
+      "maximumChannelError": 0,
+      "renderer": "Android AVD SurfaceView PixelCopy"
+    },
+    "freshProcessPerScene": true,
+    "screenshotBytesAreNotPixelParityEvidence": true
+  },
+  "observations": [
+    {
+      "sceneId": "row-dense-hole-fill",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 4,
+      "frameCount": 9,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "row-dense-hole-fill-android.png",
+      "screenshotSha256": "4e195726df092e47273b147729d691f2a1497c8e095dec7204f25258b2a753eb",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-hole-fill",
+      "processId": 3283,
+      "environmentMapping": {
+        "reports": 6,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "row-dense-hole-fill",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-hole-fill",
+        "processId": 3283,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "177a8f84af4fd869ace9ab1eeb1badf6ca18bb3424d21b2e9bcec6e5c9157398",
+        "samples": [
+          {
+            "id": "c1123-row-dense-hole-fill-grid-center",
+            "css": [
+              64,
+              22
+            ],
+            "pixel": [
+              169,
+              59
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-hole-fill-span-a-center",
+            "css": [
+              42,
+              9
+            ],
+            "pixel": [
+              111,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-hole-fill-span-b-center",
+            "css": [
+              42,
+              33
+            ],
+            "pixel": [
+              111,
+              87
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-hole-fill-small-c-center",
+            "css": [
+              97,
+              9
+            ],
+            "pixel": [
+              255,
+              24
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          }
+        ],
+        "png": "row-dense-hole-fill-surface-pixels.png"
+      },
+      "pixelComparison": "row-dense-hole-fill-pixel-comparison.json"
+    },
+    {
+      "sceneId": "row-dense-span-collision",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 5,
+      "frameCount": 10,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "row-dense-span-collision-android.png",
+      "screenshotSha256": "9b68c917eaef371545ee5d43c8a1e3a17161dd5007e1befc4899e54cafcd7e69",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-span-collision",
+      "processId": 3372,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "row-dense-span-collision",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-span-collision",
+        "processId": 3372,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "pngSha256": "aa4c5af1758e78ef1c96a45b59d06f9118072cdef8df430cd55463b2c3ad3727",
+        "samples": [
+          {
+            "id": "c1123-row-dense-span-collision-grid-center",
+            "css": [
+              64,
+              22
+            ],
+            "pixel": [
+              169,
+              59
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-span-collision-span-a-center",
+            "css": [
+              42,
+              9
+            ],
+            "pixel": [
+              111,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-span-collision-fixed-c-center",
+            "css": [
+              97,
+              9
+            ],
+            "pixel": [
+              255,
+              24
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-span-collision-span-b-center",
+            "css": [
+              42,
+              33
+            ],
+            "pixel": [
+              111,
+              87
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-span-collision-small-d-center",
+            "css": [
+              97,
+              33
+            ],
+            "pixel": [
+              255,
+              87
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          }
+        ],
+        "png": "row-dense-span-collision-surface-pixels.png"
+      },
+      "pixelComparison": "row-dense-span-collision-pixel-comparison.json"
+    },
+    {
+      "sceneId": "row-dense-fixed-row",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "unsupported_grid_auto_columns",
+        "property": "grid-auto-columns",
+        "runtimeNodeId": 2
+      },
+      "nodeCount": 4,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "maximumAbsoluteErrorCssPx": 0,
+      "screenshot": "row-dense-fixed-row-android.png",
+      "screenshotSha256": "96fa8b671e5aeed5eb2d1cd66166d2d992278941c63647145adbdb476d37f651",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-fixed-row",
+      "processId": 3435
+    },
+    {
+      "sceneId": "row-dense-fixed-column",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 4,
+      "frameCount": 9,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "row-dense-fixed-column-android.png",
+      "screenshotSha256": "a77b48a5240a2655cea4e96d78ac0a5cf9028454a7c6bd066a32879ed3d46429",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-fixed-column",
+      "processId": 3493,
+      "environmentMapping": {
+        "reports": 6,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "row-dense-fixed-column",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-fixed-column",
+        "processId": 3493,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "1914702454193a100be0991d876f514499d09c1884e667b103708d54b99cd06f",
+        "samples": [
+          {
+            "id": "c1123-row-dense-fixed-column-grid-center",
+            "css": [
+              64,
+              22
+            ],
+            "pixel": [
+              169,
+              59
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-fixed-column-locked-a-center",
+            "css": [
+              53,
+              9
+            ],
+            "pixel": [
+              140,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-fixed-column-locked-b-center",
+            "css": [
+              53,
+              33
+            ],
+            "pixel": [
+              140,
+              87
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-fixed-column-locked-c-center",
+            "css": [
+              53,
+              57
+            ],
+            "pixel": [
+              140,
+              150
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          }
+        ],
+        "png": "row-dense-fixed-column-surface-pixels.png"
+      },
+      "pixelComparison": "row-dense-fixed-column-pixel-comparison.json"
+    },
+    {
+      "sceneId": "row-dense-positive-implicit-row",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 6,
+      "frameCount": 11,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "row-dense-positive-implicit-row-android.png",
+      "screenshotSha256": "d1f40a1f570d91c581875e547ae5f0a6aa2fba4589d8a0f99a019c50476828e1",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-positive-implicit-row",
+      "processId": 3556,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "row-dense-positive-implicit-row",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-positive-implicit-row",
+        "processId": 3556,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "5717e5bd4860255ee0454fa9b4732d069085daedac46b78c44e96ebb517f4e59",
+        "samples": [
+          {
+            "id": "c1123-row-dense-positive-implicit-row-grid-center",
+            "css": [
+              44,
+              36
+            ],
+            "pixel": [
+              116,
+              95
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-positive-implicit-row-item-a-center",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              24,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-positive-implicit-row-item-b-center",
+            "css": [
+              57,
+              9
+            ],
+            "pixel": [
+              150,
+              24
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-positive-implicit-row-item-c-center",
+            "css": [
+              9,
+              37
+            ],
+            "pixel": [
+              24,
+              98
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-positive-implicit-row-item-d-center",
+            "css": [
+              57,
+              37
+            ],
+            "pixel": [
+              150,
+              98
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-row-dense-positive-implicit-row-item-e-center",
+            "css": [
+              9,
+              70
+            ],
+            "pixel": [
+              24,
+              185
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          }
+        ],
+        "png": "row-dense-positive-implicit-row-surface-pixels.png"
+      },
+      "pixelComparison": "row-dense-positive-implicit-row-pixel-comparison.json"
+    },
+    {
+      "sceneId": "column-dense-hole-fill",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 4,
+      "frameCount": 9,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "column-dense-hole-fill-android.png",
+      "screenshotSha256": "8255f4595bd13b92faec5802b90240366b6cde6e3b29b1c1f4534d9fffaf7c63",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-hole-fill",
+      "processId": 3619,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "column-dense-hole-fill",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-hole-fill",
+        "processId": 3619,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "473f7aa2820525de0d5867b2c16db7bbb4a52345d7c7a0b2c6bd525533487a9b",
+        "samples": [
+          {
+            "id": "c1123-column-dense-hole-fill-grid-center",
+            "css": [
+              44,
+              38
+            ],
+            "pixel": [
+              116,
+              101
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-hole-fill-span-a-center",
+            "css": [
+              9,
+              22
+            ],
+            "pixel": [
+              24,
+              59
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-hole-fill-span-b-center",
+            "css": [
+              57,
+              22
+            ],
+            "pixel": [
+              150,
+              59
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-hole-fill-small-c-center",
+            "css": [
+              9,
+              65
+            ],
+            "pixel": [
+              24,
+              171
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          }
+        ],
+        "png": "column-dense-hole-fill-surface-pixels.png"
+      },
+      "pixelComparison": "column-dense-hole-fill-pixel-comparison.json"
+    },
+    {
+      "sceneId": "column-dense-span-collision",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 5,
+      "frameCount": 10,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "column-dense-span-collision-android.png",
+      "screenshotSha256": "5f7652fa98e9f9e381112f842d8ea071077758cc473a08a6af78673f90ee4ad1",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-span-collision",
+      "processId": 3693,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "column-dense-span-collision",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-span-collision",
+        "processId": 3693,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "pngSha256": "82c229664ea0073d7f7b2478f0c1aac680d44ecb857854bce985e6f6af3f8242",
+        "samples": [
+          {
+            "id": "c1123-column-dense-span-collision-grid-center",
+            "css": [
+              44,
+              38
+            ],
+            "pixel": [
+              116,
+              101
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-span-collision-span-a-center",
+            "css": [
+              9,
+              22
+            ],
+            "pixel": [
+              24,
+              59
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-span-collision-fixed-c-center",
+            "css": [
+              9,
+              65
+            ],
+            "pixel": [
+              24,
+              171
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-span-collision-span-b-center",
+            "css": [
+              57,
+              22
+            ],
+            "pixel": [
+              150,
+              59
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-span-collision-small-d-center",
+            "css": [
+              57,
+              65
+            ],
+            "pixel": [
+              150,
+              171
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          }
+        ],
+        "png": "column-dense-span-collision-surface-pixels.png"
+      },
+      "pixelComparison": "column-dense-span-collision-pixel-comparison.json"
+    },
+    {
+      "sceneId": "column-dense-positive-implicit-column",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 6,
+      "frameCount": 11,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "column-dense-positive-implicit-column-android.png",
+      "screenshotSha256": "ea9648d4e0a71205069517caf11232e0e1c0e4309c4768850a44a7487c7d7d55",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-positive-implicit-column",
+      "processId": 3757,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "column-dense-positive-implicit-column",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-column-dense-positive-implicit-column",
+        "processId": 3757,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "201ab4318f59b101e8f3fdf7c59fac256733f51b25d65199e6bbb1fa61d391d4",
+        "samples": [
+          {
+            "id": "c1123-column-dense-positive-implicit-column-grid-center",
+            "css": [
+              62,
+              24
+            ],
+            "pixel": [
+              164,
+              64
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-positive-implicit-column-item-a-center",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              24,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-positive-implicit-column-item-b-center",
+            "css": [
+              9,
+              37
+            ],
+            "pixel": [
+              24,
+              98
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-positive-implicit-column-item-c-center",
+            "css": [
+              57,
+              9
+            ],
+            "pixel": [
+              150,
+              24
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-positive-implicit-column-item-d-center",
+            "css": [
+              57,
+              37
+            ],
+            "pixel": [
+              150,
+              98
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-column-dense-positive-implicit-column-item-e-center",
+            "css": [
+              93,
+              9
+            ],
+            "pixel": [
+              245,
+              24
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          }
+        ],
+        "png": "column-dense-positive-implicit-column-surface-pixels.png"
+      },
+      "pixelComparison": "column-dense-positive-implicit-column-pixel-comparison.json"
+    },
+    {
+      "sceneId": "definite-first-dense",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 5,
+      "frameCount": 10,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "definite-first-dense-android.png",
+      "screenshotSha256": "e02aaa6842b0e9f6d23bdb7c32d8d1621a3ad61a865eba824ed3527cf2f9c2d5",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-definite-first-dense",
+      "processId": 3825,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "definite-first-dense",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-definite-first-dense",
+        "processId": 3825,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "pngSha256": "9b34d5bdf40fd17ed8faed7f696c53daaf2315dc9359d2779e175411aa091818",
+        "samples": [
+          {
+            "id": "c1123-definite-first-dense-grid-center",
+            "css": [
+              64,
+              22
+            ],
+            "pixel": [
+              169,
+              59
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-definite-first-dense-auto-a-center",
+            "css": [
+              53,
+              9
+            ],
+            "pixel": [
+              140,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-definite-first-dense-fixed-late-center",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              24,
+              24
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "c1123-definite-first-dense-span-b-center",
+            "css": [
+              42,
+              33
+            ],
+            "pixel": [
+              111,
+              87
+            ],
+            "rgba": [
+              135,
+              88,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "c1123-definite-first-dense-auto-c-center",
+            "css": [
+              97,
+              9
+            ],
+            "pixel": [
+              255,
+              24
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          }
+        ],
+        "png": "definite-first-dense-surface-pixels.png"
+      },
+      "pixelComparison": "definite-first-dense-pixel-comparison.json"
+    },
+    {
+      "sceneId": "hidden-item-excluded",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 4,
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "hidden-item-excluded-android.png",
+      "screenshotSha256": "b6e0b160bab926850088726e89b3d63a8afbc16ea61ac7a2257855baf8a5e764",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-hidden-item-excluded",
+      "processId": 3890,
+      "environmentMapping": {
+        "reports": 6,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "hidden-item-excluded",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-hidden-item-excluded",
+        "processId": 3890,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "c2e0c1ab41e3c9a546288db190bf357cf7287db89c6597e2f5451cb7be2984af",
+        "samples": [
+          {
+            "id": "c1123-hidden-item-excluded-grid-center",
+            "css": [
+              44,
+              10
+            ],
+            "pixel": [
+              116,
+              27
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-hidden-item-excluded-visible-a-center",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              24,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-hidden-item-excluded-visible-b-center",
+            "css": [
+              57,
+              9
+            ],
+            "pixel": [
+              150,
+              24
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          }
+        ],
+        "png": "hidden-item-excluded-surface-pixels.png"
+      },
+      "pixelComparison": "hidden-item-excluded-pixel-comparison.json"
+    },
+    {
+      "sceneId": "nested-mixed-flow",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 6,
+      "frameCount": 11,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "nested-mixed-flow-android.png",
+      "screenshotSha256": "cd5ab789e8e5632971835a86d3ca600f32d8bdaacdce90711ea804698f005698",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-nested-mixed-flow",
+      "processId": 3963,
+      "environmentMapping": {
+        "reports": 4,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "nested-mixed-flow",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-nested-mixed-flow",
+        "processId": 3963,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "21eba66df9b146a8072521322207cec0424ad3e6e83d6f2ccf5909cae71b7217",
+        "samples": [
+          {
+            "id": "c1123-nested-mixed-flow-grid-center",
+            "css": [
+              92,
+              20
+            ],
+            "pixel": [
+              242,
+              53
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-nested-mixed-flow-nested-row-center",
+            "css": [
+              44,
+              20
+            ],
+            "pixel": [
+              116,
+              53
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-nested-mixed-flow-inner-span-a-center",
+            "css": [
+              18,
+              9
+            ],
+            "pixel": [
+              48,
+              24
+            ],
+            "rgba": [
+              255,
+              200,
+              87,
+              255
+            ]
+          },
+          {
+            "id": "c1123-nested-mixed-flow-inner-span-b-center",
+            "css": [
+              18,
+              33
+            ],
+            "pixel": [
+              48,
+              87
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          },
+          {
+            "id": "c1123-nested-mixed-flow-inner-small-center",
+            "css": [
+              9,
+              55
+            ],
+            "pixel": [
+              24,
+              145
+            ],
+            "rgba": [
+              25,
+              169,
+              116,
+              255
+            ]
+          },
+          {
+            "id": "c1123-nested-mixed-flow-outer-item-center",
+            "css": [
+              140,
+              20
+            ],
+            "pixel": [
+              368,
+              53
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          }
+        ],
+        "png": "nested-mixed-flow-surface-pixels.png"
+      },
+      "pixelComparison": "nested-mixed-flow-pixel-comparison.json"
+    },
+    {
+      "sceneId": "auto-track-no-implicit",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 3,
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "auto-track-no-implicit-android.png",
+      "screenshotSha256": "3250ea2849d4342ee1b359fd6118ff3ce24f140ff8ac861b0990821f96fef55b",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-auto-track-no-implicit",
+      "processId": 4029,
+      "environmentMapping": {
+        "reports": 6,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "auto-track-no-implicit",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-auto-track-no-implicit",
+        "processId": 4029,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "d3cb1230011c827af624d0b29cacaef3be1aa3fd6542504645e78445212e9aa5",
+        "samples": [
+          {
+            "id": "c1123-auto-track-no-implicit-grid-center",
+            "css": [
+              44,
+              24
+            ],
+            "pixel": [
+              116,
+              64
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "c1123-auto-track-no-implicit-item-a-center",
+            "css": [
+              9,
+              9
+            ],
+            "pixel": [
+              24,
+              24
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "c1123-auto-track-no-implicit-item-b-center",
+            "css": [
+              57,
+              9
+            ],
+            "pixel": [
+              150,
+              24
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          }
+        ],
+        "png": "auto-track-no-implicit-surface-pixels.png"
+      },
+      "pixelComparison": "auto-track-no-implicit-pixel-comparison.json"
+    },
+    {
+      "sceneId": "auto-span-at-track-limit",
+      "outcome": "matched",
+      "status": 0,
+      "nodeCount": 2,
+      "frameCount": 7,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "screenshot": "auto-span-at-track-limit-android.png",
+      "screenshotSha256": "516dd659e4db0afa251c53677f349e0e1149a04009b26a7f77c7c584ab91a610",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-auto-span-at-track-limit",
+      "processId": 4092,
+      "environmentMapping": {
+        "reports": 6,
+        "viewportCssPx": [
+          360,
+          800
+        ],
+        "density": 2.625,
+        "deviceScaleFactor": 2.625,
+        "pageScale": 1,
+        "physicalScale": 2.625,
+        "surfaceScale": [
+          2.625,
+          2.625
+        ]
+      },
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "auto-span-at-track-limit",
+        "runID": "c11rhd-avd-mw0og13y-a2ee6adb-auto-span-at-track-limit",
+        "processId": 4092,
+        "markerPrefix": "C111RHD",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          360,
+          800
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 1,
+        "matchedSamples": 1,
+        "maximumChannelError": 0,
+        "pngSha256": "4df13018a52a7b6445e24437cd30210275984b468a010fb3983454736041d82a",
+        "samples": [
+          {
+            "id": "c1123-auto-span-at-track-limit-grid-center",
+            "css": [
+              180,
+              10
+            ],
+            "pixel": [
+              473,
+              27
+            ],
+            "rgba": [
+              237,
+              241,
+              247,
+              255
+            ]
+          }
+        ],
+        "png": "auto-span-at-track-limit-surface-pixels.png"
+      },
+      "pixelComparison": "auto-span-at-track-limit-pixel-comparison.json"
+    },
+    {
+      "sceneId": "auto-span-over-track-limit",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "grid_track_limit_exceeded",
+        "property": "grid-template-columns",
+        "runtimeNodeId": 2
+      },
+      "nodeCount": 2,
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "maximumAbsoluteErrorCssPx": 0,
+      "screenshot": "auto-span-over-track-limit-android.png",
+      "screenshotSha256": "0ccd80136d417a071e9a40f9cf7a3f29c9a43345bd673495b90e45f906d5514d",
+      "runID": "c11rhd-avd-mw0og13y-a2ee6adb-auto-span-over-track-limit",
+      "processId": 4156
+    }
+  ],
+  "limitations": [
+    "이 검증은 고정 Root HTML dense runtime fixture와 독립 Chrome 156 기대 geometry·색 표본에 한정되며 전체 CSS Grid 지원 또는 WPT 적합성을 뜻하지 않는다.",
+    "Android 결과는 API 37 ARM64 AVD의 emulator SurfaceView PixelCopy이며 실기기나 hardware GPU 결과가 아니다.",
+    "스크린샷은 실행 상태를 보여 주며 자체적으로 pixel parity 근거로 사용하지 않았다."
+  ]
+}

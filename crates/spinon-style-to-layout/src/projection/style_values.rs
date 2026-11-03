@@ -8,9 +8,10 @@ use spinon_layout::{
 };
 use spinon_style::{
     ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridAutoColumns,
-    ComputedCssGridAutoFlow, ComputedCssGridLayout, ComputedCssGridTrackLengthPercentage,
-    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssOverflow, ComputedCssPosition,
-    ComputedCssSpacingValue, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
+    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, ComputedCssMaxSize,
+    ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -240,15 +241,37 @@ pub(super) fn project_styles(
     let mut output = BTreeMap::new();
     let mut positioning = BTreeMap::new();
     let mut grid_containers = BTreeMap::new();
-    let mut grid_styles = BTreeMap::<NodeId, &ComputedCssGridLayout>::new();
+    let mut grid_styles = snapshot
+        .elements
+        .iter()
+        .filter_map(|element| {
+            element
+                .grid_layout
+                .as_ref()
+                .map(|grid| (element.node_id, grid))
+        })
+        .collect::<BTreeMap<_, _>>();
     let mut grid_items = BTreeMap::new();
     let mut math = CssMathProjector::default();
     let grid_nodes =
         is_grid_profile(snapshot.profile).then(|| runtime_grid_nodes(tree, root, snapshot));
+    let root_html_dense_grid_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            root_html_dense_grid_nodes(&grid_styles, grid_nodes.as_ref())
+        } else {
+            BTreeSet::new()
+        };
+    let root_html_dense_route_nodes =
+        root_html_dense_placement_route_nodes(&root_html_dense_grid_nodes, grid_nodes.as_ref());
     if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && let Some(nodes) = grid_nodes.as_ref()
     {
-        root_html_named_area::validate_root_html_named_area_candidate(tree, snapshot, nodes)?;
+        root_html_named_area::validate_root_html_named_area_candidate(
+            tree,
+            snapshot,
+            nodes,
+            &root_html_dense_route_nodes,
+        )?;
         root_html_column_flow::validate_candidate(tree, snapshot, nodes)?;
         validate_root_html_grid_item_capacity(snapshot, nodes)?;
     }
@@ -812,6 +835,11 @@ pub(super) fn project_styles(
                     element,
                     nodes.grid_containers.contains(&node),
                     nodes.grid_items.contains(&node),
+                    nodes
+                        .grid_item_owners
+                        .get(&node)
+                        .is_some_and(|owner| root_html_dense_route_nodes.contains(owner)),
+                    root_html_dense_route_nodes.contains(&node),
                 )?;
             }
             if nodes.grid_containers.contains(&node) {
@@ -912,6 +940,7 @@ pub(super) fn project_styles(
         && grid_styles
             .values()
             .any(|grid| grid.auto_flow == ComputedCssGridAutoFlow::Column);
+    let root_html_dense_route = !root_html_dense_route_nodes.is_empty();
     if matches!(
         snapshot.profile,
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -921,6 +950,7 @@ pub(super) fn project_styles(
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) || root_html_named_area_route
         || root_html_column_flow_route
+        || root_html_dense_route
     {
         let is_root_html = snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
         let grid_item_nodes = grid_nodes
@@ -937,10 +967,12 @@ pub(super) fn project_styles(
             grid_nodes
                 .as_ref()
                 .and_then(|nodes| nodes.grid_item_owners.get(&element.node_id))
-                .and_then(|owner| grid_styles.get(owner))
-                .is_some_and(|grid| {
-                    grid.template_areas.is_some()
-                        || grid.auto_flow == ComputedCssGridAutoFlow::Column
+                .is_some_and(|owner| {
+                    root_html_dense_route_nodes.contains(owner)
+                        || grid_styles.get(owner).is_some_and(|grid| {
+                            grid.template_areas.is_some()
+                                || grid.auto_flow == ComputedCssGridAutoFlow::Column
+                        })
                 })
         }) {
             let placement = element.grid_item_placement.as_ref().ok_or(
@@ -1067,6 +1099,45 @@ struct RuntimeGridNodes {
     grid_item_owners: BTreeMap<NodeId, NodeId>,
 }
 
+fn root_html_dense_grid_nodes(
+    grid_styles: &BTreeMap<NodeId, &ComputedCssGridLayout>,
+    grid_nodes: Option<&RuntimeGridNodes>,
+) -> BTreeSet<NodeId> {
+    let Some(grid_nodes) = grid_nodes else {
+        return BTreeSet::new();
+    };
+    grid_styles
+        .iter()
+        .filter_map(|(node, grid)| {
+            (grid_nodes.grid_containers.contains(node)
+                && matches!(
+                    grid.auto_flow,
+                    ComputedCssGridAutoFlow::RowDense | ComputedCssGridAutoFlow::ColumnDense
+                ))
+            .then_some(*node)
+        })
+        .collect()
+}
+
+fn root_html_dense_placement_route_nodes(
+    dense_grid_nodes: &BTreeSet<NodeId>,
+    grid_nodes: Option<&RuntimeGridNodes>,
+) -> BTreeSet<NodeId> {
+    let Some(grid_nodes) = grid_nodes else {
+        return BTreeSet::new();
+    };
+    let mut related = dense_grid_nodes.clone();
+    let mut pending = related.iter().copied().collect::<Vec<_>>();
+    while let Some(child) = pending.pop() {
+        if let Some(parent) = grid_nodes.grid_item_owners.get(&child).copied()
+            && related.insert(parent)
+        {
+            pending.push(parent);
+        }
+    }
+    related
+}
+
 fn validate_root_html_grid_item_capacity(
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
@@ -1138,11 +1209,51 @@ fn validate_root_html_grid_item_capacity(
             })
             .flatten()
             .unwrap_or(explicit_capacity);
-        if item_count > implicit_row_capacity {
+        let supported_root_dense_placement = matches!(
+            grid.auto_flow,
+            ComputedCssGridAutoFlow::RowDense | ComputedCssGridAutoFlow::ColumnDense
+        ) && grid.template_areas.is_none()
+            && grid.columns_auto_repeat.is_none()
+            && grid.rows_auto_repeat.is_none()
+            && grid.columns.iter().all(is_fixed_implicit_row_track)
+            && grid.rows.iter().all(is_fixed_implicit_row_track)
+            && matches!(
+                &grid.auto_rows,
+                ComputedCssGridAutoRows::Auto | ComputedCssGridAutoRows::LengthPx(_)
+            )
+            && matches!(
+                &grid.auto_columns,
+                ComputedCssGridAutoColumns::Auto | ComputedCssGridAutoColumns::LengthPx(_)
+            );
+        let dense_placement_capacity = if supported_root_dense_placement {
+            let maximum_rows = if matches!(
+                &grid.auto_rows,
+                ComputedCssGridAutoRows::LengthPx(value) if value.is_finite() && *value >= 0.0
+            ) {
+                spinon_layout::GRID_MAX_TRACKS
+            } else {
+                grid.rows.len()
+            };
+            let maximum_columns = if matches!(
+                &grid.auto_columns,
+                ComputedCssGridAutoColumns::LengthPx(value) if value.is_finite() && *value >= 0.0
+            ) {
+                spinon_layout::GRID_MAX_TRACKS
+            } else {
+                grid.columns.len()
+            };
+            maximum_rows
+                .checked_mul(maximum_columns)
+                .unwrap_or(explicit_capacity)
+        } else {
+            explicit_capacity
+        };
+        if item_count > implicit_row_capacity.max(dense_placement_capacity) {
+            let property = root_html_grid_capacity_error_property(grid.auto_flow);
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node: element.node_id,
-                property: "grid-auto-rows",
-                value: "Root HTML Grid item 수가 explicit 및 제한 implicit row 용량을 넘었습니다"
+                property,
+                value: "Root HTML Grid item 수가 explicit 및 제한 implicit track 용량을 넘었습니다"
                     .to_owned(),
             });
         }
@@ -1157,6 +1268,13 @@ fn validate_root_html_grid_item_capacity(
         }
     }
     Ok(())
+}
+
+fn root_html_grid_capacity_error_property(auto_flow: ComputedCssGridAutoFlow) -> &'static str {
+    match auto_flow {
+        ComputedCssGridAutoFlow::ColumnDense => "grid-auto-columns",
+        _ => "grid-auto-rows",
+    }
 }
 
 fn is_grid_profile(profile: ComputedStyleProfile) -> bool {
@@ -1176,11 +1294,16 @@ fn validate_root_html_grid_box_inputs(
     element: &ComputedElementStyle,
     is_grid_container: bool,
     is_grid_item: bool,
+    allow_grid_item_display_grid: bool,
+    is_dense_placement_route_node: bool,
 ) -> Result<(), StyleLayoutError> {
     let node = element.node_id;
+    if is_dense_placement_route_node && (is_grid_container || is_grid_item) {
+        validate_root_html_grid_visibility(node, required(element, "visibility")?)?;
+    }
     if is_grid_item {
         let display = required(element, "display")?;
-        if display != "block" {
+        if display != "block" && !(allow_grid_item_display_grid && display == "grid") {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property: "display",
@@ -1349,6 +1472,20 @@ fn validate_root_html_grid_box_inputs(
         });
     }
     Ok(())
+}
+
+fn validate_root_html_grid_visibility(
+    node: NodeId,
+    visibility: &str,
+) -> Result<(), StyleLayoutError> {
+    if matches!(visibility, "visible" | "hidden") {
+        return Ok(());
+    }
+    Err(StyleLayoutError::UnsupportedComputedValue {
+        node,
+        property: "visibility",
+        value: "Root HTML Grid 제한 경로는 visible 또는 hidden만 지원합니다".to_owned(),
+    })
 }
 
 fn runtime_grid_nodes(
@@ -1729,6 +1866,97 @@ mod root_html_grid_gap_tests {
                 ComputedCssDimension::LengthPx(0.0),
             ),
             Some(0.0)
+        );
+    }
+}
+
+#[cfg(test)]
+mod root_html_grid_capacity_tests {
+    use super::{root_html_grid_capacity_error_property, validate_root_html_grid_visibility};
+    use spinon_core::NodeId;
+    use spinon_style::ComputedCssGridAutoFlow;
+
+    #[test]
+    fn root_html_dense_capacity_rejection_names_the_auto_track_on_the_primary_axis() {
+        assert_eq!(
+            root_html_grid_capacity_error_property(ComputedCssGridAutoFlow::RowDense),
+            "grid-auto-rows"
+        );
+        assert_eq!(
+            root_html_grid_capacity_error_property(ComputedCssGridAutoFlow::ColumnDense),
+            "grid-auto-columns"
+        );
+    }
+
+    #[test]
+    fn root_html_grid_keeps_hidden_layout_participation_but_rejects_collapse() {
+        let node = NodeId::new(11_248).unwrap();
+        assert!(validate_root_html_grid_visibility(node, "visible").is_ok());
+        assert!(validate_root_html_grid_visibility(node, "hidden").is_ok());
+        assert!(matches!(
+            validate_root_html_grid_visibility(node, "collapse"),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                node: actual,
+                property: "visibility",
+                ..
+            }) if actual == node
+        ));
+    }
+}
+
+#[cfg(test)]
+mod root_html_dense_route_tests {
+    use super::{
+        RuntimeGridNodes, root_html_dense_grid_nodes, root_html_dense_placement_route_nodes,
+    };
+    use spinon_core::NodeId;
+    use spinon_style::{
+        ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRows,
+        ComputedCssGridLayout,
+    };
+    use std::collections::{BTreeMap, BTreeSet};
+
+    fn grid(auto_flow: ComputedCssGridAutoFlow) -> ComputedCssGridLayout {
+        ComputedCssGridLayout {
+            columns: Vec::new(),
+            rows: Vec::new(),
+            columns_fixed_repeat_group_count: 0,
+            rows_fixed_repeat_group_count: 0,
+            columns_auto_repeat: None,
+            rows_auto_repeat: None,
+            columns_line_names: Vec::new(),
+            rows_line_names: Vec::new(),
+            template_areas: None,
+            auto_flow,
+            auto_rows: ComputedCssGridAutoRows::Auto,
+            auto_columns: ComputedCssGridAutoColumns::Auto,
+        }
+    }
+
+    #[test]
+    fn dense_grid_owners_stay_distinct_from_sparse_ancestor_route_nodes() {
+        let dense_node = NodeId::new(11_249).unwrap();
+        let sparse_ancestor = NodeId::new(11_250).unwrap();
+        let unrelated_dense = NodeId::new(11_251).unwrap();
+        let dense_grid = grid(ComputedCssGridAutoFlow::RowDense);
+        let sparse_grid = grid(ComputedCssGridAutoFlow::Row);
+        let unrelated_grid = grid(ComputedCssGridAutoFlow::ColumnDense);
+        let styles = BTreeMap::from([
+            (dense_node, &dense_grid),
+            (sparse_ancestor, &sparse_grid),
+            (unrelated_dense, &unrelated_grid),
+        ]);
+        let runtime_nodes = RuntimeGridNodes {
+            grid_containers: BTreeSet::from([dense_node, sparse_ancestor]),
+            grid_item_owners: BTreeMap::from([(dense_node, sparse_ancestor)]),
+            ..RuntimeGridNodes::default()
+        };
+
+        let dense_nodes = root_html_dense_grid_nodes(&styles, Some(&runtime_nodes));
+        assert_eq!(dense_nodes, BTreeSet::from([dense_node]));
+        assert_eq!(
+            root_html_dense_placement_route_nodes(&dense_nodes, Some(&runtime_nodes)),
+            BTreeSet::from([dense_node, sparse_ancestor])
         );
     }
 }

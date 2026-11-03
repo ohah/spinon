@@ -73,6 +73,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains(where: { $0.hasPrefix("--spinon-c1123-grid-scene=") })
             || arguments.contains("--spinon-c114-grid-track-sizing")
             || arguments.contains("--spinon-c111-root-html-percent-columns")
+            || arguments.contains("--spinon-c111-root-html-dense-placement")
             || arguments.contains("--spinon-c1132-grid-named-lines")
             || arguments.contains("--spinon-c1133-grid-template-areas")
             || arguments.contains("--spinon-c11-grid")

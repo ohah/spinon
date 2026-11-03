@@ -1,0 +1,137 @@
+{
+  "schema": "spinon-c11-root-html-dense-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c11rhd-ios-mw0ogycb-54215204-row-dense-positive-implicit-row",
+  "processId": 77056,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "drawable": [
+    1080,
+    2400
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "c1123-row-dense-positive-implicit-row-grid-center",
+      "css": [
+        44,
+        36
+      ],
+      "drawable": [
+        133,
+        109
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-row-dense-positive-implicit-row-item-a-center",
+      "css": [
+        9,
+        9
+      ],
+      "drawable": [
+        28,
+        28
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-row-dense-positive-implicit-row-item-b-center",
+      "css": [
+        57,
+        9
+      ],
+      "drawable": [
+        172,
+        28
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-row-dense-positive-implicit-row-item-c-center",
+      "css": [
+        9,
+        37
+      ],
+      "drawable": [
+        28,
+        112
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-row-dense-positive-implicit-row-item-d-center",
+      "css": [
+        57,
+        37
+      ],
+      "drawable": [
+        172,
+        112
+      ],
+      "rgba": [
+        135,
+        88,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "c1123-row-dense-positive-implicit-row-item-e-center",
+      "css": [
+        9,
+        70
+      ],
+      "drawable": [
+        28,
+        211
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "spinon-c11-root-html-dense-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c11rhd-ios-mw0ogycb-54215204-auto-span-at-track-limit",
+  "processId": 77872,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "drawable": [
+    1080,
+    2400
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 1,
+  "matchedSamples": 1,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "c1123-auto-span-at-track-limit-grid-center",
+      "css": [
+        180,
+        10
+      ],
+      "drawable": [
+        541,
+        31
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

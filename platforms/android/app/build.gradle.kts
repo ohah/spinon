@@ -214,6 +214,17 @@ require(spinonC111RootHtmlPercentColumnsFixtureTestValue != "1" ||
     spinonC04RuntimeGpuValue == "1") {
     "C11.1 Root HTML percentage-column fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
 }
+val spinonC111RootHtmlDensePlacementFixtureTestValue = providers
+    .environmentVariable("SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST")
+    .orElse("0").get()
+require(spinonC111RootHtmlDensePlacementFixtureTestValue == "0" ||
+    spinonC111RootHtmlDensePlacementFixtureTestValue == "1") {
+    "SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC111RootHtmlDensePlacementFixtureTestValue != "1" ||
+    spinonC04RuntimeGpuValue == "1") {
+    "C11.1 Root HTML dense placement fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
+}
 val spinonC11GridMetalSurfacePixelsTestValue = providers
     .environmentVariable("SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST")
     .orElse("0").get()
@@ -228,6 +239,7 @@ val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
     spinonC04RuntimeGpuFixtureTestValue,
     spinonC04RuntimeGpuFailureFixtureValue,
     spinonC111RootHtmlPercentColumnsFixtureTestValue,
+    spinonC111RootHtmlDensePlacementFixtureTestValue,
     providers.environmentVariable("SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST").orElse("0").get(),
     spinonC0412RootHtmlBlockPaintFixtureTestValue,
     spinonC0412RootHtmlTextPaintFixtureTestValue,
@@ -284,6 +296,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment(
         "SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE",
         spinonC04RuntimeGpuFailureFixture.get(),
+    )
+    environment(
+        "SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST",
+        spinonC111RootHtmlDensePlacementFixtureTestValue,
     )
     environment(
         "SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST",

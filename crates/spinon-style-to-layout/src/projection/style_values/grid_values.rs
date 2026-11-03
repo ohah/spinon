@@ -130,6 +130,11 @@ fn validate_root_html_grid_tracks(
     };
     let implicit_rows = root_html_has_supported_implicit_rows(&grid.auto_rows);
     let column_flow = grid.auto_flow == ComputedCssGridAutoFlow::Column;
+    let dense_flow = matches!(
+        grid.auto_flow,
+        ComputedCssGridAutoFlow::RowDense | ComputedCssGridAutoFlow::ColumnDense
+    );
+    let fixed_px_placement_flow = column_flow || dense_flow;
     for (property, tracks, line_names, auto_repeat) in [
         (
             "grid-template-columns",
@@ -170,7 +175,7 @@ fn validate_root_html_grid_tracks(
                 },
             ));
         }
-        if column_flow
+        if fixed_px_placement_flow
             && tracks.iter().any(|track| {
                 !matches!(
                     track,
@@ -181,11 +186,11 @@ fn validate_root_html_grid_tracks(
         {
             return Err(unsupported(
                 property,
-                "Root HTML column-flow mode requires non-empty finite non-negative direct px tracks",
+                "Root HTML column/dense placement mode requires non-empty finite non-negative direct px tracks",
             ));
         }
     }
-    if column_flow {
+    if fixed_px_placement_flow {
         for (property, fixed_repeat_group_count) in [
             (
                 "grid-template-columns",
@@ -196,7 +201,7 @@ fn validate_root_html_grid_tracks(
             if fixed_repeat_group_count != 0 {
                 return Err(unsupported(
                     property,
-                    "Root HTML column-flow mode excludes repeat() in explicit tracks",
+                    "Root HTML column/dense placement mode excludes repeat() in explicit tracks",
                 ));
             }
         }
@@ -210,6 +215,26 @@ fn validate_root_html_grid_tracks(
             "Root HTML column-flow mode excludes template areas and non-auto implicit rows",
         ));
     }
+    if dense_flow {
+        if grid.template_areas.is_some() {
+            return Err(unsupported(
+                "grid-template-areas",
+                "Root HTML dense placement mode excludes template areas",
+            ));
+        }
+        if !root_html_dense_auto_rows_supported(&grid.auto_rows) {
+            return Err(unsupported(
+                "grid-auto-rows",
+                "Root HTML dense placement mode requires auto or one finite non-negative fixed px implicit row size",
+            ));
+        }
+        if !root_html_dense_auto_columns_supported(&grid.auto_columns) {
+            return Err(unsupported(
+                "grid-auto-columns",
+                "Root HTML dense placement mode requires auto or one finite non-negative fixed px implicit column size",
+            ));
+        }
+    }
     if implicit_rows && grid.template_areas.is_some() {
         return Err(unsupported(
             "grid-auto-rows",
@@ -219,7 +244,7 @@ fn validate_root_html_grid_tracks(
     if let Some(areas) = &grid.template_areas {
         validate_root_html_named_area_template(node, grid, areas)?;
     }
-    if grid.auto_flow != ComputedCssGridAutoFlow::Row && !column_flow {
+    if grid.auto_flow != ComputedCssGridAutoFlow::Row && !column_flow && !dense_flow {
         return Err(unsupported(
             "grid-auto-flow",
             "Root HTML Grid에서는 기본 row auto-placement만 지원합니다",
@@ -256,13 +281,32 @@ fn validate_root_html_grid_tracks(
             "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage/fraction auto columns",
         ));
     }
-    if !column_flow && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
+    if !column_flow && !dense_flow && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+    {
         return Err(unsupported(
             "grid-auto-columns",
             "Root HTML row-flow mode excludes implicit column sizing",
         ));
     }
     Ok(())
+}
+
+fn root_html_dense_auto_rows_supported(auto_rows: &ComputedCssGridAutoRows) -> bool {
+    match auto_rows {
+        ComputedCssGridAutoRows::Auto => true,
+        ComputedCssGridAutoRows::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridAutoRows::TrackList(_) | ComputedCssGridAutoRows::Unsupported(_) => false,
+    }
+}
+
+fn root_html_dense_auto_columns_supported(auto_columns: &ComputedCssGridAutoColumns) -> bool {
+    match auto_columns {
+        ComputedCssGridAutoColumns::Auto => true,
+        ComputedCssGridAutoColumns::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridAutoColumns::TrackList(_) | ComputedCssGridAutoColumns::Unsupported(_) => {
+            false
+        }
+    }
 }
 
 fn is_supported_root_html_explicit_track(track: &ComputedCssGridTrackSize) -> bool {
@@ -963,12 +1007,18 @@ fn project_grid_layout_with_reservations(
         (Vec::new(), Vec::new())
     };
     let sparse_row = profile == ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementV1;
-    let dense_auto_placement = matches!(
-        profile,
-        ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
-            | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
-            | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
-    );
+    let root_html_dense_flow = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && matches!(
+            grid.auto_flow,
+            ComputedCssGridAutoFlow::RowDense | ComputedCssGridAutoFlow::ColumnDense
+        );
+    let dense_auto_placement = root_html_dense_flow
+        || matches!(
+            profile,
+            ComputedStyleProfile::RuntimeBlockFlexGridAutoPlacementDenseV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        );
     let allow_template_area_track_sizing = profile
         == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         && grid.template_areas.is_some();
@@ -1109,6 +1159,14 @@ fn project_grid_layout_with_reservations(
                     || has_implicit_template_area_line_aliases(grid) =>
             {
                 GridPlacementMode::TemplateGrid
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                if matches!(
+                    grid.auto_flow,
+                    ComputedCssGridAutoFlow::RowDense | ComputedCssGridAutoFlow::ColumnDense
+                ) =>
+            {
+                GridPlacementMode::RootHtmlDenseAutoPlacementV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 if grid.auto_flow == ComputedCssGridAutoFlow::Column =>

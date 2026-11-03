@@ -35,14 +35,65 @@ export function cssPixelCenterToSurfacePixel(cssPixel, surfaceSizePx, viewportSi
   return pixel;
 }
 
+function closeTo(actualValue, expectedValue, label, tolerance = 0.01) {
+  const actual = Number(actualValue);
+  assert.ok(Number.isFinite(actual), `${label} 숫자가 잘못되었습니다: ${actualValue}`);
+  assert.ok(Math.abs(actual - expectedValue) <= tolerance,
+    `${label} 불일치: 실제=${actual} 기대=${expectedValue} 허용=${tolerance}`);
+}
+
+function parseCssSize(value, label) {
+  const match = value?.match(/^(-?\d+(?:\.\d+)?)x(-?\d+(?:\.\d+)?)$/);
+  assert.ok(match, `${label} CSS 크기 형식이 잘못되었습니다: ${value}`);
+  return [Number(match[1]), Number(match[2])];
+}
+
+export function compareC11AndroidRootHtmlEnvironment(log, {
+  viewportCssPx, density, surfaceScale,
+}) {
+  assert.ok(viewportCssPx && Number.isFinite(viewportCssPx.width) && viewportCssPx.width > 0
+    && Number.isFinite(viewportCssPx.height) && viewportCssPx.height > 0,
+  'Root HTML runtime CSS viewport가 잘못되었습니다.');
+  assert.ok(Number.isFinite(density) && density > 0, 'Android density가 잘못되었습니다.');
+  assert.ok(Array.isArray(surfaceScale) && surfaceScale.length === 2
+    && surfaceScale.every((value) => Number.isFinite(value) && value > 0),
+  'Android surface scale이 잘못되었습니다.');
+  closeTo(surfaceScale[0], density, 'surface x scale');
+  closeTo(surfaceScale[1], density, 'surface y scale');
+
+  const marker = 'SPINON_C0410_ENVIRONMENT ';
+  const reports = log.split(/\r?\n/).filter((line) => line.includes(marker));
+  assert.ok(reports.length > 0, 'C0410 Root HTML environment 보고가 없습니다.');
+  for (const [index, line] of reports.entries()) {
+    const fields = fieldsAfter(line, marker);
+    assert.equal(fields.status, '0', `environment ${index + 1}: 상태가 성공이 아닙니다.`);
+    assert.equal(fields.root_html_environment, 'true',
+      `environment ${index + 1}: Root HTML environment가 아닙니다.`);
+    for (const field of ['viewport', 'visual_viewport', 'root_frame_css_px',
+      'render_viewport_css_px']) {
+      const [width, height] = parseCssSize(fields[field], `environment ${index + 1}/${field}`);
+      closeTo(width, viewportCssPx.width, `environment ${index + 1}/${field} width`);
+      closeTo(height, viewportCssPx.height, `environment ${index + 1}/${field} height`);
+    }
+    closeTo(fields.device_scale_factor, density,
+      `environment ${index + 1}/device scale factor`);
+    closeTo(fields.physical_scale, density, `environment ${index + 1}/physical scale`);
+    closeTo(fields.page_scale, 1, `environment ${index + 1}/page scale`);
+  }
+  return { reports: reports.length, viewportCssPx: [viewportCssPx.width, viewportCssPx.height],
+    density, deviceScaleFactor: density, pageScale: 1, physicalScale: density,
+    surfaceScale };
+}
+
 export function compareC11AndroidPixelCopyScene(log, {
   scene, runID, pngBytes, viewportCssPx,
   markerPrefix = 'C111', cacheDirectory = 'c11-grid-surface-pixel-matrix',
 }) {
-  assert.ok(['C111', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
+  assert.ok(['C111', 'C111RHD', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
   assert.ok(['c11-grid-surface-pixel-matrix', 'c1122-grid-surface-pixel-matrix',
     'c1123-grid-surface-pixel-matrix', 'c1131-grid-surface-pixel-matrix',
-    'c1132-grid-surface-pixel-matrix', 'c1133-grid-surface-pixel-matrix']
+    'c1132-grid-surface-pixel-matrix', 'c1133-grid-surface-pixel-matrix',
+    'c111-root-html-dense-surface-pixel-matrix']
     .includes(cacheDirectory), 'Android 표면 cache 경로가 허용되지 않습니다.');
   const marker = `SPINON_${markerPrefix}_GRID_PIXEL_MATRIX`;
   const BEGIN = `${marker}_BEGIN `;

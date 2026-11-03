@@ -79,7 +79,7 @@ export function validateC11IOSChromeOracle({ fixture, referenceBytes, screenshot
 }
 
 export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix = 'C111' }) {
-  assert.ok(['C111', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Metal pixel marker prefix가 잘못되었습니다.');
+  assert.ok(['C111', 'C111RHD', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Metal pixel marker prefix가 잘못되었습니다.');
   const marker = `SPINON_${markerPrefix}_METAL_PIXEL`;
   const BEGIN = `${marker}_BEGIN `;
   const SAMPLE = `${marker}_SAMPLE `;
@@ -159,7 +159,9 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix 
   });
 
   return {
-    schema: markerPrefix === 'C1133'
+    schema: markerPrefix === 'C111RHD'
+      ? 'spinon-c11-root-html-dense-ios-metal-surface-pixels/v1'
+      : markerPrefix === 'C1133'
       ? 'spinon-c11-3-3-ios-metal-surface-pixels/v1'
       : markerPrefix === 'C1132'
       ? 'spinon-c11-3-2-ios-metal-surface-pixels/v1'

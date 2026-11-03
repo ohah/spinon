@@ -1,0 +1,96 @@
+{
+  "status": "matched",
+  "scene": "row-dense-fixed-column",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-row-dense-fixed-column",
+  "processId": 3493,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 4,
+  "matchedSamples": 4,
+  "maximumChannelError": 0,
+  "pngSha256": "1914702454193a100be0991d876f514499d09c1884e667b103708d54b99cd06f",
+  "samples": [
+    {
+      "id": "c1123-row-dense-fixed-column-grid-center",
+      "css": [
+        64,
+        22
+      ],
+      "pixel": [
+        169,
+        59
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-fixed-column-locked-a-center",
+      "css": [
+        53,
+        9
+      ],
+      "pixel": [
+        140,
+        24
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-fixed-column-locked-b-center",
+      "css": [
+        53,
+        33
+      ],
+      "pixel": [
+        140,
+        87
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "c1123-row-dense-fixed-column-locked-c-center",
+      "css": [
+        53,
+        57
+      ],
+      "pixel": [
+        140,
+        150
+      ],
+      "rgba": [
+        25,
+        169,
+        116,
+        255
+      ]
+    }
+  ],
+  "png": "row-dense-fixed-column-surface-pixels.png"
+}

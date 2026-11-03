@@ -7,6 +7,7 @@ import test from 'node:test';
 
 import {
   compareC11AndroidPixelCopyScene,
+  compareC11AndroidRootHtmlEnvironment,
   cssPixelCenterToSurfacePixel,
 } from './compare-c11-android-surface-pixel-matrix.mjs';
 
@@ -26,6 +27,20 @@ const runID = 'c11-android-matrix-run-001';
 const pngPath = `/data/user/0/dev.spinon.bootstrap/cache/c11-grid-surface-pixel-matrix/${scene.id}-${runID}.png`;
 const c1131Fixture = JSON.parse(readFileSync(resolve(repositoryRoot,
   'tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json'), 'utf8'));
+const denseMatrix = JSON.parse(readFileSync(resolve(repositoryRoot,
+  'tests/fixtures/css/c11/root-html-grid-dense-auto-placement-runtime-matrix-v1.json'), 'utf8'));
+const denseCase = denseMatrix.cases.find(({ id }) => id === 'row-dense-hole-fill');
+const denseScene = { id: denseCase.id, samples: denseCase.pixelSamples };
+const denseViewportCssPx = denseMatrix.viewportCssPx;
+const denseSurface = { width: 720, height: 1600 };
+const densePixels = denseScene.samples.map((sample) => ({
+  ...sample,
+  x: cssPixelCenterToSurfacePixel(sample.xCssPx, denseSurface.width, denseViewportCssPx.width),
+  y: cssPixelCenterToSurfacePixel(sample.yCssPx, denseSurface.height, denseViewportCssPx.height),
+}));
+const densePngBytes = testPng(denseSurface.width, denseSurface.height, densePixels);
+const denseRunID = 'c111rhd-android-matrix-test-001';
+const densePngPath = `/data/user/0/dev.spinon.bootstrap/cache/c111-root-html-dense-surface-pixel-matrix/${denseScene.id}-${denseRunID}.png`;
 const c1131Scene = { id: c1131Fixture.sceneId, samples: c1131Fixture.samples };
 const c1131ViewportCssPx = c1131Fixture.runtime.viewportCssPx;
 const c1131Surface = { width: 900, height: 675 };
@@ -125,6 +140,35 @@ function compareC1131(log = c1131ValidLog(), overrides = {}) {
   });
 }
 
+function denseValidLog() {
+  const pngHash = createHash('sha256').update(densePngBytes).digest('hex');
+  return [
+    `SPINON_C111RHD_GRID_PIXEL_MATRIX_BEGIN run_id=${denseRunID} pid=50125 scene=${denseScene.id} generation=7 width=${denseSurface.width} height=${denseSurface.height} viewport_width=${denseViewportCssPx.width} viewport_height=${denseViewportCssPx.height} scale_x=2 scale_y=2 density=2 samples=${denseScene.samples.length}`,
+    `SPINON_C111RHD_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${denseRunID} scene=${denseScene.id} generation=7 width=${denseSurface.width} height=${denseSurface.height} viewport_width=${denseViewportCssPx.width} viewport_height=${denseViewportCssPx.height} scale_x=2 scale_y=2 density=2 attempts=1 png=${densePngPath} sha256=${pngHash}`,
+    ...denseScene.samples.map((sample) => {
+      const mapped = densePixels.find(({ id }) => id === sample.id);
+      return `SPINON_C111RHD_GRID_PIXEL_MATRIX_SAMPLE run_id=${denseRunID} pid=50125 scene=${denseScene.id} generation=7 sample=${sample.id} css_x=${sample.xCssPx} css_y=${sample.yCssPx} x=${mapped.x} y=${mapped.y} rgba=${sample.rgba.join(',')}`;
+    }),
+    `SPINON_C111RHD_GRID_PIXEL_MATRIX_SUMMARY status=captured run_id=${denseRunID} scene=${denseScene.id} generation=7 expected_samples=${denseScene.samples.length} observed_samples=${denseScene.samples.length}`,
+  ].join('\n');
+}
+
+function compareDense(log = denseValidLog(), overrides = {}) {
+  return compareC11AndroidPixelCopyScene(log, {
+    scene: denseScene,
+    runID: denseRunID,
+    pngBytes: densePngBytes,
+    viewportCssPx: denseViewportCssPx,
+    markerPrefix: 'C111RHD',
+    cacheDirectory: 'c111-root-html-dense-surface-pixel-matrix',
+    ...overrides,
+  });
+}
+
+function denseEnvironmentLog({ viewport = '360x800.00006', scale = 2.625 } = {}) {
+  return `SPINON_C0410_ENVIRONMENT status=0 root_html_environment=true viewport=${viewport} visual_viewport=360x800 device_scale_factor=${scale} page_scale=1 physical_scale=${scale} root_frame_css_px=360x800 render_viewport_css_px=360x800.00006`;
+}
+
 test('accepts one PixelCopy PNG and all exact pinned Chrome scene pixels', () => {
   const result = compare();
   assert.equal(result.status, 'matched');
@@ -196,6 +240,54 @@ test('C11.3.1 runtime이 다섯 표본 exact를 보고하지 않으면 거부한
   assert.throws(() => compareC1131(c1131ValidLog().replace('exact=true', 'exact=false')));
   assert.throws(() => compareC1131(c1131ValidLog().replace('expected=40,102,246,255',
     'expected=41,102,246,255')));
+});
+
+test('C11.1 Root HTML dense PixelCopy 전용 표식과 cache 경로를 Chrome 색상에 대조한다', () => {
+  const result = compareDense();
+  assert.equal(result.status, 'matched');
+  assert.equal(result.markerPrefix, 'C111RHD');
+  assert.equal(result.scene, denseScene.id);
+  assert.equal(result.expectedSamples, denseScene.samples.length);
+  assert.equal(result.maximumChannelError, 0);
+});
+
+test('C11.1 Root HTML dense PixelCopy가 잘못된 표본 색 또는 경로를 거부한다', () => {
+  const sample = denseScene.samples[0];
+  assert.throws(() => compareDense(denseValidLog().replace(
+    `rgba=${sample.rgba.join(',')}`, 'rgba=1,2,3,255')));
+  assert.throws(() => compareDense(denseValidLog().replace(
+    'c111-root-html-dense-surface-pixel-matrix', 'other-cache')));
+});
+
+test('C11.1 Android environment가 CSS viewport와 PixelCopy density를 함께 맞춘다', () => {
+  const result = compareC11AndroidRootHtmlEnvironment(denseEnvironmentLog(), {
+    viewportCssPx: denseViewportCssPx,
+    density: 2.625,
+    surfaceScale: [2.625, 2.625],
+  });
+  assert.equal(result.reports, 1);
+  assert.deepEqual(result.viewportCssPx, [360, 800]);
+  assert.equal(result.physicalScale, 2.625);
+});
+
+test('C11.1 Android environment가 CSS viewport를 density로 줄인 옛 통과 표본을 거부한다', () => {
+  assert.throws(() => compareC11AndroidRootHtmlEnvironment(denseEnvironmentLog({
+    viewport: '137.14285x304.7619',
+  }), {
+    viewportCssPx: denseViewportCssPx,
+    density: 2.625,
+    surfaceScale: [2.625, 2.625],
+  }));
+});
+
+test('C11.1 Android environment가 1x draw로 찍힌 실패 표본을 거부한다', () => {
+  assert.throws(() => compareC11AndroidRootHtmlEnvironment(denseEnvironmentLog({
+    scale: 1,
+  }), {
+    viewportCssPx: denseViewportCssPx,
+    density: 2.625,
+    surfaceScale: [2.625, 2.625],
+  }));
 });
 
 test('isolates the requested run from unrelated app processes', () => {

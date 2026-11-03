@@ -1,0 +1,45 @@
+{
+  "status": "matched",
+  "scene": "auto-span-at-track-limit",
+  "runID": "c11rhd-avd-mw0og13y-a2ee6adb-auto-span-at-track-limit",
+  "processId": 4092,
+  "markerPrefix": "C111RHD",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    360,
+    800
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 1,
+  "matchedSamples": 1,
+  "maximumChannelError": 0,
+  "pngSha256": "4df13018a52a7b6445e24437cd30210275984b468a010fb3983454736041d82a",
+  "samples": [
+    {
+      "id": "c1123-auto-span-at-track-limit-grid-center",
+      "css": [
+        180,
+        10
+      ],
+      "pixel": [
+        473,
+        27
+      ],
+      "rgba": [
+        237,
+        241,
+        247,
+        255
+      ]
+    }
+  ],
+  "png": "auto-span-at-track-limit-surface-pixels.png"
+}

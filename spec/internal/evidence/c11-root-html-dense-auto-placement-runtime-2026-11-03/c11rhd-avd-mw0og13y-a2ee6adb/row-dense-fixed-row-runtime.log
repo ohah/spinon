@@ -1,0 +1,9 @@
+11-03 21:41:53.178  3435  3455 I SpinonBootstrap: SPINON_C111_ROOT_HTML_DENSE_HOST scene_id=row-dense-fixed-row session=ready owner_tid=3457 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=2721 session_startup_us=7697
+11-03 21:41:53.186  3435  3455 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 CSS runtime 장면 생성 실패: unsupported_grid_auto_columns node=Some(17) property=Some("grid-auto-columns")
+11-03 21:41:53.186  3435  3455 I SpinonBootstrap: SPINON_C111_ROOT_HTML_DENSE_REJECTION run_id=c11rhd-avd-mw0og13y-a2ee6adb-row-dense-fixed-row scene_id=row-dense-fixed-row expected=true code=unsupported_grid_auto_columns property=grid-auto-columns status=-11 CSS runtime 장면 생성 실패: unsupported_grid_auto_columns node=Some(17) property=Some("grid-auto-columns")
+11-03 21:41:53.247  3435  3435 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+11-03 21:41:53.247  3435  3455 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 CSS runtime 장면 생성 실패: unsupported_grid_auto_columns node=Some(17) property=Some("grid-auto-columns")
+11-03 21:41:53.247  3435  3455 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=360.0x800.0 scale=2.625 dark=false sequence=2 status=-11 CSS runtime 장면 생성 실패: unsupported_grid_auto_columns node=Some(17) property=Some("grid-auto-columns")
+11-03 21:41:53.247  3435  3435 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=945x2100 changed=true
+11-03 21:41:53.247  3435  3455 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 CSS runtime 장면 생성 실패: unsupported_grid_auto_columns node=Some(17) property=Some("grid-auto-columns")
+11-03 21:41:53.247  3435  3455 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=360.0x800.0 scale=2.625 dark=false sequence=4 status=-11 CSS runtime 장면 생성 실패: unsupported_grid_auto_columns node=Some(17) property=Some("grid-auto-columns")

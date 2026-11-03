@@ -314,28 +314,44 @@ fn root_html_column_flow_rejects_unsupported_auto_columns_and_row_flow_sizing() 
 }
 
 #[test]
-fn root_html_column_flow_rejects_dense_implicit_and_non_px_combinations() {
+fn root_html_dense_flows_select_the_restricted_mode_and_project_fixed_px_auto_tracks() {
     let node = NodeId::new(11_241).unwrap();
-    for flow in [
-        ComputedCssGridAutoFlow::RowDense,
-        ComputedCssGridAutoFlow::ColumnDense,
+    for (flow, expected_flow) in [
+        (
+            ComputedCssGridAutoFlow::RowDense,
+            spinon_layout::GridAutoFlow::RowDense,
+        ),
+        (
+            ComputedCssGridAutoFlow::ColumnDense,
+            spinon_layout::GridAutoFlow::ColumnDense,
+        ),
     ] {
         let mut input = grid(
             vec![ComputedCssGridTrackSize::LengthPx(30.0)],
             vec![ComputedCssGridTrackSize::LengthPx(20.0)],
         );
         input.auto_flow = flow;
-        assert!(matches!(
-            project_grid_layout(
-                node,
-                &input,
-                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
-            ),
-            Err(crate::StyleLayoutError::UnsupportedComputedValue {
-                property: "grid-auto-flow",
-                ..
-            })
-        ));
+        input.auto_rows = ComputedCssGridAutoRows::LengthPx(12.0);
+        input.auto_columns = ComputedCssGridAutoColumns::LengthPx(14.0);
+        let projected = project_grid_layout(
+            node,
+            &input,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        )
+        .unwrap();
+        assert_eq!(projected.auto_flow, expected_flow);
+        assert_eq!(
+            projected.placement_mode,
+            spinon_layout::GridPlacementMode::RootHtmlDenseAutoPlacementV1
+        );
+        assert_eq!(
+            projected.auto_rows,
+            spinon_layout::GridAutoRows::LengthPx(12.0)
+        );
+        assert_eq!(
+            projected.auto_columns,
+            spinon_layout::GridAutoColumns::LengthPx(14.0)
+        );
     }
 
     let mut percentage = grid(
@@ -369,6 +385,45 @@ fn root_html_column_flow_rejects_dense_implicit_and_non_px_combinations() {
         ),
         Err(crate::StyleLayoutError::UnsupportedComputedValue {
             property: "grid-auto-flow",
+            ..
+        })
+    ));
+}
+
+#[test]
+fn root_html_dense_rejects_non_px_explicit_and_implicit_tracks() {
+    let node = NodeId::new(11_247).unwrap();
+    let mut percentage = grid(
+        vec![ComputedCssGridTrackSize::Percentage(0.5)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    percentage.auto_flow = ComputedCssGridAutoFlow::RowDense;
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &percentage,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            property: "grid-template-columns",
+            ..
+        })
+    ));
+
+    let mut percentage_auto_row = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(30.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+    );
+    percentage_auto_row.auto_flow = ComputedCssGridAutoFlow::RowDense;
+    percentage_auto_row.auto_rows = ComputedCssGridAutoRows::LengthPx(-1.0);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &percentage_auto_row,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            property: "grid-auto-rows",
             ..
         })
     ));

@@ -15,7 +15,7 @@
 11. **`order`:** 우선순위 정렬을 일부만 구현할 위험. **통과** — nonzero `order`는 거부하고 0만 지원한다.
 12. **Invalid line input:** 음수 또는 named line을 positive-line 지원으로 넓힐 위험. **통과** — 둘 다 명시적으로 fail-closed다.
 13. **Unsupported combinations:** areas/repeats를 우연히 dense path로 받아들일 위험. **통과** — 현재 slice에서 제외하고 기존 거부를 보존한다.
-14. **Implicit track creation:** 둘 이상의 implicit axis, track list cycling, 또는 새 track이 필요한데 해당 축에 `auto`를 쓰는 입력을 허용할 위험. **수정** — 기존 `row-dense-fixed-row`는 implicit column이 필요하고 `grid-auto-columns:auto`라 `unsupported_grid_auto_columns`가 기대값이다. `grid-auto-rows`와 `grid-auto-columns` 각각 `auto`는 해당 축에서 implicit track을 만들지 않는 경우에만 허용한다고 계획을 좁혔다. 단일 px 값과 10,000 combined-track bound도 유지한다.
+14. **Implicit track creation:** 둘 이상의 implicit axis, track list cycling, 또는 새 track이 필요한데 해당 축에 `auto`를 쓰는 입력을 허용할 위험. **수정** — 기존 `row-dense-fixed-row`는 implicit column이 필요하고 `grid-auto-columns:auto`라 `unsupported_grid_auto_columns`가 기대값이다. `grid-auto-rows`와 `grid-auto-columns` 각각 `auto`는 해당 축에서 implicit track을 만들지 않는 경우에만 허용한다고 계획을 좁혔다. 단일 px 값과 10,000 축별 track 상한을 유지한다.
 15. **Nested mixed flow:** 한 nested container의 실패/성공이 다른 container를 오염시킬 위험. **통과** — per-container 검증과 기존 nested candidate scene을 포함한다.
 16. **Atomic rejection:** failure 뒤 partial track/frame/draw output을 남길 위험. **통과** — layout publication까지 부분 결과가 없어야 한다.
 17. **Allocation failure:** reserve 실패 후 같은 worker 재사용이 손상될 위험. **통과** — missing handle와 allocation failure를 negative control에 포함한다.
@@ -23,4 +23,4 @@
 19. **Platform evidence:** AVD/Simulator 표본을 실기기나 compositor 이후 결과로 부를 위험. **통과** — software renderer와 pre-compositor 한계를 기록한다.
 20. **Completion inflation:** limited dense route를 C11.1/C11 완료로 올릴 위험. **통과** — checkbox와 `72/213` 유지 조건을 적었다.
 
-**결론:** 검토에서 implicit `auto` sizing 허용 범위가 넓은 점을 찾아 계획을 수정했다. 현재 계획은 각 축의 `auto` sizing을 해당 축에 implicit track을 만들지 않는 경우에 한정해 기존 C11.2.3 `auto-track-no-implicit` 성공 및 `row-dense-fixed-row` 거부 계약을 구분한다. Implementation/runtime review와 PR diff review는 별도로 수행해야 한다.
+**결론:** 검토에서 implicit `auto` sizing 허용 범위가 넓은 점을 찾아 계획을 수정했다. 구현 단계에서는 C11.2.3의 10,000 한계가 두 축 합산이 아닌 축별이라는 점도 원본 normalizer와 `auto-span-at-track-limit` 성공 scene에서 확인해 문구를 바로잡았다. 현재 계획은 각 축의 `auto` sizing을 해당 축에 implicit track을 만들지 않는 경우에 한정해 기존 `auto-track-no-implicit` 성공 및 `row-dense-fixed-row` 거부 계약을 구분한다. Implementation/runtime review와 PR diff review는 별도로 수행해야 한다.

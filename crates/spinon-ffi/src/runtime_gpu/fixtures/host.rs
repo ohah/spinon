@@ -2,6 +2,22 @@ use super::super::RuntimeGpuHost;
 use spinon_runtime::RuntimeSession;
 
 impl RuntimeGpuHost {
+    #[cfg(feature = "c11-1-root-html-dense-placement-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c11_1_root_html_dense_placement_fixture(
+        scene_id: &str,
+    ) -> Result<(Self, String), String> {
+        let source =
+            super::c11_1_root_html_dense::c11_1_root_html_dense_placement_source(scene_id)?;
+        let (mut host, report) = Self::new_with_root_html(source)?;
+        host.include_node_frame_report = true;
+        host.include_paint_order_report = true;
+        #[cfg(feature = "c11-grid-metal-surface-pixels-test")]
+        {
+            host.surface_pixel_readback_test = true;
+        }
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c11-1-root-html-percent-columns-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c11_1_root_html_percent_columns_fixture()
     -> Result<(Self, String), String> {
