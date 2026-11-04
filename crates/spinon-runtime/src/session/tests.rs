@@ -5,6 +5,7 @@ use super::{
     operation_report,
 };
 use crate::host::{DocumentCommitCallback, HostDocumentBridge};
+use spinon_core::HostNodeKind;
 use std::ffi::{CStr, c_char, c_void};
 use std::hash::{Hash, Hasher};
 use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
@@ -412,6 +413,101 @@ fn root_html_canvas_uses_computed_root_scheme_and_exact_chrome_srgb_bytes() {
     assert_eq!(
         canvas.cascade_key,
         session.ua_cascade_snapshot().completed.unwrap().key
+    );
+}
+
+#[test]
+fn c11_1_default_root_html_canvas_cascades_precomparison_fixture() {
+    const SOURCE: &str = include_str!(
+        "../../../../tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-precomparison.html"
+    );
+    let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(SOURCE)
+        .expect("C11.1 HTML fixture should initialize the default Root HTML runtime");
+    let result = session.resolve_root_html_canvas(
+        1080.0,
+        2209.0,
+        3.0,
+        spinon_style::CssMediaEnvironment::MOBILE,
+        Duration::from_secs(5),
+    );
+    assert!(
+        result.is_ok(),
+        "canvas={result:?}; cascade={:?}; layout={:?}",
+        session.ua_cascade_snapshot(),
+        session.layout_snapshot()
+    );
+    let canvas = result.expect("the default Root HTML canvas should resolve");
+    let layout = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        layout.state,
+        super::RuntimeLayoutState::Ready,
+        "{layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let cascade = session.ua_cascade_snapshot();
+    let cascade = cascade
+        .completed
+        .expect("the fixture cascade should complete");
+    let completed_layout = layout
+        .completed
+        .expect("the fixture layout should complete");
+    assert_eq!(canvas.cascade_key, cascade.key);
+    assert_eq!(completed_layout.key, cascade.key);
+
+    let parsed_document = HostDocumentBridge::new_with_root_html(SOURCE)
+        .expect("the same fixture should produce an id lookup snapshot");
+    let parsed_document = parsed_document.snapshot();
+    let mut ids_by_name = std::collections::BTreeMap::new();
+    let mut pending = parsed_document.root_children().collect::<Vec<_>>();
+    while let Some(handle) = pending.pop() {
+        let Some(node) = parsed_document.node(handle) else {
+            continue;
+        };
+        if let HostNodeKind::Element(element) = node.kind()
+            && let Some((_, value)) = element
+                .attributes()
+                .iter()
+                .find(|(name, _)| name.namespace().is_none() && name.local_name() == "id")
+        {
+            ids_by_name.insert(value.to_string_lossy(), handle.id().get());
+        }
+        if let Some(children) = parsed_document.children(handle) {
+            pending.extend(children);
+        }
+    }
+    let frame_for_id = |id: &str| {
+        let node_id = ids_by_name[id];
+        let frame = completed_layout
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == node_id)
+            .unwrap_or_else(|| panic!("layout frame missing for #{id}"));
+        [frame.x, frame.y, frame.width, frame.height]
+    };
+    for (id, expected) in [
+        ("width-ratio", [0.0, 0.0, 70.0, 30.0]),
+        ("width-ratio-long", [10.0, 0.0, 60.0, 30.0]),
+        ("width-control", [0.0, 30.0, 70.0, 10.0]),
+        ("width-control-long", [10.0, 30.0, 60.0, 10.0]),
+        ("height-ratio", [0.0, 40.0, 70.0, 30.0]),
+        ("height-ratio-long", [10.0, 40.0, 60.0, 30.0]),
+        ("height-control", [0.0, 70.0, 70.0, 30.0]),
+    ] {
+        assert_eq!(frame_for_id(id), expected, "#{id}");
+    }
+    let height_control_long = frame_for_id("height-control-long");
+    assert_eq!(
+        [
+            height_control_long[0],
+            height_control_long[1],
+            height_control_long[3]
+        ],
+        [10.0, 70.0, 30.0],
+        "#height-control-long keeps its explicit height and second-column origin"
+    );
+    assert!(
+        height_control_long[2] > 0.0 && height_control_long[2] < 60.0,
+        "#height-control-long keeps its platform monospace intrinsic width: {height_control_long:?}"
     );
 }
 

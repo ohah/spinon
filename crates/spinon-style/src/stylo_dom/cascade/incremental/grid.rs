@@ -38,6 +38,7 @@ struct ComputedGridTracks {
 pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_integer_repeat: bool,
     pub(super) allow_intrinsic_tracks: bool,
+    pub(super) allow_root_html_single_auto_row: bool,
     pub(super) allow_root_html_bounded_minmax_tracks: bool,
     pub(super) allow_root_html_fit_content_tracks: bool,
     pub(super) allow_auto_repeat: bool,
@@ -101,6 +102,7 @@ pub(super) fn computed_grid_layout(
     let GridLayoutProfileOptions {
         allow_integer_repeat,
         allow_intrinsic_tracks,
+        allow_root_html_single_auto_row,
         allow_root_html_bounded_minmax_tracks,
         allow_root_html_fit_content_tracks,
         allow_auto_repeat,
@@ -164,7 +166,8 @@ pub(super) fn computed_grid_layout(
         rows_value,
         GridTrackComputeOptions {
             allow_integer_repeat,
-            allow_intrinsic_tracks,
+            allow_intrinsic_tracks: allow_intrinsic_tracks
+                || (allow_root_html_single_auto_row && rows_value == "auto"),
             allow_root_html_bounded_minmax_tracks,
             allow_root_html_fit_content_tracks,
             allow_auto_repeat,

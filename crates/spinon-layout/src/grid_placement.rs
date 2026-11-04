@@ -135,6 +135,7 @@ pub(super) fn normalize_grid_layout(
         if !matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
@@ -158,6 +159,7 @@ pub(super) fn normalize_grid_layout(
         if matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
         ) {

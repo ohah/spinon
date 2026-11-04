@@ -1,0 +1,85 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Root HTML Grid direct-text aspect-ratio precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+}
+html, body { margin: 0; }
+body {
+  color: #111;
+  background-color: #fff;
+}
+.grid {
+  display: grid;
+  margin: 0;
+  width: 70px;
+  grid-template-columns: 10px 60px;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  gap: 0;
+  align-items: start;
+  justify-items: start;
+}
+.item {
+  color: #111;
+  background-color: #f1f5f9;
+  font-family: Ahem;
+  font-size: 10px;
+  line-height: 10px;
+  white-space: nowrap;
+}
+.width-ratio { width: 60px; height: auto; aspect-ratio: 2 / 1; background-color: #dbeafe; }
+.width-control { width: 60px; height: auto; background-color: #dcfce7; }
+.height-ratio { width: auto; height: 30px; aspect-ratio: 2 / 1; background-color: #ffedd5; }
+.height-control { width: auto; height: 30px; background-color: #ede9fe; }
+</style>
+
+<div id="width-ratio" class="grid">
+  <div id="width-ratio-short" class="item">A</div>
+  <div id="width-ratio-long" class="item width-ratio">AAAA</div>
+</div>
+<div id="width-control" class="grid">
+  <div id="width-control-short" class="item">A</div>
+  <div id="width-control-long" class="item width-control">AAAA</div>
+</div>
+<div id="height-ratio" class="grid">
+  <div id="height-ratio-short" class="item">A</div>
+  <div id="height-ratio-long" class="item height-ratio">AAAA</div>
+</div>
+<div id="height-control" class="grid">
+  <div id="height-control-short" class="item">A</div>
+  <div id="height-control-long" class="item height-control">AAAA</div>
+</div>
+
+<script>
+window.captureRootHtmlGridTextAspectRatio = () => {
+  const box = (element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  };
+  return {
+    fontReady: document.fonts.check('10px Ahem'),
+    viewport: { width: innerWidth, height: innerHeight },
+    scenes: [...document.querySelectorAll('.grid')].map((grid) => ({
+      id: grid.id,
+      grid: box(grid),
+      tracks: {
+        columns: getComputedStyle(grid).gridTemplateColumns,
+        rows: getComputedStyle(grid).gridTemplateRows,
+      },
+      items: [...grid.children].map((item) => {
+        const style = getComputedStyle(item);
+        return {
+          id: item.id,
+          width: style.width,
+          height: style.height,
+          aspectRatio: style.aspectRatio,
+          frame: box(item),
+        };
+      }),
+    })),
+  };
+};
+</script>

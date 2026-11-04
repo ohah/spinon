@@ -175,6 +175,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::C19BoxPaintOpacityV1
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            | ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
     ) {
         computed_layout_aspect_ratio(computed, node_id, profile)?
     } else {
@@ -236,6 +237,8 @@ pub(super) fn computed_element_output(
                     ),
                     allow_intrinsic_tracks: profile
                         == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                    allow_root_html_single_auto_row: profile
+                        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_root_html_bounded_minmax_tracks: profile
                         == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_root_html_fit_content_tracks: profile

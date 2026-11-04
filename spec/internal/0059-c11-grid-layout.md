@@ -150,6 +150,14 @@ Chrome 156 관찰과 독립 기대값의 39 scene·42 item을 기본 Root HTML r
 
 이 제한 후보는 일반 CSS 지원, WPT 적합성, C11.1/C11 완료 또는 공식 완료 `72/213` 증가를 뜻하지 않는다. 내부 숫자 버전 `0.1.0`은 변경하지 않는다.
 
+## C11.1 parsed Root HTML direct-text `aspect-ratio` · implementation candidate · 2026-11-05
+
+기본 `RuntimeRootHtmlTextPaintV1` cascade에서 numeric `aspect-ratio`를 typed snapshot에 보존하고, 기존 typed ratio를 기본 Root HTML direct-text Grid 경로에 전달하는 제한 후보를 추가했다. 허용하는 CSS computed ratio는 `2 / 1` 하나다. 각 eligible Grid owner에는 direct HTML block `div` text item `A`와 `AAAA` 두 개만 source order로 존재하며, 두 번째 item 하나만 ratio를 가진다. owner width는 `70px`, columns는 `[10px,60px]`, row는 하나의 `auto`, gap과 box edges는 0이다. Root `align-items`/`justify-items`는 `start`, `align-content`/`justify-content`는 `normal`; item self-alignment는 `auto`로 제한한다. Width-ratio (`60px × auto`)와 height-ratio (`auto × 30px`) 장면, 각 ratio 없는 control, unsupported value/shape를 검사한다. 앱 사전 비교와 시뮬레이터 fixture는 기본 route의 system `monospace`를 사용하고 Rust layout test만 pinned Ahem을 직접 등록한다.
+
+기준은 Chrome 156 Agent Browser 사전 비교다. Rust cascade·projection·layout·default runtime의 focused tests, rustfmt 및 workspace all-target Clippy를 통과했다. 최신 fixture hash `d44069e298552707307ddcb2116dd7758c630af28a8c943e527984c8a5f80005`로 Android 17/API 37 ARM64 AVD/ANGLE SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator/Metal에서 기본 app route `layout=ready boxes=14`, root `980×100 CSS px`, 14-box draw/present를 확인했다. AVD와 Simulator 결과는 서로 다른 software/simulator renderer 경로다. 캡처는 viewport meta가 없는 화면의 시각 자료이며 PixelCopy·Metal drawable readback·compositor 뒤의 픽셀 일치는 확인하지 않았다. [계획·Chrome oracle](../../plan/c11-root-html-grid-text-aspect-ratio.md) · [runtime logs·screenshots·hash](./evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.md).
+
+전체 `spinon-style-to-layout`은 후보 `387 passed/10 failed`, 기준 HEAD `385 passed/10 failed`이며 실패 test names는 같다. `spinon-layout`도 후보와 기준 HEAD 모두 `440 passed/1 failed`이고 기존 C15 host-document assertion 실패가 동일하다. 따라서 package 전체 green으로 기록하지 않는다. 이 후보는 PR 전이며 C11.1/C11 완료 또는 일반 CSS 지원 선언이 아니다. 공개 로드맵은 상위 78개·ID 세부 134개·ID 없는 하위 체크 2개를 합쳐 `78/214`로 표시하며, 상위 미완료 상태와 내부 숫자 버전 `0.1.0`을 유지한다.
+
 ## C11.2.1 numeric explicit placement 구현 상태
 
 C11.1의 all-auto row placement와 구분되는 `RuntimeBlockFlexGridPlacementV1` profile을 추가했다. Stylo computed longhand를 typed line/span 값으로 보존하고, `spinon-layout`에서 explicit track 경계와 line 변환을 검증한다. `RuntimeBlockFlexGridV1`의 기존 성공 의미는 유지한다. 상세 지원·거부 계약은 [C11.2.1 계획](../../plan/c11-2-1-explicit-grid-placement.md)을 따른다.

@@ -18,6 +18,8 @@ mod c114_grid_auto_repeat_intrinsic_wpt;
 mod cyclic_percentage_auto_repeat_rows;
 #[path = "grid/root_html_column.rs"]
 pub(crate) mod root_html_column;
+#[path = "grid/root_html_direct_text_aspect_ratio.rs"]
+mod root_html_direct_text_aspect_ratio;
 #[path = "grid/root_html_gap.rs"]
 mod root_html_gap;
 #[path = "grid/root_html_row.rs"]
@@ -284,6 +286,8 @@ pub enum GridPlacementMode {
     RootHtmlColumnFlowV1,
     /// 제한 Root HTML Grid item alignment 경로에서 fixed tracks와 auto-sized empty items를 다룹니다.
     RootHtmlGridItemSelfAlignmentV1,
+    /// 기본 Root HTML direct-text aspect-ratio의 고정 두 항목·두 열·단일 auto row 장면입니다.
+    RootHtmlDirectTextAspectRatioV1,
     /// 제한 Root HTML 경로의 fixed-px dense row/column auto-placement입니다.
     RootHtmlDenseAutoPlacementV1,
     /// 제한 Root HTML 경로에서 한 축만 고정된 item의 sparse row auto-placement입니다.
@@ -419,6 +423,18 @@ pub(super) fn validate_grid_layout(
             return Err(LayoutError::UnsupportedGridContainerStyle {
                 node: id,
                 property: "C11.5 fixed-track auto-size/stretch contract",
+            });
+        }
+        if container.placement_mode == GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+            && !root_html_direct_text_aspect_ratio::is_supported(
+                input,
+                &input.nodes[index[&id]],
+                container,
+            )
+        {
+            return Err(LayoutError::UnsupportedGridContainerStyle {
+                node: id,
+                property: "C11.1 Root HTML direct-text aspect-ratio contract",
             });
         }
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
@@ -745,8 +761,10 @@ pub(super) fn validate_grid_layout(
                 container.placement_mode,
                 GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
             );
-        let allow_intrinsic_tracks = container.placement_mode == GridPlacementMode::TrackSizing
-            || template_area_track_sizing;
+        let allow_intrinsic_tracks = matches!(
+            container.placement_mode,
+            GridPlacementMode::TrackSizing | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+        ) || template_area_track_sizing;
         let allow_template_area_auto_track = container.placement_mode
             == GridPlacementMode::TemplateGrid
             && container.template_areas.is_some();
@@ -830,7 +848,9 @@ pub(super) fn validate_grid_layout(
         }
         if matches!(
             container.placement_mode,
-            GridPlacementMode::SparseRow | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
+            GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
+                | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
         ) && container.auto_flow != GridAutoFlow::Row
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
@@ -838,6 +858,7 @@ pub(super) fn validate_grid_layout(
         if !matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
+                | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
@@ -855,7 +876,10 @@ pub(super) fn validate_grid_layout(
 
         let definite = definite_axes.get(&node.id).copied().unwrap_or_default();
         let can_size_indefinite_track_sizing_height = !definite.height
-            && container.placement_mode == GridPlacementMode::TrackSizing
+            && matches!(
+                container.placement_mode,
+                GridPlacementMode::TrackSizing | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+            )
             && indefinite_track_sizing_height_is_bounded(node, container);
         if !definite.width || (!definite.height && !can_size_indefinite_track_sizing_height) {
             return Err(LayoutError::IndefiniteGridBasis {
@@ -1056,6 +1080,10 @@ pub(super) fn validate_grid_layout(
                             )
                         }
                         GridPlacementMode::RootHtmlGridItemSelfAlignmentV1 => matches!(
+                            size,
+                            crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                        ),
+                        GridPlacementMode::RootHtmlDirectTextAspectRatioV1 => matches!(
                             size,
                             crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                         ),
