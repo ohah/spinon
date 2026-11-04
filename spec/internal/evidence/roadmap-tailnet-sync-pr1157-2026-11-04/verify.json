@@ -1,0 +1,28 @@
+{
+  "mode": "verify",
+  "source_commit": "f2c1448afe0d8f4322d9aa6b392cfa5544c22deb",
+  "route": "roadmap.html",
+  "status": 200,
+  "source_bytes": 560630,
+  "source_sha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0",
+  "local_bytes": 560630,
+  "local_sha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0",
+  "remote_bytes": 560630,
+  "remote_sha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0",
+  "local_hash_matches": true,
+  "remote_http_200_and_hash_matches": true,
+  "server": {
+    "tailscaleBackend": "Running",
+    "tailscaleHost": "macstudio.tailed42f2.ts.net.",
+    "serverPid": 28040,
+    "serverArgs": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "listenAddress": "127.0.0.1:8768",
+    "localStatus": 200,
+    "localBytes": 560630,
+    "localSha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0",
+    "remoteStatus": 200,
+    "remoteBytes": 560630,
+    "remoteSha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0"
+  },
+  "no_deletes": true
+}
