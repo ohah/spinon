@@ -1,6 +1,6 @@
 # C11 기본 Root HTML Grid direct-text aspect-ratio 계획 검토 20개
 
-구현 전 계획 자체에서 서로 다른 실패 경로와 범위 경계를 검토한다. 이는 runtime 코드 검토나 PR 변경분 검토가 아니다.
+이 파일은 제품 코드 변경 전 계획 자체를 검토한 원본 기록이다. 이후 기본 Root HTML 경로에서 Ahem webfont가 로드되지 않는 사실이 확인되어 입력·기대값의 일부 판정은 보정했다. 그 보정은 [추가 20개 검토](./c11-root-html-grid-text-aspect-ratio-plan-amendment-review-20.md)에 기록한다. 이 파일은 runtime 코드 검토나 PR 변경분 검토가 아니다.
 
 | # | 실패 관점 | 판정과 반영 |
 |---:|---|---|
@@ -13,8 +13,8 @@
 | 7 | CSSOM 문자열을 projection에서 임의 재파싱 | 통과 — cascade의 typed ratio와 computed serialization 대조를 요구하고 string reparse는 금지했다. |
 | 8 | ratio 계산 방향을 width/height에서 뒤집음 | 통과 — CSS ratio를 width/height `2/1`로 고정하고 양 축 장면에서 60×30을 대조한다. |
 | 9 | width-ratio 장면에서 auto row의 30px 기여를 놓침 | 통과 — 독립값을 `max(10px,30px)=30px`, 대조군은 10px로 명시했다. |
-| 10 | height-control의 auto width를 60px로 가정 | 통과 — ratio 없는 Ahem `AAAA`의 content width를 40px로 고정해 대조한다. |
-| 11 | Ahem 미로드 또는 font fallback이 기댓값을 바꿈 | 통과 — oracle은 `document.fonts.check('10px Ahem') == true`이며 Ahem 파일 hash를 보존한다. |
+| 10 | height-control의 auto width를 60px로 가정 | 부분 보정 — 고정 Ahem을 직접 등록하는 Rust 단위 검사는 40px지만 기본 앱·Chrome fixture는 시스템 `monospace`를 쓰며 Chrome intrinsic width는 24.09375px이다. 플랫폼 간 intrinsic-width 비교는 판정에서 제외한다. |
+| 11 | Ahem 미로드 또는 font fallback이 기댓값을 바꿈 | 최초 가정 실패 — 기본 Root HTML runtime은 `@font-face`를 지원하지 않고 고정 Ahem registry도 연결하지 않는다. 성공 fixture를 `monospace`로 바꾸고 OS별 intrinsic 폭 차이를 별도 기록했다. |
 | 12 | track list/gap/root width가 바뀌어 ratio 효과와 혼합 | 통과 — width 70px, `[10px,60px]`, zero gap, single auto row를 고정한다. |
 | 13 | Grid self-alignment가 stretch/ratio 계산을 가림 | 통과 — start alignment를 고정하고 computed value 및 frame을 함께 비교한다. |
 | 14 | margins/padding/border/box sizing이 ratio box를 바꿈 | 통과 — root/item의 margin/padding/border는 0이다. scene 식별에는 sizing에 영향을 주지 않는 background-color만 쓴다. min/max는 기본값이다. |
@@ -25,4 +25,4 @@
 | 19 | CSS Grid CRD와 CSS Sizing WD의 근거 등급을 동일하게 표현 | 통과 — Grid 2025 CRD는 published CRD, Sizing 4는 Working Draft로 문서에서 구분했다. |
 | 20 | Chrome precomparison geometry를 raster/WPT/전체 C11 지원으로 확대 주장 | 통과 — geometry는 0 CSS px 판정이며 glyph pixels, WPT, device/GPU 한계와 전체 완료 판정을 제외했다. |
 
-**계획 판정:** 계획 수준에서 독립 기대값과 범위 경계를 고정했다. 아직 제품 코드를 변경하지 않았으며, 구현 진입은 별도 계획 PR 검토와 병합 뒤다.
+**당시 계획 판정:** 계획 수준에서 독립 기대값과 범위 경계를 고정한 뒤 구현에 진입했다. 10·11번의 글꼴 가정은 기본 앱 경로의 실행 전제가 아니었음이 드러나 보정했다. 후속 검토와 현재 구현 상태는 계획 amendment review와 runtime evidence에 연결한다.

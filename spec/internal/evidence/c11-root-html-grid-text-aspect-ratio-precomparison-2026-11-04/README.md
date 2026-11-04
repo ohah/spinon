@@ -6,13 +6,13 @@
 
 ## 입력과 환경
 
-- HTML 입력: [`root-html-grid-direct-text-aspect-ratio-precomparison.html`](../../../../tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-precomparison.html)
+- HTML 입력: [당시 원본 fixture byte 사본](./source-fixture.html). 원본의 Ahem 상대 경로는 당시 저장소 경로 기준으로 보존했다. 2026-11-05 monospace 입력과 재비교는 [새 사전 비교](../c11-root-html-grid-text-aspect-ratio-precomparison-2026-11-05/README.md)에 있다.
 - Browser: HeadlessChrome `156.0.0.0`, Agent Browser CLI
 - viewport: `1280×633 CSS px`
 - Ahem: 10px font check `true`; `A` advance 10px, `AAAA` content width 40px, line-height 10px
 - HTML에는 네 개의 Grid root가 body의 direct child로 있다. 각각의 Grid는 direct HTML block item `A`와 `AAAA`를 가진다. Ratio 장면마다 owner 한 개에 ratio item 한 개만 둔다.
 - Root와 item에는 margin/padding/border가 없다. Grid-item background-color만 scene 식별용으로 다르며 sizing에는 영향을 주지 않는다.
-- 입력 fixture SHA-256: `f43743af899f73083b66df6612f98d440f4cfdd9c013945b3234a61ee8416bec`
+- 입력 fixture SHA-256: `e4fc98fd120d7274efdd18bc8fba53381eea96522f10777eabf288877eeddfd3`
 - Ahem SHA-256: `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
 
 ## 독립 기대값과 관찰
@@ -25,4 +25,4 @@ Chrome 156은 font-ready 상태에서 네 scene 전부 track 및 root/item frame
 
 ![Chrome 156 Agent Browser precomparison](./chrome-156-agent-browser.png)
 
-`SHA256SUMS`는 이 입력·관찰·기대값·화면과 Ahem resource를 고정한다. Browser capture 뒤 해당 Agent Browser session을 닫았고, 종료 확인 때 agent-browser/전용 HeadlessChrome 프로세스는 남아 있지 않았다.
+`SHA256SUMS`는 당시 입력 byte 사본·관찰·기대값·화면과 Ahem resource를 고정한다. Browser capture 뒤 해당 Agent Browser session을 닫았고, 종료 확인 때 agent-browser/전용 HeadlessChrome 프로세스는 남아 있지 않았다.

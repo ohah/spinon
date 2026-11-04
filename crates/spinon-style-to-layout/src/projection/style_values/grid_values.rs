@@ -49,7 +49,7 @@ pub(super) fn project_grid_layout_with_math(
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
-    project_grid_layout_with_route(node, grid, profile, math, false)
+    project_grid_layout_with_route(node, grid, profile, math, false, false)
 }
 
 pub(super) fn project_root_html_one_axis_grid_layout_with_math(
@@ -58,7 +58,16 @@ pub(super) fn project_root_html_one_axis_grid_layout_with_math(
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
-    project_grid_layout_with_route(node, grid, profile, math, true)
+    project_grid_layout_with_route(node, grid, profile, math, true, false)
+}
+
+pub(super) fn project_root_html_direct_text_aspect_ratio_grid_layout_with_math(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+    profile: ComputedStyleProfile,
+    math: &mut CssMathProjector,
+) -> Result<GridContainerInput, StyleLayoutError> {
+    project_grid_layout_with_route(node, grid, profile, math, false, true)
 }
 
 fn project_grid_layout_with_route(
@@ -67,9 +76,15 @@ fn project_grid_layout_with_route(
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
     root_html_one_axis_placement: bool,
+    root_html_direct_text_aspect_ratio: bool,
 ) -> Result<GridContainerInput, StyleLayoutError> {
     if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
-        validate_root_html_grid_tracks(node, grid, root_html_one_axis_placement)?;
+        validate_root_html_grid_tracks(
+            node,
+            grid,
+            root_html_one_axis_placement,
+            root_html_direct_text_aspect_ratio,
+        )?;
     }
     let has_auto_repeat = grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some();
     if has_auto_repeat {
@@ -143,6 +158,7 @@ fn validate_root_html_grid_tracks(
     node: NodeId,
     grid: &ComputedCssGridLayout,
     root_html_one_axis_placement: bool,
+    root_html_direct_text_aspect_ratio: bool,
 ) -> Result<(), StyleLayoutError> {
     let unsupported = |property, value: &str| StyleLayoutError::UnsupportedComputedValue {
         node,
@@ -170,6 +186,9 @@ fn validate_root_html_grid_tracks(
             grid.rows_auto_repeat.as_ref(),
         ),
     ] {
+        let single_auto_row = root_html_direct_text_aspect_ratio
+            && property == "grid-template-rows"
+            && tracks == [ComputedCssGridTrackSize::Auto];
         let has_auto_minimum_track = tracks.iter().any(|track| {
             matches!(
                 track,
@@ -182,9 +201,10 @@ fn validate_root_html_grid_tracks(
         if tracks.is_empty()
             || auto_repeat.is_some()
             || line_names.iter().any(|group| !group.is_empty())
-            || tracks
-                .iter()
-                .any(|track| !is_supported_root_html_explicit_track(track))
+            || (!single_auto_row
+                && tracks
+                    .iter()
+                    .any(|track| !is_supported_root_html_explicit_track(track)))
             || (implicit_rows && has_auto_minimum_track)
         {
             return Err(unsupported(

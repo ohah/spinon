@@ -1,0 +1,53 @@
+{
+  "basis": {
+    "css_grid": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#grid-item-sizing",
+    "css_sizing_4_draft": "https://www.w3.org/TR/2026/WD-css-sizing-4-20260904/#automatic-sizes",
+    "fontFamily": "monospace",
+    "fontSizePx": 10,
+    "lineHeightPx": 10,
+    "chromeAAdvancePx": 6.03125,
+    "chromeAAAAContentWidthPx": 24.09375,
+    "ratio": "2 / 1",
+    "gridWidthPx": 70,
+    "gridColumnsPx": [10, 60],
+    "gridGapPx": 0,
+    "sourceSha256": "d44069e298552707307ddcb2116dd7758c630af28a8c943e527984c8a5f80005"
+  },
+  "toleranceCssPx": 0,
+  "scenes": [
+    {
+      "id": "width-ratio",
+      "root": { "x": 0, "y": 0, "width": 70, "height": 30, "columns": [10, 60], "rows": [30] },
+      "items": {
+        "width-ratio-short": { "x": 0, "y": 0, "width": 6.03125, "height": 10 },
+        "width-ratio-long": { "x": 10, "y": 0, "width": 60, "height": 30 }
+      }
+    },
+    {
+      "id": "width-control",
+      "root": { "x": 0, "y": 30, "width": 70, "height": 10, "columns": [10, 60], "rows": [10] },
+      "items": {
+        "width-control-short": { "x": 0, "y": 30, "width": 6.03125, "height": 10 },
+        "width-control-long": { "x": 10, "y": 30, "width": 60, "height": 10 }
+      }
+    },
+    {
+      "id": "height-ratio",
+      "root": { "x": 0, "y": 40, "width": 70, "height": 30, "columns": [10, 60], "rows": [30] },
+      "items": {
+        "height-ratio-short": { "x": 0, "y": 40, "width": 6.03125, "height": 10 },
+        "height-ratio-long": { "x": 10, "y": 40, "width": 60, "height": 30 }
+      }
+    },
+    {
+      "id": "height-control",
+      "root": { "x": 0, "y": 70, "width": 70, "height": 30, "columns": [10, 60], "rows": [30] },
+      "items": {
+        "height-control-short": { "x": 0, "y": 70, "width": 6.03125, "height": 10 },
+        "height-control-long": { "x": 10, "y": 70, "width": 24.09375, "height": 30 }
+      }
+    }
+  ],
+  "platformFontNote": "The browser reference uses the host monospace font. Native monospace advance widths can vary by OS; ratio targets, fixed sizes, rows, and Grid frames are compared independently of the intrinsic-width control.",
+  "measurementClass": "CSS layout geometry only; not glyph raster, Android/iOS surface pixels, or WPT conformance"
+}

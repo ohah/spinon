@@ -2,10 +2,6 @@
 <meta charset="utf-8">
 <title>Root HTML Grid direct-text aspect-ratio precomparison</title>
 <style>
-@font-face {
-  font-family: Ahem;
-  src: url('../../resources/c15/Ahem.ttf') format('truetype');
-}
 html, body { margin: 0; }
 body {
   color: #111;
@@ -25,7 +21,7 @@ body {
 .item {
   color: #111;
   background-color: #f1f5f9;
-  font-family: Ahem;
+  font-family: monospace;
   font-size: 10px;
   line-height: 10px;
   white-space: nowrap;
@@ -60,7 +56,7 @@ window.captureRootHtmlGridTextAspectRatio = () => {
     return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
   };
   return {
-    fontReady: document.fonts.check('10px Ahem'),
+    fontReady: document.fonts.check('10px monospace'),
     viewport: { width: innerWidth, height: innerHeight },
     scenes: [...document.querySelectorAll('.grid')].map((grid) => ({
       id: grid.id,
@@ -75,6 +71,7 @@ window.captureRootHtmlGridTextAspectRatio = () => {
           id: item.id,
           width: style.width,
           height: style.height,
+          fontFamily: style.fontFamily,
           aspectRatio: style.aspectRatio,
           frame: box(item),
         };

@@ -21,6 +21,7 @@ mod positioning_values;
 mod primitive_values;
 mod root_html_column_flow;
 mod root_html_column_math;
+mod root_html_direct_text_aspect_ratio;
 mod root_html_explicit_placement;
 mod root_html_fit_content_named_area;
 mod root_html_grid_alignment;
@@ -41,12 +42,17 @@ use flex_values::{
 };
 use grid_placement_values::project_grid_item_placement;
 use grid_values::{
-    project_grid_layout_with_math, project_root_html_one_axis_grid_layout_with_math,
+    project_grid_layout_with_math,
+    project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
+    project_root_html_one_axis_grid_layout_with_math,
 };
 use positioning_values::parse_positioning;
 use primitive_values::{
     max_size_as_dimension, parse_box_sizing, parse_dimension, parse_display, required,
     unsupported_value,
+};
+use root_html_direct_text_aspect_ratio::{
+    root_html_direct_text_ratio_alignment_nodes, root_html_direct_text_ratio_nodes,
 };
 use spacing_values::{parse_gap, parse_margin, parse_nonnegative_spacing};
 
@@ -261,6 +267,32 @@ pub(super) fn project_styles(
     let mut math = CssMathProjector::default();
     let grid_nodes =
         is_grid_profile(snapshot.profile).then(|| runtime_grid_nodes(tree, root, snapshot));
+    let root_html_direct_text_ratio_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            root_html_direct_text_ratio_nodes(
+                tree,
+                snapshot,
+                grid_nodes
+                    .as_ref()
+                    .expect("Root HTML text paint is a Grid profile"),
+                &grid_styles,
+            )?
+        } else {
+            BTreeSet::new()
+        };
+    let (root_html_direct_text_ratio_scene_owners, root_html_direct_text_ratio_scene_items) =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            root_html_direct_text_ratio_alignment_nodes(
+                tree,
+                snapshot,
+                grid_nodes
+                    .as_ref()
+                    .expect("Root HTML text paint is a Grid profile"),
+                &grid_styles,
+            )
+        } else {
+            (BTreeSet::new(), BTreeSet::new())
+        };
     let root_html_dense_grid_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             root_html_dense_grid_nodes(&grid_styles, grid_nodes.as_ref())
@@ -343,7 +375,7 @@ pub(super) fn project_styles(
             .iter()
             .copied(),
     );
-    let root_html_grid_alignment_nodes =
+    let mut root_html_grid_alignment_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
                 root_html_grid_alignment::eligible_nodes(
@@ -356,7 +388,8 @@ pub(super) fn project_styles(
         } else {
             BTreeSet::new()
         };
-    let root_html_grid_item_alignment_nodes = if snapshot.profile
+    root_html_grid_alignment_nodes.extend(root_html_direct_text_ratio_scene_owners.iter().copied());
+    let mut root_html_grid_item_alignment_nodes = if snapshot.profile
         == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
     {
         grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
@@ -365,6 +398,7 @@ pub(super) fn project_styles(
     } else {
         BTreeSet::new()
     };
+    root_html_grid_item_alignment_nodes.extend(root_html_direct_text_ratio_scene_items);
     if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && let Some(nodes) = grid_nodes.as_ref()
     {
@@ -669,7 +703,10 @@ pub(super) fn project_styles(
                 LayoutStyle::default().max_height
             },
             aspect_ratio: if supports_size_constraints {
-                element.layout_aspect_ratio.map(|ratio| ratio.ratio)
+                (snapshot.profile != ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                    || root_html_direct_text_ratio_nodes.contains(&node))
+                .then(|| element.layout_aspect_ratio.map(|ratio| ratio.ratio))
+                .flatten()
             } else {
                 None
             },
@@ -1025,6 +1062,15 @@ pub(super) fn project_styles(
             grid_styles.insert(node, grid);
             let mut container = if snapshot.profile
                 == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_direct_text_ratio_scene_owners.contains(&node)
+            {
+                project_root_html_direct_text_aspect_ratio_grid_layout_with_math(
+                    node,
+                    grid,
+                    snapshot.profile,
+                    &mut math,
+                )?
+            } else if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_one_axis_or_mixed_placement_route_nodes.contains(&node)
             {
                 project_root_html_one_axis_grid_layout_with_math(
@@ -1037,6 +1083,11 @@ pub(super) fn project_styles(
                 project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?
             };
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_direct_text_ratio_scene_owners.contains(&node)
+            {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlDirectTextAspectRatioV1;
+            } else if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_grid_alignment_nodes.contains(&node)
             {
                 container.placement_mode =

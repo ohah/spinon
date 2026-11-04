@@ -7,8 +7,8 @@ use spinon_text_layout::{
 use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
 use crate::{
-    LayoutError, LayoutInput, LayoutIntrinsicMeasurementSource, LayoutTextFlowSegment,
-    LayoutTextSnapshot,
+    GridPlacementMode, LayoutError, LayoutInput, LayoutIntrinsicMeasurementSource,
+    LayoutTextFlowSegment, LayoutTextSnapshot,
 };
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 use crate::{LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource, LayoutInputRevision};
@@ -149,10 +149,24 @@ impl CalcLayoutTree {
                 - layout.padding.left
                 - layout.padding.right;
             let width_key = normalize_zero(content_width).to_bits();
-            let snapshot = text_layouts
+            let cached_snapshot = text_layouts
                 .get(&engine_id)
                 .and_then(|by_width| by_width.get(&width_key))
-                .ok_or(LayoutError::TextLayoutWidthMismatch(paragraph.node))?;
+                .cloned();
+            let snapshot = match cached_snapshot {
+                Some(snapshot) => snapshot,
+                None if is_root_html_direct_text_aspect_ratio_item(input, paragraph.node) => {
+                    let engine = self
+                        .text_layout_engine
+                        .as_ref()
+                        .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
+                    engine
+                        .borrow_mut()
+                        .layout_paragraph(paragraph, content_width)
+                        .map_err(LayoutError::TextLayout)?
+                }
+                None => return Err(LayoutError::TextLayoutWidthMismatch(paragraph.node)),
+            };
             if snapshot.available_width.to_bits() != width_key {
                 return Err(LayoutError::TextLayoutWidthMismatch(paragraph.node));
             }
@@ -450,6 +464,21 @@ impl CalcLayoutTree {
             .insert(node_id, sizes.clone());
         Ok(sizes)
     }
+}
+
+fn is_root_html_direct_text_aspect_ratio_item(
+    input: &LayoutInput,
+    item: spinon_core::NodeId,
+) -> bool {
+    input.nodes().iter().any(|container| {
+        container.children.contains(&item)
+            && input
+                .grid_containers
+                .get(&container.id)
+                .is_some_and(|grid| {
+                    grid.placement_mode == GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+                })
+    })
 }
 
 fn text_measure_exceeds_content_height(content_height: f32, measured_height: f32) -> bool {
