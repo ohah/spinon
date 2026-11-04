@@ -34,5 +34,5 @@
 ## 남은 범위
 
 - Android 결과는 SwiftShader AVD이며 Android 실기기/hardware GPU 근거가 아니다. iOS는 compositor 이후 화면 픽셀을 읽지 않았다.
-- 구현/runtime 실패 관점 검토 20개와 실제 PR #1142 diff 검토 20개를 마쳤다. 최종 PR/merge 확인은 남아 있다.
-- 이 제한 후보는 C11.1/C11을 완료 처리하지 않으며 공식 `72/213`도 바꾸지 않는다.
+- 구현/runtime 실패 관점 검토 20개와 실제 PR #1142 diff 검토 20개를 마쳤다. PR #1142는 2026-11-04T02:24:11Z Rebase and merge됐으며 merge SHA는 `0f5506423a1150c80e5684fd087b948923fdbcb7`이다. PR check rollup은 비었고 main required status checks도 없어 CI 통과로 주장하지 않는다. 병합 후 계획·계약·상태 기록은 별도 문서 PR에서 동기화하고 문서 diff 검토 20개를 남겼다([review](roadmap-postmerge-docs-pr-diff-review-20.md)).
+- 이 제한 구현은 C11.1/C11을 완료 처리하지 않으며 공식 `72/213`도 바꾸지 않는다.
