@@ -1,0 +1,43 @@
+<!doctype html><meta charset="utf-8"><title>C11 cross-axis partial placement oracle</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font:10px sans-serif}.scene{display:grid;grid-template-columns:repeat(4,40px);grid-template-rows:repeat(3,40px);grid-auto-flow:row;gap:0;width:160px;height:120px;justify-content:start;align-content:start;align-items:start;justify-items:start;margin-bottom:12px}.item{width:40px;height:40px;margin:0;padding:0;border:0;min-width:0;min-height:0;color:#000;font-size:8px}#mixed-spans [data-id="row-span"]{height:80px}#mixed-spans [data-id="col-span"]{width:80px}.a{background:#f44}.b{background:#4f4}.c{background:#44f}.d{background:#ff4}.e{background:#f4f}.hidden{visibility:hidden}.gone{display:none}
+</style>
+<h1>C11.1 cross-axis partial auto-placement</h1>
+<div class="scene" id="dom-cross-axis">
+ <div class="item a" data-id="c1" style="grid-row: auto; grid-column: 1"></div>
+ <div class="item b" data-id="d" style="grid-row: 2 / 3; grid-column: 2 / 3"></div>
+ <div class="item c" data-id="r1" style="grid-row: 1; grid-column: auto"></div>
+ <div class="item d" data-id="c2" style="grid-row: auto; grid-column: 1"></div>
+ <div class="item e" data-id="r2" style="grid-row: 1; grid-column: auto"></div>
+ <div class="item a" data-id="auto-last"></div>
+</div>
+<div class="scene" id="mixed-spans">
+ <div class="item a" data-id="row-span" style="grid-row: 1 / span 2; grid-column: auto"></div>
+ <div class="item b" data-id="col-span" style="grid-row: auto; grid-column: 1 / span 2"></div>
+ <div class="item c" data-id="fixed" style="grid-row: 2 / 3; grid-column: 3 / 4"></div>
+ <div class="item d" data-id="row-after" style="grid-row: 2; grid-column: auto"></div>
+ <div class="item e" data-id="col-after" style="grid-row: auto; grid-column: 4"></div>
+</div>
+<div class="scene" id="hidden-controls">
+ <div class="item a hidden" data-id="hidden-row" style="grid-row: 1; grid-column: auto"></div>
+ <div class="item b" data-id="row" style="grid-row: 1; grid-column: auto"></div>
+ <div class="item c" data-id="hidden-column" style="grid-row: auto; grid-column: 1; visibility:hidden"></div>
+ <div class="item d" data-id="column" style="grid-row: auto; grid-column: 1"></div>
+ <div class="item e gone" data-id="gone" style="grid-row: 1 / 2; grid-column: 1 / 2"></div>
+</div>
+<div class="scene" id="display-none-control">
+ <div class="item a gone" data-id="gone-cell" style="grid-row:1 / 2;grid-column:1 / 2"></div>
+ <div class="item b" data-id="row-after-gone" style="grid-row:1;grid-column:auto"></div>
+ <div class="item c" data-id="column-after-gone" style="grid-row:auto;grid-column:1"></div>
+</div>
+<div class="scene" id="implicit-row-control">
+ <div class="item a" data-id="row-four" style="grid-row:4 / 5;grid-column:auto"></div>
+ <div class="item b" data-id="column-four" style="grid-row:auto;grid-column:4"></div>
+</div>
+<div class="scene" id="reverse-order">
+ <div class="item a" data-id="c-first" style="grid-row: auto; grid-column: 4"></div>
+ <div class="item b" data-id="r-first" style="grid-row: 3; grid-column: auto"></div>
+ <div class="item c" data-id="d-last" style="grid-row: 1 / 2; grid-column: 1 / 2"></div>
+ <div class="item d" data-id="c-second" style="grid-row: auto; grid-column: 4"></div>
+ <div class="item e" data-id="r-second" style="grid-row: 3; grid-column: auto"></div>
+</div>

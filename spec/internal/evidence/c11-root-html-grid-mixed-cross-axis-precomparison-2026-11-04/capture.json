@@ -1,0 +1,274 @@
+{
+  "dpr": 1,
+  "scenes": [
+    {
+      "id": "dom-cross-axis",
+      "items": [
+        {
+          "display": "block",
+          "height": 40,
+          "id": "c1",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 40
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "d",
+          "visibility": "visible",
+          "width": 40,
+          "x": 40,
+          "y": 40
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "r1",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "c2",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 80
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "r2",
+          "visibility": "visible",
+          "width": 40,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "auto-last",
+          "visibility": "visible",
+          "width": 40,
+          "x": 40,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "mixed-spans",
+      "items": [
+        {
+          "display": "block",
+          "height": 80,
+          "id": "row-span",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "col-span",
+          "visibility": "visible",
+          "width": 80,
+          "x": 0,
+          "y": 80
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "fixed",
+          "visibility": "visible",
+          "width": 40,
+          "x": 80,
+          "y": 40
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "row-after",
+          "visibility": "visible",
+          "width": 40,
+          "x": 40,
+          "y": 40
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "col-after",
+          "visibility": "visible",
+          "width": 40,
+          "x": 120,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "id": "hidden-controls",
+      "items": [
+        {
+          "display": "block",
+          "height": 40,
+          "id": "hidden-row",
+          "visibility": "hidden",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "row",
+          "visibility": "visible",
+          "width": 40,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "hidden-column",
+          "visibility": "hidden",
+          "width": 40,
+          "x": 0,
+          "y": 40
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "column",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 80
+        },
+        {
+          "display": "none",
+          "height": 0,
+          "id": "gone",
+          "visibility": "visible",
+          "width": 0,
+          "x": 0,
+          "y": -314.78125
+        }
+      ]
+    },
+    {
+      "id": "display-none-control",
+      "items": [
+        {
+          "display": "none",
+          "height": 0,
+          "id": "gone-cell",
+          "visibility": "visible",
+          "width": 0,
+          "x": 0,
+          "y": -446.78125
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "row-after-gone",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "column-after-gone",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 40
+        }
+      ]
+    },
+    {
+      "id": "implicit-row-control",
+      "items": [
+        {
+          "display": "block",
+          "height": 40,
+          "id": "row-four",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 120
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "column-four",
+          "visibility": "visible",
+          "width": 40,
+          "x": 120,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "id": "reverse-order",
+      "items": [
+        {
+          "display": "block",
+          "height": 40,
+          "id": "c-first",
+          "visibility": "visible",
+          "width": 40,
+          "x": 120,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "r-first",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 80
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "d-last",
+          "visibility": "visible",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "c-second",
+          "visibility": "visible",
+          "width": 40,
+          "x": 120,
+          "y": 40
+        },
+        {
+          "display": "block",
+          "height": 40,
+          "id": "r-second",
+          "visibility": "visible",
+          "width": 40,
+          "x": 40,
+          "y": 80
+        }
+      ]
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": [
+    360,
+    800
+  ]
+}

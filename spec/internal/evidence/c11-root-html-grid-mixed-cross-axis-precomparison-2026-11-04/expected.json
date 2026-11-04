@@ -1,0 +1,222 @@
+{
+  "oracle": {
+    "spec": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, §8.5",
+    "specUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-placement-algo",
+    "browser": "HeadlessChrome/156.0.0.0",
+    "viewportCssPx": [
+      360,
+      800
+    ],
+    "devicePixelRatio": 1,
+    "gridTracks": {
+      "columns": [
+        "40px",
+        "40px",
+        "40px",
+        "40px"
+      ],
+      "rows": [
+        "40px",
+        "40px",
+        "40px"
+      ],
+      "gap": "0px"
+    }
+  },
+  "independentExpectations": [
+    {
+      "scene": "dom-cross-axis",
+      "product": "positive",
+      "framesCssPx": {
+        "d": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "r1": [
+          0,
+          0,
+          40,
+          40
+        ],
+        "r2": [
+          40,
+          0,
+          40,
+          40
+        ],
+        "c1": [
+          0,
+          40,
+          40,
+          40
+        ],
+        "c2": [
+          0,
+          80,
+          40,
+          40
+        ],
+        "auto-last": [
+          40,
+          80,
+          40,
+          40
+        ]
+      },
+      "reason": "Fully definite placement reserves first; row-locked items are placed before the column-locked and fully auto items even when DOM order interleaves them."
+    },
+    {
+      "scene": "mixed-spans",
+      "product": "positive",
+      "framesCssPx": {
+        "row-span": [
+          0,
+          0,
+          40,
+          80
+        ],
+        "col-span": [
+          0,
+          80,
+          80,
+          40
+        ],
+        "fixed": [
+          80,
+          40,
+          40,
+          40
+        ],
+        "row-after": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "col-after": [
+          120,
+          80,
+          40,
+          40
+        ]
+      },
+      "reason": "Two-axis occupancy from row/column spans blocks only the covered cells; the orthogonal locked items remain in source order."
+    },
+    {
+      "scene": "hidden-controls",
+      "product": "positive",
+      "framesCssPx": {
+        "hidden-row": [
+          0,
+          0,
+          40,
+          40
+        ],
+        "row": [
+          40,
+          0,
+          40,
+          40
+        ],
+        "hidden-column": [
+          0,
+          40,
+          40,
+          40
+        ],
+        "column": [
+          0,
+          80,
+          40,
+          40
+        ]
+      },
+      "nonParticipating": [
+        "gone"
+      ],
+      "reason": "visibility:hidden participates in occupancy; display:none is removed before classification and placement."
+    },
+    {
+      "scene": "display-none-control",
+      "product": "positive",
+      "framesCssPx": {
+        "row-after-gone": [
+          0,
+          0,
+          40,
+          40
+        ],
+        "column-after-gone": [
+          0,
+          40,
+          40,
+          40
+        ]
+      },
+      "nonParticipating": [
+        "gone-cell"
+      ],
+      "reason": "A display:none explicit item reserves no cell."
+    },
+    {
+      "scene": "reverse-order",
+      "product": "positive",
+      "framesCssPx": {
+        "d-last": [
+          0,
+          0,
+          40,
+          40
+        ],
+        "r-first": [
+          0,
+          80,
+          40,
+          40
+        ],
+        "r-second": [
+          40,
+          80,
+          40,
+          40
+        ],
+        "c-first": [
+          120,
+          0,
+          40,
+          40
+        ],
+        "c-second": [
+          120,
+          40,
+          40,
+          40
+        ]
+      },
+      "reason": "Fully definite and row-locked phases are independent of DOM interleaving; column-locked items then follow sparse cursor order."
+    },
+    {
+      "scene": "implicit-row-control",
+      "product": "reject",
+      "browserFramesCssPx": {
+        "row-four": [
+          0,
+          120,
+          40,
+          40
+        ],
+        "column-four": [
+          120,
+          0,
+          40,
+          40
+        ]
+      },
+      "diagnosticBoundary": "Reject before publishing output because row-four requires an implicit row outside the explicit 4x3 grid."
+    }
+  ],
+  "toleranceCssPx": 0,
+  "interpretation": "Independent cell-occupancy expectations are derived from §8.5 before implementation. Browser observations are stored separately in capture.json."
+}
