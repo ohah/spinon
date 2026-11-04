@@ -134,6 +134,10 @@ fn cross_axis_grid_style() -> &'static str {
     "display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;padding:0;border:0;overflow:visible"
 }
 
+fn column_cross_axis_grid_style() -> &'static str {
+    "display:grid;box-sizing:border-box;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;gap:0;margin:0;padding:0;border:0;overflow:visible"
+}
+
 fn item_style(extra: &str) -> String {
     format!(
         "display:block;box-sizing:border-box;width:auto;height:auto;margin:0;padding:0;border:0;overflow:visible;{extra}"
@@ -216,6 +220,54 @@ fn root_html_one_axis_placement_accepts_cross_axes_and_rejects_nested_grid_items
     );
     let nested_fixture = GridFixture::new(&[(&grid_style(""), &[nested.as_str()])]);
     assert!(nested_fixture.compute().is_err());
+}
+
+#[test]
+fn root_html_column_mixed_cross_axis_counts_hidden_lock_classes() {
+    let hidden_row =
+        item_style("width:40px;height:30px;visibility:hidden;grid-row:1;grid-column:auto;");
+    let column_locked = item_style("width:40px;height:30px;grid-row:auto;grid-column:1;");
+    let auto = item_style("width:40px;height:30px;");
+    let row_hidden_fixture = GridFixture::new(&[(
+        column_cross_axis_grid_style(),
+        &[hidden_row.as_str(), column_locked.as_str(), auto.as_str()],
+    )]);
+    let row_hidden_output = row_hidden_fixture.compute().unwrap();
+    let row_hidden_items = &row_hidden_fixture.items_by_grid[0];
+    assert_eq!(
+        frame(&row_hidden_output, row_hidden_items[0]),
+        [40.0, 0.0, 40.0, 30.0]
+    );
+    assert_eq!(
+        frame(&row_hidden_output, row_hidden_items[1]),
+        [0.0, 0.0, 40.0, 30.0]
+    );
+    assert_eq!(
+        frame(&row_hidden_output, row_hidden_items[2]),
+        [40.0, 30.0, 40.0, 30.0]
+    );
+
+    let hidden_column =
+        item_style("width:40px;height:30px;visibility:hidden;grid-row:auto;grid-column:1;");
+    let row_locked = item_style("width:40px;height:30px;grid-row:1;grid-column:auto;");
+    let column_hidden_fixture = GridFixture::new(&[(
+        column_cross_axis_grid_style(),
+        &[hidden_column.as_str(), row_locked.as_str(), auto.as_str()],
+    )]);
+    let column_hidden_output = column_hidden_fixture.compute().unwrap();
+    let column_hidden_items = &column_hidden_fixture.items_by_grid[0];
+    assert_eq!(
+        frame(&column_hidden_output, column_hidden_items[0]),
+        [0.0, 0.0, 40.0, 30.0]
+    );
+    assert_eq!(
+        frame(&column_hidden_output, column_hidden_items[1]),
+        [40.0, 0.0, 40.0, 30.0]
+    );
+    assert_eq!(
+        frame(&column_hidden_output, column_hidden_items[2]),
+        [40.0, 30.0, 40.0, 30.0]
+    );
 }
 
 #[test]

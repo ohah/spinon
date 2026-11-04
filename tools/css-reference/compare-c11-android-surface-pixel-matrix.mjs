@@ -48,6 +48,16 @@ function parseCssSize(value, label) {
   return [Number(match[1]), Number(match[2])];
 }
 
+export function androidDensityFromWmOutput(output) {
+  assert.equal(typeof output, 'string', 'wm density 출력이 문자열이 아닙니다.');
+  const physical = output.match(/\bPhysical density:\s*(\d+)\b/);
+  const override = output.match(/\bOverride density:\s*(\d+)\b/);
+  const dpi = Number(override?.[1] ?? physical?.[1]);
+  assert.ok(Number.isSafeInteger(dpi) && dpi > 0,
+    `wm density 출력에 유효한 physical/override density가 없습니다: ${output}`);
+  return dpi / 160;
+}
+
 export function compareC11AndroidRootHtmlEnvironment(log, {
   viewportCssPx, density, surfaceScale,
 }) {
@@ -64,9 +74,15 @@ export function compareC11AndroidRootHtmlEnvironment(log, {
   const marker = 'SPINON_C0410_ENVIRONMENT ';
   const reports = log.split(/\r?\n/).filter((line) => line.includes(marker));
   assert.ok(reports.length > 0, 'C0410 Root HTML environment 보고가 없습니다.');
-  for (const [index, line] of reports.entries()) {
-    const fields = fieldsAfter(line, marker);
-    assert.equal(fields.status, '0', `environment ${index + 1}: 상태가 성공이 아닙니다.`);
+  const parsedReports = reports.map((line) => ({ line, fields: fieldsAfter(line, marker) }));
+  const successfulReports = parsedReports.filter(({ fields }) => fields.status === '0');
+  const supersededReports = parsedReports.filter(({ line, fields }) =>
+    fields.status === '-12'
+      && line.includes('새로운 화면 요청이 도착해 오래된 장면을 거부했습니다'));
+  assert.ok(successfulReports.length > 0, '성공한 C0410 Root HTML environment 보고가 없습니다.');
+  assert.equal(successfulReports.length + supersededReports.length, parsedReports.length,
+    'Root HTML environment에서 허용되지 않은 실패 보고가 있습니다.');
+  for (const [index, { fields }] of successfulReports.entries()) {
     assert.equal(fields.root_html_environment, 'true',
       `environment ${index + 1}: Root HTML environment가 아닙니다.`);
     for (const field of ['viewport', 'visual_viewport', 'root_frame_css_px',
@@ -80,7 +96,9 @@ export function compareC11AndroidRootHtmlEnvironment(log, {
     closeTo(fields.physical_scale, density, `environment ${index + 1}/physical scale`);
     closeTo(fields.page_scale, 1, `environment ${index + 1}/page scale`);
   }
-  return { reports: reports.length, viewportCssPx: [viewportCssPx.width, viewportCssPx.height],
+  return { reports: reports.length, successfulReports: successfulReports.length,
+    supersededReports: supersededReports.length,
+    viewportCssPx: [viewportCssPx.width, viewportCssPx.height],
     density, deviceScaleFactor: density, pageScale: 1, physicalScale: density,
     surfaceScale };
 }
@@ -89,11 +107,12 @@ export function compareC11AndroidPixelCopyScene(log, {
   scene, runID, pngBytes, viewportCssPx,
   markerPrefix = 'C111', cacheDirectory = 'c11-grid-surface-pixel-matrix',
 }) {
-  assert.ok(['C111', 'C111RHD', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
+  assert.ok(['C111', 'C111RHD', 'C111CFM', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Android 표면 marker prefix가 잘못되었습니다.');
   assert.ok(['c11-grid-surface-pixel-matrix', 'c1122-grid-surface-pixel-matrix',
     'c1123-grid-surface-pixel-matrix', 'c1131-grid-surface-pixel-matrix',
     'c1132-grid-surface-pixel-matrix', 'c1133-grid-surface-pixel-matrix',
-    'c111-root-html-dense-surface-pixel-matrix']
+    'c111-root-html-dense-surface-pixel-matrix',
+    'c111-root-html-column-flow-mixed-cross-axis-surface-pixel-matrix']
     .includes(cacheDirectory), 'Android 표면 cache 경로가 허용되지 않습니다.');
   const marker = `SPINON_${markerPrefix}_GRID_PIXEL_MATRIX`;
   const BEGIN = `${marker}_BEGIN `;
@@ -135,20 +154,25 @@ export function compareC11AndroidPixelCopyScene(log, {
   const viewportHeight = exactInteger(begin.viewport_height, 'begin CSS viewport height', 1);
   assert.deepEqual([viewportWidth, viewportHeight], [viewportCssPx.width, viewportCssPx.height],
     'Android PixelCopy viewport가 고정 C11 runtime viewport와 다릅니다.');
-  const scaleX = width / viewportWidth;
-  const scaleY = height / viewportHeight;
-  assert.equal(Number(begin.scale_x), scaleX, 'begin surface x scale이 실제 크기에서 계산되지 않았습니다.');
-  assert.equal(Number(begin.scale_y), scaleY, 'begin surface y scale이 실제 크기에서 계산되지 않았습니다.');
   const density = Number(begin.density);
   assert.ok(Number.isFinite(density) && density > 0, 'Android density가 잘못되었습니다.');
+  const usesDensityPixelScale = markerPrefix === 'C111CFM';
+  const scaleX = usesDensityPixelScale ? density : width / viewportWidth;
+  const scaleY = usesDensityPixelScale ? density : height / viewportHeight;
+  if (usesDensityPixelScale) {
+    assert.ok(width >= viewportWidth * density && height >= viewportHeight * density,
+      'PixelCopy surface가 density 기준 CSS viewport를 담지 못합니다.');
+  }
+  assert.equal(Number(begin.scale_x), scaleX, 'begin surface x scale이 예상 매핑과 다릅니다.');
+  assert.equal(Number(begin.scale_y), scaleY, 'begin surface y scale이 예상 매핑과 다릅니다.');
   assert.equal(exactInteger(begin.samples, 'begin sample count', 1), scene.samples.length);
   assert.equal(exactInteger(capture.generation, 'capture generation', 1), generation);
   assert.equal(exactInteger(capture.width, 'capture width', 1), width);
   assert.equal(exactInteger(capture.height, 'capture height', 1), height);
   assert.equal(exactInteger(capture.viewport_width, 'capture CSS viewport width', 1), viewportWidth);
   assert.equal(exactInteger(capture.viewport_height, 'capture CSS viewport height', 1), viewportHeight);
-  assert.equal(Number(capture.scale_x), scaleX, 'capture surface x scale이 실제 크기에서 계산되지 않았습니다.');
-  assert.equal(Number(capture.scale_y), scaleY, 'capture surface y scale이 실제 크기에서 계산되지 않았습니다.');
+  assert.equal(Number(capture.scale_x), scaleX, 'capture surface x scale이 예상 매핑과 다릅니다.');
+  assert.equal(Number(capture.scale_y), scaleY, 'capture surface y scale이 예상 매핑과 다릅니다.');
   assert.equal(Number(capture.density), density, 'PixelCopy begin/capture density가 다릅니다.');
   assert.equal(exactInteger(capture.attempts, 'PixelCopy attempts', 1) <= 3, true,
     'PixelCopy retry 수가 제한을 넘었습니다.');
@@ -192,8 +216,13 @@ export function compareC11AndroidPixelCopyScene(log, {
     const cssX = exactInteger(actual.css_x, `${expected.id} CSS x`);
     const cssY = exactInteger(actual.css_y, `${expected.id} CSS y`);
     assert.deepEqual([cssX, cssY], [expected.xCssPx, expected.yCssPx], `${expected.id}: CSS 좌표`);
-    const x = cssPixelCenterToSurfacePixel(cssX, width, viewportWidth);
-    const y = cssPixelCenterToSurfacePixel(cssY, height, viewportHeight);
+    const x = usesDensityPixelScale
+      ? Math.floor((cssX + 0.5) * density)
+      : cssPixelCenterToSurfacePixel(cssX, width, viewportWidth);
+    const y = usesDensityPixelScale
+      ? Math.floor((cssY + 0.5) * density)
+      : cssPixelCenterToSurfacePixel(cssY, height, viewportHeight);
+    assert.ok(x < width && y < height, `${expected.id}: density 표본 좌표가 surface 밖입니다.`);
     assert.deepEqual([exactInteger(actual.x, `${expected.id} pixel x`),
       exactInteger(actual.y, `${expected.id} pixel y`)], [x, y], `${expected.id}: device pixel 좌표`);
     const rgba = actual.rgba.split(',').map((value) => exactInteger(value, `${expected.id} RGBA`, 0));

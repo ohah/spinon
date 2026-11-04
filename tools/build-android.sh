@@ -5,6 +5,7 @@ set -euo pipefail
 : "${SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST:=0}"
 : "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:=0}"
 : "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:=0}"
+: "${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:=0}"
 : "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:=0}"
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -78,6 +79,13 @@ case "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C11.1 Root HTML percentage-column fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
@@ -86,6 +94,11 @@ fi
 if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C11.1 Root HTML dense fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
+if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C11.1 Root HTML mixed column-flow fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
   exit 2
 fi
 if [[ "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" == "1" \
@@ -309,6 +322,7 @@ for fixture_flag in \
   "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" \
   "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C04_12_ROOT_HTML_TEXT_PAINT_FIXTURE_TEST:-0}" \
@@ -339,6 +353,7 @@ s04_runtime_gpu_fixture_test_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_T
 s04_c1123_grid_fixture_cpp_flag="-DSPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=${SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST:-0}"
 c111_root_html_percent_columns_cpp_flag="-DSPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST=${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}"
 c111_root_html_dense_placement_cpp_flag="-DSPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST=${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}"
+c111_root_html_column_flow_mixed_cross_axis_cpp_flag="-DSPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST=${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0}"
 s04_ua_cascade_probe_cpp_flag="-DSPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}"
 s04_runtime_gpu_failure_cpp_flag="-DSPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE=${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}"
 c124_worker_stack_cpp_flag="-DSPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST=${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}"
@@ -380,6 +395,9 @@ if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0}" == "1" 
 fi
 if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0}" == "1" ]]; then
   ffi_features+=(c11-1-root-html-dense-placement-fixture-test)
+fi
+if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0}" == "1" ]]; then
+  ffi_features+=(c11-1-root-html-column-flow-mixed-cross-axis-fixture-test)
 fi
 if [[ "${SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE:-0}" == "1" ]]; then
   ffi_features+=(c04-runtime-ua-cascade-fixture-test)
@@ -442,7 +460,7 @@ ffi_feature_csv=""
 if ((${#ffi_features[@]} > 0)); then
   ffi_feature_csv="$(IFS=,; printf '%s' "${ffi_features[*]}")"
 fi
-echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c04_runtime_gpu_fixture_test=$runtime_gpu_fixture_test_enabled c11_1_root_html_percent_columns_fixture_test=${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0} c11_1_root_html_dense_placement_fixture_test=${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0} c04_12_root_html_fixture_test=${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0} c04_12_root_html_block_paint_fixture_test=${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c12_5_sticky_fixture_test=${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture_test=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture_test=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture_test=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture_test=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture_test=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture_test=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0} c19_2_box_paint_opacity_fixture_test=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0} c15_3_wgpu_glyph_paint_fixture_test=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
+echo "SPINON_ANDROID_BUILD_FLAGS c04_runtime_gpu=${SPINON_ENABLE_C04_RUNTIME_GPU:-0} c04_runtime_gpu_fixture_test=$runtime_gpu_fixture_test_enabled c11_1_root_html_percent_columns_fixture_test=${SPINON_ENABLE_C11_1_ROOT_HTML_PERCENT_COLUMNS_FIXTURE_TEST:-0} c11_1_root_html_dense_placement_fixture_test=${SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST:-0} c11_1_root_html_column_flow_mixed_cross_axis_fixture_test=${SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0} c04_12_root_html_fixture_test=${SPINON_ENABLE_C04_12_ROOT_HTML_FIXTURE_TEST:-0} c04_12_root_html_block_paint_fixture_test=${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0} c13_1_overflow_clip_fixture_test=$c131_fixture_flag c13_2_scroll_fixture_test=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c12_5_sticky_fixture_test=${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0} c13_3_gesture_fixture_test=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture_test=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture_test=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture_test=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture_test=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture_test=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture_test=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture_test=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0} c19_2_box_paint_opacity_fixture_test=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0} c15_3_wgpu_glyph_paint_fixture_test=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
 
 build_spinon_ffi() {
   if [[ -n "$ffi_feature_csv" ]]; then
@@ -534,6 +552,7 @@ common=("$target" "$sysroot" -std=c++20 -O2 -fPIC
   "$s04_runtime_gpu_fixture_test_cpp_flag"
   "$c111_root_html_percent_columns_cpp_flag"
   "$c111_root_html_dense_placement_cpp_flag"
+  "$c111_root_html_column_flow_mixed_cross_axis_cpp_flag"
   "$s04_c1123_grid_fixture_cpp_flag"
   "$s04_ua_cascade_probe_cpp_flag"
   "$s04_runtime_gpu_failure_cpp_flag"

@@ -1,5 +1,8 @@
 use super::*;
 
+#[path = "root_html_mixed_cross_axis_column_tests.rs"]
+mod column_flow;
+
 fn one_axis_grid(columns: usize, rows: usize, item_count: usize) -> LayoutInput {
     let mut input = sparse_grid(columns, rows, item_count);
     for item in input.nodes.iter_mut().skip(1) {

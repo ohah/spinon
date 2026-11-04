@@ -50,6 +50,34 @@ pub(super) fn mixed_cross_axis_candidate_nodes(
     nodes: &RuntimeGridNodes,
     dense_route_nodes: &BTreeSet<NodeId>,
 ) -> BTreeSet<NodeId> {
+    mixed_cross_axis_candidate_nodes_for_flow(
+        snapshot,
+        nodes,
+        dense_route_nodes,
+        ComputedCssGridAutoFlow::Row,
+    )
+}
+
+/// Selects owners with row-locked and column-locked items in sparse column flow.
+pub(super) fn mixed_cross_axis_column_candidate_nodes(
+    snapshot: &ComputedStyleSnapshot,
+    nodes: &RuntimeGridNodes,
+    dense_route_nodes: &BTreeSet<NodeId>,
+) -> BTreeSet<NodeId> {
+    mixed_cross_axis_candidate_nodes_for_flow(
+        snapshot,
+        nodes,
+        dense_route_nodes,
+        ComputedCssGridAutoFlow::Column,
+    )
+}
+
+fn mixed_cross_axis_candidate_nodes_for_flow(
+    snapshot: &ComputedStyleSnapshot,
+    nodes: &RuntimeGridNodes,
+    dense_route_nodes: &BTreeSet<NodeId>,
+    flow: ComputedCssGridAutoFlow,
+) -> BTreeSet<NodeId> {
     let elements = snapshot
         .elements
         .iter()
@@ -75,7 +103,7 @@ pub(super) fn mixed_cross_axis_candidate_nodes(
                 return false;
             };
             if grid.template_areas.is_some()
-                || grid.auto_flow != ComputedCssGridAutoFlow::Row
+                || grid.auto_flow != flow
                 || grid.columns_fixed_repeat_group_count != 0
                 || grid.rows_fixed_repeat_group_count != 0
                 || grid.columns_auto_repeat.is_some()

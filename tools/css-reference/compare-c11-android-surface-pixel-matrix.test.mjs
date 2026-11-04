@@ -41,6 +41,22 @@ const densePixels = denseScene.samples.map((sample) => ({
 const densePngBytes = testPng(denseSurface.width, denseSurface.height, densePixels);
 const denseRunID = 'c111rhd-android-matrix-test-001';
 const densePngPath = `/data/user/0/dev.spinon.bootstrap/cache/c111-root-html-dense-surface-pixel-matrix/${denseScene.id}-${denseRunID}.png`;
+const mixedColumnMatrix = JSON.parse(readFileSync(resolve(repositoryRoot,
+  'tests/fixtures/css/c11/root-html-grid-column-flow-mixed-cross-axis-runtime-matrix-v1.json'), 'utf8'));
+const mixedColumnCase = mixedColumnMatrix.scenes.find(({ id }) => id === 'dom-cross-axis');
+const mixedColumnScene = { id: mixedColumnCase.id, samples: mixedColumnCase.pixelSamples };
+const mixedColumnViewportCssPx = mixedColumnCase.viewportCssPx;
+const mixedColumnSurface = { width: 945, height: 2100 };
+const mixedColumnDensity = 2.625;
+const mixedColumnPixels = mixedColumnScene.samples.map((sample) => ({
+  ...sample,
+  x: Math.floor((sample.xCssPx + 0.5) * mixedColumnDensity),
+  y: Math.floor((sample.yCssPx + 0.5) * mixedColumnDensity),
+}));
+const mixedColumnPngBytes = testPng(mixedColumnSurface.width, mixedColumnSurface.height,
+  mixedColumnPixels);
+const mixedColumnRunID = 'c111cfm-android-avd-pixel-test-001';
+const mixedColumnPngPath = `/data/user/0/dev.spinon.bootstrap/cache/c111-root-html-column-flow-mixed-cross-axis-surface-pixel-matrix/${mixedColumnScene.id}-${mixedColumnRunID}.png`;
 const c1131Scene = { id: c1131Fixture.sceneId, samples: c1131Fixture.samples };
 const c1131ViewportCssPx = c1131Fixture.runtime.viewportCssPx;
 const c1131Surface = { width: 900, height: 675 };
@@ -165,6 +181,19 @@ function compareDense(log = denseValidLog(), overrides = {}) {
   });
 }
 
+function mixedColumnValidLog() {
+  const pngHash = createHash('sha256').update(mixedColumnPngBytes).digest('hex');
+  return [
+    `SPINON_C111CFM_GRID_PIXEL_MATRIX_BEGIN run_id=${mixedColumnRunID} pid=50127 scene=${mixedColumnScene.id} generation=8 width=${mixedColumnSurface.width} height=${mixedColumnSurface.height} viewport_width=${mixedColumnViewportCssPx.width} viewport_height=${mixedColumnViewportCssPx.height} scale_x=${mixedColumnDensity} scale_y=${mixedColumnDensity} density=${mixedColumnDensity} samples=${mixedColumnScene.samples.length}`,
+    `SPINON_C111CFM_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${mixedColumnRunID} scene=${mixedColumnScene.id} generation=8 width=${mixedColumnSurface.width} height=${mixedColumnSurface.height} viewport_width=${mixedColumnViewportCssPx.width} viewport_height=${mixedColumnViewportCssPx.height} scale_x=${mixedColumnDensity} scale_y=${mixedColumnDensity} density=${mixedColumnDensity} attempts=1 png=${mixedColumnPngPath} sha256=${pngHash}`,
+    ...mixedColumnScene.samples.map((sample) => {
+      const mapped = mixedColumnPixels.find(({ id }) => id === sample.id);
+      return `SPINON_C111CFM_GRID_PIXEL_MATRIX_SAMPLE run_id=${mixedColumnRunID} pid=50127 scene=${mixedColumnScene.id} generation=8 sample=${sample.id} css_x=${sample.xCssPx} css_y=${sample.yCssPx} x=${mapped.x} y=${mapped.y} rgba=${sample.rgba.join(',')}`;
+    }),
+    `SPINON_C111CFM_GRID_PIXEL_MATRIX_SUMMARY status=captured run_id=${mixedColumnRunID} scene=${mixedColumnScene.id} generation=8 expected_samples=${mixedColumnScene.samples.length} observed_samples=${mixedColumnScene.samples.length}`,
+  ].join('\n');
+}
+
 function denseEnvironmentLog({ viewport = '360x800.00006', scale = 2.625 } = {}) {
   return `SPINON_C0410_ENVIRONMENT status=0 root_html_environment=true viewport=${viewport} visual_viewport=360x800 device_scale_factor=${scale} page_scale=1 physical_scale=${scale} root_frame_css_px=360x800 render_viewport_css_px=360x800.00006`;
 }
@@ -259,6 +288,21 @@ test('C11.1 Root HTML dense PixelCopy가 잘못된 표본 색 또는 경로를 �
     'c111-root-html-dense-surface-pixel-matrix', 'other-cache')));
 });
 
+test('C11.1 mixed column-flow PixelCopy 전용 표식과 cache 경로를 검증한다', () => {
+  const result = compareC11AndroidPixelCopyScene(mixedColumnValidLog(), {
+    scene: mixedColumnScene,
+    runID: mixedColumnRunID,
+    pngBytes: mixedColumnPngBytes,
+    viewportCssPx: mixedColumnViewportCssPx,
+    markerPrefix: 'C111CFM',
+    cacheDirectory: 'c111-root-html-column-flow-mixed-cross-axis-surface-pixel-matrix',
+  });
+  assert.equal(result.status, 'matched');
+  assert.equal(result.markerPrefix, 'C111CFM');
+  assert.equal(result.expectedSamples, mixedColumnScene.samples.length);
+  assert.equal(result.maximumChannelError, 0);
+});
+
 test('C11.1 Android environment가 CSS viewport와 PixelCopy density를 함께 맞춘다', () => {
   const result = compareC11AndroidRootHtmlEnvironment(denseEnvironmentLog(), {
     viewportCssPx: denseViewportCssPx,
@@ -266,8 +310,30 @@ test('C11.1 Android environment가 CSS viewport와 PixelCopy density를 함께 �
     surfaceScale: [2.625, 2.625],
   });
   assert.equal(result.reports, 1);
+  assert.equal(result.successfulReports, 1);
+  assert.equal(result.supersededReports, 0);
   assert.deepEqual(result.viewportCssPx, [360, 800]);
   assert.equal(result.physicalScale, 2.625);
+});
+
+test('Android environment comparison allows a superseded request after a successful current environment', () => {
+  const log = `${denseEnvironmentLog()}\nSPINON_C0410_ENVIRONMENT status=-12 새로운 화면 요청이 도착해 오래된 장면을 거부했습니다`;
+  const result = compareC11AndroidRootHtmlEnvironment(log, {
+    viewportCssPx: denseViewportCssPx,
+    density: 2.625,
+    surfaceScale: [2.625, 2.625],
+  });
+  assert.equal(result.successfulReports, 1);
+  assert.equal(result.supersededReports, 1);
+});
+
+test('Android environment comparison rejects environment errors other than superseded requests', () => {
+  const log = `${denseEnvironmentLog()}\nSPINON_C0410_ENVIRONMENT status=-7 invalid viewport`;
+  assert.throws(() => compareC11AndroidRootHtmlEnvironment(log, {
+    viewportCssPx: denseViewportCssPx,
+    density: 2.625,
+    surfaceScale: [2.625, 2.625],
+  }));
 });
 
 test('C11.1 Android environment가 CSS viewport를 density로 줄인 옛 통과 표본을 거부한다', () => {

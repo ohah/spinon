@@ -1,0 +1,137 @@
+{
+  "schema": "spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c111cfm-ios-mw23cgwv-f0048937-dom-cross-axis",
+  "processId": 18070,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "drawable": [
+    480,
+    270
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "dom-cross-axis-c1-center",
+      "css": [
+        20,
+        15
+      ],
+      "drawable": [
+        61,
+        46
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "dom-cross-axis-d-center",
+      "css": [
+        60,
+        45
+      ],
+      "drawable": [
+        181,
+        136
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "dom-cross-axis-r1-center",
+      "css": [
+        60,
+        15
+      ],
+      "drawable": [
+        181,
+        46
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "dom-cross-axis-c2-center",
+      "css": [
+        20,
+        45
+      ],
+      "drawable": [
+        61,
+        136
+      ],
+      "rgba": [
+        53,
+        120,
+        199,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "dom-cross-axis-r2-center",
+      "css": [
+        100,
+        15
+      ],
+      "drawable": [
+        301,
+        46
+      ],
+      "rgba": [
+        132,
+        94,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "dom-cross-axis-auto-last-center",
+      "css": [
+        100,
+        45
+      ],
+      "drawable": [
+        301,
+        136
+      ],
+      "rgba": [
+        240,
+        180,
+        41,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

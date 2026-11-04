@@ -1,0 +1,147 @@
+{
+  "status": "matched",
+  "scene": "dom-cross-axis",
+  "runID": "c111cfm-avd-mw23bnua-bf812a8f-dom-cross-axis",
+  "processId": 11913,
+  "markerPrefix": "C111CFM",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 6,
+  "matchedSamples": 6,
+  "maximumChannelError": 0,
+  "pngSha256": "aeda41bb72dcc52f3dc6348e10881d45239780842ab89ab5e6ea96515b3e55d2",
+  "samples": [
+    {
+      "id": "dom-cross-axis-c1-center",
+      "css": [
+        20,
+        15
+      ],
+      "pixel": [
+        53,
+        40
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "dom-cross-axis-d-center",
+      "css": [
+        60,
+        45
+      ],
+      "pixel": [
+        158,
+        119
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ]
+    },
+    {
+      "id": "dom-cross-axis-r1-center",
+      "css": [
+        60,
+        15
+      ],
+      "pixel": [
+        158,
+        40
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ]
+    },
+    {
+      "id": "dom-cross-axis-c2-center",
+      "css": [
+        20,
+        45
+      ],
+      "pixel": [
+        53,
+        119
+      ],
+      "rgba": [
+        53,
+        120,
+        199,
+        255
+      ]
+    },
+    {
+      "id": "dom-cross-axis-r2-center",
+      "css": [
+        100,
+        15
+      ],
+      "pixel": [
+        263,
+        40
+      ],
+      "rgba": [
+        132,
+        94,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "dom-cross-axis-auto-last-center",
+      "css": [
+        100,
+        45
+      ],
+      "pixel": [
+        263,
+        119
+      ],
+      "rgba": [
+        240,
+        180,
+        41,
+        255
+      ]
+    }
+  ],
+  "environmentMapping": {
+    "reports": 4,
+    "successfulReports": 4,
+    "supersededReports": 0,
+    "viewportCssPx": [
+      160,
+      90
+    ],
+    "density": 2.625,
+    "deviceScaleFactor": 2.625,
+    "pageScale": 1,
+    "physicalScale": 2.625,
+    "surfaceScale": [
+      2.625,
+      2.625
+    ]
+  },
+  "png": "dom-cross-axis-surface-pixels.png"
+}

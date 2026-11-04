@@ -292,6 +292,8 @@ pub enum GridPlacementMode {
     RootHtmlMixedExplicitOneAxisAutoPlacementV1,
     /// 제한 Root HTML 경로에서 row-locked와 column-locked item을 sparse row flow로 함께 배치합니다.
     RootHtmlMixedCrossAxisAutoPlacementV1,
+    /// 제한 Root HTML 경로에서 row-locked와 column-locked item을 sparse column flow로 함께 배치합니다.
+    RootHtmlMixedCrossAxisColumnAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
@@ -384,8 +386,11 @@ pub(super) fn validate_grid_layout(
     intrinsic_size_nodes: &std::collections::BTreeSet<NodeId>,
 ) -> Result<(), LayoutError> {
     let css_math_by_id = if input.grid_containers.values().any(|container| {
-        (container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1
-            && root_html_column::has_calc_auto_columns(&container.auto_columns))
+        (matches!(
+            container.placement_mode,
+            GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+        ) && root_html_column::has_calc_auto_columns(&container.auto_columns))
             || (container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
                 && root_html_row::has_calc_auto_rows(&container.auto_rows))
     }) {
@@ -419,7 +424,11 @@ pub(super) fn validate_grid_layout(
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
             validate_root_html_implicit_rows_contract(id, container, &css_math_by_id)?;
         }
-        if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
+        if matches!(
+            container.placement_mode,
+            GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+        ) {
             validate_root_html_column_flow_contract(id, container, &css_math_by_id)?;
         }
         validate_template_areas(id, container)?;
@@ -717,7 +726,11 @@ pub(super) fn validate_grid_layout(
                 &css_math_by_id,
             )?;
         }
-        if container.placement_mode == GridPlacementMode::RootHtmlColumnFlowV1 {
+        if matches!(
+            container.placement_mode,
+            GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+        ) {
             validate_root_html_column_flow_container_style(
                 node.id,
                 node.style,
@@ -827,6 +840,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
@@ -1059,7 +1073,8 @@ pub(super) fn validate_grid_layout(
                                 crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                             )
                         }
-                        GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1 => matches!(
+                        GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
+                        | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1 => matches!(
                             size,
                             crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                         ),
@@ -1168,6 +1183,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -1611,6 +1627,14 @@ fn validate_root_html_column_flow_contract(
             reason: "Root HTML column flow requires grid-auto-rows:auto",
         });
     }
+    if container.placement_mode == GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+        && container.auto_columns != crate::GridAutoColumns::Auto
+    {
+        return Err(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "Root HTML mixed column flow requires grid-auto-columns:auto",
+        });
+    }
     validate_root_html_column_flow_auto_columns(node, &container.auto_columns, css_math)
 }
 
@@ -1711,9 +1735,15 @@ fn validate_root_html_column_flow_container_style(
             return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
         }
     }
-    let required_columns = visible_items
-        .div_ceil(container.rows.len())
-        .max(container.columns.len());
+    let required_columns = if container.placement_mode
+        == GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+    {
+        container.columns.len()
+    } else {
+        visible_items
+            .div_ceil(container.rows.len())
+            .max(container.columns.len())
+    };
     let implicit_count = required_columns.saturating_sub(container.columns.len());
     let column_gap =
         resolve_root_html_gap_px(node, "column-gap", style.gap.column, style, css_math_values)?;

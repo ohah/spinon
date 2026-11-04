@@ -17,10 +17,22 @@ pub(super) fn validate_items(
     css_math: &crate::grid::root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     let node = container_node.id;
-    if container.placement_mode != GridPlacementMode::RootHtmlColumnFlowV1 {
+    let mixed_cross_axis =
+        container.placement_mode == GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1;
+    if container.placement_mode != GridPlacementMode::RootHtmlColumnFlowV1 && !mixed_cross_axis {
         return Ok(());
     }
     validate_container(node, container, css_math)?;
+    if mixed_cross_axis {
+        super::root_html_one_axis_placement::validate_items(
+            input,
+            index,
+            hidden,
+            container_node,
+            container,
+        )?;
+        return Ok(());
+    }
     let visible_count = visible_item_count(hidden, container_node);
     let required_columns = required_column_count(container, visible_count);
     if required_columns > crate::GRID_MAX_TRACKS {
@@ -84,7 +96,27 @@ pub(super) fn normalize(
     )?;
     let node = container_node.id;
     let visible_count = visible_item_count(hidden, container_node);
-    let required_columns = required_column_count(container, visible_count);
+    let mixed_cross_axis =
+        container.placement_mode == GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1;
+    let required_columns = if mixed_cross_axis {
+        container.columns.len()
+    } else {
+        required_column_count(container, visible_count)
+    };
+    let expected_auto_placed_count = if mixed_cross_axis {
+        container_node
+            .children
+            .iter()
+            .filter(|child| !hidden[child])
+            .filter(|child| {
+                input.grid_items.get(child).is_none_or(|item| {
+                    !super::root_html_one_axis_placement::is_fully_definite(item)
+                })
+            })
+            .count()
+    } else {
+        visible_count
+    };
     let positions_fit_tracks = |item: &GridItemInput| {
         fn axis_fits(start: &GridPlacementInput, end: &GridPlacementInput, tracks: usize) -> bool {
             matches!(
@@ -105,7 +137,7 @@ pub(super) fn normalize(
             required_columns,
         )
         || placement.item_placements.len() != visible_count
-        || placement.auto_placed_items.len() != visible_count
+        || placement.auto_placed_items.len() != expected_auto_placed_count
         || placement
             .item_placements
             .values()
@@ -174,6 +206,14 @@ fn validate_container(
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
             reason: "Root HTML column-flow mode only supports grid-auto-rows:auto",
+        });
+    }
+    if container.placement_mode == GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+        && !matches!(container.auto_columns, GridAutoColumns::Auto)
+    {
+        return Err(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "Root HTML mixed column-flow mode requires grid-auto-columns:auto",
         });
     }
     validate_auto_columns(node, &container.auto_columns, css_math)

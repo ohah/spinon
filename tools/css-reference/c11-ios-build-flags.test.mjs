@@ -85,7 +85,7 @@ test('mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기�
     assert.match(result.args,
       /SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=0/);
     assert.match(result.stdout,
-      /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c11_1_root_html_percent_columns_fixture_test=0 c11_1_root_html_dense_placement_fixture_test=0 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=0 c11_grid_metal_surface_pixels=1/);
+      /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c11_1_root_html_percent_columns_fixture_test=0 c11_1_root_html_dense_placement_fixture_test=0 c11_1_root_html_column_flow_mixed_cross_axis_fixture_test=0 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=0 c11_grid_metal_surface_pixels=1/);
     assert.match(result.args, /SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=0/);
   }
 });
@@ -107,6 +107,53 @@ test('C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠
     assert.match(result.stdout,
       /c18_image_paint_shared=1 c18_1_image_paint_fixture=0 c18_2_alpha_image_fixture=1/);
   }
+});
+
+test('C11.1 mixed column-flow fixture flag reaches both simulator build commands', async () => {
+  for (const includeMise of [false, true]) {
+    const result = await runSimulatorBuild({
+      includeMise,
+      variables: {
+        SPINON_ENABLE_C04_RUNTIME_GPU: '1',
+        SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST: '1',
+      },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.args,
+      /SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST=1/);
+    assert.match(result.stdout,
+      /c11_1_root_html_column_flow_mixed_cross_axis_fixture_test=1/);
+  }
+});
+
+test('C11.1 mixed column-flow build wiring keeps the FFI symbol opt-in', async () => {
+  const simulatorBuild = await readFile(buildSimulatorScript, 'utf8');
+  const nativeBuild = await readFile(buildNativeScript, 'utf8');
+  const project = await readFile(resolve(
+    repositoryRoot,
+    'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj',
+  ), 'utf8');
+  const cargo = await readFile(resolve(repositoryRoot, 'crates/spinon-ffi/Cargo.toml'), 'utf8');
+  const header = await readFile(resolve(ffiHeaderDirectory, 'spinon_ffi.h'), 'utf8');
+  assert.match(simulatorBuild,
+    /SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST:-0/);
+  assert.match(nativeBuild,
+    /append_ffi_feature c11-1-root-html-column-flow-mixed-cross-axis-fixture-test/);
+  assert.match(nativeBuild, /\$c111_root_html_column_flow_mixed_cross_axis_cpp_flag/);
+  assert.match(cargo,
+    /c11-1-root-html-column-flow-mixed-cross-axis-fixture-test\s*=\s*\[\s*"c04-runtime-gpu-fixture-test",\s*"spinon-runtime\/c11-1-grid-column-flow-mixed-cross-axis-fixture-test",\s*\]/);
+  assert.match(project,
+    /GCC_PREPROCESSOR_DEFINITIONS[^\n]*SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST/);
+  assert.match(header,
+    /#if[\s\S]*?defined\(SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST\)[\s\S]*?spinon_runtime_gpu_host_new_c11_1_root_html_column_flow_mixed_cross_axis_fixture/);
+  const disabled = preprocessFfiHeader({
+    SPINON_ENABLE_C04_RUNTIME_GPU: '1',
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST: '1',
+    SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST: '0',
+  });
+  assert.equal(disabled.status, 0, disabled.stderr);
+  assert.doesNotMatch(disabled.stdout,
+    /spinon_runtime_gpu_host_new_c11_1_root_html_column_flow_mixed_cross_axis_fixture/);
 });
 
 test('C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다', async () => {

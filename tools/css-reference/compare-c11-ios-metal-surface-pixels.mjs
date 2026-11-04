@@ -32,13 +32,18 @@ function exactInteger(value, label, minimum = 0) {
   return parsed;
 }
 
-function expectedDevicePoint(sample, fixture, drawable) {
+function expectedDevicePoint(sample, fixture, drawable, densityScale = null) {
   const viewport = fixture.runtime.viewportCssPx;
-  const scaleX = drawable.width / viewport.width;
-  const scaleY = drawable.height / viewport.height;
+  const scaleX = densityScale ?? drawable.width / viewport.width;
+  const scaleY = densityScale ?? drawable.height / viewport.height;
   assert.ok(Number.isFinite(scaleX) && scaleX > 0, 'drawable x scale이 잘못되었습니다.');
   assert.ok(Number.isFinite(scaleY) && scaleY > 0, 'drawable y scale이 잘못되었습니다.');
   assert.ok(Math.abs(scaleX - scaleY) < 1e-9, 'drawable x/y scale이 일치하지 않습니다.');
+  if (densityScale !== null) {
+    assert.ok(viewport.width * scaleX <= drawable.width
+      && viewport.height * scaleY <= drawable.height,
+    'Metal drawable이 density 기준 CSS viewport를 담지 못합니다.');
+  }
   const x = Math.floor((sample.xCssPx + 0.5) * scaleX);
   const y = Math.floor((sample.yCssPx + 0.5) * scaleY);
   assert.ok(x < drawable.width && y < drawable.height, `${sample.id}: drawable 표면 밖의 좌표입니다.`);
@@ -79,7 +84,7 @@ export function validateC11IOSChromeOracle({ fixture, referenceBytes, screenshot
 }
 
 export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix = 'C111' }) {
-  assert.ok(['C111', 'C111RHD', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Metal pixel marker prefix가 잘못되었습니다.');
+  assert.ok(['C111', 'C111RHD', 'C111CFM', 'C1122', 'C1123', 'C1131', 'C1132', 'C1133'].includes(markerPrefix), 'Metal pixel marker prefix가 잘못되었습니다.');
   const marker = `SPINON_${markerPrefix}_METAL_PIXEL`;
   const BEGIN = `${marker}_BEGIN `;
   const SAMPLE = `${marker}_SAMPLE `;
@@ -119,7 +124,19 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix 
     exactInteger(value, `drawable ${index === 0 ? '너비' : '높이'}`, 1));
   assert.equal(summary.drawable, `${drawableWidth}x${drawableHeight}`, 'begin/summary drawable이 다릅니다.');
   const drawable = { width: drawableWidth, height: drawableHeight };
-  const firstExpected = expectedDevicePoint(fixture.samples[0], fixture, drawable);
+  const usesDensityMappedC111 = markerPrefix === 'C111CFM';
+  const pixelScale = usesDensityMappedC111 ? Number(summary.scale_x) : null;
+  if (usesDensityMappedC111) {
+    assert.ok(Number.isFinite(pixelScale) && pixelScale > 0,
+      'C11.1 CFM drawable density scale이 잘못되었습니다.');
+    assert.equal(Number(summary.scale_y), pixelScale,
+      'C11.1 CFM drawable x/y density scale이 다릅니다.');
+    assert.equal(pixelScale, drawableWidth / fixture.runtime.viewportCssPx.width,
+      'C11.1 CFM 가로 density scale이 실제 drawable 크기와 다릅니다.');
+    assert.equal(pixelScale, drawableHeight / fixture.runtime.viewportCssPx.height,
+      'C11.1 CFM 세로 density scale이 실제 drawable 크기와 다릅니다.');
+  }
+  const firstExpected = expectedDevicePoint(fixture.samples[0], fixture, drawable, pixelScale);
   assert.equal(Number(summary.scale_x), firstExpected.scaleX, 'drawable x scale이 잘못 기록되었습니다.');
   assert.equal(Number(summary.scale_y), firstExpected.scaleY, 'drawable y scale이 잘못 기록되었습니다.');
   assert.equal(summary.status, 'matched', 'Metal surface summary가 matched가 아닙니다.');
@@ -141,7 +158,7 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix 
 
   const verified = fixture.samples.map((sample) => {
     const record = seen.get(sample.id);
-    const point = expectedDevicePoint(sample, fixture, drawable);
+    const point = expectedDevicePoint(sample, fixture, drawable, pixelScale);
     const actual = pixel(record.rgba);
     const expected = sample.rgba;
     assert.equal(Number(record.x), point.x, `${sample.id}: drawable x가 다릅니다.`);
@@ -159,7 +176,9 @@ export function compareC11IOSMetalPixelLogs(log, { fixture, runID, markerPrefix 
   });
 
   return {
-    schema: markerPrefix === 'C111RHD'
+    schema: markerPrefix === 'C111CFM'
+      ? 'spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1'
+      : markerPrefix === 'C111RHD'
       ? 'spinon-c11-root-html-dense-ios-metal-surface-pixels/v1'
       : markerPrefix === 'C1133'
       ? 'spinon-c11-3-3-ios-metal-surface-pixels/v1'

@@ -1,0 +1,119 @@
+{
+  "schema": "spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c111cfm-ios-mw23cgwv-f0048937-reverse-order",
+  "processId": 18561,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "drawable": [
+    480,
+    270
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "reverse-order-c-first-center",
+      "css": [
+        140,
+        15
+      ],
+      "drawable": [
+        421,
+        46
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "reverse-order-r-first-center",
+      "css": [
+        20,
+        75
+      ],
+      "drawable": [
+        61,
+        226
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "reverse-order-d-last-center",
+      "css": [
+        20,
+        15
+      ],
+      "drawable": [
+        61,
+        46
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "reverse-order-c-second-center",
+      "css": [
+        140,
+        45
+      ],
+      "drawable": [
+        421,
+        136
+      ],
+      "rgba": [
+        53,
+        120,
+        199,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "reverse-order-r-second-center",
+      "css": [
+        60,
+        75
+      ],
+      "drawable": [
+        181,
+        226
+      ],
+      "rgba": [
+        132,
+        94,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

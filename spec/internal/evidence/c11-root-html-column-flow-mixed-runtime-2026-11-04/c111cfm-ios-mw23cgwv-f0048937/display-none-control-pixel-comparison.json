@@ -1,0 +1,65 @@
+{
+  "schema": "spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c111cfm-ios-mw23cgwv-f0048937-display-none-control",
+  "processId": 18427,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "drawable": [
+    480,
+    270
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 2,
+  "matchedSamples": 2,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "display-none-control-row-after-gone-center",
+      "css": [
+        60,
+        15
+      ],
+      "drawable": [
+        181,
+        46
+      ],
+      "rgba": [
+        240,
+        180,
+        41,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "display-none-control-column-after-gone-center",
+      "css": [
+        20,
+        15
+      ],
+      "drawable": [
+        61,
+        46
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
