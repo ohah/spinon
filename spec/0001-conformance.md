@@ -43,6 +43,8 @@ React, Vue, Svelte는 서로 다른 작성 문법과 상태 관리 방식을 가
 
 2026-11-01 C11.4 anonymous Grid direct-text `text-transform:capitalize` Unicode 후속은 [Chrome 156 Agent Browser 관측, CSS Text와 Unicode 17 독립 기대값 및 차이 분류](internal/evidence/c11-4-anonymous-grid-text-transform-unicode-precomparison-2026-11-01/README.md)에 고정한다. 기준은 direct `lang="en"`, UAX #29 word segmentation, full titlecase mapping과 UTF-16 source-range 보존이며, Chrome 156이 `ß`를 그대로 두는 관측은 Unicode `SpecialCasing.txt`의 `Ss` 기대값과 별도 cohort다. 이 기록은 계획/oracle이며 Spinon 구현·일반 CSS 지원 결과가 아니다.
 
+2026-11-04 기본 parsed Root HTML `RuntimeRootHtmlTextPaintV1` Grid의 direct-text item numeric `aspect-ratio:2/1` 후보는 [계획](../plan/c11-root-html-grid-text-aspect-ratio.md)과 [Chrome 156 Agent Browser 사전 비교·독립 산술](internal/evidence/c11-root-html-grid-text-aspect-ratio-precomparison-2026-11-04/README.md)에 고정한다. definite width/height 두 방향과 no-ratio controls에서 네 scene geometry를 비교하며 C11.4 opt-in fixture profile과 구분한다. 이 자료는 계획/oracle 단계로 default app support나 C11 completion을 뜻하지 않는다.
+
 C04 runtime CSS→Taffy 작업의 구현 전 oracle, 입력 hash, computed value와 CSS px 좌표 기준은 [runtime style-layout 비교 근거](internal/evidence/css-c04-runtime-style-layout-precomparison-2026-10-09.md)에 고정했다. 이는 Chromium 출력 기준이며 Spinon 구현 결과를 포함하지 않는다.
 
 S03.3 세션 종료 검증은 [종료 경합 사전 비교 모델](internal/evidence/s03-shutdown-precomparison-2026-10-05.md)에 고정했다. 이 검증은 Rust 세션의 `Closing` 전환, 실행 중 V8 취소, 대기 명령의 종료 오류, 이후 접수 거부와 소유 스레드 종료를 대상으로 한다. raw C ABI 세션 포인터에 대한 동시 `free`는 기존 계약에서 금지하므로 시험하지 않는다.
