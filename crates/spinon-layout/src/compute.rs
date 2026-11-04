@@ -537,9 +537,16 @@ fn collect_frames(
             width: layout.size.width,
             height: layout.size.height,
         };
-        if [frame.x, frame.y, frame.width, frame.height]
-            .into_iter()
-            .any(|value| !value.is_finite())
+        if [
+            frame.x,
+            frame.y,
+            frame.width,
+            frame.height,
+            frame.x + frame.width,
+            frame.y + frame.height,
+        ]
+        .into_iter()
+        .any(|value| !value.is_finite())
         {
             return Err(LayoutError::NonFiniteFrame(external_id));
         }

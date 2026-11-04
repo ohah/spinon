@@ -25,12 +25,7 @@ pub(super) fn root_html_direct_text_ratio_nodes(
         if !has_ratio {
             continue;
         }
-        let ratio = element.layout_aspect_ratio;
-        if serialized.map(String::as_str) != Some("2 / 1")
-            || !ratio.is_some_and(|ratio| {
-                ratio.ratio == 2.0 && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
-            })
-        {
+        if !has_supported_numeric_ratio(element) {
             return Err(unsupported_root_html_ratio(
                 element.node_id,
                 serialized
@@ -91,6 +86,37 @@ fn unsupported_root_html_ratio(node: NodeId, value: String) -> StyleLayoutError 
         property: "aspect-ratio",
         value,
     }
+}
+
+fn has_supported_numeric_ratio(element: &ComputedElementStyle) -> bool {
+    let Some(serialized) = element.properties.get("aspect-ratio") else {
+        return false;
+    };
+    let Some(ratio) = element.layout_aspect_ratio else {
+        return false;
+    };
+    serialized != "auto"
+        && ratio.ratio.is_finite()
+        && ratio.ratio > 0.0
+        && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
+}
+
+fn ratio_transfer_is_finite(element: &ComputedElementStyle) -> bool {
+    let Some(ratio) = element.layout_aspect_ratio.map(|ratio| ratio.ratio) else {
+        return false;
+    };
+    if !ratio.is_finite() || ratio <= 0.0 {
+        return false;
+    }
+    let transferred = match (
+        element.layout_dimensions.width,
+        element.layout_dimensions.height,
+    ) {
+        (ComputedCssDimension::LengthPx(width), ComputedCssDimension::Auto) => width / ratio,
+        (ComputedCssDimension::Auto, ComputedCssDimension::LengthPx(height)) => height * ratio,
+        _ => return false,
+    };
+    transferred.is_finite() && transferred > 0.0
 }
 
 fn root_html_direct_text_ratio_candidate(
@@ -234,23 +260,30 @@ fn root_html_direct_text_ratio_candidate(
             && element.properties.get("justify-self").map(String::as_str) == Some("auto")
             && auto_placement(element)
     };
+    let height_half_80_supported = target_style.layout_dimensions.width
+        == ComputedCssDimension::Auto
+        && target_style.layout_dimensions.height == ComputedCssDimension::LengthPx(80.0)
+        && target_style.layout_aspect_ratio.is_some_and(|ratio| {
+            ratio.ratio == 0.5 && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
+        });
+    let target_dimensions_supported = matches!(
+        (
+            target_style.layout_dimensions.width,
+            target_style.layout_dimensions.height,
+        ),
+        (
+            ComputedCssDimension::LengthPx(60.0),
+            ComputedCssDimension::Auto
+        ) | (
+            ComputedCssDimension::Auto,
+            ComputedCssDimension::LengthPx(30.0)
+        )
+    ) || height_half_80_supported;
     if !direct_text_item_style_is_supported(short_style)
         || !direct_text_item_style_is_supported(target_style)
         || short_style.layout_dimensions.width != ComputedCssDimension::Auto
         || short_style.layout_dimensions.height != ComputedCssDimension::Auto
-        || !matches!(
-            (
-                target_style.layout_dimensions.width,
-                target_style.layout_dimensions.height,
-            ),
-            (
-                ComputedCssDimension::LengthPx(60.0),
-                ComputedCssDimension::Auto
-            ) | (
-                ComputedCssDimension::Auto,
-                ComputedCssDimension::LengthPx(30.0)
-            )
-        )
+        || !target_dimensions_supported
     {
         return None;
     }
@@ -261,24 +294,13 @@ fn root_html_direct_text_ratio_candidate(
             .is_some_and(|value| value != "auto");
     if let Some(ratio_item) = expected_ratio_item {
         if ratio_item.node_id != item_ids[1]
-            || ratio_item.layout_aspect_ratio.is_none()
-            || ratio_item
-                .properties
-                .get("aspect-ratio")
-                .map(String::as_str)
-                != Some("2 / 1")
+            || !has_supported_numeric_ratio(ratio_item)
+            || !ratio_transfer_is_finite(ratio_item)
         {
             return None;
         }
     } else if has_ratio
-        && (target_style
-            .properties
-            .get("aspect-ratio")
-            .map(String::as_str)
-            != Some("2 / 1")
-            || !target_style.layout_aspect_ratio.is_some_and(|ratio| {
-                ratio.ratio == 2.0 && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
-            }))
+        && (!has_supported_numeric_ratio(target_style) || !ratio_transfer_is_finite(target_style))
     {
         return None;
     }
