@@ -158,7 +158,7 @@ Chrome 156 관찰과 독립 기대값의 39 scene·42 item을 기본 Root HTML r
 
 Chrome 156 oracle은 주 fixture 14 scene과 자동 최소 크기 보충 fixture 2 scene을 고정한다. 기본 Root HTML Rust matrix, typed cascade, finite transfer focused tests는 각각 6/6, 1/1, 1/1, 1/1 통과했다. Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 두 fixture를 각각 실행해 네 조합 모두 layout-ready와 draw/present에 도달했다. 개별 scene frame은 Rust tests로 검사하고 runtime screenshot은 visual smoke로만 취급한다. PixelCopy·Metal drawable readback·compositor 출력은 확인하지 않았다. Broad `spinon-layout`은 441/442, `spinon-style-to-layout`은 391/401이며 기존 C15/C07 및 C11.1/C11.5 assertion 실패를 기록했다. [값 확장 계획·Chrome oracle](../../plan/c11-root-html-grid-direct-text-aspect-ratio-values.md) · [실행·hash·screenshots·테스트 한계](./evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.md) · [구현/runtime 20](./evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.md) · [PR diff 20](./evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.md) · [PR 적대 검증 30](./evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.md).
 
-이 후속 값 확장은 제한된 기본 Root HTML slice이며 public CSS 지원, C11.1/C11 완료 또는 공식 완료 `78/214` 증가를 뜻하지 않는다. PR 병합 뒤 실제 merge metadata를 추가한다. 내부 계약 숫자 버전 `0.1.0`은 유지한다.
+이 후속 값 확장은 제한된 기본 Root HTML slice이며 public CSS 지원, C11.1/C11 완료 또는 공식 완료 `78/214` 증가를 뜻하지 않는다. 구현 PR [#1164](https://github.com/ohah/spinon/pull/1164)은 열린 후보이며 head `7071d7d76aad67eb96368091da6c5423ac391858`다. 병합 뒤 실제 merge metadata를 추가한다. 내부 계약 숫자 버전 `0.1.0`은 유지한다.
 
 ## C11.2.1 numeric explicit placement 구현 상태
 
