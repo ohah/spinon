@@ -520,6 +520,10 @@ android {
         if (spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue == "1") {
             java.srcDir("src/c11_5_root_html_grid_item_self_alignment_fixture_test/java")
         }
+        if (spinonC11GridMetalSurfacePixelsTestValue == "1") {
+            java.srcDir("src/c11_grid_metal_surface_pixels_fixture_test/java")
+            resources.srcDir("src/c11_grid_metal_surface_pixels_fixture_test/resources")
+        }
         if (spinonImagePaintFixtureTestValue) {
             java.srcDir("src/c18_1_image_paint_fixture_test/java")
         }

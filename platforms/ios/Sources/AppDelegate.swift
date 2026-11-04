@@ -364,6 +364,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-one-axis-placement-metal-surface-pixels=")
         }
         let rootHtmlGridPixelCaptureRequested = rootHtmlPixelCaptureArguments.count == 1
             && arguments.allSatisfy {

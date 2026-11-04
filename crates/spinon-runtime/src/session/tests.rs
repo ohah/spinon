@@ -29,6 +29,7 @@ mod root_html_grid_integer_repeat;
 mod root_html_grid_item_alignment;
 mod root_html_grid_item_self_alignment;
 mod root_html_grid_minmax;
+mod root_html_grid_one_axis_placement;
 mod root_html_grid_template_areas;
 
 struct FakeV8Runtime {

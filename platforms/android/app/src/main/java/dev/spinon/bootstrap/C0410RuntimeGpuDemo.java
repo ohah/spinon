@@ -17389,6 +17389,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted;
     private final String rootHtmlPageScaleCase;
     private final boolean rootHtmlApplicationRequested;
+    private final RuntimeGpuSurfacePixelCaptureAdapter optionalSurfacePixelCaptureAdapter;
     private final boolean rootHtmlGridMinmaxPixelCaptureRequested;
     private final String rootHtmlGridMinmaxPixelCaptureRunId;
     private boolean rootHtmlGridMinmaxPixelCaptureStarted;
@@ -17644,6 +17645,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         rootHtmlPageScaleCase = activity.getIntent()
                 .getStringExtra("spinon_c0412_root_html_page_scale_case");
         this.rootHtmlApplicationRequested = rootHtmlApplicationRequested;
+        this.optionalSurfacePixelCaptureAdapter =
+                RuntimeGpuSurfacePixelCaptureAdapters.singleEnabledAdapter(
+                        activity.getIntent().getExtras());
         boolean rootHtmlFitContentPixelCaptureArgument =
                 BuildConfig.SPINON_C11_GRID_METAL_SURFACE_PIXELS_TEST
                         && activity.getIntent().getBooleanExtra(
@@ -21774,6 +21778,46 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private boolean requestOptionalSurfacePixelCapture(
+            long renderer, long generation, String drawReport) {
+        final int width;
+        final int height;
+        synchronized (stateLock) {
+            if (closing || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                Log.w(TAG, "SPINON_RUNTIME_GPU_SURFACE_PIXEL_CAPTURE_SKIPPED closing=" + closing
+                        + " surface_available=" + surfaceAvailable
+                        + " requested_generation=" + generation
+                        + " surface_generation=" + surfaceGeneration
+                        + " renderer_matches=" + (rendererHandle == renderer)
+                        + " renderer_generation=" + rendererGeneration);
+                return false;
+            }
+            width = surfaceWidth;
+            height = surfaceHeight;
+        }
+        java.util.function.BooleanSupplier sourceIsCurrent = () -> {
+            synchronized (stateLock) {
+                return !closing && surfaceAvailable && surfaceGeneration == generation
+                        && rendererHandle == renderer && rendererGeneration == generation
+                        && surfaceWidth == width && surfaceHeight == height;
+            }
+        };
+        try {
+            optionalSurfacePixelCaptureAdapter.request(
+                    activity, surfaceView, width, height, density, generation,
+                    drawReport == null ? "" : drawReport, mainHandler,
+                    runtimeQueue, sourceIsCurrent, this::postStatus);
+            return true;
+        } catch (RuntimeException error) {
+            Log.e(TAG, "SPINON_RUNTIME_GPU_SURFACE_PIXEL_CAPTURE status=error"
+                    + " reason=adapter-invocation", error);
+            postStatus("실패 · opt-in surface pixel capture adapter를 호출하지 못했습니다");
+            return true;
+        }
+    }
+
     private void requestRootHtmlGridMinmaxPixelCapture(long renderer, long generation) {
         final int width;
         final int height;
@@ -24491,6 +24535,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && !c114GridTrackSizingRequested
                 && c11GridSceneIndex == 0) {
             requestC11GridSurfaceCapture(renderer, generation);
+        } else if (rootHtmlApplicationRequested
+                && optionalSurfacePixelCaptureAdapter != null) {
+            requestOptionalSurfacePixelCapture(renderer, generation, result);
         }
         if (c124SurfaceCaptureProbeRequested) {
             requestC124SurfaceCapture(renderer, generation);

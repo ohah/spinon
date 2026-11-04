@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML 한 축 고정 Grid 배치 계획
 
-**상태:** Chrome 156 Agent Browser 사전 비교 10 scenes·30 item frames를 고정했다. 계획 단계이며 제품 코드 변경이나 앱 runtime 검증은 아직 하지 않았다. 이 bounded slice는 C11.1, C11 또는 공식 완료 `72/213`을 완료 처리하지 않는다.
+**상태:** Chrome 156 Agent Browser 사전 비교 14 scenes·41 item nodes·40 layout frames를 고정했다. 전용 layout mode와 Root HTML projection route 구현 및 focused layout 5/5, style-to-layout 6/6, RuntimeSession 2/2, sparse/dense placement 회귀 77/77, scoped Clippy·rustfmt가 통과했다. Android API 37 AVD SurfaceView PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable의 direct readback 표본이 각각 6/6 exact match다. Android/iOS default artifact에서 fixture 전용 marker·adapter·payload와 dedicated FFI symbol이 빠지는 경계도 확인했다. 구현/runtime 실패 관점 20개를 마쳤다. 실제 PR diff 검토 20개와 최종 PR/merge 확인은 남아 있다. 구현 전 제품 baseline 재실행은 기록되지 않았다. 이 bounded slice는 PR에 포함·병합되지 않았으며 C11.1, C11 또는 공식 완료 `72/213`을 완료 처리하지 않는다. [실행·표면 표본·artifact 경계 evidence](../spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/README.md) · [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/implementation-runtime-review-20.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.2.2 sparse row 자동 배치](./c11-2-2-sparse-row-placement.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -20,7 +20,7 @@ Layout core의 sparse row normalizer에는 definite row 고정, definite column 
 
 - 사전 비교는 Chrome 156 Agent Browser의 고정 fixture와 독립 기대값을 사용한다. 관측 환경, hash, 한계는 [evidence README](../spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/README.md)에 기록했다.
 - 기대 배치는 [CSS Grid Layout Level 1 §8.5](https://www.w3.org/TR/css-grid-1/#auto-placement-algo)의 sparse row automatic placement를 authored fixed tracks와 source order에 적용해 산출한다.
-- 10 scenes 가운데 기존 all-auto control 1개는 기존 경로를 보존하고, 제품 candidate 9개에서 positive 5개와 expected rejection 4개를 확인한다. 독립 verifier는 30 item frames와 Chrome computed placement·track geometry를 대조해 최대 오차 0 CSS px를 확인했다.
+- Core 10 scenes에서 기존 all-auto control 1개는 기존 경로를 보존하고, 제품 candidate 9개에서 positive 5개와 expected rejection 4개를 확인한다. Supplementary 4 scenes는 hidden-item occupancy, 같은 부모의 sibling owner 두 개, nested Grid rejection을 고정한다. 전체 verifier는 41 item records·40 layout frames와 Chrome computed placement·track geometry를 대조해 최대 오차 0 CSS px를 확인했다. Scene-level 결과는 all-auto 1 control, 8 accepted, 5 expected rejection이다.
 - Chrome은 동작 oracle다. 이를 제품 결과·WPT 통과·Android/iOS runtime 결과로 해석하지 않는다.
 
 ## 제한 지원 계약
@@ -36,13 +36,13 @@ Layout core의 sparse row normalizer에는 definite row 고정, definite column 
 
 ## 구현과 검증 순서
 
-1. 제품 코드 변경 전에 기존 10-scene core fixture의 all-auto·one-axis·span·negative-line·implicit-track 동작을 다시 고정한다. Agent Browser 사전 비교에는 `display:none`, `visibility:hidden`, 같은 document의 sibling Grid 및 nested Grid subscenes를 추가하고 independent expected geometry·occupancy를 기록한다. Baseline에서 all-auto control이 기존 route를 유지하고 uniform one-axis candidate가 현재 지원 거부를 내는 상태를 재현한다. 이전 C11.2.2 sparse matrix와 C11.2.3 dense/column matrix는 변경하지 않는다.
+1. Chrome 사전 비교 단계에서 14-scene fixture의 all-auto·one-axis·span·negative-line·implicit-track 동작과 supplementary hidden/sibling/nested scenes를 재현했다. Independent expected geometry·occupancy와 Chrome observation hash를 확인했다. 구현 전 제품 baseline 재실행은 생략된 상태로 기록하고, 지금은 all-auto 기존 경로 보존과 후보 배치를 변경 후 테스트에서 확인한다. 이전 C11.2.2 sparse matrix와 C11.2.3 dense/column matrix는 변경하지 않는다.
 2. Root HTML candidate selector를 추가한다. 각 owner의 visible direct children, same-axis definiteness, endpoint shape, flow, areas, nested/positioned/text conditions를 확인한다. 후보 selection에 실패하면 일반 route를 통해 accidental partial support가 생기지 않는지 assertion으로 고정한다.
 3. Layout 전용 mode와 validator를 추가하고 sparse placement normalizer를 재사용한다. partial placements를 기존 explicit-only normalizer가 처리하지 않도록 normalization dispatch를 분리한다. validator는 fixed explicit tracks, no implicit extent, supported child sizing·style, order, occupancy 및 오류 attribution을 확인한다.
-4. Style projection/Layout 단위 검사와 실제 parsed Root HTML runtime fixture를 연결한다. Core 9 candidate scenes(성공 5·거부 4)와 all-auto control, 1단계에서 추가한 subscenes를 수행하고 placement line·item frame·expanded track 부재·rejection atomicity를 비교한다. Nested/sibling Grid와 multiple owner 격리, stale revision도 negative/positive controls로 확인한다.
+4. Style projection/Layout 단위 검사와 실제 parsed Root HTML runtime fixture를 연결한다. Core 9 candidate scenes(성공 5·거부 4), all-auto control 및 supplementary scenes를 함께 수행하고 placement line·item frame·expanded track 부재·rejection atomicity를 비교한다. Sibling Grid의 두 owner 격리와 nested Grid 거부, stale revision도 negative/positive controls로 확인한다.
 5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS Simulator에서 최신 source로 같은 fixture를 실행한다. Android PixelCopy와 iOS Metal drawable 결과를 Chrome expected와 geometry tolerance ±0.5 CSS px, 고정 surface sample exact로 각각 비교한다. Android software renderer 및 iOS compositor 전 readback 여부를 별도로 기록한다.
-6. 기본 product artifact에서 새 fixture payload·전용 FFI symbol이 제외되는지 확인하고 opt-in fixture-test artifact를 positive control로 확인한다. Rust focused tests, scoped Clippy, `cargo fmt --all -- --check`, CSS reference/fixture boundary 검사를 실행한다. 계획 검토와 구현/runtime 실패 관점 20개, PR 실제 diff 적대 검토 30개는 서로 다른 관점으로 기록한다. 실행하지 않은 CI·simulator gate는 통과로 적지 않는다.
-7. 구현 PR 병합 뒤 내부 계약 0059, 계획, `spec/STATUS.md`에 실제로 검증된 제한 범위와 남은 한계를 반영한다. C11.1/C11 상위 checkbox 및 공식 완료 `72/213`은 그대로 유지한다.
+6. 기본 product artifact에서 새 fixture payload·전용 FFI symbol이 제외되는지 확인하고 opt-in fixture-test artifact를 positive control로 확인한다. Rust focused tests, scoped Clippy, `cargo fmt --all -- --check`, CSS reference/fixture boundary 검사를 실행한다. 계획 검토와 구현/runtime 실패 관점 20개, PR 실제 diff 적대 검토 20개는 서로 다른 관점으로 기록한다. 실행하지 않은 CI·simulator gate는 통과로 적지 않는다.
+7. 구현 PR에 내부 계약 0059의 bounded candidate 동작과 한계를 같은 변경으로 기록한다. 병합 뒤 계획과 `spec/STATUS.md`에는 실제 merge SHA·검증 결과를 반영하고, C11.1/C11 상위 checkbox 및 공식 완료 `72/213`은 그대로 유지한다.
 
 ## 범위 밖과 미검증
 
