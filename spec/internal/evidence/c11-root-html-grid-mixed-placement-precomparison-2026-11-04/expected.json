@@ -18,7 +18,7 @@
       "runtimeDisposition": "accept-row-locked-mixed",
       "frames": {
         "row-span-blocker": [0, 0, 40, 20],
-        "row-span-partial": [40, 0, 80, 20]
+        "row-span-partial": [40, 0, 50, 50]
       }
     },
     "column-definite-blocker": {
@@ -32,14 +32,14 @@
       "runtimeDisposition": "accept-column-locked-mixed",
       "frames": {
         "column-span-blocker": [40, 0, 50, 20],
-        "column-span-partial": [40, 20, 50, 70]
+        "column-span-partial": [40, 20, 80, 30]
       }
     },
     "hidden-full-blocker": {
       "runtimeDisposition": "accept-hidden-full-blocker",
       "frames": {
         "hidden-full": [0, 0, 40, 20],
-        "hidden-span-partial": [40, 0, 80, 20]
+        "hidden-span-partial": [40, 0, 50, 50]
       }
     },
     "display-none-full-control": {

@@ -14,6 +14,16 @@ fn one_axis_grid(columns: usize, rows: usize, item_count: usize) -> LayoutInput 
     input
 }
 
+fn mixed_explicit_one_axis_grid(columns: usize, rows: usize, item_count: usize) -> LayoutInput {
+    let mut input = one_axis_grid(columns, rows, item_count);
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1;
+    input
+}
+
 #[test]
 fn root_html_one_axis_placement_places_column_locked_items_in_sparse_row_order() {
     let mut input = one_axis_grid(3, 3, 3);
@@ -238,6 +248,209 @@ fn root_html_one_axis_placement_rejects_all_auto_and_fully_explicit_items() {
     );
     assert!(matches!(
         TaffyLayoutEngine.compute(&fully_explicit),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+}
+
+#[test]
+fn root_html_mixed_placement_reserves_full_items_before_row_locked_items() {
+    let mut input = mixed_explicit_one_axis_grid(3, 2, 3);
+    input.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    input.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(3),
+        ),
+    );
+    input.grid_items.insert(
+        id(4),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+
+    for (node, expected) in [
+        (2, [0.0, 0.0, 40.0, 20.0]),
+        (3, [40.0, 0.0, 40.0, 20.0]),
+        (4, [80.0, 0.0, 40.0, 20.0]),
+    ] {
+        let actual = frame(&input, node);
+        assert_eq!(
+            [actual.x, actual.y, actual.width, actual.height],
+            expected,
+            "node {node}"
+        );
+    }
+}
+
+#[test]
+fn root_html_mixed_placement_reserves_full_items_before_column_locked_spans() {
+    let mut input = mixed_explicit_one_axis_grid(3, 3, 2);
+    input.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Span(2),
+        ),
+    );
+    input.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(3),
+        ),
+    );
+
+    let partial = frame(&input, 2);
+    let full = frame(&input, 3);
+    assert_eq!(
+        [partial.x, partial.y, partial.width, partial.height],
+        [40.0, 20.0, 80.0, 20.0]
+    );
+    assert_eq!(
+        [full.x, full.y, full.width, full.height],
+        [40.0, 0.0, 40.0, 20.0]
+    );
+}
+
+#[test]
+fn root_html_mixed_placement_rejects_missing_item_class_mixed_axes_and_implicit_extent() {
+    let mut only_partial = mixed_explicit_one_axis_grid(3, 2, 1);
+    only_partial.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&only_partial),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut only_full = mixed_explicit_one_axis_grid(3, 2, 1);
+    only_full.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&only_full),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut mixed_axes = mixed_explicit_one_axis_grid(3, 2, 3);
+    mixed_axes.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    mixed_axes.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    mixed_axes.grid_items.insert(
+        id(4),
+        placement(
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(3),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(3),
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&mixed_axes),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut implicit_row = mixed_explicit_one_axis_grid(3, 2, 2);
+    implicit_row
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .auto_rows = GridAutoRows::LengthPx(7.0);
+    implicit_row.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(3),
+            GridPlacementInput::Line(4),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    implicit_row.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    let error = TaffyLayoutEngine.compute(&implicit_row).unwrap_err();
+    assert!(matches!(
+        error,
+        crate::LayoutError::InvalidGridPlacement { .. }
+    ));
+}
+
+#[test]
+fn root_html_mixed_placement_rejects_implicit_column_extent() {
+    let mut input = mixed_explicit_one_axis_grid(3, 2, 2);
+    input.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    input.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(4),
+            GridPlacementInput::Line(5),
+        ),
+    );
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
         Err(crate::LayoutError::InvalidGridPlacement { .. })
     ));
 }

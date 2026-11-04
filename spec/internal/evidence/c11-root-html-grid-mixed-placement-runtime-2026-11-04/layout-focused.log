@@ -1,0 +1,15 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.33s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 8 tests
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_one_axis_placement_rejects_all_auto_and_fully_explicit_items ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_placement_rejects_missing_item_class_mixed_axes_and_implicit_extent ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_one_axis_placement_rejects_mixed_axis_and_implicit_extent ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_placement_reserves_full_items_before_column_locked_spans ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_one_axis_placement_preserves_spans_and_negative_lines ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_one_axis_placement_places_column_locked_items_in_sparse_row_order ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_one_axis_placement_places_row_locked_items_within_their_rows ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_placement_reserves_full_items_before_row_locked_items ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 424 filtered out; finished in 0.03s
+

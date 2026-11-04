@@ -77,7 +77,11 @@ pub(super) fn normalize_grid_layout(
         }
         if container_node.style.display == LayoutDisplay::Grid
             && !hidden[&container_node.id]
-            && container.placement_mode == GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
+            && matches!(
+                container.placement_mode,
+                GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
+                    | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
+            )
         {
             root_html_one_axis_placement::validate_items(
                 input,
@@ -131,6 +135,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -161,7 +166,11 @@ pub(super) fn normalize_grid_layout(
                 output.expanded_rows.insert(container_node.id, rows);
             }
             output.auto_placed_items.extend(sparse.auto_placed_items);
-        } else if container.placement_mode == GridPlacementMode::RootHtmlOneAxisAutoPlacementV1 {
+        } else if matches!(
+            container.placement_mode,
+            GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
+        ) {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,
                 index,
@@ -271,6 +280,7 @@ pub(super) fn normalize_grid_item_placements(
                 | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

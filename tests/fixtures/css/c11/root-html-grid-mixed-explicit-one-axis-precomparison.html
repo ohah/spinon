@@ -64,7 +64,7 @@
         <h2>Row-locked span finds the first contiguous free columns</h2>
         <div class="grid">
           <div class="item green" id="row-span-blocker" style="grid-row:1 / 2;grid-column:1 / 2"></div>
-          <div class="item purple" id="row-span-partial" style="grid-row:1 / 2;grid-column:auto / span 2"></div>
+          <div class="item purple" id="row-span-partial" style="grid-row:1 / span 2;grid-column:auto"></div>
         </div>
       </section>
 
@@ -80,7 +80,7 @@
         <h2>Column-locked span finds the first contiguous free rows</h2>
         <div class="grid">
           <div class="item orange" id="column-span-blocker" style="grid-row:1 / 2;grid-column:2 / 3"></div>
-          <div class="item purple" id="column-span-partial" style="grid-row:auto / span 2;grid-column:2 / 3"></div>
+          <div class="item purple" id="column-span-partial" style="grid-row:auto;grid-column:2 / span 2"></div>
         </div>
       </section>
 
@@ -88,7 +88,7 @@
         <h2>visibility:hidden fully definite item still occupies cells</h2>
         <div class="grid">
           <div class="item green" id="hidden-full" style="visibility:hidden;grid-row:1 / 2;grid-column:1 / 2"></div>
-          <div class="item purple" id="hidden-span-partial" style="grid-row:1 / 2;grid-column:auto / span 2"></div>
+          <div class="item purple" id="hidden-span-partial" style="grid-row:1 / span 2;grid-column:auto"></div>
         </div>
       </section>
 

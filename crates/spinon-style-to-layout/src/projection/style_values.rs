@@ -293,6 +293,25 @@ pub(super) fn project_styles(
         } else {
             BTreeSet::new()
         };
+    let root_html_mixed_explicit_one_axis_route_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
+                root_html_one_axis_placement::mixed_candidate_nodes(
+                    snapshot,
+                    nodes,
+                    &root_html_dense_route_nodes,
+                )
+            })
+        } else {
+            BTreeSet::new()
+        };
+    let mut root_html_one_axis_or_mixed_placement_route_nodes =
+        root_html_one_axis_placement_route_nodes.clone();
+    root_html_one_axis_or_mixed_placement_route_nodes.extend(
+        root_html_mixed_explicit_one_axis_route_nodes
+            .iter()
+            .copied(),
+    );
     let root_html_grid_alignment_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
@@ -324,7 +343,7 @@ pub(super) fn project_styles(
             nodes,
             &root_html_dense_route_nodes,
             &root_html_explicit_placement_route_nodes,
-            &root_html_one_axis_placement_route_nodes,
+            &root_html_one_axis_or_mixed_placement_route_nodes,
         )?;
         root_html_column_flow::validate_candidate(tree, snapshot, nodes)?;
         validate_root_html_grid_item_capacity(snapshot, nodes)?;
@@ -970,7 +989,7 @@ pub(super) fn project_styles(
             grid_styles.insert(node, grid);
             let mut container = if snapshot.profile
                 == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
-                && root_html_one_axis_placement_route_nodes.contains(&node)
+                && root_html_one_axis_or_mixed_placement_route_nodes.contains(&node)
             {
                 project_root_html_one_axis_grid_layout_with_math(
                     node,
@@ -993,6 +1012,12 @@ pub(super) fn project_styles(
                 // The explicit-only normalizer owns placement. The typed alignment values above
                 // remain on each item LayoutStyle and are still consumed by the layout engine.
                 container.placement_mode = spinon_layout::GridPlacementMode::ExplicitOnly;
+            }
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_mixed_explicit_one_axis_route_nodes.contains(&node)
+            {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1;
             }
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_one_axis_placement_route_nodes.contains(&node)
@@ -1074,7 +1099,8 @@ pub(super) fn project_styles(
             .any(|grid| grid.auto_flow == ComputedCssGridAutoFlow::Column);
     let root_html_dense_route = !root_html_dense_route_nodes.is_empty();
     let root_html_explicit_placement_route = !root_html_explicit_placement_route_nodes.is_empty();
-    let root_html_one_axis_placement_route = !root_html_one_axis_placement_route_nodes.is_empty();
+    let root_html_one_axis_placement_route =
+        !root_html_one_axis_or_mixed_placement_route_nodes.is_empty();
     if matches!(
         snapshot.profile,
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -1106,7 +1132,7 @@ pub(super) fn project_styles(
                 .is_some_and(|owner| {
                     root_html_dense_route_nodes.contains(owner)
                         || root_html_explicit_placement_route_nodes.contains(owner)
-                        || root_html_one_axis_placement_route_nodes.contains(owner)
+                        || root_html_one_axis_or_mixed_placement_route_nodes.contains(owner)
                         || grid_styles.get(owner).is_some_and(|grid| {
                             grid.template_areas.is_some()
                                 || grid.auto_flow == ComputedCssGridAutoFlow::Column

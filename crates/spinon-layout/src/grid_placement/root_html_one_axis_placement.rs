@@ -16,13 +16,20 @@ pub(super) fn validate_items(
     container_node: &crate::LayoutNode,
     container: &GridContainerInput,
 ) -> Result<(), LayoutError> {
-    if container.placement_mode != GridPlacementMode::RootHtmlOneAxisAutoPlacementV1 {
+    let mixed_explicit =
+        container.placement_mode == GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1;
+    if container.placement_mode != GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
+        && !mixed_explicit
+    {
         return Ok(());
     }
     validate_container(container_node.id, container_node.style, container)?;
 
     let mut grid_locked_axis = None;
     let mut item_count = 0usize;
+    let mut first_item = None;
+    let mut fully_definite_count = 0usize;
+    let mut one_axis_count = 0usize;
     for child in container_node
         .children
         .iter()
@@ -45,21 +52,41 @@ pub(super) fn validate_items(
         }
 
         let placement = input.grid_items.get(&child).cloned().unwrap_or_default();
-        let axis = locked_axis(child, &placement)?;
-        if grid_locked_axis.is_some_and(|previous| previous != axis) {
-            return Err(super::invalid_placement(
-                child,
-                "grid-row-start",
-                "Root HTML one-axis mode requires every item to use the same definite axis",
-            ));
+        validate_endpoints(child, &placement)?;
+        if first_item.is_none() {
+            first_item = Some(child);
         }
-        grid_locked_axis = Some(axis);
+        if mixed_explicit && is_fully_definite(&placement) {
+            fully_definite_count = fully_definite_count
+                .checked_add(1)
+                .ok_or(LayoutError::GridImplicitTrackRequired(container_node.id))?;
+        } else {
+            let axis = locked_axis(child, &placement)?;
+            if grid_locked_axis.is_some_and(|previous| previous != axis) {
+                return Err(super::invalid_placement(
+                    child,
+                    "grid-row-start",
+                    "Root HTML one-axis mode requires every partial item to use the same definite axis",
+                ));
+            }
+            grid_locked_axis = Some(axis);
+            one_axis_count = one_axis_count
+                .checked_add(1)
+                .ok_or(LayoutError::GridImplicitTrackRequired(container_node.id))?;
+        }
         item_count = item_count
             .checked_add(1)
             .ok_or(LayoutError::GridImplicitTrackRequired(container_node.id))?;
     }
     if item_count == 0 {
         return Err(LayoutError::GridImplicitTrackRequired(container_node.id));
+    }
+    if mixed_explicit && (fully_definite_count == 0 || one_axis_count == 0) {
+        return Err(super::invalid_placement(
+            first_item.unwrap_or(container_node.id),
+            "grid-row-start",
+            "Root HTML mixed placement requires fully definite and same-axis partial items",
+        ));
     }
     Ok(())
 }
@@ -71,7 +98,6 @@ enum DefiniteAxis {
 }
 
 fn locked_axis(node: NodeId, placement: &GridItemInput) -> Result<DefiniteAxis, LayoutError> {
-    validate_endpoints(node, placement)?;
     let row_has_line = has_line(&placement.row_start, &placement.row_end);
     let column_has_line = has_line(&placement.column_start, &placement.column_end);
     let row_is_auto = is_auto_axis(&placement.row_start, &placement.row_end);
@@ -86,6 +112,13 @@ fn locked_axis(node: NodeId, placement: &GridItemInput) -> Result<DefiniteAxis, 
             "Root HTML one-axis mode requires one numeric definite axis and auto on the other axis",
         )),
     }
+}
+
+fn is_fully_definite(placement: &GridItemInput) -> bool {
+    has_line(&placement.row_start, &placement.row_end)
+        && has_line(&placement.column_start, &placement.column_end)
+        && !is_auto_axis(&placement.row_start, &placement.row_end)
+        && !is_auto_axis(&placement.column_start, &placement.column_end)
 }
 
 fn validate_endpoints(node: NodeId, placement: &GridItemInput) -> Result<(), LayoutError> {
