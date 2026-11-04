@@ -1,6 +1,6 @@
 # C11.1 parsed Root HTML 혼합 fully definite·one-axis auto placement
 
-**상태:** 계획 후보. Chrome 156 기준과 독립 기대값을 고정했다. 아직 구현·runtime 검증은 하지 않았다.
+**상태:** 계획 PR #1146이 병합됐다. 제한 구현 후보의 placement layout module 9/9, Root HTML integration module 8/8, selector 3/3, scoped Clippy/rustfmt가 통과했다. Android API 37 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 각각 19/19 표본이 exact로 일치했다. 행 고정 부분 item이 실제 fully definite blocker를 건너뛰는 표본을 추가해 앞선 18-sample 실행을 대체했다. 구현/runtime review 20개와 구현 diff review 20개도 통과했다. GitHub PR review 30개, PR 생성·검토·병합은 남아 있다. C11.1/C11과 공식 완료 `72/213`은 유지한다. [runtime evidence](../spec/internal/evidence/c11-root-html-grid-mixed-placement-runtime-2026-11-04/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-mixed-placement-runtime-2026-11-04/implementation-runtime-review-20.md) · [구현 diff 검토 20개](../spec/internal/evidence/c11-root-html-grid-mixed-placement-runtime-2026-11-04/implementation-pr-diff-review-20.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.1 one-axis auto-placement](./c11-root-html-grid-one-axis-auto-placement.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -9,6 +9,10 @@
 **계획 실패 관점:** [독립 20개 검토](./c11-root-html-grid-mixed-explicit-one-axis-plan-review-20.md)
 
 **계획 PR 변경 검토:** [실제 diff 실패 관점 20개](./c11-root-html-grid-mixed-explicit-one-axis-plan-pr-diff-review-20.md)
+
+**구현/runtime 실패 관점:** [20개 검토](../spec/internal/evidence/c11-root-html-grid-mixed-placement-runtime-2026-11-04/implementation-runtime-review-20.md)
+
+**구현 diff 검토:** [20개 관점](../spec/internal/evidence/c11-root-html-grid-mixed-placement-runtime-2026-11-04/implementation-pr-diff-review-20.md)
 
 ## 결손과 목표
 
@@ -19,7 +23,7 @@
 ## 제한 계약
 
 - 기본 parsed Root HTML `RuntimeRootHtmlTextPaintV1`의 no-area `grid-auto-flow: row` owner 하나에 한정한다. sibling Grid owner의 placement state는 공유하지 않는다.
-- visible participating direct items 중 fully definite numeric item이 하나 이상, 그리고 row-locked 또는 column-locked one-axis item이 하나 이상 있어야 한다. Partial items는 모두 같은 definite axis를 써야 한다. Fully definite item은 두 축 모두 numeric line/span이어야 한다.
+- visible participating direct items 중 fully definite numeric item이 하나 이상, 그리고 row-locked 또는 column-locked one-axis item이 하나 이상 있어야 한다. Partial items는 모두 같은 definite axis를 써야 하며 definite 축은 numeric line/span, 반대 축 양 끝은 모두 `auto`여야 한다. Fully definite item은 두 축 모두 numeric line/span이어야 한다.
 - Explicit columns/rows는 비어 있지 않은 finite non-negative fixed-px 목록이고, container 크기는 finite definite CSS px다. Gap, margin, padding, border는 0이다. 추가 implicit row/column extent가 필요하면 전체 Grid 결과를 거부한다.
 - Item은 static empty non-replaced direct block이며 auto 또는 finite non-negative fixed-px size를 쓴다. Source order와 paint order는 보존한다. Fully definite items는 CSS Grid 규칙처럼 partial auto-placement보다 먼저 occupancy를 예약한다.
 - `display:none`은 selector와 occupancy에서 제외한다. `visibility:hidden`은 occupancy를 차지한다.
@@ -28,7 +32,7 @@
 
 ## 독립 oracle와 판정
 
-고정 fixture는 40/50/30px columns와 20/30/40px rows를 사용한다. CSS Grid §8.5에 따라 fully definite item들을 먼저 occupancy에 등록한 후 같은-axis partial items를 DOM source order로 배치해 expected frames를 계산했다. Chrome 156 Agent Browser가 9 scenes·18 items·17 visible frames를 관측했고 독립값과 최대 0 CSS px 차이였다. 화면·hash·도구 한계는 precomparison evidence에 기록한다.
+고정 fixture는 40/50/30px columns와 20/30/40px rows를 사용한다. CSS Grid §8.5에 따라 fully definite item들을 먼저 occupancy에 등록한 후 같은-axis partial items를 DOM source order로 배치해 expected frames를 계산했다. Partial item의 definite 축에는 span을 허용하고 반대 축은 양 끝 모두 `auto`로 둔다. Chrome 156 Agent Browser의 9 scenes·20 items·19 visible frames 관측은 독립값과 최대 0 CSS px 차이였다. 화면·hash·도구 한계는 precomparison evidence에 기록한다.
 
 Accepted scenes는 row/column definite blocker, row/column span, hidden fully definite blocker 및 display-none control이다. Mixed partial axes와 implicit row extent는 Chrome에서 유효한 layout이라도 제품 후보에서는 거부한다. all-auto는 기존 route control이다. 제품 acceptance는 accepted frame과 exact typed disposition, rejection 시 atomic output 없음으로 판정한다. Geometry tolerance는 0.5 CSS px, authored track values tolerance는 0.01 CSS px다.
 
@@ -37,10 +41,10 @@ Accepted scenes는 row/column definite blocker, row/column span, hidden fully de
 1. 계획 PR 전에 Chrome fixture, 독립 expected JSON, browser observation, screenshot hash와 verifier를 고정한다. 계획 문서를 서로 다른 실패 관점 20개로 검토하고 계획 PR 실제 diff를 별도 20개 관점으로 검토한다.
 2. Layout에 새 placement mode와 admission validator를 추가한다. Existing `RootHtmlOneAxisAutoPlacementV1` rejection behavior를 유지하며 sparse normalizer의 definite-item reservation pass가 partial placement보다 먼저 실행되는 것을 tests로 고정한다.
 3. Style projection에 혼합 selector를 추가한다. Visible item 집합의 typed placement만 읽고 owner별로 mode를 고른다. All-auto·다른 partial axis·named endpoint·areas·dense/column flow를 새 route로 보내지 않는다. `display:none`·`visibility:hidden`을 서로 다르게 처리한다.
-4. Runtime fixture는 accepted 6 scenes, mixed-axis 및 implicit extent rejection, all-auto 및 fully-definite existing-route controls를 포함한다. Accepted geometry·track sizes·placement ownership·source order를 보고하고 rejection에서 partial layout/draw output이 없는지 확인한다.
-5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 fixture hash와 final source를 실행한다. PixelCopy와 Metal drawable 표본은 실제 readback이 확인된 경우에만 별도로 기록하고, AVD software GPU 및 iOS compositor 전 한계를 유지한다.
-6. Scoped Rust tests, fixture/reference/boundary checks, relevant Clippy, `cargo fmt --all -- --check`, default vs opt-in artifact boundary를 확인한다. 계획 검토와 겹치지 않는 구현/runtime 실패 관점 20개, 실제 implementation PR diff 20개를 각각 수행한다. 결함을 고치면 관련 관점을 다시 수행한다.
-7. PR에는 변경 ID, contract/evidence, 남은 한계를 기록하고 Android/iOS 화면을 첨부할 수 있으면 Agent Browser로 이미지 로드를 확인한다. Merge 후 `spec/internal/0059-c11-grid-layout.md`, `spec/STATUS.md`, C11 plan과 Tailnet roadmap을 증거에 맞춰 갱신한다. C11.1/C11 및 공식 `72/213` 상태는 승격 조건을 만족하기 전까지 그대로 둔다.
+4. Runtime fixture는 accepted mixed-placement 6 scenes와 all-auto·fully-definite existing-route controls를 포함한다. 혼합 partial axis와 implicit extent의 negative controls는 focused Rust tests 및 Chrome oracle에서 별도로 확인한다. 현재 `RuntimeRootHtmlTextPaintV1`은 이 unsupported computed placement를 만나면 Grid owner 단위가 아니라 문서 전체를 layout 전에 거부하므로 negative owner를 accepted scene과 한 mobile runtime fixture에 합치면 surface draw까지 진행할 수 없다. Android/iOS surface에서는 accepted scene의 geometry 결과를 19개 표본으로 확인한다. 행 blocker 표본은 뒤에서 온 fully definite item이 같은 행의 열을 선점하고 다음 sparse item이 세 번째 열로 이동하는 것을 확인한다.
+5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 fixture hash와 final source를 실행한다. Android PixelCopy는 19/19, iOS Metal drawable은 19/19 exact다. iOS readback은 compositor 제출 전이며 두 결과 모두 시뮬레이터 근거다. Android AVD 결과를 실기기/hardware GPU 적합성으로 일반화하지 않는다.
+6. Scoped Rust tests, fixture/reference/boundary checks, relevant Clippy, `cargo fmt --all -- --check`, default vs opt-in artifact boundary를 확인한다. 계획 검토와 겹치지 않는 구현/runtime 실패 관점 20개 및 실제 구현 diff 20개를 각각 완료했다. 결함을 고친 뒤 관련 관점과 simulator 표본을 재실행했다.
+7. 구현 PR을 만든 뒤 실제 PR diff를 프로젝트 규칙에 따라 별도 실패 관점 30개로 검토한다. PR에는 변경 ID, contract/evidence, 남은 한계를 기록하고 Android/iOS 화면을 첨부할 수 있으면 Agent Browser로 이미지 로드를 확인한다. Merge 후 `spec/internal/0059-c11-grid-layout.md`, `spec/STATUS.md`, C11 plan과 Tailnet roadmap을 증거에 맞춰 갱신한다. C11.1/C11 및 공식 `72/213` 상태는 승격 조건을 만족하기 전까지 그대로 둔다.
 
 ## 완료로 주장하지 않을 사항
 

@@ -1,0 +1,88 @@
+WARNING: Your metrics.cfg file was invalid or nonexistent. A new one will be created.
+________ running 'python3 third_party/depot_tools/update_depot_tools_toggle.py --disable' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 build/landmines.py --landmine-scripts tools/get_landmines.py' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume --bucket chromium-browser-clang -s tools/clang/dsymutil/bin/dsymutil.arm64.sha1 -o tools/clang/dsymutil/bin/dsymutil' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+0> Downloading tools/clang/dsymutil/bin/dsymutil@d72733d9365a8c75966b524a739bccb23151a021...
+Downloading 1 files took 11.801098 second(s)
+Hook 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume --bucket chromium-browser-clang -s tools/clang/dsymutil/bin/dsymutil.arm64.sha1 -o tools/clang/dsymutil/bin/dsymutil' took 11.85 secs
+________ running 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume -u --bucket v8-wasm-spec-tests -s test/wasm-spec-tests/tests.tar.gz.sha1' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+0> Downloading test/wasm-spec-tests/tests.tar.gz@e331c94cae0b3b414cc66ce613061e63126795e4...
+0> Extracting 575 entries from test/wasm-spec-tests/tests.tar.gz to test/wasm-spec-tests/tests
+Downloading 1 files took 3.324128 second(s)
+________ running 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume -u --bucket v8-wasm-spec-tests -s test/wasm-js/tests.tar.gz.sha1' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+0> Downloading test/wasm-js/tests.tar.gz@fc011ee3621621398d2b89a962174055bb81038c...
+0> Extracting 258 entries from test/wasm-js/tests.tar.gz to test/wasm-js/tests
+Downloading 1 files took 2.748217 second(s)
+________ running 'python3 build/mac_toolchain.py' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+Skipping Mac toolchain installation for mac
+________ running 'python3 build/util/lastchange.py -o build/util/LASTCHANGE' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'vpython3 -vpython-spec vpython.toml -vpython-tool install' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 buildtools/reclient_cfgs/configure_reclient_cfgs.py --rbe_instance projects/rbe-chrome-untrusted/instances/default_instance --rewrapper_cfg_project  --skip_remoteexec_cfg_fetch' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 build/config/siso/configure_siso.py --rbe_instance projects/rbe-chrome-untrusted/instances/default_instance' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+Running: gclient root
+Running: gclient config --spec 'solutions = [
+  {
+    "name": "v8",
+    "url": "https://chromium.googlesource.com/v8/v8.git",
+    "deps_file": "DEPS",
+    "custom_deps": {},
+  },
+]
+'
+Running: gclient sync --no-history --with_branch_heads
+Running: git config diff.ignoreSubmodules dirty
+3>WARNING: subprocess '"git" "-c" "core.deltaBaseCacheLimit=2g" "fetch" "--no-tags" "--" "origin" "bc0661cf80717e97e1b6868396f61f7f94f2d04a"' in /Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8/build failed; will retry after a short nap...
+52>WARNING: subprocess '"git" "-c" "core.deltaBaseCacheLimit=2g" "fetch" "--no-tags" "--" "origin"' in /Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8/tools/rust failed; will retry after a short nap...
+[0:04:06] Still working on:
+[0:04:06]   v8/third_party/icu
+[0:04:06]   v8/third_party/rust-toolchain:Mac_arm64/rust-toolchain-1edd55dcfcd573872c727fa3e086369a71661ee0-2-llvmorg-24-init-7747-g62397f8b.tar.xz
+[0:04:16] Still working on:
+[0:04:16]   v8/third_party/icu
+[0:04:16]   v8/third_party/rust-toolchain:Mac_arm64/rust-toolchain-1edd55dcfcd573872c727fa3e086369a71661ee0-2-llvmorg-24-init-7747-g62397f8b.tar.xz
+[0:04:26] Still working on:
+[0:04:26]   v8/third_party/icu
+[0:04:26]   v8/third_party/rust-toolchain:Mac_arm64/rust-toolchain-1edd55dcfcd573872c727fa3e086369a71661ee0-2-llvmorg-24-init-7747-g62397f8b.tar.xz
+[0:04:36] Still working on:
+[0:04:36]   v8/third_party/icu
+[0:04:36]   v8/third_party/rust-toolchain:Mac_arm64/rust-toolchain-1edd55dcfcd573872c727fa3e086369a71661ee0-2-llvmorg-24-init-7747-g62397f8b.tar.xz
+[0:04:46] Still working on:
+[0:04:46]   v8/third_party/icu
+[0:04:46]   v8/third_party/rust-toolchain:Mac_arm64/rust-toolchain-1edd55dcfcd573872c727fa3e086369a71661ee0-2-llvmorg-24-init-7747-g62397f8b.tar.xz
+[0:04:51] Still working on:
+[0:04:51]   v8/third_party/icu
+[0:04:51]   v8/third_party/rust-toolchain:Mac_arm64/rust-toolchain-1edd55dcfcd573872c727fa3e086369a71661ee0-2-llvmorg-24-init-7747-g62397f8b.tar.xz
+
+v8/third_party/libc++/src (ERROR)
+----------------------------------------
+[0:00:02] Started.
+[0:00:02] Finished running: git rev-list -n 1 HEAD
+[0:00:02] Finished running: git rev-parse --abbrev-ref=strict HEAD
+From https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx
+[0:01:00]  * [new branch]            cr-m141    -> origin/cr-m141
+[0:01:00]  * [new branch]            main       -> origin/main
+[0:01:00]  * [new branch]            master     -> origin/master
+----------------------------------------
+Error: Command 'git -c color.ui=never remote update' returned non-zero exit status 1 in /Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8/third_party/libc++/src
+remote: RESOURCE_EXHAUSTED: Resource has been exhausted (e.g. check quota)
+remote: [type.googleapis.com/google.rpc.QuotaFailure]
+remote: violations {
+remote:   subject: "shared/shared_anonymous"
+remote:   description: "Short term server-time rate limit exceeded"
+remote: }
+remote: 
+remote: [type.googleapis.com/google.rpc.RequestInfo]
+remote: request_id: "b0363486ff544ff29d317557ff535ebd"
+fatal: unable to access 'https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git/': The requested URL returned error: 429
+
+________ running 'python3 third_party/depot_tools/update_depot_tools_toggle.py --disable' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 build/landmines.py --landmine-scripts tools/get_landmines.py' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume --bucket chromium-browser-clang -s tools/clang/dsymutil/bin/dsymutil.arm64.sha1 -o tools/clang/dsymutil/bin/dsymutil' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume -u --bucket v8-wasm-spec-tests -s test/wasm-spec-tests/tests.tar.gz.sha1' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 third_party/depot_tools/download_from_google_storage.py --no_resume -u --bucket v8-wasm-spec-tests -s test/wasm-js/tests.tar.gz.sha1' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 build/mac_toolchain.py' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+Skipping Mac toolchain installation for mac
+________ running 'python3 build/util/lastchange.py -o build/util/LASTCHANGE' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'vpython3 -vpython-spec vpython.toml -vpython-tool install' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+________ running 'python3 buildtools/reclient_cfgs/configure_reclient_cfgs.py --rbe_instance projects/rbe-chrome-untrusted/instances/default_instance --reproxy_cfg_template reproxy.cfg.template --rewrapper_cfg_project  --skip_remoteexec_cfg_fetch' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'
+generate reproxy.cfg using /Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8/buildtools/reclient_cfgs/reproxy_cfg_templates/reproxy.cfg.template
+________ running 'python3 build/config/siso/configure_siso.py --rbe_instance projects/rbe-chrome-untrusted/instances/default_instance' in '/Users/yoonhb/Documents/workspace/spinon/build/c11-v8-rebuild/v8-source/v8'

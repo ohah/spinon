@@ -12164,6 +12164,68 @@ private struct C111MetalPixelRun {
         "auto-span-at-track-limit",
     ]
 
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+    private static let mixedOneAxisPlacementPixelSamples: [C111MetalPixelSample] = [
+        C111MetalPixelSample(
+            id: "column-first", nodeId: "column-first",
+            xCssPx: 50, yCssPx: 10, rgba: [229, 72, 77, 255]),
+        C111MetalPixelSample(
+            id: "visibility-hidden-full-occupancy", nodeId: "column-hidden",
+            xCssPx: 50, yCssPx: 30, rgba: [255, 255, 255, 255]),
+        C111MetalPixelSample(
+            id: "column-last-after-hidden", nodeId: "column-last",
+            xCssPx: 50, yCssPx: 60, rgba: [53, 120, 199, 255]),
+        C111MetalPixelSample(
+            id: "row-first", nodeId: "row-first",
+            xCssPx: 10, yCssPx: 100, rgba: [249, 115, 22, 255]),
+        C111MetalPixelSample(
+            id: "row-full-blocker", nodeId: "row-full-blocker",
+            xCssPx: 50, yCssPx: 100, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(
+            id: "row-second", nodeId: "row-second",
+            xCssPx: 100, yCssPx: 100, rgba: [143, 63, 113, 255]),
+        C111MetalPixelSample(
+            id: "row-span-blocker", nodeId: "row-span-blocker",
+            xCssPx: 10, yCssPx: 190, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(
+            id: "row-span-partial", nodeId: "row-span-partial",
+            xCssPx: 50, yCssPx: 200, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(
+            id: "column-full-blocker", nodeId: "column-full-blocker",
+            xCssPx: 50, yCssPx: 280, rgba: [249, 115, 22, 255]),
+        C111MetalPixelSample(
+            id: "column-partial-after-blocker", nodeId: "column-partial-first",
+            xCssPx: 50, yCssPx: 300, rgba: [53, 120, 199, 255]),
+        C111MetalPixelSample(
+            id: "column-span-blocker", nodeId: "column-span-blocker",
+            xCssPx: 50, yCssPx: 370, rgba: [249, 115, 22, 255]),
+        C111MetalPixelSample(
+            id: "column-span-partial", nodeId: "column-span-partial",
+            xCssPx: 50, yCssPx: 400, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(
+            id: "display-none-partial", nodeId: "display-none-partial",
+            xCssPx: 10, yCssPx: 460, rgba: [229, 72, 77, 255]),
+        C111MetalPixelSample(
+            id: "display-none-visible-full", nodeId: "display-none-visible-full",
+            xCssPx: 100, yCssPx: 520, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(
+            id: "outside-grid", nodeId: "body",
+            xCssPx: 125, yCssPx: 100, rgba: [255, 255, 255, 255]),
+        C111MetalPixelSample(
+            id: "all-auto-first", nodeId: "all-auto-first",
+            xCssPx: 10, yCssPx: 550, rgba: [229, 72, 77, 255]),
+        C111MetalPixelSample(
+            id: "all-auto-second", nodeId: "all-auto-second",
+            xCssPx: 50, yCssPx: 550, rgba: [53, 120, 199, 255]),
+        C111MetalPixelSample(
+            id: "fully-definite-item", nodeId: "fully-definite-item",
+            xCssPx: 50, yCssPx: 600, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(
+            id: "fully-definite-empty", nodeId: "fully-definite-existing-route-control",
+            xCssPx: 10, yCssPx: 600, rgba: [255, 255, 255, 255]),
+    ]
+#endif
+
     private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("grid-background", "c1131-multi-track-repeat-grid", 300, 120, [237, 241, 247, 255]),
         ("item-blue", "c1131-multi-track-repeat-a", 10, 10, [40, 102, 246, 255]),
@@ -14071,6 +14133,8 @@ private struct C111MetalPixelRun {
             let isAutoStretch = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
             let isOneAxisPlacement = rootHtmlRuns[0].hasPrefix(oneAxisPlacementPrefix)
+            let isMixedOneAxisPlacement = isOneAxisPlacement
+                && rootHtmlRuns[0].hasSuffix("=c11mix19-20261104")
             let isRootHtmlAlignment = isSelfAlignment || isAutoStretch
             guard rootHtmlRuns.count == 1,
                   !arguments.contains(where: {
@@ -14110,11 +14174,14 @@ private struct C111MetalPixelRun {
             }
             if isSelfAlignment && runID != "c115-20261104" { return nil }
             if isAutoStretch && runID != "c115as-20261104" { return nil }
-            if isOneAxisPlacement && runID != "c11oap-20261104" { return nil }
+            if isOneAxisPlacement && runID != "c11oap-20261104"
+                && runID != "c11mix19-20261104" { return nil }
             return C111MetalPixelRun(
                 runID: runID,
                 sceneID: isOneAxisPlacement
-                    ? "root-html-grid-one-axis-placement"
+                    ? isMixedOneAxisPlacement
+                        ? "root-html-grid-mixed-explicit-one-axis"
+                        : "root-html-grid-one-axis-placement"
                     : isAutoStretch
                     ? "root-html-grid-item-auto-stretch"
                     : isSelfAlignment
@@ -14127,10 +14194,13 @@ private struct C111MetalPixelRun {
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
-                markerPrefix: isOneAxisPlacement ? "C111OAP"
+                markerPrefix: isOneAxisPlacement
+                    ? isMixedOneAxisPlacement ? "C111MIX" : "C111OAP"
                     : isRootHtmlAlignment ? "C115"
                     : namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
-                samples: isOneAxisPlacement ? [
+                samples: isMixedOneAxisPlacement
+                    ? Self.mixedOneAxisPlacementPixelSamples
+                    : isOneAxisPlacement ? [
                     C111MetalPixelSample(
                         id: "column-first", nodeId: "column-first",
                         xCssPx: 50, yCssPx: 10, rgba: [229, 72, 77, 255]),

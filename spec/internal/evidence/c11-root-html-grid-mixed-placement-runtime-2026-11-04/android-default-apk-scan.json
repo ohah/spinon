@@ -1,0 +1,13 @@
+{
+  "apk": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+  "sha256": "26de53d1508919d8d111e56e3c6b9ed977485f783b53a8d2e9535d7681306bff",
+  "dex_files": [
+    "classes.dex",
+    "classes2.dex"
+  ],
+  "needle_matches": {
+    "C111RootHtmlOneAxisPlacementPixelCopyAdapter": [],
+    "c11mix19-20261104": [],
+    "row-full-blocker": []
+  }
+}

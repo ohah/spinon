@@ -16,6 +16,12 @@ enum DefiniteAxis {
     Column,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum PlacementKind {
+    FullyDefinite,
+    OneAxis(DefiniteAxis),
+}
+
 /// Selects no-area row-flow Grid owners whose visible direct items all lock the same axis.
 ///
 /// The layout mode performs independent track, item, and implicit-extent validation. This
@@ -24,6 +30,24 @@ pub(super) fn candidate_nodes(
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
     dense_route_nodes: &BTreeSet<NodeId>,
+) -> BTreeSet<NodeId> {
+    candidate_nodes_with_mixed_explicit(snapshot, nodes, dense_route_nodes, false)
+}
+
+/// Selects owners with at least one fully definite item plus same-axis one-axis items.
+pub(super) fn mixed_candidate_nodes(
+    snapshot: &ComputedStyleSnapshot,
+    nodes: &RuntimeGridNodes,
+    dense_route_nodes: &BTreeSet<NodeId>,
+) -> BTreeSet<NodeId> {
+    candidate_nodes_with_mixed_explicit(snapshot, nodes, dense_route_nodes, true)
+}
+
+fn candidate_nodes_with_mixed_explicit(
+    snapshot: &ComputedStyleSnapshot,
+    nodes: &RuntimeGridNodes,
+    dense_route_nodes: &BTreeSet<NodeId>,
+    allow_fully_definite: bool,
 ) -> BTreeSet<NodeId> {
     let elements = snapshot
         .elements
@@ -67,7 +91,9 @@ pub(super) fn candidate_nodes(
                 return false;
             };
             let mut axis = None;
-            !items.is_empty()
+            let mut fully_definite_count = 0usize;
+            let mut one_axis_count = 0usize;
+            let accepted = !items.is_empty()
                 && items.iter().all(|item| {
                     let Some(placement) = elements
                         .get(item)
@@ -75,20 +101,43 @@ pub(super) fn candidate_nodes(
                     else {
                         return false;
                     };
-                    let Some(item_axis) = definite_axis(placement) else {
+                    let Some(kind) = placement_kind(placement) else {
                         return false;
                     };
-                    if axis.is_some_and(|previous| previous != item_axis) {
-                        return false;
+                    match kind {
+                        PlacementKind::FullyDefinite if allow_fully_definite => {
+                            fully_definite_count += 1;
+                        }
+                        PlacementKind::FullyDefinite => return false,
+                        PlacementKind::OneAxis(item_axis) => {
+                            if axis.is_some_and(|previous| previous != item_axis) {
+                                return false;
+                            }
+                            axis = Some(item_axis);
+                            one_axis_count += 1;
+                        }
                     }
-                    axis = Some(item_axis);
                     true
-                })
+                });
+            accepted
+                && if allow_fully_definite {
+                    fully_definite_count > 0 && one_axis_count > 0
+                } else {
+                    one_axis_count == items.len()
+                }
         })
         .collect()
 }
 
+#[cfg(test)]
 fn definite_axis(placement: &ComputedCssGridItemPlacement) -> Option<DefiniteAxis> {
+    match placement_kind(placement)? {
+        PlacementKind::OneAxis(axis) => Some(axis),
+        PlacementKind::FullyDefinite => None,
+    }
+}
+
+fn placement_kind(placement: &ComputedCssGridItemPlacement) -> Option<PlacementKind> {
     let row_has_line = has_line(&placement.row_start, &placement.row_end);
     let column_has_line = has_line(&placement.column_start, &placement.column_end);
     let row_auto = is_auto(&placement.row_start, &placement.row_end);
@@ -112,8 +161,9 @@ fn definite_axis(placement: &ComputedCssGridItemPlacement) -> Option<DefiniteAxi
         return None;
     }
     match (row_has_line, row_auto, column_has_line, column_auto) {
-        (true, false, false, true) => Some(DefiniteAxis::Row),
-        (false, true, true, false) => Some(DefiniteAxis::Column),
+        (true, false, true, false) => Some(PlacementKind::FullyDefinite),
+        (true, false, false, true) => Some(PlacementKind::OneAxis(DefiniteAxis::Row)),
+        (false, true, true, false) => Some(PlacementKind::OneAxis(DefiniteAxis::Column)),
         _ => None,
     }
 }
@@ -129,7 +179,7 @@ fn is_auto(start: &ComputedCssGridPlacement, end: &ComputedCssGridPlacement) -> 
 
 #[cfg(test)]
 mod tests {
-    use super::{DefiniteAxis, definite_axis};
+    use super::{DefiniteAxis, PlacementKind, definite_axis, placement_kind};
     use spinon_style::{ComputedCssGridItemPlacement, ComputedCssGridPlacement};
 
     fn placement(
@@ -202,5 +252,38 @@ mod tests {
             )),
             None
         );
+    }
+
+    #[test]
+    fn mixed_route_distinguishes_fully_definite_from_same_axis_partial_items() {
+        let full = placement(
+            ComputedCssGridPlacement::Line(1),
+            ComputedCssGridPlacement::Line(2),
+            ComputedCssGridPlacement::Line(2),
+            ComputedCssGridPlacement::Line(3),
+        );
+        let row_partial = placement(
+            ComputedCssGridPlacement::Line(1),
+            ComputedCssGridPlacement::Line(2),
+            ComputedCssGridPlacement::Auto,
+            ComputedCssGridPlacement::Auto,
+        );
+        let column_partial = placement(
+            ComputedCssGridPlacement::Auto,
+            ComputedCssGridPlacement::Auto,
+            ComputedCssGridPlacement::Line(2),
+            ComputedCssGridPlacement::Line(3),
+        );
+
+        assert_eq!(placement_kind(&full), Some(PlacementKind::FullyDefinite));
+        assert_eq!(
+            placement_kind(&row_partial),
+            Some(PlacementKind::OneAxis(DefiniteAxis::Row))
+        );
+        assert_eq!(
+            placement_kind(&column_partial),
+            Some(PlacementKind::OneAxis(DefiniteAxis::Column))
+        );
+        assert_eq!(definite_axis(&full), None);
     }
 }

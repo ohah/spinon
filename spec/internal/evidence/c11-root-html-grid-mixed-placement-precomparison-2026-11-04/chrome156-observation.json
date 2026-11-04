@@ -83,14 +83,14 @@
           "display": "block",
           "visibility": "visible",
           "gridRowStart": "1",
-          "gridRowEnd": "2",
+          "gridRowEnd": "span 2",
           "gridColumnStart": "auto",
-          "gridColumnEnd": "span 2",
+          "gridColumnEnd": "auto",
           "frame": {
             "x": 40,
             "y": 0,
-            "width": 80,
-            "height": 20
+            "width": 50,
+            "height": 50
           }
         }
       ]
@@ -157,14 +157,14 @@
           "display": "block",
           "visibility": "visible",
           "gridRowStart": "auto",
-          "gridRowEnd": "span 2",
+          "gridRowEnd": "auto",
           "gridColumnStart": "2",
-          "gridColumnEnd": "3",
+          "gridColumnEnd": "span 2",
           "frame": {
             "x": 40,
             "y": 20,
-            "width": 50,
-            "height": 70
+            "width": 80,
+            "height": 30
           }
         }
       ]
@@ -194,14 +194,14 @@
           "display": "block",
           "visibility": "visible",
           "gridRowStart": "1",
-          "gridRowEnd": "2",
+          "gridRowEnd": "span 2",
           "gridColumnStart": "auto",
-          "gridColumnEnd": "span 2",
+          "gridColumnEnd": "auto",
           "frame": {
             "x": 40,
             "y": 0,
-            "width": 80,
-            "height": 20
+            "width": 50,
+            "height": 50
           }
         }
       ]

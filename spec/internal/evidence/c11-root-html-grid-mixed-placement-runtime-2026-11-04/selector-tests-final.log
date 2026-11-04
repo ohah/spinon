@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 3 tests
+test projection::style_values::root_html_one_axis_placement::tests::mixed_route_distinguishes_fully_definite_from_same_axis_partial_items ... ok
+test projection::style_values::root_html_one_axis_placement::tests::admission_recognizes_numeric_line_and_span_on_one_uniform_axis ... ok
+test projection::style_values::root_html_one_axis_placement::tests::admission_rejects_all_auto_mixed_axes_fully_definite_and_named_lines ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 388 filtered out; finished in 0.00s
+

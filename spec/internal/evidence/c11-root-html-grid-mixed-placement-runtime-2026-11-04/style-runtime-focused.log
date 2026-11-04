@@ -1,0 +1,11 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.73s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 3 tests
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_excludes_display_none_items ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_keeps_hidden_semantics_and_rejects_mixed_axes ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_matches_sparse_reference_frames ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 387 filtered out; finished in 0.01s
+
