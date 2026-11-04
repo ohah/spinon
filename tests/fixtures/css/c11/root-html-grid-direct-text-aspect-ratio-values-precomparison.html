@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML direct text Grid aspect-ratio values</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
+      body {
+        color: #17324d;
+        background: #f4f7fb;
+        font: 10px/10px monospace;
+        padding: 12px;
+      }
+      .case { margin: 0 0 8px; }
+      .label { margin: 0 0 2px; }
+      .grid {
+        display: grid;
+        box-sizing: content-box;
+        width: 70px;
+        height: auto;
+        grid-template-columns: 10px 60px;
+        grid-template-rows: auto;
+        grid-auto-flow: row;
+        gap: 0;
+        align-items: start;
+        justify-items: start;
+        align-content: normal;
+        justify-content: normal;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+      .item {
+        display: block;
+        box-sizing: content-box;
+        min-width: auto;
+        max-width: none;
+        min-height: auto;
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        font: 10px/10px monospace;
+        white-space: nowrap;
+      }
+      .target { width: 60px; height: auto; background: #82d4bb; }
+      .target-height { width: auto; height: 30px; background: #f4b183; }
+      .short { width: auto; height: auto; background: #9cc7f4; }
+      #ratio-half .target { aspect-ratio: 1 / 2; }
+      #ratio-four-thirds .target { aspect-ratio: 4 / 3; }
+      #ratio-three-halves .target { aspect-ratio: 1.5; }
+      #ratio-three-halves-pair .target { aspect-ratio: 3 / 2; }
+      #ratio-five-halves .target { aspect-ratio: 5 / 2; }
+      #ratio-ten .target { aspect-ratio: 10 / 1; }
+      #height-half .target-height { height: 80px; aspect-ratio: 1 / 2; }
+      #height-four-thirds .target-height { aspect-ratio: 4 / 3; }
+      #height-three-halves .target-height { aspect-ratio: 3 / 2; }
+      #height-five-halves .target-height { aspect-ratio: 5 / 2; }
+      #height-two .target-height { aspect-ratio: 2 / 1; }
+      #width-two .target { aspect-ratio: 2 / 1; }
+    </style>
+  </head>
+  <body>
+    <section class="case" id="ratio-half">
+      <p class="label">1 / 2</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="ratio-four-thirds">
+      <p class="label">4 / 3</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="ratio-three-halves">
+      <p class="label">3 / 2</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="ratio-five-halves">
+      <p class="label">5 / 2</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="ratio-three-halves-pair">
+      <p class="label">3 / 2 pair</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="ratio-ten">
+      <p class="label">10 / 1 automatic minimum</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="ratio-auto-control">
+      <p class="label">auto control</p>
+      <div class="grid"><div class="item short">A</div><div class="item target" style="aspect-ratio:auto">AAAA</div></div>
+    </section>
+    <section class="case" id="height-half">
+      <p class="label">height 80, ratio 1 / 2</p>
+      <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
+    </section>
+    <section class="case" id="height-four-thirds">
+      <p class="label">height 30, ratio 4 / 3</p>
+      <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
+    </section>
+    <section class="case" id="height-three-halves">
+      <p class="label">height 30, ratio 3 / 2</p>
+      <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
+    </section>
+    <section class="case" id="height-five-halves">
+      <p class="label">height 30, ratio 5 / 2</p>
+      <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
+    </section>
+    <section class="case" id="width-two">
+      <p class="label">width 60, ratio 2 / 1 regression</p>
+      <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
+    </section>
+    <section class="case" id="height-two">
+      <p class="label">height 30, ratio 2 / 1 regression</p>
+      <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
+    </section>
+    <section class="case" id="height-auto-control">
+      <p class="label">height 30 auto ratio control</p>
+      <div class="grid"><div class="item short">A</div><div class="item target-height" style="aspect-ratio:auto">AAAA</div></div>
+    </section>
+  </body>
+</html>

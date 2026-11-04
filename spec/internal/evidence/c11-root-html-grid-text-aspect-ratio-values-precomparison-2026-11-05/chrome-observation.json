@@ -1,0 +1,24 @@
+{
+  "browser": "Agent Browser 0.31.1 / HeadlessChrome 156.0.0.0",
+  "fixture": "tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-values-precomparison.html",
+  "fixtureSha256": "f4a528205c3e64cb78267a1c9c9c63778dc117807a348395fb0ef7aa23daa8e8",
+  "viewport": {"width": 1280, "height": 633, "deviceScaleFactor": 1},
+  "sceneCount": 14,
+  "scenes": [
+    {"id": "ratio-half", "computedAspectRatio": "1 / 2", "computedColumns": "10px 60px", "computedRows": "120px", "grid": [12, 24, 70, 120], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 120], "overflowsGridRight": false},
+    {"id": "ratio-four-thirds", "computedAspectRatio": "4 / 3", "computedColumns": "10px 60px", "computedRows": "45px", "grid": [12, 164, 70, 45], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 45], "overflowsGridRight": false},
+    {"id": "ratio-three-halves", "computedAspectRatio": "1.5 / 1", "computedColumns": "10px 60px", "computedRows": "40px", "grid": [12, 229, 70, 40], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 40], "overflowsGridRight": false},
+    {"id": "ratio-five-halves", "computedAspectRatio": "5 / 2", "computedColumns": "10px 60px", "computedRows": "24px", "grid": [12, 289, 70, 24], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 24], "overflowsGridRight": false},
+    {"id": "ratio-three-halves-pair", "computedAspectRatio": "3 / 2", "computedColumns": "10px 60px", "computedRows": "40px", "grid": [12, 333, 70, 40], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 40], "overflowsGridRight": false},
+    {"id": "ratio-ten", "computedAspectRatio": "10 / 1", "transferredHeight": 6, "automaticMinimumHeight": 10, "computedColumns": "10px 60px", "computedRows": "10px", "grid": [12, 393, 70, 10], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 10], "overflowsGridRight": false},
+    {"id": "ratio-auto-control", "computedAspectRatio": "auto", "computedColumns": "10px 60px", "computedRows": "10px", "grid": [12, 423, 70, 10], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 10], "overflowsGridRight": false},
+    {"id": "height-half", "computedAspectRatio": "1 / 2", "computedColumns": "10px 60px", "computedRows": "80px", "grid": [12, 453, 70, 80], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 40, 80], "overflowsGridRight": false},
+    {"id": "height-four-thirds", "computedAspectRatio": "4 / 3", "computedColumns": "10px 60px", "computedRows": "30px", "grid": [12, 553, 70, 30], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 40, 30], "overflowsGridRight": false},
+    {"id": "height-three-halves", "computedAspectRatio": "3 / 2", "computedColumns": "10px 60px", "computedRows": "30px", "grid": [12, 603, 70, 30], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 45, 30], "overflowsGridRight": false},
+    {"id": "height-five-halves", "computedAspectRatio": "5 / 2", "computedColumns": "10px 60px", "computedRows": "30px", "grid": [12, 653, 70, 30], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 75, 30], "overflowsGridRight": true, "overflowRightPx": 15},
+    {"id": "width-two", "computedAspectRatio": "2 / 1", "computedColumns": "10px 60px", "computedRows": "30px", "grid": [12, 703, 70, 30], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 30], "overflowsGridRight": false},
+    {"id": "height-two", "computedAspectRatio": "2 / 1", "computedColumns": "10px 60px", "computedRows": "30px", "grid": [12, 753, 70, 30], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 60, 30], "overflowsGridRight": false},
+    {"id": "height-auto-control", "computedAspectRatio": "auto", "computedColumns": "10px 60px", "computedRows": "30px", "grid": [12, 803, 70, 30], "shortItem": [0, 0, 6.03125, 10], "targetItem": [10, 0, 24.09375, 30], "overflowsGridRight": false}
+  ],
+  "result": "All 14 scenes were observed. Their ratio-derived dimensions, automatic-minimum control, existing 2 / 1 cases, and visible overflow match expected.json exactly; this is geometry evidence, not raster or compositor-pixel equality."
+}
