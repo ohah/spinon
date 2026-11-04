@@ -33,6 +33,7 @@ iOS 표본은 OS compositor 제출 전 Metal drawable readback이다. 두 결과
 - 최종 앱 빌드: `android-fixture-apk-build-final.log`, `ios-app-build-final.log`
 - 기본/fixture opt-in 산출물: [Android 기본 APK scan](./android-default-apk-scan.json) · [Android opt-in APK scan](./android-optin-apk-scan.json) · [iOS 기본 app scan](./ios-default-app-scan.json) · [iOS opt-in app scan](./ios-optin-app-scan.json). 기본 Android APK에는 새 Java adapter/run/sample strings가 없고 opt-in APK에는 모두 있다. 기본 iOS app에는 새 run/scene/sample strings가 없고 opt-in app에는 모두 있다.
 - 최종 Rust 검증: placement layout 9/9, Root HTML integration 8/8, selector 3/3, scoped Clippy와 rustfmt 통과. 상세 log: [`layout-focused-final.log`](./layout-focused-final.log) · [`style-runtime-final.log`](./style-runtime-final.log) · [`selector-tests-final.log`](./selector-tests-final.log) · [`clippy-final.log`](./clippy-final.log).
+- 제한 구현/runtime 검토 20개, 실제 구현 diff 검토 20개와 [PR #1147 실제 diff 적대 검토 30개](./pr-diff-review-30.md)를 별도 기록했다. PR check은 보고되지 않았다.
 - 고정 V8 빌드: `v8-android-build.log`, `v8-ios-simulator-build.log`
 - 이전 18-sample 실행: `android-avd-logcat-pass02.txt`, `android-avd-pixelcopy-pass18.png`, `android-avd-pixelcopy-screen-pass18.png`, `ios-simulator-log-pass18.txt`, `ios-simulator-screen-pass18.png`
 - 초기 시도와 수정 원인: [간단 logcat](./android-avd-logcat.txt) · [재시도 logcat](./android-avd-logcat-pass01.txt); `border:0` shorthand가 `border-top-color` unsupported computed value를 만들었고, 같은 문서에 negative control을 포함하면 `grid-area` fail-fast가 전체 문서를 거부했다. 둘 다 final fixture 입력에서는 제거·분리했다.
