@@ -1,0 +1,561 @@
+{
+  "sourceHead": "a2e90a84fabcb73f8836eeb412df1a9ac86755fc",
+  "sourceTree": "809e0510b9f142facbb372fecc53d7396597a7c6",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr1144-2026-11-04/pass01/root",
+  "stagedFileCount": 91,
+  "stagedBytes": 6911864,
+  "sourceTreesFromGitIndexOnly": true,
+  "noSymlinks": true,
+  "officialCount": "72/213",
+  "c11Complete": false,
+  "roadmapCardLinkCount": 10,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 555978,
+      "sha256": "86b5b5d1565c183062742b30f6324c358f2220af28ad53ba60e347338282777c"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 555978,
+      "sha256": "86b5b5d1565c183062742b30f6324c358f2220af28ad53ba60e347338282777c"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 555978,
+      "sha256": "86b5b5d1565c183062742b30f6324c358f2220af28ad53ba60e347338282777c"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 654851,
+      "sha256": "b2ea6ecc60f04a80330a88f6e387ea2dfeef186eabbf13e114d13dd842afdcba"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 654851,
+      "sha256": "b2ea6ecc60f04a80330a88f6e387ea2dfeef186eabbf13e114d13dd842afdcba"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 417432,
+      "sha256": "13d04313a13ccf39b33aa79c85617bd1ee739c54b7c1e3864c8b2c50856b3df6"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 417432,
+      "sha256": "13d04313a13ccf39b33aa79c85617bd1ee739c54b7c1e3864c8b2c50856b3df6"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "plan/c11-css-grid.md",
+      "bytes": 71229,
+      "sha256": "71bd5ddd4176be3b2d06145da925a7ab24ceaddfc80a49c1a073e30ccf036c79"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "spec/plan/c11-css-grid.md",
+      "bytes": 71229,
+      "sha256": "71bd5ddd4176be3b2d06145da925a7ab24ceaddfc80a49c1a073e30ccf036c79"
+    },
+    {
+      "source": "plan/c11-root-html-grid-runtime.md",
+      "route": "plan/c11-root-html-grid-runtime.md",
+      "bytes": 14968,
+      "sha256": "4eea4aecc5dafb16991b313e90b40a4fa5497a4e02a7cd72e77476d5a7d2a03b"
+    },
+    {
+      "source": "plan/c11-root-html-grid-runtime.md",
+      "route": "spec/plan/c11-root-html-grid-runtime.md",
+      "bytes": 14968,
+      "sha256": "4eea4aecc5dafb16991b313e90b40a4fa5497a4e02a7cd72e77476d5a7d2a03b"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content.md",
+      "route": "plan/c11-root-html-grid-fit-content.md",
+      "bytes": 15002,
+      "sha256": "0442a8fe5d0042d30544ea38f89000248e55d2ef6426b4d1a78b1bd3c310893e"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content.md",
+      "bytes": 15002,
+      "sha256": "0442a8fe5d0042d30544ea38f89000248e55d2ef6426b4d1a78b1bd3c310893e"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-percentage.md",
+      "route": "plan/c11-root-html-grid-fit-content-percentage.md",
+      "bytes": 14307,
+      "sha256": "f86fe23c598a5f88d7042388feae920910d290ce043d8c919901af2dfc8a231a"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-percentage.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content-percentage.md",
+      "bytes": 14307,
+      "sha256": "f86fe23c598a5f88d7042388feae920910d290ce043d8c919901af2dfc8a231a"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-percentage-plan-review-20.md",
+      "route": "plan/c11-root-html-grid-fit-content-percentage-plan-review-20.md",
+      "bytes": 3858,
+      "sha256": "6746c6ea0d91da4fadda843977064362c6d3ec3d62f518f7813717dfbd8d6a48"
+    },
+    {
+      "source": "plan/c11-root-html-grid-fit-content-percentage-plan-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-fit-content-percentage-plan-review-20.md",
+      "bytes": 3858,
+      "sha256": "6746c6ea0d91da4fadda843977064362c6d3ec3d62f518f7813717dfbd8d6a48"
+    },
+    {
+      "source": "plan/c11-root-html-grid-template-areas.md",
+      "route": "plan/c11-root-html-grid-template-areas.md",
+      "bytes": 9591,
+      "sha256": "404a63442ef016a2ffaad261c2db1715ab917aec87d3160ebcf9377f3ae6be00"
+    },
+    {
+      "source": "plan/c11-root-html-grid-template-areas.md",
+      "route": "spec/plan/c11-root-html-grid-template-areas.md",
+      "bytes": 9591,
+      "sha256": "404a63442ef016a2ffaad261c2db1715ab917aec87d3160ebcf9377f3ae6be00"
+    },
+    {
+      "source": "plan/c11-root-html-grid-one-axis-auto-placement.md",
+      "route": "plan/c11-root-html-grid-one-axis-auto-placement.md",
+      "bytes": 9607,
+      "sha256": "be6145bd366d71936e790bcb7f0afd8dbf0c2a571c04d4264a789e9358ad876d"
+    },
+    {
+      "source": "plan/c11-root-html-grid-one-axis-auto-placement.md",
+      "route": "spec/plan/c11-root-html-grid-one-axis-auto-placement.md",
+      "bytes": 9607,
+      "sha256": "be6145bd366d71936e790bcb7f0afd8dbf0c2a571c04d4264a789e9358ad876d"
+    },
+    {
+      "source": "plan/c11-2-2-sparse-row-placement.md",
+      "route": "plan/c11-2-2-sparse-row-placement.md",
+      "bytes": 18951,
+      "sha256": "4dcd9fdb6945ac6d819c0ac095678a81e24f30058e945729b8281511b2c46c46"
+    },
+    {
+      "source": "plan/c11-2-2-sparse-row-placement.md",
+      "route": "spec/plan/c11-2-2-sparse-row-placement.md",
+      "bytes": 18951,
+      "sha256": "4dcd9fdb6945ac6d819c0ac095678a81e24f30058e945729b8281511b2c46c46"
+    },
+    {
+      "source": "plan/c11-root-html-grid-one-axis-auto-placement-plan-review-20.md",
+      "route": "plan/c11-root-html-grid-one-axis-auto-placement-plan-review-20.md",
+      "bytes": 3480,
+      "sha256": "4975cfeb1f5e7ea068a7820555d4199e2707d63ddadee0414ff3d8ec8b3a2e23"
+    },
+    {
+      "source": "plan/c11-root-html-grid-one-axis-auto-placement-plan-review-20.md",
+      "route": "spec/plan/c11-root-html-grid-one-axis-auto-placement-plan-review-20.md",
+      "bytes": 3480,
+      "sha256": "4975cfeb1f5e7ea068a7820555d4199e2707d63ddadee0414ff3d8ec8b3a2e23"
+    },
+    {
+      "source": "plan/c11-root-html-grid-one-axis-auto-placement-pr-diff-review-30.md",
+      "route": "plan/c11-root-html-grid-one-axis-auto-placement-pr-diff-review-30.md",
+      "bytes": 4801,
+      "sha256": "bd967fd76589627e73392d8c37ee8615ff451ffe23157c44d782590051de8249"
+    },
+    {
+      "source": "plan/c11-root-html-grid-one-axis-auto-placement-pr-diff-review-30.md",
+      "route": "spec/plan/c11-root-html-grid-one-axis-auto-placement-pr-diff-review-30.md",
+      "bytes": 4801,
+      "sha256": "bd967fd76589627e73392d8c37ee8615ff451ffe23157c44d782590051de8249"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/README.md",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/README.md",
+      "bytes": 2855,
+      "sha256": "c202847e1b28be5a493a7f0f7d83283a725e7abbf4deefe5d11c8935ca8d5a79"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/README.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/README.md",
+      "bytes": 2855,
+      "sha256": "c202847e1b28be5a493a7f0f7d83283a725e7abbf4deefe5d11c8935ca8d5a79"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156-observation.json",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156-observation.json",
+      "bytes": 19006,
+      "sha256": "cb55a98e7b7a660ec60db45ad80b5b068ff4122a0001353abce44126200cd644"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156-observation.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156-observation.json",
+      "bytes": 19006,
+      "sha256": "cb55a98e7b7a660ec60db45ad80b5b068ff4122a0001353abce44126200cd644"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156.png",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156.png",
+      "bytes": 1136572,
+      "sha256": "e940466bec89356d5ad2641890bff6f2578cdc6123cdbc814cfc48841d9bc608"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/chrome156.png",
+      "bytes": 1136572,
+      "sha256": "e940466bec89356d5ad2641890bff6f2578cdc6123cdbc814cfc48841d9bc608"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/expected.json",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/expected.json",
+      "bytes": 17748,
+      "sha256": "7de1f12cf62c5c7193bc0e83a5dff1314ba69bfacb2c2aa7c8cc1f540e786b3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/expected.json",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/expected.json",
+      "bytes": 17748,
+      "sha256": "7de1f12cf62c5c7193bc0e83a5dff1314ba69bfacb2c2aa7c8cc1f540e786b3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/verify_precomparison.py",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/verify_precomparison.py",
+      "bytes": 2805,
+      "sha256": "97fcb6a918460ae370c005898cc361271ac2550c3d01c54b1b0caf6db97773a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/verify_precomparison.py",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-precomparison-2026-11-04/verify_precomparison.py",
+      "bytes": 2805,
+      "sha256": "97fcb6a918460ae370c005898cc361271ac2550c3d01c54b1b0caf6db97773a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/README.md",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/README.md",
+      "bytes": 6354,
+      "sha256": "e62fed45760087eec989b8772ef0a2324f11068a3f4c3ee04394a9e5cdcb1bbe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/README.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/README.md",
+      "bytes": 6354,
+      "sha256": "e62fed45760087eec989b8772ef0a2324f11068a3f4c3ee04394a9e5cdcb1bbe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-default-artifact-build-pr-review.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-default-artifact-build-pr-review.log",
+      "bytes": 4325,
+      "sha256": "2477698d0e89882d1648848a575d815c10bd08f8435a4a91d065cd0de02d6663"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-default-artifact-build-pr-review.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-default-artifact-build-pr-review.log",
+      "bytes": 4325,
+      "sha256": "2477698d0e89882d1648848a575d815c10bd08f8435a4a91d065cd0de02d6663"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-build-pass03.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-build-pass03.log",
+      "bytes": 4685,
+      "sha256": "9dc48dbf82763de9ba930dc7805747e49eaad086ec221c5cc45a725a3f3bf7d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-build-pass03.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-build-pass03.log",
+      "bytes": 4685,
+      "sha256": "9dc48dbf82763de9ba930dc7805747e49eaad086ec221c5cc45a725a3f3bf7d6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-fixture-package-pass05.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-fixture-package-pass05.log",
+      "bytes": 2704,
+      "sha256": "68dff3d9bcd92321044d97fdf6dfc6a681e42996a3543f0dd64323e71fec216e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-fixture-package-pass05.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-fixture-package-pass05.log",
+      "bytes": 2704,
+      "sha256": "68dff3d9bcd92321044d97fdf6dfc6a681e42996a3543f0dd64323e71fec216e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-run-pass04.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-run-pass04.log",
+      "bytes": 8289,
+      "sha256": "b57cbe291f608783168fcee45cd3102981aa2b79eb1953047f474f2e91373fb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-run-pass04.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-run-pass04.log",
+      "bytes": 8289,
+      "sha256": "b57cbe291f608783168fcee45cd3102981aa2b79eb1953047f474f2e91373fb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-screen.png",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-screen.png",
+      "bytes": 24565,
+      "sha256": "3af1d1f83ef438f782414230a992f1b1629efe2a07b07c0694d0eab6116d2fd1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-screen.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-pixelcopy-screen.png",
+      "bytes": 24565,
+      "sha256": "3af1d1f83ef438f782414230a992f1b1629efe2a07b07c0694d0eab6116d2fd1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-surface-pixelcopy-pass02.png",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-surface-pixelcopy-pass02.png",
+      "bytes": 14445,
+      "sha256": "f33a7e89efe46f08ab3bb20f85edab22d66db456483c9d2cd2f31a533d693db4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-surface-pixelcopy-pass02.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/android-surface-pixelcopy-pass02.png",
+      "bytes": 14445,
+      "sha256": "f33a7e89efe46f08ab3bb20f85edab22d66db456483c9d2cd2f31a533d693db4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/artifact-boundary-pr-review.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/artifact-boundary-pr-review.log",
+      "bytes": 863,
+      "sha256": "66627db4f08b7514adff691cdcaca3328c11acf96f2ba61de29007e67ad49194"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/artifact-boundary-pr-review.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/artifact-boundary-pr-review.log",
+      "bytes": 863,
+      "sha256": "66627db4f08b7514adff691cdcaca3328c11acf96f2ba61de29007e67ad49194"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/implementation-runtime-review-20.md",
+      "bytes": 6701,
+      "sha256": "74b09b19ffd14af813529fa2344760447ce11ef3eaa98365d656484cd4a6d781"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/implementation-runtime-review-20.md",
+      "bytes": 6701,
+      "sha256": "74b09b19ffd14af813529fa2344760447ce11ef3eaa98365d656484cd4a6d781"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-runtime.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-runtime.log",
+      "bytes": 5320,
+      "sha256": "975a374d70462b4519ef4df46658b01eb492e878606e99c7c173de99a8a864b6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-runtime.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-runtime.log",
+      "bytes": 5320,
+      "sha256": "975a374d70462b4519ef4df46658b01eb492e878606e99c7c173de99a8a864b6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-screen.png",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-screen.png",
+      "bytes": 74561,
+      "sha256": "0c6b6fc6b2072b6bbbe189da9e3c3ed41f7bfba1942486739e1f3cf35adda82c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-screen.png",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-metal-screen.png",
+      "bytes": 74561,
+      "sha256": "0c6b6fc6b2072b6bbbe189da9e3c3ed41f7bfba1942486739e1f3cf35adda82c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-simulator-build-summary-pr-review.txt",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-simulator-build-summary-pr-review.txt",
+      "bytes": 3463,
+      "sha256": "7cca9ac3ad6cb0f45188ca55710c0bc62a3890e1db2bd0f684b1c0f4f695b853"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-simulator-build-summary-pr-review.txt",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/ios-simulator-build-summary-pr-review.txt",
+      "bytes": 3463,
+      "sha256": "7cca9ac3ad6cb0f45188ca55710c0bc62a3890e1db2bd0f684b1c0f4f695b853"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/layout-auto-placement-suite.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/layout-auto-placement-suite.log",
+      "bytes": 11587,
+      "sha256": "4316705026c18e5f5485e42a749767bc74ec91e968390013809069eaffff2a0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/layout-auto-placement-suite.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/layout-auto-placement-suite.log",
+      "bytes": 11587,
+      "sha256": "4316705026c18e5f5485e42a749767bc74ec91e968390013809069eaffff2a0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-layout-tests.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-layout-tests.log",
+      "bytes": 1002,
+      "sha256": "91acb789cd00f1fc883b0764a7f1f47c13a9ed7627ceefdf81c560c271dfc475"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-layout-tests.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-layout-tests.log",
+      "bytes": 1002,
+      "sha256": "91acb789cd00f1fc883b0764a7f1f47c13a9ed7627ceefdf81c560c271dfc475"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-projection-tests.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-projection-tests.log",
+      "bytes": 1086,
+      "sha256": "404eaa1bee1436e4445b16a2df78062ccdc9667dc9c529526382c87023fad649"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-projection-tests.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-projection-tests.log",
+      "bytes": 1086,
+      "sha256": "404eaa1bee1436e4445b16a2df78062ccdc9667dc9c529526382c87023fad649"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-runtime-tests.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-runtime-tests.log",
+      "bytes": 989,
+      "sha256": "7817612d727bfd31baa6bc7e674f3776fe5280c580c3b605eab500f8aaaee901"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-runtime-tests.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/one-axis-runtime-tests.log",
+      "bytes": 989,
+      "sha256": "7817612d727bfd31baa6bc7e674f3776fe5280c580c3b605eab500f8aaaee901"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/pr-diff-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/pr-diff-review-20.md",
+      "bytes": 6935,
+      "sha256": "09459c42dc2510d8b61c1b18d7a9df9ae769da84e8b6e027ae327096a6c54bfb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/pr-diff-review-20.md",
+      "bytes": 6935,
+      "sha256": "09459c42dc2510d8b61c1b18d7a9df9ae769da84e8b6e027ae327096a6c54bfb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/roadmap-postmerge-docs-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/roadmap-postmerge-docs-pr-diff-review-20.md",
+      "bytes": 4872,
+      "sha256": "f3bee780f1cf6b63cda2eca761be2754641b04eb07f56a985959a1477c733ff5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/roadmap-postmerge-docs-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/roadmap-postmerge-docs-pr-diff-review-20.md",
+      "bytes": 4872,
+      "sha256": "f3bee780f1cf6b63cda2eca761be2754641b04eb07f56a985959a1477c733ff5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rust-scoped-clippy.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rust-scoped-clippy.log",
+      "bytes": 598,
+      "sha256": "a08ff07302c891535381f32ad405abeb37127cae09f70ffb822783fda2d4a727"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rust-scoped-clippy.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rust-scoped-clippy.log",
+      "bytes": 598,
+      "sha256": "a08ff07302c891535381f32ad405abeb37127cae09f70ffb822783fda2d4a727"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rustfmt-check.log",
+      "route": "internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rustfmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rustfmt-check.log",
+      "route": "spec/internal/evidence/c11-root-html-grid-one-axis-placement-runtime-2026-11-04/rustfmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-c11-one-axis-card-2026-11-04/pr-diff-review-30.md",
+      "route": "internal/evidence/roadmap-c11-one-axis-card-2026-11-04/pr-diff-review-30.md",
+      "bytes": 6615,
+      "sha256": "fd6bb49d8f7e8e7abb6c8519d8089a3f0c625daa2b12c664dd702e394a3ee63f"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-c11-one-axis-card-2026-11-04/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/roadmap-c11-one-axis-card-2026-11-04/pr-diff-review-30.md",
+      "bytes": 6615,
+      "sha256": "fd6bb49d8f7e8e7abb6c8519d8089a3f0c625daa2b12c664dd702e394a3ee63f"
+    },
+    {
+      "source": "tests/fixtures/css/c11/root-html-grid-one-axis-placement-precomparison.html",
+      "route": "tests/fixtures/css/c11/root-html-grid-one-axis-placement-precomparison.html",
+      "bytes": 10195,
+      "sha256": "14ebfe57fe3baeef908158ef566e606f8276ae8d963f8aac4b6f1c1980a1203e"
+    },
+    {
+      "source": "tests/fixtures/css/c11/root-html-grid-one-axis-placement-runtime.html",
+      "route": "tests/fixtures/css/c11/root-html-grid-one-axis-placement-runtime.html",
+      "bytes": 1450,
+      "sha256": "93cf59bc6aafd00850e717be550d7560fda21595e66178683dc5769603846724"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
