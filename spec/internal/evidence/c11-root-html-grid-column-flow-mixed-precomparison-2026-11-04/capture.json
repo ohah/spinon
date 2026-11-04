@@ -1,0 +1,578 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewportCssPx": [
+    1280,
+    633
+  ],
+  "devicePixelRatio": 1,
+  "scenes": [
+    {
+      "id": "dom-cross-axis",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "c1",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "d",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "r1",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "c2",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "r2",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "auto-last",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            30,
+            40,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-spans",
+      "rootCssPx": [
+        240,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "row-span",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            160,
+            0,
+            40,
+            60
+          ]
+        },
+        {
+          "id": "col-span",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            80,
+            30
+          ]
+        },
+        {
+          "id": "fixed",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "row-after",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            200,
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "col-after",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hidden-controls",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "hidden-row",
+          "display": "block",
+          "visibility": "hidden",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "row",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "hidden-column",
+          "display": "block",
+          "visibility": "hidden",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "column",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "gone",
+          "display": "none",
+          "visibility": "visible",
+          "frameCssPx": null
+        }
+      ]
+    },
+    {
+      "autoFlow": "column",
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "id": "hidden-row-lock-qualification",
+      "items": [
+        {
+          "display": "block",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "id": "hidden-row-lock",
+          "visibility": "hidden"
+        },
+        {
+          "display": "block",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "id": "column-lock",
+          "visibility": "visible"
+        },
+        {
+          "display": "block",
+          "frameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "id": "auto",
+          "visibility": "visible"
+        }
+      ],
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "autoFlow": "column",
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "id": "hidden-column-lock-qualification",
+      "items": [
+        {
+          "display": "block",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "id": "hidden-column-lock",
+          "visibility": "hidden"
+        },
+        {
+          "display": "block",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "id": "row-lock",
+          "visibility": "visible"
+        },
+        {
+          "display": "block",
+          "frameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "id": "auto",
+          "visibility": "visible"
+        }
+      ],
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "id": "display-none-control",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "gone-cell",
+          "display": "none",
+          "visibility": "visible",
+          "frameCssPx": null
+        },
+        {
+          "id": "row-after-gone",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "column-after-gone",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "implicit-boundary-control",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "row-four",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            90,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "column-five",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            160,
+            0,
+            40,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reverse-order",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "c-first",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "r-first",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            60,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "d-last",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "c-second",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            30,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "r-second",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            60,
+            40,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "negative-line-control",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "columns": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "rows": [
+        30,
+        30,
+        30
+      ],
+      "autoFlow": "column",
+      "items": [
+        {
+          "id": "fixed",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "column-negative",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "row-negative",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            60,
+            40,
+            30
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,463 @@
+{
+  "spec": {
+    "name": "CSS Grid Layout Module Level 1, 2025-03-26 CRD",
+    "section": "8.5",
+    "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-placement-algo"
+  },
+  "independentModel": {
+    "columns": [
+      40,
+      40,
+      40,
+      40
+    ],
+    "rows": [
+      30,
+      30,
+      30
+    ],
+    "gap": 0,
+    "flow": "column",
+    "algorithm": "Place fully definite items first. For column flow, place column-locked items in DOM order by searching rows within their definite column. Then place remaining row-locked and fully-auto items using a sparse cursor that advances down rows before moving to the next column, preserving any definite row. visibility:hidden occupies cells; display:none does not create a grid item. Participating items include visibility:hidden in both mode qualification and occupancy; display:none items are excluded.",
+    "frameToleranceCssPx": 0
+  },
+  "scenes": [
+    {
+      "id": "dom-cross-axis",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "c1": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "d": [
+          40,
+          30,
+          40,
+          30
+        ],
+        "r1": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "c2": [
+          0,
+          30,
+          40,
+          30
+        ],
+        "r2": [
+          80,
+          0,
+          40,
+          30
+        ],
+        "auto-last": [
+          80,
+          30,
+          40,
+          30
+        ]
+      },
+      "reason": "The fully definite item occupies row 2/column 2. Column-locked items c1 and c2 are placed before the row-locked items despite their interleaved DOM order; the sparse cursor then places row-locked and fully-auto items without changing source order."
+    },
+    {
+      "id": "mixed-spans",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        240,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "row-span": [
+          160,
+          0,
+          40,
+          60
+        ],
+        "col-span": [
+          0,
+          0,
+          80,
+          30
+        ],
+        "fixed": [
+          80,
+          30,
+          40,
+          30
+        ],
+        "row-after": [
+          200,
+          30,
+          40,
+          30
+        ],
+        "col-after": [
+          120,
+          0,
+          40,
+          30
+        ]
+      },
+      "reason": "Column-locked spans reserve their two-column area before the definite row-span is placed. Occupancy includes both axes, so the following row-locked item advances to column 6 while every item remains inside the explicit grid."
+    },
+    {
+      "id": "hidden-controls",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "hidden-row": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "row": [
+          80,
+          0,
+          40,
+          30
+        ],
+        "hidden-column": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "column": [
+          0,
+          30,
+          40,
+          30
+        ]
+      },
+      "nonParticipating": [
+        "gone"
+      ],
+      "reason": "visibility:hidden retains occupancy; the display:none explicit item is removed before placement and reserves no cell."
+    },
+    {
+      "id": "hidden-row-lock-qualification",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "hidden-row-lock": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "column-lock": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "auto": [
+          40,
+          30,
+          40,
+          30
+        ]
+      },
+      "reason": "The only row-locked item has visibility:hidden. It remains a participating item and qualifies the mixed mode; the fixed-column item is placed first and the auto item advances from the resulting sparse cursor."
+    },
+    {
+      "id": "hidden-column-lock-qualification",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "hidden-column-lock": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "row-lock": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "auto": [
+          40,
+          30,
+          40,
+          30
+        ]
+      },
+      "reason": "The only column-locked item has visibility:hidden. It remains a participating item and qualifies the mixed mode; the row-locked item avoids its occupied cell and the auto item follows the sparse cursor."
+    },
+    {
+      "id": "display-none-control",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "row-after-gone": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "column-after-gone": [
+          0,
+          0,
+          40,
+          30
+        ]
+      },
+      "nonParticipating": [
+        "gone-cell"
+      ],
+      "reason": "A display:none definite item does not reserve the first cell. The column-locked item is placed there before the row-locked item searches its row."
+    },
+    {
+      "id": "implicit-boundary-control",
+      "productDisposition": "reject-implicit-extent",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "explicitTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "chromeResolvedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30,
+          30
+        ]
+      },
+      "chromeFramesCssPx": {
+        "row-four": [
+          0,
+          90,
+          40,
+          30
+        ],
+        "column-five": [
+          160,
+          0,
+          40,
+          30
+        ]
+      },
+      "reason": "Each item independently requires an implicit track. The bounded Root HTML profile must reject the whole Grid and publish no partial placement or render output."
+    },
+    {
+      "id": "reverse-order",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "c-first": [
+          120,
+          0,
+          40,
+          30
+        ],
+        "r-first": [
+          0,
+          60,
+          40,
+          30
+        ],
+        "d-last": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "c-second": [
+          120,
+          30,
+          40,
+          30
+        ],
+        "r-second": [
+          40,
+          60,
+          40,
+          30
+        ]
+      },
+      "reason": "The fully definite item is reserved first. The two column-locked items retain their DOM order in the fixed last column; row-locked items retain theirs in the fixed last row."
+    },
+    {
+      "id": "negative-line-control",
+      "productDisposition": "positive",
+      "rootCssPx": [
+        160,
+        90
+      ],
+      "tracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "framesCssPx": {
+        "fixed": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "column-negative": [
+          120,
+          0,
+          40,
+          30
+        ],
+        "row-negative": [
+          0,
+          60,
+          40,
+          30
+        ]
+      },
+      "reason": "Negative line -2 resolves from each explicit grid's end: column-negative occupies column 4 and row-negative occupies row 3. The opposite auto axis still follows column-flow placement."
+    }
+  ]
+}
