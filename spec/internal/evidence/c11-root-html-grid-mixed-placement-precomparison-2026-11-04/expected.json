@@ -1,0 +1,75 @@
+{
+  "basis": "CSS Grid Layout Level 1 §8.5 sparse row placement: fully definite items reserve their cells before same-axis partially definite items search source order.",
+  "toleranceCssPx": 0.5,
+  "explicitTracks": {
+    "columns": [40, 50, 30],
+    "rows": [20, 30, 40]
+  },
+  "scenes": {
+    "row-definite-blocker": {
+      "runtimeDisposition": "accept-row-locked-mixed",
+      "frames": {
+        "row-partial-first": [0, 0, 40, 20],
+        "row-full-blocker": [40, 0, 50, 20],
+        "row-partial-last": [90, 0, 30, 20]
+      }
+    },
+    "row-span-next-to-blocker": {
+      "runtimeDisposition": "accept-row-locked-mixed",
+      "frames": {
+        "row-span-blocker": [0, 0, 40, 20],
+        "row-span-partial": [40, 0, 80, 20]
+      }
+    },
+    "column-definite-blocker": {
+      "runtimeDisposition": "accept-column-locked-mixed",
+      "frames": {
+        "column-partial-first": [40, 20, 50, 30],
+        "column-full-blocker": [40, 0, 50, 20]
+      }
+    },
+    "column-span-next-to-blocker": {
+      "runtimeDisposition": "accept-column-locked-mixed",
+      "frames": {
+        "column-span-blocker": [40, 0, 50, 20],
+        "column-span-partial": [40, 20, 50, 70]
+      }
+    },
+    "hidden-full-blocker": {
+      "runtimeDisposition": "accept-hidden-full-blocker",
+      "frames": {
+        "hidden-full": [0, 0, 40, 20],
+        "hidden-span-partial": [40, 0, 80, 20]
+      }
+    },
+    "display-none-full-control": {
+      "runtimeDisposition": "accept-display-none-excluded",
+      "frames": {
+        "display-none-full": null,
+        "display-none-partial": [0, 0, 40, 20]
+      }
+    },
+    "mixed-partial-axes-reject": {
+      "runtimeDisposition": "reject-mixed-partial-axes",
+      "frames": {
+        "mixed-row-only": [0, 0, 40, 20],
+        "mixed-column-only": [0, 20, 40, 30],
+        "mixed-full-control": [40, 20, 50, 30]
+      }
+    },
+    "implicit-row-reject": {
+      "runtimeDisposition": "reject-implicit-extent",
+      "frames": {
+        "implicit-row-partial": [0, 90, 40, 7],
+        "implicit-row-full": [40, 0, 50, 20]
+      }
+    },
+    "all-auto-control": {
+      "runtimeDisposition": "existing-all-auto-route",
+      "frames": {
+        "all-auto-a": [0, 0, 40, 20],
+        "all-auto-b": [40, 0, 50, 20]
+      }
+    }
+  }
+}
