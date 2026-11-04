@@ -1,0 +1,3 @@
+$ cargo clippy --locked -p spinon-layout -p spinon-style -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+exit_code=0

@@ -1,4 +1,11 @@
-f41323e40c35d486edf02c81b5b05022be7a19e4131cf8032650ef73b884266b  README.md
-58f24deef3e820275c640c486b6b7a9f7f7d0c07740c78ed84afe5d448fd33c2  chrome-observation.json
-86a85011adc943b84eac77a286542bb5856c1374461d59a806202fbb72e8dab7  chrome156-full.png
-466c1ca91875d82765b1b047703956d0549ad533526f4c0fb9a4a98efd21dbaf  expected.json
+4b4450c414a5b35b17b4c9bca13e4c90fc2ba8eb17bcd7fb5e0d2e26917a2e56  ./README.md
+e79fdf684097e816c63b790fac5dce025ac1f4f26e78a45653d8b342ba31eff6  ./automatic-minimum-chrome-observation.json
+60f76c460b7ee8799b30344834010afde6a0e038e240e8b3c3c86dc5d7fe9314  ./automatic-minimum-expected.json
+f1b20a7072d67b9bbf590132437a5ec2c5796614ea950cd83270db035daab2a3  ./chrome-observation-pass02.json
+58f24deef3e820275c640c486b6b7a9f7f7d0c07740c78ed84afe5d448fd33c2  ./chrome-observation.json
+29449c2673096bed83f4417dc6e8d5b33fd40dce6fd1e618632959cfb9446427  ./chrome156-automatic-minimums.png
+86a85011adc943b84eac77a286542bb5856c1374461d59a806202fbb72e8dab7  ./chrome156-full-pass02.png
+86a85011adc943b84eac77a286542bb5856c1374461d59a806202fbb72e8dab7  ./chrome156-full.png
+466c1ca91875d82765b1b047703956d0549ad533526f4c0fb9a4a98efd21dbaf  ./expected.json
+fb79dfdaaabe42b1044c56fd6217da04b9671e5f1f0794456d4f0451992562b2  ./../../../../tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-automatic-minimums.html
+08cb15bf6def149576f78bb1d96323946ae1ece6fa933607e621b418ac8687eb  ./../../../../tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-values-precomparison.html

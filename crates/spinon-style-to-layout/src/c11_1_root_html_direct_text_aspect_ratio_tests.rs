@@ -273,8 +273,23 @@ fn parsed_root_html_aspect_ratio_fails_closed_outside_the_fixed_owner_slice() {
     let grid = grid_style("");
     let short = item_style("width:auto;height:auto;", "");
     let width_control = item_style("width:60px;height:auto;", "");
-    for ratio in ["3 / 2", "0 / 1"] {
-        let long = item_style("width:60px;height:auto;", &format!("aspect-ratio:{ratio};"));
+    let zero_ratio = item_style("width:60px;height:auto;", "aspect-ratio:0 / 1;");
+    let zero_ratio_fixture = Fixture::new(&root_style(""), &[scene(&grid, &short, &zero_ratio)]);
+    assert!(matches!(
+        zero_ratio_fixture.compute(),
+        Err(StyleLayoutError::UnsupportedComputedValue {
+            property: "aspect-ratio",
+            ..
+        })
+    ));
+
+    for (dimensions, ratio) in [
+        ("width:60px;height:auto;", "1e-38 / 1"),
+        ("width:auto;height:30px;", "1e38 / 1"),
+        ("width:auto;height:80px;", "3 / 2"),
+        ("width:auto;height:40px;", "1 / 2"),
+    ] {
+        let long = item_style(dimensions, &format!("aspect-ratio:{ratio};"));
         let fixture = Fixture::new(&root_style(""), &[scene(&grid, &short, &long)]);
         assert!(matches!(
             fixture.compute(),
@@ -385,3 +400,6 @@ fn parsed_root_html_aspect_ratio_fails_closed_outside_the_fixed_owner_slice() {
         }
     }
 }
+
+#[path = "c11_1_root_html_direct_text_aspect_ratio_tests/values.rs"]
+mod values;

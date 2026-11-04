@@ -1,4 +1,4 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::NodeId;
 
@@ -36,6 +36,32 @@ use root_html_gap::{
     track_extent as root_html_track_extent, validate_extent as validate_root_html_extent,
     validate_track_extent as validate_root_html_track_extent,
 };
+
+pub(crate) fn root_html_direct_text_aspect_ratio_auto_min_height(
+    input: &LayoutInput,
+    item: NodeId,
+    eligible_targets: &BTreeSet<NodeId>,
+) -> Option<f32> {
+    root_html_direct_text_aspect_ratio::auto_min_height_for_text_item(input, item, eligible_targets)
+}
+
+pub(crate) fn root_html_direct_text_aspect_ratio_auto_min_width_paragraph<'a>(
+    input: &'a LayoutInput,
+    item: NodeId,
+    eligible_targets: &BTreeSet<NodeId>,
+) -> Option<&'a crate::ParagraphInput> {
+    root_html_direct_text_aspect_ratio::auto_min_width_paragraph_for_text_item(
+        input,
+        item,
+        eligible_targets,
+    )
+}
+
+pub(crate) fn root_html_direct_text_aspect_ratio_text_item_targets(
+    input: &LayoutInput,
+) -> BTreeSet<NodeId> {
+    root_html_direct_text_aspect_ratio::text_item_targets(input)
+}
 
 /// Taffy Grid 코드가 축마다 내부적으로 허용하는 최대 track 수입니다.
 /// Taffy가 넘친 template를 잘라 처리하므로 그 전에 명시적으로 거부합니다.

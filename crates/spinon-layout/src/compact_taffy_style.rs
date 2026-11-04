@@ -94,6 +94,14 @@ impl CompactTaffyStyle {
         self.aspect_ratio = None;
     }
 
+    pub(super) fn set_min_height(&mut self, height: f32) {
+        self.min_size.height = LengthPercentageAuto::length(height);
+    }
+
+    pub(super) fn set_min_width(&mut self, width: f32) {
+        self.min_size.width = LengthPercentageAuto::length(width);
+    }
+
     pub(super) fn set_track_sizing_trace_enabled(&mut self, enabled: bool) {
         self.track_sizing_trace_enabled = enabled;
     }

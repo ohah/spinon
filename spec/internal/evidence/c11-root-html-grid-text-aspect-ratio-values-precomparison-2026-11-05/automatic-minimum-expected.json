@@ -1,0 +1,29 @@
+{
+  "fixture": "tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-automatic-minimums.html",
+  "sceneCount": 2,
+  "independentExpected": [
+    {
+      "id": "width-locked",
+      "ratio": "100 / 1",
+      "lockedSize": [60, null],
+      "transferredHeight": 0.6,
+      "automaticMinimumHeight": 10,
+      "expectedGridSize": [70, 10],
+      "expectedTargetSize": [60, 10]
+    },
+    {
+      "id": "height-locked",
+      "ratio": "1 / 100",
+      "lockedSize": [null, 30],
+      "transferredWidth": 0.3,
+      "automaticMinimumWidth": "min-content width of unbreakable AAAA text",
+      "expectedGridSize": [70, 30],
+      "expectedTargetSize": ["min-content width", 30]
+    }
+  ],
+  "limits": [
+    "The height-locked min-content width depends on the installed monospace font.",
+    "This two-scene supplement is a Chrome behavior oracle, not a cross-browser conformance claim.",
+    "The screenshot is a browser viewport capture, not a platform compositor or GPU readback."
+  ]
+}

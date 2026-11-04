@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML direct-text Grid aspect-ratio automatic minimums</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body {
+        margin: 0;
+        padding: 12px;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+      }
+      .case { margin: 0 0 8px; }
+      .label { margin: 0 0 2px; }
+      .grid {
+        display: grid;
+        box-sizing: content-box;
+        width: 70px;
+        grid-template-columns: 10px 60px;
+        grid-template-rows: auto;
+        gap: 0;
+        align-items: start;
+        justify-items: start;
+        overflow: visible;
+      }
+      .item {
+        display: block;
+        box-sizing: content-box;
+        min-width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        white-space: nowrap;
+        overflow: visible;
+      }
+      .short { width: auto; height: auto; background-color: #9cc7f4; }
+      .width-locked { width: 60px; height: auto; aspect-ratio: 100 / 1; background-color: #82d4bb; }
+      .height-locked { width: auto; height: 30px; aspect-ratio: 1 / 100; background-color: #f4b183; }
+    </style>
+  </head>
+  <body>
+    <div class="case" id="width-locked">
+      <p class="label">width 60px, ratio 100 / 1</p>
+      <div class="grid"><div class="item short">A</div><div class="item width-locked">AAAA</div></div>
+    </div>
+    <div class="case" id="height-locked">
+      <p class="label">height 30px, ratio 1 / 100</p>
+      <div class="grid"><div class="item short">A</div><div class="item height-locked">AAAA</div></div>
+    </div>
+  </body>
+</html>

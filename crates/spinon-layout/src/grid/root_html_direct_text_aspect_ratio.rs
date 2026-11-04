@@ -1,3 +1,5 @@
+use std::collections::BTreeSet;
+
 use spinon_core::WritingMode;
 use spinon_text_layout::{TextTransformMode, WhiteSpaceMode};
 
@@ -56,6 +58,58 @@ pub(super) fn is_supported(
         && is_text_item(input, node.children[1], "AAAA", TextItemSize::Target)
 }
 
+pub(super) fn text_item_targets(input: &LayoutInput) -> BTreeSet<spinon_core::NodeId> {
+    input
+        .nodes
+        .iter()
+        .filter_map(|container| {
+            let grid = input.grid_containers.get(&container.id)?;
+            (grid.placement_mode == GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+                && is_supported(input, container, grid))
+            .then(|| container.children[1])
+        })
+        .collect()
+}
+
+pub(super) fn auto_min_height_for_text_item(
+    input: &LayoutInput,
+    item: spinon_core::NodeId,
+    eligible_targets: &BTreeSet<spinon_core::NodeId>,
+) -> Option<f32> {
+    if !eligible_targets.contains(&item) {
+        return None;
+    }
+    let style = input.nodes.iter().find(|node| node.id == item)?.style;
+    if style.width != LayoutDimension::Fixed(60.0) || style.height != LayoutDimension::Auto {
+        return None;
+    }
+    let TextParagraphInput::Paragraph(paragraph) = input.text_paragraphs.get(&item)? else {
+        return None;
+    };
+    (paragraph.style.line_height.is_finite() && paragraph.style.line_height > 0.0)
+        .then_some(paragraph.style.line_height)
+}
+
+pub(super) fn auto_min_width_paragraph_for_text_item<'a>(
+    input: &'a LayoutInput,
+    item: spinon_core::NodeId,
+    eligible_targets: &BTreeSet<spinon_core::NodeId>,
+) -> Option<&'a spinon_text_layout::ParagraphInput> {
+    if !eligible_targets.contains(&item) {
+        return None;
+    }
+    let style = input.nodes.iter().find(|node| node.id == item)?.style;
+    if style.width != LayoutDimension::Auto
+        || !matches!(style.height, LayoutDimension::Fixed(30.0 | 80.0))
+    {
+        return None;
+    }
+    let TextParagraphInput::Paragraph(paragraph) = input.text_paragraphs.get(&item)? else {
+        return None;
+    };
+    Some(paragraph)
+}
+
 fn is_start_alignment(alignment: LayoutAlignItems) -> bool {
     matches!(
         alignment,
@@ -89,10 +143,15 @@ fn is_text_item(
                 && style.aspect_ratio.is_none()
         }
         TextItemSize::Target => {
-            (style.width == LayoutDimension::Fixed(60.0) && style.height == LayoutDimension::Auto
-                || style.width == LayoutDimension::Auto
-                    && style.height == LayoutDimension::Fixed(30.0))
-                && style.aspect_ratio.is_none_or(|ratio| ratio == 2.0)
+            let width_locked = style.width == LayoutDimension::Fixed(60.0)
+                && style.height == LayoutDimension::Auto;
+            let height_locked_30 = style.width == LayoutDimension::Auto
+                && style.height == LayoutDimension::Fixed(30.0);
+            let height_locked_half_80 = style.width == LayoutDimension::Auto
+                && style.height == LayoutDimension::Fixed(80.0)
+                && style.aspect_ratio == Some(0.5);
+            (width_locked || height_locked_30 || height_locked_half_80)
+                && ratio_transfer_is_finite(style.width, style.height, style.aspect_ratio)
         }
     };
     style.display == LayoutDisplay::Block
@@ -146,4 +205,69 @@ fn has_expected_paragraph(input: &LayoutInput, id: spinon_core::NodeId, text: &s
         && style.text_transform == TextTransformMode::None
         && style.direction == spinon_text_layout::TextDirection::Ltr
         && style.writing_mode == WritingMode::HorizontalTb
+}
+
+fn ratio_transfer_is_finite(
+    width: LayoutDimension,
+    height: LayoutDimension,
+    ratio: Option<f32>,
+) -> bool {
+    let Some(ratio) = ratio else {
+        return true;
+    };
+    if !ratio.is_finite() || ratio <= 0.0 {
+        return false;
+    }
+
+    let transferred = match (width, height) {
+        (LayoutDimension::Fixed(width), LayoutDimension::Auto) => width / ratio,
+        (LayoutDimension::Auto, LayoutDimension::Fixed(height)) => height * ratio,
+        _ => return false,
+    };
+    transferred.is_finite() && transferred > 0.0
+}
+
+#[cfg(test)]
+mod tests {
+    use super::ratio_transfer_is_finite;
+    use crate::LayoutDimension;
+
+    #[test]
+    fn ratio_transfer_accepts_representable_values_and_rejects_overflow() {
+        assert!(ratio_transfer_is_finite(
+            LayoutDimension::Fixed(60.0),
+            LayoutDimension::Auto,
+            Some(1.5)
+        ));
+        assert!(ratio_transfer_is_finite(
+            LayoutDimension::Auto,
+            LayoutDimension::Fixed(30.0),
+            Some(2.5)
+        ));
+        assert!(ratio_transfer_is_finite(
+            LayoutDimension::Auto,
+            LayoutDimension::Fixed(80.0),
+            Some(0.5)
+        ));
+        assert!(ratio_transfer_is_finite(
+            LayoutDimension::Fixed(60.0),
+            LayoutDimension::Auto,
+            None
+        ));
+        assert!(!ratio_transfer_is_finite(
+            LayoutDimension::Fixed(60.0),
+            LayoutDimension::Auto,
+            Some(1.0e-38)
+        ));
+        assert!(!ratio_transfer_is_finite(
+            LayoutDimension::Auto,
+            LayoutDimension::Fixed(30.0),
+            Some(1.0e38)
+        ));
+        assert!(!ratio_transfer_is_finite(
+            LayoutDimension::Fixed(60.0),
+            LayoutDimension::Auto,
+            Some(f32::NAN)
+        ));
+    }
 }

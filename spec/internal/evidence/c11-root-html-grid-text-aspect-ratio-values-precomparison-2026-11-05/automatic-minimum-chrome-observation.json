@@ -1,0 +1,37 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "devicePixelRatio": 1,
+    "viewport": [1280, 633]
+  },
+  "fixture": "tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-automatic-minimums.html",
+  "fixtureSha256": "fb79dfdaaabe42b1044c56fd6217da04b9671e5f1f0794456d4f0451992562b2",
+  "screenshotSha256": "29449c2673096bed83f4417dc6e8d5b33fd40dce6fd1e618632959cfb9446427",
+  "scenes": [
+    {
+      "id": "width-locked",
+      "computedAspectRatio": "100 / 1",
+      "computedColumns": "10px 60px",
+      "computedRows": "10px",
+      "grid": [12, 24, 70, 10],
+      "target": [22, 24, 60, 10],
+      "targetMinWidth": "auto",
+      "targetMinHeight": "auto",
+      "unbreakableTextWidth": 24.09375
+    },
+    {
+      "id": "height-locked",
+      "computedAspectRatio": "1 / 100",
+      "computedColumns": "10px 60px",
+      "computedRows": "30px",
+      "grid": [12, 54, 70, 30],
+      "target": [22, 54, 24.09375, 30],
+      "targetMinWidth": "auto",
+      "targetMinHeight": "auto",
+      "transferredWidth": 0.3,
+      "automaticMinContentWidth": 24.09375
+    }
+  ],
+  "screenshot": "chrome156-automatic-minimums.png"
+}

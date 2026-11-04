@@ -9,8 +9,12 @@
       html, body { margin: 0; min-height: 100%; }
       body {
         color: #17324d;
-        background: #f4f7fb;
-        font: 10px/10px monospace;
+        background-color: #f4f7fb;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
         padding: 12px;
       }
       .case { margin: 0 0 8px; }
@@ -31,7 +35,6 @@
         overflow: visible;
         margin: 0;
         padding: 0;
-        border: 0;
       }
       .item {
         display: block;
@@ -42,14 +45,17 @@
         max-height: none;
         margin: 0;
         padding: 0;
-        border: 0;
         overflow: visible;
-        font: 10px/10px monospace;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
         white-space: nowrap;
       }
-      .target { width: 60px; height: auto; background: #82d4bb; }
-      .target-height { width: auto; height: 30px; background: #f4b183; }
-      .short { width: auto; height: auto; background: #9cc7f4; }
+      .target { width: 60px; height: auto; background-color: #82d4bb; }
+      .target-height { width: auto; height: 30px; background-color: #f4b183; }
+      .short { width: auto; height: auto; background-color: #9cc7f4; }
       #ratio-half .target { aspect-ratio: 1 / 2; }
       #ratio-four-thirds .target { aspect-ratio: 4 / 3; }
       #ratio-three-halves .target { aspect-ratio: 1.5; }
@@ -65,61 +71,61 @@
     </style>
   </head>
   <body>
-    <section class="case" id="ratio-half">
+    <div class="case" id="ratio-half">
       <p class="label">1 / 2</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="ratio-four-thirds">
+    </div>
+    <div class="case" id="ratio-four-thirds">
       <p class="label">4 / 3</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="ratio-three-halves">
+    </div>
+    <div class="case" id="ratio-three-halves">
       <p class="label">3 / 2</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="ratio-five-halves">
+    </div>
+    <div class="case" id="ratio-five-halves">
       <p class="label">5 / 2</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="ratio-three-halves-pair">
+    </div>
+    <div class="case" id="ratio-three-halves-pair">
       <p class="label">3 / 2 pair</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="ratio-ten">
+    </div>
+    <div class="case" id="ratio-ten">
       <p class="label">10 / 1 automatic minimum</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="ratio-auto-control">
+    </div>
+    <div class="case" id="ratio-auto-control">
       <p class="label">auto control</p>
       <div class="grid"><div class="item short">A</div><div class="item target" style="aspect-ratio:auto">AAAA</div></div>
-    </section>
-    <section class="case" id="height-half">
+    </div>
+    <div class="case" id="height-half">
       <p class="label">height 80, ratio 1 / 2</p>
       <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
-    </section>
-    <section class="case" id="height-four-thirds">
+    </div>
+    <div class="case" id="height-four-thirds">
       <p class="label">height 30, ratio 4 / 3</p>
       <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
-    </section>
-    <section class="case" id="height-three-halves">
+    </div>
+    <div class="case" id="height-three-halves">
       <p class="label">height 30, ratio 3 / 2</p>
       <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
-    </section>
-    <section class="case" id="height-five-halves">
+    </div>
+    <div class="case" id="height-five-halves">
       <p class="label">height 30, ratio 5 / 2</p>
       <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
-    </section>
-    <section class="case" id="width-two">
+    </div>
+    <div class="case" id="width-two">
       <p class="label">width 60, ratio 2 / 1 regression</p>
       <div class="grid"><div class="item short">A</div><div class="item target">AAAA</div></div>
-    </section>
-    <section class="case" id="height-two">
+    </div>
+    <div class="case" id="height-two">
       <p class="label">height 30, ratio 2 / 1 regression</p>
       <div class="grid"><div class="item short">A</div><div class="item target-height">AAAA</div></div>
-    </section>
-    <section class="case" id="height-auto-control">
+    </div>
+    <div class="case" id="height-auto-control">
       <p class="label">height 30 auto ratio control</p>
       <div class="grid"><div class="item short">A</div><div class="item target-height" style="aspect-ratio:auto">AAAA</div></div>
-    </section>
+    </div>
   </body>
 </html>

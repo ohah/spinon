@@ -144,6 +144,8 @@ impl CalcLayoutTree {
         flow_only: bool,
         text_layout_engine: Option<&TextLayoutEngine>,
     ) -> Result<Self, LayoutError> {
+        let text_layout_engine = text_layout_engine.cloned().map(RefCell::new);
+        let text_intrinsic_layouts = RefCell::new(HashMap::new());
         let mut calc_owners = BTreeMap::<LayoutCalcId, Arc<CalcOwner>>::new();
         for value in &input.css_math {
             calc_owners.insert(value.id, Arc::new(CalcOwner(value.clone())));
@@ -216,6 +218,8 @@ impl CalcLayoutTree {
         }
         let grid_item_intrinsic_metadata =
             self::intrinsic_measurements::grid_item_metadata(input, index, flow_only);
+        let root_html_ratio_text_targets =
+            crate::grid::root_html_direct_text_aspect_ratio_text_item_targets(input);
 
         let mut nodes = Vec::with_capacity(next_synthetic_position + 1);
         for (position, external_id) in postorder.iter().copied().enumerate() {
@@ -271,7 +275,7 @@ impl CalcLayoutTree {
                     style: source.style,
                     natural,
                 });
-            let style = to_taffy_style(
+            let mut style = to_taffy_style(
                 external_id,
                 source.style,
                 replaced_sizing.is_some(),
@@ -300,6 +304,43 @@ impl CalcLayoutTree {
                         }),
                 },
             )?;
+            // 이 placement mode의 가로 고정·세로 자동 대상은 한 줄 nowrap 텍스트입니다.
+            // Grid automatic minimum의 line box 높이를 Taffy에 전달해 비율 전이가 내용을 줄이지 않게 합니다.
+            if let Some(min_height) =
+                crate::grid::root_html_direct_text_aspect_ratio_auto_min_height(
+                    input,
+                    external_id,
+                    &root_html_ratio_text_targets,
+                )
+            {
+                style.set_min_height(min_height);
+            }
+            if let Some(paragraph) =
+                crate::grid::root_html_direct_text_aspect_ratio_auto_min_width_paragraph(
+                    input,
+                    external_id,
+                    &root_html_ratio_text_targets,
+                )
+            {
+                let engine = text_layout_engine
+                    .as_ref()
+                    .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
+                let intrinsic = engine
+                    .borrow_mut()
+                    .intrinsic_inline_sizes(paragraph)
+                    .map_err(LayoutError::TextLayout)?;
+                let min_width = intrinsic.min_content();
+                if !min_width.is_finite() || min_width < 0.0 {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: paragraph.node,
+                        reason: "Root HTML direct-text Grid min-content width is not finite",
+                    });
+                }
+                style.set_min_width(min_width);
+                text_intrinsic_layouts
+                    .borrow_mut()
+                    .insert(engine_ids[&external_id], intrinsic);
+            }
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
             nodes.push(Node::new(
                 children,
@@ -371,11 +412,11 @@ impl CalcLayoutTree {
             viewport_root,
             calc_values,
             calc_error: RefCell::new(None),
-            text_layout_engine: text_layout_engine.cloned().map(RefCell::new),
+            text_layout_engine,
             text_paragraphs,
             text_flow_nodes,
             text_layouts: RefCell::new(HashMap::new()),
-            text_intrinsic_layouts: RefCell::new(HashMap::new()),
+            text_intrinsic_layouts,
             text_intrinsic_logical_layouts: RefCell::new(HashMap::new()),
             grid_item_intrinsic_metadata,
             record_intrinsic_measurements: !flow_only,
