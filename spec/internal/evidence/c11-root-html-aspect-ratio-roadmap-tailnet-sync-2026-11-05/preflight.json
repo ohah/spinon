@@ -1,0 +1,17 @@
+{
+  "sourceHead": "f774af7f1b7441708495b74a063796122a4f1128",
+  "sourceBranch": "docs/c11-roadmap-pr1161-sync-20261105",
+  "sourceRoute": "spec/public/roadmap.html",
+  "targetRoute": "roadmap.html",
+  "sourceBytes": 562226,
+  "sourceSha256": "fa505b07b0d649b6f15cc61be733c6c59ab2abf211010bac6899f36b85a0122c",
+  "targetBytes": 560630,
+  "targetSha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0",
+  "changedTargetOpenHandleCount": 0,
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localStatus": 200,
+  "localSha256": "3d3f1b9501a70db5613277ca56e64ffaaf0531d19bbc76383654df0aa173d3f0",
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/c11-root-html-aspect-ratio-roadmap-tailnet-sync-2026-11-05",
+  "noDeletes": true
+}
