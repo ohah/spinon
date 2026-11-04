@@ -37,7 +37,7 @@
 5. Failure controls는 mixed item이 다른 Grid owner에 분산된 경우, row-only/column-only/auto-only route selector, auto와 numeric endpoint 혼합, invalid/zero span, named line/area, dense/column flow, implicit row/column extent, hidden subtree, nonzero order, positioned/nested/text/replaced item, stale revision, duplicate/missing NodeId, allocator 실패 후 partial output 부재를 포함한다.
 6. Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable에서 positive scene, root 안/track boundary/표시된 item/clear 영역 표본을 검증한다. Source revision과 installed artifact hash를 묶는다. Android software renderer와 iOS compositor 제출 전 drawable 한계를 분리해 기록하고 실기기/hardware GPU 결과로 확대하지 않는다.
 7. Focused Rust layout/selector/Root HTML integration checks, 기존 C11.1 Grid regression, `cargo fmt --all -- --check`, 변경 crate scoped Clippy, Android/iOS Simulator build/runtime과 PR 본문 screenshot을 보존한다. 넓은 suite 실패는 변경 밖이라고 추정하지 말고 baseline 여부와 함께 별도 기록한다.
-8. 구현 후 새 runtime/code 관점 20개, 실제 구현 PR diff 관점 20개를 각각 수행한다. 이 계획 검토를 구현 검토로 재사용하지 않는다. 구현 PR도 병합 전 별도 적대 검증 20개를 남긴다.
+8. 구현 후 새 runtime/code 관점 20개와 실제 source diff 관점 20개를 각각 수행한다. 이 계획 검토를 구현 검토로 재사용하지 않는다. 프로젝트 규칙에 따라 구현 PR은 병합 전 별도 30개 실패 관점으로 검토한다.
 9. 구현과 merge metadata를 `spec/STATUS.md`, 내부 계약 0059, C11 계획 및 public roadmap에 반영한다. C11.1/C11 체크와 공식 전체 완료 `72/213`은 유지한다. 내부 계약 버전 `0.1.0`을 변경하지 않는다.
 
 ## 제외 범위
@@ -46,7 +46,7 @@ Public CSS support 전체, WPT 적합성, arbitrary track sizing, named lines/ar
 
 ## 2026-11-04 구현 후보 checkpoint
 
-구현은 `2b7bb7bc2f70dcff6be782a82a881cb6dcfb5351` 기반 checkout의 `feat/c11-root-html-grid-mixed-cross-axis-20261104` branch에서 진행했다. Candidate code와 evidence는 아직 commit/PR 전이며 implementation review 20개와 실제 code diff review 20개를 각각 수행했다. 실제 PR diff의 별도 30-point review와 PR/merge metadata는 PR 생성 후 반영한다.
+구현은 `2b7bb7bc2f70dcff6be782a82a881cb6dcfb5351` 기반 checkout의 `feat/c11-root-html-grid-mixed-cross-axis-20261104` branch에서 진행했다. 구현 source commit은 `fb4135c3a1c8052d30bef83bf773c50dc677c9c8`, 최종 PR head는 `335805d171a8a3079089fcef68a5e1e69bf59f37`이다. 구현 PR [#1152](https://github.com/ohah/spinon/pull/1152)는 2026-11-04T17:59:44+09:00 Rebase and merge됐고 merge SHA는 `6fe4980533f3da1e7250ff00fdb4d21e541a3a55`다. Runtime/code review 20개, source diff review 20개와 독립 PR diff review 30개를 각각 수행했다.
 
 - Layout mode·placement validator·shared sparse normalizer 연결, owner-scoped selector 및 Root HTML projection을 구현했다. 기존 one-axis/mixed-explicit route는 별도 selector/mode로 유지했다.
 - Chrome 156 precomparison의 5 positive scene·22 visible frames 및 implicit-row negative boundary에서 독립 기대값과 관측값은 최대 0 CSS px 차이다.
@@ -55,4 +55,4 @@ Public CSS support 전체, WPT 적합성, arbitrary track sizing, named lines/ar
 - Initial `border:0` declaration은 제한 computed-style admission에서 거부되어 fixture에서 제거했다. Agent Browser에서 geometry가 그대로임을 재비교한 뒤 두 앱 경로를 다시 빌드/실행했다. 기본 bootstrap asset이 들어간 첫 APK도 hash로 발견해 fixture asset이 포함된 candidate APK를 재빌드했다. iOS default binary scan에서 unguarded argument prefix를 찾아 compile flag 안으로 옮겼고 default/opt-in binary를 다시 빌드해 대조했다. iOS 첫 replay에서 entry asset 이름을 틀린 실행과 모든 pre-fix log는 final 성공 cohort와 구분해 보존한다.
 - 현재 실행은 시뮬레이터/AVD뿐이다. PixelCopy AVD는 software renderer이고 iOS drawable readback은 compositor 전이다. 실기기/hardware GPU, 전체 CSS Grid/WPT, 일반 CSS admission 및 상위 C11.1/C11 완료는 주장하지 않는다.
 
-상태: 구현·focused Rust 검증·Android/iOS Simulator runtime·default/opt-in artifact 경계·두 20-point implementation reviews 완료. 구현 PR의 독립 30-point diff review, PR 본문 screenshot, Rebase and merge 및 merge SHA 동기화는 남아 있다. C11.1/C11 상위 완료 체크와 공식 `72/213`은 그대로 둔다.
+상태: 제한 구현·focused Rust 검증·Android/iOS Simulator runtime·default/opt-in artifact 경계·구현 review 20개씩·PR diff review 30개·PR 본문 screenshot을 확인했다. PR #1152는 Rebase and merge됐다. PR check rollup은 비어 있고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다. C11.1/C11 상위 완료 체크와 공식 `72/213`은 그대로 둔다.
