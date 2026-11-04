@@ -47,3 +47,7 @@
 - 상태 대장 C11.1/C11 checkbox와 공식 완료 `72/213`은 그대로다. 이 제한 candidate로 상위 항목을 완료 처리하지 않는다.
 
 **판정:** 실제 PR diff를 30개의 별도 failure path로 검토했다. 이 검토에서 추가 blocking 구현 결함은 확인하지 않았다. PR check은 보고되지 않았으며, 전체 package suite의 단일 C15 실패는 별도 미해결 검증 상태로 남긴다.
+
+## 검토 후 문서 delta
+
+30관점 검토 대상 구현 diff의 head는 `eb006631c`였다. 그 뒤 `65eb3cdd4`에서 이 검토 기록과 runtime README·계획·상태 대장·내부 계약의 링크 및 PR 상태 요약만 추가·갱신했다. 이 후속 delta를 별도로 대조했다. Rust/Android/iOS 구현, fixture와 측정값은 바뀌지 않았고, 수정된 문서는 72/213 및 미완료 상태와 일치하며 `git diff --check eb006631c..HEAD`를 통과했다.
