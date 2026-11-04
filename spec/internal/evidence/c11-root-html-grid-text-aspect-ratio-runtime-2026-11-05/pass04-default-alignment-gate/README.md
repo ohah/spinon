@@ -39,4 +39,4 @@
 
 지원 입력은 정확한 `2/1` numeric ratio, 한 owner의 direct HTML `div` text items `A`/`AAAA`, fixed columns `[10px,60px]`, 단일 auto row, 70px root, zero gaps/box edges, `align-items:start`·`justify-items:start`, `align-content:normal`·`justify-content:normal`, item self-alignment `auto`, LTR/horizontal-tb·visible overflow 및 지정 size pair로 제한한다. 잘못된 값·비슷한 scene은 fail-closed로 거부한다. Android 결과는 software renderer이고 iOS는 Simulator다. PixelCopy, Metal readback, 실기기, 넓은 CSS/WPT 범위는 확인하지 않았다.
 
-전체 20개 독립 구현/runtime 실패 관점은 [implementation-runtime-review-20.md](./implementation-runtime-review-20.md)에 기록한다. 모든 로그·화면·요약 artifact의 무결성 목록은 [SHA256SUMS](./SHA256SUMS)다. 계획 검토는 [계획](../../../../../plan/c11-root-html-grid-text-aspect-ratio.md) 및 그 연결 자료를 참조한다. PR은 아직 열지 않았다.
+독립 구현/runtime 실패 검토는 [implementation-runtime-review-20.md](./implementation-runtime-review-20.md), PR 변경분 검토는 [pr-diff-review-30.md](./pr-diff-review-30.md)에 기록한다. 모든 로그·화면·요약 artifact의 무결성 목록은 [SHA256SUMS](./SHA256SUMS)다. 계획 검토는 [계획](../../../../../plan/c11-root-html-grid-text-aspect-ratio.md) 및 그 연결 자료를 참조한다. 구현 candidate PR [#1161](https://github.com/ohah/spinon/pull/1161)이 열려 있다.
