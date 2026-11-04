@@ -1,0 +1,50 @@
+{
+  "basis": {
+    "css_grid": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#grid-item-sizing",
+    "css_sizing_4_draft": "https://www.w3.org/TR/2026/WD-css-sizing-4-20260904/#automatic-sizes",
+    "font": "tests/fixtures/resources/c15/Ahem.ttf",
+    "fontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "glyphAdvancePx": 10,
+    "lineHeightPx": 10,
+    "ratio": "2 / 1",
+    "gridWidthPx": 70,
+    "gridColumnsPx": [10, 60],
+    "gridGapPx": 0
+  },
+  "toleranceCssPx": 0,
+  "scenes": [
+    {
+      "id": "width-ratio",
+      "root": { "x": 0, "y": 0, "width": 70, "height": 30, "columns": [10, 60], "rows": [30] },
+      "items": {
+        "width-ratio-short": { "x": 0, "y": 0, "width": 10, "height": 10 },
+        "width-ratio-long": { "x": 10, "y": 0, "width": 60, "height": 30 }
+      }
+    },
+    {
+      "id": "width-control",
+      "root": { "x": 0, "y": 30, "width": 70, "height": 10, "columns": [10, 60], "rows": [10] },
+      "items": {
+        "width-control-short": { "x": 0, "y": 30, "width": 10, "height": 10 },
+        "width-control-long": { "x": 10, "y": 30, "width": 60, "height": 10 }
+      }
+    },
+    {
+      "id": "height-ratio",
+      "root": { "x": 0, "y": 40, "width": 70, "height": 30, "columns": [10, 60], "rows": [30] },
+      "items": {
+        "height-ratio-short": { "x": 0, "y": 40, "width": 10, "height": 10 },
+        "height-ratio-long": { "x": 10, "y": 40, "width": 60, "height": 30 }
+      }
+    },
+    {
+      "id": "height-control",
+      "root": { "x": 0, "y": 70, "width": 70, "height": 30, "columns": [10, 60], "rows": [30] },
+      "items": {
+        "height-control-short": { "x": 0, "y": 70, "width": 10, "height": 10 },
+        "height-control-long": { "x": 10, "y": 70, "width": 40, "height": 30 }
+      }
+    }
+  ],
+  "measurementClass": "CSS layout geometry only; not glyph raster, Android/iOS surface pixels, or WPT conformance"
+}
