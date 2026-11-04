@@ -44,9 +44,9 @@
 
 Public CSS support 전체, WPT 적합성, arbitrary track sizing, named lines/areas, dense/column flow, order-modified item order, implicit track sizing, text/replaced/nested items, positioned Grid items, hit testing/accessibility order, Android 실기기, hardware GPU, iOS compositor 이후 pixel parity 및 C11.1/C11 완료는 주장하지 않는다.
 
-## 2026-11-04 구현 후보 checkpoint
+## 2026-11-04 구현·병합 checkpoint
 
-구현은 `2b7bb7bc2f70dcff6be782a82a881cb6dcfb5351` 기반 checkout의 `feat/c11-root-html-grid-mixed-cross-axis-20261104` branch에서 진행했다. 구현 source commit은 `fb4135c3a1c8052d30bef83bf773c50dc677c9c8`, 최종 PR head는 `335805d171a8a3079089fcef68a5e1e69bf59f37`이다. 구현 PR [#1152](https://github.com/ohah/spinon/pull/1152)는 2026-11-04T17:59:44+09:00 Rebase and merge됐고 merge SHA는 `6fe4980533f3da1e7250ff00fdb4d21e541a3a55`다. Runtime/code review 20개, source diff review 20개와 독립 PR diff review 30개를 각각 수행했다.
+구현은 `2b7bb7bc2f70dcff6be782a82a881cb6dcfb5351` 기반 checkout의 `feat/c11-root-html-grid-mixed-cross-axis-20261104` branch에서 진행했다. 구현 source commit은 `fb4135c3a1c8052d30bef83bf773c50dc677c9c8`, 최종 PR head는 `335805d171a8a3079089fcef68a5e1e69bf59f37`이다. 구현 PR [#1152](https://github.com/ohah/spinon/pull/1152)는 2026-11-04T08:59:45Z Rebase and merge됐고 merge SHA는 `6fe4980533f3da1e7250ff00fdb4d21e541a3a55`다. Runtime/code review 20개, source diff review 20개와 독립 PR diff review 30개를 각각 수행했다.
 
 - Layout mode·placement validator·shared sparse normalizer 연결, owner-scoped selector 및 Root HTML projection을 구현했다. 기존 one-axis/mixed-explicit route는 별도 selector/mode로 유지했다.
 - Chrome 156 precomparison의 5 positive scene·22 visible frames 및 implicit-row negative boundary에서 독립 기대값과 관측값은 최대 0 CSS px 차이다.
