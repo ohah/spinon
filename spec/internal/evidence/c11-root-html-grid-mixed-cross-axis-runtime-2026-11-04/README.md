@@ -60,4 +60,4 @@ PixelCopy adapter는 Android의 `c11_grid_metal_surface_pixels_fixture_test` sou
 
 일반 CSS admission, CSS Grid WPT 적합성, implicit track sizing, named lines/areas, dense/column flow, text/replaced/nested/positioned items, order-modified placement, Android 실기기, hardware GPU 및 iOS compositor 이후 pixels는 범위 밖이다. 공식 구현 상태는 [spec/STATUS.md](../../../STATUS.md)에서 관리하며 C11.1/C11 상위 체크와 전체 완료 `72/213`은 그대로 유지한다.
 
-구현 PR [#1152](https://github.com/ohah/spinon/pull/1152)는 2026-11-04T17:59:44+09:00 Rebase and merge됐고 merge SHA는 `6fe4980533f3da1e7250ff00fdb4d21e541a3a55`다. PR의 실제 변경 diff에 대한 별도 30개 검토는 [pr-diff-review-30.md](./pr-diff-review-30.md)에 있다. GitHub check rollup은 비어 있고 main required status checks가 설정되지 않아 CI 통과로 주장하지 않는다.
+구현 PR [#1152](https://github.com/ohah/spinon/pull/1152)는 2026-11-04T08:59:45Z Rebase and merge됐고 merge SHA는 `6fe4980533f3da1e7250ff00fdb4d21e541a3a55`다. PR의 실제 변경 diff에 대한 별도 30개 검토는 [pr-diff-review-30.md](./pr-diff-review-30.md)에 있다. GitHub check rollup은 비어 있고 main required status checks가 설정되지 않아 CI 통과로 주장하지 않는다.
