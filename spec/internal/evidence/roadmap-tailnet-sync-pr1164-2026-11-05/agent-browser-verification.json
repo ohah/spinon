@@ -1,0 +1,54 @@
+{
+  "roadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "statusUrl": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentWidth": 1440,
+    "pr1164CardFound": true,
+    "officialCountVisible": true,
+    "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+    "screenshotSha256": "4dcbca33e924b8e072beb4799acfb0ae29850997f6cb312144d6702cfbfe3652",
+    "screenshotPixels": [1440, 1000]
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "scrollY": 575,
+    "pr1164CardFullyVisible": true,
+    "cardBounds": { "top": 2.984375, "bottom": 308.84375 },
+    "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+    "screenshotSha256": "646feb3214708023604b3837fea041f0df35f6bf2587a4e4668e295e90bc7911",
+    "screenshotPixels": [390, 844]
+  },
+  "roadmapScreenshotLinks": [
+    {
+      "route": "/spinon/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "bytes": 124643,
+      "naturalPixels": [1080, 2400]
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "bytes": 174049,
+      "naturalPixels": [1206, 2622]
+    }
+  ],
+  "status": {
+    "officialCount": "78/214",
+    "countOccurrences": 2,
+    "c11CheckboxChecked": false,
+    "c11CheckboxDisabled": true,
+    "pr1164MergeShaVisible": true,
+    "documentWidth": 390
+  },
+  "lifecycle": {
+    "closeAllIssued": true,
+    "browserLaunchedChromeRemaining": false,
+    "agentBrowserProcessRemaining": false,
+    "tailnetPreviewServerRestarted": false,
+    "tailnetPreviewPid": 28040
+  }
+}

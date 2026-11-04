@@ -1,0 +1,2752 @@
+{
+  "sourceHead": "3e5aed60a95a07195002f8b8df8fb4da9eefb80b",
+  "sourceTree": "50d4e526971e448fcc700bd948986ca6db888183",
+  "trackedDiffSha256": "163307a19ee2bf6d56662919107cadae14b3ce36a8462e2c6729b936154a2f9e",
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 562226,
+  "localRoadmapSha256": "fa505b07b0d649b6f15cc61be733c6c59ab2abf211010bac6899f36b85a0122c",
+  "selectedRouteCount": 273,
+  "selectedBytes": 16796756,
+  "counts": {
+    "create": 242,
+    "replace": 13,
+    "same": 18
+  },
+  "changedRouteOpenHandleCount": 0,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1164-2026-11-05/pass01",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 617057,
+      "sourceSha256": "f443234303d74c79461be70259a81aabd67f3cc4e2441d78b6fd27481ffaa0b5",
+      "targetExists": true,
+      "targetBytes": 602203,
+      "targetSha256": "bd594551e01a1df53bc4cd947b7f20a104e7b2ef55c315f72f71c2c971303a20",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 432053,
+      "sourceSha256": "babab55ca68f7d25e96f44d362f35408933fe030655697febba178b63e9a2195",
+      "targetExists": true,
+      "targetBytes": 420629,
+      "targetSha256": "7c6db26b28a838287e3b7421248f39c2e528a7a98b43690cc37aa7c9eff74c30",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/api-level.txt",
+      "action": "create",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "b7cd5103052ef4e1b63492db6fc7c1237499805b82649b518ecaade20d235bd5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "279620e4db163a95b23e0e59091d91b071f13df6f9450e8445b8cdd3dbbd3610",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/build.log",
+      "action": "create",
+      "sourceBytes": 4474,
+      "sourceSha256": "f710e1e369ec9e0460692de766df5d9954a73c3fe6dee45b44248861379a3fd0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/install.log",
+      "action": "create",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/launch.log",
+      "action": "create",
+      "sourceBytes": 203,
+      "sourceSha256": "2948d2c8a45665b5457f7de1ba190b979eea5a12a82737397ae12547a4c99f40",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/run.log",
+      "action": "create",
+      "sourceBytes": 16266,
+      "sourceSha256": "507e0c1706149d679ca7db5e6822204062515cf9b9fedebb6541eb6976fe227b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/screenshot.png",
+      "action": "create",
+      "sourceBytes": 39040,
+      "sourceSha256": "9acff737ff9ff1cc1718b33ad3d8d4626b5bbf3e5b84e8f59d85561b967800b3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/build.log",
+      "action": "create",
+      "sourceBytes": 4965,
+      "sourceSha256": "d688c03dd2df963a349029967a5b556b8411451aacff258c98ea2284aa81c1ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/device.txt",
+      "action": "create",
+      "sourceBytes": 180,
+      "sourceSha256": "825502bb1f08f66962fef1cbc0b5833d2a7df6f95f8543082dcb35b35477c274",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/install.log",
+      "action": "create",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/launch.log",
+      "action": "create",
+      "sourceBytes": 203,
+      "sourceSha256": "964e28209068319fa9765565559dfe18b71c3fbfcf27537a8538a338447ce5e9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/run.log",
+      "action": "create",
+      "sourceBytes": 16274,
+      "sourceSha256": "fd6ecad6038987f57c0a73ad8393dad32a28fe49d2440e62c9942c2882ac8cd0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "action": "create",
+      "sourceBytes": 124643,
+      "sourceSha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/clippy-final.log",
+      "action": "create",
+      "sourceBytes": 214,
+      "sourceSha256": "902d2c5f5ea634ea4fb6741b010d8e2474920c56cb24a2191351b64fbb0f3eb9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/diff-check-final.log",
+      "action": "create",
+      "sourceBytes": 41,
+      "sourceSha256": "c08f7e0a45644e7ced702c16438457a9bb58bdae745ceea948807cfc2c4579ee",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-layout.log",
+      "action": "create",
+      "sourceBytes": 397,
+      "sourceSha256": "7da03d0df6faa805e2f40374f3612d52ebb44d1863aeb39d894865793a7d1c62",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-runtime.log",
+      "action": "create",
+      "sourceBytes": 851,
+      "sourceSha256": "8e6bb31beabedde7527526f352d4db6e11b6fda09c34ab6f3fb7b49bc6646257",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style-to-layout.log",
+      "action": "create",
+      "sourceBytes": 1112,
+      "sourceSha256": "1d4b09faacf88df3bbafe4c4e73b273cb2bca7e171e24d7d39525adf008c41d4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style.log",
+      "action": "create",
+      "sourceBytes": 437,
+      "sourceSha256": "8e4d50d2856c9818199690b18fa34fecb22f105fe2e0b6b0286e88bf22d05d4a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/format-final.log",
+      "action": "create",
+      "sourceBytes": 42,
+      "sourceSha256": "01fe9d20abda7c7657ad019bdce6eeadeaeeb74afbb779966ec9aa7faf1a593f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.html",
+      "action": "create",
+      "sourceBytes": 36484,
+      "sourceSha256": "64b91aca8d3fefc9c024eca8dcedb55bacbd946a2353e79aa77bc9dd86cef5e2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.md",
+      "action": "create",
+      "sourceBytes": 4945,
+      "sourceSha256": "ec12142916f1c59122b510f5582ed3b4f991be8085e2b2f28cfe3840b9519f60",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 39082,
+      "sourceSha256": "f29ce757a13d37a314144187ab00656634f5888b43a316047d9ec34d3641aa17",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 6156,
+      "sourceSha256": "edd132ca595897e5778fcb95545193c4a40e157098d08bf17592a5938a0548a2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "8d2fcadc5535cc0bd2220f0e7c768aabc9aa8e30b892e8704523564ba69dd8db",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "5a2a16b528828dbdf34caa385d2b64f1fb708c1a2c24aefcbe0f577c58839983",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/build.log",
+      "action": "create",
+      "sourceBytes": 64069,
+      "sourceSha256": "2d97844cf2f47568a056c4108f450b45988a079ef4accb6bdffeb53f05773874",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/install.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/launch.log",
+      "action": "create",
+      "sourceBytes": 28,
+      "sourceSha256": "51325e02ebed85768caddf11081b88225a702ba45b2ba66c85cab591b09b4ea7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/run.log",
+      "action": "create",
+      "sourceBytes": 37699,
+      "sourceSha256": "4fbbd5e2476f831188363ac5277ba360bb909d8ff36713065b50518136921f44",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.log",
+      "action": "create",
+      "sourceBytes": 233,
+      "sourceSha256": "1dacb261bd19e5a3e4f77a144dfd426c0a374f33ac15b46eb979619d41d3595b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.png",
+      "action": "create",
+      "sourceBytes": 94934,
+      "sourceSha256": "3a0780a73ea10f65658a6d99e1909cb0111342e5bdea1addf796ce2ff51b25fa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/build.log",
+      "action": "create",
+      "sourceBytes": 66770,
+      "sourceSha256": "7de5e217bbac1f4f0fd93e75ac808a9b4a2c073c522f473057eaf76c25382b8d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/device.txt",
+      "action": "create",
+      "sourceBytes": 119,
+      "sourceSha256": "970a7391b8e4ebf9bfaf600ad6ea635b0605918f015557035638bb07a2ad8bab",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/install.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/launch.log",
+      "action": "create",
+      "sourceBytes": 28,
+      "sourceSha256": "c0884737100adbfa260254d320c6bf7921a6244ca91ac28f2cb304f45a4a6430",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/run.log",
+      "action": "create",
+      "sourceBytes": 37701,
+      "sourceSha256": "c560464ddfa0eb22be7cb3f956bf0f1b527f088cee394211d920291adf2ba685",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.log",
+      "action": "create",
+      "sourceBytes": 214,
+      "sourceSha256": "1b06cd752da5b765d251cbb6e8d1df8cbf5b1b8e05353947b6d311fd53239b33",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "action": "create",
+      "sourceBytes": 174049,
+      "sourceSha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.html",
+      "action": "create",
+      "sourceBytes": 35679,
+      "sourceSha256": "b49d940438646958e1752c532d6dfddea59b7c0ac05f753d45d039889f48b584",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.md",
+      "action": "create",
+      "sourceBytes": 4578,
+      "sourceSha256": "440c2a42e3c7bc800156f71b7eb9cbb18cd0b921e7005c35d6ffdabbc2c97d2f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.html",
+      "action": "create",
+      "sourceBytes": 37508,
+      "sourceSha256": "af825ef6be2716578a295e7721bcdbac31e56d43cc90cd0f2260638a6349a636",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.md",
+      "action": "create",
+      "sourceBytes": 5420,
+      "sourceSha256": "b4651ba547ca6d7d6a3534e31b5a72f45fe904af969b6b648fd9ccdffcf4785e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.html",
+      "action": "create",
+      "sourceBytes": 37016,
+      "sourceSha256": "e5fd478fa355289f65d4b6faa2297d5c58a09d4a5612f7815f75e9d4d68dbf38",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.md",
+      "action": "create",
+      "sourceBytes": 4503,
+      "sourceSha256": "d788186f7571b83a3906047fc3c22e9f71f7ac1fc49582d987892adeb940a791",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/run-simulator-matrix.py",
+      "action": "create",
+      "sourceBytes": 13641,
+      "sourceSha256": "a790d84a6ecaddb6b6ac1b8aeb4c2fce08a76b9301eebcdd21fe238fbd084c84",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/SHA256SUMS",
+      "action": "create",
+      "sourceBytes": 5210,
+      "sourceSha256": "c43d11af9b89d52507b3d769d06297756765b1d15535bcf2a056bab46b68c7fe",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/source-hashes.txt",
+      "action": "create",
+      "sourceBytes": 2630,
+      "sourceSha256": "48e82368218e0f6a5a167382f27ffc1c0df906d0d2b67797d8709ba3e97abe48",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-after-auto-minimum-fix.log",
+      "action": "create",
+      "sourceBytes": 51608,
+      "sourceSha256": "2b19cf65c621c96bee0343cb15643b602a147f20715e9de58e841c513bf561c5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-final.log",
+      "action": "create",
+      "sourceBytes": 51608,
+      "sourceSha256": "582d5e2f8b13fe0fb562a8037fb5e438db938312e607729b40844086634aaf80",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-full.log",
+      "action": "create",
+      "sourceBytes": 51549,
+      "sourceSha256": "fd2732ea6a3d1331cefa8815a8830b3079eb3846c8271eb44e9c100d6926e056",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-after-auto-minimum-fix.log",
+      "action": "create",
+      "sourceBytes": 55984,
+      "sourceSha256": "196e6ee50c7f9150df4aa360a0dc93cdd9d80f4e144d816f0c58c6686ef40fa0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-final.log",
+      "action": "create",
+      "sourceBytes": 55984,
+      "sourceSha256": "f7033074a3e563339d72742a979991fbea9ac72a14700bea93a510d1293cf902",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-full.log",
+      "action": "create",
+      "sourceBytes": 55896,
+      "sourceSha256": "23dfab5eb45111a13b9a302d4fca8f343aa41329c249140575e771919fb3e3f7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/temporary-root-app.sha256",
+      "action": "create",
+      "sourceBytes": 88,
+      "sourceSha256": "75ad3a0b93940f147d810fe78a7f1039a7f56bc18ec01895a9a9d0425c684477",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/adb-devices.txt",
+      "action": "create",
+      "sourceBytes": 138,
+      "sourceSha256": "edf9d2afb9e66fe419fcf843757a4d1e9065292cd4b400d3cff3dcdb43015e45",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-release.txt",
+      "action": "create",
+      "sourceBytes": 3,
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-sdk.txt",
+      "action": "create",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/apk-sha256.txt",
+      "action": "create",
+      "sourceBytes": 126,
+      "sourceSha256": "5da52cc11409ee0a6d6dbae144bc6d3de1531354936cb3072e3d069e9b46d901",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/app-pid.txt",
+      "action": "create",
+      "sourceBytes": 6,
+      "sourceSha256": "59f653799c3bff9fee7f7a2eddeb8e95e37e7f746365d8e723c68e126f61ef56",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-app.log",
+      "action": "create",
+      "sourceBytes": 4404,
+      "sourceSha256": "dd61ed8b0545ab732c4edd1de4655a4713534b2063ef2ed952a0757511b3c2ff",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-native.log",
+      "action": "create",
+      "sourceBytes": 2322,
+      "sourceSha256": "eaaceeef7800da1ce9bfb92b2ccd9e89a80464866b80e901ec3443b638c5a900",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-density.txt",
+      "action": "create",
+      "sourceBytes": 22,
+      "sourceSha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-size.txt",
+      "action": "create",
+      "sourceBytes": 25,
+      "sourceSha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/model.txt",
+      "action": "create",
+      "sourceBytes": 19,
+      "sourceSha256": "2e781b655b0a1fbca1235d182864661fab33a2a3ef3d4521e580f04b0b009ead",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/packaged-fixture-sha256.txt",
+      "action": "create",
+      "sourceBytes": 68,
+      "sourceSha256": "d9319c99dcdfbd0ea5a996e441a6a505eee02642886418072a20c629f9c7c306",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/runtime-logcat.txt",
+      "action": "create",
+      "sourceBytes": 16690,
+      "sourceSha256": "1f280ece388a1274228a7948f008f8024f70062d76cc5db600587d283d03c6f1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/screen.png",
+      "action": "create",
+      "sourceBytes": 26586,
+      "sourceSha256": "fa1dbeaaed346a24bddf4df1078fcf66b3e4c2a5749da1088a50ea3d15e3b84b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/start-time-utc.txt",
+      "action": "create",
+      "sourceBytes": 21,
+      "sourceSha256": "8a818546e81ff80661c39a44438e96c6345f0135333cfeed51e073e40d427aed",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-layout.txt",
+      "action": "create",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-style-to-layout.txt",
+      "action": "create",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-runtime.log",
+      "action": "create",
+      "sourceBytes": 363,
+      "sourceSha256": "40abede9ffb65da9442f4f2fdeb8917bac2e33f81403258036c7dd226df663da",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-cascade.log",
+      "action": "create",
+      "sourceBytes": 825,
+      "sourceSha256": "441b1c0594395c487ba8fe4733ea0533092b5ac6d01dcae9fc9c9d4c3c7d4c88",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-negative.log",
+      "action": "create",
+      "sourceBytes": 414,
+      "sourceSha256": "c032b38f301cf1d115765d7900e9147c5a1b693260e7cf5804e1c17e21abe48b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-positive.log",
+      "action": "create",
+      "sourceBytes": 419,
+      "sourceSha256": "e5a05f0fa6b8178296c9788513ca93ff70edd7cb223ab50f3bffa8e201bad5ae",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-candidate.log",
+      "action": "create",
+      "sourceBytes": 51482,
+      "sourceSha256": "a1b1f368f022fe93179f3f3e58e883797b132a43a3f88dc83dd0d31ed8dbca4b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-test.log",
+      "action": "create",
+      "sourceBytes": 51482,
+      "sourceSha256": "da9b98774769000d3715cf9c4a62fba3be0bdf58b6211814fc8ee4361d1454d1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-candidate.log",
+      "action": "create",
+      "sourceBytes": 55424,
+      "sourceSha256": "790634c5ac0f6aed7f67bd9452fb61c5142b2e673a527cd4005c8b05664cbd49",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-test.log",
+      "action": "create",
+      "sourceBytes": 55559,
+      "sourceSha256": "7f53e73b5c49b6816b353e4950b7d9589ca1c2b6c98bd046855614c748700be4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-layout.txt",
+      "action": "create",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-style-to-layout.txt",
+      "action": "create",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 36374,
+      "sourceSha256": "2a6509b825270139b9902c88677ccab7fe96a90da9f5ffee449cafcbcde103a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 4822,
+      "sourceSha256": "a7c9cb02df646b83d53106ce974a9106e7262e4ca18495f1ec6b1074d80f831e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/app-executable-sha256.txt",
+      "action": "create",
+      "sourceBytes": 164,
+      "sourceSha256": "7bb5b5692ab3913d5db38004c944bef2f1c084cc7e76fcbc00cf44ec94fdbe24",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/booted-devices.txt",
+      "action": "create",
+      "sourceBytes": 403,
+      "sourceSha256": "28ba5c74e024d932d75421f497df03194f9cb0743b6983f60849f0015664d01d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/build.log",
+      "action": "create",
+      "sourceBytes": 66611,
+      "sourceSha256": "d7b3291170fd3e7f17cba77a09065da6da4df3ecdfa5ccccbf0a19738daca87d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/bundle-id.txt",
+      "action": "create",
+      "sourceBytes": 21,
+      "sourceSha256": "050d55934ccab6a07f309968a24ec0f7799e262ff22d2d9aaed47c93d3cfd462",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-fixture-sha256.txt",
+      "action": "create",
+      "sourceBytes": 159,
+      "sourceSha256": "33de0f3396a0fd32f4d750435f24924454e1ce621d81506b11c6d80c3f5f95c8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-root-app-sha256.txt",
+      "action": "create",
+      "sourceBytes": 160,
+      "sourceSha256": "37308eed45c9dc6f16b5a05816ae04644f7fc0ad13c3be9122a038784851af8c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/runtime-log-unified.txt",
+      "action": "create",
+      "sourceBytes": 36247,
+      "sourceSha256": "ea7d85437578f8f27e7e5010739ff5605ab530018617d7bbd4e452a07af712b9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/screen.png",
+      "action": "create",
+      "sourceBytes": 75655,
+      "sourceSha256": "b7080adada56a62d6a87b40b2d3a89dee95f5af6782f9953d4ce00595b202ff9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/start-time-utc.txt",
+      "action": "create",
+      "sourceBytes": 21,
+      "sourceSha256": "28a8b03c617149566101d1df625012029d598371446a941b58d8cc284ab413c1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 38999,
+      "sourceSha256": "bb2c9e8ad370c092afd4bbb6400b97c8020cf7c24209f3e8e0c38ac404399d9a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 6648,
+      "sourceSha256": "a1831168791d5d3ae17b2b628fe7a1289976cb07d3312c8772df81265ff776e7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.html",
+      "action": "create",
+      "sourceBytes": 39811,
+      "sourceSha256": "01c0ff8bcb524f43111b14d06eb623592beefd09ebd15203d87cdabbe0c9ed83",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md",
+      "action": "create",
+      "sourceBytes": 6602,
+      "sourceSha256": "4450c4345ff6de45b2283b2e0ea2a0142eb867df3616b2469e8d8004e4dfffbb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rust-source-sha256.txt",
+      "action": "create",
+      "sourceBytes": 1922,
+      "sourceSha256": "83d7070f064ae480a83ec5ac97f8fbe737c5b413cf95b450cbb4b0207712c3cd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rustfmt.log",
+      "action": "create",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/SHA256SUMS",
+      "action": "create",
+      "sourceBytes": 3855,
+      "sourceSha256": "a6526712f33d10859cf5f7db56fff4e1dcde091a64e55ecbd617285bdb1364fc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/source-hashes.txt",
+      "action": "create",
+      "sourceBytes": 327,
+      "sourceSha256": "dbf8715efdb858c451349fc15119af809650b764915ab85a7354c7d1a5e2d992",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/workspace-clippy.log",
+      "action": "create",
+      "sourceBytes": 72,
+      "sourceSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 170776,
+      "sourceSha256": "32b0020a40a9b2f58e210086136bbfac29f784779f749c73763c5aac3d85e414",
+      "targetExists": true,
+      "targetBytes": 167802,
+      "targetSha256": "cb908d9f1d8e5b98b315e8ee3d60f924f8c1b8c2ca83174d61d23d29de23ba88",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "action": "replace",
+      "sourceBytes": 73910,
+      "sourceSha256": "41c14cba636a9d0503860ded7158fd9f533e9e2d2f978b16e69c22120585ddef",
+      "targetExists": true,
+      "targetBytes": 72600,
+      "targetSha256": "5e5d1a490ca3b7dcd1733f88a6fa4f6631b670777dc677918fc7281942a9aa57",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-direct-text-aspect-ratio-values.html",
+      "action": "create",
+      "sourceBytes": 44590,
+      "sourceSha256": "62e62db4b03c5d178c6f9eb701b2bfbb31668e2e71c7ab6ac1de6d792d8a6848",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-direct-text-aspect-ratio-values.md",
+      "action": "create",
+      "sourceBytes": 11077,
+      "sourceSha256": "5ce7bbbbc47d311491cca76c0206da9fca8419145b84caf621c2ea1eac2cd0a0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-text-aspect-ratio.html",
+      "action": "create",
+      "sourceBytes": 42516,
+      "sourceSha256": "c888897c0a07c85ce708dfc150225561e36c16adcbbf207baf325b8fc0b8d486",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-text-aspect-ratio.md",
+      "action": "create",
+      "sourceBytes": 9818,
+      "sourceSha256": "9d12d2384bbd6148821fd80f0e4f6450c9c079d8464948acb79c1f29985ecff8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.html",
+      "action": "replace",
+      "sourceBytes": 563987,
+      "sourceSha256": "08044216e0b3609e07cbfbb5715cce0f86365c74980a0c9106a14e2861219f36",
+      "targetExists": true,
+      "targetBytes": 557742,
+      "targetSha256": "ab7f36660bcf6817bdabef61839ff56a95b78eb815e2f75590640319a02aedab",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.html",
+      "action": "replace",
+      "sourceBytes": 563987,
+      "sourceSha256": "08044216e0b3609e07cbfbb5715cce0f86365c74980a0c9106a14e2861219f36",
+      "targetExists": true,
+      "targetBytes": 562226,
+      "targetSha256": "fa505b07b0d649b6f15cc61be733c6c59ab2abf211010bac6899f36b85a0122c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 617199,
+      "sourceSha256": "438d49c7c41e758c76bb6cad9e50533c2d8bf26da310ee74f57d781e63fe56d7",
+      "targetExists": true,
+      "targetBytes": 602334,
+      "targetSha256": "1cc826d2b6c457721bea9f5adcaea0f01479f259e3b1ac00e6ca411caa626b77",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "replace",
+      "sourceBytes": 432053,
+      "sourceSha256": "babab55ca68f7d25e96f44d362f35408933fe030655697febba178b63e9a2195",
+      "targetExists": true,
+      "targetBytes": 420629,
+      "targetSha256": "7c6db26b28a838287e3b7421248f39c2e528a7a98b43690cc37aa7c9eff74c30",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/api-level.txt",
+      "action": "create",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "b7cd5103052ef4e1b63492db6fc7c1237499805b82649b518ecaade20d235bd5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "279620e4db163a95b23e0e59091d91b071f13df6f9450e8445b8cdd3dbbd3610",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/build.log",
+      "action": "create",
+      "sourceBytes": 4474,
+      "sourceSha256": "f710e1e369ec9e0460692de766df5d9954a73c3fe6dee45b44248861379a3fd0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/install.log",
+      "action": "create",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/launch.log",
+      "action": "create",
+      "sourceBytes": 203,
+      "sourceSha256": "2948d2c8a45665b5457f7de1ba190b979eea5a12a82737397ae12547a4c99f40",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/run.log",
+      "action": "create",
+      "sourceBytes": 16266,
+      "sourceSha256": "507e0c1706149d679ca7db5e6822204062515cf9b9fedebb6541eb6976fe227b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/screenshot.png",
+      "action": "create",
+      "sourceBytes": 39040,
+      "sourceSha256": "9acff737ff9ff1cc1718b33ad3d8d4626b5bbf3e5b84e8f59d85561b967800b3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/build.log",
+      "action": "create",
+      "sourceBytes": 4965,
+      "sourceSha256": "d688c03dd2df963a349029967a5b556b8411451aacff258c98ea2284aa81c1ca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/device.txt",
+      "action": "create",
+      "sourceBytes": 180,
+      "sourceSha256": "825502bb1f08f66962fef1cbc0b5833d2a7df6f95f8543082dcb35b35477c274",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/install.log",
+      "action": "create",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/launch.log",
+      "action": "create",
+      "sourceBytes": 203,
+      "sourceSha256": "964e28209068319fa9765565559dfe18b71c3fbfcf27537a8538a338447ce5e9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/run.log",
+      "action": "create",
+      "sourceBytes": 16274,
+      "sourceSha256": "fd6ecad6038987f57c0a73ad8393dad32a28fe49d2440e62c9942c2882ac8cd0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "action": "create",
+      "sourceBytes": 124643,
+      "sourceSha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/clippy-final.log",
+      "action": "create",
+      "sourceBytes": 214,
+      "sourceSha256": "902d2c5f5ea634ea4fb6741b010d8e2474920c56cb24a2191351b64fbb0f3eb9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/diff-check-final.log",
+      "action": "create",
+      "sourceBytes": 41,
+      "sourceSha256": "c08f7e0a45644e7ced702c16438457a9bb58bdae745ceea948807cfc2c4579ee",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-layout.log",
+      "action": "create",
+      "sourceBytes": 397,
+      "sourceSha256": "7da03d0df6faa805e2f40374f3612d52ebb44d1863aeb39d894865793a7d1c62",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-runtime.log",
+      "action": "create",
+      "sourceBytes": 851,
+      "sourceSha256": "8e6bb31beabedde7527526f352d4db6e11b6fda09c34ab6f3fb7b49bc6646257",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style-to-layout.log",
+      "action": "create",
+      "sourceBytes": 1112,
+      "sourceSha256": "1d4b09faacf88df3bbafe4c4e73b273cb2bca7e171e24d7d39525adf008c41d4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style.log",
+      "action": "create",
+      "sourceBytes": 437,
+      "sourceSha256": "8e4d50d2856c9818199690b18fa34fecb22f105fe2e0b6b0286e88bf22d05d4a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/format-final.log",
+      "action": "create",
+      "sourceBytes": 42,
+      "sourceSha256": "01fe9d20abda7c7657ad019bdce6eeadeaeeb74afbb779966ec9aa7faf1a593f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.html",
+      "action": "create",
+      "sourceBytes": 36494,
+      "sourceSha256": "04e7ea3c8ac5e8549a7bde359fb5cb0208ca2269141729d0f7410c6d6afd7f78",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.md",
+      "action": "create",
+      "sourceBytes": 4945,
+      "sourceSha256": "ec12142916f1c59122b510f5582ed3b4f991be8085e2b2f28cfe3840b9519f60",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 39092,
+      "sourceSha256": "694e929d03cc59d926dbf3dea5af5387fd7d80431fdb280f9200b1dc6b61b339",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 6156,
+      "sourceSha256": "edd132ca595897e5778fcb95545193c4a40e157098d08bf17592a5938a0548a2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "8d2fcadc5535cc0bd2220f0e7c768aabc9aa8e30b892e8704523564ba69dd8db",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/artifact-hashes.txt",
+      "action": "create",
+      "sourceBytes": 245,
+      "sourceSha256": "5a2a16b528828dbdf34caa385d2b64f1fb708c1a2c24aefcbe0f577c58839983",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/build.log",
+      "action": "create",
+      "sourceBytes": 64069,
+      "sourceSha256": "2d97844cf2f47568a056c4108f450b45988a079ef4accb6bdffeb53f05773874",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/install.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/launch.log",
+      "action": "create",
+      "sourceBytes": 28,
+      "sourceSha256": "51325e02ebed85768caddf11081b88225a702ba45b2ba66c85cab591b09b4ea7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/run.log",
+      "action": "create",
+      "sourceBytes": 37699,
+      "sourceSha256": "4fbbd5e2476f831188363ac5277ba360bb909d8ff36713065b50518136921f44",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.log",
+      "action": "create",
+      "sourceBytes": 233,
+      "sourceSha256": "1dacb261bd19e5a3e4f77a144dfd426c0a374f33ac15b46eb979619d41d3595b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.png",
+      "action": "create",
+      "sourceBytes": 94934,
+      "sourceSha256": "3a0780a73ea10f65658a6d99e1909cb0111342e5bdea1addf796ce2ff51b25fa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/build.log",
+      "action": "create",
+      "sourceBytes": 66770,
+      "sourceSha256": "7de5e217bbac1f4f0fd93e75ac808a9b4a2c073c522f473057eaf76c25382b8d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/device.txt",
+      "action": "create",
+      "sourceBytes": 119,
+      "sourceSha256": "970a7391b8e4ebf9bfaf600ad6ea635b0605918f015557035638bb07a2ad8bab",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/install.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/launch.log",
+      "action": "create",
+      "sourceBytes": 28,
+      "sourceSha256": "c0884737100adbfa260254d320c6bf7921a6244ca91ac28f2cb304f45a4a6430",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/run.log",
+      "action": "create",
+      "sourceBytes": 37701,
+      "sourceSha256": "c560464ddfa0eb22be7cb3f956bf0f1b527f088cee394211d920291adf2ba685",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.log",
+      "action": "create",
+      "sourceBytes": 214,
+      "sourceSha256": "1b06cd752da5b765d251cbb6e8d1df8cbf5b1b8e05353947b6d311fd53239b33",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "action": "create",
+      "sourceBytes": 174049,
+      "sourceSha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/stop.log",
+      "action": "create",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.html",
+      "action": "create",
+      "sourceBytes": 35689,
+      "sourceSha256": "53c97491549f05fc9d24bbeb1d0d3304ef6bc7558a6ad0cf69f4ddc90a00871c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.md",
+      "action": "create",
+      "sourceBytes": 4578,
+      "sourceSha256": "440c2a42e3c7bc800156f71b7eb9cbb18cd0b921e7005c35d6ffdabbc2c97d2f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.html",
+      "action": "create",
+      "sourceBytes": 37518,
+      "sourceSha256": "cd4e406867043f1bebdc78570d7ef9ff59643b0a637d49417cea5b13e2aeca58",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.md",
+      "action": "create",
+      "sourceBytes": 5420,
+      "sourceSha256": "b4651ba547ca6d7d6a3534e31b5a72f45fe904af969b6b648fd9ccdffcf4785e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.html",
+      "action": "create",
+      "sourceBytes": 37041,
+      "sourceSha256": "2930e72aaf724c972ac9d33fe41d27d4aad95cf95aee0573d0cf81843d9b35cc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.md",
+      "action": "create",
+      "sourceBytes": 4503,
+      "sourceSha256": "d788186f7571b83a3906047fc3c22e9f71f7ac1fc49582d987892adeb940a791",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/run-simulator-matrix.py",
+      "action": "create",
+      "sourceBytes": 13641,
+      "sourceSha256": "a790d84a6ecaddb6b6ac1b8aeb4c2fce08a76b9301eebcdd21fe238fbd084c84",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/SHA256SUMS",
+      "action": "create",
+      "sourceBytes": 5210,
+      "sourceSha256": "c43d11af9b89d52507b3d769d06297756765b1d15535bcf2a056bab46b68c7fe",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/source-hashes.txt",
+      "action": "create",
+      "sourceBytes": 2630,
+      "sourceSha256": "48e82368218e0f6a5a167382f27ffc1c0df906d0d2b67797d8709ba3e97abe48",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-after-auto-minimum-fix.log",
+      "action": "create",
+      "sourceBytes": 51608,
+      "sourceSha256": "2b19cf65c621c96bee0343cb15643b602a147f20715e9de58e841c513bf561c5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-final.log",
+      "action": "create",
+      "sourceBytes": 51608,
+      "sourceSha256": "582d5e2f8b13fe0fb562a8037fb5e438db938312e607729b40844086634aaf80",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-full.log",
+      "action": "create",
+      "sourceBytes": 51549,
+      "sourceSha256": "fd2732ea6a3d1331cefa8815a8830b3079eb3846c8271eb44e9c100d6926e056",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-after-auto-minimum-fix.log",
+      "action": "create",
+      "sourceBytes": 55984,
+      "sourceSha256": "196e6ee50c7f9150df4aa360a0dc93cdd9d80f4e144d816f0c58c6686ef40fa0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-final.log",
+      "action": "create",
+      "sourceBytes": 55984,
+      "sourceSha256": "f7033074a3e563339d72742a979991fbea9ac72a14700bea93a510d1293cf902",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-full.log",
+      "action": "create",
+      "sourceBytes": 55896,
+      "sourceSha256": "23dfab5eb45111a13b9a302d4fca8f343aa41329c249140575e771919fb3e3f7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/temporary-root-app.sha256",
+      "action": "create",
+      "sourceBytes": 88,
+      "sourceSha256": "75ad3a0b93940f147d810fe78a7f1039a7f56bc18ec01895a9a9d0425c684477",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/adb-devices.txt",
+      "action": "create",
+      "sourceBytes": 138,
+      "sourceSha256": "edf9d2afb9e66fe419fcf843757a4d1e9065292cd4b400d3cff3dcdb43015e45",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-release.txt",
+      "action": "create",
+      "sourceBytes": 3,
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-sdk.txt",
+      "action": "create",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/apk-sha256.txt",
+      "action": "create",
+      "sourceBytes": 126,
+      "sourceSha256": "5da52cc11409ee0a6d6dbae144bc6d3de1531354936cb3072e3d069e9b46d901",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/app-pid.txt",
+      "action": "create",
+      "sourceBytes": 6,
+      "sourceSha256": "59f653799c3bff9fee7f7a2eddeb8e95e37e7f746365d8e723c68e126f61ef56",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-app.log",
+      "action": "create",
+      "sourceBytes": 4404,
+      "sourceSha256": "dd61ed8b0545ab732c4edd1de4655a4713534b2063ef2ed952a0757511b3c2ff",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-native.log",
+      "action": "create",
+      "sourceBytes": 2322,
+      "sourceSha256": "eaaceeef7800da1ce9bfb92b2ccd9e89a80464866b80e901ec3443b638c5a900",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-density.txt",
+      "action": "create",
+      "sourceBytes": 22,
+      "sourceSha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-size.txt",
+      "action": "create",
+      "sourceBytes": 25,
+      "sourceSha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/model.txt",
+      "action": "create",
+      "sourceBytes": 19,
+      "sourceSha256": "2e781b655b0a1fbca1235d182864661fab33a2a3ef3d4521e580f04b0b009ead",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/packaged-fixture-sha256.txt",
+      "action": "create",
+      "sourceBytes": 68,
+      "sourceSha256": "d9319c99dcdfbd0ea5a996e441a6a505eee02642886418072a20c629f9c7c306",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/runtime-logcat.txt",
+      "action": "create",
+      "sourceBytes": 16690,
+      "sourceSha256": "1f280ece388a1274228a7948f008f8024f70062d76cc5db600587d283d03c6f1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/screen.png",
+      "action": "create",
+      "sourceBytes": 26586,
+      "sourceSha256": "fa1dbeaaed346a24bddf4df1078fcf66b3e4c2a5749da1088a50ea3d15e3b84b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/start-time-utc.txt",
+      "action": "create",
+      "sourceBytes": 21,
+      "sourceSha256": "8a818546e81ff80661c39a44438e96c6345f0135333cfeed51e073e40d427aed",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-layout.txt",
+      "action": "create",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-style-to-layout.txt",
+      "action": "create",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-runtime.log",
+      "action": "create",
+      "sourceBytes": 363,
+      "sourceSha256": "40abede9ffb65da9442f4f2fdeb8917bac2e33f81403258036c7dd226df663da",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-cascade.log",
+      "action": "create",
+      "sourceBytes": 825,
+      "sourceSha256": "441b1c0594395c487ba8fe4733ea0533092b5ac6d01dcae9fc9c9d4c3c7d4c88",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-negative.log",
+      "action": "create",
+      "sourceBytes": 414,
+      "sourceSha256": "c032b38f301cf1d115765d7900e9147c5a1b693260e7cf5804e1c17e21abe48b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-positive.log",
+      "action": "create",
+      "sourceBytes": 419,
+      "sourceSha256": "e5a05f0fa6b8178296c9788513ca93ff70edd7cb223ab50f3bffa8e201bad5ae",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-candidate.log",
+      "action": "create",
+      "sourceBytes": 51482,
+      "sourceSha256": "a1b1f368f022fe93179f3f3e58e883797b132a43a3f88dc83dd0d31ed8dbca4b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-test.log",
+      "action": "create",
+      "sourceBytes": 51482,
+      "sourceSha256": "da9b98774769000d3715cf9c4a62fba3be0bdf58b6211814fc8ee4361d1454d1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-candidate.log",
+      "action": "create",
+      "sourceBytes": 55424,
+      "sourceSha256": "790634c5ac0f6aed7f67bd9452fb61c5142b2e673a527cd4005c8b05664cbd49",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-test.log",
+      "action": "create",
+      "sourceBytes": 55559,
+      "sourceSha256": "7f53e73b5c49b6816b353e4950b7d9589ca1c2b6c98bd046855614c748700be4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-layout.txt",
+      "action": "create",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-style-to-layout.txt",
+      "action": "create",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.html",
+      "action": "create",
+      "sourceBytes": 36389,
+      "sourceSha256": "1256edfb8af3363c5f42f1c8366850bb6b459a0e8f69bba198abae38ad9bdb2a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.md",
+      "action": "create",
+      "sourceBytes": 4822,
+      "sourceSha256": "a7c9cb02df646b83d53106ce974a9106e7262e4ca18495f1ec6b1074d80f831e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/app-executable-sha256.txt",
+      "action": "create",
+      "sourceBytes": 164,
+      "sourceSha256": "7bb5b5692ab3913d5db38004c944bef2f1c084cc7e76fcbc00cf44ec94fdbe24",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/booted-devices.txt",
+      "action": "create",
+      "sourceBytes": 403,
+      "sourceSha256": "28ba5c74e024d932d75421f497df03194f9cb0743b6983f60849f0015664d01d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/build.log",
+      "action": "create",
+      "sourceBytes": 66611,
+      "sourceSha256": "d7b3291170fd3e7f17cba77a09065da6da4df3ecdfa5ccccbf0a19738daca87d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/bundle-id.txt",
+      "action": "create",
+      "sourceBytes": 21,
+      "sourceSha256": "050d55934ccab6a07f309968a24ec0f7799e262ff22d2d9aaed47c93d3cfd462",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-fixture-sha256.txt",
+      "action": "create",
+      "sourceBytes": 159,
+      "sourceSha256": "33de0f3396a0fd32f4d750435f24924454e1ce621d81506b11c6d80c3f5f95c8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-root-app-sha256.txt",
+      "action": "create",
+      "sourceBytes": 160,
+      "sourceSha256": "37308eed45c9dc6f16b5a05816ae04644f7fc0ad13c3be9122a038784851af8c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/runtime-log-unified.txt",
+      "action": "create",
+      "sourceBytes": 36247,
+      "sourceSha256": "ea7d85437578f8f27e7e5010739ff5605ab530018617d7bbd4e452a07af712b9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/screen.png",
+      "action": "create",
+      "sourceBytes": 75655,
+      "sourceSha256": "b7080adada56a62d6a87b40b2d3a89dee95f5af6782f9953d4ce00595b202ff9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/start-time-utc.txt",
+      "action": "create",
+      "sourceBytes": 21,
+      "sourceSha256": "28a8b03c617149566101d1df625012029d598371446a941b58d8cc284ab413c1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.html",
+      "action": "create",
+      "sourceBytes": 39014,
+      "sourceSha256": "c9d50317c8c1ca97bd399b755f6d351b3633c862900cd874a0d4fd42a54a2148",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.md",
+      "action": "create",
+      "sourceBytes": 6648,
+      "sourceSha256": "a1831168791d5d3ae17b2b628fe7a1289976cb07d3312c8772df81265ff776e7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.html",
+      "action": "create",
+      "sourceBytes": 39817,
+      "sourceSha256": "cbe15e53a004c79a5c25c05303c870d312ddc45099499b5a58ae371d0999460d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md",
+      "action": "create",
+      "sourceBytes": 6602,
+      "sourceSha256": "4450c4345ff6de45b2283b2e0ea2a0142eb867df3616b2469e8d8004e4dfffbb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rust-source-sha256.txt",
+      "action": "create",
+      "sourceBytes": 1922,
+      "sourceSha256": "83d7070f064ae480a83ec5ac97f8fbe737c5b413cf95b450cbb4b0207712c3cd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rustfmt.log",
+      "action": "create",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/SHA256SUMS",
+      "action": "create",
+      "sourceBytes": 3855,
+      "sourceSha256": "a6526712f33d10859cf5f7db56fff4e1dcde091a64e55ecbd617285bdb1364fc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/source-hashes.txt",
+      "action": "create",
+      "sourceBytes": 327,
+      "sourceSha256": "dbf8715efdb858c451349fc15119af809650b764915ab85a7354c7d1a5e2d992",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/workspace-clippy.log",
+      "action": "create",
+      "sourceBytes": 72,
+      "sourceSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "action": "replace",
+      "sourceBytes": 563987,
+      "sourceSha256": "08044216e0b3609e07cbfbb5715cce0f86365c74980a0c9106a14e2861219f36",
+      "targetExists": true,
+      "targetBytes": 557742,
+      "targetSha256": "ab7f36660bcf6817bdabef61839ff56a95b78eb815e2f75590640319a02aedab",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 819992,
+      "sourceSha256": "f8bfabc2ae62de3d858e46b7ccf976b53073ae46083fba9a53eaa7d28ab2886e",
+      "targetExists": true,
+      "targetBytes": 811989,
+      "targetSha256": "92ba0882d47056f29dad77e00dc401063fe1262e73f3a9cfebde3c83bfb70dde",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "replace",
+      "sourceBytes": 663273,
+      "sourceSha256": "b7481a012bfbbed0d1d324bf24ba593908e3da7957acd3c15682895c7d5626aa",
+      "targetExists": true,
+      "targetBytes": 656229,
+      "targetSha256": "79d78e00a20e14dc7a359506ffb01596cd7d4e89ff8203893f168882a21efc61",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-084b1653840b.0578e58061.js",
+      "action": "create",
+      "sourceBytes": 11867,
+      "sourceSha256": "5af9b01b677ce0d5cb163cf6b598acbf72638e57826c9a166bb800b3194dffc7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-158e4963fbe8.b959f10f78.js",
+      "action": "create",
+      "sourceBytes": 19517,
+      "sourceSha256": "58f68d3b59a5d111a3239636ec29575b537d4139fe91210c746aac566af03ec9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-1603c253ce44.8e35184774.js",
+      "action": "create",
+      "sourceBytes": 13666,
+      "sourceSha256": "45cb0d01e3ba360def5610ba10a9a746e8d7ef3db5e69484f667ce27d6261876",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-43e690c11e0a.87d3df0be0.js",
+      "action": "create",
+      "sourceBytes": 10252,
+      "sourceSha256": "8b3217886024c2daf915dd9d8b7c25220048122f1db569c2dd814b8fa327f155",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.c4312f10a1.js",
+      "action": "create",
+      "sourceBytes": 874053,
+      "sourceSha256": "b03ac7077ba68f3217935f6335de19f5a302438eb922809b50ef53341a1e32ab",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.017559c322.js",
+      "action": "create",
+      "sourceBytes": 634234,
+      "sourceSha256": "4b3e6f1bb93214f1c63c051e5ce63af86105d427aa6b559f8235ff77c46d459c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7bb5218a92c7.ab73013c82.js",
+      "action": "create",
+      "sourceBytes": 11906,
+      "sourceSha256": "01d3942f1878e7eb8110c4a4b7a0d372e4214e3850ebbe5ab6f76fa1bb99ffaf",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ccdfc52d23.js",
+      "action": "create",
+      "sourceBytes": 874282,
+      "sourceSha256": "8b30b98d1003fcf6bbec04238888683950aab47be4aba92242c67438e9461c44",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-891af17ce16b.7aef2b665b.js",
+      "action": "create",
+      "sourceBytes": 11913,
+      "sourceSha256": "dbbc8711876a459f5ff8f1f1bc9030abcefb8a874d75d089ad3d9ffd164d0115",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-8a6c5c4fdcc5.7ce0ae0709.js",
+      "action": "create",
+      "sourceBytes": 9436,
+      "sourceSha256": "34335dcdea3bdd4077f9530653048a6a8835c391b64056a345e4e0148f0259fb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.b8e95f2d61.js",
+      "action": "create",
+      "sourceBytes": 1008,
+      "sourceSha256": "e7d77908e765eac728e9ae252db8c1637c4d21c2d5305f8385786fead38d8713",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b02056b2bfdc.33553d7414.js",
+      "action": "create",
+      "sourceBytes": 11874,
+      "sourceSha256": "92c531c0ad73743fc11b447c000c36c6a54afa8d97d1e13363a58dffc3b8253b",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b1722ef6dba8.0dc8d6bf6c.js",
+      "action": "create",
+      "sourceBytes": 12635,
+      "sourceSha256": "b59011ab150d39cc5cf6605aba00b3650d74a1f7258d8a1a5a227c10d4a838bd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.e6b2ae78fd.js",
+      "action": "create",
+      "sourceBytes": 105399,
+      "sourceSha256": "d0633a9ac022f10dcb009dadd8592c7ed7a21a57c7a178f350f32079b356ad03",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c3119871df55.8210ae8da5.js",
+      "action": "create",
+      "sourceBytes": 9985,
+      "sourceSha256": "f540245d35e5aefef81dc05d02878070ef4ef041b634e96f2727052197ea7c72",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.0dc1ede50b.js",
+      "action": "create",
+      "sourceBytes": 634199,
+      "sourceSha256": "55f3741640ced81cfe3090279f5f642918d96bc8a96a0bcbaaf6ec9e6071c479",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-ca6f68772c09.c45d5c19f5.js",
+      "action": "create",
+      "sourceBytes": 9376,
+      "sourceSha256": "0a1b6f449e4927e2b75143051833de96323c589b6fe9b31202050f454ee611a6",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-d24d8137fb2d.18cd59bf59.js",
+      "action": "create",
+      "sourceBytes": 10259,
+      "sourceSha256": "26864142546a099ae7c1574f55002caf6839ea593191542d8b3bb75382caf2b1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-da27377628cb.4b8a1d6f79.js",
+      "action": "create",
+      "sourceBytes": 9455,
+      "sourceSha256": "eb193765b7744b8eb6fa701b14690da7d4efd3902650eed8f4f22cf9b0b5f4f9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e000269bbeb6.b072ea9589.js",
+      "action": "create",
+      "sourceBytes": 16647,
+      "sourceSha256": "8951e80a1a236dcc5c95a225656caac76e59b4d7da9a05ad551de27ddcdd4f7a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e6879b4445d2.0dedd1679a.js",
+      "action": "create",
+      "sourceBytes": 13678,
+      "sourceSha256": "136e017bd357e73abcae7cd2aa5f33785db5e7b0c23b09349bc53aea3817f1c3",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f164f746b37c.68f1bc5d4f.js",
+      "action": "create",
+      "sourceBytes": 9996,
+      "sourceSha256": "3d363767be4497a9d8c08bbc11af2be36b09305e046c442019d2275775db8c0c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f298b8f68d2b.3a59d5c215.js",
+      "action": "create",
+      "sourceBytes": 12632,
+      "sourceSha256": "53187716376975935dd204bbcb142b494d117b602230afee2af05c0188225a55",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f2cce3604477.9790ef20b6.js",
+      "action": "create",
+      "sourceBytes": 9386,
+      "sourceSha256": "b63d4ad28039ab7542b5cbfce9f252a0c18bfaf60ac4550191119223b8a0d1b4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/index.b7c0f75930.js",
+      "action": "create",
+      "sourceBytes": 139227,
+      "sourceSha256": "6d96432f4f6be1d5b687e7375e50e7925db35cd78f0adc74b13027163bf0b5ad",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "action": "same",
+      "sourceBytes": 473,
+      "sourceSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "targetExists": true,
+      "targetBytes": 473,
+      "targetSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/search_index.ko.fb53d25e.json",
+      "action": "create",
+      "sourceBytes": 1986471,
+      "sourceSha256": "fb53d25e8a10c3383c6265730e32ee43e38d37bdb7754421853ee169cb075a39",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 819232,
+      "sourceSha256": "f0d059f338c3447a82e432a93e653d4cdc10ec1a51879e4ac0cb7155c2561bc2",
+      "targetExists": true,
+      "targetBytes": 811316,
+      "targetSha256": "368d6085a94412f64e49e460828cc5606e90a0da2141cc61f259d12a2875af32",
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.md",
+      "action": "replace",
+      "sourceBytes": 663273,
+      "sourceSha256": "b7481a012bfbbed0d1d324bf24ba593908e3da7957acd3c15682895c7d5626aa",
+      "targetExists": true,
+      "targetBytes": 656229,
+      "targetSha256": "79d78e00a20e14dc7a359506ffb01596cd7d4e89ff8203893f168882a21efc61",
+      "openHandleCount": 0
+    }
+  ]
+}
