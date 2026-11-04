@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 6 tests
+test projection::style_values::root_html_one_axis_placement::tests::admission_recognizes_numeric_line_and_span_on_one_uniform_axis ... ok
+test projection::style_values::root_html_one_axis_placement::tests::admission_rejects_all_auto_mixed_axes_fully_definite_and_named_lines ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_keeps_all_auto_items_on_the_existing_route ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_ignores_display_none_and_counts_visibility_hidden ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_isolated_between_sibling_grid_owners ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_rejects_mixed_axes_and_nested_grid_items ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 380 filtered out; finished in 0.00s

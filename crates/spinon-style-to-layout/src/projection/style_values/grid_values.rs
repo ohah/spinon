@@ -49,8 +49,27 @@ pub(super) fn project_grid_layout_with_math(
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
 ) -> Result<GridContainerInput, StyleLayoutError> {
+    project_grid_layout_with_route(node, grid, profile, math, false)
+}
+
+pub(super) fn project_root_html_one_axis_grid_layout_with_math(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+    profile: ComputedStyleProfile,
+    math: &mut CssMathProjector,
+) -> Result<GridContainerInput, StyleLayoutError> {
+    project_grid_layout_with_route(node, grid, profile, math, true)
+}
+
+fn project_grid_layout_with_route(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+    profile: ComputedStyleProfile,
+    math: &mut CssMathProjector,
+    root_html_one_axis_placement: bool,
+) -> Result<GridContainerInput, StyleLayoutError> {
     if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
-        validate_root_html_grid_tracks(node, grid)?;
+        validate_root_html_grid_tracks(node, grid, root_html_one_axis_placement)?;
     }
     let has_auto_repeat = grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some();
     if has_auto_repeat {
@@ -109,11 +128,12 @@ pub(super) fn project_grid_layout_with_math(
         )?;
     }
     validate_combined_grid_line_area_metadata(node, grid, profile)?;
-    project_grid_layout_with_reservations(
+    project_grid_layout_with_route_reservations(
         node,
         grid,
         profile,
         math,
+        root_html_one_axis_placement,
         |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
         |_| Ok(()),
     )
@@ -122,6 +142,7 @@ pub(super) fn project_grid_layout_with_math(
 fn validate_root_html_grid_tracks(
     node: NodeId,
     grid: &ComputedCssGridLayout,
+    root_html_one_axis_placement: bool,
 ) -> Result<(), StyleLayoutError> {
     let unsupported = |property, value: &str| StyleLayoutError::UnsupportedComputedValue {
         node,
@@ -235,6 +256,15 @@ fn validate_root_html_grid_tracks(
             ));
         }
     }
+    if root_html_one_axis_placement
+        && (!root_html_dense_auto_rows_supported(&grid.auto_rows)
+            || !root_html_dense_auto_columns_supported(&grid.auto_columns))
+    {
+        return Err(unsupported(
+            "grid-auto-rows",
+            "Root HTML one-axis mode allows only auto or one finite non-negative px implicit track size per axis",
+        ));
+    }
     if implicit_rows && grid.template_areas.is_some() {
         return Err(unsupported(
             "grid-auto-rows",
@@ -281,7 +311,10 @@ fn validate_root_html_grid_tracks(
             "Root HTML column-flow mode requires auto or finite non-negative direct px/percentage/fraction auto columns",
         ));
     }
-    if !column_flow && !dense_flow && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+    if !column_flow
+        && !dense_flow
+        && !root_html_one_axis_placement
+        && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
     {
         return Err(unsupported(
             "grid-auto-columns",
@@ -929,11 +962,32 @@ fn project_grid_layout_with_reservation(
     project_grid_layout_with_reservations(node, grid, profile, &mut math, &mut reserve, |_| Ok(()))
 }
 
+#[cfg(test)]
 fn project_grid_layout_with_reservations(
     node: NodeId,
     grid: &ComputedCssGridLayout,
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
+    mut reserve: impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
+    mut reserve_line_metadata: impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
+) -> Result<GridContainerInput, StyleLayoutError> {
+    project_grid_layout_with_route_reservations(
+        node,
+        grid,
+        profile,
+        math,
+        false,
+        &mut reserve,
+        &mut reserve_line_metadata,
+    )
+}
+
+fn project_grid_layout_with_route_reservations(
+    node: NodeId,
+    grid: &ComputedCssGridLayout,
+    profile: ComputedStyleProfile,
+    math: &mut CssMathProjector,
+    root_html_one_axis_placement: bool,
     mut reserve: impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
     mut reserve_line_metadata: impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
 ) -> Result<GridContainerInput, StyleLayoutError> {
@@ -1034,7 +1088,13 @@ fn project_grid_layout_with_reservations(
                 .any(|track| matches!(track, ComputedCssGridTrackSize::MinMax { .. })));
     let root_html_column_flow = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && grid.auto_flow == ComputedCssGridAutoFlow::Column;
-    let mut auto_rows = if sparse_row || dense_auto_placement || root_html_implicit_rows {
+    let root_html_one_axis_placement =
+        profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 && root_html_one_axis_placement;
+    let mut auto_rows = if sparse_row
+        || dense_auto_placement
+        || root_html_implicit_rows
+        || root_html_one_axis_placement
+    {
         project_auto_rows(
             node,
             &grid.auto_rows,
@@ -1046,18 +1106,19 @@ fn project_grid_layout_with_reservations(
     } else {
         GridAutoRows::Auto
     };
-    let mut auto_columns = if dense_auto_placement || root_html_column_flow {
-        project_auto_columns(
-            node,
-            &grid.auto_columns,
-            profile,
-            allow_template_area_track_sizing,
-            math,
-            &mut reserve,
-        )?
-    } else {
-        GridAutoColumns::Auto
-    };
+    let mut auto_columns =
+        if dense_auto_placement || root_html_column_flow || root_html_one_axis_placement {
+            project_auto_columns(
+                node,
+                &grid.auto_columns,
+                profile,
+                allow_template_area_track_sizing,
+                math,
+                &mut reserve,
+            )?
+        } else {
+            GridAutoColumns::Auto
+        };
     let columns_auto_repeat = grid
         .columns_auto_repeat
         .as_ref()

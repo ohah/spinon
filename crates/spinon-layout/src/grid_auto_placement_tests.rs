@@ -21,6 +21,8 @@ mod root_html_column_flow_calc_tests;
 mod root_html_column_flow_fraction_tests;
 #[path = "grid_auto_placement/root_html_implicit_rows_tests.rs"]
 mod root_html_implicit_rows_tests;
+#[path = "grid_auto_placement/root_html_one_axis_placement_tests.rs"]
+mod root_html_one_axis_placement_tests;
 
 fn id(value: u64) -> NodeId {
     NodeId::new(value).unwrap()

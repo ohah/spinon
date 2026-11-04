@@ -526,6 +526,241 @@
           ]
         }
       }
+    },
+    "display-none-occupancy": {
+      "runtimeDisposition": "accept-column-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "display-none-item": {
+          "computed": {
+            "display": "none",
+            "visibility": "visible",
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": null
+        },
+        "display-visible-a": {
+          "computed": {
+            "display": "block",
+            "visibility": "visible",
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "display-visible-b": {
+          "computed": {
+            "display": "block",
+            "visibility": "visible",
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        }
+      }
+    },
+    "visibility-hidden-occupancy": {
+      "runtimeDisposition": "accept-column-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "visibility-hidden-item": {
+          "computed": {
+            "display": "block",
+            "visibility": "hidden",
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "visibility-visible-item": {
+          "computed": {
+            "display": "block",
+            "visibility": "visible",
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        }
+      }
+    },
+    "sibling-grid-owner-isolation": {
+      "runtimeDisposition": "accept-independent-owners",
+      "gridOwners": [
+        {
+          "id": "sibling-column-grid",
+          "tracks": {
+            "columns": "40px 50px 30px",
+            "rows": "20px 30px"
+          },
+          "items": {
+            "sibling-column-a": {
+              "computed": {
+                "display": "block",
+                "visibility": "visible",
+                "gridRowStart": "auto",
+                "gridRowEnd": "auto",
+                "gridColumnStart": "1",
+                "gridColumnEnd": "2"
+              },
+              "frame": [
+                0,
+                0,
+                40,
+                20
+              ]
+            },
+            "sibling-column-b": {
+              "computed": {
+                "display": "block",
+                "visibility": "visible",
+                "gridRowStart": "auto",
+                "gridRowEnd": "auto",
+                "gridColumnStart": "2",
+                "gridColumnEnd": "3"
+              },
+              "frame": [
+                40,
+                0,
+                50,
+                20
+              ]
+            }
+          }
+        },
+        {
+          "id": "sibling-row-grid",
+          "tracks": {
+            "columns": "40px 50px 30px",
+            "rows": "20px 30px"
+          },
+          "items": {
+            "sibling-row-a": {
+              "computed": {
+                "display": "block",
+                "visibility": "visible",
+                "gridRowStart": "1",
+                "gridRowEnd": "2",
+                "gridColumnStart": "auto",
+                "gridColumnEnd": "auto"
+              },
+              "frame": [
+                0,
+                0,
+                40,
+                20
+              ]
+            },
+            "sibling-row-b": {
+              "computed": {
+                "display": "block",
+                "visibility": "visible",
+                "gridRowStart": "2",
+                "gridRowEnd": "3",
+                "gridColumnStart": "auto",
+                "gridColumnEnd": "auto"
+              },
+              "frame": [
+                0,
+                20,
+                40,
+                30
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "nested-grid-rejection": {
+      "runtimeDisposition": "reject-nested-grid",
+      "gridOwners": [
+        {
+          "id": "nested-outer-grid",
+          "tracks": {
+            "columns": "40px 50px 30px",
+            "rows": "20px 30px"
+          },
+          "items": {
+            "nested-parent-item": {
+              "computed": {
+                "display": "block",
+                "visibility": "visible",
+                "gridRowStart": "auto",
+                "gridRowEnd": "auto",
+                "gridColumnStart": "1",
+                "gridColumnEnd": "2"
+              },
+              "frame": [
+                0,
+                0,
+                40,
+                20
+              ]
+            }
+          }
+        },
+        {
+          "id": "nested-grid",
+          "tracks": {
+            "columns": "10px",
+            "rows": "10px"
+          },
+          "items": {
+            "nested-inner-item": {
+              "computed": {
+                "display": "block",
+                "visibility": "visible",
+                "gridRowStart": "1",
+                "gridRowEnd": "2",
+                "gridColumnStart": "1",
+                "gridColumnEnd": "2"
+              },
+              "frame": [
+                0,
+                0,
+                10,
+                10
+              ]
+            }
+          }
+        }
+      ]
     }
   }
 }

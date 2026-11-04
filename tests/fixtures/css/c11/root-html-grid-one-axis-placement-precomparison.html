@@ -45,6 +45,7 @@
       .purple { background: #845ef7; }
       #implicit-row-required-reject .grid { grid-auto-rows: 7px; }
       #implicit-column-required-reject .grid { grid-auto-columns: 9px; }
+      #nested-grid { width: 20px; height: 10px; grid-template-columns: 10px; grid-template-rows: 10px; }
       #results { margin-top: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
     </style>
   </head>
@@ -140,35 +141,92 @@
           <div class="item orange" id="implicit-column-d" style="grid-row:1 / 2"></div>
         </div>
       </section>
+
+      <section class="case" id="display-none-occupancy">
+        <h2>display:none does not occupy a cell</h2>
+        <div class="grid" id="display-none-grid">
+          <div class="item red" id="display-none-item" style="display:none;grid-column:1 / 2"></div>
+          <div class="item green" id="display-visible-a" style="grid-column:1 / 2"></div>
+          <div class="item blue" id="display-visible-b" style="grid-column:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="visibility-hidden-occupancy">
+        <h2>visibility:hidden still occupies a cell</h2>
+        <div class="grid" id="visibility-hidden-grid">
+          <div class="item red" id="visibility-hidden-item" style="visibility:hidden;grid-column:1 / 2"></div>
+          <div class="item green" id="visibility-visible-item" style="grid-column:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="sibling-grid-owner-isolation">
+        <h2>Sibling Grid owners keep independent placement</h2>
+        <div class="grid" id="sibling-column-grid">
+          <div class="item red" id="sibling-column-a" style="grid-column:1 / 2"></div>
+          <div class="item green" id="sibling-column-b" style="grid-column:2 / 3"></div>
+        </div>
+        <div class="grid" id="sibling-row-grid">
+          <div class="item blue" id="sibling-row-a" style="grid-row:1 / 2"></div>
+          <div class="item orange" id="sibling-row-b" style="grid-row:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="nested-grid-rejection">
+        <h2>Nested Grid remains outside this profile</h2>
+        <div class="grid" id="nested-outer-grid">
+          <div class="item red" id="nested-parent-item" style="grid-column:1 / 2;width:40px;height:20px;min-width:0;min-height:0">
+            <div class="grid" id="nested-grid">
+              <div class="item blue" id="nested-inner-item" style="grid-column:1 / 2;grid-row:1 / 2;width:10px;height:10px;min-width:0;min-height:0"></div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <pre id="results"></pre>
     <script>
       const scenes = [...document.querySelectorAll(".case")].map((card) => {
-        const grid = card.querySelector(".grid");
-        const gridRect = grid.getBoundingClientRect();
-        const style = getComputedStyle(grid);
-        const children = [...grid.children].map((item) => {
-          const rect = item.getBoundingClientRect();
-          const childStyle = getComputedStyle(item);
+        const gridOwners = [...card.querySelectorAll(".grid")].map((grid) => {
+          const gridRect = grid.getBoundingClientRect();
+          const style = getComputedStyle(grid);
+          const children = [...grid.children].map((item) => {
+            const rect = item.getBoundingClientRect();
+            const childStyle = getComputedStyle(item);
+            return {
+              id: item.id,
+              display: childStyle.display,
+              visibility: childStyle.visibility,
+              gridRowStart: childStyle.gridRowStart,
+              gridRowEnd: childStyle.gridRowEnd,
+              gridColumnStart: childStyle.gridColumnStart,
+              gridColumnEnd: childStyle.gridColumnEnd,
+              frame: childStyle.display === "none" ? null : {
+                x: rect.x - gridRect.x,
+                y: rect.y - gridRect.y,
+                width: rect.width,
+                height: rect.height,
+              },
+            };
+          });
           return {
-            id: item.id,
-            gridRowStart: childStyle.gridRowStart,
-            gridRowEnd: childStyle.gridRowEnd,
-            gridColumnStart: childStyle.gridColumnStart,
-            gridColumnEnd: childStyle.gridColumnEnd,
-            frame: {
-              x: rect.x - gridRect.x,
-              y: rect.y - gridRect.y,
-              width: rect.width,
-              height: rect.height,
-            },
+            id: grid.id || `${card.id}-grid`,
+            columns: style.gridTemplateColumns,
+            rows: style.gridTemplateRows,
+            children,
           };
         });
+        if (gridOwners.length === 1) {
+          const owner = gridOwners[0];
+          return {
+            id: card.id,
+            ownerId: owner.id,
+            columns: owner.columns,
+            rows: owner.rows,
+            children: owner.children,
+          };
+        }
         return {
           id: card.id,
-          columns: style.gridTemplateColumns,
-          rows: style.gridTemplateRows,
-          children,
+          gridOwners,
         };
       });
       const report = {

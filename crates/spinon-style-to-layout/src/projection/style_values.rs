@@ -27,6 +27,7 @@ mod root_html_grid_alignment;
 mod root_html_grid_gap;
 mod root_html_grid_tracks;
 mod root_html_named_area;
+mod root_html_one_axis_placement;
 mod spacing_values;
 
 use super::fixed_containing_block::validate_fixed_ancestor_effects;
@@ -39,7 +40,9 @@ use flex_values::{
     parse_runtime_justify_items, parse_runtime_justify_self,
 };
 use grid_placement_values::project_grid_item_placement;
-use grid_values::project_grid_layout_with_math;
+use grid_values::{
+    project_grid_layout_with_math, project_root_html_one_axis_grid_layout_with_math,
+};
 use positioning_values::parse_positioning;
 use primitive_values::{
     max_size_as_dimension, parse_box_sizing, parse_dimension, parse_display, required,
@@ -278,6 +281,18 @@ pub(super) fn project_styles(
         } else {
             BTreeSet::new()
         };
+    let root_html_one_axis_placement_route_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
+                root_html_one_axis_placement::candidate_nodes(
+                    snapshot,
+                    nodes,
+                    &root_html_dense_route_nodes,
+                )
+            })
+        } else {
+            BTreeSet::new()
+        };
     let root_html_grid_alignment_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
@@ -309,6 +324,7 @@ pub(super) fn project_styles(
             nodes,
             &root_html_dense_route_nodes,
             &root_html_explicit_placement_route_nodes,
+            &root_html_one_axis_placement_route_nodes,
         )?;
         root_html_column_flow::validate_candidate(tree, snapshot, nodes)?;
         validate_root_html_grid_item_capacity(snapshot, nodes)?;
@@ -952,8 +968,19 @@ pub(super) fn project_styles(
                 }
             })?;
             grid_styles.insert(node, grid);
-            let mut container =
-                project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?;
+            let mut container = if snapshot.profile
+                == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_one_axis_placement_route_nodes.contains(&node)
+            {
+                project_root_html_one_axis_grid_layout_with_math(
+                    node,
+                    grid,
+                    snapshot.profile,
+                    &mut math,
+                )?
+            } else {
+                project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?
+            };
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_grid_alignment_nodes.contains(&node)
             {
@@ -966,6 +993,12 @@ pub(super) fn project_styles(
                 // The explicit-only normalizer owns placement. The typed alignment values above
                 // remain on each item LayoutStyle and are still consumed by the layout engine.
                 container.placement_mode = spinon_layout::GridPlacementMode::ExplicitOnly;
+            }
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_one_axis_placement_route_nodes.contains(&node)
+            {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlOneAxisAutoPlacementV1;
             }
             if snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
                 container.justify_items = parse_runtime_justify_items(
@@ -1041,6 +1074,7 @@ pub(super) fn project_styles(
             .any(|grid| grid.auto_flow == ComputedCssGridAutoFlow::Column);
     let root_html_dense_route = !root_html_dense_route_nodes.is_empty();
     let root_html_explicit_placement_route = !root_html_explicit_placement_route_nodes.is_empty();
+    let root_html_one_axis_placement_route = !root_html_one_axis_placement_route_nodes.is_empty();
     if matches!(
         snapshot.profile,
         ComputedStyleProfile::RuntimeBlockFlexGridPlacementV1
@@ -1052,6 +1086,7 @@ pub(super) fn project_styles(
         || root_html_column_flow_route
         || root_html_dense_route
         || root_html_explicit_placement_route
+        || root_html_one_axis_placement_route
     {
         let is_root_html = snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1;
         let grid_item_nodes = grid_nodes
@@ -1071,6 +1106,7 @@ pub(super) fn project_styles(
                 .is_some_and(|owner| {
                     root_html_dense_route_nodes.contains(owner)
                         || root_html_explicit_placement_route_nodes.contains(owner)
+                        || root_html_one_axis_placement_route_nodes.contains(owner)
                         || grid_styles.get(owner).is_some_and(|grid| {
                             grid.template_areas.is_some()
                                 || grid.auto_flow == ComputedCssGridAutoFlow::Column

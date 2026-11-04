@@ -165,6 +165,7 @@ public final class MainActivity extends Activity {
                         && extras.getBoolean(
                                 "spinon_root_html_fit_content_percentage_pixel_capture", false);
         for (String key : extras.keySet()) {
+            if (RuntimeGpuSurfacePixelCaptureAdapters.acceptsIntentExtra(extras, key)) continue;
             if (rootHtmlGridMinmaxPixelCapture
                     && ("spinon_root_html_grid_minmax_pixel_capture".equals(key)
                             || "spinon_root_html_grid_minmax_pixel_capture_run_id".equals(key))) {
