@@ -1,0 +1,10 @@
+{
+  "bodyMentionsOldCount": true,
+  "checked": 78,
+  "currentEntry": "2026-11-05 C11.1 parsed Root HTML direct-text aspect-ratio · 제한 구현 PR #1161 Rebase and merge (merge SHA f774af7f1b7441708495b74a063796122a4f1128): 기본 parsed Root HTML RuntimeRootHtmlTextPaintV1에서 두 direct block-text Grid item 중 AAAA에 numeric 2/1 ratio를 연결하는 bounded slice다. Chrome 156 4-scene 사전 비교가 독립 geometry와 일치했고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 route에서 각각 layout-ready 14 boxes와 14-box draw/present를 확인했다. Rust focused cascade/projection/layout/runtime 검증, rustfmt",
+  "hasCurrentPr": true,
+  "statusNote": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개 · 마지막 확인 오전 2:32:49",
+  "title": "스피논 구현 로드맵",
+  "total": 214,
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}
