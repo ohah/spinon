@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11 Root HTML mixed explicit and one-axis Grid placement precomparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 20px; color: #111827; font: 12px/16px sans-serif; }
+      h1 { margin: 0 0 16px; font-size: 18px; line-height: 24px; }
+      #cases { display: grid; grid-template-columns: repeat(2, 300px); gap: 16px; }
+      .case { min-height: 116px; padding: 8px; border: 1px solid #cbd5e1; }
+      h2 { margin: 0 0 8px; font-size: 11px; line-height: 14px; font-weight: 600; }
+      .grid {
+        display: grid;
+        width: 120px;
+        height: 90px;
+        grid-template-columns: 40px 50px 30px;
+        grid-template-rows: 20px 30px 40px;
+        grid-auto-flow: row;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #dbeafe;
+      }
+      .item {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        min-width: auto;
+        max-width: none;
+        min-height: auto;
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+      }
+      .red { background: #e5484d; }
+      .green { background: #3a8f5b; }
+      .blue { background: #3578c7; }
+      .orange { background: #f97316; }
+      .purple { background: #845ef7; }
+      #implicit-row-reject .grid { grid-auto-rows: 7px; }
+      #column-implicit-reject .grid { grid-auto-columns: 9px; }
+      #results { margin-top: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    </style>
+  </head>
+  <body>
+    <h1>C11 · fixed items preoccupy cells before one-axis sparse auto-placement</h1>
+    <main id="cases">
+      <section class="case" id="row-definite-blocker">
+        <h2>Row-locked items skip a later-source fully definite blocker</h2>
+        <div class="grid">
+          <div class="item red" id="row-partial-first" style="grid-row:1 / 2"></div>
+          <div class="item green" id="row-full-blocker" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+          <div class="item blue" id="row-partial-last" style="grid-row:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="row-span-next-to-blocker">
+        <h2>Row-locked span finds the first contiguous free columns</h2>
+        <div class="grid">
+          <div class="item green" id="row-span-blocker" style="grid-row:1 / 2;grid-column:1 / 2"></div>
+          <div class="item purple" id="row-span-partial" style="grid-row:1 / 2;grid-column:auto / span 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="column-definite-blocker">
+        <h2>Column-locked item skips an occupied cell</h2>
+        <div class="grid">
+          <div class="item blue" id="column-partial-first" style="grid-column:2 / 3"></div>
+          <div class="item orange" id="column-full-blocker" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="column-span-next-to-blocker">
+        <h2>Column-locked span finds the first contiguous free rows</h2>
+        <div class="grid">
+          <div class="item orange" id="column-span-blocker" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+          <div class="item purple" id="column-span-partial" style="grid-row:auto / span 2;grid-column:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="hidden-full-blocker">
+        <h2>visibility:hidden fully definite item still occupies cells</h2>
+        <div class="grid">
+          <div class="item green" id="hidden-full" style="visibility:hidden;grid-row:1 / 2;grid-column:1 / 2"></div>
+          <div class="item purple" id="hidden-span-partial" style="grid-row:1 / 2;grid-column:auto / span 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="display-none-full-control">
+        <h2>display:none fully definite item does not enter occupancy</h2>
+        <div class="grid">
+          <div class="item green" id="display-none-full" style="display:none;grid-row:1 / 2;grid-column:1 / 2"></div>
+          <div class="item red" id="display-none-partial" style="grid-row:1 / 2"></div>
+        </div>
+      </section>
+
+      <section class="case" id="mixed-partial-axes-reject">
+        <h2>Different partially definite axes stay rejected</h2>
+        <div class="grid">
+          <div class="item red" id="mixed-row-only" style="grid-row:1 / 2"></div>
+          <div class="item blue" id="mixed-column-only" style="grid-column:1 / 2"></div>
+          <div class="item green" id="mixed-full-control" style="grid-row:2 / 3;grid-column:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="implicit-row-reject">
+        <h2>Implicit track creation remains rejected</h2>
+        <div class="grid">
+          <div class="item red" id="implicit-row-partial" style="grid-row:4 / 5"></div>
+          <div class="item green" id="implicit-row-full" style="grid-row:1 / 2;grid-column:2 / 3"></div>
+        </div>
+      </section>
+
+      <section class="case" id="all-auto-control">
+        <h2>All-auto items keep the existing route</h2>
+        <div class="grid">
+          <div class="item red" id="all-auto-a"></div>
+          <div class="item blue" id="all-auto-b"></div>
+        </div>
+      </section>
+    </main>
+    <pre id="results"></pre>
+    <script>
+      const scenes = [...document.querySelectorAll(".case")].map((card) => {
+        const grid = card.querySelector(".grid");
+        const gridRect = grid.getBoundingClientRect();
+        const gridStyle = getComputedStyle(grid);
+        return {
+          id: card.id,
+          columns: gridStyle.gridTemplateColumns,
+          rows: gridStyle.gridTemplateRows,
+          children: [...grid.children].map((item) => {
+            const style = getComputedStyle(item);
+            const rect = item.getBoundingClientRect();
+            return {
+              id: item.id,
+              display: style.display,
+              visibility: style.visibility,
+              gridRowStart: style.gridRowStart,
+              gridRowEnd: style.gridRowEnd,
+              gridColumnStart: style.gridColumnStart,
+              gridColumnEnd: style.gridColumnEnd,
+              frame: style.display === "none" ? null : {
+                x: rect.x - gridRect.x,
+                y: rect.y - gridRect.y,
+                width: rect.width,
+                height: rect.height,
+              },
+            };
+          }),
+        };
+      });
+      const report = {
+        userAgent: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight },
+        devicePixelRatio,
+        scenes,
+      };
+      document.querySelector("#results").textContent = JSON.stringify(report, null, 2);
+      document.documentElement.dataset.ready = "true";
+      window.__c11MixedPlacementReport = report;
+    </script>
+  </body>
+</html>
