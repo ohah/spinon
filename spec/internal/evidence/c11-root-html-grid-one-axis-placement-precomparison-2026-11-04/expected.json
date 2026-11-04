@@ -1,0 +1,531 @@
+{
+  "basis": "CSS Grid Level 1 sparse row auto-placement with definite line/span on one axis; expected positions are derived from the fixed authored tracks and source order before comparing with Chrome.",
+  "toleranceCssPx": 0.5,
+  "explicitTracks": {
+    "columns": [
+      40,
+      50,
+      30
+    ],
+    "rows": [
+      20,
+      30
+    ]
+  },
+  "implicitSentinels": {
+    "gridAutoRows": 7,
+    "gridAutoColumns": 9
+  },
+  "scenes": {
+    "all-auto-control": {
+      "runtimeDisposition": "existing-auto-path",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "auto-a": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "auto-b": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            40,
+            0,
+            50,
+            20
+          ]
+        },
+        "auto-c": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            90,
+            0,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    "column-definite-row-auto": {
+      "runtimeDisposition": "accept-column-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "column-a": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "column-b": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "2",
+            "gridColumnEnd": "3"
+          },
+          "frame": [
+            40,
+            0,
+            50,
+            20
+          ]
+        },
+        "column-c": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "3",
+            "gridColumnEnd": "4"
+          },
+          "frame": [
+            90,
+            0,
+            30,
+            20
+          ]
+        },
+        "column-d": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        }
+      }
+    },
+    "row-definite-column-auto": {
+      "runtimeDisposition": "accept-row-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "row-a": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "row-b": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            40,
+            0,
+            50,
+            20
+          ]
+        },
+        "row-c": {
+          "computed": {
+            "gridRowStart": "2",
+            "gridRowEnd": "3",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        },
+        "row-d": {
+          "computed": {
+            "gridRowStart": "2",
+            "gridRowEnd": "3",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            40,
+            20,
+            50,
+            30
+          ]
+        }
+      }
+    },
+    "column-span-definite-row-auto": {
+      "runtimeDisposition": "accept-column-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "column-span-a": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "span 2"
+          },
+          "frame": [
+            0,
+            0,
+            90,
+            20
+          ]
+        },
+        "column-span-b": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "3",
+            "gridColumnEnd": "4"
+          },
+          "frame": [
+            90,
+            0,
+            30,
+            20
+          ]
+        },
+        "column-span-c": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        }
+      }
+    },
+    "row-span-definite-column-auto": {
+      "runtimeDisposition": "accept-row-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "row-span-a": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "span 2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            50
+          ]
+        },
+        "row-span-b": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            40,
+            0,
+            50,
+            20
+          ]
+        },
+        "row-span-c": {
+          "computed": {
+            "gridRowStart": "2",
+            "gridRowEnd": "3",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            40,
+            20,
+            50,
+            30
+          ]
+        }
+      }
+    },
+    "column-negative-lines": {
+      "runtimeDisposition": "accept-column-definite",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "negative-column-a": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "-2",
+            "gridColumnEnd": "-1"
+          },
+          "frame": [
+            90,
+            0,
+            30,
+            20
+          ]
+        },
+        "negative-column-b": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "-3",
+            "gridColumnEnd": "-2"
+          },
+          "frame": [
+            40,
+            20,
+            50,
+            30
+          ]
+        }
+      }
+    },
+    "mixed-definite-axes-reject": {
+      "runtimeDisposition": "reject-mixed-axis",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "mixed-column-only": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "mixed-row-only": {
+          "computed": {
+            "gridRowStart": "2",
+            "gridRowEnd": "3",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        }
+      }
+    },
+    "mixed-full-and-partial-reject": {
+      "runtimeDisposition": "reject-mixed-definiteness",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "mixed-partial": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "mixed-full": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "2",
+            "gridColumnEnd": "3"
+          },
+          "frame": [
+            40,
+            0,
+            50,
+            20
+          ]
+        }
+      }
+    },
+    "implicit-row-required-reject": {
+      "runtimeDisposition": "reject-implicit-row",
+      "tracks": {
+        "columns": "40px 50px 30px",
+        "rows": "20px 30px 7px"
+      },
+      "items": {
+        "implicit-row-a": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "implicit-row-b": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            20,
+            40,
+            30
+          ]
+        },
+        "implicit-row-c": {
+          "computed": {
+            "gridRowStart": "auto",
+            "gridRowEnd": "auto",
+            "gridColumnStart": "1",
+            "gridColumnEnd": "2"
+          },
+          "frame": [
+            0,
+            50,
+            40,
+            7
+          ]
+        }
+      }
+    },
+    "implicit-column-required-reject": {
+      "runtimeDisposition": "reject-implicit-column",
+      "tracks": {
+        "columns": "40px 50px 30px 9px",
+        "rows": "20px 30px"
+      },
+      "items": {
+        "implicit-column-a": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            0,
+            0,
+            40,
+            20
+          ]
+        },
+        "implicit-column-b": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            40,
+            0,
+            50,
+            20
+          ]
+        },
+        "implicit-column-c": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            90,
+            0,
+            30,
+            20
+          ]
+        },
+        "implicit-column-d": {
+          "computed": {
+            "gridRowStart": "1",
+            "gridRowEnd": "2",
+            "gridColumnStart": "auto",
+            "gridColumnEnd": "auto"
+          },
+          "frame": [
+            120,
+            0,
+            9,
+            20
+          ]
+        }
+      }
+    }
+  }
+}
