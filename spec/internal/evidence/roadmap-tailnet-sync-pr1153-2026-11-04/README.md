@@ -21,3 +21,5 @@ Source `spec/public/roadmap.html`은 `origin/main` commit `287fd4872f64e62eb0058
 Agent Browser에서 cache-busted Tailnet route를 열어 page title `스피논 구현 로드맵`, 새 PR #1152 카드 1개, C11 미완료 문구 및 공식 `72/213`을 확인했다. Desktop `1280×1000`과 mobile `390×844` 모두 `clientWidth === scrollWidth`였고 각각 화면을 저장했다. [검증 JSON](./agent-browser-verification.json) · [Desktop](./tailnet-roadmap-agent-browser-desktop.png) · [Mobile](./tailnet-roadmap-agent-browser-mobile.png).
 
 Agent Browser 세션을 종료했고 후속 확인에서 active session 0개 및 일치하는 browser process 0개였다. Preview server PID `28040`은 사용자가 접근하는 Tailnet 미리보기를 위해 계속 실행 중이다.
+
+이 동기화 evidence PR의 별도 30개 실패 관점 검토는 [pr-diff-review-30.md](./pr-diff-review-30.md)에 있다. 파일 hash 목록은 [SHA256SUMS.txt](./SHA256SUMS.txt)다.
