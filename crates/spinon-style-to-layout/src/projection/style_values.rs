@@ -305,6 +305,18 @@ pub(super) fn project_styles(
         } else {
             BTreeSet::new()
         };
+    let root_html_mixed_cross_axis_route_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
+                root_html_one_axis_placement::mixed_cross_axis_candidate_nodes(
+                    snapshot,
+                    nodes,
+                    &root_html_dense_route_nodes,
+                )
+            })
+        } else {
+            BTreeSet::new()
+        };
     let mut root_html_one_axis_or_mixed_placement_route_nodes =
         root_html_one_axis_placement_route_nodes.clone();
     root_html_one_axis_or_mixed_placement_route_nodes.extend(
@@ -312,6 +324,8 @@ pub(super) fn project_styles(
             .iter()
             .copied(),
     );
+    root_html_one_axis_or_mixed_placement_route_nodes
+        .extend(root_html_mixed_cross_axis_route_nodes.iter().copied());
     let root_html_grid_alignment_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
@@ -1018,6 +1032,12 @@ pub(super) fn project_styles(
             {
                 container.placement_mode =
                     spinon_layout::GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1;
+            }
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_mixed_cross_axis_route_nodes.contains(&node)
+            {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1;
             }
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_one_axis_placement_route_nodes.contains(&node)

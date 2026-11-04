@@ -130,6 +130,10 @@ fn mixed_placement_grid_style() -> &'static str {
     "display:grid;box-sizing:border-box;width:120px;height:90px;grid-template-columns:40px 50px 30px;grid-template-rows:20px 30px 40px;grid-auto-flow:row;gap:0;margin:0;padding:0;border:0;overflow:visible"
 }
 
+fn cross_axis_grid_style() -> &'static str {
+    "display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;padding:0;border:0;overflow:visible"
+}
+
 fn item_style(extra: &str) -> String {
     format!(
         "display:block;box-sizing:border-box;width:auto;height:auto;margin:0;padding:0;border:0;overflow:visible;{extra}"
@@ -195,14 +199,17 @@ fn root_html_one_axis_placement_keeps_all_auto_items_on_the_existing_route() {
 }
 
 #[test]
-fn root_html_one_axis_placement_rejects_mixed_axes_and_nested_grid_items() {
+fn root_html_one_axis_placement_accepts_cross_axes_and_rejects_nested_grid_items() {
     let row_locked = item_style("grid-row:1 / 2;");
     let column_locked = item_style("grid-column:1 / 2;");
     let mixed = GridFixture::new(&[(
         &grid_style(""),
         &[row_locked.as_str(), column_locked.as_str()],
     )]);
-    assert!(mixed.compute().is_err());
+    let output = mixed.compute().unwrap();
+    let items = &mixed.items_by_grid[0];
+    assert_eq!(frame(&output, items[0]), [0.0, 0.0, 40.0, 20.0]);
+    assert_eq!(frame(&output, items[1]), [0.0, 20.0, 40.0, 30.0]);
 
     let nested = item_style(
         "display:grid;grid-template-columns:40px 80px;grid-template-rows:20px 30px;grid-column:1 / 2;",
@@ -249,7 +256,7 @@ fn root_html_mixed_explicit_one_axis_placement_matches_sparse_reference_frames()
 }
 
 #[test]
-fn root_html_mixed_explicit_one_axis_placement_keeps_hidden_semantics_and_rejects_mixed_axes() {
+fn root_html_mixed_explicit_one_axis_placement_keeps_hidden_semantics_and_accepts_cross_axes() {
     let hidden_full = item_style("visibility:hidden;grid-row:1 / 2;grid-column:1 / 2;");
     let row_span = item_style("grid-row:1 / span 2;grid-column:auto;");
     let fixture = GridFixture::new(&[(
@@ -268,7 +275,11 @@ fn root_html_mixed_explicit_one_axis_placement_keeps_hidden_semantics_and_reject
         mixed_placement_grid_style(),
         &[row_locked.as_str(), column_locked.as_str(), full.as_str()],
     )]);
-    assert!(mixed_axes.compute().is_err());
+    let output = mixed_axes.compute().unwrap();
+    let items = &mixed_axes.items_by_grid[0];
+    assert_eq!(frame(&output, items[0]), [0.0, 0.0, 40.0, 20.0]);
+    assert_eq!(frame(&output, items[1]), [0.0, 20.0, 40.0, 30.0]);
+    assert_eq!(frame(&output, items[2]), [40.0, 20.0, 50.0, 30.0]);
 }
 
 #[test]
@@ -300,5 +311,146 @@ fn root_html_mixed_explicit_one_axis_placement_rejects_implicit_columns() {
         &[row_partial.as_str(), full_outside_explicit_columns.as_str()],
     )]);
 
+    assert!(fixture.compute().is_err());
+}
+
+#[test]
+fn root_html_mixed_cross_axis_placement_matches_chrome_phase_and_occupancy_frames() {
+    let fixed = |extra: &str| format!("width:40px;height:40px;{extra}");
+    let scenes = [
+        {
+            let c1 = fixed("grid-row:auto;grid-column:1;");
+            let d = fixed("grid-row:2 / 3;grid-column:2 / 3;");
+            let r1 = fixed("grid-row:1;grid-column:auto;");
+            let c2 = fixed("grid-row:auto;grid-column:1;");
+            let r2 = fixed("grid-row:1;grid-column:auto;");
+            let auto_last = fixed("");
+            GridFixture::new(&[(
+                cross_axis_grid_style(),
+                &[
+                    c1.as_str(),
+                    d.as_str(),
+                    r1.as_str(),
+                    c2.as_str(),
+                    r2.as_str(),
+                    auto_last.as_str(),
+                ],
+            )])
+        },
+        {
+            let row_span = fixed("grid-row:1 / span 2;grid-column:auto;height:80px;");
+            let col_span = fixed("grid-row:auto;grid-column:1 / span 2;width:80px;");
+            let definite = fixed("grid-row:2 / 3;grid-column:3 / 4;");
+            let row_after = fixed("grid-row:2;grid-column:auto;");
+            let col_after = fixed("grid-row:auto;grid-column:4;");
+            GridFixture::new(&[(
+                cross_axis_grid_style(),
+                &[
+                    row_span.as_str(),
+                    col_span.as_str(),
+                    definite.as_str(),
+                    row_after.as_str(),
+                    col_after.as_str(),
+                ],
+            )])
+        },
+        {
+            let hidden_row = fixed("visibility:hidden;grid-row:1;grid-column:auto;");
+            let row = fixed("grid-row:1;grid-column:auto;");
+            let hidden_column = fixed("visibility:hidden;grid-row:auto;grid-column:1;");
+            let column = fixed("grid-row:auto;grid-column:1;");
+            let gone = fixed("display:none;grid-row:1 / 2;grid-column:1 / 2;");
+            GridFixture::new(&[(
+                cross_axis_grid_style(),
+                &[
+                    hidden_row.as_str(),
+                    row.as_str(),
+                    hidden_column.as_str(),
+                    column.as_str(),
+                    gone.as_str(),
+                ],
+            )])
+        },
+        {
+            let gone = fixed("display:none;grid-row:1 / 2;grid-column:1 / 2;");
+            let row = fixed("grid-row:1;grid-column:auto;");
+            let column = fixed("grid-row:auto;grid-column:1;");
+            GridFixture::new(&[(
+                cross_axis_grid_style(),
+                &[gone.as_str(), row.as_str(), column.as_str()],
+            )])
+        },
+        {
+            let column_first = fixed("grid-row:auto;grid-column:4;");
+            let row_first = fixed("grid-row:3;grid-column:auto;");
+            let definite_last = fixed("grid-row:1 / 2;grid-column:1 / 2;");
+            let column_second = fixed("grid-row:auto;grid-column:4;");
+            let row_second = fixed("grid-row:3;grid-column:auto;");
+            GridFixture::new(&[(
+                cross_axis_grid_style(),
+                &[
+                    column_first.as_str(),
+                    row_first.as_str(),
+                    definite_last.as_str(),
+                    column_second.as_str(),
+                    row_second.as_str(),
+                ],
+            )])
+        },
+    ];
+    let expected: [&[Option<[f32; 4]>]; 5] = [
+        &[
+            Some([0.0, 40.0, 40.0, 40.0]),
+            Some([40.0, 40.0, 40.0, 40.0]),
+            Some([0.0, 0.0, 40.0, 40.0]),
+            Some([0.0, 80.0, 40.0, 40.0]),
+            Some([40.0, 0.0, 40.0, 40.0]),
+            Some([40.0, 80.0, 40.0, 40.0]),
+        ],
+        &[
+            Some([0.0, 0.0, 40.0, 80.0]),
+            Some([0.0, 80.0, 80.0, 40.0]),
+            Some([80.0, 40.0, 40.0, 40.0]),
+            Some([40.0, 40.0, 40.0, 40.0]),
+            Some([120.0, 80.0, 40.0, 40.0]),
+        ],
+        &[
+            Some([0.0, 0.0, 40.0, 40.0]),
+            Some([40.0, 0.0, 40.0, 40.0]),
+            Some([0.0, 40.0, 40.0, 40.0]),
+            Some([0.0, 80.0, 40.0, 40.0]),
+            None,
+        ],
+        &[
+            None,
+            Some([0.0, 0.0, 40.0, 40.0]),
+            Some([0.0, 40.0, 40.0, 40.0]),
+        ],
+        &[
+            Some([120.0, 0.0, 40.0, 40.0]),
+            Some([0.0, 80.0, 40.0, 40.0]),
+            Some([0.0, 0.0, 40.0, 40.0]),
+            Some([120.0, 40.0, 40.0, 40.0]),
+            Some([40.0, 80.0, 40.0, 40.0]),
+        ],
+    ];
+    for (scene, expected_frames) in scenes.iter().zip(expected) {
+        let output = scene.compute().unwrap();
+        let items = &scene.items_by_grid[0];
+        assert_eq!(items.len(), expected_frames.len());
+        for (item, expected_frame) in items.iter().zip(expected_frames.iter()) {
+            match expected_frame {
+                Some(expected_frame) => assert_eq!(frame(&output, *item), *expected_frame),
+                None => assert_eq!(frame(&output, *item), [0.0, 0.0, 0.0, 0.0]),
+            }
+        }
+    }
+}
+
+#[test]
+fn root_html_mixed_cross_axis_placement_rejects_implicit_row_extent() {
+    let row_four = "width:40px;height:40px;grid-row:4 / 5;grid-column:auto;";
+    let column_four = "width:40px;height:40px;grid-row:auto;grid-column:4;";
+    let fixture = GridFixture::new(&[(cross_axis_grid_style(), &[row_four, column_four])]);
     assert!(fixture.compute().is_err());
 }

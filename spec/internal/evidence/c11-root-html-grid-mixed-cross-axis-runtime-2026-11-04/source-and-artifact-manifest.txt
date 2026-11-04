@@ -1,0 +1,22 @@
+Candidate source and runtime artifact manifest
+Date: 2026-11-04
+Base HEAD and origin/main: 2b7bb7bc2f70dcff6be782a82a881cb6dcfb5351
+Branch: feat/c11-root-html-grid-mixed-cross-axis-20261104
+Tracked implementation source diff SHA-256 (Rust/Java/Swift plus iOS boundary regression test): bf28d307eb2e7dd99b04afe68baf965ae304f7dc801112310d0e4543d39730a0
+Boundary test source SHA-256: 9fcca039c81edd9d62210720aec60ed2c68664160f1adf8f9236033b6d7b2b4b
+
+Root HTML fixture: d5861bfbb7705a2fc7d752ddc40cc66a04fa7e5523e0f585ea88f69b8a1928ad  tests/fixtures/css/c11/root-html-grid-mixed-cross-axis-runtime.html
+Readiness script: 79c90eb831dcbe3afed3414bbe477216e4f85c3af85b9fd8daa97a347340dda4  tests/fixtures/css/c11/root-html-grid-mixed-cross-axis-runtime.js
+
+Android API 37 AVD opt-in candidate APK and installed base.apk: 005c97bd4586e2e2382523f8afc0ef961a169b7097c7e0b770d8848dae5a9916
+Android flag-off APK for DEX boundary scan: 60dd02c479b8e97c0b2764a16ed2db3319fd07caee6aa723ef028a8f3603202b
+Android screenshot: 6bc2e4285a8ed535e0f9d6ee79f53486a1ebfc85a9014804821bc8a458c5e082  android/avd-screenshot.png
+Android PixelCopy PNG: 2ce5e93598fe2c45280b0c27c276fe83cd713b96df88942298c796c1e722dbae  android/pixelcopy-surface.png
+
+iOS 26.2 Simulator default flag-off executable: 768460ddd7908f7066d74bdb047cdb4c4d5dd995350bd2649d8796e850db88b9
+iOS 26.2 Simulator opt-in executable, built and installed: 96245b5910edfd73fb4ebb2b5a2da28f76efaca6f012693cc823de793a324cbc
+iOS final Simulator screenshot: e32211cab2066c1bef2b893386a34d197620fd9f638a137b491e993e914c27b5  ios/ios-screenshot-final.png
+
+Run ID: c11xca26-20261104
+Android runtime: API 37 AVD emulator-5554, sdk_gphone64_arm64, ANGLE/Vulkan/SwiftShader
+iOS runtime: iPhone 17 Pro Simulator, iOS 26.2, UDID 9DCCE836-7659-4914-B6C1-13F54BFFA9DB

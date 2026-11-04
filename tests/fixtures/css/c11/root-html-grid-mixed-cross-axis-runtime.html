@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.1 Root HTML mixed cross-axis placement runtime</title>
+  </head>
+  <body style="margin:0;background-color:#ffffff">
+    <div id="dom-cross-axis" style="display:grid;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;">
+      <div id="c1" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:1;background-color:#e5484d"></div>
+      <div id="d" style="width:40px;height:40px;margin:0;grid-row:2 / 3;grid-column:2 / 3;background-color:#3a8f5b"></div>
+      <div id="r1" style="width:40px;height:40px;margin:0;grid-row:1;grid-column:auto;background-color:#f97316"></div>
+      <div id="c2" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:1;background-color:#3578c7"></div>
+      <div id="r2" style="width:40px;height:40px;margin:0;grid-row:1;grid-column:auto;background-color:#845ef7"></div>
+      <div id="auto-last" style="width:40px;height:40px;margin:0;background-color:#f0b429"></div>
+    </div>
+    <div id="mixed-spans" style="display:grid;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;">
+      <div id="row-span" style="width:40px;height:80px;margin:0;grid-row:1 / span 2;grid-column:auto;background-color:#845ef7"></div>
+      <div id="col-span" style="width:80px;height:40px;margin:0;grid-row:auto;grid-column:1 / span 2;background-color:#3578c7"></div>
+      <div id="fixed" style="width:40px;height:40px;margin:0;grid-row:2 / 3;grid-column:3 / 4;background-color:#3a8f5b"></div>
+      <div id="row-after" style="width:40px;height:40px;margin:0;grid-row:2;grid-column:auto;background-color:#f97316"></div>
+      <div id="col-after" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:4;background-color:#e5484d"></div>
+    </div>
+    <div id="hidden-controls" style="display:grid;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;">
+      <div id="hidden-row" style="width:40px;height:40px;margin:0;visibility:hidden;grid-row:1;grid-column:auto;background-color:#e5484d"></div>
+      <div id="row" style="width:40px;height:40px;margin:0;grid-row:1;grid-column:auto;background-color:#3a8f5b"></div>
+      <div id="hidden-column" style="width:40px;height:40px;margin:0;visibility:hidden;grid-row:auto;grid-column:1;background-color:#3578c7"></div>
+      <div id="column" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:1;background-color:#845ef7"></div>
+      <div id="gone" style="display:none;width:40px;height:40px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#f0b429"></div>
+    </div>
+    <div id="display-none-control" style="display:grid;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;">
+      <div id="gone-cell" style="display:none;width:40px;height:40px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#e5484d"></div>
+      <div id="row-after-gone" style="width:40px;height:40px;margin:0;grid-row:1;grid-column:auto;background-color:#f0b429"></div>
+      <div id="column-after-gone" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:1;background-color:#3a8f5b"></div>
+    </div>
+    <div id="reverse-order" style="display:grid;width:160px;height:120px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:40px 40px 40px;grid-auto-flow:row;gap:0;margin:0;">
+      <div id="c-first" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:4;background-color:#e5484d"></div>
+      <div id="r-first" style="width:40px;height:40px;margin:0;grid-row:3;grid-column:auto;background-color:#f97316"></div>
+      <div id="d-last" style="width:40px;height:40px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#3a8f5b"></div>
+      <div id="c-second" style="width:40px;height:40px;margin:0;grid-row:auto;grid-column:4;background-color:#3578c7"></div>
+      <div id="r-second" style="width:40px;height:40px;margin:0;grid-row:3;grid-column:auto;background-color:#845ef7"></div>
+    </div>
+  </body>
+</html>

@@ -12224,6 +12224,34 @@ private struct C111MetalPixelRun {
             id: "fully-definite-empty", nodeId: "fully-definite-existing-route-control",
             xCssPx: 10, yCssPx: 600, rgba: [255, 255, 255, 255]),
     ]
+    private static let mixedCrossAxisPlacementPixelSamples: [C111MetalPixelSample] = [
+        C111MetalPixelSample(id: "c1", nodeId: "c1", xCssPx: 10, yCssPx: 50, rgba: [229, 72, 77, 255]),
+        C111MetalPixelSample(id: "d", nodeId: "d", xCssPx: 50, yCssPx: 50, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(id: "r1", nodeId: "r1", xCssPx: 10, yCssPx: 10, rgba: [249, 115, 22, 255]),
+        C111MetalPixelSample(id: "c2", nodeId: "c2", xCssPx: 10, yCssPx: 90, rgba: [53, 120, 199, 255]),
+        C111MetalPixelSample(id: "r2", nodeId: "r2", xCssPx: 50, yCssPx: 10, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(id: "auto-last", nodeId: "auto-last", xCssPx: 50, yCssPx: 90, rgba: [240, 180, 41, 255]),
+        C111MetalPixelSample(id: "row-span", nodeId: "row-span", xCssPx: 10, yCssPx: 130, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(id: "col-span", nodeId: "col-span", xCssPx: 10, yCssPx: 210, rgba: [53, 120, 199, 255]),
+        C111MetalPixelSample(id: "fixed", nodeId: "fixed", xCssPx: 90, yCssPx: 170, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(id: "row-after", nodeId: "row-after", xCssPx: 50, yCssPx: 170, rgba: [249, 115, 22, 255]),
+        C111MetalPixelSample(id: "col-after", nodeId: "col-after", xCssPx: 130, yCssPx: 210, rgba: [229, 72, 77, 255]),
+        C111MetalPixelSample(id: "hidden-row", nodeId: "hidden-row", xCssPx: 10, yCssPx: 250, rgba: [255, 255, 255, 255]),
+        C111MetalPixelSample(id: "row", nodeId: "row", xCssPx: 50, yCssPx: 250, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(id: "hidden-column", nodeId: "hidden-column", xCssPx: 10, yCssPx: 290, rgba: [255, 255, 255, 255]),
+        C111MetalPixelSample(id: "column", nodeId: "column", xCssPx: 10, yCssPx: 330, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(id: "row-after-gone", nodeId: "row-after-gone", xCssPx: 10, yCssPx: 370, rgba: [240, 180, 41, 255]),
+        C111MetalPixelSample(id: "column-after-gone", nodeId: "column-after-gone", xCssPx: 10, yCssPx: 410, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(id: "c-first", nodeId: "c-first", xCssPx: 130, yCssPx: 490, rgba: [229, 72, 77, 255]),
+        C111MetalPixelSample(id: "r-first", nodeId: "r-first", xCssPx: 10, yCssPx: 570, rgba: [249, 115, 22, 255]),
+        C111MetalPixelSample(id: "d-last", nodeId: "d-last", xCssPx: 10, yCssPx: 490, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(id: "c-second", nodeId: "c-second", xCssPx: 130, yCssPx: 530, rgba: [53, 120, 199, 255]),
+        C111MetalPixelSample(id: "r-second", nodeId: "r-second", xCssPx: 50, yCssPx: 570, rgba: [132, 94, 247, 255]),
+        C111MetalPixelSample(id: "track-column-boundary", nodeId: "d", xCssPx: 40, yCssPx: 50, rgba: [58, 143, 91, 255]),
+        C111MetalPixelSample(id: "track-row-boundary", nodeId: "auto-last", xCssPx: 50, yCssPx: 119, rgba: [240, 180, 41, 255]),
+        C111MetalPixelSample(id: "grid-right-edge-inside", nodeId: "dom-cross-axis", xCssPx: 159, yCssPx: 10, rgba: [255, 255, 255, 255]),
+        C111MetalPixelSample(id: "outside-grid", nodeId: "body", xCssPx: 170, yCssPx: 10, rgba: [255, 255, 255, 255]),
+    ]
 #endif
 
     private static let c1131RepeatPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
@@ -14118,6 +14146,8 @@ private struct C111MetalPixelRun {
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
         let oneAxisPlacementPrefix =
             "--spinon-root-html-grid-one-axis-placement-metal-surface-pixels="
+        let mixedCrossAxisPlacementPrefix =
+            "--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels="
         let rootHtmlRuns = arguments.filter {
             $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-auto-minimum-metal-surface-pixels=")
@@ -14126,6 +14156,7 @@ private struct C111MetalPixelRun {
                 || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
                 || $0.hasPrefix(oneAxisPlacementPrefix)
+                || $0.hasPrefix(mixedCrossAxisPlacementPrefix)
         }
         if !rootHtmlRuns.isEmpty {
             let isSelfAlignment = rootHtmlRuns[0].hasPrefix(
@@ -14135,6 +14166,8 @@ private struct C111MetalPixelRun {
             let isOneAxisPlacement = rootHtmlRuns[0].hasPrefix(oneAxisPlacementPrefix)
             let isMixedOneAxisPlacement = isOneAxisPlacement
                 && rootHtmlRuns[0].hasSuffix("=c11mix19-20261104")
+            let isMixedCrossAxisPlacement = rootHtmlRuns[0].hasPrefix(
+                mixedCrossAxisPlacementPrefix)
             let isRootHtmlAlignment = isSelfAlignment || isAutoStretch
             guard rootHtmlRuns.count == 1,
                   !arguments.contains(where: {
@@ -14153,6 +14186,7 @@ private struct C111MetalPixelRun {
                 "--spinon-root-html-grid-fit-content-percentage-metal-surface-pixels=")
             let prefix = isAutoStretch
                 ? "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels="
+                : isMixedCrossAxisPlacement ? mixedCrossAxisPlacementPrefix
                 : isOneAxisPlacement ? oneAxisPlacementPrefix
                 : isSelfAlignment
                 ? "--spinon-root-html-grid-item-self-alignment-metal-surface-pixels="
@@ -14176,9 +14210,12 @@ private struct C111MetalPixelRun {
             if isAutoStretch && runID != "c115as-20261104" { return nil }
             if isOneAxisPlacement && runID != "c11oap-20261104"
                 && runID != "c11mix19-20261104" { return nil }
+            if isMixedCrossAxisPlacement && runID != "c11xca26-20261104" { return nil }
             return C111MetalPixelRun(
                 runID: runID,
-                sceneID: isOneAxisPlacement
+                sceneID: isMixedCrossAxisPlacement
+                    ? "root-html-grid-mixed-cross-axis"
+                    : isOneAxisPlacement
                     ? isMixedOneAxisPlacement
                         ? "root-html-grid-mixed-explicit-one-axis"
                         : "root-html-grid-one-axis-placement"
@@ -14194,11 +14231,14 @@ private struct C111MetalPixelRun {
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
-                markerPrefix: isOneAxisPlacement
+                markerPrefix: isMixedCrossAxisPlacement ? "C111XCA"
+                    : isOneAxisPlacement
                     ? isMixedOneAxisPlacement ? "C111MIX" : "C111OAP"
                     : isRootHtmlAlignment ? "C115"
                     : namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
-                samples: isMixedOneAxisPlacement
+                samples: isMixedCrossAxisPlacement
+                    ? Self.mixedCrossAxisPlacementPixelSamples
+                    : isMixedOneAxisPlacement
                     ? Self.mixedOneAxisPlacementPixelSamples
                     : isOneAxisPlacement ? [
                     C111MetalPixelSample(
@@ -14543,6 +14583,14 @@ private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
     if arguments.contains("--spinon-c1132-grid-named-lines") {
         return "positive-occurrence"
     }
+#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+    if let argument = arguments.first(where: {
+        $0.hasPrefix("--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=")
+    }) {
+        return String(argument.dropFirst(
+            "--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=".count))
+    }
+#endif
     let prefixes = [
         "--spinon-c1131-grid-repeat-scene=",
         "--spinon-c1123-grid-scene=",
@@ -14986,6 +15034,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-one-axis-placement-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=")
         })
 #else
         return arguments.contains(where: {
@@ -15004,6 +15053,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || $0.hasPrefix("--spinon-root-html-grid-item-self-alignment-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
                 || $0.hasPrefix("--spinon-root-html-grid-one-axis-placement-metal-surface-pixels=")
+                || $0.hasPrefix("--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=")
         })
 #else
         let argument = ProcessInfo.processInfo.arguments.first(where: {
@@ -15015,6 +15065,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let prefix = argument.hasPrefix(
                 "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels=")
                 ? "--spinon-root-html-grid-item-auto-stretch-metal-surface-pixels="
+                : argument.hasPrefix(
+                "--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=")
+                ? "--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels="
                 : argument.hasPrefix(
                 "--spinon-root-html-grid-one-axis-placement-metal-surface-pixels=")
                 ? "--spinon-root-html-grid-one-axis-placement-metal-surface-pixels="

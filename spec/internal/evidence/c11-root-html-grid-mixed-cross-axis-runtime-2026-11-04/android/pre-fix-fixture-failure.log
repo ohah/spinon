@@ -1,0 +1,41 @@
+         1793778732.015  8670  8670 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10231/pid_8670
+         1793778732.017  8670  8670 I Zygote  : Process 8670 created for dev.spinon.bootstrap
+         1793778732.017  8670  8670 I pinon.bootstrap: Late-enabling -Xcheck:jni
+         1793778732.029  8670  8670 I pinon.bootstrap: Using generational CollectorTypeCMC GC.
+         1793778732.047  8670  8670 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+         1793778732.079  8670  8670 D nativeloader: Configuring clns-9 for other apk /data/app/~~jgIi7DPvpO4EZnGCyoyjjQ==/dev.spinon.bootstrap-IXeulGdrXfCbR_UakT6npQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~jgIi7DPvpO4EZnGCyoyjjQ==/dev.spinon.bootstrap-IXeulGdrXfCbR_UakT6npQ==/lib/arm64:/data/app/~~jgIi7DPvpO4EZnGCyoyjjQ==/dev.spinon.bootstrap-IXeulGdrXfCbR_UakT6npQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+         1793778732.096  8670  8670 V GraphicsEnvironment: Currently set values for:
+         1793778732.096  8670  8670 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+         1793778732.096  8670  8670 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+         1793778732.096  8670  8670 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+         1793778732.096  8670  8670 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+         1793778732.097  8670  8670 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+         1793778732.114  8670  8685 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+         1793778732.155  8670  8670 D nativeloader: Load /data/app/~~jgIi7DPvpO4EZnGCyoyjjQ==/dev.spinon.bootstrap-IXeulGdrXfCbR_UakT6npQ==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~jgIi7DPvpO4EZnGCyoyjjQ==/dev.spinon.bootstrap-IXeulGdrXfCbR_UakT6npQ==/base.apk!classes2.dex): ok
+         1793778732.193  8670  8685 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+         1793778732.193  8670  8685 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+         1793778732.194  8670  8685 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+         1793778732.207  8670  8685 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+         1793778732.208  8670  8685 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+         1793778732.210  8670  8670 D CompatChangeReporter: Compat change id reported: 376561342; UID 10231; state: ENABLED
+         1793778732.215  8670  8670 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=6333 script_bytes=85
+         1793778732.218  8670  8670 D CompatChangeReporter: Compat change id reported: 377864165; UID 10231; state: ENABLED
+         1793778732.224  8670  8670 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+         1793778732.225  8670  8688 I SpinonBootstrap: SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+         1793778732.239  8670  8670 W HWUI    : Unknown dataspace 0
+         1793778732.242  8670  8694 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+         1793778732.251  8670  8688 I SpinonBootstrap: SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 25 document_revision=25 render_tree_revision=15 document_nodes=10
+         1793778732.252  8670  8670 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e01446b
+         1793778732.256  8670  8670 D VRI[MainActivity]: WindowInsets changed: 1080x2400 statusBars:[0,128,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,160,0,84] 
+         1793778732.260  8670  8670 I Surface : Creating surface for consumer unnamed-8670-0 with slotExpansion=1 for 64 slots
+         1793778732.260  8670  8670 I Surface : Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+         1793778732.264  8670  8670 I Surface : Creating surface for consumer unnamed-8670-1 with slotExpansion=1 for 64 slots
+         1793778732.265  8670  8670 I Surface : Creating surface for consumer 73f8461 SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+         1793778732.265  8670  8670 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+         1793778732.265  8670  8670 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=1080x2209 changed=true
+         1793778732.266  8670  8696 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=6333
+         1793778732.278  8670  8696 I SpinonBootstrap: SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST=session=ready owner_tid=8699 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=1814 session_startup_us=8310
+         1793778732.289  8670  8696 E SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=-11 CSS runtime 장면 생성 실패: unsupported_inline_property node=Some(14) property=Some("border-top-color")
+         1793778732.344  8670  8670 D InsetsController: hide(ime())
+         1793778732.345  8670  8670 I ImeTracker: dev.spinon.bootstrap:1148e8cb: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+         1793778732.517  8670  8675 I pinon.bootstrap: Compiler allocated 5303KB to compile void android.view.ViewRootImpl.performTraversals(long)

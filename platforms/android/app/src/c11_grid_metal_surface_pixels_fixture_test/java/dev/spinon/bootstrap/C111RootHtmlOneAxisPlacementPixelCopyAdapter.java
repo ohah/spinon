@@ -21,6 +21,8 @@ public final class C111RootHtmlOneAxisPlacementPixelCopyAdapter
     private static final String MIXED_RUN_ID = "c11mix19-20261104";
     private static final String ONE_AXIS_SCENE_ID = "root-html-grid-one-axis-placement";
     private static final String MIXED_SCENE_ID = "root-html-grid-mixed-explicit-one-axis";
+    private static final String CROSS_AXIS_RUN_ID = "c11xca26-20261104";
+    private static final String CROSS_AXIS_SCENE_ID = "root-html-grid-mixed-cross-axis";
     private static final String CAPTURE_EXTRA = "spinon_root_html_one_axis_placement_pixelcopy";
     private static final String RUN_ID_EXTRA =
             "spinon_root_html_one_axis_placement_pixelcopy_run_id";
@@ -58,6 +60,31 @@ public final class C111RootHtmlOneAxisPlacementPixelCopyAdapter
             {229, 72, 77, 255}, {53, 120, 199, 255},
             {132, 94, 247, 255}, {255, 255, 255, 255},
     };
+    private static final String[] CROSS_AXIS_SAMPLE_IDS = {
+            "c1", "d", "r1", "c2", "r2", "auto-last", "row-span", "col-span",
+            "fixed", "row-after", "col-after", "hidden-row", "row", "hidden-column",
+            "column", "row-after-gone", "column-after-gone", "c-first", "r-first",
+            "d-last", "c-second", "r-second", "track-column-boundary",
+            "track-row-boundary", "grid-right-edge-inside", "outside-grid",
+    };
+    private static final int[][] CROSS_AXIS_CSS_POINTS = {
+            {10, 50}, {50, 50}, {10, 10}, {10, 90}, {50, 10}, {50, 90},
+            {10, 130}, {10, 210}, {90, 170}, {50, 170}, {130, 210},
+            {10, 250}, {50, 250}, {10, 290}, {10, 330}, {10, 370},
+            {10, 410}, {130, 490}, {10, 570}, {10, 490}, {130, 530},
+            {50, 570}, {40, 50}, {50, 119}, {159, 10}, {170, 10},
+    };
+    private static final int[][] CROSS_AXIS_EXPECTED_RGBA = {
+            {229, 72, 77, 255}, {58, 143, 91, 255}, {249, 115, 22, 255},
+            {53, 120, 199, 255}, {132, 94, 247, 255}, {240, 180, 41, 255},
+            {132, 94, 247, 255}, {53, 120, 199, 255}, {58, 143, 91, 255},
+            {249, 115, 22, 255}, {229, 72, 77, 255}, {255, 255, 255, 255},
+            {58, 143, 91, 255}, {255, 255, 255, 255}, {132, 94, 247, 255},
+            {240, 180, 41, 255}, {58, 143, 91, 255}, {229, 72, 77, 255},
+            {249, 115, 22, 255}, {58, 143, 91, 255}, {53, 120, 199, 255},
+            {132, 94, 247, 255}, {58, 143, 91, 255}, {240, 180, 41, 255},
+            {255, 255, 255, 255}, {255, 255, 255, 255},
+    };
 
     private boolean captureStarted;
 
@@ -85,15 +112,21 @@ public final class C111RootHtmlOneAxisPlacementPixelCopyAdapter
         String requestedRunId = activity.getIntent().getStringExtra(RUN_ID_EXTRA);
         final String runId = requestedRunId == null ? "" : requestedRunId;
         boolean mixedPlacement = MIXED_RUN_ID.equals(runId);
-        if (!ONE_AXIS_RUN_ID.equals(runId) && !mixedPlacement) {
+        boolean mixedCrossAxisPlacement = CROSS_AXIS_RUN_ID.equals(runId);
+        if (!ONE_AXIS_RUN_ID.equals(runId) && !mixedPlacement && !mixedCrossAxisPlacement) {
             fail("invalid-run-id", runId, status);
             return;
         }
-        String sceneId = mixedPlacement ? MIXED_SCENE_ID : ONE_AXIS_SCENE_ID;
-        String marker = mixedPlacement ? "SPINON_C111MIX_PIXELCOPY" : "SPINON_C111OAP_PIXELCOPY";
-        String[] sampleIds = mixedPlacement ? MIXED_SAMPLE_IDS : SAMPLE_IDS;
-        int[][] cssPoints = mixedPlacement ? MIXED_CSS_POINTS : CSS_POINTS;
-        int[][] expectedRgba = mixedPlacement ? MIXED_EXPECTED_RGBA : EXPECTED_RGBA;
+        String sceneId = mixedCrossAxisPlacement ? CROSS_AXIS_SCENE_ID
+                : mixedPlacement ? MIXED_SCENE_ID : ONE_AXIS_SCENE_ID;
+        String marker = mixedCrossAxisPlacement ? "SPINON_C111XCA_PIXELCOPY"
+                : mixedPlacement ? "SPINON_C111MIX_PIXELCOPY" : "SPINON_C111OAP_PIXELCOPY";
+        String[] sampleIds = mixedCrossAxisPlacement ? CROSS_AXIS_SAMPLE_IDS
+                : mixedPlacement ? MIXED_SAMPLE_IDS : SAMPLE_IDS;
+        int[][] cssPoints = mixedCrossAxisPlacement ? CROSS_AXIS_CSS_POINTS
+                : mixedPlacement ? MIXED_CSS_POINTS : CSS_POINTS;
+        int[][] expectedRgba = mixedCrossAxisPlacement ? CROSS_AXIS_EXPECTED_RGBA
+                : mixedPlacement ? MIXED_EXPECTED_RGBA : EXPECTED_RGBA;
         double[] viewport = parsePair(drawReport, "viewport_css_px=");
         int[] reportedSurface = parseIntegerPair(drawReport, "surface_texture=");
         if (!drawReport.contains("status=0") || !drawReport.contains("presented")
@@ -114,7 +147,8 @@ public final class C111RootHtmlOneAxisPlacementPixelCopyAdapter
                     sampleIds[index], cssPoints[index][0], cssPoints[index][1]));
         }
         File output = new File(new File(activity.getCacheDir(),
-                mixedPlacement ? "c11-root-html-mixed-placement-pixelcopy"
+                mixedCrossAxisPlacement ? "c11-root-html-mixed-cross-axis-pixelcopy"
+                        : mixedPlacement ? "c11-root-html-mixed-placement-pixelcopy"
                         : "c11-root-html-one-axis-placement-pixelcopy"),
                 "surface-" + runId + ".png");
         Log.i(TAG, marker + "_BEGIN run_id=" + runId + " scene=" + sceneId

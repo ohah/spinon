@@ -1,0 +1,7 @@
+Flag-off Android APK DEX boundary build
+
+Command context: run via `mise exec` so the pinned Temurin Java 17 runtime is available.
+Gradle task: `:app:assembleDebug -x :app:prepareSpinonBootstrap`
+Flags: `SPINON_ENABLE_C04_RUNTIME_GPU=1`, `SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1`, `SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=0`
+
+The final build log is `default-boundary-build-pass02.log`. `default-marker-scan.txt` confirms the C11 PixelCopy adapter class and mixed-cross-axis run/scene strings are absent from `classes2.dex`; `default-apk-sha256.txt` identifies that flag-off APK. The APK was not installed. The opt-in APK remains separately identified by `apk-sha256.txt` and was the AVD-installed product.

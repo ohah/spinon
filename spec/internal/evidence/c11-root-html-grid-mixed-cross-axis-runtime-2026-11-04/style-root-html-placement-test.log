@@ -1,0 +1,17 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.19s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 10 tests
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_cross_axis_placement_rejects_implicit_row_extent ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_rejects_implicit_columns ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_keeps_all_auto_items_on_the_existing_route ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_ignores_display_none_and_counts_visibility_hidden ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_isolated_between_sibling_grid_owners ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_excludes_display_none_items ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_one_axis_placement_accepts_cross_axes_and_rejects_nested_grid_items ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_matches_sparse_reference_frames ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_explicit_one_axis_placement_keeps_hidden_semantics_and_accepts_cross_axes ... ok
+test c11_1_root_html_one_axis_grid_placement_tests::root_html_mixed_cross_axis_placement_matches_chrome_phase_and_occupancy_frames ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 384 filtered out; finished in 0.08s
+
