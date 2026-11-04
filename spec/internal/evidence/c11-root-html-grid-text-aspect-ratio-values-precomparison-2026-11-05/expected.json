@@ -1,0 +1,22 @@
+{
+  "model": "preferred ratio is width / height; a locked axis transfers through a finite positive ratio subject to existing automatic minimum sizing",
+  "rootGrid": {"width": 70, "columns": [10, 60], "gap": 0},
+  "shortItem": {"height": 10, "width": "system monospace intrinsic; not compared across platforms"},
+  "cases": [
+    {"id": "ratio-half", "lockedAxis": "width", "ratio": [1, 2], "gridHeight": 120, "target": [10, 0, 60, 120], "overflowRight": 0},
+    {"id": "ratio-four-thirds", "lockedAxis": "width", "ratio": [4, 3], "gridHeight": 45, "target": [10, 0, 60, 45], "overflowRight": 0},
+    {"id": "ratio-three-halves", "lockedAxis": "width", "ratio": [3, 2], "syntax": "single number 1.5", "gridHeight": 40, "target": [10, 0, 60, 40], "overflowRight": 0},
+    {"id": "ratio-five-halves", "lockedAxis": "width", "ratio": [5, 2], "gridHeight": 24, "target": [10, 0, 60, 24], "overflowRight": 0},
+    {"id": "ratio-three-halves-pair", "lockedAxis": "width", "ratio": [3, 2], "syntax": "3 / 2 pair", "gridHeight": 40, "target": [10, 0, 60, 40], "overflowRight": 0},
+    {"id": "ratio-ten", "lockedAxis": "width", "ratio": [10, 1], "transferredHeight": 6, "automaticMinimumHeight": 10, "gridHeight": 10, "target": [10, 0, 60, 10], "overflowRight": 0},
+    {"id": "ratio-auto-control", "lockedAxis": "width", "ratio": "auto", "gridHeight": 10, "target": [10, 0, 60, 10], "overflowRight": 0},
+    {"id": "height-half", "lockedAxis": "height", "ratio": [1, 2], "lockedHeight": 80, "gridHeight": 80, "target": [10, 0, 40, 80], "overflowRight": 0},
+    {"id": "height-four-thirds", "lockedAxis": "height", "ratio": [4, 3], "lockedHeight": 30, "gridHeight": 30, "target": [10, 0, 40, 30], "overflowRight": 0},
+    {"id": "height-three-halves", "lockedAxis": "height", "ratio": [3, 2], "lockedHeight": 30, "gridHeight": 30, "target": [10, 0, 45, 30], "overflowRight": 0},
+    {"id": "height-five-halves", "lockedAxis": "height", "ratio": [5, 2], "lockedHeight": 30, "gridHeight": 30, "target": [10, 0, 75, 30], "overflowRight": 15},
+    {"id": "width-two", "lockedAxis": "width", "ratio": [2, 1], "gridHeight": 30, "target": [10, 0, 60, 30], "overflowRight": 0},
+    {"id": "height-two", "lockedAxis": "height", "ratio": [2, 1], "lockedHeight": 30, "gridHeight": 30, "target": [10, 0, 60, 30], "overflowRight": 0},
+    {"id": "height-auto-control", "lockedAxis": "height", "ratio": "auto", "lockedHeight": 30, "gridHeight": 30, "targetWidth": "Chrome monospace intrinsic; platform-dependent", "targetHeight": 30, "overflowRight": 0}
+  ],
+  "acceptance": "ratio-derived dimensions and visible Grid overflow geometry are exact"
+}
