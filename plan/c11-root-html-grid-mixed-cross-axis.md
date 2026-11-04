@@ -43,3 +43,16 @@
 ## 제외 범위
 
 Public CSS support 전체, WPT 적합성, arbitrary track sizing, named lines/areas, dense/column flow, order-modified item order, implicit track sizing, text/replaced/nested items, positioned Grid items, hit testing/accessibility order, Android 실기기, hardware GPU, iOS compositor 이후 pixel parity 및 C11.1/C11 완료는 주장하지 않는다.
+
+## 2026-11-04 구현 후보 checkpoint
+
+구현은 `2b7bb7bc2f70dcff6be782a82a881cb6dcfb5351` 기반 checkout의 `feat/c11-root-html-grid-mixed-cross-axis-20261104` branch에서 진행했다. Candidate code와 evidence는 아직 commit/PR 전이며 implementation review 20개와 실제 code diff review 20개를 각각 수행했다. 실제 PR diff의 별도 30-point review와 PR/merge metadata는 PR 생성 후 반영한다.
+
+- Layout mode·placement validator·shared sparse normalizer 연결, owner-scoped selector 및 Root HTML projection을 구현했다. 기존 one-axis/mixed-explicit route는 별도 selector/mode로 유지했다.
+- Chrome 156 precomparison의 5 positive scene·22 visible frames 및 implicit-row negative boundary에서 독립 기대값과 관측값은 최대 0 CSS px 차이다.
+- Focused Rust 결과: mixed-cross-axis layout 4/4, one-axis placement layout 13/13, C11.1 Root HTML projection/integration 10/10. 변경된 `spinon-layout`/`spinon-style-to-layout` scoped Clippy와 rustfmt가 통과했다. iOS/Android source boundary test는 14/14다.
+- Android API 37 ARM64 AVD/SwiftShader runtime은 `layout=ready boxes=27`; SurfaceView PixelCopy 26/26 exact. iPhone 17 Pro/iOS 26.2 Simulator runtime은 `layout=ready boxes=27`; Metal drawable 26/26 exact. Flag-off Android APK DEX와 iOS executable에서 새 test marker가 없고, opt-in artifact positive scans에서는 marker가 있다. iOS 표본은 compositor 제출 전이다. [화면, logs, build/install hashes](../spec/internal/evidence/c11-root-html-grid-mixed-cross-axis-runtime-2026-11-04/README.md)
+- Initial `border:0` declaration은 제한 computed-style admission에서 거부되어 fixture에서 제거했다. Agent Browser에서 geometry가 그대로임을 재비교한 뒤 두 앱 경로를 다시 빌드/실행했다. 기본 bootstrap asset이 들어간 첫 APK도 hash로 발견해 fixture asset이 포함된 candidate APK를 재빌드했다. iOS default binary scan에서 unguarded argument prefix를 찾아 compile flag 안으로 옮겼고 default/opt-in binary를 다시 빌드해 대조했다. iOS 첫 replay에서 entry asset 이름을 틀린 실행과 모든 pre-fix log는 final 성공 cohort와 구분해 보존한다.
+- 현재 실행은 시뮬레이터/AVD뿐이다. PixelCopy AVD는 software renderer이고 iOS drawable readback은 compositor 전이다. 실기기/hardware GPU, 전체 CSS Grid/WPT, 일반 CSS admission 및 상위 C11.1/C11 완료는 주장하지 않는다.
+
+상태: 구현·focused Rust 검증·Android/iOS Simulator runtime·default/opt-in artifact 경계·두 20-point implementation reviews 완료. 구현 PR의 독립 30-point diff review, PR 본문 screenshot, Rebase and merge 및 merge SHA 동기화는 남아 있다. C11.1/C11 상위 완료 체크와 공식 `72/213`은 그대로 둔다.

@@ -1,0 +1,11 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.42s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 4 tests
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_cross_axis_placement_rejects_invalid_lines_spans_and_named_placement ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_cross_axis_placement_requires_both_axes_and_rejects_implicit_extent ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_cross_axis_placement_resolves_negative_lines_inside_explicit_grid ... ok
+test grid::auto_placement_tests::root_html_one_axis_placement_tests::root_html_mixed_cross_axis_placement_orders_all_three_sparse_phases ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 433 filtered out; finished in 0.03s
+

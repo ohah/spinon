@@ -24,6 +24,268 @@ fn mixed_explicit_one_axis_grid(columns: usize, rows: usize, item_count: usize) 
     input
 }
 
+fn mixed_cross_axis_grid(columns: usize, rows: usize, item_count: usize) -> LayoutInput {
+    let mut input = one_axis_grid(columns, rows, item_count);
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1;
+    input
+}
+
+#[test]
+fn root_html_mixed_cross_axis_placement_orders_all_three_sparse_phases() {
+    let mut input = mixed_cross_axis_grid(3, 3, 5);
+    input.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    input.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    input.grid_items.insert(
+        id(4),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    input.grid_items.insert(
+        id(5),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(3),
+        ),
+    );
+
+    for (node, expected) in [
+        (2, [0.0, 20.0, 40.0, 20.0]),
+        (3, [0.0, 0.0, 40.0, 20.0]),
+        (4, [0.0, 40.0, 40.0, 20.0]),
+        (5, [40.0, 0.0, 40.0, 20.0]),
+        (6, [40.0, 40.0, 40.0, 20.0]),
+    ] {
+        let actual = frame(&input, node);
+        assert_eq!(
+            [actual.x, actual.y, actual.width, actual.height],
+            expected,
+            "node {node}"
+        );
+    }
+}
+
+#[test]
+fn root_html_mixed_cross_axis_placement_requires_both_axes_and_rejects_implicit_extent() {
+    let mut row_only = mixed_cross_axis_grid(3, 2, 2);
+    row_only.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    row_only.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Line(3),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&row_only),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut column_only = mixed_cross_axis_grid(3, 2, 2);
+    for node in [2, 3] {
+        column_only.grid_items.insert(
+            id(node),
+            placement(
+                GridPlacementInput::Auto,
+                GridPlacementInput::Auto,
+                GridPlacementInput::Line(1),
+                GridPlacementInput::Line(2),
+            ),
+        );
+    }
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&column_only),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut implicit_row = mixed_cross_axis_grid(3, 2, 2);
+    implicit_row.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(3),
+            GridPlacementInput::Line(4),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    implicit_row.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    assert!(TaffyLayoutEngine.compute(&implicit_row).is_err());
+
+    let mut implicit_column = mixed_cross_axis_grid(3, 2, 2);
+    implicit_column.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    implicit_column.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(4),
+            GridPlacementInput::Line(5),
+        ),
+    );
+    assert!(TaffyLayoutEngine.compute(&implicit_column).is_err());
+}
+
+#[test]
+fn root_html_mixed_cross_axis_placement_resolves_negative_lines_inside_explicit_grid() {
+    let mut input = mixed_cross_axis_grid(3, 2, 2);
+    input.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(-2),
+            GridPlacementInput::Line(-1),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    input.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(-3),
+            GridPlacementInput::Line(-2),
+        ),
+    );
+
+    for (node, expected) in [(2, [0.0, 20.0, 40.0, 20.0]), (3, [40.0, 0.0, 40.0, 20.0])] {
+        let actual = frame(&input, node);
+        assert_eq!(
+            [actual.x, actual.y, actual.width, actual.height],
+            expected,
+            "node {node}"
+        );
+    }
+}
+
+#[test]
+fn root_html_mixed_cross_axis_placement_rejects_invalid_lines_spans_and_named_placement() {
+    let mut zero_span = mixed_cross_axis_grid(3, 2, 2);
+    zero_span.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Span(0),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    zero_span.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&zero_span),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut named_line = mixed_cross_axis_grid(3, 2, 2);
+    named_line.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::NamedLine {
+                name: "named".to_owned(),
+                occurrence: 1,
+            },
+            GridPlacementInput::Line(2),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    named_line.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&named_line),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+
+    let mut out_of_range_negative_line = mixed_cross_axis_grid(3, 2, 2);
+    out_of_range_negative_line.grid_items.insert(
+        id(2),
+        placement(
+            GridPlacementInput::Line(-4),
+            GridPlacementInput::Line(-3),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+    out_of_range_negative_line.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    );
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&out_of_range_negative_line),
+        Err(crate::LayoutError::InvalidGridPlacement { .. })
+    ));
+}
+
 #[test]
 fn root_html_one_axis_placement_places_column_locked_items_in_sparse_row_order() {
     let mut input = one_axis_grid(3, 3, 3);

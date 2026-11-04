@@ -290,6 +290,8 @@ pub enum GridPlacementMode {
     RootHtmlOneAxisAutoPlacementV1,
     /// 제한 Root HTML 경로에서 fully definite item과 같은 축 one-axis item을 함께 배치합니다.
     RootHtmlMixedExplicitOneAxisAutoPlacementV1,
+    /// 제한 Root HTML 경로에서 row-locked와 column-locked item을 sparse row flow로 함께 배치합니다.
+    RootHtmlMixedCrossAxisAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
@@ -507,6 +509,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -584,6 +587,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlColumnFlowV1
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -826,6 +830,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TrackSizing
@@ -1054,6 +1059,10 @@ pub(super) fn validate_grid_layout(
                                 crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                             )
                         }
+                        GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1 => matches!(
+                            size,
+                            crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                        ),
                         _ => matches!(size, crate::LayoutDimension::Fixed(_)),
                     }
                 }
@@ -1158,6 +1167,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlDenseAutoPlacementV1
                 | GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

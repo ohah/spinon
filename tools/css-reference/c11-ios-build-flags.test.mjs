@@ -85,7 +85,7 @@ test('mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기�
     assert.match(result.args,
       /SPINON_ENABLE_C04_UA_CASCADE_FIXTURE_PROBE=0/);
     assert.match(result.stdout,
-      /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=0 c11_grid_metal_surface_pixels=1/);
+      /SPINON_IOS_SIM_BUILD_FLAGS c04_runtime_gpu=1 c04_runtime_gpu_fixture_test=1 c11_1_root_html_percent_columns_fixture_test=0 c11_1_root_html_dense_placement_fixture_test=0 c04_12_root_html_fixture_test=0 c04_12_root_html_block_paint_fixture_test=0 c04_ua_cascade_fixture_probe=0 c11_2_3_grid_fixture=0 c11_grid_metal_surface_pixels=1/);
     assert.match(result.args, /SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=0/);
   }
 });
@@ -194,6 +194,38 @@ test('Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 �
   assert.match(matrix, /SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1/);
   assert.doesNotMatch(matrix, /SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST=1/);
   assert.match(matrix, /SPINON_IOS_NATIVE_FEATURES ffi=.*c11-grid-metal-surface-pixels-test/);
+});
+
+test('mixed-cross-axis Metal scene 인자는 opt-in Swift 코드에만 포함한다', async () => {
+  const swift = await readFile(resolve(
+    repositoryRoot,
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+  ), 'utf8');
+  const gradle = await readFile(resolve(
+    repositoryRoot,
+    'platforms/android/app/build.gradle.kts',
+  ), 'utf8');
+  const adapter = await readFile(resolve(
+    repositoryRoot,
+    'platforms/android/app/src/c11_grid_metal_surface_pixels_fixture_test/java/dev/spinon/bootstrap/C111RootHtmlOneAxisPlacementPixelCopyAdapter.java',
+  ), 'utf8');
+
+  const helperStart = swift.indexOf('private func c11GridMetalPixelSceneID');
+  const helperEnd = swift.indexOf('\nfinal class C0410RuntimeGpuDemoViewController', helperStart);
+  assert.ok(helperStart >= 0 && helperEnd > helperStart, 'C11 Metal scene selector가 있어야 합니다.');
+  const helper = swift.slice(helperStart, helperEnd);
+  const guardedBlock = helper.match(
+    /#if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1\n([\s\S]*?)\n#endif/,
+  );
+  assert.ok(guardedBlock, 'scene selector의 opt-in compile guard가 있어야 합니다.');
+  assert.match(guardedBlock[1], /--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=/);
+  assert.doesNotMatch(
+    helper.replace(guardedBlock[0], ''),
+    /--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=/,
+  );
+  assert.match(gradle,
+    /if \(spinonC11GridMetalSurfacePixelsTestValue == "1"\) \{\s+java\.srcDir\("src\/c11_grid_metal_surface_pixels_fixture_test\/java"\)/);
+  assert.match(adapter, /SPINON_C111XCA_PIXELCOPY/);
 });
 
 test('C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다', async () => {
