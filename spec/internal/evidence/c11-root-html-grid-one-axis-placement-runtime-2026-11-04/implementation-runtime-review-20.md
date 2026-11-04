@@ -1,6 +1,6 @@
 # C11.1 one-axis Grid 구현·runtime 적대 검토 20개
 
-대상은 현재 checkout의 bounded Root HTML one-axis placement 구현과 2026-11-04 Android/iOS simulator 실행이다. 계획 검토 20개를 재사용하지 않았으며, PR 변경 검토는 아직 별도 수행 전이다.
+대상은 현재 checkout의 bounded Root HTML one-axis placement 구현과 2026-11-04 Android/iOS simulator 실행이다. 계획 검토 20개를 재사용하지 않았으며, 실제 PR #1142 변경 검토도 별도로 완료했다([PR diff 검토 20개](pr-diff-review-20.md)).
 
 | # | 실패 관점 | 적대 확인과 판정 |
 | --- | --- | --- |
@@ -31,4 +31,4 @@
 
 ### 실행 한계
 
-Android는 API 37 ARM64 AVD의 ANGLE/Vulkan/SwiftShader software renderer이며 실기기·hardware GPU 검증이 아니다. iOS는 iPhone 17 Pro/iOS 26.2 Simulator이며 compositor 제출 후 화면은 검증하지 않았다. 이 검토는 별도로 수행할 PR diff 검토 20개를 대신하지 않는다.
+Android는 API 37 ARM64 AVD의 ANGLE/Vulkan/SwiftShader software renderer이며 실기기·hardware GPU 검증이 아니다. iOS는 iPhone 17 Pro/iOS 26.2 Simulator이며 compositor 제출 후 화면은 검증하지 않았다. 이 검토와 PR diff 검토는 서로 다른 실패 관점을 사용한다.

@@ -8,7 +8,7 @@
 
 - Focused layout 5/5, style-to-layout 6/6, RuntimeSession 2/2가 통과했다. 결과는 [`one-axis-layout-tests.log`](one-axis-layout-tests.log), [`one-axis-projection-tests.log`](one-axis-projection-tests.log), [`one-axis-runtime-tests.log`](one-axis-runtime-tests.log)에 있다.
 - sparse/dense placement regression 77/77은 [`layout-auto-placement-suite.log`](layout-auto-placement-suite.log)에 있다. scoped `spinon-layout`, `spinon-style-to-layout`, `spinon-runtime` all-target Clippy와 `cargo fmt --all -- --check`는 [`rust-scoped-clippy.log`](rust-scoped-clippy.log), [`rustfmt-check.log`](rustfmt-check.log)에 있다.
-- 구현/runtime 실패 관점 검토 20개는 [`implementation-runtime-review-20.md`](implementation-runtime-review-20.md)에 기록했다. 실제 PR diff 적대 검토 20개는 PR 생성 후 별도로 수행한다.
+- 구현/runtime 실패 관점 검토 20개는 [`implementation-runtime-review-20.md`](implementation-runtime-review-20.md)에 기록했다. 실제 PR #1142 diff 적대 검토 20개는 [`pr-diff-review-20.md`](pr-diff-review-20.md)에 기록했다.
 
 ## Android PixelCopy
 
@@ -34,5 +34,5 @@
 ## 남은 범위
 
 - Android 결과는 SwiftShader AVD이며 Android 실기기/hardware GPU 근거가 아니다. iOS는 compositor 이후 화면 픽셀을 읽지 않았다.
-- 구현/runtime 실패 관점 검토 20개와 실제 PR diff 검토 20개, 최종 PR/merge 확인은 아직 남아 있다.
+- 구현/runtime 실패 관점 검토 20개와 실제 PR #1142 diff 검토 20개를 마쳤다. 최종 PR/merge 확인은 남아 있다.
 - 이 제한 후보는 C11.1/C11을 완료 처리하지 않으며 공식 `72/213`도 바꾸지 않는다.
