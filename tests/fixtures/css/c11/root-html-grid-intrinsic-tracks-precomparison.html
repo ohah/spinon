@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid intrinsic tracks precomparison</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      main { width: 180px; margin: 0; padding: 0; }
+      section { width: 180px; height: 36px; margin: 0 0 4px; padding: 0; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 160px;
+        height: 30px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+        grid-template-rows: 30px;
+      }
+      .item {
+        box-sizing: border-box;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        color: #fff;
+        background-color: #c22;
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 10px;
+        white-space: normal;
+      }
+      #min-content .grid { grid-template-columns: min-content; }
+      #max-content .grid { grid-template-columns: max-content; }
+      #auto .grid { grid-template-columns: auto; }
+      #minmax-intrinsic .grid { grid-template-columns: minmax(min-content, max-content); }
+      #minmax-auto-max .grid { grid-template-columns: minmax(auto, max-content); }
+      #minmax-intrinsic-flex .grid { grid-template-columns: minmax(min-content, 1fr); }
+      #minmax-floor .grid { grid-template-columns: minmax(80px, max-content); }
+      #repeat-intrinsic .grid { grid-template-columns: repeat(2, minmax(min-content, max-content)); }
+      #min-content-rows .grid { grid-template-columns: 160px; grid-template-rows: min-content; }
+      #max-content-rows .grid { grid-template-columns: 160px; grid-template-rows: max-content; }
+      #span-two-intrinsic .grid { grid-template-columns: repeat(2, minmax(min-content, max-content)); }
+      #span-two-intrinsic .item { grid-column: 1 / span 2; background-color: #0cf; }
+      #auto-stretch .grid { justify-content: normal; }
+      #hidden-item .grid { grid-template-columns: min-content; }
+      #hidden-item .item.is-hidden { display: none; }
+      #max-content-overflow .grid { width: 20px; grid-template-columns: max-content; }
+      #min-content .item { background-color: #c22; }
+      #max-content .item { background-color: #26c; }
+      #auto .item { background-color: #292; }
+      #minmax-intrinsic .item { background-color: #c70; }
+      #minmax-auto-max .item { background-color: #92c; }
+      #minmax-intrinsic-flex .item { background-color: #099; }
+      #minmax-floor .item { background-color: #963; }
+      #repeat-intrinsic .item { background-color: #c39; }
+      #min-content-rows .item { background-color: #555; }
+      #max-content-rows .item { background-color: #369; }
+      #auto-stretch .item { background-color: #d66; }
+      #hidden-item .item { background-color: #6a2; }
+      #max-content-overflow .item { background-color: #a26; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="min-content"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="max-content"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="auto"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="minmax-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="minmax-auto-max"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="minmax-intrinsic-flex"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="minmax-floor"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="repeat-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="min-content-rows"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="max-content-rows"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="span-two-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="auto-stretch"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <section id="hidden-item"><div class="grid"><div class="item">alpha beta</div><div class="item is-hidden">verylongword</div></div></section>
+      <section id="max-content-overflow"><div class="grid"><div class="item">alpha beta</div></div></section>
+    </main>
+  </body>
+</html>
