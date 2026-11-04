@@ -1,0 +1,1101 @@
+{
+  "schema": "spinon-c11-root-html-column-flow-mixed-cross-axis-mobile-runtime-matrix/v1",
+  "status": "matched",
+  "target": "emulator-5554",
+  "runID": "c111cfm-avd-mw23bnua-bf812a8f",
+  "platform": {
+    "serial": "emulator-5554",
+    "sdk": 37,
+    "release": "17",
+    "model": "sdk_gphone64_arm64",
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+    "qemu": "1",
+    "density": "Physical density: 420",
+    "size": "Physical size: 1080x2400",
+    "renderer": "Android API 37 ARM64 AVD SurfaceView PixelCopy"
+  },
+  "appSha256": "716468ff3468cef02448c704698f5d3a9028cd9c9c586f7e93f3f636e4eeb21c",
+  "inputs": {
+    "matrix": "1d2eeef906e5d3cad1627f83eec895b3fd66f8a232c9f6f1fd6914ee3e53188d",
+    "expected": {
+      "path": "spec/internal/evidence/c11-root-html-grid-column-flow-mixed-precomparison-2026-11-04/expected.json",
+      "sha256": "6c0446b87d36ba2025abced35b23e562b40cf83f4a9d7bde92df927be4f0110a"
+    },
+    "chromeCapture": {
+      "path": "spec/internal/evidence/c11-root-html-grid-column-flow-mixed-precomparison-2026-11-04/capture.json",
+      "sha256": "d4f969a248c97169b1955be1494315cf93c4474c24fe5a9a5e360baa4ef57806",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "devicePixelRatio": 1
+    },
+    "chromeScreenshot": {
+      "path": "spec/internal/evidence/c11-root-html-grid-column-flow-mixed-precomparison-2026-11-04/chrome-156-agent-browser.png",
+      "sha256": "ed64eb0a49645c53849886229958b89cefee3d1a7434173b3cad1de811c6c9ab"
+    },
+    "runtimeFixture": {
+      "path": "tests/fixtures/css/c11/root-html-grid-column-flow-mixed-cross-axis-runtime.html",
+      "sha256": "e1fecba955e7b9bb85dd2f03f986dc00c82d729905fc64c7bb3deb00136b0fae"
+    },
+    "rejectionFixture": {
+      "path": "tests/fixtures/css/c11/root-html-grid-column-flow-mixed-cross-axis-implicit-boundary-runtime.html",
+      "sha256": "09fccb382e4984d359c6d33466983be1e66de072a3a4de3cd304e427645080cb"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-root-html-column-flow-mixed-cross-axis-runtime-matrix.mjs",
+      "sha256": "de6fbc64a192788e027639d8b039f065f7e9c3162651d358509ea4fdd7a7cee6"
+    }
+  },
+  "summary": {
+    "scenes": 9,
+    "successfulScenes": 8,
+    "rejectedScenes": 1,
+    "participatingItems": 31,
+    "pixelScenes": 8,
+    "pixelSamples": 31,
+    "maximumAbsoluteErrorCssPx": 0,
+    "maximumChannelError": 0,
+    "rejectionRuntimeNodeId": 16,
+    "geometryToleranceCssPx": 0,
+    "freshProcessPerScene": true,
+    "screenshotBytesAreNotPixelParityEvidence": true
+  },
+  "observations": [
+    {
+      "sceneId": "dom-cross-axis",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 6,
+      "participatingItemCount": 6,
+      "frameCount": 9,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "dom-cross-axis-android.png",
+      "screenshotSha256": "e32289997b5c6d00cbbec120adf2d34382e0e496f2b78034beab02f00502a2bf",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-dom-cross-axis",
+      "processId": 11913,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "dom-cross-axis",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-dom-cross-axis",
+        "processId": 11913,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "aeda41bb72dcc52f3dc6348e10881d45239780842ab89ab5e6ea96515b3e55d2",
+        "samples": [
+          {
+            "id": "dom-cross-axis-c1-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "dom-cross-axis-d-center",
+            "css": [
+              60,
+              45
+            ],
+            "pixel": [
+              158,
+              119
+            ],
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ]
+          },
+          {
+            "id": "dom-cross-axis-r1-center",
+            "css": [
+              60,
+              15
+            ],
+            "pixel": [
+              158,
+              40
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          },
+          {
+            "id": "dom-cross-axis-c2-center",
+            "css": [
+              20,
+              45
+            ],
+            "pixel": [
+              53,
+              119
+            ],
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "dom-cross-axis-r2-center",
+            "css": [
+              100,
+              15
+            ],
+            "pixel": [
+              263,
+              40
+            ],
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "dom-cross-axis-auto-last-center",
+            "css": [
+              100,
+              45
+            ],
+            "pixel": [
+              263,
+              119
+            ],
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 4,
+          "successfulReports": 4,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "dom-cross-axis-surface-pixels.png"
+      },
+      "pixelComparison": "dom-cross-axis-pixel-comparison.json"
+    },
+    {
+      "sceneId": "mixed-spans",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 5,
+      "participatingItemCount": 5,
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "mixed-spans-android.png",
+      "screenshotSha256": "72195daf5e3cfd0e6d409076907a969972159ca09e34c96713a2c6f8a78206df",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-mixed-spans",
+      "processId": 12005,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "mixed-spans",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-mixed-spans",
+        "processId": 12005,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          240,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "pngSha256": "af80334e21963226d44e0f086d29925816fdb81488094397e8fbdb8e68c4d18e",
+        "samples": [
+          {
+            "id": "mixed-spans-row-span-center",
+            "css": [
+              180,
+              30
+            ],
+            "pixel": [
+              473,
+              80
+            ],
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ]
+          },
+          {
+            "id": "mixed-spans-col-span-center",
+            "css": [
+              40,
+              15
+            ],
+            "pixel": [
+              106,
+              40
+            ],
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "mixed-spans-fixed-center",
+            "css": [
+              100,
+              45
+            ],
+            "pixel": [
+              263,
+              119
+            ],
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ]
+          },
+          {
+            "id": "mixed-spans-row-after-center",
+            "css": [
+              220,
+              45
+            ],
+            "pixel": [
+              578,
+              119
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          },
+          {
+            "id": "mixed-spans-col-after-center",
+            "css": [
+              140,
+              15
+            ],
+            "pixel": [
+              368,
+              40
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 4,
+          "successfulReports": 4,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            240,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "mixed-spans-surface-pixels.png"
+      },
+      "pixelComparison": "mixed-spans-pixel-comparison.json"
+    },
+    {
+      "sceneId": "hidden-controls",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 5,
+      "participatingItemCount": 4,
+      "frameCount": 7,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "hidden-controls-android.png",
+      "screenshotSha256": "9361c3bca9c1c527752152eb46464f18d7a4a5ead396f8ec92361df665c3a3de",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-controls",
+      "processId": 12068,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "hidden-controls",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-controls",
+        "processId": 12068,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "b051f0291da7383eeafa18d81ea4fe9611e98ddefa1fe07cb7640417d62b86d1",
+        "samples": [
+          {
+            "id": "hidden-controls-hidden-row-center",
+            "css": [
+              60,
+              15
+            ],
+            "pixel": [
+              158,
+              40
+            ],
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "hidden-controls-row-center",
+            "css": [
+              100,
+              15
+            ],
+            "pixel": [
+              263,
+              40
+            ],
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ]
+          },
+          {
+            "id": "hidden-controls-hidden-column-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "hidden-controls-column-center",
+            "css": [
+              20,
+              45
+            ],
+            "pixel": [
+              53,
+              119
+            ],
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 6,
+          "successfulReports": 6,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "hidden-controls-surface-pixels.png"
+      },
+      "pixelComparison": "hidden-controls-pixel-comparison.json"
+    },
+    {
+      "sceneId": "hidden-row-lock-qualification",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 3,
+      "participatingItemCount": 3,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "hidden-row-lock-qualification-android.png",
+      "screenshotSha256": "c30cb5864aa0ba33099725fb5bf71ee0b112fb392dcd9e87efa7f92149c5a583",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-row-lock-qualification",
+      "processId": 12131,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "hidden-row-lock-qualification",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-row-lock-qualification",
+        "processId": 12131,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "9844775fede6c8f6027b730ac97ff8d5c40ea1ccfd6beb1ef7525a41c17a133f",
+        "samples": [
+          {
+            "id": "hidden-row-lock-qualification-hidden-row-lock-center",
+            "css": [
+              60,
+              15
+            ],
+            "pixel": [
+              158,
+              40
+            ],
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "hidden-row-lock-qualification-column-lock-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "hidden-row-lock-qualification-auto-center",
+            "css": [
+              60,
+              45
+            ],
+            "pixel": [
+              158,
+              119
+            ],
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 6,
+          "successfulReports": 4,
+          "supersededReports": 2,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "hidden-row-lock-qualification-surface-pixels.png"
+      },
+      "pixelComparison": "hidden-row-lock-qualification-pixel-comparison.json"
+    },
+    {
+      "sceneId": "hidden-column-lock-qualification",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 3,
+      "participatingItemCount": 3,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "hidden-column-lock-qualification-android.png",
+      "screenshotSha256": "4c14c2a3bdc712a31411e7939a43b58a2115f44722b4d1d44abf330fbbccecae",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-column-lock-qualification",
+      "processId": 12194,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "hidden-column-lock-qualification",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-column-lock-qualification",
+        "processId": 12194,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "2b5b830bc5bf96664cc6cd9fe350789007d290f2d8c68375b8f77fbc0f84f4ab",
+        "samples": [
+          {
+            "id": "hidden-column-lock-qualification-hidden-column-lock-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "hidden-column-lock-qualification-row-lock-center",
+            "css": [
+              60,
+              15
+            ],
+            "pixel": [
+              158,
+              40
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          },
+          {
+            "id": "hidden-column-lock-qualification-auto-center",
+            "css": [
+              60,
+              45
+            ],
+            "pixel": [
+              158,
+              119
+            ],
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 4,
+          "successfulReports": 4,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "hidden-column-lock-qualification-surface-pixels.png"
+      },
+      "pixelComparison": "hidden-column-lock-qualification-pixel-comparison.json"
+    },
+    {
+      "sceneId": "display-none-control",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 3,
+      "participatingItemCount": 2,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "display-none-control-android.png",
+      "screenshotSha256": "4c14c2a3bdc712a31411e7939a43b58a2115f44722b4d1d44abf330fbbccecae",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-display-none-control",
+      "processId": 12260,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "display-none-control",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-display-none-control",
+        "processId": 12260,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "8d257a58ad9fe06066cdd43bd8d2d29f54243b4b6b5f42cf72b0db43e2765820",
+        "samples": [
+          {
+            "id": "display-none-control-row-after-gone-center",
+            "css": [
+              60,
+              15
+            ],
+            "pixel": [
+              158,
+              40
+            ],
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ]
+          },
+          {
+            "id": "display-none-control-column-after-gone-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 4,
+          "successfulReports": 4,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "display-none-control-surface-pixels.png"
+      },
+      "pixelComparison": "display-none-control-pixel-comparison.json"
+    },
+    {
+      "sceneId": "implicit-boundary-control",
+      "outcome": "expected-rejection",
+      "status": -11,
+      "diagnostic": {
+        "code": "invalid_grid_placement",
+        "property": "grid-row-start",
+        "nodeId": 16,
+        "observedNodeId": 16
+      },
+      "frameCount": 0,
+      "positiveDrawCount": 0,
+      "maximumAbsoluteErrorCssPx": 0,
+      "screenshot": "implicit-boundary-control-android.png",
+      "screenshotSha256": "f65de614b377ece7cb96d2844a4c195593df6dc5429bea417eb0abd8dc21722b",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-implicit-boundary-control",
+      "processId": 12324
+    },
+    {
+      "sceneId": "reverse-order",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 5,
+      "participatingItemCount": 5,
+      "frameCount": 8,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "reverse-order-android.png",
+      "screenshotSha256": "454bef729207551ebc4ce6f0d389e0cac6258eeece60d4776c7109b20d554ff1",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-reverse-order",
+      "processId": 12381,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "reverse-order",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-reverse-order",
+        "processId": 12381,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 5,
+        "matchedSamples": 5,
+        "maximumChannelError": 0,
+        "pngSha256": "1eecbf655070ef692cd360530aaee22c518129ade120f49b188924ee63eb6335",
+        "samples": [
+          {
+            "id": "reverse-order-c-first-center",
+            "css": [
+              140,
+              15
+            ],
+            "pixel": [
+              368,
+              40
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "reverse-order-r-first-center",
+            "css": [
+              20,
+              75
+            ],
+            "pixel": [
+              53,
+              198
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          },
+          {
+            "id": "reverse-order-d-last-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ]
+          },
+          {
+            "id": "reverse-order-c-second-center",
+            "css": [
+              140,
+              45
+            ],
+            "pixel": [
+              368,
+              119
+            ],
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "reverse-order-r-second-center",
+            "css": [
+              60,
+              75
+            ],
+            "pixel": [
+              158,
+              198
+            ],
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 4,
+          "successfulReports": 4,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "reverse-order-surface-pixels.png"
+      },
+      "pixelComparison": "reverse-order-pixel-comparison.json"
+    },
+    {
+      "sceneId": "negative-line-control",
+      "outcome": "matched",
+      "status": 0,
+      "authoredItemCount": 3,
+      "participatingItemCount": 3,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "geometryToleranceCssPx": 0,
+      "positiveDrawCount": 2,
+      "screenshot": "negative-line-control-android.png",
+      "screenshotSha256": "29efcbf24ce170635804c5039f18c30585f2b201508a11ef2b9a0752d07a576b",
+      "runID": "c111cfm-avd-mw23bnua-bf812a8f-negative-line-control",
+      "processId": 12444,
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "negative-line-control",
+        "runID": "c111cfm-avd-mw23bnua-bf812a8f-negative-line-control",
+        "processId": 12444,
+        "markerPrefix": "C111CFM",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          945,
+          2100
+        ],
+        "runtimeViewportCssPx": [
+          160,
+          90
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "a8c9b7cf4b663e829fe9ecd0e1ca7f85c00d45f3ad4f18d60a66bf5963875576",
+        "samples": [
+          {
+            "id": "negative-line-control-fixed-center",
+            "css": [
+              20,
+              15
+            ],
+            "pixel": [
+              53,
+              40
+            ],
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ]
+          },
+          {
+            "id": "negative-line-control-column-negative-center",
+            "css": [
+              140,
+              15
+            ],
+            "pixel": [
+              368,
+              40
+            ],
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "negative-line-control-row-negative-center",
+            "css": [
+              20,
+              75
+            ],
+            "pixel": [
+              53,
+              198
+            ],
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ]
+          }
+        ],
+        "environmentMapping": {
+          "reports": 4,
+          "successfulReports": 4,
+          "supersededReports": 0,
+          "viewportCssPx": [
+            160,
+            90
+          ],
+          "density": 2.625,
+          "deviceScaleFactor": 2.625,
+          "pageScale": 1,
+          "physicalScale": 2.625,
+          "surfaceScale": [
+            2.625,
+            2.625
+          ]
+        },
+        "png": "negative-line-control-surface-pixels.png"
+      },
+      "pixelComparison": "negative-line-control-pixel-comparison.json"
+    }
+  ],
+  "limitations": [
+    "이 행렬은 고정 Root HTML column-flow 혼합 placement fixture의 geometry와 31개 색상 표본에 한정되며 전체 CSS Grid 지원 또는 WPT 적합성을 뜻하지 않는다.",
+    "Android 결과는 API 37 ARM64 AVD의 SurfaceView PixelCopy이며 실기기·hardware GPU 근거가 아니다.",
+    "screenshots는 실행 화면 보조 자료이며 pixel parity는 실제 PixelCopy/Metal readback으로 판정했다."
+  ]
+}

@@ -8,7 +8,10 @@ use crate::v8::{
     SpinonDocumentCollectionStats, SpinonV8Runtime, spinon_v8_current_thread_id,
     spinon_v8_runtime_notify_memory_pressure, spinon_v8_runtime_terminate,
 };
-#[cfg(feature = "c14-1-live-v8-fixture-test")]
+#[cfg(any(
+    feature = "c14-1-live-v8-fixture-test",
+    feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+))]
 use spinon_core::HostDocumentSnapshot;
 pub use spinon_core::TaskPriority;
 use spinon_style::CssColorScheme;
@@ -189,8 +192,11 @@ enum Command {
         caller_thread_id: u64,
         reply: SyncSender<OperationResponse>,
     },
-    #[cfg(feature = "c14-1-live-v8-fixture-test")]
-    SnapshotDocumentForC14Fixture {
+    #[cfg(any(
+        feature = "c14-1-live-v8-fixture-test",
+        feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+    ))]
+    SnapshotDocumentForFixture {
         reply: SyncSender<Result<HostDocumentSnapshot, String>>,
     },
 }
@@ -649,12 +655,15 @@ impl RuntimeSession {
         )
     }
 
-    /// C14.1 opt-in fixture에서 owner actor가 보유한 최신 문서 snapshot을 복사합니다.
+    /// opt-in runtime fixture에서 owner actor가 보유한 최신 문서 snapshot을 복사합니다.
     ///
     /// 이 진단 경로는 공개 제품 API가 아닙니다. V8 actor가 처리한 시점의 snapshot을
     /// 반환하며, actor가 5초 안에 응답하지 않으면 오류를 반환합니다.
-    #[cfg(feature = "c14-1-live-v8-fixture-test")]
-    pub fn snapshot_document_for_c14_1_fixture(&self) -> Result<HostDocumentSnapshot, String> {
+    #[cfg(any(
+        feature = "c14-1-live-v8-fixture-test",
+        feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+    ))]
+    pub fn snapshot_document_for_runtime_fixture(&self) -> Result<HostDocumentSnapshot, String> {
         let receiver = {
             let _submission = lock(&self.submission);
             if lock(&self.control).closing {
@@ -663,7 +672,7 @@ impl RuntimeSession {
             let (reply, receiver) = mpsc::sync_channel(1);
             match self.scheduler.try_enqueue(
                 TaskPriority::UserVisible,
-                Command::SnapshotDocumentForC14Fixture { reply },
+                Command::SnapshotDocumentForFixture { reply },
                 0,
                 0,
             ) {
@@ -687,6 +696,12 @@ impl RuntimeSession {
                 Err("V8 문서 snapshot actor 응답 채널이 닫혔습니다".to_owned())
             }
         }
+    }
+
+    /// C14.1 fixture 전용 명칭을 유지하는 호환 wrapper입니다.
+    #[cfg(feature = "c14-1-live-v8-fixture-test")]
+    pub fn snapshot_document_for_c14_1_fixture(&self) -> Result<HostDocumentSnapshot, String> {
+        self.snapshot_document_for_runtime_fixture()
     }
 
     /// 호스트가 정한 압박 단계를 V8에 전달합니다. OS 신호나 판단 시점은 정하지 않습니다.

@@ -236,6 +236,17 @@ require(spinonC111RootHtmlDensePlacementFixtureTestValue != "1" ||
     spinonC04RuntimeGpuValue == "1") {
     "C11.1 Root HTML dense placement fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
 }
+val spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue = providers
+    .environmentVariable("SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST")
+    .orElse("0").get()
+require(spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue == "0" ||
+    spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue == "1") {
+    "SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue != "1" ||
+    spinonC04RuntimeGpuValue == "1") {
+    "C11.1 Root HTML mixed column-flow fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
+}
 val spinonC11GridMetalSurfacePixelsTestValue = providers
     .environmentVariable("SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST")
     .orElse("0").get()
@@ -252,6 +263,7 @@ val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
     spinonC115RootHtmlGridItemSelfAlignmentFixtureTestValue,
     spinonC111RootHtmlPercentColumnsFixtureTestValue,
     spinonC111RootHtmlDensePlacementFixtureTestValue,
+    spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue,
     providers.environmentVariable("SPINON_ENABLE_C11_2_3_GRID_FIXTURE_TEST").orElse("0").get(),
     spinonC0412RootHtmlBlockPaintFixtureTestValue,
     spinonC0412RootHtmlTextPaintFixtureTestValue,
@@ -312,6 +324,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
     environment(
         "SPINON_ENABLE_C11_1_ROOT_HTML_DENSE_PLACEMENT_FIXTURE_TEST",
         spinonC111RootHtmlDensePlacementFixtureTestValue,
+    )
+    environment(
+        "SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST",
+        spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue,
     )
     environment(
         "SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST",

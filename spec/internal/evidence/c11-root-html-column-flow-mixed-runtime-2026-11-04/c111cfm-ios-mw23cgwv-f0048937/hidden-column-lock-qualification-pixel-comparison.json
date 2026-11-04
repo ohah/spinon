@@ -1,0 +1,83 @@
+{
+  "schema": "spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c111cfm-ios-mw23cgwv-f0048937-hidden-column-lock-qualification",
+  "processId": 18341,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "drawable": [
+    480,
+    270
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "hidden-column-lock-qualification-hidden-column-lock-center",
+      "css": [
+        20,
+        15
+      ],
+      "drawable": [
+        61,
+        46
+      ],
+      "rgba": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "hidden-column-lock-qualification-row-lock-center",
+      "css": [
+        60,
+        15
+      ],
+      "drawable": [
+        181,
+        46
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "hidden-column-lock-qualification-auto-center",
+      "css": [
+        60,
+        45
+      ],
+      "drawable": [
+        181,
+        136
+      ],
+      "rgba": [
+        240,
+        180,
+        41,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

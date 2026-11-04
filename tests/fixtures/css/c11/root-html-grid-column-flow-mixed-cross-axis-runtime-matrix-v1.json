@@ -1,0 +1,1957 @@
+{
+  "schema": "spinon-css-c11-root-html-column-flow-mixed-cross-axis-runtime-matrix/v1",
+  "profileId": "C11.1-RootHtmlColumnFlowMixedCrossAxisV1",
+  "inputs": {
+    "expected": {
+      "path": "spec/internal/evidence/c11-root-html-grid-column-flow-mixed-precomparison-2026-11-04/expected.json",
+      "sha256": "6c0446b87d36ba2025abced35b23e562b40cf83f4a9d7bde92df927be4f0110a"
+    },
+    "chromeCapture": {
+      "path": "spec/internal/evidence/c11-root-html-grid-column-flow-mixed-precomparison-2026-11-04/capture.json",
+      "sha256": "d4f969a248c97169b1955be1494315cf93c4474c24fe5a9a5e360baa4ef57806",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "devicePixelRatio": 1
+    },
+    "chromeScreenshot": {
+      "path": "spec/internal/evidence/c11-root-html-grid-column-flow-mixed-precomparison-2026-11-04/chrome-156-agent-browser.png",
+      "sha256": "ed64eb0a49645c53849886229958b89cefee3d1a7434173b3cad1de811c6c9ab"
+    },
+    "runtimeFixture": {
+      "path": "tests/fixtures/css/c11/root-html-grid-column-flow-mixed-cross-axis-runtime.html",
+      "sha256": "e1fecba955e7b9bb85dd2f03f986dc00c82d729905fc64c7bb3deb00136b0fae"
+    },
+    "rejectionFixture": {
+      "path": "tests/fixtures/css/c11/root-html-grid-column-flow-mixed-cross-axis-implicit-boundary-runtime.html",
+      "sha256": "09fccb382e4984d359c6d33466983be1e66de072a3a4de3cd304e427645080cb"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-root-html-column-flow-mixed-cross-axis-runtime-matrix.mjs",
+      "sha256": "de6fbc64a192788e027639d8b039f065f7e9c3162651d358509ea4fdd7a7cee6"
+    }
+  },
+  "spec": {
+    "name": "CSS Grid Layout Module Level 1, 2025-03-26 CRD",
+    "section": "8.5",
+    "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-placement-algo"
+  },
+  "viewportCssPx": {
+    "width": 160,
+    "height": 90
+  },
+  "scenes": [
+    {
+      "id": "dom-cross-axis",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "c1": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "d": [
+          40,
+          30,
+          40,
+          30
+        ],
+        "r1": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "c2": [
+          0,
+          30,
+          40,
+          30
+        ],
+        "r2": [
+          80,
+          0,
+          40,
+          30
+        ],
+        "auto-last": [
+          80,
+          30,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "c1",
+          "htmlId": "dom-cross-axis--c1",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "dom-cross-axis-c1-center",
+            "nodeId": "dom-cross-axis--c1",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "d",
+          "htmlId": "dom-cross-axis--d",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "dom-cross-axis-d-center",
+            "nodeId": "dom-cross-axis--d",
+            "xCssPx": 60,
+            "yCssPx": 45,
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "r1",
+          "htmlId": "dom-cross-axis--r1",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "dom-cross-axis-r1-center",
+            "nodeId": "dom-cross-axis--r1",
+            "xCssPx": 60,
+            "yCssPx": 15,
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "c2",
+          "htmlId": "dom-cross-axis--c2",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "dom-cross-axis-c2-center",
+            "nodeId": "dom-cross-axis--c2",
+            "xCssPx": 20,
+            "yCssPx": 45,
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "r2",
+          "htmlId": "dom-cross-axis--r2",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            80,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "dom-cross-axis-r2-center",
+            "nodeId": "dom-cross-axis--r2",
+            "xCssPx": 100,
+            "yCssPx": 15,
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "auto-last",
+          "htmlId": "dom-cross-axis--auto-last",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            80,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "dom-cross-axis-auto-last-center",
+            "nodeId": "dom-cross-axis--auto-last",
+            "xCssPx": 100,
+            "yCssPx": 45,
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "dom-cross-axis-c1-center",
+          "nodeId": "dom-cross-axis--c1",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "dom-cross-axis-d-center",
+          "nodeId": "dom-cross-axis--d",
+          "xCssPx": 60,
+          "yCssPx": 45,
+          "rgba": [
+            58,
+            143,
+            91,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "dom-cross-axis-r1-center",
+          "nodeId": "dom-cross-axis--r1",
+          "xCssPx": 60,
+          "yCssPx": 15,
+          "rgba": [
+            249,
+            115,
+            22,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "dom-cross-axis-c2-center",
+          "nodeId": "dom-cross-axis--c2",
+          "xCssPx": 20,
+          "yCssPx": 45,
+          "rgba": [
+            53,
+            120,
+            199,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "dom-cross-axis-r2-center",
+          "nodeId": "dom-cross-axis--r2",
+          "xCssPx": 100,
+          "yCssPx": 15,
+          "rgba": [
+            132,
+            94,
+            247,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "dom-cross-axis-auto-last-center",
+          "nodeId": "dom-cross-axis--auto-last",
+          "xCssPx": 100,
+          "yCssPx": 45,
+          "rgba": [
+            240,
+            180,
+            41,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "The fully definite item occupies row 2/column 2. Column-locked items c1 and c2 are placed before the row-locked items despite their interleaved DOM order; the sparse cursor then places row-locked and fully-auto items without changing source order."
+    },
+    {
+      "id": "mixed-spans",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 240,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        240,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "row-span": [
+          160,
+          0,
+          40,
+          60
+        ],
+        "col-span": [
+          0,
+          0,
+          80,
+          30
+        ],
+        "fixed": [
+          80,
+          30,
+          40,
+          30
+        ],
+        "row-after": [
+          200,
+          30,
+          40,
+          30
+        ],
+        "col-after": [
+          120,
+          0,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "row-span",
+          "htmlId": "mixed-spans--row-span",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            160,
+            0,
+            40,
+            60
+          ],
+          "chromeFrameCssPx": [
+            160,
+            0,
+            40,
+            60
+          ],
+          "pixelSample": {
+            "id": "mixed-spans-row-span-center",
+            "nodeId": "mixed-spans--row-span",
+            "xCssPx": 180,
+            "yCssPx": 30,
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "col-span",
+          "htmlId": "mixed-spans--col-span",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            80,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            80,
+            30
+          ],
+          "pixelSample": {
+            "id": "mixed-spans-col-span-center",
+            "nodeId": "mixed-spans--col-span",
+            "xCssPx": 40,
+            "yCssPx": 15,
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "fixed",
+          "htmlId": "mixed-spans--fixed",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            80,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "mixed-spans-fixed-center",
+            "nodeId": "mixed-spans--fixed",
+            "xCssPx": 100,
+            "yCssPx": 45,
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "row-after",
+          "htmlId": "mixed-spans--row-after",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            200,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            200,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "mixed-spans-row-after-center",
+            "nodeId": "mixed-spans--row-after",
+            "xCssPx": 220,
+            "yCssPx": 45,
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "col-after",
+          "htmlId": "mixed-spans--col-after",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "mixed-spans-col-after-center",
+            "nodeId": "mixed-spans--col-after",
+            "xCssPx": 140,
+            "yCssPx": 15,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "mixed-spans-row-span-center",
+          "nodeId": "mixed-spans--row-span",
+          "xCssPx": 180,
+          "yCssPx": 30,
+          "rgba": [
+            132,
+            94,
+            247,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "mixed-spans-col-span-center",
+          "nodeId": "mixed-spans--col-span",
+          "xCssPx": 40,
+          "yCssPx": 15,
+          "rgba": [
+            53,
+            120,
+            199,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "mixed-spans-fixed-center",
+          "nodeId": "mixed-spans--fixed",
+          "xCssPx": 100,
+          "yCssPx": 45,
+          "rgba": [
+            58,
+            143,
+            91,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "mixed-spans-row-after-center",
+          "nodeId": "mixed-spans--row-after",
+          "xCssPx": 220,
+          "yCssPx": 45,
+          "rgba": [
+            249,
+            115,
+            22,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "mixed-spans-col-after-center",
+          "nodeId": "mixed-spans--col-after",
+          "xCssPx": 140,
+          "yCssPx": 15,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "Column-locked spans reserve their two-column area before the definite row-span is placed. Occupancy includes both axes, so the following row-locked item advances to column 6 while every item remains inside the explicit grid."
+    },
+    {
+      "id": "hidden-controls",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "hidden-row": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "row": [
+          80,
+          0,
+          40,
+          30
+        ],
+        "hidden-column": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "column": [
+          0,
+          30,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [
+        "gone"
+      ],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "hidden-row",
+          "htmlId": "hidden-controls--hidden-row",
+          "display": "block",
+          "visibility": "hidden",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-controls-hidden-row-center",
+            "nodeId": "hidden-controls--hidden-row",
+            "xCssPx": 60,
+            "yCssPx": 15,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "visibilityExpectation": "transparent-over-white-body"
+          }
+        },
+        {
+          "id": "row",
+          "htmlId": "hidden-controls--row",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            80,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            80,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-controls-row-center",
+            "nodeId": "hidden-controls--row",
+            "xCssPx": 100,
+            "yCssPx": 15,
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "hidden-column",
+          "htmlId": "hidden-controls--hidden-column",
+          "display": "block",
+          "visibility": "hidden",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-controls-hidden-column-center",
+            "nodeId": "hidden-controls--hidden-column",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "visibilityExpectation": "transparent-over-white-body"
+          }
+        },
+        {
+          "id": "column",
+          "htmlId": "hidden-controls--column",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-controls-column-center",
+            "nodeId": "hidden-controls--column",
+            "xCssPx": 20,
+            "yCssPx": 45,
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "gone",
+          "htmlId": "hidden-controls--gone",
+          "display": "none",
+          "visibility": "visible",
+          "frameCssPx": null,
+          "chromeFrameCssPx": null
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "hidden-controls-hidden-row-center",
+          "nodeId": "hidden-controls--hidden-row",
+          "xCssPx": 60,
+          "yCssPx": 15,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "visibilityExpectation": "transparent-over-white-body"
+        },
+        {
+          "id": "hidden-controls-row-center",
+          "nodeId": "hidden-controls--row",
+          "xCssPx": 100,
+          "yCssPx": 15,
+          "rgba": [
+            58,
+            143,
+            91,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "hidden-controls-hidden-column-center",
+          "nodeId": "hidden-controls--hidden-column",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "visibilityExpectation": "transparent-over-white-body"
+        },
+        {
+          "id": "hidden-controls-column-center",
+          "nodeId": "hidden-controls--column",
+          "xCssPx": 20,
+          "yCssPx": 45,
+          "rgba": [
+            132,
+            94,
+            247,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "visibility:hidden retains occupancy; the display:none explicit item is removed before placement and reserves no cell."
+    },
+    {
+      "id": "hidden-row-lock-qualification",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "hidden-row-lock": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "column-lock": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "auto": [
+          40,
+          30,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "hidden-row-lock",
+          "htmlId": "hidden-row-lock-qualification--hidden-row-lock",
+          "display": "block",
+          "visibility": "hidden",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-row-lock-qualification-hidden-row-lock-center",
+            "nodeId": "hidden-row-lock-qualification--hidden-row-lock",
+            "xCssPx": 60,
+            "yCssPx": 15,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "visibilityExpectation": "transparent-over-white-body"
+          }
+        },
+        {
+          "id": "column-lock",
+          "htmlId": "hidden-row-lock-qualification--column-lock",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-row-lock-qualification-column-lock-center",
+            "nodeId": "hidden-row-lock-qualification--column-lock",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "auto",
+          "htmlId": "hidden-row-lock-qualification--auto",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-row-lock-qualification-auto-center",
+            "nodeId": "hidden-row-lock-qualification--auto",
+            "xCssPx": 60,
+            "yCssPx": 45,
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "hidden-row-lock-qualification-hidden-row-lock-center",
+          "nodeId": "hidden-row-lock-qualification--hidden-row-lock",
+          "xCssPx": 60,
+          "yCssPx": 15,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "visibilityExpectation": "transparent-over-white-body"
+        },
+        {
+          "id": "hidden-row-lock-qualification-column-lock-center",
+          "nodeId": "hidden-row-lock-qualification--column-lock",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            53,
+            120,
+            199,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "hidden-row-lock-qualification-auto-center",
+          "nodeId": "hidden-row-lock-qualification--auto",
+          "xCssPx": 60,
+          "yCssPx": 45,
+          "rgba": [
+            240,
+            180,
+            41,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "The only row-locked item has visibility:hidden. It remains a participating item and qualifies the mixed mode; the fixed-column item is placed first and the auto item advances from the resulting sparse cursor."
+    },
+    {
+      "id": "hidden-column-lock-qualification",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "hidden-column-lock": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "row-lock": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "auto": [
+          40,
+          30,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "hidden-column-lock",
+          "htmlId": "hidden-column-lock-qualification--hidden-column-lock",
+          "display": "block",
+          "visibility": "hidden",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-column-lock-qualification-hidden-column-lock-center",
+            "nodeId": "hidden-column-lock-qualification--hidden-column-lock",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "visibilityExpectation": "transparent-over-white-body"
+          }
+        },
+        {
+          "id": "row-lock",
+          "htmlId": "hidden-column-lock-qualification--row-lock",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-column-lock-qualification-row-lock-center",
+            "nodeId": "hidden-column-lock-qualification--row-lock",
+            "xCssPx": 60,
+            "yCssPx": 15,
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "auto",
+          "htmlId": "hidden-column-lock-qualification--auto",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "hidden-column-lock-qualification-auto-center",
+            "nodeId": "hidden-column-lock-qualification--auto",
+            "xCssPx": 60,
+            "yCssPx": 45,
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "hidden-column-lock-qualification-hidden-column-lock-center",
+          "nodeId": "hidden-column-lock-qualification--hidden-column-lock",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "visibilityExpectation": "transparent-over-white-body"
+        },
+        {
+          "id": "hidden-column-lock-qualification-row-lock-center",
+          "nodeId": "hidden-column-lock-qualification--row-lock",
+          "xCssPx": 60,
+          "yCssPx": 15,
+          "rgba": [
+            249,
+            115,
+            22,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "hidden-column-lock-qualification-auto-center",
+          "nodeId": "hidden-column-lock-qualification--auto",
+          "xCssPx": 60,
+          "yCssPx": 45,
+          "rgba": [
+            240,
+            180,
+            41,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "The only column-locked item has visibility:hidden. It remains a participating item and qualifies the mixed mode; the row-locked item avoids its occupied cell and the auto item follows the sparse cursor."
+    },
+    {
+      "id": "display-none-control",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "row-after-gone": [
+          40,
+          0,
+          40,
+          30
+        ],
+        "column-after-gone": [
+          0,
+          0,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [
+        "gone-cell"
+      ],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "gone-cell",
+          "htmlId": "display-none-control--gone-cell",
+          "display": "none",
+          "visibility": "visible",
+          "frameCssPx": null,
+          "chromeFrameCssPx": null
+        },
+        {
+          "id": "row-after-gone",
+          "htmlId": "display-none-control--row-after-gone",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "display-none-control-row-after-gone-center",
+            "nodeId": "display-none-control--row-after-gone",
+            "xCssPx": 60,
+            "yCssPx": 15,
+            "rgba": [
+              240,
+              180,
+              41,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "column-after-gone",
+          "htmlId": "display-none-control--column-after-gone",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "display-none-control-column-after-gone-center",
+            "nodeId": "display-none-control--column-after-gone",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "display-none-control-row-after-gone-center",
+          "nodeId": "display-none-control--row-after-gone",
+          "xCssPx": 60,
+          "yCssPx": 15,
+          "rgba": [
+            240,
+            180,
+            41,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "display-none-control-column-after-gone-center",
+          "nodeId": "display-none-control--column-after-gone",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            58,
+            143,
+            91,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "A display:none definite item does not reserve the first cell. The column-locked item is placed there before the row-locked item searches its row."
+    },
+    {
+      "id": "implicit-boundary-control",
+      "outcome": "expected-rejection",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {},
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": {
+        "code": "invalid_grid_placement",
+        "property": "grid-row-start",
+        "nodeId": 16
+      },
+      "items": [
+        {
+          "id": "row-four",
+          "htmlId": "implicit-boundary-control--row-four",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": null,
+          "chromeFrameCssPx": [
+            0,
+            90,
+            40,
+            30
+          ]
+        },
+        {
+          "id": "column-five",
+          "htmlId": "implicit-boundary-control--column-five",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": null,
+          "chromeFrameCssPx": [
+            160,
+            0,
+            40,
+            30
+          ]
+        }
+      ],
+      "pixelSamples": [],
+      "chromeReason": "Each item independently requires an implicit track. The bounded Root HTML profile must reject the whole Grid and publish no partial placement or render output."
+    },
+    {
+      "id": "reverse-order",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "c-first": [
+          120,
+          0,
+          40,
+          30
+        ],
+        "r-first": [
+          0,
+          60,
+          40,
+          30
+        ],
+        "d-last": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "c-second": [
+          120,
+          30,
+          40,
+          30
+        ],
+        "r-second": [
+          40,
+          60,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "c-first",
+          "htmlId": "reverse-order--c-first",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "reverse-order-c-first-center",
+            "nodeId": "reverse-order--c-first",
+            "xCssPx": 140,
+            "yCssPx": 15,
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "r-first",
+          "htmlId": "reverse-order--r-first",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            60,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            60,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "reverse-order-r-first-center",
+            "nodeId": "reverse-order--r-first",
+            "xCssPx": 20,
+            "yCssPx": 75,
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "d-last",
+          "htmlId": "reverse-order--d-last",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "reverse-order-d-last-center",
+            "nodeId": "reverse-order--d-last",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "c-second",
+          "htmlId": "reverse-order--c-second",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            30,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            120,
+            30,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "reverse-order-c-second-center",
+            "nodeId": "reverse-order--c-second",
+            "xCssPx": 140,
+            "yCssPx": 45,
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "r-second",
+          "htmlId": "reverse-order--r-second",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            40,
+            60,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            40,
+            60,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "reverse-order-r-second-center",
+            "nodeId": "reverse-order--r-second",
+            "xCssPx": 60,
+            "yCssPx": 75,
+            "rgba": [
+              132,
+              94,
+              247,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "reverse-order-c-first-center",
+          "nodeId": "reverse-order--c-first",
+          "xCssPx": 140,
+          "yCssPx": 15,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "reverse-order-r-first-center",
+          "nodeId": "reverse-order--r-first",
+          "xCssPx": 20,
+          "yCssPx": 75,
+          "rgba": [
+            249,
+            115,
+            22,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "reverse-order-d-last-center",
+          "nodeId": "reverse-order--d-last",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            58,
+            143,
+            91,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "reverse-order-c-second-center",
+          "nodeId": "reverse-order--c-second",
+          "xCssPx": 140,
+          "yCssPx": 45,
+          "rgba": [
+            53,
+            120,
+            199,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "reverse-order-r-second-center",
+          "nodeId": "reverse-order--r-second",
+          "xCssPx": 60,
+          "yCssPx": 75,
+          "rgba": [
+            132,
+            94,
+            247,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "The fully definite item is reserved first. The two column-locked items retain their DOM order in the fixed last column; row-locked items retain theirs in the fixed last row."
+    },
+    {
+      "id": "negative-line-control",
+      "outcome": "success",
+      "viewportCssPx": {
+        "width": 160,
+        "height": 90
+      },
+      "expectedRootCssPx": [
+        160,
+        90
+      ],
+      "expectedTracks": {
+        "columns": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "rows": [
+          30,
+          30,
+          30
+        ]
+      },
+      "expectedFramesCssPx": {
+        "fixed": [
+          0,
+          0,
+          40,
+          30
+        ],
+        "column-negative": [
+          120,
+          0,
+          40,
+          30
+        ],
+        "row-negative": [
+          0,
+          60,
+          40,
+          30
+        ]
+      },
+      "expectedNonParticipating": [],
+      "expectedDiagnostic": null,
+      "items": [
+        {
+          "id": "fixed",
+          "htmlId": "negative-line-control--fixed",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "negative-line-control-fixed-center",
+            "nodeId": "negative-line-control--fixed",
+            "xCssPx": 20,
+            "yCssPx": 15,
+            "rgba": [
+              58,
+              143,
+              91,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "column-negative",
+          "htmlId": "negative-line-control--column-negative",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            120,
+            0,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "negative-line-control-column-negative-center",
+            "nodeId": "negative-line-control--column-negative",
+            "xCssPx": 140,
+            "yCssPx": 15,
+            "rgba": [
+              53,
+              120,
+              199,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        },
+        {
+          "id": "row-negative",
+          "htmlId": "negative-line-control--row-negative",
+          "display": "block",
+          "visibility": "visible",
+          "frameCssPx": [
+            0,
+            60,
+            40,
+            30
+          ],
+          "chromeFrameCssPx": [
+            0,
+            60,
+            40,
+            30
+          ],
+          "pixelSample": {
+            "id": "negative-line-control-row-negative-center",
+            "nodeId": "negative-line-control--row-negative",
+            "xCssPx": 20,
+            "yCssPx": 75,
+            "rgba": [
+              249,
+              115,
+              22,
+              255
+            ],
+            "visibilityExpectation": "authored-solid-srgb-background"
+          }
+        }
+      ],
+      "pixelSamples": [
+        {
+          "id": "negative-line-control-fixed-center",
+          "nodeId": "negative-line-control--fixed",
+          "xCssPx": 20,
+          "yCssPx": 15,
+          "rgba": [
+            58,
+            143,
+            91,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "negative-line-control-column-negative-center",
+          "nodeId": "negative-line-control--column-negative",
+          "xCssPx": 140,
+          "yCssPx": 15,
+          "rgba": [
+            53,
+            120,
+            199,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        },
+        {
+          "id": "negative-line-control-row-negative-center",
+          "nodeId": "negative-line-control--row-negative",
+          "xCssPx": 20,
+          "yCssPx": 75,
+          "rgba": [
+            249,
+            115,
+            22,
+            255
+          ],
+          "visibilityExpectation": "authored-solid-srgb-background"
+        }
+      ],
+      "chromeReason": "Negative line -2 resolves from each explicit grid's end: column-negative occupies column 4 and row-negative occupies row 3. The opposite auto axis still follows column-flow placement."
+    }
+  ],
+  "summary": {
+    "sceneCount": 9,
+    "successfulScenes": 8,
+    "expectedRejectScenes": 1,
+    "participatingItems": 31,
+    "pixelSampleCount": 31,
+    "geometryToleranceCssPx": 0
+  }
+}

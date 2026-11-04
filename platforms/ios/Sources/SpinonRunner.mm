@@ -1334,6 +1334,31 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
++ (uint64_t)createRuntimeGpuHostWithC11_1RootHtmlColumnFlowMixedCrossAxisFixture:(NSString *)sceneID {
+#if defined(SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host =
+      spinon_runtime_gpu_host_new_c11_1_root_html_column_flow_mixed_cross_axis_fixture(
+          sceneID.UTF8String, output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT,
+                 "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_HOST_ERROR=%{public}s",
+                 output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT,
+         "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_HOST scene_id=%{public}@ %{public}s",
+         sceneID, output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  (void)sceneID;
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_DISABLED fixture feature is off");
+  return 0;
+#endif
+}
+
 + (uint64_t)createRuntimeGpuHostWithC11_2_1GridPlacementFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST

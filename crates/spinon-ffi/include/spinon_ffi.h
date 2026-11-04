@@ -458,6 +458,13 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_root_html_percent_column
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_root_html_dense_placement_fixture(
     const char *scene_id, char *output, size_t output_capacity);
 #endif
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST) && \
+    SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST
+/* Parsed Root HTML mixed column-flow 자동 배치 fixture 전용 host입니다. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_1_root_html_column_flow_mixed_cross_axis_fixture(
+    const char *scene_id, char *output, size_t output_capacity);
+#endif
 /* C11.2.1 numeric explicit Grid placement fixture 전용 검증 host입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_2_1_grid_placement_fixture(
     char *output, size_t output_capacity);

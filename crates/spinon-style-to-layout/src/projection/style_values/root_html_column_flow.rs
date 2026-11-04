@@ -14,6 +14,7 @@ pub(super) fn validate_candidate(
     tree: &HostDocumentSnapshot,
     snapshot: &ComputedStyleSnapshot,
     nodes: &RuntimeGridNodes,
+    mixed_cross_axis_route_nodes: &std::collections::BTreeSet<spinon_core::NodeId>,
 ) -> Result<(), StyleLayoutError> {
     let mut candidates = snapshot.elements.iter().filter(|element| {
         nodes.grid_containers.contains(&element.node_id)
@@ -37,6 +38,7 @@ pub(super) fn validate_candidate(
         .grid_layout
         .as_ref()
         .expect("column-flow candidates were filtered by computed Grid style");
+    let mixed_cross_axis = mixed_cross_axis_route_nodes.contains(&node);
     for (property, groups) in [
         (
             "grid-template-columns",
@@ -94,6 +96,13 @@ pub(super) fn validate_candidate(
             "Root HTML column-flow mode requires direct px explicit tracks, auto rows, no areas, and no repeat",
         ));
     }
+    if mixed_cross_axis && !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
+        return Err(unsupported(
+            node,
+            "grid-auto-columns",
+            "Root HTML mixed column-flow mode requires grid-auto-columns:auto",
+        ));
+    }
     let container_handle = nodes
         .grid_container_handles
         .get(&node)
@@ -111,7 +120,11 @@ pub(super) fn validate_candidate(
         .flatten()
         .filter(|child| nodes.grid_item_owners.get(&child.id()) == Some(&node))
         .count();
-    let required_columns = visible_item_count.div_ceil(grid.rows.len());
+    let required_columns = if mixed_cross_axis {
+        grid.columns.len()
+    } else {
+        visible_item_count.div_ceil(grid.rows.len())
+    };
     let total_columns = required_columns.max(grid.columns.len());
     if total_columns > GRID_MAX_TRACKS {
         return Err(unsupported(
@@ -125,7 +138,8 @@ pub(super) fn validate_candidate(
         grid,
         total_columns,
     )?;
-    if required_columns > grid.columns.len()
+    if !mixed_cross_axis
+        && required_columns > grid.columns.len()
         && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
     {
         return Err(unsupported(
@@ -140,7 +154,7 @@ pub(super) fn validate_candidate(
         .flatten()
         .filter(|child| nodes.grid_item_owners.get(&child.id()) == Some(&node))
     {
-        validate_item(tree, snapshot, item)?;
+        validate_item(tree, snapshot, item, mixed_cross_axis)?;
     }
     Ok(())
 }
@@ -169,6 +183,7 @@ fn validate_item(
     tree: &HostDocumentSnapshot,
     snapshot: &ComputedStyleSnapshot,
     item: HostNodeHandle,
+    mixed_cross_axis: bool,
 ) -> Result<(), StyleLayoutError> {
     let node = item.id();
     let host_node = tree
@@ -200,14 +215,15 @@ fn validate_item(
             "computed four-axis Grid placement is missing",
         ));
     };
-    if ![
-        &placement.row_start,
-        &placement.row_end,
-        &placement.column_start,
-        &placement.column_end,
-    ]
-    .into_iter()
-    .all(|value| matches!(value, ComputedCssGridPlacement::Auto))
+    if !mixed_cross_axis
+        && ![
+            &placement.row_start,
+            &placement.row_end,
+            &placement.column_start,
+            &placement.column_end,
+        ]
+        .into_iter()
+        .all(|value| matches!(value, ComputedCssGridPlacement::Auto))
     {
         return Err(unsupported(
             node,

@@ -2670,3 +2670,60 @@ test('C11.4 anonymous Grid hyphens auto stays fixture-only with exact English so
   assert.ok(capture.includes('installedApkSha256'));
   assert.ok(capture.includes('installedExecutableSha256'));
 });
+
+test('C11.1 mixed column-flow host is gated and selectable on both simulator adapters', async () => {
+  const paths = [
+    'crates/spinon-ffi/Cargo.toml',
+    'crates/spinon-ffi/include/spinon_ffi.h',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures.rs',
+    'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/host.rs',
+    'crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_1_root_html_column_flow_mixed_cross_axis.rs',
+    'tools/build-android.sh',
+    'tools/build-ios-native.sh',
+    'tools/build-ios-sim.sh',
+    'platforms/android/app/build.gradle.kts',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java',
+    'platforms/android/app/src/main/cpp/spinon_jni.cc',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/AppDelegate.swift',
+    'platforms/ios/Sources/SpinonRunner.h',
+    'platforms/ios/Sources/SpinonRunner.mm',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [cargo, header, runtimeFixtureCatalog, ffiFixtureCatalog, host, ffi, androidBuild,
+    iosNativeBuild, iosSimulatorBuild, gradle, mainActivity, jni, android, appDelegate,
+    iosHeader, iosRunner, ios, project] = contents;
+  const feature = 'c11-1-root-html-column-flow-mixed-cross-axis-fixture-test';
+  const envFlag = 'SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST';
+  const symbol = 'spinon_runtime_gpu_host_new_c11_1_root_html_column_flow_mixed_cross_axis_fixture';
+
+  assert.match(cargo, new RegExp(`${feature}\\s*=\\s*\\[\\s*"c04-runtime-gpu-fixture-test",\\s*"spinon-runtime/c11-1-grid-column-flow-mixed-cross-axis-fixture-test",\\s*\\]`));
+  assert.match(runtimeFixtureCatalog,
+    new RegExp(`#\\[cfg\\(feature = "${feature}"\\)\\]\\s*pub\\(crate\\) mod c11_1_root_html_column_flow_mixed_cross_axis;`));
+  assert.match(ffiFixtureCatalog,
+    new RegExp(`#\\[cfg\\(feature = "${feature}"\\)\\]\\s*mod c11_1_root_html_column_flow_mixed_cross_axis;`));
+  assert.match(host, new RegExp(`#\\[cfg\\(feature = "${feature}"\\)\\]`));
+  assert.match(ffi, new RegExp(`${symbol}\\(`));
+  assert.match(header,
+    new RegExp(`#if[\\s\\S]*?defined\\(${envFlag}\\)[\\s\\S]*?${symbol}`));
+  for (const [label, source] of [
+    ['Android build', androidBuild], ['iOS native build', iosNativeBuild],
+    ['iOS simulator build', iosSimulatorBuild],
+  ]) {
+    assert.ok(source.includes(envFlag), `${label} must forward ${envFlag}`);
+  }
+  assert.match(gradle, new RegExp(envFlag));
+  assert.match(mainActivity, /spinon_c111_root_html_column_flow_mixed_cross_axis/);
+  assert.match(jni, new RegExp(`#if defined\\(${envFlag}\\)[\\s\\S]*?${symbol}`));
+  assert.match(android, /nativeCreateC111RootHtmlColumnFlowMixedCrossAxisHost/);
+  assert.match(appDelegate, /--spinon-c111-root-html-column-flow-mixed-cross-axis/);
+  assert.match(iosHeader, /createRuntimeGpuHostWithC11_1RootHtmlColumnFlowMixedCrossAxisFixture/);
+  assert.match(iosRunner,
+    new RegExp(`#if defined\\(${envFlag}\\)[\\s\\S]*?${symbol}`));
+  assert.match(ios, /--spinon-c111-root-html-column-flow-mixed-cross-axis/);
+  assert.match(project, new RegExp(envFlag));
+});

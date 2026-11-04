@@ -1,0 +1,119 @@
+{
+  "schema": "spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c111cfm-ios-mw23cgwv-f0048937-mixed-spans",
+  "processId": 18135,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 1,
+    "renderTree": 1,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    240,
+    90
+  ],
+  "drawable": [
+    720,
+    270
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "mixed-spans-row-span-center",
+      "css": [
+        180,
+        30
+      ],
+      "drawable": [
+        541,
+        91
+      ],
+      "rgba": [
+        132,
+        94,
+        247,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "mixed-spans-col-span-center",
+      "css": [
+        40,
+        15
+      ],
+      "drawable": [
+        121,
+        46
+      ],
+      "rgba": [
+        53,
+        120,
+        199,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "mixed-spans-fixed-center",
+      "css": [
+        100,
+        45
+      ],
+      "drawable": [
+        301,
+        136
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "mixed-spans-row-after-center",
+      "css": [
+        220,
+        45
+      ],
+      "drawable": [
+        661,
+        136
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "mixed-spans-col-after-center",
+      "css": [
+        140,
+        15
+      ],
+      "drawable": [
+        421,
+        46
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

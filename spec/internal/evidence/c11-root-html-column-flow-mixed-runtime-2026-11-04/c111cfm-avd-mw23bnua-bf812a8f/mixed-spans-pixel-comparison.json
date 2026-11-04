@@ -1,0 +1,130 @@
+{
+  "status": "matched",
+  "scene": "mixed-spans",
+  "runID": "c111cfm-avd-mw23bnua-bf812a8f-mixed-spans",
+  "processId": 12005,
+  "markerPrefix": "C111CFM",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    240,
+    90
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 5,
+  "matchedSamples": 5,
+  "maximumChannelError": 0,
+  "pngSha256": "af80334e21963226d44e0f086d29925816fdb81488094397e8fbdb8e68c4d18e",
+  "samples": [
+    {
+      "id": "mixed-spans-row-span-center",
+      "css": [
+        180,
+        30
+      ],
+      "pixel": [
+        473,
+        80
+      ],
+      "rgba": [
+        132,
+        94,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "mixed-spans-col-span-center",
+      "css": [
+        40,
+        15
+      ],
+      "pixel": [
+        106,
+        40
+      ],
+      "rgba": [
+        53,
+        120,
+        199,
+        255
+      ]
+    },
+    {
+      "id": "mixed-spans-fixed-center",
+      "css": [
+        100,
+        45
+      ],
+      "pixel": [
+        263,
+        119
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ]
+    },
+    {
+      "id": "mixed-spans-row-after-center",
+      "css": [
+        220,
+        45
+      ],
+      "pixel": [
+        578,
+        119
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ]
+    },
+    {
+      "id": "mixed-spans-col-after-center",
+      "css": [
+        140,
+        15
+      ],
+      "pixel": [
+        368,
+        40
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    }
+  ],
+  "environmentMapping": {
+    "reports": 4,
+    "successfulReports": 4,
+    "supersededReports": 0,
+    "viewportCssPx": [
+      240,
+      90
+    ],
+    "density": 2.625,
+    "deviceScaleFactor": 2.625,
+    "pageScale": 1,
+    "physicalScale": 2.625,
+    "surfaceScale": [
+      2.625,
+      2.625
+    ]
+  },
+  "png": "mixed-spans-surface-pixels.png"
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.1 Root HTML column-flow mixed cross-axis placement runtime</title>
+  </head>
+  <body style="margin:0;padding:0;background-color:#ffffff">
+    <!-- scene:dom-cross-axis:start -->
+    <div id="grid-dom-cross-axis" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="dom-cross-axis--c1" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:1;background-color:#e5484d"></div>
+      <div id="dom-cross-axis--d" style="width:40px;height:30px;margin:0;grid-row:2 / 3;grid-column:2 / 3;background-color:#3a8f5b"></div>
+      <div id="dom-cross-axis--r1" style="width:40px;height:30px;margin:0;grid-row:1;grid-column:auto;background-color:#f97316"></div>
+      <div id="dom-cross-axis--c2" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:1;background-color:#3578c7"></div>
+      <div id="dom-cross-axis--r2" style="width:40px;height:30px;margin:0;grid-row:1;grid-column:auto;background-color:#845ef7"></div>
+      <div id="dom-cross-axis--auto-last" style="width:40px;height:30px;margin:0;background-color:#f0b429"></div>
+    </div>
+    <!-- scene:dom-cross-axis:end -->
+    <!-- scene:mixed-spans:start -->
+    <div id="grid-mixed-spans" style="display:grid;width:240px;height:90px;grid-template-columns:40px 40px 40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="mixed-spans--row-span" style="width:40px;height:60px;margin:0;grid-row:1 / span 2;grid-column:auto;background-color:#845ef7"></div>
+      <div id="mixed-spans--col-span" style="width:80px;height:30px;margin:0;grid-row:auto;grid-column:1 / span 2;background-color:#3578c7"></div>
+      <div id="mixed-spans--fixed" style="width:40px;height:30px;margin:0;grid-row:2 / 3;grid-column:3 / 4;background-color:#3a8f5b"></div>
+      <div id="mixed-spans--row-after" style="width:40px;height:30px;margin:0;grid-row:2;grid-column:auto;background-color:#f97316"></div>
+      <div id="mixed-spans--col-after" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:4;background-color:#e5484d"></div>
+    </div>
+    <!-- scene:mixed-spans:end -->
+    <!-- scene:hidden-controls:start -->
+    <div id="grid-hidden-controls" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="hidden-controls--hidden-row" style="width:40px;height:30px;margin:0;visibility:hidden;grid-row:1;grid-column:auto;background-color:#e5484d"></div>
+      <div id="hidden-controls--row" style="width:40px;height:30px;margin:0;grid-row:1;grid-column:auto;background-color:#3a8f5b"></div>
+      <div id="hidden-controls--hidden-column" style="width:40px;height:30px;margin:0;visibility:hidden;grid-row:auto;grid-column:1;background-color:#3578c7"></div>
+      <div id="hidden-controls--column" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:1;background-color:#845ef7"></div>
+      <div id="hidden-controls--gone" style="display:none;width:40px;height:30px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#f0b429"></div>
+    </div>
+    <!-- scene:hidden-controls:end -->
+    <!-- scene:hidden-row-lock-qualification:start -->
+    <div id="grid-hidden-row-lock-qualification" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="hidden-row-lock-qualification--hidden-row-lock" style="width:40px;height:30px;margin:0;visibility:hidden;grid-row:1;grid-column:auto;background-color:#e5484d"></div>
+      <div id="hidden-row-lock-qualification--column-lock" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:1;background-color:#3578c7"></div>
+      <div id="hidden-row-lock-qualification--auto" style="width:40px;height:30px;margin:0;background-color:#f0b429"></div>
+    </div>
+    <!-- scene:hidden-row-lock-qualification:end -->
+    <!-- scene:hidden-column-lock-qualification:start -->
+    <div id="grid-hidden-column-lock-qualification" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="hidden-column-lock-qualification--hidden-column-lock" style="width:40px;height:30px;margin:0;visibility:hidden;grid-row:auto;grid-column:1;background-color:#3578c7"></div>
+      <div id="hidden-column-lock-qualification--row-lock" style="width:40px;height:30px;margin:0;grid-row:1;grid-column:auto;background-color:#f97316"></div>
+      <div id="hidden-column-lock-qualification--auto" style="width:40px;height:30px;margin:0;background-color:#f0b429"></div>
+    </div>
+    <!-- scene:hidden-column-lock-qualification:end -->
+    <!-- scene:display-none-control:start -->
+    <div id="grid-display-none-control" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="display-none-control--gone-cell" style="display:none;width:40px;height:30px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#e5484d"></div>
+      <div id="display-none-control--row-after-gone" style="width:40px;height:30px;margin:0;grid-row:1;grid-column:auto;background-color:#f0b429"></div>
+      <div id="display-none-control--column-after-gone" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:1;background-color:#3a8f5b"></div>
+    </div>
+    <!-- scene:display-none-control:end -->
+    <!-- scene:reverse-order:start -->
+    <div id="grid-reverse-order" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="reverse-order--c-first" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:4;background-color:#e5484d"></div>
+      <div id="reverse-order--r-first" style="width:40px;height:30px;margin:0;grid-row:3;grid-column:auto;background-color:#f97316"></div>
+      <div id="reverse-order--d-last" style="width:40px;height:30px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#3a8f5b"></div>
+      <div id="reverse-order--c-second" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:4;background-color:#3578c7"></div>
+      <div id="reverse-order--r-second" style="width:40px;height:30px;margin:0;grid-row:3;grid-column:auto;background-color:#845ef7"></div>
+    </div>
+    <!-- scene:reverse-order:end -->
+    <!-- scene:negative-line-control:start -->
+    <div id="grid-negative-line-control" style="display:grid;width:160px;height:90px;grid-template-columns:40px 40px 40px 40px;grid-template-rows:30px 30px 30px;grid-auto-flow:column;grid-auto-rows:auto;grid-auto-columns:auto;gap:0;margin:0;padding:0">
+      <div id="negative-line-control--fixed" style="width:40px;height:30px;margin:0;grid-row:1 / 2;grid-column:1 / 2;background-color:#3a8f5b"></div>
+      <div id="negative-line-control--column-negative" style="width:40px;height:30px;margin:0;grid-row:auto;grid-column:-2 / -1;background-color:#3578c7"></div>
+      <div id="negative-line-control--row-negative" style="width:40px;height:30px;margin:0;grid-row:-2 / -1;grid-column:auto;background-color:#f97316"></div>
+    </div>
+    <!-- scene:negative-line-control:end -->
+  </body>
+</html>

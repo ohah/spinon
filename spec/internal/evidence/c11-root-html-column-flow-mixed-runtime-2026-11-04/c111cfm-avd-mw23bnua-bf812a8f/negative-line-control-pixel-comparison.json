@@ -1,0 +1,96 @@
+{
+  "status": "matched",
+  "scene": "negative-line-control",
+  "runID": "c111cfm-avd-mw23bnua-bf812a8f-negative-line-control",
+  "processId": 12444,
+  "markerPrefix": "C111CFM",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "a8c9b7cf4b663e829fe9ecd0e1ca7f85c00d45f3ad4f18d60a66bf5963875576",
+  "samples": [
+    {
+      "id": "negative-line-control-fixed-center",
+      "css": [
+        20,
+        15
+      ],
+      "pixel": [
+        53,
+        40
+      ],
+      "rgba": [
+        58,
+        143,
+        91,
+        255
+      ]
+    },
+    {
+      "id": "negative-line-control-column-negative-center",
+      "css": [
+        140,
+        15
+      ],
+      "pixel": [
+        368,
+        40
+      ],
+      "rgba": [
+        53,
+        120,
+        199,
+        255
+      ]
+    },
+    {
+      "id": "negative-line-control-row-negative-center",
+      "css": [
+        20,
+        75
+      ],
+      "pixel": [
+        53,
+        198
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ]
+    }
+  ],
+  "environmentMapping": {
+    "reports": 4,
+    "successfulReports": 4,
+    "supersededReports": 0,
+    "viewportCssPx": [
+      160,
+      90
+    ],
+    "density": 2.625,
+    "deviceScaleFactor": 2.625,
+    "pageScale": 1,
+    "physicalScale": 2.625,
+    "surfaceScale": [
+      2.625,
+      2.625
+    ]
+  },
+  "png": "negative-line-control-surface-pixels.png"
+}

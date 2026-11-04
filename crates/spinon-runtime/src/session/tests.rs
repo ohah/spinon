@@ -17,6 +17,8 @@ mod root_html_grid_anonymous_text;
 mod root_html_grid_auto_minimum;
 mod root_html_grid_auto_minimum_named_areas;
 mod root_html_grid_column_flow;
+#[cfg(feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test")]
+mod root_html_grid_column_flow_mixed_cross_axis;
 mod root_html_grid_content_alignment;
 #[cfg(feature = "c14-1-live-v8-fixture-test")]
 mod root_html_grid_dense_auto_placement;

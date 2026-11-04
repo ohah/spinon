@@ -117,8 +117,11 @@ impl TaskScheduler {
                     reply,
                     ..
                 } => (sequence, trace_cookie, "dispatch", caller_thread_id, reply),
-                #[cfg(feature = "c14-1-live-v8-fixture-test")]
-                Command::SnapshotDocumentForC14Fixture { reply } => {
+                #[cfg(any(
+                    feature = "c14-1-live-v8-fixture-test",
+                    feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+                ))]
+                Command::SnapshotDocumentForFixture { reply } => {
                     let _ = reply.send(Err(format!("{report} status={status}")));
                     continue;
                 }

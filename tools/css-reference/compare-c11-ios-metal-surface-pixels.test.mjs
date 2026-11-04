@@ -11,6 +11,15 @@ const fixture = JSON.parse(readFileSync('tests/fixtures/css/c11/metal-surface-pi
 const c1131Fixture = JSON.parse(readFileSync('tests/fixtures/css/c11/grid-template-repeat-c1131-pixel-samples-v1.json', 'utf8'));
 const denseMatrix = JSON.parse(readFileSync(
   'tests/fixtures/css/c11/root-html-grid-dense-auto-placement-runtime-matrix-v1.json', 'utf8'));
+const mixedColumnMatrix = JSON.parse(readFileSync(
+  'tests/fixtures/css/c11/root-html-grid-column-flow-mixed-cross-axis-runtime-matrix-v1.json', 'utf8'));
+const mixedColumnScene = mixedColumnMatrix.scenes.find(({ id }) => id === 'dom-cross-axis');
+const mixedColumnFixture = {
+  fixtureId: mixedColumnScene.id,
+  sceneId: mixedColumnScene.id,
+  runtime: { viewportCssPx: mixedColumnScene.viewportCssPx },
+  samples: mixedColumnScene.pixelSamples,
+};
 const denseCase = denseMatrix.cases.find(({ id }) => id === 'row-dense-hole-fill');
 const denseFixture = {
   fixtureId: denseCase.id,
@@ -108,6 +117,59 @@ test('accepts the separately namespaced C11.2.2 Metal surface pixel markers', ()
   });
   assert.equal(result.status, 'matched');
   assert.equal(result.schema, 'spinon-c11-2-2-ios-metal-surface-pixels/v1');
+});
+
+test('accepts the C11.1 mixed column-flow Metal pixel namespace and schema', () => {
+  const mixedRunID = 'c111cfm-ios-metal-matrix-test-001';
+  const begin = {
+    ...common,
+    run_id: mixedRunID,
+    scene: mixedColumnFixture.sceneId,
+    viewport: '160x90',
+    drawable: '480x270',
+  };
+  const samples = mixedColumnFixture.samples.map((sample) => {
+    const point = devicePoint(sample);
+    return `SPINON_C111CFM_METAL_PIXEL_SAMPLE run_id=${mixedRunID} pid=50123 surface_generation=4 sample=${sample.id} x=${point.x} y=${point.y} rgba=${rgba(sample.rgba)} expected=${rgba(sample.rgba)} exact=true`;
+  });
+  const summary = {
+    ...common,
+    run_id: mixedRunID,
+    drawable: '480x270',
+    scale_x: '3',
+    scale_y: '3',
+    status: 'matched',
+    expected_samples: String(mixedColumnFixture.samples.length),
+    observed_samples: String(mixedColumnFixture.samples.length),
+    matched_samples: String(mixedColumnFixture.samples.length),
+  };
+  const log = [
+    `SPINON_C111CFM_METAL_PIXEL_BEGIN ${Object.entries(begin).map(([key, value]) => `${key}=${value}`).join(' ')}`,
+    ...samples,
+    `SPINON_C111CFM_METAL_PIXEL_SUMMARY ${Object.entries(summary).map(([key, value]) => `${key}=${value}`).join(' ')}`,
+  ].join('\n');
+  const result = compareC11IOSMetalPixelLogs(log, {
+    fixture: mixedColumnFixture,
+    runID: mixedRunID,
+    markerPrefix: 'C111CFM',
+  });
+  assert.equal(result.status, 'matched');
+  assert.equal(result.matchedSamples, mixedColumnFixture.samples.length);
+  assert.equal(result.schema,
+    'spinon-c11-root-html-column-flow-mixed-cross-axis-ios-metal-surface-pixels/v1');
+  assert.deepEqual(result.drawable, [480, 270]);
+  assert.deepEqual(result.scale, [3, 3]);
+  assert.throws(() => compareC11IOSMetalPixelLogs(log.replace('scale_x=3', 'scale_x=2.625'), {
+    fixture: mixedColumnFixture,
+    runID: mixedRunID,
+    markerPrefix: 'C111CFM',
+  }));
+  assert.throws(() => compareC11IOSMetalPixelLogs(
+    log.replaceAll('480x270', '960x540'), {
+      fixture: mixedColumnFixture,
+      runID: mixedRunID,
+      markerPrefix: 'C111CFM',
+    }));
 });
 
 test('accepts the separately namespaced C11.2.3 Metal surface pixel markers', () => {

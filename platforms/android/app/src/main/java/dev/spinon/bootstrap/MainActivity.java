@@ -367,10 +367,15 @@ public final class MainActivity extends Activity {
         }
         String c11GridCase = getIntent().getStringExtra("spinon_c11_grid_case");
         int c11GridSceneIndex = 0;
+        boolean c111RootHtmlColumnFlowMixedCrossAxisRequested = getIntent()
+                .getBooleanExtra("spinon_c111_root_html_column_flow_mixed_cross_axis", false);
         boolean c111RootHtmlDensePlacementRequested = getIntent()
-                .getBooleanExtra("spinon_c111_root_html_dense_placement", false);
-        String c111RootHtmlDenseScene = getIntent()
-                .getStringExtra("spinon_c111_root_html_dense_scene");
+                .getBooleanExtra("spinon_c111_root_html_dense_placement", false)
+                || c111RootHtmlColumnFlowMixedCrossAxisRequested;
+        String c111RootHtmlDenseScene = c111RootHtmlColumnFlowMixedCrossAxisRequested
+                ? getIntent().getStringExtra(
+                        "spinon_c111_root_html_column_flow_mixed_cross_axis_scene")
+                : getIntent().getStringExtra("spinon_c111_root_html_dense_scene");
         boolean c1121GridPlacementRequested = getIntent()
                 .getBooleanExtra("spinon_c1121_grid_placement", false);
         boolean c131OverflowClipRequested = getIntent()

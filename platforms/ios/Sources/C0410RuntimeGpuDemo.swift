@@ -12141,6 +12141,12 @@ private struct C111MetalPixelRun {
         "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",
         "auto-span-at-track-limit",
     ]
+    private static let c111RootHtmlColumnFlowMixedCrossAxisPixelSceneIDs: Set<String> = [
+        "dom-cross-axis", "mixed-spans", "hidden-controls",
+        "hidden-row-lock-qualification", "hidden-column-lock-qualification",
+        "display-none-control", "implicit-boundary-control", "reverse-order",
+        "negative-line-control",
+    ]
     private static let c1121PixelSceneIDs: Set<String> = [
         "numeric-lines", "positive-spans", "reversed-lines",
         "shorthand-cascade", "overlap-source-order", "nested-placement-modes",
@@ -14500,8 +14506,17 @@ private struct C111MetalPixelRun {
         let denseScene = arguments.first(where: {
             $0.hasPrefix("--spinon-c111-root-html-dense-scene=")
         }).map { String($0.dropFirst("--spinon-c111-root-html-dense-scene=".count)) }
+        let columnFlowMixedScene = arguments.first(where: {
+            $0.hasPrefix("--spinon-c111-root-html-column-flow-mixed-cross-axis-scene=")
+        }).map { String($0.dropFirst(
+            "--spinon-c111-root-html-column-flow-mixed-cross-axis-scene=".count)) }
+        let isC111RootHtmlColumnFlowMixedCrossAxis = arguments.contains(
+            "--spinon-c111-root-html-column-flow-mixed-cross-axis") || columnFlowMixedScene != nil
         let isC111RootHtmlDense = arguments.contains(
             "--spinon-c111-root-html-dense-placement") || denseScene != nil
+        if isC111RootHtmlDense && isC111RootHtmlColumnFlowMixedCrossAxis { return nil }
+        let isC111RootHtmlPlacement = isC111RootHtmlDense
+            || isC111RootHtmlColumnFlowMixedCrossAxis
         if isC111RootHtmlDense {
             let denseRunID = arguments.first(where: {
                 $0.hasPrefix("--spinon-c111-root-html-dense-run-id=")
@@ -14510,6 +14525,24 @@ private struct C111MetalPixelRun {
                   Self.c111RootHtmlDensePlacementPixelSceneIDs.contains(denseScene),
                   denseScene == sceneID, denseRunID == runID,
                   arguments.contains("--spinon-c111-root-html-dense-placement"),
+                  !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
+                  !isC114TrackSizing, !isC1123Placement, !isC1122Placement,
+                  !isC1121Placement,
+                  !arguments.contains("--spinon-c111-root-html-percent-columns") else {
+                return nil
+            }
+        }
+        if isC111RootHtmlColumnFlowMixedCrossAxis {
+            let columnFlowRunID = arguments.first(where: {
+                $0.hasPrefix("--spinon-c111-root-html-column-flow-mixed-cross-axis-run-id=")
+            }).map { String($0.dropFirst(
+                "--spinon-c111-root-html-column-flow-mixed-cross-axis-run-id=".count)) }
+            guard let columnFlowMixedScene,
+                  Self.c111RootHtmlColumnFlowMixedCrossAxisPixelSceneIDs.contains(
+                    columnFlowMixedScene),
+                  columnFlowMixedScene == sceneID, columnFlowRunID == runID,
+                  arguments.contains("--spinon-c111-root-html-column-flow-mixed-cross-axis"),
+                  !arguments.contains("--spinon-c111-root-html-dense-placement"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
                   !isC114TrackSizing, !isC1123Placement, !isC1122Placement,
                   !isC1121Placement,
@@ -14526,8 +14559,13 @@ private struct C111MetalPixelRun {
             c114Scene == "fit-content-zoomed-grid-wpt" ? 800
                 : c114IsFitContentPercentageArgumentScene(c114Scene ?? "") ? 400
                 : C114FitContentImplicitColumnWpt.isScene(c114Scene ?? "") ? 320 : 240
-        let pixelViewportWidth: UInt32 = isC111RootHtmlDense ? 360 : c114PixelViewportWidth
-        let pixelViewportHeight: UInt32 = isC111RootHtmlDense ? 800 : c114PixelViewportHeight
+        let pixelViewportWidth: UInt32 = isC111RootHtmlPlacement
+            ? isC111RootHtmlColumnFlowMixedCrossAxis
+                ? (sceneID == "mixed-spans" ? 240 : 160) : 360
+            : c114PixelViewportWidth
+        let pixelViewportHeight: UInt32 = isC111RootHtmlPlacement
+            ? isC111RootHtmlColumnFlowMixedCrossAxis ? 90 : 800
+            : c114PixelViewportHeight
         guard (8...128).contains(runID.count),
               runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }),
               (1...16_384).contains(encoded.count),
@@ -14551,7 +14589,8 @@ private struct C111MetalPixelRun {
             return nil
         }
         return C111MetalPixelRun(runID: runID, sceneID: sceneID,
-                                 markerPrefix: isC111RootHtmlDense ? "C111RHD"
+                                 markerPrefix: isC111RootHtmlColumnFlowMixedCrossAxis ? "C111CFM"
+                                     : isC111RootHtmlDense ? "C111RHD"
                                      : isC114TrackSizing ? "C114"
                                      : isC1133TemplateAreas ? "C1133"
                                      : isC1132NamedLine ? "C1132"
@@ -14559,11 +14598,17 @@ private struct C111MetalPixelRun {
                                      : isC1123Placement ? "C1123"
                                      : isC1122Placement ? "C1122" : "C111",
                                  samples: samples,
-                                 usesRootHtmlViewport: isC111RootHtmlDense)
+                                 usesRootHtmlViewport: isC111RootHtmlPlacement)
     }
 }
 
 private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
+    if arguments.contains("--spinon-c111-root-html-column-flow-mixed-cross-axis") {
+        return arguments.first(where: {
+            $0.hasPrefix("--spinon-c111-root-html-column-flow-mixed-cross-axis-scene=")
+        }).map { String($0.dropFirst(
+            "--spinon-c111-root-html-column-flow-mixed-cross-axis-scene=".count)) }
+    }
     if arguments.contains("--spinon-c111-root-html-dense-placement") {
         return arguments.first(where: {
             $0.hasPrefix("--spinon-c111-root-html-dense-scene=")
@@ -14996,7 +15041,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? "C11.5 Root HTML Grid item auto-size/stretch"
                 : "C11.5 Root HTML Grid item self-alignment"
             : c114GridTrackSizingProbeRequested ? "C11.4"
-            : c111RootHtmlDensePlacementProbeRequested ? "C11.1 Root HTML dense placement"
+            : c111RootHtmlDensePlacementProbeRequested
+                ? c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+                    ? "C11.1 Root HTML column-flow mixed cross-axis"
+                    : "C11.1 Root HTML dense placement"
             : c1133GridTemplateAreasProbeRequested ? "C11.3.3"
             : c1132GridNamedLinesProbeRequested ? "C11.3.2"
             : c1131GridRepeatProbeRequested ? "C11.3.1"
@@ -15114,22 +15162,66 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         "hidden-item-excluded", "nested-mixed-flow", "auto-track-no-implicit",
         "auto-span-at-track-limit", "auto-span-over-track-limit",
     ]
+    private let c111RootHtmlColumnFlowMixedCrossAxisSceneIDs: Set<String> = [
+        "dom-cross-axis", "mixed-spans", "hidden-controls",
+        "hidden-row-lock-qualification", "hidden-column-lock-qualification",
+        "display-none-control", "implicit-boundary-control", "reverse-order",
+        "negative-line-control",
+    ]
     private let c111RootHtmlDensePlacementProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c111-root-html-dense-placement")
+        || ProcessInfo.processInfo.arguments
+            .contains("--spinon-c111-root-html-column-flow-mixed-cross-axis")
+    private let c111RootHtmlColumnFlowMixedCrossAxisProbeRequested =
+        ProcessInfo.processInfo.arguments
+            .contains("--spinon-c111-root-html-column-flow-mixed-cross-axis")
     private var c111RootHtmlDensePlacementSceneID: String {
-        ProcessInfo.processInfo.arguments.first(where: {
-            $0.hasPrefix("--spinon-c111-root-html-dense-scene=")
-        }).map { String($0.dropFirst("--spinon-c111-root-html-dense-scene=".count)) } ?? ""
+        let prefix = c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+            ? "--spinon-c111-root-html-column-flow-mixed-cross-axis-scene="
+            : "--spinon-c111-root-html-dense-scene="
+        return ProcessInfo.processInfo.arguments.first(where: {
+            $0.hasPrefix(prefix)
+        }).map { String($0.dropFirst(prefix.count)) } ?? ""
     }
     private var c111RootHtmlDensePlacementRunID: String {
-        ProcessInfo.processInfo.arguments.first(where: {
-            $0.hasPrefix("--spinon-c111-root-html-dense-run-id=")
-        }).map { String($0.dropFirst("--spinon-c111-root-html-dense-run-id=".count)) } ?? "manual"
+        let prefix = c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+            ? "--spinon-c111-root-html-column-flow-mixed-cross-axis-run-id="
+            : "--spinon-c111-root-html-dense-run-id="
+        return ProcessInfo.processInfo.arguments.first(where: {
+            $0.hasPrefix(prefix)
+        }).map { String($0.dropFirst(prefix.count)) } ?? "manual"
+    }
+    private var c111RootHtmlFixtureMarkerPrefix: String {
+        c111RootHtmlColumnFlowMixedCrossAxisProbeRequested ? "C111CFM" : "C111RHD"
+    }
+    private var c111RootHtmlFixtureSummaryMarker: String {
+        c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+            ? "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_SUMMARY"
+            : "SPINON_C111_ROOT_HTML_DENSE_SUMMARY"
+    }
+    private var c111RootHtmlFixtureEvalMarker: String {
+        c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+            ? "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_EVAL_RUN"
+            : "SPINON_C111_ROOT_HTML_DENSE_EVAL_RUN"
+    }
+    private var c111RootHtmlFixtureRejectionMarker: String {
+        c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+            ? "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_REJECTION"
+            : "SPINON_C111_ROOT_HTML_DENSE_REJECTION"
+    }
+    private var c111RootHtmlFixtureViewportSize: CGSize {
+        guard c111RootHtmlColumnFlowMixedCrossAxisProbeRequested else {
+            return CGSize(width: 360, height: 800)
+        }
+        return CGSize(width: c111RootHtmlDensePlacementSceneID == "mixed-spans" ? 240 : 160,
+                      height: 90)
     }
     private var c111RootHtmlDensePlacementExpectedRejection: (
         code: String, property: String, runtimeNodeID: Int
     )? {
         switch c111RootHtmlDensePlacementSceneID {
+        case "implicit-boundary-control":
+            return ("invalid_grid_placement", "grid-row-start", 16)
         case "row-dense-fixed-row":
             return ("unsupported_grid_auto_columns", "grid-auto-columns", 17)
         case "auto-span-over-track-limit":
@@ -15556,7 +15648,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c114GridTrackSizingProbeRequested
             ? "SPINON · C11.4 Grid track sizing"
             : c111RootHtmlDensePlacementProbeRequested
-            ? "SPINON · C11.1 Root HTML dense Grid placement"
+            ? c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+                ? "SPINON · C11.1 Root HTML column-flow mixed cross-axis"
+                : "SPINON · C11.1 Root HTML dense Grid placement"
             : c111RootHtmlPercentColumnsProbeRequested
             ? "SPINON · C11.1 Root HTML Grid tracks"
             : c1133GridTemplateAreasProbeRequested
@@ -15692,7 +15786,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c1123GridAutoPlacementProbeRequested
             ? "dense·column Grid 자동 배치 → Stylo → Taffy → WGPU Metal · 360×800 CSS px"
             : c111RootHtmlDensePlacementProbeRequested
-            ? "Parsed Root HTML dense auto-placement → Stylo → Taffy → WGPU Metal · 360×800 CSS px"
+            ? c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+                ? "Parsed Root HTML column-flow mixed placement → Stylo → Taffy → WGPU Metal · \(Int(c111RootHtmlFixtureViewportSize.width))×90 CSS px"
+                : "Parsed Root HTML dense auto-placement → Stylo → Taffy → WGPU Metal · 360×800 CSS px"
             : c1122GridAutoPlacementProbeRequested
             ? "V8 행 우선 sparse auto-placement·implicit row → Stylo → Taffy → WGPU · 360×800 CSS px"
             : c1121GridPlacementProbeRequested
@@ -16033,7 +16129,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : c131StackingDescendantClipProbeRequested ? 540
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
-                : c111RootHtmlDensePlacementProbeRequested ? 360
+                : c111RootHtmlDensePlacementProbeRequested
+                    ? c111RootHtmlFixtureViewportSize.width
                 : c131BorderStripProbeRequested || c132ScrollFixtureRequested
                     || c133GestureFixtureRequested
                 ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
@@ -16051,7 +16148,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 : imageObjectFitPositionProbeRequested ? 72 : 40
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
-                : c111RootHtmlDensePlacementProbeRequested ? 800
+                : c111RootHtmlDensePlacementProbeRequested
+                    ? c111RootHtmlFixtureViewportSize.height
                 : c131BorderStripProbeRequested ? 160
                 : c131StackingDescendantClipProbeRequested ? 128
                 : c125StickyFixtureRequested ? 260
@@ -16153,8 +16251,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             && c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt"
             ? CGSize(width: 320, height: 800)
             : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
-                || c111RootHtmlDensePlacementProbeRequested
-            ? CGSize(width: 360, height: 800)
+            || c111RootHtmlDensePlacementProbeRequested
+            ? c111RootHtmlFixtureViewportSize
             : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID)
                 ? CGSize(width: 480, height: 320)
                 : c114OverflowPixelReadbackViewportWidth > 320
@@ -17658,8 +17756,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             postStatus("실패 · C11.4 Grid fixture 또는 profile 선택이 올바르지 않습니다")
             return
         }
+        let c111RootHtmlFixtureSceneAllowed = c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+            ? c111RootHtmlColumnFlowMixedCrossAxisSceneIDs.contains(
+                c111RootHtmlDensePlacementSceneID)
+            : c111RootHtmlDensePlacementSceneIDs.contains(c111RootHtmlDensePlacementSceneID)
         if c111RootHtmlDensePlacementProbeRequested
-            && (!c111RootHtmlDensePlacementSceneIDs.contains(c111RootHtmlDensePlacementSceneID)
+            && (!c111RootHtmlFixtureSceneAllowed
+                || (c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
+                    && ProcessInfo.processInfo.arguments.contains(
+                        "--spinon-c111-root-html-dense-placement"))
                 || c111RootHtmlDensePlacementRunID.range(
                     of: "^[A-Za-z0-9_-]{1,80}$", options: .regularExpression) == nil
                 || c111RootHtmlPercentColumnsProbeRequested
@@ -17669,8 +17774,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 || c114GridTrackSizingProbeRequested
                 || (c11GridSceneArgument != nil
                     && c11GridSceneArgument != c111RootHtmlDensePlacementSceneID)) {
-            log("SPINON_C111_ROOT_HTML_DENSE_ARGUMENT_ERROR rejected=true scene_id=\(c111RootHtmlDensePlacementSceneID)")
-            postStatus("실패 · 알 수 없거나 중복 선택된 C11.1 Root HTML dense scene")
+            log("\(c111RootHtmlColumnFlowMixedCrossAxisProbeRequested ? "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS" : "SPINON_C111_ROOT_HTML_DENSE")_ARGUMENT_ERROR rejected=true scene_id=\(c111RootHtmlDensePlacementSceneID)")
+            postStatus("실패 · 알 수 없거나 중복 선택된 C11.1 Root HTML Grid scene")
             return
         }
         if c1123GridAutoPlacementProbeRequested
@@ -17702,7 +17807,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             return
         }
         if c111MetalPixelArgumentRequested && c111MetalPixelRun == nil {
-            let markerPrefix = c111RootHtmlDensePlacementProbeRequested ? "SPINON_C111_ROOT_HTML_DENSE"
+            let markerPrefix = c111RootHtmlDensePlacementProbeRequested
+                ? "SPINON_C111_ROOT_HTML_\(c111RootHtmlColumnFlowMixedCrossAxisProbeRequested ? "COLUMN_FLOW_MIXED_CROSS_AXIS" : "DENSE")"
                 : c114GridTrackSizingProbeRequested ? "SPINON_C114"
                 : c1133GridTemplateAreasProbeRequested ? "SPINON_C1133"
                 : c1132GridNamedLinesProbeRequested ? "SPINON_C1132"
@@ -17851,7 +17957,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c111MetalPixelRun != nil && c111MetalPixelRun?.usesRootHtmlViewport != true
             ? SpinonRunner.createRuntimeGpuHostWithC11_1GridSurfacePixelReadbackFixture()
             : c111RootHtmlDensePlacementProbeRequested
+            ? c111RootHtmlColumnFlowMixedCrossAxisProbeRequested
             ? SpinonRunner.createRuntimeGpuHost(
+                withC11_1RootHtmlColumnFlowMixedCrossAxisFixture:
+                    c111RootHtmlDensePlacementSceneID)
+            : SpinonRunner.createRuntimeGpuHost(
                 withC11_1RootHtmlDensePlacementFixture: c111RootHtmlDensePlacementSceneID)
             : c111RootHtmlPercentColumnsProbeRequested
             ? SpinonRunner.createRuntimeGpuHostWithC11_1RootHtmlPercentColumnsFixture()
@@ -17963,7 +18073,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
             || c111RootHtmlDensePlacementProbeRequested
-            ? 360 : c114GridTrackSizingProbeRequested || c1131GridRepeatProbeRequested
+            ? Float(c111RootHtmlFixtureViewportSize.width)
+            : c114GridTrackSizingProbeRequested || c1131GridRepeatProbeRequested
                 ? c114GridTrackSizingProbeRequested
                     ? c114OverflowPixelReadbackViewportWidth : 320
                 : fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
@@ -17986,7 +18097,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
             || c111RootHtmlDensePlacementProbeRequested
-            ? 800 : c114GridTrackSizingProbeRequested || c1133GridTemplateAreasProbeRequested
+            ? Float(c111RootHtmlFixtureViewportSize.height)
+            : c114GridTrackSizingProbeRequested || c1133GridTemplateAreasProbeRequested
                 || c1132GridNamedLinesProbeRequested || c1131GridRepeatProbeRequested
                 || fixedSizeCssFixtureRequested ? 240 : environmentInputs.height
         log("SPINON_C0410_ENVIRONMENT_REQUEST width=\(viewportWidth) height=\(viewportHeight)")
@@ -18018,7 +18130,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             var staleRetries = 0
             while environment?.hasPrefix("status=-12 ") == true && staleRetries < 2 {
                 staleRetries += 1
-                log("SPINON_C111_ROOT_HTML_DENSE_ENVIRONMENT_RETRY run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) attempt=\(staleRetries) reason=superseded-request")
+                log("\(c111RootHtmlColumnFlowMixedCrossAxisProbeRequested ? "SPINON_C111_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS" : "SPINON_C111_ROOT_HTML_DENSE")_ENVIRONMENT_RETRY run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) attempt=\(staleRetries) reason=superseded-request")
                 environment = SpinonRunner.setRuntimeGpuEnvironment(
                     handle,
                     width: viewportWidth * environmentScale,
@@ -18031,8 +18143,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if c111RootHtmlDensePlacementProbeRequested,
            let expected = c111RootHtmlDensePlacementExpectedRejection,
            c111RootHtmlDensePlacementRejectionMatches(environment) {
-            log("SPINON_C111_ROOT_HTML_DENSE_REJECTION run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) expected=true code=\(expected.code) property=\(expected.property) \(runtimeStatusSummary(environment ?? ""))")
-            postStatus("C11.1 Root HTML dense 예상 거부 확인 · \(c111RootHtmlDensePlacementSceneID)")
+            log("\(c111RootHtmlFixtureRejectionMarker) run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) expected=true code=\(expected.code) property=\(expected.property) \(runtimeStatusSummary(environment ?? ""))")
+            postStatus("C11.1 Root HTML Grid 예상 거부 확인 · \(c111RootHtmlDensePlacementSceneID)")
             return
         }
         guard environment?.hasPrefix("status=0 ") == true else {
@@ -18828,8 +18940,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if c111RootHtmlDensePlacementProbeRequested,
            let result,
            result.hasPrefix("status=0 ") {
-            log("SPINON_C111_ROOT_HTML_DENSE_SUMMARY run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) \(runtimeStatusSummary(result))")
-            logC111GridNodeFrames(result, prefix: "SPINON_C111RHD")
+            log("\(c111RootHtmlFixtureEvalMarker) run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) \(runtimeStatusSummary(result))")
+            log("\(c111RootHtmlFixtureSummaryMarker) run_id=\(c111RootHtmlDensePlacementRunID) scene_id=\(c111RootHtmlDensePlacementSceneID) \(runtimeStatusSummary(result))")
+            logC111GridNodeFrames(result, prefix: "SPINON_\(c111RootHtmlFixtureMarkerPrefix)")
         }
         if sceneWasSupersededAfterCommit {
             let scope = c1133GridTemplateAreasProbeRequested
@@ -20980,6 +21093,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? 980 : expectedViewportWidth
             let pixelViewportHeight = usesReportedC115Viewport
                 ? 735 : expectedViewportHeight
+            let usesDensityMappedC111 = pixelRun.markerPrefix == "C111CFM"
             guard (usesReportedC115Viewport
                     || (viewportWidth == expectedViewportWidth
                         && viewportHeight == expectedViewportHeight)),
@@ -20989,10 +21103,18 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c111MetalPixelReadbackFinished = true
                 throw C0410LatestTaskLaneError.operationFailed(detail)
             }
-            let scaleX = Float(drawableSize.width) / pixelViewportWidth
-            let scaleY = Float(drawableSize.height) / pixelViewportHeight
+            stateLock.lock()
+            let pixelDensity = displayScale
+            stateLock.unlock()
+            let scaleX = usesDensityMappedC111
+                ? pixelDensity : Float(drawableSize.width) / pixelViewportWidth
+            let scaleY = usesDensityMappedC111
+                ? pixelDensity : Float(drawableSize.height) / pixelViewportHeight
+            let viewportFitsSurface = !usesDensityMappedC111
+                || (pixelViewportWidth * scaleX <= Float(drawableSize.width)
+                    && pixelViewportHeight * scaleY <= Float(drawableSize.height))
             guard scaleX.isFinite, scaleY.isFinite, scaleX > 0,
-                  abs(scaleX - scaleY) < 0.000001 else {
+                  abs(scaleX - scaleY) < 0.000001, viewportFitsSurface else {
                 let detail = "C11 Metal pixel drawable scale의 가로·세로 비율이 다릅니다"
                 log("\(pixelMarker)_ERROR run_id=\(pixelRun.runID) stage=surface-scale")
                 c111MetalPixelReadbackFinished = true
@@ -22447,6 +22569,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let drawableSize = c111MetalDrawableSize
         let viewportWidth = UInt32(viewportWidthCssPx)
         let viewportHeight = UInt32(viewportHeightCssPx)
+        let pixelDensity = displayScale
         stateLock.unlock()
         let viewport = (
             width: run.usesRootHtmlViewport
@@ -22462,10 +22585,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
               drawableSize.height == CGFloat(surface[1]) else {
             throw failure("surface-generation", "viewport 또는 surface drawable 크기가 요청과 달라졌습니다")
         }
-        let scaleX = Float(surface[0]) / Float(viewport.width)
-        let scaleY = Float(surface[1]) / Float(viewport.height)
+        let usesDensityMappedC111 = run.markerPrefix == "C111CFM"
+        let scaleX = usesDensityMappedC111
+            ? pixelDensity : Float(surface[0]) / Float(viewport.width)
+        let scaleY = usesDensityMappedC111
+            ? pixelDensity : Float(surface[1]) / Float(viewport.height)
+        let viewportFitsSurface = !usesDensityMappedC111
+            || (Float(viewport.width) * scaleX <= Float(surface[0])
+                && Float(viewport.height) * scaleY <= Float(surface[1]))
         guard scaleX.isFinite, scaleY.isFinite, scaleX > 0,
-              abs(scaleX - scaleY) < 0.000001 else {
+              abs(scaleX - scaleY) < 0.000001, viewportFitsSurface else {
             throw failure("surface-scale", "drawable 가로·세로 pixel scale이 일치하지 않습니다")
         }
         let documentRevision = reportField(result, "document_revision=")

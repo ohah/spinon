@@ -18,15 +18,25 @@ pub(super) fn validate_items(
 ) -> Result<(), LayoutError> {
     let mixed_explicit =
         container.placement_mode == GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1;
-    let mixed_cross_axis =
-        container.placement_mode == GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1;
+    let mixed_cross_axis_column =
+        container.placement_mode == GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1;
+    let mixed_cross_axis = matches!(
+        container.placement_mode,
+        GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
+            | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+    );
     if container.placement_mode != GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
         && !mixed_explicit
         && !mixed_cross_axis
     {
         return Ok(());
     }
-    validate_container(container_node.id, container_node.style, container)?;
+    validate_container(
+        container_node.id,
+        container_node.style,
+        container,
+        mixed_cross_axis_column,
+    )?;
 
     let mut grid_locked_axis = None;
     let mut item_count = 0usize;
@@ -151,7 +161,7 @@ fn locked_axis(
     }
 }
 
-fn is_fully_definite(placement: &GridItemInput) -> bool {
+pub(super) fn is_fully_definite(placement: &GridItemInput) -> bool {
     has_line(&placement.row_start, &placement.row_end)
         && has_line(&placement.column_start, &placement.column_end)
         && !is_auto_axis(&placement.row_start, &placement.row_end)
@@ -216,8 +226,11 @@ fn validate_container(
     node: NodeId,
     style: LayoutStyle,
     container: &GridContainerInput,
+    column_flow: bool,
 ) -> Result<(), LayoutError> {
-    if container.auto_flow != GridAutoFlow::Row {
+    if (column_flow && container.auto_flow != GridAutoFlow::Column)
+        || (!column_flow && container.auto_flow != GridAutoFlow::Row)
+    {
         return Err(LayoutError::UnsupportedGridAutoFlow(node));
     }
     for (property, tracks) in [

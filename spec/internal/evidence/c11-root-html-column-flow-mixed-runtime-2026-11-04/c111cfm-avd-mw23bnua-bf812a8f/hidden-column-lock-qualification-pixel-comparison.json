@@ -1,0 +1,96 @@
+{
+  "status": "matched",
+  "scene": "hidden-column-lock-qualification",
+  "runID": "c111cfm-avd-mw23bnua-bf812a8f-hidden-column-lock-qualification",
+  "processId": 12194,
+  "markerPrefix": "C111CFM",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    945,
+    2100
+  ],
+  "runtimeViewportCssPx": [
+    160,
+    90
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "2b5b830bc5bf96664cc6cd9fe350789007d290f2d8c68375b8f77fbc0f84f4ab",
+  "samples": [
+    {
+      "id": "hidden-column-lock-qualification-hidden-column-lock-center",
+      "css": [
+        20,
+        15
+      ],
+      "pixel": [
+        53,
+        40
+      ],
+      "rgba": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "hidden-column-lock-qualification-row-lock-center",
+      "css": [
+        60,
+        15
+      ],
+      "pixel": [
+        158,
+        40
+      ],
+      "rgba": [
+        249,
+        115,
+        22,
+        255
+      ]
+    },
+    {
+      "id": "hidden-column-lock-qualification-auto-center",
+      "css": [
+        60,
+        45
+      ],
+      "pixel": [
+        158,
+        119
+      ],
+      "rgba": [
+        240,
+        180,
+        41,
+        255
+      ]
+    }
+  ],
+  "environmentMapping": {
+    "reports": 4,
+    "successfulReports": 4,
+    "supersededReports": 0,
+    "viewportCssPx": [
+      160,
+      90
+    ],
+    "density": 2.625,
+    "deviceScaleFactor": 2.625,
+    "pageScale": 1,
+    "physicalScale": 2.625,
+    "surfaceScale": [
+      2.625,
+      2.625
+    ]
+  },
+  "png": "hidden-column-lock-qualification-surface-pixels.png"
+}
