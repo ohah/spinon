@@ -1,0 +1,54 @@
+{
+  "source_commit": "287fd4872f64e62eb00584eea70e5a1645cc270c",
+  "route": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "cache_busted_route": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=pr1153-final-dc5c76792a21",
+  "page_title": "스피논 구현 로드맵",
+  "target_card_count": 1,
+  "target_pr": 1152,
+  "c11_incomplete_visible": true,
+  "official_completion_count_visible": "72/213",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 1000,
+      "document_client_width": 1280,
+      "document_scroll_width": 1280,
+      "horizontal_overflow": false,
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+      "screenshot_sha256": "346ede38b1c78612c898f9173013f186c3affe1c842a84dcf3cabc346394a58d"
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "document_client_width": 390,
+      "document_scroll_width": 390,
+      "horizontal_overflow": false,
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+      "screenshot_sha256": "4e147af5eaec4d1a98fd7cfcde5242c938e5a2225c6093392507ce977cbf4126"
+    }
+  ],
+  "http_verification": {
+    "status": 200,
+    "source_bytes": 559228,
+    "source_sha256": "dc5c76792a21ce4edaa1ab0a4430c762a31a9c6d38bd91323b0812aa0c192157",
+    "local_preview_sha256": "dc5c76792a21ce4edaa1ab0a4430c762a31a9c6d38bd91323b0812aa0c192157",
+    "tailnet_cache_busted_sha256": "dc5c76792a21ce4edaa1ab0a4430c762a31a9c6d38bd91323b0812aa0c192157",
+    "tailnet_exact_url_no_cache_sha256": "dc5c76792a21ce4edaa1ab0a4430c762a31a9c6d38bd91323b0812aa0c192157"
+  },
+  "preview_server": {
+    "tailscale_backend": "Running",
+    "pid": 28040,
+    "bind": "127.0.0.1:8768",
+    "restarted": false
+  },
+  "agent_browser": {
+    "session": "spinon-tailnet-roadmap-e00ea27987c0",
+    "closed": true,
+    "active_sessions_after_close": 0,
+    "matching_processes_after_close": 0
+  },
+  "official_completion_count_changed": false,
+  "c11_completed": false
+}
