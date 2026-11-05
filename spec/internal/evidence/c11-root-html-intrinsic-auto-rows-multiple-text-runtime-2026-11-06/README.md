@@ -29,4 +29,4 @@
 ## PR 검토
 
 - [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)
-- [실제 PR diff 적대 검토 30개](./pr-diff-review-30.md)
+- [실제 PR diff 적대 검토 30개](./pr-diff-review-30.md): PR #1199, 30/30 통과. Agent Browser에서 두 raw screenshot 링크의 실제 렌더링과 이미지 크기까지 확인했다.
