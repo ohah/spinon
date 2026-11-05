@@ -15,6 +15,9 @@ const TEXT_SOURCE: &str = include_str!(
 const TEXT_EXPECTED: &str = include_str!(
     "../../../../../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/expected.json"
 );
+const COMBINED_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-combined-tracks-runtime.html"
+);
 const TOLERANCE: f32 = 0.5;
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
@@ -351,6 +354,82 @@ fn parsed_root_html_intrinsic_auto_rows_use_text_measure_for_min_content_contrib
 }
 
 #[test]
+fn parsed_root_html_intrinsic_columns_and_text_rows_run_in_default_session() {
+    let (session, layout) = run(COMBINED_SOURCE);
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "layout error={:?}; cascade state={:?}; cascade error={:?}",
+        layout.error,
+        cascade.state,
+        cascade.error
+    );
+    let completed = layout
+        .completed
+        .as_ref()
+        .expect("combined intrinsic tracks should publish a complete layout");
+    assert_eq!(
+        completed.key,
+        cascade
+            .completed
+            .as_ref()
+            .expect("cascade should complete for the same source revision")
+            .key
+    );
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("default Root HTML session should publish paint");
+    let grid = painted_frame(scene, OpaqueCssSrgb::new(57, 67, 79), "combined Grid");
+    assert_frame_values(grid, [0.0, 0.0, 40.0, 40.0], "combined Grid");
+    let first = painted_frame(scene, OpaqueCssSrgb::new(242, 102, 94), "first item");
+    assert_frame_values(first, [0.0, 0.0, 1.0, 10.0], "first item");
+    let text_frame = painted_frame(scene, OpaqueCssSrgb::new(91, 168, 245), "text item");
+    assert!(
+        (6.0..=7.0).contains(&text_frame[2]),
+        "runtime font min-content width should be retained: {text_frame:?}"
+    );
+    assert_frame_values(
+        [text_frame[0], text_frame[1], text_frame[3], 0.0],
+        [0.0, 10.0, 60.0, 0.0],
+        "text item frame",
+    );
+    let last = painted_frame(scene, OpaqueCssSrgb::new(85, 199, 145), "last item");
+    assert_frame_values(last, [0.0, 70.0, 1.0, 34.0], "last item");
+    assert!(
+        last[1] + last[3] > grid[3],
+        "visible overflow should be preserved"
+    );
+
+    assert_eq!(scene.texts().len(), 1, "one direct text owner is supported");
+    let text = &scene.texts()[0];
+    assert_eq!(text.origin_x_css_px(), 0.0);
+    assert_eq!(text.origin_y_css_px(), 10.0);
+    assert_eq!(text.glyphs().len(), 6);
+    let baselines = text
+        .glyphs()
+        .iter()
+        .map(spinon_render::RuntimeGlyphBitmap::baseline_y_px)
+        .collect::<std::collections::BTreeSet<_>>();
+    assert_eq!(
+        baselines.len(),
+        6,
+        "intrinsic column width should wrap each word"
+    );
+    assert_eq!(text.source().generation().get(), completed.key.generation);
+    assert_eq!(
+        text.source().document_revision().get(),
+        completed.key.document_revision
+    );
+    assert_eq!(
+        text.source().render_tree_revision().get(),
+        completed.key.render_tree_revision
+    );
+    assert_eq!(text.source().style_revision(), completed.key.style_revision);
+}
+
+#[test]
 fn parsed_root_html_intrinsic_auto_rows_ignore_hidden_text_items() {
     let source = TEXT_SOURCE.replace(
         "#wrapped-text {\n        width: auto;",
@@ -461,10 +540,10 @@ fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_values_atomically() {
             "unsupported_computed_value",
         ),
         (
-            "intrinsic-explicit-track-combination",
+            "implicit-column-with-intrinsic-track",
             SOURCE.replace(
                 "grid-template-columns: 40px;",
-                "grid-template-columns: min-content;",
+                "grid-template-columns: min-content; grid-auto-columns: 10px;",
             ),
             "unsupported_computed_value",
         ),
@@ -532,6 +611,73 @@ fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_values_atomically() {
                 "{label}: rejection should identify the unsupported Grid property"
             );
         }
+        assert!(
+            layout.completed.is_none(),
+            "{label}: rejection must not publish partial frames or paint"
+        );
+    }
+}
+
+#[test]
+fn parsed_root_html_combined_intrinsic_tracks_reject_out_of_slice_combinations_atomically() {
+    for (label, source, expected_property) in [
+        (
+            "fit-content-track",
+            COMBINED_SOURCE.replace(
+                "grid-template-columns: min-content;",
+                "grid-template-columns: min-content fit-content(20px);",
+            ),
+            "grid-auto-rows",
+        ),
+        (
+            "named-area",
+            COMBINED_SOURCE.replace(
+                "grid-template-columns: min-content;",
+                "grid-template-columns: min-content; grid-template-areas: \"a\";",
+            ),
+            "grid-template-areas",
+        ),
+        (
+            "dense-flow",
+            COMBINED_SOURCE.replace("grid-auto-flow: row;", "grid-auto-flow: row dense;"),
+            "grid-auto-rows",
+        ),
+        (
+            "multiple-explicit-rows",
+            COMBINED_SOURCE.replace(
+                "grid-template-rows: 10px;",
+                "grid-template-rows: 10px 10px;",
+            ),
+            "grid-auto-rows",
+        ),
+    ] {
+        assert_ne!(
+            source, COMBINED_SOURCE,
+            "{label}: source mutation should match"
+        );
+        let (session, layout) = run(&source);
+        let cascade = session.ua_cascade_snapshot();
+        assert_eq!(
+            cascade.state,
+            crate::session::RuntimeUaCascadeState::Ready,
+            "{label}: CSS-valid input should finish cascade before the bounded adapter rejects it; error={:?}",
+            cascade.error
+        );
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Failed,
+            "{label}"
+        );
+        let failure = layout
+            .error
+            .as_ref()
+            .unwrap_or_else(|| panic!("{label}: expected a contextual rejection"));
+        assert_eq!(failure.code, "unsupported_computed_value", "{label}");
+        assert_eq!(
+            failure.property.as_deref(),
+            Some(expected_property),
+            "{label}: reject the unsupported combined track composition"
+        );
         assert!(
             layout.completed.is_none(),
             "{label}: rejection must not publish partial frames or paint"

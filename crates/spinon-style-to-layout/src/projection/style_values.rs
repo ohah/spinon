@@ -1791,22 +1791,34 @@ fn validate_root_html_grid_item_capacity(
                     if value.is_finite() && *value > 0.0
             )
         };
-        let intrinsic_auto_row_capacity =
-            grid_values::root_html_has_intrinsic_implicit_min_content_rows(grid)
+        let root_implicit_rows_common = grid.auto_flow == ComputedCssGridAutoFlow::Row
+            && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+            && grid.template_areas.is_none()
+            && grid.columns_auto_repeat.is_none()
+            && grid.rows_auto_repeat.is_none();
+        let has_intrinsic_columns = grid_values::root_html_has_intrinsic_explicit_columns(grid);
+        let intrinsic_column_auto_row_capacity = has_intrinsic_columns
+            && !grid
+                .columns
+                .iter()
+                .chain(&grid.rows)
+                .any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)));
+        let fixed_track_auto_row_capacity =
+            !grid_values::root_html_has_intrinsic_explicit_tracks(grid)
                 && single_positive_px_track(&grid.columns)
-                && single_positive_px_track(&grid.rows)
                 && grid.columns_fixed_repeat_group_count == 0
                 && grid.rows_fixed_repeat_group_count == 0;
-        let supported_root_implicit_rows =
-            (grid_values::root_html_has_supported_implicit_rows(&grid.auto_rows)
-                || intrinsic_auto_row_capacity)
-                && grid.auto_flow == ComputedCssGridAutoFlow::Row
-                && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
-                && grid.template_areas.is_none()
-                && grid.columns_auto_repeat.is_none()
-                && grid.rows_auto_repeat.is_none()
+        let intrinsic_auto_row_capacity =
+            grid_values::root_html_has_intrinsic_implicit_min_content_rows(grid)
+                && root_implicit_rows_common
+                && single_positive_px_track(&grid.rows)
+                && (intrinsic_column_auto_row_capacity || fixed_track_auto_row_capacity);
+        let fixed_root_implicit_rows =
+            grid_values::root_html_has_supported_implicit_rows(&grid.auto_rows)
+                && root_implicit_rows_common
                 && grid.columns.iter().all(is_fixed_implicit_row_track)
                 && grid.rows.iter().all(is_fixed_implicit_row_track);
+        let supported_root_implicit_rows = fixed_root_implicit_rows || intrinsic_auto_row_capacity;
         let implicit_row_capacity = supported_root_implicit_rows
             .then(|| {
                 grid.columns

@@ -32,6 +32,10 @@ struct Fixture {
 
 impl Fixture {
     fn new() -> Self {
+        Self::with_tracks("40px", 40.0, "0")
+    }
+
+    fn with_tracks(columns: &str, item_width: f32, row_gap: &str) -> Self {
         let mut document = HostDocument::new().unwrap();
         let root = document.reserve_node_handle().unwrap();
         let grid = document.reserve_node_handle().unwrap();
@@ -39,6 +43,15 @@ impl Fixture {
         let wrapped_text = document.reserve_node_handle().unwrap();
         let text_source = document.reserve_node_handle().unwrap();
         let last = document.reserve_node_handle().unwrap();
+        let grid_style = format!(
+            "display:grid;box-sizing:border-box;width:40px;height:40px;grid-template-columns:{columns};grid-template-rows:10px;grid-auto-flow:row;grid-auto-rows:min-content;row-gap:{row_gap};column-gap:0;align-content:start;justify-content:start;margin:0;padding:0;border:0;overflow:visible"
+        );
+        let first_style = format!(
+            "display:block;box-sizing:border-box;width:{item_width}px;height:10px;margin:0;padding:0;border:0;position:static"
+        );
+        let last_style = format!(
+            "display:block;box-sizing:border-box;width:{item_width}px;height:34px;margin:0;padding:0;border:0;position:static"
+        );
         let mut batch =
             DocumentChangeBatch::new(OwnerId::new(11_914).unwrap(), document.document_revision());
         for (node, parent, style) in [
@@ -47,26 +60,14 @@ impl Fixture {
                 HostParent::Root,
                 "display:block;box-sizing:border-box;width:120px;height:90px;margin:0;padding:0",
             ),
-            (
-                grid,
-                HostParent::Node(root),
-                "display:grid;box-sizing:border-box;width:40px;height:40px;grid-template-columns:40px;grid-template-rows:10px;grid-auto-flow:row;grid-auto-rows:min-content;gap:0;align-content:start;justify-content:start;margin:0;padding:0;border:0;overflow:visible",
-            ),
-            (
-                first,
-                HostParent::Node(grid),
-                "display:block;box-sizing:border-box;width:40px;height:10px;margin:0;padding:0;border:0;position:static",
-            ),
+            (grid, HostParent::Node(root), grid_style.as_str()),
+            (first, HostParent::Node(grid), first_style.as_str()),
             (
                 wrapped_text,
                 HostParent::Node(grid),
                 "display:block;box-sizing:border-box;width:auto;height:auto;min-height:auto;max-height:none;margin:0;padding:0;border:0;position:static;font-family:monospace;font-size:10px;line-height:10px;white-space:normal",
             ),
-            (
-                last,
-                HostParent::Node(grid),
-                "display:block;box-sizing:border-box;width:40px;height:34px;margin:0;padding:0;border:0;position:static",
-            ),
+            (last, HostParent::Node(grid), last_style.as_str()),
         ] {
             batch.push(DocumentOperation::CreateElement {
                 node,
@@ -230,4 +231,75 @@ fn parsed_root_html_min_content_implicit_rows_use_the_direct_item_text_measure()
             .collect::<Vec<_>>(),
         vec![10.0, 20.0, 34.0]
     );
+}
+
+#[test]
+fn parsed_root_html_intrinsic_columns_combine_with_direct_text_min_content_rows() {
+    for (columns, item_width, row_gap, expected_column_range, expected_lines, expected_row) in [
+        ("min-content", 0.0, "0", (6.0, 7.0), 6, 60.0),
+        ("max-content", 0.0, "0", (60.0, 70.0), 1, 10.0),
+        ("minmax(10px,max-content)", 0.0, "0", (40.0, 40.0), 2, 20.0),
+        ("auto", 0.0, "0", (40.0, 40.0), 2, 20.0),
+        ("minmax(min-content,1fr)", 0.0, "0", (40.0, 40.0), 2, 20.0),
+        ("min-content", 0.0, "5%", (6.0, 7.0), 6, 60.0),
+    ] {
+        let fixture = Fixture::with_tracks(columns, item_width, row_gap);
+        let output = fixture
+            .compute()
+            .unwrap_or_else(|error| panic!("columns={columns}, row-gap={row_gap}: {error:?}"));
+        let frame = |node: HostNodeHandle| {
+            let frame = output.layout.frames[&node.id()];
+            [frame.x, frame.y, frame.width, frame.height]
+        };
+        let text_frame = frame(fixture.wrapped_text);
+        let expected_text_y = if row_gap == "5%" { 12.0 } else { 10.0 };
+        assert_eq!(frame(fixture.grid), [0.0, 0.0, 40.0, 40.0]);
+        assert_eq!(text_frame[1], expected_text_y, "columns={columns}");
+        assert!(
+            text_frame[2] >= expected_column_range.0 && text_frame[2] <= expected_column_range.1,
+            "columns={columns}: expected width in {:?}, got {}",
+            expected_column_range,
+            text_frame[2]
+        );
+        assert!(
+            (text_frame[3] - expected_row).abs() <= 0.02,
+            "columns={columns}: expected height {expected_row}, got {}",
+            text_frame[3]
+        );
+        let text_layout = &output.layout.text_layouts[&fixture.wrapped_text.id()];
+        assert_eq!(
+            text_layout.layout.lines.len(),
+            expected_lines,
+            "columns={columns}"
+        );
+        assert_eq!(text_layout.layout.height, expected_row, "columns={columns}");
+        let last_frame = frame(fixture.last);
+        let expected_last_y = if row_gap == "5%" {
+            74.0
+        } else {
+            10.0 + expected_row
+        };
+        assert_eq!(last_frame[1], expected_last_y, "columns={columns}");
+        if expected_row == 60.0 {
+            assert!(last_frame[1] + last_frame[3] > frame(fixture.grid)[3]);
+        }
+        let trace = output
+            .layout
+            .grid_track_sizing_traces
+            .iter()
+            .find(|trace| trace.node == fixture.grid.id())
+            .expect("combined intrinsic sizing should retain its trace");
+        let rows = &trace.used_rows.used_track_list;
+        assert_eq!(
+            rows,
+            if expected_row == 60.0 {
+                "10px 60px 34px"
+            } else if expected_row == 20.0 {
+                "10px 20px 34px"
+            } else {
+                "10px 10px 34px"
+            },
+            "columns={columns}"
+        );
+    }
 }
