@@ -1,0 +1,1 @@
+Pass01 staging stopped at the explicit source assertion `roadmap #1167 card 누락`: STATUS already recorded PR #1167, but spec/public/roadmap.html did not. The partial pass01 root is preserved under build/spinon/roadmap-tailnet-sync-pr1169-2026-11-05/pass01. No publication or remote copy was made from pass01. Pass02 added the source roadmap card and succeeded.

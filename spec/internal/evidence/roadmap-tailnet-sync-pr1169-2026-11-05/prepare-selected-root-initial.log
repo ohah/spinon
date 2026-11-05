@@ -1,0 +1,1 @@
+Initial attempt exited 1 with ENOENT because the task-specific parent directory under build/spinon was not present. The failed attempt did not create selected root output. lstat confirmed build and build/spinon are ordinary directories; the exact task parent was absent.
