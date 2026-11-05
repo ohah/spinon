@@ -1525,6 +1525,8 @@ PR [#1190](https://github.com/ohah/spinon/pull/1190)은 2026-11-05T19:13:40Z Reb
 
 Rust RuntimeSession focused suite 5/5, style/layout direct text-measure test 1/1, workspace Clippy, rustfmt와 diff check를 기록했다. PR check rollup은 비어 있고 `main` required status checks는 설정되지 않아 CI 통과로 간주하지 않는다. PR diff의 별도 검토는 [30개 관점 기록](./evidence/c11-root-html-intrinsic-auto-rows-text-runtime-pass05-2026-11-06/pr-diff-review-30.md)에 있다. [계획](https://github.com/ohah/spinon/blob/main/plan/c11-root-html-intrinsic-auto-rows-text.md) · [Chrome 비교 및 독립 기대값](./evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/README.md) · [Android/iOS Simulator 실행·화면·hash](./evidence/c11-root-html-intrinsic-auto-rows-text-runtime-pass05-2026-11-06/README.md).
 
-이 slice는 public CSS admission, anonymous Grid text, 여러/nested text run, 임의 font/white-space, explicit intrinsic track과의 조합, WPT 또는 전체 C11.4/C11 완료를 뜻하지 않는다. C11.4와 C11 체크는 미완료이며 공식 완료 `72/213`은 유지한다.
+이 slice는 public CSS admission, anonymous Grid text, 여러/nested text run, 임의 font/white-space, explicit intrinsic track과의 조합, WPT 또는 전체 C11.4/C11 완료를 뜻하지 않는다. C11.4와 C11 체크는 미완료이며 공식 완료 `78/214`은 유지한다.
 
 상태·로드맵 문서 동기화 PR 변경 검토 30개: [검토 기록](./evidence/c11-root-html-intrinsic-auto-rows-text-docs-sync-2026-11-06/docs-pr-diff-review-30.md).
+
+공식 집계 정정 PR diff 검토 30개: [검토 기록](./evidence/c11-root-html-intrinsic-auto-rows-text-count-correction-2026-11-06/pr-diff-review-30.md).
