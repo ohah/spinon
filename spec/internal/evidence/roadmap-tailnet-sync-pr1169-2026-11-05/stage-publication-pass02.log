@@ -1,0 +1,91 @@
+{
+  "sourceHead": "c958d64c9539a3f94041c2c110b730f9c59b49a5",
+  "sourceTree": "588f21485a0f0e6f968bf0bff4752bc469e74243",
+  "trackedDiffSha256": "6ad9bfe6f9a26e3c86217d6395b4276276e7a0e8e18226dada6df0d7767b3ade",
+  "selectedRootFileCount": 260,
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1169-2026-11-05/pass02/publication-rerun01",
+  "routeCount": 341,
+  "totalBytes": 18613470,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-grid-text-aspect-ratio.md",
+      "source": "plan/c11-root-html-grid-text-aspect-ratio.md"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md",
+      "source": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/0059-c11-grid-layout.md",
+      "source": "spec/internal/0059-c11-grid-layout.md"
+    },
+    {
+      "href": "/spinon/plan/c11-root-html-grid-direct-text-aspect-ratio-values.html",
+      "route": "plan/c11-root-html-grid-direct-text-aspect-ratio-values.html",
+      "sha256": "066f959367ef42f09a857f85d5e95aea5e2ab46c79565969b474376d15ee4806"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "8212529a36346f1b3c17b479143b50fd80408843370f6a968138003c0b2be2b7"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.html",
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.html",
+      "sha256": "bfaa8a35b0995bac24986a1b5460a6684c9d6cebb039b3a72a18761240be86cc"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "sha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "sha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88"
+    },
+    {
+      "href": "/spinon/STATUS.html",
+      "route": "STATUS.html",
+      "sha256": "992d95e79a97c92435b23b5f71767fbb43c5dc3727b8a54b7115719083487913"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/README.html",
+      "route": "internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/README.html",
+      "sha256": "c828b4a6e907f32938648b206377a91faad553dbb00bfe2ba5cf3afce13919c1"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/android/simulator-screen.png",
+      "route": "internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/android/simulator-screen.png",
+      "sha256": "9293d464ccbf7db7c9fe8baa2ba882596f90f686bbb3da753aacf8fb743dee0d"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/ios/simulator-screen.png",
+      "route": "internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/ios/simulator-screen.png",
+      "sha256": "4567e10ae2587788b7a62f6aee1b431092c6e9737143f1b43e887bb2bbba9685"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/pr-diff-review-20.html",
+      "route": "internal/evidence/c11-root-html-intrinsic-tracks-runtime-2026-11-05/pr-diff-review-20.html",
+      "sha256": "55831c88369d90b21c8e93004c8ea55961ce43c9238107894cf7c8cb0545a5d7"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "index.html",
+      "reason": "기존 Tailnet preview 시작 페이지를 보존함"
+    },
+    {
+      "path": "404.html",
+      "reason": "기존 Tailnet 404 route를 보존함"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "reason": "선택 카드에서 사용하지 않는 기존 열린 route를 보존함"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true
+}
