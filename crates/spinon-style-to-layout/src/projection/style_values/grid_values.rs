@@ -1445,7 +1445,7 @@ fn project_grid_layout_with_route_reservations(
             }
             _ => GridPlacementMode::Existing,
         },
-        track_sizing_trace_enabled: false,
+        track_sizing_trace_enabled: root_html_intrinsic_auto_rows,
     })
 }
 

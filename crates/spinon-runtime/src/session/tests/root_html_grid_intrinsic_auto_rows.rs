@@ -9,6 +9,12 @@ const SOURCE: &str = include_str!(
 const EXPECTED: &str = include_str!(
     "../../../../../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-precomparison-2026-11-06/expected.json"
 );
+const TEXT_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-text-precomparison.html"
+);
+const TEXT_EXPECTED: &str = include_str!(
+    "../../../../../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/expected.json"
+);
 const TOLERANCE: f32 = 0.5;
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
@@ -138,6 +144,258 @@ fn parsed_root_html_intrinsic_auto_rows_match_one_and_two_implicit_row_geometry(
             );
         }
     }
+}
+
+#[test]
+fn parsed_root_html_intrinsic_auto_rows_use_text_measure_for_min_content_contribution() {
+    let expected: Value = serde_json::from_str(TEXT_EXPECTED)
+        .expect("text intrinsic auto-row expected values should be valid JSON");
+    let expected_items = &expected["independentExpected"]["items"];
+    let one_row_source =
+        TEXT_SOURCE.replace("        <div id=\"last\" class=\"item\"></div>\n", "");
+    assert_ne!(
+        one_row_source, TEXT_SOURCE,
+        "one-row mutation should match the text fixture"
+    );
+
+    for (label, source, item_ids) in [
+        (
+            "one-implicit-row",
+            one_row_source.as_str(),
+            ["first", "wrapped-text", ""],
+        ),
+        (
+            "two-implicit-rows",
+            TEXT_SOURCE,
+            ["first", "wrapped-text", "last"],
+        ),
+    ] {
+        let (session, layout) = run(source);
+        let cascade = session.ua_cascade_snapshot();
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "{label}: layout error={:?}; cascade state={:?}; cascade error={:?}",
+            layout.error,
+            cascade.state,
+            cascade.error
+        );
+        let completed = layout
+            .completed
+            .as_ref()
+            .expect("supported text contribution should publish a complete layout");
+        assert_eq!(
+            completed.key,
+            cascade
+                .completed
+                .as_ref()
+                .expect("cascade should complete for the same source revision")
+                .key,
+            "{label}: style and layout revisions should match"
+        );
+        let scene = completed
+            .render_snapshot
+            .as_ref()
+            .expect("default Root HTML route should publish text and paint boxes");
+        let grid_box = scene
+            .boxes()
+            .iter()
+            .find(|render_box| {
+                matches!(render_box.paint(), RuntimePaint::Opaque(color)
+                    if color == OpaqueCssSrgb::new(57, 67, 79))
+            })
+            .expect("text Grid should remain visible");
+        let grid_frame = grid_box.frame_css_px();
+        assert_frame_values(
+            [
+                grid_frame.x(),
+                grid_frame.y(),
+                grid_frame.width(),
+                grid_frame.height(),
+            ],
+            [0.0, 0.0, 40.0, 40.0],
+            &format!("{label} Grid"),
+        );
+
+        let mut render_positions = Vec::new();
+        let mut text_item_node = None;
+        let mut last_item_node = None;
+        for id in item_ids.into_iter().filter(|id| !id.is_empty()) {
+            let expected_frame = std::array::from_fn(|component| {
+                expected_items[id][component]
+                    .as_f64()
+                    .expect("expected frame component should be numeric") as f32
+            });
+            let color = match id {
+                "first" => OpaqueCssSrgb::new(242, 102, 94),
+                "wrapped-text" => OpaqueCssSrgb::new(91, 168, 245),
+                "last" => OpaqueCssSrgb::new(85, 199, 145),
+                _ => unreachable!("fixed text Grid item id"),
+            };
+            let render_box = scene
+                .boxes()
+                .iter()
+                .find(|render_box| {
+                    matches!(render_box.paint(), RuntimePaint::Opaque(observed) if observed == color)
+                })
+                .unwrap_or_else(|| panic!("{label}: {id} should remain visible in paint scene"));
+            let frame = render_box.frame_css_px();
+            assert_frame_values(
+                [frame.x(), frame.y(), frame.width(), frame.height()],
+                expected_frame,
+                &format!("{label} {id}"),
+            );
+            if id == "wrapped-text" {
+                text_item_node = Some(render_box.node_id());
+            } else if id == "last" {
+                last_item_node = Some(render_box.node_id());
+            }
+            render_positions.push(
+                scene
+                    .boxes()
+                    .iter()
+                    .position(|candidate| candidate.node_id() == render_box.node_id())
+                    .expect("render box should retain its source order"),
+            );
+        }
+        assert!(
+            render_positions.windows(2).all(|pair| pair[0] < pair[1]),
+            "{label}: paint boxes should preserve DOM source order"
+        );
+        let text_item_node = text_item_node.expect("text item should have a paint box");
+        let text = scene
+            .texts()
+            .iter()
+            .find(|text| text.node_id() == text_item_node)
+            .expect("the wrapped Grid item should publish its text paint");
+        assert_eq!(
+            scene.texts().len(),
+            1,
+            "{label}: one text owner is supported"
+        );
+        assert_eq!(text.origin_x_css_px(), 0.0, "{label}: text x origin");
+        assert_eq!(text.origin_y_css_px(), 10.0, "{label}: text y origin");
+        assert_eq!(text.glyphs().len(), 6, "{label}: six visible A glyphs");
+        let baselines = text
+            .glyphs()
+            .iter()
+            .map(spinon_render::RuntimeGlyphBitmap::baseline_y_px)
+            .collect::<std::collections::BTreeSet<_>>();
+        assert_eq!(
+            baselines.len(),
+            2,
+            "{label}: text paint should contain two lines"
+        );
+        assert_eq!(text.source().generation().get(), completed.key.generation);
+        assert_eq!(
+            text.source().document_revision().get(),
+            completed.key.document_revision
+        );
+        assert_eq!(
+            text.source().render_tree_revision().get(),
+            completed.key.render_tree_revision
+        );
+        assert_eq!(text.source().style_revision(), completed.key.style_revision);
+
+        let box_index = scene
+            .boxes()
+            .iter()
+            .position(|render_box| render_box.node_id() == text_item_node)
+            .expect("text owner box should remain in the paint scene");
+        let text_index = scene
+            .texts()
+            .iter()
+            .position(|candidate| candidate.node_id() == text_item_node)
+            .expect("text paint index should be present");
+        let text_command_index = scene
+            .paint_commands()
+            .iter()
+            .position(|command| {
+                matches!(command, spinon_render::RuntimePaintCommand::DrawText { index } if *index == text_index)
+            })
+            .expect("the text paint command should be present");
+        let text_box_command_index = scene
+            .paint_commands()
+            .iter()
+            .position(|command| {
+                matches!(command, spinon_render::RuntimePaintCommand::DrawBox { index } if *index == box_index)
+            })
+            .expect("the text owner's background command should be present");
+        assert!(text_box_command_index < text_command_index);
+        if let Some(last_item_node) = last_item_node {
+            let last_box_index = scene
+                .boxes()
+                .iter()
+                .position(|render_box| render_box.node_id() == last_item_node)
+                .expect("last Grid item box should retain paint order");
+            let last_box_command_index = scene
+                .paint_commands()
+                .iter()
+                .position(|command| {
+                    matches!(command, spinon_render::RuntimePaintCommand::DrawBox { index } if *index == last_box_index)
+                })
+                .expect("the later Grid item's background command should be present");
+            assert!(
+                text_command_index < last_box_command_index,
+                "{label}: text paint must precede the next item"
+            );
+        }
+        assert!(
+            completed
+                .frames
+                .iter()
+                .any(|frame| frame.node_id == text_item_node.get()),
+            "{label}: layout result should retain the text owner's frame identity"
+        );
+    }
+}
+
+#[test]
+fn parsed_root_html_intrinsic_auto_rows_ignore_hidden_text_items() {
+    let source = TEXT_SOURCE.replace(
+        "#wrapped-text {\n        width: auto;",
+        "#wrapped-text {\n        display: none;\n        width: auto;",
+    );
+    assert_ne!(
+        source, TEXT_SOURCE,
+        "hidden-text mutation should match the fixture"
+    );
+    let (session, layout) = run(&source);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "hidden text should not break the default Root HTML route: {layout:?}; cascade={:?}",
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout
+        .completed
+        .expect("hidden text should still produce a complete layout");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("the visible Grid items should retain their paint scene");
+    assert!(scene.texts().is_empty(), "hidden text must not be painted");
+    let last = scene
+        .boxes()
+        .iter()
+        .find(|render_box| {
+            matches!(render_box.paint(), RuntimePaint::Opaque(color)
+                if color == OpaqueCssSrgb::new(85, 199, 145))
+        })
+        .expect("the visible last item should remain painted");
+    let frame = last.frame_css_px();
+    assert_frame_values(
+        [frame.x(), frame.y(), frame.width(), frame.height()],
+        [0.0, 10.0, 40.0, 34.0],
+        "last item after hidden text is removed from auto-placement",
+    );
+    assert!(
+        !scene.boxes().iter().any(|render_box| {
+            matches!(render_box.paint(), RuntimePaint::Opaque(color)
+                if color == OpaqueCssSrgb::new(91, 168, 245))
+        }),
+        "hidden text item's box must not be published"
+    );
 }
 
 fn assert_frame_values(actual: [f32; 4], expected: [f32; 4], label: &str) {
@@ -274,6 +532,79 @@ fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_values_atomically() {
                 "{label}: rejection should identify the unsupported Grid property"
             );
         }
+        assert!(
+            layout.completed.is_none(),
+            "{label}: rejection must not publish partial frames or paint"
+        );
+    }
+}
+
+#[test]
+fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_text_items_atomically() {
+    for (label, source) in [
+        (
+            "different-text-source",
+            TEXT_SOURCE.replace("A A A A A A", "B B B B B B"),
+        ),
+        (
+            "nested-inline-markup",
+            TEXT_SOURCE.replace("A A A A A A", "<span>A A A A A A</span>"),
+        ),
+        (
+            "multiple-direct-children",
+            TEXT_SOURCE.replace(
+                "<div id=\"wrapped-text\" class=\"item\">A A A A A A</div>",
+                "<div id=\"wrapped-text\" class=\"item\">A</div><span></span>",
+            ),
+        ),
+        (
+            "wrong-font-family",
+            TEXT_SOURCE.replace("font-family: monospace;", "font-family: sans-serif;"),
+        ),
+        (
+            "wrong-line-height",
+            TEXT_SOURCE.replace("line-height: 10px;", "line-height: 12px;"),
+        ),
+        (
+            "nowrap-text",
+            TEXT_SOURCE.replace("white-space: normal;", "white-space: nowrap;"),
+        ),
+        (
+            "fixed-text-height",
+            TEXT_SOURCE.replace("height: auto;", "height: 20px;"),
+        ),
+        (
+            "fixed-text-width",
+            TEXT_SOURCE.replace(
+                "#wrapped-text {\n        width: auto;",
+                "#wrapped-text {\n        width: 40px;",
+            ),
+        ),
+    ] {
+        assert_ne!(source, TEXT_SOURCE, "{label}: source mutation should match");
+        let (session, layout) = run(&source);
+        let cascade = session.ua_cascade_snapshot();
+        assert_eq!(
+            cascade.state,
+            crate::session::RuntimeUaCascadeState::Ready,
+            "{label}: CSS-valid text style should finish cascade before bounded rejection; error={:?}",
+            cascade.error
+        );
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Failed,
+            "{label}: unsupported text input must fail layout"
+        );
+        let failure = layout
+            .error
+            .as_ref()
+            .unwrap_or_else(|| panic!("{label}: expected a contextual rejection"));
+        assert_eq!(failure.code, "unsupported_computed_value", "{label}");
+        assert_eq!(
+            failure.property.as_deref(),
+            Some("grid-auto-rows"),
+            "{label}: rejection should identify the bounded Grid property"
+        );
         assert!(
             layout.completed.is_none(),
             "{label}: rejection must not publish partial frames or paint"

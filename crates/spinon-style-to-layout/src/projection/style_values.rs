@@ -1442,6 +1442,12 @@ fn validate_root_html_intrinsic_auto_row_items(
         property: "grid-auto-rows",
         value: value.to_owned(),
     };
+    let unsupported_item =
+        |item: NodeId, value: &'static str| StyleLayoutError::UnsupportedComputedValue {
+            node: item,
+            property: "grid-auto-rows",
+            value: value.to_owned(),
+        };
     if candidates.len() != 1 || nodes.grid_containers.len() != 1 {
         return Err(unsupported(
             "Root HTML intrinsic implicit rows require exactly one visible Grid owner",
@@ -1449,6 +1455,7 @@ fn validate_root_html_intrinsic_auto_row_items(
     }
     let element = candidates[0];
     let mut item_count = 0usize;
+    let mut text_item_count = 0usize;
     {
         let Some(grid) = element.grid_layout.as_ref() else {
             return Err(unsupported(
@@ -1480,7 +1487,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                     "Root HTML intrinsic implicit rows require inspectable direct items",
                 ));
             };
-            match child_node.kind() {
+            let text_item = match child_node.kind() {
                 HostNodeKind::Text(text)
                     if text.to_string_lossy().chars().all(|character| {
                         matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
@@ -1491,51 +1498,150 @@ fn validate_root_html_intrinsic_auto_row_items(
                 HostNodeKind::Element(item)
                     if item.namespace() == HTML_NAMESPACE
                         && item.local_name() == "div"
-                        && !nodes.grid_containers.contains(&child.id())
-                        && tree
-                            .children(child)
-                            .is_some_and(|mut descendants| descendants.next().is_none()) => {}
+                        && !nodes.grid_containers.contains(&child.id()) =>
+                {
+                    let descendants = tree
+                        .children(child)
+                        .ok_or_else(|| {
+                            unsupported_item(
+                                child.id(),
+                                "direct Grid item has no inspectable child list",
+                            )
+                        })?
+                        .collect::<Vec<_>>();
+                    match descendants.as_slice() {
+                        [] => false,
+                        [text_handle] => {
+                            let Some(text_node) = tree.node(*text_handle) else {
+                                return Err(unsupported_item(
+                                    child.id(),
+                                    "text-bearing Grid item has an uninspectable child",
+                                ));
+                            };
+                            match text_node.kind() {
+                                HostNodeKind::Text(text)
+                                    if text.to_string_lossy() == "A A A A A A" =>
+                                {
+                                    true
+                                }
+                                _ => {
+                                    return Err(unsupported_item(
+                                        child.id(),
+                                        "text-bearing Grid items require one direct ASCII text child `A A A A A A`",
+                                    ));
+                                }
+                            }
+                        }
+                        _ => {
+                            return Err(unsupported_item(
+                                child.id(),
+                                "text-bearing Grid items require one direct text child and no nested markup",
+                            ));
+                        }
+                    }
+                }
                 _ => {
                     return Err(unsupported(
-                        "Root HTML intrinsic implicit rows require visible direct empty HTML div items",
+                        "Root HTML intrinsic implicit rows require visible direct HTML div items",
                     ));
                 }
-            }
-            let supported_fixed_size = snapshot
+            };
+            let Some(item_style) = snapshot
                 .elements
                 .iter()
                 .find(|item| item.node_id == child.id())
-                .is_some_and(|item| {
-                    let dimensions = item.layout_dimensions;
-                    let fixed_nonnegative = |dimension| {
-                        matches!(dimension, ComputedCssDimension::LengthPx(value)
-                            if value.is_finite() && value >= 0.0)
-                    };
-                    let auto_placement =
-                        item.grid_item_placement.as_ref().is_some_and(|placement| {
-                            [
-                                &placement.row_start,
-                                &placement.row_end,
-                                &placement.column_start,
-                                &placement.column_end,
-                            ]
-                            .into_iter()
-                            .all(|value| matches!(value, ComputedCssGridPlacement::Auto))
-                        });
-                    fixed_nonnegative(dimensions.width)
-                        && fixed_nonnegative(dimensions.height)
-                        && dimensions.min_width == ComputedCssDimension::Auto
-                        && dimensions.max_width == ComputedCssMaxSize::None
-                        && dimensions.min_height == ComputedCssDimension::Auto
-                        && dimensions.max_height == ComputedCssMaxSize::None
-                        && item.layout_aspect_ratio.is_none()
-                        && item.layout_position == ComputedCssPosition::Static
-                        && auto_placement
-                });
-            if !supported_fixed_size {
-                return Err(unsupported(
-                    "Root HTML intrinsic implicit rows require fixed non-negative item width/height, auto min/max sizes, static positioning, and auto Grid placement",
+            else {
+                return Err(unsupported_item(
+                    child.id(),
+                    "Root HTML intrinsic implicit rows require computed direct-item style",
                 ));
+            };
+            let dimensions = item_style.layout_dimensions;
+            let fixed_nonnegative = |dimension| {
+                matches!(dimension, ComputedCssDimension::LengthPx(value)
+                    if value.is_finite() && value >= 0.0)
+            };
+            let auto_placement = item_style
+                .grid_item_placement
+                .as_ref()
+                .is_some_and(|placement| {
+                    [
+                        &placement.row_start,
+                        &placement.row_end,
+                        &placement.column_start,
+                        &placement.column_end,
+                    ]
+                    .into_iter()
+                    .all(|value| matches!(value, ComputedCssGridPlacement::Auto))
+                });
+            let supported_width = if text_item {
+                dimensions.width == ComputedCssDimension::Auto
+            } else {
+                fixed_nonnegative(dimensions.width)
+            };
+            let supported_size = supported_width
+                && dimensions.min_width == ComputedCssDimension::Auto
+                && dimensions.max_width == ComputedCssMaxSize::None
+                && dimensions.min_height == ComputedCssDimension::Auto
+                && dimensions.max_height == ComputedCssMaxSize::None
+                && if text_item {
+                    dimensions.height == ComputedCssDimension::Auto
+                } else {
+                    fixed_nonnegative(dimensions.height)
+                };
+            let supported_text_style = !text_item
+                || (item_style.font_size_css_px == 10.0
+                    && [
+                        ("font-family", "monospace"),
+                        ("font-weight", "400"),
+                        ("font-style", "normal"),
+                        ("line-height", "10px"),
+                        ("white-space-collapse", "collapse"),
+                        ("text-wrap-mode", "wrap"),
+                        ("word-break", "normal"),
+                        ("overflow-wrap", "normal"),
+                        ("direction", "ltr"),
+                        ("writing-mode", "horizontal-tb"),
+                        ("text-transform", "none"),
+                        ("text-align", "start"),
+                    ]
+                    .iter()
+                    .all(|(property, expected)| {
+                        item_style
+                            .properties
+                            .get(*property)
+                            .is_some_and(|value| value == expected)
+                    }));
+            if !supported_size
+                || item_style.layout_aspect_ratio.is_some()
+                || item_style.layout_position != ComputedCssPosition::Static
+                || !auto_placement
+            {
+                return Err(unsupported_item(
+                    child.id(),
+                    if text_item {
+                        "text Grid items require auto width/height/min/max, static positioning, and auto Grid placement"
+                    } else {
+                        "empty Grid items require fixed non-negative width/height, auto min/max sizes, static positioning, and auto Grid placement"
+                    },
+                ));
+            }
+            if !supported_text_style {
+                return Err(unsupported_item(
+                    child.id(),
+                    "text Grid items require monospace 10px font, 10px line-height, normal whitespace wrapping, and horizontal LTR text",
+                ));
+            }
+            if text_item {
+                text_item_count = text_item_count.checked_add(1).ok_or_else(|| {
+                    unsupported_item(child.id(), "text Grid item count overflowed")
+                })?;
+                if text_item_count > 1 {
+                    return Err(unsupported_item(
+                        child.id(),
+                        "Root HTML intrinsic implicit rows support at most one text-bearing Grid item",
+                    ));
+                }
             }
             item_count = item_count.checked_add(1).ok_or_else(|| {
                 unsupported("Root HTML intrinsic implicit row item count overflowed")

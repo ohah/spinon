@@ -34,6 +34,8 @@ mod c11_1_root_html_fr_auto_column_tests;
 #[cfg(test)]
 mod c11_1_root_html_grid_item_alignment_tests;
 #[cfg(test)]
+mod c11_1_root_html_intrinsic_auto_rows_text_tests;
+#[cfg(test)]
 mod c11_1_root_html_named_area_auto_minimum_tests;
 #[cfg(test)]
 mod c11_1_root_html_one_axis_grid_placement_tests;

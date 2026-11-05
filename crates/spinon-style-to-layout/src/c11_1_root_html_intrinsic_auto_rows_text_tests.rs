@@ -1,0 +1,233 @@
+use std::collections::BTreeMap;
+
+use spinon_core::{
+    AttributeName, DocumentChangeBatch, DocumentOperation, HostDocument, HostNodeHandle,
+    HostParent, OwnerId, StyleRevision,
+};
+use spinon_layout::{
+    LayoutGridTrackSizingAxis, LayoutGridTrackSizingContributionKind,
+    LayoutGridTrackSizingStageKind, ParagraphStyle, TextLayoutEngine, TextParagraphDirection,
+    WhiteSpaceMode,
+};
+use spinon_style::{
+    ComputedCssGridAutoRows, ComputedCssGridTrackSize, CssMediaEnvironment, CssViewport,
+    StyloDocumentView, compute_runtime_root_html_text_paint_cascade_with_stylesheets,
+};
+use style::context::QuirksMode;
+
+use crate::{StyleLayoutError, compute_runtime_style_layout_with_root_html_grid_text_profiles};
+
+const HTML: &str = "http://www.w3.org/1999/xhtml";
+const TEXT: &str = "A A A A A A";
+
+struct Fixture {
+    document: HostDocument,
+    root: HostNodeHandle,
+    grid: HostNodeHandle,
+    first: HostNodeHandle,
+    wrapped_text: HostNodeHandle,
+    text_source: HostNodeHandle,
+    last: HostNodeHandle,
+}
+
+impl Fixture {
+    fn new() -> Self {
+        let mut document = HostDocument::new().unwrap();
+        let root = document.reserve_node_handle().unwrap();
+        let grid = document.reserve_node_handle().unwrap();
+        let first = document.reserve_node_handle().unwrap();
+        let wrapped_text = document.reserve_node_handle().unwrap();
+        let text_source = document.reserve_node_handle().unwrap();
+        let last = document.reserve_node_handle().unwrap();
+        let mut batch =
+            DocumentChangeBatch::new(OwnerId::new(11_914).unwrap(), document.document_revision());
+        for (node, parent, style) in [
+            (
+                root,
+                HostParent::Root,
+                "display:block;box-sizing:border-box;width:120px;height:90px;margin:0;padding:0",
+            ),
+            (
+                grid,
+                HostParent::Node(root),
+                "display:grid;box-sizing:border-box;width:40px;height:40px;grid-template-columns:40px;grid-template-rows:10px;grid-auto-flow:row;grid-auto-rows:min-content;gap:0;align-content:start;justify-content:start;margin:0;padding:0;border:0;overflow:visible",
+            ),
+            (
+                first,
+                HostParent::Node(grid),
+                "display:block;box-sizing:border-box;width:40px;height:10px;margin:0;padding:0;border:0;position:static",
+            ),
+            (
+                wrapped_text,
+                HostParent::Node(grid),
+                "display:block;box-sizing:border-box;width:auto;height:auto;min-height:auto;max-height:none;margin:0;padding:0;border:0;position:static;font-family:monospace;font-size:10px;line-height:10px;white-space:normal",
+            ),
+            (
+                last,
+                HostParent::Node(grid),
+                "display:block;box-sizing:border-box;width:40px;height:34px;margin:0;padding:0;border:0;position:static",
+            ),
+        ] {
+            batch.push(DocumentOperation::CreateElement {
+                node,
+                namespace: HTML.to_owned(),
+                local_name: "div".to_owned(),
+            });
+            batch.push(DocumentOperation::SetAttribute {
+                node,
+                name: AttributeName::new(None, "style").unwrap(),
+                value: style.to_owned().into(),
+            });
+            batch.push(DocumentOperation::InsertBefore {
+                parent,
+                node,
+                before: None,
+            });
+        }
+        batch.push(DocumentOperation::CreateText {
+            node: text_source,
+            data: TEXT.into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent: HostParent::Node(wrapped_text),
+            node: text_source,
+            before: None,
+        });
+        document.commit(batch).unwrap();
+        Self {
+            document,
+            root,
+            grid,
+            first,
+            wrapped_text,
+            text_source,
+            last,
+        }
+    }
+
+    fn compute(&self) -> Result<crate::StyleLayoutOutput, StyleLayoutError> {
+        let snapshot = self.document.snapshot();
+        let viewport = CssViewport {
+            width_css_px: 120.0,
+            height_css_px: 90.0,
+            device_scale_factor: 1.0,
+            environment_revision: Default::default(),
+            media_environment: CssMediaEnvironment::MOBILE,
+        };
+        let view = StyloDocumentView::new(snapshot.clone(), self.root, true, QuirksMode::NoQuirks)
+            .unwrap();
+        let computed_styles = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+            &view,
+            &[],
+            viewport,
+            StyleRevision::INITIAL,
+        )
+        .map_err(StyleLayoutError::Cascade)?;
+        let text_style = computed_styles
+            .elements
+            .iter()
+            .find(|style| style.node_id == self.wrapped_text.id())
+            .expect("the text owner should have a computed style in the same snapshot");
+        assert_eq!(text_style.properties["font-family"], "monospace");
+        assert_eq!(text_style.properties["line-height"], "10px");
+        assert_eq!(text_style.font_size_css_px, 10.0);
+        assert_eq!(
+            text_style.layout_dimensions.width,
+            spinon_style::ComputedCssDimension::Auto
+        );
+        let text_paragraph = ParagraphStyle {
+            font_family: text_style.properties["font-family"].clone(),
+            font_size: text_style.font_size_css_px,
+            line_height: 10.0,
+            white_space: WhiteSpaceMode::Normal,
+            direction: TextParagraphDirection::Ltr,
+            ..ParagraphStyle::default()
+        };
+        let paragraphs = BTreeMap::from([(self.wrapped_text.id(), text_paragraph)]);
+        let text_engine = TextLayoutEngine::new_for_runtime();
+        compute_runtime_style_layout_with_root_html_grid_text_profiles(
+            &snapshot,
+            self.root,
+            computed_styles,
+            viewport,
+            &paragraphs,
+            &BTreeMap::new(),
+            &text_engine,
+        )
+    }
+}
+
+#[test]
+fn parsed_root_html_min_content_implicit_rows_use_the_direct_item_text_measure() {
+    let fixture = Fixture::new();
+    let output = fixture
+        .compute()
+        .expect("one direct text child should contribute through the default Root HTML route");
+    let computed_grid = output
+        .computed_styles
+        .elements
+        .iter()
+        .find(|style| style.node_id == fixture.grid.id())
+        .and_then(|style| style.grid_layout.as_ref())
+        .expect("computed Grid tracks should be present");
+    assert_eq!(
+        computed_grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent])
+    );
+
+    let frame = |node: HostNodeHandle| {
+        let frame = output.layout.frames[&node.id()];
+        [frame.x, frame.y, frame.width, frame.height]
+    };
+    assert_eq!(frame(fixture.grid), [0.0, 0.0, 40.0, 40.0]);
+    assert_eq!(frame(fixture.first), [0.0, 0.0, 40.0, 10.0]);
+    assert_eq!(frame(fixture.wrapped_text), [0.0, 10.0, 40.0, 20.0]);
+    assert_eq!(frame(fixture.last), [0.0, 30.0, 40.0, 34.0]);
+    assert!(frame(fixture.last)[1] + frame(fixture.last)[3] > frame(fixture.grid)[3]);
+
+    let text_layout = &output.layout.text_layouts[&fixture.wrapped_text.id()];
+    assert_eq!(text_layout.revision, output.layout.revision);
+    assert_eq!(text_layout.input.sources.len(), 1);
+    assert_eq!(text_layout.input.sources[0].node, fixture.text_source.id());
+    assert_eq!(text_layout.input.sources[0].text, TEXT);
+    assert_eq!(text_layout.layout.lines.len(), 2);
+    assert_eq!(text_layout.layout.height, 20.0);
+
+    let trace = output
+        .layout
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == fixture.grid.id())
+        .expect("the bounded min-content implicit-row route should record its track trace");
+    assert_eq!(trace.used_rows.used_track_list, "10px 20px 34px");
+    let row_pass = trace
+        .passes
+        .iter()
+        .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .expect("row sizing should be present in the Grid trace");
+    let text_contribution = row_pass
+        .contributions
+        .iter()
+        .find(|contribution| contribution.item == fixture.wrapped_text.id())
+        .expect("the row trace should retain direct text item identity");
+    assert_eq!(
+        text_contribution.kind,
+        LayoutGridTrackSizingContributionKind::MinContent
+    );
+    assert_eq!(text_contribution.value, 20.0);
+    let final_stage = row_pass
+        .stages
+        .iter()
+        .rev()
+        .find(|stage| stage.stage == LayoutGridTrackSizingStageKind::IntrinsicSizingComplete)
+        .expect("the min-content row sizing stage should be recorded");
+    assert_eq!(
+        final_stage
+            .tracks
+            .iter()
+            .filter(|track| !track.is_gutter && !track.is_collapsed)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>(),
+        vec![10.0, 20.0, 34.0]
+    );
+}
