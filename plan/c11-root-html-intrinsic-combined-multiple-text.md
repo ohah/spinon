@@ -4,7 +4,7 @@
 
 **Precomparison:** [Chrome 156 and independent expected values](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-combined-multiple-text-precomparison.html) · [expected JSON](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/expected.json) · [raw observation](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/chrome/chrome156-observation.json)
 
-**Plan failure review:** [20 distinct cases](./c11-root-html-intrinsic-combined-multiple-text-plan-review-20.md). **Plan PR diff review:** record the actual PR diff in a separate 30-case review. **Implementation/runtime review:** record 20 new failure cases after implementation. **Implementation PR diff review:** independently review the actual code PR diff from 30 failure perspectives.
+**Plan failure review:** [20 distinct cases](./c11-root-html-intrinsic-combined-multiple-text-plan-review-20.md). **Plan PR diff review:** [30 cases against PR #1201](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/plan-pr-diff-review-30.md). **Implementation/runtime review:** record 20 new failure cases after implementation. **Implementation PR diff review:** independently review the actual code PR diff from 30 failure perspectives.
 
 ## Gap and goal
 
