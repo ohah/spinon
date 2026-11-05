@@ -33,7 +33,7 @@
 | 27 | Android screenshot을 실기기·hardware GPU·surface readback 근거로 확대하는가 | evidence는 API 37 ARM64 AVD의 ANGLE/Vulkan/SwiftShader와 visual smoke로 한정하고 PixelCopy를 주장하지 않는다. **통과**. |
 | 28 | iOS screenshot을 실기기·compositor 이후 pixel 근거로 확대하는가 | iPhone 17 Pro iOS 26.2 Simulator의 draw/present만 주장하며 Metal drawable readback을 명시적으로 제외한다. **통과**. |
 | 29 | 앱에 fixture를 주입한 뒤 원래 asset을 복구하지 않거나 hash가 다르게 남는가 | 빌드 script는 EXIT trap으로 Android/iOS asset을 되돌리고 원본 hash 두 개가 동일함을 evidence에 보존한다. **통과**. |
-| 30 | status·내부 계약·공개 roadmap·PR body가 지원/완료 범위를 서로 다르게 주장하는가 | C11.1/C11/C11.4 미완료와 공식 `78/214`를 유지하고 fixed-px-only 범위, simulator 한계, 계획·evidence·실제 PR 링크 및 screenshots를 대조한다. **통과**. |
+| 30 | status·내부 계약·공개 roadmap·PR body·evidence가 지원/완료와 빌드 범위를 서로 다르게 주장하는가 | C11.1/C11/C11.4 미완료와 공식 `78/214`를 유지하고 fixed-px-only 범위, simulator 한계, 계획·evidence·실제 PR 링크 및 screenshots를 대조한다. Full docs build의 dead-link 실패를 성공으로 세지 않고 README에 기록했으며 checksum manifest도 새 review 파일을 포함한다. **통과**. |
 
 ## 결과
 
