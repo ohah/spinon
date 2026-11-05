@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-06",
+  "tool": "agent-browser",
+  "first_session_closed_before_fresh_canonical_url_check": true,
+  "first_session_browser_processes_after_close": 0,
+  "final_image_link_check_session_closed": true,
+  "final_close_all": true,
+  "final_browser_processes_after_close": 0,
+  "process_inspection": "ps matched only the inspection shell and rg command; no agent-browser, headless Chrome, Chromium agent-browser, or remote-debugging browser process remained",
+  "terminal_browser_used": false
+}

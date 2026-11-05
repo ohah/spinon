@@ -1,0 +1,57 @@
+{
+  "cardBounds": {
+    "height": 448.59375,
+    "width": 362,
+    "x": 14,
+    "y": 80.46875
+  },
+  "cardHasOfficialCount": true,
+  "cardSaysIncomplete": true,
+  "cardText": "2026-11-06 C11.4 parsed Root HTML grid-auto-rows: min-content · 제한 구현 PR #1187 Rebase and merge (2026-11-05T17:12:55Z, merge SHA 0c32617f76e18694bd692ff84a8035325d2ad020): 기본 parsed Root HTML runtime에서 singleton grid-auto-rows: min-content를 visible direct empty HTML div item으로 구성된 한-column·한-explicit-row Grid의 implicit rows에 제한 연결했다. Fixed non-negative item size, all-auto placement, row flow, zero gap, positive definite px axes, visible overflow만 허용하고 unsupported 조합은 원자 거부한다. Focused cascade/projection/capacity/layout/RuntimeSession은 1/1·1/1·2/2·11/11·2/2, scoped Clippy와 rustfmt가 통과했다. Broad Root HTML filter는 candidate 133 passed/9 failed, HEAD baseline 131 passed/동일 9 failed로 둘 다 green이 아니다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 같은 fixture에서 layout-ready 7 boxes와 draw/present를 확인했다. 화면은 OS screenshot이며 PixelCopy·Metal drawable readback, 실기기 Android hardware GPU·iOS compositor 이후 pixel·WPT 근거가 아니다. PR check rollup은 비었고 main required status checks는 없다. C11.4/C11 미완료와 공식 완료 78/214는 그대로다. 계획 · 내부 계약 0059 · 실행 근거와 화면 · 구현 PR diff 검토 30개 · Android AVD 화면 · iOS Simulator 화면 · 공식 상태.",
+  "document": {
+    "height": 161369,
+    "width": 390
+  },
+  "finalRoadmapPhrase": true,
+  "links": [
+    {
+      "href": "https://github.com/ohah/spinon/pull/1187",
+      "text": "PR #1187 Rebase and merge"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-intrinsic-auto-rows.md",
+      "text": "계획"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/0059-c11-grid-layout.md",
+      "text": "내부 계약 0059"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-precomparison-2026-11-06/README.md",
+      "text": "실행 근거와 화면"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-precomparison-2026-11-06/pr-diff-review-30.md",
+      "text": "구현 PR diff 검토 30개"
+    },
+    {
+      "href": "https://raw.githubusercontent.com/ohah/spinon/0c32617f76e18694bd692ff84a8035325d2ad020/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-precomparison-2026-11-06/android-simulator-final.png",
+      "text": "Android AVD 화면"
+    },
+    {
+      "href": "https://raw.githubusercontent.com/ohah/spinon/0c32617f76e18694bd692ff84a8035325d2ad020/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-precomparison-2026-11-06/ios-simulator-final.png",
+      "text": "iOS Simulator 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid",
+      "text": "공식 상태"
+    }
+  ],
+  "scrollY": 3008,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "height": 844,
+    "width": 390
+  }
+}
