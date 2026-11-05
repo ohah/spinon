@@ -1,0 +1,13 @@
+{
+  "localUrl": "http://127.0.0.1:8768/spinon/roadmap.html",
+  "localStatus": 200,
+  "localBytes": 579313,
+  "localSha256": "05e26a91ed141dcdd2cdd38316b11c518bcc827256a8028b487ee088b55231bf",
+  "remoteUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "remoteStatus": 200,
+  "remoteBytes": 579313,
+  "remoteSha256": "05e26a91ed141dcdd2cdd38316b11c518bcc827256a8028b487ee088b55231bf",
+  "sourceSha256": "05e26a91ed141dcdd2cdd38316b11c518bcc827256a8028b487ee088b55231bf",
+  "allHashesMatch": true,
+  "serverRestarted": false
+}

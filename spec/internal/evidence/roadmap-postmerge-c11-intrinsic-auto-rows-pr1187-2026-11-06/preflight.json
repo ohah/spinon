@@ -1,0 +1,21 @@
+{
+  "sourceHead": "0c32617f76e18694bd692ff84a8035325d2ad020",
+  "sourceTree": "4a9d67aae0ef6a592677b3b8cddc19dda81c88fc",
+  "trackedDiffSha256": "82eb7f44c51d0603e885b56577de8db1edba250f827170b2117fed0d5d87e3ff",
+  "tailscaleBackend": "Running",
+  "previewServerPid": 28040,
+  "previewServerArgs": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "localStatus": 200,
+  "localBytes": 576785,
+  "sourceBytes": 579313,
+  "previousBytes": 576785,
+  "sourceSha256": "05e26a91ed141dcdd2cdd38316b11c518bcc827256a8028b487ee088b55231bf",
+  "previousSha256": "b8db91205f68c5ee61b29976bb87411bd4e04244c5d7c1219a65bd455c70c871",
+  "openHandlePids": [],
+  "backupRoot": "~/Library/Application Support/SpinonPreviewBackups/roadmap-postmerge-c11-intrinsic-auto-rows-pr1187-2026-11-06/pass01",
+  "filesToReplace": [
+    "roadmap.html"
+  ],
+  "noDeletes": true,
+  "serverRestarted": false
+}
