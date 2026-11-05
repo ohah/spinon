@@ -2,7 +2,7 @@
 
 ## 범위와 입력
 
-이 evidence는 기존 `RootHtmlIntrinsicTrackSizingV1`에서 definite Root HTML Grid의 direct percentage gutter를 다룬다. CSS parser나 public CSS API, 전체 Grid 지원의 근거가 아니다. 동일한 9-scene source를 default Root HTML runtime route에 넣어 Android와 iOS에서 실행했다. 별도 [구현/runtime 실패 관점 20개 검토](./implementation-runtime-review-20.md)를 수행했다.
+이 evidence는 기존 `RootHtmlIntrinsicTrackSizingV1`에서 definite Root HTML Grid의 direct percentage gutter를 다룬다. CSS parser나 public CSS API, 전체 Grid 지원의 근거가 아니다. 동일한 9-scene source를 default Root HTML runtime route에 넣어 Android와 iOS에서 실행했다. 별도 [구현/runtime 실패 관점 20개 검토](./implementation-runtime-review-20.md) 및 실제 implementation PR diff [적대 검토 30개](./pr-diff-review-30.md)를 수행했다.
 
 - Runtime fixture: [root-html-grid-intrinsic-gap-percentage-runtime.html](../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-gap-percentage-runtime.html)
 - Fixture SHA-256: `f0150d202f93c94662f14655608c08ba54ab6c8c2b14ef21da0bd357bfdf1f12`
