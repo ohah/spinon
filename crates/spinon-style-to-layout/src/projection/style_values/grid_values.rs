@@ -18,7 +18,7 @@ use crate::StyleLayoutError;
 #[path = "grid_values/root_html_auto_repeat.rs"]
 pub(super) mod root_html_auto_repeat;
 
-const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
+pub(super) const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
 const MAX_COMBINED_GRID_LINE_AREA_METADATA_BYTES: usize = 1024 * 1024;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -205,23 +205,20 @@ fn validate_root_html_grid_tracks(
     let has_intrinsic_explicit_tracks = !root_html_direct_text_aspect_ratio && has_intrinsic_tracks;
     if has_intrinsic_explicit_tracks
         && (root_html_direct_text_aspect_ratio
-            || grid.template_areas.is_some()
             || !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto)
             || !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
             || root_html_has_fit_content_tracks(grid)
             || fixed_px_placement_flow)
     {
         return Err(unsupported(
-            if grid.template_areas.is_some() {
-                "grid-template-areas"
-            } else if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) {
+            if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) {
                 "grid-auto-rows"
             } else if !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
                 "grid-auto-columns"
             } else {
                 "grid-template-columns"
             },
-            "Root HTML intrinsic explicit tracks do not combine with areas, implicit tracks, fit-content(), column/dense flow, or the direct-text aspect-ratio route",
+            "Root HTML intrinsic explicit tracks do not combine with implicit tracks, fit-content(), column/dense flow, or the direct-text aspect-ratio route",
         ));
     }
     for (property, tracks, line_names, auto_repeat) in [
@@ -553,6 +550,11 @@ fn validate_root_html_named_area_template(
     grid: &ComputedCssGridLayout,
     areas: &ComputedCssGridTemplateAreas,
 ) -> Result<(), StyleLayoutError> {
+    if root_html_has_intrinsic_explicit_tracks(grid) {
+        return super::root_html_intrinsic_named_area::validate_root_html_intrinsic_named_area_template(
+            node, grid, areas,
+        );
+    }
     let unsupported = |property, value: &str| StyleLayoutError::UnsupportedComputedValue {
         node,
         property,
@@ -1366,18 +1368,18 @@ fn project_grid_layout_with_route_reservations(
                 GridPlacementMode::RootHtmlDenseAutoPlacementV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                if !root_html_direct_text_aspect_ratio
+                    && root_html_has_intrinsic_explicit_tracks(grid) =>
+            {
+                GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 if grid.auto_flow == ComputedCssGridAutoFlow::Column =>
             {
                 GridPlacementMode::RootHtmlColumnFlowV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if grid.template_areas.is_some() => {
                 GridPlacementMode::TemplateGrid
-            }
-            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
-                if !root_html_direct_text_aspect_ratio
-                    && root_html_has_intrinsic_explicit_tracks(grid) =>
-            {
-                GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 if root_html_has_fit_content_tracks(grid) =>

@@ -1,0 +1,44 @@
+{
+  "basis": [
+    "CSS Grid Layout Module Level 1, §7.1: each named area maps to its rectangular line range.",
+    "CSS Grid Layout Module Level 1, §7.2: item placement by a named area uses the matching row and column lines.",
+    "CSS Grid Layout Module Level 1, §§11.4–11.7: intrinsic tracks size from item contributions, with spanning contributions distributed across the spanned tracks."
+  ],
+  "geometryToleranceCssPx": 0.5,
+  "invariants": [
+    {
+      "scene": "min-content",
+      "checks": [
+        "label and value occupy the first row in their named areas",
+        "footer occupies the second row and spans both explicit columns",
+        "min-content column is sized by the smallest unbreakable word in label"
+      ]
+    },
+    {
+      "scene": "minmax",
+      "checks": [
+        "label occupies the minmax(min-content,max-content) first column",
+        "value occupies the remaining minmax(0,1fr) column",
+        "footer spans both columns without changing the area map"
+      ]
+    },
+    {
+      "scene": "span",
+      "checks": [
+        "wide occupies the rectangular wide area spanning the first two min-content columns",
+        "tail occupies only the third column",
+        "empty left and middle areas expose the first and second intrinsic column boundaries",
+        "foot occupies only the third column without contributing intrinsic text size",
+        "the spanning intrinsic contribution is distributed across the two columns in its area"
+      ]
+    },
+    {
+      "scene": "rows",
+      "checks": [
+        "head and body occupy separate named rows",
+        "their min-content and max-content row sizes differ with the fixed 32px inline size"
+      ]
+    }
+  ],
+  "oracleSeparation": "Chrome geometry is recorded separately in chrome156-observation.json. The invariants above are the independent expectations used to interpret that observation; browser-derived font advances are not claimed to be independent measurements."
+}

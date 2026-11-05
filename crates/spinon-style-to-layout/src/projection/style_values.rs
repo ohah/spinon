@@ -27,6 +27,7 @@ mod root_html_fit_content_named_area;
 mod root_html_grid_alignment;
 mod root_html_grid_gap;
 mod root_html_grid_tracks;
+mod root_html_intrinsic_named_area;
 mod root_html_named_area;
 mod root_html_one_axis_placement;
 mod spacing_values;

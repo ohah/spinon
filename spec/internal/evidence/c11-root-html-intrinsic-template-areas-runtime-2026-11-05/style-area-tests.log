@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 5 tests
+test projection::style_values::root_html_intrinsic_named_area::tests::intrinsic_named_area_template_rejects_unsupported_auto_minimum_fixed_maximum ... ok
+test projection::style_values::root_html_intrinsic_named_area::tests::intrinsic_named_area_template_rejects_duplicate_names_and_dimension_mismatch ... ok
+test projection::style_values::root_html_intrinsic_named_area::tests::intrinsic_named_area_template_rejects_oversized_metadata_before_layout ... ok
+test projection::style_values::root_html_intrinsic_named_area::tests::intrinsic_named_area_template_rejects_overlapping_rectangles ... ok
+test projection::style_values::root_html_intrinsic_named_area::tests::intrinsic_named_area_template_accepts_non_overlapping_rectangles_and_spans ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 414 filtered out; finished in 0.00s
+

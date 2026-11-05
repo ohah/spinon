@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 14 tests
+test grid::template_areas_tests::auto_repeat_template_areas_accept_two_auto_repeat_axes_and_area_extension ... ok
+test grid::template_areas_tests::template_grid_areas_remain_valid_after_implicit_placement_mode_selection ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_accept_empty_and_bounded_metadata ... ok
+test grid::template_areas_tests::template_grid_areas_accept_missing_and_extra_authored_tracks ... ok
+test grid::tests::template_area_rows_continue_fixed_px_pattern_after_area_expansion ... ok
+test grid::tests::template_area_columns_continue_fixed_px_pattern_after_area_expansion ... ok
+test grid::track_sizing_tests::auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines ... ok
+test grid::track_sizing_tests::two_axis_auto_repeat_template_area_extends_both_axes_and_resolves_area_lines ... ok
+test grid::tests::trailing_template_area_named_lines_use_default_auto_tracks ... ok
+test grid::tests::trailing_template_area_named_lines_use_typed_auto_tracks_after_area_pattern_phase ... ok
+test grid::tests::template_area_implicit_columns_use_the_authored_percentage_track_list ... ok
+test grid::tests::template_area_implicit_rows_use_the_authored_grid_auto_track_list ... ok
+test grid::tests::template_area_mode_stretches_definite_auto_sized_items_without_widening_dense_mode ... ok
+test grid::template_areas_tests::auto_repeat_template_areas_reject_invalid_shape_names_bounds_and_metadata ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 436 filtered out; finished in 0.00s
+

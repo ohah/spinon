@@ -41,6 +41,25 @@ pub(super) fn validate_root_html_named_area_candidate(
         );
     }
 
+    if let Some(container) = snapshot.elements.iter().find(|element| {
+        element.grid_layout.as_ref().is_some_and(|grid| {
+            grid.template_areas.is_some()
+                && super::grid_values::root_html_has_intrinsic_explicit_tracks(grid)
+        })
+    }) {
+        let grid = container
+            .grid_layout
+            .as_ref()
+            .expect("intrinsic named-area lookup requires a Grid value");
+        let areas = grid
+            .template_areas
+            .as_ref()
+            .expect("intrinsic named-area lookup requires parsed areas");
+        return super::root_html_intrinsic_named_area::validate_root_html_intrinsic_named_area_candidate(
+            tree, snapshot, nodes, container, grid, areas,
+        );
+    }
+
     let mut area_containers = snapshot.elements.iter().filter(|element| {
         element
             .grid_layout
@@ -72,6 +91,14 @@ pub(super) fn validate_root_html_named_area_candidate(
                 }
             } else if owner_allows_explicit_placement || owner_allows_one_axis_placement {
                 // The selected placement route validates numeric values and visible siblings later.
+                if placement.is_some_and(root_html_has_named_grid_placement) {
+                    return Err(StyleLayoutError::UnsupportedComputedValue {
+                        node: *item_node,
+                        property: "grid-area",
+                        value: "이 Root HTML 경로에서 named grid line을 쓰려면 검증된 template-area map이 필요합니다"
+                            .to_owned(),
+                    });
+                }
             } else if placement.is_some_and(root_html_has_non_auto_grid_placement) {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: *item_node,
@@ -356,6 +383,22 @@ fn root_html_has_non_auto_grid_placement(placement: &ComputedCssGridItemPlacemen
     ]
     .into_iter()
     .any(|value| !matches!(value, ComputedCssGridPlacement::Auto))
+}
+
+fn root_html_has_named_grid_placement(placement: &ComputedCssGridItemPlacement) -> bool {
+    [
+        &placement.row_start,
+        &placement.row_end,
+        &placement.column_start,
+        &placement.column_end,
+    ]
+    .into_iter()
+    .any(|value| {
+        matches!(
+            value,
+            ComputedCssGridPlacement::NamedLine { .. } | ComputedCssGridPlacement::SpanNamed { .. }
+        )
+    })
 }
 
 fn validate_root_html_dense_route_placement(

@@ -6,6 +6,18 @@ const SOURCE: &str = include_str!(
 const FRACTION_SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-fr-named-areas-runtime.html"
 );
+const INTRINSIC_AREA_SPAN_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-template-areas-runtime.html"
+);
+const INTRINSIC_AREA_MIN_CONTENT_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-area-min-content-runtime.html"
+);
+const INTRINSIC_AREA_MINMAX_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-area-minmax-runtime.html"
+);
+const INTRINSIC_AREA_ROWS_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-area-rows-runtime.html"
+);
 const PERCENTAGE_CASES: [(&str, &str); 4] = [
     (
         "both-axes",
@@ -72,10 +84,20 @@ fn area_frames(scene: &spinon_render::RuntimeRenderSnapshot) -> [[f32; 4]; 3] {
 }
 
 fn assert_frame_close(actual: [f32; 4], expected: [f32; 4], name: &str) {
+    assert_frame_close_with_tolerance(actual, expected, name, 0.02);
+}
+
+fn assert_frame_close_with_tolerance(
+    actual: [f32; 4],
+    expected: [f32; 4],
+    name: &str,
+    tolerance: f32,
+) {
     for (index, (actual_component, expected_component)) in actual.iter().zip(expected).enumerate() {
         assert!(
-            actual_component.is_finite() && (*actual_component - expected_component).abs() <= 0.02,
-            "{name} frame component {index}: actual={actual_component}, expected={expected_component}, full actual={actual:?}"
+            actual_component.is_finite()
+                && (*actual_component - expected_component).abs() <= tolerance,
+            "{name} frame component {index}: actual={actual_component}, expected={expected_component}, tolerance={tolerance}, full actual={actual:?}"
         );
     }
 }
@@ -237,6 +259,235 @@ fn c11_1_default_root_html_runtime_combines_named_areas_with_definite_fraction_t
             ["reordered header", "reordered side", "reordered content"][index],
         );
     }
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_combines_intrinsic_tracks_with_a_spanning_named_area() {
+    let (session, layout) = run(INTRINSIC_AREA_SPAN_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "intrinsic tracks with a spanning named area should be admitted atomically: failure={:?}",
+        layout.error,
+    );
+    let scene = layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("the intrinsic named-area Grid should publish a render scene");
+    let actual = area_frames(scene);
+    let expected = [
+        [0.0, 0.0, 12.046875, 33.0],
+        [12.046875, 0.0, 227.953_13, 33.0],
+        [12.046875, 33.0, 227.953_13, 87.0],
+    ];
+    for (index, (actual, expected)) in actual.into_iter().zip(expected).enumerate() {
+        assert_frame_close_with_tolerance(
+            actual,
+            expected,
+            [
+                "two-track wide area",
+                "third-column tail area",
+                "third-column foot area",
+            ][index],
+            0.5,
+        );
+    }
+    assert_frame_close_with_tolerance(
+        frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(245, 166, 35)),
+        [0.0, 33.0, 6.015625, 87.0],
+        "first exposed intrinsic column",
+        0.5,
+    );
+    assert_frame_close_with_tolerance(
+        frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(175, 82, 222)),
+        [6.015625, 33.0, 6.03125, 87.0],
+        "second exposed intrinsic column",
+        0.5,
+    );
+
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(cascade.state, RuntimeUaCascadeState::Ready);
+    let cascade_completed = cascade
+        .completed
+        .expect("intrinsic named-area styles should complete");
+    let layout_completed = layout
+        .completed
+        .as_ref()
+        .expect("intrinsic named-area layout should complete");
+    assert_eq!(
+        layout_completed.key, cascade_completed.key,
+        "area placement and intrinsic tracks must use one style revision"
+    );
+    let grid = cascade_completed.roots[0]
+        .styles
+        .elements
+        .iter()
+        .find_map(|style| style.grid_layout.as_ref())
+        .expect("the computed Root HTML Grid should retain its template");
+    assert_eq!(
+        grid.columns,
+        [
+            spinon_style::ComputedCssGridTrackSize::MinContent,
+            spinon_style::ComputedCssGridTrackSize::MinContent,
+            spinon_style::ComputedCssGridTrackSize::Fraction(1.0),
+        ]
+    );
+    assert_eq!(
+        grid.rows,
+        [
+            spinon_style::ComputedCssGridTrackSize::MaxContent,
+            spinon_style::ComputedCssGridTrackSize::Fraction(1.0),
+        ]
+    );
+    assert_eq!(
+        grid.template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns, areas.areas.len())),
+        Some((2, 3, 5))
+    );
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_combines_min_content_tracks_with_named_areas() {
+    let (_, layout) = run(INTRINSIC_AREA_MIN_CONTENT_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "min-content named-area Grid should be admitted: {:?}",
+        layout.error
+    );
+    let scene = layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("min-content named-area Grid should publish a render scene");
+    let expected = [
+        [0.0, 0.0, 12.046875, 22.0],
+        [12.046875, 0.0, 227.953_13, 22.0],
+        [0.0, 22.0, 240.0, 98.0],
+    ];
+    for (index, (actual, expected)) in area_frames(scene).into_iter().zip(expected).enumerate() {
+        assert_frame_close_with_tolerance(
+            actual,
+            expected,
+            ["min-content area", "flexible area", "two-column footer"][index],
+            0.5,
+        );
+    }
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_combines_minmax_tracks_with_named_areas() {
+    let (_, layout) = run(INTRINSIC_AREA_MINMAX_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "minmax named-area Grid should be admitted: {:?}",
+        layout.error
+    );
+    let scene = layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("minmax named-area Grid should publish a render scene");
+    let expected = [
+        [0.0, 0.0, 30.109375, 11.0],
+        [30.109375, 0.0, 209.890_63, 11.0],
+        [0.0, 11.0, 240.0, 109.0],
+    ];
+    for (index, (actual, expected)) in area_frames(scene).into_iter().zip(expected).enumerate() {
+        assert_frame_close_with_tolerance(
+            actual,
+            expected,
+            ["minmax area", "flexible area", "two-column footer"][index],
+            0.5,
+        );
+    }
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_combines_intrinsic_rows_with_named_areas() {
+    let (_, layout) = run(INTRINSIC_AREA_ROWS_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "intrinsic-row named-area Grid should be admitted: {:?}",
+        layout.error
+    );
+    let scene = layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("intrinsic-row named-area Grid should publish a render scene");
+    assert_frame_close_with_tolerance(
+        frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(229, 72, 77)),
+        [0.0, 0.0, 32.0, 22.0],
+        "min-content row",
+        0.5,
+    );
+    assert_frame_close_with_tolerance(
+        frame_for_paint(scene, spinon_render::OpaqueCssSrgb::new(58, 143, 91)),
+        [0.0, 22.0, 32.0, 33.0],
+        "max-content row",
+        0.5,
+    );
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_rejects_unresolved_intrinsic_named_area_atomically() {
+    let source = INTRINSIC_AREA_SPAN_SOURCE
+        .replace("#tail { grid-area: tail;", "#tail { grid-area: missing;");
+    assert_ne!(source, INTRINSIC_AREA_SPAN_SOURCE);
+    let (_, layout) = run(&source);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Failed,
+        "unknown area placement must fail closed: {:?}",
+        layout.error
+    );
+    assert!(
+        layout.completed.is_none(),
+        "an unresolved area must not publish a partial scene"
+    );
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_rejects_non_rectangular_intrinsic_area_atomically() {
+    let source = INTRINSIC_AREA_SPAN_SOURCE.replace(
+        "grid-template-areas: \"wide wide tail\" \"left middle foot\";",
+        "grid-template-areas: \"wide left tail\" \"left middle foot\";",
+    );
+    assert_ne!(source, INTRINSIC_AREA_SPAN_SOURCE);
+    let (_, layout) = run(&source);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Failed,
+        "invalid area shape must fail closed: {:?}",
+        layout.error
+    );
+    assert!(
+        layout.completed.is_none(),
+        "an invalid area shape must not publish a partial scene"
+    );
+}
+
+#[test]
+fn c11_1_default_root_html_runtime_rejects_unsupported_auto_minimum_area_track_atomically() {
+    let source = INTRINSIC_AREA_MINMAX_SOURCE
+        .replace("minmax(min-content, max-content)", "minmax(auto, 40px)");
+    assert_ne!(source, INTRINSIC_AREA_MINMAX_SOURCE);
+    let (_, layout) = run(&source);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Failed,
+        "unsupported automatic-minimum named-area track must fail closed: {:?}",
+        layout.error
+    );
+    assert!(
+        layout.completed.is_none(),
+        "unsupported automatic-minimum area track must not publish a partial scene"
+    );
 }
 
 #[test]
