@@ -148,7 +148,10 @@ fn project_grid_layout_with_route(
         grid,
         profile,
         math,
-        root_html_one_axis_placement,
+        GridProjectionRouteOptions {
+            root_html_one_axis_placement,
+            root_html_direct_text_aspect_ratio,
+        },
         |tracks, count| tracks.try_reserve_exact(count).map_err(|_| ()),
         |_| Ok(()),
     )
@@ -172,6 +175,44 @@ fn validate_root_html_grid_tracks(
         ComputedCssGridAutoFlow::RowDense | ComputedCssGridAutoFlow::ColumnDense
     );
     let fixed_px_placement_flow = column_flow || dense_flow;
+    let has_intrinsic_tracks = root_html_has_intrinsic_explicit_tracks(grid);
+    let direct_text_aspect_ratio_has_only_its_auto_row = root_html_direct_text_aspect_ratio
+        && grid.rows.as_slice() == [ComputedCssGridTrackSize::Auto]
+        && !grid
+            .columns
+            .iter()
+            .any(computed_track_uses_intrinsic_sizing);
+    if root_html_direct_text_aspect_ratio
+        && has_intrinsic_tracks
+        && !direct_text_aspect_ratio_has_only_its_auto_row
+    {
+        return Err(unsupported(
+            "grid-template-columns",
+            "Root HTML direct-text aspect-ratio route does not combine with intrinsic explicit tracks",
+        ));
+    }
+    let has_intrinsic_explicit_tracks = !root_html_direct_text_aspect_ratio && has_intrinsic_tracks;
+    if has_intrinsic_explicit_tracks
+        && (root_html_direct_text_aspect_ratio
+            || grid.template_areas.is_some()
+            || !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto)
+            || !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+            || root_html_has_fit_content_tracks(grid)
+            || fixed_px_placement_flow)
+    {
+        return Err(unsupported(
+            if grid.template_areas.is_some() {
+                "grid-template-areas"
+            } else if !matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto) {
+                "grid-auto-rows"
+            } else if !matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto) {
+                "grid-auto-columns"
+            } else {
+                "grid-template-columns"
+            },
+            "Root HTML intrinsic explicit tracks do not combine with areas, implicit tracks, fit-content(), column/dense flow, or the direct-text aspect-ratio route",
+        ));
+    }
     for (property, tracks, line_names, auto_repeat) in [
         (
             "grid-template-columns",
@@ -212,7 +253,7 @@ fn validate_root_html_grid_tracks(
                 if implicit_rows && has_auto_minimum_track {
                     "고정 implicit row와 함께 쓰는 Root HTML Grid explicit track은 자동 최소 크기 minmax()를 지원하지 않습니다"
                 } else {
-                    "Root HTML Grid explicit track은 finite non-negative px/percentage/fr direct track, minmax(px|%|auto, px|%|fr), fit-content(px|%)만 지원하며 line name과 auto-repeat은 지원하지 않습니다"
+                    "Root HTML Grid explicit track은 finite non-negative px/percentage/fr, auto/min-content/max-content, minmax() 및 fit-content(px|%)를 제한 지원하며 line name과 auto-repeat은 지원하지 않습니다"
                 },
             ));
         }
@@ -344,6 +385,51 @@ fn validate_root_html_grid_tracks(
     Ok(())
 }
 
+pub(super) fn root_html_has_intrinsic_explicit_tracks(grid: &ComputedCssGridLayout) -> bool {
+    grid.columns
+        .iter()
+        .chain(&grid.rows)
+        .any(computed_track_uses_intrinsic_sizing)
+}
+
+fn computed_track_uses_intrinsic_sizing(track: &ComputedCssGridTrackSize) -> bool {
+    match track {
+        ComputedCssGridTrackSize::Auto
+        | ComputedCssGridTrackSize::MinContent
+        | ComputedCssGridTrackSize::MaxContent => true,
+        ComputedCssGridTrackSize::MinMax { min, max } => {
+            let existing_auto_minimum_fraction = matches!(min, ComputedCssGridTrackBreadth::Auto)
+                && matches!(max, ComputedCssGridTrackBreadth::Fraction(value) if value.is_finite() && *value >= 0.0);
+            let percentage_minimum_fraction_maximum = matches!(
+                (min, max),
+                (
+                    ComputedCssGridTrackBreadth::Percentage(_),
+                    ComputedCssGridTrackBreadth::Fraction(_)
+                )
+            );
+            !existing_auto_minimum_fraction
+                && (percentage_minimum_fraction_maximum
+                    || matches!(
+                        min,
+                        ComputedCssGridTrackBreadth::Auto
+                            | ComputedCssGridTrackBreadth::MinContent
+                            | ComputedCssGridTrackBreadth::MaxContent
+                    )
+                    || matches!(
+                        max,
+                        ComputedCssGridTrackBreadth::Auto
+                            | ComputedCssGridTrackBreadth::MinContent
+                            | ComputedCssGridTrackBreadth::MaxContent
+                    ))
+        }
+        ComputedCssGridTrackSize::LengthPx(_)
+        | ComputedCssGridTrackSize::Percentage(_)
+        | ComputedCssGridTrackSize::Fraction(_)
+        | ComputedCssGridTrackSize::FitContent(_)
+        | ComputedCssGridTrackSize::Calc(_) => false,
+    }
+}
+
 fn root_html_dense_auto_rows_supported(auto_rows: &ComputedCssGridAutoRows) -> bool {
     match auto_rows {
         ComputedCssGridAutoRows::Auto => true,
@@ -368,18 +454,20 @@ fn is_supported_root_html_explicit_track(track: &ComputedCssGridTrackSize) -> bo
         ComputedCssGridTrackSize::LengthPx(value)
         | ComputedCssGridTrackSize::Percentage(value)
         | ComputedCssGridTrackSize::Fraction(value) => finite_nonnegative(value),
+        ComputedCssGridTrackSize::Auto
+        | ComputedCssGridTrackSize::MinContent
+        | ComputedCssGridTrackSize::MaxContent => true,
         ComputedCssGridTrackSize::MinMax { min, max } => {
             let supported_min = match min {
                 spinon_style::ComputedCssGridTrackBreadth::LengthPx(value)
                 | spinon_style::ComputedCssGridTrackBreadth::Percentage(value) => {
                     finite_nonnegative(value)
                 }
-                spinon_style::ComputedCssGridTrackBreadth::Auto => matches!(
-                    max,
-                    spinon_style::ComputedCssGridTrackBreadth::Fraction(value)
-                        if finite_nonnegative(value)
-                ),
-                _ => false,
+                spinon_style::ComputedCssGridTrackBreadth::Auto
+                | spinon_style::ComputedCssGridTrackBreadth::MinContent
+                | spinon_style::ComputedCssGridTrackBreadth::MaxContent => true,
+                spinon_style::ComputedCssGridTrackBreadth::Fraction(_)
+                | spinon_style::ComputedCssGridTrackBreadth::Calc(_) => false,
             };
             let supported_max = match max {
                 spinon_style::ComputedCssGridTrackBreadth::LengthPx(value)
@@ -387,7 +475,10 @@ fn is_supported_root_html_explicit_track(track: &ComputedCssGridTrackSize) -> bo
                 | spinon_style::ComputedCssGridTrackBreadth::Fraction(value) => {
                     finite_nonnegative(value)
                 }
-                _ => false,
+                spinon_style::ComputedCssGridTrackBreadth::Auto
+                | spinon_style::ComputedCssGridTrackBreadth::MinContent
+                | spinon_style::ComputedCssGridTrackBreadth::MaxContent => true,
+                spinon_style::ComputedCssGridTrackBreadth::Calc(_) => false,
             };
             supported_min && supported_max
         }
@@ -996,10 +1087,19 @@ fn project_grid_layout_with_reservations(
         grid,
         profile,
         math,
-        false,
+        GridProjectionRouteOptions {
+            root_html_one_axis_placement: false,
+            root_html_direct_text_aspect_ratio: false,
+        },
         &mut reserve,
         &mut reserve_line_metadata,
     )
+}
+
+#[derive(Clone, Copy)]
+struct GridProjectionRouteOptions {
+    root_html_one_axis_placement: bool,
+    root_html_direct_text_aspect_ratio: bool,
 }
 
 fn project_grid_layout_with_route_reservations(
@@ -1007,10 +1107,14 @@ fn project_grid_layout_with_route_reservations(
     grid: &ComputedCssGridLayout,
     profile: ComputedStyleProfile,
     math: &mut CssMathProjector,
-    root_html_one_axis_placement: bool,
+    route_options: GridProjectionRouteOptions,
     mut reserve: impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
     mut reserve_line_metadata: impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
 ) -> Result<GridContainerInput, StyleLayoutError> {
+    let GridProjectionRouteOptions {
+        root_html_one_axis_placement,
+        root_html_direct_text_aspect_ratio,
+    } = route_options;
     let mut columns = project_tracks(
         &grid.columns,
         node,
@@ -1097,6 +1201,7 @@ fn project_grid_layout_with_route_reservations(
         == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         && grid.template_areas.is_some();
     let root_html_implicit_rows = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && !root_html_has_intrinsic_explicit_tracks(grid)
         && (root_html_has_supported_implicit_rows(&grid.auto_rows)
             || grid
                 .columns
@@ -1256,6 +1361,12 @@ fn project_grid_layout_with_route_reservations(
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if grid.template_areas.is_some() => {
                 GridPlacementMode::TemplateGrid
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                if !root_html_direct_text_aspect_ratio
+                    && root_html_has_intrinsic_explicit_tracks(grid) =>
+            {
+                GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 if root_html_has_fit_content_tracks(grid) =>

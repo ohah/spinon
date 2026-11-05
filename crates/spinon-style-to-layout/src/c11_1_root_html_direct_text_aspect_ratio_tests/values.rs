@@ -243,10 +243,12 @@ fn parsed_root_html_aspect_ratio_fails_closed_outside_the_fixed_owner_slice() {
     );
     assert!(matches!(
         non_candidate_fixture.compute(),
-        Err(StyleLayoutError::UnsupportedComputedValue {
-            property: "grid-template-rows",
-            ..
-        })
+        Err(StyleLayoutError::Layout(
+            spinon_layout::LayoutError::UnsupportedGridContainerStyle {
+                property: "height",
+                ..
+            }
+        ))
     ));
 
     for alignment in ["align-content:start;", "justify-content:start;"] {

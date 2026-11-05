@@ -16,6 +16,8 @@ mod fit_content;
 mod fr_auto_columns;
 #[path = "root_html_grid_track_tests/implicit_rows_composition.rs"]
 mod implicit_rows_composition;
+#[path = "root_html_grid_track_tests/intrinsic.rs"]
+mod intrinsic;
 #[path = "root_html_grid_track_tests/minmax.rs"]
 mod minmax;
 
@@ -1032,7 +1034,6 @@ fn root_html_profile_rejects_invalid_or_nondirect_fraction_tracks() {
         ComputedCssGridTrackSize::Fraction(f32::NAN),
         ComputedCssGridTrackSize::Fraction(f32::INFINITY),
         ComputedCssGridTrackSize::Fraction(f32::NEG_INFINITY),
-        ComputedCssGridTrackSize::Auto,
         ComputedCssGridTrackSize::MinMax {
             min: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
             max: spinon_style::ComputedCssGridTrackBreadth::LengthPx(40.0),
@@ -1064,11 +1065,6 @@ fn root_html_profile_rejects_invalid_or_nondirect_percentage_tracks() {
         ComputedCssGridTrackSize::Percentage(f32::NAN),
         ComputedCssGridTrackSize::Percentage(f32::INFINITY),
         ComputedCssGridTrackSize::Percentage(f32::NEG_INFINITY),
-        ComputedCssGridTrackSize::Auto,
-        ComputedCssGridTrackSize::MinMax {
-            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(0.0),
-            max: spinon_style::ComputedCssGridTrackBreadth::Auto,
-        },
     ] {
         let grid = grid(vec![track], vec![ComputedCssGridTrackSize::LengthPx(40.0)]);
         let error = project_grid_layout(

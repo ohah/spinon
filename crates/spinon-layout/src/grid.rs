@@ -326,6 +326,8 @@ pub enum GridPlacementMode {
     RootHtmlMixedCrossAxisColumnAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
+    /// 기본 Root HTML 경로에서 제한된 explicit intrinsic tracks와 row-sparse placement를 sizing합니다.
+    RootHtmlIntrinsicTrackSizingV1,
     /// C11.2.3의 row/column sparse·dense 자동 배치와 양의 implicit track을 계산합니다.
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
@@ -466,6 +468,13 @@ pub(super) fn validate_grid_layout(
         if container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1 {
             validate_root_html_implicit_rows_contract(id, container, &css_math_by_id)?;
         }
+        if container.placement_mode == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 {
+            validate_root_html_intrinsic_tracks_contract(
+                id,
+                input.nodes[index[&id]].style,
+                container,
+            )?;
+        }
         if matches!(
             container.placement_mode,
             GridPlacementMode::RootHtmlColumnFlowV1
@@ -505,6 +514,13 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, GridAutoRows::Auto) => {}
+            (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, _) => {
+                return Err(LayoutError::UnsupportedGridAutoRows {
+                    node: id,
+                    reason: "Root HTML intrinsic explicit tracks require auto grid-auto-rows",
+                });
+            }
             (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::LengthPx(_)) => {}
             (GridPlacementMode::RootHtmlImplicitRowsV1, GridAutoRows::TrackList(tracks))
@@ -581,6 +597,13 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_columns) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, GridAutoColumns::Auto) => {}
+            (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, _) => {
+                return Err(LayoutError::UnsupportedGridAutoColumns {
+                    node: id,
+                    reason: "Root HTML intrinsic explicit tracks require auto grid-auto-columns",
+                });
+            }
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::Auto)
                 if container.template_areas.is_some() => {}
             (
@@ -789,7 +812,9 @@ pub(super) fn validate_grid_layout(
             );
         let allow_intrinsic_tracks = matches!(
             container.placement_mode,
-            GridPlacementMode::TrackSizing | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+            GridPlacementMode::TrackSizing
+                | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
         ) || template_area_track_sizing;
         let allow_template_area_auto_track = container.placement_mode
             == GridPlacementMode::TemplateGrid
@@ -858,7 +883,10 @@ pub(super) fn validate_grid_layout(
                 &input.css_math,
             )?;
         }
-        if container.placement_mode == GridPlacementMode::TrackSizing {
+        if matches!(
+            container.placement_mode,
+            GridPlacementMode::TrackSizing | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+        ) {
             validate_grid_flex_factor_upper_bound(
                 node.id,
                 "grid-template-columns",
@@ -877,6 +905,7 @@ pub(super) fn validate_grid_layout(
             GridPlacementMode::SparseRow
                 | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
                 | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
         ) && container.auto_flow != GridAutoFlow::Row
         {
             return Err(LayoutError::UnsupportedGridAutoFlow(node.id));
@@ -894,6 +923,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
                 | GridPlacementMode::TrackSizing
         ) && container.auto_flow != GridAutoFlow::Row
         {
@@ -1035,6 +1065,12 @@ pub(super) fn validate_grid_layout(
                         | crate::LayoutDimension::FitContent
                 )
             };
+            let valid_root_html_intrinsic_dimension = |size| {
+                matches!(
+                    size,
+                    crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
+                )
+            };
             let valid_item_size = |size| {
                 if root_html_default_grid_text_item && matches!(size, crate::LayoutDimension::Auto)
                 {
@@ -1061,6 +1097,9 @@ pub(super) fn validate_grid_layout(
                             if normalized_grid.auto_placed_items.contains(&child_id) =>
                         {
                             valid_track_sizing_dimension(size)
+                        }
+                        GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 => {
+                            valid_root_html_intrinsic_dimension(size)
                         }
                         GridPlacementMode::Existing | GridPlacementMode::ExplicitOnly
                             if has_explicit_placement =>
@@ -1166,9 +1205,14 @@ pub(super) fn validate_grid_layout(
                             | crate::LayoutDimension::Fixed(_)
                             | crate::LayoutDimension::Percent(_)
                     );
+                let root_html_intrinsic_zero_minimum = container.placement_mode
+                    == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                    && matches!(property, "min-width" | "min-height")
+                    && value == crate::LayoutDimension::Fixed(0.0);
                 if value != crate::LayoutDimension::Auto
                     && !zero_minimum_on_definite_area
                     && !track_sizing_constraint
+                    && !root_html_intrinsic_zero_minimum
                 {
                     return Err(LayoutError::UnsupportedGridItemConstraint {
                         node: child_id,
@@ -1238,6 +1282,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -1378,6 +1423,179 @@ fn validate_root_html_implicit_rows_contract(
         });
     }
     Ok(())
+}
+
+fn validate_root_html_intrinsic_tracks_contract(
+    node: spinon_core::NodeId,
+    style: LayoutStyle,
+    container: &crate::GridContainerInput,
+) -> Result<(), LayoutError> {
+    for (property, tracks, line_names, auto_repeat) in [
+        (
+            "grid-template-columns",
+            container.columns.as_slice(),
+            container.columns_line_names.as_slice(),
+            container.columns_auto_repeat.as_ref(),
+        ),
+        (
+            "grid-template-rows",
+            container.rows.as_slice(),
+            container.rows_line_names.as_slice(),
+            container.rows_auto_repeat.as_ref(),
+        ),
+    ] {
+        if tracks.is_empty() {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+        if tracks.len() > GRID_MAX_TRACKS {
+            return Err(LayoutError::GridTrackLimitExceeded {
+                node,
+                property,
+                count: tracks.len(),
+                maximum: GRID_MAX_TRACKS,
+            });
+        }
+        if auto_repeat.is_some()
+            || line_names.iter().flatten().any(|name| !name.is_empty())
+            || tracks
+                .iter()
+                .any(|track| !root_html_intrinsic_track_is_supported(track))
+        {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+    }
+    if container.template_areas.is_some()
+        || container.columns_auto_repeat.is_some()
+        || container.rows_auto_repeat.is_some()
+    {
+        return Err(LayoutError::InvalidGridTrackList {
+            node,
+            property: if container.template_areas.is_some() {
+                "grid-template-areas"
+            } else if container.columns_auto_repeat.is_some() {
+                "grid-template-columns"
+            } else {
+                "grid-template-rows"
+            },
+        });
+    }
+    if container.auto_flow != GridAutoFlow::Row {
+        return Err(LayoutError::UnsupportedGridAutoFlow(node));
+    }
+    if container.auto_rows != GridAutoRows::Auto {
+        return Err(LayoutError::UnsupportedGridAutoRows {
+            node,
+            reason: "Root HTML intrinsic explicit tracks require auto grid-auto-rows",
+        });
+    }
+    if container.auto_columns != GridAutoColumns::Auto {
+        return Err(LayoutError::UnsupportedGridAutoColumns {
+            node,
+            reason: "Root HTML intrinsic explicit tracks require auto grid-auto-columns",
+        });
+    }
+    let unsupported_property = if !matches!(
+        style.width,
+        LayoutDimension::Fixed(value) if value.is_finite() && value > 0.0
+    ) {
+        Some("width")
+    } else if !matches!(
+        style.height,
+        LayoutDimension::Fixed(value) if value.is_finite() && value > 0.0
+    ) {
+        Some("height")
+    } else if style.min_width != LayoutDimension::Auto {
+        Some("min-width")
+    } else if style.max_width != LayoutDimension::Auto {
+        Some("max-width")
+    } else if style.min_height != LayoutDimension::Auto {
+        Some("min-height")
+    } else if style.max_height != LayoutDimension::Auto {
+        Some("max-height")
+    } else if style.aspect_ratio.is_some() {
+        Some("aspect-ratio")
+    } else if style.direction != crate::TextDirection::Ltr {
+        Some("direction")
+    } else if style.overflow_x != crate::LayoutOverflow::Visible {
+        Some("overflow-x")
+    } else if style.overflow_y != crate::LayoutOverflow::Visible {
+        Some("overflow-y")
+    } else if style.gap.row != crate::LayoutLengthPercentage::LengthPx(0.0) {
+        Some("row-gap")
+    } else if style.gap.column != crate::LayoutLengthPercentage::LengthPx(0.0) {
+        Some("column-gap")
+    } else if style.margin != crate::LayoutEdges::default() {
+        Some("margin")
+    } else if style.padding != crate::LayoutEdges::default() {
+        Some("padding")
+    } else if style.border != crate::LayoutBorder::default() {
+        Some("border")
+    } else if style.align_items != crate::LayoutAlignItems::Normal {
+        Some("align-items")
+    } else if style.align_content.is_some_and(|value| {
+        !matches!(
+            value,
+            crate::LayoutAlignContent::Normal | crate::LayoutAlignContent::FlexStart
+        ) && !matches!(
+            value,
+            crate::LayoutAlignContent::Position {
+                position: crate::ContentAlignmentPosition::Start,
+                safety: None,
+            }
+        )
+    }) {
+        Some("align-content")
+    } else if !matches!(
+        style.justify_content,
+        crate::LayoutJustifyContent::Normal | crate::LayoutJustifyContent::FlexStart
+    ) && !matches!(
+        style.justify_content,
+        crate::LayoutJustifyContent::Position {
+            position: crate::JustifyContentPosition::Start,
+            safety: None,
+        }
+    ) {
+        Some("justify-content")
+    } else if container.justify_items != crate::LayoutAlignItems::Normal {
+        Some("justify-items")
+    } else {
+        None
+    };
+    if let Some(property) = unsupported_property {
+        return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
+    }
+    Ok(())
+}
+
+pub(super) fn root_html_intrinsic_track_is_supported(track: &GridTrackSize) -> bool {
+    let nonnegative = |value: f32| value.is_finite() && value >= 0.0;
+    match track {
+        GridTrackSize::LengthPx(value)
+        | GridTrackSize::Percentage(value)
+        | GridTrackSize::Fraction(value) => nonnegative(*value),
+        GridTrackSize::Auto | GridTrackSize::MinContent | GridTrackSize::MaxContent => true,
+        GridTrackSize::MinMax { min, max } => {
+            let valid_minimum = match min {
+                GridTrackMinSizingFunction::LengthPx(value)
+                | GridTrackMinSizingFunction::Percentage(value) => nonnegative(*value),
+                GridTrackMinSizingFunction::Auto
+                | GridTrackMinSizingFunction::MinContent
+                | GridTrackMinSizingFunction::MaxContent => true,
+                GridTrackMinSizingFunction::Calc(_) => false,
+            };
+            let valid_maximum = match max {
+                GridTrackMaxSizingFunction::LengthPx(value)
+                | GridTrackMaxSizingFunction::Percentage(value)
+                | GridTrackMaxSizingFunction::Fraction(value) => nonnegative(*value),
+                GridTrackMaxSizingFunction::Auto
+                | GridTrackMaxSizingFunction::MinContent
+                | GridTrackMaxSizingFunction::MaxContent => true,
+                GridTrackMaxSizingFunction::Calc(_) => false,
+            };
+            valid_minimum && valid_maximum
+        }
+        GridTrackSize::FitContent(_) | GridTrackSize::Calc(_) => false,
+    }
 }
 
 fn validate_root_html_implicit_rows_container_style(

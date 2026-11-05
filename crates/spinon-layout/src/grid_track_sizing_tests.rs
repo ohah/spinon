@@ -1055,3 +1055,6 @@ mod flex_factor_bound;
 
 #[path = "grid_track_sizing_tests/auto_repeat_track_ceiling.rs"]
 mod auto_repeat_track_ceiling;
+
+#[path = "grid_track_sizing_tests/root_html_intrinsic_tracks.rs"]
+mod root_html_intrinsic_tracks;

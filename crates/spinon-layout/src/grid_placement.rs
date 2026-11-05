@@ -86,6 +86,7 @@ pub(super) fn normalize_grid_layout(
                 GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                     | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                     | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
+                    | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
             )
         {
             root_html_one_axis_placement::validate_items(
@@ -144,6 +145,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -180,6 +182,7 @@ pub(super) fn normalize_grid_layout(
             GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
         ) {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,
@@ -297,6 +300,7 @@ pub(super) fn normalize_grid_item_placements(
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+                | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

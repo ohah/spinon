@@ -30,6 +30,8 @@ mod root_html_grid_fit_content_percentage;
 mod root_html_grid_fr;
 mod root_html_grid_implicit_rows;
 mod root_html_grid_integer_repeat;
+#[cfg(feature = "c11-1-grid-intrinsic-tracks-fixture-test")]
+mod root_html_grid_intrinsic_tracks;
 mod root_html_grid_item_alignment;
 mod root_html_grid_item_self_alignment;
 mod root_html_grid_minmax;

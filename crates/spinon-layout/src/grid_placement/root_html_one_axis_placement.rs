@@ -25,9 +25,12 @@ pub(super) fn validate_items(
         GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
             | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
     );
+    let intrinsic_track_sizing =
+        container.placement_mode == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
     if container.placement_mode != GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
         && !mixed_explicit
         && !mixed_cross_axis
+        && !intrinsic_track_sizing
     {
         return Ok(());
     }
@@ -36,6 +39,7 @@ pub(super) fn validate_items(
         container_node.style,
         container,
         mixed_cross_axis_column,
+        intrinsic_track_sizing,
     )?;
 
     let mut grid_locked_axis = None;
@@ -43,6 +47,7 @@ pub(super) fn validate_items(
     let mut first_item = None;
     let mut fully_definite_count = 0usize;
     let mut one_axis_count = 0usize;
+    let mut fully_auto_count = 0usize;
     let mut row_locked_count = 0usize;
     let mut column_locked_count = 0usize;
     for child in container_node
@@ -62,7 +67,7 @@ pub(super) fn validate_items(
         {
             return Err(LayoutError::UnsupportedGridPositionedItem(child));
         }
-        if !supported_item(input, item) {
+        if !supported_item(input, item, container_node.id, intrinsic_track_sizing) {
             return Err(LayoutError::UnsupportedGridItemSize(child));
         }
 
@@ -71,7 +76,11 @@ pub(super) fn validate_items(
         if first_item.is_none() {
             first_item = Some(child);
         }
-        if (mixed_explicit || mixed_cross_axis) && is_fully_definite(&placement) {
+        if intrinsic_track_sizing && is_fully_auto(&placement) {
+            fully_auto_count = fully_auto_count
+                .checked_add(1)
+                .ok_or(LayoutError::GridImplicitTrackRequired(container_node.id))?;
+        } else if (mixed_explicit || mixed_cross_axis) && is_fully_definite(&placement) {
             fully_definite_count = fully_definite_count
                 .checked_add(1)
                 .ok_or(LayoutError::GridImplicitTrackRequired(container_node.id))?;
@@ -125,6 +134,13 @@ pub(super) fn validate_items(
             first_item.unwrap_or(container_node.id),
             "grid-row-start",
             "Root HTML mixed cross-axis mode requires both row-locked and column-locked items",
+        ));
+    }
+    if intrinsic_track_sizing && one_axis_count != 0 && fully_auto_count != 0 {
+        return Err(super::invalid_placement(
+            first_item.unwrap_or(container_node.id),
+            "grid-row-start",
+            "Root HTML intrinsic track sizing does not mix auto and one-axis placed items",
         ));
     }
     Ok(())
@@ -227,6 +243,7 @@ fn validate_container(
     style: LayoutStyle,
     container: &GridContainerInput,
     column_flow: bool,
+    intrinsic_track_sizing: bool,
 ) -> Result<(), LayoutError> {
     if (column_flow && container.auto_flow != GridAutoFlow::Column)
         || (!column_flow && container.auto_flow != GridAutoFlow::Row)
@@ -248,7 +265,13 @@ fn validate_container(
                 maximum: crate::GRID_MAX_TRACKS,
             });
         }
-        if tracks.iter().any(|track| !is_nonnegative_px(track)) {
+        if tracks.iter().any(|track| {
+            if intrinsic_track_sizing {
+                !crate::grid::root_html_intrinsic_track_is_supported(track)
+            } else {
+                !is_nonnegative_px(track)
+            }
+        }) {
             return Err(LayoutError::InvalidGridTrackList { node, property });
         }
     }
@@ -266,7 +289,14 @@ fn validate_container(
     validate_auto_track(node, "grid-auto-rows", &container.auto_rows)?;
     validate_auto_track(node, "grid-auto-columns", &container.auto_columns)?;
 
-    let fixed_dimension = |dimension| matches!(dimension, LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0);
+    let fixed_dimension = |dimension| {
+        matches!(
+            dimension,
+            LayoutDimension::Fixed(value)
+                if value.is_finite()
+                    && (value > 0.0 || (!intrinsic_track_sizing && value == 0.0))
+        )
+    };
     let fixed_zero_gap =
         |gap| matches!(gap, crate::LayoutLengthPercentage::LengthPx(value) if value == 0.0);
     let unsupported_property = if !fixed_dimension(style.width) {
@@ -301,15 +331,35 @@ fn validate_container(
         Some("border")
     } else if style.align_items != LayoutAlignItems::Normal {
         Some("align-items")
-    } else if style
-        .align_content
-        .is_some_and(|value| value != LayoutAlignContent::Normal)
-    {
+    } else if style.align_content.is_some_and(|value| {
+        if intrinsic_track_sizing {
+            !matches!(
+                value,
+                LayoutAlignContent::Normal | LayoutAlignContent::FlexStart
+            ) && !matches!(
+                value,
+                LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::Start,
+                    safety: None,
+                }
+            )
+        } else {
+            value != LayoutAlignContent::Normal
+        }
+    }) {
         Some("align-content")
-    } else if !matches!(
+    } else if !(matches!(
         style.justify_content,
         LayoutJustifyContent::Normal | LayoutJustifyContent::FlexStart
-    ) {
+    ) || intrinsic_track_sizing
+        && matches!(
+            style.justify_content,
+            LayoutJustifyContent::Position {
+                position: crate::JustifyContentPosition::Start,
+                safety: None,
+            }
+        ))
+    {
         Some("justify-content")
     } else if container.justify_items != LayoutAlignItems::Normal {
         Some("justify-items")
@@ -344,24 +394,43 @@ fn validate_auto_track(
     }
 }
 
-fn supported_item(input: &LayoutInput, item: &crate::LayoutNode) -> bool {
+fn supported_item(
+    input: &LayoutInput,
+    item: &crate::LayoutNode,
+    grid_container: NodeId,
+    intrinsic_track_sizing: bool,
+) -> bool {
     let auto_or_fixed = |dimension| match dimension {
         LayoutDimension::Auto => true,
         LayoutDimension::Fixed(value) => value.is_finite() && value >= 0.0,
         _ => false,
     };
+    let has_text_content = input
+        .text_paragraphs
+        .get(&item.id)
+        .is_some_and(crate::TextParagraphInput::has_content);
+    let root_html_default_grid_text_item = intrinsic_track_sizing
+        && matches!(
+            input.text_paragraphs.get(&item.id),
+            Some(crate::TextParagraphInput::AnonymousGridText {
+                grid_container: owner,
+                root_html_default: true,
+                ..
+            }) if *owner == grid_container
+        );
+    let min_constraint_is_supported = |dimension| {
+        dimension == LayoutDimension::Auto
+            || (intrinsic_track_sizing && dimension == LayoutDimension::Fixed(0.0))
+    };
     item.style.display == LayoutDisplay::Block
         && item.children.is_empty()
         && !input.grid_containers.contains_key(&item.id)
-        && !input
-            .text_paragraphs
-            .get(&item.id)
-            .is_some_and(crate::TextParagraphInput::has_content)
+        && (!has_text_content || intrinsic_track_sizing || root_html_default_grid_text_item)
         && auto_or_fixed(item.style.width)
         && auto_or_fixed(item.style.height)
-        && item.style.min_width == LayoutDimension::Auto
+        && min_constraint_is_supported(item.style.min_width)
         && item.style.max_width == LayoutDimension::Auto
-        && item.style.min_height == LayoutDimension::Auto
+        && min_constraint_is_supported(item.style.min_height)
         && item.style.max_height == LayoutDimension::Auto
         && item.style.aspect_ratio.is_none()
         && item.style.order == 0
