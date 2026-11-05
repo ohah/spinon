@@ -1,0 +1,100 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Root HTML Grid direct-text aspect-ratio min/max precomparison</title>
+<style>
+html, body { margin: 0; }
+body { color: #111; background: #fff; }
+.grid {
+  display: grid;
+  width: 70px;
+  grid-template-columns: 10px 60px;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  gap: 0;
+  align-items: start;
+  justify-items: start;
+}
+.item {
+  color: #111;
+  background: #f1f5f9;
+  font: 10px/10px monospace;
+  white-space: nowrap;
+}
+.short { background: #dcfce7; }
+.ratio { aspect-ratio: 2 / 1; background: #dbeafe; }
+.width-ratio { width: 60px; height: auto; }
+.width-control { width: 60px; height: auto; }
+.min-height-40 { min-height: 40px; }
+.max-height-20 { max-height: 20px; }
+.min-height-40-max-height-20 { min-height: 40px; max-height: 20px; }
+.height-ratio { width: auto; height: 30px; }
+.min-width-70 { min-width: 70px; }
+.max-width-50 { max-width: 50px; }
+.min-width-70-max-width-50 { min-width: 70px; max-width: 50px; }
+</style>
+
+<div id="width-ratio-baseline" class="grid">
+  <div class="item short">A</div><div id="width-ratio-baseline-target" class="item ratio width-ratio">AAAA</div>
+</div>
+<div id="width-ratio-min-height" class="grid">
+  <div class="item short">A</div><div id="width-ratio-min-height-target" class="item ratio width-ratio min-height-40">AAAA</div>
+</div>
+<div id="width-ratio-max-height" class="grid">
+  <div class="item short">A</div><div id="width-ratio-max-height-target" class="item ratio width-ratio max-height-20">AAAA</div>
+</div>
+<div id="width-ratio-minmax-height" class="grid">
+  <div class="item short">A</div><div id="width-ratio-minmax-height-target" class="item ratio width-ratio min-height-40-max-height-20">AAAA</div>
+</div>
+<div id="width-control-min-height" class="grid">
+  <div class="item short">A</div><div id="width-control-min-height-target" class="item width-control min-height-40">AAAA</div>
+</div>
+<div id="height-ratio-baseline" class="grid">
+  <div class="item short">A</div><div id="height-ratio-baseline-target" class="item ratio height-ratio">AAAA</div>
+</div>
+<div id="height-ratio-min-width" class="grid">
+  <div class="item short">A</div><div id="height-ratio-min-width-target" class="item ratio height-ratio min-width-70">AAAA</div>
+</div>
+<div id="height-ratio-max-width" class="grid">
+  <div class="item short">A</div><div id="height-ratio-max-width-target" class="item ratio height-ratio max-width-50">AAAA</div>
+</div>
+<div id="height-ratio-minmax-width" class="grid">
+  <div class="item short">A</div><div id="height-ratio-minmax-width-target" class="item ratio height-ratio min-width-70-max-width-50">AAAA</div>
+</div>
+<div id="height-control-max-width" class="grid">
+  <div class="item short">A</div><div id="height-control-max-width-target" class="item height-ratio max-width-50">AAAA</div>
+</div>
+
+<script>
+window.captureRootHtmlGridTextAspectRatioMinMax = () => {
+  const rect = (element) => {
+    const value = element.getBoundingClientRect();
+    return { x: value.x, y: value.y, width: value.width, height: value.height };
+  };
+  return {
+    fontReady: document.fonts.check('10px monospace'),
+    viewport: { width: innerWidth, height: innerHeight },
+    scenes: [...document.querySelectorAll('.grid')].map((grid) => {
+      const item = grid.children[1];
+      const style = getComputedStyle(item);
+      const gridStyle = getComputedStyle(grid);
+      return {
+        id: grid.id,
+        grid: rect(grid),
+        columns: gridStyle.gridTemplateColumns,
+        rows: gridStyle.gridTemplateRows,
+        target: {
+          id: item.id,
+          width: style.width,
+          height: style.height,
+          minWidth: style.minWidth,
+          maxWidth: style.maxWidth,
+          minHeight: style.minHeight,
+          maxHeight: style.maxHeight,
+          aspectRatio: style.aspectRatio,
+          frame: rect(item),
+        },
+      };
+    }),
+  };
+};
+</script>
