@@ -2,6 +2,7 @@
 
 ## Candidate
 
+- [Implementation/runtime review — 20 perspectives](implementation-runtime-review-20.md) · [PR #1195 actual diff review — 30 perspectives](pr-diff-review-30.md).
 - Fixture: `tests/fixtures/css/c11/root-html-grid-intrinsic-combined-tracks-runtime.html`
 - Fixture SHA-256: `fc9ff608f630e7a6e6e2f185f8e49da93b696f5ea1b167efca4996082403380e`
 - Both simulator apps used the existing C04.12 default Root HTML route. The app's packaged `root-html-default-rendering.html` was temporarily replaced with this fixture for each build, then both source assets were restored and verified at SHA-256 `38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85`.
