@@ -1,0 +1,82 @@
+{
+  "format": "spinon-c11-root-html-intrinsic-combined-tracks-expected-v1",
+  "basis": {
+    "specification": "CSS Grid Layout Level 1, 2025-03-26 CRD, sections 7.6, 11.1, and 11.5",
+    "text": "A A A A A A",
+    "font": "10px monospace",
+    "grid": {
+      "width": 40,
+      "height": 40,
+      "explicitRows": [10],
+      "implicitRows": "min-content",
+      "rowGap": 0
+    },
+    "independentTextIntrinsicWidths": {
+      "minContent": 6.03125,
+      "maxContent": 66.234375
+    }
+  },
+  "scenes": {
+    "min-content": {
+      "columns": [6.03125],
+      "rows": [10, 60, 34],
+      "textLineCount": 6,
+      "items": {
+        "first": [0, 0, 0, 10],
+        "text": [0, 10, 6.03125, 60],
+        "last": [0, 70, 0, 34]
+      },
+      "lastItemBottom": 104
+    },
+    "max-content": {
+      "columns": [66.234375],
+      "rows": [10, 10, 34],
+      "textLineCount": 1,
+      "items": {
+        "first": [0, 0, 0, 10],
+        "text": [0, 10, 66.234375, 10],
+        "last": [0, 20, 0, 34]
+      }
+    },
+    "auto-track": {
+      "columns": [40],
+      "rows": [10, 20, 34],
+      "textLineCount": 2,
+      "items": {
+        "first": [0, 0, 0, 10],
+        "text": [0, 10, 40, 20],
+        "last": [0, 30, 0, 34]
+      }
+    },
+    "minmax-flex": {
+      "columns": [40],
+      "rows": [10, 20, 34],
+      "textLineCount": 2,
+      "items": {
+        "first": [0, 0, 0, 10],
+        "text": [0, 10, 40, 20],
+        "last": [0, 30, 0, 34]
+      }
+    },
+    "rows-control": {
+      "columns": [40],
+      "rows": [10, 20, 34],
+      "textLineCount": 2,
+      "items": {
+        "first": [0, 0, 0, 10],
+        "text": [0, 10, 40, 20],
+        "last": [0, 30, 0, 34]
+      }
+    },
+    "gap": {
+      "columns": [6.03125],
+      "rows": [10, 60, 34],
+      "usedRowGaps": [2, 2],
+      "items": {
+        "first": [0, 0, 0, 10],
+        "text": [0, 12, 6.03125, 60],
+        "last": [0, 74, 0, 34]
+      }
+    }
+  }
+}

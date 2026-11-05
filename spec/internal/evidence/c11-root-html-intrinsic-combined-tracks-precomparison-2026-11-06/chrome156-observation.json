@@ -1,0 +1,98 @@
+{
+  "format": "spinon-c11-root-html-intrinsic-combined-tracks-chrome-observation-v1",
+  "source": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-intrinsic-combined-tracks-precomparison.html",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "documentFontCheck": "10px monospace: true",
+  "intrinsicTextProbe": {
+    "text": "A A A A A A",
+    "font": "10px / 10px monospace",
+    "singleAWidth": 6.03125,
+    "minContentWidth": 6.03125,
+    "maxContentWidth": 66.234375
+  },
+  "grids": [
+    {
+      "id": "min-content",
+      "frame": [0, 14, 40, 40],
+      "columnsComputed": "6.03125px",
+      "rowsComputed": "10px 60px 34px",
+      "rowGapComputed": "0px",
+      "columnGapComputed": "0px",
+      "items": {
+        "first": { "frame": [0, 14, 0, 10] },
+        "text": { "frame": [0, 24, 6.03125, 60], "lineCount": 6 },
+        "last": { "frame": [0, 84, 0, 34] }
+      }
+    },
+    {
+      "id": "max-content",
+      "frame": [0, 78, 40, 40],
+      "columnsComputed": "66.2344px",
+      "rowsComputed": "10px 10px 34px",
+      "rowGapComputed": "0px",
+      "columnGapComputed": "0px",
+      "items": {
+        "first": { "frame": [0, 78, 0, 10] },
+        "text": { "frame": [0, 88, 66.234375, 10], "lineCount": 1 },
+        "last": { "frame": [0, 98, 0, 34] }
+      }
+    },
+    {
+      "id": "auto-track",
+      "frame": [0, 142, 40, 40],
+      "columnsComputed": "40px",
+      "rowsComputed": "10px 20px 34px",
+      "rowGapComputed": "0px",
+      "columnGapComputed": "0px",
+      "items": {
+        "first": { "frame": [0, 142, 0, 10] },
+        "text": { "frame": [0, 152, 40, 20], "lineCount": 2 },
+        "last": { "frame": [0, 172, 0, 34] }
+      }
+    },
+    {
+      "id": "minmax-flex",
+      "frame": [0, 206, 40, 40],
+      "columnsComputed": "40px",
+      "rowsComputed": "10px 20px 34px",
+      "rowGapComputed": "0px",
+      "columnGapComputed": "0px",
+      "items": {
+        "first": { "frame": [0, 206, 0, 10] },
+        "text": { "frame": [0, 216, 40, 20], "lineCount": 2 },
+        "last": { "frame": [0, 236, 0, 34] }
+      }
+    },
+    {
+      "id": "rows-control",
+      "frame": [0, 270, 40, 40],
+      "columnsComputed": "40px",
+      "rowsComputed": "10px 20px 34px",
+      "rowGapComputed": "0px",
+      "columnGapComputed": "0px",
+      "items": {
+        "first": { "frame": [0, 270, 0, 10] },
+        "text": { "frame": [0, 280, 40, 20], "lineCount": 2 },
+        "last": { "frame": [0, 300, 0, 34] }
+      }
+    },
+    {
+      "id": "gap",
+      "frame": [0, 334, 40, 40],
+      "columnsComputed": "6.03125px",
+      "rowsComputed": "10px 60px 34px",
+      "rowGapComputed": "5%",
+      "columnGapComputed": "0px",
+      "items": {
+        "first": { "frame": [0, 334, 0, 10] },
+        "text": { "frame": [0, 346, 6.03125, 60], "lineCount": 6 },
+        "last": { "frame": [0, 408, 0, 34] }
+      }
+    }
+  ],
+  "artifacts": {
+    "screenshot": "chrome156-agent-browser.png",
+    "screenshotSha256": "57fc2c4ff125b18c9ead30795c3bd345bb8332189a351e828032e3460e1e0ad5"
+  }
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid intrinsic explicit and implicit tracks precomparison</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background-color: #20242a; color: #fff; font: 12px sans-serif; }
+      main { width: 120px; height: 440px; padding: 0; margin: 0; }
+      .case { display: block; margin-bottom: 10px; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: #39434f;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-rows: min-content;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+      }
+      #min-content { grid-template-columns: min-content; }
+      #max-content { grid-template-columns: max-content; }
+      #auto-track { grid-template-columns: auto; }
+      #minmax-flex { grid-template-columns: minmax(min-content, 1fr); }
+      #rows-control { grid-template-columns: 40px; }
+      #gap { grid-template-columns: min-content; row-gap: 5%; }
+      .item {
+        box-sizing: border-box;
+        width: 0;
+        margin: 0;
+        padding: 0;
+      }
+      .first { height: 10px; background-color: #f2665e; }
+      .text {
+        width: auto;
+        height: auto;
+        min-height: auto;
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 10px;
+        white-space: normal;
+        background-color: #5ba8f5;
+      }
+      .last { height: 34px; background-color: #55c791; }
+      .label { height: 14px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="case">
+        <div class="label">min-content column + min-content implicit rows</div>
+        <div id="min-content" class="grid">
+          <div data-item="first" class="item first"></div>
+          <div data-item="text" class="item text">A A A A A A</div>
+          <div data-item="last" class="item last"></div>
+        </div>
+      </section>
+      <section class="case">
+        <div class="label">max-content column + min-content implicit rows</div>
+        <div id="max-content" class="grid">
+          <div data-item="first" class="item first"></div>
+          <div data-item="text" class="item text">A A A A A A</div>
+          <div data-item="last" class="item last"></div>
+        </div>
+      </section>
+      <section class="case">
+        <div class="label">auto column + min-content implicit rows</div>
+        <div id="auto-track" class="grid">
+          <div data-item="first" class="item first"></div>
+          <div data-item="text" class="item text">A A A A A A</div>
+          <div data-item="last" class="item last"></div>
+        </div>
+      </section>
+      <section class="case">
+        <div class="label">minmax(min-content, 1fr) + min-content implicit rows</div>
+        <div id="minmax-flex" class="grid">
+          <div data-item="first" class="item first"></div>
+          <div data-item="text" class="item text">A A A A A A</div>
+          <div data-item="last" class="item last"></div>
+        </div>
+      </section>
+      <section class="case">
+        <div class="label">fixed column rows-only control</div>
+        <div id="rows-control" class="grid">
+          <div data-item="first" class="item first"></div>
+          <div data-item="text" class="item text">A A A A A A</div>
+          <div data-item="last" class="item last"></div>
+        </div>
+      </section>
+      <section class="case">
+        <div class="label">percentage row-gap + min-content column and rows</div>
+        <div id="gap" class="grid">
+          <div data-item="first" class="item first"></div>
+          <div data-item="text" class="item text">A A A A A A</div>
+          <div data-item="last" class="item last"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
