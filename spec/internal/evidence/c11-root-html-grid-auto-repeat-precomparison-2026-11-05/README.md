@@ -26,10 +26,10 @@ The first hand-derived file, [`initial-derived-expected-before-fr-audit.json`](.
 ## Evidence hashes
 
 - Initial expectation SHA-256: `e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a`
-- Corrected expectation SHA-256: `b562c2f43c2a6cd4f975e3dd2b27b3b82a8c2c9cb5fa90427e98010f262db428`
+- Corrected expectation SHA-256: `5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5`
 - Chrome observation SHA-256: `9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63`
-- Comparison SHA-256: `6b67300d50b1dd7a616c9caf3f381568a56f0af1fa124e952ebbdccd57202d4c`
-- Comparator SHA-256: `135c1719dd2776bf73fb6f6c4c59e2aeb797380ebf925b94b88ff1a97da23b46`
+- Comparison SHA-256: `58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80`
+- Comparator SHA-256: `f88c44002190f5b6236d3cdb7ca875eca75dd9d891c4d3ebfe297b74e09f295c`
 - First comparator failure SHA-256: `5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed`
 - Screenshot SHA-256: `21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72`
 
