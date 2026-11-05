@@ -7,7 +7,7 @@
     <style>
       html, body { margin: 0; padding: 0; }
       main { width: 180px; margin: 0; padding: 0; }
-      section { width: 180px; height: 36px; margin: 0 0 4px; padding: 0; }
+      .scene { width: 180px; height: 36px; margin: 0 0 4px; padding: 0; }
       .grid {
         box-sizing: border-box;
         display: grid;
@@ -15,7 +15,6 @@
         height: 30px;
         margin: 0;
         padding: 0;
-        border: 0;
         gap: 0;
         align-content: start;
         justify-content: start;
@@ -27,7 +26,6 @@
         min-height: 0;
         margin: 0;
         padding: 0;
-        border: 0;
         color: #fff;
         background-color: #c22;
         font-family: monospace;
@@ -42,12 +40,17 @@
       #minmax-auto-max .grid { grid-template-columns: minmax(auto, max-content); }
       #minmax-intrinsic-flex .grid { grid-template-columns: minmax(min-content, 1fr); }
       #minmax-floor .grid { grid-template-columns: minmax(80px, max-content); }
+      #minmax-percent-min .grid { grid-template-columns: minmax(50%, max-content); }
+      #minmax-percent-max .grid { grid-template-columns: minmax(min-content, 50%); }
+      #minmax-percent-flex-floor .grid { grid-template-columns: minmax(50%, 1fr) 100px; }
+      #minmax-percent-zero-basis .grid { width: 0; grid-template-columns: minmax(50%, max-content); }
+      #minmax-flex-zero-basis .grid { width: 0; grid-template-columns: minmax(min-content, 1fr); }
       #repeat-intrinsic .grid { grid-template-columns: repeat(2, minmax(min-content, max-content)); }
       #min-content-rows .grid { grid-template-columns: 160px; grid-template-rows: min-content; }
       #max-content-rows .grid { grid-template-columns: 160px; grid-template-rows: max-content; }
       #span-two-intrinsic .grid { grid-template-columns: repeat(2, minmax(min-content, max-content)); }
       #span-two-intrinsic .item { grid-column: 1 / span 2; background-color: #0cf; }
-      #auto-stretch .grid { justify-content: normal; }
+      #auto-stretch .grid { grid-template-columns: auto; justify-content: normal; }
       #hidden-item .grid { grid-template-columns: min-content; }
       #hidden-item .item.is-hidden { display: none; }
       #max-content-overflow .grid { width: 20px; grid-template-columns: max-content; }
@@ -58,6 +61,11 @@
       #minmax-auto-max .item { background-color: #92c; }
       #minmax-intrinsic-flex .item { background-color: #099; }
       #minmax-floor .item { background-color: #963; }
+      #minmax-percent-min .item { background-color: #a42; }
+      #minmax-percent-max .item { background-color: #248; }
+      #minmax-percent-flex-floor .item { background-color: #286; }
+      #minmax-percent-zero-basis .item { background-color: #625; }
+      #minmax-flex-zero-basis .item { background-color: #267; }
       #repeat-intrinsic .item { background-color: #c39; }
       #min-content-rows .item { background-color: #555; }
       #max-content-rows .item { background-color: #369; }
@@ -68,20 +76,25 @@
   </head>
   <body>
     <main>
-      <section id="min-content"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="max-content"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="auto"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="minmax-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="minmax-auto-max"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="minmax-intrinsic-flex"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="minmax-floor"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="repeat-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="min-content-rows"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="max-content-rows"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="span-two-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="auto-stretch"><div class="grid"><div class="item">alpha beta</div></div></section>
-      <section id="hidden-item"><div class="grid"><div class="item">alpha beta</div><div class="item is-hidden">verylongword</div></div></section>
-      <section id="max-content-overflow"><div class="grid"><div class="item">alpha beta</div></div></section>
+      <div class="scene" id="min-content"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="max-content"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="auto"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-auto-max"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-intrinsic-flex"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-floor"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-percent-min"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-percent-max"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-percent-flex-floor"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-percent-zero-basis"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="minmax-flex-zero-basis"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="repeat-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="min-content-rows"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="max-content-rows"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="span-two-intrinsic"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="auto-stretch"><div class="grid"><div class="item">alpha beta</div></div></div>
+      <div class="scene" id="hidden-item"><div class="grid"><div class="item">alpha beta</div><div class="item is-hidden">verylongword</div></div></div>
+      <div class="scene" id="max-content-overflow"><div class="grid"><div class="item">alpha beta</div></div></div>
     </main>
   </body>
 </html>

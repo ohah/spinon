@@ -15,6 +15,7 @@ c13-1-overflow-clip-worker-test = ["spinon-style-to-render/c13-1-overflow-clip-w
 c13-3-gesture-fixture-test = ["spinon-style-to-render/c13-3-gesture-fixture-test"]
 c14-1-live-v8-fixture-test = []
 c11-1-grid-column-flow-mixed-cross-axis-fixture-test = []
+c11-1-grid-intrinsic-tracks-fixture-test = []
 c11-4-grid-track-sizing-fixture-test = [
     "dep:spinon-image",
     "spinon-text-layout/c11-4-hyphens-auto-fixture-test",

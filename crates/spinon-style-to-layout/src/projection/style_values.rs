@@ -44,7 +44,7 @@ use grid_placement_values::project_grid_item_placement;
 use grid_values::{
     project_grid_layout_with_math,
     project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
-    project_root_html_one_axis_grid_layout_with_math,
+    project_root_html_one_axis_grid_layout_with_math, root_html_has_intrinsic_explicit_tracks,
 };
 use positioning_values::parse_positioning;
 use primitive_values::{
@@ -375,6 +375,27 @@ pub(super) fn project_styles(
             .iter()
             .copied(),
     );
+    let root_html_intrinsic_track_sizing_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            snapshot
+                .elements
+                .iter()
+                .filter(|element| {
+                    element
+                        .grid_layout
+                        .as_ref()
+                        .is_some_and(root_html_has_intrinsic_explicit_tracks)
+                        && !root_html_direct_text_ratio_scene_owners.contains(&element.node_id)
+                })
+                .map(|element| element.node_id)
+                .collect::<BTreeSet<_>>()
+        } else {
+            BTreeSet::new()
+        };
+    let mut root_html_intrinsic_placement_route_nodes =
+        root_html_one_axis_or_mixed_placement_route_nodes.clone();
+    root_html_intrinsic_placement_route_nodes
+        .extend(root_html_intrinsic_track_sizing_nodes.iter().copied());
     let mut root_html_grid_alignment_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             grid_nodes.as_ref().map_or_else(BTreeSet::new, |nodes| {
@@ -408,7 +429,7 @@ pub(super) fn project_styles(
             nodes,
             &root_html_dense_route_nodes,
             &root_html_explicit_placement_route_nodes,
-            &root_html_one_axis_or_mixed_placement_route_nodes,
+            &root_html_intrinsic_placement_route_nodes,
         )?;
         root_html_column_flow::validate_candidate(
             tree,
@@ -433,6 +454,7 @@ pub(super) fn project_styles(
                 element,
                 root_html_grid_alignment_enabled,
                 root_html_grid_item_alignment_enabled,
+                root_html_intrinsic_track_sizing_nodes.contains(&node),
             )?;
         }
         if matches!(
@@ -778,7 +800,10 @@ pub(super) fn project_styles(
             } else {
                 LayoutStyle::default().justify_self
             },
-            align_content: if supports_runtime_flex || root_html_grid_alignment_enabled {
+            align_content: if supports_runtime_flex
+                || root_html_grid_alignment_enabled
+                || root_html_intrinsic_track_sizing_nodes.contains(&node)
+            {
                 Some(parse_runtime_align_content(
                     node,
                     required(element, "align-content")?,
@@ -788,7 +813,8 @@ pub(super) fn project_styles(
             },
             justify_content: match snapshot.profile {
                 ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
-                    if root_html_grid_alignment_enabled =>
+                    if root_html_grid_alignment_enabled
+                        || root_html_intrinsic_track_sizing_nodes.contains(&node) =>
                 {
                     parse_runtime_justify_content(node, required(element, "justify-content")?)?
                 }
@@ -1020,6 +1046,8 @@ pub(super) fn project_styles(
                         is_grid_container: true,
                         allow_root_html_grid_alignment: root_html_grid_alignment_nodes
                             .contains(&node),
+                        allow_root_html_intrinsic_content_alignment:
+                            root_html_intrinsic_track_sizing_nodes.contains(&node),
                         allow_c11_4_overflow_auto_minimum_fixture: options
                             .allow_c11_4_overflow_auto_minimum_fixture,
                         allow_c11_4_grid_text_baseline_fixture: options
@@ -1120,6 +1148,7 @@ pub(super) fn project_styles(
             }
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_one_axis_placement_route_nodes.contains(&node)
+                && !root_html_intrinsic_track_sizing_nodes.contains(&node)
             {
                 container.placement_mode =
                     spinon_layout::GridPlacementMode::RootHtmlOneAxisAutoPlacementV1;
@@ -1815,6 +1844,7 @@ struct GridAlignmentChecks {
     is_grid_item: bool,
     is_replaced_grid_item: bool,
     allow_root_html_grid_alignment: bool,
+    allow_root_html_intrinsic_content_alignment: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
 }
@@ -1877,6 +1907,11 @@ fn reject_grid_alignment(
                 && checks.allow_root_html_grid_alignment
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_grid_alignment::supports_alignment_value(property, value))
+            && !(checks.is_grid_container
+                && checks.allow_root_html_intrinsic_content_alignment
+                && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && matches!(property, "align-content" | "justify-content")
+                && value == "start")
             && !(checks.is_grid_item
                 && checks.allow_root_html_grid_alignment
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
@@ -1901,6 +1936,7 @@ fn reject_root_html_grid_alignment_scope(
     element: &ComputedElementStyle,
     allow_grid_alignment: bool,
     allow_grid_item_self_alignment: bool,
+    allow_intrinsic_content_alignment: bool,
 ) -> Result<(), StyleLayoutError> {
     if !allow_grid_alignment {
         for property in [
@@ -1911,6 +1947,9 @@ fn reject_root_html_grid_alignment_scope(
         ] {
             if let Some(value) = element.properties.get(property)
                 && value != "normal"
+                && !(allow_intrinsic_content_alignment
+                    && matches!(property, "align-content" | "justify-content")
+                    && value == "start")
             {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: element.node_id,

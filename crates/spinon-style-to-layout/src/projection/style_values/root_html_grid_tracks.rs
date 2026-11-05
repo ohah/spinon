@@ -377,6 +377,13 @@ fn validate_axis_track_range(
     let max_f32 = f32::MAX as f64;
     let mut fixed_total = (gap as f64) * tracks.len().saturating_sub(1) as f64;
     let mut fraction_factor_total = 0.0_f64;
+    if !fixed_total.is_finite() || fixed_total > max_f32 {
+        return Err(unsupported(
+            element,
+            property,
+            "track gutters exceed the finite f32 CSS-pixel range",
+        ));
+    }
     for track in tracks {
         match track {
             ComputedCssGridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
@@ -398,21 +405,24 @@ fn validate_axis_track_range(
             }
             ComputedCssGridTrackSize::MinMax { min, max } => {
                 let minimum = match min {
-                    ComputedCssGridTrackBreadth::Auto => None,
-                    _ => {
-                        let Some(minimum) = resolve_fixed_breadth(min, basis) else {
-                            // The Root HTML explicit-track gate reports unsupported breadths.
-                            return Ok(());
-                        };
-                        if !minimum.is_finite() || minimum < 0.0 || minimum > max_f32 {
-                            return Err(unsupported(
-                                element,
-                                property,
-                                "resolved minmax minimum exceeds the finite f32 CSS-pixel range",
-                            ));
+                    ComputedCssGridTrackBreadth::Auto
+                    | ComputedCssGridTrackBreadth::MinContent
+                    | ComputedCssGridTrackBreadth::MaxContent => None,
+                    _ => match resolve_fixed_breadth(min, basis) {
+                        Some(minimum) => {
+                            if !minimum.is_finite() || minimum < 0.0 || minimum > max_f32 {
+                                return Err(unsupported(
+                                    element,
+                                    property,
+                                    "resolved minmax minimum exceeds the finite f32 CSS-pixel range",
+                                ));
+                            }
+                            Some(minimum)
                         }
-                        Some(minimum)
-                    }
+                        // Intrinsic contributions are data-dependent; keep scanning known
+                        // fixed/percentage tracks so a later aggregate overflow is not hidden.
+                        None => None,
+                    },
                 };
                 let resolved = match max {
                     ComputedCssGridTrackBreadth::Fraction(value)
@@ -422,22 +432,23 @@ fn validate_axis_track_range(
                         minimum.unwrap_or(0.0)
                     }
                     _ => {
-                        let Some(minimum) = minimum else {
-                            // Root HTML only admits automatic minimum with a fraction maximum.
-                            return Ok(());
-                        };
-                        let Some(maximum) = resolve_fixed_breadth(max, basis) else {
-                            // The Root HTML explicit-track gate reports unsupported breadths.
-                            return Ok(());
-                        };
-                        if !maximum.is_finite() || maximum < 0.0 || maximum > max_f32 {
-                            return Err(unsupported(
-                                element,
-                                property,
-                                "resolved minmax maximum exceeds the finite f32 CSS-pixel range",
-                            ));
+                        match resolve_fixed_breadth(max, basis) {
+                            Some(maximum) => {
+                                if !maximum.is_finite() || maximum < 0.0 || maximum > max_f32 {
+                                    return Err(unsupported(
+                                        element,
+                                        property,
+                                        "resolved minmax maximum exceeds the finite f32 CSS-pixel range",
+                                    ));
+                                }
+                                minimum.unwrap_or(0.0).max(maximum)
+                            }
+                            None => {
+                                // Keep a known fixed minimum in the aggregate, then validate the
+                                // remaining tracks. Intrinsic maxima are resolved by layout.
+                                minimum.unwrap_or(0.0)
+                            }
                         }
-                        minimum.max(maximum)
                     }
                 };
                 fixed_total += resolved;
@@ -451,11 +462,12 @@ fn validate_axis_track_range(
             }
             ComputedCssGridTrackSize::LengthPx(_) | ComputedCssGridTrackSize::Fraction(_) => {
                 // The explicit-track validator reports the original px/fr input diagnostic.
-                return Ok(());
+                continue;
             }
             _ => {
-                // The explicit-track validator reports unsupported track forms before layout.
-                return Ok(());
+                // Intrinsic and unsupported forms contribute no known fixed amount here. The
+                // explicit-track validator still reports unsupported forms before layout.
+                continue;
             }
         }
         if !fixed_total.is_finite() || fixed_total > max_f32 {

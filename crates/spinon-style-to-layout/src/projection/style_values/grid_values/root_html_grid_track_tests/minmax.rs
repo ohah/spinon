@@ -68,14 +68,6 @@ fn root_html_profile_rejects_invalid_minmax_breadths() {
             min: ComputedCssGridTrackBreadth::LengthPx(1.0),
             max: ComputedCssGridTrackBreadth::Fraction(-1.0),
         },
-        ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::MinContent,
-            max: ComputedCssGridTrackBreadth::LengthPx(10.0),
-        },
-        ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::LengthPx(1.0),
-            max: ComputedCssGridTrackBreadth::Auto,
-        },
     ] {
         let input = grid(vec![track], vec![ComputedCssGridTrackSize::LengthPx(40.0)]);
         let error = project_grid_layout(

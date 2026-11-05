@@ -69,12 +69,15 @@ fn root_html_profile_projects_fraction_rows_with_fixed_implicit_rows() {
 #[test]
 fn root_html_profile_still_rejects_intrinsic_tracks_with_fixed_implicit_rows() {
     let node = NodeId::new(11_191).unwrap();
-    for track in [
-        ComputedCssGridTrackSize::Auto,
-        ComputedCssGridTrackSize::MinMax {
-            min: spinon_style::ComputedCssGridTrackBreadth::Auto,
-            max: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
-        },
+    for (track, property) in [
+        (ComputedCssGridTrackSize::Auto, "grid-auto-rows"),
+        (
+            ComputedCssGridTrackSize::MinMax {
+                min: spinon_style::ComputedCssGridTrackBreadth::Auto,
+                max: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
+            },
+            "grid-template-columns",
+        ),
     ] {
         let mut grid = grid(vec![track], vec![ComputedCssGridTrackSize::LengthPx(20.0)]);
         grid.auto_rows = ComputedCssGridAutoRows::LengthPx(15.0);
@@ -88,9 +91,9 @@ fn root_html_profile_still_rejects_intrinsic_tracks_with_fixed_implicit_rows() {
             error,
             crate::StyleLayoutError::UnsupportedComputedValue {
                 node: error_node,
-                property: "grid-template-columns",
+                property: error_property,
                 ..
-            } if error_node == node
+            } if error_node == node && error_property == property
         ));
     }
 }

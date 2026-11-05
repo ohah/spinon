@@ -1,0 +1,3 @@
+command: xcrun simctl install 9DCCE836-7659-4914-B6C1-13F54BFFA9DB build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+exit_code: 0
+installed_app_container: /Users/yoonhb/Library/Developer/CoreSimulator/Devices/9DCCE836-7659-4914-B6C1-13F54BFFA9DB/data/Containers/Bundle/Application/9B71A393-9334-4D54-AC80-4186B3DAD577/SpinonBootstrap.app

@@ -14,7 +14,7 @@ use taffy::style::{
 
 use crate::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, GridContainerInput,
-    GridItemInput, GridTrackSize, ItemAlignmentPosition, JustifyContentPosition,
+    GridItemInput, GridPlacementMode, GridTrackSize, ItemAlignmentPosition, JustifyContentPosition,
     LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBoxSizing, LayoutCalcId,
     LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutError,
     LayoutJustifyContent, LayoutLengthPercentage, LayoutOverflow, LayoutPosition,
@@ -79,6 +79,10 @@ pub(super) fn to_taffy_style(
             .transpose()?
             .unwrap_or_default(),
     };
+    let intrinsic_grid_normal_justification = grid_input.container.is_some_and(|container| {
+        container.placement_mode == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+            && style.justify_content == LayoutJustifyContent::Normal
+    });
     let (grid_auto_rows, grid_auto_columns) = match grid_input.container.filter(|container| {
         container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some()
     }) {
@@ -293,11 +297,12 @@ pub(super) fn to_taffy_style(
             .map(|container| to_taffy_align_items(container.justify_items))
             .unwrap_or(AlignItems::NORMAL),
         justify_self: to_taffy_justify_self(style.justify_self, item_is_replaced),
-        justify_content: to_taffy_justify_content(
-            style.justify_content,
-            style.flex_direction,
-            style.direction,
-        ),
+        justify_content: if intrinsic_grid_normal_justification {
+            // CSS Grid treats normal justify-content like stretch, which stretches auto tracks.
+            JustifyContent::STRETCH
+        } else {
+            to_taffy_justify_content(style.justify_content, style.flex_direction, style.direction)
+        },
         margin: Rect {
             top: to_taffy_length_percentage_auto(
                 node,

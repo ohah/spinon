@@ -10,7 +10,8 @@ use crate::v8::{
 };
 #[cfg(any(
     feature = "c14-1-live-v8-fixture-test",
-    feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+    feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test",
+    feature = "c11-1-grid-intrinsic-tracks-fixture-test"
 ))]
 use spinon_core::HostDocumentSnapshot;
 pub use spinon_core::TaskPriority;
@@ -194,7 +195,8 @@ enum Command {
     },
     #[cfg(any(
         feature = "c14-1-live-v8-fixture-test",
-        feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+        feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test",
+        feature = "c11-1-grid-intrinsic-tracks-fixture-test"
     ))]
     SnapshotDocumentForFixture {
         reply: SyncSender<Result<HostDocumentSnapshot, String>>,
@@ -661,7 +663,8 @@ impl RuntimeSession {
     /// 반환하며, actor가 5초 안에 응답하지 않으면 오류를 반환합니다.
     #[cfg(any(
         feature = "c14-1-live-v8-fixture-test",
-        feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test"
+        feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test",
+        feature = "c11-1-grid-intrinsic-tracks-fixture-test"
     ))]
     pub fn snapshot_document_for_runtime_fixture(&self) -> Result<HostDocumentSnapshot, String> {
         let receiver = {

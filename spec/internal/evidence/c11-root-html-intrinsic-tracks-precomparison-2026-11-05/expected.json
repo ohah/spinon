@@ -1,7 +1,7 @@
 {
   "specification": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
   "fixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-tracks-precomparison.html",
-  "fixtureSha256": "39512561d0e46f17377c9d3172d9d77be55f913fea7ad0271cf9a5836343f9bc",
+  "fixtureSha256": "d671df7fbf92f9c9a349bae71f7fb6a8b9ad70f607380700ef347f9054bdedc5",
   "font": {
     "family": "monospace",
     "sizePx": 10,
@@ -12,19 +12,307 @@
   },
   "toleranceCssPx": 0.02,
   "cases": [
-    {"id": "min-content", "columnsPx": [30.1094], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 30.1094, 30]},
-    {"id": "max-content", "columnsPx": [60.2188], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 60.2188, 30]},
-    {"id": "auto", "columnsPx": [60.2188], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 60.2188, 30]},
-    {"id": "minmax-intrinsic", "columnsPx": [60.2188], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 60.2188, 30]},
-    {"id": "minmax-auto-max", "columnsPx": [60.2188], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 60.2188, 30]},
-    {"id": "minmax-intrinsic-flex", "columnsPx": [160], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 160, 30]},
-    {"id": "minmax-floor", "columnsPx": [80], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 80, 30]},
-    {"id": "repeat-intrinsic", "columnsPx": [60.2188, 0], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 60.2188, 30]},
-    {"id": "min-content-rows", "columnsPx": [160], "rowsPx": [10], "itemFrameInGridPx": [0, 0, 160, 10]},
-    {"id": "max-content-rows", "columnsPx": [160], "rowsPx": [10], "itemFrameInGridPx": [0, 0, 160, 10]},
-    {"id": "span-two-intrinsic", "columnsPx": [30.1094, 30.1094], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 60.2188, 30]},
-    {"id": "auto-stretch", "columnsPx": [160], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 160, 30]},
-    {"id": "hidden-item", "columnsPx": [30.1094], "rowsPx": [30], "itemFrameInGridPx": [0, 0, 30.1094, 30], "hiddenItemFramePx": [0, 0, 0, 0]},
-    {"id": "max-content-overflow", "columnsPx": [60.2188], "rowsPx": [30], "gridFrameInSectionPx": [0, 0, 20, 30], "itemFrameInGridPx": [0, 0, 60.2188, 30]}
+    {
+      "id": "min-content",
+      "columnsPx": [
+        30.1094
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        30.1094,
+        30
+      ]
+    },
+    {
+      "id": "max-content",
+      "columnsPx": [
+        60.2188
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    },
+    {
+      "id": "auto",
+      "columnsPx": [
+        60.2188
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    },
+    {
+      "id": "minmax-intrinsic",
+      "columnsPx": [
+        60.2188
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    },
+    {
+      "id": "minmax-auto-max",
+      "columnsPx": [
+        60.2188
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    },
+    {
+      "id": "minmax-intrinsic-flex",
+      "columnsPx": [
+        160
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        160,
+        30
+      ]
+    },
+    {
+      "id": "minmax-floor",
+      "columnsPx": [
+        80
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        80,
+        30
+      ]
+    },
+    {
+      "id": "minmax-percent-min",
+      "columnsPx": [
+        80
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        80,
+        30
+      ]
+    },
+    {
+      "id": "minmax-percent-max",
+      "columnsPx": [
+        80
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        80,
+        30
+      ]
+    },
+    {
+      "id": "minmax-percent-flex-floor",
+      "columnsPx": [
+        80,
+        100
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        80,
+        30
+      ]
+    },
+    {
+      "id": "minmax-percent-zero-basis",
+      "columnsPx": [
+        0
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        0,
+        30
+      ],
+      "runtimeSupported": false
+    },
+    {
+      "id": "minmax-flex-zero-basis",
+      "columnsPx": [
+        30.1094
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        30.1094,
+        30
+      ],
+      "runtimeSupported": false
+    },
+    {
+      "id": "repeat-intrinsic",
+      "columnsPx": [
+        60.2188,
+        0
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    },
+    {
+      "id": "min-content-rows",
+      "columnsPx": [
+        160
+      ],
+      "rowsPx": [
+        10
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        160,
+        10
+      ]
+    },
+    {
+      "id": "max-content-rows",
+      "columnsPx": [
+        160
+      ],
+      "rowsPx": [
+        10
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        160,
+        10
+      ]
+    },
+    {
+      "id": "span-two-intrinsic",
+      "columnsPx": [
+        30.1094,
+        30.1094
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    },
+    {
+      "id": "auto-stretch",
+      "columnsPx": [
+        160
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        160,
+        30
+      ]
+    },
+    {
+      "id": "hidden-item",
+      "columnsPx": [
+        30.1094
+      ],
+      "rowsPx": [
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        30.1094,
+        30
+      ],
+      "hiddenItemFramePx": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "max-content-overflow",
+      "columnsPx": [
+        60.2188
+      ],
+      "rowsPx": [
+        30
+      ],
+      "gridFrameInScenePx": [
+        0,
+        0,
+        20,
+        30
+      ],
+      "itemFrameInGridPx": [
+        0,
+        0,
+        60.2188,
+        30
+      ]
+    }
   ]
 }

@@ -277,21 +277,9 @@ fn root_html_profile_preserves_zero_fraction_auto_minimum_shape() {
 }
 
 #[test]
-fn root_html_profile_rejects_auto_minimum_without_fraction_maximum() {
+fn root_html_profile_rejects_invalid_fraction_with_auto_minimum() {
     let node = NodeId::new(11_254).unwrap();
     for track in [
-        ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::Auto,
-            max: ComputedCssGridTrackBreadth::LengthPx(40.0),
-        },
-        ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::Auto,
-            max: ComputedCssGridTrackBreadth::Percentage(0.5),
-        },
-        ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::Auto,
-            max: ComputedCssGridTrackBreadth::Auto,
-        },
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Auto,
             max: ComputedCssGridTrackBreadth::Fraction(-1.0),
@@ -311,7 +299,7 @@ fn root_html_profile_rejects_auto_minimum_without_fraction_maximum() {
             &input,
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
         )
-        .expect_err("only finite non-negative fraction maximum is admitted with auto minimum");
+        .expect_err("fraction maximums with auto minimum must be finite and non-negative");
         assert!(matches!(
             error,
             crate::StyleLayoutError::UnsupportedComputedValue {
