@@ -6,9 +6,11 @@
     "columns": ["min-content", "minmax(0px, 1fr)"],
     "rows": ["min-content", "minmax(0px, 1fr)"]
   },
-  "fixedItemContributionsCssPx": {
+  "rowLockedItems": {
     "basis": [40, 10],
-    "filler": [20, 20]
+    "filler": [20, 20],
+    "tail": [10, 10],
+    "placement": "basis and filler lock row 1; tail locks row 2; columns auto-place within each definite row"
   },
   "cases": [
     {
@@ -16,37 +18,38 @@
       "rowGapCssPx": 0,
       "columnGapCssPx": 0,
       "columnsCssPx": [40, 60],
-      "rowsCssPx": [10, 90],
-      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 10, 20, 20]]
+      "rowsCssPx": [20, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 20, 10, 10]]
     },
     {
       "id": "column-gap",
       "rowGapCssPx": 0,
       "columnGapCssPx": 10,
       "columnsCssPx": [40, 50],
-      "rowsCssPx": [10, 90],
-      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 10, 20, 20]]
+      "rowsCssPx": [20, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 0, 20, 20], [0, 20, 10, 10]]
     },
     {
       "id": "row-gap",
       "rowGapCssPx": 10,
       "columnGapCssPx": 0,
       "columnsCssPx": [40, 60],
-      "rowsCssPx": [10, 80],
-      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 20, 20, 20]]
+      "rowsCssPx": [20, 70],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 30, 10, 10]]
     },
     {
       "id": "both-gap",
       "rowGapCssPx": 10,
       "columnGapCssPx": 10,
       "columnsCssPx": [40, 50],
-      "rowsCssPx": [10, 80],
-      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 20, 20, 20]]
+      "rowsCssPx": [20, 70],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 0, 20, 20], [0, 30, 10, 10]]
     }
   ],
   "excludedValidCssControl": {
     "id": "percent-gap",
     "css": "column-gap:10%",
+    "chromeUsedColumnGapCssPx": 10,
     "expectedProfileResult": "explicit fail-closed; this follow-up admits fixed px only"
   }
 }

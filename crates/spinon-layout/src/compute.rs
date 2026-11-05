@@ -81,6 +81,7 @@ impl TaffyLayoutEngine {
             false,
             text_layout_engine,
         )?;
+        visual_tree.validate_root_html_intrinsic_gap_extents(input, &index)?;
         let raw_output = collect_frames(input, &index, &visual_tree, &BTreeMap::new())?;
         let adjustments = flow_frames
             .as_ref()
