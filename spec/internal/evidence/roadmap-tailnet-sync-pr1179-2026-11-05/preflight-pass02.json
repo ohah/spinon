@@ -1,0 +1,1202 @@
+{
+  "sourceHead": "7c042f4ac5080609927fb26760112c5a88a56d3c",
+  "sourceTree": "1ebf5fdbb29451efe0e24dc90e55ccbe53d1956c",
+  "trackedDiffSha256": "7cf61a97a256fdf2a0731ab66fec9422c1225517d164b73b3e417a593b6b125c",
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 572338,
+  "localRoadmapSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+  "selectedRouteCount": 118,
+  "selectedBytes": 14334665,
+  "counts": {
+    "create": 16,
+    "replace": 16,
+    "same": 86
+  },
+  "changedRouteOpenHandleCount": 0,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1179-2026-11-05/pass02",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 627929,
+      "sourceSha256": "39743244afe940f6071c776c8db86cb89bb7089a837d991356ecbeb9e3c221f4",
+      "targetExists": true,
+      "targetBytes": 627929,
+      "targetSha256": "34f5441334e20efdbb1800f057b7e1c21abb720c92f65ebb6e93bd483e629a36",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 444644,
+      "sourceSha256": "3f034844f016951c6e57e21a1619b57f32deaa7e000c7f8023bceba4ea1d4a8a",
+      "targetExists": true,
+      "targetBytes": 444644,
+      "targetSha256": "3f034844f016951c6e57e21a1619b57f32deaa7e000c7f8023bceba4ea1d4a8a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png",
+      "action": "same",
+      "sourceBytes": 7431,
+      "sourceSha256": "21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72",
+      "targetExists": true,
+      "targetBytes": 7431,
+      "targetSha256": "21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json",
+      "action": "same",
+      "sourceBytes": 6857,
+      "sourceSha256": "9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63",
+      "targetExists": true,
+      "targetBytes": 6857,
+      "targetSha256": "9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison-failed-fixed-gap-assertion.json",
+      "action": "same",
+      "sourceBytes": 3142,
+      "sourceSha256": "5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed",
+      "targetExists": true,
+      "targetBytes": 3142,
+      "targetSha256": "5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json",
+      "action": "same",
+      "sourceBytes": 3138,
+      "sourceSha256": "58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80",
+      "targetExists": true,
+      "targetBytes": 3138,
+      "targetSha256": "58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/initial-derived-expected-before-fr-audit.json",
+      "action": "same",
+      "sourceBytes": 2294,
+      "sourceSha256": "e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a",
+      "targetExists": true,
+      "targetBytes": 2294,
+      "targetSha256": "e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json",
+      "action": "same",
+      "sourceBytes": 7177,
+      "sourceSha256": "5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5",
+      "targetExists": true,
+      "targetBytes": 7177,
+      "targetSha256": "5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 29843,
+      "sourceSha256": "efb48c272bc352debbb3c084d3b2afff0cf16e495cb647ebdd53c0d27914567c",
+      "targetExists": true,
+      "targetBytes": 29843,
+      "targetSha256": "ec34e95fb69e2acaa7ce3953f3d258cf45de3d931cf0e2622712ca187dfcfaf9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 4143,
+      "sourceSha256": "38b97a0b94224b8f284d77def23eb7cda07dfb811decf0320636f2f1e05bd271",
+      "targetExists": true,
+      "targetBytes": 4143,
+      "targetSha256": "38b97a0b94224b8f284d77def23eb7cda07dfb811decf0320636f2f1e05bd271",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-app-build-pass02.log",
+      "action": "same",
+      "sourceBytes": 4960,
+      "sourceSha256": "696ef3acbda6d6c1000e990b5f63ac8b505563e345f078cabe544efbf0e74387",
+      "targetExists": true,
+      "targetBytes": 4960,
+      "targetSha256": "696ef3acbda6d6c1000e990b5f63ac8b505563e345f078cabe544efbf0e74387",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-install-pass02.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-launch-pass02.log",
+      "action": "same",
+      "sourceBytes": 60,
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "targetExists": true,
+      "targetBytes": 60,
+      "targetSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "action": "same",
+      "sourceBytes": 24817,
+      "sourceSha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6",
+      "targetExists": true,
+      "targetBytes": 24817,
+      "targetSha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-spinon-log-pass02.txt",
+      "action": "same",
+      "sourceBytes": 6384,
+      "sourceSha256": "29d1508babec5c2411087b50fc9ed3bde49693ab84e20a86c4a4e506c2711d1f",
+      "targetExists": true,
+      "targetBytes": 6384,
+      "targetSha256": "29d1508babec5c2411087b50fc9ed3bde49693ab84e20a86c4a4e506c2711d1f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-v8-build-pass02.log",
+      "action": "same",
+      "sourceBytes": 278096,
+      "sourceSha256": "25a8934e1b214f9c078b90cf95a6ee649af683e453295797d61299db613ba50b",
+      "targetExists": true,
+      "targetBytes": 278096,
+      "targetSha256": "25a8934e1b214f9c078b90cf95a6ee649af683e453295797d61299db613ba50b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/bundle-input-hashes.txt",
+      "action": "same",
+      "sourceBytes": 710,
+      "sourceSha256": "0aea744f0905bf9b0755f1f39cd8aec37f354a6f5f67a05d7f5374bfb471f159",
+      "targetExists": true,
+      "targetBytes": 710,
+      "targetSha256": "0aea744f0905bf9b0755f1f39cd8aec37f354a6f5f67a05d7f5374bfb471f159",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/clippy-pass02.log",
+      "action": "same",
+      "sourceBytes": 598,
+      "sourceSha256": "70b2903e71d3f65da6de2a22a237e96ddfa80571e46ae5bda77f4129cfe76703",
+      "targetExists": true,
+      "targetBytes": 598,
+      "targetSha256": "70b2903e71d3f65da6de2a22a237e96ddfa80571e46ae5bda77f4129cfe76703",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/hashes.sha256",
+      "action": "same",
+      "sourceBytes": 4701,
+      "sourceSha256": "617ab06b946d051f096bcb41c1d5eea6de72ad24fb8909214adae019a01a4ee9",
+      "targetExists": true,
+      "targetBytes": 4701,
+      "targetSha256": "617ab06b946d051f096bcb41c1d5eea6de72ad24fb8909214adae019a01a4ee9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 30768,
+      "sourceSha256": "fcf5df462f21d2e7aaa2b9971f6eb26652c6e4493677091543d86f960bdcf3c7",
+      "targetExists": true,
+      "targetBytes": 30768,
+      "targetSha256": "22f43bff8547ecd10aacc5fc1d6a3a1137e8a5999fe0a18b51e01e2fc258be5a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 4990,
+      "sourceSha256": "3b651f6edd67288b344e92f32e21fa7e2f0ee744c6e6758f61624c0f91e3e89d",
+      "targetExists": true,
+      "targetBytes": 4990,
+      "targetSha256": "3b651f6edd67288b344e92f32e21fa7e2f0ee744c6e6758f61624c0f91e3e89d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-app-build-pass02.log",
+      "action": "same",
+      "sourceBytes": 66528,
+      "sourceSha256": "eea16bae72f800e7576ee88df8531e8e00b83c39f08aa4577a4771928b3df954",
+      "targetExists": true,
+      "targetBytes": 66528,
+      "targetSha256": "eea16bae72f800e7576ee88df8531e8e00b83c39f08aa4577a4771928b3df954",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-install-pass02.log",
+      "action": "same",
+      "sourceBytes": 106,
+      "sourceSha256": "851a1ef13c172df45c727c38192cb11f21e95e5f3c1a256697b697145b1c2539",
+      "targetExists": true,
+      "targetBytes": 106,
+      "targetSha256": "851a1ef13c172df45c727c38192cb11f21e95e5f3c1a256697b697145b1c2539",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-launch-pass02.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "74307044b3e88d611247be6e40b5dc1507f357de29c42280563ccaeda678bc03",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "74307044b3e88d611247be6e40b5dc1507f357de29c42280563ccaeda678bc03",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-screenshot-pass02.log",
+      "action": "same",
+      "sourceBytes": 200,
+      "sourceSha256": "f89af93b17fbda93901c5c6b9b937c53162c50dcf7bacdbf76c0028cd3b522d9",
+      "targetExists": true,
+      "targetBytes": 200,
+      "targetSha256": "f89af93b17fbda93901c5c6b9b937c53162c50dcf7bacdbf76c0028cd3b522d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "action": "same",
+      "sourceBytes": 75069,
+      "sourceSha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376",
+      "targetExists": true,
+      "targetBytes": 75069,
+      "targetSha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-stop-before-run-pass02.log",
+      "action": "same",
+      "sourceBytes": 109,
+      "sourceSha256": "4694ba137173bcfda468b8457698c63bb924c8ec058f717db42b2b55f388969f",
+      "targetExists": true,
+      "targetBytes": 109,
+      "targetSha256": "4694ba137173bcfda468b8457698c63bb924c8ec058f717db42b2b55f388969f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-system-log-pass02.txt",
+      "action": "same",
+      "sourceBytes": 37601,
+      "sourceSha256": "d00081ab44b7e72d23a07b85bb54f6e2138a934d2d061e8095c50993532777d8",
+      "targetExists": true,
+      "targetBytes": 37601,
+      "targetSha256": "d00081ab44b7e72d23a07b85bb54f6e2138a934d2d061e8095c50993532777d8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-v8-build-pass01.log",
+      "action": "same",
+      "sourceBytes": 194692,
+      "sourceSha256": "885324bec90fea587956f70b1388b5b0f2286c94261aeb5d7cd6499e58c6283a",
+      "targetExists": true,
+      "targetBytes": 194692,
+      "targetSha256": "885324bec90fea587956f70b1388b5b0f2286c94261aeb5d7cd6499e58c6283a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/layout-focused-pass02.log",
+      "action": "same",
+      "sourceBytes": 795,
+      "sourceSha256": "cb452758e372a486bda68aed014fd744c26454b7d2586612a6b9033c99c4f3c5",
+      "targetExists": true,
+      "targetBytes": 795,
+      "targetSha256": "cb452758e372a486bda68aed014fd744c26454b7d2586612a6b9033c99c4f3c5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 31956,
+      "sourceSha256": "c3f20723263585beccb6fee64d70223ebb3f54210bef2dd27b1d2f577c914c98",
+      "targetExists": true,
+      "targetBytes": 31956,
+      "targetSha256": "0ed008f25351758762d3a0a1e93bf0774034cabf39dc68cca20cd079ea54de3e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 6134,
+      "sourceSha256": "9e5d5d8dba26cf241ab5d25ee7cd3a9c41f336af21934c3758a9e0bcc85a7179",
+      "targetExists": true,
+      "targetBytes": 6134,
+      "targetSha256": "9e5d5d8dba26cf241ab5d25ee7cd3a9c41f336af21934c3758a9e0bcc85a7179",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 32646,
+      "sourceSha256": "6a5226c6a4c7394ec5eb2690c0c6061a7fe304dd67adb1887ad30c9c2872e7cc",
+      "targetExists": true,
+      "targetBytes": 32646,
+      "targetSha256": "c6dae54137ccd54e1347da5c95c444e93c6ca22dd768ab64c4d3440a5603d695",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 5601,
+      "sourceSha256": "c1cf824ec56beab93606875252d71b71f49fc14777da3942f5634baac520736b",
+      "targetExists": true,
+      "targetBytes": 5601,
+      "targetSha256": "c1cf824ec56beab93606875252d71b71f49fc14777da3942f5634baac520736b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/runtime-focused-pass02.log",
+      "action": "same",
+      "sourceBytes": 1558,
+      "sourceSha256": "b9378940e1f1653b2bb94419948ea466a56ebf825090eef4941968b1d03bd7bd",
+      "targetExists": true,
+      "targetBytes": 1558,
+      "targetSha256": "b9378940e1f1653b2bb94419948ea466a56ebf825090eef4941968b1d03bd7bd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/rustfmt-pass02.log",
+      "action": "same",
+      "sourceBytes": 55,
+      "sourceSha256": "defc8e2bc5b6524da9382257a6f350301da6a44acd825d9bd29d0b72de4df054",
+      "targetExists": true,
+      "targetBytes": 55,
+      "targetSha256": "defc8e2bc5b6524da9382257a6f350301da6a44acd825d9bd29d0b72de4df054",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/style-to-layout-focused-pass02.log",
+      "action": "same",
+      "sourceBytes": 1861,
+      "sourceSha256": "2ddbe86e87fcc3d07889cf2c5aa4c7b7d002c3c6ed61a34c7b305d45bfe65d60",
+      "targetExists": true,
+      "targetBytes": 1861,
+      "targetSha256": "2ddbe86e87fcc3d07889cf2c5aa4c7b7d002c3c6ed61a34c7b305d45bfe65d60",
+      "openHandleCount": 0
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-auto-repeat.html",
+      "action": "replace",
+      "sourceBytes": 31662,
+      "sourceSha256": "7b0b22ed910f0c8b7164f36315e20bcafad5eee645ffbf90a6ee52f2fa32efe5",
+      "targetExists": true,
+      "targetBytes": 31656,
+      "targetSha256": "f253dc02ba670b2843d9fcba4d45e143f82e318cd6842434c5b11ae5e7209fb1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-auto-repeat.md",
+      "action": "replace",
+      "sourceBytes": 5593,
+      "sourceSha256": "11333a52ebe0624052702f14c2761469efca1b09f7bf7e0ffcb636a9fde3cf7d",
+      "targetExists": true,
+      "targetBytes": 5587,
+      "targetSha256": "529c160011ee4b95785d8b539b3c124d9817cd97ea76dd88dbfe9bb060a08463",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.html",
+      "action": "same",
+      "sourceBytes": 572338,
+      "sourceSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+      "targetExists": true,
+      "targetBytes": 572338,
+      "targetSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.html",
+      "action": "same",
+      "sourceBytes": 572338,
+      "sourceSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+      "targetExists": true,
+      "targetBytes": 572338,
+      "targetSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 628019,
+      "sourceSha256": "c9dde054db799d7a474107d11171a0b078843ce4e9264ffc502e2646f6ea8372",
+      "targetExists": true,
+      "targetBytes": 628019,
+      "targetSha256": "cdd1398abf059ea1c95b47c82d74c7354ca13af94b2c4b4bccaf628e4a2b7fc9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 444644,
+      "sourceSha256": "3f034844f016951c6e57e21a1619b57f32deaa7e000c7f8023bceba4ea1d4a8a",
+      "targetExists": true,
+      "targetBytes": 444644,
+      "targetSha256": "3f034844f016951c6e57e21a1619b57f32deaa7e000c7f8023bceba4ea1d4a8a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png",
+      "action": "same",
+      "sourceBytes": 7431,
+      "sourceSha256": "21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72",
+      "targetExists": true,
+      "targetBytes": 7431,
+      "targetSha256": "21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json",
+      "action": "same",
+      "sourceBytes": 6857,
+      "sourceSha256": "9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63",
+      "targetExists": true,
+      "targetBytes": 6857,
+      "targetSha256": "9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison-failed-fixed-gap-assertion.json",
+      "action": "same",
+      "sourceBytes": 3142,
+      "sourceSha256": "5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed",
+      "targetExists": true,
+      "targetBytes": 3142,
+      "targetSha256": "5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json",
+      "action": "same",
+      "sourceBytes": 3138,
+      "sourceSha256": "58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80",
+      "targetExists": true,
+      "targetBytes": 3138,
+      "targetSha256": "58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/initial-derived-expected-before-fr-audit.json",
+      "action": "same",
+      "sourceBytes": 2294,
+      "sourceSha256": "e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a",
+      "targetExists": true,
+      "targetBytes": 2294,
+      "targetSha256": "e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json",
+      "action": "same",
+      "sourceBytes": 7177,
+      "sourceSha256": "5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5",
+      "targetExists": true,
+      "targetBytes": 7177,
+      "targetSha256": "5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 29853,
+      "sourceSha256": "b8f7a3597a47141e4a1c5895f677d01fa4b7013682d06315254aa06743ce2c06",
+      "targetExists": true,
+      "targetBytes": 29853,
+      "targetSha256": "4c21d53a46bf98ed2e8e72c7722eca23f52effac17a3638d935992874bc26931",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 4143,
+      "sourceSha256": "38b97a0b94224b8f284d77def23eb7cda07dfb811decf0320636f2f1e05bd271",
+      "targetExists": true,
+      "targetBytes": 4143,
+      "targetSha256": "38b97a0b94224b8f284d77def23eb7cda07dfb811decf0320636f2f1e05bd271",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-app-build-pass02.log",
+      "action": "same",
+      "sourceBytes": 4960,
+      "sourceSha256": "696ef3acbda6d6c1000e990b5f63ac8b505563e345f078cabe544efbf0e74387",
+      "targetExists": true,
+      "targetBytes": 4960,
+      "targetSha256": "696ef3acbda6d6c1000e990b5f63ac8b505563e345f078cabe544efbf0e74387",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-install-pass02.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-launch-pass02.log",
+      "action": "same",
+      "sourceBytes": 60,
+      "sourceSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "targetExists": true,
+      "targetBytes": 60,
+      "targetSha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "action": "same",
+      "sourceBytes": 24817,
+      "sourceSha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6",
+      "targetExists": true,
+      "targetBytes": 24817,
+      "targetSha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-spinon-log-pass02.txt",
+      "action": "same",
+      "sourceBytes": 6384,
+      "sourceSha256": "29d1508babec5c2411087b50fc9ed3bde49693ab84e20a86c4a4e506c2711d1f",
+      "targetExists": true,
+      "targetBytes": 6384,
+      "targetSha256": "29d1508babec5c2411087b50fc9ed3bde49693ab84e20a86c4a4e506c2711d1f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-v8-build-pass02.log",
+      "action": "same",
+      "sourceBytes": 278096,
+      "sourceSha256": "25a8934e1b214f9c078b90cf95a6ee649af683e453295797d61299db613ba50b",
+      "targetExists": true,
+      "targetBytes": 278096,
+      "targetSha256": "25a8934e1b214f9c078b90cf95a6ee649af683e453295797d61299db613ba50b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/bundle-input-hashes.txt",
+      "action": "same",
+      "sourceBytes": 710,
+      "sourceSha256": "0aea744f0905bf9b0755f1f39cd8aec37f354a6f5f67a05d7f5374bfb471f159",
+      "targetExists": true,
+      "targetBytes": 710,
+      "targetSha256": "0aea744f0905bf9b0755f1f39cd8aec37f354a6f5f67a05d7f5374bfb471f159",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/clippy-pass02.log",
+      "action": "same",
+      "sourceBytes": 598,
+      "sourceSha256": "70b2903e71d3f65da6de2a22a237e96ddfa80571e46ae5bda77f4129cfe76703",
+      "targetExists": true,
+      "targetBytes": 598,
+      "targetSha256": "70b2903e71d3f65da6de2a22a237e96ddfa80571e46ae5bda77f4129cfe76703",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/hashes.sha256",
+      "action": "same",
+      "sourceBytes": 4701,
+      "sourceSha256": "617ab06b946d051f096bcb41c1d5eea6de72ad24fb8909214adae019a01a4ee9",
+      "targetExists": true,
+      "targetBytes": 4701,
+      "targetSha256": "617ab06b946d051f096bcb41c1d5eea6de72ad24fb8909214adae019a01a4ee9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 30788,
+      "sourceSha256": "60ed621da98a2bea2bba8abde10092fa0c1b040c89ef7a9f332a94140df7e426",
+      "targetExists": true,
+      "targetBytes": 30788,
+      "targetSha256": "3436951673d585fe4efd19f609c62299fe250cab08bbf98d59cd107d206e321b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 4990,
+      "sourceSha256": "3b651f6edd67288b344e92f32e21fa7e2f0ee744c6e6758f61624c0f91e3e89d",
+      "targetExists": true,
+      "targetBytes": 4990,
+      "targetSha256": "3b651f6edd67288b344e92f32e21fa7e2f0ee744c6e6758f61624c0f91e3e89d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-app-build-pass02.log",
+      "action": "same",
+      "sourceBytes": 66528,
+      "sourceSha256": "eea16bae72f800e7576ee88df8531e8e00b83c39f08aa4577a4771928b3df954",
+      "targetExists": true,
+      "targetBytes": 66528,
+      "targetSha256": "eea16bae72f800e7576ee88df8531e8e00b83c39f08aa4577a4771928b3df954",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-install-pass02.log",
+      "action": "same",
+      "sourceBytes": 106,
+      "sourceSha256": "851a1ef13c172df45c727c38192cb11f21e95e5f3c1a256697b697145b1c2539",
+      "targetExists": true,
+      "targetBytes": 106,
+      "targetSha256": "851a1ef13c172df45c727c38192cb11f21e95e5f3c1a256697b697145b1c2539",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-launch-pass02.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "74307044b3e88d611247be6e40b5dc1507f357de29c42280563ccaeda678bc03",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "74307044b3e88d611247be6e40b5dc1507f357de29c42280563ccaeda678bc03",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-screenshot-pass02.log",
+      "action": "same",
+      "sourceBytes": 200,
+      "sourceSha256": "f89af93b17fbda93901c5c6b9b937c53162c50dcf7bacdbf76c0028cd3b522d9",
+      "targetExists": true,
+      "targetBytes": 200,
+      "targetSha256": "f89af93b17fbda93901c5c6b9b937c53162c50dcf7bacdbf76c0028cd3b522d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "action": "same",
+      "sourceBytes": 75069,
+      "sourceSha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376",
+      "targetExists": true,
+      "targetBytes": 75069,
+      "targetSha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-stop-before-run-pass02.log",
+      "action": "same",
+      "sourceBytes": 109,
+      "sourceSha256": "4694ba137173bcfda468b8457698c63bb924c8ec058f717db42b2b55f388969f",
+      "targetExists": true,
+      "targetBytes": 109,
+      "targetSha256": "4694ba137173bcfda468b8457698c63bb924c8ec058f717db42b2b55f388969f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-system-log-pass02.txt",
+      "action": "same",
+      "sourceBytes": 37601,
+      "sourceSha256": "d00081ab44b7e72d23a07b85bb54f6e2138a934d2d061e8095c50993532777d8",
+      "targetExists": true,
+      "targetBytes": 37601,
+      "targetSha256": "d00081ab44b7e72d23a07b85bb54f6e2138a934d2d061e8095c50993532777d8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-v8-build-pass01.log",
+      "action": "same",
+      "sourceBytes": 194692,
+      "sourceSha256": "885324bec90fea587956f70b1388b5b0f2286c94261aeb5d7cd6499e58c6283a",
+      "targetExists": true,
+      "targetBytes": 194692,
+      "targetSha256": "885324bec90fea587956f70b1388b5b0f2286c94261aeb5d7cd6499e58c6283a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/layout-focused-pass02.log",
+      "action": "same",
+      "sourceBytes": 795,
+      "sourceSha256": "cb452758e372a486bda68aed014fd744c26454b7d2586612a6b9033c99c4f3c5",
+      "targetExists": true,
+      "targetBytes": 795,
+      "targetSha256": "cb452758e372a486bda68aed014fd744c26454b7d2586612a6b9033c99c4f3c5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 31966,
+      "sourceSha256": "23d3bfd46b0662f9a3b19fefe1c94acd81d951e9c044e4ed4691577a78c323e1",
+      "targetExists": true,
+      "targetBytes": 31966,
+      "targetSha256": "a34e67e731bc56b45f2c90726b9e2e59d92fd7dfe48f032783a099aea8587d5b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 6134,
+      "sourceSha256": "9e5d5d8dba26cf241ab5d25ee7cd3a9c41f336af21934c3758a9e0bcc85a7179",
+      "targetExists": true,
+      "targetBytes": 6134,
+      "targetSha256": "9e5d5d8dba26cf241ab5d25ee7cd3a9c41f336af21934c3758a9e0bcc85a7179",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 32639,
+      "sourceSha256": "117dbffca69c95d0229082499c39906ca3ae11eb1c0b0eb81b07be3f63e8f72a",
+      "targetExists": true,
+      "targetBytes": 32639,
+      "targetSha256": "f7c63496921f0ab1dc076ed1dfeaef127f250c2c65dd4a05014e74ee26f1290a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 5601,
+      "sourceSha256": "c1cf824ec56beab93606875252d71b71f49fc14777da3942f5634baac520736b",
+      "targetExists": true,
+      "targetBytes": 5601,
+      "targetSha256": "c1cf824ec56beab93606875252d71b71f49fc14777da3942f5634baac520736b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/runtime-focused-pass02.log",
+      "action": "same",
+      "sourceBytes": 1558,
+      "sourceSha256": "b9378940e1f1653b2bb94419948ea466a56ebf825090eef4941968b1d03bd7bd",
+      "targetExists": true,
+      "targetBytes": 1558,
+      "targetSha256": "b9378940e1f1653b2bb94419948ea466a56ebf825090eef4941968b1d03bd7bd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/rustfmt-pass02.log",
+      "action": "same",
+      "sourceBytes": 55,
+      "sourceSha256": "defc8e2bc5b6524da9382257a6f350301da6a44acd825d9bd29d0b72de4df054",
+      "targetExists": true,
+      "targetBytes": 55,
+      "targetSha256": "defc8e2bc5b6524da9382257a6f350301da6a44acd825d9bd29d0b72de4df054",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/style-to-layout-focused-pass02.log",
+      "action": "same",
+      "sourceBytes": 1861,
+      "sourceSha256": "2ddbe86e87fcc3d07889cf2c5aa4c7b7d002c3c6ed61a34c7b305d45bfe65d60",
+      "targetExists": true,
+      "targetBytes": 1861,
+      "targetSha256": "2ddbe86e87fcc3d07889cf2c5aa4c7b7d002c3c6ed61a34c7b305d45bfe65d60",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "action": "same",
+      "sourceBytes": 572338,
+      "sourceSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+      "targetExists": true,
+      "targetBytes": 572338,
+      "targetSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 821599,
+      "sourceSha256": "1175a175ac30214a3a75d2cdc421a532d9e5da8cf49282a780d0092f1bbaf731",
+      "targetExists": true,
+      "targetBytes": 821609,
+      "targetSha256": "13ce4f1eb5e5d5a956c45c39b189964712280ac994ebfca339fbc5d65063caf2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "replace",
+      "sourceBytes": 669874,
+      "sourceSha256": "d940558242f368afebb202e2bb1600f4a2f52c9b1e697c13928d4cd7bd00438d",
+      "targetExists": true,
+      "targetBytes": 669884,
+      "targetSha256": "1107b4cebfb5cc93395b88a80756961e1bd094c52ddcf7034fc34c1ac280b6f2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-0b58d0d143e3.8ba0b1591b.js",
+      "action": "create",
+      "sourceBytes": 11353,
+      "sourceSha256": "508a74adb594cd5f331de38c33ff7820af93600761d098d7626769cb876cc171",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6b561632efbb.1e6cae2972.js",
+      "action": "create",
+      "sourceBytes": 11358,
+      "sourceSha256": "997bbb2f9aea6eb2c244441044f10e197b6b0aff70bbe44de37672bfc02dc443",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.ac8eba0014.js",
+      "action": "create",
+      "sourceBytes": 882516,
+      "sourceSha256": "76172b22496c4a53dbaba1faa8195e7e902197ad98ec7dd1a2a5528efe5dd703",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.f160e44204.js",
+      "action": "create",
+      "sourceBytes": 652155,
+      "sourceSha256": "77f584b102741b8169c537efd7d31ccbe8f583365676a194c7eb568ee64d1bc0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.82ce647a7c.js",
+      "action": "create",
+      "sourceBytes": 882720,
+      "sourceSha256": "dc760f09d30fc2780a1776e8b8879ce424e819261cf5e3d53b3d1f01adc327b5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7d459fbbcd7b.5ae0c4ae37.js",
+      "action": "create",
+      "sourceBytes": 9946,
+      "sourceSha256": "dc53577452217e96f97de5546a2ac6f81d981dbdcb2127a944226d82d7473f0d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-8c82bab810a8.9a1bc419a3.js",
+      "action": "create",
+      "sourceBytes": 8156,
+      "sourceSha256": "fd97a761140d3671a75113b9d2309ffdad6a2de144efbfbd19c8e7357a61899d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.b27a689618.js",
+      "action": "create",
+      "sourceBytes": 1008,
+      "sourceSha256": "5898f9d9fe4275c71acd371799bc4c8bfc055bd6d7fda098b69ee25e3952d5a0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a91dda860c88.8ccd685a2d.js",
+      "action": "create",
+      "sourceBytes": 12578,
+      "sourceSha256": "32d071aab8b0850c13f96d3245ed498e3d9fc37423385e29b49ea30c48434a11",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-aa579d88d246.4eb224b498.js",
+      "action": "create",
+      "sourceBytes": 9963,
+      "sourceSha256": "89673d984f573ce70da65fccbf466e365b79791f2b8157dcbd5cd67c6ceb1286",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.d584904fb6.js",
+      "action": "create",
+      "sourceBytes": 652115,
+      "sourceSha256": "d64f21e3bf1c50a5814d2e7700d03d187d1d0a1c23f651f26c30c416c53a85a7",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-d8927700f4a5.3972df17db.js",
+      "action": "create",
+      "sourceBytes": 12596,
+      "sourceSha256": "66ba0db4038a9be54c345f76cb1752e8ccbb57ada9408fc66c47ad216557d548",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-dda4d98039fb.cce9c1367f.js",
+      "action": "create",
+      "sourceBytes": 8929,
+      "sourceSha256": "e6e636d88069a7cb44e3afa3f6b542a964a462716edbd5f9d67f03d7b5b12353",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-fbd80bb745a6.ec1d318755.js",
+      "action": "create",
+      "sourceBytes": 8151,
+      "sourceSha256": "19a75706989147406a57d0a1380ba5833e4287bf314ebcdbc518650c9f0a69a1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/index.57d7249768.js",
+      "action": "create",
+      "sourceBytes": 95878,
+      "sourceSha256": "a0bac7fb12decc3ed0ad125bddfb54b96fdfe99f0346a5a118e5ee679e5812fb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "action": "same",
+      "sourceBytes": 472,
+      "sourceSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "targetExists": true,
+      "targetBytes": 472,
+      "targetSha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/search_index.ko.a4112522.json",
+      "action": "create",
+      "sourceBytes": 1872608,
+      "sourceSha256": "a41125227510287816ba97c91d84472a763bf5d62caebe43c69ff40585edf760",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 820912,
+      "sourceSha256": "cdac906bf0bd888be571e736eec5bfef9167ab507ab9ed6b95f3aec85a80b020",
+      "targetExists": true,
+      "targetBytes": 820922,
+      "targetSha256": "302a14069588078d8df41826248ca0ae5f43f95acfaace204196118ff88daf8f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.md",
+      "action": "replace",
+      "sourceBytes": 669874,
+      "sourceSha256": "d940558242f368afebb202e2bb1600f4a2f52c9b1e697c13928d4cd7bd00438d",
+      "targetExists": true,
+      "targetBytes": 669884,
+      "targetSha256": "1107b4cebfb5cc93395b88a80756961e1bd094c52ddcf7034fc34c1ac280b6f2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-auto-repeat-precomparison.html",
+      "action": "same",
+      "sourceBytes": 5389,
+      "sourceSha256": "996904bc7f92cb16d47614392db0fc9ad9b83e2bd684491b68b539f980405d8d",
+      "targetExists": true,
+      "targetBytes": 5389,
+      "targetSha256": "996904bc7f92cb16d47614392db0fc9ad9b83e2bd684491b68b539f980405d8d",
+      "openHandleCount": 0
+    }
+  ]
+}

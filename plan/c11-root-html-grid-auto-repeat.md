@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML Grid auto-repeat
 
-**상태:** 구현 후보 검증 중. 공개 CSS 지원이나 C11.1/C11 완료로 표시하지 않는다. 후보 코드는 단일 체크아웃의 `implementation/c11-root-html-grid-auto-repeat-20261105` 브랜치에 있으며 아직 PR이 아니다. 공식 구현 상태는 [STATUS.md](../spec/STATUS.md)만 기준으로 한다.
+**상태:** 제한 구현 PR [#1179](https://github.com/ohah/spinon/pull/1179)이 2026-11-05T10:16:16Z에 Rebase and merge됐다(merge SHA `7c042f4ac5080609927fb26760112c5a88a56d3c`). 이 경계는 공개 CSS 지원이나 C11.1/C11 완료를 뜻하지 않는다. C11.1/C11/C11.4 완료 체크와 공식 집계 `78/214`는 유지한다. 공식 구현 상태는 [STATUS.md](../spec/STATUS.md)를 기준으로 한다.
 
 **선행:** [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md), [Root HTML integer repeat](./c11-root-html-grid-integer-repeat.md), [Root HTML intrinsic tracks](./c11-root-html-intrinsic-grid-tracks.md).
 
@@ -22,8 +22,14 @@ Auto-repeat 개수는 CSS Grid §7.2.3.2 규칙대로 계산한다. count 계산
 2. Rust focused tests에서 positive grammar, rows/columns, unsupported syntax/style, item capacity와 publication atomicity를 확인한다. 기존 C11.4 auto-repeat regression을 유지한다.
 3. 새 native Root HTML fixture를 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 기본 앱 route로 실행한다. fixture는 columns 1-track, columns 2-track pattern, rows repeat를 각각 다른 색 item과 고정 geometry로 포함한다. 같은 source hash·layout/draw 결과를 확인하고 원본 bootstrap HTML을 복구한다.
 4. Simulator screenshots는 visual smoke로만 분류한다. PixelCopy, Metal drawable readback, hardware GPU, Android 실기기, iOS compositor 이후 pixels 또는 WPT를 실행하지 않으면 완료 근거로 주장하지 않는다.
-5. `cargo fmt --all -- --check`, 변경 crate focused tests 및 Clippy를 실행한다. 코드·fixture·evidence를 적대적으로 검토하고 발견을 수정한 뒤 PR을 만든다.
+5. `cargo fmt --all -- --check`, 변경 crate focused tests 및 Clippy를 실행했다. 코드·fixture·evidence를 검토하고 발견을 수정한 뒤 PR #1179을 열어 병합했다.
 
 ## 제외 범위
 
-임의 auto-repeat grammar, line-name/placement, 여러 repeat group과 이웃 track, intrinsic/percentage sizing, general implicit placement, nested-grid 조합, 일반 CSS Grid 또는 WPT 적합성, 공개 CSS 지원, Android hardware GPU, 실기기 및 iOS compositor-after pixel 동등성. 이 후보의 성공은 C11.1이나 C11 parent를 완료 처리하지 않는다.
+임의 auto-repeat grammar, line-name/placement, 여러 repeat group과 이웃 track, intrinsic/percentage sizing, general implicit placement, nested-grid 조합, 일반 CSS Grid 또는 WPT 적합성, 공개 CSS 지원, Android hardware GPU, 실기기 및 iOS compositor-after pixel 동등성. 이 제한 slice의 성공은 C11.1이나 C11 parent를 완료 처리하지 않는다.
+
+## 구현·병합 결과
+
+Chrome 156의 13개 독립 expected 장면과 대조했다. Style-to-layout 9/9, runtime 4/4(지원 밖 입력 26개 원자 거부 포함), layout regression 3/3, scoped Clippy와 rustfmt가 통과했다. Android 17/API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 fixture hash로 기본 route `layout=ready boxes=14`, `draw/present boxes=14`를 확인했다. 캡처는 시각 smoke이며 PixelCopy·Metal drawable readback, 실기기/hardware GPU·iOS compositor 이후 pixel equality 또는 WPT를 확인하지 않았다. 상세 근거는 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md)에 있다.
+
+GitHub PR check rollup은 비어 있었고 main required status checks는 설정되지 않아 CI 통과로 기록하지 않는다. 공식 C11 상태는 미완료다.
