@@ -30,7 +30,7 @@
 | 24 | simulator evidence를 WPT 적합성으로 확대하는 경우 | WPT 확인이 아니라고 적었다. |
 | 25 | 비어 있는 PR check rollup을 CI 성공으로 부르는 경우 | rollup과 required-check 부재를 적고 CI 통과라 기록하지 않는다. |
 | 26 | 로드맵이 문서 내부 링크를 잘못 연결하는 경우 | 새 카드의 local href 7개가 publication manifest route에 있다. |
-| 27 | PR 이미지/fixture 파일 경로가 누락되는 경우 | 카드 링크 대상 screenshot과 문서 route가 실제 파일·hash와 대응한다. |
+| 27 | PR 이미지/fixture 파일 경로가 누락되는 경우 | 카드 링크 대상 simulator screenshot route의 hash가 맞고, PR #1180 본문 Agent Browser 이미지도 1440×1000·390×844로 로드됐다. |
 | 28 | 모바일 줄바꿈으로 카드가 화면 밖으로 밀리는 경우 | Agent Browser 390×844에서 카드 폭 362px, 좌우 여백 14px, 가로 넘침 없음이다. |
 | 29 | 선택 publication이 기존 시작·404 route를 덮어쓰거나 전체 사이트를 대체하는 경우 | `index.html`·`404.html`을 제외하고 기존 파일 삭제 없이 118개 route만 반영했다. |
 | 30 | 열린 파일 덮어쓰기, backup 손상 또는 Tailnet 응답 불일치를 놓치는 경우 | preflight 열린 handle 0개, backup hash, local/HTTPS 118개 HTTP 200·SHA-256, 서버 PID 유지가 기록됐다. |

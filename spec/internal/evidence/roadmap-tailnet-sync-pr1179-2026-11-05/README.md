@@ -23,7 +23,7 @@ pass02 build의 첫 시도는 RSPress config의 selected-root 경로가 한 단�
 
 Tailnet [로드맵](https://macstudio.tailed42f2.ts.net/spinon/roadmap.html)을 Agent Browser에서 확인했다. 데스크톱 1440×1000과 모바일 390×844에서 PR #1179 카드, merge SHA, 공식 `78/214`, C11 미완료 문구를 확인했고 가로 넘침은 없었다. 모바일에서 카드 좌우 여백은 14px, 카드 폭은 362px이었다. 화면은 [desktop 캡처](./tailnet-roadmap-agent-browser-desktop.png), [mobile 캡처](./tailnet-roadmap-agent-browser-mobile.png)에 보존했고 bounds는 [verification JSON](./agent-browser-verification.json)에 기록했다.
 
-확인 후 `agent-browser close --all`로 default session을 닫았다. daemon과 해당 Chrome 프로세스가 종료되고 session 상태가 inactive인 것을 확인했다. tmux 세션은 건드리지 않았다. [lifecycle JSON](./agent-browser-lifecycle.json)에 종료 상태를 기록했다.
+Tailnet 화면과 PR #1180 본문 이미지를 확인한 뒤 두 번의 `agent-browser close --all`로 default session을 각각 닫았다. PR 본문 이미지 둘 다 natural size로 로드됐고, 마지막 종료 뒤 daemon과 Chrome 프로세스가 없으며 session 상태가 inactive인 것을 확인했다. tmux 세션은 건드리지 않았다. [lifecycle JSON](./agent-browser-lifecycle.json)에 종료 상태를 기록했다.
 
 스크립트·JSON·로그·캡처의 파일별 SHA-256은 [`hashes.sha256`](./hashes.sha256)에 있다.
 
