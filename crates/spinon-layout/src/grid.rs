@@ -529,6 +529,10 @@ pub(super) fn validate_grid_layout(
             (GridPlacementMode::TrackSizing, _) => {}
             (GridPlacementMode::RootHtmlAutoRepeatV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, GridAutoRows::Auto) => {}
+            (
+                GridPlacementMode::RootHtmlIntrinsicTrackSizingV1,
+                GridAutoRows::TrackList(tracks),
+            ) if tracks.as_slice() == [GridTrackSize::MinContent] => {}
             (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, _) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
@@ -719,12 +723,16 @@ pub(super) fn validate_grid_layout(
                 });
             }
             if container.placement_mode != GridPlacementMode::RootHtmlImplicitRowsV1 {
+                let root_html_intrinsic_auto_rows = container.placement_mode
+                    == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                    && tracks.as_slice() == [GridTrackSize::MinContent];
                 validate_tracks(
                     id,
                     "grid-auto-rows",
                     tracks,
                     template_area_track_sizing
-                        || container.placement_mode == GridPlacementMode::TrackSizing,
+                        || container.placement_mode == GridPlacementMode::TrackSizing
+                        || root_html_intrinsic_auto_rows,
                     false,
                     false,
                     false,
@@ -1540,10 +1548,33 @@ fn validate_root_html_intrinsic_tracks_contract(
     if container.auto_flow != GridAutoFlow::Row {
         return Err(LayoutError::UnsupportedGridAutoFlow(node));
     }
-    if container.auto_rows != GridAutoRows::Auto {
+    let intrinsic_auto_rows = matches!(
+        &container.auto_rows,
+        GridAutoRows::TrackList(tracks)
+            if tracks.as_slice() == [GridTrackSize::MinContent]
+    );
+    let single_positive_px_track = |tracks: &[GridTrackSize]| {
+        matches!(
+            tracks,
+            [GridTrackSize::LengthPx(value)] if value.is_finite() && *value > 0.0
+        )
+    };
+    let zero_gaps = matches!(
+        style.gap.row,
+        LayoutLengthPercentage::LengthPx(value) if value == 0.0
+    ) && matches!(
+        style.gap.column,
+        LayoutLengthPercentage::LengthPx(value) if value == 0.0
+    );
+    let allow_intrinsic_auto_rows = intrinsic_auto_rows
+        && container.template_areas.is_none()
+        && single_positive_px_track(&container.columns)
+        && single_positive_px_track(&container.rows)
+        && zero_gaps;
+    if container.auto_rows != GridAutoRows::Auto && !allow_intrinsic_auto_rows {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
-            reason: "Root HTML intrinsic explicit tracks require auto grid-auto-rows",
+            reason: "Root HTML intrinsic tracks require auto grid-auto-rows, except for a single min-content implicit-row pattern with fixed single tracks and zero gaps",
         });
     }
     if container.auto_columns != GridAutoColumns::Auto {

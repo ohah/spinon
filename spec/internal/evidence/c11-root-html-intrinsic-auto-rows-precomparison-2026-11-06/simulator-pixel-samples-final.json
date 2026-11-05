@@ -1,0 +1,28 @@
+{
+  "fixtureSha256": "7a6e0c32527b91a89d10c5ddcfdb00efe62f781bc814b3abf604a9bd08ebf15c",
+  "sampleXPhysicalPx": 10,
+  "android": {
+    "device": "Android API 37 ARM64 AVD emulator-5554",
+    "renderer": "ANGLE/Vulkan/SwiftShader",
+    "screenshotSizePx": [1080, 2400],
+    "devicePixelRatio": 2.625,
+    "screenshotSha256": "9e8c4adb1a6a194a924aa06dc71845c366c507de926310e20676811b5846ed75",
+    "runs": [
+      { "id": "first", "rgb": [242, 102, 94], "yPhysicalPx": [128, 153], "heightPhysicalPx": 26, "heightCssPx": 10 },
+      { "id": "second", "rgb": [91, 168, 245], "yPhysicalPx": [154, 211], "heightPhysicalPx": 58, "heightCssPx": 22 },
+      { "id": "third", "rgb": [85, 199, 145], "yPhysicalPx": [212, 300], "heightPhysicalPx": 89, "heightCssPx": 34 }
+    ]
+  },
+  "ios": {
+    "device": "iPhone 17 Pro / iOS 26.2 Simulator 9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "renderer": "Metal / Apple iOS simulator GPU",
+    "screenshotSizePx": [1206, 2622],
+    "devicePixelRatio": 3,
+    "screenshotSha256": "6f05c00982f020c623b233e45ad8e2400f34a5a85ca0fbace0ef247aabd06a8d",
+    "runs": [
+      { "id": "first", "rgb": [242, 102, 94], "yPhysicalPx": [186, 215], "heightPhysicalPx": 30, "heightCssPx": 10 },
+      { "id": "second", "rgb": [91, 168, 245], "yPhysicalPx": [216, 281], "heightPhysicalPx": 66, "heightCssPx": 22 },
+      { "id": "third", "rgb": [85, 199, 145], "yPhysicalPx": [282, 383], "heightPhysicalPx": 102, "heightCssPx": 34 }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+command: mise exec -- cargo fmt --all -- --check
+result: passed (exit code 0)

@@ -290,7 +290,15 @@ fn validate_container(
     {
         return Err(LayoutError::GridImplicitTrackRequired(node));
     }
-    validate_auto_track(node, "grid-auto-rows", &container.auto_rows)?;
+    let intrinsic_min_content_rows = intrinsic_track_sizing
+        && matches!(
+            &container.auto_rows,
+            GridAutoRows::TrackList(tracks)
+                if tracks.as_slice() == [GridTrackSize::MinContent]
+        );
+    if !intrinsic_min_content_rows {
+        validate_auto_track(node, "grid-auto-rows", &container.auto_rows)?;
+    }
     validate_auto_track(node, "grid-auto-columns", &container.auto_columns)?;
 
     let fixed_dimension = |dimension| {

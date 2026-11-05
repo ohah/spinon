@@ -225,6 +225,8 @@ pub(super) fn computed_grid_layout(
     let allow_template_area_track_sizing =
         template_areas.is_some() && allow_fixed_auto_track_lists && !allow_intrinsic_tracks;
     let allow_typed_auto_track_sizes = allow_intrinsic_tracks || allow_template_area_track_sizing;
+    let allow_typed_auto_row_track_sizes =
+        allow_typed_auto_track_sizes || allow_root_html_intrinsic_tracks;
     let flow = computed.clone_grid_auto_flow();
     let auto_flow = match (
         flow.contains(GridAutoFlow::COLUMN),
@@ -240,7 +242,7 @@ pub(super) fn computed_grid_layout(
         node,
         property_value(properties, "grid-auto-rows"),
         ComputedGridAutoTrackListOptions {
-            allow_typed_track_sizes: allow_typed_auto_track_sizes,
+            allow_typed_track_sizes: allow_typed_auto_row_track_sizes,
             allow_fixed_track_lists: allow_fixed_auto_track_lists
                 || allow_root_html_fixed_auto_row_lists,
             allow_percentage_track_lists: allow_root_html_percentage_auto_row_lists,

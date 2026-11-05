@@ -1,0 +1,21 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.25s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 11 tests
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_unsupported_implicit_min_content_shapes ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_gutter_extent_overflow ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_unsupported_and_invalid_gutters ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_unrepresentable_percentage_gutter_extents ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_mixed_auto_and_one_axis_placement ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_do_not_publish_unrepresentable_track_plus_gutter_extent ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_min_content_implicit_rows_match_reference_and_preserve_overflow ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_match_fixed_input_expectations ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_apply_fixed_gutters_before_fractional_expansion ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_resolve_percentage_gutters_against_their_own_axis ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_min_content_implicit_rows_enforce_track_ceiling ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 442 filtered out; finished in 0.17s
