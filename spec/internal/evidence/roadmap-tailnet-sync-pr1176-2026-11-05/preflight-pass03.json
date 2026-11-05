@@ -1,0 +1,3942 @@
+{
+  "sourceHead": "da67a18032f449d8477cdd5d7ea0aba02e691b0b",
+  "sourceTree": "4215da4a198207160e2afd872384aee275e87817",
+  "trackedDiffSha256": "fa0d12289cd3fbc4d217f2978243de8e4e061ba5b9929b06c65a5810268e76d6",
+  "tailscaleBackendRunning": true,
+  "previewServerPid": 28040,
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 570377,
+  "localRoadmapSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+  "selectedRouteCount": 392,
+  "selectedBytes": 24550324,
+  "counts": {
+    "create": 39,
+    "replace": 38,
+    "same": 315
+  },
+  "changedRouteOpenHandleCount": 0,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1176-2026-11-05/pass03",
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 639411,
+      "sourceSha256": "0e8045dca62acd2bd4b5bc40689f229e5eab201ac55e6282c78af357fcf697d9",
+      "targetExists": true,
+      "targetBytes": 639411,
+      "targetSha256": "827ade4a38e30ea824dc4ca99cc0bd8d0fa2d8e440285f967ae1443332106f17",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 441785,
+      "sourceSha256": "76eb9589c956e7d8a5422cf5b4884f24d6593a074fcfa98332091e4e26f575f6",
+      "targetExists": true,
+      "targetBytes": 441785,
+      "targetSha256": "76eb9589c956e7d8a5422cf5b4884f24d6593a074fcfa98332091e4e26f575f6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/api-level.txt",
+      "action": "same",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": true,
+      "targetBytes": 3,
+      "targetSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "b7cd5103052ef4e1b63492db6fc7c1237499805b82649b518ecaade20d235bd5",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "b7cd5103052ef4e1b63492db6fc7c1237499805b82649b518ecaade20d235bd5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "279620e4db163a95b23e0e59091d91b071f13df6f9450e8445b8cdd3dbbd3610",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "279620e4db163a95b23e0e59091d91b071f13df6f9450e8445b8cdd3dbbd3610",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/build.log",
+      "action": "same",
+      "sourceBytes": 4474,
+      "sourceSha256": "f710e1e369ec9e0460692de766df5d9954a73c3fe6dee45b44248861379a3fd0",
+      "targetExists": true,
+      "targetBytes": 4474,
+      "targetSha256": "f710e1e369ec9e0460692de766df5d9954a73c3fe6dee45b44248861379a3fd0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/launch.log",
+      "action": "same",
+      "sourceBytes": 203,
+      "sourceSha256": "2948d2c8a45665b5457f7de1ba190b979eea5a12a82737397ae12547a4c99f40",
+      "targetExists": true,
+      "targetBytes": 203,
+      "targetSha256": "2948d2c8a45665b5457f7de1ba190b979eea5a12a82737397ae12547a4c99f40",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/run.log",
+      "action": "same",
+      "sourceBytes": 16266,
+      "sourceSha256": "507e0c1706149d679ca7db5e6822204062515cf9b9fedebb6541eb6976fe227b",
+      "targetExists": true,
+      "targetBytes": 16266,
+      "targetSha256": "507e0c1706149d679ca7db5e6822204062515cf9b9fedebb6541eb6976fe227b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/screenshot.png",
+      "action": "same",
+      "sourceBytes": 39040,
+      "sourceSha256": "9acff737ff9ff1cc1718b33ad3d8d4626b5bbf3e5b84e8f59d85561b967800b3",
+      "targetExists": true,
+      "targetBytes": 39040,
+      "targetSha256": "9acff737ff9ff1cc1718b33ad3d8d4626b5bbf3e5b84e8f59d85561b967800b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/build.log",
+      "action": "same",
+      "sourceBytes": 4965,
+      "sourceSha256": "d688c03dd2df963a349029967a5b556b8411451aacff258c98ea2284aa81c1ca",
+      "targetExists": true,
+      "targetBytes": 4965,
+      "targetSha256": "d688c03dd2df963a349029967a5b556b8411451aacff258c98ea2284aa81c1ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/device.txt",
+      "action": "same",
+      "sourceBytes": 180,
+      "sourceSha256": "825502bb1f08f66962fef1cbc0b5833d2a7df6f95f8543082dcb35b35477c274",
+      "targetExists": true,
+      "targetBytes": 180,
+      "targetSha256": "825502bb1f08f66962fef1cbc0b5833d2a7df6f95f8543082dcb35b35477c274",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/launch.log",
+      "action": "same",
+      "sourceBytes": 203,
+      "sourceSha256": "964e28209068319fa9765565559dfe18b71c3fbfcf27537a8538a338447ce5e9",
+      "targetExists": true,
+      "targetBytes": 203,
+      "targetSha256": "964e28209068319fa9765565559dfe18b71c3fbfcf27537a8538a338447ce5e9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/run.log",
+      "action": "same",
+      "sourceBytes": 16274,
+      "sourceSha256": "fd6ecad6038987f57c0a73ad8393dad32a28fe49d2440e62c9942c2882ac8cd0",
+      "targetExists": true,
+      "targetBytes": 16274,
+      "targetSha256": "fd6ecad6038987f57c0a73ad8393dad32a28fe49d2440e62c9942c2882ac8cd0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "action": "same",
+      "sourceBytes": 124643,
+      "sourceSha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9",
+      "targetExists": true,
+      "targetBytes": 124643,
+      "targetSha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/clippy-final.log",
+      "action": "same",
+      "sourceBytes": 214,
+      "sourceSha256": "902d2c5f5ea634ea4fb6741b010d8e2474920c56cb24a2191351b64fbb0f3eb9",
+      "targetExists": true,
+      "targetBytes": 214,
+      "targetSha256": "902d2c5f5ea634ea4fb6741b010d8e2474920c56cb24a2191351b64fbb0f3eb9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/diff-check-final.log",
+      "action": "same",
+      "sourceBytes": 41,
+      "sourceSha256": "c08f7e0a45644e7ced702c16438457a9bb58bdae745ceea948807cfc2c4579ee",
+      "targetExists": true,
+      "targetBytes": 41,
+      "targetSha256": "c08f7e0a45644e7ced702c16438457a9bb58bdae745ceea948807cfc2c4579ee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-layout.log",
+      "action": "same",
+      "sourceBytes": 397,
+      "sourceSha256": "7da03d0df6faa805e2f40374f3612d52ebb44d1863aeb39d894865793a7d1c62",
+      "targetExists": true,
+      "targetBytes": 397,
+      "targetSha256": "7da03d0df6faa805e2f40374f3612d52ebb44d1863aeb39d894865793a7d1c62",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-runtime.log",
+      "action": "same",
+      "sourceBytes": 851,
+      "sourceSha256": "8e6bb31beabedde7527526f352d4db6e11b6fda09c34ab6f3fb7b49bc6646257",
+      "targetExists": true,
+      "targetBytes": 851,
+      "targetSha256": "8e6bb31beabedde7527526f352d4db6e11b6fda09c34ab6f3fb7b49bc6646257",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style-to-layout.log",
+      "action": "same",
+      "sourceBytes": 1112,
+      "sourceSha256": "1d4b09faacf88df3bbafe4c4e73b273cb2bca7e171e24d7d39525adf008c41d4",
+      "targetExists": true,
+      "targetBytes": 1112,
+      "targetSha256": "1d4b09faacf88df3bbafe4c4e73b273cb2bca7e171e24d7d39525adf008c41d4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style.log",
+      "action": "same",
+      "sourceBytes": 437,
+      "sourceSha256": "8e4d50d2856c9818199690b18fa34fecb22f105fe2e0b6b0286e88bf22d05d4a",
+      "targetExists": true,
+      "targetBytes": 437,
+      "targetSha256": "8e4d50d2856c9818199690b18fa34fecb22f105fe2e0b6b0286e88bf22d05d4a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/format-final.log",
+      "action": "same",
+      "sourceBytes": 42,
+      "sourceSha256": "01fe9d20abda7c7657ad019bdce6eeadeaeeb74afbb779966ec9aa7faf1a593f",
+      "targetExists": true,
+      "targetBytes": 42,
+      "targetSha256": "01fe9d20abda7c7657ad019bdce6eeadeaeeb74afbb779966ec9aa7faf1a593f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.html",
+      "action": "replace",
+      "sourceBytes": 45696,
+      "sourceSha256": "e5912aa6a5dcddd1f82c12f43a5ab3b9f45a58ed14486b2cfe4d06f060cffb35",
+      "targetExists": true,
+      "targetBytes": 45696,
+      "targetSha256": "25e0b93bc8f11395664ed8bca2f8b2d5b0f706cf55530f0d336f4b543eb69884",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.md",
+      "action": "same",
+      "sourceBytes": 4945,
+      "sourceSha256": "ec12142916f1c59122b510f5582ed3b4f991be8085e2b2f28cfe3840b9519f60",
+      "targetExists": true,
+      "targetBytes": 4945,
+      "targetSha256": "ec12142916f1c59122b510f5582ed3b4f991be8085e2b2f28cfe3840b9519f60",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 48294,
+      "sourceSha256": "821b815e25952ab6e0d391e4661dc9967cdc023e2b14d9ccc19cca8a6b400efb",
+      "targetExists": true,
+      "targetBytes": 48294,
+      "targetSha256": "a1a84b62474ff0a5efeb283ad7c1321f57c4b30163ea7004b627d887b55cc3e8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 6156,
+      "sourceSha256": "edd132ca595897e5778fcb95545193c4a40e157098d08bf17592a5938a0548a2",
+      "targetExists": true,
+      "targetBytes": 6156,
+      "targetSha256": "edd132ca595897e5778fcb95545193c4a40e157098d08bf17592a5938a0548a2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "8d2fcadc5535cc0bd2220f0e7c768aabc9aa8e30b892e8704523564ba69dd8db",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "8d2fcadc5535cc0bd2220f0e7c768aabc9aa8e30b892e8704523564ba69dd8db",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "5a2a16b528828dbdf34caa385d2b64f1fb708c1a2c24aefcbe0f577c58839983",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "5a2a16b528828dbdf34caa385d2b64f1fb708c1a2c24aefcbe0f577c58839983",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/build.log",
+      "action": "same",
+      "sourceBytes": 64069,
+      "sourceSha256": "2d97844cf2f47568a056c4108f450b45988a079ef4accb6bdffeb53f05773874",
+      "targetExists": true,
+      "targetBytes": 64069,
+      "targetSha256": "2d97844cf2f47568a056c4108f450b45988a079ef4accb6bdffeb53f05773874",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/install.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "51325e02ebed85768caddf11081b88225a702ba45b2ba66c85cab591b09b4ea7",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "51325e02ebed85768caddf11081b88225a702ba45b2ba66c85cab591b09b4ea7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/run.log",
+      "action": "same",
+      "sourceBytes": 37699,
+      "sourceSha256": "4fbbd5e2476f831188363ac5277ba360bb909d8ff36713065b50518136921f44",
+      "targetExists": true,
+      "targetBytes": 37699,
+      "targetSha256": "4fbbd5e2476f831188363ac5277ba360bb909d8ff36713065b50518136921f44",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.log",
+      "action": "same",
+      "sourceBytes": 233,
+      "sourceSha256": "1dacb261bd19e5a3e4f77a144dfd426c0a374f33ac15b46eb979619d41d3595b",
+      "targetExists": true,
+      "targetBytes": 233,
+      "targetSha256": "1dacb261bd19e5a3e4f77a144dfd426c0a374f33ac15b46eb979619d41d3595b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.png",
+      "action": "same",
+      "sourceBytes": 94934,
+      "sourceSha256": "3a0780a73ea10f65658a6d99e1909cb0111342e5bdea1addf796ce2ff51b25fa",
+      "targetExists": true,
+      "targetBytes": 94934,
+      "targetSha256": "3a0780a73ea10f65658a6d99e1909cb0111342e5bdea1addf796ce2ff51b25fa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/build.log",
+      "action": "same",
+      "sourceBytes": 66770,
+      "sourceSha256": "7de5e217bbac1f4f0fd93e75ac808a9b4a2c073c522f473057eaf76c25382b8d",
+      "targetExists": true,
+      "targetBytes": 66770,
+      "targetSha256": "7de5e217bbac1f4f0fd93e75ac808a9b4a2c073c522f473057eaf76c25382b8d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/device.txt",
+      "action": "same",
+      "sourceBytes": 119,
+      "sourceSha256": "970a7391b8e4ebf9bfaf600ad6ea635b0605918f015557035638bb07a2ad8bab",
+      "targetExists": true,
+      "targetBytes": 119,
+      "targetSha256": "970a7391b8e4ebf9bfaf600ad6ea635b0605918f015557035638bb07a2ad8bab",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/install.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "c0884737100adbfa260254d320c6bf7921a6244ca91ac28f2cb304f45a4a6430",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "c0884737100adbfa260254d320c6bf7921a6244ca91ac28f2cb304f45a4a6430",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/run.log",
+      "action": "same",
+      "sourceBytes": 37701,
+      "sourceSha256": "c560464ddfa0eb22be7cb3f956bf0f1b527f088cee394211d920291adf2ba685",
+      "targetExists": true,
+      "targetBytes": 37701,
+      "targetSha256": "c560464ddfa0eb22be7cb3f956bf0f1b527f088cee394211d920291adf2ba685",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.log",
+      "action": "same",
+      "sourceBytes": 214,
+      "sourceSha256": "1b06cd752da5b765d251cbb6e8d1df8cbf5b1b8e05353947b6d311fd53239b33",
+      "targetExists": true,
+      "targetBytes": 214,
+      "targetSha256": "1b06cd752da5b765d251cbb6e8d1df8cbf5b1b8e05353947b6d311fd53239b33",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "action": "same",
+      "sourceBytes": 174049,
+      "sourceSha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88",
+      "targetExists": true,
+      "targetBytes": 174049,
+      "targetSha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 44891,
+      "sourceSha256": "f770489a0169c6b7c10a4a3b3e66133c75ddd0e4c5f5b3bb6d6a280e9a062b80",
+      "targetExists": true,
+      "targetBytes": 44891,
+      "targetSha256": "8314ac0cedabc93c1c148e440e4f7105120e2f2349df53fbf1a39a5f7554a56d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 4578,
+      "sourceSha256": "440c2a42e3c7bc800156f71b7eb9cbb18cd0b921e7005c35d6ffdabbc2c97d2f",
+      "targetExists": true,
+      "targetBytes": 4578,
+      "targetSha256": "440c2a42e3c7bc800156f71b7eb9cbb18cd0b921e7005c35d6ffdabbc2c97d2f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.html",
+      "action": "replace",
+      "sourceBytes": 46720,
+      "sourceSha256": "ba3e367665fcfa2fbb26e1b20ec5c18c997075c9f8321a82a029c44778799299",
+      "targetExists": true,
+      "targetBytes": 46720,
+      "targetSha256": "002b19520f1c0bdd40067936416e67ed726cd5901d865b48863f856112b771ae",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.md",
+      "action": "same",
+      "sourceBytes": 5420,
+      "sourceSha256": "b4651ba547ca6d7d6a3534e31b5a72f45fe904af969b6b648fd9ccdffcf4785e",
+      "targetExists": true,
+      "targetBytes": 5420,
+      "targetSha256": "b4651ba547ca6d7d6a3534e31b5a72f45fe904af969b6b648fd9ccdffcf4785e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 46228,
+      "sourceSha256": "144f7a19bfbab314b5a58a8270855e398d051f64811a2d290090705d05afdc2d",
+      "targetExists": true,
+      "targetBytes": 46228,
+      "targetSha256": "67346842f2b27130257b4f8401bc2e475bd5810cc88d610b539e2bf5b2df6384",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 4503,
+      "sourceSha256": "d788186f7571b83a3906047fc3c22e9f71f7ac1fc49582d987892adeb940a791",
+      "targetExists": true,
+      "targetBytes": 4503,
+      "targetSha256": "d788186f7571b83a3906047fc3c22e9f71f7ac1fc49582d987892adeb940a791",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/run-simulator-matrix.py",
+      "action": "same",
+      "sourceBytes": 13641,
+      "sourceSha256": "a790d84a6ecaddb6b6ac1b8aeb4c2fce08a76b9301eebcdd21fe238fbd084c84",
+      "targetExists": true,
+      "targetBytes": 13641,
+      "targetSha256": "a790d84a6ecaddb6b6ac1b8aeb4c2fce08a76b9301eebcdd21fe238fbd084c84",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/SHA256SUMS",
+      "action": "same",
+      "sourceBytes": 5210,
+      "sourceSha256": "c43d11af9b89d52507b3d769d06297756765b1d15535bcf2a056bab46b68c7fe",
+      "targetExists": true,
+      "targetBytes": 5210,
+      "targetSha256": "c43d11af9b89d52507b3d769d06297756765b1d15535bcf2a056bab46b68c7fe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/source-hashes.txt",
+      "action": "same",
+      "sourceBytes": 2630,
+      "sourceSha256": "48e82368218e0f6a5a167382f27ffc1c0df906d0d2b67797d8709ba3e97abe48",
+      "targetExists": true,
+      "targetBytes": 2630,
+      "targetSha256": "48e82368218e0f6a5a167382f27ffc1c0df906d0d2b67797d8709ba3e97abe48",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-after-auto-minimum-fix.log",
+      "action": "same",
+      "sourceBytes": 51608,
+      "sourceSha256": "2b19cf65c621c96bee0343cb15643b602a147f20715e9de58e841c513bf561c5",
+      "targetExists": true,
+      "targetBytes": 51608,
+      "targetSha256": "2b19cf65c621c96bee0343cb15643b602a147f20715e9de58e841c513bf561c5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-final.log",
+      "action": "same",
+      "sourceBytes": 51608,
+      "sourceSha256": "582d5e2f8b13fe0fb562a8037fb5e438db938312e607729b40844086634aaf80",
+      "targetExists": true,
+      "targetBytes": 51608,
+      "targetSha256": "582d5e2f8b13fe0fb562a8037fb5e438db938312e607729b40844086634aaf80",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-full.log",
+      "action": "same",
+      "sourceBytes": 51549,
+      "sourceSha256": "fd2732ea6a3d1331cefa8815a8830b3079eb3846c8271eb44e9c100d6926e056",
+      "targetExists": true,
+      "targetBytes": 51549,
+      "targetSha256": "fd2732ea6a3d1331cefa8815a8830b3079eb3846c8271eb44e9c100d6926e056",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-after-auto-minimum-fix.log",
+      "action": "same",
+      "sourceBytes": 55984,
+      "sourceSha256": "196e6ee50c7f9150df4aa360a0dc93cdd9d80f4e144d816f0c58c6686ef40fa0",
+      "targetExists": true,
+      "targetBytes": 55984,
+      "targetSha256": "196e6ee50c7f9150df4aa360a0dc93cdd9d80f4e144d816f0c58c6686ef40fa0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-final.log",
+      "action": "same",
+      "sourceBytes": 55984,
+      "sourceSha256": "f7033074a3e563339d72742a979991fbea9ac72a14700bea93a510d1293cf902",
+      "targetExists": true,
+      "targetBytes": 55984,
+      "targetSha256": "f7033074a3e563339d72742a979991fbea9ac72a14700bea93a510d1293cf902",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-full.log",
+      "action": "same",
+      "sourceBytes": 55896,
+      "sourceSha256": "23dfab5eb45111a13b9a302d4fca8f343aa41329c249140575e771919fb3e3f7",
+      "targetExists": true,
+      "targetBytes": 55896,
+      "targetSha256": "23dfab5eb45111a13b9a302d4fca8f343aa41329c249140575e771919fb3e3f7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/temporary-root-app.sha256",
+      "action": "same",
+      "sourceBytes": 88,
+      "sourceSha256": "75ad3a0b93940f147d810fe78a7f1039a7f56bc18ec01895a9a9d0425c684477",
+      "targetExists": true,
+      "targetBytes": 88,
+      "targetSha256": "75ad3a0b93940f147d810fe78a7f1039a7f56bc18ec01895a9a9d0425c684477",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/adb-devices.txt",
+      "action": "same",
+      "sourceBytes": 138,
+      "sourceSha256": "edf9d2afb9e66fe419fcf843757a4d1e9065292cd4b400d3cff3dcdb43015e45",
+      "targetExists": true,
+      "targetBytes": 138,
+      "targetSha256": "edf9d2afb9e66fe419fcf843757a4d1e9065292cd4b400d3cff3dcdb43015e45",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-release.txt",
+      "action": "same",
+      "sourceBytes": 3,
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "targetExists": true,
+      "targetBytes": 3,
+      "targetSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-sdk.txt",
+      "action": "same",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": true,
+      "targetBytes": 3,
+      "targetSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/apk-sha256.txt",
+      "action": "same",
+      "sourceBytes": 126,
+      "sourceSha256": "5da52cc11409ee0a6d6dbae144bc6d3de1531354936cb3072e3d069e9b46d901",
+      "targetExists": true,
+      "targetBytes": 126,
+      "targetSha256": "5da52cc11409ee0a6d6dbae144bc6d3de1531354936cb3072e3d069e9b46d901",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/app-pid.txt",
+      "action": "same",
+      "sourceBytes": 6,
+      "sourceSha256": "59f653799c3bff9fee7f7a2eddeb8e95e37e7f746365d8e723c68e126f61ef56",
+      "targetExists": true,
+      "targetBytes": 6,
+      "targetSha256": "59f653799c3bff9fee7f7a2eddeb8e95e37e7f746365d8e723c68e126f61ef56",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-app.log",
+      "action": "same",
+      "sourceBytes": 4404,
+      "sourceSha256": "dd61ed8b0545ab732c4edd1de4655a4713534b2063ef2ed952a0757511b3c2ff",
+      "targetExists": true,
+      "targetBytes": 4404,
+      "targetSha256": "dd61ed8b0545ab732c4edd1de4655a4713534b2063ef2ed952a0757511b3c2ff",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-native.log",
+      "action": "same",
+      "sourceBytes": 2322,
+      "sourceSha256": "eaaceeef7800da1ce9bfb92b2ccd9e89a80464866b80e901ec3443b638c5a900",
+      "targetExists": true,
+      "targetBytes": 2322,
+      "targetSha256": "eaaceeef7800da1ce9bfb92b2ccd9e89a80464866b80e901ec3443b638c5a900",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-density.txt",
+      "action": "same",
+      "sourceBytes": 22,
+      "sourceSha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "targetExists": true,
+      "targetBytes": 22,
+      "targetSha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-size.txt",
+      "action": "same",
+      "sourceBytes": 25,
+      "sourceSha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "targetExists": true,
+      "targetBytes": 25,
+      "targetSha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/model.txt",
+      "action": "same",
+      "sourceBytes": 19,
+      "sourceSha256": "2e781b655b0a1fbca1235d182864661fab33a2a3ef3d4521e580f04b0b009ead",
+      "targetExists": true,
+      "targetBytes": 19,
+      "targetSha256": "2e781b655b0a1fbca1235d182864661fab33a2a3ef3d4521e580f04b0b009ead",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/packaged-fixture-sha256.txt",
+      "action": "same",
+      "sourceBytes": 68,
+      "sourceSha256": "d9319c99dcdfbd0ea5a996e441a6a505eee02642886418072a20c629f9c7c306",
+      "targetExists": true,
+      "targetBytes": 68,
+      "targetSha256": "d9319c99dcdfbd0ea5a996e441a6a505eee02642886418072a20c629f9c7c306",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/runtime-logcat.txt",
+      "action": "same",
+      "sourceBytes": 16690,
+      "sourceSha256": "1f280ece388a1274228a7948f008f8024f70062d76cc5db600587d283d03c6f1",
+      "targetExists": true,
+      "targetBytes": 16690,
+      "targetSha256": "1f280ece388a1274228a7948f008f8024f70062d76cc5db600587d283d03c6f1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/screen.png",
+      "action": "same",
+      "sourceBytes": 26586,
+      "sourceSha256": "fa1dbeaaed346a24bddf4df1078fcf66b3e4c2a5749da1088a50ea3d15e3b84b",
+      "targetExists": true,
+      "targetBytes": 26586,
+      "targetSha256": "fa1dbeaaed346a24bddf4df1078fcf66b3e4c2a5749da1088a50ea3d15e3b84b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/start-time-utc.txt",
+      "action": "same",
+      "sourceBytes": 21,
+      "sourceSha256": "8a818546e81ff80661c39a44438e96c6345f0135333cfeed51e073e40d427aed",
+      "targetExists": true,
+      "targetBytes": 21,
+      "targetSha256": "8a818546e81ff80661c39a44438e96c6345f0135333cfeed51e073e40d427aed",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-layout.txt",
+      "action": "same",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": true,
+      "targetBytes": 126,
+      "targetSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-style-to-layout.txt",
+      "action": "same",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": true,
+      "targetBytes": 1139,
+      "targetSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-runtime.log",
+      "action": "same",
+      "sourceBytes": 363,
+      "sourceSha256": "40abede9ffb65da9442f4f2fdeb8917bac2e33f81403258036c7dd226df663da",
+      "targetExists": true,
+      "targetBytes": 363,
+      "targetSha256": "40abede9ffb65da9442f4f2fdeb8917bac2e33f81403258036c7dd226df663da",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-cascade.log",
+      "action": "same",
+      "sourceBytes": 825,
+      "sourceSha256": "441b1c0594395c487ba8fe4733ea0533092b5ac6d01dcae9fc9c9d4c3c7d4c88",
+      "targetExists": true,
+      "targetBytes": 825,
+      "targetSha256": "441b1c0594395c487ba8fe4733ea0533092b5ac6d01dcae9fc9c9d4c3c7d4c88",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-negative.log",
+      "action": "same",
+      "sourceBytes": 414,
+      "sourceSha256": "c032b38f301cf1d115765d7900e9147c5a1b693260e7cf5804e1c17e21abe48b",
+      "targetExists": true,
+      "targetBytes": 414,
+      "targetSha256": "c032b38f301cf1d115765d7900e9147c5a1b693260e7cf5804e1c17e21abe48b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-positive.log",
+      "action": "same",
+      "sourceBytes": 419,
+      "sourceSha256": "e5a05f0fa6b8178296c9788513ca93ff70edd7cb223ab50f3bffa8e201bad5ae",
+      "targetExists": true,
+      "targetBytes": 419,
+      "targetSha256": "e5a05f0fa6b8178296c9788513ca93ff70edd7cb223ab50f3bffa8e201bad5ae",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-candidate.log",
+      "action": "same",
+      "sourceBytes": 51482,
+      "sourceSha256": "a1b1f368f022fe93179f3f3e58e883797b132a43a3f88dc83dd0d31ed8dbca4b",
+      "targetExists": true,
+      "targetBytes": 51482,
+      "targetSha256": "a1b1f368f022fe93179f3f3e58e883797b132a43a3f88dc83dd0d31ed8dbca4b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-test.log",
+      "action": "same",
+      "sourceBytes": 51482,
+      "sourceSha256": "da9b98774769000d3715cf9c4a62fba3be0bdf58b6211814fc8ee4361d1454d1",
+      "targetExists": true,
+      "targetBytes": 51482,
+      "targetSha256": "da9b98774769000d3715cf9c4a62fba3be0bdf58b6211814fc8ee4361d1454d1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-candidate.log",
+      "action": "same",
+      "sourceBytes": 55424,
+      "sourceSha256": "790634c5ac0f6aed7f67bd9452fb61c5142b2e673a527cd4005c8b05664cbd49",
+      "targetExists": true,
+      "targetBytes": 55424,
+      "targetSha256": "790634c5ac0f6aed7f67bd9452fb61c5142b2e673a527cd4005c8b05664cbd49",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-test.log",
+      "action": "same",
+      "sourceBytes": 55559,
+      "sourceSha256": "7f53e73b5c49b6816b353e4950b7d9589ca1c2b6c98bd046855614c748700be4",
+      "targetExists": true,
+      "targetBytes": 55559,
+      "targetSha256": "7f53e73b5c49b6816b353e4950b7d9589ca1c2b6c98bd046855614c748700be4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-layout.txt",
+      "action": "same",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": true,
+      "targetBytes": 126,
+      "targetSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-style-to-layout.txt",
+      "action": "same",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": true,
+      "targetBytes": 1139,
+      "targetSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 45586,
+      "sourceSha256": "ff87cad51d455cff0e903750d303e773329de6a2bb91afa6fb526611eca747e7",
+      "targetExists": true,
+      "targetBytes": 45586,
+      "targetSha256": "dcb2b1099995dbd3c9495e2cc3fc17317a196de103483c3883be0fea11d7c710",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 4822,
+      "sourceSha256": "a7c9cb02df646b83d53106ce974a9106e7262e4ca18495f1ec6b1074d80f831e",
+      "targetExists": true,
+      "targetBytes": 4822,
+      "targetSha256": "a7c9cb02df646b83d53106ce974a9106e7262e4ca18495f1ec6b1074d80f831e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/app-executable-sha256.txt",
+      "action": "same",
+      "sourceBytes": 164,
+      "sourceSha256": "7bb5b5692ab3913d5db38004c944bef2f1c084cc7e76fcbc00cf44ec94fdbe24",
+      "targetExists": true,
+      "targetBytes": 164,
+      "targetSha256": "7bb5b5692ab3913d5db38004c944bef2f1c084cc7e76fcbc00cf44ec94fdbe24",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/booted-devices.txt",
+      "action": "same",
+      "sourceBytes": 403,
+      "sourceSha256": "28ba5c74e024d932d75421f497df03194f9cb0743b6983f60849f0015664d01d",
+      "targetExists": true,
+      "targetBytes": 403,
+      "targetSha256": "28ba5c74e024d932d75421f497df03194f9cb0743b6983f60849f0015664d01d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/build.log",
+      "action": "same",
+      "sourceBytes": 66611,
+      "sourceSha256": "d7b3291170fd3e7f17cba77a09065da6da4df3ecdfa5ccccbf0a19738daca87d",
+      "targetExists": true,
+      "targetBytes": 66611,
+      "targetSha256": "d7b3291170fd3e7f17cba77a09065da6da4df3ecdfa5ccccbf0a19738daca87d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/bundle-id.txt",
+      "action": "same",
+      "sourceBytes": 21,
+      "sourceSha256": "050d55934ccab6a07f309968a24ec0f7799e262ff22d2d9aaed47c93d3cfd462",
+      "targetExists": true,
+      "targetBytes": 21,
+      "targetSha256": "050d55934ccab6a07f309968a24ec0f7799e262ff22d2d9aaed47c93d3cfd462",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-fixture-sha256.txt",
+      "action": "same",
+      "sourceBytes": 159,
+      "sourceSha256": "33de0f3396a0fd32f4d750435f24924454e1ce621d81506b11c6d80c3f5f95c8",
+      "targetExists": true,
+      "targetBytes": 159,
+      "targetSha256": "33de0f3396a0fd32f4d750435f24924454e1ce621d81506b11c6d80c3f5f95c8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-root-app-sha256.txt",
+      "action": "same",
+      "sourceBytes": 160,
+      "sourceSha256": "37308eed45c9dc6f16b5a05816ae04644f7fc0ad13c3be9122a038784851af8c",
+      "targetExists": true,
+      "targetBytes": 160,
+      "targetSha256": "37308eed45c9dc6f16b5a05816ae04644f7fc0ad13c3be9122a038784851af8c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/runtime-log-unified.txt",
+      "action": "same",
+      "sourceBytes": 36247,
+      "sourceSha256": "ea7d85437578f8f27e7e5010739ff5605ab530018617d7bbd4e452a07af712b9",
+      "targetExists": true,
+      "targetBytes": 36247,
+      "targetSha256": "ea7d85437578f8f27e7e5010739ff5605ab530018617d7bbd4e452a07af712b9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/screen.png",
+      "action": "same",
+      "sourceBytes": 75655,
+      "sourceSha256": "b7080adada56a62d6a87b40b2d3a89dee95f5af6782f9953d4ce00595b202ff9",
+      "targetExists": true,
+      "targetBytes": 75655,
+      "targetSha256": "b7080adada56a62d6a87b40b2d3a89dee95f5af6782f9953d4ce00595b202ff9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/start-time-utc.txt",
+      "action": "same",
+      "sourceBytes": 21,
+      "sourceSha256": "28a8b03c617149566101d1df625012029d598371446a941b58d8cc284ab413c1",
+      "targetExists": true,
+      "targetBytes": 21,
+      "targetSha256": "28a8b03c617149566101d1df625012029d598371446a941b58d8cc284ab413c1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 48211,
+      "sourceSha256": "43b40c993a56a9fa188da83bd0ddd9d04760e64c0ad299dad32cd3a14ed422a5",
+      "targetExists": true,
+      "targetBytes": 48211,
+      "targetSha256": "521878490341172373170e7faf220490638ba651f1afb69acd598dc9fca674a8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 6648,
+      "sourceSha256": "a1831168791d5d3ae17b2b628fe7a1289976cb07d3312c8772df81265ff776e7",
+      "targetExists": true,
+      "targetBytes": 6648,
+      "targetSha256": "a1831168791d5d3ae17b2b628fe7a1289976cb07d3312c8772df81265ff776e7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.html",
+      "action": "replace",
+      "sourceBytes": 49101,
+      "sourceSha256": "6873b6950c86b8aba7747b7ee6846ab84c6ab3d8822221bd425ec637a280eecd",
+      "targetExists": true,
+      "targetBytes": 49101,
+      "targetSha256": "a5805370c7a1240c283a5019480937376d9bc29872d9a0729f08550245e31c72",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md",
+      "action": "same",
+      "sourceBytes": 6602,
+      "sourceSha256": "4450c4345ff6de45b2283b2e0ea2a0142eb867df3616b2469e8d8004e4dfffbb",
+      "targetExists": true,
+      "targetBytes": 6602,
+      "targetSha256": "4450c4345ff6de45b2283b2e0ea2a0142eb867df3616b2469e8d8004e4dfffbb",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rust-source-sha256.txt",
+      "action": "same",
+      "sourceBytes": 1922,
+      "sourceSha256": "83d7070f064ae480a83ec5ac97f8fbe737c5b413cf95b450cbb4b0207712c3cd",
+      "targetExists": true,
+      "targetBytes": 1922,
+      "targetSha256": "83d7070f064ae480a83ec5ac97f8fbe737c5b413cf95b450cbb4b0207712c3cd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rustfmt.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/SHA256SUMS",
+      "action": "same",
+      "sourceBytes": 3855,
+      "sourceSha256": "a6526712f33d10859cf5f7db56fff4e1dcde091a64e55ecbd617285bdb1364fc",
+      "targetExists": true,
+      "targetBytes": 3855,
+      "targetSha256": "a6526712f33d10859cf5f7db56fff4e1dcde091a64e55ecbd617285bdb1364fc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/source-hashes.txt",
+      "action": "same",
+      "sourceBytes": 327,
+      "sourceSha256": "dbf8715efdb858c451349fc15119af809650b764915ab85a7354c7d1a5e2d992",
+      "targetExists": true,
+      "targetBytes": 327,
+      "targetSha256": "dbf8715efdb858c451349fc15119af809650b764915ab85a7354c7d1a5e2d992",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/workspace-clippy.log",
+      "action": "same",
+      "sourceBytes": 72,
+      "sourceSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "targetExists": true,
+      "targetBytes": 72,
+      "targetSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/chrome156-full.png",
+      "action": "same",
+      "sourceBytes": 4744,
+      "sourceSha256": "9569c601c42a256f2eff8fac61abe6ff6b2e8765f8be3fdf8a5e82ff01a362ff",
+      "targetExists": true,
+      "targetBytes": 4744,
+      "targetSha256": "9569c601c42a256f2eff8fac61abe6ff6b2e8765f8be3fdf8a5e82ff01a362ff",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 8673,
+      "sourceSha256": "44ac572faf15ccc3e61de5bef9d1f5d214eefe029fb2dbbfcc7dcded711252dc",
+      "targetExists": true,
+      "targetBytes": 8673,
+      "targetSha256": "44ac572faf15ccc3e61de5bef9d1f5d214eefe029fb2dbbfcc7dcded711252dc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/comparison.json",
+      "action": "same",
+      "sourceBytes": 2214,
+      "sourceSha256": "383cd4327f5fce783261b92cdd8b12de2b9092eed4bd740b8c0e0b1f8bb216b7",
+      "targetExists": true,
+      "targetBytes": 2214,
+      "targetSha256": "383cd4327f5fce783261b92cdd8b12de2b9092eed4bd740b8c0e0b1f8bb216b7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/expected.json",
+      "action": "same",
+      "sourceBytes": 3824,
+      "sourceSha256": "92b292dadc3c46b79831f391157ed285a2e86efc396cd8633de4b59276154794",
+      "targetExists": true,
+      "targetBytes": 3824,
+      "targetSha256": "92b292dadc3c46b79831f391157ed285a2e86efc396cd8633de4b59276154794",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 43474,
+      "sourceSha256": "5b410eaf11e460dbd61d6805da30d58e32817ff24c0eb9500f4298c65dd158e5",
+      "targetExists": true,
+      "targetBytes": 43474,
+      "targetSha256": "33ba0efdab9e95a21512c334807bdc8175345486879225d5a4483873006963c2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 3240,
+      "sourceSha256": "d049e916365717942013449c603ecb0dc82cd7775024717fa1617289ff50928f",
+      "targetExists": true,
+      "targetBytes": 3240,
+      "targetSha256": "d049e916365717942013449c603ecb0dc82cd7775024717fa1617289ff50928f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/SHA256SUMS.txt",
+      "action": "same",
+      "sourceBytes": 416,
+      "sourceSha256": "841160a28de36baa026f81e2b859a9d728587ffac3b5e387849d25f124c4f704",
+      "targetExists": true,
+      "targetBytes": 416,
+      "targetSha256": "841160a28de36baa026f81e2b859a9d728587ffac3b5e387849d25f124c4f704",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/apk-root-html-asset.sha256",
+      "action": "same",
+      "sourceBytes": 106,
+      "sourceSha256": "2fc663927cfe2f44e2275b1e21e9618a66670ca5d7b653e94eeae678af60e469",
+      "targetExists": true,
+      "targetBytes": 106,
+      "targetSha256": "2fc663927cfe2f44e2275b1e21e9618a66670ca5d7b653e94eeae678af60e469",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/apk.sha256",
+      "action": "same",
+      "sourceBytes": 167,
+      "sourceSha256": "ce7113ca3c93a1eabe97be9c1844442922529fee2729e7c5bc97a008cd763842",
+      "targetExists": true,
+      "targetBytes": 167,
+      "targetSha256": "ce7113ca3c93a1eabe97be9c1844442922529fee2729e7c5bc97a008cd763842",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/build.log",
+      "action": "same",
+      "sourceBytes": 4458,
+      "sourceSha256": "d5019aa94a3f57159caffea029e3b7c5154afbb31c4453b3665e41dad6e8bccc",
+      "targetExists": true,
+      "targetBytes": 4458,
+      "targetSha256": "d5019aa94a3f57159caffea029e3b7c5154afbb31c4453b3665e41dad6e8bccc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/launch.log",
+      "action": "same",
+      "sourceBytes": 73,
+      "sourceSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "targetExists": true,
+      "targetBytes": 73,
+      "targetSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/logcat-full.txt",
+      "action": "same",
+      "sourceBytes": 159773,
+      "sourceSha256": "296a92b193a6bb3c77a6e41a239982ee0d8023fd59d944a4ab4ec1609b2d9759",
+      "targetExists": true,
+      "targetBytes": 159773,
+      "targetSha256": "296a92b193a6bb3c77a6e41a239982ee0d8023fd59d944a4ab4ec1609b2d9759",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/logcat-runtime.txt",
+      "action": "same",
+      "sourceBytes": 2728,
+      "sourceSha256": "f298e520914fdf19a71414445bf887bf13a640077a9f0bfee0b6af899afd7864",
+      "targetExists": true,
+      "targetBytes": 2728,
+      "targetSha256": "f298e520914fdf19a71414445bf887bf13a640077a9f0bfee0b6af899afd7864",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/simulator-screen.png",
+      "action": "same",
+      "sourceBytes": 77539,
+      "sourceSha256": "8496fe2b8b429fc7845a06d082966c4175aff3c62e123ba1f218222140e29f95",
+      "targetExists": true,
+      "targetBytes": 77539,
+      "targetSha256": "8496fe2b8b429fc7845a06d082966c4175aff3c62e123ba1f218222140e29f95",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/simulator-screen.sha256",
+      "action": "same",
+      "sourceBytes": 217,
+      "sourceSha256": "15118293bfd79ad95a7e30e689956e84ce5def97c9ac69ff4c4ca9eb2d2ecebd",
+      "targetExists": true,
+      "targetBytes": 217,
+      "targetSha256": "15118293bfd79ad95a7e30e689956e84ce5def97c9ac69ff4c4ca9eb2d2ecebd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/asset-restoration.txt",
+      "action": "same",
+      "sourceBytes": 241,
+      "sourceSha256": "c01a37cc8e8da26aa18656cc0dae37a55ffab58c2bfaea9e7abab331bc948b63",
+      "targetExists": true,
+      "targetBytes": 241,
+      "targetSha256": "c01a37cc8e8da26aa18656cc0dae37a55ffab58c2bfaea9e7abab331bc948b63",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/baseline-runtime-suite.log",
+      "action": "same",
+      "sourceBytes": 1001679,
+      "sourceSha256": "fe16316fe79f21148862f50eb98bb8ff826fc994394452f8a804179a7d034ef4",
+      "targetExists": true,
+      "targetBytes": 1001679,
+      "targetSha256": "fe16316fe79f21148862f50eb98bb8ff826fc994394452f8a804179a7d034ef4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/clippy.log",
+      "action": "same",
+      "sourceBytes": 72,
+      "sourceSha256": "5604fc8f0c276397a55db4bd7008236712075c0ad37d3b3a0f1fe362b1b85a36",
+      "targetExists": true,
+      "targetBytes": 72,
+      "targetSha256": "5604fc8f0c276397a55db4bd7008236712075c0ad37d3b3a0f1fe362b1b85a36",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ffi-check.log",
+      "action": "same",
+      "sourceBytes": 72,
+      "sourceSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "targetExists": true,
+      "targetBytes": 72,
+      "targetSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/fixture-boundary.log",
+      "action": "same",
+      "sourceBytes": 3520,
+      "sourceSha256": "e5044c499f8df9acee54d475c3a58900312c4a91f01252885ae3b9c557625801",
+      "targetExists": true,
+      "targetBytes": 3520,
+      "targetSha256": "e5044c499f8df9acee54d475c3a58900312c4a91f01252885ae3b9c557625801",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 48219,
+      "sourceSha256": "a6ab1f8b2c3337b73b4318c4ef77fd3e0ba337db07767b3e6be5b7205622cc0d",
+      "targetExists": true,
+      "targetBytes": 48219,
+      "targetSha256": "8e490cc8e968c19d9fda80f66660af579ff79429ed563281404325c9bcc7a7c8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 6958,
+      "sourceSha256": "7601933a776f950f1e4ed94b6bd44e0b39c626d41c5c6deeeb8f97820d40e91c",
+      "targetExists": true,
+      "targetBytes": 6958,
+      "targetSha256": "7601933a776f950f1e4ed94b6bd44e0b39c626d41c5c6deeeb8f97820d40e91c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/app-info.sha256",
+      "action": "same",
+      "sourceBytes": 200,
+      "sourceSha256": "422259ec1399392c72a52817017532fe578e8a15d273353de3f76af963c52dc5",
+      "targetExists": true,
+      "targetBytes": 200,
+      "targetSha256": "422259ec1399392c72a52817017532fe578e8a15d273353de3f76af963c52dc5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/app-root-html-asset.sha256",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "83a567761bad6b9f98417fce0dd14c610cf60ca5754158a4864a2f3fca2e29b2",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "83a567761bad6b9f98417fce0dd14c610cf60ca5754158a4864a2f3fca2e29b2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/build.log",
+      "action": "same",
+      "sourceBytes": 66860,
+      "sourceSha256": "092b51df9c78406acef946a44964c1b49f415f5bc0b6855c98949f67f6e69b41",
+      "targetExists": true,
+      "targetBytes": 66860,
+      "targetSha256": "092b51df9c78406acef946a44964c1b49f415f5bc0b6855c98949f67f6e69b41",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/install.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "f4557f107860412097f829d9b6c36416a73bfde71ba757d0152bf0d6bc786f3e",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "f4557f107860412097f829d9b6c36416a73bfde71ba757d0152bf0d6bc786f3e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/screenshot.log",
+      "action": "same",
+      "sourceBytes": 208,
+      "sourceSha256": "0a2e415b981c48ea859fdcb7e8d5da872f9a59cd93f303fbd15e7da66d674063",
+      "targetExists": true,
+      "targetBytes": 208,
+      "targetSha256": "0a2e415b981c48ea859fdcb7e8d5da872f9a59cd93f303fbd15e7da66d674063",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/simulator-screen.png",
+      "action": "same",
+      "sourceBytes": 139089,
+      "sourceSha256": "3b10e5ab8724ae460df955511c043a0e5bb8c8665d31de0f0a78523d7b6a6173",
+      "targetExists": true,
+      "targetBytes": 139089,
+      "targetSha256": "3b10e5ab8724ae460df955511c043a0e5bb8c8665d31de0f0a78523d7b6a6173",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/simulator-screen.sha256",
+      "action": "same",
+      "sourceBytes": 213,
+      "sourceSha256": "c6285f7189ea31fca49e2dd84f1731afa894f9c373ed2b3626c124c69ea55691",
+      "targetExists": true,
+      "targetBytes": 213,
+      "targetSha256": "c6285f7189ea31fca49e2dd84f1731afa894f9c373ed2b3626c124c69ea55691",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/unified-log-full.txt",
+      "action": "same",
+      "sourceBytes": 34905,
+      "sourceSha256": "3551e5cf714313a809c09146132ebaa53ec0bf8a1f565ffb42ae41ff8e47c683",
+      "targetExists": true,
+      "targetBytes": 34905,
+      "targetSha256": "3551e5cf714313a809c09146132ebaa53ec0bf8a1f565ffb42ae41ff8e47c683",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/unified-log-runtime.txt",
+      "action": "same",
+      "sourceBytes": 1230,
+      "sourceSha256": "42929eeec6c9df0549208c561d085a638efe00903284fff06cd9553ed21f9bd1",
+      "targetExists": true,
+      "targetBytes": 1230,
+      "targetSha256": "42929eeec6c9df0549208c561d085a638efe00903284fff06cd9553ed21f9bd1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/layout-focused.log",
+      "action": "same",
+      "sourceBytes": 1360,
+      "sourceSha256": "4b11c9f4e1df9267b06bbc2ead393f0446e73054d6ae0cd51116c807729c3b8d",
+      "targetExists": true,
+      "targetBytes": 1360,
+      "targetSha256": "4b11c9f4e1df9267b06bbc2ead393f0446e73054d6ae0cd51116c807729c3b8d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/layout-suite.log",
+      "action": "same",
+      "sourceBytes": 52598,
+      "sourceSha256": "9455e4671f5e84e1ce5ae145dfe594605f5d187e13e117c82c364db868e23dec",
+      "targetExists": true,
+      "targetBytes": 52598,
+      "targetSha256": "9455e4671f5e84e1ce5ae145dfe594605f5d187e13e117c82c364db868e23dec",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/log-normalization.sha256.txt",
+      "action": "same",
+      "sourceBytes": 1169,
+      "sourceSha256": "472fc9cd3f8b876deeb8ffdf52ec66f309c46811fc846eaa9225467b11a65cb7",
+      "targetExists": true,
+      "targetBytes": 1169,
+      "targetSha256": "472fc9cd3f8b876deeb8ffdf52ec66f309c46811fc846eaa9225467b11a65cb7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 52366,
+      "sourceSha256": "df0a7fea776dc2b08fad2f28df2e11f416139d44a03db52674c227d0147e5d28",
+      "targetExists": true,
+      "targetBytes": 52366,
+      "targetSha256": "f8da5a532648a43963d17647cddd37586302c1b621dabe5812fa10d5274c575e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 9804,
+      "sourceSha256": "1a76c73696cf60493b2c7d51c6ed5bd9befe8dd3b6ef7801ed0d1cbfe2df232f",
+      "targetExists": true,
+      "targetBytes": 9804,
+      "targetSha256": "1a76c73696cf60493b2c7d51c6ed5bd9befe8dd3b6ef7801ed0d1cbfe2df232f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 48266,
+      "sourceSha256": "91cda5398caf42bfa623592963917385cf35db5ff8e7d14a71da66ac8361908a",
+      "targetExists": true,
+      "targetBytes": 48266,
+      "targetSha256": "80373c330a4c659f64676d23071f4f6f360b173d9bbce1180c761410213c0cd7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 6891,
+      "sourceSha256": "07ee21017f5f08ee5a3e1c2c8c356929a0d7567be53457c20ed376132f12e236",
+      "targetExists": true,
+      "targetBytes": 6891,
+      "targetSha256": "07ee21017f5f08ee5a3e1c2c8c356929a0d7567be53457c20ed376132f12e236",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/runtime-fixture.sha256",
+      "action": "same",
+      "sourceBytes": 142,
+      "sourceSha256": "07bca91563b05b014f3d497a9f0716897fc82be552d235a350f1cceef89cda7f",
+      "targetExists": true,
+      "targetBytes": 142,
+      "targetSha256": "07bca91563b05b014f3d497a9f0716897fc82be552d235a350f1cceef89cda7f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/runtime-focused.log",
+      "action": "same",
+      "sourceBytes": 1760,
+      "sourceSha256": "644047dc83ab667f2271b894f4af4bfda62ce58c6ec0dbef253b6b0ff00179a7",
+      "targetExists": true,
+      "targetBytes": 1760,
+      "targetSha256": "644047dc83ab667f2271b894f4af4bfda62ce58c6ec0dbef253b6b0ff00179a7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/runtime-suite.log",
+      "action": "same",
+      "sourceBytes": 1001388,
+      "sourceSha256": "fd0fd7b147043e6f2d4fedbb832f80b7f4f8cbd1218af5fd0f309ab99798311b",
+      "targetExists": true,
+      "targetBytes": 1001388,
+      "targetSha256": "fd0fd7b147043e6f2d4fedbb832f80b7f4f8cbd1218af5fd0f309ab99798311b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/rustfmt.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/agent-browser-lifecycle.json",
+      "action": "same",
+      "sourceBytes": 560,
+      "sourceSha256": "eea5b3012408b8e7a9a817d12f08622550cf5d9118800c85745e81d82f78e3a1",
+      "targetExists": true,
+      "targetBytes": 560,
+      "targetSha256": "eea5b3012408b8e7a9a817d12f08622550cf5d9118800c85745e81d82f78e3a1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/agent-browser-verification.json",
+      "action": "same",
+      "sourceBytes": 961,
+      "sourceSha256": "3e659eb9555ee0f56d1bbd5c34f1abb4a6691d1fcd393825ab762c54d4cc2008",
+      "targetExists": true,
+      "targetBytes": 961,
+      "targetSha256": "3e659eb9555ee0f56d1bbd5c34f1abb4a6691d1fcd393825ab762c54d4cc2008",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 45548,
+      "sourceSha256": "3bbf713fc5c0c6efdd301206460c6abef1c5015b14bb471419e35db0fd5bbd22",
+      "targetExists": true,
+      "targetBytes": 45548,
+      "targetSha256": "143f95e6bad2e937c1d9c46f203f6b944c36b7fe2ce481b2930f2370a503068a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 4585,
+      "sourceSha256": "bdd28e19d004eb6814042e651bc26a160b756034d5992eda5edbc31d8d713ee4",
+      "targetExists": true,
+      "targetBytes": 4585,
+      "targetSha256": "bdd28e19d004eb6814042e651bc26a160b756034d5992eda5edbc31d8d713ee4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 44544,
+      "sourceSha256": "f31bf7334c6a65de27513bcd66cfba6126d1c086f5a42cf3017eb7be070520fd",
+      "targetExists": true,
+      "targetBytes": 44654,
+      "targetSha256": "65f225fcc211ce339309b73d8b13d36f7e8b5b5ad13f21b330a1548f7c50c9f5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/README.md",
+      "action": "replace",
+      "sourceBytes": 3663,
+      "sourceSha256": "3399031a4773c4ac800d376f4c9d5dfa07f88d8c645cd2dfcd570bb479bb0e61",
+      "targetExists": true,
+      "targetBytes": 3670,
+      "targetSha256": "f8663b57d1497d8ab8bf47d4ad597ae85a0626b7c90f4fdd294729f4b9cf5fda",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/tailnet-roadmap-agent-browser-desktop.png",
+      "action": "same",
+      "sourceBytes": 473151,
+      "sourceSha256": "f3f140a36413cedab057010b294c84f96f65dfe590d45303585403721e2ea364",
+      "targetExists": true,
+      "targetBytes": 473151,
+      "targetSha256": "f3f140a36413cedab057010b294c84f96f65dfe590d45303585403721e2ea364",
+      "openHandleCount": 0
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/tailnet-roadmap-agent-browser-mobile.png",
+      "action": "same",
+      "sourceBytes": 160010,
+      "sourceSha256": "0482a9cfebd28564bbac2ddf7ce536ab6f7c6803f67ef55f1d30ded1f6081c69",
+      "targetExists": true,
+      "targetBytes": 160010,
+      "targetSha256": "0482a9cfebd28564bbac2ddf7ce536ab6f7c6803f67ef55f1d30ded1f6081c69",
+      "openHandleCount": 0
+    },
+    {
+      "route": "logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "action": "replace",
+      "sourceBytes": 179920,
+      "sourceSha256": "5f323e97fa9d9f0d4f4a2c4013b4bbea66428d7dc52712f1b58d791d4fc5561e",
+      "targetExists": true,
+      "targetBytes": 179920,
+      "targetSha256": "014609283c3b80197328f178b8c7d173fa9eaa712e95a2e6764ec125c5747483",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-css-grid.md",
+      "action": "same",
+      "sourceBytes": 73910,
+      "sourceSha256": "41c14cba636a9d0503860ded7158fd9f533e9e2d2f978b16e69c22120585ddef",
+      "targetExists": true,
+      "targetBytes": 73910,
+      "targetSha256": "41c14cba636a9d0503860ded7158fd9f533e9e2d2f978b16e69c22120585ddef",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-direct-text-aspect-ratio-values.html",
+      "action": "replace",
+      "sourceBytes": 53797,
+      "sourceSha256": "7fb46942dde5f388dd65e80164261a7f7ff73bb5a47be0f8a4dd43fca7f2ff9b",
+      "targetExists": true,
+      "targetBytes": 53797,
+      "targetSha256": "a7350dac5374137ed52b818c372c03ef3befdbd625048bc7311a375e67b6334c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-direct-text-aspect-ratio-values.md",
+      "action": "same",
+      "sourceBytes": 11077,
+      "sourceSha256": "5ce7bbbbc47d311491cca76c0206da9fca8419145b84caf621c2ea1eac2cd0a0",
+      "targetExists": true,
+      "targetBytes": 11077,
+      "targetSha256": "5ce7bbbbc47d311491cca76c0206da9fca8419145b84caf621c2ea1eac2cd0a0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-intrinsic-gap-percentage.html",
+      "action": "replace",
+      "sourceBytes": 58878,
+      "sourceSha256": "b5e416ac48837ae4620b6d822a0646eb3779cb1ff11edc5f3607fd27d6b5f7d3",
+      "targetExists": true,
+      "targetBytes": 58878,
+      "targetSha256": "125654dda552f9918043e05999220ee879226f60f22e5f0891ab696a5e8a314d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-intrinsic-gap-percentage.md",
+      "action": "same",
+      "sourceBytes": 12594,
+      "sourceSha256": "58cc3d228047e5486059e1e0c7cd836762031b924470272c242811141de2eebe",
+      "targetExists": true,
+      "targetBytes": 12594,
+      "targetSha256": "58cc3d228047e5486059e1e0c7cd836762031b924470272c242811141de2eebe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-text-aspect-ratio.html",
+      "action": "replace",
+      "sourceBytes": 51700,
+      "sourceSha256": "b0fa8b7e34983dc48568838de1606d5ae6fb6491ad491126a5293b54e8b6e356",
+      "targetExists": true,
+      "targetBytes": 51700,
+      "targetSha256": "03270ba02512c7a70c687aad8c53e4797e1a6215cb95e6d8741437f4d97126e7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "plan/c11-root-html-grid-text-aspect-ratio.md",
+      "action": "same",
+      "sourceBytes": 9818,
+      "sourceSha256": "9d12d2384bbd6148821fd80f0e4f6450c9c079d8464948acb79c1f29985ecff8",
+      "targetExists": true,
+      "targetBytes": 9818,
+      "targetSha256": "9d12d2384bbd6148821fd80f0e4f6450c9c079d8464948acb79c1f29985ecff8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.html",
+      "action": "same",
+      "sourceBytes": 570377,
+      "sourceSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+      "targetExists": true,
+      "targetBytes": 570377,
+      "targetSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.html",
+      "action": "same",
+      "sourceBytes": 570377,
+      "sourceSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+      "targetExists": true,
+      "targetBytes": 570377,
+      "targetSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "action": "replace",
+      "sourceBytes": 639587,
+      "sourceSha256": "e7192b6fdc6be6c00a37abe3755ee3face755a36bbcdd0405b9663cc8b650710",
+      "targetExists": true,
+      "targetBytes": 639587,
+      "targetSha256": "954328bfd799401a34a0b86d0806ef25d536e19334383c348e43ef65b77d3370",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "action": "same",
+      "sourceBytes": 441785,
+      "sourceSha256": "76eb9589c956e7d8a5422cf5b4884f24d6593a074fcfa98332091e4e26f575f6",
+      "targetExists": true,
+      "targetBytes": 441785,
+      "targetSha256": "76eb9589c956e7d8a5422cf5b4884f24d6593a074fcfa98332091e4e26f575f6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/api-level.txt",
+      "action": "same",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": true,
+      "targetBytes": 3,
+      "targetSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "b7cd5103052ef4e1b63492db6fc7c1237499805b82649b518ecaade20d235bd5",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "b7cd5103052ef4e1b63492db6fc7c1237499805b82649b518ecaade20d235bd5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "279620e4db163a95b23e0e59091d91b071f13df6f9450e8445b8cdd3dbbd3610",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "279620e4db163a95b23e0e59091d91b071f13df6f9450e8445b8cdd3dbbd3610",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/build.log",
+      "action": "same",
+      "sourceBytes": 4474,
+      "sourceSha256": "f710e1e369ec9e0460692de766df5d9954a73c3fe6dee45b44248861379a3fd0",
+      "targetExists": true,
+      "targetBytes": 4474,
+      "targetSha256": "f710e1e369ec9e0460692de766df5d9954a73c3fe6dee45b44248861379a3fd0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/launch.log",
+      "action": "same",
+      "sourceBytes": 203,
+      "sourceSha256": "2948d2c8a45665b5457f7de1ba190b979eea5a12a82737397ae12547a4c99f40",
+      "targetExists": true,
+      "targetBytes": 203,
+      "targetSha256": "2948d2c8a45665b5457f7de1ba190b979eea5a12a82737397ae12547a4c99f40",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/run.log",
+      "action": "same",
+      "sourceBytes": 16266,
+      "sourceSha256": "507e0c1706149d679ca7db5e6822204062515cf9b9fedebb6541eb6976fe227b",
+      "targetExists": true,
+      "targetBytes": 16266,
+      "targetSha256": "507e0c1706149d679ca7db5e6822204062515cf9b9fedebb6541eb6976fe227b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/screenshot.png",
+      "action": "same",
+      "sourceBytes": 39040,
+      "sourceSha256": "9acff737ff9ff1cc1718b33ad3d8d4626b5bbf3e5b84e8f59d85561b967800b3",
+      "targetExists": true,
+      "targetBytes": 39040,
+      "targetSha256": "9acff737ff9ff1cc1718b33ad3d8d4626b5bbf3e5b84e8f59d85561b967800b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/automatic-minimums/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/build.log",
+      "action": "same",
+      "sourceBytes": 4965,
+      "sourceSha256": "d688c03dd2df963a349029967a5b556b8411451aacff258c98ea2284aa81c1ca",
+      "targetExists": true,
+      "targetBytes": 4965,
+      "targetSha256": "d688c03dd2df963a349029967a5b556b8411451aacff258c98ea2284aa81c1ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/device.txt",
+      "action": "same",
+      "sourceBytes": 180,
+      "sourceSha256": "825502bb1f08f66962fef1cbc0b5833d2a7df6f95f8543082dcb35b35477c274",
+      "targetExists": true,
+      "targetBytes": 180,
+      "targetSha256": "825502bb1f08f66962fef1cbc0b5833d2a7df6f95f8543082dcb35b35477c274",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/launch.log",
+      "action": "same",
+      "sourceBytes": 203,
+      "sourceSha256": "964e28209068319fa9765565559dfe18b71c3fbfcf27537a8538a338447ce5e9",
+      "targetExists": true,
+      "targetBytes": 203,
+      "targetSha256": "964e28209068319fa9765565559dfe18b71c3fbfcf27537a8538a338447ce5e9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/run.log",
+      "action": "same",
+      "sourceBytes": 16274,
+      "sourceSha256": "fd6ecad6038987f57c0a73ad8393dad32a28fe49d2440e62c9942c2882ac8cd0",
+      "targetExists": true,
+      "targetBytes": 16274,
+      "targetSha256": "fd6ecad6038987f57c0a73ad8393dad32a28fe49d2440e62c9942c2882ac8cd0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/screenshot.png",
+      "action": "same",
+      "sourceBytes": 124643,
+      "sourceSha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9",
+      "targetExists": true,
+      "targetBytes": 124643,
+      "targetSha256": "bd1121da4022aa8ab312edb7b1e4fee3b0a54e51282c4504655a0913d8c833f9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/android/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/clippy-final.log",
+      "action": "same",
+      "sourceBytes": 214,
+      "sourceSha256": "902d2c5f5ea634ea4fb6741b010d8e2474920c56cb24a2191351b64fbb0f3eb9",
+      "targetExists": true,
+      "targetBytes": 214,
+      "targetSha256": "902d2c5f5ea634ea4fb6741b010d8e2474920c56cb24a2191351b64fbb0f3eb9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/diff-check-final.log",
+      "action": "same",
+      "sourceBytes": 41,
+      "sourceSha256": "c08f7e0a45644e7ced702c16438457a9bb58bdae745ceea948807cfc2c4579ee",
+      "targetExists": true,
+      "targetBytes": 41,
+      "targetSha256": "c08f7e0a45644e7ced702c16438457a9bb58bdae745ceea948807cfc2c4579ee",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-layout.log",
+      "action": "same",
+      "sourceBytes": 397,
+      "sourceSha256": "7da03d0df6faa805e2f40374f3612d52ebb44d1863aeb39d894865793a7d1c62",
+      "targetExists": true,
+      "targetBytes": 397,
+      "targetSha256": "7da03d0df6faa805e2f40374f3612d52ebb44d1863aeb39d894865793a7d1c62",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-runtime.log",
+      "action": "same",
+      "sourceBytes": 851,
+      "sourceSha256": "8e6bb31beabedde7527526f352d4db6e11b6fda09c34ab6f3fb7b49bc6646257",
+      "targetExists": true,
+      "targetBytes": 851,
+      "targetSha256": "8e6bb31beabedde7527526f352d4db6e11b6fda09c34ab6f3fb7b49bc6646257",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style-to-layout.log",
+      "action": "same",
+      "sourceBytes": 1112,
+      "sourceSha256": "1d4b09faacf88df3bbafe4c4e73b273cb2bca7e171e24d7d39525adf008c41d4",
+      "targetExists": true,
+      "targetBytes": 1112,
+      "targetSha256": "1d4b09faacf88df3bbafe4c4e73b273cb2bca7e171e24d7d39525adf008c41d4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/focused-style.log",
+      "action": "same",
+      "sourceBytes": 437,
+      "sourceSha256": "8e4d50d2856c9818199690b18fa34fecb22f105fe2e0b6b0286e88bf22d05d4a",
+      "targetExists": true,
+      "targetBytes": 437,
+      "targetSha256": "8e4d50d2856c9818199690b18fa34fecb22f105fe2e0b6b0286e88bf22d05d4a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/format-final.log",
+      "action": "same",
+      "sourceBytes": 42,
+      "sourceSha256": "01fe9d20abda7c7657ad019bdce6eeadeaeeb74afbb779966ec9aa7faf1a593f",
+      "targetExists": true,
+      "targetBytes": 42,
+      "targetSha256": "01fe9d20abda7c7657ad019bdce6eeadeaeeb74afbb779966ec9aa7faf1a593f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.html",
+      "action": "replace",
+      "sourceBytes": 45706,
+      "sourceSha256": "eef7743963bfd6ec68dd5b0d30b90e7256b42656c9d437b85d0c42a5346f8509",
+      "targetExists": true,
+      "targetBytes": 45706,
+      "targetSha256": "b73ae1be6eda69ea726b02d3b5bdfd9148d0166fcd62e987912046b492cff091",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20-after-auto-minimum-fix.md",
+      "action": "same",
+      "sourceBytes": 4945,
+      "sourceSha256": "ec12142916f1c59122b510f5582ed3b4f991be8085e2b2f28cfe3840b9519f60",
+      "targetExists": true,
+      "targetBytes": 4945,
+      "targetSha256": "ec12142916f1c59122b510f5582ed3b4f991be8085e2b2f28cfe3840b9519f60",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 48304,
+      "sourceSha256": "02d9167b40f64ec02b7ec931c76657faf07e0dc543c280bfdbc633ad5ef9ae33",
+      "targetExists": true,
+      "targetBytes": 48304,
+      "targetSha256": "192c34f165976f8442c2e13248b8ced6b235c62825e8aaf110f9b1caeb6df717",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 6156,
+      "sourceSha256": "edd132ca595897e5778fcb95545193c4a40e157098d08bf17592a5938a0548a2",
+      "targetExists": true,
+      "targetBytes": 6156,
+      "targetSha256": "edd132ca595897e5778fcb95545193c4a40e157098d08bf17592a5938a0548a2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "8d2fcadc5535cc0bd2220f0e7c768aabc9aa8e30b892e8704523564ba69dd8db",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "8d2fcadc5535cc0bd2220f0e7c768aabc9aa8e30b892e8704523564ba69dd8db",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/artifact-hashes.txt",
+      "action": "same",
+      "sourceBytes": 245,
+      "sourceSha256": "5a2a16b528828dbdf34caa385d2b64f1fb708c1a2c24aefcbe0f577c58839983",
+      "targetExists": true,
+      "targetBytes": 245,
+      "targetSha256": "5a2a16b528828dbdf34caa385d2b64f1fb708c1a2c24aefcbe0f577c58839983",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/build.log",
+      "action": "same",
+      "sourceBytes": 64069,
+      "sourceSha256": "2d97844cf2f47568a056c4108f450b45988a079ef4accb6bdffeb53f05773874",
+      "targetExists": true,
+      "targetBytes": 64069,
+      "targetSha256": "2d97844cf2f47568a056c4108f450b45988a079ef4accb6bdffeb53f05773874",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/install.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "51325e02ebed85768caddf11081b88225a702ba45b2ba66c85cab591b09b4ea7",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "51325e02ebed85768caddf11081b88225a702ba45b2ba66c85cab591b09b4ea7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/run.log",
+      "action": "same",
+      "sourceBytes": 37699,
+      "sourceSha256": "4fbbd5e2476f831188363ac5277ba360bb909d8ff36713065b50518136921f44",
+      "targetExists": true,
+      "targetBytes": 37699,
+      "targetSha256": "4fbbd5e2476f831188363ac5277ba360bb909d8ff36713065b50518136921f44",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.log",
+      "action": "same",
+      "sourceBytes": 233,
+      "sourceSha256": "1dacb261bd19e5a3e4f77a144dfd426c0a374f33ac15b46eb979619d41d3595b",
+      "targetExists": true,
+      "targetBytes": 233,
+      "targetSha256": "1dacb261bd19e5a3e4f77a144dfd426c0a374f33ac15b46eb979619d41d3595b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/screenshot.png",
+      "action": "same",
+      "sourceBytes": 94934,
+      "sourceSha256": "3a0780a73ea10f65658a6d99e1909cb0111342e5bdea1addf796ce2ff51b25fa",
+      "targetExists": true,
+      "targetBytes": 94934,
+      "targetSha256": "3a0780a73ea10f65658a6d99e1909cb0111342e5bdea1addf796ce2ff51b25fa",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/automatic-minimums/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/build.log",
+      "action": "same",
+      "sourceBytes": 66770,
+      "sourceSha256": "7de5e217bbac1f4f0fd93e75ac808a9b4a2c073c522f473057eaf76c25382b8d",
+      "targetExists": true,
+      "targetBytes": 66770,
+      "targetSha256": "7de5e217bbac1f4f0fd93e75ac808a9b4a2c073c522f473057eaf76c25382b8d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/device.txt",
+      "action": "same",
+      "sourceBytes": 119,
+      "sourceSha256": "970a7391b8e4ebf9bfaf600ad6ea635b0605918f015557035638bb07a2ad8bab",
+      "targetExists": true,
+      "targetBytes": 119,
+      "targetSha256": "970a7391b8e4ebf9bfaf600ad6ea635b0605918f015557035638bb07a2ad8bab",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/install.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "c0884737100adbfa260254d320c6bf7921a6244ca91ac28f2cb304f45a4a6430",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "c0884737100adbfa260254d320c6bf7921a6244ca91ac28f2cb304f45a4a6430",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/run.log",
+      "action": "same",
+      "sourceBytes": 37701,
+      "sourceSha256": "c560464ddfa0eb22be7cb3f956bf0f1b527f088cee394211d920291adf2ba685",
+      "targetExists": true,
+      "targetBytes": 37701,
+      "targetSha256": "c560464ddfa0eb22be7cb3f956bf0f1b527f088cee394211d920291adf2ba685",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.log",
+      "action": "same",
+      "sourceBytes": 214,
+      "sourceSha256": "1b06cd752da5b765d251cbb6e8d1df8cbf5b1b8e05353947b6d311fd53239b33",
+      "targetExists": true,
+      "targetBytes": 214,
+      "targetSha256": "1b06cd752da5b765d251cbb6e8d1df8cbf5b1b8e05353947b6d311fd53239b33",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/screenshot.png",
+      "action": "same",
+      "sourceBytes": 174049,
+      "sourceSha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88",
+      "targetExists": true,
+      "targetBytes": 174049,
+      "targetSha256": "5b4386237f51bc933846c3024cd8957df8ac280ffddbb672e2ca5bfe7c77ec88",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/ios/stop.log",
+      "action": "same",
+      "sourceBytes": 1,
+      "sourceSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "targetExists": true,
+      "targetBytes": 1,
+      "targetSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.html",
+      "action": "replace",
+      "sourceBytes": 44901,
+      "sourceSha256": "89024b6424caebbbdac9266e1dc7ded34a726b5e5cdaea0c7ae930dd124c4b80",
+      "targetExists": true,
+      "targetBytes": 44901,
+      "targetSha256": "72ea12beba3f0a5c5b84cad435b17c30231915f08e50d2af4025e3cd7004243d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-diff-review-20.md",
+      "action": "same",
+      "sourceBytes": 4578,
+      "sourceSha256": "440c2a42e3c7bc800156f71b7eb9cbb18cd0b921e7005c35d6ffdabbc2c97d2f",
+      "targetExists": true,
+      "targetBytes": 4578,
+      "targetSha256": "440c2a42e3c7bc800156f71b7eb9cbb18cd0b921e7005c35d6ffdabbc2c97d2f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.html",
+      "action": "replace",
+      "sourceBytes": 46730,
+      "sourceSha256": "e72656e1ede10f55e68189afac62ccdccbf95557fc93cd0bbdadb18df3814f4b",
+      "targetExists": true,
+      "targetBytes": 46730,
+      "targetSha256": "7973979942145069a2c3a421f9d6b512f73448f18c69bae6cd3113ee194a3d8f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/pr-hostile-review-30.md",
+      "action": "same",
+      "sourceBytes": 5420,
+      "sourceSha256": "b4651ba547ca6d7d6a3534e31b5a72f45fe904af969b6b648fd9ccdffcf4785e",
+      "targetExists": true,
+      "targetBytes": 5420,
+      "targetSha256": "b4651ba547ca6d7d6a3534e31b5a72f45fe904af969b6b648fd9ccdffcf4785e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 46253,
+      "sourceSha256": "57b96a13e8a210d0e392280d9aa856d3bc118edfed30eae1d92469c5be587656",
+      "targetExists": true,
+      "targetBytes": 46253,
+      "targetSha256": "7061979af4027df416b9399c9967e8437526824ca4b6175099a005e0b94d1e42",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 4503,
+      "sourceSha256": "d788186f7571b83a3906047fc3c22e9f71f7ac1fc49582d987892adeb940a791",
+      "targetExists": true,
+      "targetBytes": 4503,
+      "targetSha256": "d788186f7571b83a3906047fc3c22e9f71f7ac1fc49582d987892adeb940a791",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/run-simulator-matrix.py",
+      "action": "same",
+      "sourceBytes": 13641,
+      "sourceSha256": "a790d84a6ecaddb6b6ac1b8aeb4c2fce08a76b9301eebcdd21fe238fbd084c84",
+      "targetExists": true,
+      "targetBytes": 13641,
+      "targetSha256": "a790d84a6ecaddb6b6ac1b8aeb4c2fce08a76b9301eebcdd21fe238fbd084c84",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/SHA256SUMS",
+      "action": "same",
+      "sourceBytes": 5210,
+      "sourceSha256": "c43d11af9b89d52507b3d769d06297756765b1d15535bcf2a056bab46b68c7fe",
+      "targetExists": true,
+      "targetBytes": 5210,
+      "targetSha256": "c43d11af9b89d52507b3d769d06297756765b1d15535bcf2a056bab46b68c7fe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/source-hashes.txt",
+      "action": "same",
+      "sourceBytes": 2630,
+      "sourceSha256": "48e82368218e0f6a5a167382f27ffc1c0df906d0d2b67797d8709ba3e97abe48",
+      "targetExists": true,
+      "targetBytes": 2630,
+      "targetSha256": "48e82368218e0f6a5a167382f27ffc1c0df906d0d2b67797d8709ba3e97abe48",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-after-auto-minimum-fix.log",
+      "action": "same",
+      "sourceBytes": 51608,
+      "sourceSha256": "2b19cf65c621c96bee0343cb15643b602a147f20715e9de58e841c513bf561c5",
+      "targetExists": true,
+      "targetBytes": 51608,
+      "targetSha256": "2b19cf65c621c96bee0343cb15643b602a147f20715e9de58e841c513bf561c5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-final.log",
+      "action": "same",
+      "sourceBytes": 51608,
+      "sourceSha256": "582d5e2f8b13fe0fb562a8037fb5e438db938312e607729b40844086634aaf80",
+      "targetExists": true,
+      "targetBytes": 51608,
+      "targetSha256": "582d5e2f8b13fe0fb562a8037fb5e438db938312e607729b40844086634aaf80",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-layout-full.log",
+      "action": "same",
+      "sourceBytes": 51549,
+      "sourceSha256": "fd2732ea6a3d1331cefa8815a8830b3079eb3846c8271eb44e9c100d6926e056",
+      "targetExists": true,
+      "targetBytes": 51549,
+      "targetSha256": "fd2732ea6a3d1331cefa8815a8830b3079eb3846c8271eb44e9c100d6926e056",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-after-auto-minimum-fix.log",
+      "action": "same",
+      "sourceBytes": 55984,
+      "sourceSha256": "196e6ee50c7f9150df4aa360a0dc93cdd9d80f4e144d816f0c58c6686ef40fa0",
+      "targetExists": true,
+      "targetBytes": 55984,
+      "targetSha256": "196e6ee50c7f9150df4aa360a0dc93cdd9d80f4e144d816f0c58c6686ef40fa0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-final.log",
+      "action": "same",
+      "sourceBytes": 55984,
+      "sourceSha256": "f7033074a3e563339d72742a979991fbea9ac72a14700bea93a510d1293cf902",
+      "targetExists": true,
+      "targetBytes": 55984,
+      "targetSha256": "f7033074a3e563339d72742a979991fbea9ac72a14700bea93a510d1293cf902",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/spinon-style-to-layout-full.log",
+      "action": "same",
+      "sourceBytes": 55896,
+      "sourceSha256": "23dfab5eb45111a13b9a302d4fca8f343aa41329c249140575e771919fb3e3f7",
+      "targetExists": true,
+      "targetBytes": 55896,
+      "targetSha256": "23dfab5eb45111a13b9a302d4fca8f343aa41329c249140575e771919fb3e3f7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-direct-text-aspect-ratio-values-runtime-2026-11-05/temporary-root-app.sha256",
+      "action": "same",
+      "sourceBytes": 88,
+      "sourceSha256": "75ad3a0b93940f147d810fe78a7f1039a7f56bc18ec01895a9a9d0425c684477",
+      "targetExists": true,
+      "targetBytes": 88,
+      "targetSha256": "75ad3a0b93940f147d810fe78a7f1039a7f56bc18ec01895a9a9d0425c684477",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/adb-devices.txt",
+      "action": "same",
+      "sourceBytes": 138,
+      "sourceSha256": "edf9d2afb9e66fe419fcf843757a4d1e9065292cd4b400d3cff3dcdb43015e45",
+      "targetExists": true,
+      "targetBytes": 138,
+      "targetSha256": "edf9d2afb9e66fe419fcf843757a4d1e9065292cd4b400d3cff3dcdb43015e45",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-release.txt",
+      "action": "same",
+      "sourceBytes": 3,
+      "sourceSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "targetExists": true,
+      "targetBytes": 3,
+      "targetSha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/android-sdk.txt",
+      "action": "same",
+      "sourceBytes": 3,
+      "sourceSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "targetExists": true,
+      "targetBytes": 3,
+      "targetSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/apk-sha256.txt",
+      "action": "same",
+      "sourceBytes": 126,
+      "sourceSha256": "5da52cc11409ee0a6d6dbae144bc6d3de1531354936cb3072e3d069e9b46d901",
+      "targetExists": true,
+      "targetBytes": 126,
+      "targetSha256": "5da52cc11409ee0a6d6dbae144bc6d3de1531354936cb3072e3d069e9b46d901",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/app-pid.txt",
+      "action": "same",
+      "sourceBytes": 6,
+      "sourceSha256": "59f653799c3bff9fee7f7a2eddeb8e95e37e7f746365d8e723c68e126f61ef56",
+      "targetExists": true,
+      "targetBytes": 6,
+      "targetSha256": "59f653799c3bff9fee7f7a2eddeb8e95e37e7f746365d8e723c68e126f61ef56",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-app.log",
+      "action": "same",
+      "sourceBytes": 4404,
+      "sourceSha256": "dd61ed8b0545ab732c4edd1de4655a4713534b2063ef2ed952a0757511b3c2ff",
+      "targetExists": true,
+      "targetBytes": 4404,
+      "targetSha256": "dd61ed8b0545ab732c4edd1de4655a4713534b2063ef2ed952a0757511b3c2ff",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/build-native.log",
+      "action": "same",
+      "sourceBytes": 2322,
+      "sourceSha256": "eaaceeef7800da1ce9bfb92b2ccd9e89a80464866b80e901ec3443b638c5a900",
+      "targetExists": true,
+      "targetBytes": 2322,
+      "targetSha256": "eaaceeef7800da1ce9bfb92b2ccd9e89a80464866b80e901ec3443b638c5a900",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-density.txt",
+      "action": "same",
+      "sourceBytes": 22,
+      "sourceSha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "targetExists": true,
+      "targetBytes": 22,
+      "targetSha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/display-size.txt",
+      "action": "same",
+      "sourceBytes": 25,
+      "sourceSha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "targetExists": true,
+      "targetBytes": 25,
+      "targetSha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/model.txt",
+      "action": "same",
+      "sourceBytes": 19,
+      "sourceSha256": "2e781b655b0a1fbca1235d182864661fab33a2a3ef3d4521e580f04b0b009ead",
+      "targetExists": true,
+      "targetBytes": 19,
+      "targetSha256": "2e781b655b0a1fbca1235d182864661fab33a2a3ef3d4521e580f04b0b009ead",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/packaged-fixture-sha256.txt",
+      "action": "same",
+      "sourceBytes": 68,
+      "sourceSha256": "d9319c99dcdfbd0ea5a996e441a6a505eee02642886418072a20c629f9c7c306",
+      "targetExists": true,
+      "targetBytes": 68,
+      "targetSha256": "d9319c99dcdfbd0ea5a996e441a6a505eee02642886418072a20c629f9c7c306",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/runtime-logcat.txt",
+      "action": "same",
+      "sourceBytes": 16690,
+      "sourceSha256": "1f280ece388a1274228a7948f008f8024f70062d76cc5db600587d283d03c6f1",
+      "targetExists": true,
+      "targetBytes": 16690,
+      "targetSha256": "1f280ece388a1274228a7948f008f8024f70062d76cc5db600587d283d03c6f1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/screen.png",
+      "action": "same",
+      "sourceBytes": 26586,
+      "sourceSha256": "fa1dbeaaed346a24bddf4df1078fcf66b3e4c2a5749da1088a50ea3d15e3b84b",
+      "targetExists": true,
+      "targetBytes": 26586,
+      "targetSha256": "fa1dbeaaed346a24bddf4df1078fcf66b3e4c2a5749da1088a50ea3d15e3b84b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/android/start-time-utc.txt",
+      "action": "same",
+      "sourceBytes": 21,
+      "sourceSha256": "8a818546e81ff80661c39a44438e96c6345f0135333cfeed51e073e40d427aed",
+      "targetExists": true,
+      "targetBytes": 21,
+      "targetSha256": "8a818546e81ff80661c39a44438e96c6345f0135333cfeed51e073e40d427aed",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-layout.txt",
+      "action": "same",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": true,
+      "targetBytes": 126,
+      "targetSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/candidate-failure-names-style-to-layout.txt",
+      "action": "same",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": true,
+      "targetBytes": 1139,
+      "targetSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-runtime.log",
+      "action": "same",
+      "sourceBytes": 363,
+      "sourceSha256": "40abede9ffb65da9442f4f2fdeb8917bac2e33f81403258036c7dd226df663da",
+      "targetExists": true,
+      "targetBytes": 363,
+      "targetSha256": "40abede9ffb65da9442f4f2fdeb8917bac2e33f81403258036c7dd226df663da",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-cascade.log",
+      "action": "same",
+      "sourceBytes": 825,
+      "sourceSha256": "441b1c0594395c487ba8fe4733ea0533092b5ac6d01dcae9fc9c9d4c3c7d4c88",
+      "targetExists": true,
+      "targetBytes": 825,
+      "targetSha256": "441b1c0594395c487ba8fe4733ea0533092b5ac6d01dcae9fc9c9d4c3c7d4c88",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-negative.log",
+      "action": "same",
+      "sourceBytes": 414,
+      "sourceSha256": "c032b38f301cf1d115765d7900e9147c5a1b693260e7cf5804e1c17e21abe48b",
+      "targetExists": true,
+      "targetBytes": 414,
+      "targetSha256": "c032b38f301cf1d115765d7900e9147c5a1b693260e7cf5804e1c17e21abe48b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/focused-style-to-layout-positive.log",
+      "action": "same",
+      "sourceBytes": 419,
+      "sourceSha256": "e5a05f0fa6b8178296c9788513ca93ff70edd7cb223ab50f3bffa8e201bad5ae",
+      "targetExists": true,
+      "targetBytes": 419,
+      "targetSha256": "e5a05f0fa6b8178296c9788513ca93ff70edd7cb223ab50f3bffa8e201bad5ae",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-candidate.log",
+      "action": "same",
+      "sourceBytes": 51482,
+      "sourceSha256": "a1b1f368f022fe93179f3f3e58e883797b132a43a3f88dc83dd0d31ed8dbca4b",
+      "targetExists": true,
+      "targetBytes": 51482,
+      "targetSha256": "a1b1f368f022fe93179f3f3e58e883797b132a43a3f88dc83dd0d31ed8dbca4b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-layout-test.log",
+      "action": "same",
+      "sourceBytes": 51482,
+      "sourceSha256": "da9b98774769000d3715cf9c4a62fba3be0bdf58b6211814fc8ee4361d1454d1",
+      "targetExists": true,
+      "targetBytes": 51482,
+      "targetSha256": "da9b98774769000d3715cf9c4a62fba3be0bdf58b6211814fc8ee4361d1454d1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-candidate.log",
+      "action": "same",
+      "sourceBytes": 55424,
+      "sourceSha256": "790634c5ac0f6aed7f67bd9452fb61c5142b2e673a527cd4005c8b05664cbd49",
+      "targetExists": true,
+      "targetBytes": 55424,
+      "targetSha256": "790634c5ac0f6aed7f67bd9452fb61c5142b2e673a527cd4005c8b05664cbd49",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/full-style-to-layout-test.log",
+      "action": "same",
+      "sourceBytes": 55559,
+      "sourceSha256": "7f53e73b5c49b6816b353e4950b7d9589ca1c2b6c98bd046855614c748700be4",
+      "targetExists": true,
+      "targetBytes": 55559,
+      "targetSha256": "7f53e73b5c49b6816b353e4950b7d9589ca1c2b6c98bd046855614c748700be4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-layout.txt",
+      "action": "same",
+      "sourceBytes": 126,
+      "sourceSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "targetExists": true,
+      "targetBytes": 126,
+      "targetSha256": "e161b69b5db7a2b47e783a6b64a58222e17ab4f5be2bc40bdb4544f467f60ce9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/head-failure-names-style-to-layout.txt",
+      "action": "same",
+      "sourceBytes": 1139,
+      "sourceSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "targetExists": true,
+      "targetBytes": 1139,
+      "targetSha256": "59a783971818f3c53bc17e99e860aba40748bf5e44a1a1b4ee0b00e6b44112a9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 45601,
+      "sourceSha256": "2147fa4281da48f34d164cd5ca1dd0e7b42277138f4cad269c3f62d8096bcd54",
+      "targetExists": true,
+      "targetBytes": 45601,
+      "targetSha256": "023286200e0dc4583b8286dfca0ceb9f01d966409844c740dfb5576d20370ac0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 4822,
+      "sourceSha256": "a7c9cb02df646b83d53106ce974a9106e7262e4ca18495f1ec6b1074d80f831e",
+      "targetExists": true,
+      "targetBytes": 4822,
+      "targetSha256": "a7c9cb02df646b83d53106ce974a9106e7262e4ca18495f1ec6b1074d80f831e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/app-executable-sha256.txt",
+      "action": "same",
+      "sourceBytes": 164,
+      "sourceSha256": "7bb5b5692ab3913d5db38004c944bef2f1c084cc7e76fcbc00cf44ec94fdbe24",
+      "targetExists": true,
+      "targetBytes": 164,
+      "targetSha256": "7bb5b5692ab3913d5db38004c944bef2f1c084cc7e76fcbc00cf44ec94fdbe24",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/booted-devices.txt",
+      "action": "same",
+      "sourceBytes": 403,
+      "sourceSha256": "28ba5c74e024d932d75421f497df03194f9cb0743b6983f60849f0015664d01d",
+      "targetExists": true,
+      "targetBytes": 403,
+      "targetSha256": "28ba5c74e024d932d75421f497df03194f9cb0743b6983f60849f0015664d01d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/build.log",
+      "action": "same",
+      "sourceBytes": 66611,
+      "sourceSha256": "d7b3291170fd3e7f17cba77a09065da6da4df3ecdfa5ccccbf0a19738daca87d",
+      "targetExists": true,
+      "targetBytes": 66611,
+      "targetSha256": "d7b3291170fd3e7f17cba77a09065da6da4df3ecdfa5ccccbf0a19738daca87d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/bundle-id.txt",
+      "action": "same",
+      "sourceBytes": 21,
+      "sourceSha256": "050d55934ccab6a07f309968a24ec0f7799e262ff22d2d9aaed47c93d3cfd462",
+      "targetExists": true,
+      "targetBytes": 21,
+      "targetSha256": "050d55934ccab6a07f309968a24ec0f7799e262ff22d2d9aaed47c93d3cfd462",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-fixture-sha256.txt",
+      "action": "same",
+      "sourceBytes": 159,
+      "sourceSha256": "33de0f3396a0fd32f4d750435f24924454e1ce621d81506b11c6d80c3f5f95c8",
+      "targetExists": true,
+      "targetBytes": 159,
+      "targetSha256": "33de0f3396a0fd32f4d750435f24924454e1ce621d81506b11c6d80c3f5f95c8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/packaged-root-app-sha256.txt",
+      "action": "same",
+      "sourceBytes": 160,
+      "sourceSha256": "37308eed45c9dc6f16b5a05816ae04644f7fc0ad13c3be9122a038784851af8c",
+      "targetExists": true,
+      "targetBytes": 160,
+      "targetSha256": "37308eed45c9dc6f16b5a05816ae04644f7fc0ad13c3be9122a038784851af8c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/runtime-log-unified.txt",
+      "action": "same",
+      "sourceBytes": 36247,
+      "sourceSha256": "ea7d85437578f8f27e7e5010739ff5605ab530018617d7bbd4e452a07af712b9",
+      "targetExists": true,
+      "targetBytes": 36247,
+      "targetSha256": "ea7d85437578f8f27e7e5010739ff5605ab530018617d7bbd4e452a07af712b9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/screen.png",
+      "action": "same",
+      "sourceBytes": 75655,
+      "sourceSha256": "b7080adada56a62d6a87b40b2d3a89dee95f5af6782f9953d4ce00595b202ff9",
+      "targetExists": true,
+      "targetBytes": 75655,
+      "targetSha256": "b7080adada56a62d6a87b40b2d3a89dee95f5af6782f9953d4ce00595b202ff9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/ios/start-time-utc.txt",
+      "action": "same",
+      "sourceBytes": 21,
+      "sourceSha256": "28a8b03c617149566101d1df625012029d598371446a941b58d8cc284ab413c1",
+      "targetExists": true,
+      "targetBytes": 21,
+      "targetSha256": "28a8b03c617149566101d1df625012029d598371446a941b58d8cc284ab413c1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 48226,
+      "sourceSha256": "95add8336926905ff885cb0c52a8f73320239552a3402a166863f373eaabdace",
+      "targetExists": true,
+      "targetBytes": 48226,
+      "targetSha256": "a9b85b99f045de45c7e5c46a1593ba0e57bee14d8acc8d6ca9e4c15a30109445",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 6648,
+      "sourceSha256": "a1831168791d5d3ae17b2b628fe7a1289976cb07d3312c8772df81265ff776e7",
+      "targetExists": true,
+      "targetBytes": 6648,
+      "targetSha256": "a1831168791d5d3ae17b2b628fe7a1289976cb07d3312c8772df81265ff776e7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.html",
+      "action": "replace",
+      "sourceBytes": 49116,
+      "sourceSha256": "edba6555242c24e81fdc5a6f81b6045bd70bd7bb294ffc9d37d3c3a417059050",
+      "targetExists": true,
+      "targetBytes": 49116,
+      "targetSha256": "45f81b28cbaadceeb66a0eaf2fb530360f326c49a8b631e73d0058ad51d12e84",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/README.md",
+      "action": "same",
+      "sourceBytes": 6602,
+      "sourceSha256": "4450c4345ff6de45b2283b2e0ea2a0142eb867df3616b2469e8d8004e4dfffbb",
+      "targetExists": true,
+      "targetBytes": 6602,
+      "targetSha256": "4450c4345ff6de45b2283b2e0ea2a0142eb867df3616b2469e8d8004e4dfffbb",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rust-source-sha256.txt",
+      "action": "same",
+      "sourceBytes": 1922,
+      "sourceSha256": "83d7070f064ae480a83ec5ac97f8fbe737c5b413cf95b450cbb4b0207712c3cd",
+      "targetExists": true,
+      "targetBytes": 1922,
+      "targetSha256": "83d7070f064ae480a83ec5ac97f8fbe737c5b413cf95b450cbb4b0207712c3cd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/rustfmt.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/SHA256SUMS",
+      "action": "same",
+      "sourceBytes": 3855,
+      "sourceSha256": "a6526712f33d10859cf5f7db56fff4e1dcde091a64e55ecbd617285bdb1364fc",
+      "targetExists": true,
+      "targetBytes": 3855,
+      "targetSha256": "a6526712f33d10859cf5f7db56fff4e1dcde091a64e55ecbd617285bdb1364fc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/source-hashes.txt",
+      "action": "same",
+      "sourceBytes": 327,
+      "sourceSha256": "dbf8715efdb858c451349fc15119af809650b764915ab85a7354c7d1a5e2d992",
+      "targetExists": true,
+      "targetBytes": 327,
+      "targetSha256": "dbf8715efdb858c451349fc15119af809650b764915ab85a7354c7d1a5e2d992",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-runtime-2026-11-05/pass04-default-alignment-gate/workspace-clippy.log",
+      "action": "same",
+      "sourceBytes": 72,
+      "sourceSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "targetExists": true,
+      "targetBytes": 72,
+      "targetSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/chrome156-full.png",
+      "action": "same",
+      "sourceBytes": 4744,
+      "sourceSha256": "9569c601c42a256f2eff8fac61abe6ff6b2e8765f8be3fdf8a5e82ff01a362ff",
+      "targetExists": true,
+      "targetBytes": 4744,
+      "targetSha256": "9569c601c42a256f2eff8fac61abe6ff6b2e8765f8be3fdf8a5e82ff01a362ff",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/chrome156-observation.json",
+      "action": "same",
+      "sourceBytes": 8673,
+      "sourceSha256": "44ac572faf15ccc3e61de5bef9d1f5d214eefe029fb2dbbfcc7dcded711252dc",
+      "targetExists": true,
+      "targetBytes": 8673,
+      "targetSha256": "44ac572faf15ccc3e61de5bef9d1f5d214eefe029fb2dbbfcc7dcded711252dc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/comparison.json",
+      "action": "same",
+      "sourceBytes": 2214,
+      "sourceSha256": "383cd4327f5fce783261b92cdd8b12de2b9092eed4bd740b8c0e0b1f8bb216b7",
+      "targetExists": true,
+      "targetBytes": 2214,
+      "targetSha256": "383cd4327f5fce783261b92cdd8b12de2b9092eed4bd740b8c0e0b1f8bb216b7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/expected.json",
+      "action": "same",
+      "sourceBytes": 3824,
+      "sourceSha256": "92b292dadc3c46b79831f391157ed285a2e86efc396cd8633de4b59276154794",
+      "targetExists": true,
+      "targetBytes": 3824,
+      "targetSha256": "92b292dadc3c46b79831f391157ed285a2e86efc396cd8633de4b59276154794",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 43484,
+      "sourceSha256": "6321649dd2a1ab5ae70b677b33360d7242d30adb55e4e30c08670a89fed1038d",
+      "targetExists": true,
+      "targetBytes": 43484,
+      "targetSha256": "be4787ccab3436fec2614a2e83ab60d6f4a46ba7303ffca2992b02900bfbaba8",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 3240,
+      "sourceSha256": "d049e916365717942013449c603ecb0dc82cd7775024717fa1617289ff50928f",
+      "targetExists": true,
+      "targetBytes": 3240,
+      "targetSha256": "d049e916365717942013449c603ecb0dc82cd7775024717fa1617289ff50928f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/SHA256SUMS.txt",
+      "action": "same",
+      "sourceBytes": 416,
+      "sourceSha256": "841160a28de36baa026f81e2b859a9d728587ffac3b5e387849d25f124c4f704",
+      "targetExists": true,
+      "targetBytes": 416,
+      "targetSha256": "841160a28de36baa026f81e2b859a9d728587ffac3b5e387849d25f124c4f704",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/apk-root-html-asset.sha256",
+      "action": "same",
+      "sourceBytes": 106,
+      "sourceSha256": "2fc663927cfe2f44e2275b1e21e9618a66670ca5d7b653e94eeae678af60e469",
+      "targetExists": true,
+      "targetBytes": 106,
+      "targetSha256": "2fc663927cfe2f44e2275b1e21e9618a66670ca5d7b653e94eeae678af60e469",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/apk.sha256",
+      "action": "same",
+      "sourceBytes": 167,
+      "sourceSha256": "ce7113ca3c93a1eabe97be9c1844442922529fee2729e7c5bc97a008cd763842",
+      "targetExists": true,
+      "targetBytes": 167,
+      "targetSha256": "ce7113ca3c93a1eabe97be9c1844442922529fee2729e7c5bc97a008cd763842",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/build.log",
+      "action": "same",
+      "sourceBytes": 4458,
+      "sourceSha256": "d5019aa94a3f57159caffea029e3b7c5154afbb31c4453b3665e41dad6e8bccc",
+      "targetExists": true,
+      "targetBytes": 4458,
+      "targetSha256": "d5019aa94a3f57159caffea029e3b7c5154afbb31c4453b3665e41dad6e8bccc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/install.log",
+      "action": "same",
+      "sourceBytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": true,
+      "targetBytes": 36,
+      "targetSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/launch.log",
+      "action": "same",
+      "sourceBytes": 73,
+      "sourceSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "targetExists": true,
+      "targetBytes": 73,
+      "targetSha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/logcat-full.txt",
+      "action": "same",
+      "sourceBytes": 159773,
+      "sourceSha256": "296a92b193a6bb3c77a6e41a239982ee0d8023fd59d944a4ab4ec1609b2d9759",
+      "targetExists": true,
+      "targetBytes": 159773,
+      "targetSha256": "296a92b193a6bb3c77a6e41a239982ee0d8023fd59d944a4ab4ec1609b2d9759",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/logcat-runtime.txt",
+      "action": "same",
+      "sourceBytes": 2728,
+      "sourceSha256": "f298e520914fdf19a71414445bf887bf13a640077a9f0bfee0b6af899afd7864",
+      "targetExists": true,
+      "targetBytes": 2728,
+      "targetSha256": "f298e520914fdf19a71414445bf887bf13a640077a9f0bfee0b6af899afd7864",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/simulator-screen.png",
+      "action": "same",
+      "sourceBytes": 77539,
+      "sourceSha256": "8496fe2b8b429fc7845a06d082966c4175aff3c62e123ba1f218222140e29f95",
+      "targetExists": true,
+      "targetBytes": 77539,
+      "targetSha256": "8496fe2b8b429fc7845a06d082966c4175aff3c62e123ba1f218222140e29f95",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/android/simulator-screen.sha256",
+      "action": "same",
+      "sourceBytes": 217,
+      "sourceSha256": "15118293bfd79ad95a7e30e689956e84ce5def97c9ac69ff4c4ca9eb2d2ecebd",
+      "targetExists": true,
+      "targetBytes": 217,
+      "targetSha256": "15118293bfd79ad95a7e30e689956e84ce5def97c9ac69ff4c4ca9eb2d2ecebd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/asset-restoration.txt",
+      "action": "same",
+      "sourceBytes": 241,
+      "sourceSha256": "c01a37cc8e8da26aa18656cc0dae37a55ffab58c2bfaea9e7abab331bc948b63",
+      "targetExists": true,
+      "targetBytes": 241,
+      "targetSha256": "c01a37cc8e8da26aa18656cc0dae37a55ffab58c2bfaea9e7abab331bc948b63",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/baseline-runtime-suite.log",
+      "action": "same",
+      "sourceBytes": 1001679,
+      "sourceSha256": "fe16316fe79f21148862f50eb98bb8ff826fc994394452f8a804179a7d034ef4",
+      "targetExists": true,
+      "targetBytes": 1001679,
+      "targetSha256": "fe16316fe79f21148862f50eb98bb8ff826fc994394452f8a804179a7d034ef4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/clippy.log",
+      "action": "same",
+      "sourceBytes": 72,
+      "sourceSha256": "5604fc8f0c276397a55db4bd7008236712075c0ad37d3b3a0f1fe362b1b85a36",
+      "targetExists": true,
+      "targetBytes": 72,
+      "targetSha256": "5604fc8f0c276397a55db4bd7008236712075c0ad37d3b3a0f1fe362b1b85a36",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ffi-check.log",
+      "action": "same",
+      "sourceBytes": 72,
+      "sourceSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "targetExists": true,
+      "targetBytes": 72,
+      "targetSha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/fixture-boundary.log",
+      "action": "same",
+      "sourceBytes": 3520,
+      "sourceSha256": "e5044c499f8df9acee54d475c3a58900312c4a91f01252885ae3b9c557625801",
+      "targetExists": true,
+      "targetBytes": 3520,
+      "targetSha256": "e5044c499f8df9acee54d475c3a58900312c4a91f01252885ae3b9c557625801",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "action": "replace",
+      "sourceBytes": 48234,
+      "sourceSha256": "ae0abff30d9274fe3d933636ac8df8ed7b375c896c6383a416a58b835ad10c20",
+      "targetExists": true,
+      "targetBytes": 48234,
+      "targetSha256": "8ff36682a9b6996cb18c3992fb8809b1b5a9cda50e8cc3369f6775da3205500a",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "action": "same",
+      "sourceBytes": 6958,
+      "sourceSha256": "7601933a776f950f1e4ed94b6bd44e0b39c626d41c5c6deeeb8f97820d40e91c",
+      "targetExists": true,
+      "targetBytes": 6958,
+      "targetSha256": "7601933a776f950f1e4ed94b6bd44e0b39c626d41c5c6deeeb8f97820d40e91c",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/app-info.sha256",
+      "action": "same",
+      "sourceBytes": 200,
+      "sourceSha256": "422259ec1399392c72a52817017532fe578e8a15d273353de3f76af963c52dc5",
+      "targetExists": true,
+      "targetBytes": 200,
+      "targetSha256": "422259ec1399392c72a52817017532fe578e8a15d273353de3f76af963c52dc5",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/app-root-html-asset.sha256",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "83a567761bad6b9f98417fce0dd14c610cf60ca5754158a4864a2f3fca2e29b2",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "83a567761bad6b9f98417fce0dd14c610cf60ca5754158a4864a2f3fca2e29b2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/build.log",
+      "action": "same",
+      "sourceBytes": 66860,
+      "sourceSha256": "092b51df9c78406acef946a44964c1b49f415f5bc0b6855c98949f67f6e69b41",
+      "targetExists": true,
+      "targetBytes": 66860,
+      "targetSha256": "092b51df9c78406acef946a44964c1b49f415f5bc0b6855c98949f67f6e69b41",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/install.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/launch.log",
+      "action": "same",
+      "sourceBytes": 28,
+      "sourceSha256": "f4557f107860412097f829d9b6c36416a73bfde71ba757d0152bf0d6bc786f3e",
+      "targetExists": true,
+      "targetBytes": 28,
+      "targetSha256": "f4557f107860412097f829d9b6c36416a73bfde71ba757d0152bf0d6bc786f3e",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/screenshot.log",
+      "action": "same",
+      "sourceBytes": 208,
+      "sourceSha256": "0a2e415b981c48ea859fdcb7e8d5da872f9a59cd93f303fbd15e7da66d674063",
+      "targetExists": true,
+      "targetBytes": 208,
+      "targetSha256": "0a2e415b981c48ea859fdcb7e8d5da872f9a59cd93f303fbd15e7da66d674063",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/simulator-screen.png",
+      "action": "same",
+      "sourceBytes": 139089,
+      "sourceSha256": "3b10e5ab8724ae460df955511c043a0e5bb8c8665d31de0f0a78523d7b6a6173",
+      "targetExists": true,
+      "targetBytes": 139089,
+      "targetSha256": "3b10e5ab8724ae460df955511c043a0e5bb8c8665d31de0f0a78523d7b6a6173",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/simulator-screen.sha256",
+      "action": "same",
+      "sourceBytes": 213,
+      "sourceSha256": "c6285f7189ea31fca49e2dd84f1731afa894f9c373ed2b3626c124c69ea55691",
+      "targetExists": true,
+      "targetBytes": 213,
+      "targetSha256": "c6285f7189ea31fca49e2dd84f1731afa894f9c373ed2b3626c124c69ea55691",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/unified-log-full.txt",
+      "action": "same",
+      "sourceBytes": 34905,
+      "sourceSha256": "3551e5cf714313a809c09146132ebaa53ec0bf8a1f565ffb42ae41ff8e47c683",
+      "targetExists": true,
+      "targetBytes": 34905,
+      "targetSha256": "3551e5cf714313a809c09146132ebaa53ec0bf8a1f565ffb42ae41ff8e47c683",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/ios/unified-log-runtime.txt",
+      "action": "same",
+      "sourceBytes": 1230,
+      "sourceSha256": "42929eeec6c9df0549208c561d085a638efe00903284fff06cd9553ed21f9bd1",
+      "targetExists": true,
+      "targetBytes": 1230,
+      "targetSha256": "42929eeec6c9df0549208c561d085a638efe00903284fff06cd9553ed21f9bd1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/layout-focused.log",
+      "action": "same",
+      "sourceBytes": 1360,
+      "sourceSha256": "4b11c9f4e1df9267b06bbc2ead393f0446e73054d6ae0cd51116c807729c3b8d",
+      "targetExists": true,
+      "targetBytes": 1360,
+      "targetSha256": "4b11c9f4e1df9267b06bbc2ead393f0446e73054d6ae0cd51116c807729c3b8d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/layout-suite.log",
+      "action": "same",
+      "sourceBytes": 52598,
+      "sourceSha256": "9455e4671f5e84e1ce5ae145dfe594605f5d187e13e117c82c364db868e23dec",
+      "targetExists": true,
+      "targetBytes": 52598,
+      "targetSha256": "9455e4671f5e84e1ce5ae145dfe594605f5d187e13e117c82c364db868e23dec",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/log-normalization.sha256.txt",
+      "action": "same",
+      "sourceBytes": 1169,
+      "sourceSha256": "472fc9cd3f8b876deeb8ffdf52ec66f309c46811fc846eaa9225467b11a65cb7",
+      "targetExists": true,
+      "targetBytes": 1169,
+      "targetSha256": "472fc9cd3f8b876deeb8ffdf52ec66f309c46811fc846eaa9225467b11a65cb7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 52376,
+      "sourceSha256": "3406e99deb925d7808f7e28bb399584ce47eac001b40efb4b42372cd0945602f",
+      "targetExists": true,
+      "targetBytes": 52376,
+      "targetSha256": "0b4825a58a81ec15cc5e50bd6d31a2c424da4080de7d38a2a3a610456cd3eaf2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 9804,
+      "sourceSha256": "1a76c73696cf60493b2c7d51c6ed5bd9befe8dd3b6ef7801ed0d1cbfe2df232f",
+      "targetExists": true,
+      "targetBytes": 9804,
+      "targetSha256": "1a76c73696cf60493b2c7d51c6ed5bd9befe8dd3b6ef7801ed0d1cbfe2df232f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 48301,
+      "sourceSha256": "cf04b049ac133226a18752811a52ff244cd717dcf18543ac13b62bfcc5d2ce21",
+      "targetExists": true,
+      "targetBytes": 48301,
+      "targetSha256": "1b26166d0d2bd7d35c2cfa3978cd211500a26962e3f5bda2620c4f24b243b938",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.md",
+      "action": "same",
+      "sourceBytes": 6891,
+      "sourceSha256": "07ee21017f5f08ee5a3e1c2c8c356929a0d7567be53457c20ed376132f12e236",
+      "targetExists": true,
+      "targetBytes": 6891,
+      "targetSha256": "07ee21017f5f08ee5a3e1c2c8c356929a0d7567be53457c20ed376132f12e236",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/runtime-fixture.sha256",
+      "action": "same",
+      "sourceBytes": 142,
+      "sourceSha256": "07bca91563b05b014f3d497a9f0716897fc82be552d235a350f1cceef89cda7f",
+      "targetExists": true,
+      "targetBytes": 142,
+      "targetSha256": "07bca91563b05b014f3d497a9f0716897fc82be552d235a350f1cceef89cda7f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/runtime-focused.log",
+      "action": "same",
+      "sourceBytes": 1760,
+      "sourceSha256": "644047dc83ab667f2271b894f4af4bfda62ce58c6ec0dbef253b6b0ff00179a7",
+      "targetExists": true,
+      "targetBytes": 1760,
+      "targetSha256": "644047dc83ab667f2271b894f4af4bfda62ce58c6ec0dbef253b6b0ff00179a7",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/runtime-suite.log",
+      "action": "same",
+      "sourceBytes": 1001388,
+      "sourceSha256": "fd0fd7b147043e6f2d4fedbb832f80b7f4f8cbd1218af5fd0f309ab99798311b",
+      "targetExists": true,
+      "targetBytes": 1001388,
+      "targetSha256": "fd0fd7b147043e6f2d4fedbb832f80b7f4f8cbd1218af5fd0f309ab99798311b",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/rustfmt.log",
+      "action": "same",
+      "sourceBytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": true,
+      "targetBytes": 0,
+      "targetSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/agent-browser-lifecycle.json",
+      "action": "same",
+      "sourceBytes": 560,
+      "sourceSha256": "eea5b3012408b8e7a9a817d12f08622550cf5d9118800c85745e81d82f78e3a1",
+      "targetExists": true,
+      "targetBytes": 560,
+      "targetSha256": "eea5b3012408b8e7a9a817d12f08622550cf5d9118800c85745e81d82f78e3a1",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/agent-browser-verification.json",
+      "action": "same",
+      "sourceBytes": 961,
+      "sourceSha256": "3e659eb9555ee0f56d1bbd5c34f1abb4a6691d1fcd393825ab762c54d4cc2008",
+      "targetExists": true,
+      "targetBytes": 961,
+      "targetSha256": "3e659eb9555ee0f56d1bbd5c34f1abb4a6691d1fcd393825ab762c54d4cc2008",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/pr-diff-review-30.html",
+      "action": "replace",
+      "sourceBytes": 45558,
+      "sourceSha256": "df6260a0436541d441f98385e07e49bf0fa39b301339edc130198b546fd0e760",
+      "targetExists": true,
+      "targetBytes": 45558,
+      "targetSha256": "77dc63590e101b47bbb7385f5f803d01219d6c9b450668819b688c21206132b0",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/pr-diff-review-30.md",
+      "action": "same",
+      "sourceBytes": 4585,
+      "sourceSha256": "bdd28e19d004eb6814042e651bc26a160b756034d5992eda5edbc31d8d713ee4",
+      "targetExists": true,
+      "targetBytes": 4585,
+      "targetSha256": "bdd28e19d004eb6814042e651bc26a160b756034d5992eda5edbc31d8d713ee4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/README.html",
+      "action": "replace",
+      "sourceBytes": 44550,
+      "sourceSha256": "9dff613a50229e2ee5a3291c85946d330d1fd9ab4d7d5336c342e05844715baa",
+      "targetExists": true,
+      "targetBytes": 44660,
+      "targetSha256": "bb3937f56b201197a2e0fe72842e3ec2926e878f8a21dee251c116b5965cf823",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/README.md",
+      "action": "replace",
+      "sourceBytes": 3663,
+      "sourceSha256": "3399031a4773c4ac800d376f4c9d5dfa07f88d8c645cd2dfcd570bb479bb0e61",
+      "targetExists": true,
+      "targetBytes": 3670,
+      "targetSha256": "f8663b57d1497d8ab8bf47d4ad597ae85a0626b7c90f4fdd294729f4b9cf5fda",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/tailnet-roadmap-agent-browser-desktop.png",
+      "action": "same",
+      "sourceBytes": 473151,
+      "sourceSha256": "f3f140a36413cedab057010b294c84f96f65dfe590d45303585403721e2ea364",
+      "targetExists": true,
+      "targetBytes": 473151,
+      "targetSha256": "f3f140a36413cedab057010b294c84f96f65dfe590d45303585403721e2ea364",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/tailnet-roadmap-agent-browser-mobile.png",
+      "action": "same",
+      "sourceBytes": 160010,
+      "sourceSha256": "0482a9cfebd28564bbac2ddf7ce536ab6f7c6803f67ef55f1d30ded1f6081c69",
+      "targetExists": true,
+      "targetBytes": 160010,
+      "targetSha256": "0482a9cfebd28564bbac2ddf7ce536ab6f7c6803f67ef55f1d30ded1f6081c69",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "action": "same",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "action": "same",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "action": "same",
+      "sourceBytes": 570377,
+      "sourceSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+      "targetExists": true,
+      "targetBytes": 570377,
+      "targetSha256": "387dda00bb0b5ddeccf1554260e7c86e6f1649cff9e5fcd97d573e52f46ef3cc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "action": "same",
+      "sourceBytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetBytes": 4835,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.html",
+      "action": "replace",
+      "sourceBytes": 835551,
+      "sourceSha256": "0228ed03bd52c3c77863428c5adcc43e7f7fdb90a6b22482b9a1c9242ba078ce",
+      "targetExists": true,
+      "targetBytes": 835551,
+      "targetSha256": "ed4bfe6f0ea95e7e54358eab632b4b9c0151c8748b7b4ce219ecb640937b73b4",
+      "openHandleCount": 0
+    },
+    {
+      "route": "spec/STATUS.md",
+      "action": "same",
+      "sourceBytes": 668733,
+      "sourceSha256": "3e7b7e6ad55b5ec3754e8518d3c6bd35915c9dff55e983b84004a9cba46c40dc",
+      "targetExists": true,
+      "targetBytes": 668733,
+      "targetSha256": "3e7b7e6ad55b5ec3754e8518d3c6bd35915c9dff55e983b84004a9cba46c40dc",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "action": "same",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "action": "same",
+      "sourceBytes": 217085,
+      "sourceSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "targetExists": true,
+      "targetBytes": 217085,
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "action": "same",
+      "sourceBytes": 100,
+      "sourceSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "targetExists": true,
+      "targetBytes": 100,
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-084b1653840b.579e9bd710.js",
+      "action": "create",
+      "sourceBytes": 11867,
+      "sourceSha256": "d5da0fabe8b0947ac2b74254053e735fd068917838031a40f3b8496cefae701d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-0d5357f6ac85.c5b14952cf.js",
+      "action": "create",
+      "sourceBytes": 10700,
+      "sourceSha256": "584f03b3112b0a239400ab850ca661954dae141b29b67dbb326f55a1666d5a93",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-0d564e0bbbaf.b0f0ab5842.js",
+      "action": "create",
+      "sourceBytes": 20242,
+      "sourceSha256": "066a5cfb904750f519b7f7b0cb12c3ef60790b313b808f27ce363c3da4109aec",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-158e4963fbe8.7d68459449.js",
+      "action": "create",
+      "sourceBytes": 19518,
+      "sourceSha256": "170ed68ce9417dd9cc6cf3ed3beb83ebce9252efbd0080444cf6332faab7b25c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-1603c253ce44.d23b0fdefc.js",
+      "action": "create",
+      "sourceBytes": 13665,
+      "sourceSha256": "6a4855d948a6d6474aa0327caca07f47283e4f9b8ebf0b0248e82e46c1cd455c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-23358f61562a.d7e161649d.js",
+      "action": "create",
+      "sourceBytes": 7334,
+      "sourceSha256": "36b5d7ea464ec4bb49de4804130564243c39651a9c1ad76feb483862e29f2612",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-428f106ada87.1279d24d2d.js",
+      "action": "create",
+      "sourceBytes": 5979,
+      "sourceSha256": "7f8af5607cffdb4474ee790977b66d9e024671741dd04a87cec9c94174e23e98",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-42affcf32e4a.d4eea71615.js",
+      "action": "create",
+      "sourceBytes": 12335,
+      "sourceSha256": "163654eedc368473562f09ff592978758f5e18e49fd9a1876c7eac95e1af0837",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-43e690c11e0a.1bbb71f304.js",
+      "action": "create",
+      "sourceBytes": 10252,
+      "sourceSha256": "9f5c954eee63788abc00cd34289ed448826566cc6c7905054025c23867d80ad8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-43f01fb3f943.6839e1c2af.js",
+      "action": "create",
+      "sourceBytes": 10695,
+      "sourceSha256": "354a78e25be3cff9f0342517a11d4982dd6866f7cbe502acedd1b8c03d3dfd2a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-562d2ed87c6c.216ad61c68.js",
+      "action": "create",
+      "sourceBytes": 12366,
+      "sourceSha256": "c20913600f74dd80befd9b01feec39aac1238e9830b231f97da1f75eff553fb0",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.442c0f5a16.js",
+      "action": "create",
+      "sourceBytes": 881091,
+      "sourceSha256": "90eff4489ce5773100307a4ac82458fdd16834b4ceef64468e62fcd1738f20c1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7008564cd84a.af65266661.js",
+      "action": "create",
+      "sourceBytes": 18178,
+      "sourceSha256": "f72ae5596f0edb8f02ff7763bd8342a84e8785667eebe04928a42ef1e94e1ff2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.6ba2d18aa8.js",
+      "action": "create",
+      "sourceBytes": 648252,
+      "sourceSha256": "6deaf52812f12d8068ee6310f80b7eb9d81ed8008e149423b9c47fa526178543",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7bb5218a92c7.87e0b6a291.js",
+      "action": "create",
+      "sourceBytes": 11905,
+      "sourceSha256": "049eac7323be6618a936dedb4df456705d600c490fc0835e14225c810565e62c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.123a717bf6.js",
+      "action": "create",
+      "sourceBytes": 881353,
+      "sourceSha256": "d0f423d8118ce4f2def312b690ede21d4fc7d223a8106c4baeb32c0440232e90",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-891af17ce16b.393e0baf63.js",
+      "action": "create",
+      "sourceBytes": 11912,
+      "sourceSha256": "177a38fa409afa26117699905388355fa96d45c572821cdb28c28c60eb1b6990",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-8a6c5c4fdcc5.9ea7fe983a.js",
+      "action": "create",
+      "sourceBytes": 9436,
+      "sourceSha256": "adafdd8784f8504e41d7c105c25f92220944aab05798092d8bd23702af284691",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.f84f40f736.js",
+      "action": "create",
+      "sourceBytes": 1008,
+      "sourceSha256": "6415f4e079e079e6ec1bbca8e6c2afddae3b5adfc2aa1b9732becaaff7a27546",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-ac31dec35d65.715e884e64.js",
+      "action": "create",
+      "sourceBytes": 13342,
+      "sourceSha256": "ad9fe3ff412779f52139f4821fa5e5e0892121f42d3494134572275efaa3cedc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b02056b2bfdc.e834347fb7.js",
+      "action": "create",
+      "sourceBytes": 11874,
+      "sourceSha256": "7a366ae846d85f8d4adaf5ed1e0abb29a1283dd1a52dcd9a9eb9bab65ba13c4c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b1722ef6dba8.f9cf88856d.js",
+      "action": "create",
+      "sourceBytes": 12635,
+      "sourceSha256": "e9344e36a4b43945ca5738fa0aff4df7907d18bf063f533b652b77b521567c26",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-b19aaa4fa12a.3c73ac7fd6.js",
+      "action": "create",
+      "sourceBytes": 7346,
+      "sourceSha256": "7ef38d852aaef7a968cbae395be9ca11d5093355348450faccbfc6362e474639",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.5d52cc5156.js",
+      "action": "create",
+      "sourceBytes": 105399,
+      "sourceSha256": "f61f59818db8b248c1c116b90140190e5eb003cd252ca59053f5f8de704c1f4d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c3119871df55.bacfbf1258.js",
+      "action": "create",
+      "sourceBytes": 9985,
+      "sourceSha256": "c43c18b7f01e87f03c8ed03e382a4207d30f74a89117184677399eff51cd7908",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.176ada02a6.js",
+      "action": "create",
+      "sourceBytes": 648190,
+      "sourceSha256": "1a8d785d1ce5f6dcbac7113bdbac10fd135dfec7ad4136e9c4c53c25bf7f27fb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-ca6f68772c09.6f2172c05b.js",
+      "action": "create",
+      "sourceBytes": 9375,
+      "sourceSha256": "2128d387e3b69a0513364fe2274636e8868da93102cad3fd9ad08cbd828757e1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-d24d8137fb2d.3521d69478.js",
+      "action": "create",
+      "sourceBytes": 10258,
+      "sourceSha256": "418a2794d24ad1f23a170dfc6d068b34bb989b56fc1d28a09146cc23670a6560",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-d47f3f0b969d.a0319d3389.js",
+      "action": "create",
+      "sourceBytes": 18187,
+      "sourceSha256": "498f41ab237833e7e614fba5e5fc078d4c46c549ff138d2271538400301e8b7c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-da27377628cb.dfb4f8ae09.js",
+      "action": "create",
+      "sourceBytes": 9458,
+      "sourceSha256": "b32c8d34ada8750471989446ce86e88a120c3759901bad577752a9dc150df21a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-da6df4abfc8f.6017f11568.js",
+      "action": "create",
+      "sourceBytes": 13330,
+      "sourceSha256": "b7415e6ca67a5339d2db372166120fb51579cc74d96715630b4b420ba30bc441",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e000269bbeb6.394ae91319.js",
+      "action": "create",
+      "sourceBytes": 16647,
+      "sourceSha256": "0db03720aa221cd331b531e5018c9b442714e2c7efa54364e029ec5215e0eb69",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-e6879b4445d2.f8f7bd50be.js",
+      "action": "create",
+      "sourceBytes": 13679,
+      "sourceSha256": "3d87e1fe672096fd006c74f60f68674a4a0a90f6aa2faacd3cb42926975396cb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f040df41ab61.324bde2b7d.js",
+      "action": "create",
+      "sourceBytes": 5975,
+      "sourceSha256": "3d7854fd2b6e09b983944f8353fa81c2c8f86f36d83a2bd841d1cd05133e516a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f164f746b37c.28e690efee.js",
+      "action": "create",
+      "sourceBytes": 9997,
+      "sourceSha256": "f4f7e79b03f95f99f58cd532cc23790129d13baa7b393e37609b0f135f394bba",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f298b8f68d2b.f2f9f7de71.js",
+      "action": "create",
+      "sourceBytes": 12632,
+      "sourceSha256": "1511fbc84b32cc03c4ea7fe34459f077939a0a7ac337b6dd00e8230a12549570",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/async/route-f2cce3604477.b49539173c.js",
+      "action": "create",
+      "sourceBytes": 9386,
+      "sourceSha256": "54c6c605ed699d3ed9d6ff1f73cff7b518abf3ed0a28dddc7460b4aca2bc7fc9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/index.f23f571d9f.js",
+      "action": "create",
+      "sourceBytes": 162076,
+      "sourceSha256": "6ccbe8bb91426c75a3885a914e49d263dd7d249e0703da64289483d83aa6a221",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "action": "same",
+      "sourceBytes": 218364,
+      "sourceSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "targetExists": true,
+      "targetBytes": 218364,
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "action": "same",
+      "sourceBytes": 35370,
+      "sourceSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "targetExists": true,
+      "targetBytes": 35370,
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "action": "same",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "action": "same",
+      "sourceBytes": 473,
+      "sourceSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "targetExists": true,
+      "targetBytes": 473,
+      "targetSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "openHandleCount": 0
+    },
+    {
+      "route": "static/search_index.ko.ec3dd213.json",
+      "action": "create",
+      "sourceBytes": 2098639,
+      "sourceSha256": "ec3dd21347facc99760b0a8c78f176f7f57ad56648e8041cab255f1dcc541a8e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.html",
+      "action": "replace",
+      "sourceBytes": 834822,
+      "sourceSha256": "4bd4696e79bd888c8f0f2ca3b8dda5a5f7723269e9f8a21584e5423833ea880b",
+      "targetExists": true,
+      "targetBytes": 834822,
+      "targetSha256": "44705ac46bab8923b38692fbd85bd54c4066876aa75c7d01af6f0c1cdd2bcf29",
+      "openHandleCount": 0
+    },
+    {
+      "route": "STATUS.md",
+      "action": "same",
+      "sourceBytes": 668733,
+      "sourceSha256": "3e7b7e6ad55b5ec3754e8518d3c6bd35915c9dff55e983b84004a9cba46c40dc",
+      "targetExists": true,
+      "targetBytes": 668733,
+      "targetSha256": "3e7b7e6ad55b5ec3754e8518d3c6bd35915c9dff55e983b84004a9cba46c40dc",
+      "openHandleCount": 0
+    }
+  ]
+}

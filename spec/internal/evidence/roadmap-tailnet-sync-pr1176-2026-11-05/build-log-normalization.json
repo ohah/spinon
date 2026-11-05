@@ -1,0 +1,35 @@
+{
+  "normalization": "human-readable .log copies have trailing spaces and tabs removed; .log.gz files preserve original bytes exactly",
+  "logs": [
+    {
+      "file": "selected-build.log",
+      "rawBytes": 17533,
+      "rawSha256": "c5c39a024e0fb3777a693bd36e236f0721b5f77137130851b913ad7ee450717e",
+      "gzipFile": "selected-build.log.gz",
+      "gzipSha256": "26c40383f30268e07ef3dcd9d3d2b145e61d3a95cda37d9836150c23b79aa8ce",
+      "normalizedBytes": 17521,
+      "normalizedSha256": "0dfbd089f7f7644cfedd3e35a4609403f4f3cb3d83b59d88d907ea4810ff4493",
+      "gzipRoundTripVerified": true
+    },
+    {
+      "file": "selected-build-pass02.log",
+      "rawBytes": 19892,
+      "rawSha256": "5022a4b6d1e7ec21217d2a5c891ff7c829c7207cf37508eee819c9e7c5f2ad6d",
+      "gzipFile": "selected-build-pass02.log.gz",
+      "gzipSha256": "3aa54ba4707604e58b007ec82aaad7a26016ef9d2e8e8c3dcaad85522e45691d",
+      "normalizedBytes": 19880,
+      "normalizedSha256": "5f76958def5579d24432bada9b18c5a355b390877f0dcceb15604a34709da970",
+      "gzipRoundTripVerified": true
+    },
+    {
+      "file": "selected-build-pass03.log",
+      "rawBytes": 19892,
+      "rawSha256": "01938b355f2853459937829719c51f82cf3f48b8bb724de9a4c8b07b46a01911",
+      "gzipFile": "selected-build-pass03.log.gz",
+      "gzipSha256": "1ffaa6190278c5ed37083959a64e480e4b76649e6d3a335e9b8e6806bc28f447",
+      "normalizedBytes": 19880,
+      "normalizedSha256": "5e75b75da290d7cbeaedb0649d11f34db2c8bfb50a2b2e0c24011fa35d743c9a",
+      "gzipRoundTripVerified": true
+    }
+  ]
+}
