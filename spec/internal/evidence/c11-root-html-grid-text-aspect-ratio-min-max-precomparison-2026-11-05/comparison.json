@@ -1,0 +1,56 @@
+{
+  "sceneCount": 10,
+  "result": "pass",
+  "comparisons": [
+    {
+      "id": "width-ratio-baseline",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "width-ratio-min-height",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "width-ratio-max-height",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "width-ratio-minmax-height",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "width-control-min-height",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "height-ratio-baseline",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "height-ratio-min-width",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "height-ratio-max-width",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "height-ratio-minmax-width",
+      "geometry": "exact",
+      "trackLists": "exact"
+    },
+    {
+      "id": "height-control-max-width",
+      "geometry": "exact",
+      "trackLists": "exact"
+    }
+  ]
+}
