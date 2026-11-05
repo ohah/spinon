@@ -35,6 +35,7 @@ Chrome 156 사전 비교에는 하나의 40×40px Grid, 40px column, 10px explic
 - Text item은 기존 computed style 계약을 유지한다: width/height auto, min-size auto, max-size 없음, `aspect-ratio` 없음, static position, 자동 placement, monospace 10px, line-height 10px, `white-space:normal`, `white-space-collapse:collapse`, `text-wrap-mode:wrap`, `word-break:normal`, `overflow-wrap:normal`, LTR `direction`, `horizontal-tb` writing mode, `text-transform:none`, `text-align:start`; text node, owner, style/layout revision이 같은 snapshot에 있어야 한다.
 - Source text 범위는 현재 여섯 token 문자열에서 ASCII `A` token 하나 이상을 U+0020 SPACE 하나씩으로 구분한 문자열로 넓힌다. 시작/끝 공백은 허용하지 않는다. 이 범위 안에서 글꼴과 line-break model을 유지하면서 item별 measured line count를 다르게 한다. 다른 문자 집합, 임의 Unicode, markup, 명시적 줄바꿈, 공백 이외의 whitespace는 계속 거부한다.
 - 기존 checked node/item/track/resource 제한 내에서 조건을 만족하는 visible text item을 하나 이상 허용한다. 새로 무제한 크기의 입력을 만들지 않으며, 10,000 explicit/implicit track 상한 초과는 frame 계산 전에 거부한다. item-style lookup은 한 번 만든 node index를 사용해 다중 item에서 반복 선형 탐색이 되지 않게 한다. 이름만 바꾼 단일-item 제한이나 고정 contribution 추정값을 추가하지 않는다.
+- Track-sizing trace는 선택 진단이다. Taffy의 Grid별 100,000 track-state 또는 100,000 item-contribution trace budget을 넘으면 해당 trace 전체를 생략하고 계산된 frame은 유지한다. trace allocation failure는 계속 layout error다. 상한 boundary에서 trace 생략과 frame 보존을 함께 확인한다.
 - 미지원 item/source/style/topology와 resource limit 실패는 frame이나 paint를 게시하기 전에 layout 전체를 거부한다. 허용 item마다 `NodeId`, source order, text layout revision과 대응되는 row contribution identity를 보존한다.
 
 ## 구현과 검증 요구

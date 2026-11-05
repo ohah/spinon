@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 3 tests
+test projection::style_values::root_html_intrinsic_auto_rows::tests::item_count_maps_to_bounded_implicit_rows_without_rounding_down ... ok
+test projection::style_values::root_html_intrinsic_auto_rows::tests::direct_grid_whitespace_is_classified_without_accepting_other_text ... ok
+test projection::style_values::root_html_intrinsic_auto_rows::tests::direct_text_grammar_accepts_ascii_a_tokens_only ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 425 filtered out; finished in 0.00s

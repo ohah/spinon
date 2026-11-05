@@ -27,6 +27,7 @@ mod root_html_fit_content_named_area;
 mod root_html_grid_alignment;
 mod root_html_grid_gap;
 mod root_html_grid_tracks;
+mod root_html_intrinsic_auto_rows;
 mod root_html_intrinsic_named_area;
 mod root_html_named_area;
 mod root_html_one_axis_placement;
@@ -1455,7 +1456,6 @@ fn validate_root_html_intrinsic_auto_row_items(
     }
     let element = candidates[0];
     let mut item_count = 0usize;
-    let mut text_item_count = 0usize;
     {
         let Some(grid) = element.grid_layout.as_ref() else {
             return Err(unsupported(
@@ -1475,9 +1475,43 @@ fn validate_root_html_intrinsic_auto_row_items(
                 "Root HTML intrinsic implicit rows require a parsed Grid owner",
             ));
         };
-        let children = tree.children(owner).ok_or_else(|| {
-            unsupported("Root HTML intrinsic implicit rows require inspectable direct items")
-        })?;
+        let children = tree
+            .children(owner)
+            .ok_or_else(|| {
+                unsupported("Root HTML intrinsic implicit rows require inspectable direct items")
+            })?
+            .collect::<Vec<_>>();
+        let visible_item_count = children
+            .iter()
+            .copied()
+            .filter(|child| !nodes.hidden.contains(&child.id()))
+            .filter(|child| {
+                tree.node(*child).is_none_or(|child_node| {
+                    !matches!(child_node.kind(), HostNodeKind::Text(text)
+                        if root_html_intrinsic_auto_rows::is_whitespace_text(&text.to_string_lossy()))
+                })
+            })
+            .count();
+        let Some(exceeds_track_limit) = root_html_intrinsic_auto_rows::exceeds_track_limit(
+            visible_item_count,
+            grid.columns.len(),
+            grid.rows.len(),
+            spinon_layout::GRID_MAX_TRACKS,
+        ) else {
+            return Err(unsupported(
+                "Root HTML intrinsic implicit rows require a non-empty explicit column list",
+            ));
+        };
+        if exceeds_track_limit {
+            return Err(unsupported(
+                "Root HTML intrinsic implicit rows exceed the 10,000-track limit",
+            ));
+        }
+        let item_styles_by_node = snapshot
+            .elements
+            .iter()
+            .map(|item| (item.node_id, item))
+            .collect::<BTreeMap<_, _>>();
         for child in children {
             if nodes.hidden.contains(&child.id()) {
                 continue;
@@ -1489,9 +1523,9 @@ fn validate_root_html_intrinsic_auto_row_items(
             };
             let text_item = match child_node.kind() {
                 HostNodeKind::Text(text)
-                    if text.to_string_lossy().chars().all(|character| {
-                        matches!(character, '\t' | '\n' | '\u{000c}' | '\r' | ' ')
-                    }) =>
+                    if root_html_intrinsic_auto_rows::is_whitespace_text(
+                        &text.to_string_lossy(),
+                    ) =>
                 {
                     continue;
                 }
@@ -1520,14 +1554,16 @@ fn validate_root_html_intrinsic_auto_row_items(
                             };
                             match text_node.kind() {
                                 HostNodeKind::Text(text)
-                                    if text.to_string_lossy() == "A A A A A A" =>
+                                    if root_html_intrinsic_auto_rows::supports_text_source(
+                                        &text.to_string_lossy(),
+                                    ) =>
                                 {
                                     true
                                 }
                                 _ => {
                                     return Err(unsupported_item(
                                         child.id(),
-                                        "text-bearing Grid items require one direct ASCII text child `A A A A A A`",
+                                        "text-bearing Grid items require one direct child with one or more ASCII `A` tokens separated by single spaces",
                                     ));
                                 }
                             }
@@ -1546,11 +1582,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                     ));
                 }
             };
-            let Some(item_style) = snapshot
-                .elements
-                .iter()
-                .find(|item| item.node_id == child.id())
-            else {
+            let Some(item_style) = item_styles_by_node.get(&child.id()).copied() else {
                 return Err(unsupported_item(
                     child.id(),
                     "Root HTML intrinsic implicit rows require computed direct-item style",
@@ -1631,17 +1663,6 @@ fn validate_root_html_intrinsic_auto_row_items(
                     child.id(),
                     "text Grid items require monospace 10px font, 10px line-height, normal whitespace wrapping, and horizontal LTR text",
                 ));
-            }
-            if text_item {
-                text_item_count = text_item_count.checked_add(1).ok_or_else(|| {
-                    unsupported_item(child.id(), "text Grid item count overflowed")
-                })?;
-                if text_item_count > 1 {
-                    return Err(unsupported_item(
-                        child.id(),
-                        "Root HTML intrinsic implicit rows support at most one text-bearing Grid item",
-                    ));
-                }
             }
             item_count = item_count.checked_add(1).ok_or_else(|| {
                 unsupported("Root HTML intrinsic implicit row item count overflowed")

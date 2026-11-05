@@ -1,7 +1,8 @@
 use super::*;
-
 use serde_json::Value;
 use spinon_render::{OpaqueCssSrgb, RuntimePaint};
+
+mod multiple_text;
 
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html"
