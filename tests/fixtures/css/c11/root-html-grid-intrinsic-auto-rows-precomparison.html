@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid intrinsic implicit rows precomparison</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background: #20242a; }
+      main { width: 120px; height: 90px; padding: 0; margin: 0; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        background: #39434f;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-rows: min-content;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+      }
+      .item { box-sizing: border-box; width: 40px; margin: 0; padding: 0; border: 0; }
+      #first { height: 10px; background: #f2665e; }
+      #second { height: 22px; background: #5ba8f5; }
+      #third { height: 34px; background: #55c791; }
+    </style>
+  </head>
+  <body>
+    <main id="stage">
+      <div id="grid" class="grid">
+        <div id="first" class="item"></div>
+        <div id="second" class="item"></div>
+        <div id="third" class="item"></div>
+      </div>
+    </main>
+  </body>
+</html>
