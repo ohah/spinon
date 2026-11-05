@@ -212,6 +212,48 @@ fn root_html_intrinsic_min_content_implicit_rows_match_reference_and_preserve_ov
 }
 
 #[test]
+fn root_html_intrinsic_columns_allow_min_content_implicit_rows_and_percentage_gutters() {
+    let mut input = super::grid_input(
+        vec![GridTrackSize::MinContent],
+        vec![GridTrackSize::LengthPx(10.0)],
+        3,
+        LayoutGap {
+            row: LayoutLengthPercentage::percent(0.05),
+            column: LayoutLengthPercentage::ZERO,
+        },
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.viewport = crate::Viewport {
+        width: 40.0,
+        height: 40.0,
+    };
+    for item in &mut input.nodes[1..] {
+        item.style.height = LayoutDimension::Fixed(10.0);
+    }
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+    container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
+    container.track_sizing_trace_enabled = true;
+
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("intrinsic columns may combine with bounded min-content implicit rows");
+    let trace = output
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == id(1))
+        .expect("combined intrinsic sizing should retain a Grid trace");
+    assert_eq!(trace.used_columns.used_track_list, "20px");
+    assert_eq!(trace.used_rows.used_track_list, "10px 10px 10px");
+    for (node, expected_y) in [(id(2), 0.0), (id(3), 12.0), (id(4), 24.0)] {
+        let frame = output.frames[&node];
+        assert_eq!(frame.y, expected_y);
+        assert_eq!(frame.height, 10.0);
+    }
+}
+
+#[test]
 fn root_html_intrinsic_tracks_reject_unsupported_implicit_min_content_shapes() {
     for auto_rows in [
         GridAutoRows::TrackList(vec![GridTrackSize::MaxContent]),

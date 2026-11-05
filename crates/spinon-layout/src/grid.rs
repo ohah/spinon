@@ -1553,6 +1553,10 @@ fn validate_root_html_intrinsic_tracks_contract(
         GridAutoRows::TrackList(tracks)
             if tracks.as_slice() == [GridTrackSize::MinContent]
     );
+    let has_intrinsic_columns = container
+        .columns
+        .iter()
+        .any(root_html_track_uses_intrinsic_sizing);
     let single_positive_px_track = |tracks: &[GridTrackSize]| {
         matches!(
             tracks,
@@ -1566,15 +1570,22 @@ fn validate_root_html_intrinsic_tracks_contract(
         style.gap.column,
         LayoutLengthPercentage::LengthPx(value) if value == 0.0
     );
-    let allow_intrinsic_auto_rows = intrinsic_auto_rows
+    let allow_combined_intrinsic_auto_rows = intrinsic_auto_rows
+        && has_intrinsic_columns
+        && container.template_areas.is_none()
+        && single_positive_px_track(&container.rows);
+    let allow_fixed_intrinsic_auto_rows = intrinsic_auto_rows
+        && !has_intrinsic_columns
         && container.template_areas.is_none()
         && single_positive_px_track(&container.columns)
         && single_positive_px_track(&container.rows)
         && zero_gaps;
+    let allow_intrinsic_auto_rows =
+        allow_combined_intrinsic_auto_rows || allow_fixed_intrinsic_auto_rows;
     if container.auto_rows != GridAutoRows::Auto && !allow_intrinsic_auto_rows {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
-            reason: "Root HTML intrinsic tracks require auto grid-auto-rows, except for a single min-content implicit-row pattern with fixed single tracks and zero gaps",
+            reason: "Root HTML intrinsic tracks require auto grid-auto-rows, except for one min-content pattern with a fixed explicit row and either fixed single tracks without gaps or supported intrinsic columns",
         });
     }
     if container.auto_columns != GridAutoColumns::Auto {
@@ -1717,6 +1728,42 @@ pub(super) fn root_html_intrinsic_track_is_supported(track: &GridTrackSize) -> b
             valid_minimum && valid_maximum
         }
         GridTrackSize::FitContent(_) | GridTrackSize::Calc(_) => false,
+    }
+}
+
+fn root_html_track_uses_intrinsic_sizing(track: &GridTrackSize) -> bool {
+    match track {
+        GridTrackSize::Auto | GridTrackSize::MinContent | GridTrackSize::MaxContent => true,
+        GridTrackSize::MinMax { min, max } => {
+            let existing_auto_minimum_fraction = matches!(min, GridTrackMinSizingFunction::Auto)
+                && matches!(max, GridTrackMaxSizingFunction::Fraction(value) if value.is_finite() && *value >= 0.0);
+            let percentage_minimum_fraction_maximum = matches!(
+                (min, max),
+                (
+                    GridTrackMinSizingFunction::Percentage(_),
+                    GridTrackMaxSizingFunction::Fraction(_)
+                )
+            );
+            !existing_auto_minimum_fraction
+                && (percentage_minimum_fraction_maximum
+                    || matches!(
+                        min,
+                        GridTrackMinSizingFunction::Auto
+                            | GridTrackMinSizingFunction::MinContent
+                            | GridTrackMinSizingFunction::MaxContent
+                    )
+                    || matches!(
+                        max,
+                        GridTrackMaxSizingFunction::Auto
+                            | GridTrackMaxSizingFunction::MinContent
+                            | GridTrackMaxSizingFunction::MaxContent
+                    ))
+        }
+        GridTrackSize::LengthPx(_)
+        | GridTrackSize::Percentage(_)
+        | GridTrackSize::Fraction(_)
+        | GridTrackSize::FitContent(_)
+        | GridTrackSize::Calc(_) => false,
     }
 }
 
