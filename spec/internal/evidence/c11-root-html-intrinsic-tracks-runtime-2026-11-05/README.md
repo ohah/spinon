@@ -1,5 +1,9 @@
 # C11.1 Root HTML intrinsic Grid tracks 실행 근거
 
+## PR 병합 기록
+
+PR [#1167](https://github.com/ohah/spinon/pull/1167)은 2026-11-05T01:31:53Z에 Rebase and merge됐고 merge SHA는 `18782b58c5edf2e2cc00aeb71928c523c752a7c3`이다. GitHub check rollup은 비어 있어 CI 통과로 표시하지 않는다. 이 기록은 bounded Root HTML runtime slice의 병합이며 C11.4 또는 상위 C11 완료 판정은 바꾸지 않는다.
+
 ## 판정 범위
 
 이 근거는 `RuntimeRootHtmlTextPaintV1`의 기본 parsed Root HTML 실행 경로에서 고정 explicit intrinsic track fixture가 layout과 draw/present까지 도달하는지 기록한다. 앱의 기존 C04.12 Root HTML DefaultRender 진입점을 사용했으며 일반 bootstrap HTML이나 새 C11 전용 FFI scene selector를 추가하지 않았다. Android/iOS 앱에는 [runtime fixture](../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-tracks-runtime.html)를 일시 적용하고 빌드 뒤 기존 resource를 복원했다. Chrome 사전 비교는 19 scenes이고, 이 Root HTML runtime fixture는 양의 definite container axis를 가진 17 scenes다. zero-axis percentage/`fr` 두 장면은 Chrome oracle only이며 앱 runtime은 zero-width/height container를 진단으로 거부한다.
