@@ -45,6 +45,10 @@ Chrome 156 Agent Browser 관찰과 독립 기대값은 [사전 비교](../c11-ro
 
 ![iPhone 17 Pro Simulator 화면](./ios/simulator-screen.png)
 
+## 문서 빌드 범위
+
+`mise exec -- bun run docs:build`를 실행했지만 RSPress가 이 checkout의 다른 `spec/internal/evidence/` Markdown 경로에서 dead link를 보고해 전체 문서 빌드가 실패했다. 해당 경로들은 이번 PR diff에 포함되지 않으며, 이 결과를 문서 빌드 통과로 세지 않는다. 전체 로그는 PR evidence에 포함하지 않았다.
+
 ## 한계와 artifact 경계
 
 두 simulator screenshot은 화면 표시 확인용이다. Android PixelCopy나 iOS Metal drawable surface readback을 수행하지 않았고, OS compositor 이후 pixel parity를 주장하지 않는다. 네 장면 중 아래 viewport에 놓인 장면들의 geometry는 Chrome oracle 및 Rust runtime frame 비교로 확인했다. fixture test module은 `c11-1-grid-intrinsic-tracks-fixture-test` feature로만 컴파일되며 새 fixture FFI·runtime profile·public API를 추가하지 않았다.
