@@ -43,6 +43,7 @@ pub(super) struct GridLayoutProfileOptions {
     pub(super) allow_root_html_bounded_minmax_tracks: bool,
     pub(super) allow_root_html_fit_content_tracks: bool,
     pub(super) allow_auto_repeat: bool,
+    pub(super) allow_root_html_auto_repeat: bool,
     pub(super) allow_fixed_auto_track_lists: bool,
     pub(super) allow_root_html_fixed_auto_row_lists: bool,
     pub(super) allow_root_html_fixed_auto_column_lists: bool,
@@ -108,6 +109,7 @@ pub(super) fn computed_grid_layout(
         allow_root_html_bounded_minmax_tracks,
         allow_root_html_fit_content_tracks,
         allow_auto_repeat,
+        allow_root_html_auto_repeat,
         allow_fixed_auto_track_lists,
         allow_root_html_fixed_auto_row_lists,
         allow_root_html_fixed_auto_column_lists,
@@ -149,6 +151,7 @@ pub(super) fn computed_grid_layout(
             allow_root_html_bounded_minmax_tracks,
             allow_root_html_fit_content_tracks,
             allow_auto_repeat,
+            allow_root_html_auto_repeat,
             allow_empty_tracks: template_areas.is_some()
                 && allow_integer_repeat
                 && !allow_intrinsic_tracks,
@@ -176,6 +179,7 @@ pub(super) fn computed_grid_layout(
             allow_root_html_bounded_minmax_tracks,
             allow_root_html_fit_content_tracks,
             allow_auto_repeat,
+            allow_root_html_auto_repeat,
             allow_empty_tracks: template_areas.is_some()
                 && allow_integer_repeat
                 && !allow_intrinsic_tracks,
@@ -576,6 +580,7 @@ struct GridTrackComputeOptions {
     allow_root_html_bounded_minmax_tracks: bool,
     allow_root_html_fit_content_tracks: bool,
     allow_auto_repeat: bool,
+    allow_root_html_auto_repeat: bool,
     allow_empty_tracks: bool,
 }
 
@@ -634,8 +639,13 @@ fn computed_grid_tracks(
             node,
             property,
             serialized,
-            options.allow_intrinsic_tracks,
-            options.allow_auto_repeat,
+            auto_repeat::AutoRepeatTrackOptions {
+                allow_intrinsic_tracks: options.allow_intrinsic_tracks,
+                allow_auto_repeat: options.allow_auto_repeat,
+                allow_root_html_auto_repeat: options.allow_root_html_auto_repeat,
+                allow_root_html_bounded_minmax_tracks: options
+                    .allow_root_html_bounded_minmax_tracks,
+            },
         );
     }
 

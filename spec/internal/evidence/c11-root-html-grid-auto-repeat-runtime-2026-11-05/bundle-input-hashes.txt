@@ -1,0 +1,10 @@
+# Packaged Root HTML source verification
+
+# Android: unzip -p platforms/android/app/build/outputs/apk/debug/app-debug.apk assets/index.html | shasum -a 256
+4cbd7f40f320d802ddf7ca19151610ea8c2f5d647068ef3efeaae88f147eaaab  -
+
+# iOS: shasum -a 256 build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/index.html
+4cbd7f40f320d802ddf7ca19151610ea8c2f5d647068ef3efeaae88f147eaaab  build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/index.html
+
+# Expected source: tests/fixtures/html/c11-root-html-grid-auto-repeat-native.html
+4cbd7f40f320d802ddf7ca19151610ea8c2f5d647068ef3efeaae88f147eaaab  tests/fixtures/html/c11-root-html-grid-auto-repeat-native.html

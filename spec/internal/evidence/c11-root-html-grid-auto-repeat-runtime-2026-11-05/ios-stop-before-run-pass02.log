@@ -1,0 +1,2 @@
+xcrun simctl terminate 9DCCE836-7659-4914-B6C1-13F54BFFA9DB dev.spinon.bootstrap
+exit=0; stdout/stderr empty

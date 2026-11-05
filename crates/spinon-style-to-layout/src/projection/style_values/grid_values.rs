@@ -15,6 +15,9 @@ use super::super::typed_math::CssMathProjector;
 use super::root_html_column_math::supported_root_html_auto_track_calc;
 use crate::StyleLayoutError;
 
+#[path = "grid_values/root_html_auto_repeat.rs"]
+pub(super) mod root_html_auto_repeat;
+
 const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
 const MAX_COMBINED_GRID_LINE_AREA_METADATA_BYTES: usize = 1024 * 1024;
 
@@ -93,7 +96,9 @@ fn project_grid_layout_with_route(
         } else {
             "grid-template-rows"
         };
-        if profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        if profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+            && profile != ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property,
@@ -191,6 +196,12 @@ fn validate_root_html_grid_tracks(
             "Root HTML direct-text aspect-ratio route does not combine with intrinsic explicit tracks",
         ));
     }
+    let root_html_auto_repeat = root_html_auto_repeat::validate_grid_grammar(
+        node,
+        grid,
+        root_html_one_axis_placement,
+        root_html_direct_text_aspect_ratio,
+    )?;
     let has_intrinsic_explicit_tracks = !root_html_direct_text_aspect_ratio && has_intrinsic_tracks;
     if has_intrinsic_explicit_tracks
         && (root_html_direct_text_aspect_ratio
@@ -240,7 +251,7 @@ fn validate_root_html_grid_tracks(
             )
         });
         if tracks.is_empty()
-            || auto_repeat.is_some()
+            || (auto_repeat.is_some() && !root_html_auto_repeat)
             || line_names.iter().any(|group| !group.is_empty())
             || (!single_auto_row
                 && tracks

@@ -39,8 +39,10 @@ pub(crate) fn normalize_dense_grid_container(
     validate_count(node, "grid-template-columns", container.columns.len())?;
     validate_count(node, "grid-template-rows", container.rows.len())?;
 
-    if container.placement_mode == crate::GridPlacementMode::TrackSizing
-        && (container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some())
+    if matches!(
+        container.placement_mode,
+        crate::GridPlacementMode::TrackSizing | crate::GridPlacementMode::RootHtmlAutoRepeatV1
+    ) && (container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some())
     {
         return normalize_auto_repeat_grid_items(input, hidden, container_node, container);
     }
@@ -444,6 +446,7 @@ pub(crate) fn normalize_dense_grid_container(
 
     let auto_track_mode = match container.placement_mode {
         crate::GridPlacementMode::TrackSizing => AutoTrackExpansionMode::Intrinsic,
+        crate::GridPlacementMode::RootHtmlAutoRepeatV1 => AutoTrackExpansionMode::Unsupported,
         crate::GridPlacementMode::TemplateGridImplicitTracks
             if container.template_areas.is_some() =>
         {

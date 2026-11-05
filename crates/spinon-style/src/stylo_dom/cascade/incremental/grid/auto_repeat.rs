@@ -1,6 +1,6 @@
 use spinon_core::NodeId;
 use style::{
-    values::computed::TrackList,
+    values::computed::{TrackList, TrackSize},
     values::generics::grid::{RepeatCount, TrackListValue},
 };
 
@@ -13,7 +13,8 @@ use super::{
     MAX_COMPUTED_GRID_TRACKS, add_line_name_budget, auto_repeat_track_has_supported_fixed_size,
     copy_computed_line_name_groups, fail_integer_repeat_reservation_if_requested,
     line_name_groups_metadata_bytes, reserve_computed_tracks, reserve_integer_repeat_string,
-    reserve_integer_repeat_vec, track_size, track_size_is_valid, unsupported_grid_value,
+    reserve_integer_repeat_vec, track_size, track_size_is_valid,
+    track_size_with_root_html_bounded_minmax, unsupported_grid_value,
 };
 
 #[derive(Clone, Copy)]
@@ -22,17 +23,30 @@ struct FixedRepeatGroup {
     expanded_track_count: usize,
 }
 
+#[derive(Clone, Copy)]
+pub(super) struct AutoRepeatTrackOptions {
+    pub(super) allow_intrinsic_tracks: bool,
+    pub(super) allow_auto_repeat: bool,
+    pub(super) allow_root_html_auto_repeat: bool,
+    pub(super) allow_root_html_bounded_minmax_tracks: bool,
+}
+
 pub(super) fn computed_auto_repeat_tracks(
     list: &TrackList,
     node: NodeId,
     property: &'static str,
     serialized: &str,
-    allow_intrinsic_tracks: bool,
-    allow_auto_repeat: bool,
+    options: AutoRepeatTrackOptions,
 ) -> Result<ComputedGridTracks, CssCascadeError> {
+    let AutoRepeatTrackOptions {
+        allow_intrinsic_tracks,
+        allow_auto_repeat,
+        allow_root_html_auto_repeat,
+        allow_root_html_bounded_minmax_tracks,
+    } = options;
     let has_valid_outer_line_names =
         list.values.len().checked_add(1) == Some(list.line_names.len());
-    if !allow_auto_repeat || !has_valid_outer_line_names {
+    if (!allow_auto_repeat && !allow_root_html_auto_repeat) || !has_valid_outer_line_names {
         return Err(unsupported_grid_value(node, property, serialized));
     }
     if list.values.len() > MAX_COMPUTED_GRID_TRACKS {
@@ -83,7 +97,24 @@ pub(super) fn computed_auto_repeat_tracks(
     if auto_repeat.track_sizes.is_empty()
         || auto_repeat.track_sizes.len() > MAX_COMPUTED_GRID_TRACKS
         || auto_repeat.track_sizes.len().checked_add(1) != Some(auto_repeat.line_names.len())
-        || !allow_intrinsic_tracks
+        || (!allow_intrinsic_tracks && !allow_root_html_auto_repeat)
+    {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+    if allow_root_html_auto_repeat
+        && (list.values.len() != 1
+            || fixed_repeat_group_count != 0
+            || !(1..=2).contains(&auto_repeat.track_sizes.len())
+            || list.line_names.iter().any(|group| !group.is_empty())
+            || auto_repeat.line_names.iter().any(|group| !group.is_empty()))
+    {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+    if allow_root_html_auto_repeat
+        && auto_repeat
+            .track_sizes
+            .iter()
+            .any(|size| !root_html_auto_repeat_track(size, allow_root_html_bounded_minmax_tracks))
     {
         return Err(unsupported_grid_value(node, property, serialized));
     }
@@ -221,9 +252,14 @@ pub(super) fn computed_auto_repeat_tracks(
             TrackListValue::TrackRepeat(repeat) if index == auto_repeat_index => {
                 auto_repeat_start = Some(tracks.len());
                 for size in repeat.track_sizes.iter() {
-                    let track = track_size(size, allow_intrinsic_tracks)
-                        .filter(track_size_is_valid)
-                        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+                    let track = auto_repeat_track_size(
+                        size,
+                        allow_intrinsic_tracks,
+                        allow_root_html_auto_repeat,
+                        allow_root_html_bounded_minmax_tracks,
+                    )
+                    .filter(track_size_is_valid)
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
                     if !auto_repeat_track_has_supported_fixed_size(&track) {
                         return Err(unsupported_grid_value(node, property, serialized));
                     }
@@ -302,6 +338,38 @@ pub(super) fn computed_auto_repeat_tracks(
         single_bounded_fixed_repeat: false,
         single_bounded_auto_repeat,
     })
+}
+
+fn auto_repeat_track_size(
+    size: &TrackSize,
+    allow_intrinsic_tracks: bool,
+    allow_root_html_auto_repeat: bool,
+    allow_root_html_bounded_minmax_tracks: bool,
+) -> Option<ComputedCssGridTrackSize> {
+    if allow_root_html_auto_repeat {
+        track_size_with_root_html_bounded_minmax(
+            size,
+            false,
+            false,
+            allow_root_html_bounded_minmax_tracks,
+            false,
+        )
+    } else {
+        track_size(size, allow_intrinsic_tracks)
+    }
+}
+
+fn root_html_auto_repeat_track(
+    size: &TrackSize,
+    allow_root_html_bounded_minmax_tracks: bool,
+) -> bool {
+    matches!(
+        auto_repeat_track_size(size, false, true, allow_root_html_bounded_minmax_tracks),
+        Some(ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::LengthPx(minimum),
+            max: ComputedCssGridTrackBreadth::Fraction(1.0),
+        }) if minimum.is_finite() && minimum > 0.0
+    )
 }
 
 fn fixed_repeat_track_is_supported(track: &ComputedCssGridTrackSize) -> bool {

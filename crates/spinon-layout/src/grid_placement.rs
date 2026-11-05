@@ -146,6 +146,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                | GridPlacementMode::RootHtmlAutoRepeatV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
@@ -301,6 +302,7 @@ pub(super) fn normalize_grid_item_placements(
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                | GridPlacementMode::RootHtmlAutoRepeatV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
