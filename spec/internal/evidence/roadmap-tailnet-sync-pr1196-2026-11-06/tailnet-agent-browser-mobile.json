@@ -1,0 +1,50 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "documentWidth": 390,
+  "bodyWidth": 390,
+  "counter": "214개 표시 · 공식 완료 78/214",
+  "officialNote": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개 · 마지막 확인 오전 6:44:05",
+  "card": {
+    "text": "2026-11-06 C11.4 parsed Root HTML intrinsic explicit columns × direct-text implicit min-content rows · bounded implementation PR #1195 Rebase and merge (2026-11-05T21:25:28Z, merge SHA 3641212a08a9d5174880dac07f4e5aa146ae52e7): 기존 explicit intrinsic column profile과 한 direct text item의 implicit min-content row 기여를 기본 Root HTML route에서 결합했다. Chrome 156 matrix는 min-content column에서 rows [10,60,34]px, max-content에서 [10,10,34]px, auto/flexible representative에서 [10,20,34]px를 확인했다. Fixture SHA-256은 fc9ff608f630e7a6e6e2f185f8e49da93b696f5ea1b167efca4996082403380e다. Focused Rust 12/12, 23/23, 5/5와 changed-crate Clippy가 통과했다. Android API 37 ARM64 AVD/ANGLE SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator에서 layout-ready·7 boxes·draw/present를 기록했다. 캡처는 visual smoke이며 PixelCopy·Metal drawable readback, 실기기·hardware GPU, iOS compositor 이후 pixel equality 또는 WPT 근거가 아니다. PR check rollup은 비어 있다. C11.4/C11은 미완료이며 공식 완료 78/214를 유지한다. 계획 · 내부 계약 0059 · 실행 근거·한계 · Android AVD 화면 · iOS Simulator 화면 · 공식 상태.",
+    "x": 14,
+    "y": 2616.484375,
+    "width": 362,
+    "height": 407.8125,
+    "right": 376,
+    "links": [
+      {
+        "text": "PR #1195 Rebase and merge",
+        "href": "https://github.com/ohah/spinon/pull/1195"
+      },
+      {
+        "text": "계획",
+        "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-intrinsic-combined-tracks.md"
+      },
+      {
+        "text": "내부 계약 0059",
+        "href": "https://github.com/ohah/spinon/blob/main/spec/internal/0059-c11-grid-layout.md"
+      },
+      {
+        "text": "실행 근거·한계",
+        "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-intrinsic-combined-tracks-runtime-2026-11-06/README.md"
+      },
+      {
+        "text": "Android AVD 화면",
+        "href": "https://raw.githubusercontent.com/ohah/spinon/3641212a08a9d5174880dac07f4e5aa146ae52e7/spec/internal/evidence/c11-root-html-intrinsic-combined-tracks-runtime-2026-11-06/android-avd-api37/screen.png"
+      },
+      {
+        "text": "iOS Simulator 화면",
+        "href": "https://raw.githubusercontent.com/ohah/spinon/3641212a08a9d5174880dac07f4e5aa146ae52e7/spec/internal/evidence/c11-root-html-intrinsic-combined-tracks-runtime-2026-11-06/ios-simulator-iphone-17-pro/screen.png"
+      },
+      {
+        "text": "공식 상태",
+        "href": "https://github.com/ohah/spinon/blob/main/spec/STATUS.md#c11-css-grid"
+      }
+    ]
+  }
+}
