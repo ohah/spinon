@@ -38,7 +38,9 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 
 test -d "$v8_dir"
-test "$(shasum -a 256 "$fixture" | cut -d ' ' -f 1)" = "$(cat "$evidence_dir/runtime-fixture.sha256" | cut -d ' ' -f 1)"
+fixture_sha="$(shasum -a 256 "$fixture" | cut -d ' ' -f 1)"
+fixture_bytes="$(wc -c < "$fixture" | tr -d '[:space:]')"
+test "$fixture_sha" = "$(cat "$evidence_dir/runtime-fixture.sha256" | cut -d ' ' -f 1)"
 mkdir -p "$evidence_dir/android" "$evidence_dir/ios"
 cp "$fixture" "$android_asset"
 cp "$fixture" "$ios_asset"
@@ -53,16 +55,22 @@ fi
 android_apk="$repo_root/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
 test -f "$android_apk"
 shasum -a 256 "$android_apk" > "$evidence_dir/android/apk.sha256"
-unzip -p "$android_apk" assets/root-html-default-rendering.html | shasum -a 256 > "$evidence_dir/android/apk-root-html-asset.sha256"
+apk_fixture_sha="$(unzip -p "$android_apk" assets/root-html-default-rendering.html | shasum -a 256 | cut -d ' ' -f 1)"
+printf '%s  %s\n' "$apk_fixture_sha" "assets/root-html-default-rendering.html" > "$evidence_dir/android/apk-root-html-asset.sha256"
+test "$apk_fixture_sha" = "$fixture_sha"
 adb -s "$android_serial" logcat -c
 adb -s "$android_serial" install -r "$android_apk" > "$evidence_dir/android/install.log" 2>&1
+android_started=1
 adb -s "$android_serial" shell am start -n "$bundle_id/.MainActivity" \
   --ez spinon_c0412_root_html_default_render true > "$evidence_dir/android/launch.log" 2>&1
-android_started=1
 sleep 8
 adb -s "$android_serial" exec-out screencap -p > "$evidence_dir/android/simulator-screen.png"
+test -s "$evidence_dir/android/simulator-screen.png"
 adb -s "$android_serial" logcat -d -v threadtime > "$evidence_dir/android/logcat-full.txt"
-rg "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE|SPINON_C0410_ENVIRONMENT status=|SPINON_C0410_DRAW .*presented boxes=" "$evidence_dir/android/logcat-full.txt" > "$evidence_dir/android/logcat-runtime.txt" || true
+rg "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE|SPINON_C0410_ENVIRONMENT status=|SPINON_C0410_DRAW .*presented boxes=" "$evidence_dir/android/logcat-full.txt" > "$evidence_dir/android/logcat-runtime.txt"
+rg -F "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case=default bytes=$fixture_bytes sha256=$fixture_sha" "$evidence_dir/android/logcat-runtime.txt" > /dev/null
+rg -q 'SPINON_C0410_ENVIRONMENT status=0 .*layout=ready boxes=48' "$evidence_dir/android/logcat-runtime.txt"
+rg -q 'SPINON_C0410_DRAW .*status=0 presented boxes=48' "$evidence_dir/android/logcat-runtime.txt"
 adb -s "$android_serial" shell am force-stop "$bundle_id"
 android_started=0
 
@@ -74,15 +82,21 @@ fi
 ios_app="$repo_root/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app"
 test -d "$ios_app"
 shasum -a 256 "$ios_app/Info.plist" > "$evidence_dir/ios/app-info.sha256"
+ios_fixture_sha="$(shasum -a 256 "$ios_app/root-html-default-rendering.html" | cut -d ' ' -f 1)"
 shasum -a 256 "$ios_app/root-html-default-rendering.html" > "$evidence_dir/ios/app-root-html-asset.sha256"
+test "$ios_fixture_sha" = "$fixture_sha"
 xcrun simctl install "$ios_simulator" "$ios_app" > "$evidence_dir/ios/install.log" 2>&1
+ios_started=1
 xcrun simctl launch "$ios_simulator" "$bundle_id" \
   --spinon-c0412-root-html-default-render > "$evidence_dir/ios/launch.log" 2>&1
-ios_started=1
 sleep 8
 xcrun simctl io "$ios_simulator" screenshot "$evidence_dir/ios/simulator-screen.png" > "$evidence_dir/ios/screenshot.log" 2>&1
+test -s "$evidence_dir/ios/simulator-screen.png"
 xcrun simctl spawn "$ios_simulator" log show --last 3m --style compact --predicate 'process == "SpinonBootstrap"' > "$evidence_dir/ios/unified-log-full.txt" 2>&1
-rg "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE|SPINON_C0410_ENVIRONMENT status=|SPINON_C0410_DRAW .*presented boxes=" "$evidence_dir/ios/unified-log-full.txt" > "$evidence_dir/ios/unified-log-runtime.txt" || true
+rg "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE|SPINON_C0410_ENVIRONMENT status=|SPINON_C0410_DRAW .*presented boxes=" "$evidence_dir/ios/unified-log-full.txt" > "$evidence_dir/ios/unified-log-runtime.txt"
+rg -F "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case=default bytes=$fixture_bytes sha256=$fixture_sha" "$evidence_dir/ios/unified-log-runtime.txt" > /dev/null
+rg -q 'SPINON_C0410_ENVIRONMENT status=0 .*layout=ready boxes=48' "$evidence_dir/ios/unified-log-runtime.txt"
+rg -q 'SPINON_C0410_DRAW .*status=0 presented boxes=48' "$evidence_dir/ios/unified-log-runtime.txt"
 xcrun simctl terminate "$ios_simulator" "$bundle_id"
 ios_started=0
 

@@ -11,3 +11,11 @@ layout-focused.log
 runtime-focused.log
   before=12f146fbc619911d16a0e7c006f2f17a8f2d00152a22c3f248b161ac86ba542f
   normalized=644047dc83ab667f2271b894f4af4bfda62ce58c6ec0dbef253b6b0ff00179a7
+
+Second simulator capture (2026-11-05)
+android/logcat-full.txt
+  before=900c6d5504f13b23285563a85f02cff6a37adba2994d995026f8b0199bcc4de8
+  normalized=296a92b193a6bb3c77a6e41a239982ee0d8023fd59d944a4ab4ec1609b2d9759
+ios/build.log
+  before=b241564edbdab9d92ce8152d8b0ff417ae010d07bdf078e79f2bdc682b32df6f
+  normalized=092b51df9c78406acef946a44964c1b49f415f5bc0b6855c98949f67f6e69b41
