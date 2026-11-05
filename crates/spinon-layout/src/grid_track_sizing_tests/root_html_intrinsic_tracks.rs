@@ -2,6 +2,10 @@ use super::*;
 use crate::{LayoutGridTrackSizingAxis, LayoutGridTrackSizingStageKind};
 
 fn root_html_intrinsic_gap_input(gap: LayoutGap) -> LayoutInput {
+    root_html_intrinsic_gap_input_with_size(gap, 100.0, 100.0)
+}
+
+fn root_html_intrinsic_gap_input_with_size(gap: LayoutGap, width: f32, height: f32) -> LayoutInput {
     let flex_track = GridTrackSize::MinMax {
         min: GridTrackMinSizingFunction::LengthPx(0.0),
         max: GridTrackMaxSizingFunction::Fraction(1.0),
@@ -12,18 +16,15 @@ fn root_html_intrinsic_gap_input(gap: LayoutGap) -> LayoutInput {
         3,
         gap,
     );
-    input.nodes[0].style.width = LayoutDimension::Fixed(100.0);
-    input.nodes[0].style.height = LayoutDimension::Fixed(100.0);
+    input.nodes[0].style.width = LayoutDimension::Fixed(width);
+    input.nodes[0].style.height = LayoutDimension::Fixed(height);
     input.nodes[1].style.width = LayoutDimension::Fixed(40.0);
     input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
     input.nodes[2].style.width = LayoutDimension::Fixed(20.0);
     input.nodes[2].style.height = LayoutDimension::Fixed(20.0);
     input.nodes[3].style.width = LayoutDimension::Fixed(10.0);
     input.nodes[3].style.height = LayoutDimension::Fixed(10.0);
-    input.viewport = crate::Viewport {
-        width: 100.0,
-        height: 100.0,
-    };
+    input.viewport = crate::Viewport { width, height };
     input
         .grid_containers
         .get_mut(&id(1))
@@ -292,39 +293,211 @@ fn root_html_intrinsic_tracks_apply_fixed_gutters_before_fractional_expansion() 
 }
 
 #[test]
-fn root_html_intrinsic_tracks_reject_unsupported_and_invalid_gutters() {
-    for (gap, property) in [
+fn root_html_intrinsic_tracks_resolve_percentage_gutters_against_their_own_axis() {
+    let cases = [
+        (
+            LayoutGap::default(),
+            100.0,
+            100.0,
+            [40.0, 60.0],
+            [20.0, 80.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [40.0, 0.0, 20.0, 20.0],
+                [0.0, 20.0, 10.0, 10.0],
+            ],
+            "zero gap control",
+        ),
         (
             LayoutGap {
                 row: LayoutLengthPercentage::ZERO,
                 column: LayoutLengthPercentage::percent(0.1),
             },
-            "column-gap",
+            100.0,
+            100.0,
+            [40.0, 50.0],
+            [20.0, 80.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [50.0, 0.0, 20.0, 20.0],
+                [0.0, 20.0, 10.0, 10.0],
+            ],
+            "10% column gap",
         ),
         (
             LayoutGap {
-                row: LayoutLengthPercentage::Calc(crate::LayoutCalcId(1)),
+                row: LayoutLengthPercentage::percent(0.1),
                 column: LayoutLengthPercentage::ZERO,
             },
-            "row-gap",
+            100.0,
+            100.0,
+            [40.0, 60.0],
+            [20.0, 70.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [40.0, 0.0, 20.0, 20.0],
+                [0.0, 30.0, 10.0, 10.0],
+            ],
+            "10% row gap",
         ),
-    ] {
-        let mut input = root_html_intrinsic_gap_input(gap);
-        if matches!(gap.row, LayoutLengthPercentage::Calc(_)) {
-            input.css_math.push(crate::LayoutCssMathValue {
-                id: crate::LayoutCalcId(1),
-                node_id: id(1),
-                property: crate::LayoutCssMathProperty::RowGap,
-                expression: crate::LayoutCssMath::LengthPx(10.0),
-            });
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::percent(0.1),
+                column: LayoutLengthPercentage::percent(0.1),
+            },
+            100.0,
+            100.0,
+            [40.0, 50.0],
+            [20.0, 70.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [50.0, 0.0, 20.0, 20.0],
+                [0.0, 30.0, 10.0, 10.0],
+            ],
+            "10% row and column gaps",
+        ),
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::percent(0.25),
+                column: LayoutLengthPercentage::percent(0.1),
+            },
+            120.0,
+            80.0,
+            [40.0, 68.0],
+            [20.0, 40.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [52.0, 0.0, 20.0, 20.0],
+                [0.0, 40.0, 10.0, 10.0],
+            ],
+            "different definite axis bases",
+        ),
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::ZERO,
+                column: LayoutLengthPercentage::percent(1.2),
+            },
+            100.0,
+            100.0,
+            [40.0, 0.0],
+            [20.0, 80.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [160.0, 0.0, 20.0, 20.0],
+                [0.0, 20.0, 10.0, 10.0],
+            ],
+            "column gap over 100% preserves visible overflow",
+        ),
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::percent(1.2),
+                column: LayoutLengthPercentage::ZERO,
+            },
+            100.0,
+            100.0,
+            [40.0, 60.0],
+            [20.0, 0.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [40.0, 0.0, 20.0, 20.0],
+                [0.0, 140.0, 10.0, 10.0],
+            ],
+            "row gap over 100% preserves visible overflow",
+        ),
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::percent(0.0),
+                column: LayoutLengthPercentage::percent(0.0),
+            },
+            100.0,
+            100.0,
+            [40.0, 60.0],
+            [20.0, 80.0],
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [40.0, 0.0, 20.0, 20.0],
+                [0.0, 20.0, 10.0, 10.0],
+            ],
+            "zero percent control",
+        ),
+    ];
+
+    for (gap, width, height, expected_columns, expected_rows, expected_frames, case) in cases {
+        let input = root_html_intrinsic_gap_input_with_size(gap, width, height);
+        let output = TaffyLayoutEngine
+            .compute(&input)
+            .unwrap_or_else(|error| panic!("{case}: {error:?}"));
+        let trace = output
+            .grid_track_sizing_traces
+            .iter()
+            .find(|trace| trace.node == id(1))
+            .unwrap_or_else(|| panic!("{case}: missing Grid track sizing trace"));
+
+        for (axis, expected) in [
+            (LayoutGridTrackSizingAxis::Columns, expected_columns),
+            (LayoutGridTrackSizingAxis::Rows, expected_rows),
+        ] {
+            let pass = trace
+                .passes
+                .iter()
+                .find(|pass| pass.axis == axis)
+                .unwrap_or_else(|| panic!("{case}: missing {axis:?} sizing pass"));
+            let final_stage = pass
+                .stages
+                .last()
+                .unwrap_or_else(|| panic!("{case}: missing {axis:?} final stage"));
+            let actual = final_stage
+                .tracks
+                .iter()
+                .filter(|track| !track.is_gutter && !track.is_collapsed)
+                .map(|track| track.base_size)
+                .collect::<Vec<_>>();
+            assert_eq!(actual.len(), 2, "{case}: {axis:?} track count");
+            for (index, (actual, expected)) in actual.iter().zip(expected).enumerate() {
+                assert!(
+                    (actual - expected).abs() <= 0.02,
+                    "{case}: {axis:?}[{index}] expected {expected}, got {actual}"
+                );
+            }
         }
-        match TaffyLayoutEngine.compute(&input) {
-            Err(LayoutError::UnsupportedGridContainerStyle {
-                node,
-                property: actual,
-            }) if node == id(1) && actual == property => {}
-            result => panic!("{property}: expected an unsupported gap diagnostic, got {result:?}"),
+
+        for (node, expected) in [
+            (id(2), expected_frames[0]),
+            (id(3), expected_frames[1]),
+            (id(4), expected_frames[2]),
+        ] {
+            let frame = output.frames[&node];
+            assert_eq!(
+                [frame.x, frame.y, frame.width, frame.height],
+                expected,
+                "{case}: item {node:?} frame"
+            );
         }
+    }
+}
+
+#[test]
+fn root_html_intrinsic_tracks_reject_unsupported_and_invalid_gutters() {
+    let (gap, property) = (
+        LayoutGap {
+            row: LayoutLengthPercentage::Calc(crate::LayoutCalcId(1)),
+            column: LayoutLengthPercentage::ZERO,
+        },
+        "row-gap",
+    );
+    let mut input = root_html_intrinsic_gap_input(gap);
+    input.css_math.push(crate::LayoutCssMathValue {
+        id: crate::LayoutCalcId(1),
+        node_id: id(1),
+        property: crate::LayoutCssMathProperty::RowGap,
+        expression: crate::LayoutCssMath::LengthPx(10.0),
+    });
+    match TaffyLayoutEngine.compute(&input) {
+        Err(LayoutError::UnsupportedGridContainerStyle {
+            node,
+            property: actual,
+        }) if node == id(1) && actual == property => {}
+        result => panic!("{property}: expected an unsupported gap diagnostic, got {result:?}"),
     }
 
     for (gap, field) in [
@@ -348,6 +521,20 @@ fn root_html_intrinsic_tracks_reject_unsupported_and_invalid_gutters() {
                 column: LayoutLengthPercentage::length(f32::INFINITY),
             },
             "gap.column",
+        ),
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::ZERO,
+                column: LayoutLengthPercentage::percent(-0.1),
+            },
+            "gap.column",
+        ),
+        (
+            LayoutGap {
+                row: LayoutLengthPercentage::percent(f32::NAN),
+                column: LayoutLengthPercentage::ZERO,
+            },
+            "gap.row",
         ),
     ] {
         let input = root_html_intrinsic_gap_input(gap);
@@ -379,6 +566,38 @@ fn root_html_intrinsic_tracks_reject_gutter_extent_overflow() {
         Err(LayoutError::UnsupportedGridContainerStyle { node, property })
             if node == id(1) && property == "column-gap"
     ));
+}
+
+#[test]
+fn root_html_intrinsic_tracks_reject_unrepresentable_percentage_gutter_extents() {
+    for (gap, property, tracks) in [
+        (LayoutLengthPercentage::percent(f32::MAX), "column-gap", 2),
+        (
+            LayoutLengthPercentage::percent(f32::MAX * 0.01),
+            "row-gap",
+            3,
+        ),
+    ] {
+        let mut input = root_html_intrinsic_gap_input(LayoutGap::default());
+        let container = input.grid_containers.get_mut(&id(1)).unwrap();
+        match property {
+            "column-gap" => {
+                input.nodes[0].style.gap.column = gap;
+                container.columns = vec![GridTrackSize::MinContent; tracks];
+            }
+            "row-gap" => {
+                input.nodes[0].style.gap.row = gap;
+                container.rows = vec![GridTrackSize::MinContent; tracks];
+            }
+            _ => unreachable!(),
+        }
+
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(LayoutError::UnsupportedGridContainerStyle { node, property: actual })
+                if node == id(1) && actual == property
+        ));
+    }
 }
 
 #[test]

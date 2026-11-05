@@ -1520,9 +1520,17 @@ fn validate_root_html_intrinsic_tracks_contract(
         Some("overflow-x")
     } else if style.overflow_y != crate::LayoutOverflow::Visible {
         Some("overflow-y")
-    } else if !root_html_intrinsic_gap_is_supported(style.gap.row, container.rows.len()) {
+    } else if !root_html_intrinsic_gap_is_supported(
+        style.gap.row,
+        container.rows.len(),
+        style.height,
+    ) {
         Some("row-gap")
-    } else if !root_html_intrinsic_gap_is_supported(style.gap.column, container.columns.len()) {
+    } else if !root_html_intrinsic_gap_is_supported(
+        style.gap.column,
+        container.columns.len(),
+        style.width,
+    ) {
         Some("column-gap")
     } else if style.margin != crate::LayoutEdges::default() {
         Some("margin")
@@ -1570,13 +1578,26 @@ fn validate_root_html_intrinsic_tracks_contract(
 pub(super) fn root_html_intrinsic_gap_is_supported(
     gap: LayoutLengthPercentage,
     explicit_track_count: usize,
+    basis: LayoutDimension,
 ) -> bool {
-    match gap {
+    let used_gap = match gap {
         LayoutLengthPercentage::LengthPx(value) if value.is_finite() && value >= 0.0 => {
-            f64::from(value) * explicit_track_count.saturating_sub(1) as f64 <= f64::from(f32::MAX)
+            f64::from(value)
         }
-        _ => false,
-    }
+        LayoutLengthPercentage::Percentage(fraction) if fraction.is_finite() && fraction >= 0.0 => {
+            let LayoutDimension::Fixed(basis) = basis else {
+                return false;
+            };
+            if !basis.is_finite() || basis < 0.0 {
+                return false;
+            }
+            f64::from(fraction) * f64::from(basis)
+        }
+        _ => return false,
+    };
+    used_gap.is_finite()
+        && used_gap <= f64::from(f32::MAX)
+        && used_gap * explicit_track_count.saturating_sub(1) as f64 <= f64::from(f32::MAX)
 }
 
 pub(super) fn root_html_intrinsic_track_is_supported(track: &GridTrackSize) -> bool {
