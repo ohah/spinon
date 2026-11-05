@@ -1,0 +1,17 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.19s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-9bc380b151468c9d)
+
+running 11 tests
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_implicit_tracks_without_partial_publish ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_prefix_does_not_hide_later_track_overflow ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_unprojectable_percentage_gap_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_valid_calc_gap_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_overflowing_gutter_extent_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_ignores_invalid_negative_gap_declaration ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_fixed_gaps_match_reference_tracks_and_frames ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_percentage_gaps_match_reference_frames ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_unrepresentable_track_and_gutter_extent_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_tracks_match_all_reference_frames ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_axes_gaps_and_box_edges ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 276 filtered out; finished in 2.83s

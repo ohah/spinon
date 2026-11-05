@@ -1,0 +1,13 @@
+Generated evidence logs have trailing horizontal whitespace and repeated final blank lines normalized.
+android/logcat-full.txt
+  before=cefd7882d143aeb354be14ad5c43662998ef69fa8b8bbf01f7d6a906ff35d680
+  normalized=f82a5c885260eeff07070955c3ec772e5a589c72ca1a7e38ee1823600e0bbb6b
+ios/build.log
+  before=3cad2a18c8b7c9fd136a4e36b91998efafa3d06c0ea399593a8a95f91f98bd0c
+  normalized=7c3e180b0c22aeca7137aff6db2f2639239f4f3d3a20492d52d1ecdb6bd1d16a
+layout-focused.log
+  before=67cc9244905cf27659364e526c33f61dc81b42bb8c02cb85a0398484ae109700
+  normalized=4b11c9f4e1df9267b06bbc2ead393f0446e73054d6ae0cd51116c807729c3b8d
+runtime-focused.log
+  before=12f146fbc619911d16a0e7c006f2f17a8f2d00152a22c3f248b161ac86ba542f
+  normalized=644047dc83ab667f2271b894f4af4bfda62ce58c6ec0dbef253b6b0ff00179a7

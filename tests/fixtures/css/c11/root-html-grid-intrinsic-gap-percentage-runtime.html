@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML intrinsic Grid percentage-gap runtime</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      main {
+        display: grid;
+        width: 320px;
+        height: 150px;
+        margin: 0;
+        padding: 0;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 50px 50px 50px;
+        grid-auto-flow: row;
+        gap: 0;
+      }
+      .scene { width: 100px; height: 50px; margin: 0; padding: 0; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+        grid-template-columns: min-content minmax(0px, 1fr);
+        grid-template-rows: min-content minmax(0px, 1fr);
+      }
+      .item {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+        min-height: 0;
+      }
+      .basis { width: 40px; height: 10px; background-color: #4488aa; }
+      .fill { width: 20px; height: 20px; background-color: #aa4488; }
+      .tail { width: 10px; height: 10px; background-color: #44aa88; }
+      #column-10 .grid { column-gap: 10%; }
+      #row-10 .grid { row-gap: 10%; }
+      #both-10 .grid { gap: 10%; }
+      #mixed-basis .grid, #legacy-alias .grid { width: 120px; height: 80px; }
+      #mixed-basis .grid { gap: 25% 10%; }
+      #column-over-100 .grid { column-gap: 120%; }
+      #row-over-100 .grid { row-gap: 120%; }
+      #zero-percent .grid { gap: 0%; }
+      #legacy-alias .grid { grid-gap: 25% 10%; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="scene" id="control"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="column-10"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="row-10"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="both-10"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="column-over-100"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="mixed-basis"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="row-over-100"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="zero-percent"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="legacy-alias"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+    </main>
+  </body>
+</html>

@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 
 use super::CalcLayoutTree;
 use crate::compact_taffy_style::CompactTaffyStyle;
-use crate::{GridPlacementMode, LayoutError, LayoutInput, LayoutLengthPercentage};
+use crate::{GridPlacementMode, LayoutDimension, LayoutError, LayoutInput, LayoutLengthPercentage};
 use spinon_core::NodeId;
 use taffy::{DetailedGridInfo, DetailedLayoutInfo, LayoutGridContainer, NodeId as TaffyNodeId};
 
@@ -31,19 +31,14 @@ impl CalcLayoutTree {
             let grid_info = match &node.detailed_layout_info {
                 DetailedLayoutInfo::Grid(grid_info) => grid_info,
                 _ => {
-                    if matches!(
-                        source_node.style.gap.column,
-                        LayoutLengthPercentage::LengthPx(value) if value > 0.0
-                    ) {
+                    if has_positive_used_gap(source_node.style.gap.column, source_node.style.width)
+                    {
                         return Err(LayoutError::UnsupportedGridContainerStyle {
                             node: spinon_node,
                             property: "column-gap",
                         });
                     }
-                    if matches!(
-                        source_node.style.gap.row,
-                        LayoutLengthPercentage::LengthPx(value) if value > 0.0
-                    ) {
+                    if has_positive_used_gap(source_node.style.gap.row, source_node.style.height) {
                         return Err(LayoutError::UnsupportedGridContainerStyle {
                             node: spinon_node,
                             property: "row-gap",
@@ -53,19 +48,21 @@ impl CalcLayoutTree {
                 }
             };
 
-            for (positions, gap, property) in [
+            for (positions, gap, basis, property) in [
                 (
                     &grid_info.columns.positions,
                     source_node.style.gap.column,
+                    source_node.style.width,
                     "column-gap",
                 ),
                 (
                     &grid_info.rows.positions,
                     source_node.style.gap.row,
+                    source_node.style.height,
                     "row-gap",
                 ),
             ] {
-                if !matches!(gap, LayoutLengthPercentage::LengthPx(value) if value > 0.0) {
+                if !has_positive_used_gap(gap, basis) {
                     continue;
                 }
                 if positions
@@ -80,6 +77,19 @@ impl CalcLayoutTree {
             }
         }
         Ok(())
+    }
+}
+
+fn has_positive_used_gap(gap: LayoutLengthPercentage, basis: LayoutDimension) -> bool {
+    match gap {
+        LayoutLengthPercentage::LengthPx(value) => value > 0.0,
+        LayoutLengthPercentage::Percentage(fraction) => match basis {
+            LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0 => {
+                f64::from(fraction) * f64::from(value) > 0.0
+            }
+            _ => false,
+        },
+        LayoutLengthPercentage::Auto | LayoutLengthPercentage::Calc(_) => false,
     }
 }
 

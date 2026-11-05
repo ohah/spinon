@@ -1,12 +1,14 @@
 # C11.1 · parsed Root HTML intrinsic Grid percentage gap
 
-**상태:** 구현 전 계획 후보. C11.1/C11은 미완료이며 공식 완료 수는 78/214다.
+**상태:** 구현·Android/iOS 시뮬레이터 검증을 마친 제한 후보. 문서·적대 검토·구현 PR이 남아 있다. C11.1/C11은 미완료이며 공식 완료 수는 78/214다.
 
 **선행 구현:** [intrinsic explicit tracks](./c11-root-html-intrinsic-grid-tracks.md), [고정 px intrinsic gap · PR #1172](./c11-root-html-grid-intrinsic-gap.md), [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
 **구현 전 기준:** [Chrome 156 Agent Browser 사전 비교와 독립 기대값](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-gap-percentage-precomparison.html) · [expected](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/expected.json) · [Chrome observation](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/chrome156-observation.json) · [9-scene comparison](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/comparison.json)
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-grid-intrinsic-gap-percentage-plan-review-20.md). **계획 PR 변경 검토:** [30개](./c11-root-html-grid-intrinsic-gap-percentage-plan-pr-diff-review-30.md). 구현/runtime 20개와 구현 PR 30개 검토는 구현 뒤에 각각 새로 수행한다.
+
+**구현 후보 결과:** 기존 intrinsic Grid 제한 profile에만 direct percentage gap을 연결했다. Layout focused tests 8/8, Root HTML runtime tests 11/11, 변경 crates Clippy, FFI check 및 fixture-module boundary 33/33을 통과했다. Chrome 156 사전 비교의 9 scene과 동일한 runtime fixture를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 실행해 각각 `layout=ready boxes=48` 및 draw/present를 확인했다. Simulator screenshots는 visual smoke이며 PixelCopy/Metal drawable readback이나 WPT 적합성 근거가 아니다. [실행 evidence](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.md) · [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/implementation-runtime-review-20.md). CSS projection에서 표현할 수 없는 큰 computed percentage는 `unsupported_computed_value`로 layout 전에 거부하고, typed percentage의 resolved gap 또는 aggregate gutter가 f32 범위를 넘으면 해당 property로 원자 실패한다.
 
 ## 결손과 목표
 
@@ -54,14 +56,14 @@ percentage gap이 있는 indefinite/auto Grid axis, cyclic intrinsic contributio
 
 ## 구현·검증 순서
 
-1. 이 계획을 별개의 20개 실패 관점으로 검토하고 계획 PR diff도 별도 30개로 검토한 뒤 계획 PR을 Rebase and merge한다. plan review는 구현 review에 재사용하지 않는다.
-2. 기존 profile 경계와 LayoutLengthPercentage::Percentage projection, Root HTML gap admission, fixed-gap extent preflight, Taffy Grid trace, runtime atomicity 경로를 대조한다. 새 percentage 허용은 intrinsic track profile에만 적용하며 Flex·other Grid profile은 바꾸지 않는다.
-3. Root HTML gap support check에 해당 axis의 definite content-box basis를 공급한다. usedGap = basis × percentage와 gutter aggregate는 overflow-safe 중간 연산으로 검증한다. Existing non-finite track-line check도 resolved percentage gutter가 양수일 때 적용한다.
-4. Rust layout test는 9-scene fixture의 fixed dimensions, shorthand/alias, row/column basis, zero, 120% overflow를 trace·track·frame으로 독립 expected와 비교한다. Invalid typed value, finite-range overflow, wrong-axis basis, CSS-invalid fallback, unsupported calc, 여러 Grid의 atomic rejection 및 기존 fixed-px 회귀도 고정한다.
-5. 기본 parsed Root HTML runtime fixture를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source hash로 실행한다. layout=ready, item/root frame, draw/present를 기록하고 overflow scene도 확인한다. Screenshot은 visual smoke이며 실제 PixelCopy/Metal drawable readback 없이는 surface pixel 증거라고 부르지 않는다.
-6. 변경 crates focused tests, 관련 regression suite, scoped Clippy와 cargo fmt --all -- --check를 실행한다. broad suite에서 기준 HEAD와 같은 기존 실패가 있으면 둘을 나눠 기록한다. 기본 artifact에 fixture 전용 FFI/API가 새로 들어오지 않았는지도 확인한다.
-7. 구현/runtime 결과를 새 실패 관점 20개로 검토한 뒤 수정 영향을 재검토한다. 구현 PR diff는 계획 review와 구분되는 30개 관점으로 검토한다. PR에는 Android/iOS simulator 화면이 있으면 첨부한다.
-8. 병합 뒤 exact merge SHA와 required status/check rollup을 확인하고 internal contract 0059, spec/STATUS.md, C11 계획 및 공개 roadmap의 제한 범위를 동기화한다. C11.1/C11 체크와 공식 78/214는 그대로 둔다. 사용자가 지정한 Tailnet 미리보기는 Agent Browser로 desktop/mobile을 확인하고 관련 Agent Browser session/process를 종료한다.
+1. 계획 실패 관점 20개와 계획 PR diff 30개를 별도로 마쳤고 계획 PR #1175를 Rebase and merge했다. 이 검토를 구현 검토에 재사용하지 않는다.
+2. 기존 profile 경계와 typed percentage projection, Root HTML gap admission, fixed-gap extent preflight, Taffy Grid trace 및 runtime atomicity 경로를 대조했다. 변경은 intrinsic track profile에만 적용했고 Flex·other Grid profile은 바꾸지 않았다.
+3. Root HTML gap 지원 검사에 해당 axis의 definite content-box basis를 공급했다. usedGap와 aggregate gutter는 f64 중간 연산으로 검증하며, positive resolved percentage gutter의 non-finite track-line preflight를 연결했다.
+4. Rust layout tests는 9-scene fixture의 shorthand/alias, row/column basis, zero 및 120% overflow를 독립 expected와 비교한다. Invalid typed value와 resolved/aggregate f32 overflow 거부도 검사한다. Runtime matrix는 성공 frame과 paint visibility를 확인하고, projection에서 표현 불가능한 큰 percentage 및 기존 invalid/calc 거부를 검사한다.
+5. 기본 parsed Root HTML runtime fixture를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source hash로 실행했다. 두 플랫폼 모두 layout=ready, 48 boxes 및 draw/present를 기록했다. Screenshot은 visual smoke이며 PixelCopy/Metal drawable readback은 없다.
+6. Layout/runtime focused tests, scoped Clippy, FFI check, fixture boundary 33/33, simulator builds와 `cargo fmt --all -- --check`를 통과했다. 전체 `spinon-layout --lib`는 449/450이며 유일한 C15 HostDocument assertion은 fixed-px baseline에서도 실패했다. Fixture-test runtime suite는 후보 276/8/3, 정확한 `5d47b06cc` 기준 275/8/3이고 실패 테스트 목록이 동일하다. 넓은 suite 둘 다 green이라고 주장하지 않는다. [현재·기준 실행 로그](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.md).
+7. 남은 단계는 구현/runtime 실패 관점 20개 검토, 이 구현의 실제 변경 diff에 대한 별도 30개 적대 검토, 결과 반영과 PR 생성이다. PR에는 Android/iOS simulator 화면을 첨부한다.
+8. 병합 뒤 exact merge SHA와 required status/check rollup을 확인하고 internal contract 0059, spec/STATUS.md, C11 계획 및 사용자가 지정한 Tailnet roadmap 미리보기의 제한 범위를 동기화한다. C11.1/C11 체크와 공식 78/214는 그대로 둔다. Tailnet 화면은 Agent Browser로 desktop/mobile을 확인하고 세션·프로세스를 종료한다.
 
 ## 완료 판정의 제한
 

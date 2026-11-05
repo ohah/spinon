@@ -297,9 +297,9 @@ fn validate_container(
                     && (value > 0.0 || (!intrinsic_track_sizing && value == 0.0))
         )
     };
-    let supported_gap = |gap, explicit_track_count| {
+    let supported_gap = |gap, explicit_track_count, basis| {
         if intrinsic_track_sizing {
-            crate::grid::root_html_intrinsic_gap_is_supported(gap, explicit_track_count)
+            crate::grid::root_html_intrinsic_gap_is_supported(gap, explicit_track_count, basis)
         } else {
             matches!(gap, crate::LayoutLengthPercentage::LengthPx(value) if value == 0.0)
         }
@@ -324,9 +324,9 @@ fn validate_container(
         Some("overflow-x")
     } else if style.overflow_y != LayoutOverflow::Visible {
         Some("overflow-y")
-    } else if !supported_gap(style.gap.row, container.rows.len()) {
+    } else if !supported_gap(style.gap.row, container.rows.len(), style.height) {
         Some("row-gap")
-    } else if !supported_gap(style.gap.column, container.columns.len()) {
+    } else if !supported_gap(style.gap.column, container.columns.len(), style.width) {
         Some("column-gap")
     } else if style.margin != crate::LayoutEdges::default() {
         Some("margin")

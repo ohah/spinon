@@ -14,6 +14,12 @@ const GAP_SOURCE: &str =
 const GAP_EXPECTED: &str = include_str!(
     "../../../../../spec/internal/evidence/c11-root-html-intrinsic-gap-precomparison-2026-11-05/expected.json"
 );
+const PERCENTAGE_GAP_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-gap-percentage-runtime.html"
+);
+const PERCENTAGE_GAP_EXPECTED: &str = include_str!(
+    "../../../../../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/expected.json"
+);
 
 fn run(source: &str) -> (RuntimeSession, crate::session::RuntimeLayoutSnapshot) {
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(source)
@@ -295,22 +301,127 @@ fn parsed_root_html_intrinsic_grid_fixed_gaps_match_reference_tracks_and_frames(
 }
 
 #[test]
-fn parsed_root_html_intrinsic_grid_rejects_valid_percentage_gap_atomically() {
-    let valid = "#both-gap .grid { gap: 10px; }";
-    let invalid = "#both-gap .grid { column-gap: 10%; }";
-    let source = GAP_SOURCE.replacen(valid, invalid, 1);
+fn parsed_root_html_intrinsic_grid_percentage_gaps_match_reference_frames() {
+    let expected: Value = serde_json::from_str(PERCENTAGE_GAP_EXPECTED)
+        .expect("intrinsic Grid percentage-gap expected values should be valid JSON");
+    let expected_scenes = expected["cases"]
+        .as_array()
+        .expect("percentage-gap positive scenes should exist");
+    assert_eq!(expected_scenes.len(), 9);
+
+    let (session, layout) = run(PERCENTAGE_GAP_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "layout error={:?}; cascade state={:?}, error={:?}",
+        layout.error,
+        session.ua_cascade_snapshot().state,
+        session.ua_cascade_snapshot().error
+    );
+    let nodes = grid_and_item_nodes_by_scene_id(&session);
+    assert_eq!(nodes.len(), expected_scenes.len());
+    let completed = layout
+        .completed
+        .as_ref()
+        .expect("all percentage-gap Grid scenes should complete atomically");
+    let render_scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("default Root HTML runtime should publish its render snapshot");
+    let cascade = session.ua_cascade_snapshot();
+    assert_eq!(
+        completed.key,
+        cascade
+            .completed
+            .as_ref()
+            .expect("computed styles should complete for the same document revision")
+            .key
+    );
+
+    let mut checked_frames = 0;
+    for expected_scene in expected_scenes {
+        let scene_id = expected_scene["id"]
+            .as_str()
+            .expect("percentage-gap scene id should exist");
+        let (_, grid_node, item_nodes) = &nodes[scene_id];
+        assert_eq!(item_nodes.len(), 3, "{scene_id} should have three items");
+        let grid = frame_for_node(completed, *grid_node)
+            .unwrap_or_else(|| panic!("{scene_id}: Grid frame is missing"));
+        let expected_root_size = expected_scene["rootSizeCssPx"]
+            .as_array()
+            .expect("expected Grid root size should exist");
+        assert_frame_near(
+            [grid.width, grid.height, 0.0, 0.0],
+            [
+                expected_root_size[0].as_f64().unwrap() as f32,
+                expected_root_size[1].as_f64().unwrap() as f32,
+                0.0,
+                0.0,
+            ],
+            &format!("{scene_id} Grid size"),
+        );
+
+        let expected_frames = expected_scene["itemsRelativeToRoot"]
+            .as_array()
+            .expect("expected item frames should exist");
+        assert_eq!(expected_frames.len(), item_nodes.len(), "{scene_id}");
+        for (item_node, expected_frame_json) in item_nodes.iter().zip(expected_frames) {
+            let item = frame_for_node(completed, *item_node)
+                .unwrap_or_else(|| panic!("{scene_id}: item frame {item_node} is missing"));
+            let relative = [item.x - grid.x, item.y - grid.y, item.width, item.height];
+            assert_frame_near(
+                relative,
+                expected_frame(expected_frame_json),
+                &format!("{scene_id} item {item_node}"),
+            );
+            assert!(
+                render_scene
+                    .boxes()
+                    .iter()
+                    .any(|render_box| render_box.node_id().get() == *item_node),
+                "{scene_id}: Grid item should remain in the published paint scene"
+            );
+            checked_frames += 1;
+
+            if scene_id == "column-over-100" && item_node == &item_nodes[1] {
+                assert!(
+                    relative[0] + relative[2] > grid.width,
+                    "column gap over 100% must preserve visible inline overflow"
+                );
+            }
+            if scene_id == "row-over-100" && item_node == &item_nodes[2] {
+                assert!(
+                    relative[1] + relative[3] > grid.height,
+                    "row gap over 100% must preserve visible block overflow"
+                );
+            }
+        }
+    }
+    assert_eq!(checked_frames, 27);
+}
+
+#[test]
+fn parsed_root_html_intrinsic_grid_rejects_unprojectable_percentage_gap_atomically() {
+    let valid = "#mixed-basis .grid { gap: 25% 10%; }";
+    let invalid = "#mixed-basis .grid { gap: 25% 3e38%; }";
+    let source = PERCENTAGE_GAP_SOURCE.replacen(valid, invalid, 1);
     assert_ne!(
-        source, GAP_SOURCE,
+        source, PERCENTAGE_GAP_SOURCE,
         "the percentage-gap mutation should match"
     );
 
     let (session, layout) = run(&source);
+    assert_eq!(
+        session.ua_cascade_snapshot().state,
+        crate::session::RuntimeUaCascadeState::Ready,
+        "the parser and cascade finish before the projection rejects an unrepresentable percentage"
+    );
     assert_eq!(layout.state, crate::session::RuntimeLayoutState::Failed);
     let failure = layout
         .error
         .as_ref()
-        .expect("the bounded fixed-px profile should reject percentage gap");
-    assert_eq!(failure.code, "layout_failed");
+        .expect("an unprojectable percentage gutter should fail closed");
+    assert_eq!(failure.code, "unsupported_computed_value");
     assert!(
         failure
             .property
@@ -319,12 +430,7 @@ fn parsed_root_html_intrinsic_grid_rejects_valid_percentage_gap_atomically() {
     );
     assert!(
         layout.completed.is_none(),
-        "an unsupported percentage gutter must not publish partial layout frames or paint"
-    );
-    assert_eq!(
-        session.ua_cascade_snapshot().state,
-        crate::session::RuntimeUaCascadeState::Ready,
-        "percentage gap is valid computed CSS rejected by the intrinsic layout profile"
+        "an unrepresentable percentage gutter must not publish partial frames or paint"
     );
 }
 
@@ -528,11 +634,6 @@ fn parsed_root_html_intrinsic_grid_rejects_axes_gaps_and_box_edges() {
         (
             "#min-content .grid { grid-template-columns: min-content; height: 0; }",
             "height",
-            "layout_failed",
-        ),
-        (
-            "#min-content .grid { grid-template-columns: min-content; gap: 10%; }",
-            "row-gap",
             "layout_failed",
         ),
         (
