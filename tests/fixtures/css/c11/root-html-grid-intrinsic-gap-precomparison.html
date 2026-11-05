@@ -21,6 +21,7 @@
     .scene > div { box-sizing: border-box; }
     .basis { width: 40px; height: 10px; background: #48a; }
     .fill { width: 20px; height: 20px; background: #a48; }
+    .tail { width: 10px; height: 10px; background: #4a8; }
     #control { left: 0; top: 0; }
     #column-gap { left: 110px; top: 0; column-gap: 10px; }
     #row-gap { left: 220px; top: 0; row-gap: 10px; }
@@ -30,24 +31,29 @@
 </head>
 <body>
   <section class="scene" id="control" data-case="control">
-    <div class="basis" style="grid-column:1;grid-row:1"></div>
-    <div class="fill" style="grid-column:2;grid-row:2"></div>
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
   </section>
   <section class="scene" id="column-gap" data-case="column-gap">
-    <div class="basis" style="grid-column:1;grid-row:1"></div>
-    <div class="fill" style="grid-column:2;grid-row:2"></div>
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
   </section>
   <section class="scene" id="row-gap" data-case="row-gap">
-    <div class="basis" style="grid-column:1;grid-row:1"></div>
-    <div class="fill" style="grid-column:2;grid-row:2"></div>
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
   </section>
   <section class="scene" id="both-gap" data-case="both-gap">
-    <div class="basis" style="grid-column:1;grid-row:1"></div>
-    <div class="fill" style="grid-column:2;grid-row:2"></div>
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
   </section>
   <section class="scene" id="percent-gap" data-case="percent-gap">
-    <div class="basis" style="grid-column:1;grid-row:1"></div>
-    <div class="fill" style="grid-column:2;grid-row:2"></div>
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
   </section>
   <script>
     const rect = (node) => {

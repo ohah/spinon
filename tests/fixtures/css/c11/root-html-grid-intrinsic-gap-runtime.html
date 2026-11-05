@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML intrinsic Grid fixed-gap runtime</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      main { width: 110px; margin: 0; padding: 0; }
+      .scene { width: 100px; height: 110px; margin: 0 0 0; padding: 0; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+        grid-template-columns: min-content minmax(0px, 1fr);
+        grid-template-rows: min-content minmax(0px, 1fr);
+      }
+      .item {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+        min-height: 0;
+      }
+      .basis { width: 40px; height: 10px; background-color: #4488aa; }
+      .fill { width: 20px; height: 20px; background-color: #aa4488; }
+      .tail { width: 10px; height: 10px; background-color: #44aa88; }
+      #column-gap .grid { column-gap: 10px; }
+      #row-gap .grid { row-gap: 10px; }
+      #both-gap .grid { gap: 10px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="scene" id="control"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="column-gap"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="row-gap"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+      <div class="scene" id="both-gap"><div class="grid"><div class="item basis" style="grid-row:1"></div><div class="item fill" style="grid-row:1"></div><div class="item tail" style="grid-row:2"></div></div></div>
+    </main>
+  </body>
+</html>

@@ -1520,9 +1520,9 @@ fn validate_root_html_intrinsic_tracks_contract(
         Some("overflow-x")
     } else if style.overflow_y != crate::LayoutOverflow::Visible {
         Some("overflow-y")
-    } else if style.gap.row != crate::LayoutLengthPercentage::LengthPx(0.0) {
+    } else if !root_html_intrinsic_gap_is_supported(style.gap.row, container.rows.len()) {
         Some("row-gap")
-    } else if style.gap.column != crate::LayoutLengthPercentage::LengthPx(0.0) {
+    } else if !root_html_intrinsic_gap_is_supported(style.gap.column, container.columns.len()) {
         Some("column-gap")
     } else if style.margin != crate::LayoutEdges::default() {
         Some("margin")
@@ -1565,6 +1565,18 @@ fn validate_root_html_intrinsic_tracks_contract(
         return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
     }
     Ok(())
+}
+
+pub(super) fn root_html_intrinsic_gap_is_supported(
+    gap: LayoutLengthPercentage,
+    explicit_track_count: usize,
+) -> bool {
+    match gap {
+        LayoutLengthPercentage::LengthPx(value) if value.is_finite() && value >= 0.0 => {
+            f64::from(value) * explicit_track_count.saturating_sub(1) as f64 <= f64::from(f32::MAX)
+        }
+        _ => false,
+    }
 }
 
 pub(super) fn root_html_intrinsic_track_is_supported(track: &GridTrackSize) -> bool {

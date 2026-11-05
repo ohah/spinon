@@ -16,8 +16,10 @@
 
 - 기존 `RootHtmlIntrinsicTrackSizingV1` placement mode와 PR #1167의 fixed positive width/height, zero margin/padding/border, no-area, `grid-auto-flow:row`, supported explicit track 및 item 제약을 유지한다.
 - `row-gap`·`column-gap` 각각의 zero 또는 finite non-negative fixed px 값을 허용한다. 값은 기존 `LayoutLengthPercentage::LengthPx` 입력이어야 하고 negative·NaN·infinity는 layout 전에 거부한다.
+- 각 축의 gutter 합산값 `(명시 track 수 - 1) × gap`도 finite `f32` CSS px 범위여야 한다. 개별 gap은 finite여도 여러 gutter의 합이 표현 범위를 넘으면 `row-gap` 또는 `column-gap` 진단으로 atomic fail-closed한다.
+- Taffy sizing 뒤에도 track line의 used start/end가 finite인지 확인하고, track base와 gutter가 결합해 표현 범위를 넘으면 frame 수집·publish 전에 해당 축 gap property로 거부한다.
 - cascade에서 `gap` shorthand, `row-gap`, `column-gap`으로 온 값은 동일한 typed layout 경로를 사용한다. 네 positive scene은 zero-gap control, column-only 10px, row-only 10px, 양축 10px shorthand다.
-- 고정 scene은 definite `100×100px` Grid, `min-content minmax(0px,1fr)` columns/rows와 fixed `40×10px`, `20×20px` direct block items를 사용한다. Explicit placement와 `align-content:start`/`justify-content:start`로 placement와 stretch를 분리한다.
+- 고정 scene은 definite `100×100px` Grid, `min-content minmax(0px,1fr)` columns/rows와 fixed `40×10px`, `20×20px`, `10×10px` direct block items를 사용한다. 현재 Root HTML intrinsic profile의 placement 계약을 지키도록 첫째·둘째 item은 row 1, 셋째는 row 2에 row-lock하고 각 행 안에서 column auto-placement를 쓴다. `align-content:start`/`justify-content:start`로 placement와 stretch를 분리한다.
 - CSS Grid 2025-03-26 CRD §11.5–§11.7에 따라 gap을 gutter로 반영한다. fixed 40px/10px intrinsic base는 유지하고, 각 축의 남은 definite free space에서 gutter를 먼저 빼고 `1fr`을 계산한다.
 - CSS-invalid negative `gap`은 Stylo cascade 처리와 runtime의 유효하지만 미지원 computed gap rejection을 구분한다. `10%`는 CSS-valid 대조군으로 Chrome에 기록하되 fixed-px-only 후보에서 explicit fail-closed한다.
 
@@ -29,18 +31,18 @@ Intrinsic track과 percentage·`calc()` gap 결합, zero/auto/percentage contain
 
 ## Oracle 및 수락 기준
 
-고정 Chrome 156 Agent Browser 관찰과 independent expected JSON은 [precomparison](../spec/internal/evidence/c11-root-html-intrinsic-gap-precomparison-2026-11-05/README.md)에 있다. 각 Grid의 content box는 `100×100px`다. gap 없는 control track은 columns `[40,60]`, rows `[10,90]`; column-gap 10px은 columns `[40,50]`; row-gap 10px은 rows `[10,80]`; 두 gap을 함께 쓰면 두 변화가 동시에 적용된다. Track list, root-relative item frames, 실제 computed gap과 item count를 확인하며 네 positive scene은 Chrome·독립 계산과 exact CSS px로 비교한다.
+고정 Chrome 156 Agent Browser 관찰과 independent expected JSON은 [precomparison](../spec/internal/evidence/c11-root-html-intrinsic-gap-precomparison-2026-11-05/README.md)에 있다. 각 Grid의 content box는 `100×100px`다. gap 없는 control track은 columns `[40,60]`, rows `[20,80]`; column-gap 10px은 columns `[40,50]`; row-gap 10px은 rows `[20,70]`; 두 gap을 함께 쓰면 두 변화가 동시에 적용된다. Track list, root-relative item frames, 실제 computed gap과 item count를 확인하며 네 positive scene은 Chrome·독립 계산과 exact CSS px로 비교한다.
 
 기본 Root HTML app runtime은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source/style/layout revision으로 네 positive scene을 실행한다. Frame 허용치는 0.5 CSS px 이하이며 track trace와 draw/present를 확인한다. 화면 캡처는 visual smoke로만 분류하고 surface readback을 하지 않으면 PixelCopy/Metal pixel 근거라고 부르지 않는다.
 
-Negative matrix는 percentage/calc gap, non-zero box edge, implicit tracks, non-definite axes, invalid typed numeric gap, multiple Grid atomicity, stale revision과 기존 zero-gap no-gap regression을 포함한다. `spinon-layout` intrinsic trace test에서 gutter/free-space stage를 독립 산술과 대조한다. 변경된 Rust crates의 focused tests, scoped Clippy와 `cargo fmt --all -- --check`를 실행하며 broad suite 실패는 기준 HEAD 결과와 구분한다. Product/default artifact에 fixture 전용 ABI나 payload가 추가되지 않았는지 확인한다.
+Negative matrix는 percentage/calc gap, gutter aggregate overflow, finite track-plus-gutter extent overflow, non-zero box edge, implicit tracks, non-definite axes, invalid typed numeric gap, multiple Grid atomicity와 기존 zero-gap regression을 포함한다. 이번 fixed-gap slice는 별도 asynchronous stale-revision race를 추가하지 않는다. 성공 runtime matrix는 layout/cascade snapshot key가 같은 revision인지 확인하고, stale completion 거부는 기존 runtime regression 범위에 둔다. `spinon-layout` intrinsic trace test에서 gutter/free-space stage를 독립 산술과 대조한다. 변경된 Rust crates의 focused tests, scoped Clippy와 `cargo fmt --all -- --check`를 실행하며 broad suite 실패는 기준 HEAD 결과와 구분한다. Product/default artifact에 fixture 전용 ABI나 payload가 추가되지 않았는지 확인한다.
 
 ## 순서와 검토
 
 1. 구현 전에 이 계획을 별도 실패 관점 20개로 검토한다.
 2. 계획 PR을 같은 checkout에서 Rebase and merge한 뒤 구현 branch를 latest `origin/main`에서 만든다.
 3. Runtime validator, typed gap, track-sizing trace 및 parsed Root HTML fixture를 구현한다. 기존 fixed/percentage/`fr`/fit-content/area/placement/dense/column-flow gap regressions를 유지한다.
-4. 구현과 runtime 결과를 새 실패 관점 20개로 검토하고, 실제 변경 PR diff를 앞선 리뷰와 분리해 20개 관점으로 검토한다. 발견한 결함은 고치고 영향을 받은 관점을 재검토한다.
+4. 구현과 runtime 결과를 새 실패 관점 20개로 검토하고, 실제 변경 PR diff는 앞선 리뷰와 분리해 프로젝트 규칙의 30개 관점으로 검토한다. 발견한 결함은 고치고 영향을 받은 관점을 재검토한다.
 5. Android/iOS simulator build와 app-route 실행 근거를 hash와 함께 보존한다. PR 본문에는 Chrome 및 가능한 simulator screenshot을 넣는다. Agent Browser를 사용한 검증 뒤 해당 session/browser process를 닫는다.
 6. PR은 프로젝트 양식과 기존 `enhancement`, `area: layout` labels를 쓰고, merge 후 실제 SHA/check 상태를 다시 확인한다. CI check rollup이 비어 있으면 CI pass라고 기록하지 않는다.
 7. Merge 후 내부 계약 0059, `spec/STATUS.md`, C11 계획과 공개 roadmap에 구현 결과·제한을 맞춘다. 이 bounded slice로 C11.1/C11/C11.4 checkbox 또는 공식 전체 완료 집계는 변경하지 않는다.

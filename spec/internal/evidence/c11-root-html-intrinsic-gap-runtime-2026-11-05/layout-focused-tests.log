@@ -1,0 +1,13 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.13s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 6 tests
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_gutter_extent_overflow ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_mixed_auto_and_one_axis_placement ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_reject_unsupported_and_invalid_gutters ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_do_not_publish_unrepresentable_track_plus_gutter_extent ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_match_fixed_input_expectations ... ok
+test grid::track_sizing_tests::root_html_intrinsic_tracks::root_html_intrinsic_tracks_apply_fixed_gutters_before_fractional_expansion ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 442 filtered out; finished in 0.01s

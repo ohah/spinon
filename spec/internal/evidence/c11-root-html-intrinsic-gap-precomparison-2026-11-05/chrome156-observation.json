@@ -10,56 +10,56 @@
       "id": "control",
       "root": [0, 0, 100, 100],
       "columnsComputed": "40px 60px",
-      "rowsComputed": "10px 90px",
+      "rowsComputed": "20px 80px",
       "columns": [40, 60],
-      "rows": [10, 90],
+      "rows": [20, 80],
       "rowGapComputed": "normal",
       "columnGapComputed": "normal",
-      "itemsAbsoluteCssPx": [[0, 0, 40, 10], [40, 10, 20, 20]]
+      "itemsAbsoluteCssPx": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 20, 10, 10]]
     },
     {
       "id": "column-gap",
       "root": [110, 0, 100, 100],
       "columnsComputed": "40px 50px",
-      "rowsComputed": "10px 90px",
+      "rowsComputed": "20px 80px",
       "columns": [40, 50],
-      "rows": [10, 90],
+      "rows": [20, 80],
       "rowGapComputed": "normal",
       "columnGapComputed": "10px",
-      "itemsAbsoluteCssPx": [[110, 0, 40, 10], [160, 10, 20, 20]]
+      "itemsAbsoluteCssPx": [[110, 0, 40, 10], [160, 0, 20, 20], [110, 20, 10, 10]]
     },
     {
       "id": "row-gap",
       "root": [220, 0, 100, 100],
       "columnsComputed": "40px 60px",
-      "rowsComputed": "10px 80px",
+      "rowsComputed": "20px 70px",
       "columns": [40, 60],
-      "rows": [10, 80],
+      "rows": [20, 70],
       "rowGapComputed": "10px",
       "columnGapComputed": "normal",
-      "itemsAbsoluteCssPx": [[220, 0, 40, 10], [260, 20, 20, 20]]
+      "itemsAbsoluteCssPx": [[220, 0, 40, 10], [260, 0, 20, 20], [220, 30, 10, 10]]
     },
     {
       "id": "both-gap",
       "root": [330, 0, 100, 100],
       "columnsComputed": "40px 50px",
-      "rowsComputed": "10px 80px",
+      "rowsComputed": "20px 70px",
       "columns": [40, 50],
-      "rows": [10, 80],
+      "rows": [20, 70],
       "rowGapComputed": "10px",
       "columnGapComputed": "10px",
-      "itemsAbsoluteCssPx": [[330, 0, 40, 10], [380, 20, 20, 20]]
+      "itemsAbsoluteCssPx": [[330, 0, 40, 10], [380, 0, 20, 20], [330, 30, 10, 10]]
     },
     {
       "id": "percent-gap",
       "root": [440, 0, 100, 100],
       "columnsComputed": "40px 50px",
-      "rowsComputed": "10px 90px",
+      "rowsComputed": "20px 80px",
       "columns": [40, 50],
-      "rows": [10, 90],
+      "rows": [20, 80],
       "rowGapComputed": "normal",
       "columnGapComputed": "10%",
-      "itemsAbsoluteCssPx": [[440, 0, 40, 10], [490, 10, 20, 20]]
+      "itemsAbsoluteCssPx": [[440, 0, 40, 10], [490, 0, 20, 20], [440, 20, 10, 10]]
     }
   ]
 }

@@ -1,0 +1,32 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.36s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-9bc380b151468c9d)
+
+running 10 tests
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_valid_calc_gap_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_implicit_tracks_without_partial_publish ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_ignores_invalid_negative_gap_declaration ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_fixed_gaps_match_reference_tracks_and_frames ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_overflowing_gutter_extent_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_prefix_does_not_hide_later_track_overflow ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_unrepresentable_track_and_gutter_extent_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_valid_percentage_gap_atomically ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_tracks_match_all_reference_frames ... ok
+test session::tests::root_html_grid_intrinsic_tracks::parsed_root_html_intrinsic_grid_rejects_axes_gaps_and_box_edges ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 276 filtered out; finished in 2.97s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-6d06656e28c70230)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-61d95c26418afa93)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
