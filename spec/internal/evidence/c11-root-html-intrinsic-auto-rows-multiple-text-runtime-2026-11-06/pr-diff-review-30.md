@@ -33,8 +33,8 @@
 | 27 | independent oracle fixture 또는 해시가 evidence와 다르게 고정되는가 | PASS — Chrome 156 fixture SHA-256 `3232e75c…657970`와 expected JSON을 연결한다. |
 | 28 | Android/iOS가 서로 다른 fixture asset이나 fixture-only product feature로 실행되는가 | PASS — APK와 `.app`의 installed HTML/root-app source hash가 기준 입력과 맞고 fixture flags는 0이다. |
 | 29 | simulator evidence가 실기기·GPU readback·pixel parity로 확대 해석되는가 | PASS — API 37 ARM64 AVD/iPhone 17 Pro Simulator visual smoke로 한정하고 glyph-wrap 차이와 readback 한계를 적었다. |
-| 30 | PR에서 screenshot 링크가 깨지거나 화면이 scope를 과장하는가 | PARTIAL — 로컬 Android/iOS 캡처를 직접 열어 `[10,20,10,34]` 행과 34px overflow를 확인했다. PR 본문에는 업로드된 raw 이미지 URL을 넣고 실제 PR 생성 후 Agent Browser에서 렌더링/로드 여부를 확인해야 한다. |
+| 30 | PR에서 screenshot 링크가 깨지거나 화면이 scope를 과장하는가 | PASS — Agent Browser에서 PR #1199를 열어 Android/iOS raw image URL이 본문에 렌더링되고 `complete=true`, 각각 1080×2400과 1206×2622로 로드됨을 확인했다. 로컬 화면 및 PR 설명은 34px overflow의 simulator visual smoke까지만 주장한다. |
 
 ## 검토 결과
 
-**PASS 29 / PARTIAL 1 / FAIL 0.** 검토 중 발견해 해결한 항목은 Taffy trace 예산 초과 시 frame 보존, Android asset overlay build 순서, nested test include 경로, 증거 로그의 끝 공백이다. 구현 수정 뒤 focused style/runtime/layout tests, scoped Clippy, rustfmt 및 simulator asset hash를 재확인했다. PR 이미지 URL 검토는 PR 생성 뒤 이어서 완료하며, 이 검토는 GitHub merge/CI 성공을 뜻하지 않는다.
+**PASS 30 / PARTIAL 0 / FAIL 0.** 검토 중 발견해 해결한 항목은 Taffy trace 예산 초과 시 frame 보존, Android asset overlay build 순서, nested test include 경로, 증거 로그의 끝 공백이다. 구현 수정 뒤 focused style/runtime/layout tests, scoped Clippy, rustfmt 및 simulator asset hash를 재확인했다. PR 이미지는 Agent Browser 렌더링과 로드 상태까지 확인했다. 이 검토는 GitHub merge/CI 성공을 뜻하지 않는다.
