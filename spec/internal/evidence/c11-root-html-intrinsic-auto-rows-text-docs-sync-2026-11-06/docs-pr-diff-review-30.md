@@ -6,11 +6,14 @@
 
 ## 실패 관점
 
+> 사후 정정: 초안 검토의 5·24·26번은 이전 문서 기록 `72/213`을 현재 집계로 오인했다. `spec/STATUS.md`를 같은 parser 규칙으로 세면 78/214이고 Tailnet의 GitHub API 동기화 상태도 78/214다. PR #1192에서 최신 문구를 정정한다.
+
+
 1. **구현 PR SHA 오기** — 네 문서가 PR #1190의 Rebase 병합 SHA `950c8581…`에 연결된다. **PASS**
 2. **병합 날짜 오기** — PR의 실제 `mergedAt` `2026-11-05T19:13:40Z`를 사용한다. **PASS**
 3. **C11 parent checkbox 조기 완료** — `spec/STATUS.md`의 C11은 미완료 상태를 유지한다. **PASS**
 4. **C11.4 조기 완료** — C11.4는 미완료로 남고 문구도 이를 분명히 한다. **PASS**
-5. **공식 완료 수 증가 오인** — 현재 대장 집계 `72/213`을 유지한다고 쓴다. **PASS**
+5. **공식 완료 수 증가 오인** — STATUS.md의 체크박스 parser와 Tailnet의 live status note가 모두 현재 집계 `78/214`를 표시한다. **PASS**
 6. **계획 수치와 증거 수치 불일치** — 두 줄 text, 20px contribution, `[10,20,34]` rows, y=64px overflow가 Chrome/Rust evidence와 맞는다. **PASS**
 7. **기존 empty-item 기능 소실 표현** — 계약은 기존 empty direct HTML `div` 허용을 보존한다고 기록한다. **PASS**
 8. **지원 대상의 과도한 확장** — text child와 exact ASCII source 한 개만 추가한 제한임을 각 문서가 유지한다. **PASS**
@@ -29,10 +32,10 @@
 21. **C11 evidence 링크 누락** — 상태 대장과 계약은 Chrome comparison 및 Android/iOS runtime evidence를 연결한다. **PASS**
 22. **Markdown 파일을 Rspress route로 오인** — 내부 계약의 evidence 링크 대상은 실제 `spec/internal/evidence` Markdown 경로다. **PASS**
 23. **precomparison JSON 링크가 HTML route로 변환** — JSON/PNG/fixture 및 계획 링크를 GitHub blob 또는 raw URL로 바꿔 해당 C11 README의 Rspress dead links를 제거한다. **PASS**
-24. **다른 C11.4 기록의 역사 변조** — 과거 slice의 날짜별 관측과 광범위 회귀 기록은 그대로 둔다. 현재 #1187 카드의 stale current-count 문구만 `72/213`으로 고친다. **PASS**
+24. **다른 C11.4 기록의 역사 변조** — 과거 slice의 날짜별 관측과 집계는 그대로 둔다. 최신 #1187·#1190 카드만 live aggregate `78/214`와 맞춘다. **PASS**
 25. **로드맵 중복/잘못된 위치** — 새 #1190 card를 같은 C11.4 recent entries 안에서 #1187 뒤에 한 번만 넣는다. **PASS**
-26. **공개 로드맵 수치가 상태 원본을 대신함** — page는 `spec/STATUS.md` read-only aggregation 설명을 유지하고 최신 card만 현재 집계를 표시한다. **PASS**
-27. **Tailnet 배포를 이미 완료했다고 표시** — source `spec/public/roadmap.html` 수정과 실제 Tailnet sync를 구분한다. 배포는 docs PR 병합 후 확인한다. **PASS**
+26. **공개 로드맵 수치가 상태 원본을 대신함** — page의 read-only counter와 최신 #1187·#1190 카드가 모두 현재 `78/214`를 표시한다. **PASS**
+27. **Tailnet 배포와 사후 발견을 구분** — 첫 배포 pass01은 SHA 검증됐고, Agent Browser live counter가 `78/214`인데 정적 #1190 카드가 `72/213`인 불일치를 발견했다. 이 correction PR 병합 뒤 pass02로 다시 배포한다. **PASS**
 28. **미리보기 문서 링크 404** — 새 roadmap card의 plan, contract, evidence, status 링크는 GitHub `main`을 사용한다. **PASS**
 29. **screenshot 링크가 변동 branch를 가리킴** — Android/iOS 이미지 링크는 실제 code/evidence가 포함된 merge SHA에 고정한다. **PASS**
 30. **문서 전체 빌드 결과를 green으로 보고** — `docs:build`는 다른 기존 STATUS/internal evidence의 Rspress dead links로 실패한다. 이번 변경은 새 C11 plan/evidence 링크를 GitHub URL로 정정했지만 전체 빌드 통과를 주장하지 않는다. **PASS**
