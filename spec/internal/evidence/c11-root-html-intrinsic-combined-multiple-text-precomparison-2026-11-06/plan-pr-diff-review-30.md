@@ -1,6 +1,6 @@
 # 계획 PR #1201 실제 diff 적대 검토 · 30개 관점
 
-대상 PR: `plan(c11): C11.4 intrinsic columns와 여러 text row 계획` · head `1ece9a5a031a8b56cd6cf0f4bced2607d7637188` · base `main`의 PR 실제 변경 목록 10개 파일.
+대상 PR: `plan(c11): C11.4 intrinsic columns와 여러 text row 계획` · initial content head `1ece9a5a031a8b56cd6cf0f4bced2607d7637188` · base `main` · 최종 리뷰 대상은 계획 및 evidence 12개 파일이다.
 
 1. **변경 범위:** 실제 diff는 계획, 계획 검토, precomparison fixture/evidence만 추가하며 production Rust 코드나 기존 상태 문서를 수정하지 않는다.
 2. **공식 집계:** plan/PR 본문은 C11.4/C11 미완료와 `78/214` 유지라고 명시한다. 완료 checkbox 변경이 없다.
@@ -34,3 +34,7 @@
 30. **evidence type:** browser screenshots and Chrome measurements are labeled precomparison, not Spinon product screenshots or runtime proof.
 
 검토 결과: plan PR actual diff에 수정이 필요한 오류는 없었다. This is a review of the planning PR only; it does not replace the planned 20-case implementation/runtime review or implementation PR review.
+
+## PR 본문 이미지 확인
+
+Agent Browser에서 PR #1201을 열고 raw screenshot의 `complete=true`, `naturalWidth=1280`, `naturalHeight=633`을 확인했다. 스크린샷 요소가 표시되고 문서의 가로 overflow는 없다. 화면은 명시한 대로 Chrome 사전 비교이며 Spinon 구현 결과로 표시하지 않았다. [브라우저 화면](chrome/pr1201-image-agent-browser.png).
