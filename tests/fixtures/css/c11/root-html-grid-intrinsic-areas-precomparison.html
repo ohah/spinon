@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.1 intrinsic Grid tracks with template areas precomparison</title>
+<style>
+  * { box-sizing: content-box; }
+  body { margin: 0; padding: 8px; font: 10px monospace; }
+  h2 { margin: 0 0 4px; font: 10px monospace; }
+  .case { width: 240px; height: 120px; display: grid; grid-auto-flow: row; }
+  .item { min-width: 0; min-height: 0; overflow: visible; white-space: normal; line-height: 11px; }
+  .a { background: #e5484d; }
+  .b { background: #3e63dd; }
+  .c { background: #30a46c; }
+  .d { background: #f5a623; }
+  .e { background: #af52de; }
+  #min-content { grid-template-columns: min-content 1fr; grid-template-rows: max-content 1fr; grid-template-areas: "label value" "footer footer"; }
+  #min-content .label { grid-area: label; }
+  #min-content .value { grid-area: value; }
+  #min-content .footer { grid-area: footer; }
+  #minmax { grid-template-columns: minmax(min-content, max-content) minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "label value" "footer footer"; }
+  #minmax .label { grid-area: label; }
+  #minmax .value { grid-area: value; }
+  #minmax .footer { grid-area: footer; }
+  #span { grid-template-columns: min-content min-content 1fr; grid-template-rows: max-content 1fr; grid-template-areas: "wide wide tail" "left middle foot"; }
+  #span .wide { grid-area: wide; }
+  #span .tail { grid-area: tail; }
+  #span .left { grid-area: left; }
+  #span .middle { grid-area: middle; }
+  #span .foot { grid-area: foot; }
+  #rows { width: 32px; grid-template-columns: 1fr; grid-template-rows: min-content max-content; grid-template-areas: "head" "body"; }
+  #rows .head { grid-area: head; }
+  #rows .body { grid-area: body; }
+</style>
+<h2>min-content with named areas</h2>
+<div class="case" id="min-content">
+  <div class="item a label">ab cd</div>
+  <div class="item b value">efghij</div>
+  <div class="item c footer">kl mn</div>
+</div>
+<h2>minmax intrinsic with named areas</h2>
+<div class="case" id="minmax">
+  <div class="item a label">ab cd</div>
+  <div class="item b value">efghij</div>
+  <div class="item c footer">kl mn</div>
+</div>
+<h2>two-track area spanning intrinsic tracks</h2>
+<div class="case" id="span">
+  <div class="item a wide">ab cd ef</div>
+  <div class="item b tail">gh</div>
+  <div class="item d left"></div>
+  <div class="item e middle"></div>
+  <div class="item c foot"></div>
+</div>
+<h2>row intrinsic tracks with named areas</h2>
+<div class="case" id="rows">
+  <div class="item a head">ab cd ef</div>
+  <div class="item b body">gh ij kl mn op qr</div>
+</div>

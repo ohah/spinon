@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Root HTML intrinsic Grid area span runtime</title>
+    <style>:root { color-scheme: light dark; }</style>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      #root {
+        box-sizing: border-box;
+        display: grid;
+        width: 240px;
+        height: 120px;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        grid-template-columns: min-content min-content 1fr;
+        grid-template-rows: max-content 1fr;
+        grid-template-areas: "wide wide tail" "left middle foot";
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 11px;
+        white-space: normal;
+      }
+      .item { box-sizing: border-box; min-width: 0; min-height: 0; margin: 0; padding: 0; }
+      #wide { grid-area: wide; background-color: #e5484d; }
+      #tail { grid-area: tail; background-color: #3a8f5b; }
+      #foot { grid-area: foot; background-color: #0a84ff; }
+      #left { grid-area: left; background-color: #f5a623; }
+      #middle { grid-area: middle; background-color: #af52de; }
+    </style>
+  </head>
+  <body style="background-color: #fff">
+    <main id="app">Spinon 루트 HTML</main>
+    <div id="root">
+      <div id="wide" class="item">ab cd ef</div>
+      <div id="tail" class="item">gh</div>
+      <div id="left" class="item"></div>
+      <div id="middle" class="item"></div>
+      <div id="foot" class="item"></div>
+    </div>
+  </body>
+</html>

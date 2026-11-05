@@ -27,6 +27,7 @@ pub(super) fn validate_items(
     );
     let intrinsic_track_sizing =
         container.placement_mode == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+    let intrinsic_template_areas = intrinsic_track_sizing && container.template_areas.is_some();
     if container.placement_mode != GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
         && !mixed_explicit
         && !mixed_cross_axis
@@ -80,6 +81,9 @@ pub(super) fn validate_items(
             fully_auto_count = fully_auto_count
                 .checked_add(1)
                 .ok_or(LayoutError::GridImplicitTrackRequired(container_node.id))?;
+        } else if intrinsic_template_areas && is_fully_definite(&placement) {
+            // The computed named-area validator has already tied this exact rectangle to a
+            // parsed area. Keep its resolved row and column spans for intrinsic sizing.
         } else if (mixed_explicit || mixed_cross_axis) && is_fully_definite(&placement) {
             fully_definite_count = fully_definite_count
                 .checked_add(1)
@@ -277,7 +281,7 @@ fn validate_container(
     }
     if container.columns_auto_repeat.is_some()
         || container.rows_auto_repeat.is_some()
-        || container.template_areas.is_some()
+        || (!intrinsic_track_sizing && container.template_areas.is_some())
         || container
             .columns_line_names
             .iter()

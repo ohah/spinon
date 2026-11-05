@@ -510,7 +510,9 @@ pub(super) fn validate_grid_layout(
         let template_area_track_sizing = container.template_areas.is_some()
             && matches!(
                 container.placement_mode,
-                GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
+                GridPlacementMode::TemplateGrid
+                    | GridPlacementMode::TemplateGridImplicitTracks
+                    | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
             );
         if template_area_track_sizing && (container.rows.is_empty() || container.columns.is_empty())
         {
@@ -826,7 +828,9 @@ pub(super) fn validate_grid_layout(
         let template_area_track_sizing = container.template_areas.is_some()
             && matches!(
                 container.placement_mode,
-                GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
+                GridPlacementMode::TemplateGrid
+                    | GridPlacementMode::TemplateGridImplicitTracks
+                    | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
             );
         let allow_intrinsic_tracks = matches!(
             container.placement_mode,
@@ -1523,15 +1527,10 @@ fn validate_root_html_intrinsic_tracks_contract(
             return Err(LayoutError::InvalidGridTrackList { node, property });
         }
     }
-    if container.template_areas.is_some()
-        || container.columns_auto_repeat.is_some()
-        || container.rows_auto_repeat.is_some()
-    {
+    if container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some() {
         return Err(LayoutError::InvalidGridTrackList {
             node,
-            property: if container.template_areas.is_some() {
-                "grid-template-areas"
-            } else if container.columns_auto_repeat.is_some() {
+            property: if container.columns_auto_repeat.is_some() {
                 "grid-template-columns"
             } else {
                 "grid-template-rows"
@@ -2184,8 +2183,14 @@ fn validate_template_areas(
         GridPlacementMode::TemplateGrid
             | GridPlacementMode::TemplateGridImplicitTracks
             | GridPlacementMode::TemplateGridSignedImplicitTracks
+            | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
     ) && !has_auto_repeat_axis;
-    let template_grid_areas_allow_mismatched_tracks = template_grid_area_tracks;
+    let template_grid_areas_allow_mismatched_tracks = matches!(
+        container.placement_mode,
+        GridPlacementMode::TemplateGrid
+            | GridPlacementMode::TemplateGridImplicitTracks
+            | GridPlacementMode::TemplateGridSignedImplicitTracks
+    ) && !has_auto_repeat_axis;
     if (!track_sizing_auto_repeat && !template_grid_area_tracks)
         || areas.rows == 0
         || areas.columns == 0
