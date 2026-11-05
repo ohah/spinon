@@ -1530,3 +1530,5 @@ Rust RuntimeSession focused suite 5/5, style/layout direct text-measure test 1/1
 상태·로드맵 문서 동기화 PR 변경 검토 30개: [검토 기록](./evidence/c11-root-html-intrinsic-auto-rows-text-docs-sync-2026-11-06/docs-pr-diff-review-30.md).
 
 공식 집계 정정 PR diff 검토 30개: [검토 기록](./evidence/c11-root-html-intrinsic-auto-rows-text-count-correction-2026-11-06/pr-diff-review-30.md).
+
+Tailnet의 PR #1192 병합 후 제공본·desktop/mobile 확인: [sync evidence](./evidence/roadmap-tailnet-sync-pr1191-2026-11-06/README.md).
