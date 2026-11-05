@@ -1,0 +1,52 @@
+{
+  "card": {
+    "links": [
+      {
+        "href": "https://github.com/ohah/spinon/pull/1182",
+        "text": "PR #1182 Rebase and merge"
+      },
+      {
+        "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-grid-text-aspect-ratio-min-max.md",
+        "text": "계획"
+      },
+      {
+        "href": "https://github.com/ohah/spinon/blob/main/spec/internal/0059-c11-grid-layout.md",
+        "text": "내부 계약 0059"
+      },
+      {
+        "href": "https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-precomparison-2026-11-05",
+        "text": "Chrome 사전 비교"
+      },
+      {
+        "href": "https://github.com/ohah/spinon/tree/main/spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-runtime-2026-11-05",
+        "text": "Android/iOS 실행 근거"
+      },
+      {
+        "href": "https://raw.githubusercontent.com/ohah/spinon/8dab763943215e7fc7b5250a8eb22dddba5e811f/spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-runtime-2026-11-05/android/aspect-ratio-min-max/screenshot.png",
+        "text": "Android AVD 화면"
+      },
+      {
+        "href": "https://raw.githubusercontent.com/ohah/spinon/8dab763943215e7fc7b5250a8eb22dddba5e811f/spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-runtime-2026-11-05/ios/aspect-ratio-min-max/screenshot.png",
+        "text": "iOS Simulator 화면"
+      }
+    ],
+    "rect": {
+      "height": 122.34375,
+      "width": 928,
+      "x": 90,
+      "y": 101.046875
+    },
+    "text": "2026-11-05 C11.1 parsed Root HTML direct-text aspect-ratio min/max · 제한 구현 PR #1182 Rebase and merge (2026-11-05T12:25:28Z, merge SHA 8dab763943215e7fc7b5250a8eb22dddba5e811f): 기존 fixed owner/topology의 두 번째 direct-text target에서만 finite direct px 0..=70px min/max를 허용하고, 제약이 있는 ratio는 computed·typed 2 / 1로 제한한다. Chrome 156 10-scene independent matrix, focused Rust projection/layout/runtime gates, scoped Clippy/rustfmt, Android API 37 ARM64 AVD PixelCopy 3/3 exact와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable 3/3 exact를 확인했다. Android는 ANGLE/SwiftShader software renderer이고 iOS readback은 compositor 제출 전이다. Feature-off Android/iOS app builds도 통과했다. C11.1/C11은 미완료이며 공식 78/214는 유지한다. 계획 · 내부 계약 0059 · Chrome 사전 비교 · Android/iOS 실행 근거 · Android AVD 화면 · iOS Simulator 화면"
+  },
+  "document": {
+    "height": 73528,
+    "width": 1440
+  },
+  "hasOfficialCount": true,
+  "hasPr1182": true,
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "height": 1000,
+    "width": 1440
+  }
+}
