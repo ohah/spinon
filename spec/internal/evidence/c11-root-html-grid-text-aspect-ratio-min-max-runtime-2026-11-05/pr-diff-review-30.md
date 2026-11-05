@@ -4,7 +4,7 @@
 
 | # | 변경 diff에서 확인한 실패 경로 | 판정 |
 |---:|---|---|
-| 1 | 제한된 구현이 C11.1 또는 C11 전체 완료로 과장되는가 | 통과 — README와 공식 집계는 `78/214` 및 미완료 상태를 유지한다. |
+| 1 | 제한된 구현이 C11.1 또는 C11 전체 완료로 과장되는가 | 통과 — `spec/STATUS.md`, 내부 계약 0059, 계획과 runtime README가 C11.1/C11 체크를 열어 두고 공식 `78/214`를 유지한다. |
 | 2 | 기본 Root HTML 외 style profile에도 min/max 예외가 열리는가 | 통과 — projection 예외는 `RuntimeRootHtmlTextPaintV1`로 제한된다. |
 | 3 | opt-in C11.4 fixture 경로를 기본 Root HTML 증거로 대체하는가 | 통과 — runtime test는 `new_runtime_gpu_with_root_html` 기본 경로를 사용한다. |
 | 4 | min/max 허용이 ratio 후보 검증보다 먼저 적용되는가 | 통과 — 허용 후에도 기존 고정 owner와 target candidate guard를 통과해야 한다. |
