@@ -1,0 +1,12 @@
+{
+  "sessions": [
+    {
+      "name": "spinon-roadmap1184",
+      "closeCommand": "agent-browser --session spinon-roadmap1184 close",
+      "result": "Browser closed"
+    }
+  ],
+  "closeAllCommand": "agent-browser close --all",
+  "closeAllResult": "No active sessions",
+  "agentBrowserProcessesAfter": []
+}

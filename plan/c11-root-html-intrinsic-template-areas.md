@@ -27,3 +27,7 @@
 4. geometry를 Chrome과 0.5 CSS px 이내에서 비교한다. draw/present와 PixelCopy/Metal readback을 구분하고, 시뮬레이터 근거를 hardware GPU나 compositor 이후 픽셀 근거로 표현하지 않는다.
 5. 구현/runtime 실패 관점 20개와 실제 구현 PR diff의 별도 공격 관점 30개를 기록하고, 수정 후 관련 항목을 다시 확인한다.
 6. 병합된 범위만 [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md), [공식 STATUS](../spec/STATUS.md), 공개 roadmap에 반영한다. 이 slice는 C11.3.3, C11.4, C11, WPT 적합성 또는 일반 CSS Grid 지원을 완료하지 않는다.
+
+## 병합 결과
+
+구현 PR [#1184](https://github.com/ohah/spinon/pull/1184)은 2026-11-05T14:41:41Z Rebase and merge됐고 merge SHA는 `5803547796d7039f591ef979175a36617ce86636`다. 이 제한 slice만 병합됐으며 C11.1/C11.3.3/C11.4 완료나 WPT 적합성으로 승격하지 않는다. PR check rollup은 비어 있고 main required status checks도 없어 CI 통과로 기록하지 않는다. [병합 후 상태·공개 로드맵·Tailnet evidence](../spec/internal/evidence/roadmap-postmerge-c11-template-areas-pr1184-2026-11-05/README.md).
