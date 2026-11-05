@@ -4,7 +4,7 @@
 
 **사전 비교:** [Chrome 156 Agent Browser 결과](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-text-precomparison.html) · [독립 기대값](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/expected.json)
 
-**계획 실패 관점 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-plan-review-20.md). **계획 PR 변경 검토:** 실제 diff를 대상으로 별도 기록한다. **구현/runtime 적대 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-implementation-runtime-review-20.md). **Simulator runtime evidence:** [Android API 37 ARM64 AVD + iPhone 17 Pro / iOS 26.2](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-runtime-pass05-2026-11-06/README.md). **구현 PR 변경 검토:** PR diff에 별도 30개 관점을 적용한다.
+**계획 실패 관점 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-plan-review-20.md). **계획 PR 변경 검토:** 실제 diff를 대상으로 별도 기록한다. **구현/runtime 적대 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-implementation-runtime-review-20.md). **Simulator runtime evidence:** [Android API 37 ARM64 AVD + iPhone 17 Pro / iOS 26.2](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-runtime-pass05-2026-11-06/README.md). **구현 PR 변경 검토:** [PR 변경 검토 기록](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-runtime-pass05-2026-11-06/pr-diff-review-30.md).
 
 ## 결손과 목표
 
@@ -40,7 +40,7 @@
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 같은 HTML source hash로 기본 app route를 실행해 `layout=ready`, 관측 가능한 root/item frame, draw/present와 screenshot을 남긴다. Harness가 text NodeId frame이나 track trace를 내보내지 않으면 앱에서 직접 확인했다고 쓰지 않는다. PixelCopy/Metal readback은 실제 수집한 경우에만 별도로 기록한다.
 7. Focused Rust tests, 변경 crate의 scoped Clippy, `cargo fmt --all -- --check`, default-artifact/fixture-boundary 검사 및 두 simulator build/runtime 결과를 각각 기록한다. 알려진 broad failure는 baseline과 나란히 두고 green으로 보고하지 않는다.
 8. 계획 자체를 구현 전에 새로운 실패 관점 20개로 검토한다. 구현/runtime도 별개의 20개 관점으로 검토하며 구현 PR diff는 또 다른 관점으로 적대 검토한다. 각 PR에는 사용자가 요청한 20개 검토를 포함한다.
-9. Merge 뒤 내부 contract 0059, C11 plan, `spec/STATUS.md`와 Tailnet roadmap preview를 실제 merge SHA에 맞춘다. 이 slice만으로 C11.4/C11 checkbox 또는 공식 `78/214`를 올리지 않는다.
+9. 구현 PR [#1190](https://github.com/ohah/spinon/pull/1190)은 2026-11-05T19:13:40Z Rebase and merge됐고 merge SHA는 `950c858182810e27c39048c5bb252a4aed4810af`다. 계약 0059·이 계획·상태 대장·공개/Tailnet 로드맵에 해당 제한 동작과 실제 SHA를 동기화한다. 이 slice만으로 C11.4/C11 checkbox 또는 현재 공식 `72/213` 집계를 올리지 않는다.
 
 ## 제외와 완료 판정
 
