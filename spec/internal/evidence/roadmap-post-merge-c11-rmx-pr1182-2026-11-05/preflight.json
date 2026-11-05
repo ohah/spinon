@@ -1,0 +1,20 @@
+{
+  "sourceHead": "8dab763943215e7fc7b5250a8eb22dddba5e811f",
+  "sourceTree": "d82a762a840c5a80f1255424c0a35f1e60976bf3",
+  "trackedDiffSha256": "af4d7fcb1f968d8b1c215483d84b630e164442693fc3782a1cca8648e9eb7263",
+  "tailscaleBackend": "Running",
+  "previewServerPid": 28040,
+  "localStatus": 200,
+  "localBytes": 572338,
+  "sourceBytes": 574409,
+  "previousBytes": 572338,
+  "sourceSha256": "dcf7a26107dfb29e18d01cef52ae4214766a5325be2a22390cd2a0ef046b2d36",
+  "previousSha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985",
+  "openHandlePids": [],
+  "backupRoot": "~/Library/Application Support/SpinonPreviewBackups/roadmap-post-merge-c11-rmx-pr1182-2026-11-05/pass01",
+  "filesToReplace": [
+    "roadmap.html"
+  ],
+  "noDeletes": true,
+  "serverRestarted": false
+}

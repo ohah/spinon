@@ -160,9 +160,9 @@ Chrome 156 oracle은 주 fixture 14 scene과 자동 최소 크기 보충 fixture
 
 이 후속 값 확장은 제한된 기본 Root HTML slice이며 public CSS 지원, C11.1/C11 완료 또는 공식 완료 `78/214` 증가를 뜻하지 않는다. 구현 PR [#1164](https://github.com/ohah/spinon/pull/1164)은 2026-11-04T20:24:23Z Rebase and merge로 병합됐다(merge SHA `3e5aed60a95a07195002f8b8df8fb4da9eefb80b`, 구현 head `20b9a1a66e89475aadc0d1610ffbb5d803d1ea60`). GitHub status check run은 보고되지 않았다. 이 merge는 limited slice만 추가하며 public CSS 지원, C11.1/C11 완료 또는 공식 완료 `78/214` 증가를 뜻하지 않는다. 내부 계약 숫자 버전 `0.1.0`은 유지한다.
 
-## C11.1 parsed Root HTML direct-text `aspect-ratio` min/max · bounded slice · 2026-11-05
+## C11.1 parsed Root HTML direct-text `aspect-ratio` min/max · merged bounded slice PR #1182 · 2026-11-05
 
-구현 PR [#1182](https://github.com/ohah/spinon/pull/1182)은 기본 `RuntimeRootHtmlTextPaintV1`의 기존 direct-text ratio owner에서 두 번째 target item에만 finite direct px `0..=70px` `min-width`/`max-width`/`min-height`/`max-height`를 연결한다. 제약이 있는 ratio는 computed serialization과 typed carrier가 모두 numeric `2 / 1`이어야 한다. Owner 및 첫 text sibling의 제약, percentage·math·intrinsic 값, 다른 owner/topology는 거부한다. Automatic text minimum helper는 명시된 minimum을 덮어쓰지 않는다.
+구현 PR [#1182](https://github.com/ohah/spinon/pull/1182)은 2026-11-05T12:25:28Z Rebase and merge됐고 merge SHA는 `8dab763943215e7fc7b5250a8eb22dddba5e811f`다. 기본 `RuntimeRootHtmlTextPaintV1`의 기존 direct-text ratio owner에서 두 번째 target item에만 finite direct px `0..=70px` `min-width`/`max-width`/`min-height`/`max-height`를 연결한다. 제약이 있는 ratio는 computed serialization과 typed carrier가 모두 numeric `2 / 1`이어야 한다. Owner 및 첫 text sibling의 제약, percentage·math·intrinsic 값, 다른 owner/topology는 거부한다. Automatic text minimum helper는 명시된 minimum을 덮어쓰지 않는다.
 
 Chrome 156 10-scene expected matrix, Android API 37 ARM64 AVD PixelCopy 3/3 exact 및 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable 3/3 exact를 기록했다. Android는 ANGLE/SwiftShader software renderer이며 iOS readback은 compositor 제출 전이다. Feature-enabled simulator build/run과 fixture/readback feature-off app build를 모두 확인했다. 전체 workspace suite, WPT, 실기기/hardware GPU, iOS compositor 이후 pixel parity 또는 C11.1/C11 완료는 주장하지 않는다. 공식 완료 집계 `78/214` 및 내부 숫자 버전 `0.1.0`은 유지한다.
 
