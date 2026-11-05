@@ -1256,11 +1256,21 @@ pub(super) fn validate_grid_layout(
                     == GridPlacementMode::RootHtmlAutoRepeatV1
                     && matches!(property, "min-width" | "min-height")
                     && value == crate::LayoutDimension::Fixed(0.0);
+                let root_html_direct_text_ratio_target_constraint = container.placement_mode
+                    == GridPlacementMode::RootHtmlDirectTextAspectRatioV1
+                    && node.children.get(1) == Some(&child_id)
+                    && (value == crate::LayoutDimension::Auto
+                        || matches!(
+                            value,
+                            crate::LayoutDimension::Fixed(value)
+                                if value.is_finite() && (0.0..=70.0).contains(&value)
+                        ));
                 if value != crate::LayoutDimension::Auto
                     && !zero_minimum_on_definite_area
                     && !track_sizing_constraint
                     && !root_html_intrinsic_zero_minimum
                     && !root_html_auto_repeat_zero_minimum
+                    && !root_html_direct_text_ratio_target_constraint
                 {
                     return Err(LayoutError::UnsupportedGridItemConstraint {
                         node: child_id,

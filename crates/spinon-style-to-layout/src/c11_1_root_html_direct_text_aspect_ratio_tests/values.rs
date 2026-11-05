@@ -148,6 +148,247 @@ fn parsed_root_html_direct_text_grid_accepts_finite_positive_ratio_values() {
 }
 
 #[test]
+fn parsed_root_html_direct_text_grid_applies_bounded_px_min_max_to_target_item() {
+    let grid = grid_style("");
+    let short = item_style("width:auto;height:auto;", "");
+    let cases = [
+        (
+            "width:60px;height:auto;",
+            "aspect-ratio:2 / 1;",
+            30.0,
+            60.0,
+            30.0,
+            "auto",
+            "none",
+            "auto",
+            "none",
+        ),
+        (
+            "width:60px;height:auto;min-height:40px;",
+            "aspect-ratio:2 / 1;",
+            40.0,
+            60.0,
+            40.0,
+            "auto",
+            "none",
+            "40px",
+            "none",
+        ),
+        (
+            "width:60px;height:auto;max-height:20px;",
+            "aspect-ratio:2 / 1;",
+            20.0,
+            60.0,
+            20.0,
+            "auto",
+            "none",
+            "auto",
+            "20px",
+        ),
+        (
+            "width:60px;height:auto;min-height:40px;max-height:20px;",
+            "aspect-ratio:2 / 1;",
+            40.0,
+            60.0,
+            40.0,
+            "auto",
+            "none",
+            "40px",
+            "20px",
+        ),
+        (
+            "width:60px;height:auto;min-height:40px;",
+            "",
+            40.0,
+            60.0,
+            40.0,
+            "auto",
+            "none",
+            "40px",
+            "none",
+        ),
+        (
+            "width:auto;height:30px;",
+            "aspect-ratio:2 / 1;",
+            30.0,
+            60.0,
+            30.0,
+            "auto",
+            "none",
+            "auto",
+            "none",
+        ),
+        (
+            "width:auto;height:30px;min-width:70px;",
+            "aspect-ratio:2 / 1;",
+            30.0,
+            70.0,
+            30.0,
+            "70px",
+            "none",
+            "auto",
+            "none",
+        ),
+        (
+            "width:auto;height:30px;max-width:50px;",
+            "aspect-ratio:2 / 1;",
+            30.0,
+            50.0,
+            30.0,
+            "auto",
+            "50px",
+            "auto",
+            "none",
+        ),
+        (
+            "width:auto;height:30px;min-width:70px;max-width:50px;",
+            "aspect-ratio:2 / 1;",
+            30.0,
+            70.0,
+            30.0,
+            "70px",
+            "50px",
+            "auto",
+            "none",
+        ),
+        (
+            "width:auto;height:30px;max-width:50px;",
+            "",
+            30.0,
+            40.0,
+            30.0,
+            "auto",
+            "50px",
+            "auto",
+            "none",
+        ),
+    ];
+    let target_styles = cases
+        .iter()
+        .map(|(dimensions, ratio, ..)| item_style(dimensions, ratio))
+        .collect::<Vec<_>>();
+    let specs = target_styles
+        .iter()
+        .map(|target| scene(&grid, &short, target))
+        .collect::<Vec<_>>();
+    let fixture = Fixture::new(&root_style(""), &specs);
+    let output = fixture
+        .compute()
+        .expect("the bounded direct-pixel min/max scenes should project");
+    let expected_minimum = |value: &str| match value {
+        "auto" => spinon_style::ComputedCssDimension::Auto,
+        value => spinon_style::ComputedCssDimension::LengthPx(
+            value
+                .strip_suffix("px")
+                .expect("expected CSS minimum should use px or auto")
+                .parse()
+                .unwrap(),
+        ),
+    };
+    let expected_maximum = |value: &str| match value {
+        "none" => spinon_style::ComputedCssMaxSize::None,
+        value => spinon_style::ComputedCssMaxSize::LengthPx(
+            value
+                .strip_suffix("px")
+                .expect("expected CSS maximum should use px or none")
+                .parse()
+                .unwrap(),
+        ),
+    };
+
+    let mut y = 0.0;
+    for (index, (scene, case)) in fixture.scenes.iter().zip(cases).enumerate() {
+        let (
+            _,
+            _,
+            row_height,
+            target_width,
+            target_height,
+            min_width,
+            max_width,
+            min_height,
+            max_height,
+        ) = case;
+        assert_frame_with_ratio_tolerance(
+            &output,
+            scene.grid,
+            [0.0, y, 70.0, row_height],
+            &format!("scene {index} Grid auto row"),
+        );
+        assert_frame_with_ratio_tolerance(
+            &output,
+            scene.items[0],
+            [0.0, y, 10.0, 10.0],
+            &format!("scene {index} short item"),
+        );
+        assert_frame_with_ratio_tolerance(
+            &output,
+            scene.items[1],
+            [10.0, y, target_width, target_height],
+            &format!("scene {index} target"),
+        );
+        let grid_style = output
+            .computed_styles
+            .elements
+            .iter()
+            .find(|element| element.node_id == scene.grid.id())
+            .expect("Grid computed style should be present");
+        assert_eq!(
+            grid_style.grid_layout.as_ref().unwrap().columns,
+            [
+                spinon_style::ComputedCssGridTrackSize::LengthPx(10.0),
+                spinon_style::ComputedCssGridTrackSize::LengthPx(60.0),
+            ],
+            "scene {index} Grid columns"
+        );
+        assert_eq!(
+            grid_style.grid_layout.as_ref().unwrap().rows,
+            [spinon_style::ComputedCssGridTrackSize::Auto],
+            "scene {index} Grid rows"
+        );
+        let target_style = output
+            .computed_styles
+            .elements
+            .iter()
+            .find(|element| element.node_id == scene.items[1].id())
+            .expect("target computed style should be present");
+        for (property, expected) in [
+            ("min-width", min_width),
+            ("max-width", max_width),
+            ("min-height", min_height),
+            ("max-height", max_height),
+        ] {
+            assert_eq!(
+                target_style.properties.get(property).map(String::as_str),
+                Some(expected),
+                "scene {index} computed {property}"
+            );
+        }
+        assert_eq!(
+            target_style.layout_dimensions.min_width,
+            expected_minimum(min_width),
+            "scene {index} typed min-width"
+        );
+        assert_eq!(
+            target_style.layout_dimensions.max_width,
+            expected_maximum(max_width),
+            "scene {index} typed max-width"
+        );
+        assert_eq!(
+            target_style.layout_dimensions.min_height,
+            expected_minimum(min_height),
+            "scene {index} typed min-height"
+        );
+        assert_eq!(
+            target_style.layout_dimensions.max_height,
+            expected_maximum(max_height),
+            "scene {index} typed max-height"
+        );
+        y += row_height;
+    }
+}
+
+#[test]
 fn parsed_root_html_aspect_ratio_fails_closed_outside_the_fixed_owner_slice() {
     let grid = grid_style("");
     let short = item_style("width:auto;height:auto;", "");
@@ -179,14 +420,48 @@ fn parsed_root_html_aspect_ratio_fails_closed_outside_the_fixed_owner_slice() {
         ));
     }
 
+    for (dimensions, ratio) in [
+        (
+            "width:60px;height:auto;min-height:calc(20px + 20px);",
+            "aspect-ratio:2 / 1;",
+        ),
+        (
+            "width:auto;height:30px;min-width:71px;",
+            "aspect-ratio:2 / 1;",
+        ),
+        (
+            "width:60px;height:auto;max-height:71px;",
+            "aspect-ratio:2 / 1;",
+        ),
+        (
+            "width:60px;height:auto;min-height:40px;",
+            "aspect-ratio:3 / 2;",
+        ),
+        (
+            "width:auto;height:30px;max-width:50%;",
+            "aspect-ratio:2 / 1;",
+        ),
+    ] {
+        let target = item_style(dimensions, ratio);
+        let fixture = Fixture::new(&root_style(""), &[scene(&grid, &short, &target)]);
+        assert!(
+            matches!(
+                fixture.compute(),
+                Err(StyleLayoutError::UnsupportedComputedValue {
+                    property: "aspect-ratio",
+                    ..
+                })
+            ),
+            "unsupported min/max or non-2:1 constrained ratio should fail closed: {dimensions} {ratio}"
+        );
+    }
+
     let ratio = item_style("width:60px;height:auto;", "aspect-ratio:2 / 1;");
-    let constrained = item_style(
-        "width:60px;height:auto;max-height:40px;",
-        "aspect-ratio:2 / 1;",
-    );
-    let constrained_fixture = Fixture::new(&root_style(""), &[scene(&grid, &short, &constrained)]);
+    let short_with_min = item_style("width:auto;height:auto;min-width:20px;", "");
+    let constrained_sibling_fixture =
+        Fixture::new(&root_style(""), &[scene(&grid, &short_with_min, &ratio)]);
     assert!(matches!(
-        constrained_fixture.compute(),
+        constrained_sibling_fixture.compute(),
         Err(StyleLayoutError::UnsupportedComputedValue {
             property: "aspect-ratio",
             ..

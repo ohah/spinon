@@ -119,6 +119,43 @@ fn ratio_transfer_is_finite(element: &ComputedElementStyle) -> bool {
     transferred.is_finite() && transferred > 0.0
 }
 
+fn root_html_direct_text_ratio_min_max_is_supported(element: &ComputedElementStyle) -> bool {
+    fn supported_minimum(value: ComputedCssDimension) -> bool {
+        match value {
+            ComputedCssDimension::Auto => true,
+            ComputedCssDimension::LengthPx(value) => {
+                value.is_finite() && (0.0..=70.0).contains(&value)
+            }
+            _ => false,
+        }
+    }
+    fn supported_maximum(value: ComputedCssMaxSize) -> bool {
+        match value {
+            ComputedCssMaxSize::None => true,
+            ComputedCssMaxSize::LengthPx(value) => {
+                value.is_finite() && (0.0..=70.0).contains(&value)
+            }
+            _ => false,
+        }
+    }
+    let dimensions = element.layout_dimensions;
+    ["min-width", "max-width", "min-height", "max-height"]
+        .into_iter()
+        .all(|property| !element.layout_math_values.contains_key(property))
+        && supported_minimum(dimensions.min_width)
+        && supported_maximum(dimensions.max_width)
+        && supported_minimum(dimensions.min_height)
+        && supported_maximum(dimensions.max_height)
+}
+
+fn root_html_direct_text_ratio_has_min_max(element: &ComputedElementStyle) -> bool {
+    let dimensions = element.layout_dimensions;
+    dimensions.min_width != ComputedCssDimension::Auto
+        || dimensions.max_width != ComputedCssMaxSize::None
+        || dimensions.min_height != ComputedCssDimension::Auto
+        || dimensions.max_height != ComputedCssMaxSize::None
+}
+
 fn root_html_direct_text_ratio_candidate(
     tree: &HostDocumentSnapshot,
     owner: NodeId,
@@ -251,10 +288,6 @@ fn root_html_direct_text_ratio_candidate(
             && element.properties.get("line-height").map(String::as_str) == Some("10px")
             && element.layout_position == ComputedCssPosition::Static
             && root_html_ratio_box_edges_are_zero(element)
-            && element.layout_dimensions.min_width == ComputedCssDimension::Auto
-            && element.layout_dimensions.max_width == ComputedCssMaxSize::None
-            && element.layout_dimensions.min_height == ComputedCssDimension::Auto
-            && element.layout_dimensions.max_height == ComputedCssMaxSize::None
             && element.properties.get("text-wrap-mode").map(String::as_str) == Some("nowrap")
             && element.properties.get("align-self").map(String::as_str) == Some("auto")
             && element.properties.get("justify-self").map(String::as_str) == Some("auto")
@@ -266,6 +299,26 @@ fn root_html_direct_text_ratio_candidate(
         && target_style.layout_aspect_ratio.is_some_and(|ratio| {
             ratio.ratio == 0.5 && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
         });
+    let has_ratio = target_style.layout_aspect_ratio.is_some()
+        || target_style
+            .properties
+            .get("aspect-ratio")
+            .is_some_and(|value| value != "auto");
+    let target_min_max_supported = if root_html_direct_text_ratio_has_min_max(target_style) {
+        root_html_direct_text_ratio_min_max_is_supported(target_style)
+            && (!has_ratio
+                || (target_style
+                    .properties
+                    .get("aspect-ratio")
+                    .map(String::as_str)
+                    == Some("2 / 1")
+                    && target_style.layout_aspect_ratio.is_some_and(|ratio| {
+                        ratio.ratio == 2.0
+                            && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
+                    })))
+    } else {
+        true
+    };
     let target_dimensions_supported = matches!(
         (
             target_style.layout_dimensions.width,
@@ -281,17 +334,14 @@ fn root_html_direct_text_ratio_candidate(
     ) || height_half_80_supported;
     if !direct_text_item_style_is_supported(short_style)
         || !direct_text_item_style_is_supported(target_style)
+        || !target_min_max_supported
+        || root_html_direct_text_ratio_has_min_max(short_style)
         || short_style.layout_dimensions.width != ComputedCssDimension::Auto
         || short_style.layout_dimensions.height != ComputedCssDimension::Auto
         || !target_dimensions_supported
     {
         return None;
     }
-    let has_ratio = target_style.layout_aspect_ratio.is_some()
-        || target_style
-            .properties
-            .get("aspect-ratio")
-            .is_some_and(|value| value != "auto");
     if let Some(ratio_item) = expected_ratio_item {
         if ratio_item.node_id != item_ids[1]
             || !has_supported_numeric_ratio(ratio_item)

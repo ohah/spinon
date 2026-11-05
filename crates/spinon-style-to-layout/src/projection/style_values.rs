@@ -504,10 +504,14 @@ pub(super) fn project_styles(
             && grid_nodes
                 .as_ref()
                 .is_some_and(|nodes| nodes.html_image_grid_items.contains(&element.node_id));
+        let supports_root_html_direct_text_ratio_minmax = snapshot.profile
+            == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            && root_html_direct_text_ratio_nodes.contains(&element.node_id);
         let supports_c11_4_aspect_ratio_minmax =
             options.aspect_ratio_minmax_node == Some(element.node_id);
         if let Some(property) = unsupported_aspect_ratio_constraint(element)
             && !supports_grid_image_ratio_transfer
+            && !supports_root_html_direct_text_ratio_minmax
             && !supports_c11_4_aspect_ratio_minmax
         {
             return Err(StyleLayoutError::UnsupportedAspectRatioConstraint { node, property });
