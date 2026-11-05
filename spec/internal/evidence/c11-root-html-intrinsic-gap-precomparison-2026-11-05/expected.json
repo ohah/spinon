@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "method": "CSS Grid definite-space arithmetic from fixed item contributions; computed independently of Spinon runtime output",
+  "rootSizeCssPx": [100, 100],
+  "explicitTrackFunctions": {
+    "columns": ["min-content", "minmax(0px, 1fr)"],
+    "rows": ["min-content", "minmax(0px, 1fr)"]
+  },
+  "fixedItemContributionsCssPx": {
+    "basis": [40, 10],
+    "filler": [20, 20]
+  },
+  "cases": [
+    {
+      "id": "control",
+      "rowGapCssPx": 0,
+      "columnGapCssPx": 0,
+      "columnsCssPx": [40, 60],
+      "rowsCssPx": [10, 90],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 10, 20, 20]]
+    },
+    {
+      "id": "column-gap",
+      "rowGapCssPx": 0,
+      "columnGapCssPx": 10,
+      "columnsCssPx": [40, 50],
+      "rowsCssPx": [10, 90],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 10, 20, 20]]
+    },
+    {
+      "id": "row-gap",
+      "rowGapCssPx": 10,
+      "columnGapCssPx": 0,
+      "columnsCssPx": [40, 60],
+      "rowsCssPx": [10, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 20, 20, 20]]
+    },
+    {
+      "id": "both-gap",
+      "rowGapCssPx": 10,
+      "columnGapCssPx": 10,
+      "columnsCssPx": [40, 50],
+      "rowsCssPx": [10, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 20, 20, 20]]
+    }
+  ],
+  "excludedValidCssControl": {
+    "id": "percent-gap",
+    "css": "column-gap:10%",
+    "expectedProfileResult": "explicit fail-closed; this follow-up admits fixed px only"
+  }
+}

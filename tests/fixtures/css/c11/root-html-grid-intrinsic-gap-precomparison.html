@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Root HTML intrinsic Grid gap precomparison</title>
+  <style>
+    html, body { margin: 0; }
+    body { width: 520px; height: 220px; font: 10px/10px monospace; }
+    .scene {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      display: grid;
+      grid-template-columns: min-content minmax(0, 1fr);
+      grid-template-rows: min-content minmax(0, 1fr);
+      align-content: start;
+      justify-content: start;
+      background: #eee;
+    }
+    .scene > div { box-sizing: border-box; }
+    .basis { width: 40px; height: 10px; background: #48a; }
+    .fill { width: 20px; height: 20px; background: #a48; }
+    #control { left: 0; top: 0; }
+    #column-gap { left: 110px; top: 0; column-gap: 10px; }
+    #row-gap { left: 220px; top: 0; row-gap: 10px; }
+    #both-gap { left: 330px; top: 0; gap: 10px; }
+    #percent-gap { left: 440px; top: 0; column-gap: 10%; }
+  </style>
+</head>
+<body>
+  <section class="scene" id="control" data-case="control">
+    <div class="basis" style="grid-column:1;grid-row:1"></div>
+    <div class="fill" style="grid-column:2;grid-row:2"></div>
+  </section>
+  <section class="scene" id="column-gap" data-case="column-gap">
+    <div class="basis" style="grid-column:1;grid-row:1"></div>
+    <div class="fill" style="grid-column:2;grid-row:2"></div>
+  </section>
+  <section class="scene" id="row-gap" data-case="row-gap">
+    <div class="basis" style="grid-column:1;grid-row:1"></div>
+    <div class="fill" style="grid-column:2;grid-row:2"></div>
+  </section>
+  <section class="scene" id="both-gap" data-case="both-gap">
+    <div class="basis" style="grid-column:1;grid-row:1"></div>
+    <div class="fill" style="grid-column:2;grid-row:2"></div>
+  </section>
+  <section class="scene" id="percent-gap" data-case="percent-gap">
+    <div class="basis" style="grid-column:1;grid-row:1"></div>
+    <div class="fill" style="grid-column:2;grid-row:2"></div>
+  </section>
+  <script>
+    const rect = (node) => {
+      const value = node.getBoundingClientRect();
+      return { x: value.x, y: value.y, width: value.width, height: value.height };
+    };
+    window.__gridCases = [...document.querySelectorAll('.scene')].map((root) => {
+      const style = getComputedStyle(root);
+      return {
+        id: root.id,
+        rect: rect(root),
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        rowGap: style.rowGap,
+        columnGap: style.columnGap,
+        items: [...root.children].map((item) => ({
+          gridColumn: getComputedStyle(item).gridColumn,
+          gridRow: getComputedStyle(item).gridRow,
+          rect: rect(item),
+        })),
+      };
+    });
+  </script>
+</body>
+</html>
