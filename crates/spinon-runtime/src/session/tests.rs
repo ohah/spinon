@@ -18,6 +18,7 @@ mod root_html_grid_anonymous_text;
 mod root_html_grid_aspect_ratio_values;
 mod root_html_grid_auto_minimum;
 mod root_html_grid_auto_minimum_named_areas;
+mod root_html_grid_auto_repeat;
 mod root_html_grid_column_flow;
 #[cfg(feature = "c11-1-grid-column-flow-mixed-cross-axis-fixture-test")]
 mod root_html_grid_column_flow_mixed_cross_axis;

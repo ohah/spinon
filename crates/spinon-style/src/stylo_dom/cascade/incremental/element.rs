@@ -247,6 +247,8 @@ pub(super) fn computed_element_output(
                         == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_auto_repeat: profile
                         == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                    allow_root_html_auto_repeat: profile
+                        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
                     allow_fixed_auto_track_lists: profile
                         == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
                     allow_root_html_fixed_auto_row_lists: profile

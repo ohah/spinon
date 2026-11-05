@@ -1,50 +1,29 @@
-# C11 · parsed Root HTML Grid auto-repeat 제한 구현 계획 · 2026-11-05
+# C11.1 · parsed Root HTML Grid auto-repeat
 
-**상태:** 계획 및 사전 비교 후보. 구현 전이다. · **대상 경로:** `RuntimeRootHtmlTextPaintV1`의 기본 parsed Root HTML Grid 경로. · **완료 판정:** 이 제한 후보만으로 C11.1, C11.4, C11 또는 공개 CSS 지원을 완료 처리하지 않는다. 현재 공식 집계 `78/214`를 유지한다.
+**상태:** 구현 후보 검증 중. 공개 CSS 지원이나 C11.1/C11 완료로 표시하지 않는다. 후보 코드는 단일 체크아웃의 `implementation/c11-root-html-grid-auto-repeat-20261105` 브랜치에 있으며 아직 PR이 아니다. 공식 구현 상태는 [STATUS.md](../spec/STATUS.md)만 기준으로 한다.
 
-## 문제와 코드 경계
+**선행:** [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md), [Root HTML integer repeat](./c11-root-html-grid-integer-repeat.md), [Root HTML intrinsic tracks](./c11-root-html-intrinsic-grid-tracks.md).
 
-Root HTML 내부 계약은 양의 정수 `repeat()`을 제한 지원하지만 `auto-fill`/`auto-fit`은 거부한다([0059 C11 내부 계약](../spec/internal/0059-c11-grid-layout.md)). 현재 `grid_values::project_grid_layout_with_route`는 auto-repeat을 `RuntimeBlockFlexGridTrackSizingV1`에서만 허용하고, `validate_root_html_grid_tracks`도 Root HTML profile에서 모든 auto-repeat을 거부한다. 공용 `spinon-layout` adapter는 이미 typed `GridAutoRepeat`을 Taffy repetition으로 변환한다. Root HTML의 item 용량 검사는 authored `columns.len() × rows.len()`을 사용하므로, 확장된 repeat count를 반영하는 제한 검사가 추가되어야 한다.
+**사전 비교:** [Chrome 156 Agent Browser 비교와 독립 기대값](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md) · [입력 fixture](../tests/fixtures/css/c11/root-html-grid-auto-repeat-precomparison.html) · [13 scene 기대값](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json) · [Chrome 관측](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json).
 
-## 제안하는 지원 계약
+## 목표
 
-Root HTML 기본 경로에서 다음 조건을 모두 만족하는 한 축의 auto-repeat만 연결한다.
+Stylo가 파싱·계산한 CSS 값을 기존 기본 `RuntimeRootHtmlTextPaintV1` parsed Root HTML 경로에서 사용한다. 제한 auto-repeat만 전용 `RootHtmlAutoRepeatV1` layout mode로 전달한다. C11.4 일반 `TrackSizing` 입력 허용 범위, C11.2.3 fixture ABI, 공개 CSS 지원 범위는 바꾸지 않는다.
 
-- `auto-fill` 또는 `auto-fit` 하나만 사용한다. Columns와 rows에 동시에 쓰거나 같은 축에 둘 이상 쓰는 입력은 거부한다.
-- 반복 fragment가 그 축의 track list 전체이며, pattern은 1개 또는 2개의 `minmax(<finite positive px>, 1fr)` track이다. Prefix/suffix track, integer `repeat()` 혼합, named line, `grid-template-areas`는 거부한다.
-- 반복 축의 computed width/height는 finite positive CSS px로 definite이고, 해당 축의 min-size는 `auto`, max-size는 `none`, aspect ratio는 `auto`다. Percentage/calc/intrinsic track 최소값과 percentage gap은 거부한다.
-- gap은 0 이상 finite CSS px다. 축의 padding·border·margin은 0이며 track-count basis와 content size가 다르지 않다.
-- 다른 축은 이름 없는 fixed px track 하나다. Default row auto-placement만 사용한다. Column/dense flow, explicit line placement, implicit track 생성은 거부한다.
-- 각 expanded axis는 `GRID_MAX_TRACKS`를 넘지 않는다. 계산한 expanded explicit cell capacity보다 grid item 수가 크면 배치 전에 거부한다. `display:none` 자식은 item 용량과 `auto-fit` 점유에서 제외한다.
-- `auto-fit`의 빈 track 및 인접 gutter collapse, visible item overflow와 track sizing은 기존 Taffy 경로가 처리한다. Spinon은 이 알고리즘을 새로 구현하지 않는다.
-- 지원 밖 값, 자원 상한 초과, 산술 불능 및 allocation 오류에서는 부분 layout scene을 publish하지 않는다.
+반복 축은 columns 또는 rows 중 하나만 허용한다. 반복 track list 전체가 하나의 `repeat(auto-fill|auto-fit, …)`이어야 하며 pattern은 이름 없는 `minmax(positive finite px, 1fr)` 한 개 또는 두 개다. 다른 축은 이름 없는 fixed px track 하나다. 반복 축에는 finite positive definite px 크기와 `min-size:auto`·`max-size:none`이 필요하다. 양 축 gap은 normal 또는 finite non-negative px만 허용하고 margin·padding·border는 0이어야 한다. `grid-auto-flow:row`, `grid-auto-rows:auto`, `grid-auto-columns:auto`만 허용한다.
 
-Expanded repeat count 사전 검사는 위 grammar로 한정한다. Repeat pattern의 고정 px 최소값, fixed px gap, definite content axis만 입력으로 사용하며, CSS Grid §7.2.3.2에 따른 track당 UA 1px count floor(반복 횟수 산정에만 적용), Taffy의 최소 1회 repetition과 `GRID_MAX_TRACKS` clamp를 포함한다. Count 계산에만 floor를 적용하고 실제 track sizing은 authored minimum을 유지한다. 경계·산술 결과가 Taffy와 다르지 않음을 Rust adapter/runtime matrix로 확인한다. 이 subset 밖의 count 계산은 거부한다.
+visible direct item은 기본 auto placement, source order, static positioning, auto self-alignment 및 auto aspect ratio여야 한다. 반복에서 만들어지는 explicit cells보다 item이 많으면 implicit track을 만들지 않고 거부한다. `display:none` item은 occupancy에서 제외한다. line names, 이웃 track, integer repeat 결합, 두 축 동시 repeat, areas, dense/column flow, 비율 gap, intrinsic track, 비기본 alignment, overflow, positioned item과 기타 제한 밖 값은 contextual error로 layout publication 전에 닫는다.
 
-## 사전 비교와 독립 기준
+Auto-repeat 개수는 CSS Grid §7.2.3.2 규칙대로 계산한다. count 계산에만 UA 1px floor를 적용하고 sizing에는 작성한 positive px minimum을 유지한다. 모든 gutter를 count 산식에 포함하고 expanded track 수는 Taffy `GRID_MAX_TRACKS`에서 제한한다. 산술 overflow와 cell capacity 초과는 partial frame 없이 실패해야 한다.
 
-[Agent Browser Chrome 156 사전 비교](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md)는 auto-fill/auto-fit, columns/rows, empty·hidden item, 169/170px count boundary, track당 UA 1px count floor, visible overflow를 포함한 13개 장면이다. [정정된 규범 기대값](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json), [원시 관찰](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json), [비교 결과](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json), [화면](../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png)을 구현 전에 고정했다. 최초 hand-derived fr 계산의 오류도 원본 파일과 함께 남겨 corrected oracle의 산출 경위를 보인다.
+## 판정 기준
 
-## 구현 순서
+1. 13개 독립 기대 장면과 Chrome 156 관측이 반복 횟수와 item geometry에서 일치한다. 169/170px 반복 경계, 2-track pattern, auto-fit empty/collapsed item, subpixel minimum의 count floor와 visible overflow를 포함한다.
+2. Rust focused tests에서 positive grammar, rows/columns, unsupported syntax/style, item capacity와 publication atomicity를 확인한다. 기존 C11.4 auto-repeat regression을 유지한다.
+3. 새 native Root HTML fixture를 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 기본 앱 route로 실행한다. fixture는 columns 1-track, columns 2-track pattern, rows repeat를 각각 다른 색 item과 고정 geometry로 포함한다. 같은 source hash·layout/draw 결과를 확인하고 원본 bootstrap HTML을 복구한다.
+4. Simulator screenshots는 visual smoke로만 분류한다. PixelCopy, Metal drawable readback, hardware GPU, Android 실기기, iOS compositor 이후 pixels 또는 WPT를 실행하지 않으면 완료 근거로 주장하지 않는다.
+5. `cargo fmt --all -- --check`, 변경 crate focused tests 및 Clippy를 실행한다. 코드·fixture·evidence를 적대적으로 검토하고 발견을 수정한 뒤 PR을 만든다.
 
-1. Root HTML route 전용 validator에서 지원 grammar, definite axis, gap 및 zero-edge 조건을 한 번 검증한다. 기존 C11.4 track-sizing profile의 허용 범위는 넓히지 않는다.
-2. Root HTML profile의 `GridAutoRepeat` projection gate를 해당 validator가 승인한 입력에만 연다. 공용 Taffy converter와 auto-fit/auto-fill engine 동작을 재사용한다.
-3. expanded repeat count와 expanded explicit capacity를 overflow-safe하게 계산하고 `validate_root_html_grid_item_capacity`에 반영한다. 최대 tracks, overflow, hidden child와 no-implicit-track 경계를 회귀 검사한다.
-4. CSS cascade→typed snapshot→Root HTML style/layout runtime 경로의 positive 및 fail-closed tests를 추가한다. Count 경계 169/170, 양 축 개별 route, 1-track/2-track pattern, auto-fill/auto-fit의 빈·점유·hidden 경우, over-cap 및 item-capacity control을 포함한다.
-5. Chrome 사전 fixture와 같은 author HTML을 기본 Root HTML 경로에서 실행하고 결과 frames/tracks를 독립 기대값과 비교한다. 기존 integer-repeat, fixed tracks, percentage/fr/fit-content 경로도 scoped 회귀 확인한다.
-6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 `RuntimeSession::new_runtime_gpu_with_root_html`의 기본 Root HTML profile을 실행한다. 기존 C11 Root HTML SurfaceView/Metal harness를 사용할 수 있다. Root/item geometry, expanded track evidence, empty-track collapse, overflow와 screenshot을 기록한다. Pixel 표본을 얻으면 그 표본/표면 시점만 명시하며 simulator 결과를 실기기 증거로 표현하지 않는다.
-7. Arbitrary HTML을 앱에 전달하는 현재 harness가 없으면 새 opt-in fixture harness를 전용 `*-fixture-test` feature/build define으로 분리한다. `RuntimeBlockFlexGridTrackSizingV1` 전용 C11.4 entry point로 대신 검증하지 않는다. 기본 APK/iOS executable에서 신규 fixture 심볼·문자열·payload가 빠지고 positive-control fixture build에 포함되는지 확인한다.
-8. 구현/runtime을 서로 다른 20개 실패 관점으로 검토하고, 별도 PR diff를 30개 관점으로 검토한다. PR은 현재 project rule대로 Rebase and merge를 사용하고 check rollup이 비어 있으면 CI 성공으로 기록하지 않는다.
-9. 병합 후 `spec/internal/0059-c11-grid-layout.md`, `spec/STATUS.md`, `plan/c11-css-grid.md`의 실제 구현 범위와 증거 링크만 갱신한다. 전체 C11/C11.1/C11.4의 미완료 상태와 `78/214` 집계는 완료 조건이 충족되지 않는 한 유지한다.
+## 제외 범위
 
-## Pass criteria
-
-- 13개 Chrome 사전 비교 장면에서 expected repeat count, track sizes, root/item frames, hidden/empty occupancy, UA count floor와 overflow가 독립 기대값과 일치한다.
-- Root HTML runtime이 지원 subset을 성공시키고, 계획한 negative controls는 부분 frame/scene 없이 명시적으로 거부한다.
-- Expanded explicit capacity 검사에서 실제 반복 수와 item 수의 관계가 정확하고, implicit row/column으로 조용히 넘기지 않는다.
-- Android AVD와 iOS Simulator의 동일 source candidate에서 geometry가 독립 기준과 일치하고 실행·화면 artifact가 PR에서 열 수 있다.
-- 기존 scoped Root HTML Grid 경로가 통과하고 Rust format/lint 게이트가 통과한다. CI가 보고되지 않은 경우 그 사실을 그대로 기록한다.
-
-## PR 분리
-
-이 계획과 고정 사전 비교를 먼저 PR로 검토·병합한다. 구현은 그 뒤 별도 순차 브랜치에서 진행하고, 구현/runtime 검토와 PR diff 검토는 계획 리뷰와 별개로 새로 수행한다.
+임의 auto-repeat grammar, line-name/placement, 여러 repeat group과 이웃 track, intrinsic/percentage sizing, general implicit placement, nested-grid 조합, 일반 CSS Grid 또는 WPT 적합성, 공개 CSS 지원, Android hardware GPU, 실기기 및 iOS compositor-after pixel 동등성. 이 후보의 성공은 C11.1이나 C11 parent를 완료 처리하지 않는다.

@@ -9,9 +9,9 @@ use spinon_layout::{
 use spinon_style::{
     ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridAutoColumns,
     ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, ComputedCssMaxSize,
-    ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssGridPlacement, ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize,
+    ComputedCssMaxSize, ComputedCssOverflow, ComputedCssPosition, ComputedCssSpacingValue,
+    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -1170,6 +1170,15 @@ pub(super) fn project_styles(
                     true,
                 )?;
             }
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && element.grid_layout.as_ref().is_some_and(|grid| {
+                    grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some()
+                })
+            {
+                // Keep the default Root HTML candidate isolated from the opt-in C11.4
+                // TrackSizing profile after its strict adapter validation.
+                container.placement_mode = spinon_layout::GridPlacementMode::RootHtmlAutoRepeatV1;
+            }
             grid_containers.insert(node, container);
         }
         if supports_positioning(snapshot.profile) {
@@ -1461,16 +1470,51 @@ fn validate_root_html_grid_item_capacity(
             // column-flow의 explicit-plus-implicit column cap은 전용 후보 검증기에서 확인합니다.
             continue;
         }
-        let explicit_capacity =
-            grid.columns
-                .len()
-                .checked_mul(grid.rows.len())
-                .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
-                    node: element.node_id,
-                    property: "grid-template-rows",
-                    value: "Root HTML Grid explicit track 수가 표현 가능한 범위를 넘었습니다"
-                        .to_owned(),
+        let (explicit_columns, explicit_rows) =
+            grid_values::root_html_auto_repeat::expanded_track_counts(element, grid)?;
+        let explicit_capacity = explicit_columns.checked_mul(explicit_rows).ok_or_else(|| {
+            StyleLayoutError::UnsupportedComputedValue {
+                node: element.node_id,
+                property: if grid.columns_auto_repeat.is_some() {
+                    "grid-template-columns"
+                } else {
+                    "grid-template-rows"
+                },
+                value: "Root HTML Grid expanded explicit cell capacity overflowed".to_owned(),
+            }
+        })?;
+        if grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some() {
+            for item in snapshot
+                .elements
+                .iter()
+                .filter(|item| nodes.grid_item_owners.get(&item.node_id) == Some(&element.node_id))
+            {
+                let placement = item.grid_item_placement.as_ref().ok_or_else(|| {
+                    StyleLayoutError::UnsupportedComputedValue {
+                        node: item.node_id,
+                        property: "grid-row-start",
+                        value: "Root HTML auto-repeat requires typed default-auto item placement"
+                            .to_owned(),
+                    }
                 })?;
+                if [
+                    &placement.row_start,
+                    &placement.row_end,
+                    &placement.column_start,
+                    &placement.column_end,
+                ]
+                .into_iter()
+                .any(|value| !matches!(value, ComputedCssGridPlacement::Auto))
+                {
+                    return Err(StyleLayoutError::UnsupportedComputedValue {
+                        node: item.node_id,
+                        property: "grid-row-start",
+                        value: "Root HTML auto-repeat requires all grid item placement longhands to be auto"
+                            .to_owned(),
+                    });
+                }
+            }
+        }
         let item_count = item_counts
             .get(&element.node_id)
             .copied()
@@ -1544,9 +1588,20 @@ fn validate_root_html_grid_item_capacity(
             let property = root_html_grid_capacity_error_property(grid.auto_flow);
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node: element.node_id,
-                property,
-                value: "Root HTML Grid item 수가 explicit 및 제한 implicit track 용량을 넘었습니다"
-                    .to_owned(),
+                property: if grid.columns_auto_repeat.is_some() {
+                    "grid-template-columns"
+                } else if grid.rows_auto_repeat.is_some() {
+                    "grid-template-rows"
+                } else {
+                    property
+                },
+                value: if grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some() {
+                    "Root HTML Grid item 수가 expanded explicit cell capacity를 넘었습니다"
+                        .to_owned()
+                } else {
+                    "Root HTML Grid item 수가 explicit 및 제한 implicit track 용량을 넘었습니다"
+                        .to_owned()
+                },
             });
         }
     }
@@ -1673,6 +1728,9 @@ fn validate_root_html_grid_box_inputs(
         if let Some(grid) = element.grid_layout.as_ref() {
             root_html_grid_tracks::validate_fraction_axis_inputs(element, grid)?;
             root_html_grid_tracks::validate_percentage_axis_inputs(element, grid)?;
+            if grid.columns_auto_repeat.is_some() || grid.rows_auto_repeat.is_some() {
+                grid_values::root_html_auto_repeat::validate_container(element, grid)?;
+            }
             if grid_values::root_html_has_supported_implicit_rows(&grid.auto_rows) {
                 for (property, initial) in [
                     ("align-items", "normal"),

@@ -1,0 +1,18 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 16.55s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 9 tests
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_accounts_for_two_track_pattern_and_all_inter_track_gaps ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_clamps_expanded_track_count_to_taffy_limit ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_matches_single_track_169_170px_boundary ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_applies_ua_one_pixel_floor_only_to_repeat_count ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_rejects_non_finite_inputs_and_arithmetic_overflow ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_grammar_rejects_repeats_on_both_axes_and_special_placement_routes ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_grammar_rejects_neighbors_dense_flow_and_invalid_minimum ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_grammar_accepts_one_or_two_named_free_tracks_on_one_axis ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_projection_reuses_typed_auto_repeat_track_conversion ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 404 filtered out; finished in 0.00s
