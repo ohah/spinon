@@ -1,0 +1,54 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/roadmap-tailnet-sync-pr1179-2026-11-05/rspress-pass01.config.ts"
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 154 ms.
+ready   built in 1.47s (node)
+ready   built in 1.47s (web)
+
+File (web)                                                                                                                      Size        Gzip
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/styles.2da0941fcb.js                     0.47 kB     0.23 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/icon.svg                                           0.64 kB     0.41 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-a48746cae70c.c459531174.js   1.0 kB      0.56 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-fbd80bb745a6.d1e348a53f.js   8.2 kB      2.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-8c82bab810a8.e081930282.js   8.2 kB      2.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-dda4d98039fb.66f597c219.js   8.9 kB      3.5 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-7d459fbbcd7b.9e405620e2.js   9.9 kB      3.3 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-aa579d88d246.db26e26381.js   10.0 kB     3.3 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-0b58d0d143e3.dcb09a195b.js   11.4 kB     4.0 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-6b561632efbb.4c7c906be3.js   11.4 kB     4.0 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-a91dda860c88.cd15e3106a.js   12.6 kB     3.8 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-d8927700f4a5.0b93f500a0.js   12.6 kB     3.8 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/index.cb4ce6408d.js                      95.9 kB     23.5 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/a.877e354479.js                          217.1 kB    71.7 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-c4dae6800800.c205aac076.js   652.1 kB    141.0 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-739571cd2ae5.ca9f4a788a.js   652.2 kB    141.1 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-6c33a3943990.f7e310ba0c.js   882.5 kB    182.7 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/js/async/route-7ce2535ac56d.9f95fc4d12.js   882.7 kB    182.7 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/static/search_index.ko.5da204d3.json               1872.6 kB   544.1 kB
+
+                                                                                                                       Total:   5678.0 kB   1415.2 kB
+
+File (node)                                                                                                                                                                                   Size        Gzip
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/404.html                                                                                                         8.5 kB      2.5 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/index.html                                                                                                       22.5 kB     3.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html                            29.8 kB     6.2 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html                       29.9 kB     6.1 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html        30.8 kB     6.4 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html   30.8 kB     6.4 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/plan/c11-root-html-grid-auto-repeat.html                                                                         31.7 kB     6.8 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html                       32.0 kB     7.1 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html                  32.0 kB     7.1 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html                             32.6 kB     6.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html                                  32.6 kB     6.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/internal/0059-c11-grid-layout.html                                                                               627.9 kB    141.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/spec/internal/0059-c11-grid-layout.html                                                                          628.0 kB    141.9 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/STATUS.html                                                                                                      820.9 kB    182.8 kB
+../../build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/site/spec/STATUS.html                                                                                                 821.6 kB    182.9 kB
+
+                                                                                                                                                                                     Total:   3211.6 kB   715.8 kB

@@ -1,0 +1,12 @@
+{
+  "session": "default",
+  "browserPidBeforeClose": 53161,
+  "closeCommand": "agent-browser close --all",
+  "sessionClosed": true,
+  "postCloseSessionInfo": {
+    "active": false,
+    "pid": null
+  },
+  "postCloseProcessSearch": "No agent-browser daemon or agent-browser Chrome profile processes remained.",
+  "tmuxStateChanged": false
+}

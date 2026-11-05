@@ -1,0 +1,888 @@
+{
+  "sourceHead": "7c042f4ac5080609927fb26760112c5a88a56d3c",
+  "sourceTree": "1ebf5fdbb29451efe0e24dc90e55ccbe53d1956c",
+  "trackedDiffSha256": "b302d402d1341b40efd57367a1be0dc15eaea26a084ef46f74e432923836aedd",
+  "selectedRootFileCount": 81,
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass01/pass01/publication",
+  "routeCount": 118,
+  "totalBytes": 14334727,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/plan/c11-root-html-grid-auto-repeat.html",
+      "route": "plan/c11-root-html-grid-auto-repeat.html",
+      "sha256": "f253dc02ba670b2843d9fcba4d45e143f82e318cd6842434c5b11ae5e7209fb1"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "34f5441334e20efdbb1800f057b7e1c21abb720c92f65ebb6e93bd483e629a36"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "sha256": "ec34e95fb69e2acaa7ce3953f3d258cf45de3d931cf0e2622712ca187dfcfaf9"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "sha256": "c6dae54137ccd54e1347da5c95c444e93c6ca22dd768ab64c4d3440a5603d695"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "sha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "route": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "sha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376"
+    },
+    {
+      "href": "/spinon/STATUS.html#c11-css-grid",
+      "route": "STATUS.html",
+      "sha256": "302a14069588078d8df41826248ca0ae5f43f95acfaace204196118ff88daf8f"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "index.html",
+      "reason": "기존 Tailnet preview 시작 페이지를 보존함"
+    },
+    {
+      "path": "404.html",
+      "reason": "기존 Tailnet 404 route를 보존함"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 627929,
+      "sha256": "34f5441334e20efdbb1800f057b7e1c21abb720c92f65ebb6e93bd483e629a36"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 444644,
+      "sha256": "3f034844f016951c6e57e21a1619b57f32deaa7e000c7f8023bceba4ea1d4a8a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 7431,
+      "sha256": "21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json",
+      "kind": "source-page-or-asset",
+      "bytes": 6857,
+      "sha256": "9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison-failed-fixed-gap-assertion.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison-failed-fixed-gap-assertion.json",
+      "kind": "source-page-or-asset",
+      "bytes": 3142,
+      "sha256": "5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json",
+      "kind": "source-page-or-asset",
+      "bytes": 3138,
+      "sha256": "58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/initial-derived-expected-before-fr-audit.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/initial-derived-expected-before-fr-audit.json",
+      "kind": "source-page-or-asset",
+      "bytes": 2294,
+      "sha256": "e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json",
+      "kind": "source-page-or-asset",
+      "bytes": 7177,
+      "sha256": "5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "source": "rspress:internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 29843,
+      "sha256": "ec34e95fb69e2acaa7ce3953f3d258cf45de3d931cf0e2622712ca187dfcfaf9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4143,
+      "sha256": "38b97a0b94224b8f284d77def23eb7cda07dfb811decf0320636f2f1e05bd271"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-app-build-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-app-build-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4960,
+      "sha256": "696ef3acbda6d6c1000e990b5f63ac8b505563e345f078cabe544efbf0e74387"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-install-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-install-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-launch-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-launch-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "kind": "source-page-or-asset",
+      "bytes": 24817,
+      "sha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-spinon-log-pass02.txt",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-spinon-log-pass02.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 6384,
+      "sha256": "29d1508babec5c2411087b50fc9ed3bde49693ab84e20a86c4a4e506c2711d1f"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-v8-build-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-v8-build-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 278096,
+      "sha256": "25a8934e1b214f9c078b90cf95a6ee649af683e453295797d61299db613ba50b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/bundle-input-hashes.txt",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/bundle-input-hashes.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 710,
+      "sha256": "0aea744f0905bf9b0755f1f39cd8aec37f354a6f5f67a05d7f5374bfb471f159"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/clippy-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/clippy-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 598,
+      "sha256": "70b2903e71d3f65da6de2a22a237e96ddfa80571e46ae5bda77f4129cfe76703"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/hashes.sha256",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/hashes.sha256",
+      "kind": "source-page-or-asset",
+      "bytes": 4701,
+      "sha256": "617ab06b946d051f096bcb41c1d5eea6de72ad24fb8909214adae019a01a4ee9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "source": "rspress:internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 30768,
+      "sha256": "22f43bff8547ecd10aacc5fc1d6a3a1137e8a5999fe0a18b51e01e2fc258be5a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4990,
+      "sha256": "3b651f6edd67288b344e92f32e21fa7e2f0ee744c6e6758f61624c0f91e3e89d"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-app-build-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-app-build-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 66528,
+      "sha256": "eea16bae72f800e7576ee88df8531e8e00b83c39f08aa4577a4771928b3df954"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-install-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-install-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 106,
+      "sha256": "851a1ef13c172df45c727c38192cb11f21e95e5f3c1a256697b697145b1c2539"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-launch-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-launch-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 28,
+      "sha256": "74307044b3e88d611247be6e40b5dc1507f357de29c42280563ccaeda678bc03"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-screenshot-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-screenshot-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 200,
+      "sha256": "f89af93b17fbda93901c5c6b9b937c53162c50dcf7bacdbf76c0028cd3b522d9"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "kind": "source-page-or-asset",
+      "bytes": 75069,
+      "sha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-stop-before-run-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-stop-before-run-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 109,
+      "sha256": "4694ba137173bcfda468b8457698c63bb924c8ec058f717db42b2b55f388969f"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-system-log-pass02.txt",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-system-log-pass02.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 37601,
+      "sha256": "d00081ab44b7e72d23a07b85bb54f6e2138a934d2d061e8095c50993532777d8"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-v8-build-pass01.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-v8-build-pass01.log",
+      "kind": "source-page-or-asset",
+      "bytes": 194692,
+      "sha256": "885324bec90fea587956f70b1388b5b0f2286c94261aeb5d7cd6499e58c6283a"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/layout-focused-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/layout-focused-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 795,
+      "sha256": "cb452758e372a486bda68aed014fd744c26454b7d2586612a6b9033c99c4f3c5"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html",
+      "source": "rspress:internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 31956,
+      "sha256": "0ed008f25351758762d3a0a1e93bf0774034cabf39dc68cca20cd079ea54de3e"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6134,
+      "sha256": "9e5d5d8dba26cf241ab5d25ee7cd3a9c41f336af21934c3758a9e0bcc85a7179"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "source": "rspress:internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 32646,
+      "sha256": "c6dae54137ccd54e1347da5c95c444e93c6ca22dd768ab64c4d3440a5603d695"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5601,
+      "sha256": "c1cf824ec56beab93606875252d71b71f49fc14777da3942f5634baac520736b"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/runtime-focused-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/runtime-focused-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1558,
+      "sha256": "b9378940e1f1653b2bb94419948ea466a56ebf825090eef4941968b1d03bd7bd"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/rustfmt-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/rustfmt-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 55,
+      "sha256": "defc8e2bc5b6524da9382257a6f350301da6a44acd825d9bd29d0b72de4df054"
+    },
+    {
+      "path": "internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/style-to-layout-focused-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/style-to-layout-focused-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1861,
+      "sha256": "2ddbe86e87fcc3d07889cf2c5aa4c7b7d002c3c6ed61a34c7b305d45bfe65d60"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-repeat.html",
+      "source": "rspress:plan/c11-root-html-grid-auto-repeat.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 31656,
+      "sha256": "f253dc02ba670b2843d9fcba4d45e143f82e318cd6842434c5b11ae5e7209fb1"
+    },
+    {
+      "path": "plan/c11-root-html-grid-auto-repeat.md",
+      "source": "selected-root:plan/c11-root-html-grid-auto-repeat.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5587,
+      "sha256": "529c160011ee4b95785d8b539b3c124d9817cd97ea76dd88dbfe9bb060a08463"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 572338,
+      "sha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 572338,
+      "sha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 628019,
+      "sha256": "cdd1398abf059ea1c95b47c82d74c7354ca13af94b2c4b4bccaf628e4a2b7fc9"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 444644,
+      "sha256": "3f034844f016951c6e57e21a1619b57f32deaa7e000c7f8023bceba4ea1d4a8a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 7431,
+      "sha256": "21aa0eaad64a34167c6ac232da844762727f38e579a4c1eab48e763fcdbe9d72"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json",
+      "kind": "source-page-or-asset",
+      "bytes": 6857,
+      "sha256": "9b73ae92fd2da4a10b5d668c77e070383aae9d17e1172f531668eba1edf75f63"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison-failed-fixed-gap-assertion.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison-failed-fixed-gap-assertion.json",
+      "kind": "source-page-or-asset",
+      "bytes": 3142,
+      "sha256": "5b7fb889a41a18eaaea439bd38f2f847931654102fa9f6b25e4f3779f27a8eed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/comparison.json",
+      "kind": "source-page-or-asset",
+      "bytes": 3138,
+      "sha256": "58d3d10223cec64b988426f72a8197743cb3d76712662cfe506e3982f18a8c80"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/initial-derived-expected-before-fr-audit.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/initial-derived-expected-before-fr-audit.json",
+      "kind": "source-page-or-asset",
+      "bytes": 2294,
+      "sha256": "e1456874e5836a55b2571ef4e6b31ac8991c2a181a035270c20c723d4f2ce40a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json",
+      "kind": "source-page-or-asset",
+      "bytes": 7177,
+      "sha256": "5ee6ac601cf4cacc42b14a7589557d9341e31a903441a92244a762613a0f27d5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "source": "rspress:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 29853,
+      "sha256": "4c21d53a46bf98ed2e8e72c7722eca23f52effac17a3638d935992874bc26931"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4143,
+      "sha256": "38b97a0b94224b8f284d77def23eb7cda07dfb811decf0320636f2f1e05bd271"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-app-build-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-app-build-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4960,
+      "sha256": "696ef3acbda6d6c1000e990b5f63ac8b505563e345f078cabe544efbf0e74387"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-install-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-install-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-launch-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-launch-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-simulator-pass02.png",
+      "kind": "source-page-or-asset",
+      "bytes": 24817,
+      "sha256": "51fa48e528377446212c56c5e7572d082e50e438c2510f7968e4778b76cae7c6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-spinon-log-pass02.txt",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-spinon-log-pass02.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 6384,
+      "sha256": "29d1508babec5c2411087b50fc9ed3bde49693ab84e20a86c4a4e506c2711d1f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-v8-build-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/android-v8-build-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 278096,
+      "sha256": "25a8934e1b214f9c078b90cf95a6ee649af683e453295797d61299db613ba50b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/bundle-input-hashes.txt",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/bundle-input-hashes.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 710,
+      "sha256": "0aea744f0905bf9b0755f1f39cd8aec37f354a6f5f67a05d7f5374bfb471f159"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/clippy-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/clippy-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 598,
+      "sha256": "70b2903e71d3f65da6de2a22a237e96ddfa80571e46ae5bda77f4129cfe76703"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/hashes.sha256",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/hashes.sha256",
+      "kind": "source-page-or-asset",
+      "bytes": 4701,
+      "sha256": "617ab06b946d051f096bcb41c1d5eea6de72ad24fb8909214adae019a01a4ee9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 30788,
+      "sha256": "3436951673d585fe4efd19f609c62299fe250cab08bbf98d59cd107d206e321b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4990,
+      "sha256": "3b651f6edd67288b344e92f32e21fa7e2f0ee744c6e6758f61624c0f91e3e89d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-app-build-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-app-build-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 66528,
+      "sha256": "eea16bae72f800e7576ee88df8531e8e00b83c39f08aa4577a4771928b3df954"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-install-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-install-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 106,
+      "sha256": "851a1ef13c172df45c727c38192cb11f21e95e5f3c1a256697b697145b1c2539"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-launch-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-launch-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 28,
+      "sha256": "74307044b3e88d611247be6e40b5dc1507f357de29c42280563ccaeda678bc03"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-screenshot-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-screenshot-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 200,
+      "sha256": "f89af93b17fbda93901c5c6b9b937c53162c50dcf7bacdbf76c0028cd3b522d9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-simulator-pass02.png",
+      "kind": "source-page-or-asset",
+      "bytes": 75069,
+      "sha256": "4f3a98dce92cf3c059fae0634d93e1a67a11abbf3da697b1316f7ce17aa9a376"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-stop-before-run-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-stop-before-run-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 109,
+      "sha256": "4694ba137173bcfda468b8457698c63bb924c8ec058f717db42b2b55f388969f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-system-log-pass02.txt",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-system-log-pass02.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 37601,
+      "sha256": "d00081ab44b7e72d23a07b85bb54f6e2138a934d2d061e8095c50993532777d8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-v8-build-pass01.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/ios-v8-build-pass01.log",
+      "kind": "source-page-or-asset",
+      "bytes": 194692,
+      "sha256": "885324bec90fea587956f70b1388b5b0f2286c94261aeb5d7cd6499e58c6283a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/layout-focused-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/layout-focused-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 795,
+      "sha256": "cb452758e372a486bda68aed014fd744c26454b7d2586612a6b9033c99c4f3c5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 31966,
+      "sha256": "a34e67e731bc56b45f2c90726b9e2e59d92fd7dfe48f032783a099aea8587d5b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/pr-diff-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6134,
+      "sha256": "9e5d5d8dba26cf241ab5d25ee7cd3a9c41f336af21934c3758a9e0bcc85a7179"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "source": "rspress:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 32639,
+      "sha256": "f7c63496921f0ab1dc076ed1dfeaef127f250c2c65dd4a05014e74ee26f1290a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5601,
+      "sha256": "c1cf824ec56beab93606875252d71b71f49fc14777da3942f5634baac520736b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/runtime-focused-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/runtime-focused-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1558,
+      "sha256": "b9378940e1f1653b2bb94419948ea466a56ebf825090eef4941968b1d03bd7bd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/rustfmt-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/rustfmt-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 55,
+      "sha256": "defc8e2bc5b6524da9382257a6f350301da6a44acd825d9bd29d0b72de4df054"
+    },
+    {
+      "path": "spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/style-to-layout-focused-pass02.log",
+      "source": "selected-root:spec/internal/evidence/c11-root-html-grid-auto-repeat-runtime-2026-11-05/style-to-layout-focused-pass02.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1861,
+      "sha256": "2ddbe86e87fcc3d07889cf2c5aa4c7b7d002c3c6ed61a34c7b305d45bfe65d60"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 572338,
+      "sha256": "d31fa3985135c9cb9ffd76d993189fc38af9b752cb4a2f7931d87e7ef79cf985"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 821609,
+      "sha256": "13ce4f1eb5e5d5a956c45c39b189964712280ac994ebfca339fbc5d65063caf2"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 669884,
+      "sha256": "1107b4cebfb5cc93395b88a80756961e1bd094c52ddcf7034fc34c1ac280b6f2"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "source": "rspress:static/js/a.877e354479.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-0b58d0d143e3.dcb09a195b.js",
+      "source": "rspress:static/js/async/route-0b58d0d143e3.dcb09a195b.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11353,
+      "sha256": "8307ef63e1245d2f84585fae183eeadf34514cf2955f7f1c8caa8f526325c4f3"
+    },
+    {
+      "path": "static/js/async/route-6b561632efbb.4c7c906be3.js",
+      "source": "rspress:static/js/async/route-6b561632efbb.4c7c906be3.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11358,
+      "sha256": "ccde503d1fcf8b3e0e2c86f70e751a72f3f68bb532cff936a7d4315488539209"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.f7e310ba0c.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.f7e310ba0c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 882526,
+      "sha256": "b5e25001816e125b5a0424719d6d14c9ffe5a75139a2bfcc8a24fce7c12d15e4"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.ca9f4a788a.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.ca9f4a788a.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 652156,
+      "sha256": "2c68ced7e2f47b2d7224eae05717ff4e7f4e9ce3069d1df81d5e9fe519aebd51"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.9f95fc4d12.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.9f95fc4d12.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 882731,
+      "sha256": "bf6761db08a429afb94dce46bb87f432f464e54d034bb4a16d8131b1730af743"
+    },
+    {
+      "path": "static/js/async/route-7d459fbbcd7b.9e405620e2.js",
+      "source": "rspress:static/js/async/route-7d459fbbcd7b.9e405620e2.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9946,
+      "sha256": "62a44518c38648b3b66f8d0fd41b8ded449652abe66d0c7383ef317dd6ca6b3b"
+    },
+    {
+      "path": "static/js/async/route-8c82bab810a8.e081930282.js",
+      "source": "rspress:static/js/async/route-8c82bab810a8.e081930282.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8156,
+      "sha256": "48f8584c6bd40c453db4eb602eef29b0090b9e3f7b356a16de631c38cac672bd"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.c459531174.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.c459531174.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1008,
+      "sha256": "16b271f88522de5ef17edbc0cfe29d260764d2e677a97b6410ee357808291a97"
+    },
+    {
+      "path": "static/js/async/route-a91dda860c88.cd15e3106a.js",
+      "source": "rspress:static/js/async/route-a91dda860c88.cd15e3106a.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 12579,
+      "sha256": "799e11f6211991897e36cf09fa114d6b7c19a0e6cc282ab6174e780fc6ada5e9"
+    },
+    {
+      "path": "static/js/async/route-aa579d88d246.db26e26381.js",
+      "source": "rspress:static/js/async/route-aa579d88d246.db26e26381.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9963,
+      "sha256": "3fe143a78ae9d349c7acad3097d6319c5febdbb43b44c6839c91241dabe033da"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.c205aac076.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.c205aac076.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 652115,
+      "sha256": "4acfd1979e487f777c3e2a4c1439224cb6ed7a41e9e9134ccb160a5d172e200e"
+    },
+    {
+      "path": "static/js/async/route-d8927700f4a5.0b93f500a0.js",
+      "source": "rspress:static/js/async/route-d8927700f4a5.0b93f500a0.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 12596,
+      "sha256": "b4622b37ec84e1748ce1918a7727cf5809276d5f1c6581cc5c50a8ceda413e9b"
+    },
+    {
+      "path": "static/js/async/route-dda4d98039fb.66f597c219.js",
+      "source": "rspress:static/js/async/route-dda4d98039fb.66f597c219.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8923,
+      "sha256": "4b9985db03d0b7fe62fe3c40a9b47ff91cd783c1e5613742504279ce16361991"
+    },
+    {
+      "path": "static/js/async/route-fbd80bb745a6.d1e348a53f.js",
+      "source": "rspress:static/js/async/route-fbd80bb745a6.d1e348a53f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8151,
+      "sha256": "9658e668a39665b26353fca7c1ff7c5ce4ab0292981988823ffe1c6ccacc9b2b"
+    },
+    {
+      "path": "static/js/index.cb4ce6408d.js",
+      "source": "rspress:static/js/index.cb4ce6408d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 95881,
+      "sha256": "e9aca263f4c7a68327a1394a3dce624f2782d90958d98e2e298cad41a28964e0"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "source": "rspress:static/js/styles.2da0941fcb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.5da204d3.json",
+      "source": "rspress:static/search_index.ko.5da204d3.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 1872622,
+      "sha256": "5da204d35071e671379adc45e151470a52f9de3ec9c579871ed195ac31a1708a"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 820922,
+      "sha256": "302a14069588078d8df41826248ca0ae5f43f95acfaace204196118ff88daf8f"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 669884,
+      "sha256": "1107b4cebfb5cc93395b88a80756961e1bd094c52ddcf7034fc34c1ac280b6f2"
+    },
+    {
+      "path": "tests/fixtures/css/c11/root-html-grid-auto-repeat-precomparison.html",
+      "source": "selected-root:tests/fixtures/css/c11/root-html-grid-auto-repeat-precomparison.html",
+      "kind": "source-page-or-asset",
+      "bytes": 5389,
+      "sha256": "996904bc7f92cb16d47614392db0fc9ad9b83e2bd684491b68b539f980405d8d"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/roadmap-tailnet-sync-pr1179-2026-11-05/rspress-pass02.config.ts"
+🔥 Rspress v2.0.22
+
+error   [auto-nav-sidebar] Failed to read directory: /Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass02/pass01/root, maybe it does not exist. Please check it in /Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass02/pass01/root/_meta.json. (Error: ENOENT: no such file or directory, scandir '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1179-2026-11-05/pass02/pass01/root')
+    at createError (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/node/utils/error.js:6:19)
+    at fsDirToMetaItems (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/node/auto-nav-sidebar/normalize.js:25:15)
+    at async metaDirItemToSidebarItem (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/node/auto-nav-sidebar/normalize.js:120:26)
+    at async scanSideMeta (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/node/auto-nav-sidebar/normalize.js:282:17)
+    at async walk (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/node/auto-nav-sidebar/walk.js:60:54)
+    ... (truncated)
+error: script "docs:build" exited with code 1
