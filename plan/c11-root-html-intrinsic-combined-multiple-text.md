@@ -1,0 +1,46 @@
+# C11.4 parsed Root HTML intrinsic columns with multiple direct text items
+
+**상위:** [C11 CSS Grid](./c11-css-grid.md) · [Root HTML intrinsic columns](./c11-root-html-intrinsic-grid-tracks.md) · [single direct-text implicit rows](./c11-root-html-intrinsic-auto-rows-text.md) · [combined intrinsic columns + text rows](./c11-root-html-intrinsic-combined-tracks.md) · [multiple direct text rows](./c11-root-html-intrinsic-auto-rows-multiple-text.md) · [internal contract 0059](../spec/internal/0059-c11-grid-layout.md)
+
+**Precomparison:** [Chrome 156 and independent expected values](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-combined-multiple-text-precomparison.html) · [expected JSON](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/expected.json) · [raw observation](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/chrome/chrome156-observation.json)
+
+**Plan failure review:** [20 distinct cases](./c11-root-html-intrinsic-combined-multiple-text-plan-review-20.md). **Plan PR diff review:** record the actual PR diff in a separate 30-case review. **Implementation/runtime review:** record 20 new failure cases after implementation. **Implementation PR diff review:** independently review the actual code PR diff from 30 failure perspectives.
+
+## Gap and goal
+
+Two bounded paths exist in the default parsed Root HTML runtime: intrinsic explicit columns combined with a single direct text item's `grid-auto-rows:min-content` contribution, and multiple direct text items contributing separately to implicit rows when explicit columns are fixed. The projection's multiple-item validator deliberately filters out Grids that also have intrinsic explicit tracks. This leaves the interaction between column intrinsic sizing and each of multiple text items' line wrapping and row contribution unvalidated in the same default-runtime scene.
+
+Extend the existing parsed Root HTML route so a qualifying owner can use the already admitted intrinsic-column grammar with multiple eligible direct text items. Resolve the explicit columns first, lay out each text item at the resulting inline size, and preserve each item's own min-content row contribution, source identity, order and revision. Do not add a runtime profile, Grid grammar, parser, FFI selector, public API, fixture-only success path, or broader item/text style support. The parent C11.4/C11 status and official completion count remain unchanged.
+
+## Comparison basis and expected matrix
+
+Use CSS Grid Layout Level 1, 2025-03-26 CRD §§7.6, 11.1 and 11.5. The sizing algorithm resolves columns before rows; the resolved columns provide inline available space when row contributions depend on text wrapping; each non-spanning item's min-content contribution sizes its own implicit min-content row. The [Agent Browser HeadlessChrome 156 precomparison](../spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/README.md) captures a single owner with two text items and a source-order reversal.
+
+The fixture has a definite 40×40px Grid, one 10px explicit row, one explicit column, repeated `grid-auto-rows:min-content`, zero gaps, and four visible direct `div` items: a 10px empty control, `A A A A A A`, `A`, and a 34px empty control. Text uses the existing `monospace` 10px / 10px normal-wrapping profile. Test `min-content`, `max-content`, `auto`, and `minmax(min-content, 1fr)` columns. Chrome's font-specific used widths are 6.03125px, 66.234375px, 40px and 40px. The independent expected row sequences are `[10,60,10,34]`, `[10,10,10,34]`, `[10,20,10,34]`, and `[10,20,10,34]` CSS px respectively. A second source-order arrangement reverses the long and short text items: `[10,10,60,34]` for min-content, the unchanged rows for max-content, and `[10,10,20,34]` for auto/flexible. Runtime font advances are measured on the Android/iOS path and are not assumed equal to Chrome's host monospace metrics.
+
+## Admission boundary
+
+- Reuse the default `RuntimeRootHtmlTextPaintV1` and existing `RootHtmlIntrinsicTrackSizingV1` route. There is exactly one visible Grid owner, LTR `horizontal-tb`, static positioning, sparse row flow, positive definite CSS-px width/height, one positive fixed-px explicit row, one or more existing explicit columns with at least one intrinsic column, `grid-auto-columns:auto`, and repeated singleton `grid-auto-rows:min-content`.
+- Preserve the already admitted explicit-column grammar and its current fail-closed rules. This plan does not enable intrinsic row tracks, `fit-content()`, auto-repeat, named areas/lines, implicit columns, explicit placement, dense/column flow, math-backed gaps, or new gap syntax. Use zero gaps in the fixed matrix.
+- Only visible direct HTML `<div>` items are allowed. Items are empty finite fixed-size controls or contain exactly one direct text node with one or more ASCII `A` tokens separated by a single U+0020. Text style, owner, source order, computed value, and document/style/layout revision must satisfy the existing multiple-text profile.
+- Keep width/height auto, min-size auto, no max size or aspect ratio, normal wrapping, monospace 10px, line-height 10px, LTR `horizontal-tb`, static position, automatic placement and zero box edges for text items. Reject nested markup, additional children, unsupported whitespace/source, hidden or detached identity mismatches, unsupported item style, and partial/stale layout or paint output.
+- Keep per-item measurement and row contribution identity. Do not merge contributions, use fixed estimates, reorder DOM/paint items, or assume Chrome's host font metrics match native simulator fonts.
+- Preserve checked arithmetic, the 10,000 track preflight limit, optional trace budgets and trace allocation errors. Unsupported input must fail before publishing frames or paint.
+
+## Implementation and verification
+
+1. Extend the existing direct-text auto-row candidate selector to admit only the exact combined case: intrinsic explicit columns from the existing profile, one positive fixed-px explicit row, and the existing singleton min-content implicit row pattern. Keep existing single-text and fixed-column behavior unchanged.
+2. Retain full item topology and computed style validation for combined candidates. Add a bounded helper if needed so the combined branch cannot accidentally admit intrinsic explicit rows, fit-content, template areas, auto-repeat, or implicit columns that the current combined route rejects.
+3. Rust tests compare min-content, max-content, auto, flexible representative tracks and reversed source order to the independent matrix. Assert resolved column tracks, row traces/contribution owners, each text item's exact frame and line count, DOM/source paint order, revision identity and visible overflow.
+4. Negative controls atomically reject fixed-only grids with the wrong gap, intrinsic explicit rows, fit-content, auto-repeat, named areas, unsupported source/style/markup, an invalid second item, owner/revision mismatch, implicit-column output, and track/resource overflow. Confirm no partial frame or paint snapshot is published.
+5. Test the default `RuntimeSession` route from the fixed fixture hash. Confirm two text paragraphs and paint entries retain their node identities, independent row contributions, track trace and draw order.
+6. Run focused tests for changed crates, `cargo fmt --all -- --check`, scoped Clippy, and existing relevant regressions. Build and run the same source on Android API 37 ARM64 AVD and iPhone 17 Pro/iOS 26.2 Simulator; record layout/frame/track/line-count and draw/present evidence. Describe screenshots as visual smoke unless PixelCopy/Metal readback is actually performed. Do not claim physical device, hardware GPU, compositor-after-presentation pixels, WPT or CI checks unless run.
+7. Verify default artifact versus opt-in fixture boundary if implementation adds/changes fixture-only symbols or payload. Preserve unrelated baseline failures separately; do not call unrun checks green.
+8. Write a new 20-case implementation/runtime failure review and a separate 30-case actual PR diff review. Fix discovered defects and rerun affected checks and evidence.
+9. After implementation merge, update internal contract 0059, `spec/STATUS.md`, the public roadmap entry and Tailnet preview to the merged main hash. Keep C11.4/C11 unchecked and official completion at `78/214`. Close Agent Browser and verify its process exits.
+
+## Completion boundary
+
+This bounded cross-product does not finish C11.4 or C11, establish public CSS admission, arbitrary text/fonts/Unicode, nested or anonymous text, general intrinsic sizing, WPT conformance, or physical-device/GPU/compositor pixel parity. A green isolated column case and a green isolated multi-text case are insufficient: both must work together with correct line wrapping, per-item row contribution identity, source order, rejection atomicity and retained visible overflow.
+
+Planning and implementation proceed one PR at a time in the existing main checkout. Do not create another worktree or parallel implementation branch.

@@ -1,0 +1,349 @@
+{
+  "environment": {
+    "devicePixelRatio": 1,
+    "fontLoaded": "loaded",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": [
+      1280,
+      633
+    ]
+  },
+  "scenes": [
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          6.03125,
+          10
+        ],
+        "last": [
+          0,
+          80,
+          6.03125,
+          34
+        ],
+        "long-text": [
+          0,
+          10,
+          6.03125,
+          60
+        ],
+        "short-text": [
+          0,
+          70,
+          6.03125,
+          10
+        ]
+      },
+      "label": "min-content-forward",
+      "templateColumns": "6.03125px",
+      "templateRows": "10px 60px 10px 34px",
+      "textLineCounts": {
+        "long": 6,
+        "short": 1
+      },
+      "visibleBottomPx": 114
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          6.03125,
+          10
+        ],
+        "last": [
+          0,
+          80,
+          6.03125,
+          34
+        ],
+        "long-text": [
+          0,
+          20,
+          6.03125,
+          60
+        ],
+        "short-text": [
+          0,
+          10,
+          6.03125,
+          10
+        ]
+      },
+      "label": "min-content-reverse",
+      "templateColumns": "6.03125px",
+      "templateRows": "10px 10px 60px 34px",
+      "textLineCounts": {
+        "long": 6,
+        "short": 1
+      },
+      "visibleBottomPx": 114
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          66.234375,
+          10
+        ],
+        "last": [
+          0,
+          30,
+          66.234375,
+          34
+        ],
+        "long-text": [
+          0,
+          10,
+          66.234375,
+          10
+        ],
+        "short-text": [
+          0,
+          20,
+          66.234375,
+          10
+        ]
+      },
+      "label": "max-content-forward",
+      "templateColumns": "66.2344px",
+      "templateRows": "10px 10px 10px 34px",
+      "textLineCounts": {
+        "long": 1,
+        "short": 1
+      },
+      "visibleBottomPx": 64
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          66.234375,
+          10
+        ],
+        "last": [
+          0,
+          30,
+          66.234375,
+          34
+        ],
+        "long-text": [
+          0,
+          20,
+          66.234375,
+          10
+        ],
+        "short-text": [
+          0,
+          10,
+          66.234375,
+          10
+        ]
+      },
+      "label": "max-content-reverse",
+      "templateColumns": "66.2344px",
+      "templateRows": "10px 10px 10px 34px",
+      "textLineCounts": {
+        "long": 1,
+        "short": 1
+      },
+      "visibleBottomPx": 64
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          40,
+          10
+        ],
+        "last": [
+          0,
+          40,
+          40,
+          34
+        ],
+        "long-text": [
+          0,
+          10,
+          40,
+          20
+        ],
+        "short-text": [
+          0,
+          30,
+          40,
+          10
+        ]
+      },
+      "label": "auto-forward",
+      "templateColumns": "40px",
+      "templateRows": "10px 20px 10px 34px",
+      "textLineCounts": {
+        "long": 2,
+        "short": 1
+      },
+      "visibleBottomPx": 74
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          40,
+          10
+        ],
+        "last": [
+          0,
+          40,
+          40,
+          34
+        ],
+        "long-text": [
+          0,
+          20,
+          40,
+          20
+        ],
+        "short-text": [
+          0,
+          10,
+          40,
+          10
+        ]
+      },
+      "label": "auto-reverse",
+      "templateColumns": "40px",
+      "templateRows": "10px 10px 20px 34px",
+      "textLineCounts": {
+        "long": 2,
+        "short": 1
+      },
+      "visibleBottomPx": 74
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          40,
+          10
+        ],
+        "last": [
+          0,
+          40,
+          40,
+          34
+        ],
+        "long-text": [
+          0,
+          10,
+          40,
+          20
+        ],
+        "short-text": [
+          0,
+          30,
+          40,
+          10
+        ]
+      },
+      "label": "minmax-min-fr-forward",
+      "templateColumns": "40px",
+      "templateRows": "10px 20px 10px 34px",
+      "textLineCounts": {
+        "long": 2,
+        "short": 1
+      },
+      "visibleBottomPx": 74
+    },
+    {
+      "grid": [
+        0,
+        0,
+        40,
+        40
+      ],
+      "items": {
+        "first": [
+          0,
+          0,
+          40,
+          10
+        ],
+        "last": [
+          0,
+          40,
+          40,
+          34
+        ],
+        "long-text": [
+          0,
+          20,
+          40,
+          20
+        ],
+        "short-text": [
+          0,
+          10,
+          40,
+          10
+        ]
+      },
+      "label": "minmax-min-fr-reverse",
+      "templateColumns": "40px",
+      "templateRows": "10px 10px 20px 34px",
+      "textLineCounts": {
+        "long": 2,
+        "short": 1
+      },
+      "visibleBottomPx": 74
+    }
+  ]
+}
