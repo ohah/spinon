@@ -1,0 +1,60 @@
+{
+  "sourceSha256": "3232e75cc346718a1a7970ec71b7810b3d34a196caa0919610e5deb454657970",
+  "reference": "DPR 1 Agent Browser HeadlessChrome 156.0.0.0",
+  "independentExpected": {
+    "gridFrame": [0, 0, 40, 40],
+    "explicitRowPx": 10,
+    "implicitRowTrackPx": [20, 10, 34],
+    "computedRowsPx": [10, 20, 10, 34],
+    "items": {
+      "first": [0, 0, 40, 10],
+      "long-text": [0, 10, 40, 20],
+      "short-text": [0, 30, 40, 10],
+      "last": [0, 40, 40, 34]
+    },
+    "textLineCounts": {
+      "long-text": 2,
+      "short-text": 1
+    },
+    "textMinContentBlockContributionsPx": {
+      "long-text": 20,
+      "short-text": 10
+    },
+    "visibleBottomPx": 74,
+    "visibleBottomOverflowPx": 34
+  },
+  "fixedPxControl": {
+    "gridAutoRows": "10px",
+    "computedRowsPx": [10, 10, 10, 10],
+    "items": {
+      "first": [0, 0, 40, 10],
+      "long-text": [0, 10, 40, 10],
+      "short-text": [0, 20, 40, 10],
+      "last": [0, 30, 40, 34]
+    },
+    "visibleBottomPx": 64,
+    "visibleBottomOverflowPx": 24
+  },
+  "reversedTextSourceOrder": {
+    "mutation": "같은 Grid owner 안에서 #short-text를 #long-text 앞으로 이동한다.",
+    "computedRowsPx": [10, 10, 20, 34],
+    "items": {
+      "first": [0, 0, 40, 10],
+      "short-text": [0, 10, 40, 10],
+      "long-text": [0, 20, 40, 20],
+      "last": [0, 40, 40, 34]
+    },
+    "visibleBottomPx": 74
+  },
+  "derivation": [
+    "명시적인 40px 열이 자동 폭 text item 두 개를 각각 40px로 늘린다.",
+    "HeadlessChrome 156에서 여섯 token 입력은 10px 줄 두 개, 한 token 입력은 10px 줄 한 개로 배치된다.",
+    "각 direct text item은 별도의 implicit row에 자동 배치된다. 각 item의 min-content block contribution은 해당 행을 각각 20px와 10px로 정한다.",
+    "첫 explicit row는 10px로 유지되고 마지막 고정 item row는 34px다. 마지막 item은 y=40px에서 시작해 y=74px까지 이어진다.",
+    "두 text item의 순서만 바꾸면 10px와 20px implicit row가 item 순서에 맞게 역전되고 마지막 item은 y=40px를 유지한다."
+  ],
+  "limits": [
+    "입력 text 문법과 style은 제한된 범위로 유지한다. 일반 Unicode, shaping 또는 CSS text 적합성 근거는 아니다.",
+    "Chrome 관측은 computed geometry와 text 줄 수의 기준이다. Spinon runtime, WPT, glyph raster 또는 native surface 실행 근거가 아니다."
+  ]
+}
