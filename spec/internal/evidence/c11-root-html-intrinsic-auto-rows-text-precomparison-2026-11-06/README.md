@@ -2,15 +2,15 @@
 
 ## Fixture와 기준
 
-- Fixture: [root-html-grid-intrinsic-auto-rows-text-precomparison.html](../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-text-precomparison.html)
+- Fixture: [root-html-grid-intrinsic-auto-rows-text-precomparison.html](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-text-precomparison.html)
 - SHA-256: `f0759d21c51af46497327686a854b52cd5e004134c35fd562e3e0170c8df49e6`
 - 기준: Agent Browser의 HeadlessChrome `156.0.0.0`, DPR 1, viewport 1280×633.
-- Browser DOM/CSSOM 관측: [chrome156-observation.json](./chrome156-observation.json)
-- 독립적으로 계산한 기하 기대값: [expected.json](./expected.json)
-- Browser screenshot: [chrome156.png](./chrome156.png)
-- 후속 계획: [C11.4 min-content implicit row text](../../../../plan/c11-root-html-intrinsic-auto-rows-text.md)
-- 계획 검토 20개: [plan failure review](../../../../plan/c11-root-html-intrinsic-auto-rows-text-plan-review-20.md)
-- width 정정 검토 20개: [계획 revision review](../../../../plan/c11-root-html-intrinsic-auto-rows-text-width-revision-review-20.md)
+- Browser DOM/CSSOM 관측: [chrome156-observation.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/chrome156-observation.json)
+- 독립적으로 계산한 기하 기대값: [expected.json](https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/expected.json)
+- Browser screenshot: [chrome156.png](https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/chrome156.png)
+- 후속 계획: [C11.4 min-content implicit row text](https://github.com/ohah/spinon/blob/main/plan/c11-root-html-intrinsic-auto-rows-text.md)
+- 계획 검토 20개: [plan failure review](https://github.com/ohah/spinon/blob/main/plan/c11-root-html-intrinsic-auto-rows-text-plan-review-20.md)
+- width 정정 검토 20개: [계획 revision review](https://github.com/ohah/spinon/blob/main/plan/c11-root-html-intrinsic-auto-rows-text-width-revision-review-20.md)
 - 계획 PR diff 검토 30개: [plan PR diff review](./plan-pr-diff-review-30.md)
 - 규범 기준: [CSS Grid Layout 2025 CRD §11.5, Resolve Intrinsic Track Sizes](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing).
 
