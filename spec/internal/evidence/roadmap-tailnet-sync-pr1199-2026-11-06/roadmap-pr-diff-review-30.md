@@ -33,8 +33,8 @@
 | 27 | local source와 local HTTP served content가 불일치하는가 | PASS — 두 쪽 모두 SHA `4c56c7e6…dd97e54`, 586,947 bytes다. |
 | 28 | Tailnet HTTPS가 stale copy를 제공하는가 | PASS — remote HTTP 200과 source/local hash 일치를 확인했다. |
 | 29 | responsive card가 desktop/mobile에서 잘리거나 수평 overflow하는가 | PASS — desktop 1440/928px card, mobile 390/362px card와 no horizontal overflow를 확인했다. |
-| 30 | PR 본문의 Agent Browser screenshots가 실제로 표시되는가 | PARTIAL — Tailnet page screenshots는 직접 열어 확인했다. 이 review 문서를 올릴 docs PR 본문에서 두 image가 렌더링되는지는 PR 생성 뒤 Agent Browser로 확인한다. |
+| 30 | PR 본문의 Agent Browser screenshots가 실제로 표시되는가 | PASS — Agent Browser에서 PR #1200을 열어 두 raw image가 `complete=true`, desktop 1440×1000 및 mobile 390×844로 로드되어 실제 표시됨을 확인했다. `close --all` 뒤 Agent Browser/Chrome process가 남지 않았다. |
 
 ## 검토 결과
 
-**PASS 29 / PARTIAL 1 / FAIL 0.** Tailnet에서 source와 served bytes/hash, 화면의 merge note·links 및 desktop/mobile geometry를 확인했다. Docs PR의 image rendering과 최종 Agent Browser process cleanup만 PR 생성 후 보완한다. 전체 docs build와 GitHub Pages 배포는 이 변경의 완료 증거가 아니다.
+**PASS 30 / PARTIAL 0 / FAIL 0.** Tailnet에서 source와 served bytes/hash, 화면의 merge note·links 및 desktop/mobile geometry를 확인했다. PR #1200 본문의 두 image 렌더링과 Agent Browser process cleanup까지 확인했다. 전체 docs build와 GitHub Pages 배포는 이 변경의 완료 증거가 아니다.

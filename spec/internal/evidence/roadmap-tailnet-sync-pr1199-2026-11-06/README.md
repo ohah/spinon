@@ -26,5 +26,6 @@ Agent Browser에서 실제 Tailnet URL을 열어 병합 카드와 target links�
 - 두 화면의 C11.4 카드는 merge SHA와 `78/214`를 표시한다. 이는 상위 C11.4/C11 완료나 counter 상승을 뜻하지 않는다.
 - GitHub 계획/evidence 링크, Tailnet `STATUS.html`, Android/iOS raw screenshot assets는 각각 HTTP 200이었다.
 - 초기 페이지 위치를 보존한 [`desktop top capture`](./tailnet-roadmap-agent-browser-desktop-top-before-scroll.png)는 target card 검증 캡처가 아니다. 대표 결과는 카드가 보이도록 위치한 desktop/mobile 캡처다.
+- PR [#1200](https://github.com/ohah/spinon/pull/1200) 본문의 desktop/mobile image도 Agent Browser에서 각각 `complete=true`, 1440×1000 / 390×844로 로드됨을 확인했다. 완료 후 `agent-browser close --all`과 process inspection에서 브라우저 프로세스가 남지 않았다.
 
 화면은 Tailnet 제공본의 문구·링크·responsive geometry 확인이다. 전체 문서 build/link validation, WPT, 공식 완료 판정 또는 GitHub Pages 배포를 증명하지 않는다.
