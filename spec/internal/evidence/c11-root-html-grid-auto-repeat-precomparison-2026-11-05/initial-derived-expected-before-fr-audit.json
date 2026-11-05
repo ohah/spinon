@@ -1,0 +1,32 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, §7.2.3.2 Repeat-to-fill and §11 track sizing; independently derived before Chromium observation",
+  "trackPattern": ["minmax(40px, 1fr)", "minmax(30px, 1fr)"],
+  "columnGapPx": 10,
+  "rowGapPx": 10,
+  "repeatCountBoundary": {
+    "availableAxisPx": 169,
+    "expectedCount": 1,
+    "minimumExtentForTwoRepeatsPx": 170,
+    "availableAxisPxAtBoundary": 170,
+    "expectedCountAtBoundary": 2,
+    "derivation": "Two repetitions contain four minimum track sizes totaling 140px and three 10px gutters, totaling 170px. One repetition needs 70px of track minima and one 10px gutter, totaling 80px."
+  },
+  "cases": [
+    {"id":"columns-fill-two-repetitions","repeatCount":2,"tracksPx":[47.5,37.5,47.5,37.5],"items":[[0,0,47.5,20],[57.5,0,37.5,20]]},
+    {"id":"columns-fit-two-repetitions","repeatCount":2,"tracksPx":[100,90,0,0],"items":[[0,0,100,20],[110,0,90,20]]},
+    {"id":"columns-fit-hidden-item","repeatCount":2,"tracksPx":[200,0,0,0],"items":[[0,0,200,20],null]},
+    {"id":"columns-fill-boundary-below","repeatCount":1,"tracksPx":[84.5,74.5],"items":[[0,0,84.5,20],[94.5,0,74.5,20]]},
+    {"id":"columns-fill-boundary-exact","repeatCount":2,"tracksPx":[40,30,40,30],"items":[[0,0,40,20],[50,0,30,20]]},
+    {"id":"columns-visible-overflow","repeatCount":2,"tracksPx":[40,30,40,30],"items":[[0,0,240,20],[50,0,30,20]],"overflowPx":70},
+    {"id":"rows-fill-two-repetitions","repeatCount":2,"tracksPx":[47.5,37.5,47.5,37.5],"items":[[0,0,60,47.5],[0,57.5,60,37.5]]},
+    {"id":"rows-fit-two-repetitions","repeatCount":2,"tracksPx":[100,90,0,0],"items":[[0,0,60,100],[0,110,60,90]]},
+    {"id":"rows-fill-boundary-below","repeatCount":1,"tracksPx":[84.5,74.5],"items":[[0,0,60,84.5],[0,94.5,60,74.5]]},
+    {"id":"rows-fill-boundary-exact","repeatCount":2,"tracksPx":[40,30,40,30],"items":[[0,0,60,40],[0,50,60,30]]}
+  ],
+  "notes": [
+    "auto-fill retains all repeated tracks even when unoccupied.",
+    "auto-fit retains the repeat count, then collapses unoccupied repeated tracks and gutters adjoining collapsed tracks after auto-placement.",
+    "The hidden child is not a grid item and does not occupy a repeated track.",
+    "The overflow child keeps its 240px used width; the grid container does not clip or clamp it."
+  ]
+}

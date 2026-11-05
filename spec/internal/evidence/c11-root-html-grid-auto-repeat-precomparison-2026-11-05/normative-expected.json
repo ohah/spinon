@@ -1,0 +1,352 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, §§7.2.3.2, 11.7, 11.7.1; independently derived after auditing the fr-sizing algorithm",
+  "trackPattern": [
+    "minmax(40px, 1fr)",
+    "minmax(30px, 1fr)"
+  ],
+  "columnGapPx": 10,
+  "rowGapPx": 10,
+  "repeatCountBoundary": {
+    "availableAxisPx": 169,
+    "expectedCount": 1,
+    "minimumExtentForTwoRepeatsPx": 170,
+    "availableAxisPxAtBoundary": 170,
+    "expectedCountAtBoundary": 2,
+    "derivation": "Two repetitions contain four minimum track sizes totaling 140px and three 10px gutters, totaling 170px. One repetition occupies 70px of minimum track sizes and one internal gutter, plus the inter-pattern gutter when a second repetition is added."
+  },
+  "frSizing": {
+    "200px auto-fill": "For four 1fr tracks, available track space is 170px after three gutters, so each is 42.5px; all exceed their 40px/30px minimums.",
+    "169px one-repeat auto-fill": "For two 1fr tracks, available track space is 159px after one gutter, so each is 79.5px; both exceed minimums.",
+    "170px two-repeat auto-fill": "Initial hypothetical size is 35px for four 1fr tracks. The two 40px-minimum tracks freeze at 40px; the remaining 60px gives the other two tracks 30px each.",
+    "auto-fit with two occupied tracks": "The two empty repeated tracks and adjoining gutters collapse; the two occupied 1fr tracks share the remaining 190px equally at 95px each.",
+    "auto-fit with one occupied track": "Three empty repeated tracks and adjoining gutters collapse; the sole occupied 1fr track receives 200px.",
+    "uaRepeatCountFloor": "For repeat-count calculation only, the two 0.5px minima are floored to the 1px UA minimum, producing two repetitions in 2px; actual fr sizing then gives 1px per track."
+  },
+  "cases": [
+    {
+      "id": "columns-fill-two-repetitions",
+      "repeatCount": 2,
+      "tracksPx": [
+        42.5,
+        42.5,
+        42.5,
+        42.5
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          42.5,
+          20
+        ],
+        [
+          52.5,
+          0,
+          42.5,
+          20
+        ]
+      ],
+      "rootPx": [
+        200,
+        20
+      ]
+    },
+    {
+      "id": "columns-fit-two-repetitions",
+      "repeatCount": 2,
+      "tracksPx": [
+        95,
+        95,
+        0,
+        0
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          95,
+          20
+        ],
+        [
+          105,
+          0,
+          95,
+          20
+        ]
+      ],
+      "rootPx": [
+        200,
+        20
+      ]
+    },
+    {
+      "id": "columns-fit-hidden-item",
+      "repeatCount": 2,
+      "tracksPx": [
+        200,
+        0,
+        0,
+        0
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          200,
+          20
+        ],
+        null
+      ],
+      "rootPx": [
+        200,
+        20
+      ]
+    },
+    {
+      "id": "columns-fit-empty",
+      "repeatCount": 2,
+      "tracksPx": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "itemsRelativeToGrid": [],
+      "rootPx": [
+        200,
+        20
+      ]
+    },
+    {
+      "id": "columns-fill-boundary-below",
+      "repeatCount": 1,
+      "tracksPx": [
+        79.5,
+        79.5
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          79.5,
+          20
+        ],
+        [
+          89.5,
+          0,
+          79.5,
+          20
+        ]
+      ],
+      "rootPx": [
+        169,
+        20
+      ]
+    },
+    {
+      "id": "columns-fill-subpx-ua-count-floor",
+      "repeatCount": 2,
+      "tracksPx": [
+        1,
+        1
+      ],
+      "itemsRelativeToGrid": [],
+      "rootPx": [
+        2,
+        20
+      ],
+      "gapPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "columns-fill-boundary-exact",
+      "repeatCount": 2,
+      "tracksPx": [
+        40,
+        30,
+        40,
+        30
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          40,
+          20
+        ],
+        [
+          50,
+          0,
+          30,
+          20
+        ]
+      ],
+      "rootPx": [
+        170,
+        20
+      ]
+    },
+    {
+      "id": "columns-visible-overflow",
+      "repeatCount": 2,
+      "tracksPx": [
+        40,
+        30,
+        40,
+        30
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          240,
+          20
+        ],
+        [
+          50,
+          0,
+          30,
+          20
+        ]
+      ],
+      "overflowPx": 70,
+      "rootPx": [
+        170,
+        20
+      ]
+    },
+    {
+      "id": "rows-fill-two-repetitions",
+      "repeatCount": 2,
+      "tracksPx": [
+        42.5,
+        42.5,
+        42.5,
+        42.5
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          60,
+          42.5
+        ],
+        [
+          0,
+          52.5,
+          60,
+          42.5
+        ]
+      ],
+      "rootPx": [
+        60,
+        200
+      ]
+    },
+    {
+      "id": "rows-fit-two-repetitions",
+      "repeatCount": 2,
+      "tracksPx": [
+        95,
+        95,
+        0,
+        0
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          60,
+          95
+        ],
+        [
+          0,
+          105,
+          60,
+          95
+        ]
+      ],
+      "rootPx": [
+        60,
+        200
+      ]
+    },
+    {
+      "id": "rows-fit-empty",
+      "repeatCount": 2,
+      "tracksPx": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "itemsRelativeToGrid": [],
+      "rootPx": [
+        60,
+        200
+      ]
+    },
+    {
+      "id": "rows-fill-boundary-below",
+      "repeatCount": 1,
+      "tracksPx": [
+        79.5,
+        79.5
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          60,
+          79.5
+        ],
+        [
+          0,
+          89.5,
+          60,
+          79.5
+        ]
+      ],
+      "rootPx": [
+        60,
+        169
+      ]
+    },
+    {
+      "id": "rows-fill-boundary-exact",
+      "repeatCount": 2,
+      "tracksPx": [
+        40,
+        30,
+        40,
+        30
+      ],
+      "itemsRelativeToGrid": [
+        [
+          0,
+          0,
+          60,
+          40
+        ],
+        [
+          0,
+          50,
+          60,
+          30
+        ]
+      ],
+      "rootPx": [
+        60,
+        170
+      ]
+    }
+  ],
+  "notes": [
+    "auto-fill retains all repeated tracks even when unoccupied.",
+    "auto-fit retains the repeat count, then collapses unoccupied repeated tracks and gutters adjoining collapsed tracks after auto-placement.",
+    "The hidden child is not a grid item and does not occupy a repeated track.",
+    "The overflow child keeps its 240px used width; the grid container does not clip or clamp it."
+  ]
+}
