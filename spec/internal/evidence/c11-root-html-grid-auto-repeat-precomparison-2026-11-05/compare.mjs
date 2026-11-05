@@ -6,22 +6,6 @@ const observed = JSON.parse(readFileSync(`${base}/chromium-observation.json`, 'u
 const close = (a, b) => Math.abs(a - b) <= 1e-9;
 const failures = [];
 const summaries = [];
-const rootSizes = new Map([
-  ['columns-fill-two-repetitions', [200, 20]],
-  ['columns-fit-two-repetitions', [200, 20]],
-  ['columns-fit-hidden-item', [200, 20]],
-  ['columns-fill-boundary-below', [169, 20]],
-  ['columns-fill-subpx-ua-count-floor', [2, 20]],
-  ['columns-fit-empty', [200, 20]],
-  ['columns-fill-boundary-exact', [170, 20]],
-  ['columns-visible-overflow', [170, 20]],
-  ['rows-fill-two-repetitions', [60, 200]],
-  ['rows-fit-two-repetitions', [60, 200]],
-  ['rows-fit-empty', [60, 200]],
-  ['rows-fill-boundary-below', [60, 169]],
-  ['rows-fill-boundary-exact', [60, 170]],
-]);
-
 const byId = new Map(observed.results.map((result) => [result.id, result]));
 for (const testCase of expected.cases) {
   const result = byId.get(testCase.id);
@@ -32,7 +16,11 @@ for (const testCase of expected.cases) {
   const axisRows = testCase.id.startsWith('rows-');
   const trackText = axisRows ? result.computedRows : result.computedColumns;
   const tracks = trackText.split(/\s+/).map((value) => Number.parseFloat(value));
-  const rootSize = rootSizes.get(testCase.id);
+  const rootSize = testCase.rootPx;
+  const computedRepeatCount = tracks.length / testCase.patternTrackCount;
+  if (!Number.isInteger(computedRepeatCount) || computedRepeatCount !== testCase.repeatCount) {
+    failures.push(`${testCase.id}: repeat count expected ${testCase.repeatCount} got ${computedRepeatCount}`);
+  }
   if (tracks.length !== testCase.tracksPx.length || !tracks.every((value, index) => close(value, testCase.tracksPx[index]))) {
     failures.push(`${testCase.id}: tracks expected ${JSON.stringify(testCase.tracksPx)} got ${JSON.stringify(tracks)}`);
   }
@@ -43,6 +31,9 @@ for (const testCase of expected.cases) {
   const actualGap = result.gap.map((value) => Number.parseFloat(value));
   if (!actualGap.every((value, index) => close(value, wantedGap[index]))) {
     failures.push(`${testCase.id}: gaps expected ${JSON.stringify(wantedGap)} got ${JSON.stringify(actualGap)}`);
+  }
+  if (result.items.length !== testCase.itemsRelativeToGrid.length) {
+    failures.push(`${testCase.id}: item count expected ${testCase.itemsRelativeToGrid.length} got ${result.items.length}`);
   }
   for (let index = 0; index < testCase.itemsRelativeToGrid.length; index += 1) {
     const wanted = testCase.itemsRelativeToGrid[index];
@@ -70,7 +61,7 @@ console.log(JSON.stringify({
   browser: observed.userAgent,
   viewport: observed.viewport,
   caseCount: summaries.length,
-  checks: ['repeat boundary', 'computed explicit track sizes', 'auto-fit collapse', 'row and column axes', 'item frames', 'hidden item exclusion', 'visible overflow', 'gaps', 'UA repeat-count floor'],
+  checks: ['repeat boundary', 'computed explicit track sizes', 'auto-fit collapse', 'row and column axes', 'item frames', 'hidden item exclusion', 'visible overflow', 'gaps', 'UA repeat-count floor', 'expanded repeat count', 'item count'],
   failures,
   summaries,
 }, null, 2));

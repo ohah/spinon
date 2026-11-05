@@ -49,7 +49,8 @@
       "rootPx": [
         200,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "columns-fit-two-repetitions",
@@ -77,7 +78,8 @@
       "rootPx": [
         200,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "columns-fit-hidden-item",
@@ -100,7 +102,8 @@
       "rootPx": [
         200,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "columns-fit-empty",
@@ -115,7 +118,8 @@
       "rootPx": [
         200,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "columns-fill-boundary-below",
@@ -141,7 +145,8 @@
       "rootPx": [
         169,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "columns-fill-subpx-ua-count-floor",
@@ -158,7 +163,8 @@
       "gapPx": [
         0,
         0
-      ]
+      ],
+      "patternTrackCount": 1
     },
     {
       "id": "columns-fill-boundary-exact",
@@ -186,7 +192,8 @@
       "rootPx": [
         170,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "columns-visible-overflow",
@@ -215,7 +222,8 @@
       "rootPx": [
         170,
         20
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "rows-fill-two-repetitions",
@@ -243,7 +251,8 @@
       "rootPx": [
         60,
         200
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "rows-fit-two-repetitions",
@@ -271,7 +280,8 @@
       "rootPx": [
         60,
         200
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "rows-fit-empty",
@@ -286,7 +296,8 @@
       "rootPx": [
         60,
         200
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "rows-fill-boundary-below",
@@ -312,7 +323,8 @@
       "rootPx": [
         60,
         169
-      ]
+      ],
+      "patternTrackCount": 2
     },
     {
       "id": "rows-fill-boundary-exact",
@@ -340,7 +352,8 @@
       "rootPx": [
         60,
         170
-      ]
+      ],
+      "patternTrackCount": 2
     }
   ],
   "notes": [
