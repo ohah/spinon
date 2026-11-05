@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Root HTML intrinsic Grid percentage gap precomparison</title>
+  <style>
+    html, body { margin: 0; }
+    body { width: 560px; height: 300px; font: 10px/10px monospace; }
+    .scene {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      display: grid;
+      grid-template-columns: min-content minmax(0, 1fr);
+      grid-template-rows: min-content minmax(0, 1fr);
+      align-content: start;
+      justify-content: start;
+      background: #eee;
+    }
+    .scene > div { box-sizing: border-box; }
+    .basis { width: 40px; height: 10px; background: #48a; }
+    .fill { width: 20px; height: 20px; background: #a48; }
+    .tail { width: 10px; height: 10px; background: #4a8; }
+    #control { left: 0; top: 0; }
+    #column-10 { left: 110px; top: 0; column-gap: 10%; }
+    #row-10 { left: 220px; top: 0; row-gap: 10%; }
+    #both-10 { left: 330px; top: 0; gap: 10%; }
+    #mixed-basis { left: 0; top: 110px; width: 120px; height: 80px; gap: 25% 10%; }
+    #column-over-100 { left: 140px; top: 110px; column-gap: 120%; }
+    #row-over-100 { left: 250px; top: 110px; row-gap: 120%; }
+    #zero-percent { left: 360px; top: 110px; gap: 0%; }
+    #legacy-alias { left: 0; top: 200px; width: 120px; height: 80px; grid-gap: 25% 10%; }
+  </style>
+</head>
+<body>
+  <section class="scene" id="control" data-case="zero-gap-control">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="column-10" data-case="column-percentage">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="row-10" data-case="row-percentage">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="both-10" data-case="percentage-shorthand">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="mixed-basis" data-case="different-axis-bases">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="column-over-100" data-case="column-over-100-percent">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="row-over-100" data-case="row-over-100-percent">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="zero-percent" data-case="zero-percentage-control">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <section class="scene" id="legacy-alias" data-case="grid-gap-alias">
+    <div class="basis" style="grid-row:1"></div>
+    <div class="fill" style="grid-row:1"></div>
+    <div class="tail" style="grid-row:2"></div>
+  </section>
+  <script>
+    const rect = (node) => {
+      const value = node.getBoundingClientRect();
+      return { x: value.x, y: value.y, width: value.width, height: value.height };
+    };
+    window.__gridCases = [...document.querySelectorAll('.scene')].map((root) => {
+      const style = getComputedStyle(root);
+      const rootRect = root.getBoundingClientRect();
+      return {
+        id: root.id,
+        case: root.dataset.case,
+        rect: rect(root),
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        rowGap: style.rowGap,
+        columnGap: style.columnGap,
+        items: [...root.children].map((item) => {
+          const value = rect(item);
+          return {
+            gridColumn: getComputedStyle(item).gridColumn,
+            gridRow: getComputedStyle(item).gridRow,
+            rect: {
+              x: value.x - rootRect.x,
+              y: value.y - rootRect.y,
+              width: value.width,
+              height: value.height,
+            },
+          };
+        }),
+      };
+    });
+  </script>
+</body>
+</html>

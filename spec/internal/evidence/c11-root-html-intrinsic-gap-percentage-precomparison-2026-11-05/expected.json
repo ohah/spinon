@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "method": "Independent CSS Grid gutter arithmetic from fixed item contributions; values were calculated from the fixture and specification before comparing the Chrome observation.",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-intrinsic-gap-percentage-precomparison.html",
+    "sha256": "17971089c82f36325020d8ded56caec4b987a9c8f2b869ae11979b1c6df65a4e"
+  },
+  "browser": {
+    "name": "HeadlessChrome",
+    "version": "156.0.0.0",
+    "viewportCssPx": [1280, 720]
+  },
+  "itemDimensionsCssPx": {
+    "basis": [40, 10],
+    "fill": [20, 20],
+    "tail": [10, 10]
+  },
+  "calculation": {
+    "trackRules": {
+      "firstColumn": "min-content = 40px",
+      "firstRow": "min-content = max(10px, 20px) = 20px",
+      "secondColumn": "max(0px, (definite width - first column - column gutter))",
+      "secondRow": "max(0px, (definite height - first row - row gutter))"
+    },
+    "percentageBases": {
+      "columnGap": "grid content-box width",
+      "rowGap": "grid content-box height"
+    }
+  },
+  "cases": [
+    {
+      "id": "control",
+      "rootSizeCssPx": [100, 100],
+      "usedGapsCssPx": [0, 0],
+      "columnsCssPx": [40, 60],
+      "rowsCssPx": [20, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 20, 10, 10]]
+    },
+    {
+      "id": "column-10",
+      "rootSizeCssPx": [100, 100],
+      "usedGapsCssPx": [0, 10],
+      "columnsCssPx": [40, 50],
+      "rowsCssPx": [20, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 0, 20, 20], [0, 20, 10, 10]]
+    },
+    {
+      "id": "row-10",
+      "rootSizeCssPx": [100, 100],
+      "usedGapsCssPx": [10, 0],
+      "columnsCssPx": [40, 60],
+      "rowsCssPx": [20, 70],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 30, 10, 10]]
+    },
+    {
+      "id": "both-10",
+      "rootSizeCssPx": [100, 100],
+      "usedGapsCssPx": [10, 10],
+      "columnsCssPx": [40, 50],
+      "rowsCssPx": [20, 70],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [50, 0, 20, 20], [0, 30, 10, 10]]
+    },
+    {
+      "id": "mixed-basis",
+      "rootSizeCssPx": [120, 80],
+      "authoredGaps": "25% 10%",
+      "usedGapsCssPx": [20, 12],
+      "columnsCssPx": [40, 68],
+      "rowsCssPx": [20, 40],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [52, 0, 20, 20], [0, 40, 10, 10]]
+    },
+    {
+      "id": "column-over-100",
+      "rootSizeCssPx": [100, 100],
+      "authoredGaps": "column-gap: 120%",
+      "usedGapsCssPx": [0, 120],
+      "columnsCssPx": [40, 0],
+      "rowsCssPx": [20, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [160, 0, 20, 20], [0, 20, 10, 10]],
+      "visibleOverflowCssPx": {"inlineEnd": 80}
+    },
+    {
+      "id": "row-over-100",
+      "rootSizeCssPx": [100, 100],
+      "authoredGaps": "row-gap: 120%",
+      "usedGapsCssPx": [120, 0],
+      "columnsCssPx": [40, 60],
+      "rowsCssPx": [20, 0],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 140, 10, 10]],
+      "visibleOverflowCssPx": {"blockEnd": 50}
+    },
+    {
+      "id": "zero-percent",
+      "rootSizeCssPx": [100, 100],
+      "authoredGaps": "gap: 0%",
+      "usedGapsCssPx": [0, 0],
+      "columnsCssPx": [40, 60],
+      "rowsCssPx": [20, 80],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [40, 0, 20, 20], [0, 20, 10, 10]]
+    },
+    {
+      "id": "legacy-alias",
+      "rootSizeCssPx": [120, 80],
+      "authoredGaps": "grid-gap: 25% 10%",
+      "usedGapsCssPx": [20, 12],
+      "columnsCssPx": [40, 68],
+      "rowsCssPx": [20, 40],
+      "itemsRelativeToRoot": [[0, 0, 40, 10], [52, 0, 20, 20], [0, 40, 10, 10]]
+    }
+  ],
+  "outOfScope": [
+    "percentage gap with an indefinite grid-container axis",
+    "cyclic percentage contribution of the grid container's own intrinsic size",
+    "calc() or another typed math gap",
+    "general CSS admission or WPT conformance"
+  ]
+}
