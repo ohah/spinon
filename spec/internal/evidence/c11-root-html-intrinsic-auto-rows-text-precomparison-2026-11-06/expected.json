@@ -1,0 +1,34 @@
+{
+  "sourceSha256": "05da538613be6670238faaa127c61a289efff5c7489499096ed0feba1c16319e",
+  "reference": "DPR 1의 HeadlessChrome 156.0.0.0",
+  "independentExpected": {
+    "gridFrame": [0, 0, 40, 40],
+    "explicitRowPx": 10,
+    "implicitRowTrackPx": [20, 34],
+    "computedRowsPx": [10, 20, 34],
+    "items": {
+      "first": [0, 0, 40, 10],
+      "wrapped-text": [0, 10, 40, 20],
+      "last": [0, 30, 40, 34]
+    },
+    "wrappedTextLineCount": 2,
+    "lineHeightPx": 10,
+    "visibleBottomOverflowPx": 24
+  },
+  "fixedPxControl": {
+    "gridAutoRows": "10px",
+    "computedRowsPx": [10, 10, 10],
+    "wrappedTextItemFrame": [0, 10, 40, 10],
+    "lastItemFrame": [0, 20, 40, 34]
+  },
+  "derivation": [
+    "고정 40px 열과 normal 줄바꿈에서 ASCII 입력은 고정 Chrome 156 monospace 환경 기준 두 줄로 나뉜다.",
+    "관측된 두 줄에 선언된 10px line-height를 적용하면 text item의 min-content block contribution은 20px이다.",
+    "마지막 item의 block size는 34px로 고정되어 있으므로 그 min-content row는 34px이다.",
+    "첫 explicit row는 10px로 유지된다. 전체 row 높이는 64px이고 40px Grid container 밖으로 24px 넘친다."
+  ],
+  "limits": [
+    "일반 monospace 글꼴의 advance는 browser와 OS에 따라 달라질 수 있으므로 simulator 기대값은 각 runtime에서 측정한 줄 배치를 사용해야 한다.",
+    "Chrome screenshot은 기하와 줄바꿈 reference이며 Spinon runtime, WPT, glyph raster 또는 native surface readback 결과가 아니다."
+  ]
+}
