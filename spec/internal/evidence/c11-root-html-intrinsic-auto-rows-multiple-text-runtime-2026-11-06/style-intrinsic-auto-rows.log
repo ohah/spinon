@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 4 tests
+test c11_1_root_html_intrinsic_auto_rows_text_tests::parsed_root_html_min_content_implicit_rows_use_the_direct_item_text_measure ... ok
+test c11_1_root_html_intrinsic_auto_rows_text_tests::parsed_root_html_intrinsic_rows_measure_multiple_text_items_by_identity_and_order ... ok
+test c11_1_root_html_intrinsic_auto_rows_text_tests::parsed_root_html_intrinsic_columns_combine_with_direct_text_min_content_rows ... ok
+test c11_1_root_html_intrinsic_auto_rows_text_tests::track_limit::parsed_root_html_intrinsic_rows_accept_10000_tracks_and_reject_10001_early ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 424 filtered out; finished in 4.62s

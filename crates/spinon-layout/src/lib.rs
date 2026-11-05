@@ -213,6 +213,7 @@ pub struct LayoutOutput {
     /// 최종 CSS contribution 또는 item span/automatic minimum 계산은 포함하지 않습니다.
     pub grid_item_intrinsic_inputs: Vec<LayoutGridItemIntrinsicInput>,
     /// C11.4 후보 profile이 기록한 Taffy track-sizing 단계와 base size/growth limit입니다.
+    /// 진단 trace 예산을 넘긴 Grid는 frame 결과를 유지하고 이 목록에서 생략합니다.
     pub grid_track_sizing_traces: Vec<LayoutGridTrackSizingTrace>,
 }
 

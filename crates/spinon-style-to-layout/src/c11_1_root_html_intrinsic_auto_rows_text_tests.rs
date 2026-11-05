@@ -17,6 +17,9 @@ use style::context::QuirksMode;
 
 use crate::{StyleLayoutError, compute_runtime_style_layout_with_root_html_grid_text_profiles};
 
+#[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/track_limit.rs"]
+mod track_limit;
+
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const TEXT: &str = "A A A A A A";
 
@@ -28,6 +31,7 @@ struct Fixture {
     wrapped_text: HostNodeHandle,
     text_source: HostNodeHandle,
     last: HostNodeHandle,
+    additional_text_items: Vec<(HostNodeHandle, HostNodeHandle)>,
 }
 
 impl Fixture {
@@ -103,7 +107,77 @@ impl Fixture {
             wrapped_text,
             text_source,
             last,
+            additional_text_items: Vec::new(),
         }
+    }
+
+    fn add_text_item_before(
+        &mut self,
+        text: &str,
+        before: Option<HostNodeHandle>,
+    ) -> (HostNodeHandle, HostNodeHandle) {
+        let item = self.document.reserve_node_handle().unwrap();
+        let text_source = self.document.reserve_node_handle().unwrap();
+        let mut batch = DocumentChangeBatch::new(
+            OwnerId::new(11_914).unwrap(),
+            self.document.document_revision(),
+        );
+        batch.push(DocumentOperation::CreateElement {
+            node: item,
+            namespace: HTML.to_owned(),
+            local_name: "div".to_owned(),
+        });
+        batch.push(DocumentOperation::SetAttribute {
+            node: item,
+            name: AttributeName::new(None, "style").unwrap(),
+            value: "display:block;box-sizing:border-box;width:auto;height:auto;min-height:auto;max-height:none;margin:0;padding:0;border:0;position:static;font-family:monospace;font-size:10px;line-height:10px;white-space:normal".into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent: HostParent::Node(self.grid),
+            node: item,
+            before,
+        });
+        batch.push(DocumentOperation::CreateText {
+            node: text_source,
+            data: text.into(),
+        });
+        batch.push(DocumentOperation::InsertBefore {
+            parent: HostParent::Node(item),
+            node: text_source,
+            before: None,
+        });
+        self.document.commit(batch).unwrap();
+        self.additional_text_items.push((item, text_source));
+        (item, text_source)
+    }
+
+    fn add_empty_items(&mut self, count: usize) -> Option<HostNodeHandle> {
+        let mut batch = DocumentChangeBatch::new(
+            OwnerId::new(11_914).unwrap(),
+            self.document.document_revision(),
+        );
+        let mut last_item = None;
+        for _ in 0..count {
+            let item = self.document.reserve_node_handle().unwrap();
+            last_item = Some(item);
+            batch.push(DocumentOperation::CreateElement {
+                node: item,
+                namespace: HTML.to_owned(),
+                local_name: "div".to_owned(),
+            });
+            batch.push(DocumentOperation::SetAttribute {
+                node: item,
+                name: AttributeName::new(None, "style").unwrap(),
+                value: "display:block;box-sizing:border-box;width:1px;height:1px;margin:0;padding:0;border:0;position:static".into(),
+            });
+            batch.push(DocumentOperation::InsertBefore {
+                parent: HostParent::Node(self.grid),
+                node: item,
+                before: None,
+            });
+        }
+        self.document.commit(batch).unwrap();
+        last_item
     }
 
     fn compute(&self) -> Result<crate::StyleLayoutOutput, StyleLayoutError> {
@@ -124,27 +198,34 @@ impl Fixture {
             StyleRevision::INITIAL,
         )
         .map_err(StyleLayoutError::Cascade)?;
-        let text_style = computed_styles
-            .elements
-            .iter()
-            .find(|style| style.node_id == self.wrapped_text.id())
-            .expect("the text owner should have a computed style in the same snapshot");
-        assert_eq!(text_style.properties["font-family"], "monospace");
-        assert_eq!(text_style.properties["line-height"], "10px");
-        assert_eq!(text_style.font_size_css_px, 10.0);
-        assert_eq!(
-            text_style.layout_dimensions.width,
-            spinon_style::ComputedCssDimension::Auto
-        );
-        let text_paragraph = ParagraphStyle {
-            font_family: text_style.properties["font-family"].clone(),
-            font_size: text_style.font_size_css_px,
-            line_height: 10.0,
-            white_space: WhiteSpaceMode::Normal,
-            direction: TextParagraphDirection::Ltr,
-            ..ParagraphStyle::default()
-        };
-        let paragraphs = BTreeMap::from([(self.wrapped_text.id(), text_paragraph)]);
+        let mut text_items = vec![self.wrapped_text];
+        text_items.extend(self.additional_text_items.iter().map(|(item, _)| *item));
+        let mut paragraphs = BTreeMap::new();
+        for item in text_items {
+            let text_style = computed_styles
+                .elements
+                .iter()
+                .find(|style| style.node_id == item.id())
+                .expect("each text owner should have a computed style in the same snapshot");
+            assert_eq!(text_style.properties["font-family"], "monospace");
+            assert_eq!(text_style.properties["line-height"], "10px");
+            assert_eq!(text_style.font_size_css_px, 10.0);
+            assert_eq!(
+                text_style.layout_dimensions.width,
+                spinon_style::ComputedCssDimension::Auto
+            );
+            paragraphs.insert(
+                item.id(),
+                ParagraphStyle {
+                    font_family: text_style.properties["font-family"].clone(),
+                    font_size: text_style.font_size_css_px,
+                    line_height: 10.0,
+                    white_space: WhiteSpaceMode::Normal,
+                    direction: TextParagraphDirection::Ltr,
+                    ..ParagraphStyle::default()
+                },
+            );
+        }
         let text_engine = TextLayoutEngine::new_for_runtime();
         compute_runtime_style_layout_with_root_html_grid_text_profiles(
             &snapshot,
@@ -156,6 +237,88 @@ impl Fixture {
             &text_engine,
         )
     }
+}
+
+#[test]
+fn parsed_root_html_intrinsic_rows_measure_multiple_text_items_by_identity_and_order() {
+    let mut fixture = Fixture::new();
+    let last = fixture.last;
+    let (short_text, short_source) = fixture.add_text_item_before("A", Some(last));
+    let output = fixture
+        .compute()
+        .expect("multiple direct text items should each contribute to a min-content row");
+    let frame = |node: HostNodeHandle| {
+        let frame = output.layout.frames[&node.id()];
+        [frame.x, frame.y, frame.width, frame.height]
+    };
+    assert_eq!(frame(fixture.grid), [0.0, 0.0, 40.0, 40.0]);
+    assert_eq!(frame(fixture.first), [0.0, 0.0, 40.0, 10.0]);
+    assert_eq!(frame(fixture.wrapped_text), [0.0, 10.0, 40.0, 20.0]);
+    assert_eq!(frame(short_text), [0.0, 30.0, 40.0, 10.0]);
+    assert_eq!(frame(fixture.last), [0.0, 40.0, 40.0, 34.0]);
+    assert_eq!(frame(fixture.last)[1] + frame(fixture.last)[3], 74.0);
+
+    let long_layout = &output.layout.text_layouts[&fixture.wrapped_text.id()];
+    let short_layout = &output.layout.text_layouts[&short_text.id()];
+    assert_eq!(long_layout.input.sources[0].text, TEXT);
+    assert_eq!(long_layout.layout.lines.len(), 2);
+    assert_eq!(long_layout.layout.height, 20.0);
+    assert_eq!(long_layout.revision, output.layout.revision);
+    assert_eq!(short_layout.input.sources[0].node, short_source.id());
+    assert_eq!(short_layout.input.sources[0].text, "A");
+    assert_eq!(short_layout.layout.lines.len(), 1);
+    assert_eq!(short_layout.layout.height, 10.0);
+    assert_eq!(short_layout.revision, output.layout.revision);
+
+    let trace = output
+        .layout
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == fixture.grid.id())
+        .expect("the multi-text Grid should retain its sizing trace");
+    assert_eq!(trace.used_rows.used_track_list, "10px 20px 10px 34px");
+    let row_pass = trace
+        .passes
+        .iter()
+        .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .expect("the row-axis sizing pass should be recorded");
+    for (item, value) in [(fixture.wrapped_text, 20.0), (short_text, 10.0)] {
+        let contribution = row_pass
+            .contributions
+            .iter()
+            .find(|contribution| contribution.item == item.id())
+            .unwrap_or_else(|| panic!("missing row contribution for {:?}", item.id()));
+        assert_eq!(
+            contribution.kind,
+            LayoutGridTrackSizingContributionKind::MinContent
+        );
+        assert_eq!(contribution.value, value);
+    }
+
+    let mut reversed = Fixture::new();
+    let long_text = reversed.wrapped_text;
+    let (reversed_short, _) = reversed.add_text_item_before("A", Some(long_text));
+    let reversed_output = reversed
+        .compute()
+        .expect("reversing direct text source order should preserve both contributions");
+    let reversed_frame = |node: HostNodeHandle| {
+        let frame = reversed_output.layout.frames[&node.id()];
+        [frame.x, frame.y, frame.width, frame.height]
+    };
+    assert_eq!(reversed_frame(reversed.first), [0.0, 0.0, 40.0, 10.0]);
+    assert_eq!(reversed_frame(reversed_short), [0.0, 10.0, 40.0, 10.0]);
+    assert_eq!(reversed_frame(long_text), [0.0, 20.0, 40.0, 20.0]);
+    assert_eq!(reversed_frame(reversed.last), [0.0, 40.0, 40.0, 34.0]);
+    let reversed_trace = reversed_output
+        .layout
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == reversed.grid.id())
+        .expect("the reversed Grid should retain its sizing trace");
+    assert_eq!(
+        reversed_trace.used_rows.used_track_list,
+        "10px 10px 20px 34px"
+    );
 }
 
 #[test]

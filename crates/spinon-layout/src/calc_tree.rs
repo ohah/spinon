@@ -482,9 +482,9 @@ impl CalcLayoutTree {
                     });
                 }
                 Some(taffy::GridTrackSizingTraceFailure::TraceLimitExceeded) => {
-                    return Err(LayoutError::GridTrackSizingTraceLimitExceeded {
-                        node: spinon_node,
-                    });
+                    // Track sizing has already produced the layout. A bounded diagnostic trace
+                    // may be omitted without making the computed frames unusable.
+                    continue;
                 }
                 None => {}
             }
