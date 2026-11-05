@@ -80,7 +80,10 @@ pub(super) fn auto_min_height_for_text_item(
         return None;
     }
     let style = input.nodes.iter().find(|node| node.id == item)?.style;
-    if style.width != LayoutDimension::Fixed(60.0) || style.height != LayoutDimension::Auto {
+    if style.width != LayoutDimension::Fixed(60.0)
+        || style.height != LayoutDimension::Auto
+        || style.min_height != LayoutDimension::Auto
+    {
         return None;
     }
     let TextParagraphInput::Paragraph(paragraph) = input.text_paragraphs.get(&item)? else {
@@ -101,6 +104,7 @@ pub(super) fn auto_min_width_paragraph_for_text_item<'a>(
     let style = input.nodes.iter().find(|node| node.id == item)?.style;
     if style.width != LayoutDimension::Auto
         || !matches!(style.height, LayoutDimension::Fixed(30.0 | 80.0))
+        || style.min_width != LayoutDimension::Auto
     {
         return None;
     }
@@ -136,6 +140,23 @@ fn is_text_item(
         return false;
     };
     let style = node.style;
+    let min_max_is_initial = style.min_width == LayoutDimension::Auto
+        && style.max_width == LayoutDimension::Auto
+        && style.min_height == LayoutDimension::Auto
+        && style.max_height == LayoutDimension::Auto;
+    let min_max_is_supported_target = matches!(size, TextItemSize::Target)
+        && [
+            style.min_width,
+            style.max_width,
+            style.min_height,
+            style.max_height,
+        ]
+        .into_iter()
+        .all(|value| match value {
+            LayoutDimension::Auto => true,
+            LayoutDimension::Fixed(value) => value.is_finite() && (0.0..=70.0).contains(&value),
+            _ => false,
+        });
     let target_size_supported = match size {
         TextItemSize::Auto => {
             style.width == LayoutDimension::Auto
@@ -157,10 +178,7 @@ fn is_text_item(
     style.display == LayoutDisplay::Block
         && style.box_sizing == LayoutBoxSizing::ContentBox
         && target_size_supported
-        && style.min_width == LayoutDimension::Auto
-        && style.max_width == LayoutDimension::Auto
-        && style.min_height == LayoutDimension::Auto
-        && style.max_height == LayoutDimension::Auto
+        && (min_max_is_initial || min_max_is_supported_target)
         && style.margin == crate::LayoutEdges::default()
         && style.padding == crate::LayoutEdges::default()
         && style.border == crate::LayoutBorder::default()

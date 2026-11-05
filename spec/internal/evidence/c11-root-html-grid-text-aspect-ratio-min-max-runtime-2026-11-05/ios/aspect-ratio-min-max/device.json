@@ -1,0 +1,65 @@
+{
+  "simulator_udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "booted_devices": {
+    "devices": {
+      "com.apple.CoreSimulator.SimRuntime.iOS-26-2": [
+        {
+          "lastBootedAt": "2026-10-24T02:47:14Z",
+          "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/9DCCE836-7659-4914-B6C1-13F54BFFA9DB/data",
+          "dataPathSize": 6394982400,
+          "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+          "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+          "isAvailable": true,
+          "logPathSize": 528384,
+          "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+          "state": "Booted",
+          "name": "iPhone 17 Pro"
+        },
+        {
+          "lastBootedAt": "2026-10-28T15:53:15Z",
+          "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data",
+          "dataPathSize": 7862202368,
+          "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+          "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+          "isAvailable": true,
+          "logPathSize": 1605632,
+          "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+          "state": "Booted",
+          "name": "iPhone 17 Pro"
+        },
+        {
+          "lastBootedAt": "2026-10-26T05:01:51Z",
+          "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/C9CD3A32-14FB-4013-A16D-4A029370DA3F/data",
+          "dataPathSize": 7826227200,
+          "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/C9CD3A32-14FB-4013-A16D-4A029370DA3F",
+          "udid": "C9CD3A32-14FB-4013-A16D-4A029370DA3F",
+          "isAvailable": true,
+          "logPathSize": 204800,
+          "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+          "state": "Booted",
+          "name": "Spinon-S03-Pilot-20261026"
+        },
+        {
+          "lastBootedAt": "2026-11-02T17:24:50Z",
+          "dataPath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/2735DBB2-0B04-4FC4-9349-D3478860BAF1/data",
+          "dataPathSize": 2683691008,
+          "logPath": "/Users/yoonhb/Library/Logs/CoreSimulator/2735DBB2-0B04-4FC4-9349-D3478860BAF1",
+          "udid": "2735DBB2-0B04-4FC4-9349-D3478860BAF1",
+          "isAvailable": true,
+          "logPathSize": 311296,
+          "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+          "state": "Booted",
+          "name": "iPhone 17 Pro Max"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "SIMULATOR_MODEL_IDENTIFIER": "iPhone18,1",
+    "SIMULATOR_RUNTIME_VERSION": "26.2",
+    "SIMULATOR_DEVICE_NAME": "iPhone 17 Pro",
+    "SIMULATOR_MAINSCREEN_WIDTH": "1206",
+    "SIMULATOR_MAINSCREEN_HEIGHT": "2622",
+    "SIMULATOR_MAINSCREEN_SCALE": "3.000000"
+  }
+}

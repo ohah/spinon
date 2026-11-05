@@ -52,6 +52,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Callback {
     private static final String TAG = "SpinonBootstrap";
+    private static final String ROOT_HTML_RATIO_MINMAX_PIXEL_RUN_ID = "c11rmx-20261105-r3";
     private static final int C133_WHEEL_INTENT_SCROLL = 0;
     private static final int C133_WHEEL_UNIT_ANDROID_PHYSICAL_PIXELS = 1;
     private static final int C133_WHEEL_SOURCE_MOUSE = 0;
@@ -21920,13 +21921,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + runId + " reason=invalid-run-id");
             return;
         }
-        int viewportWidthCssPx = Math.round(width / density);
-        int viewportHeightCssPx = Math.round(height / density);
-        List<SurfaceViewPixelCapture.Sample> samples = List.of(
-                new SurfaceViewPixelCapture.Sample("grid-right-interior", 29, 10),
-                new SurfaceViewPixelCapture.Sample("overflow-blue-marker", 44, 4));
-        if (width <= 0 || height <= 0 || viewportWidthCssPx <= 44
-                || viewportHeightCssPx <= 10) {
+        int surfaceViewportWidthCssPx = Math.round(width / density);
+        int surfaceViewportHeightCssPx = Math.round(height / density);
+        boolean ratioMinmaxScene = ROOT_HTML_RATIO_MINMAX_PIXEL_RUN_ID.equals(runId);
+        int viewportWidthCssPx = ratioMinmaxScene
+                ? 980 : surfaceViewportWidthCssPx;
+        int viewportHeightCssPx = ratioMinmaxScene
+                ? (int) Math.round((double) height * viewportWidthCssPx / width)
+                : surfaceViewportHeightCssPx;
+        List<SurfaceViewPixelCapture.Sample> samples = ratioMinmaxScene
+                ? List.of(
+                        new SurfaceViewPixelCapture.Sample("min-width-overflow-inside-track", 65, 215),
+                        new SurfaceViewPixelCapture.Sample("min-width-overflow-outside-grid", 75, 215),
+                        new SurfaceViewPixelCapture.Sample("outside-overflow-item", 85, 215))
+                : List.of(
+                        new SurfaceViewPixelCapture.Sample("grid-right-interior", 29, 10),
+                        new SurfaceViewPixelCapture.Sample("overflow-blue-marker", 44, 4));
+        if (width <= 0 || height <= 0
+                || viewportWidthCssPx <= (ratioMinmaxScene ? 85 : 44)
+                || viewportHeightCssPx <= (ratioMinmaxScene ? 215 : 10)) {
             Log.e(TAG, "SPINON_C111_ROOT_HTML_MINMAX_PIXELCOPY status=error run_id="
                     + runId + " reason=invalid-surface-or-viewport width=" + width
                     + " height=" + height + " viewport_width=" + viewportWidthCssPx
@@ -21940,10 +21953,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + " pid=" + android.os.Process.myPid() + " generation=" + generation
                 + " width=" + width + " height=" + height + " density=" + density
                 + " viewport_width=" + viewportWidthCssPx
-                + " viewport_height=" + viewportHeightCssPx + " samples=" + samples.size());
+                + " viewport_height=" + viewportHeightCssPx
+                + " surface_viewport=" + surfaceViewportWidthCssPx + "x"
+                + surfaceViewportHeightCssPx
+                + " scene=" + (ratioMinmaxScene
+                        ? "root-html-grid-text-aspect-ratio-min-max"
+                        : "root-html-grid-minmax-overflow")
+                + " samples=" + samples.size());
         SurfaceViewPixelCapture.requestForCssViewport(surfaceView, width, height,
                 viewportWidthCssPx, viewportHeightCssPx, 0, 0,
-                "root-html-grid-minmax-overflow", runId, output, samples,
+                ratioMinmaxScene ? "root-html-grid-text-aspect-ratio-min-max"
+                        : "root-html-grid-minmax-overflow",
+                runId, output, samples,
                 mainHandler, runtimeQueue,
                 () -> {
                     synchronized (stateLock) {
@@ -21961,9 +21982,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                     int matched = 0;
                     for (SurfaceViewPixelCapture.Pixel pixel : result.pixels) {
-                        int[] expected = "grid-right-interior".equals(pixel.id)
-                                ? new int[] {16, 24, 32, 255}
-                                : new int[] {59, 130, 246, 255};
+                        int[] expected;
+                        if (ratioMinmaxScene) {
+                            expected = "outside-overflow-item".equals(pixel.id)
+                                    ? new int[] {255, 255, 255, 255}
+                                    : new int[] {219, 234, 254, 255};
+                        } else {
+                            expected = "grid-right-interior".equals(pixel.id)
+                                    ? new int[] {16, 24, 32, 255}
+                                    : new int[] {59, 130, 246, 255};
+                        }
                         boolean exact = pixel.red == expected[0] && pixel.green == expected[1]
                                 && pixel.blue == expected[2] && pixel.alpha == expected[3];
                         if (exact) matched++;

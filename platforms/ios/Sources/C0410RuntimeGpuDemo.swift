@@ -12133,6 +12133,7 @@ private struct C111MetalPixelRun {
     let markerPrefix: String
     let samples: [C111MetalPixelSample]
     let usesRootHtmlViewport: Bool
+    private static let rootHtmlRatioMinmaxPixelRunID = "c11rmx-20261105-r3"
     private static let c111RootHtmlDensePlacementPixelSceneIDs: Set<String> = [
         "row-dense-hole-fill", "row-dense-span-collision", "row-dense-fixed-row",
         "row-dense-fixed-column", "row-dense-positive-implicit-row",
@@ -14207,6 +14208,9 @@ private struct C111MetalPixelRun {
             guard (8...80).contains(runID.count),
                   runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") })
             else { return nil }
+            let isRatioMinmax = rootHtmlRuns[0].hasPrefix(
+                "--spinon-root-html-grid-minmax-metal-surface-pixels=")
+                && runID == Self.rootHtmlRatioMinmaxPixelRunID
             let namedAreaAutoMinimumScene = isAutoMinimum
                 ? rootHtmlNamedAreaAutoMinimumScene(runID: runID) : nil
             if isAutoMinimum && runID.hasPrefix("c11na-") && namedAreaAutoMinimumScene == nil {
@@ -14221,6 +14225,8 @@ private struct C111MetalPixelRun {
                 runID: runID,
                 sceneID: isMixedCrossAxisPlacement
                     ? "root-html-grid-mixed-cross-axis"
+                    : isRatioMinmax
+                    ? "root-html-grid-text-aspect-ratio-min-max"
                     : isOneAxisPlacement
                     ? isMixedOneAxisPlacement
                         ? "root-html-grid-mixed-explicit-one-axis"
@@ -14237,12 +14243,25 @@ private struct C111MetalPixelRun {
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
                         ? "root-html-grid-fit-content-overflow" : "root-html-grid-minmax-overflow",
-                markerPrefix: isMixedCrossAxisPlacement ? "C111XCA"
+                markerPrefix: isRatioMinmax ? "C111RMX"
+                    : isMixedCrossAxisPlacement ? "C111XCA"
                     : isOneAxisPlacement
                     ? isMixedOneAxisPlacement ? "C111MIX" : "C111OAP"
                     : isRootHtmlAlignment ? "C115"
                     : namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
-                samples: isMixedCrossAxisPlacement
+                samples: isRatioMinmax ? [
+                    C111MetalPixelSample(
+                        id: "min-width-overflow-inside-track",
+                        nodeId: "height-ratio-min-width-target",
+                        xCssPx: 65, yCssPx: 215, rgba: [219, 234, 254, 255]),
+                    C111MetalPixelSample(
+                        id: "min-width-overflow-outside-grid",
+                        nodeId: "height-ratio-min-width-target",
+                        xCssPx: 75, yCssPx: 215, rgba: [219, 234, 254, 255]),
+                    C111MetalPixelSample(
+                        id: "outside-overflow-item", nodeId: "body",
+                        xCssPx: 85, yCssPx: 215, rgba: [255, 255, 255, 255]),
+                ] : isMixedCrossAxisPlacement
                     ? Self.mixedCrossAxisPlacementPixelSamples
                     : isMixedOneAxisPlacement
                     ? Self.mixedOneAxisPlacementPixelSamples
@@ -14629,6 +14648,11 @@ private func c11GridMetalPixelSceneID(arguments: [String]) -> String? {
         return "positive-occurrence"
     }
 #if SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST_1
+    if let argument = arguments.first(where: {
+        $0.hasPrefix("--spinon-root-html-grid-minmax-metal-surface-pixels=")
+    }), argument.hasSuffix("=c11rmx-20261105-r3") {
+        return "root-html-grid-text-aspect-ratio-min-max"
+    }
     if let argument = arguments.first(where: {
         $0.hasPrefix("--spinon-root-html-grid-mixed-cross-axis-metal-surface-pixels=")
     }) {
@@ -21089,10 +21113,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? viewportWidth : fixedViewportWidth
             let expectedViewportHeight = pixelRun.usesRootHtmlViewport
                 ? viewportHeight : fixedViewportHeight
-            let pixelViewportWidth = usesReportedC115Viewport
+            let usesDefaultRootHtmlLayoutViewport = pixelRun.markerPrefix == "C111RMX"
+            let pixelViewportWidth: Float = usesReportedC115Viewport
+                || usesDefaultRootHtmlLayoutViewport
                 ? 980 : expectedViewportWidth
-            let pixelViewportHeight = usesReportedC115Viewport
-                ? 735 : expectedViewportHeight
+            let pixelViewportHeight: Float = usesReportedC115Viewport
+                ? 735
+                : usesDefaultRootHtmlLayoutViewport
+                    ? Float(drawableSize.height) * 980 / Float(drawableSize.width)
+                    : expectedViewportHeight
             let usesDensityMappedC111 = pixelRun.markerPrefix == "C111CFM"
             guard (usesReportedC115Viewport
                     || (viewportWidth == expectedViewportWidth
@@ -22549,6 +22578,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             throw failure("surface-size", "WGPU draw report에 실제 surface 크기가 없습니다")
         }
         let usesReportedC115Viewport = run.markerPrefix == "C115"
+        let usesDefaultRootHtmlLayoutViewport = run.markerPrefix == "C111RMX"
         let reportedViewport = reportField(result, "viewport_css_px=")
             .split(separator: "x").compactMap { UInt32($0) }
         if usesReportedC115Viewport
@@ -22586,10 +22616,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             throw failure("surface-generation", "viewport 또는 surface drawable 크기가 요청과 달라졌습니다")
         }
         let usesDensityMappedC111 = run.markerPrefix == "C111CFM"
+        let samplingViewport = usesDefaultRootHtmlLayoutViewport
+            ? (width: 980.0,
+               height: Float(surface[1]) * 980 / Float(surface[0]))
+            : (width: Float(viewport.width), height: Float(viewport.height))
         let scaleX = usesDensityMappedC111
-            ? pixelDensity : Float(surface[0]) / Float(viewport.width)
+            ? pixelDensity : Float(surface[0]) / samplingViewport.width
         let scaleY = usesDensityMappedC111
-            ? pixelDensity : Float(surface[1]) / Float(viewport.height)
+            ? pixelDensity : Float(surface[1]) / samplingViewport.height
         let viewportFitsSurface = !usesDensityMappedC111
             || (Float(viewport.width) * scaleX <= Float(surface[0])
                 && Float(viewport.height) * scaleY <= Float(surface[1]))
@@ -22613,7 +22647,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
         let pid = ProcessInfo.processInfo.processIdentifier
         let drawableText = "\(surface[0])x\(surface[1])"
-        log("\(pixelMarker)_BEGIN run_id=\(run.runID) pid=\(pid) surface_generation=\(generation) layout_generation=\(layoutGeneration) document_revision=\(documentRevision) render_tree_revision=\(renderTreeRevision) environment_revision=\(environmentRevision) scene=\(run.sceneID) viewport=\(viewport.width)x\(viewport.height) drawable=\(drawableText)")
+        log("\(pixelMarker)_BEGIN run_id=\(run.runID) pid=\(pid) surface_generation=\(generation) layout_generation=\(layoutGeneration) document_revision=\(documentRevision) render_tree_revision=\(renderTreeRevision) environment_revision=\(environmentRevision) scene=\(run.sceneID) viewport=\(viewport.width)x\(viewport.height) layout_viewport=\(samplingViewport.width)x\(samplingViewport.height) drawable=\(drawableText)")
 
         var matchedCount = 0
         var records: [(String, UInt32, UInt32, [UInt32], [UInt32], Bool)] = []

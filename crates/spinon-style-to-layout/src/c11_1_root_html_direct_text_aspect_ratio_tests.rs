@@ -303,7 +303,7 @@ fn parsed_root_html_aspect_ratio_fails_closed_outside_the_fixed_owner_slice() {
     let ratio = item_style("width:60px;height:auto;", "aspect-ratio:2 / 1;");
     let constrained = item_style(
         "width:60px;height:auto;max-height:40px;",
-        "aspect-ratio:2 / 1;",
+        "aspect-ratio:3 / 2;",
     );
     let constrained_fixture = Fixture::new(&root_style(""), &[scene(&grid, &short, &constrained)]);
     assert!(matches!(

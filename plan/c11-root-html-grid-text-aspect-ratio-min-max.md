@@ -1,8 +1,8 @@
 # C11.1 · parsed Root HTML Grid direct-text `aspect-ratio` min/max
 
-**상태:** 구현 전 계획. 기반 [direct-text `aspect-ratio`](./c11-root-html-grid-text-aspect-ratio.md) 및 유한 비율 값 확장을 기본 `RuntimeRootHtmlTextPaintV1` 경로에서 재사용하되, 이 계획의 min/max 적용 범위를 별도로 검증한다. C11.4의 opt-in fixture 결과만으로 기본 경로 지원을 주장하지 않는다.
+**상태:** 제한 구현 후보. 기반 [direct-text `aspect-ratio`](./c11-root-html-grid-text-aspect-ratio.md) 및 유한 비율 값 확장을 기본 `RuntimeRootHtmlTextPaintV1` 경로에서 재사용하되, 이 계획의 min/max 적용 범위를 별도로 검증한다. C11.4의 opt-in fixture 결과만으로 기본 경로 지원을 주장하지 않는다. PR 병합 뒤에도 C11.1/C11 공식 체크와 완료 집계는 상위 범위 충족 전까지 미완료로 유지한다.
 
-**구현 전 기준:** [Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-precomparison-2026-11-05/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-min-max-precomparison.html) · [독립 기대값](../spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-precomparison-2026-11-05/expected-values.json)
+**기준과 구현 후보 근거:** [Chrome 156 Agent Browser 사전 비교](../spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-precomparison-2026-11-05/README.md) · [Android/iOS Simulator runtime 증거](../spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-runtime-2026-11-05/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-direct-text-aspect-ratio-min-max-precomparison.html) · [독립 기대값](../spec/internal/evidence/c11-root-html-grid-text-aspect-ratio-min-max-precomparison-2026-11-05/expected-values.json)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.1 intrinsic track sizing](./c11-root-html-intrinsic-grid-tracks.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
