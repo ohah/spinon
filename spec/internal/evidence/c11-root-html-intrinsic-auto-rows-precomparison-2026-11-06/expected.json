@@ -1,0 +1,24 @@
+{
+  "source_fixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html",
+  "basis": "CSS Grid Level 1 min-content track sizing with fixed-size direct grid items",
+  "grid": {
+    "x": 0,
+    "y": 0,
+    "width": 40,
+    "height": 40,
+    "explicit_rows_px": [10],
+    "implicit_rows_px": [22, 34],
+    "used_rows_px": [10, 22, 34],
+    "overflow_y": "visible"
+  },
+  "items": {
+    "first": { "x": 0, "y": 0, "width": 40, "height": 10, "bottom": 10 },
+    "second": { "x": 0, "y": 10, "width": 40, "height": 22, "bottom": 32 },
+    "third": { "x": 0, "y": 32, "width": 40, "height": 34, "bottom": 66 }
+  },
+  "overflow": {
+    "grid_bottom": 40,
+    "third_item_bottom": 66,
+    "visible_beyond_grid_px": 26
+  }
+}

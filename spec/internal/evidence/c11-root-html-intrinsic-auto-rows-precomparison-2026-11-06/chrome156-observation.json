@@ -1,0 +1,21 @@
+{
+  "browser": "HeadlessChrome/156.0.0.0",
+  "fixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html",
+  "fixture_sha256": "9698ba9a203b8ba01a89bc7ea3f73e686e2f69d8f945df74c787d99d485d151a",
+  "computed": {
+    "display": "grid",
+    "gridTemplateColumns": "40px",
+    "gridTemplateRows": "10px 22px 34px",
+    "gridAutoRows": "min-content",
+    "overflowY": "visible"
+  },
+  "grid": { "x": 0, "y": 0, "width": 40, "height": 40, "right": 40, "bottom": 40 },
+  "items": {
+    "first": { "x": 0, "y": 0, "width": 40, "height": 10, "right": 40, "bottom": 10 },
+    "second": { "x": 0, "y": 10, "width": 40, "height": 22, "right": 40, "bottom": 32 },
+    "third": { "x": 0, "y": 32, "width": 40, "height": 34, "right": 40, "bottom": 66 }
+  },
+  "visible_overflow_px": 26,
+  "screenshot": "chrome156.png",
+  "screenshot_sha256": "6716fa1cf24ddf9124f4ee0b62fdb382e6d9949e19be2d57e7c82d6e51c249b5"
+}
