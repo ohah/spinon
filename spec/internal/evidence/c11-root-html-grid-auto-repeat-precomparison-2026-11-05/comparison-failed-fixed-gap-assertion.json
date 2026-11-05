@@ -1,0 +1,201 @@
+{
+  "status": "fail",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 1200,
+    "width": 1280
+  },
+  "caseCount": 13,
+  "checks": [
+    "repeat boundary",
+    "computed explicit track sizes",
+    "auto-fit collapse",
+    "row and column axes",
+    "item frames",
+    "hidden item exclusion",
+    "visible overflow",
+    "gaps"
+  ],
+  "failures": [
+    "columns-fill-subpx-ua-count-floor: gaps expected 10px/10px got 0px/0px"
+  ],
+  "summaries": [
+    {
+      "id": "columns-fill-two-repetitions",
+      "tracks": [
+        42.5,
+        42.5,
+        42.5,
+        42.5
+      ],
+      "root": [
+        200,
+        20
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "columns-fit-two-repetitions",
+      "tracks": [
+        95,
+        95,
+        0,
+        0
+      ],
+      "root": [
+        200,
+        20
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "columns-fit-hidden-item",
+      "tracks": [
+        200,
+        0,
+        0,
+        0
+      ],
+      "root": [
+        200,
+        20
+      ],
+      "visibleItems": 1
+    },
+    {
+      "id": "columns-fit-empty",
+      "tracks": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "root": [
+        200,
+        20
+      ],
+      "visibleItems": 0
+    },
+    {
+      "id": "columns-fill-boundary-below",
+      "tracks": [
+        79.5,
+        79.5
+      ],
+      "root": [
+        169,
+        20
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "columns-fill-subpx-ua-count-floor",
+      "tracks": [
+        1,
+        1
+      ],
+      "root": [
+        2,
+        20
+      ],
+      "visibleItems": 0
+    },
+    {
+      "id": "columns-fill-boundary-exact",
+      "tracks": [
+        40,
+        30,
+        40,
+        30
+      ],
+      "root": [
+        170,
+        20
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "columns-visible-overflow",
+      "tracks": [
+        40,
+        30,
+        40,
+        30
+      ],
+      "root": [
+        170,
+        20
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "rows-fill-two-repetitions",
+      "tracks": [
+        42.5,
+        42.5,
+        42.5,
+        42.5
+      ],
+      "root": [
+        60,
+        200
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "rows-fit-two-repetitions",
+      "tracks": [
+        95,
+        95,
+        0,
+        0
+      ],
+      "root": [
+        60,
+        200
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "rows-fit-empty",
+      "tracks": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "root": [
+        60,
+        200
+      ],
+      "visibleItems": 0
+    },
+    {
+      "id": "rows-fill-boundary-below",
+      "tracks": [
+        79.5,
+        79.5
+      ],
+      "root": [
+        60,
+        169
+      ],
+      "visibleItems": 2
+    },
+    {
+      "id": "rows-fill-boundary-exact",
+      "tracks": [
+        40,
+        30,
+        40,
+        30
+      ],
+      "root": [
+        60,
+        170
+      ],
+      "visibleItems": 2
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Root HTML Grid auto-repeat precomparison</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { background: #ffffff; }
+    .grid {
+      box-sizing: border-box;
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background-color: #101820;
+    }
+    .grid > div { box-sizing: border-box; min-width: 0; min-height: 0; }
+    .a { background-color: #e5484d; }
+    .b { background-color: #3b82f6; }
+
+    #columns-fill-two-repetitions {
+      width: 200px; height: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-fit-two-repetitions {
+      width: 200px; height: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-fit-hidden-item {
+      width: 200px; height: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-fit-empty {
+      width: 200px; height: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-fill-boundary-below {
+      width: 169px; height: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-fill-subpx-ua-count-floor {
+      width: 2px; height: 20px; gap: 0;
+      grid-template-columns: repeat(auto-fill, minmax(0.5px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-fill-boundary-exact {
+      width: 170px; height: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-visible-overflow {
+      width: 170px; height: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+      grid-template-rows: 20px;
+    }
+    #columns-visible-overflow > .a { width: 240px; height: 20px; }
+
+    #rows-fill-two-repetitions {
+      width: 60px; height: 200px;
+      grid-template-columns: 60px;
+      grid-template-rows: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+    }
+    #rows-fit-two-repetitions {
+      width: 60px; height: 200px;
+      grid-template-columns: 60px;
+      grid-template-rows: repeat(auto-fit, minmax(40px, 1fr) minmax(30px, 1fr));
+    }
+    #rows-fit-empty {
+      width: 60px; height: 200px;
+      grid-template-columns: 60px;
+      grid-template-rows: repeat(auto-fit, minmax(40px, 1fr) minmax(30px, 1fr));
+    }
+    #rows-fill-boundary-below {
+      width: 60px; height: 169px;
+      grid-template-columns: 60px;
+      grid-template-rows: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+    }
+    #rows-fill-boundary-exact {
+      width: 60px; height: 170px;
+      grid-template-columns: 60px;
+      grid-template-rows: repeat(auto-fill, minmax(40px, 1fr) minmax(30px, 1fr));
+    }
+  </style>
+</head>
+<body>
+  <section id="columns-fill-two-repetitions" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="columns-fit-two-repetitions" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="columns-fit-hidden-item" class="grid">
+    <div class="a"></div><div class="b" style="display:none"></div>
+  </section>
+  <section id="columns-fit-empty" class="grid"></section>
+  <section id="columns-fill-boundary-below" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="columns-fill-subpx-ua-count-floor" class="grid"></section>
+  <section id="columns-fill-boundary-exact" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="columns-visible-overflow" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="rows-fill-two-repetitions" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="rows-fit-two-repetitions" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="rows-fit-empty" class="grid"></section>
+  <section id="rows-fill-boundary-below" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <section id="rows-fill-boundary-exact" class="grid">
+    <div class="a"></div><div class="b"></div>
+  </section>
+  <script>
+    window.__C11_ROOT_HTML_AUTO_REPEAT_PRECOMPARISON__ = () =>
+      [...document.querySelectorAll(".grid")].map((grid) => {
+        const style = getComputedStyle(grid);
+        const rect = grid.getBoundingClientRect();
+        const items = [...grid.children].map((item) => {
+          const itemStyle = getComputedStyle(item);
+          const itemRect = item.getBoundingClientRect();
+          return {
+            display: itemStyle.display,
+            frame: [itemRect.x, itemRect.y, itemRect.width, itemRect.height],
+          };
+        });
+        return {
+          id: grid.id,
+          computedColumns: style.gridTemplateColumns,
+          computedRows: style.gridTemplateRows,
+          gap: [style.rowGap, style.columnGap],
+          frame: [rect.x, rect.y, rect.width, rect.height],
+          items,
+        };
+      });
+  </script>
+</body>
+</html>

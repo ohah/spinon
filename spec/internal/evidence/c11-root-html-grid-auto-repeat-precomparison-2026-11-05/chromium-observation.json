@@ -1,0 +1,408 @@
+{
+  "results": [
+    {
+      "computedColumns": "42.5px 42.5px 42.5px 42.5px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        0,
+        200,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-fill-two-repetitions",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            0,
+            42.5,
+            20
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            52.5,
+            0,
+            42.5,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "95px 95px 0px 0px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        20,
+        200,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-fit-two-repetitions",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            20,
+            95,
+            20
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            105,
+            20,
+            95,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "200px 0px 0px 0px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        40,
+        200,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-fit-hidden-item",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            40,
+            200,
+            20
+          ]
+        },
+        {
+          "display": "none",
+          "frame": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "0px 0px 0px 0px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        60,
+        200,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-fit-empty",
+      "items": []
+    },
+    {
+      "computedColumns": "79.5px 79.5px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        80,
+        169,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-fill-boundary-below",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            80,
+            79.5,
+            20
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            89.5,
+            80,
+            79.5,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "1px 1px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        100,
+        2,
+        20
+      ],
+      "gap": [
+        "0px",
+        "0px"
+      ],
+      "id": "columns-fill-subpx-ua-count-floor",
+      "items": []
+    },
+    {
+      "computedColumns": "40px 30px 40px 30px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        120,
+        170,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-fill-boundary-exact",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            120,
+            40,
+            20
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            50,
+            120,
+            30,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "40px 30px 40px 30px",
+      "computedRows": "20px",
+      "frame": [
+        0,
+        140,
+        170,
+        20
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "columns-visible-overflow",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            140,
+            240,
+            20
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            50,
+            140,
+            30,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "60px",
+      "computedRows": "42.5px 42.5px 42.5px 42.5px",
+      "frame": [
+        0,
+        160,
+        60,
+        200
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "rows-fill-two-repetitions",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            160,
+            60,
+            42.5
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            0,
+            212.5,
+            60,
+            42.5
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "60px",
+      "computedRows": "95px 95px 0px 0px",
+      "frame": [
+        0,
+        360,
+        60,
+        200
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "rows-fit-two-repetitions",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            360,
+            60,
+            95
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            0,
+            465,
+            60,
+            95
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "60px",
+      "computedRows": "0px 0px 0px 0px",
+      "frame": [
+        0,
+        560,
+        60,
+        200
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "rows-fit-empty",
+      "items": []
+    },
+    {
+      "computedColumns": "60px",
+      "computedRows": "79.5px 79.5px",
+      "frame": [
+        0,
+        760,
+        60,
+        169
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "rows-fill-boundary-below",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            760,
+            60,
+            79.5
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            0,
+            849.5,
+            60,
+            79.5
+          ]
+        }
+      ]
+    },
+    {
+      "computedColumns": "60px",
+      "computedRows": "40px 30px 40px 30px",
+      "frame": [
+        0,
+        929,
+        60,
+        170
+      ],
+      "gap": [
+        "10px",
+        "10px"
+      ],
+      "id": "rows-fill-boundary-exact",
+      "items": [
+        {
+          "display": "block",
+          "frame": [
+            0,
+            929,
+            60,
+            40
+          ]
+        },
+        {
+          "display": "block",
+          "frame": [
+            0,
+            979,
+            60,
+            30
+          ]
+        }
+      ]
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 1200,
+    "width": 1280
+  }
+}
