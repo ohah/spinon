@@ -14,7 +14,7 @@
 10. **Computed 값:** font family/size, line-height, white-space와 Grid auto rows는 동일 style revision과 typed cascade snapshot에서 가져와야 한다.
 11. **Automatic minimum:** 대상은 `min-height:auto`를 유지한다. 이를 고정 또는 0으로 바꾸어 intrinsic contribution을 가리면 안 된다.
 12. **Text wrapping mode:** computed `white-space:normal`만 허용하며 nowrap/pre/overflow-wrap/word-break 동작이 의도치 않게 포함되면 안 된다.
-13. **Definite inline 크기:** 고정 40px 열이 줄바꿈 조건을 고정한다. indefinite column과 percentage 크기는 제외한다.
+13. **Definite inline 크기:** 40px explicit column과 `justify-items:normal` stretch가 auto-width item의 resolved inline size를 40px로 고정한다. Indefinite column과 percentage 크기는 제외한다.
 14. **Visible overflow:** 마지막 행이 40px container 아래 y=64px까지 이른다. Clipping이나 viewport 경계가 track 크기를 바꾸거나 item layout을 감추면 안 된다.
 15. **원자적 거부:** 잘못되거나 지원하지 않는 text item이 sibling box 또는 stale scene을 성공 결과로 게시하면 안 된다.
 16. **Revision 무효화:** Text source나 font style이 바뀌면 같은 Root HTML owner를 invalidate하고 새 snapshot 게시 전에 대상 행을 재측정해야 한다.

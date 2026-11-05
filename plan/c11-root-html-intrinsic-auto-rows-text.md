@@ -4,7 +4,7 @@
 
 **사전 비교:** [Chrome 156 Agent Browser 결과](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-text-precomparison.html) · [독립 기대값](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/expected.json)
 
-**계획 실패 관점 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-plan-review-20.md). **계획 PR 변경 검토:** 실제 diff를 대상으로 별도 기록한다. **구현/runtime 검토:** 계획 검토와 분리해 20개를 기록한다. **구현 PR 변경 검토:** PR마다 독립된 관점으로 검토한다.
+**계획 실패 관점 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-plan-review-20.md). **계획 PR 변경 검토:** 실제 diff를 대상으로 별도 기록한다. **구현/runtime 적대 검토:** [20개](./c11-root-html-intrinsic-auto-rows-text-implementation-runtime-review-20.md). **Simulator runtime evidence:** [Android API 37 ARM64 AVD + iPhone 17 Pro / iOS 26.2](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-runtime-pass05-2026-11-06/README.md). **구현 PR 변경 검토:** PR diff에 별도 30개 관점을 적용한다.
 
 ## 결손과 목표
 
@@ -18,7 +18,7 @@
 - Explicit column과 row는 각각 유한한 양의 고정 CSS px track 하나다. 첫 번째 빈 item은 explicit row에 배치한다. Implicit row에는 반복되는 단일 `min-content` track만 허용한다.
 - Grid에는 양수의 definite 고정 CSS px width/height, row·column gap 0, margin·padding·border 0, start content alignment, static position을 사용한다.
 - 보이는 direct item은 크기가 고정된 빈 `<div>` 또는 text child 하나만 가진 block `<div>`다. Anonymous raw Grid text, 중첩/inline element, 여러 text run, replaced item, 숨김/분리된 item은 제외한다.
-- Text item에는 `width:auto`, `height:auto`, `min-height:auto`, `max-height:none`, `font-family:monospace`, `font-size:10px`, `line-height:10px`, `white-space:normal`, static positioning을 사용한다. Source text는 ASCII `A A A A A A`로 고정하며 text item은 하나만 허용한다.
+- Text item에는 `width:auto`, `height:auto`, `min-height:auto`, `max-height:none`, `font-family:monospace`, `font-size:10px`, `line-height:10px`, `white-space:normal`, static positioning을 사용한다. 기본 `justify-items:normal` stretch가 auto width를 definite 40px column에 맞춘다. Chrome 관측에는 선언값 `auto`와 resolved width 40px를 모두 보존한다. Source text는 ASCII `A A A A A A`로 고정하며 text item은 하나만 허용한다.
 - Positive fixture는 40×40px Grid, explicit 40px column 하나, explicit 10px row 하나, gap 0, 높이 10px인 첫 item, 두 줄 text item, 높이 34px인 마지막 item이다. Browser 기준 row는 `[10,20,34]px`이고 visible overflow는 y=64px까지 이어진다.
 - Placement longhand는 모두 `auto`여야 한다. Named line/area, span, repeat, implicit column, dense/column flow, `start` 이외의 content alignment, non-zero gap, min/max constraint, `aspect-ratio`, writing-mode 변경과 복수 owner는 원자적으로 거부한다.
 - Text layout 값은 기존 runtime 글꼴 경로에서 측정한다. 일반 `monospace` advance는 플랫폼마다 다를 수 있으므로 Chrome과 simulator의 글꼴 지표를 따로 기록한다. CSS `monospace`에 고정 advance가 있다고 웹 공통 상수로 추정하지 않는다.
@@ -26,7 +26,7 @@
 
 ## 기준과 독립 기대값
 
-기준은 [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing)와 고정된 [Chrome 156 Agent Browser 관측](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/chrome156-observation.json)이다. Chrome의 40px column과 10px monospace inline metrics에서 text는 두 줄로 나뉘며 각 line-height는 10px다. 독립 sizing 기대값은 min-content block contribution 20px, explicit row 10px, 고정된 마지막 item 행 34px다. 기대 frame은 `[0,0,40,10]`, `[0,10,40,20]`, `[0,30,40,34]`; Grid content의 visible bottom은 y=64px다.
+기준은 [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing)와 고정된 [Chrome 156 Agent Browser 관측](../spec/internal/evidence/c11-root-html-intrinsic-auto-rows-text-precomparison-2026-11-06/chrome156-observation.json)이다. Text item은 `width:auto`를 선언하고 Grid stretch로 resolved width 40px가 된다. Chrome의 40px column과 10px monospace inline metrics에서 text는 두 줄로 나뉘며 각 line-height는 10px다. 독립 sizing 기대값은 min-content block contribution 20px, explicit row 10px, 고정된 마지막 item 행 34px다. 기대 frame은 `[0,0,40,10]`, `[0,10,40,20]`, `[0,30,40,34]`; Grid content의 visible bottom은 y=64px다.
 
 같은 fixture에 `grid-auto-rows:10px`를 임시 대조값으로 적용하면 computed row는 `[10,10,10]px`, text item frame 높이는 10px, 마지막 item y는 20px다. 이는 intrinsic contribution 결과와 다른 대조이며 glyph overflow가 잘리는 픽셀 결과라고 주장하지 않는다. 고정 item 크기와 authored track은 모든 target에서 정확히 비교한다. Text에서 계산한 높이는 플랫폼별 font line count와 layout trace로 기록하고 각 플랫폼의 실제 default-route 측정값에 대조한다. Chrome screenshot은 reference geometry이지 Spinon, WPT, glyph raster 또는 native surface 증거가 아니다.
 

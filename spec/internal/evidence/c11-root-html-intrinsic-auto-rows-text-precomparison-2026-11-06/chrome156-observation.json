@@ -12,6 +12,8 @@
       },
       "items": [
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 10,
             "width": 40,
@@ -23,6 +25,8 @@
           "textLines": []
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "auto",
           "frame": {
             "height": 20,
             "width": 40,
@@ -47,6 +51,8 @@
           ]
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 34,
             "width": 40,
@@ -71,6 +77,8 @@
       },
       "items": [
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 10,
             "width": 40,
@@ -82,6 +90,8 @@
           "textLines": []
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "auto",
           "frame": {
             "height": 20,
             "width": 40,
@@ -106,6 +116,8 @@
           ]
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 34,
             "width": 40,
@@ -130,6 +142,8 @@
       },
       "items": [
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 10,
             "width": 40,
@@ -141,6 +155,8 @@
           "textLines": []
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "auto",
           "frame": {
             "height": 10,
             "width": 40,
@@ -165,6 +181,8 @@
           ]
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 34,
             "width": 40,
@@ -189,6 +207,8 @@
       },
       "items": [
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 10,
             "width": 40,
@@ -200,6 +220,8 @@
           "textLines": []
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "auto",
           "frame": {
             "height": 20,
             "width": 40,
@@ -224,6 +246,8 @@
           ]
         },
         {
+          "computedWidth": "40px",
+          "declaredWidth": "40px",
           "frame": {
             "height": 34,
             "width": 40,
@@ -244,5 +268,6 @@
   "viewport": {
     "height": 633,
     "width": 1280
-  }
+  },
+  "sourceSha256": "f0759d21c51af46497327686a854b52cd5e004134c35fd562e3e0170c8df49e6"
 }
