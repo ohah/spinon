@@ -32,8 +32,8 @@ Expanded repeat count 사전 검사는 위 grammar로 한정한다. Repeat patte
 3. expanded repeat count와 expanded explicit capacity를 overflow-safe하게 계산하고 `validate_root_html_grid_item_capacity`에 반영한다. 최대 tracks, overflow, hidden child와 no-implicit-track 경계를 회귀 검사한다.
 4. CSS cascade→typed snapshot→Root HTML style/layout runtime 경로의 positive 및 fail-closed tests를 추가한다. Count 경계 169/170, 양 축 개별 route, 1-track/2-track pattern, auto-fill/auto-fit의 빈·점유·hidden 경우, over-cap 및 item-capacity control을 포함한다.
 5. Chrome 사전 fixture와 같은 author HTML을 기본 Root HTML 경로에서 실행하고 결과 frames/tracks를 독립 기대값과 비교한다. 기존 integer-repeat, fixed tracks, percentage/fr/fit-content 경로도 scoped 회귀 확인한다.
-6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기본 Root HTML runtime을 실행한다. Root/item geometry, expanded track evidence, empty-track collapse, overflow와 screenshot을 기록한다. Pixel 표본을 얻으면 그 표본/표면 시점만 명시하며 simulator 결과를 실기기 증거로 표현하지 않는다.
-7. 기본 artifact에 fixture 전용 adapter가 새로 유입되지 않았는지 확인한다. 이 변경은 일반 HTML parser/API나 fixture-only C11.4 entry point에 의존하지 않는다.
+6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 `RuntimeSession::new_runtime_gpu_with_root_html`의 기본 Root HTML profile을 실행한다. 기존 C11 Root HTML SurfaceView/Metal harness를 사용할 수 있다. Root/item geometry, expanded track evidence, empty-track collapse, overflow와 screenshot을 기록한다. Pixel 표본을 얻으면 그 표본/표면 시점만 명시하며 simulator 결과를 실기기 증거로 표현하지 않는다.
+7. Arbitrary HTML을 앱에 전달하는 현재 harness가 없으면 새 opt-in fixture harness를 전용 `*-fixture-test` feature/build define으로 분리한다. `RuntimeBlockFlexGridTrackSizingV1` 전용 C11.4 entry point로 대신 검증하지 않는다. 기본 APK/iOS executable에서 신규 fixture 심볼·문자열·payload가 빠지고 positive-control fixture build에 포함되는지 확인한다.
 8. 구현/runtime을 서로 다른 20개 실패 관점으로 검토하고, 별도 PR diff를 30개 관점으로 검토한다. PR은 현재 project rule대로 Rebase and merge를 사용하고 check rollup이 비어 있으면 CI 성공으로 기록하지 않는다.
 9. 병합 후 `spec/internal/0059-c11-grid-layout.md`, `spec/STATUS.md`, `plan/c11-css-grid.md`의 실제 구현 범위와 증거 링크만 갱신한다. 전체 C11/C11.1/C11.4의 미완료 상태와 `78/214` 집계는 완료 조건이 충족되지 않는 한 유지한다.
 
