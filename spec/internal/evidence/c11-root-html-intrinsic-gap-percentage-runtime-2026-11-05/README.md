@@ -4,6 +4,10 @@
 
 이 evidence는 기존 `RootHtmlIntrinsicTrackSizingV1`에서 definite Root HTML Grid의 direct percentage gutter를 다룬다. CSS parser나 public CSS API, 전체 Grid 지원의 근거가 아니다. 동일한 9-scene source를 default Root HTML runtime route에 넣어 Android와 iOS에서 실행했다. 별도 [구현/runtime 실패 관점 20개 검토](./implementation-runtime-review-20.md) 및 실제 implementation PR diff [적대 검토 30개](./pr-diff-review-30.md)를 수행했다.
 
+구현 PR [#1176](https://github.com/ohah/spinon/pull/1176)은 2026-11-05T06:26:10Z Rebase and merge됐고 merge SHA는 `da67a18032f449d8477cdd5d7ea0aba02e691b0b`다. PR check rollup은 비었으며 main required status checks도 없어 CI 통과로 기록하지 않는다. C11.1/C11 미완료와 공식 `78/214`는 유지한다.
+
+[Tailnet roadmap 동기화·화면 근거](../roadmap-tailnet-sync-pr1176-2026-11-05/README.md) · [병합 후 문서 변경 검토 30개](../roadmap-tailnet-sync-pr1176-2026-11-05/pr-diff-review-30.md)
+
 - Runtime fixture: [root-html-grid-intrinsic-gap-percentage-runtime.html](../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-gap-percentage-runtime.html)
 - Fixture SHA-256: `f0150d202f93c94662f14655608c08ba54ab6c8c2b14ef21da0bd357bfdf1f12`
 - Reference: [Chrome 156 Agent Browser 사전 비교 및 독립 expected](../c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.md)

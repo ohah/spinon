@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-05 06:50:28 UTC",
+  "session": "default",
+  "activeBeforeClose": true,
+  "browserDaemonPidBeforeClose": 59128,
+  "pageCountBeforeClose": 1,
+  "closeAllCommand": "agent-browser close --all",
+  "closeAllOutput": "Closed session: default",
+  "closeAllExitCode": 0,
+  "daemonPidAfterClosePresent": false,
+  "signalAttemptAfterClose": "SIGTERM returned ESRCH because PID 59128 had exited after close --all",
+  "chromeForTestingProcessAfterClosePresent": false,
+  "tailnetPreviewServerPid": 28040,
+  "tailnetPreviewServerPreserved": true
+}

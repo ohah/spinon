@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML intrinsic Grid percentage gap
 
-**상태:** 구현·Android/iOS 시뮬레이터 검증과 실제 PR diff 실패 관점 30개 검토를 마친 제한 후보. 구현 PR [#1176](https://github.com/ohah/spinon/pull/1176)의 check/merge가 남아 있다. C11.1/C11은 미완료이며 공식 완료 수는 78/214다.
+**상태:** 구현·Android/iOS 시뮬레이터 검증과 실제 PR diff 실패 관점 검토를 마친 제한 구현. PR [#1176](https://github.com/ohah/spinon/pull/1176)은 2026-11-05T06:26:10Z Rebase and merge됐고 merge SHA는 `da67a18032f449d8477cdd5d7ea0aba02e691b0b`다. check rollup은 비었고 필수 status check도 설정되지 않아 CI 통과로 기록하지 않는다. C11.1/C11은 미완료이며 공식 완료 수는 78/214다.
 
 **선행 구현:** [intrinsic explicit tracks](./c11-root-html-intrinsic-grid-tracks.md), [고정 px intrinsic gap · PR #1172](./c11-root-html-grid-intrinsic-gap.md), [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -62,8 +62,8 @@ percentage gap이 있는 indefinite/auto Grid axis, cyclic intrinsic contributio
 4. Rust layout tests는 9-scene fixture의 shorthand/alias, row/column basis, zero 및 120% overflow를 독립 expected와 비교한다. Invalid typed value와 resolved/aggregate f32 overflow 거부도 검사한다. Runtime matrix는 성공 frame과 paint visibility를 확인하고, projection에서 표현 불가능한 큰 percentage 및 기존 invalid/calc 거부를 검사한다.
 5. 기본 parsed Root HTML runtime fixture를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source hash로 실행했다. 두 플랫폼 모두 layout=ready, 48 boxes 및 draw/present를 기록했다. Screenshot은 visual smoke이며 PixelCopy/Metal drawable readback은 없다.
 6. Layout/runtime focused tests, scoped Clippy, FFI check, fixture boundary 33/33, simulator builds와 `cargo fmt --all -- --check`를 통과했다. 전체 `spinon-layout --lib`는 449/450이며 유일한 C15 HostDocument assertion은 fixed-px baseline에서도 실패했다. Fixture-test runtime suite는 후보 276/8/3, 정확한 `5d47b06cc` 기준 275/8/3이고 실패 테스트 목록이 동일하다. 넓은 suite 둘 다 green이라고 주장하지 않는다. [현재·기준 실행 로그](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-runtime-2026-11-05/README.md).
-7. 구현/runtime 실패 관점 20개 검토를 마치고 Android/iOS simulator 화면을 첨부한 PR #1176을 만들었다. 실제 PR diff 사전 검토에서 simulator runner가 누락된 runtime marker를 통과시킬 수 있고, bundled fixture hash·screenshot·layout/draw 결과를 강제하지 않는 점을 찾았다. runner를 보강하고 양 simulator를 재실행해 source/bundle hash, layout/draw marker 및 non-empty screenshot 검사를 통과시켰다. 후속 실제 PR diff의 서로 다른 실패 관점 30개를 새로 검토해 추가 구현 결함이 없음을 확인했다. 남은 단계는 최신 PR check·merge 확인이다.
-8. 병합 뒤 exact merge SHA와 required status/check rollup을 확인하고 internal contract 0059, spec/STATUS.md, C11 계획 및 사용자가 지정한 Tailnet roadmap 미리보기의 제한 범위를 동기화한다. C11.1/C11 체크와 공식 78/214는 그대로 둔다. Tailnet 화면은 Agent Browser로 desktop/mobile을 확인하고 세션·프로세스를 종료한다.
+7. 구현/runtime 실패 관점 20개 및 실제 PR diff 실패 관점 검토를 마치고 Android/iOS simulator 화면을 첨부한 PR #1176을 Rebase and merge했다. 실제 PR diff 검토에서 simulator runner의 누락 marker 허용과 asset/output 검증 누락을 찾아 보강한 뒤 양 simulator를 재실행했다. merge SHA `da67a18032f449d8477cdd5d7ea0aba02e691b0b`를 확인했다. PR check rollup은 비었고 main 필수 status check가 설정되어 있지 않아 CI 통과로 주장하지 않는다.
+8. 병합 metadata를 internal contract 0059, spec/STATUS.md, 이 계획과 Tailnet roadmap에 반영했다. 공식 78/214와 C11 미완료 상태를 유지했다. [Tailnet route/hash·Agent Browser 화면·process 종료 evidence](../spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/README.md)와 [후속 문서 변경 실패 관점 검토 30개](../spec/internal/evidence/roadmap-tailnet-sync-pr1176-2026-11-05/pr-diff-review-30.md)를 남겼다.
 
 ## 완료 판정의 제한
 
