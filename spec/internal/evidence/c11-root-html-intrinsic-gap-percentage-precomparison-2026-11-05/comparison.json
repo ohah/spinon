@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "method": "Compare independent expected track sizes, computed gap syntax, and item rectangles against the pinned Chrome observation.",
+  "matchedCaseCount": 9,
+  "caseCount": 9,
+  "allMatch": true,
+  "cases": [
+    {
+      "id": "control",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "column-10",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "row-10",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "both-10",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "mixed-basis",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "column-over-100",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "row-over-100",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "zero-percent",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    },
+    {
+      "id": "legacy-alias",
+      "checks": {
+        "rootSize": true,
+        "computedGaps": true,
+        "columns": true,
+        "rows": true,
+        "itemFrames": true
+      },
+      "allMatch": true
+    }
+  ]
+}

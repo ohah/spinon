@@ -1,0 +1,68 @@
+# C11.1 · parsed Root HTML intrinsic Grid percentage gap
+
+**상태:** 구현 전 계획 후보. C11.1/C11은 미완료이며 공식 완료 수는 78/214다.
+
+**선행 구현:** [intrinsic explicit tracks](./c11-root-html-intrinsic-grid-tracks.md), [고정 px intrinsic gap · PR #1172](./c11-root-html-grid-intrinsic-gap.md), [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
+
+**구현 전 기준:** [Chrome 156 Agent Browser 사전 비교와 독립 기대값](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-gap-percentage-precomparison.html) · [expected](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/expected.json) · [Chrome observation](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/chrome156-observation.json) · [9-scene comparison](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/comparison.json)
+
+**계획 실패 관점 검토:** [20개](./c11-root-html-grid-intrinsic-gap-percentage-plan-review-20.md). **계획 PR 변경 검토:** [30개](./c11-root-html-grid-intrinsic-gap-percentage-plan-pr-diff-review-30.md). 구현/runtime 20개와 구현 PR 30개 검토는 구현 뒤에 각각 새로 수행한다.
+
+## 결손과 목표
+
+기본 parsed Root HTML RuntimeRootHtmlTextPaintV1 경로는 PR #1167에서 explicit intrinsic tracks를 연결하고 PR #1172에서 해당 profile의 fixed-px row-gap과 column-gap을 연결했다. 현재 RootHtmlIntrinsicTrackSizingV1 layout admission은 gap 입력으로 finite non-negative fixed px만 허용한다. 같은 profile의 computed percentage gap은 CSS에서 유효하고 기존 LayoutGap과 Taffy Grid adapter가 표현하지만 layout 전에 거부한다.
+
+이 계획은 이미 지원하는 intrinsic explicit-track profile에 finite non-negative direct percentage gap을 연결한다. 열 gap은 definite Grid content-box width, 행 gap은 definite content-box height를 basis로 한다. gap shorthand 및 grid-gap alias도 cascade가 만든 computed row-gap/column-gap 경로를 그대로 사용한다. 새 CSS parser, public API, runtime profile, FFI 경로 또는 fixture-only 성공 경로는 추가하지 않는다.
+
+## 규범과 비교 결과
+
+[CSS Gaps Level 1 §2.3](https://www.w3.org/TR/css-gaps-1/#percentages-in-gap-properties)는 percentage gap을 해당 요소 content-box 축에 비례시킨다. Grid의 cyclic percentage gap은 intrinsic size contribution 계산에서 0으로 처리하고 contents layout 시 content-box 기준으로 해석한다. 이 계획은 Grid의 두 축이 모두 finite positive fixed px인 입력만 받으므로 gap basis는 definite이고 cyclic하지 않다. auto-sized Grid axis, gap이 컨테이너 intrinsic size에 되먹임되는 경우, cyclic contribution 의미를 다루지 않는다.
+
+[CSS Grid Layout 2025-03-26 CRD §10.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#gutters-the-row-gap-column-gap-and-gap-properties)는 각 사용 gutter를 track sizing에서 빈 fixed-size track으로 취급한다. §11.1의 available-space 계산은 gutter를 포함한다. 이 작업의 fixed-size root에서는 10% gutter가 track contribution을 만드는 대신 definite free space에서 빠진다. 0%는 기존 zero-gap과 같고, 120%는 clamp하지 않아 fixed-size item의 visible overflow를 만든다.
+
+Chrome 관측과 기대값은 별도 파일에 둔다. Expected는 고정 item 기여와 축별 definite basis를 독립 산술로 계산했고 [comparison.json](../spec/internal/evidence/c11-root-html-intrinsic-gap-percentage-precomparison-2026-11-05/comparison.json)은 9 scene의 computed gap syntax·resolved track·item frame이 Chrome 156 관측과 모두 맞음을 기록한다. Chrome의 computed style은 authored percentage를 보여 주므로 사용 gap px는 track list와 item position으로 별도 확인한다.
+
+| 장면 | Grid content box | 계산한 사용 gutter | 열 track | 행 track |
+|---|---:|---:|---:|---:|
+| control | 100×100px | 0/0px | 40, 60px | 20, 80px |
+| column 10% | 100×100px | 0/10px | 40, 50px | 20, 80px |
+| row 10% | 100×100px | 10/0px | 40, 60px | 20, 70px |
+| both 10% | 100×100px | 10/10px | 40, 50px | 20, 70px |
+| mixed basis 25% 10% | 120×80px | 20/12px | 40, 68px | 20, 40px |
+| column 120% | 100×100px | 0/120px | 40, 0px | 20, 80px |
+| row 120% | 100×100px | 120/0px | 40, 60px | 20, 0px |
+| zero percent | 100×100px | 0/0px | 40, 60px | 20, 80px |
+| grid-gap alias 25% 10% | 120×80px | 20/12px | 40, 68px | 20, 40px |
+
+행 gutter와 열 gutter는 표에서 이 순서로 적었다. 100×100px cases의 first column min-content는 40px이고 first row min-content는 20px이다. 120% case에서 해당 second flexible track은 0px까지 줄지만 고정 크기 item은 gutter 뒤의 위치에 놓여 Grid 밖으로 overflow한다.
+
+## 제한 입력 계약
+
+- 기존 RootHtmlIntrinsicTrackSizingV1 profile, definite positive fixed-px root width/height, zero margin/padding/border, no-area, row auto-flow, supported explicit tracks, fixed placement와 item shape를 유지한다.
+- 기존 finite non-negative fixed px gap과 normal/zero 동작을 보존하고 direct LayoutLengthPercentage::Percentage(fraction)을 추가한다. 양수 percentage는 유한하고 0 이상이어야 한다.
+- row-gap은 root content height, column-gap은 root content width를 사용한다. 이 profile은 box edge를 0으로 제한하므로 content-box basis와 고정 root dimension이 같다. 값을 반올림하거나 0–100%로 clamp하지 않는다.
+- 고정 track 수에서 gutter는 adjacent tracks 사이에만 생긴다. aggregate used gutter는 (explicit track count - 1) × used gap으로 산정한다. f64 중간 연산으로 검증하고 resolved gap, aggregate gutter 또는 Taffy track position이 finite f32 CSS px로 표현되지 않으면 해당 gap property 진단으로 전체 layout을 거부한다.
+- Grid gap이 100%를 넘는다는 이유만으로 거부하지 않는다. 유한한 used gap 및 item frame은 성공 결과로 보존하며 실제 overflow도 자르거나 root 크기로 clamp하지 않는다.
+- gap shorthand, row-gap, column-gap, grid-gap alias는 같은 typed longhand 값과 축별 resolver를 거친다. 두 축 basis를 서로 바꿔 쓰는 경로를 허용하지 않는다.
+- CSS-invalid negative declaration은 Stylo의 cascade fallback으로 다룬다. typed negative, NaN, infinity, resolved overflow와 unsupported computed calc gap은 성공 layout으로 가장하지 않고 전체 layout 전에 거부한다.
+
+## 제외 범위
+
+percentage gap이 있는 indefinite/auto Grid axis, cyclic intrinsic contribution, auto-sized Grid container, intrinsic implicit track sizing, named areas, line names, auto-repeat, dense/column flow, non-zero box edge, arbitrary Grid grammar, calc()/typed math gap, CSS loader, general author CSS admission, WPT conformance, public CSS support 및 C11.1/C11 완료는 이 계획에 포함하지 않는다. PR #1172의 gap extent 검사와 기존 fixed-gap 결과를 유지한다. 이 slice로 공식 완료 count나 내부 contract 0059 숫자 버전 0.1.0을 바꾸지 않는다.
+
+유효하지만 이 profile이 지원하지 않는 computed percentage/calc 입력은 node와 정확한 row-gap 또는 column-gap이 식별되는 layout error로 끝난다. 한 Grid owner가 실패하면 다른 Grid의 성공 frame만 포함한 부분 StyleLayoutOutput이나 paint를 publish하지 않는다.
+
+## 구현·검증 순서
+
+1. 이 계획을 별개의 20개 실패 관점으로 검토하고 계획 PR diff도 별도 30개로 검토한 뒤 계획 PR을 Rebase and merge한다. plan review는 구현 review에 재사용하지 않는다.
+2. 기존 profile 경계와 LayoutLengthPercentage::Percentage projection, Root HTML gap admission, fixed-gap extent preflight, Taffy Grid trace, runtime atomicity 경로를 대조한다. 새 percentage 허용은 intrinsic track profile에만 적용하며 Flex·other Grid profile은 바꾸지 않는다.
+3. Root HTML gap support check에 해당 axis의 definite content-box basis를 공급한다. usedGap = basis × percentage와 gutter aggregate는 overflow-safe 중간 연산으로 검증한다. Existing non-finite track-line check도 resolved percentage gutter가 양수일 때 적용한다.
+4. Rust layout test는 9-scene fixture의 fixed dimensions, shorthand/alias, row/column basis, zero, 120% overflow를 trace·track·frame으로 독립 expected와 비교한다. Invalid typed value, finite-range overflow, wrong-axis basis, CSS-invalid fallback, unsupported calc, 여러 Grid의 atomic rejection 및 기존 fixed-px 회귀도 고정한다.
+5. 기본 parsed Root HTML runtime fixture를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source hash로 실행한다. layout=ready, item/root frame, draw/present를 기록하고 overflow scene도 확인한다. Screenshot은 visual smoke이며 실제 PixelCopy/Metal drawable readback 없이는 surface pixel 증거라고 부르지 않는다.
+6. 변경 crates focused tests, 관련 regression suite, scoped Clippy와 cargo fmt --all -- --check를 실행한다. broad suite에서 기준 HEAD와 같은 기존 실패가 있으면 둘을 나눠 기록한다. 기본 artifact에 fixture 전용 FFI/API가 새로 들어오지 않았는지도 확인한다.
+7. 구현/runtime 결과를 새 실패 관점 20개로 검토한 뒤 수정 영향을 재검토한다. 구현 PR diff는 계획 review와 구분되는 30개 관점으로 검토한다. PR에는 Android/iOS simulator 화면이 있으면 첨부한다.
+8. 병합 뒤 exact merge SHA와 required status/check rollup을 확인하고 internal contract 0059, spec/STATUS.md, C11 계획 및 공개 roadmap의 제한 범위를 동기화한다. C11.1/C11 체크와 공식 78/214는 그대로 둔다. 사용자가 지정한 Tailnet 미리보기는 Agent Browser로 desktop/mobile을 확인하고 관련 Agent Browser session/process를 종료한다.
+
+## 완료 판정의 제한
+
+이 계획은 fixed definite axes에서 typed percentage gutter를 기존 intrinsic explicit-track profile에 연결하는 bounded slice다. 전체 Grid intrinsic sizing algorithm, cyclic percentage semantics, general CSS support, 전체 C11.1 또는 C11 완료를 뜻하지 않는다.
