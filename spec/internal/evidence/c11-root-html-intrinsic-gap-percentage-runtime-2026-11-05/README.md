@@ -19,7 +19,7 @@
 | Android | Android API 37 ARM64 AVD `emulator-5554`, ANGLE/SwiftShader | `layout=ready boxes=48`; root `320×150` CSS px; draw/present `boxes=48`; surface `840×630` | [simulator-screen.png](./android/simulator-screen.png) |
 | iOS | iPhone 17 Pro / iOS 26.2 Simulator | `layout=ready boxes=48`; root `320×150` CSS px; draw/present `boxes=48`; surface `960×720` | [simulator-screen.png](./ios/simulator-screen.png) |
 
-양 플랫폼 앱 번들에 담긴 fixture의 SHA-256은 source와 동일하다. 전체 build/launch output은 `android/` 및 `ios/` 아래 있고, `run-simulators.sh`는 기존 자산을 백업하고 exit trap으로 복구한다. 캡처 시뮬레이터를 종료하지 않았고 앱 프로세스만 종료했다.
+양 플랫폼 앱 번들에 담긴 fixture의 SHA-256은 source와 동일하다. 전체 build/launch output은 `android/` 및 `ios/` 아래 있고, `run-simulators.sh`는 기존 자산을 백업하고 exit trap으로 복구한다. 실행 로그에서 source fixture의 byte 수·SHA-256, `layout=ready boxes=48`, draw/present 48개와 비어 있지 않은 스크린샷을 강제 확인한다. 첫 PR diff 검토에서 로그 추출이 실패해도 통과할 수 있고 앱 종료 정리의 실패 창이 있음을 발견해 스크립트를 보강한 뒤 두 플랫폼 캡처를 다시 실행했다. 재실행이 모든 marker를 통과했고 fixture asset을 원래 hash로 복구했으며 앱만 종료했다. 두 번째 실행의 정규화 전후 로그 hash는 [manifest](./log-normalization.sha256.txt)의 `Second simulator capture` 항목이다. 캡처 시뮬레이터는 종료하지 않았다.
 
 ## Rust와 경계 검증
 
