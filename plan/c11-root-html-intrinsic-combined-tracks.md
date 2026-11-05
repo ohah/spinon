@@ -50,6 +50,10 @@ Fixture는 definite `40×40px` Grid, `10px` explicit row, direct text `A A A A A
 8. 구현/runtime 변경 검토 20개는 계획 검토와 겹치지 않게 작성한다. Implementation PR의 actual diff review는 별도 30개 관점으로 수행하고, 발견 결함은 수정 뒤 영향을 받는 test/evidence/review를 다시 확인한다.
 9. Merge 후 내부 계약 0059와 `spec/STATUS.md`에 제한 slice와 hash/validation limits만 기록한다. Tailnet preview는 main merge SHA와 served SHA가 일치하도록 갱신하고 Agent Browser desktop/mobile 상태를 확인한다. C11.4/C11 checkboxes와 공식 완료 집계 `78/214`는 유지한다. Agent Browser와 그 browser process는 작업 후 종료한다.
 
+## 구현 병합 기록 · 2026-11-06
+
+제한 구현 PR [#1195](https://github.com/ohah/spinon/pull/1195)이 2026-11-05T21:25:28Z Rebase and merge됐고 merge SHA는 `3641212a08a9d5174880dac07f4e5aa146ae52e7`이다. Fixture SHA-256 `fc9ff608f630e7a6e6e2f185f8e49da93b696f5ea1b167efca4996082403380e`의 Chrome matrix, focused Rust checks 및 Android/iOS Simulator 결과는 [실행 근거](../spec/internal/evidence/c11-root-html-intrinsic-combined-tracks-runtime-2026-11-06/README.md)에 기록했다. 이 merge는 이 bounded combined-track slice만 완료하며 C11.4/C11 체크와 공식 완료 `78/214`를 바꾸지 않는다. 후속 공식 문서와 공개 roadmap 동기화 및 Tailnet 제공본 확인은 순차 문서 작업으로 처리한다. 이 상태·로드맵 문서 변경분은 [30개 관점 검토](../spec/internal/evidence/c11-root-html-intrinsic-combined-tracks-runtime-2026-11-06/docs-pr-diff-review-30.md)에 기록한다.
+
 ## 제외와 완료 판정
 
 이 bounded integration은 explicit/implicit intrinsic sizing의 모든 grammar를 새로 지원하거나 public CSS, 전체 C11.4/C11, WPT, 일반 HTML, 다중 text item, arbitrary fonts/writing modes, iOS compositor 또는 hardware GPU parity를 완료하는 것이 아니다. 단독 기능 matrix만 통과하고 combined cross-axis case를 검증하지 않은 경우 완료가 아니다.
