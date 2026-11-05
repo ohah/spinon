@@ -1,5 +1,5 @@
 use super::*;
-use crate::{LayoutGridTrackSizingAxis, LayoutGridTrackSizingStageKind};
+use crate::{GridAutoRows, LayoutGridTrackSizingAxis, LayoutGridTrackSizingStageKind};
 
 fn root_html_intrinsic_gap_input(gap: LayoutGap) -> LayoutInput {
     root_html_intrinsic_gap_input_with_size(gap, 100.0, 100.0)
@@ -151,6 +151,134 @@ fn root_html_intrinsic_tracks_match_fixed_input_expectations() {
         &[80.0, 100.0],
         "percentage minimum with flex maximum",
     );
+}
+
+#[test]
+fn root_html_intrinsic_min_content_implicit_rows_match_reference_and_preserve_overflow() {
+    let mut input = super::grid_input(
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(10.0)],
+        3,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.viewport = crate::Viewport {
+        width: 40.0,
+        height: 40.0,
+    };
+    for (index, height) in [(1, 10.0), (2, 22.0), (3, 34.0)] {
+        input.nodes[index].style.width = LayoutDimension::Fixed(40.0);
+        input.nodes[index].style.height = LayoutDimension::Fixed(height);
+    }
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+    container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
+    container.track_sizing_trace_enabled = true;
+
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("bounded min-content implicit rows should size from fixed item contributions");
+    let trace = output
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == id(1))
+        .expect("Grid track trace");
+    let rows = trace
+        .passes
+        .iter()
+        .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .expect("row sizing pass")
+        .stages
+        .last()
+        .expect("final row sizing stage")
+        .tracks
+        .iter()
+        .filter(|track| !track.is_gutter && !track.is_collapsed)
+        .map(|track| track.base_size)
+        .collect::<Vec<_>>();
+    assert_eq!(rows, vec![10.0, 22.0, 34.0]);
+
+    for (node, expected) in [
+        (id(2), [0.0, 0.0, 40.0, 10.0]),
+        (id(3), [0.0, 10.0, 40.0, 22.0]),
+        (id(4), [0.0, 32.0, 40.0, 34.0]),
+    ] {
+        let frame = output.frames[&node];
+        assert_eq!([frame.x, frame.y, frame.width, frame.height], expected);
+    }
+    assert_eq!(output.frames[&id(4)].y + output.frames[&id(4)].height, 66.0);
+    assert!(output.frames[&id(4)].y + output.frames[&id(4)].height > 40.0);
+}
+
+#[test]
+fn root_html_intrinsic_tracks_reject_unsupported_implicit_min_content_shapes() {
+    for auto_rows in [
+        GridAutoRows::TrackList(vec![GridTrackSize::MaxContent]),
+        GridAutoRows::TrackList(vec![
+            GridTrackSize::MinContent,
+            GridTrackSize::LengthPx(12.0),
+        ]),
+    ] {
+        let mut input = super::grid_input(
+            vec![GridTrackSize::LengthPx(40.0)],
+            vec![GridTrackSize::LengthPx(10.0)],
+            3,
+            LayoutGap::default(),
+        );
+        let container = input.grid_containers.get_mut(&id(1)).unwrap();
+        container.placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+        container.auto_rows = auto_rows;
+
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+        ));
+    }
+
+    let mut input = super::grid_input(
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(10.0)],
+        3,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.gap.row = crate::LayoutLengthPercentage::LengthPx(2.0);
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+    container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+}
+
+#[test]
+fn root_html_intrinsic_min_content_implicit_rows_enforce_track_ceiling() {
+    let mut input = super::grid_input(
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(10.0)],
+        10_001,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.viewport = crate::Viewport {
+        width: 40.0,
+        height: 40.0,
+    };
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+    container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::GridTrackLimitExceeded {
+            node,
+            property: "grid-template-rows",
+            count: 10_001,
+            maximum: 10_000,
+        }) if node == id(1)
+    ));
 }
 
 #[test]

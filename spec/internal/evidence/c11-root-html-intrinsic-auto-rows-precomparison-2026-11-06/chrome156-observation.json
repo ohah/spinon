@@ -1,7 +1,7 @@
 {
   "browser": "HeadlessChrome/156.0.0.0",
   "fixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html",
-  "fixture_sha256": "9698ba9a203b8ba01a89bc7ea3f73e686e2f69d8f945df74c787d99d485d151a",
+  "fixture_sha256": "7a6e0c32527b91a89d10c5ddcfdb00efe62f781bc814b3abf604a9bd08ebf15c",
   "computed": {
     "display": "grid",
     "gridTemplateColumns": "40px",

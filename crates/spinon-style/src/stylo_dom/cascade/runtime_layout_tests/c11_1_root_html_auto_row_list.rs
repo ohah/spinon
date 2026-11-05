@@ -9,6 +9,35 @@ use crate::{
 };
 
 #[test]
+fn root_html_profile_preserves_typed_intrinsic_auto_rows_but_not_auto_columns() {
+    let (view, root) = view_for_inline_style(
+        "display:grid;box-sizing:border-box;width:40px;height:40px;grid-template-columns:40px;grid-template-rows:10px;grid-auto-rows:min-content;grid-auto-columns:min-content;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_root_html_text_paint_cascade_with_stylesheets(
+        &view,
+        &[],
+        CssViewport::C04_FIXTURE,
+        Default::default(),
+    )
+    .expect("the Root HTML cascade should preserve typed intrinsic auto rows for projection");
+    let grid = snapshot
+        .elements
+        .iter()
+        .find(|element| element.node_id == root)
+        .and_then(|element| element.grid_layout.as_ref())
+        .expect("the Grid snapshot should be present");
+
+    assert_eq!(
+        grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent])
+    );
+    assert_eq!(
+        grid.auto_columns,
+        ComputedCssGridAutoColumns::Unsupported("min-content".to_owned())
+    );
+}
+
+#[test]
 fn root_html_profile_preserves_fixed_px_auto_row_lists() {
     let (view, root) = view_for_inline_style(
         "display:grid;box-sizing:border-box;width:100px;height:100px;grid-template-columns:40px 55px;grid-template-rows:20px;grid-auto-rows:15px 25px;grid-auto-columns:25%;margin:0;padding:0",

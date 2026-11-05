@@ -1,7 +1,10 @@
 use super::{grid, project_grid_layout};
 use spinon_core::NodeId;
 use spinon_layout::{GridTrackMaxSizingFunction, GridTrackMinSizingFunction, GridTrackSize};
-use spinon_style::{ComputedCssGridTrackBreadth, ComputedCssGridTrackSize, ComputedStyleProfile};
+use spinon_style::{
+    ComputedCssGridAutoRows, ComputedCssGridTrackBreadth, ComputedCssGridTrackSize,
+    ComputedStyleProfile,
+};
 
 fn minimum(breadth: &ComputedCssGridTrackBreadth) -> GridTrackMinSizingFunction {
     match breadth {
@@ -62,6 +65,87 @@ fn root_html_profile_projects_direct_intrinsic_tracks_on_both_axes() {
     ];
     assert_eq!(projected.columns, expected);
     assert_eq!(projected.rows, expected);
+}
+
+#[test]
+fn root_html_profile_projects_min_content_implicit_rows_into_intrinsic_mode() {
+    let node = NodeId::new(11_287).unwrap();
+    let mut computed = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    computed.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+
+    let projected = project_grid_layout(
+        node,
+        &computed,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("the bounded min-content implicit row is supported");
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![GridTrackSize::MinContent])
+    );
+}
+
+#[test]
+fn root_html_profile_rejects_other_intrinsic_implicit_row_shapes() {
+    let node = NodeId::new(11_288).unwrap();
+    for tracks in [
+        vec![ComputedCssGridTrackSize::MaxContent],
+        vec![
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::LengthPx(12.0),
+        ],
+    ] {
+        let mut computed = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+        );
+        computed.auto_rows = ComputedCssGridAutoRows::TrackList(tracks);
+
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &computed,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-auto-rows",
+                ..
+            }) if error_node == node
+        ));
+    }
+
+    let computed = grid(
+        vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(20.0),
+        ],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    let mut computed = computed;
+    computed.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &computed,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        }) if error_node == node
+    ));
 }
 
 #[test]

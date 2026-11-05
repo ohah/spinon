@@ -16,6 +16,7 @@
 
 - Grid는 기본 parsed Root HTML runtime route의 visible direct `<div>` 자식만 사용한다. Grid owner 하나, `grid-auto-flow:row`, LTR `horizontal-tb`, `overflow:visible`이다.
 - Explicit columns와 rows는 각각 유한한 양의 fixed CSS px track 하나다. Explicit row는 첫 item의 auto-placement를 고정한다.
+- 각 item의 네 `grid-row-*`·`grid-column-*` placement longhand는 모두 `auto`여야 한다. 명시·부분·named·span 배치는 범위 밖이다.
 - 새 intrinsic-auto-row 후보는 `grid-auto-rows:min-content` 단일 track 값만 허용해 모든 implicit row에서 반복한다. Runtime geometry matrix는 implicit row 1개와 2개를 고정하며, larger input은 기존 10,000-track ceiling과 checked counts를 따른다.
 - Container는 definite positive fixed CSS-pixel width/height를 사용한다. Min/max, aspect-ratio, margin/padding/border, named area, named line, repeat, dense/column flow와 implicit column은 범위 밖이다.
 - Grid gaps는 0이다. Content/item alignment는 현재 intrinsic explicit-track route의 `normal` 또는 `start` subset을 유지한다.
@@ -24,7 +25,7 @@
 
 ## 고정 기준과 independent expected
 
-CSS Grid Level 1 §11.5의 implicit track sizing과 §11.8의 min-content track sizing을 따른다. 사전 비교는 Chrome 156에서 container 40×40px, explicit row 10px, implicit `min-content` rows, zero gap인 단일 Grid를 관찰했다. Direct item들의 fixed block-size는 각각 10px, 22px, 34px다. Fixed block-size가 각 item의 min-content contribution이므로 독립 기대 row sizes는 `[10, 22, 34]px`; item origins는 `(0,0)`, `(0,10)`, `(0,32)`px다. 마지막 item은 Grid의 visible bottom 40px를 지나 y=66px까지 26px overflow한다. 독립 기대값과 Chrome 관측 JSON을 각각 보존한다. Chrome은 비교 oracle이며 WPT나 Spinon 결과가 아니다.
+CSS Grid Level 1 §11.5의 implicit track sizing과 §11.8의 min-content track sizing을 따른다. 사전 비교는 Chrome 156에서 container 40×40px, explicit row 10px, implicit `min-content` rows, zero gap인 단일 Grid를 관찰했다. Direct item들의 fixed block-size는 각각 10px, 22px, 34px다. Fixed block-size가 각 item의 min-content contribution이므로 독립 기대 row sizes는 `[10, 22, 34]px`; item origins는 `(0,0)`, `(0,10)`, `(0,32)`px다. 마지막 item은 Grid의 visible bottom 40px를 지나 y=66px까지 26px overflow한다. Fixture의 색상은 `background-color`로 지정한다. 같은 색을 쓰는 `background` shorthand는 현재 default Root HTML CSS profile에서 `background-position-x`까지 확장되어 거부됐고, `border:0` shorthand는 `border-top-color`까지 확장되어 거부됐다. Fixture는 이를 기본 0-width border와 longhand background color로 표현해 product route 안에서 색상과 geometry를 보존한다. 독립 기대값과 Chrome 관측 JSON을 각각 보존한다. Chrome은 비교 oracle이며 WPT나 Spinon 결과가 아니다.
 
 ## 구현 요구
 
@@ -39,7 +40,7 @@ CSS Grid Level 1 §11.5의 implicit track sizing과 §11.8의 min-content track 
 - Browser: 이 계획의 고정 HTML fixture에서 Chrome 156 computed rows·grid/item frames·visible overflow를 독립 expected와 비교한다. Browser observation, expected arithmetic, screenshot hash를 구분한다.
 - Rust layout: explicit row + 1–2 implicit min-content rows의 track trace와 base sizes `[10,22,34]`, item frames 및 26px overflow를 검사한다. Adjacent item source order와 implicit row cap을 대조한다.
 - Style projection: computed auto-row token이 단일 `MinContent`로 전달되는 positive test 및 `max-content`, multi-track, math/percentage, missing owner, CSS-invalid fallback/typed invalid 경계를 검사한다.
-- Runtime: 같은 fixture hash를 기본 parsed Root HTML route에서 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator로 실행한다. `layout=ready`, exact expected frames, draw/present, root 밖 y=40..66의 visible item 및 Android PixelCopy/iOS Metal drawable 표본을 별도로 기록한다. User-visible simulator screenshots는 PR 본문에 첨부할 수 있도록 보존한다.
+- Runtime: 같은 fixture hash를 기본 parsed Root HTML route에서 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator로 실행한다. `layout=ready`, exact expected frames, draw/present, root 밖 y=40..66의 visible item을 기록한다. `adb screencap`/`simctl screenshot`의 색상 run을 DPR에 맞춰 표본화하고, OS screenshot이 PixelCopy/Metal drawable readback을 대체하지 않는 한계를 함께 적는다. User-visible simulator screenshots는 PR 본문에 첨부할 수 있도록 보존한다.
 - `cargo fmt --all -- --check`, focused Rust tests, 변경 crate scoped Clippy, fixture boundary/default artifact checks 및 simulator builds를 기록한다. 전체 suite의 알려진 실패는 기준 revision과 나란히 두며 green으로 일반화하지 않는다.
 - 새로운 구현/runtime 실패 관점 20개와 실제 implementation PR diff 적대 검토 30개를 plan review와 별도로 기록한다.
 

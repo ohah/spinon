@@ -192,8 +192,11 @@ pub(super) fn normalize_grid_layout(
                 container_node,
                 container,
             )?;
-            if sparse.expanded_rows.is_some() {
-                return Err(LayoutError::GridImplicitTrackRequired(container_node.id));
+            if let Some(rows) = sparse.expanded_rows {
+                if container.placement_mode != GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 {
+                    return Err(LayoutError::GridImplicitTrackRequired(container_node.id));
+                }
+                output.expanded_rows.insert(container_node.id, rows);
             }
             output.item_placements.extend(sparse.item_placements);
             output.auto_placed_items.extend(sparse.auto_placed_items);

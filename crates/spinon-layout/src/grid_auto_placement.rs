@@ -250,6 +250,9 @@ pub(super) fn normalize_sparse_grid_container(
                         GridTrackSize::Calc(_)
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlImplicitRowsV1 => {}
+                        GridTrackSize::MinContent
+                            if container.placement_mode
+                                == crate::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 => {}
                         _ => {
                             return Err(LayoutError::UnsupportedGridAutoRows {
                                 node,
