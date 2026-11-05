@@ -7,6 +7,35 @@
     "active": false,
     "pid": null
   },
-  "postCloseProcessSearch": "No agent-browser daemon or agent-browser Chrome profile processes remained.",
-  "tmuxStateChanged": false
+  "postCloseProcessSearch": "After both sessions closed, no agent-browser daemon or agent-browser Chrome profile process remained.",
+  "tmuxStateChanged": false,
+  "sessions": [
+    {
+      "target": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "session": "default",
+      "browserPidBeforeClose": 53161,
+      "closeCommand": "agent-browser close --all",
+      "closed": true
+    },
+    {
+      "target": "https://github.com/ohah/spinon/pull/1180",
+      "session": "default",
+      "imageLoads": [
+        {
+          "alt": "Tailnet 로드맵 데스크톱",
+          "naturalWidth": 1440,
+          "naturalHeight": 1000,
+          "complete": true
+        },
+        {
+          "alt": "Tailnet 로드맵 모바일",
+          "naturalWidth": 390,
+          "naturalHeight": 844,
+          "complete": true
+        }
+      ],
+      "closeCommand": "agent-browser close --all",
+      "closed": true
+    }
+  ]
 }
