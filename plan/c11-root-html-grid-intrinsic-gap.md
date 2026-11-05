@@ -1,5 +1,7 @@
 # C11.1 · parsed Root HTML intrinsic Grid와 고정 px gap
 
+**구현 병합 기록:** PR [#1172](https://github.com/ohah/spinon/pull/1172)은 2026-11-05T04:18:10Z Rebase and merge로 병합됐다(merge SHA `ee31e1607eda4d80f0a0dcc49f7656c3b693f249`). GitHub check rollup은 비어 있었고 main에 required status check이나 required approval은 설정되지 않았다. 제한된 fixed-px gap slice이며 C11.1/C11/C11.4 체크와 공식 `78/214` 집계는 유지한다. [실제 PR diff 적대 검토 30개](../spec/internal/evidence/c11-root-html-intrinsic-gap-runtime-2026-11-05/pr-diff-review-30.md) · [Android/iOS 실행 근거](../spec/internal/evidence/c11-root-html-intrinsic-gap-runtime-2026-11-05/README.md) · [병합 후 문서 변경 검토 30개](../spec/internal/evidence/c11-root-html-intrinsic-gap-postmerge-2026-11-05/roadmap-pr-diff-review-30.md)
+
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [intrinsic explicit tracks](./c11-root-html-intrinsic-grid-tracks.md) · [Root HTML Grid gap](./c11-root-html-grid-gap.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
 **구현 전 비교:** [Chrome 156 Agent Browser와 독립 기대값](../spec/internal/evidence/c11-root-html-intrinsic-gap-precomparison-2026-11-05/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-intrinsic-gap-precomparison.html) · [expected](../spec/internal/evidence/c11-root-html-intrinsic-gap-precomparison-2026-11-05/expected.json) · [Chrome observation](../spec/internal/evidence/c11-root-html-intrinsic-gap-precomparison-2026-11-05/chrome156-observation.json)
