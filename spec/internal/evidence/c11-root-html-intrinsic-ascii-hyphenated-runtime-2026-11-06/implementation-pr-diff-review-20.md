@@ -1,6 +1,6 @@
 # C11.4 ASCII 하이픈 단어 구현 변경 적대 검토 20개
 
-구현 변경의 경계와 실제 diff를 계획 문서와 대조했다. 이는 구현/runtime 실행 검토와 구별되는 소스 diff 검토다. Android/iOS app run이 끝나면 해당 근거와 현재 결과를 함께 반영한다.
+구현 변경의 경계와 실제 diff를 계획 문서와 대조했다. 이는 구현/runtime 실행 검토와 구별되는 소스 diff 검토다. Android/iOS app run은 완료됐고 범위·결과는 [실행 근거](./README.md)에 기록했다. 전체 PR 제출 diff는 별도 30관점 검토를 추가한다.
 
 | # | diff 공격 관점 | 확인 위치 | 판정 |
 |---:|---|---|---|
@@ -25,4 +25,4 @@
 | 19 | Android test build가 기존 application ID를 덮어쓰거나 임시 변경을 남김 | clean diff 검사, temporary Gradle backup, trap restore | byte-for-byte restoration 검사 포함 |
 | 20 | screenshot/sample을 geometry 전체 검증으로 과장 | README 및 plan scope | Rust matrix는 geometry, surface 표본은 특정 좌표만 주장 |
 
-이 검토에서 unresolved source-code 결함은 남지 않았다. Simulator 실행 결과를 반영한 뒤 실제 PR 전체 diff를 새 30관점으로 검토한다.
+이 구현 diff 검토에서 unresolved source-code 결함은 남지 않았다. 최종 PR 전체 diff는 증거·로드맵 변경까지 포함해 별도 30관점으로 검토한다.
