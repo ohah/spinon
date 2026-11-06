@@ -1621,7 +1621,7 @@ Chrome 157 사전 비교 6/6, layout 11/11, style-to-layout 15/15, Stylo cascade
 
 이 limited slice는 C11.1/C11 완료나 public API/CSS support 선언이 아니며 공식 `78/214`와 내부 숫자 버전 `0.1.0`을 유지한다.
 
-## C11.4 parsed Root HTML `grid-auto-rows:auto` implicit-row stretch · bounded implementation candidate · 2026-11-07
+## C11.4 parsed Root HTML `grid-auto-rows:auto` implicit-row stretch · bounded implementation PR #1228 merged · 2026-11-07
 
 기본 parsed Root HTML `RuntimeRootHtmlTextPaintV1` route에서 단일 visible Grid owner의 auto implicit row 하나가 `align-content:normal`에 따라 양의 definite free space를 받는 제한 후보를 추가한다. Projection은 computed columns `[40px]`, rows `[10px]`, `grid-auto-rows:auto`, row sparse flow, 기본 `align-content`/`align-items`와 `justify-content`/`justify-items`, static position, 40×40px content box, gap 0, visible overflow 및 미설정 aspect ratio를 요구한다. Direct children은 순서대로 40×10px 빈 `<div>` 하나와 auto-sized 10px/10px monospace direct text `<div>` 하나여야 한다. Text grammar·whitespace gate는 기존 parsed Root HTML intrinsic-row profile을 그대로 쓴다. 추가 Grid·item, nested/inline text, unsupported alignment·track/style과 다른 source shape는 layout publication 전에 거부한다.
 
@@ -1631,7 +1631,7 @@ Chrome 157 사전 비교 6/6, layout 11/11, style-to-layout 15/15, Stylo cascade
 
 기준은 [CSS Grid Layout Module Level 1 2025-03-26 CRD §§7.6, 11.4–11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)와 [HeadlessChrome 157 사전 비교 및 독립 기대값](evidence/c11-root-html-grid-auto-row-stretch-precomparison-2026-11-07/README.md)이다. Focused Rust tests, changed-crate Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD/ANGLE SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator의 기본 HTML route는 동일 fixture hash를 넣고 `layout=ready`, 5 boxes로 실행했다. [실행·hash·화면·한계](evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/README.md) · [구현/runtime 실패 관점 검토 20개](evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/implementation-runtime-review-20.md). Screenshot은 visual smoke이며 정확한 geometry는 RuntimeSession/trace assertions에서 검증한다. PixelCopy, Metal drawable readback, physical-device/hardware GPU, iOS compositor 이후 pixel parity, WPT 및 일반 CSS admission은 확인하지 않았다.
 
-계획 PR #1227은 병합됐으나 구현 후보는 아직 review·merge 전이다. 따라서 이 entry는 완료 선언이 아니다. C11.4/C11 미완료와 공식 완료 `78/214`를 유지한다.
+구현 PR [#1228](https://github.com/ohah/spinon/pull/1228)은 2026-11-06T16:37:39Z Rebase and merge로 병합됐다 (merge SHA `d7a26e93e09ba30fdfaea88ad3e8907df89f9afc`). GitHub workflow run, check run 및 commit status는 보고되지 않았고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다. 이 제한 slice는 전체 intrinsic track sizing 지원이나 완료를 뜻하지 않는다. [Tailnet roadmap 제공본과 Agent Browser 확인](evidence/roadmap-tailnet-sync-c11-auto-row-stretch-2026-11-07/README.md)에 desktop/mobile 제공 상태를 기록했다. C11.4/C11 미완료와 공식 완료 `78/214`를 유지한다.
 
 ## C11.4 parsed Root HTML ASCII hyphenated direct-text words · bounded merged implementation PR #1224 · 2026-11-06
 

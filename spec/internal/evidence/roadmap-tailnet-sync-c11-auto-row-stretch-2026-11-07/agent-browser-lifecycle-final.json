@@ -1,0 +1,17 @@
+{
+  "session": "spinon-roadmap-c11-auto-row-stretch",
+  "agentBrowserVersion": "0.31.1",
+  "chromeVersion": "157.0.8103.39",
+  "browserPid": 36321,
+  "chromePid": 36322,
+  "closeCommand": "agent-browser --session spinon-roadmap-c11-auto-row-stretch close",
+  "closeResult": "Browser closed",
+  "finalSessionList": "No active sessions",
+  "browserPidAfterClose": "exited before targeted TERM was sent",
+  "chromePidAfterClose": "not present",
+  "unrelatedChromePreserved": {
+    "pid": 69801,
+    "profile": "/Users/yoonhb/Documents/workspace/hwpjs/zig-out/verification/webhwp-gap-audit-r2/reference/owned-profile"
+  },
+  "tailnetPreviewServerPreserved": { "pid": 28040, "listen": "127.0.0.1:8768" }
+}

@@ -50,14 +50,14 @@ CSS Grid §11.4–§11.8에 따른 독립 기대값은 다음과 같다.
 7. 구현/runtime 변경 자체를 새 20개 관점으로 검토하고, 구현 PR diff를 별도 30개 관점으로 검토한다. 결함을 고치면 영향받은 기대값·runtime·화면 근거를 다시 실행한다.
 8. 병합 후 내부 계약 0059, 상위 계획, `spec/STATUS.md`, 공식 roadmap 및 사용자가 지정한 Tailnet 제공본을 제한 동작·merge SHA·검증 한계와 맞춘다. Agent Browser desktop/mobile을 사용한 preview 확인 뒤 해당 browser 세션을 닫는다. 이 slice로 C11.4/C11 체크나 공식 완료 수를 변경하지 않는다.
 
-## 현재 구현 후보 진행
+## 제한 구현 결과와 병합 상태
 
-- 계획 PR [#1227](https://github.com/ohah/spinon/pull/1227)은 Rebase and merge 됐다. 이 구현 후보는 같은 checkout의 `feat/c11-root-html-auto-row-stretch` 브랜치에서 진행 중이며 아직 구현 PR을 만들거나 병합하지 않았다.
-- Strict Root HTML candidate에만 `RootHtmlAutoRowStretchV1` 내부 placement mode를 부여했다. 기존 `RootHtmlIntrinsicTrackSizingV1` 경로는 auto implicit row를 계속 거부한다. 허용된 scene은 40×40px Grid, 40px column, 10px explicit row, 기본 alignment, empty fixed item 하나와 직접 text item 하나뿐이다.
+- 계획 PR [#1227](https://github.com/ohah/spinon/pull/1227)은 Rebase and merge됐고, 구현 PR [#1228](https://github.com/ohah/spinon/pull/1228)은 2026-11-06T16:37:39Z Rebase and merge됐다(merge SHA `d7a26e93e09ba30fdfaea88ad3e8907df89f9afc`). 구현은 같은 checkout의 `feat/c11-root-html-auto-row-stretch` 브랜치에서 진행했다.
+- Strict Root HTML 제한 경로에만 `RootHtmlAutoRowStretchV1` 내부 placement mode를 부여했다. 기존 `RootHtmlIntrinsicTrackSizingV1` 경로는 auto implicit row를 계속 거부한다. 허용된 scene은 40×40px Grid, 40px column, 10px explicit row, 기본 alignment, empty fixed item 하나와 직접 text item 하나뿐이다.
 - Layout은 단일 implicit `auto` row를 template에 펼치지 않고 Taffy가 만들도록 둬 explicit/implicit trace 경계를 보존한다. RuntimeSession opt-in trace는 minimum contribution 20px, `10px 30px` used rows, explicit/implicit count 1/1, `StretchAutoTracks` 20→30px를 확인한다.
-- `spinon-layout` focused 2/2, `spinon-style-to-layout` candidate gate 1/1, RuntimeSession rejection/recovery 2/2와 fixture-test trace 1/1을 통과했다. 변경 세 crate all-target Clippy와 `cargo fmt --all -- --check`도 통과했다.
+- `spinon-layout` focused 2/2, `spinon-style-to-layout` acceptance gate 1/1, RuntimeSession rejection/recovery 2/2와 fixture-test trace 1/1을 통과했다. 변경 세 crate all-target Clippy와 `cargo fmt --all -- --check`도 통과했다.
 - Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 HTML fixture SHA로 기본 Root HTML 앱이 `layout=ready`, 5 boxes로 부팅했다. build/install/runtime log와 screenshot은 [runtime evidence](../spec/internal/evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/README.md)에 둔다. Screenshot은 visual smoke이며 surface pixel readback이 아니다.
-- 기본 release `spinon-runtime` artifact에서 fixture marker가 빠지고 test executable의 positive control에는 포함되는 경계를 확인했다. 새 구현/runtime 실패 관점 20개와 구현 diff 실패 관점 30개 검토를 각각 [20개 검토](../spec/internal/evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/implementation-runtime-review-20.md), [30개 검토](../spec/internal/evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/pr-diff-review-30.md)에 완료했다. Implementation PR review/merge 및 병합 후 Tailnet roadmap 확인은 남았다. C11.4/C11은 계속 미완료이고 공식 완료 `78/214` 및 내부 버전 `0.1.0`을 유지한다.
+- 기본 release `spinon-runtime` artifact에서 fixture marker가 빠지고 test executable의 positive control에는 포함되는 경계를 확인했다. 새 구현/runtime 실패 관점 20개와 구현 diff 실패 관점 30개 검토를 각각 [20개 검토](../spec/internal/evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/implementation-runtime-review-20.md), [30개 검토](../spec/internal/evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/pr-diff-review-30.md)에 완료했다. GitHub workflow/check/status 결과와 main required status checks가 없어 CI 통과로 기록하지 않는다. 병합 후 상태 문서·공개 roadmap·Tailnet roadmap 동기화는 [문서와 미리보기 evidence](../spec/internal/evidence/roadmap-tailnet-sync-c11-auto-row-stretch-2026-11-07/README.md)에 연결한다. C11.4/C11은 계속 미완료이고 공식 완료 `78/214` 및 내부 버전 `0.1.0`을 유지한다.
 
 ## 명시적 미포함
 

@@ -1,0 +1,23 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "viewport": { "width": 390, "height": 844 },
+  "documentWidth": 390,
+  "bodyWidth": 390,
+  "horizontalOverflow": false,
+  "scrollY": 6907,
+  "targetCard": {
+    "textStartsWith": "2026-11-07 C11.4 parsed Root HTML grid-auto-rows:auto implicit-row stretch",
+    "x": 14,
+    "y": 391.59375,
+    "width": 362,
+    "right": 376,
+    "bottom": 799.40625,
+    "height": 407.8125,
+    "inViewport": true,
+    "prLink": "https://github.com/ohah/spinon/pull/1228",
+    "mergeShaVisible": true,
+    "officialCountVisible": true
+  },
+  "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+}
