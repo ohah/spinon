@@ -1,0 +1,14 @@
+candidate_head=64502bd9a797ba7adcff539a85d79195777fd84b
+fixture_sha256=ef0cff8d4e53a162cc7a5dfdb0c8c5ec0d7b7f3942ba9985edc4f1f7101e33e6
+root_app_source_sha256=92e6728b0485cf14c5222f78ae9727eaa3dfc901fe9d7e0f94126a2c3615e165
+android_serial=emulator-5554
+android_api=37
+android_abi=arm64-v8a
+ios_udid=9DCCE836-7659-4914-B6C1-13F54BFFA9DB
+ios_device=iPhone 17 Pro
+ios_runtime=iOS 26.2
+android_default_fixture_flags=0
+ios_default_fixture_flags=0
+physical_android_target=not used
+android_process=24614
+android_installed_fixture_sha256=ef0cff8d4e53a162cc7a5dfdb0c8c5ec0d7b7f3942ba9985edc4f1f7101e33e6
