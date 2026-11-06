@@ -1,0 +1,19 @@
+simulator_candidate_head=76e618e3b032f478ed933c21067a88bc25836afb
+artifact_scan_source=working tree after app run, with only added Unicode digit rejection unit-test controls since simulator candidate; production source and app fixture unchanged
+
+default Rust runtime artifact:
+  target/release/deps/libspinon_runtime-e547016af4e3eeda.rlib
+  sha256=30eacb37bf288d3b719c7f34b986ccfd3b956271c2712ecba41e2b6cb97b9c74
+  markers_checked=numeric-unbreakable-auto,A1B2C3D4,"12345678",c11-root-html-intrinsic-ascii-alphanumeric-precomparison
+  result=all absent
+
+fixture-test positive control:
+  target/debug/deps/spinon_runtime-2f3f5f36b966f023
+  sha256=2023ba5a4ee4c76284b97f261b2864f8428b758a562ab14c292af287ea96168b
+  markers_checked=numeric-unbreakable-auto,A1B2C3D4,"12345678"
+  result=all present
+
+scope=Rust crate release rlib and Rust fixture-test executable only; this is not a final Android APK or iOS app-bundle scan.
+platform_adapter_change=none; the existing PR-1208 Android fixture-source-set adapter and iOS C11 fixture flag were not modified.
+simulator_asset_overlay_restoration=PASS; see pass01/environment.txt.
+note=the unquoted byte substring 12345678 also occurs inside the common ASCII hex lookup string 0123456789abcdef, so the artifact scan uses the exact quoted token marker instead.
