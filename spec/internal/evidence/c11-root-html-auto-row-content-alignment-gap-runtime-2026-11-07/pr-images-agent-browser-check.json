@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "pr": "https://github.com/ohah/spinon/pull/1240",
+  "browser": "Agent Browser",
+  "page_loaded": true,
+  "image_checks": [
+    {
+      "alt": "Android API 37 simulator",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-4-root-html-auto-row-gap/spec/internal/evidence/c11-root-html-auto-row-content-alignment-gap-runtime-2026-11-07/pass03/android/simulator.png",
+      "loaded": true,
+      "natural_size_px": [1080, 2400]
+    },
+    {
+      "alt": "iOS 26.2 simulator",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/feat/c11-4-root-html-auto-row-gap/spec/internal/evidence/c11-root-html-auto-row-content-alignment-gap-runtime-2026-11-07/pass03/ios/simulator.png",
+      "loaded": true,
+      "natural_size_px": [1206, 2622]
+    }
+  ],
+  "session_closed": true,
+  "agent_browser_process_check": "pgrep -fl '^agent-browser' returned no processes"
+}
