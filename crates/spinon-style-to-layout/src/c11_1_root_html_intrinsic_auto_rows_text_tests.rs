@@ -17,6 +17,8 @@ use style::context::QuirksMode;
 
 use crate::{StyleLayoutError, compute_runtime_style_layout_with_root_html_grid_text_profiles};
 
+#[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/combined_multiple_text.rs"]
+mod combined_multiple_text;
 #[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/track_limit.rs"]
 mod track_limit;
 

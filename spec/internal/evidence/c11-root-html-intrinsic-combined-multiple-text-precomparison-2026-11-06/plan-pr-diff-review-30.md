@@ -5,7 +5,7 @@
 1. **변경 범위:** 실제 diff는 계획, 계획 검토, precomparison fixture/evidence만 추가하며 production Rust 코드나 기존 상태 문서를 수정하지 않는다.
 2. **공식 집계:** plan/PR 본문은 C11.4/C11 미완료와 `78/214` 유지라고 명시한다. 완료 checkbox 변경이 없다.
 3. **내부 계약 버전:** 숫자 버전 상향이나 기존 계약 변경을 제안하지 않는다.
-4. **fixture hash:** expected JSON에 적힌 `06330a…afc872`를 실제 fixture SHA-256과 대조했다.
+4. **fixture hash:** 최종 fixture SHA-256 `ef0cff…e33e6`을 expected JSON 및 raw observation과 대조했다.
 5. **observation linkage:** README, plan, expected JSON은 같은 fixture와 evidence directory를 가리킨다.
 6. **browser provenance:** raw JSON은 macOS arm64, HeadlessChrome 156, DPR 1, 1280×633 viewport, loaded font 상태를 기록한다.
 7. **mode coverage:** `min-content`, `max-content`, `auto`, `minmax(min-content,1fr)` 모두 raw observation과 expected JSON에 있다.
@@ -19,7 +19,7 @@
 15. **per-item contribution:** 긴/짧은 text의 줄 수와 각 implicit row를 별도로 적고 합산 contribution으로 뭉개지 않는다.
 16. **max-content line wrapping:** one-line long text와 `max-content` column overflow가 서로 구분된다.
 17. **visible overflow:** min-content/max-content/auto 각 경우의 final content bottom과 root 하단 관계가 계획에 기록되어 있다.
-18. **empty controls:** control items have auto width, so they do not create an unintended fixed 40px intrinsic minimum.
+18. **empty controls:** final fixture controls have fixed 1px widths; Chrome confirms these do not raise the 6.03125px text min-content column.
 19. **root topology:** one Grid owner plus direct children is stated; multi-owner parser admission is not implied.
 20. **text source boundary:** ASCII `A` tokens and one U+0020 separators are explicit; general Unicode/string support is not implied.
 21. **item topology:** nested markup/additional descendants and anonymous direct text are rejected in plan boundary.
@@ -38,3 +38,7 @@
 ## PR 본문 이미지 확인
 
 Agent Browser에서 PR #1201을 열고 raw screenshot의 `complete=true`, `naturalWidth=1280`, `naturalHeight=633`을 확인했다. 스크린샷 요소가 표시되고 문서의 가로 overflow는 없다. 화면은 명시한 대로 Chrome 사전 비교이며 Spinon 구현 결과로 표시하지 않았다. [브라우저 화면](chrome/pr1201-image-agent-browser.png).
+
+## 구현 전 precomparison fixture correction
+
+구현 첫 실행에서 기존 item-profile validator가 auto-width empty controls를 거부하는 것을 확인했다. 계획 경계에 맞게 controls를 1px fixed width로 바꾸고 Chrome 사전 비교와 expected JSON을 재생성했다. Current fixture SHA is `ef0cff8d4e53a162cc7a5dfdb0c8c5ec0d7b7f3942ba9985edc4f1f7101e33e6`. The original plan PR image remains a historical Chrome observation and was never product runtime evidence; corrected screenshots live beside the updated observation.

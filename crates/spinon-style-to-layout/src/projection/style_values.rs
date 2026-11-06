@@ -47,7 +47,7 @@ use grid_values::{
     project_grid_layout_with_math,
     project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
     project_root_html_one_axis_grid_layout_with_math, root_html_has_intrinsic_explicit_tracks,
-    root_html_has_intrinsic_implicit_min_content_rows,
+    root_html_has_intrinsic_implicit_min_content_rows, root_html_intrinsic_auto_rows_candidate,
 };
 use positioning_values::parse_positioning;
 use primitive_values::{
@@ -1428,10 +1428,10 @@ fn validate_root_html_intrinsic_auto_row_items(
         .filter(|element| {
             nodes.grid_containers.contains(&element.node_id)
                 && !direct_text_ratio_owners.contains(&element.node_id)
-                && element.grid_layout.as_ref().is_some_and(|grid| {
-                    root_html_has_intrinsic_implicit_min_content_rows(grid)
-                        && !root_html_has_intrinsic_explicit_tracks(grid)
-                })
+                && element
+                    .grid_layout
+                    .as_ref()
+                    .is_some_and(root_html_intrinsic_auto_rows_candidate)
         })
         .collect::<Vec<_>>();
     if candidates.is_empty() {
@@ -1463,8 +1463,7 @@ fn validate_root_html_intrinsic_auto_row_items(
             ));
         };
         if !nodes.grid_containers.contains(&element.node_id)
-            || !root_html_has_intrinsic_implicit_min_content_rows(grid)
-            || root_html_has_intrinsic_explicit_tracks(grid)
+            || !root_html_intrinsic_auto_rows_candidate(grid)
         {
             return Err(unsupported(
                 "Root HTML intrinsic implicit rows lost their owner route",

@@ -1,9 +1,11 @@
+use super::super::root_html_intrinsic_auto_rows_candidate;
 use super::{grid, project_grid_layout};
 use spinon_core::NodeId;
 use spinon_layout::{GridTrackMaxSizingFunction, GridTrackMinSizingFunction, GridTrackSize};
 use spinon_style::{
-    ComputedCssGridAutoRows, ComputedCssGridTrackBreadth, ComputedCssGridTrackSize,
-    ComputedStyleProfile,
+    ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoRepeat,
+    ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridTemplateAreas,
+    ComputedCssGridTrackBreadth, ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 fn minimum(breadth: &ComputedCssGridTrackBreadth) -> GridTrackMinSizingFunction {
@@ -92,6 +94,144 @@ fn root_html_profile_projects_min_content_implicit_rows_into_intrinsic_mode() {
         projected.auto_rows,
         spinon_layout::GridAutoRows::TrackList(vec![GridTrackSize::MinContent])
     );
+}
+
+#[test]
+fn intrinsic_auto_row_candidate_keeps_the_existing_combined_column_boundary() {
+    let intrinsic_columns = [
+        ComputedCssGridTrackSize::Auto,
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::MinContent,
+            max: ComputedCssGridTrackBreadth::Fraction(1.0),
+        },
+    ];
+    for column in intrinsic_columns {
+        let mut input = grid(vec![column], vec![ComputedCssGridTrackSize::LengthPx(10.0)]);
+        input.auto_rows =
+            ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+        assert!(
+            root_html_intrinsic_auto_rows_candidate(&input),
+            "existing intrinsic column should remain a combined auto-row candidate: {input:?}"
+        );
+    }
+
+    let mut intrinsic_row = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::MinContent],
+    );
+    intrinsic_row.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    assert!(!root_html_intrinsic_auto_rows_candidate(&intrinsic_row));
+
+    let mut fixed_column = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    fixed_column.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    assert!(root_html_intrinsic_auto_rows_candidate(&fixed_column));
+
+    let mut unsupported_implicit_row = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    unsupported_implicit_row.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MaxContent]);
+    assert!(!root_html_intrinsic_auto_rows_candidate(
+        &unsupported_implicit_row
+    ));
+
+    let mut named_areas = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    named_areas.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    named_areas.template_areas = Some(ComputedCssGridTemplateAreas {
+        rows: 1,
+        columns: 1,
+        areas: vec![ComputedCssGridArea {
+            name: "content".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 1,
+        }],
+    });
+    assert!(!root_html_intrinsic_auto_rows_candidate(&named_areas));
+
+    let mut column_auto_repeat = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    column_auto_repeat.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    column_auto_repeat.columns_auto_repeat = Some(ComputedCssGridAutoRepeat {
+        mode: ComputedCssGridAutoRepeatMode::AutoFill,
+        start: 0,
+        end: 1,
+        line_names: vec![Vec::new(), Vec::new()],
+        fixed_repeat_minmax_track_indices: Vec::new(),
+    });
+    assert!(!root_html_intrinsic_auto_rows_candidate(
+        &column_auto_repeat
+    ));
+
+    let mut row_auto_repeat = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    row_auto_repeat.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    row_auto_repeat.rows_auto_repeat = Some(ComputedCssGridAutoRepeat {
+        mode: ComputedCssGridAutoRepeatMode::AutoFill,
+        start: 0,
+        end: 1,
+        line_names: vec![Vec::new(), Vec::new()],
+        fixed_repeat_minmax_track_indices: Vec::new(),
+    });
+    assert!(!root_html_intrinsic_auto_rows_candidate(&row_auto_repeat));
+
+    let mut multiple_explicit_rows = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![
+            ComputedCssGridTrackSize::LengthPx(10.0),
+            ComputedCssGridTrackSize::LengthPx(10.0),
+        ],
+    );
+    multiple_explicit_rows.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    assert!(!root_html_intrinsic_auto_rows_candidate(
+        &multiple_explicit_rows
+    ));
+
+    let mut zero_explicit_row = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(0.0)],
+    );
+    zero_explicit_row.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    assert!(!root_html_intrinsic_auto_rows_candidate(&zero_explicit_row));
+
+    let mut implicit_columns = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    implicit_columns.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    implicit_columns.auto_columns = ComputedCssGridAutoColumns::LengthPx(8.0);
+    assert!(!root_html_intrinsic_auto_rows_candidate(&implicit_columns));
+
+    let mut column_flow = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    column_flow.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
+    column_flow.auto_flow = spinon_style::ComputedCssGridAutoFlow::Column;
+    assert!(!root_html_intrinsic_auto_rows_candidate(&column_flow));
 }
 
 #[test]

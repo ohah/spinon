@@ -2,6 +2,7 @@ use super::*;
 use serde_json::Value;
 use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 
+mod combined_multiple_text;
 mod multiple_text;
 
 const SOURCE: &str = include_str!(
