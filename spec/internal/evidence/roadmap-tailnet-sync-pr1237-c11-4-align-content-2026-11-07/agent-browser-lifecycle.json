@@ -1,0 +1,12 @@
+{
+  "recordedAt": "2026-11-06T20:40:29Z",
+  "session": "spinon-tailnet-pr1237-e00ea27987c0",
+  "closeCommand": "agent-browser --session spinon-tailnet-pr1237-e00ea27987c0 close",
+  "closeExitCode": 0,
+  "agentBrowserProcessAfterClose": false,
+  "tailnetPreviewServer": {
+    "pid": 28040,
+    "stillRunning": true,
+    "restarted": false
+  }
+}
