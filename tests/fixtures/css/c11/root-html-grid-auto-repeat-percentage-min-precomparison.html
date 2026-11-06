@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.1 Root HTML auto-repeat percentage minimum precomparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 16px; color: #162333; font: 13px/1.4 system-ui, sans-serif; }
+    h1 { margin: 0 0 8px; font-size: 18px; }
+    #summary { margin: 0 0 12px; white-space: pre-wrap; }
+    #cases { display: grid; gap: 8px; }
+    .case { display: grid; grid-template-columns: 300px 210px; align-items: start; gap: 10px; }
+    .label { font: 11px/12px ui-monospace, monospace; }
+    .grid {
+      display: grid;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      align-content: start;
+      justify-content: start;
+      grid-auto-flow: row;
+      overflow: visible;
+      background: #101820;
+    }
+    .item { width: 10px; height: 10px; background: #ff5964; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>C11.1 Root HTML Grid percentage minimum in auto-repeat</h1>
+    <pre id="summary">Preparing fixed percentage-minimum Grid cases…</pre>
+    <section id="cases"></section>
+  </main>
+  <script>
+    (() => {
+      const scenarios = [
+        { id: "columns-fill-single", width: 200, height: 40, columnGap: 5, rowGap: 0, columns: "repeat(auto-fill, minmax(10%, 1fr))", rows: "40px", count: 4 },
+        { id: "columns-fit-single", width: 200, height: 40, columnGap: 5, rowGap: 0, columns: "repeat(auto-fit, minmax(10%, 1fr))", rows: "40px", count: 1 },
+        { id: "columns-fill-zero-percent", width: 200, height: 40, columnGap: 5, rowGap: 0, columns: "repeat(auto-fill, minmax(0%, 1fr))", rows: "40px", count: 3 },
+        { id: "columns-fill-pair", width: 200, height: 40, columnGap: 2, rowGap: 0, columns: "repeat(auto-fill, minmax(10%, 1fr) minmax(5%, 1fr))", rows: "40px", count: 6 },
+        { id: "rows-fill-single", width: 40, height: 160, columnGap: 0, rowGap: 4, columns: "40px", rows: "repeat(auto-fill, minmax(20%, 1fr))", count: 4 },
+        { id: "columns-fill-overflow", width: 200, height: 40, columnGap: 0, rowGap: 0, columns: "repeat(auto-fill, minmax(120%, 1fr))", rows: "40px", count: 1 },
+      ];
+
+      for (const scenario of scenarios) {
+        const row = document.createElement("div");
+        row.className = "case";
+        row.dataset.scenarioId = scenario.id;
+        const label = document.createElement("span");
+        label.className = "label";
+        label.textContent = scenario.id;
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        grid.id = scenario.id;
+        grid.style.width = `${scenario.width}px`;
+        grid.style.height = `${scenario.height}px`;
+        grid.style.columnGap = `${scenario.columnGap}px`;
+        grid.style.rowGap = `${scenario.rowGap}px`;
+        grid.style.gridTemplateColumns = scenario.columns;
+        grid.style.gridTemplateRows = scenario.rows;
+        for (let index = 0; index < scenario.count; index += 1) {
+          const item = document.createElement("div");
+          item.className = "item";
+          item.dataset.itemIndex = String(index);
+          grid.append(item);
+        }
+        row.append(label, grid);
+        document.querySelector("#cases").append(row);
+      }
+
+      window.__C11_AUTO_REPEAT_PERCENTAGE_PRECOMPARISON__ = new Promise(resolve => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          const observations = scenarios.map(scenario => {
+            const grid = document.getElementById(scenario.id);
+            const style = getComputedStyle(grid);
+            const root = grid.getBoundingClientRect();
+            const rect = element => {
+              const box = element.getBoundingClientRect();
+              return {
+                x: box.x - root.x,
+                y: box.y - root.y,
+                width: box.width,
+                height: box.height,
+              };
+            };
+            return {
+              id: scenario.id,
+              authoredColumns: scenario.columns,
+              authoredRows: scenario.rows,
+              computedColumns: style.gridTemplateColumns,
+              computedRows: style.gridTemplateRows,
+              root: { width: root.width, height: root.height },
+              items: [...grid.children].map(element => ({ index: Number(element.dataset.itemIndex), ...rect(element) })),
+            };
+          });
+          const result = {
+            userAgent: navigator.userAgent,
+            chrome: navigator.userAgent.match(/Chrome\/([^ ]+)/)?.[1] ?? null,
+            devicePixelRatio,
+            supportsPercentageMin: CSS.supports("grid-template-columns", "repeat(auto-fill, minmax(10%, 1fr))"),
+            observations,
+          };
+          document.querySelector("#summary").textContent = `${result.chrome ?? "unknown Chrome"} · ${observations.length} fixed scenes · DPR ${devicePixelRatio}`;
+          resolve(result);
+        }));
+      });
+    })();
+  </script>
+</body>
+</html>

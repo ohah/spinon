@@ -1,0 +1,219 @@
+{
+  "chrome": "157.0.0.0",
+  "devicePixelRatio": 1,
+  "observations": [
+    {
+      "authoredColumns": "repeat(auto-fill, minmax(10%, 1fr))",
+      "authoredRows": "40px",
+      "computedColumns": "20.625px 20.625px 20.625px 20.625px 20.625px 20.625px 20.625px 20.625px",
+      "computedRows": "40px",
+      "id": "columns-fill-single",
+      "items": [
+        {
+          "height": 10,
+          "index": 0,
+          "width": 10,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 1,
+          "width": 10,
+          "x": 25.625,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 2,
+          "width": 10,
+          "x": 51.25,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 3,
+          "width": 10,
+          "x": 76.875,
+          "y": 0
+        }
+      ],
+      "root": {
+        "height": 40,
+        "width": 200
+      }
+    },
+    {
+      "authoredColumns": "repeat(auto-fit, minmax(10%, 1fr))",
+      "authoredRows": "40px",
+      "computedColumns": "200px 0px 0px 0px 0px 0px 0px 0px",
+      "computedRows": "40px",
+      "id": "columns-fit-single",
+      "items": [
+        {
+          "height": 10,
+          "index": 0,
+          "width": 10,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "root": {
+        "height": 40,
+        "width": 200
+      }
+    },
+    {
+      "authoredColumns": "repeat(auto-fill, minmax(0%, 1fr))",
+      "authoredRows": "40px",
+      "computedColumns": "1.01562px 1.03125px 1.03125px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px 1.01562px",
+      "computedRows": "40px",
+      "id": "columns-fill-zero-percent",
+      "items": [
+        {
+          "height": 10,
+          "index": 0,
+          "width": 10,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 1,
+          "width": 10,
+          "x": 6.015625,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 2,
+          "width": 10,
+          "x": 12.046875,
+          "y": 0
+        }
+      ],
+      "root": {
+        "height": 40,
+        "width": 200
+      }
+    },
+    {
+      "authoredColumns": "repeat(auto-fill, minmax(10%, 1fr) minmax(5%, 1fr))",
+      "authoredRows": "40px",
+      "computedColumns": "20px 16.3906px 20px 16.4062px 20px 16.3906px 20px 16.4062px 20px 16.4062px",
+      "computedRows": "40px",
+      "id": "columns-fill-pair",
+      "items": [
+        {
+          "height": 10,
+          "index": 0,
+          "width": 10,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 1,
+          "width": 10,
+          "x": 22,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 2,
+          "width": 10,
+          "x": 40.390625,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 3,
+          "width": 10,
+          "x": 62.390625,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 4,
+          "width": 10,
+          "x": 80.796875,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 5,
+          "width": 10,
+          "x": 102.796875,
+          "y": 0
+        }
+      ],
+      "root": {
+        "height": 40,
+        "width": 200
+      }
+    },
+    {
+      "authoredColumns": "40px",
+      "authoredRows": "repeat(auto-fill, minmax(20%, 1fr))",
+      "computedColumns": "40px",
+      "computedRows": "37px 37px 37px 37px",
+      "id": "rows-fill-single",
+      "items": [
+        {
+          "height": 10,
+          "index": 0,
+          "width": 10,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "index": 1,
+          "width": 10,
+          "x": 0,
+          "y": 41
+        },
+        {
+          "height": 10,
+          "index": 2,
+          "width": 10,
+          "x": 0,
+          "y": 82
+        },
+        {
+          "height": 10,
+          "index": 3,
+          "width": 10,
+          "x": 0,
+          "y": 123
+        }
+      ],
+      "root": {
+        "height": 160,
+        "width": 40
+      }
+    },
+    {
+      "authoredColumns": "repeat(auto-fill, minmax(120%, 1fr))",
+      "authoredRows": "40px",
+      "computedColumns": "240px",
+      "computedRows": "40px",
+      "id": "columns-fill-overflow",
+      "items": [
+        {
+          "height": 10,
+          "index": 0,
+          "width": 10,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "root": {
+        "height": 40,
+        "width": 200
+      }
+    }
+  ],
+  "supportsPercentageMin": true,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+}

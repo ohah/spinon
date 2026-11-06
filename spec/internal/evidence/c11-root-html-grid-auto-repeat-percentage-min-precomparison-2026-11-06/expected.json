@@ -1,0 +1,74 @@
+{
+  "method": {
+    "basis": "CSS Grid Layout Module Level 1 2025-03-26 CRD §7.2.3.2 and independent definite percentage resolution",
+    "repeatCountFormula": "max(1, floor((A + G) / (sum(countMinimums) + patternTrackCount * G)))",
+    "unit": "CSS px",
+    "source": "fixed HTML authored below; track sizes are calculated from the fixed percentage basis, not copied from browser output"
+  },
+  "scenes": [
+    {
+      "id": "columns-fill-single",
+      "basis": { "axis": "width", "size": 200, "gap": 5, "minimumPercent": [0.1], "resolvedMinimum": [20], "countMinimum": [20], "patternTracks": 1 },
+      "repeatCount": 8,
+      "tracks": [20.625, 20.625, 20.625, 20.625, 20.625, 20.625, 20.625, 20.625],
+      "items": [
+        { "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 },
+        { "index": 1, "x": 25.625, "y": 0, "width": 10, "height": 10 },
+        { "index": 2, "x": 51.25, "y": 0, "width": 10, "height": 10 },
+        { "index": 3, "x": 76.875, "y": 0, "width": 10, "height": 10 }
+      ]
+    },
+    {
+      "id": "columns-fit-single",
+      "basis": { "axis": "width", "size": 200, "gap": 5, "minimumPercent": [0.1], "resolvedMinimum": [20], "countMinimum": [20], "patternTracks": 1 },
+      "repeatCount": 8,
+      "tracks": [200, 0, 0, 0, 0, 0, 0, 0],
+      "items": [{ "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 }]
+    },
+    {
+      "id": "columns-fill-zero-percent",
+      "basis": { "axis": "width", "size": 200, "gap": 5, "minimumPercent": [0], "resolvedMinimum": [0], "countMinimum": [1], "patternTracks": 1 },
+      "repeatCount": 34,
+      "tracks": [1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647, 1.0294117647],
+      "items": [
+        { "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 },
+        { "index": 1, "x": 6.0294117647, "y": 0, "width": 10, "height": 10 },
+        { "index": 2, "x": 12.0588235294, "y": 0, "width": 10, "height": 10 }
+      ]
+    },
+    {
+      "id": "columns-fill-pair",
+      "basis": { "axis": "width", "size": 200, "gap": 2, "minimumPercent": [0.1, 0.05], "resolvedMinimum": [20, 10], "countMinimum": [20, 10], "patternTracks": 2 },
+      "repeatCount": 5,
+      "tracks": [20, 16.4, 20, 16.4, 20, 16.4, 20, 16.4, 20, 16.4],
+      "items": [
+        { "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 },
+        { "index": 1, "x": 22, "y": 0, "width": 10, "height": 10 },
+        { "index": 2, "x": 40.4, "y": 0, "width": 10, "height": 10 },
+        { "index": 3, "x": 62.4, "y": 0, "width": 10, "height": 10 },
+        { "index": 4, "x": 80.8, "y": 0, "width": 10, "height": 10 },
+        { "index": 5, "x": 102.8, "y": 0, "width": 10, "height": 10 }
+      ]
+    },
+    {
+      "id": "rows-fill-single",
+      "basis": { "axis": "height", "size": 160, "gap": 4, "minimumPercent": [0.2], "resolvedMinimum": [32], "countMinimum": [32], "patternTracks": 1 },
+      "repeatCount": 4,
+      "tracks": [37, 37, 37, 37],
+      "items": [
+        { "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 },
+        { "index": 1, "x": 0, "y": 41, "width": 10, "height": 10 },
+        { "index": 2, "x": 0, "y": 82, "width": 10, "height": 10 },
+        { "index": 3, "x": 0, "y": 123, "width": 10, "height": 10 }
+      ]
+    },
+    {
+      "id": "columns-fill-overflow",
+      "basis": { "axis": "width", "size": 200, "gap": 0, "minimumPercent": [1.2], "resolvedMinimum": [240], "countMinimum": [240], "patternTracks": 1 },
+      "repeatCount": 1,
+      "tracks": [240],
+      "items": [{ "index": 0, "x": 0, "y": 0, "width": 10, "height": 10 }],
+      "overflow": { "axis": "x", "cssPixels": 40 }
+    }
+  ]
+}
