@@ -15,8 +15,8 @@ Full package suites expose deterministic failures already present on base commit
 
 The fixture was installed through the default Root HTML application route. Both native C11 fixture flags were off. Android used API 37 ARM64 AVD `emulator-5554`; iOS used iPhone 17 Pro Simulator on iOS 26.2 (`9DCCE836-7659-4914-B6C1-13F54BFFA9DB`). No physical Android target was used.
 
-- Android reported `layout=ready`, `boxes=8`, `runtime_text_count=2`, and `presented boxes=8`; installed `assets/index.html` matches the fixture SHA. Screenshot: [1080×2400](android/screenshot.png).
-- iOS reported `layout=ready`, `boxes=8`, and a completed default-app evaluation; installed HTML and JS assets match their recorded hashes. Screenshot: [1206×2622](ios/screenshot.png).
+- Android reported `layout=ready`, `boxes=8`, `runtime_text_count=2`, and `presented boxes=8`; installed `assets/index.html` matches the fixture SHA. Screenshot: [1080×2400](https://raw.githubusercontent.com/ohah/spinon/009da4f159836139205831c80f8163cb4af52b50/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-runtime-2026-11-06/android/screenshot.png).
+- iOS reported `layout=ready`, `boxes=8`, and a completed default-app evaluation; installed HTML and JS assets match their recorded hashes. Screenshot: [1206×2622](https://raw.githubusercontent.com/ohah/spinon/009da4f159836139205831c80f8163cb4af52b50/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-runtime-2026-11-06/ios/screenshot.png).
 - `root-app.js` checked the parsed DOM and item order. Screenshots show the narrow min-content column, both text items, and content extending below the fixed 40px Grid.
 - The screenshots are visual smoke only. No PixelCopy, Metal drawable readback, compositor pixel comparison, physical-device test, WPT run, or CI result is claimed.
 
