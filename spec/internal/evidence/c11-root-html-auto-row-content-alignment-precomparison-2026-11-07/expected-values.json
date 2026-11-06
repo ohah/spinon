@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "source": {
+    "fixture": "tests/fixtures/css/c11/root-html-multiple-auto-row-align-content-stretch-precomparison.html",
+    "fixture_sha256": "44a3423cd3be20935b2436d7f9f3701e580e6d39205b445b5b2a8158ca3e7308",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "agent_browser": "0.31.1",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1
+  },
+  "scene": {
+    "root_content_css_px": [40, 40],
+    "explicit_columns_css_px": [40],
+    "explicit_rows_css_px": [10],
+    "implicit_auto_rows_before_alignment_css_px": [10, 10],
+    "gaps_css_px": [0, 0],
+    "remaining_positive_definite_block_free_space_css_px": 10,
+    "item_sizes_css_px": [[40, 10], [40, 10], [40, 10]]
+  },
+  "tolerance_css_px": 0.03125,
+  "screenshots": {
+    "start": {
+      "path": "chrome/align-content-start.png",
+      "sha256": "f99b591634c5e2631ac61ce52fad768ff9616cb565c3712a09aeef81d14f5e5c",
+      "pixel_size": [1280, 633]
+    },
+    "stretch": {
+      "path": "chrome/align-content-stretch.png",
+      "sha256": "e717e0bfc1e5de8872a88a2d755b5664ad36e99219a675d8929c9058331714bf",
+      "pixel_size": [1280, 633]
+    }
+  },
+  "cases": {
+    "normal": {"used_rows_css_px": [10, 15, 15], "item_y_css_px": [0, 10, 25]},
+    "stretch": {"used_rows_css_px": [10, 15, 15], "item_y_css_px": [0, 10, 25]},
+    "start": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [0, 10, 20]},
+    "flex-start": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [0, 10, 20]},
+    "end": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [10, 20, 30]},
+    "flex-end": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [10, 20, 30]},
+    "center": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [5, 15, 25]},
+    "space-between": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [0, 15, 30]},
+    "space-around": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [1.6666666666666667, 15, 28.333333333333332]},
+    "space-evenly": {"used_rows_css_px": [10, 10, 10], "item_y_css_px": [2.5, 15, 27.5]}
+  }
+}

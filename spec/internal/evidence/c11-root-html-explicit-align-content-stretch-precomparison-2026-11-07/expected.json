@@ -65,7 +65,7 @@
   },
   "screenshot": {
     "path": "chrome/fixture.png",
-    "sha256": "f99b591634c5e2631ac61ce52fad768ff9616cb565c3712a09aeef81d14f5e5c",
+    "sha256": "e717e0bfc1e5de8872a88a2d755b5664ad36e99219a675d8929c9058331714bf",
     "pixel_size": [1280, 633],
     "limitations": [
       "Chrome observation cross-checks independently derived CSS Grid expectations.",
