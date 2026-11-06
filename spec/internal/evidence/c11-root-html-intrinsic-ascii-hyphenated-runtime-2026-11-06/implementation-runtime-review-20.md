@@ -1,6 +1,6 @@
 # C11.4 ASCII 하이픈 단어 구현·런타임 적대 검토 20개
 
-검토 대상은 `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*` direct-text allowlist, normalized line-break marker, source range 보존, 9-scene style/runtime matrices다. 결과는 수정 전후 focused 테스트와 소스 경로를 대조했다. Android/iOS Simulator 실행은 아직 진행 중이며 이 문서는 해당 실행을 통과 근거로 세지 않는다.
+검토 대상은 `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*` direct-text allowlist, normalized line-break marker, source range 보존, 9-scene style/runtime matrices다. 결과는 수정 전후 focused 테스트와 소스 경로를 대조했다. Android/iOS Simulator 두 실행은 8-box draw/present 및 지정 overflow sample 각 1/1 exact로 통과했다. 화면과 범위는 [실행 근거](./README.md)에 기록했다.
 
 | # | 실패 관점 | 확인 근거 | 결과 |
 |---:|---|---|---|

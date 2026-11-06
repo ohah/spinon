@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML ASCII 하이픈 단어 intrinsic sizing
 
-**상태:** 구현 후보를 작업 중이다. direct-text 허용 문법과 normalized line-break marker가 들어갔고, Style-to-layout 12/12, RuntimeSession 기본/fixture-test 각 16/16, text-layout line-break 4/4와 hyphens:auto 3/3이 통과했다. Android·iOS Simulator, 최종 검토와 PR은 진행 중이다. C11.4/C11 체크 및 공식 완료 `78/214`는 유지한다.
+**상태:** 제한 구현 후보의 집중 테스트와 Android API 37 ARM64 AVD PixelCopy, iPhone 17 Pro/iOS 26.2 Simulator Metal drawable 검증이 통과했다. 두 플랫폼 모두 기본 Root HTML 경로에서 8 boxes를 그렸고 지정한 하이픈 단어 overflow pixel이 exact였다. PR diff 30관점 적대 검토를 마쳤고, GitHub PR 생성·상태 확인·병합이 남아 있다. C11.4/C11 체크 및 공식 완료 `78/214`는 유지한다. [실행 근거](../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-runtime-2026-11-06/README.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 ASCII 영숫자 단어 slice](./c11-root-html-intrinsic-ascii-alphanumeric-words.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
