@@ -1,0 +1,11 @@
+{
+  "verified_at_utc": "2026-11-06T05:48:33Z",
+  "requested_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "route_body_before_update_bytes": 590947,
+  "route_body_before_update_sha256": "02c61ff2923610bd7b7c9359af0fc2ec6c47651e063d86ffe734a2e2d0207acc",
+  "matched_file_before_update": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "route_mapping_basis": "Local and Tailnet HTTP bodies were byte-identical to the SpinonPreview root roadmap.html before replacement.",
+  "target_open_handle": "none reported by lsof -nP -- target",
+  "server_process": "node PID 28040, cwd /Users/yoonhb/Library/Application Support/SpinonPreview, listener 127.0.0.1:8768",
+  "tailscale_status": "Running; funnel on for macstudio.tailed42f2.ts.net"
+}
