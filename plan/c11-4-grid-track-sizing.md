@@ -753,3 +753,7 @@ The existing [ASCII letter-word slice](./c11-root-html-intrinsic-letter-words.md
 ## 2026-11-06 parsed Root HTML ASCII 하이픈 단어 · 계획 후보
 
 현재 제한 direct-text gate는 ASCII 영숫자 단어 안의 U+002D HYPHEN-MINUS를 거부한다. 새 [계획](./c11-root-html-intrinsic-ascii-hyphenated-words.md)은 `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*` grammar와 Chrome 157 9-scene 사전 비교·독립 기대값을 고정한다. 구현은 시작하지 않았으며 C11.4/C11과 공식 `78/214`는 유지한다. [사전 비교와 Agent Browser 화면](../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-precomparison-2026-11-06/README.md) · [계획 실패 관점 20개](./c11-root-html-intrinsic-ascii-hyphenated-words-plan-review-20.md).
+
+## 2026-11-07 parsed Root HTML `grid-auto-rows:auto` stretch · 계획 후보
+
+현재 기본 Root HTML intrinsic-row 경로는 direct-text item의 `grid-auto-rows:min-content`만 허용한다. 새 [계획](./c11-root-html-grid-auto-row-stretch.md)과 [Chrome 157 사전 비교](../spec/internal/evidence/c11-root-html-grid-auto-row-stretch-precomparison-2026-11-07/README.md)는 definite 40px Grid, 10px explicit row와 두 줄 text item에서 auto implicit row가 기본 `align-content:normal`에 따라 남는 10px을 받아 30px로 늘어나는지 고정한다. 계획 검토 20개를 마쳤으며 C11.4/C11과 공식 `78/214`는 유지한다.

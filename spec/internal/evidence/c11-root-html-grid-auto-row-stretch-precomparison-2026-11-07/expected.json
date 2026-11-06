@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source": {
+    "fixture": "tests/fixtures/css/c11/root-html-grid-auto-row-stretch-precomparison.html",
+    "fixture_sha256": "b566cf4ebaad8ffea05458939bf1c9b05ac5f4d3cfa840852ee1c03993063a87",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "agent_browser": "0.31.1",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1
+  },
+  "independent_expectations": {
+    "basis": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, sections 7.6 and 11.4-11.8",
+    "grid_content_size_css_px": [40, 40],
+    "explicit_rows_css_px": [10],
+    "gap_css_px": 0,
+    "text_source": "A A A A A A",
+    "text_line_count": 2,
+    "min_content_block_contribution_css_px": 20,
+    "auto-default": {
+      "computed_grid_auto_rows": "auto",
+      "computed_align_content": "normal",
+      "computed_align_items": "normal",
+      "implicit_row_base_css_px": 20,
+      "positive_free_space_before_stretch_css_px": 10,
+      "used_rows_css_px": [10, 30],
+      "text_item_rect_grid_css_px": [0, 10, 40, 30]
+    },
+    "auto-content-start": {
+      "computed_grid_auto_rows": "auto",
+      "computed_align_content": "start",
+      "used_rows_css_px": [10, 20],
+      "text_item_rect_grid_css_px": [0, 10, 40, 20]
+    },
+    "min-content-control": {
+      "computed_grid_auto_rows": "min-content",
+      "computed_align_content": "normal",
+      "used_rows_css_px": [10, 20],
+      "text_item_rect_grid_css_px": [0, 10, 40, 20]
+    },
+    "max-content-control": {
+      "computed_grid_auto_rows": "max-content",
+      "computed_align_content": "normal",
+      "used_rows_css_px": [10, 20],
+      "text_item_rect_grid_css_px": [0, 10, 40, 20]
+    },
+    "fixed-control": {
+      "computed_grid_auto_rows": "10px",
+      "computed_align_content": "normal",
+      "used_rows_css_px": [10, 10],
+      "text_item_rect_grid_css_px": [0, 10, 40, 10],
+      "text_overflow_block_css_px": 10
+    }
+  },
+  "chrome_observation": {
+    "auto-default": {
+      "used_rows": "10px 30px",
+      "child_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 30]],
+      "text_line_count": 2
+    },
+    "auto-content-start": {
+      "used_rows": "10px 20px",
+      "child_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 20]],
+      "text_line_count": 2
+    },
+    "min-content-control": {
+      "used_rows": "10px 20px",
+      "child_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 20]],
+      "text_line_count": 2
+    },
+    "max-content-control": {
+      "used_rows": "10px 20px",
+      "child_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 20]],
+      "text_line_count": 2
+    },
+    "fixed-control": {
+      "used_rows": "10px 10px",
+      "child_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 10]],
+      "text_line_count": 2
+    }
+  },
+  "screenshot": {
+    "path": "chrome/fixture.png",
+    "sha256": "0ab2f319c39e797a159c8df338c47173d8ecbf73a9dc2814109f9f1c5111919f",
+    "limitations": [
+      "Chrome browser observation cross-checks independently derived expectations.",
+      "The screenshot is a fixture rendering, not Spinon output or pixel-parity evidence."
+    ]
+  }
+}
