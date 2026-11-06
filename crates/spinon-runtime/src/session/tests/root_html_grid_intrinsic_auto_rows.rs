@@ -4,6 +4,7 @@ use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 
 mod combined_multiple_text;
 mod multiple_text;
+mod normal_whitespace;
 
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html"

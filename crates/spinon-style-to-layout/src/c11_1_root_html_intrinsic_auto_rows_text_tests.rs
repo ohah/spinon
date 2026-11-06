@@ -19,6 +19,8 @@ use crate::{StyleLayoutError, compute_runtime_style_layout_with_root_html_grid_t
 
 #[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/combined_multiple_text.rs"]
 mod combined_multiple_text;
+#[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/normal_whitespace.rs"]
+mod normal_whitespace;
 #[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/track_limit.rs"]
 mod track_limit;
 
@@ -151,6 +153,18 @@ impl Fixture {
         self.document.commit(batch).unwrap();
         self.additional_text_items.push((item, text_source));
         (item, text_source)
+    }
+
+    fn set_text_source(&mut self, text: &str) {
+        let mut batch = DocumentChangeBatch::new(
+            OwnerId::new(11_914).unwrap(),
+            self.document.document_revision(),
+        );
+        batch.push(DocumentOperation::SetTextData {
+            node: self.text_source,
+            data: text.into(),
+        });
+        self.document.commit(batch).unwrap();
     }
 
     fn add_empty_items(&mut self, count: usize) -> Option<HostNodeHandle> {
