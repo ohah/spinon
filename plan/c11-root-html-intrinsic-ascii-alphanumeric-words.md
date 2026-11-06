@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML ASCII 영숫자 단어 intrinsic sizing
 
-**상태:** 계획/사전 비교와 제한 구현 후보 검증을 완료했다. 구현 commit `76e618e3`의 10-scene Rust matrix, scoped Clippy 및 Android/iOS Simulator 고정 numeric route가 통과했고 구현 PR은 준비 중이다. 아직 병합되지 않았으며 C11.4/C11 checkbox와 공식 `78/214`는 그대로다.
+**상태:** 계획/사전 비교와 제한 구현 검증을 완료했다. 구현 PR [#1212](https://github.com/ohah/spinon/pull/1212)은 2026-11-06T06:56:57Z Rebase and merge됐다(merge SHA `64483c9dd93741606de739891211058be612f954`). 10-scene Rust matrix, scoped Clippy 및 Android/iOS Simulator 고정 numeric route가 통과했으며 C11.4/C11 checkbox와 공식 `78/214`는 그대로다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 ASCII letter-word 구현](./c11-root-html-intrinsic-letter-words.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
