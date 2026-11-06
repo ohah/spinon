@@ -1612,6 +1612,17 @@ fn validate_root_html_intrinsic_tracks_contract(
         && zero_gaps;
     let allow_intrinsic_auto_rows =
         allow_combined_intrinsic_auto_rows || allow_fixed_intrinsic_auto_rows;
+    let auto_row_stretch = container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1;
+    let row_gap_supported = if auto_row_stretch {
+        root_html_auto_row_stretch_row_gap_is_supported(style.gap.row)
+    } else {
+        root_html_intrinsic_gap_is_supported(style.gap.row, container.rows.len(), style.height)
+    };
+    let column_gap_supported = if auto_row_stretch {
+        matches!(style.gap.column, LayoutLengthPercentage::LengthPx(value) if value == 0.0)
+    } else {
+        root_html_intrinsic_gap_is_supported(style.gap.column, container.columns.len(), style.width)
+    };
     if container.auto_rows != GridAutoRows::Auto && !allow_intrinsic_auto_rows {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
@@ -1650,17 +1661,9 @@ fn validate_root_html_intrinsic_tracks_contract(
         Some("overflow-x")
     } else if style.overflow_y != crate::LayoutOverflow::Visible {
         Some("overflow-y")
-    } else if !root_html_intrinsic_gap_is_supported(
-        style.gap.row,
-        container.rows.len(),
-        style.height,
-    ) {
+    } else if !row_gap_supported {
         Some("row-gap")
-    } else if !root_html_intrinsic_gap_is_supported(
-        style.gap.column,
-        container.columns.len(),
-        style.width,
-    ) {
+    } else if !column_gap_supported {
         Some("column-gap")
     } else if style.margin != crate::LayoutEdges::default() {
         Some("margin")
@@ -1743,6 +1746,10 @@ pub(super) fn root_html_intrinsic_gap_is_supported(
     used_gap.is_finite()
         && used_gap <= f64::from(f32::MAX)
         && used_gap * explicit_track_count.saturating_sub(1) as f64 <= f64::from(f32::MAX)
+}
+
+fn root_html_auto_row_stretch_row_gap_is_supported(gap: LayoutLengthPercentage) -> bool {
+    matches!(gap, LayoutLengthPercentage::LengthPx(value) if value.is_finite() && (0.0..=7.5).contains(&value))
 }
 
 pub(super) fn root_html_intrinsic_track_is_supported(track: &GridTrackSize) -> bool {

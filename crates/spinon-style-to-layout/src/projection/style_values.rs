@@ -1482,9 +1482,17 @@ fn root_html_auto_row_content_alignment_is_supported(value: Option<&str>) -> boo
     )
 }
 
+fn root_html_auto_row_stretch_row_gap_is_supported(value: ComputedCssSpacingValue) -> bool {
+    matches!(value, ComputedCssSpacingValue::LengthPx(value) if value.is_finite() && (0.0..=7.5).contains(&value))
+}
+
 #[cfg(test)]
 mod root_html_auto_row_content_alignment_tests {
-    use super::root_html_auto_row_content_alignment_is_supported;
+    use super::{
+        root_html_auto_row_content_alignment_is_supported,
+        root_html_auto_row_stretch_row_gap_is_supported,
+    };
+    use spinon_style::ComputedCssSpacingValue;
 
     #[test]
     fn allowlist_keeps_baseline_safety_and_unknown_values_closed() {
@@ -1522,6 +1530,40 @@ mod root_html_auto_row_content_alignment_tests {
             );
         }
         assert!(!root_html_auto_row_content_alignment_is_supported(None));
+    }
+
+    #[test]
+    fn row_gap_admits_only_finite_px_values_within_the_bounded_profile() {
+        for accepted in [0.0, 2.5, 5.0, 7.5] {
+            assert!(
+                root_html_auto_row_stretch_row_gap_is_supported(ComputedCssSpacingValue::LengthPx(
+                    accepted
+                )),
+                "{accepted}px should be admitted by the fixed auto-row profile"
+            );
+        }
+
+        for rejected in [-0.5, 7.5001, f32::NAN, f32::INFINITY, f32::NEG_INFINITY] {
+            assert!(
+                !root_html_auto_row_stretch_row_gap_is_supported(
+                    ComputedCssSpacingValue::LengthPx(rejected)
+                ),
+                "{rejected}px should remain outside the fixed auto-row profile"
+            );
+        }
+
+        for rejected in [
+            ComputedCssSpacingValue::Percentage(0.0),
+            ComputedCssSpacingValue::Percentage(0.05),
+            ComputedCssSpacingValue::Normal,
+            ComputedCssSpacingValue::Auto,
+            ComputedCssSpacingValue::Unsupported,
+        ] {
+            assert!(
+                !root_html_auto_row_stretch_row_gap_is_supported(rejected),
+                "{rejected:?} should remain outside the fixed auto-row profile"
+            );
+        }
     }
 }
 
@@ -1596,7 +1638,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                 || !automatic_size
                 || element.layout_aspect_ratio.is_some()
                 || element.layout_position != ComputedCssPosition::Static
-                || element.layout_spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0)
+                || !root_html_auto_row_stretch_row_gap_is_supported(element.layout_spacing.row_gap)
                 || element.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
                 || !root_html_auto_row_content_alignment_is_supported(
                     element.properties.get("align-content").map(String::as_str),
@@ -1604,7 +1646,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                 || element.properties.get("align-items").map(String::as_str) != Some("normal")
             {
                 return Err(unsupported(
-                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero gap, a supported align-content value, and align-items:normal",
+                    "Root HTML auto-row stretch requires a 40x40px static Grid, a finite row-gap from 0px through 7.5px, zero column-gap, a supported align-content value, and align-items:normal",
                 ));
             }
         }

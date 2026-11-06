@@ -1,0 +1,21 @@
+branch=feat/c11-4-root-html-auto-row-gap
+implementation_base_head=2a949afd2a048e5a3d3199987053f0e1d8f927cc
+simulator_build_candidate_head=2a949afd2a048e5a3d3199987053f0e1d8f927cc
+simulator_build_worktree=dirty implementation candidate; no worktree was created
+style_projection_sha256=380d5bfe3ba29765a37561f7eac3ea713227957aa8ffedf424dc64dcfbd0a2b7 crates/spinon-style-to-layout/src/projection/style_values.rs
+layout_contract_sha256=9353a8e661c0800c17825b65cd9f61c4e44abd1c29f25645d0506ca2dc73c44e crates/spinon-layout/src/grid.rs
+runtime_test_source_sha256=58eaeb388c93274175ba18b32155fc90e49be38dbab4b182206eeb9efd0438b0 crates/spinon-runtime/src/session/tests/root_html_grid_intrinsic_auto_rows/multiple_auto_row_stretch.rs
+layout_test_source_sha256=5561a73b12a662d852f816bfef67cc536b296cc28585c4a24598e8856704d321 crates/spinon-layout/src/grid_auto_placement_tests.rs
+oracle_expected_values_sha256=220d94b13dbb419f945edf581e7d84e108178d7b8584295f5016fd9991a49e03 spec/internal/evidence/c11-root-html-auto-row-content-alignment-gap-precomparison-2026-11-07/expected-values.json
+simulator_note=The only source edit made after simulator captures changed RuntimeSession test expectations to read the already-fixed oracle JSON; product code was unchanged.
+android_device=Android API 37 ARM64 AVD emulator-5554, ANGLE/Vulkan/SwiftShader
+ios_device=iPhone 17 Pro iOS 26.2 Simulator 9DCCE836-7659-4914-B6C1-13F54BFFA9DB, Metal
+product_build_features=C04 runtime GPU enabled; C11 fixture features disabled
+scene_fixtures=
+pass01 normal row-gap 0px e50a131376fc3c33fffeca30f57a8591778b3c39e4f0778c2d159f988fba76d3
+pass02 space-between row-gap 2.5px 89edf9742b8f15d8615069c91c8f92107212c5b7ddce940a0e4229b4013961a3
+pass03 end row-gap 7.5px 5c345b5f9b7add464751df994cdbd28aa7fa9f9d02c30e43e0d5da7d2e2a7745
+pass04 center row-gap 7.5px 82b1547d5aad97a306c1deea82e324afa2c0439ce64910306c6f3bc9a899bdfb
+restoration=PASS for all four simulator runs; previous Android APK and iOS executable SHA values are in each environment.txt.
+pixel_readback=not run; the screenshot-only harness does not collect Android PixelCopy or iOS Metal drawable samples.
+worktree_policy=same checkout and sequential runs; no parallel implementation or additional worktree.
