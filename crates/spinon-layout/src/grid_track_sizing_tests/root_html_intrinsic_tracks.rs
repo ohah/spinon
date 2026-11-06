@@ -59,6 +59,18 @@ fn root_html_intrinsic_gap_input_with_size(gap: LayoutGap, width: f32, height: f
     input
 }
 
+#[test]
+fn legacy_root_html_intrinsic_track_profile_still_rejects_stretch_content_alignment() {
+    let mut input = root_html_intrinsic_gap_input(LayoutGap::default());
+    input.nodes[0].style.align_content = Some(crate::LayoutAlignContent::Stretch);
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(LayoutError::UnsupportedGridContainerStyle { node, property })
+            if node == id(1) && property == "align-content"
+    ));
+}
+
 fn root_html_intrinsic_input(columns: Vec<GridTrackSize>, width: f32) -> LayoutInput {
     let mut input = super::grid_input(
         columns,

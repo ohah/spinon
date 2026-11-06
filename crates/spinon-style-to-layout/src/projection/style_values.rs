@@ -486,6 +486,7 @@ pub(super) fn project_styles(
                 root_html_grid_alignment_enabled,
                 root_html_grid_item_alignment_enabled,
                 root_html_intrinsic_track_sizing_nodes.contains(&node),
+                root_html_auto_row_stretch_nodes.contains(&node),
             )?;
         }
         if matches!(
@@ -1083,6 +1084,8 @@ pub(super) fn project_styles(
                             .contains(&node),
                         allow_root_html_intrinsic_content_alignment:
                             root_html_intrinsic_track_sizing_nodes.contains(&node),
+                        allow_root_html_auto_row_stretch_alignment:
+                            root_html_auto_row_stretch_nodes.contains(&node),
                         allow_c11_4_overflow_auto_minimum_fixture: options
                             .allow_c11_4_overflow_auto_minimum_fixture,
                         allow_c11_4_grid_text_baseline_fixture: options
@@ -1447,8 +1450,11 @@ fn root_html_auto_row_stretch_element_candidate(element: &ComputedElementStyle) 
         .grid_layout
         .as_ref()
         .is_some_and(root_html_auto_row_stretch_candidate)
+        && matches!(
+            element.properties.get("align-content").map(String::as_str),
+            Some("normal" | "stretch")
+        )
         && [
-            ("align-content", "normal"),
             ("align-items", "normal"),
             ("justify-content", "normal"),
             ("justify-items", "normal"),
@@ -1532,14 +1538,14 @@ fn validate_root_html_intrinsic_auto_row_items(
                 || element.layout_position != ComputedCssPosition::Static
                 || element.layout_spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0)
                 || element.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
-                || ["align-content", "align-items"]
-                    .into_iter()
-                    .any(|property| {
-                        element.properties.get(property).map(String::as_str) != Some("normal")
-                    })
+                || !matches!(
+                    element.properties.get("align-content").map(String::as_str),
+                    Some("normal" | "stretch")
+                )
+                || element.properties.get("align-items").map(String::as_str) != Some("normal")
             {
                 return Err(unsupported(
-                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero gap, align-content:normal, and align-items:normal",
+                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero gap, align-content:normal or stretch, and align-items:normal",
                 ));
             }
         }
@@ -2322,6 +2328,7 @@ struct GridAlignmentChecks {
     is_replaced_grid_item: bool,
     allow_root_html_grid_alignment: bool,
     allow_root_html_intrinsic_content_alignment: bool,
+    allow_root_html_auto_row_stretch_alignment: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
 }
@@ -2389,6 +2396,11 @@ fn reject_grid_alignment(
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && matches!(property, "align-content" | "justify-content")
                 && value == "start")
+            && !(checks.is_grid_container
+                && checks.allow_root_html_auto_row_stretch_alignment
+                && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && property == "align-content"
+                && value == "stretch")
             && !(checks.is_grid_item
                 && checks.allow_root_html_grid_alignment
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
@@ -2414,6 +2426,7 @@ fn reject_root_html_grid_alignment_scope(
     allow_grid_alignment: bool,
     allow_grid_item_self_alignment: bool,
     allow_intrinsic_content_alignment: bool,
+    allow_auto_row_stretch_alignment: bool,
 ) -> Result<(), StyleLayoutError> {
     if !allow_grid_alignment {
         for property in [
@@ -2427,6 +2440,9 @@ fn reject_root_html_grid_alignment_scope(
                 && !(allow_intrinsic_content_alignment
                     && matches!(property, "align-content" | "justify-content")
                     && value == "start")
+                && !(allow_auto_row_stretch_alignment
+                    && property == "align-content"
+                    && value == "stretch")
             {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: element.node_id,

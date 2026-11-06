@@ -351,16 +351,16 @@ fn validate_container(
         Some("align-items")
     } else if style.align_content.is_some_and(|value| {
         if intrinsic_track_sizing {
-            !matches!(
+            !(matches!(
                 value,
-                LayoutAlignContent::Normal | LayoutAlignContent::FlexStart
-            ) && !matches!(
-                value,
-                LayoutAlignContent::Position {
-                    position: crate::ContentAlignmentPosition::Start,
-                    safety: None,
-                }
-            )
+                LayoutAlignContent::Normal
+                    | LayoutAlignContent::FlexStart
+                    | LayoutAlignContent::Position {
+                        position: crate::ContentAlignmentPosition::Start,
+                        safety: None,
+                    }
+            ) || container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
+                && value == LayoutAlignContent::Stretch)
         } else {
             value != LayoutAlignContent::Normal
         }
