@@ -1,0 +1,25 @@
+{
+  "verified_on_utc": "2026-11-06",
+  "serving_file": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "backup_file": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1213-2026-11-06/pass01/roadmap.html",
+  "old_served_copy": {
+    "bytes": 593059,
+    "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+  },
+  "preserved_backup": {
+    "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8",
+    "byte_identical_to_previous_copy": true
+  },
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 595374,
+    "sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44"
+  },
+  "publication": {
+    "method": "same-directory temporary file and atomic rename",
+    "temporary_copy_sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44",
+    "published_sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44",
+    "byte_identical_to_source": true
+  },
+  "server_restarted": false
+}

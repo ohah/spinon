@@ -1,0 +1,23 @@
+{
+  "browser": "Agent Browser",
+  "card": "C11.4 ASCII alphanumeric intrinsic sizing / PR #1212",
+  "card_rect_css_px": {
+    "height": 367.03125,
+    "width": 362,
+    "x": 14,
+    "y": 80.25
+  },
+  "document_css_px": [
+    390,
+    164022
+  ],
+  "horizontal_overflow": false,
+  "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+  "scroll_y": 5743,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport_css_px": [
+    390,
+    844
+  ]
+}
