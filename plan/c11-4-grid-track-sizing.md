@@ -744,3 +744,8 @@ anonymous Grid text `white-space:pre-line` 제한 slice는 PR [#867](https://git
 ## 2026-11-03 anonymous Grid text `text-transform:full-size-kana` 계획 후보
 
 CSS Text Level 3 CRD 2026-08-14의 Appendix G는 Unicode 15.0 기준 58개 small-to-full-size Kana 매핑을 정의하지만, `full-size-kana`를 at-risk로 표시한다. Agent Browser HeadlessChrome 156은 해당 값을 지원하지 않아 positive browser oracle로 사용할 수 없다. Appendix G를 독립 기대값으로 삼고 source preservation·supplementary UTF-16 range까지 검증하는 opt-in 계획 후보를 [계획](./c11-4-anonymous-grid-text-transform-full-size-kana.md)과 [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-full-size-kana-precomparison-2026-11-03/README.md)에 고정했다. 구현 전 계획이며 C11.4/C11 체크박스와 공식 `72/213`은 변경하지 않는다.
+
+
+## 2026-11-06 parsed Root HTML ASCII alphanumeric word intrinsic-sizing plan
+
+The existing [ASCII letter-word slice](./c11-root-html-intrinsic-letter-words.md) rejects numeric and mixed letter/digit tokens. A separate [10-scene Chrome 157 precomparison](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/README.md) fixes the proposed `[A-Za-z0-9]+` boundary, independent track/row/line expectations, and reverse-order controls. The focused [plan](./c11-root-html-intrinsic-ascii-alphanumeric-words.md) and [20-angle plan review](./c11-root-html-intrinsic-ascii-alphanumeric-words-plan-review-20.md) are ready; implementation has not started. C11.4 and C11 remain incomplete, and the official total stays `78/214`.

@@ -1,0 +1,502 @@
+{
+  "reference": {
+    "grid": "CSS Grid Layout Module Level 1, 2025 CRD, §§11.4–11.7",
+    "text": "CSS Text Module Level 4, Editor's Draft, §§3–6",
+    "browserObservation": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "canvasFontMetric": "10px generic monospace canvas advance, quantized upward to 1/64 CSS px for independent geometry arithmetic"
+  },
+  "method": {
+    "minContent": "maximum advance of a non-empty ASCII alphanumeric token separated by collapsible ASCII whitespace",
+    "autoColumn": "max(min-content, min(40px, max-content)) for the definite 40px container",
+    "lineWrapping": "greedy normal-whitespace opportunities between tokens; no internal break in the accepted token profile",
+    "independence": "expected track, rows, and line counts are calculated from source tokens and Canvas advances before comparison to Chrome used tracks"
+  },
+  "matrix": {
+    "columns": [
+      "min-content",
+      "auto"
+    ],
+    "sceneCount": 10,
+    "tokenGrammar": "[A-Za-z0-9]+",
+    "separators": [
+      "SPACE",
+      "TAB",
+      "LF",
+      "CR"
+    ],
+    "limits": [
+      "Unicode",
+      "punctuation",
+      "non-collapsible whitespace",
+      "other fonts"
+    ]
+  },
+  "monospaceGlyphAdvanceCssPx": 6.03125,
+  "monospaceSpaceAdvanceCssPx": 6.03125,
+  "independentlyMeasuredTokenAdvanceCssPx": {
+    "12": 12.046875,
+    "12345678": 48.171875,
+    "1A": 12.046875,
+    "22B": 18.0625,
+    "3": 6.03125,
+    "33C": 18.0625,
+    "4": 6.03125,
+    "A": 6.03125,
+    "A1": 12.046875,
+    "A1B2C3D4": 48.171875,
+    "BB2": 18.0625,
+    "C33": 18.0625
+  },
+  "cases": [
+    {
+      "id": "letters-control",
+      "source": "A A A A A A",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 1,
+      "independentExpectedColumnsCssPx": 6.03125,
+      "independentExpectedMaxContentCssPx": 66.34375,
+      "independentExpectedRowsCssPx": [
+        10,
+        60,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 6,
+      "chromeObservedColumns": "6.03125px",
+      "chromeObservedRows": "10px 60px 10px 10px",
+      "chromeObservedLongTextLineCount": 6,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          6.03125,
+          60
+        ],
+        [
+          0,
+          70,
+          6.03125,
+          10
+        ],
+        [
+          0,
+          80,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "numeric-words",
+      "source": "12 3 4",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 2,
+      "independentExpectedColumnsCssPx": 12.046875,
+      "independentExpectedMaxContentCssPx": 36.171875,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "12.0469px",
+      "chromeObservedRows": "10px 30px 10px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          12.046875,
+          30
+        ],
+        [
+          0,
+          40,
+          12.046875,
+          10
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "letter-digit-words",
+      "source": "A1 BB2 C33",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 3,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedMaxContentCssPx": 60.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "18.0625px",
+      "chromeObservedRows": "10px 30px 10px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          18.0625,
+          30
+        ],
+        [
+          0,
+          40,
+          18.0625,
+          10
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "digit-leading-words",
+      "source": "1A 22B 33C",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 3,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedMaxContentCssPx": 60.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "18.0625px",
+      "chromeObservedRows": "10px 30px 10px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          18.0625,
+          30
+        ],
+        [
+          0,
+          40,
+          18.0625,
+          10
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "letter-digit-words-reverse",
+      "source": "A1 BB2 C33",
+      "columnsMode": "min-content",
+      "sourceOrder": "reverse",
+      "maxUnbreakableTokenCharacters": 3,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedMaxContentCssPx": 60.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        30,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "18.0625px",
+      "chromeObservedRows": "10px 10px 30px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          18.0625,
+          10
+        ],
+        [
+          0,
+          20,
+          18.0625,
+          30
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "numeric-unbreakable-auto",
+      "source": "12345678",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 8,
+      "independentExpectedColumnsCssPx": 48.171875,
+      "independentExpectedMaxContentCssPx": 48.171875,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 1,
+      "chromeObservedColumns": "48.1719px",
+      "chromeObservedRows": "10px 10px 10px 10px",
+      "chromeObservedLongTextLineCount": 1,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          48.171875,
+          10
+        ],
+        [
+          0,
+          20,
+          48.171875,
+          10
+        ],
+        [
+          0,
+          30,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "mixed-unbreakable-auto",
+      "source": "A1B2C3D4",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 8,
+      "independentExpectedColumnsCssPx": 48.171875,
+      "independentExpectedMaxContentCssPx": 48.171875,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 1,
+      "chromeObservedColumns": "48.1719px",
+      "chromeObservedRows": "10px 10px 10px 10px",
+      "chromeObservedLongTextLineCount": 1,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          48.171875,
+          10
+        ],
+        [
+          0,
+          20,
+          48.171875,
+          10
+        ],
+        [
+          0,
+          30,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "letter-digit-auto",
+      "source": "A1 BB2 C33",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 3,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 60.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 20px 10px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          20
+        ],
+        [
+          0,
+          30,
+          40,
+          10
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "digit-leading-auto",
+      "source": "1A 22B 33C",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableTokenCharacters": 3,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 60.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 20px 10px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          20
+        ],
+        [
+          0,
+          30,
+          40,
+          10
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "letter-digit-auto-reverse",
+      "source": "A1 BB2 C33",
+      "columnsMode": "auto",
+      "sourceOrder": "reverse",
+      "maxUnbreakableTokenCharacters": 3,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 60.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        20,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 10px 20px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          10
+        ],
+        [
+          0,
+          20,
+          40,
+          20
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    }
+  ]
+}
