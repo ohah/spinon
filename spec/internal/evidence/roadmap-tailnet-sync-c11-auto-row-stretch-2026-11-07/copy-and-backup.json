@@ -1,0 +1,28 @@
+{
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 603615,
+    "sha256": "eba1c9faa0e85adad2b163617d04ba3bf70d6c4056ef08ba48b312e95c03125b"
+  },
+  "target": {
+    "path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+    "bytes": 603615,
+    "sha256": "eba1c9faa0e85adad2b163617d04ba3bf70d6c4056ef08ba48b312e95c03125b"
+  },
+  "previousTarget": {
+    "path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+    "bytes": 601377,
+    "sha256": "3e35de1640345779cc64a00145a413f9a91d2c6f3ad032e1894b161013750d5c",
+    "mode": 420
+  },
+  "backup": {
+    "path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-c11-auto-row-stretch-2026-11-07/pass01/roadmap.html",
+    "bytes": 601377,
+    "sha256": "3e35de1640345779cc64a00145a413f9a91d2c6f3ad032e1894b161013750d5c",
+    "byteIdenticalToPrevious": true
+  },
+  "method": "same-directory temporary file and atomic rename",
+  "openHandlePids": [],
+  "noDeletes": true,
+  "serverRestarted": false
+}
