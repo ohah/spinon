@@ -1,5 +1,15 @@
 pub(super) fn supports_text_source(text: &str) -> bool {
-    !text.is_empty() && text.split(' ').all(|token| token == "A")
+    let mut has_token = false;
+    for token in text.split([' ', '\t', '\n', '\r']) {
+        if token.is_empty() {
+            continue;
+        }
+        if token != "A" {
+            return false;
+        }
+        has_token = true;
+    }
+    has_token
 }
 
 pub(super) fn is_whitespace_text(text: &str) -> bool {
@@ -33,11 +43,33 @@ mod tests {
     use super::{exceeds_track_limit, is_whitespace_text, required_rows, supports_text_source};
 
     #[test]
-    fn direct_text_grammar_accepts_ascii_a_tokens_only() {
-        for text in ["A", "A A", "A A A A A A"] {
+    fn direct_text_grammar_accepts_a_tokens_separated_by_collapsible_ascii_whitespace() {
+        for text in [
+            "A",
+            "A A",
+            "A A A A A A",
+            "  A   A A  A A A  ",
+            "A\tA\tA",
+            "A\nA\nA",
+            "A\rA\rA",
+            " \tA\t A\nA \r\n A \tA\nA  ",
+        ] {
             assert!(supports_text_source(text), "{text:?}");
         }
-        for text in ["", " A", "A ", "A  A", "AA", "A\nA", "B", "Ａ"] {
+        for text in [
+            "",
+            " ",
+            "\t\n\r",
+            "AA",
+            "A  AA",
+            "B",
+            "Ａ",
+            "A\u{000c}A",
+            "A\u{000b}A",
+            "A\u{00a0}A",
+            "A\u{0085}A",
+            "A\u{2003}A",
+        ] {
             assert!(!supports_text_source(text), "{text:?}");
         }
     }
