@@ -1,0 +1,65 @@
+{
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "documentWidth": 390,
+  "bodyWidth": 390,
+  "scrollY": 7828,
+  "order": [
+    "PR #1228",
+    "PR #1231",
+    "PR #1234"
+  ],
+  "card": {
+    "x": 14,
+    "y": 228.65625,
+    "width": 362,
+    "right": 376,
+    "text": "2026-11-07 C11.4 parsed Root HTML explicit align-content:stretch · 제한 구현 PR #1234 Rebase and merge (2026-11-06T19:04:55Z, merge SHA 0983a94cc80424b0f00f0e401286982125573e48): 기존 RootHtmlAutoRowStretchV1에서 computed normal|stretch만 허용한다. Fixed 40×40px Grid, explicit row 10px, direct text A/B의 implicit auto rows 두 개는 normal과 stretch 모두 used rows [10,15,15]px 및 같은 item frames를 낸다. 다른 alignment와 altered shape는 fail-closed이며 legacy intrinsic profile의 auto rows 거부도 유지한다. Focused Rust 8/8, workspace all-target Clippy, rustfmt, release fixture-marker boundary를 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 fixture SHA, layout-ready 6 boxes 및 2 text draw/present를 확인했다. Screenshot은 visual smoke이며 pixel parity가 아니다. GitHub workflow/status가 없어서 CI green으로 기록하지 않았다. C11.4/C11 미완료와 공식 78/214를 유지한다. 계획 · 내부 계약 0059 · Chrome 157·독립 기대값 · Simulator·Rust·hash·복원 evidence · 구현/runtime 검토 20개 · PR diff 검토 30개 · Android AVD 화면 · iOS Simulator 화면 · 공식 상태."
+  },
+  "links": [
+    {
+      "text": "PR #1234 Rebase and merge",
+      "href": "https://github.com/ohah/spinon/pull/1234"
+    },
+    {
+      "text": "계획",
+      "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-multiple-auto-row-align-content-stretch.md"
+    },
+    {
+      "text": "내부 계약 0059",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/0059-c11-grid-layout.md"
+    },
+    {
+      "text": "Chrome 157·독립 기대값",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-explicit-align-content-stretch-precomparison-2026-11-07/README.md"
+    },
+    {
+      "text": "Simulator·Rust·hash·복원 evidence",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/README.md"
+    },
+    {
+      "text": "구현/runtime 검토 20개",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/implementation-runtime-review-20.md"
+    },
+    {
+      "text": "PR diff 검토 30개",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/pr-diff-review-30.md"
+    },
+    {
+      "text": "Android AVD 화면",
+      "href": "https://raw.githubusercontent.com/ohah/spinon/0983a94cc80424b0f00f0e401286982125573e48/spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/pass01/android/simulator.png"
+    },
+    {
+      "text": "iOS Simulator 화면",
+      "href": "https://raw.githubusercontent.com/ohah/spinon/0983a94cc80424b0f00f0e401286982125573e48/spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/pass01/ios/simulator.png"
+    },
+    {
+      "text": "공식 상태",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/STATUS.md#c11-css-grid"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-11-06T19:10:05.988Z",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 608205,
+  "sourceSha256": "12c194361219deb69a0210704e5336db1fd0442b6ceca91899384c3638300816",
+  "previewTarget": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "previewBytesAfter": 608205,
+  "previewSha256After": "12c194361219deb69a0210704e5336db1fd0442b6ceca91899384c3638300816",
+  "previousPreviewBytes": 605373,
+  "previousPreviewSha256": "3404f58ea88d5c7e9968bfb3aa0a6c73a2508c37127ba4f708f77f75afb29591",
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1234-c11-4-align-content-stretch-2026-11-07/pass01/roadmap.html",
+  "backupBytes": 605373,
+  "backupSha256": "3404f58ea88d5c7e9968bfb3aa0a6c73a2508c37127ba4f708f77f75afb29591",
+  "replacement": "same-directory temp file and atomic rename",
+  "serverRestarted": false,
+  "filesChanged": [
+    "/spinon/roadmap.html"
+  ]
+}

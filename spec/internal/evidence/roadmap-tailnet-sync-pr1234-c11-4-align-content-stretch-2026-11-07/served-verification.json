@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-11-06T19:10:09.416Z",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 608205,
+  "sourceSha256": "12c194361219deb69a0210704e5336db1fd0442b6ceca91899384c3638300816",
+  "responses": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 608205,
+      "sha256": "12c194361219deb69a0210704e5336db1fd0442b6ceca91899384c3638300816",
+      "hasPr1234": true,
+      "hasMergeSha": true,
+      "hasOfficialCount": true
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 608205,
+      "sha256": "12c194361219deb69a0210704e5336db1fd0442b6ceca91899384c3638300816",
+      "hasPr1234": true,
+      "hasMergeSha": true,
+      "hasOfficialCount": true
+    }
+  ]
+}
