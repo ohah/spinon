@@ -452,6 +452,26 @@ pub(super) fn root_html_has_intrinsic_implicit_min_content_rows(
     )
 }
 
+pub(super) fn root_html_intrinsic_auto_rows_candidate(grid: &ComputedCssGridLayout) -> bool {
+    if !root_html_has_intrinsic_implicit_min_content_rows(grid) {
+        return false;
+    }
+    if !root_html_has_intrinsic_explicit_tracks(grid) {
+        return true;
+    }
+    root_html_has_intrinsic_explicit_columns(grid)
+        && matches!(
+            grid.rows.as_slice(),
+            [ComputedCssGridTrackSize::LengthPx(value)] if value.is_finite() && *value > 0.0
+        )
+        && !root_html_has_fit_content_tracks(grid)
+        && grid.template_areas.is_none()
+        && grid.columns_auto_repeat.is_none()
+        && grid.rows_auto_repeat.is_none()
+        && grid.auto_flow == ComputedCssGridAutoFlow::Row
+        && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+}
+
 fn computed_track_uses_intrinsic_sizing(track: &ComputedCssGridTrackSize) -> bool {
     match track {
         ComputedCssGridTrackSize::Auto

@@ -3,14 +3,14 @@
 ## 입력과 관찰 경계
 
 - Fixture: `tests/fixtures/css/c11/root-html-grid-intrinsic-combined-multiple-text-precomparison.html`
-- SHA-256: `06330af3820f4dca3ff50c26a367f15de01b8cccfa8210e910b4d20fd1afc872`
+- SHA-256: `ef0cff8d4e53a162cc7a5dfdb0c8c5ec0d7b7f3942ba9985edc4f1f7101e33e6`
 - Browser: Agent Browser HeadlessChrome 156.0.0.0 on macOS arm64, DPR 1, viewport 1280×633; `document.fonts.status=loaded`.
 - Raw observations: [`chrome156-observation.json`](chrome/chrome156-observation.json). Screenshots: [`min-content`](chrome/min-content.png), [`max-content`](chrome/max-content.png), [`auto`](chrome/auto.png), [`minmax(min-content, 1fr)`](chrome/minmax-min-fr.png).
 - The same single Grid owner was observed in both text source orders for `min-content`, `max-content`, `auto`, and `minmax(min-content, 1fr)`. The browser script changed only the explicit column value and, for reverse controls, swapped the two text item DOM nodes.
 
 ## 결과와 기준
 
-Grid is 40×40px with a 10px explicit first row, one min-content implicit-row pattern, and four direct items: a 10px empty control, `A A A A A A`, `A`, and a 34px empty control. The two text items use 10px `monospace`, 10px line-height, and normal wrapping.
+Grid is 40×40px with a 10px explicit first row, one min-content implicit-row pattern, and four direct items: a 1×10px empty control, `A A A A A A`, `A`, and a 1×34px empty control. The two text items use 10px `monospace`, 10px line-height, and normal wrapping.
 
 | Explicit column | Used column in Chrome | Forward rows | Text lines long/short | Reverse rows |
 | --- | ---: | --- | --- | --- |
@@ -26,3 +26,5 @@ The independently expected behavior follows CSS Grid Layout Level 1, 2025-03-26 
 ## 한계
 
 This is an implementation precomparison, not Spinon runtime evidence or WPT conformance. The `monospace` advance is specific to the recorded browser environment; Android/iOS native font metrics are measured independently at runtime. The matrix does not establish arbitrary text, Unicode, fonts, Grid topology, general CSS admission, GPU pixels, or completion of C11/C11.4.
+
+The initial comparison draft used auto-width empty controls, which the existing Root HTML item contract does not accept. Before implementation, they were corrected to fixed 1px widths and the fixture hash, observations, screenshots and plan review were updated. This prevents the comparison input from silently describing an unsupported runtime scene.
