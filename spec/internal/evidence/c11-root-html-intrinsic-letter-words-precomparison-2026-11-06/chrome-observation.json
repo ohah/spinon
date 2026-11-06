@@ -1,0 +1,628 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewport": [
+    1280,
+    633,
+    1
+  ],
+  "canvasAdvanceCssPx": {
+    "A": 6.0205078125,
+    "B": 6.0205078125,
+    "space": 6.0205078125,
+    "AA": 12.041015625,
+    "BBB": 18.0615234375,
+    "ABC": 18.0615234375,
+    "a": 6.0205078125,
+    "ccc": 18.0615234375
+  },
+  "wordAdvancesCssPx": {
+    "A": 6.0205078125,
+    "AA": 12.041015625,
+    "AB": 12.041015625,
+    "BBB": 18.0615234375,
+    "aa": 12.041015625,
+    "bb": 12.041015625,
+    "ccc": 18.0615234375,
+    "AAAAAAAA": 48.1640625
+  },
+  "cases": [
+    {
+      "id": "min-content-single-letter-control",
+      "sourceOrder": "forward",
+      "columnsMode": "min-content",
+      "source": "A A A A A A",
+      "usedColumns": "6.03125px",
+      "usedRows": "10px 60px 10px 10px",
+      "gridFrame": [
+        6,
+        26,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          6,
+          26,
+          1,
+          10
+        ],
+        [
+          6,
+          36,
+          6.03125,
+          60
+        ],
+        [
+          6,
+          96,
+          6.03125,
+          10
+        ],
+        [
+          6,
+          106,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          6,
+          35,
+          6.03125,
+          11
+        ],
+        [
+          6,
+          45,
+          6.03125,
+          11
+        ],
+        [
+          6,
+          55,
+          6.03125,
+          11
+        ],
+        [
+          6,
+          65,
+          6.03125,
+          11
+        ],
+        [
+          6,
+          75,
+          6.03125,
+          11
+        ],
+        [
+          6,
+          85,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "min-content-two-letter-word",
+      "sourceOrder": "forward",
+      "columnsMode": "min-content",
+      "source": "AA A A A",
+      "usedColumns": "12.0469px",
+      "usedRows": "10px 40px 10px 10px",
+      "gridFrame": [
+        238,
+        26,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          238,
+          26,
+          1,
+          10
+        ],
+        [
+          238,
+          36,
+          12.046875,
+          40
+        ],
+        [
+          238,
+          76,
+          12.046875,
+          10
+        ],
+        [
+          238,
+          86,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          238,
+          35,
+          12.046875,
+          11
+        ],
+        [
+          238,
+          45,
+          6.03125,
+          11
+        ],
+        [
+          238,
+          55,
+          6.03125,
+          11
+        ],
+        [
+          238,
+          65,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "min-content-mixed-ascii-words",
+      "sourceOrder": "forward",
+      "columnsMode": "min-content",
+      "source": "AB BBB A",
+      "usedColumns": "18.0625px",
+      "usedRows": "10px 30px 10px 10px",
+      "gridFrame": [
+        6,
+        150,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          6,
+          150,
+          1,
+          10
+        ],
+        [
+          6,
+          160,
+          18.0625,
+          30
+        ],
+        [
+          6,
+          190,
+          18.0625,
+          10
+        ],
+        [
+          6,
+          200,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          6,
+          159,
+          12.046875,
+          11
+        ],
+        [
+          6,
+          169,
+          18.0625,
+          11
+        ],
+        [
+          6,
+          179,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "min-content-lowercase-words",
+      "sourceOrder": "forward",
+      "columnsMode": "min-content",
+      "source": "aa bb ccc",
+      "usedColumns": "18.0625px",
+      "usedRows": "10px 30px 10px 10px",
+      "gridFrame": [
+        238,
+        150,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          238,
+          150,
+          1,
+          10
+        ],
+        [
+          238,
+          160,
+          18.0625,
+          30
+        ],
+        [
+          238,
+          190,
+          18.0625,
+          10
+        ],
+        [
+          238,
+          200,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          238,
+          159,
+          12.046875,
+          11
+        ],
+        [
+          238,
+          169,
+          12.046875,
+          11
+        ],
+        [
+          238,
+          179,
+          18.0625,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "min-content-mixed-ascii-words-reverse-order",
+      "sourceOrder": "reverse",
+      "columnsMode": "min-content",
+      "source": "AB BBB A",
+      "usedColumns": "18.0625px",
+      "usedRows": "10px 10px 30px 10px",
+      "gridFrame": [
+        6,
+        274,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          6,
+          274,
+          1,
+          10
+        ],
+        [
+          6,
+          284,
+          18.0625,
+          10
+        ],
+        [
+          6,
+          294,
+          18.0625,
+          30
+        ],
+        [
+          6,
+          324,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          6,
+          293,
+          12.046875,
+          11
+        ],
+        [
+          6,
+          303,
+          18.0625,
+          11
+        ],
+        [
+          6,
+          313,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "auto-two-letter-word",
+      "sourceOrder": "forward",
+      "columnsMode": "auto",
+      "source": "AA A A A",
+      "usedColumns": "40px",
+      "usedRows": "10px 20px 10px 10px",
+      "gridFrame": [
+        238,
+        274,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          238,
+          274,
+          1,
+          10
+        ],
+        [
+          238,
+          284,
+          40,
+          20
+        ],
+        [
+          238,
+          304,
+          40,
+          10
+        ],
+        [
+          238,
+          314,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          238,
+          283,
+          36.125,
+          11
+        ],
+        [
+          238,
+          293,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "auto-wide-unbreakable-word",
+      "sourceOrder": "forward",
+      "columnsMode": "auto",
+      "source": "AAAAAAAA",
+      "usedColumns": "48.1719px",
+      "usedRows": "10px 10px 10px 10px",
+      "gridFrame": [
+        6,
+        398,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          6,
+          398,
+          1,
+          10
+        ],
+        [
+          6,
+          408,
+          48.171875,
+          10
+        ],
+        [
+          6,
+          418,
+          48.171875,
+          10
+        ],
+        [
+          6,
+          428,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          6,
+          407,
+          48.171875,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "auto-mixed-letter-words",
+      "sourceOrder": "forward",
+      "columnsMode": "auto",
+      "source": "AB BBB A",
+      "usedColumns": "40px",
+      "usedRows": "10px 20px 10px 10px",
+      "gridFrame": [
+        238,
+        398,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          238,
+          398,
+          1,
+          10
+        ],
+        [
+          238,
+          408,
+          40,
+          20
+        ],
+        [
+          238,
+          428,
+          40,
+          10
+        ],
+        [
+          238,
+          438,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          238,
+          407,
+          36.125,
+          11
+        ],
+        [
+          238,
+          417,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "auto-lowercase-words",
+      "sourceOrder": "forward",
+      "columnsMode": "auto",
+      "source": "aa bb ccc",
+      "usedColumns": "40px",
+      "usedRows": "10px 20px 10px 10px",
+      "gridFrame": [
+        6,
+        522,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          6,
+          522,
+          1,
+          10
+        ],
+        [
+          6,
+          532,
+          40,
+          20
+        ],
+        [
+          6,
+          552,
+          40,
+          10
+        ],
+        [
+          6,
+          562,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          6,
+          531,
+          30.109375,
+          11
+        ],
+        [
+          6,
+          541,
+          18.0625,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    },
+    {
+      "id": "auto-mixed-letter-words-reverse-order",
+      "sourceOrder": "reverse",
+      "columnsMode": "auto",
+      "source": "AB BBB A",
+      "usedColumns": "40px",
+      "usedRows": "10px 10px 20px 10px",
+      "gridFrame": [
+        238,
+        522,
+        40,
+        80
+      ],
+      "itemFrames": [
+        [
+          238,
+          522,
+          1,
+          10
+        ],
+        [
+          238,
+          532,
+          40,
+          10
+        ],
+        [
+          238,
+          542,
+          40,
+          20
+        ],
+        [
+          238,
+          562,
+          1,
+          10
+        ]
+      ],
+      "textLineRects": [
+        [
+          238,
+          541,
+          36.125,
+          11
+        ],
+        [
+          238,
+          551,
+          6.03125,
+          11
+        ]
+      ],
+      "shortLineCount": 1
+    }
+  ]
+}
