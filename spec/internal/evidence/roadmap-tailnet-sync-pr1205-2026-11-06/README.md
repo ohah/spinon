@@ -16,7 +16,7 @@ Final preflight found Tailscale `Running`, the expected preview server PID `2804
 
 The final live page was checked with Agent Browser at desktop 1440×1000 and mobile 390×844. Both widths have no horizontal overflow. The #1205 card is 928px wide at desktop and 362px at mobile, and it visibly retains `78/214`. Reports and screenshots: [desktop report](./tailnet-agent-browser-desktop-pass02.json) · [mobile report](./tailnet-agent-browser-mobile-pass02.json) · [desktop capture](./tailnet-roadmap-agent-browser-desktop-pass02.png) · [mobile capture](./tailnet-roadmap-agent-browser-mobile-pass02.png).
 
-Both commit-pinned simulator screenshot links loaded completely in Agent Browser: Android 1080×2400 and iOS 1206×2622 ([report](./tailnet-image-link-browser-check-pass02.json)). `agent-browser close --all` completed; no Agent Browser or HeadlessChrome processes remained ([process report](./agent-browser-process-check-pass02.json)).
+Both commit-pinned simulator screenshot links loaded completely in Agent Browser: Android 1080×2400 and iOS 1206×2622 ([Tailnet page report](./tailnet-image-link-browser-check-pass02.json)). The four images embedded in PR #1206 also loaded completely: Android 1080×2400, iOS 1206×2622, Tailnet desktop 1440×1000, and Tailnet mobile 390×844 ([PR body report](./pr-body-image-browser-check.json)). `agent-browser close --all` completed; no Agent Browser or HeadlessChrome processes remained ([process report](./agent-browser-process-check-pass02.json)).
 
 ## Scope and review
 
