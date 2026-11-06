@@ -8,6 +8,8 @@
 
 **계획 실패 관점 검토:** [20개](./c11-root-html-multiple-auto-row-align-content-stretch-plan-review-20.md). **계획 PR diff 검토:** 계획 PR의 실제 변경분에서 별도 실패 경로 30개를 점검한다. 구현 뒤에는 fresh runtime/code 20개와 구현 PR diff 30개를 각각 따로 검토한다.
 
+**구현 상태 (2026-11-07):** 구현 PR [#1234](https://github.com/ohah/spinon/pull/1234)이 merge SHA `0983a94cc80424b0f00f0e401286982125573e48`로 Rebase and merge됐다. 제한 scope의 결과와 한계는 [구현/runtime evidence](../spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/README.md)에, public roadmap·Tailnet 제공본 확인은 [sync evidence](../spec/internal/evidence/roadmap-tailnet-sync-pr1234-c11-4-align-content-stretch-2026-11-07/README.md)에 기록했다. 이 plan slice는 끝났지만 C11.4/C11 상위는 미완료다.
+
 ## 결손과 목표
 
 병합된 [PR #1231](https://github.com/ohah/spinon/pull/1231)은 fixed 40×40px Grid, 10px explicit row, direct text `A`/`B`가 만든 두 implicit `auto` rows를 `align-content:normal`로 늘리는 정확한 profile만 허용한다. 같은 fixed input에서 author가 `align-content:stretch`를 명시하면 CSS Grid §11.8의 row sizing은 동일해야 하지만 현재 Root HTML admission이 이 값을 거부한다.

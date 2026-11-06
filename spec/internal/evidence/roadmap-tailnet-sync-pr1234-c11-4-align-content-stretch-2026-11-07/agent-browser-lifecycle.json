@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-11-06T19:13:16Z",
+  "version": "0.31.1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+      "documentWidth": 1440,
+      "bodyWidth": 1440,
+      "cardX": 90,
+      "cardWidth": 928,
+      "cardRight": 1018,
+      "order": ["PR #1228", "PR #1231", "PR #1234"]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "cardX": 14,
+      "cardWidth": 362,
+      "cardRight": 376,
+      "order": ["PR #1228", "PR #1231", "PR #1234"]
+    }
+  ],
+  "cleanup": ["closed browser session", "ran agent-browser close --all"],
+  "finalSessionList": "No active sessions",
+  "agentBrowserProcessAfterCleanup": null,
+  "tailnetPreviewServer": "pre-existing node PID 28040 on 127.0.0.1:8768 was left running"
+}
