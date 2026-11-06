@@ -37,6 +37,6 @@ Xcode build 원본 로그는 trailing whitespace를 보존한 무손실 gzip 파
 
 이 slice는 punctuation/Unicode, arbitrary fonts, 일반 CSS author admission, WPT, Android 실기기, iOS compositor 이후 pixel 및 전체 C11.4/C11 적합성을 검증하지 않는다. C11.4/C11 완료 checkbox와 공식 `78/214`는 그대로 미완료다. PR checks/CI 결과는 이 로컬 검증과 별개다.
 
-구현/runtime의 별도 20관점 검토는 [implementation-runtime-review-20.md](./implementation-runtime-review-20.md)에 기록한다. PR 생성 뒤 실제 PR diff에 대한 30관점 검토를 별도로 남긴다.
+구현/runtime의 별도 20관점 검토는 [implementation-runtime-review-20.md](./implementation-runtime-review-20.md), 실제 PR diff의 실패 관점 30개는 [pr-diff-review-30.md](./pr-diff-review-30.md)에 기록한다.
 
 증거 파일 hash 확인: `sha256sum -c spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-runtime-2026-11-06/SHA256SUMS`.
