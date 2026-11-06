@@ -188,11 +188,79 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
         text_transform::apply(input, &mut result)?;
     }
 
+    if supports_ascii_hyphen_digit_breaks(input, &result.text) {
+        add_ascii_hyphen_digit_break_markers(&mut result, input)?;
+    }
+
     if input.style.hyphens == Some(HyphensMode::Auto) {
         add_auto_hyphenation_markers(&mut result, input)?;
     }
 
     Ok(result)
+}
+
+fn supports_ascii_hyphen_digit_breaks(input: &ParagraphInput, text: &str) -> bool {
+    // Root HTML maps CSS `line-break: auto` to Strict internally; the CSS Text
+    // hyphen-before-digit opportunity is independent of that enum value.
+    input.style.white_space == WhiteSpaceMode::Normal
+        && input.style.word_break == crate::WordBreakMode::Normal
+        && input.style.hyphens != Some(HyphensMode::Auto)
+        && input.style.overflow_wrap == crate::OverflowWrapMode::Normal
+        && input.style.text_transform == crate::TextTransformMode::None
+        && input.style.direction == crate::TextDirection::Ltr
+        && input.style.writing_mode == spinon_core::WritingMode::HorizontalTb
+        && input.sources.len() == 1
+        && input.sources[0].text.is_ascii()
+        && input.sources[0].inline_ancestors.is_empty()
+        && input.inline_styles.is_empty()
+        && input.inline_run_styles.is_empty()
+        && text.is_ascii()
+}
+
+fn add_ascii_hyphen_digit_break_markers(
+    result: &mut NormalizedText,
+    input: &ParagraphInput,
+) -> Result<(), TextLayoutError> {
+    const MARKER: char = '\u{200b}';
+    let bytes = result.text.as_bytes();
+    let positions = (1..bytes.len().saturating_sub(1))
+        .filter(|&index| {
+            bytes[index] == b'-'
+                && bytes[index - 1].is_ascii_alphanumeric()
+                && bytes[index + 1].is_ascii_digit()
+        })
+        .map(|index| index + 1)
+        .collect::<Vec<_>>();
+
+    for position in positions.into_iter().rev() {
+        let hyphen_position = position - 1;
+        let hyphen_source_index = result
+            .sources
+            .iter()
+            .position(|source| source.paragraph_utf8 == (hyphen_position..position))
+            .ok_or(TextLayoutError::InvalidGlyphLayout(input.node))?;
+        result.text.insert(position, MARKER);
+        let marker_end = position + MARKER.len_utf8();
+        for (source_index, source) in result.sources.iter_mut().enumerate() {
+            if source_index == hyphen_source_index {
+                source.paragraph_utf8.end = marker_end;
+                continue;
+            }
+            if source.paragraph_utf8.start >= position {
+                source.paragraph_utf8.start += MARKER.len_utf8();
+                source.paragraph_utf8.end += MARKER.len_utf8();
+            } else if source.paragraph_utf8.end > position {
+                source.paragraph_utf8.end += MARKER.len_utf8();
+            }
+            if source.paragraph_utf8.start < position && source.paragraph_utf8.end > marker_end {
+                return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+            }
+        }
+    }
+    result
+        .sources
+        .sort_by_key(|source| (source.paragraph_utf8.start, source.paragraph_utf8.end));
+    Ok(())
 }
 
 fn supports_text_transform_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {

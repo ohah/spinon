@@ -108,9 +108,17 @@ for case in OBSERVATION["cases"]:
         {
             "id": case["id"],
             "text": text,
+            "source": text,
+            "columnsMode": "20px" if mode == "fixed" else mode,
+            "sourceOrder": "reverse" if reverse else "forward",
             "breakSegments": break_segments,
             "independentMinContentCssPx": min_content,
             "independentMaxContentCssPx": max_content,
+            "independentExpectedColumnsCssPx": used_column,
+            "independentExpectedRowsCssPx": [
+                int(row) if row.is_integer() else row for row in expected_rows
+            ],
+            "independentExpectedLongTextLineCount": expected_lines,
             "expectedColumnsCssPx": [used_column],
             "expectedRowsCssPx": expected_rows,
             "expectedTextLineCount": expected_lines,
@@ -123,7 +131,7 @@ output = {
     "schema": "spinon-css-reference-expectation-v1",
     "task": "C11.4 parsed Root HTML ASCII hyphenated word intrinsic sizing",
     "basis": [
-        "CSS Text Module Level 3 §5.1: the hyphen-minus line-break opportunity occurs after the hyphen.",
+        "CSS Text Module Level 3 2026 CRD §5.2 gives interoperability guidance for breaks after U+002D before digits when the preceding character is a letter or digit; fixed Chrome observations provide the concrete line-break oracle for these cases.",
         "CSS Grid Layout Module Level 1 2025 CRD §§11.4-11.7: min-content uses the widest unbreakable segment, and an auto track is bounded by its min/max contributions and definite available size.",
         "The fixed monospace advances are read from Canvas measureText, independent of CSSOM Grid used track results; each expected used size is rounded up to 1/64 CSS px.",
     ],

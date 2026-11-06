@@ -7,24 +7,32 @@ const LETTER_EXPECTED: &str = include_str!(
 const ALPHANUMERIC_EXPECTED: &str = include_str!(
     "../../../../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/expected.json"
 );
+const HYPHENATED_EXPECTED: &str = include_str!(
+    "../../../../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-precomparison-2026-11-06/expected.json"
+);
 
 #[test]
 fn intrinsic_auto_rows_measure_ascii_letter_words_against_independent_scenes() {
-    assert_scenes(LETTER_EXPECTED);
+    assert_scenes(LETTER_EXPECTED, 10);
 }
 
 #[test]
 fn intrinsic_auto_rows_measure_ascii_alphanumeric_words_against_independent_scenes() {
-    assert_scenes(ALPHANUMERIC_EXPECTED);
+    assert_scenes(ALPHANUMERIC_EXPECTED, 10);
 }
 
-fn assert_scenes(expected_json: &str) {
+#[test]
+fn intrinsic_auto_rows_measure_ascii_hyphenated_words_against_independent_scenes() {
+    assert_scenes(HYPHENATED_EXPECTED, 9);
+}
+
+fn assert_scenes(expected_json: &str, expected_count: usize) {
     let expected: Value = serde_json::from_str(expected_json)
         .expect("ASCII word independent expectations should be valid JSON");
     let cases = expected["cases"]
         .as_array()
         .expect("independent oracle should contain each scene");
-    assert_eq!(cases.len(), 10);
+    assert_eq!(cases.len(), expected_count);
 
     for case in cases {
         let id = case["id"].as_str().expect("scene id should be a string");

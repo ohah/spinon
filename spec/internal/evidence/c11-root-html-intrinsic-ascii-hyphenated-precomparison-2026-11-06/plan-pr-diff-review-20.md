@@ -10,7 +10,7 @@
 | 4 | 유효한 hyphen grammar가 ASCII 범위를 벗어남 | `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*`로 U+002D만 허용한다. |
 | 5 | 선행·후행·연속 hyphen이 비어 있는 segment를 통과 | `-A`, `A-`, `A--B` rejection을 acceptance에 고정했다. |
 | 6 | Unicode lookalike나 부호가 normalization을 통해 허용됨 | U+2010·U+2212 controls와 다른 punctuation rejection을 명시했다. |
-| 7 | CSS Text의 숫자 앞 hyphen 예외를 잘못 일반화 | CSS Text 3 CRD §5.5와 ASCII alphanumeric predecessor 경계를 명시했다. |
+| 7 | CSS Text의 숫자 앞 hyphen guidance를 잘못 일반화 | CSS Text 3 CRD §5.2를 UA 상호운용 guidance로 표기하고 Chrome 관측을 구체적 oracle로 구분했다. |
 | 8 | Grid 기대값이 독립 계산 없이 browser used track을 복사 | Canvas advance 기반 derive script가 CSSOM used track을 읽지 않으며 9 cases를 Chrome과 비교했다. |
 | 9 | min-content에서 hyphen을 잘못 빼거나 segment를 잘못 나눔 | `A-A`, `12-3`, `A1-BB2`와 break segment·line 위치를 고정했다. |
 | 10 | max-content·auto·fixed track을 같은 값으로 잘못 취급 | matrix에 세 sizing mode와 fixed 20px control을 따로 둔다. |

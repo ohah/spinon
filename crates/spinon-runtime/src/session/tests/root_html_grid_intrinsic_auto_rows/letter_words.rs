@@ -11,26 +11,38 @@ const LETTER_EXPECTED: &str = include_str!(
 const ALPHANUMERIC_EXPECTED: &str = include_str!(
     "../../../../../../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/expected.json"
 );
+const HYPHENATED_EXPECTED: &str = include_str!(
+    "../../../../../../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-precomparison-2026-11-06/expected.json"
+);
 const LONG_TEXT: &str = "<div id=\"long-text\" class=\"item\">AAAAAAAA</div>";
 const SHORT_TEXT: &str = "<div id=\"short-text\" class=\"item\">A</div>";
 
 #[test]
 fn parsed_root_html_ascii_letter_words_match_all_independent_intrinsic_scenes() {
-    assert_scenes(LETTER_EXPECTED);
+    assert_scenes(LETTER_EXPECTED, 10);
 }
 
 #[test]
 fn parsed_root_html_ascii_alphanumeric_words_match_all_independent_intrinsic_scenes() {
-    assert_scenes(ALPHANUMERIC_EXPECTED);
+    assert_scenes(ALPHANUMERIC_EXPECTED, 10);
 }
 
-fn assert_scenes(expected_json: &str) {
+#[test]
+fn parsed_root_html_ascii_hyphenated_words_match_all_independent_intrinsic_scenes() {
+    assert_scenes(HYPHENATED_EXPECTED, 9);
+}
+
+fn assert_scenes(expected_json: &str, expected_count: usize) {
     let expected: Value = serde_json::from_str(expected_json)
         .expect("ASCII word independent expectations should be valid JSON");
     let cases = expected["cases"]
         .as_array()
         .expect("independent oracle should contain the full scene matrix");
-    assert_eq!(cases.len(), 10, "all precomparison scenes should execute");
+    assert_eq!(
+        cases.len(),
+        expected_count,
+        "all precomparison scenes should execute"
+    );
 
     for case in cases {
         let id = case["id"].as_str().expect("scene id should be a string");

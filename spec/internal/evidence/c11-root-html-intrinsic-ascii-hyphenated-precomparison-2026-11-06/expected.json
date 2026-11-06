@@ -2,7 +2,7 @@
   "schema": "spinon-css-reference-expectation-v1",
   "task": "C11.4 parsed Root HTML ASCII hyphenated word intrinsic sizing",
   "basis": [
-    "CSS Text Module Level 3 §5.1: the hyphen-minus line-break opportunity occurs after the hyphen.",
+    "CSS Text Module Level 3 2026 CRD §5.2 gives interoperability guidance for breaks after U+002D before digits when the preceding character is a letter or digit; fixed Chrome observations provide the concrete line-break oracle for these cases.",
     "CSS Grid Layout Module Level 1 2025 CRD §§11.4-11.7: min-content uses the widest unbreakable segment, and an auto track is bounded by its min/max contributions and definite available size.",
     "The fixed monospace advances are read from Canvas measureText, independent of CSSOM Grid used track results; each expected used size is rounded up to 1/64 CSS px."
   ],
@@ -13,12 +13,23 @@
     {
       "id": "hyphen-min-content",
       "text": "A-A",
+      "source": "A-A",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
       "breakSegments": [
         "A-",
         "A"
       ],
       "independentMinContentCssPx": 12.046875,
       "independentMaxContentCssPx": 18.0625,
+      "independentExpectedColumnsCssPx": 12.046875,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
       "expectedColumnsCssPx": [
         12.046875
       ],
@@ -40,12 +51,23 @@
     {
       "id": "hyphen-max-content",
       "text": "A-A",
+      "source": "A-A",
+      "columnsMode": "max-content",
+      "sourceOrder": "forward",
       "breakSegments": [
         "A-",
         "A"
       ],
       "independentMinContentCssPx": 12.046875,
       "independentMaxContentCssPx": 18.0625,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 1,
       "expectedColumnsCssPx": [
         18.0625
       ],
@@ -67,6 +89,9 @@
     {
       "id": "hyphen-auto-mixed-tokens",
       "text": "AA-BB CC",
+      "source": "AA-BB CC",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
       "breakSegments": [
         "AA-",
         "BB",
@@ -74,6 +99,14 @@
       ],
       "independentMinContentCssPx": 18.0625,
       "independentMaxContentCssPx": 48.171875,
+      "independentExpectedColumnsCssPx": 40.0,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
       "expectedColumnsCssPx": [
         40.0
       ],
@@ -95,6 +128,9 @@
     {
       "id": "digit-hyphen-min-content",
       "text": "12-3 45",
+      "source": "12-3 45",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
       "breakSegments": [
         "12-",
         "3",
@@ -102,6 +138,14 @@
       ],
       "independentMinContentCssPx": 18.0625,
       "independentMaxContentCssPx": 42.15625,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
       "expectedColumnsCssPx": [
         18.0625
       ],
@@ -123,12 +167,23 @@
     {
       "id": "mixed-hyphen-min-content",
       "text": "A1-BB2",
+      "source": "A1-BB2",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
       "breakSegments": [
         "A1-",
         "BB2"
       ],
       "independentMinContentCssPx": 18.0625,
       "independentMaxContentCssPx": 36.125,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
       "expectedColumnsCssPx": [
         18.0625
       ],
@@ -150,6 +205,9 @@
     {
       "id": "multiple-hyphenated-tokens",
       "text": "A-B C-DE",
+      "source": "A-B C-DE",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
       "breakSegments": [
         "A-",
         "B",
@@ -158,6 +216,14 @@
       ],
       "independentMinContentCssPx": 12.046875,
       "independentMaxContentCssPx": 48.171875,
+      "independentExpectedColumnsCssPx": 12.046875,
+      "independentExpectedRowsCssPx": [
+        10,
+        40,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 4,
       "expectedColumnsCssPx": [
         12.046875
       ],
@@ -179,6 +245,9 @@
     {
       "id": "hyphenated-reverse-order",
       "text": "AA-BB CC",
+      "source": "AA-BB CC",
+      "columnsMode": "min-content",
+      "sourceOrder": "reverse",
       "breakSegments": [
         "AA-",
         "BB",
@@ -186,6 +255,14 @@
       ],
       "independentMinContentCssPx": 18.0625,
       "independentMaxContentCssPx": 48.171875,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        30,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
       "expectedColumnsCssPx": [
         18.0625
       ],
@@ -207,12 +284,23 @@
     {
       "id": "hyphen-unbreakable-auto",
       "text": "12345678-12",
+      "source": "12345678-12",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
       "breakSegments": [
         "12345678-",
         "12"
       ],
       "independentMinContentCssPx": 54.1875,
       "independentMaxContentCssPx": 66.234375,
+      "independentExpectedColumnsCssPx": 54.1875,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
       "expectedColumnsCssPx": [
         54.1875
       ],
@@ -234,6 +322,9 @@
     {
       "id": "fixed-track-hyphen-break",
       "text": "AA-BB CC",
+      "source": "AA-BB CC",
+      "columnsMode": "20px",
+      "sourceOrder": "forward",
       "breakSegments": [
         "AA-",
         "BB",
@@ -241,6 +332,14 @@
       ],
       "independentMinContentCssPx": 18.0625,
       "independentMaxContentCssPx": 48.171875,
+      "independentExpectedColumnsCssPx": 20.0,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
       "expectedColumnsCssPx": [
         20.0
       ],

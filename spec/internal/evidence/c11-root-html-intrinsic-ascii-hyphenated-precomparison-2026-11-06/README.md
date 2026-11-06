@@ -6,7 +6,7 @@ The current bounded parsed Root HTML `grid-auto-rows:min-content` path accepts A
 
 The source grammar under review is `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*`. The hyphen belongs to the preceding break segment. A line may wrap after U+002D; `word-break:normal`, `overflow-wrap:normal`, and `white-space:normal` remain fixed. The source and Text node must remain unchanged.
 
-The CSS Text 3 2026 CRD §5.1 notes that a hyphen-minus before a digit can remain a break opportunity when the preceding character is a letter or digit; the fixed grammar enforces that boundary by requiring an alphanumeric segment before and after each hyphen. The pinned CSS Grid 2025 CRD §§11.4–11.7 supplies the min-content, max-content, and auto-track sizing rules. Neither observation claims WPT or general CSS support.
+The CSS Text 3 2026 CRD §5.2 gives interoperability guidance that a UA may allow a break after U+002D before a digit when its preceding character is a letter or digit. This is guidance, not a general conformance claim; the pinned Chrome observations are the concrete oracle for this fixture. The fixed grammar enforces its own boundary by requiring a non-empty ASCII alphanumeric segment on each side of U+002D. The pinned CSS Grid 2025 CRD §§11.4–11.7 supplies the min-content, max-content, and auto-track sizing rules. Neither observation claims WPT or general CSS support.
 
 ## Inputs and execution
 

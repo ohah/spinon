@@ -9,8 +9,12 @@ fn parsed_root_html_normal_whitespace_rejects_invalid_sources_atomically() {
         ("nbsp", "A&nbsp;A"),
         ("nel", "A&#x85;A"),
         ("unicode-space", "A&#x2003;A"),
-        ("punctuation-token", "A-B"),
-        ("letter-digit-punctuation-token", "A1-B"),
+        ("repeated-hyphen-token", "A--B"),
+        ("letter-digit-repeated-hyphen-token", "A1--B"),
+        ("leading-hyphen-token", "-A"),
+        ("trailing-hyphen-token", "A-"),
+        ("unicode-hyphen-token", "A‐B"),
+        ("unicode-minus-token", "A−B"),
     ] {
         let source = ROOT_HTML_SOURCE.replacen(
             SHORT_ITEM,

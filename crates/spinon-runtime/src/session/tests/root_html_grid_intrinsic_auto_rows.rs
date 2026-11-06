@@ -693,8 +693,8 @@ fn parsed_root_html_combined_intrinsic_tracks_reject_out_of_slice_combinations_a
 fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_text_items_atomically() {
     for (label, source) in [
         (
-            "different-text-source",
-            TEXT_SOURCE.replace("A A A A A A", "B-1 B-1 B-1 B-1 B-1 B-1"),
+            "invalid-text-source-grammar",
+            TEXT_SOURCE.replace("A A A A A A", "B--1 B--1 B--1 B--1 B--1 B--1"),
         ),
         (
             "nested-inline-markup",
