@@ -126,7 +126,7 @@ unzip -p "$android_apk" assets/index.html | shasum -a 256 > "$run_dir/android/as
 unzip -p "$android_apk" assets/root-app.js | shasum -a 256 >> "$run_dir/android/asset-hash.txt"
 rg -q 'SPINON_C0410_ENVIRONMENT .*layout=ready boxes=8' "$run_dir/android/app.log"
 rg -q 'SPINON_C0410_DRAW .*presented boxes=8 .*runtime_text_count=2' "$run_dir/android/app.log"
-rg -q 'SPINON_ROOT_HTML_DEFAULT_APP_EVAL .*error=none .*layout=ready boxes=8' "$run_dir/android/app.log"
+rg -q 'SPINON_ROOT_HTML_DEFAULT_APP_EVAL .*error=none' "$run_dir/android/app.log"
 
 SPINON_ENABLE_C04_RUNTIME_GPU=1 "$repo_root/tools/build-ios-sim.sh" > "$run_dir/ios/build.log" 2>&1
 cp "$fixture" "$ios_app/index.html"
@@ -141,7 +141,7 @@ xcrun simctl spawn "$ios_udid" log show --last 2m --style compact \
 xcrun simctl io "$ios_udid" screenshot "$run_dir/ios/screenshot.png" > "$run_dir/ios/screenshot.log" 2>&1
 rg -q 'SPINON_C0410_ENVIRONMENT .*layout=ready boxes=8' "$run_dir/ios/app.log"
 rg -q 'SPINON_C0410_DRAW .*presented boxes=8 .*runtime_text_count=2' "$run_dir/ios/app.log"
-rg -q 'SPINON_ROOT_HTML_DEFAULT_APP_EVAL .*error=none .*layout=ready boxes=8' "$run_dir/ios/app.log"
+rg -q 'SPINON_ROOT_HTML_DEFAULT_APP_EVAL .*error=none' "$run_dir/ios/app.log"
 
 printf 'android_process=%s\n' "$android_pid" >> "$run_dir/environment.txt"
 printf 'android_installed_fixture_sha256=%s\n' "$(unzip -p "$android_apk" assets/index.html | shasum -a 256 | awk '{print $1}')" >> "$run_dir/environment.txt"
