@@ -1,0 +1,20 @@
+{
+  "browser": "Agent Browser",
+  "allComplete": true,
+  "images": [
+    {
+      "platform": "Android",
+      "width": 1080,
+      "height": 2400,
+      "complete": true,
+      "url": "https://raw.githubusercontent.com/ohah/spinon/e35e49bba4bc14a9b40492d62ced01289d71bca8/spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-runtime-2026-11-06/pass05/android/screenshot.png"
+    },
+    {
+      "platform": "iOS",
+      "width": 1206,
+      "height": 2622,
+      "complete": true,
+      "url": "https://raw.githubusercontent.com/ohah/spinon/e35e49bba4bc14a9b40492d62ced01289d71bca8/spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-runtime-2026-11-06/pass05/ios/screenshot.png"
+    }
+  ]
+}

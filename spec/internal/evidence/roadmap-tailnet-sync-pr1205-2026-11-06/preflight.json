@@ -1,0 +1,20 @@
+{
+  "sourceHead": "e35e49bba4bc14a9b40492d62ced01289d71bca8",
+  "sourceTree": "364c10eba44653054d7379be2de564caaeb3522c",
+  "trackedDiffSha256": "8f2e36c435c5c0c4d85e2996a447569a2672cafc1457819b367e4500e12c9af4",
+  "tailscaleBackend": "Running",
+  "previewServerPid": 28040,
+  "localStatus": 200,
+  "localBytes": 589048,
+  "sourceBytes": 590928,
+  "previousBytes": 589048,
+  "sourceSha256": "cf8cfe7173b75202459b227920a2a0cb4c8346c7d4f6d1bd1d4da12b9cc017a6",
+  "previousSha256": "92940ba1f896a096126b7ed5b5caa7fa4450abf461992f9e779c42bac090ab95",
+  "openHandlePids": [],
+  "backupRoot": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1205-2026-11-06/pass01",
+  "filesToReplace": [
+    "roadmap.html"
+  ],
+  "noDeletes": true,
+  "serverRestarted": false
+}
