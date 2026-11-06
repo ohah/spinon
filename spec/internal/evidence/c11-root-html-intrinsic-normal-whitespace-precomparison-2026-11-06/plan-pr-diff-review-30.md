@@ -30,7 +30,7 @@
 26. **summary가 raw observation과 불일치하는가?** — JSON 생성 단계에서 24 cases, 20 non-baseline match, mismatch 0을 assert하고 raw file도 JSON parse했다.
 27. **negative-control 요약이 raw source를 잃는가?** — 별도 JSON은 name, source, computed column/row, item width 및 range rectangles를 담는다.
 28. **screenshot이 제품 또는 pixel parity evidence로 오해되는가?** — 1280×752 Agent Browser Chrome reference capture이며 README가 제품 구현·시뮬레이터·WPT 검증이 아님을 명시한다.
-29. **local markdown link가 끊기는가?** — 검토 문서와 함께 계획/README의 local paths를 다시 검사하며 현재 검토 문서 링크도 존재한다.
+29. **PR·문서 미리보기에서 근거 링크가 끊기는가?** — Markdown/HTML fixture links는 저장소 상대경로이고, JSON·PNG는 해당 자산을 포함한 고정 커밋 `6af70e0e54d52705f7be908f7e2257795ad361e5`의 raw GitHub URL을 사용한다. README는 같은 PNG를 직접 표시하며 이 변경 뒤 SHA-256 manifest를 갱신했다.
 30. **Agent Browser process가 남았는가?** — `close --all` 결과와 후속 process filter 결과 0개를 증거 JSON으로 보존했다.
 
 **판정:** 계획 PR diff에서 구현 경계, 기준 입력, raw evidence, source-order/identity, failure boundary와 한계가 서로 일치한다. 발견 결함은 없었다. 이 문서는 plan diff 검토이며 구현 코드 검토가 아니다. 구현 PR은 새 20개 implementation/runtime review와 새 30개 PR diff review를 받아야 한다.
