@@ -4,7 +4,7 @@ pub(super) fn supports_text_source(text: &str) -> bool {
         if token.is_empty() {
             continue;
         }
-        if !token.bytes().all(|byte| byte.is_ascii_alphabetic()) {
+        if !token.bytes().all(|byte| byte.is_ascii_alphanumeric()) {
             return false;
         }
         has_token = true;
@@ -43,9 +43,19 @@ mod tests {
     use super::{exceeds_track_limit, is_whitespace_text, required_rows, supports_text_source};
 
     #[test]
-    fn direct_text_grammar_accepts_ascii_letter_words_separated_by_collapsible_ascii_whitespace() {
+    fn direct_text_grammar_accepts_ascii_alphanumeric_words_separated_by_collapsible_ascii_whitespace()
+     {
         for text in [
             "A",
+            "1",
+            "12",
+            "A1",
+            "BB2",
+            "C33",
+            "1A",
+            "22B",
+            "12345678",
+            "A1B2C3D4",
             "AA",
             "AB BBB A",
             "aa bb ccc",
@@ -65,8 +75,9 @@ mod tests {
             "",
             " ",
             "\t\n\r",
-            "A1",
             "A-B",
+            "A1-B",
+            "1.2",
             "A!",
             "A_",
             "Ａ",

@@ -5,16 +5,28 @@ use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 const SOURCE: &str = include_str!(
     "../../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-letter-words-runtime.html"
 );
-const EXPECTED: &str = include_str!(
+const LETTER_EXPECTED: &str = include_str!(
     "../../../../../../spec/internal/evidence/c11-root-html-intrinsic-letter-words-precomparison-2026-11-06/expected.json"
+);
+const ALPHANUMERIC_EXPECTED: &str = include_str!(
+    "../../../../../../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/expected.json"
 );
 const LONG_TEXT: &str = "<div id=\"long-text\" class=\"item\">AAAAAAAA</div>";
 const SHORT_TEXT: &str = "<div id=\"short-text\" class=\"item\">A</div>";
 
 #[test]
 fn parsed_root_html_ascii_letter_words_match_all_independent_intrinsic_scenes() {
-    let expected: Value = serde_json::from_str(EXPECTED)
-        .expect("ASCII letter-word independent expectations should be valid JSON");
+    assert_scenes(LETTER_EXPECTED);
+}
+
+#[test]
+fn parsed_root_html_ascii_alphanumeric_words_match_all_independent_intrinsic_scenes() {
+    assert_scenes(ALPHANUMERIC_EXPECTED);
+}
+
+fn assert_scenes(expected_json: &str) {
+    let expected: Value = serde_json::from_str(expected_json)
+        .expect("ASCII word independent expectations should be valid JSON");
     let cases = expected["cases"]
         .as_array()
         .expect("independent oracle should contain the full scene matrix");

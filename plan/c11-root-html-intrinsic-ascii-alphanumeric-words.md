@@ -35,7 +35,7 @@ PR [#1208](https://github.com/ohah/spinon/pull/1208)은 parsed Root HTML 기본 
 
 - [고정 Chrome 비교](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/expected.json)의 10개 scene을 Style-to-layout과 RuntimeSession에서 재생한다. exact source·node identity, revision, Grid track trace, rows, item frame, line count, reverse DOM order 및 rejection atomicity를 확인한다.
 - Default Root HTML route에서 ASCII 숫자 source `12345678`을 parse해 layout-ready, draw/present, node source identity와 40px root 바깥 overflow item paint를 확인한다. Chrome 비교의 `(42px,19px)` sample을 같은 item background 지점으로 사용하되 실제 기기·hardware GPU·iOS compositor 이후 pixel equality로 확대 주장하지 않는다.
-- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 scene의 runtime entry 및 draw/present를 확인한다. PixelCopy/Metal drawable은 사전에 고정한 sample만 비교하고, 두 시뮬레이터 결과를 실기기 결과로 설명하지 않는다.
+- Style-to-layout 및 RuntimeSession Rust 행렬에서 10개 scene 전부의 geometry·trace·source identity를 확인한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 앱 경로에서는 고정 numeric source `12345678`의 DOM·layout ready·draw/present와 지정 overflow sample을 확인한다. PixelCopy/Metal drawable은 이 고정 sample만 비교하고, 두 시뮬레이터 결과를 실기기 결과로 설명하지 않는다.
 - 변경 crate Rust suite, `cargo fmt --all -- --check`, scoped Clippy, 기본/fixture-test artifact boundary를 기록한다. 기존 unrelated failure와 변경 유발 실패를 구분한다.
 - 구현 후 별도 구현/runtime 실패 관점 20개와 실제 구현 PR diff 검토 30개를 수행한다. 계획 PR의 실제 diff도 별도로 30개 관점에서 검토한다.
 

@@ -1,14 +1,26 @@
 use super::*;
 use serde_json::Value;
 
-const EXPECTED: &str = include_str!(
+const LETTER_EXPECTED: &str = include_str!(
     "../../../../spec/internal/evidence/c11-root-html-intrinsic-letter-words-precomparison-2026-11-06/expected.json"
+);
+const ALPHANUMERIC_EXPECTED: &str = include_str!(
+    "../../../../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/expected.json"
 );
 
 #[test]
 fn intrinsic_auto_rows_measure_ascii_letter_words_against_independent_scenes() {
-    let expected: Value = serde_json::from_str(EXPECTED)
-        .expect("ASCII letter-word independent expectations should be valid JSON");
+    assert_scenes(LETTER_EXPECTED);
+}
+
+#[test]
+fn intrinsic_auto_rows_measure_ascii_alphanumeric_words_against_independent_scenes() {
+    assert_scenes(ALPHANUMERIC_EXPECTED);
+}
+
+fn assert_scenes(expected_json: &str) {
+    let expected: Value = serde_json::from_str(expected_json)
+        .expect("ASCII word independent expectations should be valid JSON");
     let cases = expected["cases"]
         .as_array()
         .expect("independent oracle should contain each scene");
