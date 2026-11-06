@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "observer": {
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "agent_browser": "0.31.1",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1,
+    "document_url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-multiple-auto-row-align-content-stretch-precomparison.html",
+    "method": "Agent Browser eval에서 Grid의 inline alignContent만 바꾸고 computed gridTemplateRows와 Grid border box 기준 direct-child DOMRect를 측정했다."
+  },
+  "screenshots": {
+    "start": {
+      "path": "chrome/align-content-start.png",
+      "sha256": "f99b591634c5e2631ac61ce52fad768ff9616cb565c3712a09aeef81d14f5e5c",
+      "pixel_size": [1280, 633]
+    },
+    "stretch": {
+      "path": "chrome/align-content-stretch.png",
+      "sha256": "e717e0bfc1e5de8872a88a2d755b5664ad36e99219a675d8929c9058331714bf",
+      "pixel_size": [1280, 633]
+    }
+  },
+  "cases": [
+    {"specified": "normal", "computed": "normal", "used_rows": "10px 15px 15px", "item_rects_css_px": [[0, 0, 40, 10], [0, 10, 40, 15], [0, 25, 40, 15]]},
+    {"specified": "stretch", "computed": "stretch", "used_rows": "10px 15px 15px", "item_rects_css_px": [[0, 0, 40, 10], [0, 10, 40, 15], [0, 25, 40, 15]]},
+    {"specified": "start", "computed": "start", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 0, 40, 10], [0, 10, 40, 10], [0, 20, 40, 10]]},
+    {"specified": "flex-start", "computed": "flex-start", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 0, 40, 10], [0, 10, 40, 10], [0, 20, 40, 10]]},
+    {"specified": "end", "computed": "end", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 10, 40, 10], [0, 20, 40, 10], [0, 30, 40, 10]]},
+    {"specified": "flex-end", "computed": "flex-end", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 10, 40, 10], [0, 20, 40, 10], [0, 30, 40, 10]]},
+    {"specified": "center", "computed": "center", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 5, 40, 10], [0, 15, 40, 10], [0, 25, 40, 10]]},
+    {"specified": "space-between", "computed": "space-between", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 0, 40, 10], [0, 15, 40, 10], [0, 30, 40, 10]]},
+    {"specified": "space-around", "computed": "space-around", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 1.65625, 40, 10], [0, 14.984375, 40, 10], [0, 28.3125, 40, 10]]},
+    {"specified": "space-evenly", "computed": "space-evenly", "used_rows": "10px 10px 10px", "item_rects_css_px": [[0, 2.5, 40, 10], [0, 15, 40, 10], [0, 27.5, 40, 10]]}
+  ],
+  "limitations": [
+    "고정 Root HTML Grid 하나의 browser 관측이며 Spinon runtime 출력이 아니다.",
+    "Chrome geometry는 대조 근거다. CSS Grid 및 CSS Box Alignment 규칙과 독립 산술이 기대값을 정의한다.",
+    "space-around의 소수 positions는 browser의 1/64 CSS px layout quantum을 사용한다."
+  ]
+}

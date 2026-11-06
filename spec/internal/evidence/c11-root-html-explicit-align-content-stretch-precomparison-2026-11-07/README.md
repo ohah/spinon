@@ -14,4 +14,6 @@ HeadlessChrome 157은 `align-content:stretch`의 computed value와 `10px 15px 15
 
 ![Chrome fixture screenshot](./chrome/fixture.png)
 
+**증거 수정 · 2026-11-07:** 이전 `chrome/fixture.png` SHA-256 `f99b591634c5e2631ac61ce52fad768ff9616cb565c3712a09aeef81d14f5e5c`는 명시된 `stretch` 장면이 아니라 새로 캡처한 `align-content:start` control과 일치했다. 연결된 파일은 computed `align-content:stretch`를 명시한 뒤 Agent Browser로 다시 캡처한 화면으로 교체했으며 SHA-256은 `e717e0bfc1e5de8872a88a2d755b5664ad36e99219a675d8929c9058331714bf`다. 이전 화면 byte는 [새 `start` 캡처](../c11-root-html-auto-row-content-alignment-precomparison-2026-11-07/chrome/align-content-start.png)에 보존했다. 수정한 stretch 장면은 [별도 캡처](../c11-root-html-auto-row-content-alignment-precomparison-2026-11-07/chrome/align-content-stretch.png)에서도 확인할 수 있다.
+
 이 사전 비교는 Chrome 관측으로 독립 계산을 교차 확인한다. Spinon runtime, WPT, 일반 CSS admission 또는 pixel parity를 입증하지 않는다. [계획](../../../../plan/c11-root-html-multiple-auto-row-align-content-stretch.md)
