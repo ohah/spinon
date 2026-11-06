@@ -26,4 +26,4 @@ Agent Browser 세션을 닫고 Agent Browser 프로세스가 남지 않았음을
 
 ## Tailnet preview
 
-Tailnet preview는 GitHub Pages가 아니라 사용자 지정 개발 미리보기 경로다. 이 변경을 main에 병합한 뒤 기존 파일을 삭제하지 않는 backup·hash 검증 절차로 동기화하고, Agent Browser desktop/mobile에서 최종 served 화면과 `78/214`를 확인한다. 그 실행 결과는 후속 동기화 근거에 추가한다.
+Tailnet preview는 GitHub Pages가 아니라 사용자 지정 개발 미리보기 경로다. main 병합 뒤 [`/spinon/roadmap.html` 제공본](../roadmap-tailnet-sync-pr1217-c11-1-2026-11-06/README.md)을 원본 HTML과 hash 일치로 동기화했고 Agent Browser desktop/mobile에서 PR #1216 및 `78/214`를 확인했다. 이 확인은 전체 RSPress 문서 사이트 재빌드나 다른 Tailnet route 동기화를 뜻하지 않는다.

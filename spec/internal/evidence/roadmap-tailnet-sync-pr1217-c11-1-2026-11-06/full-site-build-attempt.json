@@ -1,0 +1,23 @@
+{
+  "command": "mise exec -- bun run --filter @spinon/docs docs:build -- -c ../../spec/internal/evidence/roadmap-tailnet-sync-pr1217-c11-1-2026-11-06/rspress.config.ts",
+  "rspressVersion": "2.0.22",
+  "root": "spec",
+  "deadLinkAndDeadImageChecks": false,
+  "exitCode": 1,
+  "elapsedSecondsReportedByRspress": 12.6,
+  "observedUnrelatedBuildErrors": [
+    {
+      "kind": "unsupported Shiki language label",
+      "message": "Language `rust,ignore` is not included in this bundle",
+      "exampleSource": "spec/internal/0026-c04-ua-baseline-snapshot.md"
+    },
+    {
+      "kind": "unresolved Markdown image import",
+      "message": "Can't resolve s04-hit-test-android-2026-10-07.png from spec/internal/evidence",
+      "exampleSource": "spec/internal/evidence/s04-hit-test-platforms-2026-10-07.md"
+    }
+  ],
+  "usedForTailnetRoadmapPublication": false,
+  "publicationPath": "spec/public/roadmap.html -> /spinon/roadmap.html",
+  "note": "The Tailnet roadmap route serves the standalone HTML source directly; the sync copies only that route and makes no whole-site build claim."
+}
