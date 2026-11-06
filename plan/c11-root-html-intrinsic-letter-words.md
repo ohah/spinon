@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML normal-whitespace ASCII word intrinsic sizing
 
-**상태:** 제한 구현 후보의 시뮬레이터·산출물 경계 검증을 마쳤다. C11.4·C11 checkbox와 공식 완료 78/214는 변경하지 않는다.
+**상태:** 제한 구현 PR [#1208](https://github.com/ohah/spinon/pull/1208)이 2026-11-06T05:32:14Z Rebase and merge로 병합됐다(merge SHA `3f022b175dfb689cf721ef407a0d86b05ea96db1`). C11.4·C11 checkbox와 공식 완료 78/214는 변경하지 않는다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 normal-whitespace slice](./c11-root-html-intrinsic-normal-whitespace-multiple-text.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
