@@ -1,0 +1,119 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewportCssPx": [
+    1280,
+    633
+  ],
+  "devicePixelRatio": 1,
+  "documentWidth": 1280,
+  "observations": {
+    "explicitStretch": {
+      "alignContent": "stretch",
+      "gridTemplateRows": "10px 15px 15px",
+      "items": [
+        {
+          "id": "fixed",
+          "rect": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "textLineCount": null
+        },
+        {
+          "id": "text-a",
+          "rect": [
+            0,
+            10,
+            40,
+            15
+          ],
+          "textLineCount": 1
+        },
+        {
+          "id": "text-b",
+          "rect": [
+            0,
+            25,
+            40,
+            15
+          ],
+          "textLineCount": 1
+        }
+      ]
+    },
+    "normalControl": {
+      "alignContent": "normal",
+      "gridTemplateRows": "10px 15px 15px",
+      "items": [
+        {
+          "id": "fixed",
+          "rect": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "textLineCount": null
+        },
+        {
+          "id": "text-a",
+          "rect": [
+            0,
+            10,
+            40,
+            15
+          ],
+          "textLineCount": 1
+        },
+        {
+          "id": "text-b",
+          "rect": [
+            0,
+            25,
+            40,
+            15
+          ],
+          "textLineCount": 1
+        }
+      ]
+    },
+    "startControl": {
+      "alignContent": "start",
+      "gridTemplateRows": "10px 10px 10px",
+      "items": [
+        {
+          "id": "fixed",
+          "rect": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "textLineCount": null
+        },
+        {
+          "id": "text-a",
+          "rect": [
+            0,
+            10,
+            40,
+            10
+          ],
+          "textLineCount": 1
+        },
+        {
+          "id": "text-b",
+          "rect": [
+            0,
+            20,
+            40,
+            10
+          ],
+          "textLineCount": 1
+        }
+      ]
+    }
+  }
+}
