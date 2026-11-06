@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [선행 auto-row alignment slice](./c11-root-html-auto-row-content-alignment.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 제한 구현 후보 PR [#1240](https://github.com/ohah/spinon/pull/1240) 리뷰 가능. 선행 제한 구현 PR [#1237](https://github.com/ohah/spinon/pull/1237)의 fixed Root HTML shape에 computed `row-gap:0..=7.5px`를 추가하고 gutter 포함 free-space 동작을 검증했다. 실제 PR diff 30관점 검토는 완료했다. GitHub는 checks/workflow를 보고하지 않았고 `main`에는 필수 status check나 승인 수가 설정되어 있지 않으며, PR은 mergeable 상태다. 이 plan slice는 C11.4/C11 완료나 공식 완료 수 증가를 뜻하지 않는다.
+**상태:** 제한 구현 PR [#1240](https://github.com/ohah/spinon/pull/1240)이 2026-11-06T21:57:15Z Rebase and merge로 병합됐다(merge SHA `e3b32918e3893ce8b6bfc835d194c3abad12bc2a`). 선행 제한 구현 PR [#1237](https://github.com/ohah/spinon/pull/1237)의 fixed Root HTML shape에 computed `row-gap:0..=7.5px`를 추가하고 gutter 포함 free-space 동작을 검증했다. 실제 PR diff 30관점 검토를 완료했다. GitHub는 checks/workflow를 보고하지 않았고 `main`에는 필수 status check나 승인이 설정되어 있지 않다. 이 plan slice는 C11.4/C11 완료나 공식 완료 수 증가를 뜻하지 않는다.
 
 **규범 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §10.1 gutters, §§11.1·11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) · [CSS Box Alignment Module Level 3 §§4.3–4.4, §5.1.4](https://www.w3.org/TR/2025/WD-css-align-3-20250311/)
 
