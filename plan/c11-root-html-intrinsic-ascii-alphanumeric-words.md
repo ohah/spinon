@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML ASCII 영숫자 단어 intrinsic sizing
 
-**상태:** 계획 및 Chrome 157 사전 비교 완료. 구현 전이다. 공식 C11.4/C11 checkbox와 완료 `78/214`를 바꾸지 않는다.
+**상태:** 계획/사전 비교와 제한 구현 후보 검증을 완료했다. 구현 commit `76e618e3`의 10-scene Rust matrix, scoped Clippy 및 Android/iOS Simulator 고정 numeric route가 통과했고 구현 PR은 준비 중이다. 아직 병합되지 않았으며 C11.4/C11 checkbox와 공식 `78/214`는 그대로다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 ASCII letter-word 구현](./c11-root-html-intrinsic-letter-words.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -9,6 +9,8 @@
 **계획 실패 관점 검토:** [20개 항목](./c11-root-html-intrinsic-ascii-alphanumeric-words-plan-review-20.md)
 
 **계획 PR diff 검토:** [30개 항목](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/plan-pr-diff-review-30.md)
+
+**구현/runtime 근거:** [Rust·Android/iOS Simulator·hash·한계](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-runtime-2026-11-06/README.md) · [실패 관점 검토 20개](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-runtime-2026-11-06/implementation-runtime-review-20.md)
 
 ## 결손과 목표
 
@@ -36,7 +38,11 @@ PR [#1208](https://github.com/ohah/spinon/pull/1208)은 parsed Root HTML 기본 
 - [고정 Chrome 비교](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/expected.json)의 10개 scene을 Style-to-layout과 RuntimeSession에서 재생한다. exact source·node identity, revision, Grid track trace, rows, item frame, line count, reverse DOM order 및 rejection atomicity를 확인한다.
 - Default Root HTML route에서 ASCII 숫자 source `12345678`을 parse해 layout-ready, draw/present, node source identity와 40px root 바깥 overflow item paint를 확인한다. Chrome 비교의 `(42px,19px)` sample을 같은 item background 지점으로 사용하되 실제 기기·hardware GPU·iOS compositor 이후 pixel equality로 확대 주장하지 않는다.
 - Style-to-layout 및 RuntimeSession Rust 행렬에서 10개 scene 전부의 geometry·trace·source identity를 확인한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 앱 경로에서는 고정 numeric source `12345678`의 DOM·layout ready·draw/present와 지정 overflow sample을 확인한다. PixelCopy/Metal drawable은 이 고정 sample만 비교하고, 두 시뮬레이터 결과를 실기기 결과로 설명하지 않는다.
-- 변경 crate Rust suite, `cargo fmt --all -- --check`, scoped Clippy, 기본/fixture-test artifact boundary를 기록한다. 기존 unrelated failure와 변경 유발 실패를 구분한다.
+- 변경 crate Rust suite, `cargo fmt --all -- --check`, scoped Clippy, default release `spinon-runtime` rlib에서 fixture marker가 없는지와 fixture-test positive-control executable에 있는지를 기록한다. 플랫폼 adapter/FFI는 추가하지 않으며, 기존 PR #1208의 Android/iOS fixture adapter boundary evidence를 재사용하고 이 slice의 app asset overlay 복원도 확인한다. 기존 unrelated failure와 변경 유발 실패를 구분한다.
 - 구현 후 별도 구현/runtime 실패 관점 20개와 실제 구현 PR diff 검토 30개를 수행한다. 계획 PR의 실제 diff도 별도로 30개 관점에서 검토한다.
 
 이 slice를 C11.4 또는 C11 완료로 표시하지 않는다. 내부 계약 버전은 `0.1.0`을 유지한다.
+
+## 2026-11-06 구현 후보 실행 결과
+
+Style-to-layout 11/11, RuntimeSession default/fixture-test feature 각 15/15, 두 crate all-targets Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator의 default Root HTML route에서 `12345678`, layout-ready/draw/present와 CSS `(42,19)` overflow background 표본 PixelCopy·Metal drawable 각 1/1 exact를 확인했다. [실행 evidence](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-runtime-2026-11-06/README.md)는 iOS compositor 이전 sample과 simulator 한계를 구분한다. 구현 PR merge 전 후보 결과이므로 공식 `78/214`와 C11.4/C11 상태는 변경하지 않는다.
