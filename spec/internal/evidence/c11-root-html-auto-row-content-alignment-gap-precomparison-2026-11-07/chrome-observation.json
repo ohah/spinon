@@ -1,0 +1,1227 @@
+{
+  "schema_version": 1,
+  "observer": {
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "agent_browser": "0.31.1",
+    "viewport_css_px": [
+      1280,
+      633
+    ],
+    "device_pixel_ratio": 1,
+    "document_url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-auto-row-content-alignment-row-gap-precomparison.html",
+    "method": "Agent Browser eval에서 row-gap을 0, 2.5, 5, 7.5px로 바꾸고 각 값에서 align-content 10개를 순회했다. computed gridTemplateRows, rowGap 및 Grid border box 기준 direct-child DOMRect를 측정했다."
+  },
+  "screenshots": {
+    "start_gap_2_5px": {
+      "path": "chrome/align-content-start.png",
+      "sha256": "31e2d78b240726faf0aa12874e1ff0358451b34f3c2804d359c7daf14122c6ec",
+      "pixel_size": [
+        1280,
+        633
+      ]
+    },
+    "space_between_gap_2_5px": {
+      "path": "chrome/align-content-space-between.png",
+      "sha256": "d7ec3a99780e6cbb648b3bcdb0b3f917aef9249c0e03c37592908cf3d3fd32f1",
+      "pixel_size": [
+        1280,
+        633
+      ]
+    },
+    "end_gap_7_5px": {
+      "path": "chrome/align-content-end-gap-7_5.png",
+      "sha256": "4de8a8f2ca8feb9e821986abc4847c7ca40dc53e05285d3af7a461ae20c028ec",
+      "pixel_size": [
+        1280,
+        633
+      ]
+    }
+  },
+  "cases": [
+    {
+      "row_gap_css_px": 0,
+      "alignments": [
+        {
+          "computed": "normal",
+          "used_rows_css_px": [
+            10,
+            15,
+            15
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              10,
+              40,
+              15
+            ],
+            [
+              0,
+              25,
+              40,
+              15
+            ]
+          ]
+        },
+        {
+          "computed": "stretch",
+          "used_rows_css_px": [
+            10,
+            15,
+            15
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              10,
+              40,
+              15
+            ],
+            [
+              0,
+              25,
+              40,
+              15
+            ]
+          ]
+        },
+        {
+          "computed": "start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              10,
+              40,
+              10
+            ],
+            [
+              0,
+              20,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              10,
+              40,
+              10
+            ],
+            [
+              0,
+              20,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              10,
+              40,
+              10
+            ],
+            [
+              0,
+              20,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              10,
+              40,
+              10
+            ],
+            [
+              0,
+              20,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "center",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              5,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              25,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-between",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-around",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              1.65625,
+              40,
+              10
+            ],
+            [
+              0,
+              14.984375,
+              40,
+              10
+            ],
+            [
+              0,
+              28.3125,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-evenly",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 0,
+          "item_rects_css_px": [
+            [
+              0,
+              2.5,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              27.5,
+              40,
+              10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row_gap_css_px": 2.5,
+      "alignments": [
+        {
+          "computed": "normal",
+          "used_rows_css_px": [
+            10,
+            12.5,
+            12.5
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              12.5,
+              40,
+              12.5
+            ],
+            [
+              0,
+              27.5,
+              40,
+              12.5
+            ]
+          ]
+        },
+        {
+          "computed": "stretch",
+          "used_rows_css_px": [
+            10,
+            12.5,
+            12.5
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              12.5,
+              40,
+              12.5
+            ],
+            [
+              0,
+              27.5,
+              40,
+              12.5
+            ]
+          ]
+        },
+        {
+          "computed": "start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              12.5,
+              40,
+              10
+            ],
+            [
+              0,
+              25,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              12.5,
+              40,
+              10
+            ],
+            [
+              0,
+              25,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              5,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              5,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "center",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              2.5,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              27.5,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-between",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-around",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0.828125,
+              40,
+              10
+            ],
+            [
+              0,
+              14.984375,
+              40,
+              10
+            ],
+            [
+              0,
+              29.140625,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-evenly",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 2.5,
+          "item_rects_css_px": [
+            [
+              0,
+              1.25,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              28.75,
+              40,
+              10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row_gap_css_px": 5,
+      "alignments": [
+        {
+          "computed": "normal",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "stretch",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "center",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-between",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-around",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-evenly",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row_gap_css_px": 7.5,
+      "alignments": [
+        {
+          "computed": "normal",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "stretch",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-start",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              -5,
+              40,
+              10
+            ],
+            [
+              0,
+              12.5,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "flex-end",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              -5,
+              40,
+              10
+            ],
+            [
+              0,
+              12.5,
+              40,
+              10
+            ],
+            [
+              0,
+              30,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "center",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              -2.5,
+              40,
+              10
+            ],
+            [
+              0,
+              15,
+              40,
+              10
+            ],
+            [
+              0,
+              32.5,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-between",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-around",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        },
+        {
+          "computed": "space-evenly",
+          "used_rows_css_px": [
+            10,
+            10,
+            10
+          ],
+          "row_gap_css_px": 7.5,
+          "item_rects_css_px": [
+            [
+              0,
+              0,
+              40,
+              10
+            ],
+            [
+              0,
+              17.5,
+              40,
+              10
+            ],
+            [
+              0,
+              35,
+              40,
+              10
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "고정 Root HTML Grid 하나의 browser 관측이며 Spinon runtime 출력이 아니다.",
+    "Chrome geometry는 대조 근거다. CSS Grid와 CSS Box Alignment 규칙 및 독립 산술이 기대값을 정의한다.",
+    "row-gap 0, 2.5, 5, 7.5px 네 값만 관측했다. 7.5px보다 큰 gap 동작은 주장하지 않는다."
+  ]
+}
