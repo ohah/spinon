@@ -1,0 +1,24 @@
+{
+  "pullRequest": 1202,
+  "pullRequestUrl": "https://github.com/ohah/spinon/pull/1202",
+  "verifiedWith": "Agent Browser",
+  "verificationDate": "2026-11-06",
+  "mergeState": "CLEAN",
+  "statusChecks": [],
+  "images": [
+    {
+      "alt": "Android emulator screenshot",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/b7d1c76a778ff9587a1491e99c50baacf0f5410f/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-runtime-2026-11-06/android/screenshot.png"
+    },
+    {
+      "alt": "iOS simulator screenshot",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622,
+      "src": "https://raw.githubusercontent.com/ohah/spinon/b7d1c76a778ff9587a1491e99c50baacf0f5410f/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-runtime-2026-11-06/ios/screenshot.png"
+    }
+  ]
+}
