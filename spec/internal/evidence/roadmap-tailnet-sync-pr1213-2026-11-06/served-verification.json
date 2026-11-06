@@ -1,0 +1,66 @@
+{
+  "verified_on_utc": "2026-11-06",
+  "source": {
+    "bytes": 595374,
+    "sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44"
+  },
+  "local_http": {
+    "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 595374,
+    "sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44",
+    "byte_identical_to_source": true
+  },
+  "tailnet_https": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 595374,
+    "sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44",
+    "byte_identical_to_source": true
+  },
+  "agent_browser": {
+    "desktop": {
+      "viewport_css_px": [
+        1440,
+        1000
+      ],
+      "document_css_px": [
+        1440,
+        74921
+      ],
+      "horizontal_overflow": false,
+      "card": "PR #1212",
+      "card_rect_css_px": {
+        "x": 90,
+        "y": 160.265625,
+        "width": 928,
+        "height": 142.734375
+      },
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+      "screenshot_sha256": "a0e3fd63e5ca9ef83de8de4c742330e49b634f48b0140b8f3d9632958eb02fa1"
+    },
+    "mobile": {
+      "viewport_css_px": [
+        390,
+        844
+      ],
+      "document_css_px": [
+        390,
+        164022
+      ],
+      "horizontal_overflow": false,
+      "card": "PR #1212",
+      "card_rect_css_px": {
+        "x": 14,
+        "y": 80.25,
+        "width": 362,
+        "height": 367.03125
+      },
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+      "screenshot_sha256": "7761cdbf121bc93533685caafb539eac526e3a3524f2a5cf537bd5b64d5a8ab4"
+    }
+  },
+  "agent_browser_closed": true,
+  "agent_browser_process_remaining": false,
+  "server_pid_after_sync": 28040
+}

@@ -1,0 +1,48 @@
+{
+  "verified_on_utc": "2026-11-06",
+  "roadmap_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "local_server": {
+    "pid": 28040,
+    "listen": "127.0.0.1:8768",
+    "command": "node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "process_unchanged": true
+  },
+  "tailscale": {
+    "self": "100.64.53.81 macstudio",
+    "status": "Running",
+    "funnel": [
+      "https://macstudio.tailed42f2.ts.net:10000",
+      "https://macstudio.tailed42f2.ts.net",
+      "https://macstudio.tailed42f2.ts.net:8443"
+    ],
+    "backend_state": "Running",
+    "tun": true
+  },
+  "serving_root": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "served_file": "roadmap.html",
+  "open_file_handles_before_replace": false,
+  "official_source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 595374,
+    "sha256": "0544cb8053d1abf6ba073d64ae53de090d07c4604b20915ae8caf96a3d41ce44"
+  },
+  "previous_served_copy": {
+    "bytes": 593059,
+    "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+  },
+  "preflight_http": {
+    "local": {
+      "status": 200,
+      "bytes": 593059,
+      "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+    },
+    "tailnet": {
+      "status": 200,
+      "bytes": 593059,
+      "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+    }
+  },
+  "source_main_commit": "cf3b29cab58f66a8993845123b0873e1d414a5cd",
+  "source_docs_merge_pr": 1213,
+  "source_docs_merge_sha": "cf3b29cab58f66a8993845123b0873e1d414a5cd"
+}
