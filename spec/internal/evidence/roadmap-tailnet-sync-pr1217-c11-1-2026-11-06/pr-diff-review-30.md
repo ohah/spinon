@@ -31,6 +31,6 @@
 27. **화면 identity:** desktop/mobile DOM에서 제목 `스피논 구현 로드맵`, PR #1216, merge SHA 및 `78/214`를 확인했다.
 28. **desktop geometry:** 1440 CSS px viewport에서 document/body 폭이 1440px이고 대상 카드가 표시되며 가로 overflow가 없다.
 29. **mobile geometry:** 390 CSS px viewport에서 document/body 폭이 390px이고 대상 카드가 표시되며 가로 overflow가 없다.
-30. **screenshot/process 증거:** desktop 1440×1000 및 mobile 390×844 PNG hash를 기록했고, 종료 후 세션 inactive·`pgrep -x agent-browser` 빈 결과를 기록했다.
+30. **screenshot/process 증거:** desktop 1440×1000 및 mobile 390×844 PNG hash를 기록했고, PR #1218 본문 두 이미지가 Agent Browser에서 natural size로 표시됨을 확인했다. 종료 후 세션 inactive·`pgrep -x agent-browser` 빈 결과를 기록했다.
 
 추가 경계: full-site RSPress build 실패는 별도 JSON에 남겼고 성공으로 세지 않았다. 이에 따라 이 diff는 `roadmap.html` 외 다른 Tailnet 문서 route를 갱신했다고 주장하지 않는다. 공식 상태 checkbox 수에는 변화가 없다.

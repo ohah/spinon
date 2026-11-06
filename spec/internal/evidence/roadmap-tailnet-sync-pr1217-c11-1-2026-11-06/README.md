@@ -19,6 +19,7 @@
 - Desktop 1440×1000 CSS px: 카드 x=90px / width=928px, document/body width 1440px, 가로 overflow 없음. [화면](./tailnet-roadmap-agent-browser-desktop.png) · [DOM/geometry](./tailnet-agent-browser-desktop.json)
 - Mobile 390×844 CSS px: 카드 x=14px / width=362px, document/body width 390px, 가로 overflow 없음. [화면](./tailnet-roadmap-agent-browser-mobile.png) · [DOM/geometry](./tailnet-agent-browser-mobile.json)
 - 사용 후 Agent Browser 세션을 닫았다. 세션은 inactive이고 `pgrep -x agent-browser` 결과가 비었다. [lifecycle](./agent-browser-lifecycle-final.json)
+- PR #1218 본문에서도 두 raw PNG가 Agent Browser에 natural size 1440×1000 및 390×844로 로드됐다. [PR image 확인](./pull-request-images-agent-browser.json)
 
 ![Tailnet roadmap desktop](./tailnet-roadmap-agent-browser-desktop.png)
 
