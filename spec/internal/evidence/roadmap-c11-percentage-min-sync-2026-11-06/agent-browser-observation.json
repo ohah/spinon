@@ -1,0 +1,26 @@
+{
+  "page": "file:///Users/yoonhb/Documents/workspace/spinon/spec/public/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "latestCard": "2026-11-06 C11.1 parsed Root HTML Grid auto-repeat percentage minimum",
+  "pr": 1220,
+  "mergeSha": "2e022c9589eacb49ec2d04c5ea0dd1cb3ca575af",
+  "completionCount": "78/214",
+  "c11State": "C11.1/C11 미완료",
+  "desktop": {
+    "viewportCssPx": [1440, 1000],
+    "screenshot": "roadmap-local-desktop-agent-browser.png"
+  },
+  "mobile": {
+    "viewportCssPx": [390, 844],
+    "documentWidthCssPx": 390,
+    "bodyWidthCssPx": 390,
+    "horizontalOverflow": false,
+    "screenshot": "roadmap-local-mobile-agent-browser.png"
+  },
+  "lifecycle": {
+    "sessionClosed": true,
+    "activeAgentBrowserSessions": 0,
+    "agentBrowserProcessCount": 0
+  },
+  "note": "Unrelated HWPJS-owned Chrome processes were observed and left running."
+}

@@ -1,6 +1,6 @@
 # C11.1 · parsed Root HTML Grid auto-repeat
 
-**상태:** 제한 구현 PR [#1179](https://github.com/ohah/spinon/pull/1179)이 2026-11-05T10:16:16Z에 Rebase and merge됐다(merge SHA `7c042f4ac5080609927fb26760112c5a88a56d3c`). 이 경계는 공개 CSS 지원이나 C11.1/C11 완료를 뜻하지 않는다. C11.1/C11/C11.4 완료 체크와 공식 집계 `78/214`는 유지한다. 공식 구현 상태는 [STATUS.md](../spec/STATUS.md)를 기준으로 한다.
+**상태:** 기본 auto-fill/auto-fit parsed Root HTML 경로 구현 PR [#1179](https://github.com/ohah/spinon/pull/1179)은 2026-11-05T10:16:16Z에 Rebase and merge됐다(merge SHA `7c042f4ac5080609927fb26760112c5a88a56d3c`). 후속 제한 구현 PR [#1216](https://github.com/ohah/spinon/pull/1216)은 finite non-negative fixed-px minimum과 count-only 1px floor를, PR [#1220](https://github.com/ohah/spinon/pull/1220)은 definite axis의 finite non-negative percentage minimum을 추가했다. 현재 auto-repeat profile의 합성 기록은 [zero minimum 계획](./c11-root-html-grid-auto-repeat-zero-min.md)과 [percentage minimum 계획](./c11-root-html-grid-auto-repeat-percentage-min.md)을 따른다. 이 경계는 공개 CSS 지원이나 C11.1/C11 완료를 뜻하지 않는다. C11.1/C11/C11.4 완료 체크와 공식 집계 `78/214`는 유지한다. 공식 구현 상태는 [STATUS.md](../spec/STATUS.md)를 기준으로 한다.
 
 **선행:** [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md), [Root HTML integer repeat](./c11-root-html-grid-integer-repeat.md), [Root HTML intrinsic tracks](./c11-root-html-intrinsic-grid-tracks.md).
 
@@ -24,9 +24,9 @@ Auto-repeat 개수는 CSS Grid §7.2.3.2 규칙대로 계산한다. count 계산
 4. Simulator screenshots는 visual smoke로만 분류한다. PixelCopy, Metal drawable readback, hardware GPU, Android 실기기, iOS compositor 이후 pixels 또는 WPT를 실행하지 않으면 완료 근거로 주장하지 않는다.
 5. `cargo fmt --all -- --check`, 변경 crate focused tests 및 Clippy를 실행했다. 코드·fixture·evidence를 검토하고 발견을 수정한 뒤 PR #1179을 열어 병합했다.
 
-## 제외 범위
+## PR #1179 초기 구현의 제외 범위와 후속 확장
 
-임의 auto-repeat grammar, line-name/placement, 여러 repeat group과 이웃 track, intrinsic/percentage sizing, general implicit placement, nested-grid 조합, 일반 CSS Grid 또는 WPT 적합성, 공개 CSS 지원, Android hardware GPU, 실기기 및 iOS compositor-after pixel 동등성. 이 제한 slice의 성공은 C11.1이나 C11 parent를 완료 처리하지 않는다.
+PR #1179의 초기 구현은 임의 auto-repeat grammar, line-name/placement, 여러 repeat group과 이웃 track, intrinsic/percentage sizing, general implicit placement, nested-grid 조합, 일반 CSS Grid 또는 WPT 적합성을 제외했다. 후속 PR #1220은 해당 배제 중 definite-axis percentage minimum의 1–2 track subset만 별도 기본 Root HTML slice로 추가했다. 다른 조합은 여전히 제외하며 공개 CSS 지원, Android hardware GPU, 실기기 및 iOS compositor-after pixel 동등성을 주장하지 않는다. 이 제한 slices의 성공은 C11.1이나 C11 parent를 완료 처리하지 않는다.
 
 ## 구현·병합 결과
 
