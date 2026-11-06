@@ -761,3 +761,7 @@ The existing [ASCII letter-word slice](./c11-root-html-intrinsic-letter-words.md
 ## 2026-11-07 parsed Root HTML 두 implicit `auto` 행 · 제한 구현 PR #1231 병합
 
 PR #1228의 단일 implicit auto-row 제한 slice 뒤에 계획한 균등 분배 장면은 [계획](./c11-root-html-multiple-auto-row-stretch.md)과 [구현 PR #1231](https://github.com/ohah/spinon/pull/1231)에서 완료돼 2026-11-06T17:46:43Z Rebase and merge됐다 (merge SHA `5c79d19619617e7424aaeabbe884579ac383d130`). 고정 40×40px Grid에서 explicit row 10px과 direct text `A`/`B`가 만든 두 implicit `auto` rows의 최종 크기 `[10,15,15]px` 및 각 +5px stretch를 검증했다. [Chrome 157 사전 비교](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-precomparison-2026-11-07/README.md)와 [실행·테스트·Simulator 근거](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/README.md)를 참조한다. 이 profile은 고정 item shape로 제한되며 C11.4/C11 전체를 완수하지 않는다. 공식 완료 `78/214`는 유지한다.
+
+## 2026-11-07 parsed Root HTML explicit `align-content:stretch` · 계획 후보
+
+PR #1231은 동일한 two-implicit-auto-row profile에서 `align-content:normal`만 허용한다. CSS Grid §11.8에 따라 명시적 `align-content:stretch`도 이 입력에서 같은 `[10,15,15]px` 결과를 내야 한다. [집중 계획](./c11-root-html-multiple-auto-row-align-content-stretch.md)과 [Chrome 157 사전 비교](../spec/internal/evidence/c11-root-html-explicit-align-content-stretch-precomparison-2026-11-07/README.md)는 `stretch` positive, `normal` same-result control, `start` non-stretch control을 고정한다. 아직 구현하지 않았다. C11.4/C11 checkboxes와 공식 `78/214`는 그대로 유지한다.

@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-06T18:20:23Z",
+  "version": "0.31.1",
+  "session": "spinon-c11-c114-align-stretch-precompare",
+  "cleanup": [
+    "closed the named browser session",
+    "ran agent-browser close --all"
+  ],
+  "finalSessionList": "No active sessions",
+  "matchingAgentBrowserOrSessionChromeProcesses": 0,
+  "screenshotSaved": "spec/internal/evidence/c11-root-html-explicit-align-content-stretch-precomparison-2026-11-07/chrome/fixture.png"
+}
