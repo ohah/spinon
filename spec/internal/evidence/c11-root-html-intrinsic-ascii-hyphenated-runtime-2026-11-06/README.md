@@ -2,7 +2,7 @@
 
 ## Result
 
-The bounded implementation candidate at `3478d9bad89dfc8bb82a063af838b3b9af277756` passed the Android and iOS Simulator app route with the same fixture SHA. The visible `12345678-12` word wraps after U+002D in both screenshots. Root HTML layout reached `layout=ready boxes=8`; the renderer presented eight boxes and two text draws.
+The bounded implementation in [PR #1224](https://github.com/ohah/spinon/pull/1224) was Rebase and merged at 2026-11-06T14:35:05Z (merge SHA `4039ed60327b09128503559fcc45268acbb9637e`). Candidate source commit `3478d9bad89dfc8bb82a063af838b3b9af277756` passed the Android and iOS Simulator app route with the same fixture SHA. The visible `12345678-12` word wraps after U+002D in both screenshots. Root HTML layout reached `layout=ready boxes=8`; the renderer presented eight boxes and two text draws.
 
 This is a candidate verification record. C11.4 and C11 remain incomplete, general CSS admission and WPT are not covered, and the official implementation count remains `78/214`.
 
