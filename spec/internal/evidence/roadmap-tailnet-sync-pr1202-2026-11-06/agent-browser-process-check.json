@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-06",
+  "closedBy": "agent-browser close --all",
+  "activeSessions": [],
+  "agentBrowserOrHeadlessBrowserProcesses": [],
+  "tailnetPreviewServer": {
+    "pid": 28040,
+    "state": "running",
+    "listen": "127.0.0.1:8768",
+    "stopped": false
+  }
+}

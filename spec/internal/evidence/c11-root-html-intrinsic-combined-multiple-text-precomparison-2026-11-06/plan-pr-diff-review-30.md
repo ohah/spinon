@@ -37,7 +37,7 @@
 
 ## PR 본문 이미지 확인
 
-Agent Browser에서 PR #1201을 열고 raw screenshot의 `complete=true`, `naturalWidth=1280`, `naturalHeight=633`을 확인했다. 스크린샷 요소가 표시되고 문서의 가로 overflow는 없다. 화면은 명시한 대로 Chrome 사전 비교이며 Spinon 구현 결과로 표시하지 않았다. [브라우저 화면](chrome/pr1201-image-agent-browser.png).
+Agent Browser에서 PR #1201을 열고 raw screenshot의 `complete=true`, `naturalWidth=1280`, `naturalHeight=633`을 확인했다. 스크린샷 요소가 표시되고 문서의 가로 overflow는 없다. 화면은 명시한 대로 Chrome 사전 비교이며 Spinon 구현 결과로 표시하지 않았다. [브라우저 화면](https://raw.githubusercontent.com/ohah/spinon/009da4f159836139205831c80f8163cb4af52b50/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-precomparison-2026-11-06/chrome/pr1201-image-agent-browser.png).
 
 ## 구현 전 precomparison fixture correction
 

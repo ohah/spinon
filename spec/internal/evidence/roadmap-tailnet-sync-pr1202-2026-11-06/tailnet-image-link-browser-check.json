@@ -1,0 +1,19 @@
+{
+  "checkedBy": "Agent Browser",
+  "images": [
+    {
+      "platform": "Android API 37 ARM64 AVD",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/009da4f159836139205831c80f8163cb4af52b50/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-runtime-2026-11-06/android/screenshot.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "platform": "iPhone 17 Pro Simulator · iOS 26.2",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/009da4f159836139205831c80f8163cb4af52b50/spec/internal/evidence/c11-root-html-intrinsic-combined-multiple-text-runtime-2026-11-06/ios/screenshot.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ]
+}
