@@ -38,8 +38,14 @@
 4. Default `RuntimeSession` Root HTML route에서 같은 24개 조합을 검사한다. render snapshot이 두 text source의 raw bytes/NodeId/order와 revision을 보존하고 row sizing/paint/draw order를 유지하는지 확인한다. Text raw source를 사전 normalize하지 않는다.
 5. 실패 관점 20개 구현/runtime 검토를 작성하고 변경한 crate의 focused suites, `cargo fmt --all -- --check`, scoped Clippy와 기존 관련 regression을 실행한다. 영향 범위에 맞는 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 default Root HTML route를 실행해 frame/text/track/draw/present를 기록한다. OS screenshot은 visual smoke로만 분류하며 readback을 하지 않으면 pixel equality로 주장하지 않는다.
 6. 실제 구현 PR diff를 30개 독립 실패 관점으로 검토하고 발견을 수정한 뒤 영향받은 검증을 반복한다. CI 상태는 GitHub에서 실제 확인한 값만 기록한다.
-7. 구현 PR 병합 후 내부 계약 0059, `spec/STATUS.md`, public roadmap과 Tailnet preview를 실제 merge hash 기준으로 갱신한다. Agent Browser session/process를 종료한다.
+7. 구현 PR 병합 후 `spec/STATUS.md`, public roadmap과 Tailnet preview를 실제 merge hash 기준으로 동기화한다. Agent Browser session/process를 종료한다.
 
 ## 완료 경계
 
 이 단계는 Root HTML `grid-auto-rows:min-content`의 고정 ASCII `A` token text profile에 normal collapsible whitespace 구분자를 추가한다. arbitrary text/Unicode/font/language, non-normal whitespace, nested/anonymous text, 일반 CSS Grid admission, WPT 적합성, C11.4 또는 C11 완료를 뜻하지 않는다. 공식 상태 집계와 C11.4/C11 checkbox는 바꾸지 않는다. 계획과 구현은 현재 main checkout에서 한 PR씩 순차 진행한다.
+
+## 구현 기록 · 2026-11-06
+
+제한 구현 PR [#1205](https://github.com/ohah/spinon/pull/1205)는 `supports_text_source`에 ASCII SPACE/TAB/LF/CR 구분자 처리를 추가하고, 기존 단일 SPACE 결과와 24개 source/column/order 조합을 style-to-layout 및 기본 `RuntimeSession`에서 검사한다. Empty/whitespace-only source, 비허용 control/Unicode whitespace, `AA`, non-`A` token은 atomic rejection으로 유지한다. 원문, text node/owner identity, order, revisions, per-item contribution과 draw order를 검증한다.
+
+Focused style-to-layout 9/9, RuntimeSession 13/13, opt-in raw-source/trace 2/2, scoped Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML route는 layout-ready, 8 boxes, app DOM assertion, 2 text draw/present에 도달했다. [실행 근거와 다섯 번의 harness 시도](../spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-runtime-2026-11-06/README.md) · [구현 검토 20개](../spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-runtime-2026-11-06/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-runtime-2026-11-06/pr-diff-review-30.md). Feature-enabled runtime Clippy의 두 unchanged baseline errors와 simulator/pixel verification limits는 실행 근거에 기록했다. PR merge 후 `spec/STATUS.md`, public roadmap과 Tailnet preview를 merge SHA 기준으로 갱신한다. C11.4/C11 checkbox 및 공식 `78/214`는 유지한다.
