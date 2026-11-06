@@ -120,7 +120,7 @@ pub(super) fn validate_grid_grammar(
         || !pattern.is_some_and(|pattern| pattern.iter().all(is_supported_repeat_track))
     {
         return Err(failure(
-            "Root HTML auto-repeat은 전체 track list의 1~2개 minmax(positive px, 1fr) track만 지원하며 다른 축에는 이름 없는 fixed px track 하나만 허용합니다",
+            "Root HTML auto-repeat은 전체 track list의 1~2개 minmax(non-negative px, 1fr) track만 지원하며 다른 축에는 이름 없는 fixed px track 하나만 허용합니다",
         ));
     }
 
@@ -303,54 +303,58 @@ fn expanded_repeat_count(
     }
     let Some(expanded) = compute_expanded_track_count(axis_size, gap, &minima[..pattern.len()])
     else {
-        return Err(failure("auto-repeat count arithmetic overflowed"));
+        return Err(failure(
+            "auto-repeat count exceeds GRID_MAX_TRACKS or its arithmetic overflowed",
+        ));
     };
     Ok(expanded)
 }
 
 fn compute_expanded_track_count(axis_size: f32, gap: f32, minima: &[f32]) -> Option<usize> {
-    if minima.is_empty() || minima.len() > 2 || !axis_size.is_finite() || !gap.is_finite() {
+    if minima.is_empty()
+        || minima.len() > 2
+        || !axis_size.is_finite()
+        || axis_size <= 0.0
+        || !gap.is_finite()
+        || gap < 0.0
+    {
         return None;
     }
-    let mut pattern_space = 0.0_f32;
+    let mut pattern_space = 0.0_f64;
+    let mut taffy_pattern_space = 0.0_f32;
     for minimum in minima {
-        if !minimum.is_finite() || *minimum <= 0.0 {
+        if !minimum.is_finite() || *minimum < 0.0 {
             return None;
         }
-        pattern_space += minimum.max(AUTO_REPEAT_COUNT_MIN_TRACK_SIZE);
-        if !pattern_space.is_finite() {
+        let count_size = minimum.max(AUTO_REPEAT_COUNT_MIN_TRACK_SIZE);
+        pattern_space += f64::from(count_size);
+        taffy_pattern_space += count_size;
+        if !pattern_space.is_finite() || !taffy_pattern_space.is_finite() {
             return None;
         }
     }
-    let track_count = minima.len() as f32;
-    let first_repeat_space = pattern_space + ((minima.len() - 1) as f32 * gap);
-    let per_repeat_space = pattern_space + (track_count * gap);
-    if !first_repeat_space.is_finite() || !per_repeat_space.is_finite() {
+    let taffy_first_repeat_space = taffy_pattern_space + ((minima.len() - 1) as f32 * gap);
+    let taffy_per_repeat_space = taffy_pattern_space + (minima.len() as f32 * gap);
+    if !taffy_first_repeat_space.is_finite() || !taffy_per_repeat_space.is_finite() {
+        return None;
+    }
+    let pattern_track_count = minima.len() as f64;
+    let axis_size = f64::from(axis_size);
+    let gap = f64::from(gap);
+    let denominator = pattern_space + (pattern_track_count * gap);
+    if !denominator.is_finite() || denominator <= 0.0 {
         return None;
     }
 
-    let repetitions = if axis_size <= 0.0
-        || first_repeat_space < 0.0
-        || first_repeat_space > axis_size
-        || per_repeat_space <= 0.0
-    {
-        1_usize
-    } else {
-        let fitting_fraction = (axis_size - first_repeat_space) / per_repeat_space;
-        if !fitting_fraction.is_finite() || fitting_fraction < 0.0 {
-            return None;
-        }
-        let maximum_repetitions = GRID_MAX_TRACKS.div_ceil(minima.len());
-        let fitting_repetitions = fitting_fraction.floor();
-        if fitting_repetitions >= maximum_repetitions as f32 {
-            maximum_repetitions
-        } else {
-            (fitting_repetitions as usize).saturating_add(1)
-        }
-    };
+    let count = ((axis_size + gap) / denominator).floor().max(1.0);
+    let maximum_repetitions = GRID_MAX_TRACKS / minima.len();
+    if !count.is_finite() || count > maximum_repetitions as f64 {
+        return None;
+    }
+    let repetitions = count as usize;
     repetitions
         .checked_mul(minima.len())
-        .map(|count| count.min(GRID_MAX_TRACKS))
+        .filter(|count| *count <= GRID_MAX_TRACKS)
 }
 
 fn repeat_axis(grid: &ComputedCssGridLayout) -> Option<Axis> {
@@ -370,7 +374,7 @@ fn is_supported_repeat_track(track: &ComputedCssGridTrackSize) -> bool {
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::LengthPx(minimum),
             max: ComputedCssGridTrackBreadth::Fraction(1.0),
-        } if minimum.is_finite() && *minimum > 0.0
+        } if minimum.is_finite() && *minimum >= 0.0
     )
 }
 

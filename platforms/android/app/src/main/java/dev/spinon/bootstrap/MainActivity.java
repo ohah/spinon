@@ -616,6 +616,8 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c0412_root_html_block_paint", false)
                 || getIntent().getBooleanExtra("spinon_c0412_root_html_text_paint", false)
                 || getIntent().getBooleanExtra("spinon_c0412_root_html_default_render", false)
+                || getIntent().getBooleanExtra(
+                        "spinon_c111_root_html_auto_repeat_zero_minimum", false)
                 || getIntent().getStringExtra("spinon_c0412_root_html_page_scale_case") != null
                 || getIntent().getBooleanExtra("spinon_c091_block_formatting", false)
                 || getIntent().getBooleanExtra("spinon_c092_margin_collapse", false)
@@ -659,6 +661,18 @@ public final class MainActivity extends Activity {
                 unavailable.setGravity(Gravity.CENTER);
                 setContentView(unavailable);
                 Log.e(TAG, "SPINON_C0410_DISABLED · SPINON_ENABLE_C04_RUNTIME_GPU=1로 빌드하세요");
+                return;
+            }
+            if (getIntent().getBooleanExtra(
+                    "spinon_c111_root_html_auto_repeat_zero_minimum", false)
+                    && !BuildConfig.SPINON_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST) {
+                TextView unavailable = new TextView(this);
+                unavailable.setText("C11.1 auto-repeat fixture-test 빌드 옵션을 켜야 합니다.");
+                unavailable.setTextColor(Color.WHITE);
+                unavailable.setGravity(Gravity.CENTER);
+                setContentView(unavailable);
+                Log.e(TAG, "SPINON_C111_AUTO_REPEAT_ZERO_MIN_DISABLED"
+                        + " · SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST=1로 빌드하세요");
                 return;
             }
             if ((c131OverflowClipRequested || c131CompactSurfaceMatrixRequested
@@ -756,7 +770,9 @@ public final class MainActivity extends Activity {
                 return;
             }
             boolean rootHtmlDefaultRenderRoute = getIntent().getBooleanExtra(
-                    "spinon_c0412_root_html_default_render", false);
+                    "spinon_c0412_root_html_default_render", false)
+                    || getIntent().getBooleanExtra(
+                            "spinon_c111_root_html_auto_repeat_zero_minimum", false);
             if (!rootHtmlDefaultRenderRoute
                     && !BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST) {
                 TextView unavailable = new TextView(this);

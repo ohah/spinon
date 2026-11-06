@@ -1,0 +1,258 @@
+{
+  "caseCount": 10,
+  "cssSupports": true,
+  "passed": 10,
+  "rows": [
+    {
+      "axis": "x",
+      "browserTrackCount": 11,
+      "browserTracks": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expectedTrackCount": 11,
+      "id": "fill-11",
+      "independentRepeats": 11,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "mode": "fill",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 11,
+      "browserTracks": [
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expectedTrackCount": 11,
+      "id": "fit-11",
+      "independentRepeats": 11,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        11,
+        2
+      ],
+      "mode": "fit",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 6,
+      "browserTracks": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expectedTrackCount": 6,
+      "id": "fill-gap-11",
+      "independentRepeats": 6,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "mode": "fill",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 8,
+      "browserTracks": [
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125
+      ],
+      "expectedTrackCount": 8,
+      "id": "fill-fractional",
+      "independentRepeats": 8,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        1.125,
+        2
+      ],
+      "mode": "fill",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 10,
+      "browserTracks": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expectedTrackCount": 10,
+      "id": "fill-two-zero",
+      "independentRepeats": 5,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "mode": "fill",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 8,
+      "browserTracks": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "expectedTrackCount": 8,
+      "id": "fill-mixed-two",
+      "independentRepeats": 4,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "mode": "fill",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 8,
+      "browserTracks": [
+        19,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expectedTrackCount": 8,
+      "id": "fit-mixed-two",
+      "independentRepeats": 4,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        19,
+        2
+      ],
+      "mode": "fit",
+      "pass": true
+    },
+    {
+      "axis": "x",
+      "browserTrackCount": 11,
+      "browserTracks": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expectedTrackCount": 11,
+      "id": "empty-fit-11",
+      "independentRepeats": 11,
+      "itemFrameRelativeToGrid": null,
+      "mode": "fit",
+      "pass": true
+    },
+    {
+      "axis": "y",
+      "browserTrackCount": 4,
+      "browserTracks": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expectedTrackCount": 4,
+      "id": "fill-rows-7",
+      "independentRepeats": 4,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        3,
+        1
+      ],
+      "mode": "fill",
+      "pass": true
+    },
+    {
+      "axis": "y",
+      "browserTrackCount": 8,
+      "browserTracks": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "expectedTrackCount": 8,
+      "id": "fill-rows-mixed",
+      "independentRepeats": 4,
+      "itemFrameRelativeToGrid": [
+        0,
+        0,
+        3,
+        1
+      ],
+      "mode": "fill",
+      "pass": true
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+}

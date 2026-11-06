@@ -59,10 +59,42 @@ fn count_accounts_for_two_track_pattern_and_all_inter_track_gaps() {
 }
 
 #[test]
-fn count_clamps_expanded_track_count_to_taffy_limit() {
+fn zero_minimum_count_matches_single_and_mixed_pattern_reference_cases() {
+    assert_eq!(compute_expanded_track_count(11.0, 0.0, &[0.0]), Some(11));
+    assert_eq!(compute_expanded_track_count(11.0, 1.0, &[0.0]), Some(6));
+    assert_eq!(compute_expanded_track_count(12.5, 0.5, &[0.0]), Some(8));
+    assert_eq!(
+        compute_expanded_track_count(19.0, 1.0, &[0.0, 0.0]),
+        Some(10)
+    );
+    assert_eq!(
+        compute_expanded_track_count(19.0, 1.0, &[0.0, 2.0]),
+        Some(8)
+    );
+    assert_eq!(compute_expanded_track_count(7.0, 1.0, &[0.0]), Some(4));
+}
+
+#[test]
+fn count_accepts_the_track_ceiling_and_rejects_counts_above_it() {
+    assert_eq!(
+        compute_expanded_track_count(GRID_MAX_TRACKS as f32, 0.0, &[0.0]),
+        Some(GRID_MAX_TRACKS)
+    );
+    assert_eq!(
+        compute_expanded_track_count(GRID_MAX_TRACKS as f32, 0.0, &[0.0, 0.0]),
+        Some(GRID_MAX_TRACKS)
+    );
+    assert_eq!(
+        compute_expanded_track_count((GRID_MAX_TRACKS + 1) as f32, 0.0, &[0.0]),
+        None
+    );
     assert_eq!(
         compute_expanded_track_count(20_000.0, 0.0, &[1.0, 1.0]),
-        Some(GRID_MAX_TRACKS)
+        None
+    );
+    assert_eq!(
+        compute_expanded_track_count(10_002.0, 0.0, &[0.0, 0.0]),
+        None
     );
 }
 
@@ -76,7 +108,8 @@ fn count_rejects_non_finite_inputs_and_arithmetic_overflow() {
         compute_expanded_track_count(100.0, f32::MAX, &[1.0, 1.0]),
         None
     );
-    assert_eq!(compute_expanded_track_count(100.0, 0.0, &[0.0]), None);
+    assert_eq!(compute_expanded_track_count(100.0, 0.0, &[-0.01]), None);
+    assert_eq!(compute_expanded_track_count(100.0, 0.0, &[f32::NAN]), None);
 }
 
 #[test]
@@ -115,6 +148,25 @@ fn root_html_projection_reuses_typed_auto_repeat_track_conversion() {
 }
 
 #[test]
+fn root_html_projection_preserves_zero_minimum_for_taffy_sizing() {
+    let node = NodeId::new(31_105).unwrap();
+    let projected = project_grid_layout(
+        node,
+        &grid_with_column_repeat(&[0.0]),
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.columns,
+        vec![GridTrackSize::MinMax {
+            min: spinon_layout::GridTrackMinSizingFunction::LengthPx(0.0),
+            max: spinon_layout::GridTrackMaxSizingFunction::Fraction(1.0),
+        }]
+    );
+}
+
+#[test]
 fn root_html_grammar_rejects_neighbors_dense_flow_and_invalid_minimum() {
     let node = NodeId::new(31_102).unwrap();
     let mut with_neighbor = grid_with_column_repeat(&[40.0]);
@@ -129,7 +181,7 @@ fn root_html_grammar_rejects_neighbors_dense_flow_and_invalid_minimum() {
     dense.auto_flow = ComputedCssGridAutoFlow::RowDense;
     assert!(validate_grid_grammar(node, &dense, false, false).is_err());
 
-    let invalid_minimum = grid_with_column_repeat(&[0.0]);
+    let invalid_minimum = grid_with_column_repeat(&[-0.01]);
     assert!(validate_grid_grammar(node, &invalid_minimum, false, false).is_err());
 }
 

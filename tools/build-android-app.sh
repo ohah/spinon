@@ -2,6 +2,7 @@
 set -euo pipefail
 
 : "${SPINON_ENABLE_C04_RUNTIME_GPU:=1}"
+: "${SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST:=0}"
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 sdk_dir="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-$HOME/Library/Android/sdk}}"
@@ -26,6 +27,18 @@ case "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST은 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
+if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C11.1 Root HTML auto-repeat fixture는 C04 runtime GPU와 함께 켜야 합니다." >&2
+  exit 2
+fi
 case "${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" in
   0|1) ;;
   *)
@@ -42,5 +55,6 @@ exec "$repo_root/platforms/android/gradlew" \
   -p "$repo_root/platforms/android" \
   -PspinonS03DomGcFixture="${SPINON_ENABLE_S03_DOM_GC_FIXTURE:-0}" \
   -PspinonC04RuntimeGpu="${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" \
+  -PspinonC111RootHtmlAutoRepeatZeroMinFixtureTest="${SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST:-0}" \
   -PspinonC04RuntimeGpuFailureFixture="${SPINON_ENABLE_C04_RUNTIME_GPU_FAILURE_FIXTURE:-0}" \
   :app:assembleDebug "$@"

@@ -1,0 +1,61 @@
+   Compiling bitflags v2.13.2
+   Compiling hashbrown v0.17.1
+   Compiling selectors v0.41.0
+   Compiling indexmap v2.14.2
+   Compiling stylo_malloc_size_of v0.22.0
+   Compiling stylo_dom v0.22.0
+   Compiling stylo_traits v0.22.0
+   Compiling stylo v0.22.0
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.83s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 46 tests
+test stylo_dom::cascade::incremental::grid::auto_repeat::tests::fixed_repeat_minmax_provenance_predicate_rejects_other_shapes ... ok
+test stylo_dom::cascade::incremental::grid::auto_repeat::tests::fixed_repeat_track_allowlist_accepts_nonnegative_px_and_minmax_flex ... ok
+test stylo_dom::cascade::incremental::grid::auto_repeat::tests::fixed_repeat_track_allowlist_rejects_other_or_invalid_shapes ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_positive_percentage_minimum_with_fixed_maximum ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_neighbor::track_sizing_profile_accepts_a_subtracted_length_term ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_zero_percentage_minimum_with_flexible_maximum ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_percentage_maximum::track_sizing_profile_rejects_unsupported_auto_repeat_maximum_calc_shapes ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_neighbor::track_sizing_profile_preserves_typed_calc_neighbors_in_either_term_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_unsupported_percentage_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_neighbor::cascade_preserves_unsupported_calc_math_until_projection ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_percentage_maximum::track_sizing_profile_preserves_definite_percentage_auto_repeat_tracks ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_minmax_calc_absolute_value_normalizes_to_length_px ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_keeps_outer_component_groups_separate_from_multitrack_auto_repeat_groups ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::constant_absolute_calc_and_absolute_units_normalize_to_computed_length_px ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_neighbor::track_sizing_profile_preserves_signed_percentage_terms_in_computed_ast ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_profile_preserves_named_auto_repeat_lines ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_rejects_percentage_auto_repeat_minimums_with_intrinsic_maximums ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_positive_percentage_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_admits_definite_percentage_auto_repeat_track_sizes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_minmax_provenance_marks_prefix_and_suffix_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_minmax_flex_maxima_preserve_zero_and_subunit_factors ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_preserves_definite_percentage_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_into_both_auto_repeat_axes_is_rejected_in_both_orientations ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_percentage_maximum::track_sizing_profile_preserves_definite_percentage_auto_repeat_maximums ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_flex_factor_overflow_is_rejected_with_node_and_property_context ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_line_names::fixed_repeat_named_lines_expand_and_keep_auto_repeat_groups_separate ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::four_fixed_repeat_groups_obey_descriptor_limit_without_partial_tracks ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_inner_and_component_line_names ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::same_axis_fixed_auto_repeat_areas_preserve_tracks_lines_and_rectangles_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_profile_records_stylo_parser_rejection_of_invalid_fixed_breadths ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::same_node_area_none_area_revisions_do_not_retain_stale_area_metadata ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::same_axis_fixed_auto_repeat_areas_match_grid_template_and_grid_shorthands ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::three_four_and_eight_fixed_repeat_groups_expand_in_authored_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_calc_minimum::track_sizing_profile_normalizes_absolute_calc_auto_repeat_minimums ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_independent_auto_repeats_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_allocation_failures_are_contextual_and_recoverable ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_percentage_auto_repeat_neighbors_on_rows ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_prefix_and_suffix_expand_in_authored_order_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_profile_rejects_non_px_tracks_and_unsupported_shapes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::two_fixed_repeat_groups_expand_in_authored_order_and_rebase_auto_repeat ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_line_metadata_allocation_failures_are_contextual_and_recoverable ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixture_is_limited_to_one_auto_repeat_axis ... ok
+test stylo_dom::cascade::runtime_grid_tests::auto_repeat_fixed_maximum::track_sizing_profile_preserves_inflexible_minimum_fixed_maximum_auto_repeat_tracks ... ok
+
+test result: ok. 46 passed; 0 failed; 0 ignored; 0 measured; 242 filtered out; finished in 0.21s
