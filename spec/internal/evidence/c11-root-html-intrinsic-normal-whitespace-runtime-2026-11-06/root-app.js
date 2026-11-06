@@ -36,8 +36,8 @@ const hasOneTextNode = (source) =>
 if (root === null || grid === null || stage === null || longText === null || shortText === null ||
     actualOrder.join(",") !== expectedOrder.join(",") ||
     !hasOneTextNode(longTextSource) || !hasOneTextNode(shortTextSource) ||
-    longTextSource.text !== " \tA\t A\nA \n A \tA\nA  " ||
-    shortTextSource.text !== " \tA\n ") {
+    longTextSource.text !== " \tA\t A\nA \r\n A \tA\nA  " ||
+    shortTextSource.text !== " \tA\r\n ") {
   throw new Error(`normal-whitespace Root HTML fixture DOM mismatch: ${JSON.stringify({
     actualOrder,
     longTextSource,
