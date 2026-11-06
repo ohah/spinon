@@ -62,3 +62,7 @@ CSS Grid §11.4–§11.8에 따른 독립 기대값은 다음과 같다.
 ## 명시적 미포함
 
 이 제한은 general CSS author admission, 임의 text/font/language, inline/nested/replaced content, multiple auto rows, other content-distribution values, generic auto-placement, C11.4 track-sizing algorithm 전체, WPT conformance, physical Android/iOS device, hardware GPU, iOS compositor-after pixel parity 또는 C11/C11.4 완료를 선언하지 않는다. 내부 계약 숫자 버전 `0.1.0`을 유지한다.
+
+## 다음 C11.4 track-sizing 후보
+
+단일 implicit auto row 다음에는 two implicit `auto` rows가 남는 definite space를 균등 분배하는 장면이 계획되어 있다. [C11.4 two-auto-row stretch plan](./c11-root-html-multiple-auto-row-stretch.md)와 [Chrome·독립 기대값](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-precomparison-2026-11-07/README.md)을 참고한다. 이 후속 계획은 C11.4/C11 체크나 공식 완료 `78/214`를 변경하지 않는다.
