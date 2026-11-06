@@ -37,4 +37,4 @@
 
 ## 결과
 
-위 30개 경계에서 blocking 결함은 찾지 못했다. 이 검토는 PR review 결과이며 CI 통과나 merge를 대신하지 않는다. PR 당시 초안이라 GitHub checks는 아직 시작되지 않았다. 최신 checks와 PR 대화 검토 후 병합 가능 여부를 별도 확인한다.
+위 30개 경계에서 blocking 결함은 찾지 못했다. 이 검토는 PR review 결과이며 CI 통과나 merge를 대신하지 않는다. PR을 리뷰 가능 상태로 바꾼 뒤에도 GitHub check rollup과 workflow run은 비어 있었다. `main` branch protection은 필수 status check와 승인 0개를 요구한다. PR은 `CLEAN`/`MERGEABLE`이지만 이 기록 시점에 merge 전이다.
