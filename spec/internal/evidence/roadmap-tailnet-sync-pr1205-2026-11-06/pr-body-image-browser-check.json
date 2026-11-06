@@ -1,0 +1,35 @@
+{
+  "url": "https://github.com/ohah/spinon/pull/1206",
+  "browser": "Agent Browser",
+  "allComplete": true,
+  "images": [
+    {
+      "kind": "Android simulator",
+      "width": 1080,
+      "height": 2400,
+      "complete": true,
+      "sourceCommit": "e35e49bba4bc14a9b40492d62ced01289d71bca8"
+    },
+    {
+      "kind": "iOS simulator",
+      "width": 1206,
+      "height": 2622,
+      "complete": true,
+      "sourceCommit": "e35e49bba4bc14a9b40492d62ced01289d71bca8"
+    },
+    {
+      "kind": "Tailnet desktop",
+      "width": 1440,
+      "height": 1000,
+      "complete": true,
+      "sourceCommit": "78442f103"
+    },
+    {
+      "kind": "Tailnet mobile",
+      "width": 390,
+      "height": 844,
+      "complete": true,
+      "sourceCommit": "78442f103"
+    }
+  ]
+}
