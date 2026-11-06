@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 parsed Root HTML normal whitespace precomparison</title>
+<style>
+  body { margin: 12px; color: #111827; font: 12px/16px sans-serif; }
+  h1 { font-size: 16px; line-height: 20px; margin: 0 0 8px; }
+  p { margin: 0 0 10px; }
+  #scenes { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px 20px; }
+  .scene { display: grid; grid-template-columns: 116px 40px; gap: 6px; align-items: start; }
+  .label { max-width: 116px; overflow-wrap: anywhere; }
+  .grid { box-sizing: border-box; width: 40px; height: 40px; display: grid; grid-template-rows: 10px; grid-auto-rows: min-content; grid-auto-flow: row; row-gap: 0; column-gap: 0; align-content: start; justify-content: start; overflow: visible; direction: ltr; writing-mode: horizontal-tb; background: #e5e7eb; }
+  .item { box-sizing: border-box; margin: 0; padding: 0; border: 0; color: #111827; font-family: monospace; font-size: 10px; font-weight: 400; font-style: normal; line-height: 10px; white-space: normal; }
+  .control-first { width: 1px; height: 10px; background: #22c55e; }
+  .control-last { width: 1px; height: 34px; background: #22c55e; }
+  .long { width: auto; height: auto; min-width: auto; max-width: none; min-height: auto; max-height: none; background: #3b82f6; }
+  .short { width: auto; height: auto; min-width: auto; max-width: none; min-height: auto; max-height: none; background: #f59e0b; }
+  pre { white-space: pre-wrap; margin-top: 12px; font: 11px/14px ui-monospace, monospace; }
+</style>
+<h1>C11.4 normal whitespace in intrinsic implicit rows</h1>
+<p>Chrome 156 reference: collapsible spaces, tabs, segment breaks and leading/trailing whitespace on multiple direct text items.</p>
+<div id="scenes"></div>
+<pre id="observations"></pre>
+<pre id="negative-observations" hidden></pre>
+<script>
+const columns = [["min-content", "min-content"], ["auto", "auto"]];
+const contentVariants = [
+  ["single-spaces", "A A A A A A", "A"],
+  ["repeated-and-edge-spaces", "  A   A A  A A A  ", "  A  "],
+  ["tabs", "A\tA\tA\tA\tA\tA", "\tA\t"],
+  ["segment-breaks", "A\nA\nA\nA\nA\nA", "\nA\n"],
+  ["character-reference-carriage-returns", "A&#x0d;A&#x0d;A&#x0d;A&#x0d;A&#x0d;A", "&#x0d;A&#x0d;"],
+  ["mixed-whitespace", " \tA\t A\nA \r\n A \tA\nA  ", " \tA\r\n "],
+];
+const scenes = document.querySelector("#scenes");
+for (const [variant, longText, shortText] of contentVariants) {
+  for (const [columnsValue, columnKey] of columns) {
+    for (const reverse of [false, true]) {
+      const label = `${variant} / ${columnKey} / ${reverse ? "reversed" : "forward"}`;
+      const scene = document.createElement("section");
+      scene.className = "scene";
+      scene.dataset.variant = variant;
+      scene.dataset.columns = columnKey;
+      scene.dataset.reverse = String(reverse);
+      const textItems = reverse
+        ? `<div id="short-text" class="item short">${shortText}</div><div id="long-text" class="item long">${longText}</div>`
+        : `<div id="long-text" class="item long">${longText}</div><div id="short-text" class="item short">${shortText}</div>`;
+      scene.innerHTML = `<div class="label">${label}</div><div class="grid" style="grid-template-columns:${columnsValue}"><div id="first" class="item control-first"></div>${textItems}<div id="last" class="item control-last"></div></div>`;
+      scenes.append(scene);
+    }
+  }
+}
+function rect(element, origin) {
+  const value = element.getBoundingClientRect();
+  return [value.x - origin.x, value.y - origin.y, value.width, value.height].map((part) => Math.round(part * 64) / 64);
+}
+function lineY(element, originY) {
+  const range = document.createRange();
+  range.selectNodeContents(element.firstChild);
+  return [...new Set([...range.getClientRects()].map((box) => Math.round((box.y - originY) * 64) / 64))];
+}
+const observations = [...document.querySelectorAll(".scene")].map((scene) => {
+  const grid = scene.querySelector(".grid");
+  const origin = grid.getBoundingClientRect();
+  const longItem = grid.querySelector("#long-text");
+  const shortItem = grid.querySelector("#short-text");
+  return {
+    variant: scene.dataset.variant,
+    columns: scene.dataset.columns,
+    reverse: scene.dataset.reverse === "true",
+    source: { long: longItem.textContent, short: shortItem.textContent },
+    usedColumns: getComputedStyle(grid).gridTemplateColumns,
+    usedRows: getComputedStyle(grid).gridTemplateRows,
+    frames: Object.fromEntries(["first", "long-text", "short-text", "last"].map((id) => [id, rect(grid.querySelector(`#${id}`), origin)])),
+    lineY: { long: lineY(longItem, origin.y), short: lineY(shortItem, origin.y) },
+  };
+});
+document.querySelector("#observations").textContent = JSON.stringify(observations, null, 2);
+const negativeControls = [
+  ["single-space", "A A"],
+  ["form-feed", "A\u000cA"],
+  ["vertical-tab", "A\u000bA"],
+  ["nbsp", "A\u00a0A"],
+  ["nel", "A\u0085A"],
+].map(([name, source]) => {
+  const grid = document.createElement("div");
+  grid.style.cssText = "box-sizing:border-box;width:40px;height:30px;display:grid;grid-template-columns:min-content;grid-template-rows:10px;grid-auto-rows:min-content;grid-auto-flow:row;align-content:start;direction:ltr;writing-mode:horizontal-tb";
+  const item = document.createElement("div");
+  item.style.cssText = "font:10px/10px monospace;white-space:normal;min-width:auto;max-width:none;min-height:auto;max-height:none";
+  item.textContent = source;
+  grid.append(item);
+  document.body.append(grid);
+  const range = document.createRange();
+  range.selectNodeContents(item.firstChild);
+  const result = {name, source:JSON.stringify(source), column:getComputedStyle(grid).gridTemplateColumns, row:getComputedStyle(grid).gridTemplateRows, itemWidth:item.getBoundingClientRect().width, textRects:[...range.getClientRects()].map((box)=>[box.width,box.height])};
+  grid.remove();
+  return result;
+});
+document.querySelector("#negative-observations").textContent = JSON.stringify(negativeControls, null, 2);
+</script>
+</html>

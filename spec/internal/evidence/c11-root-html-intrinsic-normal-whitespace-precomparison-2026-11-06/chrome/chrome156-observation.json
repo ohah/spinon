@@ -1,0 +1,1154 @@
+[
+  {
+    "variant": "single-spaces",
+    "columns": "min-content",
+    "reverse": false,
+    "source": {
+      "long": "A A A A A A",
+      "short": "A"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 60px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        70,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19,
+        29,
+        39,
+        49,
+        59
+      ],
+      "short": [
+        69
+      ]
+    }
+  },
+  {
+    "variant": "single-spaces",
+    "columns": "min-content",
+    "reverse": true,
+    "source": {
+      "long": "A A A A A A",
+      "short": "A"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 10px 60px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        10,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29,
+        39,
+        49,
+        59,
+        69
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "single-spaces",
+    "columns": "auto",
+    "reverse": false,
+    "source": {
+      "long": "A A A A A A",
+      "short": "A"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 20px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        30,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19
+      ],
+      "short": [
+        29
+      ]
+    }
+  },
+  {
+    "variant": "single-spaces",
+    "columns": "auto",
+    "reverse": true,
+    "source": {
+      "long": "A A A A A A",
+      "short": "A"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 10px 20px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        10,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "repeated-and-edge-spaces",
+    "columns": "min-content",
+    "reverse": false,
+    "source": {
+      "long": "  A   A A  A A A  ",
+      "short": "  A  "
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 60px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        70,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19,
+        29,
+        39,
+        49,
+        59
+      ],
+      "short": [
+        69
+      ]
+    }
+  },
+  {
+    "variant": "repeated-and-edge-spaces",
+    "columns": "min-content",
+    "reverse": true,
+    "source": {
+      "long": "  A   A A  A A A  ",
+      "short": "  A  "
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 10px 60px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        10,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29,
+        39,
+        49,
+        59,
+        69
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "repeated-and-edge-spaces",
+    "columns": "auto",
+    "reverse": false,
+    "source": {
+      "long": "  A   A A  A A A  ",
+      "short": "  A  "
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 20px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        30,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19
+      ],
+      "short": [
+        29
+      ]
+    }
+  },
+  {
+    "variant": "repeated-and-edge-spaces",
+    "columns": "auto",
+    "reverse": true,
+    "source": {
+      "long": "  A   A A  A A A  ",
+      "short": "  A  "
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 10px 20px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        10,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "tabs",
+    "columns": "min-content",
+    "reverse": false,
+    "source": {
+      "long": "A\tA\tA\tA\tA\tA",
+      "short": "\tA\t"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 60px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        70,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19,
+        29,
+        39,
+        49,
+        59
+      ],
+      "short": [
+        69
+      ]
+    }
+  },
+  {
+    "variant": "tabs",
+    "columns": "min-content",
+    "reverse": true,
+    "source": {
+      "long": "A\tA\tA\tA\tA\tA",
+      "short": "\tA\t"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 10px 60px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        10,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29,
+        39,
+        49,
+        59,
+        69
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "tabs",
+    "columns": "auto",
+    "reverse": false,
+    "source": {
+      "long": "A\tA\tA\tA\tA\tA",
+      "short": "\tA\t"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 20px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        30,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19
+      ],
+      "short": [
+        29
+      ]
+    }
+  },
+  {
+    "variant": "tabs",
+    "columns": "auto",
+    "reverse": true,
+    "source": {
+      "long": "A\tA\tA\tA\tA\tA",
+      "short": "\tA\t"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 10px 20px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        10,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "segment-breaks",
+    "columns": "min-content",
+    "reverse": false,
+    "source": {
+      "long": "A\nA\nA\nA\nA\nA",
+      "short": "\nA\n"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 60px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        70,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19,
+        29,
+        39,
+        49,
+        59
+      ],
+      "short": [
+        69
+      ]
+    }
+  },
+  {
+    "variant": "segment-breaks",
+    "columns": "min-content",
+    "reverse": true,
+    "source": {
+      "long": "A\nA\nA\nA\nA\nA",
+      "short": "\nA\n"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 10px 60px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        10,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29,
+        39,
+        49,
+        59,
+        69
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "segment-breaks",
+    "columns": "auto",
+    "reverse": false,
+    "source": {
+      "long": "A\nA\nA\nA\nA\nA",
+      "short": "\nA\n"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 20px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        30,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19
+      ],
+      "short": [
+        29
+      ]
+    }
+  },
+  {
+    "variant": "segment-breaks",
+    "columns": "auto",
+    "reverse": true,
+    "source": {
+      "long": "A\nA\nA\nA\nA\nA",
+      "short": "\nA\n"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 10px 20px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        10,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "character-reference-carriage-returns",
+    "columns": "min-content",
+    "reverse": false,
+    "source": {
+      "long": "A\rA\rA\rA\rA\rA",
+      "short": "\rA\r"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 60px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        70,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19,
+        29,
+        39,
+        49,
+        59
+      ],
+      "short": [
+        69
+      ]
+    }
+  },
+  {
+    "variant": "character-reference-carriage-returns",
+    "columns": "min-content",
+    "reverse": true,
+    "source": {
+      "long": "A\rA\rA\rA\rA\rA",
+      "short": "\rA\r"
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 10px 60px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        10,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29,
+        39,
+        49,
+        59,
+        69
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "character-reference-carriage-returns",
+    "columns": "auto",
+    "reverse": false,
+    "source": {
+      "long": "A\rA\rA\rA\rA\rA",
+      "short": "\rA\r"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 20px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        30,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19
+      ],
+      "short": [
+        29
+      ]
+    }
+  },
+  {
+    "variant": "character-reference-carriage-returns",
+    "columns": "auto",
+    "reverse": true,
+    "source": {
+      "long": "A\rA\rA\rA\rA\rA",
+      "short": "\rA\r"
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 10px 20px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        10,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "mixed-whitespace",
+    "columns": "min-content",
+    "reverse": false,
+    "source": {
+      "long": " \tA\t A\nA \n A \tA\nA  ",
+      "short": " \tA\n "
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 60px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        70,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19,
+        29,
+        39,
+        49,
+        59
+      ],
+      "short": [
+        69
+      ]
+    }
+  },
+  {
+    "variant": "mixed-whitespace",
+    "columns": "min-content",
+    "reverse": true,
+    "source": {
+      "long": " \tA\t A\nA \n A \tA\nA  ",
+      "short": " \tA\n "
+    },
+    "usedColumns": "6.03125px",
+    "usedRows": "10px 10px 60px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        6.03125,
+        60
+      ],
+      "short-text": [
+        0,
+        10,
+        6.03125,
+        10
+      ],
+      "last": [
+        0,
+        80,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29,
+        39,
+        49,
+        59,
+        69
+      ],
+      "short": [
+        9
+      ]
+    }
+  },
+  {
+    "variant": "mixed-whitespace",
+    "columns": "auto",
+    "reverse": false,
+    "source": {
+      "long": " \tA\t A\nA \n A \tA\nA  ",
+      "short": " \tA\n "
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 20px 10px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        10,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        30,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        9,
+        19
+      ],
+      "short": [
+        29
+      ]
+    }
+  },
+  {
+    "variant": "mixed-whitespace",
+    "columns": "auto",
+    "reverse": true,
+    "source": {
+      "long": " \tA\t A\nA \n A \tA\nA  ",
+      "short": " \tA\n "
+    },
+    "usedColumns": "40px",
+    "usedRows": "10px 10px 20px 34px",
+    "frames": {
+      "first": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "long-text": [
+        0,
+        20,
+        40,
+        20
+      ],
+      "short-text": [
+        0,
+        10,
+        40,
+        10
+      ],
+      "last": [
+        0,
+        40,
+        1,
+        34
+      ]
+    },
+    "lineY": {
+      "long": [
+        19,
+        29
+      ],
+      "short": [
+        9
+      ]
+    }
+  }
+]
