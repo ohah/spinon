@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid intrinsic sizing of ASCII letter words</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background: #20242a; color: #f5f7fa; font: 12px/16px sans-serif; }
+      #cases { display: grid; grid-template-columns: repeat(2, 220px); gap: 12px; }
+      .case { box-sizing: border-box; width: 220px; min-height: 92px; padding: 6px; background: #303741; }
+      .case-title { margin: 0 0 4px; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 40px;
+        height: 80px;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background: #39434f;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-rows: min-content;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+      }
+      .grid[data-columns="min-content"] { grid-template-columns: min-content; }
+      .grid[data-columns="auto"] { grid-template-columns: auto; }
+      .item { box-sizing: border-box; width: 1px; margin: 0; padding: 0; }
+      .first { height: 10px; background: #f2665e; }
+      .word-text {
+        width: auto;
+        height: auto;
+        min-height: auto;
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 10px;
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: normal;
+        background: #5ba8f5;
+      }
+      .short-text {
+        width: auto;
+        height: auto;
+        min-height: auto;
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 10px;
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: normal;
+        background: #f2bd57;
+      }
+      .last { height: 10px; background: #55c791; }
+      .source { display: none; }
+    </style>
+  </head>
+  <body>
+    <main id="cases">
+      <section class="case" data-case="min-content-single-letter-control">
+        <p class="case-title">min-content / single-letter words</p>
+        <div class="grid" data-columns="min-content">
+          <div class="item first"></div>
+          <div class="item word-text">A A A A A A</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="min-content-two-letter-word">
+        <p class="case-title">min-content / AA and A</p>
+        <div class="grid" data-columns="min-content">
+          <div class="item first"></div>
+          <div class="item word-text">AA A A A</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="min-content-mixed-ascii-words">
+        <p class="case-title">min-content / AB, BBB, A</p>
+        <div class="grid" data-columns="min-content">
+          <div class="item first"></div>
+          <div class="item word-text">AB BBB A</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="min-content-lowercase-words">
+        <p class="case-title">min-content / aa, bb, ccc</p>
+        <div class="grid" data-columns="min-content">
+          <div class="item first"></div>
+          <div class="item word-text">aa bb ccc</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="min-content-mixed-ascii-words-reverse-order" data-order="reverse">
+        <p class="case-title">min-content / reverse item order</p>
+        <div class="grid" data-columns="min-content">
+          <div class="item first"></div>
+          <div class="item short-text">A</div>
+          <div class="item word-text">AB BBB A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="auto-two-letter-word">
+        <p class="case-title">auto / AA and A</p>
+        <div class="grid" data-columns="auto">
+          <div class="item first"></div>
+          <div class="item word-text">AA A A A</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="auto-wide-unbreakable-word">
+        <p class="case-title">auto / one 8-letter word</p>
+        <div class="grid" data-columns="auto">
+          <div class="item first"></div>
+          <div class="item word-text">AAAAAAAA</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="auto-mixed-letter-words">
+        <p class="case-title">auto / mixed word lengths</p>
+        <div class="grid" data-columns="auto">
+          <div class="item first"></div>
+          <div class="item word-text">AB BBB A</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="auto-lowercase-words">
+        <p class="case-title">auto / lowercase words</p>
+        <div class="grid" data-columns="auto">
+          <div class="item first"></div>
+          <div class="item word-text">aa bb ccc</div>
+          <div class="item short-text">A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+      <section class="case" data-case="auto-mixed-letter-words-reverse-order" data-order="reverse">
+        <p class="case-title">auto / reverse item order</p>
+        <div class="grid" data-columns="auto">
+          <div class="item first"></div>
+          <div class="item short-text">A</div>
+          <div class="item word-text">AB BBB A</div>
+          <div class="item last"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

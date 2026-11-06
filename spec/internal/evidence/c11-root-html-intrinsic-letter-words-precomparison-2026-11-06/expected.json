@@ -1,0 +1,493 @@
+{
+  "reference": {
+    "source": "CSS Grid Layout Module Level 1 2025 CRD §§11.4–11.7",
+    "text": "CSS Text Module Level 4 §§4.1, 4.3.1 and 4.3.3",
+    "fontMetricInput": "HeadlessChrome 156 canvas advance for 10px generic monospace",
+    "layoutQuantizationCssPx": 0.015625
+  },
+  "method": {
+    "minContent": "maximum advance of an ASCII-letter word separated by collapsible spaces",
+    "autoColumn": "the max-content track fills the 40px definite container unless the automatic minimum is wider",
+    "lineWrapping": "greedy normal-whitespace line breaks between words; a word does not break internally",
+    "independence": "track and row expectations are derived from the source tokens and glyph advance before comparing Chrome used tracks"
+  },
+  "matrix": {
+    "columns": [
+      "min-content",
+      "auto"
+    ],
+    "sourceCases": 10,
+    "acceptedTokenGrammarCandidate": "one or more ASCII letters per token, separated by normal collapsible ASCII whitespace",
+    "limits": [
+      "Unicode",
+      "digits",
+      "punctuation",
+      "non-collapsible whitespace",
+      "other font families"
+    ]
+  },
+  "monospaceGlyphAdvanceCssPx": 6.03125,
+  "monospaceSpaceAdvanceCssPx": 6.03125,
+  "independentlyMeasuredWordAdvanceCssPx": {
+    "A": 6.03125,
+    "AA": 12.046875,
+    "AB": 12.046875,
+    "BBB": 18.0625,
+    "aa": 12.046875,
+    "bb": 12.046875,
+    "ccc": 18.0625,
+    "AAAAAAAA": 48.171875
+  },
+  "cases": [
+    {
+      "id": "min-content-single-letter-control",
+      "source": "A A A A A A",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 1,
+      "independentExpectedColumnsCssPx": 6.03125,
+      "independentExpectedMaxContentCssPx": 66.34375,
+      "independentExpectedRowsCssPx": [
+        10,
+        60,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 6,
+      "chromeObservedColumns": "6.03125px",
+      "chromeObservedRows": "10px 60px 10px 10px",
+      "chromeObservedLongTextLineCount": 6,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          6.03125,
+          60
+        ],
+        [
+          0,
+          70,
+          6.03125,
+          10
+        ],
+        [
+          0,
+          80,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "min-content-two-letter-word",
+      "source": "AA A A A",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 2,
+      "independentExpectedColumnsCssPx": 12.046875,
+      "independentExpectedMaxContentCssPx": 48.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        40,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 4,
+      "chromeObservedColumns": "12.0469px",
+      "chromeObservedRows": "10px 40px 10px 10px",
+      "chromeObservedLongTextLineCount": 4,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          12.046875,
+          40
+        ],
+        [
+          0,
+          50,
+          12.046875,
+          10
+        ],
+        [
+          0,
+          60,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "min-content-mixed-ascii-words",
+      "source": "AB BBB A",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 3,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedMaxContentCssPx": 48.203125,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "18.0625px",
+      "chromeObservedRows": "10px 30px 10px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          18.0625,
+          30
+        ],
+        [
+          0,
+          40,
+          18.0625,
+          10
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "min-content-lowercase-words",
+      "source": "aa bb ccc",
+      "columnsMode": "min-content",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 3,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedMaxContentCssPx": 54.21875,
+      "independentExpectedRowsCssPx": [
+        10,
+        30,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "18.0625px",
+      "chromeObservedRows": "10px 30px 10px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          18.0625,
+          30
+        ],
+        [
+          0,
+          40,
+          18.0625,
+          10
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "min-content-mixed-ascii-words-reverse-order",
+      "source": "AB BBB A",
+      "columnsMode": "min-content",
+      "sourceOrder": "reverse",
+      "maxUnbreakableWordLetters": 3,
+      "independentExpectedColumnsCssPx": 18.0625,
+      "independentExpectedMaxContentCssPx": 48.203125,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        30,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 3,
+      "chromeObservedColumns": "18.0625px",
+      "chromeObservedRows": "10px 10px 30px 10px",
+      "chromeObservedLongTextLineCount": 3,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          18.0625,
+          10
+        ],
+        [
+          0,
+          20,
+          18.0625,
+          30
+        ],
+        [
+          0,
+          50,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "auto-two-letter-word",
+      "source": "AA A A A",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 2,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 48.234375,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 20px 10px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          20
+        ],
+        [
+          0,
+          30,
+          40,
+          10
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "auto-wide-unbreakable-word",
+      "source": "AAAAAAAA",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 8,
+      "independentExpectedColumnsCssPx": 48.171875,
+      "independentExpectedMaxContentCssPx": 48.171875,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 1,
+      "chromeObservedColumns": "48.1719px",
+      "chromeObservedRows": "10px 10px 10px 10px",
+      "chromeObservedLongTextLineCount": 1,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          48.171875,
+          10
+        ],
+        [
+          0,
+          20,
+          48.171875,
+          10
+        ],
+        [
+          0,
+          30,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "auto-mixed-letter-words",
+      "source": "AB BBB A",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 3,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 48.203125,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 20px 10px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          20
+        ],
+        [
+          0,
+          30,
+          40,
+          10
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "auto-lowercase-words",
+      "source": "aa bb ccc",
+      "columnsMode": "auto",
+      "sourceOrder": "forward",
+      "maxUnbreakableWordLetters": 3,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 54.21875,
+      "independentExpectedRowsCssPx": [
+        10,
+        20,
+        10,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 20px 10px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          20
+        ],
+        [
+          0,
+          30,
+          40,
+          10
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "auto-mixed-letter-words-reverse-order",
+      "source": "AB BBB A",
+      "columnsMode": "auto",
+      "sourceOrder": "reverse",
+      "maxUnbreakableWordLetters": 3,
+      "independentExpectedColumnsCssPx": 40,
+      "independentExpectedMaxContentCssPx": 48.203125,
+      "independentExpectedRowsCssPx": [
+        10,
+        10,
+        20,
+        10
+      ],
+      "independentExpectedLongTextLineCount": 2,
+      "chromeObservedColumns": "40px",
+      "chromeObservedRows": "10px 10px 20px 10px",
+      "chromeObservedLongTextLineCount": 2,
+      "chromeObservedRootRelativeItemFramesCssPx": [
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          10
+        ],
+        [
+          0,
+          20,
+          40,
+          20
+        ],
+        [
+          0,
+          40,
+          1,
+          10
+        ]
+      ]
+    }
+  ]
+}
