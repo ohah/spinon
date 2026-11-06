@@ -1,0 +1,21 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "browser": "Agent Browser",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "document": {
+    "width": 1440,
+    "height": 74632,
+    "horizontalOverflow": false
+  },
+  "card": {
+    "textContains": "PR #1205 Rebase and merge",
+    "x": 90,
+    "y": 2234.578125,
+    "width": 928,
+    "height": 122.34375
+  },
+  "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+}
