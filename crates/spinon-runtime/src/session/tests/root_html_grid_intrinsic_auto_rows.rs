@@ -5,6 +5,7 @@ use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 mod auto_row_stretch;
 mod combined_multiple_text;
 mod letter_words;
+mod multiple_auto_row_stretch;
 mod multiple_text;
 mod normal_whitespace;
 
