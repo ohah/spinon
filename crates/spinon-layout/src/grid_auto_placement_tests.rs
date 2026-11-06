@@ -1040,6 +1040,211 @@ fn root_html_two_implicit_auto_rows_respect_supported_content_alignment() {
 }
 
 #[test]
+fn root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow() {
+    let alignments = [
+        ("normal", LayoutAlignContent::Normal),
+        ("stretch", LayoutAlignContent::Stretch),
+        (
+            "start",
+            LayoutAlignContent::Position {
+                position: crate::ContentAlignmentPosition::Start,
+                safety: None,
+            },
+        ),
+        ("flex-start", LayoutAlignContent::FlexStart),
+        (
+            "end",
+            LayoutAlignContent::Position {
+                position: crate::ContentAlignmentPosition::End,
+                safety: None,
+            },
+        ),
+        ("flex-end", LayoutAlignContent::FlexEnd),
+        ("center", LayoutAlignContent::Center),
+        ("space-between", LayoutAlignContent::SpaceBetween),
+        ("space-around", LayoutAlignContent::SpaceAround),
+        ("space-evenly", LayoutAlignContent::SpaceEvenly),
+    ];
+    let make_input = |align_content, row_gap| {
+        let mut input = sparse_grid(1, 1, 3);
+        input.viewport = Viewport {
+            width: 40.0,
+            height: 40.0,
+        };
+        input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
+        input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+        input.nodes[0].style.align_content = Some(align_content);
+        input.nodes[0].style.gap.row = LayoutLengthPercentage::LengthPx(row_gap);
+        for node in input.nodes.iter_mut().skip(1) {
+            node.style.display = LayoutDisplay::Block;
+            node.style.width = LayoutDimension::Fixed(40.0);
+            node.style.height = LayoutDimension::Fixed(10.0);
+        }
+        let container = input.grid_containers.get_mut(&id(1)).unwrap();
+        container.columns = vec![GridTrackSize::LengthPx(40.0)];
+        container.rows = vec![GridTrackSize::LengthPx(10.0)];
+        container.auto_rows = GridAutoRows::Auto;
+        container.placement_mode = GridPlacementMode::RootHtmlAutoRowStretchV1;
+        container.track_sizing_trace_enabled = true;
+        input
+    };
+
+    for row_gap in [0.0, 2.5, 5.0, 7.5] {
+        // The 40px content box contains three 10px rows and two fixed gutters.
+        let free_space = 10.0 - 2.0 * row_gap;
+        for (name, align_content) in alignments {
+            let stretches = matches!(
+                align_content,
+                LayoutAlignContent::Normal | LayoutAlignContent::Stretch
+            ) && free_space > 0.0;
+            let row_sizes = if stretches {
+                [10.0, 10.0 + free_space / 2.0, 10.0 + free_space / 2.0]
+            } else {
+                [10.0, 10.0, 10.0]
+            };
+            let base_y = [
+                0.0,
+                row_sizes[0] + row_gap,
+                row_sizes[0] + row_gap + row_sizes[1] + row_gap,
+            ];
+            let expected_y = match align_content {
+                LayoutAlignContent::Normal | LayoutAlignContent::Stretch => base_y,
+                LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::End,
+                    ..
+                }
+                | LayoutAlignContent::FlexEnd => base_y.map(|y| y + free_space),
+                LayoutAlignContent::Center => base_y.map(|y| y + free_space / 2.0),
+                LayoutAlignContent::SpaceBetween if free_space > 0.0 => [
+                    base_y[0],
+                    base_y[1] + free_space / 2.0,
+                    base_y[2] + free_space,
+                ],
+                LayoutAlignContent::SpaceAround if free_space > 0.0 => [
+                    base_y[0] + free_space / 6.0,
+                    base_y[1] + free_space / 2.0,
+                    base_y[2] + 5.0 * free_space / 6.0,
+                ],
+                LayoutAlignContent::SpaceEvenly if free_space > 0.0 => [
+                    base_y[0] + free_space / 4.0,
+                    base_y[1] + free_space / 2.0,
+                    base_y[2] + 3.0 * free_space / 4.0,
+                ],
+                // Distributed alignments use their safe start fallback when space is negative.
+                LayoutAlignContent::SpaceBetween
+                | LayoutAlignContent::SpaceAround
+                | LayoutAlignContent::SpaceEvenly => base_y,
+                LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::Start,
+                    ..
+                }
+                | LayoutAlignContent::FlexStart => base_y,
+                unsupported => panic!("unexpected alignment profile variant {unsupported:?}"),
+            };
+            let input = make_input(align_content, row_gap);
+            super::validate_root_html_intrinsic_tracks_contract(
+                id(1),
+                input.nodes[0].style,
+                &input.grid_containers[&id(1)],
+            )
+            .unwrap_or_else(|error| {
+                panic!("{name}, row-gap:{row_gap}px: contract rejected input: {error:?}")
+            });
+            let output = TaffyLayoutEngine.compute(&input).unwrap_or_else(|error| {
+                panic!("{name}, row-gap:{row_gap}px: layout rejected input: {error:?}")
+            });
+            let frames = [id(2), id(3), id(4)].map(|node| {
+                let frame = output.frames[&node];
+                [frame.x, frame.y, frame.width, frame.height]
+            });
+            for (index, (actual, expected_y)) in frames.iter().zip(expected_y).enumerate() {
+                assert_eq!(actual[0], 0.0, "{name}, gap {row_gap}: frame {index} x");
+                assert!(
+                    (actual[1] - expected_y).abs() <= 1.0 / 32.0,
+                    "{name}, row-gap:{row_gap}px, frame {index}: expected y={expected_y}, got {actual:?}"
+                );
+                assert_eq!(
+                    actual[2], 40.0,
+                    "{name}, gap {row_gap}: frame {index} width"
+                );
+                assert_eq!(
+                    actual[3], 10.0,
+                    "{name}, gap {row_gap}: frame {index} height"
+                );
+            }
+            let trace = output
+                .grid_track_sizing_traces
+                .iter()
+                .find(|trace| trace.node == id(1))
+                .unwrap_or_else(|| panic!("{name}, gap {row_gap}: missing track trace"));
+            let stretch_stage = trace
+                .passes
+                .iter()
+                .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+                .and_then(|pass| {
+                    pass.stages.iter().find(|stage| {
+                        matches!(
+                            stage.stage,
+                            LayoutGridTrackSizingStageKind::StretchAutoTracks { .. }
+                        )
+                    })
+                })
+                .unwrap_or_else(|| panic!("{name}, gap {row_gap}: missing stretch stage"));
+            let actual_rows = stretch_stage
+                .tracks
+                .iter()
+                .filter(|track| !track.is_gutter && !track.is_collapsed)
+                .map(|track| track.base_size)
+                .collect::<Vec<_>>();
+            assert_eq!(actual_rows.len(), 3, "{name}, gap {row_gap}: track count");
+            for (index, (actual, expected)) in actual_rows.iter().zip(row_sizes).enumerate() {
+                assert!(
+                    (actual - expected).abs() <= 1.0 / 32.0,
+                    "{name}, row-gap:{row_gap}px, row {index}: expected {expected}, got {actual}"
+                );
+            }
+        }
+    }
+
+    for (property, gap) in [
+        (
+            "row-gap",
+            LayoutGap {
+                row: LayoutLengthPercentage::LengthPx(7.5001),
+                column: LayoutLengthPercentage::ZERO,
+            },
+        ),
+        (
+            "row-gap",
+            LayoutGap {
+                row: LayoutLengthPercentage::Percentage(0.05),
+                column: LayoutLengthPercentage::ZERO,
+            },
+        ),
+        (
+            "column-gap",
+            LayoutGap {
+                row: LayoutLengthPercentage::ZERO,
+                column: LayoutLengthPercentage::LengthPx(0.5),
+            },
+        ),
+    ] {
+        let mut input = make_input(LayoutAlignContent::Normal, 0.0);
+        input.nodes[0].style.gap = gap;
+        assert!(
+            matches!(
+                TaffyLayoutEngine.compute(&input),
+                Err(crate::LayoutError::UnsupportedGridContainerStyle {
+                    node,
+                    property: rejected_property,
+                }) if node == id(1) && rejected_property == property
+            ),
+            "{property}={gap:?} must remain outside the bounded profile"
+        );
+    }
+}
+
+#[test]
 fn root_html_intrinsic_track_sizing_does_not_admit_automatic_implicit_rows() {
     let mut input = sparse_grid(1, 1, 2);
     input.viewport.height = 40.0;
