@@ -147,21 +147,29 @@ fi
 adb -s "$android_serial" shell run-as "$bundle_id" rm -f "$pixelcopy_cache"
 printf 'pixelcopy_cache_reset=removed only %s after preserving any prior PNG\n' "$pixelcopy_cache" \
   >> "$run_dir/environment.txt"
-adb -s "$android_serial" logcat -c
 adb -s "$android_serial" shell am start -S -n "$bundle_id/.MainActivity" \
   --ez spinon_root_html_letter_word_pixelcopy true \
   --es spinon_root_html_letter_word_pixelcopy_run_id "$run_id" \
   > "$run_dir/android/launch.log" 2>&1
 pixelcopy_ready=0
+android_pid=""
 for attempt in $(seq 1 100); do
-  if adb -s "$android_serial" logcat -d -s SpinonBootstrap \
-      | rg -q "SPINON_C111WORD_PIXELCOPY_SUMMARY status=matched run_id=$run_id.*expected_samples=1.*matched_samples=1"; then
+  android_pid="$(adb -s "$android_serial" shell pidof "$bundle_id" | tr -d '\r' || true)"
+  if [[ "$android_pid" =~ ^[0-9]+$ ]] \
+      && adb -s "$android_serial" logcat -d -s SpinonBootstrap \
+          | awk -v pid="$android_pid" '$3 == pid' \
+          | rg -q "SPINON_C111WORD_PIXELCOPY_SUMMARY status=matched run_id=$run_id.*expected_samples=1.*matched_samples=1"; then
     pixelcopy_ready=1
     break
   fi
   sleep 0.2
 done
-adb -s "$android_serial" logcat -d -s SpinonBootstrap > "$run_dir/android/app.log"
+if [[ ! "$android_pid" =~ ^[0-9]+$ ]]; then
+  echo "Android app process PID was not observed" >&2
+  exit 1
+fi
+adb -s "$android_serial" logcat -d -s SpinonBootstrap \
+  | awk -v pid="$android_pid" '$3 == pid' > "$run_dir/android/app.log"
 if [[ "$pixelcopy_ready" != 1 ]]; then
   echo "Android PixelCopy did not report one matched sample" >&2
   exit 1
@@ -190,9 +198,16 @@ xcrun simctl install "$ios_udid" "$ios_app" > "$run_dir/ios/install.log"
 xcrun simctl launch "$ios_udid" "$bundle_id" \
   "--spinon-root-html-grid-auto-minimum-metal-surface-pixels=$run_id" \
   > "$run_dir/ios/launch.log"
+ios_pid="$(awk -F': ' '/^dev\.spinon\.bootstrap: [0-9]+$/ { print $2 }' "$run_dir/ios/launch.log")"
+if [[ ! "$ios_pid" =~ ^[0-9]+$ ]]; then
+  echo "iOS app process PID was not reported by simctl launch" >&2
+  exit 1
+fi
 sleep 3
 xcrun simctl spawn "$ios_udid" log show --last 3m --style compact \
-  --predicate 'process == "SpinonBootstrap"' > "$run_dir/ios/app.log"
+  --predicate 'process == "SpinonBootstrap"' \
+  | awk -v pid="$ios_pid" 'index($0, "SpinonBootstrap[" pid ":") > 0' \
+  > "$run_dir/ios/app.log"
 rg -q "SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass" "$run_dir/ios/app.log"
 rg -q "SPINON_C111WORD_METAL_PIXEL_SUMMARY status=matched run_id=$run_id.*expected_samples=1.*matched_samples=1" "$run_dir/ios/app.log"
 test "$(rg -c "SPINON_C111WORD_METAL_PIXEL_SAMPLE run_id=$run_id.*exact=true" "$run_dir/ios/app.log")" -eq 1
