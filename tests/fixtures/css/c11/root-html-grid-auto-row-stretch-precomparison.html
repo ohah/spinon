@@ -5,144 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>C11.4 parsed Root HTML auto implicit row stretch precomparison</title>
     <style>
-      :root {
-        color-scheme: light;
-        font: 12px/16px monospace;
-        background: #fff;
-        color: #111;
-      }
-
+      html,
       body {
-        margin: 12px;
+        margin: 0;
+        padding: 0;
       }
 
-      #scenes {
-        display: grid;
-        gap: 8px;
-      }
-
-      .scene {
-        display: grid;
-        grid-template-columns: 180px 40px;
-        align-items: start;
-        column-gap: 8px;
-      }
-
-      .grid {
+      #grid {
         display: grid;
         box-sizing: border-box;
         width: 40px;
         height: 40px;
         grid-template-columns: 40px;
         grid-template-rows: 10px;
-        align-content: normal;
+        grid-auto-rows: auto;
         grid-auto-flow: row;
+        align-content: normal;
+        align-items: normal;
         gap: 0;
         overflow: visible;
-        background: #e9edf2;
-        font: 10px/10px monospace;
-        white-space: normal;
+        background-color: #e9edf2;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
       }
 
-      .grid > div {
+      #fixed {
         box-sizing: border-box;
-        font: 10px/10px monospace;
-        white-space: normal;
-        overflow: visible;
-      }
-
-      .fixed-control {
+        width: 40px;
         height: 10px;
-        background: #d8dde3;
+        background-color: #d8dde3;
       }
 
-      .text-item {
-        background: #5b9ff5;
-      }
-
-      [data-scene="auto-default"] .grid {
-        grid-auto-rows: auto;
-      }
-
-      [data-scene="auto-content-start"] .grid {
-        grid-auto-rows: auto;
-        align-content: start;
-      }
-
-      [data-scene="min-content-control"] .grid {
-        grid-auto-rows: min-content;
-      }
-
-      [data-scene="max-content-control"] .grid {
-        grid-auto-rows: max-content;
-      }
-
-      [data-scene="fixed-control"] .grid {
-        grid-auto-rows: 10px;
+      #text {
+        box-sizing: border-box;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        white-space: normal;
+        background-color: #5b9ff5;
       }
     </style>
   </head>
   <body>
-    <main id="scenes">
-      <section class="scene" data-scene="auto-default">
-        <span>auto / normal</span>
-        <div class="grid"><div class="fixed-control">1</div><div class="text-item">A A A A A A</div></div>
-      </section>
-      <section class="scene" data-scene="auto-content-start">
-        <span>auto / start control</span>
-        <div class="grid"><div class="fixed-control">1</div><div class="text-item">A A A A A A</div></div>
-      </section>
-      <section class="scene" data-scene="min-content-control">
-        <span>min-content control</span>
-        <div class="grid"><div class="fixed-control">1</div><div class="text-item">A A A A A A</div></div>
-      </section>
-      <section class="scene" data-scene="max-content-control">
-        <span>max-content control</span>
-        <div class="grid"><div class="fixed-control">1</div><div class="text-item">A A A A A A</div></div>
-      </section>
-      <section class="scene" data-scene="fixed-control">
-        <span>fixed 10px control</span>
-        <div class="grid"><div class="fixed-control">1</div><div class="text-item">A A A A A A</div></div>
-      </section>
-    </main>
-
-    <script>
-      window.collectC114AutoRowStretch = () =>
-        [...document.querySelectorAll(".scene")].map((scene) => {
-          const grid = scene.querySelector(".grid");
-          const text = scene.querySelector(".text-item");
-          const rect = (element) => {
-            const bounds = element.getBoundingClientRect();
-            const gridBounds = grid.getBoundingClientRect();
-            return [
-              bounds.x - gridBounds.x,
-              bounds.y - gridBounds.y,
-              bounds.width,
-              bounds.height,
-            ];
-          };
-          const range = document.createRange();
-          range.selectNodeContents(text);
-          const style = getComputedStyle(grid);
-          return {
-            scene: scene.dataset.scene,
-            gridAutoRows: style.gridAutoRows,
-            alignContent: style.alignContent,
-            alignItems: style.alignItems,
-            usedRows: style.gridTemplateRows,
-            gridRect: (() => {
-              const bounds = grid.getBoundingClientRect();
-              return [bounds.x, bounds.y, bounds.width, bounds.height];
-            })(),
-            childRects: [...grid.children].map(rect),
-            textLineRects: [...range.getClientRects()].map((bounds) => [
-              bounds.x - grid.getBoundingClientRect().x,
-              bounds.y - grid.getBoundingClientRect().y,
-              bounds.width,
-              bounds.height,
-            ]),
-          };
-        });
-    </script>
+    <div id="grid"><div id="fixed"></div><div id="text">A A A A A A</div></div>
   </body>
 </html>

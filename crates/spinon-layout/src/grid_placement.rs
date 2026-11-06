@@ -87,6 +87,7 @@ pub(super) fn normalize_grid_layout(
                     | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                     | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                     | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                    | GridPlacementMode::RootHtmlAutoRowStretchV1
             )
         {
             root_html_one_axis_placement::validate_items(
@@ -146,6 +147,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                | GridPlacementMode::RootHtmlAutoRowStretchV1
                 | GridPlacementMode::RootHtmlAutoRepeatV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
@@ -184,6 +186,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                | GridPlacementMode::RootHtmlAutoRowStretchV1
         ) {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,
@@ -193,7 +196,10 @@ pub(super) fn normalize_grid_layout(
                 container,
             )?;
             if let Some(rows) = sparse.expanded_rows {
-                if container.placement_mode != GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 {
+                if !container
+                    .placement_mode
+                    .is_root_html_intrinsic_track_sizing()
+                {
                     return Err(LayoutError::GridImplicitTrackRequired(container_node.id));
                 }
                 output.expanded_rows.insert(container_node.id, rows);
@@ -305,6 +311,7 @@ pub(super) fn normalize_grid_item_placements(
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+                | GridPlacementMode::RootHtmlAutoRowStretchV1
                 | GridPlacementMode::RootHtmlAutoRepeatV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid

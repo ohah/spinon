@@ -46,8 +46,9 @@ use grid_placement_values::project_grid_item_placement;
 use grid_values::{
     project_grid_layout_with_math,
     project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
-    project_root_html_one_axis_grid_layout_with_math, root_html_has_intrinsic_explicit_tracks,
-    root_html_has_intrinsic_implicit_min_content_rows, root_html_intrinsic_auto_rows_candidate,
+    project_root_html_one_axis_grid_layout_with_math, root_html_auto_row_stretch_candidate,
+    root_html_has_intrinsic_explicit_tracks, root_html_has_intrinsic_implicit_min_content_rows,
+    root_html_intrinsic_auto_rows_candidate,
 };
 use positioning_values::parse_positioning;
 use primitive_values::{
@@ -388,16 +389,34 @@ pub(super) fn project_styles(
             .iter()
             .copied(),
     );
+    let root_html_auto_row_stretch_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            snapshot
+                .elements
+                .iter()
+                .filter(|element| {
+                    grid_nodes
+                        .as_ref()
+                        .is_some_and(|nodes| nodes.grid_containers.contains(&element.node_id))
+                        && !root_html_direct_text_ratio_scene_owners.contains(&element.node_id)
+                        && root_html_auto_row_stretch_element_candidate(element)
+                })
+                .map(|element| element.node_id)
+                .collect::<BTreeSet<_>>()
+        } else {
+            BTreeSet::new()
+        };
     let root_html_intrinsic_track_sizing_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             snapshot
                 .elements
                 .iter()
                 .filter(|element| {
-                    element.grid_layout.as_ref().is_some_and(|grid| {
-                        root_html_has_intrinsic_explicit_tracks(grid)
-                            || root_html_has_intrinsic_implicit_min_content_rows(grid)
-                    }) && !root_html_direct_text_ratio_scene_owners.contains(&element.node_id)
+                    !root_html_direct_text_ratio_scene_owners.contains(&element.node_id)
+                        && (element.grid_layout.as_ref().is_some_and(|grid| {
+                            root_html_has_intrinsic_explicit_tracks(grid)
+                                || root_html_has_intrinsic_implicit_min_content_rows(grid)
+                        }) || root_html_auto_row_stretch_nodes.contains(&element.node_id))
                 })
                 .map(|element| element.node_id)
                 .collect::<BTreeSet<_>>()
@@ -1163,6 +1182,13 @@ pub(super) fn project_styles(
                     spinon_layout::GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1;
             }
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && root_html_auto_row_stretch_nodes.contains(&node)
+            {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlAutoRowStretchV1;
+                container.track_sizing_trace_enabled = true;
+            }
+            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_one_axis_placement_route_nodes.contains(&node)
                 && !root_html_intrinsic_track_sizing_nodes.contains(&node)
             {
@@ -1416,6 +1442,23 @@ struct RuntimeGridNodes {
     grid_item_owners: BTreeMap<NodeId, NodeId>,
 }
 
+fn root_html_auto_row_stretch_element_candidate(element: &ComputedElementStyle) -> bool {
+    element
+        .grid_layout
+        .as_ref()
+        .is_some_and(root_html_auto_row_stretch_candidate)
+        && [
+            ("align-content", "normal"),
+            ("align-items", "normal"),
+            ("justify-content", "normal"),
+            ("justify-items", "normal"),
+        ]
+        .into_iter()
+        .all(|(property, expected)| {
+            element.properties.get(property).map(String::as_str) == Some(expected)
+        })
+}
+
 fn validate_root_html_intrinsic_auto_row_items(
     tree: &HostDocumentSnapshot,
     snapshot: &ComputedStyleSnapshot,
@@ -1428,10 +1471,10 @@ fn validate_root_html_intrinsic_auto_row_items(
         .filter(|element| {
             nodes.grid_containers.contains(&element.node_id)
                 && !direct_text_ratio_owners.contains(&element.node_id)
-                && element
-                    .grid_layout
-                    .as_ref()
-                    .is_some_and(root_html_intrinsic_auto_rows_candidate)
+                && element.grid_layout.as_ref().is_some_and(|grid| {
+                    root_html_intrinsic_auto_rows_candidate(grid)
+                        || root_html_auto_row_stretch_candidate(grid)
+                })
         })
         .collect::<Vec<_>>();
     if candidates.is_empty() {
@@ -1455,6 +1498,7 @@ fn validate_root_html_intrinsic_auto_row_items(
         ));
     }
     let element = candidates[0];
+    let auto_row_stretch = root_html_auto_row_stretch_element_candidate(element);
     let mut item_count = 0usize;
     {
         let Some(grid) = element.grid_layout.as_ref() else {
@@ -1463,7 +1507,7 @@ fn validate_root_html_intrinsic_auto_row_items(
             ));
         };
         if !nodes.grid_containers.contains(&element.node_id)
-            || !root_html_intrinsic_auto_rows_candidate(grid)
+            || (!root_html_intrinsic_auto_rows_candidate(grid) && !auto_row_stretch)
         {
             return Err(unsupported(
                 "Root HTML intrinsic implicit rows lost their owner route",
@@ -1474,6 +1518,31 @@ fn validate_root_html_intrinsic_auto_row_items(
                 "Root HTML intrinsic implicit rows require a parsed Grid owner",
             ));
         };
+        if auto_row_stretch {
+            let dimensions = element.layout_dimensions;
+            let exact_40px = |dimension| matches!(dimension, ComputedCssDimension::LengthPx(value) if value == 40.0);
+            let automatic_size = dimensions.min_width == ComputedCssDimension::Auto
+                && dimensions.max_width == ComputedCssMaxSize::None
+                && dimensions.min_height == ComputedCssDimension::Auto
+                && dimensions.max_height == ComputedCssMaxSize::None;
+            if !exact_40px(dimensions.width)
+                || !exact_40px(dimensions.height)
+                || !automatic_size
+                || element.layout_aspect_ratio.is_some()
+                || element.layout_position != ComputedCssPosition::Static
+                || element.layout_spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0)
+                || element.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
+                || ["align-content", "align-items"]
+                    .into_iter()
+                    .any(|property| {
+                        element.properties.get(property).map(String::as_str) != Some("normal")
+                    })
+            {
+                return Err(unsupported(
+                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero gap, align-content:normal, and align-items:normal",
+                ));
+            }
+        }
         let children = tree
             .children(owner)
             .ok_or_else(|| {
@@ -1506,11 +1575,17 @@ fn validate_root_html_intrinsic_auto_row_items(
                 "Root HTML intrinsic implicit rows exceed the 10,000-track limit",
             ));
         }
+        if auto_row_stretch && visible_item_count != 2 {
+            return Err(unsupported(
+                "Root HTML auto-row stretch requires exactly two visible direct items",
+            ));
+        }
         let item_styles_by_node = snapshot
             .elements
             .iter()
             .map(|item| (item.node_id, item))
             .collect::<BTreeMap<_, _>>();
+        let mut visible_item_index = 0usize;
         for child in children {
             if nodes.hidden.contains(&child.id()) {
                 continue;
@@ -1581,6 +1656,18 @@ fn validate_root_html_intrinsic_auto_row_items(
                     ));
                 }
             };
+            let item_index = visible_item_index;
+            visible_item_index = visible_item_index.checked_add(1).ok_or_else(|| {
+                unsupported("Root HTML intrinsic implicit row item count overflowed")
+            })?;
+            if auto_row_stretch
+                && ((item_index == 0 && text_item) || (item_index == 1 && !text_item))
+            {
+                return Err(unsupported_item(
+                    child.id(),
+                    "Root HTML auto-row stretch requires one empty fixed item followed by one direct-text item",
+                ));
+            }
             let Some(item_style) = item_styles_by_node.get(&child.id()).copied() else {
                 return Err(unsupported_item(
                     child.id(),
@@ -1620,6 +1707,14 @@ fn validate_root_html_intrinsic_auto_row_items(
                 } else {
                     fixed_nonnegative(dimensions.height)
                 };
+            let auto_row_stretch_size = !auto_row_stretch
+                || text_item
+                || (dimensions.width == ComputedCssDimension::LengthPx(40.0)
+                    && dimensions.height == ComputedCssDimension::LengthPx(10.0));
+            let auto_row_stretch_alignment = !auto_row_stretch
+                || ["align-self", "justify-self"].into_iter().all(|property| {
+                    item_style.properties.get(property).map(String::as_str) == Some("auto")
+                });
             let supported_text_style = !text_item
                 || (item_style.font_size_css_px == 10.0
                     && [
@@ -1644,6 +1739,8 @@ fn validate_root_html_intrinsic_auto_row_items(
                             .is_some_and(|value| value == expected)
                     }));
             if !supported_size
+                || !auto_row_stretch_size
+                || !auto_row_stretch_alignment
                 || item_style.layout_aspect_ratio.is_some()
                 || item_style.layout_position != ComputedCssPosition::Static
                 || !auto_placement
@@ -1671,6 +1768,11 @@ fn validate_root_html_intrinsic_auto_row_items(
     if item_count == 0 {
         return Err(unsupported(
             "Root HTML intrinsic implicit rows require at least one visible direct item",
+        ));
+    }
+    if auto_row_stretch && item_count != 2 {
+        return Err(unsupported(
+            "Root HTML auto-row stretch requires exactly two visible direct items",
         ));
     }
     Ok(())
@@ -1833,12 +1935,15 @@ fn validate_root_html_grid_item_capacity(
                 && root_implicit_rows_common
                 && single_positive_px_track(&grid.rows)
                 && (intrinsic_column_auto_row_capacity || fixed_track_auto_row_capacity);
+        let auto_row_stretch_capacity =
+            grid_values::root_html_auto_row_stretch_candidate(grid) && root_implicit_rows_common;
         let fixed_root_implicit_rows =
             grid_values::root_html_has_supported_implicit_rows(&grid.auto_rows)
                 && root_implicit_rows_common
                 && grid.columns.iter().all(is_fixed_implicit_row_track)
                 && grid.rows.iter().all(is_fixed_implicit_row_track);
-        let supported_root_implicit_rows = fixed_root_implicit_rows || intrinsic_auto_row_capacity;
+        let supported_root_implicit_rows =
+            fixed_root_implicit_rows || intrinsic_auto_row_capacity || auto_row_stretch_capacity;
         let implicit_row_capacity = supported_root_implicit_rows
             .then(|| {
                 grid.columns

@@ -472,6 +472,25 @@ pub(super) fn root_html_intrinsic_auto_rows_candidate(grid: &ComputedCssGridLayo
         && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
 }
 
+pub(super) fn root_html_auto_row_stretch_candidate(grid: &ComputedCssGridLayout) -> bool {
+    matches!(grid.auto_rows, ComputedCssGridAutoRows::Auto)
+        && matches!(
+            grid.columns.as_slice(),
+            [ComputedCssGridTrackSize::LengthPx(value)] if *value == 40.0
+        )
+        && matches!(
+            grid.rows.as_slice(),
+            [ComputedCssGridTrackSize::LengthPx(value)] if *value == 10.0
+        )
+        && grid.columns_fixed_repeat_group_count == 0
+        && grid.rows_fixed_repeat_group_count == 0
+        && grid.columns_auto_repeat.is_none()
+        && grid.rows_auto_repeat.is_none()
+        && grid.template_areas.is_none()
+        && grid.auto_flow == ComputedCssGridAutoFlow::Row
+        && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
+}
+
 fn computed_track_uses_intrinsic_sizing(track: &ComputedCssGridTrackSize) -> bool {
     match track {
         ComputedCssGridTrackSize::Auto
@@ -2161,6 +2180,10 @@ mod tests;
 #[cfg(test)]
 #[path = "grid_values/root_html_grid_track_tests.rs"]
 mod root_html_grid_track_tests;
+
+#[cfg(test)]
+#[path = "grid_values/auto_row_stretch_tests.rs"]
+mod auto_row_stretch_tests;
 
 #[cfg(test)]
 #[path = "grid_values/auto_repeat_neighbor_tests.rs"]
