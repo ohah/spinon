@@ -836,6 +836,73 @@ fn root_html_intrinsic_track_sizing_stretches_an_automatic_implicit_row() {
 }
 
 #[test]
+fn root_html_two_implicit_auto_rows_stretch_equally_for_normal_and_stretch() {
+    let mut observed = Vec::new();
+    for align_content in [LayoutAlignContent::Normal, LayoutAlignContent::Stretch] {
+        let mut input = sparse_grid(1, 1, 3);
+        input.viewport = Viewport {
+            width: 40.0,
+            height: 40.0,
+        };
+        input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
+        input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+        input.nodes[0].style.align_content = Some(align_content);
+        for (index, node) in input.nodes.iter_mut().skip(1).enumerate() {
+            node.style.display = LayoutDisplay::Block;
+            node.style.width = LayoutDimension::Fixed(40.0);
+            node.style.height = if index == 0 {
+                LayoutDimension::Fixed(10.0)
+            } else {
+                LayoutDimension::Auto
+            };
+        }
+        let container = input.grid_containers.get_mut(&id(1)).unwrap();
+        container.columns = vec![GridTrackSize::LengthPx(40.0)];
+        container.rows = vec![GridTrackSize::LengthPx(10.0)];
+        container.auto_rows = GridAutoRows::Auto;
+        container.placement_mode = GridPlacementMode::RootHtmlAutoRowStretchV1;
+        container.track_sizing_trace_enabled = true;
+
+        super::validate_root_html_intrinsic_tracks_contract(
+            id(1),
+            input.nodes[0].style,
+            &input.grid_containers[&id(1)],
+        )
+        .unwrap_or_else(|error| {
+            panic!("intrinsic validation rejected {align_content:?}: {error:?}")
+        });
+
+        let output = TaffyLayoutEngine.compute(&input).unwrap_or_else(|error| {
+            panic!("alignment {align_content:?} should be accepted: {error:?}")
+        });
+        let frames = [id(2), id(3), id(4)].map(|node| {
+            let frame = output.frames[&node];
+            [frame.x, frame.y, frame.width, frame.height]
+        });
+        assert_eq!(
+            frames,
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [0.0, 10.0, 40.0, 15.0],
+                [0.0, 25.0, 40.0, 15.0],
+            ],
+            "alignment {align_content:?} should use the independently derived frames"
+        );
+
+        let trace = output
+            .grid_track_sizing_traces
+            .iter()
+            .find(|trace| trace.node == id(1))
+            .expect("the Grid should retain its track-sizing trace");
+        assert_eq!(trace.used_rows.used_track_list, "10px 15px 15px");
+        assert_eq!(trace.used_rows.explicit_track_count, 1);
+        assert_eq!(trace.used_rows.positive_implicit_track_count, 2);
+        observed.push(frames);
+    }
+    assert_eq!(observed[0], observed[1]);
+}
+
+#[test]
 fn root_html_intrinsic_track_sizing_does_not_admit_automatic_implicit_rows() {
     let mut input = sparse_grid(1, 1, 2);
     input.viewport.height = 40.0;

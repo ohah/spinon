@@ -5,8 +5,14 @@ use spinon_render::RuntimePaintCommand;
 const SOURCE: &str = include_str!(
     "../../../../../../tests/fixtures/css/c11/root-html-multiple-auto-row-stretch-runtime.html"
 );
+const EXPLICIT_STRETCH_SOURCE: &str = include_str!(
+    "../../../../../../tests/fixtures/css/c11/root-html-multiple-auto-row-align-content-stretch-precomparison.html"
+);
 const EXPECTED: &str = include_str!(
     "../../../../../../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-precomparison-2026-11-07/expected.json"
+);
+const EXPLICIT_STRETCH_EXPECTED: &str = include_str!(
+    "../../../../../../spec/internal/evidence/c11-root-html-explicit-align-content-stretch-precomparison-2026-11-07/expected.json"
 );
 
 #[test]
@@ -161,6 +167,148 @@ fn parsed_root_html_stretches_two_implicit_auto_rows_equally() {
 }
 
 #[test]
+fn parsed_root_html_explicit_align_content_stretch_matches_normal() {
+    let expected: Value = serde_json::from_str(EXPLICIT_STRETCH_EXPECTED)
+        .expect("explicit align-content stretch oracle should be valid JSON");
+    let (normal_session, normal_layout) = run(SOURCE);
+    let (stretch_session, stretch_layout) = run(EXPLICIT_STRETCH_SOURCE);
+
+    for (label, session, layout) in [
+        ("normal", &normal_session, &normal_layout),
+        ("stretch", &stretch_session, &stretch_layout),
+    ] {
+        let cascade = session.ua_cascade_snapshot();
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "{label}: layout error={:?}; cascade error={:?}",
+            layout.error,
+            cascade.error
+        );
+        let completed = layout
+            .completed
+            .as_ref()
+            .unwrap_or_else(|| panic!("{label}: layout should publish a completed snapshot"));
+        assert_eq!(
+            completed.key,
+            cascade
+                .completed
+                .as_ref()
+                .unwrap_or_else(|| panic!("{label}: cascade should complete"))
+                .key,
+            "{label}: style and layout revisions should match"
+        );
+        assert_eq!(
+            completed
+                .render_snapshot
+                .as_ref()
+                .unwrap_or_else(|| panic!("{label}: Root HTML should publish paint boxes"))
+                .texts()
+                .len(),
+            2,
+            "{label}: both direct text items should paint"
+        );
+    }
+
+    let normal_scene = normal_layout
+        .completed
+        .as_ref()
+        .and_then(|completed| completed.render_snapshot.as_ref())
+        .expect("normal control should publish a render snapshot");
+    let stretch_completed = stretch_layout
+        .completed
+        .as_ref()
+        .expect("explicit stretch should publish a completed layout");
+    let stretch_scene = stretch_completed
+        .render_snapshot
+        .as_ref()
+        .expect("explicit stretch should publish a render snapshot");
+    let painted_geometry = |scene: &spinon_render::RuntimeRenderSnapshot| {
+        scene
+            .boxes()
+            .iter()
+            .filter(|render_box| {
+                matches!(render_box.paint(), RuntimePaint::Opaque(color)
+                    if [
+                        OpaqueCssSrgb::new(233, 237, 242),
+                        OpaqueCssSrgb::new(216, 221, 227),
+                        OpaqueCssSrgb::new(91, 159, 245),
+                    ]
+                    .contains(&color))
+            })
+            .map(|render_box| {
+                let frame = render_box.frame_css_px();
+                (
+                    render_box.node_id().get(),
+                    [frame.x(), frame.y(), frame.width(), frame.height()],
+                )
+            })
+            .collect::<Vec<_>>()
+    };
+    let normal_geometry = painted_geometry(normal_scene);
+    let stretch_geometry = painted_geometry(stretch_scene);
+    assert_eq!(
+        normal_geometry, stretch_geometry,
+        "normal and computed stretch should preserve item identity, source order, and frames"
+    );
+
+    let expected_frames = |key: &str| {
+        expected["independent_expectations"][key]["item_rects_grid_css_px"]
+            .as_array()
+            .expect("oracle should list item frames")
+            .iter()
+            .map(|frame| {
+                frame
+                    .as_array()
+                    .expect("item frame should be an array")
+                    .iter()
+                    .map(|value| value.as_f64().expect("frame component should be numeric") as f32)
+                    .collect::<Vec<_>>()
+                    .try_into()
+                    .expect("item frame should have four components")
+            })
+            .collect::<Vec<[f32; 4]>>()
+    };
+    let expected_normal = expected_frames("normal-control");
+    let expected_stretch = expected_frames("explicit-stretch-two-implicit");
+    assert_eq!(expected_normal, expected_stretch);
+    assert_eq!(
+        stretch_geometry.len(),
+        4,
+        "one Grid and three items should paint"
+    );
+    assert_eq!(
+        stretch_geometry[0].1,
+        [0.0, 0.0, 40.0, 40.0],
+        "Grid frame should retain the fixed 40x40 content size"
+    );
+    assert_eq!(
+        stretch_geometry
+            .iter()
+            .skip(1)
+            .map(|(_, frame)| *frame)
+            .collect::<Vec<_>>(),
+        expected_stretch,
+        "explicit stretch must match the independent CSS Grid frames"
+    );
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    {
+        let mut text_boxes = stretch_scene
+            .boxes()
+            .iter()
+            .filter(|render_box| {
+                matches!(render_box.paint(), RuntimePaint::Opaque(color)
+                    if color == OpaqueCssSrgb::new(91, 159, 245))
+            })
+            .collect::<Vec<_>>();
+        text_boxes
+            .sort_by(|left, right| left.frame_css_px().y().total_cmp(&right.frame_css_px().y()));
+        assert_two_auto_row_stretch_trace(stretch_completed, &text_boxes);
+    }
+}
+
+#[test]
 fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
     for (label, source) in [
         (
@@ -202,17 +350,45 @@ fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
             "{label}: rejection must not publish partial layout"
         );
     }
+
+    for value in [
+        "start",
+        "center",
+        "end",
+        "space-between",
+        "space-around",
+        "space-evenly",
+    ] {
+        let source = EXPLICIT_STRETCH_SOURCE.replace(
+            "align-content: stretch;",
+            &format!("align-content: {value};"),
+        );
+        assert_ne!(
+            source, EXPLICIT_STRETCH_SOURCE,
+            "{value}: mutation should apply"
+        );
+        let (_session, layout) = run(&source);
+        assert_ne!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "align-content:{value} must remain outside this bounded profile"
+        );
+        assert!(
+            layout.completed.is_none(),
+            "align-content:{value} must not publish partial layout"
+        );
+    }
 }
 
 #[test]
 fn parsed_root_html_multiple_auto_row_stretch_recovers_after_rejection() {
-    let source = SOURCE.replace(
+    let source = EXPLICIT_STRETCH_SOURCE.replace(
         "      #fixed {",
         "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: start; }\n      }\n\n      #fixed {",
     );
-    assert_ne!(source, SOURCE);
+    assert_ne!(source, EXPLICIT_STRETCH_SOURCE);
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(&source)
-        .expect("the multiple-row Root HTML scene should initialize");
+        .expect("the explicit-stretch Root HTML scene should initialize");
     let mut media = spinon_style::CssMediaEnvironment::MOBILE;
     media.color_scheme = spinon_style::CssColorScheme::Light;
     session
@@ -247,7 +423,7 @@ fn parsed_root_html_multiple_auto_row_stretch_recovers_after_rejection() {
     let scene = recovered
         .completed
         .and_then(|completed| completed.render_snapshot.clone())
-        .expect("recovered scene should publish both text rows");
+        .expect("recovered explicit-stretch scene should publish both text rows");
     let mut frames = scene
         .boxes()
         .iter()
