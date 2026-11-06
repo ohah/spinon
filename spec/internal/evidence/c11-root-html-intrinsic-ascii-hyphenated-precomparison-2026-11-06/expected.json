@@ -1,0 +1,263 @@
+{
+  "schema": "spinon-css-reference-expectation-v1",
+  "task": "C11.4 parsed Root HTML ASCII hyphenated word intrinsic sizing",
+  "basis": [
+    "CSS Text Module Level 3 §5.1: the hyphen-minus line-break opportunity occurs after the hyphen.",
+    "CSS Grid Layout Module Level 1 2025 CRD §§11.4-11.7: min-content uses the widest unbreakable segment, and an auto track is bounded by its min/max contributions and definite available size.",
+    "The fixed monospace advances are read from Canvas measureText, independent of CSSOM Grid used track results; each expected used size is rounded up to 1/64 CSS px."
+  ],
+  "chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "rounding": "ceil advance values to the next 1/64 CSS px layout unit",
+  "cases": [
+    {
+      "id": "hyphen-min-content",
+      "text": "A-A",
+      "breakSegments": [
+        "A-",
+        "A"
+      ],
+      "independentMinContentCssPx": 12.046875,
+      "independentMaxContentCssPx": 18.0625,
+      "expectedColumnsCssPx": [
+        12.046875
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        20.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 2,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        12.046875,
+        20.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "hyphen-max-content",
+      "text": "A-A",
+      "breakSegments": [
+        "A-",
+        "A"
+      ],
+      "independentMinContentCssPx": 12.046875,
+      "independentMaxContentCssPx": 18.0625,
+      "expectedColumnsCssPx": [
+        18.0625
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 1,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        18.0625,
+        10.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "hyphen-auto-mixed-tokens",
+      "text": "AA-BB CC",
+      "breakSegments": [
+        "AA-",
+        "BB",
+        "CC"
+      ],
+      "independentMinContentCssPx": 18.0625,
+      "independentMaxContentCssPx": 48.171875,
+      "expectedColumnsCssPx": [
+        40.0
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        20.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 2,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        40.0,
+        20.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "digit-hyphen-min-content",
+      "text": "12-3 45",
+      "breakSegments": [
+        "12-",
+        "3",
+        "45"
+      ],
+      "independentMinContentCssPx": 18.0625,
+      "independentMaxContentCssPx": 42.15625,
+      "expectedColumnsCssPx": [
+        18.0625
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        30.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 3,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        18.0625,
+        30.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "mixed-hyphen-min-content",
+      "text": "A1-BB2",
+      "breakSegments": [
+        "A1-",
+        "BB2"
+      ],
+      "independentMinContentCssPx": 18.0625,
+      "independentMaxContentCssPx": 36.125,
+      "expectedColumnsCssPx": [
+        18.0625
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        20.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 2,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        18.0625,
+        20.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "multiple-hyphenated-tokens",
+      "text": "A-B C-DE",
+      "breakSegments": [
+        "A-",
+        "B",
+        "C-",
+        "DE"
+      ],
+      "independentMinContentCssPx": 12.046875,
+      "independentMaxContentCssPx": 48.171875,
+      "expectedColumnsCssPx": [
+        12.046875
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        40.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 4,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        12.046875,
+        40.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "hyphenated-reverse-order",
+      "text": "AA-BB CC",
+      "breakSegments": [
+        "AA-",
+        "BB",
+        "CC"
+      ],
+      "independentMinContentCssPx": 18.0625,
+      "independentMaxContentCssPx": 48.171875,
+      "expectedColumnsCssPx": [
+        18.0625
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        10.0,
+        30.0,
+        10.0
+      ],
+      "expectedTextLineCount": 3,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        20.0,
+        18.0625,
+        30.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "hyphen-unbreakable-auto",
+      "text": "12345678-12",
+      "breakSegments": [
+        "12345678-",
+        "12"
+      ],
+      "independentMinContentCssPx": 54.1875,
+      "independentMaxContentCssPx": 66.234375,
+      "expectedColumnsCssPx": [
+        54.1875
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        20.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 2,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        54.1875,
+        20.0
+      ],
+      "chromeComparison": "match"
+    },
+    {
+      "id": "fixed-track-hyphen-break",
+      "text": "AA-BB CC",
+      "breakSegments": [
+        "AA-",
+        "BB",
+        "CC"
+      ],
+      "independentMinContentCssPx": 18.0625,
+      "independentMaxContentCssPx": 48.171875,
+      "expectedColumnsCssPx": [
+        20.0
+      ],
+      "expectedRowsCssPx": [
+        10.0,
+        30.0,
+        10.0,
+        10.0
+      ],
+      "expectedTextLineCount": 3,
+      "expectedWordFrameRelativeToGridCssPx": [
+        0.0,
+        10.0,
+        20.0,
+        30.0
+      ],
+      "chromeComparison": "match"
+    }
+  ]
+}
