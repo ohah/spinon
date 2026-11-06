@@ -1058,3 +1058,6 @@ mod auto_repeat_track_ceiling;
 
 #[path = "grid_track_sizing_tests/root_html_intrinsic_tracks.rs"]
 mod root_html_intrinsic_tracks;
+
+#[path = "grid_track_sizing_tests/root_html_auto_row_percentage_gap.rs"]
+mod root_html_auto_row_percentage_gap;

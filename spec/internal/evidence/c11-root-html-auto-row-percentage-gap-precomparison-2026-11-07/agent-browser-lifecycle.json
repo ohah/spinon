@@ -1,0 +1,9 @@
+{
+  "tool": "Agent Browser 0.31.1",
+  "session": "spinon-c11-4-percentage-gap",
+  "browser": "HeadlessChrome 157.0.0.0",
+  "opened": true,
+  "closeExitCode": 0,
+  "processCheck": "pgrep -fl '^agent-browser' returned no process after close",
+  "terminalBrowserUsed": false
+}

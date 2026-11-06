@@ -542,8 +542,8 @@ fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
             "row gap above the profile limit",
             "row-gap: 7.5001px; column-gap: 0;",
         ),
-        ("percentage row gap", "row-gap: 5%; column-gap: 0;"),
         ("math row gap", "row-gap: calc(5px); column-gap: 0;"),
+        ("percentage column gap", "row-gap: 0; column-gap: 5%;"),
         ("non-zero column gap", "row-gap: 0; column-gap: 0.5px;"),
     ] {
         let source = EXPLICIT_STRETCH_SOURCE.replace("gap: 0;", gap_declarations);

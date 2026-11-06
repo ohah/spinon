@@ -18,6 +18,8 @@ mod c114_grid_auto_repeat_intrinsic_wpt;
 mod cyclic_percentage_auto_repeat_rows;
 #[path = "grid/root_html_auto_repeat.rs"]
 mod root_html_auto_repeat;
+#[path = "grid/root_html_auto_row_stretch.rs"]
+mod root_html_auto_row_stretch;
 #[path = "grid/root_html_column.rs"]
 pub(crate) mod root_html_column;
 #[path = "grid/root_html_direct_text_aspect_ratio.rs"]
@@ -488,6 +490,8 @@ pub(super) fn validate_grid_layout(
             .is_root_html_intrinsic_track_sizing()
         {
             validate_root_html_intrinsic_tracks_contract(
+                input,
+                index,
                 id,
                 input.nodes[index[&id]].style,
                 container,
@@ -1527,6 +1531,8 @@ fn validate_root_html_implicit_rows_contract(
 }
 
 fn validate_root_html_intrinsic_tracks_contract(
+    input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
     node: spinon_core::NodeId,
     style: LayoutStyle,
     container: &crate::GridContainerInput,
@@ -1613,8 +1619,34 @@ fn validate_root_html_intrinsic_tracks_contract(
     let allow_intrinsic_auto_rows =
         allow_combined_intrinsic_auto_rows || allow_fixed_intrinsic_auto_rows;
     let auto_row_stretch = container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1;
+    if auto_row_stretch {
+        let hidden = crate::grid_placement::hidden_subtrees(input, index);
+        let visible_children = input.nodes[index[&node]]
+            .children
+            .iter()
+            .copied()
+            .filter(|child| !hidden.get(child).copied().unwrap_or(true))
+            .collect::<Vec<_>>();
+        let all_visible_item_placements_auto = visible_children.iter().all(|child| {
+            input
+                .grid_items
+                .get(child)
+                .is_none_or(crate::GridItemInput::is_auto)
+        });
+        if !root_html_auto_row_stretch::layout_profile_is_supported(
+            style,
+            container,
+            visible_children.len(),
+            all_visible_item_placements_auto,
+        ) {
+            return Err(LayoutError::UnsupportedGridContainerStyle {
+                node,
+                property: "C11.4 RootHtmlAutoRowStretchV1 profile",
+            });
+        }
+    }
     let row_gap_supported = if auto_row_stretch {
-        root_html_auto_row_stretch_row_gap_is_supported(style.gap.row)
+        root_html_auto_row_stretch::row_gap_is_supported(style.gap.row)
     } else {
         root_html_intrinsic_gap_is_supported(style.gap.row, container.rows.len(), style.height)
     };
@@ -1746,10 +1778,6 @@ pub(super) fn root_html_intrinsic_gap_is_supported(
     used_gap.is_finite()
         && used_gap <= f64::from(f32::MAX)
         && used_gap * explicit_track_count.saturating_sub(1) as f64 <= f64::from(f32::MAX)
-}
-
-fn root_html_auto_row_stretch_row_gap_is_supported(gap: LayoutLengthPercentage) -> bool {
-    matches!(gap, LayoutLengthPercentage::LengthPx(value) if value.is_finite() && (0.0..=7.5).contains(&value))
 }
 
 pub(super) fn root_html_intrinsic_track_is_supported(track: &GridTrackSize) -> bool {
