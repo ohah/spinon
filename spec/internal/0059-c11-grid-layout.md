@@ -1577,14 +1577,14 @@ Chrome 156 precomparison의 24개 scene(6개 whitespace variant × `min-content`
 
 이 제한 후보는 C11.4/C11 완료나 공개 CSS 지원을 뜻하지 않으며 공식 `78/214`와 내부 숫자 버전 `0.1.0`을 바꾸지 않는다.
 
-## C11.4 parsed Root HTML normal-whitespace ASCII letter words · bounded implementation candidate
+## C11.4 parsed Root HTML normal-whitespace ASCII letter words · bounded implementation PR #1208 merged · 2026-11-06
 
 모바일 Root HTML app 로그는 layout-ready·8 boxes·2 text draw/present와 지정한 Grid edge 바깥 CSS (42px,19px) PixelCopy·Metal drawable 표본 각 1/1 exact를 기록한다. 이 표본은 지정 좌표의 overflow paint를 확인하지만 전체 item frame이나 viewport clipping을 증명하지 않는다. Geometry 비교는 Style-to-layout 및 RuntimeSession 10-scene Rust matrix가 담당한다. Android pixel adapter는 c11-grid-metal-surface-pixels fixture source set에만 들어가며 Android default APK DEX 및 iOS default executable의 작업별 marker 부재와 feature-on positive control을 확인했다. 상세 로그·화면·hash·빌드 경계는 [실행 근거](./evidence/c11-root-html-intrinsic-letter-words-runtime-2026-11-06/README.md)에 있다.
 
-이 후보는 PR #1205의 source gate를 늘려 text token 하나 이상이 `[A-Za-z]+`이고 token 사이가 U+0020 SPACE, U+0009 TAB, U+000A LF 또는 U+000D CR로 구분되는 경우를 기본 `RuntimeRootHtmlTextPaintV1` 경로에 허용한다. ASCII 대문자·소문자는 모두 허용하며 숫자·구두점·Unicode 문자·NBSP·NEL·em-space·form-feed·vertical-tab은 거부한다. Source를 trim·normalize·rewrite하지 않고 기존 parsed text node, item owner, source order, revision, normal wrapping 및 glyph paint 경로를 사용한다.
+PR #1208은 PR #1205의 source gate를 늘려 text token 하나 이상이 `[A-Za-z]+`이고 token 사이가 U+0020 SPACE, U+0009 TAB, U+000A LF 또는 U+000D CR로 구분되는 경우를 기본 `RuntimeRootHtmlTextPaintV1` 경로에 허용한다. ASCII 대문자·소문자는 모두 허용하며 숫자·구두점·Unicode 문자·NBSP·NEL·em-space·form-feed·vertical-tab은 거부한다. Source를 trim·normalize·rewrite하지 않고 기존 parsed text node, item owner, source order, revision, normal wrapping 및 glyph paint 경로를 사용한다.
 
 기존 단일 visible Grid owner, definite 40px container, `min-content`/`auto` explicit column profile, 단일 10px explicit row, singleton `grid-auto-rows:min-content`, monospace 10px·line-height 10px·`white-space:normal`·`word-break:normal`·`overflow-wrap:normal` 조건을 유지한다. Min-content column과 row contribution은 각 unbreakable ASCII word의 실제 shaped advance와 normal wrapping에 따라 계산한다. 자동 최소 크기가 40px보다 큰 `AAAAAAAA`는 48.171875px track을 만들고 item 배경이 Grid의 40px right edge 바깥까지 그려질 수 있다. Unsupported token/tree/style은 layout 전 fail-closed하고 새 frame 또는 paint snapshot을 일부 게시하지 않는다.
 
 사전 비교는 Chrome 156 관측과 독립 계산의 10 scene (`A`, `AA`, `AB BBB A`, `aa bb ccc`; `min-content`/`auto`; mixed-word source-order reverse)을 기록한다. Style-to-layout과 기본 Root HTML `RuntimeSession` 행렬, 원문 source/node identity와 track trace, 거부 원자성, Android API 37 ARM64 AVD PixelCopy 및 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable 표본으로 구현을 검증한다. 고정 입력과 산출 근거는 [계획](../../plan/c11-root-html-intrinsic-letter-words.md), [Chrome 사전 비교](./evidence/c11-root-html-intrinsic-letter-words-precomparison-2026-11-06/README.md), [구현/runtime 실패 관점 20개](./evidence/c11-root-html-intrinsic-letter-words-runtime-2026-11-06/implementation-runtime-review-20.md), 구현 PR 실행 근거에 연결한다.
 
-이 후보는 arbitrary font, Unicode word segmentation, nested markup, public CSS admission, WPT, 일반 CSS Grid 또는 C11.4/C11 완료를 뜻하지 않는다. 공식 완료 `78/214`와 내부 숫자 버전 `0.1.0`은 유지한다.
+이 제한 구현은 arbitrary font, Unicode word segmentation, nested markup, public CSS admission, WPT, 일반 CSS Grid 또는 C11.4/C11 완료를 뜻하지 않는다. 공식 완료 `78/214`와 내부 숫자 버전 `0.1.0`은 유지한다.
