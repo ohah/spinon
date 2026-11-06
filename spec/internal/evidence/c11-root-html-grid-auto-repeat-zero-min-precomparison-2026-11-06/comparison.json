@@ -1,0 +1,214 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewportCssPx": [
+    1280,
+    633
+  ],
+  "independentFloorCssPx": 1,
+  "cases": [
+    {
+      "id": "fill-11",
+      "repetitions": 11,
+      "tracks": 11,
+      "trackSizesCssPx": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "itemSizeCssPx": [
+        1,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fit-11",
+      "repetitions": 11,
+      "tracks": 11,
+      "trackSizesCssPx": [
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "itemSizeCssPx": [
+        11,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fill-gap-11",
+      "repetitions": 6,
+      "tracks": 6,
+      "trackSizesCssPx": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "itemSizeCssPx": [
+        1,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fill-fractional",
+      "repetitions": 8,
+      "tracks": 8,
+      "trackSizesCssPx": [
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125,
+        1.125
+      ],
+      "itemSizeCssPx": [
+        1.125,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fill-two-zero",
+      "repetitions": 5,
+      "tracks": 10,
+      "trackSizesCssPx": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "itemSizeCssPx": [
+        1,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fill-mixed-two",
+      "repetitions": 4,
+      "tracks": 8,
+      "trackSizesCssPx": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "itemSizeCssPx": [
+        1,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fit-mixed-two",
+      "repetitions": 4,
+      "tracks": 8,
+      "trackSizesCssPx": [
+        19,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "itemSizeCssPx": [
+        19,
+        2
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "empty-fit-11",
+      "repetitions": 11,
+      "tracks": 11,
+      "trackSizesCssPx": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "itemSizeCssPx": null,
+      "result": "PASS"
+    },
+    {
+      "id": "fill-rows-7",
+      "repetitions": 4,
+      "tracks": 4,
+      "trackSizesCssPx": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "itemSizeCssPx": [
+        3,
+        1
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "fill-rows-mixed",
+      "repetitions": 4,
+      "tracks": 8,
+      "trackSizesCssPx": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "itemSizeCssPx": [
+        3,
+        1
+      ],
+      "result": "PASS"
+    }
+  ],
+  "passed": 10,
+  "failed": 0
+}

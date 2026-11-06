@@ -1,0 +1,119 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, sections 7.2.3.1–7.2.3.2",
+  "uaTrackFloorCssPx": 1,
+  "trackFloorStatus": "The specification requires a UA-selected positive floor and suggests 1px. This candidate pins the existing Root HTML profile to 1 CSS px, matching Chrome 157.",
+  "countFormulaForThisProfile": "max(1, floor((availableSpacePx + gapPx) / (sum(max(minTrackPx, 1px)) + patternTrackCount * gapPx)))",
+  "sizingNote": "The 1px floor is used only to count repetitions. It does not replace a declared minmax(0px, 1fr) minimum during track sizing.",
+  "cases": [
+    {
+      "id": "fill-11",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 11,
+      "gapPx": 0,
+      "patternMinTrackSizesPx": [0],
+      "expectedRepetitionCount": 11,
+      "expectedTrackSizesPx": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "expectedFirstItemSizePx": [1, 2]
+    },
+    {
+      "id": "fit-11",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "availableSpacePx": 11,
+      "gapPx": 0,
+      "patternMinTrackSizesPx": [0],
+      "expectedRepetitionCount": 11,
+      "expectedTrackSizesPx": [11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expectedFirstItemSizePx": [11, 2]
+    },
+    {
+      "id": "fill-gap-11",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 11,
+      "gapPx": 1,
+      "patternMinTrackSizesPx": [0],
+      "expectedRepetitionCount": 6,
+      "expectedTrackSizesPx": [1, 1, 1, 1, 1, 1],
+      "expectedFirstItemSizePx": [1, 2]
+    },
+    {
+      "id": "fill-fractional",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 12.5,
+      "gapPx": 0.5,
+      "patternMinTrackSizesPx": [0],
+      "expectedRepetitionCount": 8,
+      "expectedTrackSizesPx": [1.125, 1.125, 1.125, 1.125, 1.125, 1.125, 1.125, 1.125],
+      "expectedFirstItemSizePx": [1.125, 2]
+    },
+    {
+      "id": "fill-two-zero",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 19,
+      "gapPx": 1,
+      "patternMinTrackSizesPx": [0, 0],
+      "expectedRepetitionCount": 5,
+      "expectedTrackSizesPx": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "expectedFirstItemSizePx": [1, 2]
+    },
+    {
+      "id": "fill-mixed-two",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 19,
+      "gapPx": 1,
+      "patternMinTrackSizesPx": [0, 2],
+      "expectedRepetitionCount": 4,
+      "expectedTrackSizesPx": [1, 2, 1, 2, 1, 2, 1, 2],
+      "expectedFirstItemSizePx": [1, 2]
+    },
+    {
+      "id": "fit-mixed-two",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "availableSpacePx": 19,
+      "gapPx": 1,
+      "patternMinTrackSizesPx": [0, 2],
+      "expectedRepetitionCount": 4,
+      "expectedTrackSizesPx": [19, 0, 0, 0, 0, 0, 0, 0],
+      "expectedFirstItemSizePx": [19, 2]
+    },
+    {
+      "id": "empty-fit-11",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "availableSpacePx": 11,
+      "gapPx": 0,
+      "patternMinTrackSizesPx": [0],
+      "expectedRepetitionCount": 11,
+      "expectedTrackSizesPx": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expectedFirstItemSizePx": null
+    },
+    {
+      "id": "fill-rows-7",
+      "axis": "rows",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 7,
+      "gapPx": 1,
+      "patternMinTrackSizesPx": [0],
+      "expectedRepetitionCount": 4,
+      "expectedTrackSizesPx": [1, 1, 1, 1],
+      "expectedFirstItemSizePx": [3, 1]
+    },
+    {
+      "id": "fill-rows-mixed",
+      "axis": "rows",
+      "repeatMode": "auto-fill",
+      "availableSpacePx": 19,
+      "gapPx": 1,
+      "patternMinTrackSizesPx": [0, 2],
+      "expectedRepetitionCount": 4,
+      "expectedTrackSizesPx": [1, 2, 1, 2, 1, 2, 1, 2],
+      "expectedFirstItemSizePx": [3, 1]
+    }
+  ]
+}

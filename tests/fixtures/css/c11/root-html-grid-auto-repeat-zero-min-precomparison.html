@@ -1,0 +1,67 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.1 auto-repeat zero minimum precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 12px/1.2 sans-serif; }
+  .grid {
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    grid-auto-columns: auto;
+    grid-template-rows: 2px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
+  #fill-11 { width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); }
+  #fit-11 { width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr)); }
+  #fill-gap-11 { width: 11px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); }
+  #fill-fractional { width: 12.5px; height: 2px; gap: 0.5px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); }
+  #fill-two-zero { width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr) minmax(0px, 1fr)); }
+  #fill-mixed-two { width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr) minmax(2px, 1fr)); }
+  #fit-mixed-two { width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr) minmax(2px, 1fr)); }
+  #empty-fit-11 { width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr)); }
+  #fill-rows-7 { width: 3px; height: 7px; row-gap: 1px; column-gap: 0; grid-template-columns: 3px; grid-template-rows: repeat(auto-fill, minmax(0px, 1fr)); }
+  #fill-rows-mixed { width: 3px; height: 19px; row-gap: 1px; column-gap: 0; grid-template-columns: 3px; grid-template-rows: repeat(auto-fill, minmax(0px, 1fr) minmax(2px, 1fr)); }
+</style>
+<div id="fill-11" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fit-11" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fill-gap-11" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fill-fractional" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fill-two-zero" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fill-mixed-two" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fit-mixed-two" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="empty-fit-11" class="grid"></div>
+<div id="fill-rows-7" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<div id="fill-rows-mixed" class="grid"><div class="item" style="background:#e5484d"></div></div>
+<pre id="result"></pre>
+<script>
+  const trackValues = value => value.match(/(?:\d+\.\d+|\d+)px/g)?.map(item => Number.parseFloat(item)) ?? [];
+  const read = id => {
+    const root = document.getElementById(id);
+    const style = getComputedStyle(root);
+    const item = root.firstElementChild;
+    const rect = item?.getBoundingClientRect();
+    return {
+      id,
+      columns: trackValues(style.gridTemplateColumns),
+      rows: trackValues(style.gridTemplateRows),
+      columnGap: style.columnGap,
+      rowGap: style.rowGap,
+      item: rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null,
+    };
+  };
+  const result = {
+    userAgent: navigator.userAgent,
+    viewportCssPx: [window.innerWidth, window.innerHeight],
+    supportsZeroMinAutoRepeat: CSS.supports('grid-template-columns', 'repeat(auto-fill, minmax(0px, 1fr))'),
+    cases: ['fill-11', 'fit-11', 'fill-gap-11', 'fill-fractional', 'fill-two-zero', 'fill-mixed-two', 'fit-mixed-two', 'empty-fit-11', 'fill-rows-7', 'fill-rows-mixed'].map(read),
+  };
+  document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+  window.__probe = result;
+</script>
