@@ -1,0 +1,15 @@
+{
+  "pr": 1215,
+  "head_sha_at_check": "0a93b69bd92499d4b3eb89aa372b6a27bb097334",
+  "browser": "Agent Browser 0.31.1",
+  "pr_url": "https://github.com/ohah/spinon/pull/1215",
+  "image": {
+    "alt": "C11.1 auto-repeat zero-min Chrome 157 comparison",
+    "url": "https://raw.githubusercontent.com/ohah/spinon/0a93b69bd92499d4b3eb89aa372b6a27bb097334/spec/internal/evidence/c11-root-html-grid-auto-repeat-zero-min-precomparison-2026-11-06/chrome157-agent-browser.png",
+    "complete": true,
+    "natural_width": 1280,
+    "natural_height": 3664
+  },
+  "browser_closed_after_check": true,
+  "agent_browser_process_remaining": false
+}
