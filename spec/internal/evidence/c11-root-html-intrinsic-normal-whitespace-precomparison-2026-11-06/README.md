@@ -21,9 +21,11 @@
 | `min-content` | `6.03125px` | `[10, 60, 10, 34]px` | `[10, 10, 60, 34]px` | 6 |
 | `auto` | `40px` | `[10, 20, 10, 34]px` | `[10, 10, 20, 34]px` | 2 |
 
-다섯 whitespace 입력형은 같은 열 조건·DOM 순서의 single-space 기준과 사용 열·사용 행·item frame·text line 위치가 모두 같았다. 최종 행렬은 **24/24 scene**, 비교 차이는 **0건**이다. 전체 DOM 관측은 [chrome156-observation.json](chrome/chrome156-observation.json), 장면 화면은 [Agent Browser screenshot](chrome/chrome156-agent-browser.png)에 보존했다.
+다섯 whitespace 입력형은 같은 열 조건·DOM 순서의 single-space 기준과 사용 열·사용 행·item frame·text line 위치가 모두 같았다. 최종 행렬은 **24/24 scene**, 비교 차이는 **0건**이다. 전체 DOM 관측은 [chrome156-observation.json](https://raw.githubusercontent.com/ohah/spinon/6af70e0e54d52705f7be908f7e2257795ad361e5/spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-precomparison-2026-11-06/chrome/chrome156-observation.json), 장면 화면은 [Agent Browser screenshot](https://raw.githubusercontent.com/ohah/spinon/6af70e0e54d52705f7be908f7e2257795ad361e5/spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-precomparison-2026-11-06/chrome/chrome156-agent-browser.png)에 보존했다.
 
-Chrome의 min-content column negative controls는 single-space `A A`의 `6.03125px`와 달리 form-feed와 vertical-tab 사이를 연속 intrinsic word로 보아 `14.671875px`, NBSP는 `18.0625px`, NEL은 `16.03125px`로 계산했다. 이는 허용 구분자와 거부 문자의 차이를 보인다. [negative-control-observation.json](chrome/negative-control-observation.json)에 raw 결과를 보존했다.
+![Agent Browser Chrome 156 precomparison](https://raw.githubusercontent.com/ohah/spinon/6af70e0e54d52705f7be908f7e2257795ad361e5/spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-precomparison-2026-11-06/chrome/chrome156-agent-browser.png)
+
+Chrome의 min-content column negative controls는 single-space `A A`의 `6.03125px`와 달리 form-feed와 vertical-tab 사이를 연속 intrinsic word로 보아 `14.671875px`, NBSP는 `18.0625px`, NEL은 `16.03125px`로 계산했다. 이는 허용 구분자와 거부 문자의 차이를 보인다. [negative-control-observation.json](https://raw.githubusercontent.com/ohah/spinon/6af70e0e54d52705f7be908f7e2257795ad361e5/spec/internal/evidence/c11-root-html-intrinsic-normal-whitespace-precomparison-2026-11-06/chrome/negative-control-observation.json)에 raw 결과를 보존했다.
 
 이 관측은 Chromium 156 한 버전의 CSS/Text/Grid 기준값이다. 제품 구현, Android/iOS, WPT 적합성, 임의 문자·Unicode/font, form-feed 및 whitespace-only item을 증명하지 않는다.
 
