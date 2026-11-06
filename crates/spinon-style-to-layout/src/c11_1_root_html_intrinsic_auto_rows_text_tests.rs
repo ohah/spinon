@@ -19,6 +19,8 @@ use crate::{StyleLayoutError, compute_runtime_style_layout_with_root_html_grid_t
 
 #[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/combined_multiple_text.rs"]
 mod combined_multiple_text;
+#[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/letter_words.rs"]
+mod letter_words;
 #[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/normal_whitespace.rs"]
 mod normal_whitespace;
 #[path = "c11_1_root_html_intrinsic_auto_rows_text_tests/track_limit.rs"]

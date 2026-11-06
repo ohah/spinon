@@ -3,6 +3,7 @@ use serde_json::Value;
 use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 
 mod combined_multiple_text;
+mod letter_words;
 mod multiple_text;
 mod normal_whitespace;
 
@@ -693,7 +694,7 @@ fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_text_items_atomically
     for (label, source) in [
         (
             "different-text-source",
-            TEXT_SOURCE.replace("A A A A A A", "B B B B B B"),
+            TEXT_SOURCE.replace("A A A A A A", "B1 B1 B1 B1 B1 B1"),
         ),
         (
             "nested-inline-markup",
