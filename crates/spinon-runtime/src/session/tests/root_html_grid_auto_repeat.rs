@@ -4,6 +4,9 @@ use serde_json::Value;
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-auto-repeat-precomparison.html"
 );
+const ZERO_MIN_RUNTIME_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-auto-repeat-zero-min-runtime.html"
+);
 const NATIVE_SOURCE: &str =
     include_str!("../../../../../tests/fixtures/html/c11-root-html-grid-auto-repeat-native.html");
 const EXPECTED: &str = include_str!(
@@ -65,6 +68,42 @@ html, body {{ margin: 0; padding: 0; }}
 .red {{ background-color: #e5484d; }} .blue {{ background-color: #3b82f6; }}
 </style></head><body><section id="grid">{children}</section></body></html>"#
     )
+}
+
+fn red_frames(source: &str, expected_count: usize) -> Vec<[f32; 4]> {
+    let (session, layout) = run(source);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "zero-minimum Root HTML auto-repeat should be supported; error={:?}; cascade={:?}",
+        layout.error,
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout
+        .completed
+        .expect("zero-minimum auto-repeat should complete");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("zero-minimum auto-repeat should publish a scene");
+    let mut frames = scene
+        .boxes()
+        .iter()
+        .filter_map(|render_box| match render_box.paint() {
+            spinon_render::RuntimePaint::Opaque(color) if color == RED => {
+                let frame = render_box.frame_css_px();
+                Some([frame.x(), frame.y(), frame.width(), frame.height()])
+            }
+            _ => None,
+        })
+        .collect::<Vec<_>>();
+    frames.sort_by(|left, right| {
+        left[1]
+            .total_cmp(&right[1])
+            .then(left[0].total_cmp(&right[0]))
+    });
+    assert_eq!(frames.len(), expected_count, "red item frames: {frames:?}");
+    frames
 }
 
 #[test]
@@ -222,6 +261,95 @@ fn root_html_one_track_repeat_pattern_expands_for_multiple_visible_items() {
 }
 
 #[test]
+fn parsed_root_html_zero_minimum_auto_repeat_matches_independent_count_and_sizing() {
+    let fill_gap_items = "<div class=\"red\"></div>".repeat(6);
+    assert_eq!(
+        red_frames(
+            &one_column_source(
+                "width: 11px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); grid-template-rows: 2px;",
+                &fill_gap_items,
+            ),
+            6,
+        ),
+        [
+            [0.0, 0.0, 1.0, 2.0],
+            [2.0, 0.0, 1.0, 2.0],
+            [4.0, 0.0, 1.0, 2.0],
+            [6.0, 0.0, 1.0, 2.0],
+            [8.0, 0.0, 1.0, 2.0],
+            [10.0, 0.0, 1.0, 2.0],
+        ]
+    );
+
+    assert_eq!(
+        red_frames(
+            &one_column_source(
+                "width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr)); grid-template-rows: 2px;",
+                "<div class=\"red\"></div>",
+            ),
+            1,
+        ),
+        [[0.0, 0.0, 11.0, 2.0]]
+    );
+
+    let mixed_pattern_items = "<div class=\"red\"></div>".repeat(8);
+    assert_eq!(
+        red_frames(
+            &one_column_source(
+                "width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr) minmax(2px, 1fr)); grid-template-rows: 2px;",
+                &mixed_pattern_items,
+            ),
+            8,
+        ),
+        [
+            [0.0, 0.0, 1.0, 2.0],
+            [2.0, 0.0, 2.0, 2.0],
+            [5.0, 0.0, 1.0, 2.0],
+            [7.0, 0.0, 2.0, 2.0],
+            [10.0, 0.0, 1.0, 2.0],
+            [12.0, 0.0, 2.0, 2.0],
+            [15.0, 0.0, 1.0, 2.0],
+            [17.0, 0.0, 2.0, 2.0],
+        ]
+    );
+
+    let row_items = "<div class=\"red\"></div>".repeat(4);
+    assert_eq!(
+        red_frames(
+            &one_column_source(
+                "width: 3px; height: 7px; row-gap: 1px; column-gap: 0; grid-template-columns: 3px; grid-template-rows: repeat(auto-fill, minmax(0px, 1fr));",
+                &row_items,
+            ),
+            4,
+        ),
+        [
+            [0.0, 0.0, 3.0, 1.0],
+            [0.0, 2.0, 3.0, 1.0],
+            [0.0, 4.0, 3.0, 1.0],
+            [0.0, 6.0, 3.0, 1.0],
+        ]
+    );
+}
+
+#[test]
+fn fixed_zero_minimum_root_html_fixture_runs_all_ten_cases_in_the_default_runtime() {
+    assert_eq!(
+        red_frames(ZERO_MIN_RUNTIME_SOURCE, 9),
+        [
+            [0.0, 0.0, 1.0, 2.0],
+            [0.0, 2.0, 11.0, 2.0],
+            [0.0, 4.0, 1.0, 2.0],
+            [0.0, 6.0, 1.125, 2.0],
+            [0.0, 8.0, 1.0, 2.0],
+            [0.0, 10.0, 1.0, 2.0],
+            [0.0, 12.0, 19.0, 2.0],
+            [0.0, 16.0, 3.0, 1.0],
+            [0.0, 23.0, 3.0, 1.0],
+        ]
+    );
+}
+
+#[test]
 fn native_bootstrap_root_html_auto_repeat_fixture_has_expected_frames() {
     let (session, layout) = run(NATIVE_SOURCE);
     assert_eq!(
@@ -310,6 +438,13 @@ fn unsupported_auto_repeat_inputs_fail_without_publishing_partial_scenes() {
             one_column_source(
                 "width: 40px; gap: 0; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));",
                 "<div class=\"red\"></div><div class=\"blue\"></div>",
+            ),
+        ),
+        (
+            "zero-minimum repeat count over the track limit",
+            one_column_source(
+                "width: 10001px; gap: 0; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr));",
+                "",
             ),
         ),
         (

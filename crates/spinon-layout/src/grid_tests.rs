@@ -10,6 +10,9 @@ use crate::{
     LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine, Viewport,
 };
 
+#[path = "grid/root_html_auto_repeat_layout_tests.rs"]
+mod root_html_auto_repeat_layout_tests;
+
 fn id(value: u64) -> NodeId {
     NodeId::new(value).unwrap()
 }

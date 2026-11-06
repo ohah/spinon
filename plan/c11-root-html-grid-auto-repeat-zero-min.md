@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [현재 Root HTML auto-repeat 제한](./c11-root-html-grid-auto-repeat.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** Agent Browser Chrome 157 사전 비교 10/10과 독립 repeat-count 계산을 고정했다. 계획 실패 관점 검토 20개를 완료했다. 구현은 시작하지 않았다. C11.1/C11 완료와 공식 `78/214`는 그대로다.
+**상태:** Agent Browser Chrome 157 사전 비교 10/10과 독립 repeat-count 계산을 고정했다. 2026-11-06 구현 후보를 추가하고 Stylo/projection/layout/runtime·C11.4 회귀, workspace Clippy, Android API 37 ARM64 AVD, iPhone 17 Pro/iOS 26.2 Simulator와 기본 artifact 비포함을 확인했다. 구현/runtime 실패 관점 검토 20개를 완료했다. 후보는 아직 PR 전이며 C11.1/C11 완료와 공식 `78/214`는 그대로다. [실행 근거](../spec/internal/evidence/c11-root-html-grid-auto-repeat-zero-min-runtime-2026-11-06/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-root-html-grid-auto-repeat-zero-min-runtime-2026-11-06/implementation-runtime-review-20.md)
 
 **규범 근거:** [CSS Grid Layout Module Level 1, 2025 CRD §7.2.3.1–7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-repeat). 자동 반복은 definite fixed-size track을 요구한다. 반복 횟수를 셀 때 zero-size에 division-by-zero가 생기지 않도록 UA가 track-size floor를 선택하며 1 CSS px을 권장한다. 이 bounded profile은 1px floor를 선택한다. 이 floor는 repetition count에만 쓰고 `minmax(0px, 1fr)`의 actual minimum은 0px로 둔다.
 

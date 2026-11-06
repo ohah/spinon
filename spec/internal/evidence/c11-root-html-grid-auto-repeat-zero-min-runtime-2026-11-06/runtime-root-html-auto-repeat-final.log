@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 6 tests
+test session::tests::root_html_grid_auto_repeat::root_html_auto_repeat_matches_chrome_track_count_and_sizing_scenes ... ok
+test session::tests::root_html_grid_auto_repeat::fixed_zero_minimum_root_html_fixture_runs_all_ten_cases_in_the_default_runtime ... ok
+test session::tests::root_html_grid_auto_repeat::root_html_one_track_repeat_pattern_expands_for_multiple_visible_items ... ok
+test session::tests::root_html_grid_auto_repeat::native_bootstrap_root_html_auto_repeat_fixture_has_expected_frames ... ok
+test session::tests::root_html_grid_auto_repeat::parsed_root_html_zero_minimum_auto_repeat_matches_independent_count_and_sizing ... ok
+test session::tests::root_html_grid_auto_repeat::unsupported_auto_repeat_inputs_fail_without_publishing_partial_scenes ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 299 filtered out; finished in 0.82s

@@ -14907,8 +14907,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         .contains("--spinon-c0412-root-html-block-paint")
     private let rootHtmlTextPaintProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0412-root-html-text-paint")
+    private let c111RootHtmlAutoRepeatZeroMinimumRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c111-root-html-auto-repeat-zero-minimum")
     private let rootHtmlDefaultRenderRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c0412-root-html-default-render")
+        || ProcessInfo.processInfo.arguments
+            .contains("--spinon-c111-root-html-auto-repeat-zero-minimum")
     private var rootHtmlPageScaleArguments: [String] {
         ProcessInfo.processInfo.arguments.filter {
             $0.hasPrefix("--spinon-c0412-page-scale-case=")
@@ -17511,11 +17515,16 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func createRootHtmlDefaultRuntimeHost() -> UInt64 {
         let pageScaleCase = rootHtmlPageScaleCase
-        let resourceName = pageScaleCase == nil
-            ? "root-html-default-rendering" : "root-html-page-scale-runtime"
+        let resourceName = c111RootHtmlAutoRepeatZeroMinimumRequested
+            ? "root-html-grid-auto-repeat-zero-min-runtime"
+            : pageScaleCase == nil
+                ? "root-html-default-rendering" : "root-html-page-scale-runtime"
         guard let url = Bundle.main.url(
             forResource: resourceName, withExtension: "html"
         ) else {
+            if c111RootHtmlAutoRepeatZeroMinimumRequested {
+                log("SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_DISABLED reason=fixture-asset-not-packaged")
+            }
             log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR missing=true")
             return 0
         }
@@ -17547,6 +17556,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let sourceDigest = SHA256.hash(data: Data(source.utf8))
                 .map { String(format: "%02x", $0) }
                 .joined()
+            if c111RootHtmlAutoRepeatZeroMinimumRequested {
+                log("SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_SOURCE asset=\(resourceName).html bytes=\(source.utf8.count) sha256=\(sourceDigest)")
+            }
             log("SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case=\(pageScaleCase ?? "default") bytes=\(source.utf8.count) sha256=\(sourceDigest)")
             return SpinonRunner.createRuntimeGpuHost(withRootHTML: source)
         } catch {
@@ -17579,6 +17591,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 
     private func initializeRuntime() {
         guard !isClosing else { return }
+        if c111RootHtmlAutoRepeatZeroMinimumRequested && !rootHtmlPageScaleArguments.isEmpty {
+            log("SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_ARGUMENT_ERROR rejected=true reason=page-scale-override-not-allowed")
+            postStatus("실패 · C11.1 auto-repeat 비교에서는 page scale override를 사용할 수 없습니다")
+            return
+        }
         if rootHtmlDefaultRenderRequested {
             let pageScaleArguments = rootHtmlPageScaleArguments
             let validPageScaleCase = rootHtmlPageScaleCase.map {
@@ -17592,6 +17609,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let conflicts = ProcessInfo.processInfo.arguments.filter {
                 $0.hasPrefix("--spinon-c")
                     && $0 != "--spinon-c0412-root-html-default-render"
+                    && $0 != "--spinon-c111-root-html-auto-repeat-zero-minimum"
                     && $0 != "--spinon-c0410-runtime-gpu"
                     && !$0.hasPrefix("--spinon-c0412-page-scale-case=")
             }

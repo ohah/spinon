@@ -78,7 +78,7 @@ pub(super) fn validate_root_html_auto_repeat_contract(
             GridTrackSize::MinMax {
                 min: GridTrackMinSizingFunction::LengthPx(minimum),
                 max: GridTrackMaxSizingFunction::Fraction(1.0),
-            } if minimum.is_finite() && *minimum > 0.0
+            } if minimum.is_finite() && *minimum >= 0.0
         )
     };
     let line_names_are_unnamed = |groups: &[Vec<String>]| {
@@ -259,7 +259,8 @@ pub(super) fn root_html_auto_repeat_cell_capacity(
         } else {
             return Err(invalid("grid-template-columns"));
         };
-    let (LayoutDimension::Fixed(axis_size), LayoutLengthPercentage::LengthPx(gap)) = (size, gap)
+    let (LayoutDimension::Fixed(axis_size), LayoutLengthPercentage::LengthPx(gap_f32)) =
+        (size, gap)
     else {
         return Err(invalid(property));
     };
@@ -269,12 +270,13 @@ pub(super) fn root_html_auto_repeat_cell_capacity(
     if !(1..=2).contains(&pattern.len())
         || !axis_size.is_finite()
         || axis_size <= 0.0
-        || !gap.is_finite()
-        || gap < 0.0
+        || !gap_f32.is_finite()
+        || gap_f32 < 0.0
     {
         return Err(invalid(property));
     }
-    let mut pattern_space = 0.0_f32;
+    let mut pattern_space = 0.0_f64;
+    let mut taffy_pattern_space = 0.0_f32;
     for track in pattern {
         let GridTrackSize::MinMax {
             min: GridTrackMinSizingFunction::LengthPx(minimum),
@@ -283,38 +285,43 @@ pub(super) fn root_html_auto_repeat_cell_capacity(
         else {
             return Err(invalid(property));
         };
-        if !minimum.is_finite() || *minimum <= 0.0 {
+        if !minimum.is_finite() || *minimum < 0.0 {
             return Err(invalid(property));
         }
-        pattern_space += minimum.max(1.0);
+        let count_size = minimum.max(1.0);
+        pattern_space += f64::from(count_size);
+        taffy_pattern_space += count_size;
     }
-    let first_repeat_space = pattern_space + ((pattern.len() - 1) as f32 * gap);
-    let per_repeat_space = pattern_space + (pattern.len() as f32 * gap);
+    let axis_size = f64::from(axis_size);
+    let gap = f64::from(gap_f32);
+    let pattern_track_count = pattern.len() as f64;
+    let denominator = pattern_space + (pattern_track_count * gap);
+    let taffy_first_repeat_space = taffy_pattern_space + ((pattern.len() - 1) as f32 * gap_f32);
+    let taffy_per_repeat_space = taffy_pattern_space + (pattern.len() as f32 * gap_f32);
     if !pattern_space.is_finite()
-        || !first_repeat_space.is_finite()
-        || !per_repeat_space.is_finite()
+        || !denominator.is_finite()
+        || denominator <= 0.0
+        || !taffy_pattern_space.is_finite()
+        || !taffy_first_repeat_space.is_finite()
+        || !taffy_per_repeat_space.is_finite()
     {
         return Err(invalid(property));
     }
-    let max_repetitions = GRID_MAX_TRACKS.div_ceil(pattern.len());
-    let repetitions = if first_repeat_space > axis_size || per_repeat_space <= 0.0 {
-        1
-    } else {
-        let fitting_repetitions = (axis_size - first_repeat_space) / per_repeat_space;
-        if !fitting_repetitions.is_finite() || fitting_repetitions < 0.0 {
-            return Err(invalid(property));
-        }
-        if fitting_repetitions >= max_repetitions as f32 {
-            max_repetitions
-        } else {
-            (fitting_repetitions.floor() as usize).saturating_add(1)
-        }
-    };
+    let count = ((axis_size + gap) / denominator).floor().max(1.0);
+    let max_repetitions = GRID_MAX_TRACKS / pattern.len();
+    if !count.is_finite() || count > max_repetitions as f64 {
+        return Err(LayoutError::GridTrackExpansionOverflow(node));
+    }
+    let repetitions = count as usize;
     let expanded_tracks = repetitions
         .checked_mul(pattern.len())
-        .map(|count| count.min(GRID_MAX_TRACKS))
+        .filter(|count| *count <= GRID_MAX_TRACKS)
         .ok_or(LayoutError::GridTrackExpansionOverflow(node))?;
     expanded_tracks
         .checked_mul(other_track_count)
         .ok_or(LayoutError::GridTrackExpansionOverflow(node))
 }
+
+#[cfg(test)]
+#[path = "root_html_auto_repeat_tests.rs"]
+mod tests;

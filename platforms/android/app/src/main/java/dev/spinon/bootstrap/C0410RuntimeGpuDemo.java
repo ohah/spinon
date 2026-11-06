@@ -17427,6 +17427,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlBlockPaintProbeRequested;
     private final boolean rootHtmlTextPaintProbeRequested;
     private final boolean rootHtmlDefaultRenderRequested;
+    private final boolean c111RootHtmlAutoRepeatZeroMinimumRequested;
     private final boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested;
     private final boolean c115RootHtmlGridItemAutoStretchPixelCaptureRequested;
     private boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted;
@@ -17678,8 +17679,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c0412_root_html_block_paint", false);
         rootHtmlTextPaintProbeRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c0412_root_html_text_paint", false);
+        c111RootHtmlAutoRepeatZeroMinimumRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c111_root_html_auto_repeat_zero_minimum", false);
         rootHtmlDefaultRenderRequested = activity.getIntent()
-                .getBooleanExtra("spinon_c0412_root_html_default_render", false);
+                .getBooleanExtra("spinon_c0412_root_html_default_render", false)
+                || c111RootHtmlAutoRepeatZeroMinimumRequested;
         c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c115_root_html_grid_item_self_alignment_pixelcopy", false);
         c115RootHtmlGridItemAutoStretchPixelCaptureRequested =
@@ -19013,6 +19017,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
+        if (c111RootHtmlAutoRepeatZeroMinimumRequested && rootHtmlPageScaleCase != null) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_ARGUMENT_ERROR"
+                    + " rejected=true reason=page-scale-override-not-allowed");
+            postStatus("실패 · C11.1 auto-repeat 비교에서는 page scale override를 사용할 수 없습니다");
+            return;
+        }
         if (c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
                 && c115RootHtmlGridItemAutoStretchPixelCaptureRequested) {
             Log.e(TAG, "SPINON_C115_PIXELCOPY_ARGUMENT_ERROR rejected=true"
@@ -19048,6 +19058,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             || key.equals("spinon_c0412_root_html_default_render")
                             || key.equals("spinon_c0412_root_html_page_scale_case")
                             || key.equals("spinon_c0410_runtime_gpu")
+                            || BuildConfig.SPINON_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST
+                                    && c111RootHtmlAutoRepeatZeroMinimumRequested
+                                    && key.equals(
+                                            "spinon_c111_root_html_auto_repeat_zero_minimum")
                             || BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
                                     && c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
                                     && key.equals(
@@ -20291,9 +20305,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private long nativeCreateRootHtmlDefaultRenderHost() {
         try {
-            String html = rootHtmlPageScaleCase == null
-                    ? readAsset("root-html-default-rendering.html")
-                    : readAsset("root-html-page-scale-runtime.html");
+            String assetName = c111RootHtmlAutoRepeatZeroMinimumRequested
+                    ? "root-html-grid-auto-repeat-zero-min-runtime.html"
+                    : rootHtmlPageScaleCase == null
+                            ? "root-html-default-rendering.html"
+                            : "root-html-page-scale-runtime.html";
+            String html = readAsset(assetName);
             if (rootHtmlPageScaleCase != null) {
                 String originalViewport = "content=\"width=device-width, initial-scale=1\"";
                 String replacementViewport = rootHtmlPageScaleCase.equals("half")
@@ -20312,11 +20329,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + rootHtmlPageScaleCase + " viewport=" + replacementViewport);
             }
             byte[] source = html.getBytes(StandardCharsets.UTF_8);
+            if (c111RootHtmlAutoRepeatZeroMinimumRequested) {
+                Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_SOURCE asset="
+                        + assetName + " bytes=" + source.length + " sha256="
+                        + sha256Hex(source));
+            }
             Log.i(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case="
                     + (rootHtmlPageScaleCase == null ? "default" : rootHtmlPageScaleCase)
                     + " bytes=" + source.length + " sha256=" + sha256Hex(source));
             return nativeCreateHostWithRootHtml(source);
         } catch (IOException error) {
+            if (c111RootHtmlAutoRepeatZeroMinimumRequested) {
+                Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_ASSET_ERROR asset="
+                        + "root-html-grid-auto-repeat-zero-min-runtime.html", error);
+            }
             Log.e(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR", error);
             return 0;
         }

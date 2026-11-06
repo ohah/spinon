@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 15 tests
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_ignore_hidden_text_items ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_columns_and_text_rows_run_in_default_session ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_match_one_and_two_implicit_row_geometry ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_use_text_measure_for_min_content_contribution ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_text::parsed_root_html_intrinsic_auto_rows_measure_multiple_direct_text_items ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_text::parsed_root_html_intrinsic_auto_rows_reject_an_invalid_second_text_item_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_combined_intrinsic_tracks_reject_out_of_slice_combinations_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::combined_multiple_text::parsed_root_html_combined_intrinsic_rows_reject_invalid_second_text_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_reject_unsupported_text_items_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::normal_whitespace::rejects_invalid::parsed_root_html_normal_whitespace_rejects_invalid_sources_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::combined_multiple_text::parsed_root_html_combines_intrinsic_columns_with_multiple_text_rows ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::letter_words::parsed_root_html_ascii_letter_words_match_all_independent_intrinsic_scenes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::letter_words::parsed_root_html_ascii_alphanumeric_words_match_all_independent_intrinsic_scenes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_reject_unsupported_values_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::normal_whitespace::parsed_root_html_normal_whitespace_matches_all_24_reference_scenes ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 290 filtered out; finished in 1.23s

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.1 zero-minimum Root HTML auto-repeat runtime</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+    .grid {
+      display: grid;
+      grid-auto-flow: row;
+      grid-auto-rows: auto;
+      grid-auto-columns: auto;
+      margin: 0;
+      padding: 0;
+      border-top-width: 0;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      border-left-width: 0;
+      background-color: #101820;
+    }
+    .item {
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border-top-width: 0;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      border-left-width: 0;
+      background-color: #e5484d;
+    }
+
+    #fill-11 { width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); grid-template-rows: 2px; }
+    #fit-11 { width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr)); grid-template-rows: 2px; }
+    #fill-gap-11 { width: 11px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); grid-template-rows: 2px; }
+    #fill-fractional { width: 12.5px; height: 2px; gap: 0.5px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr)); grid-template-rows: 2px; }
+    #fill-two-zero { width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr) minmax(0px, 1fr)); grid-template-rows: 2px; }
+    #fill-mixed-two { width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fill, minmax(0px, 1fr) minmax(2px, 1fr)); grid-template-rows: 2px; }
+    #fit-mixed-two { width: 19px; height: 2px; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr) minmax(2px, 1fr)); grid-template-rows: 2px; }
+    #empty-fit-11 { width: 11px; height: 2px; gap: 0; grid-template-columns: repeat(auto-fit, minmax(0px, 1fr)); grid-template-rows: 2px; }
+    #fill-rows-7 { width: 3px; height: 7px; row-gap: 1px; column-gap: 0; grid-template-columns: 3px; grid-template-rows: repeat(auto-fill, minmax(0px, 1fr)); }
+    #fill-rows-mixed { width: 3px; height: 19px; row-gap: 1px; column-gap: 0; grid-template-columns: 3px; grid-template-rows: repeat(auto-fill, minmax(0px, 1fr) minmax(2px, 1fr)); }
+  </style>
+</head>
+<body>
+  <div id="fill-11" class="grid"><div class="item"></div></div>
+  <div id="fit-11" class="grid"><div class="item"></div></div>
+  <div id="fill-gap-11" class="grid"><div class="item"></div></div>
+  <div id="fill-fractional" class="grid"><div class="item"></div></div>
+  <div id="fill-two-zero" class="grid"><div class="item"></div></div>
+  <div id="fill-mixed-two" class="grid"><div class="item"></div></div>
+  <div id="fit-mixed-two" class="grid"><div class="item"></div></div>
+  <div id="empty-fit-11" class="grid"></div>
+  <div id="fill-rows-7" class="grid"><div class="item"></div></div>
+  <div id="fill-rows-mixed" class="grid"><div class="item"></div></div>
+</body>
+</html>

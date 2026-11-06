@@ -1,3 +1,5 @@
+import java.nio.file.Files
+
 plugins {
     id("com.android.application")
 }
@@ -236,6 +238,17 @@ require(spinonC111RootHtmlDensePlacementFixtureTestValue != "1" ||
     spinonC04RuntimeGpuValue == "1") {
     "C11.1 Root HTML dense placement fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
 }
+val spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue = providers
+    .gradleProperty("spinonC111RootHtmlAutoRepeatZeroMinFixtureTest")
+    .orElse("0").get()
+require(spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue == "0" ||
+    spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue == "1") {
+    "SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue != "1" ||
+    spinonC04RuntimeGpuValue == "1") {
+    "C11.1 Root HTML auto-repeat fixture는 C04.10 runtime GPU와 함께 켜야 합니다."
+}
 val spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue = providers
     .environmentVariable("SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST")
     .orElse("0").get()
@@ -326,6 +339,10 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         spinonC111RootHtmlDensePlacementFixtureTestValue,
     )
     environment(
+        "SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST",
+        spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue,
+    )
+    environment(
         "SPINON_ENABLE_C11_1_ROOT_HTML_COLUMN_FLOW_MIXED_CROSS_AXIS_FIXTURE_TEST",
         spinonC111RootHtmlColumnFlowMixedCrossAxisFixtureTestValue,
     )
@@ -359,6 +376,21 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         spinonC153WgpuGlyphPaintFixtureTestValue,
     )
     commandLine("bash", "tools/build-android.sh")
+    doLast {
+        val source = repoRoot.resolve(
+            "tests/fixtures/css/c11/root-html-grid-auto-repeat-zero-min-runtime.html",
+        )
+        val target = repoRoot.resolve(
+            "build/spinon/bootstrap/root-html-grid-auto-repeat-zero-min-runtime.html",
+        )
+        if (spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue == "1") {
+            require(source.isFile) { "C11.1 Root HTML auto-repeat fixture source is missing: $source" }
+            target.parentFile.mkdirs()
+            source.copyTo(target, overwrite = true)
+        } else {
+            Files.deleteIfExists(target.toPath())
+        }
+    }
 }
 
 tasks.named("preBuild").configure {
@@ -408,6 +440,11 @@ android {
             "boolean",
             "SPINON_C04_RUNTIME_GPU_FIXTURE_TEST",
             spinonC04RuntimeGpuFixtureTestEnabled.toString(),
+        )
+        buildConfigField(
+            "boolean",
+            "SPINON_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST",
+            (spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue == "1").toString(),
         )
         buildConfigField(
             "boolean",

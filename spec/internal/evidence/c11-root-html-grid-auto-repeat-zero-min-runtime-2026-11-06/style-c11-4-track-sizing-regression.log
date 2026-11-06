@@ -1,0 +1,28 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 22 tests
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::fixed_repeat_named_lines_resolve_across_fixed_and_auto_repeat_seams ... ok
+test c11_4_track_sizing_areas_tests::ratio_constraints_remain_rejected_for_non_image_grid_items ... ok
+test c11_4_track_sizing_areas_tests::auto_repeat_template_areas_accept_bare_grid_area_placement_on_both_axes ... ok
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::fixed_repeat_auto_fit_named_placement_precedes_empty_track_collapse ... ok
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::fixed_repeat_names_merge_with_an_ordinary_neighbor_and_auto_repeat ... ok
+test c11_4_track_sizing_areas_tests::first_baseline_admission::ordinary_track_sizing_projection_keeps_grid_last_baseline_closed ... ok
+test c11_4_track_sizing_areas_tests::first_baseline_admission::ordinary_track_sizing_projection_keeps_grid_first_baseline_closed ... ok
+test c11_4_track_sizing_areas_tests::ratio_constraints_remain_rejected_for_nested_html_images ... ok
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::row_axis_named_lines_expand_with_multiple_fixed_repeats ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_maps_pref_disabled_inline_author_property_error ... ok
+test c11_4_track_sizing_areas_tests::direct_html_image_ratio_constraints_are_scoped_to_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_keeps_named_area_placement ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_rejects_align_items_stretch_without_overflow_fixture_opt_in ... ok
+test c11_4_track_sizing_areas_tests::auto_fit_wpt_accepts_multiple_percent_neighbors_and_named_implicit_lines ... ok
+test c11_4_track_sizing_areas_tests::cross_axis_fixed_repeat_and_auto_repeat_project_areas_on_either_axis ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_projects_negative_lines_and_reverse_auto_track_lists ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_lays_out_css_auto_repeat_modes ... ok
+test c11_4_track_sizing_areas_tests::track_sizing_profile_anchors_negative_lines_when_template_is_none ... ok
+test c11_4_track_sizing_areas_tests::cross_axis_fixed_repeat_rejects_area_dimension_mismatch_during_projection ... ok
+test c11_4_track_sizing_areas_tests::root_grid_max_content_is_scoped_to_the_track_sizing_profile ... ok
+test c11_4_track_sizing_areas_tests::auto_fit_wpt_resolves_percentage_minmax_suffix_neighbors ... ok
+test c11_4_track_sizing_areas_tests::auto_repeat_explicit_neighbors::auto_repeat_explicit_neighbor_matrix_uses_collapsed_auto_fit_gutters ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 416 filtered out; finished in 0.08s
