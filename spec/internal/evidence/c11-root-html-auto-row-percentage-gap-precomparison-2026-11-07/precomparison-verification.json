@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "expectedSceneCount": 70,
+  "comparedSceneCount": 70,
+  "toleranceCssPx": 0.03125,
+  "maxObservedAbsoluteErrorCssPx": 0.026041666666668,
+  "failures": [],
+  "note": "Chrome is recorded as a reference observation; expected values come from the independent CSS Grid free-space calculation."
+}

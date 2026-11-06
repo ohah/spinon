@@ -1,0 +1,105 @@
+$ cargo test --locked -p spinon-layout --lib root_html_auto_row_stretch
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 6 tests
+test grid::root_html_auto_row_stretch::tests::row_gap_accepts_the_last_f32_representable_grid_extent ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_accepts_bounded_px_and_definite_percentages ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_rejects_invalid_values_and_unrepresentable_percentage_extent ... ok
+test grid::root_html_auto_row_stretch::tests::layout_profile_requires_the_definite_gap_basis_and_bounded_items ... ok
+test grid::auto_placement_tests::root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow ... ok
+test grid::track_sizing_tests::root_html_auto_row_percentage_gap::root_html_auto_row_stretch_matches_percentage_gap_alignment_matrix ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 469 filtered out; finished in 0.01s
+
+$ cargo test --locked -p spinon-layout --lib root_html_two_implicit_auto_rows_respect_supported_content_alignment
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+test grid::auto_placement_tests::root_html_two_implicit_auto_rows_respect_supported_content_alignment ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 474 filtered out; finished in 0.00s
+
+$ cargo test --locked -p spinon-layout --lib root_html_intrinsic_track_sizing_stretches_an_automatic_implicit_row
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+test grid::auto_placement_tests::root_html_intrinsic_track_sizing_stretches_an_automatic_implicit_row ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 474 filtered out; finished in 0.00s
+
+$ cargo test --locked -p spinon-style-to-layout --lib row_gap_admits_finite_px_values_and_representable_percentages
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.35s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 1 test
+test projection::style_values::root_html_auto_row_content_alignment_tests::row_gap_admits_finite_px_values_and_representable_percentages ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 445 filtered out; finished in 0.00s
+
+$ cargo test --locked -p spinon-runtime --lib row_gap
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.31s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_negative_row_gap_keeps_the_existing_fatal_cascade_diagnostic ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_normal_row_gap_uses_zero_grid_gap ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_unsupported_math_row_gap_rejects_atomically_and_recovers ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_percentage_row_gap_matches_the_70_scene_alignment_matrix ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 315 filtered out; finished in 3.21s
+
+$ cargo test --locked -p spinon-runtime --lib root_html_grid_intrinsic_auto_rows
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 28 tests
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_auto_row_stretch::parsed_root_html_stretches_two_implicit_auto_rows_equally ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::auto_row_stretch::parsed_root_html_default_auto_row_stretches_its_implicit_track ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_auto_row_stretch::parsed_root_html_explicit_align_content_stretch_matches_normal ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_text::parsed_root_html_intrinsic_auto_rows_measure_multiple_direct_text_items ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::auto_row_stretch::parsed_root_html_auto_row_stretch_recovers_after_rejected_environment ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_ignore_hidden_text_items ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_auto_row_stretch::parsed_root_html_multiple_auto_row_stretch_recovers_after_rejection ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_text::parsed_root_html_intrinsic_auto_rows_reject_an_invalid_second_text_item_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_columns_and_text_rows_run_in_default_session ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_negative_row_gap_keeps_the_existing_fatal_cascade_diagnostic ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_match_one_and_two_implicit_row_geometry ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_use_text_measure_for_min_content_contribution ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_combined_intrinsic_tracks_reject_out_of_slice_combinations_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_normal_row_gap_uses_zero_grid_gap ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::auto_row_stretch::parsed_root_html_auto_row_stretch_rejects_wrong_alignment_and_extra_items ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::combined_multiple_text::parsed_root_html_combined_intrinsic_rows_reject_invalid_second_text_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_unsupported_math_row_gap_rejects_atomically_and_recovers ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::combined_multiple_text::parsed_root_html_combines_intrinsic_columns_with_multiple_text_rows ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::letter_words::parsed_root_html_ascii_hyphenated_words_match_all_independent_intrinsic_scenes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::letter_words::parsed_root_html_ascii_alphanumeric_words_match_all_independent_intrinsic_scenes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::letter_words::parsed_root_html_ascii_letter_words_match_all_independent_intrinsic_scenes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_reject_unsupported_text_items_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::normal_whitespace::rejects_invalid::parsed_root_html_normal_whitespace_rejects_invalid_sources_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_auto_row_stretch::parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::parsed_root_html_intrinsic_auto_rows_reject_unsupported_values_atomically ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::normal_whitespace::parsed_root_html_normal_whitespace_matches_all_24_reference_scenes ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::multiple_auto_row_stretch::parsed_root_html_positional_and_distributed_align_content_match_geometry ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_percentage_row_gap_matches_the_70_scene_alignment_matrix ... ok
+
+test result: ok. 28 passed; 0 failed; 0 ignored; 0 measured; 291 filtered out; finished in 3.95s
+
+$ cargo clippy --locked -p spinon-layout -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings
+    Checking spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Checking spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Checking spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+    Checking spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.99s
+$ cargo fmt --all -- --check
+$ git diff --check

@@ -787,6 +787,7 @@ fn implicit_auto_sizing_and_explicit_column_overflow_fail_closed() {
 fn root_html_intrinsic_track_sizing_stretches_an_automatic_implicit_row() {
     let mut input = sparse_grid(1, 1, 2);
     input.viewport.height = 40.0;
+    input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
     input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
     input.nodes[0].style.align_content = Some(LayoutAlignContent::Normal);
     input.nodes[1].style.display = LayoutDisplay::Block;
@@ -966,7 +967,15 @@ fn root_html_two_implicit_auto_rows_respect_supported_content_alignment() {
         container.placement_mode = GridPlacementMode::RootHtmlAutoRowStretchV1;
         container.track_sizing_trace_enabled = true;
 
+        let index = input
+            .nodes
+            .iter()
+            .enumerate()
+            .map(|(index, node)| (node.id, index))
+            .collect::<BTreeMap<_, _>>();
         super::validate_root_html_intrinsic_tracks_contract(
+            &input,
+            &index,
             id(1),
             input.nodes[0].style,
             &input.grid_containers[&id(1)],
@@ -1142,7 +1151,15 @@ fn root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow() {
                 unsupported => panic!("unexpected alignment profile variant {unsupported:?}"),
             };
             let input = make_input(align_content, row_gap);
+            let node_index = input
+                .nodes
+                .iter()
+                .enumerate()
+                .map(|(index, node)| (node.id, index))
+                .collect::<BTreeMap<_, _>>();
             super::validate_root_html_intrinsic_tracks_contract(
+                &input,
+                &node_index,
                 id(1),
                 input.nodes[0].style,
                 &input.grid_containers[&id(1)],
@@ -1206,6 +1223,22 @@ fn root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow() {
         }
     }
 
+    let mut unsupported_basis = make_input(LayoutAlignContent::Center, 0.0);
+    unsupported_basis.viewport.height = 2.0e38;
+    unsupported_basis.nodes[0].style.height = LayoutDimension::Fixed(2.0e38);
+    unsupported_basis.nodes[0].style.gap.row = LayoutLengthPercentage::Percentage(2.0);
+    let unsupported_basis_result = TaffyLayoutEngine.compute(&unsupported_basis);
+    assert!(
+        matches!(
+            &unsupported_basis_result,
+            Err(LayoutError::UnsupportedGridContainerStyle {
+                node,
+                property,
+            }) if *node == id(1) && *property == "C11.4 RootHtmlAutoRowStretchV1 profile"
+        ),
+        "oversized basis should fail the bounded profile, got {unsupported_basis_result:?}"
+    );
+
     for (property, gap) in [
         (
             "row-gap",
@@ -1217,8 +1250,15 @@ fn root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow() {
         (
             "row-gap",
             LayoutGap {
-                row: LayoutLengthPercentage::Percentage(0.05),
+                row: LayoutLengthPercentage::Percentage(f32::MAX),
                 column: LayoutLengthPercentage::ZERO,
+            },
+        ),
+        (
+            "column-gap",
+            LayoutGap {
+                row: LayoutLengthPercentage::ZERO,
+                column: LayoutLengthPercentage::Percentage(0.05),
             },
         ),
         (

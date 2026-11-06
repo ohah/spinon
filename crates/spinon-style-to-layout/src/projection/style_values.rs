@@ -1483,7 +1483,22 @@ fn root_html_auto_row_content_alignment_is_supported(value: Option<&str>) -> boo
 }
 
 fn root_html_auto_row_stretch_row_gap_is_supported(value: ComputedCssSpacingValue) -> bool {
-    matches!(value, ComputedCssSpacingValue::LengthPx(value) if value.is_finite() && (0.0..=7.5).contains(&value))
+    match value {
+        ComputedCssSpacingValue::LengthPx(value) => {
+            value.is_finite() && (0.0..=7.5).contains(&value)
+        }
+        ComputedCssSpacingValue::Percentage(fraction)
+            if fraction.is_finite() && fraction >= 0.0 =>
+        {
+            let used_gap = f64::from(fraction) * 40.0;
+            let grid_extent = used_gap * 2.0 + 30.0;
+            grid_extent.is_finite() && grid_extent <= f64::from(f32::MAX)
+        }
+        ComputedCssSpacingValue::Normal => true,
+        ComputedCssSpacingValue::Percentage(_)
+        | ComputedCssSpacingValue::Auto
+        | ComputedCssSpacingValue::Unsupported => false,
+    }
 }
 
 #[cfg(test)]
@@ -1533,7 +1548,7 @@ mod root_html_auto_row_content_alignment_tests {
     }
 
     #[test]
-    fn row_gap_admits_only_finite_px_values_within_the_bounded_profile() {
+    fn row_gap_admits_finite_px_values_and_representable_percentages() {
         for accepted in [0.0, 2.5, 5.0, 7.5] {
             assert!(
                 root_html_auto_row_stretch_row_gap_is_supported(ComputedCssSpacingValue::LengthPx(
@@ -1552,10 +1567,30 @@ mod root_html_auto_row_content_alignment_tests {
             );
         }
 
+        for accepted in [0.0, 0.0625, 0.125, 0.1875, 0.2, 1.0, 1.2] {
+            assert!(
+                root_html_auto_row_stretch_row_gap_is_supported(
+                    ComputedCssSpacingValue::Percentage(accepted)
+                ),
+                "percentage fraction {accepted} should be admitted by the definite auto-row profile"
+            );
+        }
+        assert!(root_html_auto_row_stretch_row_gap_is_supported(
+            ComputedCssSpacingValue::Normal
+        ));
+
+        let maximum_fraction = ((f64::from(f32::MAX) - 30.0) / 80.0) as f32;
+        assert!(root_html_auto_row_stretch_row_gap_is_supported(
+            ComputedCssSpacingValue::Percentage(maximum_fraction)
+        ));
+        let next_fraction = f32::from_bits(maximum_fraction.to_bits() + 1);
         for rejected in [
-            ComputedCssSpacingValue::Percentage(0.0),
-            ComputedCssSpacingValue::Percentage(0.05),
-            ComputedCssSpacingValue::Normal,
+            ComputedCssSpacingValue::Percentage(-0.05),
+            ComputedCssSpacingValue::Percentage(f32::NAN),
+            ComputedCssSpacingValue::Percentage(f32::INFINITY),
+            ComputedCssSpacingValue::Percentage(f32::NEG_INFINITY),
+            ComputedCssSpacingValue::Percentage(f32::MAX),
+            ComputedCssSpacingValue::Percentage(next_fraction),
             ComputedCssSpacingValue::Auto,
             ComputedCssSpacingValue::Unsupported,
         ] {
@@ -1633,12 +1668,22 @@ fn validate_root_html_intrinsic_auto_row_items(
                 && dimensions.max_width == ComputedCssMaxSize::None
                 && dimensions.min_height == ComputedCssDimension::Auto
                 && dimensions.max_height == ComputedCssMaxSize::None;
+            if !root_html_auto_row_stretch_row_gap_is_supported(element.layout_spacing.row_gap) {
+                return Err(StyleLayoutError::UnsupportedComputedValue {
+                    node: element.node_id,
+                    property: "row-gap",
+                    value: element
+                        .properties
+                        .get("row-gap")
+                        .cloned()
+                        .unwrap_or_else(|| format!("{:?}", element.layout_spacing.row_gap)),
+                });
+            }
             if !exact_40px(dimensions.width)
                 || !exact_40px(dimensions.height)
                 || !automatic_size
                 || element.layout_aspect_ratio.is_some()
                 || element.layout_position != ComputedCssPosition::Static
-                || !root_html_auto_row_stretch_row_gap_is_supported(element.layout_spacing.row_gap)
                 || element.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
                 || !root_html_auto_row_content_alignment_is_supported(
                     element.properties.get("align-content").map(String::as_str),
@@ -1646,7 +1691,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                 || element.properties.get("align-items").map(String::as_str) != Some("normal")
             {
                 return Err(unsupported(
-                    "Root HTML auto-row stretch requires a 40x40px static Grid, a finite row-gap from 0px through 7.5px, zero column-gap, a supported align-content value, and align-items:normal",
+                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero column-gap, a supported align-content value, and align-items:normal",
                 ));
             }
         }
