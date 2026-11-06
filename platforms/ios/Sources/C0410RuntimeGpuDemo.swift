@@ -14126,6 +14126,7 @@ private struct C111MetalPixelRun {
         "columns-auto-one", "columns-zero-one", "columns-auto-zero",
         "rows-auto-one", "rows-zero-one", "rows-auto-zero",
     ]
+    private static let rootHtmlLetterWordAutoMinimumRunID = "c11word-20261106"
 
     private static func rootHtmlNamedAreaAutoMinimumScene(runID: String) -> String? {
         rootHtmlNamedAreaAutoMinimumScenes.first { runID.hasPrefix("c11na-\($0)-") }
@@ -14211,6 +14212,11 @@ private struct C111MetalPixelRun {
             let isRatioMinmax = rootHtmlRuns[0].hasPrefix(
                 "--spinon-root-html-grid-minmax-metal-surface-pixels=")
                 && runID == Self.rootHtmlRatioMinmaxPixelRunID
+            let isLetterWordAutoMinimum = isAutoMinimum
+                && runID == Self.rootHtmlLetterWordAutoMinimumRunID
+            if isAutoMinimum && runID.hasPrefix("c11word-") && !isLetterWordAutoMinimum {
+                return nil
+            }
             let namedAreaAutoMinimumScene = isAutoMinimum
                 ? rootHtmlNamedAreaAutoMinimumScene(runID: runID) : nil
             if isAutoMinimum && runID.hasPrefix("c11na-") && namedAreaAutoMinimumScene == nil {
@@ -14236,9 +14242,11 @@ private struct C111MetalPixelRun {
                     : isSelfAlignment
                     ? "root-html-grid-item-self-alignment"
                     : isAutoMinimum
-                    ? namedAreaAutoMinimumScene.map {
-                        "root-html-grid-auto-minimum-named-area-\($0)"
-                    } ?? "root-html-grid-auto-minimum"
+                    ? isLetterWordAutoMinimum
+                        ? "root-html-grid-letter-word-auto-minimum"
+                        : namedAreaAutoMinimumScene.map {
+                            "root-html-grid-auto-minimum-named-area-\($0)"
+                        } ?? "root-html-grid-auto-minimum"
                     : isFitContentPercentage
                     ? "root-html-grid-fit-content-percentage-overflow"
                     : isFitContent
@@ -14248,6 +14256,7 @@ private struct C111MetalPixelRun {
                     : isOneAxisPlacement
                     ? isMixedOneAxisPlacement ? "C111MIX" : "C111OAP"
                     : isRootHtmlAlignment ? "C115"
+                    : isLetterWordAutoMinimum ? "C111WORD"
                     : namedAreaAutoMinimumScene == nil ? "C111" : "C111NA",
                 samples: isRatioMinmax ? [
                     C111MetalPixelSample(
@@ -14340,6 +14349,10 @@ private struct C111MetalPixelRun {
                     C111MetalPixelSample(
                         id: "viewport-bottom-clip-outside-x", nodeId: "item",
                         xCssPx: 90, yCssPx: 734, rgba: [255, 255, 255, 255]),
+                ] : isLetterWordAutoMinimum ? [
+                    C111MetalPixelSample(
+                        id: "word-overflow-outside-grid", nodeId: "long-text",
+                        xCssPx: 42, yCssPx: 19, rgba: [91, 168, 245, 255]),
                 ] : namedAreaAutoMinimumScene.map {
                     rootHtmlNamedAreaAutoMinimumSamples(scene: $0)
                 } ?? (isAutoMinimum ? [

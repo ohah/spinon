@@ -140,8 +140,8 @@ fn intrinsic_auto_rows_atomically_reject_non_collapsible_or_invalid_text_sources
         ("nbsp", "A\u{00a0}A"),
         ("nel", "A\u{0085}A"),
         ("unicode-space", "A\u{2003}A"),
-        ("unbreakable-token", "AA"),
-        ("non-a-token", "A B"),
+        ("digit-token", "A1"),
+        ("punctuation-token", "A-B"),
     ] {
         let mut fixture = Fixture::new();
         let (invalid_item, _) = fixture.add_text_item_before(source, Some(fixture.last));

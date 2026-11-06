@@ -1562,7 +1562,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                                 _ => {
                                     return Err(unsupported_item(
                                         child.id(),
-                                        "text-bearing Grid items require one direct child with one or more ASCII `A` tokens separated by single spaces",
+                                        "text-bearing Grid items require one direct child with ASCII alphabetic tokens separated by collapsible ASCII whitespace",
                                     ));
                                 }
                             }

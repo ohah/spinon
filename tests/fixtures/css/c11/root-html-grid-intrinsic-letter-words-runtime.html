@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid intrinsic sizing of an unbreakable ASCII word</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background-color: #20242a; }
+      main { width: 120px; height: 90px; padding: 0; margin: 0; }
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: #39434f;
+        grid-template-columns: auto;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-rows: min-content;
+        gap: 0;
+        align-content: start;
+        justify-content: start;
+      }
+      .item { box-sizing: border-box; width: 1px; margin: 0; padding: 0; }
+      #first { height: 10px; background-color: #f2665e; }
+      #long-text {
+        width: auto;
+        height: auto;
+        min-height: auto;
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 10px;
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: normal;
+        background-color: #5ba8f5;
+      }
+      #short-text {
+        width: auto;
+        height: auto;
+        min-height: auto;
+        font-family: monospace;
+        font-size: 10px;
+        line-height: 10px;
+        word-break: normal;
+        overflow-wrap: normal;
+        white-space: normal;
+        background-color: #ffd166;
+      }
+      #last { height: 34px; background-color: #55c791; }
+    </style>
+  </head>
+  <body>
+    <main id="stage">
+      <div id="grid" class="grid">
+        <div id="first" class="item"></div>
+        <div id="long-text" class="item">AAAAAAAA</div>
+        <div id="short-text" class="item">A</div>
+        <div id="last" class="item"></div>
+      </div>
+    </main>
+  </body>
+</html>

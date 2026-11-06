@@ -211,7 +211,7 @@ fn parsed_root_html_intrinsic_auto_rows_reject_an_invalid_second_text_item_atomi
             "invalid-second-source",
             MULTIPLE_TEXT_SOURCE.replace(
                 "<div id=\"short-text\" class=\"item wrapped-text\">A</div>",
-                "<div id=\"short-text\" class=\"item wrapped-text\">B</div>",
+                "<div id=\"short-text\" class=\"item wrapped-text\">B1</div>",
             ),
         ),
         (
