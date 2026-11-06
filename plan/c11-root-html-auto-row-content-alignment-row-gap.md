@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [선행 auto-row alignment slice](./c11-root-html-auto-row-content-alignment.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 전 계획. 선행 제한 구현 PR [#1237](https://github.com/ohah/spinon/pull/1237)은 zero-gap fixed Root HTML shape에서 `align-content` 위치·분배값 10개를 연결했다. 이 후속은 같은 shape에 제한된 non-zero row gutters와 gutter 포함 free-space 동작을 추가한다. 이 plan slice는 C11.4/C11 완료나 공식 완료 수 증가를 뜻하지 않는다.
+**상태:** 제한 구현 후보 PR [#1240](https://github.com/ohah/spinon/pull/1240) 초안. 선행 제한 구현 PR [#1237](https://github.com/ohah/spinon/pull/1237)의 fixed Root HTML shape에 computed `row-gap:0..=7.5px`를 추가하고 gutter 포함 free-space 동작을 검증했다. PR diff 30관점 검토·CI·merge는 남아 있다. 이 plan slice는 C11.4/C11 완료나 공식 완료 수 증가를 뜻하지 않는다.
 
 **규범 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §10.1 gutters, §§11.1·11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) · [CSS Box Alignment Module Level 3 §§4.3–4.4, §5.1.4](https://www.w3.org/TR/2025/WD-css-align-3-20250311/)
 
