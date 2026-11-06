@@ -694,7 +694,7 @@ fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_text_items_atomically
     for (label, source) in [
         (
             "different-text-source",
-            TEXT_SOURCE.replace("A A A A A A", "B1 B1 B1 B1 B1 B1"),
+            TEXT_SOURCE.replace("A A A A A A", "B-1 B-1 B-1 B-1 B-1 B-1"),
         ),
         (
             "nested-inline-markup",

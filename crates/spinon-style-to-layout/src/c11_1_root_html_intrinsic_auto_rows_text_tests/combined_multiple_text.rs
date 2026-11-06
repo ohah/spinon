@@ -121,7 +121,7 @@ fn intrinsic_columns_measure_multiple_text_items_as_independent_implicit_rows() 
 #[test]
 fn intrinsic_columns_reject_an_invalid_second_text_item_before_layout_publication() {
     let mut fixture = Fixture::with_tracks("min-content", 0.0, "0");
-    let (invalid_item, _) = fixture.add_text_item_before("B1", Some(fixture.last));
+    let (invalid_item, _) = fixture.add_text_item_before("B-1", Some(fixture.last));
     assert!(matches!(
         fixture.compute(),
         Err(StyleLayoutError::UnsupportedComputedValue {

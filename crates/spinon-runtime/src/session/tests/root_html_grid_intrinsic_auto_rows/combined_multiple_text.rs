@@ -218,7 +218,7 @@ fn parsed_root_html_combined_intrinsic_rows_reject_invalid_second_text_atomicall
             "invalid-second-source",
             COMBINED_MULTIPLE_TEXT_SOURCE.replace(
                 "<div id=\"short-text\" class=\"item wrapped-text\">A</div>",
-                "<div id=\"short-text\" class=\"item wrapped-text\">B1</div>",
+                "<div id=\"short-text\" class=\"item wrapped-text\">B-1</div>",
             ),
             crate::session::RuntimeUaCascadeState::Ready,
         ),
