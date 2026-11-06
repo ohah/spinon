@@ -749,3 +749,7 @@ CSS Text Level 3 CRD 2026-08-14의 Appendix G는 Unicode 15.0 기준 58개 small
 ## 2026-11-06 parsed Root HTML ASCII alphanumeric word intrinsic-sizing plan
 
 The existing [ASCII letter-word slice](./c11-root-html-intrinsic-letter-words.md) rejects numeric and mixed letter/digit tokens. The [10-scene Chrome 157 precomparison](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-precomparison-2026-11-06/README.md) fixes the `[A-Za-z0-9]+` boundary and independent track/row/line expectations. The focused [plan](./c11-root-html-intrinsic-ascii-alphanumeric-words.md) was implemented and merged in [PR #1212](https://github.com/ohah/spinon/pull/1212) (merge SHA `64483c9d`). Rust matrices, scoped Clippy, Android API 37 AVD and iPhone 17 Pro/iOS 26.2 Simulator evidence are recorded in the [runtime evidence](../spec/internal/evidence/c11-root-html-intrinsic-ascii-alphanumeric-runtime-2026-11-06/README.md). C11.4 and C11 remain incomplete, and the official total stays `78/214`.
+
+## 2026-11-06 parsed Root HTML ASCII 하이픈 단어 · 계획 후보
+
+현재 제한 direct-text gate는 ASCII 영숫자 단어 안의 U+002D HYPHEN-MINUS를 거부한다. 새 [계획](./c11-root-html-intrinsic-ascii-hyphenated-words.md)은 `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*` grammar와 Chrome 157 9-scene 사전 비교·독립 기대값을 고정한다. 구현은 시작하지 않았으며 C11.4/C11과 공식 `78/214`는 유지한다. [사전 비교와 Agent Browser 화면](../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-precomparison-2026-11-06/README.md) · [계획 실패 관점 20개](./c11-root-html-intrinsic-ascii-hyphenated-words-plan-review-20.md).
