@@ -27,7 +27,7 @@ Scope: the PR #1202 documentation reconciliation, its Agent Browser/Tailnet evid
 | 21 | iOS evidence is mislabeled as physical-device evidence | PASS — it is identified as iPhone 17 Pro Simulator on iOS 26.2. |
 | 22 | Fixture-only route is confused with product route | PASS — evidence says default Root HTML route, both native C11 fixture flags off, and `layout=ready boxes=8`. |
 | 23 | Screenshot dimensions or platform assignment are swapped | PASS — Android is 1080×2400 and iOS is 1206×2622. |
-| 24 | Roadmap screenshot links point to an unmerged/missing asset revision | PASS — both raw image URLs use merge SHA `009da4f…`; the files exist in that commit. |
+| 24 | Roadmap and PR-body screenshot links point to missing assets | PASS — both simulator assets load from merge SHA `009da4f…`; Agent Browser confirmed all four images in PR #1203 load completely at the recorded dimensions. |
 | 25 | Screenshot evidence is represented as pixel readback | PASS — screenshots are called visual smoke; PixelCopy and Metal drawable readback are explicitly excluded. |
 | 26 | Hardware/compositor parity is implied | PASS — physical Android GPU, hardware GPU, and post-compositor pixels are excluded. |
 | 27 | WPT or CI success is implied | PASS — neither WPT nor CI success is claimed. |

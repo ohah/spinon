@@ -1,0 +1,31 @@
+{
+  "checkedBy": "Agent Browser",
+  "pullRequest": "https://github.com/ohah/spinon/pull/1203",
+  "images": [
+    {
+      "alt": "Android API 37 ARM64 AVD visual smoke",
+      "complete": true,
+      "width": 1080,
+      "height": 2400
+    },
+    {
+      "alt": "iPhone 17 Pro iOS 26.2 Simulator visual smoke",
+      "complete": true,
+      "width": 1206,
+      "height": 2622
+    },
+    {
+      "alt": "Tailnet roadmap desktop at 1440 by 1000",
+      "complete": true,
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "alt": "Tailnet roadmap mobile at 390 by 844",
+      "complete": true,
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "allComplete": true
+}
