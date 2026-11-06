@@ -836,9 +836,116 @@ fn root_html_intrinsic_track_sizing_stretches_an_automatic_implicit_row() {
 }
 
 #[test]
-fn root_html_two_implicit_auto_rows_stretch_equally_for_normal_and_stretch() {
-    let mut observed = Vec::new();
-    for align_content in [LayoutAlignContent::Normal, LayoutAlignContent::Stretch] {
+fn root_html_two_implicit_auto_rows_respect_supported_content_alignment() {
+    let cases = [
+        (
+            LayoutAlignContent::Normal,
+            [10.0, 15.0, 15.0],
+            true,
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [0.0, 10.0, 40.0, 10.0],
+                [0.0, 25.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::Stretch,
+            [10.0, 15.0, 15.0],
+            true,
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [0.0, 10.0, 40.0, 10.0],
+                [0.0, 25.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::Position {
+                position: crate::ContentAlignmentPosition::Start,
+                safety: None,
+            },
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [0.0, 10.0, 40.0, 10.0],
+                [0.0, 20.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::FlexStart,
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [0.0, 10.0, 40.0, 10.0],
+                [0.0, 20.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::Position {
+                position: crate::ContentAlignmentPosition::End,
+                safety: None,
+            },
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 10.0, 40.0, 10.0],
+                [0.0, 20.0, 40.0, 10.0],
+                [0.0, 30.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::FlexEnd,
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 10.0, 40.0, 10.0],
+                [0.0, 20.0, 40.0, 10.0],
+                [0.0, 30.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::Center,
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 5.0, 40.0, 10.0],
+                [0.0, 15.0, 40.0, 10.0],
+                [0.0, 25.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::SpaceBetween,
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 0.0, 40.0, 10.0],
+                [0.0, 15.0, 40.0, 10.0],
+                [0.0, 30.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::SpaceAround,
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 5.0 / 3.0, 40.0, 10.0],
+                [0.0, 15.0, 40.0, 10.0],
+                [0.0, 85.0 / 3.0, 40.0, 10.0],
+            ],
+        ),
+        (
+            LayoutAlignContent::SpaceEvenly,
+            [10.0, 10.0, 10.0],
+            false,
+            [
+                [0.0, 2.5, 40.0, 10.0],
+                [0.0, 15.0, 40.0, 10.0],
+                [0.0, 27.5, 40.0, 10.0],
+            ],
+        ),
+    ];
+    for (align_content, expected_rows, stretch_applied, expected_frames) in cases {
         let mut input = sparse_grid(1, 1, 3);
         input.viewport = Viewport {
             width: 40.0,
@@ -847,14 +954,10 @@ fn root_html_two_implicit_auto_rows_stretch_equally_for_normal_and_stretch() {
         input.nodes[0].style.width = LayoutDimension::Fixed(40.0);
         input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
         input.nodes[0].style.align_content = Some(align_content);
-        for (index, node) in input.nodes.iter_mut().skip(1).enumerate() {
+        for node in input.nodes.iter_mut().skip(1) {
             node.style.display = LayoutDisplay::Block;
             node.style.width = LayoutDimension::Fixed(40.0);
-            node.style.height = if index == 0 {
-                LayoutDimension::Fixed(10.0)
-            } else {
-                LayoutDimension::Auto
-            };
+            node.style.height = LayoutDimension::Fixed(10.0);
         }
         let container = input.grid_containers.get_mut(&id(1)).unwrap();
         container.columns = vec![GridTrackSize::LengthPx(40.0)];
@@ -879,27 +982,61 @@ fn root_html_two_implicit_auto_rows_stretch_equally_for_normal_and_stretch() {
             let frame = output.frames[&node];
             [frame.x, frame.y, frame.width, frame.height]
         });
-        assert_eq!(
-            frames,
-            [
-                [0.0, 0.0, 40.0, 10.0],
-                [0.0, 10.0, 40.0, 15.0],
-                [0.0, 25.0, 40.0, 15.0],
-            ],
-            "alignment {align_content:?} should use the independently derived frames"
-        );
+        for (index, (actual, expected)) in frames.iter().zip(expected_frames).enumerate() {
+            for (actual, expected) in actual.iter().zip(expected) {
+                assert!(
+                    (*actual - expected).abs() <= 1.0 / 32.0,
+                    "alignment {align_content:?}, frame {index}: expected {expected:?}, got {actual:?}"
+                );
+            }
+        }
 
         let trace = output
             .grid_track_sizing_traces
             .iter()
             .find(|trace| trace.node == id(1))
             .expect("the Grid should retain its track-sizing trace");
-        assert_eq!(trace.used_rows.used_track_list, "10px 15px 15px");
         assert_eq!(trace.used_rows.explicit_track_count, 1);
         assert_eq!(trace.used_rows.positive_implicit_track_count, 2);
-        observed.push(frames);
+        let row_pass = trace
+            .passes
+            .iter()
+            .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+            .expect("the Grid should retain a row sizing pass");
+        let stretch_stages = row_pass
+            .stages
+            .iter()
+            .filter(|stage| {
+                matches!(
+                    stage.stage,
+                    LayoutGridTrackSizingStageKind::StretchAutoTracks { .. }
+                )
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(stretch_stages.len(), 1);
+        let stretch_stage = stretch_stages[0];
+        let LayoutGridTrackSizingStageKind::StretchAutoTracks { applied } = stretch_stage.stage
+        else {
+            unreachable!("the selected stage must record auto-track stretch")
+        };
+        assert_eq!(
+            applied, stretch_applied,
+            "alignment {align_content:?} must report whether auto tracks stretched"
+        );
+        let actual_rows = stretch_stage
+            .tracks
+            .iter()
+            .filter(|track| !track.is_gutter && !track.is_collapsed)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>();
+        assert_eq!(actual_rows.len(), expected_rows.len());
+        for (actual, expected) in actual_rows.iter().zip(expected_rows) {
+            assert!(
+                (*actual - expected).abs() <= 1.0 / 32.0,
+                "alignment {align_content:?}: expected row sizes {expected_rows:?}, got {actual_rows:?}"
+            );
+        }
     }
-    assert_eq!(observed[0], observed[1]);
 }
 
 #[test]

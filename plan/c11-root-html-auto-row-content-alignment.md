@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML implicit auto-row content alignment
 
-**상태:** 계획 단계. 이전 제한 구현 [PR #1234](https://github.com/ohah/spinon/pull/1234)는 40×40px 고정 Root HTML Grid에서 computed `align-content:normal|stretch`만 허용한다. 그 전 Chrome 비교에는 `start`가 `[10,10,10]px` rows를 유지하는 control로 기록돼 있지만 runtime profile에서는 다른 값과 함께 거부한다. 이 계획은 같은 고정 형상에서 위치 정렬과 분배 정렬의 일부 값을 지원하고 나머지 profile은 그대로 거부한다.
+**상태:** 제한 구현 candidate. 계획 PR [#1236](https://github.com/ohah/spinon/pull/1236)이 병합되어 같은 fixed Root HTML Grid profile 안에서 computed `align-content`의 위치·분배 정렬값을 검증하는 구현을 진행했다. `normal|stretch`는 기존 동작이며 새로운 값은 고정된 세 direct-item 형상에서만 통과시킨다. 전체 C11.4는 미완료다.
 
 **구현 전 비교:** [HeadlessChrome 157 관측·독립 계산](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-precomparison-2026-11-07/README.md) · [기대값](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-precomparison-2026-11-07/expected-values.json) · [Agent Browser 관측](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-precomparison-2026-11-07/chrome-observation.json) · [화면](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-precomparison-2026-11-07/chrome/align-content-start.png)
 
@@ -54,6 +54,16 @@ Canonical source는 기존 [`root-html-multiple-auto-row-align-content-stretch-p
 5. Rust focused suites, affected crate Clippy, `cargo fmt --all -- --check`, simulator builds/runtime, release artifact fixture-boundary positive/negative controls 및 `git diff --check`를 실행한다. 실행하지 않은 CI/platform 결과는 통과로 기록하지 않는다.
 6. 구현/runtime은 plan review와 겹치지 않는 새 실패 관점 20개로, 구현 PR diff는 별도 20개 관점으로 검토한다. 발견 결함을 수정하고 영향을 받은 항목을 재검증한다.
 7. 구현 merge 뒤 내부 contract `0059`는 `0.1.0`을 유지하고, C11 plan·`spec/STATUS.md`·public roadmap과 지정 Tailnet preview를 실제 결과와 맞춘다. C11/C11.4 상위 check와 공식 완료 수 `78/214`는 유지한다.
+
+## 구현 candidate 결과
+
+- Computed allowlist 10개와 layout track/frame oracle을 연결했다. `normal|stretch`만 `StretchAutoTracks`를 적용하고 나머지 8개 값은 auto-row base `[10,10,10]px`를 유지한다.
+- Style projection과 Root HTML runtime candidate, 두 layout validation gate를 같은 제한값으로 맞췄다. 두 text-row profile 밖의 기존 single-text shape는 positional alignment를 계속 거부하며 `place-content`의 `justify-content` 축도 허용값을 넓히지 않는다.
+- Layout 1/1 및 auto-placement 92/92, multiple-row RuntimeSession 5/5, single-row regression 3/3, 전체 Root HTML auto-row group 24/24, style allowlist 1/1, scoped Clippy와 rustfmt가 통과했다. 전체 layout/style-to-layout suite에는 범위 밖 실패가 남아 있어 실행 로그와 test 이름을 [runtime evidence](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-runtime-2026-11-07/README.md)에 구분해 기록했다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 fixture hash로 `start`와 `space-between`을 각각 실행해 layout-ready, 6 boxes, 2 text draws 및 자산 복원을 확인했다. 화면 캡처는 visual smoke이며 PixelCopy/Metal surface readback은 아니다.
+- 기본 release runtime/FFI artifact에는 새 unit-test marker가 없고 unit-test executable에는 marker가 있다. 구현/runtime 실패 관점 20개는 [검토 기록](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-runtime-2026-11-07/implementation-runtime-review-20.md)에 있다.
+
+이 결과는 제한 구현 candidate일 뿐이며 C11.4 또는 C11 전체 완료를 뜻하지 않는다. 공식 완료 `78/214`와 contract `0.1.0`을 유지한다.
 
 ## 제외 범위
 

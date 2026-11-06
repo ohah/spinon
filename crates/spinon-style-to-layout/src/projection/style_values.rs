@@ -1450,9 +1450,8 @@ fn root_html_auto_row_stretch_element_candidate(element: &ComputedElementStyle) 
         .grid_layout
         .as_ref()
         .is_some_and(root_html_auto_row_stretch_candidate)
-        && matches!(
+        && root_html_auto_row_content_alignment_is_supported(
             element.properties.get("align-content").map(String::as_str),
-            Some("normal" | "stretch")
         )
         && [
             ("align-items", "normal"),
@@ -1463,6 +1462,67 @@ fn root_html_auto_row_stretch_element_candidate(element: &ComputedElementStyle) 
         .all(|(property, expected)| {
             element.properties.get(property).map(String::as_str) == Some(expected)
         })
+}
+
+fn root_html_auto_row_content_alignment_is_supported(value: Option<&str>) -> bool {
+    matches!(
+        value,
+        Some(
+            "normal"
+                | "stretch"
+                | "start"
+                | "flex-start"
+                | "end"
+                | "flex-end"
+                | "center"
+                | "space-between"
+                | "space-around"
+                | "space-evenly"
+        )
+    )
+}
+
+#[cfg(test)]
+mod root_html_auto_row_content_alignment_tests {
+    use super::root_html_auto_row_content_alignment_is_supported;
+
+    #[test]
+    fn allowlist_keeps_baseline_safety_and_unknown_values_closed() {
+        for value in [
+            "normal",
+            "stretch",
+            "start",
+            "flex-start",
+            "end",
+            "flex-end",
+            "center",
+            "space-between",
+            "space-around",
+            "space-evenly",
+        ] {
+            assert!(
+                root_html_auto_row_content_alignment_is_supported(Some(value)),
+                "{value} should be admitted by the fixed auto-row profile"
+            );
+        }
+
+        for value in [
+            "baseline",
+            "first baseline",
+            "last baseline",
+            "safe center",
+            "unsafe end",
+            "self-start",
+            "space-between safe",
+            "unknown",
+        ] {
+            assert!(
+                !root_html_auto_row_content_alignment_is_supported(Some(value)),
+                "{value} should remain outside the fixed auto-row profile"
+            );
+        }
+        assert!(!root_html_auto_row_content_alignment_is_supported(None));
+    }
 }
 
 fn validate_root_html_intrinsic_auto_row_items(
@@ -1538,14 +1598,13 @@ fn validate_root_html_intrinsic_auto_row_items(
                 || element.layout_position != ComputedCssPosition::Static
                 || element.layout_spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0)
                 || element.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
-                || !matches!(
+                || !root_html_auto_row_content_alignment_is_supported(
                     element.properties.get("align-content").map(String::as_str),
-                    Some("normal" | "stretch")
                 )
                 || element.properties.get("align-items").map(String::as_str) != Some("normal")
             {
                 return Err(unsupported(
-                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero gap, align-content:normal or stretch, and align-items:normal",
+                    "Root HTML auto-row stretch requires a 40x40px static Grid, zero gap, a supported align-content value, and align-items:normal",
                 ));
             }
         }
@@ -1584,6 +1643,17 @@ fn validate_root_html_intrinsic_auto_row_items(
         if auto_row_stretch && !matches!(visible_item_count, 2 | 3) {
             return Err(unsupported(
                 "Root HTML auto-row stretch requires two or three visible direct items",
+            ));
+        }
+        if auto_row_stretch
+            && !matches!(
+                element.properties.get("align-content").map(String::as_str),
+                Some("normal" | "stretch")
+            )
+            && visible_item_count != 3
+        {
+            return Err(unsupported(
+                "Root HTML positional and distributed auto-row alignment requires one fixed item and two direct-text rows",
             ));
         }
         let item_styles_by_node = snapshot
@@ -2400,7 +2470,7 @@ fn reject_grid_alignment(
                 && checks.allow_root_html_auto_row_stretch_alignment
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && property == "align-content"
-                && value == "stretch")
+                && root_html_auto_row_content_alignment_is_supported(Some(value)))
             && !(checks.is_grid_item
                 && checks.allow_root_html_grid_alignment
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
@@ -2442,7 +2512,7 @@ fn reject_root_html_grid_alignment_scope(
                     && value == "start")
                 && !(allow_auto_row_stretch_alignment
                     && property == "align-content"
-                    && value == "stretch")
+                    && root_html_auto_row_content_alignment_is_supported(Some(value)))
             {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: element.node_id,

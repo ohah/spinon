@@ -330,7 +330,7 @@ pub enum GridPlacementMode {
     RootHtmlFitContentV1,
     /// 기본 Root HTML 경로에서 제한된 explicit intrinsic tracks와 row-sparse placement를 sizing합니다.
     RootHtmlIntrinsicTrackSizingV1,
-    /// 기본 Root HTML 경로의 고정 shape implicit auto rows에 positive free-space stretch를 허용합니다.
+    /// 기본 Root HTML 경로의 고정 shape implicit auto rows에서 stretch와 content alignment를 계산합니다.
     RootHtmlAutoRowStretchV1,
     /// 기본 Root HTML 경로에서 한 축의 제한 auto-repeat과 기본 auto-placement만 sizing합니다.
     RootHtmlAutoRepeatV1,
@@ -1680,7 +1680,22 @@ fn validate_root_html_intrinsic_tracks_contract(
                     safety: None,
                 }
         ) || container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
-            && value == crate::LayoutAlignContent::Stretch)
+            && matches!(
+                value,
+                crate::LayoutAlignContent::Normal
+                    | crate::LayoutAlignContent::Stretch
+                    | crate::LayoutAlignContent::FlexStart
+                    | crate::LayoutAlignContent::FlexEnd
+                    | crate::LayoutAlignContent::Center
+                    | crate::LayoutAlignContent::SpaceBetween
+                    | crate::LayoutAlignContent::SpaceAround
+                    | crate::LayoutAlignContent::SpaceEvenly
+                    | crate::LayoutAlignContent::Position {
+                        position: crate::ContentAlignmentPosition::Start
+                            | crate::ContentAlignmentPosition::End,
+                        safety: None,
+                    }
+            ))
     }) {
         Some("align-content")
     } else if !matches!(
