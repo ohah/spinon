@@ -31,7 +31,7 @@
 | 25 | runner가 기존 앱 자산을 덮고 복구하지 않음 | pass01~pass05 각각 bootstrap 및 iOS bundle `cmp` restoration이 PASS다. | PASS |
 | 26 | failed harness attempt를 삭제하거나 성공으로 표시 | pass01~pass04의 원본 logs/screenshots/environment 파일을 보존하고 원인과 성공 범위를 README에 분리했다. | PASS |
 | 27 | simulator screenshot을 pixel parity로 해석 | README는 visual smoke라고 명시하며 PixelCopy/Metal readback이나 compositor comparison을 주장하지 않는다. | PASS |
-| 28 | fixture/runner가 일반 CSS, public API 또는 WPT support를 뜻함 | static fixture는 C11.4 제한 입력이며 README에서 WPT, public CSS, arbitrary text 지원을 명시적으로 제외한다. | PASS |
+| 28 | fixture/runner가 일반 CSS, public API 또는 WPT support를 뜻함 | 계획과 내부 계약은 허용 grammar 및 reject 경계를 고정하고, README는 WPT·public CSS·arbitrary text 지원을 명시적으로 제외한다. | PASS |
 | 29 | baseline Clippy 오류를 숨기거나 전체 green으로 서술 | feature-enabled runtime Clippy의 두 unchanged baseline 오류를 기록하고 command를 passed라 하지 않는다. Non-feature runtime Clippy와 scoped style Clippy는 실제 통과다. | PASS |
 | 30 | 이 제한 slice를 C11/C11.4 공식 완료로 승격 | PR 변경은 `spec/STATUS.md` 체크나 완료 수를 수정하지 않는다. 공식 집계 `78/214`는 그대로다. | PASS |
 
