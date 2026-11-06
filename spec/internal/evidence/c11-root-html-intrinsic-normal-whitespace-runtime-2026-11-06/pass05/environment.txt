@@ -1,0 +1,17 @@
+candidate_head=09adb963df11e8ba3dfba8ef9e2a2c24393e29da
+fixture_sha256=9378b438c4398d56440a4513e700059fd335a5f38dd0c31074ee9fc88dfb6d68
+root_app_source_sha256=c8615b21dcb5ead96c5ed9205f5599aac40c3652d774cf9719cfa2248cc1c912
+android_serial=emulator-5554
+android_api=37
+android_abi=arm64-v8a
+ios_udid=9DCCE836-7659-4914-B6C1-13F54BFFA9DB
+ios_device=iPhone 17 Pro
+ios_runtime=iOS 26.2
+android_c11_fixture_flags=0
+ios_c11_fixture_flags=0
+physical_android_target=not used
+android_process=25633
+android_installed_fixture_sha256=9378b438c4398d56440a4513e700059fd335a5f38dd0c31074ee9fc88dfb6d68
+ios_installed_fixture_sha256=9378b438c4398d56440a4513e700059fd335a5f38dd0c31074ee9fc88dfb6d68
+screenshot_scope=visual smoke only; no PixelCopy or Metal drawable readback
+asset_restoration=PASS (bootstrap and iOS app bundle byte-for-byte)

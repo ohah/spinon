@@ -1,0 +1,15 @@
+candidate_head=572e67be247fa4f112635daaea4bbfbe003a4017
+fixture_sha256=9378b438c4398d56440a4513e700059fd335a5f38dd0c31074ee9fc88dfb6d68
+root_app_source_sha256=7352f0d6adc8f56a70a502c60ddccdb0be2e9d046a62d694b12fef2411e4693c
+android_serial=emulator-5554
+android_api=37
+android_abi=arm64-v8a
+ios_udid=9DCCE836-7659-4914-B6C1-13F54BFFA9DB
+ios_device=iPhone 17 Pro
+ios_runtime=iOS 26.2
+android_c11_fixture_flags=0
+ios_c11_fixture_flags=0
+physical_android_target=not used
+asset_restoration=PASS (bootstrap and iOS app bundle byte-for-byte)
+attempt_result=FAIL (Android app JS used unsupported childNodes; layout and draw reached ready)
+android_js_error=TypeError: Cannot read properties of undefined (reading 'length')

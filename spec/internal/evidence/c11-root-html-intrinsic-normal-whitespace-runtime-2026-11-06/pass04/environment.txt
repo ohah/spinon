@@ -1,0 +1,15 @@
+candidate_head=8cb1e116f575803539c495292423723030069756
+fixture_sha256=9378b438c4398d56440a4513e700059fd335a5f38dd0c31074ee9fc88dfb6d68
+root_app_source_sha256=c8615b21dcb5ead96c5ed9205f5599aac40c3652d774cf9719cfa2248cc1c912
+android_serial=emulator-5554
+android_api=37
+android_abi=arm64-v8a
+ios_udid=9DCCE836-7659-4914-B6C1-13F54BFFA9DB
+ios_device=iPhone 17 Pro
+ios_runtime=iOS 26.2
+android_c11_fixture_flags=0
+ios_c11_fixture_flags=0
+physical_android_target=not used
+asset_restoration=PASS (bootstrap and iOS app bundle byte-for-byte)
+attempt_result=FAIL (runner guard expected layout fields after the Android app-eval log was truncated)
+android_observed=DOM assertion passed; layout=ready boxes=8; presented boxes=8; runtime_text_count=2; app eval error=none
