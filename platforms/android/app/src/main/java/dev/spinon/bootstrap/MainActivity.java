@@ -460,6 +460,8 @@ public final class MainActivity extends Activity {
                 || c114GridScene != null;
         boolean c111RootHtmlPercentColumnsRequested = getIntent()
                 .getBooleanExtra("spinon_c111_root_html_percent_columns", false);
+        boolean c111RootHtmlAutoRepeatPercentageMinimumRequested = getIntent()
+                .getBooleanExtra("spinon_c111_root_html_auto_repeat_percentage_minimum", false);
         String c114GridRunId = getIntent().getStringExtra("spinon_c114_grid_run_id");
         if (c1131GridRepeatRequested
                 && ((c1131GridScene != null
@@ -539,6 +541,7 @@ public final class MainActivity extends Activity {
                 .getBooleanExtra("spinon_c11_grid_fixture", false) || c11GridCase != null
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
                 || c114GridTrackSizingRequested || c111RootHtmlPercentColumnsRequested
+                || c111RootHtmlAutoRepeatPercentageMinimumRequested
                 || c111RootHtmlDensePlacementRequested;
         if (c11GridCase != null) {
             c11GridSceneIndex = -1;
@@ -618,6 +621,8 @@ public final class MainActivity extends Activity {
                 || getIntent().getBooleanExtra("spinon_c0412_root_html_default_render", false)
                 || getIntent().getBooleanExtra(
                         "spinon_c111_root_html_auto_repeat_zero_minimum", false)
+                || getIntent().getBooleanExtra(
+                        "spinon_c111_root_html_auto_repeat_percentage_minimum", false)
                 || getIntent().getStringExtra("spinon_c0412_root_html_page_scale_case") != null
                 || getIntent().getBooleanExtra("spinon_c091_block_formatting", false)
                 || getIntent().getBooleanExtra("spinon_c092_margin_collapse", false)
@@ -663,8 +668,10 @@ public final class MainActivity extends Activity {
                 Log.e(TAG, "SPINON_C0410_DISABLED · SPINON_ENABLE_C04_RUNTIME_GPU=1로 빌드하세요");
                 return;
             }
-            if (getIntent().getBooleanExtra(
-                    "spinon_c111_root_html_auto_repeat_zero_minimum", false)
+            if ((getIntent().getBooleanExtra(
+                            "spinon_c111_root_html_auto_repeat_zero_minimum", false)
+                    || getIntent().getBooleanExtra(
+                            "spinon_c111_root_html_auto_repeat_percentage_minimum", false))
                     && !BuildConfig.SPINON_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST) {
                 TextView unavailable = new TextView(this);
                 unavailable.setText("C11.1 auto-repeat fixture-test 빌드 옵션을 켜야 합니다.");
@@ -772,7 +779,9 @@ public final class MainActivity extends Activity {
             boolean rootHtmlDefaultRenderRoute = getIntent().getBooleanExtra(
                     "spinon_c0412_root_html_default_render", false)
                     || getIntent().getBooleanExtra(
-                            "spinon_c111_root_html_auto_repeat_zero_minimum", false);
+                            "spinon_c111_root_html_auto_repeat_zero_minimum", false)
+                    || getIntent().getBooleanExtra(
+                            "spinon_c111_root_html_auto_repeat_percentage_minimum", false);
             if (!rootHtmlDefaultRenderRoute
                     && !BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST) {
                 TextView unavailable = new TextView(this);

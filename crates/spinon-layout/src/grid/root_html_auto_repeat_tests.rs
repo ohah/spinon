@@ -6,15 +6,32 @@ use crate::{
 };
 use spinon_core::NodeId;
 
-fn repeated(minimum: f32) -> GridTrackSize {
+fn repeated_track(minimum: GridTrackMinSizingFunction) -> GridTrackSize {
     GridTrackSize::MinMax {
-        min: GridTrackMinSizingFunction::LengthPx(minimum),
+        min: minimum,
         max: GridTrackMaxSizingFunction::Fraction(1.0),
     }
 }
 
 fn input_for_columns(minima: &[f32], width: f32, gap: f32) -> (LayoutStyle, GridContainerInput) {
-    let columns = minima.iter().copied().map(repeated).collect::<Vec<_>>();
+    let minima = minima
+        .iter()
+        .copied()
+        .map(GridTrackMinSizingFunction::LengthPx)
+        .collect::<Vec<_>>();
+    input_for_columns_with_minima(&minima, width, gap)
+}
+
+fn input_for_columns_with_minima(
+    minima: &[GridTrackMinSizingFunction],
+    width: f32,
+    gap: f32,
+) -> (LayoutStyle, GridContainerInput) {
+    let columns = minima
+        .iter()
+        .copied()
+        .map(repeated_track)
+        .collect::<Vec<_>>();
     let container = GridContainerInput {
         columns_auto_repeat: Some(GridAutoRepeat {
             mode: GridAutoRepeatMode::AutoFill,
@@ -39,7 +56,24 @@ fn input_for_columns(minima: &[f32], width: f32, gap: f32) -> (LayoutStyle, Grid
 }
 
 fn input_for_rows(minima: &[f32], height: f32, gap: f32) -> (LayoutStyle, GridContainerInput) {
-    let rows = minima.iter().copied().map(repeated).collect::<Vec<_>>();
+    let minima = minima
+        .iter()
+        .copied()
+        .map(GridTrackMinSizingFunction::LengthPx)
+        .collect::<Vec<_>>();
+    input_for_rows_with_minima(&minima, height, gap)
+}
+
+fn input_for_rows_with_minima(
+    minima: &[GridTrackMinSizingFunction],
+    height: f32,
+    gap: f32,
+) -> (LayoutStyle, GridContainerInput) {
+    let rows = minima
+        .iter()
+        .copied()
+        .map(repeated_track)
+        .collect::<Vec<_>>();
     let container = GridContainerInput {
         rows_auto_repeat: Some(GridAutoRepeat {
             mode: GridAutoRepeatMode::AutoFill,
@@ -85,6 +119,70 @@ fn zero_minimum_capacity_uses_the_row_axis_size_and_gap() {
         root_html_auto_repeat_cell_capacity(NodeId::new(31_205).unwrap(), style, &container),
         Ok(4)
     );
+}
+
+#[test]
+fn percentage_capacity_resolves_against_the_repeated_axis_and_keeps_pattern_gaps() {
+    for (minima, width, gap, expected) in [
+        (
+            &[GridTrackMinSizingFunction::Percentage(0.1)][..],
+            200.0,
+            5.0,
+            8,
+        ),
+        (
+            &[
+                GridTrackMinSizingFunction::Percentage(0.1),
+                GridTrackMinSizingFunction::Percentage(0.05),
+            ][..],
+            200.0,
+            2.0,
+            10,
+        ),
+        (
+            &[GridTrackMinSizingFunction::Percentage(0.0)][..],
+            200.0,
+            5.0,
+            34,
+        ),
+        (
+            &[GridTrackMinSizingFunction::Percentage(1.2)][..],
+            200.0,
+            0.0,
+            1,
+        ),
+    ] {
+        let (style, container) = input_for_columns_with_minima(minima, width, gap);
+        assert_eq!(
+            root_html_auto_repeat_cell_capacity(NodeId::new(31_207).unwrap(), style, &container),
+            Ok(expected)
+        );
+    }
+
+    let (style, container) =
+        input_for_rows_with_minima(&[GridTrackMinSizingFunction::Percentage(0.2)], 160.0, 4.0);
+    assert_eq!(
+        root_html_auto_repeat_cell_capacity(NodeId::new(31_208).unwrap(), style, &container),
+        Ok(4)
+    );
+}
+
+#[test]
+fn percentage_capacity_rejects_invalid_or_unrepresentable_minimums() {
+    for minimum in [f32::NAN, -0.01, f32::MAX] {
+        let (style, container) = input_for_columns_with_minima(
+            &[GridTrackMinSizingFunction::Percentage(minimum)],
+            200.0,
+            0.0,
+        );
+        assert!(matches!(
+            root_html_auto_repeat_cell_capacity(NodeId::new(31_209).unwrap(), style, &container),
+            Err(crate::LayoutError::InvalidGridTrackList {
+                property: "grid-template-columns",
+                ..
+            })
+        ));
+    }
 }
 
 #[test]

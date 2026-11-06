@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.1 Root HTML auto-repeat percentage-minimum runtime</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+    .grid {
+      display: grid;
+      grid-auto-flow: row;
+      grid-auto-rows: auto;
+      grid-auto-columns: auto;
+      margin: 0;
+      padding: 0;
+      border-top-width: 0;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      border-left-width: 0;
+      background-color: #101820;
+    }
+    .item {
+      min-width: 0;
+      min-height: 0;
+      width: 10px;
+      height: 10px;
+      margin: 0;
+      padding: 0;
+      border-top-width: 0;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      border-left-width: 0;
+      background-color: #e5484d;
+    }
+
+    #columns-fill-single {
+      width: 200px; height: 40px; column-gap: 5px; row-gap: 0;
+      grid-template-columns: repeat(auto-fill, minmax(10%, 1fr));
+      grid-template-rows: 40px;
+    }
+    #columns-fit-single {
+      width: 200px; height: 40px; column-gap: 5px; row-gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+      grid-template-rows: 40px;
+    }
+    #columns-fit-single > .item { width: auto; }
+    #columns-fill-zero-percent {
+      width: 200px; height: 40px; column-gap: 5px; row-gap: 0;
+      grid-template-columns: repeat(auto-fill, minmax(0%, 1fr));
+      grid-template-rows: 40px;
+    }
+    #columns-fill-pair {
+      width: 200px; height: 40px; column-gap: 2px; row-gap: 0;
+      grid-template-columns: repeat(auto-fill, minmax(10%, 1fr) minmax(5%, 1fr));
+      grid-template-rows: 40px;
+    }
+    #rows-fill-single {
+      width: 40px; height: 160px; column-gap: 0; row-gap: 4px;
+      grid-template-columns: 40px;
+      grid-template-rows: repeat(auto-fill, minmax(20%, 1fr));
+    }
+    #columns-fill-overflow {
+      width: 200px; height: 40px; column-gap: 0; row-gap: 0;
+      grid-template-columns: repeat(auto-fill, minmax(120%, 1fr));
+      grid-template-rows: 40px;
+    }
+    #columns-fill-overflow > .item { width: 240px; }
+  </style>
+</head>
+<body>
+  <section id="columns-fill-single" class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </section>
+  <section id="columns-fit-single" class="grid"><div class="item"></div></section>
+  <section id="columns-fill-zero-percent" class="grid">
+    <div class="item"></div><div class="item"></div><div class="item"></div>
+  </section>
+  <section id="columns-fill-pair" class="grid">
+    <div class="item"></div><div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div><div class="item"></div>
+  </section>
+  <section id="rows-fill-single" class="grid">
+    <div class="item"></div><div class="item"></div>
+    <div class="item"></div><div class="item"></div>
+  </section>
+  <section id="columns-fill-overflow" class="grid"><div class="item"></div></section>
+</body>
+</html>

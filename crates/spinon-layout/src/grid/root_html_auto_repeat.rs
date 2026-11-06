@@ -76,7 +76,8 @@ pub(super) fn validate_root_html_auto_repeat_contract(
         matches!(
             track,
             GridTrackSize::MinMax {
-                min: GridTrackMinSizingFunction::LengthPx(minimum),
+                min: GridTrackMinSizingFunction::LengthPx(minimum)
+                    | GridTrackMinSizingFunction::Percentage(minimum),
                 max: GridTrackMaxSizingFunction::Fraction(1.0),
             } if minimum.is_finite() && *minimum >= 0.0
         )
@@ -279,18 +280,31 @@ pub(super) fn root_html_auto_repeat_cell_capacity(
     let mut taffy_pattern_space = 0.0_f32;
     for track in pattern {
         let GridTrackSize::MinMax {
-            min: GridTrackMinSizingFunction::LengthPx(minimum),
+            min,
             max: GridTrackMaxSizingFunction::Fraction(1.0),
         } = track
         else {
             return Err(invalid(property));
         };
-        if !minimum.is_finite() || *minimum < 0.0 {
+        let minimum = match min {
+            GridTrackMinSizingFunction::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
+                f64::from(*value)
+            }
+            GridTrackMinSizingFunction::Percentage(value) if value.is_finite() && *value >= 0.0 => {
+                f64::from(axis_size) * f64::from(*value)
+            }
+            _ => return Err(invalid(property)),
+        };
+        if !minimum.is_finite() || !(minimum as f32).is_finite() {
             return Err(invalid(property));
         }
         let count_size = minimum.max(1.0);
-        pattern_space += f64::from(count_size);
-        taffy_pattern_space += count_size;
+        let taffy_count_size = count_size as f32;
+        pattern_space += count_size;
+        taffy_pattern_space += taffy_count_size;
+        if !taffy_count_size.is_finite() {
+            return Err(invalid(property));
+        }
     }
     let axis_size = f64::from(axis_size);
     let gap = f64::from(gap_f32);

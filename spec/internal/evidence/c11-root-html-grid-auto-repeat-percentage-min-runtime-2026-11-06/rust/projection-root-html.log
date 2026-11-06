@@ -1,0 +1,24 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.11s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 15 tests
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_accepts_the_track_ceiling_and_rejects_counts_above_it ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_accounts_for_two_track_pattern_and_all_inter_track_gaps ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_applies_ua_one_pixel_floor_only_to_repeat_count ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_matches_single_track_169_170px_boundary ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::count_rejects_non_finite_inputs_and_arithmetic_overflow ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::percentage_count_resolves_minima_against_the_definite_repeated_axis ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::percentage_count_rejects_invalid_basis_and_unrepresentable_minimum ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_grammar_rejects_repeats_on_both_axes_and_special_placement_routes ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_grammar_accepts_one_or_two_named_free_tracks_on_one_axis ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_grammar_rejects_neighbors_dense_flow_and_invalid_minimum ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_percentage_minimum_rejects_unsupported_maxima ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::zero_minimum_count_matches_single_and_mixed_pattern_reference_cases ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_projection_preserves_zero_minimum_for_taffy_sizing ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_projection_reuses_typed_auto_repeat_track_conversion ... ok
+test projection::style_values::grid_values::root_html_auto_repeat::tests::root_html_projection_preserves_percentage_minimum_for_taffy_sizing ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 427 filtered out; finished in 0.00s

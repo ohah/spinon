@@ -1,0 +1,21 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 11 tests
+test grid::root_html_auto_repeat::tests::zero_minimum_capacity_uses_the_row_axis_size_and_gap ... ok
+test grid::root_html_auto_repeat::tests::zero_minimum_capacity_matches_columns_and_repeated_pattern_counts ... ok
+test grid::root_html_auto_repeat::tests::percentage_capacity_resolves_against_the_repeated_axis_and_keeps_pattern_gaps ... ok
+test grid::root_html_auto_repeat::tests::capacity_accepts_exact_track_ceiling_and_rejects_overflow_without_clamping ... ok
+test grid::root_html_auto_repeat::tests::percentage_capacity_rejects_invalid_or_unrepresentable_minimums ... ok
+test grid::tests::root_html_auto_repeat_layout_tests::percentage_minimum_rejects_unsupported_maximum_and_indefinite_axis ... ok
+test grid::tests::root_html_auto_repeat_layout_tests::over_limit_zero_minimum_rejects_before_producing_layout_output ... ok
+test grid::tests::root_html_auto_repeat_layout_tests::auto_fit_zero_minimum_collapses_empty_tracks_after_item_placement ... ok
+test grid::tests::root_html_auto_repeat_layout_tests::auto_fill_zero_minimum_uses_the_ua_floor_for_count_and_keeps_track_origins ... ok
+test grid::tests::root_html_auto_repeat_layout_tests::percentage_auto_fit_and_over_one_hundred_percent_track_keep_used_sizes ... ok
+test grid::tests::root_html_auto_repeat_layout_tests::percentage_minimum_tracks_match_columns_rows_pair_and_zero_minimum_geometry ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 454 filtered out; finished in 0.00s

@@ -120,7 +120,7 @@ pub(super) fn validate_grid_grammar(
         || !pattern.is_some_and(|pattern| pattern.iter().all(is_supported_repeat_track))
     {
         return Err(failure(
-            "Root HTML auto-repeat은 전체 track list의 1~2개 minmax(non-negative px, 1fr) track만 지원하며 다른 축에는 이름 없는 fixed px track 하나만 허용합니다",
+            "Root HTML auto-repeat은 전체 track list의 1~2개 minmax(non-negative px 또는 percentage, 1fr) track만 지원하며 다른 축에는 이름 없는 fixed px track 하나만 허용합니다",
         ));
     }
 
@@ -288,21 +288,7 @@ fn expanded_repeat_count(
     let pattern = tracks
         .get(repeat.start..repeat.end)
         .ok_or_else(|| failure("auto-repeat track range is invalid"))?;
-    let mut minima = [0.0_f32; 2];
-    for (index, track) in pattern.iter().enumerate() {
-        let ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::LengthPx(minimum),
-            ..
-        } = track
-        else {
-            return Err(failure(
-                "auto-repeat minimum is not a fixed CSS-pixel value",
-            ));
-        };
-        minima[index] = *minimum;
-    }
-    let Some(expanded) = compute_expanded_track_count(axis_size, gap, &minima[..pattern.len()])
-    else {
+    let Some(expanded) = compute_expanded_track_count_for_pattern(axis_size, gap, pattern) else {
         return Err(failure(
             "auto-repeat count exceeds GRID_MAX_TRACKS or its arithmetic overflowed",
         ));
@@ -310,7 +296,39 @@ fn expanded_repeat_count(
     Ok(expanded)
 }
 
-fn compute_expanded_track_count(axis_size: f32, gap: f32, minima: &[f32]) -> Option<usize> {
+fn compute_expanded_track_count_for_pattern(
+    axis_size: f32,
+    gap: f32,
+    pattern: &[ComputedCssGridTrackSize],
+) -> Option<usize> {
+    if pattern.is_empty() || pattern.len() > 2 || !axis_size.is_finite() || axis_size <= 0.0 {
+        return None;
+    }
+    let mut minima = [0.0_f64; 2];
+    for (index, track) in pattern.iter().enumerate() {
+        let ComputedCssGridTrackSize::MinMax { min, .. } = track else {
+            return None;
+        };
+        let minimum = match min {
+            ComputedCssGridTrackBreadth::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
+                f64::from(*value)
+            }
+            ComputedCssGridTrackBreadth::Percentage(value)
+                if value.is_finite() && *value >= 0.0 =>
+            {
+                f64::from(axis_size) * f64::from(*value)
+            }
+            _ => return None,
+        };
+        if !minimum.is_finite() || !(minimum as f32).is_finite() {
+            return None;
+        }
+        minima[index] = minimum;
+    }
+    compute_expanded_track_count(axis_size, gap, &minima[..pattern.len()])
+}
+
+fn compute_expanded_track_count(axis_size: f32, gap: f32, minima: &[f64]) -> Option<usize> {
     if minima.is_empty()
         || minima.len() > 2
         || !axis_size.is_finite()
@@ -326,10 +344,14 @@ fn compute_expanded_track_count(axis_size: f32, gap: f32, minima: &[f32]) -> Opt
         if !minimum.is_finite() || *minimum < 0.0 {
             return None;
         }
-        let count_size = minimum.max(AUTO_REPEAT_COUNT_MIN_TRACK_SIZE);
-        pattern_space += f64::from(count_size);
-        taffy_pattern_space += count_size;
-        if !pattern_space.is_finite() || !taffy_pattern_space.is_finite() {
+        let count_size = minimum.max(f64::from(AUTO_REPEAT_COUNT_MIN_TRACK_SIZE));
+        let taffy_count_size = count_size as f32;
+        pattern_space += count_size;
+        taffy_pattern_space += taffy_count_size;
+        if !pattern_space.is_finite()
+            || !taffy_count_size.is_finite()
+            || !taffy_pattern_space.is_finite()
+        {
             return None;
         }
     }
@@ -372,7 +394,8 @@ fn is_supported_repeat_track(track: &ComputedCssGridTrackSize) -> bool {
     matches!(
         track,
         ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::LengthPx(minimum),
+            min: ComputedCssGridTrackBreadth::LengthPx(minimum)
+                | ComputedCssGridTrackBreadth::Percentage(minimum),
             max: ComputedCssGridTrackBreadth::Fraction(1.0),
         } if minimum.is_finite() && *minimum >= 0.0
     )

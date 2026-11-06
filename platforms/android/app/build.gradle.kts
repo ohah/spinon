@@ -390,6 +390,21 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         } else {
             Files.deleteIfExists(target.toPath())
         }
+        val percentageSource = repoRoot.resolve(
+            "tests/fixtures/css/c11/root-html-grid-auto-repeat-percentage-min-runtime.html",
+        )
+        val percentageTarget = repoRoot.resolve(
+            "build/spinon/bootstrap/root-html-grid-auto-repeat-percentage-min-runtime.html",
+        )
+        if (spinonC111RootHtmlAutoRepeatZeroMinFixtureTestValue == "1") {
+            require(percentageSource.isFile) {
+                "C11.1 Root HTML percentage auto-repeat fixture source is missing: $percentageSource"
+            }
+            percentageTarget.parentFile.mkdirs()
+            percentageSource.copyTo(percentageTarget, overwrite = true)
+        } else {
+            Files.deleteIfExists(percentageTarget.toPath())
+        }
     }
 }
 

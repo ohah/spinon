@@ -7,10 +7,16 @@ const SOURCE: &str = include_str!(
 const ZERO_MIN_RUNTIME_SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-auto-repeat-zero-min-runtime.html"
 );
+const PERCENTAGE_MIN_RUNTIME_SOURCE: &str = include_str!(
+    "../../../../../tests/fixtures/css/c11/root-html-grid-auto-repeat-percentage-min-runtime.html"
+);
 const NATIVE_SOURCE: &str =
     include_str!("../../../../../tests/fixtures/html/c11-root-html-grid-auto-repeat-native.html");
 const EXPECTED: &str = include_str!(
     "../../../../../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/normative-expected.json"
+);
+const PERCENTAGE_MIN_EXPECTED: &str = include_str!(
+    "../../../../../spec/internal/evidence/c11-root-html-grid-auto-repeat-percentage-min-precomparison-2026-11-06/expected.json"
 );
 const CHROME_OBSERVATION: &str = include_str!(
     "../../../../../spec/internal/evidence/c11-root-html-grid-auto-repeat-precomparison-2026-11-05/chromium-observation.json"
@@ -258,6 +264,120 @@ fn root_html_one_track_repeat_pattern_expands_for_multiple_visible_items() {
         .expect("one-track auto-repeat should publish a scene");
     assert!(has_frame(scene, RED, [0.0, 0.0, 80.0, 20.0]));
     assert!(has_frame(scene, BLUE, [90.0, 0.0, 80.0, 20.0]));
+}
+
+#[test]
+fn parsed_root_html_percentage_auto_repeat_matches_independent_geometry() {
+    let (session, layout) = run(PERCENTAGE_MIN_RUNTIME_SOURCE);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "percentage-minimum Root HTML auto-repeat should use the default runtime; error={:?}; cascade={:?}",
+        layout.error,
+        session.ua_cascade_snapshot()
+    );
+    let completed = layout
+        .completed
+        .as_ref()
+        .expect("percentage-minimum Root HTML Grid should complete");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("default Root HTML runtime should publish percentage-minimum frames");
+    let expected: Value =
+        serde_json::from_str(PERCENTAGE_MIN_EXPECTED).expect("percentage expectations parse");
+    let cases = expected["scenes"]
+        .as_array()
+        .expect("percentage scenarios should be an array");
+    let mut roots = scene
+        .boxes()
+        .iter()
+        .filter(|render_box| {
+            matches!(
+                render_box.paint(),
+                spinon_render::RuntimePaint::Opaque(color) if color == ROOT
+            )
+        })
+        .map(|render_box| render_box.frame_css_px())
+        .collect::<Vec<_>>();
+    roots.sort_by(|left, right| left.y().total_cmp(&right.y()));
+    assert_eq!(roots.len(), cases.len(), "Grid root frames: {roots:?}");
+
+    for (case, root) in cases.iter().zip(roots) {
+        let case_id = case["id"].as_str().expect("scenario ID should be text");
+        let basis = &case["basis"];
+        let axis = basis["axis"].as_str().expect("axis should be text");
+        let repeated_axis = basis["size"].as_f64().unwrap() as f32;
+        let expected_root_size = if axis == "width" {
+            [repeated_axis, 40.0]
+        } else {
+            [40.0, repeated_axis]
+        };
+        for (actual, expected) in [root.width(), root.height()]
+            .into_iter()
+            .zip(expected_root_size)
+        {
+            assert!(
+                (actual - expected).abs() <= 0.02,
+                "{case_id}: root size actual={actual} expected={expected}"
+            );
+        }
+
+        let mut actual_items = scene
+            .boxes()
+            .iter()
+            .filter_map(|render_box| {
+                if !matches!(
+                    render_box.paint(),
+                    spinon_render::RuntimePaint::Opaque(color) if color == RED
+                ) {
+                    return None;
+                }
+                let frame = render_box.frame_css_px();
+                (frame.y() >= root.y() && frame.y() < root.y() + root.height()).then_some([
+                    frame.x() - root.x(),
+                    frame.y() - root.y(),
+                    frame.width(),
+                    frame.height(),
+                ])
+            })
+            .collect::<Vec<_>>();
+        actual_items.sort_by(|left, right| {
+            left[1]
+                .total_cmp(&right[1])
+                .then(left[0].total_cmp(&right[0]))
+        });
+        let expected_items = case["items"]
+            .as_array()
+            .expect("scenario items should be an array");
+        assert_eq!(
+            actual_items.len(),
+            expected_items.len(),
+            "{case_id}: item frames {actual_items:?}"
+        );
+        for (index, (actual, expected)) in actual_items.iter().zip(expected_items).enumerate() {
+            let mut expected_frame = [
+                expected["x"].as_f64().unwrap() as f32,
+                expected["y"].as_f64().unwrap() as f32,
+                expected["width"].as_f64().unwrap() as f32,
+                expected["height"].as_f64().unwrap() as f32,
+            ];
+            if case_id == "columns-fit-single" {
+                expected_frame[2] = 200.0;
+            } else if case_id == "columns-fill-overflow" {
+                expected_frame[2] = 240.0;
+            }
+            for (property, (actual, expected)) in ["x", "y", "width", "height"]
+                .into_iter()
+                .zip(actual.iter().zip(expected_frame))
+            {
+                assert!(
+                    (actual - expected).abs() <= 0.02,
+                    "{case_id} item {index} {property}: actual={actual} expected={expected}"
+                );
+            }
+        }
+    }
 }
 
 #[test]
