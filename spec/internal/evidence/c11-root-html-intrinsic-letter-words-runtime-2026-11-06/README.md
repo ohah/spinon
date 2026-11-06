@@ -10,7 +10,7 @@
 - cargo clippy --locked -p spinon-style-to-layout --all-targets -- -D warnings — 통과.
 - cargo clippy --locked -p spinon-runtime --all-targets -- -D warnings — 통과.
 
-Focused 10-scene matrix는 ASCII 단어와 공백 형태의 min-content·auto column geometry, DOM source 순서 및 identity를 검사한다. 별도 fixture feature 검사는 track trace와 원문 source 보존도 확인한다. 새로운 [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)에서 이 동작과 제한을 검토했다. 패키지 전체 테스트 결과를 이 기록에서 주장하지 않는다.
+Focused 10-scene matrix는 ASCII 단어와 공백 형태의 min-content·auto column geometry, DOM source 순서 및 identity를 검사한다. 별도 fixture feature 검사는 track trace와 원문 source 보존도 확인한다. [구현/runtime 실패 관점 검토](./implementation-runtime-review-20.md)에서 이 동작과 제한을 검토했고, [실제 구현 PR diff 검토](./pr-diff-review-30.md)는 별도로 기록했다. 패키지 전체 테스트 결과를 이 기록에서 주장하지 않는다.
 
 ## Android와 iOS Simulator
 
