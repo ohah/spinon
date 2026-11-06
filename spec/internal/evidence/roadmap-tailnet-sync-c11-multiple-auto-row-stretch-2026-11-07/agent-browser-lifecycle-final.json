@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-06T18:07:24Z",
+  "version": "0.31.1",
+  "sessionsUsed": [
+    "spinon-roadmap-c11-1231",
+    "spinon-tailnet-c11-1231",
+    "spinon-tailnet-c11-1231-final"
+  ],
+  "cleanup": [
+    "closed each browser session",
+    "ran agent-browser close --all"
+  ],
+  "finalSessionInfo": {
+    "active": false,
+    "pid": null,
+    "runtime": null
+  },
+  "agentBrowserProcessAfterCleanup": null,
+  "processListing": "no Agent Browser process or session Chrome remained",
+  "unrelatedChrome": "pre-existing HWPJS Chrome PID 69801 was left running",
+  "tailnetPreviewServer": "pre-existing node PID 28040 on 127.0.0.1:8768 was left running"
+}

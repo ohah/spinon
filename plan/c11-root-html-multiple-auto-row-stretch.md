@@ -45,3 +45,11 @@ Controls는 track base sizing과 stretch 단계를 분리한다. `align-content:
 ## 명시적 미포함
 
 이 작업은 임의 개수/크기의 implicit tracks, 한 row 안 여러 content contribution, author input으로서의 `align-content:stretch`, 일반 auto-placement, 임의 text/font/language, nested/inline/replaced content, percentage/calc tracks, gap, border, padding, overflow policy, 일반 CSS Grid admission, WPT 적합성, Android 실기기 또는 hardware GPU parity, 전체 C11.4를 구현하지 않는다. 내부 interface version `0.1.0`을 유지한다.
+
+## 제한 구현 결과와 병합 상태
+
+구현 PR [#1231](https://github.com/ohah/spinon/pull/1231)은 2026-11-06T17:46:43Z Rebase and merge됐고 main merge SHA는 `5c79d19619617e7424aaeabbe884579ac383d130`이다. 같은 checkout의 `feat/c11-root-html-multiple-auto-row-stretch`에서 구현했다. 허용 profile에서 explicit row 10px과 두 implicit auto row의 10px text minimum contribution이 `[10,10,10]px` base를 만들고, 남은 10px을 두 implicit row가 각각 5px씩 받아 `[10,15,15]px`가 됐다. RuntimeSession trace는 explicit/implicit row count 1/2, item별 contribution과 source order, stretch 단계 및 세 item frame을 검증한다. 다른 child count/order/text나 alignment는 publication 전에 거부하며 기존 single-auto-row/min-content/fixed-row 경로를 보존한다.
+
+Style-to-layout focused tests 20/20, RuntimeSession default 및 opt-in trace tests 각 22/22, scoped changed-crate all-target Clippy, `cargo fmt --all -- --check` 및 release runtime build가 통과했다. 기본 release artifact에서 fixture marker가 없음을 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML 앱은 같은 fixture SHA로 layout-ready 6 boxes 및 2 text draws를 기록했다. Screenshots는 visual smoke다. 전체 frame pixel equality, physical devices, hardware GPU, PixelCopy/Metal readback, iOS compositor 이후 pixel parity, WPT 및 GitHub CI 통과는 주장하지 않는다. PR check rollup은 비어 있고 main required status checks가 설정되지 않았다. [Android/iOS 실행·화면·hash](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/README.md) · [20개 구현/runtime 검토](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/implementation-runtime-review-20.md) · [30개 구현 diff 검토](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/pr-diff-review-30.md).
+
+C11.4와 C11은 미완료이며 `spec/STATUS.md` 체크박스 및 공식 완료 `78/214`은 바꾸지 않는다. Internal contract version `0.1.0`도 유지한다. 병합 후 문서와 Tailnet preview 동기화는 [roadmap evidence](../spec/internal/evidence/roadmap-tailnet-sync-c11-multiple-auto-row-stretch-2026-11-07/README.md)에 기록한다.

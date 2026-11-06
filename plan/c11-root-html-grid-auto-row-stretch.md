@@ -65,4 +65,4 @@ CSS Grid §11.4–§11.8에 따른 독립 기대값은 다음과 같다.
 
 ## 다음 C11.4 track-sizing 후보
 
-단일 implicit auto row 다음에는 two implicit `auto` rows가 남는 definite space를 균등 분배하는 장면이 계획되어 있다. [C11.4 two-auto-row stretch plan](./c11-root-html-multiple-auto-row-stretch.md)와 [Chrome·독립 기대값](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-precomparison-2026-11-07/README.md)을 참고한다. 이 후속 계획은 C11.4/C11 체크나 공식 완료 `78/214`를 변경하지 않는다.
+단일 implicit auto row 다음 단계인 two implicit `auto` rows의 제한 균등 분배는 [계획](./c11-root-html-multiple-auto-row-stretch.md) 및 구현 PR [#1231](https://github.com/ohah/spinon/pull/1231)에서 완료돼 main에 병합됐다 (merge SHA `5c79d19619617e7424aaeabbe884579ac383d130`). 이 장면의 used rows는 `[10,15,15]px`이며 제한된 세 item/source profile만 허용한다. [실행·테스트·Simulator 근거](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/README.md)를 참고한다. 이는 일반 auto-placement나 전체 track-sizing 알고리즘 구현이 아니므로 C11.4/C11 체크와 공식 완료 `78/214`는 그대로다.
