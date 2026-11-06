@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-11-06T22:09:34Z",
+  "session": "spinon-tailnet-pr1240-20261107",
+  "toolVersion": "0.31.1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewports": ["1440x1000", "390x844"],
+  "closeCommand": "agent-browser --session spinon-tailnet-pr1240-20261107 close",
+  "closeExitCode": 0,
+  "agentBrowserProcessAfterClose": false,
+  "tailnetPreviewServer": {
+    "pid": 28040,
+    "stillRunning": true,
+    "restarted": false
+  }
+}
