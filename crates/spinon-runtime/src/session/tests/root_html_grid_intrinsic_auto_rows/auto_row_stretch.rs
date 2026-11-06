@@ -190,7 +190,7 @@ fn parsed_root_html_default_auto_row_stretches_its_implicit_track() {
 fn parsed_root_html_auto_row_stretch_rejects_wrong_alignment_and_extra_items() {
     for (label, source) in [
         (
-            "wrong align-content",
+            "positional alignment outside the two-text-row profile",
             AUTO_ROW_STRETCH_SOURCE.replace("align-content: normal;", "align-content: start;"),
         ),
         (

@@ -360,7 +360,22 @@ fn validate_container(
                         safety: None,
                     }
             ) || container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
-                && value == LayoutAlignContent::Stretch)
+                && matches!(
+                    value,
+                    LayoutAlignContent::Normal
+                        | LayoutAlignContent::Stretch
+                        | LayoutAlignContent::FlexStart
+                        | LayoutAlignContent::FlexEnd
+                        | LayoutAlignContent::Center
+                        | LayoutAlignContent::SpaceBetween
+                        | LayoutAlignContent::SpaceAround
+                        | LayoutAlignContent::SpaceEvenly
+                        | LayoutAlignContent::Position {
+                            position: crate::ContentAlignmentPosition::Start
+                                | crate::ContentAlignmentPosition::End,
+                            safety: None,
+                        }
+                ))
         } else {
             value != LayoutAlignContent::Normal
         }

@@ -309,11 +309,129 @@ fn parsed_root_html_explicit_align_content_stretch_matches_normal() {
 }
 
 #[test]
+fn parsed_root_html_positional_and_distributed_align_content_match_geometry() {
+    let cases = [
+        ("normal", [0.0, 10.0, 25.0], [10.0, 15.0, 15.0]),
+        ("stretch", [0.0, 10.0, 25.0], [10.0, 15.0, 15.0]),
+        ("start", [0.0, 10.0, 20.0], [10.0, 10.0, 10.0]),
+        ("flex-start", [0.0, 10.0, 20.0], [10.0, 10.0, 10.0]),
+        ("end", [10.0, 20.0, 30.0], [10.0, 10.0, 10.0]),
+        ("flex-end", [10.0, 20.0, 30.0], [10.0, 10.0, 10.0]),
+        ("center", [5.0, 15.0, 25.0], [10.0, 10.0, 10.0]),
+        ("space-between", [0.0, 15.0, 30.0], [10.0, 10.0, 10.0]),
+        (
+            "space-around",
+            [5.0 / 3.0, 15.0, 85.0 / 3.0],
+            [10.0, 10.0, 10.0],
+        ),
+        ("space-evenly", [2.5, 15.0, 27.5], [10.0, 10.0, 10.0]),
+    ];
+    for (value, expected_y, expected_heights) in cases {
+        let source = EXPLICIT_STRETCH_SOURCE.replace(
+            "align-content: stretch;",
+            &format!("align-content: {value};"),
+        );
+        assert!(source.contains(&format!("align-content: {value};")));
+        let (session, layout) = run(&source);
+        let cascade = session.ua_cascade_snapshot();
+        assert_eq!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "align-content:{value}: error={:?}; cascade error={:?}",
+            layout.error,
+            cascade.error
+        );
+        let completed = layout
+            .completed
+            .as_ref()
+            .unwrap_or_else(|| panic!("align-content:{value}: layout should complete"));
+        assert_eq!(
+            completed.key,
+            cascade
+                .completed
+                .as_ref()
+                .unwrap_or_else(|| panic!("align-content:{value}: cascade should complete"))
+                .key,
+            "align-content:{value}: style and layout revisions must match"
+        );
+        let scene = completed
+            .render_snapshot
+            .as_ref()
+            .unwrap_or_else(|| panic!("align-content:{value}: render scene should publish"));
+        assert_eq!(
+            scene.texts().len(),
+            2,
+            "align-content:{value}: both texts paint"
+        );
+
+        let grid = painted_frame(
+            scene,
+            OpaqueCssSrgb::new(233, 237, 242),
+            "auto-row alignment Grid",
+        );
+        let fixed = painted_frame(
+            scene,
+            OpaqueCssSrgb::new(216, 221, 227),
+            "auto-row alignment fixed item",
+        );
+        let mut text_boxes = scene
+            .boxes()
+            .iter()
+            .filter(|render_box| {
+                matches!(render_box.paint(), RuntimePaint::Opaque(color)
+                    if color == OpaqueCssSrgb::new(91, 159, 245))
+            })
+            .collect::<Vec<_>>();
+        text_boxes
+            .sort_by(|left, right| left.frame_css_px().y().total_cmp(&right.frame_css_px().y()));
+        assert_eq!(
+            text_boxes.len(),
+            2,
+            "align-content:{value}: both text boxes paint"
+        );
+        assert_frame_values(grid, [0.0, 0.0, 40.0, 40.0], "auto-row alignment Grid");
+
+        let expected_frames = [
+            [0.0, expected_y[0], 40.0, expected_heights[0]],
+            [0.0, expected_y[1], 40.0, expected_heights[1]],
+            [0.0, expected_y[2], 40.0, expected_heights[2]],
+        ];
+        let actual_frames = [
+            fixed,
+            {
+                let frame = text_boxes[0].frame_css_px();
+                [frame.x(), frame.y(), frame.width(), frame.height()]
+            },
+            {
+                let frame = text_boxes[1].frame_css_px();
+                [frame.x(), frame.y(), frame.width(), frame.height()]
+            },
+        ];
+        for (index, (actual, expected)) in actual_frames.iter().zip(expected_frames).enumerate() {
+            for (actual, expected) in actual.iter().zip(expected) {
+                assert!(
+                    (*actual - expected).abs() <= 1.0 / 32.0,
+                    "align-content:{value}, frame {index}: expected {expected:?}, got {actual:?}"
+                );
+            }
+        }
+        for (index, text) in scene.texts().iter().enumerate() {
+            assert_eq!(
+                text.origin_y_css_px(),
+                expected_y[index + 1],
+                "align-content:{value}: text glyph origin should follow its item"
+            );
+            assert_eq!(text.source().style_revision(), completed.key.style_revision);
+        }
+    }
+}
+
+#[test]
 fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
     for (label, source) in [
         (
-            "wrong alignment",
-            SOURCE.replace("align-content: normal;", "align-content: start;"),
+            "unsupported safe alignment modifier",
+            SOURCE.replace("align-content: normal;", "align-content: safe center;"),
         ),
         (
             "wrong first text",
@@ -351,14 +469,7 @@ fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
         );
     }
 
-    for value in [
-        "start",
-        "center",
-        "end",
-        "space-between",
-        "space-around",
-        "space-evenly",
-    ] {
+    for value in ["baseline", "last baseline", "safe center", "unsafe end"] {
         let source = EXPLICIT_STRETCH_SOURCE.replace(
             "align-content: stretch;",
             &format!("align-content: {value};"),
@@ -378,13 +489,40 @@ fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
             "align-content:{value} must not publish partial layout"
         );
     }
+
+    for (label, shorthand) in [
+        (
+            "align-content start, justify-content center",
+            "start center",
+        ),
+        (
+            "align-content center, justify-content start",
+            "center start",
+        ),
+    ] {
+        let source = EXPLICIT_STRETCH_SOURCE.replace(
+            "align-content: stretch;",
+            &format!("place-content: {shorthand};"),
+        );
+        assert!(source.contains(&format!("place-content: {shorthand};")));
+        let (_session, layout) = run(&source);
+        assert_ne!(
+            layout.state,
+            crate::session::RuntimeLayoutState::Ready,
+            "{label}: shorthand must not widen the justify-content axis"
+        );
+        assert!(
+            layout.completed.is_none(),
+            "{label}: rejected shorthand must not publish partial layout"
+        );
+    }
 }
 
 #[test]
 fn parsed_root_html_multiple_auto_row_stretch_recovers_after_rejection() {
     let source = EXPLICIT_STRETCH_SOURCE.replace(
         "      #fixed {",
-        "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: start; }\n      }\n\n      #fixed {",
+        "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: safe center; }\n      }\n\n      #fixed {",
     );
     assert_ne!(source, EXPLICIT_STRETCH_SOURCE);
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(&source)
