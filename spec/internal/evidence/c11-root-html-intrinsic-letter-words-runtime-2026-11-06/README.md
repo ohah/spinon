@@ -14,14 +14,14 @@ Focused 10-scene matrix는 ASCII 단어와 공백 형태의 min-content·auto co
 
 ## Android와 iOS Simulator
 
-완료 실행은 [pass06](./pass06/environment.txt)다. 두 플랫폼은 같은 HTML fixture SHA-256 377f53c7569bda6a5bd79f44366bcd79a759d102416bfa13ff43af2c6c2ce72a를 사용했다. 정확한 소스 입력 목록과 manifest hash는 [source-inputs.sha256](./pass06/source-inputs.sha256) 및 environment.txt에 기록했다.
+최종 실행은 [pass07](./pass07/environment.txt)다. 두 플랫폼은 같은 HTML fixture SHA-256 377f53c7569bda6a5bd79f44366bcd79a759d102416bfa13ff43af2c6c2ce72a를 사용했다. 정확한 소스 입력 목록과 manifest hash는 [source-inputs.sha256](./pass07/source-inputs.sha256) 및 environment.txt에 기록했다.
 
 | 플랫폼 | 실행·surface | Root HTML app 확인 | 표본 |
 | --- | --- | --- | --- |
 | Android | API 37 ARM64 AVD emulator-5554, density 2.625, ANGLE/Vulkan/SwiftShader, surface 1080×2209 | layout ready, boxes=8, app eval error=none, draw presented, runtime_text_count=2 | CSS (42,19) → surface (111,51), [91,168,245,255], PixelCopy 1/1 exact |
 | iOS | iPhone 17 Pro Simulator iOS 26.2 (9DCCE836-7659-4914-B6C1-13F54BFFA9DB), viewport 402×778 CSS px, Metal drawable 1206×2334 | root app marker ready, layout ready, boxes=8, draw presented, runtime_text_count=2 | CSS (42,19) → drawable (127,58), [91,168,245,255], Metal 1/1 exact |
 
-해당 점은 40px Grid 오른쪽 경계 밖이면서 긴 text item 배경 안이다. 화면 캡처와 직접 surface readback은 [Android](./pass06/android/) 및 [iOS](./pass06/ios/) evidence에 있다. iOS 표본은 compositor 제출 전 drawable이고 Android는 software renderer AVD다. 모바일 로그는 모든 item frame을 덤프하지 않으므로 개별 mobile log만으로 전체 geometry matrix 통과를 주장하지 않는다. 앱 실행기는 fixture source·원문 text와 자식 순서를 확인한 다음 data-runtime=ready를 설정한다.
+해당 점은 40px Grid 오른쪽 경계 밖이면서 긴 text item 배경 안이다. 화면 캡처와 직접 surface readback은 [Android](./pass07/android/) 및 [iOS](./pass07/ios/) evidence에 있다. iOS 표본은 compositor 제출 전 drawable이고 Android는 software renderer AVD다. 모바일 로그는 모든 item frame을 덤프하지 않으므로 개별 mobile log만으로 전체 geometry matrix 통과를 주장하지 않는다. 앱 실행기는 fixture source·원문 text와 자식 순서를 확인한 다음 data-runtime=ready를 설정한다.
 
 ## 기본/fixture 산출물 경계
 
@@ -37,9 +37,10 @@ Focused 10-scene matrix는 ASCII 단어와 공백 형태의 min-content·auto co
 - pass03: 양쪽 표본은 exact였지만 artifact 검사에서 Android 기본 APK에 작업별 문자열이 남는 것을 발견했다. 따라서 최종 구현 evidence로 취급하지 않는다.
 - pass04: fixture-only Android adapter로 격리한 뒤 Android/iOS 실행과 default/feature artifact 경계를 통과했다. 이후 Android main app class의 무의미한 서식 변경을 되돌려 실행 입력 hash와 정확히 맞추기 위해 최종 pass를 다시 만들었다.
 - pass05: source manifest에 존재하지 않는 Android capture 파일 경로를 넣어 시뮬레이터 실행 전에 중단됐다. 앱·bootstrap 자산은 변경되지 않았다.
-- pass06: 수정한 source manifest와 최종 구현으로 Android/iOS 실행을 통과했다. environment.txt는 bootstrap과 iOS app bundle asset을 byte-for-byte 복원했다고 기록한다.
+- pass06: 당시 Android 전체 `logcat` buffer를 지우고 실행했다. 구현 자체와 두 시뮬레이터 표본은 통과했지만 PR review에서 이 로그 정리가 불필요함을 발견했다.
+- pass07: 전체 `logcat`을 지우지 않도록 실행기를 수정하고 현재 앱 PID의 로그만 수집했다. Android/iOS 표본이 모두 exact였고 `environment.txt`는 bootstrap 및 iOS app bundle asset을 byte-for-byte 복원했다고 기록한다.
 
-capture 후 Android/iOS 앱은 종료됐다. 이 실행에서는 Agent Browser를 열지 않았고 실행 후 agent-browser/HeadlessChrome 프로세스가 없었다. 기존 Chrome oracle은 [Agent Browser 캡처](./chrome/runtime-360x800.png)다.
+capture 후 Android/iOS 앱은 종료됐다. PR 화면과 두 이미지 링크는 별도 Agent Browser 세션에서 확인한 뒤 세션을 종료했다. 기존 Chrome oracle은 [Agent Browser 캡처](./chrome/runtime-360x800.png)다.
 
 ## 범위와 남은 한계
 
