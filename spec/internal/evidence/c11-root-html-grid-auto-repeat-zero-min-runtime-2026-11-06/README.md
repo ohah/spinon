@@ -1,6 +1,6 @@
 # C11.1 parsed Root HTML Grid auto-repeat · zero minimum 실행 근거
 
-**상태:** 구현 후보 검증 완료, PR 전. C11.1/C11 완료 체크와 공식 집계 `78/214`는 유지한다. 공개 CSS 지원으로 선언하지 않는다.
+**상태:** 구현 후보 검증과 PR diff 적대 검토 완료, [PR #1216](https://github.com/ohah/spinon/pull/1216) open. C11.1/C11 완료 체크와 공식 집계 `78/214`는 유지한다. 공개 CSS 지원으로 선언하지 않는다.
 
 ## 동작 범위
 
@@ -57,7 +57,7 @@ Source fixture, browser observation, simulator screenshots, and four route logs 
 
 ## 구현 실패 관점 검토
 
-서로 다른 실패 관점 20개는 [구현/runtime 검토](./implementation-runtime-review-20.md)에 기록했다. 검토 중 찾은 stale Android fixture cleanup과 Gradle import 오류는 수정하고 빌드를 다시 실행했다. PR의 실제 diff에는 별도 30개 적대 검토를 추가한다.
+서로 다른 실패 관점 20개는 [구현/runtime 검토](./implementation-runtime-review-20.md)에 기록했다. 검토 중 찾은 stale Android fixture cleanup과 Gradle import 오류는 수정하고 빌드를 다시 실행했다. PR의 실제 변경은 [별도 diff 적대 검토 30개](./pr-diff-review-30.md)를 통과했다. Agent Browser에서 PR 본문의 Android 1080×2400 및 iOS 1206×2622 캡처가 실제 표시되는 것도 확인했다.
 
 ## 검증 로그
 
