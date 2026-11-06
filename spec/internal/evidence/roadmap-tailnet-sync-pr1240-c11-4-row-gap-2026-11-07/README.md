@@ -17,6 +17,7 @@ Agent Browser 0.31.1로 같은 Tailnet URL을 desktop 1440×1000과 mobile 390×
 - [Desktop screenshot](./tailnet-roadmap-agent-browser-desktop.png), SHA-256 `e0b6545ea024ba9e2c0ddf22ff02dcaebc38e2fcd4484207320b398a75bab279` · [DOM record](./agent-browser-tailnet-desktop.json)
 - [Mobile screenshot](./tailnet-roadmap-agent-browser-mobile.png), SHA-256 `08064cb2041ac3d12b7266e6db14331de47955a938b79f1440624cd5e89a74d1` · [DOM record](./agent-browser-tailnet-mobile.json)
 - [Process lifecycle](./agent-browser-lifecycle.json): Agent Browser close exit 0, 이후 agent-browser process 없음, server PID 28040은 살아 있다.
+- PR [#1242](https://github.com/ohah/spinon/pull/1242) 본문에서도 desktop/mobile 이미지를 Agent Browser로 열어 각각 1440×1000, 390×844 이미지로 로드되는 것을 확인했다: [image check](./pr-body-agent-browser-check.json). 세션 close 뒤 browser process는 남지 않았다.
 - [문서 변경 diff 실패 관점 30개](./docs-pr-diff-review-30.md)
 
 ![Tailnet roadmap desktop](./tailnet-roadmap-agent-browser-desktop.png)
