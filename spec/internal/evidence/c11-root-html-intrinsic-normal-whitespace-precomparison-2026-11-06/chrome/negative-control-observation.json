@@ -1,0 +1,75 @@
+[
+  {
+    "name": "single-space",
+    "source": "\"A A\"",
+    "column": "6.03125px",
+    "row": "10px",
+    "itemWidth": 6.03125,
+    "textRects": [
+      [
+        6.03125,
+        11
+      ],
+      [
+        6.03125,
+        11
+      ]
+    ]
+  },
+  {
+    "name": "form-feed",
+    "source": "\"A\\fA\"",
+    "column": "14.6719px",
+    "row": "10px",
+    "itemWidth": 14.671875,
+    "textRects": [
+      [
+        14.671875,
+        11
+      ]
+    ]
+  },
+  {
+    "name": "vertical-tab",
+    "source": "\"A\\u000bA\"",
+    "column": "14.6719px",
+    "row": "10px",
+    "itemWidth": 14.671875,
+    "textRects": [
+      [
+        14.671875,
+        11
+      ]
+    ]
+  },
+  {
+    "name": "nbsp",
+    "source": "\"A A\"",
+    "column": "18.0625px",
+    "row": "10px",
+    "itemWidth": 18.0625,
+    "textRects": [
+      [
+        18.0625,
+        11
+      ]
+    ]
+  },
+  {
+    "name": "nel",
+    "source": "\"AA\"",
+    "column": "16.0312px",
+    "row": "10px",
+    "itemWidth": 16.03125,
+    "textRects": [
+      [
+        16.03125,
+        11
+      ],
+      [
+        6.03125,
+        11
+      ]
+    ]
+  }
+]

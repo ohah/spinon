@@ -1,0 +1,265 @@
+{
+  "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+  "sourceRevision": "990ce5c41f211070152e5f92fc0960b64b6a7933",
+  "sceneCount": 24,
+  "variants": [
+    "single-spaces",
+    "repeated-and-edge-spaces",
+    "tabs",
+    "segment-breaks",
+    "character-reference-carriage-returns",
+    "mixed-whitespace"
+  ],
+  "matchedNonBaselineScenes": 20,
+  "mismatchesAgainstSameColumnAndOrderBaseline": 0,
+  "baseline": [
+    {
+      "columns": "min-content",
+      "reverse": false,
+      "usedColumns": "6.03125px",
+      "usedRows": "10px 60px 10px 34px",
+      "frames": {
+        "first": [
+          0,
+          0,
+          1,
+          10
+        ],
+        "long-text": [
+          0,
+          10,
+          6.03125,
+          60
+        ],
+        "short-text": [
+          0,
+          70,
+          6.03125,
+          10
+        ],
+        "last": [
+          0,
+          80,
+          1,
+          34
+        ]
+      },
+      "lineY": {
+        "long": [
+          9,
+          19,
+          29,
+          39,
+          49,
+          59
+        ],
+        "short": [
+          69
+        ]
+      }
+    },
+    {
+      "columns": "min-content",
+      "reverse": true,
+      "usedColumns": "6.03125px",
+      "usedRows": "10px 10px 60px 34px",
+      "frames": {
+        "first": [
+          0,
+          0,
+          1,
+          10
+        ],
+        "long-text": [
+          0,
+          20,
+          6.03125,
+          60
+        ],
+        "short-text": [
+          0,
+          10,
+          6.03125,
+          10
+        ],
+        "last": [
+          0,
+          80,
+          1,
+          34
+        ]
+      },
+      "lineY": {
+        "long": [
+          19,
+          29,
+          39,
+          49,
+          59,
+          69
+        ],
+        "short": [
+          9
+        ]
+      }
+    },
+    {
+      "columns": "auto",
+      "reverse": false,
+      "usedColumns": "40px",
+      "usedRows": "10px 20px 10px 34px",
+      "frames": {
+        "first": [
+          0,
+          0,
+          1,
+          10
+        ],
+        "long-text": [
+          0,
+          10,
+          40,
+          20
+        ],
+        "short-text": [
+          0,
+          30,
+          40,
+          10
+        ],
+        "last": [
+          0,
+          40,
+          1,
+          34
+        ]
+      },
+      "lineY": {
+        "long": [
+          9,
+          19
+        ],
+        "short": [
+          29
+        ]
+      }
+    },
+    {
+      "columns": "auto",
+      "reverse": true,
+      "usedColumns": "40px",
+      "usedRows": "10px 10px 20px 34px",
+      "frames": {
+        "first": [
+          0,
+          0,
+          1,
+          10
+        ],
+        "long-text": [
+          0,
+          20,
+          40,
+          20
+        ],
+        "short-text": [
+          0,
+          10,
+          40,
+          10
+        ],
+        "last": [
+          0,
+          40,
+          1,
+          34
+        ]
+      },
+      "lineY": {
+        "long": [
+          19,
+          29
+        ],
+        "short": [
+          9
+        ]
+      }
+    }
+  ],
+  "negativeControls": [
+    {
+      "name": "single-space",
+      "source": "\"A A\"",
+      "column": "6.03125px",
+      "row": "10px",
+      "itemWidth": 6.03125,
+      "textRects": [
+        [
+          6.03125,
+          11
+        ],
+        [
+          6.03125,
+          11
+        ]
+      ]
+    },
+    {
+      "name": "form-feed",
+      "source": "\"A\\fA\"",
+      "column": "14.6719px",
+      "row": "10px",
+      "itemWidth": 14.671875,
+      "textRects": [
+        [
+          14.671875,
+          11
+        ]
+      ]
+    },
+    {
+      "name": "vertical-tab",
+      "source": "\"A\\u000bA\"",
+      "column": "14.6719px",
+      "row": "10px",
+      "itemWidth": 14.671875,
+      "textRects": [
+        [
+          14.671875,
+          11
+        ]
+      ]
+    },
+    {
+      "name": "nbsp",
+      "source": "\"A A\"",
+      "column": "18.0625px",
+      "row": "10px",
+      "itemWidth": 18.0625,
+      "textRects": [
+        [
+          18.0625,
+          11
+        ]
+      ]
+    },
+    {
+      "name": "nel",
+      "source": "\"AA\"",
+      "column": "16.0312px",
+      "row": "10px",
+      "itemWidth": 16.03125,
+      "textRects": [
+        [
+          16.03125,
+          11
+        ],
+        [
+          6.03125,
+          11
+        ]
+      ]
+    }
+  ],
+  "allNegativeControlsDifferFromSingleSpaceMinContentWidth": true
+}

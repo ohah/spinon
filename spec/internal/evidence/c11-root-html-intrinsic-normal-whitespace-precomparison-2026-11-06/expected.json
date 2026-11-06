@@ -1,0 +1,65 @@
+{
+  "reference": {
+    "browser": "HeadlessChrome 156.0.0.0 via Agent Browser",
+    "sourceRevision": "990ce5c41f211070152e5f92fc0960b64b6a7933",
+    "specification": "CSS Text Module Level 4 §§4.1, 4.3.1, 4.3.3",
+    "url": "https://drafts.csswg.org/css-text-4/#white-space-processing"
+  },
+  "matrix": {
+    "inputVariants": [
+      "single-spaces",
+      "repeated-and-edge-spaces",
+      "tabs",
+      "segment-breaks",
+      "character-reference-carriage-returns",
+      "mixed-whitespace"
+    ],
+    "columns": ["min-content", "auto"],
+    "sourceOrder": ["forward", "reverse"],
+    "sceneCount": 24,
+    "geometryMismatchesAgainstSingleSpaceBaseline": 0
+  },
+  "expected": {
+    "min-content": {
+      "usedColumnsCssPx": 6.03125,
+      "forwardRowsCssPx": [10, 60, 10, 34],
+      "reverseRowsCssPx": [10, 10, 60, 34],
+      "longTextLines": 6,
+      "shortTextLines": 1
+    },
+    "auto": {
+      "usedColumnsCssPx": 40,
+      "forwardRowsCssPx": [10, 20, 10, 34],
+      "reverseRowsCssPx": [10, 10, 20, 34],
+      "longTextLines": 2,
+      "shortTextLines": 1
+    }
+  },
+  "nonCollapsibleNegativeControls": {
+    "single-space": {
+      "source": "A A",
+      "minContentColumnCssPx": 6.03125
+    },
+    "form-feed": {
+      "source": "A\\fA",
+      "minContentColumnCssPx": 14.671875
+    },
+    "vertical-tab": {
+      "source": "A\\u000bA",
+      "minContentColumnCssPx": 14.671875
+    },
+    "nbsp": {
+      "source": "A A",
+      "minContentColumnCssPx": 18.0625
+    },
+    "nel": {
+      "source": "AA",
+      "minContentColumnCssPx": 16.03125
+    }
+  },
+  "limits": [
+    "single Chromium version only",
+    "reference observation only, no Spinon implementation evidence",
+    "does not establish WPT conformance, device parity, arbitrary text, Unicode or font support"
+  ]
+}

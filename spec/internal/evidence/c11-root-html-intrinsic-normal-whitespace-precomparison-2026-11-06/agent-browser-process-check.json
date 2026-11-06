@@ -1,0 +1,8 @@
+{
+  "closeCommand": "agent-browser close --all",
+  "closeResult": "Closed session: spinon-c11-max-content",
+  "processInspection": "ps -axo pid,command | rg -i 'agent-browser|headlesschrome|chromium.*headless' | rg -v 'rg -i|/bin/zsh -c'",
+  "processInspectionExitCode": 1,
+  "matchingProcesses": [],
+  "interpretation": "exit code 1 means the process filter found no Agent Browser or headless Chromium process"
+}
