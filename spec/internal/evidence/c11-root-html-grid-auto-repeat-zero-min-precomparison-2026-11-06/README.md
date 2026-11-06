@@ -29,3 +29,5 @@ Chrome 157은 이 비교의 browser oracle이며, WPT 통과나 CSS Grid 전체 
 ## 산출물 무결성
 
 fixture, independent expected, browser 관찰, 비교기 및 screenshot hash는 [SHA256SUMS.txt](./SHA256SUMS.txt)에 기록한다. Independent expected는 [독립 JSON](./independent-expected.json)에, 계획 검토 20개는 [계획 파일](../../../../plan/c11-root-html-grid-auto-repeat-zero-min-plan-review-20.md)에, 계획 PR diff 검토는 [이 폴더의 검토 기록](./plan-pr-diff-review-30.md)에 둔다.
+
+계획 PR #1215 본문의 immutable PNG 링크는 Agent Browser에서 실제 표시됐다. 브라우저가 1280×3664 image resource를 모두 읽은 기록은 [PR 이미지 검증](./pr1215-image-agent-browser.json)에 있다. 검증 직후 Agent Browser를 닫았고 프로세스가 남지 않았다.
