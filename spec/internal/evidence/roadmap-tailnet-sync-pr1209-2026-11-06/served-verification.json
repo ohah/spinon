@@ -1,0 +1,22 @@
+{
+  "verified_at_utc": "2026-11-06T05:55:28Z",
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 593059,
+    "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+  },
+  "local_http": {
+    "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 593059,
+    "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+  },
+  "tailnet_https": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 593059,
+    "sha256": "ed76e6d04639dd10ac660b781237c00dcf3994869f3cab7229261a189b96d8c8"
+  },
+  "response_headers": "Tailnet response Content-Length 593059; Date Fri, 06 Nov 2026 05:55:28 GMT.",
+  "byte_compare": "GET response bodies from source, localhost and Tailnet were byte-identical."
+}
