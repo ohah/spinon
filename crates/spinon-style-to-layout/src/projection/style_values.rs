@@ -1575,9 +1575,9 @@ fn validate_root_html_intrinsic_auto_row_items(
                 "Root HTML intrinsic implicit rows exceed the 10,000-track limit",
             ));
         }
-        if auto_row_stretch && visible_item_count != 2 {
+        if auto_row_stretch && !matches!(visible_item_count, 2 | 3) {
             return Err(unsupported(
-                "Root HTML auto-row stretch requires exactly two visible direct items",
+                "Root HTML auto-row stretch requires two or three visible direct items",
             ));
         }
         let item_styles_by_node = snapshot
@@ -1595,7 +1595,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                     "Root HTML intrinsic implicit rows require inspectable direct items",
                 ));
             };
-            let text_item = match child_node.kind() {
+            let text_source = match child_node.kind() {
                 HostNodeKind::Text(text)
                     if root_html_intrinsic_auto_rows::is_whitespace_text(
                         &text.to_string_lossy(),
@@ -1618,7 +1618,7 @@ fn validate_root_html_intrinsic_auto_row_items(
                         })?
                         .collect::<Vec<_>>();
                     match descendants.as_slice() {
-                        [] => false,
+                        [] => None,
                         [text_handle] => {
                             let Some(text_node) = tree.node(*text_handle) else {
                                 return Err(unsupported_item(
@@ -1627,12 +1627,17 @@ fn validate_root_html_intrinsic_auto_row_items(
                                 ));
                             };
                             match text_node.kind() {
-                                HostNodeKind::Text(text)
-                                    if root_html_intrinsic_auto_rows::supports_text_source(
-                                        &text.to_string_lossy(),
-                                    ) =>
-                                {
-                                    true
+                                HostNodeKind::Text(text) => {
+                                    let source = text.to_string_lossy();
+                                    if root_html_intrinsic_auto_rows::supports_text_source(&source)
+                                    {
+                                        Some(source)
+                                    } else {
+                                        return Err(unsupported_item(
+                                            child.id(),
+                                            "text-bearing Grid items require one direct child with ASCII alphabetic tokens separated by collapsible ASCII whitespace",
+                                        ));
+                                    }
                                 }
                                 _ => {
                                     return Err(unsupported_item(
@@ -1656,16 +1661,23 @@ fn validate_root_html_intrinsic_auto_row_items(
                     ));
                 }
             };
+            let text_item = text_source.is_some();
             let item_index = visible_item_index;
             visible_item_index = visible_item_index.checked_add(1).ok_or_else(|| {
                 unsupported("Root HTML intrinsic implicit row item count overflowed")
             })?;
-            if auto_row_stretch
-                && ((item_index == 0 && text_item) || (item_index == 1 && !text_item))
-            {
+            let supported_auto_row_stretch_item = matches!(
+                (visible_item_count, item_index, text_source.as_deref()),
+                (2, 0, None)
+                    | (3, 0, None)
+                    | (2, 1, Some(_))
+                    | (3, 1, Some("A"))
+                    | (3, 2, Some("B"))
+            );
+            if auto_row_stretch && !supported_auto_row_stretch_item {
                 return Err(unsupported_item(
                     child.id(),
-                    "Root HTML auto-row stretch requires one empty fixed item followed by one direct-text item",
+                    "Root HTML auto-row stretch requires one empty fixed item followed by its supported direct-text item shape",
                 ));
             }
             let Some(item_style) = item_styles_by_node.get(&child.id()).copied() else {
@@ -1770,9 +1782,9 @@ fn validate_root_html_intrinsic_auto_row_items(
             "Root HTML intrinsic implicit rows require at least one visible direct item",
         ));
     }
-    if auto_row_stretch && item_count != 2 {
+    if auto_row_stretch && !matches!(item_count, 2 | 3) {
         return Err(unsupported(
-            "Root HTML auto-row stretch requires exactly two visible direct items",
+            "Root HTML auto-row stretch requires two or three visible direct items",
         ));
     }
     Ok(())

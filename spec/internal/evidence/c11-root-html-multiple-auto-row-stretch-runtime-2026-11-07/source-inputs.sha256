@@ -1,0 +1,14 @@
+9b527a26cb5d3c01758f30666895e9bd2e0287279a66696b0c3d41e3d5c89c0f  plan/c11-root-html-multiple-auto-row-stretch.md
+f29907941ebbf270f95cedfccf9f9b9addc9984f19c19c0dcbd9f7338e988580  crates/spinon-style-to-layout/src/projection/style_values.rs
+ee6e14dd8bbaf2617d3b41684decb02f128e14b96a6e9ae443cde72f36c18da7  crates/spinon-runtime/src/session/tests/root_html_grid_intrinsic_auto_rows.rs
+3ab95b89f6207a92cc2abcf80eade699149f6ec6a3e8e4ce1a1a25e098d295c1  crates/spinon-runtime/src/session/tests/root_html_grid_intrinsic_auto_rows/auto_row_stretch.rs
+07452263588d4512a9fed4f4233cc27a35facdb41e39e45a9eafb3e264ce1fa2  crates/spinon-runtime/src/session/tests/root_html_grid_intrinsic_auto_rows/multiple_auto_row_stretch.rs
+3dafe4a9f6c0b1ba05bd0391e0d32bd40cd4d1dbdd3dafa60b1f8e67a1063e55  tests/fixtures/css/c11/root-html-multiple-auto-row-stretch-precomparison.html
+05b781873d7fa88b73f19f4dde4acb069f1f44bdbbb204c6613576653917d061  tests/fixtures/css/c11/root-html-multiple-auto-row-stretch-runtime.html
+3f907ec580774298f2b6ea434fd1f202bda3bc9cd7ca8b4868a4bff80ed16bce  spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-precomparison-2026-11-07/expected.json
+ca4f61ae15f45906e8bda5d1df26b4b9ae0ec93a0fd85c4b0e0c528531efe15c  spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/README.md
+c0c77d954fe7390dc8a0be9c6ea35ecc0f90bed8e23dd3ce72fe84857e404d89  spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/run-simulators.sh
+3bded5de6b8cf3dddf83af8ade9eb09828d7c0020cb56c9a7c6c3fd0798d31ad  spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/root-app.js
+0fc65ba8a08ce2bc35ebf00fc920566e2c05e0f1db746d13d0a1be46994943cb  spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/implementation-review-20.md
+baf899345e407903b12b19ce7f255600a9f117df9c9ac7fd25443658d54a3eca  spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/implementation-pr-diff-review-30.md
+05b781873d7fa88b73f19f4dde4acb069f1f44bdbbb204c6613576653917d061  tests/fixtures/css/c11/root-html-multiple-auto-row-stretch-runtime.html
