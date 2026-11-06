@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML ASCII 하이픈 단어 intrinsic sizing
 
-**상태:** 제한 구현 후보의 집중 테스트와 Android API 37 ARM64 AVD PixelCopy, iPhone 17 Pro/iOS 26.2 Simulator Metal drawable 검증이 통과했다. 두 플랫폼 모두 기본 Root HTML 경로에서 8 boxes를 그렸고 지정한 하이픈 단어 overflow pixel이 exact였다. PR diff 30관점 적대 검토를 마쳤고, GitHub PR 생성·상태 확인·병합이 남아 있다. C11.4/C11 체크 및 공식 완료 `78/214`는 유지한다. [실행 근거](../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-runtime-2026-11-06/README.md)
+**상태:** 제한 구현 PR [#1224](https://github.com/ohah/spinon/pull/1224)가 2026-11-06T14:35:05Z Rebase and merge 됐다 (`4039ed60327b09128503559fcc45268acbb9637e`). Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal drawable 검증, 집중 테스트와 PR diff 30관점 검토가 통과했다. 두 플랫폼 모두 기본 Root HTML 경로에서 8 boxes를 그렸고 지정 overflow pixel 1/1 exact였다. GitHub PR check rollup은 비어 있었다. C11.4/C11 체크 및 공식 완료 `78/214`는 유지한다. [실행 근거](../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-runtime-2026-11-06/README.md) [실행 근거](../spec/internal/evidence/c11-root-html-intrinsic-ascii-hyphenated-runtime-2026-11-06/README.md)
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 ASCII 영숫자 단어 slice](./c11-root-html-intrinsic-ascii-alphanumeric-words.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
