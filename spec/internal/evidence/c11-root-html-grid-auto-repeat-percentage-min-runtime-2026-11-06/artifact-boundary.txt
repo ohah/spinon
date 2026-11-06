@@ -1,0 +1,11 @@
+C11.1 Root HTML percentage auto-repeat fixture asset boundary
+source_sha256=fec26d7a64139fc16d9c313e630932bc76d37075a65084bad49b1bcf253df1b5
+android_opt_in=assets/root-html-grid-auto-repeat-percentage-min-runtime.html bytes=3070 sha256=fec26d7a64139fc16d9c313e630932bc76d37075a65084bad49b1bcf253df1b5
+ios_opt_in=root-html-grid-auto-repeat-percentage-min-runtime.html bytes=3070 sha256=fec26d7a64139fc16d9c313e630932bc76d37075a65084bad49b1bcf253df1b5
+android_default=fixture asset absent from debug APK.
+ios_default=fixture asset absent from Debug-iphonesimulator app bundle.
+default_builds used SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST=0.
+android_opt_in_build=android/build-opt-in.log
+ios_opt_in_build=ios/build-opt-in.log
+android_default_build=android/build-default.log
+ios_default_build=ios/build-default.log

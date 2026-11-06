@@ -10,6 +10,8 @@ mod c10_flex_wrap;
 mod c11_1_root_html_aspect_ratio;
 #[path = "runtime_layout_tests/c11_1_root_html_auto_column_list.rs"]
 mod c11_1_root_html_auto_column_list;
+#[path = "runtime_layout_tests/c11_1_root_html_auto_repeat_percentage_minimum.rs"]
+mod c11_1_root_html_auto_repeat_percentage_minimum;
 #[path = "runtime_layout_tests/c11_1_root_html_auto_row_list.rs"]
 mod c11_1_root_html_auto_row_list;
 #[path = "runtime_layout_tests/c11_1_root_html_content_alignment.rs"]

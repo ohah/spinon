@@ -896,6 +896,8 @@ pub(super) fn validate_grid_layout(
                     percentage_basis_is_definite: definite_axes
                         .get(&node.id)
                         .is_some_and(|axes| axes.width),
+                    root_html_auto_repeat_percentage_minimum: container.placement_mode
+                        == GridPlacementMode::RootHtmlAutoRepeatV1,
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                     fixture_cyclic_percentage_auto_repeat:
                         fixture_cyclic_percentage_auto_repeat_allowed(input, node, container),
@@ -913,6 +915,8 @@ pub(super) fn validate_grid_layout(
                     percentage_basis_is_definite: definite_axes
                         .get(&node.id)
                         .is_some_and(|axes| axes.height),
+                    root_html_auto_repeat_percentage_minimum: container.placement_mode
+                        == GridPlacementMode::RootHtmlAutoRepeatV1,
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                     fixture_cyclic_percentage_auto_repeat:
                         fixture_cyclic_percentage_auto_repeat_allowed(input, node, container),
@@ -2319,6 +2323,7 @@ fn validate_template_areas(
 struct AutoRepeatAxisContext<'a> {
     style: &'a LayoutStyle,
     percentage_basis_is_definite: bool,
+    root_html_auto_repeat_percentage_minimum: bool,
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     fixture_cyclic_percentage_auto_repeat: bool,
 }
@@ -2913,10 +2918,14 @@ fn auto_repeat_track_has_supported_fixed_size(
             min: GridTrackMinSizingFunction::Percentage(value),
             max,
         } => {
+            let basis = if context.root_html_auto_repeat_percentage_minimum {
+                definite_auto_repeat_content_basis(context, property)
+            } else {
+                explicit_positive_content_axis(context.style, property)
+            };
             value.is_finite()
                 && *value >= 0.0
-                && explicit_positive_content_axis(context.style, property)
-                    .is_some_and(|basis| (value * basis).is_finite())
+                && basis.is_some_and(|basis| (value * basis).is_finite())
                 && auto_repeat_maximum_is_supported(*max, node, property, context, css_math)
         }
         GridTrackSize::MinMax {

@@ -366,7 +366,8 @@ fn root_html_auto_repeat_track(
     matches!(
         auto_repeat_track_size(size, false, true, allow_root_html_bounded_minmax_tracks),
         Some(ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::LengthPx(minimum),
+            min: ComputedCssGridTrackBreadth::LengthPx(minimum)
+                | ComputedCssGridTrackBreadth::Percentage(minimum),
             max: ComputedCssGridTrackBreadth::Fraction(1.0),
         }) if minimum.is_finite() && minimum >= 0.0
     )

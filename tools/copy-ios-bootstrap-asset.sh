@@ -8,6 +8,7 @@ root_document_source="$repo_root/build/spinon/bootstrap/index.html"
 root_app_source="$repo_root/build/spinon/bootstrap/root-app.js"
 fixture_source="$repo_root/build/spinon/bootstrap/s03-lifecycle-probe.js"
 c111_auto_repeat_zero_minimum_fixture_source="$repo_root/tests/fixtures/css/c11/root-html-grid-auto-repeat-zero-min-runtime.html"
+c111_auto_repeat_percentage_minimum_fixture_source="$repo_root/tests/fixtures/css/c11/root-html-grid-auto-repeat-percentage-min-runtime.html"
 if [[ ! -f "$source" || ! -f "$root_document_source" || ! -f "$root_app_source" ]]; then
   echo "Bun 번들이 없습니다. bun run bundle:bootstrap을 먼저 실행하세요." >&2
   exit 1
@@ -34,6 +35,13 @@ if [[ "${SPINON_ENABLE_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST:-0}" ==
   fi
   cp "$c111_auto_repeat_zero_minimum_fixture_source" \
     "$resource_dir/root-html-grid-auto-repeat-zero-min-runtime.html"
+  if [[ ! -f "$c111_auto_repeat_percentage_minimum_fixture_source" ]]; then
+    echo "C11.1 Root HTML percentage auto-repeat fixture source가 없습니다: $c111_auto_repeat_percentage_minimum_fixture_source" >&2
+    exit 1
+  fi
+  cp "$c111_auto_repeat_percentage_minimum_fixture_source" \
+    "$resource_dir/root-html-grid-auto-repeat-percentage-min-runtime.html"
 else
   rm -f "$resource_dir/root-html-grid-auto-repeat-zero-min-runtime.html"
+  rm -f "$resource_dir/root-html-grid-auto-repeat-percentage-min-runtime.html"
 fi

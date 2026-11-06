@@ -1,0 +1,57 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 29 tests
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_aspect_ratio::auto_numeric_aspect_ratio_stays_rejected_for_the_default_profile ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_aspect_ratio::aspect_ratio_is_typed_only_for_the_root_html_text_profile ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_falls_back_after_syntax_invalid_negative_fractional_auto_row ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_falls_back_after_syntax_invalid_negative_auto_row_declaration ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_fixed_px_auto_column_list_allocation_failure_is_atomic_and_recovers ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_fixed_px_auto_row_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_fixed_px_auto_row_list_allocation_failure_is_atomic_and_recovers ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_mixed_px_percentage_auto_row_list ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_preserves_fixed_px_auto_column_values_and_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_percentage_auto_row_allocation_failure_is_atomic_and_recovers ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_unsupported_auto_row_lists_unsupported ... FAILED
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_fraction_auto_column_list_allocation_failure_is_atomic_and_recovers ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_single_percentage_auto_row_as_a_list ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_content_alignment::root_html_text_content_alignment_is_cascaded_and_allowed_inline ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_typed_calc_auto_row_lists_for_projection ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_preserves_direct_percentage_auto_columns_and_mixed_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_typed_intrinsic_auto_rows_but_not_auto_columns ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_fixed_integer_repeat_expands_typed_tracks ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_tracks_are_typed_on_both_explicit_axes ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_preserves_supported_calc_only_for_column_flow ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_keeps_intrinsic_auto_column_lists_unsupported ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_percentages_are_preserved_on_both_axes_and_fixed_repeat ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_repeat_percentage_minimum::root_html_auto_repeat_preserves_non_negative_percentage_minimums_on_both_axes ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_rejects_calc_limits_and_keeps_auto_tracks_out ... FAILED
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_preserves_fractional_and_mixed_auto_row_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_column_list::root_html_profile_preserves_direct_fraction_auto_columns_and_mixed_lists ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_integer_repeat::root_html_integer_repeat_accepts_exact_expanded_track_limit ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_aspect_ratio::positive_numeric_aspect_ratio_values_keep_their_typed_ratio_in_the_default_profile ... ok
+test stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_integer_repeat::root_html_integer_repeat_allocation_failures_are_contextual_and_recover ... ok
+
+failures:
+
+---- stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_unsupported_auto_row_lists_unsupported stdout ----
+
+thread 'stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_unsupported_auto_row_lists_unsupported' (190136810) panicked at crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c11_1_root_html_auto_row_list.rs:223:9:
+assertion `left == right` failed: 15px min-content
+  left: TrackList([LengthPx(15.0), MinContent])
+ right: Unsupported("15px min-content")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_rejects_calc_limits_and_keeps_auto_tracks_out stdout ----
+
+thread 'stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_rejects_calc_limits_and_keeps_auto_tracks_out' (190136835) panicked at crates/spinon-style/src/stylo_dom/cascade/runtime_layout_tests/c11_1_root_html_fit_content.rs:159:5:
+assertion failed: matches!(grid.auto_rows, ComputedCssGridAutoRows::Unsupported(_))
+
+
+failures:
+    stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_auto_row_list::root_html_profile_keeps_unsupported_auto_row_lists_unsupported
+    stylo_dom::cascade::runtime_layout_tests::c11_1_root_html_fit_content::root_html_fit_content_rejects_calc_limits_and_keeps_auto_tracks_out
+
+test result: FAILED. 27 passed; 2 failed; 0 ignored; 0 measured; 260 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `-p spinon-style --lib`

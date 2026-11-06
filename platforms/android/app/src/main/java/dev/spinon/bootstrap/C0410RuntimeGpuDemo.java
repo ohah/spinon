@@ -17428,6 +17428,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean rootHtmlTextPaintProbeRequested;
     private final boolean rootHtmlDefaultRenderRequested;
     private final boolean c111RootHtmlAutoRepeatZeroMinimumRequested;
+    private final boolean c111RootHtmlAutoRepeatPercentageMinimumRequested;
     private final boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested;
     private final boolean c115RootHtmlGridItemAutoStretchPixelCaptureRequested;
     private boolean c115RootHtmlGridItemSelfAlignmentPixelCaptureStarted;
@@ -17681,9 +17682,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 .getBooleanExtra("spinon_c0412_root_html_text_paint", false);
         c111RootHtmlAutoRepeatZeroMinimumRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c111_root_html_auto_repeat_zero_minimum", false);
+        c111RootHtmlAutoRepeatPercentageMinimumRequested = activity.getIntent()
+                .getBooleanExtra("spinon_c111_root_html_auto_repeat_percentage_minimum", false);
         rootHtmlDefaultRenderRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c0412_root_html_default_render", false)
-                || c111RootHtmlAutoRepeatZeroMinimumRequested;
+                || c111RootHtmlAutoRepeatZeroMinimumRequested
+                || c111RootHtmlAutoRepeatPercentageMinimumRequested;
         c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c115_root_html_grid_item_self_alignment_pixelcopy", false);
         c115RootHtmlGridItemAutoStretchPixelCaptureRequested =
@@ -19017,8 +19021,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private void initializeRuntime() {
-        if (c111RootHtmlAutoRepeatZeroMinimumRequested && rootHtmlPageScaleCase != null) {
-            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_ARGUMENT_ERROR"
+        if (c111RootHtmlAutoRepeatZeroMinimumRequested
+                && c111RootHtmlAutoRepeatPercentageMinimumRequested) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ARGUMENT_ERROR"
+                    + " rejected=true reason=multiple-fixtures");
+            postStatus("실패 · C11.1 auto-repeat fixture는 한 번에 하나만 선택할 수 있습니다");
+            return;
+        }
+        if ((c111RootHtmlAutoRepeatZeroMinimumRequested
+                || c111RootHtmlAutoRepeatPercentageMinimumRequested)
+                && rootHtmlPageScaleCase != null) {
+            Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ARGUMENT_ERROR"
                     + " rejected=true reason=page-scale-override-not-allowed");
             postStatus("실패 · C11.1 auto-repeat 비교에서는 page scale override를 사용할 수 없습니다");
             return;
@@ -19062,6 +19075,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                     && c111RootHtmlAutoRepeatZeroMinimumRequested
                                     && key.equals(
                                             "spinon_c111_root_html_auto_repeat_zero_minimum")
+                            || BuildConfig.SPINON_C11_1_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_FIXTURE_TEST
+                                    && c111RootHtmlAutoRepeatPercentageMinimumRequested
+                                    && key.equals(
+                                            "spinon_c111_root_html_auto_repeat_percentage_minimum")
                             || BuildConfig.SPINON_C11_5_ROOT_HTML_GRID_ITEM_SELF_ALIGNMENT_FIXTURE_TEST
                                     && c115RootHtmlGridItemSelfAlignmentPixelCaptureRequested
                                     && key.equals(
@@ -20305,7 +20322,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private long nativeCreateRootHtmlDefaultRenderHost() {
         try {
-            String assetName = c111RootHtmlAutoRepeatZeroMinimumRequested
+            String assetName = c111RootHtmlAutoRepeatPercentageMinimumRequested
+                    ? "root-html-grid-auto-repeat-percentage-min-runtime.html"
+                    : c111RootHtmlAutoRepeatZeroMinimumRequested
                     ? "root-html-grid-auto-repeat-zero-min-runtime.html"
                     : rootHtmlPageScaleCase == null
                             ? "root-html-default-rendering.html"
@@ -20329,9 +20348,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + rootHtmlPageScaleCase + " viewport=" + replacementViewport);
             }
             byte[] source = html.getBytes(StandardCharsets.UTF_8);
-            if (c111RootHtmlAutoRepeatZeroMinimumRequested) {
-                Log.i(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_SOURCE asset="
-                        + assetName + " bytes=" + source.length + " sha256="
+            if (c111RootHtmlAutoRepeatZeroMinimumRequested
+                    || c111RootHtmlAutoRepeatPercentageMinimumRequested) {
+                String marker = c111RootHtmlAutoRepeatPercentageMinimumRequested
+                        ? "SPINON_C111_ROOT_HTML_AUTO_REPEAT_PERCENTAGE_MIN_SOURCE"
+                        : "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_SOURCE";
+                Log.i(TAG, marker + " asset=" + assetName + " bytes=" + source.length + " sha256="
                         + sha256Hex(source));
             }
             Log.i(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_SOURCE case="
@@ -20339,9 +20361,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " bytes=" + source.length + " sha256=" + sha256Hex(source));
             return nativeCreateHostWithRootHtml(source);
         } catch (IOException error) {
-            if (c111RootHtmlAutoRepeatZeroMinimumRequested) {
-                Log.e(TAG, "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_ASSET_ERROR asset="
-                        + "root-html-grid-auto-repeat-zero-min-runtime.html", error);
+            if (c111RootHtmlAutoRepeatZeroMinimumRequested
+                    || c111RootHtmlAutoRepeatPercentageMinimumRequested) {
+                String marker = c111RootHtmlAutoRepeatPercentageMinimumRequested
+                        ? "SPINON_C111_ROOT_HTML_AUTO_REPEAT_PERCENTAGE_MIN_ASSET_ERROR"
+                        : "SPINON_C111_ROOT_HTML_AUTO_REPEAT_ZERO_MIN_ASSET_ERROR";
+                Log.e(TAG, marker + " asset="
+                        + (c111RootHtmlAutoRepeatPercentageMinimumRequested
+                                ? "root-html-grid-auto-repeat-percentage-min-runtime.html"
+                                : "root-html-grid-auto-repeat-zero-min-runtime.html"), error);
             }
             Log.e(TAG, "SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_ASSET_ERROR", error);
             return 0;
