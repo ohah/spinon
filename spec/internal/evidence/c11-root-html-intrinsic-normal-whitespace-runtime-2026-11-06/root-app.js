@@ -20,15 +20,28 @@ if (grid !== null) {
 }
 const longText = findById(root, "long-text");
 const shortText = findById(root, "short-text");
-const hasOneTextNode = (element) =>
-  element.firstChild !== null &&
-  element.firstChild.nodeType === 3 &&
-  element.firstChild.nextSibling === null;
+const describeText = (element) => {
+  if (element === null) return null;
+  const node = element.firstChild;
+  return {
+    text: element.textContent,
+    firstNodeType: node == null ? null : node.nodeType,
+    hasNextSibling: node == null ? null : node.nextSibling != null,
+  };
+};
+const longTextSource = describeText(longText);
+const shortTextSource = describeText(shortText);
+const hasOneTextNode = (source) =>
+  source !== null && source.firstNodeType === 3 && source.hasNextSibling === false;
 if (root === null || grid === null || stage === null || longText === null || shortText === null ||
     actualOrder.join(",") !== expectedOrder.join(",") ||
-    !hasOneTextNode(longText) || !hasOneTextNode(shortText) ||
-    longText.textContent !== " \tA\t A\nA \n A \tA\nA  " ||
-    shortText.textContent !== " \tA\n ") {
-  throw new Error("normal-whitespace Root HTML fixture DOM did not preserve its source");
+    !hasOneTextNode(longTextSource) || !hasOneTextNode(shortTextSource) ||
+    longTextSource.text !== " \tA\t A\nA \n A \tA\nA  " ||
+    shortTextSource.text !== " \tA\n ") {
+  throw new Error(`normal-whitespace Root HTML fixture DOM mismatch: ${JSON.stringify({
+    actualOrder,
+    longTextSource,
+    shortTextSource,
+  })}`);
 }
 stage.setAttribute("data-runtime", "ready");
