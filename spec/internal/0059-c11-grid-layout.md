@@ -1621,6 +1621,18 @@ Chrome 157 사전 비교 6/6, layout 11/11, style-to-layout 15/15, Stylo cascade
 
 이 limited slice는 C11.1/C11 완료나 public API/CSS support 선언이 아니며 공식 `78/214`와 내부 숫자 버전 `0.1.0`을 유지한다.
 
+## C11.4 parsed Root HTML `grid-auto-rows:auto` implicit-row stretch · bounded implementation candidate · 2026-11-07
+
+기본 parsed Root HTML `RuntimeRootHtmlTextPaintV1` route에서 단일 visible Grid owner의 auto implicit row 하나가 `align-content:normal`에 따라 양의 definite free space를 받는 제한 후보를 추가한다. Projection은 computed columns `[40px]`, rows `[10px]`, `grid-auto-rows:auto`, row sparse flow, 기본 `align-content`/`align-items`와 `justify-content`/`justify-items`, static position, 40×40px content box, gap 0, visible overflow 및 미설정 aspect ratio를 요구한다. Direct children은 순서대로 40×10px 빈 `<div>` 하나와 auto-sized 10px/10px monospace direct text `<div>` 하나여야 한다. Text grammar·whitespace gate는 기존 parsed Root HTML intrinsic-row profile을 그대로 쓴다. 추가 Grid·item, nested/inline text, unsupported alignment·track/style과 다른 source shape는 layout publication 전에 거부한다.
+
+고정 fixture의 두 줄 text minimum contribution은 20px이다. definite 40px block size에서 explicit row 10px과 implicit auto row base 20px을 제외하면 양의 free space 10px이 남아 used rows `[10px,30px]`가 된다. `align-content:normal`의 auto-track stretch trace는 base `[10,20]px`에서 `[10,30]px`으로 바뀌고, text item frame은 `[0,10,40,30]` CSS px다. 20px contribution은 코드 상수 대신 기존 text measurement와 Grid item contribution에서 가져온다.
+
+내부 `GridPlacementMode::RootHtmlAutoRowStretchV1`만 sparse placement normalizer가 `GridAutoRows::Auto` implicit track을 허용한다. Legacy `RootHtmlIntrinsicTrackSizingV1`은 동일한 automatic row input을 계속 거부한다. Implicit auto row를 explicit template에 펼치지 않아 track-sizing trace의 explicit/implicit 경계를 보존한다. 이 mode와 route는 내부 구현 경계이며 새 public API, CSS parser, runtime selector 또는 fixture FFI를 추가하지 않는다. 숫자 계약 버전 `0.1.0`은 유지한다.
+
+기준은 [CSS Grid Layout Module Level 1 2025-03-26 CRD §§7.6, 11.4–11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/)와 [HeadlessChrome 157 사전 비교 및 독립 기대값](evidence/c11-root-html-grid-auto-row-stretch-precomparison-2026-11-07/README.md)이다. Focused Rust tests, changed-crate Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD/ANGLE SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator의 기본 HTML route는 동일 fixture hash를 넣고 `layout=ready`, 5 boxes로 실행했다. [실행·hash·화면·한계](evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/README.md) · [구현/runtime 실패 관점 검토 20개](evidence/c11-root-html-grid-auto-row-stretch-runtime-2026-11-07/implementation-runtime-review-20.md). Screenshot은 visual smoke이며 정확한 geometry는 RuntimeSession/trace assertions에서 검증한다. PixelCopy, Metal drawable readback, physical-device/hardware GPU, iOS compositor 이후 pixel parity, WPT 및 일반 CSS admission은 확인하지 않았다.
+
+계획 PR #1227은 병합됐으나 구현 후보는 아직 review·merge 전이다. 따라서 이 entry는 완료 선언이 아니다. C11.4/C11 미완료와 공식 완료 `78/214`를 유지한다.
+
 ## C11.4 parsed Root HTML ASCII hyphenated direct-text words · bounded merged implementation PR #1224 · 2026-11-06
 
 이 후보는 [ASCII alphanumeric direct-text words](../../plan/c11-root-html-intrinsic-ascii-alphanumeric-words.md)의 기본 `RuntimeRootHtmlTextPaintV1` intrinsic-row profile에서 token grammar를 `[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*`로 넓힌다. U+002D HYPHEN-MINUS는 비어 있지 않은 ASCII alphanumeric run 사이에서만 허용한다. leading/trailing/repeated hyphen, Unicode dash/minus, 다른 punctuation·숫자 체계, 기존 미지원 whitespace 및 text tree/style은 계속 scene publication 전에 거부한다.

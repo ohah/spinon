@@ -1,0 +1,9 @@
+$ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js && bun build examples/bootstrap/root-app.js --target=browser --outfile build/spinon/bootstrap/root-app.js && cp examples/bootstrap/index.html build/spinon/bootstrap/index.html
+Bundled 1 module in 3ms
+
+  app.js  17.59 KB  (entry point)
+
+Bundled 1 module in 1ms
+
+  root-app.js  1.65 KB  (entry point)
+

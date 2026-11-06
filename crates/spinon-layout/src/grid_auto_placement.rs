@@ -213,7 +213,7 @@ pub(super) fn normalize_sparse_grid_container(
 
     if max_rows > container.rows.len() {
         let implicit_rows = max_rows - container.rows.len();
-        let (single_auto_row, auto_row_pattern) = match &container.auto_rows {
+        let (single_auto_row, auto_row_pattern, auto_track) = match &container.auto_rows {
             GridAutoRows::LengthPx(value) => {
                 if !value.is_finite() || *value < 0.0 {
                     return Err(LayoutError::InvalidGridTrack {
@@ -221,7 +221,7 @@ pub(super) fn normalize_sparse_grid_container(
                         property: "grid-auto-rows",
                     });
                 }
-                (Some(*value), None)
+                (Some(*value), None, false)
             }
             GridAutoRows::TrackList(tracks) => {
                 if tracks.is_empty() {
@@ -261,7 +261,13 @@ pub(super) fn normalize_sparse_grid_container(
                         }
                     }
                 }
-                (None, Some(tracks.as_slice()))
+                (None, Some(tracks.as_slice()), false)
+            }
+            GridAutoRows::Auto
+                if container.placement_mode
+                    == crate::GridPlacementMode::RootHtmlAutoRowStretchV1 =>
+            {
+                (None, None, true)
             }
             GridAutoRows::Auto => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
@@ -270,41 +276,46 @@ pub(super) fn normalize_sparse_grid_container(
                 });
             }
         };
-        let mut expanded_rows = Vec::new();
-        reserve_exact(
-            &mut expanded_rows,
-            max_rows,
-            node,
-            "grid-template-rows",
-            GridReservationSite::ExpandedRows,
-        )?;
-        expanded_rows.extend_from_slice(&container.rows);
-        match (single_auto_row, auto_row_pattern) {
-            (Some(auto_row_size), None) => expanded_rows.extend(std::iter::repeat_n(
-                GridTrackSize::LengthPx(auto_row_size),
-                implicit_rows,
-            )),
-            (None, Some(pattern)) => {
-                expanded_rows.extend(pattern.iter().cycle().take(implicit_rows).copied());
-            }
-            _ => {
-                return Err(LayoutError::UnsupportedGridAutoRows {
-                    node,
-                    reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
-                });
-            }
-        }
-        if container.placement_mode == crate::GridPlacementMode::RootHtmlImplicitRowsV1
-            && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_) | GridTrackSize::Calc(_))))
-        {
-            validate_root_html_expanded_row_range(
+        if auto_track {
+            // Let Taffy create and size the implicit auto tracks so its track trace keeps the
+            // explicit/implicit boundary instead of seeing expanded template rows.
+        } else {
+            let mut expanded_rows = Vec::new();
+            reserve_exact(
+                &mut expanded_rows,
+                max_rows,
                 node,
-                container_node,
-                &expanded_rows,
-                &input.css_math,
+                "grid-template-rows",
+                GridReservationSite::ExpandedRows,
             )?;
+            expanded_rows.extend_from_slice(&container.rows);
+            match (single_auto_row, auto_row_pattern) {
+                (Some(auto_row_size), None) => expanded_rows.extend(std::iter::repeat_n(
+                    GridTrackSize::LengthPx(auto_row_size),
+                    implicit_rows,
+                )),
+                (None, Some(pattern)) => {
+                    expanded_rows.extend(pattern.iter().cycle().take(implicit_rows).copied());
+                }
+                _ => {
+                    return Err(LayoutError::UnsupportedGridAutoRows {
+                        node,
+                        reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
+                    });
+                }
+            }
+            if container.placement_mode == crate::GridPlacementMode::RootHtmlImplicitRowsV1
+                && matches!(&container.auto_rows, GridAutoRows::TrackList(tracks) if tracks.iter().any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Fraction(_) | GridTrackSize::Calc(_))))
+            {
+                validate_root_html_expanded_row_range(
+                    node,
+                    container_node,
+                    &expanded_rows,
+                    &input.css_math,
+                )?;
+            }
+            output.expanded_rows = Some(expanded_rows);
         }
-        output.expanded_rows = Some(expanded_rows);
     }
 
     Ok(output)

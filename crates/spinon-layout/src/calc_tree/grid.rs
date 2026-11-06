@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 
 use super::CalcLayoutTree;
 use crate::compact_taffy_style::CompactTaffyStyle;
-use crate::{GridPlacementMode, LayoutDimension, LayoutError, LayoutInput, LayoutLengthPercentage};
+use crate::{LayoutDimension, LayoutError, LayoutInput, LayoutLengthPercentage};
 use spinon_core::NodeId;
 use taffy::{DetailedGridInfo, DetailedLayoutInfo, LayoutGridContainer, NodeId as TaffyNodeId};
 
@@ -21,7 +21,10 @@ impl CalcLayoutTree {
             let Some(container) = input.grid_containers.get(&spinon_node) else {
                 continue;
             };
-            if container.placement_mode != GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 {
+            if !container
+                .placement_mode
+                .is_root_html_intrinsic_track_sizing()
+            {
                 continue;
             }
             let Some(&source_index) = index.get(&spinon_node) else {

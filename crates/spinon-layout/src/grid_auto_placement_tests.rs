@@ -8,9 +8,10 @@ use crate::grid_auto_placement::{
 };
 use crate::{
     GridAutoColumns, GridAutoFlow, GridAutoRows, GridContainerInput, GridItemInput,
-    GridPlacementInput, GridPlacementMode, GridTrackSize, LayoutDimension, LayoutEngine, LayoutGap,
-    LayoutInputRevision, LayoutLengthPercentage, LayoutNode, LayoutSourceRevision, LayoutStyle,
-    TaffyLayoutEngine, Viewport,
+    GridPlacementInput, GridPlacementMode, GridTrackSize, LayoutAlignContent, LayoutDimension,
+    LayoutDisplay, LayoutEngine, LayoutGap, LayoutGridTrackSizingAxis,
+    LayoutGridTrackSizingStageKind, LayoutInputRevision, LayoutLengthPercentage, LayoutNode,
+    LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine, Viewport,
 };
 
 #[path = "grid_auto_placement/content_alignment_tests.rs"]
@@ -780,6 +781,90 @@ fn implicit_auto_sizing_and_explicit_column_overflow_fail_closed() {
         TaffyLayoutEngine.compute(&implicit_column),
         Err(LayoutError::InvalidGridPlacement { .. })
     ));
+}
+
+#[test]
+fn root_html_intrinsic_track_sizing_stretches_an_automatic_implicit_row() {
+    let mut input = sparse_grid(1, 1, 2);
+    input.viewport.height = 40.0;
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.nodes[0].style.align_content = Some(LayoutAlignContent::Normal);
+    input.nodes[1].style.display = LayoutDisplay::Block;
+    input.nodes[2].style.display = LayoutDisplay::Block;
+    input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
+    input.nodes[2].style.height = LayoutDimension::Auto;
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.columns = vec![GridTrackSize::LengthPx(40.0)];
+    container.rows = vec![GridTrackSize::LengthPx(10.0)];
+    container.auto_rows = GridAutoRows::Auto;
+    container.placement_mode = GridPlacementMode::RootHtmlAutoRowStretchV1;
+    container.track_sizing_trace_enabled = true;
+
+    let output = TaffyLayoutEngine
+        .compute(&input)
+        .expect("the restricted Root HTML intrinsic route should size an auto row");
+    let row_item = output.frames[&id(3)];
+    assert_eq!(
+        [row_item.x, row_item.y, row_item.width, row_item.height],
+        [0.0, 10.0, 18.0, 30.0]
+    );
+    let trace = output
+        .grid_track_sizing_traces
+        .iter()
+        .find(|trace| trace.node == id(1))
+        .expect("the Grid should retain a track-sizing trace");
+    assert_eq!(trace.used_rows.used_track_list, "10px 30px");
+    let row_pass = trace
+        .passes
+        .iter()
+        .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .expect("the Grid should trace its row sizing pass");
+    let stretch = row_pass
+        .stages
+        .iter()
+        .find(|stage| {
+            stage.stage == LayoutGridTrackSizingStageKind::StretchAutoTracks { applied: true }
+        })
+        .expect("align-content:normal should run the auto-track stretch stage");
+    let stretch_tracks = stretch
+        .tracks
+        .iter()
+        .filter(|track| !track.is_gutter && !track.is_collapsed)
+        .map(|track| track.base_size)
+        .collect::<Vec<_>>();
+    assert_eq!(stretch_tracks, [10.0, 30.0]);
+}
+
+#[test]
+fn root_html_intrinsic_track_sizing_does_not_admit_automatic_implicit_rows() {
+    let mut input = sparse_grid(1, 1, 2);
+    input.viewport.height = 40.0;
+    input.nodes[0].style.height = LayoutDimension::Fixed(40.0);
+    input.nodes[1].style.height = LayoutDimension::Fixed(10.0);
+    input.nodes[2].style.height = LayoutDimension::Fixed(20.0);
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.columns = vec![GridTrackSize::LengthPx(40.0)];
+    container.rows = vec![GridTrackSize::LengthPx(10.0)];
+    container.auto_rows = GridAutoRows::Auto;
+    container.placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+
+    let index = input
+        .nodes
+        .iter()
+        .enumerate()
+        .map(|(index, node)| (node.id, index))
+        .collect::<BTreeMap<_, _>>();
+    let hidden = crate::grid_placement::hidden_subtrees(&input, &index);
+    let node = &input.nodes[index[&id(1)]];
+    let container = &input.grid_containers[&id(1)];
+    let result = crate::grid_auto_placement::normalize_sparse_grid_container(
+        &input, &index, &hidden, node, container,
+    );
+    assert!(
+        matches!(result, Err(LayoutError::UnsupportedGridAutoRows { .. })),
+        "legacy intrinsic track route unexpectedly accepted auto implicit rows: {:?}",
+        result.as_ref().err()
+    );
 }
 
 #[test]

@@ -14,7 +14,7 @@ use taffy::style::{
 
 use crate::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, GridContainerInput,
-    GridItemInput, GridPlacementMode, GridTrackSize, ItemAlignmentPosition, JustifyContentPosition,
+    GridItemInput, GridTrackSize, ItemAlignmentPosition, JustifyContentPosition,
     LayoutAlignContent, LayoutAlignItems, LayoutAlignSelf, LayoutBoxSizing, LayoutCalcId,
     LayoutCssMathProperty, LayoutDimension, LayoutDisplay, LayoutEdges, LayoutError,
     LayoutJustifyContent, LayoutLengthPercentage, LayoutOverflow, LayoutPosition,
@@ -80,7 +80,9 @@ pub(super) fn to_taffy_style(
             .unwrap_or_default(),
     };
     let intrinsic_grid_normal_justification = grid_input.container.is_some_and(|container| {
-        container.placement_mode == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+        container
+            .placement_mode
+            .is_root_html_intrinsic_track_sizing()
             && style.justify_content == LayoutJustifyContent::Normal
     });
     let (grid_auto_rows, grid_auto_columns) = match grid_input.container.filter(|container| {

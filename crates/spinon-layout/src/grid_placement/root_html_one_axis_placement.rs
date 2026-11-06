@@ -25,8 +25,9 @@ pub(super) fn validate_items(
         GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
             | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
     );
-    let intrinsic_track_sizing =
-        container.placement_mode == GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
+    let intrinsic_track_sizing = container
+        .placement_mode
+        .is_root_html_intrinsic_track_sizing();
     let intrinsic_template_areas = intrinsic_track_sizing && container.template_areas.is_some();
     if container.placement_mode != GridPlacementMode::RootHtmlOneAxisAutoPlacementV1
         && !mixed_explicit
