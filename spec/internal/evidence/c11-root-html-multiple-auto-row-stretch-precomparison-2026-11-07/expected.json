@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "source": {
+    "fixture": "tests/fixtures/css/c11/root-html-multiple-auto-row-stretch-precomparison.html",
+    "fixture_sha256": "3dafe4a9f6c0b1ba05bd0391e0d32bd40cd4d1dbdd3dafa60b1f8e67a1063e55",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "agent_browser": "0.31.1",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1,
+    "visible_grid_owner_count": 1
+  },
+  "independent_expectations": {
+    "basis": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, sections 7.6, 7.6.1, 8.5, 11.3, and 11.8",
+    "grid_content_size_css_px": [40, 40],
+    "explicit_columns_css_px": [40],
+    "explicit_rows_css_px": [10],
+    "grid_auto_rows": "auto",
+    "grid_auto_flow": "row",
+    "gap_css_px": 0,
+    "direct_items_in_source_order": ["empty fixed 40x10", "A text, 10px/10px monospace", "B text, 10px/10px monospace"],
+    "text_min_content_block_contribution_css_px": [10, 10],
+    "initial_track_base_sizes_css_px": [10, 10, 10],
+    "positive_definite_free_space_before_auto_stretch_css_px": 10,
+    "per_auto_track_stretch_css_px": 5,
+    "auto-normal-two-implicit": {
+      "computed_align_content": "normal",
+      "used_rows_css_px": [10, 15, 15],
+      "item_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 15], [0, 25, 40, 15]],
+      "text_line_counts": [1, 1]
+    },
+    "auto-start-two-implicit-control": {
+      "computed_align_content": "start",
+      "used_rows_css_px": [10, 10, 10],
+      "text_item_rects_grid_css_px": [[0, 10, 40, 10], [0, 20, 40, 10]]
+    },
+    "min-content-two-implicit-control": {
+      "computed_grid_auto_rows": "min-content",
+      "used_rows_css_px": [10, 10, 10],
+      "text_item_rects_grid_css_px": [[0, 10, 40, 10], [0, 20, 40, 10]]
+    },
+    "fixed-two-implicit-control": {
+      "computed_grid_auto_rows": "10px",
+      "used_rows_css_px": [10, 10, 10],
+      "text_item_rects_grid_css_px": [[0, 10, 40, 10], [0, 20, 40, 10]]
+    },
+    "one-implicit-row-two-line-control": {
+      "direct_text_source": "A A A A A A",
+      "computed_align_content": "normal",
+      "text_line_count": 2,
+      "used_rows_css_px": [10, 30],
+      "text_item_rect_grid_css_px": [0, 10, 40, 30]
+    }
+  },
+  "chrome_observation": {
+    "auto-normal-two-implicit": {
+      "computed_grid_auto_rows": "auto",
+      "computed_align_content": "normal",
+      "computed_grid_template_columns": "40px",
+      "used_rows": "10px 15px 15px",
+      "child_rects_grid_css_px": [[0, 0, 40, 10], [0, 10, 40, 15], [0, 25, 40, 15]],
+      "text_line_counts": [1, 1]
+    },
+    "auto-start-two-implicit": {
+      "used_rows": "10px 10px 10px",
+      "text_item_rects_grid_css_px": [[0, 10, 40, 10], [0, 20, 40, 10]]
+    },
+    "min-content-two-implicit": {
+      "used_rows": "10px 10px 10px",
+      "text_item_rects_grid_css_px": [[0, 10, 40, 10], [0, 20, 40, 10]]
+    },
+    "fixed-two-implicit": {
+      "used_rows": "10px 10px 10px",
+      "text_item_rects_grid_css_px": [[0, 10, 40, 10], [0, 20, 40, 10]]
+    },
+    "auto-normal-one-implicit-two-line-text": {
+      "used_rows": "10px 30px",
+      "text_item_rect_grid_css_px": [0, 10, 40, 30],
+      "text_line_count": 2
+    }
+  },
+  "screenshot": {
+    "path": "chrome/fixture.png",
+    "sha256": "e717e0bfc1e5de8872a88a2d755b5664ad36e99219a675d8929c9058331714bf",
+    "pixel_size": [1280, 633],
+    "limitations": [
+      "Chrome observation cross-checks independently derived CSS Grid expectations.",
+      "This screenshot is a browser fixture rendering, not Spinon output or pixel-parity evidence."
+    ]
+  }
+}
