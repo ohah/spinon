@@ -21,6 +21,10 @@
 - 제목은 `스피논 구현 로드맵`이며 카드에 PR #1212, merge SHA, `78/214`와 C11.4/C11 미완료가 보인다.
 - 사용 후 Agent Browser를 닫았고 `pgrep -x agent-browser` 결과가 비어 프로세스가 남지 않았다.
 
+## PR 변경 검토
+
+서로 다른 실패 경로를 확인한 [PR diff 적대 검토 30개](./pr-diff-review-30.md)를 기록했다. 범위는 source identity, backup·atomic replace, local/Tailnet HTTP 제공본, 화면 geometry/hash, status wording, process lifecycle과 배포 경계다.
+
 ```text
 Docs merge PR: #1213
 Docs merge SHA: cf3b29cab58f66a8993845123b0873e1d414a5cd
