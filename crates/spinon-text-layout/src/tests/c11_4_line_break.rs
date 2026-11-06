@@ -5,6 +5,7 @@ use crate::{
 
 const NOTO_KR: &[u8] =
     include_bytes!("../../../../tests/fixtures/resources/c15/c15-3/NotoSansKR-VF.ttf");
+const AHEM: &[u8] = include_bytes!("../../../../tests/fixtures/resources/c15/Ahem.ttf");
 
 fn paragraph(language: &str, line_break: LineBreakMode) -> ParagraphInput {
     paragraph_with_text(language, line_break, "文〜文")
@@ -120,6 +121,72 @@ fn c114_line_break_loose_allows_japanese_prefix_break_for_intrinsic_sizes() {
             sizes.max_content_height(),
             10.0,
             &format!("{label} max block"),
+        );
+    }
+}
+
+#[test]
+fn c114_line_break_allows_ascii_hyphen_before_digit_after_alphanumeric() {
+    let mut engine = TextLayoutEngine::new_without_system_fonts();
+    engine.register_font("Ahem", AHEM).unwrap();
+
+    for mode in [
+        LineBreakMode::Loose,
+        LineBreakMode::Normal,
+        LineBreakMode::Strict,
+    ] {
+        let mut input = paragraph_with_text("en", mode, "12-3");
+        input.style.font_family = "Ahem".to_owned();
+        let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
+        let label = format!("line-break={mode:?}");
+        close_to(
+            sizes.min_content(),
+            30.0,
+            &format!("{label} 12-3 min-content"),
+        );
+        close_to(
+            sizes.max_content(),
+            40.0,
+            &format!("{label} 12-3 max-content"),
+        );
+        close_to(
+            sizes.min_content_height(),
+            20.0,
+            &format!("{label} 12-3 min-content height"),
+        );
+
+        let layout = engine.layout_paragraph(&input, 30.0).unwrap();
+        assert_eq!(layout.lines.len(), 2, "{label}");
+        close_to(
+            layout.lines[0].advance,
+            30.0,
+            &format!("{label} first line"),
+        );
+        assert_eq!(layout.text, "12-\u{200b}3", "{label}");
+        let marker = layout
+            .sources
+            .iter()
+            .find(|source| source.paragraph_utf8 == (2..6))
+            .expect("the generated break marker should map with its source hyphen");
+        assert_eq!(marker.source_utf16, 2..3, "{label}");
+        assert_eq!(input.sources[0].text, "12-3", "{label} source preservation");
+
+        let mut leading_minus = paragraph_with_text("en", mode, "-13");
+        leading_minus.style.font_family = "Ahem".to_owned();
+        let sizes = engine.intrinsic_inline_sizes(&leading_minus).unwrap();
+        close_to(
+            sizes.min_content(),
+            30.0,
+            &format!("{label} -13 stays unbreakable"),
+        );
+        assert_eq!(
+            engine
+                .layout_paragraph(&leading_minus, 20.0)
+                .unwrap()
+                .lines
+                .len(),
+            1,
+            "{label} leading minus"
         );
     }
 }
