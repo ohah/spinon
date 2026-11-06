@@ -1593,7 +1593,7 @@ PR #1208은 PR #1205의 source gate를 늘려 text token 하나 이상이 `[A-Za
 
 PR [#1212](https://github.com/ohah/spinon/pull/1212)은 2026-11-06T06:56:57Z Rebase and merge로 병합됐다(merge SHA `64483c9dd93741606de739891211058be612f954`).
 
-앞선 [ASCII letter-word slice](../../plan/c11-root-html-intrinsic-letter-words.md)는 각 text token을 `[A-Za-z]+`로 제한했다. 이 후보는 같은 기본 `RuntimeRootHtmlTextPaintV1` direct-text intrinsic-row 경로의 token allowlist만 `[A-Za-z0-9]+`로 넓힌다. 숫자 전용(`12345678`), 영문 뒤 숫자(`A1`, `BB2`) 및 숫자 뒤 영문(`1A`, `22B`) token을 허용한다. U+0020 SPACE, U+0009 TAB, U+000A LF, U+000D CR의 빈 run은 기존 separator로 유지하고, source·Text node·item owner·source order·revision은 trim·normalize·rewrite하지 않는다. Punctuation 및 ASCII 밖 문자·숫자는 계속 거부하며 unsupported input에서는 frame이나 paint snapshot을 부분 게시하지 않는다.
+앞선 [ASCII letter-word slice](../../plan/c11-root-html-intrinsic-letter-words.md)는 각 text token을 `[A-Za-z]+`로 제한했다. 이 제한 구현은 같은 기본 `RuntimeRootHtmlTextPaintV1` direct-text intrinsic-row 경로의 token allowlist만 `[A-Za-z0-9]+`로 넓힌다. 숫자 전용(`12345678`), 영문 뒤 숫자(`A1`, `BB2`) 및 숫자 뒤 영문(`1A`, `22B`) token을 허용한다. U+0020 SPACE, U+0009 TAB, U+000A LF, U+000D CR의 빈 run은 기존 separator로 유지하고, source·Text node·item owner·source order·revision은 trim·normalize·rewrite하지 않는다. Punctuation 및 ASCII 밖 문자·숫자는 계속 거부하며 unsupported input에서는 frame이나 paint snapshot을 부분 게시하지 않는다.
 
 기존 단일 visible Grid owner, definite 40px container, `min-content`/`auto` explicit-column profile, 단일 10px explicit row, singleton `grid-auto-rows:min-content`, monospace 10px·line-height 10px·`white-space:normal`·`word-break:normal`·`overflow-wrap:normal`, sparse row flow 및 existing normal wrapping 조건을 유지한다. 새 parser, CSS grammar, runtime profile, FFI 또는 public API를 추가하지 않는다.
 
