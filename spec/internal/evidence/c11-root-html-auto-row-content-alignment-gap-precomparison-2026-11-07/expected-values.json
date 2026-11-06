@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "source": {
+    "fixture": "tests/fixtures/css/c11/root-html-auto-row-content-alignment-row-gap-precomparison.html",
+    "fixture_sha256": "12f0cdd179845e44b3e445e74ee9fde040361c048123768a6b5c5fed979eeb99",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "agent_browser": "0.31.1",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1
+  },
+  "scene": {
+    "root_content_css_px": [40, 40],
+    "explicit_columns_css_px": [40],
+    "explicit_rows_css_px": [10],
+    "implicit_auto_rows_before_alignment_css_px": [10, 10],
+    "row_gap_css_px": [0, 2.5, 5, 7.5],
+    "column_gap_css_px": 0,
+    "free_space_before_content_alignment_css_px": [10, 5, 0, -5],
+    "item_min_content_contributions_css_px": [[40, 10], [40, 10], [40, 10]]
+  },
+  "tolerance_css_px": 0.03125,
+  "screenshots": {
+    "start_gap_2_5px": {
+      "path": "chrome/align-content-start.png",
+      "sha256": "31e2d78b240726faf0aa12874e1ff0358451b34f3c2804d359c7daf14122c6ec",
+      "pixel_size": [1280, 633]
+    },
+    "space_between_gap_2_5px": {
+      "path": "chrome/align-content-space-between.png",
+      "sha256": "d7ec3a99780e6cbb648b3bcdb0b3f917aef9249c0e03c37592908cf3d3fd32f1",
+      "pixel_size": [1280, 633]
+    },
+    "end_gap_7_5px": {
+      "path": "chrome/align-content-end-gap-7_5.png",
+      "sha256": "4de8a8f2ca8feb9e821986abc4847c7ca40dc53e05285d3af7a461ae20c028ec",
+      "pixel_size": [1280, 633]
+    }
+  },
+  "cases_by_row_gap_css_px": {
+    "0": {
+      "normal": {"used_rows": [10, 15, 15], "item_y": [0, 10, 25]},
+      "stretch": {"used_rows": [10, 15, 15], "item_y": [0, 10, 25]},
+      "start": {"used_rows": [10, 10, 10], "item_y": [0, 10, 20]},
+      "flex-start": {"used_rows": [10, 10, 10], "item_y": [0, 10, 20]},
+      "end": {"used_rows": [10, 10, 10], "item_y": [10, 20, 30]},
+      "flex-end": {"used_rows": [10, 10, 10], "item_y": [10, 20, 30]},
+      "center": {"used_rows": [10, 10, 10], "item_y": [5, 15, 25]},
+      "space-between": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "space-around": {"used_rows": [10, 10, 10], "item_y": [1.6666666667, 15, 28.3333333333]},
+      "space-evenly": {"used_rows": [10, 10, 10], "item_y": [2.5, 15, 27.5]}
+    },
+    "2.5": {
+      "normal": {"used_rows": [10, 12.5, 12.5], "item_y": [0, 12.5, 27.5]},
+      "stretch": {"used_rows": [10, 12.5, 12.5], "item_y": [0, 12.5, 27.5]},
+      "start": {"used_rows": [10, 10, 10], "item_y": [0, 12.5, 25]},
+      "flex-start": {"used_rows": [10, 10, 10], "item_y": [0, 12.5, 25]},
+      "end": {"used_rows": [10, 10, 10], "item_y": [5, 17.5, 30]},
+      "flex-end": {"used_rows": [10, 10, 10], "item_y": [5, 17.5, 30]},
+      "center": {"used_rows": [10, 10, 10], "item_y": [2.5, 15, 27.5]},
+      "space-between": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "space-around": {"used_rows": [10, 10, 10], "item_y": [0.8333333333, 15, 29.1666666667]},
+      "space-evenly": {"used_rows": [10, 10, 10], "item_y": [1.25, 15, 28.75]}
+    },
+    "5": {
+      "normal": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "stretch": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "start": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "flex-start": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "end": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "flex-end": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "center": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "space-between": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "space-around": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]},
+      "space-evenly": {"used_rows": [10, 10, 10], "item_y": [0, 15, 30]}
+    },
+    "7.5": {
+      "normal": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]},
+      "stretch": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]},
+      "start": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]},
+      "flex-start": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]},
+      "end": {"used_rows": [10, 10, 10], "item_y": [-5, 12.5, 30]},
+      "flex-end": {"used_rows": [10, 10, 10], "item_y": [-5, 12.5, 30]},
+      "center": {"used_rows": [10, 10, 10], "item_y": [-2.5, 15, 32.5]},
+      "space-between": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]},
+      "space-around": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]},
+      "space-evenly": {"used_rows": [10, 10, 10], "item_y": [0, 17.5, 35]}
+    }
+  }
+}

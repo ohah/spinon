@@ -1,0 +1,15 @@
+{
+  "agent_browser_version": "0.31.1",
+  "sessions_used": 5,
+  "sessions_closed": 5,
+  "pull_request_image_check": {
+    "pr_number": 1239,
+    "loaded_images": 3,
+    "image_size_css_px": [1280, 633],
+    "all_complete": true
+  },
+  "last_close_command": "agent-browser close --all",
+  "last_close_result": "Closed session: default",
+  "last_process_check_command": "pgrep -fl '^agent-browser'",
+  "matching_processes": []
+}
