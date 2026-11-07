@@ -1,0 +1,53 @@
+{
+  "sourceHead": "b361097257f0fb6a9739de139724bef24abadb04",
+  "sourceTree": "5d522ae86b927dd6997da48d203fbf4f5de3c435",
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 631732,
+    "sha256": "855dbb7b93dafaeaed33340d6ccc7b9c0b346c00f5434daf33d8f2f9653160d4"
+  },
+  "sourceMarkers": [
+    "PR #1274",
+    "b361097257f0fb6a9739de139724bef24abadb04",
+    "78/214",
+    "Intrinsic sizing"
+  ],
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "target": {
+    "path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+    "bytes": 629981,
+    "sha256": "5972620e626f3cf16b52d5d2335b029187c24b7b80244939036b87d6341d6e3b",
+    "mode": 420
+  },
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1274-c11-4-2026-11-08/pass01",
+  "tailscaleBackendState": "Running",
+  "previewServer": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "openHandlePids": [],
+  "local": {
+    "status": 200,
+    "bytes": 629981,
+    "sha256": "5972620e626f3cf16b52d5d2335b029187c24b7b80244939036b87d6341d6e3b"
+  },
+  "tailnet": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 629981,
+    "sha256": "5972620e626f3cf16b52d5d2335b029187c24b7b80244939036b87d6341d6e3b"
+  },
+  "filesToReplace": [
+    "roadmap.html"
+  ],
+  "noDeletes": true,
+  "serverRestarted": false,
+  "sourceSnapshotState": {
+    "kind": "working-tree candidate",
+    "baselineHead": "b361097257f0fb6a9739de139724bef24abadb04",
+    "roadmapWasModifiedRelativeToBaselineHead": true,
+    "sourceBytesAreTheWorkingTreeFile": true,
+    "note": "Source file SHA records spec/public/roadmap.html working-tree bytes; sourceHead/sourceTree identify its base commit before this documentation PR commit."
+  }
+}
