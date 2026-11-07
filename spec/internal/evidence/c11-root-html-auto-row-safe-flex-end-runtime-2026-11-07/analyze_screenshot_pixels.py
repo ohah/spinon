@@ -62,7 +62,16 @@ results: dict[str, object] = {
 for platform, details in CASES.items():
     path = PASS_DIR / platform / "simulator.png"
     image = Image.open(path).convert("RGB")
-    positive_pass = ROOT / "pass01"
+    positive_passes = [
+        candidate
+        for candidate in sorted(ROOT.glob("pass[0-9][0-9]"))
+        if (candidate / "environment.txt").is_file()
+        and "scene=positive\n" in (candidate / "environment.txt").read_text()
+        and all((candidate / platform / "simulator.png").is_file() for platform in CASES)
+    ]
+    if not positive_passes:
+        raise AssertionError("a successful positive simulator pass is required as origin")
+    positive_pass = positive_passes[-1]
     positive_path = positive_pass / platform / "simulator.png"
     positive = Image.open(positive_path).convert("RGB")
     grid = bbox(positive, GRID)
