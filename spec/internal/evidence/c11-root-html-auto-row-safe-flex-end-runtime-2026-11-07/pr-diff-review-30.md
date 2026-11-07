@@ -1,6 +1,6 @@
-# C11.4 `safe|unsafe flex-end` PR diff 실패 관점 30개
+# C11.4 `safe|unsafe flex-end` PR #1260 diff 실패 관점 30개
 
-Candidate diff `11e4b04e022365445d717cea0dcf8c56d872038d..fcef14aeb`의 실제 Rust 코드·fixtures·문서·Simulator artifacts 및 Tailnet sync를 대상으로 검토했다. 계획 실패 관점 20개와 구현/runtime 실패 관점 20개와 별도로 기록한다.
+PR #1260의 base `11e4b04e022365445d717cea0dcf8c56d872038d`부터 구현 commit `1bc9a21fc72a1426061337e63bdb323e714b70d9` 및 증거·상태 문서 commit `fcef14aeb`까지의 코드·fixtures·문서·Simulator artifacts·Tailnet sync를 검토했다. 계획 실패 관점 20개와 구현/runtime 실패 관점 20개와 별도로 기록한다. 이어진 `569b9f9814feaa808672eac9ec3c5c01b3121bd9`는 이 검토 문서와 링크만 추가했으며 runtime 코드는 바꾸지 않았다.
 
 | # | 독립 검토 관점 | 판정 |
 |---:|---|---|
@@ -33,6 +33,6 @@ Candidate diff `11e4b04e022365445d717cea0dcf8c56d872038d..fcef14aeb`의 실제 R
 | 27 | Offscreen unsafe items가 screenshot에 없다는 사실을 geometry failure로 보거나 pixel 증거로 과장하는가 | 두 negative frames는 Rust coordinate result로 확인하고 OS screenshot의 visible item만 기록한다. 통과. |
 | 28 | Official status나 roadmap이 미완료 C11을 완료로 계산하는가 | `STATUS.md`, plan, contract와 public roadmap은 C11.4/C11 미완료 및 `78/214`를 유지한다. Tailnet도 source hash와 동일하다. 통과. |
 | 29 | Tailnet copy가 이전 제공본 없이 교체되거나 잘못된 서버/URL을 수정하는가 | Script는 기존 hash/served bytes, Tailscale backend, listener, server command를 preflight하고 pass별 백업 및 same-directory atomic rename을 사용한다. 통과. |
-| 30 | PR screenshot/CI 문구가 evidence 범위를 넘는가 | Android/iOS screenshots는 PR body에 링크하고 renderer load를 확인한다. PixelCopy/Metal readback, physical device, WPT, CI checks를 증명했다고 쓰지 않는다. 통과 예정; PR 생성 뒤 image render를 최종 확인한다. |
+| 30 | PR screenshot/CI 문구가 evidence 범위를 넘는가 | PR #1260 본문에 Android/iOS의 positive·safe overflow·unsafe overflow 화면 6장을 넣었다. Agent Browser에서 모두 `complete=true`, 원본 크기 Android 1080×2400·iOS 1206×2622로 렌더됨을 확인했다. PixelCopy/Metal readback, physical device, WPT, CI checks를 증명했다고 쓰지 않는다. 통과. |
 
-초기 candidate diff에서 수정 필요 blocker를 찾지 못했다. PR body 이미지 확인은 PR 생성 뒤 보완하며, 마지막 행과 검토 기준 HEAD를 그 결과에 맞춰 갱신한다. GitHub check rollup이 비어 있으면 CI green으로 표시하지 않는다.
+검토한 변경에서 수정 필요 blocker를 찾지 못했다. Agent Browser에서 PR #1260 본문 이미지 6/6의 실제 렌더를 확인했다. GitHub check rollup은 별도 확인 전까지 CI 통과로 표시하지 않는다.
