@@ -1,0 +1,60 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 fit-content percentage implicit rows comparison</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { color: #172033; font: 14px/1.4 system-ui, sans-serif; }
+  h1 { margin: 16px; font-size: 18px; }
+  .cases { display: grid; grid-template-columns: 250px 160px; gap: 12px; padding: 0 16px 16px; }
+  .label { align-self: start; }
+  .scene {
+    display: grid;
+    width: 40px;
+    height: 100px;
+    grid-template-columns: 40px;
+    grid-template-rows: 10px;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    row-gap: 0;
+    column-gap: 0;
+    align-content: start;
+    align-items: normal;
+    justify-content: start;
+    justify-items: normal;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    background: #102030;
+    outline: 1px solid #172033;
+  }
+  .explicit, .item, .payload, .probe {
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .explicit { height: 10px; background: #e5484d; }
+  .item { height: auto; min-height: 0; background: #22c55e; }
+  .payload { height: 34px; background: #3b82f6; }
+  .probe { height: 6px; background: #f97316; }
+  .min-floor .item { min-height: 28px; }
+</style>
+<h1>C11.4 · grid-auto-rows: fit-content(percentage)</h1>
+<main class="cases">
+  <div class="label">0% cap; zero minimum</div>
+  <div id="zero" class="scene" style="grid-auto-rows:fit-content(0%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+  <div class="label">20% of 100px = 20px cap</div>
+  <div id="twenty" class="scene" style="grid-auto-rows:fit-content(20%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+  <div class="label">24% of 100px = 24px cap</div>
+  <div id="twenty-four" class="scene" style="grid-auto-rows:fit-content(24%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+  <div class="label">34% cap equals 34px max-content contribution</div>
+  <div id="thirty-four" class="scene" style="grid-auto-rows:fit-content(34%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+  <div class="label">40% cap exceeds max-content</div>
+  <div id="forty" class="scene" style="grid-auto-rows:fit-content(40%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+  <div class="label">120% cap exceeds available grid block size</div>
+  <div id="one-twenty" class="scene" style="grid-auto-rows:fit-content(120%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+  <div class="label">20% cap below 28px item minimum</div>
+  <div id="minimum-floor" class="scene min-floor" style="grid-auto-rows:fit-content(20%)"><div class="explicit"></div><div class="item"><div class="payload"></div></div><div class="probe"></div></div>
+</main>

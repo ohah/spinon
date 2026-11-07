@@ -1,0 +1,14 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "viewport": {"width":1280,"height":633,"dpr":1},
+  "scenes": [
+    {"id":"zero","autoRows":"fit-content(0%)","usedRows":"10px 0px 6px","grid":[0,0,40,100],"item":[0,10,40,0],"payload":[0,10,40,34],"probe":[0,10,40,6]},
+    {"id":"twenty","autoRows":"fit-content(20%)","usedRows":"10px 20px 6px","grid":[0,0,40,100],"item":[0,10,40,20],"payload":[0,10,40,34],"probe":[0,30,40,6]},
+    {"id":"twenty-four","autoRows":"fit-content(24%)","usedRows":"10px 24px 6px","grid":[0,0,40,100],"item":[0,10,40,24],"payload":[0,10,40,34],"probe":[0,34,40,6]},
+    {"id":"thirty-four","autoRows":"fit-content(34%)","usedRows":"10px 34px 6px","grid":[0,0,40,100],"item":[0,10,40,34],"payload":[0,10,40,34],"probe":[0,44,40,6]},
+    {"id":"forty","autoRows":"fit-content(40%)","usedRows":"10px 34px 6px","grid":[0,0,40,100],"item":[0,10,40,34],"payload":[0,10,40,34],"probe":[0,44,40,6]},
+    {"id":"one-twenty","autoRows":"fit-content(120%)","usedRows":"10px 34px 6px","grid":[0,0,40,100],"item":[0,10,40,34],"payload":[0,10,40,34],"probe":[0,44,40,6]},
+    {"id":"minimum-floor","autoRows":"fit-content(20%)","usedRows":"10px 28px 6px","grid":[0,0,40,100],"item":[0,10,40,28],"payload":[0,10,40,34],"probe":[0,38,40,6]}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "model": "fit-content used size = max(item minimum contribution, min(resolved cap, item max-content contribution))",
+  "basis": {
+    "grid_content_block_size_css_px": 100,
+    "row_percentage_resolution": "percentage * definite inner block size"
+  },
+  "common": {
+    "grid": [0, 0, 40, 100],
+    "explicit_item": [0, 0, 40, 10],
+    "nested_payload": [0, 10, 40, 34],
+    "following_probe_height": 6
+  },
+  "scenes": [
+    {"id":"zero","percentage":0,"cap_css_px":0,"minimum_css_px":0,"max_content_css_px":34,"used_rows_css_px":[10,0,6],"item":[0,10,40,0],"probe":[0,10,40,6]},
+    {"id":"twenty","percentage":0.2,"cap_css_px":20,"minimum_css_px":0,"max_content_css_px":34,"used_rows_css_px":[10,20,6],"item":[0,10,40,20],"probe":[0,30,40,6]},
+    {"id":"twenty-four","percentage":0.24,"cap_css_px":24,"minimum_css_px":0,"max_content_css_px":34,"used_rows_css_px":[10,24,6],"item":[0,10,40,24],"probe":[0,34,40,6]},
+    {"id":"thirty-four","percentage":0.34,"cap_css_px":34,"minimum_css_px":0,"max_content_css_px":34,"used_rows_css_px":[10,34,6],"item":[0,10,40,34],"probe":[0,44,40,6]},
+    {"id":"forty","percentage":0.4,"cap_css_px":40,"minimum_css_px":0,"max_content_css_px":34,"used_rows_css_px":[10,34,6],"item":[0,10,40,34],"probe":[0,44,40,6]},
+    {"id":"one-twenty","percentage":1.2,"cap_css_px":120,"minimum_css_px":0,"max_content_css_px":34,"used_rows_css_px":[10,34,6],"item":[0,10,40,34],"probe":[0,44,40,6]},
+    {"id":"minimum-floor","percentage":0.2,"cap_css_px":20,"minimum_css_px":28,"max_content_css_px":34,"used_rows_css_px":[10,28,6],"item":[0,10,40,28],"probe":[0,38,40,6]}
+  ],
+  "tolerance_css_px": 0.02
+}
