@@ -1,0 +1,16 @@
+{
+  "recordedAt": "2026-11-07T18:45:27.992509+00:00",
+  "session": "spinon-roadmap-pr1270",
+  "browserVersion": "0.31.1",
+  "closeCommand": "agent-browser --session spinon-roadmap-pr1270 close",
+  "closeResult": "Browser closed",
+  "sessionInfoAfterClose": {
+    "active": false,
+    "pid": null
+  },
+  "processCheck": "pgrep -afil 'agent-browser|agent_browser' returned no agent-browser process",
+  "previewServer": {
+    "pid": 28040,
+    "restarted": false
+  }
+}

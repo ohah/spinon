@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-11-07T18:44:16.952431+00:00",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "browser": "Agent Browser 0.31.1 / Chrome",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "documentWidth": 1440,
+  "bodyWidth": 1440,
+  "activeProgressText": "현재 진행 · C11.4 Root HTML fit-content implicit rows; 최근 병합 slice: parsed Root HTML grid-auto-rows mixed track-size list (PR #1270): 기존 singleton profile에 finite non-negative fit-content(px|%), fixed-px와 definite block-size basis의 direct percentage를 섞은 non-empty pattern을 연결했다. 항목 종류·순서를 보존하고 첫 implicit row부터 반복한다. Chrome 157 사전 비교 6 scene·독립 기대값, Layout 8/8, style projection 3/3, RuntimeSession 6/6 focused checks와 changed-crate Clippy/rustfmt가 통과했다. Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 route는 layout=ready boxes=12 visual smoke에 도달했다. 화면은 surface readback·pixel parity가 아니다. 넓은 root_html_grid exploratory filter의 C11.5 fixed-track auto-size/stretch 실패 5건은 별도 한계로 남긴다. PR #1270은 2026-11-07T18:38:06Z Rebase and merge됐고 merge SHA는 de34c3c8f2b85826c61b6224f260f380ea972085다. PR workflow/status rollup은 비어 있어 CI 통과로 기록하지 않는다. C11.4/C11 미완료, 공식 78/214 유지. 계획 · Chrome 사전 비교 · Simulator·hash·한계.",
+  "visibleChecks": {
+    "fitContentListCard": true,
+    "officialCount78of214": true,
+    "c11_4Active": true
+  },
+  "servedRoadmap": {
+    "status": 200,
+    "bytes": 628254,
+    "sha256": "307632e0d8de1ccfc7441291e9625ff9ba79a7eb8cb48e11655d74f55d3f359f"
+  },
+  "sourceRoadmap": {
+    "bytes": 628254,
+    "sha256": "307632e0d8de1ccfc7441291e9625ff9ba79a7eb8cb48e11655d74f55d3f359f"
+  },
+  "screenshot": {
+    "path": "agent-browser-final-desktop.png",
+    "bytes": 144096,
+    "sha256": "ad8572f5ed21096574d3feacdce559cae7e6de6be053380612880731a494ed2b",
+    "width": 1440,
+    "height": 1000
+  },
+  "serverPid": 28040,
+  "serverRestarted": false
+}
