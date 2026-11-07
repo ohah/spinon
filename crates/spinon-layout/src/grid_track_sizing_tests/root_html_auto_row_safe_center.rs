@@ -153,14 +153,111 @@ fn root_html_auto_row_safe_center_matches_chrome_and_independent_overflow_matrix
 }
 
 #[test]
-fn root_html_auto_row_safe_center_keeps_baseline_alignment_rejected() {
-    let mut input = make_input("center", true);
-    input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&input),
-        Err(crate::LayoutError::UnsupportedGridContainerStyle {
-            node,
-            property: "align-content"
-        }) if node == id(1)
-    ));
+fn root_html_auto_row_first_baseline_uses_safe_start_fallback_without_stretching_tracks() {
+    for (overflow, expected_y, expected_gap) in [
+        (false, [0.0, 10.0, 20.0], 0.0),
+        (true, [0.0, 56.0, 112.0], 46.0),
+    ] {
+        let mut input = make_input("center", overflow);
+        input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
+        assert!(
+            super::super::root_html_intrinsic_align_content_is_supported(
+                LayoutAlignContent::FirstBaseline,
+                GridPlacementMode::RootHtmlAutoRowStretchV1
+            ),
+            "the fixed Root HTML profile should allow baseline fallback"
+        );
+        assert!(
+            !super::super::root_html_intrinsic_align_content_is_supported(
+                LayoutAlignContent::FirstBaseline,
+                GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+            ),
+            "legacy intrinsic Grid profiles must keep baseline closed"
+        );
+
+        let output = TaffyLayoutEngine
+            .compute(&input)
+            .expect("baseline fallback should be a valid top-level fixed profile");
+        for (index, expected_y) in expected_y.into_iter().enumerate() {
+            let frame = output.frames[&id(index as u64 + 2)];
+            assert_eq!(frame.y, expected_y);
+            assert_eq!(frame.height, 10.0);
+        }
+
+        let stretch_stage = output.grid_track_sizing_traces[0]
+            .passes
+            .iter()
+            .find(|pass| pass.axis == crate::LayoutGridTrackSizingAxis::Rows)
+            .expect("baseline trace should include row sizing")
+            .stages
+            .iter()
+            .find(|stage| {
+                matches!(
+                    stage.stage,
+                    crate::LayoutGridTrackSizingStageKind::StretchAutoTracks { .. }
+                )
+            })
+            .expect("baseline trace should include auto-row stretch stage");
+        assert_eq!(
+            stretch_stage.stage,
+            crate::LayoutGridTrackSizingStageKind::StretchAutoTracks { applied: false },
+            "baseline fallback must not stretch auto rows"
+        );
+        let rows = stretch_stage
+            .tracks
+            .iter()
+            .filter(|track| !track.is_gutter && !track.is_collapsed)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>();
+        assert_eq!(rows, [10.0, 10.0, 10.0]);
+
+        let gutters = stretch_stage
+            .tracks
+            .iter()
+            .filter(|track| track.is_gutter && !track.is_collapsed)
+            .map(|track| track.base_size)
+            .collect::<Vec<_>>();
+        assert_eq!(gutters, [expected_gap, expected_gap]);
+    }
+}
+
+#[test]
+fn root_html_auto_row_baseline_fallback_rejects_direct_flex_and_grid_parents() {
+    for parent_display in [crate::LayoutDisplay::Flex, crate::LayoutDisplay::Grid] {
+        let grid = id(1);
+        let parent = id(100);
+        let mut input = make_input("center", false);
+        input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
+        input.nodes.insert(
+            0,
+            crate::LayoutNode {
+                id: parent,
+                children: vec![grid],
+                style: crate::LayoutStyle {
+                    display: parent_display,
+                    flex_direction: crate::FlexDirection::Row,
+                    width: LayoutDimension::Fixed(40.0),
+                    height: LayoutDimension::Fixed(40.0),
+                    ..crate::LayoutStyle::default()
+                },
+            },
+        );
+        if parent_display == crate::LayoutDisplay::Grid {
+            let container = crate::GridContainerInput {
+                columns: vec![GridTrackSize::LengthPx(40.0)],
+                rows: vec![GridTrackSize::LengthPx(40.0)],
+                ..crate::GridContainerInput::default()
+            };
+            input.grid_containers.insert(parent, container);
+        }
+        input.root = parent;
+
+        assert!(
+            matches!(
+                TaffyLayoutEngine.compute(&input),
+                Err(crate::LayoutError::UnsupportedBaseline { node, .. }) if node == grid
+            ),
+            "direct {parent_display:?} parent must keep baseline-sharing contexts closed"
+        );
+    }
 }

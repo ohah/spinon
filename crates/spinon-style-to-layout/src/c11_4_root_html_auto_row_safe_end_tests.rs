@@ -21,6 +21,9 @@ const EXPECTED: &str = include_str!(
 const FLEX_END_EXPECTED: &str = include_str!(
     "../../../spec/internal/evidence/c11-root-html-auto-row-safe-flex-end-precomparison-2026-11-07/expected.json"
 );
+const BASELINE_EXPECTED: &str = include_str!(
+    "../../../spec/internal/evidence/c11-root-html-auto-row-align-content-baseline-fallback-precomparison-2026-11-07/expected-values.json"
+);
 const TOLERANCE: f32 = 1.0 / 64.0;
 
 struct AutoRowGridFixture {
@@ -149,6 +152,53 @@ impl AutoRowGridFixture {
             &text_engine,
         )
     }
+}
+
+#[test]
+fn root_html_auto_row_baseline_projection_matches_safe_start_fallback() {
+    let expected: Value = serde_json::from_str(BASELINE_EXPECTED)
+        .expect("baseline fallback expected values should be valid JSON");
+    for (group, row_gap) in [("positiveSpace", "0px"), ("overflow", "calc(120% - 2px)")] {
+        let fixture = AutoRowGridFixture::new("baseline", row_gap);
+        let output = fixture
+            .compute()
+            .unwrap_or_else(|error| panic!("{group} / baseline: {error:?}"));
+        let computed = output
+            .computed_styles
+            .elements
+            .iter()
+            .find(|style| style.node_id == fixture.grid.id())
+            .expect("Root Grid should keep its computed style");
+        assert_eq!(
+            computed.properties.get("align-content").map(String::as_str),
+            Some("baseline"),
+            "CSSOM computed baseline serialization should be preserved"
+        );
+        let expected_y = expected["alignmentExpectedYCssPx"]["baseline"][group]
+            .as_array()
+            .expect("expected baseline group should list item positions");
+        let root = output.layout.frames[&fixture.grid.id()];
+        for (index, expected_y) in expected_y.iter().enumerate() {
+            let expected_y = expected_y.as_f64().expect("y should be numeric") as f32;
+            let frame = output.layout.frames[&fixture.items[index].id()];
+            assert!(
+                ((frame.y - root.y) - expected_y).abs() <= TOLERANCE,
+                "{group} baseline item {index}: expected y={expected_y}, got {}",
+                frame.y - root.y
+            );
+            assert_eq!(frame.height, 10.0, "baseline fallback must not resize rows");
+        }
+    }
+}
+
+#[test]
+fn root_html_auto_row_last_baseline_is_rejected_by_the_pinned_parser() {
+    let fixture = AutoRowGridFixture::new("last baseline", "0px");
+    let result = fixture.compute();
+    assert!(
+        matches!(result, Err(StyleLayoutError::CascadeDiagnostic(_))),
+        "the pinned parser should reject its unsupported declaration before projection, got {result:?}"
+    );
 }
 
 #[test]

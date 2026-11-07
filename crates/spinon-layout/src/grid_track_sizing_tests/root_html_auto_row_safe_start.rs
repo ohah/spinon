@@ -158,9 +158,14 @@ fn root_html_auto_row_safe_start_matches_chrome_and_independent_matrix() {
 }
 
 #[test]
-fn root_html_auto_row_safe_start_still_rejects_baseline_alignment() {
+fn root_html_auto_row_baseline_remains_closed_for_legacy_intrinsic_profile() {
     let mut input = input_for(&serde_json::from_str::<Value>(EXPECTED).unwrap()["scenes"][0]);
     input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .expect("Root Grid should exist")
+        .placement_mode = GridPlacementMode::RootHtmlIntrinsicTrackSizingV1;
     assert!(matches!(
         TaffyLayoutEngine.compute(&input),
         Err(crate::LayoutError::UnsupportedGridContainerStyle {

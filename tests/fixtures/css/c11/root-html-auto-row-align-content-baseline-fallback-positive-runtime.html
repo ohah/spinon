@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 Root HTML baseline fallback positive space</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #grid {
+        display: grid;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-rows: auto;
+        grid-auto-flow: row;
+        align-content: baseline;
+        align-items: normal;
+        row-gap: 0%;
+        column-gap: 0;
+        overflow: visible;
+        background-color: #e9edf2;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+      }
+
+      #fixed {
+        box-sizing: border-box;
+        width: 40px;
+        height: 10px;
+        background-color: #d8dde3;
+      }
+
+      .text {
+        box-sizing: border-box;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        white-space: normal;
+      }
+
+      #text-a {
+        background-color: #5b9ff5;
+      }
+
+      #text-b {
+        background-color: #f4a261;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid"><div id="fixed"></div><div id="text-a" class="text">A</div><div id="text-b" class="text">B</div></div>
+  </body>
+</html>

@@ -112,7 +112,7 @@ fn parsed_root_html_safe_flex_end_rejects_atomically_and_recovers_same_session()
     let source = SOURCE
         .replace(
             "      #fixed {",
-            "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: baseline; }\n      }\n\n      #fixed {",
+            "      @media (prefers-color-scheme: dark) {\n        #text-b { display: none; }\n      }\n\n      #fixed {",
         )
         .replace("row-gap: 0%;", "row-gap: calc(120% - 2px);")
         .replace("align-content: normal;", "align-content: safe end;");
@@ -140,7 +140,7 @@ fn parsed_root_html_safe_flex_end_rejects_atomically_and_recovers_same_session()
             .error
             .as_ref()
             .and_then(|failure| failure.property.as_deref()),
-        Some("align-content")
+        Some("grid-auto-rows")
     );
 
     media.color_scheme = spinon_style::CssColorScheme::Light;

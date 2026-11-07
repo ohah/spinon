@@ -1755,6 +1755,7 @@ pub(crate) fn root_html_intrinsic_align_content_is_supported(
                 | crate::LayoutAlignContent::SpaceBetween
                 | crate::LayoutAlignContent::SpaceAround
                 | crate::LayoutAlignContent::SpaceEvenly
+                | crate::LayoutAlignContent::FirstBaseline
                 | crate::LayoutAlignContent::Position {
                     position: crate::ContentAlignmentPosition::Start
                         | crate::ContentAlignmentPosition::End,

@@ -256,23 +256,6 @@ fn root_html_auto_row_safe_flex_start_projection_matches_chrome_matrix() {
 }
 
 #[test]
-fn root_html_auto_row_safe_start_projection_keeps_other_safety_values_at_align_content() {
-    let fixture = AutoRowGridFixture::new("baseline", "0px");
-    let result = fixture.compute();
-    assert!(
-        matches!(
-            result,
-            Err(StyleLayoutError::UnsupportedComputedValue {
-                node,
-                property: "align-content",
-                ref value,
-        }) if node == fixture.grid.id() && value == "baseline"
-        ),
-        "unsupported safety modifier should fail with align-content ownership, got {result:?}"
-    );
-}
-
-#[test]
 fn root_html_auto_row_safe_flex_end_projection_matches_chrome_matrix() {
     let expected: Value = serde_json::from_str(FLEX_END_EXPECTED)
         .expect("safe flex-end expected values should be valid JSON");
