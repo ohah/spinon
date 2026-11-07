@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [선행 fixed row-gap slice](./c11-root-html-auto-row-content-alignment-row-gap.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 검토 20개, bounded 구현과 기본 RuntimeSession·Android/iOS Simulator 검증 완료. PR diff 검토·PR·병합 전 후보. main의 기존 `RootHtmlAutoRowStretchV1`은 fixed px `row-gap:0..=7.5px`만 허용한다. 이 후속 후보는 definite 40px block-size profile에서 finite non-negative percentage를 보존해 기존 Taffy sizing/alignment 경로로 전달한다. 일반 CSS admission이나 C11.4/C11 완료를 선언하지 않는다.
+**상태:** 계획 검토 20개, bounded 구현, 기본 RuntimeSession·Android/iOS Simulator 검증, 구현/runtime review 20개와 실제 PR diff review 30개를 마쳤다. 구현 PR [#1243](https://github.com/ohah/spinon/pull/1243)은 2026-11-07T00:01:43Z Rebase and merge로 병합됐고 merge SHA는 `50d171d69b730af821076faf4ffcb02a4a5e44a8`이다. PR check rollup은 비어 있으며 main required status check과 approving review가 없어 CI green으로 기록하지 않는다. main의 기존 `RootHtmlAutoRowStretchV1`은 fixed px `row-gap:0..=7.5px`만 허용했다. 이 bounded 후속 구현은 definite 40px block-size profile에서 finite non-negative percentage를 보존해 기존 Taffy sizing/alignment 경로로 전달한다. 일반 CSS admission이나 C11.4/C11 완료를 선언하지 않는다.
 
 ## 규범과 사전 비교
 
@@ -26,8 +26,8 @@
    - Variant scene은 기존 opt-in `*-fixture-test` route로만 앱 빌드에 넣는다. Fixture scene ID, HTML payload와 FFI adapter는 기본 artifact에서 제외한다. Route를 바꾸면 기본 artifact와 fixture-test artifact를 각각 대조한다.
    - Harness에서 사용할 수 있으면 Android PixelCopy와 iOS drawable readback으로 root 밖 pixel을 확인한다. 두 표본은 Agent Browser 및 simulator PNG screenshot과 구분한다. Screenshot만 관찰한 경우 surface readback이나 iOS compositor 이후 pixel 결과로 주장하지 않는다.
 5. Focused layout 6/6, 기존 two-auto-row·single-auto-row Layout regression 각 1/1, projection 1/1, RuntimeSession row-gap 4/4 및 intrinsic-auto-row regression 28/28, 변경 crate all-target Clippy, `cargo fmt --all -- --check`, `git diff --check`를 실행해 통과했다. 원본 출력은 runtime evidence의 `verification/focused-validation.log`에 둔다.
-6. [구현/runtime failure review 20개](../spec/internal/evidence/c11-root-html-auto-row-percentage-gap-runtime-2026-11-07/implementation-runtime-review-20.md)를 마쳤다. PR 실제 diff review 30개는 staged diff 기준으로 별도 수행한다. PR 본문에 Android/iOS screenshot을 가능한 경우 raw image로 첨부한다. Merge는 Rebase and merge로 하고 required checks가 없으면 CI 통과로 기록하지 않는다.
-7. 병합 후 `spec/STATUS.md`, contract 0059, public roadmap과 지정 Tailnet 제공본을 merge SHA·지원 profile·검증 한계와 맞춘다. 공식 `78/214`, C11.4, C11 완료 상태는 승격하지 않는다.
+6. [구현/runtime failure review 20개](../spec/internal/evidence/c11-root-html-auto-row-percentage-gap-runtime-2026-11-07/implementation-runtime-review-20.md)와 [실제 PR diff review 30개](./c11-root-html-auto-row-percentage-gap-pr-diff-review-30.md)를 마쳤다. 구현 PR #1243 본문에는 Android/iOS final simulator PNG를 첨부해 Agent Browser에서 네 이미지가 로드되는 것을 확인했다.
+7. 병합 결과를 `spec/STATUS.md`, contract 0059, public roadmap source에 기록하고 [병합 후 문서 review 30개](../spec/internal/evidence/c11-root-html-auto-row-percentage-gap-docs-sync-2026-11-07/docs-pr-diff-review-30.md)를 마쳤다. 지정 Tailnet 제공본은 별도 사본이므로 별도 backup·served hash·Agent Browser 확인으로 동기화한다. 공식 `78/214`, C11.4, C11 완료 상태는 승격하지 않는다.
 
 ## 제외 범위
 

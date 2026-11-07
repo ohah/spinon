@@ -27,4 +27,4 @@
 
 ## 결과
 
-이 구현/runtime review에서 찾은 stale rejection 기대값은 수정했다. Blocking finding은 남지 않았다. 현재 코드·테스트·simulator 근거는 bounded candidate를 지지하지만, PR 실제 diff review, merge, post-merge roadmap sync는 이 검토 밖에 남아 있다. C11.4와 C11은 미완료이며 공식 `78/214`를 유지한다.
+이 구현/runtime review에서 찾은 stale rejection 기대값은 수정했다. Blocking finding은 남지 않았다. 구현 PR #1243은 Rebase and merge로 병합됐다. post-merge official status·public roadmap·Tailnet sync는 별도 문서 작업에서 확인한다. C11.4와 C11은 미완료이며 공식 `78/214`를 유지한다.
