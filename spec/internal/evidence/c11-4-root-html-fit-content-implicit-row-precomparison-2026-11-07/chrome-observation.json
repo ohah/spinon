@@ -1,0 +1,220 @@
+{
+  "browser": {
+    "name": "Agent Browser",
+    "version": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "viewportCssPx": [
+      1280,
+      633
+    ],
+    "devicePixelRatio": 1
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-cap-precomparison.html",
+    "sha256": "ad7cdb85e930918cb42d699d6f03885dabbc8fe417e16380f7d7afcc7842d68c"
+  },
+  "scenes": [
+    {
+      "id": "cap24",
+      "computedAutoRows": "fit-content(24px)",
+      "computedUsedRows": "10px 24px 6px",
+      "rawGrid": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "grid": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "rawChildren": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          24
+        ],
+        [
+          0,
+          34,
+          40,
+          6
+        ]
+      ],
+      "children": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          24
+        ],
+        [
+          0,
+          34,
+          40,
+          6
+        ]
+      ],
+      "nestedContent": [
+        null,
+        [
+          0,
+          10,
+          40,
+          34
+        ],
+        null
+      ]
+    },
+    {
+      "id": "room40",
+      "computedAutoRows": "fit-content(40px)",
+      "computedUsedRows": "10px 34px 6px",
+      "rawGrid": [
+        0,
+        100,
+        40,
+        100
+      ],
+      "grid": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "rawChildren": [
+        [
+          0,
+          100,
+          40,
+          10
+        ],
+        [
+          0,
+          110,
+          40,
+          34
+        ],
+        [
+          0,
+          144,
+          40,
+          6
+        ]
+      ],
+      "children": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          34
+        ],
+        [
+          0,
+          44,
+          40,
+          6
+        ]
+      ],
+      "nestedContent": [
+        null,
+        [
+          0,
+          10,
+          40,
+          34
+        ],
+        null
+      ]
+    },
+    {
+      "id": "floor24",
+      "computedAutoRows": "fit-content(24px)",
+      "computedUsedRows": "10px 28px 6px",
+      "rawGrid": [
+        0,
+        200,
+        40,
+        100
+      ],
+      "grid": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "rawChildren": [
+        [
+          0,
+          200,
+          40,
+          10
+        ],
+        [
+          0,
+          210,
+          40,
+          28
+        ],
+        [
+          0,
+          238,
+          40,
+          6
+        ]
+      ],
+      "children": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          28
+        ],
+        [
+          0,
+          38,
+          40,
+          6
+        ]
+      ],
+      "nestedContent": [
+        null,
+        [
+          0,
+          10,
+          40,
+          34
+        ],
+        null
+      ]
+    }
+  ]
+}

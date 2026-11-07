@@ -146,6 +146,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlMixedExplicitOneAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisAutoPlacementV1
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
+                | GridPlacementMode::RootHtmlFitContentAutoRowsV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
                 | GridPlacementMode::RootHtmlAutoRowStretchV1
                 | GridPlacementMode::RootHtmlAutoRepeatV1
@@ -167,6 +168,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::RootHtmlDirectTextAspectRatioV1
                 | GridPlacementMode::RootHtmlImplicitRowsV1
                 | GridPlacementMode::RootHtmlGridItemSelfAlignmentV1
+                | GridPlacementMode::RootHtmlFitContentAutoRowsV1
         ) {
             let sparse = super::grid_auto_placement::normalize_sparse_grid_container(
                 input,

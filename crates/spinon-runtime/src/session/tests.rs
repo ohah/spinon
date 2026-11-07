@@ -27,6 +27,7 @@ mod root_html_grid_content_alignment;
 mod root_html_grid_dense_auto_placement;
 mod root_html_grid_explicit_placement;
 mod root_html_grid_fit_content;
+mod root_html_grid_fit_content_auto_rows;
 mod root_html_grid_fit_content_percentage;
 mod root_html_grid_fr;
 mod root_html_grid_implicit_rows;

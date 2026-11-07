@@ -24,6 +24,8 @@ pub(super) mod root_html_auto_row_stretch;
 pub(crate) mod root_html_column;
 #[path = "grid/root_html_direct_text_aspect_ratio.rs"]
 mod root_html_direct_text_aspect_ratio;
+#[path = "grid/root_html_fit_content_auto_rows.rs"]
+mod root_html_fit_content_auto_rows;
 #[path = "grid/root_html_gap.rs"]
 mod root_html_gap;
 #[path = "grid/root_html_row.rs"]
@@ -330,6 +332,8 @@ pub enum GridPlacementMode {
     RootHtmlMixedCrossAxisColumnAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
+    /// 제한 Root HTML 경로에서 singleton finite non-negative px `fit-content()` implicit rows를 sizing합니다.
+    RootHtmlFitContentAutoRowsV1,
     /// 기본 Root HTML 경로에서 제한된 explicit intrinsic tracks와 row-sparse placement를 sizing합니다.
     RootHtmlIntrinsicTrackSizingV1,
     /// 기본 Root HTML 경로의 고정 shape implicit auto rows에서 stretch와 content alignment를 계산합니다.
@@ -505,6 +509,17 @@ pub(super) fn validate_grid_layout(
                 &css_math_by_id,
             )?;
         }
+        if container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1
+            && !matches!(&container.auto_rows, GridAutoRows::Auto)
+        {
+            root_html_fit_content_auto_rows::validate_root_html_fit_content_auto_rows_contract(
+                input,
+                index,
+                id,
+                input.nodes[index[&id]].style,
+                container,
+            )?;
+        }
         if container.placement_mode == GridPlacementMode::RootHtmlAutoRepeatV1 {
             root_html_auto_repeat::validate_root_html_auto_repeat_contract(
                 id,
@@ -555,6 +570,12 @@ pub(super) fn validate_grid_layout(
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
             (GridPlacementMode::RootHtmlAutoRepeatV1, GridAutoRows::Auto) => {}
+            (GridPlacementMode::RootHtmlFitContentAutoRowsV1, GridAutoRows::TrackList(tracks))
+                if matches!(
+                    tracks.as_slice(),
+                    [GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(cap))]
+                        if cap.is_finite() && *cap >= 0.0
+                ) => {}
             (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlAutoRowStretchV1, GridAutoRows::Auto) => {}
             (
@@ -771,7 +792,7 @@ pub(super) fn validate_grid_layout(
                         || root_html_intrinsic_auto_rows,
                     false,
                     false,
-                    false,
+                    container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,
                 )?;
             }
         }
@@ -1199,6 +1220,11 @@ pub(super) fn validate_grid_layout(
                         | GridPlacementMode::RootHtmlAutoRowStretchV1 => {
                             valid_root_html_intrinsic_dimension(size)
                         }
+                        GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                            if matches!(&container.auto_rows, GridAutoRows::TrackList(_)) =>
+                        {
+                            valid_root_html_intrinsic_dimension(size)
+                        }
                         GridPlacementMode::RootHtmlAutoRepeatV1 => {
                             valid_root_html_auto_repeat_dimension(size)
                         }
@@ -1315,6 +1341,22 @@ pub(super) fn validate_grid_layout(
                     == GridPlacementMode::RootHtmlAutoRepeatV1
                     && matches!(property, "min-width" | "min-height")
                     && value == crate::LayoutDimension::Fixed(0.0);
+                let fit_content_middle_item = node
+                    .children
+                    .iter()
+                    .copied()
+                    .filter(|sibling| !hidden.get(sibling).copied().unwrap_or(true))
+                    .nth(1)
+                    == Some(child_id);
+                let root_html_fit_content_minimum = container.placement_mode
+                    == GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                    && fit_content_middle_item
+                    && property == "min-height"
+                    && matches!(
+                        value,
+                        crate::LayoutDimension::Fixed(value) if value == 0.0 || value == 28.0
+                    )
+                    && matches!(&container.auto_rows, GridAutoRows::TrackList(_));
                 let root_html_direct_text_ratio_target_constraint = container.placement_mode
                     == GridPlacementMode::RootHtmlDirectTextAspectRatioV1
                     && node.children.get(1) == Some(&child_id)
@@ -1329,6 +1371,7 @@ pub(super) fn validate_grid_layout(
                     && !track_sizing_constraint
                     && !root_html_intrinsic_zero_minimum
                     && !root_html_auto_repeat_zero_minimum
+                    && !root_html_fit_content_minimum
                     && !root_html_direct_text_ratio_target_constraint
                 {
                     return Err(LayoutError::UnsupportedGridItemConstraint {
@@ -1401,6 +1444,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::RootHtmlMixedCrossAxisColumnAutoPlacementV1
                 | GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
                 | GridPlacementMode::RootHtmlAutoRowStretchV1
+                | GridPlacementMode::RootHtmlFitContentAutoRowsV1
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks

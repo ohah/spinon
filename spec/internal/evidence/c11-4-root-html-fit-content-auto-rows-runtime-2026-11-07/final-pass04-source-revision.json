@@ -1,0 +1,85 @@
+{
+  "worktree_base_head": "5389aae4981bb6dccc7083b554c446f055a72708",
+  "revision_kind": "uncommitted working-tree source captured after final pass04 build",
+  "pass": "final-pass04",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-runtime.html",
+    "sha256": "6a1394ff4bb6ccead6d369a3b2f6a6ecf23a26c654e6402fa055be032336fb79"
+  },
+  "product_source_files": [
+    {
+      "path": "crates/spinon-layout/src/grid.rs",
+      "sha256": "f19258ea595d9291f50f036b3f89f89a9be074a6436f44fc96fd2ef54f6b1aed"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_auto_placement.rs",
+      "sha256": "1e8bbd01b63fa845b41028e23864ff6e016997fdc686629e24821ba144c45a9b"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_placement.rs",
+      "sha256": "2d00f0e10bc789a56454c30db04a67507fbb8f95655bc96b0ff4043a51085604"
+    },
+    {
+      "path": "crates/spinon-layout/src/lib.rs",
+      "sha256": "21d06d075b2f0137ab3e48a5f5f6d4c94ae952906c51a738fb95cea9142f70eb"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid/root_html_fit_content_auto_rows.rs",
+      "sha256": "1e350276fa9ac1f850477e2253bef8e5b3e73d1d861d12d83314b3e9b5c5123d"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values.rs",
+      "sha256": "95f780cdb42d3bf90d94aa2658660fc51fbda25655965fea8dcab74986037b21"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "sha256": "3eeeac4b94b7a9a8ac18b157916687bce5a0008592e0344afdcc1dd2c8077b2f"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/root_html_fit_content_auto_rows.rs",
+      "sha256": "31847558fcb19b98a1ef8d91c759df8ea6bbc32c9594d89921b483a0b41b64de"
+    }
+  ],
+  "test_source_files": [
+    {
+      "path": "crates/spinon-layout/src/grid_root_html_fit_content_auto_rows_tests.rs",
+      "sha256": "f185c485ae987528bc97b6bf28bbd76c755a57249d2ac61ae62b8dff4e9c7300"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/tests.rs",
+      "sha256": "269d3c36cdb4bed8e9f3f24a4ab10685f7b653ee12ae4bed4e345ea1430a2d20"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows.rs",
+      "sha256": "a589c4aea2cd4b4196396483a4dddf0e742d8d9d87fd460d853667eaaa15fd3e"
+    }
+  ],
+  "simulator_artifacts": {
+    "android_apk_sha256": "b33193f6207c3586b619b3c84c66048f62b51ae52f549814c8e9c532350a4b91",
+    "android_arm64_libspinon_bootstrap_sha256": "d158d179baea9bddefb45b19220ffea055b860a2330485d0b40bafb8761ba715",
+    "ios_simulator_executable_sha256": "90f94313895d5e68a46e4fecbbd61cb3c5e016235e0643dc362d6e581da9d104",
+    "fixture_test_feature_flags_enabled": false,
+    "android_device": {
+      "serial": "emulator-5554",
+      "api_level": "37",
+      "abi": "arm64-v8a",
+      "install_mode": "adb install -r; no uninstall or pm clear"
+    },
+    "ios_device": {
+      "name": "Spinon-C114-FitContent-Pass04",
+      "device_type": "iPhone 17 Pro",
+      "runtime": "iOS 26.2",
+      "udid": "97E99AA8-D144-4DA8-B1BF-7F6B34007F8B",
+      "fresh_simulator": true
+    },
+    "screenshots": {
+      "android_sha256": "ce39542395082bae24b13c83e184a50a53f8a35ff6854bc7191785781d46bc91",
+      "ios_sha256": "90b20c65b05d6331bd8e6776608d2ec2672940281a1b30ef8c6abf73aaf64211"
+    }
+  },
+  "limitations": [
+    "Android app-data contents were not inspected; install -r was used without clearing or uninstalling the package.",
+    "Screenshots are visual smoke only; PixelCopy and Metal drawable readback were not performed.",
+    "The fresh Android AVD did not expose an ADB device during the bounded startup check; final Android pass04 capture used the already booted API 37 AVD."
+  ]
+}

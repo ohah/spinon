@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 2 tests
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_rejects_out_of_profile_inputs ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_matches_cap_max_content_and_minimum_oracle ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 491 filtered out; finished in 0.03s
+

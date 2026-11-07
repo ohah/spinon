@@ -7,8 +7,9 @@ use spinon_layout::{
 use spinon_style::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
     ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth, ComputedCssGridTrackSize,
-    ComputedCssMath, ComputedStyleProfile,
+    ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth,
+    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, ComputedCssMath,
+    ComputedStyleProfile,
 };
 
 use super::super::typed_math::CssMathProjector;
@@ -173,7 +174,8 @@ fn validate_root_html_grid_tracks(
         property,
         value: value.to_owned(),
     };
-    let implicit_rows = root_html_has_supported_implicit_rows(&grid.auto_rows);
+    let implicit_rows = root_html_has_supported_implicit_rows(&grid.auto_rows)
+        || root_html_fit_content_implicit_rows_candidate(grid);
     let column_flow = grid.auto_flow == ComputedCssGridAutoFlow::Column;
     let dense_flow = matches!(
         grid.auto_flow,
@@ -181,6 +183,7 @@ fn validate_root_html_grid_tracks(
     );
     let fixed_px_placement_flow = column_flow || dense_flow;
     let has_intrinsic_tracks = root_html_has_intrinsic_explicit_tracks(grid);
+    let fit_content_auto_rows = root_html_has_fit_content_auto_rows(grid);
     let intrinsic_auto_rows = !root_html_direct_text_aspect_ratio
         && root_html_has_supported_intrinsic_implicit_rows(grid);
     let direct_text_aspect_ratio_has_only_its_auto_row = root_html_direct_text_aspect_ratio
@@ -196,6 +199,12 @@ fn validate_root_html_grid_tracks(
         return Err(unsupported(
             "grid-template-columns",
             "Root HTML direct-text aspect-ratio route does not combine with intrinsic explicit tracks",
+        ));
+    }
+    if fit_content_auto_rows && !root_html_fit_content_implicit_rows_candidate(grid) {
+        return Err(unsupported(
+            "grid-auto-rows",
+            "Root HTML fit-content implicit rows require one finite non-negative px cap, one positive fixed-px explicit row and column, row flow, auto implicit columns, no repeats, areas, intrinsic tracks, or named lines",
         ));
     }
     let root_html_auto_repeat = root_html_auto_repeat::validate_grid_grammar(
@@ -406,6 +415,9 @@ fn validate_root_html_grid_tracks(
             {
                 false
             }
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(cap),
+            ) if fit_content_auto_rows => !cap.is_finite() || *cap < 0.0,
             _ => true,
         }),
         _ => false,
@@ -469,6 +481,48 @@ pub(super) fn root_html_has_supported_intrinsic_implicit_rows(
                 [ComputedCssGridTrackSize::MinContent | ComputedCssGridTrackSize::MaxContent]
             )
     )
+}
+
+fn root_html_has_fit_content_auto_rows(grid: &ComputedCssGridLayout) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if tracks.iter().any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
+    )
+}
+
+pub(super) fn root_html_fit_content_implicit_rows_candidate(grid: &ComputedCssGridLayout) -> bool {
+    // Gate on the computed typed value: Stylo may normalize authored length units or
+    // constant length-only calc() into LengthPx. Percentages and remaining Calc ASTs
+    // retain distinct computed variants and stay outside this slice.
+    let single_positive_px_track = |tracks: &[ComputedCssGridTrackSize]| {
+        matches!(
+            tracks,
+            [ComputedCssGridTrackSize::LengthPx(value)]
+                if value.is_finite() && *value > 0.0
+        )
+    };
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if matches!(
+                tracks.as_slice(),
+                [ComputedCssGridTrackSize::FitContent(
+                    ComputedCssGridTrackLengthPercentage::LengthPx(cap)
+                )] if cap.is_finite() && *cap >= 0.0
+            )
+    ) && !root_html_has_intrinsic_explicit_tracks(grid)
+        && single_positive_px_track(&grid.columns)
+        && single_positive_px_track(&grid.rows)
+        && grid.columns_fixed_repeat_group_count == 0
+        && grid.rows_fixed_repeat_group_count == 0
+        && grid.columns_line_names.iter().all(Vec::is_empty)
+        && grid.rows_line_names.iter().all(Vec::is_empty)
+        && grid.template_areas.is_none()
+        && grid.columns_auto_repeat.is_none()
+        && grid.rows_auto_repeat.is_none()
+        && grid.auto_flow == ComputedCssGridAutoFlow::Row
+        && matches!(grid.auto_columns, ComputedCssGridAutoColumns::Auto)
 }
 
 pub(super) fn root_html_intrinsic_auto_rows_candidate(grid: &ComputedCssGridLayout) -> bool {
@@ -1338,14 +1392,26 @@ fn project_grid_layout_with_route_reservations(
     let root_html_intrinsic_auto_rows = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && !root_html_direct_text_aspect_ratio
         && root_html_has_supported_intrinsic_implicit_rows(grid);
+    let root_html_fit_content_auto_rows = profile
+        == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+        && !root_html_direct_text_aspect_ratio
+        && root_html_fit_content_implicit_rows_candidate(grid);
     let root_html_column_flow = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && grid.auto_flow == ComputedCssGridAutoFlow::Column;
     let root_html_one_axis_placement =
         profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 && root_html_one_axis_placement;
+    let root_html_auto_rows_support = if root_html_intrinsic_auto_rows {
+        RootHtmlAutoRowsSupport::Intrinsic
+    } else if root_html_fit_content_auto_rows {
+        RootHtmlAutoRowsSupport::FitContentPx
+    } else {
+        RootHtmlAutoRowsSupport::None
+    };
     let mut auto_rows = if sparse_row
         || dense_auto_placement
         || root_html_implicit_rows
         || root_html_intrinsic_auto_rows
+        || root_html_fit_content_auto_rows
         || root_html_one_axis_placement
     {
         project_auto_rows(
@@ -1353,7 +1419,7 @@ fn project_grid_layout_with_route_reservations(
             &grid.auto_rows,
             profile,
             allow_template_area_track_sizing,
-            root_html_intrinsic_auto_rows,
+            root_html_auto_rows_support,
             math,
             &mut reserve,
         )?
@@ -1489,6 +1555,9 @@ fn project_grid_layout_with_route_reservations(
                         || root_html_intrinsic_auto_rows) =>
             {
                 GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+            }
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 if root_html_fit_content_auto_rows => {
+                GridPlacementMode::RootHtmlFitContentAutoRowsV1
             }
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 if grid.auto_flow == ComputedCssGridAutoFlow::Column =>
@@ -2002,12 +2071,19 @@ fn project_auto_columns(
     }
 }
 
+#[derive(Clone, Copy)]
+enum RootHtmlAutoRowsSupport {
+    None,
+    Intrinsic,
+    FitContentPx,
+}
+
 fn project_auto_rows(
     node: NodeId,
     auto_rows: &ComputedCssGridAutoRows,
     profile: ComputedStyleProfile,
     allow_template_area_track_sizing: bool,
-    allow_root_html_intrinsic_auto_rows: bool,
+    root_html_auto_rows_support: RootHtmlAutoRowsSupport,
     math: &mut CssMathProjector,
     reserve: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
 ) -> Result<GridAutoRows, StyleLayoutError> {
@@ -2035,11 +2111,24 @@ fn project_auto_rows(
         ComputedCssGridAutoRows::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && (root_html_direct_auto_row_track_list(tracks)
-                    || (allow_root_html_intrinsic_auto_rows
+                    || (matches!(
+                        root_html_auto_rows_support,
+                        RootHtmlAutoRowsSupport::Intrinsic
+                    )
                         && matches!(
                             tracks.as_slice(),
                             [ComputedCssGridTrackSize::MinContent
                                 | ComputedCssGridTrackSize::MaxContent]
+                        ))
+                    || (matches!(
+                        root_html_auto_rows_support,
+                        RootHtmlAutoRowsSupport::FitContentPx
+                    )
+                        && matches!(
+                            tracks.as_slice(),
+                            [ComputedCssGridTrackSize::FitContent(
+                                ComputedCssGridTrackLengthPercentage::LengthPx(cap)
+                            )] if cap.is_finite() && *cap >= 0.0
                         ))) =>
         {
             project_tracks(

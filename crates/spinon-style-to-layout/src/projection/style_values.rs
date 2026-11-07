@@ -23,6 +23,7 @@ mod root_html_column_flow;
 mod root_html_column_math;
 mod root_html_direct_text_aspect_ratio;
 mod root_html_explicit_placement;
+mod root_html_fit_content_auto_rows;
 mod root_html_fit_content_named_area;
 mod root_html_grid_alignment;
 mod root_html_grid_gap;
@@ -47,8 +48,8 @@ use grid_values::{
     project_grid_layout_with_math,
     project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
     project_root_html_one_axis_grid_layout_with_math, root_html_auto_row_stretch_candidate,
-    root_html_has_intrinsic_explicit_tracks, root_html_has_supported_intrinsic_implicit_rows,
-    root_html_intrinsic_auto_rows_candidate,
+    root_html_fit_content_implicit_rows_candidate, root_html_has_intrinsic_explicit_tracks,
+    root_html_has_supported_intrinsic_implicit_rows, root_html_intrinsic_auto_rows_candidate,
 };
 use positioning_values::parse_positioning;
 use primitive_values::{
@@ -306,6 +307,7 @@ pub(super) fn project_styles(
             nodes,
             &root_html_direct_text_ratio_scene_owners,
         )?;
+        root_html_fit_content_auto_rows::validate(tree, snapshot, nodes)?;
     }
     let root_html_dense_grid_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
@@ -416,6 +418,7 @@ pub(super) fn project_styles(
                         && (element.grid_layout.as_ref().is_some_and(|grid| {
                             root_html_has_intrinsic_explicit_tracks(grid)
                                 || root_html_has_supported_intrinsic_implicit_rows(grid)
+                                || root_html_fit_content_implicit_rows_candidate(grid)
                         }) || root_html_auto_row_stretch_nodes.contains(&element.node_id))
                 })
                 .map(|element| element.node_id)
@@ -2208,6 +2211,9 @@ fn validate_root_html_grid_item_capacity(
                 && (fixed_track_auto_row_capacity
                     || (grid_values::root_html_has_intrinsic_implicit_min_content_rows(grid)
                         && intrinsic_column_auto_row_capacity));
+        let fit_content_auto_row_capacity =
+            grid_values::root_html_fit_content_implicit_rows_candidate(grid)
+                && root_implicit_rows_common;
         let auto_row_stretch_capacity =
             grid_values::root_html_auto_row_stretch_candidate(grid) && root_implicit_rows_common;
         let fixed_root_implicit_rows =
@@ -2215,8 +2221,10 @@ fn validate_root_html_grid_item_capacity(
                 && root_implicit_rows_common
                 && grid.columns.iter().all(is_fixed_implicit_row_track)
                 && grid.rows.iter().all(is_fixed_implicit_row_track);
-        let supported_root_implicit_rows =
-            fixed_root_implicit_rows || intrinsic_auto_row_capacity || auto_row_stretch_capacity;
+        let supported_root_implicit_rows = fixed_root_implicit_rows
+            || intrinsic_auto_row_capacity
+            || fit_content_auto_row_capacity
+            || auto_row_stretch_capacity;
         let implicit_row_capacity = supported_root_implicit_rows
             .then(|| {
                 grid.columns
