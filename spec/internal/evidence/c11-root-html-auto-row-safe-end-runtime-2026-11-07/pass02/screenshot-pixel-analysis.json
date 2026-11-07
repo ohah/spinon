@@ -1,0 +1,159 @@
+{
+  "purpose": "Measure Grid and item bounds from fixed-color OS screenshot captures.",
+  "expected": {
+    "scene": "safe-overflow",
+    "alignment": "safe end",
+    "gridSizeCssPx": [
+      40,
+      40
+    ],
+    "expectedItemYRelativeCssPx": [
+      0,
+      56,
+      112
+    ],
+    "classification": "visual screenshot bounds only; not PixelCopy or Metal drawable readback"
+  },
+  "platforms": {
+    "android": {
+      "device": "Android API 37 ARM64 AVD",
+      "png": "pass02/android/simulator.png",
+      "pngSha256": "25b22de4c903074657cd526da5ea546353af92859230a1f33922e5b26ca72431",
+      "imagePx": [
+        1080,
+        2400
+      ],
+      "deviceScale": 2.625,
+      "exactRgb": {
+        "grid": [
+          233,
+          237,
+          242
+        ],
+        "fixed": [
+          216,
+          221,
+          227
+        ],
+        "textA": [
+          91,
+          159,
+          245
+        ],
+        "textB": [
+          244,
+          162,
+          97
+        ]
+      },
+      "positiveControlGridBackgroundColorBoundsPx": [
+        0,
+        128,
+        104,
+        153
+      ],
+      "positiveControlGridBackgroundColorVisibleSizePx": [
+        105,
+        26
+      ],
+      "positiveControlGridVisibleBackgroundWidthCssPx": 40.0,
+      "visibleColorBoundsPx": {
+        "fixed": [
+          0,
+          128,
+          104,
+          153
+        ],
+        "textA": [
+          0,
+          275,
+          104,
+          300
+        ],
+        "textB": [
+          0,
+          422,
+          104,
+          447
+        ]
+      },
+      "measuredItemYRelativeCssPx": [
+        0.0,
+        56.0,
+        112.0
+      ],
+      "rootOriginSource": "pass01/android/simulator.png",
+      "toleranceCssPx": 1.0
+    },
+    "ios": {
+      "device": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "png": "pass02/ios/simulator.png",
+      "pngSha256": "fa8656f6206f76fd4726391f124b5f65303b614fa9c70dfd99e0ff4f9715c5fb",
+      "imagePx": [
+        1206,
+        2622
+      ],
+      "deviceScale": 3.0,
+      "exactRgb": {
+        "grid": [
+          233,
+          237,
+          242
+        ],
+        "fixed": [
+          216,
+          221,
+          227
+        ],
+        "textA": [
+          91,
+          159,
+          245
+        ],
+        "textB": [
+          244,
+          162,
+          97
+        ]
+      },
+      "positiveControlGridBackgroundColorBoundsPx": [
+        0,
+        186,
+        119,
+        215
+      ],
+      "positiveControlGridBackgroundColorVisibleSizePx": [
+        120,
+        30
+      ],
+      "positiveControlGridVisibleBackgroundWidthCssPx": 40.0,
+      "visibleColorBoundsPx": {
+        "fixed": [
+          0,
+          186,
+          119,
+          215
+        ],
+        "textA": [
+          0,
+          354,
+          119,
+          383
+        ],
+        "textB": [
+          0,
+          522,
+          119,
+          551
+        ]
+      },
+      "measuredItemYRelativeCssPx": [
+        0.0,
+        56.0,
+        112.0
+      ],
+      "rootOriginSource": "pass01/ios/simulator.png",
+      "toleranceCssPx": 1.0
+    }
+  }
+}

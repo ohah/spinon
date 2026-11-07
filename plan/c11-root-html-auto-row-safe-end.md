@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `align-content:safe|unsafe end`
 
-**상태:** 다음 순차 제한 후보. Agent Browser HeadlessChrome 157 사전 비교 8/8 scene·96/96 item-frame 좌표가 독립 기대값과 정확히 일치하고, 계획 실패 관점 20개 검토를 마쳤다. 구현, Rust tests, Android/iOS runtime 검증은 시작하지 않았다. [사전 비교 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-end-precomparison-2026-11-07/README.md) · [계획 검토 20개](./c11-root-html-auto-row-safe-end-plan-review-20.md).
+**상태:** bounded 구현 및 Android/iOS Simulator 검증 완료, PR 등록 전. Agent Browser HeadlessChrome 157 사전 비교 8/8 scene·96/96 item-frame 좌표가 독립 기대값과 정확히 일치했다. Layout, style projection, RuntimeSession focused tests, 기존 safe/unsafe center·calc row-gap 회귀, changed-crate Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML 경로에서 positive·safe overflow·unsafe overflow 장면을 확인했다. Screenshot은 시각 경계 확인이며 PixelCopy/Metal drawable readback이 아니다. [사전 비교](../spec/internal/evidence/c11-root-html-auto-row-safe-end-precomparison-2026-11-07/README.md) · [실행 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-end-runtime-2026-11-07/README.md) · [구현/runtime 실패 검토 20개](../spec/internal/evidence/c11-root-html-auto-row-safe-end-runtime-2026-11-07/implementation-review-20.md).
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [선행 safe/unsafe center 제한 구현](./c11-root-html-auto-row-safe-center.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

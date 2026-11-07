@@ -1477,6 +1477,8 @@ fn root_html_auto_row_content_alignment_is_supported(value: Option<&str>) -> boo
                 | "center"
                 | "safe center"
                 | "unsafe center"
+                | "safe end"
+                | "unsafe end"
                 | "space-between"
                 | "space-around"
                 | "space-evenly"
@@ -1535,6 +1537,8 @@ mod root_html_auto_row_content_alignment_tests {
             "center",
             "safe center",
             "unsafe center",
+            "safe end",
+            "unsafe end",
             "space-between",
             "space-around",
             "space-evenly",
@@ -1550,9 +1554,11 @@ mod root_html_auto_row_content_alignment_tests {
             "first baseline",
             "last baseline",
             "safe start",
-            "unsafe end",
+            "unsafe start",
             "center safe",
             "unsafe flex-start",
+            "safe end center",
+            "unsafe center end",
             "self-start",
             "space-between safe",
             "unknown",
@@ -1699,6 +1705,24 @@ fn validate_root_html_intrinsic_auto_row_items(
         ));
     }
     let element = candidates[0];
+    if element
+        .grid_layout
+        .as_ref()
+        .is_some_and(root_html_auto_row_stretch_candidate)
+        && !root_html_auto_row_content_alignment_is_supported(
+            element.properties.get("align-content").map(String::as_str),
+        )
+    {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node: element.node_id,
+            property: "align-content",
+            value: element
+                .properties
+                .get("align-content")
+                .cloned()
+                .unwrap_or_else(|| "<missing>".to_owned()),
+        });
+    }
     let auto_row_stretch = root_html_auto_row_stretch_element_candidate(element);
     let mut item_count = 0usize;
     {
