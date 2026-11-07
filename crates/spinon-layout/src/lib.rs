@@ -676,6 +676,8 @@ mod grid_nested_replaced_intrinsic_tests;
 #[cfg(test)]
 mod grid_non_replaced_ratio_content_tests;
 #[cfg(test)]
+mod grid_root_html_fit_content_auto_rows_tests;
+#[cfg(test)]
 mod grid_stretch_auto_tracks_oracle_tests;
 #[cfg(test)]
 #[path = "intrinsic_size_tests.rs"]

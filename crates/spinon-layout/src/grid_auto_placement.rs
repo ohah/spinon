@@ -253,10 +253,16 @@ pub(super) fn normalize_sparse_grid_container(
                         GridTrackSize::MinContent | GridTrackSize::MaxContent
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 => {}
+                        GridTrackSize::FitContent(crate::GridTrackLengthPercentage::LengthPx(
+                            cap,
+                        )) if container.placement_mode
+                            == crate::GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                            && cap.is_finite()
+                            && *cap >= 0.0 => {}
                         _ => {
                             return Err(LayoutError::UnsupportedGridAutoRows {
                                 node,
-                                reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
+                                reason: "Root HTML implicit row mode requires a supported direct track size",
                             });
                         }
                     }
@@ -300,7 +306,7 @@ pub(super) fn normalize_sparse_grid_container(
                 _ => {
                     return Err(LayoutError::UnsupportedGridAutoRows {
                         node,
-                        reason: "Root HTML implicit row mode requires direct px/percentage/fraction grid-auto-rows values",
+                        reason: "Root HTML implicit row mode requires a supported direct track size",
                     });
                 }
             }

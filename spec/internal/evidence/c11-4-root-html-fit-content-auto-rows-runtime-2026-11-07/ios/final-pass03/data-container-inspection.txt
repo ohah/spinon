@@ -1,0 +1,15 @@
+inspection_time_local=2026-11-07 23:03 Asia/Seoul
+simulator_udid=9DCCE836-7659-4914-B6C1-13F54BFFA9DB
+bundle_id=dev.spinon.bootstrap
+baseline_container=/Users/yoonhb/Library/Developer/CoreSimulator/Devices/9DCCE836-7659-4914-B6C1-13F54BFFA9DB/data/Containers/Data/Application/E1FB9C90-1EAB-4017-B83B-BB4E711C53A8
+baseline_container_exists=false
+current_container=/Users/yoonhb/Library/Developer/CoreSimulator/Devices/9DCCE836-7659-4914-B6C1-13F54BFFA9DB/data/Containers/Data/Application/C69E53F9-47E7-4049-8112-30AB9EA64349
+current_container_exists=true
+current_container_size=9.6M
+baseline_recorded_at=2026-11-07 22:21:23 Asia/Seoul
+pass01_install_log_mtime=2026-11-07 22:24:06 Asia/Seoul
+pass02_install_log_mtime=2026-11-07 22:30:46 Asia/Seoul
+pass03_install_log_mtime=2026-11-07 22:53:25 Asia/Seoul
+recorded_scripts_use=simctl install
+recorded_scripts_do_not_call=simctl uninstall,simctl erase,app-data clear
+conclusion=container identity differs; app-data continuity and exact transition cause are unconfirmed

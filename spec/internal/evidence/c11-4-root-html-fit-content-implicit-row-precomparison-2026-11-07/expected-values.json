@@ -1,0 +1,145 @@
+{
+  "source": "CSS Grid Level 2 §§7.2.1, 7.6, 12.2, 12.5; fit-content formula max(minimum, min(limit, max-content))",
+  "scenes": [
+    {
+      "id": "cap24",
+      "limitPx": 24,
+      "minimumPx": 0,
+      "maxContentPx": 34,
+      "usedImplicitRowPx": 24,
+      "usedRowsPx": [
+        10,
+        24,
+        6
+      ],
+      "gridFrame": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "itemFrames": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          24
+        ],
+        [
+          0,
+          34,
+          40,
+          6
+        ]
+      ],
+      "nestedContentFrame": [
+        0,
+        10,
+        40,
+        34
+      ]
+    },
+    {
+      "id": "room40",
+      "limitPx": 40,
+      "minimumPx": 0,
+      "maxContentPx": 34,
+      "usedImplicitRowPx": 34,
+      "usedRowsPx": [
+        10,
+        34,
+        6
+      ],
+      "gridFrame": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "itemFrames": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          34
+        ],
+        [
+          0,
+          44,
+          40,
+          6
+        ]
+      ],
+      "nestedContentFrame": [
+        0,
+        10,
+        40,
+        34
+      ]
+    },
+    {
+      "id": "floor24",
+      "limitPx": 24,
+      "minimumPx": 28,
+      "maxContentPx": 34,
+      "usedImplicitRowPx": 28,
+      "usedRowsPx": [
+        10,
+        28,
+        6
+      ],
+      "gridFrame": [
+        0,
+        0,
+        40,
+        100
+      ],
+      "itemFrames": [
+        [
+          0,
+          0,
+          40,
+          10
+        ],
+        [
+          0,
+          10,
+          40,
+          28
+        ],
+        [
+          0,
+          38,
+          40,
+          6
+        ]
+      ],
+      "nestedContentFrame": [
+        0,
+        10,
+        40,
+        34
+      ]
+    }
+  ],
+  "assertions": [
+    "computed grid-auto-rows retains the fit-content(px) cap",
+    "used explicit+implicit row list matches the scene expectation",
+    "the middle Grid item uses the capped/floored row size",
+    "the nested 34px block remains larger than the capped item where expected",
+    "the following probe begins exactly after the implicit row",
+    "align-content:start leaves remaining definite block space after the tracks"
+  ]
+}
