@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-11-07T07:31:13.773Z",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 622284,
+  "sourceSha256": "1ae50058c661ef4a20c343796176de8d3fe02b284333cf31335a7134ad711741",
+  "previewTarget": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "previewBytesAfter": 622284,
+  "previewSha256After": "1ae50058c661ef4a20c343796176de8d3fe02b284333cf31335a7134ad711741",
+  "servedResponsesAfter": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 622284,
+      "sha256": "1ae50058c661ef4a20c343796176de8d3fe02b284333cf31335a7134ad711741"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 622284,
+      "sha256": "1ae50058c661ef4a20c343796176de8d3fe02b284333cf31335a7134ad711741"
+    }
+  ],
+  "previousPreviewBytes": 621472,
+  "previousPreviewSha256": "7052a3a027e5e2b77e8d482a2594bef0135b19f1ec1d800ec3d33646a8fe03d2",
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-c11-safe-flex-end-in-progress-2026-11-07/pass01/roadmap.html",
+  "backupBytes": 621472,
+  "backupSha256": "7052a3a027e5e2b77e8d482a2594bef0135b19f1ec1d800ec3d33646a8fe03d2",
+  "replacement": "same-directory temp file, fsync, atomic rename",
+  "serverPid": "28040",
+  "serverRestarted": false,
+  "filesChanged": [
+    "/spinon/roadmap.html"
+  ]
+}

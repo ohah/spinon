@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-11-07T08:03:24Z",
+  "closeCommand": "agent-browser close --all",
+  "postCloseProcessScan": "ps -axo pid=,ppid=,command= | rg '[a]gent-browser|[C]hrome for Testing|[H]eadlessChrome'",
+  "postCloseMatches": [],
+  "tmuxSessionsChanged": false,
+  "previewServerPid": 28040,
+  "previewServerStopped": false
+}
