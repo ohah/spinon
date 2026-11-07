@@ -1,0 +1,28 @@
+{
+  "source": "Tailnet preview after PR #1257 sync, before this layout change",
+  "sourceSha256": "d83e0a2944d24b54123a8251f48ce3f74cc0cd4dacf181b3ec704e2b24ba9ac1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "agentBrowserVersion": "0.31.1",
+  "viewportCssPx": {
+    "width": 1440,
+    "height": 1000
+  },
+  "documentWidthCssPx": 1440,
+  "kanbanBoardBoundsCssPx": {
+    "x": 90,
+    "y": 46672.65625,
+    "width": 1120,
+    "height": 416,
+    "right": 1210
+  },
+  "activeCardTitle": "flex-end 계획",
+  "activeCardTitleBoundsCssPx": {
+    "x": 422,
+    "y": 46770.65625,
+    "width": 73,
+    "height": 16,
+    "right": 495
+  },
+  "visibleAtInitialScroll": false,
+  "diagnosis": "The task card existed in the DOM but the Kanban board followed the long roadmap history, placing it about 46,700 CSS px below the page start."
+}

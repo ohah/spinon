@@ -51,12 +51,14 @@
     .decision b { color:var(--ink); font-weight:600; }
     .decision .cut { display:inline-block; width:36px; border-top:2px solid var(--accent); margin-right:8px; vertical-align:middle; }
     .kanban-section { padding:30px 0 32px; border-bottom:1px solid var(--line); }
+    .hero > .kanban-section { grid-column:1 / -1; }
     .kanban-frame { overflow-x:auto; overscroll-behavior-x:contain; }
     .kanban-frame svg { display:block; width:1120px; min-width:1120px; height:auto; }
     .kanban-note { margin:12px 0 0; color:var(--muted); font-size:12px; line-height:1.7; }
     .kanban-note code { overflow-wrap:anywhere; }
     .hero > .hero-progress { grid-column:1 / -1; }
     .kanban-note a { text-decoration:underline; text-underline-offset:2px; }
+    @media(max-width:600px) { .kanban-section .section-heading { display:block; margin-bottom:12px; } .kanban-section .section-heading h2 { font-size:24px; } .kanban-section .section-heading span { display:block; margin-top:4px; } }
     .toolbar { position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:15px 0; background:var(--paper); border-bottom:1px solid var(--line); }
     .search { flex:1; min-width:160px; padding:11px 13px; border:1px solid var(--line); border-radius:5px; background:var(--white); color:var(--ink); outline-color:var(--accent); font-size:13px; }
     .filter { padding:11px 12px; border:1px solid var(--line); border-radius:5px; background:var(--white); color:var(--muted); font-size:12px; }
@@ -101,7 +103,14 @@
   <header class="topbar"><div class="shell"><a class="brand" href="/spinon/"><span class="brand-mark" aria-hidden="true">S</span><span>SPINON</span></a><nav class="topnav" aria-label="스피논 문서"><a href="/spinon/">구조도</a><a href="#plan" aria-current="page">구현 목록</a><a href="/spinon/plan/c04-runtime-css-to-gpu.html">GPU 렌더러</a><a href="/spinon/compatibility.html">HTML·CSS</a><a href="/spinon/css-plan.html">CSS 구현 계획</a><a href="/spinon/js-api.html">JS API</a><a href="/spinon/roadmap.html#plan">OTA 모델</a><a href="/spinon/docs/">API 문서</a></nav></div></header>
   <main class="shell">
     <section class="hero" aria-labelledby="page-title">
-      <div><p class="eyebrow">스피논 / 구현 로드맵</p><h1 id="page-title">스피논을 만드는 순서</h1>
+      <div><p class="eyebrow">스피논 / 구현 로드맵</p><h1 id="page-title">스피논을 만드는 순서</h1></div>
+      <section class="kanban-section" aria-labelledby="kanban-heading">
+        <div class="section-heading"><h2 id="kanban-heading">현재 작업 칸반</h2><span>다음 · 진행 중 · 외부 대기 · 완료</span></div>
+        <div class="kanban-frame" id="kanban-board" aria-live="polite"><p class="kanban-note">공식 구현 상태를 불러오는 중입니다.</p></div>
+        <p class="kanban-note" id="official-status-note" aria-live="polite">체크 상태를 공식 상태 대장에서 확인하고 있습니다.</p>
+        <p class="kanban-note">칸반은 78개 상위 작업과 공식 상태 대장에 등록된 세부 작업을 합산해 요약합니다. 아래 목록에는 상위 작업과 CSS·JavaScript API 세부 체크리스트를 함께 표시합니다. 목록과 완료 열은 <a href="https://github.com/ohah/spinon/blob/main/spec/STATUS.md">공식 상태 대장</a>에서 ID와 체크 상태를 읽습니다. 별도 상위 ID가 없는 C11.4 순차 구현은 실제 진행 칸에 세부 카드로 표시합니다. 새 ID가 대장에 추가되면 다음 새로고침 때 세부 목록에도 표시됩니다. 다음·진행 중·외부 대기는 작업 순서를 보여주는 보드 메모이며, 완료 판정에는 사용하지 않습니다. 모바일에서는 칸반을 좌우로 밀어 다른 열을 볼 수 있습니다.</p>
+      </section>
+      <div class="hero-progress-history">
       <p class="kanban-note hero-progress"><strong>2026-11-07 C11.4 parsed Root HTML <code>align-content:safe|unsafe center</code> · 제한 구현 <a href="https://github.com/ohah/spinon/pull/1249">PR #1249 Rebase and merge</a> (2026-11-07T02:49:40Z, merge SHA <code>a69030722d82a97e6ce40e276c0aae2b8447550d</code>):</strong> 기존 fixed profile의 positive·safe overflow·unsafe overflow 6 scene을 Chrome 157·독립 기대값 및 Rust layout/runtime와 대조했다. Android API 37 AVD와 iPhone 17 Pro iOS 26.2 Simulator에서 기본 Root HTML route를 확인했으며 screenshots는 visual smoke다. WPT·실기기·hardware GPU·surface readback은 포함하지 않는다. C11.4/C11은 미완료이고 전체 <code>78/214</code>는 그대로다. 다음 순차 후보는 <a href="https://github.com/ohah/spinon/blob/main/plan/c11-root-html-auto-row-safe-end.md"><code>align-content:safe|unsafe end</code></a>다.</p>
       <p class="kanban-note hero-progress"><strong>2026-11-07 C11.4 parsed Root HTML <code>align-content:safe|unsafe end</code> · bounded implementation <a href="https://github.com/ohah/spinon/pull/1252">PR #1252 Rebase and merge</a> (2026-11-07T04:18:43Z, merge SHA <code>40571673ca9e812683f4fc4410c6a2e0891d54d1</code>):</strong> Chrome 157·독립 기대값 8/8 scene·96/96 item frame, Rust layout/projection/RuntimeSession regressions와 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML route 3 scene을 확인했다. 미지원 safe/unsafe start는 <code>align-content</code> 오류로 거부하며 같은 session은 supported value로 복구된다. 화면은 screenshot bounds visual evidence이고 PixelCopy/Metal readback은 아니다. C11.4/C11은 미완료, 전체 <code>78/214</code>는 유지한다. <a href="/spinon/plan/c11-root-html-auto-row-safe-end.html">계획</a> · <a href="/spinon/internal/evidence/c11-root-html-auto-row-safe-end-precomparison-2026-11-07/README.html">Chrome 사전 비교</a> · <a href="/spinon/internal/evidence/c11-root-html-auto-row-safe-end-runtime-2026-11-07/README.html">실행·Android/iOS 화면</a> · 다음 순차 계획 <a href="/spinon/plan/c11-root-html-auto-row-safe-start.html"><code>align-content:safe|unsafe start</code></a> (Chrome 157 6/6, 구현 전) · <a href="/spinon/internal/evidence/c11-root-html-safe-start-plan-sync-2026-11-07/README.html">계획·상태 동기화</a></p>
       <p class="kanban-note hero-progress"><strong>2026-11-07 C11.4 parsed Root HTML <code>align-content:safe|unsafe start</code> · 제한 구현 <a href="https://github.com/ohah/spinon/pull/1254">PR #1254 Rebase and merge</a> (2026-11-07T05:08:55Z, merge SHA <code>d8c320a5267c9d739497b3b7233f541d97985c10</code>):</strong> Chrome 157·독립 기대값 6/6 scene·72/72 좌표와 Layout/style/runtime focused regressions를 확인했다. Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML route의 positive·safe overflow·unsafe overflow 세 장면은 layout-ready·6 boxes·2 text draws·present에 도달했다. 화면은 visual bounds이며 PixelCopy/Metal drawable readback이 아니다. C11.4/C11은 미완료이고 공식 <code>78/214</code>는 유지한다. <a href="/spinon/plan/c11-root-html-auto-row-safe-start.html">계획</a> · <a href="/spinon/internal/evidence/c11-root-html-auto-row-safe-start-precomparison-2026-11-07/README.html">Chrome 사전 비교</a> · <a href="/spinon/internal/evidence/c11-root-html-auto-row-safe-start-runtime-2026-11-07/README.html">Android/iOS 실행·화면 근거</a> · 다음 순차 계획 <a href="/spinon/plan/c11-root-html-auto-row-safe-flex-start.html"><code>align-content:safe|unsafe flex-start</code></a> (Chrome 157 사전 비교 6/6 scene·72/72 좌표 exact, 현재 제한 구현 중) · <a href="/spinon/internal/evidence/c11-root-html-auto-row-safe-flex-start-precomparison-2026-11-07/README.html">사전 비교</a> · <a href="/spinon/plan/c11-root-html-auto-row-safe-flex-start-plan-review-20.html">계획 검토 20개</a></p>
@@ -377,12 +386,6 @@
     <rect x="574" y="495" width="30" height="19" rx="2" fill="#f5f5f5" stroke="#d8d9de"/><text x="589" y="508" text-anchor="middle" fill="#4f5d75" font-family="Geist Mono, monospace" font-size="10">2</text>
   </g>
 </svg><figcaption class="roadmap-caption">R·S는 첫 앱 이전의 기초 검증으로 묶었습니다. E와 X의 독립 작업은 병렬로 진행할 수 있습니다. D로 모이는 화살표는 두 단계의 모든 항목이 첫 공식 릴리스에 필수라는 뜻이 아닙니다. 첫 공식 릴리스의 범위는 아직 미정입니다. 숫자는 바로 앞 관문의 수입니다.</figcaption></figure><div class="phase-rail" id="phase-rail"></div><div class="decision"><span><span class="cut"></span><b>첫 사용 가능 앱 후보</b>는 GPU 화면의 React UI·터치·텍스트·목록이 Android·iOS 실기기와 웹에서 동작하고 같은 시나리오로 비교된 시점입니다. Vue·Svelte, Rspack, OTA는 별도 관문이며 첫 앱의 완료 조건으로 앞당겨 주장하지 않습니다. 관문은 아키텍처·성능 판정 조건이며 독립 작업은 병렬로 진행할 수 있습니다.</span></div></section>
-    <section class="kanban-section" aria-labelledby="kanban-heading">
-      <div class="section-heading"><h2 id="kanban-heading">현재 작업 칸반</h2><span>다음 · 진행 중 · 외부 대기 · 완료</span></div>
-      <div class="kanban-frame" id="kanban-board" aria-live="polite"><p class="kanban-note">공식 구현 상태를 불러오는 중입니다.</p></div>
-      <p class="kanban-note" id="official-status-note" aria-live="polite">체크 상태를 공식 상태 대장에서 확인하고 있습니다.</p>
-      <p class="kanban-note">칸반은 78개 상위 작업과 공식 상태 대장에 등록된 세부 작업을 합산해 요약합니다. 아래 목록에는 상위 작업과 CSS·JavaScript API 세부 체크리스트를 함께 표시합니다. 목록과 완료 열은 <a href="https://github.com/ohah/spinon/blob/main/spec/STATUS.md">공식 상태 대장</a>에서 ID와 체크 상태를 읽습니다. 별도 상위 ID가 없는 C11.4 순차 구현은 실제 진행 칸에 세부 카드로 표시합니다. 새 ID가 대장에 추가되면 다음 새로고침 때 세부 목록에도 표시됩니다. 다음·진행 중·외부 대기는 작업 순서를 보여주는 보드 메모이며, 완료 판정에는 사용하지 않습니다.</p>
-    </section>
     <div class="toolbar" id="plan"><input class="search" id="search" type="search" placeholder="작업 검색 · 예: 레이아웃, OTA, 접근성" aria-label="작업 검색"><button class="filter" type="button" id="filter-all" aria-pressed="true">전체</button><button class="filter" type="button" id="filter-open" aria-pressed="false" disabled>미완료</button><span class="counter" id="counter" aria-live="polite"></span></div>
     <div class="plan" id="phase-list"></div>
   </main>
@@ -487,6 +490,7 @@
     const allButton = document.getElementById('filter-all');
     const openButton = document.getElementById('filter-open');
     const kanbanBoard = document.getElementById('kanban-board');
+    const kanbanColumnStep = 272;
     const statusNote = document.getElementById('official-status-note');
     const statusUrl = 'https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main';
     // 공식 상태 대장에 별도 상위 ID가 없는 C11.4 세부 구현은 진행 카드에 따로 표시한다.
@@ -607,6 +611,10 @@
       element.textContent = value;
       parent.append(element);
     }
+    function focusActiveKanbanColumn() {
+      kanbanBoard.scrollLeft = window.innerWidth <= 600 ? kanbanColumnStep : 0;
+    }
+    window.addEventListener('resize', focusActiveKanbanColumn, { passive:true });
     function renderKanban() {
       const tasks = boardTasks;
       const taskByCode = new Map(tasks.map(task => [task.code, task]));
@@ -641,7 +649,7 @@
       const title = svgElement('title', { id:'spinon-kanban-title' }); title.textContent = '스피논 구현 작업 칸반'; svg.append(title);
       const desc = svgElement('desc', { id:'spinon-kanban-desc' }); desc.textContent = '할 일, 진행 중, 외부 조건 대기, 공식 완료를 구분한 스피논 작업 보드입니다. 완료 상태는 공식 상태 대장에서 읽습니다.'; svg.append(desc);
       columns.forEach((column, index) => {
-        const x = 32 + index * 272;
+        const x = 32 + index * kanbanColumnStep;
         svg.append(svgElement('rect', { x, y:40, width:240, height:324, rx:8, fill:'rgba(45,49,66,0.02)' }));
         svgText(svg, x + 16, 60, column.name, { fill:'#2d3142', 'font-size':12, 'font-weight':600, 'font-family':"'Geist', 'Noto Sans KR', sans-serif" });
         const chipX = x + 184;
@@ -682,6 +690,7 @@
         svgText(svg, item.x + 24, 404, item.label, { fill:'#4f5d75', 'font-size':12, 'font-family':"'Geist', 'Noto Sans KR', sans-serif" });
       }
       kanbanBoard.replaceChildren(svg);
+      focusActiveKanbanColumn();
     }
     async function loadOfficialStatuses() {
       const controller = new AbortController();
