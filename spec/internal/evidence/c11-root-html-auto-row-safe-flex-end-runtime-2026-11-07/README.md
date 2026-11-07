@@ -38,6 +38,8 @@ Pinned V8 checkout은 `7b50b62cb18f28617959e8452e2cd18195b38bcf`, depot_tools는
 
 각 pass의 `screenshot-pixel-analysis.json`은 화면의 Grid 배경과 고정색 item bounds를 측정한다. 이는 OS screenshot visual bounds일 뿐 Android `PixelCopy`, iOS Metal drawable readback 또는 compositor 최종 pixel parity가 아니다. Simulator는 software-rendered/Simulator 환경 근거이며 실기기, hardware GPU, WPT와 일반 CSS admission은 검증하지 않았다.
 
+[구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 [실제 PR diff 실패 관점 30개](./pr-diff-review-30.md)는 별도 문서다.
+
 세 iOS verbose build transcript는 [`build.log.gz` pass03](./pass03/ios/build.log.gz), [pass04](./pass04/ios/build.log.gz), [pass05](./pass05/ios/build.log.gz)에 lossless gzip으로 보존했다. Decompress 결과는 각 원본 transcript와 byte-identical이며 uncompressed SHA-256은 [manifest](./ios-build-transcript-sha256.txt)에 있다.
 
 ## 남은 상태
