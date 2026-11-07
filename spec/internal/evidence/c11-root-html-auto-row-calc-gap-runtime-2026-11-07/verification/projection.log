@@ -1,0 +1,13 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.19s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 4 tests
+test projection::style_values::root_html_auto_row_content_alignment_tests::allowlist_keeps_baseline_safety_and_unknown_values_closed ... ok
+test projection::style_values::root_html_auto_row_content_alignment_tests::row_gap_math_requires_one_finite_signed_length_and_percentage ... ok
+test projection::style_values::root_html_auto_row_content_alignment_tests::row_gap_admits_finite_px_values_and_representable_percentages ... ok
+test projection::style_values::grid_values::auto_row_stretch_tests::root_html_auto_row_stretch_candidate_requires_the_fixed_single_track_grid ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 443 filtered out; finished in 0.00s

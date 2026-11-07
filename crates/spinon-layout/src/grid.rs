@@ -19,7 +19,7 @@ mod cyclic_percentage_auto_repeat_rows;
 #[path = "grid/root_html_auto_repeat.rs"]
 mod root_html_auto_repeat;
 #[path = "grid/root_html_auto_row_stretch.rs"]
-mod root_html_auto_row_stretch;
+pub(super) mod root_html_auto_row_stretch;
 #[path = "grid/root_html_column.rs"]
 pub(crate) mod root_html_column;
 #[path = "grid/root_html_direct_text_aspect_ratio.rs"]
@@ -434,7 +434,7 @@ pub(super) fn validate_grid_layout(
     definite_axes: &BTreeMap<NodeId, DefiniteAxes>,
     intrinsic_size_nodes: &std::collections::BTreeSet<NodeId>,
 ) -> Result<(), LayoutError> {
-    let css_math_by_id = if input.grid_containers.values().any(|container| {
+    let css_math_by_id = if input.grid_containers.iter().any(|(grid_node, container)| {
         (matches!(
             container.placement_mode,
             GridPlacementMode::RootHtmlColumnFlowV1
@@ -442,6 +442,13 @@ pub(super) fn validate_grid_layout(
         ) && root_html_column::has_calc_auto_columns(&container.auto_columns))
             || (container.placement_mode == GridPlacementMode::RootHtmlImplicitRowsV1
                 && root_html_row::has_calc_auto_rows(&container.auto_rows))
+            || (container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
+                && index
+                    .get(grid_node)
+                    .and_then(|node_index| input.nodes.get(*node_index))
+                    .is_some_and(|node| {
+                        matches!(node.style.gap.row, crate::LayoutLengthPercentage::Calc(_))
+                    }))
     }) {
         root_html_column::index_css_math(&input.css_math)?
     } else {
@@ -495,6 +502,7 @@ pub(super) fn validate_grid_layout(
                 id,
                 input.nodes[index[&id]].style,
                 container,
+                &css_math_by_id,
             )?;
         }
         if container.placement_mode == GridPlacementMode::RootHtmlAutoRepeatV1 {
@@ -1536,6 +1544,7 @@ fn validate_root_html_intrinsic_tracks_contract(
     node: spinon_core::NodeId,
     style: LayoutStyle,
     container: &crate::GridContainerInput,
+    css_math_by_id: &root_html_column::CssMathIndex<'_>,
 ) -> Result<(), LayoutError> {
     for (property, tracks, line_names, auto_repeat) in [
         (
@@ -1646,7 +1655,7 @@ fn validate_root_html_intrinsic_tracks_contract(
         }
     }
     let row_gap_supported = if auto_row_stretch {
-        root_html_auto_row_stretch::row_gap_is_supported(style.gap.row)
+        root_html_auto_row_stretch::row_gap_is_supported(node, style.gap.row, css_math_by_id)?
     } else {
         root_html_intrinsic_gap_is_supported(style.gap.row, container.rows.len(), style.height)
     };

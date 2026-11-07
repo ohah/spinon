@@ -3,6 +3,7 @@ use serde_json::Value;
 use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 
 mod auto_row_stretch;
+mod calc_row_gap;
 mod combined_multiple_text;
 mod letter_words;
 mod multiple_auto_row_stretch;

@@ -36,12 +36,28 @@ pub(super) fn validate_items(
     {
         return Ok(());
     }
+    let css_math_by_id = if container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
+        && matches!(
+            container_node.style.gap.row,
+            crate::LayoutLengthPercentage::Calc(_)
+        ) {
+        let mut by_id = BTreeMap::new();
+        for value in &input.css_math {
+            if by_id.insert(value.id, value).is_some() {
+                return Err(LayoutError::DuplicateCssMathId);
+            }
+        }
+        by_id
+    } else {
+        BTreeMap::new()
+    };
     validate_container(
         container_node.id,
         container_node.style,
         container,
         mixed_cross_axis_column,
         intrinsic_track_sizing,
+        &css_math_by_id,
     )?;
 
     let mut grid_locked_axis = None;
@@ -249,6 +265,7 @@ fn validate_container(
     container: &GridContainerInput,
     column_flow: bool,
     intrinsic_track_sizing: bool,
+    css_math: &BTreeMap<crate::LayoutCalcId, &crate::LayoutCssMathValue>,
 ) -> Result<(), LayoutError> {
     if (column_flow && container.auto_flow != GridAutoFlow::Column)
         || (!column_flow && container.auto_flow != GridAutoFlow::Row)
@@ -317,6 +334,16 @@ fn validate_container(
             matches!(gap, crate::LayoutLengthPercentage::LengthPx(value) if value == 0.0)
         }
     };
+    let row_gap_supported =
+        if container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1 {
+            crate::grid::root_html_auto_row_stretch::row_gap_is_supported(
+                node,
+                style.gap.row,
+                css_math,
+            )?
+        } else {
+            supported_gap(style.gap.row, container.rows.len(), style.height)
+        };
     let unsupported_property = if !fixed_dimension(style.width) {
         Some("width")
     } else if !fixed_dimension(style.height) {
@@ -337,7 +364,7 @@ fn validate_container(
         Some("overflow-x")
     } else if style.overflow_y != LayoutOverflow::Visible {
         Some("overflow-y")
-    } else if !supported_gap(style.gap.row, container.rows.len(), style.height) {
+    } else if !row_gap_supported {
         Some("row-gap")
     } else if !supported_gap(style.gap.column, container.columns.len(), style.width) {
         Some("column-gap")

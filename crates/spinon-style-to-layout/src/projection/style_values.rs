@@ -1482,7 +1482,13 @@ fn root_html_auto_row_content_alignment_is_supported(value: Option<&str>) -> boo
     )
 }
 
-fn root_html_auto_row_stretch_row_gap_is_supported(value: ComputedCssSpacingValue) -> bool {
+fn root_html_auto_row_stretch_row_gap_with_math(
+    value: ComputedCssSpacingValue,
+    math: Option<&spinon_style::ComputedCssMath>,
+) -> bool {
+    if let Some(expression) = math {
+        return root_html_column_math::supported_root_html_auto_track_calc(expression);
+    }
     match value {
         ComputedCssSpacingValue::LengthPx(value) => {
             value.is_finite() && (0.0..=7.5).contains(&value)
@@ -1502,12 +1508,18 @@ fn root_html_auto_row_stretch_row_gap_is_supported(value: ComputedCssSpacingValu
 }
 
 #[cfg(test)]
+fn root_html_auto_row_stretch_row_gap_is_supported(value: ComputedCssSpacingValue) -> bool {
+    root_html_auto_row_stretch_row_gap_with_math(value, None)
+}
+
+#[cfg(test)]
 mod root_html_auto_row_content_alignment_tests {
     use super::{
         root_html_auto_row_content_alignment_is_supported,
         root_html_auto_row_stretch_row_gap_is_supported,
+        root_html_auto_row_stretch_row_gap_with_math,
     };
-    use spinon_style::ComputedCssSpacingValue;
+    use spinon_style::{ComputedCssMath, ComputedCssSpacingValue};
 
     #[test]
     fn allowlist_keeps_baseline_safety_and_unknown_values_closed() {
@@ -1600,6 +1612,46 @@ mod root_html_auto_row_content_alignment_tests {
             );
         }
     }
+
+    #[test]
+    fn row_gap_math_requires_one_finite_signed_length_and_percentage() {
+        for expression in [
+            ComputedCssMath::Sum(vec![
+                ComputedCssMath::LengthPx(2.0),
+                ComputedCssMath::Percentage(0.0625),
+            ]),
+            ComputedCssMath::Sum(vec![
+                ComputedCssMath::LengthPx(1.0),
+                ComputedCssMath::Negate(Box::new(ComputedCssMath::Percentage(0.1))),
+            ]),
+            ComputedCssMath::Sum(vec![
+                ComputedCssMath::Negate(Box::new(ComputedCssMath::LengthPx(2.0))),
+                ComputedCssMath::Percentage(0.25),
+            ]),
+        ] {
+            assert!(root_html_auto_row_stretch_row_gap_with_math(
+                ComputedCssSpacingValue::Unsupported,
+                Some(&expression)
+            ));
+        }
+
+        for expression in [
+            ComputedCssMath::LengthPx(5.0),
+            ComputedCssMath::Sum(vec![
+                ComputedCssMath::LengthPx(1.0),
+                ComputedCssMath::LengthPx(2.0),
+            ]),
+            ComputedCssMath::Sum(vec![
+                ComputedCssMath::LengthPx(1.0),
+                ComputedCssMath::Percentage(f32::NAN),
+            ]),
+        ] {
+            assert!(!root_html_auto_row_stretch_row_gap_with_math(
+                ComputedCssSpacingValue::Unsupported,
+                Some(&expression)
+            ));
+        }
+    }
 }
 
 fn validate_root_html_intrinsic_auto_row_items(
@@ -1668,7 +1720,10 @@ fn validate_root_html_intrinsic_auto_row_items(
                 && dimensions.max_width == ComputedCssMaxSize::None
                 && dimensions.min_height == ComputedCssDimension::Auto
                 && dimensions.max_height == ComputedCssMaxSize::None;
-            if !root_html_auto_row_stretch_row_gap_is_supported(element.layout_spacing.row_gap) {
+            if !root_html_auto_row_stretch_row_gap_with_math(
+                element.layout_spacing.row_gap,
+                element.layout_math_values.get("row-gap"),
+            ) {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: element.node_id,
                     property: "row-gap",

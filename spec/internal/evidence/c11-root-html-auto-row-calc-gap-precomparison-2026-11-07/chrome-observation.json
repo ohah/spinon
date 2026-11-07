@@ -1,0 +1,3892 @@
+{
+  "results": [
+    {
+      "expectedUsedGap": 0,
+      "expression": "calc(1px - 10%)",
+      "itemCountCases": [
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  30
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                30
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  30
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                30
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  25,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  6.65625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  23.3125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 2
+        },
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  15
+                ],
+                [
+                  0,
+                  25,
+                  40,
+                  15
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                15,
+                15
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  15
+                ],
+                [
+                  0,
+                  25,
+                  40,
+                  15
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                15,
+                15
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  10,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  20,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  25,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  1.65625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.984375,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  28.3125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  2.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  27.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(-10% + 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 3
+        }
+      ],
+      "length": 1,
+      "percentage": -0.1
+    },
+    {
+      "expectedUsedGap": 4.5,
+      "expression": "calc(6.25% + 2px)",
+      "itemCountCases": [
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  25.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                25.5
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  25.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                25.5
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  7.75,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  22.25,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  3.875,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  26.125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  5.15625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  24.8125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 2
+        },
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10.5
+                ],
+                [
+                  0,
+                  29.5,
+                  40,
+                  10.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10.5,
+                10.5
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10.5
+                ],
+                [
+                  0,
+                  29.5,
+                  40,
+                  10.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10.5,
+                10.5
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  1,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  1,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  0.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  0.15625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.984375,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.8125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  0.25,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.75,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 3
+        }
+      ],
+      "length": 2,
+      "percentage": 0.0625
+    },
+    {
+      "expectedUsedGap": 4.5,
+      "expression": "calc(2px + 6.25%)",
+      "itemCountCases": [
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  25.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                25.5
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  25.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                25.5
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  7.75,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  22.25,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  3.875,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  26.125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  5.15625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  24.8125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 2
+        },
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10.5
+                ],
+                [
+                  0,
+                  29.5,
+                  40,
+                  10.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10.5,
+                10.5
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10.5
+                ],
+                [
+                  0,
+                  29.5,
+                  40,
+                  10.5
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10.5,
+                10.5
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  1,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  1,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  0.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  0.15625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.984375,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.8125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  0.25,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.75,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(6.25% + 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 3
+        }
+      ],
+      "length": 2,
+      "percentage": 0.0625
+    },
+    {
+      "expectedUsedGap": 8,
+      "expression": "calc(25% - 2px)",
+      "itemCountCases": [
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  22
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                22
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  22
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                22
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  12,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  12,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  6,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  24,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  3,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  27,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  4,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  26,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 2
+        },
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  -6,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  12,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  -6,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  12,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  -3,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  33,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  18,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  36,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(25% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 3
+        }
+      ],
+      "length": -2,
+      "percentage": 0.25
+    },
+    {
+      "expectedUsedGap": 3,
+      "expression": "calc(10% - 1px)",
+      "itemCountCases": [
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  27
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                27
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  27
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                27
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  17,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  17,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  8.5,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  21.5,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  4.25,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  25.75,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  5.65625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  24.3125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 2
+        },
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  12
+                ],
+                [
+                  0,
+                  28,
+                  40,
+                  12
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                12,
+                12
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  12
+                ],
+                [
+                  0,
+                  28,
+                  40,
+                  12
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                12,
+                12
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  26,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  13,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  26,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  4,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  17,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  4,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  17,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  2,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  28,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  0.65625,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  14.984375,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29.3125,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  1,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  29,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(10% - 1px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 3
+        }
+      ],
+      "length": -1,
+      "percentage": 0.1
+    },
+    {
+      "expectedUsedGap": 46,
+      "expression": "calc(120% - 2px)",
+      "itemCountCases": [
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  -26,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  -26,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  -13,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  43,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 2
+        },
+        {
+          "cases": [
+            {
+              "alignContent": "normal",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "stretch",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-start",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "end",
+              "itemRects": [
+                [
+                  0,
+                  -82,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  -26,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "flex-end",
+              "itemRects": [
+                [
+                  0,
+                  -82,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  -26,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  30,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "center",
+              "itemRects": [
+                [
+                  0,
+                  -41,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  15,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  71,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-between",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-around",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            },
+            {
+              "alignContent": "space-evenly",
+              "itemRects": [
+                [
+                  0,
+                  0,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  56,
+                  40,
+                  10
+                ],
+                [
+                  0,
+                  112,
+                  40,
+                  10
+                ]
+              ],
+              "root": [
+                100,
+                100,
+                40,
+                40
+              ],
+              "rowGap": "calc(120% - 2px)",
+              "usedRows": [
+                10,
+                10,
+                10
+              ]
+            }
+          ],
+          "itemCount": 3
+        }
+      ],
+      "length": -2,
+      "percentage": 1.2
+    }
+  ]
+}

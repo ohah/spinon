@@ -1,0 +1,9 @@
+{
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "close_command": "agent-browser close --all",
+  "close_exit_code": 0,
+  "post_close_process_check": "pgrep -fl '^agent-browser'",
+  "post_close_matches": [],
+  "terminal_browser_used": false
+}
