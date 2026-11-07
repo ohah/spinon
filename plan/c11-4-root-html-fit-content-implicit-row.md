@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `grid-auto-rows:fit-content(px)` 제한 slice
 
-**상태:** Chrome 157 사전 관측, 독립 기대값, 계획 실패 관점 20개, 구현/runtime 실패 관점 20개, PR diff 실패 관점 30개 검토를 마쳤다. CSS projection, 별도 implicit-row layout mode, track placement와 기본 RuntimeSession 경로를 구현했다. Layout oracle 2/2, Root HTML RuntimeSession 2/2 및 explicit `fit-content` regression 2/2 focused tests, workspace Clippy·rustfmt·diff check가 통과했다. PR diff 검토 중 발견한 기본 layout trace flag를 제거한 최종 source로 다시 빌드해 Android API 37 ARM64 AVD와 새 iPhone 17 Pro/iOS 26.2 Simulator의 기본 route에서 `page_scale=1`, `layout=ready`, `boxes=7`을 확인했다. 캡처는 visual smoke다. 이제 feature PR 본문과 이미지 링크를 준비한다. 이전 iOS Simulator의 app-data container identity 차이는 해결된 것으로 간주하지 않는다. Android는 기존 AVD에 `install -r`했고 app-data contents는 확인하지 않았다. [실행·source·data-container 근거](../spec/internal/evidence/c11-4-root-html-fit-content-auto-rows-runtime-2026-11-07/README.md) · [PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-4-root-html-fit-content-auto-rows-runtime-2026-11-07/pr-diff-review-30.md).
+**상태:** Chrome 157 사전 관측, 독립 기대값, 계획 실패 관점 20개, 구현/runtime 실패 관점 20개, PR diff 실패 관점 30개 검토를 마쳤다. CSS projection, 별도 implicit-row layout mode, track placement와 기본 RuntimeSession 경로를 구현했다. Layout oracle 2/2, Root HTML RuntimeSession 2/2 및 explicit `fit-content` regression 2/2 focused tests, workspace Clippy·rustfmt가 통과했다. PR diff 검토 중 발견한 기본 layout trace flag를 제거한 최종 source로 다시 빌드해 Android API 37 ARM64 AVD와 새 iPhone 17 Pro/iOS 26.2 Simulator의 기본 route에서 `page_scale=1`, `layout=ready`, `boxes=7`을 확인했다. 캡처는 visual smoke다. 제한 구현 PR [#1265](https://github.com/ohah/spinon/pull/1265)은 2026-11-07T14:51:02Z Rebase and merge됐고 merge SHA는 `e543401f3161769c35df641772778bde3c25976b`다. status rollup과 workflow run은 비어 있어 CI 성공으로 기록하지 않는다. 이전 iOS Simulator의 app-data container identity 차이는 해결된 것으로 간주하지 않는다. Android는 기존 AVD에 `install -r`했고 app-data contents는 확인하지 않았다. [실행·source·data-container 근거](../spec/internal/evidence/c11-4-root-html-fit-content-auto-rows-runtime-2026-11-07/README.md) · [PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-4-root-html-fit-content-auto-rows-runtime-2026-11-07/pr-diff-review-30.md).
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -51,8 +51,8 @@
 4. 기본 RuntimeSession positive path는 computed cascade, typed projection, used tracks, frames, nested content overflow와 source/document/render-tree/style revision identity를 확인한다. Constant length-only `calc()` 및 px로 계산되는 단위는 literal px와 동일한 computed value임을 확인한다. Mixed list, percentage 및 percentage-bearing computed calc limit, nonzero gap, intrinsic column, wrong flow/placement negative controls를 둔다.
 5. 실패 요청의 property/node 오류, atomic no-partial output, same-session valid recovery를 확인한다. Focused layout/projection/runtime suites, workspace Clippy 및 rustfmt를 실행한다.
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최종 source hash로 기본 Root HTML route를 빌드·설치·실행한다. screenshots는 visual smoke와 실제 제한을 구분한다.
-7. 구현/runtime 20개와 PR diff 30개 실패 관점 검토를 분리해 기록한다. 완료. PR 본문에 Android/iOS screen을 commit-pinned URL로 넣고 Agent Browser에서 두 이미지의 natural dimensions를 확인한다.
-8. PR은 `Rebase and merge`한다. 병합 뒤 STATUS·0059·로드맵·Tailnet 제공본을 동기화하고 제공 hash 및 Agent Browser desktop/mobile 표시를 확인한 뒤 Agent Browser process를 종료한다.
+7. 구현/runtime 20개와 PR diff 30개 실패 관점 검토를 분리해 기록한다. 완료. PR 본문에 Android/iOS screen을 commit-pinned URL로 넣고 Agent Browser에서 두 이미지가 각각 1080×2400, 1206×2622로 렌더링되는 것을 확인했다.
+8. PR [#1265](https://github.com/ohah/spinon/pull/1265)은 `Rebase and merge`됐다. 병합 뒤 STATUS·0059·로드맵·Tailnet 제공본을 동기화하고 제공 hash 및 Agent Browser desktop/mobile 표시를 확인한다. PR check rollup/workflow run은 비어 있다.
 
 ## 명시적 미지원
 
