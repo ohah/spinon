@@ -1,0 +1,24 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 6 tests
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_negative_row_gap_keeps_the_existing_fatal_cascade_diagnostic ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_normal_row_gap_uses_zero_grid_gap ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::calc_row_gap::parsed_root_html_calc_row_gap_failure_is_atomic_and_recovers ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::calc_row_gap::parsed_root_html_calc_row_gap_matches_clamp_positive_space_and_overflow_cases ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_unsupported_math_row_gap_rejects_atomically_and_recovers ... ok
+test session::tests::root_html_grid_intrinsic_auto_rows::percentage_row_gap::parsed_root_html_percentage_row_gap_matches_the_70_scene_alignment_matrix ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 315 filtered out; finished in 2.87s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

@@ -1,0 +1,18 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 12 tests
+test grid::root_html_auto_row_stretch::tests::row_gap_accepts_the_last_f32_representable_grid_extent ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_accepts_bounded_px_and_definite_percentages ... ok
+test grid::root_html_auto_row_stretch::tests::layout_profile_requires_the_definite_gap_basis_and_bounded_items ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_rejects_invalid_values_and_unrepresentable_percentage_extent ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_applies_existing_css_math_range_before_checking_grid_extent ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_rejects_wrong_node_property_and_unsupported_math_shape ... ok
+test grid::root_html_auto_row_stretch::tests::row_gap_accepts_bound_two_term_length_percentage_math_and_clamps_negative_result ... ok
+test grid::track_sizing_tests::root_html_auto_row_calc_gap::root_html_auto_row_stretch_calc_gap_rejects_missing_or_misbound_math ... ok
+test grid::track_sizing_tests::root_html_auto_row_calc_gap::root_html_auto_row_stretch_calc_gap_rejects_unsupported_math_and_profile_shapes ... ok
+test grid::auto_placement_tests::root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow ... ok
+test grid::track_sizing_tests::root_html_auto_row_percentage_gap::root_html_auto_row_stretch_matches_percentage_gap_alignment_matrix ... ok
+test grid::track_sizing_tests::root_html_auto_row_calc_gap::root_html_auto_row_stretch_matches_calc_gap_alignment_matrix ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 469 filtered out; finished in 0.01s

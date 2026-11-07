@@ -1,0 +1,17 @@
+{
+  "result": "passed",
+  "browser": {
+    "dpr": 1,
+    "location": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-auto-row-content-alignment-calc-row-gap-precomparison.html",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "viewport": [
+      1280,
+      633
+    ]
+  },
+  "matrixCases": 120,
+  "comparedCoordinates": 1500,
+  "toleranceCssPx": 0.03125,
+  "maximumObservedErrorCssPx": 0.020833333333335702,
+  "expectedSource": "fixed formula in derive_expected.py; not copied from Chrome geometry"
+}

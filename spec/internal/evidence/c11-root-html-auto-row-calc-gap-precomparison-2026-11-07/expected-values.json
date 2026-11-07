@@ -1,0 +1,3634 @@
+{
+  "groups": [
+    {
+      "expression": "calc(1px - 10%)",
+      "itemCountCases": [
+        {
+          "itemCount": 2,
+          "cases": [
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                30.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  30.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                30.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  30.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  5.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  25.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 20.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  6.666666666666667,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  23.333333333333336,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "itemCount": 3,
+          "cases": [
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                15.0,
+                15.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  15.0
+                ],
+                [
+                  0.0,
+                  25.0,
+                  40.0,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                15.0,
+                15.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  15.0
+                ],
+                [
+                  0.0,
+                  25.0,
+                  40.0,
+                  15.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  10.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  20.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  5.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  25.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  1.6666666666666667,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  28.333333333333332,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(1px - 10%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": -3.0,
+              "resolvedGapPx": 0.0,
+              "freeSpaceBeforeAlignmentPx": 10.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  2.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  27.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "expression": "calc(6.25% + 2px)",
+      "itemCountCases": [
+        {
+          "itemCount": 2,
+          "cases": [
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                25.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  25.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                25.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  25.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  7.75,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  22.25,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  3.875,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  26.125,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  5.166666666666667,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  24.833333333333336,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "itemCount": 3,
+          "cases": [
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                10.5,
+                10.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.5
+                ],
+                [
+                  0.0,
+                  29.5,
+                  40.0,
+                  10.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                10.5,
+                10.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.5
+                ],
+                [
+                  0.0,
+                  29.5,
+                  40.0,
+                  10.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  1.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  1.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.16666666666666666,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.833333333333332,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(6.25% + 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.25,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.75,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "expression": "calc(2px + 6.25%)",
+      "itemCountCases": [
+        {
+          "itemCount": 2,
+          "cases": [
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                25.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  25.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                25.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  25.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  7.75,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  22.25,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  3.875,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  26.125,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 15.5,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  5.166666666666667,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  24.833333333333336,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "itemCount": 3,
+          "cases": [
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                10.5,
+                10.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.5
+                ],
+                [
+                  0.0,
+                  29.5,
+                  40.0,
+                  10.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                10.5,
+                10.5
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.5
+                ],
+                [
+                  0.0,
+                  29.5,
+                  40.0,
+                  10.5
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  14.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  1.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  1.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.16666666666666666,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.833333333333332,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(2px + 6.25%)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 4.5,
+              "resolvedGapPx": 4.5,
+              "freeSpaceBeforeAlignmentPx": 1.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.25,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.75,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "expression": "calc(25% - 2px)",
+      "itemCountCases": [
+        {
+          "itemCount": 2,
+          "cases": [
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                22.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  22.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                22.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  22.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  12.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  12.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  6.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  24.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  3.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  27.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": 12.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  4.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  26.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "itemCount": 3,
+          "cases": [
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -6.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  12.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -6.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  12.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -3.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  33.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(25% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 8.0,
+              "resolvedGapPx": 8.0,
+              "freeSpaceBeforeAlignmentPx": -6.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  18.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  36.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "expression": "calc(10% - 1px)",
+      "itemCountCases": [
+        {
+          "itemCount": 2,
+          "cases": [
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                27.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  27.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                27.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  27.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  17.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  17.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  8.5,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  21.5,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  4.25,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  25.75,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 17.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  5.666666666666667,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  24.333333333333336,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "itemCount": 3,
+          "cases": [
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                12.0,
+                12.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  12.0
+                ],
+                [
+                  0.0,
+                  28.0,
+                  40.0,
+                  12.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                12.0,
+                12.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  12.0
+                ],
+                [
+                  0.0,
+                  28.0,
+                  40.0,
+                  12.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  26.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  13.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  26.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  4.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  17.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  4.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  17.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  2.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  28.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.6666666666666666,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.333333333333332,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(10% - 1px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 3.0,
+              "resolvedGapPx": 3.0,
+              "freeSpaceBeforeAlignmentPx": 4.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  1.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  29.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "expression": "calc(120% - 2px)",
+      "itemCountCases": [
+        {
+          "itemCount": 2,
+          "cases": [
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -26.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -26.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -13.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  43.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 2,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -26.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "itemCount": 3,
+          "cases": [
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "normal",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "stretch",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "flex-start",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -82.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  -26.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "flex-end",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -82.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  -26.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  30.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "center",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  -41.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  15.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  71.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "space-between",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "space-around",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            },
+            {
+              "expression": "calc(120% - 2px)",
+              "itemCount": 3,
+              "rawCalculatedGapPx": 46.0,
+              "resolvedGapPx": 46.0,
+              "freeSpaceBeforeAlignmentPx": -82.0,
+              "alignContent": "space-evenly",
+              "usedRowsPx": [
+                10.0,
+                10.0,
+                10.0
+              ],
+              "itemRects": [
+                [
+                  0.0,
+                  0.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  56.0,
+                  40.0,
+                  10.0
+                ],
+                [
+                  0.0,
+                  112.0,
+                  40.0,
+                  10.0
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

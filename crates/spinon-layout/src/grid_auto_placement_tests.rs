@@ -979,6 +979,7 @@ fn root_html_two_implicit_auto_rows_respect_supported_content_alignment() {
             id(1),
             input.nodes[0].style,
             &input.grid_containers[&id(1)],
+            &BTreeMap::new(),
         )
         .unwrap_or_else(|error| {
             panic!("intrinsic validation rejected {align_content:?}: {error:?}")
@@ -1163,6 +1164,7 @@ fn root_html_auto_row_stretch_gap_matrix_matches_gutters_and_overflow() {
                 id(1),
                 input.nodes[0].style,
                 &input.grid_containers[&id(1)],
+                &BTreeMap::new(),
             )
             .unwrap_or_else(|error| {
                 panic!("{name}, row-gap:{row_gap}px: contract rejected input: {error:?}")

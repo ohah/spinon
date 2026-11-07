@@ -1,0 +1,117 @@
+{
+  "purpose": "Verify that the rendered last Grid item is below the 40px root in the simulator PNG.",
+  "expected": {
+    "gridSizeCssPx": [
+      40,
+      40
+    ],
+    "rowGapCalc": "calc(120% - 2px)",
+    "alignContent": "center",
+    "lastItemTopRelativeToGridCssPx": 71,
+    "classification": "simulator screenshot pixel observation; not PixelCopy or Metal drawable readback"
+  },
+  "platforms": {
+    "android": {
+      "device": "Android API 37 ARM64 AVD",
+      "png": "pass02/android/simulator.png",
+      "pngSha256": "a741c3b92c04087d6725f803c7e9ffd0c9702cbc0a77e73957ccb5a85c17ea42",
+      "imagePx": [
+        1080,
+        2400
+      ],
+      "deviceScale": 2.625,
+      "exactRgb": {
+        "grid": [
+          233,
+          237,
+          242
+        ],
+        "firstText": [
+          91,
+          159,
+          245
+        ],
+        "lastText": [
+          244,
+          162,
+          97
+        ]
+      },
+      "visibleColorBoundsPx": {
+        "grid": [
+          0,
+          128,
+          104,
+          232
+        ],
+        "firstText": [
+          0,
+          167,
+          104,
+          193
+        ],
+        "lastText": [
+          0,
+          314,
+          104,
+          340
+        ]
+      },
+      "gridBottomExclusivePx": 233.0,
+      "lastItemTopOffsetCssPx": 70.85714285714286,
+      "firstTextTopOffsetCssPx": 14.857142857142858,
+      "lastItemStartsOutsideGrid": true
+    },
+    "ios": {
+      "device": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "png": "pass02/ios/simulator.png",
+      "pngSha256": "38881b6f4bc324cc809d3c9ce449e6d0f59a72107fb9a8366ab6b7c8ddc9a0eb",
+      "imagePx": [
+        1206,
+        2622
+      ],
+      "deviceScale": 3.0,
+      "exactRgb": {
+        "grid": [
+          233,
+          237,
+          242
+        ],
+        "firstText": [
+          91,
+          159,
+          245
+        ],
+        "lastText": [
+          244,
+          162,
+          97
+        ]
+      },
+      "visibleColorBoundsPx": {
+        "grid": [
+          0,
+          186,
+          119,
+          305
+        ],
+        "firstText": [
+          0,
+          231,
+          119,
+          260
+        ],
+        "lastText": [
+          0,
+          399,
+          119,
+          428
+        ]
+      },
+      "gridBottomExclusivePx": 306.0,
+      "lastItemTopOffsetCssPx": 71.0,
+      "firstTextTopOffsetCssPx": 15.0,
+      "lastItemStartsOutsideGrid": true
+    }
+  }
+}
