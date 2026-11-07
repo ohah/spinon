@@ -1,0 +1,295 @@
+{
+  "scenes": [
+    {
+      "autoRows": "fit-content(20%) auto 8px",
+      "children": [
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 0,
+            "y": 40
+          },
+          "id": "fit-auto-fixed-explicit",
+          "payload": null
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 0,
+            "y": 50
+          },
+          "id": "fit-auto-fixed-item-1",
+          "payload": {
+            "frame": {
+              "height": 34,
+              "width": 40,
+              "x": 0,
+              "y": 50
+            },
+            "id": "fit-auto-fixed-payload-1"
+          }
+        },
+        {
+          "frame": {
+            "height": 30,
+            "width": 40,
+            "x": 0,
+            "y": 70
+          },
+          "id": "fit-auto-fixed-item-2",
+          "payload": {
+            "frame": {
+              "height": 30,
+              "width": 40,
+              "x": 0,
+              "y": 70
+            },
+            "id": "fit-auto-fixed-payload-2"
+          }
+        },
+        {
+          "frame": {
+            "height": 8,
+            "width": 40,
+            "x": 0,
+            "y": 100
+          },
+          "id": "fit-auto-fixed-item-3",
+          "payload": {
+            "frame": {
+              "height": 6,
+              "width": 40,
+              "x": 0,
+              "y": 100
+            },
+            "id": "fit-auto-fixed-payload-3"
+          }
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 0,
+            "y": 108
+          },
+          "id": "fit-auto-fixed-item-4",
+          "payload": {
+            "frame": {
+              "height": 25,
+              "width": 40,
+              "x": 0,
+              "y": 108
+            },
+            "id": "fit-auto-fixed-payload-4"
+          }
+        }
+      ],
+      "id": "fit-auto-fixed",
+      "root": {
+        "height": 100,
+        "width": 40,
+        "x": 0,
+        "y": 40
+      },
+      "usedRows": "10px 20px 30px 8px 20px"
+    },
+    {
+      "autoRows": "auto fit-content(20%) 8px",
+      "children": [
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 0,
+            "y": 184
+          },
+          "id": "auto-fit-fixed-explicit",
+          "payload": null
+        },
+        {
+          "frame": {
+            "height": 30,
+            "width": 40,
+            "x": 0,
+            "y": 194
+          },
+          "id": "auto-fit-fixed-item-1",
+          "payload": {
+            "frame": {
+              "height": 30,
+              "width": 40,
+              "x": 0,
+              "y": 194
+            },
+            "id": "auto-fit-fixed-payload-1"
+          }
+        },
+        {
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 0,
+            "y": 224
+          },
+          "id": "auto-fit-fixed-item-2",
+          "payload": {
+            "frame": {
+              "height": 34,
+              "width": 40,
+              "x": 0,
+              "y": 224
+            },
+            "id": "auto-fit-fixed-payload-2"
+          }
+        },
+        {
+          "frame": {
+            "height": 8,
+            "width": 40,
+            "x": 0,
+            "y": 244
+          },
+          "id": "auto-fit-fixed-item-3",
+          "payload": {
+            "frame": {
+              "height": 6,
+              "width": 40,
+              "x": 0,
+              "y": 244
+            },
+            "id": "auto-fit-fixed-payload-3"
+          }
+        },
+        {
+          "frame": {
+            "height": 25,
+            "width": 40,
+            "x": 0,
+            "y": 252
+          },
+          "id": "auto-fit-fixed-item-4",
+          "payload": {
+            "frame": {
+              "height": 25,
+              "width": 40,
+              "x": 0,
+              "y": 252
+            },
+            "id": "auto-fit-fixed-payload-4"
+          }
+        }
+      ],
+      "id": "auto-fit-fixed",
+      "root": {
+        "height": 100,
+        "width": 40,
+        "x": 0,
+        "y": 184
+      },
+      "usedRows": "10px 30px 20px 8px 25px"
+    },
+    {
+      "autoRows": "fit-content(0%) auto 8px",
+      "children": [
+        {
+          "frame": {
+            "height": 10,
+            "width": 40,
+            "x": 0,
+            "y": 328
+          },
+          "id": "fit-zero-auto-fixed-explicit",
+          "payload": null
+        },
+        {
+          "frame": {
+            "height": 0,
+            "width": 40,
+            "x": 0,
+            "y": 338
+          },
+          "id": "fit-zero-auto-fixed-item-1",
+          "payload": {
+            "frame": {
+              "height": 34,
+              "width": 40,
+              "x": 0,
+              "y": 338
+            },
+            "id": "fit-zero-auto-fixed-payload-1"
+          }
+        },
+        {
+          "frame": {
+            "height": 30,
+            "width": 40,
+            "x": 0,
+            "y": 338
+          },
+          "id": "fit-zero-auto-fixed-item-2",
+          "payload": {
+            "frame": {
+              "height": 30,
+              "width": 40,
+              "x": 0,
+              "y": 338
+            },
+            "id": "fit-zero-auto-fixed-payload-2"
+          }
+        },
+        {
+          "frame": {
+            "height": 8,
+            "width": 40,
+            "x": 0,
+            "y": 368
+          },
+          "id": "fit-zero-auto-fixed-item-3",
+          "payload": {
+            "frame": {
+              "height": 6,
+              "width": 40,
+              "x": 0,
+              "y": 368
+            },
+            "id": "fit-zero-auto-fixed-payload-3"
+          }
+        },
+        {
+          "frame": {
+            "height": 0,
+            "width": 40,
+            "x": 0,
+            "y": 376
+          },
+          "id": "fit-zero-auto-fixed-item-4",
+          "payload": {
+            "frame": {
+              "height": 25,
+              "width": 40,
+              "x": 0,
+              "y": 376
+            },
+            "id": "fit-zero-auto-fixed-payload-4"
+          }
+        }
+      ],
+      "id": "fit-zero-auto-fixed",
+      "root": {
+        "height": 100,
+        "width": 40,
+        "x": 0,
+        "y": 328
+      },
+      "usedRows": "10px 0px 30px 8px 0px"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

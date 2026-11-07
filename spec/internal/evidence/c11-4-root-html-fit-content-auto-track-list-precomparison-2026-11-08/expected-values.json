@@ -1,0 +1,45 @@
+{
+  "fixture": "tests/fixtures/css/c11/root-html-grid-fit-content-auto-track-list-precomparison.html",
+  "fixtureSha256": "737e6e85256d3a67e3f0fdf1ce82848573754b40bc5c7983dc9c3f7257531eeb",
+  "basis": {
+    "gridContentBox": [40, 100],
+    "explicitColumns": [40],
+    "explicitRows": [10],
+    "rowGap": 0,
+    "alignContent": "start",
+    "itemMinHeight": 0,
+    "percentageBlockBasis": 100
+  },
+  "scenes": [
+    {
+      "id": "fit-auto-fixed",
+      "gridAutoRows": "fit-content(20%) auto 8px",
+      "payloadHeights": [34, 30, 6, 25],
+      "usedRows": [10, 20, 30, 8, 20],
+      "rootRelativeItems": [[0, 0, 40, 10], [0, 10, 40, 20], [0, 30, 40, 30], [0, 60, 40, 8], [0, 68, 40, 20]],
+      "rootRelativePayloads": [[0, 10, 40, 34], [0, 30, 40, 30], [0, 60, 40, 6], [0, 68, 40, 25]]
+    },
+    {
+      "id": "auto-fit-fixed",
+      "gridAutoRows": "auto fit-content(20%) 8px",
+      "payloadHeights": [30, 34, 6, 25],
+      "usedRows": [10, 30, 20, 8, 25],
+      "rootRelativeItems": [[0, 0, 40, 10], [0, 10, 40, 30], [0, 40, 40, 20], [0, 60, 40, 8], [0, 68, 40, 25]],
+      "rootRelativePayloads": [[0, 10, 40, 30], [0, 40, 40, 34], [0, 60, 40, 6], [0, 68, 40, 25]]
+    },
+    {
+      "id": "fit-zero-auto-fixed",
+      "gridAutoRows": "fit-content(0%) auto 8px",
+      "payloadHeights": [34, 30, 6, 25],
+      "usedRows": [10, 0, 30, 8, 0],
+      "rootRelativeItems": [[0, 0, 40, 10], [0, 10, 40, 0], [0, 10, 40, 30], [0, 40, 40, 8], [0, 48, 40, 0]],
+      "rootRelativePayloads": [[0, 10, 40, 34], [0, 10, 40, 30], [0, 40, 40, 6], [0, 48, 40, 25]]
+    }
+  ],
+  "independentRules": [
+    "fit-content(limit) used size is max(auto minimum, min(limit, max-content contribution)); item min-height:0 fixes the automatic minimum at 0 in this profile.",
+    "The auto track max sizing function uses the largest max-content contribution of its items; each scene has enough definite available block space to reach that growth limit.",
+    "align-content:start does not invoke additional auto-track free-space stretch; leftover space may remain unused.",
+    "The first implicit row receives the first grid-auto-rows value; subsequent rows follow the pattern in source order."
+  ]
+}

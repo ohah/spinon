@@ -1,0 +1,26 @@
+{
+  "pageTitle": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?progress=20261108",
+  "route": "/spinon/roadmap.html",
+  "sourceHead": "b4e8f2102f96162cb917e1fae8997f67760fbd1c",
+  "sourceBranch": "feat/c11-4-root-html-fit-content-auto-track-list-20261108",
+  "firstProgressCardText": "현재 진행 · C11.4 parsed Root HTML grid-auto-rows fit-content implicit-row pattern에 auto member 추가: Chrome 157 사전 관측 3 scene과 독립 used-row 기대값을 고정하고 계획 실패 관점 20개 검토를 마쳤다. 기존 제한 profile의 style projection·layout admission 변경을 시작했다. Runtime 회귀·원자 거부/복구, Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 검증과 구현/runtime 실패 관점 검토는 진행 중이다. 현재 미병합 변경이며 완성 판정이나 PR 검증을 뜻하지 않는다. C11.4/C11 체크와 공식 78/214는 유지한다.",
+  "desktop": {
+    "viewportWidth": 1280,
+    "documentWidth": 1280,
+    "screenshot": "tailnet-agent-browser-desktop.png",
+    "screenshotPixels": "1280x900",
+    "screenshotSha256": "4c14490da67454e94b1e569939a6f5da1e64edf61966712ec99fd8fdb8d24b10"
+  },
+  "mobile": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "horizontalOverflow": false,
+    "screenshot": "tailnet-agent-browser-mobile.png",
+    "screenshotPixels": "390x844",
+    "screenshotSha256": "a5ef0c3eb12256e0f9484d69f662a6cbf9b5415b5db5375dbd216aad901228fb"
+  },
+  "browserSessionClosed": true,
+  "matchingAgentBrowserOrChromeProcessesAfterClose": 0
+}

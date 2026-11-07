@@ -1,0 +1,11 @@
+{
+  "title": "스피논 구현 로드맵",
+  "progress": [
+    "진행 중",
+    "auto member",
+    "C11.4 · ACTIVE"
+  ],
+  "hero": "현재 진행 · C11.4 parsed Root HTML grid-auto-rows fit-content implicit-row pattern에 auto member 추가: Chrome 157 사전 관측 3 scene과 독립 used-row 기대값, 계획 및 구현/runtime 실패 관점 20개씩을 검토했다. Layout 2/2, style projection 1/1, RuntimeSession auto-track 2/2와 기존 singleton 회귀 2/2, changed-crate Clippy/rustfmt가 통과했다. Android API 37 ARM64 AVD·iPhone 17 Pro iOS 26.2 Simulator 양쪽에서 기본 Root HTML route가 layout=ready boxes=12를 보고했고 package HTML hash가 fixture와 일치한다. Screenshots는 visual smoke이며 PixelCopy/Metal readback은 아니다. PR diff 실패 관점 30개 검토를 마쳤고, PR 생성·CI/check 결과 확인·merge가 남아 있다. 현재 미병합 변경이며 완료 판정이나 PR 검증을 뜻하지 않는다. C11.4/C11 체크와 공식 78/214는 유지한다.",
+  "bodyWidth": 1280,
+  "viewportWidth": 1280
+}

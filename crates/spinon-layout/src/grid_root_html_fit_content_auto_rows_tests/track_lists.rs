@@ -166,6 +166,33 @@ fn root_html_fit_content_auto_row_track_lists_repeat_in_order_for_implicit_rows(
             [34.0, 10.0, 8.0, 34.0],
             [10.0, 20.0, 12.0, 10.0, 20.0],
         ),
+        (
+            vec![
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::Auto,
+                GridTrackSize::LengthPx(8.0),
+            ],
+            [34.0, 30.0, 6.0, 25.0],
+            [10.0, 20.0, 30.0, 8.0, 20.0],
+        ),
+        (
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::LengthPx(8.0),
+            ],
+            [30.0, 34.0, 6.0, 25.0],
+            [10.0, 30.0, 20.0, 8.0, 25.0],
+        ),
+        (
+            vec![
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.0)),
+                GridTrackSize::Auto,
+                GridTrackSize::LengthPx(8.0),
+            ],
+            [34.0, 30.0, 6.0, 25.0],
+            [10.0, 0.0, 30.0, 8.0, 0.0],
+        ),
     ] {
         let output = TaffyLayoutEngine
             .compute(&input_with_track_list(tracks, payload_heights))
@@ -197,6 +224,30 @@ fn root_html_fit_content_auto_row_track_lists_repeat_in_order_for_implicit_rows(
             );
             y += expected_rows[index + 1];
         }
+    }
+}
+
+#[test]
+fn root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or_other_types() {
+    for tracks in [
+        vec![GridTrackSize::Auto, GridTrackSize::LengthPx(8.0)],
+        vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::Auto,
+            GridTrackSize::MinContent,
+        ],
+        vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::Auto,
+            GridTrackSize::Fraction(1.0),
+        ],
+        Vec::new(),
+    ] {
+        let input = input_with_track_list(tracks, [34.0, 30.0, 6.0, 25.0]);
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+        ));
     }
 }
 

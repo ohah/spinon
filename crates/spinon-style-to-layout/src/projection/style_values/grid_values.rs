@@ -415,6 +415,7 @@ fn validate_root_html_grid_tracks(
             {
                 false
             }
+            ComputedCssGridTrackSize::Auto if fit_content_auto_rows => false,
             ComputedCssGridTrackSize::FitContent(
                 ComputedCssGridTrackLengthPercentage::LengthPx(cap),
             )
@@ -501,6 +502,7 @@ fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]
             .iter()
             .any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
         && tracks.iter().all(|track| match track {
+            ComputedCssGridTrackSize::Auto => true,
             ComputedCssGridTrackSize::LengthPx(value)
             | ComputedCssGridTrackSize::Percentage(value) => value.is_finite() && *value >= 0.0,
             ComputedCssGridTrackSize::FitContent(

@@ -1,0 +1,4 @@
+Agent Browser cleanup after pass05
+agent-browser session spinon-roadmap-audit: active=false, pid=null
+agent-browser CLI process: none after close
+The process scan also found persistent Google Chrome PID 9035 (--no-startup-window) and PID 69801 with the existing hwpjs/zig-out/verification/webhwp-gap-audit-r2/reference/owned-profile, running for more than a day before this check. They are unrelated pre-existing Chrome processes and were preserved.
