@@ -1,0 +1,27 @@
+{
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 623127,
+    "sha256": "32650007aa38c6d3b41e4d47abf141f801a8d531df4bf641613b58b258f5c252"
+  },
+  "local": {
+    "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 623127,
+    "sha256": "32650007aa38c6d3b41e4d47abf141f801a8d531df4bf641613b58b258f5c252"
+  },
+  "tailnet": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 623127,
+    "sha256": "32650007aa38c6d3b41e4d47abf141f801a8d531df4bf641613b58b258f5c252"
+  },
+  "markers": [
+    "C11.4",
+    "Root HTML align-content:baseline fallback",
+    "78/214"
+  ],
+  "byteIdentical": true,
+  "backupHashVerified": true,
+  "serverRestarted": false
+}

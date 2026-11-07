@@ -1,0 +1,45 @@
+{
+  "sourceHead": "e275882ecceb1a2e2545eb827cdcde3673d8efd2",
+  "sourceTree": "8fa618f2533d89be856968bbbd53e0c751e9b4ed",
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 623127,
+    "sha256": "32650007aa38c6d3b41e4d47abf141f801a8d531df4bf641613b58b258f5c252"
+  },
+  "sourceMarkers": [
+    "C11.4",
+    "Root HTML align-content:baseline fallback",
+    "78/214"
+  ],
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "target": {
+    "path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+    "bytes": 622905,
+    "sha256": "980c92d9360b39a5ccc319aede900108c68ceb1fcc519c4936fae528b78d2494",
+    "mode": 420
+  },
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1262-c11-4-baseline-2026-11-07/pass01",
+  "tailscaleBackendState": "Running",
+  "previewServer": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "openHandlePids": [],
+  "local": {
+    "status": 200,
+    "bytes": 622905,
+    "sha256": "980c92d9360b39a5ccc319aede900108c68ceb1fcc519c4936fae528b78d2494"
+  },
+  "tailnet": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 622905,
+    "sha256": "980c92d9360b39a5ccc319aede900108c68ceb1fcc519c4936fae528b78d2494"
+  },
+  "filesToReplace": [
+    "roadmap.html"
+  ],
+  "noDeletes": true,
+  "serverRestarted": false
+}
