@@ -240,7 +240,7 @@ fn parsed_root_html_fit_content_auto_rows_reject_atomically_and_recover_same_ses
     );
     assert!(
         rejected.completed.is_none(),
-        "unsupported percentage cap must not publish a partial render scene"
+        "a percentage-bearing calc cap must not publish a partial render scene"
     );
 
     media.color_scheme = spinon_style::CssColorScheme::Light;
