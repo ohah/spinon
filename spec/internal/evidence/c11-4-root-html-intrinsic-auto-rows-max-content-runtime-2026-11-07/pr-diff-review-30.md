@@ -33,6 +33,6 @@
 | 27 | Android 검증 artifact와 시험한 fixture source가 다름 | fixture sha가 source, Android APK asset 및 설치 APK 근거에서 일치한다. API 37 ARM64 AVD이며 SwiftShader 사용을 기록했다. |
 | 28 | iOS 검증이 다른 fixture 또는 기본 route 밖의 경로를 사용함 | source hash와 설치 bundle을 대조하고 iPhone 17 Pro/iOS 26.2 Simulator 기본 route의 ready 상태를 기록했다. |
 | 29 | simulator screenshot을 GPU pixel readback이나 일반 지원으로 확대 해석함 | 실행 README는 screenshots를 visual smoke로 한정하며 PixelCopy, Metal drawable readback, compositor-after pixels, 실기기, hardware GPU 및 WPT를 제외한다. |
-| 30 | candidate가 공식 C11.4/C11 완료나 CI 통과로 게시됨 | `STATUS.md`는 `78/214`와 incomplete 상태를 보존한다. PR/CI 상태는 아직 별도 GitHub 게시·확인이 필요하며 simulator 증거만으로 완료를 표시하지 않는다. |
+| 30 | candidate가 공식 C11.4/C11 완료나 CI 통과로 게시됨 | `STATUS.md`는 `78/214`와 incomplete 상태를 보존한다. PR #1264는 enhancement/area: layout 라벨로 열렸고 현재 check rollup은 비어 있으므로 CI 통과를 기록하지 않는다. simulator 증거만으로 완료를 표시하지 않는다. |
 
 검토 과정에서 이번 diff에서 추가 수정이 필요한 미해결 결함은 확인하지 못했다. PR이 생성된 뒤에는 실제 PR head와 CI rollup을 별도로 확인한다.
