@@ -44,3 +44,4 @@ pass01–04 모두 기존 bootstrap 입력, Android APK, iOS build, 설치 앱�
 
 - [계획](../../../../plan/c11-root-html-auto-row-safe-start.md)
 - [구현/runtime 실패 관점 20개](./implementation-review-20.md)
+- [PR diff 실패 관점 30개](./pr-diff-review-30.md)
