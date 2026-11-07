@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML fit-content/min-content/auto implicit-row list
 
-**Status:** 계획·계획 실패 관점 20개 검토·Chrome 157 사전 비교, 제한 구현, focused Rust 검증, Android/iOS Simulator 기본 Root HTML 실행, 구현/runtime 20개 검토와 PR diff 30개 검토를 마쳤다. PR 생성·CI/merge 결과와 병합 후 문서·Tailnet 동기화가 남아 있다. 이 slice는 C11.4 또는 C11 완료를 뜻하지 않으며 공식 `78/214`를 바꾸지 않는다.
+**Status:** 제한 구현 PR [#1274](https://github.com/ohah/spinon/pull/1274)가 `2026-11-07T22:12:47Z` Rebase and merge됐다(merge SHA `b361097257f0fb6a9739de139724bef24abadb04`). Chrome 157 사전 비교, focused Rust 검증, Android/iOS Simulator 기본 Root HTML 실행, 구현/runtime 20개와 PR diff 30개 실패 관점 검토를 기록했다. 병합 후 계약·상태·공개/Tailnet 로드맵 동기화는 후속 문서 변경에서 수행한다. 이 slice는 C11.4 또는 C11 완료를 뜻하지 않으며 공식 `78/214`를 바꾸지 않는다.
 
 **상위:** [공식 C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [선행 fit-content auto 목록](./c11-4-root-html-fit-content-auto-track-list.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -51,7 +51,7 @@ Finite pixel caps are covered by a separate pinned Chrome 157 scene: [`fit-conte
 5. Style projection tests는 양쪽 order를 허용하고 singleton/duplicate/missing/unmodeled members, unsupported align-content와 다른 Grid profile을 거부한다. RuntimeSession tests는 기본 parsed Root HTML 경로, root/document/style/layout revision identity, full frame publication, unsupported-shape failure atomicity와 same-session recovery를 확인한다.
 6. Focused tests, 변경 crate Clippy, `cargo fmt --all -- --check`를 실행한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 최종 source/HTML hash로 기본 Root HTML runtime을 실행하고 screenshots를 저장한다. Android current-process log는 `layout=ready boxes=12`와 draw-presented를 기록한다. iOS current-process log는 fixture source와 `layout=ready boxes=12`를 기록하고 screenshot에서 표시를 확인한다. 양쪽 screenshots는 visual smoke와 bounds 확인이며 PixelCopy/Metal surface readback으로 부르지 않는다. iOS 설치 전후 data-container 경로가 달라져 기존 app-data continuity를 확인할 수 없었다. 설치·erase·clear 명령은 실행하지 않았고 원인은 특정하지 못했다. [실행 결과](../spec/internal/evidence/c11-4-root-html-fit-content-min-content-auto-track-list-runtime-2026-11-08/README.md) · [구현/runtime 실패 경로 20개 검토](../spec/internal/evidence/c11-4-root-html-fit-content-min-content-auto-track-list-runtime-2026-11-08/implementation-runtime-review-20.md)
 7. 구현/runtime 변경을 별도의 20개 failure-path review로 검토한다. PR diff를 30개 서로 다른 관점으로 검토하고 가능한 Simulator 화면을 PR 본문에 commit-pinned raw-image link로 넣는다. [구현/runtime 20개 검토](../spec/internal/evidence/c11-4-root-html-fit-content-min-content-auto-track-list-runtime-2026-11-08/implementation-runtime-review-20.md) · [PR diff 30개 검토](../spec/internal/evidence/c11-4-root-html-fit-content-min-content-auto-track-list-runtime-2026-11-08/pr-diff-review-30.md). PR checks/merge result를 사실대로 기록하고 Rebase and merge만 사용한다.
-8. Merge 뒤 official status checkbox와 `78/214`를 유지하고 내부 문서·C11.4 plan·public/Tailnet roadmap을 동기화한다. Tailnet source/served SHA 및 Agent Browser desktop/mobile 표시를 확인한 뒤 Agent Browser process를 닫는다.
+8. Merge 뒤 official status checkbox와 `78/214`를 유지하고 내부 문서·C11.4 plan·public/Tailnet roadmap을 동기화한다. Tailnet source/served SHA 및 Agent Browser desktop/mobile 표시를 확인한 뒤 Agent Browser process를 닫는다. PR #1274는 merge됐으며 후속 sync 근거는 [roadmap 동기화 evidence](../spec/internal/evidence/roadmap-tailnet-sync-pr1274-c11-4-2026-11-08/README.md)에 둔다.
 
 ## 계획 실패 관점 검토
 

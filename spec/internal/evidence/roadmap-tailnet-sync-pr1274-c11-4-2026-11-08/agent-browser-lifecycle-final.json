@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-11-07T22:29:46Z",
+  "session": "spinon-roadmap-c114",
+  "closeCommand": "agent-browser close --all",
+  "sessionList": "No active sessions",
+  "sessionInfoActive": false,
+  "agentBrowserProcessFound": false,
+  "command": "pgrep -x agent-browser"
+}
