@@ -17,6 +17,7 @@ Agent Browser 0.31.1에서 [실제 Tailnet URL](https://macstudio.tailed42f2.ts.
 - Desktop active card y=`455.02px`, board bottom y=`773.02px`. [DOM 관측](./tailnet-desktop.json) · [screenshot](./tailnet-roadmap-agent-browser-desktop.png)
 - Mobile active card y=`438.53px`, progress column visible. [DOM 관측](./tailnet-mobile.json) · [screenshot](./tailnet-roadmap-agent-browser-mobile.png)
 - Agent Browser session을 닫았고 이후 Agent Browser·HeadlessChrome process scan은 비었다. Tailnet preview server PID `28040`은 계속 실행 중이다. [lifecycle](./agent-browser-lifecycle.json)
+- PR #1259 화면에서도 두 본문 이미지가 실제 로드됐고 natural size는 desktop 1440×1000, mobile 390×844였다. [PR image load 관측](./pr-images-agent-browser.json)
 
 GitHub Pages/`gh-pages`는 배포하지 않았다. 공식 완료 `78/214`, C11.4/C11 상태는 변경하지 않았다.
 

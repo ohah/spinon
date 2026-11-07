@@ -31,7 +31,7 @@
 | 25 | mobile viewport에서 card가 off-screen column에 남을 수 있음 | 390×844, scrollLeft 272px, active card y=438.53px | 통과 |
 | 26 | mobile 내부 scroll이 전체 문서를 가로로 넘길 수 있음 | document width 390px로 viewport와 일치 | 통과 |
 | 27 | desktop board가 폭 때문에 잘릴 수 있음 | frame 1260px, content 1260px | 통과 |
-| 28 | screenshot과 DOM observation이 서로 다른 capture일 수 있음 | viewport·bounds·screenshot path/hash를 JSON에 함께 기록 | 통과 |
+| 28 | screenshot과 DOM observation이 서로 다른 capture이거나 PR 이미지 URL이 깨질 수 있음 | viewport·bounds·screenshot path/hash 기록 및 PR #1259 본문 이미지 natural dimensions 확인 | 통과 |
 | 29 | Agent Browser 또는 Chrome process가 남을 수 있음 | close 후 process scan empty 기록 | 통과 |
 | 30 | 이전 preview backup 또는 Tailnet server를 cleanup할 수 있음 | backup 보존, server PID 28040 유지 | 통과 |
 
