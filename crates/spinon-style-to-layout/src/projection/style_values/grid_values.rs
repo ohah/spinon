@@ -511,6 +511,10 @@ fn root_html_fit_content_min_content_auto_track_list(tracks: &[ComputedCssGridTr
         tracks,
         [fit, ComputedCssGridTrackSize::MinContent, ComputedCssGridTrackSize::Auto]
             | [fit, ComputedCssGridTrackSize::Auto, ComputedCssGridTrackSize::MinContent]
+            | [ComputedCssGridTrackSize::MinContent, fit, ComputedCssGridTrackSize::Auto]
+            | [ComputedCssGridTrackSize::MinContent, ComputedCssGridTrackSize::Auto, fit]
+            | [ComputedCssGridTrackSize::Auto, fit, ComputedCssGridTrackSize::MinContent]
+            | [ComputedCssGridTrackSize::Auto, ComputedCssGridTrackSize::MinContent, fit]
             if root_html_fit_content_cap_is_supported(fit)
     )
 }

@@ -1,0 +1,23 @@
+{
+  "browser": "Google Chrome 157.0.8103.39 via Agent Browser",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewportCssPx": [1280, 633],
+  "fixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-remaining-order-runtime.html",
+  "fixtureSha256": "2f108e91fb3f7485df0aded8e4eb7942f7718063f63437eb05ec064532d9471e",
+  "gridFrame": [0, 0, 40, 100],
+  "authoredAutoRows": "auto fit-content(20%) min-content",
+  "usedRowsPx": [10, 44, 20, 10, 16],
+  "itemFrames": [
+    [0, 0, 40, 10],
+    [0, 10, 40, 44],
+    [0, 54, 40, 20],
+    [0, 74, 40, 10],
+    [0, 84, 40, 16]
+  ],
+  "payloadFrames": [
+    [0, 10, 40, 34],
+    [0, 54, 40, 34],
+    [0, 74, 40, 10],
+    [0, 84, 40, 6]
+  ]
+}

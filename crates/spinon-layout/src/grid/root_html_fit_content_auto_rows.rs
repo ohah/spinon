@@ -15,6 +15,10 @@ pub(super) fn supports_min_content_auto_track_list(tracks: &[GridTrackSize]) -> 
         tracks,
         [fit, GridTrackSize::MinContent, GridTrackSize::Auto]
             | [fit, GridTrackSize::Auto, GridTrackSize::MinContent]
+            | [GridTrackSize::MinContent, fit, GridTrackSize::Auto]
+            | [GridTrackSize::MinContent, GridTrackSize::Auto, fit]
+            | [GridTrackSize::Auto, fit, GridTrackSize::MinContent]
+            | [GridTrackSize::Auto, GridTrackSize::MinContent, fit]
             if fit_content_cap_is_supported(fit)
     )
 }

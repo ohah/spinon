@@ -142,6 +142,71 @@ fn parsed_root_html_fit_content_min_content_auto_lists_match_both_orders_and_ove
 }
 
 #[test]
+fn parsed_root_html_fit_content_min_content_auto_lists_match_remaining_orders() {
+    use spinon_style::{
+        ComputedCssGridTrackLengthPercentage::{LengthPx, Percentage},
+        ComputedCssGridTrackSize::{Auto, FitContent, MinContent},
+    };
+
+    assert_scene(
+        &source_with_scene("min-content fit-content(20%) auto"),
+        "min-content fit-content(20%) auto",
+        vec![MinContent, FitContent(Percentage(0.2)), Auto],
+        [10.0, 34.0, 20.0, 30.0, 6.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("min-content fit-content(20px) auto"),
+        "min-content fit-content(20px) auto",
+        vec![MinContent, FitContent(LengthPx(20.0)), Auto],
+        [10.0, 34.0, 20.0, 30.0, 6.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("min-content auto fit-content(20%)"),
+        "min-content auto fit-content(20%)",
+        vec![MinContent, Auto, FitContent(Percentage(0.2))],
+        [10.0, 34.0, 40.0, 10.0, 6.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("min-content auto fit-content(20px)"),
+        "min-content auto fit-content(20px)",
+        vec![MinContent, Auto, FitContent(LengthPx(20.0))],
+        [10.0, 34.0, 40.0, 10.0, 6.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("auto fit-content(20%) min-content"),
+        "auto fit-content(20%) min-content",
+        vec![Auto, FitContent(Percentage(0.2)), MinContent],
+        [10.0, 44.0, 20.0, 10.0, 16.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("auto fit-content(20px) min-content"),
+        "auto fit-content(20px) min-content",
+        vec![Auto, FitContent(LengthPx(20.0)), MinContent],
+        [10.0, 44.0, 20.0, 10.0, 16.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("auto min-content fit-content(20%)"),
+        "auto min-content fit-content(20%)",
+        vec![Auto, MinContent, FitContent(Percentage(0.2))],
+        [10.0, 37.0, 34.0, 10.0, 9.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+    assert_scene(
+        &source_with_scene("auto min-content fit-content(20px)"),
+        "auto min-content fit-content(20px)",
+        vec![Auto, MinContent, FitContent(LengthPx(20.0))],
+        [10.0, 37.0, 34.0, 10.0, 9.0],
+        [34.0, 34.0, 10.0, 6.0],
+    );
+}
+
+#[test]
 fn parsed_root_html_fit_content_min_content_auto_rejects_nearby_profiles_atomically() {
     for (name, from, to) in [
         (
@@ -157,7 +222,7 @@ fn parsed_root_html_fit_content_min_content_auto_rejects_nearby_profiles_atomica
         (
             "unmodeled max-content member",
             "fit-content(120%) min-content auto",
-            "fit-content(20%) max-content auto",
+            "min-content fit-content(20%) max-content",
         ),
         (
             "missing fit-content anchor",
@@ -188,8 +253,9 @@ fn parsed_root_html_fit_content_min_content_auto_rejects_nearby_profiles_atomica
 
 #[test]
 fn parsed_root_html_fit_content_min_content_auto_recovers_in_the_same_session() {
+    let source = source_with_scene("min-content fit-content(20%) auto");
     let source = replace_once(
-        SOURCE,
+        &source,
         "</style>",
         "@media (prefers-color-scheme: dark) { #grid { grid-auto-rows: fit-content(20%) min-content min-content; } }\n</style>",
     );
@@ -226,7 +292,7 @@ fn parsed_root_html_fit_content_min_content_auto_recovers_in_the_same_session() 
             recovered_scene,
             spinon_render::OpaqueCssSrgb::new(168, 85, 247),
         ),
-        [0.0, 60.0, 40.0, 40.0],
+        [0.0, 94.0, 40.0, 6.0],
         "recovered fourth implicit row",
     );
 }
