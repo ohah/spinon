@@ -1,0 +1,26 @@
+# C11.4 fit-content/min-content/auto implementation/runtime review (20 paths)
+
+Scope: the code and evidence in the adjacent runtime README, reviewed after implementation. These are independent failure paths; they do not reuse the plan's 20 review items. Result: 20/20 reviewed, no open product defect found. Existing intentional rejection boundaries are retained.
+
+1. **Wrong track-list order accepted.** The projection helper matches only `fit-content, min-content, auto` or `fit-content, auto, min-content`; style tests exercise both orders and typed order is checked again through RuntimeSession.
+2. **Missing or duplicate semantic member accepted.** Exact three-element matching prevents absent/duplicated `min-content`, absent/duplicated `auto`, and duplicate fit-content anchors; projection and runtime negative tests reject duplicate/missing cases.
+3. **An extra track silently admitted.** The four-entry near miss is rejected at projection and RuntimeSession; the layout negative case also rejects an extra fixed-px member.
+4. **Pixel cap parsed but projected incorrectly.** A 20px cap is preserved as `LengthPx(20.0)` in projection and RuntimeSession; the Chrome 157 px oracle confirms 20px used size and all item/payload frames.
+5. **Percentage cap resolved against the wrong basis.** The 20% cap is exercised against the definite 100px content-box height, and the independent expected rows match Chrome and layout/RuntimeSession results.
+6. **Negative or non-finite cap reaches layout.** Both px and percentage projection guards reject negative, NaN, and infinite caps; layout repeats the finite/non-negative check before accepting the pattern.
+7. **Fit-content cap replaces the track's minimum contribution.** The 34px payload remains visible while its fit-content item track is 20px, and the nested payload frame remains 34px in Chrome, layout and RuntimeSession evidence.
+8. **Min-content sizing is replaced by the auto track.** Both list orders retain the 34px/10px min-content rows while only the auto track grows; exact row arrays and all frames are asserted.
+9. **Stretch is distributed to the wrong track.** Positive free space is 20px in both reference orders; the auto row alone receives it, producing 30px or 54px depending on order.
+10. **Track-list repetition starts at the wrong member.** The fourth implicit row wraps to the first fit-content member and is asserted as 6px in positive-space scenes and 40px in the 120% overflow scene.
+11. **Percentage overflow is clipped or hidden.** The 50px nested payload extends 10px below the 100px grid border; its payload and item frames are separately checked. Simulator captures are visual smoke only.
+12. **Unsupported intrinsic members enter through a broad intrinsic flag.** `MaxContent`, singleton `MinContent`, and extra intrinsic members do not match the exact list; projection/runtime negatives and layout normalization retain rejection.
+13. **`minmax()`, `fr`, `calc()`, or another unsupported track leaks into this slice.** The exact three-member helper only accepts a finite px/% fit-content cap plus one MinContent and one Auto; all other `GridTrackSize` variants fail the existing per-track guard.
+14. **An unrelated Root HTML placement mode inherits the feature.** Layout requires `RootHtmlFitContentAutoRowsV1` before the new intrinsic allowance; other placement modes do not satisfy the predicate.
+15. **The existing fit-content-auto list gains new stretch behavior accidentally.** Stretch is enabled only when the exact min-content/auto helper succeeds; layout and runtime negative controls cover non-exact lists.
+16. **A different `align-content` value slips through the new allowlist.** The projection and layout branches compare the computed value with exactly `stretch`; RuntimeSession rejects `center` for the otherwise supported list.
+17. **Alignment permission applies to a non-container or item.** Projection derives the allowlist from registered Grid-container node IDs and `element.grid_layout`; item alignment remains under the existing separate checks.
+18. **The supported pattern breaks transactional failure behavior.** RuntimeSession tests assert failed revisions publish no completed layout/render snapshot after nearby invalid list or alignment input.
+19. **A failed style/media revision poisons later layout.** A dark media override activates an invalid repeated intrinsic list, then switching back to light recovers the same RuntimeSession with complete expected frames.
+20. **The simulator evidence claims more than it proves.** Android current-PID logs establish layout readiness and draw-presented; iOS logs establish layout readiness and the saved OS screenshot shows rendered output. Neither screenshot is PixelCopy/Metal readback, and the iOS data-container identity change is explicitly retained as an unresolved continuity limitation.
+
+Focused verification is recorded in [`README.md`](./README.md) and the per-command logs. A runtime test compilation initially found a missing type qualification in the added px-cap assertion; it was corrected before the final 11/11 RuntimeSession rerun. An old negative control was also changed because it targeted the previously supported `fit-content() auto` list instead of an unsupported input.

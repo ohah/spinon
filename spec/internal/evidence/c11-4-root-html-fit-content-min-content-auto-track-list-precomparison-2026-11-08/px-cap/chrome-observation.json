@@ -1,0 +1,31 @@
+{
+  "sourceFixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-track-list-px-precomparison.html",
+  "sourceSha256": "1e033168adfef61579ead7a2ea0f4f7c685ab5f43060e693fb53e530fff61720",
+  "capture": {
+    "tool": "Agent Browser",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "platform": "macOS arm64",
+    "viewport": [1280, 633],
+    "devicePixelRatio": 1,
+    "screenshot": "chrome157-agent-browser.png",
+    "screenshotSha256": "fc87cc40902ae65a46d6d5231d78993ad335fbdbbc4b2178686f89438f3cacc5"
+  },
+  "scene": {
+    "id": "fit-min-auto-px-cap",
+    "gridAutoRows": "fit-content(20px) min-content auto",
+    "gridTemplateRows": "10px 20px 34px 30px 6px",
+    "alignContent": "stretch",
+    "grid": [0, 0, 40, 100],
+    "frames": {
+      "explicit": [0, 0, 40, 10],
+      "item-1": [0, 10, 40, 20],
+      "item-2": [0, 30, 40, 34],
+      "item-3": [0, 64, 40, 30],
+      "item-4": [0, 94, 40, 6],
+      "payload-1": [0, 10, 40, 34],
+      "payload-2": [0, 30, 40, 34],
+      "payload-3": [0, 64, 40, 10],
+      "payload-4": [0, 94, 40, 6]
+    }
+  }
+}

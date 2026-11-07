@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Root HTML Grid fit-content/min-content/auto implicit-row list</title>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background-color: #101820; }
+      #grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 40px;
+        height: 100px;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        background-color: #17212b;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        grid-auto-rows: fit-content(120%) min-content auto;
+        gap: 0;
+        align-content: stretch;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+      }
+      #explicit {
+        display: block;
+        width: auto;
+        height: 10px;
+        margin: 0;
+        padding: 0;
+        background-color: #e5484d;
+      }
+      .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+      }
+      #item-1 { background-color: #22c55e; }
+      #item-2 { background-color: #14b8a6; }
+      #item-3 { background-color: #f97316; }
+      #item-4 { background-color: #a855f7; }
+      .payload {
+        display: block;
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+      #payload-1 { height: 6px; background-color: #3b82f6; }
+      #payload-2 { height: 34px; background-color: #06b6d4; }
+      #payload-3 { height: 10px; background-color: #84cc16; }
+      #payload-4 { height: 50px; background-color: #ec4899; }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div id="explicit"></div>
+      <div class="item" id="item-1"><div class="payload" id="payload-1"></div></div>
+      <div class="item" id="item-2"><div class="payload" id="payload-2"></div></div>
+      <div class="item" id="item-3"><div class="payload" id="payload-3"></div></div>
+      <div class="item" id="item-4"><div class="payload" id="payload-4"></div></div>
+    </div>
+  </body>
+</html>

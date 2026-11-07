@@ -1,0 +1,8 @@
+cargo clippy --locked -p spinon-layout -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings
+exit status: 0
+
+cargo fmt --all -- --check
+exit status: 0
+
+git diff --check
+exit status: 0

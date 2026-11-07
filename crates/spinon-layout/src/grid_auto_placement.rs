@@ -230,6 +230,26 @@ pub(super) fn normalize_sparse_grid_container(
                         property: "grid-auto-rows",
                     });
                 }
+                let fit_content_min_content_auto_pattern = container.placement_mode
+                    == crate::GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                    && matches!(
+                        tracks.as_slice(),
+                        [
+                            GridTrackSize::FitContent(
+                                crate::GridTrackLengthPercentage::LengthPx(cap)
+                                    | crate::GridTrackLengthPercentage::Percentage(cap)
+                            ),
+                            GridTrackSize::MinContent,
+                            GridTrackSize::Auto,
+                        ] | [
+                            GridTrackSize::FitContent(
+                                crate::GridTrackLengthPercentage::LengthPx(cap)
+                                    | crate::GridTrackLengthPercentage::Percentage(cap)
+                            ),
+                            GridTrackSize::Auto,
+                            GridTrackSize::MinContent,
+                        ] if cap.is_finite() && *cap >= 0.0
+                    );
                 for track in tracks {
                     match track {
                         GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {}
@@ -253,6 +273,7 @@ pub(super) fn normalize_sparse_grid_container(
                         GridTrackSize::MinContent | GridTrackSize::MaxContent
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 => {}
+                        GridTrackSize::MinContent if fit_content_min_content_auto_pattern => {}
                         GridTrackSize::Auto
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlFitContentAutoRowsV1 => {}

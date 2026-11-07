@@ -1,0 +1,12 @@
+   Compiling spinon-style-to-layout v0.1.0 (<workspace>/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.60s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 5 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_rejects_calc_or_invalid_limits ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_min_content_auto::root_html_fit_content_min_content_auto_lists_reject_nearby_patterns_and_invalid_caps ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_min_content_auto::root_html_fit_content_min_content_auto_lists_preserve_both_exact_orders ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_percentage_auto_rows_require_the_bounded_definite_grid_shape ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 454 filtered out; finished in 0.00s

@@ -1,0 +1,10 @@
+before_install_container_id=A2E877C5-CABD-493A-8DEE-18BB687E37B7
+after_install_container_id=AF0E8FA7-70D0-44B0-9786-6844987417ED
+identity_changed=true
+previous_container_exists=false
+current_container_exists=true
+uninstall_command_run=false
+simulator_erase_command_run=false
+app_data_clear_command_run=false
+cause=unknown
+app_data_continuity=not_confirmed

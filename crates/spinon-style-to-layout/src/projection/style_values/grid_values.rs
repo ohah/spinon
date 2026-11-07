@@ -415,6 +415,7 @@ fn validate_root_html_grid_tracks(
             {
                 false
             }
+            ComputedCssGridTrackSize::MinContent if fit_content_auto_rows => false,
             ComputedCssGridTrackSize::Auto if fit_content_auto_rows => false,
             ComputedCssGridTrackSize::FitContent(
                 ComputedCssGridTrackLengthPercentage::LengthPx(cap),
@@ -495,22 +496,57 @@ fn root_html_has_fit_content_auto_rows(grid: &ComputedCssGridLayout) -> bool {
     )
 }
 
+fn root_html_fit_content_cap_is_supported(track: &ComputedCssGridTrackSize) -> bool {
+    matches!(
+        track,
+        ComputedCssGridTrackSize::FitContent(
+            ComputedCssGridTrackLengthPercentage::LengthPx(value)
+                | ComputedCssGridTrackLengthPercentage::Percentage(value)
+        ) if value.is_finite() && *value >= 0.0
+    )
+}
+
+fn root_html_fit_content_min_content_auto_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    matches!(
+        tracks,
+        [fit, ComputedCssGridTrackSize::MinContent, ComputedCssGridTrackSize::Auto]
+            | [fit, ComputedCssGridTrackSize::Auto, ComputedCssGridTrackSize::MinContent]
+            if root_html_fit_content_cap_is_supported(fit)
+    )
+}
+
+pub(super) fn root_html_fit_content_auto_rows_with_min_content(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if root_html_fit_content_min_content_auto_track_list(tracks)
+    )
+}
+
 fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
         && tracks
             .iter()
             .any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
-        && tracks.iter().all(|track| match track {
-            ComputedCssGridTrackSize::Auto => true,
-            ComputedCssGridTrackSize::LengthPx(value)
-            | ComputedCssGridTrackSize::Percentage(value) => value.is_finite() && *value >= 0.0,
-            ComputedCssGridTrackSize::FitContent(
-                ComputedCssGridTrackLengthPercentage::LengthPx(value)
-                | ComputedCssGridTrackLengthPercentage::Percentage(value),
-            ) => value.is_finite() && *value >= 0.0,
-            _ => false,
-        })
+        && if tracks
+            .iter()
+            .any(|track| matches!(track, ComputedCssGridTrackSize::MinContent))
+        {
+            root_html_fit_content_min_content_auto_track_list(tracks)
+        } else {
+            tracks.iter().all(|track| match track {
+                ComputedCssGridTrackSize::Auto => true,
+                ComputedCssGridTrackSize::LengthPx(value)
+                | ComputedCssGridTrackSize::Percentage(value) => value.is_finite() && *value >= 0.0,
+                track @ ComputedCssGridTrackSize::FitContent(_) => {
+                    root_html_fit_content_cap_is_supported(track)
+                }
+                _ => false,
+            })
+        }
 }
 
 pub(super) fn root_html_fit_content_implicit_rows_candidate(grid: &ComputedCssGridLayout) -> bool {

@@ -1,0 +1,12 @@
+{
+  "sourceFixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-track-list-precomparison.html",
+  "sourceSha256": "2daedf8cb1a755258e51b634c8907168ac27cef3106a1571b9c71cdbdf4292f0",
+  "chromeObservation": "chrome-observation.json",
+  "independentExpectedValues": "expected-values.json",
+  "scenesCompared": 3,
+  "gridFramesCompared": 3,
+  "childFramesCompared": 15,
+  "nestedPayloadFramesCompared": 12,
+  "maximumGeometryDifferenceCssPx": 0,
+  "result": "pass"
+}
