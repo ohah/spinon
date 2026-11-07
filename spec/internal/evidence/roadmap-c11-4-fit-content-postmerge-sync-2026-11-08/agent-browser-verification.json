@@ -1,0 +1,18 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "desktop": {
+    "viewport": "1440x1000",
+    "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+    "observed": ["진행 중", "intrinsic track sizing", "C11.4 · ACTIVE", "78/214"]
+  },
+  "desktop_progress": {
+    "viewport": "1440x1000",
+    "screenshot": "tailnet-roadmap-agent-browser-desktop-progress.png",
+    "observed": ["PR #1265", "2026-11-07T14:51:02Z", "e543401f3161769c35df641772778bde3c25976b", "CI 성공으로 기록하지 않는다", "78/214"]
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+    "observed": ["진행 중", "C11.4 · ACTIVE", "1/2", "78/214"]
+  }
+}

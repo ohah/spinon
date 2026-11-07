@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-08",
+  "roadmap_source": "spec/public/roadmap.html",
+  "roadmap_source_base_commit": "e543401f3161769c35df641772778bde3c25976b",
+  "source_sha256": "e464a9f7268c4c3c4585e40a6c28c4e81fbbaa2ddeff6e10d498bd5a73e1a8f8",
+  "source_bytes": 628718,
+  "served_path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "previous_served_sha256": "e82a58e6a44d777a67658d82e537b1591518582374969a0a4be3f9ff9c9d0a3e",
+  "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-c11-4-fit-content-postmerge-sync-2026-11-07-pass01/roadmap.html",
+  "backup_sha256": "e82a58e6a44d777a67658d82e537b1591518582374969a0a4be3f9ff9c9d0a3e",
+  "served_sha256": "e464a9f7268c4c3c4585e40a6c28c4e81fbbaa2ddeff6e10d498bd5a73e1a8f8",
+  "replacement": "same-directory temporary file followed by atomic os.replace",
+  "deleted_routes": [],
+  "preview_server": {
+    "pid": 28040,
+    "listen": "127.0.0.1:8768",
+    "restarted": false
+  }
+}
