@@ -786,7 +786,7 @@ pub(super) fn validate_grid_layout(
                     template_area_track_sizing
                         || container.placement_mode == GridPlacementMode::TrackSizing
                         || root_html_intrinsic_auto_rows,
-                    false,
+                    container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,
                     false,
                     container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,
                 )?;

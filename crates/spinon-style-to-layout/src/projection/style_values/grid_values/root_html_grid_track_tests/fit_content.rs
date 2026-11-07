@@ -243,6 +243,7 @@ fn root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order
     );
     input.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
         fit_content_percentage(0.2),
+        ComputedCssGridTrackSize::Auto,
         ComputedCssGridTrackSize::LengthPx(12.0),
         ComputedCssGridTrackSize::Percentage(0.1),
     ]);
@@ -252,7 +253,7 @@ fn root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order
         &input,
         ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
     )
-    .expect("finite px and percentage list entries should select the bounded row route");
+    .expect("auto, finite px, and percentage entries should select the bounded row route");
     assert_eq!(
         projected.placement_mode,
         spinon_layout::GridPlacementMode::RootHtmlFitContentAutoRowsV1
@@ -261,6 +262,7 @@ fn root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order
         projected.auto_rows,
         spinon_layout::GridAutoRows::TrackList(vec![
             GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::Auto,
             GridTrackSize::LengthPx(12.0),
             GridTrackSize::Percentage(0.1),
         ])
@@ -284,9 +286,24 @@ fn root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order
     assert!(!root_html_fit_content_implicit_rows_candidate(
         &without_fit_content
     ));
+    without_fit_content.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::Auto,
+        ComputedCssGridTrackSize::LengthPx(12.0),
+    ]);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &without_fit_content,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        }) if error_node == node
+    ));
 
     for unsupported in [
-        ComputedCssGridTrackSize::Auto,
         ComputedCssGridTrackSize::Fraction(1.0),
         ComputedCssGridTrackSize::MinContent,
         ComputedCssGridTrackSize::MaxContent,

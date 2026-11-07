@@ -1,0 +1,80 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 Root HTML fit-content auto track-list precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 12px/16px sans-serif; }
+  .scene { margin: 0 0 16px; }
+  .grid {
+    display: grid;
+    width: 40px;
+    height: 100px;
+    grid-template-columns: 40px;
+    grid-template-rows: 10px;
+    grid-auto-flow: row;
+    align-content: start;
+    justify-content: start;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: visible;
+    background: #17212b;
+  }
+  .explicit {
+    display: block;
+    width: auto;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #e5484d;
+  }
+  .item {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .payload {
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ffd166;
+  }
+</style>
+<div class="scene">
+  <p>fit-content(20%) auto 8px</p>
+  <div class="grid" id="fit-auto-fixed" style="grid-auto-rows:fit-content(20%) auto 8px">
+    <div class="explicit" id="fit-auto-fixed-explicit"></div>
+    <div class="item" id="fit-auto-fixed-item-1"><div class="payload" id="fit-auto-fixed-payload-1" style="height:34px"></div></div>
+    <div class="item" id="fit-auto-fixed-item-2"><div class="payload" id="fit-auto-fixed-payload-2" style="height:30px"></div></div>
+    <div class="item" id="fit-auto-fixed-item-3"><div class="payload" id="fit-auto-fixed-payload-3" style="height:6px"></div></div>
+    <div class="item" id="fit-auto-fixed-item-4"><div class="payload" id="fit-auto-fixed-payload-4" style="height:25px"></div></div>
+  </div>
+</div>
+<div class="scene">
+  <p>auto fit-content(20%) 8px</p>
+  <div class="grid" id="auto-fit-fixed" style="grid-auto-rows:auto fit-content(20%) 8px">
+    <div class="explicit" id="auto-fit-fixed-explicit"></div>
+    <div class="item" id="auto-fit-fixed-item-1"><div class="payload" id="auto-fit-fixed-payload-1" style="height:30px"></div></div>
+    <div class="item" id="auto-fit-fixed-item-2"><div class="payload" id="auto-fit-fixed-payload-2" style="height:34px"></div></div>
+    <div class="item" id="auto-fit-fixed-item-3"><div class="payload" id="auto-fit-fixed-payload-3" style="height:6px"></div></div>
+    <div class="item" id="auto-fit-fixed-item-4"><div class="payload" id="auto-fit-fixed-payload-4" style="height:25px"></div></div>
+  </div>
+</div>
+<div class="scene">
+  <p>fit-content(0%) auto 8px</p>
+  <div class="grid" id="fit-zero-auto-fixed" style="grid-auto-rows:fit-content(0%) auto 8px">
+    <div class="explicit" id="fit-zero-auto-fixed-explicit"></div>
+    <div class="item" id="fit-zero-auto-fixed-item-1"><div class="payload" id="fit-zero-auto-fixed-payload-1" style="height:34px"></div></div>
+    <div class="item" id="fit-zero-auto-fixed-item-2"><div class="payload" id="fit-zero-auto-fixed-payload-2" style="height:30px"></div></div>
+    <div class="item" id="fit-zero-auto-fixed-item-3"><div class="payload" id="fit-zero-auto-fixed-payload-3" style="height:6px"></div></div>
+    <div class="item" id="fit-zero-auto-fixed-item-4"><div class="payload" id="fit-zero-auto-fixed-payload-4" style="height:25px"></div></div>
+  </div>
+</div>

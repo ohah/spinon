@@ -7,6 +7,7 @@ pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
             .iter()
             .any(|track| matches!(track, GridTrackSize::FitContent(_)))
         && tracks.iter().all(|track| match track {
+            GridTrackSize::Auto => true,
             GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value) => {
                 value.is_finite() && *value >= 0.0
             }

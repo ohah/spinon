@@ -1,0 +1,7 @@
+Device: Android API 37 ARM64 AVD sdk_gphone64_arm64 (emulator-5554)
+Build: mise exec -- bun run build:android (BUILD SUCCESSFUL)
+Candidate APK: e36ea7f32e16bbe54ca7acf6d115be1f5b9798d996c72c19080ef61c32dfa52a
+Fixture index.html: c206e7aef5b82129dce5b4f79599da7a58a4dc1d6fe5343bc49c03552e37300d
+Installed candidate APK hash: e36ea7f32e16bbe54ca7acf6d115be1f5b9798d996c72c19080ef61c32dfa52a
+Process: 15345
+Boot: SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass layout=ready boxes=12

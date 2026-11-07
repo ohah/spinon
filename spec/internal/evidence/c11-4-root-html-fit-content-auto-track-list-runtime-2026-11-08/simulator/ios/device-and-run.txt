@@ -1,0 +1,13 @@
+Device: iPhone 17 Pro, iOS 26.2 Simulator
+UDID: ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D
+Build command: mise exec -- bun run build:ios-sim
+Build status: BUILD SUCCEEDED (Xcode emitted existing duplicate RawWindowMetalLayer symbol and debug-map warnings)
+Fixture index.html SHA-256: c206e7aef5b82129dce5b4f79599da7a58a4dc1d6fe5343bc49c03552e37300d
+Candidate built/installed executable SHA-256: be58271fe061aeb87bc61a7eec00483b948dc571538c3cde17ef9a6c4018108c
+Candidate root-app.js SHA-256: 5d9c9753484885ac934549bac06a10c1c48a0bf57cf0d69778b822598498456f
+Candidate process: 92627
+Boot: SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass layout=ready boxes=12
+Screenshot SHA-256: 473253b8c2357a1499c95e4031a4259534db350e5e1223bf8f71f194f59a9de0
+Original installed executable restored: 40190537e135404528c5ce2a826ec3fe34f5ad4635d0f8a30aa3082bf9464a37
+Original build output executable restored: 8b3c2f99f85e904f754a98e3677cf547d9a82cc53c877abd326b72713b067deb
+Original app state before/after: not running

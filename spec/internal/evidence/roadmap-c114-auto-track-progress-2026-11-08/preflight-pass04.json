@@ -1,0 +1,21 @@
+{
+  "sourceHead": "b4e8f2102f96162cb917e1fae8997f67760fbd1c",
+  "sourceBranch": "feat/c11-4-root-html-fit-content-auto-track-list-20261108",
+  "sourceBytes": 629250,
+  "sourceSha256": "0e63ba843a98768d04b7bd3dc963e9dddddbc6d416a81f20c8cd12f5c2630d95",
+  "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "targetBytes": 629188,
+  "targetSha256": "8099e56cb3905b3ad32dafbb90cb0250eef5945446207838b8ad920a0c35e3ce",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-c114-auto-track-progress-2026-11-08/pass04",
+  "tailscaleBackend": "Running",
+  "tailnetHost": "macstudio.tailed42f2.ts.net.",
+  "previewPid": 28040,
+  "previewArgs": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "previewSockets": [
+    "node    28040 yoonhb   12u  IPv4 0xab5c8f5eaaf3f681      0t0  TCP 127.0.0.1:8768 (LISTEN)"
+  ],
+  "targetOpenHandles": [],
+  "updateCount": 1,
+  "deletions": 0
+}

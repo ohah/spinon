@@ -1,0 +1,30 @@
+{
+  "pageTitle": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?progress=20261108-pass02",
+  "route": "/spinon/roadmap.html",
+  "sourceHead": "b4e8f2102f96162cb917e1fae8997f67760fbd1c",
+  "sourceBranch": "feat/c11-4-root-html-fit-content-auto-track-list-20261108",
+  "firstProgressCardText": "현재 진행 · C11.4 parsed Root HTML grid-auto-rows fit-content implicit-row pattern에 auto member 추가: Chrome 157 사전 관측 3 scene과 독립 used-row 기대값, 계획 실패 관점 20개 검토를 고정했다. Layout 2/2, style projection 1/1, RuntimeSession auto-track 2/2와 기존 singleton 회귀 2/2, changed-crate Clippy/rustfmt가 통과했다. Android API 37 AVD·iPhone 17 Pro iOS 26.2 Simulator 검증, 별도 구현/runtime 실패 관점 20개와 PR diff 검토 30개는 남아 있다. 현재 미병합 변경이며 완성 판정이나 PR 검증을 뜻하지 않는다. C11.4/C11 체크와 공식 78/214는 유지한다.",
+  "desktop": {
+    "viewportWidth": 1280,
+    "viewportHeight": 1200,
+    "documentWidth": 1280,
+    "screenshot": "tailnet-agent-browser-desktop-current-status-pass02.png",
+    "screenshotPixels": "1280x1200",
+    "screenshotSha256": "e135c887ba64dac2f66b6f533b56df348b388356826764e9d30e6fd644039b15"
+  },
+  "mobile": {
+    "viewportWidth": 390,
+    "viewportHeight": 844,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "horizontalOverflow": false,
+    "screenshot": "tailnet-agent-browser-mobile-current-status-pass02.png",
+    "screenshotPixels": "390x844",
+    "screenshotSha256": "7010191026770b726ccfb7373aac5905bca9f807610a503e6f73fa0062c581d1"
+  },
+  "sourceSha256": "22e2502b9316e7e66e04d232ce98bf87d622106fef9787f861aa9e9986ef220c",
+  "previewSha256": "22e2502b9316e7e66e04d232ce98bf87d622106fef9787f861aa9e9986ef220c",
+  "browserSessionClosed": true,
+  "matchingAgentBrowserOrChromeProcessesAfterClose": 0
+}
