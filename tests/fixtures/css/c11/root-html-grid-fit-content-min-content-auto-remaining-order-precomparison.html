@@ -1,0 +1,78 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 fit-content/min-content/auto remaining track-list orders</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { color: #e7edf3; background: #101820; font: 12px/16px sans-serif; }
+  .case { margin: 0 0 8px; }
+  .label { margin: 0 0 2px; }
+  .grid {
+    display: grid;
+    width: 40px;
+    height: 100px;
+    grid-template-columns: 40px;
+    grid-template-rows: 10px;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    align-content: stretch;
+    align-items: normal;
+    justify-content: start;
+    justify-items: normal;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 1px dashed #ffffff;
+    overflow: visible;
+    background: #17212b;
+  }
+  .explicit { height: 10px; background: #e5484d; }
+  .item { min-height: 0; margin: 0; padding: 0; outline: 1px dotted #f8fafc; }
+  .payload { margin: 0; padding: 0; background: #3b82f6; }
+  .h34 { height: 34px; }
+  .h10 { height: 10px; }
+  .h6 { height: 6px; }
+</style>
+<div id="cases"></div>
+<script>
+  const cases = [
+    ["min-fit-auto-pct", "min-content fit-content(20%) auto"],
+    ["min-fit-auto-px", "min-content fit-content(20px) auto"],
+    ["min-auto-fit-pct", "min-content auto fit-content(20%)"],
+    ["min-auto-fit-px", "min-content auto fit-content(20px)"],
+    ["auto-fit-min-pct", "auto fit-content(20%) min-content"],
+    ["auto-fit-min-px", "auto fit-content(20px) min-content"],
+    ["auto-min-fit-pct", "auto min-content fit-content(20%)"],
+    ["auto-min-fit-px", "auto min-content fit-content(20px)"]
+  ];
+  const heights = [34, 34, 10, 6];
+  const parent = document.getElementById("cases");
+  for (const [name, rows] of cases) {
+    const section = document.createElement("section");
+    section.className = "case";
+    const label = document.createElement("p");
+    label.className = "label";
+    label.textContent = `${name}: ${rows}`;
+    const grid = document.createElement("div");
+    grid.id = name;
+    grid.className = "grid";
+    grid.style.gridAutoRows = rows;
+    const explicit = document.createElement("div");
+    explicit.id = `${name}-explicit`;
+    explicit.className = "explicit";
+    grid.append(explicit);
+    heights.forEach((height, index) => {
+      const item = document.createElement("div");
+      item.id = `${name}-item-${index + 1}`;
+      item.className = "item";
+      const payload = document.createElement("div");
+      payload.id = `${name}-payload-${index + 1}`;
+      payload.className = `payload h${height}`;
+      item.append(payload);
+      grid.append(item);
+    });
+    section.append(label, grid);
+    parent.append(section);
+  }
+</script>
