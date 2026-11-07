@@ -178,7 +178,7 @@ fn parsed_root_html_safe_start_rejects_atomically_and_recovers_same_session() {
     let source = SOURCE
         .replace(
             "      #fixed {",
-            "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: safe flex-end; }\n      }\n\n      #fixed {",
+            "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: baseline; }\n      }\n\n      #fixed {",
         )
         .replace("align-content: normal;", "align-content: safe start;");
     assert_ne!(source, SOURCE);
