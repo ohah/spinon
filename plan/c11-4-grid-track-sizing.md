@@ -762,6 +762,22 @@ The existing [ASCII letter-word slice](./c11-root-html-intrinsic-letter-words.md
 
 PR #1228의 단일 implicit auto-row 제한 slice 뒤에 계획한 균등 분배 장면은 [계획](./c11-root-html-multiple-auto-row-stretch.md)과 [구현 PR #1231](https://github.com/ohah/spinon/pull/1231)에서 완료돼 2026-11-06T17:46:43Z Rebase and merge됐다 (merge SHA `5c79d19619617e7424aaeabbe884579ac383d130`). 고정 40×40px Grid에서 explicit row 10px과 direct text `A`/`B`가 만든 두 implicit `auto` rows의 최종 크기 `[10,15,15]px` 및 각 +5px stretch를 검증했다. [Chrome 157 사전 비교](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-precomparison-2026-11-07/README.md)와 [실행·테스트·Simulator 근거](../spec/internal/evidence/c11-root-html-multiple-auto-row-stretch-runtime-2026-11-07/README.md)를 참조한다. 이 profile은 고정 item shape로 제한되며 C11.4/C11 전체를 완수하지 않는다. 공식 완료 `78/214`는 유지한다.
 
-## 2026-11-07 parsed Root HTML explicit `align-content:stretch` · 계획 후보
+## 2026-11-07 parsed Root HTML explicit `align-content:stretch` · PR #1234 병합
 
-PR #1231은 동일한 two-implicit-auto-row profile에서 `align-content:normal`만 허용한다. CSS Grid §11.8에 따라 명시적 `align-content:stretch`도 이 입력에서 같은 `[10,15,15]px` 결과를 내야 한다. [집중 계획](./c11-root-html-multiple-auto-row-align-content-stretch.md)과 [Chrome 157 사전 비교](../spec/internal/evidence/c11-root-html-explicit-align-content-stretch-precomparison-2026-11-07/README.md)는 `stretch` positive, `normal` same-result control, `start` non-stretch control을 고정한다. 아직 구현하지 않았다. C11.4/C11 checkboxes와 공식 `78/214`는 그대로 유지한다.
+앞선 two-implicit-auto-row `normal` profile에 computed `align-content:stretch`를 추가한 제한 구현 PR [#1234](https://github.com/ohah/spinon/pull/1234)은 2026-11-06T19:04:55Z Rebase and merge됐고 merge SHA는 `0983a94cc80424b0f00f0e401286982125573e48`다. 고정 40×40px Grid에서 explicit row 10px과 두 implicit auto rows가 `normal|stretch` 모두 `[10,15,15]px` 및 같은 item frames를 내는 것을 Chrome 157, 독립 기대값과 RuntimeSession에서 대조했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 fixture의 layout-ready 6 boxes와 2 text draws를 확인했다. Screenshot은 visual smoke이며 pixel parity는 주장하지 않는다. [계획](./c11-root-html-multiple-auto-row-align-content-stretch.md) · [Chrome 사전 비교](../spec/internal/evidence/c11-root-html-explicit-align-content-stretch-precomparison-2026-11-07/README.md) · [실행 근거](../spec/internal/evidence/c11-root-html-explicit-align-content-stretch-runtime-2026-11-07/README.md).
+
+## 2026-11-07 parsed Root HTML computed `align-content` · PR #1237 병합
+
+동일한 고정 three-item shape에서 `normal`, `stretch`, `start`, `flex-start`, `end`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`를 제한 허용한 PR [#1237](https://github.com/ohah/spinon/pull/1237)은 2026-11-06T20:33:30Z Rebase and merge됐다(merge SHA `fddf66295a1f66134a061c0c221410964cb3077a`). `normal|stretch`는 `[10,15,15]px`를 유지하고 나머지 값은 `[10,10,10]px` bases로 content 위치·분배를 계산한다. focused Rust gates와 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 실행을 확인했으며 broad-suite의 baseline 실패는 green으로 세지 않았다. [계획·결과](./c11-root-html-auto-row-content-alignment.md) · [실행 근거](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-runtime-2026-11-07/README.md).
+
+## 2026-11-07 parsed Root HTML auto-row fixed `row-gap` · PR #1240 병합
+
+기존 auto-row shape에 finite px `row-gap:0..=7.5px`, `column-gap:0`을 연결한 PR [#1240](https://github.com/ohah/spinon/pull/1240)은 2026-11-06T21:57:15Z Rebase and merge됐다(merge SHA `e3b32918e3893ce8b6bfc835d194c3abad12bc2a`). 네 gap × 열 alignment 40-scene matrix와 unsupported gap의 atomic rejection을 확인했다. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 결과는 visual smoke이며 surface readback이 아니다. [계획·결과](./c11-root-html-auto-row-content-alignment-row-gap.md) · [실행 근거](../spec/internal/evidence/c11-root-html-auto-row-content-alignment-gap-runtime-2026-11-07/README.md).
+
+## 2026-11-07 parsed Root HTML auto-row percentage `row-gap` · PR #1243 병합
+
+definite 40px block-size basis의 finite non-negative percentage `row-gap`을 기존 typed sizing 경로에 연결한 PR [#1243](https://github.com/ohah/spinon/pull/1243)은 2026-11-07T00:01:43Z Rebase and merge됐다(merge SHA `50d171d69b730af821076faf4ffcb02a4a5e44a8`). Chrome 157 관측과 독립 expected의 70-case matrix 및 Rust focused gates를 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 0% positive-space 및 120%/center overflow 장면을 실행했으며 OS screenshot 경계 관찰은 PixelCopy·Metal drawable readback이 아니다. 상태 대장·내부 계약·public roadmap은 PR [#1244](https://github.com/ohah/spinon/pull/1244)로 동기화했고 Tailnet 제공본과 Agent Browser desktop/mobile 결과는 [별도 sync evidence](../spec/internal/evidence/roadmap-tailnet-sync-pr1243-c11-4-percentage-row-gap-2026-11-07/README.md)에 기록했다. 이 bounded slice들은 C11.4/C11을 완료 처리하지 않으며 공식 `78/214`를 유지한다.
+
+## 다음 순차 작업
+
+PR #1243의 제한 percentage-gap slice와 Tailnet 확인은 완료했다. C11.4와 C11은 공식 상태 대장에서 미완료다. 이 상위 계획에는 #1243 이후의 successor slice가 아직 정해져 있지 않으므로 다음 작업을 시작하기 전 C11.3.3/C11.4의 남은 계약과 기존 후보 계획을 대조해 범위·oracle·판정 기준을 새로 고정한다. `align-content:stretch`를 미구현으로 표시했던 이전 항목은 PR #1234 병합 기록으로 대체했다.

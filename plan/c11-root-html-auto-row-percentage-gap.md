@@ -27,7 +27,7 @@
    - Harness에서 사용할 수 있으면 Android PixelCopy와 iOS drawable readback으로 root 밖 pixel을 확인한다. 두 표본은 Agent Browser 및 simulator PNG screenshot과 구분한다. Screenshot만 관찰한 경우 surface readback이나 iOS compositor 이후 pixel 결과로 주장하지 않는다.
 5. Focused layout 6/6, 기존 two-auto-row·single-auto-row Layout regression 각 1/1, projection 1/1, RuntimeSession row-gap 4/4 및 intrinsic-auto-row regression 28/28, 변경 crate all-target Clippy, `cargo fmt --all -- --check`, `git diff --check`를 실행해 통과했다. 원본 출력은 runtime evidence의 `verification/focused-validation.log`에 둔다.
 6. [구현/runtime failure review 20개](../spec/internal/evidence/c11-root-html-auto-row-percentage-gap-runtime-2026-11-07/implementation-runtime-review-20.md)와 [실제 PR diff review 30개](./c11-root-html-auto-row-percentage-gap-pr-diff-review-30.md)를 마쳤다. 구현 PR #1243 본문에는 Android/iOS final simulator PNG를 첨부해 Agent Browser에서 네 이미지가 로드되는 것을 확인했다.
-7. 병합 결과를 `spec/STATUS.md`, contract 0059, public roadmap source에 기록하고 [병합 후 문서 review 30개](../spec/internal/evidence/c11-root-html-auto-row-percentage-gap-docs-sync-2026-11-07/docs-pr-diff-review-30.md)를 마쳤다. 지정 Tailnet 제공본은 별도 사본이므로 별도 backup·served hash·Agent Browser 확인으로 동기화한다. 공식 `78/214`, C11.4, C11 완료 상태는 승격하지 않는다.
+7. 병합 결과를 `spec/STATUS.md`, contract 0059, public roadmap source와 지정 Tailnet 제공본에 반영했다. [병합 후 문서 review 30개](../spec/internal/evidence/c11-root-html-auto-row-percentage-gap-docs-sync-2026-11-07/docs-pr-diff-review-30.md)와 [Tailnet sync evidence](../spec/internal/evidence/roadmap-tailnet-sync-pr1243-c11-4-percentage-row-gap-2026-11-07/README.md)에 백업·served hash·Agent Browser desktop/mobile 확인을 기록했다. 공식 `78/214`, C11.4, C11 완료 상태는 승격하지 않는다.
 
 ## 제외 범위
 
