@@ -1,0 +1,76 @@
+{
+  "browser": "HeadlessChrome/157.0.0.0",
+  "browserBuild": "Google Chrome 157.0.8103.39",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewportCssPx": [1280, 633],
+  "gridFrameCssPx": [40, 100],
+  "fixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-remaining-order-precomparison.html",
+  "fixtureSha256": "e927dcbec971bba640d3cb7c90906850c6a4fe780226bf31b0f7dc854b8d0b89",
+  "framesAreGridLocal": true,
+  "cases": [
+    {
+      "id": "min-fit-auto-pct",
+      "authoredRows": "min-content fit-content(20%) auto",
+      "usedRowsPx": [10, 34, 20, 30, 6],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 34], [0, 44, 40, 20], [0, 64, 40, 30], [0, 94, 40, 6]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 44, 40, 34], [0, 64, 40, 10], [0, 94, 40, 6]]
+    },
+    {
+      "id": "min-fit-auto-px",
+      "authoredRows": "min-content fit-content(20px) auto",
+      "usedRowsPx": [10, 34, 20, 30, 6],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 34], [0, 44, 40, 20], [0, 64, 40, 30], [0, 94, 40, 6]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 44, 40, 34], [0, 64, 40, 10], [0, 94, 40, 6]]
+    },
+    {
+      "id": "min-auto-fit-pct",
+      "authoredRows": "min-content auto fit-content(20%)",
+      "usedRowsPx": [10, 34, 40, 10, 6],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 34], [0, 44, 40, 40], [0, 84, 40, 10], [0, 94, 40, 6]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 44, 40, 34], [0, 84, 40, 10], [0, 94, 40, 6]]
+    },
+    {
+      "id": "min-auto-fit-px",
+      "authoredRows": "min-content auto fit-content(20px)",
+      "usedRowsPx": [10, 34, 40, 10, 6],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 34], [0, 44, 40, 40], [0, 84, 40, 10], [0, 94, 40, 6]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 44, 40, 34], [0, 84, 40, 10], [0, 94, 40, 6]]
+    },
+    {
+      "id": "auto-fit-min-pct",
+      "authoredRows": "auto fit-content(20%) min-content",
+      "usedRowsPx": [10, 44, 20, 10, 16],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 44], [0, 54, 40, 20], [0, 74, 40, 10], [0, 84, 40, 16]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 54, 40, 34], [0, 74, 40, 10], [0, 84, 40, 6]]
+    },
+    {
+      "id": "auto-fit-min-px",
+      "authoredRows": "auto fit-content(20px) min-content",
+      "usedRowsPx": [10, 44, 20, 10, 16],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 44], [0, 54, 40, 20], [0, 74, 40, 10], [0, 84, 40, 16]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 54, 40, 34], [0, 74, 40, 10], [0, 84, 40, 6]]
+    },
+    {
+      "id": "auto-min-fit-pct",
+      "authoredRows": "auto min-content fit-content(20%)",
+      "usedRowsPx": [10, 37, 34, 10, 9],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 37], [0, 47, 40, 34], [0, 81, 40, 10], [0, 91, 40, 9]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 47, 40, 34], [0, 81, 40, 10], [0, 91, 40, 6]]
+    },
+    {
+      "id": "auto-min-fit-px",
+      "authoredRows": "auto min-content fit-content(20px)",
+      "usedRowsPx": [10, 37, 34, 10, 9],
+      "explicitFrame": [0, 0, 40, 10],
+      "itemFrames": [[0, 10, 40, 37], [0, 47, 40, 34], [0, 81, 40, 10], [0, 91, 40, 9]],
+      "payloadFrames": [[0, 10, 40, 34], [0, 47, 40, 34], [0, 81, 40, 10], [0, 91, 40, 6]]
+    }
+  ]
+}
