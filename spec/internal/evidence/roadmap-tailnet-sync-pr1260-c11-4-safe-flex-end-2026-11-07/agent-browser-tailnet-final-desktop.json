@@ -1,0 +1,38 @@
+{
+  "browser": "Agent Browser",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "sourceSha256": "980c92d9360b39a5ccc319aede900108c68ceb1fcc519c4936fae528b78d2494",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "documentScrollWidth": 1440,
+  "bodyScrollWidth": 1440,
+  "activeCard": {
+    "column": "진행 중",
+    "count": "1/2",
+    "title": "후속 slice 계획 중",
+    "label": "C11.4 · ACTIVE"
+  },
+  "officialStatusNote": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개 · 마지막 확인 오후 5:34:10",
+  "latestC11_4Entry": "2026-11-07 C11.4 parsed Root HTML align-content:safe|unsafe flex-end · 제한 구현 PR #1260 Rebase and merge, merge SHA 57f5b9103e919a8dc7f9378dc78f984b3101f1f1",
+  "links": [
+    {
+      "text": "PR #1260 Rebase and merge",
+      "href": "https://github.com/ohah/spinon/pull/1260"
+    },
+    {
+      "text": "계획",
+      "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-auto-row-safe-flex-end.md"
+    },
+    {
+      "text": "실행 근거",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-auto-row-safe-flex-end-runtime-2026-11-07/README.md"
+    },
+    {
+      "text": "PR diff 검토",
+      "href": "https://github.com/ohah/spinon/blob/main/spec/internal/evidence/c11-root-html-auto-row-safe-flex-end-runtime-2026-11-07/pr-diff-review-30.md"
+    }
+  ]
+}
