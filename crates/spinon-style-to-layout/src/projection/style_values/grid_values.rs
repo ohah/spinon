@@ -204,7 +204,7 @@ fn validate_root_html_grid_tracks(
     if fit_content_auto_rows && !root_html_fit_content_implicit_rows_candidate(grid) {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML fit-content implicit rows require one finite non-negative px or percentage cap, one positive fixed-px explicit row and column, row flow, auto implicit columns, no repeats, areas, intrinsic tracks, or named lines",
+            "Root HTML fit-content implicit rows require a supported finite non-negative track-size list, one positive fixed-px explicit row and column, row flow, auto implicit columns, no repeats, areas, intrinsic tracks, or named lines",
         ));
     }
     let root_html_auto_repeat = root_html_auto_repeat::validate_grid_grammar(
@@ -494,6 +494,23 @@ fn root_html_has_fit_content_auto_rows(grid: &ComputedCssGridLayout) -> bool {
     )
 }
 
+fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
+    !tracks.is_empty()
+        && tracks.len() <= spinon_layout::GRID_MAX_TRACKS
+        && tracks
+            .iter()
+            .any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
+        && tracks.iter().all(|track| match track {
+            ComputedCssGridTrackSize::LengthPx(value)
+            | ComputedCssGridTrackSize::Percentage(value) => value.is_finite() && *value >= 0.0,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value)
+                | ComputedCssGridTrackLengthPercentage::Percentage(value),
+            ) => value.is_finite() && *value >= 0.0,
+            _ => false,
+        })
+}
+
 pub(super) fn root_html_fit_content_implicit_rows_candidate(grid: &ComputedCssGridLayout) -> bool {
     // Gate on the computed typed value: Stylo may normalize authored length units or
     // constant length-only calc() into LengthPx. Direct percentages retain their typed
@@ -508,10 +525,7 @@ pub(super) fn root_html_fit_content_implicit_rows_candidate(grid: &ComputedCssGr
     matches!(
         &grid.auto_rows,
         ComputedCssGridAutoRows::TrackList(tracks)
-            if matches!(tracks.as_slice(), [ComputedCssGridTrackSize::FitContent(
-                ComputedCssGridTrackLengthPercentage::LengthPx(cap)
-                    | ComputedCssGridTrackLengthPercentage::Percentage(cap)
-            )] if cap.is_finite() && *cap >= 0.0)
+            if root_html_fit_content_auto_row_track_list(tracks)
     ) && !root_html_has_intrinsic_explicit_tracks(grid)
         && single_positive_px_track(&grid.columns)
         && single_positive_px_track(&grid.rows)
@@ -2125,13 +2139,7 @@ fn project_auto_rows(
                         root_html_auto_rows_support,
                         RootHtmlAutoRowsSupport::FitContent
                     )
-                        && matches!(
-                            tracks.as_slice(),
-                            [ComputedCssGridTrackSize::FitContent(
-                                ComputedCssGridTrackLengthPercentage::LengthPx(cap)
-                                    | ComputedCssGridTrackLengthPercentage::Percentage(cap)
-                            )] if cap.is_finite() && *cap >= 0.0
-                        ))) =>
+                        && root_html_fit_content_auto_row_track_list(tracks))) =>
         {
             project_tracks(
                 tracks,

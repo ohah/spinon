@@ -1,0 +1,54 @@
+{
+  "chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewport": [
+    1280,
+    633
+  ],
+  "devicePixelRatio": 1,
+  "toleranceCssPx": 0.02,
+  "checks": [
+    {
+      "id": "two-caps",
+      "computedListMatches": true,
+      "usedRowsMatch": true,
+      "childrenMatch": true,
+      "payloadsMatch": true
+    },
+    {
+      "id": "three-caps",
+      "computedListMatches": true,
+      "usedRowsMatch": true,
+      "childrenMatch": true,
+      "payloadsMatch": true
+    },
+    {
+      "id": "mixed-caps",
+      "computedListMatches": true,
+      "usedRowsMatch": true,
+      "childrenMatch": true,
+      "payloadsMatch": true
+    },
+    {
+      "id": "mixed-size-pattern",
+      "computedListMatches": true,
+      "usedRowsMatch": true,
+      "childrenMatch": true,
+      "payloadsMatch": true
+    },
+    {
+      "id": "minimum-floor",
+      "computedListMatches": true,
+      "usedRowsMatch": true,
+      "childrenMatch": true,
+      "payloadsMatch": true
+    },
+    {
+      "id": "zero-and-overflow-caps",
+      "computedListMatches": true,
+      "usedRowsMatch": true,
+      "childrenMatch": true,
+      "payloadsMatch": true
+    }
+  ],
+  "allPassed": true
+}

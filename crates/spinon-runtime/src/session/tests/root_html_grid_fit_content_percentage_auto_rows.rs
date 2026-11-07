@@ -163,11 +163,11 @@ fn parsed_root_html_fit_content_percentage_auto_rows_match_definite_content_box_
 fn parsed_root_html_fit_content_percentage_auto_rows_reject_unsupported_shapes_atomically() {
     let cases = [
         (
-            "mixed implicit row list",
+            "unsupported implicit row list member",
             replace_once(
                 SOURCE,
                 "grid-auto-rows: fit-content(24%);",
-                "grid-auto-rows: fit-content(24%) 10px;",
+                "grid-auto-rows: fit-content(24%) min-content;",
             ),
         ),
         (

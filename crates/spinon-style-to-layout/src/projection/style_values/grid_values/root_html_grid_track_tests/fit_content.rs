@@ -1,3 +1,4 @@
+use super::super::root_html_fit_content_implicit_rows_candidate;
 use super::{grid, project_grid_layout};
 use spinon_core::NodeId;
 use spinon_layout::{GridTrackLengthPercentage, GridTrackSize};
@@ -229,6 +230,109 @@ fn root_html_fit_content_percentage_auto_rows_require_the_bounded_definite_grid_
             }) if error_node == node
         ));
     }
+}
+
+#[test]
+fn root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order() {
+    use spinon_style::ComputedCssGridAutoRows;
+
+    let node = NodeId::new(11_286).unwrap();
+    let mut input = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    input.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        fit_content_percentage(0.2),
+        ComputedCssGridTrackSize::LengthPx(12.0),
+        ComputedCssGridTrackSize::Percentage(0.1),
+    ]);
+
+    let projected = project_grid_layout(
+        node,
+        &input,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("finite px and percentage list entries should select the bounded row route");
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlFitContentAutoRowsV1
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::LengthPx(12.0),
+            GridTrackSize::Percentage(0.1),
+        ])
+    );
+
+    let mut empty = input.clone();
+    empty.auto_rows = ComputedCssGridAutoRows::TrackList(Vec::new());
+    assert!(matches!(
+        project_grid_layout(node, &empty, ComputedStyleProfile::RuntimeRootHtmlTextPaintV1),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        }) if error_node == node
+    ));
+    let mut without_fit_content = input.clone();
+    without_fit_content.auto_rows = ComputedCssGridAutoRows::TrackList(vec![
+        ComputedCssGridTrackSize::LengthPx(12.0),
+        ComputedCssGridTrackSize::Percentage(0.1),
+    ]);
+    assert!(!root_html_fit_content_implicit_rows_candidate(
+        &without_fit_content
+    ));
+
+    for unsupported in [
+        ComputedCssGridTrackSize::Auto,
+        ComputedCssGridTrackSize::Fraction(1.0),
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::LengthPx(-1.0),
+        ComputedCssGridTrackSize::LengthPx(f32::NAN),
+        ComputedCssGridTrackSize::Percentage(f32::INFINITY),
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(0.0),
+            max: spinon_style::ComputedCssGridTrackBreadth::Fraction(1.0),
+        },
+        ComputedCssGridTrackSize::Percentage(-0.1),
+    ] {
+        let mut invalid = input.clone();
+        invalid.auto_rows =
+            ComputedCssGridAutoRows::TrackList(vec![fit_content_percentage(0.2), unsupported]);
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &invalid,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-auto-rows",
+                ..
+            }) if error_node == node
+        ));
+    }
+
+    let mut oversized = input;
+    let mut tracks =
+        vec![ComputedCssGridTrackSize::LengthPx(1.0); spinon_layout::GRID_MAX_TRACKS + 1];
+    tracks[0] = fit_content_percentage(0.2);
+    oversized.auto_rows = ComputedCssGridAutoRows::TrackList(tracks);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &oversized,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-rows",
+            ..
+        }) if error_node == node
+    ));
 }
 
 #[test]

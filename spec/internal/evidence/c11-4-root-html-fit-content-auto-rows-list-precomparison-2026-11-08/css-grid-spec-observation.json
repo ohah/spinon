@@ -1,0 +1,9 @@
+{
+  "title": "CSS Grid Layout Module Level 2",
+  "url": "https://www.w3.org/TR/css-grid-2/#auto-tracks",
+  "heading": "7.6. Implicit Track Sizing: the grid-auto-rows and grid-auto-columns properties",
+  "paragraphs": [
+    "The grid-auto-columns and grid-auto-rows properties specify the size of tracks not assigned a size by grid-template-rows or grid-template-columns. If multiple track sizes are given, the pattern is repeated as necessary to find the size of the affected tracks. The first track after the last explicitly-sized track receives the first specified size, and so on forwards; and the last implicit grid track before the explicit grid receives the last specified size, and so on backwards.",
+    "NOTE: If a grid item is positioned into a row or column that is not explicitly declared by grid-template-rows/grid-template-columns and/or grid-template-areas, implicit grid tracks are created to hold it. This can happen either by explicitly positioning into a row or column that is out of range, or by the auto-placement algorithm creating additional rows or columns."
+  ]
+}

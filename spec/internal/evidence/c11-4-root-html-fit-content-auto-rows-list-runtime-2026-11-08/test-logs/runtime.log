@@ -1,0 +1,24 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 6 tests
+test session::tests::root_html_grid_fit_content_percentage_auto_rows::parsed_root_html_fit_content_percentage_auto_rows_recover_after_dark_calc_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_row_lists_preserve_order_and_render_repeated_tracks ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::parsed_root_html_fit_content_auto_rows_match_chrome_scenes_and_px_normalizations ... ok
+test session::tests::root_html_grid_fit_content_percentage_auto_rows::parsed_root_html_fit_content_percentage_auto_rows_match_definite_content_box_basis ... ok
+test session::tests::root_html_grid_fit_content_percentage_auto_rows::parsed_root_html_fit_content_percentage_auto_rows_reject_unsupported_shapes_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::parsed_root_html_fit_content_auto_rows_reject_atomically_and_recover_same_session ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 335 filtered out; finished in 0.60s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

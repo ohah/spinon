@@ -131,23 +131,23 @@ pub(super) fn validate(
                 return Err(unsupported(
                     child.id(),
                     "grid-auto-rows",
-                    "Root HTML fit-content rows require three visible direct HTML div items",
+                    "Root HTML fit-content rows require three or five visible direct HTML div items",
                 ));
             }
         }
     }
-    if items.len() != 3
+    if !matches!(items.len(), 3 | 5)
         || nodes
             .grid_item_owners
             .values()
             .filter(|owner| **owner == node)
             .count()
-            != 3
+            != items.len()
     {
         return Err(unsupported(
             node,
             "grid-auto-rows",
-            "Root HTML fit-content rows require exactly three direct items",
+            "Root HTML fit-content rows require three or five direct items",
         ));
     }
 
@@ -163,71 +163,90 @@ pub(super) fn validate(
             "First Grid item style is missing",
         ));
     };
-    let Some(middle) = styles.get(&items[1].id()).copied() else {
+    if !fixed_item(first, 10.0) || !auto_placement(first) {
         return Err(unsupported(
             node,
             "grid-auto-rows",
-            "Implicit-row item style is missing",
-        ));
-    };
-    let Some(probe) = styles.get(&items[2].id()).copied() else {
-        return Err(unsupported(
-            node,
-            "grid-auto-rows",
-            "Following probe style is missing",
-        ));
-    };
-    if !fixed_item(first, 10.0)
-        || !auto_placement(first)
-        || !fixed_item(probe, 6.0)
-        || !auto_placement(probe)
-    {
-        return Err(unsupported(
-            node,
-            "grid-auto-rows",
-            "Root HTML fit-content rows require 10px explicit-row and 6px following probe items",
+            "Root HTML fit-content rows require a 10px explicit-row item",
         ));
     }
-    if !middle_item(middle) || !auto_placement(middle) {
+    const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
+    if !direct_element_children(tree, nodes, items[0])?.is_empty() {
         return Err(unsupported(
-            items[1].id(),
+            items[0].id(),
             "grid-auto-rows",
-            "The capped implicit-row item requires auto placement, auto width/height, and min-height 0px or 28px",
+            "The 10px explicit-row item must not contain descendants",
         ));
     }
+    for (position, item) in items.iter().enumerate().skip(1) {
+        let Some(style) = styles.get(&item.id()).copied() else {
+            return Err(unsupported(
+                item.id(),
+                "grid-auto-rows",
+                "Implicit-row item style is missing",
+            ));
+        };
+        let allow_minimum_floor = items.len() == 3 && position == 1;
+        if fit_content_item(style, allow_minimum_floor) && auto_placement(style) {
+            let children = direct_element_children(tree, nodes, *item)?;
+            if children.len() != 1 {
+                return Err(unsupported(
+                    item.id(),
+                    "grid-auto-rows",
+                    "Each intrinsic list item must contain one fixed-px payload div",
+                ));
+            }
+            validate_payload(tree, nodes, &styles, children[0], LIST_PAYLOAD_HEIGHTS)?;
+        } else if items.len() == 3
+            && position == 2
+            && fixed_item(style, 6.0)
+            && auto_placement(style)
+            && direct_element_children(tree, nodes, *item)?.is_empty()
+        {
+            // The original singleton fixture uses a fixed 6px item as a following probe.
+        } else {
+            return Err(unsupported(
+                item.id(),
+                "grid-auto-rows",
+                "Implicit list items require auto size and one payload, except for the fixed 6px singleton probe",
+            ));
+        }
+    }
+    Ok(())
+}
 
-    let first_children = direct_element_children(tree, nodes, items[0])?;
-    let middle_children = direct_element_children(tree, nodes, items[1])?;
-    let probe_children = direct_element_children(tree, nodes, items[2])?;
-    if !first_children.is_empty() || !probe_children.is_empty() || middle_children.len() != 1 {
-        return Err(unsupported(
-            items[1].id(),
-            "grid-auto-rows",
-            "Only the capped item may contain one nested payload div",
-        ));
-    }
-    let payload = middle_children[0];
-    let Some(payload_style) = styles.get(&payload.id()).copied() else {
-        return Err(unsupported(
-            payload.id(),
-            "height",
-            "Nested payload style is missing",
-        ));
+fn validate_payload(
+    tree: &HostDocumentSnapshot,
+    nodes: &RuntimeGridNodes,
+    styles: &std::collections::BTreeMap<spinon_core::NodeId, &ComputedElementStyle>,
+    payload: HostNodeHandle,
+    allowed_heights: &[f32],
+) -> Result<(), StyleLayoutError> {
+    let node = payload.id();
+    let Some(payload_style) = styles.get(&node).copied() else {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "height",
+            value: "Nested payload style is missing".to_owned(),
+        });
     };
-    if nodes.grid_containers.contains(&payload.id()) || !fixed_item(payload_style, 34.0) {
-        return Err(unsupported(
-            payload.id(),
-            "height",
-            "Nested fit-content payload must be a fixed 34px block div",
-        ));
+    if nodes.grid_containers.contains(&node)
+        || !allowed_heights
+            .iter()
+            .any(|height| fixed_item(payload_style, *height))
+    {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "height",
+            value: "Nested fit-content payload must be a supported fixed-px block div".to_owned(),
+        });
     }
-    let payload_children = direct_element_children(tree, nodes, payload)?;
-    if !payload_children.is_empty() {
-        return Err(unsupported(
-            payload.id(),
-            "grid-auto-rows",
-            "Nested fit-content payload must not contain descendants",
-        ));
+    if !direct_element_children(tree, nodes, payload)?.is_empty() {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "grid-auto-rows",
+            value: "Nested fit-content payload must not contain descendants".to_owned(),
+        });
     }
     Ok(())
 }
@@ -291,14 +310,13 @@ fn fixed_item(style: &ComputedElementStyle, height: f32) -> bool {
         && zero_border(style)
 }
 
-fn middle_item(style: &ComputedElementStyle) -> bool {
+fn fit_content_item(style: &ComputedElementStyle, allow_minimum_floor: bool) -> bool {
     style.properties.get("display").map(String::as_str) == Some("block")
         && style.layout_dimensions.width == ComputedCssDimension::Auto
         && style.layout_dimensions.height == ComputedCssDimension::Auto
-        && matches!(
-            style.layout_dimensions.min_height,
-            ComputedCssDimension::LengthPx(value) if value == 0.0 || value == 28.0
-        )
+        && (style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
+            || (allow_minimum_floor
+                && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(28.0)))
         && style.layout_dimensions.min_width == ComputedCssDimension::Auto
         && style.layout_dimensions.max_width == ComputedCssMaxSize::None
         && style.layout_dimensions.max_height == ComputedCssMaxSize::None

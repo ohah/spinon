@@ -1,0 +1,423 @@
+{
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-fit-content-auto-rows-list-precomparison.html",
+  "viewport": [
+    1280,
+    633
+  ],
+  "devicePixelRatio": 1,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "rows": [
+    {
+      "id": "two-caps",
+      "gridAutoRows": "fit-content(20%) fit-content(40%)",
+      "usedRows": "10px 20px 34px 20px 6px",
+      "grid": [
+        0,
+        10,
+        40,
+        100
+      ],
+      "children": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "payload": null
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            30,
+            40,
+            34
+          ],
+          "payload": [
+            0,
+            30,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            64,
+            40,
+            20
+          ],
+          "payload": [
+            0,
+            64,
+            40,
+            50
+          ]
+        },
+        {
+          "frame": [
+            0,
+            84,
+            40,
+            6
+          ],
+          "payload": [
+            0,
+            84,
+            40,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "id": "three-caps",
+      "gridAutoRows": "fit-content(10%) fit-content(20%) fit-content(70%)",
+      "usedRows": "10px 10px 20px 50px 10px",
+      "grid": [
+        0,
+        120,
+        40,
+        100
+      ],
+      "children": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "payload": null
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            10
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            20,
+            40,
+            20
+          ],
+          "payload": [
+            0,
+            20,
+            40,
+            30
+          ]
+        },
+        {
+          "frame": [
+            0,
+            40,
+            40,
+            50
+          ],
+          "payload": [
+            0,
+            40,
+            40,
+            50
+          ]
+        },
+        {
+          "frame": [
+            0,
+            90,
+            40,
+            10
+          ],
+          "payload": [
+            0,
+            90,
+            40,
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-caps",
+      "gridAutoRows": "fit-content(20%) 12px fit-content(80%)",
+      "usedRows": "10px 20px 12px 50px 6px",
+      "grid": [
+        0,
+        230,
+        40,
+        100
+      ],
+      "children": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "payload": null
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            30,
+            40,
+            12
+          ],
+          "payload": [
+            0,
+            30,
+            40,
+            10
+          ]
+        },
+        {
+          "frame": [
+            0,
+            42,
+            40,
+            50
+          ],
+          "payload": [
+            0,
+            42,
+            40,
+            50
+          ]
+        },
+        {
+          "frame": [
+            0,
+            92,
+            40,
+            6
+          ],
+          "payload": [
+            0,
+            92,
+            40,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed-size-pattern",
+      "gridAutoRows": "fit-content(20%) 12px 10%",
+      "usedRows": "10px 20px 12px 10px 20px",
+      "grid": [
+        0,
+        340,
+        40,
+        100
+      ],
+      "children": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "payload": null
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            30,
+            40,
+            12
+          ],
+          "payload": [
+            0,
+            30,
+            40,
+            10
+          ]
+        },
+        {
+          "frame": [
+            0,
+            42,
+            40,
+            10
+          ],
+          "payload": [
+            0,
+            42,
+            40,
+            8
+          ]
+        },
+        {
+          "frame": [
+            0,
+            52,
+            40,
+            20
+          ],
+          "payload": [
+            0,
+            52,
+            40,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "id": "minimum-floor",
+      "gridAutoRows": "fit-content(20%) fit-content(40%)",
+      "usedRows": "10px 28px 34px",
+      "grid": [
+        0,
+        450,
+        40,
+        100
+      ],
+      "children": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "payload": null
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            28
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            38,
+            40,
+            34
+          ],
+          "payload": [
+            0,
+            38,
+            40,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zero-and-overflow-caps",
+      "gridAutoRows": "fit-content(0%) fit-content(120%)",
+      "usedRows": "10px 0px 34px",
+      "grid": [
+        0,
+        560,
+        40,
+        100
+      ],
+      "children": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "payload": null
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            0
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            34
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            34
+          ]
+        }
+      ]
+    }
+  ]
+}
