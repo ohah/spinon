@@ -1,0 +1,18 @@
+{
+  "previewServerPid": 28040,
+  "target": "~/Library/Application Support/SpinonPreview/roadmap.html",
+  "remote": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "sourceBytes": 626304,
+  "sourceSha256": "7f0207249be2d1dbdcac89321faca459069289c4f820ce6fa696d7f183ca1eb4",
+  "priorBytes": 623209,
+  "priorSha256": "e5b48551412e60cb0dde646929a65e18c61fe11d3ef81665619e5246714a3400",
+  "localServedStatus": 200,
+  "localServedSha256": "e5b48551412e60cb0dde646929a65e18c61fe11d3ef81665619e5246714a3400",
+  "remoteServedStatus": 200,
+  "remoteServedSha256": "e5b48551412e60cb0dde646929a65e18c61fe11d3ef81665619e5246714a3400",
+  "backup": "~/Library/Application Support/SpinonPreviewBackups/roadmap-c114-pr1264-active-sync-2026-11-07/roadmap.html",
+  "changedRoutes": [
+    "roadmap.html"
+  ],
+  "deletedRoutes": []
+}
