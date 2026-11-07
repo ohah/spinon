@@ -1,0 +1,68 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  .scene {
+    display: grid;
+    width: 40px;
+    height: 100px;
+    grid-template-columns: 40px;
+    grid-template-rows: 10px;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-auto-rows: fit-content(20%) 12px 10%;
+    row-gap: 0;
+    column-gap: 0;
+    align-content: start;
+    align-items: normal;
+    justify-content: start;
+    justify-items: normal;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    background-color: #102030;
+  }
+  .explicit {
+    display: block;
+    width: auto;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+    background-color: #e5484d;
+  }
+  .item {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+  }
+  .item-a { background-color: #22c55e; }
+  .item-b { background-color: #14b8a6; }
+  .item-c { background-color: #f97316; }
+  .item-d { background-color: #a855f7; }
+  .payload {
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .payload-a { height: 34px; background-color: #3b82f6; }
+  .payload-b { height: 10px; background-color: #06b6d4; }
+  .payload-c { height: 8px; background-color: #84cc16; }
+  .payload-d { height: 34px; background-color: #ec4899; }
+  @media (prefers-color-scheme: dark) {
+    .scene { grid-auto-rows: fit-content(20%) min-content; }
+  }
+</style>
+<div id="scene" class="scene">
+  <div id="explicit" class="explicit"></div>
+  <div id="item-a" class="item item-a"><div id="payload-a" class="payload payload-a"></div></div>
+  <div id="item-b" class="item item-b"><div id="payload-b" class="payload payload-b"></div></div>
+  <div id="item-c" class="item item-c"><div id="payload-c" class="payload payload-c"></div></div>
+  <div id="item-d" class="item item-d"><div id="payload-d" class="payload payload-d"></div></div>
+</div>

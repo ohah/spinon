@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 Root HTML fit-content implicit row list precomparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font: 10px/10px Arial, sans-serif; }
+    .grid {
+      display: grid;
+      width: 40px;
+      height: 100px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      grid-template-columns: 40px;
+      grid-template-rows: 10px;
+      grid-auto-flow: row;
+      row-gap: 0;
+      column-gap: 0;
+      align-content: start;
+      align-items: normal;
+      justify-content: start;
+      justify-items: normal;
+      overflow: visible;
+      background: #101820;
+      outline: 1px solid #77879a;
+    }
+    .item { min-height: 0; background: #22c55e; }
+    .payload { height: 34px; background: #3b82f6; }
+    .h10 { height: 10px; background: #e5484d; }
+    .h6 { height: 6px; background: #06b6d4; }
+    .h8 { height: 8px; background: #14b8a6; }
+    .h25 { height: 25px; background: #f97316; }
+    .h30 { height: 30px; background: #ec4899; }
+    .h50 { height: 50px; background: #a855f7; }
+    .min28 { min-height: 28px; }
+    .case-label { margin: 0; color: #162333; font: 10px/10px ui-monospace, monospace; }
+
+    #two-caps { grid-auto-rows: fit-content(20%) fit-content(40%); }
+    #three-caps { grid-auto-rows: fit-content(10%) fit-content(20%) fit-content(70%); }
+    #mixed-caps { grid-auto-rows: fit-content(20%) 12px fit-content(80%); }
+    #mixed-size-pattern { grid-auto-rows: fit-content(20%) 12px 10%; }
+    #minimum-floor { grid-auto-rows: fit-content(20%) fit-content(40%); }
+    #zero-and-overflow-caps { grid-auto-rows: fit-content(0%) fit-content(120%); }
+  </style>
+</head>
+<body>
+  <p class="case-label">two caps · 20% / 40% · four implicit rows</p>
+  <section id="two-caps" class="grid">
+    <div class="h10"></div>
+    <div class="item"><div class="payload"></div></div>
+    <div class="item"><div class="payload"></div></div>
+    <div class="item"><div class="h50"></div></div>
+    <div class="item"><div class="h6"></div></div>
+  </section>
+  <p class="case-label">three caps · 10% / 20% / 70% · pattern cycle</p>
+  <section id="three-caps" class="grid">
+    <div class="h10"></div>
+    <div class="item"><div class="payload"></div></div>
+    <div class="item"><div class="h30"></div></div>
+    <div class="item"><div class="h50"></div></div>
+    <div class="item"><div class="h25"></div></div>
+  </section>
+  <p class="case-label">mixed pattern · fit-content(20%) / 12px / fit-content(80%)</p>
+  <section id="mixed-caps" class="grid">
+    <div class="h10"></div>
+    <div class="item"><div class="payload"></div></div>
+    <div class="item"><div class="h10"></div></div>
+    <div class="item"><div class="h50"></div></div>
+    <div class="item"><div class="h6"></div></div>
+  </section>
+  <p class="case-label">mixed sizes · fit-content(20%) / 12px / 10% · repeated</p>
+  <section id="mixed-size-pattern" class="grid">
+    <div class="h10"></div>
+    <div class="item"><div class="payload"></div></div>
+    <div class="item"><div class="h10"></div></div>
+    <div class="item"><div class="h8"></div></div>
+    <div class="item"><div class="payload"></div></div>
+  </section>
+  <p class="case-label">minimum floor · min-height exceeds first cap</p>
+  <section id="minimum-floor" class="grid">
+    <div class="h10"></div>
+    <div class="item min28"><div class="payload"></div></div>
+    <div class="item"><div class="payload"></div></div>
+  </section>
+  <p class="case-label">zero cap · cap above max-content</p>
+  <section id="zero-and-overflow-caps" class="grid">
+    <div class="h10"></div>
+    <div class="item"><div class="payload"></div></div>
+    <div class="item"><div class="payload"></div></div>
+  </section>
+  <script>
+    (() => {
+      const rect = (element, origin = [0, 0]) => {
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return [x - origin[0], y - origin[1], width, height];
+      };
+      window.__gridFitContentAutoRowsList = Array.from(document.querySelectorAll('.grid'), (grid) => {
+        const frame = rect(grid);
+        const origin = frame.slice(0, 2);
+        return {
+          id: grid.id,
+          gridAutoRows: getComputedStyle(grid).gridAutoRows,
+          usedRows: getComputedStyle(grid).gridTemplateRows,
+          grid: frame,
+          children: Array.from(grid.children, (child) => ({
+            frame: rect(child, origin),
+            payload: child.firstElementChild ? rect(child.firstElementChild, origin) : null,
+          })),
+        };
+      });
+    })();
+  </script>
+</body>
+</html>

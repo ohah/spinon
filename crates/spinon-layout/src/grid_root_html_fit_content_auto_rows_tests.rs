@@ -216,6 +216,33 @@ fn root_html_fit_content_implicit_row_rejects_out_of_profile_inputs() {
         ));
     }
 
+    for tracks in [
+        Vec::new(),
+        vec![
+            GridTrackSize::LengthPx(12.0),
+            GridTrackSize::Percentage(0.1),
+        ],
+        vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::LengthPx(-1.0),
+        ],
+        vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::Percentage(f32::NAN),
+        ],
+    ] {
+        let mut invalid_list = input(24.0, 0.0);
+        invalid_list
+            .grid_containers
+            .get_mut(&id(1))
+            .unwrap()
+            .auto_rows = GridAutoRows::TrackList(tracks);
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&invalid_list),
+            Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+        ));
+    }
+
     let mut nonzero_gap = input(24.0, 0.0);
     nonzero_gap.nodes[0].style.gap.row = LayoutLengthPercentage::LengthPx(1.0);
     assert!(matches!(
@@ -230,10 +257,23 @@ fn root_html_fit_content_implicit_row_rejects_out_of_profile_inputs() {
         .unwrap()
         .auto_rows = GridAutoRows::TrackList(vec![
         GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(24.0)),
-        GridTrackSize::LengthPx(6.0),
+        GridTrackSize::Auto,
     ]);
     assert!(matches!(
         TaffyLayoutEngine.compute(&mixed_rows),
+        Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+
+    let mut oversized_list = input(24.0, 0.0);
+    let mut tracks = vec![GridTrackSize::LengthPx(1.0); crate::GRID_MAX_TRACKS + 1];
+    tracks[0] = GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(24.0));
+    oversized_list
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .auto_rows = GridAutoRows::TrackList(tracks);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&oversized_list),
         Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
     ));
 
@@ -263,3 +303,5 @@ fn root_html_fit_content_implicit_row_rejects_out_of_profile_inputs() {
         Err(crate::LayoutError::UnsupportedGridContainerStyle { node, .. }) if node == id(1)
     ));
 }
+
+mod track_lists;

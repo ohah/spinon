@@ -1,0 +1,9 @@
+{
+  "sessionsClosed": [
+    "spinon-c114-fit-list-20261108",
+    "spinon-c114-css-spec-20261108",
+    "default"
+  ],
+  "finalSessionList": "No active sessions",
+  "finalProcessCheck": "ps showed no agent-browser, chrome-headless-shell, or Chromium process; only the diagnostic shell/rg process matched the query."
+}

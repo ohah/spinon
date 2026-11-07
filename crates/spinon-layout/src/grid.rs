@@ -332,7 +332,7 @@ pub enum GridPlacementMode {
     RootHtmlMixedCrossAxisColumnAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
-    /// 제한 Root HTML 경로에서 singleton finite non-negative px/percentage `fit-content()` implicit rows를 sizing합니다.
+    /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` track-size list implicit rows를 sizing합니다.
     RootHtmlFitContentAutoRowsV1,
     /// 기본 Root HTML 경로에서 제한된 explicit intrinsic tracks와 row-sparse placement를 sizing합니다.
     RootHtmlIntrinsicTrackSizingV1,
@@ -571,13 +571,7 @@ pub(super) fn validate_grid_layout(
             (GridPlacementMode::TrackSizing, _) => {}
             (GridPlacementMode::RootHtmlAutoRepeatV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlFitContentAutoRowsV1, GridAutoRows::TrackList(tracks))
-                if matches!(
-                    tracks.as_slice(),
-                    [GridTrackSize::FitContent(
-                        GridTrackLengthPercentage::LengthPx(cap)
-                            | GridTrackLengthPercentage::Percentage(cap)
-                    )] if cap.is_finite() && *cap >= 0.0
-                ) => {}
+                if root_html_fit_content_auto_rows::supports_track_list(tracks) => {}
             (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlAutoRowStretchV1, GridAutoRows::Auto) => {}
             (
@@ -1343,21 +1337,30 @@ pub(super) fn validate_grid_layout(
                     == GridPlacementMode::RootHtmlAutoRepeatV1
                     && matches!(property, "min-width" | "min-height")
                     && value == crate::LayoutDimension::Fixed(0.0);
-                let fit_content_middle_item = node
+                let fit_content_item_position = node
                     .children
                     .iter()
                     .copied()
                     .filter(|sibling| !hidden.get(sibling).copied().unwrap_or(true))
-                    .nth(1)
-                    == Some(child_id);
+                    .position(|sibling| sibling == child_id);
+                let fit_content_item_count = node
+                    .children
+                    .iter()
+                    .filter(|sibling| !hidden.get(sibling).copied().unwrap_or(true))
+                    .count();
                 let root_html_fit_content_minimum = container.placement_mode
                     == GridPlacementMode::RootHtmlFitContentAutoRowsV1
-                    && fit_content_middle_item
                     && property == "min-height"
-                    && matches!(
-                        value,
-                        crate::LayoutDimension::Fixed(value) if value == 0.0 || value == 28.0
-                    )
+                    && match (fit_content_item_count, fit_content_item_position, value) {
+                        (3, Some(1), crate::LayoutDimension::Fixed(value))
+                            if value == 0.0 || value == 28.0 =>
+                        {
+                            true
+                        }
+                        (3, Some(2), crate::LayoutDimension::Fixed(0.0)) => true,
+                        (5, Some(1..=4), crate::LayoutDimension::Fixed(0.0)) => true,
+                        _ => false,
+                    }
                     && matches!(&container.auto_rows, GridAutoRows::TrackList(_));
                 let root_html_direct_text_ratio_target_constraint = container.placement_mode
                     == GridPlacementMode::RootHtmlDirectTextAspectRatioV1

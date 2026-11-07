@@ -1,5 +1,23 @@
 use super::*;
 
+pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
+    !tracks.is_empty()
+        && tracks.len() <= GRID_MAX_TRACKS
+        && tracks
+            .iter()
+            .any(|track| matches!(track, GridTrackSize::FitContent(_)))
+        && tracks.iter().all(|track| match track {
+            GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value) => {
+                value.is_finite() && *value >= 0.0
+            }
+            GridTrackSize::FitContent(
+                GridTrackLengthPercentage::LengthPx(value)
+                | GridTrackLengthPercentage::Percentage(value),
+            ) => value.is_finite() && *value >= 0.0,
+            _ => false,
+        })
+}
+
 pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     input: &LayoutInput,
     index: &BTreeMap<NodeId, usize>,
@@ -9,18 +27,12 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
 ) -> Result<(), LayoutError> {
     let unsupported_rows = || LayoutError::UnsupportedGridAutoRows {
         node,
-        reason: "Root HTML fit-content implicit rows require one finite non-negative px or percentage cap",
+        reason: "Root HTML fit-content implicit rows require a supported finite non-negative track-size list",
     };
     let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows else {
         return Err(unsupported_rows());
     };
-    if !matches!(
-        tracks.as_slice(),
-        [GridTrackSize::FitContent(
-            GridTrackLengthPercentage::LengthPx(cap)
-                | GridTrackLengthPercentage::Percentage(cap)
-        )] if cap.is_finite() && *cap >= 0.0
-    ) {
+    if !supports_track_list(tracks) {
         return Err(unsupported_rows());
     }
 
@@ -119,19 +131,15 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             .get(&child)
             .is_none_or(|position| position.position == LayoutPosition::Static)
     };
-    if visible_children.len() != 3 || has_non_collapsible_text(input, node) {
+    if !matches!(visible_children.len(), 3 | 5) || has_non_collapsible_text(input, node) {
         return Err(LayoutError::UnsupportedGridContainerStyle {
             node,
-            property: "C11.4 fit-content implicit row item count",
+            property: "C11.4 fit-content implicit row list item count",
         });
     }
 
     let first_id = visible_children[0];
-    let middle_id = visible_children[1];
-    let probe_id = visible_children[2];
     let first = &input.nodes[index[&first_id]];
-    let middle = &input.nodes[index[&middle_id]];
-    let probe = &input.nodes[index[&probe_id]];
     let fixed_item_is_supported = |item: &crate::LayoutNode, height| {
         item.style.display == LayoutDisplay::Block
             && item.style.width == LayoutDimension::Auto
@@ -150,67 +158,90 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && item.style.align_self == crate::LayoutAlignSelf::Auto
             && item.style.justify_self == crate::LayoutAlignSelf::Auto
             && item.children.is_empty()
+            && !input.grid_containers.contains_key(&item.id)
             && child_has_no_text(item.id)
             && child_has_auto_placement(item.id)
             && child_is_static(item.id)
     };
-    let middle_is_supported = middle.style.display == LayoutDisplay::Block
-        && middle.style.width == LayoutDimension::Auto
-        && middle.style.height == LayoutDimension::Auto
-        && middle.style.min_width == LayoutDimension::Auto
-        && matches!(
-            middle.style.min_height,
-            LayoutDimension::Fixed(value) if value == 0.0 || value == 28.0
-        )
-        && middle.style.max_width == LayoutDimension::Auto
-        && middle.style.max_height == LayoutDimension::Auto
-        && middle.style.aspect_ratio.is_none()
-        && middle.style.order == 0
-        && middle.style.overflow_x == crate::LayoutOverflow::Visible
-        && middle.style.overflow_y == crate::LayoutOverflow::Visible
-        && middle.style.margin == crate::LayoutEdges::default()
-        && middle.style.padding == crate::LayoutEdges::default()
-        && middle.style.border == crate::LayoutBorder::default()
-        && middle.style.align_self == crate::LayoutAlignSelf::Auto
-        && middle.style.justify_self == crate::LayoutAlignSelf::Auto
-        && middle.children.len() == 1
-        && child_has_no_text(middle_id)
-        && child_has_auto_placement(middle_id)
-        && child_is_static(middle_id);
-    if !fixed_item_is_supported(first, 10.0)
-        || !middle_is_supported
-        || !fixed_item_is_supported(probe, 6.0)
-    {
+    if !fixed_item_is_supported(first, 10.0) {
         return Err(LayoutError::UnsupportedGridContainerStyle {
             node,
-            property: "C11.4 fit-content implicit row item profile",
+            property: "C11.4 fit-content explicit row item profile",
         });
     }
 
-    let payload_id = middle.children[0];
-    let payload = &input.nodes[index[&payload_id]];
-    if payload.style.display != LayoutDisplay::Block
-        || payload.style.width != LayoutDimension::Auto
-        || payload.style.height != LayoutDimension::Fixed(34.0)
-        || payload.style.min_width != LayoutDimension::Auto
-        || payload.style.max_width != LayoutDimension::Auto
-        || payload.style.min_height != LayoutDimension::Auto
-        || payload.style.max_height != LayoutDimension::Auto
-        || payload.style.aspect_ratio.is_some()
-        || payload.style.order != 0
-        || payload.style.overflow_x != crate::LayoutOverflow::Visible
-        || payload.style.overflow_y != crate::LayoutOverflow::Visible
-        || payload.style.margin != crate::LayoutEdges::default()
-        || payload.style.padding != crate::LayoutEdges::default()
-        || payload.style.border != crate::LayoutBorder::default()
-        || !payload.children.is_empty()
-        || !child_has_no_text(payload_id)
-        || !child_is_static(payload_id)
-    {
-        return Err(LayoutError::UnsupportedGridContainerStyle {
-            node: payload_id,
-            property: "C11.4 fit-content implicit row intrinsic payload",
-        });
+    let auto_item_is_supported = |item: &crate::LayoutNode, allow_floor: bool| {
+        item.style.display == LayoutDisplay::Block
+            && item.style.width == LayoutDimension::Auto
+            && item.style.height == LayoutDimension::Auto
+            && item.style.min_width == LayoutDimension::Auto
+            && (item.style.min_height == LayoutDimension::Fixed(0.0)
+                || (allow_floor && item.style.min_height == LayoutDimension::Fixed(28.0)))
+            && item.style.max_width == LayoutDimension::Auto
+            && item.style.max_height == LayoutDimension::Auto
+            && item.style.aspect_ratio.is_none()
+            && item.style.order == 0
+            && item.style.overflow_x == crate::LayoutOverflow::Visible
+            && item.style.overflow_y == crate::LayoutOverflow::Visible
+            && item.style.margin == crate::LayoutEdges::default()
+            && item.style.padding == crate::LayoutEdges::default()
+            && item.style.border == crate::LayoutBorder::default()
+            && item.style.align_self == crate::LayoutAlignSelf::Auto
+            && item.style.justify_self == crate::LayoutAlignSelf::Auto
+            && item.children.len() == 1
+            && !input.grid_containers.contains_key(&item.id)
+            && child_has_no_text(item.id)
+            && child_has_auto_placement(item.id)
+            && child_is_static(item.id)
+    };
+    let payload_is_supported = |payload_id: NodeId, allowed_heights: &[f32]| {
+        let payload = &input.nodes[index[&payload_id]];
+        payload.style.display == LayoutDisplay::Block
+            && payload.style.width == LayoutDimension::Auto
+            && allowed_heights
+                .iter()
+                .any(|height| payload.style.height == LayoutDimension::Fixed(*height))
+            && payload.style.min_width == LayoutDimension::Auto
+            && payload.style.max_width == LayoutDimension::Auto
+            && payload.style.min_height == LayoutDimension::Auto
+            && payload.style.max_height == LayoutDimension::Auto
+            && payload.style.aspect_ratio.is_none()
+            && payload.style.order == 0
+            && payload.style.overflow_x == crate::LayoutOverflow::Visible
+            && payload.style.overflow_y == crate::LayoutOverflow::Visible
+            && payload.style.margin == crate::LayoutEdges::default()
+            && payload.style.padding == crate::LayoutEdges::default()
+            && payload.style.border == crate::LayoutBorder::default()
+            && payload.children.is_empty()
+            && !input.grid_containers.contains_key(&payload_id)
+            && child_has_no_text(payload_id)
+            && child_is_static(payload_id)
+    };
+    const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
+
+    for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
+        let row_item = &input.nodes[index[&row_id]];
+        let allow_minimum_floor = visible_children.len() == 3 && position == 1;
+        if auto_item_is_supported(row_item, allow_minimum_floor) {
+            let payload_id = row_item.children[0];
+            if !payload_is_supported(payload_id, LIST_PAYLOAD_HEIGHTS) {
+                return Err(LayoutError::UnsupportedGridContainerStyle {
+                    node: payload_id,
+                    property: "C11.4 fit-content implicit row list payload",
+                });
+            }
+        } else if visible_children.len() == 3
+            && position == 2
+            && fixed_item_is_supported(row_item, 6.0)
+        {
+            // The pre-existing singleton fixture uses a fixed following item to expose
+            // the used size of the first implicit row without another intrinsic payload.
+        } else {
+            return Err(LayoutError::UnsupportedGridContainerStyle {
+                node,
+                property: "C11.4 fit-content implicit row list item profile",
+            });
+        }
     }
     Ok(())
 }

@@ -274,7 +274,7 @@ fn assert_fit_content_auto_rows_reject_mixed_math_flow_and_placement_shapes() {
             replace_once(
                 SOURCE,
                 "grid-auto-rows: fit-content(24px);",
-                "grid-auto-rows: fit-content(24px) 10px;",
+                "grid-auto-rows: fit-content(24px) min-content;",
             ),
         ),
         (
@@ -326,3 +326,5 @@ fn assert_fit_content_auto_rows_reject_mixed_math_flow_and_placement_shapes() {
         );
     }
 }
+
+mod track_lists;
