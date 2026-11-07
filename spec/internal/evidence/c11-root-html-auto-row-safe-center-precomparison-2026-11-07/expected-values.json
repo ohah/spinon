@@ -1,5 +1,5 @@
 {
-  "basis": "CSS Grid content-alignment subject includes three 10px tracks and two row gaps; container block size is 40px.",
+  "basis": "CSS Grid 정렬 subject에는 세 개의 10px track과 두 row-gap이 포함되고, container block size는 40px이다.",
   "positiveSpace": {
     "rowGapCssPx": 0,
     "trackSizesCssPx": [
@@ -56,5 +56,5 @@
     }
   },
   "toleranceCssPx": 0.015625,
-  "derivation": "46px row-gap × 2 + 10px × 3 = 122px. safe center falls back to start when the subject overflows; unsafe center and center retain centering, so the group offset is (40 - 122) / 2 = -41px."
+  "derivation": "row-gap 46px 두 개와 track 10px 세 개의 합은 122px이다. safe center는 subject overflow 때 start로 fallback한다. unsafe center와 center는 중앙 정렬을 유지하므로 group offset은 (40 - 122) / 2 = -41px이다."
 }

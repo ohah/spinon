@@ -11,7 +11,7 @@ C11.4의 다음 제한 후보를 정하기 위해 기존 fixed `RootHtmlAutoRowS
 
 ## 관측 및 독립 기대값
 
-6 scene에서 computed alignment/gap, used row sizes, 세 item의 frame을 기록했다. positive space에서 세 값 모두 child y offsets `[5,15,25]px`다. overflow는 `[10,10,10]px` tracks와 두 46px gutters로 122px alignment subject를 만들어 40px container보다 82px 크다. `safe center`는 start fallback으로 `[0,56,112]px`, `unsafe center`와 plain `center`는 group을 -41px 이동해 `[-41,15,71]px`다. Chrome 관측은 독립 산출값과 모두 정확히 일치했다. 원점 포함 raw 좌표와 computed CSS serialization은 `chrome-observation.json`, 계산은 `expected-values.json`에 있다.
+6 scene에서 computed alignment/gap, used row sizes, 세 item의 frame을 기록했다. positive space에서 세 값 모두 child y offsets `[5,15,25]px`다. overflow는 `[10,10,10]px` tracks와 두 46px gutters로 122px alignment subject를 만들어 40px container보다 82px 크다. `safe center`는 start fallback으로 `[0,56,112]px`, `unsafe center`와 plain `center`는 group을 -41px 이동해 `[-41,15,71]px`다. Chrome 관측은 독립 산출값과 모두 정확히 일치했다. 원점 포함 raw Grid/item rectangle과 computed CSS serialization은 `chrome-observation.json`, 계산은 `expected-values.json`에 있다. SHA-256과 screenshot 크기도 JSON에 묶었다.
 
 규범 출처는 [CSS Box Alignment Level 3 §4.4](https://www.w3.org/TR/css-align-3/#overflow-values)다. 이 W3C 문서는 2026-10-08 Working Draft이며 `<overflow-position>`이 at-risk로 표시되어 있으므로 현재 공개 CSS 지원 선언이나 안정된 제품 계약으로 해석하지 않는다. §4.4에서 explicit `safe` overflow는 flex-start처럼 동작하고 Grid에서 flex-start는 start와 같으며, `unsafe`는 지정 alignment를 유지한다. [§5.1.4 Grid Containers](https://www.w3.org/TR/css-align-3/#align-content-property)는 정렬 subject를 grid tracks와 gutters로 정의한다.
 
