@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-11-07T16:37:04.525Z",
+  "repositoryHead": "818d83b800d86c09bb379a93605aa9d5fc50aaa9",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 628186,
+  "sourceSha256": "505a4d247661e25bc64fd97467677daf3be6206e2257a4ed6b3b53a20c889578",
+  "previousPreviewBytes": 628191,
+  "previousPreviewSha256": "3b74d4925f49d03e9575c3e0b1834e793b4f6c063bc6e75fef139a5e21c762f3",
+  "previousServedResponses": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 628191,
+      "sha256": "3b74d4925f49d03e9575c3e0b1834e793b4f6c063bc6e75fef139a5e21c762f3"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 628191,
+      "sha256": "3b74d4925f49d03e9575c3e0b1834e793b4f6c063bc6e75fef139a5e21c762f3"
+    }
+  ],
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-c11-4-fit-content-percentage-sync-2026-11-08/pass03/roadmap.html",
+  "tailscaleBackend": "Running",
+  "previewListener": "node    28040 yoonhb   12u  IPv4 0xab5c8f5eaaf3f681      0t0  TCP 127.0.0.1:8768 (LISTEN)",
+  "previewServerCommand": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "previewTargetOpenHandles": [],
+  "previewServerRestarted": false,
+  "pagesDeployment": "not requested; unchanged"
+}
