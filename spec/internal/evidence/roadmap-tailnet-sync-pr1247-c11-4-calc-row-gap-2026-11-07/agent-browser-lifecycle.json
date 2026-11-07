@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-11-07T02:14:20Z",
+  "recordedAt": "2026-11-07T02:19:03Z",
   "browser": "Agent Browser 0.31.1",
   "sessions": [
     {
@@ -21,6 +21,27 @@
       ],
       "closed": true,
       "closeExitCode": 0
+    },
+    {
+      "name": "spinon-pr1248",
+      "url": "https://github.com/ohah/spinon/pull/1248",
+      "purpose": "PR 본문 Tailnet screenshots 이미지 로드 확인",
+      "closed": true,
+      "closeExitCode": 0,
+      "bodyImages": [
+        {
+          "alt": "Tailnet roadmap desktop",
+          "complete": true,
+          "naturalWidth": 1440,
+          "naturalHeight": 1000
+        },
+        {
+          "alt": "Tailnet roadmap mobile",
+          "complete": true,
+          "naturalWidth": 390,
+          "naturalHeight": 844
+        }
+      ]
     }
   ],
   "afterCloseProcessCheck": {

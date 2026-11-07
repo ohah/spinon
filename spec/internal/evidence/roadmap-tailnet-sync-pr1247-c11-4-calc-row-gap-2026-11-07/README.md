@@ -16,7 +16,7 @@ Agent Browser 0.31.1에서 같은 Tailnet URL을 desktop 1440×1000 CSS px와 mo
 
 - Desktop latest-card bounds: x=90px, y=243.421875px, 928×122.34375px, right=1018px. [DOM record](./agent-browser-tailnet-desktop.json) · screenshot SHA-256 `7542eed9480d5326ab75e38caa4f415e41b277a39145078a0cdc98dcf8acc161`.
 - Mobile latest-card bounds: x=14px, y=239.734375px, 362×326.25px, right=376px. [DOM record](./agent-browser-tailnet-mobile.json) · screenshot SHA-256 `f912cdd2a207f575a04ba57aa2ad34ee2164e906a15e67097c1d8e735787fdcc`.
-- 두 Agent Browser session을 닫았고 종료 뒤 agent-browser/Chrome process가 남지 않았다: [lifecycle record](./agent-browser-lifecycle.json).
+- Tailnet desktop/mobile과 PR 본문 image 확인에 쓴 세 Agent Browser session을 닫았고 종료 뒤 agent-browser/Chrome process가 남지 않았다: [lifecycle record](./agent-browser-lifecycle.json).
 - GitHub Pages와 `gh-pages`는 배포하지 않았다.
 
 ![Tailnet roadmap desktop](./tailnet-roadmap-agent-browser-desktop.png)
