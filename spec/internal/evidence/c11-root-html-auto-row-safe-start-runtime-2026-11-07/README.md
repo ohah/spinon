@@ -30,15 +30,15 @@ Profile은 definite 40×40px content box, 40px explicit column, 10px explicit ro
 
 ![iPhone 17 Pro Simulator, safe start overflow](./pass02/ios/simulator.png)
 
-![Android API 37 AVD, unsafe start overflow](./pass03/android/simulator.png)
+![Android API 37 AVD, unsafe start overflow](./pass04/android/simulator.png)
 
-![iPhone 17 Pro Simulator, unsafe start overflow](./pass03/ios/simulator.png)
+![iPhone 17 Pro Simulator, unsafe start overflow](./pass04/ios/simulator.png)
 
 캡처는 OS screenshot의 색 영역 경계만 측정한다. Android PixelCopy, Metal drawable readback, iOS compositor 이후 pixel parity가 아니다. 화면 바깥으로 빠지는 item을 이 장면에서 주장하지 않는다. Rust matrix가 각 frame을 1/64 CSS px tolerance로 판정한다.
 
 ## 상태 보존과 한계
 
-pass01–03 모두 기존 bootstrap 입력, Android APK, iOS build, 설치 앱을 실행 전 hash로 복구했고 `asset_and_simulator_restoration=PASS`를 남겼다. 복구된 Android base APK는 `48db6dd5748c5bb7717d20ce4b3bc023ebe93acb1dc202b3d973164544c5bc04`, iOS executable은 `eca866e291d5ffbbe7756c354532bb69bca9d2fed264bc8181d02c61a772a929`다. 후보 source diff hash는 세 pass 모두 `c27f48ba3cba0397bb4d7b519504c9b8983ee9046fc0fc3a5b7b1dc0734a1a6a`다.
+pass01–04 모두 기존 bootstrap 입력, Android APK, iOS build, 설치 앱을 실행 전 hash로 복구했고 `asset_and_simulator_restoration=PASS`를 남겼다. pass03은 unsafe 장면의 초기 캡처로 보존했다. fixture의 비동작 title 오타를 고친 뒤 동일 CSS로 pass04를 다시 실행했고 README의 최종 unsafe 캡처는 pass04다. 복구된 Android base APK는 `48db6dd5748c5bb7717d20ce4b3bc023ebe93acb1dc202b3d973164544c5bc04`, iOS executable은 `eca866e291d5ffbbe7756c354532bb69bca9d2fed264bc8181d02c61a772a929`다. 후보 source diff hash는 네 pass 모두 `c27f48ba3cba0397bb4d7b519504c9b8983ee9046fc0fc3a5b7b1dc0734a1a6a`다.
 
 이 결과는 고정 profile·두 Simulator와 고정 fixture에 한정된다. 일반 CSS admission, 다른 item/track topology, writing mode·direction, WPT, 물리 기기, hardware GPU 및 전체 C11.4/C11 완료를 뜻하지 않는다. C11.4/C11 미완료, 공식 완료 `78/214`, 내부 숫자 계약 버전 `0.1.0`을 유지한다.
 
