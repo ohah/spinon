@@ -33,6 +33,6 @@
 | 27 | Android/iOS에서 fixture route 자체가 실행되지 않을 수 있음 | default app boot·layout-ready·draw/present logs 확인 | 양쪽 통과 |
 | 28 | APK 또는 iOS app이 다른 HTML을 포함할 수 있음 | 번들 fixture SHA와 고정 입력 SHA 비교 | 일치 |
 | 29 | app/process/build 상태가 실행 뒤 달라질 수 있음 | 설치 앱·build artifacts 해시 보존/복원 기록 확인 | 복원 PASS |
-| 30 | roadmap 변경이 공식 완료 수를 부풀릴 수 있음 | C11.4 진행 카드만 추가, official checkbox 및 `78/214` 유지 | 이상 없음 |
+| 30 | 상태·계약 문서가 진행을 완료로 오인시킬 수 있음 | STATUS 체크와 `78/214`를 유지하고, 계약 0059에 제한 profile·미검증 범위와 후보 PR #1256을 기록하며 roadmap에 진행 카드만 표시 | 이상 없음 |
 
 이 검토는 PR diff와 기록된 실행 증거에 한정한다. GitHub check rollup이 비어 있다면 이를 CI 통과로 해석하지 않는다.
