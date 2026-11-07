@@ -1,0 +1,3 @@
+Agent Browser cleanup after pass07
+Session spinon-roadmap-after-1272 was closed. BrowserLaunched=false and pageCount=0 after close; its background PID exited. pgrep -x agent-browser returned no process.
+Existing Chrome processes with the hwpjs owned-profile and default Chrome profile were preserved; they predated this Agent Browser session and are not Agent Browser processes.

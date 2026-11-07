@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `grid-auto-rows` fit-content list의 `auto` track
 
-**상태:** 제한 구현, focused Rust 검증, Android·iOS Simulator visual smoke와 계획/구현-runtime 실패 관점 20개 검토를 마쳤다. Layout 2/2, style projection 1/1, 신규 RuntimeSession 2/2, 이전 singleton 회귀 2/2, changed-crate Clippy/rustfmt가 통과했다. 두 simulator는 기본 Root HTML route에서 `layout=ready boxes=12`를 보고했고 package의 HTML hash가 고정 fixture와 일치한다. PR diff 실패 관점 30개 검토를 완료했다. PR 생성·CI/check 결과 확인·merge는 남아 있다. 이 미병합 조각은 `auto` 한 종류만 pattern 안에서 순환 허용하며, C11.4/C11 완료와 공식 `78/214`는 그대로 유지한다.
+**상태:** 제한 구현, focused Rust 검증, Android·iOS Simulator visual smoke와 계획/구현-runtime 실패 관점 20개 검토를 마쳤다. Layout 2/2, style projection 1/1, 신규 RuntimeSession 2/2, 이전 singleton 회귀 2/2, changed-crate Clippy/rustfmt가 통과했다. 두 simulator는 기본 Root HTML route에서 `layout=ready boxes=12`를 보고했고 package의 HTML hash가 고정 fixture와 일치한다. PR diff 실패 관점 30개 검토를 완료했다. PR [#1272](https://github.com/ohah/spinon/pull/1272)는 2026-11-07T20:28:56Z Rebase and merge됐고 merge SHA는 `5ce4c735777c88542627838bc41411621f397cc3`다. GitHub status와 PR workflow run은 보고되지 않았으며 main의 required status checks는 없고 required approvals는 0이다. 따라서 CI green으로 기록하지 않는다. 이 제한 조각은 `auto` 한 종류만 pattern 안에서 순환 허용하며, C11.4/C11 완료와 공식 `78/214`는 그대로 유지한다.
 
 **상위:** [공식 C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [fit-content 목록 구현](./c11-4-root-html-fit-content-auto-rows-list.md) · [내부 명세 0059](../spec/internal/0059-c11-grid-layout.md)
 
