@@ -33,6 +33,6 @@
 | 27 | 화면 밖 unsafe item이 없는 것처럼 판정되는가 | analyzer는 화면 밖 item을 `null`로 분리하고 Rust negative-y geometry를 별도 검증. 통과. |
 | 28 | screenshot 경계가 native surface readback으로 과장되는가 | 문서·PR 화면 설명은 visual bounds로 한정하고 PixelCopy/Metal은 수행하지 않았다. 통과. |
 | 29 | 시뮬레이터 실행이 설치 앱·bootstrap 또는 build를 오염시키는가 | pass04–06 모두 앱/산출물 복원 hash 일치와 restoration PASS 기록. 통과. |
-| 30 | 공식 C11 상태·전체 counter 또는 현재 순서가 잘못 승격되는가 | C11/C11.4 체크는 미완료, `78/214` 유지; safe-end를 current bounded candidate로 표시한다. 통과. |
+| 30 | 공식 C11 상태·전체 counter 또는 현재 순서가 잘못 승격되는가 | C11/C11.4 체크는 미완료, `78/214` 유지; safe-end를 현재 bounded candidate로 표시하고 PR #1252 open 상태를 연결한다. 통과. |
 
 한 가지 검토 발견은 #14이며 style projection 오류 attribution을 고친 뒤 새 property-specific regression을 통과시켰다. 이 review는 구현 diff 검토이며 CI, WPT, physical device·hardware GPU, PixelCopy/Metal readback 또는 C11 완료를 주장하지 않는다.
