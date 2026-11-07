@@ -1,0 +1,36 @@
+{
+  "recordedAt": "2026-11-07T03:20:05.115993+00:00",
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-c11-safe-end",
+  "beforeClose": {
+    "active": true,
+    "pid": 42207,
+    "backgroundPid": 42207,
+    "pageCount": 1,
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+  },
+  "pagesChecked": [
+    "https://github.com/ohah/spinon/pull/1250",
+    "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+  ],
+  "viewportsChecked": [
+    {
+      "widthCssPx": 1440,
+      "heightCssPx": 1000
+    },
+    {
+      "widthCssPx": 390,
+      "heightCssPx": 844
+    }
+  ],
+  "closeCommand": "agent-browser --session spinon-c11-safe-end close",
+  "closed": true,
+  "processScanAfterClose": [],
+  "processScanPattern": [
+    "agent-browser",
+    "terminal-browser",
+    "HeadlessChrome"
+  ],
+  "previewServerPidAfterClose": 28040,
+  "previewServerRestarted": false
+}

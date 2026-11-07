@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-11-07T03:18:52.860Z",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 615956,
+  "sourceSha256": "0ded9f0bc08c30ab669aaa0663190fc767440d602917ca98c6c523c427006a0a",
+  "target": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "targetBytes": 615956,
+  "targetSha256": "0ded9f0bc08c30ab669aaa0663190fc767440d602917ca98c6c523c427006a0a",
+  "served": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 615956,
+      "sha256": "0ded9f0bc08c30ab669aaa0663190fc767440d602917ca98c6c523c427006a0a"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 615956,
+      "sha256": "0ded9f0bc08c30ab669aaa0663190fc767440d602917ca98c6c523c427006a0a"
+    }
+  ],
+  "requiredMarkers": [
+    "PR #1249 Rebase and merge",
+    "a69030722d82a97e6ce40e276c0aae2b8447550d",
+    "78/214",
+    "C11.4/C11은 미완료",
+    "align-content:safe|unsafe center",
+    "align-content:safe|unsafe end"
+  ],
+  "allMarkersPresent": true,
+  "githubPagesDeployed": false
+}
