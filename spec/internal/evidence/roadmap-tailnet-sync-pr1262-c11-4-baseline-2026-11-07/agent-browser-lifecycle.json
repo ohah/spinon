@@ -1,0 +1,9 @@
+{
+  "browser": "Agent Browser",
+  "session": "default",
+  "closedWith": "agent-browser close --all",
+  "daemonPid": 89165,
+  "daemonBeforeTermination": "",
+  "daemonTerminated": true,
+  "matchingProcessesAfterClose": []
+}

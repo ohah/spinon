@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `align-content:baseline` safe-start fallback
 
-**상태:** Chrome 157 사전 비교, 계획 실패 관점 20개 검토, 고정 `RootHtmlAutoRowStretchV1` profile의 최상위 Grid 구현과 RuntimeSession·Android/iOS Simulator 검증을 마쳤다. 구현/runtime 검토 20개를 끝냈고 실제 PR diff 30개 검토와 PR 병합 전이다. baseline-sharing group을 이루는 중첩 Grid나 일반 CSS 지원은 이 slice에 포함하지 않는다. C11.4/C11 및 공식 `78/214`는 미완료·변경 없음.
+**상태:** Chrome 157 사전 비교, 계획 실패 관점 20개 검토, 고정 `RootHtmlAutoRowStretchV1` profile의 최상위 Grid 구현과 RuntimeSession·Android/iOS Simulator 검증을 마쳤다. 구현/runtime 검토 20개와 실제 PR diff 30개 검토를 완료했고 PR [#1262](https://github.com/ohah/spinon/pull/1262)는 2026-11-07T09:46:46Z Rebase and merge됐다(merge SHA `e275882ecceb1a2e2545eb827cdcde3673d8efd2`). 병합된 공개 로드맵은 Tailnet 제공본에 반영했으며 Agent Browser의 desktop/mobile 화면에서도 `C11.4 · ACTIVE` 카드를 확인했다([동기화·화면 근거](../spec/internal/evidence/roadmap-tailnet-sync-pr1262-c11-4-baseline-2026-11-07/README.md)). baseline-sharing group을 이루는 중첩 Grid나 일반 CSS 지원은 이 slice에 포함하지 않는다. 이 bounded slice는 병합됐지만 C11.4/C11 및 공식 `78/214`는 미완료·변경 없음.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [align-content content-distribution 선행](./c11-root-html-auto-row-content-alignment.md) · [safe/unsafe positional 선행](./c11-root-html-auto-row-safe-flex-end.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

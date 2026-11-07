@@ -1,0 +1,50 @@
+{
+  "boardRect": {
+    "height": 416,
+    "width": 362,
+    "x": 14,
+    "y": 340.53125
+  },
+  "bodyWidth": 390,
+  "documentWidth": 390,
+  "hasHorizontalOverflow": false,
+  "kanban": [
+    "할 일",
+    "133",
+    "+133개 미착수 항목",
+    "QUEUE · DETAIL BELOW",
+    "진행 중",
+    "1/2",
+    "Root HTML alig…",
+    "C11.4 · ACTIVE",
+    "외부 대기",
+    "3",
+    "iOS 실기기 검증 대기",
+    "R02 · DEVICE WAIT",
+    "Android 실기기 수집…",
+    "R05 · DEVICE WAIT",
+    "GPU 출력 위험 실험",
+    "R08 · DEVICE WAIT",
+    "완료",
+    "78",
+    "Vue·Svelte 호스트…",
+    "R07 · DONE",
+    "iOS 배포·OTA 정책 …",
+    "R09 · DONE",
+    "Taffy 적합성 실험",
+    "R10 · DONE",
+    "+75개 완료 항목",
+    "ARCHIVED · DETAIL BELOW",
+    "미완료",
+    "외부 조건 대기",
+    "공식 완료"
+  ],
+  "kanbanClientWidth": 362,
+  "kanbanScroll": 272,
+  "kanbanScrollWidth": 1120,
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "height": 844,
+    "width": 390
+  }
+}
