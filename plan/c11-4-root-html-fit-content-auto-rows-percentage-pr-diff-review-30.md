@@ -1,38 +1,38 @@
 # C11.4 percentage fit-content 계획 PR diff 적대 검토 30개
 
-대상: [계획 PR #1267](https://github.com/ohah/spinon/pull/1267)의 실제 GitHub diff 및 PR 본문. 계획 검토 20개와 분리된 변경분 검토다.
+대상: [계획 PR #1267](https://github.com/ohah/spinon/pull/1267)의 최종 GitHub diff와 PR 본문. 기능 계획의 실패 관점 20개와 분리해 PR 산출물·경로·메타데이터를 검토했다.
 
-| # | 독립 실패 관점 | 확인 결과 |
+| # | PR 변경분 실패 관점 | 확인 결과 |
 |---:|---|---|
-| 1 | PR base가 최신 공식 구현 tree가 아님 | Base는 `main` SHA `77f2216e3b81b9597bc7ed7c1c0ec716e41a70d2`이며 작성 시 최신이다. PASS |
-| 2 | 계획 PR에 제품 동작 코드가 섞임 | 변경 8개는 계획·fixture·사전 비교 자료만 포함한다. PASS |
-| 3 | 기존 px slice 선행 관계가 틀림 | PR #1265를 정확히 선행 slice로 연결했다. PASS |
-| 4 | C11.4 또는 C11을 완료 처리 | 계획·PR 본문 모두 미완료를 명시한다. PASS |
-| 5 | 공식 완료 수가 잘못 바뀜 | `78/214`를 유지한다고 명시했고 STATUS를 수정하지 않았다. PASS |
-| 6 | 공개 CSS 지원 또는 WPT 성과를 과장 | 문서·fixture PR이며 public admission/WPT 범위 밖임을 적었다. PASS |
-| 7 | Grid의 track-size 문법 근거가 2차 자료 | W3C CSS Grid Level 2 §7.2.1 직접 링크를 쓴다. PASS |
-| 8 | 음수 percentage를 지원 범위에 넣음 | 계획은 finite non-negative 값만 허용한다. PASS |
-| 9 | 행 percentage의 basis를 inline size로 오해 | inner block size를 명시하고 관측은 100px 높이를 사용한다. PASS |
-| 10 | indefinite/cyclic percentage를 definite처럼 처리 | indefinite Grid height를 제외하며 intrinsic sizing 경계를 적었다. PASS |
-| 11 | CSS viewport 높이를 basis로 사용 | 기대값은 Grid content-box 100px에서 계산한다. PASS |
-| 12 | border-box와 content-box를 혼동 | border/padding 0과 content-box shape를 고정한다. PASS |
-| 13 | gap이 percentage reference에 영향을 줌 | row/column gap 0을 고정하고 nonzero gap을 제외한다. PASS |
-| 14 | direct percentage가 ratio 대신 정수로 전달 | 계획은 typed ratio 보존을 acceptance gate에 둔다. PASS |
-| 15 | `0%` cap의 zero-height frame 누락 | zero 장면과 frame publication 검사를 명시한다. PASS |
-| 16 | 20/24% cap이 max-content보다 작을 때 잘못 확장 | 독립 expected와 Chrome used rows 20/24px이 일치한다. PASS |
-| 17 | 34% cap의 동률 경계가 빠짐 | max-content 34px와 같은 cap을 별도 장면으로 둔다. PASS |
-| 18 | 40% cap이 max-content 초과로 과성장 | 40% 장면은 34px contribution에 머문다. PASS |
-| 19 | `120%`가 100%로 임의 축소 | 원본 cap 120px을 관측하고 used size를 contribution으로 구분한다. PASS |
-| 20 | `min-height` automatic minimum이 상한 아래로 clamp | 28px item minimum vs 20px cap scene을 고정한다. PASS |
-| 21 | 반복 auto-row의 다음 item을 무시 | 6px probe 행의 위치와 track을 oracle/expected JSON에 넣었다. PASS |
-| 22 | `fit-content(calc())`가 direct percentage로 오인 | computed `Calc` AST를 거부하는 acceptance/negative control이 있다. PASS |
-| 23 | 다중 또는 mixed track list가 singleton route에 유입 | singleton admission과 mixed-list 거부를 명시한다. PASS |
-| 24 | 다른 explicit track, area, repeat, dense/column flow와 교차 | 해당 profile 조합을 지원 밖으로 분리했다. PASS |
-| 25 | failure가 partial render snapshot을 남김 | no-partial publication 및 같은 session recovery를 구현 acceptance에 둔다. PASS |
-| 26 | 기존 px implicit row 또는 explicit percentage regression | px 경로 유지와 explicit `RootHtmlFitContentV1` regression을 적었다. PASS |
-| 27 | Chrome fixture에 여러 Grid가 있어 runtime 입력으로 오해 | precomparison fixture와 runtime fixture를 별도 산출물로 구분한다. PASS |
-| 28 | Chrome 수치가 독립 기대값으로 둔갑 | browser observations와 formula-derived expected JSON을 분리했다. PASS |
-| 29 | PR screenshot URL이 commit 또는 경로를 잘못 가리킴 | PR 본문 URL은 plan commit `3953b7550`의 고정 raw asset이며 1280×845 원본이 로드된다. PASS |
-| 30 | Agent Browser가 남아 사용자 환경에 영향을 줌 | 이미지 자연 크기·표시 크기를 확인하고 전용 session 종료 뒤 inactive, PID null, session list empty를 확인했다. PASS |
+| 1 | 계획 브랜치가 오래된 다른 작업 브랜치에서 분기 | `origin/main` tree에서 단일 checkout으로 시작했다. PASS |
+| 2 | PR base가 최신 main이 아님 | PR base SHA는 `77f2216e3b81b9597bc7ed7c1c0ec716e41a70d2`이며 push 시 최신이었다. PASS |
+| 3 | 원격 PR head가 로컬 검토 commit과 다름 | 각 push 뒤 PR head를 재조회했고, 최종 push 이후 GitHub metadata와 로컬 branch tip을 다시 대조한다. PASS |
+| 4 | PR 제목의 type/scope 또는 한글 설명 형식 오류 | `plan(c11.4):` 접두어와 한글 제목을 사용했다. PASS |
+| 5 | GitHub 작업 유형/영역 라벨 누락 | 기존 `documentation`, `area: docs` 라벨 두 개가 지정됐다. PASS |
+| 6 | 변경 파일 범위에 제품 소스가 섞임 | 최종 11개 경로는 계획·fixture·비교·검토 근거뿐이며 제품 소스는 없다. PASS |
+| 7 | 대량의 기존 untracked evidence가 stage됨 | 명시한 경로만 추가했고 다른 5,000여 untracked 경로는 보존했다. PASS |
+| 8 | 계획 파일이 C11.4 상위 계약과 연결되지 않음 | STATUS, C11.4 track-sizing 계획, 내부 계약 0059 링크가 있다. PASS |
+| 9 | 기준 implementation을 특정할 수 없음 | 선행 px implicit-row PR #1265를 직접 연결했다. PASS |
+| 10 | W3C 참조가 검색 결과나 2차 문서로 연결 | W3C CSS Grid Level 2 규범 절에 직접 연결한다. PASS |
+| 11 | 계획의 상대 링크가 repository root 기준으로 깨짐 | 계획·fixture·evidence 상대 경로를 계산해 모두 존재함을 확인했다. PASS |
+| 12 | 계획 검토 파일이 PR에 빠짐 | 독립 계획 실패 관점 20개가 변경 파일에 들어 있다. PASS |
+| 13 | 계획 변경과 실제 PR 변경 검토가 혼용 | 별도 계획 PR diff 30개 파일을 두고 PR 본문에서 링크한다. PASS |
+| 14 | 증거 README와 원본 fixture 연결이 깨짐 | README의 4단계 상위 경로가 fixture로 정확히 연결된다. PASS |
+| 15 | Chrome observation/expected JSON 구문 오류 | 두 JSON을 Python JSON parser로 읽었다. PASS |
+| 16 | 관측값과 독립 기대값이 같은 출처로 뭉개짐 | `chrome-observation.json`과 `expected-values.json`을 분리했다. PASS |
+| 17 | 사전 비교 screenshot이 PR 본문에 포함되지 않음 | commit-pinned raw PNG 링크가 PR body에 포함됐다. PASS |
+| 18 | screenshot metadata가 실제 PNG와 다름 | 원본 파일과 PR 본문에 기록한 1280×845 크기가 일치한다. PASS |
+| 19 | screenshot이 실제 비교 장면을 보여주지 않음 | Agent Browser 전체 페이지 캡처에서 일곱 장면과 label을 눈으로 확인했다. PASS |
+| 20 | screenshot URL이 현재 브랜치 mutable 경로를 가리킴 | PR 본문 URL은 최초 plan commit `3953b7550`으로 고정됐다. PASS |
+| 21 | PR image가 GitHub에서 404 또는 깨진 크기로 표시 | Agent Browser에서 `complete=true`, natural size 1280×845로 로드됐다. PASS |
+| 22 | PR 표시 크기를 원본 이미지 크기로 잘못 기록 | 원본 크기와 축소된 rendered size를 metadata에서 구분했다. PASS |
+| 23 | PR 페이지 캡처가 Chrome oracle screenshot과 혼동 | 별도 PR 페이지 screenshot 파일과 원본 browser screenshot을 구분했다. PASS |
+| 24 | PR 확인 뒤 Agent Browser가 계속 실행 | 전용 session close 후 inactive, PID null, 세션 목록 empty를 확인했다. PASS |
+| 25 | PR 화면 artifact에 불필요한 개인 정보 포함 | PR 본문과 공개 이미지 확인 화면 외 credential/secret이 없다. PASS |
+| 26 | SHA256 manifest가 파일 생성 뒤 stale | 최종 계획/evidence 10개 파일을 재생성한 manifest로 검증했다. PASS |
+| 27 | 해시 검증 명령이 저장소 root에서 실패 | `shasum -a 256 -c`가 manifest의 모든 파일에 대해 성공했다. PASS |
+| 28 | whitespace/merge-marker 문제가 PR에 포함 | 최종 `git diff --check origin/main...HEAD`가 통과했다. PASS |
+| 29 | 계획 단계가 구현/테스트 완료로 오해됨 | PR 본문은 제품 구현 미시작 및 구현 PR의 후속 검증을 명시한다. PASS |
+| 30 | 빈 CI 결과를 green으로 보고하거나 review 누락을 감춤 | status/workflow run/review thread가 비어 있음을 확인했고 CI green 주장을 하지 않았다. PASS |
 
-결과: 30/30 관점 통과, 수정이 필요한 결함은 찾지 못했다. PR diff는 제한 계획/사전 비교 범위를 유지한다. 문서 변경 전용이므로 기능 테스트를 실행하지 않았다. 구현 PR에서는 새 구현/runtime 20관점과 별도 PR diff 30관점 검토를 수행한다.
+결과: 최종 diff 30/30 관점을 통과했고 수정이 필요한 결함은 찾지 못했다. 구현 코드가 없는 계획 PR이므로 기능 테스트는 실행하지 않았다. 구현 PR에서는 이 자료를 재사용하지 않고 새 구현/runtime 20관점과 별도 PR diff 30관점 검토를 수행한다.
