@@ -1,0 +1,45 @@
+{
+  "recordedAt": "2026-11-07T03:18:46.143531+00:00",
+  "view": "desktop",
+  "agentBrowser": {
+    "version": "0.31.1",
+    "engine": "HeadlessChrome"
+  },
+  "page": {
+    "document": {
+      "clientWidth": 1440,
+      "scrollHeight": 76480,
+      "scrollWidth": 1440
+    },
+    "horizontalOverflow": false,
+    "latestCard": {
+      "bounds": {
+        "bottom": 324.984375,
+        "height": 81.5625,
+        "right": 1018,
+        "width": 928,
+        "x": 90,
+        "y": 243.421875
+      },
+      "text": "2026-11-07 C11.4 parsed Root HTML align-content:safe|unsafe center · 제한 구현 PR #1249 Rebase and merge (2026-11-07T02:49:40Z, merge SHA a69030722d82a97e6ce40e276c0aae2b8447550d): 기존 fixed profile의 positive·safe overflow·unsafe overflow 6 scene을 Chrome 157·독립 기대값 및 Rust layout/runtime와 대조했다. Android API 37 AVD와 iPhone 17 Pro iOS 26.2 Simulator에서 기본 Root HTML route를 확인했으며 screenshots는 visual smoke다. WPT·실기기·hardware GPU·surface readback은 포함하지 않는다. C11.4/C11은 미완료이고 전체 78/214는 그대로다. 다음 순차 후보는 align-content:safe|unsafe end다.",
+      "visible": true
+    },
+    "nextCandidate": {
+      "href": "https://github.com/ohah/spinon/blob/main/plan/c11-root-html-auto-row-safe-end.md",
+      "text": "align-content:safe|unsafe end"
+    },
+    "title": "스피논 구현 로드맵",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "viewport": {
+      "dpr": 1,
+      "height": 1000,
+      "width": 1440
+    }
+  },
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser-desktop.png",
+    "sha256": "5cfc043f68024c11cbc9260d07238d91c86c1ad314172ec2c2462c987f855d57",
+    "widthPx": 1440,
+    "heightPx": 1000
+  }
+}
