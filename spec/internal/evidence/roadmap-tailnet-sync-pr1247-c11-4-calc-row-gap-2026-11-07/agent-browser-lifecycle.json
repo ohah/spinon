@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-11-07T02:14:20Z",
+  "browser": "Agent Browser 0.31.1",
+  "sessions": [
+    {
+      "name": "spinon-roadmap1247-desktop",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "viewportCssPx": [
+        1440,
+        1000
+      ],
+      "closed": true,
+      "closeExitCode": 0
+    },
+    {
+      "name": "spinon-roadmap1247-mobile",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "viewportCssPx": [
+        390,
+        844
+      ],
+      "closed": true,
+      "closeExitCode": 0
+    }
+  ],
+  "afterCloseProcessCheck": {
+    "agentBrowserProcessIds": [],
+    "headlessChromeProcessIds": []
+  },
+  "terminalBrowserUsed": false
+}
