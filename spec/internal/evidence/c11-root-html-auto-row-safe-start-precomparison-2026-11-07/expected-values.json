@@ -1,0 +1,14 @@
+{
+  "oracle": "CSS Box Alignment Level 3 start alignment plus CSS Grid fixed-profile track calculation",
+  "tolerance_css_px": 0.015625,
+  "grid_template_rows_px": [10, 10, 10],
+  "item_size_px": [40, 10],
+  "scenes": [
+    {"id": "start-positive", "computed_align_content": "start", "row_gap": "0px", "item_y_px": [0, 10, 20]},
+    {"id": "safe-start-positive", "computed_align_content": "safe start", "row_gap": "0px", "item_y_px": [0, 10, 20]},
+    {"id": "unsafe-start-positive", "computed_align_content": "unsafe start", "row_gap": "0px", "item_y_px": [0, 10, 20]},
+    {"id": "start-overflow", "computed_align_content": "start", "row_gap": "calc(120% - 2px)", "item_y_px": [0, 56, 112]},
+    {"id": "safe-start-overflow", "computed_align_content": "safe start", "row_gap": "calc(120% - 2px)", "item_y_px": [0, 56, 112]},
+    {"id": "unsafe-start-overflow", "computed_align_content": "unsafe start", "row_gap": "calc(120% - 2px)", "item_y_px": [0, 56, 112]}
+  ]
+}

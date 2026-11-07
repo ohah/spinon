@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "scene_count": 6,
+  "item_frame_coordinate_count": 72,
+  "max_absolute_delta_css_px": 0.0,
+  "tolerance_css_px": 0.015625,
+  "scene_results": [
+    {
+      "id": "start-positive",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "safe-start-positive",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "unsafe-start-positive",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "start-overflow",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "safe-start-overflow",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "unsafe-start-overflow",
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 safe/unsafe start alignment oracle</title>
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; font: 12px sans-serif; }
+  .case { display: grid; grid-template-columns: 40px; grid-template-rows: 10px; grid-auto-rows: auto; column-gap: 0; width: 40px; height: 40px; margin: 8px; outline: 1px solid black; }
+  .item { width: 40px; height: 10px; background: rgb(80 140 200); }
+  .text { width: 40px; font: 10px/10px monospace; color: black; background: rgb(240 220 160); }
+  #start-positive, #safe-start-positive, #unsafe-start-positive { row-gap: 0; }
+  #start-overflow, #safe-start-overflow, #unsafe-start-overflow { row-gap: calc(120% - 2px); }
+  #start-positive { align-content: start; }
+  #safe-start-positive { align-content: safe start; }
+  #unsafe-start-positive { align-content: unsafe start; }
+  #start-overflow { align-content: start; }
+  #safe-start-overflow { align-content: safe start; }
+  #unsafe-start-overflow { align-content: unsafe start; }
+</style>
+<div id="start-positive" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="safe-start-positive" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="unsafe-start-positive" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="start-overflow" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="safe-start-overflow" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="unsafe-start-overflow" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
