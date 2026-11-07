@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `grid-auto-rows` fit-content track-list pattern
 
-**상태:** Chrome 157 사전 관측과 독립 기대값 6 scene, 계획 실패 관점 20개 검토를 고정했다. 현재 branch에서 layout·projection·Root HTML runtime 연결을 구현했고, 6개 geometry scene, typed list order, floor·zero·120% 경계를 focused tests로 확인했다. Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML route에서 모두 `layout=ready boxes=12`를 확인했다. 화면은 visual smoke이고 geometry 판정은 focused RuntimeSession/Layout 테스트에 둔다. 구현/runtime 검토 20개는 완료했으며 PR diff 실패 관점 30개 검토와 PR이 남아 있다. 상위 C11.4/C11 및 공식 완료 `78/214`는 미완료다.
+**상태:** Chrome 157 사전 관측과 독립 기대값 6 scene, 계획 실패 관점 20개 검토 후 제한 구현을 마쳤다. Layout 8/8, style projection 3/3, RuntimeSession 6/6 focused tests와 changed-crate Clippy·rustfmt가 통과했다. Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML route에서 모두 `layout=ready boxes=12`를 확인했다. PR [#1270](https://github.com/ohah/spinon/pull/1270)은 `2026-11-07T18:38:06Z` Rebase and merge됐고 merge SHA는 `de34c3c8f2b85826c61b6224f260f380ea972085`다. PR workflow/status rollup은 비어 있어 CI green으로 계산하지 않는다. C11.4/C11 및 공식 `78/214`는 미완료다.
 
 **상위:** [C11 CSS Grid](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

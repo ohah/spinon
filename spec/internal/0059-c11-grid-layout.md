@@ -1773,10 +1773,13 @@ PR [#1268](https://github.com/ohah/spinon/pull/1268)은 `2026-11-07T16:22:21Z` R
 
 [실행 근거](./evidence/c11-4-root-html-fit-content-percentage-auto-rows-runtime-2026-11-08/README.md)에 style projection 1/1, explicit fit-content projection 회귀 2/2, layout 2/2, percentage RuntimeSession 3/3, px RuntimeSession 2/2 및 scoped Clippy/rustfmt 결과를 기록했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 기본 Root HTML app의 `layout=ready`를 보고했다. Screenshot은 visual smoke이며 PixelCopy/Metal surface parity가 아니다. iOS Simulator 설치 뒤 app data-container 경로가 달라져 기존 데이터 연속성은 확인할 수 없다. PR check rollup은 비어 있어 CI 통과로 주장하지 않는다. C11.4/C11은 미완료이고 공식 `78/214`와 내부 계약 `0.1.0`을 유지한다. [상태·Tailnet roadmap 동기화](./evidence/c11-4-root-html-fit-content-percentage-roadmap-sync-2026-11-08/README.md)
 
-## C11.4 parsed Root HTML `grid-auto-rows` fit-content track-size list · 제한 구현 후보 · 2026-11-08
+## C11.4 parsed Root HTML `grid-auto-rows` fit-content track-size list · PR #1270 병합 · 2026-11-08
 
 현재 branch 후보는 기존 `RootHtmlFitContentAutoRowsV1`에서 singleton fit-content track만 받던 제한을 비어 있지 않은 typed track-size list로 넓힌다. 목록은 `GRID_MAX_TRACKS` 이하이고 적어도 한 개의 `fit-content()`를 포함해야 한다. 각 항목은 finite non-negative `fit-content(px|%)`, fixed-px 또는 direct percentage다. 원래 항목 종류와 순서를 보존하고 첫 implicit row부터 반복한다. Percentage basis는 definite Root HTML Grid content-box block size다.
 
 기본 parsed Root HTML 경로는 definite 40×100px Grid, fixed-px explicit column/row 하나, row-sparse auto-placement, zero gap·start alignment·visible overflow, 단일 visible Grid owner를 유지한다. 지원 topology는 기존 3 direct child shape와 새 5 direct child/four implicit-row shape다. auto-sized direct item은 단일 fixed-px payload를 갖고, 28px minimum floor는 기존 3-child shape의 첫 implicit item에만 허용한다. nested Grid, text/replaced item, 기타 child count, 추가 min/max constraint와 부적격 owner/style은 거부한다.
 
 `auto`, `fr`, intrinsic keyword, `minmax()`, percentage-bearing `Calc`, 음수·비유한 값, indefinite percentage basis, gap·flow·placement가 다른 입력은 전체 값을 거부한다. `RuntimeSession` 실패는 partial layout/render publication 없이 반환하고 같은 session의 다음 유효 revision을 허용한다. 이 후보는 일반 CSS admission, 임의 HTML·track grammar, implicit columns, areas/named lines, spanning, WPT 적합성 또는 전체 C11.4/C11 지원을 선언하지 않는다. 공개 API/ABI를 추가하지 않으며 내부 숫자 계약 버전 `0.1.0`을 유지한다. Chrome·독립 기대값, 테스트, Android/iOS Simulator smoke와 한계는 [실행 근거](./evidence/c11-4-root-html-fit-content-auto-rows-list-runtime-2026-11-08/README.md)에 기록한다.
+
+
+제한 구현 PR [#1270](https://github.com/ohah/spinon/pull/1270)은 `2026-11-07T18:38:06Z` Rebase and merge됐고 merge SHA는 `de34c3c8f2b85826c61b6224f260f380ea972085`다. PR check rollup과 workflow run은 비어 있다. 병합 기록은 bounded Root HTML profile만 확인하며 일반 CSS admission·WPT·C11.4/C11 완료를 뜻하지 않는다. C11.4/C11 체크와 공식 `78/214`, 내부 숫자 계약 `0.1.0`은 유지한다. [병합 상태와 실행 근거](./evidence/c11-4-root-html-fit-content-auto-rows-list-runtime-2026-11-08/README.md)
