@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML fit-content/min-content/auto remaining implicit-row orders
 
-**상태:** 구현 전 계획. 기존 `fit-content() min-content auto`와 `fit-content() auto min-content` 제한 구현은 PR [#1274](https://github.com/ohah/spinon/pull/1274)로 병합됐다. Chrome 157 사전 비교 8/8 장면과 독립 계산을 고정했고, 계획 실패 관점 검토 20개를 마쳤다. 기능 구현·공식 상태 변경은 시작하지 않았다. C11.4/C11과 공식 완료 `78/214`는 미완료 상태다.
+**상태:** 구현 및 Simulator 근거 작성 완료, feature PR 검토 대기. 기존 `fit-content() min-content auto`와 `fit-content() auto min-content` 제한 구현은 PR [#1274](https://github.com/ohah/spinon/pull/1274)로 병합됐다. Chrome 157 사전 비교 8/8 장면과 독립 계산, 계획 실패 관점 검토 20개, 별도 구현/runtime 검토 20개 및 PR diff 검토 30개를 마쳤다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 Root HTML fixture hash의 12-box scene이 ready/present에 도달했다. [실행·화면·hash·한계](../spec/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.md). 코드 병합과 공식 문서 상태 동기화는 아직 완료하지 않았다. C11.4/C11 및 공식 완료 `78/214`는 미완료 상태다.
 
 **상위:** [공식 C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing 계획](./c11-4-grid-track-sizing.md) · [선행 fit/min/auto 목록 계획](./c11-4-root-html-fit-content-min-content-auto-track-list.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

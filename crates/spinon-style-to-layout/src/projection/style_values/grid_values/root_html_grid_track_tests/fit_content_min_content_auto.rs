@@ -24,7 +24,7 @@ fn implicit_rows_grid(rows: Vec<ComputedCssGridTrackSize>) -> spinon_style::Comp
 }
 
 #[test]
-fn root_html_fit_content_min_content_auto_lists_preserve_both_exact_orders() {
+fn root_html_fit_content_min_content_auto_lists_preserve_all_six_exact_orders() {
     let node = NodeId::new(11_290).unwrap();
     for (rows, expected) in [
         (
@@ -63,13 +63,109 @@ fn root_html_fit_content_min_content_auto_lists_preserve_both_exact_orders() {
                 GridTrackSize::MinContent,
             ],
         ),
+        (
+            vec![
+                ComputedCssGridTrackSize::MinContent,
+                fit_content_percentage(0.2),
+                ComputedCssGridTrackSize::Auto,
+            ],
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::Auto,
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::MinContent,
+                fit_content_px(20.0),
+                ComputedCssGridTrackSize::Auto,
+            ],
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+                GridTrackSize::Auto,
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::MinContent,
+                ComputedCssGridTrackSize::Auto,
+                fit_content_percentage(0.2),
+            ],
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::MinContent,
+                ComputedCssGridTrackSize::Auto,
+                fit_content_px(20.0),
+            ],
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::Auto,
+                fit_content_percentage(0.2),
+                ComputedCssGridTrackSize::MinContent,
+            ],
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::MinContent,
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::Auto,
+                fit_content_px(20.0),
+                ComputedCssGridTrackSize::MinContent,
+            ],
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+                GridTrackSize::MinContent,
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::Auto,
+                ComputedCssGridTrackSize::MinContent,
+                fit_content_percentage(0.2),
+            ],
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            ],
+        ),
+        (
+            vec![
+                ComputedCssGridTrackSize::Auto,
+                ComputedCssGridTrackSize::MinContent,
+                fit_content_px(20.0),
+            ],
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+            ],
+        ),
     ] {
         let projected = project_grid_layout(
             node,
             &implicit_rows_grid(rows),
             ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
         )
-        .expect("the two exact min-content/auto orders should project");
+        .expect("all six exact min-content/auto orders should project");
 
         assert_eq!(
             projected.placement_mode,
@@ -89,7 +185,7 @@ fn root_html_fit_content_min_content_auto_lists_reject_nearby_patterns_and_inval
         vec![
             ComputedCssGridTrackSize::MinContent,
             fit_content_percentage(0.2),
-            ComputedCssGridTrackSize::Auto,
+            ComputedCssGridTrackSize::MaxContent,
         ],
         vec![
             fit_content_percentage(0.2),
@@ -151,9 +247,45 @@ fn root_html_fit_content_min_content_auto_lists_reject_nearby_patterns_and_inval
             project_grid_layout(
                 node,
                 &implicit_rows_grid(vec![
+                    ComputedCssGridTrackSize::MinContent,
+                    ComputedCssGridTrackSize::Auto,
+                    fit_content_percentage(cap),
+                ]),
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-auto-rows",
+                ..
+            }) if error_node == node
+        ));
+    }
+    for cap in [-0.01, f32::NAN, f32::INFINITY] {
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &implicit_rows_grid(vec![
                     fit_content_px(cap),
                     ComputedCssGridTrackSize::MinContent,
                     ComputedCssGridTrackSize::Auto,
+                ]),
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-auto-rows",
+                ..
+            }) if error_node == node
+        ));
+    }
+    for cap in [-0.01, f32::NAN, f32::INFINITY] {
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &implicit_rows_grid(vec![
+                    ComputedCssGridTrackSize::Auto,
+                    ComputedCssGridTrackSize::MinContent,
+                    fit_content_px(cap),
                 ]),
                 ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
             ),

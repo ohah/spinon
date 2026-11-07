@@ -43,6 +43,12 @@ use root_html_gap::{
     validate_track_extent as validate_root_html_track_extent,
 };
 
+pub(crate) fn root_html_fit_content_min_content_auto_track_list_is_supported(
+    tracks: &[GridTrackSize],
+) -> bool {
+    root_html_fit_content_auto_rows::supports_min_content_auto_track_list(tracks)
+}
+
 pub(crate) fn root_html_direct_text_aspect_ratio_auto_min_height(
     input: &LayoutInput,
     item: NodeId,

@@ -287,6 +287,86 @@ fn root_html_fit_content_min_content_auto_lists_stretch_only_auto_tracks() {
         ),
         (
             vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::Auto,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 34.0, 20.0, 30.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+                GridTrackSize::Auto,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 34.0, 20.0, 30.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 34.0, 40.0, 10.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 34.0, 40.0, 10.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::MinContent,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 44.0, 20.0, 10.0, 16.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+                GridTrackSize::MinContent,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 44.0, 20.0, 10.0, 16.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 37.0, 34.0, 10.0, 9.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 37.0, 34.0, 10.0, 9.0],
+            None,
+        ),
+        (
+            vec![
                 GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(1.2)),
                 GridTrackSize::MinContent,
                 GridTrackSize::Auto,
