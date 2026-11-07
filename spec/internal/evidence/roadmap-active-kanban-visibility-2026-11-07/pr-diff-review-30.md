@@ -31,7 +31,7 @@
 | 25 | 작은 화면 전체 문서에 가로 overflow가 생길 수 있음 | mobile document width=390px, viewport=390px | 통과 |
 | 26 | 모바일에 board 내부 scroll이 전혀 없어 active 열에 갈 수 없을 수 있음 | frame clientWidth=362px, contentWidth=1120px, horizontal swipe 가능 | 통과 |
 | 27 | screenshot이 다른 viewport나 위치를 증명할 수 있음 | DOM JSON에 viewport·bounds·scrollLeft를 함께 기록 | 통과 |
-| 28 | local 후보 화면을 live Tailnet evidence로 오인할 수 있음 | README에서 local candidate와 post-merge Tailnet gate를 분리 | 통과 |
+| 28 | local 후보 화면을 live Tailnet evidence로 오인하거나 PR image URL이 끊길 수 있음 | local candidate와 post-merge Tailnet gate를 분리하고, PR #1258에서 desktop/mobile 두 이미지의 natural dimensions를 Agent Browser로 확인 | 통과 |
 | 29 | browser 종료 요청 뒤 Agent Browser가 남을 수 있음 | session 종료 뒤 Agent Browser·HeadlessChrome process scan empty | 통과 |
 | 30 | local preview cleanup이 기존 Tailscale preview server를 종료할 수 있음 | 임시 18769 server만 종료; Tailnet PID 28040은 별도 유지 | 통과 |
 

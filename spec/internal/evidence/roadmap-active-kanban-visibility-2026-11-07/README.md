@@ -14,6 +14,7 @@ Agent Browser 0.31.1에서 로컬 정적 preview를 사용했다. Terminal Brows
 - 모바일 390×844: 진행 카드 y=`438.53px`, 칸반 내부 `scrollLeft=272px`로 진행 열을 보인다. 문서 폭은 viewport와 같은 390px이며 page-level horizontal overflow는 없다. [DOM 관측](./candidate-mobile.json) · [screenshot](./candidate-mobile-agent-browser.png)
 - 두 viewport에서 공식 상태 동기화 문구는 완료 `78/214`를 표시한다. C11.4/C11 완료 상태는 변경하지 않았다.
 - Agent Browser session과 로컬 preview server를 닫았고, 종료 뒤 Agent Browser 및 HeadlessChrome process는 남아 있지 않다. [lifecycle](./candidate-browser-lifecycle.json)
+- PR #1258 화면에서도 두 본문 이미지가 실제 로드됐고 natural size는 desktop 1440×1000, mobile 390×844였다. [PR image load 관측](./pr-images-agent-browser.json)
 
 이 screenshot과 DOM 관측은 로컬 후보 변경의 시각 확인이다. PR 병합 후 Tailnet 제공본은 별도로 갱신하고 Agent Browser로 다시 확인해야 한다.
 

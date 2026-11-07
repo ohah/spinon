@@ -8,6 +8,12 @@
   "browserClosed": true,
   "postCloseAgentBrowserProcessCount": 0,
   "postCloseHeadlessChromeProcessCount": 0,
+  "pullRequestImageSession": "spinon-pr1258",
+  "pullRequestImageUrl": "https://github.com/ohah/spinon/pull/1258",
+  "pullRequestImageSessionCloseCommand": "agent-browser --session spinon-pr1258 close",
+  "pullRequestImageSessionClosed": true,
+  "finalProcessScanAgentBrowserCount": 0,
+  "finalProcessScanHeadlessChromeCount": 0,
   "temporaryPreviewServer": "python3 -m http.server 18769 --bind 127.0.0.1",
   "temporaryPreviewServerStopped": true,
   "terminalBrowserUsed": false
