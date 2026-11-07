@@ -62,7 +62,7 @@ results: dict[str, object] = {
 for platform, details in CASES.items():
     path = PASS_DIR / platform / "simulator.png"
     image = Image.open(path).convert("RGB")
-    positive_pass = ROOT / "pass04" if (ROOT / "pass04").is_dir() else ROOT / "pass01"
+    positive_pass = ROOT / "pass01"
     positive_path = positive_pass / platform / "simulator.png"
     positive = Image.open(positive_path).convert("RGB")
     grid = bbox(positive, GRID)

@@ -23,6 +23,6 @@
 | 17 | 실패 뒤 같은 RuntimeSession에서 회복하지 못하는가 | dark media의 unsupported alignment 이후 light media의 지원값으로 `Ready` 복구를 확인했다. 통과. |
 | 18 | Simulator 캡처가 fixture-only ABI에 기대는가 | Android/iOS 기본 Root HTML route를 C11 fixture flags 비활성으로 실행했다. 통과. |
 | 19 | OS screenshot analyzer가 Grid background occlusion 때문에 y=0을 잘못 추정하는가 | Positive start의 fixed item top을 root origin으로 사용하고 1 CSS px 허용 오차로 검증한다. 통과. |
-| 20 | 검사 뒤 앱·빌드·bootstrap 상태를 덮어쓴 채 남기는가 | 세 pass 모두 설치 앱과 기존 build/bootstrap hash를 복원하고 restoration PASS를 기록했다. 통과. |
+| 20 | 검사 뒤 앱·빌드·bootstrap 상태를 덮어쓴 채 남기는가 | 네 pass 모두 설치 앱과 기존 build/bootstrap hash를 복원하고 restoration PASS를 기록했다. 통과. |
 
 발견된 구현 결함은 없었다. Simulator 이미지 분석에서 background-first origin 가정이 positive start에 맞지 않는 점을 찾아 fixed-item anchor로 수정하고, 세 scene을 재측정했다. Screenshot은 PixelCopy/Metal drawable readback이 아니며 이 검토는 physical device, WPT 또는 C11 완료를 주장하지 않는다.

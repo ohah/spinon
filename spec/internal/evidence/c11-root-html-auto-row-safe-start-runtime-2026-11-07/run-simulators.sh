@@ -82,7 +82,7 @@ printf 'fixture_sha256=%s\n' "$(shasum -a 256 "$fixture" | awk '{print $1}')" >>
 printf 'scene=%s\n' "$scene_name" >> "$run_dir/environment.txt"
 printf 'root_app_sha256=%s\n' "$(shasum -a 256 "$root_app" | awk '{print $1}')" >> "$run_dir/environment.txt"
 printf 'candidate_implementation_source_diff_sha256=%s\n' \
-  "$(git -C "$repo_root" diff HEAD -- \
+  "$(git -C "$repo_root" diff origin/main...HEAD -- \
     crates/spinon-layout/src/grid.rs \
     crates/spinon-layout/src/grid/root_html_auto_row_stretch.rs \
     crates/spinon-layout/src/grid_placement/root_html_one_axis_placement.rs \
