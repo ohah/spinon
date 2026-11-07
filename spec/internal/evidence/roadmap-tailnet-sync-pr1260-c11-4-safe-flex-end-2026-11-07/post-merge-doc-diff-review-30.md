@@ -33,6 +33,6 @@
 | 27 | Tailnet 서버를 중단하거나 재시작했는가 | preflight/copy record 모두 PID 28040과 `serverRestarted:false`를 기록한다. 통과. |
 | 28 | localhost 또는 Tailnet 경로가 오류 응답/다른 본문을 제공하는가 | `127.0.0.1:8768`과 Tailnet HTTPS 모두 200 및 동일한 최종 hash를 반환했다. 통과. |
 | 29 | 데스크톱 화면에서 card가 보이거나 문서 폭이 깨지는가 | Agent Browser 1440×1000에서 C11.4 active planning card를 보았고 document/body scroll width가 1440이다. 통과. |
-| 30 | 모바일 폭, 최종 스크린샷 또는 Agent Browser 종료를 누락했는가 | 390×844에서 document/body width가 390이고 active card를 확인했다. final PNG hash/dimensions를 남겼으며 종료 뒤 일치하는 browser process가 없다. 통과. |
+| 30 | 모바일 폭, PR 이미지 렌더 또는 Agent Browser 종료를 누락했는가 | 390×844에서 document/body width가 390이고 active card를 확인했다. PR #1261 본문 desktop/mobile 이미지 2/2는 `complete=true`, natural sizes 1440×1000·390×844다. final PNG hash를 기록했고 종료 뒤 일치하는 browser process가 없다. 통과. |
 
 30개 항목에서 문서 동기화 blocker를 찾지 못했다. Tailnet source·served hashes, 기존 제공본 백업, desktop/mobile DOM·screenshots 및 browser lifecycle은 같은 evidence directory에 보존했다. GitHub Pages 배포는 하지 않았다.
