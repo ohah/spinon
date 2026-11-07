@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `align-content:safe|unsafe flex-start`
 
-**상태:** 계획과 20개 실패 관점 검토 완료, 구현 전. Chrome 157 사전 비교는 6/6 scene·72/72 item-frame coordinates에서 독립 기대값과 정확히 일치했고 최대 오차 0 CSS px다. [사전 비교 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-flex-start-precomparison-2026-11-07/README.md) · [계획 검토 20개](./c11-root-html-auto-row-safe-flex-start-plan-review-20.md). C11.4/C11과 공식 `78/214`는 미완료·변경 없음.
+**상태:** 계획과 20개 실패 관점 검토, Chrome 157 사전 비교를 완료했고 제한 구현을 진행 중이다. 사전 비교는 6/6 scene·72/72 item-frame coordinates에서 독립 기대값과 정확히 일치했고 최대 오차 0 CSS px다. [사전 비교 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-flex-start-precomparison-2026-11-07/README.md) · [계획 검토 20개](./c11-root-html-auto-row-safe-flex-start-plan-review-20.md). C11.4/C11과 공식 `78/214`는 미완료·변경 없음.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [선행 plain/safe/unsafe start](./c11-root-html-auto-row-safe-start.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

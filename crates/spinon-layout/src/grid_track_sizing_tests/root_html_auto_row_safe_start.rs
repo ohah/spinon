@@ -3,10 +3,13 @@ use crate::{
     AlignmentSafety, ContentAlignmentPosition, LayoutAlignContent, LayoutCalcId, LayoutCssMath,
     LayoutCssMathProperty, LayoutCssMathValue,
 };
-use serde_json::Value;
+use serde_json::{Value, json};
 
 const EXPECTED: &str = include_str!(
     "../../../../spec/internal/evidence/c11-root-html-auto-row-safe-start-precomparison-2026-11-07/expected-values.json"
+);
+const FLEX_START_EXPECTED: &str = include_str!(
+    "../../../../spec/internal/evidence/c11-root-html-auto-row-safe-flex-start-precomparison-2026-11-07/expected.json"
 );
 const MATH_ID: LayoutCalcId = LayoutCalcId(706);
 const TOLERANCE: f32 = 1.0 / 64.0;
@@ -16,12 +19,15 @@ fn alignment(value: &str) -> LayoutAlignContent {
         "start" => None,
         "safe start" => Some(AlignmentSafety::Safe),
         "unsafe start" => Some(AlignmentSafety::Unsafe),
+        "safe flex-start" => Some(AlignmentSafety::Safe),
+        "unsafe flex-start" => Some(AlignmentSafety::Unsafe),
         other => panic!("unexpected alignment: {other}"),
     };
-    LayoutAlignContent::Position {
-        position: ContentAlignmentPosition::Start,
-        safety,
-    }
+    let position = match value {
+        "safe flex-start" | "unsafe flex-start" => ContentAlignmentPosition::FlexStart,
+        _ => ContentAlignmentPosition::Start,
+    };
+    LayoutAlignContent::Position { position, safety }
 }
 
 fn input_for(scene: &Value) -> LayoutInput {
@@ -162,4 +168,104 @@ fn root_html_auto_row_safe_start_still_rejects_baseline_alignment() {
             property: "align-content"
         }) if node == id(1)
     ));
+}
+
+#[test]
+fn root_html_auto_row_safe_flex_start_matches_chrome_and_independent_matrix() {
+    let expected: Value = serde_json::from_str(FLEX_START_EXPECTED)
+        .expect("safe flex-start expected values should be valid JSON");
+    let alignments = expected["alignmentValues"]
+        .as_array()
+        .expect("expected values should list alignments");
+    let cases = [("positive", "0px"), ("overflow", "calc(120% - 2px)")];
+
+    for (gap_case, row_gap) in cases {
+        let expected_frames = expected["expectedFramesByGapCase"][gap_case]
+            .as_array()
+            .expect("expected values should list item frames");
+        for alignment_value in alignments {
+            let alignment_value = alignment_value
+                .as_str()
+                .expect("alignment should be a string");
+            let expected_y = expected_frames
+                .iter()
+                .map(|frame| frame["y"].as_f64().unwrap())
+                .collect::<Vec<_>>();
+            let scene = json!({
+                "id": format!("safe-flex-start-{gap_case}"),
+                "computed_align_content": alignment_value,
+                "row_gap": row_gap,
+                "item_y_px": expected_y,
+            });
+            let input = input_for(&scene);
+            assert!(
+                super::super::root_html_intrinsic_align_content_is_supported(
+                    alignment(alignment_value),
+                    GridPlacementMode::RootHtmlAutoRowStretchV1
+                ),
+                "{alignment_value} should be admitted by this fixed profile"
+            );
+            let output = TaffyLayoutEngine
+                .compute(&input)
+                .unwrap_or_else(|error| panic!("{gap_case} / {alignment_value}: {error:?}"));
+            for (index, expected_frame) in expected_frames.iter().enumerate() {
+                let frame = output.frames[&id(index as u64 + 2)];
+                let expected_x = expected_frame["x"].as_f64().unwrap() as f32;
+                let expected_y = expected_frame["y"].as_f64().unwrap() as f32;
+                assert!(
+                    (frame.x - expected_x).abs() <= TOLERANCE,
+                    "{gap_case} / {alignment_value} / item {index}: expected x={expected_x}, got {}",
+                    frame.x
+                );
+                assert!(
+                    (frame.y - expected_y).abs() <= TOLERANCE,
+                    "{gap_case} / {alignment_value} / item {index}: expected y={expected_y}, got {}",
+                    frame.y
+                );
+                assert_eq!(
+                    frame.width,
+                    expected_frame["width"].as_f64().unwrap() as f32
+                );
+                assert_eq!(
+                    frame.height,
+                    expected_frame["height"].as_f64().unwrap() as f32
+                );
+            }
+
+            let trace = output
+                .grid_track_sizing_traces
+                .iter()
+                .find(|trace| trace.node == id(1))
+                .expect("Root Grid should expose its track sizing trace");
+            let stretch_stage = trace
+                .passes
+                .iter()
+                .find(|pass| pass.axis == crate::LayoutGridTrackSizingAxis::Rows)
+                .expect("trace should include row sizing")
+                .stages
+                .iter()
+                .find(|stage| {
+                    matches!(
+                        stage.stage,
+                        crate::LayoutGridTrackSizingStageKind::StretchAutoTracks { .. }
+                    )
+                })
+                .expect("trace should include auto-row stretch");
+            let rows = stretch_stage
+                .tracks
+                .iter()
+                .filter(|track| !track.is_gutter && !track.is_collapsed)
+                .map(|track| track.base_size)
+                .collect::<Vec<_>>();
+            assert_eq!(rows, [10.0, 10.0, 10.0]);
+            let gutters = stretch_stage
+                .tracks
+                .iter()
+                .filter(|track| track.is_gutter && !track.is_collapsed)
+                .map(|track| track.base_size)
+                .collect::<Vec<_>>();
+            let expected_gap = if gap_case == "overflow" { 46.0 } else { 0.0 };
+            assert_eq!(gutters, [expected_gap, expected_gap]);
+        }
+    }
 }

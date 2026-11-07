@@ -94,7 +94,7 @@ fn parsed_root_html_safe_end_matches_chrome_and_independent_matrix() {
 fn parsed_root_html_safe_end_rejects_other_safety_values_and_recovers() {
     let source = SOURCE.replace(
         "      #fixed {",
-        "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: safe flex-start; }\n      }\n\n      #fixed {",
+        "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: safe flex-end; }\n      }\n\n      #fixed {",
     );
     assert_ne!(source, SOURCE);
     let source = source
