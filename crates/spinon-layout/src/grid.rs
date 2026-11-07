@@ -332,7 +332,7 @@ pub enum GridPlacementMode {
     RootHtmlMixedCrossAxisColumnAutoPlacementV1,
     /// 제한 Root HTML 경로에서 finite non-negative px/percentage `fit-content()` explicit track을 sizing합니다.
     RootHtmlFitContentV1,
-    /// 제한 Root HTML 경로에서 singleton finite non-negative px `fit-content()` implicit rows를 sizing합니다.
+    /// 제한 Root HTML 경로에서 singleton finite non-negative px/percentage `fit-content()` implicit rows를 sizing합니다.
     RootHtmlFitContentAutoRowsV1,
     /// 기본 Root HTML 경로에서 제한된 explicit intrinsic tracks와 row-sparse placement를 sizing합니다.
     RootHtmlIntrinsicTrackSizingV1,
@@ -573,8 +573,10 @@ pub(super) fn validate_grid_layout(
             (GridPlacementMode::RootHtmlFitContentAutoRowsV1, GridAutoRows::TrackList(tracks))
                 if matches!(
                     tracks.as_slice(),
-                    [GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(cap))]
-                        if cap.is_finite() && *cap >= 0.0
+                    [GridTrackSize::FitContent(
+                        GridTrackLengthPercentage::LengthPx(cap)
+                            | GridTrackLengthPercentage::Percentage(cap)
+                    )] if cap.is_finite() && *cap >= 0.0
                 ) => {}
             (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, GridAutoRows::Auto) => {}
             (GridPlacementMode::RootHtmlAutoRowStretchV1, GridAutoRows::Auto) => {}

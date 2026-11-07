@@ -9,15 +9,17 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
 ) -> Result<(), LayoutError> {
     let unsupported_rows = || LayoutError::UnsupportedGridAutoRows {
         node,
-        reason: "Root HTML fit-content implicit rows require one finite non-negative px cap",
+        reason: "Root HTML fit-content implicit rows require one finite non-negative px or percentage cap",
     };
     let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows else {
         return Err(unsupported_rows());
     };
     if !matches!(
         tracks.as_slice(),
-        [GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(cap))]
-            if cap.is_finite() && *cap >= 0.0
+        [GridTrackSize::FitContent(
+            GridTrackLengthPercentage::LengthPx(cap)
+                | GridTrackLengthPercentage::Percentage(cap)
+        )] if cap.is_finite() && *cap >= 0.0
     ) {
         return Err(unsupported_rows());
     }

@@ -17,6 +17,10 @@ fn id(value: u64) -> NodeId {
 }
 
 fn input(cap: f32, min_height: f32) -> LayoutInput {
+    input_with_cap(GridTrackLengthPercentage::LengthPx(cap), min_height)
+}
+
+fn input_with_cap(cap: GridTrackLengthPercentage, min_height: f32) -> LayoutInput {
     let root = id(1);
     let first = id(2);
     let middle = id(3);
@@ -103,9 +107,7 @@ fn input(cap: f32, min_height: f32) -> LayoutInput {
                 columns: vec![GridTrackSize::LengthPx(40.0)],
                 rows: vec![GridTrackSize::LengthPx(10.0)],
                 auto_flow: GridAutoFlow::Row,
-                auto_rows: GridAutoRows::TrackList(vec![GridTrackSize::FitContent(
-                    GridTrackLengthPercentage::LengthPx(cap),
-                )]),
+                auto_rows: GridAutoRows::TrackList(vec![GridTrackSize::FitContent(cap)]),
                 placement_mode: GridPlacementMode::RootHtmlFitContentAutoRowsV1,
                 track_sizing_trace_enabled: true,
                 ..GridContainerInput::default()
@@ -151,19 +153,26 @@ fn final_rows(output: &crate::LayoutOutput) -> Vec<f32> {
 #[test]
 fn root_html_fit_content_implicit_row_matches_cap_max_content_and_minimum_oracle() {
     for (cap, min_height, row_height, probe_y) in [
-        (0.0, 0.0, 0.0, 10.0),
-        (24.0, 0.0, 24.0, 34.0),
-        (40.0, 0.0, 34.0, 44.0),
-        (24.0, 28.0, 28.0, 38.0),
+        (GridTrackLengthPercentage::LengthPx(0.0), 0.0, 0.0, 10.0),
+        (GridTrackLengthPercentage::LengthPx(24.0), 0.0, 24.0, 34.0),
+        (GridTrackLengthPercentage::LengthPx(40.0), 0.0, 34.0, 44.0),
+        (GridTrackLengthPercentage::LengthPx(24.0), 28.0, 28.0, 38.0),
+        (GridTrackLengthPercentage::Percentage(0.0), 0.0, 0.0, 10.0),
+        (GridTrackLengthPercentage::Percentage(0.2), 0.0, 20.0, 30.0),
+        (GridTrackLengthPercentage::Percentage(0.24), 0.0, 24.0, 34.0),
+        (GridTrackLengthPercentage::Percentage(0.34), 0.0, 34.0, 44.0),
+        (GridTrackLengthPercentage::Percentage(0.4), 0.0, 34.0, 44.0),
+        (GridTrackLengthPercentage::Percentage(1.2), 0.0, 34.0, 44.0),
+        (GridTrackLengthPercentage::Percentage(0.2), 28.0, 28.0, 38.0),
     ] {
-        let input = input(cap, min_height);
+        let input = input_with_cap(cap, min_height);
         let output = TaffyLayoutEngine
             .compute(&input)
             .expect("supported Root HTML fit-content scene should compute");
         assert_eq!(
             final_rows(&output),
             [10.0, row_height, 6.0],
-            "cap={cap} min-height={min_height}"
+            "cap={cap:?} min-height={min_height}"
         );
 
         for (node, expected_y, expected_height) in [
@@ -199,18 +208,13 @@ fn root_html_fit_content_implicit_row_rejects_out_of_profile_inputs() {
         ));
     }
 
-    let mut percentage_cap = input(24.0, 0.0);
-    percentage_cap
-        .grid_containers
-        .get_mut(&id(1))
-        .unwrap()
-        .auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::FitContent(
-        GridTrackLengthPercentage::Percentage(24.0),
-    )]);
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&percentage_cap),
-        Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
-    ));
+    for cap in [-0.01, f32::NAN, f32::INFINITY] {
+        let percentage_cap = input_with_cap(GridTrackLengthPercentage::Percentage(cap), 0.0);
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&percentage_cap),
+            Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+        ));
+    }
 
     let mut nonzero_gap = input(24.0, 0.0);
     nonzero_gap.nodes[0].style.gap.row = LayoutLengthPercentage::LengthPx(1.0);

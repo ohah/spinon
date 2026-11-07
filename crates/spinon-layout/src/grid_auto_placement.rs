@@ -253,9 +253,10 @@ pub(super) fn normalize_sparse_grid_container(
                         GridTrackSize::MinContent | GridTrackSize::MaxContent
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 => {}
-                        GridTrackSize::FitContent(crate::GridTrackLengthPercentage::LengthPx(
-                            cap,
-                        )) if container.placement_mode
+                        GridTrackSize::FitContent(
+                            crate::GridTrackLengthPercentage::LengthPx(cap)
+                            | crate::GridTrackLengthPercentage::Percentage(cap),
+                        ) if container.placement_mode
                             == crate::GridPlacementMode::RootHtmlFitContentAutoRowsV1
                             && cap.is_finite()
                             && *cap >= 0.0 => {}

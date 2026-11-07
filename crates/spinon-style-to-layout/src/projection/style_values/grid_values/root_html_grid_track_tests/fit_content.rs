@@ -180,6 +180,58 @@ fn root_html_explicit_fit_content_percentage_tracks_project_for_columns_rows_and
 }
 
 #[test]
+fn root_html_fit_content_percentage_auto_rows_require_the_bounded_definite_grid_shape() {
+    use spinon_style::ComputedCssGridAutoRows;
+
+    let node = NodeId::new(11_285).unwrap();
+    for ratio in [0.0, 0.2, 0.34, 0.4, 1.2] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+        );
+        input.auto_rows = ComputedCssGridAutoRows::TrackList(vec![fit_content_percentage(ratio)]);
+
+        let projected = project_grid_layout(
+            node,
+            &input,
+            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+        )
+        .expect("a direct finite percentage cap should select the bounded implicit-row route");
+
+        assert_eq!(
+            projected.placement_mode,
+            spinon_layout::GridPlacementMode::RootHtmlFitContentAutoRowsV1
+        );
+        assert_eq!(
+            projected.auto_rows,
+            spinon_layout::GridAutoRows::TrackList(vec![GridTrackSize::FitContent(
+                GridTrackLengthPercentage::Percentage(ratio)
+            )])
+        );
+    }
+
+    for ratio in [-0.01, f32::NAN, f32::INFINITY] {
+        let mut input = grid(
+            vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+            vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+        );
+        input.auto_rows = ComputedCssGridAutoRows::TrackList(vec![fit_content_percentage(ratio)]);
+        assert!(matches!(
+            project_grid_layout(
+                node,
+                &input,
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            ),
+            Err(crate::StyleLayoutError::UnsupportedComputedValue {
+                node: error_node,
+                property: "grid-auto-rows",
+                ..
+            }) if error_node == node
+        ));
+    }
+}
+
+#[test]
 fn root_html_dimension_matched_fit_content_named_areas_do_not_depend_on_area_names() {
     let node = NodeId::new(11_281).unwrap();
     for names in [["fixed", "fit"], ["leading", "trailing"]] {

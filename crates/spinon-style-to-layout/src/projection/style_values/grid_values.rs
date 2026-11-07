@@ -204,7 +204,7 @@ fn validate_root_html_grid_tracks(
     if fit_content_auto_rows && !root_html_fit_content_implicit_rows_candidate(grid) {
         return Err(unsupported(
             "grid-auto-rows",
-            "Root HTML fit-content implicit rows require one finite non-negative px cap, one positive fixed-px explicit row and column, row flow, auto implicit columns, no repeats, areas, intrinsic tracks, or named lines",
+            "Root HTML fit-content implicit rows require one finite non-negative px or percentage cap, one positive fixed-px explicit row and column, row flow, auto implicit columns, no repeats, areas, intrinsic tracks, or named lines",
         ));
     }
     let root_html_auto_repeat = root_html_auto_repeat::validate_grid_grammar(
@@ -417,6 +417,9 @@ fn validate_root_html_grid_tracks(
             }
             ComputedCssGridTrackSize::FitContent(
                 ComputedCssGridTrackLengthPercentage::LengthPx(cap),
+            )
+            | ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::Percentage(cap),
             ) if fit_content_auto_rows => !cap.is_finite() || *cap < 0.0,
             _ => true,
         }),
@@ -493,8 +496,8 @@ fn root_html_has_fit_content_auto_rows(grid: &ComputedCssGridLayout) -> bool {
 
 pub(super) fn root_html_fit_content_implicit_rows_candidate(grid: &ComputedCssGridLayout) -> bool {
     // Gate on the computed typed value: Stylo may normalize authored length units or
-    // constant length-only calc() into LengthPx. Percentages and remaining Calc ASTs
-    // retain distinct computed variants and stay outside this slice.
+    // constant length-only calc() into LengthPx. Direct percentages retain their typed
+    // variant; percentage-bearing Calc ASTs stay outside this slice.
     let single_positive_px_track = |tracks: &[ComputedCssGridTrackSize]| {
         matches!(
             tracks,
@@ -505,12 +508,10 @@ pub(super) fn root_html_fit_content_implicit_rows_candidate(grid: &ComputedCssGr
     matches!(
         &grid.auto_rows,
         ComputedCssGridAutoRows::TrackList(tracks)
-            if matches!(
-                tracks.as_slice(),
-                [ComputedCssGridTrackSize::FitContent(
-                    ComputedCssGridTrackLengthPercentage::LengthPx(cap)
-                )] if cap.is_finite() && *cap >= 0.0
-            )
+            if matches!(tracks.as_slice(), [ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(cap)
+                    | ComputedCssGridTrackLengthPercentage::Percentage(cap)
+            )] if cap.is_finite() && *cap >= 0.0)
     ) && !root_html_has_intrinsic_explicit_tracks(grid)
         && single_positive_px_track(&grid.columns)
         && single_positive_px_track(&grid.rows)
@@ -1403,7 +1404,7 @@ fn project_grid_layout_with_route_reservations(
     let root_html_auto_rows_support = if root_html_intrinsic_auto_rows {
         RootHtmlAutoRowsSupport::Intrinsic
     } else if root_html_fit_content_auto_rows {
-        RootHtmlAutoRowsSupport::FitContentPx
+        RootHtmlAutoRowsSupport::FitContent
     } else {
         RootHtmlAutoRowsSupport::None
     };
@@ -2075,7 +2076,7 @@ fn project_auto_columns(
 enum RootHtmlAutoRowsSupport {
     None,
     Intrinsic,
-    FitContentPx,
+    FitContent,
 }
 
 fn project_auto_rows(
@@ -2122,12 +2123,13 @@ fn project_auto_rows(
                         ))
                     || (matches!(
                         root_html_auto_rows_support,
-                        RootHtmlAutoRowsSupport::FitContentPx
+                        RootHtmlAutoRowsSupport::FitContent
                     )
                         && matches!(
                             tracks.as_slice(),
                             [ComputedCssGridTrackSize::FitContent(
                                 ComputedCssGridTrackLengthPercentage::LengthPx(cap)
+                                    | ComputedCssGridTrackLengthPercentage::Percentage(cap)
                             )] if cap.is_finite() && *cap >= 0.0
                         ))) =>
         {
