@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 safe/unsafe end overflow oracle</title>
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; font: 12px sans-serif; }
+  .case { display: grid; grid-template-columns: 40px; grid-template-rows: 10px; grid-auto-rows: auto; column-gap: 0; width: 40px; height: 40px; margin: 8px; outline: 1px solid black; }
+  .item { width: 40px; height: 10px; background: rgb(80 140 200); }
+  .text { width: 40px; font: 10px/10px monospace; color: black; background: rgb(240 220 160); }
+  #safe-end-positive { row-gap: 0px; align-content: safe end; }
+  #unsafe-end-positive { row-gap: 0px; align-content: unsafe end; }
+  #end-positive { row-gap: 0px; align-content: end; }
+  #safe-end-overflow { row-gap: calc(120% - 2px); align-content: safe end; }
+  #unsafe-end-overflow { row-gap: calc(120% - 2px); align-content: unsafe end; }
+  #end-overflow { row-gap: calc(120% - 2px); align-content: end; }
+  #safe-center-overflow-control { row-gap: calc(120% - 2px); align-content: safe center; }
+  #unsafe-center-overflow-control { row-gap: calc(120% - 2px); align-content: unsafe center; }
+</style>
+<div id="safe-end-positive" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="unsafe-end-positive" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="end-positive" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="safe-end-overflow" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="unsafe-end-overflow" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="end-overflow" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="safe-center-overflow-control" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
+<div id="unsafe-center-overflow-control" class="case"><div class="item"></div><div class="text">A</div><div class="text">B</div></div>
