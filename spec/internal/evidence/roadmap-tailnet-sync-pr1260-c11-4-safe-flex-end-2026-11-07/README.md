@@ -25,6 +25,8 @@ PR #1260 병합 이후 작업 브랜치 docs/c11-root-html-safe-flex-end-postmer
 - [Mobile DOM 기록](./agent-browser-tailnet-final-mobile.json) · [Mobile 화면](./agent-browser-final-mobile.png)
 - [Agent Browser 종료 기록](./agent-browser-final-lifecycle.json)
 
+문서 동기화 PR #1261 본문에도 desktop/mobile 화면을 넣었다. Agent Browser에서 두 PR 이미지를 모두 로드했고 원본 크기는 1440×1000 및 390×844다.
+
 Desktop screenshot SHA-256: 1bbefbbc21671766c78ba3a6f01d33acff2600a874878ba18d412fb2c7f317ae
 Mobile screenshot SHA-256: 0f2ef408b1ce70e3a5ea36a31aacb859353e6d1079cf088bf4dbee03fee5f90d
 
