@@ -7,6 +7,9 @@ const SOURCE_AUTO_LIST: &str = include_str!(
     "../../../../../../tests/fixtures/css/c11/root-html-grid-fit-content-auto-track-list-runtime.html"
 );
 
+#[path = "track_lists/min_content_auto.rs"]
+mod min_content_auto;
+
 #[test]
 fn parsed_root_html_fit_content_auto_row_lists_preserve_order_and_render_repeated_tracks() {
     use spinon_render::OpaqueCssSrgb;
@@ -503,7 +506,7 @@ fn parsed_root_html_fit_content_auto_track_lists_fail_closed_and_recover_same_se
             replace_once(
                 SOURCE_AUTO_LIST,
                 "grid-auto-rows: fit-content(20%) auto 8px;",
-                "grid-auto-rows: fit-content(20%) auto min-content;",
+                "grid-auto-rows: fit-content(20%) auto min-content 8px;",
             ),
         ),
     ] {

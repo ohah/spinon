@@ -1,0 +1,18 @@
+   Compiling spinon-layout v0.1.0 (<workspace>/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.13s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 11 tests
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_stretch_without_the_exact_intrinsic_pattern ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_unmodeled_minimum_floor_shape ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or_other_types ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_rejects_out_of_profile_inputs ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_tracks_reject_indefinite_axes ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_columns_rows_and_zero_basis_are_admitted ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_tracks_reject_negative_and_non_finite_limits ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_list_preserves_minimum_above_first_cap ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_min_content_auto_lists_stretch_only_auto_tracks ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_matches_cap_max_content_and_minimum_oracle ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_repeat_in_order_for_implicit_rows ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 488 filtered out; finished in 0.01s

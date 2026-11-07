@@ -1,0 +1,57 @@
+{
+  "sourceFixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-track-list-precomparison.html",
+  "sourceSha256": "2daedf8cb1a755258e51b634c8907168ac27cef3106a1571b9c71cdbdf4292f0",
+  "capture": {
+    "tool": "Agent Browser",
+    "browser": "HeadlessChrome/157.0.0.0",
+    "platform": "macOS arm64",
+    "viewport": [1280, 633],
+    "devicePixelRatio": 1,
+    "screenshot": "chrome157-agent-browser.png",
+    "screenshotSha256": "3fef3a98a803cfbd1602e4249a9d2f1f302242e8f2febc7f54e367b71b0a2aeb"
+  },
+  "scenes": [
+    {
+      "id": "fit-min-auto",
+      "gridAutoRows": "fit-content(20%) min-content auto",
+      "gridTemplateRows": "10px 20px 34px 30px 6px",
+      "alignContent": "stretch",
+      "grid": [0, 0, 40, 100],
+      "children": [
+        { "id": "a-explicit", "frame": [0, 0, 40, 10], "payload": null },
+        { "id": "a-item-1", "frame": [0, 10, 40, 20], "payload": { "id": "a-payload-1", "frame": [0, 10, 40, 34] } },
+        { "id": "a-item-2", "frame": [0, 30, 40, 34], "payload": { "id": "a-payload-2", "frame": [0, 30, 40, 34] } },
+        { "id": "a-item-3", "frame": [0, 64, 40, 30], "payload": { "id": "a-payload-3", "frame": [0, 64, 40, 10] } },
+        { "id": "a-item-4", "frame": [0, 94, 40, 6], "payload": { "id": "a-payload-4", "frame": [0, 94, 40, 6] } }
+      ]
+    },
+    {
+      "id": "fit-auto-min",
+      "gridAutoRows": "fit-content(20%) auto min-content",
+      "gridTemplateRows": "10px 20px 54px 10px 6px",
+      "alignContent": "stretch",
+      "grid": [0, 0, 40, 100],
+      "children": [
+        { "id": "b-explicit", "frame": [0, 0, 40, 10], "payload": null },
+        { "id": "b-item-1", "frame": [0, 10, 40, 20], "payload": { "id": "b-payload-1", "frame": [0, 10, 40, 34] } },
+        { "id": "b-item-2", "frame": [0, 30, 40, 54], "payload": { "id": "b-payload-2", "frame": [0, 30, 40, 34] } },
+        { "id": "b-item-3", "frame": [0, 84, 40, 10], "payload": { "id": "b-payload-3", "frame": [0, 84, 40, 10] } },
+        { "id": "b-item-4", "frame": [0, 94, 40, 6], "payload": { "id": "b-payload-4", "frame": [0, 94, 40, 6] } }
+      ]
+    },
+    {
+      "id": "fit-overflow",
+      "gridAutoRows": "fit-content(120%) min-content auto",
+      "gridTemplateRows": "10px 6px 34px 10px 40px",
+      "alignContent": "stretch",
+      "grid": [0, 0, 40, 100],
+      "children": [
+        { "id": "c-explicit", "frame": [0, 0, 40, 10], "payload": null },
+        { "id": "c-item-1", "frame": [0, 10, 40, 6], "payload": { "id": "c-payload-1", "frame": [0, 10, 40, 6] } },
+        { "id": "c-item-2", "frame": [0, 16, 40, 34], "payload": { "id": "c-payload-2", "frame": [0, 16, 40, 34] } },
+        { "id": "c-item-3", "frame": [0, 50, 40, 10], "payload": { "id": "c-payload-3", "frame": [0, 50, 40, 10] } },
+        { "id": "c-item-4", "frame": [0, 60, 40, 40], "payload": { "id": "c-payload-4", "frame": [0, 60, 40, 50] } }
+      ]
+    }
+  ]
+}

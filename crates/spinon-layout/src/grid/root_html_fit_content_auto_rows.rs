@@ -1,22 +1,45 @@
 use super::*;
 
+fn fit_content_cap_is_supported(track: &GridTrackSize) -> bool {
+    matches!(
+        track,
+        GridTrackSize::FitContent(
+            GridTrackLengthPercentage::LengthPx(value)
+                | GridTrackLengthPercentage::Percentage(value)
+        ) if value.is_finite() && *value >= 0.0
+    )
+}
+
+pub(super) fn supports_min_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
+    matches!(
+        tracks,
+        [fit, GridTrackSize::MinContent, GridTrackSize::Auto]
+            | [fit, GridTrackSize::Auto, GridTrackSize::MinContent]
+            if fit_content_cap_is_supported(fit)
+    )
+}
+
 pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= GRID_MAX_TRACKS
         && tracks
             .iter()
             .any(|track| matches!(track, GridTrackSize::FitContent(_)))
-        && tracks.iter().all(|track| match track {
-            GridTrackSize::Auto => true,
-            GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value) => {
-                value.is_finite() && *value >= 0.0
-            }
-            GridTrackSize::FitContent(
-                GridTrackLengthPercentage::LengthPx(value)
-                | GridTrackLengthPercentage::Percentage(value),
-            ) => value.is_finite() && *value >= 0.0,
-            _ => false,
-        })
+        && if tracks
+            .iter()
+            .any(|track| matches!(track, GridTrackSize::MinContent))
+        {
+            supports_min_content_auto_track_list(tracks)
+        } else {
+            tracks.iter().all(|track| match track {
+                GridTrackSize::Auto => true,
+                GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value) => {
+                    value.is_finite() && *value >= 0.0
+                }
+                track @ GridTrackSize::FitContent(_) => fit_content_cap_is_supported(track),
+                _ => false,
+            })
+        }
 }
 
 pub(super) fn validate_root_html_fit_content_auto_rows_contract(
@@ -88,7 +111,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             root_html_intrinsic_align_content_is_supported(
                 value,
                 GridPlacementMode::RootHtmlIntrinsicTrackSizingV1,
-            )
+            ) || (supports_min_content_auto_track_list(tracks)
+                && value == crate::LayoutAlignContent::Stretch)
         })
         && matches!(
             style.justify_content,

@@ -48,6 +48,13 @@ pub(super) fn validate(
         .grid_layout
         .as_ref()
         .expect("fit-content candidate has computed Grid tracks");
+    let align_content = grid_style
+        .properties
+        .get("align-content")
+        .map(String::as_str);
+    let align_content_is_supported = align_content == Some("start")
+        || (grid_values::root_html_fit_content_auto_rows_with_min_content(grid)
+            && align_content == Some("stretch"));
     if grid.columns.as_slice() != [ComputedCssGridTrackSize::LengthPx(40.0)]
         || grid.rows.as_slice() != [ComputedCssGridTrackSize::LengthPx(10.0)]
         || grid
@@ -73,11 +80,7 @@ pub(super) fn validate(
         || grid_style.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
         || !zero_border(grid_style)
         || grid_style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
-        || grid_style
-            .properties
-            .get("align-content")
-            .map(String::as_str)
-            != Some("start")
+        || !align_content_is_supported
         || grid_style.properties.get("align-items").map(String::as_str) != Some("normal")
         || grid_style
             .properties

@@ -257,7 +257,8 @@ fn root_html_fit_content_implicit_row_rejects_out_of_profile_inputs() {
         .unwrap()
         .auto_rows = GridAutoRows::TrackList(vec![
         GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(24.0)),
-        GridTrackSize::Auto,
+        GridTrackSize::MinContent,
+        GridTrackSize::LengthPx(8.0),
     ]);
     assert!(matches!(
         TaffyLayoutEngine.compute(&mixed_rows),

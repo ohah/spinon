@@ -1,0 +1,15 @@
+{
+  "sourceFixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-track-list-px-precomparison.html",
+  "sourceSha256": "1e033168adfef61579ead7a2ea0f4f7c685ab5f43060e693fb53e530fff61720",
+  "basis": "The Grid content box is 40x100px with a 10px explicit row. The fit-content limit is a definite 20px. Track-list order starts at the first implicit row and repeats after the auto member.",
+  "independentCalculation": "The fit-content track reaches its 20px limit, the min-content track takes its 34px payload contribution, and the final implicit row repeats fit-content for a 6px contribution. Including the explicit 10px row and the auto track's 10px base contribution, the tracks total 80px before distribution. The auto max-sizing track is the only track eligible for align-content:stretch, so it receives the remaining 20px and becomes 30px.",
+  "scene": {
+    "id": "fit-min-auto-px-cap",
+    "gridAutoRows": "fit-content(20px) min-content auto",
+    "payloadHeightsPx": [34, 34, 10, 6],
+    "usedRowsPxIncludingExplicit": [10, 20, 34, 30, 6],
+    "itemFrames": [[0, 0, 40, 10], [0, 10, 40, 20], [0, 30, 40, 34], [0, 64, 40, 30], [0, 94, 40, 6]],
+    "payloadFrames": [null, [0, 10, 40, 34], [0, 30, 40, 34], [0, 64, 40, 10], [0, 94, 40, 6]],
+    "autoStretchPx": 20
+  }
+}

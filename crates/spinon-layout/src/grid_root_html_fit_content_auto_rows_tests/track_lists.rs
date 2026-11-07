@@ -233,8 +233,9 @@ fn root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or
         vec![GridTrackSize::Auto, GridTrackSize::LengthPx(8.0)],
         vec![
             GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
-            GridTrackSize::Auto,
             GridTrackSize::MinContent,
+            GridTrackSize::Auto,
+            GridTrackSize::LengthPx(8.0),
         ],
         vec![
             GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
@@ -247,6 +248,121 @@ fn root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or
         assert!(matches!(
             TaffyLayoutEngine.compute(&input),
             Err(crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+        ));
+    }
+}
+
+#[test]
+fn root_html_fit_content_min_content_auto_lists_stretch_only_auto_tracks() {
+    for (tracks, payload_heights, expected_rows, expected_overflow) in [
+        (
+            vec![
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 20.0, 34.0, 30.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 20.0, 34.0, 30.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+            ],
+            [34.0, 34.0, 10.0, 6.0],
+            [10.0, 20.0, 54.0, 10.0, 6.0],
+            None,
+        ),
+        (
+            vec![
+                GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(1.2)),
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+            ],
+            [6.0, 34.0, 10.0, 50.0],
+            [10.0, 6.0, 34.0, 10.0, 40.0],
+            Some(10.0),
+        ),
+    ] {
+        let mut input = input_with_track_list(tracks, payload_heights);
+        input.nodes[0].style.align_content = Some(LayoutAlignContent::Stretch);
+        let output = TaffyLayoutEngine
+            .compute(&input)
+            .expect("the exact fit-content/min-content/auto profile should size");
+        assert_eq!(final_rows(&output), expected_rows);
+
+        let mut y = expected_rows[0];
+        for index in 0..4 {
+            let item = id(3 + (index * 2) as u64);
+            let payload = id(4 + (index * 2) as u64);
+            let item_frame = &output.frames[&item];
+            close(item_frame.x, 0.0, "mixed intrinsic list item x");
+            close(item_frame.y, y, "mixed intrinsic list item y");
+            close(item_frame.width, 40.0, "mixed intrinsic list item width");
+            close(
+                item_frame.height,
+                expected_rows[index + 1],
+                "mixed intrinsic list item height",
+            );
+
+            let payload_frame = &output.frames[&payload];
+            close(payload_frame.x, 0.0, "mixed intrinsic list payload x");
+            close(payload_frame.y, y, "mixed intrinsic list payload y");
+            close(
+                payload_frame.width,
+                40.0,
+                "mixed intrinsic list payload width",
+            );
+            close(
+                payload_frame.height,
+                payload_heights[index],
+                "mixed intrinsic list payload height",
+            );
+            y += expected_rows[index + 1];
+        }
+        if let Some(expected_overflow) = expected_overflow {
+            let overflow_frame = &output.frames[&id(10)];
+            close(
+                overflow_frame.y + overflow_frame.height - 100.0,
+                expected_overflow,
+                "visible overflow below the definite grid border",
+            );
+        }
+    }
+}
+
+#[test]
+fn root_html_fit_content_auto_row_lists_reject_stretch_without_the_exact_intrinsic_pattern() {
+    for tracks in [
+        vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::Auto,
+            GridTrackSize::LengthPx(8.0),
+        ],
+        vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::MinContent,
+            GridTrackSize::LengthPx(8.0),
+        ],
+    ] {
+        let mut input = input_with_track_list(tracks, [34.0, 30.0, 6.0, 25.0]);
+        input.nodes[0].style.align_content = Some(LayoutAlignContent::Stretch);
+        assert!(matches!(
+            TaffyLayoutEngine.compute(&input),
+            Err(crate::LayoutError::UnsupportedGridContainerStyle { node, .. }
+                | crate::LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
         ));
     }
 }

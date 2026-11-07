@@ -1,0 +1,35 @@
+{
+  "sourceFixture": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-track-list-precomparison.html",
+  "sourceSha256": "2daedf8cb1a755258e51b634c8907168ac27cef3106a1571b9c71cdbdf4292f0",
+  "basis": "The grid content box is 40x100px. The explicit first row is 10px. Each percentage fit-content limit resolves against the definite 100px block-size. Track-list order starts at the first implicit row and repeats after its final entry.",
+  "independentCalculation": "For the 20% scenes, fit-content caps the first implicit row at 20px; fixed nested payloads provide min-content/max-content contributions of 34px, 10px, and 6px. Before content distribution both patterns total 80px including the explicit row. With align-content:stretch, the single auto max-sizing track receives the remaining 20px; the min-content track keeps its contribution. Reordering auto and min-content moves the 20px stretch to the other row while preserving item contributions. In the 120% control, the fourth implicit row repeats fit-content; its 50px contribution has a growth limit above the remaining 40px, so it uses 40px. The nested payload remains visible and extends 10px below the 100px grid border.",
+  "scenes": [
+    {
+      "id": "fit-min-auto",
+      "gridAutoRows": "fit-content(20%) min-content auto",
+      "payloadHeightsPx": [34, 34, 10, 6],
+      "usedRowsPxIncludingExplicit": [10, 20, 34, 30, 6],
+      "itemFrames": [[0, 0, 40, 10], [0, 10, 40, 20], [0, 30, 40, 34], [0, 64, 40, 30], [0, 94, 40, 6]],
+      "payloadFrames": [null, [0, 10, 40, 34], [0, 30, 40, 34], [0, 64, 40, 10], [0, 94, 40, 6]],
+      "autoStretchPx": 20
+    },
+    {
+      "id": "fit-auto-min",
+      "gridAutoRows": "fit-content(20%) auto min-content",
+      "payloadHeightsPx": [34, 34, 10, 6],
+      "usedRowsPxIncludingExplicit": [10, 20, 54, 10, 6],
+      "itemFrames": [[0, 0, 40, 10], [0, 10, 40, 20], [0, 30, 40, 54], [0, 84, 40, 10], [0, 94, 40, 6]],
+      "payloadFrames": [null, [0, 10, 40, 34], [0, 30, 40, 34], [0, 84, 40, 10], [0, 94, 40, 6]],
+      "autoStretchPx": 20
+    },
+    {
+      "id": "fit-overflow",
+      "gridAutoRows": "fit-content(120%) min-content auto",
+      "payloadHeightsPx": [6, 34, 10, 50],
+      "usedRowsPxIncludingExplicit": [10, 6, 34, 10, 40],
+      "itemFrames": [[0, 0, 40, 10], [0, 10, 40, 6], [0, 16, 40, 34], [0, 50, 40, 10], [0, 60, 40, 40]],
+      "payloadFrames": [null, [0, 10, 40, 6], [0, 16, 40, 34], [0, 50, 40, 10], [0, 60, 40, 50]],
+      "payloadOverflowBeyondGridBottomPx": 10
+    }
+  ]
+}

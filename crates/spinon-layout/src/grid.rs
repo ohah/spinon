@@ -779,13 +779,19 @@ pub(super) fn validate_grid_layout(
                         tracks.as_slice(),
                         [GridTrackSize::MinContent | GridTrackSize::MaxContent]
                     );
+                let root_html_fit_content_min_content_auto_rows = container.placement_mode
+                    == GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                    && root_html_fit_content_auto_rows::supports_min_content_auto_track_list(
+                        tracks,
+                    );
                 validate_tracks(
                     id,
                     "grid-auto-rows",
                     tracks,
                     template_area_track_sizing
                         || container.placement_mode == GridPlacementMode::TrackSizing
-                        || root_html_intrinsic_auto_rows,
+                        || root_html_intrinsic_auto_rows
+                        || root_html_fit_content_min_content_auto_rows,
                     container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,
                     false,
                     container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,

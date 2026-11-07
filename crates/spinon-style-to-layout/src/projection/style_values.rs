@@ -408,6 +408,28 @@ pub(super) fn project_styles(
         } else {
             BTreeSet::new()
         };
+    let root_html_fit_content_min_content_auto_stretch_nodes =
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+            snapshot
+                .elements
+                .iter()
+                .filter(|element| {
+                    grid_nodes
+                        .as_ref()
+                        .is_some_and(|nodes| nodes.grid_containers.contains(&element.node_id))
+                        && element.grid_layout.as_ref().is_some_and(
+                            grid_values::root_html_fit_content_auto_rows_with_min_content,
+                        )
+                        && element
+                            .properties
+                            .get("align-content")
+                            .is_some_and(|value| value == "stretch")
+                })
+                .map(|element| element.node_id)
+                .collect::<BTreeSet<_>>()
+        } else {
+            BTreeSet::new()
+        };
     let root_html_intrinsic_track_sizing_nodes =
         if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
             snapshot
@@ -490,6 +512,7 @@ pub(super) fn project_styles(
                 root_html_grid_item_alignment_enabled,
                 root_html_intrinsic_track_sizing_nodes.contains(&node),
                 root_html_auto_row_stretch_nodes.contains(&node),
+                root_html_fit_content_min_content_auto_stretch_nodes.contains(&node),
             )?;
         }
         if matches!(
@@ -1089,6 +1112,8 @@ pub(super) fn project_styles(
                             root_html_intrinsic_track_sizing_nodes.contains(&node),
                         allow_root_html_auto_row_stretch_alignment:
                             root_html_auto_row_stretch_nodes.contains(&node),
+                        allow_root_html_fit_content_min_content_auto_stretch_alignment:
+                            root_html_fit_content_min_content_auto_stretch_nodes.contains(&node),
                         allow_c11_4_overflow_auto_minimum_fixture: options
                             .allow_c11_4_overflow_auto_minimum_fixture,
                         allow_c11_4_grid_text_baseline_fixture: options
@@ -2592,6 +2617,7 @@ struct GridAlignmentChecks {
     allow_root_html_grid_alignment: bool,
     allow_root_html_intrinsic_content_alignment: bool,
     allow_root_html_auto_row_stretch_alignment: bool,
+    allow_root_html_fit_content_min_content_auto_stretch_alignment: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
 }
@@ -2664,6 +2690,11 @@ fn reject_grid_alignment(
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && property == "align-content"
                 && root_html_auto_row_content_alignment_is_supported(Some(value)))
+            && !(checks.is_grid_container
+                && checks.allow_root_html_fit_content_min_content_auto_stretch_alignment
+                && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && property == "align-content"
+                && value == "stretch")
             && !(checks.is_grid_item
                 && checks.allow_root_html_grid_alignment
                 && profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
@@ -2690,6 +2721,7 @@ fn reject_root_html_grid_alignment_scope(
     allow_grid_item_self_alignment: bool,
     allow_intrinsic_content_alignment: bool,
     allow_auto_row_stretch_alignment: bool,
+    allow_fit_content_min_content_auto_stretch_alignment: bool,
 ) -> Result<(), StyleLayoutError> {
     if !allow_grid_alignment {
         for property in [
@@ -2706,6 +2738,9 @@ fn reject_root_html_grid_alignment_scope(
                 && !(allow_auto_row_stretch_alignment
                     && property == "align-content"
                     && root_html_auto_row_content_alignment_is_supported(Some(value)))
+                && !(allow_fit_content_min_content_auto_stretch_alignment
+                    && property == "align-content"
+                    && value == "stretch")
             {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node: element.node_id,
