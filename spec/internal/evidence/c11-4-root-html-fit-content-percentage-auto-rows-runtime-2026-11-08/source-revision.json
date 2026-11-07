@@ -1,0 +1,47 @@
+{
+  "base_main_commit": "183d8e493ea8664475d5047ffe29078f0ac4b9c9",
+  "implementation_commit": "117344ecc670d60dda02eddbb06f74d378b3367e",
+  "source_files_sha256": {
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs": "d2488298dd3491b1bb4dd5e143319ff8aa530efce6133b45e587072b45fbb8cb",
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values/root_html_grid_track_tests/fit_content.rs": "2ecb8d4b5a3702ad34495201b3542b1b55fed14bf59a64586bce941bfb88e86a",
+    "crates/spinon-layout/src/grid.rs": "1b2c3cc145196d4720e972b406c1f33e69125e3ce8a8da718636ff6f845b43ce",
+    "crates/spinon-layout/src/grid/root_html_fit_content_auto_rows.rs": "e991ab73899b87961aa40b3c56017fd18ec245c32e7dd355de45fe0d93f8d3f6",
+    "crates/spinon-layout/src/grid_auto_placement.rs": "72aa90b7d20a898de03441f0cb06ed6f14f3e1ca02185c6c5658415892383ea8",
+    "crates/spinon-layout/src/grid_root_html_fit_content_auto_rows_tests.rs": "1da477b566bcf4864ebc65278bac9f56059fd0525a279b7d42b28c5c426821eb",
+    "crates/spinon-runtime/src/session/tests.rs": "fca8fab057b430a2cd4dcb9b8472aa384b2a31443e3de462c314935b8cc01967",
+    "crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows.rs": "937e893761048eb9649a89d8180aba2f6e1e6dd5cda74b01d6d74c1d433d30f5",
+    "crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_percentage_auto_rows.rs": "fc3cdc37afc0bf0e09dcb41d99d9b4c77736e028147fa21f035b64b2fd60f53d",
+    "tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-runtime.html": "d08abb638dc6014ac56a99d6a653cfaa76386837cb15477295618d5e4e14103a",
+    "tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-percentage-runtime.html": "95e462efa3f74d5cd6064c6bdcde811987605d1e22d613cefb7f0f4111cff86c"
+  },
+  "fixture_sha256": "95e462efa3f74d5cd6064c6bdcde811987605d1e22d613cefb7f0f4111cff86c",
+  "android": {
+    "target": "Android 17 / API 37 ARM64 AVD",
+    "serial": "emulator-5554",
+    "renderer": "ANGLE / SwiftShader",
+    "apk_sha256": "2000f7cc025e0fc18df253dd03620eeb6fceb0163b4712a9f0dffd6d24dd1236",
+    "screenshot_sha256": "05c4cae3c91524019ce3e23f52bdfaab95276ae811b1a67f45dab407a89440f0",
+    "screen_px": [1080, 2400],
+    "layout": "ready",
+    "boxes": 7,
+    "page_scale": 1
+  },
+  "ios": {
+    "target": "iPhone 17 Pro / iOS 26.2 Simulator",
+    "simulator_name": "Spinon-C114-FitContent-Pass04",
+    "udid": "97E99AA8-D144-4DA8-B1BF-7F6B34007F8B",
+    "executable_sha256": "8b3c2f99f85e904f754a98e3677cf547d9a82cc53c877abd326b72713b067deb",
+    "installed_fixture_sha256": "95e462efa3f74d5cd6064c6bdcde811987605d1e22d613cefb7f0f4111cff86c",
+    "screenshot_sha256": "acc72b5bd39e787f946a30f58e2c9bb1ef32754566910a854eb12cfa7ba2a43d",
+    "screen_px": [1206, 2622],
+    "layout": "ready",
+    "boxes": 7,
+    "page_scale": 1,
+    "data_container_before": "7D511E07-2629-4E16-887B-5C57536C6261",
+    "data_container_after": "A2E877C5-CABD-493A-8DEE-18BB687E37B7",
+    "prior_container_present_after_install": false,
+    "data_continuity_verified": false
+  },
+  "fixture_test_features_enabled": false,
+  "visual_scope": "Simulator screenshots are visual smoke only; no PixelCopy or post-compositor pixel equality claim."
+}
