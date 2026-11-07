@@ -4,113 +4,235 @@
     "version": "157.0.0.0",
     "agentBrowser": "0.31.1"
   },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
   "viewport": {
     "widthCssPx": 1280,
     "heightCssPx": 633,
     "deviceScaleFactor": 1
   },
   "fixtureSha256": "68ed05e0a40a39813f6e85808c338934311c6fa195495ee5278d083f58ef529a",
-  "grid": {
-    "widthCssPx": 40,
-    "heightCssPx": 40,
-    "templateRowsCssPx": [
-      10,
-      10,
-      10
-    ]
+  "screenshot": {
+    "path": "chrome-safe-center.png",
+    "sha256": "51323a5a159717381792ad580f2160cfdaede07d47202850aa53f506b347af79",
+    "widthPx": 1280,
+    "heightPx": 633
   },
   "cases": [
     {
       "id": "safe-positive",
       "computedAlignContent": "safe center",
       "computedRowGap": "0px",
-      "childYRelativeCssPx": [
-        5,
-        15,
-        25
+      "gridRectCssPx": {
+        "x": 8,
+        "y": 8,
+        "width": 40,
+        "height": 40
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 13,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 23,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 33,
+          "width": 40,
+          "height": 10
+        }
       ]
     },
     {
       "id": "unsafe-positive",
       "computedAlignContent": "unsafe center",
       "computedRowGap": "0px",
-      "childYRelativeCssPx": [
-        5,
-        15,
-        25
+      "gridRectCssPx": {
+        "x": 8,
+        "y": 56,
+        "width": 40,
+        "height": 40
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 61,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 71,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 81,
+          "width": 40,
+          "height": 10
+        }
       ]
     },
     {
       "id": "center-positive",
       "computedAlignContent": "center",
       "computedRowGap": "0px",
-      "childYRelativeCssPx": [
-        5,
-        15,
-        25
+      "gridRectCssPx": {
+        "x": 8,
+        "y": 104,
+        "width": 40,
+        "height": 40
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 109,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 119,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 129,
+          "width": 40,
+          "height": 10
+        }
       ]
     },
     {
       "id": "safe-overflow",
       "computedAlignContent": "safe center",
       "computedRowGap": "calc(120% - 2px)",
-      "childYRelativeCssPx": [
-        0,
-        56,
-        112
+      "gridRectCssPx": {
+        "x": 8,
+        "y": 152,
+        "width": 40,
+        "height": 40
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 152,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 208,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 264,
+          "width": 40,
+          "height": 10
+        }
       ]
     },
     {
       "id": "unsafe-overflow",
       "computedAlignContent": "unsafe center",
       "computedRowGap": "calc(120% - 2px)",
-      "childYRelativeCssPx": [
-        -41,
-        15,
-        71
+      "gridRectCssPx": {
+        "x": 8,
+        "y": 200,
+        "width": 40,
+        "height": 40
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 159,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 215,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 271,
+          "width": 40,
+          "height": 10
+        }
       ]
     },
     {
       "id": "center-overflow",
       "computedAlignContent": "center",
       "computedRowGap": "calc(120% - 2px)",
-      "childYRelativeCssPx": [
-        -41,
-        15,
-        71
+      "gridRectCssPx": {
+        "x": 8,
+        "y": 248,
+        "width": 40,
+        "height": 40
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 207,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 263,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 319,
+          "width": 40,
+          "height": 10
+        }
       ]
     }
-  ],
-  "rawObservedChildYCssPx": {
-    "safe-positive": [
-      13,
-      23,
-      33
-    ],
-    "unsafe-positive": [
-      61,
-      71,
-      81
-    ],
-    "center-positive": [
-      109,
-      119,
-      129
-    ],
-    "safe-overflow": [
-      152,
-      208,
-      264
-    ],
-    "unsafe-overflow": [
-      159,
-      215,
-      271
-    ],
-    "center-overflow": [
-      207,
-      263,
-      319
-    ]
-  }
+  ]
 }
