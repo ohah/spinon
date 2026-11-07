@@ -1,0 +1,17 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "viewport": [
+    390,
+    844
+  ],
+  "summary": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개 · 마지막 확인 오전 1:38:32\n\n칸반은 78개 상위 작업과 공식 상태 대장에 등록된 세부 작업을 합산해 요약합니다. 아래 목록에는 상위 작업과 CSS·JavaScript API 세부 체크리스트를 함께 표시합니다. 목록과 완료 열은 공식 상태 대장에서 ID와 체크 상태를 읽습니다. 별도 상위 ID가 없는 C11.4 순차 구현은 실제 진행 칸에 세부 카드로 표시합니다. 새 ID가 대장에 추가되면 다음 새로고침 때 세부 목록에도 표시됩니다. 다음·진행 중·외부 대기는 작업 순서를 보여주는 보드 메모이며, 완료 판정에는 사용하지 않습니다. 모바일에서는 칸반을 좌우로 밀어 다른 열을 볼 수 있습니다.\n\n2026-11-07 C11.4 parsed Root HTML alig",
+  "cardTitle": "fit-content %",
+  "cardTitleVisible": true,
+  "cardTitleTextOverflow": "clip",
+  "activeStatus": "C11.4 · ACTIVE",
+  "activeCard": "· 완료\n할 일\n133\n+133개 미착수 항목\nQUEUE · DETAIL BELOW\n진행 중\n1/2\nfit-content %\nC11.4 · ACTIVE\n외부 대기\n3\niOS 실기기 검증 대기\nR02 · DEVICE ",
+  "bodyScrollWidth": 390,
+  "documentScrollWidth": 390,
+  "officialCountVisible": true
+}

@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `grid-auto-rows:fit-content(percentage)` 제한 구현 계획
 
-**상태:** Agent Browser Chrome 157 사전 비교와 독립 기대값을 고정하고 계획 실패 관점 20개를 검토했다. 기능 구현은 시작하지 않았다.
+**상태:** 계획 PR [#1267](https://github.com/ohah/spinon/pull/1267) 병합 후 제한 구현 PR [#1268](https://github.com/ohah/spinon/pull/1268)이 `2026-11-07T16:22:21Z` Rebase and merge됐다(merge SHA `818d83b800d86c09bb379a93605aa9d5fc50aaa9`). 구현/runtime 검토 20개, 실제 PR diff 검토 30개, bounded Rust 검증과 Android/iOS Simulator visual smoke 근거를 남겼다. C11/C11.4 및 공식 `78/214`는 미완료로 유지한다. [병합 후 상태·Tailnet 동기화](../spec/internal/evidence/c11-4-root-html-fit-content-percentage-roadmap-sync-2026-11-08/README.md)
 
 **상위:** [C11 CSS Grid](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
