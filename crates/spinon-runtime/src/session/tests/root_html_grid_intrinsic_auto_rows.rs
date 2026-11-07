@@ -2,6 +2,7 @@ use super::*;
 use serde_json::Value;
 use spinon_render::{OpaqueCssSrgb, RuntimePaint};
 
+mod align_content_baseline;
 mod auto_row_stretch;
 mod calc_row_gap;
 mod combined_multiple_text;

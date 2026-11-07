@@ -1,0 +1,28 @@
+{
+  "schema": "spinon.c11.root-html-auto-row-align-content-baseline-fallback.expected.v1",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-auto-row-align-content-baseline-fallback-precomparison.html",
+    "sha256": "2c3a61b019d1b4ecc708724e932e86329b4cb9245860e23a8e4fc5741c43c675",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1,
+    "writingMode": "horizontal-tb",
+    "direction": "ltr",
+    "gridContentBoxCssPx": [40, 40],
+    "explicitTracksCssPx": {"columns": [40], "rows": [10]},
+    "implicitRows": 2,
+    "rowGapCases": [
+      {"name": "positiveSpace", "css": "0px", "usedGapCssPx": 0, "usedRowsCssPx": [10, 10, 10]},
+      {"name": "overflow", "css": "calc(120% - 2px)", "usedGapCssPx": 46, "usedRowsCssPx": [10, 10, 10]}
+    ]
+  },
+  "alignmentExpectedYCssPx": {
+    "baseline": {"positiveSpace": [0, 10, 20], "overflow": [0, 56, 112]},
+    "start": {"positiveSpace": [0, 10, 20], "overflow": [0, 56, 112]},
+    "safe end": {"positiveSpace": [10, 20, 30], "overflow": [0, 56, 112]},
+    "end": {"positiveSpace": [10, 20, 30], "overflow": [-82, -26, 30]},
+    "unsafe end": {"positiveSpace": [10, 20, 30], "overflow": [-82, -26, 30]}
+  },
+  "frameSizeCssPx": [40, 10],
+  "toleranceCssPx": 0,
+  "rationale": "The top-level Grid is not a member of a shared baseline alignment context. First-baseline content alignment uses the safe-start fallback, and does not stretch the implicit auto rows."
+}

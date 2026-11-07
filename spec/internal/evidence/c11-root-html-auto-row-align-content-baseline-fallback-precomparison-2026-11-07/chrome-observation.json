@@ -1,0 +1,28 @@
+{
+  "schema": "spinon.c11.root-html-auto-row-align-content-baseline-fallback.chrome-observation.v1",
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-auto-row-align-content-baseline-fallback-precomparison.html",
+    "sha256": "2c3a61b019d1b4ecc708724e932e86329b4cb9245860e23a8e4fc5741c43c675"
+  },
+  "computedDirection": "ltr",
+  "computedWritingMode": "horizontal-tb",
+  "cases": [
+    {"alignment": "baseline", "rowGap": "0px", "computedRowGap": "0px", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 0, 40, 10], [0, 10, 40, 10], [0, 20, 40, 10]]},
+    {"alignment": "baseline", "rowGap": "calc(120% - 2px)", "computedRowGap": "calc(120% - 2px)", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 0, 40, 10], [0, 56, 40, 10], [0, 112, 40, 10]]},
+    {"alignment": "start", "rowGap": "0px", "computedRowGap": "0px", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 0, 40, 10], [0, 10, 40, 10], [0, 20, 40, 10]]},
+    {"alignment": "start", "rowGap": "calc(120% - 2px)", "computedRowGap": "calc(120% - 2px)", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 0, 40, 10], [0, 56, 40, 10], [0, 112, 40, 10]]},
+    {"alignment": "safe end", "rowGap": "0px", "computedRowGap": "0px", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 10, 40, 10], [0, 20, 40, 10], [0, 30, 40, 10]]},
+    {"alignment": "safe end", "rowGap": "calc(120% - 2px)", "computedRowGap": "calc(120% - 2px)", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 0, 40, 10], [0, 56, 40, 10], [0, 112, 40, 10]]},
+    {"alignment": "end", "rowGap": "0px", "computedRowGap": "0px", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 10, 40, 10], [0, 20, 40, 10], [0, 30, 40, 10]]},
+    {"alignment": "end", "rowGap": "calc(120% - 2px)", "computedRowGap": "calc(120% - 2px)", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, -82, 40, 10], [0, -26, 40, 10], [0, 30, 40, 10]]},
+    {"alignment": "unsafe end", "rowGap": "0px", "computedRowGap": "0px", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, 10, 40, 10], [0, 20, 40, 10], [0, 30, 40, 10]]},
+    {"alignment": "unsafe end", "rowGap": "calc(120% - 2px)", "computedRowGap": "calc(120% - 2px)", "usedRowsCssPx": [10, 10, 10], "itemFramesCssPx": [[0, -82, 40, 10], [0, -26, 40, 10], [0, 30, 40, 10]]}
+  ],
+  "observationLimit": "Browser geometry is an oracle observation only. Expected results come from the CSS Box Alignment no-shared-baseline-context fallback plus independent track/gutter arithmetic."
+}

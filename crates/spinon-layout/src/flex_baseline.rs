@@ -108,6 +108,30 @@ fn validate_baseline_content_alignment(
         {
             continue;
         }
+        if node.style.display == LayoutDisplay::Grid
+            && input
+                .grid_containers
+                .get(&node.id)
+                .is_some_and(|container| {
+                    container.placement_mode == crate::GridPlacementMode::RootHtmlAutoRowStretchV1
+                })
+        {
+            let parent_display = input
+                .nodes
+                .iter()
+                .find(|parent| parent.children.contains(&node.id))
+                .map(|parent| parent.style.display);
+            if matches!(
+                parent_display,
+                Some(LayoutDisplay::Flex | LayoutDisplay::Grid)
+            ) {
+                return Err(unsupported(
+                    node.id,
+                    "Root HTML baseline fallback excludes a direct Flex/Grid baseline-sharing parent",
+                ));
+            }
+            continue;
+        }
         if node.style.display != LayoutDisplay::Flex {
             return Err(unsupported(
                 node.id,

@@ -450,10 +450,6 @@ fn parsed_root_html_positional_and_distributed_align_content_match_geometry() {
 fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
     for (label, source) in [
         (
-            "unsupported safe alignment modifier",
-            SOURCE.replace("align-content: normal;", "align-content: safe center;"),
-        ),
-        (
             "wrong first text",
             SOURCE.replace("id=\"text-a\">A", "id=\"text-a\">C"),
         ),
@@ -489,26 +485,25 @@ fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
         );
     }
 
-    for value in ["baseline", "last baseline", "safe center", "unsafe end"] {
-        let source = EXPLICIT_STRETCH_SOURCE.replace(
-            "align-content: stretch;",
-            &format!("align-content: {value};"),
-        );
-        assert_ne!(
-            source, EXPLICIT_STRETCH_SOURCE,
-            "{value}: mutation should apply"
-        );
-        let (_session, layout) = run(&source);
-        assert_ne!(
-            layout.state,
-            crate::session::RuntimeLayoutState::Ready,
-            "align-content:{value} must remain outside this bounded profile"
-        );
-        assert!(
-            layout.completed.is_none(),
-            "align-content:{value} must not publish partial layout"
-        );
-    }
+    let value = "last baseline";
+    let source = EXPLICIT_STRETCH_SOURCE.replace(
+        "align-content: stretch;",
+        &format!("align-content: {value};"),
+    );
+    assert_ne!(
+        source, EXPLICIT_STRETCH_SOURCE,
+        "{value}: mutation should apply"
+    );
+    let (_session, layout) = run(&source);
+    assert_ne!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "align-content:{value} must remain outside this bounded profile"
+    );
+    assert!(
+        layout.completed.is_none(),
+        "align-content:{value} must not publish partial layout"
+    );
 
     for (label, shorthand) in [
         (
@@ -568,7 +563,7 @@ fn parsed_root_html_multiple_auto_row_stretch_rejects_other_shapes() {
 fn parsed_root_html_multiple_auto_row_stretch_recovers_after_rejection() {
     let source = EXPLICIT_STRETCH_SOURCE.replace(
         "      #fixed {",
-        "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: safe center; }\n      }\n\n      #fixed {",
+        "      @media (prefers-color-scheme: dark) {\n        #grid { width: 41px; }\n      }\n\n      #fixed {",
     );
     assert_ne!(source, EXPLICIT_STRETCH_SOURCE);
     let (session, _) = RuntimeSession::new_runtime_gpu_with_root_html(&source)

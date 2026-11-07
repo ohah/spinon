@@ -91,10 +91,10 @@ fn parsed_root_html_safe_end_matches_chrome_and_independent_matrix() {
 }
 
 #[test]
-fn parsed_root_html_safe_end_rejects_other_safety_values_and_recovers() {
+fn parsed_root_html_safe_end_rejects_changed_item_shape_and_recovers() {
     let source = SOURCE.replace(
         "      #fixed {",
-        "      @media (prefers-color-scheme: dark) {\n        #grid { align-content: baseline; }\n      }\n\n      #fixed {",
+        "      @media (prefers-color-scheme: dark) {\n        #text-b { display: none; }\n      }\n\n      #fixed {",
     );
     assert_ne!(source, SOURCE);
     let source = source

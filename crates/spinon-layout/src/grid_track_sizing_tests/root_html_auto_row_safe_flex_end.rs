@@ -159,16 +159,3 @@ fn root_html_auto_row_safe_flex_end_matches_chrome_and_independent_matrix() {
         }
     }
 }
-
-#[test]
-fn root_html_auto_row_safe_flex_end_keeps_baseline_alignment_rejected() {
-    let mut input = input_for("safe flex-end", true);
-    input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&input),
-        Err(crate::LayoutError::UnsupportedGridContainerStyle {
-            node,
-            property: "align-content"
-        }) if node == id(1)
-    ));
-}
