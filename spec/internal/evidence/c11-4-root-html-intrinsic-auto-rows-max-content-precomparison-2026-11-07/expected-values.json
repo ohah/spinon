@@ -1,0 +1,28 @@
+{
+  "fixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-max-content-precomparison.html",
+  "fixtureSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502",
+  "basis": "CSS Grid Level 2 implicit track sizing and max-content contribution for the fixed horizontal-tb scene",
+  "grid": {
+    "frame": [0, 0, 40, 40],
+    "explicitColumnsPx": [40],
+    "explicitRowsPx": [10],
+    "implicitRowsPx": [20, 34],
+    "usedRowsPx": [10, 20, 34],
+    "autoRowsComputed": "max-content",
+    "overflowY": "visible"
+  },
+  "items": {
+    "first": [0, 0, 40, 10],
+    "wrapped-text": [0, 10, 40, 20],
+    "last": [0, 30, 40, 34]
+  },
+  "text": {
+    "source": "A A A A A A",
+    "lineHeightPx": 10,
+    "lines": 2,
+    "blockContributionPx": 20
+  },
+  "chromeTextRangeRects": [[0, 9, 30.109375, 11], [0, 19, 30.109375, 11]],
+  "visibleBottomPx": 64,
+  "visibleOverflowBeyondGridPx": 24
+}

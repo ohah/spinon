@@ -560,7 +560,10 @@ pub(super) fn validate_grid_layout(
             (
                 GridPlacementMode::RootHtmlIntrinsicTrackSizingV1,
                 GridAutoRows::TrackList(tracks),
-            ) if tracks.as_slice() == [GridTrackSize::MinContent] => {}
+            ) if matches!(
+                tracks.as_slice(),
+                [GridTrackSize::MinContent | GridTrackSize::MaxContent]
+            ) => {}
             (GridPlacementMode::RootHtmlIntrinsicTrackSizingV1, _) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
@@ -755,7 +758,10 @@ pub(super) fn validate_grid_layout(
                 let root_html_intrinsic_auto_rows = container
                     .placement_mode
                     .is_root_html_intrinsic_track_sizing()
-                    && tracks.as_slice() == [GridTrackSize::MinContent];
+                    && matches!(
+                        tracks.as_slice(),
+                        [GridTrackSize::MinContent | GridTrackSize::MaxContent]
+                    );
                 validate_tracks(
                     id,
                     "grid-auto-rows",
@@ -1596,6 +1602,14 @@ fn validate_root_html_intrinsic_tracks_contract(
     let intrinsic_auto_rows = matches!(
         &container.auto_rows,
         GridAutoRows::TrackList(tracks)
+            if matches!(
+                tracks.as_slice(),
+                [GridTrackSize::MinContent | GridTrackSize::MaxContent]
+            )
+    );
+    let min_content_auto_rows = matches!(
+        &container.auto_rows,
+        GridAutoRows::TrackList(tracks)
             if tracks.as_slice() == [GridTrackSize::MinContent]
     );
     let has_intrinsic_columns = container
@@ -1615,7 +1629,7 @@ fn validate_root_html_intrinsic_tracks_contract(
         style.gap.column,
         LayoutLengthPercentage::LengthPx(value) if value == 0.0
     );
-    let allow_combined_intrinsic_auto_rows = intrinsic_auto_rows
+    let allow_combined_intrinsic_auto_rows = min_content_auto_rows
         && has_intrinsic_columns
         && container.template_areas.is_none()
         && single_positive_px_track(&container.rows);
@@ -1667,7 +1681,7 @@ fn validate_root_html_intrinsic_tracks_contract(
     if container.auto_rows != GridAutoRows::Auto && !allow_intrinsic_auto_rows {
         return Err(LayoutError::UnsupportedGridAutoRows {
             node,
-            reason: "Root HTML intrinsic tracks require auto grid-auto-rows, except for one min-content pattern with a fixed explicit row and either fixed single tracks without gaps or supported intrinsic columns",
+            reason: "Root HTML intrinsic tracks require auto grid-auto-rows, except for one min-content or max-content track with fixed single explicit tracks and no gaps; only min-content rows combine with intrinsic columns",
         });
     }
     if container.auto_columns != GridAutoColumns::Auto {

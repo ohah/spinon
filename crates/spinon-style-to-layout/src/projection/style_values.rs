@@ -47,7 +47,7 @@ use grid_values::{
     project_grid_layout_with_math,
     project_root_html_direct_text_aspect_ratio_grid_layout_with_math,
     project_root_html_one_axis_grid_layout_with_math, root_html_auto_row_stretch_candidate,
-    root_html_has_intrinsic_explicit_tracks, root_html_has_intrinsic_implicit_min_content_rows,
+    root_html_has_intrinsic_explicit_tracks, root_html_has_supported_intrinsic_implicit_rows,
     root_html_intrinsic_auto_rows_candidate,
 };
 use positioning_values::parse_positioning;
@@ -415,7 +415,7 @@ pub(super) fn project_styles(
                     !root_html_direct_text_ratio_scene_owners.contains(&element.node_id)
                         && (element.grid_layout.as_ref().is_some_and(|grid| {
                             root_html_has_intrinsic_explicit_tracks(grid)
-                                || root_html_has_intrinsic_implicit_min_content_rows(grid)
+                                || root_html_has_supported_intrinsic_implicit_rows(grid)
                         }) || root_html_auto_row_stretch_nodes.contains(&element.node_id))
                 })
                 .map(|element| element.node_id)
@@ -2202,10 +2202,12 @@ fn validate_root_html_grid_item_capacity(
                 && grid.columns_fixed_repeat_group_count == 0
                 && grid.rows_fixed_repeat_group_count == 0;
         let intrinsic_auto_row_capacity =
-            grid_values::root_html_has_intrinsic_implicit_min_content_rows(grid)
+            grid_values::root_html_has_supported_intrinsic_implicit_rows(grid)
                 && root_implicit_rows_common
                 && single_positive_px_track(&grid.rows)
-                && (intrinsic_column_auto_row_capacity || fixed_track_auto_row_capacity);
+                && (fixed_track_auto_row_capacity
+                    || (grid_values::root_html_has_intrinsic_implicit_min_content_rows(grid)
+                        && intrinsic_column_auto_row_capacity));
         let auto_row_stretch_capacity =
             grid_values::root_html_auto_row_stretch_candidate(grid) && root_implicit_rows_common;
         let fixed_root_implicit_rows =

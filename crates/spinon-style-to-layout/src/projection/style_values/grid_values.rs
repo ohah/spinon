@@ -182,7 +182,7 @@ fn validate_root_html_grid_tracks(
     let fixed_px_placement_flow = column_flow || dense_flow;
     let has_intrinsic_tracks = root_html_has_intrinsic_explicit_tracks(grid);
     let intrinsic_auto_rows = !root_html_direct_text_aspect_ratio
-        && root_html_has_intrinsic_implicit_min_content_rows(grid);
+        && root_html_has_supported_intrinsic_implicit_rows(grid);
     let direct_text_aspect_ratio_has_only_its_auto_row = root_html_direct_text_aspect_ratio
         && grid.rows.as_slice() == [ComputedCssGridTrackSize::Auto]
         && !grid
@@ -212,10 +212,12 @@ fn validate_root_html_grid_tracks(
                     if value.is_finite() && *value > 0.0
             )
         };
-        let valid_intrinsic_column_combination = has_intrinsic_tracks
-            && root_html_has_intrinsic_explicit_columns(grid)
-            && single_positive_px_track(&grid.rows)
-            && !root_html_has_fit_content_tracks(grid);
+        let valid_intrinsic_column_combination =
+            root_html_has_intrinsic_implicit_min_content_rows(grid)
+                && has_intrinsic_tracks
+                && root_html_has_intrinsic_explicit_columns(grid)
+                && single_positive_px_track(&grid.rows)
+                && !root_html_has_fit_content_tracks(grid);
         let valid_fixed_track_combination = !has_intrinsic_tracks
             && single_positive_px_track(&grid.columns)
             && single_positive_px_track(&grid.rows)
@@ -230,7 +232,7 @@ fn validate_root_html_grid_tracks(
         {
             return Err(unsupported(
                 "grid-auto-rows",
-                "Root HTML intrinsic implicit min-content rows require one positive fixed-px explicit row, fixed single-track columns or the existing intrinsic-column route, row flow, no areas, no auto-repeat, and no implicit columns",
+                "Root HTML intrinsic implicit rows require one singleton min-content or max-content track, one positive fixed-px explicit row, fixed single-track columns or the existing min-content intrinsic-column route, row flow, no areas, no auto-repeat, and no implicit columns",
             ));
         }
     }
@@ -399,7 +401,11 @@ fn validate_root_html_grid_tracks(
             ComputedCssGridTrackSize::Calc(expression) => {
                 !supported_root_html_auto_track_calc(expression)
             }
-            ComputedCssGridTrackSize::MinContent if intrinsic_auto_rows => false,
+            ComputedCssGridTrackSize::MinContent | ComputedCssGridTrackSize::MaxContent
+                if intrinsic_auto_rows =>
+            {
+                false
+            }
             _ => true,
         }),
         _ => false,
@@ -452,14 +458,28 @@ pub(super) fn root_html_has_intrinsic_implicit_min_content_rows(
     )
 }
 
+pub(super) fn root_html_has_supported_intrinsic_implicit_rows(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if matches!(
+                tracks.as_slice(),
+                [ComputedCssGridTrackSize::MinContent | ComputedCssGridTrackSize::MaxContent]
+            )
+    )
+}
+
 pub(super) fn root_html_intrinsic_auto_rows_candidate(grid: &ComputedCssGridLayout) -> bool {
-    if !root_html_has_intrinsic_implicit_min_content_rows(grid) {
+    if !root_html_has_supported_intrinsic_implicit_rows(grid) {
         return false;
     }
     if !root_html_has_intrinsic_explicit_tracks(grid) {
         return true;
     }
-    root_html_has_intrinsic_explicit_columns(grid)
+    root_html_has_intrinsic_implicit_min_content_rows(grid)
+        && root_html_has_intrinsic_explicit_columns(grid)
         && matches!(
             grid.rows.as_slice(),
             [ComputedCssGridTrackSize::LengthPx(value)] if value.is_finite() && *value > 0.0
@@ -1317,7 +1337,7 @@ fn project_grid_layout_with_route_reservations(
                 .any(|track| matches!(track, ComputedCssGridTrackSize::MinMax { .. })));
     let root_html_intrinsic_auto_rows = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && !root_html_direct_text_aspect_ratio
-        && root_html_has_intrinsic_implicit_min_content_rows(grid);
+        && root_html_has_supported_intrinsic_implicit_rows(grid);
     let root_html_column_flow = profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
         && grid.auto_flow == ComputedCssGridAutoFlow::Column;
     let root_html_one_axis_placement =
@@ -1987,7 +2007,7 @@ fn project_auto_rows(
     auto_rows: &ComputedCssGridAutoRows,
     profile: ComputedStyleProfile,
     allow_template_area_track_sizing: bool,
-    allow_root_html_intrinsic_min_content: bool,
+    allow_root_html_intrinsic_auto_rows: bool,
     math: &mut CssMathProjector,
     reserve: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
 ) -> Result<GridAutoRows, StyleLayoutError> {
@@ -2015,8 +2035,12 @@ fn project_auto_rows(
         ComputedCssGridAutoRows::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && (root_html_direct_auto_row_track_list(tracks)
-                    || (allow_root_html_intrinsic_min_content
-                        && tracks.as_slice() == [ComputedCssGridTrackSize::MinContent])) =>
+                    || (allow_root_html_intrinsic_auto_rows
+                        && matches!(
+                            tracks.as_slice(),
+                            [ComputedCssGridTrackSize::MinContent
+                                | ComputedCssGridTrackSize::MaxContent]
+                        ))) =>
         {
             project_tracks(
                 tracks,

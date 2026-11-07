@@ -97,6 +97,34 @@ fn root_html_profile_projects_min_content_implicit_rows_into_intrinsic_mode() {
 }
 
 #[test]
+fn root_html_profile_projects_singleton_max_content_implicit_rows_into_intrinsic_mode() {
+    let node = NodeId::new(11_289).unwrap();
+    let mut computed = grid(
+        vec![ComputedCssGridTrackSize::LengthPx(40.0)],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    computed.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MaxContent]);
+
+    assert!(root_html_intrinsic_auto_rows_candidate(&computed));
+    let projected = project_grid_layout(
+        node,
+        &computed,
+        ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+    )
+    .expect("the bounded max-content implicit row should be supported");
+
+    assert_eq!(
+        projected.placement_mode,
+        spinon_layout::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![GridTrackSize::MaxContent])
+    );
+}
+
+#[test]
 fn intrinsic_auto_row_candidate_keeps_the_existing_combined_column_boundary() {
     let intrinsic_columns = [
         ComputedCssGridTrackSize::Auto,
@@ -141,6 +169,16 @@ fn intrinsic_auto_row_candidate_keeps_the_existing_combined_column_boundary() {
         ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MaxContent]);
     assert!(!root_html_intrinsic_auto_rows_candidate(
         &unsupported_implicit_row
+    ));
+
+    let mut max_content_with_intrinsic_column = grid(
+        vec![ComputedCssGridTrackSize::MinContent],
+        vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+    );
+    max_content_with_intrinsic_column.auto_rows =
+        ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MaxContent]);
+    assert!(!root_html_intrinsic_auto_rows_candidate(
+        &max_content_with_intrinsic_column
     ));
 
     let mut named_areas = grid(
@@ -238,9 +276,12 @@ fn intrinsic_auto_row_candidate_keeps_the_existing_combined_column_boundary() {
 fn root_html_profile_rejects_other_intrinsic_implicit_row_shapes() {
     let node = NodeId::new(11_288).unwrap();
     for tracks in [
-        vec![ComputedCssGridTrackSize::MaxContent],
         vec![
             ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::LengthPx(12.0),
+        ],
+        vec![
+            ComputedCssGridTrackSize::MaxContent,
             ComputedCssGridTrackSize::LengthPx(12.0),
         ],
     ] {
