@@ -1,0 +1,25 @@
+{
+  "pull_request": 1267,
+  "url": "https://github.com/ohah/spinon/pull/1267",
+  "title": "plan(c11.4): Root HTML percentage fit-content implicit 행 계획",
+  "head_sha": "3953b75501eb9d7f1db006c76eecc532c73edae3",
+  "agent_browser": {
+    "session": "spinon-pr1267-review",
+    "session_active_after_close": false,
+    "pid_after_close": null,
+    "active_sessions_after_close": []
+  },
+  "embedded_image": {
+    "src": "https://raw.githubusercontent.com/ohah/spinon/3953b7550/spec/internal/evidence/c11-4-root-html-fit-content-percentage-auto-rows-precomparison-2026-11-08/chrome157-agent-browser-full.png",
+    "loaded": true,
+    "natural_width": 1280,
+    "natural_height": 845,
+    "rendered_width_css_px": 781.984375,
+    "rendered_height_css_px": 516.234375
+  },
+  "pr_page_screenshot": {
+    "path": "pr1267-agent-browser-image-loaded.png",
+    "width": 1280,
+    "height": 633
+  }
+}
