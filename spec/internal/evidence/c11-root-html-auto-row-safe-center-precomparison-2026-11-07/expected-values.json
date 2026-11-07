@@ -1,0 +1,60 @@
+{
+  "basis": "CSS Grid content-alignment subject includes three 10px tracks and two row gaps; container block size is 40px.",
+  "positiveSpace": {
+    "rowGapCssPx": 0,
+    "trackSizesCssPx": [
+      10,
+      10,
+      10
+    ],
+    "freeSpaceCssPx": 10,
+    "expectedYRelativeCssPx": {
+      "safe center": [
+        5,
+        15,
+        25
+      ],
+      "unsafe center": [
+        5,
+        15,
+        25
+      ],
+      "center": [
+        5,
+        15,
+        25
+      ]
+    }
+  },
+  "overflow": {
+    "rowGapExpression": "calc(120% - 2px)",
+    "definitePercentageBasisCssPx": 40,
+    "resolvedRowGapCssPx": 46,
+    "trackSizesCssPx": [
+      10,
+      10,
+      10
+    ],
+    "alignmentSubjectExtentCssPx": 122,
+    "freeSpaceCssPx": -82,
+    "expectedYRelativeCssPx": {
+      "safe center": [
+        0,
+        56,
+        112
+      ],
+      "unsafe center": [
+        -41,
+        15,
+        71
+      ],
+      "center": [
+        -41,
+        15,
+        71
+      ]
+    }
+  },
+  "toleranceCssPx": 0.015625,
+  "derivation": "46px row-gap × 2 + 10px × 3 = 122px. safe center falls back to start when the subject overflows; unsafe center and center retain centering, so the group offset is (40 - 122) / 2 = -41px."
+}

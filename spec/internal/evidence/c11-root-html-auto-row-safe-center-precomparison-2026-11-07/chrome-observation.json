@@ -1,0 +1,116 @@
+{
+  "browser": {
+    "product": "HeadlessChrome",
+    "version": "157.0.0.0",
+    "agentBrowser": "0.31.1"
+  },
+  "viewport": {
+    "widthCssPx": 1280,
+    "heightCssPx": 633,
+    "deviceScaleFactor": 1
+  },
+  "fixtureSha256": "68ed05e0a40a39813f6e85808c338934311c6fa195495ee5278d083f58ef529a",
+  "grid": {
+    "widthCssPx": 40,
+    "heightCssPx": 40,
+    "templateRowsCssPx": [
+      10,
+      10,
+      10
+    ]
+  },
+  "cases": [
+    {
+      "id": "safe-positive",
+      "computedAlignContent": "safe center",
+      "computedRowGap": "0px",
+      "childYRelativeCssPx": [
+        5,
+        15,
+        25
+      ]
+    },
+    {
+      "id": "unsafe-positive",
+      "computedAlignContent": "unsafe center",
+      "computedRowGap": "0px",
+      "childYRelativeCssPx": [
+        5,
+        15,
+        25
+      ]
+    },
+    {
+      "id": "center-positive",
+      "computedAlignContent": "center",
+      "computedRowGap": "0px",
+      "childYRelativeCssPx": [
+        5,
+        15,
+        25
+      ]
+    },
+    {
+      "id": "safe-overflow",
+      "computedAlignContent": "safe center",
+      "computedRowGap": "calc(120% - 2px)",
+      "childYRelativeCssPx": [
+        0,
+        56,
+        112
+      ]
+    },
+    {
+      "id": "unsafe-overflow",
+      "computedAlignContent": "unsafe center",
+      "computedRowGap": "calc(120% - 2px)",
+      "childYRelativeCssPx": [
+        -41,
+        15,
+        71
+      ]
+    },
+    {
+      "id": "center-overflow",
+      "computedAlignContent": "center",
+      "computedRowGap": "calc(120% - 2px)",
+      "childYRelativeCssPx": [
+        -41,
+        15,
+        71
+      ]
+    }
+  ],
+  "rawObservedChildYCssPx": {
+    "safe-positive": [
+      13,
+      23,
+      33
+    ],
+    "unsafe-positive": [
+      61,
+      71,
+      81
+    ],
+    "center-positive": [
+      109,
+      119,
+      129
+    ],
+    "safe-overflow": [
+      152,
+      208,
+      264
+    ],
+    "unsafe-overflow": [
+      159,
+      215,
+      271
+    ],
+    "center-overflow": [
+      207,
+      263,
+      319
+    ]
+  }
+}
