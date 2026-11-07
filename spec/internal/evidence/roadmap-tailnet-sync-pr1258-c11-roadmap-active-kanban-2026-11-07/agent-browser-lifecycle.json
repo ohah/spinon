@@ -1,0 +1,16 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-tailnet-pr1258",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewportsCssPx": [
+    "1440x1000",
+    "390x844"
+  ],
+  "closeCommand": "agent-browser --session spinon-tailnet-pr1258 close",
+  "browserClosed": true,
+  "postCloseAgentBrowserProcessCount": 0,
+  "postCloseHeadlessChromeProcessCount": 0,
+  "previewServerPid": "28040",
+  "previewServerRestarted": false,
+  "terminalBrowserUsed": false
+}

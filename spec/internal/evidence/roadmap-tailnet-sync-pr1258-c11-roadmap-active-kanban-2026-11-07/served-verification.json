@@ -1,0 +1,54 @@
+{
+  "recordedAt": "2026-11-07T06:37:23.445Z",
+  "sourceSha256": "7052a3a027e5e2b77e8d482a2594bef0135b19f1ec1d800ec3d33646a8fe03d2",
+  "sourceBytes": 621472,
+  "servedResponses": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 621472,
+      "sha256": "7052a3a027e5e2b77e8d482a2594bef0135b19f1ec1d800ec3d33646a8fe03d2"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 621472,
+      "sha256": "7052a3a027e5e2b77e8d482a2594bef0135b19f1ec1d800ec3d33646a8fe03d2"
+    }
+  ],
+  "markers": [
+    {
+      "marker": "PR #1256 Rebase and merge",
+      "present": true
+    },
+    {
+      "marker": "0c3fa3f94e9a4af1db2f3e22be012df2282e6a67",
+      "present": true
+    },
+    {
+      "marker": "flex-end 계획",
+      "present": true
+    },
+    {
+      "marker": "/spinon/plan/c11-root-html-auto-row-safe-flex-end.html",
+      "present": true
+    },
+    {
+      "marker": "const kanbanColumnStep = 272;",
+      "present": true
+    },
+    {
+      "marker": "모바일에서는 칸반을 좌우로 밀어 다른 열을 볼 수 있습니다.",
+      "present": true
+    },
+    {
+      "marker": "78/214",
+      "present": true
+    },
+    {
+      "marker": "C11.4/C11은 미완료",
+      "present": true
+    }
+  ],
+  "pagesDeployment": "not requested; unchanged"
+}

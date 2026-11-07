@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-11-07T06:37:23.391Z",
+  "tailscaleBackendState": "Running",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 621472,
+  "sourceSha256": "7052a3a027e5e2b77e8d482a2594bef0135b19f1ec1d800ec3d33646a8fe03d2",
+  "previewTarget": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "previewBytesBefore": 620756,
+  "previewSha256Before": "d83e0a2944d24b54123a8251f48ce3f74cc0cd4dacf181b3ec704e2b24ba9ac1",
+  "previewTargetOpenHandles": [],
+  "previewServerPid": "28040",
+  "previewServerCommand": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "servedResponsesBefore": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 620756,
+      "sha256": "d83e0a2944d24b54123a8251f48ce3f74cc0cd4dacf181b3ec704e2b24ba9ac1"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 620756,
+      "sha256": "d83e0a2944d24b54123a8251f48ce3f74cc0cd4dacf181b3ec704e2b24ba9ac1"
+    }
+  ],
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1258-c11-roadmap-active-kanban-2026-11-07/pass01/roadmap.html",
+  "backupPathExisted": false,
+  "pagesDeployment": "not requested; unchanged"
+}
