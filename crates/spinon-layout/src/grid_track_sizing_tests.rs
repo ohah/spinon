@@ -1065,3 +1065,5 @@ mod root_html_auto_row_calc_gap;
 mod root_html_auto_row_percentage_gap;
 #[path = "grid_track_sizing_tests/root_html_auto_row_safe_center.rs"]
 mod root_html_auto_row_safe_center;
+#[path = "grid_track_sizing_tests/root_html_auto_row_safe_end.rs"]
+mod root_html_auto_row_safe_end;
