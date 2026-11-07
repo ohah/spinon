@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `align-content:safe|unsafe flex-end`
 
-**상태:** 계획·20개 실패 관점 검토 및 Chrome 157 사전 비교 완료, 제한 구현은 아직 시작하지 않았다. 6개 scene·72개 item-frame 좌표가 독립 기대값과 정확히 일치했고 최대 오차는 0 CSS px다. [사전 비교 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-flex-end-precomparison-2026-11-07/README.md) · [계획 검토 20개](./c11-root-html-auto-row-safe-flex-end-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-root-html-auto-row-safe-flex-end-plan-pr-diff-review-30.md). C11.4/C11 및 공식 `78/214`는 미완료·변경 없음.
+**상태:** 계획·계획 실패 관점 검토 20개·Chrome 157 사전 비교를 마치고 제한 구현 진행 중이다. 6개 scene·72개 item-frame 좌표는 독립 기대값과 정확히 일치했고 최대 오차는 0 CSS px다. Layout·style projection·RuntimeSession focused tests가 각 2/2 통과했다. Android/iOS Simulator, 새 구현/runtime 실패 관점 20개 및 실제 PR diff 실패 관점 30개 검토는 진행 전이다. [사전 비교 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-flex-end-precomparison-2026-11-07/README.md) · [계획 검토 20개](./c11-root-html-auto-row-safe-flex-end-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-root-html-auto-row-safe-flex-end-plan-pr-diff-review-30.md). C11.4/C11 및 공식 `78/214`는 미완료·변경 없음.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [선행 `safe|unsafe flex-start`](./c11-root-html-auto-row-safe-flex-start.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

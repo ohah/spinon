@@ -20,6 +20,9 @@ const EXPECTED: &str = include_str!(
 const FLEX_START_EXPECTED: &str = include_str!(
     "../../../spec/internal/evidence/c11-root-html-auto-row-safe-flex-start-precomparison-2026-11-07/expected.json"
 );
+const FLEX_END_EXPECTED: &str = include_str!(
+    "../../../spec/internal/evidence/c11-root-html-auto-row-safe-flex-end-precomparison-2026-11-07/expected.json"
+);
 const TOLERANCE: f32 = 1.0 / 64.0;
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
@@ -254,7 +257,7 @@ fn root_html_auto_row_safe_flex_start_projection_matches_chrome_matrix() {
 
 #[test]
 fn root_html_auto_row_safe_start_projection_keeps_other_safety_values_at_align_content() {
-    let fixture = AutoRowGridFixture::new("safe flex-end", "0px");
+    let fixture = AutoRowGridFixture::new("baseline", "0px");
     let result = fixture.compute();
     assert!(
         matches!(
@@ -263,8 +266,72 @@ fn root_html_auto_row_safe_start_projection_keeps_other_safety_values_at_align_c
                 node,
                 property: "align-content",
                 ref value,
-        }) if node == fixture.grid.id() && value == "safe flex-end"
+        }) if node == fixture.grid.id() && value == "baseline"
         ),
         "unsupported safety modifier should fail with align-content ownership, got {result:?}"
     );
+}
+
+#[test]
+fn root_html_auto_row_safe_flex_end_projection_matches_chrome_matrix() {
+    let expected: Value = serde_json::from_str(FLEX_END_EXPECTED)
+        .expect("safe flex-end expected values should be valid JSON");
+    let alignments = expected["alignmentValues"]
+        .as_array()
+        .expect("expected values should list alignments");
+
+    for (gap_case, row_gap) in [("positive", "0px"), ("overflow", "calc(120% - 2px)")] {
+        for alignment in alignments {
+            let alignment = alignment.as_str().expect("alignment should be a string");
+            let expected_frames =
+                &expected["expectedFramesByAlignmentAndGapCase"][alignment][gap_case];
+            let fixture = AutoRowGridFixture::new(alignment, row_gap);
+            let output = fixture
+                .compute()
+                .unwrap_or_else(|error| panic!("{gap_case} / {alignment}: {error:?}"));
+            let grid_style = output
+                .computed_styles
+                .elements
+                .iter()
+                .find(|style| style.node_id == fixture.grid.id())
+                .expect("Root Grid should keep a computed-style snapshot");
+            assert_eq!(
+                grid_style
+                    .properties
+                    .get("align-content")
+                    .map(String::as_str),
+                Some(alignment),
+                "{gap_case} should preserve the exact computed alignment"
+            );
+            let grid = output.layout.frames[&fixture.grid.id()];
+            for (index, expected_frame) in expected_frames
+                .as_array()
+                .expect("expected scene should list item frames")
+                .iter()
+                .enumerate()
+            {
+                let frame = output.layout.frames[&fixture.items[index].id()];
+                let expected_x = expected_frame["x"].as_f64().unwrap() as f32;
+                let expected_y = expected_frame["y"].as_f64().unwrap() as f32;
+                assert!(
+                    ((frame.x - grid.x) - expected_x).abs() <= TOLERANCE,
+                    "{gap_case} / {alignment} / item {index}: expected x={expected_x}, got {}",
+                    frame.x - grid.x
+                );
+                assert!(
+                    ((frame.y - grid.y) - expected_y).abs() <= TOLERANCE,
+                    "{gap_case} / {alignment} / item {index}: expected y={expected_y}, got {}",
+                    frame.y - grid.y
+                );
+                assert_eq!(
+                    frame.width,
+                    expected_frame["width"].as_f64().unwrap() as f32
+                );
+                assert_eq!(
+                    frame.height,
+                    expected_frame["height"].as_f64().unwrap() as f32
+                );
+            }
+        }
+    }
 }

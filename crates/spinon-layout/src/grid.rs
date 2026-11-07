@@ -1792,6 +1792,14 @@ pub(crate) fn root_html_intrinsic_align_content_is_supported(
                     position: crate::ContentAlignmentPosition::FlexStart,
                     safety: Some(crate::AlignmentSafety::Unsafe),
                 }
+                | crate::LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::FlexEnd,
+                    safety: Some(crate::AlignmentSafety::Safe),
+                }
+                | crate::LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::FlexEnd,
+                    safety: Some(crate::AlignmentSafety::Unsafe),
+                }
         )
     } else {
         matches!(
