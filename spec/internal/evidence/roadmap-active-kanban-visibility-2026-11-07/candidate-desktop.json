@@ -1,0 +1,51 @@
+{
+  "recordedAt": "2026-11-07T06:32:09.118Z",
+  "url": "http://127.0.0.1:18769/spec/public/roadmap.html",
+  "agentBrowserVersion": "0.31.1",
+  "viewportCssPx": {
+    "width": 1440,
+    "height": 1000
+  },
+  "documentCssPx": {
+    "width": 1440,
+    "height": 76930
+  },
+  "kanbanSectionBoundsCssPx": {
+    "x": 90,
+    "y": 275.421875,
+    "width": 1260,
+    "height": 636.15625,
+    "right": 1350,
+    "bottom": 911.578125
+  },
+  "boardBoundsCssPx": {
+    "x": 90,
+    "y": 357.015625,
+    "width": 1260,
+    "height": 416,
+    "right": 1350,
+    "bottom": 773.015625
+  },
+  "boardHorizontalScrollCssPx": {
+    "left": 0,
+    "contentWidth": 1260,
+    "viewportWidth": 1260
+  },
+  "activeCard": {
+    "title": "flex-end 계획",
+    "titleBoundsCssPx": {
+      "x": 422,
+      "y": 455.015625,
+      "width": 73,
+      "height": 16,
+      "right": 495,
+      "bottom": 471.015625
+    },
+    "sublabel": "C11.4 · ACTIVE"
+  },
+  "officialStatusText": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개",
+  "documentHorizontalOverflow": false,
+  "activeCardVisibleAtInitialScroll": true,
+  "screenshot": "candidate-desktop-agent-browser.png",
+  "screenshotSha256": "5be2112186bcb120dd684a2ad5efd429e839df4e6266e2d07840328189c5b9eb"
+}

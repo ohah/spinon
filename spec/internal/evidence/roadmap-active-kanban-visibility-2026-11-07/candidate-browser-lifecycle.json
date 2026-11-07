@@ -1,0 +1,14 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-roadmap-pr1258",
+  "candidateUrl": "http://127.0.0.1:18769/spec/public/roadmap.html",
+  "desktopViewportCssPx": "1440x1000",
+  "mobileViewportCssPx": "390x844",
+  "closeCommand": "agent-browser --session spinon-roadmap-pr1258 close",
+  "browserClosed": true,
+  "postCloseAgentBrowserProcessCount": 0,
+  "postCloseHeadlessChromeProcessCount": 0,
+  "temporaryPreviewServer": "python3 -m http.server 18769 --bind 127.0.0.1",
+  "temporaryPreviewServerStopped": true,
+  "terminalBrowserUsed": false
+}
