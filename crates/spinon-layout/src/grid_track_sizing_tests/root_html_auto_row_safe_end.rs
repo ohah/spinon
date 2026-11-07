@@ -167,25 +167,14 @@ fn root_html_auto_row_safe_end_matches_chrome_and_independent_matrix() {
 }
 
 #[test]
-fn root_html_auto_row_safe_end_keeps_other_safety_values_rejected() {
-    for alignment in [
-        LayoutAlignContent::Position {
-            position: ContentAlignmentPosition::Start,
-            safety: Some(AlignmentSafety::Safe),
-        },
-        LayoutAlignContent::Position {
-            position: ContentAlignmentPosition::Start,
-            safety: Some(AlignmentSafety::Unsafe),
-        },
-    ] {
-        let mut input = make_input("end", true);
-        input.nodes[0].style.align_content = Some(alignment);
-        assert!(matches!(
-            TaffyLayoutEngine.compute(&input),
-            Err(crate::LayoutError::UnsupportedGridContainerStyle {
-                node,
-                property: "align-content"
-            }) if node == id(1)
-        ));
-    }
+fn root_html_auto_row_safe_end_keeps_baseline_alignment_rejected() {
+    let mut input = make_input("end", true);
+    input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::UnsupportedGridContainerStyle {
+            node,
+            property: "align-content"
+        }) if node == id(1)
+    ));
 }

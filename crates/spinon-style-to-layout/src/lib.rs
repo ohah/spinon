@@ -58,6 +58,8 @@ mod c11_3_3_grid_template_areas_tests;
 #[cfg(test)]
 mod c11_4_root_html_auto_row_safe_end_tests;
 #[cfg(test)]
+mod c11_4_root_html_auto_row_safe_start_tests;
+#[cfg(test)]
 mod c11_4_track_sizing_areas_tests;
 #[cfg(test)]
 mod c11_grid_tests;

@@ -182,8 +182,8 @@ fn root_html_auto_row_safe_end_style_projection_matches_expected_frames() {
 }
 
 #[test]
-fn root_html_auto_row_safe_end_style_projection_rejects_unreviewed_start_safety() {
-    for alignment in ["safe start", "unsafe start"] {
+fn root_html_auto_row_safe_end_style_projection_rejects_unreviewed_safety_modifiers() {
+    for alignment in ["safe flex-start", "unsafe flex-start"] {
         let fixture = AutoRowGridFixture::new(alignment, "calc(120% - 2px)");
         let result = fixture.compute();
         assert!(
