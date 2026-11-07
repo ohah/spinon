@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>C11.4 align-content safe flex-end reference</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    #scenes { display: grid; grid-template-columns: repeat(3, 40px); gap: 8px; }
+    .scene {
+      box-sizing: border-box;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      grid-template-columns: 40px;
+      grid-template-rows: 10px;
+      grid-auto-rows: auto;
+      grid-auto-flow: row;
+      align-items: normal;
+      justify-content: start;
+      justify-items: normal;
+      column-gap: 0;
+      overflow: visible;
+    }
+    .fixed {
+      box-sizing: border-box;
+      width: 40px;
+      height: 10px;
+      background-color: #d8dde3;
+    }
+    .text {
+      box-sizing: border-box;
+      font-family: monospace;
+      font-size: 10px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 10px;
+      white-space: normal;
+      background-color: #5b9ff5;
+    }
+  </style>
+</head>
+<body>
+  <div id="scenes"></div>
+  <script>
+    const values = ["end", "safe flex-end", "unsafe flex-end"];
+    const gaps = [["positive", "0px"], ["overflow", "calc(120% - 2px)"]];
+    for (const [gapCase, rowGap] of gaps) for (const alignContent of values) {
+      const scene = document.createElement("div");
+      scene.className = "scene";
+      scene.dataset.gapCase = gapCase;
+      scene.dataset.alignContent = alignContent;
+      scene.style.alignContent = alignContent;
+      scene.style.rowGap = rowGap;
+      scene.innerHTML = '<div class="fixed"></div><div class="text">A</div><div class="text">B</div>';
+      document.querySelector("#scenes").append(scene);
+    }
+  </script>
+</body>
+</html>
