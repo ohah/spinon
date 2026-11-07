@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `align-content:safe|unsafe center`
 
-**상태:** 제한 후보 계획만 준비했다. Agent Browser HeadlessChrome 157 사전 비교는 positive/overflow 6/6 scene에서 독립 계산과 일치한다. 별도 [계획 실패 관점 20개](./c11-root-html-auto-row-safe-center-plan-review-20.md)를 통과했다. 구현, Rust tests, Android/iOS 실행은 아직 하지 않았다.
+**상태:** 제한 구현 후보를 현재 작업 브랜치에 연결했다. Agent Browser HeadlessChrome 157과 독립 계산의 6/6 scene 비교, Layout 2/2, style projection allowlist 1/1, RuntimeSession 2/2, 관련 C11.4 Layout 14/14·projection 4/4·calc RuntimeSession 2/2, changed-crate Clippy와 rustfmt가 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 positive·safe overflow·unsafe overflow 각 장면을 기본 앱 경로로 실행했고 화면 색 경계는 기대 좌표와 1 CSS px 이내였다. 앱·bootstrap·build restoration도 해시로 확인했다. PR merge 전이며 official STATUS와 C11.4/C11 checkbox는 아직 갱신하지 않았다. [Simulator·화면·hash·복원 근거](../spec/internal/evidence/c11-root-html-auto-row-safe-center-runtime-2026-11-07/README.md).
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [선행 content alignment](./c11-root-html-auto-row-content-alignment.md) · [bounded `calc()` row-gap](./c11-root-html-auto-row-calc-gap.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 

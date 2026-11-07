@@ -378,31 +378,10 @@ fn validate_container(
         Some("align-items")
     } else if style.align_content.is_some_and(|value| {
         if intrinsic_track_sizing {
-            !(matches!(
+            !crate::grid::root_html_intrinsic_align_content_is_supported(
                 value,
-                LayoutAlignContent::Normal
-                    | LayoutAlignContent::FlexStart
-                    | LayoutAlignContent::Position {
-                        position: crate::ContentAlignmentPosition::Start,
-                        safety: None,
-                    }
-            ) || container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
-                && matches!(
-                    value,
-                    LayoutAlignContent::Normal
-                        | LayoutAlignContent::Stretch
-                        | LayoutAlignContent::FlexStart
-                        | LayoutAlignContent::FlexEnd
-                        | LayoutAlignContent::Center
-                        | LayoutAlignContent::SpaceBetween
-                        | LayoutAlignContent::SpaceAround
-                        | LayoutAlignContent::SpaceEvenly
-                        | LayoutAlignContent::Position {
-                            position: crate::ContentAlignmentPosition::Start
-                                | crate::ContentAlignmentPosition::End,
-                            safety: None,
-                        }
-                ))
+                container.placement_mode,
+            )
         } else {
             value != LayoutAlignContent::Normal
         }

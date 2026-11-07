@@ -10,6 +10,7 @@ mod multiple_auto_row_stretch;
 mod multiple_text;
 mod normal_whitespace;
 mod percentage_row_gap;
+mod safe_center;
 
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html"

@@ -1715,31 +1715,7 @@ fn validate_root_html_intrinsic_tracks_contract(
     } else if style.align_items != crate::LayoutAlignItems::Normal {
         Some("align-items")
     } else if style.align_content.is_some_and(|value| {
-        !(matches!(
-            value,
-            crate::LayoutAlignContent::Normal
-                | crate::LayoutAlignContent::FlexStart
-                | crate::LayoutAlignContent::Position {
-                    position: crate::ContentAlignmentPosition::Start,
-                    safety: None,
-                }
-        ) || container.placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1
-            && matches!(
-                value,
-                crate::LayoutAlignContent::Normal
-                    | crate::LayoutAlignContent::Stretch
-                    | crate::LayoutAlignContent::FlexStart
-                    | crate::LayoutAlignContent::FlexEnd
-                    | crate::LayoutAlignContent::Center
-                    | crate::LayoutAlignContent::SpaceBetween
-                    | crate::LayoutAlignContent::SpaceAround
-                    | crate::LayoutAlignContent::SpaceEvenly
-                    | crate::LayoutAlignContent::Position {
-                        position: crate::ContentAlignmentPosition::Start
-                            | crate::ContentAlignmentPosition::End,
-                        safety: None,
-                    }
-            ))
+        !root_html_intrinsic_align_content_is_supported(value, container.placement_mode)
     }) {
         Some("align-content")
     } else if !matches!(
@@ -1762,6 +1738,48 @@ fn validate_root_html_intrinsic_tracks_contract(
         return Err(LayoutError::UnsupportedGridContainerStyle { node, property });
     }
     Ok(())
+}
+
+pub(crate) fn root_html_intrinsic_align_content_is_supported(
+    value: crate::LayoutAlignContent,
+    placement_mode: GridPlacementMode,
+) -> bool {
+    if placement_mode == GridPlacementMode::RootHtmlAutoRowStretchV1 {
+        matches!(
+            value,
+            crate::LayoutAlignContent::Normal
+                | crate::LayoutAlignContent::Stretch
+                | crate::LayoutAlignContent::FlexStart
+                | crate::LayoutAlignContent::FlexEnd
+                | crate::LayoutAlignContent::Center
+                | crate::LayoutAlignContent::SpaceBetween
+                | crate::LayoutAlignContent::SpaceAround
+                | crate::LayoutAlignContent::SpaceEvenly
+                | crate::LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::Start
+                        | crate::ContentAlignmentPosition::End,
+                    safety: None,
+                }
+                | crate::LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::Center,
+                    safety: Some(crate::AlignmentSafety::Safe),
+                }
+                | crate::LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::Center,
+                    safety: Some(crate::AlignmentSafety::Unsafe),
+                }
+        )
+    } else {
+        matches!(
+            value,
+            crate::LayoutAlignContent::Normal
+                | crate::LayoutAlignContent::FlexStart
+                | crate::LayoutAlignContent::Position {
+                    position: crate::ContentAlignmentPosition::Start,
+                    safety: None,
+                }
+        )
+    }
 }
 
 pub(super) fn root_html_intrinsic_gap_is_supported(
