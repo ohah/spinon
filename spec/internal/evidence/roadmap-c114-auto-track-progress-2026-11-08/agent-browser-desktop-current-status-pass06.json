@@ -1,0 +1,12 @@
+{
+  "title": "스피논 구현 로드맵",
+  "board": [
+    "진행 중",
+    "Grid track siz…",
+    "C11.4 · ACTIVE"
+  ],
+  "latest": "2026-11-08 C11.4 parsed Root HTML grid-auto-rows fit-content implicit-row list의 auto member · 제한 구현 PR #1272 Rebase and merge (2026-11-07T20:28:56Z, merge SHA 5ce4c735777c88542627838bc41411621f397cc3): Chrome 157 사전 비교 3 scene·독립 used-row 기대값, Layout 2/2, style projection 1/1, RuntimeSession 2/2와 singleton 회귀 2/2, changed-crate Clippy/rustfmt를 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML route는 layout=ready boxes=12 visual smoke에 도달했다. GitHub status/workflow run은 없고 main에 required status checks/approvals도 없어 CI green으로 기록하지 않는다. C11.4/C11은 미완료이며 공식 78/214와 contract 0.1.0을 유지한다. 계획 · Chrome 비교 · 검증·화면.",
+  "bodyWidth": 1280,
+  "documentWidth": 1280,
+  "viewportWidth": 1280
+}

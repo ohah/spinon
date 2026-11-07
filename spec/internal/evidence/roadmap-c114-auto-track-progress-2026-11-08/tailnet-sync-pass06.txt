@@ -1,0 +1,9 @@
+C11.4 roadmap post-merge sync pass06
+route=/spinon/roadmap.html
+source_and_served_sha256=22673ae527081df1823bff8fda0792681fcdc090aa915ac59e25b6cb56e3d39b
+previous_sha256=1d858acee89e244073e50e2d40bf12ca1146cca2563fd7b280a07382910c0d59
+backup=/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-c114-auto-track-progress-2026-11-08/pass06/roadmap.html
+backup_sha256=1d858acee89e244073e50e2d40bf12ca1146cca2563fd7b280a07382910c0d59
+tailscale=Running; preview_pid=28040; server_restarted=false; deletions=0
+PR #1272 Rebase and merge is recorded; C11.4 stays in progress and official 78/214 is unchanged.
+Pass06 Agent Browser inherited a 390px viewport for both named captures; use pass07 for the corrected 1280px desktop and 390px mobile evidence.

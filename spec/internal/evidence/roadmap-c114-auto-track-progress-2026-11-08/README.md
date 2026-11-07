@@ -62,3 +62,17 @@ Agent Browser에서 실제 Tailnet desktop 1280×1200 및 mobile 390×844를 확
 - [pass05 사전 검사](./preflight-pass05.json) · [백업/동기화](./copy-and-backup-pass05.json) · [desktop](./tailnet-agent-browser-desktop-current-status-pass05.png) · [mobile](./tailnet-agent-browser-mobile-current-status-pass05.png)
 - [pass05 DOM·폭 확인](./agent-browser-desktop-current-status-pass05.json) · [mobile 확인](./agent-browser-mobile-current-status-pass05.json) · [process 상태](./agent-browser-state-pass05.txt)
 - [pass04 sync script](./sync-tailnet-roadmap-pass04.mjs) · [pass05 sync script](./sync-tailnet-roadmap-pass05.mjs)
+
+
+## pass06/pass07 · PR #1272 병합 상태와 C11.4 진행 칸
+
+PR #1272 병합 뒤 public roadmap에 merge SHA와 상태를 반영했다. 공식 `spec/STATUS.md`는 건드리지 않아 C11.4/C11 미완료 및 `78/214`가 유지된다. 칸반은 상위 C11.4 작업을 `Track sizing · C11.4 ACTIVE`로 표시하고, auto member slice는 PR #1272 병합 이력에 둔다. GitHub status/workflow run은 보고되지 않았고 main에는 required status checks와 required approvals가 없어 CI green으로 표기하지 않는다.
+
+pass06 Tailnet sync의 source/served SHA는 `22673ae527081df1823bff8fda0792681fcdc090aa915ac59e25b6cb56e3d39b`; 이전 제공본은 pass06 backup에 보존했다. Agent Browser pass06은 두 캡처 모두 390px viewport를 상속했으므로 desktop 증거로 사용하지 않는다. pass07에서 viewport를 명시해 재촬영했다: desktop 1280×1200, mobile 390×844. 두 화면의 body/document width는 각각 1280px 및 390px이고, 칸반의 C11.4 진행 카드가 `Track sizing` 전체 제목으로 보인다. 최종 source/served SHA는 `5972620e626f3cf16b52d5d2335b029187c24b7b80244939036b87d6341d6e3b`로 일치한다. preview PID `28040`을 유지했고 server restart/delete는 없었다.
+
+Agent Browser session을 닫았으며 browserLaunched=false, pageCount=0, agent-browser process 0개를 확인했다. 기존 Chrome 프로세스는 보존했다.
+
+- [pass06 sync 기록](./tailnet-sync-pass06.txt) · [pass06 viewport metadata](./agent-browser-desktop-current-status-pass06.json)
+- [pass07 preflight](./preflight-pass07.json) · [sync/backup](./copy-and-backup-pass07.json) · [sync script](./sync-tailnet-roadmap-pass07.mjs)
+- [pass07 desktop](./tailnet-agent-browser-desktop-current-status-pass07.png) · [mobile](./tailnet-agent-browser-mobile-current-status-pass07.png)
+- [desktop metadata](./agent-browser-desktop-current-status-pass07.json) · [mobile metadata](./agent-browser-mobile-current-status-pass07.json) · [process state](./agent-browser-state-pass07.txt)
