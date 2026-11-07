@@ -1,0 +1,22 @@
+{
+  "browser": "Agent Browser 0.31.1 / Chrome 157",
+  "pageUrl": "https://github.com/ohah/spinon/pull/1264",
+  "headCommit": "975be0217de0570341a77b704acb24f7d4033b89",
+  "images": [
+    {
+      "alt": "Android AVD의 Root HTML max-content 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/975be0217de0570341a77b704acb24f7d4033b89/spec/internal/evidence/c11-4-root-html-intrinsic-auto-rows-max-content-runtime-2026-11-07/android/screenshot.png",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iPhone 17 Pro Simulator의 Root HTML max-content 화면",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/975be0217de0570341a77b704acb24f7d4033b89/spec/internal/evidence/c11-4-root-html-intrinsic-auto-rows-max-content-runtime-2026-11-07/ios/screenshot.png",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "verified": "Agent Browser rendered PR body images; both complete and natural dimensions are nonzero."
+}
