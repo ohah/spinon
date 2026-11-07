@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-07",
+  "baseCommit": "ac97aef4e5cb1c61ff1eb8e5a630a0b16db0e51c",
+  "branch": "feat/c11-4-root-html-maxcontent-auto-rows",
+  "rustSourceDiffSha256": "f1f8598f58aae7a51047d12c4fc47a82b2b8e1da607491044a523ef087029a72",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-max-content-precomparison.html",
+    "sha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502",
+    "androidApkAssetSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502",
+    "iosInstalledBundleSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502"
+  },
+  "application": {
+    "bundleId": "dev.spinon.bootstrap",
+    "defaultRoute": "bundled index.html",
+    "rootAppMarker": "max-content",
+    "c04RuntimeGpu": true,
+    "fixtureTestFeatures": false,
+    "expectedLayout": "ready",
+    "boxes": 7,
+    "rootAppEvaluation": "pass"
+  },
+  "android": {
+    "device": "Android API 37 ARM64 AVD",
+    "adbSerial": "emulator-5554",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "reportedRelease": "17",
+    "renderer": "ANGLE OpenGL ES over Vulkan SwiftShader",
+    "viewportCssPx": [411.42856, 841.52374],
+    "deviceScaleFactor": 2.625,
+    "screenshot": "android/screenshot.png",
+    "screenshotPixels": [1080, 2400],
+    "screenshotSha256": "af9aceb472278a3a147d5de70b73e448e1cbecff9749c34aa081850ffaae33d5",
+    "apkSha256": "830b73cb17d1f69f5ca1d7a001fd5ef16e21884fbfec6ceb95f9e9412161790c",
+    "installedBaseApkMatchesBuild": true
+  },
+  "ios": {
+    "device": "iPhone 17 Pro Simulator",
+    "runtime": "iOS 26.2",
+    "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "renderer": "Metal simulator GPU",
+    "viewportCssPx": [402, 778],
+    "deviceScaleFactor": 3,
+    "screenshot": "ios/screenshot.png",
+    "screenshotPixels": [1206, 2622],
+    "screenshotSha256": "6feb025bb6b92e54c737e55ba1c178e5a455e9a26232fa3f41aad4fcb239278f",
+    "installedBundleIndexSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502"
+  },
+  "builds": {
+    "android": "BUILD SUCCESSFUL",
+    "ios": "BUILD SUCCEEDED",
+    "iosWarnings": [
+      "RawWindowMetalLayer duplicate symbols",
+      "V8 archive duplicate debug-map entries",
+      "AppIntents metadata extraction skipped because AppIntents.framework is absent"
+    ]
+  },
+  "sourceRestoration": {
+    "examples/bootstrap/index.html": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9",
+    "examples/bootstrap/root-app.js": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32"
+  },
+  "limits": [
+    "simulator visual capture only; no Android PixelCopy",
+    "no iOS Metal drawable readback or compositor-after pixels",
+    "no physical device or hardware GPU evidence",
+    "no WPT result or general CSS Grid support claim",
+    "C11.4/C11 remains incomplete; official completion stays 78/214"
+  ]
+}

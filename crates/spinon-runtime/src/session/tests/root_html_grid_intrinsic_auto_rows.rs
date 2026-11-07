@@ -7,6 +7,7 @@ mod auto_row_stretch;
 mod calc_row_gap;
 mod combined_multiple_text;
 mod letter_words;
+mod max_content;
 mod multiple_auto_row_stretch;
 mod multiple_text;
 mod normal_whitespace;
@@ -503,11 +504,16 @@ fn assert_frame_values(actual: [f32; 4], expected: [f32; 4], label: &str) {
 fn parsed_root_html_intrinsic_auto_rows_reject_unsupported_values_atomically() {
     for (label, source, expected_code) in [
         (
-            "max-content",
-            SOURCE.replace(
-                "grid-auto-rows: min-content;",
-                "grid-auto-rows: max-content;",
-            ),
+            "max-content-with-intrinsic-explicit-column",
+            SOURCE
+                .replace(
+                    "grid-template-columns: 40px;",
+                    "grid-template-columns: min-content;",
+                )
+                .replace(
+                    "grid-auto-rows: min-content;",
+                    "grid-auto-rows: max-content;",
+                ),
             "unsupported_computed_value",
         ),
         (

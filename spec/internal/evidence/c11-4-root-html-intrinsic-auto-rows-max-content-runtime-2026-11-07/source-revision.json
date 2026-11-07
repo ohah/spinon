@@ -1,0 +1,15 @@
+{
+  "baseCommit": "ac97aef4e5cb1c61ff1eb8e5a630a0b16db0e51c",
+  "workingBranch": "feat/c11-4-root-html-maxcontent-auto-rows",
+  "rustSourceDiffSha256": "f1f8598f58aae7a51047d12c4fc47a82b2b8e1da607491044a523ef087029a72",
+  "fixtureSource": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-max-content-precomparison.html",
+  "fixtureSourceSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502",
+  "androidApkSha256": "830b73cb17d1f69f5ca1d7a001fd5ef16e21884fbfec6ceb95f9e9412161790c",
+  "androidInstalledApkSha256MatchesBuiltApk": true,
+  "iosBundleId": "dev.spinon.bootstrap",
+  "iosInstalledIndexHtmlSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502",
+  "bootstrapOriginalSha256": {
+    "examples/bootstrap/index.html": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9",
+    "examples/bootstrap/root-app.js": "b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "sourceFixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-max-content-precomparison.html",
+  "sourceSha256": "420ed5e05f9055cd5f8c6c9a031394fc7fdc3ff2d5348e18ed4c35b0f37e5502",
+  "comparisonFixture": "tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-text-precomparison.html",
+  "comparisonSha256": "f0759d21c51af46497327686a854b52cd5e004134c35fd562e3e0170c8df49e6",
+  "viewport": [1280, 633],
+  "devicePixelRatio": 1,
+  "scenes": {
+    "min-content": {
+      "cssSupports": true,
+      "computedAutoRows": "min-content",
+      "usedRowsPx": [10, 20, 34],
+      "gridFrame": [0, 0, 40, 40],
+      "items": {
+        "first": [0, 0, 40, 10],
+        "wrapped-text": [0, 10, 40, 20],
+        "last": [0, 30, 40, 34]
+      },
+      "visibleBottomPx": 64
+    },
+    "max-content": {
+      "cssSupports": true,
+      "computedAutoRows": "max-content",
+      "usedRowsPx": [10, 20, 34],
+      "gridFrame": [0, 0, 40, 40],
+      "items": {
+        "first": [0, 0, 40, 10],
+        "wrapped-text": [0, 10, 40, 20],
+        "last": [0, 30, 40, 34]
+      },
+      "wrappedTextRangeRects": [[0, 9, 30.109375, 11], [0, 19, 30.109375, 11]],
+      "visibleBottomPx": 64
+    },
+    "auto": {
+      "cssSupports": true,
+      "computedAutoRows": "auto",
+      "usedRowsPx": [10, 20, 34],
+      "gridFrame": [0, 0, 40, 40],
+      "items": {
+        "first": [0, 0, 40, 10],
+        "wrapped-text": [0, 10, 40, 20],
+        "last": [0, 30, 40, 34]
+      },
+      "visibleBottomPx": 64
+    }
+  }
+}

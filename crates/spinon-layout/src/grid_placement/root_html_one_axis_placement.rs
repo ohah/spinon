@@ -308,13 +308,16 @@ fn validate_container(
     {
         return Err(LayoutError::GridImplicitTrackRequired(node));
     }
-    let intrinsic_min_content_rows = intrinsic_track_sizing
+    let intrinsic_implicit_rows = intrinsic_track_sizing
         && matches!(
             &container.auto_rows,
             GridAutoRows::TrackList(tracks)
-                if tracks.as_slice() == [GridTrackSize::MinContent]
+                if matches!(
+                    tracks.as_slice(),
+                    [GridTrackSize::MinContent | GridTrackSize::MaxContent]
+                )
         );
-    if !intrinsic_min_content_rows {
+    if !intrinsic_implicit_rows {
         validate_auto_track(node, "grid-auto-rows", &container.auto_rows)?;
     }
     validate_auto_track(node, "grid-auto-columns", &container.auto_columns)?;
