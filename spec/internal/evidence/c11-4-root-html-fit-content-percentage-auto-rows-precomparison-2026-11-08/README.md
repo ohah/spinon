@@ -12,6 +12,7 @@
 - 화면: [전체 페이지 PNG](./chrome157-agent-browser-full.png), 1280×845 pixels
 - 기계 판독 browser 관측값: [chrome-observation.json](./chrome-observation.json)
 - 공식으로 독립 계산한 기대값: [expected-values.json](./expected-values.json)
+- PR 본문 이미지 Agent Browser 표시 확인: [pr1267-image-verification.json](./pr1267-image-verification.json), [PR 화면 캡처](./pr1267-agent-browser-image-loaded.png)
 
 ## 결과
 
@@ -22,3 +23,5 @@ Percentage basis는 Grid의 definite한 내부 block 크기 100px이다. Nested 
 ## Limits
 
 이 자료는 일곱 고정 장면의 browser 기준이며 Spinon 출력이나 일반 CSS Grid 적합성 결과가 아니다. Definite하지 않거나 cyclic한 Grid height, border/padding/gap, mixed track list, area/auto-repeat 조합, 임의 HTML, WPT, mobile runtime 동작은 확인하지 않았다. 캡처 뒤 Agent Browser session을 닫고 browser process가 비활성임을 확인했다.
+
+PR #1267 본문의 commit-pinned image는 Agent Browser에서 자연 크기 1280×845로 정상 로드됐다. 표시 크기는 GitHub PR layout에 맞춰 781.984×516.234 CSS px로 축소됐다. PR 확인용 session도 닫고 PID null 및 빈 session 목록을 확인했다.

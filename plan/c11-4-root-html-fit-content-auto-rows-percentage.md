@@ -8,6 +8,8 @@
 
 **비교 근거:** [Chrome 관측·independent expected values·화면](../spec/internal/evidence/c11-4-root-html-fit-content-percentage-auto-rows-precomparison-2026-11-08/README.md) · [고정 입력](../tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-percentage-precomparison.html) · [계획 실패 관점 20개](./c11-4-root-html-fit-content-auto-rows-percentage-plan-review-20.md)
 
+**계획 PR diff 검토:** [실제 PR 변경분 실패 관점 30개](./c11-4-root-html-fit-content-auto-rows-percentage-pr-diff-review-30.md)
+
 ## 결손과 목표
 
 기본 parsed Root HTML `RuntimeRootHtmlTextPaintV1`은 definite fixed-px explicit grid를 가진 제한 profile에서 singleton `grid-auto-rows:fit-content(px)`를 implicit row에 연결한다. 같은 profile의 direct percentage cap은 typed cascade와 `GridTrackLengthPercentage::Percentage`로 표현할 수 있지만, profile 선택과 layout admission에서 거부한다. 명시적 track의 `fit-content(percentage)` 지원은 별도 `RootHtmlFitContentV1` 경로이며 implicit row로 자동 확장하지 않는다.
