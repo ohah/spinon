@@ -1,0 +1,70 @@
+{
+  "basis": "CSS Grid align-content subject = three 10px tracks + two row gaps; definite block-size is 40px.",
+  "positiveSpace": {
+    "rowGapCssPx": 0,
+    "trackSizesCssPx": [
+      10,
+      10,
+      10
+    ],
+    "freeSpaceCssPx": 10,
+    "expectedYRelativeCssPx": {
+      "safe end": [
+        10,
+        20,
+        30
+      ],
+      "unsafe end": [
+        10,
+        20,
+        30
+      ],
+      "end": [
+        10,
+        20,
+        30
+      ]
+    }
+  },
+  "overflow": {
+    "rowGapExpression": "calc(120% - 2px)",
+    "definitePercentageBasisCssPx": 40,
+    "resolvedRowGapCssPx": 46,
+    "trackSizesCssPx": [
+      10,
+      10,
+      10
+    ],
+    "alignmentSubjectExtentCssPx": 122,
+    "freeSpaceCssPx": -82,
+    "expectedYRelativeCssPx": {
+      "safe end": [
+        0,
+        56,
+        112
+      ],
+      "unsafe end": [
+        -82,
+        -26,
+        30
+      ],
+      "end": [
+        -82,
+        -26,
+        30
+      ],
+      "safe center": [
+        0,
+        56,
+        112
+      ],
+      "unsafe center": [
+        -41,
+        15,
+        71
+      ]
+    }
+  },
+  "toleranceCssPx": 0.015625,
+  "derivation": "For positive free space, end alignment offsets the 30px track group by +10px. With row-gap 46px, the subject is 122px and free space is -82px. Safe alignment falls back to start; unsafe end retains the requested end alignment; unsafe center offsets by half the overflow."
+}

@@ -1,0 +1,310 @@
+{
+  "browser": {
+    "product": "HeadlessChrome",
+    "version": "157.0.0.0",
+    "agentBrowser": "0.31.1"
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "viewport": {
+    "widthCssPx": 1280,
+    "heightCssPx": 633,
+    "deviceScaleFactor": 1
+  },
+  "fixtureSha256": "ae2e0e0c5c4e52b871efccc4d3826d0a485aa1419b2b0f5cf6d46251746e536d",
+  "screenshot": {
+    "path": "chrome-safe-end.png",
+    "sha256": "b2ff21ad2b2edda5eb2ed55631869146bb142fe9fa54f33f907640ff450c825c",
+    "widthPx": 1280,
+    "heightPx": 633
+  },
+  "cases": [
+    {
+      "id": "safe-end-positive",
+      "computedAlignContent": "safe end",
+      "computedRowGap": "0px",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 8
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 18,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 28,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 38,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "unsafe-end-positive",
+      "computedAlignContent": "unsafe end",
+      "computedRowGap": "0px",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 56
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 66,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 76,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 86,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "end-positive",
+      "computedAlignContent": "end",
+      "computedRowGap": "0px",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 104
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 114,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 124,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 134,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "safe-end-overflow",
+      "computedAlignContent": "safe end",
+      "computedRowGap": "calc(120% - 2px)",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 152
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 152,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 208,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 264,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "unsafe-end-overflow",
+      "computedAlignContent": "unsafe end",
+      "computedRowGap": "calc(120% - 2px)",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 200
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 118,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 174,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 230,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "end-overflow",
+      "computedAlignContent": "end",
+      "computedRowGap": "calc(120% - 2px)",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 248
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 166,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 222,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 278,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "safe-center-overflow-control",
+      "computedAlignContent": "safe center",
+      "computedRowGap": "calc(120% - 2px)",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 296
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 296,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 352,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 408,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "unsafe-center-overflow-control",
+      "computedAlignContent": "unsafe center",
+      "computedRowGap": "calc(120% - 2px)",
+      "gridRectCssPx": {
+        "height": 40,
+        "width": 40,
+        "x": 8,
+        "y": 344
+      },
+      "computedGridTemplateRowsCssPx": [
+        10,
+        10,
+        10
+      ],
+      "childRectsCssPx": [
+        {
+          "x": 8,
+          "y": 303,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 359,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 8,
+          "y": 415,
+          "width": 40,
+          "height": 10
+        }
+      ]
+    }
+  ]
+}

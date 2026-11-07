@@ -1,0 +1,418 @@
+{
+  "sceneCount": 8,
+  "itemFrameCount": 24,
+  "rectangleCoordinateCount": 96,
+  "toleranceCssPx": 0.015625,
+  "maxErrorCssPx": 0.0,
+  "result": "PASS",
+  "cases": [
+    {
+      "id": "safe-end-positive",
+      "alignContent": "safe end",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 18,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 18,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 28,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 28,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 38,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 38,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "unsafe-end-positive",
+      "alignContent": "unsafe end",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 66,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 66,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 76,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 76,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 86,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 86,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "end-positive",
+      "alignContent": "end",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 114,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 114,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 124,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 124,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 134,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 134,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "safe-end-overflow",
+      "alignContent": "safe end",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 152,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 152,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 208,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 208,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 264,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 264,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "unsafe-end-overflow",
+      "alignContent": "unsafe end",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 118,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 118,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 174,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 174,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 230,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 230,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "end-overflow",
+      "alignContent": "end",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 166,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 166,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 222,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 222,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 278,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 278,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "safe-center-overflow-control",
+      "alignContent": "safe center",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 296,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 296,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 352,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 352,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 408,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 408,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    },
+    {
+      "id": "unsafe-center-overflow-control",
+      "alignContent": "unsafe center",
+      "itemFrames": [
+        {
+          "expected": {
+            "x": 8,
+            "y": 303,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 303,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 359,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 359,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        },
+        {
+          "expected": {
+            "x": 8,
+            "y": 415,
+            "width": 40,
+            "height": 10
+          },
+          "observed": {
+            "x": 8,
+            "y": 415,
+            "width": 40,
+            "height": 10
+          },
+          "maxErrorCssPx": 0
+        }
+      ]
+    }
+  ]
+}
