@@ -1,0 +1,16 @@
+{
+  "tool": "Agent Browser 0.31.1",
+  "session": "spinon-c11-roadmap-pr1243",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "opened": true,
+  "viewportsCssPx": [
+    { "width": 1440, "height": 1000 },
+    { "width": 390, "height": 844 }
+  ],
+  "closed": true,
+  "closeExitCode": 0,
+  "processCheck": "pgrep -fl '^agent-browser' and pgrep -fl '^terminal-browser' returned no process after close",
+  "terminalBrowserUsed": false,
+  "previewServerPid": 28040,
+  "previewServerRestarted": false
+}
