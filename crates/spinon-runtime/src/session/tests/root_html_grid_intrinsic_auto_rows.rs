@@ -12,6 +12,7 @@ mod normal_whitespace;
 mod percentage_row_gap;
 mod safe_center;
 mod safe_end;
+mod safe_start;
 
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-intrinsic-auto-rows-precomparison.html"

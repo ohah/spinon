@@ -1,0 +1,173 @@
+{
+  "purpose": "Measure Grid and item bounds from fixed-color OS screenshot captures.",
+  "expected": {
+    "scene": "positive",
+    "alignment": "safe start",
+    "gridSizeCssPx": [
+      40,
+      40
+    ],
+    "expectedItemYRelativeCssPx": [
+      0,
+      10,
+      20
+    ],
+    "classification": "visual screenshot bounds only; not PixelCopy or Metal drawable readback"
+  },
+  "platforms": {
+    "android": {
+      "device": "Android API 37 ARM64 AVD",
+      "png": "pass01/android/simulator.png",
+      "pngSha256": "46e53d0cdc8fd2f70dc5acaf7ef0a273681f32eb9819331c51274a15665518e2",
+      "imagePx": [
+        1080,
+        2400
+      ],
+      "deviceScale": 2.625,
+      "exactRgb": {
+        "grid": [
+          233,
+          237,
+          242
+        ],
+        "fixed": [
+          216,
+          221,
+          227
+        ],
+        "textA": [
+          91,
+          159,
+          245
+        ],
+        "textB": [
+          244,
+          162,
+          97
+        ]
+      },
+      "positiveControlGridBackgroundColorBoundsPx": [
+        0,
+        207,
+        104,
+        232
+      ],
+      "positiveControlFixedItemBoundsPx": [
+        0,
+        128,
+        104,
+        153
+      ],
+      "rootOriginYFromFixedItemPx": 128,
+      "positiveControlGridBackgroundColorVisibleSizePx": [
+        105,
+        26
+      ],
+      "positiveControlGridVisibleBackgroundWidthCssPx": 40.0,
+      "visibleColorBoundsPx": {
+        "fixed": [
+          0,
+          128,
+          104,
+          153
+        ],
+        "textA": [
+          0,
+          154,
+          104,
+          179
+        ],
+        "textB": [
+          0,
+          180,
+          104,
+          206
+        ]
+      },
+      "measuredItemYRelativeCssPx": [
+        0.0,
+        9.904761904761905,
+        19.80952380952381
+      ],
+      "rootOriginSource": "pass01/android/simulator.png fixed item top (CSS y=0)",
+      "toleranceCssPx": 1.0
+    },
+    "ios": {
+      "device": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "png": "pass01/ios/simulator.png",
+      "pngSha256": "e7c1e231caed93bd615b8d1cd3bad94b6e379cc6ce7bdbc0d02a02a327207ae9",
+      "imagePx": [
+        1206,
+        2622
+      ],
+      "deviceScale": 3.0,
+      "exactRgb": {
+        "grid": [
+          233,
+          237,
+          242
+        ],
+        "fixed": [
+          216,
+          221,
+          227
+        ],
+        "textA": [
+          91,
+          159,
+          245
+        ],
+        "textB": [
+          244,
+          162,
+          97
+        ]
+      },
+      "positiveControlGridBackgroundColorBoundsPx": [
+        0,
+        276,
+        119,
+        305
+      ],
+      "positiveControlFixedItemBoundsPx": [
+        0,
+        186,
+        119,
+        215
+      ],
+      "rootOriginYFromFixedItemPx": 186,
+      "positiveControlGridBackgroundColorVisibleSizePx": [
+        120,
+        30
+      ],
+      "positiveControlGridVisibleBackgroundWidthCssPx": 40.0,
+      "visibleColorBoundsPx": {
+        "fixed": [
+          0,
+          186,
+          119,
+          215
+        ],
+        "textA": [
+          0,
+          216,
+          119,
+          245
+        ],
+        "textB": [
+          0,
+          246,
+          119,
+          275
+        ]
+      },
+      "measuredItemYRelativeCssPx": [
+        0.0,
+        10.0,
+        20.0
+      ],
+      "rootOriginSource": "pass01/ios/simulator.png fixed item top (CSS y=0)",
+      "toleranceCssPx": 1.0
+    }
+  }
+}

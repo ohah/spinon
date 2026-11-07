@@ -153,12 +153,9 @@ fn root_html_auto_row_safe_center_matches_chrome_and_independent_overflow_matrix
 }
 
 #[test]
-fn root_html_auto_row_safe_center_keeps_other_safety_values_rejected() {
+fn root_html_auto_row_safe_center_keeps_baseline_alignment_rejected() {
     let mut input = make_input("center", true);
-    input.nodes[0].style.align_content = Some(LayoutAlignContent::Position {
-        position: ContentAlignmentPosition::Start,
-        safety: Some(AlignmentSafety::Safe),
-    });
+    input.nodes[0].style.align_content = Some(LayoutAlignContent::FirstBaseline);
     assert!(matches!(
         TaffyLayoutEngine.compute(&input),
         Err(crate::LayoutError::UnsupportedGridContainerStyle {

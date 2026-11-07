@@ -1479,6 +1479,8 @@ fn root_html_auto_row_content_alignment_is_supported(value: Option<&str>) -> boo
                 | "unsafe center"
                 | "safe end"
                 | "unsafe end"
+                | "safe start"
+                | "unsafe start"
                 | "space-between"
                 | "space-around"
                 | "space-evenly"
@@ -1539,6 +1541,8 @@ mod root_html_auto_row_content_alignment_tests {
             "unsafe center",
             "safe end",
             "unsafe end",
+            "safe start",
+            "unsafe start",
             "space-between",
             "space-around",
             "space-evenly",
@@ -1553,11 +1557,11 @@ mod root_html_auto_row_content_alignment_tests {
             "baseline",
             "first baseline",
             "last baseline",
-            "safe start",
-            "unsafe start",
             "center safe",
             "unsafe flex-start",
+            "safe flex-start",
             "safe end center",
+            "safe baseline",
             "unsafe center end",
             "self-start",
             "space-between safe",
