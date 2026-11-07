@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 2 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_explicit_fit_content_percentage_tracks_project_for_columns_rows_and_fixed_repeat ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_explicit_fit_content_px_tracks_project_for_columns_rows_and_fixed_repeat ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 454 filtered out; finished in 0.00s
