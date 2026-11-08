@@ -1,0 +1,3 @@
+First temporary API 37 ARM64 AVD: emulator PTY exit code 139 after QEMU mprotect permission errors and QEMU thread hang warnings. The adb wait loop ended with device not found.
+Second temporary AVD with -accel off: adb remained offline while the same mprotect permission errors appeared; the session was interrupted before app installation.
+No Android app was installed or launched. Both task-created AVDs were deleted after capture.

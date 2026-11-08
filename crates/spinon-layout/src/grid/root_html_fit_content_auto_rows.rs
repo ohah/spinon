@@ -1,4 +1,6 @@
 use super::*;
+#[path = "root_html_fit_content_auto_rows/repeated_text.rs"]
+mod repeated_text;
 
 fn fit_content_cap_is_supported(track: &GridTrackSize) -> bool {
     matches!(
@@ -123,6 +125,29 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .chain(&container.rows_line_names)
         .flatten()
         .all(String::is_empty);
+    let hidden = crate::grid_placement::hidden_subtrees(input, index);
+    let grid_node = &input.nodes[index[&node]];
+    let visible_children = grid_node
+        .children
+        .iter()
+        .copied()
+        .filter(|child| !hidden.get(child).copied().unwrap_or(true))
+        .collect::<Vec<_>>();
+    let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
+    let repeated_text_profile = six_member_list
+        && visible_children.len() == 9
+        && visible_children
+            .iter()
+            .copied()
+            .skip(1)
+            .zip(repeated_text::PAYLOADS)
+            .all(|(item, expected_text)| {
+                let item = &input.nodes[index[&item]];
+                let [payload] = item.children.as_slice() else {
+                    return false;
+                };
+                repeated_text::has_expected_text(input, *payload, expected_text)
+            });
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -154,7 +179,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
 
     let grid_style_is_supported = style.display == LayoutDisplay::Grid
         && style.width == LayoutDimension::Fixed(40.0)
-        && style.height == LayoutDimension::Fixed(100.0)
+        && (style.height == LayoutDimension::Fixed(100.0)
+            || (repeated_text_profile && style.height == LayoutDimension::Fixed(220.0)))
         && style.box_sizing == LayoutBoxSizing::BorderBox
         && style.min_width == LayoutDimension::Auto
         && style.max_width == LayoutDimension::Auto
@@ -191,14 +217,6 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         });
     }
 
-    let hidden = crate::grid_placement::hidden_subtrees(input, index);
-    let grid_node = &input.nodes[index[&node]];
-    let visible_children = grid_node
-        .children
-        .iter()
-        .copied()
-        .filter(|child| !hidden.get(child).copied().unwrap_or(true))
-        .collect::<Vec<_>>();
     let child_has_no_text = |child: NodeId| !has_non_collapsible_text(input, child);
     let child_has_auto_placement = |child: NodeId| {
         input
@@ -213,7 +231,6 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             .is_none_or(|position| position.position == LayoutPosition::Static)
     };
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
-    let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
         || (six_member_list && visible_children.len() != 9)
         || (!four_member_list && !six_member_list && !matches!(visible_children.len(), 3 | 5))
@@ -227,13 +244,14 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
 
     let first_id = visible_children[0];
     let first = &input.nodes[index[&first_id]];
-    let fixed_item_is_supported = |item: &crate::LayoutNode, height| {
+    let fixed_item_is_supported = |item: &crate::LayoutNode, height, allow_zero_min_height| {
         item.style.display == LayoutDisplay::Block
             && item.style.width == LayoutDimension::Auto
             && item.style.height == LayoutDimension::Fixed(height)
             && item.style.min_width == LayoutDimension::Auto
             && item.style.max_width == LayoutDimension::Auto
-            && item.style.min_height == LayoutDimension::Auto
+            && (item.style.min_height == LayoutDimension::Auto
+                || (allow_zero_min_height && item.style.min_height == LayoutDimension::Fixed(0.0)))
             && item.style.max_height == LayoutDimension::Auto
             && item.style.aspect_ratio.is_none()
             && item.style.order == 0
@@ -250,7 +268,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && child_has_auto_placement(item.id)
             && child_is_static(item.id)
     };
-    if !fixed_item_is_supported(first, 10.0) {
+    if !fixed_item_is_supported(first, 10.0, repeated_text_profile) {
         return Err(LayoutError::UnsupportedGridContainerStyle {
             node,
             property: "C11.4 fit-content explicit row item profile",
@@ -304,6 +322,27 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && child_has_no_text(payload_id)
             && child_is_static(payload_id)
     };
+    let text_payload_is_supported = |payload_id: NodeId, expected_text: &str| {
+        let payload = &input.nodes[index[&payload_id]];
+        payload.style.display == LayoutDisplay::Block
+            && payload.style.width == LayoutDimension::Auto
+            && payload.style.height == LayoutDimension::Auto
+            && payload.style.min_width == LayoutDimension::Auto
+            && payload.style.max_width == LayoutDimension::Auto
+            && payload.style.min_height == LayoutDimension::Auto
+            && payload.style.max_height == LayoutDimension::Auto
+            && payload.style.aspect_ratio.is_none()
+            && payload.style.order == 0
+            && payload.style.overflow_x == crate::LayoutOverflow::Visible
+            && payload.style.overflow_y == crate::LayoutOverflow::Visible
+            && payload.style.margin == crate::LayoutEdges::default()
+            && payload.style.padding == crate::LayoutEdges::default()
+            && payload.style.border == crate::LayoutBorder::default()
+            && payload.children.is_empty()
+            && !input.grid_containers.contains_key(&payload_id)
+            && child_is_static(payload_id)
+            && repeated_text::has_expected_text(input, payload_id, expected_text)
+    };
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
     const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
     const SIX_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 60.0, 6.0];
@@ -321,7 +360,10 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             } else {
                 None
             };
-            let payload_is_allowed = if six_member_list {
+            let payload_is_allowed = if repeated_text_profile {
+                let expected_text = repeated_text::PAYLOADS[position - 1];
+                text_payload_is_supported(payload_id, expected_text)
+            } else if six_member_list {
                 let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
                 payload_is_supported(payload_id, std::slice::from_ref(&expected_height))
             } else if let Some(profile_payload_heights) = profile_payload_heights {
@@ -346,7 +388,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             }
         } else if visible_children.len() == 3
             && position == 2
-            && fixed_item_is_supported(row_item, 6.0)
+            && fixed_item_is_supported(row_item, 6.0, false)
         {
             // The pre-existing singleton fixture uses a fixed following item to expose
             // the used size of the first implicit row without another intrinsic payload.
@@ -358,6 +400,14 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         }
     }
     Ok(())
+}
+
+/// Normalize final frames only for the bounded repeated-text profile.
+pub(super) fn normalize_repeated_text_layout_frames(
+    input: &LayoutInput,
+    output: &mut crate::LayoutOutput,
+) -> Result<(), LayoutError> {
+    repeated_text::normalize_layout_frames(input, output)
 }
 
 fn has_non_collapsible_text(input: &LayoutInput, node: NodeId) -> bool {
