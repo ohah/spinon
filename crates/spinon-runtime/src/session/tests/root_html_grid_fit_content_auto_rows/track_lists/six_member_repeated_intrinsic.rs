@@ -7,113 +7,27 @@ use spinon_style::{
 const SOURCE: &str = include_str!(
     "../../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-auto-rows-runtime.html"
 );
+const BASE_TRACK_LIST: &str =
+    "fit-content(20px) min-content min-content max-content max-content auto";
+
+fn base_tail() -> [ComputedCssGridTrackSize; 5] {
+    [
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::Auto,
+    ]
+}
 
 fn computed_tracks(cap: ComputedCssGridTrackLengthPercentage) -> Vec<ComputedCssGridTrackSize> {
     vec![
         ComputedCssGridTrackSize::FitContent(cap),
         ComputedCssGridTrackSize::MinContent,
-        ComputedCssGridTrackSize::MaxContent,
-        ComputedCssGridTrackSize::Auto,
         ComputedCssGridTrackSize::MinContent,
         ComputedCssGridTrackSize::MaxContent,
-    ]
-}
-
-fn expected_frames(align: &str) -> Vec<(OpaqueCssSrgb, [f32; 4], &'static str)> {
-    let auto_height = if align == "stretch" { 10.0 } else { 6.0 };
-    let repeated_start = if align == "stretch" { 74.0 } else { 70.0 };
-    let last_start = if align == "stretch" { 94.0 } else { 90.0 };
-    vec![
-        (
-            OpaqueCssSrgb::new(23, 33, 43),
-            [0.0, 0.0, 40.0, 100.0],
-            "Grid",
-        ),
-        (
-            OpaqueCssSrgb::new(229, 72, 77),
-            [0.0, 0.0, 40.0, 10.0],
-            "explicit row item",
-        ),
-        (
-            OpaqueCssSrgb::new(34, 197, 94),
-            [0.0, 10.0, 40.0, 20.0],
-            "first fit-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(59, 130, 246),
-            [0.0, 10.0, 40.0, 20.0],
-            "first fit-content payload",
-        ),
-        (
-            OpaqueCssSrgb::new(20, 184, 166),
-            [0.0, 30.0, 40.0, 10.0],
-            "first min-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(6, 182, 212),
-            [0.0, 30.0, 40.0, 10.0],
-            "first min-content payload",
-        ),
-        (
-            OpaqueCssSrgb::new(249, 115, 22),
-            [0.0, 40.0, 40.0, 12.0],
-            "first max-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(132, 204, 22),
-            [0.0, 40.0, 40.0, 12.0],
-            "first max-content payload",
-        ),
-        (
-            OpaqueCssSrgb::new(168, 85, 247),
-            [0.0, 52.0, 40.0, auto_height],
-            "auto item",
-        ),
-        (
-            OpaqueCssSrgb::new(236, 72, 153),
-            [0.0, 52.0, 40.0, 6.0],
-            "auto payload",
-        ),
-        (
-            OpaqueCssSrgb::new(250, 204, 21),
-            [0.0, 52.0 + auto_height, 40.0, 6.0],
-            "repeated min-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(163, 230, 53),
-            [0.0, 52.0 + auto_height, 40.0, 6.0],
-            "repeated min-content payload",
-        ),
-        (
-            OpaqueCssSrgb::new(139, 92, 246),
-            [0.0, 58.0 + auto_height, 40.0, 6.0],
-            "repeated max-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(244, 114, 182),
-            [0.0, 58.0 + auto_height, 40.0, 6.0],
-            "repeated max-content payload",
-        ),
-        (
-            OpaqueCssSrgb::new(14, 165, 233),
-            [0.0, repeated_start, 40.0, 20.0],
-            "cycled fit-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(251, 146, 60),
-            [0.0, repeated_start, 40.0, 60.0],
-            "cycled fit-content payload",
-        ),
-        (
-            OpaqueCssSrgb::new(239, 68, 68),
-            [0.0, last_start, 40.0, 6.0],
-            "cycled min-content item",
-        ),
-        (
-            OpaqueCssSrgb::new(45, 212, 191),
-            [0.0, last_start, 40.0, 6.0],
-            "cycled min-content payload",
-        ),
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::Auto,
     ]
 }
 
@@ -164,13 +78,13 @@ fn assert_scene(cap_css: &str, cap: ComputedCssGridTrackLengthPercentage, align:
     assert_eq!(
         grid.properties.get("grid-auto-rows").map(String::as_str),
         Some(
-            format!("fit-content({cap_css}) min-content max-content auto min-content max-content")
+            format!("fit-content({cap_css}) min-content min-content max-content max-content auto")
                 .as_str()
         ),
         "computed serialization must retain the complete repeated sequence"
     );
 
-    for (color, frame, name) in expected_frames(align) {
+    for (color, frame, name) in expected_frames_for_tail(align, &base_tail()) {
         assert_frame(frame_for_paint(scene, color), frame, name);
     }
     let overflow = frame_for_paint(scene, OpaqueCssSrgb::new(251, 146, 60));
@@ -178,6 +92,222 @@ fn assert_scene(cap_css: &str, cap: ComputedCssGridTrackLengthPercentage, align:
         overflow[1] + overflow[3] > 100.0,
         "the repeated fit-content payload should cross the Grid border"
     );
+}
+
+fn repeated_tail_orders() -> Vec<Vec<ComputedCssGridTrackSize>> {
+    fn visit(
+        remaining: &mut [usize; 3],
+        current: &mut Vec<ComputedCssGridTrackSize>,
+        orders: &mut Vec<Vec<ComputedCssGridTrackSize>>,
+    ) {
+        if current.len() == 5 {
+            orders.push(current.clone());
+            return;
+        }
+
+        for kind in 0..remaining.len() {
+            if remaining[kind] == 0 {
+                continue;
+            }
+            remaining[kind] -= 1;
+            current.push(match kind {
+                0 => ComputedCssGridTrackSize::MinContent,
+                1 => ComputedCssGridTrackSize::MaxContent,
+                _ => ComputedCssGridTrackSize::Auto,
+            });
+            visit(remaining, current, orders);
+            current.pop();
+            remaining[kind] += 1;
+        }
+    }
+
+    let mut orders = Vec::new();
+    visit(&mut [2, 2, 1], &mut Vec::new(), &mut orders);
+    orders
+}
+
+fn repeated_tail_css(tail: &[ComputedCssGridTrackSize]) -> String {
+    tail.iter()
+        .map(|track| match track {
+            ComputedCssGridTrackSize::MinContent => "min-content",
+            ComputedCssGridTrackSize::MaxContent => "max-content",
+            ComputedCssGridTrackSize::Auto => "auto",
+            _ => panic!("repeated intrinsic tail contains only min/max/auto tracks"),
+        })
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+fn computed_tracks_for_tail(
+    cap: ComputedCssGridTrackLengthPercentage,
+    tail: &[ComputedCssGridTrackSize],
+) -> Vec<ComputedCssGridTrackSize> {
+    let mut tracks = vec![ComputedCssGridTrackSize::FitContent(cap)];
+    tracks.extend(tail.iter().cloned());
+    tracks
+}
+
+fn expected_frames_for_tail(
+    align: &str,
+    tail: &[ComputedCssGridTrackSize],
+) -> Vec<(OpaqueCssSrgb, [f32; 4], &'static str)> {
+    let payload_heights = [20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 60.0, 6.0];
+    let item_colors = [
+        OpaqueCssSrgb::new(34, 197, 94),
+        OpaqueCssSrgb::new(20, 184, 166),
+        OpaqueCssSrgb::new(249, 115, 22),
+        OpaqueCssSrgb::new(168, 85, 247),
+        OpaqueCssSrgb::new(250, 204, 21),
+        OpaqueCssSrgb::new(139, 92, 246),
+        OpaqueCssSrgb::new(14, 165, 233),
+        OpaqueCssSrgb::new(239, 68, 68),
+    ];
+    let payload_colors = [
+        OpaqueCssSrgb::new(59, 130, 246),
+        OpaqueCssSrgb::new(6, 182, 212),
+        OpaqueCssSrgb::new(132, 204, 22),
+        OpaqueCssSrgb::new(236, 72, 153),
+        OpaqueCssSrgb::new(163, 230, 53),
+        OpaqueCssSrgb::new(244, 114, 182),
+        OpaqueCssSrgb::new(251, 146, 60),
+        OpaqueCssSrgb::new(45, 212, 191),
+    ];
+    let auto_rows = (0..payload_heights.len())
+        .filter(|row| *row % 6 != 0 && tail[*row % 6 - 1] == ComputedCssGridTrackSize::Auto)
+        .count();
+    let auto_stretch = if align == "stretch" {
+        4.0 / auto_rows as f32
+    } else {
+        0.0
+    };
+    let mut frames = vec![
+        (
+            OpaqueCssSrgb::new(23, 33, 43),
+            [0.0, 0.0, 40.0, 100.0],
+            "Grid",
+        ),
+        (
+            OpaqueCssSrgb::new(229, 72, 77),
+            [0.0, 0.0, 40.0, 10.0],
+            "explicit row item",
+        ),
+    ];
+    let mut y = 10.0;
+    for row in 0..payload_heights.len() {
+        let payload_height: f32 = payload_heights[row];
+        let track = if row % 6 == 0 {
+            None
+        } else {
+            Some(&tail[row % 6 - 1])
+        };
+        let mut row_height = if track.is_none() {
+            payload_height.min(20.0)
+        } else {
+            payload_height
+        };
+        if matches!(track, Some(ComputedCssGridTrackSize::Auto)) {
+            row_height += auto_stretch;
+        }
+        frames.push((
+            item_colors[row],
+            [0.0, y, 40.0, row_height],
+            "implicit row item",
+        ));
+        frames.push((
+            payload_colors[row],
+            [0.0, y, 40.0, payload_height],
+            "implicit row payload",
+        ));
+        y += row_height;
+    }
+    frames
+}
+
+fn assert_scene_for_tail(
+    cap_css: &str,
+    cap: ComputedCssGridTrackLengthPercentage,
+    align: &str,
+    tail: &[ComputedCssGridTrackSize],
+) {
+    let tail_css = repeated_tail_css(tail);
+    let track_list = format!("fit-content({cap_css}) {tail_css}");
+    let source = replace_once(SOURCE, BASE_TRACK_LIST, &track_list);
+    let source = replace_once(
+        &source,
+        "align-content: start;",
+        &format!("align-content: {align};"),
+    );
+    let (session, layout) = run(&source);
+    assert_eq!(
+        layout.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "tracks={track_list}, align={align}: layout={:?}; cascade={:?}",
+        layout.error,
+        session.ua_cascade_snapshot().error
+    );
+    let completed = layout
+        .completed
+        .as_ref()
+        .expect("supported list should publish layout");
+    let scene = completed
+        .render_snapshot
+        .as_ref()
+        .expect("supported list should publish render scene");
+    let cascade = session
+        .ua_cascade_snapshot()
+        .completed
+        .expect("computed styles should publish");
+    assert_eq!(completed.key, cascade.key);
+    let grid = cascade.roots[0]
+        .styles
+        .elements
+        .iter()
+        .find(|style| style.grid_layout.is_some())
+        .expect("fixture should have one Grid owner");
+    assert_eq!(
+        grid.grid_layout.as_ref().unwrap().auto_rows,
+        ComputedCssGridAutoRows::TrackList(computed_tracks_for_tail(cap, tail)),
+        "computed member identity/order must preserve {track_list}"
+    );
+    assert_eq!(
+        grid.properties.get("grid-auto-rows").map(String::as_str),
+        Some(track_list.as_str()),
+        "computed serialization must retain {track_list}"
+    );
+
+    for (color, frame, name) in expected_frames_for_tail(align, tail) {
+        assert_frame(frame_for_paint(scene, color), frame, name);
+    }
+    let overflow = frame_for_paint(scene, OpaqueCssSrgb::new(251, 146, 60));
+    assert!(
+        overflow[1] + overflow[3] > 100.0,
+        "the repeated fit-content payload should cross the Grid border: {track_list}"
+    );
+}
+
+#[test]
+fn parsed_root_html_repeated_intrinsic_tail_all_30_orders_matches_independent_frames() {
+    let orders = repeated_tail_orders();
+    assert_eq!(orders.len(), 30);
+    assert_eq!(
+        orders
+            .iter()
+            .map(|tail| format!("{tail:?}"))
+            .collect::<std::collections::BTreeSet<_>>()
+            .len(),
+        30,
+        "the repeated-tail generator must produce 30 unique orders"
+    );
+    for tail in orders {
+        for (cap_css, cap) in [
+            ("20px", ComputedCssGridTrackLengthPercentage::LengthPx(20.0)),
+            ("20%", ComputedCssGridTrackLengthPercentage::Percentage(0.2)),
+        ] {
+            for align in ["start", "stretch"] {
+                assert_scene_for_tail(cap_css, cap.clone(), align, &tail);
+            }
+        }
+    }
 }
 
 #[test]
@@ -250,7 +380,12 @@ fn parsed_root_html_repeated_intrinsic_list_rejects_atomically_and_recovers_same
         .expect("recovery should publish a complete render scene");
     assert_frame(
         frame_for_paint(recovered_scene, OpaqueCssSrgb::new(251, 146, 60)),
-        [0.0, 70.0, 40.0, 60.0],
+        expected_frames_for_tail("start", &base_tail())
+            .into_iter()
+            .find_map(|(color, frame, _)| {
+                (color == OpaqueCssSrgb::new(251, 146, 60)).then_some(frame)
+            })
+            .expect("independent model includes the repeated fit-content payload"),
         "recovered repeated fit-content overflow payload",
     );
 }

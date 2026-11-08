@@ -1,0 +1,4 @@
+getpwuid_r did not find a match for uid 501
+Timestamp               Ty Process[PID:TID]
+2026-11-08 17:16:45.558 Df SpinonBootstrap[3453:c85fb9f] (Foundation) SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready status=0 layout=ready boxes=20 generation=2 document_revision=1 environment_revision=0
+2026-11-08 17:16:50.186 Df SpinonBootstrap[3619:c85ff5d] (Foundation) SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready status=0 layout=ready boxes=14 generation=2 document_revision=1 environment_revision=0

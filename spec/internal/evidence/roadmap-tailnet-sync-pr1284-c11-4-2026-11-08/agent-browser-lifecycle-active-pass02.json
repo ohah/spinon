@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-08T08:56:07Z",
+  "closeCommand": "agent-browser --session spinon-roadmap-active-final-20261108 close --all",
+  "agentBrowserSession": "spinon-roadmap-active-final-20261108",
+  "priorDaemonPid": 89063,
+  "agentBrowserProcessCount": 0,
+  "sessionChromeProcessCount": 0,
+  "tailnetPreviewServerPid": 28040,
+  "tailnetPreviewServerPreserved": true,
+  "tailscaleBackendState": "Running",
+  "tmuxSpinonSessionPreserved": true
+}
