@@ -9,7 +9,13 @@ const SOURCE: &str = include_str!(
     "../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-text-precomparison.html"
 );
 const EXPECTED: &str = include_str!(
-    "../../../../../../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-precomparison-2026-11-08/chrome157-expected.json"
+    "../../../../../../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-content-precomparison-2026-11-09/chrome157-expected.json"
+);
+const VARIED_ASCII_SOURCE: &str = include_str!(
+    "../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-text-content-precomparison.html"
+);
+const LENGTH_BOUNDARY_SOURCE: &str = include_str!(
+    "../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-text-length-boundary-32.html"
 );
 const ITEM_COLORS: [OpaqueCssSrgb; 9] = [
     OpaqueCssSrgb::new(229, 72, 77),
@@ -22,9 +28,6 @@ const ITEM_COLORS: [OpaqueCssSrgb; 9] = [
     OpaqueCssSrgb::new(251, 146, 60),
     OpaqueCssSrgb::new(45, 212, 191),
 ];
-const TEXT_LINE_COUNTS: [usize; 8] = [2, 2, 2, 1, 2, 1, 3, 1];
-const TEXT_GLYPH_COUNTS: [usize; 8] = [6, 9, 8, 2, 6, 4, 8, 2];
-
 fn expected_frame(value: &Value) -> [f32; 4] {
     let values = value.as_array().expect("expected frame should be an array");
     assert_eq!(values.len(), 4);
@@ -45,6 +48,15 @@ fn assert_frame_001(actual: [f32; 4], expected: [f32; 4], label: &str) {
 }
 
 fn css_source(scene: &Value) -> String {
+    let content_case = scene["contentCase"]
+        .as_str()
+        .expect("scene content case should be a string");
+    let source = match content_case {
+        "legacy-1290" => SOURCE,
+        "varied-ascii" => VARIED_ASCII_SOURCE,
+        "length-boundary-32" => LENGTH_BOUNDARY_SOURCE,
+        _ => panic!("unsupported expected content corpus {content_case:?}"),
+    };
     let cap = scene["cap"]
         .as_str()
         .expect("scene cap should be a CSS string");
@@ -57,7 +69,7 @@ fn css_source(scene: &Value) -> String {
     let grid_height = scene["gridHeight"]
         .as_u64()
         .expect("scene Grid height should be an integer");
-    let source = replace_once(SOURCE, "--cap: 20px;", &format!("--cap: {cap};"));
+    let source = replace_once(source, "--cap: 20px;", &format!("--cap: {cap};"));
     let source = replace_once(
         &source,
         "--tail: min-content min-content max-content max-content auto;",
@@ -101,25 +113,90 @@ fn runtime_frame(frame: &crate::session::RuntimeLayoutFrame) -> [f32; 4] {
     [frame.x, frame.y, frame.width, frame.height]
 }
 
+fn descriptors_for<'a>(expected: &'a Value, content_case: &str) -> Vec<&'a Value> {
+    expected["textDescriptors"]
+        .as_array()
+        .expect("Chrome text descriptors should be an array")
+        .iter()
+        .filter(|descriptor| descriptor["contentCase"].as_str() == Some(content_case))
+        .collect()
+}
+
 #[test]
-fn parsed_root_html_repeated_intrinsic_text_matches_all_270_chrome_scenes() {
+fn parsed_root_html_repeated_intrinsic_text_matches_all_810_chrome_scenes() {
     let expected: Value = serde_json::from_str(EXPECTED).expect("Chrome expected JSON is valid");
     let scenes = expected["scenes"]
         .as_array()
         .expect("Chrome expected scenes should be an array");
-    assert_eq!(scenes.len(), 270);
+    assert_eq!(scenes.len(), 810);
     assert_eq!(expected["uniqueTailOrders"].as_u64(), Some(30));
     assert_eq!(
         expected["textDescriptors"]
             .as_array()
             .expect("text descriptors should be an array")
-            .iter()
-            .map(|descriptor| descriptor["lineCount"].as_u64().unwrap() as usize)
-            .collect::<Vec<_>>(),
-        TEXT_LINE_COUNTS
+            .len(),
+        24
     );
+    for content_case in ["legacy-1290", "varied-ascii", "length-boundary-32"] {
+        let corpus_scenes = scenes
+            .iter()
+            .filter(|scene| scene["contentCase"].as_str() == Some(content_case))
+            .collect::<Vec<_>>();
+        assert_eq!(
+            corpus_scenes.len(),
+            270,
+            "each content corpus should have 270 Chrome scenes: {content_case}"
+        );
+        let tail_orders = corpus_scenes
+            .iter()
+            .map(|scene| scene["tail"].as_str().unwrap())
+            .collect::<std::collections::BTreeSet<_>>();
+        assert_eq!(tail_orders.len(), 30, "30 tail orders per corpus");
+        for tail in tail_orders {
+            let order_scenes = corpus_scenes
+                .iter()
+                .filter(|scene| scene["tail"].as_str() == Some(tail))
+                .collect::<Vec<_>>();
+            assert_eq!(order_scenes.len(), 9, "nine scenes per tail order");
+            assert_eq!(
+                order_scenes
+                    .iter()
+                    .filter(|scene| scene["gridHeight"].as_u64() == Some(220))
+                    .count(),
+                8,
+                "each tail order has four caps times two alignments"
+            );
+            assert_eq!(
+                order_scenes
+                    .iter()
+                    .filter(|scene| scene["gridHeight"].as_u64() == Some(100))
+                    .count(),
+                1,
+                "each tail order has one overflow scene"
+            );
+        }
+        let descriptors = descriptors_for(&expected, content_case);
+        assert_eq!(descriptors.len(), 8, "eight text descriptors per corpus");
+        let source = match content_case {
+            "legacy-1290" => SOURCE,
+            "varied-ascii" => VARIED_ASCII_SOURCE,
+            "length-boundary-32" => LENGTH_BOUNDARY_SOURCE,
+            _ => unreachable!(),
+        };
+        for (text_index, descriptor) in descriptors.iter().enumerate() {
+            let id = descriptor["id"].as_str().unwrap();
+            let text = descriptor["text"].as_str().unwrap();
+            let markup = format!("<div id=\"{id}\" class=\"payload\">{text}</div>");
+            assert!(
+                source.contains(&markup),
+                "fixture {content_case} payload {text_index} should match the Chrome descriptor"
+            );
+        }
+    }
 
     for (scene_index, expected_scene) in scenes.iter().enumerate() {
+        let content_case = expected_scene["contentCase"].as_str().unwrap();
+        let text_descriptors = descriptors_for(&expected, content_case);
         let source = css_source(expected_scene);
         let (session, layout) = run(&source);
         let cascade_snapshot = session.ua_cascade_snapshot();
@@ -236,11 +313,13 @@ fn parsed_root_html_repeated_intrinsic_text_matches_all_270_chrome_scenes() {
         let expected_payloads = expected_scene["payloadFrames"]
             .as_array()
             .expect("expected payload frames should be an array");
-        assert_eq!(expected_payloads.len(), TEXT_LINE_COUNTS.len());
+        assert_eq!(expected_payloads.len(), text_descriptors.len());
         let mut texts = render_scene.texts().iter().collect::<Vec<_>>();
         texts.sort_unstable_by_key(|text| text.node_id().get());
-        assert_eq!(texts.len(), TEXT_LINE_COUNTS.len());
+        assert_eq!(texts.len(), text_descriptors.len());
+        let mut actual_payload_bottom = f32::NEG_INFINITY;
         for (text_index, text) in texts.into_iter().enumerate() {
+            let descriptor = text_descriptors[text_index];
             let expected = expected_frame(&expected_payloads[text_index]);
             let payload_frame = completed
                 .frames
@@ -254,11 +333,19 @@ fn parsed_root_html_repeated_intrinsic_text_matches_all_270_chrome_scenes() {
                 expected,
                 &format!("scene {scene_index} payload {text_index}"),
             );
+            actual_payload_bottom =
+                actual_payload_bottom.max(payload_frame.y + payload_frame.height);
+            let expected_text = descriptor["text"].as_str().unwrap();
+            let expected_glyph_count = expected_text
+                .bytes()
+                .filter(|byte| byte.is_ascii_uppercase())
+                .count();
             assert_eq!(
                 text.glyphs().len(),
-                TEXT_GLYPH_COUNTS[text_index],
+                expected_glyph_count,
                 "scene {scene_index} payload {text_index} glyph count"
             );
+            let expected_line_count = descriptor["lineCount"].as_u64().unwrap() as usize;
             let baselines = text
                 .glyphs()
                 .iter()
@@ -266,8 +353,16 @@ fn parsed_root_html_repeated_intrinsic_text_matches_all_270_chrome_scenes() {
                 .collect::<std::collections::BTreeSet<_>>();
             assert_eq!(
                 baselines.len(),
-                TEXT_LINE_COUNTS[text_index],
+                expected_line_count,
                 "scene {scene_index} payload {text_index} line count"
+            );
+        }
+        if expected_scene["gridHeight"].as_u64() == Some(100) {
+            let grid_bottom = grid_frame.y + grid_frame.height;
+            assert!(
+                actual_payload_bottom > grid_bottom + 0.01,
+                "scene {scene_index}: text should visibly extend below Grid: \
+                 payload bottom={actual_payload_bottom}, Grid bottom={grid_bottom}"
             );
         }
     }
@@ -284,8 +379,52 @@ fn frame_eq(actual: [f32; 4], expected: [f32; 4]) -> bool {
 fn parsed_root_html_repeated_intrinsic_text_rejects_mutations_without_partial_output() {
     let cases = [
         (
-            "wrong text",
-            replace_once(SOURCE, "A A A A A A</div>", "A A A A A</div>"),
+            "empty text",
+            replace_once(SOURCE, "A A A A A A</div>", "</div>"),
+        ),
+        (
+            "lowercase letter",
+            replace_once(SOURCE, "A A A A A A</div>", "a A A A A A</div>"),
+        ),
+        (
+            "digit",
+            replace_once(SOURCE, "A A A A A A</div>", "A1</div>"),
+        ),
+        (
+            "punctuation",
+            replace_once(SOURCE, "A A A A A A</div>", "A?</div>"),
+        ),
+        (
+            "multiple spaces",
+            replace_once(SOURCE, "A A A A A A</div>", "A  A A A A A</div>"),
+        ),
+        (
+            "leading space",
+            replace_once(SOURCE, "A A A A A A</div>", " A A A A A A</div>"),
+        ),
+        (
+            "trailing space",
+            replace_once(SOURCE, "A A A A A A</div>", "A A A A A A </div>"),
+        ),
+        (
+            "tab",
+            replace_once(SOURCE, "A A A A A A</div>", "A\tB</div>"),
+        ),
+        (
+            "newline",
+            replace_once(SOURCE, "A A A A A A</div>", "A\nB</div>"),
+        ),
+        (
+            "seven character word",
+            replace_once(SOURCE, "A A A A A A</div>", "ABCDEFG</div>"),
+        ),
+        (
+            "33 byte payload",
+            replace_once(
+                SOURCE,
+                "A A A A A A</div>",
+                "ABCDEF ABCDEF ABCDEF ABCDEF ABCDE</div>",
+            ),
         ),
         (
             "wrong font family",
@@ -304,8 +443,20 @@ fn parsed_root_html_repeated_intrinsic_text_rejects_mutations_without_partial_ou
             replace_once(SOURCE, "line-height: 10px;", "line-height: 11px;"),
         ),
         (
+            "wrong font weight",
+            replace_once(SOURCE, "font-weight: 400;", "font-weight: 500;"),
+        ),
+        (
             "nowrap",
             replace_once(SOURCE, "white-space: normal;", "white-space: nowrap;"),
+        ),
+        (
+            "additional inline source",
+            replace_once(
+                SOURCE,
+                "A A A A A A</div>",
+                "A A A A A A<span> </span></div>",
+            ),
         ),
         (
             "nested inline",

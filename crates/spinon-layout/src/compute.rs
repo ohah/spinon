@@ -110,7 +110,6 @@ impl TaffyLayoutEngine {
         } else {
             output.flow_frames.clone_from(&output.frames);
         }
-        crate::grid::normalize_repeated_text_layout_frames(input, &mut output)?;
         if let Some(snapshot) = snapshot {
             output.revision = output
                 .revision
@@ -120,6 +119,7 @@ impl TaffyLayoutEngine {
         output.grid_item_intrinsic_inputs =
             visual_tree.collect_grid_item_intrinsic_inputs(output.revision)?;
         output.grid_track_sizing_traces = visual_tree.take_grid_track_sizing_traces()?;
+        crate::grid::normalize_repeated_text_layout_frames(input, &mut output)?;
         Ok(output)
     }
 }

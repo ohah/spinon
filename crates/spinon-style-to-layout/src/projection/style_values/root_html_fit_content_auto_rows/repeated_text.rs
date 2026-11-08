@@ -1,23 +1,11 @@
 use super::*;
 
-pub(super) const PAYLOADS: [&str; 8] = [
-    "A A A A A A",
-    "AAAA AAAA A",
-    "AA AA AA AA",
-    "A A",
-    "AAA AAA",
-    "AAAA",
-    "A A A A A A A A",
-    "AA",
-];
-
 pub(super) fn payload_is_supported(
     tree: &HostDocumentSnapshot,
     nodes: &RuntimeGridNodes,
     snapshot: &ComputedStyleSnapshot,
     styles: &std::collections::BTreeMap<spinon_core::NodeId, &ComputedElementStyle>,
     payload: HostNodeHandle,
-    expected_text: &str,
 ) -> bool {
     let node = payload.id();
     let Some(style) = styles.get(&node).copied() else {
@@ -66,13 +54,12 @@ pub(super) fn payload_is_supported(
         || !is_zero_length_property(style, "word-spacing")
         || !is_zero_length_property(style, "text-indent")
         || style.font_size_css_px != 10.0;
-    !unsupported && payload_text_matches(tree, payload, expected_text)
+    !unsupported && payload_has_supported_text(tree, payload)
 }
 
-pub(super) fn payload_text_matches(
+pub(super) fn payload_has_supported_text(
     tree: &HostDocumentSnapshot,
     payload: HostNodeHandle,
-    expected_text: &str,
 ) -> bool {
     let Some(children) = tree.children(payload) else {
         return false;
@@ -81,10 +68,36 @@ pub(super) fn payload_text_matches(
     let [text] = children.as_slice() else {
         return false;
     };
-    matches!(
-        tree.node(*text).map(|node| node.kind()),
-        Some(HostNodeKind::Text(text)) if text.to_string_lossy() == expected_text
-    )
+    matches!(tree.node(*text).map(|node| node.kind()), Some(HostNodeKind::Text(text))
+        if supports_content_grammar(&text.to_string_lossy()))
+}
+
+fn supports_content_grammar(text: &str) -> bool {
+    let bytes = text.as_bytes();
+    if bytes.is_empty() || bytes.len() > 32 {
+        return false;
+    }
+
+    let mut word_length = 0;
+    for byte in bytes {
+        match byte {
+            b'A'..=b'Z' => {
+                word_length += 1;
+                if word_length > 6 {
+                    return false;
+                }
+            }
+            b' ' => {
+                if word_length == 0 {
+                    return false;
+                }
+                word_length = 0;
+            }
+            _ => return false,
+        }
+    }
+
+    word_length > 0
 }
 
 fn is_zero_length_property(style: &ComputedElementStyle, property: &str) -> bool {
@@ -96,4 +109,43 @@ fn is_zero_length_property(style: &ComputedElementStyle, property: &str) -> bool
                 .and_then(|value| value.parse::<f32>().ok())
                 .is_some_and(|value| value == 0.0)
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::supports_content_grammar;
+
+    #[test]
+    fn content_grammar_accepts_ascii_word_and_byte_boundaries() {
+        for text in ["A", "ABCDEF", "A B", "ABCDEF ABCDEF ABCDEF ABCDEF ABCD"] {
+            assert!(
+                supports_content_grammar(text),
+                "expected acceptance: {text:?}"
+            );
+        }
+    }
+
+    #[test]
+    fn content_grammar_rejects_non_ascii_and_malformed_spacing() {
+        for text in [
+            "",
+            " ",
+            " A",
+            "A ",
+            "A  B",
+            "a",
+            "1",
+            "A?",
+            "ABCDEFG",
+            "ABCDEF ABCDEF ABCDEF ABCDEF ABCDE",
+            "A\tB",
+            "A\nB",
+            "가",
+        ] {
+            assert!(
+                !supports_content_grammar(text),
+                "expected rejection: {text:?}"
+            );
+        }
+    }
 }

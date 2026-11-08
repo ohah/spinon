@@ -1,6 +1,6 @@
 # C11.4 · 반복 intrinsic row의 제한된 텍스트 content grammar
 
-**상태:** 다음 bounded slice로 선택 · Chrome 사전 비교 완료 · 제품 구현 전
+**상태:** 계획 PR [#1291](https://github.com/ohah/spinon/pull/1291) 병합 (`581566c62b5c0e95e217406e5131d8bc1434d2ce`) · 제품 구현 진행 중
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -11,6 +11,18 @@
 **계획 실패 검토:** [서로 다른 실패 관점 20개](./c11-4-root-html-repeated-intrinsic-text-content-plan-review-20.md)
 
 **계획 PR diff 검토:** [서로 다른 변경 실패 관점 20개](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-content-precomparison-2026-11-09/plan-pr-diff-review-20.md)
+
+## 구현 중간 검증
+
+문법 admission을 Layout과 Style projection에 연결했고, 810개 Chrome scene의 Grid·item·text payload geometry를 각 frame component ±0.01 CSS px로 비교한다. 각 corpus에 30개 tail order가 모두 있고, 순서마다 네 cap × 두 alignment와 100px overflow 장면이 있는지도 검사한다. 기존 #1290 corpus, varied ASCII, 32-byte 경계 corpus 및 문자·줄 수가 전체 matrix에서 통과했다.
+
+처음 row 경계를 각각 1/64 CSS px 아래로 내리는 후보는 1,176개 frame component에서 oracle 허용치를 벗어났다. 현재 후보는 Taffy track-sizing trace의 intrinsic growth limit를 사용해 row별 floor 뒤에 남은 1/64 단위를 growth-potential 순으로 배분한다. 이 원인 설명은 Chrome 157 관측값과 Chromium Grid track sizing 소스에서 추론한 것이며, Chrome 157 바이너리 내부 trace 계측 결과는 아니다. [Chromium Grid track sizing source](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/third_party/blink/renderer/core/layout/grid/grid_track_sizing_algorithm.cc).
+
+RuntimeSession의 810-scene matrix와 거부·동일 session 복구 2개, Layout track sizing 127개, Layout/Style grammar 각 2개, 변경 3 crate Clippy와 rustfmt를 확인했다. 전체 Style crate 테스트는 아직 green이 아니다. 변경 파일과 직접 관련 없는 `c07_3_aspect_ratio_tests::comparison::aspect_ratio_computed_values_and_frames_match_pinned_chromium_at_both_dprs`가 `1.7777778 / 1`과 pinned 기대값 `1.77778 / 1`의 computed-value 문자열 차이로 실패했고, focused 재실행에서도 재현됐다. 기준 branch에서의 재현 여부는 확인하지 않았다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML 앱 경로에서 세 corpus 모두 `layout=ready`로 실행됐다. OS screenshots는 visual smoke이며 PixelCopy/Metal surface readback은 아니다. 세션 데이터 Documents 18개 파일은 재설치 전후 SHA-256이 같았고 OS Saved Application State는 재생성되지 않았다. 자세한 실행·화면·데이터 범위는 [simulator/runtime README](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-content-runtime-2026-11-09/README.md)에 기록했다. 이 상태는 C11.4/C11 완료 판정이 아니다.
+
+구현/runtime 실패 관점 검토는 [20개 표](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-content-runtime-2026-11-09/implementation-runtime-review-20.md)에 기록한다.
+
+구현 PR 변경은 [별도 실패 관점 30개](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-content-runtime-2026-11-09/pr-diff-review-30.md)로 검토했다.
 
 ## 결손과 목표
 
