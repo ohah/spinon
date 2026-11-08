@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `grid-auto-rows:max-content` 제한 slice
 
-**상태:** Chrome 157 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. PR [#1280](https://github.com/ohah/spinon/pull/1280)은 별도 `RootHtmlFitContentAutoRowsV1` profile에서 `fit-content()`/`min-content`/`max-content`/`auto` 네-member 목록을 지원하도록 병합됐다. 여기서 다루는 `RootHtmlIntrinsicTrackSizingV1` text profile은 여전히 singleton `min-content`만 허용하며 singleton `max-content`는 거부한다. 이 계획은 후자의 고정 text profile만 확장하며 구현은 시작하지 않았다.
+**상태:** 이 singleton `max-content` slice는 PR [#1264](https://github.com/ohah/spinon/pull/1264)로 `2026-11-07T11:56:35Z` Rebase and merge됐다(merge SHA `5389aae4981bb6dccc7083b554c446f055a72708`). `RuntimeRootHtmlTextPaintV1`/`RootHtmlIntrinsicTrackSizingV1`의 고정 direct-text profile에서 typed projection·layout admission·기본 RuntimeSession까지 연결했다. Layout 17/17, Style projection 25/25, 신규 RuntimeSession 3/3, intrinsic-row 회귀 7/7, workspace Clippy와 rustfmt를 기록했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 route는 각각 7 boxes를 확인했으며 화면은 visual smoke다. [실행 근거](../spec/internal/evidence/c11-4-root-html-intrinsic-auto-rows-max-content-runtime-2026-11-07/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-root-html-intrinsic-auto-rows-max-content-runtime-2026-11-07/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-root-html-intrinsic-auto-rows-max-content-runtime-2026-11-07/pr-diff-review-30.md). PR #1280은 별도 `RootHtmlFitContentAutoRowsV1` profile의 네-member list를 추가했으며, 이 singleton slice와 별개다. C11.4/C11과 공식 `78/214`는 미완료다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [Root HTML intrinsic implicit min-content rows](./c11-root-html-intrinsic-auto-rows.md) · [text contribution](./c11-root-html-intrinsic-auto-rows-text.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -10,7 +10,7 @@
 
 ## 결손과 목표
 
-기본 parsed Root HTML의 `RuntimeRootHtmlTextPaintV1` 경로는 `RootHtmlIntrinsicTrackSizingV1`을 통해 고정 explicit track과 text item이 있는 Grid의 singleton `grid-auto-rows:min-content`를 지원한다. 현재 `root_html_has_intrinsic_implicit_min_content_rows`와 layout admission은 이 값만 통과시키며 singleton `max-content`는 `grid-auto-rows` 오류로 거부한다. PR #1280의 four-member 목록은 다른 `RootHtmlFitContentAutoRowsV1` owner/topology에 적용되며 이 singleton admission을 바꾸지 않는다. CSS Grid 명세에서 `grid-auto-rows`는 `<track-size>+`를 받고 implicit track 크기를 지정하므로, 유효한 max-content 값을 이 한정된 입력 shape에 연결한다.
+기본 parsed Root HTML의 `RuntimeRootHtmlTextPaintV1` 경로는 `RootHtmlIntrinsicTrackSizingV1`을 통해 고정 explicit track과 text item이 있는 Grid의 singleton `grid-auto-rows:min-content`와 `grid-auto-rows:max-content`를 지원한다. PR #1264는 typed max-content track을 이 한정된 shape에 연결했다. PR #1280의 four-member 목록은 다른 `RootHtmlFitContentAutoRowsV1` owner/topology에 적용되며 singleton 구현을 대체하거나 확장하지 않는다. 이 절은 PR #1264 구현의 원래 결손·목표를 기록한다. CSS Grid 명세에서 `grid-auto-rows`는 `<track-size>+`를 받고 implicit track 크기를 지정한다.
 
 대상은 기존 text fixture와 같은 explicit 40px column, explicit 10px row, row flow, 0 gap, 고정 40×40px Grid, text-bearing direct `<div>` 한 개, 마지막 고정-height item 한 개다. 새 parser, public API, FFI selector, fixture-only 성공 route 또는 전체 CSS Grid admission은 추가하지 않는다.
 
