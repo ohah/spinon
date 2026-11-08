@@ -1,0 +1,7 @@
+{
+  "firstStageAssertion": "failed only because it expected the runtime-generated label C11.4 · 진행 중 as one source literal",
+  "sourceRepresentation": "task.code + ' · 진행 중'",
+  "correctedAudit": "walked every staged file and verified its SHA-256 against its source; all markers passed",
+  "stagedFileCount": 88,
+  "allStagedFilesMatchTheirSources": true
+}

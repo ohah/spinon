@@ -1,0 +1,85 @@
+{
+  "tailscaleBackendState": "Running",
+  "previewServer": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "fileCount": 112,
+  "bytes": 11201942,
+  "states": {
+    "add": 19,
+    "same": 80,
+    "replace": 13
+  },
+  "replaces": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "targetSha256": "cf0426bb789a03cc008fae307777b15832ec3ff48ac36d3a3143ae8851b08740",
+      "sourceSha256": "0340e208e851bc04f76604b345df5bed4b6cd453f6ebaa602c07c0c566373395"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "targetSha256": "f69795a51be9fdf2df256f4f834367878af8ff12f63ae0fceebaafeaa345b6dd",
+      "sourceSha256": "b150393feb770d8b3493c7e6b85722ba4fbfa4d69dcff4564dc0a4313e263a26"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "targetSha256": "fe390275b2fddab4a8842a0a339bb2d131571ab438a1bde4df0e15e94a7e2cfc",
+      "sourceSha256": "7e2bbbc12b09df030ae7e262dc3a6ff2a952da0088a6197cd4aca85fd94ea07a"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "targetSha256": "77e780e83c81141d1b3295f4b7f06a97f8c7510cf896cca086a144a948626034",
+      "sourceSha256": "015edd0cd10a67c3b2b70083d99a0fc8d5b03a3e3c30114afb2f8fbf4e7df432"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "targetSha256": "e816f079cfa386230aea323257f1a67a5e4d522f4e10a747cd7c713a9cf0da92",
+      "sourceSha256": "e4517688929261efe788f49fdb2d22a32eece3441ec5a41fb65a1f7bf7f45e6e"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "targetSha256": "25760c3da547b60b661a6b947b2fed2c3f6c73b8f8e9645e4d4a843e5d91cd05",
+      "sourceSha256": "2886850952ec3c446f8d6510483ccddec431f38c239b85c0d87bdbe2b26d47c3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "targetSha256": "b93382ee399590d75dd177d7ef32c5ee666f5e8601b06b1993772f8ec8d29d56",
+      "sourceSha256": "05ca92143cbfefa18011d2cb207732749b24e9393e3a4e31ac2b06a740b0d715"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "targetSha256": "61826aa17c79e892d2bfe547a326a0382c58b7078c0a12082047da785fadc155",
+      "sourceSha256": "f5af0f55bb38fdd9606ca3a3f8fa834230343dc9a63965dbebba2eabeecbc374"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "targetSha256": "709d9035bf8a29cb54d7634d3b35d4bf66421126c69c69cfc7661c8a03078719",
+      "sourceSha256": "96259c961e409d9a948e637dfc588ee22e0bd82250d354a0eb2d7799616f5b4c"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "targetSha256": "820616760d2fe6e72bdce53726d4fd90a08aad97d6f3ddf4c60e927fc42a7d65",
+      "sourceSha256": "16c5888f56db9251e09ed13ba92a9d62e617fb7f030177a45d6374a414fb62da"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "targetSha256": "8af683dd06650c7199f293879b2b4a71a989a209b568ad26322fda7d146f1df6",
+      "sourceSha256": "f319386f9f79c885f43a8e37cb1fb290981244e1abcdcb2e5b27314ef4b799bd"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "targetSha256": "316290ffa34f5d2940e34bc44eb8814bae1dac06e9b5225bc42505d5b5ae4c1c",
+      "sourceSha256": "a125c2a73fbadfb7a16832f4338d1a19bb5a582437776e8b1b25f4073570aa7f"
+    },
+    {
+      "route": "STATUS.html",
+      "targetSha256": "8ab16d2ed9bf010454eafd4f953917b8921848613e900eb21e61454a70edc506",
+      "sourceSha256": "95133953e9d5cca9757f41399319f4875a18543d44e45e2f60aa3b1bdd2e185e"
+    }
+  ],
+  "openHandlesUseReadOnlyCreateReadStream": true,
+  "replacementsWillUseSameDirectoryAtomicRenameAndKeepBackups": true,
+  "noDeletes": true
+}

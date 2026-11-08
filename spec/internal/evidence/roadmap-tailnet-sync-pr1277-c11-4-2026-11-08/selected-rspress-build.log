@@ -1,0 +1,51 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 156 ms.
+ready   built in 1.46s (web)
+ready   built in 1.46s (node)
+
+File (web)                                                                                                             Size        Gzip
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/i.25208e7c92.js                    0.10 kB     0.09 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/styles.2da0941fcb.js                     0.47 kB     0.23 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/icon.svg                                           0.64 kB     0.41 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-49647b97ab0e.32d128b0af.js   4.3 kB      1.7 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-d78869bdfdd8.5265270343.js   7.1 kB      2.3 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-2879276472d3.6dca4f57ad.js   7.1 kB      2.8 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-3f36c54b37b2.a7fd945f79.js   8.1 kB      2.7 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-e46f534d763f.91ce2cf4c7.js   8.7 kB      3.3 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-8305a94f045b.c6480677f5.js   10.2 kB     3.1 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-3cacfb6a4458.f56b530dfd.js   11.7 kB     3.9 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-8cdba721bb25.30ba8f2adb.js   15.4 kB     4.7 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-d89a612ff1b4.a4496a891f.js   17.7 kB     5.4 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/lib-router.1e14e568cb.js                 35.4 kB     12.7 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/index.c861e6853a.js                      104.9 kB    26.6 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/a.877e354479.js                          217.1 kB    71.7 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/lib-react.9cdf8f49ce.js                  218.4 kB    68.9 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-04cbcabea10a.2298eecf99.js   374.2 kB    74.5 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-c4dae6800800.7474c5a40a.js   797.7 kB    168.5 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-7ce2535ac56d.1dbdf8ba75.js   953.7 kB    194.7 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/js/async/route-6c33a3943990.13730655a6.js   953.8 kB    194.8 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/static/search_index.ko.2efce542.json               1829.5 kB   523.8 kB
+
+                                                                                                              Total:   5650.1 kB   1381.0 kB
+
+File (node)                                                                                                                                                                                                   Size        Gzip
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/404.html                                                                                                                                  8.5 kB      2.5 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html                                                                24.6 kB     5.1 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html                       26.3 kB     5.6 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html                                                     26.7 kB     6.0 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html       28.0 kB     6.3 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html                             31.0 kB     7.1 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html   34.0 kB     6.4 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html                                                                    34.6 kB     7.9 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/plan/c11-4-root-html-fit-content-min-content-auto-track-list.html                                                                         36.7 kB     8.6 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html                  36.9 kB     7.0 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/plan/c11-4-grid-track-sizing.html                                                                                                         381.5 kB    77.6 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/internal/0059-c11-grid-layout.html                                                                                                        759.8 kB    168.8 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/STATUS.html                                                                                                                               882.9 kB    194.8 kB
+../../build/spinon/roadmap-c11-4-pr1277-status-docs-2026-11-08/site/spec/STATUS.html                                                                                                                          882.9 kB    194.8 kB
+
+                                                                                                                                                                                                     Total:   3194.4 kB   698.5 kB

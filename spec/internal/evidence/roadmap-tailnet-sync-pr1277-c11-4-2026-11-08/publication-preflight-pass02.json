@@ -1,0 +1,45 @@
+{
+  "tailscaleBackendState": "Running",
+  "previewServer": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "fileCount": 108,
+  "bytes": 11068993,
+  "states": {
+    "add": 92,
+    "same": 11,
+    "replace": 5
+  },
+  "replaces": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "targetSha256": "39743244afe940f6071c776c8db86cb89bb7089a837d991356ecbeb9e3c221f4",
+      "sourceSha256": "cf0426bb789a03cc008fae307777b15832ec3ff48ac36d3a3143ae8851b08740"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "targetSha256": "12227ae127aa78345e34737e71efb038a47e5d24c77d9a1746ace88881c4450e",
+      "sourceSha256": "61826aa17c79e892d2bfe547a326a0382c58b7078c0a12082047da785fadc155"
+    },
+    {
+      "route": "roadmap.html",
+      "targetSha256": "cdeef069a4d64823960449634cc4b61de5af57534330816aa5fe6e350f29fe7a",
+      "sourceSha256": "c46e5023dc877c8407b52210615dc141e06a808a0c1e1ced18ba17dc33e17f70"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "targetSha256": "1175a175ac30214a3a75d2cdc421a532d9e5da8cf49282a780d0092f1bbaf731",
+      "sourceSha256": "316290ffa34f5d2940e34bc44eb8814bae1dac06e9b5225bc42505d5b5ae4c1c"
+    },
+    {
+      "route": "STATUS.html",
+      "targetSha256": "cdac906bf0bd888be571e736eec5bfef9167ab507ab9ed6b95f3aec85a80b020",
+      "sourceSha256": "8ab16d2ed9bf010454eafd4f953917b8921848613e900eb21e61454a70edc506"
+    }
+  ],
+  "openHandlesUseReadOnlyCreateReadStream": true,
+  "replacementsWillUseSameDirectoryAtomicRenameAndKeepBackups": true,
+  "noDeletes": true
+}
