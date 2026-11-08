@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repeated intrinsic Grid row text precomparison</title>
+    <style>
+      :root {
+        --cap: 20px;
+        --tail: min-content min-content max-content max-content auto;
+        --grid-height: 220px;
+        --align: start;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      #grid {
+        display: grid;
+        width: 40px;
+        height: var(--grid-height);
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-rows: fit-content(var(--cap)) var(--tail);
+        grid-auto-flow: row;
+        align-content: var(--align);
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+      .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        color: #101820;
+      }
+      .payload {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        letter-spacing: 0;
+        white-space: normal;
+      }
+      #item-0 { height: 10px; background: #e5484d; }
+      #item-1 { background: #f2665e; }
+      #item-2 { background: #5ba8f5; }
+      #item-3 { background: #55c791; }
+      #item-4 { background: #a855f7; }
+      #item-5 { background: #facc15; }
+      #item-6 { background: #0ea5e9; }
+      #item-7 { background: #fb923c; }
+      #item-8 { background: #2dd4bf; }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div id="item-0" class="item"></div>
+      <div id="item-1" class="item"><div id="text-1" class="payload">A A A A A A</div></div>
+      <div id="item-2" class="item"><div id="text-2" class="payload">AAAA AAAA A</div></div>
+      <div id="item-3" class="item"><div id="text-3" class="payload">AA AA AA AA</div></div>
+      <div id="item-4" class="item"><div id="text-4" class="payload">A A</div></div>
+      <div id="item-5" class="item"><div id="text-5" class="payload">AAA AAA</div></div>
+      <div id="item-6" class="item"><div id="text-6" class="payload">AAAA</div></div>
+      <div id="item-7" class="item"><div id="text-7" class="payload">A A A A A A A A</div></div>
+      <div id="item-8" class="item"><div id="text-8" class="payload">AA</div></div>
+    </div>
+  </body>
+</html>
