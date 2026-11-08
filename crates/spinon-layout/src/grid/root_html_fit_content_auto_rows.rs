@@ -64,10 +64,39 @@ pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTr
     counts == [2, 2, 1]
 }
 
+pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
+    tracks: &[GridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut counts = [0usize; 3];
+    let mut fit_content_seen = false;
+    for (position, track) in tracks.iter().enumerate() {
+        if matches!(track, GridTrackSize::FitContent(_)) {
+            if position >= 3 || fit_content_seen || !fit_content_cap_is_supported(track) {
+                return false;
+            }
+            fit_content_seen = true;
+            continue;
+        }
+        let index = match track {
+            GridTrackSize::MinContent => 0,
+            GridTrackSize::MaxContent => 1,
+            GridTrackSize::Auto => 2,
+            _ => return false,
+        };
+        counts[index] += 1;
+    }
+    fit_content_seen && counts == [2, 2, 1]
+}
+
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)
         || supports_min_max_content_auto_track_list(tracks)
         || supports_repeated_min_max_content_auto_track_list(tracks)
+        || supports_repeated_min_max_content_auto_span_track_list(tracks)
 }
 
 pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
@@ -134,6 +163,9 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .filter(|child| !hidden.get(child).copied().unwrap_or(true))
         .collect::<Vec<_>>();
     let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
+    let six_member_span_list = supports_repeated_min_max_content_auto_span_track_list(tracks);
+    let six_member_candidate = six_member_list || six_member_span_list;
+    let later_six_member_candidate = six_member_span_list && !six_member_list;
     let repeated_text_profile = six_member_list
         && visible_children.len() == 9
         && visible_children.iter().copied().skip(1).all(|item_id| {
@@ -144,7 +176,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             repeated_text::has_supported_text(input, *payload)
         });
     let repeated_text_span_profile =
-        six_member_list && repeated_text::supports_span_topology(input, &visible_children);
+        six_member_span_list && repeated_text::supports_span_topology(input, &visible_children);
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -252,8 +284,9 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     };
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
-        || (six_member_list && visible_children.len() != 9 && !repeated_text_span_profile)
-        || (!four_member_list && !six_member_list && !matches!(visible_children.len(), 3 | 5))
+        || (later_six_member_candidate && visible_children.len() == 9)
+        || (six_member_candidate && visible_children.len() != 9 && !repeated_text_span_profile)
+        || (!four_member_list && !six_member_candidate && !matches!(visible_children.len(), 3 | 5))
         || has_non_collapsible_text(input, node)
     {
         return Err(LayoutError::UnsupportedGridContainerStyle {

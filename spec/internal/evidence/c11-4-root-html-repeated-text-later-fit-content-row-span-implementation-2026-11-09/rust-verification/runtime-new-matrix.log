@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 1 test
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::matrix::parsed_root_html_later_fit_content_positions_match_all_1920_chrome_scenes has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::matrix::parsed_root_html_later_fit_content_positions_match_all_1920_chrome_scenes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 368 filtered out; finished in 83.18s
