@@ -1,0 +1,1050 @@
+{
+  "publicationManifest": "selected-publication-manifest-pass03.json",
+  "fileCount": 169,
+  "added": 47,
+  "unchangedIdentical": 93,
+  "replacedWithBackup": 29,
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03",
+  "atomicReplacementKeepsExistingReaderFileDescriptorsValid": true,
+  "noDeletes": true,
+  "serverRestarted": false,
+  "entries": [
+    {
+      "route": "icon.svg",
+      "state": "unchanged-identical",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 783535,
+      "sha256": "743d9b153f13aa1abc743fe791c94f0b5f9d3c9d1dfb5d2e03065ef4f58418a2",
+      "previousSha256": "b29743f19267601c97db5c78173215debae0bc65ab56c8332e6e6cf552a36816",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/0059-c11-grid-layout.html",
+      "backupSha256": "b29743f19267601c97db5c78173215debae0bc65ab56c8332e6e6cf552a36816",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/chrome-157-order-matrix.json",
+      "state": "unchanged-identical",
+      "sha256": "8b7bd43fbdfa3d210c0780971101b619738263da921ca98ce8aedb4602a743db"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/chrome-157-order-matrix.png",
+      "state": "unchanged-identical",
+      "sha256": "75e70e39daf26cbe5b04575c933e96ebf2f9a47a2a589b09053db6ba0a578eae"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 39647,
+      "sha256": "f74f0b498466ea3c2af868d2ea70d587ea0a7ef649731c3f709caf1f5f3f10d2",
+      "previousSha256": "76df0fe264567fdffeaf9ad3b2e72a9034a95291d8caf1ec6d83f009a1fbe266",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "backupSha256": "76df0fe264567fdffeaf9ad3b2e72a9034a95291d8caf1ec6d83f009a1fbe266",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 37866,
+      "sha256": "65b6ff78e0306e625d7a4242765570a1eefd369e9ac45fc371c617b76e4640ca",
+      "previousSha256": "eb2ed2e833f830ce2b5998f040815ebe66933e667a3e21d236e9283a49920c41",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "backupSha256": "eb2ed2e833f830ce2b5998f040815ebe66933e667a3e21d236e9283a49920c41",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/build.log",
+      "state": "unchanged-identical",
+      "sha256": "015cda59d412c54c0dd356afd112f6a3d00518f8db2ad3fec4e5ae89e0026b5f"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/abi.txt",
+      "state": "unchanged-identical",
+      "sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/android-release.txt",
+      "state": "unchanged-identical",
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/api-level.txt",
+      "state": "unchanged-identical",
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/app-current-process.log",
+      "state": "unchanged-identical",
+      "sha256": "81e8c9f92f8138342e19836f1cc27447f292b5384300a49ac60ff032696c8bba"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/app-pid.txt",
+      "state": "unchanged-identical",
+      "sha256": "a1d14cc61c35c3af89dfadd92397c15be5d55ead97a1cd6573fac23586e1801b"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/app.log",
+      "state": "unchanged-identical",
+      "sha256": "192e01845ef71efa0f775df3411e490fd0668da3eac86d3e7919d956809e5600"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/appearance.txt",
+      "state": "unchanged-identical",
+      "sha256": "70d2a5d1d7c18e85ddd00cdbbb4d66945f6bda16f5efa2d8afe9cf9889f51991"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/current-app-pid.txt",
+      "state": "unchanged-identical",
+      "sha256": "a1d14cc61c35c3af89dfadd92397c15be5d55ead97a1cd6573fac23586e1801b"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/density.txt",
+      "state": "unchanged-identical",
+      "sha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/device.txt",
+      "state": "unchanged-identical",
+      "sha256": "3b730da59121011c8aa637fcd60a52c849101efe84ad26c57b4929cccded5ea2"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/force-stop.log",
+      "state": "unchanged-identical",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/install.log",
+      "state": "unchanged-identical",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/is-emulator.txt",
+      "state": "unchanged-identical",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/launch.log",
+      "state": "unchanged-identical",
+      "sha256": "d7f668208a38a429f9b582329a90fd0784a962cf81218e05315c66bc058f7bbd"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/package-after.txt",
+      "state": "unchanged-identical",
+      "sha256": "cf7416947f343ba889a05713a1221618246e445004da0766d7c770541b99f49c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/package-before.txt",
+      "state": "unchanged-identical",
+      "sha256": "5c0ae4838f163757be044192668de47feb7fa67af8c53c336ee7819083530cf0"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/resumed-activity.txt",
+      "state": "unchanged-identical",
+      "sha256": "4dba0f1d892a12da1a95d40506cb699149f5f38b07ad43b8aa1ffb5e2f99d973"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screen-size.txt",
+      "state": "unchanged-identical",
+      "sha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot-before-draw.png",
+      "state": "unchanged-identical",
+      "sha256": "cb711f447d96bc8eb26cf3982d25f9edfca58a6abecf37ca7b6cb7ff9bf1fbfb"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot-before-draw.sha256",
+      "state": "unchanged-identical",
+      "sha256": "659c66356b0b549d5887f0dd746636485376e97308bdbeff3fc037fe1c397a6c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot.png",
+      "state": "unchanged-identical",
+      "sha256": "72ac60d0660fbd4c1e1d577859797f1f30daa7c569633aee7c614b3b346a949f"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot.sha256",
+      "state": "unchanged-identical",
+      "sha256": "95acbe4c852e26533b5f751b3eadf12c0320a4dfecc6090ee2802f7ef52c3540"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/bootstrap-original/index.html",
+      "state": "unchanged-identical",
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/bootstrap-original/restored.sha256",
+      "state": "unchanged-identical",
+      "sha256": "07332bf9c1b737db1c63b34877124eb7375c42cd4a58c76d719314ab8264a6c5"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/build-simulators.sh",
+      "state": "unchanged-identical",
+      "sha256": "62e3313fd321d529da5171543922c48327c0ac867086915769be13b736e160c6"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/built-artifacts.sha256",
+      "state": "unchanged-identical",
+      "sha256": "e2e6c379974f85c0cfadd8540bb749bb0d37bbf23b690fab7a3bd181b7ad876e"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/capture-android-current-process.sh",
+      "state": "unchanged-identical",
+      "sha256": "39b5c8392a25b6047512b16116bafab1833519402880f44567eb4897166c366c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/chrome-runtime-oracle.json",
+      "state": "unchanged-identical",
+      "sha256": "73285df36562a882e5a69b258502c16a3956d0267f18a1c592f0a1303ba90a6d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/chrome-runtime-oracle.png",
+      "state": "unchanged-identical",
+      "sha256": "4f518af15b584e8af01b1af126268422f17a9f60eaa7bde9637c62349f4e57f8"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/final-capture.sha256",
+      "state": "unchanged-identical",
+      "sha256": "7e988052f63c3d9b6748b767736deeaa25426455f3bdaaaabfee52ffd5b9c829"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/final-source.json",
+      "state": "unchanged-identical",
+      "sha256": "5abd2395ab65e764f01762d194cf5b0ad556d6c8c28a4daeef030fd4ad14450c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 45631,
+      "sha256": "09b62d9f7477a9da60b965d2320d4979d84027922b4be90c5cc83e13044b1ba5",
+      "previousSha256": "011c38ce22c216e3fc44e2be1eec4237bc078264ebdc1929e14197a27a55e151",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "backupSha256": "011c38ce22c216e3fc44e2be1eec4237bc078264ebdc1929e14197a27a55e151",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/install-capture-simulators.sh",
+      "state": "unchanged-identical",
+      "sha256": "78ef20fb5e1caf9eb2c4e0a0111176f342652f7e1973174ca9f888c3b0b33abb"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/build.log",
+      "state": "unchanged-identical",
+      "sha256": "364e7e976bc5178bc01ac8689e9e7a2ee4702baf8fcef5d738273b0ebf815036"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/app-current-process.log",
+      "state": "unchanged-identical",
+      "sha256": "3a74a8004aafd71f979e76dd226f340a457b053a8a73bcf0574dc3f5a2da7603"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/app-pid.txt",
+      "state": "unchanged-identical",
+      "sha256": "77adfe8c2014bbfd205adae2157cca377f3f9b8a417dc6445bca7e263ade9cb6"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/app.log",
+      "state": "unchanged-identical",
+      "sha256": "8a9f133245d191cc89f83fdb2d6c46acebcdeb72c7d0ecbe2b4f1b124552a657"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/booted-devices.txt",
+      "state": "unchanged-identical",
+      "sha256": "30b89c98f9d9b2243ccd2635449606adfba59d6d03e6fdb11d5067cc0d2791b7"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/data-container-after.txt",
+      "state": "unchanged-identical",
+      "sha256": "007c8df79d452d943f217e97bb52cb7f545329265a0302dc47e0f25e2923d9e0"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/data-container-before.txt",
+      "state": "unchanged-identical",
+      "sha256": "e78e19177a962b866de7e49409ab933cca27ac2c0f7abe51c21af47ee6d7f2db"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/data-container-identity.txt",
+      "state": "unchanged-identical",
+      "sha256": "7f8b1dfc466b6249f06cbe55c9174df2578e7754da793fded244ef5cba2a38f1"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/device-metadata.json",
+      "state": "unchanged-identical",
+      "sha256": "4b31fdc6c455510e0b4f0fc5f728e2b4f3af371a1a2c02d16d74c5879c07cc94"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/device-name.txt",
+      "state": "unchanged-identical",
+      "sha256": "3f14991586b96220745b63a5b89c0346760d45d6b2143a08b9c2eda2b83b7866"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/device.txt",
+      "state": "unchanged-identical",
+      "sha256": "361b57e2943c8f01439dabba0941232d8afde5b3b65fb3488747e7c296b80ea9"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/install.log",
+      "state": "unchanged-identical",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/installed-fixture.sha256",
+      "state": "unchanged-identical",
+      "sha256": "99dea414f62349f495028291f2c5c4bd2c3e5681a75e46c56086543463618e21"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/launch.log",
+      "state": "unchanged-identical",
+      "sha256": "7efc0c3671657f6ac215c0daf745d7ec08bd08ab150f37c35dfe0b0d1909abf8"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/screenshot.log",
+      "state": "unchanged-identical",
+      "sha256": "6c07f54a1ce9b73f5065f362e35e6b911a29d9d3db4b5f6c2a11df8af89e94af"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/screenshot.png",
+      "state": "unchanged-identical",
+      "sha256": "90412921959d0d8d6adb6821382cb19bcd62487e7cfc5c673f142dbeafafb099"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/terminate.log",
+      "state": "unchanged-identical",
+      "sha256": "b85926f2d5887c7b5208af8fdfa3e885bf38ccd9c1a9fe68ef16c135c29156f2"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 48554,
+      "sha256": "2f25ccbb57b590c8ce660bb71b112bf6bd435b203f3495848da5606f4e77415e",
+      "previousSha256": "aac781ba8b21edc8ec0bdcebfa7665572675e903e7a5b056de58c1ae0680afd8",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "backupSha256": "aac781ba8b21edc8ec0bdcebfa7665572675e903e7a5b056de58c1ae0680afd8",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 42593,
+      "sha256": "0ebfe15fbfb67c6e202ae0009aff9dac8bead581037c4b7b66089cdcf7e1530a",
+      "previousSha256": "f83fbf4d0427b1de1ba547b46903bc6877b279ea093c25d4a23cb020ffe897ed",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "backupSha256": "f83fbf4d0427b1de1ba547b46903bc6877b279ea093c25d4a23cb020ffe897ed",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 42725,
+      "sha256": "a1b89cf8d66a97ef9b91343b2494e2b77a468347035d6273fcf67fd66f9f1552",
+      "previousSha256": "876eae960b02b7c1fa2bba1feb6feab9da28a8459783f32b44743b4aea0d513c",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.html",
+      "backupSha256": "876eae960b02b7c1fa2bba1feb6feab9da28a8459783f32b44743b4aea0d513c",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-agent-browser-157.png",
+      "state": "unchanged-identical",
+      "sha256": "cdfa9c27897f65da95cebff01b99c1b757ec69c9773cdb327e7177b61c38725b"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-observation.json",
+      "state": "unchanged-identical",
+      "sha256": "86b5589867a9948f111abe121aa22720636921981ec44e741945f5a8ea7832ca"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "dead47db312cef4dea338a9084aea5e7d1b056691f4f21b810c9d783bc28fa61"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/expected.json",
+      "state": "unchanged-identical",
+      "sha256": "50d3865d1a377090e0106eb073677f43c40c1c82b59b64bc747b27c3fc645ff7"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 38804,
+      "sha256": "1edaea3ff4dc92cd5876454a89e6ed78f7a0dfd6145abe8c7e1db4aaa0754afd",
+      "previousSha256": "f938a39f334f25953477c0f0479b5ddbd7823a3b27748de477ad3f2476a1146f",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "backupSha256": "f938a39f334f25953477c0f0479b5ddbd7823a3b27748de477ad3f2476a1146f",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-desktop.json",
+      "state": "unchanged-identical",
+      "sha256": "35329ff67dc6bf1cfeb37ad80eb388fe4b31ba349eb283732b42987b1d55b6d0"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-desktop.txt",
+      "state": "unchanged-identical",
+      "sha256": "f41e830e4c8d6bed8f22d448e3f4e8c7d360e1823a1d848646db8682cc50a8dc"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-mobile.json",
+      "state": "unchanged-identical",
+      "sha256": "5d5fb9aa6d7a7df0b2a861cfc436f56b80f60935968c93c62ef9e3c9aee2e246"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-mobile.txt",
+      "state": "unchanged-identical",
+      "sha256": "ce3fe5fdb2187b4d5755c0fde3185c22721c1fbc02183424993eaf21fb053cbd"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/android-image-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "8b4bee469bed75a090549a546ab24ae36d2dc0960c031cda1a3c2bca5531a7bf"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/copy-and-backup.json",
+      "state": "unchanged-identical",
+      "sha256": "22400eeb0c3d496f3e6c9b5fde2e030f6b7da204b2b8aa4078114c85f68d7796"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification-bad-url.json",
+      "state": "unchanged-identical",
+      "sha256": "ee742210852d73e802d3043c0377c4f50a895d73d869817b12dc317d049e1426"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "c19aad708d472d57fe1ce3cdff2289ad9076030e4425055b65f61e57d624491d"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/plan-link-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "9acbd6815c5cc25b17a5761f0a30efc6189b7e31bfb0dec27b72e0b6fb0ea5b3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/preflight.json",
+      "state": "unchanged-identical",
+      "sha256": "462d527b5069640241dd50f61011293da59948d1ce11fee9e9c036739bd1633a"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 39634,
+      "sha256": "180c14dd1d118de57548571a50927aa0e9c01764d02f297a1331a1e0301bb1ce",
+      "previousSha256": "42a78e6b9e49a23ce30df492ff933dd97e0cbaa9bbe4495cee1139eed1cc347f",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "backupSha256": "42a78e6b9e49a23ce30df492ff933dd97e0cbaa9bbe4495cee1139eed1cc347f",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 47791,
+      "sha256": "d42f82e59501f94f9aad9a826d2cda3e5da5f55b656ab7ed63dfeb7139ba6964",
+      "previousSha256": "86c9e13649da8040eaec95439234ec2a2317d78db84a72c1c87e1aa280ffc0d8",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "backupSha256": "86c9e13649da8040eaec95439234ec2a2317d78db84a72c1c87e1aa280ffc0d8",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 44380,
+      "sha256": "99ed684d948bf3c857c08bd0b8e402d0bbcc39d1374b7467fc0179102baf1b0d",
+      "previousSha256": "66371b0d0a9409043aabe98d8a9af96cc0ff1e64a9a0967569c2f5c6ef61d83e",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "backupSha256": "66371b0d0a9409043aabe98d8a9af96cc0ff1e64a9a0967569c2f5c6ef61d83e",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/runtime-evidence-link-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "7b6d008003e4f05914d1af4cef16d81f716afa0f1091fa283b5ba4a21bd14798"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/served-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "23ab1bfcf569b647731691983e64c8e8c6e6de471545dda7c508915e4b5fac68"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/tailnet-roadmap-agent-browser-desktop.png",
+      "state": "unchanged-identical",
+      "sha256": "d6a97e8a1e820d669cafa5600d2d0064f0d3fd7f625acfefbea5d852b620e70e"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/tailnet-roadmap-agent-browser-mobile.png",
+      "state": "unchanged-identical",
+      "sha256": "39be28423d9381c8b439a9a5affa025c077231e6f08a2c06b98f5d9970c0c329"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/agent-browser-lifecycle-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 454,
+      "sha256": "aae40adb4ab8c75239529c2612f662a7ad6199b07f7a9d03bf0e84f1dafa4d32"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/agent-browser-verification-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 2572,
+      "sha256": "ec17b580cf184b8804c9f62844a28ff329511098ddfed09fc49a984a38a45658"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/live-before-desktop.json",
+      "state": "unchanged-identical",
+      "sha256": "2eb714ee03f3675b473e602ae81ea30fbfbcabb554f85a2a4a8577a5302e308d"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/live-before-desktop.png",
+      "state": "unchanged-identical",
+      "sha256": "477a3694ecc5a84cb80f1d4cac23682b36bc7d0f99977dd4110359d65d06bba9"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/publication-preflight-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 5790,
+      "sha256": "ff37b1d4a485acd9218ac930cf4430c4047b3856e9e0ff62fd79c5b09616321a"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 38852,
+      "sha256": "c5ebfe34dbbb4194c69b266c063d1f05673355daad636118144a22d203b92df1",
+      "previousSha256": "c04bc6bc3eea680d58da5af3eef4defc07f94e4096400bd817bda18ae1e09aee",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.html",
+      "backupSha256": "c04bc6bc3eea680d58da5af3eef4defc07f94e4096400bd817bda18ae1e09aee",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 41113,
+      "sha256": "ba1d850bd751ea4fa7fc86e0f8124df2ed32224b5198623eac5ac65325a17b6a",
+      "previousSha256": "50c25d027709145ecbc562309be0b764dce3a6e0235d1338469ac38a34f4ae03",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "backupSha256": "50c25d027709145ecbc562309be0b764dce3a6e0235d1338469ac38a34f4ae03",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 39290,
+      "sha256": "8e2687e804a511c2c57766344459694d1568e4082f07f748b71ce681d2c3d275",
+      "previousSha256": "feab4a958156acfff8dcbb0bfcecd79e6c5613364dfef85dec8bdece80fceb68",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "backupSha256": "feab4a958156acfff8dcbb0bfcecd79e6c5613364dfef85dec8bdece80fceb68",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/selected-publication-result-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 46866,
+      "sha256": "1396cb8d715e059be77b74a690cf68ad75044dfecdc96558f38afdd716f060f3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/served-verification-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 23406,
+      "sha256": "532e641a63d35d171f3695a4d87497136048ec4c31e7175194cc52d1c48ab638"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-agent-browser-desktop.png",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 154753,
+      "sha256": "91f75c754b4f454c974d0878203db20ed5dd6dd0c4a9ea7873528ef08570eab9"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-agent-browser-mobile.png",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 51195,
+      "sha256": "9d88a724a0f40ed3f881d465f9d36aaee5ef13d1dc5c53b4cda90929694231a2"
+    },
+    {
+      "route": "logo.svg",
+      "state": "unchanged-identical",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 401178,
+      "sha256": "6117ab2c3f620e4dcb3afb5a1cd320117850abc81594c1059b6db8a69389eb3f",
+      "previousSha256": "b1ef964432948a3cf54c5cd0944cbbb903d9b647420368fdcd7f7cc7588482f2",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-grid-track-sizing.html",
+      "backupSha256": "b1ef964432948a3cf54c5cd0944cbbb903d9b647420368fdcd7f7cc7588482f2",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 38267,
+      "sha256": "08fd3f47a20734e46f8430d3f851d9c921961524a50351e05122b9a911792d8f",
+      "previousSha256": "3e670a083c9e66c096801c63a9fd1b2415392bb63a1cac167c95a224b17f29b3",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "backupSha256": "3e670a083c9e66c096801c63a9fd1b2415392bb63a1cac167c95a224b17f29b3",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 46247,
+      "sha256": "4e3eb60cb73298a5df2e4e410b452996cec47040962f3c28c73ca1a45890bbc3",
+      "previousSha256": "f715e4fc5294c4f8b060637e9ecab1e7852e51720c3769925d8fbee0c360c458",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "backupSha256": "f715e4fc5294c4f8b060637e9ecab1e7852e51720c3769925d8fbee0c360c458",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 48372,
+      "sha256": "f26f41a71d389a06f0ee8b202a4bb213c660e0b8b47d1f28aa0e503dc8b2e426",
+      "previousSha256": "60239292ea718e3ed0619e5ce25e81928464607cd41c85f121f7decc54c6f415",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "backupSha256": "60239292ea718e3ed0619e5ce25e81928464607cd41c85f121f7decc54c6f415",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-intrinsic-auto-rows.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 51522,
+      "sha256": "604406e9d4897bec8f03d6932cf8ba36823d8bfab1d9137586c7d894abec03c2",
+      "previousSha256": "1d348f1afdf89452e3abf650ee8e1b5e54c47da0dfcee7d11bfe4aa0c240f541",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-root-html-repeated-intrinsic-auto-rows.html",
+      "backupSha256": "1d348f1afdf89452e3abf650ee8e1b5e54c47da0dfcee7d11bfe4aa0c240f541",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-intrinsic-tail-permutations-plan-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 39586,
+      "sha256": "f76eda4e669acdd1997b6c8990d13b717f853ef6f2d04d5f7a1e596ba4a95cb9",
+      "previousSha256": "c16a712900ce2ff743872b5e040d00ede08485fe5b7c6340433672cacbdde3ab",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-root-html-repeated-intrinsic-tail-permutations-plan-review-20.html",
+      "backupSha256": "c16a712900ce2ff743872b5e040d00ede08485fe5b7c6340433672cacbdde3ab",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-intrinsic-tail-permutations.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 44477,
+      "sha256": "2b3da9869b427d104a38745e8784fa4ab9d3f715c6955177919b903bdd8dccd6",
+      "previousSha256": "12cae0331c5e7a97c35d88c1f074a913fbf5a4753b53f58ee6c39235863b05ec",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/plan/c11-4-root-html-repeated-intrinsic-tail-permutations.html",
+      "backupSha256": "12cae0331c5e7a97c35d88c1f074a913fbf5a4753b53f58ee6c39235863b05ec",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "roadmap.html",
+      "state": "unchanged-identical",
+      "sha256": "8b3751307c197dd6753af1b3367b937fb7f1d3398fbb1551db0e013863daa5a9"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 784027,
+      "sha256": "f58b85cc8fee4bd79e3137868bddb96b3c8fd1a7852ace43ed56c005ea602744",
+      "previousSha256": "35251f5db1712b70bc0d0c01016a1c0e5493eb17790b2aa3a288f7c41fa1c5cc",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/internal/0059-c11-grid-layout.html",
+      "backupSha256": "35251f5db1712b70bc0d0c01016a1c0e5493eb17790b2aa3a288f7c41fa1c5cc",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 42585,
+      "sha256": "052cdea44fb883058ac8ff0339be3851e8c42f352168c721c9a184e8fa5f536c",
+      "previousSha256": "7c2528faaacfcb8e0875fbd9a75fdf1363335f60755c5a44ee0ab5b065ff8a10",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.html",
+      "backupSha256": "7c2528faaacfcb8e0875fbd9a75fdf1363335f60755c5a44ee0ab5b065ff8a10",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-agent-browser-157.png",
+      "state": "unchanged-identical",
+      "sha256": "cdfa9c27897f65da95cebff01b99c1b757ec69c9773cdb327e7177b61c38725b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-observation.json",
+      "state": "unchanged-identical",
+      "sha256": "86b5589867a9948f111abe121aa22720636921981ec44e741945f5a8ea7832ca"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "dead47db312cef4dea338a9084aea5e7d1b056691f4f21b810c9d783bc28fa61"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/expected.json",
+      "state": "unchanged-identical",
+      "sha256": "50d3865d1a377090e0106eb073677f43c40c1c82b59b64bc747b27c3fc645ff7"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 38811,
+      "sha256": "f1e8938bb0b4806e8f9e997d8b9a231228224664f763cef36b5941a1c5ff5deb",
+      "previousSha256": "63b8f65abceab745e7a9a47dcd4cc3a235a43b98c68e677e86ff1af12a86fb45",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "backupSha256": "63b8f65abceab745e7a9a47dcd4cc3a235a43b98c68e677e86ff1af12a86fb45",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/agent-browser-lifecycle-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 454,
+      "sha256": "aae40adb4ab8c75239529c2612f662a7ad6199b07f7a9d03bf0e84f1dafa4d32"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/agent-browser-verification-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 2572,
+      "sha256": "ec17b580cf184b8804c9f62844a28ff329511098ddfed09fc49a984a38a45658"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/live-before-desktop.json",
+      "state": "unchanged-identical",
+      "sha256": "2eb714ee03f3675b473e602ae81ea30fbfbcabb554f85a2a4a8577a5302e308d"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/live-before-desktop.png",
+      "state": "unchanged-identical",
+      "sha256": "477a3694ecc5a84cb80f1d4cac23682b36bc7d0f99977dd4110359d65d06bba9"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/publication-preflight-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 5790,
+      "sha256": "ff37b1d4a485acd9218ac930cf4430c4047b3856e9e0ff62fd79c5b09616321a"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 38880,
+      "sha256": "1817d04561e9db93c35aae677dd5eefeff74c23152f1a3e3c7f3c7586b3f91c1",
+      "previousSha256": "a92b716c33a7c52cd0c68730c0ea092ed3c891b15bfe15e46d2e17338df43cc6",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.html",
+      "backupSha256": "a92b716c33a7c52cd0c68730c0ea092ed3c891b15bfe15e46d2e17338df43cc6",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 41123,
+      "sha256": "d0fe3c985ba87af6ad94c09badc77d757b015032dcd2ad57a5736079e7c4f11d",
+      "previousSha256": "f84e10c16e577f29477bc58d0684e21c652c4510bc5f1902d6d58e47ca8c5bb4",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "backupSha256": "f84e10c16e577f29477bc58d0684e21c652c4510bc5f1902d6d58e47ca8c5bb4",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 39285,
+      "sha256": "70faa618b0d1d713b698cd646d1866ef89ae1c481946dac1da81fdb7961f1cfe",
+      "previousSha256": "3ce91d0f373bf1e9dcb7b88d38eebe1d3a7636963f2c02d047796959a30754ee",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "backupSha256": "3ce91d0f373bf1e9dcb7b88d38eebe1d3a7636963f2c02d047796959a30754ee",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/selected-publication-result-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 46866,
+      "sha256": "1396cb8d715e059be77b74a690cf68ad75044dfecdc96558f38afdd716f060f3"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/served-verification-pass02.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 23406,
+      "sha256": "532e641a63d35d171f3695a4d87497136048ec4c31e7175194cc52d1c48ab638"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-agent-browser-desktop.png",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 154753,
+      "sha256": "91f75c754b4f454c974d0878203db20ed5dd6dd0c4a9ea7873528ef08570eab9"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-agent-browser-mobile.png",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 51195,
+      "sha256": "9d88a724a0f40ed3f881d465f9d36aaee5ef13d1dc5c53b4cda90929694231a2"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 901551,
+      "sha256": "3323e1444914819dcc1cfdb0813e97d6335f55c8b3b1822ef4fe67d3a5e0723c",
+      "previousSha256": "627c98f8780f345ce4bc33e2bcb9df35ba43015f7aa60c1ec8a748adbc499d9b",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/spec/STATUS.html",
+      "backupSha256": "627c98f8780f345ce4bc33e2bcb9df35ba43015f7aa60c1ec8a748adbc499d9b",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "state": "unchanged-identical",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-desktop.9f1d22129f.png",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 154753,
+      "sha256": "91f75c754b4f454c974d0878203db20ed5dd6dd0c4a9ea7873528ef08570eab9"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-mobile.3c76926294.png",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 51195,
+      "sha256": "9d88a724a0f40ed3f881d465f9d36aaee5ef13d1dc5c53b4cda90929694231a2"
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "state": "unchanged-identical",
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "state": "unchanged-identical",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "state": "unchanged-identical",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.50e96dfd0d.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 381385,
+      "sha256": "056ef2c9705f1d306ab0eb37b8af3b40968ac834b731cbc749b3271fc3e13bab"
+    },
+    {
+      "route": "static/js/async/route-2879276472d3.fbab617446.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 7148,
+      "sha256": "26d30e5d5af1316b1a9057ef5ea27ccb69819b9faafb66fca151e52c5c41ff13"
+    },
+    {
+      "route": "static/js/async/route-2c12e30276df.f0c4ec6735.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 9634,
+      "sha256": "2f69917522d3236c3c07d9ad599ec49e2ba664a4101904c6ec122e5f06e3a61e"
+    },
+    {
+      "route": "static/js/async/route-3cacfb6a4458.53438d79d2.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 11741,
+      "sha256": "d56892935ff3cfe635a599697c0a6718ed33b281e7a06a85206d130fc9f26e6c"
+    },
+    {
+      "route": "static/js/async/route-3f36c54b37b2.b7dde6e968.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8074,
+      "sha256": "dbe8f7930008b4e0ddc7f0e18e9d5b66ed733bbc3327ac649213b8fe69b9b478"
+    },
+    {
+      "route": "static/js/async/route-49647b97ab0e.fe161b44f6.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8098,
+      "sha256": "0b0367371dd6ebc64930e0cd3c01a988387c9989fcc689b1d9eaa6ce8894e2c5"
+    },
+    {
+      "route": "static/js/async/route-4f9399a2f7f0.510117e8f7.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 7006,
+      "sha256": "12f6680ed551379ea252fc1d7a66dd2f5f7d8978f7e26b843f62491cef5108d0"
+    },
+    {
+      "route": "static/js/async/route-5830a0f5aaff.3e23ca74da.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 11858,
+      "sha256": "6b6189b4d7ef05480112d2e6d14fc837988e0a3c17e3077a26ace269c3f6c63e"
+    },
+    {
+      "route": "static/js/async/route-59ef5d88f123.81d2f5f74e.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8313,
+      "sha256": "22e74aae10794b3bc56e311ecca002b5a421814e852d4b54042921ecfa75c6e8"
+    },
+    {
+      "route": "static/js/async/route-61cf1bbed020.bf5477e640.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 6613,
+      "sha256": "d6469fe7ab4d1be6f5004a1776ecceae1793933595a1e4e8b532ffe085f0bb72"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.279e35d9f1.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 960904,
+      "sha256": "a07c002a4d1a8af0be587381401f6c653aa9e3ccfd837e7569cba86a3b9f0027"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.2a26e50f67.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 808954,
+      "sha256": "46ce35d8c9024721bda24199dac0ac02ff79bf57835ad465f5f7d8607f37151d"
+    },
+    {
+      "route": "static/js/async/route-75ece61ca3e3.e23849767d.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 9418,
+      "sha256": "d5716969f81b2942085689ed4f275bd6838ab094994db91c9cf0335855c7c51b"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.9dc4f0b2c1.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 961145,
+      "sha256": "6b1c77d11d28ad35001aaa3b9923c9b23cd96c62159cdefddb3d766f5c56d64f"
+    },
+    {
+      "route": "static/js/async/route-7eb6482325cb.1e020293e5.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 11224,
+      "sha256": "34cecda782d837409fa5d306b917e52ed49a6ea63a46a034c86a5b05c06d3b0e"
+    },
+    {
+      "route": "static/js/async/route-81c99adbd3af.b9e415736c.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 7014,
+      "sha256": "11918106ae48fb7e9cfd8d9b5f2876c6ec7cee7477faa52c05e0a28c921e0edf"
+    },
+    {
+      "route": "static/js/async/route-8305a94f045b.7cf6be0100.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 10202,
+      "sha256": "59098a9cdb260d63b996506a7c69e57ab462753f5dfd7894e2c460b95de966a6"
+    },
+    {
+      "route": "static/js/async/route-8cdba721bb25.a77637451e.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 15353,
+      "sha256": "c659ce9c4a0fe31187cd6592a0451d4e23e32c7101ebc7c38134aeefc8ea82ca"
+    },
+    {
+      "route": "static/js/async/route-b9469f75d9f5.5d93213302.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 6620,
+      "sha256": "85eeb24a6ff151b13329401f1e87898a89867225e452c7d727d0a25bb97da99a"
+    },
+    {
+      "route": "static/js/async/route-c127df177555.30644d52ff.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 10439,
+      "sha256": "36e1659613d5c3a4929efafbb4a63650e9ff64f0ef4a2fe9990c947968d86b19"
+    },
+    {
+      "route": "static/js/async/route-c42d69c1e313.ee2263815c.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 6723,
+      "sha256": "8d5456d3cce74a154d311f218a5ad780ccc2d2594f5bab4911a1d7113ccb633a"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.817da50377.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 808945,
+      "sha256": "400a285b0ab9e3f8643902dd61134d54b2ab7a7e5d0b9bda26c8875c8c9b9e19"
+    },
+    {
+      "route": "static/js/async/route-d78869bdfdd8.cb0074be00.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 7070,
+      "sha256": "84a528fca23c11d4efb5ac7acb6dd77324d2829ff3da08fcea377114a804bf05"
+    },
+    {
+      "route": "static/js/async/route-d89a612ff1b4.545afcf782.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 17722,
+      "sha256": "55e20067663e7e0f7d8b1930b909c88c1fa50eefaa2f7331e86de2242ba7137b"
+    },
+    {
+      "route": "static/js/async/route-da68a17ee060.5be3ee5cd5.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 17018,
+      "sha256": "5647dabf5ec7791373bb72063adbd425d57501d44401ab49ce980f2d9947965c"
+    },
+    {
+      "route": "static/js/async/route-e3b7d5a43b97.de92b89561.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 10438,
+      "sha256": "d11f03d3561ed82cb8742528caa0add81e7009868196df4383f005fd9a487788"
+    },
+    {
+      "route": "static/js/async/route-e46f534d763f.785c79d9b1.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8682,
+      "sha256": "4218fbb75cd4542c0a1a3182e4a31fdc6d9c71c6cb25947b061a2bc08f595fd3"
+    },
+    {
+      "route": "static/js/async/route-eaf5f5186ee3.e0a531386e.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 9411,
+      "sha256": "dbd1848f6b99cf1c00c0000a61efb8e22a481417d332f0ec7dfdbb1a2cf89d52"
+    },
+    {
+      "route": "static/js/async/route-fa4e032e0f26.7f0ea21501.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 11852,
+      "sha256": "72cf6d2e7bf6eca6c0ba98fb6ac2be44d1fdbce645dd55d9b5094a7219e68f88"
+    },
+    {
+      "route": "static/js/index.10b8ce5e14.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 179739,
+      "sha256": "8663567b28a61cf4117084c3642ed4389fbf140ca064c02e5e44ff787a71bc62"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "state": "unchanged-identical",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "state": "unchanged-identical",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "state": "unchanged-identical",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "state": "unchanged-identical",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "state": "unchanged-identical",
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "route": "static/search_index.ko.e6bed020.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 2448722,
+      "sha256": "e6bed0207ac672610dc31e30b8b77b1d17e3d25e2c6b928fe33da7c8a3ccbdbb"
+    },
+    {
+      "route": "STATUS.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 900795,
+      "sha256": "97304b65bdbcc1860de9acae3c56b9203afdd203cc2679b2f1c574617d14c58e",
+      "previousSha256": "ad17e5aa3fcc8d4257f1eb70de0a1cd4e3b4606b4fa3ed1fd511ddf1efaaa772",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/pass03/STATUS.html",
+      "backupSha256": "ad17e5aa3fcc8d4257f1eb70de0a1cd4e3b4606b4fa3ed1fd511ddf1efaaa772",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-remaining-order-precomparison.html",
+      "state": "unchanged-identical",
+      "sha256": "e927dcbec971bba640d3cb7c90906850c6a4fe780226bf31b0f7dc854b8d0b89"
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-remaining-order-runtime.html",
+      "state": "unchanged-identical",
+      "sha256": "2f108e91fb3f7485df0aded8e4eb7942f7718063f63437eb05ec064532d9471e"
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-tail-permutations-precomparison.html",
+      "state": "unchanged-identical",
+      "sha256": "5adea0a9fc0b19ee6e9b3ab9785a7849a515ddbc71dd44bc56499b3c302f78ea"
+    }
+  ]
+}
