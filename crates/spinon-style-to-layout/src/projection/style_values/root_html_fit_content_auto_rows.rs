@@ -1,4 +1,4 @@
-use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind};
+use spinon_core::{HostDocumentSnapshot, HostNodeKind};
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridAutoRows, ComputedCssGridPlacement,
     ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue,
@@ -10,6 +10,13 @@ use super::{RuntimeGridNodes, StyleLayoutError, grid_values};
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 #[path = "root_html_fit_content_auto_rows/repeated_text.rs"]
 mod repeated_text;
+#[path = "root_html_fit_content_auto_rows/validation_helpers.rs"]
+mod validation_helpers;
+
+use validation_helpers::{
+    direct_element_children, explicit_empty_span_item_placement, repeated_span_item_kind,
+    repeated_span_item_placement, validate_payload,
+};
 
 pub(super) fn validate(
     tree: &HostDocumentSnapshot,
@@ -151,23 +158,6 @@ pub(super) fn validate(
             }
         }
     }
-    if (four_member_list && items.len() != 6)
-        || (six_member_list && items.len() != 9)
-        || (!four_member_list && !six_member_list && !matches!(items.len(), 3 | 5))
-        || nodes
-            .grid_item_owners
-            .values()
-            .filter(|owner| **owner == node)
-            .count()
-            != items.len()
-    {
-        return Err(unsupported(
-            node,
-            "grid-auto-rows",
-            "Root HTML fit-content rows require three or five direct items, six for the four-member list, or nine for the repeated six-member list",
-        ));
-    }
-
     let styles = snapshot
         .elements
         .iter()
@@ -184,9 +174,75 @@ pub(super) fn validate(
             };
             repeated_text::payload_has_supported_text(tree, *payload)
         });
+    let repeated_text_span_profile = six_member_list
+        && matches!(items.len(), 3 | 4)
+        && items
+            .first()
+            .and_then(|item| styles.get(&item.id()).copied())
+            .is_some_and(explicit_empty_span_item_placement)
+        && items.iter().copied().skip(1).all(|item| {
+            let Some(style) = styles.get(&item.id()).copied() else {
+                return false;
+            };
+            let Ok(children) = direct_element_children(tree, nodes, item) else {
+                return false;
+            };
+            let [payload] = children.as_slice() else {
+                return false;
+            };
+            repeated_span_item_placement(style)
+                && repeated_text::payload_has_supported_text(tree, *payload)
+        })
+        && {
+            let placements = items
+                .iter()
+                .copied()
+                .skip(1)
+                .filter_map(|item| styles.get(&item.id()).copied())
+                .map(repeated_span_item_kind)
+                .collect::<Vec<_>>();
+            placements
+                .iter()
+                .filter(|kind| **kind == Some((2, 2)))
+                .count()
+                == 1
+                && placements
+                    .iter()
+                    .filter(|kind| **kind == Some((3, 2)))
+                    .count()
+                    == 1
+                && (items.len() == 3
+                    && placements
+                        .iter()
+                        .filter(|kind| **kind == Some((2, 3)))
+                        .count()
+                        == 0
+                    || items.len() == 4
+                        && placements
+                            .iter()
+                            .filter(|kind| **kind == Some((2, 3)))
+                            .count()
+                            == 1)
+        };
+    if (four_member_list && items.len() != 6)
+        || (six_member_list && items.len() != 9 && !repeated_text_span_profile)
+        || (!four_member_list && !six_member_list && !matches!(items.len(), 3 | 5))
+        || nodes
+            .grid_item_owners
+            .values()
+            .filter(|owner| **owner == node)
+            .count()
+            != items.len()
+    {
+        return Err(unsupported(
+            node,
+            "grid-auto-rows",
+            "Root HTML fit-content rows require three or five direct items, six for the four-member list, nine for the repeated auto-placement profile, or the bounded explicit row-span profile",
+        ));
+    }
     let grid_height_is_supported = grid_style.layout_dimensions.height
         == ComputedCssDimension::LengthPx(100.0)
-        || (repeated_text_profile
+        || ((repeated_text_profile || repeated_text_span_profile)
             && grid_style.layout_dimensions.height == ComputedCssDimension::LengthPx(220.0));
     if !grid_height_is_supported {
         return Err(unsupported(
@@ -202,7 +258,17 @@ pub(super) fn validate(
             "First Grid item style is missing",
         ));
     };
-    if !fixed_item(first, 10.0, repeated_text_profile) || !auto_placement(first) {
+    let first_placement_is_supported = if repeated_text_span_profile {
+        explicit_empty_span_item_placement(first)
+    } else {
+        auto_placement(first)
+    };
+    if !fixed_item(
+        first,
+        10.0,
+        repeated_text_profile || repeated_text_span_profile,
+    ) || !first_placement_is_supported
+    {
         return Err(unsupported(
             node,
             "grid-auto-rows",
@@ -228,8 +294,13 @@ pub(super) fn validate(
                 "Implicit-row item style is missing",
             ));
         };
-        let allow_minimum_floor = items.len() == 3 && position == 1;
-        if fit_content_item(style, allow_minimum_floor) && auto_placement(style) {
+        let allow_minimum_floor = !repeated_text_span_profile && items.len() == 3 && position == 1;
+        let item_placement_is_supported = if repeated_text_span_profile {
+            repeated_span_item_placement(style)
+        } else {
+            auto_placement(style)
+        };
+        if fit_content_item(style, allow_minimum_floor) && item_placement_is_supported {
             let children = direct_element_children(tree, nodes, *item)?;
             if children.len() != 1 {
                 return Err(unsupported(
@@ -245,7 +316,7 @@ pub(super) fn validate(
             } else {
                 None
             };
-            if repeated_text_profile {
+            if repeated_text_profile || repeated_text_span_profile {
                 if !repeated_text::payload_is_supported(tree, nodes, snapshot, &styles, children[0])
                 {
                     return Err(unsupported(
@@ -311,82 +382,6 @@ pub(super) fn validate(
         }
     }
     Ok(())
-}
-
-fn validate_payload(
-    tree: &HostDocumentSnapshot,
-    nodes: &RuntimeGridNodes,
-    styles: &std::collections::BTreeMap<spinon_core::NodeId, &ComputedElementStyle>,
-    payload: HostNodeHandle,
-    allowed_heights: &[f32],
-) -> Result<(), StyleLayoutError> {
-    let node = payload.id();
-    let Some(payload_style) = styles.get(&node).copied() else {
-        return Err(StyleLayoutError::UnsupportedComputedValue {
-            node,
-            property: "height",
-            value: "Nested payload style is missing".to_owned(),
-        });
-    };
-    if nodes.grid_containers.contains(&node)
-        || !allowed_heights
-            .iter()
-            .any(|height| fixed_item(payload_style, *height, false))
-    {
-        return Err(StyleLayoutError::UnsupportedComputedValue {
-            node,
-            property: "height",
-            value: "Nested fit-content payload must be a supported fixed-px block div".to_owned(),
-        });
-    }
-    if !direct_element_children(tree, nodes, payload)?.is_empty() {
-        return Err(StyleLayoutError::UnsupportedComputedValue {
-            node,
-            property: "grid-auto-rows",
-            value: "Nested fit-content payload must not contain descendants".to_owned(),
-        });
-    }
-    Ok(())
-}
-
-fn direct_element_children(
-    tree: &HostDocumentSnapshot,
-    nodes: &RuntimeGridNodes,
-    parent: HostNodeHandle,
-) -> Result<Vec<HostNodeHandle>, StyleLayoutError> {
-    let node = parent.id();
-    let unsupported = |value: &'static str| StyleLayoutError::UnsupportedComputedValue {
-        node,
-        property: "grid-auto-rows",
-        value: value.to_owned(),
-    };
-    let children = tree
-        .children(parent)
-        .ok_or_else(|| unsupported("Grid item children are unavailable"))?
-        .collect::<Vec<_>>();
-    let mut elements = Vec::new();
-    for child in children {
-        if nodes.hidden.contains(&child.id()) {
-            continue;
-        }
-        let child_node = tree
-            .node(child)
-            .ok_or_else(|| unsupported("Grid item descendant is unavailable"))?;
-        match child_node.kind() {
-            HostNodeKind::Text(text) if text.to_string_lossy().trim().is_empty() => {}
-            HostNodeKind::Element(element)
-                if element.namespace() == HTML_NAMESPACE && element.local_name() == "div" =>
-            {
-                elements.push(child);
-            }
-            _ => {
-                return Err(unsupported(
-                    "Grid items allow only nested HTML div elements",
-                ));
-            }
-        }
-    }
-    Ok(elements)
 }
 
 fn automatic_limits(style: &ComputedElementStyle) -> bool {

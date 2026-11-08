@@ -85,9 +85,7 @@ pub(super) fn to_taffy_style(
             .is_root_html_intrinsic_track_sizing()
             && style.justify_content == LayoutJustifyContent::Normal
     });
-    let (grid_auto_rows, grid_auto_columns) = match grid_input.container.filter(|container| {
-        container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some()
-    }) {
+    let (grid_auto_rows, grid_auto_columns) = match grid_input.container {
         Some(container) => (
             grid::to_taffy_grid_auto_tracks(
                 node,

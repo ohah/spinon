@@ -1176,7 +1176,13 @@ pub(super) fn project_styles(
             } else {
                 project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?
             };
-            if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            let root_html_fit_content_rows = snapshot.profile
+                == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                && grid_values::root_html_fit_content_implicit_rows_candidate(grid);
+            if root_html_fit_content_rows {
+                container.placement_mode =
+                    spinon_layout::GridPlacementMode::RootHtmlFitContentAutoRowsV1;
+            } else if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_direct_text_ratio_scene_owners.contains(&node)
             {
                 container.placement_mode =
@@ -1189,6 +1195,7 @@ pub(super) fn project_styles(
             }
             if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                 && root_html_explicit_placement_route_nodes.contains(&node)
+                && !root_html_fit_content_rows
             {
                 // The explicit-only normalizer owns placement. The typed alignment values above
                 // remain on each item LayoutStyle and are still consumed by the layout engine.

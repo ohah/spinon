@@ -1,6 +1,9 @@
 use super::RuntimeSession;
 use std::time::Duration;
 
+#[path = "root_html_grid_fit_content_auto_rows/repeated_text_span.rs"]
+mod repeated_text_span;
+
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-runtime.html"
 );

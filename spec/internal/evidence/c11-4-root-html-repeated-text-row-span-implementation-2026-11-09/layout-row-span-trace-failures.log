@@ -1,0 +1,9 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.94s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 2 tests
+test grid::root_html_fit_content_auto_rows::repeated_text::span::tests::repeated_text_row_span_missing_or_stale_owner_trace_rejects_atomically ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::span::tests::repeated_text_row_span_wrong_track_count_or_internal_index_rejects_atomically ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 507 filtered out; finished in 0.00s

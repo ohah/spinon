@@ -162,6 +162,33 @@ pub(super) fn normalize_grid_layout(
         ) {
             continue;
         }
+        if container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1 {
+            let visible_items = container_node
+                .children
+                .iter()
+                .copied()
+                .filter(|child| !hidden[child])
+                .collect::<Vec<_>>();
+            let all_auto = visible_items.iter().all(|child| {
+                input
+                    .grid_items
+                    .get(child)
+                    .is_none_or(GridItemInput::is_auto)
+            });
+            if !all_auto {
+                if !crate::grid::root_html_fit_content_text_span_topology_is_supported(
+                    input,
+                    &visible_items,
+                ) {
+                    return Err(invalid_placement(
+                        container_node.id,
+                        "grid-row-start",
+                        "fit-content repeated text rows support only the bounded positive row-span topology",
+                    ));
+                }
+                continue;
+            }
+        }
         if matches!(
             container.placement_mode,
             GridPlacementMode::SparseRow
@@ -333,6 +360,35 @@ pub(super) fn normalize_grid_item_placements(
             .copied()
             .filter(|child| !hidden[child])
             .collect::<Vec<_>>();
+        if container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1 {
+            let all_auto = visible_items.iter().all(|child| {
+                input
+                    .grid_items
+                    .get(child)
+                    .is_none_or(GridItemInput::is_auto)
+            });
+            if all_auto {
+                continue;
+            }
+            if !crate::grid::root_html_fit_content_text_span_topology_is_supported(
+                input,
+                &visible_items,
+            ) {
+                return Err(invalid_placement(
+                    container_node.id,
+                    "grid-row-start",
+                    "fit-content repeated text rows support only the bounded positive row-span topology",
+                ));
+            }
+            for child in visible_items {
+                let placement = input
+                    .grid_items
+                    .get(&child)
+                    .expect("validated span topology has an explicit placement");
+                normalized.insert(child, placement.clone());
+            }
+            continue;
+        }
         let all_auto = visible_items.iter().all(|child| {
             input
                 .grid_items

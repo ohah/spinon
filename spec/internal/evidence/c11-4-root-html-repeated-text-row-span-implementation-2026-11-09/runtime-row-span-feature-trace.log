@@ -1,0 +1,15 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.51s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-2f3f5f36b966f023)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::parsed_root_html_repeated_text_row_spans_match_all_960_chrome_scenes ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_row_span_nearby_shapes_reject_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_row_span_recovers_same_session_after_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_vertical_writing_mode_fails_before_layout_publication ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 569 filtered out; finished in 41.18s

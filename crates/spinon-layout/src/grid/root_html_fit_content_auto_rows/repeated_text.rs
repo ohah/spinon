@@ -1,5 +1,12 @@
 use super::*;
 
+#[path = "repeated_text/span.rs"]
+mod span;
+
+pub(super) fn supports_span_topology(input: &LayoutInput, items: &[NodeId]) -> bool {
+    span::supports_topology(input, items)
+}
+
 pub(super) fn normalize_layout_frames(
     input: &LayoutInput,
     output: &mut crate::LayoutOutput,
@@ -51,6 +58,10 @@ pub(super) fn normalize_layout_frames(
                 };
                 has_supported_text(input, *payload)
             });
+        if supports_span_topology(input, &items) {
+            span::normalize_layout_frames(input, output, grid_id, container, &items, &index)?;
+            continue;
+        }
         if !repeated_text_profile {
             continue;
         }
@@ -144,11 +155,11 @@ fn blink_layout_unit_floor_units(value: f32) -> i64 {
     (value * 64.0 + rounding_error_bound).floor() as i64
 }
 
-fn blink_layout_unit_to_px(units: i64) -> f32 {
+pub(super) fn blink_layout_unit_to_px(units: i64) -> f32 {
     (units as f64 / 64.0) as f32
 }
 
-fn blink_layout_unit_distribute_rows(
+pub(super) fn blink_layout_unit_distribute_rows(
     container: &crate::GridContainerInput,
     output: &crate::LayoutOutput,
     grid_id: NodeId,

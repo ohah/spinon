@@ -1,0 +1,11 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.18s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::parsed_root_html_repeated_text_row_spans_match_all_960_chrome_scenes ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_row_span_nearby_shapes_reject_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_row_span_recovers_same_session_after_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_vertical_writing_mode_fails_before_layout_publication ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 361 filtered out; finished in 44.16s
