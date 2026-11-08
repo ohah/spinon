@@ -13,6 +13,9 @@ mod min_content_auto;
 #[path = "track_lists/four_member_intrinsic.rs"]
 mod four_member_intrinsic;
 
+#[path = "track_lists/six_member_repeated_intrinsic.rs"]
+mod six_member_repeated_intrinsic;
+
 #[test]
 fn parsed_root_html_fit_content_auto_row_lists_preserve_order_and_render_repeated_tracks() {
     use spinon_render::OpaqueCssSrgb;

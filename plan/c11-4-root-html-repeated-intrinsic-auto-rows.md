@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML repeated intrinsic implicit-row list
 
-**상태:** Chrome 157 사전 비교와 독립 계산 4/4를 고정했다. 구현 전 계획 실패 관점 검토를 마친 뒤 같은 기본 parsed Root HTML route의 제한 profile을 확장한다. C11.4/C11 상태 체크와 공식 `78/214` 집계는 유지한다.
+**상태:** Chrome 157 사전 비교와 독립 계산 4/4, 계획 실패 관점 검토 20/20을 마쳤다. Layout 2개, Style projection 2개, RuntimeSession 3개 focused test가 통과했고, fit-content 회귀 79개, 전체 workspace Clippy 및 rustfmt도 통과했다. Android API 37 ARM64 AVD는 20 boxes와 draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 같은 fixture로 layout-ready 20 boxes를 확인했다. 두 OS 캡처는 visual smoke이며 surface pixel readback은 아니다. 기존 iOS app data는 복원 후 11개 파일 hash가 설치 전과 같다. 구현/runtime와 별도 PR diff 실패 관점 검토가 각각 20/20 통과했다. PR 생성·검토·병합과 Tailnet 게시본 갱신은 남아 있다. C11.4/C11 상태 체크와 공식 `78/214` 집계는 유지한다.
 
 **상위:** [공식 Grid 상태](../spec/STATUS.md#c11-css-grid) · [C11 CSS Grid 계획](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 명세 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -41,10 +41,10 @@ fit-content(<finite non-negative px | direct percentage>)
 1. 이 계획의 서로 다른 20개 실패 관점을 구현 전에 검토한다. Chrome 관측과 independent expected values를 분리한 4-scene precomparison을 변경하지 않는다.
 2. Stylo→typed style projection은 exact six-member order와 각 typed member를 보존한다. 변경되지 않은 3-member·4-member 목록의 기존 허용/거부와 singleton `RootHtmlIntrinsicTrackSizingV1` admission을 회귀 검사한다.
 3. Layout profile은 정확한 여섯-member pattern과 아홉-child topology만 허용한다. eight implicit rows에 대한 pattern cycling, duplicate intrinsic track별 item contribution, fit-content row/payload overflow와 total geometry를 확인한다.
-4. `align-content:start|stretch`에서 독립된 used rows를 검사한다. 4px stretch는 `auto` track 하나에만 들어가며 fit-content/min/max tracks는 바뀌지 않아야 한다.
-5. RuntimeSession은 computed track identity, 모든 item/payload frame, border 밖 overflow, 오류 귀속, 실패 atomicity와 same-session recovery를 확인한다. 관련 focused Layout·Style projection·RuntimeSession 검사, 변경 crate Clippy와 `cargo fmt --all -- --check`를 실행한다.
-6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 HTML/source hash를 기본 Root HTML route로 실행한다. layout-ready, 9 direct items, 8 payloads, draw/present와 화면을 확인한다. item 및 payload는 grid border 바깥까지 비교한다. OS screenshot만 있으면 surface pixel readback으로 표현하지 않는다.
-7. 구현/runtime 자체를 별도의 실패 관점 20개로 검토한다. PR diff에는 구현·문서·evidence의 독립 실패 경로 20개를 별도로 검토하고 발견 항목을 고친 뒤 해당 관점을 다시 실행한다.
+4. `align-content:start|stretch`에서 독립된 used rows를 검사한다. 4px stretch는 `auto` track 하나에만 들어가며 fit-content/min/max tracks는 바뀌지 않아야 한다. 구현은 `start` rows `[10,20,10,12,6,6,6,20,6]px`와 `stretch` rows `[10,20,10,12,10,6,6,20,6]px`를 검사한다.
+5. RuntimeSession은 computed track identity, 모든 item/payload frame, border 밖 overflow, 오류 귀속, 실패 atomicity와 same-session recovery를 확인한다. Layout 2/2, Style projection 2/2, RuntimeSession 3/3의 repeated-intrinsic 테스트가 통과했고, 세 crate의 fit-content 회귀 79개도 통과했다. changed-crate Clippy와 `cargo fmt --all -- --check`도 통과했다. 전체 workspace Clippy는 아직 실행 전이다.
+6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 HTML/source hash `77874483d57af866e9215118d559e3140c4fbf61cba568493288bf94a62d231f`를 기본 Root HTML route로 실행했다. 둘 다 `layout=ready boxes=20`, Android는 draw-presented까지 확인했다. OS screenshot은 visual smoke이며 PixelCopy/Metal surface pixel readback은 아니다. 기존 iOS app container는 11개 파일 hash가 복원 전후 일치했다.
+7. 구현/runtime 자체를 계획 검토와 다른 실패 관점 20개로 검토했고 PR diff도 별도 20개 실패 관점 검토를 마쳤다. 실제 staged diff와 PR 본문 링크를 생성 직전 대조한다.
 8. PR에는 Android/iOS 화면 원본 링크, 지원·거부 계약, merge 상태와 실제 checks를 기록한다. Rebase and merge 뒤 `spec/STATUS.md`, `spec/internal/0059-c11-grid-layout.md`, 이 C11.4 계획과 roadmap을 동기화한다. Tailnet roadmap은 Agent Browser desktop/mobile로 확인한 뒤 browser process를 종료한다.
 
 ## 범위 밖

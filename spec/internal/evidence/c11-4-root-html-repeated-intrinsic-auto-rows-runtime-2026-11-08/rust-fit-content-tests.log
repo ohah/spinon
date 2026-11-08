@@ -1,0 +1,109 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-d4456d27999a66c9)
+
+running 35 tests
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_columns_rows_and_zero_basis_are_admitted ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_tracks_reject_indefinite_axes ... ok
+test grid::auto_track_sizing_tests::track_sizing_indefinite_height_rejects_flexible_and_fit_content_rows ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::root_html_fit_content_percentage_tracks_reject_negative_and_non_finite_limits ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_cap_does_not_subtract_the_grid_gap ... ok
+test grid_fit_content_auto_min_floor_oracle_tests::fit_content_auto_minimum_zero_control_applies_argument_and_keeps_overflow ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_text_fixed_repeat_fit_content_tracks_are_sized_independently ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_uses_content_box_basis_with_a_border ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_wrapped_min_content_sets_a_fit_content_row_floor_above_its_cap ... ok
+test grid_fit_content_auto_min_floor_oracle_tests::fit_content_auto_minimum_floor_uses_contribution_above_argument ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_over_100_cap_keeps_the_available_space_ceiling ... ok
+test grid_fit_content_auto_neighbor_oracle_tests::css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row ... ok
+test grid_fit_content_min_height_oracle_tests::invalid_min_height_is_rejected_by_style_validation ... ok
+test grid_fit_content_min_height_oracle_tests::fit_content_percentage_limit_is_rejected_with_indefinite_height_basis ... ok
+test grid_fit_content_min_height_oracle_tests::fit_content_length_without_definite_min_height_remains_rejected ... ok
+test grid_fit_content_min_height_oracle_tests::invalid_fit_content_length_is_rejected_by_grid_validation ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_fixed_repeat_tracks_size_independently ... ok
+test grid_fit_content_min_height_oracle_tests::css_grid_2025_fit_content_row_does_not_stretch_to_min_height ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_stretch_without_the_exact_intrinsic_pattern ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_unmodeled_minimum_floor_shape ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or_other_types ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_list_preserves_minimum_above_first_cap ... ok
+test c15_text_layout_tests::grid_fit_content::ahem_text_fit_content_columns_respect_minimum_cap_and_maximum_contributions ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_rejects_out_of_profile_inputs ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_reject_nearby_types_counts_and_other_profiles ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::six_member_repeated_intrinsic::six_member_repeated_intrinsic_profile_rejects_other_orders_and_item_counts ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_columns_resolve_against_definite_width ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_matches_cap_max_content_and_minimum_oracle ... ok
+test c15_text_layout_tests::grid_fit_content::percentage::ahem_fit_content_percentage_rows_keep_minimum_floor_at_zero_and_over_100_percent ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_repeat_in_order_for_implicit_rows ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::six_member_repeated_intrinsic::six_member_repeated_intrinsic_track_list_cycles_and_stretches_only_auto ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_min_content_auto_lists_stretch_only_auto_tracks ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::fit_content_cap_keeps_track_bounded_while_payload_overflows_the_grid ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_accept_zero_and_over_100_percent_caps ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_cover_all_orders_caps_and_auto_stretch ... ok
+
+test result: ok. 35 passed; 0 failed; 0 ignored; 0 measured; 470 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 29 tests
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_list_accepts_an_absolute_calc_cap_after_px_normalization ... ok
+test session::tests::root_html_grid_fit_content::c11_1_root_html_fit_content_named_areas_reuse_definite_percentage_gap_validation ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_overflow_payload_is_rejected_on_a_non_fit_content_track ... ok
+test session::tests::root_html_grid_fit_content::c11_1_root_html_fit_content_named_areas_ignore_names_ids_and_source_order ... ok
+test session::tests::root_html_grid_fit_content::c11_1_root_html_fit_content_tracks_reach_default_runtime_and_keep_overflow_visible ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_fit_content_caps_keep_zero_and_over_100_percent_values ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_recovers_in_the_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_list_recovers_after_same_session_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_rejects_overflow_payload_at_first_fit_position ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_lists_match_both_orders_and_overflow ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_track_lists_match_rows_frames_and_typed_order ... ok
+test session::tests::root_html_grid_fit_content_percentage::c11_1_root_html_fit_content_percentage_overflows_visible_root_border ... ok
+test session::tests::root_html_grid_fit_content_percentage::c11_1_root_html_fit_content_percentages_reach_default_runtime ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_preserves_both_cycles_and_auto_stretch ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::parsed_root_html_fit_content_auto_rows_match_chrome_scenes_and_px_normalizations ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_rejects_nearby_profiles_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_row_lists_preserve_order_and_render_repeated_tracks ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_track_lists_fail_closed_and_recover_same_session ... ok
+test session::tests::root_html_grid_fit_content_percentage::c11_1_root_html_fit_content_percentage_out_of_scope_inputs_fail_atomically ... ok
+test session::tests::root_html_grid_fit_content_percentage_auto_rows::parsed_root_html_fit_content_percentage_auto_rows_recover_after_dark_calc_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_lists_match_remaining_orders ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::parsed_root_html_fit_content_auto_rows_reject_atomically_and_recover_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_lists_reject_nearby_profiles_atomically ... ok
+test session::tests::root_html_grid_fit_content_percentage_auto_rows::parsed_root_html_fit_content_percentage_auto_rows_match_definite_content_box_basis ... ok
+test session::tests::root_html_grid_fit_content_percentage_auto_rows::parsed_root_html_fit_content_percentage_auto_rows_reject_unsupported_shapes_atomically ... ok
+test session::tests::root_html_grid_fit_content::c11_1_root_html_fit_content_named_areas_reject_out_of_scope_shapes_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_fit_content_cap_keeps_track_size_and_visible_overflow ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_lists_match_all_orders_caps_and_stretch_cases ... ok
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 328 filtered out; finished in 4.43s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-6d2550508881bf61)
+
+running 15 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_explicit_fit_content_px_tracks_project_for_columns_rows_and_fixed_repeat ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_four_member_intrinsic::root_html_fit_content_min_max_content_auto_lists_reject_nearby_grammars ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_rejects_calc_or_invalid_limits ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_dimension_matched_fit_content_named_areas_do_not_depend_on_area_names ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_percentage_auto_rows_require_the_bounded_definite_grid_shape ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_explicit_fit_content_percentage_tracks_project_for_columns_rows_and_fixed_repeat ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_min_content_auto::root_html_fit_content_min_content_auto_lists_preserve_all_six_exact_orders ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_min_content_auto::root_html_fit_content_min_content_auto_lists_reject_nearby_patterns_and_invalid_caps ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_six_member_repeated_intrinsic::root_html_repeated_intrinsic_auto_row_list_preserves_member_identity_order_and_caps ... ok
+test projection::style_values::grid_values::tests::track_sizing_profile_preserves_cyclic_fit_content_percentage_limit ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_named_area_fit_content_requires_matched_dimensions_and_supported_tracks ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_six_member_repeated_intrinsic::root_html_repeated_intrinsic_auto_row_list_rejects_nearby_orders_and_caps ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content::root_html_fit_content_auto_row_lists_preserve_supported_track_kinds_and_order ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_four_member_intrinsic::root_html_fit_content_min_max_content_auto_lists_preserve_all_24_orders_and_typed_caps ... ok
+test c14_intrinsic_contributions_tests::fit_content_function_is_rejected_for_the_image_node ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 448 filtered out; finished in 0.00s

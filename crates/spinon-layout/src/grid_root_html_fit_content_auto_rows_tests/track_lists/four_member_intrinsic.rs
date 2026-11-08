@@ -43,7 +43,7 @@ fn ordered_tracks(order: [usize; 4], cap: GridTrackLengthPercentage) -> Vec<Grid
     order.map(|index| members[index]).to_vec()
 }
 
-fn input_with_tracks(
+pub(super) fn input_with_tracks(
     tracks: Vec<GridTrackSize>,
     payload_heights: &[f32],
     align_content: LayoutAlignContent,

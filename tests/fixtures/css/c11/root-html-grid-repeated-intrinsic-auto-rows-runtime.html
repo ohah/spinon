@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #grid {
+        display: grid;
+        box-sizing: border-box;
+        width: 40px;
+        height: 100px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-rows: fit-content(20px) min-content max-content auto min-content max-content;
+        grid-auto-flow: row;
+        align-content: start;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+        background-color: #17212b;
+      }
+
+      .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .payload {
+        display: block;
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      #item-0 { height: 10px; background-color: #e5484d; }
+      #item-1 { background-color: #22c55e; }
+      #payload-1 { height: 20px; background-color: #3b82f6; }
+      #item-2 { background-color: #14b8a6; }
+      #payload-2 { height: 10px; background-color: #06b6d4; }
+      #item-3 { background-color: #f97316; }
+      #payload-3 { height: 12px; background-color: #84cc16; }
+      #item-4 { background-color: #a855f7; }
+      #payload-4 { height: 6px; background-color: #ec4899; }
+      #item-5 { background-color: #facc15; }
+      #payload-5 { height: 6px; background-color: #a3e635; }
+      #item-6 { background-color: #8b5cf6; }
+      #payload-6 { height: 6px; background-color: #f472b6; }
+      #item-7 { background-color: #0ea5e9; }
+      #payload-7 { height: 60px; background-color: #fb923c; }
+      #item-8 { background-color: #ef4444; }
+      #payload-8 { height: 6px; background-color: #2dd4bf; }
+
+      @media (prefers-color-scheme: dark) {
+        #grid {
+          grid-auto-rows: min-content max-content fit-content(20px) auto min-content max-content;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div id="item-0"></div>
+      <div id="item-1" class="item"><div id="payload-1" class="payload"></div></div>
+      <div id="item-2" class="item"><div id="payload-2" class="payload"></div></div>
+      <div id="item-3" class="item"><div id="payload-3" class="payload"></div></div>
+      <div id="item-4" class="item"><div id="payload-4" class="payload"></div></div>
+      <div id="item-5" class="item"><div id="payload-5" class="payload"></div></div>
+      <div id="item-6" class="item"><div id="payload-6" class="payload"></div></div>
+      <div id="item-7" class="item"><div id="payload-7" class="payload"></div></div>
+      <div id="item-8" class="item"><div id="payload-8" class="payload"></div></div>
+    </div>
+  </body>
+</html>
