@@ -1,6 +1,6 @@
 # C11.4 repeated intrinsic text PR diff 30관점 실패 검토
 
-**대상:** 현재 staged candidate diff 전체(code, tests, fixture, Chrome oracle, 내부 계약, 계획, simulator evidence). 계획 검토 및 구현/runtime 검토와 별도의 30개 관점이다. **결과:** diff 일관성 30/30 통과. Android runtime 자체는 QEMU AVD 실행 문제로 미검증이며 이 결과를 통과로 세지 않는다.
+**대상:** candidate diff 전체(code, tests, fixture, Chrome oracle, 내부 계약, 계획, Android/iOS simulator evidence). 계획 검토 및 구현/runtime 검토와 별도의 30개 관점이다. **결과:** diff 일관성 30/30 통과. Android runtime은 수정된 API 37.0 AVD에서 통과했으며 제한은 screenshot visual smoke다.
 
 | # | 독립 실패 관점 | 검토 결과 |
 | --- | --- | --- |
@@ -17,7 +17,7 @@
 | 11 | payload 문장별 order/punctuation 변경이 잘못 받아들여지는가 | 여덟 고정 문자열을 DOM order로 매핑하고 wrong-text mutation이 fail-closed한다. |
 | 12 | font family/size/weight/style/line-height가 변해도 같은 geometry로 처리되는가 | computed-style profile이 각 값을 exact match한다. wrong family/size/line-height mutation을 확인했다. |
 | 13 | whitespace/word-break/direction/spacing/writing-mode 차이가 섞이는가 | normal wrapping·LTR horizontal 및 zero spacing contract를 검사한다. `nowrap` mutation이 거부된다. |
-| 14 | font fallback line wrapping이 기대와 다른데도 pass하는가 | Rust matrix에서 payload별 glyph 수와 baseline line 수를 exact match한다. iOS screenshot은 visual smoke로만 적었고 Android line-wrap 검증은 주장하지 않는다. |
+| 14 | font fallback line wrapping이 기대와 다른데도 pass하는가 | Rust matrix에서 payload별 glyph 수와 baseline line 수를 exact match한다. iOS·Android screenshot은 visual smoke로만 적었고 Android 독립 line-wrap oracle 검증은 주장하지 않는다. |
 | 15 | intrinsic row 높이가 per-order constant로 강제되는가 | 반복 text 경로는 existing paragraph measurement/contribution을 사용하고 matrix가 실제 row/item/payload frames를 비교한다. |
 | 16 | cap `0%`가 zero-height frame을 잃거나 payload paint를 지우는가 | 270-scene matrix가 zero item frame presence와 payload paint snapshot을 검사한다. |
 | 17 | cap `120%` 또는 percentage basis가 잘못되는가 | 220px definite basis의 120% 장면을 네 cap cohort에 넣어 Chrome frame과 대조한다. |
@@ -32,7 +32,7 @@
 | 26 | style/layout generation identity가 바뀌거나 섞이는가 | expected test에서 completed layout key와 cascade key의 동일성을 확인한다. |
 | 27 | invalid text/style이 partial draw/layout을 publish하는가 | mutation suite는 node/property 진단, Failed state, `completed=None`을 검사한다. |
 | 28 | same-session recovery가 실패하거나 stale state를 재사용하는가 | dark mode reject 뒤 light mode로 돌아오는 동일 session 회귀가 Ready를 확인한다. |
-| 29 | oracle·fixture·screenshot가 서로 다른 revision을 설명하는가 | fixture SHA `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`, 270 scene JSON, precomparison README와 scaled screenshots를 함께 검토했다. Chrome expected matrix는 30 order·8 text descriptor다. |
-| 30 | PR 문서가 미검증 플랫폼이나 완료 상태를 과장하는가 | iOS는 build + layout-ready + visual smoke로 제한해 기록했다. Android는 QEMU `mprotect`/exit 139 이후 미검증으로 남기며, 공식 `78/214`, C11.4/C11 checkbox, 내부 version `0.1.0`은 변경하지 않는다. Temporary simulators/backup build outputs는 제거·복원 hash 확인했다. |
+| 29 | oracle·fixture·screenshot가 서로 다른 revision을 설명하는가 | fixture SHA `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`, 270 scene JSON, precomparison README, iOS screenshot, Android APK asset과 Android screenshot을 대조했다. Chrome expected matrix는 30 order·8 text descriptor다. |
+| 30 | PR 문서가 미검증 플랫폼이나 완료 상태를 과장하는가 | iOS와 Android 모두 build + layout-ready + OS screenshot visual smoke로 기록하고 Metal/PixelCopy readback 또는 hardware GPU 주장을 하지 않는다. 공식 `78/214`, C11.4/C11 checkbox, 내부 version `0.1.0`은 변경하지 않는다. 실패 AVD는 근거 보존 후 제거하고 검증용 API 37 AVD는 종료 상태로 유지한다. |
 
-변경 crate의 3/23 RuntimeSession, 14 Layout, 7 Style projection focused tests, Clippy `-D warnings`, rustfmt와 final Android/iOS app build 결과는 [runtime evidence](./README.md)에 있다. CI와 병합 전 PR 상태 check은 아직 검증하지 않았다.
+변경 crate의 3/23 RuntimeSession, 14 Layout, 7 Style projection focused tests, Clippy `-D warnings`, rustfmt, Android API 37.0 runtime 및 iOS Simulator 결과는 [runtime evidence](./README.md)에 있다. GitHub PR에는 현재 status check이 없다.

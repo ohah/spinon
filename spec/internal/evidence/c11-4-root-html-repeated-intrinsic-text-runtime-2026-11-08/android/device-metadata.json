@@ -1,0 +1,40 @@
+{
+  "sourceRevision": "f117d72cc6ab97db20853fd101a31f5bc20f5d13",
+  "avd": {
+    "name": "spinon_c114_android37_runtime_20261108",
+    "deviceProfile": "pixel_6",
+    "rootTarget": "android-37.0",
+    "abi": "arm64-v8a",
+    "systemImage": "system-images/android-37.0/google_apis/arm64-v8a/",
+    "commandLineToolsRevision": "23.0"
+  },
+  "emulator": {
+    "version": "37.2.12.0 (build_id 16428233)",
+    "cpuAcceleration": "working",
+    "qemuFlag": "-enable-hvf",
+    "gpu": "SwiftShader",
+    "adbState": "device",
+    "bootCompleted": true,
+    "androidApi": 37,
+    "physicalPixels": "1080x2400",
+    "densityDpi": 420
+  },
+  "application": {
+    "package": "dev.spinon.bootstrap",
+    "route": "default Root HTML",
+    "fixture": "tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-text-precomparison.html",
+    "fixtureSha256": "923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9",
+    "apkSha256": "e1496de1f20abf9f1a42c0d184bb9a32b16b946440d1e5fb54a1c6418acb3578",
+    "layout": "ready",
+    "boxes": 20,
+    "presentedBoxes": 20,
+    "runtimeTextCount": 8,
+    "screenshotSha256": "ed9e5d56ba39059eff15255f321b368948a5d80207528a3dc955fb10730d6676"
+  },
+  "limitations": [
+    "SwiftShader software rendering",
+    "OS screenshot visual smoke only",
+    "No PixelCopy or GPU surface readback",
+    "No physical-device or post-compositor pixel comparison"
+  ]
+}

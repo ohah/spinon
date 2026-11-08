@@ -1,0 +1,10 @@
+AVD: spinon_c11_4_fit_content_pass04_20261107
+Command-line Tools revision: 12.0
+Root AVD .ini target: android-0
+AVD config ABI: arm64-v8a
+AVD config system image: system-images/android-37.0/google_apis/arm64-v8a/
+Observed QEMU argv: -enable-hvf absent
+Observed emulator warning: hvf is not enabled on this aarch64 host
+Observed result: repeated qemu_mprotect__osdep mprotect failed: Permission denied; QEMU exited 139; ADB stayed offline
+
+The AVD was deleted after this metadata and the full failure log were recorded. It was replaced with a Command-line Tools 23.0 API 37.0 ARM64 AVD whose root target is android-37.0 and whose QEMU argv includes -enable-hvf.

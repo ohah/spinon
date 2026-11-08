@@ -1,6 +1,6 @@
 # C11.4 · 반복 intrinsic row의 텍스트 기여
 
-**상태:** 제한 구현 후보 · Rust 행렬과 iOS Simulator 확인 · Android AVD 실행 검증 미완료
+**상태:** 제한 구현 후보 · Rust 행렬과 Android/iOS Simulator 확인 · PR #1290 미병합
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -56,10 +56,10 @@ AA
 ## 현재 구현 후보 검증 결과 · 2026-11-08
 
 - Chrome 157의 270 scene 기대 geometry와 RuntimeSession 결과를 비교했다. Grid/item/payload frame 차이는 각 축에서 최대 0.01 CSS px 이내이고, typed track order·텍스트 glyph 수·line 수는 exact다. RuntimeSession의 반복 텍스트 테스트 3개, 기존 Root HTML fit-content runtime 회귀 23개, Layout 회귀 14개, Style projection 회귀 7개, 변경 crate Clippy `-D warnings`, rustfmt가 통과했다.
-- 최종 module split 뒤 Android/iOS app build를 다시 성공했다. iPhone 17 Pro / iOS 26.2 임시 Simulator는 같은 2,758-byte fixture SHA-256 `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`를 기본 Root HTML route에서 읽고 `layout=ready boxes=20`을 기록했다. 화면은 visual smoke이며 Metal drawable readback은 아니다.
-- Android API 37 ARM64 임시 AVD는 QEMU `mprotect failed: Permission denied` 뒤 ADB 연결이 닫혔고, 첫 실행은 QEMU exit 139로 끝났다. `-accel off` 재시도도 ADB `offline`과 같은 보호 오류를 보였다. APK 설치 전 실패라 Android app 동작은 미검증이다. 원본 로그는 [Android 실행 기록](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/README.md)에 남겼다.
-- 임시 iOS Simulator와 Android AVD는 검증 후 삭제했다. 기존 simulator 데이터는 건드리지 않았다. build input과 기존 Android/iOS app build outputs의 before/after SHA-256이 일치한다.
-- Android runtime gate는 미검증이다. [구현/runtime 실패 관점 검토 20/20](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/implementation-runtime-review-20.md)과 [PR diff 실패 관점 검토 30/30](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/pr-diff-review-30.md)은 통과했다. 이 후보는 아직 PR로 병합되지 않았고, 공식 C11.4/C11 완료 체크 및 `78/214`는 바꾸지 않는다.
+- 최종 module split 뒤 iPhone 17 Pro / iOS 26.2와 Pixel 6 / Android API 37.0 ARM64 AVD에서 같은 2,758-byte fixture SHA-256 `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`를 기본 Root HTML route로 실행했다. 두 앱 로그 모두 `layout=ready boxes=20`을 기록했다. 화면은 OS visual smoke이며 iOS Metal drawable readback이나 Android PixelCopy readback은 아니다.
+- Android ADB 실패 원인은 AVD 생성기 metadata였다. Command-line Tools 12.0이 root `.ini`에 `target=android-0`을 남겨 API 37 ARM64인데 HVF가 꺼졌다. QEMU mprotect 오류 뒤 exit 139가 재현됐다. CLI 23.0으로 새 AVD를 만들자 `target=android-37.0`, QEMU `-enable-hvf`, `CPU Acceleration: working`, ADB online이 확인됐고 앱 실행까지 통과했다. 자세한 원인과 로그는 [Android runtime evidence](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/README.md)에 남겼다.
+- 임시 iOS Simulator와 실패한 API37 AVD는 제거한다. 올바른 metadata로 만든 API37.0 AVD는 다음 C11.4 검증에서 재사용하도록 종료 상태로 유지한다. 임시 HTML/JS 입력은 복원했다. 기존 Android APK build output은 최종 후보 APK로 갱신해 별도 hash를 기록했다.
+- [구현/runtime 실패 관점 검토 20/20](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/implementation-runtime-review-20.md)과 [PR diff 실패 관점 검토 30/30](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/pr-diff-review-30.md)은 통과했다. 이 후보는 아직 PR로 병합되지 않았고, 공식 C11.4/C11 완료 체크 및 `78/214`는 바꾸지 않는다.
 
 ## 범위 밖
 

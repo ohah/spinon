@@ -1,6 +1,6 @@
 # C11.4 반복 intrinsic text implementation/runtime 20관점 검토
 
-**범위:** C11.4 반복 text contribution 후보의 code path, 270-scene RuntimeSession matrix, iOS 실행과 Android AVD 실패 경계. 계획 검토와 별개의 구현 검토다. **결과:** 코드·Rust runtime 20/20 확인; Android platform runtime은 QEMU 실행환경 문제로 미검증.
+**범위:** C11.4 반복 text contribution 후보의 code path, 270-scene RuntimeSession matrix와 iOS 실행. 계획 검토와 별개의 구현 검토다. **결과:** 코드·Rust runtime 20/20 확인. Android AVD 실행 근거는 별도의 [20관점 Android evidence review](./android-runtime-evidence-review-20.md)에서 확인했다.
 
 | # | 독립 실패 관점 | 확인 결과 |
 | --- | --- | --- |
@@ -25,4 +25,4 @@
 | 19 | invalid profile이 partial layout/render output을 남기는가 | 잘못된 text, font, line-height, nowrap, inline descendant, fixed text height와 item min-height 변형이 node/property 진단과 함께 실패하고 `completed`가 비어 있다. |
 | 20 | 거부 뒤 같은 RuntimeSession이 복구되지 않는가 | dark-mode style mutation에서 실패한 다음 light mode로 바꾸면 같은 session의 다음 revision이 Ready가 된다. |
 
-Rust 실행 요약은 [실행 근거](./README.md)에 있다. iOS Simulator는 20 boxes의 layout-ready와 화면 smoke를 기록했다. Android build는 성공했지만 QEMU AVD 부팅이 실패해 Android runtime 결과는 이 검토의 통과로 세지 않았다.
+Rust 실행 요약은 [실행 근거](./README.md)에 있다. iOS Simulator는 20 boxes의 layout-ready와 화면 smoke를 기록했다. Android는 API 37.0 ARM64 AVD에서 같은 fixture를 기본 route로 실행해 layout-ready와 draw-present를 확인했다. Android run 검토는 code path 20/20에 합산하지 않았다.
