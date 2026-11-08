@@ -1,12 +1,27 @@
 {
   "closeCommand": "agent-browser close --all",
   "closedSessions": [
-    "spinon-c114-pr1280"
+    "spinon-c114-pr1280",
+    "spinon-pr1281"
   ],
-  "sessionInfoAfterClose": {
+  "sessionInfoAfterLastClose": {
     "active": false,
     "pid": null,
     "runtime": null
   },
-  "agentBrowserProcessesAfterClose": []
+  "agentBrowserProcessesAfterClose": [],
+  "prBodyImageVerification": [
+    {
+      "alt": "데스크톱 로드맵에서 C11.4 진행 카드와 PR #1280 병합 상태",
+      "naturalWidth": 1440,
+      "naturalHeight": 1000,
+      "complete": true
+    },
+    {
+      "alt": "390×844 모바일 로드맵의 C11.4 진행 카드",
+      "naturalWidth": 390,
+      "naturalHeight": 844,
+      "complete": true
+    }
+  ]
 }

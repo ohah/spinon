@@ -33,7 +33,7 @@
 | 27 | preview 경로 전체를 지우거나 덮어쓰기 실패에서 기존 파일을 잃는다 | 276개 route만 추가/동일 확인/교체했고 20개 교체 파일은 별도 backup 후 같은 디렉터리 원자 rename했다. `noDeletes=true`다. | PASS |
 | 28 | 열려 있는 preview 파일을 교체하거나 서버를 재시작한다 | preflight에서 교체 대상 열린 reader는 0개였다. PID 28040, cwd, Tailscale `Running`을 확인했고 재시작하지 않았다. | PASS |
 | 29 | 앱 데이터 snapshot을 Tailnet으로 함께 게시한다 | 게시 manifest의 `.tar.gz` route는 0개이며 `bootstrap-original`도 selected root에서 제외했다. | PASS |
-| 30 | 모바일에서 진행 카드를 못 보거나 문서가 가로로 넘친다 | Agent Browser 390×844에서 active card를 보이게 scroller를 이동했고 문서 폭 390px·진행 카드 visible을 확인했다. 데스크톱 1440px에서도 확인 후 Agent Browser를 종료했다. | PASS |
+| 30 | 모바일에서 진행 카드를 못 보거나 문서가 가로로 넘친다 | Agent Browser 390×844에서 active card를 보이게 scroller를 이동했고 문서 폭 390px·진행 카드 visible을 확인했다. PR #1281 본문의 데스크톱/모바일 이미지도 각각 1440×1000, 390×844로 로드됐다. 두 확인 session 종료 상태는 lifecycle JSON에 남겼다. | PASS |
 
 ## 판정
 
