@@ -1,0 +1,823 @@
+{
+  "publicationFileCount": 92,
+  "local": {
+    "urlPrefix": "http://127.0.0.1:8768/spinon/",
+    "allHttp200": true,
+    "allSha256Match": true,
+    "checks": [
+      {
+        "route": "STATUS.html",
+        "status": 200,
+        "bytes": 898117,
+        "expectedSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+        "servedSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+        "sha256Match": true
+      },
+      {
+        "route": "STATUS.md",
+        "status": 200,
+        "bytes": 737773,
+        "expectedSha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+        "servedSha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+        "sha256Match": true
+      },
+      {
+        "route": "icon.svg",
+        "status": 200,
+        "bytes": 638,
+        "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/0059-c11-grid-layout.html",
+        "status": 200,
+        "bytes": 784369,
+        "expectedSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+        "servedSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/0059-c11-grid-layout.md",
+        "status": 200,
+        "bytes": 554063,
+        "expectedSha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+        "servedSha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.html",
+        "status": 200,
+        "bytes": 28625,
+        "expectedSha256": "b191bce31b160bec3493caee8530adc833cc5d01d6bfeb765aaa35743f2acbc6",
+        "servedSha256": "b191bce31b160bec3493caee8530adc833cc5d01d6bfeb765aaa35743f2acbc6",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.md",
+        "status": 200,
+        "bytes": 4928,
+        "expectedSha256": "9dad48c8cd4a77bac7326644df93f0d81140db7a6fddebbb80f92925761a1056",
+        "servedSha256": "9dad48c8cd4a77bac7326644df93f0d81140db7a6fddebbb80f92925761a1056",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-abi.txt",
+        "status": 200,
+        "bytes": 10,
+        "expectedSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+        "servedSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api-level.txt",
+        "status": 200,
+        "bytes": 3,
+        "expectedSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+        "servedSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.html",
+        "status": 200,
+        "bytes": 24081,
+        "expectedSha256": "2fff4b81515dfc88f059da17a187e7e29fe892b353dc9052c2e3df4b253e0c02",
+        "servedSha256": "2fff4b81515dfc88f059da17a187e7e29fe892b353dc9052c2e3df4b253e0c02",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.md",
+        "status": 200,
+        "bytes": 1263,
+        "expectedSha256": "ab512114c3b5f5507203428e1d9abbdb37c0124f9f9d22e7d9feb264bd59988a",
+        "servedSha256": "ab512114c3b5f5507203428e1d9abbdb37c0124f9f9d22e7d9feb264bd59988a",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-build.log",
+        "status": 200,
+        "bytes": 5021,
+        "expectedSha256": "940d27261de4f2570dd84cd245829f9a23b159e0e0a2d5cfc323a8d127d45b35",
+        "servedSha256": "940d27261de4f2570dd84cd245829f9a23b159e0e0a2d5cfc323a8d127d45b35",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-bundled-source-hash.txt",
+        "status": 200,
+        "bytes": 68,
+        "expectedSha256": "ab5803a4e80c707301a2a3aef788d1772d96a38753d0eb83c45c2ff0464b7b5d",
+        "servedSha256": "ab5803a4e80c707301a2a3aef788d1772d96a38753d0eb83c45c2ff0464b7b5d",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-root-html-span-sentinel.png",
+        "status": 200,
+        "bytes": 80124,
+        "expectedSha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+        "servedSha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-runtime.log",
+        "status": 200,
+        "bytes": 4497,
+        "expectedSha256": "d83febad3006587837a76bb3ecf2135d8229c60751241d6aef959aef059841f6",
+        "servedSha256": "d83febad3006587837a76bb3ecf2135d8229c60751241d6aef959aef059841f6",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/clippy-final.log",
+        "status": 200,
+        "bytes": 172,
+        "expectedSha256": "8c7ebd588154b214637de64b8a686dc492d8f7befef5059ef8c153f6964c2e98",
+        "servedSha256": "8c7ebd588154b214637de64b8a686dc492d8f7befef5059ef8c153f6964c2e98",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/focused-test-summary.txt",
+        "status": 200,
+        "bytes": 1191,
+        "expectedSha256": "b57d325bf4c40f8ba1169c5c7a676dea615d28eebed571742abd3e2405131dd7",
+        "servedSha256": "b57d325bf4c40f8ba1169c5c7a676dea615d28eebed571742abd3e2405131dd7",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.html",
+        "status": 200,
+        "bytes": 34396,
+        "expectedSha256": "a58ef45a869a743307b25d97ed8c463dd06ccb7cde825c7dd712624aa34a8fd7",
+        "servedSha256": "a58ef45a869a743307b25d97ed8c463dd06ccb7cde825c7dd712624aa34a8fd7",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.md",
+        "status": 200,
+        "bytes": 4641,
+        "expectedSha256": "cd287f4c929954118ee210d981523c231a233ecc4ad01c37bc015cb23a95bd51",
+        "servedSha256": "cd287f4c929954118ee210d981523c231a233ecc4ad01c37bc015cb23a95bd51",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+        "status": 200,
+        "bytes": 45021,
+        "expectedSha256": "651652d026806d98f2af76b5e9afc1339038e6668fe14e57720822074ecc76c8",
+        "servedSha256": "651652d026806d98f2af76b5e9afc1339038e6668fe14e57720822074ecc76c8",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+        "status": 200,
+        "bytes": 8346,
+        "expectedSha256": "b3c9076fc792aab5f0337dc0888c42487393eea311399a0eaab0425ced9819e4",
+        "servedSha256": "b3c9076fc792aab5f0337dc0888c42487393eea311399a0eaab0425ced9819e4",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-build.log",
+        "status": 200,
+        "bytes": 67850,
+        "expectedSha256": "b9085ff56078c0482d553801ac0411b04a672fa7875d217e0959c578d7734296",
+        "servedSha256": "b9085ff56078c0482d553801ac0411b04a672fa7875d217e0959c578d7734296",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-bundled-source-hash.txt",
+        "status": 200,
+        "bytes": 181,
+        "expectedSha256": "faed8a99fad197a8fc0c3d4a12ac04077521dc11fc00aaed275346d6fe7ee125",
+        "servedSha256": "faed8a99fad197a8fc0c3d4a12ac04077521dc11fc00aaed275346d6fe7ee125",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-root-html-span-sentinel.png",
+        "status": 200,
+        "bytes": 142308,
+        "expectedSha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+        "servedSha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-runtime.log",
+        "status": 200,
+        "bytes": 1401,
+        "expectedSha256": "307fe2d92c911726c610e0cfae31e94300f8787c38ed2dd638c7abe8fdf55036",
+        "servedSha256": "307fe2d92c911726c610e0cfae31e94300f8787c38ed2dd638c7abe8fdf55036",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-grid-track-sizing.log",
+        "status": 200,
+        "bytes": 16195,
+        "expectedSha256": "7d9a2a4c0869545ca27bace84aa0b505d559bb9bd7cb1402152b5bf0e699f94e",
+        "servedSha256": "7d9a2a4c0869545ca27bace84aa0b505d559bb9bd7cb1402152b5bf0e699f94e",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-root-html-fit-content-auto-rows.log",
+        "status": 200,
+        "bytes": 2716,
+        "expectedSha256": "8f90ea40ca6a7fe2d31de7457ba1603dfb96a05ccf0bda5ac6b5bff1c812718d",
+        "servedSha256": "8f90ea40ca6a7fe2d31de7457ba1603dfb96a05ccf0bda5ac6b5bff1c812718d",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-row-span-trace-failures.log",
+        "status": 200,
+        "bytes": 677,
+        "expectedSha256": "1b1f1f8cf0854c772286833b0c5beb3e9b50ff6c117ea212fdcebd649a9c73ed",
+        "servedSha256": "1b1f1f8cf0854c772286833b0c5beb3e9b50ff6c117ea212fdcebd649a9c73ed",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-build-summary.txt",
+        "status": 200,
+        "bytes": 64,
+        "expectedSha256": "7e2b9654b62d5fbfafea6439175683f78593f1136dd007d39ef4961251bfa3ed",
+        "servedSha256": "7e2b9654b62d5fbfafea6439175683f78593f1136dd007d39ef4961251bfa3ed",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-source-hashes.txt",
+        "status": 200,
+        "bytes": 260,
+        "expectedSha256": "e52f10bdac7c9c9f4530bae1e26fe70b8c07410ec9027e2655cab9d2c885aa7a",
+        "servedSha256": "e52f10bdac7c9c9f4530bae1e26fe70b8c07410ec9027e2655cab9d2c885aa7a",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-source-restored-hashes.txt",
+        "status": 200,
+        "bytes": 260,
+        "expectedSha256": "1ea4725d4b7c430e15c1e189412f2e492d77a859ca87c0df6ca139be6178190c",
+        "servedSha256": "1ea4725d4b7c430e15c1e189412f2e492d77a859ca87c0df6ca139be6178190c",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/root-html-span-sentinel.html",
+        "status": 200,
+        "bytes": 1811,
+        "expectedSha256": "c1f81d9bef820362fe95e155ad029bbed013b8709020cab3946075d3c14668a9",
+        "servedSha256": "c1f81d9bef820362fe95e155ad029bbed013b8709020cab3946075d3c14668a9",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-repeated-text-810-regression.log",
+        "status": 200,
+        "bytes": 425,
+        "expectedSha256": "e045e7ffeca76f09d59268ddf4b31bdd1b61fe82f6183c94debfe1602d554d23",
+        "servedSha256": "e045e7ffeca76f09d59268ddf4b31bdd1b61fe82f6183c94debfe1602d554d23",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-repeated-text-span.log",
+        "status": 200,
+        "bytes": 1058,
+        "expectedSha256": "80eab12267f5efbdacd7008d7516f6878ea64c4b404a833c7e107dba2f46fb4c",
+        "servedSha256": "80eab12267f5efbdacd7008d7516f6878ea64c4b404a833c7e107dba2f46fb4c",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-row-span-feature-trace.log",
+        "status": 200,
+        "bytes": 1484,
+        "expectedSha256": "656264e599218423f0b849ee0d4812f53c78a675cb66253571c0ca602fefbdcd",
+        "servedSha256": "656264e599218423f0b849ee0d4812f53c78a675cb66253571c0ca602fefbdcd",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/spinon-layout-lib.log",
+        "status": 200,
+        "bytes": 60345,
+        "expectedSha256": "eff8601561f1e9e846c5e6c1dabcf62a2c6ddb1b1c27be8bf1b5ec55ca003743",
+        "servedSha256": "eff8601561f1e9e846c5e6c1dabcf62a2c6ddb1b1c27be8bf1b5ec55ca003743",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/style-root-html-fit-content-auto-rows.log",
+        "status": 200,
+        "bytes": 790,
+        "expectedSha256": "3e231307657496312ebf11ae2a70660af73227300defc922c14e22eb6fea1d6d",
+        "servedSha256": "3e231307657496312ebf11ae2a70660af73227300defc922c14e22eb6fea1d6d",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.html",
+        "status": 200,
+        "bytes": 26447,
+        "expectedSha256": "e783e5c4333f77b646b649847bd2e329bd9d9de0176ee5df3998b64780671e2a",
+        "servedSha256": "e783e5c4333f77b646b649847bd2e329bd9d9de0176ee5df3998b64780671e2a",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.md",
+        "status": 200,
+        "bytes": 3951,
+        "expectedSha256": "31f22bcf59ea1717136a1c493411afa9eb1a8755fd0ea6093dd2c874b7ba2d4a",
+        "servedSha256": "31f22bcf59ea1717136a1c493411afa9eb1a8755fd0ea6093dd2c874b7ba2d4a",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-matrix-observation.ndjson",
+        "status": 200,
+        "bytes": 502884,
+        "expectedSha256": "52db9a1db26e627b9f5ed9420946bc621cbba8a2cc109d6863b1a96003d2552d",
+        "servedSha256": "52db9a1db26e627b9f5ed9420946bc621cbba8a2cc109d6863b1a96003d2552d",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-observation.json",
+        "status": 200,
+        "bytes": 5634,
+        "expectedSha256": "795c93bc7165b521121a59ce22a998fbc143b263b44e1f104ad59c6247d16d70",
+        "servedSha256": "795c93bc7165b521121a59ce22a998fbc143b263b44e1f104ad59c6247d16d70",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-precomparison.png",
+        "status": 200,
+        "bytes": 8331,
+        "expectedSha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+        "servedSha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/matrix-verification.json",
+        "status": 200,
+        "bytes": 1285,
+        "expectedSha256": "75a047ffeed5c4c4aa388a5ef94ebc481e528600cdebd9f1ccb545ce706ef519",
+        "servedSha256": "75a047ffeed5c4c4aa388a5ef94ebc481e528600cdebd9f1ccb545ce706ef519",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.html",
+        "status": 200,
+        "bytes": 27980,
+        "expectedSha256": "892597135746acb13385780a310e304f442772332f7f09fb6b9ee3bbb76aca85",
+        "servedSha256": "892597135746acb13385780a310e304f442772332f7f09fb6b9ee3bbb76aca85",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.md",
+        "status": 200,
+        "bytes": 4348,
+        "expectedSha256": "5b2fd9f78a18c5a95e737d1eb2865c2f47c5b46d40269c85f280d187c7e30a67",
+        "servedSha256": "5b2fd9f78a18c5a95e737d1eb2865c2f47c5b46d40269c85f280d187c7e30a67",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/verify-chrome-matrix.py",
+        "status": 200,
+        "bytes": 5450,
+        "expectedSha256": "13e2c918dfed44ebf75f5e98a3e5144a04568972f5f5aac6f1020643c97faedc",
+        "servedSha256": "13e2c918dfed44ebf75f5e98a3e5144a04568972f5f5aac6f1020643c97faedc",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.html",
+        "status": 200,
+        "bytes": 24833,
+        "expectedSha256": "038a1a9eb8b974ed8225372e6945b6bda9ae6901847bb0a46631e91e50a56108",
+        "servedSha256": "038a1a9eb8b974ed8225372e6945b6bda9ae6901847bb0a46631e91e50a56108",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.md",
+        "status": 200,
+        "bytes": 2414,
+        "expectedSha256": "974612a66483a2d0d47c29cf129e247287d227d908ff37da9669dc51eda0a532",
+        "servedSha256": "974612a66483a2d0d47c29cf129e247287d227d908ff37da9669dc51eda0a532",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.html",
+        "status": 200,
+        "bytes": 33740,
+        "expectedSha256": "0197663c3c2e7a5d83b2d87c019a49c569d4613799232ad6951eeafbbbf3aabe",
+        "servedSha256": "0197663c3c2e7a5d83b2d87c019a49c569d4613799232ad6951eeafbbbf3aabe",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.md",
+        "status": 200,
+        "bytes": 4416,
+        "expectedSha256": "4f511d65e7a177a53e967be418bb8d2d6486054e6ccb696740720f453084d0b1",
+        "servedSha256": "4f511d65e7a177a53e967be418bb8d2d6486054e6ccb696740720f453084d0b1",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-preflight.json",
+        "status": 200,
+        "bytes": 43640,
+        "expectedSha256": "02f5b8e3157fa58a736abcd44bfd39a7a8a55a8e6a24e37816970bdf5ff64ad5",
+        "servedSha256": "02f5b8e3157fa58a736abcd44bfd39a7a8a55a8e6a24e37816970bdf5ff64ad5",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-result.json",
+        "status": 200,
+        "bytes": 24128,
+        "expectedSha256": "d628569c4d0e7aa21977037b737313ec7dbc85c3f51f528da76927f14e857bc3",
+        "servedSha256": "d628569c4d0e7aa21977037b737313ec7dbc85c3f51f528da76927f14e857bc3",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/served-verification.json",
+        "status": 200,
+        "bytes": 34922,
+        "expectedSha256": "3d67503da6d5822c3b69abe3d9c7452a63f5abe488ca9b41f173c51299ca54a5",
+        "servedSha256": "3d67503da6d5822c3b69abe3d9c7452a63f5abe488ca9b41f173c51299ca54a5",
+        "sha256Match": true
+      },
+      {
+        "route": "logo.svg",
+        "status": 200,
+        "bytes": 568,
+        "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+        "sha256Match": true
+      },
+      {
+        "route": "plan/c11-4-root-html-repeated-text-row-span-plan-review-20.html",
+        "status": 200,
+        "bytes": 28199,
+        "expectedSha256": "81d3347efd1f5a219aaf06405f0fb67632a17c133a41ccced51911f56408dcc4",
+        "servedSha256": "81d3347efd1f5a219aaf06405f0fb67632a17c133a41ccced51911f56408dcc4",
+        "sha256Match": true
+      },
+      {
+        "route": "plan/c11-4-root-html-repeated-text-row-span-plan-review-20.md",
+        "status": 200,
+        "bytes": 4684,
+        "expectedSha256": "dc85e07d5b9ba5d9f77f042bbe3cb6c51abe4c7053cc326ea34287d7ccbd2ba8",
+        "servedSha256": "dc85e07d5b9ba5d9f77f042bbe3cb6c51abe4c7053cc326ea34287d7ccbd2ba8",
+        "sha256Match": true
+      },
+      {
+        "route": "plan/c11-4-root-html-repeated-text-row-span.html",
+        "status": 200,
+        "bytes": 36281,
+        "expectedSha256": "46f050a89b5f3827fd0f47f79df271cbfa7cbb35f6a4443d3011485a0c18787b",
+        "servedSha256": "46f050a89b5f3827fd0f47f79df271cbfa7cbb35f6a4443d3011485a0c18787b",
+        "sha256Match": true
+      },
+      {
+        "route": "plan/c11-4-root-html-repeated-text-row-span.md",
+        "status": 200,
+        "bytes": 11494,
+        "expectedSha256": "f30670d8939181d41bab118e6e6ae97198211a2609aaaed87ff6addd42b8694d",
+        "servedSha256": "f30670d8939181d41bab118e6e6ae97198211a2609aaaed87ff6addd42b8694d",
+        "sha256Match": true
+      },
+      {
+        "route": "public/roadmap.html",
+        "status": 200,
+        "bytes": 644018,
+        "expectedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "servedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "sha256Match": true
+      },
+      {
+        "route": "roadmap.html",
+        "status": 200,
+        "bytes": 644018,
+        "expectedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "servedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "sha256Match": true
+      },
+      {
+        "route": "spec/STATUS.html",
+        "status": 200,
+        "bytes": 898117,
+        "expectedSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+        "servedSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+        "sha256Match": true
+      },
+      {
+        "route": "spec/STATUS.md",
+        "status": 200,
+        "bytes": 737773,
+        "expectedSha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+        "servedSha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+        "sha256Match": true
+      },
+      {
+        "route": "spec/internal/0059-c11-grid-layout.html",
+        "status": 200,
+        "bytes": 784369,
+        "expectedSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+        "servedSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+        "sha256Match": true
+      },
+      {
+        "route": "spec/internal/0059-c11-grid-layout.md",
+        "status": 200,
+        "bytes": 554063,
+        "expectedSha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+        "servedSha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+        "sha256Match": true
+      },
+      {
+        "route": "spec/public/roadmap.html",
+        "status": 200,
+        "bytes": 644018,
+        "expectedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "servedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "sha256Match": true
+      },
+      {
+        "route": "static/css/styles.8d918fd78e.css",
+        "status": 200,
+        "bytes": 73952,
+        "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+        "sha256Match": true
+      },
+      {
+        "route": "static/image/android-root-html-span-sentinel.925345260e.png",
+        "status": 200,
+        "bytes": 80124,
+        "expectedSha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+        "servedSha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+        "sha256Match": true
+      },
+      {
+        "route": "static/image/chrome157-precomparison.6488c8b7f3.png",
+        "status": 200,
+        "bytes": 8331,
+        "expectedSha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+        "servedSha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+        "sha256Match": true
+      },
+      {
+        "route": "static/image/ios-root-html-span-sentinel.6f04bbdf5e.png",
+        "status": 200,
+        "bytes": 142308,
+        "expectedSha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+        "servedSha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/a.877e354479.js",
+        "status": 200,
+        "bytes": 217085,
+        "expectedSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+        "servedSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/a.877e354479.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 384,
+        "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/i.25208e7c92.js",
+        "status": 200,
+        "bytes": 100,
+        "expectedSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+        "servedSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-0477fb545b6f.dd73c06166.js",
+        "status": 200,
+        "bytes": 10579,
+        "expectedSha256": "6498b5620991a846770f1ffce285692e5486833e4a95714543dc91a1806cb052",
+        "servedSha256": "6498b5620991a846770f1ffce285692e5486833e4a95714543dc91a1806cb052",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-0a0fe4472c60.73ec49bb80.js",
+        "status": 200,
+        "bytes": 11366,
+        "expectedSha256": "15d0b26f90c26d7954b35d7a6531654f7478abf6fc855690e823e7a3e196fe4f",
+        "servedSha256": "15d0b26f90c26d7954b35d7a6531654f7478abf6fc855690e823e7a3e196fe4f",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-1a818659b4e8.2e0f510235.js",
+        "status": 200,
+        "bytes": 7730,
+        "expectedSha256": "7ec3456d0f9f40cec01d9e3629c82a1bdad4227393193d47851d248c9dbb66ba",
+        "servedSha256": "7ec3456d0f9f40cec01d9e3629c82a1bdad4227393193d47851d248c9dbb66ba",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-2a1256f9d397.25e30d7a84.js",
+        "status": 200,
+        "bytes": 12607,
+        "expectedSha256": "a2135a0088d5c880cc16dd998aa43e7df01e29a0853a700c89a4e071762bc170",
+        "servedSha256": "a2135a0088d5c880cc16dd998aa43e7df01e29a0853a700c89a4e071762bc170",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-2ba6476c2ddb.76f8a2ba07.js",
+        "status": 200,
+        "bytes": 3267,
+        "expectedSha256": "98167eece2d643fee00a9778e6091229e75094df6b1d5bde7791319973fdbb5f",
+        "servedSha256": "98167eece2d643fee00a9778e6091229e75094df6b1d5bde7791319973fdbb5f",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-33e637b29547.6bc40f1301.js",
+        "status": 200,
+        "bytes": 8698,
+        "expectedSha256": "f797f8aab4bbca5af32e7eb1f6795b6d6fd1ac0d4ce7a378e46da44b7b0de654",
+        "servedSha256": "f797f8aab4bbca5af32e7eb1f6795b6d6fd1ac0d4ce7a378e46da44b7b0de654",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-6788a2703066.33f61c8cd1.js",
+        "status": 200,
+        "bytes": 5044,
+        "expectedSha256": "6f7defb588bd0f9b80e3d2f4f7cfed283f213ae044b998b966a3244e167cef5a",
+        "servedSha256": "6f7defb588bd0f9b80e3d2f4f7cfed283f213ae044b998b966a3244e167cef5a",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-6c33a3943990.079f3f2d13.js",
+        "status": 200,
+        "bytes": 971423,
+        "expectedSha256": "418f348b845b229a24759edac886edf8c6ba1ac03b0751fbf0ebaa51aedc923a",
+        "servedSha256": "418f348b845b229a24759edac886edf8c6ba1ac03b0751fbf0ebaa51aedc923a",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-a48746cae70c.625404b573.js",
+        "status": 200,
+        "bytes": 947,
+        "expectedSha256": "7ecc992eaaa02df5100f93222c4468d44249823cb1f913dd1c6cf02c80e1b1a7",
+        "servedSha256": "7ecc992eaaa02df5100f93222c4468d44249823cb1f913dd1c6cf02c80e1b1a7",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-a73a1f07bfab.b514f20df1.js",
+        "status": 200,
+        "bytes": 7833,
+        "expectedSha256": "a40e2f6f31d051cf9e54c0c2183042efb546651372851f87e4cb7ad2c896c032",
+        "servedSha256": "a40e2f6f31d051cf9e54c0c2183042efb546651372851f87e4cb7ad2c896c032",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-ab4e3cc5d7b9.e581a544dd.js",
+        "status": 200,
+        "bytes": 8959,
+        "expectedSha256": "cd3bf5b37b3dd933da552b7d8d7b42fc0e4e4d7c98b452541fa35b3cff5c2176",
+        "servedSha256": "cd3bf5b37b3dd933da552b7d8d7b42fc0e4e4d7c98b452541fa35b3cff5c2176",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-c4dae6800800.1d9eb84498.js",
+        "status": 200,
+        "bytes": 821387,
+        "expectedSha256": "a1d15e4e19d0e4000b26636f348326ca231525f87cebffd8a5ba9d1555623733",
+        "servedSha256": "a1d15e4e19d0e4000b26636f348326ca231525f87cebffd8a5ba9d1555623733",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/async/route-e184f10bd9d7.a383a6ffbb.js",
+        "status": 200,
+        "bytes": 17273,
+        "expectedSha256": "5f11b5f7af808f5c0b3507c9d0e1d8bf633553f24e8d2d3465faa9eb8b1197c7",
+        "servedSha256": "5f11b5f7af808f5c0b3507c9d0e1d8bf633553f24e8d2d3465faa9eb8b1197c7",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/index.2e8de1b61d.js",
+        "status": 200,
+        "bytes": 85735,
+        "expectedSha256": "2478e1654fec63e871cc19d2a70145d47250a3f078f980a5fce133547d02f97f",
+        "servedSha256": "2478e1654fec63e871cc19d2a70145d47250a3f078f980a5fce133547d02f97f",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/lib-react.9cdf8f49ce.js",
+        "status": 200,
+        "bytes": 218364,
+        "expectedSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+        "servedSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 1209,
+        "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/lib-router.1e14e568cb.js",
+        "status": 200,
+        "bytes": 35370,
+        "expectedSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+        "servedSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+        "status": 200,
+        "bytes": 222,
+        "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+        "sha256Match": true
+      },
+      {
+        "route": "static/js/styles.d2a6dfa6a0.js",
+        "status": 200,
+        "bytes": 473,
+        "expectedSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+        "servedSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+        "sha256Match": true
+      },
+      {
+        "route": "static/search_index.ko.3518bb8e.json",
+        "status": 200,
+        "bytes": 1131229,
+        "expectedSha256": "3518bb8e45edc8a39f5a2a8dd239fd3bc29771fe87d6e0bf7a8a3c8855c239ff",
+        "servedSha256": "3518bb8e45edc8a39f5a2a8dd239fd3bc29771fe87d6e0bf7a8a3c8855c239ff",
+        "sha256Match": true
+      }
+    ]
+  },
+  "tailnet": {
+    "backendState": "Running",
+    "serverPid": 28040,
+    "allHttp200AndSha256Match": true,
+    "checkedRoutes": [
+      {
+        "route": "roadmap.html",
+        "status": 200,
+        "bytes": 644018,
+        "expectedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "servedSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+        "sha256Match": true
+      },
+      {
+        "route": "STATUS.html",
+        "status": 200,
+        "bytes": 898117,
+        "expectedSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+        "servedSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/0059-c11-grid-layout.html",
+        "status": 200,
+        "bytes": 784369,
+        "expectedSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+        "servedSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+        "sha256Match": true
+      },
+      {
+        "route": "plan/c11-4-root-html-repeated-text-row-span.html",
+        "status": 200,
+        "bytes": 36281,
+        "expectedSha256": "46f050a89b5f3827fd0f47f79df271cbfa7cbb35f6a4443d3011485a0c18787b",
+        "servedSha256": "46f050a89b5f3827fd0f47f79df271cbfa7cbb35f6a4443d3011485a0c18787b",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.html",
+        "status": 200,
+        "bytes": 28625,
+        "expectedSha256": "b191bce31b160bec3493caee8530adc833cc5d01d6bfeb765aaa35743f2acbc6",
+        "servedSha256": "b191bce31b160bec3493caee8530adc833cc5d01d6bfeb765aaa35743f2acbc6",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.html",
+        "status": 200,
+        "bytes": 24833,
+        "expectedSha256": "038a1a9eb8b974ed8225372e6945b6bda9ae6901847bb0a46631e91e50a56108",
+        "servedSha256": "038a1a9eb8b974ed8225372e6945b6bda9ae6901847bb0a46631e91e50a56108",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.html",
+        "status": 200,
+        "bytes": 33740,
+        "expectedSha256": "0197663c3c2e7a5d83b2d87c019a49c569d4613799232ad6951eeafbbbf3aabe",
+        "servedSha256": "0197663c3c2e7a5d83b2d87c019a49c569d4613799232ad6951eeafbbbf3aabe",
+        "sha256Match": true
+      },
+      {
+        "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-preflight.json",
+        "status": 200,
+        "bytes": 43640,
+        "expectedSha256": "02f5b8e3157fa58a736abcd44bfd39a7a8a55a8e6a24e37816970bdf5ff64ad5",
+        "servedSha256": "02f5b8e3157fa58a736abcd44bfd39a7a8a55a8e6a24e37816970bdf5ff64ad5",
+        "sha256Match": true
+      }
+    ],
+    "roadmapMarkers": {
+      "mergedPr1295": true,
+      "stalePlanClaimAbsent": true,
+      "officialCountPresent": true
+    },
+    "dynamicOfficialStatusSource": "GitHub main; final live board state is rechecked after docs PR merge"
+  }
+}
