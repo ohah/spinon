@@ -175,20 +175,15 @@ pub(super) fn validate(
         .collect::<std::collections::BTreeMap<_, _>>();
     let repeated_text_profile = six_member_list
         && items.len() == 9
-        && items
-            .iter()
-            .copied()
-            .skip(1)
-            .zip(repeated_text::PAYLOADS)
-            .all(|(item, expected_text)| {
-                let Ok(children) = direct_element_children(tree, nodes, item) else {
-                    return false;
-                };
-                let [payload] = children.as_slice() else {
-                    return false;
-                };
-                repeated_text::payload_text_matches(tree, *payload, expected_text)
-            });
+        && items.iter().copied().skip(1).all(|item| {
+            let Ok(children) = direct_element_children(tree, nodes, item) else {
+                return false;
+            };
+            let [payload] = children.as_slice() else {
+                return false;
+            };
+            repeated_text::payload_has_supported_text(tree, *payload)
+        });
     let grid_height_is_supported = grid_style.layout_dimensions.height
         == ComputedCssDimension::LengthPx(100.0)
         || (repeated_text_profile
@@ -251,15 +246,8 @@ pub(super) fn validate(
                 None
             };
             if repeated_text_profile {
-                let expected_text = repeated_text::PAYLOADS[position - 1];
-                if !repeated_text::payload_is_supported(
-                    tree,
-                    nodes,
-                    snapshot,
-                    &styles,
-                    children[0],
-                    expected_text,
-                ) {
+                if !repeated_text::payload_is_supported(tree, nodes, snapshot, &styles, children[0])
+                {
                     return Err(unsupported(
                         children[0].id(),
                         "grid-auto-rows",

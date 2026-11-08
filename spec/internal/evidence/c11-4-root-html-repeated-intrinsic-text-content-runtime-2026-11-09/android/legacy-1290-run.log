@@ -1,0 +1,787 @@
+--------- beginning of main
+11-09 02:15:43.607   643  2551 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET, user: 0
+11-09 02:15:43.609   643  2551 W SignedPackage: Cannot get ApplicationInfo for package: com.google.android.devicelockcontroller
+11-09 02:15:43.611   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.611   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.611   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.611   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.612   643   643 W libbinder.IPCThreadState: Sending oneway calls to frozen process.
+11-09 02:15:43.712   497   497 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:am force-stop dev.spinon.bootstrap'
+--------- beginning of system
+11-09 02:15:43.720   643   712 I ActivityManager: Force stopping dev.spinon.bootstrap appid=10231 user=0: from pid 3729
+11-09 02:15:43.721   643   712 W ProcessStats: Tracking association SourceState{a18db19 com.google.android.apps.nexuslauncher/10190 BTop #2396} whose proc state 2 is better than process ProcessState{41c2866 com.google.android.apps.wellbeing/10149 pkg=com.google.android.apps.wellbeing} proc state 14 (0 skipped)
+11-09 02:15:43.722  1031  1031 D CarrierSvcBindHelper: onHandleForceStop: [dev.spinon.bootstrap]
+11-09 02:15:43.722   643   836 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_RESTARTED on user 0
+11-09 02:15:43.723   643   836 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10231 package dev.spinon.bootstrap isStopped true
+11-09 02:15:43.723  1031  1031 D CarrierSvcBindHelper: No carrier app for: 0
+11-09 02:15:43.734   497   497 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:am start -n dev.spinon.bootstrap/.MainActivity'
+11-09 02:15:43.742   643   712 W ActivityTaskManager: callingPackage for (uid=2000, pid=3734) has no WPC
+11-09 02:15:43.743   643   712 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10231, packageName = null, attributionTag = null, token = android.os.Binder@8b622fd, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-09 02:15:43.744  1037  1037 D RecentsView: onTaskDisplayChanged: 10, new displayId = 0
+11-09 02:15:43.745   490   697 I libbinder.BpBinder: onLastStrongRef automatically unlinking death recipients for binder (0xb4000070fae10dc0) with descriptor: '(not cached)'
+11-09 02:15:43.746   643  1436 D CompatChangeReporter: Compat change id reported: 377864165; UID 10231; state: ENABLED
+11-09 02:15:43.746   643   712 D CorePackageUpdate: onRecentTaskRemoved Removing task: 9
+11-09 02:15:43.746   643   712 D CorePackageUpdate: Couldn't find a persistent state for task= 9
+11-09 02:15:43.746   643   712 V ActivityTaskManager: TaskLaunchParamsModifier: phase=3 task=Task{55c0b9a #10 type=standard A=10231:dev.spinon.bootstrap} activity=ActivityRecord{112760901 u0 dev.spinon.bootstrap/.MainActivity t-1} display-from-task=0 display-id=0 task-display-area-windowing-mode=1 suggested-display-area=DefaultTaskDisplayArea@34972284 inherit-from-task=fullscreen non-freeform-task-display-area display-area=DefaultTaskDisplayArea@34972284 skip-bounds-fullscreen
+11-09 02:15:43.746   643   712 I ActivityTaskManager: START u0 {flg=0x10000000 xflg=0x5 cmp=dev.spinon.bootstrap/.MainActivity} with LAUNCH_MULTIPLE from uid 2000 (com.android.shell) (BAL_ALLOW_PERMISSION) result code=0
+11-09 02:15:43.746  1037  1037 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed|state_window_focused|state_user_active] -[]
+11-09 02:15:43.746   904   964 V WindowManagerShell: Transition requested (#13): android.os.BinderProxy@1c25a TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=10 effectiveUid=10231 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} topActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} realActivityIsAppLockEnabled=false numActivities=1 lastActiveTime=239324 supportsMultiWindow=true supportsMultiWindowWithoutConstraints=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.os.BinderProxy@8eea981} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{9aa26 dev.spinon.bootstrap.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isInteractive=false isVisible=false isVisibleRequested=false isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=null leafTaskBoundsFromOptions= false capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=503 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false isLeafTask= true eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 2400) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null topNonResizableActivityAspectRatio=-1.0} topActivityMainWindowFrame=null isAppBubble=false}, pipChange = null, remoteTransitionInfo = null, displayChanges = null, requestedLocation = null, userChange = null, windowingLayerChange = null, fullscreenRequestChange = null, flags = 0, debugId = 13 }
+11-09 02:15:43.746   904   964 W DisconnectHandler: No disconnect change found in the transition, not handling request.
+11-09 02:15:43.746   643  2025 D CompatChangeReporter: Compat change id reported: 463899193; UID 10231; state: ENABLED
+11-09 02:15:43.746   904   964 V ShellDesktopMode: DesktopTasksController: skipping handleRequest reason=triggerTask's display doesn't support desktop mode
+11-09 02:15:43.746   904   964 D ShellSplitScreen: logExit: no-op, mLoggerSessionId is null
+11-09 02:15:43.747   643   666 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10231, packageName = null, attributionTag = null, token = android.os.Binder@8b622fd, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-09 02:15:43.747   643  2025 W InputChannel-JNI: Channel already disposed.
+11-09 02:15:43.748  1037  1037 D BaseActivity: Launcher flags updated: [state_started|state_resumed|state_deferred_resumed|state_window_focused] -[state_user_active]
+11-09 02:15:43.748  1037  1037 D BaseActivity: Launcher flags updated: [state_started|state_window_focused] -[state_resumed|state_deferred_resumed]
+11-09 02:15:43.748  1037  1037 W SplitSelectStateCtor: Missing session instanceIds
+11-09 02:15:43.748  1037  1037 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-09 02:15:43.748   904   964 V RecentTasksController: Notify recent tasks changed
+11-09 02:15:43.749   904   964 D ShellDesktopMode: DesktopRepository(0): Removes freeform task: taskId=9
+11-09 02:15:43.749   904   964 W ShellDesktopMode: DesktopRepository(0): No display id found for task: taskId=9
+11-09 02:15:43.749   904   964 V RecentTasksController: Notify recent tasks changed
+11-09 02:15:43.750   643  1873 V WindowManager: Defer transition id=13 for TaskFragmentTransaction=android.os.Binder@322a184
+11-09 02:15:43.750  1037  1037 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+11-09 02:15:43.750  1037  1037 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+11-09 02:15:43.750   904   964 D WindowManagerShell: setLauncherKeepClearAreaHeight: visible=false, height=495
+11-09 02:15:43.751   643  1873 V WindowManager: Continue transition id=13 for TaskFragmentTransaction=android.os.Binder@322a184
+11-09 02:15:43.751   432   432 D Zygote  : Forked child process 3738
+11-09 02:15:43.751   643   836 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+11-09 02:15:43.751   643   836 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10231 package dev.spinon.bootstrap isStopped false
+11-09 02:15:43.752   904  1080 D SplashScreenView: Build android.window.SplashScreenView{bd66675 V.E...... ......ID 0,0-0,0}
+11-09 02:15:43.752   904  1080 D SplashScreenView: Icon: view: android.widget.ImageView{ff760a V.ED..... ......I. 0,0-0,0 #1020575 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@8787e7b size: 420
+11-09 02:15:43.752   904  1080 D SplashScreenView: Branding: view: android.view.View{ff98498 G.ED..... ......I. 0,0-0,0 #1020574 android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+11-09 02:15:43.754   643   673 I ActivityManager: Start proc 3738:dev.spinon.bootstrap/u0a231 for next-top-activity {dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}
+11-09 02:15:43.754  3738  3738 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10231
+11-09 02:15:43.754  3738  3738 I libprocessgroup: Created cgroup /sys/fs/cgroup/apps/uid_10231/pid_3738
+11-09 02:15:43.755  3738  3738 I Zygote  : Process 3738 created for dev.spinon.bootstrap
+11-09 02:15:43.755  3738  3738 I pinon.bootstrap: Late-enabling -Xcheck:jni
+11-09 02:15:43.761   643  1873 D WindowManager: setClientSurface Surface(name=VRI-Splash Screen dev.spinon.bootstrap#107)/@0x481ccab for 71e8f4a Splash Screen dev.spinon.bootstrap
+11-09 02:15:43.763  3738  3738 I pinon.bootstrap: Using generational CollectorTypeCMC GC.
+11-09 02:15:43.763   904  1075 I Surface : Creating surface for consumer unnamed-904-5 with slotExpansion=1 for 64 slots
+11-09 02:15:43.763   904  1075 I Surface : Creating surface for consumer VRI[bootstrap]#5(BLAST Consumer)5 with slotExpansion=1 for 64 slots
+11-09 02:15:43.766   497   557 I adbd    : jdwp connection from 3738
+11-09 02:15:43.768  3738  3738 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-09 02:15:43.792  1037  1037 D BaseActivity: Launcher flags updated: [state_started] -[state_window_focused]
+11-09 02:15:43.794  3738  3738 D nativeloader: Configuring clns-9 for other apk /data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/lib/arm64:/data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/dev.spinon.bootstrap
+11-09 02:15:43.796   643   663 V WindowManager: Sent Transition (#13) createdAt=11-09 02:15:43.743 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=10 effectiveUid=10231 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.spinon.bootstrap/.MainActivity } baseActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} topActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} origActivity=null realActivity=ComponentInfo{dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity} realActivityIsAppLockEnabled=false numActivities=1 lastActiveTime=239324 supportsMultiWindow=true supportsMultiWindowWithoutConstraints=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{b2bc8d9 Task{55c0b9a #10 type=standard A=10231:dev.spinon.bootstrap}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{9acd29e dev.spinon.bootstrap.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isInteractive=false isVisible=false isVisibleRequested=false isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=null leafTaskBoundsFromOptions= false capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=503 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false isLeafTask= true eligibleForLetterboxEducation= false isLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1080, 2400) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null topNonResizableActivityAspectRatio=-1.0} topActivityMainWindowFrame=null isAppBubble=false}, pipChange = null, remoteTransitionInfo = null, displayChanges = null, requestedLocation = null, userChange = null, windowingLayerChange = null, fullscreenRequestChange = null, flags = 0, debugId = 13 }
+11-09 02:15:43.796   643   663 V WindowManager:     startWCT=WindowContainerTransaction { changes= {} hops= [] flags= 0 errorCallbackToken=null taskFragmentOrganizer=null }
+11-09 02:15:43.796   643   663 V WindowManager:     info={id=13 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-09 02:15:43.796   643   663 V WindowManager:         {WCT{RemoteToken{b2bc8d9 Task{55c0b9a #10 type=standard A=10231:dev.spinon.bootstrap}}} m=OPEN f=MOVE_TO_TOP|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=10#104)/@0x4e14bdd sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},
+11-09 02:15:43.796   643   663 V WindowManager:         {WCT{RemoteToken{af6017f Task{62766c2 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=1#33)/@0x2b373b4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},
+11-09 02:15:43.796   643   663 V WindowManager:         {m=TO_BACK f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{4504dcd}#53)/@0xd8e8887 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}
+11-09 02:15:43.796   643   663 V WindowManager:     ]}
+11-09 02:15:43.797  3738  3738 V GraphicsEnvironment: Currently set values for:
+11-09 02:15:43.797  3738  3738 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-09 02:15:43.797  3738  3738 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-09 02:15:43.797  3738  3738 V GraphicsEnvironment: dev.spinon.bootstrap is not listed in per-application setting
+11-09 02:15:43.797  3738  3738 V GraphicsEnvironment: No special selections for ANGLE, returning default driver choice
+11-09 02:15:43.798   904  1169 V WindowManagerShell: onTransitionReady(transaction=2761663972285)
+11-09 02:15:43.798   904   964 V WindowManagerShell: onTransitionReady (#13) android.os.BinderProxy@1c25a: {id=13 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-09 02:15:43.798   904   964 V WindowManagerShell:         {m=OPEN f=MOVE_TO_TOP|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=10#104)/@0xe8ed6e5 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},
+11-09 02:15:43.798   904   964 V WindowManagerShell:         {m=TO_BACK f=SHOW_WALLPAPER|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=1#33)/@0x26975ba sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},
+11-09 02:15:43.798   904   964 V WindowManagerShell:         {m=TO_BACK f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{4504dcd}#53)/@0xa1fc6b sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}
+11-09 02:15:43.798   904   964 V WindowManagerShell:     ]}
+11-09 02:15:43.798   904   964 V WindowManagerShell: Playing animation for (#13) android.os.BinderProxy@1c25a@0
+11-09 02:15:43.799  3738  3738 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-09 02:15:43.799   904   964 D ShellSplitScreen: startAnimation: transition=13 isSplitActive=false
+11-09 02:15:43.799   904   964 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+11-09 02:15:43.799   904   964 V ShellDesktopMode: DesktopMixedTransitionHandler: No pending desktop transition
+11-09 02:15:43.799   904   964 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=13 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{m=OPEN f=MOVE_TO_TOP|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=10#104)/@0xe8ed6e5 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},{m=TO_BACK f=SHOW_WALLPAPER|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=1#33)/@0x26975ba sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},{m=TO_BACK f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{4504dcd}#53)/@0xa1fc6b sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}]}
+11-09 02:15:43.799   904   964 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0 notFlags=0x0 checks=[{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null taskFragmentToken=android.os.BinderProxy@9dafc61 windowingMode=undefined isCrossDisplayMove=false}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@f293386, appThread = android.app.IApplicationThread$Stub$Proxy@1e1f447, debugName = overlayBackTransition, filter = {types=[] flags=0x0 notFlags=0x0 checks=[{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null taskFragmentToken=android.os.BinderProxy@9dafc61 windowingMode=undefined isCrossDisplayMove=false}]} }}
+11-09 02:15:43.799   904   964 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0 notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=false},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=false}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@b8cd474, appThread = android.app.IApplicationThread$Stub$Proxy@969fd9d, debugName = LauncherToDream, filter = {types=[] flags=0x0 notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=false},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=false}]} }}
+11-09 02:15:43.799   904   964 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0 notFlags=0x0 checks=[{atype=standard independent=false modes=[CHANGE] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=true}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1d50212, appThread = android.app.IApplicationThread$Stub$Proxy@a3f8de3, debugName = QuickstepDisplayMove, filter = {types=[] flags=0x0 notFlags=0x0 checks=[{atype=standard independent=false modes=[CHANGE] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=true}]} }}
+11-09 02:15:43.799   904   964 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0 notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null windowingMode=undefined isCrossDisplayMove=false},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=false},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined isCrossDisplayMove=false}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@adcc3e0, appThread = android.app.IApplicationThread$Stub$Proxy@2edd699, debugName = QuickstepLaunchHome, filter = {types=[] flags=0x0 notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null windowingMode=undefined isCrossDisplayMove=false},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined isCrossDisplayMove=false},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined isCrossDisplayMove=false}]} }}
+11-09 02:15:43.799   904   964 V WindowManagerShell:  Checking filter Pair{{types=[OPEN,TO_FRONT] flags=0x0 notFlags=0x0 checks=[{atype=standard independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null windowingMode=freeform isCrossDisplayMove=false}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@9fd2d5e, appThread = null, debugName = DesktopWindowLimitUnminimize, filter = {types=[OPEN,TO_FRONT] flags=0x0 notFlags=0x0 checks=[{atype=standard independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null windowingMode=freeform isCrossDisplayMove=false}]} }}
+11-09 02:15:43.799   904   964 V WindowManagerShell:  Delegate animation for (#13) to null
+11-09 02:15:43.799   904   964 V WindowManagerShell: start default transition animation, info = {id=13 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{m=OPEN f=MOVE_TO_TOP|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=10#104)/@0xe8ed6e5 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},{m=TO_BACK f=SHOW_WALLPAPER|FLAG_CHANGED_INTERACTIVE leash=Surface(name=Task=1#33)/@0x26975ba sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0 taskParent=-1 winMode=1 userId=0},{m=TO_BACK f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{4504dcd}#53)/@0xa1fc6b sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) epz=Point(1080, 2400) d=0}]}
+11-09 02:15:43.802   643  1436 D CorePackageUpdate: Couldn't find a persistent state for task= 10
+11-09 02:15:43.806  3738  3754 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+11-09 02:15:43.809   904   964 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@deac16a animAttr=0x13 type=OPEN isEntrance=false
+11-09 02:15:43.819   904   964 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@6aa7d37 animAttr=0x12 type=OPEN isEntrance=true
+11-09 02:15:43.819   904   964 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@6e0e2b1
+11-09 02:15:43.820   904   964 V ShellTaskOrganizer: Task appeared taskId=10 listener=FullscreenTaskListener
+11-09 02:15:43.820   904   964 V ShellTaskOrganizer: Fullscreen Task Appeared: #10
+11-09 02:15:43.820   904   964 D ShellPackageUpdate: PackageUpdateController: Setting handlePackageUpdate for task: 10
+11-09 02:15:43.820   643  1436 E TransitionChain: Can't collect into a chain with no transition
+11-09 02:15:43.820   904   964 V RecentTasksController: Notify recent tasks changed
+11-09 02:15:43.823  1037  1037 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+11-09 02:15:43.833  3738  3754 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv1_CM_emulation.so
+11-09 02:15:43.833  3738  3754 I GFXSTREAM: [eglDisplay.cpp(297)] Opening libGLESv2_emulation.so
+11-09 02:15:43.834  3738  3754 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:43.836  3738  3754 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-09 02:15:43.836  3738  3754 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-09 02:15:43.850  3738  3738 D nativeloader: Load /data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/base.apk!/lib/arm64-v8a/libspinon_bootstrap.so using class loader ns clns-9 (caller=/data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/base.apk!classes2.dex): ok
+11-09 02:15:43.852   904   964 V RecentTasksController: Notify recent tasks changed
+11-09 02:15:43.853   904   964 V RecentTasksController: generateList(getRecentTasks)
+11-09 02:15:43.853   904   964 V RecentTasksController: initializeDesksMap - allDeskIds: []
+11-09 02:15:43.853   904   964 V RecentTasksController: Task 10 is not an active desktop task
+11-09 02:15:43.853   904   964 V RecentTasksController: Added fullscreen task: 10
+11-09 02:15:43.853   904   964 V RecentTasksController: generateList - complete
+11-09 02:15:43.853  1037  1085 D PreloadThumbnailUseCase: Preloading thumbnails for task ids: [[id=10 windowingMode=1 user=0 lastActiveTime=239381] null]
+11-09 02:15:43.853  1037  1037 D RecentTasksList: invalidateLoadedTasks - previous requestLoadId: -1
+11-09 02:15:43.860   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:43.860   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:43.895  3738  3738 D CompatChangeReporter: Compat change id reported: 376561342; UID 10231; state: ENABLED
+11-09 02:15:43.910  3738  3738 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_ASSET html_bytes=2910 script_bytes=1650
+11-09 02:15:43.912  3738  3738 D CompatChangeReporter: Compat change id reported: 377864165; UID 10231; state: ENABLED
+11-09 02:15:43.913  3738  3738 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_ROUTE source=index.html
+11-09 02:15:43.913  3738  3757 I SpinonBootstrap: SPINON_BOOTSTRAP_EXECUTION is_main_thread=false
+11-09 02:15:43.924  3738  3757 I SpinonBootstrap: SPINON_BOOTSTRAP_RESULT=nodes=2 last_node=8 tag=text text=이벤트:7 · 문서 revision 25 document_revision=25 render_tree_revision=15 document_nodes=10
+11-09 02:15:43.927  3738  3738 W HWUI    : Unknown dataspace 0
+--------- beginning of kernel
+11-09 02:15:43.932   287   287 I servicemanager: Caller(pid=3738,uid=10231,sid=u:r:untrusted_app_34:s0:c231,c256,c512,c768) Found android.hardware.graphics.allocator.IAllocator/default in device VINTF manifest.
+11-09 02:15:43.930   643  1873 W InputChannel-JNI: Channel already disposed.
+11-09 02:15:43.932  3738  3763 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:43.934   287   287 I servicemanager: Caller(pid=3738,uid=10231,sid=u:r:untrusted_app_34:s0:c231,c256,c512,c768) Found android.hardware.graphics.allocator.IAllocator/default in device VINTF manifest.
+11-09 02:15:43.934   287   287 I servicemanager: Caller(pid=3738,uid=10231,sid=u:r:untrusted_app_34:s0:c231,c256,c512,c768) Found mapper/ranchu in device VINTF manifest.
+11-09 02:15:43.944  3738  3738 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@a635429
+11-09 02:15:43.944   643  1436 D CoreBackPreview: Window{e5dca26 u0 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@455fcbd, mPriority=-1, mIsAnimationCallback=false, mOverrideBehavior=0}
+11-09 02:15:43.946  3738  3738 D VRI[MainActivity]: WindowInsets changed: 1080x2400 statusBars:[0,128,0,0] navigationBars:[0,0,0,63] mandatorySystemGestures:[0,160,0,84]
+11-09 02:15:43.951   490  1142 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10231 pid=3738
+11-09 02:15:43.951   490  1142 D libbinder.PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10231 => denied (496 us)
+11-09 02:15:43.952   490  1142 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10231 pid=3738
+11-09 02:15:43.952   490  1142 D libbinder.PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10231 => denied (413 us)
+11-09 02:15:43.952   490  1142 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10231 pid=3738
+11-09 02:15:43.952   490  1142 D libbinder.PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10231 => denied (336 us)
+11-09 02:15:43.952   490  1142 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.READ_FRAME_BUFFER from uid=10231 pid=3738
+11-09 02:15:43.952   490  1142 D libbinder.PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=10231 => denied (156 us)
+11-09 02:15:43.953   643  1436 D WindowManager: setClientSurface Surface(name=VRI-dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity#113)/@0x2cc62b2 for e5dca26 dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity
+11-09 02:15:43.956  3738  3738 I Surface : Creating surface for consumer unnamed-3738-0 with slotExpansion=1 for 64 slots
+11-09 02:15:43.956  3738  3738 I Surface : Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+11-09 02:15:43.958  3738  3738 I Surface : Creating surface for consumer unnamed-3738-1 with slotExpansion=1 for 64 slots
+11-09 02:15:43.959  3738  3738 I Surface : Creating surface for consumer b2c454f SurfaceView[dev.spinon.bootstrap/dev.spinon.bootstrap.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+11-09 02:15:43.959  3738  3738 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+11-09 02:15:43.959  3738  3738 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=1080x2209 changed=true
+11-09 02:15:43.959  3738  3765 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_SOURCE bytes=2910
+11-09 02:15:43.960   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:43.961   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:43.969  3738  3765 I SpinonBootstrap: SPINON_C0412_ROOT_HTML_DEFAULT_RENDER_HOST=session=ready owner_tid=3768 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=5886 session_startup_us=7914
+11-09 02:15:44.007  3738  3765 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 root_html_environment=true viewport=411.42856x841.52374 visual_viewport=411.42856x841.5238 page_scale=1 environment_revision=0 layout=ready boxes=21 generation=2 document_revision=1 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 page_scale_mapping=true device_scale_factor=2.625 page_scale=1 physical_scale=2.625 root_frame_css_px=411.42856x244 render_viewport_css_px=411.42856x841.52374 render_root_css_px=411.42856x244
+11-09 02:15:44.007  3738  3765 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=411.42856x841.5238 scale=2.625 dark=false status=0 root_html_environment=true viewport=411.42856x841.52374 visual_viewport=411.42856x841.5238 page_scale=1 environment_revision=0 layout=ready boxes=21 generation=2 document_revision=1 render_tree_revision=1 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 page_scale_mapping=true device_scale_factor=2.625 page_scale=1 physical_scale=2.625 root_frame_css_px=411.42856x244 render_viewport_css_px=411.42856x841.52374 render_root_css_px=411.42856x244
+11-09 02:15:44.012   643  1436 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10231 pid=0
+11-09 02:15:44.012   643  1436 D libbinder.PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10231 => denied (57 us)
+11-09 02:15:44.012   643  1436 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10231 pid=0
+11-09 02:15:44.012   643  1436 D libbinder.PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10231 => denied (5 us)
+11-09 02:15:44.012   643  1436 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10231 pid=0
+11-09 02:15:44.012   643  1436 D libbinder.PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10231 => denied (3 us)
+11-09 02:15:44.012   643  1436 W libbinder.ServiceManagerCppClient: Permission failure: android.permission.READ_FRAME_BUFFER from uid=10231 pid=0
+11-09 02:15:44.012   643  1436 D libbinder.PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=10231 => denied (3 us)
+11-09 02:15:44.014   643   663 I ActivityTaskManager: Displayed dev.spinon.bootstrap/.MainActivity for user 0: +271ms
+11-09 02:15:44.021  3738  3765 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=3765 owner_tid=3768 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=25 v8_call_us=2915 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=2 render_tree_revision=2 document_nodes=61 document_string_units=3304 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=18 document_collection_live_handles=18 document_collection_empty_handles=0 document_collection_last_scan_start_ns=239588871655 document_collection_last_scan_us=27 document_collection_wrapper_root_buffer_bytes=128 document_collection_reclaimed_node_buffer_bytes=244 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=8 ua_snapshot_submit_us=324 ua_snapshot_submitted=true enqueue_total_us=100 response_wait_us=3280 submit_total_us=3381 response_report_append_us
+11-09 02:15:44.023  3738  3765 I SpinonBootstrap: SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready status=0 layout=ready boxes=21 generation=2 document_revision=2 environment_revision=0
+11-09 02:15:44.023  3738  3765 I SpinonBootstrap: SPINON_C0410_EVAL status=0 seq=1 trace_cookie=1 op=eval status=0 caller_tid=3765 owner_tid=3768 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=25 v8_call_us=2915 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=2 render_tree_revision=2 document_nodes=61 document_string_units=3304 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=18 document_collection_live_handles=18 document_collection_empty_handles=0 document_collection_last_scan_start_ns=239588871655 document_collection_last_scan_us=27 document_collection_wrapper_root_buffer_bytes=128 document_collection_reclaimed_node_buffer_bytes=244 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=8 ua_snapshot_submit_us=324 ua_snapshot_submitted=true enqueue_total_us=100 response_wait_us=3280 submit_total_us=3381 response_report_append_us=0 layout=ready boxes=21 generation=2 document_revision=2 render_tree_revision=2 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=28 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 page_scale_mapping=true device_scale_factor=2.625 page_scale=1 physical_scale=2.625 root_frame_css_px=411.42856x244 render_viewport_css_px=411.42856x841.52374 render_root_css_px=411.42856x244
+11-09 02:15:44.037  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.037  3738  3764 W libc    : Access denied finding property "vendor.mesa.log"
+11-09 02:15:44.037  3738  3764 W libc    : Access denied finding property "vendor.mesa.log.level"
+11-09 02:15:44.037  3738  3764 W libc    : Access denied finding property "vendor.mesa.log.prefix"
+11-09 02:15:44.038  3738  3764 W libc    : Access denied finding property "vendor.mesa.gallium.print.options"
+11-09 02:15:44.038  3738  3764 W libc    : Access denied finding property "vendor.mesa.log.file.auto"
+11-09 02:15:44.038  3738  3764 W libc    : Access denied finding property "vendor.mesa.log.file"
+11-09 02:15:44.038  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.038  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.038  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.038  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.054  1591  1591 W MediaProvider: WorkProfileOwnerApps cache is empty
+11-09 02:15:44.054  1591  1591 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@80c25a7[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+11-09 02:15:44.054  1591  1591 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@80c25a7[Locked by thread main]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+11-09 02:15:44.054  1591  1591 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@80c25a7[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+11-09 02:15:44.063  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.063  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.063  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.064   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.064   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.064   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.064   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.067   643   762 I ImeTracker: dev.spinon.bootstrap:67d61f72: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false userId 0 displayId 0
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.067  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.068  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.068  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.068  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.070  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.070  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.070  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.071  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.071  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.072   643  1873 W InputChannel-JNI: Channel already disposed.
+11-09 02:15:44.072  3738  3738 D InsetsController: hide(ime())
+11-09 02:15:44.072  3738  3738 I ImeTracker: dev.spinon.bootstrap:67d61f72: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+11-09 02:15:44.073  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.074  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.074  1532  1532 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():2259
+11-09 02:15:44.074  1532  1532 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+11-09 02:15:44.075   643   712 I ImeTracker: system_server:9dc7886d: onRequestHide at ORIGIN_SERVER reason IME_REQUESTED_CHANGED_LISTENER fromUser false displayId 0
+11-09 02:15:44.075  1532  1532 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1446 onStartInput(EditorInfo{EditorInfo{packageName=dev.spinon.bootstrap, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-09 02:15:44.075  1532  1532 W AndroidIME: LatinIMEBase.updateInputViewCoverNavigation():327 Null input view, cannot update padding!
+11-09 02:15:44.075  1532  1532 I Module  : DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+11-09 02:15:44.075  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.075  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.075  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.076   643   666 I ImeTracker: system_server:9dc7886d: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.078  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.082  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.082  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.082  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.083  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.084  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.084  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.084  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.086   643   712 W PackageConfigPersister: App-specific configuration not found for packageName: dev.spinon.bootstrap and userId: 0
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.086  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.087  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.087  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.087  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.087  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.087  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.087  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.087  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.089  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.090  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.090  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.090  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.091  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.091  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.091  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.091  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.092  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.092  1620  1981 W AiAiBesties: providePipelineSetup: Error fetching APK Info for [com.google.android.apps.pixel.relationships].
+11-09 02:15:44.092  1620  1981 W AiAiBesties: android.content.pm.PackageManager$NameNotFoundException: com.google.android.apps.pixel.relationships
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:293)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:253)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at android.app.ApplicationPackageManager.getPackageInfo(ApplicationPackageManager.java:247)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at jls.a(PG:36)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at web.a(PG:98)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at wei.p(PG:80)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at wei.e(PG:7)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at wdh.run(PG:5)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at adyv.a(PG:3)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at adxy.run(PG:19)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at adyw.run(PG:5)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:520)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:323)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at mtj.run(PG:221)
+11-09 02:15:44.092  1620  1981 W AiAiBesties: 	at java.lang.Thread.run(Thread.java:1572)
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.googlequicksearchbox is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.search.assistant.verticals.ambient.standalone is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.gms is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.deskclock is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.wellbeing is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.messaging is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.maps is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.dialer is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.recorder is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.dev is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.inputmethod.latin.canary is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.whatsapp is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package jp.naver.line.android is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package org.thoughtcrime.securesms is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.autofill.testapps.autofillapp is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested package com.google.android.apps.miphone.aiai.translate.testapps.chatapp is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ConversationListActivityGmail is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.gm/com.google.android.gm.ComposeActivityGmail is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.android.chrome/com.google.android.apps.chrome.Main is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity is in the allowlist
+11-09 02:15:44.095  1620  1981 I AiAiVC  : Centralized allowlist: requested component com.google.android.youtube/com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity is in the allowlist
+11-09 02:15:44.103  3738  3764 D vulkan  : searching for layers in '/data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/lib/arm64'
+11-09 02:15:44.103  3738  3764 D vulkan  : searching for layers in '/data/app/~~SdnAFG2WzRSuz63kYdMB1A==/dev.spinon.bootstrap-vyEW2cTlU4j4fM0LJ9tw1w==/base.apk!/lib/arm64-v8a'
+11-09 02:15:44.103  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.103  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.103  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.103  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.104  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.104  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.104  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.104  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.104  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.104  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.104  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.104  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.105  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.trace"
+11-09 02:15:44.105  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.trace.per.submit"
+11-09 02:15:44.105  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.trace.frame"
+11-09 02:15:44.105  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.trace.trigger"
+11-09 02:15:44.120   643   952 D ActivityManager: sync unfroze 1564 com.google.android.gms for 6
+11-09 02:15:44.121  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.wsi.debug"
+11-09 02:15:44.121  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.121  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.123  1564  1849 I ChimeraPrvdrProxy: Shutting down chimera ContentProvider com.google.android.gms.reminders.provider.RemindersChimeraProvider
+11-09 02:15:44.124  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.124  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.126   904   964 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#13) android.os.BinderProxy@1c25a@0
+11-09 02:15:44.127   904   964 V WindowManagerShell: Track 0 became idle
+11-09 02:15:44.127   904   964 V WindowManagerShell: All active transition animations finished
+11-09 02:15:44.127   904  1429 D WallpaperService: onVisibilityChanged(false): com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine@df26c24
+11-09 02:15:44.127   643   663 V WindowManager: Finish Transition (#13): created at 11-09 02:15:43.743 collect-started=0.008ms request-sent=2.774ms started=3.86ms ready=50.163ms sent=52.2ms commit=31.047ms finished=383.415ms
+11-09 02:15:44.129  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.wsi.present.mode"
+11-09 02:15:44.133  3738  3764 W libc    : Access denied finding property "vendor.mesa.vk.wsi.headless.swapchain"
+11-09 02:15:44.133  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.133  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.134  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.134  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.134  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.134  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.134  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.137  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.137  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.137  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.138  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.138  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.138  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.138  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.138  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.138  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.138  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.138  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.139  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.139  3738  3764 E MESA    : Failed to open rendernode: No such file or directory
+11-09 02:15:44.140  3738  3764 W libc    : Access denied finding property "vendor.mesa.virtgpu.kumquat"
+11-09 02:15:44.155  1037  1037 D BaseActivity: Launcher flags updated: [] -[state_started]
+11-09 02:15:44.155  1037  1037 D BaseDepthController: setSurface:
+11-09 02:15:44.155  1037  1037 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+11-09 02:15:44.155  1037  1037 D BaseDepthController: 	mBaseSurface: null
+11-09 02:15:44.155  1037  1037 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-09 02:15:44.155  1037  1037 D LauncherStateManager: StateManager.goToState: fromState: Normal, toState: Normal, partial trace:
+11-09 02:15:44.155  1037  1037 D LauncherStateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme dc5b05c43537c6aa1d671c685c710819682fcc95b6af33c0ce7f88e1808452b7:26)
+11-09 02:15:44.155  1037  1037 D LauncherStateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme dc5b05c43537c6aa1d671c685c710819682fcc95b6af33c0ce7f88e1808452b7:35)
+11-09 02:15:44.155  1037  1037 D LauncherStateManager: 	at com.android.launcher3.statemanager.StatefulActivity.onStop(go/retraceme dc5b05c43537c6aa1d671c685c710819682fcc95b6af33c0ce7f88e1808452b7:31)
+11-09 02:15:44.155  1037  1037 D LauncherStateManager: StateManager.onRepeatStateSetAborted: state: Normal
+11-09 02:15:44.155  1037  1037 D KeyboardStateManager: hideKeyboard
+11-09 02:15:44.155  1037  1037 D KeyboardStateManager: isImeShown: false
+11-09 02:15:44.155  1037  1037 D StatsLog: LAUNCHER_ONSTOP
+11-09 02:15:44.155  1037  1037 D StatsLog: LAUNCHER_GOOGLE_SEARCH_RESTORE_LIST_SIZE_AFTER_ACTIVITY_RESTART
+11-09 02:15:44.157  1037  1037 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+11-09 02:15:44.158  1620  1752 I AiAiEcho: AmbientDataPredictorImpl No tracked ambient data found for ID: null; for event type: 7, skipping event processing.
+11-09 02:15:44.159  1216  3774 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) dev.spinon.bootstrap
+11-09 02:15:44.163  1216  3781 I FontLog : Package dev.spinon.bootstrap has no metadata [CONTEXT service_id=132 ]
+11-09 02:15:44.169   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.173  1216  3773 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_REMOVED [CONTEXT service_id=17 ]
+11-09 02:15:44.181  1037  1037 D SmartspaceInteractor: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+11-09 02:15:44.182  1620  1752 I AiAiEcho: AmbientDataPredictorImpl No tracked ambient data found for ID: null; for event type: 7, skipping event processing.
+11-09 02:15:44.213  1564  3794 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent: android.intent.action.PACKAGE_ADDED [CONTEXT service_id=42 ]
+11-09 02:15:44.217   643   652 I system_server: Background young concurrent mark compact GC freed 21MB AllocSpace bytes, 30(944KB) LOS objects, 39% free, 33MB/55MB, paused 628us,16.300ms total 70.887ms
+11-09 02:15:44.227  1564  3790 I NearbyDiscovery: processGrantSlicePermission: dev.spinon.bootstrap [CONTEXT service_id=265 ]
+11-09 02:15:44.238  1564  1564 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS xflg=0x4 pkg=com.google.android.gms }
+11-09 02:15:44.238  1564  1564 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS xflg=0x4 pkg=com.google.android.gms }
+11-09 02:15:44.256  1564  1594 I gle.android.gms: Waiting for a blocking GC ProfileSaver
+11-09 02:15:44.257   643  2025 W ActivityManager: Skipping manifest association check for null package. SourceUid: 10228, SourcePkg: null, TargetUid: 10228, TargetPkg: com.google.android.gms
+11-09 02:15:44.271   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.271   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.274  1564  3795 W SQLiteLog: (28) double-quoted string literal: "dev.spinon.bootstrap"
+11-09 02:15:44.281  1564  1594 I gle.android.gms: WaitForGcToComplete blocked ProfileSaver on Background for 24.777ms
+11-09 02:15:44.368   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.368   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.438  3738  3743 I pinon.bootstrap: Compiler allocated 5303KB to compile void android.view.ViewRootImpl.performTraversals(long)
+11-09 02:15:44.470   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.470   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.522  3738  3764 I SpinonBootstrap: SPINON_C0410_RENDERER=backend=Gl device=Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)) format=Rgba8Unorm size=1080x2209 selection=auto
+11-09 02:15:44.522  3738  3764 I SpinonBootstrap: SPINON_C0410_RENDERER generation=2 size=1080x2209
+11-09 02:15:44.554   643  2025 E AppOps  : attributionTag VCN not declared in manifest of android
+11-09 02:15:44.667  3738  3764 I SpinonBootstrap: SPINON_C0410_DRAW status=0 presented boxes=21 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x244 runtime_image_count=0 image_draw_count=0 runtime_text_count=9 glyph_batch_draw_count=9
+11-09 02:15:44.667  3738  3764 I SpinonBootstrap: SPINON_C0410_DRAW generation=2 status=0 presented boxes=21 environment_revision=0 document_revision=2 render_tree_revision=2 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=2 viewport_css_px=411.42856x841.52374 surface_texture=1080x2209 root_css_px=411.42856x244 runtime_image_count=0 image_draw_count=0 runtime_text_count=9 glyph_batch_draw_count=9
+11-09 02:15:44.697   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.798   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:44.899   490   597 W skia    : AGTM parsing failed flags.readFromStream(s) at 159
+11-09 02:15:45.782   643   801 D WifiClientModeImpl[5461:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+11-09 02:15:45.782   643   801 D WifiDataStall: tx tput in kbps: 37000
+11-09 02:15:45.782   643   801 D WifiDataStall: rx tput in kbps: 37000
+11-09 02:15:45.782   643   801 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-09 02:15:45.783   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:45.783   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:45.783   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:45.783   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:45.784   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:45.784   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:45.784   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:45.784   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:45.788   643   801 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+11-09 02:15:45.788   643   801 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 1954753059 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-09 02:15:45.789   643   801 D WifiScoreCard: txRate: 1 txSpeed: 1
+11-09 02:15:45.789   643   801 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 2035763091 RSSI -50 txSpeed -1
+11-09 02:15:45.789   643   801 D WifiClientModeImpl[5461:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=1 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3012] from screen [on:0 period:-1138183939] score=100
+11-09 02:15:46.920   440   440 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+11-09 02:15:47.758   643  1694 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-09 02:15:48.794   643   801 D WifiClientModeImpl[5461:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+11-09 02:15:48.795   643   801 D WifiDataStall: tx tput in kbps: 37000
+11-09 02:15:48.795   643   801 D WifiDataStall: rx tput in kbps: 37000
+11-09 02:15:48.795   643   801 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:48.795   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:48.800   643   801 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+11-09 02:15:48.800   643   801 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 1954753059 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-09 02:15:48.800   643   801 D WifiScoreCard: txRate: 1 txSpeed: 1
+11-09 02:15:48.800   643   801 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 2035763091 RSSI -50 txSpeed -1
+11-09 02:15:48.800   643   801 D WifiClientModeImpl[5461:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=1 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3011] from screen [on:0 period:-1138180928] score=100
+11-09 02:15:49.682   643   671 D OomAdjuster: Not killing cached processes
+11-09 02:15:49.708   430  3688 I netd    : tetherGetStats() -> {[]} <1.17ms>
+11-09 02:15:51.804   643   801 D WifiClientModeImpl[5461:wlan0]: updateLinkLayerStatsRssiSpeedFrequencyCapabilities rssi=-50 TxLinkspeed=1 freq=2437 RxLinkSpeed=2
+11-09 02:15:51.804   643   801 D WifiDataStall: tx tput in kbps: 37000
+11-09 02:15:51.804   643   801 D WifiDataStall: rx tput in kbps: 37000
+11-09 02:15:51.804   643   801 V WifiConfigManager: Updating scan detail cache freq=2437 BSSID=02:15:b2:00:00:01 RSSI=-50 for "AndroidWifi"NONE
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  utilization (LLS) 80 isBluetoothConnected: false final utilization: 80
+11-09 02:15:51.805   643   801 D WifiThroughputPredictor:  BW: 0 RSSI: -50 Nss: 1 Mode: 1 symDur: 4000 snrDb 30 bitPerTone: 4500 rate: 54 throughput: 37
+11-09 02:15:51.807   643   801 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+11-09 02:15:51.807   643   801 D WifiScoreCard: BSSID update SIGNAL_POLL ID: 1954753059 SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 54Mbps, Calculated Tx : 0Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 54Mbps, Calculated Rx : 0Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 100, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>
+11-09 02:15:51.807   643   801 D WifiScoreCard: txRate: 1 txSpeed: 1
+11-09 02:15:51.807   643   801 D WifiScoreCard: network update SIGNAL_POLL "AndroidWifi" ID: 2035763091 RSSI -50 txSpeed -1
+11-09 02:15:51.807   643   801 D WifiClientModeImpl[5461:wlan0]:  ClientModeImpl$L2ConnectedState screen=on 1 0 "AndroidWifi" 02:15:b2:00:00:01 rssi=-50 f=2437 sc=100 link=1 tx=0.0, 0.0, 0.0 rx=0.0 bcn=0 [on:0 tx:0 rx:0 period:3007] from screen [on:0 period:-1138177921] score=100
+11-09 02:15:52.819  1031  1187 D SatelliteController: isInCarrierRoamingNbIotNtn: satellite is disabled
+11-09 02:15:52.819  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectType: Checking connect type from PLMN config for subId: 1
+11-09 02:15:52.819  1031  1187 D TelephonyConfigUpdateInstallReceiver: getConfigParser: domain=satellite
+11-09 02:15:52.819  1031  1187 V SatelliteController: satelliteConfigParser is not ready
+11-09 02:15:52.819  1031  1187 D SatelliteController: isSatelliteAttachSupportedViaConfigupdater: return null (satelliteConfig is null)
+11-09 02:15:52.821  1031  1187 D SatelliteController: getSatellitePerPlmnConfiguration: invalid subId or not supported via carrier.
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectType: config: null
+11-09 02:15:52.821  1031  1187 D TelephonyConfigUpdateInstallReceiver: getConfigParser: domain=satellite
+11-09 02:15:52.821  1031  1187 V SatelliteController: satelliteConfigParser is not ready
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectTypeViaConfigUpdater: return null (satelliteConfig is null)
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectType: Falling back to global carrier config connect type: 0
+11-09 02:15:52.821  1031  1187 D TelephonyConfigUpdateInstallReceiver: getConfigParser: domain=satellite
+11-09 02:15:52.821  1031  1187 V SatelliteController: satelliteConfigParser is not ready
+11-09 02:15:52.821  1031  1187 D SatelliteController: isSatelliteAttachSupportedViaConfigupdater: return null (satelliteConfig is null)
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectType: Checking connect type from PLMN config for subId: 1
+11-09 02:15:52.821  1031  1187 D TelephonyConfigUpdateInstallReceiver: getConfigParser: domain=satellite
+11-09 02:15:52.821  1031  1187 V SatelliteController: satelliteConfigParser is not ready
+11-09 02:15:52.821  1031  1187 D SatelliteController: isSatelliteAttachSupportedViaConfigupdater: return null (satelliteConfig is null)
+11-09 02:15:52.821  1031  1187 D SatelliteController: getSatellitePerPlmnConfiguration: invalid subId or not supported via carrier.
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectType: config: null
+11-09 02:15:52.821  1031  1187 D TelephonyConfigUpdateInstallReceiver: getConfigParser: domain=satellite
+11-09 02:15:52.821  1031  1187 V SatelliteController: satelliteConfigParser is not ready
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectTypeViaConfigUpdater: return null (satelliteConfig is null)
+11-09 02:15:52.821  1031  1187 D SatelliteController: getCarrierRoamingNtnConnectType: Falling back to global carrier config connect type: 0
+11-09 02:15:52.821  1031  1187 D TelephonyConfigUpdateInstallReceiver: getConfigParser: domain=satellite
+11-09 02:15:52.821  1031  1187 V SatelliteController: satelliteConfigParser is not ready
+11-09 02:15:52.821  1031  1187 D SatelliteController: isSatelliteAttachSupportedViaConfigupdater: return null (satelliteConfig is null)
+11-09 02:15:53.616   430  3688 I netd    : tetherGetStats() -> {[]} <0.59ms>
+11-09 02:15:53.782   497   497 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-t' '3000' 'SpinonBootstrap:I' 'AndroidRuntime:E''

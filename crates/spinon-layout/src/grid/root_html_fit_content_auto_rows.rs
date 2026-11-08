@@ -136,18 +136,13 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
     let repeated_text_profile = six_member_list
         && visible_children.len() == 9
-        && visible_children
-            .iter()
-            .copied()
-            .skip(1)
-            .zip(repeated_text::PAYLOADS)
-            .all(|(item, expected_text)| {
-                let item = &input.nodes[index[&item]];
-                let [payload] = item.children.as_slice() else {
-                    return false;
-                };
-                repeated_text::has_expected_text(input, *payload, expected_text)
-            });
+        && visible_children.iter().copied().skip(1).all(|item_id| {
+            let item = &input.nodes[index[&item_id]];
+            let [payload] = item.children.as_slice() else {
+                return false;
+            };
+            repeated_text::has_supported_text(input, *payload)
+        });
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -322,7 +317,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && child_has_no_text(payload_id)
             && child_is_static(payload_id)
     };
-    let text_payload_is_supported = |payload_id: NodeId, expected_text: &str| {
+    let text_payload_is_supported = |payload_id: NodeId| {
         let payload = &input.nodes[index[&payload_id]];
         payload.style.display == LayoutDisplay::Block
             && payload.style.width == LayoutDimension::Auto
@@ -341,7 +336,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && payload.children.is_empty()
             && !input.grid_containers.contains_key(&payload_id)
             && child_is_static(payload_id)
-            && repeated_text::has_expected_text(input, payload_id, expected_text)
+            && repeated_text::has_supported_text(input, payload_id)
     };
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
     const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
@@ -361,8 +356,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
                 None
             };
             let payload_is_allowed = if repeated_text_profile {
-                let expected_text = repeated_text::PAYLOADS[position - 1];
-                text_payload_is_supported(payload_id, expected_text)
+                text_payload_is_supported(payload_id)
             } else if six_member_list {
                 let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
                 payload_is_supported(payload_id, std::slice::from_ref(&expected_height))
