@@ -1,0 +1,24 @@
+import baseConfig from '../../../../packages/docs/rspress.config.ts';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
+const pass = process.env.SPINON_ROADMAP_SYNC_PASS ?? 'pass02';
+if (!['pass02', 'pass03', 'pass04'].includes(pass)) throw new Error(`지원하지 않는 pass: ${pass}`);
+const buildRoot = path.join(repositoryRoot, `build/spinon/roadmap-pr1280-postmerge-docs-${pass}-2026-11-08`);
+
+export default {
+  ...baseConfig,
+  root: path.join(buildRoot, 'root'),
+  outDir: path.join(buildRoot, 'site'),
+  builderConfig: {
+    ...baseConfig.builderConfig,
+    server: { ...baseConfig.builderConfig?.server, publicDir: false },
+    output: { ...baseConfig.builderConfig?.output, cleanDistPath: true },
+  },
+  markdown: {
+    ...baseConfig.markdown,
+    link: { ...baseConfig.markdown?.link, checkDeadLinks: false },
+    image: { ...baseConfig.markdown?.image, checkDeadImages: false },
+  },
+};

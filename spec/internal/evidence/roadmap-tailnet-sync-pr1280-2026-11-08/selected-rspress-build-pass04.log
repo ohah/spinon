@@ -1,0 +1,71 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 163 ms.
+ready   built in 1.43s (web)
+ready   built in 1.43s (node)
+
+File (web)                                                                                                                   Size        Gzip
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/l.76b60f2b87.js                            0.10 kB     0.09 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/styles.b5d9a69293.js                             0.47 kB     0.23 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/icon.svg                                                   0.64 kB     0.42 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-c42d69c1e313.24b4ae6142.js           6.7 kB      2.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-d78869bdfdd8.61ddc80765.js           7.1 kB      2.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-2879276472d3.ab557aab17.js           7.1 kB      2.8 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-3f36c54b37b2.cdaaa82787.js           8.1 kB      2.7 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-49647b97ab0e.cf0c9b8a17.js           8.1 kB      2.6 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-59ef5d88f123.4dd1c0f027.js           8.3 kB      3.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-e46f534d763f.e6babe559e.js           8.7 kB      3.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-8305a94f045b.d0dd8ccc66.js           10.2 kB     3.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-16d9c3418a9a.a5480a0334.js           11.4 kB     3.7 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-3cacfb6a4458.2f01f49615.js           11.7 kB     4.0 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-dd9bdcc83aac.b397e8bbb7.js           11.8 kB     3.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-a3ffa217c2e2.b08d6084a7.js           14.0 kB     4.4 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-8cdba721bb25.d3229bb652.js           15.4 kB     4.8 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-7c8ffe8fd3c4.e0aeead562.js           15.8 kB     4.6 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-4bda06f2ef70.6925460f96.js           15.9 kB     3.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-d89a612ff1b4.f754fc8d0f.js           17.7 kB     5.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-551d1aaa2fe3.023f6e89c6.js           18.5 kB     6.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-b862d01bdf87.ae1ec9ab07.js           23.2 kB     6.4 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/image/chrome-first-scene.a9a723597c.png             29.4 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/image/chrome-repeated-auto-stretch.f96d673fa8.png   31.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/lib-router.d3b08da66f.js                         35.4 kB     12.7 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/css/styles.8d918fd78e.css                           74.0 kB     14.2 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/index.7ff27fb979.js                              128.5 kB    33.0 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/3.d8b550a68d.js                                  217.1 kB    72.0 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/lib-react.801d719c4f.js                          218.4 kB    68.8 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-04cbcabea10a.c8f9ec4d30.js           374.5 kB    74.9 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-c4dae6800800.329ccf4549.js           802.3 kB    170.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-7ce2535ac56d.29e4024c8d.js           957.2 kB    196.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/js/async/route-6c33a3943990.63deeea688.js           957.4 kB    196.6 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/static/search_index.ko.ead4e1d3.json                       1912.0 kB   548.9 kB
+
+                                                                                                                    Total:   5958.6 kB   1518.5 kB
+
+File (node)                                                                                                                                                                                                 Size        Gzip
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/404.html                                                                                                                                  8.5 kB      2.6 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html                       31.3 kB     5.9 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html                                                     31.7 kB     6.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html                                                                33.1 kB     6.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html       33.1 kB     6.7 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/plan/c11-4-root-html-fit-min-max-content-auto-rows-plan-review-20.html                                                                    35.0 kB     7.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/implementation-runtime-review-20.html                  35.4 kB     7.2 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html                             36.1 kB     7.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/plan-pr-diff-review-30.html                      36.7 kB     7.9 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/pr-diff-review-30.html                                 37.5 kB     8.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html                                              37.8 kB     6.5 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html   39.1 kB     6.8 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html                                                                    39.7 kB     8.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/README.html                                      41.0 kB     7.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html                                             41.3 kB     7.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/plan/c11-4-root-html-fit-content-min-content-auto-track-list.html                                                                         41.9 kB     9.0 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html                  42.0 kB     7.4 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/README.html                                            45.8 kB     10.1 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/plan/c11-4-root-html-fit-min-max-content-auto-rows.html                                                                                   47.1 kB     10.2 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/plan/c11-4-grid-track-sizing.html                                                                                                         386.8 kB    78.3 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/internal/0059-c11-grid-layout.html                                                                                                        769.3 kB    171.0 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/spec/STATUS.html                                                                                                                          891.1 kB    197.0 kB
+build/spinon/roadmap-pr1280-postmerge-docs-pass04-2026-11-08/site/STATUS.html                                                                                                                               891.1 kB    197.0 kB
+
+                                                                                                                                                                                                   Total:   3632.6 kB   781.8 kB

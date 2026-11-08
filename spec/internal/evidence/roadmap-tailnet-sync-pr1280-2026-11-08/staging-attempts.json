@@ -1,0 +1,28 @@
+{
+  "previewMutated": false,
+  "attempts": [
+    {
+      "pass": "pass01",
+      "stage": "rejected before manifest/publication",
+      "error": "literal C11.4 · 진행 중 marker was absent in source HTML because the kanban card label is rendered by JavaScript",
+      "disposition": "guard corrected to inspect stable static roadmap heading and verify rendered card in Agent Browser; build output preserved under build/spinon/roadmap-pr1280-postmerge-docs-2026-11-08"
+    },
+    {
+      "pass": "pass02",
+      "stage": "rejected before manifest/publication",
+      "error": "guard expected literal PR #1280 while the source has anchor text #1280",
+      "disposition": "guard corrected to inspect #1280 and merge SHA; build output preserved under build/spinon/roadmap-pr1280-postmerge-docs-pass02-2026-11-08"
+    },
+    {
+      "pass": "pass03",
+      "stage": "Rspress build failed before publication",
+      "error": "config import used ../../../packages/docs from spec/internal/evidence and resolved one directory too shallow",
+      "disposition": "config import corrected to ../../../../packages/docs; failed log preserved in selected-rspress-build-pass03.log"
+    },
+    {
+      "pass": "pass04",
+      "stage": "completed",
+      "result": "RSPress 2.0.22 build, publication preflight, atomic sync, 10-route SHA verification, and Agent Browser desktop/mobile checks passed"
+    }
+  ]
+}

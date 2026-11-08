@@ -1,0 +1,100 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "verifiedAt": "2026-11-08T04:43:28.336Z",
+  "status200": true,
+  "hashesMatchPublication": true,
+  "checkedRoutes": 10,
+  "fullSiteDeadLinkCheck": false,
+  "entries": [
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 635612,
+      "sha256": "5832023869335f95ef8f93e9c830fbfa7e5db8d4ee4232bc8de65d5192e8ade6",
+      "expectedSha256": "5832023869335f95ef8f93e9c830fbfa7e5db8d4ee4232bc8de65d5192e8ade6",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 891145,
+      "sha256": "afff52c862a04b1624fe1ded27cd8eed009618328fff2c7809d36a9fd98e78e6",
+      "expectedSha256": "afff52c862a04b1624fe1ded27cd8eed009618328fff2c7809d36a9fd98e78e6",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 891097,
+      "sha256": "ea6f70a05ccdcc07594078972ffe37c3cc91976acb2615554de2a2fa528f529c",
+      "expectedSha256": "ea6f70a05ccdcc07594078972ffe37c3cc91976acb2615554de2a2fa528f529c",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 769251,
+      "sha256": "834ead1fa8ecb9766303e813ca9af0cd5b31e8dc617dabff340fc77ccbba4e1d",
+      "expectedSha256": "834ead1fa8ecb9766303e813ca9af0cd5b31e8dc617dabff340fc77ccbba4e1d",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-min-max-content-auto-rows.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 47086,
+      "sha256": "4283b0433a6fd70e4179f6ca6b32a5ab9eb8caa4b337cb8650afed31db72a079",
+      "expectedSha256": "4283b0433a6fd70e4179f6ca6b32a5ab9eb8caa4b337cb8650afed31db72a079",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/README.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 41015,
+      "sha256": "770d184f8e794128f9dfb4f8928c56375a01666e9c66a8f9ab664a779936167e",
+      "expectedSha256": "770d184f8e794128f9dfb4f8928c56375a01666e9c66a8f9ab664a779936167e",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 36722,
+      "sha256": "1c2915970c198be2d56672230a948582e91ff2fda5187729510c93405ab37095",
+      "expectedSha256": "1c2915970c198be2d56672230a948582e91ff2fda5187729510c93405ab37095",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/README.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 45783,
+      "sha256": "3d37835b8bc332b88bdce47a31eed453e77e7ab92372ae3563560a52db36e05e",
+      "expectedSha256": "3d37835b8bc332b88bdce47a31eed453e77e7ab92372ae3563560a52db36e05e",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 35397,
+      "sha256": "53a7fac2a72b06a5f670bb65645f8881815ac39fac62c0c76c131333ef4af85c",
+      "expectedSha256": "53a7fac2a72b06a5f670bb65645f8881815ac39fac62c0c76c131333ef4af85c",
+      "matchesPublishedBytes": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/pr-diff-review-30.html",
+      "status": 200,
+      "cacheControl": "no-cache",
+      "bytes": 37548,
+      "sha256": "b28919484ab70457b01b8f1ab91cb98077791d6796b1a6da3325f3704866e1e5",
+      "expectedSha256": "b28919484ab70457b01b8f1ab91cb98077791d6796b1a6da3325f3704866e1e5",
+      "matchesPublishedBytes": true
+    }
+  ]
+}

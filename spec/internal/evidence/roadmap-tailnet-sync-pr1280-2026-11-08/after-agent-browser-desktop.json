@@ -1,0 +1,36 @@
+{
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "documentWidth": 1440,
+  "header": "현재 작업 칸반\n진행 중: C11.4 Grid implicit 행 목록",
+  "board": "할 일\n133\n+133개 미착수 항목\nQUEUE · DETAIL BELOW\n진행 중\n1/2\nGrid 24순서 구현\nC11.4 · 진행 중\n외부 대기\n3\niOS 실기기 검증 대기\nR02 · DEVICE WAIT\nAndroid 실기기 수집…\nR05 · DEVICE WAIT\nGPU 출력 위험 실험\nR08 · DEVICE WAIT\n완료\n78\nVue·Svelte 호스트…\nR07 · DONE\niOS 배포·OTA 정책 …\nR09 · DONE\nTaffy 적합성 실험\nR10 · DONE\n+75개 완료 항목\nARCHIVED · DETAIL BELOW\n미완료\n외부 조건 대기\n공식 완료",
+  "activeCardVisible": true,
+  "statusNote": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개 · 마지막 확인 오후 1:41:47",
+  "hero": "2026-11-08 C11.4 parsed Root HTML grid-auto-rows four-member intrinsic list · 제한 구현 진행 중: fit-content()·min-content·max-content·auto의 24 순서를 기본 Root HTML 경로에 연결했다. Chrome 157 독립 비교 96/96, RuntimeSession 24순서 × px/% × start/stretch 96/96, fit-content 네 순환 위치의 px/% cap overflow 48/48, 0%·120% 경계 및 calc·거부·복구 검사를 확인했다. Layout 12/12와 Style projection 2/2(24순서 × 네 cap form 96 typed cases)도 통과했다. 구현/runtime 실패 검토 20개와 cap 정규화 계획 수정 검토 20개도 마쳤다. Android API 37 ARM64 AVD는 layout-ready 14 boxes와 draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 layout-ready 14 boxes와 OS screenshot을 기록했다. Screenshots는 visual smoke이며 PixelCopy/Metal surface readback은 아니다. PR diff 적대 검토 30/30을 마쳤고 구현 PR #1280 Rebase and merge로 2026-11-08T04:28:20Z 병합됐다(merge SHA b1b27b02491f1614ded260fd3b66f50184c5bb80). workflow/status checks는 비어 있어 CI green으로 기록하지 않는다. C11.4/C11은 미완료, 공식 78/214와 계약 0.1.0을 유지한다. 계획·범위 · 실행 근거 · 구현/runtime 검토 20개 · PR diff 적대 검토 30개",
+  "links": [
+    {
+      "text": "#1280 Rebase and merge",
+      "href": "https://github.com/ohah/spinon/pull/1280"
+    },
+    {
+      "text": "계획·범위",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-fit-min-max-content-auto-rows.html"
+    },
+    {
+      "text": "실행 근거",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/README.html"
+    },
+    {
+      "text": "구현/runtime 검토 20개",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/implementation-runtime-review-20.html"
+    },
+    {
+      "text": "PR diff 적대 검토 30개",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/pr-diff-review-30.html"
+    }
+  ]
+}
