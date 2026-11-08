@@ -327,4 +327,5 @@ fn assert_fit_content_auto_rows_reject_mixed_math_flow_and_placement_shapes() {
     }
 }
 
+mod repeated_text;
 mod track_lists;

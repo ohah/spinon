@@ -110,6 +110,7 @@ impl TaffyLayoutEngine {
         } else {
             output.flow_frames.clone_from(&output.frames);
         }
+        crate::grid::normalize_repeated_text_layout_frames(input, &mut output)?;
         if let Some(snapshot) = snapshot {
             output.revision = output
                 .revision

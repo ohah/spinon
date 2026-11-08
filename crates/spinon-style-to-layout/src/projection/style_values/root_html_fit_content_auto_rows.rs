@@ -8,6 +8,8 @@ use spinon_style::{
 use super::{RuntimeGridNodes, StyleLayoutError, grid_values};
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
+#[path = "root_html_fit_content_auto_rows/repeated_text.rs"]
+mod repeated_text;
 
 pub(super) fn validate(
     tree: &HostDocumentSnapshot,
@@ -82,7 +84,6 @@ pub(super) fn validate(
         ));
     }
     if grid_style.layout_dimensions.width != ComputedCssDimension::LengthPx(40.0)
-        || grid_style.layout_dimensions.height != ComputedCssDimension::LengthPx(100.0)
         || !automatic_limits(grid_style)
         || grid_style.layout_aspect_ratio.is_some()
         || grid_style.layout_position != ComputedCssPosition::Static
@@ -172,6 +173,33 @@ pub(super) fn validate(
         .iter()
         .map(|style| (style.node_id, style))
         .collect::<std::collections::BTreeMap<_, _>>();
+    let repeated_text_profile = six_member_list
+        && items.len() == 9
+        && items
+            .iter()
+            .copied()
+            .skip(1)
+            .zip(repeated_text::PAYLOADS)
+            .all(|(item, expected_text)| {
+                let Ok(children) = direct_element_children(tree, nodes, item) else {
+                    return false;
+                };
+                let [payload] = children.as_slice() else {
+                    return false;
+                };
+                repeated_text::payload_text_matches(tree, *payload, expected_text)
+            });
+    let grid_height_is_supported = grid_style.layout_dimensions.height
+        == ComputedCssDimension::LengthPx(100.0)
+        || (repeated_text_profile
+            && grid_style.layout_dimensions.height == ComputedCssDimension::LengthPx(220.0));
+    if !grid_height_is_supported {
+        return Err(unsupported(
+            node,
+            "grid-auto-rows",
+            "Root HTML fit-content rows require a supported definite grid block size",
+        ));
+    }
     let Some(first) = styles.get(&items[0].id()).copied() else {
         return Err(unsupported(
             node,
@@ -179,7 +207,7 @@ pub(super) fn validate(
             "First Grid item style is missing",
         ));
     };
-    if !fixed_item(first, 10.0) || !auto_placement(first) {
+    if !fixed_item(first, 10.0, repeated_text_profile) || !auto_placement(first) {
         return Err(unsupported(
             node,
             "grid-auto-rows",
@@ -222,7 +250,23 @@ pub(super) fn validate(
             } else {
                 None
             };
-            if six_member_list {
+            if repeated_text_profile {
+                let expected_text = repeated_text::PAYLOADS[position - 1];
+                if !repeated_text::payload_is_supported(
+                    tree,
+                    nodes,
+                    snapshot,
+                    &styles,
+                    children[0],
+                    expected_text,
+                ) {
+                    return Err(unsupported(
+                        children[0].id(),
+                        "grid-auto-rows",
+                        "Repeated intrinsic text payload must match the fixed monospace text profile",
+                    ));
+                }
+            } else if six_member_list {
                 let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
                 validate_payload(
                     tree,
@@ -265,7 +309,7 @@ pub(super) fn validate(
             }
         } else if items.len() == 3
             && position == 2
-            && fixed_item(style, 6.0)
+            && fixed_item(style, 6.0, false)
             && auto_placement(style)
             && direct_element_children(tree, nodes, *item)?.is_empty()
         {
@@ -299,7 +343,7 @@ fn validate_payload(
     if nodes.grid_containers.contains(&node)
         || !allowed_heights
             .iter()
-            .any(|height| fixed_item(payload_style, *height))
+            .any(|height| fixed_item(payload_style, *height, false))
     {
         return Err(StyleLayoutError::UnsupportedComputedValue {
             node,
@@ -364,11 +408,16 @@ fn automatic_limits(style: &ComputedElementStyle) -> bool {
         && style.layout_dimensions.max_height == ComputedCssMaxSize::None
 }
 
-fn fixed_item(style: &ComputedElementStyle, height: f32) -> bool {
+fn fixed_item(style: &ComputedElementStyle, height: f32, allow_zero_min_height: bool) -> bool {
     style.properties.get("display").map(String::as_str) == Some("block")
         && style.layout_dimensions.width == ComputedCssDimension::Auto
         && style.layout_dimensions.height == ComputedCssDimension::LengthPx(height)
-        && automatic_limits(style)
+        && style.layout_dimensions.min_width == ComputedCssDimension::Auto
+        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
+        && (style.layout_dimensions.min_height == ComputedCssDimension::Auto
+            || (allow_zero_min_height
+                && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)))
+        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
         && style.layout_position == ComputedCssPosition::Static
         && style.layout_aspect_ratio.is_none()
         && zero_edges(style.layout_spacing.margin)

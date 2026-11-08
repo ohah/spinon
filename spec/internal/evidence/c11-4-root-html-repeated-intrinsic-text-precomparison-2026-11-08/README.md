@@ -5,10 +5,12 @@
 ## 입력과 환경
 
 - Fixture: [HTML source](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-text-precomparison.html)
-- SHA-256: `bac3d41dcb39b64016e6789677c692334604ca22880b5b01ee6df5ac114e9f0b`
+- SHA-256: `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`
 - Agent Browser 0.31.1의 HeadlessChrome 157.0.0.0, macOS 26.5.1 arm64, DPR 1
 - 40px Grid column, 10px explicit row, 8개 implicit row item, 0 gap, `align-content:start|stretch`
 - 각 item은 한 개 payload `<div>`만 갖고, payload는 `monospace` 10px, line-height 10px, `white-space:normal`의 고정 텍스트를 가진다.
+
+fixture의 item paint는 CSS `background` shorthand 대신 `background-color`로 적었다. Shorthand를 쓰면 현재 Stylo computed-style profile이 Grid geometry와 무관한 `background-position-x` 값을 unsupported로 분류했다. 변경 전·후 Chrome 157의 270 scene geometry와 텍스트 descriptors는 동일했고, 제품 profile은 배경 단축 속성을 구현하지 않는다.
 
 ## 관측 범위
 

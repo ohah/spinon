@@ -1834,3 +1834,24 @@ Chrome 157 관찰과 independent expected values는 고정 fixture 네 장면에
 ## C11.4 bounded implementation merged · repeated intrinsic tail permutations · 2026-11-08
 
 이 제한 구현은 PR #1286으로 `2026-11-08T09:10:52Z` Rebase and merge됐으며 merge SHA는 `08da644ed876709798e118f0be9cefe79edfcd76`다. 이 기록은 병합된 bounded profile을 명시하며 일반 CSS admission이나 전체 C11.4/C11 완료를 선언하지 않는다. 기본 `RuntimeRootHtmlTextPaintV1` route의 `RootHtmlFitContentAutoRowsV1` 제한 profile에서 `fit-content(<finite non-negative px|direct percentage>)`를 첫 member에 고정하고 후행 다섯 member를 `min-content` 2개, `max-content` 2개, `auto` 1개로 제한해 30개 고유 순서를 허용한다. PR #1284의 기존 순서도 포함한다. Chrome 157 사전 비교는 120 scene과 9,480 track/item/payload checks에서 independent fixed-payload model과 최대 0 CSS px 차이였고 계획 실패 관점 20/20을 마쳤다. 현재 구현의 Style projection은 120 typed cases, Layout은 120 scene, RuntimeSession은 120 scene에서 독립 기대값과 일치하며 unsupported order의 atomic reject와 same-session recovery 회귀도 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator가 3,007-byte 동일 fixture SHA에서 `layout=ready boxes=20`을 기록했고 Android draw-presented를 확인했다. Changed-crate Clippy와 rustfmt도 통과했다. Screenshots는 visual smoke이며 PixelCopy/Metal surface readback은 아니다. [계획](../../plan/c11-4-root-html-repeated-intrinsic-tail-permutations.md) · [계획 검토](../../plan/c11-4-root-html-repeated-intrinsic-tail-permutations-plan-review-20.md) · [독립 비교·관측](./evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.md) · [Android/iOS 실행·화면·복원](./evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/README.md) · [구현/runtime 20관점 검토](./evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개 검토](./evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/pr-diff-review-30.md)
+
+## C11.4 parsed Root HTML repeated intrinsic rows with exact text contributions · implementation candidate · 2026-11-08
+
+현재 미병합 후보는 위 30개 tail 순서 중 여섯-member track list가 있는 기존 `RootHtmlFitContentAutoRowsV1` profile에만 고정 text contribution을 추가한다. Track list는 `fit-content(<finite non-negative px|direct percentage>)`로 시작하고 `min-content` 2개, `max-content` 2개, `auto` 1개를 포함한다. Grid는 40px column, 10px explicit row, 0 gap, row-sparse placement, visible overflow를 갖고 `align-content:start|stretch`만 허용한다. 후보 text profile의 definite block size는 100px overflow 또는 220px comparison scene이며, direct item은 빈 explicit item 하나와 정확히 여덟 payload item이다. 각 payload는 다음 고정 문장, `monospace` 10px font, 10px line-height, weight 400, normal style, zero spacing, `white-space:normal`, LTR horizontal text만 허용한다.
+
+```text
+A A A A A A
+AAAA AAAA A
+AA AA AA AA
+A A
+AAA AAA
+AAAA
+A A A A A A A A
+AA
+```
+
+Chrome 157 independent expected geometry의 270 scene(30 tail order × definite 220px Grid의 네 cap × 두 alignment, 그리고 100px overflow scene 30개)과 RuntimeSession 결과를 대조한다. Frame 허용 오차는 수치별 0.01 CSS px이며 typed track order, glyph 수, line 수는 exact다. Chrome 결과에서 관측한 1/64 CSS px 경계와 맞추기 위해 이 profile의 최종 item/payload frame 경계를 1/64 CSS px로 정규화한다. Chromium의 `LayoutUnit` 정밀도는 [고정 소스 revision](https://chromium.googlesource.com/chromium/src/+/e842ab5f98d917193d1737d2b38475b97969e111/third_party/blink/renderer/platform/geometry/layout_unit.h)에 있다. 경계 정규화가 관측 차이의 원인과 일치한다는 판단은 고정 fixture 결과에 대한 추론이며, 일반 Blink track-sizing 동작의 동등성 선언이 아니다.
+
+Rust에서는 반복 text RuntimeSession 270-scene/거부·복구 테스트, 기존 Root HTML fit-content runtime 회귀, Layout 14개, Style projection 7개 및 변경 crate Clippy·rustfmt를 통과했다. iPhone 17 Pro / iOS 26.2 임시 Simulator는 2,758-byte fixture에서 `layout=ready boxes=20`을 기록하고 화면 smoke를 남겼다. Android app build는 성공했으나 API 37 ARM64 AVD는 QEMU `mprotect failed: Permission denied` 뒤 ADB 연결 종료·QEMU exit 139로 앱 설치 전에 멈췄다. `-accel off` 재시도에서도 같은 보호 오류가 났다. 따라서 Android runtime은 미검증이다. 구현/runtime 20관점과 PR diff 30관점 검토 결과는 [실행 근거](./evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/README.md)에 있다. [계획](../../plan/c11-4-root-html-repeated-intrinsic-text-contributions.md) · [Chrome 사전 비교](./evidence/c11-4-root-html-repeated-intrinsic-text-precomparison-2026-11-08/README.md) · [시뮬레이터·검증 기록](./evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/README.md)
+
+이 후보는 일반 CSS admission, 임의 text/font/content, WPT 적합성, PixelCopy/Metal drawable readback, 물리 기기, hardware GPU 또는 C11.4/C11 완료를 뜻하지 않는다. 공식 `78/214`, C11.4/C11 checkbox 및 내부 숫자 계약 `0.1.0`은 유지한다.

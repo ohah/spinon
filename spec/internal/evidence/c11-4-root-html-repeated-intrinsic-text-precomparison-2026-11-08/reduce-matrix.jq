@@ -4,7 +4,7 @@
     userAgent: .ua,
     dpr: .dpr,
     fixtureTitle: .fixtureTitle,
-    fixtureSha256: "bac3d41dcb39b64016e6789677c692334604ca22880b5b01ee6df5ac114e9f0b"
+    fixtureSha256: "923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9"
   },
   uniqueTailOrders,
   textDescriptors,
