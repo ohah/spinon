@@ -1380,6 +1380,11 @@ pub(super) fn validate_grid_layout(
                             crate::GridAutoRows::TrackList(tracks)
                                 if root_html_fit_content_min_max_content_auto_track_list_is_supported(tracks)
                         ),
+                        (9, Some(1..=8), crate::LayoutDimension::Fixed(0.0)) => matches!(
+                            &container.auto_rows,
+                            crate::GridAutoRows::TrackList(tracks)
+                                if root_html_fit_content_auto_rows::supports_repeated_min_max_content_auto_track_list(tracks)
+                        ),
                         _ => false,
                     }
                     && matches!(&container.auto_rows, GridAutoRows::TrackList(_));

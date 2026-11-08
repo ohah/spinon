@@ -550,6 +550,22 @@ fn root_html_fit_content_min_max_content_auto_track_list(
     members.into_iter().all(|present| present)
 }
 
+fn root_html_fit_content_repeated_min_max_content_auto_track_list(
+    tracks: &[ComputedCssGridTrackSize],
+) -> bool {
+    matches!(
+        tracks,
+        [
+            fit,
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::MaxContent,
+            ComputedCssGridTrackSize::Auto,
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::MaxContent,
+        ] if root_html_fit_content_cap_is_supported(fit)
+    )
+}
+
 pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(
     grid: &ComputedCssGridLayout,
 ) -> bool {
@@ -558,6 +574,7 @@ pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(
         ComputedCssGridAutoRows::TrackList(tracks)
             if root_html_fit_content_min_content_auto_track_list(tracks)
                 || root_html_fit_content_min_max_content_auto_track_list(tracks)
+                || root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
     )
 }
 
@@ -568,6 +585,16 @@ pub(super) fn root_html_fit_content_auto_rows_with_four_member_intrinsic_tracks(
         &grid.auto_rows,
         ComputedCssGridAutoRows::TrackList(tracks)
             if root_html_fit_content_min_max_content_auto_track_list(tracks)
+    )
+}
+
+pub(super) fn root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
     )
 }
 
@@ -585,6 +612,7 @@ fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]
         }) {
             root_html_fit_content_min_content_auto_track_list(tracks)
                 || root_html_fit_content_min_max_content_auto_track_list(tracks)
+                || root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
         } else {
             tracks.iter().all(|track| match track {
                 ComputedCssGridTrackSize::Auto => true,

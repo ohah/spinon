@@ -44,8 +44,24 @@ pub(super) fn supports_min_max_content_auto_track_list(tracks: &[GridTrackSize])
     members.into_iter().all(|present| present)
 }
 
+pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
+    matches!(
+        tracks,
+        [
+            fit,
+            GridTrackSize::MinContent,
+            GridTrackSize::MaxContent,
+            GridTrackSize::Auto,
+            GridTrackSize::MinContent,
+            GridTrackSize::MaxContent,
+        ] if fit_content_cap_is_supported(fit)
+    )
+}
+
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
-    supports_min_content_auto_track_list(tracks) || supports_min_max_content_auto_track_list(tracks)
+    supports_min_content_auto_track_list(tracks)
+        || supports_min_max_content_auto_track_list(tracks)
+        || supports_repeated_min_max_content_auto_track_list(tracks)
 }
 
 pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
@@ -193,8 +209,10 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             .is_none_or(|position| position.position == LayoutPosition::Static)
     };
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
+    let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
-        || (!four_member_list && !matches!(visible_children.len(), 3 | 5))
+        || (six_member_list && visible_children.len() != 9)
+        || (!four_member_list && !six_member_list && !matches!(visible_children.len(), 3 | 5))
         || has_non_collapsible_text(input, node)
     {
         return Err(LayoutError::UnsupportedGridContainerStyle {
@@ -284,28 +302,39 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     };
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
     const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
-    const FOUR_MEMBER_FIT_CONTENT_OVERFLOW_HEIGHT: f32 = 60.0;
+    const SIX_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 60.0, 6.0];
+    const FIT_CONTENT_OVERFLOW_HEIGHT: f32 = 60.0;
 
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
         let allow_minimum_floor = visible_children.len() == 3 && position == 1;
         if auto_item_is_supported(row_item, allow_minimum_floor) {
             let payload_id = row_item.children[0];
-            let fit_content_payload_heights = [
-                FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1],
-                FOUR_MEMBER_FIT_CONTENT_OVERFLOW_HEIGHT,
-            ];
-            let allowed_payload_heights = if four_member_list {
+            let profile_payload_heights = if six_member_list {
+                Some(SIX_MEMBER_LIST_PAYLOAD_HEIGHTS)
+            } else if four_member_list {
+                Some(FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS)
+            } else {
+                None
+            };
+            let payload_is_allowed = if six_member_list {
+                let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
+                payload_is_supported(payload_id, std::slice::from_ref(&expected_height))
+            } else if let Some(profile_payload_heights) = profile_payload_heights {
+                let expected_height = profile_payload_heights[position - 1];
                 let track_index = (position - 1) % tracks.len();
                 if matches!(tracks[track_index], GridTrackSize::FitContent(_)) {
-                    &fit_content_payload_heights
+                    payload_is_supported(
+                        payload_id,
+                        &[expected_height, FIT_CONTENT_OVERFLOW_HEIGHT],
+                    )
                 } else {
-                    std::slice::from_ref(&FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1])
+                    payload_is_supported(payload_id, std::slice::from_ref(&expected_height))
                 }
             } else {
-                LIST_PAYLOAD_HEIGHTS
+                payload_is_supported(payload_id, LIST_PAYLOAD_HEIGHTS)
             };
-            if !payload_is_supported(payload_id, allowed_payload_heights) {
+            if !payload_is_allowed {
                 return Err(LayoutError::UnsupportedGridContainerStyle {
                     node: payload_id,
                     property: "C11.4 fit-content implicit row list payload",

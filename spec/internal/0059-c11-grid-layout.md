@@ -1817,3 +1817,16 @@ Duplicate/missing/unmodeled members, `max-content`, `minmax()`, `fr`, `calc()`, 
 별도 visible-overflow 장면은 24개 순서 각각에서 fit-content가 네 순환 위치를 차지할 때 20px row가 60px payload에 의해 커지지 않음을 20px·20% cap으로 검사한다. Layout과 RuntimeSession 각 48 scene이 item/payload frame을 확인한다. 추가 경계 검사는 24순서 모두에 `0%`와 `120%`를 적용한다. Zero cap item은 zero-height layout frame으로 유지되고 payload는 paint snapshot에 남는다. 첫 순환 위치의 다섯째 row payload bottom은 y=118px로 100px Grid 아래 18px이고, 네 번째 위치는 12px 아래까지 이어진다. 가운데 두 위치는 item 밖으로 넘치지만 Grid bottom 안에 있다. Chrome 157 비교와 Android/iOS Simulator screenshot은 첫 순환 위치 visual smoke를 고정한다. 같은 payload가 non-fit-content list position이면 `height` diagnostic으로 원자 거부한다. Simulator screenshot은 PixelCopy/Metal readback 근거가 아니다. 전체 검증·container snapshot 한계는 [runtime evidence](./evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/README.md)에 기록한다.
 
 Chrome 157 Agent Browser 96-scene observation·독립 기대값과 RuntimeSession 24 order × px/% × start/stretch 행렬, projection/layout rejection, same-session recovery 및 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML route 결과는 [실행 근거와 한계](./evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/README.md)에 있다. 구현/runtime 실패 관점 20개는 [검토표](./evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/implementation-runtime-review-20.md)에 기록한다. 이는 public CSS support, WPT conformance, surface pixel readback, physical-device/hardware-GPU validation 또는 전체 C11.4/C11 완료가 아니다. 내부 숫자 계약 `0.1.0`과 공식 완료 `78/214`를 유지한다.
+
+
+## C11.4 parsed Root HTML repeated intrinsic implicit-row list · bounded candidate · 2026-11-08
+
+PR #1280의 네-member 순서 목록에는 `min-content`와 `max-content`가 각각 한 번씩만 있다. 다음 후보는 기존 `RuntimeRootHtmlTextPaintV1` route의 `RootHtmlFitContentAutoRowsV1` 제한 profile에 아래 정확한 여섯-member 순서 한 가지만 추가한다.
+
+```css
+fit-content(<finite non-negative px | direct percentage>) min-content max-content auto min-content max-content
+```
+
+definite 40×100px Grid, 40px column, 10px explicit row, row-sparse auto-placement와 zero gap에서 direct child 아홉 개(빈 explicit item 하나와 payload를 가진 implicit item 여덟 개)만 허용한다. 목록은 첫 implicit row부터 적용하고 여섯 member pattern을 반복한다. `align-content:start|stretch`만 허용하며 stretch의 positive free space는 한 `auto` track에만 배분한다. repeated fit-content row의 payload는 visible overflow를 유지한다.
+
+Chrome 157 관찰과 independent expected values는 고정 fixture 네 장면에서 4/4 일치한다. Layout·Style projection·RuntimeSession repeated-intrinsic tests 7/7, 세 crate의 fit-content 회귀 79개, 전체 workspace Clippy·rustfmt가 통과했다. Android API 37 ARM64 AVD의 기본 Root HTML route는 `layout=ready boxes=20`과 draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 `layout=ready boxes=20`을 기록했다. 두 OS screenshot은 visual smoke이며 PixelCopy/Metal drawable readback이 아니다. iOS 기존 app data는 11개 파일 hash를 복원 전후 비교해 보존을 확인했다. 구현/runtime 및 PR diff 실패 관점 review가 각각 20/20 통과했으며 PR과 Tailnet 갱신은 남아 있다. 다른 순서·중복 횟수·arbitrary content contribution·일반 CSS admission·WPT·C11.4/C11 완료는 범위 밖이다. 공개 API와 내부 숫자 계약 `0.1.0`은 바꾸지 않는다. 상세 경계와 실행 범위는 [계획](../../plan/c11-4-root-html-repeated-intrinsic-auto-rows.md)과 [실행 근거](./evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.md)에 둔다.

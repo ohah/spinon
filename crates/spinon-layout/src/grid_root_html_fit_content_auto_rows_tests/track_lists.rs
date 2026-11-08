@@ -3,6 +3,9 @@ use super::*;
 #[path = "track_lists/four_member_intrinsic.rs"]
 mod four_member_intrinsic;
 
+#[path = "track_lists/six_member_repeated_intrinsic.rs"]
+mod six_member_repeated_intrinsic;
+
 fn input_with_track_list(tracks: Vec<GridTrackSize>, payload_heights: [f32; 4]) -> LayoutInput {
     let root = id(1);
     let explicit = id(2);

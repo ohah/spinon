@@ -1,5 +1,16 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-08 parsed Root HTML 반복 intrinsic implicit-row list · 현재 구현 중
+
+PR #1280에서 허용한 네 member의 24개 순서는 각 member가 한 번씩만 등장한다. CSS Grid의 유효한 `<track-size>+` 목록에서 `min-content`와 `max-content`를 반복하는 다음 여섯 member 패턴을 별도 제한 slice로 구현했다:
+
+```css
+fit-content(<finite non-negative px | direct percentage>)
+  min-content max-content auto min-content max-content
+```
+
+definite 40×100px Root HTML Grid, explicit 10px 행 하나와 implicit item 여덟 개에서 첫 반복과 두 번째 반복, `align-content:start|stretch`, 두 번째 주기의 fit-content overflow를 확인했다. Chrome 157 및 독립 기대값 4/4, Layout·Style projection·RuntimeSession repeated-intrinsic tests 7/7, fit-content 회귀 79개, 전체 workspace Clippy·rustfmt가 통과했다. Android API 37 AVD는 20 boxes draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 같은 fixture에서 20 boxes layout-ready를 기록했다. 두 캡처는 visual smoke이며 pixel readback은 아니다. 구현/runtime와 PR diff 실패 관점 검토가 각 20/20 통과했다. PR과 Tailnet sync는 남아 있다. [집중 계획](./c11-4-root-html-repeated-intrinsic-auto-rows.md) · [사전 비교](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-precomparison-2026-11-08/README.md) · [계획 검토 20개](./c11-4-root-html-repeated-intrinsic-auto-rows-plan-review-20.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/implementation-runtime-review-20.md) · [PR diff 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/pr-diff-review-20.md) · [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.md). C11.4/C11과 공식 완료 `78/214`는 미완료 상태다.
+
 ## 2026-11-08 parsed Root HTML `fit-content()`/`min-content`/`auto` implicit-row 순서 · PR #1277 병합
 
 기존 `fit-content() min-content auto`, `fit-content() auto min-content`에 더해 나머지 네 exact order를 기본 parsed Root HTML route에 허용했다. 여섯 순서 모두 direct finite non-negative `px|%` cap, 단일 `min-content`, 단일 `auto`를 요구하며 첫 implicit row부터 세 row마다 순환한다. `align-content:stretch`는 exact six-list 안에서만 열고 남은 positive free space는 `auto` track에만 배분한다.
