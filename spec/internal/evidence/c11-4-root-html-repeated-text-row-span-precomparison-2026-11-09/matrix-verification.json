@@ -1,0 +1,45 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "dpr": 1,
+  "tailPermutationCount": 30,
+  "caseCount": 960,
+  "byTopology": {
+    "span2-forward": 240,
+    "span2-reversed": 240,
+    "span2-before-span3": 240,
+    "span3-before-span2": 240
+  },
+  "caps": [
+    "0%",
+    "120%",
+    "20%",
+    "20px"
+  ],
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "payloadLineCounts": {
+    "A": [
+      2
+    ],
+    "B": [
+      3
+    ],
+    "C": [
+      4
+    ]
+  },
+  "maxSpanHeightDeltaCssPx": 0.0,
+  "maxSourceOrderFrameDeltaCssPx": 0.0,
+  "fixtureSha256": "20388cdb1efaca752ea91885c2412492ea24b794a3936ca89e88ef6d3ff54baf",
+  "observationSha256": "52db9a1db26e627b9f5ed9420946bc621cbba8a2cc109d6863b1a96003d2552d",
+  "checks": [
+    "all 30 unique tail permutations x 4 caps x 2 alignments x 4 topologies present",
+    "explicit row spans map to expected track indices and do not create implicit columns",
+    "item block size equals the sum of spanned used rows within 0.011 CSS px",
+    "payload line counts are exact (A=2, B=3, C=4)",
+    "source order reversal preserves each semantic item frame within 1/64 CSS px",
+    "align-content:stretch changes only auto-track sizes"
+  ]
+}

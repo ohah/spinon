@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-09 Root HTML 반복 텍스트 행 span · 다음 bounded slice 선정
+
+기본 parsed Root HTML의 반복 intrinsic implicit-row list에 2행·3행을 점유하는 실제 direct text item 기여를 추가하는 계획을 선택했다. Chrome 157 fixed-input matrix 960 scene과 독립 CSS Grid §11.5/§10.5 기대 관계를 고정했다. 계획 PR [상태는 집중 계획](./c11-4-root-html-repeated-text-row-span.md)을 참고한다. 계획이 merge되기 전 구현은 시작하지 않으며 C11.4/C11 공식 체크와 `78/214`는 유지한다.
+
 ## 2026-11-08 parsed Root HTML 반복 intrinsic implicit-row list · PR #1284 병합 · 다음 slice 계획 완료
 
 PR #1280에서 허용한 네 member의 24개 순서는 각 member가 한 번씩만 등장한다. CSS Grid의 유효한 `<track-size>+` 목록에서 `min-content`와 `max-content`를 반복하는 다음 여섯 member 패턴을 별도 제한 slice로 구현했다:

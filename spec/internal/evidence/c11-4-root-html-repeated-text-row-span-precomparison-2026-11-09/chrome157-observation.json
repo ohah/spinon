@@ -1,0 +1,325 @@
+{
+  "dpr": 1,
+  "platform": "MacIntel",
+  "scenes": [
+    {
+      "computedRows": "10px 0px 20px 15px",
+      "grid": [
+        0,
+        0,
+        40,
+        220
+      ],
+      "id": "span2-forward",
+      "items": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "id": "empty-0",
+          "lineYs": [],
+          "payload": null,
+          "rowEnd": "2",
+          "rowStart": "1"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "id": "A",
+          "lineYs": [
+            9,
+            19
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "2"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            35
+          ],
+          "id": "B",
+          "lineYs": [
+            9,
+            19,
+            29
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            30
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "3"
+        }
+      ]
+    },
+    {
+      "computedRows": "10px 0px 20px 15px",
+      "grid": [
+        0,
+        232,
+        40,
+        220
+      ],
+      "id": "span2-reversed",
+      "items": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "id": "empty-0",
+          "lineYs": [],
+          "payload": null,
+          "rowEnd": "2",
+          "rowStart": "1"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            35
+          ],
+          "id": "B",
+          "lineYs": [
+            9,
+            19,
+            29
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            30
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "3"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "id": "A",
+          "lineYs": [
+            9,
+            19
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "2"
+        }
+      ]
+    },
+    {
+      "computedRows": "10px 0px 22.5px 17.5px",
+      "grid": [
+        0,
+        464,
+        40,
+        220
+      ],
+      "id": "span2-before-span3",
+      "items": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "id": "empty-0",
+          "lineYs": [],
+          "payload": null,
+          "rowEnd": "2",
+          "rowStart": "1"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            22.5
+          ],
+          "id": "A",
+          "lineYs": [
+            9,
+            19
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "2"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            40
+          ],
+          "id": "B",
+          "lineYs": [
+            9,
+            19,
+            29
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            30
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "3"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            40
+          ],
+          "id": "C",
+          "lineYs": [
+            9,
+            19,
+            29,
+            39
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            40
+          ],
+          "rowEnd": "span 3",
+          "rowStart": "2"
+        }
+      ]
+    },
+    {
+      "computedRows": "10px 0px 22.5px 17.5px",
+      "grid": [
+        0,
+        696,
+        40,
+        220
+      ],
+      "id": "span3-before-span2",
+      "items": [
+        {
+          "frame": [
+            0,
+            0,
+            40,
+            10
+          ],
+          "id": "empty-0",
+          "lineYs": [],
+          "payload": null,
+          "rowEnd": "2",
+          "rowStart": "1"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            40
+          ],
+          "id": "C",
+          "lineYs": [
+            9,
+            19,
+            29,
+            39
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            40
+          ],
+          "rowEnd": "span 3",
+          "rowStart": "2"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            40
+          ],
+          "id": "B",
+          "lineYs": [
+            9,
+            19,
+            29
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            30
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "3"
+        },
+        {
+          "frame": [
+            0,
+            10,
+            40,
+            22.5
+          ],
+          "id": "A",
+          "lineYs": [
+            9,
+            19
+          ],
+          "payload": [
+            0,
+            10,
+            40,
+            20
+          ],
+          "rowEnd": "span 2",
+          "rowStart": "2"
+        }
+      ]
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+}
