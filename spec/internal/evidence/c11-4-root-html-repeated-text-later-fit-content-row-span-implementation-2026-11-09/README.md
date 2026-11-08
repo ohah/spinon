@@ -39,4 +39,4 @@ Smoke script는 실행 전에 Android device가 연결되어 있지 않고 선�
 
 ## 남은 범위
 
-별도의 [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 [PR 변경 diff 실패 관점 30개](./implementation-pr-diff-review-30.md)를 기록했다. 이 후보는 일반 CSS parser admission이나 C11.4 상위 완료를 올리지 않는다. 공식 완료 수는 `78/214`로 유지한다. GitHub CI 결과는 PR을 만들기 전이라 아직 없다.
+별도의 [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 [PR 변경 diff 실패 관점 30개](./implementation-pr-diff-review-30.md)를 기록했다. 이 후보는 일반 CSS parser admission이나 C11.4 상위 완료를 올리지 않는다. 공식 완료 수는 `78/214`로 유지한다. 구현 PR [#1299](https://github.com/ohah/spinon/pull/1299)의 GitHub status-check rollup은 0건이며 CI 통과로 기록하지 않는다.
