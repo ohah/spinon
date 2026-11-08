@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-11-08T07:33:16.636Z",
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "agentBrowser": {
+    "version": "0.31.1",
+    "chrome": "157.0.8103.39",
+    "daemonPid": 95891,
+    "chromePid": 95892
+  },
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "documentScrollWidth": 1440,
+    "heading": "다음 구현: C11.4 반복 intrinsic tail 30순서",
+    "nextLane": "할 일",
+    "candidateCard": "C11.4 · NEXT · 계획 완료",
+    "activeLane": "진행 중 0/2 · 현재 진행 중인 항목 없음",
+    "mergeHistoryVisibleInDocument": true,
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-agent-browser-desktop.png",
+      "bytes": 154753,
+      "sha256": "91f75c754b4f454c974d0878203db20ed5dd6dd0c4a9ea7873528ef08570eab9"
+    }
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "documentScrollWidth": 390,
+    "firstLane": "할 일",
+    "candidateCardVisible": true,
+    "cardTextRangePx": {
+      "left": 74,
+      "right": 192
+    },
+    "firstLaneLabelRangePx": {
+      "left": 62,
+      "right": 87
+    },
+    "activeLane": "진행 중 0/2 · 현재 진행 중인 항목 없음",
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-agent-browser-mobile.png",
+      "bytes": 51195,
+      "sha256": "9d88a724a0f40ed3f881d465f9d36aaee5ef13d1dc5c53b4cda90929694231a2"
+    }
+  },
+  "linkedRoutes": {
+    "candidatePlan": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-intrinsic-tail-permutations.html",
+      "opened": true,
+      "has30UniqueOrders": true
+    },
+    "precomparison": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "opened": true,
+      "has120Scenes": true,
+      "has9480Checks": true
+    },
+    "precomparisonPng": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/chrome-agent-browser-157.png",
+      "loaded": true,
+      "width": 1440,
+      "height": 2196,
+      "contentType": "image/png"
+    }
+  },
+  "passed": true,
+  "note": "로드맵 HTML 자체는 폭이 넘치지 않으며, 모바일 칸반 SVG는 내부 가로 스크롤 영역이다. active slice가 없을 때 할 일 lane이 처음 보인다."
+}

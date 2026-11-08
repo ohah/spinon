@@ -2,6 +2,8 @@
 
 ## 범위
 
+구현 PR [#1284](https://github.com/ohah/spinon/pull/1284)은 `2026-11-08T06:43:38Z` Rebase and merge로 병합됐다(merge SHA `f2f9312e39ddf6d7ca8e703c28d33bf26e5325b8`). PR checks/workflow run은 보고되지 않았고, main에는 required status check이 없었다.
+
 기본 parsed Root HTML GPU route에서 다음 exact `grid-auto-rows` 목록과 첫 두 순환 주기를 실행했다.
 
 ```css

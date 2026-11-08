@@ -1,0 +1,23 @@
+{
+  "browser": "Agent Browser HeadlessChrome 157.0.0.0 / macOS arm64",
+  "viewport": "1280x633 CSS px, DPR 1",
+  "uniqueOrderCount": 30,
+  "sceneCount": 120,
+  "scenesCompared": 120,
+  "coordinateAndTrackChecks": 9480,
+  "passed": true,
+  "failures": [],
+  "maxAbsError": 0,
+  "toleranceCssPx": 0.000001,
+  "capForms": [
+    "20px",
+    "20%"
+  ],
+  "alignmentValues": [
+    "start",
+    "stretch"
+  ],
+  "computedTrackOrderPreserved": true,
+  "fitContentOverflowCheckedInAllScenes": true,
+  "sourceIsIndependentFixedPayloadModel": "independent fixed-payload track model; not generated from Chrome or Spinon"
+}

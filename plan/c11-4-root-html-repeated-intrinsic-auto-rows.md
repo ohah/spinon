@@ -1,6 +1,8 @@
 # C11.4 parsed Root HTML repeated intrinsic implicit-row list
 
-**상태:** Chrome 157 사전 비교와 독립 계산 4/4, 계획 실패 관점 검토 20/20을 마쳤다. Layout 2개, Style projection 2개, RuntimeSession 3개 focused test가 통과했고, fit-content 회귀 79개, 전체 workspace Clippy 및 rustfmt도 통과했다. Android API 37 ARM64 AVD는 20 boxes와 draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 같은 fixture로 layout-ready 20 boxes를 확인했다. 두 OS 캡처는 visual smoke이며 surface pixel readback은 아니다. 기존 iOS app data는 복원 후 11개 파일 hash가 설치 전과 같다. 구현/runtime와 별도 PR diff 실패 관점 검토가 각각 20/20 통과했다. PR 생성·검토·병합과 Tailnet 게시본 갱신은 남아 있다. C11.4/C11 상태 체크와 공식 `78/214` 집계는 유지한다.
+**상태:** 구현 PR #1284가 병합됐고, Tailnet 로드맵 게시본 동기화를 진행 중이다. 다음 C11.4 후보는 [반복 intrinsic tail 30순서 계획](./c11-4-root-html-repeated-intrinsic-tail-permutations.md)으로 선택했으며 Chrome 157 사전 비교 120/120과 계획 실패 관점 검토 20/20을 마쳤다. 해당 후속 제품 코드 구현은 시작하지 않았다. 이 slice와 다음 후보 모두 C11.4/C11 체크 및 공식 `78/214`를 바꾸지 않는다.
+
+**이전 slice 검증:** Chrome 157 사전 비교와 독립 계산 4/4, 계획 실패 관점 검토 20/20을 마쳤다. Layout 2개, Style projection 2개, RuntimeSession 3개 focused test가 통과했고, fit-content 회귀 79개, 전체 workspace Clippy 및 rustfmt도 통과했다. Android API 37 ARM64 AVD는 20 boxes와 draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 같은 fixture로 layout-ready 20 boxes를 확인했다. 두 OS 캡처는 visual smoke이며 surface pixel readback은 아니다. 기존 iOS app data는 복원 후 11개 파일 hash가 설치 전과 같다. 구현/runtime와 별도 PR diff 실패 관점 검토가 각각 20/20 통과했다. 구현 PR [#1284](https://github.com/ohah/spinon/pull/1284)은 2026-11-08T06:43:38Z Rebase and merge됐고 merge SHA는 `f2f9312e39ddf6d7ca8e703c28d33bf26e5325b8`이다. PR workflow와 status check는 보고되지 않았다. Tailnet 게시본은 [동기화 근거](../spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.md)에 기록한다. C11.4/C11 상태 체크와 공식 `78/214` 집계는 유지한다.
 
 **상위:** [공식 Grid 상태](../spec/STATUS.md#c11-css-grid) · [C11 CSS Grid 계획](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 명세 0059](../spec/internal/0059-c11-grid-layout.md)
 
