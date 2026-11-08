@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML `grid-auto-rows:max-content` 제한 slice
 
-**상태:** Chrome 157 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. C11.4 intrinsic auto-row 경로는 현재 singleton `min-content`만 허용하고 `max-content`는 거부한다. 이 계획은 같은 고정 track Root HTML text profile에 singleton `max-content`를 추가한다. 공개 로드맵의 stale baseline fallback 진행 카드는 이 작업으로 교체했다.
+**상태:** Chrome 157 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. PR [#1280](https://github.com/ohah/spinon/pull/1280)은 별도 `RootHtmlFitContentAutoRowsV1` profile에서 `fit-content()`/`min-content`/`max-content`/`auto` 네-member 목록을 지원하도록 병합됐다. 여기서 다루는 `RootHtmlIntrinsicTrackSizingV1` text profile은 여전히 singleton `min-content`만 허용하며 singleton `max-content`는 거부한다. 이 계획은 후자의 고정 text profile만 확장하며 구현은 시작하지 않았다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [Root HTML intrinsic implicit min-content rows](./c11-root-html-intrinsic-auto-rows.md) · [text contribution](./c11-root-html-intrinsic-auto-rows-text.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -10,7 +10,7 @@
 
 ## 결손과 목표
 
-기본 parsed Root HTML의 `RuntimeRootHtmlTextPaintV1` 경로는 `RootHtmlIntrinsicTrackSizingV1`을 통해 고정 explicit track과 text item이 있는 Grid의 singleton `grid-auto-rows:min-content`를 지원한다. 현재 `root_html_has_intrinsic_implicit_min_content_rows`와 layout admission은 이 값만 통과시키며 singleton `max-content`는 `grid-auto-rows` 오류로 거부한다. CSS Grid 명세에서 `grid-auto-rows`는 `<track-size>+`를 받고 implicit track 크기를 지정하므로, 유효한 max-content 값을 이 한정된 입력 shape에 연결한다.
+기본 parsed Root HTML의 `RuntimeRootHtmlTextPaintV1` 경로는 `RootHtmlIntrinsicTrackSizingV1`을 통해 고정 explicit track과 text item이 있는 Grid의 singleton `grid-auto-rows:min-content`를 지원한다. 현재 `root_html_has_intrinsic_implicit_min_content_rows`와 layout admission은 이 값만 통과시키며 singleton `max-content`는 `grid-auto-rows` 오류로 거부한다. PR #1280의 four-member 목록은 다른 `RootHtmlFitContentAutoRowsV1` owner/topology에 적용되며 이 singleton admission을 바꾸지 않는다. CSS Grid 명세에서 `grid-auto-rows`는 `<track-size>+`를 받고 implicit track 크기를 지정하므로, 유효한 max-content 값을 이 한정된 입력 shape에 연결한다.
 
 대상은 기존 text fixture와 같은 explicit 40px column, explicit 10px row, row flow, 0 gap, 고정 40×40px Grid, text-bearing direct `<div>` 한 개, 마지막 고정-height item 한 개다. 새 parser, public API, FFI selector, fixture-only 성공 route 또는 전체 CSS Grid admission은 추가하지 않는다.
 
