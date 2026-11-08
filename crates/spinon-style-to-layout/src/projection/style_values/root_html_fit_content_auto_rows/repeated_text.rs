@@ -1,4 +1,5 @@
 use super::*;
+use spinon_core::HostNodeHandle;
 
 pub(super) fn payload_is_supported(
     tree: &HostDocumentSnapshot,

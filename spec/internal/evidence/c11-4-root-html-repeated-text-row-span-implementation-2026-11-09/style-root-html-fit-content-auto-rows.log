@@ -1,0 +1,10 @@
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.30s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 2 tests
+test projection::style_values::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_accepts_ascii_word_and_byte_boundaries ... ok
+test projection::style_values::root_html_fit_content_auto_rows::repeated_text::tests::content_grammar_rejects_non_ascii_and_malformed_spacing ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 463 filtered out; finished in 0.00s

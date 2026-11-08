@@ -143,6 +143,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             };
             repeated_text::has_supported_text(input, *payload)
         });
+    let repeated_text_span_profile =
+        six_member_list && repeated_text::supports_span_topology(input, &visible_children);
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -175,7 +177,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     let grid_style_is_supported = style.display == LayoutDisplay::Grid
         && style.width == LayoutDimension::Fixed(40.0)
         && (style.height == LayoutDimension::Fixed(100.0)
-            || (repeated_text_profile && style.height == LayoutDimension::Fixed(220.0)))
+            || ((repeated_text_profile || repeated_text_span_profile)
+                && style.height == LayoutDimension::Fixed(220.0)))
         && style.box_sizing == LayoutBoxSizing::BorderBox
         && style.min_width == LayoutDimension::Auto
         && style.max_width == LayoutDimension::Auto
@@ -213,11 +216,33 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     }
 
     let child_has_no_text = |child: NodeId| !has_non_collapsible_text(input, child);
-    let child_has_auto_placement = |child: NodeId| {
-        input
-            .grid_items
-            .get(&child)
-            .is_none_or(crate::GridItemInput::is_auto)
+    let child_placement_is_supported = |child: NodeId| {
+        if repeated_text_span_profile {
+            if child == visible_children[0] {
+                input.grid_items.get(&child).is_some_and(|placement| {
+                    placement.row_start == GridPlacementInput::Line(1)
+                        && placement.row_end == GridPlacementInput::Line(2)
+                        && placement.column_start == GridPlacementInput::Line(1)
+                        && placement.column_end == GridPlacementInput::Line(2)
+                })
+            } else {
+                input.grid_items.get(&child).is_some_and(|placement| {
+                    placement.column_start == GridPlacementInput::Line(1)
+                        && placement.column_end == GridPlacementInput::Line(2)
+                        && matches!(
+                            (&placement.row_start, &placement.row_end),
+                            (GridPlacementInput::Line(2), GridPlacementInput::Span(2))
+                                | (GridPlacementInput::Line(3), GridPlacementInput::Span(2))
+                                | (GridPlacementInput::Line(2), GridPlacementInput::Span(3))
+                        )
+                })
+            }
+        } else {
+            input
+                .grid_items
+                .get(&child)
+                .is_none_or(crate::GridItemInput::is_auto)
+        }
     };
     let child_is_static = |child: NodeId| {
         input
@@ -227,7 +252,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     };
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
-        || (six_member_list && visible_children.len() != 9)
+        || (six_member_list && visible_children.len() != 9 && !repeated_text_span_profile)
         || (!four_member_list && !six_member_list && !matches!(visible_children.len(), 3 | 5))
         || has_non_collapsible_text(input, node)
     {
@@ -260,10 +285,14 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && item.children.is_empty()
             && !input.grid_containers.contains_key(&item.id)
             && child_has_no_text(item.id)
-            && child_has_auto_placement(item.id)
+            && child_placement_is_supported(item.id)
             && child_is_static(item.id)
     };
-    if !fixed_item_is_supported(first, 10.0, repeated_text_profile) {
+    if !fixed_item_is_supported(
+        first,
+        10.0,
+        repeated_text_profile || repeated_text_span_profile,
+    ) {
         return Err(LayoutError::UnsupportedGridContainerStyle {
             node,
             property: "C11.4 fit-content explicit row item profile",
@@ -291,7 +320,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && item.children.len() == 1
             && !input.grid_containers.contains_key(&item.id)
             && child_has_no_text(item.id)
-            && child_has_auto_placement(item.id)
+            && child_placement_is_supported(item.id)
             && child_is_static(item.id)
     };
     let payload_is_supported = |payload_id: NodeId, allowed_heights: &[f32]| {
@@ -355,7 +384,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             } else {
                 None
             };
-            let payload_is_allowed = if repeated_text_profile {
+            let payload_is_allowed = if repeated_text_profile || repeated_text_span_profile {
                 text_payload_is_supported(payload_id)
             } else if six_member_list {
                 let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
@@ -402,6 +431,10 @@ pub(super) fn normalize_repeated_text_layout_frames(
     output: &mut crate::LayoutOutput,
 ) -> Result<(), LayoutError> {
     repeated_text::normalize_layout_frames(input, output)
+}
+
+pub(super) fn supports_span_topology(input: &LayoutInput, items: &[NodeId]) -> bool {
+    repeated_text::supports_span_topology(input, items)
 }
 
 fn has_non_collapsible_text(input: &LayoutInput, node: NodeId) -> bool {

@@ -1,0 +1,10 @@
+layout-root-html-fit-content-auto-rows: 16 passed, 0 failed; log=layout-root-html-fit-content-auto-rows.log
+layout-row-span-trace-failures: 2 passed, 0 failed; log=layout-row-span-trace-failures.log
+layout-grid-track-sizing: 127 passed, 0 failed; log=layout-grid-track-sizing.log
+style-root-html-fit-content-auto-rows: 2 passed, 0 failed; log=style-root-html-fit-content-auto-rows.log
+runtime-repeated-text-span: 4 passed, 0 failed; includes 960 Chrome scenes, 35 atomic rejections, same-session recovery, and vertical-writing-mode cascade failure; log=runtime-repeated-text-span.log
+runtime-repeated-text-span-with-feature-trace: 4 passed, 0 failed; log=runtime-row-span-feature-trace.log
+runtime-repeated-text-810-regression: 1 passed, 0 failed; log=runtime-repeated-text-810-regression.log
+format: cargo fmt --all -- --check passed
+clippy: changed crates with --all-targets -- -D warnings passed; log=clippy-final.log
+full spinon-layout --lib: 506 passed; 1 unchanged C15 host_document_collects_direct_text_and_inherited_spans_in_source_order test failed before layout. The changed files do not include its input-construction path; a clean baseline was not run. log=spinon-layout-lib.log

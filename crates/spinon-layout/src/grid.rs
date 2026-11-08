@@ -61,6 +61,13 @@ pub(crate) fn root_html_fit_content_intrinsic_auto_track_list_is_supported(
     root_html_fit_content_auto_rows::supports_intrinsic_auto_track_list(tracks)
 }
 
+pub(crate) fn root_html_fit_content_text_span_topology_is_supported(
+    input: &LayoutInput,
+    items: &[NodeId],
+) -> bool {
+    root_html_fit_content_auto_rows::supports_span_topology(input, items)
+}
+
 pub(crate) fn root_html_direct_text_aspect_ratio_auto_min_height(
     input: &LayoutInput,
     item: NodeId,
@@ -1099,6 +1106,18 @@ pub(super) fn validate_grid_layout(
             .children
             .iter()
             .any(|child| normalized_grid.item_placements.contains_key(child));
+        let visible_grid_children = node
+            .children
+            .iter()
+            .copied()
+            .filter(|child| !hidden.get(child).copied().unwrap_or(true))
+            .collect::<Vec<_>>();
+        let root_html_fit_content_text_span_profile = container.placement_mode
+            == GridPlacementMode::RootHtmlFitContentAutoRowsV1
+            && root_html_fit_content_auto_rows::supports_span_topology(
+                input,
+                &visible_grid_children,
+            );
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let supports_c114_absolute_probe_matrix =
             c114_absolute_auto_repeat_probes::supports_wpt_probe_matrix(
@@ -1373,26 +1392,28 @@ pub(super) fn validate_grid_layout(
                 let root_html_fit_content_minimum = container.placement_mode
                     == GridPlacementMode::RootHtmlFitContentAutoRowsV1
                     && property == "min-height"
-                    && match (fit_content_item_count, fit_content_item_position, value) {
-                        (3, Some(1), crate::LayoutDimension::Fixed(value))
-                            if value == 0.0 || value == 28.0 =>
-                        {
-                            true
-                        }
-                        (3, Some(2), crate::LayoutDimension::Fixed(0.0)) => true,
-                        (5, Some(1..=4), crate::LayoutDimension::Fixed(0.0)) => true,
-                        (6, Some(1..=5), crate::LayoutDimension::Fixed(0.0)) => matches!(
-                            &container.auto_rows,
-                            crate::GridAutoRows::TrackList(tracks)
-                                if root_html_fit_content_min_max_content_auto_track_list_is_supported(tracks)
-                        ),
-                        (9, Some(0..=8), crate::LayoutDimension::Fixed(0.0)) => matches!(
-                            &container.auto_rows,
-                            crate::GridAutoRows::TrackList(tracks)
-                                if root_html_fit_content_auto_rows::supports_repeated_min_max_content_auto_track_list(tracks)
-                        ),
-                        _ => false,
-                    }
+                    && (root_html_fit_content_text_span_profile
+                        && value == crate::LayoutDimension::Fixed(0.0)
+                        || match (fit_content_item_count, fit_content_item_position, value) {
+                            (3, Some(1), crate::LayoutDimension::Fixed(value))
+                                if value == 0.0 || value == 28.0 =>
+                            {
+                                true
+                            }
+                            (3, Some(2), crate::LayoutDimension::Fixed(0.0)) => true,
+                            (5, Some(1..=4), crate::LayoutDimension::Fixed(0.0)) => true,
+                            (6, Some(1..=5), crate::LayoutDimension::Fixed(0.0)) => matches!(
+                                &container.auto_rows,
+                                crate::GridAutoRows::TrackList(tracks)
+                                    if root_html_fit_content_min_max_content_auto_track_list_is_supported(tracks)
+                            ),
+                            (9, Some(0..=8), crate::LayoutDimension::Fixed(0.0)) => matches!(
+                                &container.auto_rows,
+                                crate::GridAutoRows::TrackList(tracks)
+                                    if root_html_fit_content_auto_rows::supports_repeated_min_max_content_auto_track_list(tracks)
+                            ),
+                            _ => false,
+                        })
                     && matches!(&container.auto_rows, GridAutoRows::TrackList(_));
                 let root_html_direct_text_ratio_target_constraint = container.placement_mode
                     == GridPlacementMode::RootHtmlDirectTextAspectRatioV1
