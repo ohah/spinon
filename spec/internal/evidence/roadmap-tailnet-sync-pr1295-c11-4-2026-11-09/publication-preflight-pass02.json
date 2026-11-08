@@ -1,0 +1,1027 @@
+{
+  "tailscaleBackendState": "Running",
+  "server": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/pass02",
+  "fileCount": 92,
+  "bytes": 13139176,
+  "states": {
+    "add": 9,
+    "same": 69,
+    "replace": 14
+  },
+  "replacementRoutes": [
+    {
+      "route": "STATUS.html",
+      "sourceSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+      "targetSha256": "4416f9e9ca59f4520bc407af9f873cc7cb4e6031dc058a59ef2fad8d18c52549",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sourceSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+      "targetSha256": "b51280e729e00259ce086a119112041adc9f132b9100a3f5bafd4b66e6a1f1ce",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.html",
+      "sourceSha256": "b191bce31b160bec3493caee8530adc833cc5d01d6bfeb765aaa35743f2acbc6",
+      "targetSha256": "0dbff1a40624209179b233a52687053e923ac6ffbaa70545be5b110818ced800",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.html",
+      "sourceSha256": "2fff4b81515dfc88f059da17a187e7e29fe892b353dc9052c2e3df4b253e0c02",
+      "targetSha256": "eb1d2be3260e0ab6a57e7f89bc80cb31e898dbe892cc6938623241efa0ad3d6b",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.html",
+      "sourceSha256": "a58ef45a869a743307b25d97ed8c463dd06ccb7cde825c7dd712624aa34a8fd7",
+      "targetSha256": "96f677c65667358eda30c5abeb8302042aa23466fdd0c030371611d01b2ee05b",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "sourceSha256": "651652d026806d98f2af76b5e9afc1339038e6668fe14e57720822074ecc76c8",
+      "targetSha256": "3e9f3cdfdfe51fb4b03d3bce2be2e1d6a03374c4716e55c41c3c198be040dfe9",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.html",
+      "sourceSha256": "e783e5c4333f77b646b649847bd2e329bd9d9de0176ee5df3998b64780671e2a",
+      "targetSha256": "02ad051545654f84b2331de38575a765b68f96c0425329c8946a9a0ce97554f4",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.html",
+      "sourceSha256": "892597135746acb13385780a310e304f442772332f7f09fb6b9ee3bbb76aca85",
+      "targetSha256": "0b07d46f785e849ad2f3a7e2233ccaa0e6919be5b418d5e9112070bdc35a5cf5",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.html",
+      "sourceSha256": "038a1a9eb8b974ed8225372e6945b6bda9ae6901847bb0a46631e91e50a56108",
+      "targetSha256": "591706c7ab2a4b516892e5c077b9e4e02bfa09e5ede654f35c66a1f6b60475c4",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.md",
+      "sourceSha256": "974612a66483a2d0d47c29cf129e247287d227d908ff37da9669dc51eda0a532",
+      "targetSha256": "4dece55c10c1565b37a9d7a4dadcf50a8c1febda2ca54b8ae6c3cd81ee613541",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-plan-review-20.html",
+      "sourceSha256": "81d3347efd1f5a219aaf06405f0fb67632a17c133a41ccced51911f56408dcc4",
+      "targetSha256": "b4071da1162b5c4cdc614e8da7e3dc8dd4ad249ec98d4699c53d448f3c5b7a25",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span.html",
+      "sourceSha256": "46f050a89b5f3827fd0f47f79df271cbfa7cbb35f6a4443d3011485a0c18787b",
+      "targetSha256": "75fdfaa9d6a926133227fa5d242c942c9e0343819f76c3310f6e56626c30a32f",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sourceSha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+      "targetSha256": "4416f9e9ca59f4520bc407af9f873cc7cb4e6031dc058a59ef2fad8d18c52549",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sourceSha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+      "targetSha256": "b51280e729e00259ce086a119112041adc9f132b9100a3f5bafd4b66e6a1f1ce",
+      "openHandlePids": []
+    }
+  ],
+  "noDeletes": true,
+  "serverRestarted": false,
+  "entries": [
+    {
+      "route": "STATUS.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/STATUS.html",
+      "kind": "rspress-generated",
+      "bytes": 898117,
+      "sha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+      "state": "replace",
+      "targetSha256": "4416f9e9ca59f4520bc407af9f873cc7cb4e6031dc058a59ef2fad8d18c52549",
+      "openHandlePids": []
+    },
+    {
+      "route": "STATUS.md",
+      "source": "spec/STATUS.md",
+      "kind": "markdown-source",
+      "bytes": 737773,
+      "sha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+      "state": "same",
+      "targetSha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+      "openHandlePids": []
+    },
+    {
+      "route": "icon.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/icon.svg",
+      "kind": "rspress-generated",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "state": "same",
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/0059-c11-grid-layout.html",
+      "kind": "rspress-generated",
+      "bytes": 784369,
+      "sha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+      "state": "replace",
+      "targetSha256": "b51280e729e00259ce086a119112041adc9f132b9100a3f5bafd4b66e6a1f1ce",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "kind": "markdown-source",
+      "bytes": 554063,
+      "sha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+      "state": "same",
+      "targetSha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.html",
+      "kind": "rspress-generated",
+      "bytes": 28625,
+      "sha256": "b191bce31b160bec3493caee8530adc833cc5d01d6bfeb765aaa35743f2acbc6",
+      "state": "replace",
+      "targetSha256": "0dbff1a40624209179b233a52687053e923ac6ffbaa70545be5b110818ced800",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.md",
+      "kind": "selected-evidence-source",
+      "bytes": 4928,
+      "sha256": "9dad48c8cd4a77bac7326644df93f0d81140db7a6fddebbb80f92925761a1056",
+      "state": "same",
+      "targetSha256": "9dad48c8cd4a77bac7326644df93f0d81140db7a6fddebbb80f92925761a1056",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-abi.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-abi.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 10,
+      "sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "state": "same",
+      "targetSha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api-level.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api-level.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 3,
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "state": "same",
+      "targetSha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.html",
+      "kind": "rspress-generated",
+      "bytes": 24081,
+      "sha256": "2fff4b81515dfc88f059da17a187e7e29fe892b353dc9052c2e3df4b253e0c02",
+      "state": "replace",
+      "targetSha256": "eb1d2be3260e0ab6a57e7f89bc80cb31e898dbe892cc6938623241efa0ad3d6b",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-api37-avd-crash-analysis.md",
+      "kind": "selected-evidence-source",
+      "bytes": 1263,
+      "sha256": "ab512114c3b5f5507203428e1d9abbdb37c0124f9f9d22e7d9feb264bd59988a",
+      "state": "same",
+      "targetSha256": "ab512114c3b5f5507203428e1d9abbdb37c0124f9f9d22e7d9feb264bd59988a",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-build.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-build.log",
+      "kind": "selected-evidence-source",
+      "bytes": 5021,
+      "sha256": "940d27261de4f2570dd84cd245829f9a23b159e0e0a2d5cfc323a8d127d45b35",
+      "state": "same",
+      "targetSha256": "940d27261de4f2570dd84cd245829f9a23b159e0e0a2d5cfc323a8d127d45b35",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-bundled-source-hash.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-bundled-source-hash.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 68,
+      "sha256": "ab5803a4e80c707301a2a3aef788d1772d96a38753d0eb83c45c2ff0464b7b5d",
+      "state": "same",
+      "targetSha256": "ab5803a4e80c707301a2a3aef788d1772d96a38753d0eb83c45c2ff0464b7b5d",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-root-html-span-sentinel.png",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-root-html-span-sentinel.png",
+      "kind": "selected-evidence-source",
+      "bytes": 80124,
+      "sha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+      "state": "same",
+      "targetSha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-runtime.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/android-runtime.log",
+      "kind": "selected-evidence-source",
+      "bytes": 4497,
+      "sha256": "d83febad3006587837a76bb3ecf2135d8229c60751241d6aef959aef059841f6",
+      "state": "same",
+      "targetSha256": "d83febad3006587837a76bb3ecf2135d8229c60751241d6aef959aef059841f6",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/clippy-final.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/clippy-final.log",
+      "kind": "selected-evidence-source",
+      "bytes": 172,
+      "sha256": "8c7ebd588154b214637de64b8a686dc492d8f7befef5059ef8c153f6964c2e98",
+      "state": "same",
+      "targetSha256": "8c7ebd588154b214637de64b8a686dc492d8f7befef5059ef8c153f6964c2e98",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/focused-test-summary.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/focused-test-summary.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 1191,
+      "sha256": "b57d325bf4c40f8ba1169c5c7a676dea615d28eebed571742abd3e2405131dd7",
+      "state": "same",
+      "targetSha256": "b57d325bf4c40f8ba1169c5c7a676dea615d28eebed571742abd3e2405131dd7",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.html",
+      "kind": "rspress-generated",
+      "bytes": 34396,
+      "sha256": "a58ef45a869a743307b25d97ed8c463dd06ccb7cde825c7dd712624aa34a8fd7",
+      "state": "replace",
+      "targetSha256": "96f677c65667358eda30c5abeb8302042aa23466fdd0c030371611d01b2ee05b",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.md",
+      "kind": "selected-evidence-source",
+      "bytes": 4641,
+      "sha256": "cd287f4c929954118ee210d981523c231a233ecc4ad01c37bc015cb23a95bd51",
+      "state": "same",
+      "targetSha256": "cd287f4c929954118ee210d981523c231a233ecc4ad01c37bc015cb23a95bd51",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "kind": "rspress-generated",
+      "bytes": 45021,
+      "sha256": "651652d026806d98f2af76b5e9afc1339038e6668fe14e57720822074ecc76c8",
+      "state": "replace",
+      "targetSha256": "3e9f3cdfdfe51fb4b03d3bce2be2e1d6a03374c4716e55c41c3c198be040dfe9",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "kind": "selected-evidence-source",
+      "bytes": 8346,
+      "sha256": "b3c9076fc792aab5f0337dc0888c42487393eea311399a0eaab0425ced9819e4",
+      "state": "same",
+      "targetSha256": "b3c9076fc792aab5f0337dc0888c42487393eea311399a0eaab0425ced9819e4",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-build.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-build.log",
+      "kind": "selected-evidence-source",
+      "bytes": 67850,
+      "sha256": "b9085ff56078c0482d553801ac0411b04a672fa7875d217e0959c578d7734296",
+      "state": "same",
+      "targetSha256": "b9085ff56078c0482d553801ac0411b04a672fa7875d217e0959c578d7734296",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-bundled-source-hash.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-bundled-source-hash.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 181,
+      "sha256": "faed8a99fad197a8fc0c3d4a12ac04077521dc11fc00aaed275346d6fe7ee125",
+      "state": "same",
+      "targetSha256": "faed8a99fad197a8fc0c3d4a12ac04077521dc11fc00aaed275346d6fe7ee125",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-root-html-span-sentinel.png",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-root-html-span-sentinel.png",
+      "kind": "selected-evidence-source",
+      "bytes": 142308,
+      "sha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+      "state": "same",
+      "targetSha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-runtime.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/ios-runtime.log",
+      "kind": "selected-evidence-source",
+      "bytes": 1401,
+      "sha256": "307fe2d92c911726c610e0cfae31e94300f8787c38ed2dd638c7abe8fdf55036",
+      "state": "same",
+      "targetSha256": "307fe2d92c911726c610e0cfae31e94300f8787c38ed2dd638c7abe8fdf55036",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-grid-track-sizing.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-grid-track-sizing.log",
+      "kind": "selected-evidence-source",
+      "bytes": 16195,
+      "sha256": "7d9a2a4c0869545ca27bace84aa0b505d559bb9bd7cb1402152b5bf0e699f94e",
+      "state": "same",
+      "targetSha256": "7d9a2a4c0869545ca27bace84aa0b505d559bb9bd7cb1402152b5bf0e699f94e",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-root-html-fit-content-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-root-html-fit-content-auto-rows.log",
+      "kind": "selected-evidence-source",
+      "bytes": 2716,
+      "sha256": "8f90ea40ca6a7fe2d31de7457ba1603dfb96a05ccf0bda5ac6b5bff1c812718d",
+      "state": "same",
+      "targetSha256": "8f90ea40ca6a7fe2d31de7457ba1603dfb96a05ccf0bda5ac6b5bff1c812718d",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-row-span-trace-failures.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/layout-row-span-trace-failures.log",
+      "kind": "selected-evidence-source",
+      "bytes": 677,
+      "sha256": "1b1f1f8cf0854c772286833b0c5beb3e9b50ff6c117ea212fdcebd649a9c73ed",
+      "state": "same",
+      "targetSha256": "1b1f1f8cf0854c772286833b0c5beb3e9b50ff6c117ea212fdcebd649a9c73ed",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-build-summary.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-build-summary.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 64,
+      "sha256": "7e2b9654b62d5fbfafea6439175683f78593f1136dd007d39ef4961251bfa3ed",
+      "state": "same",
+      "targetSha256": "7e2b9654b62d5fbfafea6439175683f78593f1136dd007d39ef4961251bfa3ed",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-source-hashes.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-source-hashes.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 260,
+      "sha256": "e52f10bdac7c9c9f4530bae1e26fe70b8c07410ec9027e2655cab9d2c885aa7a",
+      "state": "same",
+      "targetSha256": "e52f10bdac7c9c9f4530bae1e26fe70b8c07410ec9027e2655cab9d2c885aa7a",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-source-restored-hashes.txt",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/native-source-restored-hashes.txt",
+      "kind": "selected-evidence-source",
+      "bytes": 260,
+      "sha256": "1ea4725d4b7c430e15c1e189412f2e492d77a859ca87c0df6ca139be6178190c",
+      "state": "same",
+      "targetSha256": "1ea4725d4b7c430e15c1e189412f2e492d77a859ca87c0df6ca139be6178190c",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/root-html-span-sentinel.html",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/root-html-span-sentinel.html",
+      "kind": "selected-evidence-source",
+      "bytes": 1811,
+      "sha256": "c1f81d9bef820362fe95e155ad029bbed013b8709020cab3946075d3c14668a9",
+      "state": "same",
+      "targetSha256": "c1f81d9bef820362fe95e155ad029bbed013b8709020cab3946075d3c14668a9",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-repeated-text-810-regression.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-repeated-text-810-regression.log",
+      "kind": "selected-evidence-source",
+      "bytes": 425,
+      "sha256": "e045e7ffeca76f09d59268ddf4b31bdd1b61fe82f6183c94debfe1602d554d23",
+      "state": "same",
+      "targetSha256": "e045e7ffeca76f09d59268ddf4b31bdd1b61fe82f6183c94debfe1602d554d23",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-repeated-text-span.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-repeated-text-span.log",
+      "kind": "selected-evidence-source",
+      "bytes": 1058,
+      "sha256": "80eab12267f5efbdacd7008d7516f6878ea64c4b404a833c7e107dba2f46fb4c",
+      "state": "same",
+      "targetSha256": "80eab12267f5efbdacd7008d7516f6878ea64c4b404a833c7e107dba2f46fb4c",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-row-span-feature-trace.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/runtime-row-span-feature-trace.log",
+      "kind": "selected-evidence-source",
+      "bytes": 1484,
+      "sha256": "656264e599218423f0b849ee0d4812f53c78a675cb66253571c0ca602fefbdcd",
+      "state": "same",
+      "targetSha256": "656264e599218423f0b849ee0d4812f53c78a675cb66253571c0ca602fefbdcd",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/spinon-layout-lib.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/spinon-layout-lib.log",
+      "kind": "selected-evidence-source",
+      "bytes": 60345,
+      "sha256": "eff8601561f1e9e846c5e6c1dabcf62a2c6ddb1b1c27be8bf1b5ec55ca003743",
+      "state": "same",
+      "targetSha256": "eff8601561f1e9e846c5e6c1dabcf62a2c6ddb1b1c27be8bf1b5ec55ca003743",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/style-root-html-fit-content-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/style-root-html-fit-content-auto-rows.log",
+      "kind": "selected-evidence-source",
+      "bytes": 790,
+      "sha256": "3e231307657496312ebf11ae2a70660af73227300defc922c14e22eb6fea1d6d",
+      "state": "same",
+      "targetSha256": "3e231307657496312ebf11ae2a70660af73227300defc922c14e22eb6fea1d6d",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.html",
+      "kind": "rspress-generated",
+      "bytes": 26447,
+      "sha256": "e783e5c4333f77b646b649847bd2e329bd9d9de0176ee5df3998b64780671e2a",
+      "state": "replace",
+      "targetSha256": "02ad051545654f84b2331de38575a765b68f96c0425329c8946a9a0ce97554f4",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/README.md",
+      "kind": "selected-evidence-source",
+      "bytes": 3951,
+      "sha256": "31f22bcf59ea1717136a1c493411afa9eb1a8755fd0ea6093dd2c874b7ba2d4a",
+      "state": "same",
+      "targetSha256": "31f22bcf59ea1717136a1c493411afa9eb1a8755fd0ea6093dd2c874b7ba2d4a",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-matrix-observation.ndjson",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-matrix-observation.ndjson",
+      "kind": "selected-evidence-source",
+      "bytes": 502884,
+      "sha256": "52db9a1db26e627b9f5ed9420946bc621cbba8a2cc109d6863b1a96003d2552d",
+      "state": "same",
+      "targetSha256": "52db9a1db26e627b9f5ed9420946bc621cbba8a2cc109d6863b1a96003d2552d",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-observation.json",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-observation.json",
+      "kind": "selected-evidence-source",
+      "bytes": 5634,
+      "sha256": "795c93bc7165b521121a59ce22a998fbc143b263b44e1f104ad59c6247d16d70",
+      "state": "same",
+      "targetSha256": "795c93bc7165b521121a59ce22a998fbc143b263b44e1f104ad59c6247d16d70",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-precomparison.png",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-precomparison.png",
+      "kind": "selected-evidence-source",
+      "bytes": 8331,
+      "sha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+      "state": "same",
+      "targetSha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/matrix-verification.json",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/matrix-verification.json",
+      "kind": "selected-evidence-source",
+      "bytes": 1285,
+      "sha256": "75a047ffeed5c4c4aa388a5ef94ebc481e528600cdebd9f1ccb545ce706ef519",
+      "state": "same",
+      "targetSha256": "75a047ffeed5c4c4aa388a5ef94ebc481e528600cdebd9f1ccb545ce706ef519",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.html",
+      "kind": "rspress-generated",
+      "bytes": 27980,
+      "sha256": "892597135746acb13385780a310e304f442772332f7f09fb6b9ee3bbb76aca85",
+      "state": "replace",
+      "targetSha256": "0b07d46f785e849ad2f3a7e2233ccaa0e6919be5b418d5e9112070bdc35a5cf5",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/plan-pr-diff-review-30.md",
+      "kind": "selected-evidence-source",
+      "bytes": 4348,
+      "sha256": "5b2fd9f78a18c5a95e737d1eb2865c2f47c5b46d40269c85f280d187c7e30a67",
+      "state": "same",
+      "targetSha256": "5b2fd9f78a18c5a95e737d1eb2865c2f47c5b46d40269c85f280d187c7e30a67",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/verify-chrome-matrix.py",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/verify-chrome-matrix.py",
+      "kind": "selected-evidence-source",
+      "bytes": 5450,
+      "sha256": "13e2c918dfed44ebf75f5e98a3e5144a04568972f5f5aac6f1020643c97faedc",
+      "state": "same",
+      "targetSha256": "13e2c918dfed44ebf75f5e98a3e5144a04568972f5f5aac6f1020643c97faedc",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.html",
+      "kind": "rspress-generated",
+      "bytes": 24833,
+      "sha256": "038a1a9eb8b974ed8225372e6945b6bda9ae6901847bb0a46631e91e50a56108",
+      "state": "replace",
+      "targetSha256": "591706c7ab2a4b516892e5c077b9e4e02bfa09e5ede654f35c66a1f6b60475c4",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/README.md",
+      "kind": "selected-evidence-source",
+      "bytes": 2414,
+      "sha256": "974612a66483a2d0d47c29cf129e247287d227d908ff37da9669dc51eda0a532",
+      "state": "replace",
+      "targetSha256": "4dece55c10c1565b37a9d7a4dadcf50a8c1febda2ca54b8ae6c3cd81ee613541",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.html",
+      "kind": "rspress-generated",
+      "bytes": 33740,
+      "sha256": "0197663c3c2e7a5d83b2d87c019a49c569d4613799232ad6951eeafbbbf3aabe",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/docs-pr-diff-review-30.md",
+      "kind": "selected-evidence-source",
+      "bytes": 4416,
+      "sha256": "4f511d65e7a177a53e967be418bb8d2d6486054e6ccb696740720f453084d0b1",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-preflight.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-preflight.json",
+      "kind": "selected-evidence-source",
+      "bytes": 43640,
+      "sha256": "02f5b8e3157fa58a736abcd44bfd39a7a8a55a8e6a24e37816970bdf5ff64ad5",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-result.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/publication-result.json",
+      "kind": "selected-evidence-source",
+      "bytes": 24128,
+      "sha256": "d628569c4d0e7aa21977037b737313ec7dbc85c3f51f528da76927f14e857bc3",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/served-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/served-verification.json",
+      "kind": "selected-evidence-source",
+      "bytes": 34922,
+      "sha256": "3d67503da6d5822c3b69abe3d9c7452a63f5abe488ca9b41f173c51299ca54a5",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "logo.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/logo.svg",
+      "kind": "rspress-generated",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "state": "same",
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-plan-review-20.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/plan/c11-4-root-html-repeated-text-row-span-plan-review-20.html",
+      "kind": "rspress-generated",
+      "bytes": 28199,
+      "sha256": "81d3347efd1f5a219aaf06405f0fb67632a17c133a41ccced51911f56408dcc4",
+      "state": "replace",
+      "targetSha256": "b4071da1162b5c4cdc614e8da7e3dc8dd4ad249ec98d4699c53d448f3c5b7a25",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-plan-review-20.md",
+      "source": "plan/c11-4-root-html-repeated-text-row-span-plan-review-20.md",
+      "kind": "markdown-source",
+      "bytes": 4684,
+      "sha256": "dc85e07d5b9ba5d9f77f042bbe3cb6c51abe4c7053cc326ea34287d7ccbd2ba8",
+      "state": "same",
+      "targetSha256": "dc85e07d5b9ba5d9f77f042bbe3cb6c51abe4c7053cc326ea34287d7ccbd2ba8",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/plan/c11-4-root-html-repeated-text-row-span.html",
+      "kind": "rspress-generated",
+      "bytes": 36281,
+      "sha256": "46f050a89b5f3827fd0f47f79df271cbfa7cbb35f6a4443d3011485a0c18787b",
+      "state": "replace",
+      "targetSha256": "75fdfaa9d6a926133227fa5d242c942c9e0343819f76c3310f6e56626c30a32f",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span.md",
+      "source": "plan/c11-4-root-html-repeated-text-row-span.md",
+      "kind": "markdown-source",
+      "bytes": 11494,
+      "sha256": "f30670d8939181d41bab118e6e6ae97198211a2609aaaed87ff6addd42b8694d",
+      "state": "same",
+      "targetSha256": "f30670d8939181d41bab118e6e6ae97198211a2609aaaed87ff6addd42b8694d",
+      "openHandlePids": []
+    },
+    {
+      "route": "public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "kind": "raw-roadmap",
+      "bytes": 644018,
+      "sha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+      "state": "same",
+      "targetSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+      "openHandlePids": []
+    },
+    {
+      "route": "roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "kind": "raw-roadmap",
+      "bytes": 644018,
+      "sha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+      "state": "same",
+      "targetSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/STATUS.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/STATUS.html",
+      "kind": "rspress-alias",
+      "bytes": 898117,
+      "sha256": "982805f626915934723a065ba51c70b717e68c86add4276ae32240419b5bc0ee",
+      "state": "replace",
+      "targetSha256": "4416f9e9ca59f4520bc407af9f873cc7cb4e6031dc058a59ef2fad8d18c52549",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/STATUS.md",
+      "source": "spec/STATUS.md",
+      "kind": "markdown-source",
+      "bytes": 737773,
+      "sha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+      "state": "same",
+      "targetSha256": "a93780c9ca5b2a1eba1ca471fbb7889d8fc77a5b60b34377b054d4e9522950ea",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/internal/0059-c11-grid-layout.html",
+      "kind": "rspress-alias",
+      "bytes": 784369,
+      "sha256": "0197c1d80c9a32e60d1036a7f71d4a87464aab49232f53fc7f7236ef85b668d0",
+      "state": "replace",
+      "targetSha256": "b51280e729e00259ce086a119112041adc9f132b9100a3f5bafd4b66e6a1f1ce",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "kind": "markdown-source",
+      "bytes": 554063,
+      "sha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+      "state": "same",
+      "targetSha256": "67d28729d2af1933df936c7861506682d2ef256342ccba2310515fc7c4a19ca2",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "kind": "raw-roadmap",
+      "bytes": 644018,
+      "sha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+      "state": "same",
+      "targetSha256": "dca82558fe5f911017249e9a165bd6bb8bd9fb01378a5aae6563b480182b69ee",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/css/styles.8d918fd78e.css",
+      "kind": "rspress-generated",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "state": "same",
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/image/android-root-html-span-sentinel.925345260e.png",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/image/android-root-html-span-sentinel.925345260e.png",
+      "kind": "rspress-generated",
+      "bytes": 80124,
+      "sha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+      "state": "same",
+      "targetSha256": "6c24e4be953440742292ca5377a747ea9b9ca413cb0bf9aea7ae9d3ff6b50149",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/image/chrome157-precomparison.6488c8b7f3.png",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/image/chrome157-precomparison.6488c8b7f3.png",
+      "kind": "rspress-generated",
+      "bytes": 8331,
+      "sha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+      "state": "same",
+      "targetSha256": "68a170b2b9b859755e671d88e158ffbb5e06387c09639126d4e9d8dd9f1c3201",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/image/ios-root-html-span-sentinel.6f04bbdf5e.png",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/image/ios-root-html-span-sentinel.6f04bbdf5e.png",
+      "kind": "rspress-generated",
+      "bytes": 142308,
+      "sha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+      "state": "same",
+      "targetSha256": "aeb050f5835ea9193634cccf7a2f372fa043ebf8f0c4c4c0a75fe509b2396ec4",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/a.877e354479.js",
+      "kind": "rspress-generated",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "state": "same",
+      "targetSha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "rspress-generated",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "state": "same",
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/i.25208e7c92.js",
+      "kind": "rspress-generated",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "state": "same",
+      "targetSha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-0477fb545b6f.dd73c06166.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-0477fb545b6f.dd73c06166.js",
+      "kind": "rspress-generated",
+      "bytes": 10579,
+      "sha256": "6498b5620991a846770f1ffce285692e5486833e4a95714543dc91a1806cb052",
+      "state": "same",
+      "targetSha256": "6498b5620991a846770f1ffce285692e5486833e4a95714543dc91a1806cb052",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-0a0fe4472c60.73ec49bb80.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-0a0fe4472c60.73ec49bb80.js",
+      "kind": "rspress-generated",
+      "bytes": 11366,
+      "sha256": "15d0b26f90c26d7954b35d7a6531654f7478abf6fc855690e823e7a3e196fe4f",
+      "state": "same",
+      "targetSha256": "15d0b26f90c26d7954b35d7a6531654f7478abf6fc855690e823e7a3e196fe4f",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-1a818659b4e8.2e0f510235.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-1a818659b4e8.2e0f510235.js",
+      "kind": "rspress-generated",
+      "bytes": 7730,
+      "sha256": "7ec3456d0f9f40cec01d9e3629c82a1bdad4227393193d47851d248c9dbb66ba",
+      "state": "same",
+      "targetSha256": "7ec3456d0f9f40cec01d9e3629c82a1bdad4227393193d47851d248c9dbb66ba",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-2a1256f9d397.25e30d7a84.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-2a1256f9d397.25e30d7a84.js",
+      "kind": "rspress-generated",
+      "bytes": 12607,
+      "sha256": "a2135a0088d5c880cc16dd998aa43e7df01e29a0853a700c89a4e071762bc170",
+      "state": "same",
+      "targetSha256": "a2135a0088d5c880cc16dd998aa43e7df01e29a0853a700c89a4e071762bc170",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-2ba6476c2ddb.76f8a2ba07.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-2ba6476c2ddb.76f8a2ba07.js",
+      "kind": "rspress-generated",
+      "bytes": 3267,
+      "sha256": "98167eece2d643fee00a9778e6091229e75094df6b1d5bde7791319973fdbb5f",
+      "state": "same",
+      "targetSha256": "98167eece2d643fee00a9778e6091229e75094df6b1d5bde7791319973fdbb5f",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-33e637b29547.6bc40f1301.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-33e637b29547.6bc40f1301.js",
+      "kind": "rspress-generated",
+      "bytes": 8698,
+      "sha256": "f797f8aab4bbca5af32e7eb1f6795b6d6fd1ac0d4ce7a378e46da44b7b0de654",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-6788a2703066.33f61c8cd1.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-6788a2703066.33f61c8cd1.js",
+      "kind": "rspress-generated",
+      "bytes": 5044,
+      "sha256": "6f7defb588bd0f9b80e3d2f4f7cfed283f213ae044b998b966a3244e167cef5a",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.079f3f2d13.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-6c33a3943990.079f3f2d13.js",
+      "kind": "rspress-generated",
+      "bytes": 971423,
+      "sha256": "418f348b845b229a24759edac886edf8c6ba1ac03b0751fbf0ebaa51aedc923a",
+      "state": "same",
+      "targetSha256": "418f348b845b229a24759edac886edf8c6ba1ac03b0751fbf0ebaa51aedc923a",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.625404b573.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-a48746cae70c.625404b573.js",
+      "kind": "rspress-generated",
+      "bytes": 947,
+      "sha256": "7ecc992eaaa02df5100f93222c4468d44249823cb1f913dd1c6cf02c80e1b1a7",
+      "state": "same",
+      "targetSha256": "7ecc992eaaa02df5100f93222c4468d44249823cb1f913dd1c6cf02c80e1b1a7",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-a73a1f07bfab.b514f20df1.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-a73a1f07bfab.b514f20df1.js",
+      "kind": "rspress-generated",
+      "bytes": 7833,
+      "sha256": "a40e2f6f31d051cf9e54c0c2183042efb546651372851f87e4cb7ad2c896c032",
+      "state": "same",
+      "targetSha256": "a40e2f6f31d051cf9e54c0c2183042efb546651372851f87e4cb7ad2c896c032",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-ab4e3cc5d7b9.e581a544dd.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-ab4e3cc5d7b9.e581a544dd.js",
+      "kind": "rspress-generated",
+      "bytes": 8959,
+      "sha256": "cd3bf5b37b3dd933da552b7d8d7b42fc0e4e4d7c98b452541fa35b3cff5c2176",
+      "state": "same",
+      "targetSha256": "cd3bf5b37b3dd933da552b7d8d7b42fc0e4e4d7c98b452541fa35b3cff5c2176",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.1d9eb84498.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-c4dae6800800.1d9eb84498.js",
+      "kind": "rspress-generated",
+      "bytes": 821387,
+      "sha256": "a1d15e4e19d0e4000b26636f348326ca231525f87cebffd8a5ba9d1555623733",
+      "state": "same",
+      "targetSha256": "a1d15e4e19d0e4000b26636f348326ca231525f87cebffd8a5ba9d1555623733",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/async/route-e184f10bd9d7.a383a6ffbb.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/async/route-e184f10bd9d7.a383a6ffbb.js",
+      "kind": "rspress-generated",
+      "bytes": 17273,
+      "sha256": "5f11b5f7af808f5c0b3507c9d0e1d8bf633553f24e8d2d3465faa9eb8b1197c7",
+      "state": "same",
+      "targetSha256": "5f11b5f7af808f5c0b3507c9d0e1d8bf633553f24e8d2d3465faa9eb8b1197c7",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/index.2e8de1b61d.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/index.2e8de1b61d.js",
+      "kind": "rspress-generated",
+      "bytes": 85735,
+      "sha256": "2478e1654fec63e871cc19d2a70145d47250a3f078f980a5fce133547d02f97f",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/lib-react.9cdf8f49ce.js",
+      "kind": "rspress-generated",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "state": "same",
+      "targetSha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "rspress-generated",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "state": "same",
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/lib-router.1e14e568cb.js",
+      "kind": "rspress-generated",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "state": "same",
+      "targetSha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "rspress-generated",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "state": "same",
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/js/styles.d2a6dfa6a0.js",
+      "kind": "rspress-generated",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "state": "same",
+      "targetSha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "openHandlePids": []
+    },
+    {
+      "route": "static/search_index.ko.3518bb8e.json",
+      "source": "build/spinon/roadmap-tailnet-sync-pr1295-c11-4-2026-11-09/site/static/search_index.ko.3518bb8e.json",
+      "kind": "rspress-generated",
+      "bytes": 1131229,
+      "sha256": "3518bb8e45edc8a39f5a2a8dd239fd3bc29771fe87d6e0bf7a8a3c8855c239ff",
+      "state": "add",
+      "targetSha256": null,
+      "openHandlePids": []
+    }
+  ]
+}

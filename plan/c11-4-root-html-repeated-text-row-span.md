@@ -1,6 +1,6 @@
 # C11.4 · 반복 intrinsic row의 텍스트 행 span 기여
 
-**상태:** 다음 제한 구현 slice로 선정 · Chrome 157 사전 비교 960/960 scene과 계획 실패 관점 20개 완료 · 이 계획 PR 병합 전 제품 코드 변경 없음
+**상태:** 제한 구현 PR [#1295](https://github.com/ohah/spinon/pull/1295) Rebase and merge · C11.4/C11은 진행 중이며 공식 완료 `78/214` 유지
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -50,3 +50,11 @@ Grid placement는 resolved numeric line과 span이 계획된 값과 정확히 �
 ## 완료 판정
 
 이 bounded slice는 독립 CSS Grid 알고리즘 비교, 960 Chrome scene, runtime/layout track-stage 검증, 거부 atomicity와 same-session recovery, Android/iOS 기본 route, 변경 crate 검증, artifact 경계, 20개 구현 검토 및 PR 변경 검토가 모두 확인되면 완료다. 이는 일반 text Grid spanning, 전체 C11.4/C11, public CSS conformance 또는 공식 roadmap 완료 수 변경이 아니다.
+
+## 구현 결과 · PR #1295
+
+제한 구현은 2026-11-08T20:35:50Z Rebase and merge됐다. 최종 main merge SHA는 `40b416b4de4942c9251db0f4862626443310d092`이다. 구현은 이 계획의 여섯-member repeated `grid-auto-rows` list, 고정 direct text grammar, 지정된 row-span topology 및 40×220px Grid 경계만 지원한다.
+
+Chrome 157의 960 scene 비교, RuntimeSession 960 scene·35 atomic rejection·same-session recovery, vertical-writing cascade 거부, 기존 810-scene 회귀와 Layout/Style/trace/Grid track sizing focused 검증을 마쳤다. 변경 crate Clippy와 rustfmt도 통과했다. Android API 37.2 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 같은 sentinel HTML SHA로 기본 Root HTML route의 layout-ready 화면 smoke를 기록했다. 이는 PixelCopy/Metal drawable readback이나 native 960-scene parity가 아니다. GitHub PR check은 보고되지 않았다. 전체 `spinon-layout --lib`은 506 passed와 기존 C15 HostDocument 수집 테스트 1 failed였고, clean baseline 비교는 하지 않았다.
+
+실행 근거와 제한은 [implementation README](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/README.md), [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-adversarial-review-20.md), [PR diff 검토 30개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md)에 기록했다. 이 결과는 일반 CSS admission, WPT conformance, 일반 row-span 지원 또는 C11.4/C11 완료를 뜻하지 않으며 공식 `78/214`와 내부 계약 `0.1.0`은 그대로다.
