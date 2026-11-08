@@ -23,6 +23,31 @@ pub(super) fn supports_min_content_auto_track_list(tracks: &[GridTrackSize]) -> 
     )
 }
 
+pub(super) fn supports_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
+    if tracks.len() != 4 {
+        return false;
+    }
+
+    let mut members = [false; 4];
+    for track in tracks {
+        let member = match track {
+            track @ GridTrackSize::FitContent(_) if fit_content_cap_is_supported(track) => 0,
+            GridTrackSize::MinContent => 1,
+            GridTrackSize::MaxContent => 2,
+            GridTrackSize::Auto => 3,
+            _ => return false,
+        };
+        if std::mem::replace(&mut members[member], true) {
+            return false;
+        }
+    }
+    members.into_iter().all(|present| present)
+}
+
+pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
+    supports_min_content_auto_track_list(tracks) || supports_min_max_content_auto_track_list(tracks)
+}
+
 pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
     !tracks.is_empty()
         && tracks.len() <= GRID_MAX_TRACKS
@@ -31,9 +56,9 @@ pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
             .any(|track| matches!(track, GridTrackSize::FitContent(_)))
         && if tracks
             .iter()
-            .any(|track| matches!(track, GridTrackSize::MinContent))
+            .any(|track| matches!(track, GridTrackSize::MinContent | GridTrackSize::MaxContent))
         {
-            supports_min_content_auto_track_list(tracks)
+            supports_intrinsic_auto_track_list(tracks)
         } else {
             tracks.iter().all(|track| match track {
                 GridTrackSize::Auto => true,
@@ -93,6 +118,20 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         });
     }
 
+    let align_content_is_supported = style.align_content.is_some_and(|value| {
+        root_html_intrinsic_align_content_is_supported(
+            value,
+            GridPlacementMode::RootHtmlIntrinsicTrackSizingV1,
+        ) || (supports_intrinsic_auto_track_list(tracks)
+            && value == crate::LayoutAlignContent::Stretch)
+    });
+    if !align_content_is_supported {
+        return Err(LayoutError::UnsupportedGridContainerStyle {
+            node,
+            property: "align-content",
+        });
+    }
+
     let grid_style_is_supported = style.display == LayoutDisplay::Grid
         && style.width == LayoutDimension::Fixed(40.0)
         && style.height == LayoutDimension::Fixed(100.0)
@@ -111,13 +150,6 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         && style.gap.row == LayoutLengthPercentage::ZERO
         && style.gap.column == LayoutLengthPercentage::ZERO
         && style.align_items == crate::LayoutAlignItems::Normal
-        && style.align_content.is_some_and(|value| {
-            root_html_intrinsic_align_content_is_supported(
-                value,
-                GridPlacementMode::RootHtmlIntrinsicTrackSizingV1,
-            ) || (supports_min_content_auto_track_list(tracks)
-                && value == crate::LayoutAlignContent::Stretch)
-        })
         && matches!(
             style.justify_content,
             crate::LayoutJustifyContent::Normal
@@ -160,7 +192,11 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             .get(&child)
             .is_none_or(|position| position.position == LayoutPosition::Static)
     };
-    if !matches!(visible_children.len(), 3 | 5) || has_non_collapsible_text(input, node) {
+    let four_member_list = supports_min_max_content_auto_track_list(tracks);
+    if (four_member_list && visible_children.len() != 6)
+        || (!four_member_list && !matches!(visible_children.len(), 3 | 5))
+        || has_non_collapsible_text(input, node)
+    {
         return Err(LayoutError::UnsupportedGridContainerStyle {
             node,
             property: "C11.4 fit-content implicit row list item count",
@@ -247,13 +283,29 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             && child_is_static(payload_id)
     };
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
+    const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
+    const FOUR_MEMBER_FIT_CONTENT_OVERFLOW_HEIGHT: f32 = 60.0;
 
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
         let allow_minimum_floor = visible_children.len() == 3 && position == 1;
         if auto_item_is_supported(row_item, allow_minimum_floor) {
             let payload_id = row_item.children[0];
-            if !payload_is_supported(payload_id, LIST_PAYLOAD_HEIGHTS) {
+            let fit_content_payload_heights = [
+                FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1],
+                FOUR_MEMBER_FIT_CONTENT_OVERFLOW_HEIGHT,
+            ];
+            let allowed_payload_heights = if four_member_list {
+                let track_index = (position - 1) % tracks.len();
+                if matches!(tracks[track_index], GridTrackSize::FitContent(_)) {
+                    &fit_content_payload_heights
+                } else {
+                    std::slice::from_ref(&FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1])
+                }
+            } else {
+                LIST_PAYLOAD_HEIGHTS
+            };
+            if !payload_is_supported(payload_id, allowed_payload_heights) {
                 return Err(LayoutError::UnsupportedGridContainerStyle {
                     node: payload_id,
                     property: "C11.4 fit-content implicit row list payload",

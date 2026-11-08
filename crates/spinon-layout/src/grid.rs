@@ -43,10 +43,16 @@ use root_html_gap::{
     validate_track_extent as validate_root_html_track_extent,
 };
 
-pub(crate) fn root_html_fit_content_min_content_auto_track_list_is_supported(
+pub(crate) fn root_html_fit_content_min_max_content_auto_track_list_is_supported(
     tracks: &[GridTrackSize],
 ) -> bool {
-    root_html_fit_content_auto_rows::supports_min_content_auto_track_list(tracks)
+    root_html_fit_content_auto_rows::supports_min_max_content_auto_track_list(tracks)
+}
+
+pub(crate) fn root_html_fit_content_intrinsic_auto_track_list_is_supported(
+    tracks: &[GridTrackSize],
+) -> bool {
+    root_html_fit_content_auto_rows::supports_intrinsic_auto_track_list(tracks)
 }
 
 pub(crate) fn root_html_direct_text_aspect_ratio_auto_min_height(
@@ -785,11 +791,9 @@ pub(super) fn validate_grid_layout(
                         tracks.as_slice(),
                         [GridTrackSize::MinContent | GridTrackSize::MaxContent]
                     );
-                let root_html_fit_content_min_content_auto_rows = container.placement_mode
+                let root_html_fit_content_intrinsic_auto_rows = container.placement_mode
                     == GridPlacementMode::RootHtmlFitContentAutoRowsV1
-                    && root_html_fit_content_auto_rows::supports_min_content_auto_track_list(
-                        tracks,
-                    );
+                    && root_html_fit_content_auto_rows::supports_intrinsic_auto_track_list(tracks);
                 validate_tracks(
                     id,
                     "grid-auto-rows",
@@ -797,7 +801,7 @@ pub(super) fn validate_grid_layout(
                     template_area_track_sizing
                         || container.placement_mode == GridPlacementMode::TrackSizing
                         || root_html_intrinsic_auto_rows
-                        || root_html_fit_content_min_content_auto_rows,
+                        || root_html_fit_content_intrinsic_auto_rows,
                     container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,
                     false,
                     container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1,
@@ -1371,6 +1375,11 @@ pub(super) fn validate_grid_layout(
                         }
                         (3, Some(2), crate::LayoutDimension::Fixed(0.0)) => true,
                         (5, Some(1..=4), crate::LayoutDimension::Fixed(0.0)) => true,
+                        (6, Some(1..=5), crate::LayoutDimension::Fixed(0.0)) => matches!(
+                            &container.auto_rows,
+                            crate::GridAutoRows::TrackList(tracks)
+                                if root_html_fit_content_min_max_content_auto_track_list_is_supported(tracks)
+                        ),
                         _ => false,
                     }
                     && matches!(&container.auto_rows, GridAutoRows::TrackList(_));

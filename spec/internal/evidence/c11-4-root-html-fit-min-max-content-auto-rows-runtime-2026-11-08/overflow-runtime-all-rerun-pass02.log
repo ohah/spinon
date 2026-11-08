@@ -1,0 +1,13 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.99s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 6 tests
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_list_accepts_an_absolute_calc_cap_after_px_normalization ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_fit_content_cap_keeps_track_size_and_visible_overflow ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_overflow_payload_is_rejected_on_a_non_fit_content_track ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_list_recovers_after_same_session_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_lists_reject_nearby_profiles_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_lists_match_all_orders_caps_and_stretch_cases ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 347 filtered out; finished in 4.42s

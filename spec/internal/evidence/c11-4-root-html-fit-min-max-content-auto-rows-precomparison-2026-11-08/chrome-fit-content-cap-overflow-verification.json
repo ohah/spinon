@@ -1,0 +1,30 @@
+{
+  "oracle": "Agent Browser HeadlessChrome 157.0.0.0",
+  "fixture": "tests/fixtures/css/c11/root-html-grid-fit-min-max-content-auto-implicit-row-list-overflow-precomparison.html",
+  "fixtureSha256": "e9fcf67de7106f1c8cc9a8c6ffc6213f7e59663ab216c6f8a4bb4f315959289d",
+  "screenshot": "chrome-fit-content-cap-overflow.png",
+  "screenshotSha256": "df5187b3b6bf631ba634c2145ea40b261ef64d04ba80c3ae2c6a202b119edbdb",
+  "gridRect": [
+    0,
+    0,
+    40,
+    100
+  ],
+  "resolvedRows": "10px 20px 10px 12px 6px 20px",
+  "fifthFitContentItemRect": [
+    0,
+    58,
+    40,
+    20
+  ],
+  "fifthPayloadRect": [
+    0,
+    58,
+    40,
+    60
+  ],
+  "gridBottom": 100,
+  "payloadBottom": 118,
+  "visibleSpillCssPx": 18,
+  "assertions": "PASS"
+}

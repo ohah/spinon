@@ -415,7 +415,11 @@ fn validate_root_html_grid_tracks(
             {
                 false
             }
-            ComputedCssGridTrackSize::MinContent if fit_content_auto_rows => false,
+            ComputedCssGridTrackSize::MinContent | ComputedCssGridTrackSize::MaxContent
+                if fit_content_auto_rows =>
+            {
+                false
+            }
             ComputedCssGridTrackSize::Auto if fit_content_auto_rows => false,
             ComputedCssGridTrackSize::FitContent(
                 ComputedCssGridTrackLengthPercentage::LengthPx(cap),
@@ -519,13 +523,51 @@ fn root_html_fit_content_min_content_auto_track_list(tracks: &[ComputedCssGridTr
     )
 }
 
-pub(super) fn root_html_fit_content_auto_rows_with_min_content(
+fn root_html_fit_content_min_max_content_auto_track_list(
+    tracks: &[ComputedCssGridTrackSize],
+) -> bool {
+    if tracks.len() != 4 {
+        return false;
+    }
+
+    let mut members = [false; 4];
+    for track in tracks {
+        let member = match track {
+            track @ ComputedCssGridTrackSize::FitContent(_)
+                if root_html_fit_content_cap_is_supported(track) =>
+            {
+                0
+            }
+            ComputedCssGridTrackSize::MinContent => 1,
+            ComputedCssGridTrackSize::MaxContent => 2,
+            ComputedCssGridTrackSize::Auto => 3,
+            _ => return false,
+        };
+        if std::mem::replace(&mut members[member], true) {
+            return false;
+        }
+    }
+    members.into_iter().all(|present| present)
+}
+
+pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(
     grid: &ComputedCssGridLayout,
 ) -> bool {
     matches!(
         &grid.auto_rows,
         ComputedCssGridAutoRows::TrackList(tracks)
             if root_html_fit_content_min_content_auto_track_list(tracks)
+                || root_html_fit_content_min_max_content_auto_track_list(tracks)
+    )
+}
+
+pub(super) fn root_html_fit_content_auto_rows_with_four_member_intrinsic_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if root_html_fit_content_min_max_content_auto_track_list(tracks)
     )
 }
 
@@ -535,11 +577,14 @@ fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]
         && tracks
             .iter()
             .any(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
-        && if tracks
-            .iter()
-            .any(|track| matches!(track, ComputedCssGridTrackSize::MinContent))
-        {
+        && if tracks.iter().any(|track| {
+            matches!(
+                track,
+                ComputedCssGridTrackSize::MinContent | ComputedCssGridTrackSize::MaxContent
+            )
+        }) {
             root_html_fit_content_min_content_auto_track_list(tracks)
+                || root_html_fit_content_min_max_content_auto_track_list(tracks)
         } else {
             tracks.iter().all(|track| match track {
                 ComputedCssGridTrackSize::Auto => true,

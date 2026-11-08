@@ -10,6 +10,9 @@ const SOURCE_AUTO_LIST: &str = include_str!(
 #[path = "track_lists/min_content_auto.rs"]
 mod min_content_auto;
 
+#[path = "track_lists/four_member_intrinsic.rs"]
+mod four_member_intrinsic;
+
 #[test]
 fn parsed_root_html_fit_content_auto_row_lists_preserve_order_and_render_repeated_tracks() {
     use spinon_render::OpaqueCssSrgb;

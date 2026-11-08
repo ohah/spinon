@@ -1,8 +1,8 @@
 # C11 · CSS Grid 레이아웃 구현 계획
 
-## 2026-11-08 C11.4 다음 순차 계획: `fit-content()`/`min-content`/`max-content`/`auto` implicit rows
+## 2026-11-08 C11.4 현재 제한 구현: `fit-content()`/`min-content`/`max-content`/`auto` implicit rows
 
-PR [#1277](https://github.com/ohah/spinon/pull/1277)에서 여섯 `fit-content()`/`min-content`/`auto` 순서를 기본 parsed Root HTML route에 연결한 뒤, 다음 계획을 [네 intrinsic track type의 24 순서](./c11-4-root-html-fit-min-max-content-auto-rows.md)로 정했다. Chrome 157 Agent Browser 96/96 scene 비교와 독립 기대값, 계획 실패 관점 20개 검토를 마쳤으며 구현은 아직 시작하지 않았다. 이 고정 높이 oracle에서는 min/max contribution geometry가 같아 typed computed value 검사를 별도로 요구한다. C11.4/C11 및 공식 `78/214`는 미완료를 유지한다. [사전 비교](../spec/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/README.md).
+PR [#1277](https://github.com/ohah/spinon/pull/1277)에서 여섯 `fit-content()`/`min-content`/`auto` 순서를 기본 parsed Root HTML route에 연결한 뒤 시작한 [네 intrinsic track type의 24 순서](./c11-4-root-html-fit-min-max-content-auto-rows.md) 구현이 현재 작업 중이다. Chrome 157 Agent Browser 96/96 scene 비교와 독립 기대값, 계획 실패 관점 20개 검토 및 24×px/%×start/stretch RuntimeSession 행렬을 확인했다. 별도로 fit-content가 네 순환 위치에 있는 24순서×px/% cap overflow 48 scene과 `0%`·`120%` 경계 cap을 검사했다. Layout은 12/12, Style projection은 24순서×4 cap form 96 typed cases, RuntimeSession은 7 focused tests와 2 cap-boundary scene을 통과했다. 각 fit-content row는 cap대로 유지되고 60px payload가 item 밖으로 이어지며, 순환 위치에 따라 Grid 아래 overflow도 독립 확인한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 화면은 첫 순환 위치의 18px Grid overflow를 보여주는 visual smoke다. 구현/runtime 검토 20개·계획 수정 검토 20개·PR diff 적대 검토 30/30은 완료했고 PR 생성은 남아 있다. 고정 높이 oracle에서는 min/max contribution geometry가 같아 typed computed value를 별도로 검사하며 임의 content의 intrinsic algorithm 적합성을 주장하지 않는다. C11.4/C11과 공식 `78/214`는 미완료로 유지한다. [사전 비교](../spec/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/README.md) · [실행 근거·overflow 화면](../spec/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-runtime-2026-11-08/README.md).
 
 ## 2026-11-08 C11.4 `grid-auto-rows` fit-content/min-content/auto 순서 확장 병합
 
