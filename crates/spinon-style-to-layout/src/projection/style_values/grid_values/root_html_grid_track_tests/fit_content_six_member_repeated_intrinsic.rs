@@ -9,23 +9,28 @@ use spinon_style::{
 fn computed_tracks(
     cap: ComputedCssGridTrackLengthPercentage,
     tail: &[ComputedCssGridTrackSize],
+    fit_position: usize,
 ) -> Vec<ComputedCssGridTrackSize> {
-    let mut tracks = vec![ComputedCssGridTrackSize::FitContent(cap)];
-    tracks.extend(tail.iter().cloned());
+    let mut tracks = tail.to_vec();
+    tracks.insert(fit_position - 1, ComputedCssGridTrackSize::FitContent(cap));
     tracks
 }
 
 fn layout_tracks(
     cap: GridTrackLengthPercentage,
     tail: &[ComputedCssGridTrackSize],
+    fit_position: usize,
 ) -> Vec<GridTrackSize> {
-    let mut tracks = vec![GridTrackSize::FitContent(cap)];
-    tracks.extend(tail.iter().map(|track| match track {
-        ComputedCssGridTrackSize::MinContent => GridTrackSize::MinContent,
-        ComputedCssGridTrackSize::MaxContent => GridTrackSize::MaxContent,
-        ComputedCssGridTrackSize::Auto => GridTrackSize::Auto,
-        _ => panic!("repeated intrinsic tail contains only min/max/auto tracks"),
-    }));
+    let mut tracks = tail
+        .iter()
+        .map(|track| match track {
+            ComputedCssGridTrackSize::MinContent => GridTrackSize::MinContent,
+            ComputedCssGridTrackSize::MaxContent => GridTrackSize::MaxContent,
+            ComputedCssGridTrackSize::Auto => GridTrackSize::Auto,
+            _ => panic!("repeated intrinsic tail contains only min/max/auto tracks"),
+        })
+        .collect::<Vec<_>>();
+    tracks.insert(fit_position - 1, GridTrackSize::FitContent(cap));
     tracks
 }
 
@@ -92,40 +97,44 @@ fn root_html_repeated_intrinsic_auto_row_list_preserves_all_30_orders_and_caps()
         ComputedCssGridTrackSize::MaxContent,
     ]));
 
-    for (computed_cap, layout_cap) in [
-        (
-            ComputedCssGridTrackLengthPercentage::LengthPx(20.0),
-            GridTrackLengthPercentage::LengthPx(20.0),
-        ),
-        (
-            ComputedCssGridTrackLengthPercentage::Percentage(0.2),
-            GridTrackLengthPercentage::Percentage(0.2),
-        ),
-        (
-            ComputedCssGridTrackLengthPercentage::Percentage(0.0),
-            GridTrackLengthPercentage::Percentage(0.0),
-        ),
-        (
-            ComputedCssGridTrackLengthPercentage::Percentage(1.2),
-            GridTrackLengthPercentage::Percentage(1.2),
-        ),
-    ] {
-        for tail in &orders {
-            let projected = project_grid_layout(
-                node,
-                &input_with_rows(computed_tracks(computed_cap.clone(), tail)),
-                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
-            )
-            .unwrap_or_else(|error| panic!("tail={tail:?} cap={computed_cap:?}: {error:?}"));
-            assert_eq!(
-                projected.placement_mode,
-                GridPlacementMode::RootHtmlFitContentAutoRowsV1
-            );
-            assert_eq!(
-                projected.auto_rows,
-                GridAutoRows::TrackList(layout_tracks(layout_cap, tail)),
-                "the repeated min/max/auto order must remain typed and unchanged"
-            );
+    for fit_position in 1..=3 {
+        for (computed_cap, layout_cap) in [
+            (
+                ComputedCssGridTrackLengthPercentage::LengthPx(20.0),
+                GridTrackLengthPercentage::LengthPx(20.0),
+            ),
+            (
+                ComputedCssGridTrackLengthPercentage::Percentage(0.2),
+                GridTrackLengthPercentage::Percentage(0.2),
+            ),
+            (
+                ComputedCssGridTrackLengthPercentage::Percentage(0.0),
+                GridTrackLengthPercentage::Percentage(0.0),
+            ),
+            (
+                ComputedCssGridTrackLengthPercentage::Percentage(1.2),
+                GridTrackLengthPercentage::Percentage(1.2),
+            ),
+        ] {
+            for tail in &orders {
+                let projected = project_grid_layout(
+                    node,
+                    &input_with_rows(computed_tracks(computed_cap.clone(), tail, fit_position)),
+                    ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+                )
+                .unwrap_or_else(|error| {
+                    panic!("position={fit_position} tail={tail:?} cap={computed_cap:?}: {error:?}")
+                });
+                assert_eq!(
+                    projected.placement_mode,
+                    GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                );
+                assert_eq!(
+                    projected.auto_rows,
+                    GridAutoRows::TrackList(layout_tracks(layout_cap, tail, fit_position)),
+                    "the repeated min/max/auto order and fit-content position must remain typed and unchanged"
+                );
+            }
         }
     }
 }
@@ -156,20 +165,18 @@ fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_multiplicities_posi
     let mut long_list = vec![fit(20.0)];
     long_list.extend(valid_tail.iter().cloned());
     long_list.push(ComputedCssGridTrackSize::Auto);
-    let fit_not_first = vec![
-        ComputedCssGridTrackSize::MinContent,
-        fit(20.0),
-        ComputedCssGridTrackSize::MaxContent,
-        ComputedCssGridTrackSize::Auto,
-        ComputedCssGridTrackSize::MinContent,
-        ComputedCssGridTrackSize::MaxContent,
-    ];
-
-    for rows in [
+    let mut invalid_rows = vec![
         wrong_duplicate,
         short_list,
         long_list,
-        fit_not_first,
+        vec![
+            fit(20.0),
+            fit(20.0),
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::MaxContent,
+            ComputedCssGridTrackSize::MinContent,
+            ComputedCssGridTrackSize::MaxContent,
+        ],
         vec![
             fit(-1.0),
             valid_tail[0].clone(),
@@ -198,7 +205,14 @@ fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_multiplicities_posi
             valid_tail[3].clone(),
             valid_tail[4].clone(),
         ],
-    ] {
+    ];
+    for fit_position in 4..=6 {
+        let mut rows = valid_tail.to_vec();
+        rows.insert(fit_position - 1, fit(20.0));
+        invalid_rows.push(rows);
+    }
+
+    for rows in invalid_rows {
         assert!(matches!(
             project_grid_layout(
                 node,

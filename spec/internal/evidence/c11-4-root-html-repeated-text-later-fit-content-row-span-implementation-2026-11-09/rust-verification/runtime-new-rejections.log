@@ -1,0 +1,13 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.85s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::rejections::parsed_root_html_later_fit_content_duplicate_fit_track_rejects_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::rejections::parsed_root_html_later_fit_content_positions_two_and_three_reject_auto_placement_profile ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::rejections::parsed_root_html_later_fit_content_positions_4_through_6_reject_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::rejections::parsed_root_html_later_fit_content_rejection_recovers_in_the_same_session ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 366 filtered out; finished in 1.15s
+
+exit_code=0 command=cargo test --locked -p spinon-runtime --lib later_fit_content_row_span::rejections -- --nocapture

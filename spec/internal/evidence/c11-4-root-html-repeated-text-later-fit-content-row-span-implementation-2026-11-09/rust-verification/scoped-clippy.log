@@ -1,0 +1,4 @@
+    Checking spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Checking spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.77s
+exit_code=0 command=cargo clippy --locked -p spinon-layout -p spinon-runtime -p spinon-style-to-layout --all-targets -- -D warnings

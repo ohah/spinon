@@ -1,9 +1,11 @@
 # C11.4 parsed Root HTML 반복 text row span의 후속 fit-content 위치
 
-- **상태:** 계획 후보 · C11.4/C11 공식 체크와 `78/214` 유지
+- **상태:** 제한 구현 후보 · 구현 PR 검토 중 · C11.4/C11 공식 체크와 `78/214` 유지
 - **선행 구현:** [반복 intrinsic row direct-text span](./c11-4-root-html-repeated-text-row-span.md) · PR [#1295](https://github.com/ohah/spinon/pull/1295)
 - **사전 비교:** [Chrome 157 1,920 scene](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md)
 - **계획 실패 관점 검토:** [서로 다른 20개](./c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md)
+- **구현/runtime 근거:** [기본 Root HTML Android·iOS smoke와 화면](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md)
+- **구현/runtime 검토:** [실패 관점 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md)
 
 ## 결손과 목표
 
@@ -41,4 +43,4 @@
 
 ## 완료 판정
 
-1,920 Chrome scene, 독립 Grid sizing/alignment 관계, two-position Style/Layout/RuntimeSession positive matrix, atomic rejection/recovery, Android/iOS default-route smoke, focused tests/Clippy/rustfmt와 별도의 20/30 실패 관점 검토가 모두 확인되면 이 bounded slice만 완료다. 그 결과로 전체 CSS track-size order, arbitrary text/image, general row-span, public CSS conformance 또는 C11.4/C11 roadmap 완료를 주장하지 않는다.
+1,920 Chrome scene, 독립 Grid sizing/alignment 관계, two-position Style/Layout/RuntimeSession positive matrix, atomic rejection/recovery, Android/iOS default-route smoke, focused tests/Clippy/rustfmt와 별도의 20/30 실패 관점 검토를 확인했다. 구현 PR의 최종 검토·병합 전까지 이 bounded slice는 구현 후보로 둔다. 병합 뒤에도 전체 CSS track-size order, arbitrary text/image, general row-span, public CSS conformance 또는 C11.4/C11 roadmap 완료를 주장하지 않는다.

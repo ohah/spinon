@@ -1,0 +1,11 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.81s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 2 tests
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_six_member_repeated_intrinsic::root_html_repeated_intrinsic_auto_row_list_rejects_nearby_multiplicities_positions_and_caps ... ok
+test projection::style_values::grid_values::root_html_grid_track_tests::fit_content_six_member_repeated_intrinsic::root_html_repeated_intrinsic_auto_row_list_preserves_all_30_orders_and_caps ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 463 filtered out; finished in 0.01s
+
+exit_code=0 command=cargo test --locked -p spinon-style-to-layout --lib root_html_repeated_intrinsic_auto_row_list -- --nocapture

@@ -16,7 +16,7 @@ pub(super) fn normalize_layout_frames(
             && matches!(
                 &container.auto_rows,
                 GridAutoRows::TrackList(tracks)
-                    if super::supports_repeated_min_max_content_auto_track_list(tracks)
+                    if super::supports_repeated_min_max_content_auto_span_track_list(tracks)
             )
     }) {
         return Ok(());
@@ -35,7 +35,7 @@ pub(super) fn normalize_layout_frames(
             || !matches!(
                 &container.auto_rows,
                 GridAutoRows::TrackList(tracks)
-                    if super::supports_repeated_min_max_content_auto_track_list(tracks)
+                    if super::supports_repeated_min_max_content_auto_span_track_list(tracks)
             )
         {
             continue;

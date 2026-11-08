@@ -1,0 +1,70 @@
+{
+  "matrix": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-matrix-observation.ndjson",
+  "caseCount": 1920,
+  "sentinels": [
+    {
+      "filename": "position-2-start.html",
+      "sceneIndex": 834,
+      "fitPosition": 2,
+      "tail": [
+        "min-content",
+        "max-content",
+        "min-content",
+        "max-content",
+        "auto"
+      ],
+      "cap": "20px",
+      "align": "start",
+      "topology": "span2-before-span3",
+      "sha256": "a36d3fb51fdc249e732b66fb16bbba608ce91a1d4510365add972f2d93f8a64d"
+    },
+    {
+      "filename": "position-2-stretch.html",
+      "sceneIndex": 838,
+      "fitPosition": 2,
+      "tail": [
+        "min-content",
+        "max-content",
+        "min-content",
+        "max-content",
+        "auto"
+      ],
+      "cap": "20px",
+      "align": "stretch",
+      "topology": "span2-before-span3",
+      "sha256": "62f5f319c4375112fba97596853fe945b6dd9ca80c6048c46e749a572207e6aa"
+    },
+    {
+      "filename": "position-3-start.html",
+      "sceneIndex": 1794,
+      "fitPosition": 3,
+      "tail": [
+        "min-content",
+        "max-content",
+        "min-content",
+        "max-content",
+        "auto"
+      ],
+      "cap": "20px",
+      "align": "start",
+      "topology": "span2-before-span3",
+      "sha256": "c9080f41002ee0936cf0239097588850b8ce15d592576a5be6bf0fece8fe3f7d"
+    },
+    {
+      "filename": "position-3-stretch.html",
+      "sceneIndex": 1798,
+      "fitPosition": 3,
+      "tail": [
+        "min-content",
+        "max-content",
+        "min-content",
+        "max-content",
+        "auto"
+      ],
+      "cap": "20px",
+      "align": "stretch",
+      "topology": "span2-before-span3",
+      "sha256": "60a1b429768cd434c71005a71c73d5a786bedda88db2f6847e8011ea4a8991b7"
+    }
+  ]
+}

@@ -62,6 +62,10 @@ pub(super) fn validate(
         grid_values::root_html_fit_content_auto_rows_with_four_member_intrinsic_tracks(grid);
     let six_member_list =
         grid_values::root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(grid);
+    let six_member_span_list =
+        grid_values::root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(grid);
+    let six_member_candidate = six_member_list || six_member_span_list;
+    let later_six_member_candidate = six_member_span_list && !six_member_list;
     let align_content = grid_style
         .properties
         .get("align-content")
@@ -174,7 +178,7 @@ pub(super) fn validate(
             };
             repeated_text::payload_has_supported_text(tree, *payload)
         });
-    let repeated_text_span_profile = six_member_list
+    let repeated_text_span_profile = six_member_span_list
         && matches!(items.len(), 3 | 4)
         && items
             .first()
@@ -225,8 +229,9 @@ pub(super) fn validate(
                             == 1)
         };
     if (four_member_list && items.len() != 6)
-        || (six_member_list && items.len() != 9 && !repeated_text_span_profile)
-        || (!four_member_list && !six_member_list && !matches!(items.len(), 3 | 5))
+        || (later_six_member_candidate && items.len() == 9)
+        || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
+        || (!four_member_list && !six_member_candidate && !matches!(items.len(), 3 | 5))
         || nodes
             .grid_item_owners
             .values()

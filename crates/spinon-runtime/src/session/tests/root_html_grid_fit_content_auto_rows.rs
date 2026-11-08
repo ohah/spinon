@@ -1,6 +1,8 @@
 use super::RuntimeSession;
 use std::time::Duration;
 
+#[path = "root_html_grid_fit_content_auto_rows/later_fit_content_row_span.rs"]
+mod later_fit_content_row_span;
 #[path = "root_html_grid_fit_content_auto_rows/repeated_text_span.rs"]
 mod repeated_text_span;
 
