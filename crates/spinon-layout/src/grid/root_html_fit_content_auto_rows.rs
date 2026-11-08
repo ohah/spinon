@@ -45,17 +45,21 @@ pub(super) fn supports_min_max_content_auto_track_list(tracks: &[GridTrackSize])
 }
 
 pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
-    matches!(
-        tracks,
-        [
-            fit,
-            GridTrackSize::MinContent,
-            GridTrackSize::MaxContent,
-            GridTrackSize::Auto,
-            GridTrackSize::MinContent,
-            GridTrackSize::MaxContent,
-        ] if fit_content_cap_is_supported(fit)
-    )
+    if tracks.len() != 6 || !fit_content_cap_is_supported(&tracks[0]) {
+        return false;
+    }
+
+    let mut counts = [0usize; 3];
+    for track in &tracks[1..] {
+        let index = match track {
+            GridTrackSize::MinContent => 0,
+            GridTrackSize::MaxContent => 1,
+            GridTrackSize::Auto => 2,
+            _ => return false,
+        };
+        counts[index] += 1;
+    }
+    counts == [2, 2, 1]
 }
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {

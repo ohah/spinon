@@ -1,0 +1,7 @@
+{
+  "source": "app-current-process.log",
+  "sourceSha256": "7d2f395f354bf07328afc9f4ae96087cc556e62ae680e305370058d67b742f26",
+  "normalized": "app-current-process-normalized.log",
+  "normalizedSha256": "c9bcc1fb68330827df8c830a639bb10f370e8112c001addaf1229b2c6b4ba6b8",
+  "transformation": "trailing spaces and tabs removed per line; final newline ensured"
+}

@@ -553,17 +553,21 @@ fn root_html_fit_content_min_max_content_auto_track_list(
 fn root_html_fit_content_repeated_min_max_content_auto_track_list(
     tracks: &[ComputedCssGridTrackSize],
 ) -> bool {
-    matches!(
-        tracks,
-        [
-            fit,
-            ComputedCssGridTrackSize::MinContent,
-            ComputedCssGridTrackSize::MaxContent,
-            ComputedCssGridTrackSize::Auto,
-            ComputedCssGridTrackSize::MinContent,
-            ComputedCssGridTrackSize::MaxContent,
-        ] if root_html_fit_content_cap_is_supported(fit)
-    )
+    if tracks.len() != 6 || !root_html_fit_content_cap_is_supported(&tracks[0]) {
+        return false;
+    }
+
+    let mut counts = [0usize; 3];
+    for track in &tracks[1..] {
+        let index = match track {
+            ComputedCssGridTrackSize::MinContent => 0,
+            ComputedCssGridTrackSize::MaxContent => 1,
+            ComputedCssGridTrackSize::Auto => 2,
+            _ => return false,
+        };
+        counts[index] += 1;
+    }
+    counts == [2, 2, 1]
 }
 
 pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(

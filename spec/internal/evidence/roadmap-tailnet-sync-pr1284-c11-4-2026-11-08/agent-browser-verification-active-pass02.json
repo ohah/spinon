@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-11-08T08:55:46Z",
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "agentBrowser": {
+    "version": "0.31.1",
+    "session": "spinon-roadmap-active-final-20261108",
+    "daemonPid": 89063
+  },
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "documentScrollWidth": 1440,
+    "subheading": "진행 중: C11.4 반복 intrinsic tail 30순서",
+    "activeLane": "진행 중 1/2",
+    "activeCardPresent": true,
+    "officialDoneCount": "78/214",
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-active-agent-browser-desktop-pass02.png",
+      "sha256": "e7b9e71bc04ecc79677b5e40523e494c606ecdef0165e32b41321d7ac9240665"
+    }
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "documentScrollWidth": 390,
+    "kanbanScrollLeft": 272,
+    "activeLaneVisible": true,
+    "activeLane": "진행 중 1/2",
+    "activeCardPresent": true,
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/tailnet-roadmap-active-agent-browser-mobile-pass02.png",
+      "sha256": "a20f61e43d201cf2f57238d0dbe5c1444bf2b713ee2129b0985880555dcc88cd"
+    }
+  },
+  "linkedReview": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/pr-diff-review-30.html",
+    "opened": true,
+    "title": "C11.4 반복 intrinsic tail 30순서 구현 PR diff 실패 관점 검토 30개 - 스피논 문서",
+    "contains30Viewpoints": true
+  },
+  "routeVerification": {
+    "http200AndSha256Checks": 132,
+    "manifestHashesMatch": true,
+    "fullDocsDeadLinkCheck": false
+  },
+  "passed": true
+}

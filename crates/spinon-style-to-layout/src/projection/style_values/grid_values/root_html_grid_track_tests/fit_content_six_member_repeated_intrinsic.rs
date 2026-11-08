@@ -6,26 +6,27 @@ use spinon_style::{
     ComputedStyleProfile,
 };
 
-fn computed_tracks(cap: ComputedCssGridTrackLengthPercentage) -> Vec<ComputedCssGridTrackSize> {
-    vec![
-        ComputedCssGridTrackSize::FitContent(cap),
-        ComputedCssGridTrackSize::MinContent,
-        ComputedCssGridTrackSize::MaxContent,
-        ComputedCssGridTrackSize::Auto,
-        ComputedCssGridTrackSize::MinContent,
-        ComputedCssGridTrackSize::MaxContent,
-    ]
+fn computed_tracks(
+    cap: ComputedCssGridTrackLengthPercentage,
+    tail: &[ComputedCssGridTrackSize],
+) -> Vec<ComputedCssGridTrackSize> {
+    let mut tracks = vec![ComputedCssGridTrackSize::FitContent(cap)];
+    tracks.extend(tail.iter().cloned());
+    tracks
 }
 
-fn layout_tracks(cap: GridTrackLengthPercentage) -> Vec<GridTrackSize> {
-    vec![
-        GridTrackSize::FitContent(cap),
-        GridTrackSize::MinContent,
-        GridTrackSize::MaxContent,
-        GridTrackSize::Auto,
-        GridTrackSize::MinContent,
-        GridTrackSize::MaxContent,
-    ]
+fn layout_tracks(
+    cap: GridTrackLengthPercentage,
+    tail: &[ComputedCssGridTrackSize],
+) -> Vec<GridTrackSize> {
+    let mut tracks = vec![GridTrackSize::FitContent(cap)];
+    tracks.extend(tail.iter().map(|track| match track {
+        ComputedCssGridTrackSize::MinContent => GridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent => GridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::Auto => GridTrackSize::Auto,
+        _ => panic!("repeated intrinsic tail contains only min/max/auto tracks"),
+    }));
+    tracks
 }
 
 fn input_with_rows(rows: Vec<ComputedCssGridTrackSize>) -> spinon_style::ComputedCssGridLayout {
@@ -37,9 +38,60 @@ fn input_with_rows(rows: Vec<ComputedCssGridTrackSize>) -> spinon_style::Compute
     input
 }
 
+fn repeated_tail_orders() -> Vec<Vec<ComputedCssGridTrackSize>> {
+    fn visit(
+        remaining: &mut [usize; 3],
+        current: &mut Vec<ComputedCssGridTrackSize>,
+        orders: &mut Vec<Vec<ComputedCssGridTrackSize>>,
+    ) {
+        if current.len() == 5 {
+            orders.push(current.clone());
+            return;
+        }
+
+        for kind in 0..remaining.len() {
+            if remaining[kind] == 0 {
+                continue;
+            }
+            remaining[kind] -= 1;
+            current.push(match kind {
+                0 => ComputedCssGridTrackSize::MinContent,
+                1 => ComputedCssGridTrackSize::MaxContent,
+                _ => ComputedCssGridTrackSize::Auto,
+            });
+            visit(remaining, current, orders);
+            current.pop();
+            remaining[kind] += 1;
+        }
+    }
+
+    let mut orders = Vec::new();
+    visit(&mut [2, 2, 1], &mut Vec::new(), &mut orders);
+    orders
+}
+
 #[test]
-fn root_html_repeated_intrinsic_auto_row_list_preserves_member_identity_order_and_caps() {
+fn root_html_repeated_intrinsic_auto_row_list_preserves_all_30_orders_and_caps() {
     let node = NodeId::new(11_294).unwrap();
+    let orders = repeated_tail_orders();
+    assert_eq!(orders.len(), 30);
+    assert_eq!(
+        orders
+            .iter()
+            .map(|tail| format!("{tail:?}"))
+            .collect::<std::collections::BTreeSet<_>>()
+            .len(),
+        30,
+        "the repeated-tail generator must produce 30 unique orders"
+    );
+    assert!(orders.contains(&vec![
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::Auto,
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+    ]));
+
     for (computed_cap, layout_cap) in [
         (
             ComputedCssGridTrackLengthPercentage::LengthPx(20.0),
@@ -58,26 +110,28 @@ fn root_html_repeated_intrinsic_auto_row_list_preserves_member_identity_order_an
             GridTrackLengthPercentage::Percentage(1.2),
         ),
     ] {
-        let projected = project_grid_layout(
-            node,
-            &input_with_rows(computed_tracks(computed_cap.clone())),
-            ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
-        )
-        .unwrap_or_else(|error| panic!("cap={computed_cap:?}: {error:?}"));
-        assert_eq!(
-            projected.placement_mode,
-            GridPlacementMode::RootHtmlFitContentAutoRowsV1
-        );
-        assert_eq!(
-            projected.auto_rows,
-            GridAutoRows::TrackList(layout_tracks(layout_cap)),
-            "each repeated min/max member must remain ordered and typed"
-        );
+        for tail in &orders {
+            let projected = project_grid_layout(
+                node,
+                &input_with_rows(computed_tracks(computed_cap.clone(), tail)),
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1,
+            )
+            .unwrap_or_else(|error| panic!("tail={tail:?} cap={computed_cap:?}: {error:?}"));
+            assert_eq!(
+                projected.placement_mode,
+                GridPlacementMode::RootHtmlFitContentAutoRowsV1
+            );
+            assert_eq!(
+                projected.auto_rows,
+                GridAutoRows::TrackList(layout_tracks(layout_cap, tail)),
+                "the repeated min/max/auto order must remain typed and unchanged"
+            );
+        }
     }
 }
 
 #[test]
-fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_orders_and_caps() {
+fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_multiplicities_positions_and_caps() {
     let node = NodeId::new(11_295).unwrap();
     let fit = |cap| {
         ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(cap))
@@ -89,14 +143,6 @@ fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_orders_and_caps() {
         ComputedCssGridTrackSize::MinContent,
         ComputedCssGridTrackSize::MaxContent,
     ];
-    let mut wrong_order = vec![fit(20.0)];
-    wrong_order.extend([
-        ComputedCssGridTrackSize::MinContent,
-        ComputedCssGridTrackSize::MaxContent,
-        ComputedCssGridTrackSize::MinContent,
-        ComputedCssGridTrackSize::Auto,
-        ComputedCssGridTrackSize::MaxContent,
-    ]);
     let mut wrong_duplicate = vec![fit(20.0)];
     wrong_duplicate.extend([
         ComputedCssGridTrackSize::MinContent,
@@ -110,12 +156,20 @@ fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_orders_and_caps() {
     let mut long_list = vec![fit(20.0)];
     long_list.extend(valid_tail.iter().cloned());
     long_list.push(ComputedCssGridTrackSize::Auto);
+    let fit_not_first = vec![
+        ComputedCssGridTrackSize::MinContent,
+        fit(20.0),
+        ComputedCssGridTrackSize::MaxContent,
+        ComputedCssGridTrackSize::Auto,
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+    ];
 
     for rows in [
-        wrong_order,
         wrong_duplicate,
         short_list,
         long_list,
+        fit_not_first,
         vec![
             fit(-1.0),
             valid_tail[0].clone(),

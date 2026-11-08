@@ -1,0 +1,223 @@
+{
+  "tailscaleBackendState": "Running",
+  "previewServer": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "fileCount": 199,
+  "bytes": 17566382,
+  "states": {
+    "add": 39,
+    "same": 126,
+    "replace": 34
+  },
+  "replaces": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "targetSha256": "2c279042539791027c02561b0a6d4bc38ab96f0802c5ba2d93a4f77022ff072a",
+      "sourceSha256": "f35e7dbc07454334bc53b5845032f01ea283b512458b573d5611aa09d83f61ef",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "targetSha256": "25ae8d8bd8e20cc14134f3c7ff24a3189c7859bc55ccdb15e786fb38d5e6b3c3",
+      "sourceSha256": "db187cd55402ab6aa51641546281267c1b1ad2b1052e3d6e02e0a96d9f5faed3",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "targetSha256": "d7402ce299c0b6bb253a07c9c834c2c84a5ac2c1fd9953bdc841b42469f5ddaa",
+      "sourceSha256": "e3761605689a0d4046953788f826a54a43a0d7a82c7f6a1f1cd4192dc0a3917b",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "targetSha256": "bcbcbbbfced4e80a0809d680399d643dec47f9b0ad7abd25b82cf30043230222",
+      "sourceSha256": "9f25e1400d6cc8cab04205b4593a0f7432b5e8d9a1e673505fdc1c9af21c2e57",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "targetSha256": "572521fc869a11e8a4acc79e397edaf3f69d887bfce330b00e126720841fb71c",
+      "sourceSha256": "372e2c99c854876e484801c707928557e75fb43d876672c0ba89f334dc40e105",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "targetSha256": "c97cea9b120abe36f3ea04dd7f969761c007280dbc23cdd127fdbcacfdaebfdf",
+      "sourceSha256": "042363a46ad1e2813df60f6fec6332a71b07775e04c8e9054d01dafcbacc3e0a",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.html",
+      "targetSha256": "c0c873da69e3b0df9d3698889cfc16c6f6dfe9d4a61d53b96f79606d1abb4463",
+      "sourceSha256": "d06cd765df6f9dffa6a9766afa3cda9e7a4fa63b5fdb56b36c581d6ecf9b2933",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "targetSha256": "67aa1dcb46eb486bea123add5016fc1b2d41842b1b518cbf4385728f568bdbdc",
+      "sourceSha256": "df37dc18735f3d4a0f01ba1fb47d78df440fb55704ce9b6b6ffb1ea5404637d5",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "targetSha256": "91dacf9bf6a77d64b3b02f729622d29ec53009418e87962443da0b26a089b48d",
+      "sourceSha256": "9e0494b264f1ceed15d63327c44be597f9161e87ca918813e4f60a6b1a1ef953",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/README.html",
+      "targetSha256": "ef3fc8b48e1413a48f056a1c30fa009f212b8b107a8d76ebfe96b92568873cd1",
+      "sourceSha256": "3ecb5cb78d835a085776cc35672e8ac943f5fb11efd60678edd4a2027c2be4f0",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "targetSha256": "dfe1aae59a386559386f61270d35d2b156c28548bf40b1bafabbcb87d970f448",
+      "sourceSha256": "e1c29e3152e286ee3e0c1cca639ad9f1e5a823aacde4ce8c7d866c65bf0ee71c",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "targetSha256": "2cbb87432e04af913541fe1fd057a5bae83b6b2f8545337f0575681d15534f24",
+      "sourceSha256": "052245516755199538295e19a57271aa2d368ef7bb81b0e1f471fa28de9e7c93",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "targetSha256": "790e8609f35e2f8ae7ac446843b27f2f6d10c37c4703a8e5abcfc806ead545a4",
+      "sourceSha256": "7d14c568caea38423ed942ed753bc1ed13c179f9097e0da9b902c1da1e9d4a66",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.html",
+      "targetSha256": "28192b352b11f5d4cd3b6c3c804cd080fa327957fa3b58e099771b97687d86bc",
+      "sourceSha256": "1b8db26b9bb8af349390c8673af8b647f8dee0367a7f394fdcdd5f32cfc6b71f",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "targetSha256": "4fcc10daa108fcbdbf7b56ccd5ba168535e651ffe1b9234236342576752ba3a0",
+      "sourceSha256": "e8e7d1868c9aa207fc90049d991df086faddad351c311bd6c5654876057f7b0f",
+      "openHandlePids": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "targetSha256": "4aa66aa034a82e9509753ccb514b2d99a438b0e49d3822ea96935eb31e1e7c29",
+      "sourceSha256": "0b794cafd14cd53bd37c2fd7777acbdc90c86099f84bfe72759f3035551cb179",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "targetSha256": "cec1989f342b42b126c5d9b6c4576705acbb4ecea9868bcf3daca6ed171cbaf2",
+      "sourceSha256": "53d1a6d09871bce8bad1193919353b4133c04eb5a214ef6e8e613bd4ed6980f7",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "targetSha256": "7bd73378d5887842342d3dbc6e0faa3f016a02944fa833b2d7f147faea70cc30",
+      "sourceSha256": "864872f4b0f2da76bd11fb046d97811c37571b9bd6a084d865b9ffd8ee551cde",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "targetSha256": "beb55970c5d2ef80e8c636c704068dcda6a676200fd2ea7670fe7b94d68622f2",
+      "sourceSha256": "0bc61a730555176bfa7a2934260dd478b566669b0fe9953177b0a7024c66450a",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "targetSha256": "a7c73be6d2a9e2e063f208a36fe18e2bc60b29e9095d5d752b1815248b0c5fea",
+      "sourceSha256": "92703ca6e66e0c5f9c5f6cf9d65cfa36e640a5252cbe88ea02e93ba2ac38c3f6",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-intrinsic-auto-rows.html",
+      "targetSha256": "4dac0b31a8a8eb574241a65aa42fec9e76188e5ab2a930e887657d62491b6adf",
+      "sourceSha256": "32cc7c6f2f3da4dc0ea1cc2bb7b52c9cac7acd840af0483ddfd863ff59576532",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-intrinsic-tail-permutations-plan-review-20.html",
+      "targetSha256": "bb0674bdaec82a421932129566bccc2902e59515ef2d6b6acd6264de213b00d1",
+      "sourceSha256": "c0b982c4e5726e593b44a9b6120bf6893160488a0a919a1e158b45b80cca259d",
+      "openHandlePids": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-intrinsic-tail-permutations.html",
+      "targetSha256": "ec2000037baac2b08a0699c0dccf10b893550418a7805308fb3432f8b362db76",
+      "sourceSha256": "f951b38c5ec7c2b5c0d420b5758e754901f052ea4a5fd35d2ee6f76bdb410106",
+      "openHandlePids": []
+    },
+    {
+      "route": "roadmap.html",
+      "targetSha256": "af2b2ace3a486a24c027fb47eb028ddbaf81814f2cfb7b60856b1dabded0fd16",
+      "sourceSha256": "f11454f6e4b971bb2c5fffba7be023f4d2d23940ebdf2fc00a903a33f66e2a7b",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "targetSha256": "78b8abb6e177a6669ab0b9b393f763c8bad5c86fdcbbd1ed2befced1eac0e98d",
+      "sourceSha256": "32564c26aee67bd09320fe0f49a928a680d764fdd4448259f11fe1e98c584690",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-auto-rows-runtime-2026-11-08/README.html",
+      "targetSha256": "b859ec6cf221fcfb2e18dfa7781cf46b58cd18a1bfdc4eb00fcea66724f7c50b",
+      "sourceSha256": "2d24551615f2253d93a25c2c4d7d5a0362b8a7e332a6a7fde6f2e77b97c01d48",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-precomparison-2026-11-08/README.html",
+      "targetSha256": "37e3c9b14c91ba00036767e7dc7d6cd407e73a646e2a703ece79b39c57957dcf",
+      "sourceSha256": "32b229ba534b52ad159150009461864455d7e870db65220e4386921207cfdc13",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "targetSha256": "0c735510315dd0368d4b70e2a7ef93e7e4c4ffcd9f17332fc8e875b08096b9b6",
+      "sourceSha256": "b1b70461a3c56e07808883a436ae056bd0b5e9428224a1f3bef78ae5b06768cc",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-intrinsic-tail-permutations-runtime-2026-11-08/README.html",
+      "targetSha256": "d79918037aec80681188062536f0408bed5a5f32ed730191c277a7b0278312f1",
+      "sourceSha256": "1670c7d8c4257f859113d9eb7220aa86beac3879c11592489a0b45a248606371",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/README.html",
+      "targetSha256": "79f5e549070613311d320971e246e40d73dddbf6c8c510d104b03c0b44b580a4",
+      "sourceSha256": "166bfe9cd13258f5f7979aed8dc691bc201a6523c224b5cf1c2bea897d6b8105",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "targetSha256": "e9a9933b79b7372d4963b64825102f079960b3475b31fbe476ace15a20c61341",
+      "sourceSha256": "7c3a2710d1bb66ac16610048d9705592cc19e65267c4f099b74d665c4972d5cb",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1284-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "targetSha256": "5e7454a2b4cecb6d27f8b807076590973fa8d0a853e4f3169fb9b5d1bee0c51f",
+      "sourceSha256": "82245da6638f2566673dbb4213478ea522c214f0f7f68e47debe18534e7e3f7d",
+      "openHandlePids": []
+    },
+    {
+      "route": "spec/STATUS.html",
+      "targetSha256": "0a3597ad052f882a2b0a129e3a55765bc69d4e5c99a529e3e3e468872c08ff70",
+      "sourceSha256": "b14859087e0778b7fd951b184e827475955fc658ca93df6b63ae8dc6b26d84e1",
+      "openHandlePids": []
+    },
+    {
+      "route": "STATUS.html",
+      "targetSha256": "a88ce4d0464759702f6bf2ff2276ab854bcfe18d6c851fbf1ab0bba5dc06911c",
+      "sourceSha256": "a2e2881180db3bb318a23ce006dc43a1d8bfaad6863561ebc6f099d690f96938",
+      "openHandlePids": []
+    }
+  ],
+  "noDeletes": true,
+  "serverRestarted": false
+}
