@@ -1,7 +1,8 @@
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind};
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridPlacement, ComputedCssGridTrackSize, ComputedCssMaxSize,
-    ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle, ComputedStyleSnapshot,
+    ComputedCssDimension, ComputedCssGridAutoRows, ComputedCssGridPlacement,
+    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue,
+    ComputedElementStyle, ComputedStyleSnapshot,
 };
 
 use super::{RuntimeGridNodes, StyleLayoutError, grid_values};
@@ -48,13 +49,22 @@ pub(super) fn validate(
         .grid_layout
         .as_ref()
         .expect("fit-content candidate has computed Grid tracks");
+    let four_member_list =
+        grid_values::root_html_fit_content_auto_rows_with_four_member_intrinsic_tracks(grid);
     let align_content = grid_style
         .properties
         .get("align-content")
         .map(String::as_str);
     let align_content_is_supported = align_content == Some("start")
-        || (grid_values::root_html_fit_content_auto_rows_with_min_content(grid)
+        || (grid_values::root_html_fit_content_auto_rows_with_intrinsic_tracks(grid)
             && align_content == Some("stretch"));
+    if !align_content_is_supported {
+        return Err(unsupported(
+            node,
+            "align-content",
+            "Root HTML fit-content rows support only start or auto-track stretch alignment",
+        ));
+    }
     if grid.columns.as_slice() != [ComputedCssGridTrackSize::LengthPx(40.0)]
         || grid.rows.as_slice() != [ComputedCssGridTrackSize::LengthPx(10.0)]
         || grid
@@ -80,7 +90,6 @@ pub(super) fn validate(
         || grid_style.layout_spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
         || !zero_border(grid_style)
         || grid_style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
-        || !align_content_is_supported
         || grid_style.properties.get("align-items").map(String::as_str) != Some("normal")
         || grid_style
             .properties
@@ -134,12 +143,13 @@ pub(super) fn validate(
                 return Err(unsupported(
                     child.id(),
                     "grid-auto-rows",
-                    "Root HTML fit-content rows require three or five visible direct HTML div items",
+                    "Root HTML fit-content rows require three, five, or six visible direct HTML div items",
                 ));
             }
         }
     }
-    if !matches!(items.len(), 3 | 5)
+    if (four_member_list && items.len() != 6)
+        || (!four_member_list && !matches!(items.len(), 3 | 5))
         || nodes
             .grid_item_owners
             .values()
@@ -150,7 +160,7 @@ pub(super) fn validate(
         return Err(unsupported(
             node,
             "grid-auto-rows",
-            "Root HTML fit-content rows require three or five direct items",
+            "Root HTML fit-content rows require three or five direct items, or six items for the four-member intrinsic list",
         ));
     }
 
@@ -174,6 +184,8 @@ pub(super) fn validate(
         ));
     }
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
+    const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
+    const FOUR_MEMBER_FIT_CONTENT_OVERFLOW_HEIGHT: f32 = 60.0;
     if !direct_element_children(tree, nodes, items[0])?.is_empty() {
         return Err(unsupported(
             items[0].id(),
@@ -199,7 +211,28 @@ pub(super) fn validate(
                     "Each intrinsic list item must contain one fixed-px payload div",
                 ));
             }
-            validate_payload(tree, nodes, &styles, children[0], LIST_PAYLOAD_HEIGHTS)?;
+            let fit_content_payload_heights = [
+                FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1],
+                FOUR_MEMBER_FIT_CONTENT_OVERFLOW_HEIGHT,
+            ];
+            let allowed_payload_heights = if four_member_list {
+                let ComputedCssGridAutoRows::TrackList(tracks) = &grid.auto_rows else {
+                    return Err(unsupported(
+                        item.id(),
+                        "grid-auto-rows",
+                        "Four-member intrinsic list requires typed implicit rows",
+                    ));
+                };
+                let track_index = (position - 1) % tracks.len();
+                if matches!(tracks[track_index], ComputedCssGridTrackSize::FitContent(_)) {
+                    &fit_content_payload_heights
+                } else {
+                    std::slice::from_ref(&FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1])
+                }
+            } else {
+                LIST_PAYLOAD_HEIGHTS
+            };
+            validate_payload(tree, nodes, &styles, children[0], allowed_payload_heights)?;
         } else if items.len() == 3
             && position == 2
             && fixed_item(style, 6.0)

@@ -1,0 +1,119 @@
+{
+  "fixture": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-fit-min-max-content-auto-implicit-row-list-overflow-precomparison.html",
+  "fixtureTitle": "Root HTML Grid fit-content cap with visible overflow",
+  "grid": [
+    0,
+    0,
+    40,
+    100
+  ],
+  "gridAutoRows": "fit-content(20px) min-content max-content auto",
+  "items": [
+    {
+      "id": "explicit",
+      "rect": [
+        0,
+        0,
+        40,
+        10
+      ]
+    },
+    {
+      "id": "item-1",
+      "rect": [
+        0,
+        10,
+        40,
+        20
+      ]
+    },
+    {
+      "id": "item-2",
+      "rect": [
+        0,
+        30,
+        40,
+        10
+      ]
+    },
+    {
+      "id": "item-3",
+      "rect": [
+        0,
+        40,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "item-4",
+      "rect": [
+        0,
+        52,
+        40,
+        6
+      ]
+    },
+    {
+      "id": "item-5",
+      "rect": [
+        0,
+        58,
+        40,
+        20
+      ]
+    }
+  ],
+  "lastPayloadOutsideGrid": true,
+  "overflowVisible": true,
+  "pageScrollHeight": 633,
+  "payloads": [
+    {
+      "id": "payload-1",
+      "rect": [
+        0,
+        10,
+        40,
+        60
+      ]
+    },
+    {
+      "id": "payload-2",
+      "rect": [
+        0,
+        30,
+        40,
+        10
+      ]
+    },
+    {
+      "id": "payload-3",
+      "rect": [
+        0,
+        40,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "payload-4",
+      "rect": [
+        0,
+        52,
+        40,
+        6
+      ]
+    },
+    {
+      "id": "payload-5",
+      "rect": [
+        0,
+        58,
+        40,
+        60
+      ]
+    }
+  ],
+  "resolvedRows": "10px 20px 10px 12px 6px 20px",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+}

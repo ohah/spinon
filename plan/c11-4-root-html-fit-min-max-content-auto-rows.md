@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML four-member intrinsic implicit-row list
 
-**상태:** Chrome 157 사전 비교 96/96과 계획 실패 관점 20개 검토를 마쳤다. 구현은 아직 시작하지 않았다. 직전 [`fit-content()`/`min-content`/`auto` 나머지 순서](./c11-4-root-html-fit-content-min-content-auto-remaining-order.md)는 PR [#1277](https://github.com/ohah/spinon/pull/1277)로 병합됐다.
+**상태:** Chrome 157 독립 사전 비교 96/96과 계획 검토 20개를 마쳤다. exact 4-member `grid-auto-rows` 목록 24순서를 Layout·style projection과 기본 Root HTML runtime에 연결했다. RuntimeSession 24순서 × px/% × start/stretch 행렬 96/96과 fit-content 네 순환 위치를 24순서 × px/% cap으로 선택한 overflow 48/48을 확인했다. 새 목록은 Layout에서 24순서×`0%`/`120%` 48 cap-boundary 조합, projection에서 24순서×20px/20%/0%/120% 96 typed 조합을 통과했다. RuntimeSession은 0%·120%를 각각 실행해 computed cap, zero-height layout frame 및 payload paint overflow를 확인했다. calc·non-fit overflow 거부·profile 거부·복구 경계도 검사했다. Layout 12/12·style projection 2/2·RuntimeSession 7 focused tests·legacy 회귀가 통과했다. 60px payload는 20px fit-content row 밖으로 그려지고, 순환 위치별 row/frame을 확인했다. 첫 순환 위치의 다섯째 row payload는 Grid 아래로 18px 보인다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 화면은 그 장면의 visual smoke이며 PixelCopy/Metal readback이 아니다. iOS 설치 전 app-data snapshot을 보존했지만 설치 뒤 container 경로가 바뀌었다. 구현/runtime 검토 20개와 cap 정규화 계획 수정 검토 20개도 마쳤다. PR diff 적대 검토 30/30을 마쳤다. PR 생성과 merge 상태 확인은 남아 있다. C11.4/C11 완료나 공식 집계 변경은 아니며 `78/214`와 계약 `0.1.0`을 유지한다. 직전 [`fit-content()`/`min-content`/`auto` 나머지 순서](./c11-4-root-html-fit-content-min-content-auto-remaining-order.md)는 PR [#1277](https://github.com/ohah/spinon/pull/1277)로 병합됐다.
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -16,7 +16,7 @@
 fit-content(<finite non-negative px | %>) min-content max-content auto
 ```
 
-순서는 24가지 permutation이며 CSS computed style과 typed `GridAutoRows::TrackList`에서 그대로 보존한다. `fit-content()` cap은 기존처럼 direct finite non-negative `px` 또는 definite block-size basis를 갖는 direct percentage만 허용한다. `calc()`, 음수·비유한 값, indefinite percentage basis, 중복·누락 member와 다른 track function은 계속 거부한다.
+순서는 24가지 permutation이며 CSS computed style과 typed `GridAutoRows::TrackList`에서 그대로 보존한다. `fit-content()` cap은 computed typed value가 finite non-negative `px` 또는 definite block-size basis를 갖는 direct percentage여야 한다. Stylo가 absolute `calc()`를 finite `px`로 정규화하면 그 computed value는 direct px와 같은 track으로 허용하고 computed serialization도 px를 보존한다. Percentage와 섞인 unresolved `calc()`는 거부한다. RuntimeSession 확인 전 계획은 모든 authored `calc()`를 거부한다고 썼지만, cascade가 absolute expression의 authored syntax를 projection 전에 없애므로 그 경계는 이 제한 slice에서 관찰할 수 없다. 음수·비유한 cap, indefinite percentage basis, 중복·누락 member와 다른 track function은 계속 거부한다. [계획 수정 검토 20개](./c11-4-root-html-fit-min-max-content-auto-rows-cap-normalization-review-20.md)
 
 이 변경은 grid track-list admission의 제한을 넓힌다. 이 고정 높이 payload fixture에서 min-content와 max-content contribution은 같으므로 used geometry만으로 두 track type을 구별하지 않는다. 검증은 authored/computed list와 typed projection에서 두 identity가 보존되는지 별도로 확인한다. 이 결과를 임의 content의 min/max 알고리즘 동등성이나 일반 CSS 지원으로 확대 해석하지 않는다.
 
@@ -32,19 +32,19 @@ fit-content(<finite non-negative px | %>) min-content max-content auto
 ## 지원·거부 경계
 
 - 기존 단일 Root HTML owner, 40×100px border-box Grid, 40px column·10px explicit row, row sparse auto-placement, zero edge/gap, visible overflow, single root/document/revision 및 direct item/payload topology를 유지한다.
-- Track list는 길이 4이며 `fit-content()`, `min-content`, `max-content`, `auto`가 각각 정확히 한 번 있어야 한다. 모든 24개 순서를 허용한다. 다섯 implicit rows를 만들고 다섯 번째 row에서 네-member list가 다시 순환한다.
+- Track list는 길이 4이며 `fit-content()`, `min-content`, `max-content`, `auto`가 각각 정확히 한 번 있어야 한다. 모든 24개 순서를 허용한다. `0%`와 `120%` cap 경계도 보존한다. 다섯 implicit rows를 만들고 다섯 번째 row에서 네-member list가 다시 순환한다.
 - `align-content:start`는 기존 계산을 보존한다. `align-content:stretch`는 이 exact 24-list profile에서만 허용하며 `auto` max-sizing track에만 남은 positive free space를 균등 분배한다. 첫 member가 `auto`인 경우 두 auto rows에 같은 추가 길이를 준다.
-- 다른 Root HTML owner, arbitrary markup, intrinsic explicit column, named line/area, auto-repeat, dense/column flow, spanning/authored placement, nested Grid, extra children, invalid cap, invalid track list와 malformed revision은 계속 fail-closed한다. 오류는 전체 layout/render publication을 막고 property/node에 연결하며 같은 RuntimeSession의 다음 유효 revision으로 복구한다.
+- 다른 Root HTML owner, arbitrary markup, intrinsic explicit column, named line/area, auto-repeat, dense/column flow, spanning/authored placement, nested Grid, extra children, negative/non-finite/unresolved mixed `calc()` cap, indefinite percentage basis, invalid track list와 malformed revision은 계속 fail-closed한다. 오류는 전체 layout/render publication을 막고 property/node에 연결하며 같은 RuntimeSession의 다음 유효 revision으로 복구한다.
 - 공개 API/FFI selector를 추가하지 않는다. 내부 계약 숫자 버전 `0.1.0`, C11.4/C11 미완료 표시 및 공식 `78/214` 집계를 유지한다.
 
 ## 구현·검증 관문
 
 1. 구현 전에 이 계획과 96-scene Chrome 관측·독립 기대값을 고정한다. 계획 리뷰 20개는 구현/runtime 리뷰와 분리한다.
-2. Style projection에서 24개 exact 순서를 `[FitContent, MinContent, MaxContent, Auto]`의 typed identity로 보존한다. 빈/중복/누락/다른 멤버·길이·cap은 property diagnostic으로 거부한다. 기존 singleton min/max 및 기존 여섯 3-member 순서를 회귀 검사한다.
-3. Layout admission은 `RootHtmlFitContentAutoRowsV1` 단일 owner의 24개 순서만 받아들이고, implicit row 순환·computed track list 순서·item/payload frame을 검사한다. 다른 profile의 admission이 우연히 넓어지지 않는 negative controls를 둔다.
-4. `align-content:stretch`는 positive free space 22px, 단일 auto track의 전량 분배, 첫 member 반복으로 두 auto track이 되는 경우의 균등 분배를 확인한다. non-auto rows가 stretch로 변하지 않고 `start`가 free space를 남기는지 검사한다.
+2. Style projection에서 24개 exact 순서를 `[FitContent, MinContent, MaxContent, Auto]`의 typed identity로 보존한다. `20px`, `20%`, `0%`, `120%` cap을 확인하고 빈/중복/누락/다른 멤버·길이·유효하지 않은 cap은 property diagnostic으로 거부한다. 기존 singleton min/max 및 기존 여섯 3-member 순서를 회귀 검사한다.
+3. Layout admission은 `RootHtmlFitContentAutoRowsV1` 단일 owner의 24개 순서만 받아들이고, implicit row 순환·computed track list 순서·item/payload frame, zero와 over-100% cap을 검사한다. 다른 profile의 admission이 우연히 넓어지지 않는 negative controls를 둔다.
+4. `align-content:stretch`는 positive free space 22px, 단일 auto track의 전량 분배, 첫 member 반복으로 두 auto track이 되는 경우의 균등 분배를 확인한다. 별도 overflow loop는 모든 24 순서와 px/% cap에서 fit-content가 각 순환 위치를 차지할 때 60px payload가 20px row 밖으로 이어지는지 검사한다. non-auto rows가 stretch로 변하지 않고 `start`가 free space를 남기는지 검사한다.
 5. RuntimeSession에서 root/document/style/environment revision 결합, 오류 attribution, partial layout/draw 부재 및 같은 세션 recovery를 확인한다. focused Layout·Style projection·RuntimeSession 검증, changed-crate Clippy, `cargo fmt --all -- --check`를 실행한다.
-6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 parsed Root HTML route에서 동일 HTML hash를 실행해 layout-ready, track/item frame, draw/present와 화면을 기록한다. 시뮬레이터 결과를 실기기·hardware GPU·post-compositor pixel parity로 확대하지 않는다.
+6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 parsed Root HTML route에서 동일 HTML hash를 실행해 layout-ready, root dimensions/box count, Android draw/present 및 OS screenshot을 기록한다. 모든 item/payload frame은 별도 Chrome·RuntimeSession matrix에서 비교한다. Simulator 결과를 PixelCopy/Metal surface readback, 실기기·hardware GPU·post-compositor pixel parity로 확대하지 않는다.
 7. 계획과 겹치지 않는 실패 관점 20개로 구현/runtime을 검토한다. PR diff는 별도 관점 30개로 검토한다. 발견된 결함은 수정하고 관련 관점을 다시 실행한다. PR은 기존 label과 `Rebase and merge`를 사용한다.
 8. 병합 뒤 `spec/STATUS.md`, 내부 계약 0059의 제한 범위, C11 계획과 공개 roadmap을 실제 결과에 맞춘다. Tailnet 제공본은 HTTP/hash로 확인하고 Agent Browser desktop/mobile 화면을 검증한 뒤 브라우저 프로세스를 종료한다.
 

@@ -14,6 +14,14 @@ The independent verifier [`verify-chrome-observation.mjs`](https://github.com/oh
 
 With `align-content:start`, every case resolves used rows `[10,20,10,12,6,20]px`; total used size is 78px and 22px remains free. With `stretch`, only the auto max-sizing track positions grow. A list with one auto row receives 22px there. If the first list member is auto, the fifth implicit row is a second auto track and the two each receive 11px. The definite 100px block-size makes `20%` and `20px` cap cases geometrically equal while computed style preserves the authored cap unit.
 
+## Supplementary fit-content cap overflow
+
+A separate fixture [`root-html-grid-fit-min-max-content-auto-implicit-row-list-overflow-precomparison.html`](../../../../tests/fixtures/css/c11/root-html-grid-fit-min-max-content-auto-implicit-row-list-overflow-precomparison.html), SHA-256 `e9fcf67de7106f1c8cc9a8c6ffc6213f7e59663ab216c6f8a4bb4f315959289d`, makes payloads 1 and 5 sixty pixels tall while keeping `fit-content(20px)` caps. Agent Browser HeadlessChrome 157 observed used rows `10px 20px 10px 12px 6px 20px`; the Grid bottom is 100px, fifth item is `[0,58,40,20]`, and its unclipped payload is `[0,58,40,60]`, ending at 118px. This independently verifies 18px visible overflow without increasing the fit-content track. The scene is separate from the 96-case matrix.
+
+![Chrome 157 fit-content cap with visible payload overflow](./chrome-fit-content-cap-overflow.png)
+
+[`verify-fit-content-cap-overflow.mjs`](./verify-fit-content-cap-overflow.mjs) checks the pinned browser, fixture and screenshot hashes, row list, item/payload frames, visible overflow and 18px spill. Its raw capture is [`chrome-fit-content-cap-overflow-observation.json`](./chrome-fit-content-cap-overflow-observation.json); verifier output is [`chrome-fit-content-cap-overflow-verification.json`](./chrome-fit-content-cap-overflow-verification.json).
+
 This fixed-height payload set has equal min-content and max-content contributions. Therefore, it does not separate their geometry; the oracle specifically checks that Chrome retains the distinct computed track functions in every authored order. The plan does not use this fixture to claim arbitrary content's min/max algorithm parity.
 
 ## Captures and browser lifecycle

@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_recovers_in_the_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_lists_match_both_orders_and_overflow ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_rejects_nearby_profiles_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_lists_match_remaining_orders ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 349 filtered out; finished in 0.55s

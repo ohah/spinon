@@ -230,9 +230,9 @@ pub(super) fn normalize_sparse_grid_container(
                         property: "grid-auto-rows",
                     });
                 }
-                let fit_content_min_content_auto_pattern = container.placement_mode
+                let fit_content_intrinsic_auto_pattern = container.placement_mode
                     == crate::GridPlacementMode::RootHtmlFitContentAutoRowsV1
-                    && crate::grid::root_html_fit_content_min_content_auto_track_list_is_supported(
+                    && crate::grid::root_html_fit_content_intrinsic_auto_track_list_is_supported(
                         tracks,
                     );
                 for track in tracks {
@@ -258,7 +258,8 @@ pub(super) fn normalize_sparse_grid_container(
                         GridTrackSize::MinContent | GridTrackSize::MaxContent
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlIntrinsicTrackSizingV1 => {}
-                        GridTrackSize::MinContent if fit_content_min_content_auto_pattern => {}
+                        GridTrackSize::MinContent | GridTrackSize::MaxContent
+                            if fit_content_intrinsic_auto_pattern => {}
                         GridTrackSize::Auto
                             if container.placement_mode
                                 == crate::GridPlacementMode::RootHtmlFitContentAutoRowsV1 => {}

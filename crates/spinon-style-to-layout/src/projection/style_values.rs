@@ -418,7 +418,7 @@ pub(super) fn project_styles(
                         .as_ref()
                         .is_some_and(|nodes| nodes.grid_containers.contains(&element.node_id))
                         && element.grid_layout.as_ref().is_some_and(
-                            grid_values::root_html_fit_content_auto_rows_with_min_content,
+                            grid_values::root_html_fit_content_auto_rows_with_intrinsic_tracks,
                         )
                         && element
                             .properties

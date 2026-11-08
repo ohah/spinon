@@ -1,0 +1,17 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 11 tests
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_stretch_without_the_exact_intrinsic_pattern ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_reject_auto_without_fit_content_or_other_types ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_lists_reject_unmodeled_minimum_floor_shape ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_rejects_out_of_profile_inputs ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_reject_nearby_types_counts_and_other_profiles ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::fit_content_cap_keeps_track_bounded_while_payload_overflows_the_grid ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_list_preserves_minimum_above_first_cap ... ok
+test grid_root_html_fit_content_auto_rows_tests::root_html_fit_content_implicit_row_matches_cap_max_content_and_minimum_oracle ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_auto_row_track_lists_repeat_in_order_for_implicit_rows ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::root_html_fit_content_min_content_auto_lists_stretch_only_auto_tracks ... ok
+test grid_root_html_fit_content_auto_rows_tests::track_lists::four_member_intrinsic::four_member_intrinsic_track_lists_cover_all_orders_caps_and_auto_stretch ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 491 filtered out; finished in 0.05s
