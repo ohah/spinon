@@ -1,0 +1,120 @@
+{
+  "tailscaleBackendState": "Running",
+  "previewServer": {
+    "pid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "cwd": "/Users/yoonhb/Library/Application Support/SpinonPreview"
+  },
+  "fileCount": 276,
+  "bytes": 13051617,
+  "states": {
+    "add": 166,
+    "same": 90,
+    "replace": 20
+  },
+  "replaces": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "targetSha256": "82cf155f3a4dbd87af157ced137c764ddee070ee4d2e52d397c2480744841923",
+      "sourceSha256": "834ead1fa8ecb9766303e813ca9af0cd5b31e8dc617dabff340fc77ccbba4e1d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "targetSha256": "5c60e98a6ac4f2188fb97ec089ad6f5e3734d65f75e5e7b5c43ef251fba5cc37",
+      "sourceSha256": "fd53c62e9c7ad4a6fba663c120f053a773465480ef3901d292885e87326a5de0"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "targetSha256": "19891ac38a63f08c36fd411c1f866972b28488a2c5176ce554769aec5b6f7845",
+      "sourceSha256": "3d915f794e3c9dcc65fe02f33c3d325bdfcd16cb8f618e3019ef71e11d20ca46"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "targetSha256": "71569c67017056340b4fb09b63af6c23a6cf666594b3a74dd17a28a6f0d6e423",
+      "sourceSha256": "789970b40f4498cbee7306c58fbceb3d42ac58f9182ab62abf867e86f1191f4d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "targetSha256": "62df501d9866048aa26e5ab7323049f031d226775fac306ccb087b31eb1cf524",
+      "sourceSha256": "951ee0b9bc954563510ac3abe89d4b401b965015ec1a462033ba6d5385928f37"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "targetSha256": "a9145d44cf8e8db36a11c3f16fb9b6403d81f3afc8f8f355a812256dc02d174a",
+      "sourceSha256": "50a69e576a5d24f5321cabb26362e36f32ceba4fc39c0717e75501719c5f54df"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "targetSha256": "333edfb1928228db371fdece2301e4b2a134fea1ae3580db653295cfe4ea66c8",
+      "sourceSha256": "1c2915970c198be2d56672230a948582e91ff2fda5187729510c93405ab37095"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/README.html",
+      "targetSha256": "ffa18f296e5428cd91b56ca53f503f87af92d38091b5027e16f6fe8fc6c17647",
+      "sourceSha256": "770d184f8e794128f9dfb4f8928c56375a01666e9c66a8f9ab664a779936167e"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "targetSha256": "f1a8a9af83253cec4f70895bde2b957920f4be2fa55ff45605a7f0506b3413c0",
+      "sourceSha256": "3be1e15c1540dcaaf43f5c8cb393d8fee66ec57cc0440dce763236c61d1bd713"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "targetSha256": "2f2a1a56390e5dd11d48c1eb5194bb9ec8df7169cc2076422e18887b347eda0b",
+      "sourceSha256": "2636724926dbb94aed39d1d91f7d80f64d9be2e52869eed4342bb7f9d238a77a"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "targetSha256": "0c68e01bb53f6507ff9d283155de22b2e1a425fe0919adcf534c5ad8874badda",
+      "sourceSha256": "e5fc459b57224c581f80ded43c94669aee68afc34cc4bace8016a9e8a9cb2c50"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "targetSha256": "0f3f904a150620455d1a0daa8a1b020d6774b79c4dcace2565123107446cb75e",
+      "sourceSha256": "0bf7ee99d6298ace10aed2977074b24eca2ab07fabdcb5c2d8569a0829223876"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "targetSha256": "3b15cff1b9dd749dc1b93361ec152abcdfb0fadb39330a80b8560283ab0dcfa6",
+      "sourceSha256": "755cc422f8c70687b47c87dd7549f285568da7f9abe0142affce870c56e42c39"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "targetSha256": "4d9bf168a749d279d43ec8f82442665487959c6e00c07d52336a7ab4a1ec1d90",
+      "sourceSha256": "79892a07b18783665af63d80b7835b3264c79a83d69ad9fb0bb08c0a02b5a6a7"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "targetSha256": "53af7994ea2acca1ad0209d9a6dd67837f2e17a905e0feaf67ea443c8663a3d3",
+      "sourceSha256": "c2562c3d877113280fd3811929019b4b94b8e1a9282bb90f70190d8d93bf6ff8"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-min-max-content-auto-rows-plan-review-20.html",
+      "targetSha256": "5676829af67d88f9adc034c47f54835f875aad2124cec4d0046b3577789524d1",
+      "sourceSha256": "21bbd8901c1a42ab5c13a45dcb8b45b667a8695cec2beabc5f44c2552af2d701"
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-min-max-content-auto-rows.html",
+      "targetSha256": "b75450b0c9c3b2d4187ff730f4e1c3ed2e6f4044460173982a6794aa2419fe54",
+      "sourceSha256": "4283b0433a6fd70e4179f6ca6b32a5ab9eb8caa4b337cb8650afed31db72a079"
+    },
+    {
+      "route": "roadmap.html",
+      "targetSha256": "b66ec3c1e3e2eeaea1ada2cf93fd57ad6e23da9544ea6cd330bfd316de4a6e0c",
+      "sourceSha256": "5832023869335f95ef8f93e9c830fbfa7e5db8d4ee4232bc8de65d5192e8ade6"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "targetSha256": "2e30ac70987aa296d9f4fcf0f5942720c7fc9da33088403617cfa7147c98170c",
+      "sourceSha256": "ea6f70a05ccdcc07594078972ffe37c3cc91976acb2615554de2a2fa528f529c"
+    },
+    {
+      "route": "STATUS.html",
+      "targetSha256": "014ec6b7acb910b9bc1c006b23baa8a04815c4a0bc151b0a66abedae91249e38",
+      "sourceSha256": "afff52c862a04b1624fe1ded27cd8eed009618328fff2c7809d36a9fd98e78e6"
+    }
+  ],
+  "openHandlesUseReadOnlyCreateReadStream": true,
+  "replacementsWillUseSameDirectoryAtomicRenameAndKeepBackups": true,
+  "noDeletes": true
+}

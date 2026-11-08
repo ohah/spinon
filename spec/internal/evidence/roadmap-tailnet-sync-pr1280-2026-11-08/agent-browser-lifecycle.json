@@ -1,0 +1,12 @@
+{
+  "closeCommand": "agent-browser close --all",
+  "closedSessions": [
+    "spinon-c114-pr1280"
+  ],
+  "sessionInfoAfterClose": {
+    "active": false,
+    "pid": null,
+    "runtime": null
+  },
+  "agentBrowserProcessesAfterClose": []
+}

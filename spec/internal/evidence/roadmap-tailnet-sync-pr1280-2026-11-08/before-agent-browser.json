@@ -1,0 +1,8 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "active": "2026-11-08 C11.4 parsed Root HTML grid-auto-rows four-member intrinsic list · 제한 구현 진행 중: fit-content()·min-content·max-content·auto의 24 순서를 기본 Root HTML 경로에 연결했다. RuntimeSession 24순서 × px/% × start/stretch 96/96과 추가 overflow·calc·거부·복구 경계 5개, Layout 11/11, Style projection 2/2를 확인했다. 구현/runtime 실패 검토 20개와 cap 정규화 계획 수정 검토 20개도 마쳤다. Android API 37 ARM64 AVD는 layout-ready 14 boxes와 draw-presented, iPhone 17 Pro/iOS 26.2 Simulator는 layout-ready 14 boxes와 OS screenshot을 기록했다. Screenshots는 visual smoke이며 PixelCopy/Metal surface readback은 아니다. PR diff 적대 검토 30개가 남아 있다. C11.4/C11은 미완료, 공식 78/214와 계약 0.1.0을 유지한다. 계획·범위 · 실행 근거 · 구현/runtime 검토 20개",
+  "board": "할 일\n133\n+133개 미착수 항목\nQUEUE · DETAIL BELOW\n진행 중\n1/2\nGrid 24순서 구현\nC11.4 · 진행 중\n외부 대기\n3\niOS 실기기 검증 대기\nR02 · DEVICE WAIT\nAndroid 실기기 수집…\nR05 · DEVICE WAIT\nGPU 출력 위험 실험\nR08 · DEVICE WAIT\n완료\n78\nVue·Svelte 호스트…\nR07 · DONE\niOS 배포·OTA 정책 …\nR09 · DONE\nTaffy 적합성 실험\nR10 · DONE\n+75개 완료 항목\nARCHIVED · DETAIL BELOW\n미완료\n외부 조건 대기\n공식 완료",
+  "docWidth": 1440,
+  "viewport": 1440
+}
