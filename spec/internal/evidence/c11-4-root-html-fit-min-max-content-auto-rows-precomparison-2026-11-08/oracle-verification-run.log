@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "fixture": "tests/fixtures/css/c11/root-html-grid-fit-min-max-content-auto-implicit-row-list-precomparison.html",
+  "fixtureSha256": "fb1dea45dfe225df0e871ec376d1c7ee91cbc8bffd531d5b7ef662408af4d369",
+  "sceneCount": 96,
+  "orderCount": 24,
+  "capForms": [
+    "20px",
+    "20%"
+  ],
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "expectation": {
+    "rowsWithStart": [
+      10,
+      20,
+      10,
+      12,
+      6,
+      20
+    ],
+    "totalStartUsed": 78,
+    "remainingDefiniteFreeSpace": 22,
+    "stretchedTrackRule": "Only implicit auto max-sizing tracks share positive free space equally; the fifth implicit row repeats the first list member.",
+    "minMaxGeometryLimit": "These fixed-height payloads have equal min-content and max-content contributions; the computed CSS list is checked to preserve each distinct track function."
+  },
+  "allCasesMatched": true
+}
