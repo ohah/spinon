@@ -1,8 +1,10 @@
 # C11.4 · 반복 intrinsic row의 텍스트 기여
 
-**상태:** 제한 구현 후보 · Rust 행렬과 Android/iOS Simulator 확인 · PR #1290 미병합
+**상태:** 제한 구현 병합 완료 · PR [#1290](https://github.com/ohah/spinon/pull/1290) · merge SHA `b9440dcde6d3c3724baa1fa81d105b6c08cb10c6`
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
+
+**후속 계획:** [제한된 텍스트 content grammar](./c11-4-root-html-repeated-intrinsic-text-content.md) · Chrome 157 사전 비교 810 scenes · 계획 검토 20/20 · 제품 구현 전
 
 **구현 전 비교:** [Chrome 157 관측과 제한](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-precomparison-2026-11-08/README.md) · [270장면 기대 geometry](https://raw.githubusercontent.com/ohah/spinon/main/spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-precomparison-2026-11-08/chrome157-expected.json) · [HTML fixture](https://github.com/ohah/spinon/blob/main/tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-text-precomparison.html)
 
@@ -59,7 +61,7 @@ AA
 - 최종 module split 뒤 iPhone 17 Pro / iOS 26.2와 Pixel 6 / Android API 37.0 ARM64 AVD에서 같은 2,758-byte fixture SHA-256 `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`를 기본 Root HTML route로 실행했다. 두 앱 로그 모두 `layout=ready boxes=20`을 기록했다. 화면은 OS visual smoke이며 iOS Metal drawable readback이나 Android PixelCopy readback은 아니다.
 - Android ADB 실패 원인은 AVD 생성기 metadata였다. Command-line Tools 12.0이 root `.ini`에 `target=android-0`을 남겨 API 37 ARM64인데 HVF가 꺼졌다. QEMU mprotect 오류 뒤 exit 139가 재현됐다. CLI 23.0으로 새 AVD를 만들자 `target=android-37.0`, QEMU `-enable-hvf`, `CPU Acceleration: working`, ADB online이 확인됐고 앱 실행까지 통과했다. 자세한 원인과 로그는 [Android runtime evidence](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/README.md)에 남겼다.
 - 임시 iOS Simulator와 실패한 API37 AVD는 제거한다. 올바른 metadata로 만든 API37.0 AVD는 다음 C11.4 검증에서 재사용하도록 종료 상태로 유지한다. 임시 HTML/JS 입력은 복원했다. 기존 Android APK build output은 최종 후보 APK로 갱신해 별도 hash를 기록했다.
-- [구현/runtime 실패 관점 검토 20/20](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/implementation-runtime-review-20.md)과 [PR diff 실패 관점 검토 30/30](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/pr-diff-review-30.md)은 통과했다. 이 후보는 아직 PR로 병합되지 않았고, 공식 C11.4/C11 완료 체크 및 `78/214`는 바꾸지 않는다.
+- [구현/runtime 실패 관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-intrinsic-text-runtime-2026-11-08/pr-diff-review-30.md)는 통과했다. PR [#1290](https://github.com/ohah/spinon/pull/1290)은 `2026-11-08T13:53:01Z` Rebase and merge로 병합됐고 merge SHA는 `b9440dcde6d3c3724baa1fa81d105b6c08cb10c6`다. 이는 고정 fixture의 제한 구현이다. 공식 C11.4/C11 완료 체크와 `78/214`는 바꾸지 않는다.
 
 ## 범위 밖
 
