@@ -1,0 +1,28 @@
+{
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "bytes": 634047,
+    "sha256": "cdeef069a4d64823960449634cc4b61de5af57534330816aa5fe6e350f29fe7a"
+  },
+  "local": {
+    "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 634047,
+    "sha256": "cdeef069a4d64823960449634cc4b61de5af57534330816aa5fe6e350f29fe7a"
+  },
+  "tailnet": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 634047,
+    "sha256": "cdeef069a4d64823960449634cc4b61de5af57534330816aa5fe6e350f29fe7a"
+  },
+  "markers": [
+    "PR #1277",
+    "8aa7570d34ac7c0ac9f93f3aac4fe555428741fa",
+    "현재 진행 · C11.4 Grid intrinsic track sizing",
+    "78/214"
+  ],
+  "byteIdentical": true,
+  "backupHashVerified": true,
+  "serverRestarted": false
+}

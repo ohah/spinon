@@ -1,0 +1,657 @@
+{
+  "publicationManifest": "selected-publication-manifest-pass03.json",
+  "fileCount": 112,
+  "added": 19,
+  "unchangedIdentical": 80,
+  "replacedWithBackup": 13,
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03",
+  "atomicReplacementKeepsExistingReaderFileDescriptorsValid": true,
+  "noDeletes": true,
+  "serverRestarted": false,
+  "entries": [
+    {
+      "route": "icon.svg",
+      "state": "unchanged-identical",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 760568,
+      "sha256": "0340e208e851bc04f76604b345df5bed4b6cd453f6ebaa602c07c0c566373395",
+      "previousSha256": "cf0426bb789a03cc008fae307777b15832ec3ff48ac36d3a3143ae8851b08740",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/0059-c11-grid-layout.html",
+      "backupSha256": "cf0426bb789a03cc008fae307777b15832ec3ff48ac36d3a3143ae8851b08740",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/chrome-157-order-matrix.json",
+      "state": "unchanged-identical",
+      "sha256": "8b7bd43fbdfa3d210c0780971101b619738263da921ca98ce8aedb4602a743db"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/chrome-157-order-matrix.png",
+      "state": "unchanged-identical",
+      "sha256": "75e70e39daf26cbe5b04575c933e96ebf2f9a47a2a589b09053db6ba0a578eae"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 28847,
+      "sha256": "b150393feb770d8b3493c7e6b85722ba4fbfa4d69dcff4564dc0a4313e263a26",
+      "previousSha256": "f69795a51be9fdf2df256f4f834367878af8ff12f63ae0fceebaafeaa345b6dd",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/plan-pr-diff-review-30.html",
+      "backupSha256": "f69795a51be9fdf2df256f4f834367878af8ff12f63ae0fceebaafeaa345b6dd",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 27066,
+      "sha256": "7e2bbbc12b09df030ae7e262dc3a6ff2a952da0088a6197cd4aca85fd94ea07a",
+      "previousSha256": "fe390275b2fddab4a8842a0a339bb2d131571ab438a1bde4df0e15e94a7e2cfc",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "backupSha256": "fe390275b2fddab4a8842a0a339bb2d131571ab438a1bde4df0e15e94a7e2cfc",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/build.log",
+      "state": "unchanged-identical",
+      "sha256": "015cda59d412c54c0dd356afd112f6a3d00518f8db2ad3fec4e5ae89e0026b5f"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/abi.txt",
+      "state": "unchanged-identical",
+      "sha256": "7f10c3cd4593d1d6ded27d658e7c05216011c955c200aac551caad0c979d4d90"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/android-release.txt",
+      "state": "unchanged-identical",
+      "sha256": "54183f4323f377b737433a1e98229ead0fdc686f93bab057ecb612daa94002b5"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/api-level.txt",
+      "state": "unchanged-identical",
+      "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/app-current-process.log",
+      "state": "unchanged-identical",
+      "sha256": "81e8c9f92f8138342e19836f1cc27447f292b5384300a49ac60ff032696c8bba"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/app-pid.txt",
+      "state": "unchanged-identical",
+      "sha256": "a1d14cc61c35c3af89dfadd92397c15be5d55ead97a1cd6573fac23586e1801b"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/app.log",
+      "state": "unchanged-identical",
+      "sha256": "192e01845ef71efa0f775df3411e490fd0668da3eac86d3e7919d956809e5600"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/appearance.txt",
+      "state": "unchanged-identical",
+      "sha256": "70d2a5d1d7c18e85ddd00cdbbb4d66945f6bda16f5efa2d8afe9cf9889f51991"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/current-app-pid.txt",
+      "state": "unchanged-identical",
+      "sha256": "a1d14cc61c35c3af89dfadd92397c15be5d55ead97a1cd6573fac23586e1801b"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/density.txt",
+      "state": "unchanged-identical",
+      "sha256": "c4d910beb2bd2a0e1934a659e6f50c1ce400c0186723be9ba5dacf57bc99b11e"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/device.txt",
+      "state": "unchanged-identical",
+      "sha256": "3b730da59121011c8aa637fcd60a52c849101efe84ad26c57b4929cccded5ea2"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/force-stop.log",
+      "state": "unchanged-identical",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/install.log",
+      "state": "unchanged-identical",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/is-emulator.txt",
+      "state": "unchanged-identical",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/launch.log",
+      "state": "unchanged-identical",
+      "sha256": "d7f668208a38a429f9b582329a90fd0784a962cf81218e05315c66bc058f7bbd"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/package-after.txt",
+      "state": "unchanged-identical",
+      "sha256": "cf7416947f343ba889a05713a1221618246e445004da0766d7c770541b99f49c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/package-before.txt",
+      "state": "unchanged-identical",
+      "sha256": "5c0ae4838f163757be044192668de47feb7fa67af8c53c336ee7819083530cf0"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/resumed-activity.txt",
+      "state": "unchanged-identical",
+      "sha256": "4dba0f1d892a12da1a95d40506cb699149f5f38b07ad43b8aa1ffb5e2f99d973"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screen-size.txt",
+      "state": "unchanged-identical",
+      "sha256": "07377115fb06f1cbbbfdc0f30fb6862024571638f1173d6dc4311c06f720df45"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot-before-draw.png",
+      "state": "unchanged-identical",
+      "sha256": "cb711f447d96bc8eb26cf3982d25f9edfca58a6abecf37ca7b6cb7ff9bf1fbfb"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot-before-draw.sha256",
+      "state": "unchanged-identical",
+      "sha256": "659c66356b0b549d5887f0dd746636485376e97308bdbeff3fc037fe1c397a6c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot.png",
+      "state": "unchanged-identical",
+      "sha256": "72ac60d0660fbd4c1e1d577859797f1f30daa7c569633aee7c614b3b346a949f"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot.sha256",
+      "state": "unchanged-identical",
+      "sha256": "95acbe4c852e26533b5f751b3eadf12c0320a4dfecc6090ee2802f7ef52c3540"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/bootstrap-original/index.html",
+      "state": "unchanged-identical",
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/bootstrap-original/restored.sha256",
+      "state": "unchanged-identical",
+      "sha256": "07332bf9c1b737db1c63b34877124eb7375c42cd4a58c76d719314ab8264a6c5"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/build-simulators.sh",
+      "state": "unchanged-identical",
+      "sha256": "62e3313fd321d529da5171543922c48327c0ac867086915769be13b736e160c6"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/built-artifacts.sha256",
+      "state": "unchanged-identical",
+      "sha256": "e2e6c379974f85c0cfadd8540bb749bb0d37bbf23b690fab7a3bd181b7ad876e"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/capture-android-current-process.sh",
+      "state": "unchanged-identical",
+      "sha256": "39b5c8392a25b6047512b16116bafab1833519402880f44567eb4897166c366c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/chrome-runtime-oracle.json",
+      "state": "unchanged-identical",
+      "sha256": "73285df36562a882e5a69b258502c16a3956d0267f18a1c592f0a1303ba90a6d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/chrome-runtime-oracle.png",
+      "state": "unchanged-identical",
+      "sha256": "4f518af15b584e8af01b1af126268422f17a9f60eaa7bde9637c62349f4e57f8"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/final-capture.sha256",
+      "state": "unchanged-identical",
+      "sha256": "7e988052f63c3d9b6748b767736deeaa25426455f3bdaaaabfee52ffd5b9c829"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/final-source.json",
+      "state": "unchanged-identical",
+      "sha256": "5abd2395ab65e764f01762d194cf5b0ad556d6c8c28a4daeef030fd4ad14450c"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 34831,
+      "sha256": "015edd0cd10a67c3b2b70083d99a0fc8d5b03a3e3c30114afb2f8fbf4e7df432",
+      "previousSha256": "77e780e83c81141d1b3295f4b7f06a97f8c7510cf896cca086a144a948626034",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/implementation-runtime-review-20.html",
+      "backupSha256": "77e780e83c81141d1b3295f4b7f06a97f8c7510cf896cca086a144a948626034",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/install-capture-simulators.sh",
+      "state": "unchanged-identical",
+      "sha256": "78ef20fb5e1caf9eb2c4e0a0111176f342652f7e1973174ca9f888c3b0b33abb"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/build.log",
+      "state": "unchanged-identical",
+      "sha256": "364e7e976bc5178bc01ac8689e9e7a2ee4702baf8fcef5d738273b0ebf815036"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/app-current-process.log",
+      "state": "unchanged-identical",
+      "sha256": "3a74a8004aafd71f979e76dd226f340a457b053a8a73bcf0574dc3f5a2da7603"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/app-pid.txt",
+      "state": "unchanged-identical",
+      "sha256": "77adfe8c2014bbfd205adae2157cca377f3f9b8a417dc6445bca7e263ade9cb6"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/app.log",
+      "state": "unchanged-identical",
+      "sha256": "8a9f133245d191cc89f83fdb2d6c46acebcdeb72c7d0ecbe2b4f1b124552a657"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/booted-devices.txt",
+      "state": "unchanged-identical",
+      "sha256": "30b89c98f9d9b2243ccd2635449606adfba59d6d03e6fdb11d5067cc0d2791b7"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/data-container-after.txt",
+      "state": "unchanged-identical",
+      "sha256": "007c8df79d452d943f217e97bb52cb7f545329265a0302dc47e0f25e2923d9e0"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/data-container-before.txt",
+      "state": "unchanged-identical",
+      "sha256": "e78e19177a962b866de7e49409ab933cca27ac2c0f7abe51c21af47ee6d7f2db"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/data-container-identity.txt",
+      "state": "unchanged-identical",
+      "sha256": "7f8b1dfc466b6249f06cbe55c9174df2578e7754da793fded244ef5cba2a38f1"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/device-metadata.json",
+      "state": "unchanged-identical",
+      "sha256": "4b31fdc6c455510e0b4f0fc5f728e2b4f3af371a1a2c02d16d74c5879c07cc94"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/device-name.txt",
+      "state": "unchanged-identical",
+      "sha256": "3f14991586b96220745b63a5b89c0346760d45d6b2143a08b9c2eda2b83b7866"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/device.txt",
+      "state": "unchanged-identical",
+      "sha256": "361b57e2943c8f01439dabba0941232d8afde5b3b65fb3488747e7c296b80ea9"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/install.log",
+      "state": "unchanged-identical",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/installed-fixture.sha256",
+      "state": "unchanged-identical",
+      "sha256": "99dea414f62349f495028291f2c5c4bd2c3e5681a75e46c56086543463618e21"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/launch.log",
+      "state": "unchanged-identical",
+      "sha256": "7efc0c3671657f6ac215c0daf745d7ec08bd08ab150f37c35dfe0b0d1909abf8"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/screenshot.log",
+      "state": "unchanged-identical",
+      "sha256": "6c07f54a1ce9b73f5065f362e35e6b911a29d9d3db4b5f6c2a11df8af89e94af"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/screenshot.png",
+      "state": "unchanged-identical",
+      "sha256": "90412921959d0d8d6adb6821382cb19bcd62487e7cfc5c673f142dbeafafb099"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/terminate.log",
+      "state": "unchanged-identical",
+      "sha256": "b85926f2d5887c7b5208af8fdfa3e885bf38ccd9c1a9fe68ef16c135c29156f2"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 37754,
+      "sha256": "e4517688929261efe788f49fdb2d22a32eece3441ec5a41fb65a1f7bf7f45e6e",
+      "previousSha256": "e816f079cfa386230aea323257f1a67a5e4d522f4e10a747cd7c713a9cf0da92",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "backupSha256": "e816f079cfa386230aea323257f1a67a5e4d522f4e10a747cd7c713a9cf0da92",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 31764,
+      "sha256": "2886850952ec3c446f8d6510483ccddec431f38c239b85c0d87bdbe2b26d47c3",
+      "previousSha256": "25760c3da547b60b661a6b947b2fed2c3f6c73b8f8e9645e4d4a843e5d91cd05",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "backupSha256": "25760c3da547b60b661a6b947b2fed2c3f6c73b8f8e9645e4d4a843e5d91cd05",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-desktop.json",
+      "state": "unchanged-identical",
+      "sha256": "35329ff67dc6bf1cfeb37ad80eb388fe4b31ba349eb283732b42987b1d55b6d0"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-desktop.txt",
+      "state": "unchanged-identical",
+      "sha256": "f41e830e4c8d6bed8f22d448e3f4e8c7d360e1823a1d848646db8682cc50a8dc"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-mobile.json",
+      "state": "unchanged-identical",
+      "sha256": "5d5fb9aa6d7a7df0b2a861cfc436f56b80f60935968c93c62ef9e3c9aee2e246"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-mobile.txt",
+      "state": "unchanged-identical",
+      "sha256": "ce3fe5fdb2187b4d5755c0fde3185c22721c1fbc02183424993eaf21fb053cbd"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/android-image-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "8b4bee469bed75a090549a546ab24ae36d2dc0960c031cda1a3c2bca5531a7bf"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/copy-and-backup.json",
+      "state": "unchanged-identical",
+      "sha256": "22400eeb0c3d496f3e6c9b5fde2e030f6b7da204b2b8aa4078114c85f68d7796"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification-bad-url.json",
+      "state": "unchanged-identical",
+      "sha256": "ee742210852d73e802d3043c0377c4f50a895d73d869817b12dc317d049e1426"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "c19aad708d472d57fe1ce3cdff2289ad9076030e4425055b65f61e57d624491d"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/plan-link-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "9acbd6815c5cc25b17a5761f0a30efc6189b7e31bfb0dec27b72e0b6fb0ea5b3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/preflight.json",
+      "state": "unchanged-identical",
+      "sha256": "462d527b5069640241dd50f61011293da59948d1ce11fee9e9c036739bd1633a"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 28896,
+      "sha256": "05ca92143cbfefa18011d2cb207732749b24e9393e3a4e31ac2b06a740b0d715",
+      "previousSha256": "b93382ee399590d75dd177d7ef32c5ee666f5e8601b06b1993772f8ec8d29d56",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "backupSha256": "b93382ee399590d75dd177d7ef32c5ee666f5e8601b06b1993772f8ec8d29d56",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 36991,
+      "sha256": "bcef6a9c74a36d3ca62bb541a3d959e7ee4194210e71816e468f873a9f85e8d9"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 33533,
+      "sha256": "06962236da7573ae3785ae81a36210e4b69c7482125f3ab159c98d8eba818fe6"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/runtime-evidence-link-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "7b6d008003e4f05914d1af4cef16d81f716afa0f1091fa283b5ba4a21bd14798"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/served-verification.json",
+      "state": "unchanged-identical",
+      "sha256": "23ab1bfcf569b647731691983e64c8e8c6e6de471545dda7c508915e4b5fac68"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/tailnet-roadmap-agent-browser-desktop.png",
+      "state": "unchanged-identical",
+      "sha256": "d6a97e8a1e820d669cafa5600d2d0064f0d3fd7f625acfefbea5d852b620e70e"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/tailnet-roadmap-agent-browser-mobile.png",
+      "state": "unchanged-identical",
+      "sha256": "39be28423d9381c8b439a9a5affa025c077231e6f08a2c06b98f5d9970c0c329"
+    },
+    {
+      "route": "logo.svg",
+      "state": "unchanged-identical",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 382344,
+      "sha256": "f5af0f55bb38fdd9606ca3a3f8fa834230343dc9a63965dbebba2eabeecbc374",
+      "previousSha256": "61826aa17c79e892d2bfe547a326a0382c58b7078c0a12082047da785fadc155",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/plan/c11-4-grid-track-sizing.html",
+      "backupSha256": "61826aa17c79e892d2bfe547a326a0382c58b7078c0a12082047da785fadc155",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 27467,
+      "sha256": "96259c961e409d9a948e637dfc588ee22e0bd82250d354a0eb2d7799616f5b4c",
+      "previousSha256": "709d9035bf8a29cb54d7634d3b35d4bf66421126c69c69cfc7661c8a03078719",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order-plan-review-20.html",
+      "backupSha256": "709d9035bf8a29cb54d7634d3b35d4bf66421126c69c69cfc7661c8a03078719",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 35440,
+      "sha256": "16c5888f56db9251e09ed13ba92a9d62e617fb7f030177a45d6374a414fb62da",
+      "previousSha256": "820616760d2fe6e72bdce53726d4fd90a08aad97d6f3ddf4c60e927fc42a7d65",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "backupSha256": "820616760d2fe6e72bdce53726d4fd90a08aad97d6f3ddf4c60e927fc42a7d65",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 37512,
+      "sha256": "f319386f9f79c885f43a8e37cb1fb290981244e1abcdcb2e5b27314ef4b799bd",
+      "previousSha256": "8af683dd06650c7199f293879b2b4a71a989a209b568ad26322fda7d146f1df6",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/plan/c11-4-root-html-fit-content-min-content-auto-track-list.html",
+      "backupSha256": "8af683dd06650c7199f293879b2b4a71a989a209b568ad26322fda7d146f1df6",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "roadmap.html",
+      "state": "unchanged-identical",
+      "sha256": "c46e5023dc877c8407b52210615dc141e06a808a0c1e1ced18ba17dc33e17f70"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 883748,
+      "sha256": "a125c2a73fbadfb7a16832f4338d1a19bb5a582437776e8b1b25f4073570aa7f",
+      "previousSha256": "316290ffa34f5d2940e34bc44eb8814bae1dac06e9b5225bc42505d5b5ae4c1c",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/spec/STATUS.html",
+      "backupSha256": "316290ffa34f5d2940e34bc44eb8814bae1dac06e9b5225bc42505d5b5ae4c1c",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "state": "unchanged-identical",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "state": "unchanged-identical",
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "state": "unchanged-identical",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "state": "unchanged-identical",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.938ae5bdb5.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 374190,
+      "sha256": "f374562e2477c60f90a2107c71bc30553c07a9335f5c74b154cb1614ebf7a2f6"
+    },
+    {
+      "route": "static/js/async/route-2879276472d3.e31aaa73ea.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 7148,
+      "sha256": "adf684c5b23d7558ac25a92fe1ecf6341a37c0f655b1c3dbb69e45535829405e"
+    },
+    {
+      "route": "static/js/async/route-3cacfb6a4458.efc4143f89.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 11741,
+      "sha256": "7ed2a98eba41ab52a6844f7bb4cf9db74e80d68a574276916aa7e83850926dc7"
+    },
+    {
+      "route": "static/js/async/route-3f36c54b37b2.a4e49a7ff2.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8074,
+      "sha256": "6ab9b12f11926eba136157f230e4b64d4b509d86db1ede0e2b46d27f83ecef3e"
+    },
+    {
+      "route": "static/js/async/route-49647b97ab0e.103d6d8df1.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8099,
+      "sha256": "5b045c2b15e9965329aca709d098c1ae7c70d1ae1fcf0ac0228c74fa3754bfa3"
+    },
+    {
+      "route": "static/js/async/route-59ef5d88f123.c118c8bbef.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8314,
+      "sha256": "12d8835813f92f846ad829bd7afb3f8ff084b11ac34a22e64a51d590acd3ac87"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.0a27b4b23f.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 953816,
+      "sha256": "f3f1761997bf1474e50fb05bfebca3d5c813d0a6eadfe086981e72ec4ae587f7"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.6dbb25df19.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 953671,
+      "sha256": "cc2c7738f75853c91932a5289cccbc71ef5056d5a3326ab201e599e2bba1edca"
+    },
+    {
+      "route": "static/js/async/route-8305a94f045b.aa103da9f3.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 10202,
+      "sha256": "8cf4f38fbf6dbf9f394d83c528399b147318bc2b12595883005c371cbc28c85e"
+    },
+    {
+      "route": "static/js/async/route-8cdba721bb25.c9019c7fe2.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 15353,
+      "sha256": "e447cb21b1d5c9f09bdc8fdb51c00e9f61a63e17b61ec0a7f233117f75436978"
+    },
+    {
+      "route": "static/js/async/route-c42d69c1e313.efdf773360.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 6723,
+      "sha256": "3fc437658d45fcd6cd3d7d822b2fa51c557bd7f11c7c1e7406cb36100b556616"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.2eb6ebe908.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 797697,
+      "sha256": "1f7eac6488d827a311f8dbc93497ad8c174a9dbd5ccd659eafc1a50ca7001ce0"
+    },
+    {
+      "route": "static/js/async/route-d78869bdfdd8.9dd8ec2d9e.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 7070,
+      "sha256": "9caa0a350fc718de368229331dea2a6a2cadbac9774e90047ebbac3913251af4"
+    },
+    {
+      "route": "static/js/async/route-d89a612ff1b4.1e73422b1b.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 17722,
+      "sha256": "736a36bc06993ce808e8eb751c2a23c84db773887aa2f7a4d89ccc671d60a5cb"
+    },
+    {
+      "route": "static/js/async/route-e46f534d763f.0c518c9c5a.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 8679,
+      "sha256": "3eda43809f50bf0a29ae1ad5ddcba73ebedfbc418a3711be5976e7aec9f2fa06"
+    },
+    {
+      "route": "static/js/index.4299ebcb2e.js",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 115301,
+      "sha256": "9c4ff7d7a31bcec41876cfc7b222bae45b8a0ce7f657b25c8431b9d2ece34a00"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "state": "unchanged-identical",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "state": "unchanged-identical",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "state": "unchanged-identical",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "state": "unchanged-identical",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.2da0941fcb.js",
+      "state": "unchanged-identical",
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "route": "static/search_index.ko.05a98458.json",
+      "state": "added-exclusive-atomic-link",
+      "bytes": 1848660,
+      "sha256": "05a984583f4644221df40e98d35d43c654ffa44ee160815bb3bcd1c622f4de29"
+    },
+    {
+      "route": "STATUS.html",
+      "state": "replaced-same-directory-atomic-rename",
+      "bytes": 883746,
+      "sha256": "95133953e9d5cca9757f41399319f4875a18543d44e45e2f60aa3b1bdd2e185e",
+      "previousSha256": "8ab16d2ed9bf010454eafd4f953917b8921848613e900eb21e61454a70edc506",
+      "backup": "Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/pass03/STATUS.html",
+      "backupSha256": "8ab16d2ed9bf010454eafd4f953917b8921848613e900eb21e61454a70edc506",
+      "openReaderPidsBeforeRename": []
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-remaining-order-precomparison.html",
+      "state": "unchanged-identical",
+      "sha256": "e927dcbec971bba640d3cb7c90906850c6a4fe780226bf31b0f7dc854b8d0b89"
+    },
+    {
+      "route": "tests/fixtures/css/c11/root-html-grid-fit-content-min-content-auto-remaining-order-runtime.html",
+      "state": "unchanged-identical",
+      "sha256": "2f108e91fb3f7485df0aded8e4eb7942f7718063f63437eb05ec064532d9471e"
+    }
+  ]
+}

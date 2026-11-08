@@ -1,0 +1,33 @@
+{
+  "buildExitCodes": {
+    "selected-rspress-build.log": 0,
+    "selected-rspress-build-pass03.log": 0
+  },
+  "report": [
+    {
+      "file": "selected-rspress-build.log",
+      "rawArchive": "selected-rspress-build.log.raw.gz",
+      "capturedBytes": 7115,
+      "capturedSha256": "9b18d5bf64c335637550ad8975092727023fdbe7d78a2637d3873de425824ece",
+      "compressedBytes": 1135,
+      "compressedSha256": "d86cc0b5f51805bcead51188ef4921a6c7aad5128e99e5d3dc5ecd1e17c41202",
+      "normalizedBytes": 7108,
+      "normalizedSha256": "9a5169458c5176c274aec7cae20bec788ed981483ff0d0117a64577d021c7bc8",
+      "normalization": "trim trailing horizontal whitespace and trailing blank lines only",
+      "exactRawBytesRecoverable": true
+    },
+    {
+      "file": "selected-rspress-build-pass03.log",
+      "rawArchive": "selected-rspress-build-pass03.log.raw.gz",
+      "capturedBytes": 8149,
+      "capturedSha256": "0c520928d6ce9d38032be6ead9ef8aa51b25cfb81b7f335594790346e331abe4",
+      "compressedBytes": 1209,
+      "compressedSha256": "8347b31d6d8278c12c5aa3e267e4ab17c5543077ae1e72e893ebd8d6d9b85006",
+      "normalizedBytes": 8142,
+      "normalizedSha256": "e6052e11c1b39783be5a567a5ddc427387874b7d531ee1c7d1b5dbddf76e521f",
+      "normalization": "trim trailing horizontal whitespace and trailing blank lines only",
+      "exactRawBytesRecoverable": true
+    }
+  ],
+  "semanticBuildOutputChanged": false
+}

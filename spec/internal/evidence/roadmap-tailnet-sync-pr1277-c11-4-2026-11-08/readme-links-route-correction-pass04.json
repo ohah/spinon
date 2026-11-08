@@ -1,0 +1,160 @@
+{
+  "readmeLinkCount": 21,
+  "added": 14,
+  "alreadyIdentical": 7,
+  "routes": [
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-desktop.txt",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-desktop.txt",
+      "state": "already-identical",
+      "bytes": 458943,
+      "sha256": "f41e830e4c8d6bed8f22d448e3f4e8c7d360e1823a1d848646db8682cc50a8dc"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-lifecycle-final.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-lifecycle-final.json",
+      "state": "add",
+      "bytes": 585,
+      "sha256": "283b0b355ba1ada7ff40cd1dffa04df4a057cb993f72362bc20ffc230bfee0e3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-mobile.txt",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-mobile.txt",
+      "state": "already-identical",
+      "bytes": 458942,
+      "sha256": "ce3fe5fdb2187b4d5755c0fde3185c22721c1fbc02183424993eaf21fb053cbd"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-plan.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-plan.json",
+      "state": "add",
+      "bytes": 1671,
+      "sha256": "a60e49c575b3b4d9dc9731d923ff637365e2240906d837907237b69e5b3742a7"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-pr-diff-review.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-pr-diff-review.json",
+      "state": "add",
+      "bytes": 1747,
+      "sha256": "4a4ad509f0d0915b0524414d469e8b0d475130090bce51b6c4041bb77842fe76"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-precomparison.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-precomparison.json",
+      "state": "add",
+      "bytes": 1723,
+      "sha256": "bb95a0ebd2565237c6cac0dc5e4c5780da0234dee141185bbe89d130fde7b528"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-roadmap-evidence.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-roadmap-evidence.json",
+      "state": "add",
+      "bytes": 1609,
+      "sha256": "6e5e0251d834727078dcda86b04a8bace961f19338bcf1c59f5136b680b3d946"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-runtime.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-runtime.json",
+      "state": "add",
+      "bytes": 1741,
+      "sha256": "58b16b248070a0c581e82a26424441424669393c4c44beb465847dccda15616f"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/android-image-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/android-image-verification.json",
+      "state": "already-identical",
+      "bytes": 326,
+      "sha256": "8b4bee469bed75a090549a546ab24ae36d2dc0960c031cda1a3c2bca5531a7bf"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-agent-browser-desktop.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-agent-browser-desktop.json",
+      "state": "add",
+      "bytes": 1391,
+      "sha256": "f6d2c1deff579d315e7403a95f373d4b6c489b7455e5ee7ec2b7bc4c11a7d5d2"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-agent-browser-mobile.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-agent-browser-mobile.json",
+      "state": "add",
+      "bytes": 1412,
+      "sha256": "91584ec6855e0abfd1c904f6a5df3181840db8aa453585dc868bffbd9fe340f0"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-roadmap-agent-browser-desktop.png",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-roadmap-agent-browser-desktop.png",
+      "state": "add",
+      "bytes": 148989,
+      "sha256": "71b0afb78927e1257a178e3c47fd76c834958c7bcede8d40d91e5ee91e6cf72d"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-roadmap-agent-browser-mobile.png",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-roadmap-agent-browser-mobile.png",
+      "state": "add",
+      "bytes": 49939,
+      "sha256": "afa9afb4b9797bdac002d84eeb48d359f82bf30f2011f516d4f2c044c49f1df3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification-bad-url.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification-bad-url.json",
+      "state": "already-identical",
+      "bytes": 245,
+      "sha256": "ee742210852d73e802d3043c0377c4f50a895d73d869817b12dc317d049e1426"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/ios-image-verification.json",
+      "state": "already-identical",
+      "bytes": 322,
+      "sha256": "c19aad708d472d57fe1ce3cdff2289ad9076030e4425055b65f61e57d624491d"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/plan-link-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/plan-link-verification.json",
+      "state": "already-identical",
+      "bytes": 181,
+      "sha256": "9acbd6815c5cc25b17a5761f0a30efc6189b7e31bfb0dec27b72e0b6fb0ea5b3"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/runtime-evidence-link-verification.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/runtime-evidence-link-verification.json",
+      "state": "already-identical",
+      "bytes": 220,
+      "sha256": "7b6d008003e4f05914d1af4cef16d81f716afa0f1091fa283b5ba4a21bd14798"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-publication-result-pass03.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-publication-result-pass03.json",
+      "state": "add",
+      "bytes": 34428,
+      "sha256": "4e9627a597079c991003027e78a967720dbc849557ec96cf828783caa383a83b"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-route-audit.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-route-audit.json",
+      "state": "add",
+      "bytes": 2225,
+      "sha256": "e99712871578f130d1359abc973191783acb92eed562faa9c9662516f172d042"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-rspress-build.log",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-rspress-build.log",
+      "state": "add",
+      "bytes": 7115,
+      "sha256": "9b18d5bf64c335637550ad8975092727023fdbe7d78a2637d3873de425824ece"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/served-link-verification-pass03.json",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/served-link-verification-pass03.json",
+      "state": "add",
+      "bytes": 16191,
+      "sha256": "f13f670d9a0f37725beb149581221d512f81d026d2bcce51f349c8090873c012"
+    }
+  ],
+  "initialEvidenceCopyHadWrongPrefix": "/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/",
+  "correctedPrefix": "/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/",
+  "tailscaleBackendState": "Running",
+  "previewServerPid": 28040,
+  "serverRestarted": false,
+  "noDeletes": true
+}

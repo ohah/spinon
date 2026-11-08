@@ -1,0 +1,47 @@
+{
+  "rspressVersion": "2.0.22",
+  "buildLog": "selected-rspress-build.log",
+  "fullDocsDeadLinkCheck": false,
+  "roadmapSource": "spec/public/roadmap.html",
+  "roadmapActiveMarkers": [
+    "진행 중: C11.4 Grid 트랙 크기",
+    "title:'Grid 트랙 크기'",
+    "task.code + ' · 진행 중'",
+    "78/214"
+  ],
+  "checkedCardLocalLinks": 5,
+  "checkedCardRoutes": [
+    {
+      "href": "/spinon/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "route": "plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "bytes": 35440,
+      "sha256": "16c5888f56db9251e09ed13ba92a9d62e617fb7f030177a45d6374a414fb62da"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "bytes": 27066,
+      "sha256": "7e2bbbc12b09df030ae7e262dc3a6ff2a952da0088a6197cd4aca85fd94ea07a"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "bytes": 31764,
+      "sha256": "2886850952ec3c446f8d6510483ccddec431f38c239b85c0d87bdbe2b26d47c3"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "route": "internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "bytes": 37754,
+      "sha256": "e4517688929261efe788f49fdb2d22a32eece3441ec5a41fb65a1f7bf7f45e6e"
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "bytes": 28896,
+      "sha256": "05ca92143cbfefa18011d2cb207732749b24e9393e3a4e31ac2b06a740b0d715"
+    }
+  ],
+  "generatedFileCount": 43,
+  "generatedBytes": 8979275
+}

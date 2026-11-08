@@ -1,0 +1,236 @@
+{
+  "requests": 38,
+  "sourceAssetsPerBase": 19,
+  "allHttp200": true,
+  "allHashesMatch": true,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/publication-preflight-pass03.json",
+      "status": 200,
+      "bytes": 4326,
+      "sha256": "c21e57729f16fbcb0b22add7a49207449fc3f6a45ce34bc91fef5eee1bbd6a54"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-publication-manifest-pass03.json",
+      "status": 200,
+      "bytes": 97532,
+      "sha256": "f46c8115821ec1b1bf170f943fb9205c1f3dfc21470d00b9e8cbf646392ae1f3"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-publication-result-pass03.json",
+      "status": 200,
+      "bytes": 34428,
+      "sha256": "4e9627a597079c991003027e78a967720dbc849557ec96cf828783caa383a83b"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/served-link-verification-pass03.json",
+      "status": 200,
+      "bytes": 16191,
+      "sha256": "f13f670d9a0f37725beb149581221d512f81d026d2bcce51f349c8090873c012"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-route-audit-pass03.json",
+      "status": 200,
+      "bytes": 2225,
+      "sha256": "477f427608b1057e49bc835eca127d43d2826d9e82a13cb20c7c04a2ee278bee"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-root-manifest-pass03.json",
+      "status": 200,
+      "bytes": 33672,
+      "sha256": "2fd163111eacf97c81c2ebf1d2aef5f9de6bbd2494ff363a196c172d29c58574"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/stage-pass03.json",
+      "status": 200,
+      "bytes": 322,
+      "sha256": "b1654befab96b09a9e579956c0b8f19dfbde54138c320424930f9cc5fac1245e"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-lifecycle-final.json",
+      "status": 200,
+      "bytes": 585,
+      "sha256": "283b0b355ba1ada7ff40cd1dffa04df4a057cb993f72362bc20ffc230bfee0e3"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-roadmap-desktop.json",
+      "status": 200,
+      "bytes": 1447,
+      "sha256": "8279b2f44bd7c6ac6880923ed2747d637aa794ae97181c318dff051569f40c03"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-roadmap-mobile.json",
+      "status": 200,
+      "bytes": 1480,
+      "sha256": "f7c8018d2f040d9ceadb73b4d59aeec34f52b7da0623abbef52996040214377b"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-plan.json",
+      "status": 200,
+      "bytes": 4414,
+      "sha256": "2ce053cf6b2f63cae5838f023d3eb0d8db275b4e664552e657a46a499c5de633"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-precomparison.json",
+      "status": 200,
+      "bytes": 3706,
+      "sha256": "0ede9c50235b6ad41cddde3c5c596e1216f1c6e2ba43ade1ebddb50f59990dd2"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-runtime.json",
+      "status": 200,
+      "bytes": 4843,
+      "sha256": "202da1acb7de784cefab22f1a5f4124c233127324f3dbf5f91f85c253d7db2dd"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-c114-pr-review.json",
+      "status": 200,
+      "bytes": 2750,
+      "sha256": "a71110a4dc743d8144b838451b0e7ca0f715de088ca9e7adb4bd5b28011589ca"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-evidence.json",
+      "status": 200,
+      "bytes": 5722,
+      "sha256": "716d960762d756e160d0abf7fba9301644384a4341a369a40a88a5665a4c8ba5"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-status-review.json",
+      "status": 200,
+      "bytes": 2919,
+      "sha256": "bc168095a64e5dbd0972178bfde71cfac6c795244f55080dc110dd3b366f2161"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-diff-review.json",
+      "status": 200,
+      "bytes": 2943,
+      "sha256": "d2c4dd903ceb395d3506ae3b7dbcc216acbd532e225b01ce417cfc347c1befd3"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-pass03-roadmap-desktop.png",
+      "status": 200,
+      "bytes": 148841,
+      "sha256": "9d864e644387406f479028e71521d9eb3bfba5ef5fbf5b62ca9c9f82fc2f5564"
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-pass03-roadmap-mobile.png",
+      "status": 200,
+      "bytes": 49884,
+      "sha256": "7691219d5f2b60815d4be88f9ccf5aa000c36573136f1cc303e703c0b6388da2"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/publication-preflight-pass03.json",
+      "status": 200,
+      "bytes": 4326,
+      "sha256": "c21e57729f16fbcb0b22add7a49207449fc3f6a45ce34bc91fef5eee1bbd6a54"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-publication-manifest-pass03.json",
+      "status": 200,
+      "bytes": 97532,
+      "sha256": "f46c8115821ec1b1bf170f943fb9205c1f3dfc21470d00b9e8cbf646392ae1f3"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-publication-result-pass03.json",
+      "status": 200,
+      "bytes": 34428,
+      "sha256": "4e9627a597079c991003027e78a967720dbc849557ec96cf828783caa383a83b"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/served-link-verification-pass03.json",
+      "status": 200,
+      "bytes": 16191,
+      "sha256": "f13f670d9a0f37725beb149581221d512f81d026d2bcce51f349c8090873c012"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-route-audit-pass03.json",
+      "status": 200,
+      "bytes": 2225,
+      "sha256": "477f427608b1057e49bc835eca127d43d2826d9e82a13cb20c7c04a2ee278bee"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/selected-root-manifest-pass03.json",
+      "status": 200,
+      "bytes": 33672,
+      "sha256": "2fd163111eacf97c81c2ebf1d2aef5f9de6bbd2494ff363a196c172d29c58574"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/stage-pass03.json",
+      "status": 200,
+      "bytes": 322,
+      "sha256": "b1654befab96b09a9e579956c0b8f19dfbde54138c320424930f9cc5fac1245e"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-lifecycle-final.json",
+      "status": 200,
+      "bytes": 585,
+      "sha256": "283b0b355ba1ada7ff40cd1dffa04df4a057cb993f72362bc20ffc230bfee0e3"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-roadmap-desktop.json",
+      "status": 200,
+      "bytes": 1447,
+      "sha256": "8279b2f44bd7c6ac6880923ed2747d637aa794ae97181c318dff051569f40c03"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-roadmap-mobile.json",
+      "status": 200,
+      "bytes": 1480,
+      "sha256": "f7c8018d2f040d9ceadb73b4d59aeec34f52b7da0623abbef52996040214377b"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-plan.json",
+      "status": 200,
+      "bytes": 4414,
+      "sha256": "2ce053cf6b2f63cae5838f023d3eb0d8db275b4e664552e657a46a499c5de633"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-precomparison.json",
+      "status": 200,
+      "bytes": 3706,
+      "sha256": "0ede9c50235b6ad41cddde3c5c596e1216f1c6e2ba43ade1ebddb50f59990dd2"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-runtime.json",
+      "status": 200,
+      "bytes": 4843,
+      "sha256": "202da1acb7de784cefab22f1a5f4124c233127324f3dbf5f91f85c253d7db2dd"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-c114-pr-review.json",
+      "status": 200,
+      "bytes": 2750,
+      "sha256": "a71110a4dc743d8144b838451b0e7ca0f715de088ca9e7adb4bd5b28011589ca"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-evidence.json",
+      "status": 200,
+      "bytes": 5722,
+      "sha256": "716d960762d756e160d0abf7fba9301644384a4341a369a40a88a5665a4c8ba5"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-status-review.json",
+      "status": 200,
+      "bytes": 2919,
+      "sha256": "bc168095a64e5dbd0972178bfde71cfac6c795244f55080dc110dd3b366f2161"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/agent-browser-final-diff-review.json",
+      "status": 200,
+      "bytes": 2943,
+      "sha256": "d2c4dd903ceb395d3506ae3b7dbcc216acbd532e225b01ce417cfc347c1befd3"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-pass03-roadmap-desktop.png",
+      "status": 200,
+      "bytes": 148841,
+      "sha256": "9d864e644387406f479028e71521d9eb3bfba5ef5fbf5b62ca9c9f82fc2f5564"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/final-pass03-roadmap-mobile.png",
+      "status": 200,
+      "bytes": 49884,
+      "sha256": "7691219d5f2b60815d4be88f9ccf5aa000c36573136f1cc303e703c0b6388da2"
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "verifiedAt": "2026-11-08T00:27:02.501Z",
+  "localAndTailnetChecks": 46,
+  "pageAndImageRoutesPerBase": 10,
+  "generatedStaticAssetsPerBase": 13,
+  "allHttp200": true,
+  "servedHashesMatchPublishedManifest": true,
+  "fullSiteDeadLinkCheck": false,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 634265,
+      "sha256": "c46e5023dc877c8407b52210615dc141e06a808a0c1e1ced18ba17dc33e17f70",
+      "markers": [
+        "진행 중: C11.4 Grid 트랙 크기",
+        "78/214"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35440,
+      "sha256": "16c5888f56db9251e09ed13ba92a9d62e617fb7f030177a45d6374a414fb62da",
+      "markers": [
+        "fit-content",
+        "C11.4"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 27066,
+      "sha256": "7e2bbbc12b09df030ae7e262dc3a6ff2a952da0088a6197cd4aca85fd94ea07a",
+      "markers": [
+        "Chrome 157",
+        "C11.4"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31764,
+      "sha256": "2886850952ec3c446f8d6510483ccddec431f38c239b85c0d87bdbe2b26d47c3",
+      "markers": [
+        "Android",
+        "iOS"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 37754,
+      "sha256": "e4517688929261efe788f49fdb2d22a32eece3441ec5a41fb65a1f7bf7f45e6e",
+      "markers": [
+        "C11.4"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28896,
+      "sha256": "05ca92143cbfefa18011d2cb207732749b24e9393e3a4e31ac2b06a740b0d715",
+      "markers": [
+        "C11.4 진행 표시와 로드맵 링크 확인"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 33533,
+      "sha256": "06962236da7573ae3785ae81a36210e4b69c7482125f3ab159c98d8eba818fe6",
+      "markers": [
+        "로드맵 진행 상태 화면 적대적 검토 20개"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 36991,
+      "sha256": "bcef6a9c74a36d3ca62bb541a3d959e7ee4194210e71816e468f873a9f85e8d9",
+      "markers": [
+        "로드맵·Tailnet 동기화 PR 변경 실패 관점 검토 30개"
+      ]
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 22393,
+      "sha256": "72ac60d0660fbd4c1e1d577859797f1f30daa7c569633aee7c614b3b346a949f",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/screenshot.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 74615,
+      "sha256": "90412921959d0d8d6adb6821382cb19bcd62487e7cfc5c673f142dbeafafb099",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/a.877e354479.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-3cacfb6a4458.efc4143f89.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 11741,
+      "sha256": "7ed2a98eba41ab52a6844f7bb4cf9db74e80d68a574276916aa7e83850926dc7",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-49647b97ab0e.103d6d8df1.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 8099,
+      "sha256": "5b045c2b15e9965329aca709d098c1ae7c70d1ae1fcf0ac0228c74fa3754bfa3",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-59ef5d88f123.c118c8bbef.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 8314,
+      "sha256": "12d8835813f92f846ad829bd7afb3f8ff084b11ac34a22e64a51d590acd3ac87",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-8cdba721bb25.c9019c7fe2.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 15353,
+      "sha256": "e447cb21b1d5c9f09bdc8fdb51c00e9f61a63e17b61ec0a7f233117f75436978",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-c42d69c1e313.efdf773360.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 6723,
+      "sha256": "3fc437658d45fcd6cd3d7d822b2fa51c557bd7f11c7c1e7406cb36100b556616",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-d78869bdfdd8.9dd8ec2d9e.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 7070,
+      "sha256": "9caa0a350fc718de368229331dea2a6a2cadbac9774e90047ebbac3913251af4",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/async/route-e46f534d763f.0c518c9c5a.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 8679,
+      "sha256": "3eda43809f50bf0a29ae1ad5ddcba73ebedfbc418a3711be5976e7aec9f2fa06",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/index.4299ebcb2e.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 115301,
+      "sha256": "9c4ff7d7a31bcec41876cfc7b222bae45b8a0ce7f657b25c8431b9d2ece34a00",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "markers": []
+    },
+    {
+      "url": "http://127.0.0.1:8768/spinon/static/js/styles.2da0941fcb.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 634265,
+      "sha256": "c46e5023dc877c8407b52210615dc141e06a808a0c1e1ced18ba17dc33e17f70",
+      "markers": [
+        "진행 중: C11.4 Grid 트랙 크기",
+        "78/214"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-fit-content-min-content-auto-remaining-order.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35440,
+      "sha256": "16c5888f56db9251e09ed13ba92a9d62e617fb7f030177a45d6374a414fb62da",
+      "markers": [
+        "fit-content",
+        "C11.4"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-precomparison-2026-11-08/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 27066,
+      "sha256": "7e2bbbc12b09df030ae7e262dc3a6ff2a952da0088a6197cd4aca85fd94ea07a",
+      "markers": [
+        "Chrome 157",
+        "C11.4"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31764,
+      "sha256": "2886850952ec3c446f8d6510483ccddec431f38c239b85c0d87bdbe2b26d47c3",
+      "markers": [
+        "Android",
+        "iOS"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/pr-diff-review-30.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 37754,
+      "sha256": "e4517688929261efe788f49fdb2d22a32eece3441ec5a41fb65a1f7bf7f45e6e",
+      "markers": [
+        "C11.4"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/README.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28896,
+      "sha256": "05ca92143cbfefa18011d2cb207732749b24e9393e3a4e31ac2b06a740b0d715",
+      "markers": [
+        "C11.4 진행 표시와 로드맵 링크 확인"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-status-review-20.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 33533,
+      "sha256": "06962236da7573ae3785ae81a36210e4b69c7482125f3ab159c98d8eba818fe6",
+      "markers": [
+        "로드맵 진행 상태 화면 적대적 검토 20개"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/roadmap-tailnet-sync-pr1277-c11-4-2026-11-08/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 36991,
+      "sha256": "bcef6a9c74a36d3ca62bb541a3d959e7ee4194210e71816e468f873a9f85e8d9",
+      "markers": [
+        "로드맵·Tailnet 동기화 PR 변경 실패 관점 검토 30개"
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/android/final/screenshot.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 22393,
+      "sha256": "72ac60d0660fbd4c1e1d577859797f1f30daa7c569633aee7c614b3b346a949f",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/ios/final/screenshot.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 74615,
+      "sha256": "90412921959d0d8d6adb6821382cb19bcd62487e7cfc5c673f142dbeafafb099",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/a.877e354479.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-3cacfb6a4458.efc4143f89.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 11741,
+      "sha256": "7ed2a98eba41ab52a6844f7bb4cf9db74e80d68a574276916aa7e83850926dc7",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-49647b97ab0e.103d6d8df1.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 8099,
+      "sha256": "5b045c2b15e9965329aca709d098c1ae7c70d1ae1fcf0ac0228c74fa3754bfa3",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-59ef5d88f123.c118c8bbef.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 8314,
+      "sha256": "12d8835813f92f846ad829bd7afb3f8ff084b11ac34a22e64a51d590acd3ac87",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-8cdba721bb25.c9019c7fe2.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 15353,
+      "sha256": "e447cb21b1d5c9f09bdc8fdb51c00e9f61a63e17b61ec0a7f233117f75436978",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-c42d69c1e313.efdf773360.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 6723,
+      "sha256": "3fc437658d45fcd6cd3d7d822b2fa51c557bd7f11c7c1e7406cb36100b556616",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d78869bdfdd8.9dd8ec2d9e.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 7070,
+      "sha256": "9caa0a350fc718de368229331dea2a6a2cadbac9774e90047ebbac3913251af4",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-e46f534d763f.0c518c9c5a.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 8679,
+      "sha256": "3eda43809f50bf0a29ae1ad5ddcba73ebedfbc418a3711be5976e7aec9f2fa06",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/index.4299ebcb2e.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 115301,
+      "sha256": "9c4ff7d7a31bcec41876cfc7b222bae45b8a0ce7f657b25c8431b9d2ece34a00",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "markers": []
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/styles.2da0941fcb.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "markers": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "firstPassAssertion": "expected runtime generated label C11.4 · 진행 중 as a static source substring",
+  "actualSourceExpression": "task.code + ' · 진행 중'",
+  "correctedVerification": "all staged file hashes match current source; static header and runtime expression markers pass",
+  "stagedFileCount": 90
+}
