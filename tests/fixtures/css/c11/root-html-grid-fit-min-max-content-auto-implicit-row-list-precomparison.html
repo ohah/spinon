@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 fit/min-content/max-content/auto implicit row-list precomparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body { color: #e7edf3; background: #101820; font: 12px/16px sans-serif; }
+      .case { margin: 0 0 8px; }
+      .label { margin: 0 0 2px; }
+      .grid {
+        display: grid;
+        width: 40px;
+        height: 100px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        align-content: stretch;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 1px dashed #ffffff;
+        overflow: visible;
+        background: #17212b;
+      }
+      .explicit { height: 10px; background: #e5484d; }
+      .item { min-height: 0; margin: 0; padding: 0; outline: 1px dotted #f8fafc; }
+      .payload { margin: 0; padding: 0; background: #3b82f6; }
+      .h20 { height: 20px; }
+      .h10 { height: 10px; }
+      .h12 { height: 12px; }
+      .h6 { height: 6px; }
+    </style>
+  </head>
+  <body>
+    <main id="cases"></main>
+    <script>
+      const members = ["fit", "min", "max", "auto"];
+      function permutations(items) {
+        if (items.length < 2) return [items];
+        return items.flatMap((item, index) =>
+          permutations(items.filter((_, other) => other !== index))
+            .map((tail) => [item, ...tail]));
+      }
+      const values = {
+        fit: (cap) => `fit-content(${cap})`,
+        min: () => "min-content",
+        max: () => "max-content",
+        auto: () => "auto",
+      };
+      const heights = [20, 10, 12, 6, 20];
+      const rect = (element) => {
+        const { x, y, width, height, top, right, bottom, left } = element.getBoundingClientRect();
+        return { x, y, width, height, top, right, bottom, left };
+      };
+      const parent = document.getElementById("cases");
+      const cases = [];
+      for (const order of permutations(members)) {
+        for (const [capName, cap] of [["px", "20px"], ["pct", "20%"]]) {
+          for (const alignContent of ["start", "stretch"]) {
+            const name = `${order.join("-")}-${capName}-${alignContent}`;
+            const trackList = order.map((member) => values[member](cap)).join(" ");
+            const section = document.createElement("section");
+            section.className = "case";
+            section.dataset.case = name;
+            const label = document.createElement("p");
+            label.className = "label";
+            label.textContent = `${name}: ${trackList}`;
+            const grid = document.createElement("div");
+            grid.id = name;
+            grid.className = "grid";
+            grid.style.gridAutoRows = trackList;
+            grid.style.alignContent = alignContent;
+            const explicit = document.createElement("div");
+            explicit.id = `${name}-explicit`;
+            explicit.className = "explicit";
+            grid.append(explicit);
+            heights.forEach((height, index) => {
+              const item = document.createElement("div");
+              item.id = `${name}-item-${index + 1}`;
+              item.className = "item";
+              const payload = document.createElement("div");
+              payload.id = `${name}-payload-${index + 1}`;
+              payload.className = `payload h${height}`;
+              item.append(payload);
+              grid.append(item);
+            });
+            section.append(label, grid);
+            parent.append(section);
+            cases.push({ name, trackList, grid, explicit });
+          }
+        }
+      }
+      window.__gridOracle = cases.map(({ name, trackList, grid, explicit }) => ({
+        name,
+        authoredRows: trackList,
+        alignContent: getComputedStyle(grid).alignContent,
+        computedRows: getComputedStyle(grid).gridAutoRows,
+        computedAlignContent: getComputedStyle(grid).alignContent,
+        usedRows: getComputedStyle(grid).gridTemplateRows.trim().split(/\s+/).map(Number.parseFloat),
+        grid: rect(grid),
+        explicit: rect(explicit),
+        items: Array.from(grid.querySelectorAll(".item"), rect),
+        payloads: Array.from(grid.querySelectorAll(".payload"), rect),
+        horizontalOverflow: grid.scrollWidth > grid.clientWidth,
+      }));
+    </script>
+  </body>
+</html>

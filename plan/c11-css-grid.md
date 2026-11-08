@@ -1,5 +1,9 @@
 # C11 · CSS Grid 레이아웃 구현 계획
 
+## 2026-11-08 C11.4 다음 순차 계획: `fit-content()`/`min-content`/`max-content`/`auto` implicit rows
+
+PR [#1277](https://github.com/ohah/spinon/pull/1277)에서 여섯 `fit-content()`/`min-content`/`auto` 순서를 기본 parsed Root HTML route에 연결한 뒤, 다음 계획을 [네 intrinsic track type의 24 순서](./c11-4-root-html-fit-min-max-content-auto-rows.md)로 정했다. Chrome 157 Agent Browser 96/96 scene 비교와 독립 기대값, 계획 실패 관점 20개 검토를 마쳤으며 구현은 아직 시작하지 않았다. 이 고정 높이 oracle에서는 min/max contribution geometry가 같아 typed computed value 검사를 별도로 요구한다. C11.4/C11 및 공식 `78/214`는 미완료를 유지한다. [사전 비교](../spec/internal/evidence/c11-4-root-html-fit-min-max-content-auto-rows-precomparison-2026-11-08/README.md).
+
 ## 2026-11-08 C11.4 `grid-auto-rows` fit-content/min-content/auto 순서 확장 병합
 
 기본 parsed Root HTML `RootHtmlFitContentAutoRowsV1`에서 `fit-content()`, `min-content`, `auto`를 각각 한 번 갖는 여섯 exact `grid-auto-rows` 순서를 허용했다. 기존 두 순서를 보존하면서 나머지 네 순서를 추가했고, list 길이·cap 타입·definite percentage basis·auto-only stretch·첫 implicit row 순환 경계를 유지한다. Chrome 157 independent comparison 8/8, focused Layout 8/8, Style projection 5/5, RuntimeSession 9/9와 changed-crate Clippy/rustfmt가 통과했다. Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 기본 route의 동일 HTML hash·12-box 결과를 기록했다. Screenshot은 visual smoke이며 surface pixel equality는 확인하지 않았다. [계획](./c11-4-root-html-fit-content-min-content-auto-remaining-order.md) · [실행 근거·한계](../spec/internal/evidence/c11-4-root-html-fit-content-min-content-auto-remaining-order-runtime-2026-11-08/README.md) · [PR #1277](https://github.com/ohah/spinon/pull/1277)은 `2026-11-07T23:31:42Z` Rebase and merge로 병합됐다(merge SHA `8aa7570d34ac7c0ac9f93f3aac4fe555428741fa`). status/workflow rollup은 비어 있어 CI 통과로 적지 않는다. 전체 C11.4/C11은 미완료이고 공식 `78/214`는 그대로다.
