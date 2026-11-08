@@ -1,6 +1,6 @@
 # C11.4 parsed Root HTML 반복 text row span의 후속 fit-content 위치
 
-- **상태:** 제한 구현 후보 · 구현 PR 검토 중 · C11.4/C11 공식 체크와 `78/214` 유지
+- **상태:** 제한 구현 후보 · 구현 PR [#1299](https://github.com/ohah/spinon/pull/1299) · C11.4/C11 공식 체크와 `78/214` 유지
 - **선행 구현:** [반복 intrinsic row direct-text span](./c11-4-root-html-repeated-text-row-span.md) · PR [#1295](https://github.com/ohah/spinon/pull/1295)
 - **사전 비교:** [Chrome 157 1,920 scene](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md)
 - **계획 실패 관점 검토:** [서로 다른 20개](./c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md)
