@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-11-09 Root HTML 반복 텍스트 행 span · 다음 bounded slice 선정
+## 2026-11-09 Root HTML 반복 텍스트 행 span · PR #1295 병합 · 후속 계획
 
-기본 parsed Root HTML의 반복 intrinsic implicit-row list에 2행·3행을 점유하는 실제 direct text item 기여를 추가하는 계획을 선택했다. Chrome 157 fixed-input matrix 960 scene과 독립 CSS Grid §11.5/§10.5 기대 관계를 고정했다. 계획 PR [상태는 집중 계획](./c11-4-root-html-repeated-text-row-span.md)을 참고한다. 계획이 merge되기 전 구현은 시작하지 않으며 C11.4/C11 공식 체크와 `78/214`는 유지한다.
+기본 parsed Root HTML direct-text row-span slice는 구현 PR [#1295](https://github.com/ohah/spinon/pull/1295)로 `2026-11-08T20:35:50Z` Rebase and merge됐고 merge SHA는 `40b416b4de4942c9251db0f4862626443310d092`다. 다음 후보는 기존 여섯-member `grid-auto-rows` repeated intrinsic list에서 `fit-content()`를 두 번째·세 번째 implicit-row 위치에 두는 60개 새 order다. Chrome 157 사전 비교 1,920/1,920 scene과 독립 span/frame·source-order·alignment 관계를 확인했다. [후속 집중 계획](./c11-4-root-html-repeated-text-later-fit-content-row-span.md) · [Chrome 관측과 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md). 계획 PR merge 전에는 제품 코드를 수정하지 않는다. C11.4/C11 공식 체크와 `78/214`는 유지한다.
 
 ## 2026-11-08 parsed Root HTML 반복 intrinsic implicit-row list · PR #1284 병합 · 다음 slice 계획 완료
 

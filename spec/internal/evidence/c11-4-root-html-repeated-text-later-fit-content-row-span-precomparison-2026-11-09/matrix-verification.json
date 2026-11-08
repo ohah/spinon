@@ -1,0 +1,56 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "dpr": 1,
+  "fitContentPositions": [
+    2,
+    3
+  ],
+  "tailPermutationCount": 30,
+  "caseCount": 1920,
+  "byFitPosition": {
+    "2": 960,
+    "3": 960
+  },
+  "byTopology": {
+    "span2-forward": 480,
+    "span2-reversed": 480,
+    "span2-before-span3": 480,
+    "span3-before-span2": 480
+  },
+  "caps": [
+    "0%",
+    "120%",
+    "20%",
+    "20px"
+  ],
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "payloadLineCounts": {
+    "A": [
+      2
+    ],
+    "B": [
+      3
+    ],
+    "C": [
+      4
+    ]
+  },
+  "maxSpanFrameToTrackSumDeltaCssPx": 0.0,
+  "maxSourceOrderFrameDeltaCssPx": 0.0,
+  "fixtureSha256": "faefbffa75dad33af7fc32cc193fb4741c6c4cb761dda61c89e5e1bc886b96d4",
+  "observationSha256": "12fa49a03436604477e121335335d1bc14b3afded957a921206addfaba0f3d90",
+  "independentChecks": [
+    "all 30 unique five-member tail permutations at fit-content positions 2 and 3",
+    "four cap forms, two alignments, and four overlapping-span/source-order topologies",
+    "CSS line placements map to explicit-plus-three implicit used rows",
+    "each span frame equals the independent sum of the rows it covers",
+    "text line counts and 40px payload widths remain fixed",
+    "source-order reversal preserves semantic frames and row sizes",
+    "align-content stretch changes only auto tracks among used rows",
+    "computed grid-auto-rows preserves the six-member authored order"
+  ]
+}
