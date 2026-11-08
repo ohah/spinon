@@ -26,12 +26,16 @@
 
 ## Android API 37 ARM64 AVD
 
-최종 모듈 분리 이후 Android app build는 성공했다([build log](./android/build.log), [APK fixture hash](./android/candidate-index.sha256)). 앞서 임시 Pixel 6/API 37 ARM64 AVD를 새로 만들어 QEMU를 실행했지만, ADB 연결이 `device`에서 닫힌 뒤 `qemu_mprotect__osdep: mprotect failed: Permission denied`와 QEMU thread hang이 기록됐고 프로세스는 exit 139로 끝났다([첫 실행 log](./android/emulator-hardware-accel-failure.log)). ADB offline 상태에서 `-accel off`를 지정한 재시도에도 같은 mprotect 오류가 발생했다([재시도 log](./android/emulator-no-accel.log)). 이 실패는 모듈 분리 전이며 APK 설치 전에 발생했다. Android app runtime은 **미검증**이고 이 로그를 앱 오류로 해석하지 않는다.
+처음 사용한 `spinon_c11_4_fit_content_pass04_20261107` AVD는 Command-line Tools 12.0이 만들었고 root `.ini`의 `target=android-0`이 API 37.0 ARM64 시스템 이미지와 맞지 않았다. [공식 emulator 소스](https://android.googlesource.com/platform/external/qemu/+/emu-master-dev/android-qemu2-glue/main.cpp#2044)는 API 21 이상 ARM64 AVD에 macOS HVF를 활성화한다. 이 AVD는 API target을 0으로 읽어 QEMU argv에 `-enable-hvf`를 넣지 않았고, guest 부팅 중 `mprotect failed: Permission denied`가 반복된 뒤 exit 139로 종료됐다. 기존 로그는 [초기 mprotect 실패](./android/emulator-hardware-accel-failure.log), [이번 상세 실패](./android/emulator-invalid-target-20261108.log), [`-accel off` 재시도](./android/emulator-no-accel.log)에 보존했다.
+
+Command-line Tools 23.0으로 만든 새 Pixel 6/API 37.0 ARM64 AVD `spinon_c114_android37_runtime_20261108`은 root target `android-37.0`, `CPU Acceleration: working`, QEMU `-enable-hvf`, `sys.boot_completed=1`, ADB `device`를 확인했다([성공 부팅 로그](./android/emulator-valid-target-20261108.log), [AVD 메타데이터](./android/device-metadata.json)). 같은 2,758-byte fixture의 SHA-256 `923a9d831a6509c1eb577428296535369146034336ac5af6658af0506157b8a9`이 APK `assets/index.html`과 일치했다([최종 build log](./android/final-build.log), [APK·fixture·screenshot hash](./android/final-candidate.sha256)).
+
+Android 앱을 기본 Root HTML route에서 실행해 `SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass`, `layout=ready boxes=20`, `presented boxes=20`, `runtime_text_count=8`을 확인했다([앱 process log](./android/app-current-process.log), [1080×2400 OS screenshot](./android/screenshot.png)). screenshot은 SwiftShader visual smoke다. PixelCopy/readback, hardware GPU, 실기기 또는 compositor 이후 pixel 비교가 아니다.
 
 ## 복원과 cleanup
 
 - 테스트 전 `examples/bootstrap/index.html`, `examples/bootstrap/root-app.js`, 기존 Android APK 및 iOS Simulator app binary를 백업했다. 모두 복원한 뒤 [before](./before.sha256)와 [after](./after.sha256) SHA-256을 비교해 동일함을 확인했다.
-- Android/iOS 두 app build는 성공했으며, 이전 build output을 되돌렸다. iOS 임시 Simulator와 두 차례 사용한 임시 Android AVD는 종료·삭제했고 기존 simulator data는 삭제하지 않았다.
-- `before/after` hash가 일치하므로 build inputs/outputs는 검증 전 상태로 복원됐다. [후보 APK/app binary hash](./candidate-builds.sha256)와 [Android](./android/candidate-index.sha256)·[iOS](./ios/candidate-index.sha256) fixture hash를 따로 보존한다.
+- iOS 임시 Simulator는 종료·삭제했다. Android에서 잘못된 target을 가진 실패 AVD는 원인 로그를 보존한 뒤 제거하고, 재사용할 API 37.0 AVD는 다음 C11.4 검증을 위해 종료 상태로 유지한다. 임시 `examples/bootstrap` 입력은 HEAD 버전으로 복원했다. Android APK 출력은 최종 후보 build로 갱신됐고 별도 hash를 보존한다.
+- 이전 실행에서 확인한 [before/after hash](./before.sha256)와 [후보 build hash](./candidate-builds.sha256)는 그 시점 기록으로 유지한다. 이번 최종 Android APK·fixture·screenshot은 [별도 hash 목록](./android/final-candidate.sha256)에 기록했다. 기존 Android APK 출력은 이번 후보 APK로 바뀌었으며 복원된 것으로 간주하지 않는다.
 
 이 후보는 일반 CSS admission, 임의 text/font/content, WPT, 실기기, hardware GPU 또는 C11.4/C11 완료를 뜻하지 않는다. 공식 완료 `78/214`와 내부 계약 `0.1.0`은 그대로다.

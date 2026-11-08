@@ -1,3 +1,7 @@
-First temporary API 37 ARM64 AVD: emulator PTY exit code 139 after QEMU mprotect permission errors and QEMU thread hang warnings. The adb wait loop ended with device not found.
-Second temporary AVD with -accel off: adb remained offline while the same mprotect permission errors appeared; the session was interrupted before app installation.
-No Android app was installed or launched. Both task-created AVDs were deleted after capture.
+초기 API 37 AVD의 ADB 실패 원인은 앱이나 ADB client가 아니라 AVD 메타데이터였다. Command-line Tools 12.0이 만든 `spinon_c11_4_fit_content_pass04_20261107`의 root `.ini`에 `target=android-0`이 기록되어 API 37 ARM64 시스템 이미지와 불일치했다. QEMU argv에 `-enable-hvf`가 없었고 `mprotect failed: Permission denied`가 반복된 뒤 exit 139로 종료됐다. 전체 로그는 `emulator-invalid-target-20261108.log`에 보존했다.
+
+Command-line Tools 23.0으로 새 Pixel 6 API 37.0 ARM64 AVD `spinon_c114_android37_runtime_20261108`를 만들자 root target이 `android-37.0`이 됐고 QEMU argv에 `-enable-hvf`가 포함됐다. `CPU Acceleration: working`, `sys.boot_completed=1`, ADB `device`를 확인했다. 로그는 `emulator-valid-target-20261108.log`에 보존했다.
+
+최종 APK를 설치해 기본 Root HTML route를 실행했다. APK의 `assets/index.html` SHA-256은 고정 fixture와 일치했다. 앱 로그는 `SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass`, `layout=ready boxes=20`, `presented boxes=20`, `runtime_text_count=8`을 기록했다. [현재 실행 로그](./app-current-process.log)와 [1080×2400 OS screenshot](./screenshot.png)을 보존했다.
+
+화면 캡처는 SwiftShader AVD의 visual smoke이며 PixelCopy/readback, hardware GPU, 실기기 또는 compositor 이후 pixel 비교가 아니다.
