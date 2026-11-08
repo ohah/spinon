@@ -1,0 +1,162 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 repeated intrinsic row text spans precomparison</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 12px sans-serif; }
+  .scene { margin: 0 0 12px; }
+  .grid {
+    display: grid;
+    width: 40px;
+    height: 220px;
+    grid-template-columns: 40px;
+    grid-template-rows: 10px;
+    grid-auto-rows: fit-content(20px) min-content max-content auto min-content max-content;
+    grid-auto-flow: row;
+    row-gap: 0;
+    column-gap: 0;
+    align-content: start;
+    align-items: normal;
+    justify-items: normal;
+    direction: ltr;
+    overflow: visible;
+  }
+  .item { display: block; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; border: 0; overflow: visible; grid-column: 1 / 2; }
+  .empty { height: 10px; grid-row: 1 / 2; }
+  .payload { display: block; width: auto; height: auto; margin: 0; padding: 0; border: 0; font: 400 10px/10px monospace; letter-spacing: 0; word-spacing: 0; white-space: normal; direction: ltr; }
+</style>
+<section class="scene" data-scene="span2-forward">
+  <div class="grid"><div class="item empty"></div><div class="item" data-item="A" style="grid-row:2 / span 2"><div class="payload">A A A A A A</div></div><div class="item" data-item="B" style="grid-row:3 / span 2"><div class="payload">A A A A A A A A</div></div></div>
+</section>
+<section class="scene" data-scene="span2-reversed">
+  <div class="grid"><div class="item empty"></div><div class="item" data-item="B" style="grid-row:3 / span 2"><div class="payload">A A A A A A A A</div></div><div class="item" data-item="A" style="grid-row:2 / span 2"><div class="payload">A A A A A A</div></div></div>
+</section>
+<section class="scene" data-scene="span2-before-span3">
+  <div class="grid"><div class="item empty"></div><div class="item" data-item="A" style="grid-row:2 / span 2"><div class="payload">A A A A A A</div></div><div class="item" data-item="B" style="grid-row:3 / span 2"><div class="payload">A A A A A A A A</div></div><div class="item" data-item="C" style="grid-row:2 / span 3"><div class="payload">A A A A A A A A A A A A</div></div></div>
+</section>
+<section class="scene" data-scene="span3-before-span2">
+  <div class="grid"><div class="item empty"></div><div class="item" data-item="C" style="grid-row:2 / span 3"><div class="payload">A A A A A A A A A A A A</div></div><div class="item" data-item="B" style="grid-row:3 / span 2"><div class="payload">A A A A A A A A</div></div><div class="item" data-item="A" style="grid-row:2 / span 2"><div class="payload">A A A A A A</div></div></div>
+</section>
+<script>
+window.capture = () => [...document.querySelectorAll('.scene')].map(scene => {
+  const grid = scene.querySelector('.grid');
+  const gr = grid.getBoundingClientRect();
+  const style = getComputedStyle(grid);
+  return {
+    id: scene.dataset.scene,
+    grid: [gr.x, gr.y, gr.width, gr.height],
+    computedRows: style.gridTemplateRows,
+    items: [...grid.children].map((item, index) => {
+      const r = item.getBoundingClientRect();
+      const p = item.querySelector('.payload');
+      let lineYs = [];
+      if (p) {
+        const range = document.createRange();
+        range.selectNodeContents(p);
+        lineYs = [...new Set([...range.getClientRects()].map(rect => Math.round((rect.y - gr.y) * 64) / 64))];
+      }
+      const pr = p?.getBoundingClientRect();
+      return { id: item.dataset.item || `empty-${index}`, rowStart: getComputedStyle(item).gridRowStart, rowEnd: getComputedStyle(item).gridRowEnd, frame: [r.x - gr.x, r.y - gr.y, r.width, r.height], payload: pr ? [pr.x - gr.x, pr.y - gr.y, pr.width, pr.height] : null, lineYs };
+    })
+  };
+});
+window.captureMatrix = () => {
+  const tails = ['min-content', 'min-content', 'max-content', 'max-content', 'auto'];
+  const permutations = new Map();
+  const permute = (values, offset = 0) => {
+    if (offset === values.length) {
+      const key = values.join(' ');
+      permutations.set(key, [...values]);
+      return;
+    }
+    for (let index = offset; index < values.length; index += 1) {
+      [values[offset], values[index]] = [values[index], values[offset]];
+      permute(values, offset + 1);
+      [values[offset], values[index]] = [values[index], values[offset]];
+    }
+  };
+  permute(tails);
+  const content = {
+    A: 'A A A A A A',
+    B: 'A A A A A A A A',
+    C: 'A A A A A A A A A A A A',
+  };
+  const topologies = {
+    'span2-forward': [['A', 2, 2], ['B', 3, 2]],
+    'span2-reversed': [['B', 3, 2], ['A', 2, 2]],
+    'span2-before-span3': [['A', 2, 2], ['B', 3, 2], ['C', 2, 3]],
+    'span3-before-span2': [['C', 2, 3], ['B', 3, 2], ['A', 2, 2]],
+  };
+  const host = document.createElement('div');
+  Object.assign(host.style, { position: 'absolute', left: '-10000px', top: '0' });
+  document.body.append(host);
+  const cases = [];
+  for (const tail of permutations.values()) {
+    for (const cap of ['20px', '20%', '0%', '120%']) {
+      for (const align of ['start', 'stretch']) {
+        for (const [topology, entries] of Object.entries(topologies)) {
+          const grid = document.createElement('div');
+          Object.assign(grid.style, {
+            display: 'grid', width: '40px', height: '220px',
+            gridTemplateColumns: '40px', gridTemplateRows: '10px',
+            gridAutoRows: `fit-content(${cap}) ${tail.join(' ')}`,
+            gridAutoFlow: 'row', rowGap: '0px', columnGap: '0px',
+            alignContent: align, alignItems: 'normal', justifyItems: 'normal',
+            direction: 'ltr', overflow: 'visible',
+          });
+          const empty = document.createElement('div');
+          Object.assign(empty.style, { gridRow: '1 / 2', gridColumn: '1 / 2', height: '10px' });
+          grid.append(empty);
+          for (const [id, row, span] of entries) {
+            const item = document.createElement('div');
+            item.dataset.item = id;
+            Object.assign(item.style, {
+              display: 'block', width: 'auto', height: 'auto', minHeight: '0px',
+              margin: '0px', padding: '0px', border: '0px', overflow: 'visible',
+              gridRow: `${row} / span ${span}`, gridColumn: '1 / 2',
+            });
+            const payload = document.createElement('div');
+            payload.className = 'payload';
+            payload.textContent = content[id];
+            Object.assign(payload.style, {
+              display: 'block', width: 'auto', height: 'auto', margin: '0px', padding: '0px',
+              border: '0px', fontFamily: 'monospace', fontSize: '10px', lineHeight: '10px',
+              fontWeight: '400', letterSpacing: '0px', wordSpacing: '0px', whiteSpace: 'normal',
+              direction: 'ltr',
+            });
+            item.append(payload);
+            grid.append(item);
+          }
+          host.append(grid);
+          const gridRect = grid.getBoundingClientRect();
+          const rows = getComputedStyle(grid).gridTemplateRows.split(/\s+/).map(Number.parseFloat);
+          const items = [...grid.children].map((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const payload = item.querySelector('.payload');
+            const payloadRect = payload?.getBoundingClientRect();
+            let lineYs = [];
+            if (payload) {
+              const range = document.createRange();
+              range.selectNodeContents(payload);
+              lineYs = [...new Set([...range.getClientRects()].map(line => Math.round((line.y - gridRect.y) * 64) / 64))];
+            }
+            const style = getComputedStyle(item);
+            return {
+              id: item.dataset.item || `empty-${index}`,
+              rowStart: style.gridRowStart,
+              rowEnd: style.gridRowEnd,
+              frame: [rect.x - gridRect.x, rect.y - gridRect.y, rect.width, rect.height],
+              payload: payloadRect ? [payloadRect.x - gridRect.x, payloadRect.y - gridRect.y, payloadRect.width, payloadRect.height] : null,
+              lineYs,
+            };
+          });
+          cases.push({ topology, tail, cap, align, rows, items });
+          grid.remove();
+        }
+      }
+    }
+  }
+  host.remove();
+  return { userAgent: navigator.userAgent, platform: navigator.platform, dpr: devicePixelRatio, tailPermutationCount: permutations.size, caseCount: cases.length, cases };
+};
+</script>

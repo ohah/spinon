@@ -1,6 +1,6 @@
 # C11.4 · 반복 intrinsic row의 제한된 텍스트 content grammar
 
-**상태:** 구현 PR [#1292](https://github.com/ohah/spinon/pull/1292) 병합 (`2026-11-08T18:02:21Z`, merge SHA `d2b0a2dd3cf74f868ae7faf3dcb629e75cb8d13c`) · 이 bounded slice는 병합됐고 상위 C11.4는 미완료 · 다음 slice는 아직 선정하지 않음
+**상태:** 구현 PR [#1292](https://github.com/ohah/spinon/pull/1292) 병합 (`2026-11-08T18:02:21Z`, merge SHA `d2b0a2dd3cf74f868ae7faf3dcb629e75cb8d13c`) · 이 bounded slice는 병합됐고 상위 C11.4는 미완료 · 후속 계획: [텍스트 행 span 기여](./c11-4-root-html-repeated-text-row-span.md) · 계획 PR 병합 전 제품 코드 변경 없음
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
