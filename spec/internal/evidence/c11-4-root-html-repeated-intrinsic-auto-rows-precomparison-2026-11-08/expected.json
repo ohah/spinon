@@ -1,0 +1,54 @@
+{
+  "contract": {
+    "specification": "CSS Grid Layout Module Level 2, section 7.6",
+    "trackListPx": "fit-content(20px) min-content max-content auto min-content max-content",
+    "trackListPercent": "fit-content(20%) min-content max-content auto min-content max-content",
+    "gridWidth": 40,
+    "gridHeight": 100,
+    "explicitRows": [10],
+    "implicitRowPattern": ["fit-content", "min-content", "max-content", "auto", "min-content", "max-content"],
+    "payloadHeights": [20, 10, 12, 6, 6, 6, 60, 6]
+  },
+  "scenes": [
+    {
+      "id": "px-start",
+      "cap": "20px",
+      "alignContent": "start",
+      "rows": [10, 20, 10, 12, 6, 6, 6, 20, 6],
+      "itemOffsets": [0, 10, 30, 40, 52, 58, 64, 70, 90],
+      "itemSizes": [10, 20, 10, 12, 6, 6, 6, 20, 6],
+      "freeSpace": 4,
+      "overflowPastGridBottom": 30
+    },
+    {
+      "id": "percent-start",
+      "cap": "20%",
+      "alignContent": "start",
+      "rows": [10, 20, 10, 12, 6, 6, 6, 20, 6],
+      "itemOffsets": [0, 10, 30, 40, 52, 58, 64, 70, 90],
+      "itemSizes": [10, 20, 10, 12, 6, 6, 6, 20, 6],
+      "freeSpace": 4,
+      "overflowPastGridBottom": 30
+    },
+    {
+      "id": "px-stretch",
+      "cap": "20px",
+      "alignContent": "stretch",
+      "rows": [10, 20, 10, 12, 10, 6, 6, 20, 6],
+      "itemOffsets": [0, 10, 30, 40, 52, 62, 68, 74, 94],
+      "itemSizes": [10, 20, 10, 12, 10, 6, 6, 20, 6],
+      "freeSpace": 0,
+      "overflowPastGridBottom": 34
+    },
+    {
+      "id": "percent-stretch",
+      "cap": "20%",
+      "alignContent": "stretch",
+      "rows": [10, 20, 10, 12, 10, 6, 6, 20, 6],
+      "itemOffsets": [0, 10, 30, 40, 52, 62, 68, 74, 94],
+      "itemSizes": [10, 20, 10, 12, 10, 6, 6, 20, 6],
+      "freeSpace": 0,
+      "overflowPastGridBottom": 34
+    }
+  ]
+}

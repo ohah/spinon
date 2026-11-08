@@ -1,0 +1,14 @@
+{
+  "session": "spinon-c114-slice",
+  "tool": "agent-browser",
+  "targets": [
+    "https://www.w3.org/TR/css-grid-2/#propdef-grid-auto-rows",
+    "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/root-html-grid-repeated-intrinsic-auto-rows-precomparison.html"
+  ],
+  "browser": "HeadlessChrome 157.0.0.0",
+  "viewport": [1280, 633],
+  "devicePixelRatio": 1,
+  "closed": true,
+  "closeResult": "Browser closed",
+  "postCloseProcessCheck": "pgrep -fl 'agent-browser|HeadlessChrome' returned no processes"
+}
