@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-11-09T03:18:32.769Z",
+  "source": "spec/public/roadmap.html",
+  "sourceBytes": 647470,
+  "sourceSha256": "99e83769170774a79eea06d7cf9742731289ca0fa46230b42cb8889f7a4e7a09",
+  "previewTarget": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "previewBytesAfter": 647470,
+  "previewSha256After": "99e83769170774a79eea06d7cf9742731289ca0fa46230b42cb8889f7a4e7a09",
+  "servedResponsesAfter": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 647470,
+      "sha256": "99e83769170774a79eea06d7cf9742731289ca0fa46230b42cb8889f7a4e7a09"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 647470,
+      "sha256": "99e83769170774a79eea06d7cf9742731289ca0fa46230b42cb8889f7a4e7a09"
+    }
+  ],
+  "previousPreviewBytes": 645982,
+  "previousPreviewSha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e",
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-c11-4-pr1302-status-sync-2026-11-09/pass01/roadmap.html",
+  "backupBytes": 645982,
+  "backupSha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e",
+  "replacement": "same-directory temp file, fsync, atomic rename",
+  "serverPid": "28040",
+  "serverRestarted": false,
+  "filesChanged": [
+    "/spinon/roadmap.html"
+  ]
+}
