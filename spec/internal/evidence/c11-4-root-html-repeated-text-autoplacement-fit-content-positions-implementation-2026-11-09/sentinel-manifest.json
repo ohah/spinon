@@ -1,0 +1,133 @@
+{
+  "fixture": "tests/fixtures/css/c11/root-html-grid-repeated-text-autoplacement-fit-content-positions-runtime.html",
+  "scenes": [
+    {
+      "name": "scene-01-p01-start-20px",
+      "fitPosition": 1,
+      "cap": "20px",
+      "align": "start",
+      "fileName": "scene-01-p01-start-20px.html",
+      "authoredAutoRows": [
+        "fit-content(20px)",
+        "min-content",
+        "min-content",
+        "max-content",
+        "max-content",
+        "auto"
+      ],
+      "sha256": "c1673b96f360dfd766d8a66136d0ef7ec91767306f9a890b4ff5bf3607f12c8a"
+    },
+    {
+      "name": "scene-02-p02-start-20px",
+      "fitPosition": 2,
+      "cap": "20px",
+      "align": "start",
+      "fileName": "scene-02-p02-start-20px.html",
+      "authoredAutoRows": [
+        "min-content",
+        "fit-content(20px)",
+        "min-content",
+        "max-content",
+        "max-content",
+        "auto"
+      ],
+      "sha256": "0580caeeb1d65e5b3cb7d0c37f968c61e8dbc07d1fce70155aaa13b382c27730"
+    },
+    {
+      "name": "scene-03-p03-start-20px",
+      "fitPosition": 3,
+      "cap": "20px",
+      "align": "start",
+      "fileName": "scene-03-p03-start-20px.html",
+      "authoredAutoRows": [
+        "min-content",
+        "min-content",
+        "fit-content(20px)",
+        "max-content",
+        "max-content",
+        "auto"
+      ],
+      "sha256": "1a530fc03f781a12adc557d4d71addebb24fcaae16f5076b91ecf621154d875d"
+    },
+    {
+      "name": "scene-04-p04-start-20pct",
+      "fitPosition": 4,
+      "cap": "20%",
+      "align": "start",
+      "fileName": "scene-04-p04-start-20pct.html",
+      "authoredAutoRows": [
+        "min-content",
+        "min-content",
+        "max-content",
+        "fit-content(20%)",
+        "max-content",
+        "auto"
+      ],
+      "sha256": "080883cd4137cf5f5222f35597beb2864396a26a5b17bde4d2a44e18212762f9"
+    },
+    {
+      "name": "scene-05-p05-start-20px",
+      "fitPosition": 5,
+      "cap": "20px",
+      "align": "start",
+      "fileName": "scene-05-p05-start-20px.html",
+      "authoredAutoRows": [
+        "min-content",
+        "min-content",
+        "max-content",
+        "max-content",
+        "fit-content(20px)",
+        "auto"
+      ],
+      "sha256": "fe2593ecd30a88b7484c06c894e24c47ab1dc6e37919b5c6c7c68237de87e103"
+    },
+    {
+      "name": "scene-06-p06-start-20px",
+      "fitPosition": 6,
+      "cap": "20px",
+      "align": "start",
+      "fileName": "scene-06-p06-start-20px.html",
+      "authoredAutoRows": [
+        "min-content",
+        "min-content",
+        "max-content",
+        "max-content",
+        "auto",
+        "fit-content(20px)"
+      ],
+      "sha256": "f870a34a7a234a90467fd9a81763d0ed6150021da9ad1b66d13a1cef3b55173c"
+    },
+    {
+      "name": "scene-07-p01-stretch-0pct-overflow",
+      "fitPosition": 1,
+      "cap": "0%",
+      "align": "stretch",
+      "fileName": "scene-07-p01-stretch-0pct-overflow.html",
+      "authoredAutoRows": [
+        "fit-content(0%)",
+        "min-content",
+        "min-content",
+        "max-content",
+        "max-content",
+        "auto"
+      ],
+      "sha256": "a128fc02a2070ba0d95c8cc20319ae276e44b2d2ca65f9fd9bf2ee6f7ab61ff7"
+    },
+    {
+      "name": "scene-08-p04-stretch-20pct",
+      "fitPosition": 4,
+      "cap": "20%",
+      "align": "stretch",
+      "fileName": "scene-08-p04-stretch-20pct.html",
+      "authoredAutoRows": [
+        "min-content",
+        "min-content",
+        "max-content",
+        "fit-content(20%)",
+        "max-content",
+        "auto"
+      ],
+      "sha256": "c92b9ebc247694ec6b13d85ccab312cc387249015dcdd65a8995932ac54ea632"
+    }
+  ]
+}

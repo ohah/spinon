@@ -1,125 +1,24 @@
 use super::*;
+#[path = "root_html_fit_content_auto_rows/profiles.rs"]
+mod profiles;
 #[path = "root_html_fit_content_auto_rows/repeated_text.rs"]
 mod repeated_text;
-
-fn fit_content_cap_is_supported(track: &GridTrackSize) -> bool {
-    matches!(
-        track,
-        GridTrackSize::FitContent(
-            GridTrackLengthPercentage::LengthPx(value)
-                | GridTrackLengthPercentage::Percentage(value)
-        ) if value.is_finite() && *value >= 0.0
-    )
-}
-
-pub(super) fn supports_min_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
-    matches!(
-        tracks,
-        [fit, GridTrackSize::MinContent, GridTrackSize::Auto]
-            | [fit, GridTrackSize::Auto, GridTrackSize::MinContent]
-            | [GridTrackSize::MinContent, fit, GridTrackSize::Auto]
-            | [GridTrackSize::MinContent, GridTrackSize::Auto, fit]
-            | [GridTrackSize::Auto, fit, GridTrackSize::MinContent]
-            | [GridTrackSize::Auto, GridTrackSize::MinContent, fit]
-            if fit_content_cap_is_supported(fit)
-    )
-}
+use profiles::supports_repeated_min_max_content_auto_span_track_list;
 
 pub(super) fn supports_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
-    if tracks.len() != 4 {
-        return false;
-    }
-
-    let mut members = [false; 4];
-    for track in tracks {
-        let member = match track {
-            track @ GridTrackSize::FitContent(_) if fit_content_cap_is_supported(track) => 0,
-            GridTrackSize::MinContent => 1,
-            GridTrackSize::MaxContent => 2,
-            GridTrackSize::Auto => 3,
-            _ => return false,
-        };
-        if std::mem::replace(&mut members[member], true) {
-            return false;
-        }
-    }
-    members.into_iter().all(|present| present)
-}
-
-pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
-    if tracks.len() != 6 || !fit_content_cap_is_supported(&tracks[0]) {
-        return false;
-    }
-
-    let mut counts = [0usize; 3];
-    for track in &tracks[1..] {
-        let index = match track {
-            GridTrackSize::MinContent => 0,
-            GridTrackSize::MaxContent => 1,
-            GridTrackSize::Auto => 2,
-            _ => return false,
-        };
-        counts[index] += 1;
-    }
-    counts == [2, 2, 1]
-}
-
-pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
-    tracks: &[GridTrackSize],
-) -> bool {
-    if tracks.len() != 6 {
-        return false;
-    }
-
-    let mut counts = [0usize; 3];
-    let mut fit_content_seen = false;
-    for (position, track) in tracks.iter().enumerate() {
-        if matches!(track, GridTrackSize::FitContent(_)) {
-            if position >= 3 || fit_content_seen || !fit_content_cap_is_supported(track) {
-                return false;
-            }
-            fit_content_seen = true;
-            continue;
-        }
-        let index = match track {
-            GridTrackSize::MinContent => 0,
-            GridTrackSize::MaxContent => 1,
-            GridTrackSize::Auto => 2,
-            _ => return false,
-        };
-        counts[index] += 1;
-    }
-    fit_content_seen && counts == [2, 2, 1]
+    profiles::supports_min_max_content_auto_track_list(tracks)
 }
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
-    supports_min_content_auto_track_list(tracks)
-        || supports_min_max_content_auto_track_list(tracks)
-        || supports_repeated_min_max_content_auto_track_list(tracks)
-        || supports_repeated_min_max_content_auto_span_track_list(tracks)
+    profiles::supports_intrinsic_auto_track_list(tracks)
+}
+
+pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
+    profiles::supports_repeated_min_max_content_auto_track_list(tracks)
 }
 
 pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
-    !tracks.is_empty()
-        && tracks.len() <= GRID_MAX_TRACKS
-        && tracks
-            .iter()
-            .any(|track| matches!(track, GridTrackSize::FitContent(_)))
-        && if tracks
-            .iter()
-            .any(|track| matches!(track, GridTrackSize::MinContent | GridTrackSize::MaxContent))
-        {
-            supports_intrinsic_auto_track_list(tracks)
-        } else {
-            tracks.iter().all(|track| match track {
-                GridTrackSize::Auto => true,
-                GridTrackSize::LengthPx(value) | GridTrackSize::Percentage(value) => {
-                    value.is_finite() && *value >= 0.0
-                }
-                track @ GridTrackSize::FitContent(_) => fit_content_cap_is_supported(track),
-                _ => false,
-            })
-        }
+    profiles::supports_track_list(tracks)
 }
 
 pub(super) fn validate_root_html_fit_content_auto_rows_contract(
@@ -165,7 +64,6 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
     let six_member_span_list = supports_repeated_min_max_content_auto_span_track_list(tracks);
     let six_member_candidate = six_member_list || six_member_span_list;
-    let later_six_member_candidate = six_member_span_list && !six_member_list;
     let repeated_text_profile = six_member_list
         && visible_children.len() == 9
         && visible_children.iter().copied().skip(1).all(|item_id| {
@@ -284,7 +182,6 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     };
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
-        || (later_six_member_candidate && visible_children.len() == 9)
         || (six_member_candidate && visible_children.len() != 9 && !repeated_text_span_profile)
         || (!four_member_list && !six_member_candidate && !matches!(visible_children.len(), 3 | 5))
         || has_non_collapsible_text(input, node)
@@ -402,17 +299,20 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     };
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
     const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
-    const SIX_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 60.0, 6.0];
+    let six_member_payload_height_profiles = if six_member_list {
+        repeated_intrinsic_payload_heights(tracks)
+    } else {
+        None
+    };
     const FIT_CONTENT_OVERFLOW_HEIGHT: f32 = 60.0;
+    let mut matching_six_member_payload_profiles = [true; 2];
 
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
         let allow_minimum_floor = visible_children.len() == 3 && position == 1;
         if auto_item_is_supported(row_item, allow_minimum_floor) {
             let payload_id = row_item.children[0];
-            let profile_payload_heights = if six_member_list {
-                Some(SIX_MEMBER_LIST_PAYLOAD_HEIGHTS)
-            } else if four_member_list {
+            let profile_payload_heights = if four_member_list {
                 Some(FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS)
             } else {
                 None
@@ -420,8 +320,19 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             let payload_is_allowed = if repeated_text_profile || repeated_text_span_profile {
                 text_payload_is_supported(payload_id)
             } else if six_member_list {
-                let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
-                payload_is_supported(payload_id, std::slice::from_ref(&expected_height))
+                six_member_payload_height_profiles
+                    .as_ref()
+                    .and_then(|profiles| {
+                        profiles
+                            .iter()
+                            .map(|heights| heights.get(position - 1))
+                            .collect::<Option<Vec<_>>>()
+                    })
+                    .is_some_and(|profiles| {
+                        let allowed_heights =
+                            profiles.iter().map(|height| **height).collect::<Vec<_>>();
+                        payload_is_supported(payload_id, &allowed_heights)
+                    })
             } else if let Some(profile_payload_heights) = profile_payload_heights {
                 let expected_height = profile_payload_heights[position - 1];
                 let track_index = (position - 1) % tracks.len();
@@ -442,6 +353,28 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
                     property: "C11.4 fit-content implicit row list payload",
                 });
             }
+            if six_member_list && !repeated_text_profile && !repeated_text_span_profile {
+                let Some(profiles) = six_member_payload_height_profiles.as_ref() else {
+                    return Err(LayoutError::UnsupportedGridContainerStyle {
+                        node: payload_id,
+                        property: "C11.4 fit-content implicit row list payload profile",
+                    });
+                };
+                let payload_height = input.nodes[index[&payload_id]].style.height;
+                for (profile_index, profile) in profiles.iter().enumerate() {
+                    matching_six_member_payload_profiles[profile_index] &=
+                        payload_height == LayoutDimension::Fixed(profile[position - 1]);
+                }
+                if !matching_six_member_payload_profiles
+                    .iter()
+                    .any(|matches| *matches)
+                {
+                    return Err(LayoutError::UnsupportedGridContainerStyle {
+                        node: payload_id,
+                        property: "C11.4 fit-content implicit row list payload profile",
+                    });
+                }
+            }
         } else if visible_children.len() == 3
             && position == 2
             && fixed_item_is_supported(row_item, 6.0, false)
@@ -456,6 +389,23 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         }
     }
     Ok(())
+}
+
+fn repeated_intrinsic_payload_heights(tracks: &[GridTrackSize]) -> Option<[[f32; 8]; 2]> {
+    let fit_position = tracks
+        .iter()
+        .position(|track| matches!(track, GridTrackSize::FitContent(_)))?;
+    let mut legacy = [20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 6.0, 6.0];
+    let mut compact = [1.0; 8];
+    for heights in [&mut legacy, &mut compact] {
+        heights[fit_position] = 20.0;
+        if let Some(repeated_fit_position) = fit_position.checked_add(tracks.len())
+            && repeated_fit_position < heights.len()
+        {
+            heights[repeated_fit_position] = 60.0;
+        }
+    }
+    Some([legacy, compact])
 }
 
 /// Normalize final frames only for the bounded repeated-text profile.

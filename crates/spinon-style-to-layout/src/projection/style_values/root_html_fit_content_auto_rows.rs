@@ -65,7 +65,6 @@ pub(super) fn validate(
     let six_member_span_list =
         grid_values::root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(grid);
     let six_member_candidate = six_member_list || six_member_span_list;
-    let later_six_member_candidate = six_member_span_list && !six_member_list;
     let align_content = grid_style
         .properties
         .get("align-content")
@@ -229,7 +228,6 @@ pub(super) fn validate(
                             == 1)
         };
     if (four_member_list && items.len() != 6)
-        || (later_six_member_candidate && items.len() == 9)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
         || (!four_member_list && !six_member_candidate && !matches!(items.len(), 3 | 5))
         || nodes
@@ -282,7 +280,31 @@ pub(super) fn validate(
     }
     const LIST_PAYLOAD_HEIGHTS: &[f32] = &[6.0, 8.0, 10.0, 25.0, 30.0, 34.0, 48.0, 50.0];
     const FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 20.0];
-    const SIX_MEMBER_LIST_PAYLOAD_HEIGHTS: &[f32] = &[20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 60.0, 6.0];
+    let six_member_payload_height_profiles = if six_member_list {
+        let ComputedCssGridAutoRows::TrackList(tracks) = &grid.auto_rows else {
+            return Err(unsupported(
+                node,
+                "grid-auto-rows",
+                "Repeated intrinsic list requires typed implicit rows",
+            ));
+        };
+        let Some(fit_position) = tracks
+            .iter()
+            .position(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
+        else {
+            return Err(unsupported(
+                node,
+                "grid-auto-rows",
+                "Repeated intrinsic list requires one fit-content track",
+            ));
+        };
+        // Keep the numeric fixture bounded to its historical first-position profile.
+        (fit_position == 0)
+            .then(|| repeated_intrinsic_payload_height_profiles(fit_position, tracks.len()))
+    } else {
+        None
+    };
+    let mut matching_six_member_payload_profiles = [true; 2];
     const FIT_CONTENT_OVERFLOW_HEIGHT: f32 = 60.0;
     if !direct_element_children(tree, nodes, items[0])?.is_empty() {
         return Err(unsupported(
@@ -314,9 +336,7 @@ pub(super) fn validate(
                     "Each intrinsic list item must contain one fixed-px payload div",
                 ));
             }
-            let profile_payload_heights = if six_member_list {
-                Some(SIX_MEMBER_LIST_PAYLOAD_HEIGHTS)
-            } else if four_member_list {
+            let profile_payload_heights = if four_member_list {
                 Some(FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS)
             } else {
                 None
@@ -331,14 +351,47 @@ pub(super) fn validate(
                     ));
                 }
             } else if six_member_list {
-                let expected_height = SIX_MEMBER_LIST_PAYLOAD_HEIGHTS[position - 1];
-                validate_payload(
-                    tree,
-                    nodes,
-                    &styles,
-                    children[0],
-                    std::slice::from_ref(&expected_height),
-                )?;
+                let Some(all_profiles) = six_member_payload_height_profiles.as_ref() else {
+                    return Err(unsupported(
+                        item.id(),
+                        "grid-auto-rows",
+                        "Repeated intrinsic list payload position is unavailable",
+                    ));
+                };
+                let Some(profiles) = all_profiles
+                    .iter()
+                    .map(|heights| heights.get(position - 1))
+                    .collect::<Option<Vec<_>>>()
+                else {
+                    return Err(unsupported(
+                        item.id(),
+                        "grid-auto-rows",
+                        "Repeated intrinsic list payload position is unavailable",
+                    ));
+                };
+                let allowed_heights = profiles.iter().map(|height| **height).collect::<Vec<_>>();
+                validate_payload(tree, nodes, &styles, children[0], &allowed_heights)?;
+                let payload_style = styles.get(&children[0].id()).copied().ok_or_else(|| {
+                    unsupported(
+                        children[0].id(),
+                        "height",
+                        "Nested payload style is missing",
+                    )
+                })?;
+                for (profile_index, profile) in all_profiles.iter().enumerate() {
+                    matching_six_member_payload_profiles[profile_index] &=
+                        fixed_item(payload_style, profile[position - 1], false);
+                }
+                if !matching_six_member_payload_profiles
+                    .iter()
+                    .any(|matches| *matches)
+                {
+                    return Err(unsupported(
+                        children[0].id(),
+                        "height",
+                        "Repeated intrinsic items must match one complete fixed-px payload profile",
+                    ));
+                }
             } else if let Some(profile_payload_heights) = profile_payload_heights {
                 let expected_height = profile_payload_heights[position - 1];
                 let ComputedCssGridAutoRows::TrackList(tracks) = &grid.auto_rows else {
@@ -387,6 +440,23 @@ pub(super) fn validate(
         }
     }
     Ok(())
+}
+
+fn repeated_intrinsic_payload_height_profiles(
+    fit_position: usize,
+    track_count: usize,
+) -> [[f32; 8]; 2] {
+    let mut legacy = [20.0, 10.0, 12.0, 6.0, 6.0, 6.0, 6.0, 6.0];
+    let mut compact = [1.0; 8];
+    for heights in [&mut legacy, &mut compact] {
+        heights[fit_position] = 20.0;
+        if let Some(repeated_fit_position) = fit_position.checked_add(track_count)
+            && repeated_fit_position < heights.len()
+        {
+            heights[repeated_fit_position] = 60.0;
+        }
+    }
+    [legacy, compact]
 }
 
 fn automatic_limits(style: &ComputedElementStyle) -> bool {

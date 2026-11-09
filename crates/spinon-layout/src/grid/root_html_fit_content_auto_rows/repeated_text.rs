@@ -2,6 +2,32 @@ use super::*;
 
 #[path = "repeated_text/span.rs"]
 mod span;
+#[path = "repeated_text/track_trace.rs"]
+mod track_trace;
+use track_trace::{
+    repeated_text_blink_layout_unit_distribute_rows, repeated_text_final_row_track_sizes,
+    repeated_text_track_trace_error,
+};
+
+pub(super) fn blink_layout_unit_to_px(units: i64) -> f32 {
+    track_trace::blink_layout_unit_to_px(units)
+}
+
+pub(super) fn blink_layout_unit_distribute_rows(
+    container: &crate::GridContainerInput,
+    output: &crate::LayoutOutput,
+    grid_id: NodeId,
+    grid_frame: crate::LayoutFrame,
+    raw_row_sizes: &[f32],
+) -> Option<Vec<i64>> {
+    track_trace::blink_layout_unit_distribute_rows(
+        container,
+        output,
+        grid_id,
+        grid_frame,
+        raw_row_sizes,
+    )
+}
 
 pub(super) fn supports_span_topology(input: &LayoutInput, items: &[NodeId]) -> bool {
     span::supports_topology(input, items)
@@ -11,15 +37,24 @@ pub(super) fn normalize_layout_frames(
     input: &LayoutInput,
     output: &mut crate::LayoutOutput,
 ) -> Result<(), LayoutError> {
-    if !input.grid_containers.values().any(|container| {
-        container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1
-            && matches!(
-                &container.auto_rows,
-                GridAutoRows::TrackList(tracks)
-                    if super::supports_repeated_min_max_content_auto_span_track_list(tracks)
-            )
-    }) {
+    let repeated_text_grids = input
+        .grid_containers
+        .iter()
+        .filter(|(_, container)| {
+            container.placement_mode == GridPlacementMode::RootHtmlFitContentAutoRowsV1
+                && matches!(
+                    &container.auto_rows,
+                    GridAutoRows::TrackList(tracks)
+                        if super::supports_repeated_min_max_content_auto_track_list(tracks)
+                )
+        })
+        .map(|(grid_id, _)| *grid_id)
+        .collect::<Vec<_>>();
+    if repeated_text_grids.is_empty() {
         return Ok(());
+    }
+    if repeated_text_grids.len() != 1 || output.revision != input.revision {
+        return Err(repeated_text_track_trace_error(repeated_text_grids[0]));
     }
 
     let index = input
@@ -30,18 +65,10 @@ pub(super) fn normalize_layout_frames(
         .collect::<BTreeMap<_, _>>();
     let hidden = crate::grid_placement::hidden_subtrees(input, &index);
 
-    for (&grid_id, container) in &input.grid_containers {
-        if container.placement_mode != GridPlacementMode::RootHtmlFitContentAutoRowsV1
-            || !matches!(
-                &container.auto_rows,
-                GridAutoRows::TrackList(tracks)
-                    if super::supports_repeated_min_max_content_auto_span_track_list(tracks)
-            )
-        {
-            continue;
-        }
+    for grid_id in repeated_text_grids {
+        let container = &input.grid_containers[&grid_id];
         let Some(&grid_index) = index.get(&grid_id) else {
-            continue;
+            return Err(repeated_text_track_trace_error(grid_id));
         };
         let grid = &input.nodes()[grid_index];
         let items = grid
@@ -71,60 +98,63 @@ pub(super) fn normalize_layout_frames(
             .get(&grid_id)
             .copied()
             .ok_or(LayoutError::MissingComputedLayout(grid_id))?;
-        let item_frames = items
-            .iter()
-            .map(|item_id| {
-                output
-                    .frames
-                    .get(item_id)
-                    .copied()
-                    .map(|frame| (*item_id, frame))
-                    .ok_or(LayoutError::MissingComputedLayout(*item_id))
-            })
-            .collect::<Result<Vec<_>, _>>()?;
-        let raw_row_sizes = item_frames
-            .iter()
-            .enumerate()
-            .map(|(position, (_, item_frame))| {
-                item_frames
-                    .get(position + 1)
-                    .map_or(item_frame.height, |(_, next_frame)| {
-                        next_frame.y - item_frame.y
-                    })
-            })
-            .collect::<Vec<_>>();
-        let snapped_row_size_units = blink_layout_unit_distribute_rows(
+        let Some(raw_row_sizes) = repeated_text_final_row_track_sizes(
+            output,
+            grid_id,
+            items.len(),
+            grid_frame.height,
+            container,
+        ) else {
+            return Err(repeated_text_track_trace_error(grid_id));
+        };
+        let mut row_offsets = Vec::with_capacity(items.len() + 1);
+        row_offsets.push(0.0_f32);
+        for &row_size in &raw_row_sizes {
+            let next = row_offsets.last().copied().unwrap_or_default() + row_size;
+            row_offsets.push(next);
+        }
+        let mut item_frames = Vec::with_capacity(items.len());
+        for (row, item_id) in items.iter().copied().enumerate() {
+            let frame = output
+                .frames
+                .get(&item_id)
+                .copied()
+                .ok_or(LayoutError::MissingComputedLayout(item_id))?;
+            let flow_frame = output
+                .flow_frames
+                .get(&item_id)
+                .copied()
+                .ok_or_else(|| repeated_text_track_trace_error(grid_id))?;
+            let expected_y = grid_frame.y + row_offsets[row];
+            let expected_height = raw_row_sizes[row];
+            if !frame_matches_row(frame, grid_frame, expected_y, expected_height)
+                || !frame_matches_row(flow_frame, grid_frame, expected_y, expected_height)
+            {
+                return Err(repeated_text_track_trace_error(grid_id));
+            }
+            item_frames.push((item_id, frame));
+        }
+        let snapped_row_size_units = repeated_text_blink_layout_unit_distribute_rows(
             container,
             output,
             grid_id,
             grid_frame,
             &raw_row_sizes,
         )
-        .unwrap_or_else(|| {
-            item_frames
-                .iter()
-                .enumerate()
-                .map(|(position, (_, item_frame))| {
-                    let local_top = item_frame.y - grid_frame.y;
-                    let local_bottom = item_frames
-                        .get(position + 1)
-                        .map_or(local_top + item_frame.height, |(_, next_frame)| {
-                            next_frame.y - grid_frame.y
-                        });
-                    blink_layout_unit_floor_units(local_bottom)
-                        - blink_layout_unit_floor_units(local_top)
-                })
-                .collect()
-        });
-        let mut snapped_top_units =
-            blink_layout_unit_floor_units(item_frames[0].1.y - grid_frame.y);
+        .ok_or_else(|| repeated_text_track_trace_error(grid_id))?;
+        let mut snapped_top_units = 0_i64;
+        let mut adjustments = Vec::with_capacity(item_frames.len());
         for (position, (item_id, item_frame)) in item_frames.iter().copied().enumerate() {
             let local_top = item_frame.y - grid_frame.y;
             let snapped_top = blink_layout_unit_to_px(snapped_top_units);
             let delta_y = snapped_top - local_top;
             let row_size_units = snapped_row_size_units[position];
             let snapped_height = blink_layout_unit_to_px(row_size_units);
+            adjustments.push((item_id, delta_y, snapped_height));
+            snapped_top_units += row_size_units;
+        }
 
+        for (item_id, delta_y, snapped_height) in adjustments {
             let mut pending = vec![item_id];
             while let Some(node_id) = pending.pop() {
                 if let Some(frame) = output.frames.get_mut(&node_id) {
@@ -143,131 +173,24 @@ pub(super) fn normalize_layout_frames(
                     pending.extend(input.nodes()[node_index].children.iter().copied());
                 }
             }
-            snapped_top_units += row_size_units;
         }
     }
     Ok(())
 }
 
-fn blink_layout_unit_floor_units(value: f32) -> i64 {
-    let value = f64::from(value);
-    let rounding_error_bound = f64::from(f32::EPSILON) * value.abs().max(1.0) * 4.0 * 64.0;
-    (value * 64.0 + rounding_error_bound).floor() as i64
-}
-
-pub(super) fn blink_layout_unit_to_px(units: i64) -> f32 {
-    (units as f64 / 64.0) as f32
-}
-
-pub(super) fn blink_layout_unit_distribute_rows(
-    container: &crate::GridContainerInput,
-    output: &crate::LayoutOutput,
-    grid_id: NodeId,
+fn frame_matches_row(
+    frame: crate::LayoutFrame,
     grid_frame: crate::LayoutFrame,
-    raw_row_sizes: &[f32],
-) -> Option<Vec<i64>> {
-    let trace = output
-        .grid_track_sizing_traces
-        .iter()
-        .find(|trace| trace.node == grid_id)?;
-    let pass = trace
-        .passes
-        .iter()
-        .filter(|pass| pass.axis == crate::LayoutGridTrackSizingAxis::Rows)
-        .max_by_key(|pass| pass.sequence)?;
-    let intrinsic_stage = pass.stages.iter().find(|stage| {
-        stage.stage == crate::LayoutGridTrackSizingStageKind::IntrinsicSizingComplete
-    })?;
-    let final_stage = pass.stages.last()?;
-    let intrinsic_tracks = intrinsic_stage
-        .tracks
-        .iter()
-        .filter(|track| !track.is_gutter)
-        .collect::<Vec<_>>();
-    let final_tracks = final_stage
-        .tracks
-        .iter()
-        .filter(|track| !track.is_gutter)
-        .collect::<Vec<_>>();
-    if intrinsic_tracks.len() != raw_row_sizes.len() || final_tracks.len() != raw_row_sizes.len() {
-        return None;
-    }
-
-    let mut quantized = Vec::with_capacity(raw_row_sizes.len());
-    let mut growth_potentials = Vec::new();
-    let mut raw_total = 0.0_f64;
-    let mut floor_total = 0_i64;
-    for (row, &raw_size) in raw_row_sizes.iter().enumerate() {
-        if !raw_size.is_finite() || raw_size < 0.0 {
-            return None;
-        }
-        if (final_tracks[row].base_size - raw_size).abs() > 0.01 {
-            return None;
-        }
-
-        let scaled = f64::from(raw_size) * 64.0;
-        let floor_units = blink_layout_unit_floor_units(raw_size);
-        let nearest_units = scaled.round();
-        let rounding_error_bound =
-            f64::from(f32::EPSILON) * f64::from(raw_size).abs().max(1.0) * 4.0 * 64.0;
-        let is_fractional = (scaled - nearest_units).abs() > rounding_error_bound;
-        quantized.push(floor_units);
-        floor_total += floor_units;
-        raw_total += f64::from(raw_size);
-
-        if !is_fractional {
-            continue;
-        }
-        let track = intrinsic_tracks[row];
-        let growth_limit = track.growth_limit.unwrap_or(f32::INFINITY);
-        let fit_content_limit = repeated_row_fit_content_limit(container, row, grid_frame.height)?;
-        let growth_limit = fit_content_limit.map_or(growth_limit, |limit| growth_limit.min(limit));
-        let growth_potential = (growth_limit - track.base_size).max(0.0);
-        if growth_potential < 1.0 / 64.0 {
-            return None;
-        }
-        growth_potentials.push((row, growth_potential));
-    }
-
-    let target_total = (raw_total * 64.0).round() as i64;
-    let leftover_units = target_total - floor_total;
-    if leftover_units < 0 || leftover_units as usize > growth_potentials.len() {
-        return None;
-    }
-    // Blink distributes 1/64px shares in growth-potential order; Taffy keeps the
-    // equivalent track sizes as f32 values, so assign the residual units here.
-    growth_potentials.sort_by(|left, right| left.1.total_cmp(&right.1));
-    for (row, _) in growth_potentials.iter().rev().take(leftover_units as usize) {
-        quantized[*row] += 1;
-    }
-    Some(quantized)
-}
-
-fn repeated_row_fit_content_limit(
-    container: &crate::GridContainerInput,
-    row: usize,
-    grid_height: f32,
-) -> Option<Option<f32>> {
-    let track = if row < container.rows.len() {
-        container.rows.get(row)?
-    } else {
-        let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows else {
-            return None;
-        };
-        if tracks.is_empty() {
-            return None;
-        }
-        &tracks[(row - container.rows.len()) % tracks.len()]
-    };
-    let crate::GridTrackSize::FitContent(limit) = track else {
-        return Some(None);
-    };
-    let limit = match limit {
-        crate::GridTrackLengthPercentage::LengthPx(value) => *value,
-        crate::GridTrackLengthPercentage::Percentage(value) => *value * grid_height,
-        crate::GridTrackLengthPercentage::Calc(_) => return None,
-    };
-    Some(Some(limit))
+    expected_y: f32,
+    expected_height: f32,
+) -> bool {
+    [frame.x, frame.y, frame.width, frame.height]
+        .into_iter()
+        .all(f32::is_finite)
+        && (frame.x - grid_frame.x).abs() <= 0.01
+        && (frame.y - expected_y).abs() <= 0.01
+        && (frame.width - grid_frame.width).abs() <= 0.01
+        && (frame.height - expected_height).abs() <= 0.01
 }
 
 pub(super) fn has_supported_text(input: &LayoutInput, node: NodeId) -> bool {
