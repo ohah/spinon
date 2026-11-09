@@ -1,0 +1,44 @@
+{
+  "browser": "Agent Browser / HeadlessChrome 157.0.0.0",
+  "platform": "MacIntel",
+  "dpr": 1,
+  "viewportCssPx": [
+    1280,
+    900
+  ],
+  "fixtureSha256": "c504105b3926c3f668678d8a5386c75b9fb7eea9b723fe66696179669d5c4854",
+  "collectorSha256": "0c8c0aa12df67cfd17189824a67ebad68c4398d21d9ade7ec9f5167ddfa68094",
+  "baselineObservationSha256": "5788f8e34bbd42ceb878de9ba99294071eefb44ae835cdf4a2a2a5f7f22b395a",
+  "observationSha256": "94d6036efaf7d142445f029c9d2de1a8f5a8fdf6fac13edf30dfda9f54b89639",
+  "sceneCount": 1440,
+  "uniqueAuthoredTrackLists": 720,
+  "scenesPerFitPosition": {
+    "1": 240,
+    "2": 240,
+    "3": 240,
+    "4": 240,
+    "5": 240,
+    "6": 240
+  },
+  "tailPermutationCount": 30,
+  "fitContentCycleOccurrencesChecked": 1920,
+  "fitFloorRescueOccurrencesAgainstMinHeightZero": 600,
+  "contentFloorViolations": 0,
+  "startRowTotalsCssPx": [
+    180
+  ],
+  "stretchRowTotalsCssPx": [
+    220
+  ],
+  "stretchRowRelationsChecked": 6480,
+  "visibleOverflowScenes": 0,
+  "independentRelations": [
+    "one fit-content track at each authored position with exact remaining-track multiplicity and 30 tail orders",
+    "paired min-height:0 and min-height:auto scenes use identical track list, cap, alignment, text, and topology",
+    "explicit control remains min-height:0 while all eight text items compute min-height:auto",
+    "fit-content automatic minimum equals text content floor even when the cap is 0% or below that floor",
+    "item and text payload frames follow the implicit-row cycle after the fixed explicit row",
+    "align-content:stretch distributes the 40px free space only among auto-track occurrences",
+    "visible overflow remains absent within this definite-height input matrix"
+  ]
+}
