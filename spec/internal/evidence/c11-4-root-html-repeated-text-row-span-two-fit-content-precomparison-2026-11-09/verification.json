@@ -1,0 +1,104 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-two-fit-content-precomparison.v1",
+  "capturedAtUtc": "2026-11-09T11:07:34.282Z",
+  "browserCli": "/opt/homebrew/bin/agent-browser",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewport": [
+    1280,
+    900
+  ],
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-two-fit-content-precomparison.html",
+    "sha256": "844ac9c21781c35ca903bd164d36b7d5a27bccff26bba5df86be5a0c282246be"
+  },
+  "collector": {
+    "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-precomparison-2026-11-09/capture-chrome.mjs",
+    "sha256": "4e11c1c1856b433a512d6e81c14168f3967371752bd72ec5d1f92fc40ab25521"
+  },
+  "sceneCount": 3840,
+  "uniqueTrackListCount": 480,
+  "trackPositionPairs": 15,
+  "capPairsIncludingBothAssignments": 8,
+  "tailOrders": 4,
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "spanTopologies": [
+    "span2Six-forward",
+    "span2Six-reverse",
+    "span2Span3Six-forward",
+    "span2Span3Six-reverse"
+  ],
+  "gridSizeCssPx": [
+    40,
+    220
+  ],
+  "expectedTrackSizeMultiset": {
+    "fit-content()": 2,
+    "min-content": 2,
+    "max-content": 1,
+    "auto": 1
+  },
+  "independentChecks": {
+    "allScenesHaveSevenUsedRows": true,
+    "authoredSixMemberTrackOrderPreserved": true,
+    "itemFramesEqualTheirSpannedUsedRowSums": true,
+    "sourceOrderReversalPreservesSemanticFrames": true,
+    "alignContentStretchChangesOnlyAutoTrack": true,
+    "maximumSpanFrameErrorCssPx": 0.0002499999999940883,
+    "sourceOrderPairs": 1920,
+    "alignmentPairs": 1920,
+    "maxSourceOrderFrameDeltaPx": 0,
+    "maxNonAutoStretchDeltaPx": 0,
+    "maxAutoTrackStretchDeltaPx": 130,
+    "capSensitivity": {
+      "capSensitivityGroups": 300,
+      "totalCapSensitivityGroups": 480,
+      "maximumTrackRangeAcrossCapVariantsCssPx": 60,
+      "fitRowSizeRangesByTrackListPosition": {
+        "1": [
+          0,
+          44
+        ],
+        "2": [
+          0,
+          44
+        ],
+        "3": [
+          0,
+          30
+        ],
+        "4": [
+          0,
+          30
+        ],
+        "5": [
+          0,
+          30
+        ],
+        "6": [
+          0,
+          20
+        ]
+      },
+      "capTokens": [
+        "0%",
+        "0px",
+        "10px",
+        "120%",
+        "20%",
+        "20px"
+      ],
+      "definiteBlockBasisForPercentCapsCssPx": {
+        "20%": 44,
+        "120%": 264
+      }
+    }
+  },
+  "artifacts": {
+    "observations": "chrome-observation.ndjson",
+    "screenshot": "chrome157-dual-fit-content-sample.png"
+  }
+}
