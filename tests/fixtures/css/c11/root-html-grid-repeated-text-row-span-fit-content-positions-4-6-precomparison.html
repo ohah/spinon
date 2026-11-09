@@ -1,0 +1,149 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 repeated text row spans with fit-content positions four through six</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 16px; color: #172033; font: 13px/1.45 system-ui, sans-serif; }
+  .preview { margin: 20px 0 290px; transform: scale(1.3); transform-origin: top left; }
+  .grid {
+    display: grid; width: 40px; height: 220px;
+    grid-template-columns: 40px; grid-template-rows: 10px;
+    grid-auto-flow: row; row-gap: 0; column-gap: 0;
+    align-content: stretch; align-items: normal; justify-items: normal;
+    direction: ltr; overflow: visible;
+  }
+  .item { display: block; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; border: 0; overflow: visible; grid-column: 1 / 2; }
+  .empty { height: 10px; grid-row: 1 / 2; background: #cbd5e1; }
+  .item[data-item="A"] { background: #fca5a5; }
+  .item[data-item="B"] { background: #93c5fd; }
+  .item[data-item="C"] { background: #86efac; }
+  .item[data-item="D"] { background: #c4b5fd; }
+  .item[data-item="E"] { background: #fdba74; }
+  .payload { display: block; width: auto; height: auto; margin: 0; padding: 0; border: 0; font: 400 10px/10px monospace; letter-spacing: 0; word-spacing: 0; white-space: normal; direction: ltr; background: #fde68a; }
+</style>
+<h1>C11.4 반복 텍스트 row-span fit-content 위치 4–6</h1>
+<p>Chrome 157 고정 비교. 여섯 implicit row를 span하는 text item에서 fit-content()를 authored 위치 4, 5, 6에 둡니다.</p>
+<div class="preview">
+  <div class="grid" style="grid-auto-rows: min-content max-content auto min-content fit-content(20%) max-content">
+    <div class="item empty"></div>
+    <div class="item" data-item="A" style="grid-row:2 / span 2"><div class="payload">A A A A A A A A A A A A A A A A</div></div>
+    <div class="item" data-item="B" style="grid-row:3 / span 2"><div class="payload">A A A A A A A A A A A A A A</div></div>
+    <div class="item" data-item="C" style="grid-row:4 / span 3"><div class="payload">A A A A A A A A A A A A</div></div>
+    <div class="item" data-item="D" style="grid-row:5 / span 3"><div class="payload">A A A A A A A A A A</div></div>
+  </div>
+</div>
+<script>
+window.captureMatrix = () => {
+  const tails = ['min-content', 'min-content', 'max-content', 'max-content', 'auto'];
+  const permutations = new Map();
+  const permute = (values, offset = 0) => {
+    if (offset === values.length) {
+      permutations.set(values.join(' '), [...values]);
+      return;
+    }
+    for (let index = offset; index < values.length; index += 1) {
+      [values[offset], values[index]] = [values[index], values[offset]];
+      permute(values, offset + 1);
+      [values[offset], values[index]] = [values[index], values[offset]];
+    }
+  };
+  permute(tails);
+  const orderedTails = [...permutations.values()].sort((left, right) => left.join(' ').localeCompare(right.join(' ')));
+  const content = {
+    A: 'A A A A A A A A A A A A A A A A',
+    B: 'A A A A A A A A A A A A A A',
+    C: 'A A A A A A A A A A A A',
+    D: 'A A A A A A A A A A',
+    E: 'A A A A A A A A',
+  };
+  const topologies = {
+    'span2-six-forward': [['A', 2, 2], ['B', 3, 2], ['C', 4, 2], ['D', 5, 2], ['E', 6, 2]],
+    'span2-six-reversed': [['E', 6, 2], ['D', 5, 2], ['C', 4, 2], ['B', 3, 2], ['A', 2, 2]],
+    'span2-span3-six-forward': [['A', 2, 2], ['B', 3, 2], ['C', 4, 3], ['D', 5, 3]],
+    'span2-span3-six-reversed': [['D', 5, 3], ['C', 4, 3], ['B', 3, 2], ['A', 2, 2]],
+  };
+  const host = document.createElement('div');
+  Object.assign(host.style, { position: 'absolute', left: '-10000px', top: '0' });
+  document.body.append(host);
+  const cases = [];
+  for (const fitPosition of [4, 5, 6]) {
+    for (const tail of orderedTails) {
+      for (const cap of ['0px', '0%', '10px', '20px', '20%', '120%']) {
+        for (const align of ['start', 'stretch']) {
+          for (const [topology, entries] of Object.entries(topologies)) {
+            const trackList = [...tail];
+            trackList.splice(fitPosition - 1, 0, 'fit-content(' + cap + ')');
+            const grid = document.createElement('div');
+            Object.assign(grid.style, {
+              display: 'grid', width: '40px', height: '220px',
+              gridTemplateColumns: '40px', gridTemplateRows: '10px',
+              gridAutoRows: trackList.join(' '), gridAutoFlow: 'row',
+              rowGap: '0px', columnGap: '0px', alignContent: align,
+              alignItems: 'normal', justifyItems: 'normal', direction: 'ltr', overflow: 'visible',
+            });
+            const empty = document.createElement('div');
+            Object.assign(empty.style, { gridRow: '1 / 2', gridColumn: '1 / 2', height: '10px' });
+            grid.append(empty);
+            for (const [id, row, span] of entries) {
+              const item = document.createElement('div');
+              item.dataset.item = id;
+              Object.assign(item.style, {
+                display: 'block', width: 'auto', height: 'auto', minHeight: '0px',
+                margin: '0px', padding: '0px', border: '0px', overflow: 'visible',
+                gridRow: row + ' / span ' + span, gridColumn: '1 / 2',
+              });
+              const payload = document.createElement('div');
+              payload.className = 'payload';
+              payload.textContent = content[id];
+              Object.assign(payload.style, {
+                display: 'block', width: 'auto', height: 'auto', margin: '0px', padding: '0px',
+                border: '0px', fontFamily: 'monospace', fontSize: '10px', lineHeight: '10px',
+                fontWeight: '400', letterSpacing: '0px', wordSpacing: '0px', whiteSpace: 'normal', direction: 'ltr',
+              });
+              item.append(payload);
+              grid.append(item);
+            }
+            host.append(grid);
+            const gridRect = grid.getBoundingClientRect();
+            const style = getComputedStyle(grid);
+            const rows = style.gridTemplateRows.split(/\s+/).map(Number.parseFloat);
+            const items = [...grid.children].map((item, index) => {
+              const rect = item.getBoundingClientRect();
+              const payload = item.querySelector('.payload');
+              const payloadRect = payload?.getBoundingClientRect();
+              let lineYs = [];
+              if (payload) {
+                const range = document.createRange();
+                range.selectNodeContents(payload);
+                lineYs = [...new Set([...range.getClientRects()].map(line => Math.round((line.y - gridRect.y) * 64) / 64))];
+              }
+              const itemStyle = getComputedStyle(item);
+              return {
+                id: item.dataset.item || 'empty-' + index,
+                rowStart: itemStyle.gridRowStart,
+                rowEnd: itemStyle.gridRowEnd,
+                frame: [rect.x - gridRect.x, rect.y - gridRect.y, rect.width, rect.height],
+                payload: payloadRect ? [payloadRect.x - gridRect.x, payloadRect.y - gridRect.y, payloadRect.width, payloadRect.height] : null,
+                lineYs,
+              };
+            });
+            cases.push({ fitPosition, trackList, topology, tail, cap, align, computedAutoRows: style.gridAutoRows, rows, items });
+            grid.remove();
+          }
+        }
+      }
+    }
+  }
+  host.remove();
+  return {
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    dpr: devicePixelRatio,
+    fitContentPositions: [4, 5, 6],
+    tailPermutationCount: permutations.size,
+    caseCount: cases.length,
+    cases,
+  };
+};
+</script>

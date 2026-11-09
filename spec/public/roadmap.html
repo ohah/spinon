@@ -105,7 +105,7 @@
     <section class="hero" aria-labelledby="page-title">
       <div><p class="eyebrow">스피논 / 구현 로드맵</p><h1 id="page-title">스피논을 만드는 순서</h1></div>
       <section class="kanban-section" aria-labelledby="kanban-heading">
-        <div class="section-heading"><h2 id="kanban-heading">현재 작업 칸반</h2><span>다음 계획: C11.4 후속 bounded slice 후보 미선정</span></div>
+        <div class="section-heading"><h2 id="kanban-heading">현재 작업 칸반</h2><span>다음 계획: 반복 text row-span fit-content 위치 4–6</span></div>
         <div class="kanban-frame" id="kanban-board" aria-live="polite"><p class="kanban-note">공식 구현 상태를 불러오는 중입니다.</p></div>
         <p class="kanban-note" id="official-status-note" aria-live="polite">체크 상태를 공식 상태 대장에서 확인하고 있습니다.</p>
         <p class="kanban-note">칸반은 78개 상위 작업과 공식 상태 대장에 등록된 세부 작업을 합산해 요약합니다. 아래 목록에는 상위 작업과 CSS·JavaScript API 세부 체크리스트를 함께 표시합니다. 목록과 완료 열은 <a href="https://github.com/ohah/spinon/blob/main/spec/STATUS.md">공식 상태 대장</a>에서 ID와 체크 상태를 읽습니다. 상위 ID가 없는 C11.4 세부 slice는 코드 변경 중일 때 진행 칸, 계획과 사전 비교를 마치고 구현을 앞둔 항목은 다음 칸에 표시합니다. 따라서 공식 완료 수 78/214와 C11.4 진행 상태는 별도 지표입니다. 새 ID가 대장에 추가되면 다음 새로고침 때 세부 목록에도 표시됩니다. 다음·진행 중·외부 대기는 작업 순서를 보여주는 보드 메모이며, 완료 판정에는 사용하지 않습니다. 모바일에서는 칸반을 좌우로 밀어 다른 열을 볼 수 있습니다.</p>
@@ -507,7 +507,7 @@
     const statusNote = document.getElementById('official-status-note');
     const statusUrl = 'https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main';
     // 공식 상태 대장에 상위 ID가 없는 C11.4 slice는 실제 코드 변경이 시작되면 진행 중 열에 표시한다.
-    const execution = { nextOrder:[], inProgress:[], detailInProgress:[], detailNext:[], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
+    const execution = { nextOrder:[], inProgress:[], detailInProgress:[], detailNext:[{ code:'C11.4', title:'반복 text row-span fit-content 위치 4–6' }], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
     let officialStatuses = null;
     const baseTasks = phases.flatMap(phase => phase.tasks.map(([code, title, description]) => ({
       code, title, description, key:taskIdentity(code, title)

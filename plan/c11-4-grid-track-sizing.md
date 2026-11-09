@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-09 Root HTML repeated-text row-span · 다음 계획 후보
+
+다음 bounded 후보로 여섯 implicit row를 생성하는 repeated-text span profile의 fit-content authored 위치 4–6을 선택했다. Agent Browser Chrome 157의 4,320-scene 사전 비교와 계획 실패 관점 20개 검토는 마쳤고 제품 코드는 아직 변경하지 않았다. C11.4/C11 공식 체크와 78/214는 유지한다. [집중 계획](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-plan-review-20.md) · [Chrome 관측과 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/README.md)
+
 ## 2026-11-09 Root HTML 반복 텍스트 행 span · PR #1295 병합 · 후속 계획
 
 기본 parsed Root HTML direct-text row-span slice는 구현 PR [#1295](https://github.com/ohah/spinon/pull/1295)로 `2026-11-08T20:35:50Z` Rebase and merge됐고 merge SHA는 `40b416b4de4942c9251db0f4862626443310d092`다. 다음 후보는 기존 여섯-member `grid-auto-rows` repeated intrinsic list에서 `fit-content()`를 두 번째·세 번째 implicit-row 위치에 두는 60개 새 order다. Chrome 157 사전 비교 1,920/1,920 scene과 독립 span/frame·source-order·alignment 관계를 확인했다. [후속 집중 계획](./c11-4-root-html-repeated-text-later-fit-content-row-span.md) · [Chrome 관측과 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md). 계획 PR merge 전에는 제품 코드를 수정하지 않는다. C11.4/C11 공식 체크와 `78/214`는 유지한다.
