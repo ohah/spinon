@@ -1,0 +1,43 @@
+{
+  "schema": "spinon.c11-4.repeated-text-autoplacement-two-fit-content-precomparison-summary/v1",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "devicePixelRatio": 1,
+  "viewportCssPx": [
+    1280,
+    900
+  ],
+  "fixtureSha256": "861c6085b5ee2f2c02e51b9f588af21aff5065e47e9f4ace5ce08a0d29ea7722",
+  "collectorSha256": "d1dc919984d1587b2302a6ab5f6593a8f0cf96febc89c488cdd0aa118545d325",
+  "observationSha256": "64761f0eed9e4c1dfb587dfc7f531a26e535eaee6122ed4a13048913a991cd62",
+  "sceneCount": 2880,
+  "uniqueTrackListCount": 1440,
+  "fitPositionPairs": 15,
+  "orderedCapAssignments": 8,
+  "tailOrderCount": 12,
+  "fitContentRowOccurrencesChecked": 7680,
+  "alignmentPairsChecked": 1440,
+  "capSensitivityGroups": 360,
+  "totalCapSensitivityGroups": 360,
+  "maximumCapVariantRowRangeCssPx": 80,
+  "fitTrackUsedSizeRangeCssPx": [
+    0,
+    30
+  ],
+  "maximumNonAutoStretchDeltaCssPx": 0.0,
+  "maximumAutoStretchDeltaCssPx": 120,
+  "visiblePayloadOverflowSceneCount": 288,
+  "maximumVisiblePayloadOverflowCssPx": 30.0,
+  "usedRowRangeCssPx": [
+    0,
+    150
+  ],
+  "independentRelations": [
+    "six authored track members preserve the two cap positions and remaining 2/1/1 tail multiset",
+    "eight auto-placed items start after one explicit row and cycle the six implicit track sizes",
+    "each fit-content row equals min(fixed 10px line-height contribution, resolved cap) for this min-height:0 fixture",
+    "item frames match used rows and text payload frames match the fixed line-count corpus",
+    "align-content:stretch distributes free space equally only among auto track occurrences",
+    "visible text may overflow beyond the definite 220px Grid box"
+  ]
+}

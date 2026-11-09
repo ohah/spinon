@@ -1,0 +1,226 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 repeated text auto-placement with two fit-content tracks</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 16px; color: #172033; font: 13px/1.45 system-ui, sans-serif; }
+  .grid {
+    display: grid; width: 40px; height: 220px;
+    grid-template-columns: 40px; grid-template-rows: 10px;
+    grid-auto-flow: row; row-gap: 0; column-gap: 0;
+    align-content: start; align-items: normal; justify-items: normal;
+    direction: ltr; overflow: visible;
+  }
+  .item { display: block; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; border: 0; overflow: visible; }
+  .empty { height: 10px; grid-row: 1 / 2; background-color: #cbd5e1; }
+  .item[data-index="1"] { background-color: #fca5a5; }
+  .item[data-index="2"] { background-color: #93c5fd; }
+  .item[data-index="3"] { background-color: #86efac; }
+  .payload { display: block; width: auto; height: auto; margin: 0; padding: 0; border: 0; font: 400 10px/10px monospace; letter-spacing: 0; word-spacing: 0; white-space: normal; direction: ltr; background-color: #fde68a; }
+  #sample { display: flex; align-items: flex-start; gap: 20px; }
+  #sample-grid { grid-auto-rows: fit-content(10px) min-content fit-content(20%) max-content auto min-content; }
+</style>
+<h1>C11.4 repeated text auto-placement with two fit-content tracks</h1>
+<p>Chrome 사전 비교: 두 fit-content track 위치·cap 배정, 12개 tail 순서, start/stretch와 여덟 implicit text row.</p>
+<div id="sample">
+  <div id="sample-grid" class="grid"></div>
+  <pre id="sample-summary"></pre>
+</div>
+<script>
+const payloads = [
+  'A A A A A A',
+  'AAAA AAAA A',
+  'AA AA AA AA',
+  'AAA AAA AAA',
+  'AAA AAA',
+  'A A A A A A',
+  'A A A A A A A A',
+  'AA',
+];
+const lineCounts = [2, 2, 2, 3, 2, 2, 3, 1];
+const initialTailMembers = ['min-content', 'min-content', 'max-content', 'auto'];
+const capAssignments = [
+  ['0px', '0%'], ['0%', '0px'],
+  ['10px', '20px'], ['20px', '10px'],
+  ['10px', '20%'], ['20%', '10px'],
+  ['20%', '120%'], ['120%', '20%'],
+];
+
+function uniquePermutations(values) {
+  const counts = new Map();
+  for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
+  const result = new Map();
+  const visit = prefix => {
+    if (prefix.length === values.length) {
+      result.set(prefix.join(' '), [...prefix]);
+      return;
+    }
+    for (const value of counts.keys()) {
+      const count = counts.get(value);
+      if (count === 0) continue;
+      counts.set(value, count - 1);
+      prefix.push(value);
+      visit(prefix);
+      prefix.pop();
+      counts.set(value, count);
+    }
+  };
+  visit([]);
+  return [...result.values()].sort((left, right) => left.join(' ').localeCompare(right.join(' ')));
+}
+
+function positionPairs() {
+  const pairs = [];
+  for (let first = 1; first <= 6; first += 1) {
+    for (let second = first + 1; second <= 6; second += 1) pairs.push([first, second]);
+  }
+  return pairs;
+}
+
+const tails = uniquePermutations(initialTailMembers);
+const fitPairs = positionPairs();
+const scenes = [];
+for (const fitPositions of fitPairs) {
+  for (const tail of tails) {
+    for (const fitCaps of capAssignments) {
+      for (const alignContent of ['start', 'stretch']) {
+        const trackMembers = [...tail];
+        for (let index = 0; index < fitPositions.length; index += 1) {
+          trackMembers.splice(fitPositions[index] - 1, 0, `fit-content(${fitCaps[index]})`);
+        }
+        scenes.push({
+          index: scenes.length,
+          fitPositions,
+          fitCaps,
+          tail,
+          alignContent,
+          trackMembers,
+          trackList: trackMembers.join(' '),
+        });
+      }
+    }
+  }
+}
+
+function appendItems(grid) {
+  const empty = document.createElement('div');
+  empty.className = 'item empty';
+  grid.append(empty);
+  for (let index = 1; index <= payloads.length; index += 1) {
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.dataset.index = String(index);
+    const payload = document.createElement('div');
+    payload.className = 'payload';
+    payload.textContent = payloads[index - 1];
+    item.append(payload);
+    grid.append(item);
+  }
+}
+
+const sampleGrid = document.querySelector('#sample-grid');
+appendItems(sampleGrid);
+
+const round = value => Math.round(value * 100000) / 100000;
+const box = (element, origin) => {
+  const rect = element.getBoundingClientRect();
+  return [rect.x - origin.x, rect.y - origin.y, rect.width, rect.height].map(round);
+};
+const lines = element => {
+  const range = document.createRange();
+  range.selectNodeContents(element);
+  return [...new Set([...range.getClientRects()].map(rect => round(rect.top)))];
+};
+
+function showScene(scene, grid) {
+  grid.replaceChildren();
+  grid.style.gridAutoRows = scene.trackList;
+  grid.style.alignContent = scene.alignContent;
+  appendItems(grid);
+}
+
+window.__c114TwoFitScenes = scenes;
+window.__c114TwoFitMetadata = { payloads, lineCounts, tailCount: tails.length, fitPairs };
+window.showC114TwoFitScene = index => {
+  const scene = scenes[index];
+  if (!scene) throw new Error(`scene ${index} is missing`);
+  showScene(scene, sampleGrid);
+  const style = getComputedStyle(sampleGrid);
+  const origin = sampleGrid.getBoundingClientRect();
+  return {
+    index,
+    scene,
+    computedAutoRows: style.gridAutoRows,
+    computedRows: style.gridTemplateRows,
+    gridFrame: [round(origin.width), round(origin.height)],
+    items: [...sampleGrid.children].map((item, itemIndex) => {
+      const payload = item.querySelector('.payload');
+      return {
+        id: item.dataset.index || `empty-${itemIndex}`,
+        frame: box(item, origin),
+        payload: payload ? box(payload, origin) : null,
+        lineCount: payload ? lines(payload).length : 0,
+      };
+    }),
+  };
+};
+
+window.runC114TwoFitBatch = (start, count) => {
+  if (!Number.isInteger(start) || !Number.isInteger(count) || start < 0 || count < 0) {
+    throw new Error('invalid batch range');
+  }
+  const end = Math.min(start + count, scenes.length);
+  const host = document.createElement('div');
+  Object.assign(host.style, { position: 'absolute', left: '-10000px', top: '0' });
+  document.body.append(host);
+  const results = [];
+  for (let index = start; index < end; index += 1) {
+    const scene = scenes[index];
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    Object.assign(grid.style, { gridAutoRows: scene.trackList, alignContent: scene.alignContent });
+    appendItems(grid);
+    host.append(grid);
+    const origin = grid.getBoundingClientRect();
+    const style = getComputedStyle(grid);
+    const rows = style.gridTemplateRows.split(/\s+/).map(value => round(Number.parseFloat(value)));
+    const items = [...grid.children].map((item, itemIndex) => {
+      const payload = item.querySelector('.payload');
+      const lineTops = payload ? lines(payload).map(value => round(value - origin.y)) : [];
+      return {
+        id: item.dataset.index || `empty-${itemIndex}`,
+        frame: box(item, origin),
+        payload: payload ? box(payload, origin) : null,
+        lineCount: lineTops.length,
+        lineTops,
+      };
+    });
+    results.push({
+      index,
+      scene,
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      devicePixelRatio,
+      computedAutoRows: style.gridAutoRows,
+      computedAlignContent: style.alignContent,
+      gridFrame: [round(origin.width), round(origin.height)],
+      rows,
+      items,
+    });
+    grid.remove();
+  }
+  host.remove();
+  return { start, end, total: scenes.length, results };
+};
+
+showScene(scenes.findIndex(scene => scene.fitPositions.join(',') === '2,5'
+  && scene.fitCaps.join(',') === '10px,20%'
+  && scene.alignContent === 'stretch'), sampleGrid);
+const initialStyle = getComputedStyle(sampleGrid);
+document.querySelector('#sample-summary').textContent = JSON.stringify({
+  tracks: initialStyle.gridAutoRows,
+  rows: initialStyle.gridTemplateRows,
+  itemLineCounts: [...sampleGrid.querySelectorAll('.payload')].map(node => lines(node).length),
+}, null, 2);
+</script>

@@ -1,0 +1,9 @@
+861c6085b5ee2f2c02e51b9f588af21aff5065e47e9f4ace5ce08a0d29ea7722  tests/fixtures/css/c11/root-html-grid-repeated-text-autoplacement-two-fit-content-precomparison.html
+103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md
+c33fbb0d3bd774cba4e447bdf46247d08de7b08bc501fc766b779e6348dda92b  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json
+d1dc919984d1587b2302a6ab5f6593a8f0cf96febc89c488cdd0aa118545d325  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs
+64761f0eed9e4c1dfb587dfc7f531a26e535eaee6122ed4a13048913a991cd62  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson
+5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png
+dc9b65b0a0e6dbe6a04e01f8446be819a7d0d5600b3033e179e9ac0d1c874f79  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json
+cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md
+c7cfd8f1abc985614dcf02b12611c7985063f0330b7e764294f65ad79ceaa34d  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py
