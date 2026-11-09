@@ -634,7 +634,7 @@ Bundled 1 module in 1ms
   root-app.js  99 bytes  (entry point)
 
 info: component rust-std for target aarch64-apple-ios-sim is up to date
-    Finished `release` profile [optimized] target(s) in 0.09s
+    Finished `release` profile [optimized] target(s) in 0.08s
     Finished `release` profile [optimized] target(s) in 0.04s
 iOS iphonesimulator 네이티브 입력 준비 완료: /Users/yoonhb/Documents/workspace/spinon/build/spinon/iphonesimulator
 
@@ -657,8 +657,8 @@ ld: warning: duplicate symbol '___IVAR_OFFSET_RawWindowMetalLayer' in:
 ExtractAppIntentsMetadata (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SpinonBootstrap --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk --xcode-version 17C52 --platform-family iOS --deployment-target 18.0 --bundle-identifier dev.spinon.bootstrap --output /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app --target-triple arm64-apple-ios18.0-simulator --binary-file /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap --dependency-file /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap_dependency_info.dat --stringsdata-file /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap.SwiftFileList --metadata-file-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/SpinonBootstrap.DependencyMetadataFileList --static-metadata-file-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/SpinonBootstrap.DependencyStaticMetadataFileList --swift-const-vals-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-09 17:19:24.753 appintentsmetadataprocessor[24957:218118035] Starting appintentsmetadataprocessor export
-2026-11-09 17:19:24.754 appintentsmetadataprocessor[24957:218118035] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+2026-11-09 17:59:51.335 appintentsmetadataprocessor[62669:218256846] Starting appintentsmetadataprocessor export
+2026-11-09 17:59:51.336 appintentsmetadataprocessor[62669:218256846] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
 
 CopySwiftLibs /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios

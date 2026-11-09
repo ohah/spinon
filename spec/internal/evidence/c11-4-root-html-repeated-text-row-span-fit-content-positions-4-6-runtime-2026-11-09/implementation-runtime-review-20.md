@@ -25,4 +25,4 @@
 
 ## 검토 결과
 
-검토 중 Taffy 분배 주석의 zero-space 설명을 실제 코드와 일치시켰고, row-span profile의 LTR·horizontal writing-context admission 누락을 수정했다. 영향받는 4,320 scene, 새 거부 검사, 기존 1–3/반복 text/row-span/auto-placement 회귀, Grid 127 tests와 Clippy가 통과했다. workspace/vendored rustfmt 및 `git diff --check`는 포맷 적용 뒤 각각 통과했다. Android API 37 화면 smoke는 별도 호스트 QEMU SIGSEGV로 남아 있으며 이 검토는 Android 동작을 주장하지 않는다.
+검토 중 Taffy 분배 주석의 zero-space 설명을 실제 코드와 일치시켰고, row-span profile의 LTR·horizontal writing-context admission 누락을 수정했다. 영향받는 4,320 scene, 새 거부 검사, 기존 1–3/반복 text/row-span/auto-placement 회귀, Grid 127 tests와 Clippy가 통과했다. workspace/vendored rustfmt 및 `git diff --check`는 포맷 적용 뒤 각각 통과했다. 이 20관점 검토는 제품 코드의 동작 범위를 다루며 플랫폼 화면 패리티를 주장하지 않는다. 별도 런타임 기록에서 iOS 6 scene과 Android API 37.2 6 scene의 boot/layout-ready/draw-present 시각 smoke가 통과했다. `spinon-layout --lib` broad suite에는 기준 브랜치 여부가 확인되지 않은 실패 1건이 남는다.

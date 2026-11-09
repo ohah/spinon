@@ -39,8 +39,21 @@
 ## Vendored sizing, matrix와 문서 주장
 
 29. **span-group zero-space commit 및 cap 분배** — Taffy의 growth-limit 분배는 affected track이 없는 경우에만 건너뛰고, 0 증가도 group 끝에서 flush한다. fit-content cap 및 다음 span group 영향은 고정 4,320 Chrome 비교와 127 track-sizing tests로 확인했다. [Taffy diff](../../../../vendor/taffy/src/compute/grid/track_sizing.rs) · [matrix](./checks/matrix-positions-4-6.log) · [track tests](./checks/grid-track-sizing-127.log).
-30. **플랫폼·완료 주장 경계** — README는 iOS 결과를 visual smoke로 한정하고 Android는 앱 실행 전 QEMU SIGSEGV로 미확인이라고 기록한다. 계획은 구현 후보와 PR 검토 대기 상태이며 공식 상태 78/214, C11.4/C11 미완료를 유지한다. [runtime limits](./README.md) · [plan](../../../../plan/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md).
+30. **플랫폼·완료 주장 경계** — README는 iOS 6 scene과 Android API 37.2 6 scene을 visual smoke로 한정하고, 다른 API 37 AVD의 QEMU SIGSEGV와 broad layout 실패 1건도 별도로 남긴다. 계획은 구현 후보이며 공식 상태 78/214, C11.4/C11 미완료를 유지한다. [runtime limits](./README.md) · [plan](../../../../plan/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md).
 
 ## 검토 결과
 
-이 PR diff 검토에서 별도 결함은 추가로 찾지 못했다. 구현/runtime 20관점 검토에서 이미 발견한 writing-context admission 누락과 Taffy 설명 주석은 수정됐으며, 영향받는 거부 검사는 포맷 후 재실행해 통과했다. Android API 37 화면 실행과 broad `spinon-layout --lib`의 1개 실패는 여전히 남은 검증 한계이므로, 이 검토만으로 병합 준비가 됐다고 판정하지 않는다.
+이 PR diff 검토에서 별도 제품 결함은 추가로 찾지 못했다. 구현/runtime 20관점 검토에서 이미 발견한 writing-context admission 누락과 Taffy 설명 주석은 수정됐으며, 영향받는 거부 검사는 포맷 후 재실행해 통과했다. Android API 37.2 시각 smoke는 통과했지만 broad `spinon-layout --lib` 1개 실패의 기준 여부가 확인되지 않아 이 검토만으로 병합 준비가 됐다고 판정하지 않는다.
+
+## 플랫폼 smoke runner 후속 변경 검토
+
+후속 수정은 GPU mode 선택, Android process-start 진단, 테스트 패키지 정리, lifecycle 기록 보존만 다룬다. 제품 layout/runtime 코드는 바뀌지 않았다.
+
+1. **GPU 입력 경계** — 허용된 emulator GPU mode만 통과하며 잘못된 값은 에뮬레이터 실행 전에 종료한다.
+2. **프로세스 시작 관찰** — `pidof`의 정상적인 미발견 반환값이 `set -e`를 발동하지 않게 하고, 제한 시간 후에도 프로세스가 없으면 logcat·activity·package 상태를 저장한다.
+3. **테스트 앱 소유 경계** — 이 실행에서 설치한 앱만 종료 때 제거한다. 설치 전 실패는 기존 패키지 상태를 건드리지 않는다.
+4. **플랫폼 정리 순서** — uninstall은 에뮬레이터·시뮬레이터 종료 전에 수행하고 결과를 개별 로그로 보존한다. uninstall 실패는 smoke 결과를 실패로 만든다.
+5. **교차 실행 lifecycle** — Android-only 실행은 기존 iOS 종료 결과를 보존하며, 반대도 같다. 다른 lifecycle 항목은 키 단위 수정에서 유지된다.
+6. **증거 경계** — 앱 실행·layout-ready·draw/present·screenshot은 기록하지만 이 검증을 geometry parity나 pixel oracle로 승격하지 않는다.
+
+이 항목들은 단일 smoke runner diff에 대한 보완 검토이며, 기존 PR의 서로 다른 30관점 검토를 대체하지 않는다. 후속 Android 및 iOS 실 실행에서 package uninstall, simulator shutdown, 반대 플랫폼 lifecycle 행 보존을 확인했다. 최종 raw output은 `checks/platform-logs-final-smoke-2026-11-09.tar.gz`에 남겼다.
