@@ -1,0 +1,13 @@
+{
+  "command": "SPINON_DOC_PASS=pass01 mise exec -- bunx rspress build --config ../../spec/internal/evidence/roadmap-tailnet-sync-pr1318-c11-4-2026-11-10/rspress.config.ts",
+  "rspressVersion": "2.0.22",
+  "exitCode": 0,
+  "sourceHead": "32b9774f67b29ed86fe3e0f7be91869d62930064",
+  "sourceTree": "69ea5e96b5a42d3f4a20e766fdb5b5031fff6db0",
+  "selectedRootFileCount": 53,
+  "selectedRouteCount": 135,
+  "publicationBytes": 18906456,
+  "globalDeadLinkValidation": false,
+  "outputPath": "build/spinon/roadmap-tailnet-sync-pr1318-c11-4-2026-11-10/pass01/site",
+  "temporaryOutputRemovedAfterVerification": true
+}

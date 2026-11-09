@@ -1,0 +1,1956 @@
+{
+  "sourceHead": "32b9774f67b29ed86fe3e0f7be91869d62930064",
+  "sourceTree": "69ea5e96b5a42d3f4a20e766fdb5b5031fff6db0",
+  "selectedRouteCount": 135,
+  "localHashVerified": 135,
+  "httpsHttp200AndHashVerified": 135,
+  "backupsVerified": 37,
+  "previewServerRestarted": false,
+  "noDeletes": true,
+  "local": [
+    {
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 821329,
+      "sha256": "3a8c3116d0fc98c4397aa5c9bdf4e12be31db56343e4338f09fa43bc0b7267a7",
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 568853,
+      "sha256": "6c47f68a19c99bd02a902bcf91eb80977a2d5fe3b94a842b9da24f182b677ec3",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.html",
+      "bytes": 40895,
+      "sha256": "5849e0d9d16491ca4388286a1f176c0c88b9aabfd8bcf9ff2b298f3abfa125d9",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.md",
+      "bytes": 3647,
+      "sha256": "9e97ca8bebbfbfdbd6035b6c29106c889e52f2449144d31d95be7dbd19f27b06",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 49878,
+      "sha256": "26b37fe7c9c119c0e18f57251e6d5723b94cd57d25a20b48cbe7842fd25ef748",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4732,
+      "sha256": "3f04ef9d5e41c2604143d9ab44baaf3aa0034cafd63b403a96d03c9bbd3a4078",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.html",
+      "bytes": 53924,
+      "sha256": "7f43234fd09cd49acbebe4467c68b07c03afae7217b32d30ffda80953cc7a0e1",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.md",
+      "bytes": 6742,
+      "sha256": "c55c9579eba057ce5244c69cc93876bf9df500aa7079d49af29a21404fe84e4d",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.html",
+      "bytes": 42666,
+      "sha256": "e4d5cfe34613069dc197ef70234488f5440090117618134bc9dc2b6c47bc7973",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.md",
+      "bytes": 4229,
+      "sha256": "9b05ba2c8cd6a54f15d4521ca04381d58a8c387baae43a84d3b16f252a7ad58b",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/android-p12-start-zero-mixed.png",
+      "bytes": 94314,
+      "sha256": "d698de4fd83c3fd34ed0e8ffe8989beb6a3a77307090c5ac299899bb055a4422",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 42600,
+      "sha256": "14f2557425e0fd0595b65ad8bfa2d308b53685fcaa6a8dd90f59239f67f84c24",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4162,
+      "sha256": "46bd5166d1497e313f38841c25ca78734d38736f19122c56c79ee3611a0e9922",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/ios-p12-start-zero-mixed.png",
+      "bytes": 155400,
+      "sha256": "bbb694a5e72268b8162ff5d04cc36cf1681d0a1f0d698fa781a44b2bab34c1d3",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.html",
+      "bytes": 44008,
+      "sha256": "011f8e0680c05dd5f0dc157247bc1899fd8425b256594d45660ccf63174596d2",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md",
+      "bytes": 5136,
+      "sha256": "f5a8b27dca1597e5821565c3f18f4aa0f751d84a4864aefca472b2257046c543",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.html",
+      "bytes": 46193,
+      "sha256": "78c7149b71c100c93bf46f4c83a05598f7bf4dabb0b5c006cbd5dc0371a33eea",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md",
+      "bytes": 6900,
+      "sha256": "6d21947405f4cc8dedf436cca72b7ef2c933be98d8e8a79a888d9a0cf74c94d2",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "bytes": 53219,
+      "sha256": "fe9d6a4f00aedb7cf10a5259f4d139f05f1e750e2d61aff8d6fb9f83e48e5d13",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "bytes": 5749,
+      "sha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "bytes": 41394,
+      "sha256": "c254fa6ecf744891b70823ab78347ab9edc3d932eabbffe37ae91162de268f60",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "bytes": 3699,
+      "sha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "verified": true
+    },
+    {
+      "route": "internal/README.html",
+      "bytes": 223928,
+      "sha256": "237a808f54da49e6fac10db5c49a33dd59b9449d464fc386bfa1c0ed7f669994",
+      "verified": true
+    },
+    {
+      "route": "internal/README.md",
+      "bytes": 143085,
+      "sha256": "f0f860c6f6fc54db698e07b0b9825ed0ea2e83765ef95af3ce6ff99b32ad36a3",
+      "verified": true
+    },
+    {
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.html",
+      "bytes": 43105,
+      "sha256": "6ce977a902d7872536af79954e6397eb7de006e0e67c457ba6ab85f31e44adc9",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4641,
+      "sha256": "2b77a5fcd01c3a5070ef37eba510919afeef893ce6f2b1b82b12f9209a5487ff",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.html",
+      "bytes": 45145,
+      "sha256": "04152856afac104ddaef9a8ad25de5262685d546e8f8e263bb021bee3a10ca6e",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.md",
+      "bytes": 5859,
+      "sha256": "8b7e39445dd4fb6626ce28e596d6308ca5a7e7dea5fc6c52781084b64bf925f4",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "bytes": 51434,
+      "sha256": "513c81e85a85557e1166ff3673b29405cba64d2dfea5cf07da7886c16f74d633",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md",
+      "bytes": 11068,
+      "sha256": "838bdfa2422e3ffd7a7f54845a4ec748bf79079ac18c87bfbdf469c2f1eb93e0",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "bytes": 42887,
+      "sha256": "60469a10aefd7d3198dfc0d7566447fc7b69b732cb28ed849ec90731f66f2098",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "bytes": 4503,
+      "sha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "bytes": 53661,
+      "sha256": "8c5c75a81e5f362e89c587c91ebc30874df6fda431debc921ce64f9ff55d87fb",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "bytes": 12405,
+      "sha256": "c04c50232d29676ca405c113caecb0001a49634f3b943cb309892b4d901a649d",
+      "verified": true
+    },
+    {
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "bytes": 654420,
+      "sha256": "95e08d51427d6cab1031d29c5a2dc466a4eea3f787637b0c3044b1c2193036c7",
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "route": "roadmap.html",
+      "bytes": 654420,
+      "sha256": "95e08d51427d6cab1031d29c5a2dc466a4eea3f787637b0c3044b1c2193036c7",
+      "verified": true
+    },
+    {
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 821498,
+      "sha256": "55434200c759b56fd20785ab17d03bb2ff0f65735a08c24f380918bcea50459d",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 568853,
+      "sha256": "6c47f68a19c99bd02a902bcf91eb80977a2d5fe3b94a842b9da24f182b677ec3",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.html",
+      "bytes": 40905,
+      "sha256": "1cb6ee37cfa952da4f6e5e29d740843cc864f74008c8dc2702d22800870ac038",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.md",
+      "bytes": 3647,
+      "sha256": "9e97ca8bebbfbfdbd6035b6c29106c889e52f2449144d31d95be7dbd19f27b06",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 49888,
+      "sha256": "e250bb4280b541112acd785f4719d2ea52d645d6677ff87bedc5b9ad6fa3433d",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4732,
+      "sha256": "3f04ef9d5e41c2604143d9ab44baaf3aa0034cafd63b403a96d03c9bbd3a4078",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.html",
+      "bytes": 53934,
+      "sha256": "ccf0c3b7b8ae47c74b9d7464f68ed6aeaa4f24943979ff996f4f6eac4f11ba09",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.md",
+      "bytes": 6742,
+      "sha256": "c55c9579eba057ce5244c69cc93876bf9df500aa7079d49af29a21404fe84e4d",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.html",
+      "bytes": 42676,
+      "sha256": "bc1df265ffed36ee653e97b640f28450a76790cf76f92beb5142de8cc6a2383f",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.md",
+      "bytes": 4229,
+      "sha256": "9b05ba2c8cd6a54f15d4521ca04381d58a8c387baae43a84d3b16f252a7ad58b",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/android-p12-start-zero-mixed.png",
+      "bytes": 94314,
+      "sha256": "d698de4fd83c3fd34ed0e8ffe8989beb6a3a77307090c5ac299899bb055a4422",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 42615,
+      "sha256": "eb6127d433f2a9f1bd467ba137e12f19330aacdc407e70641659ad4a50827751",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4162,
+      "sha256": "46bd5166d1497e313f38841c25ca78734d38736f19122c56c79ee3611a0e9922",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/ios-p12-start-zero-mixed.png",
+      "bytes": 155400,
+      "sha256": "bbb694a5e72268b8162ff5d04cc36cf1681d0a1f0d698fa781a44b2bab34c1d3",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.html",
+      "bytes": 44023,
+      "sha256": "3c31356e85095c88efe3d6ea88bc259bd574d867d75bebbddca108890d8ca6b5",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md",
+      "bytes": 5136,
+      "sha256": "f5a8b27dca1597e5821565c3f18f4aa0f751d84a4864aefca472b2257046c543",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.html",
+      "bytes": 46208,
+      "sha256": "a255831d6fceac2d630ef81ed63b0f1abee7a4ef94a23240c3c87c7549f13399",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md",
+      "bytes": 6900,
+      "sha256": "6d21947405f4cc8dedf436cca72b7ef2c933be98d8e8a79a888d9a0cf74c94d2",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "bytes": 53229,
+      "sha256": "04e5cdceab2b65711cda990284bbb46d497229b2835950b1887866200dfd44fe",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "bytes": 5749,
+      "sha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "bytes": 41404,
+      "sha256": "f90a2820b54ff6d3c9705d50e8d55279e6d1efb109b7f340d9b026d480ad5c67",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "bytes": 3699,
+      "sha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/README.html",
+      "bytes": 223992,
+      "sha256": "409756cff407234085dda5d4ad4b0c4b06b1e2b83f73de2a215e72f3db5f2218",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/README.md",
+      "bytes": 143085,
+      "sha256": "f0f860c6f6fc54db698e07b0b9825ed0ea2e83765ef95af3ce6ff99b32ad36a3",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.html",
+      "bytes": 43113,
+      "sha256": "3fa83f1cfd2d87fd1272004c47b1a3a7954f45d5ecb69c70710203eff46cccd6",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4641,
+      "sha256": "2b77a5fcd01c3a5070ef37eba510919afeef893ce6f2b1b82b12f9209a5487ff",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.html",
+      "bytes": 45160,
+      "sha256": "0d6a17ab45e686c146f4aad0caeeeb6c4eee542a06e2f96ed5ca5c09e4f49a69",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.md",
+      "bytes": 5859,
+      "sha256": "8b7e39445dd4fb6626ce28e596d6308ca5a7e7dea5fc6c52781084b64bf925f4",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "bytes": 51445,
+      "sha256": "02441a4c04625f927eb0e8f005c196cd235883152d073f29ecc43411d186d286",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md",
+      "bytes": 11068,
+      "sha256": "838bdfa2422e3ffd7a7f54845a4ec748bf79079ac18c87bfbdf469c2f1eb93e0",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "bytes": 42895,
+      "sha256": "f92e4ad179436a5b4ea4640cabee0a54a24f9e24888a09ec5b63350c8b7f40d9",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "bytes": 4503,
+      "sha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "bytes": 53628,
+      "sha256": "d5e5817c713efb86d1d5c19bc76facb2f8b9f83e802492ba6a82375900fccd63",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "bytes": 12405,
+      "sha256": "c04c50232d29676ca405c113caecb0001a49634f3b943cb309892b4d901a649d",
+      "verified": true
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "bytes": 654420,
+      "sha256": "95e08d51427d6cab1031d29c5a2dc466a4eea3f787637b0c3044b1c2193036c7",
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 929734,
+      "sha256": "1b4d28db742af6a9bd9d6a457c7c88b789c7e4854b6b83dd7292269eec315f69",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "bytes": 751015,
+      "sha256": "9549dec7349d1b8180876f40b146a1d697b8f9ce45ff441074f2f216102c9248",
+      "verified": true
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "route": "static/image/android-p12-start-zero-mixed.5940b3d5a4.png",
+      "bytes": 94314,
+      "sha256": "d698de4fd83c3fd34ed0e8ffe8989beb6a3a77307090c5ac299899bb055a4422",
+      "verified": true
+    },
+    {
+      "route": "static/image/chrome157-two-fit-sample.7950ec426f.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "verified": true
+    },
+    {
+      "route": "static/image/ios-p12-start-zero-mixed.d3a15ffca4.png",
+      "bytes": 155400,
+      "sha256": "bbb694a5e72268b8162ff5d04cc36cf1681d0a1f0d698fa781a44b2bab34c1d3",
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-0f81e2e5984c.dd0344cb1b.js",
+      "bytes": 7768,
+      "sha256": "9f38194cabad0d366d0aefdbd98504919a6294b10f819ca47fc73a9e9fd87612",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-1be5982b4fec.5bfa623037.js",
+      "bytes": 16148,
+      "sha256": "2fd02bedf7f9bfd285de73782d9ebb42b0e12cebdb1da63e244e59779dfe3511",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-2563dd983b86.959fbb159f.js",
+      "bytes": 8475,
+      "sha256": "58d3969087e25be2df3de996ddfbdd38c58e485ae4d47b7ce90ca9cbc99d2f21",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-2951f30532d5.eb6c5bb372.js",
+      "bytes": 8780,
+      "sha256": "ccedbbcfe877dc94baaa205af4ab942c7cb3c619645867a2a75743498c89dfac",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-360a2e90cba1.e24e7acf2d.js",
+      "bytes": 10651,
+      "sha256": "e45beac249e91b33a0dd185b6fe3ccb62b536d5b3db9f09416697d1c6c73c32e",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-3f2ad582d349.3d1be65d03.js",
+      "bytes": 6058,
+      "sha256": "bc80f8b945703bfe4f9d01f613e2abf47395f7d64f37cb537e29d02374b0f5de",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-3f37c5b286e6.dc4cef0379.js",
+      "bytes": 7393,
+      "sha256": "0aa818be998d4d9f055f1b44cf01244c24fd7258eb3627257a948650dc8947cd",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-41478ac15a0d.92980f798b.js",
+      "bytes": 19272,
+      "sha256": "3b2bfc29b7ce20cecee934a15009c593834332c47ffa4e3fa6b65ec680332d73",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-41ed7040624c.4b2fdfd98b.js",
+      "bytes": 7775,
+      "sha256": "332d357b0645823e4f487ba15c1da88acc5a27de71aac31e30fe67d7285f841b",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-48af8a4a437d.3c9a50f65d.js",
+      "bytes": 9470,
+      "sha256": "b2247423cb6e9d2c3cdf78ef862c2cd90721689d03952b47f8e0022ad935f125",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-4c4142aa259c.549cf50010.js",
+      "bytes": 8795,
+      "sha256": "04225b5ee7088f6c13d245973ab3d832253db9b066659f689ed83ffc3d467a7c",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-5685db52ee15.88bb35af9b.js",
+      "bytes": 11020,
+      "sha256": "7e2c010566e60c6ef6202584a4786a4ed1e9ee7bb051070f40c507ce4d4ab6cd",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-5c9b7b24fbbd.f5fbf535c5.js",
+      "bytes": 12100,
+      "sha256": "c761120f24a4aa4e17322e6134cdbb4b663ef9881c9620aef3f5c20b63a3204d",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.d14d8d2956.js",
+      "bytes": 988623,
+      "sha256": "9d470381ebefdf0ad80b2e1453e0a9470463512aedf4738d0a5cf4072d407f7a",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-6fc757ba8621.96ea75b5f3.js",
+      "bytes": 11089,
+      "sha256": "97cbb168cc7d1c008b8274d1d19167643c503f4768bcd8b1515bbacb9df8aec1",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.e0a4ec669c.js",
+      "bytes": 844597,
+      "sha256": "65c564a1a5d3c951328a9b6856d98ec75f8a3896bf28faae9f21d9b84b2a63d4",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7616a867a9be.bca06838c4.js",
+      "bytes": 11101,
+      "sha256": "2a7e6de73c041e722f88888a3bd8428ee153bb30357faeb738d4f15ef035ce7c",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-764ab89a8a5f.cc489ea8a2.js",
+      "bytes": 6053,
+      "sha256": "b38672613b3c119fd5d2e26c8a3a63790bf7f27d05413f57d900331b81bfe794",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ca9ec91064.js",
+      "bytes": 988903,
+      "sha256": "8a1a79fb9618afc0105fd76da756ecdcd2fcd0e30390bfa538c267042275a422",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a1017bdf23ca.9738e3ae94.js",
+      "bytes": 215087,
+      "sha256": "2b13b47521e550610bd2b2dc6fd2f2da3013f9cdb608e79a447b64f1f10c8b8e",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a3e6a54c530b.61c1075cdc.js",
+      "bytes": 10661,
+      "sha256": "a40ce6ea62424a6bb2c6279088b0f81af140793ad5550e4ed2785dc594098ece",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.0eef7057bc.js",
+      "bytes": 1007,
+      "sha256": "dad9157e59fef40296516f9e2601ce0cfffb63204b3f560b961796b95b42693b",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a71b2a75c274.2beb15af3e.js",
+      "bytes": 10339,
+      "sha256": "dd1c7a37f2bfc42ae928d3208a77ae35c3adf9536179baa775a864e7d40174b4",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a991d6de67ad.116baeb380.js",
+      "bytes": 215140,
+      "sha256": "0907202600f64a79ea84b134dff20e83fe60d7148aae34262df4b0e2df853bf5",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b32f9300d775.bf6db59edd.js",
+      "bytes": 8483,
+      "sha256": "e6078cae651bf662c0a21256fff59b20a1ccb11d0f7c75e4efde4fbf5fe1419a",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b34cecfba35b.045260b4b9.js",
+      "bytes": 12113,
+      "sha256": "38179f440259583df213371d4c9f33937d2dafc9413f7b81ea359c382e16acde",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b4e477e4e516.76f7d8d66d.js",
+      "bytes": 12853,
+      "sha256": "8f34610594cafddea68105263e628afcbb976bccdfa53b07237712ef458f4c87",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b7af2fde022c.e2853c2663.js",
+      "bytes": 11026,
+      "sha256": "acd888304ffd72d66109c71d5703578f614c35f78762699f694c79e021b1443a",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.c652c6f02e.js",
+      "bytes": 844540,
+      "sha256": "6136c630e60d4b15c8e56b5f03882be09ac39371b97c1c61215450039ca3765a",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c5b80b1a1ce7.daeb7827ae.js",
+      "bytes": 9475,
+      "sha256": "e66929185021ddec90281a7edd57d74cd6bd54d77e38f28319feaa156adedc04",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-cbca38c15ee9.2a589c44e1.js",
+      "bytes": 12865,
+      "sha256": "2f7d9c8485764b4a687d9a5a552b793e83f999003e67af60367311d7c8d7aada",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-eb9e331e97db.d2f600172c.js",
+      "bytes": 16125,
+      "sha256": "56f420c45a29886927b275a9b4f35e485afc4265ef1b71687791c2ef34e41e55",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f134f99315f4.47d55a58d5.js",
+      "bytes": 19260,
+      "sha256": "967bc6f918886856ca24060d12787f45ec5988d3ea633e90fb701bada83db17e",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f2813e20be5e.d203fab2e0.js",
+      "bytes": 7384,
+      "sha256": "7a65f1338f47f8b5fa942aba2261ef826d61abcbdfb321ff91806ac608d79b7e",
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f820b593c757.1c6c30e141.js",
+      "bytes": 10327,
+      "sha256": "f01914195c60aca8a8cd084fd1fa2d6ee4c5b8ca56cd986d8fa3f4345a88e1f4",
+      "verified": true
+    },
+    {
+      "route": "static/js/index.133ca16364.js",
+      "bytes": 188641,
+      "sha256": "5a8239ed6b42038741201f8864e82b8300005d133b3ca51ffe45a5cb2c35f46c",
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "verified": true
+    },
+    {
+      "route": "static/search_index.ko.c108fc42.json",
+      "bytes": 2570012,
+      "sha256": "c108fc425a7c2fb9c0f5d154c4cbd12d2c9b57b25acc99348a31d92feb8c05a5",
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 928947,
+      "sha256": "8d45460e41a19f03a47b97b5d25e00d027f1faa2303c354d1f126dc296002cd1",
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "bytes": 751015,
+      "sha256": "9549dec7349d1b8180876f40b146a1d697b8f9ce45ff441074f2f216102c9248",
+      "verified": true
+    }
+  ],
+  "https": [
+    {
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 821329,
+      "sha256": "3a8c3116d0fc98c4397aa5c9bdf4e12be31db56343e4338f09fa43bc0b7267a7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 568853,
+      "sha256": "6c47f68a19c99bd02a902bcf91eb80977a2d5fe3b94a842b9da24f182b677ec3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.html",
+      "bytes": 40895,
+      "sha256": "5849e0d9d16491ca4388286a1f176c0c88b9aabfd8bcf9ff2b298f3abfa125d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.md",
+      "bytes": 3647,
+      "sha256": "9e97ca8bebbfbfdbd6035b6c29106c889e52f2449144d31d95be7dbd19f27b06",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 49878,
+      "sha256": "26b37fe7c9c119c0e18f57251e6d5723b94cd57d25a20b48cbe7842fd25ef748",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4732,
+      "sha256": "3f04ef9d5e41c2604143d9ab44baaf3aa0034cafd63b403a96d03c9bbd3a4078",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.html",
+      "bytes": 53924,
+      "sha256": "7f43234fd09cd49acbebe4467c68b07c03afae7217b32d30ffda80953cc7a0e1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.md",
+      "bytes": 6742,
+      "sha256": "c55c9579eba057ce5244c69cc93876bf9df500aa7079d49af29a21404fe84e4d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.html",
+      "bytes": 42666,
+      "sha256": "e4d5cfe34613069dc197ef70234488f5440090117618134bc9dc2b6c47bc7973",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.md",
+      "bytes": 4229,
+      "sha256": "9b05ba2c8cd6a54f15d4521ca04381d58a8c387baae43a84d3b16f252a7ad58b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/android-p12-start-zero-mixed.png",
+      "bytes": 94314,
+      "sha256": "d698de4fd83c3fd34ed0e8ffe8989beb6a3a77307090c5ac299899bb055a4422",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 42600,
+      "sha256": "14f2557425e0fd0595b65ad8bfa2d308b53685fcaa6a8dd90f59239f67f84c24",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4162,
+      "sha256": "46bd5166d1497e313f38841c25ca78734d38736f19122c56c79ee3611a0e9922",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/ios-p12-start-zero-mixed.png",
+      "bytes": 155400,
+      "sha256": "bbb694a5e72268b8162ff5d04cc36cf1681d0a1f0d698fa781a44b2bab34c1d3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.html",
+      "bytes": 44008,
+      "sha256": "011f8e0680c05dd5f0dc157247bc1899fd8425b256594d45660ccf63174596d2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md",
+      "bytes": 5136,
+      "sha256": "f5a8b27dca1597e5821565c3f18f4aa0f751d84a4864aefca472b2257046c543",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.html",
+      "bytes": 46193,
+      "sha256": "78c7149b71c100c93bf46f4c83a05598f7bf4dabb0b5c006cbd5dc0371a33eea",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md",
+      "bytes": 6900,
+      "sha256": "6d21947405f4cc8dedf436cca72b7ef2c933be98d8e8a79a888d9a0cf74c94d2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "bytes": 53219,
+      "sha256": "fe9d6a4f00aedb7cf10a5259f4d139f05f1e750e2d61aff8d6fb9f83e48e5d13",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "bytes": 5749,
+      "sha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "bytes": 41394,
+      "sha256": "c254fa6ecf744891b70823ab78347ab9edc3d932eabbffe37ae91162de268f60",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "bytes": 3699,
+      "sha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/README.html",
+      "bytes": 223928,
+      "sha256": "237a808f54da49e6fac10db5c49a33dd59b9449d464fc386bfa1c0ed7f669994",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "internal/README.md",
+      "bytes": 143085,
+      "sha256": "f0f860c6f6fc54db698e07b0b9825ed0ea2e83765ef95af3ce6ff99b32ad36a3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.html",
+      "bytes": 43105,
+      "sha256": "6ce977a902d7872536af79954e6397eb7de006e0e67c457ba6ab85f31e44adc9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4641,
+      "sha256": "2b77a5fcd01c3a5070ef37eba510919afeef893ce6f2b1b82b12f9209a5487ff",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.html",
+      "bytes": 45145,
+      "sha256": "04152856afac104ddaef9a8ad25de5262685d546e8f8e263bb021bee3a10ca6e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.md",
+      "bytes": 5859,
+      "sha256": "8b7e39445dd4fb6626ce28e596d6308ca5a7e7dea5fc6c52781084b64bf925f4",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "bytes": 51434,
+      "sha256": "513c81e85a85557e1166ff3673b29405cba64d2dfea5cf07da7886c16f74d633",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md",
+      "bytes": 11068,
+      "sha256": "838bdfa2422e3ffd7a7f54845a4ec748bf79079ac18c87bfbdf469c2f1eb93e0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "bytes": 42887,
+      "sha256": "60469a10aefd7d3198dfc0d7566447fc7b69b732cb28ed849ec90731f66f2098",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "bytes": 4503,
+      "sha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "bytes": 53661,
+      "sha256": "8c5c75a81e5f362e89c587c91ebc30874df6fda431debc921ce64f9ff55d87fb",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "bytes": 12405,
+      "sha256": "c04c50232d29676ca405c113caecb0001a49634f3b943cb309892b4d901a649d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "bytes": 654420,
+      "sha256": "95e08d51427d6cab1031d29c5a2dc466a4eea3f787637b0c3044b1c2193036c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "roadmap.html",
+      "bytes": 654420,
+      "sha256": "95e08d51427d6cab1031d29c5a2dc466a4eea3f787637b0c3044b1c2193036c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 821498,
+      "sha256": "55434200c759b56fd20785ab17d03bb2ff0f65735a08c24f380918bcea50459d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 568853,
+      "sha256": "6c47f68a19c99bd02a902bcf91eb80977a2d5fe3b94a842b9da24f182b677ec3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.html",
+      "bytes": 40905,
+      "sha256": "1cb6ee37cfa952da4f6e5e29d740843cc864f74008c8dc2702d22800870ac038",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.md",
+      "bytes": 3647,
+      "sha256": "9e97ca8bebbfbfdbd6035b6c29106c889e52f2449144d31d95be7dbd19f27b06",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 49888,
+      "sha256": "e250bb4280b541112acd785f4719d2ea52d645d6677ff87bedc5b9ad6fa3433d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4732,
+      "sha256": "3f04ef9d5e41c2604143d9ab44baaf3aa0034cafd63b403a96d03c9bbd3a4078",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.html",
+      "bytes": 53934,
+      "sha256": "ccf0c3b7b8ae47c74b9d7464f68ed6aeaa4f24943979ff996f4f6eac4f11ba09",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-30.md",
+      "bytes": 6742,
+      "sha256": "c55c9579eba057ce5244c69cc93876bf9df500aa7079d49af29a21404fe84e4d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.html",
+      "bytes": 42676,
+      "sha256": "bc1df265ffed36ee653e97b640f28450a76790cf76f92beb5142de8cc6a2383f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.md",
+      "bytes": 4229,
+      "sha256": "9b05ba2c8cd6a54f15d4521ca04381d58a8c387baae43a84d3b16f252a7ad58b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/android-p12-start-zero-mixed.png",
+      "bytes": 94314,
+      "sha256": "d698de4fd83c3fd34ed0e8ffe8989beb6a3a77307090c5ac299899bb055a4422",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.html",
+      "bytes": 42615,
+      "sha256": "eb6127d433f2a9f1bd467ba137e12f19330aacdc407e70641659ad4a50827751",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md",
+      "bytes": 4162,
+      "sha256": "46bd5166d1497e313f38841c25ca78734d38736f19122c56c79ee3611a0e9922",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/ios-p12-start-zero-mixed.png",
+      "bytes": 155400,
+      "sha256": "bbb694a5e72268b8162ff5d04cc36cf1681d0a1f0d698fa781a44b2bab34c1d3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.html",
+      "bytes": 44023,
+      "sha256": "3c31356e85095c88efe3d6ea88bc259bd574d867d75bebbddca108890d8ca6b5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md",
+      "bytes": 5136,
+      "sha256": "f5a8b27dca1597e5821565c3f18f4aa0f751d84a4864aefca472b2257046c543",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.html",
+      "bytes": 46208,
+      "sha256": "a255831d6fceac2d630ef81ed63b0f1abee7a4ef94a23240c3c87c7549f13399",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md",
+      "bytes": 6900,
+      "sha256": "6d21947405f4cc8dedf436cca72b7ef2c933be98d8e8a79a888d9a0cf74c94d2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "bytes": 53229,
+      "sha256": "04e5cdceab2b65711cda990284bbb46d497229b2835950b1887866200dfd44fe",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "bytes": 5749,
+      "sha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "bytes": 41404,
+      "sha256": "f90a2820b54ff6d3c9705d50e8d55279e6d1efb109b7f340d9b026d480ad5c67",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "bytes": 3699,
+      "sha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/README.html",
+      "bytes": 223992,
+      "sha256": "409756cff407234085dda5d4ad4b0c4b06b1e2b83f73de2a215e72f3db5f2218",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/internal/README.md",
+      "bytes": 143085,
+      "sha256": "f0f860c6f6fc54db698e07b0b9825ed0ea2e83765ef95af3ce6ff99b32ad36a3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.html",
+      "bytes": 43113,
+      "sha256": "3fa83f1cfd2d87fd1272004c47b1a3a7954f45d5ecb69c70710203eff46cccd6",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4641,
+      "sha256": "2b77a5fcd01c3a5070ef37eba510919afeef893ce6f2b1b82b12f9209a5487ff",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.html",
+      "bytes": 45160,
+      "sha256": "0d6a17ab45e686c146f4aad0caeeeb6c4eee542a06e2f96ed5ca5c09e4f49a69",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.md",
+      "bytes": 5859,
+      "sha256": "8b7e39445dd4fb6626ce28e596d6308ca5a7e7dea5fc6c52781084b64bf925f4",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "bytes": 51445,
+      "sha256": "02441a4c04625f927eb0e8f005c196cd235883152d073f29ecc43411d186d286",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md",
+      "bytes": 11068,
+      "sha256": "838bdfa2422e3ffd7a7f54845a4ec748bf79079ac18c87bfbdf469c2f1eb93e0",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "bytes": 42895,
+      "sha256": "f92e4ad179436a5b4ea4640cabee0a54a24f9e24888a09ec5b63350c8b7f40d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "bytes": 4503,
+      "sha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "bytes": 53628,
+      "sha256": "d5e5817c713efb86d1d5c19bc76facb2f8b9f83e802492ba6a82375900fccd63",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "bytes": 12405,
+      "sha256": "c04c50232d29676ca405c113caecb0001a49634f3b943cb309892b4d901a649d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "bytes": 654420,
+      "sha256": "95e08d51427d6cab1031d29c5a2dc466a4eea3f787637b0c3044b1c2193036c7",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 929734,
+      "sha256": "1b4d28db742af6a9bd9d6a457c7c88b789c7e4854b6b83dd7292269eec315f69",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "bytes": 751015,
+      "sha256": "9549dec7349d1b8180876f40b146a1d697b8f9ce45ff441074f2f216102c9248",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/image/android-p12-start-zero-mixed.5940b3d5a4.png",
+      "bytes": 94314,
+      "sha256": "d698de4fd83c3fd34ed0e8ffe8989beb6a3a77307090c5ac299899bb055a4422",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/image/chrome157-two-fit-sample.7950ec426f.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/image/ios-p12-start-zero-mixed.d3a15ffca4.png",
+      "bytes": 155400,
+      "sha256": "bbb694a5e72268b8162ff5d04cc36cf1681d0a1f0d698fa781a44b2bab34c1d3",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-0f81e2e5984c.dd0344cb1b.js",
+      "bytes": 7768,
+      "sha256": "9f38194cabad0d366d0aefdbd98504919a6294b10f819ca47fc73a9e9fd87612",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-1be5982b4fec.5bfa623037.js",
+      "bytes": 16148,
+      "sha256": "2fd02bedf7f9bfd285de73782d9ebb42b0e12cebdb1da63e244e59779dfe3511",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-2563dd983b86.959fbb159f.js",
+      "bytes": 8475,
+      "sha256": "58d3969087e25be2df3de996ddfbdd38c58e485ae4d47b7ce90ca9cbc99d2f21",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-2951f30532d5.eb6c5bb372.js",
+      "bytes": 8780,
+      "sha256": "ccedbbcfe877dc94baaa205af4ab942c7cb3c619645867a2a75743498c89dfac",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-360a2e90cba1.e24e7acf2d.js",
+      "bytes": 10651,
+      "sha256": "e45beac249e91b33a0dd185b6fe3ccb62b536d5b3db9f09416697d1c6c73c32e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-3f2ad582d349.3d1be65d03.js",
+      "bytes": 6058,
+      "sha256": "bc80f8b945703bfe4f9d01f613e2abf47395f7d64f37cb537e29d02374b0f5de",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-3f37c5b286e6.dc4cef0379.js",
+      "bytes": 7393,
+      "sha256": "0aa818be998d4d9f055f1b44cf01244c24fd7258eb3627257a948650dc8947cd",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-41478ac15a0d.92980f798b.js",
+      "bytes": 19272,
+      "sha256": "3b2bfc29b7ce20cecee934a15009c593834332c47ffa4e3fa6b65ec680332d73",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-41ed7040624c.4b2fdfd98b.js",
+      "bytes": 7775,
+      "sha256": "332d357b0645823e4f487ba15c1da88acc5a27de71aac31e30fe67d7285f841b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-48af8a4a437d.3c9a50f65d.js",
+      "bytes": 9470,
+      "sha256": "b2247423cb6e9d2c3cdf78ef862c2cd90721689d03952b47f8e0022ad935f125",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-4c4142aa259c.549cf50010.js",
+      "bytes": 8795,
+      "sha256": "04225b5ee7088f6c13d245973ab3d832253db9b066659f689ed83ffc3d467a7c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-5685db52ee15.88bb35af9b.js",
+      "bytes": 11020,
+      "sha256": "7e2c010566e60c6ef6202584a4786a4ed1e9ee7bb051070f40c507ce4d4ab6cd",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-5c9b7b24fbbd.f5fbf535c5.js",
+      "bytes": 12100,
+      "sha256": "c761120f24a4aa4e17322e6134cdbb4b663ef9881c9620aef3f5c20b63a3204d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.d14d8d2956.js",
+      "bytes": 988623,
+      "sha256": "9d470381ebefdf0ad80b2e1453e0a9470463512aedf4738d0a5cf4072d407f7a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-6fc757ba8621.96ea75b5f3.js",
+      "bytes": 11089,
+      "sha256": "97cbb168cc7d1c008b8274d1d19167643c503f4768bcd8b1515bbacb9df8aec1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.e0a4ec669c.js",
+      "bytes": 844597,
+      "sha256": "65c564a1a5d3c951328a9b6856d98ec75f8a3896bf28faae9f21d9b84b2a63d4",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7616a867a9be.bca06838c4.js",
+      "bytes": 11101,
+      "sha256": "2a7e6de73c041e722f88888a3bd8428ee153bb30357faeb738d4f15ef035ce7c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-764ab89a8a5f.cc489ea8a2.js",
+      "bytes": 6053,
+      "sha256": "b38672613b3c119fd5d2e26c8a3a63790bf7f27d05413f57d900331b81bfe794",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ca9ec91064.js",
+      "bytes": 988903,
+      "sha256": "8a1a79fb9618afc0105fd76da756ecdcd2fcd0e30390bfa538c267042275a422",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a1017bdf23ca.9738e3ae94.js",
+      "bytes": 215087,
+      "sha256": "2b13b47521e550610bd2b2dc6fd2f2da3013f9cdb608e79a447b64f1f10c8b8e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a3e6a54c530b.61c1075cdc.js",
+      "bytes": 10661,
+      "sha256": "a40ce6ea62424a6bb2c6279088b0f81af140793ad5550e4ed2785dc594098ece",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.0eef7057bc.js",
+      "bytes": 1007,
+      "sha256": "dad9157e59fef40296516f9e2601ce0cfffb63204b3f560b961796b95b42693b",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a71b2a75c274.2beb15af3e.js",
+      "bytes": 10339,
+      "sha256": "dd1c7a37f2bfc42ae928d3208a77ae35c3adf9536179baa775a864e7d40174b4",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-a991d6de67ad.116baeb380.js",
+      "bytes": 215140,
+      "sha256": "0907202600f64a79ea84b134dff20e83fe60d7148aae34262df4b0e2df853bf5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b32f9300d775.bf6db59edd.js",
+      "bytes": 8483,
+      "sha256": "e6078cae651bf662c0a21256fff59b20a1ccb11d0f7c75e4efde4fbf5fe1419a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b34cecfba35b.045260b4b9.js",
+      "bytes": 12113,
+      "sha256": "38179f440259583df213371d4c9f33937d2dafc9413f7b81ea359c382e16acde",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b4e477e4e516.76f7d8d66d.js",
+      "bytes": 12853,
+      "sha256": "8f34610594cafddea68105263e628afcbb976bccdfa53b07237712ef458f4c87",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-b7af2fde022c.e2853c2663.js",
+      "bytes": 11026,
+      "sha256": "acd888304ffd72d66109c71d5703578f614c35f78762699f694c79e021b1443a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.c652c6f02e.js",
+      "bytes": 844540,
+      "sha256": "6136c630e60d4b15c8e56b5f03882be09ac39371b97c1c61215450039ca3765a",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-c5b80b1a1ce7.daeb7827ae.js",
+      "bytes": 9475,
+      "sha256": "e66929185021ddec90281a7edd57d74cd6bd54d77e38f28319feaa156adedc04",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-cbca38c15ee9.2a589c44e1.js",
+      "bytes": 12865,
+      "sha256": "2f7d9c8485764b4a687d9a5a552b793e83f999003e67af60367311d7c8d7aada",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-eb9e331e97db.d2f600172c.js",
+      "bytes": 16125,
+      "sha256": "56f420c45a29886927b275a9b4f35e485afc4265ef1b71687791c2ef34e41e55",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f134f99315f4.47d55a58d5.js",
+      "bytes": 19260,
+      "sha256": "967bc6f918886856ca24060d12787f45ec5988d3ea633e90fb701bada83db17e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f2813e20be5e.d203fab2e0.js",
+      "bytes": 7384,
+      "sha256": "7a65f1338f47f8b5fa942aba2261ef826d61abcbdfb321ff91806ac608d79b7e",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/async/route-f820b593c757.1c6c30e141.js",
+      "bytes": 10327,
+      "sha256": "f01914195c60aca8a8cd084fd1fa2d6ee4c5b8ca56cd986d8fa3f4345a88e1f4",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/index.133ca16364.js",
+      "bytes": 188641,
+      "sha256": "5a8239ed6b42038741201f8864e82b8300005d133b3ca51ffe45a5cb2c35f46c",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "static/search_index.ko.c108fc42.json",
+      "bytes": 2570012,
+      "sha256": "c108fc425a7c2fb9c0f5d154c4cbd12d2c9b57b25acc99348a31d92feb8c05a5",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "bytes": 928947,
+      "sha256": "8d45460e41a19f03a47b97b5d25e00d027f1faa2303c354d1f126dc296002cd1",
+      "httpStatus": 200,
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "bytes": 751015,
+      "sha256": "9549dec7349d1b8180876f40b146a1d697b8f9ce45ff441074f2f216102c9248",
+      "httpStatus": 200,
+      "verified": true
+    }
+  ],
+  "backupChecks": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "f0e09153f53b3365ebab1492ad3ae5ff83aa1253195a5d8b7bd58d5def7bb904",
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "sha256": "a6c69c9ec0a6ea10e5468c8c86bdd55e013edfce56a4f3ae0717fa21bf052e3b",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.html",
+      "sha256": "24441f465543dfb3e2d0b8c17d39cfb2e85fea09f1b7942b7b0b5b2d54e3dad0",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.html",
+      "sha256": "4c521dae431e239b37ccddeea8ad3964146bec8d3d98e5052328d117dadfcce9",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.html",
+      "sha256": "e59a92e66063da5fe02159832f3c9855c71539c3b13029657b9a1ec16f4f6859",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.html",
+      "sha256": "6f3411ee0ec287c9a7cf8442e82e4a197389144bfa34479dd6129d142f00ce29",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "sha256": "c644306c77618c364c672558fae662899af8ecc12e7f30199470b5c1b6878ef2",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "sha256": "fb7aa15607ab84c0431a9367fd06ec2dee19bc2f056b2a7f40a8aa5bca69156d",
+      "verified": true
+    },
+    {
+      "route": "internal/README.html",
+      "sha256": "99671160d7817963822e32090580e6a53ee1560873acff79f0815b72d9ec7284",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.html",
+      "sha256": "c627cbbeb47a0690bbb4e6f81f43da999a4641c6c29d52a30938fe262e0d99d7",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.html",
+      "sha256": "01d370d5ac995598c93f4c656e9516fe0bdaad8999feca5d1d760814715a048b",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "sha256": "4049f4816bc9a164482f9fde23020048a70a3e5f40daa3bd2b7b6e8ad7b47fc2",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md",
+      "sha256": "3261ea4a0d18f81f0515c7fae59fd3a4073e629d0281b3e9346136bf942cc7ca",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "sha256": "5e19cfecca43905912b3e25ec2758726109d7a787b7c34c65fa67fe10522a82d",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "sha256": "0903b23e9c53d2fd19897c1a0bb4a3575c0cbb2dbd1aef9f65a9c11bc26fa4a3",
+      "verified": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "sha256": "097225bddb4d79ca9bed328f14ee004ac8dc9aa40b371a20c0c66d52db7faccd",
+      "verified": true
+    },
+    {
+      "route": "roadmap.html",
+      "sha256": "097225bddb4d79ca9bed328f14ee004ac8dc9aa40b371a20c0c66d52db7faccd",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sha256": "a247f400fdec47813cf966cbf08a8badb4d3e94034869c7a1510ecf27d7f91cb",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "sha256": "a6c69c9ec0a6ea10e5468c8c86bdd55e013edfce56a4f3ae0717fa21bf052e3b",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.html",
+      "sha256": "64bb6a7524102b3cbdb6956fc2edd65e6a0a983d7be055583c2d994ea11c14b0",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.html",
+      "sha256": "c7cda9401b26011d00c59da6482458e754a8115df68b2b6835e2ed86b5e6f489",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.html",
+      "sha256": "78bc79cca206e3750492dec5b9f7a67dd4060601b5e9503e679d27c9179db7e7",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.html",
+      "sha256": "4957c88d620b8ccfdd9ae99bad93c6c319bda3903c0f6faf92ee6a7ec2fc7aa6",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "sha256": "47bb6e6ae710ebbf63e7d3f8ce1556f39d231bdcbb1b0510e2ce930233a747c1",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "sha256": "2c1d7a73fe8449d8f9a53de52e63e17b3c8b946a6c4c29084b82615c6c63aa49",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/README.html",
+      "sha256": "3e4248947ebbf2a9e5328b68f6b12f32f77b7618e8c6d3780b6f899803995c5b",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-plan-review-20.html",
+      "sha256": "cc54308e595c9925366beebce7710c9c7ef44ab8ecc1d14274dbdd02d4a86e8a",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-pr-review-30.html",
+      "sha256": "defd21dc71ea054f7a4b32395e13b6127e52b623c90c76cee8b67871bbc6359b",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "sha256": "72af9eddfe50ab9f83eb732a0f476904d9d1bfc7e19d409f0f1c75b37d2eca0e",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md",
+      "sha256": "3261ea4a0d18f81f0515c7fae59fd3a4073e629d0281b3e9346136bf942cc7ca",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "sha256": "0be53abdc24a22a365133c65ccb13611b4307a23fd259263c00d8359bba4dc17",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "sha256": "5d74fe8c3d8066b57b912a23ab0ce415f8dd1a39d7fd6cb9513ac350724bbae1",
+      "verified": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "sha256": "097225bddb4d79ca9bed328f14ee004ac8dc9aa40b371a20c0c66d52db7faccd",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sha256": "ed9de4762470c0b5783b24bb87e05e392ea8ffbc9a02aaf5d4f4866ab92fe566",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "sha256": "914d2de3412ec329e0630acca552e8943b81aae24f98b08809ba1498d808ed4e",
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "sha256": "a71562148da90db8160ffc86cbe08756edfca60d29840cff0586c76b9f2ef474",
+      "verified": true
+    },
+    {
+      "route": "STATUS.md",
+      "sha256": "914d2de3412ec329e0630acca552e8943b81aae24f98b08809ba1498d808ed4e",
+      "verified": true
+    }
+  ]
+}
