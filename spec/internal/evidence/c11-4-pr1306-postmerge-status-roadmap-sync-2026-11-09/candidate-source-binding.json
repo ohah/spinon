@@ -1,0 +1,8 @@
+{
+  "baseHeadBeforeLinkFix": "da5b9c80cc963dded6a56e99bd3c411426058a0d",
+  "sourcePath": "spec/public/roadmap.html",
+  "workingTreeBytes": 650253,
+  "workingTreeSha256": "968ffa172b5be73de45d9cd904706deb6ca6dfa979e275dabc6c1a464cc7c2f9",
+  "gitBlobSha1": "cb980ec9f8fe81613d7481b56d9a28a3fb59b2b8",
+  "note": "pass02 preview source was the link-fix candidate on this base; after PR merge verify origin/main has this exact blob and content hash"
+}
