@@ -1,0 +1,38 @@
+{
+  "recordedAt": "2026-11-09T10:09:37Z",
+  "pullRequest": {
+    "number": 1308,
+    "mergedAt": "2026-11-09T10:07:59Z",
+    "mergeCommit": "cdd00d6da193848fbc39dda9685a2759fdf554a4"
+  },
+  "originMainHead": "cdd00d6da193848fbc39dda9685a2759fdf554a4",
+  "source": {
+    "path": "spec/public/roadmap.html",
+    "gitBlobSha1": "cb980ec9f8fe81613d7481b56d9a28a3fb59b2b8",
+    "bytes": 650253,
+    "sha256": "968ffa172b5be73de45d9cd904706deb6ca6dfa979e275dabc6c1a464cc7c2f9"
+  },
+  "servedResponses": [
+    {
+      "url": "http://127.0.0.1:8768/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 650253,
+      "sha256": "968ffa172b5be73de45d9cd904706deb6ca6dfa979e275dabc6c1a464cc7c2f9"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "status": 200,
+      "bytes": 650253,
+      "sha256": "968ffa172b5be73de45d9cd904706deb6ca6dfa979e275dabc6c1a464cc7c2f9"
+    }
+  ],
+  "allSourceAndServedSha256Match": true,
+  "tailscaleBackend": "Running",
+  "previewServerPid": 28040,
+  "previewServerRestarted": false,
+  "githubPagesDeployment": false,
+  "agentBrowserSessionsAfterClose": 0,
+  "bootedIosSimulatorsAfter": 0,
+  "adbDevicesAfter": 0,
+  "officialCompletionCount": "78/214"
+}
