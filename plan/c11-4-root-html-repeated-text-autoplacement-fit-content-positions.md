@@ -1,6 +1,10 @@
 # C11.4 · 반복 텍스트 자동 배치의 fit-content 위치 2–6
 
-- **상태:** 제한 구현 계획 후보 · 계획 검토 완료 · 계획 PR 준비 중 · C11.4/C11 공식 체크와 `78/214` 유지
+- **상태:** 제한 구현 병합 · 상태·명세·로드맵 동기화 · C11.4/C11 공식 체크 미완료 · `78/214` 유지
+- **계획 PR:** [#1301](https://github.com/ohah/spinon/pull/1301) · Rebase and merge · `512f634fed403a1398d9dac3fc34995972ac2734`
+- **구현 PR:** [#1302](https://github.com/ohah/spinon/pull/1302) · Rebase and merge · `2026-11-09T03:03:35Z` · `3c403dc265933407dcd34154012ceeec871d71c8`
+- **구현 근거:** [1,440-scene 비교, simulator smoke, 회귀 수정과 한계](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-fit-content-positions-implementation-2026-11-09/README.md)
+- **병합 후 상태·로드맵 동기화:** [기록과 문서 diff 검토](../spec/internal/evidence/c11-4-repeated-text-autoplacement-fit-content-positions-roadmap-sync-2026-11-09/README.md)
 - **직전 구현:** [반복 text row-span의 후속 fit-content 위치](./c11-4-root-html-repeated-text-later-fit-content-row-span.md) · PR [#1299](https://github.com/ohah/spinon/pull/1299)
 - **사전 비교:** [Chrome 157 1,440 scene와 독립 관계 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-fit-content-positions-precomparison-2026-11-09/README.md)
 - **계획 실패 관점 검토:** [서로 다른 20개](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions-plan-review-20.md)
@@ -45,7 +49,7 @@
 7. 동일 source revision을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML 앱 경로에서 실행한다. 위치 1–6, cap `20px|20%|0%|120%`, `start|stretch`를 확인하고 layout-ready, exact item/track trace, draw/present와 screenshot을 저장한다. OS screenshot은 visual smoke이며 PixelCopy/Metal 표면 readback이 아니다. 이번 검증에서 시작한 simulator와 Agent Browser만 종료한다.
 8. 새 fixture/FFI가 추가되면 기본 및 fixture-test artifact를 확인한다. 기본 artifact에는 fixture 전용 심볼/자료가 빠지고 opt-in positive control에는 포함되어야 한다. runtime route에서 요구되지 않으면 fixture ABI를 추가하지 않는다.
 9. 구현 뒤 새 실패 관점 20개로 implementation/runtime을 검토하고 전체 구현 PR diff도 별도 30개 관점으로 검토한다. PR 본문에는 검증된 Android/iOS screenshot 링크와 정확한 근거 범위를 적고, immutable raw URL은 merge 전 Agent Browser로 확인한다.
-10. 병합 뒤 `spec/STATUS.md`, 내부 계약 `0059`, 이 계획과 공개 roadmap을 갱신한다. C11.4/C11 체크는 미완료, 공식 `78/214`, 내부 버전 `0.1.0`을 유지하고 source/hash 확인 뒤 기존에 승인된 Tailnet roadmap preview를 동기화한다.
+10. 병합 뒤 `spec/STATUS.md`, 내부 계약 `0059`, 이 계획과 공개 roadmap에 bounded 결과를 기록한다. C11.4/C11 체크는 미완료, 공식 `78/214`, 내부 버전 `0.1.0`을 유지한다. 문서 변경을 병합한 다음 source/hash를 확인해 기존에 승인된 Tailnet roadmap preview를 동기화한다.
 
 ## 완료 판정
 
