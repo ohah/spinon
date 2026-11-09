@@ -1,0 +1,80 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "dpr": 1,
+  "fitContentPositions": [
+    4,
+    5,
+    6
+  ],
+  "tailPermutationCount": 30,
+  "caseCount": 4320,
+  "byFitPosition": {
+    "4": 1440,
+    "5": 1440,
+    "6": 1440
+  },
+  "byTopology": {
+    "span2-six-forward": 1080,
+    "span2-six-reversed": 1080,
+    "span2-span3-six-forward": 1080,
+    "span2-span3-six-reversed": 1080
+  },
+  "caps": [
+    "0%",
+    "0px",
+    "10px",
+    "120%",
+    "20%",
+    "20px"
+  ],
+  "alignments": [
+    "start",
+    "stretch"
+  ],
+  "implicitRows": 6,
+  "payloadLineCounts": {
+    "A": [
+      6
+    ],
+    "B": [
+      5
+    ],
+    "C": [
+      4
+    ],
+    "D": [
+      4
+    ],
+    "E": [
+      3
+    ]
+  },
+  "maxSpanFrameToTrackSumDeltaCssPx": 0.0,
+  "maxSourceOrderFrameDeltaCssPx": 0.0,
+  "maxTextLineHeightDeltaCssPx": 0.0,
+  "fixtureSha256": "3eb82a38d28e387f0c631738ef38ddfb05f13f30495d65b6b0ad41bf00d24013",
+  "captureSha256": "4932392e5c0291c51a3460fba7d69fbf0763bd59a1ab33ebc5398f7dd3637352",
+  "independentChecks": [
+    "all 30 unique five-member tails at fit-content positions 4, 5, and 6",
+    "six cap values, two alignments, and four overlapping-span/source-order topologies",
+    "authored/computed six-member order and explicit-plus-six implicit rows",
+    "each spanning item frame equals the sum of the used rows it crosses",
+    "text line counts, line-height, and 40px payload widths remain fixed",
+    "reversing DOM source order preserves row sizes and semantic frames",
+    "align-content stretch changes only auto tracks among used implicit rows",
+    "fit-content cap zero is retained as the explicit zero-cap control"
+  ],
+  "capDifferential": {
+    "blockSizeBasisCssPx": 220,
+    "twentyPercentCssPx": 44,
+    "oneHundredTwentyPercentCssPx": 264,
+    "tenPxVsTwentyPxFitTrackDifferencesByPosition": {
+      "4": 48,
+      "5": 48,
+      "6": 24
+    },
+    "zeroPxAndZeroPercentEquivalent": true,
+    "twentyPxTwentyPercentAndOneHundredTwentyPercentEquivalentForThisCorpus": true
+  }
+}
