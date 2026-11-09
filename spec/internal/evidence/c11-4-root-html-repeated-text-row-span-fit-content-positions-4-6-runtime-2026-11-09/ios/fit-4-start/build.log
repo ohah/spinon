@@ -67,13 +67,17 @@ ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeD
 
 ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
 
-Build description signature: 0fd42908dcba8bcf05879aee6505681e
-Build description path: /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/XCBuildData/0fd42908dcba8bcf05879aee6505681e.xcbuilddata
+Build description signature: b44024a80ce7101a08756cdde5d0e7bb
+Build description path: /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/XCBuildData/b44024a80ce7101a08756cdde5d0e7bb.xcbuilddata
 ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C53-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios/SpinonBootstrap.xcodeproj
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -o /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C53-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache
 
 note: Run script build phase 'Prepare Rust, V8 and JavaScript' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
+ProcessInfoPlistFile /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/Info.plist /Users/yoonhb/Documents/workspace/spinon/platforms/ios/Sources/Info.plist (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
+    cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios
+    builtin-infoPlistUtility /Users/yoonhb/Documents/workspace/spinon/platforms/ios/Sources/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/Info.plist
+
 PhaseScriptExecution Prepare\ Rust,\ V8\ and\ JavaScript /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Script-500000000000000000000004.sh (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios
     export ACTION\=build
@@ -637,28 +641,181 @@ PhaseScriptExecution Prepare\ Rust,\ V8\ and\ JavaScript /Users/yoonhb/Documents
     /bin/sh -c /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Script-500000000000000000000004.sh
 SPINON_IOS_NATIVE_FEATURES ffi=c04-runtime-gpu c04_12_root_html_block_paint_fixture=0 c11_grid_cpp=-DSPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=0 c13_1_fixture=0 c13_2_fixture=0 c12_5_sticky_fixture=0 c13_3_fixture=0 c14_1_app_fixture=0 c14_2_app_fixture=0 c14_3_app_fixture=0 c18_1_image_paint_fixture=0 c18_2_alpha_image_fixture=0 c18_3_object_fit_position_fixture=0 c18_4_async_image_fixture=0 c19_2_box_paint_opacity_fixture=0 c15_3_wgpu_glyph_paint_fixture=0
 $ mkdir -p build/spinon/bootstrap && bun build examples/bootstrap/app.js --target=browser --outfile build/spinon/bootstrap/app.js && bun build examples/bootstrap/root-app.js --target=browser --outfile build/spinon/bootstrap/root-app.js && cp examples/bootstrap/index.html build/spinon/bootstrap/index.html
-Bundled 1 module in 17ms
+Bundled 1 module in 2ms
 
   app.js  17.59 KB  (entry point)
 
-Bundled 1 module in 7ms
+Bundled 1 module in 2ms
 
   root-app.js  99 bytes  (entry point)
 
 info: component rust-std for target aarch64-apple-ios-sim is up to date
+   Compiling smallvec v1.16.2
+   Compiling stable_deref_trait v1.2.1
+   Compiling bitflags v2.13.2
+   Compiling cfg-if v1.0.5
+   Compiling objc2 v0.6.5
+   Compiling scopeguard v1.2.0
+   Compiling objc2-encode v4.1.0
+   Compiling libc v0.2.189
+   Compiling libm v0.2.16
+   Compiling serde_core v1.0.229
+   Compiling parking_lot_core v0.9.12
+   Compiling writeable v0.6.4
+   Compiling serde v1.0.229
+   Compiling foldhash v0.2.0
+   Compiling zerofrom v0.1.8
+   Compiling bytemuck v1.25.2
+   Compiling num-traits v0.2.19
+   Compiling yoke v0.8.3
+   Compiling lock_api v0.4.14
+   Compiling litemap v0.8.3
+   Compiling zerovec v0.11.8
+   Compiling hashbrown v0.17.1
+   Compiling zerotrie v0.2.5
+   Compiling log v0.4.34
+   Compiling once_cell v1.21.4
+   Compiling utf8_iter v1.0.4
+   Compiling siphasher v1.0.4
+   Compiling icu_properties_data v2.3.0
+   Compiling new_debug_unreachable v1.0.6
+   Compiling icu_normalizer_data v2.3.0
+   Compiling phf_shared v0.14.0
+   Compiling equivalent v1.0.2
+   Compiling precomputed-hash v0.1.1
+   Compiling arrayvec v0.7.8
+   Compiling icu_locale_fallback_data v2.3.0
+   Compiling font-types v0.12.7
+   Compiling itoa v1.0.18
+   Compiling phf v0.14.0
+   Compiling indexmap v2.14.2
+   Compiling dtoa v1.0.11
+   Compiling static_assertions v1.1.0
+   Compiling icu_segmenter_data v2.3.0
+   Compiling dtoa-short v0.3.5
+   Compiling read-fonts v0.41.0
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling crossbeam-utils v0.8.23
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_collections v2.3.0
+   Compiling thiserror v2.0.21
+   Compiling core_maths v0.1.1
+   Compiling thin-vec v0.2.20
+   Compiling smallbitvec v2.6.1
+   Compiling zerocopy v0.8.59
+   Compiling icu_provider v2.3.1
+   Compiling crossbeam-epoch v0.9.21
+   Compiling parking_lot v0.12.5
+   Compiling cssparser v0.38.0
+   Compiling servo_arc v0.5.0
+   Compiling string_cache v0.11.0
+   Compiling derive_more v2.1.1
+   Compiling rustc-hash v1.1.0
+   Compiling rustc-hash v2.1.3
+   Compiling crossbeam-deque v0.8.8
+   Compiling to_shmem v0.6.0
+   Compiling app_units v0.7.8
+   Compiling euclid v0.22.14
+   Compiling selectors v0.41.0
+   Compiling rayon-core v1.13.0
+   Compiling icu_properties v2.3.0
+   Compiling web_atoms v0.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling memmap2 v0.9.11
+   Compiling idna_adapter v1.2.2
+   Compiling naga v30.0.1
+   Compiling icu_locale_fallback v2.3.0
+   Compiling spinon-core v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-core)
+   Compiling bit-vec v0.9.1
+   Compiling linebender_resource_handle v0.1.1
+   Compiling parlance v0.1.1
+   Compiling void v1.0.2
+   Compiling percent-encoding v2.3.2
+   Compiling unicode-width v0.2.2
+   Compiling form_urlencoded v1.2.2
+   Compiling codespan-reporting v0.13.1
+   Compiling stylo_malloc_size_of v0.22.0
+   Compiling bit-set v0.10.0
+   Compiling stylo_atoms v0.22.0
+   Compiling idna v1.1.0
+   Compiling parley_data v0.12.0
+   Compiling objc2-core-foundation v0.3.2
+   Compiling icu_segmenter v2.3.0
+   Compiling block2 v0.6.2
+   Compiling skrifa v0.44.0
+   Compiling harfrust v0.12.0
+   Compiling objc2-foundation v0.3.2
+   Compiling objc2-core-text v0.3.2
+   Compiling naga-types v30.0.1
+   Compiling objc2-core-graphics v0.3.2
+   Compiling either v1.18.0
+   Compiling raw-window-handle v0.6.2
+   Compiling unicode-ident v1.0.26
+   Compiling parley_emoji v0.12.0
+   Compiling stylo_static_prefs v0.22.0
+   Compiling url v2.5.8
+   Compiling wgpu-types v30.0.1
+   Compiling encoding_rs v0.8.42
+   Compiling slotmap v1.1.1
+   Compiling objc2-metal v0.3.2
+   Compiling fontique v0.12.0
+   Compiling parley_engine v0.12.0
+   Compiling wgpu-hal v30.0.1
+   Compiling simdutf8 v0.1.5
+   Compiling yazi v0.2.1
+   Compiling half v2.7.1
+   Compiling zeno v0.3.3
+   Compiling typenum v1.20.1
+   Compiling parley v0.12.0
+   Compiling objc2-quartz-core v0.3.2
+   Compiling hybrid-array v0.4.15
+   Compiling swash v0.2.10
+   Compiling stylo_traits v0.22.0
+   Compiling raw-window-metal v1.1.0
+   Compiling rayon v1.12.0
+   Compiling stylo v0.22.0
+   Compiling itertools v0.14.0
+   Compiling stylo_dom v0.22.0
+   Compiling num-integer v0.1.47
+   Compiling num_cpus v1.17.0
+   Compiling uluru v3.1.0
+   Compiling libloading v0.8.9
+   Compiling strum v0.28.0
+   Compiling atomic_refcell v0.1.14
+   Compiling mime v0.3.17
+   Compiling byteorder v1.5.0
+   Compiling profiling v1.0.18
+   Compiling wgpu-core v30.0.1
+   Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling spinon-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-render)
+   Compiling tendril v0.5.1
+   Compiling const-oid v0.10.2
+   Compiling memchr v2.8.3
+   Compiling digest v0.11.3
+   Compiling markup5ever v0.40.0
+   Compiling zmij v1.0.23
+   Compiling wgpu v30.0.1
    Compiling taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+   Compiling cpufeatures v0.3.1
+   Compiling serde_json v1.0.151
+   Compiling sha2 v0.11.1
+   Compiling html5ever v0.40.1
+   Compiling pollster v0.4.0
+   Compiling spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
    Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling wgpu-naga-bridge v30.0.1
+   Compiling wgpu-core-deps-apple v30.0.1
+   Compiling spinon-render-wgpu v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-render-wgpu)
+   Compiling spinon-style v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style)
    Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
    Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
    Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
    Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
-    Finished `release` profile [optimized] target(s) in 6.85s
-    Finished `release` profile [optimized] target(s) in 0.05s
+    Finished `release` profile [optimized] target(s) in 30.23s
+    Finished `release` profile [optimized] target(s) in 0.07s
 iOS iphonesimulator 네이티브 입력 준비 완료: /Users/yoonhb/Documents/workspace/spinon/build/spinon/iphonesimulator
-
-ProcessInfoPlistFile /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/Info.plist /Users/yoonhb/Documents/workspace/spinon/platforms/ios/Sources/Info.plist (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
-    cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios
-    builtin-infoPlistUtility /Users/yoonhb/Documents/workspace/spinon/platforms/ios/Sources/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/Info.plist
 
 Ld /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap normal (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios
@@ -679,8 +836,8 @@ ld: warning: duplicate symbol '___IVAR_OFFSET_RawWindowMetalLayer' in:
 ExtractAppIntentsMetadata (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios
     /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SpinonBootstrap --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk --xcode-version 17C52 --platform-family iOS --deployment-target 18.0 --bundle-identifier dev.spinon.bootstrap --output /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app --target-triple arm64-apple-ios18.0-simulator --binary-file /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap --dependency-file /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap_dependency_info.dat --stringsdata-file /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap.SwiftFileList --metadata-file-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/SpinonBootstrap.DependencyMetadataFileList --static-metadata-file-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/SpinonBootstrap.DependencyStaticMetadataFileList --swift-const-vals-list /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
-2026-11-09 17:18:56.036 appintentsmetadataprocessor[24656:218115426] Starting appintentsmetadataprocessor export
-2026-11-09 17:18:56.037 appintentsmetadataprocessor[24656:218115426] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+2026-11-09 17:59:25.338 appintentsmetadataprocessor[62434:218254766] Starting appintentsmetadataprocessor export
+2026-11-09 17:59:25.339 appintentsmetadataprocessor[62434:218254766] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
 
 CopySwiftLibs /Users/yoonhb/Documents/workspace/spinon/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app (in target 'SpinonBootstrap' from project 'SpinonBootstrap')
     cd /Users/yoonhb/Documents/workspace/spinon/platforms/ios

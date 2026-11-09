@@ -8,12 +8,15 @@ source_root_app="$repo_root/examples/bootstrap/root-app.js"
 scene_dir="$evidence_dir/sources"
 android_sdk="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-$HOME/Library/Android/sdk}}"
 android_avd="${SPINON_ANDROID_AVD:-spinon_c114_percentage_max_20261023}"
+android_gpu="${SPINON_ANDROID_GPU:-swiftshader}"
 android_serial=""
 android_pid=""
 android_emulator_pid=""
 android_started_here=0
+android_app_installed_here=0
 ios_udid="ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
 ios_started_here=0
+ios_app_installed_here=0
 package="dev.spinon.bootstrap"
 app="$repo_root/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app"
 apk="$repo_root/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
@@ -23,6 +26,15 @@ platforms="${SPINON_SIMULATOR_PLATFORMS:-both}"
 if [[ "$platforms" != "both" && "$platforms" != "android" && "$platforms" != "ios" ]]; then
   printf 'SPINON_SIMULATOR_PLATFORMS must be both, android, or ios\n' >&2
   exit 2
+fi
+if [[ "$platforms" != "ios" ]]; then
+  case "$android_gpu" in
+    auto|host|software|lavapipe|swiftshader|swangle) ;;
+    *)
+      printf 'SPINON_ANDROID_GPU must be auto, host, software, lavapipe, swiftshader, or swangle\n' >&2
+      exit 2
+      ;;
+  esac
 fi
 
 mkdir -p "$evidence_dir/android" "$evidence_dir/ios"
@@ -35,6 +47,8 @@ restore_and_stop() {
   local status=$?
   local ios_stopped="not-started"
   local android_stopped="not-started"
+  local ios_app_removed="not-installed"
+  local android_app_removed="not-installed"
   set +e
   git -C "$repo_root" show HEAD:examples/bootstrap/index.html > "$source_index"
   git -C "$repo_root" show HEAD:examples/bootstrap/root-app.js > "$source_root_app"
@@ -43,6 +57,16 @@ restore_and_stop() {
     printf 'bootstrap source restoration failed\n' >&2
     status=1
   fi
+  if (( ios_app_installed_here )); then
+    xcrun simctl uninstall "$ios_udid" "$package" \
+      > "$evidence_dir/ios/uninstall.log" 2>&1
+    if (($? == 0)); then
+      ios_app_removed="true"
+    else
+      ios_app_removed="false"
+      status=1
+    fi
+  fi
   if (( ios_started_here )); then
     xcrun simctl shutdown "$ios_udid" >/dev/null 2>&1
     if xcrun simctl list devices booted | rg -q "$ios_udid"; then
@@ -50,6 +74,19 @@ restore_and_stop() {
       status=1
     else
       ios_stopped="true"
+    fi
+  fi
+  if (( android_app_installed_here )); then
+    if ! "$android_sdk/platform-tools/adb" -s "$android_serial" shell am force-stop "$package" \
+      > "$evidence_dir/android/cleanup-force-stop.log" 2>&1; then
+      status=1
+    fi
+    if "$android_sdk/platform-tools/adb" -s "$android_serial" uninstall "$package" \
+      > "$evidence_dir/android/uninstall.log" 2>&1; then
+      android_app_removed="true"
+    else
+      android_app_removed="false"
+      status=1
     fi
   fi
   if (( android_started_here )); then
@@ -69,8 +106,47 @@ restore_and_stop() {
       android_stopped="true"
     fi
   fi
-  printf 'ios_shutdown_after_run=%s\nandroid_shutdown_after_run=%s\n' \
-    "$ios_stopped" "$android_stopped" > "$evidence_dir/simulator-lifecycle.txt"
+  update_lifecycle() {
+    local key="$1"
+    local value="$2"
+    local lifecycle_file="$evidence_dir/simulator-lifecycle.txt"
+    local lifecycle_tmp
+    if ! lifecycle_tmp="$(mktemp "$evidence_dir/simulator-lifecycle.XXXXXX")"; then
+      return 1
+    fi
+    if [[ -f "$lifecycle_file" ]]; then
+      if ! awk -v key="$key" -v value="$value" '
+        BEGIN { prefix = key "="; written = 0 }
+        index($0, prefix) == 1 {
+          if (!written) print prefix value
+          written = 1
+          next
+        }
+        { print }
+        END { if (!written) print prefix value }
+      ' "$lifecycle_file" > "$lifecycle_tmp"; then
+        rm -f "$lifecycle_tmp"
+        return 1
+      fi
+    else
+      if ! printf '%s=%s\n' "$key" "$value" > "$lifecycle_tmp"; then
+        rm -f "$lifecycle_tmp"
+        return 1
+      fi
+    fi
+    if ! mv "$lifecycle_tmp" "$lifecycle_file"; then
+      rm -f "$lifecycle_tmp"
+      return 1
+    fi
+  }
+  if [[ "$platforms" != "android" ]]; then
+    update_lifecycle ios_shutdown_after_run "$ios_stopped" || status=1
+    update_lifecycle ios_test_app_uninstalled "$ios_app_removed" || status=1
+  fi
+  if [[ "$platforms" != "ios" ]]; then
+    update_lifecycle android_shutdown_after_run "$android_stopped" || status=1
+    update_lifecycle android_test_app_uninstalled "$android_app_removed" || status=1
+  fi
   return "$status"
 }
 trap restore_and_stop EXIT
@@ -90,7 +166,7 @@ if [[ "$platforms" != "android" ]] \
 fi
 
 if [[ "$platforms" != "ios" ]]; then
-  "$android_sdk/emulator/emulator" -avd "$android_avd" -gpu swiftshader -no-snapshot \
+  "$android_sdk/emulator/emulator" -avd "$android_avd" -gpu "$android_gpu" -no-snapshot \
     -no-boot-anim -no-window -no-audio \
     > "$evidence_dir/android/emulator.log" 2>&1 &
   android_emulator_pid=$!
@@ -109,7 +185,8 @@ if [[ "$platforms" != "ios" ]]; then
     sleep 1
   done
   test "$("$android_sdk/platform-tools/adb" -s "$android_serial" shell getprop sys.boot_completed | tr -d '\r')" = "1"
-  printf 'serial=%s\navd=%s\n' "$android_serial" "$android_avd" > "$evidence_dir/android/device.txt"
+  printf 'serial=%s\navd=%s\ngpu_mode=%s\n' "$android_serial" "$android_avd" "$android_gpu" \
+    > "$evidence_dir/android/device.txt"
   printf 'release=' >> "$evidence_dir/android/device.txt"
   "$android_sdk/platform-tools/adb" -s "$android_serial" shell getprop ro.build.version.release | tr -d '\r' >> "$evidence_dir/android/device.txt"
   printf 'api_level=' >> "$evidence_dir/android/device.txt"
@@ -153,17 +230,28 @@ for scene_file in "$scene_dir"/fit-*.html; do
     printf 'packaged_html_sha256=%s\n' "$packaged_sha" >> "$android_out/source.txt"
     "$android_sdk/platform-tools/adb" -s "$android_serial" install -r "$apk" \
       > "$android_out/install.log" 2>&1
+    android_app_installed_here=1
     "$android_sdk/platform-tools/adb" -s "$android_serial" shell am force-stop "$package" \
       > "$android_out/force-stop.log" 2>&1
     "$android_sdk/platform-tools/adb" -s "$android_serial" shell am start -n "$package/.MainActivity" \
       > "$android_out/launch.log" 2>&1
     android_pid=""
     for attempt in $(seq 1 60); do
-      android_pid="$("$android_sdk/platform-tools/adb" -s "$android_serial" shell pidof "$package" | tr -d '\r' | awk '{print $1}')"
+      android_pid="$("$android_sdk/platform-tools/adb" -s "$android_serial" shell pidof "$package" \
+        | tr -d '\r' | awk '{print $1}' || true)"
       if [[ -n "$android_pid" ]]; then break; fi
       sleep 1
     done
-    test -n "$android_pid"
+    if [[ -z "$android_pid" ]]; then
+      "$android_sdk/platform-tools/adb" -s "$android_serial" logcat -d -v threadtime \
+        > "$android_out/process-start-failure.log" 2>&1 || true
+      "$android_sdk/platform-tools/adb" -s "$android_serial" shell dumpsys activity activities \
+        > "$android_out/activity-after-start-failure.txt" 2>&1 || true
+      "$android_sdk/platform-tools/adb" -s "$android_serial" shell dumpsys package "$package" \
+        > "$android_out/package-after-start-failure.txt" 2>&1 || true
+      printf 'Android package %s did not expose a process after launch\n' "$package" >&2
+      exit 1
+    fi
     printf '%s\n' "$android_pid" > "$android_out/app-pid.txt"
     for attempt in $(seq 1 60); do
       "$android_sdk/platform-tools/adb" -s "$android_serial" logcat -d -v threadtime \
@@ -195,6 +283,7 @@ for scene_file in "$scene_dir"/fit-*.html; do
     shasum -a 256 "$app/SpinonBootstrap" > "$ios_out/artifact.sha256"
     printf 'packaged_html_sha256=%s\n' "$packaged_sha" >> "$ios_out/source.txt"
     xcrun simctl install "$ios_udid" "$app" > "$ios_out/install.log" 2>&1
+    ios_app_installed_here=1
     xcrun simctl terminate "$ios_udid" "$package" > "$ios_out/terminate.log" 2>&1 || true
     xcrun simctl launch "$ios_udid" "$package" > "$ios_out/launch.log" 2>&1
     ios_bytes="$source_bytes"
