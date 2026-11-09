@@ -39,11 +39,11 @@
 ## Vendored sizing, matrix와 문서 주장
 
 29. **span-group zero-space commit 및 cap 분배** — Taffy의 growth-limit 분배는 affected track이 없는 경우에만 건너뛰고, 0 증가도 group 끝에서 flush한다. fit-content cap 및 다음 span group 영향은 고정 4,320 Chrome 비교와 127 track-sizing tests로 확인했다. [Taffy diff](../../../../vendor/taffy/src/compute/grid/track_sizing.rs) · [matrix](./checks/matrix-positions-4-6.log) · [track tests](./checks/grid-track-sizing-127.log).
-30. **플랫폼·완료 주장 경계** — README는 iOS 6 scene과 Android API 37.2 6 scene을 visual smoke로 한정하고, 다른 API 37 AVD의 QEMU SIGSEGV와 broad layout 실패 1건도 별도로 남긴다. 계획은 구현 후보이며 공식 상태 78/214, C11.4/C11 미완료를 유지한다. [runtime limits](./README.md) · [plan](../../../../plan/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md).
+30. **플랫폼·완료 주장 경계** — README와 계약 0059는 iOS 6 scene 및 Android API 37.2 6 scene을 visual smoke로 한정하고, 다른 API 37 AVD의 QEMU SIGSEGV와 broad layout의 C15 실패를 구분한다. 같은 C15 assertion을 base `abe50125`에서 재현했으며, 계획은 구현 후보로 공식 상태 78/214와 C11.4/C11 미완료를 유지한다. [runtime limits](./README.md) · [internal contract](../../0059-c11-grid-layout.md) · [baseline reproduction](./checks/c15-host-document-baseline-origin-main.log) · [plan](../../../../plan/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md).
 
 ## 검토 결과
 
-이 PR diff 검토에서 별도 제품 결함은 추가로 찾지 못했다. 구현/runtime 20관점 검토에서 이미 발견한 writing-context admission 누락과 Taffy 설명 주석은 수정됐으며, 영향받는 거부 검사는 포맷 후 재실행해 통과했다. Android API 37.2 시각 smoke는 통과했지만 broad `spinon-layout --lib` 1개 실패의 기준 여부가 확인되지 않아 이 검토만으로 병합 준비가 됐다고 판정하지 않는다.
+이 PR diff 검토에서 별도 제품 결함은 추가로 찾지 못했다. 구현/runtime 20관점 검토에서 이미 발견한 writing-context admission 누락과 Taffy 설명 주석은 수정됐으며, 영향받는 거부 검사는 포맷 후 재실행해 통과했다. Android API 37.2 시각 smoke는 통과했다. broad `spinon-layout --lib`의 C15 assertion은 base `abe50125`의 동일 filtered test에서도 재현되며 이 PR이 도입한 실패가 아님을 분리했다. 전체 base suite의 통과 수는 추정하지 않는다.
 
 ## 플랫폼 smoke runner 후속 변경 검토
 
@@ -57,3 +57,18 @@
 6. **증거 경계** — 앱 실행·layout-ready·draw/present·screenshot은 기록하지만 이 검증을 geometry parity나 pixel oracle로 승격하지 않는다.
 
 이 항목들은 단일 smoke runner diff에 대한 보완 검토이며, 기존 PR의 서로 다른 30관점 검토를 대체하지 않는다. 후속 Android 및 iOS 실 실행에서 package uninstall, simulator shutdown, 반대 플랫폼 lifecycle 행 보존을 확인했다. 최종 raw output은 `checks/platform-logs-final-smoke-2026-11-09.tar.gz`에 남겼다.
+
+## 내부 계약 0059 candidate 추가 검토
+
+1. **candidate 상태** — 계약 절은 PR #1306 미병합 후보로 표시하고 merge SHA나 공식 완료를 미리 주장하지 않는다.
+2. **profile 분리** — 변경 범위를 row-span authored positions 4–6으로 한정하고 auto-placement positions 1–6 및 기존 row-span positions 1–3을 다시 정의하지 않는다.
+3. **track multiplicity** — `fit-content ×1`, `min-content ×2`, `max-content ×2`, `auto ×1`의 여섯 member를 보존한다.
+4. **position·tail corpus** — authored position당 30개 tail 순서로 제한하고 모든 여섯-member permutation 지원을 암시하지 않는다.
+5. **cap corpus** — 실행한 6개 px/% cap만 적고 definite 220px basis를 적었다.
+6. **placement topology** — 두 six-implicit-row topology를 따로 명시하고 다른 row span이나 implicit columns를 허용하지 않는다.
+7. **alignment·writing context** — `start|stretch`, LTR/horizontal 조건을 유지한다.
+8. **장면 수 검산** — 3×30×6×2×4가 4,320이며 Chrome 157 비교 corpus와 일치한다.
+9. **platform·baseline 한계** — iOS/Android는 visual smoke로 한정하고 C15 baseline filtered test가 전체 baseline suite를 증명하지 않는다고 적었다.
+10. **상태 대장 경계** — candidate entry가 `78/214`, C11.4/C11 checkbox와 contract `0.1.0`을 바꾸지 않는다.
+
+이 추가 검토는 계약 문구의 새 candidate 절을 실제 matrix·runner 근거와 대조한 기록이다. PR의 30개 구현 diff 관점과 별도이며 이를 대체하지 않는다.
