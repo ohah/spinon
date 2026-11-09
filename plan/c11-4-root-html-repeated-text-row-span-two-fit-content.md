@@ -1,6 +1,6 @@
 # C11.4 · 반복 텍스트 row-span에 두 `fit-content()` 행 추가
 
-- **상태:** 제한 구현 진행 중 · RuntimeSession 3,840/3,840 + min-content-floor/rejection controls 통과 · 기존 단일-fit row-span 1,920/4,320/960 scene 회귀 통과 · iOS Simulator visual smoke 통과 · Android Emulator 부팅 실패 · C11.4/C11 공식 체크와 `78/214` 유지
+- **상태:** 제한 구현 진행 중 · RuntimeSession 3,840/3,840 + min-content-floor/rejection controls 통과 · 기존 단일-fit row-span 1,920/4,320/960 scene 회귀 통과 · iOS Simulator visual smoke 통과 · Android Emulator 37.2.12→37.2.13 update 후에도 ADB offline · C11.4/C11 공식 체크와 `78/214` 유지
 - **선행 구현:** [반복 text row-span `fit-content()` 위치 1–6](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · PR [#1306](https://github.com/ohah/spinon/pull/1306)
 - **사전 비교:** [Chrome 157 3,840 scene](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-precomparison-2026-11-09/README.md)
 - **계획 실패 관점 검토:** [서로 다른 20개](./c11-4-root-html-repeated-text-row-span-two-fit-content-plan-review-20.md)
@@ -10,8 +10,8 @@
 
 - 구현은 두 fit-content member만 늘리고 list multiset, 네 tail order, 여섯 authored position, 두 row-span topology를 제한한다. `min-height:auto`는 이 두-fit explicit-span profile에서만 허용해 Chrome 157의 min-content floor가 cap보다 큰 대조를 보존한다.
 - Chrome 관측 3,840 scene, min-content-floor control, three-fit atomic rejection/same-session recovery를 parsed Root HTML RuntimeSession에서 통과했다. 기존 single-fit row-span 위치 1–3의 1,920 scene, 4–6의 4,320 scene, 기존 960-scene row-span profile도 회귀 통과했다. 별도 RuntimeSession/layout/trace/clippy 세부 결과와 review는 [runtime evidence](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-runtime-2026-11-09/README.md)에 있다.
-- iPhone 17 Pro/iOS 26.2 임시 Simulator에서 기본 Root HTML route의 layout-ready/draw-presented 화면 smoke를 확인하고 해당 임시 profile을 삭제했다. 기존 iPhone profiles는 보존했다. API 37.2 ps16k와 API 37.0 Google APIs temporary AVD는 앱을 설치하기 전에 QEMU 부팅 실패를 보여 삭제했다. 따라서 Android app runtime gate는 열려 있다.
-- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-runtime-2026-11-09/implementation-runtime-review-20.md)를 마쳤다. 구현 PR diff의 별도 30관점 검토, Android runtime 재시도, PR/merge 상태는 아직 남아 있다. 이 진행 기록은 이 bounded slice나 C11.4/C11을 완료 처리하지 않으며 공식 `78/214`를 변경하지 않는다.
+- iPhone 17 Pro/iOS 26.2 임시 Simulator에서 기본 Root HTML route의 layout-ready/draw-presented 화면 smoke를 확인하고 해당 임시 profile을 삭제했다. 기존 iPhone profiles는 보존했다. API 37.2 ps16k와 API 37.0 Google APIs temporary AVD는 앱 설치 전 QEMU/ADB 부팅에 실패했다. SDK Emulator 37.2.13으로 업데이트한 뒤 만든 새 API 37.2 AVD도 emulator console은 응답했으나 5분 08초 동안 ADB `offline`이었고 `adb reconnect offline` 및 서버 재시작으로 회복되지 않아 삭제했다. 따라서 Android app runtime gate는 열려 있다.
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-runtime-2026-11-09/implementation-runtime-review-20.md)와 [PR #1311 diff의 별도 30관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-runtime-2026-11-09/pr-diff-review-30.md)를 마쳤다. Android runtime은 Emulator 37.2.12→37.2.13 update 후에도 앱 실행 전 guest boot가 막혀 열려 있다. [Draft PR #1311](https://github.com/ohah/spinon/pull/1311)은 iOS screenshot을 본문에 포함하며 아직 병합하지 않았다. 이 진행 기록은 이 bounded slice나 C11.4/C11을 완료 처리하지 않으며 공식 `78/214`를 변경하지 않는다.
 
 ## 결손과 목표
 

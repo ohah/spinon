@@ -7,6 +7,7 @@
 - Layout profile tests passed for all 15 two-position pairs and the fixed tail orders. The five `blink_` distribution/alignment tests passed, including fractional remainder assignment and the used-prefix with no auto track.
 - Feature-enabled Clippy passed for `spinon-layout`, `spinon-style-to-layout`, and `spinon-runtime` with `-D warnings -A clippy::too_many_arguments`. The allowance is for two preexisting fixture-test helpers in unrelated files. `cargo fmt --all -- --check` and `git diff --check` passed.
 - Chrome 157 control `chrome157-min-content-floor-control.json` has two `fit-content(0.5px)` rows whose min-content floors resolve above their caps. The paired screenshot is observational evidence; RuntimeSession independently checks its row trace, item frames, paint boxes, and text descriptors.
+- The 20-point implementation/runtime audit is in [implementation-runtime-review-20.md](implementation-runtime-review-20.md); the separate PR #1311 diff audit is in [pr-diff-review-30.md](pr-diff-review-30.md).
 
 ## iOS Simulator
 
@@ -16,7 +17,7 @@
 
 ## Android Emulator
 
-- The API 37.2 `google_apis_ps16k` disposable AVD stayed offline for 5m39s before it was stopped and deleted; no app was installed in that AVD.
+- The API 37.2 `google_apis_ps16k` disposable AVD stayed offline for 5m39s before it was stopped and deleted; no app was installed in that AVD. Updating Emulator from 37.2.12 to 37.2.13 did not resolve it: a fresh API 37.2 AVD still reported `offline` for 5m08s, even though the emulator console responded. See [android/api37213-emulator-offline.md](android/api37213-emulator-offline.md).
 - A follow-up API 37.0 `google_apis` AVD reproduced the failure before app installation. The Mac reports `kern.hv_support=1` and `emulator -accel-check` reports Hypervisor.framework, but Emulator 37.2.12 still said `hvf is not enabled` even with `-accel on`; it repeated `mprotect failed: Permission denied`, stayed offline, then reported QEMU thread hangs and exited with status 139. This narrows the issue to the emulator's AVD/QEMU startup path, not the application package. Details are in [android/api370-emulator-hang.md](android/api370-emulator-hang.md).
 - The Android debug APK built successfully but was not installed because QEMU never completed boot. Its exact generated APK was removed after the failed run. Therefore there is no Android app layout/draw or screenshot result for this slice.
 - The earlier PackageManager parse failure on the reused AVD is a separate failure and remains un-attributed; its app data was preserved and the original APK restore command returned `Success`.
@@ -24,4 +25,4 @@
 ## Scope and cleanup
 
 - This is a bounded implementation candidate, not general CSS Grid support, WPT conformance, hardware-device parity, or completion of C11.4/C11. The official completion count remains `78/214`.
-- No iOS Simulator, Android AVD, or browser session from this verification remains open. The preexisting simulator profiles and unrelated workspace processes were preserved.
+- No iOS Simulator, Android AVD, or browser session from this verification remains open. The preexisting simulator profiles and unrelated workspace processes were preserved. The shared Android Emulator SDK package is now 37.2.13; it did not resolve the boot blocker.
