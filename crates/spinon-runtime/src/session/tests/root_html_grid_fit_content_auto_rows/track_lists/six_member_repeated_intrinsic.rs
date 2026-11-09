@@ -323,7 +323,12 @@ fn parsed_root_html_repeated_intrinsic_list_preserves_both_cycles_and_auto_stret
 
 #[test]
 fn parsed_root_html_repeated_intrinsic_list_rejects_atomically_and_recovers_same_session() {
-    let (session, initial) = run(SOURCE);
+    let unsupported_dark_source = replace_once(
+        SOURCE,
+        "min-content max-content fit-content(20px) auto min-content max-content",
+        "min-content max-content fit-content(20px) auto auto max-content",
+    );
+    let (session, initial) = run(&unsupported_dark_source);
     assert_eq!(initial.state, crate::session::RuntimeLayoutState::Ready);
     assert!(initial.completed.is_some());
     let grid_node_id = session
@@ -409,5 +414,49 @@ fn parsed_root_html_repeated_intrinsic_list_rejects_overflow_payload_at_first_fi
     assert!(
         layout.completed.is_none(),
         "the first fit-content item with the repeated-cycle overflow height must fail atomically"
+    );
+}
+
+#[test]
+fn parsed_root_html_repeated_intrinsic_list_rejects_mixed_numeric_payload_profiles() {
+    let source = replace_once(
+        SOURCE,
+        "#payload-3 { height: 12px;",
+        "#payload-3 { height: 1px;",
+    );
+    let (_, layout) = run(&source);
+    assert_eq!(layout.state, crate::session::RuntimeLayoutState::Failed);
+    assert_eq!(
+        layout
+            .error
+            .as_ref()
+            .and_then(|failure| failure.property.as_deref()),
+        Some("height")
+    );
+    assert!(
+        layout.completed.is_none(),
+        "payload sizes from different fixture profiles must not be combined"
+    );
+}
+
+#[test]
+fn parsed_root_html_later_fit_content_position_requires_the_repeated_text_profile() {
+    let source = replace_once(
+        SOURCE,
+        "fit-content(20px) min-content min-content max-content max-content auto",
+        "min-content fit-content(20px) min-content max-content max-content auto",
+    );
+    let (_, layout) = run(&source);
+    assert_eq!(layout.state, crate::session::RuntimeLayoutState::Failed);
+    assert_eq!(
+        layout
+            .error
+            .as_ref()
+            .and_then(|failure| failure.property.as_deref()),
+        Some("grid-auto-rows")
+    );
+    assert!(
+        layout.completed.is_none(),
+        "later fit-content positions require the bounded direct-text auto-placement profile"
     );
 }

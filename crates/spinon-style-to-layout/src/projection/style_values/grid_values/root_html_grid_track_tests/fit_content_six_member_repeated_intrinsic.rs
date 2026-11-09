@@ -76,7 +76,7 @@ fn repeated_tail_orders() -> Vec<Vec<ComputedCssGridTrackSize>> {
 }
 
 #[test]
-fn root_html_repeated_intrinsic_auto_row_list_preserves_all_30_orders_and_caps() {
+fn root_html_repeated_intrinsic_auto_row_list_preserves_all_positions_orders_and_caps() {
     let node = NodeId::new(11_294).unwrap();
     let orders = repeated_tail_orders();
     assert_eq!(orders.len(), 30);
@@ -97,7 +97,7 @@ fn root_html_repeated_intrinsic_auto_row_list_preserves_all_30_orders_and_caps()
         ComputedCssGridTrackSize::MaxContent,
     ]));
 
-    for fit_position in 1..=3 {
+    for fit_position in 1..=6 {
         for (computed_cap, layout_cap) in [
             (
                 ComputedCssGridTrackLengthPercentage::LengthPx(20.0),
@@ -165,7 +165,7 @@ fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_multiplicities_posi
     let mut long_list = vec![fit(20.0)];
     long_list.extend(valid_tail.iter().cloned());
     long_list.push(ComputedCssGridTrackSize::Auto);
-    let mut invalid_rows = vec![
+    let invalid_rows = vec![
         wrong_duplicate,
         short_list,
         long_list,
@@ -206,12 +206,6 @@ fn root_html_repeated_intrinsic_auto_row_list_rejects_nearby_multiplicities_posi
             valid_tail[4].clone(),
         ],
     ];
-    for fit_position in 4..=6 {
-        let mut rows = valid_tail.to_vec();
-        rows.insert(fit_position - 1, fit(20.0));
-        invalid_rows.push(rows);
-    }
-
     for rows in invalid_rows {
         assert!(matches!(
             project_grid_layout(

@@ -553,12 +553,20 @@ fn root_html_fit_content_min_max_content_auto_track_list(
 fn root_html_fit_content_repeated_min_max_content_auto_track_list(
     tracks: &[ComputedCssGridTrackSize],
 ) -> bool {
-    if tracks.len() != 6 || !root_html_fit_content_cap_is_supported(&tracks[0]) {
+    if tracks.len() != 6 {
         return false;
     }
 
     let mut counts = [0usize; 3];
-    for track in &tracks[1..] {
+    let mut fit_content_seen = false;
+    for track in tracks {
+        if matches!(track, ComputedCssGridTrackSize::FitContent(_)) {
+            if fit_content_seen || !root_html_fit_content_cap_is_supported(track) {
+                return false;
+            }
+            fit_content_seen = true;
+            continue;
+        }
         let index = match track {
             ComputedCssGridTrackSize::MinContent => 0,
             ComputedCssGridTrackSize::MaxContent => 1,
@@ -567,7 +575,7 @@ fn root_html_fit_content_repeated_min_max_content_auto_track_list(
         };
         counts[index] += 1;
     }
-    counts == [2, 2, 1]
+    fit_content_seen && counts == [2, 2, 1]
 }
 
 fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
@@ -1759,7 +1767,7 @@ fn project_grid_layout_with_route_reservations(
         },
         track_sizing_trace_enabled: root_html_intrinsic_auto_rows
             || (root_html_fit_content_auto_rows
-                && root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(grid)),
+                && root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(grid)),
     })
 }
 
