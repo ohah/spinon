@@ -1,0 +1,44 @@
+{
+  "schema": "spinon.roadmap.tailnet-pr1316-browser-verification/v1",
+  "tailnet": {
+    "roadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "planUrl": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+    "desktop": {
+      "viewport": [1440, 1000],
+      "documentWidth": 1440,
+      "bodyWidth": 1440,
+      "nextPlanHref": "/spinon/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "sectionHeadingContains": ["C11.4 min-height:auto floor", "PR #1316 Rebase and merge", "C11.4/C11 미완료"],
+      "officialStatus": "완료 78/214개",
+      "screenshot": "tailnet-roadmap-agent-browser-desktop-pr1316-next-plan.png"
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "kanbanWidth": 362,
+      "nextPlanHref": "/spinon/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.html",
+      "officialStatus": "완료 78/214개",
+      "screenshot": "tailnet-roadmap-agent-browser-mobile-pr1316-next-plan.png"
+    },
+    "planPage": {
+      "title": "C11.4 · 두 fit-content 행 자동 배치의 min-height:auto - 스피논 문서",
+      "h1Contains": "C11.4 · 두 fit-content 행 자동 배치의 min-height:auto",
+      "bodyContains": "min-height:auto",
+      "viewportWidth": 1440,
+      "documentWidth": 1440
+    }
+  },
+  "publication": {
+    "sourceHead": "91179a34089c1fa2f3f964a83c4c4b28d424d9f1",
+    "sourceTree": "684837d3d678de664920e47b080509e64d9fd406",
+    "previewServerPid": 90711,
+    "previewServerPort": "127.0.0.1:8768",
+    "tailscaleBackendRunning": true,
+    "selectedRouteCount": 117,
+    "localHashesVerified": 117,
+    "httpsHttp200AndHashesVerified": 117,
+    "backupsVerified": 25,
+    "noDeletes": true
+  }
+}
