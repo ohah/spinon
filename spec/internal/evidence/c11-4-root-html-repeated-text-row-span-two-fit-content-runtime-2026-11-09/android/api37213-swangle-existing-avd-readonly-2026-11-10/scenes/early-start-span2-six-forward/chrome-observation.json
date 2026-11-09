@@ -1,0 +1,307 @@
+{
+  "index": 0,
+  "scene": {
+    "trackList": "fit-content(0px) fit-content(0%) min-content min-content max-content auto",
+    "trackMembers": [
+      "fit-content(0px)",
+      "fit-content(0%)",
+      "min-content",
+      "min-content",
+      "max-content",
+      "auto"
+    ],
+    "fitPositions": [
+      1,
+      2
+    ],
+    "fitCaps": [
+      "0px",
+      "0%"
+    ],
+    "tail": [
+      "min-content",
+      "min-content",
+      "max-content",
+      "auto"
+    ],
+    "alignContent": "start",
+    "topology": "span2Six-forward",
+    "items": [
+      [
+        "A",
+        2,
+        2
+      ],
+      [
+        "B",
+        3,
+        2
+      ],
+      [
+        "C",
+        4,
+        2
+      ],
+      [
+        "D",
+        5,
+        2
+      ],
+      [
+        "E",
+        6,
+        2
+      ]
+    ]
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "gridFrame": [
+    0,
+    0,
+    40,
+    220
+  ],
+  "computedAutoRows": "fit-content(0px) fit-content(0%) min-content min-content max-content auto",
+  "computedAlignContent": "start",
+  "usedRows": "10px 0px 0px 40px 20px 30px 0px",
+  "rowValues": [
+    10,
+    0,
+    0,
+    40,
+    20,
+    30,
+    0
+  ],
+  "items": [
+    {
+      "id": "empty",
+      "frame": [
+        0,
+        0,
+        40,
+        10
+      ],
+      "text": "",
+      "payloadFrame": null,
+      "lineRects": []
+    },
+    {
+      "id": "A",
+      "frame": [
+        0,
+        10,
+        40,
+        0
+      ],
+      "text": "AAAA BBBB CCCC DDDD EEEE FFFF",
+      "payloadFrame": [
+        0,
+        10,
+        40,
+        60
+      ],
+      "lineRects": [
+        [
+          0,
+          9,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          19,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          29,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          39,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          49,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          59,
+          24.09375,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "B",
+      "frame": [
+        0,
+        10,
+        40,
+        40
+      ],
+      "text": "AAAAAA BBBBB CCCC DDD",
+      "payloadFrame": [
+        0,
+        10,
+        40,
+        40
+      ],
+      "lineRects": [
+        [
+          0,
+          9,
+          36.125,
+          11
+        ],
+        [
+          0,
+          19,
+          30.109375,
+          11
+        ],
+        [
+          0,
+          29,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          39,
+          18.0625,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "C",
+      "frame": [
+        0,
+        10,
+        40,
+        60
+      ],
+      "text": "AAAAA BBBB CCC DDDD",
+      "payloadFrame": [
+        0,
+        10,
+        40,
+        40
+      ],
+      "lineRects": [
+        [
+          0,
+          9,
+          30.109375,
+          11
+        ],
+        [
+          0,
+          19,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          29,
+          18.0625,
+          11
+        ],
+        [
+          0,
+          39,
+          24.09375,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "D",
+      "frame": [
+        0,
+        50,
+        40,
+        50
+      ],
+      "text": "AAAA BBB CCCCC DDDD",
+      "payloadFrame": [
+        0,
+        50,
+        40,
+        40
+      ],
+      "lineRects": [
+        [
+          0,
+          49,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          59,
+          18.0625,
+          11
+        ],
+        [
+          0,
+          69,
+          30.109375,
+          11
+        ],
+        [
+          0,
+          79,
+          24.09375,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "E",
+      "frame": [
+        0,
+        70,
+        40,
+        30
+      ],
+      "text": "AAA BBBB CCCCCC",
+      "payloadFrame": [
+        0,
+        70,
+        40,
+        30
+      ],
+      "lineRects": [
+        [
+          0,
+          69,
+          18.0625,
+          11
+        ],
+        [
+          0,
+          79,
+          24.09375,
+          11
+        ],
+        [
+          0,
+          89,
+          36.125,
+          11
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+/Users/yoonhb/Library/Android/sdk/emulator/emulator -avd spinon_api37_2_presenttime_probe_20261018 -gpu swangle -read-only -no-snapshot-load -no-snapshot-save -no-boot-anim -no-window -no-audio -accel on -data <temporary-run-dir>/data.img -cache <temporary-run-dir>/cache.img -verbose

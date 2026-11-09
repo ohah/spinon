@@ -1,28 +1,29 @@
-# Repeated text row-span with two `fit-content()` tracks
+# 반복 텍스트 row-span의 두 `fit-content()` 행
 
-## RuntimeSession and Rust checks
+## RuntimeSession 및 Rust 검증
 
-- Chrome 157 observations: 3,840/3,840 scenes matched in the parsed Root HTML `RuntimeSession` matrix. The same run included the min-content-floor control and the three-track atomic-rejection/same-session-recovery test (3 tests total, 0 failures; 171.42s).
-- Previous single-fit row-span regressions passed: authored positions 1–3 (1,920 scenes), positions 4–6 (4,320 scenes), and the existing 960-scene row-span matrix. The associated rejection and recovery tests passed (4, 3, and 3 tests respectively across the focused commands).
-- Layout profile tests passed for all 15 two-position pairs and the fixed tail orders. The five `blink_` distribution/alignment tests passed, including fractional remainder assignment and the used-prefix with no auto track.
-- Feature-enabled Clippy passed for `spinon-layout`, `spinon-style-to-layout`, and `spinon-runtime` with `-D warnings -A clippy::too_many_arguments`. The allowance is for two preexisting fixture-test helpers in unrelated files. `cargo fmt --all -- --check` and `git diff --check` passed.
-- Chrome 157 control `chrome157-min-content-floor-control.json` has two `fit-content(0.5px)` rows whose min-content floors resolve above their caps. The paired screenshot is observational evidence; RuntimeSession independently checks its row trace, item frames, paint boxes, and text descriptors.
-- The 20-point implementation/runtime audit is in [implementation-runtime-review-20.md](implementation-runtime-review-20.md); the separate PR #1311 diff audit is in [pr-diff-review-30.md](pr-diff-review-30.md).
+- Chrome 157 관측 3,840/3,840 scene을 parsed Root HTML `RuntimeSession` matrix에서 대조했다. 같은 실행에서 min-content-floor control과 three-track atomic rejection/same-session recovery도 포함했다(총 3 tests, 0 failures, 171.42s).
+- 기존 single-fit row-span 회귀: authored positions 1–3의 1,920 scene, positions 4–6의 4,320 scene, 기존 960-scene matrix가 통과했다. 연관된 rejection/recovery 검사도 집중 실행에서 각각 4, 3, 3 tests 통과했다.
+- Layout profile은 15개 두-position pair와 고정 tail order를 모두 통과했다. fractional remainder 배분과 auto track 없는 used-prefix를 포함한 `blink_` distribution/alignment 5개도 통과했다.
+- `spinon-layout`, `spinon-style-to-layout`, `spinon-runtime`의 feature-enabled Clippy가 `-D warnings -A clippy::too_many_arguments`로 통과했다. 예외는 무관한 기존 fixture helper 2개에만 적용했다. `cargo fmt --all -- --check`와 `git diff --check`도 통과했다.
+- Chrome 157 `chrome157-min-content-floor-control.json`은 두 `fit-content(0.5px)` 행의 min-content floor가 cap을 넘는 대조다. 연결 screenshot은 관찰용이며 RuntimeSession이 row trace, item frame, paint box, text descriptor를 별도로 검사한다.
+- [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md), PR #1311 전체 변경의 [별도 diff 검토 30개](pr-diff-review-30.md), Android 보충 실행의 [증거 검토 20개](android/api37213-swangle-existing-avd-readonly-2026-11-10/android-evidence-review-20.md)를 남겼다.
 
 ## iOS Simulator
 
-- A disposable iPhone 17 Pro / iOS 26.2 Simulator ran the default Root HTML route. The recorded runtime reached `layout=ready boxes=12`, a `402×220` CSS-pixel root, Metal renderer, and `SPINON_C0410_DRAW ... presented` with four text payloads.
-- [Screenshot](ios/screenshot.png) is OS visual smoke only; there is no Metal drawable readback or pixel-parity claim. The runtime markers are in [ios/runtime-markers.log](ios/runtime-markers.log).
-- The disposable simulator was shut down and deleted. The preexisting iPhone 17 Pro and Pro Max profiles were left intact and shut down. The iOS 26.2 inventory had no `S03` profile.
+- 임시 iPhone 17 Pro / iOS 26.2 Simulator에서 기본 Root HTML 경로를 실행했다. `layout=ready boxes=12`, CSS root `402×220`, Metal renderer, 네 text payload와 `SPINON_C0410_DRAW ... presented`를 기록했다.
+- [Screenshot](ios/screenshot.png)은 OS 화면 visual smoke다. Metal drawable readback이나 pixel parity를 증명하지 않는다. [Runtime marker](ios/runtime-markers.log)를 보존했다.
+- 임시 Simulator를 종료하고 삭제했다. 기존 iPhone 17 Pro/Pro Max 프로필은 그대로 보존했다. 현재 iOS 26.2 inventory에는 `S03` 프로필이 없다.
 
 ## Android Emulator
 
-- The API 37.2 `google_apis_ps16k` disposable AVD stayed offline for 5m39s before it was stopped and deleted; no app was installed in that AVD. Updating Emulator from 37.2.12 to 37.2.13 did not resolve it: a fresh API 37.2 AVD still reported `offline` for 5m08s, even though the emulator console responded. See [android/api37213-emulator-offline.md](android/api37213-emulator-offline.md).
-- A follow-up API 37.0 `google_apis` AVD reproduced the failure before app installation. The Mac reports `kern.hv_support=1` and `emulator -accel-check` reports Hypervisor.framework, but Emulator 37.2.12 still said `hvf is not enabled` even with `-accel on`; it repeated `mprotect failed: Permission denied`, stayed offline, then reported QEMU thread hangs and exited with status 139. This narrows the issue to the emulator's AVD/QEMU startup path, not the application package. Details are in [android/api370-emulator-hang.md](android/api370-emulator-hang.md).
-- The Android debug APK built successfully but was not installed because QEMU never completed boot. Its exact generated APK was removed after the failed run. Therefore there is no Android app layout/draw or screenshot result for this slice.
-- The earlier PackageManager parse failure on the reused AVD is a separate failure and remains un-attributed; its app data was preserved and the original APK restore command returned `Success`.
+- API 37.2 `google_apis_ps16k` 임시 AVD는 5분 39초 offline 뒤 종료·삭제했다. Emulator를 37.2.13으로 올린 뒤에도 새 API 37.2 AVD가 5분 08초 offline이었다. console은 응답했지만 ADB는 앱 실행 전 상태에서 회복되지 않았다. [당시 기록](android/api37213-emulator-offline.md)을 보존했다.
+- Emulator 37.2.12의 API 37.0 `google_apis` AVD도 앱 설치 전에 실패했다. macOS는 Hypervisor.framework를 보고했으나 Emulator는 `hvf is not enabled`, 반복된 `mprotect failed: Permission denied`, QEMU thread hang 후 status 139를 기록했다. 상세는 [API 37.0 QEMU 기록](android/api370-emulator-hang.md)에 있다.
+- 후속 실행은 기존 API 37.2 AVD의 userdata/cache를 격리 임시 경로로 보내고 기존 프로필을 read-only로 열었다. `-gpu swangle`의 Android 17/API 37 ARM64 환경에서 기본 Root HTML 앱 경로의 Chrome sentinel 세 개가 모두 `layout=ready`와 `SPINON_C0410_DRAW status=0 presented`에 도달했다. early `[1,2]`/`start`/`span2Six-forward`, adjacent `[3,4]`/`stretch`/`span2Span3Six-reverse`, separated `[1,6]`/`stretch`/`span2Span3Six-forward` 결과는 [Android 실행 근거](android/api37213-swangle-existing-avd-readonly-2026-11-10/README.md)에 있다.
+- 세 Android screenshot은 화면 visual smoke다. PixelCopy, surface readback, pixel parity, 실기기 또는 hardware GPU 증거가 아니다. 앞선 AVD boot 실패 기록은 성공한 후속 실행과 분리해 보존했다.
+- 이전 PackageManager parse failure는 별개의 미귀속 실패다. 그때 재사용한 AVD app data는 보존했고 원본 APK restore는 `Success`를 반환했다.
 
-## Scope and cleanup
+## 범위와 정리
 
-- This is a bounded implementation candidate, not general CSS Grid support, WPT conformance, hardware-device parity, or completion of C11.4/C11. The official completion count remains `78/214`.
-- No iOS Simulator, Android AVD, or browser session from this verification remains open. The preexisting simulator profiles and unrelated workspace processes were preserved. The shared Android Emulator SDK package is now 37.2.13; it did not resolve the boot blocker.
+- 이 결과는 bounded 구현 후보다. 일반 CSS Grid 지원, WPT 적합성, hardware-device parity, C11.4/C11 완료를 뜻하지 않는다. 공식 완료 집계는 `78/214`다.
+- 이번 실행에 쓴 임시 iOS Simulator와 Android Emulator를 종료했다. Android 임시 userdata/cache와 생성한 APK 출력 폴더를 제거했다. 재사용 가능한 AVD 프로필/snapshot, 기존 iOS 프로필, 공유 SDK와 빌드 캐시는 보존했다. 이 작업에서 띄운 Agent Browser 세션은 남아 있지 않다.

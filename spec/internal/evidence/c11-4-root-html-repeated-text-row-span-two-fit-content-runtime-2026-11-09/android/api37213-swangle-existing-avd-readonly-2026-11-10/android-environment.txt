@@ -1,0 +1,8 @@
+AVD: spinon_api37_2_presenttime_probe_20261018
+Emulator: 37.2.13.0 (build_id 16740729)
+ADB: 36.0.2-14143358
+Guest: Android 17, API 37, arm64-v8a, Google APIs 16k system image
+GPU: -gpu swangle; Vulkan Goldfish GFXStream (SwiftShader)
+Display: 1080x2400 physical, density 420 dpi; app surface 1080x2209
+Isolation: original AVD launched read-only with -no-snapshot-load -no-snapshot-save; userdata/cache redirected to this run's temporary directory
+Route: dev.spinon.bootstrap/.MainActivity, source=index.html
