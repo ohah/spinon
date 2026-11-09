@@ -25,14 +25,14 @@
 | 19 | baseline 단일 실패 재현을 전체 baseline-suite 통과로 오해한다. | PASS — PR base의 동일 filtered assertion만 재현했음을 밝힌다. |
 | 20 | PR check 부재를 CI green으로 표현한다. | PASS — check rollup 미보고 및 CI green 주장을 하지 않는다고 적었다. |
 | 21 | 공개 API 또는 FFI가 추가된 것처럼 읽힌다. | PASS — 기존 bounded 내부 구현이며 API/FFI 확장이 없음을 유지한다. |
-| 22 | 내부 계약 링크가 다른 Grid 명세를 연다. | PASS — 0059 링크를 연결한다. |
+| 22 | 내부 계약 링크가 다른 Grid 명세를 열거나 Tailnet에서 404가 난다. | 발견 후 수정 — 초기 `/spinon/...html` 경로는 Tailnet에서 `Not found`였다. 후속 변경은 GitHub blob Markdown 링크로 바꾸고 Agent Browser에서 확인했다. |
 | 23 | 집중 계획 상태가 아직 병합 전이라고 남는다. | PASS — 상태 줄이 실제 merge timestamp와 SHA를 표시한다. |
 | 24 | 계획 이력이 현재 구현 전 상태처럼 보인다. | PASS — 계획 선택·검토는 계획 당시의 이력으로 표현한다. |
 | 25 | 공식 상태 대장에서 최신 slice가 누락되거나 과거 항목을 덮어쓴다. | PASS — 기존 C11.4 이력을 보존하고 #1306을 별도 최신 항목으로 추가한다. |
 | 26 | 공개 roadmap 최신 카드가 PR #1302에서 멈춘다. | PASS — #1306 카드를 #1302 카드 뒤에 추가한다. |
 | 27 | 칸반 JavaScript가 이미 병합된 #1306을 NEXT로 다시 표시한다. | PASS — `detailNext`를 비운다. |
 | 28 | 정적 다음 계획 문구가 완료된 #1306을 가리킨다. | PASS — 후속 bounded slice 미선정으로 갱신한다. |
-| 29 | screenshot 링크가 변동 가능한 branch 대신 틀린 SHA를 사용한다. | PASS — merge SHA 경로를 사용하고 해당 화면 파일이 병합 tree에 있음을 확인했다. |
+| 29 | screenshot 링크가 변동 가능한 branch나 잘못된 SHA를 사용한다. | PASS — merge SHA 경로의 Android 1080×2400·iOS 1206×2622 PNG를 Agent Browser에서 실제로 열었다. |
 | 30 | 문서 전체 빌드 실패를 성공으로 보고한다. | PASS — Rspress build의 기존 evidence dead-link 오류를 별도로 남기며 build 성공을 주장하지 않는다. |
 
-전체 문서 빌드 오류는 여러 기존 evidence Markdown의 `.log`, `.json`, 소스 파일 상대 링크에서 발생했다. 이 변경에서는 광범위한 기존 링크 정리를 하지 않았으며, Tailnet 정적 로드맵 파일과 선택 링크는 Agent Browser로 별도 확인한다.
+전체 문서 빌드 오류는 여러 기존 evidence Markdown의 `.log`, `.json`, 소스 파일 상대 링크에서 발생했다. 이후 Agent Browser가 Tailnet 정적 로드맵에서 문서 상대경로 404를 발견해 후속 변경에서 GitHub blob 링크로 수정하고 다시 확인했다.

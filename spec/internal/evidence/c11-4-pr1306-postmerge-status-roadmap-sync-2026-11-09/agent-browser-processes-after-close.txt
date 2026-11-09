@@ -1,0 +1,5 @@
+agent-browser close --all: No active sessions
+agent-browser session list: No active sessions
+Agent Browser CLI daemon: absent
+Preexisting Chrome process PID 93239 started 2026-11-08 18:02:02 +0900; preserved.
+Preexisting Terminal Browser agent-browser daemon PID 85619; preserved and not used.

@@ -1,0 +1,11 @@
+{
+  "session": "spinon-pr1307-roadmap",
+  "closeCommand": "agent-browser close --all",
+  "closed": true,
+  "activeSessionsAfterClose": 0,
+  "agentBrowserCliProcessAfterClose": false,
+  "preexistingProcessesPreserved": [
+    {"command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --no-startup-window", "pid": 93239, "started": "2026-11-08 18:02:02 +0900", "reason": "predates this browser session"},
+    {"command": "/opt/homebrew/Caskroom/terminal-browser/0.8.0/terminal-browser/agent-browser/bin/agent-browser", "pid": 85619, "reason": "preexisting Terminal Browser daemon; not used or stopped"}
+  ]
+}
