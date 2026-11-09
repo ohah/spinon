@@ -96,11 +96,55 @@ pub(super) fn repeated_span_item_kind(style: &ComputedElementStyle) -> Option<(i
     match (&placement.row_start, &placement.row_end) {
         (ComputedCssGridPlacement::Line(2), ComputedCssGridPlacement::Span(2)) => Some((2, 2)),
         (ComputedCssGridPlacement::Line(3), ComputedCssGridPlacement::Span(2)) => Some((3, 2)),
+        (ComputedCssGridPlacement::Line(4), ComputedCssGridPlacement::Span(2)) => Some((4, 2)),
+        (ComputedCssGridPlacement::Line(5), ComputedCssGridPlacement::Span(2)) => Some((5, 2)),
+        (ComputedCssGridPlacement::Line(6), ComputedCssGridPlacement::Span(2)) => Some((6, 2)),
         (ComputedCssGridPlacement::Line(2), ComputedCssGridPlacement::Span(3)) => Some((2, 3)),
+        (ComputedCssGridPlacement::Line(4), ComputedCssGridPlacement::Span(3)) => Some((4, 3)),
+        (ComputedCssGridPlacement::Line(5), ComputedCssGridPlacement::Span(3)) => Some((5, 3)),
         _ => None,
     }
 }
 
 pub(super) fn repeated_span_item_placement(style: &ComputedElementStyle) -> bool {
     repeated_span_item_kind(style).is_some()
+}
+
+pub(super) fn repeated_span_writing_context(style: &ComputedElementStyle) -> bool {
+    style.properties.get("direction").map(String::as_str) == Some("ltr")
+        && style.properties.get("writing-mode").map(String::as_str) == Some("horizontal-tb")
+}
+
+pub(super) fn repeated_span_topology_implicit_rows(placements: &[(i32, i32)]) -> Option<usize> {
+    let count = |candidate| {
+        placements
+            .iter()
+            .filter(|placement| **placement == candidate)
+            .count()
+    };
+    let exact = |expected: &[(i32, i32)]| {
+        placements.len() == expected.len()
+            && expected.iter().all(|placement| count(*placement) == 1)
+    };
+
+    if exact(&[(2, 2), (3, 2)]) || exact(&[(2, 2), (3, 2), (2, 3)]) {
+        Some(3)
+    } else if exact(&[(2, 2), (3, 2), (4, 2), (5, 2), (6, 2)])
+        || exact(&[(2, 2), (3, 2), (4, 3), (5, 3)])
+    {
+        Some(6)
+    } else {
+        None
+    }
+}
+
+pub(super) fn repeated_span_fit_position_is_supported(
+    positive_implicit_rows: usize,
+    fit_position: usize,
+) -> bool {
+    match positive_implicit_rows {
+        3 => (1..=3).contains(&fit_position),
+        6 => (4..=6).contains(&fit_position),
+        _ => false,
+    }
 }

@@ -79,9 +79,9 @@ pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
 
     let mut counts = [0usize; 3];
     let mut fit_content_seen = false;
-    for (position, track) in tracks.iter().enumerate() {
+    for track in tracks {
         if matches!(track, GridTrackSize::FitContent(_)) {
-            if position >= 3 || fit_content_seen || !fit_content_cap_is_supported(track) {
+            if fit_content_seen || !fit_content_cap_is_supported(track) {
                 return false;
             }
             fit_content_seen = true;
@@ -96,6 +96,24 @@ pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
         counts[index] += 1;
     }
     fit_content_seen && counts == [2, 2, 1]
+}
+
+pub(super) fn supports_repeated_span_fit_position(
+    tracks: &[GridTrackSize],
+    positive_implicit_rows: usize,
+) -> bool {
+    let Some(position) = tracks
+        .iter()
+        .position(|track| matches!(track, GridTrackSize::FitContent(_)))
+        .map(|position| position + 1)
+    else {
+        return false;
+    };
+    match positive_implicit_rows {
+        3 => (1..=3).contains(&position),
+        6 => (4..=6).contains(&position),
+        _ => false,
+    }
 }
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {

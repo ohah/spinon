@@ -587,9 +587,9 @@ fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
 
     let mut counts = [0usize; 3];
     let mut fit_content_seen = false;
-    for (position, track) in tracks.iter().enumerate() {
+    for track in tracks {
         if matches!(track, ComputedCssGridTrackSize::FitContent(_)) {
-            if position >= 3 || fit_content_seen || !root_html_fit_content_cap_is_supported(track) {
+            if fit_content_seen || !root_html_fit_content_cap_is_supported(track) {
                 return false;
             }
             fit_content_seen = true;

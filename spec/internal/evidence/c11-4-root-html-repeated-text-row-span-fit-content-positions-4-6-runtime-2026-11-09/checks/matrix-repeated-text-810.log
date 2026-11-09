@@ -1,0 +1,8 @@
++ cargo test -p spinon-runtime --lib --features c11-4-grid-track-sizing-fixture-test parsed_root_html_repeated_intrinsic_text_matches_all_810_chrome_scenes -- --nocapture
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-2f3f5f36b966f023)
+
+running 1 test
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text::parsed_root_html_repeated_intrinsic_text_matches_all_810_chrome_scenes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 584 filtered out; finished in 37.23s

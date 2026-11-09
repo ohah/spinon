@@ -1,0 +1,2 @@
+$ rustfmt --edition 2021 --check vendor/taffy/src/compute/grid/track_sizing.rs vendor/taffy/src/compute/grid/types/grid_track.rs
+exit_code=0

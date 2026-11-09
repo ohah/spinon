@@ -1,0 +1,8 @@
++ cargo clippy -p spinon-runtime --lib --features c11-4-grid-track-sizing-fixture-test -- -D warnings
+    Checking taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+    Checking spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Checking spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Checking spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+    Checking spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+    Checking spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.61s

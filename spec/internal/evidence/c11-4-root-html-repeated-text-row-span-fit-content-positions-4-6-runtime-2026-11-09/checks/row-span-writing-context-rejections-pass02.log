@@ -1,0 +1,8 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.97s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-2f3f5f36b966f023)
+
+running 1 test
+test session::tests::root_html_grid_fit_content_auto_rows::later_fit_content_row_span::positions_4_6::rejections::parsed_root_html_six_row_profile_rejects_non_ltr_or_non_horizontal_writing_contexts_atomically ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 584 filtered out; finished in 1.58s

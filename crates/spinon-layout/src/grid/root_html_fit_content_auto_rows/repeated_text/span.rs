@@ -1,54 +1,67 @@
 use super::*;
 
 pub(super) fn supports_topology(input: &LayoutInput, items: &[NodeId]) -> bool {
-    if !matches!(items.len(), 3 | 4) {
-        return false;
+    implicit_row_count(input, items).is_some()
+}
+
+pub(super) fn implicit_row_count(input: &LayoutInput, items: &[NodeId]) -> Option<usize> {
+    if !matches!(items.len(), 3..=6) {
+        return None;
     }
-    let Some(first) = input.nodes().iter().find(|node| node.id == items[0]) else {
-        return false;
-    };
-    let Some(first_placement) = input.grid_items.get(&items[0]) else {
-        return false;
-    };
+    let first = input.nodes().iter().find(|node| node.id == items[0])?;
+    let first_placement = input.grid_items.get(&items[0])?;
     if !first.children.is_empty()
         || first_placement.row_start != GridPlacementInput::Line(1)
         || first_placement.row_end != GridPlacementInput::Line(2)
         || first_placement.column_start != GridPlacementInput::Line(1)
         || first_placement.column_end != GridPlacementInput::Line(2)
     {
-        return false;
+        return None;
     }
 
-    let mut span2_row2 = 0;
-    let mut span2_row3 = 0;
-    let mut span3_row2 = 0;
+    let mut placements = Vec::<(i32, u32)>::with_capacity(items.len() - 1);
     for item_id in items.iter().copied().skip(1) {
-        let Some(item) = input.nodes().iter().find(|node| node.id == item_id) else {
-            return false;
-        };
-        let Some(placement) = input.grid_items.get(&item_id) else {
-            return false;
-        };
+        let item = input.nodes().iter().find(|node| node.id == item_id)?;
+        let placement = input.grid_items.get(&item_id)?;
         if placement.column_start != GridPlacementInput::Line(1)
             || placement.column_end != GridPlacementInput::Line(2)
         {
-            return false;
+            return None;
         }
-        match (&placement.row_start, &placement.row_end) {
-            (GridPlacementInput::Line(2), GridPlacementInput::Span(2)) => span2_row2 += 1,
-            (GridPlacementInput::Line(3), GridPlacementInput::Span(2)) => span2_row3 += 1,
-            (GridPlacementInput::Line(2), GridPlacementInput::Span(3)) => span3_row2 += 1,
-            _ => return false,
-        }
+        let kind = match (&placement.row_start, &placement.row_end) {
+            (GridPlacementInput::Line(start @ 2..=6), GridPlacementInput::Span(span @ 2..=3)) => {
+                (*start, *span)
+            }
+            _ => return None,
+        };
         let [payload] = item.children.as_slice() else {
-            return false;
+            return None;
         };
         if !has_supported_text(input, *payload) {
-            return false;
+            return None;
         }
+        placements.push(kind);
     }
 
-    span2_row2 == 1 && span2_row3 == 1 && span3_row2 == usize::from(items.len() == 4)
+    let count = |candidate| {
+        placements
+            .iter()
+            .filter(|placement| **placement == candidate)
+            .count()
+    };
+    let exact = |expected: &[(i32, u32)]| {
+        placements.len() == expected.len()
+            && expected.iter().all(|placement| count(*placement) == 1)
+    };
+    if exact(&[(2, 2), (3, 2)]) || exact(&[(2, 2), (3, 2), (2, 3)]) {
+        Some(3)
+    } else if exact(&[(2, 2), (3, 2), (4, 2), (5, 2), (6, 2)])
+        || exact(&[(2, 2), (3, 2), (4, 3), (5, 3)])
+    {
+        Some(6)
+    } else {
+        None
+    }
 }
 
 pub(super) fn normalize_layout_frames(
@@ -58,6 +71,7 @@ pub(super) fn normalize_layout_frames(
     container: &crate::GridContainerInput,
     items: &[NodeId],
     index: &BTreeMap<NodeId, usize>,
+    positive_implicit_rows: usize,
 ) -> Result<(), LayoutError> {
     let unsupported_trace = || LayoutError::UnsupportedGridContainerStyle {
         node: grid_id,
@@ -68,8 +82,10 @@ pub(super) fn normalize_layout_frames(
         .get(&grid_id)
         .copied()
         .ok_or(LayoutError::MissingComputedLayout(grid_id))?;
-    let row_sizes = final_row_track_sizes(output, grid_id).ok_or_else(unsupported_trace)?;
-    if row_sizes.len() != 4 {
+    let expected_track_count = positive_implicit_rows + 1;
+    let row_sizes = final_row_track_sizes(output, grid_id, positive_implicit_rows)
+        .ok_or_else(unsupported_trace)?;
+    if row_sizes.len() != expected_track_count {
         return Err(unsupported_trace());
     }
     let snapped_row_size_units =
@@ -152,7 +168,11 @@ pub(super) fn normalize_layout_frames(
     Ok(())
 }
 
-fn final_row_track_sizes(output: &crate::LayoutOutput, grid_id: NodeId) -> Option<Vec<f32>> {
+fn final_row_track_sizes(
+    output: &crate::LayoutOutput,
+    grid_id: NodeId,
+    positive_implicit_rows: usize,
+) -> Option<Vec<f32>> {
     let mut traces = output
         .grid_track_sizing_traces
         .iter()
@@ -161,7 +181,7 @@ fn final_row_track_sizes(output: &crate::LayoutOutput, grid_id: NodeId) -> Optio
     if traces.next().is_some()
         || trace.used_rows.explicit_track_count != 1
         || trace.used_rows.negative_implicit_track_count != 0
-        || trace.used_rows.positive_implicit_track_count != 3
+        || usize::from(trace.used_rows.positive_implicit_track_count) != positive_implicit_rows
         || !trace.used_rows.collapsed_track_indices.is_empty()
     {
         return None;
@@ -177,7 +197,7 @@ fn final_row_track_sizes(output: &crate::LayoutOutput, grid_id: NodeId) -> Optio
         .iter()
         .filter(|track| !track.is_gutter)
         .collect::<Vec<_>>();
-    if tracks.len() != 4
+    if tracks.len() != positive_implicit_rows + 1
         || tracks.iter().enumerate().any(|(index, track)| {
             usize::from(track.internal_index) != index * 2 + 1
                 || track.is_collapsed
@@ -280,16 +300,23 @@ mod tests {
             }],
             used_columns: LayoutGridTrackSizingResolvedAxis::default(),
             used_rows: LayoutGridTrackSizingResolvedAxis {
-                used_track_list: "10px 0px 20px 15px".to_owned(),
+                used_track_list: row_sizes
+                    .iter()
+                    .map(|size| format!("{size}px"))
+                    .collect::<Vec<_>>()
+                    .join(" "),
                 explicit_track_count: 1,
                 negative_implicit_track_count: 0,
-                positive_implicit_track_count: 3,
+                positive_implicit_track_count: u16::try_from(row_sizes.len() - 1).unwrap(),
                 collapsed_track_indices: Vec::new(),
             },
         }
     }
 
-    fn assert_trace_error_is_atomic(trace: Option<LayoutGridTrackSizingTrace>) {
+    fn assert_trace_error_is_atomic(
+        trace: Option<LayoutGridTrackSizingTrace>,
+        positive_implicit_rows: usize,
+    ) {
         let grid = id(1);
         let item = id(2);
         let mut output = crate::LayoutOutput::default();
@@ -324,6 +351,7 @@ mod tests {
             &GridContainerInput::default(),
             &[item],
             &BTreeMap::new(),
+            positive_implicit_rows,
         )
         .expect_err("missing or inconsistent row trace must fail closed");
         assert!(matches!(
@@ -342,15 +370,43 @@ mod tests {
 
     #[test]
     fn repeated_text_row_span_missing_or_stale_owner_trace_rejects_atomically() {
-        assert_trace_error_is_atomic(None);
-        assert_trace_error_is_atomic(Some(trace(id(99), &[10.0, 0.0, 20.0, 15.0])));
+        assert_trace_error_is_atomic(None, 3);
+        assert_trace_error_is_atomic(Some(trace(id(99), &[10.0, 0.0, 20.0, 15.0])), 3);
     }
 
     #[test]
     fn repeated_text_row_span_wrong_track_count_or_internal_index_rejects_atomically() {
-        assert_trace_error_is_atomic(Some(trace(id(1), &[10.0, 0.0, 20.0])));
+        assert_trace_error_is_atomic(Some(trace(id(1), &[10.0, 0.0, 20.0])), 3);
         let mut mismatched = trace(id(1), &[10.0, 0.0, 20.0, 15.0]);
         mismatched.passes[0].stages[1].tracks[2].internal_index = 17;
-        assert_trace_error_is_atomic(Some(mismatched));
+        assert_trace_error_is_atomic(Some(mismatched), 3);
+    }
+
+    #[test]
+    fn repeated_text_row_span_trace_accepts_only_the_expected_three_or_six_rows() {
+        let grid = id(1);
+        for (positive_implicit_rows, row_sizes) in [
+            (3, vec![10.0, 0.0, 20.0, 15.0]),
+            (6, vec![10.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0]),
+        ] {
+            let mut output = crate::LayoutOutput::default();
+            output
+                .grid_track_sizing_traces
+                .push(trace(grid, &row_sizes));
+            assert_eq!(
+                final_row_track_sizes(&output, grid, positive_implicit_rows),
+                Some(row_sizes.clone()),
+                "expected {positive_implicit_rows} positive implicit rows"
+            );
+            assert_eq!(
+                final_row_track_sizes(
+                    &output,
+                    grid,
+                    if positive_implicit_rows == 3 { 6 } else { 3 }
+                ),
+                None,
+                "a trace for a different topology must fail closed"
+            );
+        }
     }
 }
