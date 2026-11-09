@@ -1,0 +1,847 @@
+{
+  "sourceHead": "f0c18c8fead17fb379b77eb6191193a066a5115d",
+  "sourceTree": "6d13d628abe33197cfad22315b4c615722445323",
+  "selectedRootFileCount": 57,
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pass04/publication",
+  "routeCount": 113,
+  "totalBytes": 18409211,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "route": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "sha256": "3a3b3f0406a3775e0e1c78ab82c34634e15674343b50dda5145ac4b37d6ad3c6"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "sha256": "16bad639c84709a0e7a2fbd697fe9a4ae69737e22834270c4d1b22ab3b2685c7"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "sha256": "074a3e9a6a859c8b11efe45aa0507bc1491e6ffd795e9e532d9c408baa3f4158"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "sha256": "3af15ca101df6c7497d6108bb5fb6a159a3812e4c1e5e1084b7bc0cd9303add6"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "sha256": "f36958693804e17305cf5b2aeec010365f7220f698776a468bff72d3f9428125"
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "sha256": "ee30d05dece4e1c5f4fb32b0b39758bb3b5e421688c18856e1170e35ecd54410"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "index.html",
+      "reason": "기존 Tailnet preview 시작 페이지를 보존함"
+    },
+    {
+      "path": "404.html",
+      "reason": "기존 Tailnet 404 route를 보존함"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 796248,
+      "sha256": "f98ef10a9e92ab6911d2b3b39eefff36580ee7be432c10a78561a2c2bb7f3817"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 556709,
+      "sha256": "7b53a33957f0e074754f2d31d362efdb61ac8d46ef21f97a5a7cd2308d92bcd2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39053,
+      "sha256": "f36958693804e17305cf5b2aeec010365f7220f698776a468bff72d3f9428125"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7356,
+      "sha256": "fab6e661bd42f94ead15a7d8e068889b0c54fe620b05766df0f8100b7042987d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37022,
+      "sha256": "3af15ca101df6c7497d6108bb5fb6a159a3812e4c1e5e1084b7bc0cd9303add6"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5962,
+      "sha256": "ec126e02245a64b5f9fd0c06dd31422a00ad5870d1582c1512d1539daf6b685d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37843,
+      "sha256": "074a3e9a6a859c8b11efe45aa0507bc1491e6ffd795e9e532d9c408baa3f4158"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6037,
+      "sha256": "60042d5dab1ebada0372289675e5383da06ad06093a8d1046c332275700daa50"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-later-fit-content-row-span.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-later-fit-content-row-span.png",
+      "kind": "source-page-or-asset",
+      "bytes": 22728,
+      "sha256": "6e54c8854af7d0a275225f12c724ae626b4eb1b39c5c3539aff8dae32c079676"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 33807,
+      "sha256": "16bad639c84709a0e7a2fbd697fe9a4ae69737e22834270c4d1b22ab3b2685c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3498,
+      "sha256": "b256a9a37970ad15a180c6b785287b4fb74f685e69da546c9c94a5333de56ebf"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-lifecycle.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-lifecycle.json",
+      "kind": "source-page-or-asset",
+      "bytes": 434,
+      "sha256": "01509976f23fa60522b2bc2ad8439180fc491c8099e4fbd63c9f310c2c189240"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-verification.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-verification.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1444,
+      "sha256": "75c5f32b911438be11e174c5ab60a28279a0abc7d53efe25a4150ee96df3bf85"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/copy-and-backup-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/copy-and-backup-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 23578,
+      "sha256": "27d641234975cbee4e28f686fd46edc61f77477449c3b08510fb078e1366cc8b"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39883,
+      "sha256": "dfc4a434cf5801bcebf8d74bb2fd660894511d48a301d10cea46e5a2a0ffe820"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3887,
+      "sha256": "208c20d098f3911511d0073f6843598e97402ce0f51816a0c81f81165bd8a3cf"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/preflight-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/preflight-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 45783,
+      "sha256": "3b0aba65cc7d5e7427e25fd32581ff4cdb537aefdc50d9e23e61d403d363ca74"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37311,
+      "sha256": "ee30d05dece4e1c5f4fb32b0b39758bb3b5e421688c18856e1170e35ecd54410"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4978,
+      "sha256": "486aaee9a526426a38e2ce086b5bccb4d51fc6ff7467938e5da3d54c1ee85fd7"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-publication-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-publication-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 41979,
+      "sha256": "35c8af762df53d58f6e2855888bdb6d8fbce96cf4e6ca5130b70bae2d9c0d669"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-root-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-root-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 18224,
+      "sha256": "05d3754b3a009c08343bccede73bab4d9fc7d6f0030a67f5122eafdd206fb85c"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/served-verification-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/served-verification-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 60659,
+      "sha256": "2d19d46d73e8954c34830a0a8a0957001eae8446e443c04df475eaeada8f1b8f"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop-progress.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop-progress.png",
+      "kind": "source-page-or-asset",
+      "bytes": 499368,
+      "sha256": "41bf8e6d5c553751fa9865133c2c626940e19d2d1d99cb155bd8debd97ee1b14"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop.png",
+      "kind": "source-page-or-asset",
+      "bytes": 155100,
+      "sha256": "3715fe6adcbad55c9d08795f3eb8724e6f3ae5ed1d0391351a0fa82c0d8826c9"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile-progress.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile-progress.png",
+      "kind": "source-page-or-asset",
+      "bytes": 162628,
+      "sha256": "0dc23bacb3e333261f5594d7730a3e41bfe234ca1ce90bf8797add288b8e152f"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile.png",
+      "kind": "source-page-or-asset",
+      "bytes": 51523,
+      "sha256": "ad5f17cea610f14561a75c86fec902360f50c9715b9dc83a6711c807a72640b1"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.html",
+      "source": "rspress:plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36020,
+      "sha256": "56d12b05d6922fd80352c7fe87986fe706db47865d5032aa4cda840fdfe22562"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5003,
+      "sha256": "a5132ce7f52b07b90d7d7286ada7a7d896cf7af0ac992b364113e6816366445c"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "source": "rspress:plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41189,
+      "sha256": "3a3b3f0406a3775e0e1c78ab82c34634e15674343b50dda5145ac4b37d6ad3c6"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-later-fit-content-row-span.md",
+      "kind": "source-page-or-asset",
+      "bytes": 8885,
+      "sha256": "8a13463fe02087744c3c7c30163341fccdd87201f124ab2904a4bb778145274e"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 645982,
+      "sha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 645982,
+      "sha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 796375,
+      "sha256": "c9406365c022999edd94e7673393c33b481773a71b05a9759ce33756c0547ddc"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 556709,
+      "sha256": "7b53a33957f0e074754f2d31d362efdb61ac8d46ef21f97a5a7cd2308d92bcd2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39063,
+      "sha256": "403e64b0acaa31240dd3250afc729c496c01651cf7ab67d0c3a14bfddd3098ae"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7356,
+      "sha256": "fab6e661bd42f94ead15a7d8e068889b0c54fe620b05766df0f8100b7042987d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37032,
+      "sha256": "fdc78ec401441101f794f87e805bbd39b635641036745d67fa1e3340a553a843"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5962,
+      "sha256": "ec126e02245a64b5f9fd0c06dd31422a00ad5870d1582c1512d1539daf6b685d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37868,
+      "sha256": "ba5d85509eb6497d6536ae5e6287bfcd4ec8d806a8a66dbcde5e6faad8490af1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6037,
+      "sha256": "60042d5dab1ebada0372289675e5383da06ad06093a8d1046c332275700daa50"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-later-fit-content-row-span.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-later-fit-content-row-span.png",
+      "kind": "source-page-or-asset",
+      "bytes": 22728,
+      "sha256": "6e54c8854af7d0a275225f12c724ae626b4eb1b39c5c3539aff8dae32c079676"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 33817,
+      "sha256": "411ebd55f94a083e8c6969231aabb1094582b6432465e3c5af53409f2e015b84"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3498,
+      "sha256": "b256a9a37970ad15a180c6b785287b4fb74f685e69da546c9c94a5333de56ebf"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-lifecycle.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-lifecycle.json",
+      "kind": "source-page-or-asset",
+      "bytes": 434,
+      "sha256": "01509976f23fa60522b2bc2ad8439180fc491c8099e4fbd63c9f310c2c189240"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-verification.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-verification.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1444,
+      "sha256": "75c5f32b911438be11e174c5ab60a28279a0abc7d53efe25a4150ee96df3bf85"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/copy-and-backup-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/copy-and-backup-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 23578,
+      "sha256": "27d641234975cbee4e28f686fd46edc61f77477449c3b08510fb078e1366cc8b"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 39893,
+      "sha256": "9f0adc562f083cff3f2ac60e107edb85498c8a0c3e9ead46729be6f336b11272"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3887,
+      "sha256": "208c20d098f3911511d0073f6843598e97402ce0f51816a0c81f81165bd8a3cf"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/preflight-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/preflight-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 45783,
+      "sha256": "3b0aba65cc7d5e7427e25fd32581ff4cdb537aefdc50d9e23e61d403d363ca74"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "source": "rspress:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 37329,
+      "sha256": "dd24c70b697224b39f3b257d6f9b9ca848efb8bfd6ff1cde9aa6758234366657"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4978,
+      "sha256": "486aaee9a526426a38e2ce086b5bccb4d51fc6ff7467938e5da3d54c1ee85fd7"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-publication-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-publication-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 41979,
+      "sha256": "35c8af762df53d58f6e2855888bdb6d8fbce96cf4e6ca5130b70bae2d9c0d669"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-root-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/selected-root-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 18224,
+      "sha256": "05d3754b3a009c08343bccede73bab4d9fc7d6f0030a67f5122eafdd206fb85c"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/served-verification-pass03.json",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/served-verification-pass03.json",
+      "kind": "source-page-or-asset",
+      "bytes": 60659,
+      "sha256": "2d19d46d73e8954c34830a0a8a0957001eae8446e443c04df475eaeada8f1b8f"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop-progress.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop-progress.png",
+      "kind": "source-page-or-asset",
+      "bytes": 499368,
+      "sha256": "41bf8e6d5c553751fa9865133c2c626940e19d2d1d99cb155bd8debd97ee1b14"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop.png",
+      "kind": "source-page-or-asset",
+      "bytes": 155100,
+      "sha256": "3715fe6adcbad55c9d08795f3eb8724e6f3ae5ed1d0391351a0fa82c0d8826c9"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile-progress.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile-progress.png",
+      "kind": "source-page-or-asset",
+      "bytes": 162628,
+      "sha256": "0dc23bacb3e333261f5594d7730a3e41bfe234ca1ce90bf8797add288b8e152f"
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile.png",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile.png",
+      "kind": "source-page-or-asset",
+      "bytes": 51523,
+      "sha256": "ad5f17cea610f14561a75c86fec902360f50c9715b9dc83a6711c807a72640b1"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.html",
+      "source": "rspress:spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36028,
+      "sha256": "10c8d70c05a169abf71500756fa3b6c5a6544cccc717d951883f29d83953db81"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5003,
+      "sha256": "a5132ce7f52b07b90d7d7286ada7a7d896cf7af0ac992b364113e6816366445c"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "source": "rspress:spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41149,
+      "sha256": "2ac02a43403984058f2821b94ce8aefae2b9b0df9584ea607ca9e65ecd30f935"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-later-fit-content-row-span.md",
+      "kind": "source-page-or-asset",
+      "bytes": 8885,
+      "sha256": "8a13463fe02087744c3c7c30163341fccdd87201f124ab2904a4bb778145274e"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 645982,
+      "sha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 910383,
+      "sha256": "5515229f6640bcfd5fce8f936db804b080a6948fa2bae61a91d56d10401bf0a1"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 740947,
+      "sha256": "557914833341820eaf64f7a8f3672cebaab3d0beb0621d0747ecde95eed26685"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/chrome157-later-fit-content-row-span.da8b4d22e8.png",
+      "source": "rspress:static/image/chrome157-later-fit-content-row-span.da8b4d22e8.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 22728,
+      "sha256": "6e54c8854af7d0a275225f12c724ae626b4eb1b39c5c3539aff8dae32c079676"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser-desktop-progress.1beff98f3d.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser-desktop-progress.1beff98f3d.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 499368,
+      "sha256": "41bf8e6d5c553751fa9865133c2c626940e19d2d1d99cb155bd8debd97ee1b14"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser-desktop.215628c469.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser-desktop.215628c469.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 155100,
+      "sha256": "3715fe6adcbad55c9d08795f3eb8724e6f3ae5ed1d0391351a0fa82c0d8826c9"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser-mobile-progress.eb42272ba0.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser-mobile-progress.eb42272ba0.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 162628,
+      "sha256": "0dc23bacb3e333261f5594d7730a3e41bfe234ca1ce90bf8797add288b8e152f"
+    },
+    {
+      "path": "static/image/tailnet-roadmap-agent-browser-mobile.70dbd2d194.png",
+      "source": "rspress:static/image/tailnet-roadmap-agent-browser-mobile.70dbd2d194.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 51523,
+      "sha256": "ad5f17cea610f14561a75c86fec902360f50c9715b9dc83a6711c807a72640b1"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "source": "rspress:static/js/a.877e354479.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-15ac18b88d45.7e8e4d0f30.js",
+      "source": "rspress:static/js/async/route-15ac18b88d45.7e8e4d0f30.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14204,
+      "sha256": "a1fe3c8773d942115e8a1c68c7cf3595d56a5a811a3185a99dea2a6496c62c38"
+    },
+    {
+      "path": "static/js/async/route-24e54ca7cee0.983f1c7501.js",
+      "source": "rspress:static/js/async/route-24e54ca7cee0.983f1c7501.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9640,
+      "sha256": "32f116763c9c3f11d1e66718d68c0eafc8398ea9823a029141ae54d8138dc930"
+    },
+    {
+      "path": "static/js/async/route-2ca87ae000cf.3f04b970b5.js",
+      "source": "rspress:static/js/async/route-2ca87ae000cf.3f04b970b5.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 15111,
+      "sha256": "69b0af420974a82cac8337ff35048bde7aa705c1a3b35ebc0ca0317daf67bc14"
+    },
+    {
+      "path": "static/js/async/route-4c39863f32d9.095439c672.js",
+      "source": "rspress:static/js/async/route-4c39863f32d9.095439c672.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6731,
+      "sha256": "fe5f3c970674fdc1d5262645400e9d35b8d021e0e20d7f8fedf5b8b657b65324"
+    },
+    {
+      "path": "static/js/async/route-508923620630.649b515e64.js",
+      "source": "rspress:static/js/async/route-508923620630.649b515e64.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9647,
+      "sha256": "36a093937e2a8cb068848b5a71a398c249c59744830dfe6521c7ea9e6c8ae708"
+    },
+    {
+      "path": "static/js/async/route-553cb6fced5a.205b4ee9cf.js",
+      "source": "rspress:static/js/async/route-553cb6fced5a.205b4ee9cf.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11375,
+      "sha256": "5837c7075fd4ab05bed4b584babbb3fa9b03251f598f5aa5db88228d64af09a3"
+    },
+    {
+      "path": "static/js/async/route-69070c34cd4e.e67aff30d4.js",
+      "source": "rspress:static/js/async/route-69070c34cd4e.e67aff30d4.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11145,
+      "sha256": "d8ec0e901e371f8207472f5e5fbf726bdc3e17166a8548151ac0080e51c674b0"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.ac05278cb7.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.ac05278cb7.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 975512,
+      "sha256": "230c8d91a8ebb838ab13c7947cdb85a6ed5326aa936eac8c9d0aa85ae61c95d5"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.4568906463.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.4568906463.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 825785,
+      "sha256": "f524825975fb4e9661dd9c8de2435fbff617078ca3a4a8c881bdb326b29ce9e5"
+    },
+    {
+      "path": "static/js/async/route-762fe1ffbecd.a874fec4bb.js",
+      "source": "rspress:static/js/async/route-762fe1ffbecd.a874fec4bb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6739,
+      "sha256": "caa42401fc2e0abed42ca93edad8156717acea3157b11a077e8f8443d2fbe405"
+    },
+    {
+      "path": "static/js/async/route-7944905d83bb.fd6c0c5dc5.js",
+      "source": "rspress:static/js/async/route-7944905d83bb.fd6c0c5dc5.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14216,
+      "sha256": "3715c67647e8e790fc58c5cb934738a281c03fe4b6b62f88dc910be9004a2d40"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.e00b0472ba.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.e00b0472ba.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 975792,
+      "sha256": "8cf0c4a849d1ba551bbc5c5645acdb6c7b915ea37e38663d7309dca43998ed7c"
+    },
+    {
+      "path": "static/js/async/route-80425b2b921b.4ecd8dea79.js",
+      "source": "rspress:static/js/async/route-80425b2b921b.4ecd8dea79.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11157,
+      "sha256": "bb8cd415d50f39598d85707def29df16b2305a8758364ef38a47158aaa725a0e"
+    },
+    {
+      "path": "static/js/async/route-8443aae0ee94.ccc572618f.js",
+      "source": "rspress:static/js/async/route-8443aae0ee94.ccc572618f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 15107,
+      "sha256": "178b69ddfdbca4b502d8349f372a7df062213d7fd42a9d3cc0f60b05120848ee"
+    },
+    {
+      "path": "static/js/async/route-9f1414fcabb4.f990868340.js",
+      "source": "rspress:static/js/async/route-9f1414fcabb4.f990868340.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11399,
+      "sha256": "34fa461442a8f2765b476ba8dd331e3de0be46a7b86872cd65e981f088208e8f"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.f3439f9ebb.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.f3439f9ebb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1008,
+      "sha256": "cc1493dc0ee207366b4b0522fc3d200555223b0d39e313887ca7841e0581fda5"
+    },
+    {
+      "path": "static/js/async/route-b21d1c908839.55f40296fb.js",
+      "source": "rspress:static/js/async/route-b21d1c908839.55f40296fb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 7553,
+      "sha256": "f6dad3c327dc8439bb7908fb5cb68c59e482097c7cc60103452c196def37f5f8"
+    },
+    {
+      "path": "static/js/async/route-ba5fe02e7ddb.ae341610e4.js",
+      "source": "rspress:static/js/async/route-ba5fe02e7ddb.ae341610e4.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11525,
+      "sha256": "c6299a343dd8d2eb74071333b5c4b1af1abfb8b961a1de394e9e5d1f34ee1cb9"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.518449be73.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.518449be73.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 825756,
+      "sha256": "126daa7f1462c060f7640b5b73c9964e0e7d5f51123dd9e3685c021fc1c50f7c"
+    },
+    {
+      "path": "static/js/async/route-e5c3c8bb8d96.6b6860f710.js",
+      "source": "rspress:static/js/async/route-e5c3c8bb8d96.6b6860f710.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 7559,
+      "sha256": "67792c1ad941e14b33effa4704bf7bd6dccc9c732de6e48e1a34edbdb6d264ef"
+    },
+    {
+      "path": "static/js/async/route-f6e3e8c41abb.0eda6d70b6.js",
+      "source": "rspress:static/js/async/route-f6e3e8c41abb.0eda6d70b6.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11517,
+      "sha256": "d0e0089fb7ff52d070f429fc725dbf52f2e0104c4157a5ce463961d6addb916e"
+    },
+    {
+      "path": "static/js/index.13c9dc0d10.js",
+      "source": "rspress:static/js/index.13c9dc0d10.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 134322,
+      "sha256": "f376c19fd4127e8a4645b008485d8c1ca53b7edcc855a10e7211844ba2471983"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "source": "rspress:static/js/styles.d2a6dfa6a0.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2"
+    },
+    {
+      "path": "static/search_index.ko.d921caa2.json",
+      "source": "rspress:static/search_index.ko.d921caa2.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 2231485,
+      "sha256": "d921caa27e47511b45b31a5ddbb5b48c83ce52bbf4db1ea442cf403e25f311b2"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 909618,
+      "sha256": "9e501677210c9b545a7d6ea1c62f9500ea84edf983f34bb834e61ead43acc257"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 740947,
+      "sha256": "557914833341820eaf64f7a8f3672cebaab3d0beb0621d0747ecde95eed26685"
+    }
+  ]
+}

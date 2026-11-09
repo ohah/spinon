@@ -1,0 +1,450 @@
+{
+  "sourceHead": "f0c18c8fead17fb379b77eb6191193a066a5115d",
+  "sourceTree": "6d13d628abe33197cfad22315b4c615722445323",
+  "selectedRouteCount": 103,
+  "createdCount": 39,
+  "replacedCount": 22,
+  "identicalCount": 42,
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pass02",
+  "noDeletes": true,
+  "created": [
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-lifecycle.json",
+      "sha256": "01509976f23fa60522b2bc2ad8439180fc491c8099e4fbd63c9f310c2c189240"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-verification.json",
+      "sha256": "75c5f32b911438be11e174c5ab60a28279a0abc7d53efe25a4150ee96df3bf85"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop-progress.png",
+      "sha256": "41bf8e6d5c553751fa9865133c2c626940e19d2d1d99cb155bd8debd97ee1b14"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop.png",
+      "sha256": "3715fe6adcbad55c9d08795f3eb8724e6f3ae5ed1d0391351a0fa82c0d8826c9"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile-progress.png",
+      "sha256": "0dc23bacb3e333261f5594d7730a3e41bfe234ca1ce90bf8797add288b8e152f"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile.png",
+      "sha256": "ad5f17cea610f14561a75c86fec902360f50c9715b9dc83a6711c807a72640b1"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-lifecycle.json",
+      "sha256": "01509976f23fa60522b2bc2ad8439180fc491c8099e4fbd63c9f310c2c189240"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/agent-browser-verification.json",
+      "sha256": "75c5f32b911438be11e174c5ab60a28279a0abc7d53efe25a4150ee96df3bf85"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop-progress.png",
+      "sha256": "41bf8e6d5c553751fa9865133c2c626940e19d2d1d99cb155bd8debd97ee1b14"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-desktop.png",
+      "sha256": "3715fe6adcbad55c9d08795f3eb8724e6f3ae5ed1d0391351a0fa82c0d8826c9"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile-progress.png",
+      "sha256": "0dc23bacb3e333261f5594d7730a3e41bfe234ca1ce90bf8797add288b8e152f"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/tailnet-roadmap-agent-browser-mobile.png",
+      "sha256": "ad5f17cea610f14561a75c86fec902360f50c9715b9dc83a6711c807a72640b1"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-desktop-progress.1beff98f3d.png",
+      "sha256": "41bf8e6d5c553751fa9865133c2c626940e19d2d1d99cb155bd8debd97ee1b14"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-desktop.215628c469.png",
+      "sha256": "3715fe6adcbad55c9d08795f3eb8724e6f3ae5ed1d0391351a0fa82c0d8826c9"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-mobile-progress.eb42272ba0.png",
+      "sha256": "0dc23bacb3e333261f5594d7730a3e41bfe234ca1ce90bf8797add288b8e152f"
+    },
+    {
+      "route": "static/image/tailnet-roadmap-agent-browser-mobile.70dbd2d194.png",
+      "sha256": "ad5f17cea610f14561a75c86fec902360f50c9715b9dc83a6711c807a72640b1"
+    },
+    {
+      "route": "static/js/async/route-15ac18b88d45.017b4f2dd4.js",
+      "sha256": "204ef1e86eab52307ee5273f00c0c7a7de9eb744b26639734c1ddce9ede4439e"
+    },
+    {
+      "route": "static/js/async/route-24e54ca7cee0.fb254de68e.js",
+      "sha256": "cbdfea2e6c21d417e2eb8bd4a5ae4e9e0731f00f5f146bd1d3d068405b6e725e"
+    },
+    {
+      "route": "static/js/async/route-2ca87ae000cf.054b4f9bb8.js",
+      "sha256": "f23b1ca7e50840ded839fa686fc06b7c9fbe667e6f2a56a17344bd22f29e9dda"
+    },
+    {
+      "route": "static/js/async/route-4c39863f32d9.365907c1e0.js",
+      "sha256": "99869415985f3dc00f2545eb15f5109ca2c9d0c1490ef7661bdef9ceee7c4c52"
+    },
+    {
+      "route": "static/js/async/route-508923620630.5f4652aa37.js",
+      "sha256": "4d8cbc71bd5890c54a952dd34f3fa85bed33a659ed362cdc7669034d78da0206"
+    },
+    {
+      "route": "static/js/async/route-553cb6fced5a.76c7781fe1.js",
+      "sha256": "3ee8e64fedda902f967ba173268a3948258f9880e868c966b483638407f45b5c"
+    },
+    {
+      "route": "static/js/async/route-69070c34cd4e.1e89dee744.js",
+      "sha256": "8e72158a4c1fe7203b6334ec5016b0a38bfb3f73d30581838d5ee56c8053127c"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.3aa1b2baed.js",
+      "sha256": "fea64d168943c0c3a5190f34132d8f92cde31016b5f2ae2a12b09a8175c9de59"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.6e68fcc2d4.js",
+      "sha256": "1825bb600719b4168e3c042e9c869ac761e4b38149dab79a65b40db60fa5a7f7"
+    },
+    {
+      "route": "static/js/async/route-762fe1ffbecd.2e9ac6510f.js",
+      "sha256": "197cc96dd0ec7d3f60215b6c011500bb12fa053075b682edf1b0995dc8eb3d79"
+    },
+    {
+      "route": "static/js/async/route-7944905d83bb.09eb177e45.js",
+      "sha256": "5be2c2c0e91dc10af7dac84844d2ed510520b8c115a6981c1fb46020cb7606fb"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ad2ae10a62.js",
+      "sha256": "5b258a8bf5c277ab5952d4f488b00ba2a8a401a423ac5738ed0d0971befcd3d5"
+    },
+    {
+      "route": "static/js/async/route-80425b2b921b.c150b3b88d.js",
+      "sha256": "2b409ed12f4819c8471c9f4210c1a395a8bf4dfe3b3d1f7077e71c2035e8756e"
+    },
+    {
+      "route": "static/js/async/route-8443aae0ee94.2df32f1069.js",
+      "sha256": "7f0c878757762d7bf3c41ad1ee9215eb50a591a275db2ee34c28ca77a278ed8b"
+    },
+    {
+      "route": "static/js/async/route-9f1414fcabb4.2906cf1edc.js",
+      "sha256": "c703e91e9bed5fa379c073ff3adc72478c605a58dcb568b40db0b46e45630311"
+    },
+    {
+      "route": "static/js/async/route-a48746cae70c.a1ccb0c927.js",
+      "sha256": "91cf075190cabffbed5f7f3b523dd4218bf8cb17687c960da421d1649dc69d14"
+    },
+    {
+      "route": "static/js/async/route-b21d1c908839.c44d30015d.js",
+      "sha256": "e41d64214de9f475945ed1187c7395adee4496a88ed34bebcfc7388c6bb1f280"
+    },
+    {
+      "route": "static/js/async/route-ba5fe02e7ddb.3b475aa122.js",
+      "sha256": "e84d49ed883458fdda6b05eb50fecf8378ef58df1675350e5602707ef500326c"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.bb9e2b57e9.js",
+      "sha256": "c8b12874b61e4522d1be220fd0575801e21452d63d680af8cc1f2d8b2babfdf2"
+    },
+    {
+      "route": "static/js/async/route-e5c3c8bb8d96.ba354c30dc.js",
+      "sha256": "a3670ec764ceef20dfccb909a6e8e7f1313ab612d949664495a9989689fcbf54"
+    },
+    {
+      "route": "static/js/async/route-f6e3e8c41abb.080a0926af.js",
+      "sha256": "82aa133f391514f301193a4b1606506f97c23ace2e4990700d01771e22793df3"
+    },
+    {
+      "route": "static/js/index.164e8009ab.js",
+      "sha256": "020202495435e9974d6b4225f4e4aef0e69a6aed1540438e2f1214b2d5cb7d7a"
+    },
+    {
+      "route": "static/search_index.ko.a7818f10.json",
+      "sha256": "a7818f1031e12a66c1ae649211ac7acd00d05fa6103c363649b1c4483d8a453f"
+    }
+  ],
+  "replaced": [
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "previousSha256": "c094272a3a15df6f351121ab3e8712b6dd52569cbafa55468daa2bc9e48bcca9",
+      "sha256": "dcd25876157778ca47897c29778f0fed03e2a763f5ff11198578941c244a0bad"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "previousSha256": "1d317cae4d19a2bcbe67f45943143e9bb1826a5d06480cfb24de305de45d4777",
+      "sha256": "ddd22ff28be1742b4997056a17ae9ba6e1901b4566ddc83d8e4eed1be3ef5160"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "previousSha256": "c8a1fa28c89692cb82be6811862bef2e977ed5aa5e660337714e75a8666dfb69",
+      "sha256": "03e8e49ce8490c235b48a41550cbc643814e9f47eea682a055d2e7a92b765f9d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "previousSha256": "8dbcc0f5346d3ff90a8a371e43c22b06ef8ee9da721669c9b54b74df924de321",
+      "sha256": "19d63d0486226ac9e4b3f92c43639b57f214be9e9945f90e0ad7183e14f4d012"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "previousSha256": "cb3580b505ec1e30f3479adfe3fcc892978bbcd1e14f0bb37c4ff76fbf10f5a3",
+      "sha256": "510c67cdedd63a2f06be04f3dea63e73d765d1c4e16bff74427de7650c8e4942"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.html",
+      "previousSha256": "aedfbf9b9d5da9f95452f90d8bd0c349713d496a942aabbc790bc7a0378afd50",
+      "sha256": "1fb8bdd526d7ce4991c9a0971bfdc59ccecad839be97ca9a95823a8148c8c1be"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "previousSha256": "8c1322aade13e2ac5e6581cd11196d53e3a814f7130a3e8b78a008ecec303c62",
+      "sha256": "32fa5d3259b8e25ecaaea846f63087c47cb7fc758fbb0bf9f46ecc6f733d0387"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.md",
+      "previousSha256": "cc1c8952632e980e12613ca7ce9260345b6a2054854779f4b870e236cb73135e",
+      "sha256": "9d460a14fe4d6e3303fae84f2c4d81e91cb48e7ae15e5f493be541e8b3b8dfeb"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.html",
+      "previousSha256": "47c698516b696cd5b0c87cc23b2029e208d49daff71dfca8223b6cc2f9041152",
+      "sha256": "8b3e8edd3335c7e325321c6bf74035a745033aeb4d01d104d0d4f265084ca48e"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "previousSha256": "a1a12578cf43b8e9f1abc58ad76e4e2a0cb1311e836ba570191ef13cc9c97d65",
+      "sha256": "fdac5050e6f54073c0c8cb54d092e5cf7d11990562e92f3dd479f54634346520"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "previousSha256": "465b953191e4730adb88e1a7744cd2b0f135dd73bbd7b86ef2911e5059b54fb6",
+      "sha256": "f5eee73c245c82d432ded8bd60c71cce70814da0925abb97dd8f679f4d610bbd"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.html",
+      "previousSha256": "ff1e4099b0a26a752cce7650b5ddf7360ec928f9fa0fee96a3819e445aa95f1c",
+      "sha256": "7e3a19aaacb5cd8c8b23da509a529b3aaa89049ec7fec87154c2d2847025c3a2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.html",
+      "previousSha256": "21b64cd7686b6de771342d19142f9206bc184cefca311820c9b5b303fbfa8f71",
+      "sha256": "662a5204e9f125e82e0e6c43f486d15e0c44d2876f7cce241d71a444674ea670"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.html",
+      "previousSha256": "a9e6898d426695cc0915401b602e0d05f2e8734e4cb44aaa547571d7a6a7aa16",
+      "sha256": "4137d6a073c946fe0b9086c80c8a59597a059dfc0367bc8418a6d7855256864b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.html",
+      "previousSha256": "c9818c72b7b92615ac46cd323ce11a5aec224955593e03dbcbc3425d6b743e2a",
+      "sha256": "c85e4772d10a980ebb641c2e54d0ec65ca36832e4b9064868a95caa6f577b39c"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.html",
+      "previousSha256": "22bbb69c79a516e014cddcf5bbc5835e0d1636f8673272359e76dd63da300c08",
+      "sha256": "95c40c1e8d472001b53d248f04cdb7cbed092e23d69a973f42051949748f5b72"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+      "previousSha256": "ecc35472e6a5cc7e7a99ec98cef114e4c8f9f7f9dad2a4263b0759a3e40d25a6",
+      "sha256": "ab70e2f78055ab1e53d7f383e4bc928ef6f8d5158325c96c67187a87c6df5e18"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.md",
+      "previousSha256": "cc1c8952632e980e12613ca7ce9260345b6a2054854779f4b870e236cb73135e",
+      "sha256": "9d460a14fe4d6e3303fae84f2c4d81e91cb48e7ae15e5f493be541e8b3b8dfeb"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.html",
+      "previousSha256": "422d5e02d2a25f1625d5133b52e6901972b67aafff3bb8c608a3999d4117b588",
+      "sha256": "395c3c69105bfffb32b48e33f5de25f948d4811713bd1e21193397390358cb66"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span.html",
+      "previousSha256": "882c0fd81db0fa534a5c0bcab69147ba0d7368cec90e2b75d4aabfc3d4c6b6bd",
+      "sha256": "3ef94c805f903046d328bfeb3c4994b4bed57dceebd6a92c1136224d7673517f"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "previousSha256": "d4a63b4ad102fda655b0e0b7643ea0c1d75ca2cfeaa56ee3e450ce4a2105d113",
+      "sha256": "6e4e41918de900a35a9cbb58d1d9cb24d90dce5f85704b4decfffb60ec1c5096"
+    },
+    {
+      "route": "STATUS.html",
+      "previousSha256": "a13d54292d08d8c7933c638db6edff34734c4029a7f3dfb0e5b7613949a855bc",
+      "sha256": "223936757ec55f0809b550d20636b3e72a6761f48024abc53932fb835bab8661"
+    }
+  ],
+  "identical": [
+    {
+      "route": "icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "sha256": "7b53a33957f0e074754f2d31d362efdb61ac8d46ef21f97a5a7cd2308d92bcd2"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "sha256": "fab6e661bd42f94ead15a7d8e068889b0c54fe620b05766df0f8100b7042987d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md",
+      "sha256": "ec126e02245a64b5f9fd0c06dd31422a00ad5870d1582c1512d1539daf6b685d"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md",
+      "sha256": "60042d5dab1ebada0372289675e5383da06ad06093a8d1046c332275700daa50"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-later-fit-content-row-span.png",
+      "sha256": "6e54c8854af7d0a275225f12c724ae626b4eb1b39c5c3539aff8dae32c079676"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md",
+      "sha256": "b256a9a37970ad15a180c6b785287b4fb74f685e69da546c9c94a5333de56ebf"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.md",
+      "sha256": "208c20d098f3911511d0073f6843598e97402ce0f51816a0c81f81165bd8a3cf"
+    },
+    {
+      "route": "logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md",
+      "sha256": "a5132ce7f52b07b90d7d7286ada7a7d896cf7af0ac992b364113e6816366445c"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-later-fit-content-row-span.md",
+      "sha256": "8a13463fe02087744c3c7c30163341fccdd87201f124ab2904a4bb778145274e"
+    },
+    {
+      "route": "public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "public/roadmap.html",
+      "sha256": "c1cd5a53b084a14a00f5f25d7a75ab99295fc7136d5a01517b93cb49b427b1af"
+    },
+    {
+      "route": "public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "roadmap.html",
+      "sha256": "c1cd5a53b084a14a00f5f25d7a75ab99295fc7136d5a01517b93cb49b427b1af"
+    },
+    {
+      "route": "roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "sha256": "7b53a33957f0e074754f2d31d362efdb61ac8d46ef21f97a5a7cd2308d92bcd2"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-pr-diff-review-30.md",
+      "sha256": "fab6e661bd42f94ead15a7d8e068889b0c54fe620b05766df0f8100b7042987d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/implementation-runtime-review-20.md",
+      "sha256": "ec126e02245a64b5f9fd0c06dd31422a00ad5870d1582c1512d1539daf6b685d"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-implementation-2026-11-09/README.md",
+      "sha256": "60042d5dab1ebada0372289675e5383da06ad06093a8d1046c332275700daa50"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/chrome157-later-fit-content-row-span.png",
+      "sha256": "6e54c8854af7d0a275225f12c724ae626b4eb1b39c5c3539aff8dae32c079676"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-later-fit-content-row-span-precomparison-2026-11-09/README.md",
+      "sha256": "b256a9a37970ad15a180c6b785287b4fb74f685e69da546c9c94a5333de56ebf"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/pr-diff-review-30.md",
+      "sha256": "208c20d098f3911511d0073f6843598e97402ce0f51816a0c81f81165bd8a3cf"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span-plan-review-20.md",
+      "sha256": "a5132ce7f52b07b90d7d7286ada7a7d896cf7af0ac992b364113e6816366445c"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-later-fit-content-row-span.md",
+      "sha256": "8a13463fe02087744c3c7c30163341fccdd87201f124ab2904a4bb778145274e"
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "sha256": "c1cd5a53b084a14a00f5f25d7a75ab99295fc7136d5a01517b93cb49b427b1af"
+    },
+    {
+      "route": "spec/public/roadmap.svg",
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "sha256": "557914833341820eaf64f7a8f3672cebaab3d0beb0621d0747ecde95eed26685"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/image/chrome157-later-fit-content-row-span.da8b4d22e8.png",
+      "sha256": "6e54c8854af7d0a275225f12c724ae626b4eb1b39c5c3539aff8dae32c079676"
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2"
+    },
+    {
+      "route": "STATUS.md",
+      "sha256": "557914833341820eaf64f7a8f3672cebaab3d0beb0621d0747ecde95eed26685"
+    }
+  ]
+}
