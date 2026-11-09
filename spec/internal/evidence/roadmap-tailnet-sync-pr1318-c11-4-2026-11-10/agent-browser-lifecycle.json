@@ -1,11 +1,22 @@
 {
   "tool": "Agent Browser",
   "version": "0.31.1",
-  "session": "spinon-tailnet-pr1318",
-  "opened": true,
-  "closed": true,
-  "activeAfterClose": false,
-  "pidAfterClose": null,
+  "sessions": [
+    {
+      "id": "spinon-tailnet-pr1318",
+      "opened": true,
+      "closed": true,
+      "activeAfterClose": false,
+      "pidAfterClose": null
+    },
+    {
+      "id": "spinon-pr1319",
+      "opened": true,
+      "closed": true,
+      "activeAfterClose": false,
+      "pidAfterClose": null
+    }
+  ],
   "terminalBrowserUsed": false,
   "simulatorStarted": false,
   "previewServerRestarted": false,

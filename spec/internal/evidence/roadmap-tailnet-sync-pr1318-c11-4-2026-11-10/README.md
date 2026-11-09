@@ -16,6 +16,7 @@
 - Preflight에서 135 route 중 생성 48, 교체 37, 동일 hash 50개를 분류했고 교체할 37개 모두 열린 file handle이 0개였다. 게시 전에 기존 37개 파일을 아래 rollback backup에 보존했다.
 - Copy 뒤 local route/hash `135/135`, Tailnet HTTPS HTTP 200 및 SHA-256 `135/135`, backup `37/37`을 검증했다. 기존 `index.html`·`404.html`을 제외했고 삭제는 0건이다.
 - Agent Browser `0.31.1` desktop `1440×1000`, mobile `390×844`에서 roadmap의 PR #1318, merge SHA, 실행 evidence, 상태 `78/214`, C11.4/C11 미완료를 확인했다. 두 화면 모두 document/body 가로 폭이 viewport와 같았고, mobile kanban 폭은 362px였다. 인라인 plan link의 bounding-box 중앙 locator 시도는 옆 PR 링크 영역에 걸렸지만, 실제 글자 조각 위치를 pointer로 눌러 plan route에 진입했고 제목·구현 결과·범위 문구를 확인했다.
+- GitHub PR #1319 본문에서 desktop/mobile 이미지가 실제로 로드됐으며 크기는 각각 1440×1000과 390×844다.
 - Agent Browser session을 닫고 전용 프로세스가 종료된 것을 확인했다. 기존 Terminal Browser는 사용하거나 종료하지 않았다. 시뮬레이터도 시작하지 않았다.
 
 선택 build는 [summary](./selected-build-summary.json), source는 [root manifest](./selected-root.json), 생성 route는 [publication manifest](./selected-publication.json), 게시 전 확인은 [preflight](./preflight.json), copy/backup은 [copy report](./copy-and-backup.json), HTTP·hash 결과는 [served verification](./served-verification.json)에 있다. 화면은 [desktop](./tailnet-roadmap-agent-browser-desktop-pr1318.png) · [mobile](./tailnet-roadmap-agent-browser-mobile-pr1318.png)이다. 기존 Tailnet 파일의 rollback backup은 `~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1318-c11-4-2026-11-10/pass01`에 보존했다.

@@ -33,6 +33,6 @@
 | 27 | Tailnet start 또는 404 페이지 덮어씀 | publication에서 `index.html`과 `404.html`을 제외했다. | 통과 |
 | 28 | 이전 Tailnet route의 복구 자료 없음 | 37개 replacement backup과 검증 결과 및 보관 경로를 기록했다. | 통과 |
 | 29 | 모바일 표시가 viewport 밖으로 나감 | Agent Browser mobile에서 document/body 폭 390px, kanban 폭 362px을 확인했다. | 통과 |
-| 30 | task resource가 남거나 review artifact가 불완전 | build temp는 제거하고 browser session은 종료한다. review 30행, 운영 review 20행, evidence hash manifest를 확인한다. | 통과 |
+| 30 | task resource가 남거나 review artifact가 불완전 | GitHub PR 본문에서 두 screenshot이 1440×1000/390×844로 로드됐다. 두 task-owned browser session은 `active:false`, PID null이며 build temp는 제거했다. review 30행, 운영 review 20행, evidence hash manifest를 확인한다. | 통과 |
 
 **결과:** 서로 다른 diff 실패 관점 30개를 확인했다. Tailnet browser 화면은 문서의 상태 표시 확인이며 C11.4 구현 또는 앱 동작 증거로 세지 않는다.
