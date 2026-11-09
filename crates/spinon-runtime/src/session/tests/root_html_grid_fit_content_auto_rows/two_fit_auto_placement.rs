@@ -16,6 +16,9 @@ pub(super) const SOURCE: &str = include_str!(
 pub(super) const OBSERVATIONS: &str = include_str!(
     "../../../../../../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson"
 );
+pub(super) const AUTO_MINIMUM_OBSERVATIONS: &str = include_str!(
+    "../../../../../../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/chrome-matrix-observation.ndjson"
+);
 pub(super) const BASE_TRACK_LIST: &str =
     "fit-content(10px) min-content fit-content(20%) max-content auto min-content";
 pub(super) const ITEM_COLORS: [OpaqueCssSrgb; 9] = [
@@ -41,7 +44,15 @@ pub(super) const PAYLOAD_TEXTS: [&str; 8] = [
 ];
 
 pub(super) fn scenes() -> Vec<Value> {
-    let records = OBSERVATIONS
+    scenes_from(OBSERVATIONS)
+}
+
+pub(super) fn auto_minimum_scenes() -> Vec<Value> {
+    scenes_from(AUTO_MINIMUM_OBSERVATIONS)
+}
+
+fn scenes_from(observations: &str) -> Vec<Value> {
+    let records = observations
         .lines()
         .map(|line| {
             serde_json::from_str::<Value>(line).expect("Chrome record should be valid JSON")
@@ -65,6 +76,16 @@ pub(super) fn source_for(scene: &Value) -> String {
         &source,
         "align-content: start;",
         &format!("align-content: {align};"),
+    )
+}
+
+pub(super) fn source_for_auto_minimum(scene: &Value) -> String {
+    let source = source_for(scene);
+    let source = replace_once(&source, "min-height: 0;", "min-height: auto;");
+    replace_once(
+        &source,
+        "#item-0 { height: 10px;",
+        "#item-0 { min-height: 0; height: 10px;",
     )
 }
 

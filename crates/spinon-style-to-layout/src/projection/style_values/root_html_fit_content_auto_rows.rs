@@ -79,6 +79,8 @@ pub(super) fn validate(
         _ => Vec::new(),
     };
     let two_fit_span_track_list = six_member_span_list && span_fit_positions.len() == 2;
+    let two_fit_auto_placement_track_list =
+        six_member_auto_placement_list && span_fit_positions.len() == 2;
     let align_content = grid_style
         .properties
         .get("align-content")
@@ -190,6 +192,18 @@ pub(super) fn validate(
                 return false;
             };
             repeated_text::payload_has_supported_text(tree, *payload)
+        });
+    let repeated_text_auto_minimum_profile = repeated_text_profile
+        && items
+            .first()
+            .and_then(|item| styles.get(&item.id()).copied())
+            .is_some_and(|style| {
+                style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
+            })
+        && items.iter().copied().skip(1).all(|item| {
+            styles.get(&item.id()).copied().is_some_and(|style| {
+                style.layout_dimensions.min_height == ComputedCssDimension::Auto
+            })
         });
     let repeated_text_span_profile = six_member_span_list
         && repeated_span_writing_context(grid_style)
@@ -331,7 +345,8 @@ pub(super) fn validate(
             ));
         };
         let allow_minimum_floor = !repeated_text_span_profile && items.len() == 3 && position == 1;
-        let allow_auto_minimum = two_fit_span_track_list && repeated_text_span_profile;
+        let allow_auto_minimum = (two_fit_span_track_list && repeated_text_span_profile)
+            || (two_fit_auto_placement_track_list && repeated_text_auto_minimum_profile);
         let item_placement_is_supported = if repeated_text_span_profile {
             repeated_span_item_placement(style)
         } else {

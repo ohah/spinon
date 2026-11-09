@@ -505,7 +505,12 @@ pub(super) fn project_styles(
         let root_html_grid_alignment_enabled = root_html_grid_alignment_nodes.contains(&node);
         let root_html_grid_item_alignment_enabled =
             root_html_grid_item_alignment_nodes.contains(&node);
-        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1 {
+        let is_hidden_root_html_subtree_node = grid_nodes
+            .as_ref()
+            .is_some_and(|nodes| nodes.hidden.contains(&node));
+        if snapshot.profile == ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+            && !is_hidden_root_html_subtree_node
+        {
             reject_root_html_grid_alignment_scope(
                 element,
                 root_html_grid_alignment_enabled,
@@ -874,6 +879,11 @@ pub(super) fn project_styles(
                 None
             },
             justify_content: match snapshot.profile {
+                ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
+                    if is_hidden_root_html_subtree_node =>
+                {
+                    LayoutStyle::default().justify_content
+                }
                 ComputedStyleProfile::RuntimeRootHtmlTextPaintV1
                     if root_html_grid_alignment_enabled
                         || root_html_intrinsic_track_sizing_nodes.contains(&node) =>
