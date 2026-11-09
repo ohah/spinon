@@ -1410,7 +1410,7 @@ pub(super) fn validate_grid_layout(
                             (9, Some(0..=8), crate::LayoutDimension::Fixed(0.0)) => matches!(
                                 &container.auto_rows,
                                 crate::GridAutoRows::TrackList(tracks)
-                                    if root_html_fit_content_auto_rows::supports_repeated_min_max_content_auto_track_list(tracks)
+                                    if root_html_fit_content_auto_rows::supports_repeated_min_max_content_auto_placement_track_list(tracks)
                             ),
                             _ => false,
                         })

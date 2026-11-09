@@ -70,6 +70,41 @@ pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTr
     fit_content_seen && counts == [2, 2, 1]
 }
 
+pub(super) fn supports_repeated_two_fit_min_max_content_auto_track_list(
+    tracks: &[GridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut counts = [0usize; 3];
+    let mut fit_content_count = 0usize;
+    for track in tracks {
+        if matches!(track, GridTrackSize::FitContent(_)) {
+            if !fit_content_cap_is_supported(track) {
+                return false;
+            }
+            fit_content_count += 1;
+            continue;
+        }
+        let index = match track {
+            GridTrackSize::MinContent => 0,
+            GridTrackSize::MaxContent => 1,
+            GridTrackSize::Auto => 2,
+            _ => return false,
+        };
+        counts[index] += 1;
+    }
+    fit_content_count == 2 && counts == [2, 1, 1]
+}
+
+pub(super) fn supports_repeated_min_max_content_auto_placement_track_list(
+    tracks: &[GridTrackSize],
+) -> bool {
+    supports_repeated_min_max_content_auto_track_list(tracks)
+        || supports_repeated_two_fit_min_max_content_auto_track_list(tracks)
+}
+
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
     tracks: &[GridTrackSize],
 ) -> bool {
@@ -151,7 +186,7 @@ pub(super) fn supports_repeated_span_fit_positions(
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)
         || supports_min_max_content_auto_track_list(tracks)
-        || supports_repeated_min_max_content_auto_track_list(tracks)
+        || supports_repeated_min_max_content_auto_placement_track_list(tracks)
         || supports_repeated_min_max_content_auto_span_track_list(tracks)
 }
 
@@ -279,5 +314,168 @@ mod tests {
             &bad_tail
         ));
         assert!(!supports_repeated_span_fit_positions(&bad_tail, 6));
+    }
+
+    #[test]
+    fn repeated_auto_placement_accepts_all_two_fit_positions_and_tail_orders() {
+        let tails = [
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+                GridTrackSize::Auto,
+            ],
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MaxContent,
+            ],
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+            ],
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+            ],
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+            ],
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MaxContent,
+                GridTrackSize::MinContent,
+            ],
+            [
+                GridTrackSize::MaxContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+            ],
+            [
+                GridTrackSize::MaxContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+            ],
+            [
+                GridTrackSize::MaxContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+            ],
+            [
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+            ],
+            [
+                GridTrackSize::Auto,
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+                GridTrackSize::MinContent,
+            ],
+            [
+                GridTrackSize::Auto,
+                GridTrackSize::MaxContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+            ],
+        ];
+        assert_eq!(
+            tails
+                .iter()
+                .map(|tail| format!("{tail:?}"))
+                .collect::<std::collections::BTreeSet<_>>()
+                .len(),
+            12
+        );
+        assert_eq!(
+            tails.len() * 15,
+            180,
+            "matrix covers all pair/order combinations"
+        );
+
+        for tail in tails {
+            for first in 1..=6 {
+                for second in (first + 1)..=6 {
+                    let tracks = two_fit_tracks(first, second, tail);
+                    assert!(
+                        supports_repeated_two_fit_min_max_content_auto_track_list(&tracks),
+                        "positions=({first}, {second}), tail={tail:?}"
+                    );
+                    assert!(supports_repeated_min_max_content_auto_placement_track_list(
+                        &tracks
+                    ));
+                    assert!(supports_intrinsic_auto_track_list(&tracks));
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn repeated_two_fit_auto_placement_rejects_bad_multiplicity_caps_and_span_expansion() {
+        let accepted = two_fit_tracks(
+            1,
+            2,
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::MaxContent,
+                GridTrackSize::Auto,
+            ],
+        );
+        assert!(supports_repeated_two_fit_min_max_content_auto_track_list(
+            &accepted
+        ));
+        assert!(supports_repeated_span_fit_positions(&accepted, 6));
+
+        let mut wrong_multiplicity = accepted.clone();
+        wrong_multiplicity[5] = GridTrackSize::MaxContent;
+        assert!(!supports_repeated_two_fit_min_max_content_auto_track_list(
+            &wrong_multiplicity
+        ));
+
+        for cap in [
+            GridTrackLengthPercentage::LengthPx(-1.0),
+            GridTrackLengthPercentage::LengthPx(f32::INFINITY),
+            GridTrackLengthPercentage::Percentage(f32::NAN),
+            GridTrackLengthPercentage::Calc(crate::LayoutCalcId(1)),
+        ] {
+            let mut invalid = accepted.clone();
+            invalid[0] = GridTrackSize::FitContent(cap);
+            assert!(!supports_repeated_two_fit_min_max_content_auto_track_list(
+                &invalid
+            ));
+        }
+
+        let unrestricted_tail = two_fit_tracks(
+            1,
+            2,
+            [
+                GridTrackSize::MinContent,
+                GridTrackSize::MinContent,
+                GridTrackSize::Auto,
+                GridTrackSize::MaxContent,
+            ],
+        );
+        assert!(supports_repeated_two_fit_min_max_content_auto_track_list(
+            &unrestricted_tail
+        ));
+        assert!(
+            !supports_repeated_min_max_content_auto_span_track_list(&unrestricted_tail),
+            "auto-placement must not widen the separate two-fit row-span tail profile"
+        );
+        assert!(!supports_repeated_span_fit_positions(&unrestricted_tail, 6));
     }
 }

@@ -64,9 +64,10 @@ pub(super) fn validate(
         grid_values::root_html_fit_content_auto_rows_with_four_member_intrinsic_tracks(grid);
     let six_member_list =
         grid_values::root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(grid);
+    let six_member_auto_placement_list = grid_values::root_html_fit_content_auto_rows_with_six_member_auto_placement_intrinsic_tracks(grid);
     let six_member_span_list =
         grid_values::root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(grid);
-    let six_member_candidate = six_member_list || six_member_span_list;
+    let six_member_candidate = six_member_auto_placement_list || six_member_span_list;
     let span_fit_positions = match &grid.auto_rows {
         ComputedCssGridAutoRows::TrackList(tracks) => tracks
             .iter()
@@ -179,7 +180,7 @@ pub(super) fn validate(
         .iter()
         .map(|style| (style.node_id, style))
         .collect::<std::collections::BTreeMap<_, _>>();
-    let repeated_text_profile = six_member_list
+    let repeated_text_profile = six_member_auto_placement_list
         && items.len() == 9
         && items.iter().copied().skip(1).all(|item| {
             let Ok(children) = direct_element_children(tree, nodes, item) else {
@@ -236,7 +237,7 @@ pub(super) fn validate(
         };
     if (four_member_list && items.len() != 6)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
-        || (two_fit_span_track_list && !repeated_text_span_profile)
+        || (two_fit_span_track_list && !repeated_text_span_profile && !repeated_text_profile)
         || (!four_member_list && !six_member_candidate && !matches!(items.len(), 3 | 5))
         || nodes
             .grid_item_owners
@@ -330,7 +331,7 @@ pub(super) fn validate(
             ));
         };
         let allow_minimum_floor = !repeated_text_span_profile && items.len() == 3 && position == 1;
-        let allow_auto_minimum = two_fit_span_track_list;
+        let allow_auto_minimum = two_fit_span_track_list && repeated_text_span_profile;
         let item_placement_is_supported = if repeated_text_span_profile {
             repeated_span_item_placement(style)
         } else {

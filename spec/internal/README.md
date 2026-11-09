@@ -1,5 +1,9 @@
 # 내부 인터페이스 명세
 
+## C11.4 repeated-text auto-placement 두 fit-content · 구현 후보 · 2026-11-10
+
+[계획](../../plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md) · [Chrome 157 사전 비교](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md) · [Android/iOS 실행·화면·정리 근거](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md). Chrome/RuntimeSession 2,880/2,880과 Android/iOS default-route visual smoke 12/12를 확인했다. PR merge 전이며 C11.4/C11 미완료·공식 78/214·internal numeric contract 0.1.0을 유지한다.
+
 ## C11.4 auto-fit + area-expanded tracks · PR #549
 
 [구현 PR #549](https://github.com/ohah/spinon/pull/549)은 fdf5a3a24f3f5f3f1e2f1bc2f5e871f29dbf7ca8로 Rebase and merge했다. [집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-auto-fit-area-expansion.md) · [Android/iOS Simulator 41-scene 실행·화면·artifact 근거](./evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/README.md) · [공식 집계 정정과 Agent Browser 확인](./evidence/c11-4-auto-fit-area-expansion-status-correction-2026-10-23/README.md) · [문서 변경 적대 검토](./evidence/c11-4-auto-fit-area-expansion-status-correction-2026-10-23/pr-diff-review-30.md). C11.4 checkbox는 미완료이며 현재 live DOM 집계 72/213이다. 해당 PR의 사전 검토 파일에 남은 77/213 문자열은 당시 표시 문구를 옮긴 기록이며 checked checkbox 수의 근거가 아니다.

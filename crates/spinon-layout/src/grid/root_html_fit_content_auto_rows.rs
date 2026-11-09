@@ -19,6 +19,12 @@ pub(super) fn supports_repeated_min_max_content_auto_track_list(tracks: &[GridTr
     profiles::supports_repeated_min_max_content_auto_track_list(tracks)
 }
 
+pub(super) fn supports_repeated_min_max_content_auto_placement_track_list(
+    tracks: &[GridTrackSize],
+) -> bool {
+    profiles::supports_repeated_min_max_content_auto_placement_track_list(tracks)
+}
+
 pub(super) fn supports_track_list(tracks: &[GridTrackSize]) -> bool {
     profiles::supports_track_list(tracks)
 }
@@ -64,15 +70,17 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .filter(|child| !hidden.get(child).copied().unwrap_or(true))
         .collect::<Vec<_>>();
     let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
+    let six_member_auto_placement_list =
+        supports_repeated_min_max_content_auto_placement_track_list(tracks);
     let six_member_span_list = supports_repeated_min_max_content_auto_span_track_list(tracks);
-    let six_member_candidate = six_member_list || six_member_span_list;
+    let six_member_candidate = six_member_auto_placement_list || six_member_span_list;
     let two_fit_span_track_list = six_member_span_list
         && tracks
             .iter()
             .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
             .count()
             == 2;
-    let repeated_text_profile = six_member_list
+    let repeated_text_profile = six_member_auto_placement_list
         && visible_children.len() == 9
         && visible_children.iter().copied().skip(1).all(|item_id| {
             let item = &input.nodes[index[&item_id]];
@@ -199,7 +207,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
         || (six_member_candidate && visible_children.len() != 9 && !repeated_text_span_profile)
-        || (two_fit_span_track_list && !repeated_text_span_profile)
+        || (two_fit_span_track_list && !repeated_text_span_profile && !repeated_text_profile)
         || (!four_member_list && !six_member_candidate && !matches!(visible_children.len(), 3 | 5))
         || has_non_collapsible_text(input, node)
     {
@@ -329,7 +337,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
         let allow_minimum_floor = visible_children.len() == 3 && position == 1;
-        let allow_auto_minimum = two_fit_span_track_list;
+        let allow_auto_minimum = two_fit_span_track_list && repeated_text_span_profile;
         if auto_item_is_supported(row_item, allow_minimum_floor, allow_auto_minimum) {
             let payload_id = row_item.children[0];
             let profile_payload_heights = if four_member_list {
