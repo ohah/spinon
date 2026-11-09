@@ -1,6 +1,7 @@
 # C11.4 · 두 fit-content 행 자동 배치의 min-height:auto
 
 - **상태:** Chrome 157 사전 비교 2,880/2,880 · 계획 실패 관점 20개 검토 완료 · 구현 전 · 공식 78/214 유지
+- **계획 PR:** [#1316](https://github.com/ohah/spinon/pull/1316) Rebase and merge · merge SHA `83c1c57e9c448202040f8efe4e12ff8f3d3b8d8c`
 - **선행 자동 배치:** [두 fit-content 행](./c11-4-root-html-repeated-text-autoplacement-two-fit-content.md) · 구현 PR [#1314](https://github.com/ohah/spinon/pull/1314)
 - **선행 row-span:** [row-span 두 fit-content 행](./c11-4-root-html-repeated-text-row-span-two-fit-content.md) · 구현 PR [#1311](https://github.com/ohah/spinon/pull/1311)
 - **Chrome 사전 비교:** [2,880 scene, min-height:0 기준과 자동 최소 크기 관계](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-min-precomparison-2026-11-10/README.md)
