@@ -1,6 +1,6 @@
 # C11.4 · one-fit auto-placement text의 `min-height:auto`
 
-- **상태:** 계획 및 Chrome 사전 비교 완료 · 계획 PR 대기 · 제품 구현 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
+- **상태:** 계획 PR [#1320](https://github.com/ohah/spinon/pull/1320) 병합 (`b378e1749bfcd8947ae5aaa27cea0024371256ea`) · Chrome 사전 비교 완료 · 제품 구현 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
 - **직전 구현:** [two-fit auto-placement `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md) · PR [#1318](https://github.com/ohah/spinon/pull/1318)
 - **기준 profile:** [one-fit auto-placement fit-content 위치 1–6](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md) · 구현 PR [#1302](https://github.com/ohah/spinon/pull/1302)
 - **Chrome 사전 비교:** [1,440-scene `min-height:auto`와 `min-height:0` 대조](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-min-precomparison-2026-11-10/README.md)
