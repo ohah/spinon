@@ -1,6 +1,6 @@
 # C11.4 · 반복 텍스트 자동 배치의 두 `fit-content()` 행
 
-- **상태:** 계획 실패 관점 20개·계획 PR diff 30개, 구현/runtime 실패 관점 20개·실제 PR diff 실패 관점 30개 검토 완료 · Chrome/RuntimeSession 2,880/2,880 · Android/iOS 기본 route 12/12 visual smoke · fmt/Clippy 통과 · PR 준비 완료, merge 전 · C11.4/C11 공식 체크 미완료 · `78/214` 유지
+- **상태:** 계획 실패 관점 20개·계획 PR diff 30개, 구현/runtime 실패 관점 20개·실제 PR diff 실패 관점 30개 검토 완료 · Chrome/RuntimeSession 2,880/2,880 · Android/iOS 기본 route 12/12 visual smoke · fmt/Clippy 통과 · 구현 PR [#1314](https://github.com/ohah/spinon/pull/1314) `2026-11-09T17:54:36Z` Rebase and merge, SHA `352e6c0b41a9fd4442eeaa5205f18dc1c94accc4` · GitHub check rollup 0건 · C11.4/C11 공식 체크 미완료 · `78/214` 유지
 - **직전 자동 배치 slice:** [fit-content 위치 1–6](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md) · 계획 PR #1301 · 구현 PR #1302
 - **직전 두-fit row-span slice:** [row-span 두 `fit-content()`](./c11-4-root-html-repeated-text-row-span-two-fit-content.md) · 구현 PR #1311
 - **Chrome 사전 비교:** [2,880 scene·독립 관계·범위](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md)
@@ -51,12 +51,12 @@ Row-span topology와 `min-height:auto` floor 규칙은 변경하지 않는다. �
 
 2,880-scene RuntimeSession 비교, 독립 track/cap/cycle/alignment/frame 관계, cap floor와 percentage controls, atomic rejection/recovery, 기존 auto/span/text regression, focused Rust/Clippy/rustfmt, Android/iOS default-route sentinels, 별도 implementation/runtime 20-point review와 PR diff 30-point review, merge 후 공식 상태·명세·public roadmap 동기화를 마친 뒤에만 이 bounded slice를 구현 완료로 기록한다. Chrome 사전 비교만으로 구현을 완료 처리하지 않는다.
 
-## 구현 결과 · 2026-11-10 · PR 준비
+## 구현 결과 · 2026-11-10 · PR #1314 병합
 
 Chrome 기준 2,880 scene은 RuntimeSession에서 2,880/2,880 일치했다. 두-fit profile 15개 authored 위치쌍과 12개 tail 순서, px/%/zero/120% cap controls, row trace, item/payload geometry, line/glyph count, stretch와 visible overflow를 검사했다. 별도 layout trace tests 4/4에서 완전한 trace 수용 및 누락·중복·잘못된 owner/순서/단계·stale revision fail-closed를 확인했다.
 
 Android API 37.2 ARM64 AVD와 새 iPhone 17 Pro/iOS 26.2 Simulator profile에서 early/adjacent/separated pair와 start/stretch를 조합한 6개 scene씩, 총 12/12 기본 Root HTML route visual smoke를 통과했다. 앱 소스 해시, layout-ready, draw-present 로그와 화면을 [구현 실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md)에 기록했다. Android AVD는 read-only 및 snapshot 미사용, 임시 user-data로 실행했다. 임시 iOS profile과 Android data는 실행 후 삭제했고 기존 AVD 상태와 source asset baseline을 복원했다.
 
-기존 anonymous-text 810, single-fit auto-placement 1,440, two-fit row-span 3,840, row-span 1–3 1,920 및 4–6 4,320 scene regression을 통과했다. `cargo fmt --all -- --check`, 변경 세 crate의 `cargo clippy --locked -p spinon-layout -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings`, `git diff --check`도 통과했다.
+기존 anonymous-text 810, single-fit auto-placement 1,440, two-fit row-span 3,840, row-span 1–3 1,920 및 4–6 4,320 scene regression을 통과했다. `cargo fmt --all -- --check`와 변경 세 crate의 `cargo clippy --locked -p spinon-layout -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings`가 통과했다. 소스·문서 diff의 whitespace 검사는 통과했다. Android/iOS 원본 build·emulator 로그는 그대로 보존했으며 일부 출력에는 공백 줄 끝이 있어 evidence 로그까지 포함한 전체 `git diff --check`는 이를 표시한다.
 
-아직 PR merge, post-merge main HEAD 재확인, Tailnet preview sync/Agent Browser 확인은 남았다. 앱 화면은 visual smoke이며 PixelCopy/Metal readback, compositor 픽셀, 실기기·hardware GPU, WPT 또는 일반 CSS Grid 지원을 주장하지 않는다.
+구현 PR [#1314](https://github.com/ohah/spinon/pull/1314)은 `2026-11-09T17:54:36Z` Rebase and merge됐고 merge SHA는 `352e6c0b41a9fd4442eeaa5205f18dc1c94accc4`다. 병합 후 `origin/main`이 해당 SHA를 가리키는 것을 확인했다. GitHub check rollup과 review 제출은 없었다. 상태 대장·내부 계약·이 계획·공개 로드맵 및 사용자 지정 Tailnet preview 동기화는 별도 후속 변경으로 기록한다. 앱 화면은 visual smoke이며 PixelCopy/Metal readback, compositor 픽셀, 실기기·hardware GPU, WPT 또는 일반 CSS Grid 지원을 주장하지 않는다.

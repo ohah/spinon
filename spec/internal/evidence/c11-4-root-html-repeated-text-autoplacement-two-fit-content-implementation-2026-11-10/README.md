@@ -1,6 +1,6 @@
 # C11.4 반복 텍스트 자동 배치 두 fit-content 구현 근거
 
-**상태:** 제한 구현 후보 검증 완료 · PR 준비 중 · C11.4/C11 공식 체크 미완료 · 78/214 유지 · 2026-11-10
+**상태:** 제한 구현 PR [#1314](https://github.com/ohah/spinon/pull/1314) 병합 · `2026-11-09T17:54:36Z` · merge SHA `352e6c0b41a9fd4442eeaa5205f18dc1c94accc4` · C11.4/C11 공식 체크 미완료 · 78/214 유지 · 2026-11-10
 
 ## 입력 범위
 
@@ -19,7 +19,7 @@
 - 음수 대조: three-fit, 잘못된 multiplicity, 음수·계산식 cap, column/dense flow, implicit column, indefinite block size, unsupported alignment, 잘못된 item 수, auto-placement와 겹치는 row-span tail의 min-height:auto를 거부한다.
 - 같은 RuntimeSession에서 어두운 scheme의 미지원 three-fit 목록을 원자적으로 거부한 뒤 light scheme에서 원래 frame으로 복구한다.
 - 기존 회귀: anonymous-text 810, single-fit auto-placement 1,440, two-fit row-span 3,840, row-span 위치 1–3 1,920, row-span 위치 4–6 4,320 scene 통과.
-- cargo fmt --all -- --check, 변경 세 crate 대상 cargo clippy --locked -p spinon-layout -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings, git diff --check 통과.
+- cargo fmt --all -- --check와 변경 세 crate 대상 cargo clippy --locked -p spinon-layout -p spinon-style-to-layout -p spinon-runtime --all-targets -- -D warnings 통과. 소스·문서 whitespace 검사는 통과했다. 원본 Android/iOS build 및 emulator 로그는 그대로 보존했으며 일부 도구 출력의 줄 끝 공백 때문에 evidence log를 포함한 전체 `git diff --check`는 해당 줄을 표시한다.
 
 세부 명령은 crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/two_fit_auto_placement.rs와 해당 하위 모듈에서 확인할 수 있다. 전체 2,880 scene은 Rust assertion이며 아래 모바일 화면 표본으로 대체하지 않는다.
 
@@ -57,3 +57,7 @@ iOS는 이번 run에서만 생성한 iPhone 17 Pro / iOS 26.2 프로필(6773E54F
 - 앱 번들·공유 빌드 캐시, 기존 simulator profile/AVD, 이전 실행의 screenshot·snapshot 및 저장소의 사전 untracked 자료는 삭제하지 않았다.
 
 SHA256SUMS는 이 디렉터리의 실행 근거 파일 manifest다.
+
+## PR 병합
+
+구현 PR [#1314](https://github.com/ohah/spinon/pull/1314)은 `2026-11-09T17:54:36Z` Rebase and merge됐고 merge SHA는 `352e6c0b41a9fd4442eeaa5205f18dc1c94accc4`다. GitHub combined status check rollup과 PR review 제출은 없었다. 따라서 로컬·시뮬레이터 결과와 CI 결과를 혼합하지 않는다. 공식 완료 `78/214`, C11.4/C11 미완료, 내부 numeric contract `0.1.0`은 유지한다.
