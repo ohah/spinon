@@ -1,6 +1,6 @@
 # C11.4 · 두 fit-content 행 자동 배치의 min-height:auto
 
-- **상태:** Chrome 157 사전 비교 2,880/2,880 · 계획 실패 관점 20개 검토 완료 · 구현 전 · 공식 78/214 유지
+- **상태:** bounded 구현 PR [#1318](https://github.com/ohah/spinon/pull/1318) Rebase and merge · merge SHA `e9f7f4abf32619ccf2739d077c5c8db16ff35f13` · C11.4/C11 미완료 · 공식 78/214 유지
 - **계획 PR:** [#1316](https://github.com/ohah/spinon/pull/1316) Rebase and merge · merge SHA `83c1c57e9c448202040f8efe4e12ff8f3d3b8d8c`
 - **선행 자동 배치:** [두 fit-content 행](./c11-4-root-html-repeated-text-autoplacement-two-fit-content.md) · 구현 PR [#1314](https://github.com/ohah/spinon/pull/1314)
 - **선행 row-span:** [row-span 두 fit-content 행](./c11-4-root-html-repeated-text-row-span-two-fit-content.md) · 구현 PR [#1311](https://github.com/ohah/spinon/pull/1311)
@@ -51,3 +51,9 @@
 ## 완료 판정
 
 2,880-scene RuntimeSession 비교, content-based minimum floor와 fit cap 관계, start/stretch·row cycle·frame 독립 검증, atomic rejection/recovery, 기존 auto/span/text regressions, focused Rust/Clippy/rustfmt, Android/iOS 기본-route sentinel, 별도 implementation/runtime 실패 관점 20개와 implementation PR diff 30개 검토, merge 후 상태·spec·roadmap/Tailnet 동기화를 마친 뒤에만 이 bounded slice를 완료 처리한다. Chrome 사전 비교나 screenshot만으로 implementation 완료를 표시하지 않는다.
+
+## 구현 결과와 병합
+
+PR [#1318](https://github.com/ohah/spinon/pull/1318)은 `2026-11-09T21:45:22Z` Rebase and merge로 병합됐고 merge SHA는 `e9f7f4abf32619ccf2739d077c5c8db16ff35f13`이다. RuntimeSession auto-placement 테스트 5/5, feature-gated floor trace, workspace Clippy, `cargo fmt --all -- --check`와 `git diff --check`를 통과했다. Android API 37.2 ARM64 shared AVD를 read-only로, iPhone 17 Pro/iOS 26.2 임시 Simulator를 사용해 최종 code commit `10c36104`의 기본 Root HTML route를 light/dark에서 실행했다. 네 실행 모두 app boot, `layout=ready`, draw/present를 기록했다. 네 화면은 visual smoke이며 Android의 llvmpipe software Vulkan 결과를 hardware GPU로 확대 해석하지 않는다. PR checks는 0건이었다.
+
+실행 로그·screenshots·정확한 지원/거부 범위와 최종 코드 및 자원 정리는 [구현 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum-simulators-2026-11-10/README.md)에 있다. 이 merge는 bounded implementation slice만 완료하며 C11.4/C11 공식 체크, `78/214`, internal contract `0.1.0`, 일반 CSS Grid·WPT·실기기·hardware GPU 범위를 바꾸지 않는다.
