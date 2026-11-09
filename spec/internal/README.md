@@ -1,8 +1,8 @@
 # 내부 인터페이스 명세
 
-## C11.4 repeated-text auto-placement 두 fit-content · 구현 후보 · 2026-11-10
+## C11.4 repeated-text auto-placement 두 fit-content · PR #1314 병합 · 2026-11-10
 
-[계획](../../plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md) · [Chrome 157 사전 비교](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md) · [Android/iOS 실행·화면·정리 근거](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md). Chrome/RuntimeSession 2,880/2,880과 Android/iOS default-route visual smoke 12/12를 확인했다. PR merge 전이며 C11.4/C11 미완료·공식 78/214·internal numeric contract 0.1.0을 유지한다.
+[PR #1314](https://github.com/ohah/spinon/pull/1314)은 `2026-11-09T17:54:36Z` Rebase and merge됐고 merge SHA는 `352e6c0b41a9fd4442eeaa5205f18dc1c94accc4`다. [계획](../../plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md) · [Chrome 157 사전 비교](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md) · [Android/iOS 실행·화면·정리 근거](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md). Chrome/RuntimeSession 2,880/2,880과 Android/iOS default-route visual smoke 12/12를 확인했다. PR check rollup은 비어 있다. C11.4/C11 미완료·공식 78/214·internal numeric contract 0.1.0을 유지한다.
 
 ## C11.4 auto-fit + area-expanded tracks · PR #549
 

@@ -1896,7 +1896,7 @@ Chrome 157 fixed-input 비교는 3 positions × 30 tail orders × 6 caps × 2 al
 
 이 bounded 구현은 일반 CSS admission, 임의 text/font/cap/topology, WPT, 일반 Grid row-span 지원 또는 전체 C11.4/C11 완료를 뜻하지 않는다. 공개 API·FFI는 추가하지 않으며 C11.4/C11 공식 체크와 `78/214`, 내부 numeric contract `0.1.0`을 유지한다.
 
-## C11.4 parsed Root HTML repeated-text auto-placement · two fit-content · implementation candidate · 2026-11-10
+## C11.4 parsed Root HTML repeated-text auto-placement · two fit-content · PR #1314 merged · 2026-11-10
 
 이 bounded profile은 기존 single-fit auto-placement slice의 같은 여섯-member `grid-auto-rows` grammar와 definite `40×220px` Root HTML scene을 사용한다. 서로 다른 authored position 1–6의 finite non-negative direct px 또는 definite-basis percentage `fit-content()` track 두 개를 허용한다. 남은 member는 `min-content ×2`, `max-content ×1`, `auto ×1`이며 이 네 member의 12개 고유 순서를 모두 허용한다. 두 fit cap은 각자 independently typed `px|%` 값이다.
 
@@ -1906,4 +1906,4 @@ Chrome 157 fixed-input 비교는 3 positions × 30 tail orders × 6 caps × 2 al
 
 Chrome 157 fixed reference와 독립 relationship verifier는 2,880/2,880 scene을 기록한다. RuntimeSession matrix도 computed typed track list, cap type, Grid/item/payload frames, text glyph/line counts, repeated row cycle, stretch와 visible overflow를 확인한다. 별도 layout trace tests 4/4에서 valid trace 수용, missing/duplicate/wrong-owner/out-of-order trace rejection 및 stale revision output atomicity를 확인했다. Android API 37.2 ARM64 AVD와 임시 iPhone 17 Pro/iOS 26.2 Simulator profile의 기본 Root HTML route sentinel은 6개씩 성공했다. [계획](../../plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md) · [Chrome 사전 비교](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md) · [앱 실행 근거](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/README.md) · [구현/runtime 검토 20개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/implementation-runtime-review-20.md) · [실제 PR diff 검토 30개](./evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-implementation-2026-11-10/pr-diff-review-30.md).
 
-이 후보는 일반 CSS admission, CSS Grid 전체 적합성, arbitrary text/font, implicit columns, WPT, native matrix/pixel parity, physical device 또는 hardware GPU를 제공하지 않는다. 공개 API·FFI 및 numeric internal contract version은 바뀌지 않는다. C11.4/C11은 미완료이며 공식 완료 집계 `78/214`를 유지한다. 현재 implementation PR이 merge되면 merge SHA와 CI 상태를 추가 기록한다.
+구현 PR [#1314](https://github.com/ohah/spinon/pull/1314)은 `2026-11-09T17:54:36Z` Rebase and merge됐고 merge SHA는 `352e6c0b41a9fd4442eeaa5205f18dc1c94accc4`다. PR status-check rollup은 비어 있고 approving review 제출도 없으므로 CI 통과로 기록하지 않는다. 이 제한 구현은 일반 CSS admission, CSS Grid 전체 적합성, arbitrary text/font, implicit columns, WPT, native matrix/pixel parity, physical device 또는 hardware GPU를 제공하지 않는다. 공개 API·FFI 및 numeric internal contract version은 바뀌지 않는다. C11.4/C11은 미완료이며 공식 완료 집계 `78/214`를 유지한다.
