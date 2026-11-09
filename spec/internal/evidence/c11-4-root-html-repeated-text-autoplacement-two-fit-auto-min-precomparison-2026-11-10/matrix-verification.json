@@ -1,0 +1,31 @@
+{
+  "schema": "spinon.c11-4.repeated-text-autoplacement-two-fit-content-auto-min-verification/v1",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixtureSha256": "34c6be405481f86ded711867918ef5ab90a13c828cb03fed1bf821f37f5a1876",
+  "collectorSha256": "57209f2498010a9e6a9a7bcefc37ae07f8d7b4b5d150b2c6353928400c1478d2",
+  "sceneCount": 2880,
+  "uniqueAuthoredTrackLists": 1440,
+  "fitPositionPairs": 15,
+  "orderedCapAssignments": 8,
+  "tailOrders": 12,
+  "alignmentPairs": 1440,
+  "fitRowOccurrencesAcrossBothAlignments": 7680,
+  "startFitRowOccurrences": 3840,
+  "fitRowsRaisedToTextFloorVsMinHeightZero": 1920,
+  "contentFloorViolations": 0,
+  "startTrackTotalCssPx": 180,
+  "stretchTrackTotalCssPx": 220,
+  "stretchAddedSpaceCssPx": 40,
+  "autoTrackOccurrenceCounts": [
+    1,
+    2
+  ],
+  "autoTrackStretchDeltasCssPx": [
+    20,
+    40
+  ],
+  "nonAutoStretchMaxDeltaCssPx": 0.0,
+  "autoMinVisibleOverflowScenes": 0,
+  "agentBrowserSessionClosed": true,
+  "terminalBrowserUsed": false
+}
