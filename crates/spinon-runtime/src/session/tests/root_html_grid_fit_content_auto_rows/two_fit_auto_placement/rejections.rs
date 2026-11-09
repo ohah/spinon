@@ -18,12 +18,29 @@ fn assert_rejected(label: &str, source: &str) {
 
 #[test]
 fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
-    let overlap_span_tail =
-        "fit-content(10px) fit-content(20%) min-content min-content max-content auto";
     let three_fit =
         "fit-content(10px) fit-content(20%) fit-content(30px) min-content max-content auto";
     let wrong_multiplicity =
         "fit-content(10px) fit-content(20%) min-content max-content max-content auto";
+    let one_fit = "fit-content(10px) min-content max-content max-content auto min-content";
+    let mixed_minimums = replace_once(
+        &replace_once(
+            &replace_once(SOURCE, "min-height: 0;", "min-height: auto;"),
+            "#item-0 { height: 10px;",
+            "#item-0 { min-height: 0; height: 10px;",
+        ),
+        "#item-1 { background-color: #f2665e; }",
+        "#item-1 { min-height: 0; background-color: #f2665e; }",
+    );
+    let zero_cap_scene = auto_minimum_scenes()
+        .into_iter()
+        .find(|scene| scene["scene"]["index"] == 0)
+        .expect("Chrome auto-minimum matrix has a zero-cap first scene");
+    let automatic_control_minimum = replace_once(
+        &source_for_auto_minimum(&zero_cap_scene),
+        "#item-0 { min-height: 0; height: 10px;",
+        "#item-0 { min-height: auto; height: 10px;",
+    );
     let cases = [
         (
             "three fit tracks",
@@ -82,9 +99,38 @@ fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
             ),
         ),
         (
-            "automatic item minimum on overlapping span tail",
+            "nested payload child",
             replace_once(
-                &replace_once(SOURCE, BASE_TRACK_LIST, overlap_span_tail),
+                SOURCE,
+                "<div id=\"item-8\" class=\"item\"><div id=\"text-8\" class=\"payload\">AA</div></div>",
+                "<div id=\"item-8\" class=\"item\"><div id=\"text-8\" class=\"payload\">AA<span>BB</span></div></div>",
+            ),
+        ),
+        (
+            "invalid item minimum",
+            replace_once(SOURCE, "min-height: 0;", "min-height: 1px;"),
+        ),
+        ("mixed zero and automatic item minimums", mixed_minimums),
+        (
+            "automatic minimum on the explicit-row control",
+            automatic_control_minimum,
+        ),
+        (
+            "mixed auto-placement and row-span topology",
+            replace_once(
+                &replace_once(
+                    SOURCE,
+                    "#item-1 { background-color: #f2665e; }",
+                    "#item-1 { grid-row: 2 / span 2; background-color: #f2665e; }",
+                ),
+                "min-height: 0;",
+                "min-height: auto;",
+            ),
+        ),
+        (
+            "automatic item minimum on one-fit auto-placement",
+            replace_once(
+                &replace_once(SOURCE, BASE_TRACK_LIST, one_fit),
                 "min-height: 0;",
                 "min-height: auto;",
             ),
@@ -98,11 +144,11 @@ fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
 
 #[test]
 fn parsed_root_html_two_fit_auto_placement_rejects_atomically_and_recovers_same_session() {
-    let scene = scenes()
+    let scene = auto_minimum_scenes()
         .into_iter()
         .find(|scene| scene["scene"]["index"] == 0)
         .expect("the Chrome matrix has its first scene");
-    let source = source_for(&scene);
+    let source = source_for_auto_minimum(&scene);
     let (session, initial) = run(&source);
     assert_eq!(initial.state, crate::session::RuntimeLayoutState::Ready);
     let initial_completed = initial

@@ -61,8 +61,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .chain(&container.rows_line_names)
         .flatten()
         .all(String::is_empty);
-    let hidden = crate::grid_placement::hidden_subtrees(input, index);
     let grid_node = &input.nodes[index[&node]];
+    let hidden = crate::grid_placement::hidden_subtrees(input, index);
     let visible_children = grid_node
         .children
         .iter()
@@ -80,6 +80,12 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
             .count()
             == 2;
+    let two_fit_auto_placement_track_list = six_member_auto_placement_list
+        && tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+            .count()
+            == 2;
     let repeated_text_profile = six_member_auto_placement_list
         && visible_children.len() == 9
         && visible_children.iter().copied().skip(1).all(|item_id| {
@@ -89,6 +95,14 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             };
             repeated_text::has_supported_text(input, *payload)
         });
+    let repeated_text_auto_minimum_profile =
+        repeated_text_profile
+            && visible_children.first().is_some_and(|item_id| {
+                input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)
+            })
+            && visible_children.iter().copied().skip(1).all(|item_id| {
+                input.nodes[index[&item_id]].style.min_height == LayoutDimension::Auto
+            });
     let repeated_text_span_rows = six_member_span_list
         .then(|| repeated_text::span_implicit_row_count(input, &visible_children))
         .flatten();
@@ -337,7 +351,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
         let allow_minimum_floor = visible_children.len() == 3 && position == 1;
-        let allow_auto_minimum = two_fit_span_track_list && repeated_text_span_profile;
+        let allow_auto_minimum = (two_fit_span_track_list && repeated_text_span_profile)
+            || (two_fit_auto_placement_track_list && repeated_text_auto_minimum_profile);
         if auto_item_is_supported(row_item, allow_minimum_floor, allow_auto_minimum) {
             let payload_id = row_item.children[0];
             let profile_payload_heights = if four_member_list {
