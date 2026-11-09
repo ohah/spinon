@@ -206,5 +206,7 @@ fn assert_track_trace(
 
 #[path = "later_fit_content_row_span/matrix.rs"]
 mod matrix;
+#[path = "later_fit_content_row_span/positions_4_6.rs"]
+mod positions_4_6;
 #[path = "later_fit_content_row_span/rejections.rs"]
 mod rejections;

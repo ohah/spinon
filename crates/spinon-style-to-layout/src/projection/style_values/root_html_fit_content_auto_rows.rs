@@ -14,8 +14,9 @@ mod repeated_text;
 mod validation_helpers;
 
 use validation_helpers::{
-    direct_element_children, explicit_empty_span_item_placement, repeated_span_item_kind,
-    repeated_span_item_placement, validate_payload,
+    direct_element_children, explicit_empty_span_item_placement,
+    repeated_span_fit_position_is_supported, repeated_span_item_kind, repeated_span_item_placement,
+    repeated_span_topology_implicit_rows, repeated_span_writing_context, validate_payload,
 };
 
 pub(super) fn validate(
@@ -178,7 +179,13 @@ pub(super) fn validate(
             repeated_text::payload_has_supported_text(tree, *payload)
         });
     let repeated_text_span_profile = six_member_span_list
-        && matches!(items.len(), 3 | 4)
+        && repeated_span_writing_context(grid_style)
+        && items.iter().copied().all(|item| {
+            styles
+                .get(&item.id())
+                .copied()
+                .is_some_and(repeated_span_writing_context)
+        })
         && items
             .first()
             .and_then(|item| styles.get(&item.id()).copied())
@@ -201,31 +208,27 @@ pub(super) fn validate(
                 .iter()
                 .copied()
                 .skip(1)
-                .filter_map(|item| styles.get(&item.id()).copied())
-                .map(repeated_span_item_kind)
-                .collect::<Vec<_>>();
-            placements
-                .iter()
-                .filter(|kind| **kind == Some((2, 2)))
-                .count()
-                == 1
-                && placements
+                .map(|item| {
+                    styles
+                        .get(&item.id())
+                        .copied()
+                        .and_then(repeated_span_item_kind)
+                })
+                .collect::<Option<Vec<_>>>();
+            let fit_position = match &grid.auto_rows {
+                ComputedCssGridAutoRows::TrackList(tracks) => tracks
                     .iter()
-                    .filter(|kind| **kind == Some((3, 2)))
-                    .count()
-                    == 1
-                && (items.len() == 3
-                    && placements
-                        .iter()
-                        .filter(|kind| **kind == Some((2, 3)))
-                        .count()
-                        == 0
-                    || items.len() == 4
-                        && placements
-                            .iter()
-                            .filter(|kind| **kind == Some((2, 3)))
-                            .count()
-                            == 1)
+                    .position(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
+                    .map(|position| position + 1),
+                _ => None,
+            };
+            placements
+                .as_deref()
+                .and_then(repeated_span_topology_implicit_rows)
+                .zip(fit_position)
+                .is_some_and(|(implicit_rows, position)| {
+                    repeated_span_fit_position_is_supported(implicit_rows, position)
+                })
         };
     if (four_member_list && items.len() != 6)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)

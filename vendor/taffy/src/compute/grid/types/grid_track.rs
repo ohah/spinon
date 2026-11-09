@@ -56,6 +56,8 @@ pub(in super::super) struct GridTrack {
     /// A temporary scratch value when "distributing space"
     /// See: https://www.w3.org/TR/css3-grid-layout/#infinitely-growable
     pub infinitely_growable: bool,
+    /// Whether this track was affected during the current growth-limit distribution phase.
+    pub growth_limit_was_affected: bool,
 
     /// The resolved `fit-content()` limit of the max track sizing function (infinity if it is not `fit-content()`
     /// or the limit cannot be resolved). Resolved once per track sizing pass by `resolve_fit_content_limit`.
@@ -82,6 +84,7 @@ impl GridTrack {
             base_size_planned_increase: 0.0,
             growth_limit_planned_increase: 0.0,
             infinitely_growable: false,
+            growth_limit_was_affected: false,
             fit_content_limit: f32::INFINITY,
         }
     }

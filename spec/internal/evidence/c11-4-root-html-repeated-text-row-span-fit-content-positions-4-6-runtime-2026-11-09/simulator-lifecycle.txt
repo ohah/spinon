@@ -1,0 +1,11 @@
+ios_shutdown_after_run=true
+android_shutdown_after_run=not-started
+ios_final_six_scene_smoke=pass
+android_last_attempt=QEMU_SIGSEGV_before_app_install
+android_last_attempt_shutdown=confirmed
+ios_test_app_uninstalled=dev.spinon.bootstrap
+ios_simulator_device_retained=iPhone_17_Pro_reusable_default
+ios_simulator_app_process_after_cleanup=absent
+ios_booted_devices_after_cleanup=0
+s03_pilot_registered=not-found
+core_simulator_services_after_review=preexisting-idle

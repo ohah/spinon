@@ -3,7 +3,9 @@ use super::*;
 mod profiles;
 #[path = "root_html_fit_content_auto_rows/repeated_text.rs"]
 mod repeated_text;
-use profiles::supports_repeated_min_max_content_auto_span_track_list;
+use profiles::{
+    supports_repeated_min_max_content_auto_span_track_list, supports_repeated_span_fit_position,
+};
 
 pub(super) fn supports_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     profiles::supports_min_max_content_auto_track_list(tracks)
@@ -73,8 +75,11 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
             };
             repeated_text::has_supported_text(input, *payload)
         });
-    let repeated_text_span_profile =
-        six_member_span_list && repeated_text::supports_span_topology(input, &visible_children);
+    let repeated_text_span_rows = six_member_span_list
+        .then(|| repeated_text::span_implicit_row_count(input, &visible_children))
+        .flatten();
+    let repeated_text_span_profile = repeated_text_span_rows
+        .is_some_and(|rows| supports_repeated_span_fit_position(tracks, rows));
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -163,7 +168,12 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
                             (&placement.row_start, &placement.row_end),
                             (GridPlacementInput::Line(2), GridPlacementInput::Span(2))
                                 | (GridPlacementInput::Line(3), GridPlacementInput::Span(2))
+                                | (GridPlacementInput::Line(4), GridPlacementInput::Span(2))
+                                | (GridPlacementInput::Line(5), GridPlacementInput::Span(2))
+                                | (GridPlacementInput::Line(6), GridPlacementInput::Span(2))
                                 | (GridPlacementInput::Line(2), GridPlacementInput::Span(3))
+                                | (GridPlacementInput::Line(4), GridPlacementInput::Span(3))
+                                | (GridPlacementInput::Line(5), GridPlacementInput::Span(3))
                         )
                 })
             }

@@ -528,17 +528,19 @@ fn flush_planned_base_size_increases(tracks: &mut [GridTrack]) {
 #[inline(always)]
 fn flush_planned_growth_limit_increases(tracks: &mut [GridTrack], set_infinitely_growable: bool) {
     for track in tracks {
-        if track.growth_limit_planned_increase > 0.0 {
-            track.growth_limit = if track.growth_limit == f32::INFINITY {
+        if track.growth_limit_was_affected {
+            let growth_limit_was_infinite = track.growth_limit == f32::INFINITY;
+            track.growth_limit = if growth_limit_was_infinite {
                 track.base_size + track.growth_limit_planned_increase
             } else {
                 track.growth_limit + track.growth_limit_planned_increase
             };
-            track.infinitely_growable = set_infinitely_growable;
+            track.infinitely_growable = set_infinitely_growable && growth_limit_was_infinite;
         } else {
             track.infinitely_growable = false;
         }
-        track.growth_limit_planned_increase = 0.0
+        track.growth_limit_planned_increase = 0.0;
+        track.growth_limit_was_affected = false;
     }
 }
 
@@ -617,6 +619,7 @@ fn initialize_track_sizes(
         if track.growth_limit < track.base_size {
             track.growth_limit = track.base_size;
         }
+        track.growth_limit_was_affected = false;
     }
 }
 
@@ -1240,13 +1243,11 @@ fn resolve_intrinsic_track_sizes<Tree: LayoutPartialTree>(
                 let axis_min_content_size = item_sizer.min_content_contribution(item, axis_tracks);
                 let space = axis_min_content_size;
                 let tracks = &mut axis_tracks[item.track_range_excluding_lines(axis)];
-                if space > 0.0 {
-                    distribute_item_space_to_growth_limit(
-                        space,
-                        tracks,
-                        has_intrinsic_max_track_sizing_function,
-                    );
-                }
+                distribute_item_space_to_growth_limit(
+                    space,
+                    tracks,
+                    has_intrinsic_max_track_sizing_function,
+                );
             }
             // Mark any tracks whose growth limit changed from infinite to finite in this step as infinitely growable for the next step.
             flush_planned_growth_limit_increases(axis_tracks, true);
@@ -1270,13 +1271,11 @@ fn resolve_intrinsic_track_sizes<Tree: LayoutPartialTree>(
                 let axis_max_content_size = item_sizer.max_content_contribution(item, axis_tracks);
                 let space = axis_max_content_size;
                 let tracks = &mut axis_tracks[item.track_range_excluding_lines(axis)];
-                if space > 0.0 {
-                    distribute_item_space_to_growth_limit(
-                        space,
-                        tracks,
-                        has_max_content_max_track_sizing_function,
-                    );
-                }
+                distribute_item_space_to_growth_limit(
+                    space,
+                    tracks,
+                    has_max_content_max_track_sizing_function,
+                );
             }
             // Mark any tracks whose growth limit changed from infinite to finite in this step as infinitely growable for the next step.
             flush_planned_growth_limit_increases(axis_tracks, false);
@@ -1471,16 +1470,9 @@ fn distribute_item_space_to_growth_limit(
     tracks: &mut [GridTrack],
     track_is_affected: impl Fn(&GridTrack) -> bool,
 ) {
-    // Skip this distribution if there is either
-    //   - no space to distribute
-    //   - no affected tracks to distribute space to
-    if space == 0.0
-        || tracks
-            .iter()
-            .filter(|track| track_is_affected(track))
-            .count()
-            == 0
-    {
+    // Skip only when there are no affected tracks. Even with zero extra space, recording the affected tracks
+    // commits this span group's zero growth-limit increase before the next group is processed.
+    if !tracks.iter().any(&track_is_affected) {
         return;
     }
 
@@ -1528,7 +1520,7 @@ fn distribute_item_space_to_growth_limit(
         distribute_space_up_to_limits(
             extra_space,
             tracks,
-            track_is_affected,
+            &track_is_affected,
             |_| 1.0,
             growth_limit_or_base_size,
             move |track| track.fit_content_limit(),
@@ -1538,8 +1530,11 @@ fn distribute_item_space_to_growth_limit(
     // 4. For each affected track, if the track’s item-incurred increase is larger than the track’s planned increase
     // set the track’s planned increase to that value.
     for track in tracks.iter_mut() {
-        if track.item_incurred_increase > track.growth_limit_planned_increase {
-            track.growth_limit_planned_increase = track.item_incurred_increase;
+        if track_is_affected(track) {
+            track.growth_limit_was_affected = true;
+            if track.item_incurred_increase > track.growth_limit_planned_increase {
+                track.growth_limit_planned_increase = track.item_incurred_increase;
+            }
         }
 
         // Reset the item_incurresed increase ready for the next space distribution

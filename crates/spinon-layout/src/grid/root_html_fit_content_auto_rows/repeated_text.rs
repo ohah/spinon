@@ -33,6 +33,10 @@ pub(super) fn supports_span_topology(input: &LayoutInput, items: &[NodeId]) -> b
     span::supports_topology(input, items)
 }
 
+pub(super) fn span_implicit_row_count(input: &LayoutInput, items: &[NodeId]) -> Option<usize> {
+    span::implicit_row_count(input, items)
+}
+
 pub(super) fn normalize_layout_frames(
     input: &LayoutInput,
     output: &mut crate::LayoutOutput,
@@ -85,8 +89,23 @@ pub(super) fn normalize_layout_frames(
                 };
                 has_supported_text(input, *payload)
             });
-        if supports_span_topology(input, &items) {
-            span::normalize_layout_frames(input, output, grid_id, container, &items, &index)?;
+        if let Some(positive_implicit_rows) = span_implicit_row_count(input, &items) {
+            let GridAutoRows::TrackList(tracks) = &container.auto_rows else {
+                return Err(repeated_text_track_trace_error(grid_id));
+            };
+            if !super::profiles::supports_repeated_span_fit_position(tracks, positive_implicit_rows)
+            {
+                return Err(repeated_text_track_trace_error(grid_id));
+            }
+            span::normalize_layout_frames(
+                input,
+                output,
+                grid_id,
+                container,
+                &items,
+                &index,
+                positive_implicit_rows,
+            )?;
             continue;
         }
         if !repeated_text_profile {

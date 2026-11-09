@@ -1,11 +1,13 @@
 # C11.4 · 반복 텍스트 row-span의 fit-content 위치 4–6
 
-- **상태:** 계획 후보 · 제품 코드 미변경 · C11.4/C11 공식 체크 미완료 · 78/214 유지
+- **상태:** 구현 후보 · 4,320/4,320 scene 및 기존 1–3 row-span 1,920/1,920 통과 · 반복 텍스트 810, 기존 row-span 960, auto-placement fit-content 회귀와 Grid track-sizing 127건 통과 · iOS 6 scene smoke 통과 · Android API 37 smoke는 두 AVD에서 QEMU SIGSEGV로 앱 실행 전 차단됨 · 구현/runtime 20관점 및 PR diff 30관점 적대적 검토 완료 · PR 제출·플랫폼 한계 해소·병합 전 · C11.4/C11 공식 체크 미완료 · 78/214 유지
 - **선행 구현:** [반복 text row-span fit-content 위치 2·3](./c11-4-root-html-repeated-text-later-fit-content-row-span.md) · PR [#1299](https://github.com/ohah/spinon/pull/1299)
 - **선행 구현:** [반복 text auto-placement fit-content 위치 1–6](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md) · PR [#1302](https://github.com/ohah/spinon/pull/1302)
 - **사전 비교:** [Chrome 157 4,320 scene](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/README.md)
 - **계획 실패 관점 검토:** [서로 다른 20개](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-plan-review-20.md)
 - **계획 PR diff 검토:** [별도 30개 관점](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/plan-pr-diff-review-30.md)
+- **구현/runtime 검토:** [별도 20개 관점](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-runtime-2026-11-09/implementation-runtime-review-20.md)
+- **구현 PR diff 검토:** [별도 30개 관점](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-runtime-2026-11-09/pr-diff-review-30.md)
 
 ## 결손과 목표
 
@@ -38,7 +40,7 @@
 3. Layout은 정확히 여섯 positive implicit row를 가진 위 네 topology만 받는다. Item placement·owner·track trace·cap basis·revision을 한 snapshot에서 확인한다. 행 개수나 item y 위치를 추정해 track sizing trace를 대체하지 않는다.
 4. Default Root HTML RuntimeSession route에서 4,320 scene 전부를 Chrome observation 및 독립 frame/track/order/alignment 관계와 비교한다. Unsupported scene은 atomic reject하고 같은 session에서 valid scene을 다시 실행한다.
 5. 기존 row-span 1–3의 1,920-scene matrix, auto-placement 1–6의 1,440-scene matrix, 기존 repeated-text 810-scene corpus, fit-content track-list 회귀와 Grid track-sizing suite를 재실행한다. 영향 crate의 focused Rust tests, -D warnings Clippy, cargo fmt --all -- --check를 실행하고 broad-suite 기존 실패는 baseline이 입증되지 않는 한 분리해 보고한다.
-6. 동일 source revision을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML route에서 실행한다. fit 위치 4–6과 두 alignment sentinel에 대해 HTML source hash, layout-ready, semantic item/row 결과, draw/present와 OS screenshot을 보존한다. Screenshot은 visual smoke이며 PixelCopy/Metal readback이나 compositor parity가 아니다. 이번 작업에서 시작한 simulator와 Agent Browser만 종료한다.
+6. 동일 source revision을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML route에서 실행한다. fit 위치 4–6과 두 alignment sentinel에 대해 HTML source hash, layout-ready, semantic item/row 결과, draw/present와 OS screenshot을 보존한다. Screenshot은 visual smoke이며 PixelCopy/Metal readback이나 compositor parity가 아니다. 이번 작업에서 시작한 simulator와 Agent Browser만 종료한다. 2026-11-09 현재 iOS 6 scene은 통과했으며 Android API 37 AVD 두 개는 QEMU SIGSEGV로 앱 설치 전에 종료되어 Android 화면 결과는 미확인이다.
 7. 새 fixture/FFI 경로는 추가하지 않는다. 필요성이 발견되면 기본 artifact에서 fixture ABI·payload 부재와 opt-in positive control을 각각 확인하기 전에는 연결하지 않는다.
 8. 구현 뒤 이 계획 검토와 다른 실패 관점 20개로 구현/runtime을 검토하고, 구현 PR diff는 별도로 30개 관점으로 검토한다. PR 본문에 가능한 Android/iOS 화면을 연결하고 immutable raw URL을 Agent Browser로 확인한다.
 9. 병합 뒤 spec/STATUS.md, 내부 계약 0059, 이 계획과 공개 roadmap에 bounded 결과·실제 merge SHA·실행 한계를 기록한다. C11.4/C11 체크는 미완료, 공식 78/214, 내부 숫자 계약 0.1.0은 유지한다. 승인된 Tailnet roadmap preview는 문서 merge 후 선택 경로만 백업·hash 검증을 거쳐 동기화한다.
