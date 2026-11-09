@@ -1,0 +1,15 @@
+{
+  "bodyWidth": 1440,
+  "card": "2026-11-09 C11.4 제한 구현 · 반복 text auto-placement의 fit-content() 위치 1–6 · PR #1302 Rebase and merge (2026-11-09T03:03:35Z, merge SHA 3c403dc265933407dcd34154012ceeec871d71c8): 기존 six-member repeated-intrinsic grid-auto-rows profile에서 유한한 fit-content(px|%) 하나를 authored 위치 1–6에 허용한다. RuntimeSession 1,440-scene matrix·fixture trace와 기존 row-span 1,920-scene 회귀를 확인했고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 8개 기본 Root HTML sentinel의 layout-ready 및 draw/present를 확인했다. Screenshots는 visual smoke이며 PixelCopy/Metal drawable readback 또는 native 전체 matrix는 아니다. PR check rollup은 비어 있다. C11.4/C11 미완료, 공식 78/214, 내부 계약 0.1.0은 유지한다. 계획 · 내부 계약 0059 · 구현 근거 · 공식 상태.",
+  "cardTop": 448.6875,
+  "nextLabel": "현재 작업 칸반\n다음 계획: C11.4 후속 bounded slice 후보 미선정",
+  "officialStatus": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 134개 + ID 없는 하위 체크 2개 · 완료 78/214개 · 마지막 확인 오후 12:20:49",
+  "scrollWidth": 1440,
+  "scrollY": 1211,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "viewport": {
+    "height": 1000,
+    "width": 1440
+  }
+}
