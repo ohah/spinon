@@ -1,0 +1,16 @@
+{
+  "session": "spinon-roadmap1299-final-20261109",
+  "agentBrowserVersion": "0.31.1",
+  "closedBy": "agent-browser close for this exact session",
+  "afterClose": {
+    "browserLaunched": false,
+    "pageCount": 0,
+    "sessionListEmpty": true,
+    "reportedDaemonPid": 62791,
+    "reportedDaemonPidStillExists": false
+  },
+  "preexistingProcessesPreserved": [
+    { "pid": 85619, "process": "separate Terminal Browser, not used for this verification" },
+    { "pid": 93239, "process": "preexisting Chrome --no-startup-window, predates this verification" }
+  ]
+}

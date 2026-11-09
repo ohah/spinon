@@ -1868,7 +1868,7 @@ Chrome 157 fixed-input 비교는 topology 4 × tail order 30 × cap 4 × alignme
 
 이 bounded implementation은 general CSS admission, arbitrary text/font/content, implicit columns, general row-span support, WPT conformance 또는 C11.4/C11 완료 선언이 아니다. 공개 API·FFI를 추가하지 않으며 official `78/214`, C11.4/C11 checkboxes와 내부 숫자 계약 `0.1.0`을 유지한다.
 
-## C11.4 parsed Root HTML repeated intrinsic rows · later fit-content row-span positions · bounded implementation candidate · 2026-11-09
+## C11.4 parsed Root HTML repeated intrinsic rows · later fit-content row-span positions · PR #1299 merged · 2026-11-08T23:28:36Z · f0c18c8fead17fb379b77eb6191193a066a5115d
 
 직전 제한 profile의 여섯-member `grid-auto-rows` list에서 direct `fit-content()` 한 개를 첫 번째 위치에만 두던 조건을 두 번째·세 번째 authored 위치까지 확장하는 구현 후보를 추가한다. 나머지 다섯 member의 multiplicity는 `min-content` 두 개, `max-content` 두 개, `auto` 한 개로 고정한다. 따라서 위치 2·3 각각에서 30개 고유 tail 순서, 두 위치 합계 60개 track order만 새로 허용한다. 첫 번째 위치의 기존 30개 순서와 9개 item 반복 auto-placement profile은 유지한다. 위치 2·3의 nine-item auto-placement 입력은 이 span slice에 포함하지 않고 거부한다.
 

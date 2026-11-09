@@ -1,0 +1,39 @@
+{
+  "verifiedAtLocalDate": "2026-11-09",
+  "session": "spinon-roadmap1299-final-20261109",
+  "agentBrowserVersion": "0.31.1",
+  "chromeVersion": "157.0.8103.39",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "desktop": {
+      "viewport": [1440, 1000],
+      "documentWidth": 1440,
+      "bodyWidth": 1440,
+      "pr1299MergeVisible": true,
+      "mergeShaVisible": true,
+      "officialCountVisible": true,
+      "syncEvidenceLinkVisible": true
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "pr1299MergeVisible": true,
+      "mergeShaVisible": true,
+      "officialCountVisible": true,
+      "syncEvidenceLinkVisible": true,
+      "intentionalHorizontalScrollers": [
+        { "selector": ".topnav", "clientWidth": 362, "scrollWidth": 479 },
+        { "selector": "#kanban-board", "clientWidth": 362, "scrollWidth": 1120 },
+        { "selector": "#roadmap-figure", "clientWidth": 360, "scrollWidth": 720 }
+      ]
+    }
+  },
+  "evidencePage": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/roadmap-tailnet-sync-pr1299-c11-4-2026-11-09/README.html",
+    "pass03ReportVisible": true,
+    "officialCountVisible": true,
+    "loadedScreenshots": 4,
+    "pass03JsonLinksFound": 5
+  }
+}

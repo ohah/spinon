@@ -1,0 +1,36 @@
+{
+  "session": "spinon-roadmap1299-verify",
+  "agentBrowserVersion": "0.31.1",
+  "engine": "Chrome 157.0.8103.39",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentElementScrollWidth": 1440,
+    "bodyScrollWidth": 1440,
+    "officialStatusNote": "완료 78/214개",
+    "nextCard": "C11.4 · NEXT · 계획 완료",
+    "pr1299MergedCard": true,
+    "mergedAt": "2026-11-08T23:28:36Z",
+    "mergeSha": "f0c18c8fead17fb379b77eb6191193a066a5115d",
+    "screenshot": "tailnet-roadmap-agent-browser-desktop-progress.png",
+    "boardOverviewScreenshot": "tailnet-roadmap-agent-browser-desktop.png"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentElementScrollWidth": 390,
+    "bodyScrollWidth": 390,
+    "officialStatusNote": "완료 78/214개",
+    "pr1299MergedCard": true,
+    "mergedAt": "2026-11-08T23:28:36Z",
+    "mergeSha": "f0c18c8fead17fb379b77eb6191193a066a5115d",
+    "intentionalHorizontalScrollers": [
+      { "class": "topnav", "clientWidth": 362, "scrollWidth": 479 },
+      { "id": "kanban-board", "clientWidth": 362, "scrollWidth": 1120 },
+      { "id": "roadmap-figure", "clientWidth": 360, "scrollWidth": 720 }
+    ],
+    "screenshot": "tailnet-roadmap-agent-browser-mobile-progress.png",
+    "boardOverviewScreenshot": "tailnet-roadmap-agent-browser-mobile.png"
+  },
+  "terminalBrowserUsed": false,
+  "fullPageHorizontalOverflow": false
+}
