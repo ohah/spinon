@@ -7,6 +7,19 @@ pub(super) fn repeated_text_track_trace_error(grid_id: NodeId) -> LayoutError {
     }
 }
 
+struct RepeatedTextRowTrackStages {
+    intrinsic_tracks: Vec<crate::LayoutGridTrackSizingTrackState>,
+    pre_alignment_tracks: Vec<crate::LayoutGridTrackSizingTrackState>,
+    final_tracks: Vec<crate::LayoutGridTrackSizingTrackState>,
+    stretch_applied: bool,
+}
+
+#[derive(Clone, Copy)]
+enum ResidualRounding {
+    Nearest,
+    Up,
+}
+
 pub(super) fn repeated_text_final_row_track_sizes(
     output: &crate::LayoutOutput,
     grid_id: NodeId,
@@ -14,7 +27,7 @@ pub(super) fn repeated_text_final_row_track_sizes(
     grid_height: f32,
     container: &crate::GridContainerInput,
 ) -> Option<Vec<f32>> {
-    let (_, final_tracks) = repeated_text_row_track_stages(
+    let stages = repeated_text_row_track_stages(
         output,
         grid_id,
         expected_track_count,
@@ -22,7 +35,8 @@ pub(super) fn repeated_text_final_row_track_sizes(
         container,
     )?;
     Some(
-        final_tracks
+        stages
+            .final_tracks
             .into_iter()
             .map(|track| track.base_size)
             .collect(),
@@ -35,10 +49,7 @@ fn repeated_text_row_track_stages(
     expected_track_count: usize,
     grid_height: f32,
     container: &crate::GridContainerInput,
-) -> Option<(
-    Vec<crate::LayoutGridTrackSizingTrackState>,
-    Vec<crate::LayoutGridTrackSizingTrackState>,
-)> {
+) -> Option<RepeatedTextRowTrackStages> {
     let mut traces = output
         .grid_track_sizing_traces
         .iter()
@@ -157,7 +168,12 @@ fn repeated_text_row_track_stages(
     ) {
         return None;
     }
-    Some((intrinsic_tracks, final_tracks))
+    Some(RepeatedTextRowTrackStages {
+        intrinsic_tracks,
+        pre_alignment_tracks,
+        final_tracks,
+        stretch_applied: stretched_auto_tracks,
+    })
 }
 
 fn validate_auto_track_alignment(
@@ -201,7 +217,9 @@ fn validate_auto_track_alignment(
             return false;
         }
     }
-    !stretch_applied || auto_track_count > 0
+    // The stretch stage can run even when this finite used-row prefix contains no `auto`
+    // track. In that case the loop above requires every row to remain unchanged.
+    true
 }
 
 fn blink_layout_unit_floor_units(value: f32) -> i64 {
@@ -221,43 +239,64 @@ pub(super) fn blink_layout_unit_distribute_rows(
     grid_frame: crate::LayoutFrame,
     raw_row_sizes: &[f32],
 ) -> Option<Vec<i64>> {
-    // direct-text auto-placement 정규화 이전의 row-span trace 계약을 유지한다.
-    // row-span의 Taffy pass는 별도의 stage 구성을 사용한다.
-    let trace = output
-        .grid_track_sizing_traces
-        .iter()
-        .find(|trace| trace.node == grid_id)?;
-    let pass = trace
-        .passes
-        .iter()
-        .filter(|pass| pass.axis == crate::LayoutGridTrackSizingAxis::Rows)
-        .max_by_key(|pass| pass.sequence)?;
-    let intrinsic_stage = pass.stages.iter().find(|stage| {
-        stage.stage == crate::LayoutGridTrackSizingStageKind::IntrinsicSizingComplete
-    })?;
-    let final_stage = pass.stages.last()?;
-    let intrinsic_tracks = intrinsic_stage
-        .tracks
-        .iter()
-        .filter(|track| !track.is_gutter)
-        .cloned()
-        .collect::<Vec<_>>();
-    let final_tracks = final_stage
-        .tracks
-        .iter()
-        .filter(|track| !track.is_gutter)
-        .cloned()
-        .collect::<Vec<_>>();
-    if intrinsic_tracks.len() != raw_row_sizes.len() || final_tracks.len() != raw_row_sizes.len() {
+    let stages = repeated_text_row_track_stages(
+        output,
+        grid_id,
+        raw_row_sizes.len(),
+        grid_frame.height,
+        container,
+    )?;
+    if stages.final_tracks.len() != raw_row_sizes.len()
+        || stages.pre_alignment_tracks.len() != raw_row_sizes.len()
+    {
         return None;
     }
-    blink_layout_unit_distribute_rows_from_stages(
+    if stages
+        .final_tracks
+        .iter()
+        .zip(raw_row_sizes)
+        .any(|(track, size)| (track.base_size - size).abs() > 0.01)
+    {
+        return None;
+    }
+
+    let pre_alignment_sizes = stages
+        .pre_alignment_tracks
+        .iter()
+        .map(|track| track.base_size)
+        .collect::<Vec<_>>();
+    let pre_alignment_units = blink_layout_unit_distribute_rows_from_stages(
         container,
         grid_frame,
-        raw_row_sizes,
-        &intrinsic_tracks,
-        &final_tracks,
-    )
+        &pre_alignment_sizes,
+        &stages.intrinsic_tracks,
+        &stages.pre_alignment_tracks,
+        match &container.auto_rows {
+            crate::GridAutoRows::TrackList(tracks)
+                if tracks
+                    .iter()
+                    .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+                    .count()
+                    == 2 =>
+            {
+                ResidualRounding::Up
+            }
+            _ => ResidualRounding::Nearest,
+        },
+    )?;
+    let snapped_rows = if stages.stretch_applied {
+        blink_layout_unit_stretch_auto_rows(container, grid_frame.height, pre_alignment_units)?
+    } else {
+        pre_alignment_units
+    };
+    if snapped_rows
+        .iter()
+        .zip(&stages.final_tracks)
+        .any(|(units, track)| (blink_layout_unit_to_px(*units) - track.base_size).abs() > 0.02)
+    {
+        return None;
+    }
+    Some(snapped_rows)
 }
 
 pub(super) fn repeated_text_blink_layout_unit_distribute_rows(
@@ -267,7 +306,7 @@ pub(super) fn repeated_text_blink_layout_unit_distribute_rows(
     grid_frame: crate::LayoutFrame,
     raw_row_sizes: &[f32],
 ) -> Option<Vec<i64>> {
-    let (intrinsic_tracks, final_tracks) = repeated_text_row_track_stages(
+    let stages = repeated_text_row_track_stages(
         output,
         grid_id,
         raw_row_sizes.len(),
@@ -278,8 +317,9 @@ pub(super) fn repeated_text_blink_layout_unit_distribute_rows(
         container,
         grid_frame,
         raw_row_sizes,
-        &intrinsic_tracks,
-        &final_tracks,
+        &stages.intrinsic_tracks,
+        &stages.final_tracks,
+        ResidualRounding::Nearest,
     )
 }
 
@@ -289,6 +329,7 @@ fn blink_layout_unit_distribute_rows_from_stages(
     raw_row_sizes: &[f32],
     intrinsic_tracks: &[crate::LayoutGridTrackSizingTrackState],
     final_tracks: &[crate::LayoutGridTrackSizingTrackState],
+    residual_rounding: ResidualRounding,
 ) -> Option<Vec<i64>> {
     let mut quantized = Vec::with_capacity(raw_row_sizes.len());
     let mut growth_potentials = Vec::new();
@@ -320,24 +361,86 @@ fn blink_layout_unit_distribute_rows_from_stages(
         let fit_content_limit = repeated_row_fit_content_limit(container, row, grid_frame.height)?;
         let growth_limit = fit_content_limit.map_or(growth_limit, |limit| growth_limit.min(limit));
         let growth_potential = (growth_limit - track.base_size).max(0.0);
-        if growth_potential < 1.0 / 64.0 {
+        let is_auto_track = if row < container.rows.len() {
+            false
+        } else {
+            let crate::GridAutoRows::TrackList(tracks) = &container.auto_rows else {
+                return None;
+            };
+            !tracks.is_empty()
+                && matches!(
+                    tracks[(row - container.rows.len()) % tracks.len()],
+                    GridTrackSize::Auto
+                )
+        };
+        if growth_potential >= 1.0 / 64.0 {
+            growth_potentials.push((row, growth_potential, is_auto_track));
+        } else if matches!(residual_rounding, ResidualRounding::Nearest) {
             return None;
+        } else if fit_content_limit.is_none() {
+            growth_potentials.push((row, growth_potential, is_auto_track));
         }
-        growth_potentials.push((row, growth_potential));
     }
 
-    let target_total = (raw_total * 64.0).round() as i64;
+    // Blink distributes intrinsic contributions in 1/64px LayoutUnits at each track-sizing
+    // step. A fractional share can leave one unit on a later unconstrained track even when
+    // rounding the final f32 sum to nearest would discard it.
+    let target_total = match residual_rounding {
+        ResidualRounding::Nearest => (raw_total * 64.0).round() as i64,
+        ResidualRounding::Up => (raw_total * 64.0).ceil() as i64,
+    };
     let leftover_units = target_total - floor_total;
     if leftover_units < 0 || leftover_units as usize > growth_potentials.len() {
         return None;
     }
     // Blink는 growth potential 순서로 1/64px 잔여분을 나눈다. Taffy는 같은 크기를
     // f32로 유지하므로 여기서 잔여 단위를 배분한다.
-    growth_potentials.sort_by(|left, right| left.1.total_cmp(&right.1));
-    for (row, _) in growth_potentials.iter().rev().take(leftover_units as usize) {
+    growth_potentials.sort_by(|left, right| {
+        left.1
+            .total_cmp(&right.1)
+            .then_with(|| left.2.cmp(&right.2))
+            .then_with(|| left.0.cmp(&right.0))
+    });
+    for (row, _, _) in growth_potentials.iter().rev().take(leftover_units as usize) {
         quantized[*row] += 1;
     }
     Some(quantized)
+}
+
+fn blink_layout_unit_stretch_auto_rows(
+    container: &crate::GridContainerInput,
+    grid_height: f32,
+    mut row_size_units: Vec<i64>,
+) -> Option<Vec<i64>> {
+    let crate::GridAutoRows::TrackList(auto_rows) = &container.auto_rows else {
+        return None;
+    };
+    if auto_rows.is_empty() || !grid_height.is_finite() || grid_height < 0.0 {
+        return None;
+    }
+    let auto_rows = (container.rows.len()..row_size_units.len())
+        .filter(|row| {
+            matches!(
+                auto_rows[(*row - container.rows.len()) % auto_rows.len()],
+                GridTrackSize::Auto
+            )
+        })
+        .collect::<Vec<_>>();
+    if auto_rows.is_empty() {
+        return Some(row_size_units);
+    }
+    let grid_height_units = blink_layout_unit_floor_units(grid_height);
+    let used_units = row_size_units.iter().sum::<i64>();
+    let free_units = (grid_height_units - used_units).max(0);
+    let share = free_units / auto_rows.len() as i64;
+    let remainder = (free_units % auto_rows.len() as i64) as usize;
+    for row in &auto_rows {
+        row_size_units[*row] += share;
+    }
+    for row in auto_rows.iter().rev().take(remainder) {
+        row_size_units[*row] += 1;
+    }
+    Some(row_size_units)
 }
 
 fn repeated_row_fit_content_limit(
@@ -366,3 +469,7 @@ fn repeated_row_fit_content_limit(
     };
     Some(Some(limit))
 }
+
+#[cfg(test)]
+#[path = "track_trace/tests.rs"]
+mod tests;

@@ -138,13 +138,99 @@ pub(super) fn repeated_span_topology_implicit_rows(placements: &[(i32, i32)]) ->
     }
 }
 
-pub(super) fn repeated_span_fit_position_is_supported(
+pub(super) fn repeated_span_fit_positions_are_supported(
     positive_implicit_rows: usize,
-    fit_position: usize,
+    fit_positions: &[usize],
 ) -> bool {
-    match positive_implicit_rows {
-        3 => (1..=3).contains(&fit_position),
-        6 => (4..=6).contains(&fit_position),
+    match fit_positions {
+        [position] => match positive_implicit_rows {
+            3 => (1..=3).contains(position),
+            6 => (4..=6).contains(position),
+            _ => false,
+        },
+        [first, second] => {
+            positive_implicit_rows == 6
+                && (1..=6).contains(first)
+                && (1..=6).contains(second)
+                && first < second
+        }
         _ => false,
     }
+}
+
+pub(super) fn automatic_limits(style: &ComputedElementStyle) -> bool {
+    style.layout_dimensions.min_width == ComputedCssDimension::Auto
+        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
+        && style.layout_dimensions.min_height == ComputedCssDimension::Auto
+        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
+}
+
+pub(super) fn fixed_item(
+    style: &ComputedElementStyle,
+    height: f32,
+    allow_zero_min_height: bool,
+) -> bool {
+    style.properties.get("display").map(String::as_str) == Some("block")
+        && style.layout_dimensions.width == ComputedCssDimension::Auto
+        && style.layout_dimensions.height == ComputedCssDimension::LengthPx(height)
+        && style.layout_dimensions.min_width == ComputedCssDimension::Auto
+        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
+        && (style.layout_dimensions.min_height == ComputedCssDimension::Auto
+            || (allow_zero_min_height
+                && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)))
+        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
+        && style.layout_position == ComputedCssPosition::Static
+        && style.layout_aspect_ratio.is_none()
+        && zero_edges(style.layout_spacing.margin)
+        && zero_edges(style.layout_spacing.padding)
+        && zero_border(style)
+}
+
+pub(super) fn fit_content_item(
+    style: &ComputedElementStyle,
+    allow_minimum_floor: bool,
+    allow_auto_minimum: bool,
+) -> bool {
+    style.properties.get("display").map(String::as_str) == Some("block")
+        && style.layout_dimensions.width == ComputedCssDimension::Auto
+        && style.layout_dimensions.height == ComputedCssDimension::Auto
+        && (style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
+            || (allow_minimum_floor
+                && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(28.0))
+            || (allow_auto_minimum
+                && style.layout_dimensions.min_height == ComputedCssDimension::Auto))
+        && style.layout_dimensions.min_width == ComputedCssDimension::Auto
+        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
+        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
+        && style.layout_position == ComputedCssPosition::Static
+        && style.layout_aspect_ratio.is_none()
+        && zero_edges(style.layout_spacing.margin)
+        && zero_edges(style.layout_spacing.padding)
+        && zero_border(style)
+}
+
+pub(super) fn auto_placement(style: &ComputedElementStyle) -> bool {
+    style.grid_item_placement.as_ref().is_some_and(|placement| {
+        [
+            &placement.row_start,
+            &placement.row_end,
+            &placement.column_start,
+            &placement.column_end,
+        ]
+        .into_iter()
+        .all(|value| matches!(value, ComputedCssGridPlacement::Auto))
+    })
+}
+
+pub(super) fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
+    [edges.top, edges.right, edges.bottom, edges.left]
+        .into_iter()
+        .all(|value| matches!(value, ComputedCssSpacingValue::LengthPx(value) if value == 0.0))
+}
+
+pub(super) fn zero_border(style: &ComputedElementStyle) -> bool {
+    style.layout_border.top == 0.0
+        && style.layout_border.right == 0.0
+        && style.layout_border.bottom == 0.0
+        && style.layout_border.left == 0.0
 }
