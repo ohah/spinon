@@ -1,0 +1,16 @@
+{
+  "session": "spinon-tailnet-pr1320",
+  "closeCommandResult": "Browser closed",
+  "sessionInfoAfterClose": {
+    "active": false,
+    "pid": null
+  },
+  "matchingProcessAudit": {
+    "ownedAgentBrowserOrHeadlessChromeProcessRemaining": false,
+    "remainingMatchingProcess": {
+      "pid": 87587,
+      "executable": "/opt/homebrew/Caskroom/terminal-browser/0.8.0/terminal-browser/agent-browser/bin/agent-browser",
+      "classification": "pre-existing Terminal Browser helper; not created by this run and left untouched"
+    }
+  }
+}

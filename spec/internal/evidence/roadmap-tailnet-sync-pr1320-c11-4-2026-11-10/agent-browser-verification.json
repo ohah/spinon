@@ -1,0 +1,52 @@
+{
+  "tool": "agent-browser",
+  "toolVersion": "0.31.1",
+  "browser": "HeadlessChrome/157.0.0.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "origin": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "roadmap": {
+    "desktop": {
+      "viewport": [1440, 1000],
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "containsNextPlanLink": true,
+      "containsOfficialCount78Of214": true,
+      "containsIncompleteC114": true,
+      "screenshot": "tailnet-roadmap-desktop-agent-browser.png"
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "documentWidth": 390,
+      "containsNextPlanLink": true,
+      "containsOfficialCount78Of214": true,
+      "screenshot": "tailnet-roadmap-mobile-agent-browser.png"
+    }
+  },
+  "plan": {
+    "desktop": {
+      "viewport": [1440, 1000],
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum.html",
+      "containsMergedPlan1320AndMergeSha": true,
+      "containsOfficialCount78Of214": true,
+      "containsIncompleteC114": true,
+      "screenshot": "tailnet-plan-desktop-agent-browser.png"
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum.html",
+      "documentWidth": 390,
+      "containsMergedPlan1320AndMergeSha": true,
+      "containsOfficialCount78Of214": true,
+      "containsIncompleteC114": true,
+      "screenshot": "tailnet-plan-mobile-agent-browser.png"
+    }
+  },
+  "sampleImageLink": {
+    "readmeUrl": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-min-precomparison-2026-11-10/README.html",
+    "imageUrl": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-min-precomparison-2026-11-10/chrome157-one-fit-auto-min-sample.png",
+    "imageLoaded": true,
+    "naturalWidth": 1280,
+    "naturalHeight": 900
+  }
+}
