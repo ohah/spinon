@@ -50,5 +50,25 @@
     "backupsVerified": 37,
     "noDeletes": true,
     "previewServerRestarted": false
+  },
+  "githubPr": {
+    "url": "https://github.com/ohah/spinon/pull/1319",
+    "title": "docs(c11.4): PR #1318 병합 후 Tailnet 로드맵 동기화",
+    "bodyContainsDesktopAndMobileSections": true,
+    "images": [
+      {
+        "alt": "Tailnet roadmap desktop 1440x1000",
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 1000
+      },
+      {
+        "alt": "Tailnet roadmap mobile 390x844",
+        "complete": true,
+        "naturalWidth": 390,
+        "naturalHeight": 844
+      }
+    ],
+    "browserSession": "spinon-pr1319"
   }
 }
