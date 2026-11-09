@@ -1,0 +1,147 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 repeated text auto-placement fit-content positions</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 16px; color: #172033; font: 13px/1.45 system-ui, sans-serif; }
+  .grid {
+    display: grid; width: 40px; height: 220px;
+    grid-template-columns: 40px; grid-template-rows: 10px;
+    grid-auto-flow: row; row-gap: 0; column-gap: 0;
+    align-content: start; align-items: normal; justify-items: normal;
+    direction: ltr; overflow: visible;
+  }
+  .item { display: block; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; border: 0; overflow: visible; }
+  .empty { height: 10px; grid-row: 1 / 2; background-color: #cbd5e1; }
+  .item[data-index="1"] { background-color: #fca5a5; }
+  .item[data-index="2"] { background-color: #93c5fd; }
+  .item[data-index="3"] { background-color: #86efac; }
+  .payload { display: block; width: auto; height: auto; margin: 0; padding: 0; border: 0; font: 400 10px/10px monospace; letter-spacing: 0; word-spacing: 0; white-space: normal; direction: ltr; background-color: #fde68a; }
+  #sample { display: flex; align-items: flex-start; gap: 20px; }
+  #sample-grid { grid-auto-rows: min-content max-content auto min-content max-content fit-content(20px); }
+</style>
+<h1>C11.4 repeated text auto-placement fit-content positions</h1>
+<p>Chrome 157 고정 비교: 여섯-member 반복 row 목록에서 fit-content() 위치 1–6과 여덟 implicit text row를 측정합니다.</p>
+<div id="sample">
+  <div id="sample-grid" class="grid"></div>
+  <pre id="sample-summary"></pre>
+</div>
+<script>
+const payloads = [
+  'A A A A A A',
+  'AAAA AAAA A',
+  'AA AA AA AA',
+  'AAA AAA AAA',
+  'AAA AAA',
+  'A A A A A A',
+  'A A A A A A A A',
+  'AA',
+];
+const tailMembers = ['min-content', 'min-content', 'max-content', 'max-content', 'auto'];
+const contentFor = index => payloads[index - 1];
+
+function appendItems(grid) {
+  const empty = document.createElement('div');
+  empty.className = 'item empty';
+  grid.append(empty);
+  for (let index = 1; index <= payloads.length; index += 1) {
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.dataset.index = String(index);
+    const payload = document.createElement('div');
+    payload.className = 'payload';
+    payload.textContent = contentFor(index);
+    item.append(payload);
+    grid.append(item);
+  }
+}
+
+appendItems(document.querySelector('#sample-grid'));
+
+window.captureMatrix = () => {
+  const counts = new Map([['min-content', 2], ['max-content', 2], ['auto', 1]]);
+  const permutations = new Map();
+  const visit = prefix => {
+    if (prefix.length === 5) {
+      permutations.set(prefix.join(' '), [...prefix]);
+      return;
+    }
+    for (const value of tailMembers) {
+      const count = counts.get(value);
+      if (count === 0) continue;
+      counts.set(value, count - 1);
+      prefix.push(value);
+      visit(prefix);
+      prefix.pop();
+      counts.set(value, count);
+    }
+  };
+  visit([]);
+  const tails = [...permutations.values()].sort((left, right) => left.join(' ').localeCompare(right.join(' ')));
+  const round = value => Math.round(value * 100000) / 100000;
+  const box = (element, origin) => {
+    const rect = element.getBoundingClientRect();
+    return [rect.x - origin.x, rect.y - origin.y, rect.width, rect.height].map(round);
+  };
+  const lines = element => {
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    return [...new Set([...range.getClientRects()].map(rect => round(rect.top)))];
+  };
+  const scenes = [];
+  const host = document.createElement('div');
+  Object.assign(host.style, { position: 'absolute', left: '-10000px', top: '0' });
+  document.body.append(host);
+  for (let fitPosition = 1; fitPosition <= 6; fitPosition += 1) {
+    for (const tail of tails) {
+      for (const cap of ['20px', '20%', '0%', '120%']) {
+        for (const align of ['start', 'stretch']) {
+          const tracks = [...tail];
+          tracks.splice(fitPosition - 1, 0, `fit-content(${cap})`);
+          const grid = document.createElement('div');
+          grid.className = 'grid';
+          Object.assign(grid.style, { gridAutoRows: tracks.join(' '), alignContent: align });
+          appendItems(grid);
+          host.append(grid);
+          const origin = grid.getBoundingClientRect();
+          const style = getComputedStyle(grid);
+          const rows = style.gridTemplateRows.split(/\s+/).map(value => round(Number.parseFloat(value)));
+          const items = [...grid.children].map((item, index) => {
+            const payload = item.querySelector('.payload');
+            const payloadLines = payload ? lines(payload) : [];
+            return {
+              id: item.dataset.index || `empty-${index}`,
+              frame: box(item, origin),
+              payload: payload ? box(payload, origin) : null,
+              lineCount: payloadLines.length,
+              lineTops: payloadLines.map(value => round(value - origin.y)),
+            };
+          });
+          scenes.push({
+            fitPosition, tail, cap, align, authoredAutoRows: tracks,
+            computedAutoRows: style.gridAutoRows,
+            gridFrame: [round(origin.width), round(origin.height)], rows, items,
+          });
+          grid.remove();
+        }
+      }
+    }
+  }
+  host.remove();
+  return {
+    userAgent: navigator.userAgent, platform: navigator.platform, dpr: devicePixelRatio,
+    payloads, payloadLineCounts: [...document.querySelectorAll('#sample-grid .payload')].map(node => lines(node).length),
+    uniqueTailOrders: tails.length, fitContentPositions: [1, 2, 3, 4, 5, 6],
+    caseCount: scenes.length, scenes,
+  };
+};
+
+const sample = document.querySelector('#sample-grid');
+const sampleStyle = getComputedStyle(sample);
+document.querySelector('#sample-summary').textContent = JSON.stringify({
+  tracks: sampleStyle.gridAutoRows,
+  rows: sampleStyle.gridTemplateRows,
+  itemLineCounts: [...sample.querySelectorAll('.payload')].map(node => lines(node).length),
+}, null, 2);
+</script>
