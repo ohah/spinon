@@ -1,0 +1,440 @@
+{
+  "schema": "spinon.tailnet-preview.served-verification/v1",
+  "timestampUtc": "2026-11-09T16:28:48Z",
+  "tailscaleBackendState": "Running",
+  "serverPid": 28040,
+  "allHttp200AndSha256Match": true,
+  "checkedRoutes": [
+    {
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 907594,
+      "expectedSha256": "5e2d30e3bfb50d565e6ced3bba455e8060a04a5870ec1cc7cc973cadfd73f862",
+      "servedSha256": "5e2d30e3bfb50d565e6ced3bba455e8060a04a5870ec1cc7cc973cadfd73f862",
+      "sha256Match": true
+    },
+    {
+      "route": "STATUS.md",
+      "status": 200,
+      "bytes": 747835,
+      "expectedSha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197",
+      "servedSha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197",
+      "sha256Match": true
+    },
+    {
+      "route": "icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 794140,
+      "expectedSha256": "dcc4cf2fb74aafb4c9a0f98f69bbd0cb6cb7d713ba279a582f45193ecf568c84",
+      "servedSha256": "dcc4cf2fb74aafb4c9a0f98f69bbd0cb6cb7d713ba279a582f45193ecf568c84",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "status": 200,
+      "bytes": 562201,
+      "expectedSha256": "277916332d9ae79eb99818ecb44b508ac153ecbf7c3acc7bcd62844c12c37257",
+      "servedSha256": "277916332d9ae79eb99818ecb44b508ac153ecbf7c3acc7bcd62844c12c37257",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "status": 200,
+      "bytes": 23798,
+      "expectedSha256": "1e6aee683f1ec25bcb268163fea1d4422fdd015542f82ea83403b1a263c1f3ab",
+      "servedSha256": "1e6aee683f1ec25bcb268163fea1d4422fdd015542f82ea83403b1a263c1f3ab",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "status": 200,
+      "bytes": 3699,
+      "expectedSha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "servedSha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/SHA256SUMS",
+      "status": 200,
+      "bytes": 1754,
+      "expectedSha256": "026b49de2b5e4bfb3003f71ac480b2761fc668b9ddd7b96d6cf6e39986b0811e",
+      "servedSha256": "026b49de2b5e4bfb3003f71ac480b2761fc668b9ddd7b96d6cf6e39986b0811e",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "status": 200,
+      "bytes": 196,
+      "expectedSha256": "c33fbb0d3bd774cba4e447bdf46247d08de7b08bc501fc766b779e6348dda92b",
+      "servedSha256": "c33fbb0d3bd774cba4e447bdf46247d08de7b08bc501fc766b779e6348dda92b",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs",
+      "status": 200,
+      "bytes": 9368,
+      "expectedSha256": "d1dc919984d1587b2302a6ab5f6593a8f0cf96febc89c488cdd0aa118545d325",
+      "servedSha256": "d1dc919984d1587b2302a6ab5f6593a8f0cf96febc89c488cdd0aa118545d325",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson",
+      "status": 200,
+      "bytes": 4476575,
+      "expectedSha256": "64761f0eed9e4c1dfb587dfc7f531a26e535eaee6122ed4a13048913a991cd62",
+      "servedSha256": "64761f0eed9e4c1dfb587dfc7f531a26e535eaee6122ed4a13048913a991cd62",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "status": 200,
+      "bytes": 41651,
+      "expectedSha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "servedSha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json",
+      "status": 200,
+      "bytes": 1794,
+      "expectedSha256": "dc9b65b0a0e6dbe6a04e01f8446be819a7d0d5600b3033e179e9ac0d1c874f79",
+      "servedSha256": "dc9b65b0a0e6dbe6a04e01f8446be819a7d0d5600b3033e179e9ac0d1c874f79",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 35426,
+      "expectedSha256": "dc46ff092018db3a7dafda007b65a37710ef7d8fae422cc16800ced1d7cc6f1c",
+      "servedSha256": "dc46ff092018db3a7dafda007b65a37710ef7d8fae422cc16800ced1d7cc6f1c",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "status": 200,
+      "bytes": 5749,
+      "expectedSha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "servedSha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "sha256Match": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "status": 200,
+      "bytes": 13410,
+      "expectedSha256": "c7cfd8f1abc985614dcf02b12611c7985063f0330b7e764294f65ad79ceaa34d",
+      "servedSha256": "c7cfd8f1abc985614dcf02b12611c7985063f0330b7e764294f65ad79ceaa34d",
+      "sha256Match": true
+    },
+    {
+      "route": "logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.html",
+      "status": 200,
+      "bytes": 33156,
+      "expectedSha256": "1f932e272fd85fb374a6cba5d62d42991965daf1fec35a50d434fdce4f1a41a2",
+      "servedSha256": "1f932e272fd85fb374a6cba5d62d42991965daf1fec35a50d434fdce4f1a41a2",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md",
+      "status": 200,
+      "bytes": 10409,
+      "expectedSha256": "835f973095dc07a9e8875b07c401beae03e63a080dacb0e499749da33731c4e0",
+      "servedSha256": "835f973095dc07a9e8875b07c401beae03e63a080dacb0e499749da33731c4e0",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "status": 200,
+      "bytes": 25198,
+      "expectedSha256": "4e92ef0dc2371e7fe5e4783fa2ad56d0989ff4ef38ff9d611642cb43ec98f819",
+      "servedSha256": "4e92ef0dc2371e7fe5e4783fa2ad56d0989ff4ef38ff9d611642cb43ec98f819",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "status": 200,
+      "bytes": 4503,
+      "expectedSha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "servedSha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "status": 200,
+      "bytes": 32165,
+      "expectedSha256": "78102ba957f703a1e6c217745bfdb4a9de3e0c8eaf59d81108f1d3078b7d4dd8",
+      "servedSha256": "78102ba957f703a1e6c217745bfdb4a9de3e0c8eaf59d81108f1d3078b7d4dd8",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "status": 200,
+      "bytes": 9772,
+      "expectedSha256": "6f4eec2d43f11666cff0d0b639b1fbeffc9bc88da8ce8a7130bcd614c79178fb",
+      "servedSha256": "6f4eec2d43f11666cff0d0b639b1fbeffc9bc88da8ce8a7130bcd614c79178fb",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.html",
+      "status": 200,
+      "bytes": 35748,
+      "expectedSha256": "1dfd253129cacabc66332c62e54c2a6d91f2b1aa74cb8df056e5017894e33e25",
+      "servedSha256": "1dfd253129cacabc66332c62e54c2a6d91f2b1aa74cb8df056e5017894e33e25",
+      "sha256Match": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "status": 200,
+      "bytes": 12763,
+      "expectedSha256": "800325a538219b586ef5503edf7ada61e0750164b4e91bee346c6ccef81e46f6",
+      "servedSha256": "800325a538219b586ef5503edf7ada61e0750164b4e91bee346c6ccef81e46f6",
+      "sha256Match": true
+    },
+    {
+      "route": "public/icon.svg",
+      "status": 200,
+      "bytes": 638,
+      "expectedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "servedSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "sha256Match": true
+    },
+    {
+      "route": "public/logo.svg",
+      "status": 200,
+      "bytes": 568,
+      "expectedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "servedSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "sha256Match": true
+    },
+    {
+      "route": "public/roadmap.html",
+      "status": 200,
+      "bytes": 652418,
+      "expectedSha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "servedSha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "sha256Match": true
+    },
+    {
+      "route": "roadmap.html",
+      "status": 200,
+      "bytes": 652418,
+      "expectedSha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "servedSha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "sha256Match": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "status": 200,
+      "bytes": 907598,
+      "expectedSha256": "10003c582c576db71f2e783baa4534bba36d6431a52b3314e0305422a927af88",
+      "servedSha256": "10003c582c576db71f2e783baa4534bba36d6431a52b3314e0305422a927af88",
+      "sha256Match": true
+    },
+    {
+      "route": "spec/STATUS.md",
+      "status": 200,
+      "bytes": 747835,
+      "expectedSha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197",
+      "servedSha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197",
+      "sha256Match": true
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "status": 200,
+      "bytes": 652418,
+      "expectedSha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "servedSha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "sha256Match": true
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "bytes": 73952,
+      "expectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "servedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "sha256Match": true
+    },
+    {
+      "route": "static/image/chrome157-two-fit-sample.7950ec426f.png",
+      "status": 200,
+      "bytes": 41651,
+      "expectedSha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "servedSha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "status": 200,
+      "bytes": 217061,
+      "expectedSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "servedSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 384,
+      "expectedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "servedSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "status": 200,
+      "bytes": 98,
+      "expectedSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "servedSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-360a2e90cba1.47887bf567.js",
+      "status": 200,
+      "bytes": 10649,
+      "expectedSha256": "01a9603e47b3924c4b095b8d13b5e1f2e503d37c252c76755af34acc68b6fe12",
+      "servedSha256": "01a9603e47b3924c4b095b8d13b5e1f2e503d37c252c76755af34acc68b6fe12",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-48af8a4a437d.7c912a01c4.js",
+      "status": 200,
+      "bytes": 9468,
+      "expectedSha256": "1ec8e0a2bab2523664f6dee8143af5cd2be5f0aa3fd3463a507e6a8a0796faa4",
+      "servedSha256": "1ec8e0a2bab2523664f6dee8143af5cd2be5f0aa3fd3463a507e6a8a0796faa4",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.670838edda.js",
+      "status": 200,
+      "bytes": 984660,
+      "expectedSha256": "247fcaa60315a140a8dd99b3f1589b37887d0f0659d8c42b228dcac5c68c4241",
+      "servedSha256": "247fcaa60315a140a8dd99b3f1589b37887d0f0659d8c42b228dcac5c68c4241",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ffcc1d59c9.js",
+      "status": 200,
+      "bytes": 984515,
+      "expectedSha256": "0890951eb19a930fdc8a0cba1fdd143cabbd4ac82a79a79eb1f4584971918d47",
+      "servedSha256": "0890951eb19a930fdc8a0cba1fdd143cabbd4ac82a79a79eb1f4584971918d47",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-8d8d564f35f4.fb4782bb2e.js",
+      "status": 200,
+      "bytes": 19518,
+      "expectedSha256": "43bb992faaacb6672f8047c7948e99eb1f327bce713d3ae492e99622ccfbfd6b",
+      "servedSha256": "43bb992faaacb6672f8047c7948e99eb1f327bce713d3ae492e99622ccfbfd6b",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-8e21c8ddc74f.b5fce18f5f.js",
+      "status": 200,
+      "bytes": 16469,
+      "expectedSha256": "61b16831b6535c9ec982955b98241491a906a184e9afe2af876de3cb11590c88",
+      "servedSha256": "61b16831b6535c9ec982955b98241491a906a184e9afe2af876de3cb11590c88",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.b91a1dd90e.js",
+      "status": 200,
+      "bytes": 834823,
+      "expectedSha256": "ea53ac52ee883f7e4fb5460dc26c520bfdd8ad3c010860d0d77ee18debecd01f",
+      "servedSha256": "ea53ac52ee883f7e4fb5460dc26c520bfdd8ad3c010860d0d77ee18debecd01f",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-f134f99315f4.ebf1fc5732.js",
+      "status": 200,
+      "bytes": 15724,
+      "expectedSha256": "84f9032d9643a13da2d7cde13bc1c7e099dce77c2c823f4c7e30575f6291fcf4",
+      "servedSha256": "84f9032d9643a13da2d7cde13bc1c7e099dce77c2c823f4c7e30575f6291fcf4",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/async/route-f2813e20be5e.11c2f543ed.js",
+      "status": 200,
+      "bytes": 7385,
+      "expectedSha256": "9e71d4ea5ec39a247d30d368c0b8daf2e36dfd603e4eab3dfe40ae854810a1ac",
+      "servedSha256": "9e71d4ea5ec39a247d30d368c0b8daf2e36dfd603e4eab3dfe40ae854810a1ac",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/index.70ac15966f.js",
+      "status": 200,
+      "bytes": 73671,
+      "expectedSha256": "6b3956deab33da5ad07a94621bc6da1a49b374a28100432a630dd7dccf964b09",
+      "servedSha256": "6b3956deab33da5ad07a94621bc6da1a49b374a28100432a630dd7dccf964b09",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "status": 200,
+      "bytes": 218366,
+      "expectedSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "servedSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 1209,
+      "expectedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "servedSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "status": 200,
+      "bytes": 35366,
+      "expectedSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "servedSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "status": 200,
+      "bytes": 222,
+      "expectedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "servedSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "sha256Match": true
+    },
+    {
+      "route": "static/js/styles.b5d9a69293.js",
+      "status": 200,
+      "bytes": 471,
+      "expectedSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "servedSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "sha256Match": true
+    },
+    {
+      "route": "static/search_index.ko.48514278.json",
+      "status": 200,
+      "bytes": 1676259,
+      "expectedSha256": "4851427845730086d148cfa3899ca24717792a1129269a95738d1ab9a6cc0ad6",
+      "servedSha256": "4851427845730086d148cfa3899ca24717792a1129269a95738d1ab9a6cc0ad6",
+      "sha256Match": true
+    }
+  ],
+  "roadmapMarkers": {
+    "nextPlanPresent": true,
+    "mergedPr1311Present": true,
+    "officialCountPresent": true,
+    "implementationNotStarted": true
+  },
+  "dynamicOfficialStatusSource": "GitHub main; board content was visually checked after merge"
+}

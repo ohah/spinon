@@ -1,0 +1,813 @@
+{
+  "schema": "spinon.tailnet-preview.publication-preflight/v1",
+  "timestampUtc": "2026-11-09T16:25:16Z",
+  "sourceCommit": "6439049c16cc107682292dd7c4d6c64dc4c1b413",
+  "tailscaleBackendState": "Running",
+  "serverPid": 28040,
+  "serverRestarted": false,
+  "noDeletes": true,
+  "sourceRoot": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10",
+  "destinationRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10",
+  "fileCount": 53,
+  "bytes": 16625924,
+  "states": {
+    "replace": 11,
+    "same": 13,
+    "add": 29
+  },
+  "blockedByOpenReaders": [],
+  "results": [
+    {
+      "route": "STATUS.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/STATUS.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 907594,
+      "sha256": "5e2d30e3bfb50d565e6ced3bba455e8060a04a5870ec1cc7cc973cadfd73f862",
+      "previousSha256": "9e501677210c9b545a7d6ea1c62f9500ea84edf983f34bb834e61ead43acc257",
+      "previousBytes": 909618,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/STATUS.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/STATUS.html",
+      "openReaders": []
+    },
+    {
+      "route": "STATUS.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/STATUS.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 747835,
+      "sha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197",
+      "previousSha256": "557914833341820eaf64f7a8f3672cebaab3d0beb0621d0747ecde95eed26685",
+      "previousBytes": 740947,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/STATUS.md",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/STATUS.md",
+      "openReaders": []
+    },
+    {
+      "route": "icon.svg",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/icon.svg",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root",
+        "rspress-site"
+      ],
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousBytes": 638,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/icon.svg",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/internal/0059-c11-grid-layout.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 794140,
+      "sha256": "dcc4cf2fb74aafb4c9a0f98f69bbd0cb6cb7d713ba279a582f45193ecf568c84",
+      "previousSha256": "f98ef10a9e92ab6911d2b3b39eefff36580ee7be432c10a78561a2c2bb7f3817",
+      "previousBytes": 796248,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/0059-c11-grid-layout.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/internal/0059-c11-grid-layout.html",
+      "openReaders": []
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/0059-c11-grid-layout.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 562201,
+      "sha256": "277916332d9ae79eb99818ecb44b508ac153ecbf7c3acc7bcd62844c12c37257",
+      "previousSha256": "7b53a33957f0e074754f2d31d362efdb61ac8d46ef21f97a5a7cd2308d92bcd2",
+      "previousBytes": 556709,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/0059-c11-grid-layout.md",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/internal/0059-c11-grid-layout.md",
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 23798,
+      "sha256": "1e6aee683f1ec25bcb268163fea1d4422fdd015542f82ea83403b1a263c1f3ab",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 3699,
+      "sha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/SHA256SUMS",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/SHA256SUMS",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 1754,
+      "sha256": "026b49de2b5e4bfb3003f71ac480b2761fc668b9ddd7b96d6cf6e39986b0811e",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/SHA256SUMS",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 196,
+      "sha256": "c33fbb0d3bd774cba4e447bdf46247d08de7b08bc501fc766b779e6348dda92b",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 9368,
+      "sha256": "d1dc919984d1587b2302a6ab5f6593a8f0cf96febc89c488cdd0aa118545d325",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 4476575,
+      "sha256": "64761f0eed9e4c1dfb587dfc7f531a26e535eaee6122ed4a13048913a991cd62",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 1794,
+      "sha256": "dc9b65b0a0e6dbe6a04e01f8446be819a7d0d5600b3033e179e9ac0d1c874f79",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 35426,
+      "sha256": "dc46ff092018db3a7dafda007b65a37710ef7d8fae422cc16800ced1d7cc6f1c",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 5749,
+      "sha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 13410,
+      "sha256": "c7cfd8f1abc985614dcf02b12611c7985063f0330b7e764294f65ad79ceaa34d",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "logo.svg",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/logo.svg",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previousSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previousBytes": 568,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/logo.svg",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 33156,
+      "sha256": "1f932e272fd85fb374a6cba5d62d42991965daf1fec35a50d434fdce4f1a41a2",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.html",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 10409,
+      "sha256": "835f973095dc07a9e8875b07c401beae03e63a080dacb0e499749da33731c4e0",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 25198,
+      "sha256": "4e92ef0dc2371e7fe5e4783fa2ad56d0989ff4ef38ff9d611642cb43ec98f819",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 4503,
+      "sha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 32165,
+      "sha256": "78102ba957f703a1e6c217745bfdb4a9de3e0c8eaf59d81108f1d3078b7d4dd8",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 9772,
+      "sha256": "6f4eec2d43f11666cff0d0b639b1fbeffc9bc88da8ce8a7130bcd614c79178fb",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/plan/c11-4-root-html-repeated-text-row-span-two-fit-content.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 35748,
+      "sha256": "1dfd253129cacabc66332c62e54c2a6d91f2b1aa74cb8df056e5017894e33e25",
+      "previousSha256": "97a070e3c2e18bc00798ae1fee2e502fb20bb46a968870c2408e0f260da17965",
+      "previousBytes": 29493,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-row-span-two-fit-content.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/plan/c11-4-root-html-repeated-text-row-span-two-fit-content.html",
+      "openReaders": []
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 12763,
+      "sha256": "800325a538219b586ef5503edf7ada61e0750164b4e91bee346c6ccef81e46f6",
+      "previousSha256": "bb81c07bd4e34e8cd038e57fd1a38f9dfbad29d1585b8fc276053982aab6f01a",
+      "previousBytes": 9798,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "openReaders": []
+    },
+    {
+      "route": "public/icon.svg",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/public/icon.svg",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "previousBytes": 638,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/public/icon.svg",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "public/logo.svg",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/public/logo.svg",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previousSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "previousBytes": 568,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/public/logo.svg",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "public/roadmap.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/public/roadmap.html",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 652418,
+      "sha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "previousSha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e",
+      "previousBytes": 645982,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/public/roadmap.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/public/roadmap.html",
+      "openReaders": []
+    },
+    {
+      "route": "roadmap.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/roadmap.html",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 652418,
+      "sha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "previousSha256": "d315588227c65122e4c4e038c9db8e3f2162d725420322a6f75a41104505e6ae",
+      "previousBytes": 650400,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/roadmap.html",
+      "openReaders": []
+    },
+    {
+      "route": "spec/STATUS.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/spec/STATUS.html",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 907598,
+      "sha256": "10003c582c576db71f2e783baa4534bba36d6431a52b3314e0305422a927af88",
+      "previousSha256": "5515229f6640bcfd5fce8f936db804b080a6948fa2bae61a91d56d10401bf0a1",
+      "previousBytes": 910383,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/STATUS.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/spec/STATUS.html",
+      "openReaders": []
+    },
+    {
+      "route": "spec/STATUS.md",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/spec/STATUS.md",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 747835,
+      "sha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197",
+      "previousSha256": "557914833341820eaf64f7a8f3672cebaab3d0beb0621d0747ecde95eed26685",
+      "previousBytes": 740947,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/STATUS.md",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/spec/STATUS.md",
+      "openReaders": []
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/root/spec/public/roadmap.html",
+      "sourceLabel": "selected-root",
+      "sourceLabels": [
+        "selected-root"
+      ],
+      "bytes": 652418,
+      "sha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a",
+      "previousSha256": "f5e5e9c5d4e3e2c228876185a5687817066c3d27ca12da8ee77a3355c1a3e16e",
+      "previousBytes": 645982,
+      "state": "replace",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/public/roadmap.html",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1312-c11-4-2026-11-10/spec/public/roadmap.html",
+      "openReaders": []
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/css/styles.8d918fd78e.css",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previousSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "previousBytes": 73952,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/css/styles.8d918fd78e.css",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/image/chrome157-two-fit-sample.7950ec426f.png",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/image/chrome157-two-fit-sample.7950ec426f.png",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/image/chrome157-two-fit-sample.7950ec426f.png",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/3.d8b550a68d.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "previousSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "previousBytes": 217061,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/3.d8b550a68d.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/3.d8b550a68d.js.LICENSE.txt",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previousSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "previousBytes": 384,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/3.d8b550a68d.js.LICENSE.txt",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/l.76b60f2b87.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "previousSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "previousBytes": 98,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/l.76b60f2b87.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-360a2e90cba1.47887bf567.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-360a2e90cba1.47887bf567.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 10649,
+      "sha256": "01a9603e47b3924c4b095b8d13b5e1f2e503d37c252c76755af34acc68b6fe12",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-360a2e90cba1.47887bf567.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-48af8a4a437d.7c912a01c4.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-48af8a4a437d.7c912a01c4.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 9468,
+      "sha256": "1ec8e0a2bab2523664f6dee8143af5cd2be5f0aa3fd3463a507e6a8a0796faa4",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-48af8a4a437d.7c912a01c4.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.670838edda.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-6c33a3943990.670838edda.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 984660,
+      "sha256": "247fcaa60315a140a8dd99b3f1589b37887d0f0659d8c42b228dcac5c68c4241",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-6c33a3943990.670838edda.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.ffcc1d59c9.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-7ce2535ac56d.ffcc1d59c9.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 984515,
+      "sha256": "0890951eb19a930fdc8a0cba1fdd143cabbd4ac82a79a79eb1f4584971918d47",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-7ce2535ac56d.ffcc1d59c9.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-8d8d564f35f4.fb4782bb2e.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-8d8d564f35f4.fb4782bb2e.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 19518,
+      "sha256": "43bb992faaacb6672f8047c7948e99eb1f327bce713d3ae492e99622ccfbfd6b",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-8d8d564f35f4.fb4782bb2e.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-8e21c8ddc74f.b5fce18f5f.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-8e21c8ddc74f.b5fce18f5f.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 16469,
+      "sha256": "61b16831b6535c9ec982955b98241491a906a184e9afe2af876de3cb11590c88",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-8e21c8ddc74f.b5fce18f5f.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.b91a1dd90e.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-c4dae6800800.b91a1dd90e.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 834823,
+      "sha256": "ea53ac52ee883f7e4fb5460dc26c520bfdd8ad3c010860d0d77ee18debecd01f",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-c4dae6800800.b91a1dd90e.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-f134f99315f4.ebf1fc5732.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-f134f99315f4.ebf1fc5732.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 15724,
+      "sha256": "84f9032d9643a13da2d7cde13bc1c7e099dce77c2c823f4c7e30575f6291fcf4",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-f134f99315f4.ebf1fc5732.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/async/route-f2813e20be5e.11c2f543ed.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/async/route-f2813e20be5e.11c2f543ed.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 7385,
+      "sha256": "9e71d4ea5ec39a247d30d368c0b8daf2e36dfd603e4eab3dfe40ae854810a1ac",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-f2813e20be5e.11c2f543ed.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/index.70ac15966f.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/index.70ac15966f.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 73671,
+      "sha256": "6b3956deab33da5ad07a94621bc6da1a49b374a28100432a630dd7dccf964b09",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/index.70ac15966f.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/lib-react.801d719c4f.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "previousSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "previousBytes": 218366,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-react.801d719c4f.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previousSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "previousBytes": 1209,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/lib-router.d3b08da66f.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "previousSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "previousBytes": 35366,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-router.d3b08da66f.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previousSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "previousBytes": 222,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/js/styles.b5d9a69293.js",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/js/styles.b5d9a69293.js",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "previousSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "previousBytes": 471,
+      "state": "same",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/styles.b5d9a69293.js",
+      "backupPath": null,
+      "openReaders": []
+    },
+    {
+      "route": "static/search_index.ko.48514278.json",
+      "candidatePath": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-pr1312-2026-11-10/site/static/search_index.ko.48514278.json",
+      "sourceLabel": "rspress-site",
+      "sourceLabels": [
+        "rspress-site"
+      ],
+      "bytes": 1676259,
+      "sha256": "4851427845730086d148cfa3899ca24717792a1129269a95738d1ab9a6cc0ad6",
+      "state": "add",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/search_index.ko.48514278.json",
+      "backupPath": null,
+      "openReaders": []
+    }
+  ]
+}

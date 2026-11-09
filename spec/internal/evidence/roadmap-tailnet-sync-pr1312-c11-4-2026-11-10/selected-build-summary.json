@@ -1,0 +1,22 @@
+{
+  "schema": "spinon.tailnet-preview.selected-build-summary/v1",
+  "sourceCommit": "6439049c16cc107682292dd7c4d6c64dc4c1b413",
+  "tool": "Rspress",
+  "version": "2.0.22",
+  "result": "success",
+  "selectedRootFileCount": 23,
+  "selectedRootBytes": 8609180,
+  "generatedOutputFileCount": 32,
+  "renderedRoutes": [
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+    "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.html",
+    "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.html",
+    "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+    "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.html"
+  ],
+  "fullDocsDeadLinkCheck": false,
+  "fullDocsBuildClaimedGreen": false,
+  "temporaryBuildDirectoryRemoved": true
+}
