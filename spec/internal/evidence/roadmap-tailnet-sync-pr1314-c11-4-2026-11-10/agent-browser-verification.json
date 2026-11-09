@@ -1,0 +1,50 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "verifiedOn": "2026-11-10",
+  "tool": {
+    "name": "Agent Browser",
+    "version": "0.31.1",
+    "browser": "HeadlessChrome",
+    "browserVersion": "157.0.0.0"
+  },
+  "assertions": {
+    "implementationPr": "#1314",
+    "mergeSha": "352e6c0b41a9fd4442eeaa5205f18dc1c94accc4",
+    "runtimeScenes": "2,880/2,880",
+    "officialCompletion": "78/214",
+    "mobileHorizontalOverflow": false
+  },
+  "screenshots": [
+    {
+      "name": "desktop-board",
+      "file": "tailnet-roadmap-agent-browser-desktop.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "documentWidth": 1440,
+      "sha256": "37392d3770cf17f577233048968419d961e35e50f7fa0a3bc504bbb4ac762f1c"
+    },
+    {
+      "name": "desktop-pr-1314-card",
+      "file": "tailnet-roadmap-agent-browser-desktop-progress.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "documentWidth": 1440,
+      "sha256": "b6a8f888183057c3e0130092572d67d82cdbc4e0b19cc616f0bff3041992a2ab"
+    },
+    {
+      "name": "mobile-pr-1314-card",
+      "file": "tailnet-roadmap-agent-browser-mobile-progress.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "sha256": "9de5df940bb4e356ee174a3c1563784ca81cc1174d4d4d1cd67d7a55bab4f745"
+    }
+  ]
+}

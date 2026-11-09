@@ -1,0 +1,30 @@
+{
+  "observedOn": "2026-11-10",
+  "activeAgentBrowserSessions": [],
+  "sessionListOutput": "No active sessions",
+  "taskSessionsClosed": [
+    "spinon-tailnet-post1314",
+    "spinon-tailnet-card-check",
+    "spinon-tailnet-mobile-card"
+  ],
+  "browserProcesses": {
+    "startedByThisCleanupTurn": [],
+    "preExistingTerminalBrowserSidecar": {
+      "state": "preserved",
+      "reason": "It belongs to an unrelated existing Terminal Browser session; this task did not use or stop that session."
+    }
+  },
+  "simulators": {
+    "bootedIosDevices": [],
+    "iosSimulatorGuiProcess": false,
+    "adbDevices": [],
+    "coreSimulatorDaemons": "OS-managed services remain running without a booted device."
+  },
+  "removedGeneratedBuild": {
+    "path": "build/spinon/roadmap-tailnet-sync-pr1314-c11-4-2026-11-10",
+    "duBefore": "34M",
+    "openFileHandles": 0,
+    "cwdOwners": 0,
+    "removed": true
+  }
+}
