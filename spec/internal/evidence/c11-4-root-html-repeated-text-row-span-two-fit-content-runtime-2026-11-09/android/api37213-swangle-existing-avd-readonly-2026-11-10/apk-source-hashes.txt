@@ -1,0 +1,15 @@
+Scene early-start-span2-six-forward (Chrome observation 0)
+  index.html SHA-256: 0eea55e9ce90438915237ad8ad05e8927d3acd7917c852bac0a943e4cc80eb1a
+  debug APK SHA-256: b67135af81afa95c391594e33f4837a886bf6d8ac24ffbf6eedce8410ce3a5a8
+Scene adjacent-stretch-span2-span3-six-reverse (Chrome observation 2471)
+  index.html SHA-256: 799812bf4992fc71c331a699149977300c89ffd97565305ee7433682f75d173a
+  debug APK SHA-256: 7e64c85d362e9fb5b85da3fcf20569e3fe7cd95bb8175c38ed0a5d4cc288d209
+Scene separated-stretch-span2-span3-six-forward (Chrome observation 1222)
+  index.html SHA-256: 58de9ac4498f3e1db84296495e68d790162177542334e41dcbdc11289e02c0ea
+  debug APK SHA-256: 2132aff033f1b12d0c39f739366b330c0da8341fd87e9660affe0fc730907990
+Shared root-app.js source SHA-256: 3094c3a047a9abd5b407756430f9309b748767a61be62f1fb5c631c0eeab18db
+Shared packaged root-app.js SHA-256: 6120d31f209d771ffac1e24ef9c2f4336397180df68653f0b6c937b82847ab49
+
+Restored tracked bootstrap source after each build:
+  examples/bootstrap/index.html SHA-256: e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9
+  examples/bootstrap/root-app.js SHA-256: b87b53883ce838df86412657e1353f8dc90435049eb8ead6ba8fa478ca8a1c32

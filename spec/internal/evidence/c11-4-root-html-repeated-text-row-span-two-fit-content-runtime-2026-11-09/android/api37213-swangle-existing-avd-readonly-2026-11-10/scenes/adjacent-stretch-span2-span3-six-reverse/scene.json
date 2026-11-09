@@ -1,0 +1,49 @@
+{
+  "trackList": "min-content min-content fit-content(20%) fit-content(10px) max-content auto",
+  "trackMembers": [
+    "min-content",
+    "min-content",
+    "fit-content(20%)",
+    "fit-content(10px)",
+    "max-content",
+    "auto"
+  ],
+  "fitPositions": [
+    3,
+    4
+  ],
+  "fitCaps": [
+    "20%",
+    "10px"
+  ],
+  "tail": [
+    "min-content",
+    "min-content",
+    "max-content",
+    "auto"
+  ],
+  "alignContent": "stretch",
+  "topology": "span2Span3Six-reverse",
+  "items": [
+    [
+      "D",
+      5,
+      3
+    ],
+    [
+      "C",
+      4,
+      3
+    ],
+    [
+      "B",
+      3,
+      2
+    ],
+    [
+      "A",
+      2,
+      2
+    ]
+  ]
+}
