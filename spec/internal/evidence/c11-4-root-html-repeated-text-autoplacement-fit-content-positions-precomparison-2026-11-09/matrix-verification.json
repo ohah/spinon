@@ -1,0 +1,283 @@
+{
+  "browser": "Agent Browser 0.31.1 / HeadlessChrome 157.0.0.0",
+  "platform": "MacIntel",
+  "dpr": 1,
+  "fixtureSha256": "0829c8dc6d39a2cc20fea772479b732e17b44ee070555cef8e5c48a0e016a2af",
+  "observationSha256": "5788f8e34bbd42ceb878de9ba99294071eefb44ae835cdf4a2a2a5f7f22b395a",
+  "sceneCount": 1440,
+  "scenesPerFitPosition": {
+    "1": 240,
+    "2": 240,
+    "3": 240,
+    "4": 240,
+    "5": 240,
+    "6": 240
+  },
+  "tailPermutationCount": 30,
+  "fitContentCycleOccurrencesChecked": 1920,
+  "payloadLineCounts": [
+    2,
+    2,
+    2,
+    3,
+    2,
+    2,
+    3,
+    1
+  ],
+  "fitTrackSizesByPositionAndCap": {
+    "1": {
+      "20px": [
+        20
+      ],
+      "20%": [
+        20
+      ],
+      "0%": [
+        0
+      ],
+      "120%": [
+        20
+      ]
+    },
+    "2": {
+      "20px": [
+        20
+      ],
+      "20%": [
+        20
+      ],
+      "0%": [
+        0
+      ],
+      "120%": [
+        20
+      ]
+    },
+    "3": {
+      "20px": [
+        20
+      ],
+      "20%": [
+        20
+      ],
+      "0%": [
+        0
+      ],
+      "120%": [
+        20
+      ]
+    },
+    "4": {
+      "20px": [
+        20
+      ],
+      "20%": [
+        30
+      ],
+      "0%": [
+        0
+      ],
+      "120%": [
+        30
+      ]
+    },
+    "5": {
+      "20px": [
+        20
+      ],
+      "20%": [
+        20
+      ],
+      "0%": [
+        0
+      ],
+      "120%": [
+        20
+      ]
+    },
+    "6": {
+      "20px": [
+        20
+      ],
+      "20%": [
+        20
+      ],
+      "0%": [
+        0
+      ],
+      "120%": [
+        20
+      ]
+    }
+  },
+  "fitTrackCycleSizesByPositionAndCap": {
+    "1": {
+      "20px": [
+        [
+          20
+        ],
+        [
+          20
+        ]
+      ],
+      "20%": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "0%": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "120%": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ]
+    },
+    "2": {
+      "20px": [
+        [
+          20
+        ],
+        [
+          10
+        ]
+      ],
+      "20%": [
+        [
+          20
+        ],
+        [
+          10
+        ]
+      ],
+      "0%": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "120%": [
+        [
+          20
+        ],
+        [
+          10
+        ]
+      ]
+    },
+    "3": {
+      "20px": [
+        [
+          20
+        ]
+      ],
+      "20%": [
+        [
+          20
+        ]
+      ],
+      "0%": [
+        [
+          0
+        ]
+      ],
+      "120%": [
+        [
+          20
+        ]
+      ]
+    },
+    "4": {
+      "20px": [
+        [
+          20
+        ]
+      ],
+      "20%": [
+        [
+          30
+        ]
+      ],
+      "0%": [
+        [
+          0
+        ]
+      ],
+      "120%": [
+        [
+          30
+        ]
+      ]
+    },
+    "5": {
+      "20px": [
+        [
+          20
+        ]
+      ],
+      "20%": [
+        [
+          20
+        ]
+      ],
+      "0%": [
+        [
+          0
+        ]
+      ],
+      "120%": [
+        [
+          20
+        ]
+      ]
+    },
+    "6": {
+      "20px": [
+        [
+          20
+        ]
+      ],
+      "20%": [
+        [
+          20
+        ]
+      ],
+      "0%": [
+        [
+          0
+        ]
+      ],
+      "120%": [
+        [
+          20
+        ]
+      ]
+    }
+  },
+  "stretchRelationsChecked": 720,
+  "visibleOverflowScenes": 54,
+  "maximumPayloadOverflowCssPx": 20,
+  "independentRelations": [
+    "exact six-member track multiset and authored/computed order",
+    "implicit track cycle starts after the explicit row and repeats every six tracks",
+    "fit-content used size equals min(fixed line-height times observed line count, px/percentage cap)",
+    "item frames match their used rows and text payload frames match observed line count",
+    "positive align-content stretch space changes only auto tracks and is shared evenly",
+    "visible text payload overflow remains observable beyond the 220px Grid box"
+  ]
+}
