@@ -578,6 +578,41 @@ fn root_html_fit_content_repeated_min_max_content_auto_track_list(
     fit_content_seen && counts == [2, 2, 1]
 }
 
+fn root_html_fit_content_repeated_two_fit_auto_placement_track_list(
+    tracks: &[ComputedCssGridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut counts = [0usize; 3];
+    let mut fit_content_count = 0usize;
+    for track in tracks {
+        if matches!(track, ComputedCssGridTrackSize::FitContent(_)) {
+            if !root_html_fit_content_cap_is_supported(track) {
+                return false;
+            }
+            fit_content_count += 1;
+            continue;
+        }
+        let index = match track {
+            ComputedCssGridTrackSize::MinContent => 0,
+            ComputedCssGridTrackSize::MaxContent => 1,
+            ComputedCssGridTrackSize::Auto => 2,
+            _ => return false,
+        };
+        counts[index] += 1;
+    }
+    fit_content_count == 2 && counts == [2, 1, 1]
+}
+
+fn root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
+    tracks: &[ComputedCssGridTrackSize],
+) -> bool {
+    root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
+        || root_html_fit_content_repeated_two_fit_auto_placement_track_list(tracks)
+}
+
 fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
     tracks: &[ComputedCssGridTrackSize],
 ) -> bool {
@@ -634,7 +669,9 @@ pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(
         ComputedCssGridAutoRows::TrackList(tracks)
             if root_html_fit_content_min_content_auto_track_list(tracks)
                 || root_html_fit_content_min_max_content_auto_track_list(tracks)
-                || root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
+                || root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
+                    tracks,
+                )
                 || root_html_fit_content_repeated_min_max_content_auto_span_track_list(tracks)
     )
 }
@@ -656,6 +693,16 @@ pub(super) fn root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(
         &grid.auto_rows,
         ComputedCssGridAutoRows::TrackList(tracks)
             if root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
+    )
+}
+
+pub(super) fn root_html_fit_content_auto_rows_with_six_member_auto_placement_intrinsic_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if root_html_fit_content_repeated_min_max_content_auto_placement_track_list(tracks)
     )
 }
 
@@ -683,7 +730,7 @@ fn root_html_fit_content_auto_row_track_list(tracks: &[ComputedCssGridTrackSize]
         }) {
             root_html_fit_content_min_content_auto_track_list(tracks)
                 || root_html_fit_content_min_max_content_auto_track_list(tracks)
-                || root_html_fit_content_repeated_min_max_content_auto_track_list(tracks)
+                || root_html_fit_content_repeated_min_max_content_auto_placement_track_list(tracks)
                 || root_html_fit_content_repeated_min_max_content_auto_span_track_list(tracks)
         } else {
             tracks.iter().all(|track| match track {
@@ -1787,7 +1834,9 @@ fn project_grid_layout_with_route_reservations(
         },
         track_sizing_trace_enabled: root_html_intrinsic_auto_rows
             || (root_html_fit_content_auto_rows
-                && (root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(grid)
+                && (root_html_fit_content_auto_rows_with_six_member_auto_placement_intrinsic_tracks(
+                    grid,
+                )
                     || root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(
                         grid,
                     ))),
