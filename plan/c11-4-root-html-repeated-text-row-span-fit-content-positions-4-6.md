@@ -1,6 +1,6 @@
 # C11.4 · 반복 텍스트 row-span의 fit-content 위치 4–6
 
-- **상태:** 구현 후보 · 4,320/4,320 scene 및 기존 1–3 row-span 1,920/1,920 통과 · 반복 텍스트 810, 기존 row-span 960, auto-placement fit-content 회귀와 Grid track-sizing 127건 통과 · iOS 6 scene smoke 통과 · Android API 37.2 ARM64 AVD 6 scene smoke 통과 · 다른 API 37 AVD 2개는 QEMU SIGSEGV로 앱 실행 전에 실패 · 구현/runtime 20관점 및 PR diff 30관점 적대적 검토 완료 · PR 제출·병합 전 · `spinon-layout --lib` 1개 실패의 기준 브랜치 여부 미확인 · C11.4/C11 공식 체크 미완료 · 78/214 유지
+- **상태:** 구현 후보 · 4,320/4,320 scene 및 기존 1–3 row-span 1,920/1,920 통과 · 반복 텍스트 810, 기존 row-span 960, auto-placement fit-content 회귀와 Grid track-sizing 127건 통과 · iOS 6 scene smoke 통과 · Android API 37.2 ARM64 AVD 6 scene smoke 통과 · 다른 API 37 AVD 2개는 QEMU SIGSEGV로 앱 실행 전에 실패 · 구현/runtime 20관점 및 PR diff 30관점 적대적 검토 완료 · PR 제출·병합 전 · `spinon-layout --lib`의 506 pass / 1 C15 fail 중 동일 실패를 기준 `origin/main`에서 재현 · C11.4/C11 공식 체크 미완료 · 78/214 유지
 - **선행 구현:** [반복 text row-span fit-content 위치 2·3](./c11-4-root-html-repeated-text-later-fit-content-row-span.md) · PR [#1299](https://github.com/ohah/spinon/pull/1299)
 - **선행 구현:** [반복 text auto-placement fit-content 위치 1–6](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md) · PR [#1302](https://github.com/ohah/spinon/pull/1302)
 - **사전 비교:** [Chrome 157 4,320 scene](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/README.md)
