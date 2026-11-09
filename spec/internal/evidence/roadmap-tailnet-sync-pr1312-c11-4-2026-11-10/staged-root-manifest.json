@@ -1,0 +1,148 @@
+{
+  "schema": "spinon.tailnet-preview.selected-root/v1",
+  "sourceCommit": "6439049c16cc107682292dd7c4d6c64dc4c1b413",
+  "stagedFileCount": 23,
+  "stagedBytes": 8609180,
+  "noSymlinks": true,
+  "fullDocsDeadLinkCheck": false,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 652418,
+      "sha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 652418,
+      "sha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 652418,
+      "sha256": "a35bba23b2b0d6d9883a26d1834c12ee82c046174e42bc9c22d5c5427204cf4a"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 747835,
+      "sha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 747835,
+      "sha256": "e5c5bfe2b850e86a3a8f7cc79dc823005697615084a224efe7227a90da266197"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 562201,
+      "sha256": "277916332d9ae79eb99818ecb44b508ac153ecbf7c3acc7bcd62844c12c37257"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.md",
+      "bytes": 9772,
+      "sha256": "6f4eec2d43f11666cff0d0b639b1fbeffc9bc88da8ce8a7130bcd614c79178fb"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content-plan-review-20.md",
+      "bytes": 4503,
+      "sha256": "dc6c19ce46009b844bc07a25b3ca4cd02c987f67f43528ee5d30655af698762b"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-two-fit-content.md",
+      "bytes": 12763,
+      "sha256": "800325a538219b586ef5503edf7ada61e0750164b4e91bee346c6ccef81e46f6"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md",
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md",
+      "bytes": 10409,
+      "sha256": "835f973095dc07a9e8875b07c401beae03e63a080dacb0e499749da33731c4e0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "bytes": 196,
+      "sha256": "c33fbb0d3bd774cba4e447bdf46247d08de7b08bc501fc766b779e6348dda92b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/capture-chrome.mjs",
+      "bytes": 9368,
+      "sha256": "d1dc919984d1587b2302a6ab5f6593a8f0cf96febc89c488cdd0aa118545d325"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome-matrix-observation.ndjson",
+      "bytes": 4476575,
+      "sha256": "64761f0eed9e4c1dfb587dfc7f531a26e535eaee6122ed4a13048913a991cd62"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/chrome157-two-fit-sample.png",
+      "bytes": 41651,
+      "sha256": "5d0afdba8948a6602eec2a24f85618b62997a05dbb1834de5d40d8371d7fbdb2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/matrix-verification.json",
+      "bytes": 1794,
+      "sha256": "dc9b65b0a0e6dbe6a04e01f8446be819a7d0d5600b3033e179e9ac0d1c874f79"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/plan-pr-diff-review-30.md",
+      "bytes": 5749,
+      "sha256": "cabbd70804d28768c8dfe513ce9cefc7f0ebbc1c9ae46f79ec5729528363836e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.md",
+      "bytes": 3699,
+      "sha256": "103c2ba2f018fd55a166e29b3825db96162f08f9a533b460a620e6430b15b134"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/SHA256SUMS",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/SHA256SUMS",
+      "bytes": 1754,
+      "sha256": "026b49de2b5e4bfb3003f71ac480b2761fc668b9ddd7b96d6cf6e39986b0811e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "bytes": 13410,
+      "sha256": "c7cfd8f1abc985614dcf02b12611c7985063f0330b7e764294f65ad79ceaa34d"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    }
+  ]
+}

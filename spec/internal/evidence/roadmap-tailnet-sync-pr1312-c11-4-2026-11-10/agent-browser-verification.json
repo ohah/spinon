@@ -1,0 +1,55 @@
+{
+  "schema": "spinon.tailnet-preview.agent-browser-verification/v1",
+  "site": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "browser": "Agent Browser",
+  "terminalBrowserUsed": false,
+  "sessions": [
+    {
+      "id": "spinon-c11-4-pr1312-tailnet-20261110",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "closed": true,
+      "viewport": [1440, 1000],
+      "documentSize": [1440, 79161],
+      "nextPlanPresent": true,
+      "mergedPr1311Present": true,
+      "officialCountPresent": true,
+      "planHref": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "brokenImages": [],
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+    },
+    {
+      "id": "spinon-c11-4-pr1312-tailnet-20261110",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "closed": true,
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "nextPlanPresent": true,
+      "mergedPr1311Present": true,
+      "officialCountPresent": true,
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+    },
+    {
+      "id": "spinon-c11-4-pr1312-plan-tailnet-20261110",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-text-autoplacement-two-fit-content.html",
+      "closed": true,
+      "viewport": [1440, 1000],
+      "documentWidth": 1440,
+      "planTitlePresent": true,
+      "implementationStillUnstarted": true,
+      "screenshot": "tailnet-plan-agent-browser.png"
+    },
+    {
+      "id": "spinon-c11-4-pr1312-evidence-tailnet-20261110",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-two-fit-content-precomparison-2026-11-10/README.html",
+      "closed": true,
+      "documentWidth": 1280,
+      "sampleImageLoaded": true,
+      "sampleImageSize": [1280, 900],
+      "brokenImages": []
+    }
+  ],
+  "ownBrowserSessionsClosed": true,
+  "ownSessionProcessesRemaining": [],
+  "simulatorStarted": false,
+  "bootedIosSimulatorAfterRun": []
+}
