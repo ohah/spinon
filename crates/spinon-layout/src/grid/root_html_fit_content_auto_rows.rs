@@ -4,7 +4,7 @@ mod profiles;
 #[path = "root_html_fit_content_auto_rows/repeated_text.rs"]
 mod repeated_text;
 use profiles::{
-    supports_repeated_min_max_content_auto_span_track_list, supports_repeated_span_fit_position,
+    supports_repeated_min_max_content_auto_span_track_list, supports_repeated_span_fit_positions,
 };
 
 pub(super) fn supports_min_max_content_auto_track_list(tracks: &[GridTrackSize]) -> bool {
@@ -66,6 +66,12 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     let six_member_list = supports_repeated_min_max_content_auto_track_list(tracks);
     let six_member_span_list = supports_repeated_min_max_content_auto_span_track_list(tracks);
     let six_member_candidate = six_member_list || six_member_span_list;
+    let two_fit_span_track_list = six_member_span_list
+        && tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+            .count()
+            == 2;
     let repeated_text_profile = six_member_list
         && visible_children.len() == 9
         && visible_children.iter().copied().skip(1).all(|item_id| {
@@ -79,7 +85,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .then(|| repeated_text::span_implicit_row_count(input, &visible_children))
         .flatten();
     let repeated_text_span_profile = repeated_text_span_rows
-        .is_some_and(|rows| supports_repeated_span_fit_position(tracks, rows));
+        .is_some_and(|rows| supports_repeated_span_fit_positions(tracks, rows));
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -193,6 +199,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     let four_member_list = supports_min_max_content_auto_track_list(tracks);
     if (four_member_list && visible_children.len() != 6)
         || (six_member_candidate && visible_children.len() != 9 && !repeated_text_span_profile)
+        || (two_fit_span_track_list && !repeated_text_span_profile)
         || (!four_member_list && !six_member_candidate && !matches!(visible_children.len(), 3 | 5))
         || has_non_collapsible_text(input, node)
     {
@@ -239,30 +246,32 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         });
     }
 
-    let auto_item_is_supported = |item: &crate::LayoutNode, allow_floor: bool| {
-        item.style.display == LayoutDisplay::Block
-            && item.style.width == LayoutDimension::Auto
-            && item.style.height == LayoutDimension::Auto
-            && item.style.min_width == LayoutDimension::Auto
-            && (item.style.min_height == LayoutDimension::Fixed(0.0)
-                || (allow_floor && item.style.min_height == LayoutDimension::Fixed(28.0)))
-            && item.style.max_width == LayoutDimension::Auto
-            && item.style.max_height == LayoutDimension::Auto
-            && item.style.aspect_ratio.is_none()
-            && item.style.order == 0
-            && item.style.overflow_x == crate::LayoutOverflow::Visible
-            && item.style.overflow_y == crate::LayoutOverflow::Visible
-            && item.style.margin == crate::LayoutEdges::default()
-            && item.style.padding == crate::LayoutEdges::default()
-            && item.style.border == crate::LayoutBorder::default()
-            && item.style.align_self == crate::LayoutAlignSelf::Auto
-            && item.style.justify_self == crate::LayoutAlignSelf::Auto
-            && item.children.len() == 1
-            && !input.grid_containers.contains_key(&item.id)
-            && child_has_no_text(item.id)
-            && child_placement_is_supported(item.id)
-            && child_is_static(item.id)
-    };
+    let auto_item_is_supported =
+        |item: &crate::LayoutNode, allow_floor: bool, allow_auto_minimum: bool| {
+            item.style.display == LayoutDisplay::Block
+                && item.style.width == LayoutDimension::Auto
+                && item.style.height == LayoutDimension::Auto
+                && item.style.min_width == LayoutDimension::Auto
+                && (item.style.min_height == LayoutDimension::Fixed(0.0)
+                    || (allow_floor && item.style.min_height == LayoutDimension::Fixed(28.0))
+                    || (allow_auto_minimum && item.style.min_height == LayoutDimension::Auto))
+                && item.style.max_width == LayoutDimension::Auto
+                && item.style.max_height == LayoutDimension::Auto
+                && item.style.aspect_ratio.is_none()
+                && item.style.order == 0
+                && item.style.overflow_x == crate::LayoutOverflow::Visible
+                && item.style.overflow_y == crate::LayoutOverflow::Visible
+                && item.style.margin == crate::LayoutEdges::default()
+                && item.style.padding == crate::LayoutEdges::default()
+                && item.style.border == crate::LayoutBorder::default()
+                && item.style.align_self == crate::LayoutAlignSelf::Auto
+                && item.style.justify_self == crate::LayoutAlignSelf::Auto
+                && item.children.len() == 1
+                && !input.grid_containers.contains_key(&item.id)
+                && child_has_no_text(item.id)
+                && child_placement_is_supported(item.id)
+                && child_is_static(item.id)
+        };
     let payload_is_supported = |payload_id: NodeId, allowed_heights: &[f32]| {
         let payload = &input.nodes[index[&payload_id]];
         payload.style.display == LayoutDisplay::Block
@@ -320,7 +329,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
         let allow_minimum_floor = visible_children.len() == 3 && position == 1;
-        if auto_item_is_supported(row_item, allow_minimum_floor) {
+        let allow_auto_minimum = two_fit_span_track_list;
+        if auto_item_is_supported(row_item, allow_minimum_floor, allow_auto_minimum) {
             let payload_id = row_item.children[0];
             let profile_payload_heights = if four_member_list {
                 Some(FOUR_MEMBER_LIST_PAYLOAD_HEIGHTS)

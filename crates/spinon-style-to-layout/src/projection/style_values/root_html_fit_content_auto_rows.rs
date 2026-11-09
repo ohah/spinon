@@ -14,9 +14,10 @@ mod repeated_text;
 mod validation_helpers;
 
 use validation_helpers::{
-    direct_element_children, explicit_empty_span_item_placement,
-    repeated_span_fit_position_is_supported, repeated_span_item_kind, repeated_span_item_placement,
-    repeated_span_topology_implicit_rows, repeated_span_writing_context, validate_payload,
+    auto_placement, automatic_limits, direct_element_children, explicit_empty_span_item_placement,
+    fit_content_item, fixed_item, repeated_span_fit_positions_are_supported,
+    repeated_span_item_kind, repeated_span_item_placement, repeated_span_topology_implicit_rows,
+    repeated_span_writing_context, validate_payload, zero_border, zero_edges,
 };
 
 pub(super) fn validate(
@@ -66,6 +67,17 @@ pub(super) fn validate(
     let six_member_span_list =
         grid_values::root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(grid);
     let six_member_candidate = six_member_list || six_member_span_list;
+    let span_fit_positions = match &grid.auto_rows {
+        ComputedCssGridAutoRows::TrackList(tracks) => tracks
+            .iter()
+            .enumerate()
+            .filter_map(|(position, track)| {
+                matches!(track, ComputedCssGridTrackSize::FitContent(_)).then_some(position + 1)
+            })
+            .collect::<Vec<_>>(),
+        _ => Vec::new(),
+    };
+    let two_fit_span_track_list = six_member_span_list && span_fit_positions.len() == 2;
     let align_content = grid_style
         .properties
         .get("align-content")
@@ -215,23 +227,16 @@ pub(super) fn validate(
                         .and_then(repeated_span_item_kind)
                 })
                 .collect::<Option<Vec<_>>>();
-            let fit_position = match &grid.auto_rows {
-                ComputedCssGridAutoRows::TrackList(tracks) => tracks
-                    .iter()
-                    .position(|track| matches!(track, ComputedCssGridTrackSize::FitContent(_)))
-                    .map(|position| position + 1),
-                _ => None,
-            };
             placements
                 .as_deref()
                 .and_then(repeated_span_topology_implicit_rows)
-                .zip(fit_position)
-                .is_some_and(|(implicit_rows, position)| {
-                    repeated_span_fit_position_is_supported(implicit_rows, position)
+                .is_some_and(|implicit_rows| {
+                    repeated_span_fit_positions_are_supported(implicit_rows, &span_fit_positions)
                 })
         };
     if (four_member_list && items.len() != 6)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
+        || (two_fit_span_track_list && !repeated_text_span_profile)
         || (!four_member_list && !six_member_candidate && !matches!(items.len(), 3 | 5))
         || nodes
             .grid_item_owners
@@ -325,12 +330,15 @@ pub(super) fn validate(
             ));
         };
         let allow_minimum_floor = !repeated_text_span_profile && items.len() == 3 && position == 1;
+        let allow_auto_minimum = two_fit_span_track_list;
         let item_placement_is_supported = if repeated_text_span_profile {
             repeated_span_item_placement(style)
         } else {
             auto_placement(style)
         };
-        if fit_content_item(style, allow_minimum_floor) && item_placement_is_supported {
+        if fit_content_item(style, allow_minimum_floor, allow_auto_minimum)
+            && item_placement_is_supported
+        {
             let children = direct_element_children(tree, nodes, *item)?;
             if children.len() != 1 {
                 return Err(unsupported(
@@ -460,71 +468,4 @@ fn repeated_intrinsic_payload_height_profiles(
         }
     }
     [legacy, compact]
-}
-
-fn automatic_limits(style: &ComputedElementStyle) -> bool {
-    style.layout_dimensions.min_width == ComputedCssDimension::Auto
-        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
-        && style.layout_dimensions.min_height == ComputedCssDimension::Auto
-        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
-}
-
-fn fixed_item(style: &ComputedElementStyle, height: f32, allow_zero_min_height: bool) -> bool {
-    style.properties.get("display").map(String::as_str) == Some("block")
-        && style.layout_dimensions.width == ComputedCssDimension::Auto
-        && style.layout_dimensions.height == ComputedCssDimension::LengthPx(height)
-        && style.layout_dimensions.min_width == ComputedCssDimension::Auto
-        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
-        && (style.layout_dimensions.min_height == ComputedCssDimension::Auto
-            || (allow_zero_min_height
-                && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)))
-        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
-        && style.layout_position == ComputedCssPosition::Static
-        && style.layout_aspect_ratio.is_none()
-        && zero_edges(style.layout_spacing.margin)
-        && zero_edges(style.layout_spacing.padding)
-        && zero_border(style)
-}
-
-fn fit_content_item(style: &ComputedElementStyle, allow_minimum_floor: bool) -> bool {
-    style.properties.get("display").map(String::as_str) == Some("block")
-        && style.layout_dimensions.width == ComputedCssDimension::Auto
-        && style.layout_dimensions.height == ComputedCssDimension::Auto
-        && (style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
-            || (allow_minimum_floor
-                && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(28.0)))
-        && style.layout_dimensions.min_width == ComputedCssDimension::Auto
-        && style.layout_dimensions.max_width == ComputedCssMaxSize::None
-        && style.layout_dimensions.max_height == ComputedCssMaxSize::None
-        && style.layout_position == ComputedCssPosition::Static
-        && style.layout_aspect_ratio.is_none()
-        && zero_edges(style.layout_spacing.margin)
-        && zero_edges(style.layout_spacing.padding)
-        && zero_border(style)
-}
-
-fn auto_placement(style: &ComputedElementStyle) -> bool {
-    style.grid_item_placement.as_ref().is_some_and(|placement| {
-        [
-            &placement.row_start,
-            &placement.row_end,
-            &placement.column_start,
-            &placement.column_end,
-        ]
-        .into_iter()
-        .all(|value| matches!(value, ComputedCssGridPlacement::Auto))
-    })
-}
-
-fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
-    [edges.top, edges.right, edges.bottom, edges.left]
-        .into_iter()
-        .all(|value| matches!(value, ComputedCssSpacingValue::LengthPx(value) if value == 0.0))
-}
-
-fn zero_border(style: &ComputedElementStyle) -> bool {
-    style.layout_border.top == 0.0
-        && style.layout_border.right == 0.0
-        && style.layout_border.bottom == 0.0
-        && style.layout_border.left == 0.0
 }

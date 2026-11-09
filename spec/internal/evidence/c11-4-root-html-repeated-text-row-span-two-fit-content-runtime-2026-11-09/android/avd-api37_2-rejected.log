@@ -1,0 +1,8 @@
+INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found AVD name 'spinon_api37_2'
+WARNING      | Failed to process .ini file /Users/yoonhb/.android/avd/spinon_api37_2.avd/config.ini for reading.
+WARNING      | Failed to process .ini file /Users/yoonhb/.android/avd/spinon_api37_2.avd/config.ini for reading.
+INFO         | Found AVD target architecture: arm
+INFO         | argv[0]: '/Users/yoonhb/Library/Android/sdk/emulator/emulator'; program directory: '/Users/yoonhb/Library/Android/sdk/emulator'
+FATAL        | CPU Architecture 'arm' is not supported by the QEMU2 emulator, (the classic engine is deprecated!)

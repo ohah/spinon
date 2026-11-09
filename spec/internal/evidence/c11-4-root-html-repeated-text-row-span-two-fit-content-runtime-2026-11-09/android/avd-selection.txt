@@ -1,0 +1,2 @@
+spinon_api37_2_exit=1
+Selected spinon_api37_2_presenttime_probe_20261018 because its existing AVD config is API 37.2, ABI arm64-v8a; the spinon_api37_2 alias has no .avd config directory and reports unsupported arm architecture.

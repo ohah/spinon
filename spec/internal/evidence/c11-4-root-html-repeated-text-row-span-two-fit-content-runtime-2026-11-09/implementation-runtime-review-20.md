@@ -1,0 +1,28 @@
+# Implementation/runtime adversarial review (20 points)
+
+Reviewed the bounded two-fit row-span patch, focused tests, browser observation, and simulator evidence on 2026-11-09. Each item records a distinct failure path and its result.
+
+1. **Multiple or hidden Grid owners could widen admission.** Style validation requires one visible Grid owner and rejects extra owners; RuntimeSession matrix publishes the same one-owner route in all 3,840 cases. No widening found.
+2. **The two caps could be counted without validating the remaining list.** Style and Layout each retain a six-member multiset check; the two-fit case requires exactly two fits, two min-content, one max-content, and one auto track in one of four tail orders. Profile tests cover all accepted orders.
+3. **Duplicate or reversed fit positions could be accepted.** Both validators collect authored positions and require an increasing pair within 1–6. All 15 pairs pass the accepted profile test; duplicate positions cannot arise from a list index and repeated/three-fit list rejection is covered.
+4. **One-fit behavior could accidentally inherit the two-fit six-row gate.** The single-fit branch retains its 3-row positions 1–3 and 6-row positions 4–6 rules. Its 1,920- and 4,320-scene matrices passed.
+5. **Two fits could leak into the auto-placement profile.** The explicit row-span profile requires the fixed item placement plus the approved span topology; the auto-placement path continues to use the single-fit list predicate. Existing auto-placement regressions had passed before this patch; no two-fit auto-placement admission was added.
+6. **A different span set could create unsupported implicit rows.** The style helper recognizes only the two approved six-row placement multisets; Layout verifies the positive implicit row count and each item’s span. The 3,840 scene matrix covers both topologies and both DOM orders.
+7. **Items could create implicit columns while testing rows.** The approved placement grammar fixes every column to lines 1/2. Matrix scenes compare item frames and used rows; no implicit column is admitted.
+8. **A track trace could be attributed to the wrong or duplicate Grid.** Layout requires one trace for the owner, the expected used track count, and no negative implicit rows or collapsed tracks. Ambiguous trace cases fail closed in the trace reader.
+9. **A missing or reordered sizing stage could silently produce frames.** The reader selects the final row pass and requires unique intrinsic-complete and maximize stages plus a final stretch stage. Missing or duplicate stages return no normalized row sizes.
+10. **Gutter/internal-index differences could be mistaken for content rows.** The trace reader filters gutters, checks odd internal indices in sequence, finite nonnegative base sizes, and expected row cardinality.
+11. **The used-row string could disagree with stage data.** Resolved `used_track_list` values must match final trace base sizes within 0.01px. Matrix tests validate all row values and frames against Chrome observations.
+12. **A fit cap might be applied to the wrong row.** Authored track order is kept typed through projection and Layout. The 3,840-scene matrix spans all 15 position pairs, cap assignments, and fixed tail orders.
+13. **Min-content could be incorrectly clamped to a fit cap.** A Chrome-derived `0.5px`/`0.5px` control uses `min-height:auto`; RuntimeSession verifies both fit rows exceed their caps and checks item/payload geometry. The control passed.
+14. **`min-height:auto` could broaden unrelated profiles.** The Style and Layout predicates allow it only when the recognized track list has exactly two fit members; earlier validation must also accept the approved explicit span profile. Existing single-fit matrices passed after the change.
+15. **Percentage caps could use an indefinite or wrong basis.** The profile still requires a definite `40×220px` Grid and existing direct finite nonnegative percentage conversion. All pair assignments from the fixed matrix passed; calc and invalid cap rejection remain in place.
+16. **`align-content:stretch` could resize non-auto rows.** The verifier compares pre-alignment and final stages, requiring zero delta for every non-auto row and equal available-space distribution for auto rows. Both alignments and auto-track placements are represented in the matrix.
+17. **Stretch-applied metadata with no auto row could reject a valid unchanged prefix.** The validator now permits this only when every final row equals its pre-alignment size; a dedicated `blink_` control passed.
+18. **Fractional 1/64px remainder could be assigned inconsistently.** The trace-based path snaps intrinsic/pre-alignment stages, distributes the extra unit to the later equal-growth row, applies auto stretch after rounding, and verifies final snapped sizes against stage values. Focused distribution tests and the full 3,840-scene matrix passed.
+19. **Rejected input could partially publish before a later valid document.** The three-fit mutation is rejected atomically, then a valid source is accepted in the same session. Existing row-span rejection/recovery tests also passed.
+20. **Simulator smoke could be overstated as native correctness.** iOS produced a default-route layout/draw screenshot only. Both Android AVD attempts failed before app launch and were removed. The evidence explicitly withholds Android runtime, surface pixel parity, physical-device, and whole-C11.4 claims.
+
+## Review result
+
+No code defect was found in these 20 bounded checks. Android app execution is an outstanding environment gate because the QEMU process failed before APK installation; this slice is not marked complete.

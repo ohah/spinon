@@ -7,6 +7,8 @@ mod fit_content_positions;
 mod later_fit_content_row_span;
 #[path = "root_html_grid_fit_content_auto_rows/repeated_text_span.rs"]
 mod repeated_text_span;
+#[path = "root_html_grid_fit_content_auto_rows/two_fit_content.rs"]
+mod two_fit_content;
 
 const SOURCE: &str = include_str!(
     "../../../../../tests/fixtures/css/c11/root-html-grid-auto-rows-fit-content-runtime.html"

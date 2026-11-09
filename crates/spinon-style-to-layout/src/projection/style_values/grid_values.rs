@@ -586,24 +586,44 @@ fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
     }
 
     let mut counts = [0usize; 3];
-    let mut fit_content_seen = false;
+    let mut fit_content_count = 0usize;
+    let mut tail_order = Vec::with_capacity(4);
     for track in tracks {
         if matches!(track, ComputedCssGridTrackSize::FitContent(_)) {
-            if fit_content_seen || !root_html_fit_content_cap_is_supported(track) {
+            if !root_html_fit_content_cap_is_supported(track) {
                 return false;
             }
-            fit_content_seen = true;
+            fit_content_count += 1;
             continue;
         }
         let index = match track {
-            ComputedCssGridTrackSize::MinContent => 0,
-            ComputedCssGridTrackSize::MaxContent => 1,
-            ComputedCssGridTrackSize::Auto => 2,
+            ComputedCssGridTrackSize::MinContent => {
+                tail_order.push(0);
+                0
+            }
+            ComputedCssGridTrackSize::MaxContent => {
+                tail_order.push(1);
+                1
+            }
+            ComputedCssGridTrackSize::Auto => {
+                tail_order.push(2);
+                2
+            }
             _ => return false,
         };
         counts[index] += 1;
     }
-    fit_content_seen && counts == [2, 2, 1]
+    match fit_content_count {
+        1 => counts == [2, 2, 1],
+        2 => {
+            counts == [2, 1, 1]
+                && matches!(
+                    tail_order.as_slice(),
+                    [0, 0, 1, 2] | [0, 1, 0, 2] | [1, 2, 0, 0] | [2, 0, 1, 0]
+                )
+        }
+        _ => false,
+    }
 }
 
 pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(
@@ -1767,7 +1787,10 @@ fn project_grid_layout_with_route_reservations(
         },
         track_sizing_trace_enabled: root_html_intrinsic_auto_rows
             || (root_html_fit_content_auto_rows
-                && root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(grid)),
+                && (root_html_fit_content_auto_rows_with_six_member_intrinsic_tracks(grid)
+                    || root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(
+                        grid,
+                    ))),
     })
 }
 
