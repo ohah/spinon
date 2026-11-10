@@ -1,0 +1,12 @@
+Candidate commit containing all four PNGs: 9bb51a045b00f3df18cd1249eb8d7aa42a7dd4b2
+
+Agent Browser loaded each commit-pinned raw image. All reported complete=true and non-zero intrinsic dimensions:
+- ios-candidate-light.png: 1206x2622
+- ios-candidate-dark.png: 1206x2622
+- android-candidate-light.png: 1080x2400
+- android-candidate-dark.png: 1080x2400
+
+Chromium reference source was opened in Agent Browser at:
+https://raw.githubusercontent.com/chromium/chromium/157.0.8103.40/third_party/blink/renderer/core/layout/grid/grid_track_sizing_algorithm.cc
+
+The pinned source exposes track growth limits and computes distributed LayoutUnit shares from integer RawValue operands (around lines 662-678). This supports interpreting the observed 1/64 CSS px remainder as a fixed-point distribution effect. It does not establish the complete Grid behavior by itself; the Chrome 157 paired observations remain the runtime oracle.

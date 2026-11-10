@@ -21,6 +21,7 @@ Android APK 내부의 baseline, candidate, 복구 asset hash는 각각 해당 so
 - `positions-1-3-regression.log`: 기존 single-fit positions 1–3 row-span 자동 최소 크기 2,880 paired Chrome scenes 통과.
 - `two-fit-regression.log`: 기존 two-fit row-span의 두 cap 위 content minimum 회귀 test 1/1 통과.
 - `layout-rounding-tests.log`: 양자화와 cap 경계 layout unit test 5/5 통과.
+- Agent Browser에서 네 개 commit-pinned 후보 PNG가 모두 완전히 로드되고 intrinsic dimensions가 0보다 큰 것을 확인했다. 고정 Chromium 157.0.8103.40 source도 열어 `LayoutUnit` raw-value 기반 contribution share 구현을 대조했다. 상세 값은 `agent-browser-verification.txt`에 있다.
 - 양자화 trace는 여섯 positive implicit row, typed `AutomaticMinimum`, auto-min track span, multi-track span, non-flex max track, content-based floor를 확인한다.
 - 구현 검토 20개와 PR diff 별도 검토 30개는 [implementation-review-20.md](implementation-review-20.md), [pr-diff-review-30.md](pr-diff-review-30.md)에 기록했다.
 
