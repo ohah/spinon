@@ -4,7 +4,7 @@
 
 - 규범 근거는 [CSS Grid Layout Module Level 1 · 2025 CRD §6.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto), [§7.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizing-functions), [§11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-spanning-items)다. §6.6의 automatic minimum 조건은 non-scrollable item이 해당 축에서 auto 최소 track을 span하고, 여러 track을 span하면 flexible track이 없어야 한다. §7.2에서 `fit-content()` track의 minimum sizing function은 `auto`다. §11.5 spanning contribution은 track 순서·cap별 사용 크기·item span frame을 비교하는 기준으로 삼았다.
 - 기준 구현은 Agent Browser가 실행한 HeadlessChrome `157.0.0.0`이다. Terminal Browser는 사용하지 않았다. Chrome 결과는 사전 비교 모델이며 Spinon 구현 결과가 아니다.
-- [fixture](../../../../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-auto-minimum-precomparison.html), [capture](./capture-chrome.mjs), [독립 verifier](./verify-chrome-matrix.mjs), [검증 요약](./verification.json), [전체 관측 NDJSON](./chrome157-observation.ndjson), [SHA-256 manifest](./SHA256SUMS)을 보존한다. Fixture SHA-256은 `1ad7b120960c55fc9844b55bdac770817e8604d84f54bbade17aa1260494ef47`, 관측 NDJSON SHA-256은 `74102b7dc44d898655f1309b9d1dc0e478714bcf7842e1144cfd24571099a17d`다.
+- [fixture](../../../../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-auto-minimum-precomparison.html), [capture](./capture-chrome.mjs), [독립 verifier](./verify-chrome-matrix.mjs), [검증 요약](./verification.json), [전체 관측 NDJSON](./chrome157-observation.ndjson), [계획 PR diff 실패 관점 30개](./plan-pr-diff-review-30.md), [SHA-256 manifest](./SHA256SUMS)을 보존한다. Fixture SHA-256은 `1ad7b120960c55fc9844b55bdac770817e8604d84f54bbade17aa1260494ef47`, 관측 NDJSON SHA-256은 `74102b7dc44d898655f1309b9d1dc0e478714bcf7842e1144cfd24571099a17d`다.
 
 ## 고정 입력과 독립 관계
 
