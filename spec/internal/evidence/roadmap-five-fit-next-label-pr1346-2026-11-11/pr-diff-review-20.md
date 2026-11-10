@@ -5,8 +5,9 @@
 - 원격 PR: [#1346](https://github.com/ohah/spinon/pull/1346)
 - 기준 commit: `dc1b73c2dd7640917a0d0d49d20fa346b68b716c`
 - 검토한 구현 commit: `65aa332418eb7d27e58c4a7128af566183d797bf`
-- 원격 patch와 checkout diff는 `spec/public/roadmap.html` 한 파일, 2 insertions / 2 deletions로 일치했다.
-- 이 기록은 카드 문구와 기존 상태 불변조건을 다룬다. 최종 remote-render 검증은 merge 후 별도로 수행한다.
+- 구현 전용 원격 patch는 `spec/public/roadmap.html` 한 파일, 2 insertions / 2 deletions였고 commit `65aa332418eb7d27e58c4a7128af566183d797bf`의 checkout diff와 일치했다.
+- 이 기록을 포함한 최종 원격 PR diff도 checkout의 `origin/main...HEAD`와 대조했다. 변경 경로는 이 검토 문서와 `spec/public/roadmap.html` 두 개뿐이다.
+- 이 검토는 카드 문구와 기존 상태 불변조건을 다룬다. 최종 remote-render 검증은 merge 후 별도로 수행한다.
 
 ## 20개 실패 관점
 
