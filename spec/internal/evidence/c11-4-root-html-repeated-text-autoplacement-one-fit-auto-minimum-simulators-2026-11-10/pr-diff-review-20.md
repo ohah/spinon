@@ -1,6 +1,6 @@
 # C11.4 one-fit auto-placement 구현 PR diff 검토 · 20개 관점
 
-PR #1322의 실제 원격 diff를 검토했다. 원격 head는 `5128b65b1886a971f57933ac6bd30a30c11f9ba0`, 변경 파일은 35개이며, 파일 목록을 로컬 commit diff와 대조했다. 기존 구현/runtime 검토와 분리해 코드 변경, 대조 행렬, 오류 경계, 문서 및 제출 근거를 살폈다.
+PR #1322의 최종 diff는 head `18c573aa7cc571fa1e5d3c0f0ad1891677732ebf`의 37개 파일과 2개 commit이다. 첫 구현 commit `5128b65b1886a971f57933ac6bd30a30c11f9ba0`의 원격 35개 파일을 로컬 diff와 대조하고 제품 코드·테스트를 검토했다. 후속 commit은 문서 상태와 실행 evidence에 검토 결과 및 SHA-256 manifest를 추가했으며 제품 동작 코드는 바꾸지 않았다. 기존 구현/runtime 검토와 분리해 오류 경계, 문서 및 제출 근거를 살폈다.
 
 | # | PR diff 실패 관점 | 판정과 근거 |
 |---:|---|---|
