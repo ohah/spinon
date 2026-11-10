@@ -1,0 +1,2 @@
+Performing Streamed Install
+adb: failed to install /private/tmp/spinon-c114-four-fit-capture.w9LLjU/android-previous-app.apk: Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES: Failed to collect certificates from /data/app/vmdl496672860.tmp/base.apk using APK Signature Scheme v2: SHA-256 digest of contents did not verify]

@@ -18,7 +18,7 @@ const BASE_TRACK_LIST: &str =
     "fit-content(0px) fit-content(10px) fit-content(20%) min-content max-content auto";
 const DARK_TRACK_LIST: &str =
     "fit-content(10px) min-content fit-content(20%) max-content fit-content(30px) auto";
-const DARK_FOUR_FIT_TRACK_LIST: &str = "fit-content(10px) fit-content(20px) fit-content(30px) fit-content(40px) min-content max-content";
+const DARK_FIVE_FIT_TRACK_LIST: &str = "fit-content(10px) fit-content(20px) fit-content(30px) fit-content(40px) fit-content(50px) min-content max-content";
 const ITEMS_PLACEHOLDER: &str = "<!-- C11_4_REPEATED_TEXT_ITEMS -->";
 const MINIMUM_RULES_PLACEHOLDER: &str = "/* C11_4_ITEM_MINIMUM_RULES */";
 
