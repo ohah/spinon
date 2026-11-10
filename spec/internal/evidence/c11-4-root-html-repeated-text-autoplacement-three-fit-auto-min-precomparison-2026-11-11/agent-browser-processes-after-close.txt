@@ -1,0 +1,6 @@
+Agent Browser session: spinon-c114-three-fit-autoplacement-precomparison-20261111
+agent-browser session list --json: {"success":true,"data":{"sessions":[]}}
+pgrep -x agent-browser: exit 1, no matching process
+ps browser-process filter: no matching Chrome, Chromium, or agent-browser process
+Terminal Browser: not used
+iOS Simulator: not started

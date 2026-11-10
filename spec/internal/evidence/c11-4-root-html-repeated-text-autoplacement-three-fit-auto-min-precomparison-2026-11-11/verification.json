@@ -1,0 +1,44 @@
+{
+  "schema": "spinon.c11-4.repeated-text-autoplacement-three-fit-auto-min-verification/v1",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixtureSha256": "8b3638ecc252bdcc05ad64a706a9cd18bed78ad40eb8cca182c128ed6a8299f5",
+  "collectorSha256": "7da40fbe2f7714042f2b84f5bac1fc97e7be8e51b9df3b6f725d94b2c21d9670",
+  "sceneCount": 5760,
+  "pairedMinHeight0AutoKeys": 2880,
+  "uniqueAuthoredTrackLists": 720,
+  "fitPositionTriples": 20,
+  "tailOrders": 6,
+  "orderedCapAssignments": 6,
+  "baselineRowsBelowPayloadFloor": 7200,
+  "baselineEligibleAutoMinimumRowsBelowFloor": 7200,
+  "candidateRowsBelowPayloadFloor": 0,
+  "candidateEligibleAutoMinimumRowsBelowFloor": 0,
+  "eligibleRowsRaisedToPayloadFloor": 7200,
+  "candidateStartTrackTotalCssPx": [
+    180
+  ],
+  "baselineStartTrackTotalsCssPx": [
+    110,
+    120,
+    130,
+    140,
+    150
+  ],
+  "candidateStretchTrackTotalCssPx": [
+    220
+  ],
+  "autoTrackOccurrenceCounts": [
+    1,
+    2
+  ],
+  "autoTrackStretchDeltasCssPx": [
+    20,
+    40
+  ],
+  "nonAutoStretchMaxDeltaCssPx": 0.0,
+  "baselineScenesWithVisibleItemOverflow": 2880,
+  "candidateScenesWithVisibleItemOverflow": 0,
+  "scenesWhoseLastItemCrossesGridEnd": 0,
+  "agentBrowserSessionClosed": true,
+  "terminalBrowserUsed": false
+}
