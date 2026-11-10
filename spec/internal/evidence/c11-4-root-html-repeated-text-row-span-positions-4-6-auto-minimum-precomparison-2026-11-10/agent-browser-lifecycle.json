@@ -1,0 +1,110 @@
+{
+  "session": "spinon-c114-row-span-pos456-auto-min-20261110",
+  "opened": true,
+  "closed": true,
+  "closeError": null,
+  "beforeClose": {
+    "data": {
+      "active": true,
+      "namespace": null,
+      "pid": 17723,
+      "runtime": {
+        "backgroundPid": 17723,
+        "browserLaunched": true,
+        "compatibilityStatus": "current",
+        "effectiveLaunch": {
+          "browserLaunched": true,
+          "engine": "chrome",
+          "launchHash": 6847324482101410000
+        },
+        "engine": "chrome",
+        "launchHash": 6847324482101410000,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 6847324482101410000
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": false,
+          "saveStatus": "not_attempted"
+        },
+        "namespace": null,
+        "pageCount": 1,
+        "restoreCheckFn": null,
+        "restoreCheckText": null,
+        "restoreCheckUrl": null,
+        "restoreKey": null,
+        "restoreLoadedPath": null,
+        "restoreSave": "auto",
+        "restoreSavedPath": null,
+        "restoreStatus": "not_configured",
+        "restoreStatusDetail": null,
+        "restoreValidationPending": false,
+        "saveStatus": "not_attempted",
+        "session": "spinon-c114-row-span-pos456-auto-min-20261110",
+        "socketDir": "/Users/yoonhb/.agent-browser"
+      },
+      "runtimeError": null,
+      "session": "spinon-c114-row-span-pos456-auto-min-20261110",
+      "socketDir": "/Users/yoonhb/.agent-browser",
+      "version": "0.31.1"
+    },
+    "success": true
+  },
+  "afterClose": {
+    "data": {
+      "active": true,
+      "namespace": null,
+      "pid": 17723,
+      "runtime": {
+        "backgroundPid": 17723,
+        "browserLaunched": false,
+        "compatibilityStatus": "current",
+        "effectiveLaunch": {
+          "browserLaunched": false,
+          "engine": "chrome",
+          "launchHash": null
+        },
+        "engine": "chrome",
+        "launchHash": null,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": false,
+            "engine": "chrome",
+            "launchHash": null
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": false,
+          "saveStatus": "not_configured"
+        },
+        "namespace": null,
+        "pageCount": 0,
+        "restoreCheckFn": null,
+        "restoreCheckText": null,
+        "restoreCheckUrl": null,
+        "restoreKey": null,
+        "restoreLoadedPath": null,
+        "restoreSave": "auto",
+        "restoreSavedPath": null,
+        "restoreStatus": "not_configured",
+        "restoreStatusDetail": null,
+        "restoreValidationPending": false,
+        "saveStatus": "not_configured",
+        "session": "spinon-c114-row-span-pos456-auto-min-20261110",
+        "socketDir": "/Users/yoonhb/.agent-browser"
+      },
+      "runtimeError": null,
+      "session": "spinon-c114-row-span-pos456-auto-min-20261110",
+      "socketDir": "/Users/yoonhb/.agent-browser",
+      "version": "0.31.1"
+    },
+    "success": true
+  }
+}

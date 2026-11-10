@@ -1,12 +1,16 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-11-10 Root HTML repeated-text row-span · one-fit automatic minimum 계획 후보
+## 2026-11-10 Root HTML repeated-text row-span · positions 4–6 min-height:auto 계획 후보
 
-기존 single-fit repeated-text row-span profile에서 three-implicit-row topology와 fit-content positions 1–3에 `min-height:auto`를 허용하는 제한 후보를 계획했다. Chrome 157 Agent Browser의 `min-height:0`/`auto` paired precomparison 5,760 scenes와 독립 automatic-minimum, source-order, span-frame 및 auto-only stretch 검증을 기록했다. 계획 실패 관점 20개와 계획 PR diff 20개 검토를 완료했으며 제품 코드는 아직 바꾸지 않았다. 이 후보는 C11.4/C11 완료나 공식 `78/214`에 영향을 주지 않는다. [계획](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-plan-review-20.md) · [계획 PR diff 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md) · [Chrome 관측과 한계](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-precomparison-2026-11-10/README.md)
+기존 six-row single-fit profile의 fit-content authored position 4–6을 min-height:auto로 비교하는 다음 bounded candidate다. Chrome 157 Agent Browser 8,640-scene paired matrix, 독립 verifier, content-floor/overflow·source-order·span-frame·auto-only stretch 확인을 마쳤다. 아직 제품 코드는 바꾸지 않았다. C11.4/C11 체크와 78/214, internal contract 0.1.0을 유지한다. [계획](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md) · [사전 비교와 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md)
 
-## 2026-11-09 Root HTML repeated-text row-span · 다음 계획 후보
+## 2026-11-10 Root HTML repeated-text row-span · positions 1–3 automatic minimum · PR #1326 merged
 
-다음 bounded 후보로 여섯 implicit row를 생성하는 repeated-text span profile의 fit-content authored 위치 4–6을 선택했다. Agent Browser Chrome 157의 4,320-scene 사전 비교와 계획 실패 관점 20개 검토는 마쳤고 제품 코드는 아직 변경하지 않았다. C11.4/C11 공식 체크와 78/214는 유지한다. [집중 계획](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-plan-review-20.md) · [Chrome 관측과 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/README.md)
+기존 single-fit profile의 세 implicit-row topology와 fit-content positions 1–3에서 span text item의 min-height:auto를 허용한 제한 구현 PR [#1326](https://github.com/ohah/spinon/pull/1326)은 2026-11-10T05:39:19Z Rebase and merge됐다(merge SHA b5925aa274718a16c4e8f0bd9ef4bed4423aec6c). Chrome paired matrix와 RuntimeSession·Android/iOS Simulator visual smoke를 확인했고 전체 C11.4 완료나 공식 78/214 증가로 해석하지 않는다. [계획](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-2026-11-10/README.md)
+
+## 2026-11-09 Root HTML repeated-text row-span positions 4–6 · PR #1306 merged
+
+여섯 implicit row를 생성하는 repeated-text row-span profile의 fit-content positions 4–6 제한 구현 PR [#1306](https://github.com/ohah/spinon/pull/1306)은 2026-11-09T09:30:44Z Rebase and merge됐다(merge SHA 884b07962375566350476c565f2456af1d65e922). Fixed topology RuntimeSession 4,320-scene matrix와 Android/iOS Simulator visual smoke를 기록했다. C11.4/C11 미완료 및 공식 78/214를 유지한다. [집중 계획](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [Chrome 사전 비교와 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/README.md) · [구현 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-runtime-2026-11-09/README.md)
 
 ## 2026-11-09 Root HTML 반복 텍스트 행 span · PR #1295 병합 · 후속 계획
 
@@ -836,4 +840,4 @@ Row-span 한 `fit-content()` 위치 4–6 [PR #1306](https://github.com/ohah/spi
 
 병합 후 문서 동기화 근거: [PR diff 적대 검토 30개](../spec/internal/evidence/c11-4-pr1280-postmerge-plan-sync-2026-11-08/pr-diff-review-30.md).
 
-다음 bounded candidate는 [반복 텍스트 row-span의 두 `fit-content()` track](./c11-4-root-html-repeated-text-row-span-two-fit-content.md)이다. Chrome 157 사전 비교 3,840/3,840 scene에서 15개 position pair, 네 representative cap pair의 양방향 assignment, 네 제한 tail order와 두 span topology/source order를 확인했다. 계획 실패 관점 20개와 [계획 PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-precomparison-2026-11-09/plan-pr-diff-review-30.md)를 마쳤고 제품 구현은 시작하지 않았다. C11.4/C11 체크, 공식 `78/214`, 내부 contract `0.1.0`은 유지한다. [사전 비교 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-two-fit-content-precomparison-2026-11-09/README.md).
+두 fit-content row-span 제한 slice는 PR #1311로 병합됐다. 다음 bounded candidate는 single-fit row-span의 `min-height:auto` positions 4–6이다. Chrome 157 8,640-scene paired matrix와 별도 계획 검토를 마쳤고, 제품 구현은 아직 시작하지 않았다. C11.4/C11 체크와 공식 78/214는 유지한다. [계획](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md) · [사전 비교](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md)

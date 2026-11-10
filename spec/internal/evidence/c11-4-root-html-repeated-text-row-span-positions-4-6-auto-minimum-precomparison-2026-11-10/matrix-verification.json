@@ -1,0 +1,34 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-positions-4-6-auto-minimum-independent-verification.v1",
+  "sceneCount": 8640,
+  "pairedSceneCount": 4320,
+  "captureSha256": "38ecb38b3b73b4edfc2f3d496ba6267b6b617ce52be53bc55b61a3c92cca0ae9",
+  "fixtureSha256": "c69ad2ba14b1e1c682c89dfb5152bd534c65ca8a8c0f6fb67fb1a281be430348",
+  "captureScriptSha256": "23666cbe0b1c46687eb8e2ecb053a1a08c266b4ed108ff9ce62e86ee437330a3",
+  "fitPositions": [
+    4,
+    5,
+    6
+  ],
+  "tailOrderCount": 30,
+  "caps": [
+    "0%",
+    "0px",
+    "10px",
+    "120%",
+    "20%",
+    "20px"
+  ],
+  "eligibleItemOccurrences": 12240,
+  "baselineBelowContentFloor": 0,
+  "candidateBelowContentFloor": 0,
+  "candidateVisibleContentOverflow": 0,
+  "automaticMinimumChangedItemFrames": 15348,
+  "maxTrackDeltaPx": 70,
+  "maxItemFrameDeltaPx": 55,
+  "maxSourceOrderDeltaPx": 0.0,
+  "maxNonAutoStretchDeltaPx": 0.0,
+  "maxAutoTrackStretchDeltaPx": 90,
+  "autoTrackGrowthPairs": 4320,
+  "toleranceCssPx": 0.01
+}
