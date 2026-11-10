@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<style>
+*{box-sizing:border-box}
+:root{color-scheme:light dark}html,body{margin:0;padding:0}body{background-color:rgb(255,255,255)}
+#grid{display:grid;width:40px;height:220px;grid-template-columns:40px;grid-template-rows:10px;grid-auto-rows:fit-content(0px) fit-content(10px) min-content fit-content(20%) max-content auto;grid-auto-flow:row;align-content:start;align-items:normal;justify-content:start;justify-items:normal;direction:ltr;overflow:visible;margin:0;padding:0;row-gap:0;column-gap:0;background-color:rgb(255,255,255)}
+.item{display:block;width:auto;height:auto;min-height:0;margin:0;padding:0;overflow:visible;grid-column:1 / 2;background-color:rgb(31,41,51)}
+.empty{min-height:0;height:10px;background-color:rgb(11,17,23)}
+.payload{display:block;width:auto;height:auto;margin:0;padding:0;overflow:visible;background-color:rgb(151,161,171);color:rgb(0,0,0);font-family:monospace;font-size:10px;font-style:normal;font-weight:400;line-height:10px;letter-spacing:0;word-spacing:0;white-space:normal;word-break:normal;direction:ltr}
+.item[data-item="B"]{background-color:rgb(61,71,81)}
+.item[data-item="C"]{background-color:rgb(91,101,111)}
+.item[data-item="D"]{background-color:rgb(211,81,111)}
+.item[data-item="E"]{background-color:rgb(241,121,151)}
+.item[data-item="A"] .payload{background-color:rgb(121,131,141)}
+.item[data-item="C"] .payload{background-color:rgb(181,191,201)}
+.item[data-item="D"] .payload{background-color:rgb(21,181,211)}
+.item[data-item="E"] .payload{background-color:rgb(91,221,111)}
+@media(prefers-color-scheme:dark){body{background-color:rgb(18,18,18)}#grid{align-content:stretch;background-color:rgb(18,18,18)}.item.auto{min-height:auto}}
+</style>
+</head>
+<body><div id="grid"><div class="item empty" data-item="empty" style="grid-row:1 / 2"></div><div class="item auto" data-item="A" style="grid-row:2 / span 2"><div class="payload">AAAA BBBB CCCC DDDD EEEE FFFF</div></div><div class="item auto" data-item="B" style="grid-row:3 / span 2"><div class="payload">AAAAAA BBBBB CCCC DDD</div></div><div class="item auto" data-item="C" style="grid-row:4 / span 2"><div class="payload">AAAAA BBBB CCC DDDD</div></div><div class="item auto" data-item="D" style="grid-row:5 / span 2"><div class="payload">AAAA BBB CCCCC DDDD</div></div><div class="item auto" data-item="E" style="grid-row:6 / span 2"><div class="payload">AAA BBBB CCCCCC</div></div></div></body>
+</html>

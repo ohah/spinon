@@ -104,11 +104,13 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .is_some_and(|rows| supports_repeated_span_fit_positions(tracks, rows));
     let repeated_text_span_auto_minimum_candidate =
         repeated_text_span_profile
-            && tracks
-                .iter()
-                .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
-                .count()
-                == 1
+            && matches!(
+                tracks
+                    .iter()
+                    .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+                    .count(),
+                1 | 3
+            )
             && visible_children.iter().copied().skip(1).all(|item_id| {
                 input.nodes[index[&item_id]].style.min_height == LayoutDimension::Auto
             });

@@ -53,17 +53,16 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         .iter()
         .map(|track| track.base_size)
         .collect::<Vec<_>>();
-    let one_fit_span_auto_minimum = raw_row_sizes.len() == 7
-        && stages.has_span_auto_minimum
-        && matches!(
-            &container.auto_rows,
-            crate::GridAutoRows::TrackList(tracks)
-                if tracks
-                    .iter()
-                    .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
-                    .count()
-                    == 1
-        );
+    let fit_content_count = match &container.auto_rows {
+        crate::GridAutoRows::TrackList(tracks) => tracks
+            .iter()
+            .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+            .count(),
+        _ => 0,
+    };
+    let span_auto_minimum = raw_row_sizes.len() == 7 && stages.has_span_auto_minimum;
+    let one_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 1;
+    let three_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 3;
     let pre_alignment_units = blink_layout_unit_distribute_rows_from_stages(
         container,
         grid_frame,
@@ -71,16 +70,10 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         &stages.intrinsic_tracks,
         &stages.pre_alignment_tracks,
         match &container.auto_rows {
-            crate::GridAutoRows::TrackList(tracks)
-                if tracks
-                    .iter()
-                    .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
-                    .count()
-                    == 2 =>
-            {
-                ResidualRounding::Up
+            crate::GridAutoRows::TrackList(_) if fit_content_count == 2 => ResidualRounding::Up,
+            _ if one_fit_span_auto_minimum || three_fit_span_auto_minimum => {
+                ResidualRounding::UpLaterTrack
             }
-            _ if one_fit_span_auto_minimum => ResidualRounding::UpLaterTrack,
             _ => ResidualRounding::Nearest,
         },
     )?;
