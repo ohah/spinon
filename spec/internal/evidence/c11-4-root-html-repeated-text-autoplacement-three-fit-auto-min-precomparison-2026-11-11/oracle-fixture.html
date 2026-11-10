@@ -1,0 +1,222 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 three-fit repeated-text auto-placement minimum</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 16px; color: #172033; font: 13px/1.45 system-ui, sans-serif; }
+  .grid {
+    display: grid; width: 40px; height: 220px;
+    grid-template-columns: 40px; grid-template-rows: 10px;
+    grid-auto-flow: row; row-gap: 0; column-gap: 0;
+    align-content: start; align-items: normal; justify-items: normal;
+    direction: ltr; overflow: visible;
+  }
+  .item { display: block; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; border: 0; overflow: visible; }
+  .empty { height: 10px; grid-row: 1 / 2; background-color: #cbd5e1; }
+  .item[data-index="1"] { background-color: #fca5a5; }
+  .item[data-index="2"] { background-color: #93c5fd; }
+  .item[data-index="3"] { background-color: #86efac; }
+  .payload { display: block; width: auto; height: auto; margin: 0; padding: 0; border: 0; font: 400 10px/10px monospace; letter-spacing: 0; word-spacing: 0; white-space: normal; direction: ltr; background-color: #fde68a; }
+  #sample { display: flex; align-items: flex-start; gap: 20px; }
+  #sample-grid { grid-auto-rows: fit-content(0px) min-content fit-content(10px) max-content fit-content(20%) auto; }
+</style>
+<h1>C11.4 three-fit repeated-text auto-placement</h1>
+<p>Chrome 157 사전 비교: three-fit 위치·cap, tail 순서, source order, start/stretch, min-height 0/auto.</p>
+<div id="sample">
+  <div id="sample-grid" class="grid"></div>
+  <pre id="sample-summary"></pre>
+</div>
+<script>
+const payloads = [
+  'A A A A A A',
+  'AAAA AAAA A',
+  'AA AA AA AA',
+  'AAA AAA AAA',
+  'AAA AAA',
+  'A A A A A A',
+  'A A A A A A A A',
+  'AA',
+];
+const expectedLineCounts = [2, 2, 2, 3, 2, 2, 3, 1];
+const capValues = ['0px', '10px', '20%'];
+const tailValues = ['min-content', 'max-content', 'auto'];
+
+function permutations(values) {
+  const result = [];
+  const visit = (remaining, prefix) => {
+    if (remaining.length === 0) { result.push(prefix); return; }
+    for (let index = 0; index < remaining.length; index += 1) {
+      visit(remaining.filter((_, candidate) => candidate !== index), [...prefix, remaining[index]]);
+    }
+  };
+  visit(values, []);
+  return result;
+}
+
+function fitTriples() {
+  const result = [];
+  for (let first = 1; first <= 4; first += 1) {
+    for (let second = first + 1; second <= 5; second += 1) {
+      for (let third = second + 1; third <= 6; third += 1) result.push([first, second, third]);
+    }
+  }
+  return result;
+}
+
+const tails = permutations(tailValues);
+const capAssignments = permutations(capValues);
+const triples = fitTriples();
+const scenes = [];
+for (const fitPositions of triples) {
+  for (const tail of tails) {
+    for (const fitCaps of capAssignments) {
+      const trackMembers = [...tail];
+      for (let index = 0; index < fitPositions.length; index += 1) {
+        trackMembers.splice(fitPositions[index] - 1, 0, `fit-content(${fitCaps[index]})`);
+      }
+      for (const alignContent of ['start', 'stretch']) {
+        for (const domOrder of ['forward', 'reverse']) {
+          for (const minHeight of ['0px', 'auto']) {
+            scenes.push({
+              index: scenes.length,
+              fitPositions,
+              fitCaps,
+              tail,
+              trackMembers,
+              trackList: trackMembers.join(' '),
+              alignContent,
+              domOrder,
+              minHeight,
+            });
+          }
+        }
+      }
+    }
+  }
+}
+
+function appendItems(grid, scene) {
+  const empty = document.createElement('div');
+  empty.className = 'item empty';
+  grid.append(empty);
+  const order = [...Array(payloads.length).keys()];
+  if (scene.domOrder === 'reverse') order.reverse();
+  for (const payloadIndex of order) {
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.dataset.index = String(payloadIndex + 1);
+    item.style.minHeight = scene.minHeight;
+    const payload = document.createElement('div');
+    payload.className = 'payload';
+    payload.textContent = payloads[payloadIndex];
+    item.append(payload);
+    grid.append(item);
+  }
+}
+
+const round = value => Math.round(value * 100000) / 100000;
+const box = (element, origin) => {
+  const rect = element.getBoundingClientRect();
+  return [rect.x - origin.x, rect.y - origin.y, rect.width, rect.height].map(round);
+};
+const lines = element => {
+  const range = document.createRange();
+  range.selectNodeContents(element);
+  return [...new Set([...range.getClientRects()].map(rect => round(rect.top)))];
+};
+
+function showScene(scene, grid) {
+  grid.replaceChildren();
+  grid.style.gridAutoRows = scene.trackList;
+  grid.style.alignContent = scene.alignContent;
+  appendItems(grid, scene);
+}
+
+window.__c114ThreeFitScenes = scenes;
+window.__c114ThreeFitMetadata = { payloads, expectedLineCounts, fitTriples: triples, tailCount: tails.length, capAssignments };
+window.showC114ThreeFitScene = index => {
+  const scene = scenes[index];
+  if (!scene) throw new Error(`scene ${index} is missing`);
+  showScene(scene, document.querySelector('#sample-grid'));
+  const grid = document.querySelector('#sample-grid');
+  const style = getComputedStyle(grid);
+  const origin = grid.getBoundingClientRect();
+  return {
+    index,
+    scene,
+    computedAutoRows: style.gridAutoRows,
+    computedRows: style.gridTemplateRows,
+    gridFrame: [round(origin.width), round(origin.height)],
+    items: [...grid.children].map((item, itemIndex) => {
+      const payload = item.querySelector('.payload');
+      return {
+        minHeight: getComputedStyle(item).minHeight,
+        id: item.dataset.index || `empty-${itemIndex}`,
+        frame: box(item, origin),
+        payload: payload ? box(payload, origin) : null,
+        lineCount: payload ? lines(payload).length : 0,
+      };
+    }),
+  };
+};
+
+window.runC114ThreeFitBatch = (start, count) => {
+  if (!Number.isInteger(start) || !Number.isInteger(count) || start < 0 || count < 0) throw new Error('invalid batch range');
+  const end = Math.min(start + count, scenes.length);
+  const host = document.createElement('div');
+  Object.assign(host.style, { position: 'absolute', left: '-10000px', top: '0' });
+  document.body.append(host);
+  const results = [];
+  for (let index = start; index < end; index += 1) {
+    const scene = scenes[index];
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    Object.assign(grid.style, { gridAutoRows: scene.trackList, alignContent: scene.alignContent });
+    appendItems(grid, scene);
+    host.append(grid);
+    const origin = grid.getBoundingClientRect();
+    const style = getComputedStyle(grid);
+    const rows = style.gridTemplateRows.split(/\s+/).map(value => round(Number.parseFloat(value)));
+    const items = [...grid.children].map((item, itemIndex) => {
+      const payload = item.querySelector('.payload');
+      const lineTops = payload ? lines(payload).map(value => round(value - origin.y)) : [];
+      return {
+        minHeight: getComputedStyle(item).minHeight,
+        id: item.dataset.index || `empty-${itemIndex}`,
+        frame: box(item, origin),
+        payload: payload ? box(payload, origin) : null,
+        lineCount: lineTops.length,
+        lineTops,
+      };
+    });
+    results.push({
+      index,
+      scene,
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      devicePixelRatio,
+      computedAutoRows: style.gridAutoRows,
+      computedAlignContent: style.alignContent,
+      gridFrame: [round(origin.width), round(origin.height)],
+      rows,
+      items,
+    });
+    grid.remove();
+  }
+  host.remove();
+  return { start, end, total: scenes.length, results };
+};
+
+const sampleIndex = scenes.findIndex(scene => scene.fitPositions.join(',') === '1,3,6'
+  && scene.fitCaps.join(',') === '0px,10px,20%'
+  && scene.alignContent === 'start' && scene.domOrder === 'forward' && scene.minHeight === 'auto');
+showScene(scenes[sampleIndex], document.querySelector('#sample-grid'));
+const initialStyle = getComputedStyle(document.querySelector('#sample-grid'));
+document.querySelector('#sample-summary').textContent = JSON.stringify({
+  tracks: initialStyle.gridAutoRows,
+  rows: initialStyle.gridTemplateRows,
+  itemLineCounts: [...document.querySelectorAll('#sample-grid .payload')].map(node => lines(node).length),
+  sourceOrder: [...document.querySelectorAll('#sample-grid .item:not(.empty)')].map(node => node.dataset.index),
+}, null, 2);
+</script>
