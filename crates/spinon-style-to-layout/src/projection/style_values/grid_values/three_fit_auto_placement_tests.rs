@@ -90,6 +90,17 @@ fn three_fit_auto_placement_rejects_wrong_count_multiplicity_length_and_caps() {
     too_long.push(ComputedCssGridTrackSize::Auto);
     assert!(!root_html_fit_content_repeated_three_fit_auto_placement_track_list(&too_long));
 
+    let four_fit = vec![
+        ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(10.0)),
+        ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(20.0)),
+        ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(30.0)),
+        ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(40.0)),
+        ComputedCssGridTrackSize::MinContent,
+        ComputedCssGridTrackSize::MaxContent,
+    ];
+    assert!(!root_html_fit_content_repeated_three_fit_auto_placement_track_list(&four_fit));
+    assert!(root_html_fit_content_repeated_min_max_content_auto_placement_track_list(&four_fit));
+
     for cap in [
         ComputedCssGridTrackLengthPercentage::LengthPx(-1.0),
         ComputedCssGridTrackLengthPercentage::LengthPx(f32::NAN),

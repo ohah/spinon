@@ -1,0 +1,16 @@
+iOS default bootstrap rebuild=BUILD SUCCEEDED
+Android default bootstrap rebuild=BUILD SUCCESSFUL
+iOS default app reinstall=simctl install succeeded
+Android default app reinstall=adb install -r Success
+default index.html sha256=e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9
+iOS app-data content fingerprint before reinstall=6267901e1ecb1d6221833ebcc09dfce27a0e5246763841020b7c2fb69e080e89
+iOS app-data content fingerprint after reinstall=6267901e1ecb1d6221833ebcc09dfce27a0e5246763841020b7c2fb69e080e89
+Android final app-data tar sha256=2e02c53a68fee54c409417a72e463d7beb3f297b148ea6c55958b5045a65a473
+Android original capture app-data before and after sha256=2e02c53a68fee54c409417a72e463d7beb3f297b148ea6c55958b5045a65a473
+Android final app-data files=65
+Android final per-file content manifest sha256=daa073f9d05f6f464c1a63a26782ec5f354e6b2667549fe3329ab011f08a5b91
+Android installed package path=package:/data/app/~~9kk-uBlKaa_s2v_ENTYhsA==/dev.spinon.bootstrap-2hUDfY6DBbyk4eTLgy4tWg==/base.apk
+Android intermediate run-as response before reinstall=unknown package; its text output was not used as an app-data backup
+capture cleanup fix=retain .app suffix, verify pulled APK SHA-256 and signature, fingerprint Android app-data file contents only
+temporary recovery backup=removed after final checksum verification
+final simulator state=all devices shut down

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 four-fit repeated text auto-placement RuntimeSession</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      #grid {
+        display: grid;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-rows: fit-content(0px) fit-content(10px) fit-content(20%) fit-content(30px) min-content max-content;
+        grid-auto-flow: row;
+        align-content: start;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+      /* C11_4_ITEM_MINIMUM_RULES */
+      .item {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+      }
+      .payload {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        color: #101820;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        direction: ltr;
+      }
+      #item-0 { height: 10px; background-color: #e5484d; }
+      #item-1 { background-color: #f2665e; }
+      #item-2 { background-color: #5ba8f5; }
+      #item-3 { background-color: #55c791; }
+      #item-4 { background-color: #a855f7; }
+      #item-5 { background-color: #facc15; }
+      #item-6 { background-color: #0ea5e9; }
+      #item-7 { background-color: #fb923c; }
+      #item-8 { background-color: #2dd4bf; }
+      @media (prefers-color-scheme: dark) {
+        #grid {
+          grid-auto-rows: fit-content(5px) max-content fit-content(10px) fit-content(20%) min-content fit-content(30px);
+          align-content: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid">
+      <div id="item-0" class="item"></div>
+      <!-- C11_4_REPEATED_TEXT_ITEMS -->
+    </div>
+  </body>
+</html>

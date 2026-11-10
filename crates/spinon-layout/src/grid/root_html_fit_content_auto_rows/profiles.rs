@@ -104,6 +104,7 @@ pub(super) fn supports_repeated_min_max_content_auto_placement_track_list(
     supports_repeated_min_max_content_auto_track_list(tracks)
         || supports_repeated_two_fit_min_max_content_auto_track_list(tracks)
         || supports_repeated_three_fit_min_max_content_auto_placement_track_list(tracks)
+        || supports_repeated_four_fit_min_max_content_auto_placement_track_list(tracks)
 }
 
 pub(super) fn supports_repeated_three_fit_min_max_content_auto_placement_track_list(
@@ -132,6 +133,34 @@ pub(super) fn supports_repeated_three_fit_min_max_content_auto_placement_track_l
         counts[index] += 1;
     }
     fit_content_count == 3 && counts == [1, 1, 1]
+}
+
+pub(super) fn supports_repeated_four_fit_min_max_content_auto_placement_track_list(
+    tracks: &[GridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut counts = [0usize; 3];
+    let mut fit_content_count = 0usize;
+    for track in tracks {
+        if matches!(track, GridTrackSize::FitContent(_)) {
+            if !fit_content_cap_is_supported(track) {
+                return false;
+            }
+            fit_content_count += 1;
+            continue;
+        }
+        let index = match track {
+            GridTrackSize::MinContent => 0,
+            GridTrackSize::MaxContent => 1,
+            GridTrackSize::Auto => 2,
+            _ => return false,
+        };
+        counts[index] += 1;
+    }
+    fit_content_count == 4 && counts == [1, 1, 0]
 }
 
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
@@ -228,6 +257,10 @@ mod three_fit_tests;
 #[cfg(test)]
 #[path = "profiles/three_fit_auto_placement_tests.rs"]
 mod three_fit_auto_placement_tests;
+
+#[cfg(test)]
+#[path = "profiles/four_fit_auto_placement_tests.rs"]
+mod four_fit_auto_placement_tests;
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)

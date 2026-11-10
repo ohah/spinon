@@ -27,7 +27,7 @@ fn parsed_root_html_three_fit_auto_placement_rejects_out_of_profile_mutations() 
     let replace_tracks =
         |replacement: &str| super::super::replace_once(&source, tracks, replacement);
     let cases = [
-        ("four fit tracks", replace_tracks(DARK_FOUR_FIT_TRACK_LIST)),
+        ("five fit tracks", replace_tracks(DARK_FIVE_FIT_TRACK_LIST)),
         (
             "wrong three-fit tail multiplicity",
             replace_tracks(
@@ -170,7 +170,7 @@ fn parsed_root_html_three_fit_auto_placement_rejects_atomically_and_recovers_sam
         .find(|scene| is_automatic_minimum(scene) && scene["scene"]["index"] == 1)
         .expect("Chrome matrix has a forward auto-minimum scene");
     let source = source_for(&scene);
-    let source = super::super::replace_once(&source, DARK_TRACK_LIST, DARK_FOUR_FIT_TRACK_LIST);
+    let source = super::super::replace_once(&source, DARK_TRACK_LIST, DARK_FIVE_FIT_TRACK_LIST);
     let (session, initial) = super::super::run(&source);
     assert_eq!(initial.state, crate::session::RuntimeLayoutState::Ready);
     let initial_completed = initial
@@ -189,7 +189,7 @@ fn parsed_root_html_three_fit_auto_placement_rejects_atomically_and_recovers_sam
     assert_eq!(
         rejected.state,
         crate::session::RuntimeLayoutState::Failed,
-        "four-fit dark mutation fails closed: {:?}",
+        "five-fit dark mutation fails closed: {:?}",
         rejected.error
     );
     assert!(

@@ -99,6 +99,10 @@ fn parsed_root_html_one_fit_auto_minimum_accepts_unlisted_px_and_percentage_caps
 fn parsed_root_html_one_fit_auto_minimum_rejects_then_recovers_same_session() {
     use spinon_style::{CssColorScheme, CssMediaEnvironment};
 
+    const DARK_THREE_FIT_TRACK_LIST: &str =
+        "fit-content(10px) fit-content(20%) fit-content(30px) min-content max-content auto";
+    const DARK_FIVE_FIT_TRACK_LIST: &str = "fit-content(10px) fit-content(20%) fit-content(30px) fit-content(40px) fit-content(50px) min-content";
+
     let scene = super::auto_minimum_scenes()
         .into_iter()
         .find(|scene| {
@@ -107,7 +111,10 @@ fn parsed_root_html_one_fit_auto_minimum_rejects_then_recovers_same_session() {
                 && scene["align"].as_str() == Some("start")
         })
         .expect("one-fit zero cap start scene exists");
-    let (session, initial) = super::super::run(&super::source_for(&scene, true));
+    let source = super::source_for(&scene, true);
+    let source =
+        super::super::replace_once(&source, DARK_THREE_FIT_TRACK_LIST, DARK_FIVE_FIT_TRACK_LIST);
+    let (session, initial) = super::super::run(&source);
     assert_eq!(initial.state, crate::session::RuntimeLayoutState::Ready);
     let initial = initial.completed.expect("valid profile publishes layout");
     let initial_key = initial.key;
@@ -122,7 +129,7 @@ fn parsed_root_html_one_fit_auto_minimum_rejects_then_recovers_same_session() {
     assert_eq!(
         rejected.state,
         crate::session::RuntimeLayoutState::Failed,
-        "the dark three-fit list fails closed: {:?}",
+        "the dark five-fit list fails closed: {:?}",
         rejected.error
     );
     assert!(

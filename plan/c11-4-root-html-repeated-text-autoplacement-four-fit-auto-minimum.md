@@ -1,6 +1,6 @@
 # C11.4 · 네 fit repeated-text auto-placement `min-height:auto`
 
-- **상태:** Chrome 157 사전 비교와 계획 검토 완료 · 계획 PR 준비 · 구현 시작 전 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
+- **상태:** Chrome 157 사전 비교와 20/30 관점 계획 검토 완료 · 계획 PR [#1343](https://github.com/ohah/spinon/pull/1343) Rebase and merge (`2fa78846db7490d75e4d894c59eb712a32e20576`) · same-checkout 구현 진행 중 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
 - **직전 자동 배치:** [three-fit `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-three-fit-auto-minimum.md) · PR [#1342](https://github.com/ohah/spinon/pull/1342)
 - **직전 row-span:** [three-fit `min-height:auto`](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · PR [#1338](https://github.com/ohah/spinon/pull/1338)
 - **사전 비교:** [Chrome 157 5,760-scene matrix와 독립 검산](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-min-precomparison-2026-11-11/README.md)
@@ -35,7 +35,7 @@
 1. 이 계획의 20개 실패 관점 검토와 계획 PR diff의 별도 30개 검토를 마치고 계획 PR을 Rebase and merge한 뒤 제품 코드를 수정한다.
 2. Style projection은 정확한 four-fit list만 추가로 허용하고 fit position 15개, tail order 2개, cap index와 typed cap을 검증한다. One-/two-/three-fit auto-placement와 three-fit row-span은 기존 positive/negative controls로 보존한다.
 3. 기본 parsed Root HTML RuntimeSession에서 5,760 scene 전체를 Chrome observation과 비교한다. paired 2,880 keys, 15 position sets, 720 track lists, repeated list wrapping, source order, line count, eligible fit-row floor, row/cap trace와 block-end geometry를 확인한다.
-4. Rejection matrix는 0–3 및 5–6 fit count, 다섯/일곱 member, tail multiplicity/order, invalid/non-finite/negative/`calc()` cap, indefinite percentage, mixed item minimum, control auto minimum, explicit placement/span/dense/column flow, scrollable overflow, nested/inline/replaced child, unsupported style, extra owner/column/row와 malformed/stale/duplicate trace를 다룬다. Atomic rejection 뒤 same-session recovery를 확인한다.
+4. Rejection matrix는 이 profile에서 허용하지 않는 0 및 5–6 fit count, 다섯/일곱 member, tail multiplicity와 `auto` tail, invalid/non-finite/negative/`calc()` cap, indefinite percentage, mixed item minimum, control auto minimum, explicit placement/span/dense/column flow, scrollable overflow, nested/inline/replaced child, unsupported style, extra owner/column/row와 malformed/stale/duplicate trace를 다룬다. 기존 1–3 fit auto-placement는 각자의 positive regression으로 유지하고, 두 min/max tail order는 positive control에서 모두 확인한다. Atomic rejection 뒤 same-session recovery를 확인한다.
 5. Existing one-fit auto-placement 1,440 scene, two-fit auto-placement 2,880 scene, three-fit auto-placement 5,760 scene, three-fit row-span 11,520 scene, one/two-fit row-span automatic-minimum regressions, repeated-text 810 scene과 관련 Grid track-sizing tests를 회귀한다. 변경 crate focused tests, 제품·fixture-test 대상의 package Clippy `-D warnings`, `cargo fmt --all -- --check` 결과를 기록한다. 기준선 확인 전부터 broad-suite 실패를 이번 변경의 원인으로 분류하지 않는다.
 6. 동일 source SHA의 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 기본 route를 light/dark로 확인한다. Fixture/app asset hash, `layout=ready`, draw/present, OS screenshot을 보존한다. Screenshot은 visual smoke이며 pixel readback이나 hardware GPU 증거가 아니다.
 7. 공유 simulator profile은 재사용 뒤 shutdown한다. 새 task-owned simulator는 캡처 뒤 삭제한다. 앱/data source는 백업 hash와 비교해 원상 복원한다. Agent Browser는 고유 session을 쓰고 종료 뒤 session/process가 사라졌는지 확인한다. Terminal Browser는 사용하지 않는다.

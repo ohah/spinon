@@ -29,9 +29,9 @@ fn parsed_root_html_one_fit_auto_minimum_rejects_out_of_profile_mutations() {
 
     let cases = [
         (
-            "three fit tracks",
+            "five fit tracks",
             alter_tracks(
-                "fit-content(10px) fit-content(20%) fit-content(30px) min-content max-content auto",
+                "fit-content(10px) fit-content(20%) fit-content(30px) fit-content(40px) fit-content(50px) min-content",
             ),
         ),
         (
