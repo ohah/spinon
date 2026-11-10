@@ -79,8 +79,6 @@ pub(super) fn validate(
         _ => Vec::new(),
     };
     let two_fit_span_track_list = six_member_span_list && span_fit_positions.len() == 2;
-    let two_fit_auto_placement_track_list =
-        six_member_auto_placement_list && span_fit_positions.len() == 2;
     let align_content = grid_style
         .properties
         .get("align-content")
@@ -346,7 +344,7 @@ pub(super) fn validate(
         };
         let allow_minimum_floor = !repeated_text_span_profile && items.len() == 3 && position == 1;
         let allow_auto_minimum = (two_fit_span_track_list && repeated_text_span_profile)
-            || (two_fit_auto_placement_track_list && repeated_text_auto_minimum_profile);
+            || (six_member_auto_placement_list && repeated_text_auto_minimum_profile);
         let item_placement_is_supported = if repeated_text_span_profile {
             repeated_span_item_placement(style)
         } else {

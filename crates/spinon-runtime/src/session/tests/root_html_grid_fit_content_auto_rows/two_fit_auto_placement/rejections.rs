@@ -22,7 +22,6 @@ fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
         "fit-content(10px) fit-content(20%) fit-content(30px) min-content max-content auto";
     let wrong_multiplicity =
         "fit-content(10px) fit-content(20%) min-content max-content max-content auto";
-    let one_fit = "fit-content(10px) min-content max-content max-content auto min-content";
     let mixed_minimums = replace_once(
         &replace_once(
             &replace_once(SOURCE, "min-height: 0;", "min-height: auto;"),
@@ -123,14 +122,6 @@ fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
                     "#item-1 { background-color: #f2665e; }",
                     "#item-1 { grid-row: 2 / span 2; background-color: #f2665e; }",
                 ),
-                "min-height: 0;",
-                "min-height: auto;",
-            ),
-        ),
-        (
-            "automatic item minimum on one-fit auto-placement",
-            replace_once(
-                &replace_once(SOURCE, BASE_TRACK_LIST, one_fit),
                 "min-height: 0;",
                 "min-height: auto;",
             ),
