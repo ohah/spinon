@@ -1,12 +1,22 @@
 {
   "schema": "spinon.agent-browser-lifecycle/v1",
   "agentBrowserVersion": "0.31.1",
-  "session": "spinon-roadmap-five-fit-status-pr1348-20261111",
-  "captureClosedBrowser": true,
-  "postCloseSessionInfo": {
-    "active": false,
-    "pid": null
-  },
+  "sessions": [
+    {
+      "name": "spinon-roadmap-five-fit-status-pr1348-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null }
+    },
+    {
+      "name": "spinon-pr1348-body-check-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null },
+      "imagesLoaded": [
+        { "width": 1440, "height": 1000, "complete": true },
+        { "width": 390, "height": 844, "complete": true }
+      ]
+    }
+  ],
   "terminalBrowserUsed": false,
   "simulatorsStarted": false
 }
