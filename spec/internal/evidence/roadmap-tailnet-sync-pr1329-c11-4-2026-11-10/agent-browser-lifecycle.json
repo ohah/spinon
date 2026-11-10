@@ -1,0 +1,20 @@
+{
+  "session": "spinon-roadmap-pass01-20261110",
+  "before": {
+    "existingSessions": ["zntc4603-root"],
+    "daemonPid": 41696,
+    "chromePid": 41705,
+    "chromeProfile": "/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-25280081-510e-4b67-8773-fda887be8564"
+  },
+  "closeCommand": "agent-browser close",
+  "after": {
+    "sessionInfoActive": false,
+    "sessionInfoPid": null,
+    "sessionList": ["zntc4603-root"],
+    "taskDaemonPidPresent": false,
+    "taskChromePidPresent": false,
+    "temporaryChromeProfilePresent": false,
+    "taskSessionConfigPresent": false,
+    "unrelatedSessionPreserved": "zntc4603-root"
+  }
+}
