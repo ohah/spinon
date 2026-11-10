@@ -154,6 +154,14 @@ pub(super) fn repeated_span_fit_positions_are_supported(
                 && (1..=6).contains(second)
                 && first < second
         }
+        [first, second, third] => {
+            positive_implicit_rows == 6
+                && (1..=6).contains(first)
+                && (1..=6).contains(second)
+                && (1..=6).contains(third)
+                && first < second
+                && second < third
+        }
         _ => false,
     }
 }
@@ -236,4 +244,26 @@ pub(super) fn zero_border(style: &ComputedElementStyle) -> bool {
         && style.layout_border.right == 0.0
         && style.layout_border.bottom == 0.0
         && style.layout_border.left == 0.0
+}
+
+#[cfg(test)]
+mod tests {
+    use super::repeated_span_fit_positions_are_supported;
+
+    #[test]
+    fn repeated_span_three_fit_positions_are_limited_to_six_rows() {
+        for first in 1..=4 {
+            for second in first + 1..=5 {
+                for third in second + 1..=6 {
+                    let positions = [first, second, third];
+                    assert!(repeated_span_fit_positions_are_supported(6, &positions));
+                    assert!(!repeated_span_fit_positions_are_supported(3, &positions));
+                }
+            }
+        }
+
+        for positions in [[1, 1, 2], [4, 3, 6], [0, 2, 4], [2, 4, 7]] {
+            assert!(!repeated_span_fit_positions_are_supported(6, &positions));
+        }
+    }
 }

@@ -5,6 +5,7 @@ use style::{
     rule_tree::StrongRuleNode,
     shared_lock::StylesheetGuards,
     typed_om::{ToTyped, TypedValue},
+    values::generics::grid::{TrackBreadth, TrackSize},
     values::specified::length::NonNegativeLengthPercentageOrNormal,
     values::specified::{FlexBasis, Inset, LengthPercentage, Margin, MaxSize, Size},
 };
@@ -75,6 +76,7 @@ fn layout_property(declaration: &PropertyDeclaration) -> Option<&'static str> {
         LonghandId::PaddingLeft => "padding-left",
         LonghandId::RowGap => "row-gap",
         LonghandId::ColumnGap => "column-gap",
+        LonghandId::GridAutoRows => "grid-auto-rows",
         _ => return None,
     };
     Some(name)
@@ -110,6 +112,14 @@ fn specified_math(declaration: &PropertyDeclaration) -> Option<ComputedCssMath> 
         | PropertyDeclaration::ColumnGap(NonNegativeLengthPercentageOrNormal::LengthPercentage(
             value,
         )) => &value.0,
+        PropertyDeclaration::GridAutoRows(tracks) => {
+            tracks.0.iter().find_map(|track| match track {
+                TrackSize::FitContent(TrackBreadth::Breadth(value @ LengthPercentage::Calc(_))) => {
+                    Some(value)
+                }
+                _ => None,
+            })?
+        }
         _ => return None,
     };
     if !matches!(value, LengthPercentage::Calc(_)) {

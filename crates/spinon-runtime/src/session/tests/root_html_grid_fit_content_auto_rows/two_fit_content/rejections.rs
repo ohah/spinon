@@ -2,14 +2,14 @@ use super::*;
 use std::collections::BTreeMap;
 
 #[test]
-fn parsed_root_html_two_fit_content_rejects_three_tracks_atomically_and_recovers_same_session() {
+fn parsed_root_html_two_fit_content_rejects_four_fit_tracks_atomically_and_recovers_same_session() {
     let expected = observations()
         .into_iter()
         .next()
         .expect("precomparison includes a representative scene");
     let scene = &expected["scene"];
     let mut source = source_for(scene);
-    let invalid_dark_rule = "@media (prefers-color-scheme: dark) { .grid { grid-auto-rows: fit-content(1px) fit-content(2px) fit-content(3px) min-content max-content auto !important; } }";
+    let invalid_dark_rule = "@media (prefers-color-scheme: dark) { .grid { grid-auto-rows: fit-content(1px) fit-content(2px) fit-content(3px) fit-content(4px) min-content max-content !important; } }";
     assert!(source.contains("</style>"));
     source = source.replacen("</style>", &format!("{invalid_dark_rule}</style>"), 1);
 
@@ -29,7 +29,7 @@ fn parsed_root_html_two_fit_content_rejects_three_tracks_atomically_and_recovers
     media.color_scheme = spinon_style::CssColorScheme::Dark;
     session
         .set_root_html_environment(1280.0, 633.0, 1.0, media)
-        .expect("dark environment should select the invalid three-fit rule");
+        .expect("dark environment should select the invalid four-fit rule");
     let rejected = session.wait_for_layout_snapshot(Duration::from_secs(5));
     assert_eq!(rejected.state, crate::session::RuntimeLayoutState::Failed);
     assert_eq!(
@@ -41,7 +41,7 @@ fn parsed_root_html_two_fit_content_rejects_three_tracks_atomically_and_recovers
     );
     assert!(
         rejected.completed.is_none(),
-        "unsupported fit multiplicity must not publish a partial layout or render scene"
+        "four-fit multiplicity must not publish a partial layout or render scene"
     );
 
     media.color_scheme = spinon_style::CssColorScheme::Light;

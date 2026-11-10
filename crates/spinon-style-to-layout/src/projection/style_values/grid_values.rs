@@ -657,6 +657,7 @@ fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
                     [0, 0, 1, 2] | [0, 1, 0, 2] | [1, 2, 0, 0] | [2, 0, 1, 0]
                 )
         }
+        3 => counts == [1, 1, 1],
         _ => false,
     }
 }
@@ -2568,3 +2569,7 @@ mod template_area_track_list_tests;
 #[cfg(test)]
 #[path = "grid_values/combined_metadata_tests.rs"]
 mod combined_metadata_tests;
+
+#[cfg(test)]
+#[path = "grid_values/three_fit_span_tests.rs"]
+mod three_fit_span_tests;

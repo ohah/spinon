@@ -149,6 +149,7 @@ pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
                     [0, 0, 1, 2] | [0, 1, 0, 2] | [1, 2, 0, 0] | [2, 0, 1, 0]
                 )
         }
+        3 => counts == [1, 1, 1],
         _ => false,
     }
 }
@@ -179,9 +180,21 @@ pub(super) fn supports_repeated_span_fit_positions(
                 && (1..=6).contains(second)
                 && first < second
         }
+        [first, second, third] => {
+            positive_implicit_rows == 6
+                && (1..=6).contains(first)
+                && (1..=6).contains(second)
+                && (1..=6).contains(third)
+                && first < second
+                && second < third
+        }
         _ => false,
     }
 }
+
+#[cfg(test)]
+#[path = "profiles/three_fit_tests.rs"]
+mod three_fit_tests;
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)
@@ -310,6 +323,7 @@ mod tests {
         ));
 
         bad_tail[2] = GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(3.0));
+        bad_tail[5] = GridTrackSize::MaxContent;
         assert!(!supports_repeated_min_max_content_auto_span_track_list(
             &bad_tail
         ));

@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      main {
+        display: grid;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      #columns-20 {
+        width: 100px;
+        height: 30px;
+        grid-template-columns: fit-content(20%) 10px;
+        grid-template-rows: 30px;
+        background-color: #101820;
+      }
+      #columns-20-item {
+        width: 40px;
+        height: 20px;
+        background-color: #e5484d;
+      }
+      #columns-120-item {
+        width: 40px;
+        height: 20px;
+        background-color: #8b5cf6;
+      }
+      #repeat-item-a, #repeat-item-b {
+        width: 40px;
+        height: 20px;
+      }
+      #repeat-item-a { background-color: #f97316; }
+      #repeat-item-b { background-color: #ec4899; }
+      #columns-20-marker {
+        width: 10px;
+        height: 20px;
+        background-color: #3b82f6;
+      }
+      #columns-120-marker {
+        width: 10px;
+        height: 20px;
+        background-color: #06b6d4;
+      }
+
+      #columns-120 {
+        width: 100px;
+        height: 30px;
+        grid-template-columns: fit-content(120%) 10px;
+        grid-template-rows: 30px;
+        background-color: #101820;
+      }
+
+      #rows-20 {
+        width: 20px;
+        height: 100px;
+        grid-template-columns: 20px;
+        grid-template-rows: fit-content(20%) 10px;
+        background-color: #101820;
+      }
+      #rows-20-item {
+        width: 20px;
+        height: 40px;
+        background-color: #f0b429;
+      }
+      #rows-20-marker {
+        width: 20px;
+        height: 10px;
+        background-color: #22c55e;
+      }
+
+      #repeat-20 {
+        width: 100px;
+        height: 20px;
+        grid-template-columns: repeat(2, fit-content(20%));
+        grid-template-rows: 20px;
+        background-color: #101820;
+      }
+
+      #zero-basis {
+        width: 0;
+        height: 20px;
+        grid-template-columns: fit-content(100%);
+        grid-template-rows: 20px;
+        background-color: #101820;
+      }
+      #zero-basis-item {
+        width: 20px;
+        height: 20px;
+        background-color: #a855f7;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="columns-20">
+      <div id="columns-20-item"></div>
+      <div id="columns-20-marker"></div>
+    </main>
+    <main id="columns-120">
+      <div id="columns-120-item"></div>
+      <div id="columns-120-marker"></div>
+    </main>
+    <main id="rows-20">
+      <div id="rows-20-item"></div>
+      <div id="rows-20-marker"></div>
+    </main>
+    <main id="repeat-20">
+      <div id="repeat-item-a"></div>
+      <div id="repeat-item-b"></div>
+    </main>
+    <main id="zero-basis">
+      <div id="zero-basis-item"></div>
+    </main>
+  </body>
+</html>

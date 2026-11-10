@@ -79,6 +79,14 @@ pub(super) fn validate(
         _ => Vec::new(),
     };
     let two_fit_span_track_list = six_member_span_list && span_fit_positions.len() == 2;
+    let three_fit_span_track_list = six_member_span_list && span_fit_positions.len() == 3;
+    if three_fit_span_track_list && grid_style.layout_math_values.contains_key("grid-auto-rows") {
+        return Err(unsupported(
+            node,
+            "grid-auto-rows",
+            "Three-fit row-span caps must be authored as direct px or percentage values",
+        ));
+    }
     let align_content = grid_style
         .properties
         .get("align-content")

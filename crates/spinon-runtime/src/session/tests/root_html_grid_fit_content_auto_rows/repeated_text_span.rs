@@ -12,6 +12,9 @@ mod automatic_minimum;
 #[cfg(test)]
 #[path = "repeated_text_span/rejections.rs"]
 mod rejections;
+#[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
+#[path = "repeated_text_span/three_fit_auto_minimum.rs"]
+mod three_fit_auto_minimum;
 
 const SOURCE: &str = include_str!(
     "../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-precomparison.html"
@@ -188,6 +191,20 @@ fn source_for(scene: &Value) -> String {
     )
 }
 
+fn without_unused_extended_item_color_rules(source: &str) -> String {
+    [
+        ".item[data-item=\"D\"] { background-color: rgb(211, 81, 111); }\n",
+        ".item[data-item=\"E\"] { background-color: rgb(241, 121, 151); }\n",
+        ".item[data-item=\"D\"] .payload { background-color: rgb(21, 181, 211); }\n",
+        ".item[data-item=\"E\"] .payload { background-color: rgb(91, 221, 111); }",
+    ]
+    .into_iter()
+    .fold(source.to_owned(), |normalized, rule| {
+        normalized.replace(rule, "")
+    })
+    .replace("\n</style>", "</style>")
+}
+
 fn assert_optional_track_trace(
     completed: &crate::session::RuntimeLayoutCompleted,
     expected: &Value,
@@ -203,9 +220,17 @@ fn assert_optional_track_trace(
         let trace = &diagnostics.traces[0];
         assert_eq!(trace.used_rows.explicit_track_count, 1, "{label}");
         assert_eq!(trace.used_rows.negative_implicit_track_count, 0, "{label}");
-        let expected_implicit_rows =
-            u16::try_from(expected["rowValues"].as_array().unwrap().len() - 1)
-                .expect("bounded implicit row count should fit u16");
+        let expected_implicit_rows = u16::try_from(
+            expected
+                .get("rows")
+                .or_else(|| expected.get("rowValues"))
+                .expect("expected rows should be recorded")
+                .as_array()
+                .expect("expected rows should be an array")
+                .len()
+                - 1,
+        )
+        .expect("bounded implicit row count should fit u16");
         assert_eq!(
             trace.used_rows.positive_implicit_track_count, expected_implicit_rows,
             "{label}"
@@ -256,9 +281,9 @@ fn parsed_root_html_repeated_text_row_spans_match_all_960_chrome_scenes() {
         .collect::<Vec<_>>();
     assert_eq!(expected.len(), 960);
     assert_eq!(
-        source_for(&expected[0]),
+        without_unused_extended_item_color_rules(&source_for(&expected[0])),
         APP_SENTINEL_SOURCE,
-        "the Android/iOS default Root HTML input must match the parsed-session sentinel"
+        "first scene matches the platform sentinel after dropping unused D/E paint rules"
     );
     let topologies = expected
         .iter()
