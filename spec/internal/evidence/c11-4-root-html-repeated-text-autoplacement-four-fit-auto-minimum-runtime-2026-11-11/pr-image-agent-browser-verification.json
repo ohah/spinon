@@ -39,5 +39,17 @@
       "height": 2400
     }
   ],
+  "followupCheck": {
+    "verifiedAt": "2026-11-10T22:04:40Z",
+    "prHeadSha": "fa7f629bffc7b9cf07e1c1e1f34e6ee790405b61",
+    "prChangedFiles": 50,
+    "reviewDocumentLinkLoaded": true,
+    "verificationRecordLinkLoaded": true,
+    "allFourImagesComplete": true,
+    "dimensions": {
+      "iOS": "1206x2622",
+      "Android": "1080x2400"
+    }
+  },
   "result": "pass"
 }
