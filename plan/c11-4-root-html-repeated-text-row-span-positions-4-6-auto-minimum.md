@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span fit-content positions 4–6 · `min-height:auto`
 
-**상태:** 계획 및 사전 비교 완료 · 제품 코드는 변경하지 않음 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 제한 구현 slice 완료 · PR [#1331](https://github.com/ohah/spinon/pull/1331) 병합 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **기준 구현:** [six-row single-fit row-span positions 4–6](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · 구현 PR [#1306](https://github.com/ohah/spinon/pull/1306)
 
@@ -49,8 +49,8 @@ Chrome 157 사전 비교는 baseline 4,320개와 candidate 4,320개를 모두 �
 - 일반 CSS admission, row/column scrolling·clipping, WPT 적합성, 공개 CSS 지원과 C11.4/C11 완료 상태는 넓히지 않는다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일한 기본 Root HTML baseline/candidate sentinel의 light/dark layout-ready 및 draw/present를 확인한다. 이는 full native matrix 또는 surface pixel parity가 아니다. 사용한 임시 simulator/AVD는 작업 후 제거하고 shared profiles/data는 보존한다.
 
-## 구현 판정 관문
+## 병합된 구현 slice
 
-구현 뒤에는 CSS/Chrome observation과 분리된 layout, style projection, RuntimeSession track trace, rejection/atomic recovery 검사를 추가한다. 기존 positions 4–6 `min-height:0` 4,320-scene matrix 및 one-fit positions 1–3 auto-minimum, two-fit row-span/auto-placement 회귀를 재실행한다. Android/iOS는 변경 소스 해시가 기록된 기본 Root HTML route를 실행한다. `cargo fmt`, 변경 crate의 focused Clippy, 기본/opt-in fixture artifact 경계도 변경에 맞게 확인한다.
+PR #1331은 2026-11-10T10:00:02Z Rebase and merge로 병합됐고 merge SHA는 `4b4f48ea67ab4383954cc89cc21e1a71bdb29732`다. 기본 parsed Root HTML `RuntimeSession` 경로에서 기존 six-row single-fit repeated-text row-span profile의 authored fit-content positions 4–6에 한정해 span text의 computed `min-height:auto`를 연결했다. public API·FFI, 일반 CSS admission 및 internal numeric contract `0.1.0`은 바뀌지 않았다.
 
-구현/runtime 동작은 새 실패 관점 20개로 검토하고 최종 PR diff도 별도의 20개 관점으로 검토한다. 발견한 결함은 수정 후 영향을 받는 검증을 다시 수행한다. `spec/STATUS.md`의 C11.4/C11 checkbox와 공식 `78/214`는 이 제한 slice가 C11.4 전체 완료를 충족하지 않는 한 유지한다.
+RuntimeSession paired matrix는 4,320쌍/8,640 observations를 통과했다. eligible automatic-minimum item 12,240개에서 content-floor 위반과 visible overflow는 0이었고, source-order 의미 기하 및 non-auto stretch의 최대 차이는 각각 0 CSS px였다. 기존 positions 1–3의 2,880쌍 회귀 행렬, two-fit 회귀, focused rejection/recovery 5개와 layout rounding 5개도 통과했다. `cargo fmt`와 변경 crate별 focused Clippy가 통과했으며 전체 workspace Clippy는 실행하지 않았다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 baseline/candidate light/dark 화면의 layout-ready 및 draw/present visual smoke를 확인했다. 이 결과는 PixelCopy·Metal drawable readback, compositor 이후 pixel parity, 실기기, hardware GPU 또는 WPT 검증이 아니다. 원본 로그·화면·hash와 검사 한계는 [RuntimeSession 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.md)에 있다. 구현/runtime 동작은 새 실패 관점 20개로 검토했고 최종 PR diff는 별도의 30개 관점으로 검토했다. PR checks는 보고되지 않아 CI 통과로 기록하지 않는다. C11.4/C11 checkbox, 공식 `78/214` 및 internal numeric contract `0.1.0`은 그대로 유지한다. [구현/runtime 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.md) · [PR diff 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.md).
