@@ -22,9 +22,10 @@
 - Desktop 1440×1000과 mobile 390×844에서 최신 PR #1326, merge SHA `b5925aa274718a16c4e8f0bd9ef4bed4423aec6c`, 공식 `78/214`, C11.4/C11 미완료 및 PR checks 0개를 확인했다. Mobile document width는 viewport와 같은 390px로 가로 overflow가 없다.
 - 캡처: [desktop](./tailnet-roadmap-desktop-agent-browser.png), [mobile](./tailnet-roadmap-mobile-agent-browser.png).
 - 검증 후 session `spinon-tailnet-roadmap-pr1326-final-20261110`을 닫았다. Chrome PID `8112`와 임시 profile은 이미 사라졌고, 남은 해당 session daemon PID `8111`을 종료했다. 마지막 조회에서 session 프로세스는 없었다.
+- 문서 PR [#1327](https://github.com/ohah/spinon/pull/1327) 본문의 commit-pinned raw image 두 장도 Agent Browser에서 로드됐다: desktop `1440×1000`, mobile `390×844`. [PR 페이지 캡처](./pr1327-agent-browser.png)와 image/lifecycle 검증 JSON을 함께 보존했다. PR check-run/status는 0개였다.
 
 ## 작업 후 정리
 
 - S03 이름의 simulator profile은 없었다. Simulator 앱은 닫혀 있었고 iOS simulator와 Android AVD는 모두 shutdown, ADB 기기는 연결되지 않았다. iPhone 17 Pro와 Android AVD는 다른 작업도 재사용하는 공유 profile이므로 데이터는 보존했다.
 - 선택 빌드 `pass01`, `pass02`, `pass03` build root는 `lsof +D`에서 open handle이 없음을 확인한 뒤 제거했다. `pass02` JSON·screenshot 근거와 hash 검증을 마친 rollback backup은 보존했다.
-- 별도 PR #1326 screenshot-link 확인은 Agent Browser로 Android light/dark 1080×2400 및 iOS light/dark 1206×2622의 commit-pinned raw image 네 장을 열었다. PR check-run/status/review는 각각 0개였으며 이를 CI green으로 해석하지 않았다.
+- 별도 PR #1326 screenshot-link 확인은 Agent Browser로 Android light/dark 1080×2400 및 iOS light/dark 1206×2622의 commit-pinned raw image 네 장을 열었다. PR #1326 check-run/status/review는 각각 0개였으며 이를 CI green으로 해석하지 않았다.

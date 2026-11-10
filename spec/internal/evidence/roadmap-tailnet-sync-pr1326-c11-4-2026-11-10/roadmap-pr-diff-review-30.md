@@ -33,7 +33,7 @@
 | 27 | 공개 카드의 계획·실행 근거 route가 잘못되는가 | 통과. 선택 publication에 계획·실행 route가 있고 pass03 staging 검사도 통과했다. |
 | 28 | Tailnet 동기화가 다른 파일을 삭제하거나 서버를 재시작하는가 | 통과. route 삭제 0, server restart 없음으로 기록했고 260개 hash를 확인했다. |
 | 29 | 교체 전 Tailnet 파일 rollback 자료가 누락되거나 검증되지 않는가 | 통과. 64개 backup의 SHA-256을 64/64 확인하고 외부 backup을 보존했다. |
-| 30 | browser/simulator cleanup이 다른 작업의 공유 데이터를 지우는가 | 통과. Agent Browser 전용 process는 닫았고, S03 profile이 없음을 확인했으며 공유 simulator data는 보존했다. |
+| 30 | browser/simulator cleanup이 다른 작업의 공유 데이터를 지우거나 PR 화면 링크가 깨지는가 | 통과. Agent Browser 전용 process를 닫았고 PR #1327의 commit-pinned raw image 두 장도 실제 로드했다. S03 profile은 없었으며 공유 simulator data는 보존했다. |
 
 ## 결과
 

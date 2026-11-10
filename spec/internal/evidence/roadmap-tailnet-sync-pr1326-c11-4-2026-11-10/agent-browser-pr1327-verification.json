@@ -1,0 +1,27 @@
+{
+  "url": "https://github.com/ohah/spinon/pull/1327",
+  "browser": "Agent Browser 0.31.1",
+  "headSha": "6344499c40be978d800cb4056917a47e6a7751db",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "prState": "OPEN",
+  "mergeable": "MERGEABLE",
+  "checks": 0,
+  "images": [
+    {
+      "source": "https://raw.githubusercontent.com/ohah/spinon/6344499c40be978d800cb4056917a47e6a7751db/spec/internal/evidence/roadmap-tailnet-sync-pr1326-c11-4-2026-11-10/tailnet-roadmap-desktop-agent-browser.png",
+      "complete": true,
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ohah/spinon/6344499c40be978d800cb4056917a47e6a7751db/spec/internal/evidence/roadmap-tailnet-sync-pr1326-c11-4-2026-11-10/tailnet-roadmap-mobile-agent-browser.png",
+      "complete": true,
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "screenshot": "pr1327-agent-browser.png"
+}
