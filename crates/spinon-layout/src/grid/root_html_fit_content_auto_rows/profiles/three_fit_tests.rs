@@ -51,7 +51,7 @@ fn tail_orders() -> [[GridTrackSize; 3]; 6] {
 }
 
 #[test]
-fn repeated_span_accepts_all_three_fit_positions_and_tail_permutations() {
+fn repeated_span_and_auto_placement_accept_all_three_fit_positions_and_tail_permutations() {
     let mut combinations = 0;
     for first in 1..=4 {
         for second in first + 1..=5 {
@@ -64,10 +64,9 @@ fn repeated_span_accepts_all_three_fit_positions_and_tail_permutations() {
                     assert!(supports_repeated_span_fit_positions(&tracks, 6));
                     assert!(supports_intrinsic_auto_track_list(&tracks));
                     assert!(!supports_repeated_span_fit_positions(&tracks, 3));
-                    assert!(
-                        !supports_repeated_min_max_content_auto_placement_track_list(&tracks),
-                        "the three-fit span profile must not enable auto-placement"
-                    );
+                    assert!(supports_repeated_min_max_content_auto_placement_track_list(
+                        &tracks
+                    ));
                     combinations += 1;
                 }
             }

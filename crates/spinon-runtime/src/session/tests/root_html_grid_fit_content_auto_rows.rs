@@ -9,6 +9,8 @@ mod later_fit_content_row_span;
 mod one_fit_auto_placement;
 #[path = "root_html_grid_fit_content_auto_rows/repeated_text_span.rs"]
 mod repeated_text_span;
+#[path = "root_html_grid_fit_content_auto_rows/three_fit_auto_placement.rs"]
+mod three_fit_auto_placement;
 #[path = "root_html_grid_fit_content_auto_rows/two_fit_auto_placement.rs"]
 mod two_fit_auto_placement;
 #[path = "root_html_grid_fit_content_auto_rows/two_fit_content.rs"]
