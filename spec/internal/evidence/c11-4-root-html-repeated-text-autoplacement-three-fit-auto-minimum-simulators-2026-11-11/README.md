@@ -45,6 +45,10 @@ Projection과 layout의 three-fit focused tests는 각각 4/4 통과했다. `car
 
 Build 명령은 `build-three-fit-apps.sh`에, 모드별 실행·화면 저장·정리 절차는 `capture-three-fit-simulators.sh`에 있다. iOS·Android build 전체 로그와 실행 로그도 이 디렉터리에 둔다. 성공 캡처 뒤 iPhone 17 Pro와 AVD는 모두 shutdown됐고, `cleanup.log`에서 booted device·ADB 연결·Spinon 앱·emulator process가 없는 것을 확인했다. S03 Pilot 이름의 simulator profile은 Xcode 목록에 없었다. 공유 CoreSimulator 서비스와 공유 기기 프로필은 제거하지 않았다.
 
+PR [#1342](https://github.com/ohah/spinon/pull/1342) 본문에서 commit-pinned iOS/Android screenshot 네 장을 Agent Browser로 열어 모두 `complete=true`와 실제 크기를 확인했다. iOS 두 장은 각각 `1206×2622`, Android 두 장은 각각 `1080×2400`이다. 전용 브라우저 session을 닫고 `session list`가 빈 값, Agent Browser daemon/process가 없는 것을 확인했다. 자세한 결과는 [PR 이미지·lifecycle JSON](./pr-image-agent-browser-verification.json)에 기록했다.
+
+Android `spinon_api37_2_presenttime_probe_20261018` AVD는 후속 Android 검증에서 재사용할 Spinon profile이므로 emulator process만 종료하고 profile은 보존했다. iPhone 17 Pro는 공유 Xcode device profile이며 S03 Pilot profile은 등록돼 있지 않다. 작업 전용 임시 profile을 만들거나 남기지 않았다.
+
 ```sh
 SPINON_ENABLE_C04_RUNTIME_GPU=1 mise exec -- bun run build:ios-sim
 SPINON_ENABLE_C04_RUNTIME_GPU=1 mise exec -- bun run build:android

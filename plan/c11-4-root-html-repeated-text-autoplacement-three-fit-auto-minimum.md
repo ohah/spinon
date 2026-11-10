@@ -1,6 +1,6 @@
 # C11.4 · three-fit auto-placement 반복 텍스트의 `min-height:auto`
 
-- **상태:** 계획·Chrome 157 사전 비교·bounded 구현·local 검증 및 별도 구현/runtime 20·PR diff 30 적대 검토 완료 · 구현 PR pending · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
+- **상태:** 계획·Chrome 157 사전 비교·bounded 구현·local 검증 및 별도 구현/runtime 20·PR diff 30 적대 검토 완료 · 구현 PR [#1342](https://github.com/ohah/spinon/pull/1342) 제출 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
 - **계획 PR:** [#1341](https://github.com/ohah/spinon/pull/1341)
 - **직전 구현:** [three-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · 구현 PR [#1338](https://github.com/ohah/spinon/pull/1338)
 - **기존 자동 배치:** [one-fit 자동 최소 크기](./c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum.md) · PR [#1322](https://github.com/ohah/spinon/pull/1322) · [two-fit 자동 최소 크기](./c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md) · PR [#1318](https://github.com/ohah/spinon/pull/1318)
@@ -39,7 +39,7 @@
 - one-fit 1,440 baseline + candidate, two-fit 2,880 baseline + candidate, three-fit row-span 11,520 scene 회귀를 재실행했다. Row-span profile은 별도 gate로 유지된다.
 - Android API 37.2 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 기본 Root HTML route를 light/dark로 실행했다. ready/layout/draw-present 로그와 네 화면을 보존했다. Android는 llvmpipe software renderer였고, 이 결과는 simulator visual smoke로 제한한다.
 - 상세 command output, screenshots, build/source-restoration/cleanup logs: [implementation evidence](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-three-fit-auto-minimum-simulators-2026-11-11/README.md). 첫 Clippy 실행의 test-only `needless_range_loop` 두 건은 iterator로 수정했고, workspace 최종 실행은 통과했다.
-- 다음 관문은 계획과 별도인 implementation/runtime 20관점 검토, 실제 PR diff 30관점 검토, PR 병합 후 status/roadmap/Tailnet preview 동기화다. 이 slice만으로 공식 완료 수, C11.4/C11 완료 표기 또는 계약 버전을 바꾸지 않는다.
+- 구현/runtime 20관점 및 실제 PR diff 30관점 검토를 마치고 구현 PR [#1342](https://github.com/ohah/spinon/pull/1342)을 열었다. PR 이미지 네 장의 본문 렌더링은 [Agent Browser evidence](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-three-fit-auto-minimum-simulators-2026-11-11/pr-image-agent-browser-verification.json)에 기록했다. 병합 뒤 상태 대장·내부 계약·공개 roadmap·Tailnet preview를 실제 결과와 동기화하는 것은 이 bounded slice의 완료 관문이다. 공식 완료 수, C11.4/C11 표기 또는 계약 버전은 이 slice만으로 바꾸지 않는다.
 
 ## 허용 및 거부 경계
 
