@@ -1,0 +1,12 @@
+{
+  "schema": "spinon.agent-browser-lifecycle/v1",
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-roadmap-five-fit-status-pr1348-20261111",
+  "captureClosedBrowser": true,
+  "postCloseSessionInfo": {
+    "active": false,
+    "pid": null
+  },
+  "terminalBrowserUsed": false,
+  "simulatorsStarted": false
+}
