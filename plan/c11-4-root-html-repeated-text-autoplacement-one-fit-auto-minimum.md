@@ -1,6 +1,6 @@
 # C11.4 · one-fit auto-placement text의 `min-height:auto`
 
-- **상태:** 계획 PR [#1320](https://github.com/ohah/spinon/pull/1320) 병합 (`b378e1749bfcd8947ae5aaa27cea0024371256ea`) · Chrome 사전 비교 완료 · 제한 구현 후보와 로컬 검증 완료 · 구현 PR 준비 중 · C11.4/C11 미완료 · 공식 `78/214` 유지
+- **상태:** 계획 PR [#1320](https://github.com/ohah/spinon/pull/1320) 병합 (`b378e1749bfcd8947ae5aaa27cea0024371256ea`) · Chrome 사전 비교 완료 · 제한 구현 후보와 로컬 검증 완료 · 구현 PR [#1322](https://github.com/ohah/spinon/pull/1322) 검토 중 · C11.4/C11 미완료 · 공식 `78/214` 유지
 - **직전 구현:** [two-fit auto-placement `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md) · PR [#1318](https://github.com/ohah/spinon/pull/1318)
 - **기준 profile:** [one-fit auto-placement fit-content 위치 1–6](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md) · 구현 PR [#1302](https://github.com/ohah/spinon/pull/1302)
 - **Chrome 사전 비교:** [1,440-scene `min-height:auto`와 `min-height:0` 대조](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-min-precomparison-2026-11-10/README.md)
@@ -53,7 +53,7 @@ RuntimeSession은 Chrome 기준 one-fit 후보 1,440 scenes와 기존 `min-heigh
 
 iPhone 17 Pro/iOS 26.2 및 Android API 37.2 ARM64 AVD의 light/dark 기본 Root HTML route에서 `layout=ready`와 draw/present를 확인했다. Android는 llvmpipe software rendering이다. Screenshot은 position 4의 representative visual smoke이며 PixelCopy, Metal drawable readback, compositor 이후 pixel equality, 실기기 또는 hardware GPU를 증명하지 않는다. Capture 후 앱과 simulator를 정지하고 기본 앱을 복구했다. S03 이름의 profile이나 task 전용 profile/AVD는 없으며 기존 shared profile만 재사용했다. [구현·플랫폼 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum-simulators-2026-11-10/README.md) · [구현/runtime 20개 관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.md).
 
-현재 작업 tree 기준 PR diff 적대 검토와 implementation PR은 준비 중이다. 이 후보는 merged result가 아니며 PR check도 아직 없다. C11.4/C11 완료 체크, 공식 `78/214`, internal numeric contract version `0.1.0`은 유지한다.
+구현 PR [#1322](https://github.com/ohah/spinon/pull/1322)의 원격 head `5128b65b1886a971f57933ac6bd30a30c11f9ba0`과 35개 파일 목록을 대조해 별도 PR diff 실패 관점 20개를 검토했다. PR 본문의 네 screenshot 링크도 Agent Browser에서 실제 이미지 load와 크기를 확인하고 session을 종료했다. 이 후보는 미병합이며 확인 당시 PR Checks는 0개였다. C11.4/C11 완료 체크, 공식 `78/214`, internal numeric contract version `0.1.0`은 유지한다. [PR diff 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum-simulators-2026-11-10/pr-diff-review-20.md).
 
 ## 완료 판정
 

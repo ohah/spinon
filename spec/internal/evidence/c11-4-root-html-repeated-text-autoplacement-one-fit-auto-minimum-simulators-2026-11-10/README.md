@@ -36,4 +36,6 @@ Row-span 회귀 검사도 통과했다: two-fit row-span 3,840 scenes와 대조�
 
 Build 로그는 `ios-build.log`, `android-build.log`, 기본 입력 재-build는 `ios-default-build.log`, `android-default-build.log`다. Source code는 작업 tree HEAD `a7f96c78c3169a4a3f9aeed9f01d7e6f18d5a1d8`를 기준으로 했다.
 
-기록 로그의 내용과 시각은 유지하고, Git 공백 검사를 위해 줄 끝 공백과 마지막 반복 빈 줄만 정규화했다.
+기록 로그의 내용과 시각은 유지하고, Git 공백 검사를 위해 줄 끝 공백과 마지막 반복 빈 줄만 정규화했다. [PR diff 실패 관점 20개](./pr-diff-review-20.md)도 원격 PR #1322의 실제 파일 목록과 head SHA를 대조해 별도로 작성했다.
+
+이 폴더의 화면·로그·fixture·검토 파일 SHA-256은 `SHA256SUMS`에 기록한다. Manifest는 자기 자신의 해시는 포함하지 않는다.
