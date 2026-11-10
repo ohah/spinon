@@ -30,7 +30,7 @@
 | 24 | desktop layout은 맞지만 screenshot에서 설명이 안 보임 | Agent Browser 1440×1000 이미지에서 board 아래 note가 보임을 육안 확인했다. 통과. |
 | 25 | mobile evidence가 pixel size와 viewport를 혼동 | image는 390×844이며 report의 CSS viewport/document width를 별도로 남긴다. 통과. |
 | 26 | screenshot이 사용자가 지정하지 않은 브라우저 도구로 생성 | 재현기는 Agent Browser 0.31.1을 사용한다. Terminal Browser는 사용하지 않았다. 통과. |
-| 27 | 실패 시 Agent Browser가 켜진 채 남음 | collector `finally`는 close를 호출하며 두 전용 session post-check 모두 inactive/pid null이다. 통과. |
+| 27 | 실패 시 Agent Browser가 켜진 채 남음 | collector `finally`는 close를 호출하며 local capture와 모든 PR body 확인 session post-check가 inactive/pid null이다. 통과. |
 | 28 | browser viewport 결과를 Android/iOS app 또는 simulator 결과로 표시 | README와 PR 본문은 desktop/mobile browser viewport라고 한정하고 simulator 미사용을 적는다. 통과. |
 | 29 | PR body screenshot URL이 잘못됐거나 branch 이동에 취약 | commit-pinned raw image 두 장이 실제 PR body에서 `complete=true`, 1440×1000 및 390×844로 로드됐다. 통과. |
 | 30 | check-run 없는 PR을 CI green으로 표시 | GitHub `statusCheckRollup`은 빈 목록이다. PR 본문에서 0 checks로 밝히며 CI green으로 부르지 않는다. 통과. |
