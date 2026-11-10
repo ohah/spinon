@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span three-fit `min-height:auto`
 
-**상태:** 계획 완료 · 계획 PR [#1334](https://github.com/ohah/spinon/pull/1334) 병합 · 구현·RuntimeSession 회귀·시뮬레이터 visual smoke·구현/runtime 20관점 검토 완료 · implementation PR diff 30관점과 PR 병합 절차 진행 중 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 계획 PR [#1334](https://github.com/ohah/spinon/pull/1334) 및 bounded implementation PR [#1338](https://github.com/ohah/spinon/pull/1338) 병합 · merge SHA `ebcf720d65246340632273f1a40500b346cbf403` · RuntimeSession 회귀·iOS/Android visual smoke·구현/runtime 20관점과 PR diff 30관점 검토 완료 · 공식 C11.4/C11은 미완료 · `78/214` 유지
 
 ## 구현 진행
 
@@ -10,7 +10,7 @@
 - 기존 회귀 one-fit auto-placement 1,440 scene과 repeated-text 810 scene도 통과했다. Layout/style/style-to-layout Clippy는 `-D warnings`로 통과했고, runtime 전체 Clippy는 변경하지 않은 기존 test helper 두 곳의 `too_many_arguments`에서만 실패했다. 그 lint만 명령에서 제외한 runtime-only Clippy는 통과했다. 네 package를 한 번에 선택하고 runtime fixture-test feature를 켠 combined Clippy는 변경하지 않은 `spinon-style` test helper의 `fixture_with_child_style`/`Fixture.child` 참조 불일치로 compile 단계에서 실패했다. 해당 파일은 이번 diff 밖이며 개별 package Clippy는 통과했다.
 - 기존 row-span 960 scene 회귀도 통과했다. 그 테스트는 `rows` 관측치와 일치하지 않는 `rowValues` 접근 및 사용하지 않는 D/E color rule까지 sentinel 원문과 비교해 시작 전에 실패해, 이 두 테스트 harness 가정을 고쳤다.
 - one-fit positions 4–6의 4,320 paired scene도 통과했다(403.82초). Android API 37.0 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 Root HTML fixture로 light/dark visual smoke를 통과했다. 앱 로그에서 fixture SHA, `layout=ready`, draw/present, OS appearance/night mode 변경에 따른 `dark=true` 및 environment revision 증가를 확인했다. 원본 asset과 기존 Android APK를 hash로 복원했고 두 시뮬레이터를 종료했다. [플랫폼 근거·캡처](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-runtime-2026-11-10/README.md)
-- 계획 검토와 다른 구현/runtime 20관점 기록은 [검토표](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-runtime-2026-11-10/implementation-runtime-review-20.md)에 작성했다. Implementation PR diff의 별도 30관점 검토, PR/필수 CI/merge 및 merge 뒤 contract·status·roadmap·Tailnet 동기화는 남아 있다.
+- 계획 검토와 다른 구현/runtime 20관점 기록은 [검토표](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-runtime-2026-11-10/implementation-runtime-review-20.md)에 작성했다. Implementation PR diff의 별도 30관점 검토와 PR 병합을 완료했다. PR #1338의 GitHub workflow/status rollup은 0건이고 `main`에 required status checks는 설정되지 않아 CI green으로 기록하지 않는다. 병합 뒤 contract·status·roadmap 동기화 및 지정 Tailnet 미리보기의 hash 확인을 이어서 진행한다.
 - `cargo fmt --all -- --check`와 `git diff --check`는 현재 변경에서 통과했다. 전체 공식 상태 대장·공개 roadmap 완료 수는 이 제한 범위로 변경하지 않는다.
 
 **선행 범위:** [single-fit row-span positions 1–6](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [two-fit row-span](./c11-4-root-html-repeated-text-row-span-two-fit-content.md) · [one-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · [two-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-two-fit-content.md)
