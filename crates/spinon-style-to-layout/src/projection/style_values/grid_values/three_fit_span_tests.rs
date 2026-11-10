@@ -33,7 +33,7 @@ fn tail_orders() -> [[ComputedCssGridTrackSize; 3]; 6] {
 }
 
 #[test]
-fn three_fit_row_span_accepts_all_positions_and_keeps_auto_placement_closed() {
+fn three_fit_row_span_and_auto_placement_accept_all_positions() {
     let mut combinations = 0;
     for first in 1..=4 {
         for second in first + 1..=5 {
@@ -46,10 +46,9 @@ fn three_fit_row_span_accepts_all_positions_and_keeps_auto_placement_closed() {
                         )
                     );
                     assert!(
-                        !root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
+                        root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
                             &tracks
-                        ),
-                        "three-fit admission must stay limited to explicit row-span profiles"
+                        )
                     );
                     combinations += 1;
                 }
