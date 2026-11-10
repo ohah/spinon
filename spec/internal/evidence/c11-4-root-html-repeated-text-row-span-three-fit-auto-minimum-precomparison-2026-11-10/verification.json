@@ -1,0 +1,42 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-three-fit-auto-minimum-independent-verification.v1",
+  "verifiedAtUtc": "2026-11-10T11:28:34.192Z",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-three-fit-auto-minimum-precomparison.html",
+    "sha256": "1ad7b120960c55fc9844b55bdac770817e8604d84f54bbade17aa1260494ef47"
+  },
+  "observations": {
+    "path": "chrome157-observation.ndjson",
+    "bytes": 21963566,
+    "sha256": "74102b7dc44d898655f1309b9d1dc0e478714bcf7842e1144cfd24571099a17d",
+    "scenes": 11520,
+    "uniqueTrackLists": 720,
+    "uniqueFitPositionTriples": 20,
+    "pairedMinimumKeys": 5760,
+    "expectedCapPermutationsPerGroup": 6,
+    "verifiedCapAssignmentGroups": 1920
+  },
+  "checks": {
+    "authoredTrackOrderPreserved": true,
+    "sevenFiniteUsedRows": true,
+    "itemFrameEqualsSpanTrackSum": true,
+    "sourceOrderInvariant": true,
+    "stretchOnlyChangesAutoTrack": true,
+    "candidateAutomaticMinimumRespectsPayloadFloor": true,
+    "maximumSpanFrameErrorCssPx": 0.0002499999999940883,
+    "candidateEligibleItemOccurrences": 24576,
+    "candidateContentFloorViolations": 0,
+    "sourceOrderPairs": 5760,
+    "maximumSourceOrderDeltaCssPx": 0,
+    "alignmentPairs": 5760,
+    "maximumNonAutoStretchDeltaCssPx": 0,
+    "maximumAutoTrackStretchDeltaCssPx": 130,
+    "automaticMinimumPairs": 5760,
+    "changedTextItemFramesAfterAutoMinimum": 22320,
+    "maximumAutoMinimumItemDeltaCssPx": 70,
+    "maximumAutoMinimumTrackDeltaCssPx": 51.656000000000006,
+    "capSensitiveGroups": 896,
+    "maximumTrackRangeAcrossCapAssignmentsCssPx": 44
+  }
+}
