@@ -1,0 +1,20 @@
+{
+  "session": "spinon-tailnet-pr1322-roadmap",
+  "closeCommand": "agent-browser --session spinon-tailnet-pr1322-roadmap close",
+  "closed": true,
+  "postCloseSessionInfo": {
+    "active": false,
+    "pid": null,
+    "runtime": null
+  },
+  "taskOwnedAgentBrowserProcessRemains": false,
+  "unrelatedProcessObserved": {
+    "pid": 87587,
+    "binary": "/opt/homebrew/Caskroom/terminal-browser/0.8.0/terminal-browser/agent-browser/bin/agent-browser",
+    "cwd": "/Users/yoonhb/Documents/workspace/hwpjs",
+    "parentPid": 1,
+    "elapsedAtInspection": "10:33:52",
+    "classification": "Pre-existing Terminal Browser process in another repository; not started or used by this verification and left untouched."
+  },
+  "terminalBrowserUsedForVerification": false
+}

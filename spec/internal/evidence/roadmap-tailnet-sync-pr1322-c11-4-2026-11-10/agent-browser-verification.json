@@ -1,0 +1,37 @@
+{
+  "checkedAtUTC": "2026-11-10T00:53:16Z",
+  "tool": "agent-browser 0.31.1",
+  "terminalBrowserUsed": false,
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "expectedImplementationMerge": {
+    "pullRequest": 1322,
+    "mergeSha": "727229aea05e33537962fe9953ee206a37befecb",
+    "officialCompletion": "78/214",
+    "c11_4Complete": false,
+    "c11Complete": false
+  },
+  "desktop": {
+    "viewport": { "width": 1440, "height": 1000 },
+    "documentWidth": 1440,
+    "pageTitle": "스피논 구현 로드맵",
+    "roadmapCardContains": [
+      "#1322 Rebase and merge",
+      "727229aea05e33537962fe9953ee206a37befecb",
+      "1,440+1,440 scenes",
+      "600 content floors recovered",
+      "공식 상태 78/214",
+      "다음 C11.4 slice 선정 전"
+    ],
+    "screenshot": "tailnet-roadmap-desktop-agent-browser.png",
+    "screenshotPixels": { "width": 1440, "height": 1000 }
+  },
+  "mobile": {
+    "viewport": { "width": 390, "height": 844 },
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "screenshot": "tailnet-roadmap-mobile-agent-browser.png",
+    "screenshotPixels": { "width": 390, "height": 844 },
+    "note": "The kanban board supports horizontal scrolling; the page itself has no horizontal overflow."
+  },
+  "capturedPageState": "The published page visibly loaded the merged #1322 slice, official 78/214 count, and incomplete C11.4/C11 status."
+}
