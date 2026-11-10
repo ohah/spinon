@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-10 Root HTML repeated-text row-span · one-fit automatic minimum 계획 후보
+
+기존 single-fit repeated-text row-span profile에서 three-implicit-row topology와 fit-content positions 1–3에 `min-height:auto`를 허용하는 제한 후보를 계획했다. Chrome 157 Agent Browser의 `min-height:0`/`auto` paired precomparison 5,760 scenes와 독립 automatic-minimum, source-order, span-frame 및 auto-only stretch 검증을 기록했다. 계획 실패 관점 20개와 계획 PR diff 20개 검토를 완료했으며 제품 코드는 아직 바꾸지 않았다. 이 후보는 C11.4/C11 완료나 공식 `78/214`에 영향을 주지 않는다. [계획](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-plan-review-20.md) · [계획 PR diff 검토 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md) · [Chrome 관측과 한계](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-precomparison-2026-11-10/README.md)
+
 ## 2026-11-09 Root HTML repeated-text row-span · 다음 계획 후보
 
 다음 bounded 후보로 여섯 implicit row를 생성하는 repeated-text span profile의 fit-content authored 위치 4–6을 선택했다. Agent Browser Chrome 157의 4,320-scene 사전 비교와 계획 실패 관점 20개 검토는 마쳤고 제품 코드는 아직 변경하지 않았다. C11.4/C11 공식 체크와 78/214는 유지한다. [집중 계획](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-plan-review-20.md) · [Chrome 관측과 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6-precomparison-2026-11-09/README.md)

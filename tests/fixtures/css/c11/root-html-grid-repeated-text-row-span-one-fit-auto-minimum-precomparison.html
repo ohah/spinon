@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 repeated-text row-span one-fit automatic minimum precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .grid {
+        display: grid;
+        box-sizing: border-box;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+
+      .item {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+        background: #345;
+      }
+
+      .empty {
+        height: 10px;
+        background: #123;
+      }
+
+      .payload {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        color: #000;
+        background: #abc;
+        font-family: monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        word-break: normal;
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (() => {
+        const content = {
+          A: "A A A A A A",
+          B: "A A A A A A A A",
+          C: "A A A A A A A A A A A A",
+        };
+        const caps = ["20px", "20%", "0%", "120%"];
+        const tailSeed = [
+          "min-content",
+          "min-content",
+          "max-content",
+          "max-content",
+          "auto",
+        ];
+        const tailPermutations = new Map();
+        const permute = (values, index = 0) => {
+          if (index === values.length) {
+            tailPermutations.set(values.join(" "), [...values]);
+            return;
+          }
+          for (let next = index; next < values.length; next += 1) {
+            [values[index], values[next]] = [values[next], values[index]];
+            permute(values, index + 1);
+            [values[index], values[next]] = [values[next], values[index]];
+          }
+        };
+        permute(tailSeed);
+        const orderedTails = [...tailPermutations.values()].sort((left, right) =>
+          left.join(" ").localeCompare(right.join(" ")),
+        );
+        const topologies = {
+          "span2-forward": [
+            ["A", 2, 2],
+            ["B", 3, 2],
+          ],
+          "span2-reversed": [
+            ["B", 3, 2],
+            ["A", 2, 2],
+          ],
+          "span2-before-span3": [
+            ["A", 2, 2],
+            ["B", 3, 2],
+            ["C", 2, 3],
+          ],
+          "span3-before-span2": [
+            ["C", 2, 3],
+            ["B", 3, 2],
+            ["A", 2, 2],
+          ],
+        };
+        const scenes = [];
+
+        for (const fitPosition of [1, 2, 3]) {
+          for (const tail of orderedTails) {
+            for (const cap of caps) {
+              const tracks = [...tail];
+              tracks.splice(fitPosition - 1, 0, `fit-content(${cap})`);
+              for (const alignContent of ["start", "stretch"]) {
+                for (const [topology, items] of Object.entries(topologies)) {
+                  for (const minHeight of ["0px", "auto"]) {
+                    scenes.push({
+                      key: [fitPosition, tail.join(" "), cap, alignContent, topology].join("|"),
+                      fitPosition,
+                      cap,
+                      tail,
+                      trackList: tracks.join(" "),
+                      trackMembers: tracks,
+                      alignContent,
+                      topology,
+                      minHeight,
+                      items,
+                    });
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        function rectValues(rect, origin) {
+          return [rect.x, rect.y, rect.width, rect.height].map((value, index) => {
+            const offset = index < 2 ? origin[index] : 0;
+            return Number((value - offset).toFixed(6));
+          });
+        }
+
+        function createGrid(scene, hidden) {
+          const grid = document.createElement("div");
+          grid.className = "grid";
+          grid.style.gridAutoRows = scene.trackList;
+          grid.style.alignContent = scene.alignContent;
+          if (hidden) {
+            Object.assign(grid.style, {
+              position: "absolute",
+              left: "-10000px",
+              top: "0px",
+            });
+          }
+
+          const empty = document.createElement("div");
+          empty.className = "item empty";
+          empty.dataset.item = "empty";
+          Object.assign(empty.style, {
+            gridRow: "1 / 2",
+            gridColumn: "1 / 2",
+            minHeight: "0px",
+          });
+          grid.append(empty);
+
+          for (const [id, start, span] of scene.items) {
+            const item = document.createElement("div");
+            item.className = "item";
+            item.dataset.item = id;
+            item.style.backgroundColor =
+              id === "A" ? "#ef9a9a" : id === "B" ? "#90caf9" : "#a5d6a7";
+            Object.assign(item.style, {
+              minHeight: scene.minHeight,
+              gridRow: `${start} / span ${span}`,
+            });
+            const payload = document.createElement("div");
+            payload.className = "payload";
+            payload.dataset.payload = id;
+            payload.append(document.createTextNode(content[id]));
+            item.append(payload);
+            grid.append(item);
+          }
+          return grid;
+        }
+
+        function observeScene(scene, index) {
+          const grid = createGrid(scene, true);
+          document.body.append(grid);
+          const gridRect = grid.getBoundingClientRect();
+          const gridStyle = getComputedStyle(grid);
+          const rowValues = gridStyle.gridTemplateRows
+            .trim()
+            .split(/\s+/)
+            .map((value) => Number.parseFloat(value));
+          const items = [...grid.querySelectorAll(".item")].map((item) => {
+            const itemRect = item.getBoundingClientRect();
+            const style = getComputedStyle(item);
+            const payload = item.querySelector(".payload");
+            let payloadFrame = null;
+            let lineRects = [];
+            if (payload) {
+              const payloadRect = payload.getBoundingClientRect();
+              payloadFrame = rectValues(payloadRect, [gridRect.x, gridRect.y]);
+              const range = document.createRange();
+              range.selectNodeContents(payload.firstChild);
+              lineRects = [...range.getClientRects()].map((rect) =>
+                rectValues(rect, [gridRect.x, gridRect.y]),
+              );
+            }
+            const frame = rectValues(itemRect, [gridRect.x, gridRect.y]);
+            const contentOverflowBottom = payloadFrame
+              ? Math.max(0, payloadFrame[1] + payloadFrame[3] - frame[1] - frame[3])
+              : 0;
+            return {
+              id: item.dataset.item,
+              minHeight: style.minHeight,
+              rowStart: style.gridRowStart,
+              rowEnd: style.gridRowEnd,
+              frame,
+              payloadFrame,
+              lineRects,
+              contentOverflowBottom,
+            };
+          });
+          const result = {
+            index,
+            scene,
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            devicePixelRatio: window.devicePixelRatio,
+            gridFrame: rectValues(gridRect, [gridRect.x, gridRect.y]),
+            computedAutoRows: gridStyle.gridAutoRows,
+            computedAlignContent: gridStyle.alignContent,
+            usedRows: gridStyle.gridTemplateRows,
+            rowValues,
+            items,
+          };
+          grid.remove();
+          return result;
+        }
+
+        window.__c114OneFitSpanAutoScenes = scenes;
+        window.runC114OneFitSpanAutoBatch = (start, count) => {
+          const end = Math.min(start + count, scenes.length);
+          const results = [];
+          for (let index = start; index < end; index += 1) {
+            results.push(observeScene(scenes[index], index));
+          }
+          return { start, end, total: scenes.length, results };
+        };
+        window.showC114OneFitSpanAutoPair = (index) => {
+          document.body.replaceChildren();
+          const scene = scenes[index];
+          if (!scene) throw new Error(`unknown scene ${index}`);
+          const baseline = scenes.find(
+            (candidate) => candidate.key === scene.key && candidate.minHeight === "0px",
+          );
+          const candidate = scenes.find(
+            (candidate) => candidate.key === scene.key && candidate.minHeight === "auto",
+          );
+          if (!baseline || !candidate) throw new Error(`missing paired scene ${scene.key}`);
+          const comparison = document.createElement("main");
+          Object.assign(comparison.style, {
+            position: "absolute",
+            left: "24px",
+            top: "24px",
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "32px",
+            font: "16px/24px sans-serif",
+            color: "#111",
+          });
+          for (const pairedScene of [baseline, candidate]) {
+            const panel = document.createElement("section");
+            Object.assign(panel.style, { width: "80px", minHeight: "480px" });
+            const label = document.createElement("div");
+            label.textContent = `min-height: ${pairedScene.minHeight}`;
+            label.style.whiteSpace = "nowrap";
+            panel.append(label);
+            const grid = createGrid(pairedScene, false);
+            Object.assign(grid.style, {
+              transform: "scale(2)",
+              transformOrigin: "top left",
+              outline: "1px solid #111",
+            });
+            panel.append(grid);
+            comparison.append(panel);
+          }
+          document.body.append(comparison);
+          return { index, key: scene.key, baseline, candidate };
+        };
+      })();
+    </script>
+  </body>
+</html>
