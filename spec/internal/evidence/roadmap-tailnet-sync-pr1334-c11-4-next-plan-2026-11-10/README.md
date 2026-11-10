@@ -22,8 +22,8 @@ PR [#1334](https://github.com/ohah/spinon/pull/1334)에서 계획만 병합된 �
 
 - source commit `83e5bdd7c440d6049d614e8ee3a9194c83f206ac`, tree `13af91e245fecebd077eee2e3b60da59673322eb`에서 RSPress 2.0.22 선택 build를 만들었다. Selected root는 182 files / 90,244,678 bytes, publication은 263 routes / 103,888,398 bytes다.
 - Tailscale backend는 `Running`이었다. `127.0.0.1:8768`의 기존 preview server PID `90711`와 `https://macstudio.tailed42f2.ts.net/spinon/roadmap.html` route HTTP 200을 확인했다. 서버는 재시작하지 않았다.
-- 사전 점검에서 70 route create, 29 replace, 164 identical이었고 교체 route open handle은 0이었다. 기존 29개 파일은 `~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1334-c11-4-next-plan-2026-11-10/pass01`에 복사했다.
-- 동기화 뒤 263/263 local route hash, HTTPS 263/263 HTTP 200/hash, rollback backup 29/29 hash가 일치했다. 파일 삭제는 없었다. 로드맵 route는 662,675 bytes, SHA-256 `1c89b4d26c71b9ec3d3609031e91f2ca985ed03118bd0eded3b550dc97c682e0`다.
+- 사전 점검에서 70 route create, 29 replace, 164 identical이었고 교체 route open handle은 0이었다. `preflight.json`의 기존 preview route 값 662,675 bytes, SHA-256 `1c89b4d26c71b9ec3d3609031e91f2ca985ed03118bd0eded3b550dc97c682e0`는 **복사 전 target**이다. 기존 29개 파일은 `~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1334-c11-4-next-plan-2026-11-10/pass01`에 복사했다.
+- 선택 publication의 최종 `roadmap.html`은 663,150 bytes, SHA-256 `fa7c84c0faf71225598d999da9381bcfc870c6f5c983965a4645ee45010a01f5`다. 동기화 뒤 이 route를 포함해 263/263 local route hash, HTTPS 263/263 HTTP 200/hash, rollback backup 29/29 hash가 일치했다. Copy report의 이전 hash는 preflight 값과 맞고 최종 route hash는 `selected-publication.json` 및 `served-verification.json`과 맞는다. 파일 삭제는 없었다.
 - Agent Browser 0.31.1 세션은 캡처 뒤 닫았고 `session list --json`은 빈 배열이었다. 이번 확인은 Tailnet 문서 화면과 정적 route만 대상으로 했으며, 전체 문서 dead-link 검사, 앱 실행, CI, 제품 runtime 검증을 뜻하지 않는다.
 - 검증 후 이번 작업에서 생성한 `build/spinon/roadmap-tailnet-sync-pr1334-c11-4-next-plan-2026-11-10`만 `lsof` open handle 0 및 관련 build process 종료를 확인한 뒤 제거했다. 다른 build 디렉터리와 기존 rollback backup은 보존했다.
 
