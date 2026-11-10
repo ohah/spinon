@@ -1,0 +1,35 @@
+{
+  "browser": {
+    "name": "Agent Browser",
+    "version": "0.31.1",
+    "session": "spinon-roadmap-pr1335-e00ea27987c0",
+    "sessionsAfterClose": []
+  },
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentWidth": 1440,
+    "kanbanHeadingCount": 1,
+    "nextCard": "세 fit row-span",
+    "nextCardStatus": "C11.4 bounded · NEXT · 계획 완료",
+    "wip": "0/2",
+    "officialDone": "78/214",
+    "screenshot": "roadmap-agent-browser-desktop.png",
+    "screenshotSha256": "b4fdae5647eb55704f09337aed5ff2086c1a6314c3ce1b9ba74f0fc1fc1e1909"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "kanbanScrollWidth": 1120,
+    "kanbanClientWidth": 362,
+    "kanbanHeadingCount": 1,
+    "nextCardVisible": true,
+    "officialDone": "78/214",
+    "screenshot": "roadmap-agent-browser-mobile.png",
+    "screenshotSha256": "cb4475248d27b2650978d3011c039b13ad861dae7552ce5bf981b7a3565223b6"
+  },
+  "tailnet": {
+    "status": "pending post-merge verification",
+    "previewServerRestarted": false
+  }
+}

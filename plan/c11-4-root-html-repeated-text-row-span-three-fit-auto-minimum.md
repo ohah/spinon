@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span three-fit `min-height:auto`
 
-**상태:** 계획 PR 준비 · 구현 시작 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 계획 완료 · 계획 PR [#1334](https://github.com/ohah/spinon/pull/1334) 병합 · 제품 구현 시작 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **선행 범위:** [single-fit row-span positions 1–6](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [two-fit row-span](./c11-4-root-html-repeated-text-row-span-two-fit-content.md) · [one-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum.md) · [two-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-two-fit-content.md)
 
