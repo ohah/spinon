@@ -1,0 +1,18 @@
+{
+  "session": "spinon-tailnet-roadmap-pr1326-final-20261110",
+  "browser": "Agent Browser 0.31.1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "closeCommandSucceeded": true,
+  "closeState": {
+    "browserLaunched": false,
+    "pageCount": 0,
+    "daemonPid": 8111
+  },
+  "chromePid": 8112,
+  "chromeExitedOnClose": true,
+  "daemonTerminatedAfterClose": true,
+  "daemonTerminatedPid": 8111,
+  "temporaryProfile": "/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-27e0b5d0-77a3-4d80-a54c-2e40850b2c18",
+  "temporaryProfileAbsentAfterClose": true,
+  "sessionProcessesRemaining": false
+}
