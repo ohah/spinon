@@ -19,6 +19,7 @@
 - Span frame과 track 합의 최대 차이는 0.00025 CSS px다. 5,760 source-order pair의 최대 geometry 차이는 0 CSS px다. `align-content:stretch`의 non-auto row 최대 변화는 0 CSS px이며 auto row에는 최대 130 CSS px가 추가됐다.
 - Cap permutation 1,920개 비교 그룹 중 896개에서 used geometry가 달랐다. cap 변경이 같은 방식으로 모든 입력에 영향을 준다고 일반화하지 않는다.
 - 4× scale로 보여 주는 [대표 Chrome 화면](./chrome157-three-fit-auto-minimum-sample.png)은 읽기 편하게 확대된 단일 fixture 장면이다. 배율 조정은 DOM layout 측정 뒤 screenshot 단계에만 적용했다.
+- 계획 PR [#1334](https://github.com/ohah/spinon/pull/1334)의 commit 고정 raw 이미지가 Agent Browser에서 480×900 PNG로 로드됐고 `close --all` 뒤 세션 목록은 비었다. [링크·정리 근거](./pr-image-link-check.json).
 
 ## 수명과 한계
 

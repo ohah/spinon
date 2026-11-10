@@ -30,7 +30,7 @@
 | 24 | rounding 분배 가정 | two-fit rounding rule을 근거 없이 three-fit에 재사용하는가 | 통과 · 실제 Chrome/Runtime trace 대조 후 최소 제한으로 결정하도록 함 |
 | 25 | independent verifier 상관오류 | capture 결과만 같은 코드 경로로 스스로 승인하는가 | 통과 · 별도 프로세스의 `verify-chrome-matrix.mjs`가 NDJSON을 다시 읽는다 |
 | 26 | matrix count/coverage | 11,520이 실제 곱 또는 pair denominator와 맞지 않는가 | 통과 · verifier가 720 track lists, 5,760 minimum/source/alignment pair 및 1,920 cap groups를 재확인 |
-| 27 | browser source 혼동 | Terminal Browser나 사용자 기존 세션을 이용/종료하는가 | 통과 · 지정 Agent Browser session만 열고 close 후 비었음을 확인 |
+| 27 | browser source 혼동 | Terminal Browser나 사용자 기존 세션을 이용/종료하는가 | 통과 · PR #1334 body의 commit 고정 raw PNG가 Agent Browser에서 480×900으로 로드됐고 `close --all` 뒤 세션이 비었다 |
 | 28 | cleanup 과잉 | 사용자 simulator profile/data 또는 다른 브라우저 세션을 삭제하는가 | 통과 · precomparison은 sim을 열지 않았고 재사용 profile은 보존 대상 |
 | 29 | artifact 무결성 | fixture/NDJSON/image/script와 hash manifest가 서로 다른 버전인가 | 통과 · `shasum -a 256 -c SHA256SUMS`의 모든 항목 OK |
 | 30 | PR 표현 범위 | sample screenshot을 pixel parity/native evidence로 과장하는가 | 통과 · 4× screenshot은 단일 Chrome 장면이며 OS/app 검증과 분리 |
