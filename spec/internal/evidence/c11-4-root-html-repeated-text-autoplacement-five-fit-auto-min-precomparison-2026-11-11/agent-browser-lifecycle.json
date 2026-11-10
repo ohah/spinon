@@ -17,6 +17,12 @@
       "captureClosedBrowser": true,
       "postClose": { "active": false, "pid": null },
       "imageLoaded": { "complete": true, "naturalWidth": 1280, "naturalHeight": 900 }
+    },
+    {
+      "name": "spinon-c114-pr1347-finalcheck-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null },
+      "imageLoaded": { "complete": true, "naturalWidth": 1280, "naturalHeight": 900 }
     }
   ],
   "terminalBrowserUsed": false,
