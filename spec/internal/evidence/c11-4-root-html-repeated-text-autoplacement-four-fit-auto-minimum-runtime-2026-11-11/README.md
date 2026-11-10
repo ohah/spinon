@@ -25,6 +25,8 @@ iOS Simulator는 iPhone 17 Pro / iOS 26.2, Android는 기존 API 37.2 ARM64 AVD 
 
 네 screenshot과 실행·복구·정리 로그 21개는 [SHA-256 manifest](./screenshots-and-logs.sha256)로 고정했다. 텍스트 로그에서 진단 내용에 영향 없는 줄 끝 공백과 중복 EOF 빈 줄만 정리한 뒤 hash를 만들었다.
 
+구현 PR [#1344](https://github.com/ohah/spinon/pull/1344)의 commit-pinned raw 이미지 네 장은 Agent Browser 0.31.1에서 모두 `complete=true`로 표시됐고 iOS 1206×2622, Android 1080×2400의 natural dimensions가 확인됐다. [Agent Browser 검증 기록](./pr-image-agent-browser-verification.json).
+
 Fixture는 의도적으로 `40×220px` Grid 하나만 그린다. 따라서 전체 기기 viewport의 대부분이 비어 있는 것이 맞으며, 이 이미지는 visual smoke이지 pixel oracle이나 실제 기기 확인이 아니다. 상세 boot/draw 로그는 `ios-*.log`, `android-*.log`에 있다.
 
 ## 빌드와 정적 검사

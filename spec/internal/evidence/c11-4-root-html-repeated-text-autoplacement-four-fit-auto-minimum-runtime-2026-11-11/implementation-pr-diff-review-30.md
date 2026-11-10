@@ -33,4 +33,4 @@
 29. **실패 scene이 stale render를 반환하거나 session 회복을 막는가?** Invalid dark revision은 `Failed`/`completed=None`이어야 하고, 같은 session의 다음 valid light revision은 새 key와 complete render snapshot을 게시한다.
 30. **문서·화면 증거가 구현 범위를 과장하거나 실행 자원을 남기는가?** STATUS/0059는 C11.4 미완료와 `78/214`를 유지한다. 네 screenshot은 OS visual smoke로 한정하고 Android renderer·readback 부재를 적었다. capture 뒤 앱/source/data를 복구하고 iOS Simulator/AVD를 종료했으며 사용하지 않는 0-byte backup log를 제거했다.
 
-**검토 결과:** 위 실패 조건에 대해 추가 결함을 발견하지 못했다. 실제 diff에는 48개 파일이 있으며 30항목 중 어느 것도 일반 CSS Grid, WPT, hardware GPU, 실제 기기 또는 C11.4/C11 전체 완료를 주장하지 않는다. 이 결론은 고정 Chrome 157 matrix, 기존 제한 profile 회귀, 현재 두 simulator 대상에만 한정된다.
+**검토 결과:** 위 실패 조건에 대해 추가 결함을 발견하지 못했다. 최초 원격 head `2b2222b2e3073789c1ccecb9f00c814fb49700cb`의 기능·테스트·실행 evidence diff 48개 파일을 검토했다. 이후 `0ebebf2ce807c4ae28bb00ea3b27355a97f80787`에서 상태·계약·계획·roadmap 및 이 검토서를 추가해 GitHub PR은 49개 파일이 됐다. 이 후속 diff에 구현 변경은 없으며 최종 GitHub file list는 local base/head diff와 다시 일치했다. 모든 30항목은 일반 CSS Grid, WPT, hardware GPU, 실제 기기 또는 C11.4/C11 전체 완료를 주장하지 않는다. 결론은 고정 Chrome 157 matrix, 기존 제한 profile 회귀, 현재 두 simulator 대상에만 한정된다.

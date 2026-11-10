@@ -1,6 +1,6 @@
 # C11.4 · 네 fit repeated-text auto-placement `min-height:auto`
 
-- **상태:** Chrome 157 사전 비교와 20/30 관점 계획 검토 완료 · 계획 PR [#1343](https://github.com/ohah/spinon/pull/1343) Rebase and merge (`2fa78846db7490d75e4d894c59eb712a32e20576`) · 구현 PR [#1344](https://github.com/ohah/spinon/pull/1344) open · 구현/runtime 20관점 및 실제 PR diff 30관점 검토 완료 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
+- **상태:** Chrome 157 사전 비교와 20/30 관점 계획 검토 완료 · 계획 PR [#1343](https://github.com/ohah/spinon/pull/1343) Rebase and merge (`2fa78846db7490d75e4d894c59eb712a32e20576`) · 구현 PR [#1344](https://github.com/ohah/spinon/pull/1344) open · 구현/runtime 20관점 및 실제 PR diff 30관점 검토 완료 · iOS/Android PR image 4/4 Agent Browser load 확인 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
 - **직전 자동 배치:** [three-fit `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-three-fit-auto-minimum.md) · PR [#1342](https://github.com/ohah/spinon/pull/1342)
 - **직전 row-span:** [three-fit `min-height:auto`](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · PR [#1338](https://github.com/ohah/spinon/pull/1338)
 - **사전 비교:** [Chrome 157 5,760-scene matrix와 독립 검산](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-min-precomparison-2026-11-11/README.md)
