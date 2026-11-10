@@ -29,7 +29,37 @@
     "screenshotSha256": "cb4475248d27b2650978d3011c039b13ad861dae7552ce5bf981b7a3565223b6"
   },
   "tailnet": {
-    "status": "pending post-merge verification",
-    "previewServerRestarted": false
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "sourceHead": "83e5bdd7c440d6049d614e8ee3a9194c83f206ac",
+    "previewServerPid": 90711,
+    "previewServerRestarted": false,
+    "selectedRouteCount": 263,
+    "localHashVerified": 263,
+    "httpsHttp200AndHashVerified": 263,
+    "backupsVerified": 29,
+    "deletes": 0,
+    "desktop": {
+      "viewport": [1440, 1000],
+      "documentWidth": 1440,
+      "kanbanHeadingCount": 1,
+      "nextCard": "세 fit row-span",
+      "wip": "0/2",
+      "officialDone": "78/214",
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+      "screenshotSha256": "e2ec0e6f29bec163f58f977681fe80ba24cfdc94c94137a36a018f896362209f"
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "kanbanScrollWidth": 1120,
+      "kanbanClientWidth": 362,
+      "kanbanHeadingCount": 1,
+      "nextCardVisible": true,
+      "officialDone": "78/214",
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+      "screenshotSha256": "d3e6810a6b2bb38673c856eedcc6bbd4727a320cc2c84b72a2310a790aec1de8"
+    },
+    "agentBrowserSessionsAfterClose": []
   }
 }
