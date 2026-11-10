@@ -31,6 +31,6 @@
 27. **모듈 추출 가시성** — 500줄을 넘던 추적/양자화 책임을 두 내부 모듈로 나누고 바깥 API visibility를 넓히지 않는다.
 28. **파일 응집도** — `track_trace.rs`, `rounding.rs`, six-row test 파일 각각 500줄 이하이며 helper를 제품과 fixture 경계에 혼합하지 않는다.
 29. **플랫폼 증거 해석** — iOS/Android 스크린샷과 log는 default route visual smoke로만 설명하고 PixelCopy/Metal readback·실기기·compositor parity 주장을 넣지 않는다.
-30. **리소스 정리·본문 링크** — simulator/AVD 종료, 원본 asset/APK 복구와 task temp backup 삭제를 확인했다. Commit-pinned PR image link의 Agent Browser 확인은 아직 수행 전이며, PR 본문에 넣기 전에 끝내고 이 항목을 갱신한다.
+30. **리소스 정리·본문 링크** — simulator/AVD 종료, 원본 asset/APK 복구와 task temp backup 삭제를 확인했다. Agent Browser에서 commit-pinned iOS/Android light/dark PNG 네 개가 모두 complete 및 nonzero dimensions로 로드되는 것을 확인했고, 고정 Chromium 157.0.8103.40 source도 대조했다. PR 본문 link에는 PNG가 들어 있던 commit을 사용한다.
 
-현재까지 발견된 차단 결함은 없다. Six-row paired matrix, positions 1–3 regression, focused rejection/recovery/cap tests, two-fit cap control, layout rounding unit tests, rustfmt 및 changed-crate Clippy를 끝냈다. Commit-pinned PR image link 확인은 아직 남았고 확인 뒤 이 검토를 갱신한다. GitHub CI rollup이 비어 있으면 CI green으로 표현하지 않는다.
+현재까지 발견된 차단 결함은 없다. Six-row paired matrix, positions 1–3 regression, focused rejection/recovery/cap tests, two-fit cap control, layout rounding unit tests, rustfmt, changed-crate Clippy와 Agent Browser image/source 확인을 끝냈다. GitHub CI rollup이 비어 있으면 CI green으로 표현하지 않는다.
