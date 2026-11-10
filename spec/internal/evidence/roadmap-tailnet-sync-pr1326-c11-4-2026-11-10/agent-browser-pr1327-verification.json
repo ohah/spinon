@@ -6,9 +6,12 @@
     "width": 1280,
     "height": 720
   },
-  "prState": "OPEN",
+  "stateAtVerification": "OPEN",
   "mergeable": "MERGEABLE",
   "checks": 0,
+  "subsequentState": "MERGED",
+  "mergedAt": "2026-11-10T06:18:10Z",
+  "mergeCommit": "e0c904ce35f302847dd90567f68c3f45dc015272",
   "images": [
     {
       "source": "https://raw.githubusercontent.com/ohah/spinon/6344499c40be978d800cb4056917a47e6a7751db/spec/internal/evidence/roadmap-tailnet-sync-pr1326-c11-4-2026-11-10/tailnet-roadmap-desktop-agent-browser.png",
