@@ -518,7 +518,7 @@
     const statusNote = document.getElementById('official-status-note');
     const statusUrl = 'https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main';
     // 공식 상태 대장에 상위 ID가 없는 C11.4 slice는 실제 코드 변경이 시작되면 진행 중 열에 표시한다.
-    const execution = { nextOrder:[], inProgress:[], detailInProgress:[{ code:'C11.4 four-fit', title:'네 fit 자동 배치 자동 최소 크기', description:'계획 PR #1343 병합 완료. 구현 PR #1344 open, 실제 diff 30관점 검토 완료, PR 이미지 4/4 Agent Browser 로드 확인. 15개 fit 위치, 2개 tail 순서, typed cap 24개와 5,760 Chrome 157 scene의 RuntimeSession 검증을 반영. C11.4/C11 미완료, 공식 완료 78/214 유지.' }], detailNext:[], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
+    const execution = { nextOrder:[], inProgress:[], detailInProgress:[], detailNext:[{ code:'C11.4 five-fit candidate', title:'다섯 fit 자동 배치 자동 최소 크기', description:'직전 four-fit auto-placement 제한 구현 PR #1344는 Rebase and merge됐다. 다음 후보는 five-fit track list의 Chrome 157 사전 비교와 계획 수립이며 아직 구현을 시작하지 않았다. C11.4/C11 미완료, 공식 완료 78/214 유지.' }], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
     let officialStatuses = null;
     const baseTasks = phases.flatMap(phase => phase.tasks.map(([code, title, description]) => ({
       code, title, description, key:taskIdentity(code, title)
