@@ -1,0 +1,29 @@
+{
+  "browser": "agent-browser 0.31.1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "officialStatus": "78/214",
+  "kanbanHeadingCount": 1,
+  "threeFitRowSpanCard": {
+    "column": "진행 중",
+    "wip": "1/2",
+    "count": 1
+  },
+  "desktop": {
+    "viewport": [1440, 1000],
+    "bodyWidth": 1440,
+    "kanbanWidth": 1260,
+    "kanbanScrollWidth": 1260,
+    "screenshot": "tailnet-roadmap-agent-browser-desktop.png",
+    "sha256": "e437e1a3667089bb472d0c87f199a47e1cdeecfc344b0e8a130d008daba40a9b"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "htmlWidth": 390,
+    "bodyWidth": 390,
+    "kanbanWidth": 362,
+    "kanbanScrollWidth": 1120,
+    "screenshot": "tailnet-roadmap-agent-browser-mobile.png",
+    "sha256": "92cb83ccc7debe42e2ce10640fa9e0b0d51de5c6176f725c0544be55220020f9"
+  },
+  "browserSessionClosed": true
+}

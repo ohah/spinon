@@ -1,0 +1,105 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 232 ms.
+ready   built in 2.03s (web)
+ready   built in 2.03s (node)
+
+File (web)                                                                                                                                                          Size        Gzip
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/l.76b60f2b87.js                                               0.10 kB     0.09 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/styles.aba03c5c90.js                                                0.47 kB     0.23 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/icon.svg                                                                      0.64 kB     0.42 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-a48746cae70c.ab999d0ef2.js                              1.0 kB      0.56 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-7a1aafcb6039.1b2d57814b.js                              8.0 kB      3.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-c064db6ff26d.0f3934e7f0.js                              8.0 kB      3.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-761bcd79d388.cf49eb18b4.js                              8.6 kB      3.4 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-f7ff00a3f4e8.70346234e2.js                              8.6 kB      3.4 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-0f68001225a6.df7685a8aa.js                              9.0 kB      3.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-3c020b67a709.3f28e69d28.js                              9.0 kB      3.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-ebcd3bf80f8a.4d130d9e57.js                              9.0 kB      3.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-117e1ef25d95.814a77be28.js                              9.0 kB      3.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-9cfc325d74b2.6b617c74ef.js                              9.3 kB      3.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-104d3e26e304.1767efccb1.js                              9.3 kB      3.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-6a8d7c41ad51.42b3a7d0c4.js                              9.6 kB      3.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-42bf853482f4.43dec62c6e.js                              9.6 kB      3.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-551b8c9492b8.fea3fa977a.js                              9.8 kB      3.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-9cc22c991d44.2c3b4b9487.js                              9.8 kB      3.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-e5276cfb731c.35243d1382.js                              11.0 kB     3.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-9871de04395f.c89dc639f5.js                              11.0 kB     3.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-343da5de8649.f115f5d592.js                              11.7 kB     3.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-6215ff4fbb52.16c3274d61.js                              11.7 kB     3.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-27482bc7cddd.4b1a4eb349.js                              12.3 kB     3.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-25aba3269d99.6b1128d85c.js                              12.3 kB     3.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-47e28f7bb753.b2c41f4e09.js                              13.5 kB     4.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-f5186cbec427.fabbd0f96d.js                              13.5 kB     4.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-ff9df57e2164.4c56972561.js                              14.3 kB     4.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-2e57125d8454.a9884b99b7.js                              14.3 kB     4.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-ddd528b23345.cc03118367.js                              15.5 kB     4.8 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-77604b6d2243.c9bf42a03f.js                              15.5 kB     4.8 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/image/chrome157-row-span-positions-4-6-auto-sample.520012f934.png      18.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-d69400b01815.7c69d6e641.js                              22.2 kB     7.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-603a8e683759.eef02c4470.js                              22.2 kB     7.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/lib-router.d3b08da66f.js                                            35.4 kB     12.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-ecf129b09e78.376274c83a.js                              47.8 kB     14.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-f567ae70342c.1f0b89a7d6.js                              47.8 kB     14.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/css/styles.8d918fd78e.css                                              74.0 kB     14.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/image/template-area-repeat-two-axis-fit-fit-area-span.ed10962b63.png   78.1 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/image/android-candidate-light.67dc1c72b9.png                           90.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/image/android-candidate-dark.e0cf1ddb1c.png                            92.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/image/ios-candidate-light.6c7e037118.png                               155.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/image/ios-candidate-dark.7308cdcd58.png                                155.8 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/index.ee3acba77b.js                                                 184.1 kB    43.9 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-a1017bdf23ca.079bb00925.js                              215.0 kB    43.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-a991d6de67ad.268e58c2d9.js                              215.1 kB    43.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/3.d8b550a68d.js                                                     217.1 kB    72.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/lib-react.801d719c4f.js                                             218.4 kB    68.8 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-c4dae6800800.464b9429a8.js                              864.3 kB    181.9 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-739571cd2ae5.f704358fb5.js                              864.4 kB    182.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-6c33a3943990.86c80439c7.js                              1001.7 kB   204.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/js/async/route-7ce2535ac56d.dce876424a.js                              1002.1 kB   204.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/static/search_index.ko.fa00ebe4.json                                          2654.9 kB   762.8 kB
+
+                                                                                                                                                           Total:   8562.3 kB   2561.7 kB
+
+File (node)                                                                                                                                                                                                                           Size        Gzip
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/404.html                                                                                                                                        8.5 kB      2.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/index.html                                                                                                                                      35.8 kB     4.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.html        43.0 kB     7.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.html   43.0 kB     7.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.html                                                      43.4 kB     7.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.html                                                 43.5 kB     7.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/post-merge-docs-pr-diff-review-30.html                           43.8 kB     7.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/post-merge-docs-pr-diff-review-30.html                      43.8 kB     7.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-precomparison-2026-11-10/README.html                            44.1 kB     7.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-precomparison-2026-11-10/README.html                       44.1 kB     7.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/README.html                                                      44.5 kB     7.4 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/README.html                                                 44.5 kB     7.4 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/plan/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-plan-review-20.html                                                          45.2 kB     8.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/plan/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-plan-review-20.html                                                     45.2 kB     8.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/docs-pr-diff-review-30.html              45.4 kB     7.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/docs-pr-diff-review-30.html         45.4 kB     7.7 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.html                        45.5 kB     7.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.html                   45.5 kB     7.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-30.html            46.4 kB     8.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-30.html       46.4 kB     8.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.html                              48.5 kB     8.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.html                         48.5 kB     8.5 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.html                                                                49.7 kB     8.8 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.html                                                                     49.8 kB     8.8 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.html            50.7 kB     9.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.html       50.7 kB     9.3 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.html                   51.3 kB     9.9 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.html              51.3 kB     9.9 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/plan/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.html                                                                         56.2 kB     11.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/plan/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.html                                                                    56.2 kB     11.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/0001-conformance.html                                                                                                                           78.9 kB     18.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/0001-conformance.html                                                                                                                      79.0 kB     18.2 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/README.html                                                                                                                            224.3 kB    47.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/README.html                                                                                                                       224.3 kB    47.0 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/internal/0059-c11-grid-layout.html                                                                                                              840.3 kB    184.9 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/internal/0059-c11-grid-layout.html                                                                                                         840.4 kB    184.9 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/STATUS.html                                                                                                                                     941.3 kB    205.6 kB
+build/spinon/roadmap-postmerge-pr1338-c11-4-three-fit-row-span-2026-11-11/pass02/site/spec/STATUS.html                                                                                                                                942.1 kB    205.7 kB
+
+                                                                                                                                                                                                                             Total:   5530.6 kB   1151.1 kB
