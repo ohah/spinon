@@ -22,5 +22,6 @@
 
 ## 수명과 한계
 
+- [상태 대장](../../../STATUS.md)은 이 후보를 계획 진행으로만 기록한다. 구현은 시작 전이며 C11.4/C11 체크·공식 `78/214`·내부 계약 `0.1.0`은 유지한다.
 - Agent Browser session `spinon-c114-three-fit-row-span-auto-minimum-20261110`은 capture 종료 후 닫혔다. 뒤이은 `session list --json`은 빈 목록을 반환했다. 이 세션의 Chrome/Agent Browser 작업 프로세스는 남아 있지 않다.
 - 본 비교는 Chrome CSS Grid 기준 관측이다. Root HTML RuntimeSession, Android/iOS app, PixelCopy/Metal surface readback, compositor 이후 pixels, 실기기, WPT 또는 일반 CSS admission을 검증하지 않았다. 해당 항목은 구현 단계에서 별도로 확인해야 한다.

@@ -1,11 +1,11 @@
 # C11.4 three-fit row-span 계획 PR diff 실패 관점 검토 30개
 
-검토 대상은 base `96badf824d0b8e34016d8677a5c9770ee6bad7da`부터 plan commit `4f7e73d4d`까지의 실제 변경분이다. 계획 문서, 계획 자체의 20개 review, Chrome 157 fixture/capture/observation/verifier, hash manifest와 sample image를 각각 확인했다. 이 PR은 계획·비교 자료만 추가하며 제품 구현은 포함하지 않는다.
+검토 대상은 base `96badf824d0b8e34016d8677a5c9770ee6bad7da`부터 현재 계획 branch의 전체 diff다. 계획 문서, 계획 자체의 20개 review, Chrome 157 fixture/capture/observation/verifier, hash manifest, sample image 및 `spec/STATUS.md`의 계획 진행 메모를 각각 확인했다. 이 PR은 계획·비교 자료만 추가하며 제품 구현은 포함하지 않는다.
 
 | # | 적대 검토 관점 | 확인한 실패 경로 | diff 판정 |
 |---:|---|---|---|
-| 1 | 변경 범위 오염 | 제품 Rust/style/runtime 파일이나 미분류 경로가 포함되는가 | 통과 · 계획, fixture, 사전 비교 evidence만 포함 |
-| 2 | 공식 완료수 오염 | C11.4 체크·공식 `78/214`·계약 `0.1.0`을 올렸는가 | 통과 · 체크/계약 원본은 변경하지 않았다 |
+| 1 | 변경 범위 오염 | 제품 Rust/style/runtime 파일이나 계획 밖 경로가 포함되는가 | 통과 · 계획, fixture, 사전 비교 evidence와 단일 상태 메모만 포함 |
+| 2 | 공식 완료수 오염 | 상태 메모가 C11.4 체크·공식 `78/214`·계약 `0.1.0`을 올렸는가 | 통과 · 계획 PR/구현 전 상태로 적고 checkbox와 수치는 그대로 뒀다 |
 | 3 | 계획과 실행 혼동 | Chrome 오라클을 Spinon 제품 구현 성공으로 서술하는가 | 통과 · README와 계획 모두 사전 비교로 구분 |
 | 4 | 규범 URL 오류 | CSS Grid 규범 링크가 비공식 글이나 다른 버전을 가리키는가 | 통과 · W3C 2025 CRD의 §6.6/§7.2/§11.5를 고정 |
 | 5 | automatic-minimum 조건 누락 | overflow·auto minimum track·flexible track 조건 중 하나가 생략됐는가 | 통과 · CSS §6.6 세 조건을 모두 적었다 |
