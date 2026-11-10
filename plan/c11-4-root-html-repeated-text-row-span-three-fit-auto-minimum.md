@@ -8,6 +8,8 @@
 
 **계획 실패 관점 검토:** [서로 다른 20개](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-plan-review-20.md)
 
+**계획 PR diff 검토:** [실제 변경분의 서로 다른 30개 관점](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-30.md)
+
 ## 결손과 제한 목표
 
 기본 parsed Root HTML의 제한 repeated-text row-span profile은 six-member `grid-auto-rows` list에서 one-fit과 two-fit track을 각각 지원하고, 이 입력에서는 text item의 `min-height:0|auto` profile을 구분한다. Three-fit multiset은 명시적으로 거부된다. 이 계획은 세 fit track의 independent cap, spanning contributions, automatic minimum과 1/64px row rounding이 기존 profile의 범위 안에서 맞는지 확인하고, 고정 six-row topology만 허용하도록 한다.
