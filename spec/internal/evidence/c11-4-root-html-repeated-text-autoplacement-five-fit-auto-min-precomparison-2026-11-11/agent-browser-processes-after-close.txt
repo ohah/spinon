@@ -2,7 +2,8 @@
 
 agent-browser --session spinon-c114-five-fit-autoplacement-precomparison-20261111 session info --json
 agent-browser --session spinon-c114-five-fit-pr-sample-20261111 session info --json
+agent-browser --session spinon-c114-pr1347-body-check-20261111 session info --json
 
-두 결과 모두 active=false, pid=null. 각 capture collector도 `BROWSER_CLOSED true`를 반환했다.
+세 결과 모두 active=false, pid=null. 각 capture collector도 `BROWSER_CLOSED true`를 반환했다. PR body 확인 session은 이미지의 `complete=true`, natural size `1280×900`을 확인한 뒤 닫았다.
 
 이 확인은 해당 작업 session만 대상으로 한다. 다른 저장소의 Agent Browser session과 공유 CoreSimulator 프로세스는 보존했다. `xcrun simctl list devices booted`에는 booted iOS device가 없었고 `adb devices -l`에는 attached Android device가 없었다.

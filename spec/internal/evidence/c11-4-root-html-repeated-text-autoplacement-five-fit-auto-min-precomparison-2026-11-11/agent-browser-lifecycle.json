@@ -11,6 +11,12 @@
       "name": "spinon-c114-five-fit-pr-sample-20261111",
       "captureClosedBrowser": true,
       "postClose": { "active": false, "pid": null }
+    },
+    {
+      "name": "spinon-c114-pr1347-body-check-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null },
+      "imageLoaded": { "complete": true, "naturalWidth": 1280, "naturalHeight": 900 }
     }
   ],
   "terminalBrowserUsed": false,
