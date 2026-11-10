@@ -1,0 +1,12 @@
+f20341bc12b49f8abc4b05b78f5aa25598027c625dc642ef8bf80140e817b502  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md
+b942efde2ec7077b4e8a571311c14813655fe5a8433ebd0489ea6c50b5dac5cd  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/agent-browser-lifecycle.json
+23666cbe0b1c46687eb8e2ecb053a1a08c266b4ed108ff9ce62e86ee437330a3  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-chrome.mjs
+ddd0cf8dc79bd4875e5568dceed425c7ba4340f8952f7c5d5e1d62c848a0b1a9  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-summary.json
+38ecb38b3b73b4edfc2f3d496ba6267b6b617ce52be53bc55b61a3c92cca0ae9  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson
+99ee5f6bbd1eecf4da52c9194f9e8b8659519f66731c84f939d7b7dd8c2d3af2  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-row-span-positions-4-6-auto-sample.png
+0b1bf4d8997059d743bb91840c51100bb159f0c9b5bf85bc69d4c34163078c9c  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/matrix-verification.json
+920e5a4f5830c2d6bd72c25d371fe943981dac0a1e76b6ed3cdf269127d5322f  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md
+5c3c80120ef23334ff52020db715401e63ae0b681196c24193578b80e898195e  spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/verify-chrome-matrix.py
+5d7e1129671b9bdcbb1b54a763cfb987e0ae7382b3520231b2b1309659c65f56  plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md
+df48b1a6b1315e3254bbef051ace960972728c5042e44a6e3f89385a5803568f  plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md
+c69ad2ba14b1e1c682c89dfb5152bd534c65ca8a8c0f6fb67fb1a281be430348  tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-positions-4-6-auto-minimum-precomparison.html
