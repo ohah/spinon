@@ -1,6 +1,7 @@
 # C11.4 · three-fit auto-placement 반복 텍스트의 `min-height:auto`
 
 - **상태:** 계획 및 Chrome 157 사전 비교 완료 · 구현 시작 전 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
+- **계획 PR:** [#1341](https://github.com/ohah/spinon/pull/1341)
 - **직전 구현:** [three-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · 구현 PR [#1338](https://github.com/ohah/spinon/pull/1338)
 - **기존 자동 배치:** [one-fit 자동 최소 크기](./c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum.md) · PR [#1322](https://github.com/ohah/spinon/pull/1322) · [two-fit 자동 최소 크기](./c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md) · PR [#1318](https://github.com/ohah/spinon/pull/1318)
 - **세 fit 위치 row-span 범위:** [계획](./c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum.md) · 별도 row-span profile만 지원하며 three-fit auto-placement는 의도적으로 거부한다.
