@@ -19,4 +19,8 @@ Agent Browser 0.31.1의 Chrome 157.0.8103.40에서 작업 branch의 `spec/public
 
 `layout-verification.json`은 화면에서 읽은 text/width 값을 저장한다. `roadmap-status-agent-browser-desktop.png`와 `roadmap-status-agent-browser-mobile.png`는 Agent Browser 캡처다. [capture-roadmap.mjs](./capture-roadmap.mjs)는 로컬 HTML을 다시 열어 두 화면을 재현한다.
 
+- 실제 PR diff의 독립 실패 관점 검토: [30개 검토](./pr-diff-review-30.md).
+
 작업 전용 Agent Browser session `spinon-roadmap-five-fit-status-pr1348-20261111`은 capture 직후 닫았으며 post-close 정보는 [agent-browser-lifecycle.json](./agent-browser-lifecycle.json)에 기록했다. Terminal Browser, Android device, iOS Simulator는 사용하지 않았다.
+
+PR 본문의 raw screenshot 두 장은 별도 Agent Browser session으로 확인했다. Desktop image는 1440×1000, mobile image는 390×844 natural size로 모두 `complete=true`였고, 해당 session도 종료했다.

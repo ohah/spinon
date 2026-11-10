@@ -40,6 +40,7 @@ try {
   })())`]));
   if (!desktop.noteVisible || desktop.noteParentId === 'kanban-board'
       || !desktop.noteText.includes('17,280 scenes') || !desktop.boardText.includes('계획 완료')
+      || !desktop.officialStatusText.includes('78/214')
       || desktop.documentWidth > desktop.viewportWidth) {
     throw new Error(`desktop assertion failed: ${JSON.stringify(desktop)}`);
   }
