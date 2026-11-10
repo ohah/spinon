@@ -41,3 +41,5 @@ Fixture는 의도적으로 `40×220px` Grid 하나만 그린다. 따라서 전�
 캡처 후 두 플랫폼 기본 앱을 다시 빌드해 update 설치했다. iOS app-data 파일 hash는 재설치 전후 같았다. Android의 최종 app-data archive hash `2e02c53a68fee54c409417a72e463d7beb3f297b148ea6c55958b5045a65a473`는 최초 캡처의 before/after 값과 일치한다. 상세값은 [복구 기록](./post-capture-app-recovery.log)과 [원본 데이터 검사](./app-data-preservation.log)에 있다. Source fixture는 [원래 bootstrap HTML/JS hash](./source-restoration.log)로 복구됐다.
 
 공유 iPhone/AVD profile은 삭제하지 않고 종료했다. S03 Pilot profile은 기기 목록에 없었다. 작업 전용 임시 복구 사본은 데이터 확인 후 제거했다.
+
+[구현/runtime 실패 관점 20개 검토](./implementation-runtime-review-20.md) · [실제 PR diff 실패 관점 30개 검토](./implementation-pr-diff-review-30.md).
