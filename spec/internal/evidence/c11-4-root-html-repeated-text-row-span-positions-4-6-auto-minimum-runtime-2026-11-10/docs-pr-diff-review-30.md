@@ -1,4 +1,4 @@
-# C11.4 PR #1331 병합 상태·공개 roadmap 문서 PR diff 검토 30개
+# PR #1332 · C11.4 PR #1331 병합 상태·공개 roadmap 문서 diff 검토 30개
 
 검토 대상은 제한 구현 PR #1331 병합 후 수정한 `spec/STATUS.md`, `spec/0001-conformance.md`, 내부 계약 0059, 계획 문서, `spec/public/roadmap.html` 및 이 검토 근거다. 제품 코드는 변경하지 않는다. GitHub PR 상태와 merge tree를 기준으로 병합 상태·공식 완료 집계·한정 범위·검증 표현·roadmap 링크를 별도로 확인했다.
 
