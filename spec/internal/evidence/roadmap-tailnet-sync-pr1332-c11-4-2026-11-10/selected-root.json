@@ -1,0 +1,942 @@
+{
+  "sourceHead": "41e391117a76d3a6db8329adf89bddf64f281367",
+  "sourceTree": "f626ac9f68d045b4d9bf833c0208bbb0c06bbbe4",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr1332-c11-4-2026-11-10/pass01/root",
+  "stagedFileCount": 155,
+  "stagedBytes": 46128054,
+  "sourceSymlinks": 0,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 662675,
+      "sha256": "1c89b4d26c71b9ec3d3609031e91f2ca985ed03118bd0eded3b550dc97c682e0"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 662675,
+      "sha256": "1c89b4d26c71b9ec3d3609031e91f2ca985ed03118bd0eded3b550dc97c682e0"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 662675,
+      "sha256": "1c89b4d26c71b9ec3d3609031e91f2ca985ed03118bd0eded3b550dc97c682e0"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 758276,
+      "sha256": "861a300be3a7d6f8adfc48ddcdc0f143649a28d0f4df6dc58d6a070b35fcfa8d"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 758276,
+      "sha256": "861a300be3a7d6f8adfc48ddcdc0f143649a28d0f4df6dc58d6a070b35fcfa8d"
+    },
+    {
+      "source": "spec/0001-conformance.md",
+      "route": "0001-conformance.md",
+      "bytes": 35658,
+      "sha256": "b17679570868d777e66f92a9a8225688af596f610c71d144a99611800421eb7f"
+    },
+    {
+      "source": "spec/0001-conformance.md",
+      "route": "spec/0001-conformance.md",
+      "bytes": 35658,
+      "sha256": "b17679570868d777e66f92a9a8225688af596f610c71d144a99611800421eb7f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "route": "internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "bytes": 78089,
+      "sha256": "8fcdc243a080b8080b2357a6fdb88e53e75b7b121a0176a4de07807341ecae3f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "route": "spec/internal/evidence/c11-4-auto-fit-area-expansion-runtime-2026-10-23/android-avd-c114-auto-fit-area-expansion-android-avd-20261023T062601431Z-2f9bedaa/template-area-repeat-two-axis-fit-fit-area-span.png",
+      "bytes": 78089,
+      "sha256": "8fcdc243a080b8080b2357a6fdb88e53e75b7b121a0176a4de07807341ecae3f"
+    },
+    {
+      "source": "spec/internal/README.md",
+      "route": "internal/README.md",
+      "bytes": 143085,
+      "sha256": "f0f860c6f6fc54db698e07b0b9825ed0ea2e83765ef95af3ce6ff99b32ad36a3"
+    },
+    {
+      "source": "spec/internal/README.md",
+      "route": "spec/internal/README.md",
+      "bytes": 143085,
+      "sha256": "f0f860c6f6fc54db698e07b0b9825ed0ea2e83765ef95af3ce6ff99b32ad36a3"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 578434,
+      "sha256": "6f9613369143928a94024ea37c96a2b4a47ff34ddf9ffa7e131bd5ad263cbf01"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 578434,
+      "sha256": "6f9613369143928a94024ea37c96a2b4a47ff34ddf9ffa7e131bd5ad263cbf01"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md",
+      "bytes": 8946,
+      "sha256": "e4a1ad527b00453654bd2bab9e80666b97faf735e137edd1070ebc48c6ba8225"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md",
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md",
+      "bytes": 8946,
+      "sha256": "e4a1ad527b00453654bd2bab9e80666b97faf735e137edd1070ebc48c6ba8225"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md",
+      "bytes": 4715,
+      "sha256": "df48b1a6b1315e3254bbef051ace960972728c5042e44a6e3f89385a5803568f"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md",
+      "route": "spec/plan/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md",
+      "bytes": 4715,
+      "sha256": "df48b1a6b1315e3254bbef051ace960972728c5042e44a6e3f89385a5803568f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "bytes": 3342,
+      "sha256": "b942efde2ec7077b4e8a571311c14813655fe5a8433ebd0489ea6c50b5dac5cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/agent-browser-lifecycle.json",
+      "bytes": 3342,
+      "sha256": "b942efde2ec7077b4e8a571311c14813655fe5a8433ebd0489ea6c50b5dac5cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-chrome.mjs",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-chrome.mjs",
+      "bytes": 16342,
+      "sha256": "23666cbe0b1c46687eb8e2ecb053a1a08c266b4ed108ff9ce62e86ee437330a3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-chrome.mjs",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-chrome.mjs",
+      "bytes": 16342,
+      "sha256": "23666cbe0b1c46687eb8e2ecb053a1a08c266b4ed108ff9ce62e86ee437330a3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-summary.json",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-summary.json",
+      "bytes": 1489,
+      "sha256": "ddd0cf8dc79bd4875e5568dceed425c7ba4340f8952f7c5d5e1d62c848a0b1a9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-summary.json",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/capture-summary.json",
+      "bytes": 1489,
+      "sha256": "ddd0cf8dc79bd4875e5568dceed425c7ba4340f8952f7c5d5e1d62c848a0b1a9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson",
+      "bytes": 19098606,
+      "sha256": "38ecb38b3b73b4edfc2f3d496ba6267b6b617ce52be53bc55b61a3c92cca0ae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-observation.ndjson",
+      "bytes": 19098606,
+      "sha256": "38ecb38b3b73b4edfc2f3d496ba6267b6b617ce52be53bc55b61a3c92cca0ae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-row-span-positions-4-6-auto-sample.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-row-span-positions-4-6-auto-sample.png",
+      "bytes": 18209,
+      "sha256": "99ee5f6bbd1eecf4da52c9194f9e8b8659519f66731c84f939d7b7dd8c2d3af2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-row-span-positions-4-6-auto-sample.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-row-span-positions-4-6-auto-sample.png",
+      "bytes": 18209,
+      "sha256": "99ee5f6bbd1eecf4da52c9194f9e8b8659519f66731c84f939d7b7dd8c2d3af2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/matrix-verification.json",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/matrix-verification.json",
+      "bytes": 985,
+      "sha256": "0b1bf4d8997059d743bb91840c51100bb159f0c9b5bf85bc69d4c34163078c9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/matrix-verification.json",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/matrix-verification.json",
+      "bytes": 985,
+      "sha256": "0b1bf4d8997059d743bb91840c51100bb159f0c9b5bf85bc69d4c34163078c9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md",
+      "bytes": 4240,
+      "sha256": "920e5a4f5830c2d6bd72c25d371fe943981dac0a1e76b6ed3cdf269127d5322f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/plan-pr-diff-review-20.md",
+      "bytes": 4240,
+      "sha256": "920e5a4f5830c2d6bd72c25d371fe943981dac0a1e76b6ed3cdf269127d5322f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md",
+      "bytes": 3577,
+      "sha256": "f20341bc12b49f8abc4b05b78f5aa25598027c625dc642ef8bf80140e817b502"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md",
+      "bytes": 3577,
+      "sha256": "f20341bc12b49f8abc4b05b78f5aa25598027c625dc642ef8bf80140e817b502"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/SHA256SUMS",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/SHA256SUMS",
+      "bytes": 2320,
+      "sha256": "3b71122e01b34baa093c6cb2a553b36392f80edd343d55a1afee0825a30525dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/SHA256SUMS",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/SHA256SUMS",
+      "bytes": 2320,
+      "sha256": "3b71122e01b34baa093c6cb2a553b36392f80edd343d55a1afee0825a30525dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "bytes": 11016,
+      "sha256": "5c3c80120ef23334ff52020db715401e63ae0b681196c24193578b80e898195e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/verify-chrome-matrix.py",
+      "bytes": 11016,
+      "sha256": "5c3c80120ef23334ff52020db715401e63ae0b681196c24193578b80e898195e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/agent-browser-verification.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/agent-browser-verification.txt",
+      "bytes": 919,
+      "sha256": "541d9ec5716bcb43f7628461a60d371aa89c597bf56b299669f3a1db5836af26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/agent-browser-verification.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/agent-browser-verification.txt",
+      "bytes": 919,
+      "sha256": "541d9ec5716bcb43f7628461a60d371aa89c597bf56b299669f3a1db5836af26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-build.log",
+      "bytes": 5457,
+      "sha256": "7f5ae8a5f28b102ef59d1e3a1e4e703de7f05651140b5d3ef2ec1c19f5e22390"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-build.log",
+      "bytes": 5457,
+      "sha256": "7f5ae8a5f28b102ef59d1e3a1e4e703de7f05651140b5d3ef2ec1c19f5e22390"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.log",
+      "bytes": 4819,
+      "sha256": "02b6f6ad7ca5c363ef1455f95bf573fcd483dfbc5d5591dae9b197d3e30f3870"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.log",
+      "bytes": 4819,
+      "sha256": "02b6f6ad7ca5c363ef1455f95bf573fcd483dfbc5d5591dae9b197d3e30f3870"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.png",
+      "bytes": 90073,
+      "sha256": "44c0529202a248d2fca2596ac122b0e7fd26414c78cd4b5c3c00cb60a3592b3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-dark.png",
+      "bytes": 90073,
+      "sha256": "44c0529202a248d2fca2596ac122b0e7fd26414c78cd4b5c3c00cb60a3592b3d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.log",
+      "bytes": 4822,
+      "sha256": "bf34d25cc451d4c947150757c7cf9cd0c31407c59ecb8c54f60d2c5da1fd215f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.log",
+      "bytes": 4822,
+      "sha256": "bf34d25cc451d4c947150757c7cf9cd0c31407c59ecb8c54f60d2c5da1fd215f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.png",
+      "bytes": 91575,
+      "sha256": "782b65b7c546db14d2e4560e906e0f5d83d5959d9f02ce9c3dae7decc27c3b9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-baseline-light.png",
+      "bytes": 91575,
+      "sha256": "782b65b7c546db14d2e4560e906e0f5d83d5959d9f02ce9c3dae7decc27c3b9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-build.log",
+      "bytes": 4942,
+      "sha256": "6c675156bea5866586f49a2a15f1e05d2d4e565c2c6fdc5751c5b245f79255a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-build.log",
+      "bytes": 4942,
+      "sha256": "6c675156bea5866586f49a2a15f1e05d2d4e565c2c6fdc5751c5b245f79255a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.log",
+      "bytes": 4819,
+      "sha256": "b50269f67048f612b93fff948f2e54574fc5d37592af23248383a0b5e433b2ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.log",
+      "bytes": 4819,
+      "sha256": "b50269f67048f612b93fff948f2e54574fc5d37592af23248383a0b5e433b2ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.png",
+      "bytes": 92504,
+      "sha256": "08bc0e8ad5f1ce0a0b287c44f5d5a20dbc0893ab6ad5e4ed51976027002c42d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-dark.png",
+      "bytes": 92504,
+      "sha256": "08bc0e8ad5f1ce0a0b287c44f5d5a20dbc0893ab6ad5e4ed51976027002c42d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light-launch.log",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.log",
+      "bytes": 3603,
+      "sha256": "845e200c96100916d413e96a13697e9e58dcce0bd63dca3fab5f01b472444e9b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.log",
+      "bytes": 3603,
+      "sha256": "845e200c96100916d413e96a13697e9e58dcce0bd63dca3fab5f01b472444e9b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.png",
+      "bytes": 90565,
+      "sha256": "b327af7f3b3db2053f2e89184f004a4a0f0c72e5e5f92ab709e362bb1c2e11a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-candidate-light.png",
+      "bytes": 90565,
+      "sha256": "b327af7f3b3db2053f2e89184f004a4a0f0c72e5e5f92ab709e362bb1c2e11a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-emulator.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-emulator.log",
+      "bytes": 20574,
+      "sha256": "f95ad2dc64b0fbe5c9df3044dd2ff09f802bb01e25b500fa7fc8cbc1df69aa69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-emulator.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-emulator.log",
+      "bytes": 20574,
+      "sha256": "f95ad2dc64b0fbe5c9df3044dd2ff09f802bb01e25b500fa7fc8cbc1df69aa69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-environment.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-environment.txt",
+      "bytes": 660,
+      "sha256": "5ac05eb8808257727071a49787c7c7cf4e3cbb27573e717fa714e5ff9252ec24"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-environment.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-environment.txt",
+      "bytes": 660,
+      "sha256": "5ac05eb8808257727071a49787c7c7cf4e3cbb27573e717fa714e5ff9252ec24"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restore-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restore-build.log",
+      "bytes": 4967,
+      "sha256": "6db37e10e6d079656fd79d3db35a9227e5e8ebc7de99f87e51e17211b790b179"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restore-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restore-build.log",
+      "bytes": 4967,
+      "sha256": "6db37e10e6d079656fd79d3db35a9227e5e8ebc7de99f87e51e17211b790b179"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restored-state.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restored-state.txt",
+      "bytes": 344,
+      "sha256": "e4ea589ae670738d487717384d5761279c9cde2ff19fbc53acbd3f2f955de210"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restored-state.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-restored-state.txt",
+      "bytes": 344,
+      "sha256": "e4ea589ae670738d487717384d5761279c9cde2ff19fbc53acbd3f2f955de210"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-source-hashes.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-source-hashes.txt",
+      "bytes": 497,
+      "sha256": "cfa539af11548a68c5c995bb9829f0cce33265c580b929db38520e221154d703"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-source-hashes.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/android-source-hashes.txt",
+      "bytes": 497,
+      "sha256": "cfa539af11548a68c5c995bb9829f0cce33265c580b929db38520e221154d703"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-layout.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-layout.log",
+      "bytes": 170,
+      "sha256": "b7004c1cf4acef53f63bf5ee85187b7211f7da27b42bbc54acc8457d46a40f17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-layout.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-layout.log",
+      "bytes": 170,
+      "sha256": "b7004c1cf4acef53f63bf5ee85187b7211f7da27b42bbc54acc8457d46a40f17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-runtime-fixture.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-runtime-fixture.log",
+      "bytes": 598,
+      "sha256": "9fa00546b02dd3f5b28bbabd6a13f726b75f30ba7db22570cacf9ae31baeb2f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-runtime-fixture.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-runtime-fixture.log",
+      "bytes": 598,
+      "sha256": "9fa00546b02dd3f5b28bbabd6a13f726b75f30ba7db22570cacf9ae31baeb2f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-style-to-layout.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-style-to-layout.log",
+      "bytes": 382,
+      "sha256": "fecdb48d953e21574b0da3c92a4c3162a08e6b6133b5822bd81b68b95f6e4c1e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-style-to-layout.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/clippy-style-to-layout.log",
+      "bytes": 382,
+      "sha256": "fecdb48d953e21574b0da3c92a4c3162a08e6b6133b5822bd81b68b95f6e4c1e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/docs-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/docs-pr-diff-review-30.md",
+      "bytes": 5615,
+      "sha256": "d4a66de0a18ac9cfc1fb26a933147ca12bad34bcbd22ef51871783780f915cf0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/docs-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/docs-pr-diff-review-30.md",
+      "bytes": 5615,
+      "sha256": "d4a66de0a18ac9cfc1fb26a933147ca12bad34bcbd22ef51871783780f915cf0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/focused-runtime-tests.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/focused-runtime-tests.log",
+      "bytes": 1789,
+      "sha256": "cb721e3703aa4f340922bc912835bfb4dca51ca03b2fa35af81434c9f592d890"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/focused-runtime-tests.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/focused-runtime-tests.log",
+      "bytes": 1789,
+      "sha256": "cb721e3703aa4f340922bc912835bfb4dca51ca03b2fa35af81434c9f592d890"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.md",
+      "bytes": 4723,
+      "sha256": "592e7e2ce4123a1dd0f071d921c4e7dc6c5ef26f390df61beab60568b4830755"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/implementation-review-20.md",
+      "bytes": 4723,
+      "sha256": "592e7e2ce4123a1dd0f071d921c4e7dc6c5ef26f390df61beab60568b4830755"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-build.log",
+      "bytes": 67508,
+      "sha256": "50714a6faeb0863d17da433738fc6457ba1cef4a4a77a6700b7a4d041d7c742a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-build.log",
+      "bytes": 67508,
+      "sha256": "50714a6faeb0863d17da433738fc6457ba1cef4a4a77a6700b7a4d041d7c742a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark-launch.log",
+      "bytes": 28,
+      "sha256": "161fa95a0b23dc6178edf53268ec9508fcb11e26bb317701f58038226704bed9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark-launch.log",
+      "bytes": 28,
+      "sha256": "161fa95a0b23dc6178edf53268ec9508fcb11e26bb317701f58038226704bed9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.log",
+      "bytes": 3991,
+      "sha256": "5af93cc9ad74164e7465b88e8e6f3ea4f587d9f2cda5028e471c52b8d831ce41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.log",
+      "bytes": 3991,
+      "sha256": "5af93cc9ad74164e7465b88e8e6f3ea4f587d9f2cda5028e471c52b8d831ce41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.png",
+      "bytes": 152231,
+      "sha256": "95d4acc1771c194f61a4aec4f44a8dc186b0794e27310481a8f979d503984335"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-dark.png",
+      "bytes": 152231,
+      "sha256": "95d4acc1771c194f61a4aec4f44a8dc186b0794e27310481a8f979d503984335"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light-launch.log",
+      "bytes": 28,
+      "sha256": "c2124c3ad0bf0bc71b415101610ab9d01094cf108843a895bef6450b33804759"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light-launch.log",
+      "bytes": 28,
+      "sha256": "c2124c3ad0bf0bc71b415101610ab9d01094cf108843a895bef6450b33804759"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.log",
+      "bytes": 1461,
+      "sha256": "b21eb0b543d7fbf1885dbcab1500f07e4c09932d4a17f5981e314900408befaf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.log",
+      "bytes": 1461,
+      "sha256": "b21eb0b543d7fbf1885dbcab1500f07e4c09932d4a17f5981e314900408befaf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.png",
+      "bytes": 153687,
+      "sha256": "e879e51b72ade62f29d9ca8bafe2c5c4ceeb3e3f13c13449ebc7134067885688"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-baseline-light.png",
+      "bytes": 153687,
+      "sha256": "e879e51b72ade62f29d9ca8bafe2c5c4ceeb3e3f13c13449ebc7134067885688"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-build.log",
+      "bytes": 64807,
+      "sha256": "aae4a6cfa802509a651260c2021e170519551df59e6081a4c935d0d81a6df42a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-build.log",
+      "bytes": 64807,
+      "sha256": "aae4a6cfa802509a651260c2021e170519551df59e6081a4c935d0d81a6df42a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark-launch.log",
+      "bytes": 28,
+      "sha256": "16bd5cb14c9efb0830851419ecb1dc8808ae8c8dc60f6ab97df11381f00e827c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark-launch.log",
+      "bytes": 28,
+      "sha256": "16bd5cb14c9efb0830851419ecb1dc8808ae8c8dc60f6ab97df11381f00e827c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.log",
+      "bytes": 9225,
+      "sha256": "eb5b07a32404f99791b8f29d0e2f3fca194ae6a6b1ce9d4cfc1c1c7f7da070ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.log",
+      "bytes": 9225,
+      "sha256": "eb5b07a32404f99791b8f29d0e2f3fca194ae6a6b1ce9d4cfc1c1c7f7da070ae"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.png",
+      "bytes": 155848,
+      "sha256": "16c07a6b37ff6fcdff72da0aa64e939149b0180b19cb42065706882cfc66bfac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-dark.png",
+      "bytes": 155848,
+      "sha256": "16c07a6b37ff6fcdff72da0aa64e939149b0180b19cb42065706882cfc66bfac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light-launch.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light-launch.log",
+      "bytes": 28,
+      "sha256": "501b02f2c17730f3ec28740a79649288bf3bfe36589c88f6052000ad49690d05"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light-launch.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light-launch.log",
+      "bytes": 28,
+      "sha256": "501b02f2c17730f3ec28740a79649288bf3bfe36589c88f6052000ad49690d05"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.log",
+      "bytes": 6695,
+      "sha256": "7cd3aa78045d76ea4df09b415e6a3ade2e4ec367ed56505b467751a0edaba097"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.log",
+      "bytes": 6695,
+      "sha256": "7cd3aa78045d76ea4df09b415e6a3ade2e4ec367ed56505b467751a0edaba097"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.png",
+      "bytes": 155292,
+      "sha256": "11751f9edefb5b60289dc869858ba4670a8817ffc23555e47e8281642ff4afa2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.png",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-candidate-light.png",
+      "bytes": 155292,
+      "sha256": "11751f9edefb5b60289dc869858ba4670a8817ffc23555e47e8281642ff4afa2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restore-build.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restore-build.log",
+      "bytes": 64807,
+      "sha256": "8b21fc5491dd93499be93f65d90db3d734ee591d44f279d78fbb76eb21e2e3c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restore-build.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restore-build.log",
+      "bytes": 64807,
+      "sha256": "8b21fc5491dd93499be93f65d90db3d734ee591d44f279d78fbb76eb21e2e3c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restored-state.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restored-state.txt",
+      "bytes": 112,
+      "sha256": "d28647d2ae4070ed287c92eee2a4c7fff81f8078e735bcbfe70dfe1a20ba4d74"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restored-state.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-restored-state.txt",
+      "bytes": 112,
+      "sha256": "d28647d2ae4070ed287c92eee2a4c7fff81f8078e735bcbfe70dfe1a20ba4d74"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-source-hashes.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-source-hashes.txt",
+      "bytes": 497,
+      "sha256": "a49e4ed1a638d575d48656e4565aacd43a88d743a98cf1bcdd17f894a5baeb21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-source-hashes.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/ios-source-hashes.txt",
+      "bytes": 497,
+      "sha256": "a49e4ed1a638d575d48656e4565aacd43a88d743a98cf1bcdd17f894a5baeb21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/layout-rounding-tests.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/layout-rounding-tests.log",
+      "bytes": 1087,
+      "sha256": "0456d3b4cc365cc97972daeb46e3ba03ba15aa1de66490167cf4488cdfc628ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/layout-rounding-tests.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/layout-rounding-tests.log",
+      "bytes": 1087,
+      "sha256": "0456d3b4cc365cc97972daeb46e3ba03ba15aa1de66490167cf4488cdfc628ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/positions-1-3-regression.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/positions-1-3-regression.log",
+      "bytes": 668,
+      "sha256": "4d72cb016a3c6e89e433578851070c3cac9f615936e2b865ecebca0cf6636d77"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/positions-1-3-regression.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/positions-1-3-regression.log",
+      "bytes": 668,
+      "sha256": "4d72cb016a3c6e89e433578851070c3cac9f615936e2b865ecebca0cf6636d77"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.md",
+      "bytes": 4963,
+      "sha256": "65329e999be63fc74de17ef85960509d80fefb2d50925bd66e6a49a751c6f0e2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/pr-diff-review-30.md",
+      "bytes": 4963,
+      "sha256": "65329e999be63fc74de17ef85960509d80fefb2d50925bd66e6a49a751c6f0e2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.md",
+      "bytes": 6496,
+      "sha256": "6b15f5c2a90f4eb62276f83c0d5da820df3888fbd09e978d82aaad535996a249"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.md",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.md",
+      "bytes": 6496,
+      "sha256": "6b15f5c2a90f4eb62276f83c0d5da820df3888fbd09e978d82aaad535996a249"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/restored-source-hashes.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/restored-source-hashes.txt",
+      "bytes": 170,
+      "sha256": "6992d0c39741fdc75596c33aa71d18cf56aa8e224e9ba0653e752c4e9104ff4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/restored-source-hashes.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/restored-source-hashes.txt",
+      "bytes": 170,
+      "sha256": "6992d0c39741fdc75596c33aa71d18cf56aa8e224e9ba0653e752c4e9104ff4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-auto.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-auto.html",
+      "bytes": 3512,
+      "sha256": "42fc943bde36016bc659df84e590ba32b7e8057030c92c90f011bc6aa513bf92"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-auto.html",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-auto.html",
+      "bytes": 3512,
+      "sha256": "42fc943bde36016bc659df84e590ba32b7e8057030c92c90f011bc6aa513bf92"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-zero.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-zero.html",
+      "bytes": 3508,
+      "sha256": "357bf8b9bbc5b2fc23ee906187dc66dc80ddee0078ae94c0515919896f422f92"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-zero.html",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/root-html-light-dark-min-zero.html",
+      "bytes": 3508,
+      "sha256": "357bf8b9bbc5b2fc23ee906187dc66dc80ddee0078ae94c0515919896f422f92"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/simulator-cleanup.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/simulator-cleanup.txt",
+      "bytes": 638,
+      "sha256": "9ae838e54e7060d86c66deebc243a11c7d175d1f98565189ddf51643fc2a9dd3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/simulator-cleanup.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/simulator-cleanup.txt",
+      "bytes": 638,
+      "sha256": "9ae838e54e7060d86c66deebc243a11c7d175d1f98565189ddf51643fc2a9dd3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/six-row-matrix-final.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/six-row-matrix-final.log",
+      "bytes": 696,
+      "sha256": "aa116f12ae9984b8b674065121868a67b3d485110a3e57bd0a4e373b348fc7f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/six-row-matrix-final.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/six-row-matrix-final.log",
+      "bytes": 696,
+      "sha256": "aa116f12ae9984b8b674065121868a67b3d485110a3e57bd0a4e373b348fc7f6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/source-hashes.txt",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/source-hashes.txt",
+      "bytes": 403,
+      "sha256": "153737b1e57cde919998b210445f323c2af00b3e8f69418a20a16dc6ab9eb205"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/source-hashes.txt",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/source-hashes.txt",
+      "bytes": 403,
+      "sha256": "153737b1e57cde919998b210445f323c2af00b3e8f69418a20a16dc6ab9eb205"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/two-fit-regression.log",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/two-fit-regression.log",
+      "bytes": 442,
+      "sha256": "c1e8893d6aa2094b2e502efd1c62bc2dff9b4677a868594cadbfab114088295e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/two-fit-regression.log",
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/two-fit-regression.log",
+      "bytes": 442,
+      "sha256": "c1e8893d6aa2094b2e502efd1c62bc2dff9b4677a868594cadbfab114088295e"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
