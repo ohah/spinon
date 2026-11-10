@@ -1,0 +1,39 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "sourceHead": "0ff0f9d2b8102144d54cd76df086914a75082341",
+  "roadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentWidth": 1440,
+    "planVisible": true,
+    "mergeShaVisible": true,
+    "officialCountVisible": "78/214",
+    "screenshot": "tailnet-roadmap-pass01-desktop-agent-browser.png"
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "horizontalDocumentOverflow": false,
+    "board": {
+      "clientWidth": 362,
+      "scrollWidth": 1120,
+      "overflowX": "auto",
+      "maxScrollLeft": 758,
+      "scrollLeftBefore": 0,
+      "scrollLeftAfter": 300,
+      "scrollable": true
+    },
+    "screenshot": "tailnet-roadmap-pass01-mobile-agent-browser.png"
+  },
+  "planCardScreenshots": {
+    "desktop": "tailnet-roadmap-plan1329-agent-browser.png",
+    "mobile": "tailnet-roadmap-plan1329-mobile-agent-browser.png"
+  },
+  "rawChromeReferenceImage": {
+    "url": "https://raw.githubusercontent.com/ohah/spinon/e3a1b09e2b21ae3f13c8f4cb884c112f888f1c94/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/chrome157-row-span-positions-4-6-auto-sample.png",
+    "loaded": true,
+    "naturalSize": [1280, 900],
+    "screenshot": "chrome157-precomparison-raw-image-agent-browser.png"
+  }
+}
