@@ -1,6 +1,6 @@
 # C11.4 다섯 fit repeated-text auto-placement `min-height:auto`
 
-- **상태:** Chrome 157 사전 비교 17,280/17,280 scene 및 독립 검산 완료 · 계획 20관점 검토 완료 · 계획 PR 전 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
+- **상태:** Chrome 157 사전 비교 17,280/17,280 scene 및 독립 검산 완료 · 계획 20관점 검토 완료 · 계획 PR [#1347](https://github.com/ohah/spinon/pull/1347) 검토 중 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
 - **직전 자동 배치:** [네 fit `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.md) · PR [#1344](https://github.com/ohah/spinon/pull/1344)
 - **사전 비교:** [Chrome 157 17,280-scene matrix와 독립 검산](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.md)
 - **계획 검토:** [서로 다른 실패 관점 20개](./c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.md)

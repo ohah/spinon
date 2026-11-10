@@ -48,6 +48,7 @@ Chrome 쪽 구현 참고는 [Chromium 157.0.8103.40 Grid track sizing source](ht
 - 대표 장면: [`chrome157-five-fit-auto-min-sample.png`](./chrome157-five-fit-auto-min-sample.png)
 - 생성 뒤 Agent Browser session은 비활성(`active:false`, `pid:null`)임을 확인했다. 별도 기존 Agent Browser session과 공유 프로세스는 건드리지 않았다. Simulator는 만들거나 부팅하지 않았다.
 - [`agent-browser-lifecycle.json`](./agent-browser-lifecycle.json)에는 session 종료, ADB/iOS booted-device가 없었던 cleanup 확인을 기록했다.
+- 계획 PR [#1347의 실제 remote diff 30관점 검토](./plan-pr-diff-review-30.md).
 - 파일 무결성: [`SHA256SUMS`](./SHA256SUMS).
 
 재현 명령:

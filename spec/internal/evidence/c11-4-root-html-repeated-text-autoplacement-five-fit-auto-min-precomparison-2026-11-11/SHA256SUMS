@@ -1,11 +1,12 @@
-f9d233bf33c8e69acf007195052bd4b5e165312020dcda82b83ae6b558795feb  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.md
-acd63d67792db63b122b279d8f92857ce829aea71b1e5a0c16a98a1a8d2e35c1  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-lifecycle.json
-b1a60911ccf99655f10069ca826a4f71d250741d2c2163369fbf2ff205ea5fd1  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-processes-after-close.txt
+a957551c030f2f9e1a65ea24fc10651b5044de8c564ecefe8472c176fa73b3e4  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.md
+f2646a74c5eb1beb5461c75694d6fd247bd7a33c95e52c30ea90ac8468fb710d  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-lifecycle.json
+eca66d4ee1c37be571494a323e42493f8d9102a1fbee559dd8c3f5bfa32272a4  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-processes-after-close.txt
 5859068e984d0b5ab76cce80b240311dcf9349b04cb201f25c4a2d506215f89f  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/capture-chrome.mjs
 6fa0a16e181ec14c158841dcf707e1cb09f171b6dbb91fecc6a41fddcc8e1608  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/capture-pr-sample.mjs
 77e87804c5988af7109f49c60387ee3b4f0848618079b763e8621993ddbc57a0  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-five-fit-auto-min-pr-sample.png
 2207e737ff6582b57973c4ec320aa6d21ab8348de797473676818bb53a4d08c6  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-five-fit-auto-min-sample.png
 d5b0e23befa4375b0231802dbca98160b4761e6ddd239222a67fdb897568ecc5  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-observation.ndjson
 9bc1338fa9160630674c3f82208842b0ddace3f2938f4c6fc1fee0e03d16d1a7  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/oracle-fixture.html
+3bac8f4fe33bd7255c066815f4044581cadb0ed02f9a131a2ab284d35f6558e1  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.md
 a8c8f931b66c8b596ff8936fe11de87a29e69d3d9003c5db3d2d7868a0895103  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/verification.json
 60065eb04a188dbd24a6506c05d1c0b07edd4855d8bc6f0f8322f471d72d58b7  spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/verify-chrome-matrix.py
