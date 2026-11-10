@@ -1,0 +1,49 @@
+{
+  "verified_on": "2026-11-11 Asia/Seoul",
+  "pull_request": "https://github.com/ohah/spinon/pull/1342",
+  "head_commit": "c712246a1a56e12b2b809feec9bc0032d202418e",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "chrome": "157.0.8103.40"
+  },
+  "pr_body_images": [
+    {
+      "alt": "iOS light",
+      "file": "ios-iphone17pro-ios26_2-light.png",
+      "complete": true,
+      "natural_width": 1206,
+      "natural_height": 2622
+    },
+    {
+      "alt": "iOS dark",
+      "file": "ios-iphone17pro-ios26_2-dark.png",
+      "complete": true,
+      "natural_width": 1206,
+      "natural_height": 2622
+    },
+    {
+      "alt": "Android light",
+      "file": "android-api37_2-light.png",
+      "complete": true,
+      "natural_width": 1080,
+      "natural_height": 2400
+    },
+    {
+      "alt": "Android dark",
+      "file": "android-api37_2-dark.png",
+      "complete": true,
+      "natural_width": 1080,
+      "natural_height": 2400
+    }
+  ],
+  "lifecycle": {
+    "sessions_closed": [
+      "spinon-c114-pr1342-images",
+      "spinon-c114-pr1342-page"
+    ],
+    "session_list_after_cleanup": [],
+    "agent_browser_daemons_after_cleanup": 0,
+    "agent_browser_process_after_cleanup": false
+  }
+}

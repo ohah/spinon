@@ -1,6 +1,6 @@
 # C11.4 three-fit auto-placement 구현 PR diff 적대 검토 30개
 
-검토 대상은 현재 구현 branch diff 전체(계획 진행 상태, style/layout gates, Rust tests, Root HTML test fixture, simulator scripts/logs/screenshots, evidence README, implementation/runtime review)다. 계획 PR의 30관점 검토와 기능 구현/runtime 20관점 검토와 별도로 작성했다.
+검토 대상은 현재 구현 branch diff 전체(계획 진행 상태, style/layout gates, Rust tests, Root HTML test fixture, simulator scripts/logs/screenshots, evidence README와 Agent Browser 이미지/lifecycle JSON, implementation/runtime review, STATUS·internal contract·public roadmap 문서)다. 계획 PR의 30관점 검토와 기능 구현/runtime 20관점 검토와 별도로 작성했다.
 
 | # | 서로 다른 실패 관점 | 실제 diff 확인 및 방어 | 판정 |
 |---:|---|---|---|
@@ -8,7 +8,7 @@
 | 2 | public API/FFI surface가 바뀌는가 | 공개 타입·함수·header·FFI 파일 변경이 없다. | 통과 |
 | 3 | 내부 interface numeric contract가 올라가는가 | 계약 `0.1.0`을 유지한다. | 통과 |
 | 4 | official completion denominator가 바뀌는가 | plan과 roadmap 공식 완료 `78/214`, C11.4/C11 incomplete 표기를 유지한다. | 통과 |
-| 5 | 계획 상태가 공식 완료와 혼동되는가 | 계획 문구는 bounded implementation, 검토 및 merge 관문을 별도로 적는다. | 통과 |
+| 5 | 계획·STATUS 문구가 open PR 또는 bounded 구현을 C11.4 공식 완료와 혼동시키는가 | plan, STATUS, internal contract 0059와 roadmap은 bounded 구현 PR #1342만 기록하고 C11.4/C11 체크와 `78/214`를 유지한다. | 통과 |
 | 6 | auto-placement list 길이가 넓어지는가 | 두 layer에서 정확히 여섯 member만 허용한다. | 통과 |
 | 7 | fit-count validation이 duplicate/missing tail을 놓치는가 | exact 3 fit 및 min/max/auto 각각 1개를 요구하고 invalid multiplicity를 거부한다. | 통과 |
 | 8 | cap 검사가 position별로 누락되는가 | 각 FitContent member에 대해 finite non-negative direct px/% helper를 호출한다. | 통과 |
@@ -32,8 +32,8 @@
 | 26 | simulator app source를 복원하지 않고 남기는가 | build script는 원본 두 source SHA를 확인하고 temp backup/trap 복원 뒤 hash log를 남긴다. | 통과 |
 | 27 | Android/iOS capture가 fixture/diagnostic gate로 제품 완료를 과장하는가 | 기본 Root HTML app route에서 ready/draw-present만 검증하고 fixture-test flags는 off다. | 통과 |
 | 28 | simulator 결과가 hardware/pixel parity로 표현되는가 | README는 API 37.2 emulator llvmpipe, simulator visual smoke, pixel/hardware 미검증 한계를 명시한다. | 통과 |
-| 29 | screenshot/앱/시뮬레이터/browser artifact가 재사용 뒤 남는가 | 네 simulator 화면과 logs는 이 PR의 재현 근거로 보존하고 앱·기기 종료를 기록한다. PR image check용 Agent Browser는 고유 session으로 열고 확인 후 종료할 관문이다. | 통과 |
-| 30 | PR 이미지/roadmap/status가 merge 전후 혼동되거나 링크가 깨지는가 | PR body에는 commit-pinned raw screenshot을 넣고 Agent Browser image load를 검증한 뒤 merge한다. merge 후 STATUS/spec/roadmap/Tailnet served hash를 따로 확인하며 이 slice로 공식 count를 바꾸지 않는다. | 통과 |
+| 29 | screenshot/앱/시뮬레이터/browser artifact가 재사용 뒤 남는가 | 네 simulator 화면과 logs는 재현 근거로 보존하고 앱·기기 종료를 기록했다. Agent Browser는 PR 본문을 열어 네 image의 `complete=true`와 실제 크기를 확인한 뒤 session/daemon/process가 없는 것을 확인했다. Android AVD는 후속 Spinon 검증에서 재사용할 profile이라 shutdown 상태로 보존한다. | 통과 |
+| 30 | PR 이미지, 공식 상태, internal contract와 roadmap이 서로 다른 범위를 게시하는가 | Agent Browser가 PR 본문에서 네 commit-pinned image를 모두 읽었다. STATUS·0059·roadmap·plan은 bounded scope, 공식 `78/214`, C11.4/C11 미완료, contract `0.1.0`을 일치시킨다. merge 및 Tailnet served hash는 병합 뒤 실제 결과로 별도 확인한다. | 통과 |
 
 ## 검토 결과
 
