@@ -361,6 +361,8 @@ fn blink_layout_unit_distribute_rows_from_stages(
         let fit_content_limit = repeated_row_fit_content_limit(container, row, grid_frame.height)?;
         let growth_limit = fit_content_limit.map_or(growth_limit, |limit| growth_limit.min(limit));
         let growth_potential = (growth_limit - track.base_size).max(0.0);
+        // 최소 기여로 인해 사용 base가 max-side 한도를 넘을 수 있다.
+        let rounded_base_limit = growth_limit.max(track.base_size);
         let is_auto_track = if row < container.rows.len() {
             false
         } else {
@@ -376,7 +378,12 @@ fn blink_layout_unit_distribute_rows_from_stages(
         if growth_potential >= 1.0 / 64.0 {
             growth_potentials.push((row, growth_potential, is_auto_track));
         } else if matches!(residual_rounding, ResidualRounding::Nearest) {
-            return None;
+            let rounded_up_size = blink_layout_unit_to_px(floor_units + 1);
+            let within_rounding_tolerance =
+                rounded_up_size - raw_size <= 0.01 && rounded_up_size <= rounded_base_limit + 0.01;
+            if within_rounding_tolerance {
+                growth_potentials.push((row, growth_potential, is_auto_track));
+            }
         } else if fit_content_limit.is_none() {
             growth_potentials.push((row, growth_potential, is_auto_track));
         }

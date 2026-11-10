@@ -1437,15 +1437,20 @@ fn distribute_item_space_to_base_size(
                 filter = (|_| true) as fn(&GridTrack) -> bool;
             }
 
-            // When distributing beyond limits, growth limits are ignored, but the argument
-            // to any fit-content() max track sizing function still caps growth.
+            // fit-content()는 max-content 증가를 제한하지만, 최소 기여가 요구하는
+            // 기본 크기 증가는 제한하지 않는다. 트랙의 고유 최소 크기가 이미
+            // fit-content 한도를 넘을 수 있고, 겹치는 span은 그 크기를 더 키울 수 있다.
+            let beyond_limit = move |track: &GridTrack| match intrinsic_contribution_type {
+                IntrinsicContributionType::Minimum => f32::INFINITY,
+                IntrinsicContributionType::Maximum => track.fit_content_limit(),
+            };
             distribute_space_up_to_limits(
                 extra_space,
                 tracks,
                 |track| track_is_affected(track) && filter(track),
                 &track_distribution_proportion,
                 get_base_size,
-                |track| track.fit_content_limit(),
+                beyond_limit,
             );
         }
 
@@ -1859,7 +1864,10 @@ fn distribute_space_up_to_limits(
 
 #[cfg(test)]
 mod tests {
-    use super::{find_size_of_fr, GridTrack};
+    use super::{
+        distribute_item_space_to_base_size, find_size_of_fr, flush_planned_base_size_increases,
+        GridTrack, IntrinsicContributionType,
+    };
     use crate::style::{MaxTrackSizingFunction, MinTrackSizingFunction};
 
     fn flexible_track(factor: f32) -> GridTrack {
@@ -1884,6 +1892,46 @@ mod tests {
                 "track {index}: factor={factor}, fr={hypothetical_fr_size}, actual={actual}, expected={expected}"
             );
         }
+    }
+
+    fn fit_content_track(limit: f32) -> GridTrack {
+        let mut track = GridTrack::new(
+            MinTrackSizingFunction::auto(),
+            MaxTrackSizingFunction::fit_content_px(limit),
+        );
+        track.growth_limit = f32::INFINITY;
+        track.fit_content_limit = limit;
+        track
+    }
+
+    #[test]
+    fn minimum_contribution_can_exceed_fit_content_limit() {
+        let mut tracks = [fit_content_track(5.0)];
+        distribute_item_space_to_base_size(
+            false,
+            18.0,
+            &mut tracks,
+            |_| true,
+            GridTrack::fit_content_limited_growth_limit,
+            IntrinsicContributionType::Minimum,
+        );
+        flush_planned_base_size_increases(&mut tracks);
+        assert_eq!(tracks[0].base_size, 18.0);
+    }
+
+    #[test]
+    fn maximum_contribution_remains_bounded_by_fit_content_limit() {
+        let mut tracks = [fit_content_track(5.0)];
+        distribute_item_space_to_base_size(
+            false,
+            18.0,
+            &mut tracks,
+            |_| true,
+            GridTrack::fit_content_limited_growth_limit,
+            IntrinsicContributionType::Maximum,
+        );
+        flush_planned_base_size_increases(&mut tracks);
+        assert_eq!(tracks[0].base_size, 5.0);
     }
 
     #[test]
