@@ -247,6 +247,19 @@ pub(super) fn validate(
                     repeated_span_fit_positions_are_supported(implicit_rows, &span_fit_positions)
                 })
         };
+    let repeated_text_span_auto_minimum_candidate =
+        repeated_text::span_auto_minimum_items_candidate(
+            &items,
+            &styles,
+            &span_fit_positions,
+            repeated_text_span_profile,
+        );
+    let repeated_text_span_auto_minimum_profile = repeated_text::span_auto_minimum_profile(
+        &items,
+        &styles,
+        &span_fit_positions,
+        repeated_text_span_profile,
+    );
     if (four_member_list && items.len() != 6)
         || (six_member_candidate && items.len() != 9 && !repeated_text_span_profile)
         || (two_fit_span_track_list && !repeated_text_span_profile && !repeated_text_profile)
@@ -287,11 +300,14 @@ pub(super) fn validate(
     } else {
         auto_placement(first)
     };
+    let first_span_minimum_is_supported = !repeated_text_span_auto_minimum_candidate
+        || first.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0);
     if !fixed_item(
         first,
         10.0,
         repeated_text_profile || repeated_text_span_profile,
     ) || !first_placement_is_supported
+        || !first_span_minimum_is_supported
     {
         return Err(unsupported(
             node,
@@ -342,9 +358,11 @@ pub(super) fn validate(
                 "Implicit-row item style is missing",
             ));
         };
-        let allow_minimum_floor = !repeated_text_span_profile && items.len() == 3 && position == 1;
+        let allow_minimum_floor =
+            !repeated_text_span_auto_minimum_candidate && items.len() == 3 && position == 1;
         let allow_auto_minimum = (two_fit_span_track_list && repeated_text_span_profile)
-            || (six_member_auto_placement_list && repeated_text_auto_minimum_profile);
+            || (six_member_auto_placement_list && repeated_text_auto_minimum_profile)
+            || repeated_text_span_auto_minimum_profile;
         let item_placement_is_supported = if repeated_text_span_profile {
             repeated_span_item_placement(style)
         } else {

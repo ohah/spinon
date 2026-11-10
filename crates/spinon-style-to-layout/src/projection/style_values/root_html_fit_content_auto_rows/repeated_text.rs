@@ -1,6 +1,38 @@
 use super::*;
 use spinon_core::HostNodeHandle;
 
+pub(super) fn span_auto_minimum_items_candidate(
+    items: &[HostNodeHandle],
+    styles: &std::collections::BTreeMap<spinon_core::NodeId, &ComputedElementStyle>,
+    fit_positions: &[usize],
+    span_profile: bool,
+) -> bool {
+    if !span_profile || fit_positions.len() != 1 || fit_positions[0] > 3 {
+        return false;
+    }
+    items.iter().copied().skip(1).all(|item| {
+        styles
+            .get(&item.id())
+            .copied()
+            .is_some_and(|style| style.layout_dimensions.min_height == ComputedCssDimension::Auto)
+    })
+}
+
+pub(super) fn span_auto_minimum_profile(
+    items: &[HostNodeHandle],
+    styles: &std::collections::BTreeMap<spinon_core::NodeId, &ComputedElementStyle>,
+    fit_positions: &[usize],
+    span_profile: bool,
+) -> bool {
+    span_auto_minimum_items_candidate(items, styles, fit_positions, span_profile)
+        && items
+            .first()
+            .and_then(|item| styles.get(&item.id()).copied())
+            .is_some_and(|style| {
+                style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
+            })
+}
+
 pub(super) fn payload_is_supported(
     tree: &HostDocumentSnapshot,
     nodes: &RuntimeGridNodes,

@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span one-fit `min-height:auto`
 
-**상태:** 계획 · 제품 구현 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 구현 검증 중 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **선행 범위:** [direct-text row-span](./c11-4-root-html-repeated-text-row-span.md) · [one-fit 위치 1–6](./c11-4-root-html-repeated-text-row-span-fit-content-positions-4-6.md) · [two-fit row-span `min-height:auto`](./c11-4-root-html-repeated-text-row-span-two-fit-content.md) · [one-fit auto-placement `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum.md)
 
@@ -49,9 +49,20 @@ Agent Browser HeadlessChrome 157에서 5,760 scene을 실행했다. 두 mode는 
 6. 기존 one-fit span 960/1,920/4,320 scene, two-fit span 3,840 scene, one-/two-fit auto-placement 1,440/2,880 scene, anonymous repeated-text 810 scene 및 Grid track-sizing 회귀를 실행한다. 변경 crate의 focused tests, `Clippy -D warnings`, `cargo fmt --all -- --check`를 기록하고 실행하지 않은 suite/CI는 통과로 쓰지 않는다.
 7. 동일 source SHA의 기본 Root HTML route를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 light/dark로 실행한다. baseline/candidate 대표 start/stretch scene, `layout=ready`, draw/present, HTML·app hash 및 OS screenshot을 남긴다. screenshot은 visual smoke이며 PixelCopy/Metal readback, compositor 뒤 pixel equality 또는 실기기 증명이 아니다.
 8. 공용 Android AVD와 iPhone 17 Pro simulator는 재사용 후 shutdown한다. 별도 task-owned device/profile을 새로 만들면 실행 종료 후 제거한다. S03 이름의 simulator profile은 존재하지 않으며 shared profile/user data는 보존한다. Agent Browser는 고유 session으로 실행하고, 캡처 뒤 session과 브라우저 process가 종료됐는지 확인한다. Terminal Browser는 사용하지 않는다.
-9. 구현/runtime은 계획 검토와 다른 실패 관점 20개로, 구현 PR diff는 별도 20개로 검토한다. Android/iOS 화면이 있으면 commit 고정 raw 링크를 PR 본문에 넣고 Agent Browser에서 링크 load를 확인한다.
+9. 구현/runtime은 계획 검토와 다른 실패 관점 20개로, 구현 PR diff는 별도 30개로 검토한다. Android/iOS 화면이 있으면 commit 고정 raw 링크를 PR 본문에 넣고 Agent Browser에서 링크 load를 확인한다.
 10. 병합 뒤 실제 결과를 내부 계약 0059, `spec/STATUS.md`, 공개 roadmap, 이 계획 및 지정 Tailnet 미리보기와 동기화한다. 이 slice 자체로 C11.4/C11 checkbox나 공식 `78/214`, 내부 계약 숫자 `0.1.0`을 올리지 않는다.
 
 ## 완료 판정
 
-이 bounded slice는 paired RuntimeSession matrix, automatic-minimum eligibility와 track-stage trace, atomic rejection/same-session recovery, 기존 profile 회귀, focused Rust/Clippy/rustfmt, Android/iOS default-route visual smoke, 별도 implementation/runtime 20관점, implementation PR diff 20관점 및 merge 후 상태/spec/roadmap/Tailnet 동기화를 마친 뒤에만 구현 완료로 기록한다. 이는 six-row positions 4–6 auto minimum, 일반 CSS admission, arbitrary row-span/text, WPT 전체 또는 C11.4/C11 완료가 아니다.
+이 bounded slice는 paired RuntimeSession matrix, automatic-minimum eligibility와 track-stage trace, atomic rejection/same-session recovery, 기존 profile 회귀, focused Rust/Clippy/rustfmt, Android/iOS default-route visual smoke, 별도 implementation/runtime 20관점, implementation PR diff 30관점 및 merge 후 상태/spec/roadmap/Tailnet 동기화를 마친 뒤에만 구현 완료로 기록한다. 이는 six-row positions 4–6 auto minimum, 일반 CSS admission, arbitrary row-span/text, WPT 전체 또는 C11.4/C11 완료가 아니다.
+
+## 2026-11-10 실행 기록
+
+- Runtime paired matrix 2,880쌍/5,760 layouts, mixed-profile·atomic reject/recovery와 기존 row-span/auto-placement/anonymous-text matrix가 통과했다. 한 two-fit `min-content` control이 새 explicit-row guard에 잘못 걸리는 회귀를 확인했고, guard를 새 one-fit auto-minimum 후보로 한정해 two-fit 3,840-scene matrix 및 floor control을 다시 통과시켰다.
+- Android API 37.1 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 default Root HTML route를 baseline/candidate, light/dark로 실행했다. 각 route의 source SHA, `layout=ready`, draw `presented` 로그 및 OS screenshot은 [화면·실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-one-fit-auto-minimum-2026-11-10/README.md)에 있다. AVD와 iOS Simulator는 shutdown했고 원래 앱 HTML asset 및 기본 앱 빌드를 복원했다.
+- `cargo fmt --all -- --check`는 통과했다. 변경 crate 전체 Clippy는 기존 anonymous-text test helper 2개의 `too_many_arguments` lint를 개별 허용했을 때 나머지 `-D warnings`가 통과했다.
+- 최종 diff 검토에서 보강한 Taffy min/max cap 단위 테스트 4/4, layout track/nearest rounding 테스트 9/9, malformed `fitPosition` 거부 1/1, zero-cap overlap 및 auto-minimum trace 각 1/1, 기존 960-scene row-span matrix 통과를 재확인했다. Runtime paired matrix 최종 재실행은 2,880쌍/5,760 layouts 248.75초이며 Runtime glyph baseline line count도 Chrome과 대조한다. 신규 2,880-pair 모듈은 fixture-test feature 뒤에 둔다.
+- standalone Taffy unit-test build는 이 작업에서 만들어진 `vendor/taffy/target`을 대상으로 `cargo clean --manifest-path vendor/taffy/Cargo.toml`로 정리했다(667 files/719.0 MiB). 오래된 무관한 untracked `vendor/taffy/Cargo.lock`과 다른 작업 파일은 PR stage에서 제외했다.
+- Broad Rust suite는 clean하지 않다. `spinon-layout`은 524/525이며 미변경 HostDocument 테스트 1개가 실패했다. `spinon-style-to-layout`은 455/465이며 C07.3 aspect-ratio serialization과 C11.1/C11.5 grid fixture 9개가 실패했다. strict Clippy 기본 실행도 미변경 test helper lint 2개로 막힌다. 이 결과와 재현 필터는 화면·실행 근거 README에 분리해 기록했다.
+- 독립 implementation/runtime 20관점과 별도 PR diff 30관점 검토를 마쳤다. 최초 diff review에서 제안된 Taffy minimum/maximum 회귀 테스트, nearest rounding 다중 행 선택, Runtime glyph line count, fail-closed fixture key, feature gate와 exact repro commands를 반영했다. 최종 re-review에는 코드 수정 요청이 없고 PR 생성·스크린샷 링크 검증 단계만 남았다.
+- 남은 단계: commit/push, PR 본문에 commit 고정 Android/iOS 후보 화면 링크, Agent Browser load 확인 및 해당 세션 종료, GitHub checks/merge 확인, merge 후 `0059`·`STATUS`·공개 roadmap·Tailnet 미리보기 동기화. 그전에는 C11.4/C11 checkbox와 공식 `78/214`를 바꾸지 않는다.

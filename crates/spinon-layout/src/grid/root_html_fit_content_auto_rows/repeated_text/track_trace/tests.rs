@@ -72,6 +72,145 @@ fn blink_row_distribution_does_not_exceed_a_saturated_fit_content_limit() {
 }
 
 #[test]
+fn blink_nearest_row_rounding_respects_fit_content_cap_tolerance() {
+    use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
+
+    let accepted_row_size = 0.105;
+    let accepted_rows = [accepted_row_size];
+    let accepted_tracks = tracks(&accepted_rows);
+    let accepted_container = crate::GridContainerInput {
+        auto_rows: GridAutoRows::TrackList(vec![GridTrackSize::FitContent(
+            GridTrackLengthPercentage::LengthPx(accepted_row_size),
+        )]),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &accepted_container,
+            frame(),
+            &accepted_rows,
+            &accepted_tracks,
+            &accepted_tracks,
+            ResidualRounding::Nearest,
+        ),
+        Some(vec![7]),
+        "nearest rounding may exceed a min-forced base cap by less than 0.01px"
+    );
+
+    let rounded_down_row_size = 0.098;
+    let rounded_down_rows = [rounded_down_row_size];
+    let rounded_down_tracks = tracks(&rounded_down_rows);
+    let rounded_down_container = crate::GridContainerInput {
+        auto_rows: GridAutoRows::TrackList(vec![GridTrackSize::FitContent(
+            GridTrackLengthPercentage::LengthPx(rounded_down_row_size),
+        )]),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &rounded_down_container,
+            frame(),
+            &rounded_down_rows,
+            &rounded_down_tracks,
+            &rounded_down_tracks,
+            ResidualRounding::Nearest,
+        ),
+        Some(vec![6]),
+        "a row rounded down needs no cap growth allowance"
+    );
+}
+
+#[test]
+fn blink_nearest_rounding_skips_a_rejected_row_and_distributes_to_an_eligible_row() {
+    use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
+
+    let row_sizes = [0.098, 0.105];
+    let tracks = tracks(&row_sizes);
+    let container = crate::GridContainerInput {
+        auto_rows: GridAutoRows::TrackList(
+            row_sizes
+                .iter()
+                .copied()
+                .map(|size| GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(size)))
+                .collect(),
+        ),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &container,
+            frame(),
+            &row_sizes,
+            &tracks,
+            &tracks,
+            ResidualRounding::Nearest,
+        ),
+        Some(vec![6, 7]),
+        "rounding should skip the first row and assign the required unit to the second"
+    );
+}
+
+#[test]
+fn blink_row_distribution_rounds_fractional_spanning_rows_within_point_zero_one_px() {
+    use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
+    let row_sizes = [10.0, 4.1666665, 19.166666, 16.666666];
+    let tracks = tracks(&row_sizes);
+    let container = crate::GridContainerInput {
+        rows: vec![GridTrackSize::LengthPx(10.0)],
+        auto_rows: GridAutoRows::TrackList(vec![
+            GridTrackSize::MaxContent,
+            GridTrackSize::MaxContent,
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(20.0)),
+            GridTrackSize::Auto,
+            GridTrackSize::MinContent,
+            GridTrackSize::MinContent,
+        ]),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &container,
+            frame(),
+            &row_sizes,
+            &tracks,
+            &tracks,
+            ResidualRounding::Nearest,
+        ),
+        Some(vec![640, 266, 1227, 1067])
+    );
+}
+
+#[test]
+fn blink_row_distribution_rounds_minimum_forced_fit_content_base_above_its_cap() {
+    use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
+    let row_sizes = [10.0, 4.1666665, 19.166666, 16.666666];
+    let tracks = tracks(&row_sizes);
+    let container = crate::GridContainerInput {
+        rows: vec![GridTrackSize::LengthPx(10.0)],
+        auto_rows: GridAutoRows::TrackList(vec![
+            GridTrackSize::MaxContent,
+            GridTrackSize::MaxContent,
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(0.0)),
+            GridTrackSize::Auto,
+            GridTrackSize::MinContent,
+            GridTrackSize::MinContent,
+        ]),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &container,
+            frame(),
+            &row_sizes,
+            &tracks,
+            &tracks,
+            ResidualRounding::Nearest,
+        ),
+        Some(vec![640, 266, 1227, 1067])
+    );
+}
+
+#[test]
 fn blink_stretch_auto_rows_assigns_an_indivisible_unit_to_the_later_row() {
     let container = crate::GridContainerInput {
         rows: vec![crate::GridTrackSize::LengthPx(10.0)],

@@ -6,6 +6,9 @@ use spinon_style::{
     ComputedCssGridTrackSize,
 };
 
+#[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
+#[path = "repeated_text_span/automatic_minimum.rs"]
+mod automatic_minimum;
 #[cfg(test)]
 #[path = "repeated_text_span/rejections.rs"]
 mod rejections;
@@ -45,7 +48,7 @@ fn assert_frame(actual: [f32; 4], expected: [f32; 4], label: &str) {
 
 fn color_for_item(id: &str) -> OpaqueCssSrgb {
     match id {
-        "empty-0" => EMPTY_ITEM,
+        "empty-0" | "empty" => EMPTY_ITEM,
         "A" => A_ITEM,
         "B" => B_ITEM,
         "C" => C_ITEM,
@@ -63,6 +66,10 @@ fn color_for_payload(id: &str) -> OpaqueCssSrgb {
 }
 
 fn source_for(scene: &Value) -> String {
+    let scene = scene
+        .get("scene")
+        .filter(|scene| scene.is_object())
+        .unwrap_or(scene);
     let topology = scene["topology"]
         .as_str()
         .expect("topology should be a string");
@@ -84,19 +91,41 @@ fn source_for(scene: &Value) -> String {
         .expect("tail order should be an array")
         .iter()
         .map(|track| track.as_str().unwrap())
-        .collect::<Vec<_>>()
-        .join(" ");
+        .collect::<Vec<_>>();
     let cap = scene["cap"].as_str().expect("cap should be a string");
+    let fit_position = match scene.get("fitPosition") {
+        Some(value) => usize::try_from(
+            value
+                .as_u64()
+                .expect("fit position should be an unsigned integer"),
+        )
+        .expect("fit position should fit usize"),
+        None => 1,
+    };
+    assert!(
+        (1..=6).contains(&fit_position),
+        "fit position should be supported"
+    );
+    let mut auto_rows = tail.into_iter().map(str::to_owned).collect::<Vec<_>>();
+    auto_rows.insert(fit_position - 1, format!("fit-content({cap})"));
+    let auto_rows = auto_rows.join(" ");
     let align = scene["align"]
         .as_str()
+        .or_else(|| scene["alignContent"].as_str())
         .expect("alignment should be a string");
+    let min_height = scene["minHeight"].as_str().unwrap_or("0");
+    let explicit_minimum = if min_height == "auto" {
+        "min-height:0; "
+    } else {
+        ""
+    };
     let style = format!(
         "* {{ box-sizing: border-box; }}\n\
          html, body {{ margin: 0; padding: 0; }}\n\
          .scene {{ margin: 0; }}\n\
-         .grid {{ display: grid; width: 40px; height: 220px; grid-template-columns: 40px; grid-template-rows: 10px; grid-auto-rows: fit-content({cap}) {tail}; grid-auto-flow: row; align-content: {align}; align-items: normal; justify-content: start; justify-items: normal; overflow: visible; margin: 0; padding: 0; row-gap: 0; column-gap: 0; }}\n\
-         .item {{ display: block; width: auto; height: auto; min-height: 0; margin: 0; padding: 0; overflow: visible; grid-column: 1 / 2; }}\n\
-         .empty {{ height: 10px; grid-row: 1 / 2; background-color: rgb(11, 17, 23); }}\n\
+         .grid {{ display: grid; width: 40px; height: 220px; grid-template-columns: 40px; grid-template-rows: 10px; grid-auto-rows: {auto_rows}; grid-auto-flow: row; align-content: {align}; align-items: normal; justify-content: start; justify-items: normal; overflow: visible; margin: 0; padding: 0; row-gap: 0; column-gap: 0; }}\n\
+         .item {{ display: block; width: auto; height: auto; min-height: {min_height}; margin: 0; padding: 0; overflow: visible; grid-column: 1 / 2; }}\n\
+         .empty {{ {explicit_minimum}height: 10px; grid-row: 1 / 2; background-color: rgb(11, 17, 23); }}\n\
          .payload {{ display: block; width: auto; height: auto; margin: 0; padding: 0; font-family: monospace; font-size: 10px; font-weight: 400; font-style: normal; line-height: 10px; letter-spacing: 0; word-spacing: 0; white-space: normal; direction: ltr; }}\n\
          .item[data-item=\"A\"] {{ background-color: rgb(31, 41, 51); }}\n\
          .item[data-item=\"B\"] {{ background-color: rgb(61, 71, 81); }}\n\
@@ -142,15 +171,18 @@ fn assert_optional_track_trace(
             .filter(|track| !track.is_gutter)
             .map(|track| track.base_size)
             .collect::<Vec<_>>();
-        let expected_rows = expected["rows"]
+        let expected_rows = expected
+            .get("rows")
+            .or_else(|| expected.get("rowValues"))
+            .expect("expected rows should be recorded")
             .as_array()
             .expect("expected rows should be an array");
         assert_eq!(actual.len(), expected_rows.len(), "{label}: track count");
         for (index, (actual, expected)) in actual.iter().zip(expected_rows).enumerate() {
             let expected = expected.as_f64().unwrap() as f32;
             assert!(
-                (actual - expected).abs() <= 0.01,
-                "{label}: row {index}: actual={actual:?}, expected={expected:?} ± 0.01"
+                (actual - expected).abs() <= 1.0 / 64.0,
+                "{label}: raw row {index}: actual={actual:?}, expected={expected:?} ± 1/64 CSS px"
             );
         }
     }

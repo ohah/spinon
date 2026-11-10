@@ -102,6 +102,21 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .flatten();
     let repeated_text_span_profile = repeated_text_span_rows
         .is_some_and(|rows| supports_repeated_span_fit_positions(tracks, rows));
+    let repeated_text_span_auto_minimum_candidate =
+        repeated_text_span_profile
+            && repeated_text_span_rows == Some(3)
+            && tracks
+                .iter()
+                .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
+                .count()
+                == 1
+            && visible_children.iter().copied().skip(1).all(|item_id| {
+                input.nodes[index[&item_id]].style.min_height == LayoutDimension::Auto
+            });
+    let repeated_text_span_auto_minimum_profile = repeated_text_span_auto_minimum_candidate
+        && visible_children.first().is_some_and(|item_id| {
+            input.nodes[index[item_id]].style.min_height == LayoutDimension::Fixed(0.0)
+        });
     if !exact_columns
         || !exact_rows
         || !line_names_are_empty
@@ -227,6 +242,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
 
     let first_id = visible_children[0];
     let first = &input.nodes[index[&first_id]];
+    let first_span_minimum_is_supported = !repeated_text_span_auto_minimum_candidate
+        || first.style.min_height == LayoutDimension::Fixed(0.0);
     let fixed_item_is_supported = |item: &crate::LayoutNode, height, allow_zero_min_height| {
         item.style.display == LayoutDisplay::Block
             && item.style.width == LayoutDimension::Auto
@@ -255,7 +272,8 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         first,
         10.0,
         repeated_text_profile || repeated_text_span_profile,
-    ) {
+    ) || !first_span_minimum_is_supported
+    {
         return Err(LayoutError::UnsupportedGridContainerStyle {
             node,
             property: "C11.4 fit-content explicit row item profile",
@@ -344,9 +362,12 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
 
     for (position, row_id) in visible_children.iter().copied().enumerate().skip(1) {
         let row_item = &input.nodes[index[&row_id]];
-        let allow_minimum_floor = visible_children.len() == 3 && position == 1;
+        let allow_minimum_floor = !repeated_text_span_auto_minimum_candidate
+            && visible_children.len() == 3
+            && position == 1;
         let allow_auto_minimum = (two_fit_span_track_list && repeated_text_span_profile)
-            || (six_member_auto_placement_list && repeated_text_auto_minimum_profile);
+            || (six_member_auto_placement_list && repeated_text_auto_minimum_profile)
+            || repeated_text_span_auto_minimum_profile;
         if auto_item_is_supported(row_item, allow_minimum_floor, allow_auto_minimum) {
             let payload_id = row_item.children[0];
             let profile_payload_heights = if four_member_list {
