@@ -15,6 +15,15 @@
         { "width": 1440, "height": 1000, "complete": true },
         { "width": 390, "height": 844, "complete": true }
       ]
+    },
+    {
+      "name": "spinon-pr1348-final-body-check-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null },
+      "imagesLoaded": [
+        { "width": 1440, "height": 1000, "complete": true },
+        { "width": 390, "height": 844, "complete": true }
+      ]
     }
   ],
   "terminalBrowserUsed": false,
