@@ -1,0 +1,43 @@
+{
+  "schema": "spinon-agent-browser-pr-image-check/v1",
+  "verifiedAt": "2026-11-10T22:00:55Z",
+  "browser": "agent-browser 0.31.1",
+  "session": "c114-four-fit-pr1344",
+  "pr": 1344,
+  "prUrl": "https://github.com/ohah/spinon/pull/1344",
+  "prHeadShaAtCheck": "0ebebf2ce807c4ae28bb00ea3b27355a97f80787",
+  "prChangedFilesAtCheck": 49,
+  "reviewDocumentLoaded": true,
+  "imageCommitSha": "2b2222b2e3073789c1ccecb9f00c814fb49700cb",
+  "images": [
+    {
+      "label": "iOS light",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/2b2222b2e3073789c1ccecb9f00c814fb49700cb/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum-runtime-2026-11-11/ios-iphone17pro-ios26_2-light.png",
+      "complete": true,
+      "width": 1206,
+      "height": 2622
+    },
+    {
+      "label": "iOS dark",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/2b2222b2e3073789c1ccecb9f00c814fb49700cb/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum-runtime-2026-11-11/ios-iphone17pro-ios26_2-dark.png",
+      "complete": true,
+      "width": 1206,
+      "height": 2622
+    },
+    {
+      "label": "Android light",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/2b2222b2e3073789c1ccecb9f00c814fb49700cb/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum-runtime-2026-11-11/android-api37_2-light.png",
+      "complete": true,
+      "width": 1080,
+      "height": 2400
+    },
+    {
+      "label": "Android dark",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/2b2222b2e3073789c1ccecb9f00c814fb49700cb/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum-runtime-2026-11-11/android-api37_2-dark.png",
+      "complete": true,
+      "width": 1080,
+      "height": 2400
+    }
+  ],
+  "result": "pass"
+}
