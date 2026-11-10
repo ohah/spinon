@@ -1,0 +1,20 @@
+{
+  "schema": "spinon.agent-browser-lifecycle/v1",
+  "agentBrowserVersion": "0.31.1",
+  "sessions": [
+    {
+      "name": "spinon-c114-five-fit-autoplacement-precomparison-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null }
+    },
+    {
+      "name": "spinon-c114-five-fit-pr-sample-20261111",
+      "captureClosedBrowser": true,
+      "postClose": { "active": false, "pid": null }
+    }
+  ],
+  "terminalBrowserUsed": false,
+  "iosBootedDeviceCount": 0,
+  "androidAttachedDeviceCount": 0,
+  "cleanup": "작업 전용 Agent Browser session을 종료했다. Simulator는 만들거나 부팅하지 않았다. 공유 CoreSimulator와 다른 session/process는 종료하지 않았다."
+}
