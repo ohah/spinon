@@ -199,6 +199,9 @@ pub(super) fn fit_content_item(
                 && style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(28.0))
             || (allow_auto_minimum
                 && style.layout_dimensions.min_height == ComputedCssDimension::Auto))
+        && (!allow_auto_minimum
+            || (style.properties.get("overflow-x").map(String::as_str) == Some("visible")
+                && style.properties.get("overflow-y").map(String::as_str) == Some("visible")))
         && style.layout_dimensions.min_width == ComputedCssDimension::Auto
         && style.layout_dimensions.max_width == ComputedCssMaxSize::None
         && style.layout_dimensions.max_height == ComputedCssMaxSize::None

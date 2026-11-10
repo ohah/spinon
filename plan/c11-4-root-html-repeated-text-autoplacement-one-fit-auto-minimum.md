@@ -1,6 +1,6 @@
 # C11.4 · one-fit auto-placement text의 `min-height:auto`
 
-- **상태:** 계획 PR [#1320](https://github.com/ohah/spinon/pull/1320) 병합 (`b378e1749bfcd8947ae5aaa27cea0024371256ea`) · Chrome 사전 비교 완료 · 제품 구현 전 · C11.4/C11 미완료 · 공식 `78/214` 유지
+- **상태:** 계획 PR [#1320](https://github.com/ohah/spinon/pull/1320) 병합 (`b378e1749bfcd8947ae5aaa27cea0024371256ea`) · Chrome 사전 비교 완료 · 제한 구현 후보와 로컬 검증 완료 · 구현 PR 준비 중 · C11.4/C11 미완료 · 공식 `78/214` 유지
 - **직전 구현:** [two-fit auto-placement `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-two-fit-auto-minimum.md) · PR [#1318](https://github.com/ohah/spinon/pull/1318)
 - **기준 profile:** [one-fit auto-placement fit-content 위치 1–6](./c11-4-root-html-repeated-text-autoplacement-fit-content-positions.md) · 구현 PR [#1302](https://github.com/ohah/spinon/pull/1302)
 - **Chrome 사전 비교:** [1,440-scene `min-height:auto`와 `min-height:0` 대조](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-min-precomparison-2026-11-10/README.md)
@@ -44,6 +44,16 @@
 8. 실행 전에 simulator/device, Agent Browser, 앱 process와 output 디렉터리를 식별한다. 이번 검증이 만든 브라우저 session·앱·임시 simulator profile/data는 종료하고 제거한다. 다음 slice에서 사용할 공용 iPhone 17 Pro와 공유 Android AVD, user-owned simulator profile/data는 보존하며 정확한 task ownership이 확인되지 않은 리소스는 삭제하지 않는다.
 9. 구현/runtime은 계획 검토와 다른 실패 관점 20개로 검토한다. Implementation PR diff도 서로 다른 20개 관점으로 검토한다. 검증된 Android/iOS screenshot이 있으면 PR 본문에 commit 고정 raw 링크를 넣고 merge 전 Agent Browser로 링크와 화면을 확인한다. Terminal Browser는 사용하지 않는다.
 10. 구현 병합 후 `spec/STATUS.md`, internal contract `0059`, 이 계획과 공개 roadmap을 실제 결과 및 미지원 경계와 동기화한다. 범위상 C11.4/C11 체크, 공식 `78/214`, contract version `0.1.0`은 유지한다. source/hash를 확인한 뒤 사용자가 지정한 Tailnet roadmap preview를 업데이트한다.
+
+## 현재 구현 후보 결과 · 2026-11-10
+
+Style projection과 Layout admission을 제한된 여섯-member auto-placement list의 정확한 repeated-text profile로 확장했다. 기존 two-fit automatic-minimum profile은 유지하며, one-fit profile에서는 정확히 하나의 `fit-content()`와 여덟 auto-placement text item의 `min-height:auto`를 요구한다. 첫 explicit-row control은 `min-height:0`으로 유지한다. visible overflow, exact track multiplicity, 40×220px Grid, 40px column, 10px explicit row, row cycle와 typed percentage basis 경계를 검사한다.
+
+RuntimeSession은 Chrome 기준 one-fit 후보 1,440 scenes와 기존 `min-height:0` baseline 1,440 scenes를 동일 key로 비교했다. 1,920 fit-row occurrence 중 baseline에서 content floor 아래이던 600개가 회복됐고 후보 content overflow는 0개다. Candidate/runtime tests 5/5, zero-cap trace 1/1, row-span regression 3,840-scene 및 repeated-text row-span 960-scene 행렬이 통과했다. Scoped Clippy와 rustfmt도 통과했다. 기존 unrelated anonymous-text tests의 `too_many_arguments` 두 건은 Clippy 명령에서 허용했고 원본 결과를 evidence에 보존했다.
+
+iPhone 17 Pro/iOS 26.2 및 Android API 37.2 ARM64 AVD의 light/dark 기본 Root HTML route에서 `layout=ready`와 draw/present를 확인했다. Android는 llvmpipe software rendering이다. Screenshot은 position 4의 representative visual smoke이며 PixelCopy, Metal drawable readback, compositor 이후 pixel equality, 실기기 또는 hardware GPU를 증명하지 않는다. Capture 후 앱과 simulator를 정지하고 기본 앱을 복구했다. S03 이름의 profile이나 task 전용 profile/AVD는 없으며 기존 shared profile만 재사용했다. [구현·플랫폼 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum-simulators-2026-11-10/README.md) · [구현/runtime 20개 관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-one-fit-auto-minimum-simulators-2026-11-10/implementation-runtime-review-20.md).
+
+현재 작업 tree 기준 PR diff 적대 검토와 implementation PR은 준비 중이다. 이 후보는 merged result가 아니며 PR check도 아직 없다. C11.4/C11 완료 체크, 공식 `78/214`, internal numeric contract version `0.1.0`은 유지한다.
 
 ## 완료 판정
 

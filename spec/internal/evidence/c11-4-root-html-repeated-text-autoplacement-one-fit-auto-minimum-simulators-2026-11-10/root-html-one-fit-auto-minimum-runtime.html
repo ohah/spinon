@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>C11.4 Root HTML one-fit automatic minimum simulator smoke</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      main { display: block; margin: 0; padding: 0; }
+      .grid {
+        display: grid;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+      #grid-light {
+        grid-auto-rows: min-content max-content auto fit-content(0%) min-content max-content;
+        align-content: start;
+      }
+      #grid-dark {
+        display: none;
+        grid-auto-rows: min-content max-content auto fit-content(20px) min-content max-content;
+        align-content: stretch;
+      }
+      .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+      }
+      .payload {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        color: #101820;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        direction: ltr;
+      }
+      .item-0 { height: 10px; min-height: 0; background-color: #e5484d; }
+      .item-1 { background-color: #f2665e; }
+      .item-2 { background-color: #5ba8f5; }
+      .item-3 { background-color: #55c791; }
+      .item-4 { background-color: #a855f7; }
+      .item-5 { background-color: #facc15; }
+      .item-6 { background-color: #0ea5e9; }
+      .item-7 { background-color: #fb923c; }
+      .item-8 { background-color: #2dd4bf; }
+      @media (prefers-color-scheme: dark) {
+        #grid-light { display: none; }
+        #grid-dark { display: grid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <div id="grid-light" class="grid">
+        <div id="light-item-0" class="item item-0"></div>
+        <div id="light-item-1" class="item item-1"><div class="payload">A A A A A A</div></div>
+        <div id="light-item-2" class="item item-2"><div class="payload">AAAA AAAA A</div></div>
+        <div id="light-item-3" class="item item-3"><div class="payload">AA AA AA AA</div></div>
+        <div id="light-item-4" class="item item-4"><div class="payload">AAA AAA AAA</div></div>
+        <div id="light-item-5" class="item item-5"><div class="payload">AAA AAA</div></div>
+        <div id="light-item-6" class="item item-6"><div class="payload">A A A A A A</div></div>
+        <div id="light-item-7" class="item item-7"><div class="payload">A A A A A A A A</div></div>
+        <div id="light-item-8" class="item item-8"><div class="payload">AA</div></div>
+      </div>
+      <div id="grid-dark" class="grid">
+        <div id="dark-item-0" class="item item-0"></div>
+        <div id="dark-item-1" class="item item-1"><div class="payload">A A A A A A</div></div>
+        <div id="dark-item-2" class="item item-2"><div class="payload">AAAA AAAA A</div></div>
+        <div id="dark-item-3" class="item item-3"><div class="payload">AA AA AA AA</div></div>
+        <div id="dark-item-4" class="item item-4"><div class="payload">AAA AAA AAA</div></div>
+        <div id="dark-item-5" class="item item-5"><div class="payload">AAA AAA</div></div>
+        <div id="dark-item-6" class="item item-6"><div class="payload">A A A A A A</div></div>
+        <div id="dark-item-7" class="item item-7"><div class="payload">A A A A A A A A</div></div>
+        <div id="dark-item-8" class="item item-8"><div class="payload">AA</div></div>
+      </div>
+    </main>
+  </body>
+</html>
