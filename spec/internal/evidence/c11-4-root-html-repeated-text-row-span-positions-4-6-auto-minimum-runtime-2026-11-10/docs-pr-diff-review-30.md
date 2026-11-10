@@ -31,7 +31,7 @@
 | 25 | scoped Clippy를 workspace Clippy로 보고한다. | PASS — 변경 crate scoped Clippy만 통과했고 workspace Clippy는 실행하지 않았다고 밝힌다. |
 | 26 | iOS Simulator 또는 Android AVD를 실기기로 표현한다. | PASS — iPhone 17 Pro/iOS 26.2 Simulator와 API 37 ARM64 AVD로 구분한다. |
 | 27 | visual smoke를 PixelCopy·Metal surface·compositor pixel parity로 과장한다. | PASS — surface readback, compositor parity, hardware GPU, 실기기와 WPT 한계를 명시한다. |
-| 28 | plan/runtime/review/screenshot 링크가 없거나 잘못된 route를 가리킨다. | PASS — source evidence files와 commit-pinned Android/iOS screenshot 경로를 확인한다. |
+| 28 | plan/runtime/review/screenshot 링크가 없거나 잘못된 route를 가리킨다. | PASS — source files가 있고 Agent Browser PR #1332에서 commit-pinned 이미지를 viewport로 가져온 뒤 Android 1080×2400, iOS 1206×2622로 표시되는 것을 확인했다. |
 | 29 | 공개 roadmap에 이전 PR #1326이 최신 병합으로 계속 표시되거나 새 card의 HTML 경계가 깨진다. | PASS — 상단 요약과 progress history를 #1331로 갱신하고 단일 닫힌 `<p>`로 구성한다. |
 | 30 | 문서 PR merge 전 Tailnet preview가 동기화됐다고 주장한다. | PASS — PR에는 source roadmap update만 기록하고 Tailnet 제공 hash·브라우저 확인은 merge 후 별도 evidence에서 확인한다. |
 
