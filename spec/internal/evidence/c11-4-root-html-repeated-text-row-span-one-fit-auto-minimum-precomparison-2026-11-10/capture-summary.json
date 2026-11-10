@@ -1,0 +1,53 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-one-fit-auto-minimum-precomparison.v1",
+  "sceneCount": 5760,
+  "pairedSceneCount": 2880,
+  "chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixtureSha256": "d77bcfdf8b843589fdbef4fedb185b54a3eab86a1817d05914a8e9b3ccbaa889",
+  "captureScriptSha256": "82cf9532f57aae7d812cd9540ec67243cd251cbac4cd3a5a6beda76c6321f174",
+  "baselineSceneCount": 2880,
+  "candidateSceneCount": 2880,
+  "eligibleItemCount": 6048,
+  "baselineBelowContentFloor": 0,
+  "candidateBelowContentFloor": 0,
+  "candidateVisibleContentOverflow": 0,
+  "automaticMinimumChangedFrameCount": 6036,
+  "sourceOrderPairCount": 2880,
+  "maxSourceOrderFrameDeltaPx": 0,
+  "alignmentPairCount": 2880,
+  "maxNonAutoStretchDeltaPx": 0,
+  "maxAutoTrackStretchDeltaPx": 180,
+  "autoTrackGrowthCount": 1152,
+  "maxTrackDeltaPx": 30,
+  "maxItemFrameDeltaPx": 45,
+  "maxTextLineDelta": 0,
+  "toleranceCssPx": 0.01,
+  "sceneDefinition": {
+    "fitPositions": [
+      1,
+      2,
+      3
+    ],
+    "uniqueTailOrders": 30,
+    "caps": [
+      "20px",
+      "20%",
+      "0%",
+      "120%"
+    ],
+    "alignments": [
+      "start",
+      "stretch"
+    ],
+    "topologies": [
+      "span2-forward",
+      "span2-reversed",
+      "span2-before-span3",
+      "span3-before-span2"
+    ],
+    "minimumModes": [
+      "0px",
+      "auto"
+    ]
+  }
+}
