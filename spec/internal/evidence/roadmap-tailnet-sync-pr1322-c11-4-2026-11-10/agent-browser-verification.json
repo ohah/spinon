@@ -33,5 +33,13 @@
     "screenshotPixels": { "width": 390, "height": 844 },
     "note": "The kanban board supports horizontal scrolling; the page itself has no horizontal overflow."
   },
+  "pullRequestBodyImages": {
+    "url": "https://github.com/ohah/spinon/pull/1323",
+    "loaded": 2,
+    "images": [
+      { "alt": "Tailnet roadmap desktop", "complete": true, "naturalWidth": 1440, "naturalHeight": 1000 },
+      { "alt": "Tailnet roadmap mobile", "complete": true, "naturalWidth": 390, "naturalHeight": 844 }
+    ]
+  },
   "capturedPageState": "The published page visibly loaded the merged #1322 slice, official 78/214 count, and incomplete C11.4/C11 status."
 }

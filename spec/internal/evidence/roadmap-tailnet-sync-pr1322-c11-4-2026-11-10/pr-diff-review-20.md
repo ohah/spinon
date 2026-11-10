@@ -21,6 +21,6 @@
 17. **잘못된 서버에 게시:** preflight가 Tailscale `Running`, 8768의 단일 listener, `tailnet-preview-server.mjs` 명령과 `127.0.0.1` 주소를 확인한다. 기록된 PID는 90711이고 서버 재시작은 없다.
 18. **읽는 중인 파일 교체·경쟁 수정:** preflight에서 교체 예정 파일의 `lsof`를 확인하고 copy 직전 target/source hash와 열린 파일을 다시 검사한다. 변경 대상 열린 handle은 0개다.
 19. **롤백 불가능한 교체·잘못된 응답:** 기존 파일을 전용 pass04 폴더에 먼저 백업하고 hash를 확인한 다음 temp file을 rename한다. 로컬·HTTPS 각각 203/203 route hash와 48/48 백업 hash가 일치한다.
-20. **화면·프로세스 수명 착오:** Agent Browser live page에서 desktop 1440×1000과 mobile 390×844를 확인했고 mobile document width는 390px다. 캡처 크기를 확인하고 세션을 종료했다. 오래된 외부 Terminal Browser 프로세스는 다른 저장소의 기존 프로세스라 종료하지 않았다.
+20. **화면·프로세스 수명 착오:** Agent Browser live page에서 desktop 1440×1000과 mobile 390×844를 확인했고 mobile document width는 390px다. PR #1323 본문 이미지 두 장도 각각 1440×1000과 390×844로 완전히 로드됐다. 두 세션을 닫았다. 오래된 외부 Terminal Browser 프로세스는 다른 저장소의 기존 프로세스라 종료하지 않았다.
 
 판정: 이 20개 관점에서 PR diff 범위의 수정이 필요한 결함은 발견되지 않았다. 전체 문서의 모든 링크 dead-link 검사는 실행하지 않았다. 전체 검증 범위는 pass04 선택 경로, public roadmap 최신 카드의 세 local link, Agent Browser에서 확인한 roadmap 화면이다.

@@ -17,5 +17,14 @@
     "elapsedAtInspection": "10:33:52",
     "classification": "Pre-existing Terminal Browser process in another repository; not started or used by this verification and left untouched."
   },
+  "additionalSessions": [
+    {
+      "session": "spinon-pr1323-images",
+      "purpose": "Verify the desktop and mobile Agent Browser screenshots rendered in PR #1323.",
+      "closed": true,
+      "postCloseSessionInfo": { "active": false, "pid": null, "runtime": null },
+      "taskOwnedAgentBrowserProcessRemains": false
+    }
+  ],
   "terminalBrowserUsedForVerification": false
 }

@@ -15,7 +15,7 @@ The official completion count stays `78/214`; C11.4 and C11 remain incomplete; i
 - `preflight-pass04.json` checks the running Tailscale backend and records the existing preview listener as PID 90711. It found 50 new routes, 48 replacements, 105 already-identical routes, and zero open handles on files scheduled for replacement.
 - `copy-and-backup-pass04.json` records 50 created and 48 replaced routes. All 48 previous files were saved under `~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1322-c11-4-2026-11-10/pass04` before replacement.
 - `served-verification-pass04.json` confirms local and HTTPS HTTP 200/hash matches for all 203 routes and SHA-256 matches for all 48 backups.
-- `agent-browser-verification.json` and `agent-browser-lifecycle.json` record the final desktop/mobile inspection and session closure. The captured page shows PR #1322, its merge SHA, and the unchanged `78/214` count.
+- `agent-browser-verification.json` and `agent-browser-lifecycle.json` record the final desktop/mobile inspection, both closed browser sessions, and PR screenshot image-load checks. Both PR body screenshots loaded at their full 1440×1000 and 390×844 dimensions.
 - `SHA256SUMS` covers the 15 evidence files and verifies with `shasum -a 256 -c` from this directory.
 - The preview server was not restarted; no served route was deleted.
 
