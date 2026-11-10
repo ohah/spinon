@@ -1,0 +1,35 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "target": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "roadmap": {
+    "mergeSha": "4b4f48ea67ab4383954cc89cc21e1a71bdb29732",
+    "officialCount": "78/214",
+    "c11Incomplete": true,
+    "desktop": {
+      "viewport": [1440, 1000],
+      "documentWidth": 1440,
+      "bodyWidth": 1440,
+      "screenshot": "tailnet-roadmap-agent-browser-desktop.png"
+    },
+    "mobile": {
+      "viewport": [390, 844],
+      "documentWidth": 390,
+      "bodyWidth": 390,
+      "screenshot": "tailnet-roadmap-agent-browser-mobile.png"
+    }
+  },
+  "runtimeEvidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-runtime-2026-11-10/README.html",
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "imageCountIncludingLogo": 5,
+    "candidateImagesLoaded": 4,
+    "iosNaturalSize": [1206, 2622],
+    "androidNaturalSize": [1080, 2400],
+    "renderedCandidateImageWidth": 342
+  },
+  "browserErrors": [],
+  "sessionClosed": true,
+  "activeSessionsAfterClose": 0
+}
