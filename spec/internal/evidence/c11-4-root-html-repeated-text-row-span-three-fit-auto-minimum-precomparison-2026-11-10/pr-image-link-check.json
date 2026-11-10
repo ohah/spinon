@@ -1,0 +1,26 @@
+{
+  "schema": "spinon.c11-4.plan-pr-image-link-check.v1",
+  "checkedAtUtc": "2026-11-10T11:43:27Z",
+  "pullRequest": "https://github.com/ohah/spinon/pull/1334",
+  "browser": "Agent Browser",
+  "session": "spinon-pr1334-image-check-20261110",
+  "prBodyImage": {
+    "src": "https://raw.githubusercontent.com/ohah/spinon/2ef0ce25a27de6184b1ace0e1471e715760c3f5c/spec/internal/evidence/c11-4-root-html-repeated-text-row-span-three-fit-auto-minimum-precomparison-2026-11-10/chrome157-three-fit-auto-minimum-sample.png",
+    "complete": true,
+    "naturalWidth": 480,
+    "naturalHeight": 900,
+    "alt": "Chrome 157 three-fit row-span automatic-minimum reference scene"
+  },
+  "directRawImage": {
+    "contentType": "image/png",
+    "complete": true,
+    "naturalWidth": 480,
+    "naturalHeight": 900
+  },
+  "cleanup": {
+    "closeAllResult": "No active sessions",
+    "sessionList": [],
+    "matchingSessionProcessCount": 0
+  },
+  "terminalBrowserUsed": false
+}
