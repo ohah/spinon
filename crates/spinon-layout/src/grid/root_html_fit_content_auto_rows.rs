@@ -104,7 +104,6 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
         .is_some_and(|rows| supports_repeated_span_fit_positions(tracks, rows));
     let repeated_text_span_auto_minimum_candidate =
         repeated_text_span_profile
-            && repeated_text_span_rows == Some(3)
             && tracks
                 .iter()
                 .filter(|track| matches!(track, GridTrackSize::FitContent(_)))

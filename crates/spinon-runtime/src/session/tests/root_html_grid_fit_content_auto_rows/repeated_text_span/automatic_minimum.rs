@@ -1,6 +1,8 @@
 use super::*;
 use std::collections::BTreeMap;
 
+#[path = "automatic_minimum/positions_4_6.rs"]
+mod positions_4_6;
 #[path = "automatic_minimum/rejections.rs"]
 mod rejections;
 #[path = "automatic_minimum/trace.rs"]
@@ -159,10 +161,15 @@ fn observe(record: &Value, label: &str) -> SceneResult {
     );
 
     let expected_rows = rows(record);
+    let expected_row_count = if scene["topology"].as_str().unwrap().contains("-six-") {
+        7
+    } else {
+        4
+    };
     assert_eq!(
         expected_rows.len(),
-        4,
-        "{label}: explicit plus three implicit rows"
+        expected_row_count,
+        "{label}: used rows"
     );
     assert_optional_track_trace(completed, record, label);
 
@@ -273,6 +280,8 @@ fn topology_pair(scene: &Value) -> &'static str {
     {
         "span2-forward" | "span2-reversed" => "span2",
         "span2-before-span3" | "span3-before-span2" => "span2-span3",
+        "span2-six-forward" | "span2-six-reversed" => "span2-six",
+        "span2-span3-six-forward" | "span2-span3-six-reversed" => "span2-span3-six",
         other => panic!("unsupported source-order topology {other:?}"),
     }
 }

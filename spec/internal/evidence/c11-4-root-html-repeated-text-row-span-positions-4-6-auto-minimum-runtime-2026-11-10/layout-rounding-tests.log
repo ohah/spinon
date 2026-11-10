@@ -1,0 +1,11 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 5 tests
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_does_not_exceed_a_saturated_fit_content_limit ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_prefers_an_auto_track_for_an_equal_growth_remainder ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_preserves_intrinsic_fractional_growth_on_unconstrained_tracks ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_rounds_fractional_spanning_rows_within_point_zero_one_px ... ok
+test grid::root_html_fit_content_auto_rows::repeated_text::track_trace::tests::blink_row_distribution_rounds_minimum_forced_fit_content_base_above_its_cap ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 522 filtered out; finished in 0.01s

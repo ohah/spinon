@@ -16,6 +16,9 @@ mod rejections;
 const SOURCE: &str = include_str!(
     "../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-precomparison.html"
 );
+const SIX_ROW_SOURCE: &str = include_str!(
+    "../../../../../../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-positions-4-6-auto-minimum-precomparison.html"
+);
 const MATRIX: &str = include_str!(
     "../../../../../../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-precomparison-2026-11-09/chrome157-matrix-observation.ndjson"
 );
@@ -27,9 +30,13 @@ const EMPTY_ITEM: OpaqueCssSrgb = OpaqueCssSrgb::new(11, 17, 23);
 const A_ITEM: OpaqueCssSrgb = OpaqueCssSrgb::new(31, 41, 51);
 const B_ITEM: OpaqueCssSrgb = OpaqueCssSrgb::new(61, 71, 81);
 const C_ITEM: OpaqueCssSrgb = OpaqueCssSrgb::new(91, 101, 111);
+const D_ITEM: OpaqueCssSrgb = OpaqueCssSrgb::new(211, 81, 111);
+const E_ITEM: OpaqueCssSrgb = OpaqueCssSrgb::new(241, 121, 151);
 const A_PAYLOAD: OpaqueCssSrgb = OpaqueCssSrgb::new(121, 131, 141);
 const B_PAYLOAD: OpaqueCssSrgb = OpaqueCssSrgb::new(151, 161, 171);
 const C_PAYLOAD: OpaqueCssSrgb = OpaqueCssSrgb::new(181, 191, 201);
+const D_PAYLOAD: OpaqueCssSrgb = OpaqueCssSrgb::new(21, 181, 211);
+const E_PAYLOAD: OpaqueCssSrgb = OpaqueCssSrgb::new(91, 221, 111);
 
 fn frame(value: &Value) -> [f32; 4] {
     let values = value.as_array().expect("Chrome frame should be an array");
@@ -52,6 +59,8 @@ fn color_for_item(id: &str) -> OpaqueCssSrgb {
         "A" => A_ITEM,
         "B" => B_ITEM,
         "C" => C_ITEM,
+        "D" => D_ITEM,
+        "E" => E_ITEM,
         _ => panic!("unexpected Chrome item id {id:?}"),
     }
 }
@@ -61,6 +70,8 @@ fn color_for_payload(id: &str) -> OpaqueCssSrgb {
         "A" => A_PAYLOAD,
         "B" => B_PAYLOAD,
         "C" => C_PAYLOAD,
+        "D" => D_PAYLOAD,
+        "E" => E_PAYLOAD,
         _ => panic!("unexpected Chrome payload id {id:?}"),
     }
 }
@@ -73,18 +84,52 @@ fn source_for(scene: &Value) -> String {
     let topology = scene["topology"]
         .as_str()
         .expect("topology should be a string");
-    let marker = format!("<section class=\"scene\" data-scene=\"{topology}\">");
-    let section_start = SOURCE
-        .find(&marker)
-        .unwrap_or_else(|| panic!("fixture topology not found: {topology}"));
-    let section_source = &SOURCE[section_start..];
-    let section_end = section_source
-        .find("</section>")
-        .expect("fixture section should close")
-        + "</section>".len();
-    let section = section_source[..section_end]
-        .replace("<section", "<div")
-        .replace("</section>", "</div>");
+    let section = if topology.contains("-six-") {
+        assert!(
+            SIX_ROW_SOURCE.contains(&format!("\"{topology}\": [")),
+            "six-row fixture topology not found: {topology}"
+        );
+        let empty = "<div class=\"item empty\" data-item=\"empty\" style=\"grid-row:1 / 2\"></div>";
+        let items = scene["items"]
+            .as_array()
+            .expect("six-row scene should record item placements")
+            .iter()
+            .map(|item| {
+                let id = item[0].as_str().expect("item id should be a string");
+                let start = item[1].as_u64().expect("row start should be positive");
+                let span = item[2].as_u64().expect("row span should be positive");
+                let word_count = match id {
+                    "A" => 16,
+                    "B" => 14,
+                    "C" => 12,
+                    "D" => 10,
+                    "E" => 8,
+                    other => panic!("unsupported six-row text item {other:?}"),
+                };
+                let text = vec!["A"; word_count].join(" ");
+                format!(
+                    "<div class=\"item\" data-item=\"{id}\" style=\"grid-row:{start} / span {span}\"><div class=\"payload\">{text}</div></div>"
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("");
+        format!(
+            "<div class=\"scene\" data-scene=\"{topology}\"><div class=\"grid\">{empty}{items}</div></div>"
+        )
+    } else {
+        let marker = format!("<section class=\"scene\" data-scene=\"{topology}\">");
+        let section_start = SOURCE
+            .find(&marker)
+            .unwrap_or_else(|| panic!("fixture topology not found: {topology}"));
+        let section_source = &SOURCE[section_start..];
+        let section_end = section_source
+            .find("</section>")
+            .expect("fixture section should close")
+            + "</section>".len();
+        section_source[..section_end]
+            .replace("<section", "<div")
+            .replace("</section>", "</div>")
+    };
 
     let tail = scene["tail"]
         .as_array()
@@ -130,9 +175,13 @@ fn source_for(scene: &Value) -> String {
          .item[data-item=\"A\"] {{ background-color: rgb(31, 41, 51); }}\n\
          .item[data-item=\"B\"] {{ background-color: rgb(61, 71, 81); }}\n\
          .item[data-item=\"C\"] {{ background-color: rgb(91, 101, 111); }}\n\
+         .item[data-item=\"D\"] {{ background-color: rgb(211, 81, 111); }}\n\
+         .item[data-item=\"E\"] {{ background-color: rgb(241, 121, 151); }}\n\
          .item[data-item=\"A\"] .payload {{ background-color: rgb(121, 131, 141); }}\n\
          .item[data-item=\"B\"] .payload {{ background-color: rgb(151, 161, 171); }}\n\
-         .item[data-item=\"C\"] .payload {{ background-color: rgb(181, 191, 201); }}"
+         .item[data-item=\"C\"] .payload {{ background-color: rgb(181, 191, 201); }}\n\
+         .item[data-item=\"D\"] .payload {{ background-color: rgb(21, 181, 211); }}\n\
+         .item[data-item=\"E\"] .payload {{ background-color: rgb(91, 221, 111); }}"
     );
     format!(
         "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><style>{style}</style></head><body>{section}</body></html>"
@@ -154,7 +203,13 @@ fn assert_optional_track_trace(
         let trace = &diagnostics.traces[0];
         assert_eq!(trace.used_rows.explicit_track_count, 1, "{label}");
         assert_eq!(trace.used_rows.negative_implicit_track_count, 0, "{label}");
-        assert_eq!(trace.used_rows.positive_implicit_track_count, 3, "{label}");
+        let expected_implicit_rows =
+            u16::try_from(expected["rowValues"].as_array().unwrap().len() - 1)
+                .expect("bounded implicit row count should fit u16");
+        assert_eq!(
+            trace.used_rows.positive_implicit_track_count, expected_implicit_rows,
+            "{label}"
+        );
         let rows_pass = trace
             .passes
             .iter()
