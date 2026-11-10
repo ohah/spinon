@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>C11.4 row-span positions 4–6 · baseline</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        color: #263342;
+        background-color: #ffffff;
+        font-family: system-ui, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+      }
+      main {
+        width: 320px;
+        min-height: 240px;
+        padding: 16px;
+        background-color: #f8fafc;
+      }
+      .grid {
+        display: grid;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-rows: auto max-content max-content fit-content(0px) min-content min-content;
+        grid-auto-flow: row;
+        align-content: start;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+      .item {
+        display: block;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+      }
+      .empty {
+        min-height: 0;
+        height: 10px;
+        grid-row: 1 / 2;
+        background-color: rgb(11, 17, 23);
+      }
+      .payload {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+        font-size: 10px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        direction: ltr;
+      }
+      .item[data-item="A"] { grid-row: 2 / span 2; background-color: rgb(31, 41, 51); }
+      .item[data-item="B"] { grid-row: 3 / span 2; background-color: rgb(61, 71, 81); }
+      .item[data-item="C"] { grid-row: 4 / span 2; background-color: rgb(91, 101, 111); }
+      .item[data-item="D"] { grid-row: 5 / span 2; background-color: rgb(211, 81, 111); }
+      .item[data-item="E"] { grid-row: 6 / span 2; background-color: rgb(241, 121, 151); }
+      .item[data-item="A"] .payload { background-color: rgb(121, 131, 141); }
+      .item[data-item="B"] .payload { background-color: rgb(151, 161, 171); }
+      .item[data-item="C"] .payload { background-color: rgb(181, 191, 201); }
+      .item[data-item="D"] .payload { background-color: rgb(21, 181, 211); }
+      .item[data-item="E"] .payload { background-color: rgb(91, 221, 111); }
+      @media (prefers-color-scheme: dark) {
+        body { color: #e4e7eb; background-color: #121212; }
+        main { background-color: #1d2939; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="grid">
+        <div class="item empty"></div>
+        <div class="item" data-item="A"><div class="payload">A A A A A A A A A A A A A A A A</div></div>
+        <div class="item" data-item="B"><div class="payload">A A A A A A A A A A A A A A</div></div>
+        <div class="item" data-item="C"><div class="payload">A A A A A A A A A A A A</div></div>
+        <div class="item" data-item="D"><div class="payload">A A A A A A A A A A</div></div>
+        <div class="item" data-item="E"><div class="payload">A A A A A A A A</div></div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+Observed after final smoke run on 2026-11-10:
+- xcrun simctl list devices available: no device/profile name containing S03.
+- xcrun simctl list devices booted: no booted device entries.
+- Simulator.app process: absent.
+- Shared iPhone 17 Pro and iPhone 17 Pro Max simulator profiles: retained; data not deleted.
+- Android AVD spinon_api37_2_presenttime_probe_20261018: shut down after app force-stop; AVD was launched read-only with snapshot load/save disabled.
+- adb devices: no connected devices.
+- /tmp/spinon-c114-android-original.ZpEECL: deleted after original asset/APK restoration was verified.
+- No simulator profile was removed.
