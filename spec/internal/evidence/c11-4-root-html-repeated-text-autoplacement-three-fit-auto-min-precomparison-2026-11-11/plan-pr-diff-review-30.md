@@ -32,9 +32,9 @@
 | 26 | page가 제품 code나 Taffy를 oracle로 사용해 순환 검증하는가 | 고정 독립 HTML fixture는 browser CSS Grid에서 측정하며 제품 구현/RuntimeSession 호출이 없다. | 통과 |
 | 27 | screenshot이 matrix 전체 또는 product screen인 것처럼 표현되는가 | README와 plan에서 representative single Chrome candidate scene이며 app screenshot이 아니라고 표시한다. | 통과 |
 | 28 | README의 evidence links가 RSPress dead-link 검사에 새 실패를 보태는가 | raw json/script/image는 inline code 또는 Markdown image로 표현했다. 최신 build log에서 새 plan/evidence dead-link entry가 없었다. | 통과 |
-| 29 | Agent Browser session 또는 Chrome process가 검증 뒤 남는가 | lifecycle JSON은 close success, session list는 empty, post-close process check는 browser process 없음이다. | 통과 |
+| 29 | Agent Browser session 또는 Chrome process가 검증 뒤 남는가 | capture와 PR image 각각 고유 session을 닫았고, PR #1341 raw image는 1280×900으로 로드됐다. 종료 후 session list는 비고 Agent Browser/Chrome process가 없다. | 통과 |
 | 30 | 저장소 전체 docs build 실패를 이 diff의 통과로 과장하는가 | README는 1,533개의 repo-wide dead-link group 때문에 docs build exit 1임을 기록하고 새 경로에는 항목이 없다고 한정한다. | 통과 |
 
 ## 결론
 
-계획 PR diff에서 계획과 구현을 혼합하거나, 공식 완료 수를 변경하거나, 새 문서 경로의 dead link를 만드는 차단 결함을 찾지 못했다. screenshot은 raw commit URL로 PR 본문에 첨부하고 Agent Browser에서 실제 이미지 load를 확인한 뒤 병합한다. 이 검토는 계획 PR diff의 30개 관점이며 계획 20개 검토와 기능 구현/runtime 검토를 대체하지 않는다.
+계획 PR diff에서 계획과 구현을 혼합하거나, 공식 완료 수를 변경하거나, 새 문서 경로의 dead link를 만드는 차단 결함을 찾지 못했다. Raw commit URL은 PR #1341 본문에 첨부됐고 Agent Browser에서 실제 1280×900 image load를 확인했다. 이 검토는 계획 PR diff의 30개 관점이며 계획 20개 검토와 기능 구현/runtime 검토를 대체하지 않는다.

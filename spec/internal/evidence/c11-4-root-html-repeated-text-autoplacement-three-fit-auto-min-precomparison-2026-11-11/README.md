@@ -35,6 +35,7 @@ Baseline의 visible payload overflow와 Grid 경계 초과는 별도 분류했�
 ## 실행 수명과 한계
 
 - Agent Browser 고유 session `spinon-c114-three-fit-autoplacement-precomparison-20261111`은 capture 종료 직후 `close`됐다. `agent-browser-lifecycle.json`은 `closed=true`, 오류 없음, Terminal Browser 미사용, simulator 미실행을 기록한다. 종료 뒤 `agent-browser session list --json`은 빈 `sessions` 배열을 반환했고, `agent-browser-processes-after-close.txt`에는 process 목록이 비었음을 기록했다.
+- PR #1341에 commit 고정으로 붙인 이미지는 별도 Agent Browser session에서 실제 로드됐다(1280×900, `complete=true`). `pr-image-link-check.json`은 `close` 후 session 목록이 비고 Agent Browser/Chrome process가 남지 않았음을 기록한다.
 - `mise exec -- bun run docs:build`도 확인했으나 저장소의 기존 dead-link 검사 1,533개 때문에 종료 코드 1로 실패했다. 최신 로그에서는 이 계획 및 사전 비교 경로의 dead-link 항목을 찾지 못했다. 실패한 빌드는 `doc_build` 또는 RSPress 임시 출력 디렉터리를 남기지 않았다.
 - 사전 비교는 parsed Root HTML RuntimeSession, Android/iOS app route, pixel readback/compositor, 실기기/hardware GPU, WPT 또는 일반 CSS admission을 검증하지 않았다. Three-fit auto-placement는 현재 코드에서 거부되며, 본 산출물은 구현 이전 계획 근거다.
 
