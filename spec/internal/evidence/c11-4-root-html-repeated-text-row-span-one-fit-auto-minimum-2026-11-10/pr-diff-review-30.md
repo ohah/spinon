@@ -35,4 +35,4 @@
 | 29 | simulator 증거가 잘못된 HTML/build와 연결되거나 손상되는가 | baseline/candidate source SHA, 기본 asset 복원, Android/iOS logs/screenshots 및 SHA256SUMS를 연결했다. |
 | 30 | 변경을 C11.4/C11 전체 완료 또는 깨끗한 broad suite로 과장하는가 | 계획·README는 공식 `78/214`와 상위 항목 미완료를 유지하고 broad suite 실패를 별도 보고한다. |
 
-PR 생성 전 로컬 diff 검토 결과다. PR의 고정 raw screenshot URL 로드, 실제 GitHub check 상태, Rebase and merge 결과는 PR이 생성된 뒤 별도 확인한다. 이 기록은 비어 있는 CI check set을 green으로 해석하지 않는다.
+PR 생성 전 로컬 diff 검토 결과다. PR 생성 후 Agent Browser에서 고정 raw screenshot 네 장이 모두 로드됨을 확인했다(Android light/dark 1080×2400, iOS light/dark 1206×2622). GitHub check-run 0개, status 0개, review 0개였고 CI green으로 해석하지 않았다. PR [#1326](https://github.com/ohah/spinon/pull/1326)은 2026-11-10T05:39:19Z Rebase and merge됐으며 merge SHA는 `b5925aa274718a16c4e8f0bd9ef4bed4423aec6c`다. 정확한 session/process 정리와 simulator 상태는 [실행·화면 근거](./README.md)에 기록했다.
