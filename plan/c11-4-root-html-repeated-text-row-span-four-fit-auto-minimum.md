@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span four-fit `min-height:auto`
 
-**상태:** Chrome 157 사전 비교 11,520/11,520 장면, 계획 실패 관점 20개 및 계획 PR #1356 병합 완료 · 제품 구현 RuntimeSession matrix 11,520/11,520, four-fit auto-placement regression 5,760/5,760 통과 · 구현/runtime 검토 20개, 양 플랫폼 기본 앱 smoke 및 구현 PR 준비 완료 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** Chrome 157 사전 비교 11,520/11,520 장면, 계획 실패 관점 20개 및 계획 PR #1356 병합 완료 · 제품 구현 RuntimeSession matrix 11,520/11,520, four-fit auto-placement regression 5,760/5,760 통과 · 구현/runtime 검토 20개와 양 플랫폼 기본 앱 smoke 완료 · 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357) open · PR diff 검토 30개 완료; report 포함 후 원격/local diff 재대조 중 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **직전 병합 구현:** [six-fit auto-placement `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.md) · 구현 PR [#1354](https://github.com/ohah/spinon/pull/1354)
 
