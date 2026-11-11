@@ -53,4 +53,6 @@ cleanup-wrapper.log는 iOS booted list와 ADB device list가 비어 있고 task 
 
 이 candidate는 PR 단위 slice다. C11.4/C11 완료 checkbox, 공식 집계 78/214, 내부 numeric contract 0.1.0은 변경하지 않는다. 실기기·hardware GPU·PixelCopy/Metal drawable readback·일반 CSS Grid 적합성은 미검증이다.
 
-실제 PR diff를 대상으로 한 별도 30개 실패 관점 검토는 [pr-diff-review-30.md](pr-diff-review-30.md)에 기록한다. GitHub PR 생성 뒤 실제 head SHA와 returned diff를 이 범위에 다시 대조한다.
+실제 PR diff를 대상으로 한 별도 30개 실패 관점 검토는 [pr-diff-review-30.md](pr-diff-review-30.md)에 기록한다.
+
+PR #1349를 최초 생성한 head `18f6269db9bd80f649d357fea35cbaec8390158a`에서 GitHub가 반환한 86-file diff는 local diff와 922,918 bytes 및 SHA-256 `5680c2e1e31f27feea1cc2a8e43c4d8cb9847a9ee24328bc5704f56ef071e3ed`가 일치했다. Agent Browser에서 PR 본문에 넣은 iOS/Android light/dark 이미지가 모두 로드됐고 원본 크기를 반환하는 것을 확인했다. PR check는 0건으로 CI 통과를 뜻하지 않는다.
