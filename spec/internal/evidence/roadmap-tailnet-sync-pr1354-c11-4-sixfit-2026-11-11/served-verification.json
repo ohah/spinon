@@ -1,0 +1,122 @@
+{
+  "implementation_pr": {
+    "number": 1354,
+    "merge_sha": "714194ac7123a431296e8268b1e9aa487f7c48e9",
+    "merged_at": "2026-11-11T07:55:23Z"
+  },
+  "preview": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "local_url": "http://127.0.0.1:8768/spinon/roadmap.html",
+    "server_pid": 90711,
+    "server_restarted": false,
+    "backup_directory": "/Users/yoonhb/Library/Application Support/SpinonPreview/backup/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11"
+  },
+  "build": {
+    "tool": "Rspress 2.0.22",
+    "command": "mise exec -- bun run docs:build -- --config rspress-tailnet-sync.temp.config.ts",
+    "exit_code": 0,
+    "kind": "isolated selected-document render",
+    "dead_link_checks": "disabled because unrelated existing evidence links are outside this selected input"
+  },
+  "files": [
+    {
+      "route": "/spinon/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "bytes": 670727,
+      "sha256": "7f7e118e3ce44699c1703c67c507b709ff6f1adf74bfd60ee92e8582c6fad9ab",
+      "local_http": {"status": 200, "bytes": 670727, "sha256": "7f7e118e3ce44699c1703c67c507b709ff6f1adf74bfd60ee92e8582c6fad9ab"},
+      "tailnet_http": {"status": 200, "bytes": 670727, "sha256": "7f7e118e3ce44699c1703c67c507b709ff6f1adf74bfd60ee92e8582c6fad9ab"}
+    },
+    {
+      "route": "/spinon/STATUS.md",
+      "source": "spec/STATUS.md",
+      "bytes": 767649,
+      "sha256": "e07cc9179dac4f4e4006aee0c9ed9a4677f7c67ab863dd4eea64cf55b819581c",
+      "local_http": {"status": 200, "bytes": 767649, "sha256": "e07cc9179dac4f4e4006aee0c9ed9a4677f7c67ab863dd4eea64cf55b819581c"},
+      "tailnet_http": {"status": 200, "bytes": 767649, "sha256": "e07cc9179dac4f4e4006aee0c9ed9a4677f7c67ab863dd4eea64cf55b819581c"}
+    },
+    {
+      "route": "/spinon/STATUS.html",
+      "source": "packages/docs/build/tailnet-c114-sixfit-site/STATUS.html",
+      "bytes": 931690,
+      "sha256": "0c17e7d75a21a70167ed8cec536e2b50a76ee7a107ec73cf671f764e44435093",
+      "local_http": {"status": 200, "bytes": 931690, "sha256": "0c17e7d75a21a70167ed8cec536e2b50a76ee7a107ec73cf671f764e44435093"},
+      "tailnet_http": {"status": 200, "bytes": 931690, "sha256": "0c17e7d75a21a70167ed8cec536e2b50a76ee7a107ec73cf671f764e44435093"}
+    },
+    {
+      "route": "/spinon/internal/0059-c11-grid-layout.md",
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 595303,
+      "sha256": "e438575076fa562101bc107a7a42c8538517cc7c743aeca57505a73bde799670",
+      "local_http": {"status": 200, "bytes": 595303, "sha256": "e438575076fa562101bc107a7a42c8538517cc7c743aeca57505a73bde799670"},
+      "tailnet_http": {"status": 200, "bytes": 595303, "sha256": "e438575076fa562101bc107a7a42c8538517cc7c743aeca57505a73bde799670"}
+    },
+    {
+      "route": "/spinon/internal/0059-c11-grid-layout.html",
+      "source": "packages/docs/build/tailnet-c114-sixfit-site/internal/0059-c11-grid-layout.html",
+      "bytes": 840463,
+      "sha256": "4daa2268e7a87855a39275f28b5f2271fb92006ef7b8f782009e05da429deffd",
+      "local_http": {"status": 200, "bytes": 840463, "sha256": "4daa2268e7a87855a39275f28b5f2271fb92006ef7b8f782009e05da429deffd"},
+      "tailnet_http": {"status": 200, "bytes": 840463, "sha256": "4daa2268e7a87855a39275f28b5f2271fb92006ef7b8f782009e05da429deffd"}
+    },
+    {
+      "route": "/spinon/plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.md",
+      "source": "plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.md",
+      "bytes": 11633,
+      "sha256": "e9569d5b7af260f6ce2fafdcd0b53c97aec9c692b2954d0dbc37aca6e2258696",
+      "local_http": {"status": 200, "bytes": 11633, "sha256": "e9569d5b7af260f6ce2fafdcd0b53c97aec9c692b2954d0dbc37aca6e2258696"},
+      "tailnet_http": {"status": 200, "bytes": 11633, "sha256": "e9569d5b7af260f6ce2fafdcd0b53c97aec9c692b2954d0dbc37aca6e2258696"}
+    },
+    {
+      "route": "/spinon/plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.html",
+      "source": "packages/docs/build/tailnet-c114-sixfit-site/plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.html",
+      "bytes": 35485,
+      "sha256": "6d3366f96ad55c5154a7599eff18b1e853563564c204d10b97c75d836e1ba590",
+      "local_http": {"status": 200, "bytes": 35485, "sha256": "6d3366f96ad55c5154a7599eff18b1e853563564c204d10b97c75d836e1ba590"},
+      "tailnet_http": {"status": 200, "bytes": 35485, "sha256": "6d3366f96ad55c5154a7599eff18b1e853563564c204d10b97c75d836e1ba590"}
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.md",
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.md",
+      "bytes": 6971,
+      "sha256": "8ac3afadcda2d7986b690c83e8db6a347404c317c6e7258806455417243199ca",
+      "local_http": {"status": 200, "bytes": 6971, "sha256": "8ac3afadcda2d7986b690c83e8db6a347404c317c6e7258806455417243199ca"},
+      "tailnet_http": {"status": 200, "bytes": 6971, "sha256": "8ac3afadcda2d7986b690c83e8db6a347404c317c6e7258806455417243199ca"}
+    },
+    {
+      "route": "/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.html",
+      "source": "packages/docs/build/tailnet-c114-sixfit-site/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.html",
+      "bytes": 30137,
+      "sha256": "fa6f968bbb4ce5a3a1f731e74f5ebb6a761561627f7a68389c37da7ee4ae7c27",
+      "local_http": {"status": 200, "bytes": 30137, "sha256": "fa6f968bbb4ce5a3a1f731e74f5ebb6a761561627f7a68389c37da7ee4ae7c27"},
+      "tailnet_http": {"status": 200, "bytes": 30137, "sha256": "fa6f968bbb4ce5a3a1f731e74f5ebb6a761561627f7a68389c37da7ee4ae7c27"}
+    }
+  ],
+  "agent_browser_document_pages": {
+    "status": {
+      "route": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "http_errors": [],
+      "pr1354": true,
+      "merge_sha": true,
+      "official_count_78_of_214": true,
+      "c11_4_and_c11_incomplete": true
+    },
+    "contract_0059": {
+      "route": "/spinon/internal/0059-c11-grid-layout.html",
+      "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+      "pr1354": true,
+      "six_fit_matrix": true,
+      "internal_numeric_contract_0_1_0": true,
+      "horizontal_overflow": false
+    }
+  },
+  "agent_browser": {
+    "desktop": {"viewport": "1440x1000", "document_width": 1440, "body_width": 1440, "horizontal_overflow": false, "pr1354": true, "merge_sha": true, "official_count_78_of_214": true, "c11_4_and_c11_incomplete": true, "six_fit_720_orders": true},
+    "mobile": {"viewport": "390x844", "document_width": 390, "body_width": 390, "horizontal_overflow": false, "pr1354": true, "merge_sha": true, "official_count_78_of_214": true, "c11_4_and_c11_incomplete": true, "six_fit_720_orders": true},
+    "screenshots": {
+      "desktop": {"path": "tailnet-roadmap-agent-browser-desktop.png", "bytes": 174486, "sha256": "cf6cbc6f62f10e07e0ef29ff8a437a4e4a7a069c366ebcf91241f0729f1d5eb8", "dimensions": "1440x1000"},
+      "mobile": {"path": "tailnet-roadmap-agent-browser-mobile.png", "bytes": 55091, "sha256": "139c00f4161cd784d792e94878159a8558fa19290dfa672cddf2e9e72e0c2d4b", "dimensions": "390x844"}
+    }
+  }
+}
