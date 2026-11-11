@@ -42,3 +42,7 @@
 ## 문서 빌드 확인
 
 `mise exec -- bun run docs:build`는 exit code 1로 끝났다. 전체 checkout의 RSPress link check가 1,543개 `Dead links found` 진단을 보고했으며, 다수는 기존 evidence 첨부와 기존 `STATUS.md`의 다른 상대 plan link다. 첫 빌드 로그에는 이 PR에서 추가한 두 상대 plan link도 포함되어 있어 GitHub `main` blob link로 바꾸고 재실행했다. 두 번째 전체 빌드에서도 기존 진단은 남았지만 새 six-fit plan/evidence 경로 및 수정한 STATUS link는 오류 대상에 없었다. 관련 없는 기존 링크는 이 PR 범위에서 수정하지 않았다. 따라서 문서 build 성공이나 GitHub CI 성공을 주장하지 않는다.
+
+## 후속 diff 재검토
+
+위 20관점 검토 뒤 변경한 raw asset 링크, STATUS plan link, `pid:null` lifecycle 확인, 문서 빌드 결과와 검토 근거 파일을 다시 대조했다. 이 갱신 직전 원격 head `40d44e7dfcf82825c6b2e8bcd2f37de3263242e7`의 14-file diff는 10,420,594 bytes이며 원격 `gh pr diff 1353`와 로컬 `origin/main...HEAD`의 byte content/SHA-256이 일치했다 (`4eaca193bfeb1f1a3086657c976293b2d10a2e72f04d8d7bc2f307c6663280be`). 새 six-fit Markdown은 빌드 오류 대상이 아니고, 첨부 파일은 commit-pinned raw link를 쓴다. 이 후속 변경으로 위 20개 판정은 달라지지 않았다.
