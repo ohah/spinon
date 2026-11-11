@@ -1411,6 +1411,7 @@ pub(super) fn validate_grid_layout(
                                 &container.auto_rows,
                                 crate::GridAutoRows::TrackList(tracks)
                                     if root_html_fit_content_auto_rows::supports_repeated_min_max_content_auto_placement_track_list(tracks)
+                                        || root_html_fit_content_auto_rows::supports_six_fit_auto_placement_track_list(tracks)
                             ),
                             _ => false,
                         })

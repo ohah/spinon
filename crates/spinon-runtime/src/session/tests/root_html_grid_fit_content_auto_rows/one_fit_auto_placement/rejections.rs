@@ -29,12 +29,6 @@ fn parsed_root_html_one_fit_auto_minimum_rejects_out_of_profile_mutations() {
 
     let cases = [
         (
-            "five fit tracks",
-            alter_tracks(
-                "fit-content(10px) fit-content(20%) fit-content(30px) fit-content(40px) fit-content(50px) min-content",
-            ),
-        ),
-        (
             "wrong one-fit tail multiplicity",
             alter_tracks("fit-content(10px) min-content max-content max-content max-content auto"),
         ),

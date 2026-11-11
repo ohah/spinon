@@ -1,0 +1,30 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::rejections::parsed_root_html_one_fit_auto_minimum_rejects_out_of_profile_mutations' (234542185) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/one_fit_auto_placement/rejections.rs:3:5:
+assertion `left == right` failed: five fit tracks: layout=None; cascade=None
+  left: Ready
+ right: Failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::rejections::parsed_root_html_one_fit_auto_minimum_rejects_out_of_profile_mutations ... FAILED
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::controls::parsed_root_html_one_fit_auto_minimum_rejects_then_recovers_same_session' (234542183) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/one_fit_auto_placement/controls.rs:129:5:
+assertion `left == right` failed: the dark five-fit list fails closed: None
+  left: Ready
+ right: Failed
+test session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::controls::parsed_root_html_one_fit_auto_minimum_rejects_then_recovers_same_session ... FAILED
+test session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::controls::parsed_root_html_one_fit_auto_minimum_accepts_unlisted_px_and_percentage_caps ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::matrix::parsed_root_html_one_fit_auto_minimum_matches_all_1440_chrome_scenes has been running for over 60 seconds
+test session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::matrix::parsed_root_html_one_fit_auto_minimum_matches_all_1440_chrome_scenes ... ok
+
+failures:
+
+failures:
+    session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::controls::parsed_root_html_one_fit_auto_minimum_rejects_then_recovers_same_session
+    session::tests::root_html_grid_fit_content_auto_rows::one_fit_auto_placement::rejections::parsed_root_html_one_fit_auto_minimum_rejects_out_of_profile_mutations
+
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 407 filtered out; finished in 68.35s
+
+error: test failed, to rerun pass `-p spinon-runtime --lib`

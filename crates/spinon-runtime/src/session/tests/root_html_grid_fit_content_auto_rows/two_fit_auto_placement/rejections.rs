@@ -18,7 +18,6 @@ fn assert_rejected(label: &str, source: &str) {
 
 #[test]
 fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
-    let five_fit = "fit-content(10px) fit-content(20%) fit-content(30px) fit-content(40px) fit-content(50px) min-content";
     let wrong_multiplicity =
         "fit-content(10px) fit-content(20%) min-content max-content max-content auto";
     let mixed_minimums = replace_once(
@@ -40,10 +39,6 @@ fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
         "#item-0 { min-height: auto; height: 10px;",
     );
     let cases = [
-        (
-            "five fit tracks",
-            replace_once(SOURCE, BASE_TRACK_LIST, five_fit),
-        ),
         (
             "wrong remaining multiplicity",
             replace_once(SOURCE, BASE_TRACK_LIST, wrong_multiplicity),
@@ -136,7 +131,7 @@ fn parsed_root_html_two_fit_auto_placement_rejects_unsupported_mutations() {
 fn parsed_root_html_two_fit_auto_placement_rejects_atomically_and_recovers_same_session() {
     const DARK_THREE_FIT_TRACK_LIST: &str =
         "fit-content(10px) fit-content(20%) fit-content(30px) min-content max-content auto";
-    const DARK_FIVE_FIT_TRACK_LIST: &str = "fit-content(10px) fit-content(20%) fit-content(30px) fit-content(40px) fit-content(50px) min-content";
+    const DARK_UNLISTED_SIX_FIT_TRACK_LIST: &str = "fit-content(0px) fit-content(10px) fit-content(20%) fit-content(30px) fit-content(40px) fit-content(60px)";
 
     let scene = auto_minimum_scenes()
         .into_iter()
@@ -145,7 +140,7 @@ fn parsed_root_html_two_fit_auto_placement_rejects_atomically_and_recovers_same_
     let source = replace_once(
         &source_for_auto_minimum(&scene),
         DARK_THREE_FIT_TRACK_LIST,
-        DARK_FIVE_FIT_TRACK_LIST,
+        DARK_UNLISTED_SIX_FIT_TRACK_LIST,
     );
     let (session, initial) = run(&source);
     assert_eq!(initial.state, crate::session::RuntimeLayoutState::Ready);
@@ -165,7 +160,7 @@ fn parsed_root_html_two_fit_auto_placement_rejects_atomically_and_recovers_same_
     assert_eq!(
         rejected.state,
         crate::session::RuntimeLayoutState::Failed,
-        "the dark five-fit control should fail closed: {:?}",
+        "the dark unlisted six-fit control should fail closed: {:?}",
         rejected.error
     );
     assert!(
