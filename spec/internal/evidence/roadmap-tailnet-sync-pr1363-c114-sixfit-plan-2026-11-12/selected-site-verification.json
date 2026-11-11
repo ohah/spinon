@@ -1,0 +1,115 @@
+{
+  "rspressVersion": "2.0.22",
+  "selectedRootOnly": true,
+  "fullSiteBuildClaim": false,
+  "fullDocsDeadLinkCheck": false,
+  "checkedPages": 5,
+  "checkedAssets": 11,
+  "pages": [
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 397387,
+      "sha256": "aca8b654f4cc60e03b1baef4b6524da6842ae77f212454f7dcf3818c7e9e8223",
+      "markers": [
+        "C11.4 six-fit repeated-text row-span",
+        "11,520 scenes",
+        "계획 PR 병합 전에는 제품 코드를 수정하지 않는다"
+      ]
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.html",
+      "bytes": 26982,
+      "sha256": "cfaad9777069d8fe63af1729e56a8d6b147aed14ae7844e79cd6ccb3fa6db463",
+      "markers": [
+        "C11.4 six-fit repeated-text row-span",
+        "11,520 scenes",
+        "78/214"
+      ]
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-review-20.html",
+      "bytes": 22365,
+      "sha256": "eb45b2c372a7c3b0742f18bbd8367f2369a4474d522fb071fad4be9f93cef9e0",
+      "markers": [
+        "계획 실패 관점 검토 20개",
+        "fit-content"
+      ]
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-pr-diff-review-30.html",
+      "bytes": 24695,
+      "sha256": "eb77a6523e78451308c6ba10e04ac2b8a1a90eb89068a398d0c3cdfaaf15b8be",
+      "markers": [
+        "계획 PR 변경 검토 30개",
+        "payload-floor"
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/README.html",
+      "bytes": 26864,
+      "sha256": "6607bd3941ce8c84a0079cea673c75390d3f61d07c14d18831e381f287685d1e",
+      "markers": [
+        "11,520 scenes",
+        "4,800",
+        "Spinon runtime"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.06f5a78ce1.js",
+      "bytes": 394634,
+      "sha256": "d8c050b99480ea3de49159a7b074104825201e26a0f8388fe55509c08fc74c36"
+    },
+    {
+      "route": "static/js/async/route-273fd5282e24.052bec1c63.js",
+      "bytes": 12574,
+      "sha256": "83a2d30bfd4ae3b4f701754e9eaef7ae65496e1394112542ac8d76de44b9479f"
+    },
+    {
+      "route": "static/js/async/route-4430e664f021.800ad2215e.js",
+      "bytes": 8744,
+      "sha256": "3dfa93ea54c1ef061d6a5561732da84de1b28bbd0c312d8e6f3611770d0887c5"
+    },
+    {
+      "route": "static/js/async/route-e88c67f45b52.3b27344626.js",
+      "bytes": 12483,
+      "sha256": "200930e0f2ad3b4fe1cfe2bb203f06bc404abf9e87c03e79c2f0c6d764259f6d"
+    },
+    {
+      "route": "static/js/async/route-edc23fc0e76d.fbbe9468eb.js",
+      "bytes": 12042,
+      "sha256": "0ac6e7970259917ec888005bb27b298a07ab646d0cf354a044ccf995e09cec73"
+    },
+    {
+      "route": "static/js/index.995fe751fd.js",
+      "bytes": 40421,
+      "sha256": "1eae0929223442e85eccaf1b2f81d477601191439710fa8e3fa92b5099309f07"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "route": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    }
+  ]
+}
