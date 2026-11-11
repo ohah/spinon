@@ -29,10 +29,10 @@
 | 23 | 이전 uniform control corpus의 파일 교체를 조용히 수용 | 이전 capture scene 수와 control key 11,520개를 각각 검증한다. 통과. |
 | 24 | verifier에서 forward/reverse placement를 이름만 비교하고 payload ID를 틀리게 연결 | `PLACEMENTS`와 scene order를 매 record 비교하고 item별 geometry를 ID로 정렬한다. 통과. |
 | 25 | verifier의 line rect count/value가 source order와 alignment 쌍에서 변함 | geometry error는 line rect 개수와 각 좌표를 허용 오차 안에서 비교한다. 통과. |
-| 26 | 계획 PR 화면 링크가 GitHub에서 깨지거나 인증이 필요한 경로를 사용 | 본문에는 commit-pinned raw PNG를 첨부하고, PR 생성 후 Agent Browser에서 이미지 load를 확인할 예정이다. 검증 대기. |
+| 26 | 계획 PR 화면 링크가 GitHub에서 깨지거나 인증이 필요한 경로를 사용 | PR #1368 본문의 commit-pinned raw PNG를 Agent Browser로 열었다. 이미지 `complete=true`, `naturalWidth=1280`, `naturalHeight=900`이고 GitHub 대화 화면에 표시됨을 확인했다. 통과. |
 | 27 | 계획 review 20개와 구현 검토 또는 PR diff review를 같은 검토로 중복 계산 | 별도 plan review 20개, plan PR diff review 30개, 후속 runtime review 20개를 각각 독립 문서로 둔다. 통과. |
 | 28 | 범위가 wider six-fit, 다른 row-span, FFI 또는 public CSS까지 확장 | plan은 existing exact profile, item minimum mask, 기본 Root HTML route만 제한한다. 통과. |
-| 29 | 이전 public roadmap과 공식 상태표 숫자가 서로 달라짐 | public count는 78/214 그대로며 이 PR은 C11.4 진행 항목에 계획 후보만 기록한다. 통과. |
+| 29 | public roadmap이 상태 대장의 후보 선택과 다르거나 공식 완료 수를 바꿈 | C11.4 row를 mixed per-item 후보와 계획·Chrome 비교 링크로 갱신했다. 78/214와 C11.4/C11 미완료는 유지한다. 통과. |
 | 30 | 배포·tailnet을 plan-only PR에서 무단 변경 | 공개 site/preview 파일이나 배포 산출물은 변경하지 않는다. 통과. |
 
-**결론:** diff의 30개 실패 경로를 확인했다. GitHub PR 본문 screenshot의 raw URL 표시와 병합 상태는 PR 생성 후 Agent Browser 및 원격 state에서 별도 확인해야 한다.
+**결론:** diff의 30개 실패 경로를 확인했다. PR #1368 본문 screenshot은 Agent Browser에서 정상 표시됐다. 현재 PR은 open/mergeable이고 status check은 0개이며, 병합 여부는 별도 최종 gate로 확인한다.
