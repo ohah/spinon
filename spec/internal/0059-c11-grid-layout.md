@@ -1962,6 +1962,18 @@ Smoke 뒤 `dev.spinon.bootstrap` 앱을 iPhone 17 Pro simulator에서 제거하�
 
 이 bounded row-span profile은 일반 CSS Grid admission, three-fit auto-placement, C11.4 또는 C11 전체 완료를 뜻하지 않는다. 공식 `78/214`와 C11.4/C11 unchecked 상태 및 internal numeric contract `0.1.0`을 유지한다.
 
+## C11.4 parsed Root HTML repeated-text row-span · four-fit `min-height:auto` · 구현 candidate · 2026-11-11
+
+이 candidate는 기존 여섯-member repeated-text row-span profile에서 정확히 네 `fit-content()` track과 `min-content`·`auto` 각 하나만 허용한다. 네 cap은 typed computed value 기준 `0px`, `10px`, `20%`, `30px` 각 하나이고, fit track 위치는 여섯 authored row 중 15개 quadruple, 두 tail order를 지원한다. Percentage basis는 definite `220px` block size다. 첫 explicit-row empty control은 항상 `min-height:0`; span text item은 모두 `min-height:0` baseline 또는 모두 `min-height:auto` candidate인 경우만 허용한다.
+
+Admission은 고정 Root HTML owner, direct ASCII text, sparse row flow, visible overflow, 두 고정 six-row span topology와 source-order 반전, `align-content:start|stretch`에 한정한다. 중복·누락·미등록 cap, 다섯 번째 fit, tail 개수/종류 오류, unresolved percentage `calc()`, 일곱 번째 used row, dense flow, scrollable item, 다른 alignment, indefinite percentage basis, mixed minimum 및 다른 profile 입력은 atomic failure로 거부하고 같은 `RuntimeSession`의 다음 valid revision에서 복구해야 한다. 이는 일반 CSS Grid grammar 지원이 아니다.
+
+Chrome 157 observation 11,520 scenes(5,760 baseline/candidate keys)를 `RuntimeSession`에서 비교한다. 네 fit profile의 baseline은 3,648 item occurrence에서 content floor 아래로 내려가며 candidate는 25,920 대상 occurrence의 floor 위반이 0이다. Scene별 item/payload frame, text line count, span row sum, eligible automatic minimum contribution과 같은-revision track trace를 비교하고 source-order geometry delta 0 CSS px, 최대 span/frame 오차 0.000225 CSS px를 확인했다. `stretch`는 `auto` row에만 남는 공간을 배분한다. 1/64px residual은 Chrome 관측에 맞춰 자동 최소 후보에서 뒤쪽 growable track을, baseline의 fractional auto row에서는 auto row 우선 ceiling을, 그 외 baseline에서는 nearest total을 선택한다. 이 규칙은 이 profile의 관측된 residual 경계이며 일반 Grid rounding 계약이 아니다.
+
+Style projection과 layout admission의 각 720 profile 조합, RuntimeSession 11,520-scene matrix, out-of-profile atomic rejection, mixed-minimum 거부 뒤 same-session recovery, trace 및 one-/two-/three-fit 회귀가 구현 candidate에서 통과했다. iOS 26.2 iPhone 17 Pro Simulator와 Android API 37 ARM64 AVD의 light/dark 캡처는 기본 Root HTML 앱 시작 smoke만 확인하며 four-fit fixture를 로드하지 않는다. 캡처 로그에는 `layout=ready`와 `status=0 presented`가 있다. Android는 SwiftShader이고, 이 캡처는 feature geometry·surface pixel parity·실기기를 검증하지 않는다. 세부 근거와 20개 구현/runtime 검토는 [구현 evidence](./evidence/c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum-implementation-2026-11-11/README.md)에 연결한다.
+
+이 구현 PR이 병합되기 전까지는 제품의 병합 완료 지원으로 간주하지 않는다. C11.4/C11 체크와 공식 `78/214`는 유지하고 public API/FFI를 추가하지 않으며 internal numeric contract `0.1.0`을 유지한다.
+
 ## C11.4 parsed Root HTML repeated-text auto-placement · three-fit `min-height:auto` · bounded implementation PR #1342
 
 기존 parsed Root HTML nine-direct-item repeated-text auto-placement profile에서 여섯-member `grid-auto-rows` list의 정확한 multiset `fit-content() ×3`, `min-content ×1`, `max-content ×1`, `auto ×1`에 모든 여덟 direct-text item의 computed `min-height:auto`를 연결한다. 첫 빈 explicit-row control은 계속 `min-height:0`이다. Fit position의 20개 조합과 나머지 tail의 여섯 순서를 지원한다. Cap은 finite non-negative direct px 또는 definite percentage basis를 가진 direct percentage만 허용한다.

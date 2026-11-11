@@ -285,8 +285,43 @@ pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
                 )
         }
         3 => counts == [1, 1, 1],
+        4 => counts == [1, 0, 1] && four_fit_span_caps_are_supported(tracks),
         _ => false,
     }
+}
+
+fn four_fit_span_caps_are_supported(tracks: &[GridTrackSize]) -> bool {
+    let mut caps_seen = [false; 4];
+    for track in tracks {
+        let cap_index = match track {
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 0.0 =>
+            {
+                0
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 10.0 =>
+            {
+                1
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(value))
+                if *value == 0.2 =>
+            {
+                2
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 30.0 =>
+            {
+                3
+            }
+            GridTrackSize::FitContent(_) => continue,
+            _ => continue,
+        };
+        if std::mem::replace(&mut caps_seen[cap_index], true) {
+            return false;
+        }
+    }
+    caps_seen.into_iter().all(|seen| seen)
 }
 
 pub(super) fn supports_repeated_span_fit_positions(
@@ -323,6 +358,16 @@ pub(super) fn supports_repeated_span_fit_positions(
                 && first < second
                 && second < third
         }
+        [first, second, third, fourth] => {
+            positive_implicit_rows == 6
+                && (1..=6).contains(first)
+                && (1..=6).contains(second)
+                && (1..=6).contains(third)
+                && (1..=6).contains(fourth)
+                && first < second
+                && second < third
+                && third < fourth
+        }
         _ => false,
     }
 }
@@ -338,6 +383,10 @@ mod three_fit_auto_placement_tests;
 #[cfg(test)]
 #[path = "profiles/four_fit_auto_placement_tests.rs"]
 mod four_fit_auto_placement_tests;
+
+#[cfg(test)]
+#[path = "profiles/four_fit_span_tests.rs"]
+mod four_fit_span_tests;
 
 #[cfg(test)]
 #[path = "profiles/five_fit_auto_placement_tests.rs"]

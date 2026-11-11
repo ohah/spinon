@@ -1,0 +1,148 @@
+{
+  "evidence_version": 1,
+  "task": "C11.4 parsed Root HTML repeated-text row-span four-fit min-height:auto",
+  "branch": "codex/c11-4-repeated-text-four-fit-auto-min-20261111",
+  "base_commit": "88c000dabd1a4402faa83b9696e252e2d9b2eb4e",
+  "official_status": {
+    "c11_4_complete": false,
+    "c11_complete": false,
+    "completed": "78/214",
+    "internal_contract_numeric_version": "0.1.0"
+  },
+  "reference": {
+    "browser": "HeadlessChrome 157.0.0.0",
+    "evidence": "../c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum-precomparison-2026-11-11/README.md",
+    "scenes": 11520,
+    "track_lists": 720,
+    "fit_position_quadruples": 15,
+    "cap_assignments": 24,
+    "baseline_candidate_pairs": 5760
+  },
+  "runtime_tests": [
+    {
+      "name": "parsed_root_html_four_fit_row_span_matches_all_11520_chrome_scenes",
+      "status": "passed",
+      "scenes": 11520,
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "duration_seconds": 716.26,
+      "log": "runtime-four-fit-matrix.log"
+    },
+    {
+      "name": "parsed_root_html_four_fit_auto_placement_matches_all_5760_chrome_scenes",
+      "status": "passed",
+      "scenes": 5760,
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "duration_seconds": 302.95,
+      "log": "runtime-four-fit-autoplacement-regression.log"
+    },
+    {
+      "name": "style projection four_fit_row_span",
+      "status": "passed",
+      "tests_passed": 2,
+      "log": "style-projection-focused.log"
+    },
+    {
+      "name": "layout repeated_four_fit_row_span",
+      "status": "passed",
+      "tests_passed": 2,
+      "log": "layout-profile-focused.log"
+    },
+    {
+      "name": "runtime four_fit::trace",
+      "status": "passed",
+      "tests_passed": 5,
+      "log": "runtime-four-fit-trace-focused.log"
+    },
+    {
+      "name": "runtime four_fit::rejections",
+      "status": "passed",
+      "tests_passed": 2,
+      "log": "runtime-four-fit-rejections-focused.log"
+    }
+  ],
+  "static_checks": {
+    "rustfmt": {
+      "status": "passed",
+      "command": "cargo fmt --all -- --check",
+      "log": "format-check.log"
+    },
+    "clippy": {
+      "status": "passed",
+      "command": "cargo clippy --locked --workspace --all-targets -- -D warnings",
+      "log": "clippy.log"
+    }
+  },
+  "app_builds": {
+    "ios_simulator": {
+      "status": "passed",
+      "command": "mise exec -- bun run build:ios-sim",
+      "sdk": "iOS Simulator 26.2",
+      "fixture_flags": "default product route; C11.4 fixture disabled",
+      "log": "ios-build.log"
+    },
+    "android": {
+      "status": "passed",
+      "command": "mise exec -- bun run build:android",
+      "ndk": "27.1.12297006",
+      "fixture_flags": "default product route; C11.4 fixture disabled",
+      "log": "android-build.log"
+    }
+  },
+  "simulator_smoke": {
+    "ios": {
+      "device": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "os": "iOS 26.2",
+      "modes": ["light", "dark"],
+      "viewport_css_px": [402, 778],
+      "surface_px": [1206, 2334],
+      "capture_px": [1206, 2622],
+      "result": "default Root HTML app boot, layout-ready, draw/present",
+      "fixture_geometry_verified": false,
+      "logs": ["ios-light.log", "ios-dark.log"],
+      "screenshots": ["ios-light.png", "ios-dark.png"]
+    },
+    "android": {
+      "avd": "spinon_c114_cyclic_image_span_20261023",
+      "api": "37.0",
+      "abi": "arm64-v8a",
+      "renderer": "SwiftShader",
+      "modes": ["light", "dark"],
+      "viewport_css_px": [411.42856, 841.52374],
+      "surface_px": [1080, 2209],
+      "capture_px": [1080, 2400],
+      "result": "default Root HTML app boot, layout-ready, draw/present",
+      "fixture_geometry_verified": false,
+      "logs": ["android-light.log", "android-dark.log"],
+      "screenshots": ["android-light.png", "android-dark.png"]
+    },
+    "after_run": {
+      "ios_booted_devices": [],
+      "adb_devices": [],
+      "agent_browser_active_sessions": 0,
+      "agent_browser_process": false,
+      "s03_ios_profile_registered": false,
+      "shared_profiles_deleted": false
+    }
+  },
+  "tailnet_preview": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "http_status": 200,
+    "server_pid": 90711,
+    "source_sha256": "418de12ebf0c67792721aad5ac1a1222b8ba19a447b2e44bbae7063da7c3fd9e",
+    "served_sha256": "418de12ebf0c67792721aad5ac1a1222b8ba19a447b2e44bbae7063da7c3fd9e",
+    "previous_sha256": "7f7e118e3ce44699c1703c67c507b709ff6f1adf74bfd60ee92e8582c6fad9ab",
+    "backup": "roadmap.html.before-c11-4-four-fit-20261111T1116Z",
+    "agent_browser_session": "spinon-roadmap-e00ea27987c0",
+    "screenshot": "tailnet-roadmap-preview.png",
+    "active_after_close": false
+  },
+  "limitations": [
+    "iOS/Android app route is a default Root HTML smoke and does not load the four-fit fixture.",
+    "Android simulator rendering used SwiftShader; hardware GPU was not verified.",
+    "PixelCopy, Metal drawable readback, compositor-after-present pixel parity, physical devices, and full WPT were not verified.",
+    "The fixed Root HTML profile is not general CSS Grid support and does not complete C11.4 or C11."
+  ]
+}

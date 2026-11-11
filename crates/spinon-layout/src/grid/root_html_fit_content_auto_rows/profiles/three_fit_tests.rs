@@ -76,7 +76,7 @@ fn repeated_span_and_auto_placement_accept_all_three_fit_positions_and_tail_perm
 }
 
 #[test]
-fn repeated_span_three_fit_rejects_wrong_multiplicity_and_caps() {
+fn repeated_span_three_fit_rejects_four_fit_with_unregistered_caps() {
     let mut four_fit = three_fit_tracks(
         [1, 2, 3],
         [

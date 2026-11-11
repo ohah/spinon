@@ -510,6 +510,38 @@ fn root_html_fit_content_cap_is_supported(track: &ComputedCssGridTrackSize) -> b
     )
 }
 
+fn root_html_fit_content_four_fit_span_caps_are_supported(
+    tracks: &[ComputedCssGridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut caps_seen = [false; 4];
+    for track in tracks {
+        let cap_index = match track {
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 0.0 => 0,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 10.0 => 1,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::Percentage(value),
+            ) if *value == 0.2 => 2,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 30.0 => 3,
+            ComputedCssGridTrackSize::FitContent(_) => continue,
+            _ => continue,
+        };
+        if std::mem::replace(&mut caps_seen[cap_index], true) {
+            return false;
+        }
+    }
+    caps_seen.into_iter().all(|seen| seen)
+}
+
 fn root_html_fit_content_min_content_auto_track_list(tracks: &[ComputedCssGridTrackSize]) -> bool {
     matches!(
         tracks,
@@ -783,6 +815,7 @@ fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
                 )
         }
         3 => counts == [1, 1, 1],
+        4 => counts == [1, 0, 1] && root_html_fit_content_four_fit_span_caps_are_supported(tracks),
         _ => false,
     }
 }
@@ -2717,6 +2750,10 @@ mod three_fit_auto_placement_tests;
 #[cfg(test)]
 #[path = "grid_values/four_fit_auto_placement_tests.rs"]
 mod four_fit_auto_placement_tests;
+
+#[cfg(test)]
+#[path = "grid_values/four_fit_span_tests.rs"]
+mod four_fit_span_tests;
 
 #[cfg(test)]
 #[path = "grid_values/five_fit_auto_placement_tests.rs"]
