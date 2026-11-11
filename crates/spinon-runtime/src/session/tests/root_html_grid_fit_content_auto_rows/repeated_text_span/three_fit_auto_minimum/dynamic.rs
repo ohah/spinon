@@ -211,6 +211,7 @@ pub(super) fn observe_current(
     );
     let rows = row_values(record);
     let mut item_frames = BTreeMap::new();
+    let mut payload_frames = BTreeMap::new();
     for item in record["items"].as_array().unwrap() {
         let id = item["id"].as_str().unwrap();
         let item_color = if id == "empty" {
@@ -245,6 +246,12 @@ pub(super) fn observe_current(
             payload_frame,
             &format!("{label}: payload {id}"),
         );
+        assert!(
+            payload_frames
+                .insert(id.to_owned(), actual_payload)
+                .is_none(),
+            "{label}: one payload frame per text item"
+        );
         let payload_style = style_for_color(styles, payload_color, label);
         let runtime_text = render
             .texts()
@@ -270,5 +277,9 @@ pub(super) fn observe_current(
             );
         }
     }
-    SceneResult { rows, item_frames }
+    SceneResult {
+        rows,
+        item_frames,
+        payload_frames,
+    }
 }

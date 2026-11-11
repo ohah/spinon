@@ -24,6 +24,7 @@ struct RepeatedTextRowTrackStages {
     pre_alignment_tracks: Vec<crate::LayoutGridTrackSizingTrackState>,
     final_tracks: Vec<crate::LayoutGridTrackSizingTrackState>,
     has_span_auto_minimum: bool,
+    has_spanning_item: bool,
     stretch_applied: bool,
 }
 
@@ -117,6 +118,10 @@ fn repeated_text_row_track_stages(
                 )
             )
     });
+    let has_spanning_item = pass
+        .contributions
+        .iter()
+        .any(|contribution| contribution.span > 1);
     let stretched_auto_tracks = match final_stage.stage {
         crate::LayoutGridTrackSizingStageKind::StretchAutoTracks { applied } => applied,
         _ => return None,
@@ -195,6 +200,7 @@ fn repeated_text_row_track_stages(
         pre_alignment_tracks,
         final_tracks,
         has_span_auto_minimum,
+        has_spanning_item,
         stretch_applied: stretched_auto_tracks,
     })
 }
