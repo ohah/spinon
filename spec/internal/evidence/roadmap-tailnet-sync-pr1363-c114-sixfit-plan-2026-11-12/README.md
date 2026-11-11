@@ -31,7 +31,8 @@ URL: <https://macstudio.tailed42f2.ts.net/spinon/roadmap.html>
 - 두 viewport 모두 가로 overflow가 없었다.
 - 최종 화면: `tailnet-roadmap-agent-browser-desktop.png`, `tailnet-roadmap-agent-browser-mobile.png`
 - 수정 전 발견 화면도 `*-before-fix.png`로 보존했다.
-- 재확인 세부 값은 `agent-browser-verification-final.json`에 있다. 검증 후 Agent Browser 세션을 닫았고 활성 세션과 Agent Browser/Chrome 프로세스가 남지 않은 것을 확인했다.
+- 재확인 세부 값은 `agent-browser-verification-final.json`에 있다. PR #1364 본문의 두 이미지도 Agent Browser에서 `complete=true`, 데스크톱 1440×1000 및 모바일 390×844 natural size로 로드되는 것을 확인했다. 세부 값은 `pr-image-load-final.json`에 있다.
+- 각 확인 뒤 Agent Browser 세션을 닫았다. 마지막 확인에서 활성 세션과 Agent Browser/Chrome 프로세스가 남지 않았다.
 
 ## 정리와 한계
 
