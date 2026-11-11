@@ -1,0 +1,30 @@
+{
+  "schema": "spinon.c11-4.repeated-text-autoplacement-six-fit-auto-min-verification/v1",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "dpr": 1,
+  "sceneCount": 5760,
+  "pairedKeys": 2880,
+  "uniqueTrackLists": 720,
+  "orderedCapAssignments": 720,
+  "candidateFitTrackItemOccurrences": 23040,
+  "baselineFitOccurrencesBelowPayloadFloor": 7200,
+  "candidateFitFloorViolations": 0,
+  "baselineBelowFloorByCap": {
+    "0px": 3840,
+    "10px": 3360
+  },
+  "candidateBelowFloorByCap": {},
+  "visiblePayloadRowOverflow": {
+    "0px": 7200
+  },
+  "pairedKeysWithChangedRows": 2880,
+  "alignContentStretchRowsDifferFromStart": {},
+  "alignContentStretchFullGeometryDiffersFromStart": {},
+  "itemFrameGridEndOverflows": 0,
+  "payloadGridEndOverflows": {},
+  "maximumPayloadEndByMinHeight": {
+    "0px": 150,
+    "auto": 180
+  }
+}
