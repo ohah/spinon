@@ -1,0 +1,35 @@
+{
+  "schema": "spinon.agent-browser-roadmap-verification/v1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "desktop": {
+    "viewport": [1440, 1000],
+    "documentWidth": 1440,
+    "bodyWidth": 1440,
+    "heading": {
+      "text": "현재 작업 칸반",
+      "width": 171.8125,
+      "height": 33.59375
+    },
+    "summary": {
+      "width": 1068.1875,
+      "height": 70.375
+    },
+    "candidateCardVisible": true,
+    "officialCountTextVisible": true,
+    "horizontalOverflow": false
+  },
+  "mobile": {
+    "viewport": [390, 844],
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "candidateCardVisible": true,
+    "horizontalOverflow": false
+  },
+  "screenshots": [
+    "tailnet-roadmap-agent-browser-desktop.png",
+    "tailnet-roadmap-agent-browser-mobile.png"
+  ],
+  "checkedAt": "2026-11-12",
+  "browserSessionClosed": true
+}

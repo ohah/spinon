@@ -1,0 +1,95 @@
+{
+  "buildBase": "build/spinon/roadmap-tailnet-sync-pr1363-c114-sixfit-plan-2026-11-12",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr1363-c114-sixfit-plan-2026-11-12/root",
+  "stagedFileCount": 14,
+  "stagedBytes": 591136,
+  "fullDocsDeadLinkCheck": false,
+  "fullSiteBuildClaim": false,
+  "noSymlinks": true,
+  "staged": [
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 246769,
+      "sha256": "4eca57bbac619d1f877e507bc1b37d9e6e688875041482cc3cf8625786cfaf90"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.md",
+      "bytes": 7651,
+      "sha256": "734a7a50bbe210ea171238042b94e96ad7da43863d92dfee30e163b452c214ea"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-review-20.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4055,
+      "sha256": "d5198302e36d8d0685e7c17991f05c64aa342743e488575e5bb76886a728106a"
+    },
+    {
+      "source": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-pr-diff-review-30.md",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-pr-diff-review-30.md",
+      "bytes": 5750,
+      "sha256": "d2dd38be2a8bfb349fc5c6e4675ec2aa77cf653f681056a58dd06bae5a927877"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/capture-chrome.mjs",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/capture-chrome.mjs",
+      "bytes": 4408,
+      "sha256": "620439386100483a03882b34ab90bfe6bb2701a512fe782e104f96371d407404"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/chrome157-observation.ndjson.gz",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/chrome157-observation.ndjson.gz",
+      "bytes": 272198,
+      "sha256": "a9a36fee40ab5f15207fb6980241c55d4e4d2bedb5ddbe0cb55a6ad9235ce4fa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/chrome157-six-fit-row-span-sample.png",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/chrome157-six-fit-row-span-sample.png",
+      "bytes": 16304,
+      "sha256": "c4f2f5b6ab8d40f375876a9b04a4349cd47dacf704a7e63427ca05fd5e1da571"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/README.md",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/README.md",
+      "bytes": 5408,
+      "sha256": "fd867830d91533105f900edd03413fb7f82db7e6c69aaceb01d17cb0aa3d9157"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "bytes": 716,
+      "sha256": "1d80a57b65171f6a9dbc60ce2b57e1e21e28d1d2d05db58001518ff30200aaac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/verification.json",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/verification.json",
+      "bytes": 2415,
+      "sha256": "c679dc2959aa89abc3c1978567cc6be6a3e26b60ef22dd6d1fb6aa9d2a82f295"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "bytes": 16033,
+      "sha256": "03ff809a1924ec23835365f33e423670849e6fa841a7cc6685af7f96f8708394"
+    },
+    {
+      "source": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-six-fit-auto-minimum-precomparison.html",
+      "route": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-six-fit-auto-minimum-precomparison.html",
+      "bytes": 8223,
+      "sha256": "6469adc1d1d14ccd40ed180c1c24aaf90eff24054834c379d85347e95dd00450"
+    }
+  ]
+}
