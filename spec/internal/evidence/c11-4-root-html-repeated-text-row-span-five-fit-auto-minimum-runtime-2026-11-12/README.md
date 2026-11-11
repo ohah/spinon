@@ -29,3 +29,7 @@ light/dark 관측은 runtime environment의 `dark=false|true` 전환을 확인�
 - 캡처는 화면 확인 자료다. Android PixelCopy, iOS Metal drawable readback, compositor 이후 pixel 비교, 실기기/hardware GPU 검증은 하지 않았다.
 - `cargo clippy --locked -p spinon-layout --all-targets -- -D warnings`와 runtime `--lib` Clippy는 통과했다. runtime `--all-targets`는 기존의 `anonymous_text_hyphens.rs`·`anonymous_text_text_transform.rs`의 `too_many_arguments` 두 건과 변경하지 않은 `five_fit/matrix.rs`의 `needless_borrow` 세 건으로 실패했다.
 - 공식 C11.4/C11 완료 상태와 `78/214`는 변경하지 않는다.
+
+## PR #1360 병합
+
+구현/runtime 20개 관점 검토와 실제 PR diff의 별도 30개 관점 검토를 거쳐 [PR #1360](https://github.com/ohah/spinon/pull/1360)을 Rebase and merge했다. [병합 기록](merge-PR1360.md)은 최종 head·merge SHA·CI 확인 한계와 기본 앱 smoke 범위를 보존한다. GitHub Actions workflow run과 commit status check는 각각 0개이므로 CI 통과로 주장하지 않는다. 이 후속 문서 변경도 [별도 30개 관점 검토](post-merge-docs-pr-diff-review-30.md)를 거쳤다.

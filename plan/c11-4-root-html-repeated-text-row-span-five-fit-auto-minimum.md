@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span five-fit `min-height:auto`
 
-**상태:** 계획 PR [#1359](https://github.com/ohah/spinon/pull/1359) Rebase and merge · 제품 구현 진행 중 · Chrome 157 사전 비교 34,560/34,560 scene과 독립 검증 완료 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 계획 PR [#1359](https://github.com/ohah/spinon/pull/1359)과 제한 구현 PR [#1360](https://github.com/ohah/spinon/pull/1360) Rebase and merge · merge SHA `6b3475a0ee48741b7f2aaa30e8ee62b19618ef8d` · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **직전 row-span:** [four-fit `min-height:auto`](./c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum.md) · 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)
 
@@ -8,11 +8,11 @@
 
 **사전 비교:** [Chrome 157 관측과 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-precomparison-2026-11-11/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-five-fit-auto-minimum-precomparison.html) · [계획 실패 관점 검토 20개](./c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-plan-review-20.md)
 
-**현재 구현 후보 검증:** [2026-11-12 실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/README.md)에는 Chrome 157 RuntimeSession matrix 34,560/34,560, five-fit trace·rejection 회귀와 Android/iOS 기본 route light/dark smoke가 기록되어 있다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md)는 완료했다. 실제 구현 PR diff 30개 검토와 병합은 남아 있으므로 이 후보와 C11.4/C11은 미완료다.
+**병합된 제한 구현 검증:** [2026-11-12 실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/README.md)에는 Chrome 157 RuntimeSession matrix 34,560/34,560, five-fit trace·rejection 회귀와 Android/iOS 기본 route light/dark smoke가 기록되어 있다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md)와 실제 PR diff 30개 검토를 마친 뒤 [PR #1360](https://github.com/ohah/spinon/pull/1360)을 병합했다. [병합 기록](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/merge-PR1360.md)을 참조한다. 이 bounded profile의 병합은 C11.4/C11 완료나 공식 집계 승격이 아니다.
 
 ## 결손과 제한 목표
 
-기본 parsed Root HTML의 repeated-text row-span에는 one-fit부터 four-fit까지 제한된 `min-height:auto` profile이 있다. 다섯 `fit-content()` track이 들어간 여섯 implicit row list는 row-span profile에서 거부된다. 다섯-fit auto-placement profile은 별도 owner와 placement 규칙을 가지므로 이를 row-span 구현에 재사용하거나 합치지 않는다.
+구현 전 결손은 기본 parsed Root HTML repeated-text row-span에서 다섯 `fit-content()` track이 들어간 여섯 implicit row list가 거부된다는 점이었다. PR #1360은 이 결손 중 아래에 고정한 row-span profile만 추가했다. 다섯-fit auto-placement은 별도 owner와 placement 규칙을 가지므로 row-span 구현과 합치지 않는다.
 
 이 계획은 **정확히** 다섯 `fit-content()` track과 `min-content`, `max-content`, `auto` 중 하나인 singleton tail로 이루어진 여섯-member `grid-auto-rows` list를 조사하고 지원한다. 각 fit cap은 `0px`, `10px`, `20%`, `30px`, `40px`를 한 번씩 갖는다. Candidate text items의 computed `min-height:auto`와 동일 scene의 `min-height:0` 기준선을 비교한다. 첫 explicit-row empty control은 양쪽 모두 `min-height:0`으로 고정한다.
 
@@ -48,4 +48,4 @@
 
 ## 남은 범위
 
-이 제한 profile은 arbitrary Grid track/cap/topology, general Root HTML Grid admission, public API/FFI, 앱 화면에서 five-fit row-span fixture 실행, 표면 pixel parity, 실기기/hardware GPU, full WPT 또는 C11.4/C11 완료를 추가하지 않는다. 위 관문과 구현을 마칠 때까지 이 문서는 계획 상태다.
+이 병합 profile은 arbitrary Grid track/cap/topology, general Root HTML Grid admission, public API/FFI, 앱 화면에서 five-fit row-span fixture 실행, 표면 pixel parity, 실기기/hardware GPU, full WPT 또는 C11.4/C11 완료를 추가하지 않는다. 이 계획의 제한 profile은 구현됐으며, 남은 범위는 별도 작업으로 추적해야 한다.
