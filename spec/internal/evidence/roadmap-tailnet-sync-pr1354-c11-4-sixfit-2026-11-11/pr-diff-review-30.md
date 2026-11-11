@@ -1,4 +1,4 @@
-# PR diff adverse review · six-fit merge-status and Tailnet roadmap synchronization
+# PR #1355 diff adverse review · six-fit merge-status and Tailnet roadmap synchronization
 
 ## Scope
 
@@ -33,9 +33,9 @@
 | 25 | source·local HTTP·Tailnet HTTPS가 서로 다른 파일을 제공하는가 | roadmap 및 선택 Markdown/HTML routes에서 HTTP 200과 동일 bytes/SHA-256을 확인했다. |
 | 26 | backup이 교체 후 파일을 가리키거나 기존 server state가 사라지는가 | 교체 전 존재한 다섯 HTML/Markdown 페이지를 preview backup 디렉터리에 보존했다. |
 | 27 | 선택 Rspress render를 전체 문서 사이트 검증으로 오인하는가 | isolated selected-document build와 dead-link check 제한을 별도로 설명한다. |
-| 28 | generated HTML link가 preview base/static 경로에서 깨지는가 | STATUS와 0059를 Agent Browser에서 열어 핵심 text와 page load를 확인했다. |
-| 29 | 모바일 roadmap에서 viewport 바깥으로 문서 전체가 넘치는가 | 390px viewport에서 document/body width 390px, horizontal overflow 없음이다. |
-| 30 | 문서 PR이 GitHub Pages 또는 공유 simulator/browser 정리를 몰래 포함하는가 | Pages 배포·server restart·기존 HWP browser·공유 simulator 삭제를 하지 않는다. |
+| 28 | generated HTML link가 preview base/static 경로에서 깨지는가 | STATUS와 0059를 Agent Browser에서 열어 핵심 text와 page load를 확인했다. PR #1355의 desktop/mobile body 이미지도 GitHub page에서 complete 및 원본 크기로 표시됐다. |
+| 29 | 모바일 roadmap에서 viewport 바깥으로 문서 전체가 넘치는가 | 390px viewport에서 document/body width 390px, horizontal overflow 없음이다. Desktop 1440px도 가로 overflow가 없다. |
+| 30 | 문서 PR이 GitHub Pages 또는 공유 simulator/browser 정리를 몰래 포함하는가 | Pages 배포·server restart·공유 simulator 삭제는 없다. 이 작업 전용 Agent Browser session은 닫고 `pid:null`을 확인했으며 기존 HWP session PID 70988과 Tailnet server PID 90711을 보존했다. |
 
 ## 결과
 
