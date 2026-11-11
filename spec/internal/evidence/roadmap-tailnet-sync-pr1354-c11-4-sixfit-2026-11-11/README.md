@@ -6,17 +6,23 @@
 
 사용자가 지정한 [Tailnet roadmap](https://macstudio.tailed42f2.ts.net/spinon/roadmap.html)은 RSPress 산출물이 아니라 `spec/public/roadmap.html` 단일 파일을 제공한다. 함께 갱신한 문서 제공본은 `spec/STATUS.md`, 내부 계약 0059, six-fit 계획 및 six-fit runtime evidence의 Markdown·RSPress HTML이다. 전체 RSPress 사이트나 GitHub Pages는 배포하지 않았다.
 
-미리보기 서버 PID `90711`은 `/Users/yoonhb/Library/Application Support/SpinonPreview`를 `127.0.0.1:8768`에서 제공한다. 동기화 전 변경 대상의 byte-identical backup은 `backup/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/`에 보존했다. 서버는 재시작하지 않았다.
+미리보기 서버 PID `90711`은 `/Users/yoonhb/Library/Application Support/SpinonPreview`를 `127.0.0.1:8768`에서 제공한다. 교체 전에 있던 `roadmap.html`, `STATUS.md/html`, `internal/0059-c11-grid-layout.md/html` 다섯 파일의 backup을 `backup/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/`에 보존했다. plan과 evidence page는 이전 preview에 없어서 추가했다. 기존 파일은 삭제하지 않았고 서버도 재시작하지 않았다.
 
 ## Source와 제공본 hash
 
-`/spinon/roadmap.html`은 `670,727` bytes, SHA-256 `7f7e118e3ce44699c1703c67c507b709ff6f1adf74bfd60ee92e8582c6fad9ab`다. Repository source, preview 파일, local HTTP와 Tailnet HTTPS 응답이 byte-identical이다. 상태 Markdown, 내부 계약 0059, six-fit 계획 및 실행 근거 Markdown·HTML도 각 source/preview/local HTTP/Tailnet HTTP의 byte count와 SHA-256이 일치하고 HTTP 200을 반환했다. [파일별 검증 기록](./served-verification.json)을 참조한다.
+`/spinon/roadmap.html`은 `670,727` bytes, SHA-256 `7f7e118e3ce44699c1703c67c507b709ff6f1adf74bfd60ee92e8582c6fad9ab`다. Repository source, preview 파일, local HTTP와 Tailnet HTTPS 응답이 byte-identical이다. 상태 Markdown, 내부 계약 0059, six-fit 계획 및 실행 근거 Markdown·HTML도 각 source/preview/local HTTP/Tailnet HTTP의 byte count와 SHA-256이 일치하고 HTTP 200을 반환했다. [파일별 검증 기록](./served-verification.json)과 [evidence artifact checksums](./SHA256SUMS)을 참조한다.
 
 ## Agent Browser 확인
 
-전용 session `spinon-c114-pr1354-roadmap`에서 Tailnet URL을 열었다. Desktop 1440×1000 CSS px와 mobile 390×844 CSS px 모두 document/body width가 viewport와 같고 horizontal overflow가 없다. 두 화면에서 PR #1354, merge SHA, `78/214`, C11.4/C11 미완료, six-fit 720 authored order를 확인했다. 결과는 [desktop geometry](./agent-browser-verification-desktop.json), [mobile geometry](./agent-browser-verification-mobile.json), [desktop screenshot](./tailnet-roadmap-agent-browser-desktop.png), [mobile screenshot](./tailnet-roadmap-agent-browser-mobile.png)에 기록한다. 전용 session 종료 후 inactive/`pid:null` 여부를 아래 lifecycle evidence에 추가한다. 기존 HWP Agent Browser session은 보존한다.
+전용 session `spinon-c114-pr1354-roadmap`에서 Tailnet URL을 열었다. Desktop 1440×1000 CSS px와 mobile 390×844 CSS px 모두 document/body width가 viewport와 같고 horizontal overflow가 없다. 두 화면에서 PR #1354, merge SHA, `78/214`, C11.4/C11 미완료, six-fit 720 authored order를 확인했다. 결과는 [desktop geometry](./agent-browser-verification-desktop.json), [mobile geometry](./agent-browser-verification-mobile.json), [desktop screenshot](./tailnet-roadmap-agent-browser-desktop.png), [mobile screenshot](./tailnet-roadmap-agent-browser-mobile.png)에 기록했다. 기존 HWP Agent Browser session은 보존한다.
 
 같은 Tailnet에서 갱신한 [공식 상태 페이지](https://macstudio.tailed42f2.ts.net/spinon/STATUS.html)와 [C11 Grid 계약](https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html)도 Agent Browser로 열어 PR/merge 정보와 `78/214`, 미완료 경계, `0.1.0`, six-fit matrix 링크를 확인했다. 로드된 두 문서의 결과는 [STATUS](./status-agent-browser-verification.json)와 [0059](./contract-agent-browser-verification.json)에 기록한다.
+
+Tailnet roadmap desktop/mobile PNG를 문서 PR [#1355](https://github.com/ohah/spinon/pull/1355)의 본문에 넣었다. GitHub PR page를 Agent Browser로 열어 image `complete=true`와 intrinsic size 1440×1000, 390×844를 확인한 기록은 [PR image verification](./pr-image-agent-browser-verification.json)이다.
+
+이 문서 변경 자체의 서로 다른 failure path 검토는 [PR diff review](./pr-diff-review-30.md)에 있다.
+
+전용 session 종료 확인은 [lifecycle record](./agent-browser-lifecycle-final.json)에 있다. 해당 session은 inactive/`pid:null`이고 프로세스가 없다. 기존 HWP Agent Browser session은 PID 70988로 계속 활성 상태라 보존했다.
 
 ![Tailnet roadmap desktop](./tailnet-roadmap-agent-browser-desktop.png)
 

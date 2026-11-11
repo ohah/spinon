@@ -38,10 +38,10 @@
     {
       "route": "/spinon/STATUS.html",
       "source": "packages/docs/build/tailnet-c114-sixfit-site/STATUS.html",
-      "bytes": 931690,
-      "sha256": "0c17e7d75a21a70167ed8cec536e2b50a76ee7a107ec73cf671f764e44435093",
-      "local_http": {"status": 200, "bytes": 931690, "sha256": "0c17e7d75a21a70167ed8cec536e2b50a76ee7a107ec73cf671f764e44435093"},
-      "tailnet_http": {"status": 200, "bytes": 931690, "sha256": "0c17e7d75a21a70167ed8cec536e2b50a76ee7a107ec73cf671f764e44435093"}
+      "bytes": 932122,
+      "sha256": "61e7922bd052af8121941ffb3d8e9721c8e5d59f569a3e3f011e6c06c060a013",
+      "local_http": {"status": 200, "bytes": 932122, "sha256": "61e7922bd052af8121941ffb3d8e9721c8e5d59f569a3e3f011e6c06c060a013"},
+      "tailnet_http": {"status": 200, "bytes": 932122, "sha256": "61e7922bd052af8121941ffb3d8e9721c8e5d59f569a3e3f011e6c06c060a013"}
     },
     {
       "route": "/spinon/internal/0059-c11-grid-layout.md",
@@ -54,10 +54,10 @@
     {
       "route": "/spinon/internal/0059-c11-grid-layout.html",
       "source": "packages/docs/build/tailnet-c114-sixfit-site/internal/0059-c11-grid-layout.html",
-      "bytes": 840463,
-      "sha256": "4daa2268e7a87855a39275f28b5f2271fb92006ef7b8f782009e05da429deffd",
-      "local_http": {"status": 200, "bytes": 840463, "sha256": "4daa2268e7a87855a39275f28b5f2271fb92006ef7b8f782009e05da429deffd"},
-      "tailnet_http": {"status": 200, "bytes": 840463, "sha256": "4daa2268e7a87855a39275f28b5f2271fb92006ef7b8f782009e05da429deffd"}
+      "bytes": 840895,
+      "sha256": "170069784f845e2f081d906ed6878ed4f8defee9473f810724d2fd830ab3e768",
+      "local_http": {"status": 200, "bytes": 840895, "sha256": "170069784f845e2f081d906ed6878ed4f8defee9473f810724d2fd830ab3e768"},
+      "tailnet_http": {"status": 200, "bytes": 840895, "sha256": "170069784f845e2f081d906ed6878ed4f8defee9473f810724d2fd830ab3e768"}
     },
     {
       "route": "/spinon/plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.md",
@@ -70,10 +70,10 @@
     {
       "route": "/spinon/plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.html",
       "source": "packages/docs/build/tailnet-c114-sixfit-site/plan/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.html",
-      "bytes": 35485,
-      "sha256": "6d3366f96ad55c5154a7599eff18b1e853563564c204d10b97c75d836e1ba590",
-      "local_http": {"status": 200, "bytes": 35485, "sha256": "6d3366f96ad55c5154a7599eff18b1e853563564c204d10b97c75d836e1ba590"},
-      "tailnet_http": {"status": 200, "bytes": 35485, "sha256": "6d3366f96ad55c5154a7599eff18b1e853563564c204d10b97c75d836e1ba590"}
+      "bytes": 35917,
+      "sha256": "4387cfbb2f0d2039df4a0882e2baa36baf54f6d00d8f2b86312b03a34ab4b0c6",
+      "local_http": {"status": 200, "bytes": 35917, "sha256": "4387cfbb2f0d2039df4a0882e2baa36baf54f6d00d8f2b86312b03a34ab4b0c6"},
+      "tailnet_http": {"status": 200, "bytes": 35917, "sha256": "4387cfbb2f0d2039df4a0882e2baa36baf54f6d00d8f2b86312b03a34ab4b0c6"}
     },
     {
       "route": "/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.md",
@@ -86,12 +86,68 @@
     {
       "route": "/spinon/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.html",
       "source": "packages/docs/build/tailnet-c114-sixfit-site/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-runtime-2026-11-11/README.html",
-      "bytes": 30137,
-      "sha256": "fa6f968bbb4ce5a3a1f731e74f5ebb6a761561627f7a68389c37da7ee4ae7c27",
-      "local_http": {"status": 200, "bytes": 30137, "sha256": "fa6f968bbb4ce5a3a1f731e74f5ebb6a761561627f7a68389c37da7ee4ae7c27"},
-      "tailnet_http": {"status": 200, "bytes": 30137, "sha256": "fa6f968bbb4ce5a3a1f731e74f5ebb6a761561627f7a68389c37da7ee4ae7c27"}
+      "bytes": 30611,
+      "sha256": "4089fe141ee70aa4ae225be0650f4d0a9adaad08790862c479e3dd6ca9cbd5ca",
+      "local_http": {"status": 200, "bytes": 30611, "sha256": "4089fe141ee70aa4ae225be0650f4d0a9adaad08790862c479e3dd6ca9cbd5ca"},
+      "tailnet_http": {"status": 200, "bytes": 30611, "sha256": "4089fe141ee70aa4ae225be0650f4d0a9adaad08790862c479e3dd6ca9cbd5ca"}
+    },
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/README.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/README.md",
+      "bytes": 4300,
+      "sha256": "da259c0f107c4b8128e9520366773d1f2057b4bc82ae7e09527916ec94d69b72",
+      "local_http": {"status": 200, "bytes": 4300, "sha256": "da259c0f107c4b8128e9520366773d1f2057b4bc82ae7e09527916ec94d69b72"},
+      "tailnet_http": {"status": 200, "bytes": 4300, "sha256": "da259c0f107c4b8128e9520366773d1f2057b4bc82ae7e09527916ec94d69b72"}
+    },
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/README.html",
+      "source": "packages/docs/build/tailnet-c114-sixfit-site/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/README.html",
+      "bytes": 27202,
+      "sha256": "ea7dc6408a43fc67519935e11b5cc0fb329e0aa53fdceb5d35172a8f1c02e273",
+      "local_http": {"status": 200, "bytes": 27202, "sha256": "ea7dc6408a43fc67519935e11b5cc0fb329e0aa53fdceb5d35172a8f1c02e273"},
+      "tailnet_http": {"status": 200, "bytes": 27202, "sha256": "ea7dc6408a43fc67519935e11b5cc0fb329e0aa53fdceb5d35172a8f1c02e273"}
+    },
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/pr-diff-review-30.md",
+      "bytes": 5812,
+      "sha256": "eac7266fc131848ac327f430ee67095e79ca84d44f3e5a046e725c80be9d69d6",
+      "local_http": {"status": 200, "bytes": 5812, "sha256": "eac7266fc131848ac327f430ee67095e79ca84d44f3e5a046e725c80be9d69d6"},
+      "tailnet_http": {"status": 200, "bytes": 5812, "sha256": "eac7266fc131848ac327f430ee67095e79ca84d44f3e5a046e725c80be9d69d6"}
+    },
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/pr-diff-review-30.html",
+      "source": "packages/docs/build/tailnet-c114-sixfit-site/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/pr-diff-review-30.html",
+      "bytes": 28210,
+      "sha256": "e1a42415dd3e528697784bdd2fcd9349b9858aba3def2a2fc3b7cda9f4536cb8",
+      "local_http": {"status": 200, "bytes": 28210, "sha256": "e1a42415dd3e528697784bdd2fcd9349b9858aba3def2a2fc3b7cda9f4536cb8"},
+      "tailnet_http": {"status": 200, "bytes": 28210, "sha256": "e1a42415dd3e528697784bdd2fcd9349b9858aba3def2a2fc3b7cda9f4536cb8"}
+    },
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/tailnet-roadmap-agent-browser-desktop.png",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/tailnet-roadmap-agent-browser-desktop.png",
+      "bytes": 174486,
+      "sha256": "cf6cbc6f62f10e07e0ef29ff8a437a4e4a7a069c366ebcf91241f0729f1d5eb8",
+      "local_http": {"status": 200, "bytes": 174486, "sha256": "cf6cbc6f62f10e07e0ef29ff8a437a4e4a7a069c366ebcf91241f0729f1d5eb8"},
+      "tailnet_http": {"status": 200, "bytes": 174486, "sha256": "cf6cbc6f62f10e07e0ef29ff8a437a4e4a7a069c366ebcf91241f0729f1d5eb8"}
+    },
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/tailnet-roadmap-agent-browser-mobile.png",
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/tailnet-roadmap-agent-browser-mobile.png",
+      "bytes": 55091,
+      "sha256": "139c00f4161cd784d792e94878159a8558fa19290dfa672cddf2e9e72e0c2d4b",
+      "local_http": {"status": 200, "bytes": 55091, "sha256": "139c00f4161cd784d792e94878159a8558fa19290dfa672cddf2e9e72e0c2d4b"},
+      "tailnet_http": {"status": 200, "bytes": 55091, "sha256": "139c00f4161cd784d792e94878159a8558fa19290dfa672cddf2e9e72e0c2d4b"}
     }
   ],
+  "additional_evidence_artifacts": {
+    "agent-browser-verification-desktop.json": {"route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/agent-browser-verification-desktop.json", "bytes": 323, "sha256": "7af7213df9b93f099ee8ac811c21c20114ee8056bc5863de080ff26293de7cd2", "local_http": 200, "tailnet_http": 200},
+    "agent-browser-verification-mobile.json": {"route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/agent-browser-verification-mobile.json", "bytes": 319, "sha256": "7721881069a3b41f5548a47b9e6ca063107942c4311b370cd8178181d9a557db", "local_http": 200, "tailnet_http": 200},
+    "status-agent-browser-verification.json": {"route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/status-agent-browser-verification.json", "bytes": 321, "sha256": "d4b9a6573ed652553aba60c387b0e0be7552767bfe326f0e7decd19bf6ba5149", "local_http": 200, "tailnet_http": 200},
+    "contract-agent-browser-verification.json": {"route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/contract-agent-browser-verification.json", "bytes": 339, "sha256": "78c7a47532b3849e9aaf5f7fefaa36ab39b9c75bb278874e3e13bce2f1989c28", "local_http": 200, "tailnet_http": 200},
+    "pr-image-agent-browser-verification.json": {"route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/pr-image-agent-browser-verification.json", "bytes": 1010, "sha256": "308ee1b08cf47817a66fe1f50a6fcb13950c234832300ad65b6da1e20cb23234", "local_http": 200, "tailnet_http": 200},
+    "agent-browser-lifecycle-final.json": {"route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr1354-c11-4-sixfit-2026-11-11/agent-browser-lifecycle-final.json", "bytes": 497, "sha256": "cd9a800b24822c3aa2bbb8730c60882d7aacdfcc85bb0deee756d2cca406d3aa", "local_http": 200, "tailnet_http": 200}
+  },
   "agent_browser_document_pages": {
     "status": {
       "route": "/spinon/STATUS.html",
@@ -114,6 +170,15 @@
   "agent_browser": {
     "desktop": {"viewport": "1440x1000", "document_width": 1440, "body_width": 1440, "horizontal_overflow": false, "pr1354": true, "merge_sha": true, "official_count_78_of_214": true, "c11_4_and_c11_incomplete": true, "six_fit_720_orders": true},
     "mobile": {"viewport": "390x844", "document_width": 390, "body_width": 390, "horizontal_overflow": false, "pr1354": true, "merge_sha": true, "official_count_78_of_214": true, "c11_4_and_c11_incomplete": true, "six_fit_720_orders": true},
+    "github_pr_1355_body_images": {
+      "url": "https://github.com/ohah/spinon/pull/1355",
+      "page_loaded": true,
+      "desktop": {"complete": true, "natural_width": 1440, "natural_height": 1000},
+      "mobile": {"complete": true, "natural_width": 390, "natural_height": 844},
+      "page_errors": 0
+    },
+    "dedicated_session": {"name": "spinon-c114-pr1354-roadmap", "closed": true, "active": false, "pid": null, "process_present": false},
+    "preserved_other_session": {"name": "hwpjs-host-print-focus-r1-after-preview", "active": true, "pid": 70988},
     "screenshots": {
       "desktop": {"path": "tailnet-roadmap-agent-browser-desktop.png", "bytes": 174486, "sha256": "cf6cbc6f62f10e07e0ef29ff8a437a4e4a7a069c366ebcf91241f0729f1d5eb8", "dimensions": "1440x1000"},
       "mobile": {"path": "tailnet-roadmap-agent-browser-mobile.png", "bytes": 55091, "sha256": "139c00f4161cd784d792e94878159a8558fa19290dfa672cddf2e9e72e0c2d4b", "dimensions": "390x844"}
