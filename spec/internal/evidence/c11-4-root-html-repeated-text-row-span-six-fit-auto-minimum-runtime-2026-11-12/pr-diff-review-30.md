@@ -32,7 +32,7 @@
 | 26 | DOM order 또는 `start/stretch` pair가 row/item/payload frame을 바꾸는가 | Matrix group 비교가 rows, item frames, payload frames를 모두 대조했다. 통과. |
 | 27 | Invalid revision이 partial layout을 게시하거나 같은 session을 영구적으로 망가뜨리는가 | Atomic rejection은 completed layout이 없음을 확인하고 valid revision recovery를 실행했다. 통과. |
 | 28 | 5-fit rejection fixture가 신규 six-fit admission으로 더 이상 invalid가 아니게 되는가 | 기존 negative input을 unsupported 51px cap으로 바꿔 의미를 유지했다. Atomic rejection test 통과. |
-| 29 | Simulator screenshot이나 default route smoke를 six-fit fixture geometry로 과장하는가 | Evidence와 PR template에 기본 route/light-dark smoke로 한정하고 fixture, PixelCopy, Metal readback 및 pixel parity 주장을 제외했다. 통과. |
+| 29 | Simulator screenshot이나 default route smoke를 six-fit fixture geometry로 과장하거나 PR image URL이 깨지는가 | Evidence와 PR 본문은 기본 route/light-dark smoke로 한정하고 fixture, PixelCopy, Metal readback 및 pixel parity 주장을 제외했다. Agent Browser에서 Android 2장과 iOS 2장이 모두 complete이며 각각 1080×2400, 1206×2622로 로드됨을 확인했다. 통과. |
 | 30 | 제한 profile을 C11.4 완료, 공식 완료 수 증가, public API 또는 내부 버전 변경으로 해석하는가 | STATUS checkbox 및 78/214, C11.4/C11 incomplete state와 0.1.0을 유지했고 public API/FFI 변경은 없다. 통과. |
 
-최종 push 후에는 PR의 base/head, 파일 목록, 로컬 tree와 원격 PR diff가 같은지도 확인한다. 수정 사항이 생기면 해당 검토 항목을 다시 실행한다.
+PR #1365의 초기 head `b7acfaea08d1a5721ff316d689576e0e72b83df8`는 base `678ccba25fe4e1a2b5605934808004504b1d9f19`보다 1 commit 앞서고 뒤처진 commit은 없었다. GitHub compare와 local `git diff origin/main...HEAD`의 파일 수는 각각 61이고, 원격 branch ref와 local commit SHA가 같았다. PR metadata는 `mergeable=true`; commit status와 Actions workflow run은 각각 0개라 CI 통과로 해석하지 않는다. Agent Browser 검증 세션을 닫았다. 이 검토 기록 갱신을 push한 뒤 현재 head/tree와 file list를 다시 확인한다. 수정 사항이 생기면 해당 관점과 영향 검사를 다시 실행한다.

@@ -2027,9 +2027,9 @@ Android API 37 ARM64 AVD/SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator light/
 구현 PR [#1360](https://github.com/ohah/spinon/pull/1360)은 `2026-11-11T16:13:47Z` Rebase and merge됐고 merge SHA는 `6b3475a0ee48741b7f2aaa30e8ee62b19618ef8d`다. GitHub Actions workflow run과 status check는 각각 0건이므로 CI green으로 세지 않는다. 이 제한 profile만 병합됐으며 C11.4/C11 및 공식 `78/214` 상태는 유지한다. 공개 API/FFI는 추가하지 않았고 내부 numeric contract `0.1.0`도 유지한다. [계획](../../plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md) · [Chrome·runtime·플랫폼 실행 근거](./evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/README.md) · [구현/runtime 검토 20개](./evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/implementation-pr-diff-review-30.md) · [병합 기록](./evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/merge-PR1360.md).
 
 
-## C11.4 parsed Root HTML repeated-text row-span · six-fit min-height:auto · bounded implementation candidate
+## C11.4 parsed Root HTML repeated-text row-span · six-fit min-height:auto · bounded implementation PR #1365
 
-**상태:** 구현·RuntimeSession 검증 완료, implementation PR pending. C11.4/C11은 미완료이며 공식 완료 78/214와 내부 numeric contract 0.1.0은 유지한다.
+**상태:** 제한 구현과 RuntimeSession 검증을 PR #1365에 기록했다. C11.4/C11은 미완료이며 공식 완료 78/214와 내부 numeric contract 0.1.0은 유지한다.
 
 기존 six-row repeated-text row-span profile에서 grid-auto-rows가 정확히 여섯 개의 fit-content() member이고 typed cap multiset이 [0px, 10px, 20%, 30px, 40px, 50px]인 경우만 추가한다. authored cap order는 모두 유지한다. Grid는 definite 40×220px, explicit 40px column과 빈 explicit 10px control row를 갖는다. 여섯 positive implicit rows를 덮는 두 고정 row-span topology, source-order forward/reverse, LTR sparse row flow, zero gap, visible overflow, align-content:start|stretch만 허용한다. span text item의 computed min-height는 scene 안에서 모두 0 또는 모두 auto여야 하며 control row는 항상 0이다.
 

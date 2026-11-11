@@ -1,6 +1,6 @@
 # C11.4 repeated-text row-span six-fit `min-height:auto`
 
-**상태:** 제한된 구현과 RuntimeSession 검증 완료 · PR 작성 전 · 공식 `78/214`, C11.4/C11 미완료 유지
+**상태:** 제한된 구현과 RuntimeSession 검증 완료 · 구현 PR [#1365](https://github.com/ohah/spinon/pull/1365) · 공식 `78/214`, C11.4/C11 미완료 유지
 
 ## 범위
 
