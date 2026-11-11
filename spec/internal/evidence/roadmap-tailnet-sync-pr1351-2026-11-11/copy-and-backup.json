@@ -1,0 +1,471 @@
+{
+  "recordedAt": "2026-11-11T04:57:12.889Z",
+  "sourceHead": "07cfec2968c571e3cd150fe3a32ec91a3d4841d4",
+  "sourceTree": "af4390492087543242371be2b781b01f5d32d619",
+  "publicationRouteCount": 75,
+  "createdCount": 36,
+  "replacedCount": 25,
+  "identicalCount": 14,
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1351-2026-11-11/pass01",
+  "backups": [
+    {
+      "route": "index.html",
+      "sha256": "5956b15ce14706fafbdf9115ab23d4c72d0a3937bda8a9784b981b2082df612e",
+      "verified": true
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "28c941b146cceb401a057682051bdee79ac6fb3784e95793bd347d85cc796689",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.html",
+      "sha256": "5f3c21174c4a2bfab41b73c73d449069133762b6ff2a12947f25ced5fa6f5666",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.html",
+      "sha256": "ccfc7a1bb7a6489e63d56915ed75cf33a01b241368321a9be9ecee4481beed2e",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.html",
+      "sha256": "d3ffe19800d99ebd17ec6e6f1b94acbc185b12187ef74e2ad4cb3e1f1e2511eb",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.html",
+      "sha256": "ffcb9ed8498402fe21d20cd5df364e1996859dd3593f2085f75ff8ec5f69d6d5",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.html",
+      "sha256": "06421ed42b5f36279032830fdc2a6ced6ecfb6f517eb99c26fea70ccf31e91a6",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.html",
+      "sha256": "4f58cfca2138a0fc97f5f692008a01621a823b7eb9243b166704a38ab8442d35",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.html",
+      "sha256": "7cf6a82b2cf482e65b5b7ea28c698e1aa3e018680abaec94622cb6ef0683a06d",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.html",
+      "sha256": "efc34eab67deced5d148775e74644d461177723211a1638d2f1ba02843b632b0",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.html",
+      "sha256": "22d48b4c2406d8a2fad7bbbb7b0155e91086368d2df31a290c045ead4d6ca9a2",
+      "verified": true
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.html",
+      "sha256": "db3971969219679f7c83ee2b42502a3a44e89e697b848ca8c0433fad73be0d0a",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sha256": "7df7fad65b9eb92867a815994d78b3e5485c3f6ed19a7bbc6149ad2c04b8d219",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.html",
+      "sha256": "6eb326acd399cac8cc648a3ffb39b7061d3c4a60e797f4971d2c7b6ab69ff6de",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.html",
+      "sha256": "27f06ecae33daa932264401aa45f7aa287fca05a14ddc4c047db4fdd72e9f8a4",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.html",
+      "sha256": "1cb60f5644404f4b90a47a672b37e1ac76604c40fdf185c61e3164173581e687",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.html",
+      "sha256": "7a366251b844612f794b3c9a3dd1ed41340e54b493e9afb83d7ae977e1b5c767",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.html",
+      "sha256": "6dc3441bafbef4a2f8742a772947ea697df512dc9d108f87cba9e5a97f4ff67b",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.html",
+      "sha256": "8cb445db6cf426bcdd1cf5bbff2800fbaa54b9c264815bc970f9522d1f73966a",
+      "verified": true
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.html",
+      "sha256": "f29bee38160802534ceca5c93825a77c6bd019e2029cd77de61c2dff316658f2",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.html",
+      "sha256": "6309f57da1e52c893dd9776e66124a6fb642fe69a8441d7d3153dbd423065814",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.html",
+      "sha256": "cc968a8e91f6e0fc9260e3855ca781869013c5ba70488202efa4e57397b7cc7e",
+      "verified": true
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.html",
+      "sha256": "c2085d2e1497c5b120a0032182b2c673b318131ede727d0ad3d10b3785a00fca",
+      "verified": true
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sha256": "723209dc0e1d631615b4e9efa0dbe61c8a26e7136f14f4c9160b4504788d7bff",
+      "verified": true
+    },
+    {
+      "route": "STATUS.html",
+      "sha256": "c0aa261454209769e33da15dbc24da9c1583618daca6e047b8b294e9425b3326",
+      "verified": true
+    }
+  ],
+  "created": [
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/plan-pr-diff-review-30.html",
+      "sha256": "40cf94a2f7de6636448d72684703ef5ffe7e412fe80af8b900f73cdb58155b52"
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/README.html",
+      "sha256": "76d85c3ab8e0011a9ab52c2981ebc874ee39756d256a1e4136a07704963ded85"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/plan-pr-diff-review-30.html",
+      "sha256": "2a25e2164a877ab13bf8be6560efc68eb72021f23bb4e1e09af449bec242de0c"
+    },
+    {
+      "route": "spec/internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/README.html",
+      "sha256": "de0cd89246325f8d54f101f8717279136f063a575324ff847211417726780682"
+    },
+    {
+      "route": "static/js/async/route-0b1429801fc0.4edf623be9.js",
+      "sha256": "e9383e52c87fe848c7d297eabb1a6e658a7ab472cde54485978231304d1a30ef"
+    },
+    {
+      "route": "static/js/async/route-19020c0f7e16.337df8be89.js",
+      "sha256": "2d69c2a86aa5ce80c7c678a401b0c7598d902cadca6315ce093d3656cd88a8d1"
+    },
+    {
+      "route": "static/js/async/route-1ef3d76572ba.90dfb51b57.js",
+      "sha256": "44699631a45b211a42eb989d4796ec01b8430d652395f631e03b17fb367e85e2"
+    },
+    {
+      "route": "static/js/async/route-22fe589d044a.d4eef78d2d.js",
+      "sha256": "a92af5f02a1ff285b432f71046abb8ddfe45b524741c48663a93b5a8d410f537"
+    },
+    {
+      "route": "static/js/async/route-2308615ee227.8960e95987.js",
+      "sha256": "d2a1dcac1799d220ddc9a39bdc41ca7b1580d5ac2284a35bcb07003b856893bc"
+    },
+    {
+      "route": "static/js/async/route-2d13d81a6aab.36533d2ae4.js",
+      "sha256": "1a98c6f5b3f80393612186987bbada6aca1db49adabe4ad15ddd92485e0bd3a7"
+    },
+    {
+      "route": "static/js/async/route-336c6301bb98.3a368d1f7b.js",
+      "sha256": "e1739ce72512a4c8ce9293620b89c1f214580ea742415c0dfeab0f994a7b1e7a"
+    },
+    {
+      "route": "static/js/async/route-57878b6abb2a.826de9fd9f.js",
+      "sha256": "448d9f0eab32eaeba11ef6b8471179969fb39b48e95b037d676378ec95f1921c"
+    },
+    {
+      "route": "static/js/async/route-5ce05afc6471.032a6c4df8.js",
+      "sha256": "da5dea5b0fa14d9a27a38f65e2cf2941a77561f0bbef62d4ac697d75d002fb5d"
+    },
+    {
+      "route": "static/js/async/route-642640633240.1770dba4bc.js",
+      "sha256": "d02bfbb1cc44158d0ffa5a33cf3aab5becc2c30d405157e147541d4eed499a5a"
+    },
+    {
+      "route": "static/js/async/route-6491b8fa83ac.5af73657a5.js",
+      "sha256": "bf47a16fcaa26bfac2f35006a1a766a5354bfbc9d96e8d60932790281b8db146"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.ed19bb088f.js",
+      "sha256": "b1611880cfe04feca632e54bb0bcc54c37e233d3f8b64d13b4404e273d370d40"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.8f677738ff.js",
+      "sha256": "ba206e342c3a5b792b420517e34abe9af56d15633e996d00bf2202d703c258bf"
+    },
+    {
+      "route": "static/js/async/route-7b38f7872c09.7709f6214f.js",
+      "sha256": "64aae3376c28121cb3888cd4691c61935bef11617b704f169997d5a745d6e76a"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.8cdc00fc86.js",
+      "sha256": "d0d6ba585e7db8b6d293d25818a94c2058975754b9a1de5fe4b65e08a27f1bb2"
+    },
+    {
+      "route": "static/js/async/route-836f7477ace1.d6e704dc9c.js",
+      "sha256": "3d00c38cb4729f60aa82b5e7625d39a052458f2bc55520679528ecd2cfa65948"
+    },
+    {
+      "route": "static/js/async/route-85ada3356234.b7abd4f970.js",
+      "sha256": "5f8ac973d4408f201718683ec0eff60fdcbbbdc6517d7ef3ed7524b56dad548a"
+    },
+    {
+      "route": "static/js/async/route-8c245bb8d3fb.2ee4410523.js",
+      "sha256": "9a78bca413b7beaca51121c56d1569836fc262569d04dfd5566967b8026ce314"
+    },
+    {
+      "route": "static/js/async/route-995a66b1c489.c90e92cea6.js",
+      "sha256": "8a96c03d5aa3d50d42d954464bba7205e451a892d43ac5884121adb04c3d4ab1"
+    },
+    {
+      "route": "static/js/async/route-9dd917acb4b5.ab6ca149d4.js",
+      "sha256": "2c11d518fb6574a882151f76f35387d2fac8465eb9b4990f5dfe582e163c59f3"
+    },
+    {
+      "route": "static/js/async/route-a07a572f9413.c579dc1990.js",
+      "sha256": "597c2f97660d3b5404e354b659d29a59cb7f7e15fb0483303c77e638b8951d7a"
+    },
+    {
+      "route": "static/js/async/route-a9cc326fff35.dc34810a22.js",
+      "sha256": "9fd1be6abb2f55c569bd716478b548f0043e3d7182d44ff5f0067531f82b94b4"
+    },
+    {
+      "route": "static/js/async/route-b45bd7edff7b.fc0a5f59bf.js",
+      "sha256": "0454f95c1fae9528c72b2eabc192be1067960c28014cb50a87e303d321fd99e7"
+    },
+    {
+      "route": "static/js/async/route-bae3320604ee.e6205b0e82.js",
+      "sha256": "9b2607fd88dbed4f6a78eb76ee0f2e01bcb6cb43069326daac0ffd9ae47fd848"
+    },
+    {
+      "route": "static/js/async/route-c19177638a05.d2454a754f.js",
+      "sha256": "991ace4123f658fba32d5bd5e5d2adfc3f8f3b832b12ee4e940e7e447c54741e"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.c15d217cda.js",
+      "sha256": "5c4464fd1fd0f3116a0365f05088066f53bdb18e7b94638db027765bc862c32d"
+    },
+    {
+      "route": "static/js/async/route-d1a94cca9c4a.ff530f73df.js",
+      "sha256": "7c17681cb8d19b7fe45d22fa579d96d1c5251cf350adb8e1552a05f280307313"
+    },
+    {
+      "route": "static/js/async/route-ddfea63650fd.bb033763e7.js",
+      "sha256": "f77eef547b1107706e8dda2e2e4a7551a5fd8e37fba86451d5a2076ea4047e62"
+    },
+    {
+      "route": "static/js/async/route-f24a9b4331ed.27e3a1e9a4.js",
+      "sha256": "69cfb4356e92ba0fb74f7d57bce784e401b80c945a3e98023c566190b710513f"
+    },
+    {
+      "route": "static/js/async/route-f569f1d19c37.f27f57e1e4.js",
+      "sha256": "ebeeaeb8edfdf12f84e376af9877435ced5d01bafb972a17aa954c5935d0ca1e"
+    },
+    {
+      "route": "static/js/index.a19d6bf2b0.js",
+      "sha256": "d66afe2675cc754c21555a00f8e265728aa54aad3e7addf455292a1af00d4af6"
+    },
+    {
+      "route": "static/search_index.ko.ea33fa5c.json",
+      "sha256": "ea33fa5c042ad0937a644443fab91f6b53c1ad9b6e21fe3711b12ef899ef5fb1"
+    }
+  ],
+  "replaced": [
+    {
+      "route": "index.html",
+      "sha256": "b0b84341c054f20969029388874832af1fd8f2306e946c41d866a2e12593e5e4",
+      "previousSha256": "5956b15ce14706fafbdf9115ab23d4c72d0a3937bda8a9784b981b2082df612e"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "c7526453c07ca15e0017e7b99d7cef6f8cf1df82af987af30f75cc6384b88244",
+      "previousSha256": "28c941b146cceb401a057682051bdee79ac6fb3784e95793bd347d85cc796689"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.html",
+      "sha256": "1aa703814210d289c13288cd4bc9af93bd5095a68f42691e5782d76fb3670660",
+      "previousSha256": "5f3c21174c4a2bfab41b73c73d449069133762b6ff2a12947f25ced5fa6f5666"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.html",
+      "sha256": "a31f350d03e5b820f2447a68048efdadd87447161dfbc61acf3aafc36116f6cb",
+      "previousSha256": "ccfc7a1bb7a6489e63d56915ed75cf33a01b241368321a9be9ecee4481beed2e"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.html",
+      "sha256": "4ba41a71136ddb71fbcb4d3b7737eaf4ef21bfaca8bbeeeaf285c88654495179",
+      "previousSha256": "d3ffe19800d99ebd17ec6e6f1b94acbc185b12187ef74e2ad4cb3e1f1e2511eb"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.html",
+      "sha256": "87d5710ec2fcfffaa01fa0d91d2994551874a0c5d1757d1b5f6ffbb3b449614c",
+      "previousSha256": "ffcb9ed8498402fe21d20cd5df364e1996859dd3593f2085f75ff8ec5f69d6d5"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.html",
+      "sha256": "a373c1f4b699e85b5eaab5c70ebe92f1f48e3ad3d9788c0188fff9c629e24807",
+      "previousSha256": "06421ed42b5f36279032830fdc2a6ced6ecfb6f517eb99c26fea70ccf31e91a6"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.html",
+      "sha256": "825cb721f10c3db9320bd5a6a4aeed492da8a50e1b3d4498e84ef70ec071b295",
+      "previousSha256": "4f58cfca2138a0fc97f5f692008a01621a823b7eb9243b166704a38ab8442d35"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.html",
+      "sha256": "79ecc9d7432401ead342ab344ac4d7225e53fef0c79c3d4836711de9ec5f1b29",
+      "previousSha256": "7cf6a82b2cf482e65b5b7ea28c698e1aa3e018680abaec94622cb6ef0683a06d"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.html",
+      "sha256": "b62881f7b0ba6b4f9039652d24ad833f12bec9c6d54a77cbad3e3e43fc43a615",
+      "previousSha256": "efc34eab67deced5d148775e74644d461177723211a1638d2f1ba02843b632b0"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.html",
+      "sha256": "f57ecbe520ede2cba4b9de64c588c1a3384ce1ac2657d1bf20ffa8893301f114",
+      "previousSha256": "22d48b4c2406d8a2fad7bbbb7b0155e91086368d2df31a290c045ead4d6ca9a2"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.html",
+      "sha256": "e28f48cdf10ccd32e9552ad19e7292b5ddfd2ca4297806772a316262b7b12dd4",
+      "previousSha256": "db3971969219679f7c83ee2b42502a3a44e89e697b848ca8c0433fad73be0d0a"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sha256": "5fda5a1a129e2e73795a6eba9248a2a0c1f7e1b9c7a4b4940c35bfd25b84ad18",
+      "previousSha256": "7df7fad65b9eb92867a815994d78b3e5485c3f6ed19a7bbc6149ad2c04b8d219"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.html",
+      "sha256": "dccdbe35580429996a6a286cfd2efb8b8e7bb374868bc7577fb354941f27d9ef",
+      "previousSha256": "6eb326acd399cac8cc648a3ffb39b7061d3c4a60e797f4971d2c7b6ab69ff6de"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.html",
+      "sha256": "a7cb836f5e95f3932c37a024ee176059ce42d073ecfc4a96e35d9af8d147927a",
+      "previousSha256": "27f06ecae33daa932264401aa45f7aa287fca05a14ddc4c047db4fdd72e9f8a4"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.html",
+      "sha256": "0b1f8a98b2557187ed80a88fe623742aec3acb220e0d081c2a5580c81f787999",
+      "previousSha256": "1cb60f5644404f4b90a47a672b37e1ac76604c40fdf185c61e3164173581e687"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.html",
+      "sha256": "ef686b54f6bd17df72a833f6c1debdbb1fa8641242a91ff8a282edb893942c06",
+      "previousSha256": "7a366251b844612f794b3c9a3dd1ed41340e54b493e9afb83d7ae977e1b5c767"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.html",
+      "sha256": "d4f309bc6997ba38f7e51a39d98deae805b5cf400970f8d9cd401e5625f4ba9d",
+      "previousSha256": "6dc3441bafbef4a2f8742a772947ea697df512dc9d108f87cba9e5a97f4ff67b"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.html",
+      "sha256": "e910601581a7313d9e6fdc9653c604249bf80bd9e5d7a10465ba224f567ac8b3",
+      "previousSha256": "8cb445db6cf426bcdd1cf5bbff2800fbaa54b9c264815bc970f9522d1f73966a"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.html",
+      "sha256": "9aefb40ca94682fa9fb2b079c407eeefd9cdb509aaef64164d7d5b8c2292ee39",
+      "previousSha256": "f29bee38160802534ceca5c93825a77c6bd019e2029cd77de61c2dff316658f2"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.html",
+      "sha256": "e28f11180dee9c9527dc77f3e7ee22a28f06c3f1aad2658784fd590b84743865",
+      "previousSha256": "6309f57da1e52c893dd9776e66124a6fb642fe69a8441d7d3153dbd423065814"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.html",
+      "sha256": "717a764cbf6e99b75ffc4e04b5f9c3cc1e74c52cf02ff820f6c47597332c2fa9",
+      "previousSha256": "cc968a8e91f6e0fc9260e3855ca781869013c5ba70488202efa4e57397b7cc7e"
+    },
+    {
+      "route": "spec/plan/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.html",
+      "sha256": "b5e550a7fb543157a49a23b516d61dbbd3e7cd5c0f98085dbda48eb8da8c625a",
+      "previousSha256": "c2085d2e1497c5b120a0032182b2c673b318131ede727d0ad3d10b3785a00fca"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sha256": "e0f57a2c1cdfafe47cd4441289f6c57db91094b26098afa6166ce6c87a30d5f0",
+      "previousSha256": "723209dc0e1d631615b4e9efa0dbe61c8a26e7136f14f4c9160b4504788d7bff"
+    },
+    {
+      "route": "STATUS.html",
+      "sha256": "d20f208d1bf9e8b6cfcd7893545e22e2dffd46ae1a4ef19ec7a8665473b14c59",
+      "previousSha256": "c0aa261454209769e33da15dbc24da9c1583618daca6e047b8b294e9425b3326"
+    }
+  ],
+  "identical": [
+    {
+      "route": "icon.svg",
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "route": "logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "route": "roadmap.html",
+      "sha256": "8ce99fb9bd408d88f1080d65247857989f45de5e418456020f023fc45b6bb118"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "sha256": "71b4ffe4110d05b5561063f9c6dd9e77f56397ee094fdce42c03dcaf3fe01898"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/js/a.877e354479.js",
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "route": "static/js/a.877e354479.js.LICENSE.txt",
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "route": "static/js/async/i.25208e7c92.js",
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js",
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "route": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js",
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "route": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "route": "static/js/styles.d2a6dfa6a0.js",
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2"
+    },
+    {
+      "route": "STATUS.md",
+      "sha256": "71b4ffe4110d05b5561063f9c6dd9e77f56397ee094fdce42c03dcaf3fe01898"
+    }
+  ],
+  "noDeletes": true,
+  "serverPid": 90711,
+  "serverRestarted": false
+}

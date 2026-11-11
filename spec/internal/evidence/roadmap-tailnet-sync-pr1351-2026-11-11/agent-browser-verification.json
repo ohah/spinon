@@ -1,0 +1,81 @@
+{
+  "checkedAtUtc": "2026-11-11T04:59:52Z",
+  "browser": "Agent Browser CLI",
+  "session": "spinon-tailnet-pr1351-final-20261111",
+  "sessionClosedAfterCheck": true,
+  "sessionActiveAfterClose": false,
+  "terminalBrowserUsed": false,
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "expectedText": [
+        "PR #1349 Rebase and merge",
+        "b0725665e31cc50ed6eb65a4083a1b94245dea36",
+        "공식 78/214",
+        "C11.4/C11 미완료"
+      ],
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 1200,
+          "documentWidth": 1280,
+          "bodyWidth": 1280,
+          "screenshot": "tailnet-roadmap-desktop-agent-browser.png"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "officialStatusLoaded": true,
+          "screenshot": "tailnet-roadmap-mobile-agent-browser.png"
+        }
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.html",
+      "title": "C11.4 다섯 fit repeated-text auto-placement min-height:auto - 스피논 문서",
+      "expectedText": [
+        "병합 상태 문서 PR #1350",
+        "9949b1e35a90c174e4ac67f37978b46ce60873b4",
+        "Tailnet roadmap 및 계획 경로 동기화 완료",
+        "C11.4/C11 미완료",
+        "공식 78/214 유지"
+      ],
+      "staleTextAbsent": ["merge-state 문서 동기화 중"],
+      "evidenceLink": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/README.html",
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 1200,
+          "documentWidth": 1280,
+          "bodyWidth": 1280,
+          "evidenceLinkPresent": true,
+          "screenshot": "tailnet-plan-desktop-agent-browser.png"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "evidenceLinkPresent": true,
+          "screenshot": "tailnet-plan-mobile-agent-browser.png"
+        }
+      ]
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/README.html",
+      "title": "PR #1350 post-merge Tailnet roadmap sync - 스피논 문서",
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 1200,
+          "documentWidth": 1280,
+          "bodyWidth": 1280,
+          "screenshotLinksPresent": true
+        }
+      ]
+    }
+  ]
+}
