@@ -48,6 +48,8 @@ Resource cleanup was verified after the smoke: the task-owned iOS clone and Andr
 
 `SHA256SUMS` records the hashes of the evidence files in this directory. Failed diagnostic attempts are deliberately preserved alongside corrected passing runs so their cause remains reviewable.
 
+The implementation diff review is in `implementation-runtime-review-20.md`; the separate review of the opened PR diff is in `implementation-pr-review-30.md`.
+
 ## Logs
 
 - `six-fit-runtime-matrix.log`, `six-fit-focused-final.log`, `six-fit-trace-final-rerun.log`: 5,760-scene RuntimeSession matrix, focused controls/rejections/recovery, and trace.
