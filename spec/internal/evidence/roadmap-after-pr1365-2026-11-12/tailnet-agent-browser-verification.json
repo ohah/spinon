@@ -1,0 +1,39 @@
+{
+  "schema": "spinon.tailnet-roadmap-agent-browser-verification/v1",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "sourceCommit": "5a7ed74d197c78d287cc12a0823a2abc77050f3f",
+  "browser": "Agent Browser 0.31.1",
+  "desktop": {
+    "viewport": { "width": 1440, "height": 1000 },
+    "documentWidth": 1440,
+    "bodyWidth": 1440,
+    "summaryWidthCssPx": 1068.1875,
+    "checkedTasks": 78,
+    "totalTasks": 214,
+    "nextCard": "C11.4 remaining Grid scope review for the next bounded slice",
+    "nextCardStage": "#1365 merged · next candidate not selected"
+  },
+  "mobile": {
+    "viewport": { "width": 390, "height": 844 },
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "checkedTasks": 78,
+    "totalTasks": 214,
+    "nextCard": "C11.4 remaining Grid scope review for the next bounded slice",
+    "nextCardStage": "#1365 merged · next candidate not selected"
+  },
+  "incompleteStatusPreserved": "C11.4/C11",
+  "screenshots": [
+    {
+      "file": "tailnet-roadmap-desktop-agent-browser.png",
+      "bytes": 205037,
+      "sha256": "bce2792522dae1fecca800678cb7a29e6fbc76154cad1e22f6c153a40576d41c"
+    },
+    {
+      "file": "tailnet-roadmap-mobile-agent-browser.png",
+      "bytes": 69655,
+      "sha256": "e20017d12605beba7e6be75e0ad2edaf55f7636c88b1a5ad288209f9bc6ae7c2"
+    }
+  ]
+}

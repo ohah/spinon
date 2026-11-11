@@ -1,0 +1,49 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 157 ms.
+ready   built in 1.53s (web)
+ready   built in 1.53s (node)
+
+File (web)                                                                                           Size        Gzip
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/styles.b5d9a69293.js                     0.47 kB     0.23 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-d8b63fe8c2ee.27a17a672d.js   5.0 kB      1.9 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-e62c98f6d861.d0520c39a8.js   7.4 kB      2.8 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-4430e664f021.9504f87d00.js   8.7 kB      2.9 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-e47ac19cca05.3b8d5e0161.js   9.7 kB      3.1 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-edc23fc0e76d.161cca0a57.js   12.0 kB     3.9 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-e88c67f45b52.9bd5fcdb7a.js   12.5 kB     3.8 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-73d030d09017.9a9977910e.js   13.9 kB     4.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-273fd5282e24.6a19ab77e6.js   15.3 kB     5.0 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/index.8599f8c8b6.js                      102.6 kB    24.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/3.d8b550a68d.js                          217.1 kB    72.0 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-04cbcabea10a.23c37a99cc.js   394.8 kB    78.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-c4dae6800800.b52ee76d92.js   898.3 kB    187.8 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-7ce2535ac56d.d985eae104.js   1017.2 kB   206.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/js/async/route-6c33a3943990.58dd873640.js   1017.3 kB   206.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/static/search_index.ko.e7c1ad0b.json               1956.7 kB   561.7 kB
+
+                                                                                            Total:   6017.5 kB   1463.0 kB
+
+File (node)                                                                                                                                                                                Size        Gzip
+build/spinon/roadmap-after-pr1365-2026-11-12/site/404.html                                                                                                                                 8.5 kB      2.6 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/platform-smoke.html                     24.0 kB     5.2 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/README.html                             26.0 kB     6.0 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-review-20.html                                                     26.2 kB     6.1 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.html   27.2 kB     6.4 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-pr-diff-review-30.html                                             28.5 kB     7.1 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/README.html                       31.2 kB     7.3 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/pr-diff-review-30.html                  31.9 kB     7.9 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.html                                                                    34.0 kB     8.3 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/plan/c11-4-grid-track-sizing.html                                                                                                        401.4 kB    82.2 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/internal/0059-c11-grid-layout.html                                                                                                       855.4 kB    188.4 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/spec/STATUS.html                                                                                                                         938.9 kB    206.7 kB
+build/spinon/roadmap-after-pr1365-2026-11-12/site/STATUS.html                                                                                                                              939.0 kB    206.7 kB
+
+                                                                                                                                                                                  Total:   3372.1 kB   741.0 kB

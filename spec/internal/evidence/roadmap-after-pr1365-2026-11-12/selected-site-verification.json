@@ -1,0 +1,162 @@
+{
+  "schema": "spinon.tailnet-preview-selected-site-verification/v1",
+  "sourceCommit": "5a7ed74d197c78d287cc12a0823a2abc77050f3f",
+  "rspressVersion": "2.0.22",
+  "selectedPagesOnly": true,
+  "selectedPageCount": 8,
+  "referencedStaticAssets": 14,
+  "fullDocsDeadLinkCheck": false,
+  "fullSiteBuildClaim": false,
+  "pages": [
+    {
+      "route": "STATUS.html",
+      "bytes": 938956,
+      "sha256": "96642574bc5bb378d292edf87a781a431419604cafac6799b4678401ed8e10a8",
+      "markers": [
+        "1365",
+        "78/214",
+        "C11.4"
+      ]
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 938884,
+      "sha256": "5cfa2f995e84d4ef61c2556ac076657a0ade95be254856e75e1ef74bb8a40a12",
+      "markers": [
+        "1365",
+        "78/214",
+        "C11.4"
+      ]
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 401395,
+      "sha256": "98d9ec64b4af7c3904ea6963559335f4a8c32f51eca9dffc3c40cd7b99371186",
+      "markers": [
+        "1365",
+        "다음 bounded 후보",
+        "78/214"
+      ]
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.html",
+      "bytes": 34014,
+      "sha256": "5f2168e36e418b6aa82eb0e13f09d970de7db38b8307802cec25bd12a47e4ce6",
+      "markers": [
+        "RuntimeSession",
+        "검증 완료",
+        "#1365",
+        "78/214"
+      ]
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 855437,
+      "sha256": "905b113f4804b3b636520331f1432bb42d4c36c913b27355043e9ad1a86e8753",
+      "markers": [
+        "1365",
+        "C11.4"
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/README.html",
+      "bytes": 25954,
+      "sha256": "0a302639bf3ca8b83ab08646ac97e7c0cb8353243a3fe47d08844bf781a09686",
+      "markers": [
+        "11,520",
+        "544 passed / 1 failed",
+        "PR #1365"
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.html",
+      "bytes": 27177,
+      "sha256": "d594fd5f9d7a010e1d295b40f9cfbe02218e6c33d5d1c9dc5b7ebcad5a4e1593",
+      "markers": [
+        "20개",
+        "C11.4"
+      ]
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/pr-diff-review-30.html",
+      "bytes": 31925,
+      "sha256": "f3ef5b7d9b155017111aebe6fb1a020c94b4dde03df259340030bb61b6ee5c5d",
+      "markers": [
+        "30개",
+        "PR #1365"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.23c37a99cc.js",
+      "bytes": 394849,
+      "sha256": "f47941a0fc1288dac401f098720cb328d21d68102444933ae0a108598c0a0662"
+    },
+    {
+      "route": "static/js/async/route-273fd5282e24.6a19ab77e6.js",
+      "bytes": 15320,
+      "sha256": "3c5947fb4f6d1a1328eda4689254be698a4c432f2ba4a4df0eff1ce9d80ff081"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.58dd873640.js",
+      "bytes": 1017328,
+      "sha256": "daad116255c9e66863f572d8b922f915c87bc42b85b66869dda31680cd1b39f1"
+    },
+    {
+      "route": "static/js/async/route-73d030d09017.9a9977910e.js",
+      "bytes": 13939,
+      "sha256": "158ee029529e4cf9f10ddfb197e0a2c2320a7c7eca33aaebe93586e53f5df3f1"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.d985eae104.js",
+      "bytes": 1017164,
+      "sha256": "d395bc6708ef66e33bca76210215d384e0337f696ee5740a860d292ea386e600"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.b52ee76d92.js",
+      "bytes": 898286,
+      "sha256": "49cb57d660139f2f73dbaa85974bd131d97bb49170ccdae9302604dc4fe01e89"
+    },
+    {
+      "route": "static/js/async/route-e47ac19cca05.3b8d5e0161.js",
+      "bytes": 9705,
+      "sha256": "cce1932bdbb4503c39f79babaa4a3d5eacf31b3c8994e15911c6c11eb7408753"
+    },
+    {
+      "route": "static/js/async/route-e62c98f6d861.d0520c39a8.js",
+      "bytes": 7384,
+      "sha256": "cc3442885fd6bcbd613659bdf6ccb8e21b1e2dae16dff2832ca142196a5a653f"
+    },
+    {
+      "route": "static/js/index.8599f8c8b6.js",
+      "bytes": 102599,
+      "sha256": "92fd1361187787c6e1499c6f8597e247eef21789f954fabd45cce0cb22a9a406"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "route": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    }
+  ]
+}
