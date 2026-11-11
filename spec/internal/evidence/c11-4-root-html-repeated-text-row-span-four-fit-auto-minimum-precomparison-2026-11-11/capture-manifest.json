@@ -1,0 +1,34 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-four-fit-auto-minimum-precomparison.capture.v1",
+  "capturedAtUtc": "2026-11-11T09:17:23.359Z",
+  "browserCli": "/opt/homebrew/bin/agent-browser",
+  "session": "spinon-c114-four-fit-row-span-auto-minimum-20261111",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-four-fit-auto-minimum-precomparison.html",
+    "sha256": "d11c769e6be2dd3b57eb29a03d88274a36243276b11a15c074c8713ed0b6a5b4"
+  },
+  "collector": {
+    "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum-precomparison-2026-11-11/capture-chrome.mjs",
+    "sha256": "94a75f4b327603b1ae7782638ba0ef153044ead5182975f593e1f2d12dce5089"
+  },
+  "sceneCount": 11520,
+  "observations": "chrome157-observation.ndjson",
+  "sampleScreenshot": "chrome157-four-fit-auto-minimum-sample.png",
+  "agentBrowserVersion": "0.31.1",
+  "chromeBinary": {
+    "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "sha256": "c9a0f292a25c3771f1895ec3397d2cbbee3ce07ce967acd35f34a38978b4aacd"
+  },
+  "environment": {
+    "macOS": "26.5.1",
+    "architecture": "arm64",
+    "node": "v24.19.0",
+    "devicePixelRatio": 1,
+    "viewport": [
+      1280,
+      900
+    ]
+  }
+}
