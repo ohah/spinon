@@ -1,0 +1,22 @@
+{
+  "schema": "spinon.task-browser-lifecycle/v1",
+  "closedSessions": [
+    "roadmap-pr1365-candidate",
+    "roadmap-pr1366-images",
+    "roadmap-tailnet-pr1365-final"
+  ],
+  "candidateHttpServer": {
+    "port": 58084,
+    "stopped": true
+  },
+  "iosSimulator": {
+    "bootedDeviceCount": 0,
+    "simulatorAppProcessPresent": false
+  },
+  "sharedTailnetPreview": {
+    "pid": 90711,
+    "port": 8768,
+    "retained": true
+  },
+  "unrelatedTerminalBrowserTouched": false
+}
