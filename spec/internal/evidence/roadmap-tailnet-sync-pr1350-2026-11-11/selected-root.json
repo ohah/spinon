@@ -1,0 +1,961 @@
+{
+  "sourceHead": "9949b1e35a90c174e4ac67f37978b46ce60873b4",
+  "sourceTree": "5f951866fb64acfce18d831e7b36151a0d19566a",
+  "selectedTrackedSourcePaths": 99,
+  "selectedRootFileCount": 190,
+  "selectedRootBytes": 69922601,
+  "includesUntrackedFiles": false,
+  "outputRoot": "build/spinon/roadmap-tailnet-sync-pr1350-2026-11-11/root",
+  "files": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "index.mdx",
+      "bytes": 4004,
+      "sha256": "501ad4292621efe2d45efe364f2979153f5177eda0d1f99ed27cd7d0048814f3"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 591569,
+      "sha256": "eb0a9a193d21e33a941de0ae343300e3d3ef7a80b7dd1c988855c405a3dba184"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-lifecycle.json",
+      "bytes": 1218,
+      "sha256": "506725390545c11a7bb10fadedd0b4c489f6f2e33bec7a960c9814aba8fc07fe"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-processes-after-close.txt",
+      "bytes": 886,
+      "sha256": "d24861f98875e9ea646799ae520d4946f55be154af686d90b7aea8f8188a8db2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-five-fit-auto-min-pr-sample.png",
+      "bytes": 52490,
+      "sha256": "77e87804c5988af7109f49c60387ee3b4f0848618079b763e8621993ddbc57a0"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-five-fit-auto-min-sample.png",
+      "bytes": 44693,
+      "sha256": "2207e737ff6582b57973c4ec320aa6d21ab8348de797473676818bb53a4d08c6"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-observation.ndjson",
+      "bytes": 31342857,
+      "sha256": "d5b0e23befa4375b0231802dbca98160b4761e6ddd239222a67fdb897568ecc5"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/oracle-fixture.html",
+      "bytes": 8748,
+      "sha256": "9bc1338fa9160630674c3f82208842b0ddace3f2938f4c6fc1fee0e03d16d1a7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.md",
+      "bytes": 6565,
+      "sha256": "3bac8f4fe33bd7255c066815f4044581cadb0ed02f9a131a2ab284d35f6558e1"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.md",
+      "bytes": 5789,
+      "sha256": "a957551c030f2f9e1a65ea24fc10651b5044de8c564ecefe8472c176fa73b3e4"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/SHA256SUMS",
+      "bytes": 2430,
+      "sha256": "7a31764f5a8ba2bf60fd2aa786d8b0d5456ee066d7cb2455ce500774f5d234ed"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/verification.json",
+      "bytes": 1163,
+      "sha256": "a8c8f931b66c8b596ff8936fe11de87a29e69d3d9003c5db3d2d7868a0895103"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/verify-chrome-matrix.py",
+      "bytes": 7626,
+      "sha256": "60065eb04a188dbd24a6506c05d1c0b07edd4855d8bc6f0f8322f471d72d58b7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-dark.png",
+      "bytes": 49723,
+      "sha256": "a41273bab819b0e1c5633925acd9861973117744767944107a5f0ab665399e06"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-light.png",
+      "bytes": 49364,
+      "sha256": "756891fdb9b01bd5ae1e183bdc3015d60e966ea596d7216f0f3c5e1b8163b709"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-readonly-emulator.log",
+      "bytes": 11029,
+      "sha256": "4f4ae3a1a5278a2e4a565a1e3dd37017e6134a2a04661b1471d5e402aef8bbc7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-readonly-probe.log",
+      "bytes": 648,
+      "sha256": "7a4656d363f4defbf9a0f7e2bfca792bf08d89eabc4b00c36e70c8c0baf14bac"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-app-backup-integrity.log",
+      "bytes": 428,
+      "sha256": "79737385dc39fd19081ace8fee9c2b0fbf2cd316944d5bed846dcf532fa83619"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-app-build-missing-v8-binary.log",
+      "bytes": 2689,
+      "sha256": "48f44365ce709f5276d74c8ff20e6334f9fd5b30e8a6e2049b5fbeea02b457f8"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-app-restore.log",
+      "bytes": 8,
+      "sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-avd-clone.log",
+      "bytes": 482,
+      "sha256": "d95415884f0fa459336f48933810e91bef391b15beaf69bae547cadd04bf5d99"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-avd-delete.log",
+      "bytes": 46,
+      "sha256": "f538e4c8c593b3a37eeb67ec420fabf5457403dbe61d7221bc6f5f13980fba5d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-build.log",
+      "bytes": 5006,
+      "sha256": "bb0df64e0c495649355c69ba65ec5006f235fc5f84f8d66f0802f82532273dbb"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-coldboot-avd-create.log",
+      "bytes": 3127,
+      "sha256": "2761458a07e9c4d619a1800df19f307101c7f39f9ee6a12e1d6808a048cb1f24"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-dark-launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-dark.log",
+      "bytes": 8554,
+      "sha256": "d30998b54b66051f58f225983273fd115969eed9fc73d478196fe2eebe087ed7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-emulator-invalid-avd.log",
+      "bytes": 476,
+      "sha256": "9883e0f464af65e77919f0e891fb1c9e488554e5f17ec19830efe8e878c03e1e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-emulator.log",
+      "bytes": 11109,
+      "sha256": "1b7f3b7d54d75ec6d230d7f92a725b63138746103c516776676e8269b74c0789"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-light-launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-light.log",
+      "bytes": 6409,
+      "sha256": "58754930e74eb05c0bea393b0eae910b5aa760b91ca4d85a2c97ca8ce54763c0"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-task-avd-preparation.log",
+      "bytes": 91,
+      "sha256": "e2c532ba0b4bbb36252382c2b8acdb3b87194da6d032caa9451bd4700e231728"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-v8-build-scoped-python-home.log",
+      "bytes": 278096,
+      "sha256": "6064ed5ef6efb64d029ddd2d1d0b36c0f1f43551ec04b2352a32b8fc7b2ff8e2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-v8-build-with-overlay.log",
+      "bytes": 1777,
+      "sha256": "86d4c039dfde46ba9ea7a0ad46b40c2de2ef5191d182b9232529a01aedd6074e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/app-data-preservation.log",
+      "bytes": 229,
+      "sha256": "a0f8ce4d57d0f6953519a355bd41c4b7faf0d3af847dc82507d4685e3437b7f4"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/cleanup-wrapper.log",
+      "bytes": 87,
+      "sha256": "f46de892b40f68820a297b7d6c77bb0235214f992b85096564d198b8bf33bb78"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/cleanup.log",
+      "bytes": 55,
+      "sha256": "bcca40c6128c802672f6b89d451be8cd59e4fdcbb350202ecdde3a39f71a7725"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-layout-fixture-feature.log",
+      "bytes": 361,
+      "sha256": "7aeb815f868f8ffa381bdd572eb5eda5dfcd48b0ae7b7f8a604b22f644e744b5"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-runtime-fixture-feature.log",
+      "bytes": 2017,
+      "sha256": "3f62d8e867df1b40b8a7fc4165868bf5bba67b8750209ea50f77657446e90491"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-runtime-lib-fixture-feature.log",
+      "bytes": 72,
+      "sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-style-to-layout-fixture-feature.log",
+      "bytes": 586,
+      "sha256": "f1a69897ececab555f331e6a2b7834d230b245ae368f70ed6b4b718f9d92bb52"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-workspace.log",
+      "bytes": 1194,
+      "sha256": "a5c47a37b8d0fa581ee6dab46ec8a774bdc74740a4145f01c29418ba6e81073a"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/depot-tools-overlay-cleanup.txt",
+      "bytes": 677,
+      "sha256": "511f8a65cb3ec5d8d63f1bd62fa3c1789aa3a67926b04919e13b278ef2f01379"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/depot-tools-temp-path.txt",
+      "bytes": 72,
+      "sha256": "cdd5e31c5a93eae9e222012f93fae313fbd13d69f807ad28fb76fd541adc8d77"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/device-info.log",
+      "bytes": 191,
+      "sha256": "096117025d987e2b87fd99c91124f5b202c6e6133339f4d6b2ebbed7422ce88c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/five-fit-matrix-final.log",
+      "bytes": 1204,
+      "sha256": "9f259940042c71e389fda50087d2a311b37b40cf6fee08b6db6d1d79d1500a0d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/focused-tests-final.log",
+      "bytes": 6528,
+      "sha256": "8140f3977626245d998a96ebe7ceddd514f26a9bfbfd42c1a38dee26f01f2358"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.md",
+      "bytes": 6541,
+      "sha256": "fba886585efe42b0655ebfaf9e3237c7b915d21c60a58cca49cda7e36a34d661"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-app-build-missing-v8-binary.log",
+      "bytes": 54532,
+      "sha256": "8ba98ab6ba6d37b625b02c150d5d677c1c6e5270111a9bce36f9b63c8d0c2ff3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-boot.log",
+      "bytes": 592,
+      "sha256": "a900abb7b233a381f56261b036576e5557afccf236f806fab1cc3e51afe1b945"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-build-missing-v8-checkout.log",
+      "bytes": 54423,
+      "sha256": "0e3c1fdeb4d8c3ac7401dd631637cde8cbac835b80a8a007346e4ebc667f125a"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-build.log",
+      "bytes": 66594,
+      "sha256": "69d4633d19a4c2b18e69ba1a9332647cf171a1a19d09a018b98503a3b099c882"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-dark-launch.log",
+      "bytes": 28,
+      "sha256": "b198fd7059100646fcc89bf0e4b968975280e6d36e37ab527b1028d8696bff43"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-dark.log",
+      "bytes": 14548,
+      "sha256": "3a32b1110de012662e053e93b688787c86fce20ef2638b1d85fa1331ab80170d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-iphone17pro-ios26_2-dark.png",
+      "bytes": 97733,
+      "sha256": "e557b78ec23e3561a062d6e9a8eae2cce575cc414d58033c45e819626bad2d80"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-iphone17pro-ios26_2-light.png",
+      "bytes": 97594,
+      "sha256": "d3e131f09851d2d9399d8d4fec50c5092b1b487598f7393ab0615558941c56f9"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-light-launch.log",
+      "bytes": 28,
+      "sha256": "dba5b55e24973e1e7d8df80631c7be2641fbea73e924cc1e2020cd2d69992efd"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-light.log",
+      "bytes": 10327,
+      "sha256": "b4d3ed2f37ae0d89ac1e36b6c3d2a2f18fb16784e0bce09b508e371015c2c642"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-v8-build-with-overlay.log",
+      "bytes": 194692,
+      "sha256": "7d09b58f158e4647e8c6aa7345c98ddd392b5f8439862db3a969dd9d43a1940b"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-v8-build.log",
+      "bytes": 177,
+      "sha256": "769c4a4cfcc1e51d0d02106cdccd071f5a69f889e5cdbd0c0552856298baf68a"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.md",
+      "bytes": 1265,
+      "sha256": "7fba156527c860ca22b40373f50f0efe115a167ee3342ee843ae46cd443a6392"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.md",
+      "bytes": 5038,
+      "sha256": "285057be564b21cc526943ea783f97ecc7af78d9bd8aa61f8cd7c29beb43daab"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.md",
+      "bytes": 5568,
+      "sha256": "0328aaea5c3933de054c387d19dad67a0cf77d73491fb69850e7e2a307737ee1"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.md",
+      "bytes": 7079,
+      "sha256": "8edf305bbac94d2ba855b03e427d04a16bcac585b10605832a947a57902bb219"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-four-fit-5760.log",
+      "bytes": 647,
+      "sha256": "a9d0286d55fc4ef78b365a93b4815121c3cb3d8b4fbee745d90948462a842915"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-four-fit-auto-minimum-trace.log",
+      "bytes": 447,
+      "sha256": "74a9827ec42c0765cbbc11f1521bdd1b438376b241d16b6b690f8cd0a9cd47e8"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-one-fit-1440.log",
+      "bytes": 638,
+      "sha256": "60ad4dd37e5d18cb0c7174f761870ab43c3061cb20332a725c5c9a1b04316c00"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-one-fit-row-span-auto-minimum-2880.log",
+      "bytes": 669,
+      "sha256": "77be7602da61cf0495abd2e4141a65635d3d8179d23778f934a38954abc90d7f"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-one-fit-row-span-trace.log",
+      "bytes": 470,
+      "sha256": "cdc51e047c148bdaace412c1524e7d791358b9b380453e318e854f8b617a30ab"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-repeated-text-row-span-960.log",
+      "bytes": 429,
+      "sha256": "3397ba8c47cb0c30a3bf2b2814f99378ffc09bc2292bbcaa0a7f354e29bba676"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-six-row-auto-minimum-trace.log",
+      "bytes": 463,
+      "sha256": "50b045a9e69b2083b93d8387ee2e7383eeb6c51a91d1ba41980efbd151c74976"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-six-row-one-fit-auto-minimum-4320.log",
+      "bytes": 697,
+      "sha256": "cec8dcf05452ea35f126bfc88c85f4e1b6f3b2dbe6f85f1b7c852ca32668d9e8"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-three-fit-5760.log",
+      "bytes": 651,
+      "sha256": "ab44fca09d12327eb8a5a51e0eafb3a8d22ae81d84c6a78a96ca41e30779384c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-three-fit-auto-minimum-trace.log",
+      "bytes": 449,
+      "sha256": "1ba73f1949c85648908de57fd59dba4c85cf3c35f377aacbd1951162798ac579"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-three-fit-row-span-11520.log",
+      "bytes": 677,
+      "sha256": "aef52ea5b3aa0298cebd0fa663d5985e1a6499aaf2f3ca2676a033cb1c301a42"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-auto-2880.log",
+      "bytes": 669,
+      "sha256": "ecb793c549df9ec17a12e23dc224ddf28f183e7e94f798db05de90bedcdf0a1d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-content-floor.log",
+      "bytes": 443,
+      "sha256": "0e35fe8b5bc332fb66703a2edad933d6461a009aa04e624a1612c04680a6add2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-content-row-span-3840.log",
+      "bytes": 631,
+      "sha256": "a7d5e2e369da897933c00a97c512d795804476bb97108e32d1a31496538d8154"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-zero-2880.log",
+      "bytes": 643,
+      "sha256": "1a9dd1d73cb240e2c01931406ddc276abc81d571e7bc7f0d43c85ba401c7bb17"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/rejection-review-final.log",
+      "bytes": 740,
+      "sha256": "356fc61784d94ad597e3bc09fee174df886720b8cc94012d0f266116df0d43fe"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/rejection-review-fixes.log",
+      "bytes": 2486,
+      "sha256": "9ec4d9eab5c217caf45a6cd1509773b3e776b656416da65be14c43f8c745ab3f"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/root-html-five-fit-auto-minimum-runtime.html",
+      "bytes": 4197,
+      "sha256": "ef2cd893326733fe3e848209967b397459a39ad65fcdcb489393a489d98750f2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/source-restoration.log",
+      "bytes": 193,
+      "sha256": "70126118a7a34f88a2852213a2ff02a90e19963e87fa7387d3f9146a3d219c70"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/v8-checkout-result.txt",
+      "bytes": 310,
+      "sha256": "cb9afe1b75a7b9765bfaa1cb918e192d1a846c71f28fbc93fca1ba5d66fb2ac0"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/v8-checkout.log",
+      "bytes": 1836,
+      "sha256": "7687bc2dd88f420c17afc8a939d9861fb64d7cd0c61f32f519ab07ee0675b70e"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4696,
+      "sha256": "20a6c5e8e1005bd210525d5030f8e1a57f4d0d96f49dfa49ed595da2cdb227df"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.md",
+      "bytes": 11666,
+      "sha256": "f03188a60b820ab3ce0fc9641eccee844e551e172f730817ef11224ebef32f9e"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.md",
+      "bytes": 9796,
+      "sha256": "1528db6ce7a4a5690131b533a603ff7f70ef626a16b70dee89aa8b4305566e6d"
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 669452,
+      "sha256": "8ce99fb9bd408d88f1080d65247857989f45de5e418456020f023fc45b6bb118"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 669452,
+      "sha256": "8ce99fb9bd408d88f1080d65247857989f45de5e418456020f023fc45b6bb118"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/index.mdx",
+      "bytes": 4004,
+      "sha256": "501ad4292621efe2d45efe364f2979153f5177eda0d1f99ed27cd7d0048814f3"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 591569,
+      "sha256": "eb0a9a193d21e33a941de0ae343300e3d3ef7a80b7dd1c988855c405a3dba184"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-lifecycle.json",
+      "bytes": 1218,
+      "sha256": "506725390545c11a7bb10fadedd0b4c489f6f2e33bec7a960c9814aba8fc07fe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/agent-browser-processes-after-close.txt",
+      "bytes": 886,
+      "sha256": "d24861f98875e9ea646799ae520d4946f55be154af686d90b7aea8f8188a8db2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-five-fit-auto-min-pr-sample.png",
+      "bytes": 52490,
+      "sha256": "77e87804c5988af7109f49c60387ee3b4f0848618079b763e8621993ddbc57a0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-five-fit-auto-min-sample.png",
+      "bytes": 44693,
+      "sha256": "2207e737ff6582b57973c4ec320aa6d21ab8348de797473676818bb53a4d08c6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/chrome157-observation.ndjson",
+      "bytes": 31342857,
+      "sha256": "d5b0e23befa4375b0231802dbca98160b4761e6ddd239222a67fdb897568ecc5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/oracle-fixture.html",
+      "bytes": 8748,
+      "sha256": "9bc1338fa9160630674c3f82208842b0ddace3f2938f4c6fc1fee0e03d16d1a7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/plan-pr-diff-review-30.md",
+      "bytes": 6565,
+      "sha256": "3bac8f4fe33bd7255c066815f4044581cadb0ed02f9a131a2ab284d35f6558e1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.md",
+      "bytes": 5789,
+      "sha256": "a957551c030f2f9e1a65ea24fc10651b5044de8c564ecefe8472c176fa73b3e4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/SHA256SUMS",
+      "bytes": 2430,
+      "sha256": "7a31764f5a8ba2bf60fd2aa786d8b0d5456ee066d7cb2455ce500774f5d234ed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/verification.json",
+      "bytes": 1163,
+      "sha256": "a8c8f931b66c8b596ff8936fe11de87a29e69d3d9003c5db3d2d7868a0895103"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/verify-chrome-matrix.py",
+      "bytes": 7626,
+      "sha256": "60065eb04a188dbd24a6506c05d1c0b07edd4855d8bc6f0f8322f471d72d58b7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-dark.png",
+      "bytes": 49723,
+      "sha256": "a41273bab819b0e1c5633925acd9861973117744767944107a5f0ab665399e06"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-light.png",
+      "bytes": 49364,
+      "sha256": "756891fdb9b01bd5ae1e183bdc3015d60e966ea596d7216f0f3c5e1b8163b709"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-readonly-emulator.log",
+      "bytes": 11029,
+      "sha256": "4f4ae3a1a5278a2e4a565a1e3dd37017e6134a2a04661b1471d5e402aef8bbc7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-api37_1-readonly-probe.log",
+      "bytes": 648,
+      "sha256": "7a4656d363f4defbf9a0f7e2bfca792bf08d89eabc4b00c36e70c8c0baf14bac"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-app-backup-integrity.log",
+      "bytes": 428,
+      "sha256": "79737385dc39fd19081ace8fee9c2b0fbf2cd316944d5bed846dcf532fa83619"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-app-build-missing-v8-binary.log",
+      "bytes": 2689,
+      "sha256": "48f44365ce709f5276d74c8ff20e6334f9fd5b30e8a6e2049b5fbeea02b457f8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-app-restore.log",
+      "bytes": 8,
+      "sha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-avd-clone.log",
+      "bytes": 482,
+      "sha256": "d95415884f0fa459336f48933810e91bef391b15beaf69bae547cadd04bf5d99"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-avd-delete.log",
+      "bytes": 46,
+      "sha256": "f538e4c8c593b3a37eeb67ec420fabf5457403dbe61d7221bc6f5f13980fba5d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-build.log",
+      "bytes": 5006,
+      "sha256": "bb0df64e0c495649355c69ba65ec5006f235fc5f84f8d66f0802f82532273dbb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-coldboot-avd-create.log",
+      "bytes": 3127,
+      "sha256": "2761458a07e9c4d619a1800df19f307101c7f39f9ee6a12e1d6808a048cb1f24"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-dark-launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-dark.log",
+      "bytes": 8554,
+      "sha256": "d30998b54b66051f58f225983273fd115969eed9fc73d478196fe2eebe087ed7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-emulator-invalid-avd.log",
+      "bytes": 476,
+      "sha256": "9883e0f464af65e77919f0e891fb1c9e488554e5f17ec19830efe8e878c03e1e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-emulator.log",
+      "bytes": 11109,
+      "sha256": "1b7f3b7d54d75ec6d230d7f92a725b63138746103c516776676e8269b74c0789"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-light-launch.log",
+      "bytes": 60,
+      "sha256": "3bf12a0f545ad87c8cd8c3eec7746b5b10a25de37e5738052f0be413c17b8d9e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-light.log",
+      "bytes": 6409,
+      "sha256": "58754930e74eb05c0bea393b0eae910b5aa760b91ca4d85a2c97ca8ce54763c0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-task-avd-preparation.log",
+      "bytes": 91,
+      "sha256": "e2c532ba0b4bbb36252382c2b8acdb3b87194da6d032caa9451bd4700e231728"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-v8-build-scoped-python-home.log",
+      "bytes": 278096,
+      "sha256": "6064ed5ef6efb64d029ddd2d1d0b36c0f1f43551ec04b2352a32b8fc7b2ff8e2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/android-v8-build-with-overlay.log",
+      "bytes": 1777,
+      "sha256": "86d4c039dfde46ba9ea7a0ad46b40c2de2ef5191d182b9232529a01aedd6074e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/app-data-preservation.log",
+      "bytes": 229,
+      "sha256": "a0f8ce4d57d0f6953519a355bd41c4b7faf0d3af847dc82507d4685e3437b7f4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/cleanup-wrapper.log",
+      "bytes": 87,
+      "sha256": "f46de892b40f68820a297b7d6c77bb0235214f992b85096564d198b8bf33bb78"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/cleanup.log",
+      "bytes": 55,
+      "sha256": "bcca40c6128c802672f6b89d451be8cd59e4fdcbb350202ecdde3a39f71a7725"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-layout-fixture-feature.log",
+      "bytes": 361,
+      "sha256": "7aeb815f868f8ffa381bdd572eb5eda5dfcd48b0ae7b7f8a604b22f644e744b5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-runtime-fixture-feature.log",
+      "bytes": 2017,
+      "sha256": "3f62d8e867df1b40b8a7fc4165868bf5bba67b8750209ea50f77657446e90491"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-runtime-lib-fixture-feature.log",
+      "bytes": 72,
+      "sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-style-to-layout-fixture-feature.log",
+      "bytes": 586,
+      "sha256": "f1a69897ececab555f331e6a2b7834d230b245ae368f70ed6b4b718f9d92bb52"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/clippy-workspace.log",
+      "bytes": 1194,
+      "sha256": "a5c47a37b8d0fa581ee6dab46ec8a774bdc74740a4145f01c29418ba6e81073a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/depot-tools-overlay-cleanup.txt",
+      "bytes": 677,
+      "sha256": "511f8a65cb3ec5d8d63f1bd62fa3c1789aa3a67926b04919e13b278ef2f01379"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/depot-tools-temp-path.txt",
+      "bytes": 72,
+      "sha256": "cdd5e31c5a93eae9e222012f93fae313fbd13d69f807ad28fb76fd541adc8d77"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/device-info.log",
+      "bytes": 191,
+      "sha256": "096117025d987e2b87fd99c91124f5b202c6e6133339f4d6b2ebbed7422ce88c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/five-fit-matrix-final.log",
+      "bytes": 1204,
+      "sha256": "9f259940042c71e389fda50087d2a311b37b40cf6fee08b6db6d1d79d1500a0d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/focused-tests-final.log",
+      "bytes": 6528,
+      "sha256": "8140f3977626245d998a96ebe7ceddd514f26a9bfbfd42c1a38dee26f01f2358"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.md",
+      "bytes": 6541,
+      "sha256": "fba886585efe42b0655ebfaf9e3237c7b915d21c60a58cca49cda7e36a34d661"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-app-build-missing-v8-binary.log",
+      "bytes": 54532,
+      "sha256": "8ba98ab6ba6d37b625b02c150d5d677c1c6e5270111a9bce36f9b63c8d0c2ff3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-boot.log",
+      "bytes": 592,
+      "sha256": "a900abb7b233a381f56261b036576e5557afccf236f806fab1cc3e51afe1b945"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-build-missing-v8-checkout.log",
+      "bytes": 54423,
+      "sha256": "0e3c1fdeb4d8c3ac7401dd631637cde8cbac835b80a8a007346e4ebc667f125a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-build.log",
+      "bytes": 66594,
+      "sha256": "69d4633d19a4c2b18e69ba1a9332647cf171a1a19d09a018b98503a3b099c882"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-dark-launch.log",
+      "bytes": 28,
+      "sha256": "b198fd7059100646fcc89bf0e4b968975280e6d36e37ab527b1028d8696bff43"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-dark.log",
+      "bytes": 14548,
+      "sha256": "3a32b1110de012662e053e93b688787c86fce20ef2638b1d85fa1331ab80170d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-iphone17pro-ios26_2-dark.png",
+      "bytes": 97733,
+      "sha256": "e557b78ec23e3561a062d6e9a8eae2cce575cc414d58033c45e819626bad2d80"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-iphone17pro-ios26_2-light.png",
+      "bytes": 97594,
+      "sha256": "d3e131f09851d2d9399d8d4fec50c5092b1b487598f7393ab0615558941c56f9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-light-launch.log",
+      "bytes": 28,
+      "sha256": "dba5b55e24973e1e7d8df80631c7be2641fbea73e924cc1e2020cd2d69992efd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-light.log",
+      "bytes": 10327,
+      "sha256": "b4d3ed2f37ae0d89ac1e36b6c3d2a2f18fb16784e0bce09b508e371015c2c642"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-v8-build-with-overlay.log",
+      "bytes": 194692,
+      "sha256": "7d09b58f158e4647e8c6aa7345c98ddd392b5f8439862db3a969dd9d43a1940b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/ios-v8-build.log",
+      "bytes": 177,
+      "sha256": "769c4a4cfcc1e51d0d02106cdccd071f5a69f889e5cdbd0c0552856298baf68a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.md",
+      "bytes": 1265,
+      "sha256": "7fba156527c860ca22b40373f50f0efe115a167ee3342ee843ae46cd443a6392"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.md",
+      "bytes": 5038,
+      "sha256": "285057be564b21cc526943ea783f97ecc7af78d9bd8aa61f8cd7c29beb43daab"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.md",
+      "bytes": 5568,
+      "sha256": "0328aaea5c3933de054c387d19dad67a0cf77d73491fb69850e7e2a307737ee1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.md",
+      "bytes": 7079,
+      "sha256": "8edf305bbac94d2ba855b03e427d04a16bcac585b10605832a947a57902bb219"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-four-fit-5760.log",
+      "bytes": 647,
+      "sha256": "a9d0286d55fc4ef78b365a93b4815121c3cb3d8b4fbee745d90948462a842915"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-four-fit-auto-minimum-trace.log",
+      "bytes": 447,
+      "sha256": "74a9827ec42c0765cbbc11f1521bdd1b438376b241d16b6b690f8cd0a9cd47e8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-one-fit-1440.log",
+      "bytes": 638,
+      "sha256": "60ad4dd37e5d18cb0c7174f761870ab43c3061cb20332a725c5c9a1b04316c00"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-one-fit-row-span-auto-minimum-2880.log",
+      "bytes": 669,
+      "sha256": "77be7602da61cf0495abd2e4141a65635d3d8179d23778f934a38954abc90d7f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-one-fit-row-span-trace.log",
+      "bytes": 470,
+      "sha256": "cdc51e047c148bdaace412c1524e7d791358b9b380453e318e854f8b617a30ab"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-repeated-text-row-span-960.log",
+      "bytes": 429,
+      "sha256": "3397ba8c47cb0c30a3bf2b2814f99378ffc09bc2292bbcaa0a7f354e29bba676"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-six-row-auto-minimum-trace.log",
+      "bytes": 463,
+      "sha256": "50b045a9e69b2083b93d8387ee2e7383eeb6c51a91d1ba41980efbd151c74976"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-six-row-one-fit-auto-minimum-4320.log",
+      "bytes": 697,
+      "sha256": "cec8dcf05452ea35f126bfc88c85f4e1b6f3b2dbe6f85f1b7c852ca32668d9e8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-three-fit-5760.log",
+      "bytes": 651,
+      "sha256": "ab44fca09d12327eb8a5a51e0eafb3a8d22ae81d84c6a78a96ca41e30779384c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-three-fit-auto-minimum-trace.log",
+      "bytes": 449,
+      "sha256": "1ba73f1949c85648908de57fd59dba4c85cf3c35f377aacbd1951162798ac579"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-three-fit-row-span-11520.log",
+      "bytes": 677,
+      "sha256": "aef52ea5b3aa0298cebd0fa663d5985e1a6499aaf2f3ca2676a033cb1c301a42"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-auto-2880.log",
+      "bytes": 669,
+      "sha256": "ecb793c549df9ec17a12e23dc224ddf28f183e7e94f798db05de90bedcdf0a1d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-content-floor.log",
+      "bytes": 443,
+      "sha256": "0e35fe8b5bc332fb66703a2edad933d6461a009aa04e624a1612c04680a6add2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-content-row-span-3840.log",
+      "bytes": 631,
+      "sha256": "a7d5e2e369da897933c00a97c512d795804476bb97108e32d1a31496538d8154"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/regression-two-fit-zero-2880.log",
+      "bytes": 643,
+      "sha256": "1a9dd1d73cb240e2c01931406ddc276abc81d571e7bc7f0d43c85ba401c7bb17"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/rejection-review-final.log",
+      "bytes": 740,
+      "sha256": "356fc61784d94ad597e3bc09fee174df886720b8cc94012d0f266116df0d43fe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/rejection-review-fixes.log",
+      "bytes": 2486,
+      "sha256": "9ec4d9eab5c217caf45a6cd1509773b3e776b656416da65be14c43f8c745ab3f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/root-html-five-fit-auto-minimum-runtime.html",
+      "bytes": 4197,
+      "sha256": "ef2cd893326733fe3e848209967b397459a39ad65fcdcb489393a489d98750f2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/source-restoration.log",
+      "bytes": 193,
+      "sha256": "70126118a7a34f88a2852213a2ff02a90e19963e87fa7387d3f9146a3d219c70"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/v8-checkout-result.txt",
+      "bytes": 310,
+      "sha256": "cb9afe1b75a7b9765bfaa1cb918e192d1a846c71f28fbc93fca1ba5d66fb2ac0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/v8-checkout.log",
+      "bytes": 1836,
+      "sha256": "7687bc2dd88f420c17afc8a939d9861fb64d7cd0c61f32f519ab07ee0675b70e"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.md",
+      "bytes": 4696,
+      "sha256": "20a6c5e8e1005bd210525d5030f8e1a57f4d0d96f49dfa49ed595da2cdb227df"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.md",
+      "bytes": 11666,
+      "sha256": "f03188a60b820ab3ce0fc9641eccee844e551e172f730817ef11224ebef32f9e"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.md",
+      "bytes": 9796,
+      "sha256": "1528db6ce7a4a5690131b533a603ff7f70ef626a16b70dee89aa8b4305566e6d"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 669452,
+      "sha256": "8ce99fb9bd408d88f1080d65247857989f45de5e418456020f023fc45b6bb118"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 765859,
+      "sha256": "71b4ffe4110d05b5561063f9c6dd9e77f56397ee094fdce42c03dcaf3fe01898"
+    },
+    {
+      "path": "spec/styles.css",
+      "bytes": 8407,
+      "sha256": "b347e5dd44b25313a0fa6536fecc6af852e8ff171e1f7bb6ea7af2b03177bb83"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 765859,
+      "sha256": "71b4ffe4110d05b5561063f9c6dd9e77f56397ee094fdce42c03dcaf3fe01898"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 8407,
+      "sha256": "b347e5dd44b25313a0fa6536fecc6af852e8ff171e1f7bb6ea7af2b03177bb83"
+    }
+  ]
+}

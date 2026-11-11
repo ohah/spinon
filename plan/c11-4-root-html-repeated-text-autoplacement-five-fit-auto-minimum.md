@@ -1,6 +1,6 @@
 # C11.4 다섯 fit repeated-text auto-placement `min-height:auto`
 
-- **상태:** Chrome 157 사전 비교 17,280/17,280 scene 및 독립 검산 완료 · 계획 20관점 검토 완료 · 계획 PR [#1347](https://github.com/ohah/spinon/pull/1347) 병합 · five-fit 제한 구현·17,280 RuntimeSession scene·iOS/Android light/dark visual smoke 완료 · 구현/runtime 20관점 및 PR diff 30관점 검토 완료 · 구현 PR [#1349](https://github.com/ohah/spinon/pull/1349) `2026-11-11T03:51:50Z` Rebase and merge 완료 (`b0725665e31cc50ed6eb65a4083a1b94245dea36`) · GitHub check 0건(CI green 아님) · merge-state 문서 동기화 중 · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
+- **상태:** Chrome 157 사전 비교 17,280/17,280 scene 및 독립 검산 완료 · 계획 20관점 검토 완료 · 계획 PR [#1347](https://github.com/ohah/spinon/pull/1347) 병합 · five-fit 제한 구현·17,280 RuntimeSession scene·iOS/Android light/dark visual smoke 완료 · 구현/runtime 20관점 및 PR diff 30관점 검토 완료 · 구현 PR [#1349](https://github.com/ohah/spinon/pull/1349) `2026-11-11T03:51:50Z` Rebase and merge 완료 (`b0725665e31cc50ed6eb65a4083a1b94245dea36`) · 병합 상태 문서 PR [#1350](https://github.com/ohah/spinon/pull/1350) `2026-11-11T04:12:56Z` 병합 (`9949b1e35a90c174e4ac67f37978b46ce60873b4`) · Tailnet roadmap 및 계획 경로 동기화 완료 · GitHub check 0건(CI green 아님) · C11.4/C11 미완료 · 공식 `78/214` 유지 · 내부 계약 `0.1.0` 유지
 - **직전 자동 배치:** [네 fit `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-four-fit-auto-minimum.md) · PR [#1344](https://github.com/ohah/spinon/pull/1344)
 - **사전 비교:** [Chrome 157 17,280-scene matrix와 독립 검산](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-min-precomparison-2026-11-11/README.md)
 - **계획 검토:** [서로 다른 실패 관점 20개](./c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-plan-review-20.md)
@@ -9,6 +9,7 @@
 - **실행 근거:** [RuntimeSession matrix, 회귀, 시뮬레이터·화면 hash](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/README.md)
 - **병합 기록:** [PR #1349 merge SHA, 최종 diff, PR 이미지와 범위](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/merge-PR1349.md)
 - **병합 후 문서 PR 검토:** [서로 다른 실패 관점 30개](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/post-merge-doc-review-30.md)
+- **Tailnet 동기화 근거:** [PR #1350 병합 후 선택 경로·해시·Agent Browser 확인](../spec/internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/README.md)
 
 ## 결손과 제한 목표
 
@@ -43,7 +44,7 @@
 6. **완료:** 동일 source의 Android API 37 ARM64 AVD copy-on-write clone과 iPhone 17 Pro/iOS 26.2 Simulator 기본 Root HTML route를 light/dark로 확인했다. Fixture/app asset hash, `layout=ready`, draw/present 및 OS screenshot을 보존했다. 화면은 visual smoke이며 pixel readback 또는 hardware GPU 증거가 아니다. 캡처 뒤 task clone과 시뮬레이터를 종료하고 iOS 앱 데이터를 hash 대조해 복원했다.
 7. Simulator는 사용 전에 현재 공유 profile/device를 기록한다. 공유 기기는 재사용 뒤 shutdown하고, task-owned로 새로 만든 기기는 캡처 뒤 삭제한다. 앱/data source는 사전 hash와 비교해 복원한다. Agent Browser는 고유 session을 쓰고 종료 뒤 해당 session/process가 닫혔는지 확인한다. Terminal Browser와 관련 없는 session/process는 건드리지 않는다.
 8. **완료:** [구현/runtime 20관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/implementation-runtime-review-20.md)와 [PR diff 30관점 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum-runtime-2026-11-11/pr-diff-review-30.md)를 각각 수행했다. PR [#1349](https://github.com/ohah/spinon/pull/1349)의 최초 head `18f6269db9bd80f649d357fea35cbaec8390158a`에서 GitHub가 반환한 diff와 local diff를 대조했다: 86 files, 922,918 bytes, SHA-256 `5680c2e1e31f27feea1cc2a8e43c4d8cb9847a9ee24328bc5704f56ef071e3ed`로 동일했다. Agent Browser에서 PR 본문 iOS/Android light/dark 이미지 네 장이 모두 로드되는 것을 확인했다. GitHub checks는 0건이며 CI 통과로 세지 않는다. 병합 뒤 지정 Tailnet preview를 갱신한다.
-9. **진행 중:** PR #1349 merge SHA를 internal contract 0059, `spec/STATUS.md`, `spec/public/roadmap.html`, 계획 및 runtime evidence에 반영한다. 이 문서 PR이 병합된 뒤 지정 Tailnet preview를 갱신하고 source/served hash와 Agent Browser 렌더링을 확인한다. 이 bounded slice로 C11.4/C11 checkbox, 공식 `78/214`, internal numeric contract `0.1.0`을 올리지 않는다.
+9. **완료:** PR #1349 merge SHA를 internal contract 0059, `spec/STATUS.md`, `spec/public/roadmap.html`, 계획 및 runtime evidence에 반영하고 문서 PR [#1350](https://github.com/ohah/spinon/pull/1350)을 `9949b1e35a90c174e4ac67f37978b46ce60873b4`로 병합했다. 지정 Tailnet preview의 선택 경로 67개를 동기화했으며 로컬 및 HTTPS 제공 응답의 source hash를 모두 대조했다. 기존에 404였던 전용 계획 경로가 렌더링됨을 Agent Browser로 확인했다. [경로·해시·브라우저 증거](../spec/internal/evidence/roadmap-tailnet-sync-pr1350-2026-11-11/README.md). 이 bounded slice로 C11.4/C11 checkbox, 공식 `78/214`, internal numeric contract `0.1.0`을 올리지 않는다.
 
 ## 계획 완료 판정
 
