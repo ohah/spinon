@@ -1,12 +1,14 @@
 # C11.4 · repeated-text row-span six-fit `min-height:auto`
 
-**상태:** 계획 및 Chrome 157 사전 비교 · 제품 구현 전 · 공식 `78/214`, C11.4/C11 미완료 유지
+**상태:** 계획 PR 병합 · 제한된 six-fit row-span 구현과 RuntimeSession 검증 완료 · 구현 PR 준비 중 · 공식 `78/214`, C11.4/C11 미완료 유지
 
 **직전 row-span 구현:** [five-fit `min-height:auto`](./c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md) · 구현 PR [#1360](https://github.com/ohah/spinon/pull/1360)
 
 **별도 six-fit predecessor:** [auto-placement `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-six-fit-auto-minimum.md) · 구현 PR [#1354](https://github.com/ohah/spinon/pull/1354). 이 input은 nine-child non-spanning auto-placement이며 본 row-span slice를 지원하지 않는다.
 
 **사전 비교:** [Chrome 157 matrix와 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-six-fit-auto-minimum-precomparison.html) · [계획 실패 관점 20개](./c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-review-20.md)
+
+**구현·실행 근거:** [RuntimeSession matrix·플랫폼 smoke·한계](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md)
 
 ## 결손과 제한 목표
 
@@ -38,6 +40,15 @@
 7. 구현 뒤 계획 검토와 겹치지 않는 runtime failure 관점 20개를 작성한다. 구현 PR diff는 별도 프로젝트 필수 30개 관점으로 검토하고 PR head와 local diff를 비교한다. PR 본문에는 feature matrix, browser/RuntimeSession 결과, 가능한 화면, 남은 범위를 기록한다.
 8. 병합 후 internal contract 0059와 roadmap/plan/evidence를 실제 결과에 동기화한다. 제한 profile만으로 `spec/STATUS.md` 완료 checkbox, 공식 `78/214`, C11.4/C11 또는 내부 숫자 계약 `0.1.0`을 승격하지 않는다. Tailnet 미리보기는 source hash와 backup을 기록한 뒤 사용자가 정한 preview에 동기화한다.
 
+## 로컬 구현 결과
+
+- Style projection과 layout에 six-fit row-span 전용 exact cap profile을 추가했다. Six-fit auto-placement 및 기존 1–5 fit row-span profile은 별도 경계로 유지한다.
+- 기존 five-fit phase-level rounding replay를 five/six-fit span simulator로 일반화했다. Six-fit replay 또는 trace-stage 대조가 실패하면 fail-closed하고, five-fit fallback은 유지한다.
+- 최종 RuntimeSession 실행은 720 cap orders × 16 scenes = 11,520/11,520 scene, 5,760 baseline/candidate pairs다. Candidate payload-floor violation 0건, baseline 4,800건이다. Pair별 geometry change, source-order 및 `start/stretch` invariants를 확인했다.
+- Profile/rejection/trace, five-fit regressions, format, workspace Clippy 및 Android/iOS Simulator app builds를 기록했다. 전체 `spinon-layout --lib`에는 미수정 C15 HostDocument assertion failure 1건이 남아 있고 이번 실행에서 baseline tree 재현은 하지 않았다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 캡처는 기본 root HTML route smoke로 한정한다. Six-fit fixture geometry나 PixelCopy/Metal readback은 확인하지 않는다.
+- 상세 증거와 PR diff 검토는 implementation PR 준비가 끝나면 [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/README.md)에 기록한다. 공식 `78/214` 및 C11.4/C11 상태는 유지한다.
+
 ## 남은 범위
 
-이 slice는 arbitrary six-fit cap/topology, general Grid/CSS admission, WPT, public API/FFI, 앱 화면의 six-fit fixture geometry, hardware GPU, surface pixel parity 또는 전체 C11.4/C11 완료를 포함하지 않는다. Plan PR merge와 implementation/runtime gate 전까지 제품 지원으로 간주하지 않는다.
+이 slice는 arbitrary six-fit cap/topology, general Grid/CSS admission, WPT, public API/FFI, 앱 화면의 six-fit fixture geometry, hardware GPU, surface pixel parity 또는 전체 C11.4/C11 완료를 포함하지 않는다. 제한 구현을 병합해도 이 제한 profile 밖의 기능을 지원한다고 간주하지 않는다.

@@ -63,7 +63,7 @@ fn css_color(color: OpaqueCssSrgb) -> String {
     format!("rgb({},{},{})", color.red(), color.green(), color.blue())
 }
 
-pub(super) fn source_for_track_list(track_list: &str) -> String {
+pub fn source_for_track_list(track_list: &str) -> String {
     assert!(!track_list.trim().is_empty(), "track list is not empty");
     let mut style = format!(
         "* {{ box-sizing:border-box; }} html,body {{ margin:0; padding:0; }} \
@@ -125,7 +125,7 @@ pub(super) fn source_for_track_list(track_list: &str) -> String {
     )
 }
 
-pub(super) fn configure_scene(session: &super::super::super::RuntimeSession, record: &Value) {
+pub fn configure_scene(session: &super::super::super::RuntimeSession, record: &Value) {
     use spinon_style::{CssColorScheme, CssMediaEnvironment};
 
     let scene = &record["scene"];
@@ -148,7 +148,7 @@ pub(super) fn configure_scene(session: &super::super::super::RuntimeSession, rec
         .expect("dynamic matrix environment should select one supported scene");
 }
 
-pub(super) fn observe_current(
+pub fn observe_current(
     session: &super::super::super::RuntimeSession,
     record: &Value,
     label: &str,

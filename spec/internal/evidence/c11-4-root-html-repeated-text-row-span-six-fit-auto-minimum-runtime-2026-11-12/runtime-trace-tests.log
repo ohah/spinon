@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 2 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::trace::parsed_root_html_six_fit_row_span_trace_resolves_percentage_cap_against_definite_basis ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::trace::parsed_root_html_six_fit_row_span_trace_keeps_percentage_cap_basis_and_owned_rows ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 670 filtered out; finished in 0.95s

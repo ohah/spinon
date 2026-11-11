@@ -115,7 +115,7 @@ pub(super) fn validate_root_html_fit_content_auto_rows_contract(
                     .iter()
                     .filter(|track| matches!(track, GridTrackSize::FitContent(_)))
                     .count(),
-                1 | 3 | 4 | 5
+                1 | 3 | 4 | 5 | 6
             )
             && visible_children.iter().copied().skip(1).all(|item_id| {
                 input.nodes[index[&item_id]].style.min_height == LayoutDimension::Auto

@@ -20,6 +20,8 @@ use crate::StyleLayoutError;
 mod five_fit_span;
 #[path = "grid_values/root_html_auto_repeat.rs"]
 pub(super) mod root_html_auto_repeat;
+#[path = "grid_values/six_fit_span.rs"]
+mod six_fit_span;
 
 pub(super) const MAX_GRID_TEMPLATE_AREAS_METADATA_BYTES: usize = 1024 * 1024;
 const MAX_COMBINED_GRID_LINE_AREA_METADATA_BYTES: usize = 1024 * 1024;
@@ -775,6 +777,9 @@ fn root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
 fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
     tracks: &[ComputedCssGridTrackSize],
 ) -> bool {
+    if six_fit_span::supports_six_fit_row_span_track_list(tracks) {
+        return true;
+    }
     if five_fit_span::supports_repeated_five_fit_row_span_track_list(tracks) {
         return true;
     }
@@ -2763,6 +2768,10 @@ mod four_fit_span_tests;
 #[cfg(test)]
 #[path = "grid_values/five_fit_span_tests.rs"]
 mod five_fit_span_tests;
+
+#[cfg(test)]
+#[path = "grid_values/six_fit_span_tests.rs"]
+mod six_fit_span_tests;
 
 #[cfg(test)]
 #[path = "grid_values/five_fit_auto_placement_tests.rs"]

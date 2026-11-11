@@ -1,0 +1,8 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 2 tests
+test projection::style_values::grid_values::six_fit_span_tests::six_fit_row_span_rejects_invalid_caps_types_duplicates_and_wrong_lengths ... ok
+test projection::style_values::grid_values::six_fit_span_tests::six_fit_row_span_accepts_all_720_typed_cap_orders ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 480 filtered out; finished in 0.01s

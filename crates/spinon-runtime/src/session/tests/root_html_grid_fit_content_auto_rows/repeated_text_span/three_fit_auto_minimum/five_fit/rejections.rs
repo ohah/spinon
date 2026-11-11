@@ -40,7 +40,9 @@ fn parsed_root_html_five_fit_row_span_rejects_out_of_profile_mutations_atomicall
     let source = super::super::source_for(&record);
     let track_list = record["scene"]["trackList"].as_str().unwrap();
     let four_fits = track_list.replacen("fit-content(40px)", "min-content", 1);
-    let six_fits = track_list.replacen("min-content", "fit-content(50px)", 1);
+    let six_fits = track_list
+        .replacen("min-content", "fit-content(50px)", 1)
+        .replacen("fit-content(50px)", "fit-content(51px)", 1);
     let duplicate_cap = track_list.replacen("fit-content(20%)", "fit-content(10px)", 1);
     let missing_tail = track_list
         .split_whitespace()
@@ -50,7 +52,10 @@ fn parsed_root_html_five_fit_row_span_rejects_out_of_profile_mutations_atomicall
 
     for (name, invalid) in [
         ("four fit tracks", with_track_list(&record, &four_fits)),
-        ("six fit tracks", with_track_list(&record, &six_fits)),
+        (
+            "six fit tracks with an unsupported cap",
+            with_track_list(&record, &six_fits),
+        ),
         (
             "duplicate and missing cap",
             with_track_list(&record, &duplicate_cap),

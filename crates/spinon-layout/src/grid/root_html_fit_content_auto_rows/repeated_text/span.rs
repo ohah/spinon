@@ -83,15 +83,17 @@ pub(super) fn normalize_layout_frames(
         .copied()
         .ok_or(LayoutError::MissingComputedLayout(grid_id))?;
     let expected_track_count = positive_implicit_rows + 1;
-    let row_sizes = final_row_track_sizes(output, grid_id, positive_implicit_rows)
-        .ok_or_else(unsupported_trace)?;
+    let Some(row_sizes) = final_row_track_sizes(output, grid_id, positive_implicit_rows) else {
+        return Err(unsupported_trace());
+    };
     if row_sizes.len() != expected_track_count {
         return Err(unsupported_trace());
     }
-    let snapped_row_size_units = blink_layout_unit_distribute_rows(
+    let Some(snapped_row_size_units) = blink_layout_unit_distribute_rows(
         input, container, output, grid_id, grid_frame, &row_sizes,
-    )
-    .ok_or_else(unsupported_trace)?;
+    ) else {
+        return Err(unsupported_trace());
+    };
     if snapped_row_size_units.len() != row_sizes.len() {
         return Err(unsupported_trace());
     }
