@@ -1,0 +1,25 @@
+/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/bootstrap_python3: line 3: bootstrap/manifest.txt: No such file or directory
+Could not extract Python 3 version from manifest.
+Traceback (most recent call last):
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/gsutil.py", line 19, in <module>
+    import gclient_utils
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/gclient_utils.py", line 29, in <module>
+    import gclient_eval
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/gclient_eval.py", line 18, in <module>
+    schema = from_third_party.import_module("schema")
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/from_third_party.py", line 70, in import_module
+    raise ImportError(
+ImportError: Cannot find third_party module schema (looked for /Users/yoonhb/Documents/workspace/spinon/build/depot_tools/third_party/schema.py)
+Traceback (most recent call last):
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/gclient.py", line 104, in <module>
+    import git_common
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/git_common.py", line 35, in <module>
+    import gclient_utils
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/gclient_utils.py", line 29, in <module>
+    import gclient_eval
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/gclient_eval.py", line 18, in <module>
+    schema = from_third_party.import_module("schema")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yoonhb/Documents/workspace/spinon/build/depot_tools/from_third_party.py", line 70, in import_module
+    raise ImportError(
+ImportError: Cannot find third_party module schema (looked for /Users/yoonhb/Documents/workspace/spinon/build/depot_tools/third_party/schema.py)

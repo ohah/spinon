@@ -1,0 +1,9 @@
+source_avd=spinon_api37_1_compat16k
+task_avd=spinon_c114_five_fit_20261111
+copy_mode=APFS clonefile
+ac59e1ac4fd259d3db3a709e22ed670568d6f67245d1deee5af58af523bfbd02  /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.ini
+c8fd65f5fb1e274d6da7ee49a30fc3e547af7e15e3d5f671f37ebd922a409ce4  /Users/yoonhb/.android/avd/spinon_api37_1_compat16k.avd/config.ini
+abi.type=arm64-v8a
+hw.cpu.arch=arm64
+image.sysdir.1=system-images/android-37.1/google_apis_ps16k/arm64-v8a/
+tag.id=google_apis

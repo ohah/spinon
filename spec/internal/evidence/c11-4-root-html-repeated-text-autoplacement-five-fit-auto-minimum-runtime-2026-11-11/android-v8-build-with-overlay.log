@@ -1,0 +1,27 @@
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+Python path configuration:
+  PYTHONHOME = '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3'
+  PYTHONPATH = (not set)
+  program name = '/Applications/Xcode.app/Contents/Developer/usr/bin/python3'
+  isolated = 0
+  environment = 1
+  user site = 1
+  import site = 1
+  sys._base_executable = '/Applications/Xcode.app/Contents/Developer/usr/bin/python3'
+  sys.base_prefix = '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3'
+  sys.base_exec_prefix = '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3'
+  sys.platlibdir = 'lib'
+  sys.executable = '/Applications/Xcode.app/Contents/Developer/usr/bin/python3'
+  sys.prefix = '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3'
+  sys.exec_prefix = '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3'
+  sys.path = [
+    '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3/lib/python39.zip',
+    '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3/lib/python3.9',
+    '/private/tmp/spinon-c114-five-fit-tools.TP6G97/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3/lib/python3.9/lib-dynload',
+  ]
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+Python runtime state: core initialized
+ModuleNotFoundError: No module named 'encodings'
+
+Current thread 0x00000001f7e39e80 (most recent call first):
+<no Python frame>

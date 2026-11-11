@@ -1,0 +1,4 @@
+remote_sha256=a739ba83f477e92e943b1cd444d9b8467760f66184b17d0243c4e67aea112c07
+local_sha256=a739ba83f477e92e943b1cd444d9b8467760f66184b17d0243c4e67aea112c07
+DOES NOT VERIFY
+ERROR: APK Signature Scheme v2 signer #1: APK integrity check failed. CHUNKED_SHA256 digest mismatch. Expected: <ac8812b9ee6d58852777fdfc8d3ca717b5151bad077eb3305d90e3fa7b98849e>, actual: <ccb41aa5e7b895f29b2c2afe2b64365a58b597a08c30944936f9f66990f9a949>

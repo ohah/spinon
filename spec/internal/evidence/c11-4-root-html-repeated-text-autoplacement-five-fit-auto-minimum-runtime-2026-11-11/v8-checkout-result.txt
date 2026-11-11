@@ -1,0 +1,5 @@
+Pinned V8 revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+Expected revision: 7b50b62cb18f28617959e8452e2cd18195b38bcf
+V8 working tree: clean
+gclient sync: exit 0 using a temporary full depot_tools clone at the pinned commit
+Temporary clone removed after sync: /private/tmp/spinon-c114-five-fit-tools.p5NIso

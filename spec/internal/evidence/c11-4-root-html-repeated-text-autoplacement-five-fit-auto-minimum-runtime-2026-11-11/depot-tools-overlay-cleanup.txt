@@ -1,0 +1,9 @@
+The task-created Python/schema overlay and temporary full depot_tools clone were removed after both app builds succeeded.
+The pre-existing pruned build/depot_tools and build/depot_tools-c11-intrinsic-20261105 trees were preserved.
+removed: build/depot_tools/python-bin
+removed: build/depot_tools/third_party/schema
+removed: build/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3/bin
+removed: build/depot_tools/third_party (empty parent)
+removed: build/depot_tools/bootstrap-2@3.11.8.chromium.35_bin/python3 (empty parent)
+removed: build/depot_tools/bootstrap-2@3.11.8.chromium.35_bin (empty parent)
+removed temporary clone: /private/tmp/spinon-c114-five-fit-tools.TP6G97
