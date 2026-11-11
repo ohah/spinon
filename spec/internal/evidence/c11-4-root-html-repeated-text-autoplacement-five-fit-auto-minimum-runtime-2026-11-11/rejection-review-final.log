@@ -1,0 +1,10 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.22s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 2 tests
+test session::tests::root_html_grid_fit_content_auto_rows::five_fit_auto_placement::rejections::parsed_root_html_five_fit_auto_placement_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::five_fit_auto_placement::rejections::parsed_root_html_five_fit_auto_placement_rejects_out_of_profile_mutations ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 404 filtered out; finished in 2.83s
+

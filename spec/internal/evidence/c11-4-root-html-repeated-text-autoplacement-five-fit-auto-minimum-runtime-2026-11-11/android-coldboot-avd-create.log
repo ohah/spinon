@@ -1,0 +1,15 @@
+Loading local repository...                                                     Warning: This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Warning: Observed package id 'cmdline-tools;latest' in inconsistent location '/Users/yoonhb/Library/Android/sdk/cmdline-tools/latest-2' (Expected '/Users/yoonhb/Library/Android/sdk/cmdline-tools/latest')
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+Warning: package.xml parsing problem. Errors limit exceeded. To receive all errors set com.sun.xml.bind logger to FINEST level.
+Warning: package.xml parsing problem. 예상치 않은 요소(URI: "", 로컬: "abis")입니다. 필요한 요소는 <{}vendor>,<{}codename>,<{}base-extension>,<{}abi>,<{}api-level>,<{}extension-level>,<{}tag>입니다.
+[=========                              ] 25% Loading local repository...       [=========                              ] 25% Fetch remote repository...        [=======================================] 100% Fetch remote repository...       
+Auto-selecting single ABI arm64-v8a

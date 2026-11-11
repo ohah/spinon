@@ -1,0 +1,12 @@
+profile=spinon_api37_1_compat16k
+spinon_api37_1_compat16k
+37
+arm64-v8a
+package_path=/data/app/~~wNzyuu3tn_YxDolV3Wfv4A==/dev.spinon.bootstrap-Ar8U6oAcH7bC82a7srcffw==/base.apk
+/data/app/~~wNzyuu3tn_YxDolV3Wfv4A==/dev.spinon.bootstrap-Ar8U6oAcH7bC82a7srcffw==/base.apk: 1 file pulled, 0 skipped. 239.2 MB/s (148555772 bytes in 0.592s)
+DOES NOT VERIFY
+ERROR: APK Signature Scheme v2 signer #1: APK integrity check failed. CHUNKED_SHA256 digest mismatch. Expected: <0aee269dc8da750c66d7b530898db56288aa27f67ac240ba1061bc0f4cc5a98e>, actual: <5d78cd1bbf868a8d3bb59d2511f123a21c49e1155b2d22ebfb6beb3d2bf18a79>
+
+--- cleanup ---
+List of devices attached
+
