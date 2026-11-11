@@ -1,4 +1,6 @@
 import json
+import hashlib
+import math
 from collections import Counter, defaultdict
 from itertools import permutations
 from pathlib import Path
@@ -26,6 +28,8 @@ assert metadata["orderedCapAssignments"] == 720
 assert tuple(metadata["capValues"]) == cap_values
 assert "HeadlessChrome/157." in metadata["userAgent"]
 assert metadata["platform"] == "MacIntel" and metadata["devicePixelRatio"] == 1
+fixture = directory / metadata["fixturePath"]
+assert hashlib.sha256(fixture.read_bytes()).hexdigest() == metadata["fixtureSha256"]
 assert len(records) == 5_760
 assert [record["index"] for record in records] == list(range(5_760))
 
@@ -44,6 +48,10 @@ baseline_below_floor_by_cap = Counter()
 
 for record in records:
     scene = record["scene"]
+    assert scene["index"] == record["index"]
+    assert scene["alignContent"] in {"start", "stretch"}
+    assert scene["domOrder"] in {"forward", "reverse"}
+    assert scene["minHeight"] in {"0px", "auto"}
     caps = tuple(scene["fitCaps"])
     assert caps in cap_orders
     assert len(scene["trackMembers"]) == 6
@@ -54,7 +62,9 @@ for record in records:
     assert record["computedAlignContent"] == scene["alignContent"]
     assert close(record["gridFrame"][0], 40) and close(record["gridFrame"][1], 220)
     assert len(record["rows"]) == 9 and close(record["rows"][0], 10)
+    assert all(math.isfinite(row) and row >= 0 for row in record["rows"])
     assert len(record["items"]) == 9 and record["items"][0]["id"] == "empty-0"
+    assert record["items"][0]["minHeight"] == "0px"
 
     direct_items = record["items"][1:]
     expected_ids = [str(index) for index in range(1, 9)]
@@ -66,14 +76,20 @@ for record in records:
         assert item["minHeight"] == scene["minHeight"]
         assert item["lineCount"] == expected_lines[int(item["id"]) - 1]
         assert item["lineCount"] == len(item["lineTops"])
+        assert close(item["frame"][0], 0) and close(item["frame"][2], 40)
         assert item["lineTops"] and all(
             close(item["lineTops"][index] - item["lineTops"][index - 1], 10)
             for index in range(1, len(item["lineTops"]))
         )
         track_size = record["rows"][position]
         assert close(item["frame"][3], track_size), (record["index"], item["id"], item["frame"], track_size)
+        expected_top = sum(record["rows"][:position])
+        assert close(item["frame"][1], expected_top), (record["index"], item["id"], item["frame"], expected_top)
         track_position = (position - 1) % 6
         payload_height = item["payload"][3]
+        assert close(item["payload"][0], 0) and close(item["payload"][1], item["frame"][1])
+        assert close(item["payload"][2], 40)
+        assert close(payload_height, item["lineCount"] * 10)
         cap = caps[track_position]
         if scene["minHeight"] == "auto":
             candidate_fit_occurrences += 1
