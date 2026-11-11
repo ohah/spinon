@@ -49,7 +49,7 @@ iOS 기본 앱 data hash는 실행 전 6267901e1ecb1d6221833ebcc09dfce27a0e52467
 
 ## 종료·미완료 범위
 
-cleanup-wrapper.log는 iOS booted list와 ADB device list가 비어 있고 task AVD가 제거됐음을 기록한다. 현재 Android task clone, iOS Simulator, task Agent Browser가 실행 중이지 않다. 관련 없는 Agent Browser 세션은 이번 검증에서 열거나 종료하지 않았다. V8 source/build artifact는 이어지는 Spinon roadmap 빌드에서 재사용하므로 보존했고, 임시 depot_tools overlay는 제거했다.
+cleanup-wrapper.log는 iOS booted list와 ADB device list가 비어 있고 task AVD가 제거됐음을 기록한다. 2026-11-11 사후 정리에서 iOS simulator 전체가 Shutdown이고 `Simulator.app`이 실행 중이지 않은 것을 다시 확인했다. 기존 공유 iPhone 17 Pro simulator 이미지는 보존했다. PR 이미지 검증용 task Agent Browser session `spinon-c114-pr1349-e00ea27987c0`은 닫았고, 목록에 남은 두 HWP session은 건드리지 않았다. `/tmp/spinon-pr-1349-pr.diff`, `/tmp/spinon-pr-1349-final.diff`, `/tmp/spinon-pr-1349-agent-browser.png`는 삭제했다. V8 source/build artifact는 이어지는 Spinon roadmap 빌드에서 재사용하므로 보존했고, 임시 depot_tools overlay는 제거했다.
 
 이 candidate는 PR 단위 slice다. C11.4/C11 완료 checkbox, 공식 집계 78/214, 내부 numeric contract 0.1.0은 변경하지 않는다. 실기기·hardware GPU·PixelCopy/Metal drawable readback·일반 CSS Grid 적합성은 미검증이다.
 
