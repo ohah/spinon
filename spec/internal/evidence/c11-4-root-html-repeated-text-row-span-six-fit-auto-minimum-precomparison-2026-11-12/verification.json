@@ -1,0 +1,75 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-six-fit-auto-min-precomparison-verification/v1",
+  "capturedAtUtc": "2026-11-11T17:25:10.267Z",
+  "source": {
+    "browserCli": "agent-browser 0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "devicePixelRatio": 1,
+    "viewportCssPx": [
+      1280,
+      900
+    ],
+    "fixturePath": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-six-fit-auto-minimum-precomparison.html",
+    "fixtureBytes": 8223,
+    "fixtureSha256": "6469adc1d1d14ccd40ed180c1c24aaf90eff24054834c379d85347e95dd00450",
+    "observationPath": "chrome157-observation.ndjson.gz",
+    "observationBytes": 272198,
+    "observationSha256": "a9a36fee40ab5f15207fb6980241c55d4e4d2bedb5ddbe0cb55a6ad9235ce4fa"
+  },
+  "sceneCount": 11520,
+  "uniqueTrackLists": 720,
+  "orderedCapAssignments": 720,
+  "pairedBaselineCandidateKeys": 5760,
+  "baselineCandidateGeometryChangedPairKeys": 5760,
+  "topologyCounts": {
+    "span2Six": 5760,
+    "span2Span3Six": 5760
+  },
+  "alignmentCounts": {
+    "start": 5760,
+    "stretch": 5760
+  },
+  "minimumModeCounts": {
+    "zero": 5760,
+    "auto": 5760
+  },
+  "rowCountHistogram": {
+    "7": 11520
+  },
+  "payloadFloorViolations": {
+    "minHeightZero": 4800,
+    "minHeightAuto": 0
+  },
+  "gridEndOverflowOccurrences": {
+    "minHeightZero": 0,
+    "minHeightAuto": 0
+  },
+  "maxErrorsCssPx": {
+    "spanningItemHeightVsCoveredRows": 5.000000000165983e-05,
+    "sourceOrderReversalGeometry": 0.0,
+    "alignContentStartVsStretch": 0.0
+  },
+  "acceptance": {
+    "allSixCapOrdersPresent": true,
+    "baselineReproducesPayloadFloorShortfall": true,
+    "candidateHasNoPayloadFloorShortfall": true,
+    "bothModesStayWithinDefiniteGridEnd": true,
+    "spanFramesMatchCoveredTracks": true,
+    "sourceOrderInvariant": true,
+    "startStretchGeometryInvariant": true
+  },
+  "floorBreakdownByFirstCap": {
+    "zero|0px": 960,
+    "zero|10px": 960,
+    "zero|20%": 816,
+    "zero|30px": 624,
+    "zero|40px": 816,
+    "zero|50px": 624
+  },
+  "limits": [
+    "Chrome CSS observation only; no Spinon runtime result.",
+    "Fixed direct-text topology, fixed six-cap multiset, definite 40x220px one-column Grid.",
+    "No public CSS support, WPT, Android/iOS app geometry, device pixels, or C11.4 completion claim."
+  ]
+}

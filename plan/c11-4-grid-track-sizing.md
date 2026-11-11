@@ -840,4 +840,8 @@ Row-span 한 `fit-content()` 위치 4–6 [PR #1306](https://github.com/ohah/spi
 
 병합 후 문서 동기화 근거: [PR diff 적대 검토 30개](../spec/internal/evidence/c11-4-pr1280-postmerge-plan-sync-2026-11-08/pr-diff-review-30.md).
 
-두 fit-content row-span 제한 slice는 PR #1311로 병합됐다. 다음 bounded candidate는 single-fit row-span의 `min-height:auto` positions 4–6이다. Chrome 157 8,640-scene paired matrix와 별도 계획 검토를 마쳤고, 제품 구현은 아직 시작하지 않았다. C11.4/C11 체크와 공식 78/214는 유지한다. [계획](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md) · [사전 비교](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md)
+## 2026-11-12 repeated-text row-span `min-height:auto`의 fit-content 개수별 확장
+
+Single-fit row-span positions 1–3/4–6 [PR #1326](https://github.com/ohah/spinon/pull/1326)/[#1331](https://github.com/ohah/spinon/pull/1331), three-fit [PR #1338](https://github.com/ohah/spinon/pull/1338), four-fit [PR #1357](https://github.com/ohah/spinon/pull/1357), five-fit [PR #1360](https://github.com/ohah/spinon/pull/1360)이 각각 제한 profile로 병합됐다. 여섯 fit의 auto-placement [PR #1354](https://github.com/ohah/spinon/pull/1354)는 non-spanning nine-child topology라서 row-span 지원을 대신하지 않는다.
+
+다음 bounded candidate는 **six-fit repeated-text row-span `min-height:auto`**다. Chrome 157 Agent Browser 사전 비교 11,520 scenes / 5,760 baseline-candidate pairs, baseline 4,800 payload-floor shortfalls 대 candidate 0건, Grid-end overflow 0건을 확인했다. [집중 계획](./c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum.md) · [계획 실패 관점 20개](./c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-plan-review-20.md) · [Chrome 사전 비교와 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/README.md). 계획 PR 병합 전에는 제품 코드를 수정하지 않는다. C11.4/C11 체크, 공식 `78/214`, 내부 계약 `0.1.0`은 유지한다.
