@@ -1972,7 +1972,7 @@ Chrome 157 observation 11,520 scenes(5,760 baseline/candidate keys)를 `RuntimeS
 
 Style projection과 layout admission의 각 720 profile 조합, RuntimeSession 11,520-scene matrix, out-of-profile atomic rejection, mixed-minimum 거부 뒤 same-session recovery, trace 및 one-/two-/three-fit 회귀가 구현 candidate에서 통과했다. iOS 26.2 iPhone 17 Pro Simulator와 Android API 37 ARM64 AVD의 light/dark 캡처는 기본 Root HTML 앱 시작 smoke만 확인하며 four-fit fixture를 로드하지 않는다. 캡처 로그에는 `layout=ready`와 `status=0 presented`가 있다. Android는 SwiftShader이고, 이 캡처는 feature geometry·surface pixel parity·실기기를 검증하지 않는다. 세부 근거와 20개 구현/runtime 검토는 [구현 evidence](./evidence/c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum-implementation-2026-11-11/README.md)에 연결한다.
 
-이 구현 PR이 병합되기 전까지는 제품의 병합 완료 지원으로 간주하지 않는다. C11.4/C11 체크와 공식 `78/214`는 유지하고 public API/FFI를 추가하지 않으며 internal numeric contract `0.1.0`을 유지한다.
+구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)이 열려 있다. 병합 전까지 제품의 병합 완료 지원으로 간주하지 않는다. C11.4/C11 체크와 공식 `78/214`는 유지하고 public API/FFI를 추가하지 않으며 internal numeric contract `0.1.0`을 유지한다.
 
 ## C11.4 parsed Root HTML repeated-text auto-placement · three-fit `min-height:auto` · bounded implementation PR #1342
 

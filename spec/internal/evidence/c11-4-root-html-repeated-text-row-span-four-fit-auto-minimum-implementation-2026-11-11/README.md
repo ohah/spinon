@@ -45,9 +45,9 @@ PixelCopy/Metal drawable readback, compositor 이후 pixel parity, hardware GPU,
 
 ## Tailnet 로드맵 미리보기
 
-`https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`에서 HTTP 200을 확인했고 Agent Browser 화면에 공식 `78/214`와 `C11.4 four-fit row-span · 진행 중` 카드가 표시됐다. 저장소 원본과 `/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html`의 SHA-256은 모두 `418de12ebf0c67792721aad5ac1a1222b8ba19a447b2e44bbae7063da7c3fd9e`였다. 이전 preview 파일은 같은 경로의 `roadmap.html.before-c11-4-four-fit-20261111T1116Z`에 보존했다. 페이지 캡처는 [Tailnet roadmap preview](./tailnet-roadmap-preview.png)다.
+`https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`에서 HTTP 200을 확인했고 Agent Browser 화면에 공식 `78/214`와 `C11.4 four-fit row-span · 진행 중` 카드가 표시됐다. PR 번호가 반영된 저장소 원본과 `/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html`의 SHA-256은 모두 `bbe44944d40dd9168c94172e7879efea0e430cb2cc1b2c2c7857bd75e51ea8c1`이었다. 직전 preview는 `roadmap.html.before-c11-4-four-fit-pr1357-20261111T1140Z`에 보존했고, 그 전 파일도 `roadmap.html.before-c11-4-four-fit-20261111T1116Z`에 남아 있다. 페이지 캡처는 [Tailnet roadmap preview](./tailnet-roadmap-preview.png)다.
 
-확인 후 Agent Browser session `spinon-roadmap-e00ea27987c0`를 닫았다. `session list`에는 active session이 없고 session diagnostics의 browser PID는 `null`이었다. 기존 Terminal Browser는 사용하지 않았다.
+Roadmap 확인 session `spinon-roadmap-pr1357-e00ea27987c0`와 PR 이미지 확인 session `spinon-pr1357-e00ea27987c0`를 사용 후 닫았다. 두 session의 최종 diagnostics는 `active=false`, PID `null`이고 `session list`는 비어 있다. PR 이미지 네 장은 `complete=true`로 로드됐다. 기존 Terminal Browser는 이 작업에서 열거나 조작하지 않았다.
 
 ## 프로세스·시뮬레이터 정리
 
@@ -63,4 +63,4 @@ b4f8f631b16c9274d8dbd81c8a5d61b6e9e1548a289a3bb78ab37fbbc556966f  ios-light.png
 eb701d1b4803f809cdd16025c34878645edaecd1d00e5e36756aa047c6e9c281  tailnet-roadmap-preview.png
 ```
 
-최종 실행 명령과 scene 집계는 [`verification.json`](./verification.json)에, 각 로그·화면 파일의 SHA-256은 [`SHA256SUMS`](./SHA256SUMS)에 기록했다.
+별도 implementation/runtime 20개와 PR diff 30개 검토는 각각 [구현 검토](./implementation-runtime-review-20.md), [PR diff 검토](./pr-diff-review-30.md)에 기록했다. 최종 실행 명령과 scene 집계는 [`verification.json`](./verification.json)에, 각 로그·화면 파일의 SHA-256은 [`SHA256SUMS`](./SHA256SUMS)에 기록했다.
