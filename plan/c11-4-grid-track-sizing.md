@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-12 현재 bounded 후보 · mixed per-item automatic minimum
+
+PR [#1365](https://github.com/ohah/spinon/pull/1365)에서 six-fit repeated-text row-span의 균일 `min-height:0|auto` profile까지 병합됐다. 남은 명시적 거부 경계 중 CSS Grid automatic minimum이 item별이라는 점을 다음 bounded 후보로 선택했다. Chrome 157 Agent Browser 사전 비교는 여섯 cap order 720개와 두 topology의 모든 32/16 item mask를 교차한 138,240 scene이다. auto item floor 위반 0, source-order/alignment 차이 0 CSS px, span/covered-row 최대 차이 0.0001 CSS px를 확인했다. 이는 browser observation이며 제품 구현을 뜻하지 않는다. [집중 계획](./c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md) · [계획 실패 관점 20개](./c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.md) · [사전 비교와 verifier](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.md)
+
 ## 2026-11-10 Root HTML repeated-text row-span · positions 4–6 min-height:auto 계획 후보
 
 기존 six-row single-fit profile의 fit-content authored position 4–6을 min-height:auto로 비교하는 다음 bounded candidate다. Chrome 157 Agent Browser 8,640-scene paired matrix, 독립 verifier, content-floor/overflow·source-order·span-frame·auto-only stretch 확인을 마쳤다. 아직 제품 코드는 바꾸지 않았다. C11.4/C11 체크와 78/214, internal contract 0.1.0을 유지한다. [계획](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum.md) · [계획 검토 20개](./c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-plan-review-20.md) · [사전 비교와 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-positions-4-6-auto-minimum-precomparison-2026-11-10/README.md)
