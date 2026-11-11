@@ -7,6 +7,10 @@
     "hwpjs-host-print-focus-r1-after-preview"
   ],
   "taskSessionActiveAfterClose": false,
+  "taskSessionInfoAfterClose": {
+    "active": false,
+    "pid": null
+  },
   "unrelatedSessionPreserved": true,
   "terminalBrowserUsed": false,
   "iosSimulatorUsed": false,

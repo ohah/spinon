@@ -14,11 +14,11 @@
 - six-member `grid-auto-rows`는 모두 `fit-content()`다. 고정 cap 값 `0px`, `10px`, `20%`, `30px`, `40px`, `50px`의 authored 순열 720개를 definite 220px percentage basis에서 비교했다. 이 basis에서 `20%`는 44px다.
 - track list 720개 각각을 `align-content:start|stretch`, DOM forward/reverse, item `min-height:0|auto`와 교차해 총 5,760 scene 및 2,880 baseline/candidate pair를 만들었다. `%` cap의 basis는 definite 220px block size다.
 - 독립 검산기는 fixture SHA-256, browser metadata, scene identity와 전체 matrix axis, computed list/cap order, row/item 위치, payload line-box geometry, floor·overflow 및 alignment geometry를 확인한다.
-- fixture와 결과 수집은 [`oracle-fixture.html`](./oracle-fixture.html), [`capture-chrome.mjs`](./capture-chrome.mjs)다. 원본은 [`chrome157-observation.ndjson`](./chrome157-observation.ndjson), 독립 검산기는 [`verify-chrome-matrix.py`](./verify-chrome-matrix.py)다.
+- fixture와 결과 수집은 [oracle fixture](https://raw.githubusercontent.com/ohah/spinon/fc22a202944c9ebd2026d9abe30d8dc5df1caf18/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/oracle-fixture.html), [Agent Browser capture](https://raw.githubusercontent.com/ohah/spinon/fc22a202944c9ebd2026d9abe30d8dc5df1caf18/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/capture-chrome.mjs)다. 원본 observation은 [NDJSON](https://raw.githubusercontent.com/ohah/spinon/fc22a202944c9ebd2026d9abe30d8dc5df1caf18/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/chrome157-observation.ndjson), independent verifier는 [Python source](https://raw.githubusercontent.com/ohah/spinon/fc22a202944c9ebd2026d9abe30d8dc5df1caf18/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/verify-chrome-matrix.py)다.
 
 ## 결과
 
-[`verification.json`](./verification.json)의 독립 검산 결과:
+[독립 검산 결과 JSON](https://raw.githubusercontent.com/ohah/spinon/fc22a202944c9ebd2026d9abe30d8dc5df1caf18/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/verification.json):
 
 | 관측 | Chrome 157 결과 |
 | --- | ---: |
@@ -45,6 +45,8 @@ node spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-
 python3 spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/verify-chrome-matrix.py
 ```
 
-수집은 Agent Browser 전용 session `spinon-c114-six-fit-autoplacement-precomparison-20261111`을 사용했고 스크립트 종료 때 session을 닫았다. 종료 뒤 active session 목록에는 기존 `hwpjs-host-print-focus-r1-after-preview`만 남아 있었으므로 그대로 보존했다. Terminal Browser 및 iOS/Android simulator는 실행하지 않았고 새 simulator를 만들거나 부팅하지 않았다. 종료 확인은 [`agent-browser-lifecycle.json`](./agent-browser-lifecycle.json)에 기록했다.
+수집은 Agent Browser 전용 session `spinon-c114-six-fit-autoplacement-precomparison-20261111`을 사용했고 스크립트 종료 때 session을 닫았다. 종료 뒤 `session info --json`은 `active:false`, `pid:null`을 반환했다. active 목록에 남은 unrelated `hwpjs-host-print-focus-r1-after-preview` 세션은 보존했다. Terminal Browser 및 iOS/Android simulator는 실행하지 않았고 새 simulator를 만들거나 부팅하지 않았다. 종료 확인은 `agent-browser-lifecycle.json`에 기록했다.
 
-대표 장면: [Chrome 157 six-fit sample](./chrome157-six-fit-auto-min-sample.png). 캡처는 layout 입력을 바꾸지 않았다. 모든 근거 파일의 해시는 [`SHA256SUMS`](./SHA256SUMS)에 있다.
+계획 PR의 실제 원격 diff에 대한 20관점 검토는 [`plan-pr-diff-review-20.md`](./plan-pr-diff-review-20.md)에 있다.
+
+대표 장면: [Chrome 157 six-fit sample](https://raw.githubusercontent.com/ohah/spinon/867c09706cfeab9faf10edaa912c70039948de0a/spec/internal/evidence/c11-4-root-html-repeated-text-autoplacement-six-fit-auto-min-precomparison-2026-11-11/chrome157-six-fit-auto-min-sample.png). 캡처는 layout 입력을 바꾸지 않았다. 모든 근거 파일의 해시는 이 폴더의 `SHA256SUMS`에 있다.
