@@ -690,6 +690,44 @@ fn root_html_fit_content_repeated_five_fit_auto_placement_track_list(
     fit_content_count == 5 && counts.into_iter().sum::<usize>() == 1
 }
 
+fn root_html_fit_content_repeated_six_fit_auto_placement_track_list(
+    tracks: &[ComputedCssGridTrackSize],
+) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut caps_seen = [false; 6];
+    for track in tracks {
+        let cap_index = match track {
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 0.0 => 0,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 10.0 => 1,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::Percentage(value),
+            ) if *value == 0.2 => 2,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 30.0 => 3,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 40.0 => 4,
+            ComputedCssGridTrackSize::FitContent(
+                ComputedCssGridTrackLengthPercentage::LengthPx(value),
+            ) if *value == 50.0 => 5,
+            _ => return false,
+        };
+        if std::mem::replace(&mut caps_seen[cap_index], true) {
+            return false;
+        }
+    }
+
+    caps_seen.into_iter().all(|seen| seen)
+}
+
 fn root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
     tracks: &[ComputedCssGridTrackSize],
 ) -> bool {
@@ -760,6 +798,7 @@ pub(super) fn root_html_fit_content_auto_rows_with_intrinsic_tracks(
                 || root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
                     tracks,
                 )
+                || root_html_fit_content_repeated_six_fit_auto_placement_track_list(tracks)
                 || root_html_fit_content_repeated_min_max_content_auto_span_track_list(tracks)
     )
 }
@@ -791,6 +830,16 @@ pub(super) fn root_html_fit_content_auto_rows_with_six_member_auto_placement_int
         &grid.auto_rows,
         ComputedCssGridAutoRows::TrackList(tracks)
             if root_html_fit_content_repeated_min_max_content_auto_placement_track_list(tracks)
+    )
+}
+
+pub(super) fn root_html_fit_content_auto_rows_with_six_fit_auto_placement_tracks(
+    grid: &ComputedCssGridLayout,
+) -> bool {
+    matches!(
+        &grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if root_html_fit_content_repeated_six_fit_auto_placement_track_list(tracks)
     )
 }
 
@@ -1924,7 +1973,7 @@ fn project_grid_layout_with_route_reservations(
             || (root_html_fit_content_auto_rows
                 && (root_html_fit_content_auto_rows_with_six_member_auto_placement_intrinsic_tracks(
                     grid,
-                )
+                ) || root_html_fit_content_auto_rows_with_six_fit_auto_placement_tracks(grid)
                     || root_html_fit_content_auto_rows_with_six_member_span_intrinsic_tracks(
                         grid,
                     ))),
@@ -2672,3 +2721,7 @@ mod four_fit_auto_placement_tests;
 #[cfg(test)]
 #[path = "grid_values/five_fit_auto_placement_tests.rs"]
 mod five_fit_auto_placement_tests;
+
+#[cfg(test)]
+#[path = "grid_values/six_fit_auto_placement_tests.rs"]
+mod six_fit_auto_placement_tests;

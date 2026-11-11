@@ -1,0 +1,13 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+error[E0308]: mismatched types
+  --> crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/six_fit_auto_placement/trace.rs:26:5
+   |
+26 |     assert!(trace.used_rows.explicit_track_count);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `bool`, found `u16`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `spinon-runtime` (lib test) due to 1 previous error

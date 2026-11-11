@@ -32,12 +32,6 @@ fn parsed_root_html_four_fit_auto_placement_rejects_out_of_profile_mutations() {
             replace_tracks("min-content max-content auto min-content auto max-content"),
         ),
         (
-            "five fit tracks in six members",
-            replace_tracks(
-                "fit-content(10px) fit-content(20px) fit-content(30px) fit-content(40px) fit-content(50px) min-content",
-            ),
-        ),
-        (
             "five fit tracks with seven members",
             replace_tracks(
                 "fit-content(10px) fit-content(20px) fit-content(30px) fit-content(40px) fit-content(50px) min-content max-content",

@@ -52,6 +52,7 @@ pub(super) fn normalize_layout_frames(
                         if super::supports_repeated_min_max_content_auto_placement_track_list(
                             tracks,
                         )
+                            || super::supports_six_fit_auto_placement_track_list(tracks)
                             || super::profiles::supports_repeated_min_max_content_auto_span_track_list(tracks)
                 )
         })
@@ -116,7 +117,9 @@ pub(super) fn normalize_layout_frames(
         let GridAutoRows::TrackList(tracks) = &container.auto_rows else {
             return Err(repeated_text_track_trace_error(grid_id));
         };
-        if !super::supports_repeated_min_max_content_auto_placement_track_list(tracks) {
+        if !super::supports_repeated_min_max_content_auto_placement_track_list(tracks)
+            && !super::supports_six_fit_auto_placement_track_list(tracks)
+        {
             return Err(repeated_text_track_trace_error(grid_id));
         }
         if !repeated_text_profile {

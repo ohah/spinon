@@ -1,0 +1,24 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.36s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::controls::parsed_root_html_six_fit_auto_minimum_accepts_normalized_absolute_calc_cap ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::controls::parsed_root_html_six_fit_auto_minimum_stretch_remains_supported_in_dark_scheme ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::rejections::parsed_root_html_six_fit_rejection_is_atomic_and_same_session_recovers ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::rejections::parsed_root_html_six_fit_auto_placement_rejects_unlisted_and_out_of_profile_inputs ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 407 filtered out; finished in 1.80s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

@@ -192,6 +192,54 @@ pub(super) fn supports_repeated_five_fit_auto_placement_track_list(
     fit_content_count == 5 && counts.into_iter().sum::<usize>() == 1
 }
 
+pub(super) fn supports_six_fit_auto_placement_track_list(tracks: &[GridTrackSize]) -> bool {
+    if tracks.len() != 6 {
+        return false;
+    }
+
+    let mut caps_seen = [false; 6];
+    for track in tracks {
+        let cap_index = match track {
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 0.0 =>
+            {
+                0
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 10.0 =>
+            {
+                1
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(value))
+                if *value == 0.2 =>
+            {
+                2
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 30.0 =>
+            {
+                3
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 40.0 =>
+            {
+                4
+            }
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(value))
+                if *value == 50.0 =>
+            {
+                5
+            }
+            _ => return false,
+        };
+        if std::mem::replace(&mut caps_seen[cap_index], true) {
+            return false;
+        }
+    }
+
+    caps_seen.into_iter().all(|seen| seen)
+}
+
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
     tracks: &[GridTrackSize],
 ) -> bool {
@@ -295,10 +343,15 @@ mod four_fit_auto_placement_tests;
 #[path = "profiles/five_fit_auto_placement_tests.rs"]
 mod five_fit_auto_placement_tests;
 
+#[cfg(test)]
+#[path = "profiles/six_fit_auto_placement_tests.rs"]
+mod six_fit_auto_placement_tests;
+
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)
         || supports_min_max_content_auto_track_list(tracks)
         || supports_repeated_min_max_content_auto_placement_track_list(tracks)
+        || supports_six_fit_auto_placement_track_list(tracks)
         || supports_repeated_min_max_content_auto_span_track_list(tracks)
 }
 

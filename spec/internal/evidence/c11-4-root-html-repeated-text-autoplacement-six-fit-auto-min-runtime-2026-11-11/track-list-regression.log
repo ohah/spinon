@@ -1,0 +1,39 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 20 tests
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_list_accepts_an_absolute_calc_cap_after_px_normalization ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_overflow_payload_is_rejected_on_a_non_fit_content_track ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_later_fit_content_position_requires_the_repeated_text_profile ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_fit_content_caps_keep_zero_and_over_100_percent_values ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_rejects_mixed_numeric_payload_profiles ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_rejects_overflow_payload_at_first_fit_position ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_recovers_in_the_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_list_recovers_after_same_session_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_track_lists_match_rows_frames_and_typed_order ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_list_preserves_both_cycles_and_auto_stretch ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_lists_match_both_orders_and_overflow ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_track_lists_fail_closed_and_recover_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::parsed_root_html_fit_content_auto_row_lists_preserve_order_and_render_repeated_tracks ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_rejects_nearby_profiles_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::min_content_auto::parsed_root_html_fit_content_min_content_auto_lists_match_remaining_orders ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_lists_reject_nearby_profiles_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_fit_content_cap_keeps_track_size_and_visible_overflow ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::four_member_intrinsic::parsed_root_html_four_member_intrinsic_lists_match_all_orders_caps_and_stretch_cases ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::track_lists::six_member_repeated_intrinsic::parsed_root_html_repeated_intrinsic_tail_all_30_orders_matches_independent_frames ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 391 filtered out; finished in 6.43s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

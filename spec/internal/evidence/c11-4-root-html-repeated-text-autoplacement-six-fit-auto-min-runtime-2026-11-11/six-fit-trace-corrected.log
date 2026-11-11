@@ -1,0 +1,21 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.78s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-2f3f5f36b966f023)
+
+running 1 test
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::trace::parsed_root_html_six_fit_auto_minimum_trace_preserves_all_fit_track_floors' (235002247) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/six_fit_auto_placement/trace.rs:26:5:
+assertion `left == right` failed
+  left: 9
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::trace::parsed_root_html_six_fit_auto_minimum_trace_preserves_all_fit_track_floors ... FAILED
+
+failures:
+
+failures:
+    session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::trace::parsed_root_html_six_fit_auto_minimum_trace_preserves_all_fit_track_floors
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 640 filtered out; finished in 1.02s
+
+error: test failed, to rerun pass `-p spinon-runtime --lib`

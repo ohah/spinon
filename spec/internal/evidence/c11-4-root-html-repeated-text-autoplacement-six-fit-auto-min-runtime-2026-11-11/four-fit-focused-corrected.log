@@ -1,0 +1,23 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-38588b2daaf0b17f)
+
+running 4 tests
+test session::tests::root_html_grid_fit_content_auto_rows::four_fit_auto_placement::controls::parsed_root_html_four_fit_auto_placement_accepts_unlisted_typed_caps ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::four_fit_auto_placement::rejections::parsed_root_html_four_fit_auto_placement_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::four_fit_auto_placement::controls::parsed_root_html_four_fit_auto_placement_reacts_to_color_scheme_in_one_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::four_fit_auto_placement::rejections::parsed_root_html_four_fit_auto_placement_rejects_out_of_profile_mutations ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 407 filtered out; finished in 1.96s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-194a01b45f364a55)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-5b8493319b0862cb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

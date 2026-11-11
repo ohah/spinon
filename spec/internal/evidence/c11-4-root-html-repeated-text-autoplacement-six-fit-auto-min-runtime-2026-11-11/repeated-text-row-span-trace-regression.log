@@ -1,0 +1,40 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-2f3f5f36b966f023)
+
+running 17 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_vertical_writing_mode_fails_before_layout_publication ... ok
+
+thread 'session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::malformed_fit_position_in_fixture_fails_closed' (235027133) panicked at crates/spinon-runtime/src/session/tests/root_html_grid_fit_content_auto_rows/repeated_text_span.rs:148:18:
+fit position should be an unsigned integer
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::malformed_fit_position_in_fixture_fails_closed - should panic ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::trace::parsed_root_html_one_fit_row_span_trace_keeps_both_span_auto_minimums_above_zero_cap ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::trace::parsed_root_html_one_fit_zero_cap_preserves_overlapping_span_minimums ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::positions_4_6::parsed_root_html_six_row_auto_minimum_preserves_forced_fit_cap_rounding ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::positions_4_6::parsed_root_html_six_row_auto_minimum_trace_identifies_eligible_spans ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::positions_4_6::parsed_root_html_six_row_auto_minimum_preserves_unclamped_fit_minimum_rounding ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::trace::parsed_root_html_three_fit_row_span_trace_preserves_caps_owner_and_auto_minimums ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::parsed_root_html_one_fit_row_span_auto_minimum_rejects_mixed_control_and_position_four ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_row_span_recovers_same_session_after_rejection ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::rejections::parsed_root_html_one_fit_row_span_auto_minimum_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::positions_4_6::parsed_root_html_six_row_auto_minimum_rejects_atomically_and_recovers_same_session ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::rejections::parsed_root_html_three_fit_row_span_auto_minimum_rejects_mixed_items_and_recovers ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::automatic_minimum::positions_4_6::parsed_root_html_six_row_auto_minimum_rejects_mixed_minimum_bad_position_and_control ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::rejections::parsed_root_html_three_fit_row_span_rejects_out_of_profile_mutations_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::rejections::parsed_root_html_repeated_text_row_span_nearby_shapes_reject_atomically ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::parsed_root_html_repeated_text_row_spans_match_all_960_chrome_scenes ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 624 filtered out; finished in 46.90s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-149b352f0b838689)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-e77ebbbe06bba05e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+
