@@ -172,6 +172,18 @@ pub(super) fn repeated_span_fit_positions_are_supported(
                 && second < third
                 && third < fourth
         }
+        [first, second, third, fourth, fifth] => {
+            positive_implicit_rows == 6
+                && (1..=6).contains(first)
+                && (1..=6).contains(second)
+                && (1..=6).contains(third)
+                && (1..=6).contains(fourth)
+                && (1..=6).contains(fifth)
+                && first < second
+                && second < third
+                && third < fourth
+                && fourth < fifth
+        }
         _ => false,
     }
 }

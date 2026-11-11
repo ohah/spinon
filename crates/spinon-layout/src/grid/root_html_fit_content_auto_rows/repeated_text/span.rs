@@ -88,9 +88,10 @@ pub(super) fn normalize_layout_frames(
     if row_sizes.len() != expected_track_count {
         return Err(unsupported_trace());
     }
-    let snapped_row_size_units =
-        blink_layout_unit_distribute_rows(container, output, grid_id, grid_frame, &row_sizes)
-            .ok_or_else(unsupported_trace)?;
+    let snapped_row_size_units = blink_layout_unit_distribute_rows(
+        input, container, output, grid_id, grid_frame, &row_sizes,
+    )
+    .ok_or_else(unsupported_trace)?;
     if snapped_row_size_units.len() != row_sizes.len() {
         return Err(unsupported_trace());
     }

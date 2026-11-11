@@ -1,12 +1,14 @@
 # C11.4 · repeated-text row-span five-fit `min-height:auto`
 
-**상태:** Chrome 157 사전 비교 34,560/34,560 scene과 독립 검증 완료 · 계획 실패 관점 검토 및 계획 PR 검증 대기 · 제품 구현 미착수 · C11.4/C11 미완료 · 공식 `78/214` 유지
+**상태:** 계획 PR [#1359](https://github.com/ohah/spinon/pull/1359) Rebase and merge · 제품 구현 진행 중 · Chrome 157 사전 비교 34,560/34,560 scene과 독립 검증 완료 · C11.4/C11 미완료 · 공식 `78/214` 유지
 
 **직전 row-span:** [four-fit `min-height:auto`](./c11-4-root-html-repeated-text-row-span-four-fit-auto-minimum.md) · 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)
 
 **직전 자동 배치:** [five-fit `min-height:auto`](./c11-4-root-html-repeated-text-autoplacement-five-fit-auto-minimum.md) · 구현 PR [#1349](https://github.com/ohah/spinon/pull/1349)
 
 **사전 비교:** [Chrome 157 관측과 독립 검증](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-precomparison-2026-11-11/README.md) · [fixture](../tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-five-fit-auto-minimum-precomparison.html) · [계획 실패 관점 검토 20개](./c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-plan-review-20.md)
+
+**현재 구현 후보 검증:** [2026-11-12 실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/README.md)에는 Chrome 157 RuntimeSession matrix 34,560/34,560, five-fit trace·rejection 회귀와 Android/iOS 기본 route light/dark smoke가 기록되어 있다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.md)는 완료했다. 실제 구현 PR diff 30개 검토와 병합은 남아 있으므로 이 후보와 C11.4/C11은 미완료다.
 
 ## 결손과 제한 목표
 

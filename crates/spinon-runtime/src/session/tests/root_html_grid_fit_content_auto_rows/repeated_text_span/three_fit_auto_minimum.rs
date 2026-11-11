@@ -3,6 +3,8 @@ use std::collections::BTreeMap;
 
 #[path = "three_fit_auto_minimum/dynamic.rs"]
 mod dynamic;
+#[path = "three_fit_auto_minimum/five_fit.rs"]
+mod five_fit;
 #[path = "three_fit_auto_minimum/four_fit.rs"]
 mod four_fit;
 #[path = "three_fit_auto_minimum/matrix.rs"]
@@ -20,6 +22,7 @@ const OBSERVATIONS: &str = include_str!(
 struct SceneResult {
     rows: Vec<f32>,
     item_frames: BTreeMap<String, [f32; 4]>,
+    payload_frames: BTreeMap<String, [f32; 4]>,
 }
 
 fn records() -> Vec<Value> {

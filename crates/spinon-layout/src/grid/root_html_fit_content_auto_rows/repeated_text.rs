@@ -14,6 +14,7 @@ pub(super) fn blink_layout_unit_to_px(units: i64) -> f32 {
 }
 
 pub(super) fn blink_layout_unit_distribute_rows(
+    input: &LayoutInput,
     container: &crate::GridContainerInput,
     output: &crate::LayoutOutput,
     grid_id: NodeId,
@@ -21,6 +22,7 @@ pub(super) fn blink_layout_unit_distribute_rows(
     raw_row_sizes: &[f32],
 ) -> Option<Vec<i64>> {
     track_trace::blink_layout_unit_distribute_rows(
+        input,
         container,
         output,
         grid_id,

@@ -16,6 +16,8 @@ use super::super::typed_math::CssMathProjector;
 use super::root_html_column_math::supported_root_html_auto_track_calc;
 use crate::StyleLayoutError;
 
+#[path = "grid_values/five_fit_span.rs"]
+mod five_fit_span;
 #[path = "grid_values/root_html_auto_repeat.rs"]
 pub(super) mod root_html_auto_repeat;
 
@@ -773,6 +775,9 @@ fn root_html_fit_content_repeated_min_max_content_auto_placement_track_list(
 fn root_html_fit_content_repeated_min_max_content_auto_span_track_list(
     tracks: &[ComputedCssGridTrackSize],
 ) -> bool {
+    if five_fit_span::supports_repeated_five_fit_row_span_track_list(tracks) {
+        return true;
+    }
     if tracks.len() != 6 {
         return false;
     }
@@ -2754,6 +2759,10 @@ mod four_fit_auto_placement_tests;
 #[cfg(test)]
 #[path = "grid_values/four_fit_span_tests.rs"]
 mod four_fit_span_tests;
+
+#[cfg(test)]
+#[path = "grid_values/five_fit_span_tests.rs"]
+mod five_fit_span_tests;
 
 #[cfg(test)]
 #[path = "grid_values/five_fit_auto_placement_tests.rs"]

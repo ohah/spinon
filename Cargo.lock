@@ -1796,6 +1796,7 @@ dependencies = [
 name = "spinon-runtime"
 version = "0.1.0"
 dependencies = [
+ "flate2",
  "html5ever",
  "serde_json",
  "spinon-core",

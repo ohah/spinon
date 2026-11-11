@@ -277,6 +277,68 @@ fn blink_row_distribution_prefers_an_auto_track_for_an_equal_growth_remainder() 
     );
 }
 
+#[test]
+fn blink_auto_minimum_rounding_keeps_fit_cap_out_of_base_growth_priority() {
+    use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
+
+    let row_sizes = [10.0, 30.0, 30.0, 20.0, 13.333333, 13.333333, 13.333333];
+    let tracks = tracks(&row_sizes);
+    let container = crate::GridContainerInput {
+        rows: vec![GridTrackSize::LengthPx(10.0)],
+        auto_rows: GridAutoRows::TrackList(vec![
+            GridTrackSize::Auto,
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(0.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(10.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(30.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(40.0)),
+        ]),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &container,
+            frame(),
+            &row_sizes,
+            &tracks,
+            &tracks,
+            ResidualRounding::UpAutoMinimumLaterTrack,
+        ),
+        Some(vec![640, 1920, 1920, 1280, 853, 853, 854])
+    );
+}
+
+#[test]
+fn blink_five_fit_rounding_prefers_a_fractional_auto_track_over_fit_caps() {
+    use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
+
+    let row_sizes = [10.0, 0.0, 10.0, 30.0, 13.333333, 13.333333, 13.333333];
+    let tracks = tracks(&row_sizes);
+    let container = crate::GridContainerInput {
+        rows: vec![GridTrackSize::LengthPx(10.0)],
+        auto_rows: GridAutoRows::TrackList(vec![
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(0.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(10.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::Percentage(0.2)),
+            GridTrackSize::Auto,
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(30.0)),
+            GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(40.0)),
+        ]),
+        ..crate::GridContainerInput::default()
+    };
+    assert_eq!(
+        blink_layout_unit_distribute_rows_from_stages(
+            &container,
+            frame(),
+            &row_sizes,
+            &tracks,
+            &tracks,
+            ResidualRounding::UpFiveFitAutoLaterTrack,
+        ),
+        Some(vec![640, 0, 640, 1920, 854, 853, 853])
+    );
+}
+
 fn two_fit_container() -> crate::GridContainerInput {
     use crate::{GridAutoRows, GridTrackLengthPercentage, GridTrackSize};
     crate::GridContainerInput {
