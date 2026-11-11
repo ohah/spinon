@@ -3,6 +3,7 @@ use std::collections::BTreeMap;
 
 #[path = "three_fit_auto_minimum/dynamic.rs"]
 mod dynamic;
+pub(super) use dynamic::{configure_scene, observe_current, source_for_track_list};
 #[path = "three_fit_auto_minimum/five_fit.rs"]
 mod five_fit;
 #[path = "three_fit_auto_minimum/four_fit.rs"]
@@ -19,10 +20,10 @@ const OBSERVATIONS: &str = include_str!(
 );
 
 #[derive(Clone)]
-struct SceneResult {
-    rows: Vec<f32>,
-    item_frames: BTreeMap<String, [f32; 4]>,
-    payload_frames: BTreeMap<String, [f32; 4]>,
+pub(super) struct SceneResult {
+    pub(super) rows: Vec<f32>,
+    pub(super) item_frames: BTreeMap<String, [f32; 4]>,
+    pub(super) payload_frames: BTreeMap<String, [f32; 4]>,
 }
 
 fn records() -> Vec<Value> {
@@ -138,7 +139,7 @@ fn source_for(record: &Value) -> String {
     )
 }
 
-fn style_for_color<'a>(
+pub(super) fn style_for_color<'a>(
     styles: &'a [spinon_style::ComputedElementStyle],
     color: OpaqueCssSrgb,
     label: &str,
@@ -156,7 +157,7 @@ fn style_for_color<'a>(
     matches[0]
 }
 
-fn row_values(record: &Value) -> Vec<f32> {
+pub(super) fn row_values(record: &Value) -> Vec<f32> {
     record["rowValues"]
         .as_array()
         .expect("Chrome records used row sizes")
@@ -191,7 +192,7 @@ fn scene_item_placement(record: &Value, id: &str, label: &str) -> (usize, usize)
     )
 }
 
-fn eligible_for_auto_minimum(record: &Value, id: &str) -> bool {
+pub(super) fn eligible_for_auto_minimum(record: &Value, id: &str) -> bool {
     let scene = &record["scene"];
     let placement = scene["items"]
         .as_array()

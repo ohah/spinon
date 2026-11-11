@@ -2,6 +2,8 @@ use super::*;
 
 #[path = "profiles/five_fit_span.rs"]
 mod five_fit_span;
+#[path = "profiles/six_fit_span.rs"]
+mod six_fit_span;
 
 pub(super) fn fit_content_cap_is_supported(track: &GridTrackSize) -> bool {
     matches!(
@@ -246,6 +248,9 @@ pub(super) fn supports_six_fit_auto_placement_track_list(tracks: &[GridTrackSize
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
     tracks: &[GridTrackSize],
 ) -> bool {
+    if six_fit_span::supports_six_fit_row_span_track_list(tracks) {
+        return true;
+    }
     if five_fit_span::supports_five_fit_row_span_track_list(tracks) {
         return true;
     }
@@ -334,6 +339,9 @@ pub(super) fn supports_repeated_span_fit_positions(
     tracks: &[GridTrackSize],
     positive_implicit_rows: usize,
 ) -> bool {
+    if six_fit_span::supports_six_fit_row_span_track_list(tracks) {
+        return positive_implicit_rows == 6;
+    }
     if !supports_repeated_min_max_content_auto_span_track_list(tracks) {
         return false;
     }
@@ -417,6 +425,10 @@ mod five_fit_auto_placement_tests;
 #[cfg(test)]
 #[path = "profiles/six_fit_auto_placement_tests.rs"]
 mod six_fit_auto_placement_tests;
+
+#[cfg(test)]
+#[path = "profiles/six_fit_span_tests.rs"]
+mod six_fit_span_tests;
 
 pub(super) fn supports_intrinsic_auto_track_list(tracks: &[GridTrackSize]) -> bool {
     supports_min_content_auto_track_list(tracks)

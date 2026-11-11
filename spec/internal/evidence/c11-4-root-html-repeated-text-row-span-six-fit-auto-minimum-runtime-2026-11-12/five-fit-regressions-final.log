@@ -1,0 +1,15 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+
+running 9 tests
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_row_span_trace_preserves_owner_rows_and_auto_minimum ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_zero_minimum_rounds_fractional_fit_row_up ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_auto_minimum_resolves_zero_growth_limit_after_spanning_minimum ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_zero_minimum_keeps_fractional_px_fit_row_nearest ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_zero_minimum_allocates_remainder_by_fit_caps ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_auto_minimum_keeps_remainder_outside_row_span ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::rejections::parsed_root_html_five_fit_row_span_mixed_minimum_rejection_is_atomic_and_recovers ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::trace::parsed_root_html_five_fit_zero_minimum_max_content_tail_keeps_fractional_distribution ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::three_fit_auto_minimum::five_fit::rejections::parsed_root_html_five_fit_row_span_rejects_out_of_profile_mutations_atomically ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 663 filtered out; finished in 2.75s

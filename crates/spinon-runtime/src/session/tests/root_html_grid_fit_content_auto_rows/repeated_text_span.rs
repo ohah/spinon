@@ -13,6 +13,9 @@ mod automatic_minimum;
 #[path = "repeated_text_span/rejections.rs"]
 mod rejections;
 #[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
+#[path = "repeated_text_span/six_fit_auto_minimum.rs"]
+mod six_fit_auto_minimum;
+#[cfg(all(test, feature = "c11-4-grid-track-sizing-fixture-test"))]
 #[path = "repeated_text_span/three_fit_auto_minimum.rs"]
 mod three_fit_auto_minimum;
 

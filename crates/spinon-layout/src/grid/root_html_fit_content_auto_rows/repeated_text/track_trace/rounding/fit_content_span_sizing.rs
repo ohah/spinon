@@ -1,4 +1,4 @@
-use super::five_fit_distribution::{ContributionPhase, apply_phase};
+use super::fit_content_span_distribution::{ContributionPhase, apply_phase};
 
 #[derive(Clone, Copy)]
 pub(super) struct TrackFunctions {
@@ -36,7 +36,7 @@ pub(super) fn simulate_blink_row_sizes(
         .count();
     if container.rows.len() != 1
         || auto_rows.len() != 6
-        || fit_count != 5
+        || !(5..=6).contains(&fit_count)
         || !grid_height.is_finite()
         || grid_height < 0.0
     {

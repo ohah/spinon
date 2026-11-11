@@ -1,10 +1,10 @@
 use super::super::*;
 use super::repeated_text_row_track_stages;
 
-#[path = "rounding/five_fit_distribution.rs"]
-mod five_fit_distribution;
-#[path = "rounding/five_fit_sizing.rs"]
-mod five_fit_sizing;
+#[path = "rounding/fit_content_span_distribution.rs"]
+mod fit_content_span_distribution;
+#[path = "rounding/fit_content_span_sizing.rs"]
+mod fit_content_span_sizing;
 
 #[derive(Clone, Copy)]
 pub(super) enum ResidualRounding {
@@ -87,8 +87,10 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     let five_fit_row_span =
         raw_row_sizes.len() == 7 && fit_content_count == 5 && stages.has_spanning_item;
     let five_fit_span_auto_minimum = five_fit_row_span && stages.has_span_auto_minimum;
-    let five_fit_rows = five_fit_row_span.then(|| {
-        five_fit_sizing::simulate_blink_row_sizes(
+    let six_fit_row_span =
+        raw_row_sizes.len() == 7 && fit_content_count == 6 && stages.has_spanning_item;
+    let fit_content_span_rows = (five_fit_row_span || six_fit_row_span).then(|| {
+        fit_content_span_sizing::simulate_blink_row_sizes(
             input,
             container,
             output,
@@ -97,20 +99,26 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
             &stages.pre_alignment_tracks,
         )
     });
-    if let Some(Some(rows)) = five_fit_rows {
-        let snapped_rows = if stages.stretch_applied {
-            blink_layout_unit_stretch_auto_rows(container, grid_frame.height, rows)?
-        } else {
-            rows
-        };
-        if snapped_rows
-            .iter()
-            .zip(&stages.final_tracks)
-            .any(|(units, track)| (blink_layout_unit_to_px(*units) - track.base_size).abs() > 0.02)
-        {
-            return None;
+    match fit_content_span_rows {
+        Some(Some(rows)) => {
+            let snapped_rows = if stages.stretch_applied {
+                blink_layout_unit_stretch_auto_rows(container, grid_frame.height, rows)?
+            } else {
+                rows
+            };
+            if snapped_rows
+                .iter()
+                .zip(&stages.final_tracks)
+                .any(|(units, track)| {
+                    (blink_layout_unit_to_px(*units) - track.base_size).abs() > 0.02
+                })
+            {
+                return None;
+            }
+            return Some(snapped_rows);
         }
-        return Some(snapped_rows);
+        Some(None) if six_fit_row_span => return None,
+        Some(None) | None => {}
     }
     let four_fit_has_fractional_auto_track = if four_fit_row_span {
         match &container.auto_rows {

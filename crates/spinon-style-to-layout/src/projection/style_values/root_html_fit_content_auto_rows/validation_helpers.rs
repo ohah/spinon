@@ -184,6 +184,7 @@ pub(super) fn repeated_span_fit_positions_are_supported(
                 && third < fourth
                 && fourth < fifth
         }
+        [1, 2, 3, 4, 5, 6] => positive_implicit_rows == 6,
         _ => false,
     }
 }
@@ -271,6 +272,22 @@ pub(super) fn zero_border(style: &ComputedElementStyle) -> bool {
 #[cfg(test)]
 mod tests {
     use super::repeated_span_fit_positions_are_supported;
+
+    #[test]
+    fn repeated_span_six_fit_positions_require_six_implicit_rows() {
+        assert!(repeated_span_fit_positions_are_supported(
+            6,
+            &[1, 2, 3, 4, 5, 6]
+        ));
+        assert!(!repeated_span_fit_positions_are_supported(
+            3,
+            &[1, 2, 3, 4, 5, 6]
+        ));
+        assert!(!repeated_span_fit_positions_are_supported(
+            6,
+            &[1, 2, 3, 4, 5]
+        ));
+    }
 
     #[test]
     fn repeated_span_three_fit_positions_are_limited_to_six_rows() {
