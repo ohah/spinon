@@ -1,0 +1,41 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-five-fit-auto-minimum-independent-verification.v2",
+  "verifiedAtUtc": "2026-11-11T12:37:48.046Z",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-five-fit-auto-minimum-precomparison.html",
+    "sha256": "5d70c341ad56a9ebe0cf7ef9a7c3feb42f6817848617d57d9a8a597f3859f4e5"
+  },
+  "observations": {
+    "path": "chrome157-observation.ndjson.gz",
+    "compression": "gzip",
+    "compressedBytes": 1151212,
+    "compressedSha256": "d35765409e6357358a920b40f9c75637796480dbd82402b2f17fa23d06391a3d",
+    "uncompressedBytes": 67378320,
+    "uncompressedSha256": "238fc0cd60dbbf5cbc085cd03d51c7b656236f3bc32e25bfa57435919e3edfb1",
+    "sceneCount": 34560,
+    "pairedKeys": 17280,
+    "uniqueTrackLists": 2160,
+    "fitPositionQuintuples": 6,
+    "capAssignments": 120,
+    "tailOrders": 3
+  },
+  "automaticMinimum": {
+    "eligibleCandidateItemOccurrences": 77760,
+    "baselinePayloadFloorViolations": 13248,
+    "candidatePayloadFloorViolations": 0
+  },
+  "relationships": {
+    "sourceOrderPairs": 17280,
+    "maximumSourceOrderDeltaCssPx": 0,
+    "alignmentPairs": 17280,
+    "maximumNonAutoStretchDeltaCssPx": 0,
+    "maximumAutoStretchDeltaCssPx": 130.0002,
+    "minimumModePairs": 17280,
+    "changedTextItemFrames": 66198,
+    "maximumMinimumTrackDeltaCssPx": 50,
+    "maximumMinimumItemDeltaCssPx": 50.015625,
+    "capPermutationGroups": 288,
+    "maximumSpanFrameErrorCssPx": 0.0002499999999940883
+  }
+}
