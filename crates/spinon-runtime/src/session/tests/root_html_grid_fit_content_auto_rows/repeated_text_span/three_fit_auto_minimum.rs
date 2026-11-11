@@ -3,6 +3,8 @@ use std::collections::BTreeMap;
 
 #[path = "three_fit_auto_minimum/dynamic.rs"]
 mod dynamic;
+#[path = "three_fit_auto_minimum/four_fit.rs"]
+mod four_fit;
 #[path = "three_fit_auto_minimum/matrix.rs"]
 mod matrix;
 #[path = "three_fit_auto_minimum/rejections.rs"]

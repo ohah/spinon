@@ -5,13 +5,23 @@ use super::repeated_text_row_track_stages;
 pub(super) enum ResidualRounding {
     Nearest,
     Up,
+    UpAutoLaterTrack,
     UpLaterTrack,
+    NearestAutoLaterTrack,
 }
 
 fn blink_layout_unit_floor_units(value: f32) -> i64 {
     let value = f64::from(value);
     let rounding_error_bound = f64::from(f32::EPSILON) * value.abs().max(1.0) * 4.0 * 64.0;
     (value * 64.0 + rounding_error_bound).floor() as i64
+}
+
+fn blink_layout_unit_is_fractional(value: f32) -> bool {
+    let scaled = f64::from(value) * 64.0;
+    let nearest_units = scaled.round();
+    let rounding_error_bound =
+        f64::from(f32::EPSILON) * f64::from(value).abs().max(1.0) * 4.0 * 64.0;
+    (scaled - nearest_units).abs() > rounding_error_bound
 }
 
 pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_layout_unit_to_px(
@@ -63,6 +73,25 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
     let span_auto_minimum = raw_row_sizes.len() == 7 && stages.has_span_auto_minimum;
     let one_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 1;
     let three_fit_span_auto_minimum = span_auto_minimum && fit_content_count == 3;
+    let four_fit_row_span = raw_row_sizes.len() == 7 && fit_content_count == 4;
+    let four_fit_span_auto_minimum = four_fit_row_span && stages.has_span_auto_minimum;
+    let four_fit_has_fractional_auto_track = if four_fit_row_span {
+        match &container.auto_rows {
+            crate::GridAutoRows::TrackList(tracks) if !tracks.is_empty() => {
+                pre_alignment_sizes.iter().enumerate().any(|(row, size)| {
+                    row >= container.rows.len()
+                        && matches!(
+                            tracks[(row - container.rows.len()) % tracks.len()],
+                            GridTrackSize::Auto
+                        )
+                        && blink_layout_unit_is_fractional(*size)
+                })
+            }
+            _ => false,
+        }
+    } else {
+        false
+    };
     let pre_alignment_units = blink_layout_unit_distribute_rows_from_stages(
         container,
         grid_frame,
@@ -71,9 +100,14 @@ pub(in crate::grid::root_html_fit_content_auto_rows::repeated_text) fn blink_lay
         &stages.pre_alignment_tracks,
         match &container.auto_rows {
             crate::GridAutoRows::TrackList(_) if fit_content_count == 2 => ResidualRounding::Up,
-            _ if one_fit_span_auto_minimum || three_fit_span_auto_minimum => {
+            _ if one_fit_span_auto_minimum
+                || three_fit_span_auto_minimum
+                || four_fit_span_auto_minimum =>
+            {
                 ResidualRounding::UpLaterTrack
             }
+            _ if four_fit_has_fractional_auto_track => ResidualRounding::UpAutoLaterTrack,
+            _ if four_fit_row_span => ResidualRounding::NearestAutoLaterTrack,
             _ => ResidualRounding::Nearest,
         },
     )?;
@@ -136,12 +170,8 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
             return None;
         }
 
-        let scaled = f64::from(raw_size) * 64.0;
         let floor_units = blink_layout_unit_floor_units(raw_size);
-        let nearest_units = scaled.round();
-        let rounding_error_bound =
-            f64::from(f32::EPSILON) * f64::from(raw_size).abs().max(1.0) * 4.0 * 64.0;
-        let is_fractional = (scaled - nearest_units).abs() > rounding_error_bound;
+        let is_fractional = blink_layout_unit_is_fractional(raw_size);
         quantized.push(floor_units);
         floor_total += floor_units;
         raw_total += f64::from(raw_size);
@@ -178,8 +208,12 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
                 growth_potentials.push((row, growth_potential, is_auto_track));
             }
         } else if fit_content_limit.is_none()
-            || (matches!(residual_rounding, ResidualRounding::UpLaterTrack)
-                && rounded_up_size <= rounded_base_limit + 1.0 / 64.0)
+            || (matches!(
+                residual_rounding,
+                ResidualRounding::UpLaterTrack
+                    | ResidualRounding::UpAutoLaterTrack
+                    | ResidualRounding::NearestAutoLaterTrack
+            ) && rounded_up_size <= rounded_base_limit + 1.0 / 64.0)
         {
             growth_potentials.push((row, growth_potential, is_auto_track));
         }
@@ -189,8 +223,12 @@ pub(super) fn blink_layout_unit_distribute_rows_from_stages(
     // step. A fractional share can leave one unit on a later unconstrained track even when
     // rounding the final f32 sum to nearest would discard it.
     let target_total = match residual_rounding {
-        ResidualRounding::Nearest => (raw_total * 64.0).round() as i64,
-        ResidualRounding::Up | ResidualRounding::UpLaterTrack => (raw_total * 64.0).ceil() as i64,
+        ResidualRounding::Nearest | ResidualRounding::NearestAutoLaterTrack => {
+            (raw_total * 64.0).round() as i64
+        }
+        ResidualRounding::Up
+        | ResidualRounding::UpAutoLaterTrack
+        | ResidualRounding::UpLaterTrack => (raw_total * 64.0).ceil() as i64,
     };
     let leftover_units = target_total - floor_total;
     if leftover_units < 0 || leftover_units as usize > growth_potentials.len() {

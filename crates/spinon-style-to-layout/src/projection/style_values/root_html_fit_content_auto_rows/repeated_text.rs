@@ -7,7 +7,7 @@ pub(super) fn span_auto_minimum_items_candidate(
     fit_positions: &[usize],
     span_profile: bool,
 ) -> bool {
-    if !span_profile || !matches!(fit_positions.len(), 1 | 3) {
+    if !span_profile || !matches!(fit_positions.len(), 1 | 3 | 4) {
         return false;
     }
     items.iter().copied().skip(1).all(|item| {
