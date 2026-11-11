@@ -5,6 +5,8 @@
 **Base:** `main` at `94548de2e0f28b7cc27839a7f1071cf9e499b2bf`
 **Diff identity:** `gh pr diff 1354` and `git diff origin/main...HEAD` were byte-for-byte identical as plain text; both SHA-256 values were `1769d27081da2daeb151a416b638fe04a76eda1fba4daf54be7bec3ea685b3b4` (3,538 lines). The Git binary patch representation is intentionally excluded from this textual comparison; the PR includes the two checked-in PNGs.
 
+**Merge:** rebase-merged at `2026-11-11T07:55:23Z`, merge SHA `714194ac7123a431296e8268b1e9aa487f7c48e9`; no GitHub status checks were configured.
+
 | # | Adversarial check | PR diff result |
 | ---: | --- | --- |
 | 1 | PR targets the intended feature branch and current `main` base | PR #1354 is open from `feat/c11-4-six-fit-auto-minimum-20261111` to `main`; head/base SHAs above match local refs. |
@@ -38,4 +40,4 @@
 | 29 | Aggregate counts hide a floor or overflow failure | Per-item comparisons precede totals; matrix asserts 23,040 candidate items, zero candidate floor/overflow/Grid-end failures and the expected baseline failures. |
 | 30 | PR screenshots or platform evidence imply six-fit GUI verification | Agent Browser loaded both image URLs in the PR page (`complete=true`, 1206×2622); PR body labels them default-app smoke. Android AVD startup failure and the lack of six-fit-specific app geometry are stated explicitly. |
 
-**Result:** no PR diff defect found. PR has no configured status checks (`statusCheckRollup: []`); local evidence is recorded separately and this review does not mark C11.4/C11 complete.
+**Result:** no PR diff defect found. The bounded implementation was merged with no configured status checks; this review does not mark C11.4/C11 complete.

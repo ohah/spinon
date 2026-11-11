@@ -25,4 +25,4 @@
 | 19 | Rejection publishes stale frames or prevents same-session recovery | Dark media mutation to an unlisted cap fails without completed layout; computed styles carry the invalid revision; switching back recovers with new key and expected frames. |
 | 20 | Platform smoke is overstated as six-fit verification | Evidence explicitly says iOS tested the default app route only, Android runtime was unavailable, and six-fit geometry evidence comes from RuntimeSession/Chrome comparison. |
 
-**Result:** no implementation defect found in these perspectives. This is bounded local evidence; PR/CI and final-merge review are still pending.
+**Result:** no implementation defect found in these perspectives. PR #1354 merged at `2026-11-11T07:55:23Z` with SHA `714194ac7123a431296e8268b1e9aa487f7c48e9`; the GitHub check rollup was empty. C11.4/C11 remain incomplete.

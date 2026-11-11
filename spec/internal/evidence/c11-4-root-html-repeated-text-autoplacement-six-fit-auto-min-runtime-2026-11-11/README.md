@@ -1,6 +1,6 @@
 # C11.4 six-fit Root HTML repeated-text auto-placement runtime evidence
 
-**Status:** local implementation and focused gates passed; implementation PR is not yet merged. This bounded six-fit slice does not change the official C11.4/C11 completion count.
+**Status:** implementation PR [#1354](https://github.com/ohah/spinon/pull/1354) was rebase-merged at `2026-11-11T07:55:23Z`, merge SHA `714194ac7123a431296e8268b1e9aa487f7c48e9`. GitHub reported no status checks. This bounded six-fit slice does not change the official C11.4/C11 completion count.
 
 ## Scope
 
