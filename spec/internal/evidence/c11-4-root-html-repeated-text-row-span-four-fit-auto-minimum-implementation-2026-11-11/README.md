@@ -2,7 +2,7 @@
 
 ## 범위
 
-이 자료는 기존 parsed Root HTML repeated-text row-span profile에서 정확히 네 `fit-content()` track과 `min-content`·`auto` 각 하나만 갖는 제한 입력을 검증한다. 제품 구현 전 Chrome 157 비교와 plan PR [#1356](https://github.com/ohah/spinon/pull/1356) 병합을 마쳤다. 공식 C11.4/C11 완료, 일반 CSS Grid 적합성, public API/FFI 및 internal numeric contract 버전 상승을 뜻하지 않는다. 공식 완료 수 `78/214`는 유지한다.
+이 자료는 구현 PR [#1357](https://github.com/ohah/spinon/pull/1357)로 병합된 parsed Root HTML repeated-text row-span profile을 기록한다. 입력은 정확히 네 `fit-content()` track과 `min-content`·`auto` 각 하나로 제한하며, 사전 비교와 plan PR [#1356](https://github.com/ohah/spinon/pull/1356)도 선행 병합됐다. 병합 시각·SHA·check 범위는 [병합 기록](./merge-PR1357.md)에 둔다. 이 제한 구현은 공식 C11.4/C11 완료, 일반 CSS Grid 적합성, public API/FFI 및 internal numeric contract 버전 상승을 뜻하지 않는다. 공식 완료 수 `78/214`는 유지한다.
 
 ## 기준 구현과 RuntimeSession 비교
 
@@ -45,9 +45,9 @@ PixelCopy/Metal drawable readback, compositor 이후 pixel parity, hardware GPU,
 
 ## Tailnet 로드맵 미리보기
 
-`https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`에서 HTTP 200을 확인했고 Agent Browser 화면에 공식 `78/214`와 `C11.4 four-fit row-span · 진행 중` 카드가 표시됐다. PR 번호가 반영된 저장소 원본과 `/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html`의 SHA-256은 모두 `bbe44944d40dd9168c94172e7879efea0e430cb2cc1b2c2c7857bd75e51ea8c1`이었다. 직전 preview는 `roadmap.html.before-c11-4-four-fit-pr1357-20261111T1140Z`에 보존했고, 그 전 파일도 `roadmap.html.before-c11-4-four-fit-20261111T1116Z`에 남아 있다. 페이지 캡처는 [Tailnet roadmap preview](./tailnet-roadmap-preview.png)다.
+PR #1357 병합 후 `https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`을 다시 동기화했다. Agent Browser 화면과 HTTP 200 응답에서 최신 bounded slice가 PR #1357로 병합됐고, 공식 `78/214`, 비어 있는 진행 열, `C11.4 five-fit row-span · NEXT · Chrome 사전 비교 후보 · 미착수`가 표시됨을 확인했다. 저장소 원본, preview 파일, 응답 본문의 SHA-256은 모두 `893624e6e826b66aaa4707c456f29be34e14358f61be3e0e179054c44eef127d`로 일치한다. 동기화 직전 preview는 `roadmap.html.before-c11-4-four-fit-postmerge-summary-20261111T115629Z`에 보존했다(SHA-256 `0f80268786456b701529fc6cdef18505c387703a102b92a2812c0a95aa088b60`); 이전 기록은 `roadmap.html.before-c11-4-four-fit-postmerge-docs-20261111T115501Z`와 `roadmap.html.before-c11-4-four-fit-pr1357-20261111T1140Z`에도 있다. 페이지 캡처는 [Tailnet roadmap preview](./tailnet-roadmap-preview.png)다.
 
-Roadmap 확인 session `spinon-roadmap-pr1357-e00ea27987c0`와 PR 이미지 확인 session `spinon-pr1357-e00ea27987c0`를 사용 후 닫았다. 두 session의 최종 diagnostics는 `active=false`, PID `null`이고 `session list`는 비어 있다. PR 이미지 네 장은 `complete=true`로 로드됐다. 기존 Terminal Browser는 이 작업에서 열거나 조작하지 않았다.
+Roadmap 확인 session `spinon-roadmap-postmerge-docs-20261111`은 사용 후 닫았고 진단 결과 `active=false`, PID `null`이다. 이전 구현 PR #1357에서 사용한 roadmap·이미지 확인 session도 닫혔으며 이미지 네 장은 `complete=true`로 로드됐다. 전체 session 목록에는 다른 작업의 Agent Browser session이 남아 있어 건드리지 않았다. 이 작업에서 Terminal Browser는 열거나 조작하지 않았다.
 
 ## 프로세스·시뮬레이터 정리
 
@@ -63,4 +63,4 @@ b4f8f631b16c9274d8dbd81c8a5d61b6e9e1548a289a3bb78ab37fbbc556966f  ios-light.png
 eb701d1b4803f809cdd16025c34878645edaecd1d00e5e36756aa047c6e9c281  tailnet-roadmap-preview.png
 ```
 
-별도 implementation/runtime 20개와 PR diff 30개 검토는 각각 [구현 검토](./implementation-runtime-review-20.md), [PR diff 검토](./pr-diff-review-30.md)에 기록했다. 최종 실행 명령과 scene 집계는 [`verification.json`](./verification.json)에, 각 로그·화면 파일의 SHA-256은 [`SHA256SUMS`](./SHA256SUMS)에 기록했다.
+별도 implementation/runtime 20개, implementation PR diff 30개, 병합 후 문서 PR diff 30개 검토는 각각 [구현 검토](./implementation-runtime-review-20.md), [구현 PR diff 검토](./pr-diff-review-30.md), [병합 후 문서 PR diff 검토](./postmerge-docs-pr-review-30.md)에 기록했다. 최종 실행 명령과 scene 집계는 [`verification.json`](./verification.json)에, 각 로그·화면 파일의 SHA-256은 [`SHA256SUMS`](./SHA256SUMS)에 기록했다.
