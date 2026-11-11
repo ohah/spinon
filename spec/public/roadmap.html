@@ -519,7 +519,7 @@
     const statusNote = document.getElementById('official-status-note');
     const statusUrl = 'https://api.github.com/repos/ohah/spinon/contents/spec/STATUS.md?ref=main';
     // 공식 상태 대장에 상위 ID가 없는 C11.4 slice는 실제 코드 변경이 시작되면 진행 중 열에 표시한다.
-    const execution = { nextOrder:[], inProgress:[], detailInProgress:[], detailNext:[], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
+    const execution = { nextOrder:[], inProgress:[], detailInProgress:[], detailNext:[{code:'C11.4 four-fit row-span',title:'C11.4 four-fit repeated-text row-span min-height:auto',stage:'계획 PR'}], waiting:{ R02:'iOS 실기기 JITless 검증을 위한 기기 연결', R05:'Android 실기기 직접 입력 표본을 위한 사용자 터치 입력 대기', R08:'실기기 GPU·접근성·IME 검증을 위한 기기 연결' }, wipLimit:2 };
     let officialStatuses = null;
     const baseTasks = phases.flatMap(phase => phase.tasks.map(([code, title, description]) => ({
       code, title, description, key:taskIdentity(code, title)

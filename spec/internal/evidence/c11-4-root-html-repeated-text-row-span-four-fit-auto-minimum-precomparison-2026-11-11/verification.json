@@ -1,0 +1,38 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-four-fit-auto-minimum-independent-verification.v1",
+  "verifiedAtUtc": "2026-11-11T09:28:04.283Z",
+  "browserUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-four-fit-auto-minimum-precomparison.html",
+    "sha256": "d11c769e6be2dd3b57eb29a03d88274a36243276b11a15c074c8713ed0b6a5b4"
+  },
+  "observations": {
+    "path": "chrome157-observation.ndjson",
+    "bytes": 22112378,
+    "sha256": "5cebb3d6e7b70275b56dc85623a91534bd09435395e1e0103133be7494fcb737",
+    "sceneCount": 11520,
+    "pairedKeys": 5760,
+    "uniqueTrackLists": 720,
+    "fitPositionQuadruples": 15,
+    "capAssignments": 24,
+    "tailOrders": 2
+  },
+  "automaticMinimum": {
+    "eligibleCandidateItemOccurrences": 25920,
+    "baselinePayloadFloorViolations": 3648,
+    "candidatePayloadFloorViolations": 0
+  },
+  "relationships": {
+    "sourceOrderPairs": 5760,
+    "maximumSourceOrderDeltaCssPx": 0,
+    "alignmentPairs": 5760,
+    "maximumNonAutoStretchDeltaCssPx": 0,
+    "maximumAutoStretchDeltaCssPx": 130,
+    "minimumModePairs": 5760,
+    "changedTextItemFrames": 22074,
+    "maximumMinimumTrackDeltaCssPx": 50,
+    "maximumMinimumItemDeltaCssPx": 63.34375,
+    "capPermutationGroups": 480,
+    "maximumSpanFrameErrorCssPx": 0.0002250000000003638
+  }
+}
