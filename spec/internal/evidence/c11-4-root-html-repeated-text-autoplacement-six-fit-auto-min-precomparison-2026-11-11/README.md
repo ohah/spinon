@@ -13,6 +13,7 @@
 - text는 10px monospace, 10px line-height이며 item 순서별 payload line count는 `[2,2,2,3,2,2,3,1]`이다. 각 item은 computed `min-height:0` 또는 `auto`를 쓴다.
 - six-member `grid-auto-rows`는 모두 `fit-content()`다. 고정 cap 값 `0px`, `10px`, `20%`, `30px`, `40px`, `50px`의 authored 순열 720개를 definite 220px percentage basis에서 비교했다. 이 basis에서 `20%`는 44px다.
 - track list 720개 각각을 `align-content:start|stretch`, DOM forward/reverse, item `min-height:0|auto`와 교차해 총 5,760 scene 및 2,880 baseline/candidate pair를 만들었다. `%` cap의 basis는 definite 220px block size다.
+- 독립 검산기는 fixture SHA-256, browser metadata, scene identity와 전체 matrix axis, computed list/cap order, row/item 위치, payload line-box geometry, floor·overflow 및 alignment geometry를 확인한다.
 - fixture와 결과 수집은 [`oracle-fixture.html`](./oracle-fixture.html), [`capture-chrome.mjs`](./capture-chrome.mjs)다. 원본은 [`chrome157-observation.ndjson`](./chrome157-observation.ndjson), 독립 검산기는 [`verify-chrome-matrix.py`](./verify-chrome-matrix.py)다.
 
 ## 결과
