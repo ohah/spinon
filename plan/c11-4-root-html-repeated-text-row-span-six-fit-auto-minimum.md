@@ -1,6 +1,6 @@
 # C11.4 · repeated-text row-span six-fit `min-height:auto`
 
-**상태:** 계획 PR 병합 · 제한된 six-fit row-span 구현과 RuntimeSession 검증 완료 · 구현 PR 준비 중 · 공식 `78/214`, C11.4/C11 미완료 유지
+**상태:** 계획 PR 병합 · 제한된 six-fit row-span 구현과 RuntimeSession 검증 완료 · 구현 PR [#1365](https://github.com/ohah/spinon/pull/1365) · 공식 `78/214`, C11.4/C11 미완료 유지
 
 **직전 row-span 구현:** [five-fit `min-height:auto`](./c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md) · 구현 PR [#1360](https://github.com/ohah/spinon/pull/1360)
 
@@ -47,7 +47,7 @@
 - 최종 RuntimeSession 실행은 720 cap orders × 16 scenes = 11,520/11,520 scene, 5,760 baseline/candidate pairs다. Candidate payload-floor violation 0건, baseline 4,800건이다. Pair별 geometry change, source-order 및 `start/stretch` invariants를 확인했다.
 - Profile/rejection/trace, five-fit regressions, format, workspace Clippy 및 Android/iOS Simulator app builds를 기록했다. 전체 `spinon-layout --lib`에는 미수정 C15 HostDocument assertion failure 1건이 남아 있고 이번 실행에서 baseline tree 재현은 하지 않았다.
 - Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 캡처는 기본 root HTML route smoke로 한정한다. Six-fit fixture geometry나 PixelCopy/Metal readback은 확인하지 않는다.
-- 상세 증거와 PR diff 검토는 implementation PR 준비가 끝나면 [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/README.md)에 기록한다. 공식 `78/214` 및 C11.4/C11 상태는 유지한다.
+- 상세 증거와 별도 implementation PR diff 30개 검토를 [실행 근거](../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-runtime-2026-11-12/README.md)에 기록했다. 공식 `78/214` 및 C11.4/C11 상태는 유지한다.
 
 ## 남은 범위
 
