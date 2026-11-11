@@ -1,0 +1,115 @@
+{
+  "schema": "spinon.c11-4.repeated-text-row-span-six-fit-mixed-auto-min-precomparison-verification/v1",
+  "capturedAtUtc": "2026-11-11T21:24:01.426Z",
+  "source": {
+    "browserCli": "agent-browser 0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "devicePixelRatio": 1,
+    "viewportCssPx": [
+      1280,
+      900
+    ],
+    "fixturePath": "tests/fixtures/css/c11/root-html-grid-repeated-text-row-span-mixed-auto-minimum-precomparison.html",
+    "fixtureBytes": 8614,
+    "fixtureSha256": "75203d6247c6f197daea6cfc3f1a734589591f446aef59223c8219580d61ded4",
+    "observationPath": "chrome157-mixed-minimum-observation.ndjson.gz",
+    "observationBytes": 3704727,
+    "observationSha256": "fd3239a3e8da295457c127387b23610f27e2d378b4bc621db09bba87e1c90202",
+    "uniformControlObservationPath": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/chrome157-observation.ndjson.gz"
+  },
+  "sceneCount": 138240,
+  "comparisonGroups": 34560,
+  "uniqueCapOrders": 720,
+  "assignmentCountsPerMask": {
+    "span2Six": 2880,
+    "span2Span3Six": 2880
+  },
+  "maskCounts": {
+    "span2Six": 32,
+    "span2Span3Six": 16
+  },
+  "uniformControlScenesRechecked": 11520,
+  "autoItemPayloadFloorViolations": 0,
+  "zeroMinimumPayloadFloorShortfalls": {
+    "span2Six": 34944,
+    "span2Span3Six": 12672
+  },
+  "gridEndOverflowOccurrencesByMinimum": {
+    "span2Six": {
+      "auto": 0,
+      "zero": 0
+    },
+    "span2Span3Six": {
+      "auto": 0,
+      "zero": 0
+    }
+  },
+  "mixedMaskGeometryChangesVsAllZero": {
+    "span2Six|1": 594,
+    "span2Six|2": 648,
+    "span2Six|3": 624,
+    "span2Six|4": 672,
+    "span2Six|5": 672,
+    "span2Six|6": 660,
+    "span2Six|7": 672,
+    "span2Six|8": 696,
+    "span2Six|9": 714,
+    "span2Six|10": 696,
+    "span2Six|11": 720,
+    "span2Six|12": 696,
+    "span2Six|13": 720,
+    "span2Six|14": 696,
+    "span2Six|15": 720,
+    "span2Six|16": 576,
+    "span2Six|17": 690,
+    "span2Six|18": 672,
+    "span2Six|19": 720,
+    "span2Six|20": 720,
+    "span2Six|21": 720,
+    "span2Six|22": 720,
+    "span2Six|23": 720,
+    "span2Six|24": 624,
+    "span2Six|25": 720,
+    "span2Six|26": 720,
+    "span2Six|27": 720,
+    "span2Six|28": 672,
+    "span2Six|29": 720,
+    "span2Six|30": 720,
+    "span2Six|31": 720,
+    "span2Span3Six|1": 618,
+    "span2Span3Six|2": 540,
+    "span2Span3Six|3": 576,
+    "span2Span3Six|4": 672,
+    "span2Span3Six|5": 714,
+    "span2Span3Six|6": 684,
+    "span2Span3Six|7": 672,
+    "span2Span3Six|8": 672,
+    "span2Span3Six|9": 720,
+    "span2Span3Six|10": 720,
+    "span2Span3Six|11": 720,
+    "span2Span3Six|12": 688,
+    "span2Span3Six|13": 720,
+    "span2Span3Six|14": 720,
+    "span2Span3Six|15": 720
+  },
+  "maxErrorsCssPx": {
+    "spanFrameVsCoveredRows": 0.00010000000000331966,
+    "sourceOrderAndAlignmentInvariance": 0.0,
+    "uniformControlRegression": 0.0
+  },
+  "acceptance": {
+    "allCapPermutationsPresent": true,
+    "allPerItemMinimumMasksPresent": true,
+    "allAutomaticMinimumItemsPreserveTheirPayloadFloor": true,
+    "noPayloadCrossesGridEnd": true,
+    "sourceOrderAndAlignmentInvariant": true,
+    "coveredRowFramesMatch": true,
+    "uniformZeroAndAutoControlsMatchPreviousCapture": true
+  },
+  "limits": [
+    "Agent Browser Chrome CSS observation only; no Spinon implementation result.",
+    "Fixed six-cap multiset, two row-span topologies, and definite 40x220px one-column Grid.",
+    "No public CSS support, WPT, Android/iOS runtime geometry, device pixels, or C11.4 completion claim."
+  ]
+}

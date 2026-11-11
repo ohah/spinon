@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 repeated-text row-span six-fit mixed automatic minimum precomparison</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #grid {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: grid;
+        box-sizing: border-box;
+        width: 40px;
+        height: 220px;
+        grid-template-columns: 40px;
+        grid-template-rows: 10px;
+        grid-auto-flow: row;
+        align-items: normal;
+        justify-content: start;
+        justify-items: normal;
+        direction: ltr;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        row-gap: 0;
+        column-gap: 0;
+      }
+
+      .item {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        grid-column: 1 / 2;
+        background: #345;
+      }
+
+      .item.auto-minimum {
+        min-height: auto;
+      }
+
+      .empty {
+        height: 10px;
+        background: #123;
+      }
+
+      .payload {
+        display: block;
+        box-sizing: border-box;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        color: #000;
+        background: #abc;
+        font-family: monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 10px;
+        letter-spacing: 0;
+        word-spacing: 0;
+        white-space: normal;
+        word-break: normal;
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (() => {
+        const content = {
+          A: "AAAA BBBB CCCC DDDD EEEE FFFF",
+          B: "AAAAAA BBBBB CCCC DDD",
+          C: "AAAAA BBBB CCC DDDD",
+          D: "AAAA BBB CCCCC DDDD",
+          E: "AAA BBBB CCCCCC",
+        };
+        const capPermutations = [];
+        const permute = (values, index = 0) => {
+          if (index === values.length) {
+            capPermutations.push([...values]);
+            return;
+          }
+          for (let next = index; next < values.length; next += 1) {
+            [values[index], values[next]] = [values[next], values[index]];
+            permute(values, index + 1);
+            [values[index], values[next]] = [values[next], values[index]];
+          }
+        };
+        const caps = ["0px", "10px", "20%", "30px", "40px", "50px"];
+        permute(caps);
+
+        const topologyMap = {
+          span2Six: [
+            ["A", 2, 2],
+            ["B", 3, 2],
+            ["C", 4, 2],
+            ["D", 5, 2],
+            ["E", 6, 2],
+          ],
+          span2Span3Six: [
+            ["A", 2, 2],
+            ["B", 3, 2],
+            ["C", 4, 3],
+            ["D", 5, 3],
+          ],
+        };
+        const trackLists = capPermutations.map((fitCaps) => ({
+          tracks: fitCaps.map((cap) => `fit-content(${cap})`),
+          fitPositions: [1, 2, 3, 4, 5, 6],
+          fitCaps: [...fitCaps],
+        }));
+
+        window.__c114SixFitMixedMinimumScenes = [];
+        for (const list of trackLists) {
+          for (const [name, topologyItems] of Object.entries(topologyMap)) {
+            const maskLimit = 1 << topologyItems.length;
+            for (let minimumMask = 0; minimumMask < maskLimit; minimumMask += 1) {
+              for (const alignContent of ["start", "stretch"]) {
+                for (const domOrder of ["forward", "reverse"]) {
+                  const items = domOrder === "forward" ? topologyItems : [...topologyItems].reverse();
+                  const autoItems = topologyItems
+                    .filter((item, itemIndex) => (minimumMask & (1 << itemIndex)) !== 0)
+                    .map(([id]) => id);
+                  window.__c114SixFitMixedMinimumScenes.push({
+                    trackList: list.tracks.join(" "),
+                    trackMembers: list.tracks,
+                    fitPositions: list.fitPositions,
+                    fitCaps: list.fitCaps,
+                    alignContent,
+                    topology: `${name}-${domOrder}`,
+                    items,
+                    minimumMask,
+                    autoItems,
+                  });
+                }
+              }
+            }
+          }
+        }
+
+        function rectValues(rect, origin) {
+          return [rect.x, rect.y, rect.width, rect.height].map((value, index) => {
+            const offset = index < 2 ? origin[index] : 0;
+            return Number((value - offset).toFixed(6));
+          });
+        }
+
+        function createGrid(scene) {
+          const grid = document.createElement("div");
+          grid.id = "grid";
+          grid.style.gridAutoRows = scene.trackList;
+          grid.style.alignContent = scene.alignContent;
+
+          const empty = document.createElement("div");
+          empty.className = "item empty";
+          empty.dataset.item = "empty";
+          empty.style.gridRow = "1 / 2";
+          grid.append(empty);
+
+          for (const [id, start, span] of scene.items) {
+            const item = document.createElement("div");
+            item.className = `item${scene.autoItems.includes(id) ? " auto-minimum" : ""}`;
+            item.dataset.item = id;
+            item.style.gridRow = `${start} / span ${span}`;
+            const payload = document.createElement("div");
+            payload.className = "payload";
+            payload.dataset.payload = id;
+            payload.append(document.createTextNode(content[id]));
+            item.append(payload);
+            grid.append(item);
+          }
+          return grid;
+        }
+
+        function observeScene(scene, index) {
+          const grid = createGrid(scene);
+          document.body.append(grid);
+          const gridRect = grid.getBoundingClientRect();
+          const style = getComputedStyle(grid);
+          const rowValues = style.gridTemplateRows
+            .trim()
+            .split(/\s+/)
+            .map((value) => Number.parseFloat(value));
+          const items = [...grid.querySelectorAll(".item")].map((item) => {
+            const itemRect = item.getBoundingClientRect();
+            const payload = item.querySelector(".payload");
+            let payloadFrame = null;
+            let lineRects = [];
+            if (payload) {
+              const payloadRect = payload.getBoundingClientRect();
+              payloadFrame = rectValues(payloadRect, [gridRect.x, gridRect.y]);
+              const range = document.createRange();
+              range.selectNodeContents(payload.firstChild);
+              lineRects = [...range.getClientRects()].map((rect) =>
+                rectValues(rect, [gridRect.x, gridRect.y]),
+              );
+            }
+            return {
+              id: item.dataset.item,
+              frame: rectValues(itemRect, [gridRect.x, gridRect.y]),
+              minHeight: getComputedStyle(item).minHeight,
+              text: payload?.textContent ?? "",
+              payloadFrame,
+              lineRects,
+            };
+          });
+          const result = {
+            index,
+            scene,
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            devicePixelRatio: window.devicePixelRatio,
+            gridFrame: rectValues(gridRect, [0, 0]),
+            computedAutoRows: style.gridAutoRows,
+            computedAlignContent: style.alignContent,
+            usedRows: style.gridTemplateRows,
+            rowValues,
+            items,
+          };
+          grid.remove();
+          return result;
+        }
+
+        window.runC114SixFitMixedMinimumBatch = (start, count) => {
+          const end = Math.min(start + count, window.__c114SixFitMixedMinimumScenes.length);
+          const results = [];
+          for (let index = start; index < end; index += 1) {
+            results.push(observeScene(window.__c114SixFitMixedMinimumScenes[index], index));
+          }
+          return { start, end, total: window.__c114SixFitMixedMinimumScenes.length, results };
+        };
+
+        window.showC114SixFitMixedMinimumScene = (index) => {
+          document.querySelector("#grid")?.remove();
+          const scene = window.__c114SixFitMixedMinimumScenes[index];
+          if (!scene) throw new Error(`unknown scene ${index}`);
+          const grid = createGrid(scene);
+          document.body.append(grid);
+          return { index, scene };
+        };
+      })();
+    </script>
+  </body>
+</html>
