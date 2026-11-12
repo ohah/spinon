@@ -1,0 +1,49 @@
+{
+  "correction": "복원한 #1369 역사 항목과 기존 evidence 링크를 보존",
+  "sourceHead": "15b7263c7045c7f55f02d74307605a6d85b35ee5",
+  "trackedDiffSha256": "6dd7ee4af3cb9c31bfaf1f4e0be178dc1e02af9b2a603921e004843d466e4bd2",
+  "serverPid": 90711,
+  "previewServerRestarted": false,
+  "routes": [
+    {
+      "route": "roadmap.html",
+      "previousSha256": "3ceab80a6131ac192193e090320b49b7edde4b6bd843b64c524419723ce873e0",
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba",
+      "bytes": 679701
+    },
+    {
+      "route": "public/roadmap.html",
+      "previousSha256": "3ceab80a6131ac192193e090320b49b7edde4b6bd843b64c524419723ce873e0",
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba",
+      "bytes": 679701
+    },
+    {
+      "route": "spec/public/roadmap.html",
+      "previousSha256": "3ceab80a6131ac192193e090320b49b7edde4b6bd843b64c524419723ce873e0",
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba",
+      "bytes": 679701
+    }
+  ],
+  "backupLocation": "~/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr1372-history-correction-2026-11-12",
+  "localRoadmap": {
+    "httpStatus": 200,
+    "bytes": 679701,
+    "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba"
+  },
+  "httpsRoadmap": {
+    "httpStatus": 200,
+    "bytes": 679701,
+    "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba"
+  },
+  "historical1369Routes": [
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/README.html",
+      "httpStatus": 200
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.html",
+      "httpStatus": 200
+    }
+  ],
+  "noDeletes": true
+}

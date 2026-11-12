@@ -1,0 +1,1235 @@
+{
+  "sourceHead": "15b7263c7045c7f55f02d74307605a6d85b35ee5",
+  "sourceTree": "5e058baf80f7d33cce32eae9799fd303227343f7",
+  "trackedDiffSha256": "6dd7ee4af3cb9c31bfaf1f4e0be178dc1e02af9b2a603921e004843d466e4bd2",
+  "selectedRootFileCount": 116,
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr1372-2026-11-12/publication",
+  "routeCount": 169,
+  "totalBytes": 47422982,
+  "officialCount": "78/214",
+  "c11Complete": false,
+  "checkedRoadmapLinks": [
+    {
+      "href": "/spinon/plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.html",
+      "route": "plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.html",
+      "sha256": "b22c1d73a16684b967095f9c770549bda67e6bfd7b1639a19b2b34d392799892"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "sha256": "dc81bb1b50c9cb9a9cb6481ce1af019fdcacf1c105575290967640e976af9eb8"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "sha256": "eeaf434d035c73dca26cf2bf004cf7e4d21695d547438aca59e65415e22b278a"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.html",
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.html",
+      "sha256": "8e6ef9f8910e3f640d8c064708d0f0472e7f957eb898556cf0478b702e829a6c"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "sha256": "5550cc7c784d3a83063e058d7068277a8851415ba6a2451eae3e402704968f74"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "index.html and 404.html",
+      "reason": "existing Tailnet preview entry and fallback are outside this selected roadmap update"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "reason": "unrelated to the #1372 current card; preserve existing route"
+    }
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 869301,
+      "sha256": "dc81bb1b50c9cb9a9cb6481ce1af019fdcacf1c105575290967640e976af9eb8"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 610702,
+      "sha256": "65dfe1295989c459f47a851213f7f1b09f0f78637b6bf4297786ce01dba37ad7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/agent-browser-lifecycle.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/agent-browser-lifecycle.json",
+      "kind": "source-page-or-asset",
+      "bytes": 141,
+      "sha256": "3ce511637cf5a1b2c7f3c82c1bcbdddca1b68cc103a3886d7d1b355f37f8ec60"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 5269,
+      "sha256": "aaf10b3b5c064d5a5b850b3978c6ea91d744e31196cace73d60c20fe9d0dbec7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4404,
+      "sha256": "eed640a82779429d46be6dfd6cc8ab474249a47ae2bed11816c856a2200e102e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 95468,
+      "sha256": "f57d05e8440b5eb06c253edce34e643543d1b1e98dea09ec6ba773dbb378d66e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 95579,
+      "sha256": "1f156065bcc37246be20eba4181bf4f338e1ab23ab4a0615cd7558b516510fe0"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log",
+      "kind": "source-page-or-asset",
+      "bytes": 10386,
+      "sha256": "295c15c862c9d91635b158932c76973eb9a660d1290479100fdb14a2bfe6c684"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 3760,
+      "sha256": "3a23c70221f2badd197dfff5033152192320127539dd74ae48fbd964d75792fe"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-gradle-cleanup.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-gradle-cleanup.log",
+      "kind": "source-page-or-asset",
+      "bytes": 36,
+      "sha256": "fa35640e019e1822cbae53923c032427ff502263ac8bea1bededc399474649a3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-install.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-install.log",
+      "kind": "source-page-or-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4500,
+      "sha256": "f00afbb60d8bc353f9b96186d5edf0c47e5ca06dee12a0fe6b470a1d19a43975"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-environment.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-environment.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 185,
+      "sha256": "ad92b33d110d4ea57e57f56deb47058120cea45e6eefe06ece6fb765390c2ff5"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-summary.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-summary.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 409,
+      "sha256": "f1ba3a7154a74242d4944d332d8a59da594e8fad8bc08af09e7b691248b0ec9d"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/build-runtime-sample.py",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/build-runtime-sample.py",
+      "kind": "source-page-or-asset",
+      "bytes": 5856,
+      "sha256": "f0756dfbf55fc84f0383b9d6ee97bac17351817e2f8d4b9800156691ee6919bf"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/capture-manifest.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/capture-manifest.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1964,
+      "sha256": "1316357bc21dacf0e04ba3015db8fe8cf7661ce2bcf41a43641a2e06f789d27b"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-observation.ndjson.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-observation.ndjson.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 14508142,
+      "sha256": "fa9e2d0194c8f2739df8eb9dd1bf7576bd6aa7c92bb927701d4f757bc876f35a"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-sample.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-sample.png",
+      "kind": "source-page-or-asset",
+      "bytes": 20401,
+      "sha256": "65e11358395260c47defbbdbc6340b7ed4cd7795abbab26099b18580c16a92e1"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-layout.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-layout.log",
+      "kind": "source-page-or-asset",
+      "bytes": 380,
+      "sha256": "3568cebd04c171d1ac72128c5bec8c1c530e4659646011562ef81387307a401b"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-runtime.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-runtime.log",
+      "kind": "source-page-or-asset",
+      "bytes": 754,
+      "sha256": "b4cc809eb74ab3d863765ee0640a9a4f135d1840a5b61f18e6a40e37658bbc35"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-style-to-layout.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-style-to-layout.log",
+      "kind": "source-page-or-asset",
+      "bytes": 741,
+      "sha256": "0b7b66c2d1ce7dabbb7f536f9c80b6ec7016bb22e83041c4a068e207c5b99d23"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34636,
+      "sha256": "5049025847da4a4201e143870280a31abf6a5dfbd829e0cc12bc10790407078e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5915,
+      "sha256": "a5cb570e0cda8ade22dd6f1bf851d31231f1e5cda3c6c3fc835bf0d40b0d821c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 66936,
+      "sha256": "47ed42fe339881882a7548e310d0e541fb1d943484cf7719ea5a6a6d4d4b7ace"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 11749,
+      "sha256": "dbc73ba7addf71342b40a645e8607b8847c19c9afaeb6b9d405f7bed4ae51be2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 73888,
+      "sha256": "cc1edec59be81366b6f99ed4e2155429c77d255df174366255529041cc2da5d7"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 80810,
+      "sha256": "8b39cf90ab3e292828cc7fc8d310f27f753e6ea64d365fbe0593b2f8a68f318e"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 80860,
+      "sha256": "fc58a3d0a45d4dc18d093992a63a61a014f00c0be9f8d3b2c59d9cd3dd4f8ac3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 37530,
+      "sha256": "eeb23c3dd39fa4480ab9f2282049bf308bb05031196be38bf579a377e5abf06f"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-smoke-summary.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-smoke-summary.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 776,
+      "sha256": "552a7d08c0dc8105ffd84fd487b8d8d82fea00d99f05faa90b6b21fe50841894"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 31833,
+      "sha256": "8e6ef9f8910e3f640d8c064708d0f0472e7f957eb898556cf0478b702e829a6c"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/merge-PR1372.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1480,
+      "sha256": "c4c0bd9fac63b10e325880de4443cd6faa24c91d84e89874660b632e14a801dc"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1904,
+      "sha256": "c712362a24ca985b488ec64b7208117789cadb6068bbb2255b78b008eda71482"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 658,
+      "sha256": "4d667f937055ef1974a877be0ac49e5d1961ccdaeb325c3440d2834ce4f31d63"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/post-merge-docs-pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/post-merge-docs-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 38139,
+      "sha256": "c0f432ab68f4f7debec873e2c8295d4295c9c71cbb95cb94977c4d60c17c3226"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/post-merge-docs-pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/post-merge-docs-pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4047,
+      "sha256": "c3724f54fa26dc1ef0ea4ede84285e7136f4e69dd3bd3b4ae2064d128487c140"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36885,
+      "sha256": "de89a68b16f58b8530b66476b8178fcef1305ec73d5663b94021d73397ff9735"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7496,
+      "sha256": "4f5bb704e5ef38aa179a8fdf1cbfe9aec4cd2d7de4f420ddc18fd8c9ad5b6d6b"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "source": "rspress:internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 46320,
+      "sha256": "eeaf434d035c73dca26cf2bf004cf7e4d21695d547438aca59e65415e22b278a"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 11695,
+      "sha256": "64f75a91d3b91f3de05254019a6cf75dab564b3a229419365af21ac6146d3840"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-matrix-3984.ndjson.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-matrix-3984.ndjson.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 178268,
+      "sha256": "df2eb2aafe6f992f0481a89c3e0f673c81391d13531182222b4f101080a162b3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-sample-manifest.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-sample-manifest.json",
+      "kind": "source-page-or-asset",
+      "bytes": 599,
+      "sha256": "a15cde7c9651cd713d92f7093a340a1bf6c7b4b1307004369356472ec9c67394"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "kind": "source-page-or-asset",
+      "bytes": 9945,
+      "sha256": "8b1d711668b4665b642ba2d3f7f26176a4fd4778f48a0442079530ff3c881ca3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1396,
+      "sha256": "3a61a39d66f79630ed2cc05ec3fb8b802f2fa7118aa49e15f5f580c00f678713"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 495,
+      "sha256": "8363f5181ed8e3621685c09e33128828b9d9aaf25e09d2b06ec3791ad235f0b3"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log",
+      "kind": "source-page-or-asset",
+      "bytes": 3500,
+      "sha256": "efb9c9da56c0247398eb633d90ea0c2cdd26f32b5ea29762388dd7e3adf377f2"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 686,
+      "sha256": "424738d97114e7dc44a3cf0179bb3f23573f8485032f37297b89297fa6351d63"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4700,
+      "sha256": "88b46d7d5573f63b47b4d3288a441c2d680888bf3266c9d2b43e96c3b20a40fb"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 830,
+      "sha256": "b912cff6651cb1f22783bebd304e84da9c5fe1d4cb00446f0ebc9866707fd9fb"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verification.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verification.json",
+      "kind": "source-page-or-asset",
+      "bytes": 4040,
+      "sha256": "0c7ff3001f1525b01da03556d0d5c36ccdb1017bf2647a4d90d2522ce8ff1585"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "kind": "source-page-or-asset",
+      "bytes": 23598,
+      "sha256": "0372c357fc137c02eb10dac5366cbbe277db4d33d692c7cb3c5ce433b4ed461b"
+    },
+    {
+      "path": "internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-runtime-sample.py",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-runtime-sample.py",
+      "kind": "source-page-or-asset",
+      "bytes": 6578,
+      "sha256": "b77add44365689bca9e4e41753b1e895d586258036bbd3216205209c94944e94"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1372-2026-11-12/README.html",
+      "source": "rspress:internal/evidence/roadmap-tailnet-sync-pr1372-2026-11-12/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 28086,
+      "sha256": "f38d61d270dd47a20c9e32875762e63f133d8f5f2d86763a54217f501128a8d9"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr1372-2026-11-12/README.md",
+      "source": "selected-root:spec/internal/evidence/roadmap-tailnet-sync-pr1372-2026-11-12/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1104,
+      "sha256": "ee279afcf9e4ef65607e28d1244911f2bd08676f89b77bf7b7fe79c419623b0d"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.html",
+      "source": "rspress:plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41216,
+      "sha256": "b62d57310950129b0516c1699abb8016dd91f93061986f73cc5fe440fdc03a9f"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 10156,
+      "sha256": "0be4ad896eb1396ead3e9bd7e12af9e1f634062f2a43e8d8f259ca19e0e529e6"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.html",
+      "source": "rspress:plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 44795,
+      "sha256": "b22c1d73a16684b967095f9c770549bda67e6bfd7b1639a19b2b34d392799892"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 13118,
+      "sha256": "e622a49084e875f1cb4f1cd3dbf695a9a0044bb28aace7753879142bf6cbfb9d"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "source": "rspress:plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 40277,
+      "sha256": "fd2dccd4a458c78f99f76dcef9f2283def95e0556d7e4a22f77174325bb6d4bc"
+    },
+    {
+      "path": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 9152,
+      "sha256": "20768e444cdb11af9c893f2681937482c3dbcab9792b100dc18e9563efba75d4"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 679701,
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 679701,
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 869439,
+      "sha256": "8de3c6acac9dc0326a2e363c5fe07c07f8391640fcc986139be7e337d5175b8e"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 610702,
+      "sha256": "65dfe1295989c459f47a851213f7f1b09f0f78637b6bf4297786ce01dba37ad7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/agent-browser-lifecycle.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/agent-browser-lifecycle.json",
+      "kind": "source-page-or-asset",
+      "bytes": 141,
+      "sha256": "3ce511637cf5a1b2c7f3c82c1bcbdddca1b68cc103a3886d7d1b355f37f8ec60"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 5269,
+      "sha256": "aaf10b3b5c064d5a5b850b3978c6ea91d744e31196cace73d60c20fe9d0dbec7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4404,
+      "sha256": "eed640a82779429d46be6dfd6cc8ab474249a47ae2bed11816c856a2200e102e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 95468,
+      "sha256": "f57d05e8440b5eb06c253edce34e643543d1b1e98dea09ec6ba773dbb378d66e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-default-light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 95579,
+      "sha256": "1f156065bcc37246be20eba4181bf4f338e1ab23ab4a0615cd7558b516510fe0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log",
+      "kind": "source-page-or-asset",
+      "bytes": 10386,
+      "sha256": "295c15c862c9d91635b158932c76973eb9a660d1290479100fdb14a2bfe6c684"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-emulator.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 3760,
+      "sha256": "3a23c70221f2badd197dfff5033152192320127539dd74ae48fbd964d75792fe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-gradle-cleanup.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-gradle-cleanup.log",
+      "kind": "source-page-or-asset",
+      "bytes": 36,
+      "sha256": "fa35640e019e1822cbae53923c032427ff502263ac8bea1bededc399474649a3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-install.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-install.log",
+      "kind": "source-page-or-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-launch-light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 73,
+      "sha256": "53fda793e6f61cec7500a64a373966a1995acfa29b1c8078a83fe514824e6e94"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4500,
+      "sha256": "f00afbb60d8bc353f9b96186d5edf0c47e5ca06dee12a0fe6b470a1d19a43975"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-environment.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-environment.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 185,
+      "sha256": "ad92b33d110d4ea57e57f56deb47058120cea45e6eefe06ece6fb765390c2ff5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-summary.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/android-smoke-summary.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 409,
+      "sha256": "f1ba3a7154a74242d4944d332d8a59da594e8fad8bc08af09e7b691248b0ec9d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/build-runtime-sample.py",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/build-runtime-sample.py",
+      "kind": "source-page-or-asset",
+      "bytes": 5856,
+      "sha256": "f0756dfbf55fc84f0383b9d6ee97bac17351817e2f8d4b9800156691ee6919bf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/capture-manifest.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/capture-manifest.json",
+      "kind": "source-page-or-asset",
+      "bytes": 1964,
+      "sha256": "1316357bc21dacf0e04ba3015db8fe8cf7661ce2bcf41a43641a2e06f789d27b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-observation.ndjson.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-observation.ndjson.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 14508142,
+      "sha256": "fa9e2d0194c8f2739df8eb9dd1bf7576bd6aa7c92bb927701d4f757bc876f35a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-sample.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/chrome157-five-fit-mixed-sample.png",
+      "kind": "source-page-or-asset",
+      "bytes": 20401,
+      "sha256": "65e11358395260c47defbbdbc6340b7ed4cd7795abbab26099b18580c16a92e1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-layout.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-layout.log",
+      "kind": "source-page-or-asset",
+      "bytes": 380,
+      "sha256": "3568cebd04c171d1ac72128c5bec8c1c530e4659646011562ef81387307a401b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-runtime.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-runtime.log",
+      "kind": "source-page-or-asset",
+      "bytes": 754,
+      "sha256": "b4cc809eb74ab3d863765ee0640a9a4f135d1840a5b61f18e6a40e37658bbc35"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-style-to-layout.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/clippy-style-to-layout.log",
+      "kind": "source-page-or-asset",
+      "bytes": 741,
+      "sha256": "0b7b66c2d1ce7dabbb7f536f9c80b6ec7016bb22e83041c4a068e207c5b99d23"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34693,
+      "sha256": "d37465e3c023eadda772e9ab1574f18b5f4b4d0fc24fe4b43a7cdeea4a6425c0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/implementation-runtime-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5915,
+      "sha256": "a5cb570e0cda8ade22dd6f1bf851d31231f1e5cda3c6c3fc835bf0d40b0d821c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log",
+      "kind": "source-page-or-asset",
+      "bytes": 66936,
+      "sha256": "47ed42fe339881882a7548e310d0e541fb1d943484cf7719ea5a6a6d4d4b7ace"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-build.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 11749,
+      "sha256": "dbc73ba7addf71342b40a645e8607b8847c19c9afaeb6b9d405f7bed4ae51be2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-dark.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-dark.log",
+      "kind": "source-page-or-asset",
+      "bytes": 73888,
+      "sha256": "cc1edec59be81366b6f99ed4e2155429c77d255df174366255529041cc2da5d7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-dark.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-dark.png",
+      "kind": "source-page-or-asset",
+      "bytes": 80810,
+      "sha256": "8b39cf90ab3e292828cc7fc8d310f27f753e6ea64d365fbe0593b2f8a68f318e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-light.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-default-light.png",
+      "kind": "source-page-or-asset",
+      "bytes": 80860,
+      "sha256": "fc58a3d0a45d4dc18d093992a63a61a014f00c0be9f8d3b2c59d9cd3dd4f8ac3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-light.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-light.log",
+      "kind": "source-page-or-asset",
+      "bytes": 37530,
+      "sha256": "eeb23c3dd39fa4480ab9f2282049bf308bb05031196be38bf579a377e5abf06f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-smoke-summary.txt",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/ios-smoke-summary.txt",
+      "kind": "source-page-or-asset",
+      "bytes": 776,
+      "sha256": "552a7d08c0dc8105ffd84fd487b8d8d82fea00d99f05faa90b6b21fe50841894"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1904,
+      "sha256": "c712362a24ca985b488ec64b7208117789cadb6068bbb2255b78b008eda71482"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/mixed-sample-label-order-regression.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 658,
+      "sha256": "4d667f937055ef1974a877be0ac49e5d1961ccdaeb325c3440d2834ce4f31d63"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36889,
+      "sha256": "9d3391e68a5e2f0c5ce98e4566a6d5b56c803093769d3fc137fba68ecd2e1426"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 7496,
+      "sha256": "4f5bb704e5ef38aa179a8fdf1cbfe9aec4cd2d7de4f420ddc18fd8c9ad5b6d6b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 46361,
+      "sha256": "23b075ec497306cab3af752bfcdeb8de755158f57ea5550a9440278fb36885b2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 11695,
+      "sha256": "64f75a91d3b91f3de05254019a6cf75dab564b3a229419365af21ac6146d3840"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-matrix-3984.ndjson.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-matrix-3984.ndjson.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 178268,
+      "sha256": "df2eb2aafe6f992f0481a89c3e0f673c81391d13531182222b4f101080a162b3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-sample-manifest.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/runtime-sample-manifest.json",
+      "kind": "source-page-or-asset",
+      "bytes": 599,
+      "sha256": "a15cde7c9651cd713d92f7093a340a1bf6c7b4b1307004369356472ec9c67394"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/SHA256SUMS",
+      "kind": "source-page-or-asset",
+      "bytes": 9945,
+      "sha256": "8b1d711668b4665b642ba2d3f7f26176a4fd4778f48a0442079530ff3c881ca3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log",
+      "kind": "source-page-or-asset",
+      "bytes": 1396,
+      "sha256": "3a61a39d66f79630ed2cc05ec3fb8b802f2fa7118aa49e15f5f580c00f678713"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-mixed-regression-chunk01.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 495,
+      "sha256": "8363f5181ed8e3621685c09e33128828b9d9aaf25e09d2b06ec3791ad235f0b3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log",
+      "kind": "source-page-or-asset",
+      "bytes": 3500,
+      "sha256": "efb9c9da56c0247398eb633d90ea0c2cdd26f32b5ea29762388dd7e3adf377f2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/six-fit-runtime-regression.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 686,
+      "sha256": "424738d97114e7dc44a3cf0179bb3f23573f8485032f37297b89297fa6351d63"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log",
+      "kind": "source-page-or-asset",
+      "bytes": 4700,
+      "sha256": "88b46d7d5573f63b47b4d3288a441c2d680888bf3266c9d2b43e96c3b20a40fb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log.raw.gz",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/uniform-endpoint-runtime-regression.log.raw.gz",
+      "kind": "source-page-or-asset",
+      "bytes": 830,
+      "sha256": "b912cff6651cb1f22783bebd304e84da9c5fe1d4cb00446f0ebc9866707fd9fb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verification.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verification.json",
+      "kind": "source-page-or-asset",
+      "bytes": 4040,
+      "sha256": "0c7ff3001f1525b01da03556d0d5c36ccdb1017bf2647a4d90d2522ce8ff1585"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-chrome-matrix.py",
+      "kind": "source-page-or-asset",
+      "bytes": 23598,
+      "sha256": "0372c357fc137c02eb10dac5366cbbe277db4d33d692c7cb3c5ce433b4ed461b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-runtime-sample.py",
+      "source": "selected-root:spec/internal/evidence/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum-precomparison-2026-11-12/verify-runtime-sample.py",
+      "kind": "source-page-or-asset",
+      "bytes": 6578,
+      "sha256": "b77add44365689bca9e4e41753b1e895d586258036bbd3216205209c94944e94"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.html",
+      "source": "rspress:spec/plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41315,
+      "sha256": "ae1c2220d6e6bb41c2d00a7e012ec230e491bb51ec8ea01b2f70cd7c87f869cf"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-five-fit-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 10156,
+      "sha256": "0be4ad896eb1396ead3e9bd7e12af9e1f634062f2a43e8d8f259ca19e0e529e6"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.html",
+      "source": "rspress:spec/plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 44801,
+      "sha256": "1480513c1b0c13442a89d6a5b4e5c971bc91a73c1f361152fee893013cc86822"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-five-fit-mixed-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 13118,
+      "sha256": "e622a49084e875f1cb4f1cd3dbf695a9a0044bb28aace7753879142bf6cbfb9d"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "source": "rspress:spec/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 40260,
+      "sha256": "afa9ac864018ef6e86fbb8d9de793011ec7bcdece348cf4e6191fd98578e15ef"
+    },
+    {
+      "path": "spec/plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md",
+      "source": "selected-root:plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.md",
+      "kind": "source-page-or-asset",
+      "bytes": 9152,
+      "sha256": "20768e444cdb11af9c893f2681937482c3dbcab9792b100dc18e9563efba75d4"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 679701,
+      "sha256": "929862e13b8c1ab32aea15a16877e555b37bb0dae17d6cc6a2259056e6ba3aba"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 951211,
+      "sha256": "085713e04cbfd1302c880166ebb3597ba0a20e2e1244afc8c6d9b0919bc8d175"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 778137,
+      "sha256": "eb624aa829b07c5fd64b37a8ada383da9f4ce10d7db82d7823ecd31bfdedb3da"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/android-default-dark.618b1f9ce9.png",
+      "source": "rspress:static/image/android-default-dark.618b1f9ce9.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 95468,
+      "sha256": "f57d05e8440b5eb06c253edce34e643543d1b1e98dea09ec6ba773dbb378d66e"
+    },
+    {
+      "path": "static/image/android-default-light.06c6bb1c60.png",
+      "source": "rspress:static/image/android-default-light.06c6bb1c60.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 95579,
+      "sha256": "1f156065bcc37246be20eba4181bf4f338e1ab23ab4a0615cd7558b516510fe0"
+    },
+    {
+      "path": "static/image/ios-default-dark.2b84d0f3d1.png",
+      "source": "rspress:static/image/ios-default-dark.2b84d0f3d1.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 80810,
+      "sha256": "8b39cf90ab3e292828cc7fc8d310f27f753e6ea64d365fbe0593b2f8a68f318e"
+    },
+    {
+      "path": "static/image/ios-default-light.04b7a2d7ad.png",
+      "source": "rspress:static/image/ios-default-light.04b7a2d7ad.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 80860,
+      "sha256": "fc58a3d0a45d4dc18d093992a63a61a014f00c0be9f8d3b2c59d9cd3dd4f8ac3"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "source": "rspress:static/js/3.d8b550a68d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "source": "rspress:static/js/3.d8b550a68d.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "source": "rspress:static/js/async/l.76b60f2b87.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-089a596dd935.742a41a191.js",
+      "source": "rspress:static/js/async/route-089a596dd935.742a41a191.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 8420,
+      "sha256": "2924936427d7e2917707625f238663bbd74fb9a2b0b1dc844ab5ead7c40c90b9"
+    },
+    {
+      "path": "static/js/async/route-11322b9e210e.3214f87b37.js",
+      "source": "rspress:static/js/async/route-11322b9e210e.3214f87b37.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 20301,
+      "sha256": "8daa5fd51e7e670c0010e2b1069aa33a6ab1ab19f3f0727f7156fa08328afe82"
+    },
+    {
+      "path": "static/js/async/route-24310d9b6671.1858372fe5.js",
+      "source": "rspress:static/js/async/route-24310d9b6671.1858372fe5.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 20315,
+      "sha256": "16f961fb8e4eba107c8dd081892b3bebc21ab854ad29f1742e3def360598d064"
+    },
+    {
+      "path": "static/js/async/route-389097aeddb7.d531b291dc.js",
+      "source": "rspress:static/js/async/route-389097aeddb7.d531b291dc.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 25982,
+      "sha256": "4dbe9b9454dc08dc533c11a315f931b3f288599e6fb92f3f77a35183de4003fa"
+    },
+    {
+      "path": "static/js/async/route-42a601f59068.3cb5d1be82.js",
+      "source": "rspress:static/js/async/route-42a601f59068.3cb5d1be82.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 13788,
+      "sha256": "e12453e0594a3bf39c842b2873eb08efc7b0c2904427011843b4177044556aca"
+    },
+    {
+      "path": "static/js/async/route-5b2bc4f54f30.7df9ed4036.js",
+      "source": "rspress:static/js/async/route-5b2bc4f54f30.7df9ed4036.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10689,
+      "sha256": "5abdc2ab84a2a4b47b843132fbb6f43ec4e94d6cf15f84f57bab6e8970bb55cf"
+    },
+    {
+      "path": "static/js/async/route-65bd3c173ce5.877f4092b7.js",
+      "source": "rspress:static/js/async/route-65bd3c173ce5.877f4092b7.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 16288,
+      "sha256": "50795ab8a953319d782f0529ee2406d191d0ca121e02ebb8634338d2f0df488e"
+    },
+    {
+      "path": "static/js/async/route-69a61f5fa8c8.d1b1e3cbf8.js",
+      "source": "rspress:static/js/async/route-69a61f5fa8c8.d1b1e3cbf8.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 4711,
+      "sha256": "c39db04d40486840e72260c2f7767cda04edc4202d9dc64ae771abd9f61bf3e9"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.42dc6daa6c.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.42dc6daa6c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1023398,
+      "sha256": "4921fa2b28365f7ed40a8b1eeb2048c0f7c3210711a485d443fbac46cd04f632"
+    },
+    {
+      "path": "static/js/async/route-6ca62670d141.0f0e6f73c0.js",
+      "source": "rspress:static/js/async/route-6ca62670d141.0f0e6f73c0.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 16429,
+      "sha256": "187254f33f7fce0034f8029afb407537d2d2d42bb2c94de04830fe12a076e444"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.cf386c9c39.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.cf386c9c39.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 906371,
+      "sha256": "02df784cb9abb1ac1ce91fc2660dc00301565f0ea49df7ffc254a0a3ead402a1"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.d5fe4987f2.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.d5fe4987f2.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1023698,
+      "sha256": "3f5552eb69153e663f1c86a5f5e091365ba542e22860a0b1eaa9794738fb2dd3"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.2a233d3729.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.2a233d3729.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1006,
+      "sha256": "05eb1ca5c763447afb728c0b93e2ecb25b6a50d3b2be28dcbeb1e563a4d838b6"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.a271fdee6d.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.a271fdee6d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 906351,
+      "sha256": "e290dcffffe17a438a5ce4140f91860e61e455e8fd45a0360e032eee02f0419c"
+    },
+    {
+      "path": "static/js/async/route-dc68e7fa9289.071666222a.js",
+      "source": "rspress:static/js/async/route-dc68e7fa9289.071666222a.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 13793,
+      "sha256": "d274963398d95eeee108a89e927f964ce8e3e2e8cb93b8ab6e175472f8441b24"
+    },
+    {
+      "path": "static/js/async/route-e6b700267959.d5869b1ad4.js",
+      "source": "rspress:static/js/async/route-e6b700267959.d5869b1ad4.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 2721,
+      "sha256": "ff5a2fcf32ccb75ca77b1a6e426672098559379a90a4a1cdd5a7ac70a5ed014b"
+    },
+    {
+      "path": "static/js/async/route-ebd14653efba.ec355b573c.js",
+      "source": "rspress:static/js/async/route-ebd14653efba.ec355b573c.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 16283,
+      "sha256": "e02f346dffa565df8245a18cb0f97c71ceab3123ee41ab14d7ee540ea2f054fd"
+    },
+    {
+      "path": "static/js/async/route-ed21208bbb60.e014467dd8.js",
+      "source": "rspress:static/js/async/route-ed21208bbb60.e014467dd8.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 25970,
+      "sha256": "b3a98ede5b3517692d71e0090af7d156e9e7b4911355d19fc1b33afa295d6d52"
+    },
+    {
+      "path": "static/js/async/route-efed5c47e61c.4cc7a2e59d.js",
+      "source": "rspress:static/js/async/route-efed5c47e61c.4cc7a2e59d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 10699,
+      "sha256": "99ed37063c2c4f800cdc041a8bec741a9ef40d27be00739acb38268a13380661"
+    },
+    {
+      "path": "static/js/async/route-f6ff55a7c59a.6ef32c9869.js",
+      "source": "rspress:static/js/async/route-f6ff55a7c59a.6ef32c9869.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 16422,
+      "sha256": "7529c7206167c2cb2acc4b4d8e44723d5c51f2c19afa3bb008d999f24379ca7c"
+    },
+    {
+      "path": "static/js/index.410e9f24bf.js",
+      "source": "rspress:static/js/index.410e9f24bf.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 146586,
+      "sha256": "9cc3b3ea994d9f2cca9aa8e595d3386894880db86a57e5c662b8ac27777c73de"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "rspress:static/js/lib-react.801d719c4f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "source": "rspress:static/js/styles.aba03c5c90.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5"
+    },
+    {
+      "path": "static/search_index.ko.662522ab.json",
+      "source": "rspress:static/search_index.ko.662522ab.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 2412843,
+      "sha256": "662522ab3c9271bf26bf395d6acb6ee76409fd90a51ab8c9401a94d1221ec537"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 950409,
+      "sha256": "5550cc7c784d3a83063e058d7068277a8851415ba6a2451eae3e402704968f74"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 778137,
+      "sha256": "eb624aa829b07c5fd64b37a8ada383da9f4ce10d7db82d7823ecd31bfdedb3da"
+    }
+  ]
+}
