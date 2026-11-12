@@ -3,7 +3,10 @@ use std::collections::BTreeMap;
 
 #[path = "three_fit_auto_minimum/dynamic.rs"]
 mod dynamic;
-pub(super) use dynamic::{configure_scene, observe_current, source_for_track_list};
+pub(super) use dynamic::{
+    configure_scene, configure_six_fit_mixed_minimum_scene, observe_current,
+    source_for_six_fit_mixed_minimum_track_list, source_for_track_list,
+};
 #[path = "three_fit_auto_minimum/five_fit.rs"]
 mod five_fit;
 #[path = "three_fit_auto_minimum/four_fit.rs"]
@@ -21,6 +24,7 @@ const OBSERVATIONS: &str = include_str!(
 
 #[derive(Clone)]
 pub(super) struct SceneResult {
+    /// Chrome oracle의 used-row 값. 런타임 행 추적은 별도 trace assertion이 검증한다.
     pub(super) rows: Vec<f32>,
     pub(super) item_frames: BTreeMap<String, [f32; 4]>,
     pub(super) payload_frames: BTreeMap<String, [f32; 4]>,

@@ -182,21 +182,59 @@ fn parsed_root_html_six_fit_row_span_mixed_minimum_rejection_is_atomic_and_recov
     let source = replace_once(
         &source_for_record(&record),
         "</style>",
-        "@media (prefers-color-scheme: dark) { #grid .item[data-item=\"B\"] { min-height:0; } } </style>",
+        "@media (prefers-color-scheme: dark) { #grid .item[data-item=\"B\"] { min-height:0; } } @media (min-height:10000px) { #grid .item[data-item=\"C\"] { min-height:1px; } } </style>",
     );
+    let control_auto_source = replace_once(
+        &source,
+        "</style>",
+        "@media (prefers-color-scheme: dark) { #grid .empty { min-height:auto; } } </style>",
+    );
+    let (control_session, control_initial) = run(&control_auto_source);
+    assert_eq!(
+        control_initial.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "light zero-mask baseline is valid: {:?}",
+        control_initial.error
+    );
+    let mut dark_media = spinon_style::CssMediaEnvironment::MOBILE;
+    dark_media.color_scheme = spinon_style::CssColorScheme::Dark;
+    control_session
+        .set_root_html_environment(1280.0, 320.0, 1.0, dark_media)
+        .expect("dark mixed mask activates the invalid auto control item");
+    let control_rejected = control_session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        control_rejected.state,
+        crate::session::RuntimeLayoutState::Failed,
+        "mixed minimum profile rejects automatic minimum on its explicit-row control"
+    );
+    assert!(control_rejected.completed.is_none());
+
     let (session, initial) = run(&source);
     assert_eq!(
         initial.state,
         crate::session::RuntimeLayoutState::Ready,
-        "light baseline is valid: {:?}",
+        "light baseline is valid: {:?}; diagnostics={:?}",
         initial.error,
+        initial.diagnostics,
     );
 
     let mut media = CssMediaEnvironment::MOBILE;
     media.color_scheme = CssColorScheme::Dark;
     session
         .set_root_html_environment(1280.0, 320.0, 1.0, media)
-        .expect("dark media selects the mixed automatic-minimum profile");
+        .expect("dark media selects a valid mixed minimum mask");
+    let mixed = session.wait_for_layout_snapshot(Duration::from_secs(5));
+    assert_eq!(
+        mixed.state,
+        crate::session::RuntimeLayoutState::Ready,
+        "mixed min-height zero/auto values are accepted: {:?}",
+        mixed.error
+    );
+    assert!(mixed.completed.is_some());
+
+    session
+        .set_root_html_environment(1280.0, 10_000.0, 1.0, media)
+        .expect("higher viewport selects an unsupported fixed minimum");
     let rejected = session.wait_for_layout_snapshot(Duration::from_secs(5));
     assert_eq!(rejected.state, crate::session::RuntimeLayoutState::Failed);
     assert!(
@@ -204,15 +242,14 @@ fn parsed_root_html_six_fit_row_span_mixed_minimum_rejection_is_atomic_and_recov
         "rejection publishes no partial layout"
     );
 
-    media.color_scheme = CssColorScheme::Light;
     session
         .set_root_html_environment(1280.0, 320.0, 1.0, media)
-        .expect("light media restores the all-zero baseline");
+        .expect("return to the valid mixed minimum profile");
     let recovered = session.wait_for_layout_snapshot(Duration::from_secs(5));
     assert_eq!(
         recovered.state,
         crate::session::RuntimeLayoutState::Ready,
-        "same-session recovery publishes a valid revision: {:?}",
+        "same-session recovery publishes a valid mixed revision: {:?}",
         recovered.error
     );
     assert!(recovered.completed.is_some());

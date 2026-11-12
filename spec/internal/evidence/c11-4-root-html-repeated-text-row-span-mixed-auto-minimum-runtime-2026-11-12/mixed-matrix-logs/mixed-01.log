@@ -1,0 +1,13 @@
+
+running 1 test
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::mixed_matrix::parsed_root_html_six_fit_mixed_minimum_matrix_chunk_01_matches_chrome has been running for over 60 seconds
+six-fit mixed-minimum cap orders: 10 / 60
+six-fit mixed-minimum cap orders: 20 / 60
+six-fit mixed-minimum cap orders: 30 / 60
+six-fit mixed-minimum cap orders: 40 / 60
+six-fit mixed-minimum cap orders: 50 / 60
+six-fit mixed-minimum cap orders: 60 / 60
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::mixed_matrix::parsed_root_html_six_fit_mixed_minimum_matrix_chunk_01_matches_chrome ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 684 filtered out; finished in 1285.03s
+

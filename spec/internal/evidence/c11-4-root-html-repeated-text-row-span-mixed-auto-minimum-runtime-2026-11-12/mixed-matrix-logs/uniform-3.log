@@ -1,0 +1,13 @@
+
+running 1 test
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_3_matches_chrome ... six-fit matrix track lists: 390 / 540
+six-fit matrix track lists: 420 / 540
+six-fit matrix track lists: 450 / 540
+six-fit matrix track lists: 480 / 540
+six-fit matrix track lists: 510 / 540
+six-fit matrix track lists: 540 / 540
+six-fit chunk 360..540 payload-floor violations: candidate=0, baseline=1216
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 684 filtered out; finished in 286.77s
+

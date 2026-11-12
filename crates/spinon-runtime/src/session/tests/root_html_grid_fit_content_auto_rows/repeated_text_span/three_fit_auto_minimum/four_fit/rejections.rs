@@ -40,7 +40,7 @@ fn parsed_root_html_four_fit_row_span_rejects_out_of_profile_mutations_atomicall
     let source = source_for(&record);
     let track_list = record["scene"]["trackList"].as_str().unwrap();
     let duplicate_cap = track_list.replacen("fit-content(20%)", "fit-content(10px)", 1);
-    let five_fits = track_list.replacen("min-content", "fit-content(40px)", 1);
+    let unsupported_fifth_fit = track_list.replacen("min-content", "fit-content(41px)", 1);
     let missing_auto = track_list.replacen(" auto", " max-content", 1);
 
     for (name, invalid) in [
@@ -48,7 +48,10 @@ fn parsed_root_html_four_fit_row_span_rejects_out_of_profile_mutations_atomicall
             "duplicate and missing cap",
             with_track_list(&record, &duplicate_cap),
         ),
-        ("fifth fit track", with_track_list(&record, &five_fits)),
+        (
+            "unsupported fifth fit cap",
+            with_track_list(&record, &unsupported_fifth_fit),
+        ),
         ("missing auto tail", with_track_list(&record, &missing_auto)),
         (
             "unsupported fit cap",

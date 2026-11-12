@@ -245,6 +245,10 @@ pub(super) fn supports_six_fit_auto_placement_track_list(tracks: &[GridTrackSize
     caps_seen.into_iter().all(|seen| seen)
 }
 
+pub(super) fn supports_six_fit_row_span_track_list(tracks: &[GridTrackSize]) -> bool {
+    six_fit_span::supports_six_fit_row_span_track_list(tracks)
+}
+
 pub(super) fn supports_repeated_min_max_content_auto_span_track_list(
     tracks: &[GridTrackSize],
 ) -> bool {

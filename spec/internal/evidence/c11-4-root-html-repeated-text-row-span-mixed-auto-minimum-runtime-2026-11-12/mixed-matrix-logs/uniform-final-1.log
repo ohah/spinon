@@ -1,0 +1,14 @@
+
+running 1 test
+six-fit matrix track lists: 30 / 180
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_1_matches_chrome has been running for over 60 seconds
+six-fit matrix track lists: 60 / 180
+six-fit matrix track lists: 90 / 180
+six-fit matrix track lists: 120 / 180
+six-fit matrix track lists: 150 / 180
+six-fit matrix track lists: 180 / 180
+six-fit chunk 0..180 payload-floor violations: candidate=0, baseline=1568
+test session::tests::root_html_grid_fit_content_auto_rows::repeated_text_span::six_fit_auto_minimum::matrix::parsed_root_html_six_fit_row_span_matrix_chunk_1_matches_chrome ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 684 filtered out; finished in 188.51s
+

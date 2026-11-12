@@ -1,0 +1,9 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.28s
+  Executable unittests src/lib.rs (target/debug/deps/spinon_runtime-e76aba5832b8b068)
+  Executable tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-46c865be5d69b8a3)
+  Executable tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-c0518cc1463587c5)

@@ -33,6 +33,30 @@ pub(super) fn span_auto_minimum_profile(
             })
 }
 
+pub(super) fn span_six_fit_minimum_mask_profile(
+    items: &[HostNodeHandle],
+    styles: &std::collections::BTreeMap<spinon_core::NodeId, &ComputedElementStyle>,
+    six_fit_row_span_track_list: bool,
+    span_profile: bool,
+) -> bool {
+    six_fit_row_span_track_list
+        && span_profile
+        && items
+            .first()
+            .and_then(|item| styles.get(&item.id()).copied())
+            .is_some_and(|style| {
+                style.layout_dimensions.min_height == ComputedCssDimension::LengthPx(0.0)
+            })
+        && items.iter().copied().skip(1).all(|item| {
+            styles.get(&item.id()).copied().is_some_and(|style| {
+                matches!(
+                    style.layout_dimensions.min_height,
+                    ComputedCssDimension::Auto | ComputedCssDimension::LengthPx(0.0)
+                )
+            })
+        })
+}
+
 pub(super) fn payload_is_supported(
     tree: &HostDocumentSnapshot,
     nodes: &RuntimeGridNodes,

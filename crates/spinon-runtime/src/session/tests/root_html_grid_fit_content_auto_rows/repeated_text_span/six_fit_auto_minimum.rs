@@ -1,6 +1,7 @@
 use super::three_fit_auto_minimum::{
-    configure_scene, eligible_for_auto_minimum, observe_current, row_values, source_for_track_list,
-    style_for_color,
+    configure_scene, configure_six_fit_mixed_minimum_scene, eligible_for_auto_minimum,
+    observe_current, row_values, source_for_six_fit_mixed_minimum_track_list,
+    source_for_track_list, style_for_color,
 };
 use super::*;
 use flate2::read::GzDecoder;
@@ -10,6 +11,8 @@ use std::sync::OnceLock;
 
 #[path = "six_fit_auto_minimum/matrix.rs"]
 mod matrix;
+#[path = "six_fit_auto_minimum/mixed_matrix.rs"]
+mod mixed_matrix;
 #[path = "six_fit_auto_minimum/rejections.rs"]
 mod rejections;
 #[path = "six_fit_auto_minimum/trace.rs"]
@@ -17,6 +20,9 @@ mod trace;
 
 const OBSERVATIONS: &[u8] = include_bytes!(
     "../../../../../../../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-six-fit-auto-minimum-precomparison-2026-11-12/chrome157-observation.ndjson.gz"
+);
+const MIXED_OBSERVATIONS: &[u8] = include_bytes!(
+    "../../../../../../../spec/internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/chrome157-mixed-minimum-observation.ndjson.gz"
 );
 
 fn records() -> &'static [Value] {
@@ -30,6 +36,24 @@ fn records() -> &'static [Value] {
         contents
             .lines()
             .map(|line| serde_json::from_str(line).expect("six-fit Chrome observation is JSON"))
+            .filter(|record: &Value| record["record"] == "scene")
+            .collect()
+    })
+}
+
+fn mixed_records() -> &'static [Value] {
+    static RECORDS: OnceLock<Vec<Value>> = OnceLock::new();
+    RECORDS.get_or_init(|| {
+        let mut decoder = GzDecoder::new(MIXED_OBSERVATIONS);
+        let mut contents = String::new();
+        decoder
+            .read_to_string(&mut contents)
+            .expect("mixed six-fit Chrome observations decompress as UTF-8");
+        contents
+            .lines()
+            .map(|line| {
+                serde_json::from_str(line).expect("mixed six-fit Chrome observation is JSON")
+            })
             .filter(|record: &Value| record["record"] == "scene")
             .collect()
     })
