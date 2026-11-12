@@ -1,0 +1,19 @@
+
+running 1 test
+test c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order ... 
+thread 'c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order' (242024295) panicked at crates/spinon-layout/src/c15_text_layout_tests/host_document.rs:305:9:
+assertion failed: matches!(LayoutInput::from_host_document_with_text_paragraphs(&snapshot, root,
+    Viewport { width: 100.0, height: 80.0, }, &non_inline_display_styles,
+    &paragraph_styles, StyleRevision::INITIAL, EnvironmentRevision::INITIAL,),
+    Err(crate::LayoutError::UnsupportedTextParagraph { node, .. }) if node ==
+    paragraph.id())
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+
+failures:
+
+failures:
+    c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 544 filtered out; finished in 0.02s
+

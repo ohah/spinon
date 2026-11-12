@@ -1,0 +1,21 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 1 test
+test c11_1_root_html_content_alignment_tests::root_html_fixed_grid_projects_distribution_values_to_taffy ... 
+thread 'c11_1_root_html_content_alignment_tests::root_html_fixed_grid_projects_distribution_values_to_taffy' (242041936) panicked at crates/spinon-style-to-layout/src/c11_1_root_html_content_alignment_tests.rs:145:36:
+called `Result::unwrap()` on an `Err` value: Layout(UnsupportedGridContainerStyle { node: NodeId(2), property: "C11.5 fixed-track auto-size/stretch contract" })
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+
+failures:
+
+failures:
+    c11_1_root_html_content_alignment_tests::root_html_fixed_grid_projects_distribution_values_to_taffy
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 481 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p spinon-style-to-layout --lib`

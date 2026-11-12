@@ -1,0 +1,13 @@
+
+running 6 tests
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::controls::parsed_root_html_six_fit_auto_minimum_accepts_normalized_absolute_calc_cap ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::trace::parsed_root_html_six_fit_auto_minimum_trace_preserves_all_fit_track_floors ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::controls::parsed_root_html_six_fit_auto_minimum_stretch_remains_supported_in_dark_scheme ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::rejections::parsed_root_html_six_fit_rejection_is_atomic_and_same_session_recovers ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::rejections::parsed_root_html_six_fit_auto_placement_rejects_unlisted_and_out_of_profile_inputs ... ok
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::matrix::parsed_root_html_six_fit_auto_placement_matches_all_5760_chrome_scenes has been running for over 60 seconds
+six-fit RuntimeSession matrix: 5760 scenes; 720 cap orders; baseline under-floor/overflow=7200/7200; candidate floor/overflow=0/0; changed rows=2880; alignment deltas=0
+test session::tests::root_html_grid_fit_content_auto_rows::six_fit_auto_placement::matrix::parsed_root_html_six_fit_auto_placement_matches_all_5760_chrome_scenes ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 679 filtered out; finished in 338.99s
+

@@ -1,0 +1,93 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling stable_deref_trait v1.2.1
+   Compiling writeable v0.6.4
+   Compiling litemap v0.8.3
+   Compiling smallvec v1.16.2
+   Compiling bitflags v2.13.2
+   Compiling once_cell v1.21.4
+   Compiling utf8_iter v1.0.4
+   Compiling objc2 v0.6.5
+   Compiling icu_locale_fallback_data v2.3.0
+   Compiling icu_properties_data v2.3.0
+   Compiling libc v0.2.189
+   Compiling icu_normalizer_data v2.3.0
+   Compiling icu_segmenter_data v2.3.0
+   Compiling objc2-encode v4.1.0
+   Compiling foldhash v0.2.0
+   Compiling linebender_resource_handle v0.1.1
+   Compiling objc2-core-foundation v0.3.2
+   Compiling hashbrown v0.17.1
+   Compiling version_check v0.9.5
+   Compiling parlance v0.1.1
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling parley_emoji v0.12.0
+   Compiling slotmap v1.1.1
+   Compiling serde_json v1.0.151
+   Compiling zeno v0.3.3
+   Compiling serde v1.0.229
+   Compiling yazi v0.2.1
+   Compiling objc2-core-text v0.3.2
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling spinon-core v0.1.0 (/private/tmp/spinon-c15-baseline-e566387-20261112/crates/spinon-core)
+   Compiling memmap2 v0.9.11
+   Compiling objc2-foundation v0.3.2
+   Compiling syn v3.0.6
+   Compiling synstructure v0.14.0
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.4
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling bytemuck_derive v1.12.1
+   Compiling serde_derive v1.0.229
+   Compiling taffy v0.15.0 (/private/tmp/spinon-c15-baseline-e566387-20261112/vendor/taffy)
+   Compiling zerofrom v0.1.8
+   Compiling bytemuck v1.25.2
+   Compiling yoke v0.8.3
+   Compiling font-types v0.12.7
+   Compiling read-fonts v0.41.0
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_collections v2.3.0
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_provider v2.3.1
+   Compiling icu_properties v2.3.0
+   Compiling icu_locale_fallback v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_segmenter v2.3.0
+   Compiling parley_data v0.12.0
+   Compiling skrifa v0.44.0
+   Compiling harfrust v0.12.0
+   Compiling fontique v0.12.0
+   Compiling swash v0.2.10
+   Compiling parley_engine v0.12.0
+   Compiling parley v0.12.0
+   Compiling spinon-text-layout v0.1.0 (/private/tmp/spinon-c15-baseline-e566387-20261112/crates/spinon-text-layout)
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c15-baseline-e566387-20261112/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 19.83s
+     Running unittests src/lib.rs (/tmp/spinon-c15-target-e566387-20261112/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+test c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order ... 
+thread 'c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order' (242034241) panicked at crates/spinon-layout/src/c15_text_layout_tests/host_document.rs:305:9:
+assertion failed: matches!(LayoutInput::from_host_document_with_text_paragraphs(&snapshot, root,
+    Viewport { width: 100.0, height: 80.0, }, &non_inline_display_styles,
+    &paragraph_styles, StyleRevision::INITIAL, EnvironmentRevision::INITIAL,),
+    Err(crate::LayoutError::UnsupportedTextParagraph { node, .. }) if node ==
+    paragraph.id())
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+
+failures:
+
+failures:
+    c15_text_layout_tests::host_document::host_document_collects_direct_text_and_inherited_spans_in_source_order
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 544 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p spinon-layout --lib`
