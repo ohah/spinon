@@ -7,8 +7,10 @@ import { fileURLToPath } from 'node:url';
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(evidenceDirectory, '../../../..');
 const preview = '/Users/yoonhb/Library/Application Support/SpinonPreview';
-const manifestPath = path.join(evidenceDirectory, 'tailnet-copy-manifest.json');
-const reportPath = path.join(evidenceDirectory, 'served-verification.json');
+const pass = process.argv[2] ?? 'pass01';
+assert.match(pass, /^pass[0-9]{2}$/);
+const manifestPath = path.join(evidenceDirectory, `tailnet-copy-manifest-${pass}.json`);
+const reportPath = path.join(evidenceDirectory, `served-verification-${pass}.json`);
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const localBase = 'http://127.0.0.1:8768/spinon/';
 const tailnetBase = 'https://macstudio.tailed42f2.ts.net/spinon/';
@@ -66,6 +68,7 @@ for (let start = 0; start < manifest.records.length; start += concurrency) {
 
 const report = {
   schema: 'spinon.tailnet-preview-served-verification/v1',
+  pass,
   sourceCommit: manifest.sourceCommit,
   previewServerPid: manifest.previewServerPid,
   localBase,

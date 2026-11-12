@@ -9,9 +9,11 @@ const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(evidenceDirectory, '../../../..');
 const buildSite = path.join(repo, 'build/spinon/roadmap-after-pr1369-2026-11-12/site');
 const preview = '/Users/yoonhb/Library/Application Support/SpinonPreview';
-const backupRelative = 'backup/roadmap-after-pr1369-2026-11-12';
+const pass = process.argv[2] ?? 'pass01';
+assert.match(pass, /^pass[0-9]{2}$/);
+const backupRelative = `backup/roadmap-after-pr1369-2026-11-12-${pass}`;
 const backup = path.join(preview, backupRelative);
-const manifestPath = path.join(evidenceDirectory, 'tailnet-copy-manifest.json');
+const manifestPath = path.join(evidenceDirectory, `tailnet-copy-manifest-${pass}.json`);
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const records = [];
 const writes = [];
@@ -65,7 +67,7 @@ function install(sourcePath, sourceRelative, destinationRelative) {
     assert.equal(sha256(fs.readFileSync(backupPath)), prior.sha256, `backup hash mismatch: ${destinationRelative}`);
   }
   fs.mkdirSync(path.dirname(destinationPath), { recursive: true });
-  const temporary = `${destinationPath}.codex-roadmap-after-pr1369.tmp`;
+  const temporary = `${destinationPath}.codex-roadmap-after-pr1369-${pass}.tmp`;
   assert.ok(!fs.existsSync(temporary), `existing temporary file is preserved: ${temporary}`);
   fs.writeFileSync(temporary, bytes, { flag: 'wx' });
   fs.renameSync(temporary, destinationPath);
@@ -150,6 +152,7 @@ walkFiles(path.join(buildSite, 'static'), 'build/spinon/roadmap-after-pr1369-202
 
 const report = {
   schema: 'spinon.tailnet-preview-selected-sync/v1',
+  pass,
   sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim(),
   previewRoot: preview,
   previewServerPid: 90711,
