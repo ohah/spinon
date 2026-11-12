@@ -1,0 +1,39 @@
+{
+  "verifiedAtUtc": "2026-11-12T01:32:53Z",
+  "agentBrowser": {
+    "namespace": "spinon-docs-1369-20261112",
+    "session": "spinon-roadmap-1369",
+    "closeCommandSucceeded": true,
+    "namespaceProcessesAfterClose": 0,
+    "screenshotsRetainedAsEvidence": [
+      "tailnet-roadmap-desktop-agent-browser.png",
+      "tailnet-roadmap-mobile-agent-browser.png"
+    ],
+    "preexistingTerminalBrowser": {
+      "pid": 72772,
+      "action": "preserved; this task used only the isolated Agent Browser session"
+    }
+  },
+  "android": {
+    "bootedDevices": 0,
+    "adbServer": "stopped after the device inventory command started it",
+    "emulatorProcessesAfterCleanup": 0
+  },
+  "ios": {
+    "bootedDevices": 0,
+    "s03OrPilotNamedAvailableDevice": false,
+    "sharedSimulatorProfiles": "preserved"
+  },
+  "selectedRspressBuildOutput": {
+    "path": "build/spinon/roadmap-after-pr1369-2026-11-12",
+    "fileCountRemoved": 168,
+    "bytesRemoved": 16226641,
+    "removedAfterHashAndBrowserVerification": true
+  },
+  "tailnetPreviewServer": {
+    "pid": 90711,
+    "port": 8768,
+    "action": "preserved and left serving the updated preview"
+  },
+  "scope": "Task-created browser session, ADB server, and selected build output were cleaned up. Pre-existing Terminal Browser and shared system/simulator services were not changed."
+}

@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "ef7f239a59d19595698071666a71b37b2b5dfb45",
+  "roadmapLatestMarker": "#1369 Rebase and merge",
+  "c114NextCardStage": "#1369 merged · next candidate not selected",
+  "officialCount": "78/214",
+  "c114AndC11RemainUnchecked": true,
+  "selectedRoutes": 12,
+  "allRoutesPresent": true,
+  "fullDocsDeadLinkCheck": false,
+  "fullSiteBuildClaim": false,
+  "routes": [
+    {
+      "route": "STATUS.html",
+      "bytes": 942767,
+      "sha256": "b325315ec62c84b638fcd616f3b56629f0682975c0396c390fe9855211ddf1c2"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "bytes": 942669,
+      "sha256": "6bbe17f55f250ecbdca44aa30ad20641e8b71df7fe3209c7e5aee8a180f73214"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 404319,
+      "sha256": "0288de94bdc1e097108ac9082724e640e8cd79ed7297728d292ed3e99fdf5241"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum.html",
+      "bytes": 34901,
+      "sha256": "398d58f95f0576554d3a907fb60bc3c1320ea236e10f20cfd56adbe2d1cb3dfe"
+    },
+    {
+      "route": "plan/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-plan-review-20.html",
+      "bytes": 28116,
+      "sha256": "05d6d53e73ef1b666f75bf7f2e92f448d7911d45dc11cd9a2f158a801fc275e9"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "bytes": 859807,
+      "sha256": "541acec14b46509605571586cc529114d150786d6d606245da7c347395214d01"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/README.html",
+      "bytes": 30606,
+      "sha256": "e71f3f82444c7b5325d6a50dc329ef3c69e3bbdf1c0ab61b400c1b0c11badbd0"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-precomparison-2026-11-12/plan-pr-diff-review-30.html",
+      "bytes": 29341,
+      "sha256": "d98bb166e0aa641ca6c9ca89db16e393013f9c79c395942bb42670be5bc82b38"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/README.html",
+      "bytes": 26921,
+      "sha256": "dece32401f3e5dd77818cbac481e1e14ebbddb63f67ba73b39ddb7b9e7307e73"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/merge-PR1369.html",
+      "bytes": 23257,
+      "sha256": "458bfa6d91db9d0b396391e98080166740baa0bdf564929b97a2580647d7467f"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-runtime-review-20.html",
+      "bytes": 26470,
+      "sha256": "d9b2ad054fa9d68f5cfc10fb75591d22429760786f9027794271a04e6121e305"
+    },
+    {
+      "route": "internal/evidence/c11-4-root-html-repeated-text-row-span-mixed-auto-minimum-runtime-2026-11-12/implementation-pr-diff-review-30.html",
+      "bytes": 29456,
+      "sha256": "8137ed8277e9dd007cd7622ee90a1264bc05f4b5d8e147f07098b873ea0eedb9"
+    }
+  ]
+}

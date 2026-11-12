@@ -29,7 +29,7 @@
 | 23 | unsupported input 경계가 generic CSS까지 확장됨 | cap·topology·child·text grammar 경계를 그대로 제한했다. |
 | 24 | stale plan 문구가 mixed 구현 미착수로 남음 | mixed plan의 상단 상태와 결과 절을 병합 상태로 갱신했다. |
 | 25 | track-sizing overview가 #1365 이후 다음 후보를 mixed로 남김 | #1369 완료와 이후 후보 미선정을 분리해 갱신했다. |
-| 26 | Tailnet roadmap에서 #1365를 최신 PR로 계속 표시 | 공개 HTML의 latest summary를 #1369로 교체했다. |
+| 26 | Tailnet latest summary와 동적 C11.4 NEXT card 중 한 곳이 #1365를 계속 표시 | 첫 Agent Browser 확인에서 stale card를 발견해 원본 stage를 #1369 merged로 고치고 최종 preview에서 재확인했다. |
 | 27 | roadmap 상세 note에서 PR, SHA, 검증 범위 불일치 | PR URL·merge SHA·scene 수를 같은 값으로 맞췄다. |
 | 28 | roadmap route에 새로 추가된 핵심 문서 링크가 빠짐 | 계획, 계약, 사전 비교, 실행·merge evidence, 공식 상태 링크를 포함했다. |
 | 29 | Rspress 전체 빌드나 전체 dead-link 검사를 수행한 것처럼 주장 | Tailnet 작업은 선택 경로 빌드로 한정하고 전체 검사는 false로 기록한다. |

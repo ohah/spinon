@@ -1,0 +1,35 @@
+VERIFIED 8/168
+VERIFIED 16/168
+VERIFIED 24/168
+VERIFIED 32/168
+VERIFIED 40/168
+VERIFIED 48/168
+VERIFIED 56/168
+VERIFIED 64/168
+VERIFIED 72/168
+VERIFIED 80/168
+VERIFIED 88/168
+VERIFIED 96/168
+VERIFIED 104/168
+VERIFIED 112/168
+VERIFIED 120/168
+VERIFIED 128/168
+VERIFIED 136/168
+VERIFIED 144/168
+VERIFIED 152/168
+VERIFIED 160/168
+VERIFIED 168/168
+{
+  "schema": "spinon.tailnet-preview-served-verification/v1",
+  "sourceCommit": "65894cc451cf71069b6dac19da2114b7cfcb3003",
+  "previewServerPid": 90711,
+  "localBase": "http://127.0.0.1:8768/spinon/",
+  "tailnetBase": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "totalFiles": 168,
+  "allLocalHttp200": true,
+  "allTailnetHttp200": true,
+  "allSourcePreviewLocalTailnetHashesMatch": true,
+  "backedUpFilesVerified": 14,
+  "fullSiteBuildClaim": false,
+  "fullDocsDeadLinkCheck": false
+}
